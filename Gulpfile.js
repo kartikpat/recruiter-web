@@ -1,3 +1,7 @@
+/**
+ * Sample gulpfile corresponding to the current repo structure including sass to css compilation, css concatenation and minification, js concatenation and minification.
+ */
+
 var gulp = require("gulp");
 var gutil = require("gulp-util");
 var sass = require("gulp-sass");
@@ -9,11 +13,12 @@ var concat = require('gulp-concat');
 var staticMapper = require("./asset-mapper.json");
 var uglify = require('gulp-uglify');
 var gulpDebug = require('gulp-debug');
-//var mocha = require('./gulp-mocha')
+
+// Use mocha for test driven development. But make this your last resort.
+// var mocha = require('./gulp-mocha')
 
 function getAssetsArray(location){
 	var assets = [];
-	console.log(location)
 	location.forEach(function(anAsset){
 		assets.push(anAsset);
 	});
@@ -63,7 +68,6 @@ gulp.task('build-sass',function(){
 		.pipe(sass())
 		.on('error', notify.onError("Error: <%= error.message %>"))
 		.pipe(gulp.dest('static/css'))
-		//.pipe(notify('Compiled sass for (' + moment().format('MMM Do h:mm:ss A') + ')'));
 });
 
 //For running test through mocha
