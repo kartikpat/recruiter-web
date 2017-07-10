@@ -1,2 +1,2 @@
-# crystal
-Repo to be used by Kartik, Raghav and saurabh
+## crystal
+Sample web server setup. To be used by web developers.
