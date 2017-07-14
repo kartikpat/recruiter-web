@@ -4,6 +4,7 @@
 			"debug" : [
             	"static/css/index.css",
 							"static/css/fullcalendar.css"
+
 			],
 			"prod": [
 				"static/build/css/index.min.css"
@@ -15,6 +16,7 @@
 				"static/js/vendor/jquery.min.js",
 				"static/js/vendor/moment.min.js",
 				"static/js/vendor/fullcalendar.js",
+
 				"static/js/index.js"
 			],
 			"prod" : [

@@ -5,11 +5,56 @@
 	<!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet"> -->
 	{{#styles.length}}
     	{{#styles}}
-    		<link rel="stylesheet" href="/{{.}}">	
+    		<link rel="stylesheet" href="/{{.}}">
+				<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Comfortaa">
+				<link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
     	{{/styles}}
 	{{/styles.length}}
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<div class="header">
-</div>
+<header>
+	<div class="top_banner">
+		<div class="logo">
+			<h3>iimjobs</h3><span>.com</span>
+		</div>
+		<div class="user_profile">
+			<li class="dropdow">
+				<a href="#">Kartik@iimjobs.com</a>
+				<ul class="option hidden">
+					<li><a href="#">Manage Bookings</a></li>
+					<li><a href="#">View Booked Slots</a></li>
+				</ul>
+			</li>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
+	<nav>
+			<ul class="menu">
+				<li class="menu_link"><a href="#">My Jobs</a></li>
+				<li class="menu_link"><a href="#">Post Jobs</a></li>
+				<li class="menu_link"><a href="#">Reports</a></li>
+				<li class="menu_link"><a href="#">My Chat</a></li>
+				<li class="menu_link dropdown">
+					<a href="#">My Calendar</a>
+					<ul class="options hidden">
+						<li><a href="#">Manage Bookings</a></li>
+						<li><a href="#">View Booked Slots</a></li>
+					</ul>
+				</li>
+				<li class="menu_link"><a href="#">Search Resume Database</a></li>
+				<li class="menu_link dropdown">
+					<a href="#">More</a>
+					<ul class="options hidden">
+						<li><a href="#">Manage Bookings</a></li>
+						<li><a href="#">View Booked Slots</a></li>
+					</ul>
+				</li>
+			</ul>
+			<div class="search_container">
+				<input type="text" class="searchform" placeholder="Search"/>
+			</div>
+			<div class="clearfix"></div>
+	</nav>
+</header>
