@@ -54,6 +54,149 @@ table {
 .hidden {
   display: none; }
 
+.user_profile {
+  width: 95%;
+  margin: 40px auto;
+  padding: 20px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7); }
+  .user_profile .image {
+    float: left;
+    width: 19%;
+    margin-right: 1em;
+    min-height: 150px; }
+    .user_profile .image .edit_profile {
+      position: relative;
+      display: inline-block;
+      border: 1px solid #DDDDDD; }
+      .user_profile .image .edit_profile img {
+        max-width: 100%;
+        max-height: 100%; }
+      .user_profile .image .edit_profile:after {
+        font-family: 'FontAwesome';
+        content: "\f040";
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: white;
+        font-size: 18px; }
+  .user_profile .user_details {
+    float: left;
+    width: 79%;
+    min-height: 150px;
+    position: relative; }
+    .user_profile .user_details .user_information {
+      position: absolute;
+      top: 0;
+      left: 0; }
+      .user_profile .user_details .user_information .user_name {
+        font-size: 18px; }
+      .user_profile .user_details .user_information .user_designation {
+        font-size: 14px; }
+    .user_profile .user_details .edit_profile {
+      position: absolute;
+      top: 0;
+      right: 0; }
+      .user_profile .user_details .edit_profile button {
+        background-color: inherit;
+        border: none;
+        cursor: pointer;
+        outline: none; }
+        .user_profile .user_details .edit_profile button:hover {
+          color: blue; }
+        .user_profile .user_details .edit_profile button i {
+          font-size: 18px; }
+    .user_profile .user_details .social_buttons {
+      position: absolute;
+      top: 4em;
+      right: 3em; }
+      .user_profile .user_details .social_buttons .button {
+        background-color: white;
+        border: 1px solid #e7e7e7;
+        color: black;
+        padding: 4px 20px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 14px;
+        -webkit-transition-duration: 0.4s;
+        /* Safari */
+        transition-duration: 0.4s;
+        cursor: pointer; }
+        .user_profile .user_details .social_buttons .button:hover {
+          background-color: #e7e7e7; }
+  .user_profile .bottom_information {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+    background-color: #e9e9e9;
+    margin: 0 auto;
+    margin-top: 10px;
+    min-height: 40px;
+    position: relative;
+    display: block; }
+    .user_profile .bottom_information .profile_link {
+      position: absolute;
+      top: 10px;
+      left: 10px; }
+    .user_profile .bottom_information .extra_info {
+      position: absolute;
+      top: 10px;
+      right: 10px; }
+      .user_profile .bottom_information .extra_info > span {
+        font-size: 14px;
+        padding: 3px 5px; }
+
+.jobs_panel {
+  width: 95%;
+  margin: 40px auto;
+  min-height: 300px; }
+  .jobs_panel .panel_heading {
+    font-size: 20px; }
+    .jobs_panel .panel_heading a {
+      padding: 5px;
+      font-size: 14px; }
+  .jobs_panel .jobs_header {
+    width: auto;
+    margin: 0 auto; }
+    .jobs_panel .jobs_header span {
+      display: inline-block;
+      width: 18%;
+      padding: 5px;
+      margin: 5px;
+      overflow: auto;
+      font-size: 16px;
+      text-align: left; }
+  .jobs_panel .jobs_content {
+    margin: 5px;
+    padding: 2px; }
+    .jobs_panel .jobs_content span {
+      display: inline-block;
+      width: 18%;
+      padding: 5px;
+      margin: 5px;
+      overflow: hidden;
+      font-size: 14px; }
+  .jobs_panel div.jobs_container > div.jobs_content:nth-of-type(even) {
+    background: #e9e9e9; }
+
+html {
+  position: relative; }
+
+.footer nav {
+  background: #1c1c1c;
+  position: absolute;
+  bottom: 0;
+  width: 100%; }
+  .footer nav .menu {
+    float: left; }
+    .footer nav .menu li.menu_link {
+      position: relative;
+      display: inline-block;
+      padding: 12px; }
+      .footer nav .menu li.menu_link a {
+        color: white;
+        font-size: 13px;
+        font-family: 'Droid Sans'; }
+        .footer nav .menu li.menu_link a:hover {
+          color: #56A0FF; }
+
 header .top_banner {
   padding: 15px; }
   header .top_banner .logo {
@@ -67,38 +210,50 @@ header .top_banner {
       font-size: 13px;
       font-family: 'Comfortaa';
       float: right; }
-  header .top_banner .user_profile {
+  header .top_banner .user_profile_side {
     float: right;
-    position: relative; }
-    header .top_banner .user_profile a.dropdow {
-      text-decoration: none;
-      color: black; }
-      header .top_banner .user_profile a.dropdow ul.option {
+    display: inline-block; }
+    header .top_banner .user_profile_side .dropdown {
+      position: relative;
+      list-style: none; }
+      header .top_banner .user_profile_side .dropdown > a {
+        color: #000000;
+        font-size: 14px; }
+      header .top_banner .user_profile_side .dropdown .options {
         position: absolute;
-        top: 0;
+        top: 104;
         background: #fff;
-        width: 150px;
-        left: 0;
-        box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2); }
-
-header a.dropdow:hover > ul {
-  display: block; }
-
-header ul.option li a {
-  color: black;
-  padding: 5px 15px;
-  display: block; }
+        min-width: 200px;
+        right: 0;
+        box-shadow: 5px 5px 10px black;
+        z-index: 1; }
+        header .top_banner .user_profile_side .dropdown .options .seperator {
+          border: 0;
+          height: 0;
+          border-top: 1px solid rgba(0, 0, 0, 0.1);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+          width: 90%;
+          margin: 0 auto; }
+        header .top_banner .user_profile_side .dropdown .options li {
+          padding: 6px 10px;
+          text-align: left; }
+          header .top_banner .user_profile_side .dropdown .options li a {
+            color: #666;
+            font-size: 14px; }
+            header .top_banner .user_profile_side .dropdown .options li a:hover {
+              color: #56A0FF; }
+      header .top_banner .user_profile_side .dropdown:hover ul.options {
+        display: block; }
 
 header nav {
   background: #1c1c1c; }
   header nav .menu {
     float: left; }
     header nav .menu li.menu_link {
-      position: relative;
       display: inline-block;
       padding: 13px;
       border-bottom: 2px solid transparent; }
-      header nav .menu li.menu_link a {
+      header nav .menu li.menu_link > a {
         color: white;
         text-decoration: none;
         font-size: 13px;
@@ -106,6 +261,26 @@ header nav {
       header nav .menu li.menu_link:hover {
         background: #7c7c7c;
         border-bottom: 2px solid #fff; }
+    header nav .menu li.dropdown {
+      position: relative; }
+      header nav .menu li.dropdown ul.options {
+        position: absolute;
+        top: 102%;
+        background: #fff;
+        min-width: 150px;
+        left: 0;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+        z-index: 1; }
+        header nav .menu li.dropdown ul.options li {
+          padding: 6px 10px;
+          text-align: left; }
+          header nav .menu li.dropdown ul.options li a {
+            font-size: 14px;
+            color: black; }
+            header nav .menu li.dropdown ul.options li a:hover {
+              color: #56A0FF; }
+      header nav .menu li.dropdown:hover > ul {
+        display: block; }
   header nav .search_container {
     float: right;
     padding: 6px; }
@@ -115,174 +290,72 @@ header nav {
       margin: 0;
       padding: 0 12px;
       border-radius: 5px;
-      width: 300px; }
+      width: 250px; }
 
-.footer nav {
-  background: #1c1c1c; }
-  .footer nav .menu {
-    float: left; }
-    .footer nav .menu li.menu_link {
-      position: relative;
-      display: inline-block;
-      padding: 13px;
-      border-bottom: 2px solid transparent; }
-      .footer nav .menu li.menu_link a {
-        color: white;
-        font-size: 13px;
-        font-family: 'Droid Sans'; }
+@media only screen and (min-width: 900px) and (max-width: 1024px) {
+  .user_profile .image {
+    width: 18%;
+    min-height: 125px; }
+  .user_profile .user_details {
+    width: 79%;
+    min-height: 125px; } }
 
-.dropdown:hover > ul {
-  display: block; }
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  header nav .menu li.menu_link {
+    padding: 8px; }
+    header nav .menu li.menu_link > a {
+      font-size: 12px; }
+  header nav .menu li.dropdown ul.options li a {
+    font-size: 12px; }
+  header nav .search_container {
+    float: right;
+    padding: 4px; }
+    header nav .search_container input {
+      height: 25px;
+      border: 0;
+      margin: 0;
+      padding: 0 12px;
+      border-radius: 5px;
+      width: 100%; } }
 
-ul.options {
-  position: absolute;
-  top: 44px;
-  background: #fff;
-  width: 150px;
-  left: 0;
-  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2); }
-
-header nav .menu li.menu_link ul.options li a {
-  color: black;
-  padding: 5px 15px;
-  display: block; }
-
-ul.options li:hover {
-  background: #e1e1e1; }
-
-.main_container {
-  width: 100%;
-  margin: 20px auto;
-  padding: 20px; }
-  .main_container .job_posting {
-    display: flex; }
-    .main_container .job_posting .post_job {
-      width: 70%; }
-      .main_container .job_posting .post_job .label {
-        margin-left: 2em;
-        display: inline-block;
-        width: 10%;
-        text-align: left;
-        font-size: 12px; }
-      .main_container .job_posting .post_job .field {
-        width: 80%;
-        display: inline-block;
-        margin-left: 2em; }
-        .main_container .job_posting .post_job .field input, .main_container .job_posting .post_job .field select {
-          padding: 8px 16px;
-          margin: 8px 0;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          width: 70%; }
-        .main_container .job_posting .post_job .field select.exp {
-          width: calc(69%/2); }
-    .main_container .job_posting .tags {
-      flex: 1;
-      box-shadow: 2px 2px 3px black;
-      min-height: 200px;
-      margin-left: 20px; }
-  .main_container .profile {
-    width: 90%;
-    margin: 0 auto;
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    position: relative; }
-    .main_container .profile .user_image {
-      width: auto;
-      border: 1px solid black;
-      position: relative;
-      display: inline-block;
-      left: 0; }
-      .main_container .profile .user_image .edit_profile {
-        position: absolute;
-        color: white;
-        right: 20px;
-        top: 20px;
-        font-size: 40px; }
-    .main_container .profile .user_details {
-      display: inline-block;
+@media only screen and (min-width: 768px) and (max-width: 899px) {
+  .user_profile .image {
+    width: 18%;
+    min-height: 100px; }
+  .user_profile .user_details {
+    width: 78%;
+    min-height: 100px; }
+    .user_profile .user_details .edit_profile i {
+      font-size: 16px; }
+    .user_profile .user_details .social_buttons {
       position: absolute;
-      left: 10em;
-      width: 55em;
-      margin: 0 20px;
-      min-height: 100px;
-      overflow: hidden; }
-      .main_container .profile .user_details .user_information {
-        float: left; }
-      .main_container .profile .user_details .edit_profile {
-        float: right; }
-      .main_container .profile .user_details .social_buttons {
-        position: relative;
-        top: 50px;
-        right: -350px;
-        display: inline-block; }
-        .main_container .profile .user_details .social_buttons .button {
-          background-color: white;
-          /* Green */
-          border: 2px solid #e7e7e7;
-          color: black;
-          padding: 8px 40px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          font-size: 16px;
-          margin: 4px 2px;
-          -webkit-transition-duration: 0.4s;
-          /* Safari */
-          transition-duration: 0.4s;
-          cursor: pointer; }
-          .main_container .profile .user_details .social_buttons .button:hover {
-            background-color: #e7e7e7; }
-    .main_container .profile .bottom_information {
-      box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
-      width: 90%;
-      margin: 0 auto;
-      margin-top: 20px;
-      min-height: 40px;
-      padding: 10px;
-      background-color: pink; }
-      .main_container .profile .bottom_information .profile_link {
-        float: left; }
-      .main_container .profile .bottom_information .extra_info {
-        float: right; }
-  .main_container .jobs_panel {
-    width: 90%;
-    margin: 70px auto; }
-    .main_container .jobs_panel .jobs_header {
-      /*width: 1170px;*/
-      width: auto;
-      margin: 0 auto; }
-      .main_container .jobs_panel .jobs_header span {
-        display: inline-block;
-        width: 18%;
-        padding: 5px;
-        margin: 5px;
-        overflow: auto;
-        font-size: 16px; }
-    .main_container .jobs_panel .jobs_content {
-      margin: 5px;
-      padding: 2px; }
-      .main_container .jobs_panel .jobs_content span {
-        display: inline-block;
-        width: 18%;
-        padding: 5px;
-        margin: 5px;
-        overflow: hidden;
-        font-size: 10px; }
-    .main_container .jobs_panel div.jobs_container > div.jobs_content:nth-of-type(even) {
-      background: #f5f6f7; }
+      top: 3em;
+      right: 2em; }
+      .user_profile .user_details .social_buttons .button {
+        padding: 3px 16px;
+        font-size: 14px; } }
 
-li.dropdow:hover > ul.option {
-  display: block; }
-
-li.dropdow {
-  position: relative;
-  list-style: none; }
-
-ul.option {
-  position: absolute;
-  top: 100%;
-  background: #FFF;
-  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.4);
-  width: 180px;
-  left: -40px; }
+@media only screen and (max-width: 767px) {
+  .user_profile .image {
+    width: 17%;
+    min-height: 75px; }
+  .user_profile .user_details {
+    width: 78%;
+    min-height: 75px; }
+    .user_profile .user_details .edit_profile i {
+      font-size: 14px; }
+    .user_profile .user_details .social_buttons {
+      position: absolute;
+      top: 2em;
+      right: 1.5em; }
+      .user_profile .user_details .social_buttons .button {
+        padding: 3px 16px;
+        font-size: 12px; }
+  .jobs_panel .jobs_header span {
+    margin: 3px; }
+  .jobs_panel .jobs_content span {
+    margin: 3px; }
+  .footer nav .menu li.menu_link {
+    padding: 10px; }
+    .footer nav .menu li.menu_link a {
+      font-size: 12px; } }

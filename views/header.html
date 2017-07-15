@@ -8,28 +8,43 @@
     		<link rel="stylesheet" href="/{{.}}">
 				<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Comfortaa">
 				<link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
+				<link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
     	{{/styles}}
 	{{/styles.length}}
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <header>
+
 	<div class="top_banner">
 		<div class="logo">
 			<h3>iimjobs</h3><span>.com</span>
 		</div>
-		<div class="user_profile">
-			<li class="dropdow">
+		<div class="user_profile_side">
+			<li class="dropdown">
 				<a href="#">Kartik@iimjobs.com</a>
-				<ul class="option hidden">
-					<li><a href="#">Manage Bookings</a></li>
-					<li><a href="#">View Booked Slots</a></li>
+				<ul class="options hidden">
+					<li><a href="#">My Profile</a></li>
+					<hr class="seperator">
+					<li><a href="#">My chat</a></li>
+					<hr class="seperator">
+					<li><a href="#">Settings/ Edit Profile</a></li>
+					<hr class="seperator">
+					<li><a href="#">Basic Posting(unlimited)</a></li>
+					<hr class="seperator">
+					<li><a href="#">Premium Posting(0)</a></li>
+					<hr class="seperator">
+					<li><a href="#">Change Password</a></li>
+					<hr class="seperator">
+					<li><a href="#">Logout</a></li>
+
 				</ul>
 			</li>
 		</div>
 		<div class="clearfix"></div>
 	</div>
 
+<!-- navigation menu -->
 	<nav>
 			<ul class="menu">
 				<li class="menu_link"><a href="#">My Jobs</a></li>
@@ -47,8 +62,9 @@
 				<li class="menu_link dropdown">
 					<a href="#">More</a>
 					<ul class="options hidden">
-						<li><a href="#">Manage Bookings</a></li>
-						<li><a href="#">View Booked Slots</a></li>
+						<li><a href="#">Showcase Followers</a></li>
+						<li><a href="#">My Tags</a></li>
+						<li><a href="#">Saved/Shortlisted Candidates</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -57,4 +73,6 @@
 			</div>
 			<div class="clearfix"></div>
 	</nav>
+<!-- end navigation menu -->
+
 </header>
