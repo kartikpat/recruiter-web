@@ -1,116 +1,59 @@
-{{> header }}
-
+{{> header}}
 <div class="main_container">
-  <div class="job_posting">
-  <div class="post_job">
-   <form action="">
-     <div class="label">
-      <label for="tile">Title</label>
-    </div>
-    <div class="field">
-     <input type="text" id="title" name="job_title" placeholder="Job Title..">
+ <div class="profile">
+   <div class="user_image">
+     <img src="../static/img/business.png" alt="">
+     <span class="edit_profile">&#xe151;</span>
    </div>
-   <div class="label">
-    <label for="location">Location</label>
-  </div>
-  <div class="field">
-    <input type="text" id="location" name="location" placeholder="location..">
-  </div>
-   <div class="label">
-    <label for="category">Cattegory</label>
-  </div>
-  <div class="field">
-    <select id="category" name="category">
-      <option value="australia">Australia</option>
-      <option value="canada">Canada</option>
-      <option value="usa">USA</option>
-    </select>
-  </div>
-  <div class="label">
-    <label for="industry" class="industry">Industry</label>
-  </div>
-    <div class="field">
-    <select id="industry" name="industry" multiple="">
-      <option value="australia">Australia</option>
-      <option value="canada">Canada</option>
-      <option value="usa">USA</option>
-    </select>
-  </div>
-    <div class="label">
-    <label for="functional_area">Functional Area</label>
+   <div class="user_details">
+     <div class="user_information">
+      <h2 class="user_name">kartik</h2>
+      <span class="user_designation">developer</span>
+     </div>
+     <div class="edit_profile">
+       <span>&#xe151;</span>
+     </div>
+     <div class="social_buttons">
+      <button class="button">Linked In</button>
+      <button class="button">Twitter</button>
+      <button class="button">Facebook</button>
     </div>
-    <div class="field">
-    <select id="functional_area" name="functional_area">
-      <option value="australia">Accounting</option>
-      <option value="canada">Administration</option>
-      <option value="usa">USA</option>
-    </select>
+   </div>
+
+
+   <div class="bottom_information" >
+     <a href="#" class="profile_link">hello</a>
+     <div class="extra_info">
+         <span class="viewed"></span>
+         <span class="last_login">ssssssss</span>
+   </div>
+   </div>
+
+
   </div>
-   <div class="label">
-     <label for="salary">Salary</label>
+
+         <div role="tabpanel" class="jobs_panel">
+           <h1>Jobs Posted</h1>
+          	<div class="jobs_container">
+          			<div class="jobs_header">
+          				<span >Date</span>
+          				<span >Title</span>
+          				<span >Status</span>
+          				<span>Views/Applied</span>
+                  <span>Action</span>
+          			</div>
     </div>
-    <div class="field">
-      <input type="text" id="salary" name="min_salary" placeholder="Min Salary..">
-<p>
-Min (in lakhs per annum)</p>
 
-    <input type="text" id="" name="max_salary" placeholder="Max Salary..">
-    <p>
-    Min (in lakhs per annum)</p>
-    <input type="checkbox">
 
-  </div>
 
-  <div class="label">
-    <label for="experience">Years of experience</label>
-  </div>
-  <div class="field">
-    <select class="exp" id="experience" name="experience">
-
-      <option value="australia">Accounting</option>
-      <option value="canada">Administration</option>
-      <option value="usa">USA</option>
-    </select>
-    <select class="exp" id="experience" name="experience">
-      <option value="australia">Accounting</option>
-      <option value="canada">Administration</option>
-      <option value="usa">USA</option>
-    </select>
-  </div>
-
-  <div class="label">
-    <label for="graduating_year">Graduating Year</label>
-  </div>
-  <div class="field">
-    <select class="exp" id="experience" name="experience">
-
-      <option value="australia">Accounting</option>
-      <option value="canada">Administration</option>
-      <option value="usa">USA</option>
-    </select>
-    <select class="exp" id="experience" name="experience">
-      <option value="australia">Accounting</option>
-      <option value="canada">Administration</option>
-      <option value="usa">USA</option>
-    </select>
-  </div>
-
-<div class="label">
-    <label for="location">Location</label>
-  </div>
-    <input type="text" id="location" name="location" placeholder="location..">
-<div class="label">
-    <label for="location">Location</label>
-  </div>
-    <input type="text" id="location" name="location" placeholder="location..">
-
-    <input type="submit" value="Submit">
-  </form>
+ </div>
 </div>
-
-<div class="tags">
-</div>
-</div>
+<div class="jobs_content prototype hidden">
+  <span class="date" >Date</span>
+  <span class="title">Title</span>
+  <span class="status">Status</span>
+  <span class="stats">Views/Applied</span>
+  <span class="action">Action</span>
 </div>
 
 {{> footer}}

@@ -27,10 +27,21 @@ module.exports = function(settings){
 
 	app.get("/", isAuthenticated,function(req, res){
 		res.render("index", {
-			title: "",
+			title: "IIM JOBS | Dashboard",
 			styles:  assetsMapper["index"]["styles"][mode],
 			scripts: assetsMapper["index"]["scripts"][mode],
 			baseUrl: baseUrl
 		});
+		return
 	});
+
+	app.get("/post-job", function(req, res){
+		res.render("postjob",{
+			title: "IIM JOBS | Post job",
+			styles:  assetsMapper["postjob"]["styles"][mode],
+			scripts: assetsMapper["postjob"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
 }
