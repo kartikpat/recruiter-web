@@ -1,41 +1,132 @@
 {{> header }}
 
-<div class="main_container">
+<div class="job_posting">
   <div class="post_job">
-<form action="">
-    <label for="tile">Title</label>
-    <input type="text" id="title" name="job_title" placeholder="Job Title..">
+    <a href="">Back</a>
+    <h1>Post a Job<a href="">(Posting Guidelines)</a></h1>
+    <hr>
+   <form action="">
+    <div class="label">
+     <label for="tile">Title*</label>
+    </div>
+    <div class="field">
+     <input type="text" id="title" name="job_title" placeholder="Job Title..">
+   </div>
 
+    <div class="label">
     <label for="location">Location</label>
+    </div>
+    <div class="field">
     <input type="text" id="location" name="location" placeholder="location..">
+    </div>
 
-    <label for="category">Cattegory</label>
+    <div class="label">
+    <label for="category">Category</label>
+    </div>
+    <div class="field">
     <select id="category" name="category">
-      <option value="australia">Australia</option>
-      <option value="canada">Canada</option>
-      <option value="usa">USA</option>
+      <option value="australia">Finance</option>
+      <option value="canada">Sales & Marketing</option>
+      <option value="usa">Consulting</option>
     </select>
-    <label for="industry">Industry</label>
+    </div>
+
+    <div class="label top">
+    <label for="industry">Industry*</label>
+    </div>
+    <div class="field">
     <select id="industry" name="industry" multiple>
-      <option value="australia">Australia</option>
+      <option value="australia">Accounting/Finance/Audit</option>
       <option value="canada">Canada</option>
       <option value="usa">USA</option>
     </select>
+    <p class="extra_info">Press Ctrl Key to select multiple industries. You can select upto 5 industries.</p>
+    </div>
 
-    <label for="location">Location</label>
-    <input type="text" id="location" name="location" placeholder="location..">
 
-    <label for="location">Location</label>
-    <input type="text" id="location" name="location" placeholder="location..">
+    <div class="label">
+    <label for="functional_area">Functional Area*</label>
+    </div>
+    <div class="field">
+    <select id="functional_area" name="functional_area">
+      <option value="australia">Accounting</option>
+      <option value="canada">Sales & Marketing</option>
+      <option value="usa">Consulting</option>
+    </select>
+    </div>
 
-    <label for="location">Location</label>
-    <input type="text" id="location" name="location" placeholder="location..">
+    <div class="label top">
+    <label for="salary">Salary</label>
+    </div>
+    <div class="field">
+    <input type="text" id="salary" name="min_salary" placeholder="Min Salary..">
+    <p class="extra_info">Min (in lakhs per annum)</p>
+    <input type="text" id="salary" name="max_salary" placeholder="Max Salary..">
+    <p class="extra_info">Max (in lakhs per annum)</p>
+    <input type="checkbox" name=""><span class="extra_info">Don't show this to candidates.</span>
+    </div>
 
-    <label for="location">Location</label>
-    <input type="text" id="location" name="location" placeholder="location..">
+    <div class="label top">
+    <label for="experience">Yrs of exp*</label>
+    </div>
+    <div class="field">
+      <select class="half" id="experience" name="min_experience">
+        <option value="">Min</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+      <select class="half" id="experience" name="max_experience">
+        <option value="">Max</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+    </div>
+
+    <div class="label top">
+    <label for="course_type">Course Type</label>
+    </div>
+    <div class="field">
+      <input type="checkbox" name=""><span class="extra_info">Full Time</span>
+      <input type="checkbox" name=""><span class="extra_info">Part Time</span>
+      <input type="checkbox" name=""><span class="extra_info">Distance Learning program</span>
+      <input type="checkbox" name=""><span class="extra_info">Executive Program</span>
+      <input type="checkbox" name=""><span class="extra_info">Certification</span>
+    </div>
+
+    <div class="label top">
+    <label for="graduating_year">Graduating Year</label>
+    </div>
+    <div class="field">
+      <select class="half" id="graduating_year" name="start_year">
+        <option value="">Min</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+      <select class="half" id="graduating_year" name="end_year">
+        <option value="">Max</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+      <div><input type="checkbox" name=""><span class="extra_info"> Please make this job premium (highlighted) for higher visibility.</span></div>
+    </div>
+
+    <div class="label top">
+     <label for="job_description">Job Description</label>
+    </div>
+    <div class="field">
+     <textarea id="job_description" name="job_description" placeholder="Job Description...."></textarea>
+     <div><input type="checkbox" name=""><span class="extra_info">  Would prefer Female candidates for this role.</span></div>
+     <div><input type="checkbox" name=""><span class="extra_info">  Would prefer Differently-abled candidates for this role. This includes Physical disability, Vision or Hearing impairment, etc.</span></div>
+     <div><input type="checkbox" name=""><span class="extra_info"> Would prefer ex-defence personnel.<span></div>
+     <div><input type="checkbox" name=""><span class="extra_info"> May work from home.<span></div>
+     <div><input type="checkbox" name=""><span class="extra_info"> Would prefer women joining back the workforce.<span></div>
+    </div>
 
     <input type="submit" value="Submit">
   </form>
+</div>
+
+<div class="tags">
 </div>
 </div>
 

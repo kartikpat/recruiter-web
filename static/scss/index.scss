@@ -222,17 +222,15 @@ table {
 	}
 }
 
-html {
+body {
 	position: relative;
 }
 
 .footer {
 
+	width: 100%;
 	nav {
 		background:#1c1c1c;
-    position: absolute;
-		bottom: 0;
-		width: 100%;
 
 		.menu {
 			float:left;
@@ -412,6 +410,77 @@ header {
     }
   }
 }
+
+.job_posting{
+	display: flex;
+	padding: 20px;
+.post_job {
+	width: 70%;
+  margin: 40px 0;
+	
+	.label {
+		display: inline-block;
+		margin-left: 2em;
+    padding: 15px;
+		width: 15%;
+		font-size: 14px;
+	}
+
+	.label.top {
+     	vertical-align: top !important;
+	}
+	.field {
+		 width: 70%;
+		 display: inline-block;
+		 margin-left: 2em;
+     padding: 4px 0;
+	input,select {
+			padding: 8px 16px;
+			margin: 8px 0;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			width: 80%;
+	}
+	input[type="checkbox"] {
+    display: inline-block;
+		width: auto;
+	}
+	select.half {
+		width: calc(79%/2);
+
+
+	}
+	textarea {
+		width: 100%;
+	 height: 150px;
+	 padding: 12px 20px;
+	 box-sizing: border-box;
+	 border: 2px solid #ccc;
+	 border-radius: 4px;
+	 background-color: #f8f8f8;
+	 resize: none;
+	}
+
+}
+}
+.tags {
+		flex: 1;
+		box-shadow:  2px 2px 3px rgba(0,0,0,1);
+		min-height: 200px;
+		margin-left: 20px;
+}
+}
+p.extra_info,span.extra_info {
+	font-size: 13px;
+}
+span.extra_info{
+	position: relative;
+	top: -3px;
+	right: -3px;
+	margin-right: 1em;
+}
+
+
 
 @media only screen and (min-width : 900px) and (max-width : 1024px) {
 	.user_profile {

@@ -176,26 +176,25 @@ table {
   .jobs_panel div.jobs_container > div.jobs_content:nth-of-type(even) {
     background: #e9e9e9; }
 
-html {
+body {
   position: relative; }
 
-.footer nav {
-  background: #1c1c1c;
-  position: absolute;
-  bottom: 0;
+.footer {
   width: 100%; }
-  .footer nav .menu {
-    float: left; }
-    .footer nav .menu li.menu_link {
-      position: relative;
-      display: inline-block;
-      padding: 12px; }
-      .footer nav .menu li.menu_link a {
-        color: white;
-        font-size: 13px;
-        font-family: 'Droid Sans'; }
-        .footer nav .menu li.menu_link a:hover {
-          color: #56A0FF; }
+  .footer nav {
+    background: #1c1c1c; }
+    .footer nav .menu {
+      float: left; }
+      .footer nav .menu li.menu_link {
+        position: relative;
+        display: inline-block;
+        padding: 12px; }
+        .footer nav .menu li.menu_link a {
+          color: white;
+          font-size: 13px;
+          font-family: 'Droid Sans'; }
+          .footer nav .menu li.menu_link a:hover {
+            color: #56A0FF; }
 
 header .top_banner {
   padding: 15px; }
@@ -302,6 +301,60 @@ header nav {
       padding: 0 12px;
       border-radius: 5px;
       width: 250px; }
+
+.job_posting {
+  display: flex;
+  padding: 20px; }
+  .job_posting .post_job {
+    width: 70%;
+    margin: 40px 0; }
+    .job_posting .post_job .label {
+      display: inline-block;
+      margin-left: 2em;
+      padding: 15px;
+      width: 15%;
+      font-size: 14px; }
+    .job_posting .post_job .label.top {
+      vertical-align: top !important; }
+    .job_posting .post_job .field {
+      width: 70%;
+      display: inline-block;
+      margin-left: 2em;
+      padding: 4px 0; }
+      .job_posting .post_job .field input, .job_posting .post_job .field select {
+        padding: 8px 16px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 80%; }
+      .job_posting .post_job .field input[type="checkbox"] {
+        display: inline-block;
+        width: auto; }
+      .job_posting .post_job .field select.half {
+        width: calc(79%/2); }
+      .job_posting .post_job .field textarea {
+        width: 100%;
+        height: 150px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        resize: none; }
+  .job_posting .tags {
+    flex: 1;
+    box-shadow: 2px 2px 3px black;
+    min-height: 200px;
+    margin-left: 20px; }
+
+p.extra_info, span.extra_info {
+  font-size: 13px; }
+
+span.extra_info {
+  position: relative;
+  top: -3px;
+  right: -3px;
+  margin-right: 1em; }
 
 @media only screen and (min-width: 900px) and (max-width: 1024px) {
   .user_profile .image {
