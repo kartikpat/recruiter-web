@@ -332,17 +332,20 @@ header {
 
     .menu {
       float:left;
+			li.menu_link:first-child {
+				display: none;
+			}
       li.menu_link {
 
         display:inline-block;
-        padding:13px;
+        padding: 12px;
         border-bottom:2px solid transparent;
 
 
         > a {
           color:white;
           text-decoration: none;
-          font-size:13px;
+          font-size:14px;
           font-family: 'Droid Sans';
 
         }
@@ -387,6 +390,16 @@ header {
     .search_container {
       float:right;
       padding:6px;
+			position: relative;
+			&:after {
+				font-family: 'FontAwesome';
+				content: "\f002";
+				color: gray;
+				position: absolute;
+				top: 12px;
+				right: 10px;
+				font-size: 16px;
+			}
 
       input {
         height: 30px;
@@ -430,48 +443,29 @@ header {
 
 			li.menu_link {
 
-				 padding:8px;
-				> a {
+				 padding:12px 8px;
+				  > a {
 					font-size:12px;
 				}
 
 			}
-			li.dropdown {
-
-				ul.options {
-
-					li {
-
-						a {
-
-							font-size: 12px;
-
-						}
-
-					}
-				}
-
-			}
-
 		}
 
 		.search_container {
-			float:right;
-			padding:4px;
+
 
 			input {
-				height: 25px;
-				border: 0;
-				margin: 0;
-				padding: 0 12px;
-				border-radius: 5px;
-				width: 100%;
-			}
+
+        width: 180px;
+      }
+
+
+
 		}
 	}
 }
 }
-@media only screen and (min-width : 768px) and (max-width : 899px) {
+@media only screen and (min-width : 769px) and (max-width : 899px) {
 	.user_profile {
 
        .image {
@@ -502,7 +496,7 @@ header {
 	  }
 }
 
-@media only screen and (max-width : 767px) {
+@media only screen and (max-width : 768px) {
 	.user_profile {
 
        .image {
@@ -558,5 +552,42 @@ header {
 					}
 				}
 		  }
+	 }
+
+	 header {
+
+	 	nav {
+
+	 		.menu {
+
+				li.menu_link:first-child {
+					display: inline-block;
+				}
+
+	 			li.menu_link {
+					display: none;
+					 padding:12px;
+
+	 			}
+		}
+
+			.search_container {
+
+
+				input {
+
+	        width: 180px;
+	      }
+
+			}
+			.menu.responsive {
+
+				li.menu_link:not(:first-child) {
+					 display: block;
+					 padding:12px;
+					 border-bottom: 1px solid gray;
+				 }
+			}
+	 	}
 	 }
 }

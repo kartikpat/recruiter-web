@@ -249,14 +249,16 @@ header nav {
   background: #1c1c1c; }
   header nav .menu {
     float: left; }
+    header nav .menu li.menu_link:first-child {
+      display: none; }
     header nav .menu li.menu_link {
       display: inline-block;
-      padding: 13px;
+      padding: 12px;
       border-bottom: 2px solid transparent; }
       header nav .menu li.menu_link > a {
         color: white;
         text-decoration: none;
-        font-size: 13px;
+        font-size: 14px;
         font-family: 'Droid Sans'; }
       header nav .menu li.menu_link:hover {
         background: #7c7c7c;
@@ -283,7 +285,16 @@ header nav {
         display: block; }
   header nav .search_container {
     float: right;
-    padding: 6px; }
+    padding: 6px;
+    position: relative; }
+    header nav .search_container:after {
+      font-family: 'FontAwesome';
+      content: "\f002";
+      color: gray;
+      position: absolute;
+      top: 12px;
+      right: 10px;
+      font-size: 16px; }
     header nav .search_container input {
       height: 30px;
       border: 0;
@@ -302,23 +313,13 @@ header nav {
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   header nav .menu li.menu_link {
-    padding: 8px; }
+    padding: 12px 8px; }
     header nav .menu li.menu_link > a {
       font-size: 12px; }
-  header nav .menu li.dropdown ul.options li a {
-    font-size: 12px; }
-  header nav .search_container {
-    float: right;
-    padding: 4px; }
-    header nav .search_container input {
-      height: 25px;
-      border: 0;
-      margin: 0;
-      padding: 0 12px;
-      border-radius: 5px;
-      width: 100%; } }
+  header nav .search_container input {
+    width: 180px; } }
 
-@media only screen and (min-width: 768px) and (max-width: 899px) {
+@media only screen and (min-width: 769px) and (max-width: 899px) {
   .user_profile .image {
     width: 18%;
     min-height: 100px; }
@@ -335,7 +336,7 @@ header nav {
         padding: 3px 16px;
         font-size: 14px; } }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
   .user_profile .image {
     width: 17%;
     min-height: 75px; }
@@ -358,4 +359,15 @@ header nav {
   .footer nav .menu li.menu_link {
     padding: 10px; }
     .footer nav .menu li.menu_link a {
-      font-size: 12px; } }
+      font-size: 12px; }
+  header nav .menu li.menu_link:first-child {
+    display: inline-block; }
+  header nav .menu li.menu_link {
+    display: none;
+    padding: 12px; }
+  header nav .search_container input {
+    width: 180px; }
+  header nav .menu.responsive li.menu_link:not(:first-child) {
+    display: block;
+    padding: 12px;
+    border-bottom: 1px solid gray; } }
