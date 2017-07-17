@@ -51,3 +51,11 @@ function date_ddmmyy (aDate){
 	var today = dd+'/'+mm+'/'+yyyy;
 	return today;
 }
+function openMenu() {
+    var x = document.getElementById("menu");
+    if (x.className === "menu") {
+        x.className += " responsive";
+    } else {
+        x.className = "menu";
+    }
+}
