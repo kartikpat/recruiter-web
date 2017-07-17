@@ -17,7 +17,6 @@
 				"static/js/request.js",
 				"static/js/vendor/moment.min.js",
 				"static/js/vendor/fullcalendar.js",
-
 				"static/js/index.js"
 			],
 			"prod" : [

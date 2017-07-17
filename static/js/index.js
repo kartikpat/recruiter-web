@@ -15,7 +15,8 @@ var populateProfile = function(res){
 		profile.find(".user_designation").text(data["desg"]);
 		profile.find(".extra_info .viewed").text( data["hits"]);
 		profile.find(".extra_info .last_login").text( new Date(data["d_login"]).toLocaleString());
-		profile.find(".profile_link").text(data["rurl"])
+		profile.find(".profile_link").text(data["rurl"]);
+		$('.user_profile_side .email').text(data["email"])
 	}
 }
 
