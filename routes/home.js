@@ -14,6 +14,8 @@ module.exports = function(settings){
 	var baseUrl =  config["baseUrl"];
 	if(env=="local")
 		baseUrl= config["baseUrl_local"];
+	else
+		baseUrl = config["baseUrl"];
 	function isAuthenticated(req, res, next) {
 
 		// for disabling authentication
