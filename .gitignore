@@ -1,4 +1,4 @@
 #excluding node_modules
 node_modules
 deploy.sh
-static/build
+static/build/*
