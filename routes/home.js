@@ -44,4 +44,14 @@ module.exports = function(settings){
 		})
 		return
 	})
+
+	app.get("/login", function(req, res){
+		res.render("login",{
+			title: "IIM JOBS | Login",
+			styles:  assetsMapper["login"]["styles"][mode],
+			scripts: assetsMapper["login"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
 }

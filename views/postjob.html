@@ -1,9 +1,6 @@
-{
-Error: Parse error on line 1:
-{{> header }}<div c
--^
-Expecting 'STRING', '}'
-{> header }}
+
+
+{{> header }}
 
 <div class="job_posting">
   <div class="post_job">
@@ -127,11 +124,29 @@ Expecting 'STRING', '}'
      <div><input type="checkbox" name=""><span class="extra_info"> Would prefer women joining back the workforce.<span></div>
     </div>
 
+    <div class="label">
+    </div>
+    <div class="field">
     <input type="submit" value="Submit">
+    <input type="submit" value="Cancel">
+  </div>
   </form>
 </div>
 
 <div class="tags">
+  <h2>Add Tags</h2>
+  <div id="keywords">
+  <div class="label">
+    <label for="keyword1">Keyword #1</label>
+  </div>
+  <div class="field">
+   <input type="text" id="keyword1" name="keyword1">
+  </div>
+</div>
+  <div class="label">
+    <button class="button" onclick="addNewKeyword()">Add New</button>
+  </div>
+
 </div>
 </div>
 

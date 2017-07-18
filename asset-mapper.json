@@ -2,8 +2,8 @@
 	"index": {
 		"styles": {
 			"debug" : [
-            	"static/css/index.css",
-				"static/css/fullcalendar.css"
+        "static/css/index.css",
+				"static/css/fullcalendar.min.css"
 
 			],
 			"prod": [
@@ -17,7 +17,6 @@
 				"static/js/request.js",
 				"static/js/vendor/moment.min.js",
 				"static/js/vendor/fullcalendar.js",
-
 				"static/js/index.js"
 			],
 			"prod" : [
@@ -28,22 +27,38 @@
 	"postjob": {
 		"styles": {
 			"debug" : [
-            	"static/css/index.css",
-				"static/css/fullcalendar.css"
+        "static/css/index.css"
+
 
 			],
 			"prod": [
 				"static/build/css/index.min.css"
-
 			]
 		},
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
-				"static/js/vendor/moment.min.js",
-				"static/js/vendor/fullcalendar.js",
+				"static/js/index.js"
+			],
+			"prod" : [
+				"static/build/js/index.min.js"
+			]
+		}
+	},
+	"login": {
+		"styles": {
+			"debug" : [
+        "static/css/index.css"
 
+
+			],
+			"prod": [
+				"static/build/css/index.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
 				"static/js/index.js"
 			],
 			"prod" : [

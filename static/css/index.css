@@ -54,6 +54,21 @@ table {
 .hidden {
   display: none; }
 
+.button {
+  background-color: white;
+  border: 1px solid #e7e7e7;
+  color: black;
+  padding: 4px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer; }
+  .button:hover {
+    background-color: #e7e7e7; }
+
 .user_profile {
   width: 95%;
   margin: 40px auto;
@@ -109,20 +124,6 @@ table {
       position: absolute;
       top: 4em;
       right: 3em; }
-      .user_profile .user_details .social_buttons .button {
-        background-color: white;
-        border: 1px solid #e7e7e7;
-        color: black;
-        padding: 4px 20px;
-        text-align: center;
-        text-decoration: none;
-        font-size: 14px;
-        -webkit-transition-duration: 0.4s;
-        /* Safari */
-        transition-duration: 0.4s;
-        cursor: pointer; }
-        .user_profile .user_details .social_buttons .button:hover {
-          background-color: #e7e7e7; }
   .user_profile .bottom_information {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
     background-color: #e9e9e9;
@@ -344,8 +345,22 @@ header nav {
   .job_posting .tags {
     flex: 1;
     box-shadow: 2px 2px 3px black;
-    min-height: 200px;
     margin-left: 20px; }
+    .job_posting .tags h2 {
+      padding: 20px 0 0 20px;
+      font-size: 20px; }
+    .job_posting .tags .label {
+      padding: 20px 0 10px 20px; }
+      .job_posting .tags .label label {
+        cursor: pointer; }
+    .job_posting .tags .field {
+      padding: 0 0 0 20px; }
+      .job_posting .tags .field input {
+        padding: 8px 16px;
+        margin: 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 80%; }
 
 p.extra_info, span.extra_info {
   font-size: 13px; }
@@ -355,6 +370,30 @@ span.extra_info {
   top: -3px;
   right: -3px;
   margin-right: 1em; }
+
+.login {
+  width: 60%;
+  margin: 20px auto; }
+  .login form {
+    display: inline-block;
+    width: calc(90%/2);
+    padding: 0 20px; }
+    .login form .form_heading {
+      display: block;
+      font-size: 20px; }
+    .login form .field {
+      padding: 10px 0; }
+      .login form .field input, .login form .field select {
+        padding: 8px 16px;
+        margin: 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 80%; }
+  .login form:first-child {
+    vertical-align: top; }
+  .login form:not(:first-child) {
+    border-left: 2px solid black;
+    height: 100%; }
 
 @media only screen and (min-width: 900px) and (max-width: 1024px) {
   .user_profile .image {

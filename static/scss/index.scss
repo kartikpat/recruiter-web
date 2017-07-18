@@ -57,6 +57,22 @@ table {
   display:none;
 }
 
+.button {
+		 background-color: white;
+		 border: 1px solid #e7e7e7;
+		 color: black;
+		 padding: 4px 20px;
+		 text-align: center;
+		 text-decoration: none;
+		 font-size: 14px;
+		 -webkit-transition-duration: 0.4s; /* Safari */
+		 transition-duration: 0.4s;
+		 cursor: pointer;
+				 &:hover {
+					 background-color: #e7e7e7;
+				 }
+			 }
+
 .user_profile {
 	width: 95%;
 	margin: 40px auto;
@@ -129,23 +145,10 @@ table {
 				position: absolute;
 				top: 4em;
 				right: 3em;
-				.button {
-						 background-color: white;
-						 border: 1px solid #e7e7e7;
-						 color: black;
-						 padding: 4px 20px;
-						 text-align: center;
-						 text-decoration: none;
-						 font-size: 14px;
-						 -webkit-transition-duration: 0.4s; /* Safari */
-						 transition-duration: 0.4s;
-						 cursor: pointer;
-								 &:hover {
-									 background-color: #e7e7e7;
-								 }
+
 				 }
 
-			}
+
 
 		}
 		.bottom_information {
@@ -417,7 +420,7 @@ header {
 .post_job {
 	width: 70%;
   margin: 40px 0;
-	
+
 	.label {
 		display: inline-block;
 		margin-left: 2em;
@@ -466,9 +469,30 @@ header {
 .tags {
 		flex: 1;
 		box-shadow:  2px 2px 3px rgba(0,0,0,1);
-		min-height: 200px;
+
 		margin-left: 20px;
-}
+		h2 {
+			padding: 20px 0 0 20px;
+			font-size: 20px;
+
+		}
+		.label {
+			padding: 20px 0 10px 20px;
+			label {
+				cursor: pointer;
+			}
+		}
+		.field {
+			padding: 0 0 0 20px;
+			input {
+				padding: 8px 16px;
+				margin: 0;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				width: 80%;
+			}
+		}
+  }
 }
 p.extra_info,span.extra_info {
 	font-size: 13px;
@@ -478,6 +502,38 @@ span.extra_info{
 	top: -3px;
 	right: -3px;
 	margin-right: 1em;
+}
+
+.login {
+	width: 60%;
+	margin: 20px auto;
+	  form {
+			display: inline-block;
+			width: calc(90%/2);
+			padding: 0 20px;
+			.form_heading {
+         display: block;
+				 font-size: 20px;
+			}
+			.field {
+				padding: 10px 0;
+			 	input,select{
+				padding: 8px 16px;
+				margin: 0;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				width: 80%;
+			}
+		}
+		}
+		form:first-child {
+			vertical-align: top;
+
+		}
+		form:not(:first-child) {
+			border-left: 2px solid black;
+			height: 100%;
+		}
 }
 
 
@@ -557,6 +613,7 @@ header {
 					top: 3em;
 					right: 2em;
 					.button {
+
 							 padding: 3px 16px;
 							 font-size: 14px;
 					 }

@@ -26,7 +26,7 @@ var populateJobs = function(res){
 			var status = "" ;
 			// if(aJob["rej"]===1){
 			// 	status = rejected;
-			// }	
+			// }
 			card.find(".date").text(date_ddmmyy(aJob["created"]));
 			card.find(".title").text(aJob["title"]);
 			card.find(".status").text(aJob["rej"]);
@@ -44,13 +44,14 @@ function date_ddmmyy (aDate){
 	var yyyy = today.getFullYear();
 	if(dd<10){
 		dd='0'+dd;
-	} 
+	}
 	if(mm<10){
 		mm='0'+mm;
-	} 
+	}
 	var today = dd+'/'+mm+'/'+yyyy;
 	return today;
 }
+
 function openMenu() {
     var x = document.getElementById("menu");
     if (x.className === "menu") {
@@ -58,4 +59,16 @@ function openMenu() {
     } else {
         x.className = "menu";
     }
+}
+
+function addNewKeyword() {
+
+  $("#keywords").append("<div class='label'>\
+    <label for='keyword"+($("#keywords .label").length+1)+"'>Keyword #"+($("#keywords .label").length+1)+"</label>\
+    </div>\
+    <div class='field'>\
+    <input type='text' id='keyword"+($("#keywords .label").length+1)+"' name='keyword"+($("#keywords .label").length+1)+"'>\
+    </div>"
+  );
+
 }
