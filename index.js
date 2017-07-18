@@ -6,6 +6,7 @@
 	var bodyParser = require("body-parser");
 	var program = require("commander");
 	var compression = require("compression");
+	var session = require("cookie-session");
 	var mode = "prod";
 	var env = "cloud";
 	var staticMiddlewareOptions = {
@@ -40,11 +41,11 @@
 
 
 	var app = express();
-	// app.use(session({
-	//   secret: 'some secret',
-	//   resave: false,
-	//   saveUninitialized: true,
-	// }));
+	app.use(session({
+	  secret: 'some secret',
+	  resave: false,
+	  saveUninitialized: true,
+	}));
 	app.use(bodyParser.urlencoded({ extended: true }))
 	app.use(compression()); //compressing payload on every request
 

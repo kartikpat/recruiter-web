@@ -15,8 +15,10 @@ module.exports = function(settings){
 	if(env=="local")
 		baseUrl= config["baseUrl_local"];
 	function isAuthenticated(req, res, next) {
-		//bypassing the auth for development
+
+		// for disabling authentication
 		return next()
+		//bypassing the auth for development
     // CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     // you can do this however you want with whatever variables you set up
     	if (req.session.authenticated)
@@ -24,12 +26,36 @@ module.exports = function(settings){
     // IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
     	res.redirect('/sign-in');
 	}
+	app.post("/sign-in", function(req, res){
+		var id = req.body.id || null;
+		if(!id){
+			res.status(422).json({
+				status: 'fail',
+				message: 'missing parameters'
+			});
+			return
+		}
 
+		req.session.authenticated = true;
+		return res.json({
+			status: "success"
+		});
+	})
 	app.get("/", isAuthenticated,function(req, res){
 		res.render("index", {
 			title: "IIM JOBS | Dashboard",
 			styles:  assetsMapper["index"]["styles"][mode],
 			scripts: assetsMapper["index"]["scripts"][mode],
+			baseUrl: baseUrl
+		});
+		return
+	});
+
+	app.get("/sign-in",function(req, res){
+		res.render("sign-in", {
+			title: "IIM JOBS | Sign in",
+			styles:  assetsMapper["sign-in"]["styles"][mode],
+			scripts: assetsMapper["sign-in"]["scripts"][mode],
 			baseUrl: baseUrl
 		});
 		return
@@ -54,4 +80,9 @@ module.exports = function(settings){
 		})
 		return
 	})
+
+	app.get("/logout", function(req,res){
+		req.session = null;
+		res.redirect("/");
+	});
 }

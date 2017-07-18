@@ -1,5 +1,6 @@
-var baseUrl = "http://localhost:8000";
-var recruiterID = 45058;
+//var baseUrl = "http://localhost:8000";
+var baseUrl = "http://13.126.92.102:8080"
+var recruiterID = localStorage.id;
 var profile = $(".user_profile");
 var tableRow = $(".jobs_content.prototype");
 $(document).ready(function(){
@@ -15,7 +16,8 @@ var populateProfile = function(res){
 		profile.find(".user_designation").text(data["desg"]);
 		profile.find(".extra_info .viewed").text( data["hits"]);
 		profile.find(".extra_info .last_login").text( new Date(data["d_login"]).toLocaleString());
-		profile.find(".profile_link").text(data["rurl"])
+		profile.find(".profile_link").text(data["rurl"]);
+		$('.user_profile_side .email').text(data["email"])
 	}
 }
 
@@ -30,7 +32,7 @@ var populateJobs = function(res){
 			card.find(".date").text(date_ddmmyy(aJob["created"]));
 			card.find(".title").text(aJob["title"]);
 			card.find(".status").text(aJob["rej"]);
-			card.find(".views").text(( aJob["views"])? aJob["views"]+" views ("+aJob["applied"]+ " applied)": "" )
+			card.find(".views").text(( aJob["views"])? aJob["views"]+" views ("+( (aJob["applied"])? aJob["applied"]+ ")": "0)" ): "" )
 			$('.jobs_container').append(card);
 		})
 	}
