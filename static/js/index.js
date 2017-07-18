@@ -1,5 +1,5 @@
 var baseUrl = "http://localhost:8000";
-var recruiterID = 45058;
+var recruiterID = localStorage.id;
 var profile = $(".user_profile");
 var tableRow = $(".jobs_content.prototype");
 $(document).ready(function(){
@@ -31,7 +31,7 @@ var populateJobs = function(res){
 			card.find(".date").text(date_ddmmyy(aJob["created"]));
 			card.find(".title").text(aJob["title"]);
 			card.find(".status").text(aJob["rej"]);
-			card.find(".views").text(( aJob["views"])? aJob["views"]+" views ("+aJob["applied"]+ " applied)": "" )
+			card.find(".views").text(( aJob["views"])? aJob["views"]+" views ("+( (aJob["applied"])? aJob["applied"]+ ")": "0)" ): "" )
 			$('.jobs_container').append(card);
 		})
 	}
