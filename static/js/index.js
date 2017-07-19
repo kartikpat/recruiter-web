@@ -53,24 +53,3 @@ function date_ddmmyy (aDate){
 	var today = dd+'/'+mm+'/'+yyyy;
 	return today;
 }
-
-function openMenu() {
-    var x = document.getElementById("menu");
-    if (x.className === "menu") {
-        x.className += " responsive";
-    } else {
-        x.className = "menu";
-    }
-}
-
-function addNewKeyword() {
-
-  $("#keywords").append("<div class='label'>\
-    <label for='keyword"+($("#keywords .label").length+1)+"'>Keyword #"+($("#keywords .label").length+1)+"</label>\
-    </div>\
-    <div class='field'>\
-    <input type='text' id='keyword"+($("#keywords .label").length+1)+"' name='keyword"+($("#keywords .label").length+1)+"'>\
-    </div>"
-  );
-
-}

@@ -12,19 +12,16 @@ figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
   margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline; }
+  padding: 0; }
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block; }
 
-body {
-  line-height: 1; }
+body, html {
+  min-height: 100%;
+  overflow: auto; }
 
 ol, ul {
   list-style: none; }
@@ -177,30 +174,24 @@ table {
   .jobs_panel div.jobs_container > div.jobs_content:nth-of-type(even) {
     background: #e9e9e9; }
 
-body {
-  position: relative; }
-
 .footer {
   width: 100%; }
   .footer nav {
     background: #1c1c1c; }
-    .footer nav .menu {
-      float: left; }
-      .footer nav .menu li.menu_link {
-        position: relative;
-        display: inline-block;
-        padding: 12px; }
-        .footer nav .menu li.menu_link a {
-          color: white;
-          font-size: 13px;
-          font-family: 'Droid Sans'; }
-          .footer nav .menu li.menu_link a:hover {
-            color: #56A0FF; }
+    .footer nav .menu li.menu_link {
+      position: relative;
+      display: inline-block;
+      padding: 12px; }
+      .footer nav .menu li.menu_link a {
+        color: white;
+        font-size: 13px;
+        font-family: 'Droid Sans'; }
+        .footer nav .menu li.menu_link a:hover {
+          color: #56A0FF; }
 
 header .top_banner {
   padding: 15px; }
   header .top_banner .logo {
-    float: left;
     display: inline-block; }
     header .top_banner .logo h3 {
       font-size: 30px;
@@ -394,6 +385,10 @@ span.extra_info {
   .login form:not(:first-child) {
     border-left: 2px solid black;
     height: 100%; }
+
+.error {
+  color: red;
+  font-size: 12px; }
 
 @media only screen and (min-width: 900px) and (max-width: 1024px) {
   .user_profile .image {

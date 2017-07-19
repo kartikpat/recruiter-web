@@ -10,7 +10,7 @@
  * @param  {boolean} async           set this to true when making synchronous request
  * @param  {object} scopeTest       reference object if any to be accessed in the callback
  */
-var postRequest = function(url,headers,data,successCallback,failCallback,processData,async,scopeTest){
+/*var postRequest = function(url,headers,data,successCallback,failCallback,processData,async,scopeTest){
     $.ajax({
         method: "POST",
         url: url,
@@ -25,8 +25,29 @@ var postRequest = function(url,headers,data,successCallback,failCallback,process
         processData: processData,
         success: successCallback,
         async: async
-    });   
-};
+    });
+};*/
+
+var postRequest = function(url,headers,data,processData,async,scopeTest) {
+    return new Promise(function(resolve,reject) {
+     $.ajax({
+        method: "POST",
+        url: url,
+        headers: {
+            appID: null,
+            version: null,
+            empID: null,
+            token: null
+        },
+        data: data,
+        scopeTest: scopeTest,
+        processData: processData,
+        success: resolve,
+        error: reject,
+        async: async
+    });
+ });
+}
 
 /**
  * Wrapper for ajax get request
@@ -39,7 +60,7 @@ var getRequest = function(url,parameters,callback, additionalParameters){
     var argumentsArray = Array.from(arguments);
     var fun = arguments.callee;
     var insert = true;
-   
+
       $.ajax({
         method: "GET",
         url: url,

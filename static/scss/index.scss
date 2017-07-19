@@ -13,18 +13,17 @@ menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
 	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-body {
-	line-height: 1;
+body,html {
+
+	min-height: 100%;
+	overflow: auto;
 }
 ol, ul {
 	list-style: none;
@@ -225,9 +224,7 @@ table {
 	}
 }
 
-body {
-	position: relative;
-}
+
 
 .footer {
 
@@ -236,7 +233,7 @@ body {
 		background:#1c1c1c;
 
 		.menu {
-			float:left;
+
 			li.menu_link {
 				position:relative;
 				display:inline-block;
@@ -262,7 +259,7 @@ header {
       padding:15px;
 
     .logo {
-      float:left;
+      
       display:inline-block;
       h3 {
         font-size:30px;
@@ -534,6 +531,11 @@ span.extra_info{
 			border-left: 2px solid black;
 			height: 100%;
 		}
+}
+
+.error {
+	color: red;
+	font-size: 12px;
 }
 
 

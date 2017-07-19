@@ -1,0 +1,7 @@
+.main_container {
+  padding: 50px; }
+  .main_container .filters {
+    display: inline-block;
+    width: 30%; }
+  .main_container .jobs {
+    flex: 1; }

@@ -15,8 +15,6 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/request.js",
-				"static/js/vendor/moment.min.js",
-				"static/js/vendor/fullcalendar.js",
 				"static/js/index.js"
 			],
 			"prod" : [
@@ -38,17 +36,18 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/index.js"
+				"static/js/request.js",
+				"static/js/postJob.js"
 			],
 			"prod" : [
-				"static/build/js/index.min.js"
+				"static/build/js/post-job.min.js"
 			]
 		}
 	},
 	"login": {
 		"styles": {
 			"debug" : [
-        "static/css/index.css"
+              "static/css/index.css"
 
 
 			],
@@ -86,6 +85,31 @@
 			"prod" : [
 				"static/build/js/sign-in.min.js"
 			]
-		}	
+		}
+	},
+	"job-posting": {
+		"styles": {
+			"debug" : [
+				"static/css/index.css",
+            	"static/css/job-posting.css"
+
+
+			],
+			"prod": [
+				"static/build/css/job-posting.min.css"
+
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/job-posting.js"
+			],
+			"prod" : [
+				"static/build/js/job-posting.min.js"
+			]
+		}
 	}
+
 }

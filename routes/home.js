@@ -71,6 +71,16 @@ module.exports = function(settings){
 		return
 	})
 
+	app.get("/job-posting", function(req, res){
+		res.render("job-posting",{
+			title: "IIM JOBS | Post job",
+			styles:  assetsMapper["job-posting"]["styles"][mode],
+			scripts: assetsMapper["job-posting"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
 	app.get("/login", function(req, res){
 		res.render("login",{
 			title: "IIM JOBS | Login",
