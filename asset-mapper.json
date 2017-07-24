@@ -90,8 +90,10 @@
 	"job-posting": {
 		"styles": {
 			"debug" : [
-				"static/css/index.css",
-            	"static/css/job-posting.css"
+				"static/css/header.css",
+            	"static/css/job-posting.css",
+				"static/css/footer.css",
+				"static/css/buttons.css"
 
 
 			],

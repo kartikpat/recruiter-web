@@ -1,11 +1,226 @@
+h2 {
+    margin: 20px 0 0 20px;
+
+}
+
+
+* {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+}
+
 .main_container {
 
-    padding: 50px;
+    padding: 30px;
     .filters {
         display: inline-block;
-        width: 30%;
+        width: 20%;
+        padding-right:  10px;
+        border-right: 2px dotted #d8d8d8;
+        .menu {
+            padding: 10px 0;
+            border-bottom: 1px solid #d8d8d8;
+            position: relative;
+            span {
+                font-size: 14px;
+            }
+            button {
+                position: absolute;
+                right: 0;
+            }
+            .field {
+                margin: 10px 0 0 0;
+                width: 100%;
+                input,select {
+                        padding: 8px 16px;
+                        margin: 8px 0;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                        width: 100%;
+
+                }
+                input[type="checkbox"] {
+                        display: inline-block;
+                        width: auto;
+                        span {
+                            font-size: 12px;
+                        }
+                }
+                select.half {
+                        width: calc(96%/2);
+                        padding: 4px 8px;
+                        option {
+                            font-size: 12px;
+                        }
+                }
+            }
+        }
     }
+
     .jobs {
-        flex: 1;
+        display: inline-block;
+        width: 79%;
+        vertical-align: top;
+        padding: 10px 0 0 10px;
+        position: relative;
+
+        .tabs {
+            width: auto;
+            display: inline-block;
+            margin-left: 20px;
+            .menu{
+                list-style: none;
+                padding: 0;
+                display: inline-block;
+                li {
+                    display: inline-block;
+                    padding: 6px 12px;
+                    border: 2px solid #d8d8d8;
+                    a{
+                        text-decoration: none;
+                        color: #000;
+                    }
+                }
+            }
+        }
+        .page_number {
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            top: 26px;
+            min-height: 34px;
+            line-height: 34px;
+            padding: 0 10px;
+
+        }
+        .calendar {
+            min-height: 40px;
+            line-height: 40px;
+            padding-left: 20px;
+            select {
+                    padding: 8px 16px;
+                    margin: 8px 0;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    width: auto;
+            }
+        }
+        .jobs_panel {
+    	   width: 100%;
+    		 margin: 40px auto;
+    		 min-height: 300px;
+
+    		.jobs_header {
+    		    width: auto;
+    		    margin: 0 auto;
+
+    	      span {
+    					display: inline-block;
+    					padding: 3px;
+    					margin: 3px;
+    					overflow: auto;
+    					font-size: 16px;
+    					text-align: left;
+    					}
+                        .name {
+                            width: 16%;
+                        }
+                        .organization {
+                            width: 23%;
+                        }
+                        .institute {
+                            width: 26%;
+                        }
+                        .more {
+                            width: 23%;
+                        }
+                        .checkbox {
+                            width: 3%;
+                        }
+    	   }
+
+    		.jobs_content {
+
+               height: 340px;
+    	     .content {
+    		  display: inline-block;
+    	      padding: 3px;
+    	      margin: 3px;
+    	      overflow: hidden;
+    			  font-size: 12px;
+                  vertical-align: top;
+
+
+                  .info {
+                      padding: 10px 0;
+                      .important_info {
+                          font-size: 12px;
+                          color: #000000;
+                          &.name {
+                              font-size: 16px;
+                          }
+
+                      }
+                      .extra_info {
+                          color: #727272;
+                      }
+
+                      .icon {
+                          display: block;
+                          font-size: 16px;
+                          color: #424242;
+                          padding: 2px;
+                          span{
+                              font-size: 12px;
+                              padding: 2px;
+                          }
+                          &:hover {
+                              color: green;
+                          }
+                      }
+                  }
+
+    	    }
+            .content.name {
+                width: 16%;
+                img{
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 25px;
+                    max-width: 100%;
+                    max-height: 100%;
+                }
+            }
+            .content.organization {
+                width: 23%;
+            }
+            .content.institute {
+                width: 26%;
+            }
+            .content.more {
+                width: 23%;
+            }
+            .content.checkbox {
+                width: 3%;
+                max-width: 30px;
+            }
+    	  }
+
+    	div.jobs_container >div.jobs_content:nth-of-type(even){
+    		background:#fafafa;
+    	}
+    }
+    }
+}
+
+.vertical_outside {
+    display: inline-block;
+    height: 100%;
+    .vertical_top {
+        height: 16px;
+    }
+    .vertical_middle {
+        border-left: 1px solid #d8d8d8;
+        height: 90%;
     }
 }

@@ -20,26 +20,8 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-body,html {
 
-	min-height: 100%;
-	overflow: auto;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
+
 * , *:before, *:after{
      box-sizing:border-box;
      -moz-box-sizing:border-box;
@@ -226,190 +208,7 @@ table {
 
 
 
-.footer {
 
-	width: 100%;
-	nav {
-		background:#1c1c1c;
-
-		.menu {
-
-			li.menu_link {
-				position:relative;
-				display:inline-block;
-				padding:12px;
-
-				a {
-					color:white;
-					font-size:13px;
-					font-family: 'Droid Sans';
-          &:hover {
-						color: #56A0FF;
-					}
-				}
-
-			}
-		}
-  }
-}
-
-header {
-
-  .top_banner {
-      padding:15px;
-
-    .logo {
-      
-      display:inline-block;
-      h3 {
-        font-size:30px;
-        line-height:20px;
-        font-family:'Comfortaa';
-      }
-      span {
-        font-size: 13px;
-        font-family:'Comfortaa';
-        float:right;
-      }
-    }
-
-		.user_profile_side  {
-			float: right;
-      display: inline-block;
-			.dropdown {
-				position: relative;
-				list-style: none;
-				 > a {
-						color: #000000;
-						font-size: 14px;
-
-					}
-					.options {
-				    position: absolute;
-				    top: 104;
-				    background: #fff;
-				    min-width: 200px;
-				    right: 0	;
-						box-shadow: 5px 5px 10px rgba(0, 0, 0, 1);
-
-						z-index: 1;
-							.seperator {
-								border: 0;
-								height: 0;
-								border-top: 1px solid rgba(0, 0, 0, 0.1);
-								border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-								width: 90%;
-								margin: 0 auto;
-							}
-						li {
-
-							padding: 6px 10px;
-							text-align: left;
-							a {
-								color: #666;
-
-								font-size: 14px;
-								&:hover {
-									color: #56A0FF;
-								}
-							}
-						}
-				}
-				&:hover ul.options {
-           display: block;
-
-				}
-			}
-
-		}
-  }
-
-
-  nav {
-    background:#1c1c1c;
-
-    .menu {
-      float:left;
-			li.menu_link:first-child {
-				display: none;
-			}
-      li.menu_link {
-
-        display:inline-block;
-        padding: 12px;
-        border-bottom:2px solid transparent;
-
-
-        > a {
-          color:white;
-          text-decoration: none;
-          font-size:14px;
-          font-family: 'Droid Sans';
-
-        }
-        &:hover {
-          background:#7c7c7c;
-          border-bottom:2px solid #fff;
-        }
-      }
-			li.dropdown {
-				position:relative;
-				ul.options {
-					position: absolute;
-					top: 102%;
-					background: #fff;
-					min-width: 150px;
-					left: 0;
-					box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
-
-					z-index: 1;
-					li {
-
-						padding: 6px 10px;
-						text-align: left;
-						a {
-
-							font-size: 14px;
-							color: black;
-              &:hover {
-								color: #56A0FF  ;
-							}
-						}
-
-					}
-				}
-				&:hover > ul {
-					display: block;
-				}
-			}
-
-    }
-
-    .search_container {
-      float:right;
-      padding:6px;
-			position: relative;
-			&:after {
-				font-family: 'FontAwesome';
-				content: "\f002";
-				color: gray;
-				position: absolute;
-				top: 12px;
-				right: 10px;
-				font-size: 16px;
-			}
-
-      input {
-        height: 30px;
-        border: 0;
-        margin: 0;
-        padding: 0 12px;
-        border-radius: 5px;
-        width: 250px;
-      }
-    }
-  }
-}
 
 .job_posting{
 	display: flex;
@@ -560,38 +359,7 @@ span.extra_info{
 
 
 }
-@media only screen and (min-width : 768px) and (max-width : 1024px) {
 
-header {
-
-	nav {
-
-		.menu {
-
-			li.menu_link {
-
-				 padding:12px 8px;
-				  > a {
-					font-size:12px;
-				}
-
-			}
-		}
-
-		.search_container {
-
-
-			input {
-
-        width: 180px;
-      }
-
-
-
-		}
-	}
-}
-}
 @media only screen and (min-width : 769px) and (max-width : 899px) {
 	.user_profile {
 
@@ -669,53 +437,7 @@ header {
 			}
 		}
 
-		.footer {
-			nav {
-				.menu {
-					li.menu_link {
-						padding:10px;
-						a {
-							font-size:12px;
-						}
-					}
-				}
-		  }
-	 }
-
-	 header {
-
-	 	nav {
-
-	 		.menu {
-
-				li.menu_link:first-child {
-					display: inline-block;
-				}
-
-	 			li.menu_link {
-					display: none;
-					 padding:12px;
-
-	 			}
-		}
-
-			.search_container {
+		
 
 
-				input {
-
-	        width: 180px;
-	      }
-
-			}
-			.menu.responsive {
-
-				li.menu_link:not(:first-child) {
-					 display: block;
-					 padding:12px;
-					 border-bottom: 1px solid gray;
-				 }
-			}
-	 	}
-	 }
 }
