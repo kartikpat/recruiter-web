@@ -6,36 +6,216 @@
 
 <div class="main_container">
 
-    <div class="filters">
-        <div class="menu search_keyword ">
-            <span style="display:inline-block"></span>
-            <button class="button small"><i class="fa fa-search" aria-hidden="true"></i></button>
+    <div class="filters" id="filters">
+        <div class=" search_keyword ">
             <div class="field">
-                <input type="text" id="searchByKeyword" placeholder="Search By Keyword....">
+                <input class="search" type="text" name="search" placeholder="Search..">
+                <button class="button small"><i class="fa fa-search" aria-hidden="true"></i></button>
             </div>
         </div>
 
-        <div class="menu industry">
+    <div class="menu industry">
             <span>Industry</span>
 
-            <div class="scroll">
+        <div class="scroll">
                 <div class="field">
-                    <input type="checkbox">
+
+                   <div class="tags" data-attribute="menu_industry">
+                    <input type="checkbox" value="24" name="industry[]">
                     <span>Accounting</span>
+                   </div>
+
+                   <div>
+                    <button class="button link open_modal" id="myBtn" data-attribute="menu_industry">View More</button>
+                 </div>
+
+                    <!-- The Modal -->
+                    <div  class="modal" data-attribute="menu_industry">
+
+                      <!-- Modal content -->
+                      <div class="modal-content">
+                        <span class="close close_modal" data-attribute="menu_industry">&times;</span>
+                      <div class="row">
+                        <div class="column left" data-attribute="menu_industry">
+
+                        <div>
+                         <input type="checkbox" value="25" name="industry[]">
+                         <span>Advertising / PR / Events</span>
+                        </div>
+                        <div>
+                         <input type="checkbox" value="1" name="industry[]">
+                         <span>Auto / Auto Ancillary</span>
+                       </div>
+                        <div>
+                         <input type="checkbox" value="2" name="industry[]">
+                         <span>Banking / Financial Services</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="3" name="industry[]">
+                         <span>BPO / ITeS</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="26" name="industry[]">
+                         <span>Chemicals</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="5" name="industry[]">
+                         <span>Construction / Engineering / Cement</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="4" name="industry[]">
+                         <span>Consulting</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="6" name="industry[]">
+                         <span>Education / Training</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="27" name="industry[]">
+                         <span>Facility Management</span>
+                       </div>
+
+
+                        <div>
+                         <input type="checkbox" value="7" name="industry[]">
+                         <span>FMCG / Durables / F&B</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="8" name="industry[]">
+                         <span>Healthcare / Medical / Hospital</span>
+
+                       </div>
+                     </div>
+                     <div class="column center">
+                       <div>
+                         <input type="checkbox" value="10" name="industry[]">
+                         <span>Industrial Products / Heavy Machinery</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="11" name="industry[]">
+                         <span>Infrastructure / Oil & Gas / Power / Energy</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="12" name="industry[]">
+                         <span>Insurance</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="13" name="industry[]">
+                         <span>Internet / Online / eCommerce</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="14" name="industry[]">
+                         <span>IT</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="15" name="industry[]">
+                         <span>KPO / Research / Analytics</span>
+                       </div>
+
+                          <div>
+                         <input type="checkbox" value="16" name="industry[]">
+                         <span>Legal</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="17" name="industry[]">
+                         <span>Manufacturing</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="18" name="industry[]">
+                         <span>Media / Entertainment</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="19" name="industry[]">
+                         <span>Mining / Steel / Shipping</span>
+                       </div>
+                     </div>
+                     <div class="column">
+                       <div>
+                         <input type="checkbox" value="20" name="industry[]">
+                         <span>NGO / Social Service</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="28" name="industry[]">
+                         <span>Pharma / Biotech</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="29" name="industry[]">
+                         <span>Real Estate</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="30" name="industry[]">
+                         <span>Recruitment / Staffing</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="22" name="industry[]">
+                         <span>Retail</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="31" name="industry[]">
+                         <span>Semiconductors / Electronics</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="23" name="industry[]">
+                         <span>Telecom</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="32" name="industry[]">
+                         <span>Textile / Garments / Accessories / Fashion</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="9" name="industry[]">
+                         <span>Travel Hospitality</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="34" name="industry[]">
+                         <span>Agriculture & Dairy</span>
+                       </div>
+                       <div>
+                         <input type="checkbox" value="33" name="industry[]">
+                         <span>Other</span>
+                       </div>
+                        </div>
+                      </div>
+                      <div>
+<button class="button small submit_filters">Submit</button>
+</div>
+                    </div>
+
                 </div>
             </div>
         </div>
-
+       </div>
         <div class="menu functional_area">
             <span>Functional Area</span>
 
             <div class="scroll">
                 <div class="field">
-                    <input type="checkbox">
-                    <span>Accounting</span>
-                </div>
+                  <div>
+                  <div>
+                   <input type="checkbox">
+                   <span>functional</span>
+                  </div>
+
+                <div>
+                <button class="button link open_modal" data-attribute="menu_functional_area">View More</button>
+              </div>
+            </div>
+
+            <div  class="modal" data-attribute="menu_functional_area">
+
+              <!-- Modal content -->
+              <div class="modal-content">
+                <span class="close close_modal" data-attribute="menu_functional_area">&times;</span>
+                <div>
+                <input type="checkbox">
+                <span>functional</span>
+               </div>
+              </div>
+
+            </div>
             </div>
         </div>
+      </div>
 
         <div class="menu current_location">
             <span>Current Location</span>
@@ -75,10 +255,10 @@
 
             <div class="field">
                 <select class="half">
-                    <option value="">Min Exp</option>
+                    <option value="">Min</option>
                 </select>
                 <select class="half">
-                    <option value="">Max Exp</option>
+                    <option value="">Max</option>
                 </select>
             </div>
         </div>
@@ -88,10 +268,10 @@
 
             <div class="field">
                 <select class="half">
-                    <option value="">Min Exp</option>
+                    <option value="">Min</option>
                 </select>
                 <select class="half">
-                    <option value="">Max Exp</option>
+                    <option value="">Max</option>
                 </select>
             </div>
         </div>
@@ -101,10 +281,10 @@
 
             <div class="field">
                 <select class="half">
-                    <option value="">Min Salary</option>
+                    <option value="">Min</option>
                 </select>
                 <select class="half">
-                    <option value="">Max Salary</option>
+                    <option value="">Max</option>
                 </select>
             </div>
         </div>
@@ -114,10 +294,10 @@
 
             <div class="field">
                 <select class="half">
-                    <option value="">Min Age</option>
+                    <option value="">Min</option>
                 </select>
                 <select class="half">
-                    <option value="">Max Age</option>
+                    <option value="">Max</option>
                 </select>
             </div>
         </div>
@@ -126,19 +306,24 @@
             <span>Gender</span>
 
             <div class="field">
-                <select>
-                    <option value="">Select Gender</option>
-                </select>
-
+              <div>
+              <input type="radio" name="gender" value="male"> Male<br>
+            </div>
+            <div>
+              <input type="radio" name="gender" value="female"> Female<br>
+            </div>
+            <div>
+              <input type="radio" name="gender" value="other"> Not Mentioned
+            </div>
             </div>
         </div>
 
-        <div class="menu notice_period ">
+        <div class="menu notice_period">
             <span>Notice Period</span>
 
             <div class="field">
                 <select>
-                    <option value="">Select Notice Period</option>
+                    <option value="">Select</option>
                 </select>
 
             </div>
@@ -149,7 +334,7 @@
 
             <div class="field">
                 <select>
-                    <option value="">Select Application Date</option>
+                    <option value="">Select</option>
                 </select>
 
             </div>
@@ -170,9 +355,10 @@
             <span>Work Permit For USA</span>
 
             <div class="field">
-                <select>
-                    <option value="">Select Work Permit For USA</option>
-                </select>
+
+              <input type="radio" name="gender" value="male"> Yes
+              <input type="radio" name="gender" value="female"> No
+
 
             </div>
         </div>
@@ -181,9 +367,9 @@
             <span>Handled a Team?</span>
 
             <div class="field">
-                <select>
-                    <option value="">--Select--</option>
-                </select>
+
+              <input type="radio" name="gender" value="male"> Yes
+              <input type="radio" name="gender" value="female"> No
 
             </div>
         </div>
@@ -192,19 +378,22 @@
             <span>Willing to relocate?</span>
 
             <div class="field">
-                <select>
-                    <option value="">--Select--</option>
-                </select>
+
+              <input type="radio" name="gender" value="male"> Yes
+              <input type="radio" name="gender" value="female"> No
+
             </div>
+
         </div>
 
         <div class="menu">
             <span>Differently-abled?</span>
 
             <div class="field">
-                <select>
-                    <option value="">--Select--</option>
-                </select>
+
+              <input type="radio" name="gender" value="male"> Yes
+              <input type="radio" name="gender" value="female"> No
+
             </div>
         </div>
 
@@ -220,7 +409,7 @@
         </div>
 
         <div class="">
-           <button class="button small">Download Resumes</button>
+           <button class="button small ">Download Resumes</button>
        </div>
     </div>
 
@@ -230,15 +419,15 @@
         <div class="tabs">
             <span>View By:</span>
             <ul class="menu">
-                <li><a href="">All<span>22</span></a></li>
-                <li><a href="">Unread<span>22</span></a></li>
-                <li><a href="">Magic Sort<span>22</span></a></li>
-                <li><a href="">Shortlisted<span>22</span></a></li>
-                <li><a href="">Rejected<span>22</span></a></li>
-                <li><a href="">Saved<span>22</span></a></li>
+                <li><a href="javascript:void(0)" class="highlight stat" data-attribute="">All<span class="status status_all highlight">22</span></a></li>
+                <li><a href="javascript:void(0)" class="stat" data-attribute="-1">Unread<span class="status status_unread">22</span></a></li>
+                <li><a href="javascript:void(0)" class="stat" data-attribute="magicsort">Magic Sort<span class="status status_sort">22</span></a></li>
+                <li><a href="javascript:void(0)" class="stat" data-attribute="1">Shortlisted<span class="status status_shortlisted">22</span></a></li>
+                <li><a href="javascript:void(0)" class="stat" data-attribute="2">Rejected<span class="status status_rejected">22</span></a></li>
+                <li><a href="javascript:void(0)" class="stat" data-attribute="3">Saved<span class="status status_saved">22</span></a></li>
             </ul>
         </div>
-        <div class="page_number box_shadow">
+        <div class="page_number">
             <span>1-63 of 63</span>
         </div>
         <div class="calendar box_shadow">
@@ -250,90 +439,85 @@
         </div>
 
         <div role="tabpanel" class="jobs_panel">
-
-          <div class="jobs_container">
+        <div class="jobs_container">
             <div class="jobs_header">
               <span class="checkbox"><input type="checkbox"></span>
-              <span class="name">Name</span>
-              <span class="organization" >Organization, Title</span>
-              <span class="institute">Institute</span>
-              <span class="more">More</span>
+              <span class="header_name">Name</span>
+              <span class="header_organization" >Organization, Title</span>
+              <span class="header_institute">Institute</span>
+              <span class="header_more">More</span>
             </div>
-
-          <div class="jobs_content">
-              <span class="content checkbox">
-                  <input type="checkbox">
-              </span>
-            <span class="content name">
-                <img class="user_img" src="../static/img/tree.jpg">
-                <div class="info">
-                    <div class="important_info name">Nitish</div>
-                    <div class="important_info">Experience: 3y 6m</div>
-                    <div class="important_info">Location: Delhi</div>
-                    <div class="important_info">Immediately Available</div>
-
-                </div>
-
-                <div class="info">
-                    <div class="extra_info">Male, 29 years</div>
-                    <div class="extra_info">Applied: 15-05-2016</div>
-                </div>
-            </span>
-            <div class="vertical_outside">
-                <div class="vertical_top"></div>
-                <div class="vertical_middle"></div>
-                <div class="vertical_bottom"></div>
+            <div class="jobs_wrapper">
             </div>
-            <span class="content organization">
-                <div class="info">
-                    <div class="important_info name">Axis Bank</div>
-                    <div class="important_info">Software Developer</div>
-                    <div class="extra_info">Jun - 2015 to Present </div>
-                </div>
-            </span>
-            <div class="vertical_outside">
-                <div class="vertical_top"></div>
-                <div class="vertical_middle"></div>
-                <div class="vertical_bottom"></div>
-            </div>
-            <span class="content institute">
-                <div class="info">
-                    <div class="important_info name">Birla Institute of Technology and Science (BITS), Pilani</div>
-                    <div class="extra_info">2008 - 2012</div>
-                    <div class="extra_info">B Tech / BE (Full Time)</div>
-                </div>
-
-        </span>
-        <div class="vertical_outside">
-            <div class="vertical_top"></div>
-            <div class="vertical_middle"></div>
-            <div class="vertical_bottom"></div>
-        </div>
-            <span class="content more">
-
-                <div class="info">
-                    <a href="" class="icon"><i class="fa fa-check-square-o" aria-hidden="true"></i><span>Shortlist</span></a>
-                    <a href="" class="icon"><i class="fa fa-ban" aria-hidden="true"></i><span>Reject</span></a>
-                    <a href="" class="icon"><i class="fa fa-floppy-o" aria-hidden="true"></i><span>Save for future use</span></a>
-                    <a href="" class="icon"><i class="fa fa-eye" aria-hidden="true"></i><span>View Resume</span></a>
-                    <a href="" class="icon"><i class="fa fa-download" aria-hidden="true"></i><span>Download Resume</span></a>
-                    <a href="" class="icon"><i class="fa fa-list-alt" aria-hidden="true"></i><span>Cover Letter</span></a>
-                    <a href="" class="icon"><i class="fa fa-comment" aria-hidden="true"></i><span>Comment</span></a>
-                    <a href="" class="icon"><i class="fa fa-mobile" aria-hidden="true"></i><span>Contact information</span></a>
-                    <a href="" class="icon"><i class="fa fa-tags" aria-hidden="true"></i><span>Tags</span></a>
-                </div>
-                <div class="info">
-                    <a href="" class="icon"><i class="fa fa-whatsapp" aria-hidden="true"></i><span>chat with<span class="user_name">kartik</span></span></a>
-                    <a href="" class="icon"><i class="fa fa-calendar" aria-hidden="true"></i><span>Send Interview Invite</span></a>
-                </div>
-            </span>
-
-          </div>
         </div>
        </div>
     </div>
-
-
 </div>
 
+<div class="info organization prototype hidden">
+    <div class="important_info name">Axis Bank</div>
+    <div class="important_info designation">Software Developer</div>
+    <div class="extra_info experience">Jun - 2015 to Present </div>
+</div>
+<div class="info institute prototype hidden">
+    <div class="important_info name">Birla Institute of Technology and Science (BITS), Pilani</div>
+    <div class="extra_info "><span class="start_duration">2008</span> - <span class="end_duration">2012</span></div>
+    <div class="extra_info degree">B Tech / BE (Full Time)</div>
+</div>
+
+  <div class="jobs_content prototype hidden">
+    <span class="content checkbox">
+      <input type="checkbox">
+    </span>
+    <span class="content content_name">
+      <img class="user_img" src="../static/img/tree.jpg">
+      <div class="info">
+          <div class="important_info user_name">Nitish</div>
+          <div class="important_info"><span>Experience: </span><span class="user_experience">3y 6m</span></div>
+          <div class="important_info"><span>Location: </span><span class="current_location">Delhi</span></div>
+          <div class="important_info">Immediately Available</div>
+      </div>
+      <div class="info">
+          <div class="extra_info"><span class="user_sex">Male </span>, <span class="user_age">29 </span><span> years</span></div>
+          <div class="extra_info"><span>Applied: </span><span class="applied_date">15-05-2016</span></div>
+      </div>
+    </span>
+  <div class="vertical_outside">
+      <div class="vertical_top"></div>
+      <div class="vertical_middle"></div>
+      <div class="vertical_bottom"></div>
+  </div>
+  <span class="content content_organization">
+  </span>
+    <div class="vertical_outside">
+        <div class="vertical_top"></div>
+        <div class="vertical_middle"></div>
+        <div class="vertical_bottom"></div>
+    </div>
+    <span class="content content_institute">
+
+    </span>
+    <div class="vertical_outside">
+        <div class="vertical_top"></div>
+        <div class="vertical_middle"></div>
+        <div class="vertical_bottom"></div>
+    </div>
+    <span class="content content_more">
+        <div class="info">
+            <a href="" class="icon"><i class="fa fa-check-square-o" aria-hidden="true"></i><span>Shortlist</span></a>
+            <a href="" class="icon"><i class="fa fa-ban" aria-hidden="true"></i><span>Reject</span></a>
+            <a href="" class="icon"><i class="fa fa-floppy-o" aria-hidden="true"></i><span>Save for future use</span></a>
+            <a href="" class="icon"><i class="fa fa-eye" aria-hidden="true"></i><span>View Resume</span></a>
+            <a href="" class="icon"><i class="fa fa-download" aria-hidden="true"></i><span>Download Resume</span></a>
+            <a href="" class="icon"><i class="fa fa-list-alt" aria-hidden="true"></i><span>Cover Letter</span></a>
+            <a href="" class="icon"><i class="fa fa-comment" aria-hidden="true"></i><span>Comment</span></a>
+            <a href="" class="icon"><i class="fa fa-mobile" aria-hidden="true"></i><span>Contact information</span></a>
+            <a href="" class="icon"><i class="fa fa-tags" aria-hidden="true"></i><span>Tags</span></a>
+        </div>
+        <div class="info">
+            <a href="" class="icon"><i class="fa fa-whatsapp" aria-hidden="true"></i><span>chat with<span class="user_name">kartik</span></span></a>
+            <a href="" class="icon"><i class="fa fa-calendar" aria-hidden="true"></i><span>Send Interview Invite</span></a>
+        </div>
+    </span>
+</div>
 {{> footer}}
