@@ -12,7 +12,29 @@
 				 &:hover {
 					 background-color: #e7e7e7;
 				 }
-			 }
-.button.small {
+				 &:focus {
+					 outline: none;
+				 }
+
+&.small {
     padding: 4px 8px;
+}
+&.x-small {
+    padding: 0 4px;
+		font-size: 14px;
+}
+
+&.link {
+	border: none;
+	padding: 0;
+  color: #888;
+	font-size: x-small;
+	&:hover {
+		color: blue;
+    background-color: #ffffff;
+	}
+	&:focus {
+		outline: none;
+	 }
+ }
 }

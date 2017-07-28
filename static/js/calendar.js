@@ -1,6 +1,20 @@
 $(document).ready(function() {
     // page is now ready, initialize the calendar...
 
+    var modal = document.getElementById('myModal');
+    var span = document.getElementsByClassName("close")[0];
+
+    span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
     $('#calendar').fullCalendar({
 
       header: {
@@ -15,7 +29,8 @@ $(document).ready(function() {
 
       selectable: {
           month: false,
-          agendaDay: true
+          agendaDay: true,
+          timelineDay: true
       },
 
       selectHelper: true,
@@ -36,17 +51,20 @@ $(document).ready(function() {
       select: function(start,end,jsEvent,view) {
 
           if(view.name === "agendaDay") {
-            $('#createEventModal #apptStartTime').val(start);
-            $('#createEventModal #apptEndTime').val(end);
-                  $('#createEventModal').modal('show');
+
+                  endtime = $.fullCalendar.formatDate(end,'h:mm tt');
+                  starttime = $.fullCalendar.formatDate(start,'ddd, MMM d, h:mm tt');
+                  var mywhen = starttime + ' - ' + endtime;
+                  $('#myModal #start').val(start);
+                  $('#myModal #end').val(end);
+                  $('#myModal #when').text(mywhen);
+                  modal.style.display = "block";
                 }
               },
 
       //Activating modal for 'when an event is clicked'
       eventClick: function (event) {
-          $('#modalTitle').html(event.title);
-          $('#modalBody').html(event.description);
-          $('#fullCalModal').modal();
+
       },
 
       customButtons: {
@@ -85,18 +103,23 @@ $(document).ready(function() {
                     $('.fc-changeViewFromDayToMonth-button').show();
                     $('.fc-next-button,.fc-month-button,.fc-prev-button').hide();
                 }
-}
+},
+
+        googleCalendarApiKey: 'AIzaSyDhHM_GBdETwWU5Fpgmxq5wepGkONWSZIQ',
+        events: {
+            googleCalendarId: 'kartik@iimjobs.com'
+        }
 
  });
                           function doSubmit(){
-                          $("#createEventModal").modal('hide');
+                          modal.style.display = "none";
                           $("#calendar").fullCalendar('renderEvent',
                               {
-                                  title: $('#eventName').val(),
-                                  start: new Date($('#apptStartTime').val()),
-                                  end: new Date($('#apptEndTime').val()),
+                                  title: $('#title').val(),
+                                  start: new Date($('#start').val()),
+                                  end: new Date($('#end').val()),
                               },
-                              true);
+                              [,true]);
                           }
 
 

@@ -1,6 +1,6 @@
 //var baseUrl = "http://localhost:8000";
-var baseUrl = "http://13.126.92.102:8080"
-var recruiterID = localStorage.id;
+var baseUrl = "http://13.126.92.102:8000"
+var recruiterID = 45058;
 var profile = $(".user_profile");
 var tableRow = $(".jobs_content.prototype");
 $(document).ready(function(){
@@ -14,7 +14,7 @@ var populateProfile = function(res){
 		profile.find(".edit_profile img").attr('src', data["img_link"]);
 		profile.find(".user_name").text(data["name"]);
 		profile.find(".user_designation").text(data["desg"]);
-		profile.find(".extra_info .viewed").text( data["hits"]);
+		profile.find(".extra_info .viewed").text(data["hits"]);
 		profile.find(".extra_info .last_login").text( new Date(data["d_login"]).toLocaleString());
 		profile.find(".profile_link").text(data["rurl"]);
 		$('.user_profile_side .email').text(data["email"])

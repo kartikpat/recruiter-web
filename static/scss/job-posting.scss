@@ -3,40 +3,125 @@ h2 {
 
 }
 
+.highlight {
+  background-color: red;
+  color: #ffffff !important;
+}
+
 
 * {
     font-family: 'Open Sans', sans-serif;
     font-weight: normal;
 }
 
+.hidden {
+  display: none;
+}
+
 .main_container {
 
     padding: 30px;
+
     .filters {
         display: inline-block;
         width: 20%;
         padding-right:  10px;
         border-right: 2px dotted #d8d8d8;
-        .menu {
-            padding: 10px 0;
-            border-bottom: 1px solid #d8d8d8;
-            position: relative;
-            span {
-                font-size: 14px;
-            }
-            button {
-                position: absolute;
-                right: 0;
-            }
-            .field {
-                margin: 10px 0 0 0;
+        height: auto;
+
+
+        .search_keyword {
+           .field {
+                margin: 5px 0 0 0;
                 width: 100%;
+
+                input {
+                    width: 80%;
+                    box-sizing: border-box;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    padding:  5px 16px;
+
+                    &:focus {
+
+                                outline: none;
+                        }
+                }
+
+             }
+        }
+        .menu {
+            padding: 0;
+            border-bottom: 1px solid #d8d8d8;
+
+            > span {
+                font-size: 11px;
+            }
+
+            .field {
+                margin: 0 auto;
+                width: 86%;
+                font-size: 0.9em;
+                padding-bottom: 5px;
+
+                .modal {
+                  display: none; /* Hidden by default */
+                  position: fixed; /* Stay in place */
+                  z-index: 1; /* Sit on top */
+                  left: 0;
+                  top: 0;
+                  min-width: 100%; /* Full width */
+                  overflow: auto; /* Enable scroll if needed */
+
+
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 200px auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    height: 24em;
+    overflow: auto;
+    .row {
+      padding: 20px;
+      font-size: 11px;
+      .column {
+        display: inline-block;
+        vertical-align: top;
+        width: 30%;
+        &.center {
+          margin: 0 3%;
+        }
+      }
+    }
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    &:hover, &:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+}
+}
+
+
+}
+
+
                 input,select {
-                        padding: 8px 16px;
-                        margin: 8px 0;
+                        padding: 4px 8px;
+                        margin: 1px 0 6px 0;
                         border: 1px solid #ccc;
                         border-radius: 4px;
-                        width: 100%;
+                        width: 60%;
+
 
                 }
                 input[type="checkbox"] {
@@ -46,13 +131,19 @@ h2 {
                             font-size: 12px;
                         }
                 }
+                input[type="radio"] {
+                        display: inline-block;
+                        width: auto;
+
+                }
                 select.half {
                         width: calc(96%/2);
                         padding: 4px 8px;
                         option {
                             font-size: 12px;
                         }
-                }
+                     }
+
             }
         }
     }
@@ -74,11 +165,20 @@ h2 {
                 display: inline-block;
                 li {
                     display: inline-block;
-                    padding: 6px 12px;
-                    border: 2px solid #d8d8d8;
+                      border: 1px solid #d8d8d8;
+                      padding: 2px 0;
                     a{
                         text-decoration: none;
                         color: #000;
+                        padding: 2px 0 2px 6px;
+
+                        .status {
+                          margin-left: 1em;
+                          background-color: #7d7d7d;
+                          padding: 2px 6px;
+                          color: #ffffff;
+
+                        }
                     }
                 }
             }
@@ -87,9 +187,9 @@ h2 {
             display: inline-block;
             position: absolute;
             right: 0;
-            top: 26px;
-            min-height: 34px;
-            line-height: 34px;
+            top: 25px;
+            min-height: 28px;
+            line-height: 28px;
             padding: 0 10px;
 
         }
@@ -122,16 +222,16 @@ h2 {
     					font-size: 16px;
     					text-align: left;
     					}
-                        .name {
+                        .header_name {
                             width: 16%;
                         }
-                        .organization {
+                        .header_organization {
                             width: 23%;
                         }
-                        .institute {
+                        .header_institute {
                             width: 26%;
                         }
-                        .more {
+                        .header_more {
                             width: 23%;
                         }
                         .checkbox {
@@ -141,14 +241,14 @@ h2 {
 
     		.jobs_content {
 
-               height: 340px;
-    	     .content {
-    		  display: inline-block;
+          height: 340px;
+    	    .content {
+    		    display: inline-block;
     	      padding: 3px;
     	      margin: 3px;
     	      overflow: hidden;
     			  font-size: 12px;
-                  vertical-align: top;
+            vertical-align: top;
 
 
                   .info {
@@ -181,7 +281,7 @@ h2 {
                   }
 
     	    }
-            .content.name {
+            .content.content_name {
                 width: 16%;
                 img{
                     width: 50px;
@@ -191,13 +291,13 @@ h2 {
                     max-height: 100%;
                 }
             }
-            .content.organization {
+            .content.content_organization {
                 width: 23%;
             }
-            .content.institute {
+            .content.content_institute {
                 width: 26%;
             }
-            .content.more {
+            .content.content_more {
                 width: 23%;
             }
             .content.checkbox {
