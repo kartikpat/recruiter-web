@@ -81,6 +81,26 @@ module.exports = function(settings){
 		return
 	})
 
+	app.get("/view-resume", function(req, res){
+		res.render("view-resume",{
+			title: "IIM JOBS | View Resume",
+			styles:  assetsMapper["view-resume"]["styles"][mode],
+			scripts: assetsMapper["view-resume"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/calendar", function(req, res){
+		res.render("calendar",{
+			title: "IIM JOBS | Calendar",
+			styles:  assetsMapper["calendar"]["styles"][mode],
+			scripts: assetsMapper["calendar"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
 	app.get("/login", function(req, res){
 		res.render("login",{
 			title: "IIM JOBS | Login",
