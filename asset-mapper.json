@@ -2,8 +2,9 @@
 	"index": {
 		"styles": {
 			"debug" : [
+				"static/css/header.css",
         "static/css/index.css",
-				"static/css/fullcalendar.min.css"
+				"static/css/footer.css"
 
 			],
 			"prod": [
@@ -110,6 +111,62 @@
 			],
 			"prod" : [
 				"static/build/js/job-posting.min.js"
+			]
+		}
+	},
+	"view-resume": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+        "static/css/view-resume.css",
+				"static/css/footer.css",
+				"static/css/buttons.css"
+
+
+			],
+			"prod": [
+				"static/build/css/view-resume.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/view-resume.js"
+			],
+			"prod" : [
+				"static/build/js/view-resume.min.js"
+			]
+		}
+	},
+	"calendar": {
+		"styles": {
+			"debug" : [
+
+				"static/css/header.css",
+        "static/css/fullcalendar.min.css",
+				"static/css/calendar.css",
+				"static/css/footer.css"
+
+
+
+			],
+			"prod": [
+				"static/build/css/calendar.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+
+				"static/js/vendor/moment.min.js",
+
+        "static/js/vendor/fullcalendar.js",
+				"static/js/vendor/gcal.min.js",
+				"static/js/calendar.js"
+
+			],
+			"prod" : [
+				"static/build/js/calendar.min.js"
 			]
 		}
 	}
