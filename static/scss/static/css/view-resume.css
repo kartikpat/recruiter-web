@@ -1,0 +1,162 @@
+.clearfix {
+  clear: both;
+  display: block; }
+
+.profile_container {
+  width: 95%;
+  margin: 40px auto; }
+  .profile_container .profile_header {
+    width: auto;
+    margin: 0 auto;
+    background-color: #f1f1f1;
+    padding: 10px 15px; }
+    .profile_container .profile_header span {
+      display: inline-block;
+      overflow: auto;
+      font-size: 16px;
+      text-align: left; }
+    .profile_container .profile_header .name {
+      width: 21%; }
+    .profile_container .profile_header .organization {
+      width: 25%; }
+    .profile_container .profile_header .institute {
+      width: 28%; }
+    .profile_container .profile_header .more {
+      width: 24%; }
+  .profile_container .profile_content {
+    margin: 5px;
+    padding: 2px; }
+    .profile_container .profile_content .content {
+      display: inline-block;
+      padding: 1px;
+      margin: 0;
+      overflow: hidden;
+      font-size: 12px;
+      vertical-align: top; }
+      .profile_container .profile_content .content .info {
+        padding: 10px 0; }
+        .profile_container .profile_content .content .info .important_info {
+          font-size: 12px;
+          color: #000000; }
+          .profile_container .profile_content .content .info .important_info.name {
+            font-size: 16px; }
+        .profile_container .profile_content .content .info .extra_info {
+          color: #727272; }
+        .profile_container .profile_content .content .info .icon {
+          display: block;
+          font-size: 16px;
+          color: #424242;
+          padding: 2px; }
+          .profile_container .profile_content .content .info .icon span {
+            font-size: 12px;
+            padding: 2px; }
+          .profile_container .profile_content .content .info .icon:hover {
+            color: green; }
+    .profile_container .profile_content .content.name {
+      width: 21%; }
+      .profile_container .profile_content .content.name img {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        max-width: 100%;
+        max-height: 100%; }
+    .profile_container .profile_content .content.organization {
+      width: 25%; }
+    .profile_container .profile_content .content.institute {
+      width: 28%; }
+    .profile_container .profile_content .content.more {
+      width: 24%; }
+    .profile_container .profile_content .buttons a {
+      padding: 5px;
+      text-decoration: none;
+      display: inline-block;
+      width: 19%;
+      color: #666; }
+      .profile_container .profile_content .buttons a:hover {
+        color: green; }
+    .profile_container .profile_content .more_info {
+      width: 99%;
+      margin: 0 auto;
+      display: none; }
+      .profile_container .profile_content .more_info .layer {
+        padding: 10px; }
+        .profile_container .profile_content .more_info .layer .row .column {
+          width: 33%;
+          display: inline-block; }
+        .profile_container .profile_content .more_info .layer .info {
+          display: inline-block;
+          width: 18%; }
+          .profile_container .profile_content .more_info .layer .info.s {
+            width: auto; }
+          .profile_container .profile_content .more_info .layer .info .score {
+            display: inline-block; }
+  .profile_container div.jobs_container > div.jobs_content:nth-of-type(even) {
+    background: #e9e9e9; }
+
+.heading {
+  font-size: 12px;
+  color: #666;
+  padding-bottom: 1px; }
+
+.content {
+  font-size: 14px; }
+
+.vertical_outside {
+  display: inline-block;
+  height: 100%; }
+  .vertical_outside .vertical_top {
+    height: 16px; }
+  .vertical_outside .vertical_middle {
+    border-left: 1px solid #d8d8d8;
+    height: 90%; }
+
+.divider {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+
+.tab_container {
+  width: 95%;
+  margin: 40px auto; }
+  .tab_container .tab {
+    display: inline-block;
+    width: 30%;
+    min-height: 150px;
+    vertical-align: top; }
+    .tab_container .tab.center {
+      margin: 0 4%; }
+    .tab_container .tab .tab_heading {
+      background-color: #666;
+      padding: 10px; }
+      .tab_container .tab .tab_heading span {
+        color: #fff; }
+    .tab_container .tab .tab_content {
+      padding: 20px; }
+      .tab_container .tab .tab_content input {
+        padding: 8px 12px;
+        margin: 1px 0 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 80%; }
+      .tab_container .tab .tab_content .info {
+        margin-bottom: 20px; }
+
+.container {
+  width: 95%;
+  margin: 40px auto; }
+  .container .resume {
+    width: 65%;
+    height: 800px; }
+    .container .resume .embed {
+      width: 100%;
+      height: 100%; }
+  .container .cover_letter {
+    width: 30%;
+    height: 800px; }
+    .container .cover_letter .content {
+      padding: 20px; }
+  .container .head {
+    background-color: #666;
+    padding: 15px;
+    color: #fff; }

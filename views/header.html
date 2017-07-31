@@ -6,14 +6,14 @@
 	{{#styles.length}}
     	{{#styles}}
     		<link rel="stylesheet" href="/{{.}}">
-				<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Comfortaa">
-				<link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
-				<link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
+			<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     	{{/styles}}
 	{{/styles.length}}
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script type="text/javascript">
-		var baseUrl = '{{baseUrl}}'
+		var baseUrl = '{{baseUrl}}';
+		var userID = '{{userID}}';
+		var jobID = '{{jobID}}';
 	</script>
 </head>
 <body>
@@ -26,7 +26,7 @@
 		<div class="user_profile_side">
 			<li class="dropdown">
 				<a class="email" href="#">Kartik@iimjobs.com</a>
-				<ul class="options hidden">
+				<ul class="options hidden box_shadow">
 					<li><a href="#">My Profile</a></li>
 					<hr class="seperator">
 					<li><a href="#">My chat</a></li>
@@ -44,7 +44,7 @@
 				</ul>
 			</li>
 		</div>
-		<div class="clearfix"></div>
+
 	</div>
 
 <!-- navigation menu -->
@@ -57,7 +57,7 @@
 				<li class="menu_link"><a href="#">My Chat</a></li>
 				<li class="menu_link dropdown">
 					<a href="#">My Calendar</a>
-					<ul class="options hidden">
+					<ul class="options hidden box-shadow">
 						<li><a href="#">Manage Bookings</a></li>
 						<li><a href="#">View Booked Slots</a></li>
 					</ul>
@@ -65,7 +65,7 @@
 				<li class="menu_link"><a href="#">Search Resume Database</a></li>
 				<li class="menu_link dropdown">
 					<a href="#">More</a>
-					<ul class="options hidden">
+					<ul class="options hidden box-shadow">
 						<li><a href="#">Showcase Followers</a></li>
 						<li><a href="#">My Tags</a></li>
 						<li><a href="#">Saved/Shortlisted Candidates</a></li>
@@ -75,7 +75,7 @@
 			<div class="search_container">
 				<input type="text" class="searchform" placeholder="Search"/>
 			</div>
-			<div class="clearfix"></div>
+
 	</nav>
 <!-- end navigation menu -->
 

@@ -1,0 +1,40 @@
+.button {
+		 background-color: white;
+		 border: 1px solid #e7e7e7;
+		 color: black;
+		 padding: 4px 20px;
+		 text-align: center;
+		 text-decoration: none;
+		 font-size: 14px;
+		 -webkit-transition-duration: 0.4s; /* Safari */
+		 transition-duration: 0.4s;
+		 cursor: pointer;
+				 &:hover {
+					 background-color: #e7e7e7;
+				 }
+				 &:focus {
+					 outline: none;
+				 }
+
+&.small {
+    padding: 4px 8px;
+}
+&.x-small {
+    padding: 0 4px;
+		font-size: 14px;
+}
+
+&.link {
+	border: none;
+	padding: 0;
+  color: #888;
+	font-size: x-small;
+	&:hover {
+		color: blue;
+    background-color: #ffffff;
+	}
+	&:focus {
+		outline: none;
+	 }
+ }
+}
