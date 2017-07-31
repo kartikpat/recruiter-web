@@ -17,7 +17,7 @@ module.exports = function(settings){
 	function isAuthenticated(req, res, next) {
 
 		// for disabling authentication
-		return next()
+		//return next()
 		//bypassing the auth for development
     // CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     // you can do this however you want with whatever variables you set up
