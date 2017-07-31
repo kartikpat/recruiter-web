@@ -73,6 +73,42 @@ module.exports = function(settings){
 		return
 	})
 
+	app.get("/job-posting/:jobID", function(req, res){
+		var jobID = req.params.jobID;
+		res.render("job-posting",{
+			title: "IIM JOBS | Post job",
+			styles:  assetsMapper["job-posting"]["styles"][mode],
+			scripts: assetsMapper["job-posting"]["scripts"][mode],
+			baseUrl: baseUrl,
+			jobID: jobID
+		})
+		return
+	})
+
+	app.get("/profile/:userID", function(req, res){
+		var userID = req.params.userID;
+		var jobID = req.query.jobID || null;
+		res.render("view-resume",{
+			title: "IIM JOBS | View Resume",
+			styles:  assetsMapper["view-resume"]["styles"][mode],
+			scripts: assetsMapper["view-resume"]["scripts"][mode],
+			baseUrl: baseUrl,
+			userID: userID,
+			jobID: jobID
+		})
+		return
+	});
+
+	app.get("/calendar", function(req, res){
+		res.render("calendar",{
+			title: "IIM JOBS | Calendar",
+			styles:  assetsMapper["calendar"]["styles"][mode],
+			scripts: assetsMapper["calendar"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
 	app.get("/login", function(req, res){
 		res.render("login",{
 			title: "IIM JOBS | Login",

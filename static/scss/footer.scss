@@ -1,0 +1,44 @@
+
+
+.footer {
+
+	width: 100%;
+	nav {
+		background:#1c1c1c;
+
+		.menu {
+           padding: 0;
+			li.menu_link {
+				
+				display:inline-block;
+				padding:12px;
+
+				a {
+					color:white;
+					font-size:13px;
+					font-family: 'Droid Sans';
+          &:hover {
+						color: #56A0FF;
+					}
+				}
+
+			}
+		}
+  }
+}
+
+@media only screen and (max-width : 768px) {
+
+    .footer {
+          nav {
+             .menu {
+                  li.menu_link {
+                     padding: 10px;
+                       a {
+                          font-size: 12px;
+                    }
+                }
+            }
+         }
+     }
+ }

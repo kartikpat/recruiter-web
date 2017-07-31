@@ -1,0 +1,17 @@
+.button {
+  background-color: white;
+  border: 1px solid #e7e7e7;
+  color: black;
+  padding: 4px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer; }
+  .button:hover {
+    background-color: #e7e7e7; }
+
+.button.small {
+  padding: 4px 8px; }

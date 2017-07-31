@@ -1,4 +1,6 @@
 var recruiterID = localStorage.id;
+var baseUrl = "http://13.126.92.102:8000"
+
 var profile = $(".user_profile");
 var tableRow = $(".jobs_content.prototype");
 $(document).ready(function(){
@@ -12,7 +14,7 @@ var populateProfile = function(res){
 		profile.find(".edit_profile img").attr('src', data["img_link"]);
 		profile.find(".user_name").text(data["name"]);
 		profile.find(".user_designation").text(data["desg"]);
-		profile.find(".extra_info .viewed").text( data["hits"]);
+		profile.find(".extra_info .viewed").text(data["hits"]);
 		profile.find(".extra_info .last_login").text( new Date(data["d_login"]).toLocaleString());
 		profile.find(".profile_link").text(data["rurl"]);
 		$('.user_profile_side .email').text(data["email"])
@@ -30,7 +32,7 @@ var populateJobs = function(res){
 			card.find(".date").text(date_ddmmyy(aJob["created"]));
 			card.find(".title").text(aJob["title"]);
 			card.find(".status").text(aJob["rej"]);
-			card.find(".views").text(( aJob["views"])? aJob["views"]+" views ("+( (aJob["applied"])? aJob["applied"]+ ")": "0)" ): "" )
+			card.find(".views").html(( aJob["views"])? aJob["views"]+" views ("+( (aJob["applied"])? '<a href="/job-posting/'+aJob["id"]+'">'+aJob["applied"]+'</a>'+  ")": "0)" ): "" )
 			$('.jobs_container').append(card);
 		})
 	}
@@ -50,25 +52,4 @@ function date_ddmmyy (aDate){
 	}
 	var today = dd+'/'+mm+'/'+yyyy;
 	return today;
-}
-
-function openMenu() {
-    var x = document.getElementById("menu");
-    if (x.className === "menu") {
-        x.className += " responsive";
-    } else {
-        x.className = "menu";
-    }
-}
-
-function addNewKeyword() {
-
-  $("#keywords").append("<div class='label'>\
-    <label for='keyword"+($("#keywords .label").length+1)+"'>Keyword #"+($("#keywords .label").length+1)+"</label>\
-    </div>\
-    <div class='field'>\
-    <input type='text' id='keyword"+($("#keywords .label").length+1)+"' name='keyword"+($("#keywords .label").length+1)+"'>\
-    </div>"
-  );
-
 }
