@@ -3,7 +3,7 @@
 		"styles": {
 			"debug" : [
 				"static/css/header.css",
-        "static/css/index.css",
+        		"static/css/index.css",
 				"static/css/footer.css"
 
 			],

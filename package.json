@@ -4,7 +4,7 @@
   "description": "Build tool on gulp",
   "main": "Gulpfile.js",
   "scripts": {
-    "start": "node index.js --port=8080 --vault=./vault/ --config=./configuration.json",
+    "start": "node index.js --port=8080 --vault=./vault/ --config=./configuration.json --debug",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
