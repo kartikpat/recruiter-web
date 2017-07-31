@@ -17,8 +17,11 @@
   .button.small {
     padding: 4px 8px; }
   .button.x-small {
-    padding: 0 4px;
-    font-size: 14px; }
+    padding: 0 6px; }
+    .button.x-small i {
+      font-size: 10px;
+      position: relative;
+      top: -2px; }
   .button.link {
     border: none;
     padding: 0;

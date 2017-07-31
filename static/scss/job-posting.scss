@@ -1,6 +1,34 @@
-h2 {
-    margin: 20px 0 0 20px;
+@mixin input-styling {
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding:  4px 8px;
+}
 
+input,select {
+    &:focus {
+        outline: none;
+        }
+    }
+
+.font-xs {
+    font-size: 10px;
+}
+
+.font-sm {
+    font-size: 12px;
+}
+
+.font-md {
+    font-size: 14px;
+}
+
+.font-lg {
+    font-size: 16px;
+}
+
+.heading {
+    margin: 20px 0 20px 20px;
 }
 
 .highlight {
@@ -18,97 +46,82 @@ h2 {
   display: none;
 }
 
-.main_container {
-
-    padding: 30px;
-
+.main-container {
+    padding: 10px;
     .filters {
         display: inline-block;
         width: 20%;
-        padding-right:  10px;
+        padding-right: 10px;
         border-right: 2px dotted #d8d8d8;
         height: auto;
-
-
-        .search_keyword {
-           .field {
-                margin: 5px 0 0 0;
-                width: 100%;
-
-                input {
-                    width: 80%;
-                    box-sizing: border-box;
-                    border: 1px solid #ccc;
-                    border-radius: 4px;
-                    padding:  5px 16px;
-
-                    &:focus {
-
-                                outline: none;
-                        }
-                }
-
-             }
+        .search-by-keyword {
+            width: 100%;
+            border-bottom: 1px solid #d8d8d8;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+            input {
+                @include input-styling;
+                width: 80%;
+                padding: 6px 12px;
+            }
         }
         .menu {
-            padding: 0;
             border-bottom: 1px solid #d8d8d8;
-
+            margin-bottom: 5px;
             > span {
-                font-size: 11px;
+                font-size: 12px;
             }
-
+            > button {
+                float: right;
+            }
             .field {
                 margin: 0 auto;
-                width: 86%;
-                font-size: 0.9em;
-                padding-bottom: 5px;
-
+                width: 100%;
+                padding: 2px 0 4px 0;
                 .modal {
-                  display: none; /* Hidden by default */
-                  position: fixed; /* Stay in place */
-                  z-index: 1; /* Sit on top */
-                  left: 0;
-                  top: 0;
-                  min-width: 100%; /* Full width */
-                  overflow: auto; /* Enable scroll if needed */
+                    display: none;
+                    position: fixed;
+                    z-index: 1;
+                    left: 0;
+                    top: 0;
+                    min-width: 100%;
+                    .modal-content {
+                        margin: 200px auto;
+                        padding: 20px;
+                        border: 1px solid #888;
+                        box-shadow: 0 0 20px 1px #d8d8d8;
+                        width: 80%;
+                        height: 24em;
+                        overflow: auto;
+                        .row {
+                          padding: 20px;
+                          div {
+                            display: inline-block;
+                            vertical-align: top;
+                            width: 30%;
+                            input[type="checkbox"]{
+                                padding: 0;
+                                margin: 0;
+                            }
+                            span{
+                                font-size: 10px;
+                            }
+                          }
+                        }
+                        .close {
+                            color: #aaa;
+                            float: right;
+                            font-size: 28px;
+                            font-weight: bold;
+                            &:hover, &:focus {
+                              color: black;
+                              text-decoration: none;
+                              cursor: pointer;
+                            }
+                        }
 
 
 
-/* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 200px auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-    height: 24em;
-    overflow: auto;
-    .row {
-      padding: 20px;
-      font-size: 11px;
-      .column {
-        display: inline-block;
-        vertical-align: top;
-        width: 30%;
-        &.center {
-          margin: 0 3%;
-        }
-      }
-    }
-
-/* The Close Button */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    &:hover, &:focus {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
-    }
-}
 }
 
 
@@ -118,7 +131,7 @@ h2 {
                 input,select {
                         padding: 4px 8px;
                         margin: 1px 0 6px 0;
-                        border: 1px solid #ccc;
+                        border: 1px solid #d8d8d8;
                         border-radius: 4px;
                         width: 60%;
 

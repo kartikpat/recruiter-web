@@ -94,7 +94,8 @@
 				"static/css/header.css",
             	"static/css/job-posting.css",
 				"static/css/footer.css",
-				"static/css/buttons.css"
+				"static/css/buttons.css",
+				"static/css/colors.css"
 
 
 			],
