@@ -81,15 +81,19 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/view-resume", function(req, res){
+	app.get("/profile/:userID", function(req, res){
+		var userID = req.params.userID;
+		var jobID = req.query.jobID || null;
 		res.render("view-resume",{
 			title: "IIM JOBS | View Resume",
 			styles:  assetsMapper["view-resume"]["styles"][mode],
 			scripts: assetsMapper["view-resume"]["scripts"][mode],
-			baseUrl: baseUrl
+			baseUrl: baseUrl,
+			userID: userID,
+			jobID: jobID
 		})
 		return
-	})
+	});
 
 	app.get("/calendar", function(req, res){
 		res.render("calendar",{

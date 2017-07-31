@@ -119,7 +119,7 @@
 		"styles": {
 			"debug" : [
 				"static/css/header.css",
-        "static/css/view-resume.css",
+        		"static/css/view-resume.css",
 				"static/css/footer.css",
 				"static/css/buttons.css"
 
@@ -132,6 +132,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
 				"static/js/view-resume.js"
 			],
 			"prod" : [
