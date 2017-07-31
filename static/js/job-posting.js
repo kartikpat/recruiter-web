@@ -92,6 +92,7 @@ var populateJobs = function(res){
       var card = tableRow.clone().removeClass('prototype hidden');
 
 	     card.find(".user_name").text(aJob["name"]);
+       card.attr("href","/profile/"+aJob["userID"]+"?jobID="+jobID)
       card.find(".user_experience").text(getJobExperience(aJob["exp_y"], aJob["exp_m"]));
       card.find(".current_location").text(aJob["current_location"]);
       card.find(".applied_date").text(ISODateToD_M_Y(aJob["apply_date"]));
