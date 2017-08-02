@@ -78,56 +78,6 @@ input,select {
                 margin: 0 auto;
                 width: 100%;
                 padding: 2px 0 4px 0;
-                .modal {
-                    display: none;
-                    position: fixed;
-                    z-index: 1;
-                    left: 0;
-                    top: 0;
-                    min-width: 100%;
-                    .modal-content {
-                        margin: 200px auto;
-                        padding: 20px;
-                        border: 1px solid #888;
-                        box-shadow: 0 0 20px 1px #d8d8d8;
-                        width: 80%;
-                        height: 24em;
-                        overflow: auto;
-                        .row {
-                          padding: 20px;
-                          div {
-                            display: inline-block;
-                            vertical-align: top;
-                            width: 30%;
-                            input[type="checkbox"]{
-                                padding: 0;
-                                margin: 0;
-                            }
-                            span{
-                                font-size: 10px;
-                            }
-                          }
-                        }
-                        .close {
-                            color: #aaa;
-                            float: right;
-                            font-size: 28px;
-                            font-weight: bold;
-                            &:hover, &:focus {
-                              color: black;
-                              text-decoration: none;
-                              cursor: pointer;
-                            }
-                        }
-
-
-
-}
-
-
-}
-
-
                 input,select {
                         padding: 4px 8px;
                         margin: 1px 0 6px 0;
@@ -335,5 +285,47 @@ input,select {
     .vertical_middle {
         border-left: 1px solid #d8d8d8;
         height: 90%;
+    }
+}
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    min-width: 100%;
+    .modal-content {
+        margin: 200px auto;
+        padding: 20px;
+        border: 1px solid #888;
+        box-shadow: 0 0 20px 1px #d8d8d8;
+        width: 80%;
+        height: 24em;
+        overflow: auto;
+        .row {
+          padding: 20px;
+          div {
+            display: inline-block;
+            vertical-align: top;
+            width: 30%;
+            input[type="checkbox"]{
+                padding: 0;
+                margin: 0;
+            }
+            span{
+                font-size: 10px;
+            }
+          }
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            &:hover, &:focus {
+              color: black;
+              text-decoration: none;
+              cursor: pointer;
+            }
+        }
     }
 }

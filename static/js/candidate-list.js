@@ -1,31 +1,26 @@
-"use strict";
-
 var modal = $(".modal");
 var openModalBtn = $(".js-open-modal");
 var closeModal = $(".js-close-modal");
 var filters = $(".filters");
 
 openModalBtn.click(function() {
-
     var id = $(this).attr('data-attribute');
-
+    $('.modal[data-attribute= ' + "menu-industry" + ']');
     var modal = $('.modal[data-attribute= ' + id + ']');
-
     var tags = filters.find('.js-tags[data-attribute= ' + id + ']');
-
     tags.find("input[type='checkbox']:checked").each(function() {
   		    var valu= $(this).val();
             $(".js-tags-modal[data-attribute=" + id + "] input[type='checkbox'][value=  " + valu +"]").prop('checked',true);
   			});
 
-    modal[0].style.display = "block";
+    modal.removeClass('hidden')
 
 })
 
 closeModal.click(function() {
   var id = $(this).attr('data-attribute');
   var modal = $('.modal[data-attribute= ' + id + ']');
-    modal[0].style.display = "none";
+    modal.addClass('hidden');
 
 })
 
@@ -393,6 +388,7 @@ filters.find(".submit-filters").click(function() {
 var ticker;
 
 function checkScrollEnd() {
+  return
     if($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
         var attribute = $('.stat.highlight')[0];
         var id = $(attribute).attr("data-attribute");
