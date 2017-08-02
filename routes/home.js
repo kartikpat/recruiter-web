@@ -71,12 +71,12 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/job-posting/:jobID", function(req, res){
+	app.get("/job/:jobID/candidates", function(req, res){
 		var jobID = req.params.jobID;
-		res.render("job-posting",{
-			title: "IIM JOBS | Post job",
-			styles:  assetsMapper["job-posting"]["styles"][mode],
-			scripts: assetsMapper["job-posting"]["scripts"][mode],
+		res.render("candidate-list",{
+			title: "IIM JOBS | Candidates",
+			styles:  assetsMapper["candidate-list"]["styles"][mode],
+			scripts: assetsMapper["candidate-list"]["scripts"][mode],
 			baseUrl: baseUrl,
 			jobID: jobID
 		})
