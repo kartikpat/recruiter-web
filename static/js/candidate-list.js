@@ -1,6 +1,6 @@
 var modal = $(".modal");
 var openModalBtn = $(".js-open-modal");
-var closeModal = $(".js-close-modal");
+var closeModalBtn = $(".js-close-modal");
 var filters = $(".filters");
 
 /**
@@ -28,6 +28,53 @@ var closeModal = function() {
 	modal.addClass('hidden');
 }
 
+var loadViewByData = function() {
+	var id = $(this).attr('data-attribute');
+	var queryString = {};
+	pageNumber = 1;
+	if(id=='magicsort'){
+	  queryString["sortBy"] = 1;
+	}
+	else if(id==-1 || (id>0 && id <4)){
+	  queryString["status"] = id;
+	}
+	queryString["pageContent"] = pageContent;
+	queryString["pageNumber"] = pageNumber;
+	viewByOptions.removeClass("highlight");
+	$(this).addClass("highlight");
+	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, queryString, populateJobs)
+	$('.jobs_wrapper').empty();
+}
+
+
+var submitFilters = function() {
+	var parameters = {
+		industry: (obj["industry"])? obj["industry"].join(","): null,
+		location: (obj["location"])? obj["location"].join(","): null,
+		prefLocation: (obj["prefLocation"])? obj["prefLocation"].join(","): null,
+		institute: (obj["institute"])? obj["institute"].join(","): null ,
+		minExp: obj["minExperience"],
+		maxExp: obj["maxExperience"],
+		minBatch: obj["minBatch"],
+		maxBatch: obj["maxBatch"],
+		minCTC: obj["minSalary"],
+		maxCTC: obj["maxSalary"],
+		minAge: obj["minAge"],
+		maxAge: obj["maxAge"],
+		sex: obj["gender"],
+		notice: obj["noticePeriod"],
+		applicationDate: obj["appliedDate"],
+		lastActive: obj["lastSeen"],
+		workPermit: obj["isWorkPermit"],
+		handleTeam: obj["hasHandledTeam"],
+		relocate: obj["canRelocate"],
+		diffAbled: obj["isDifferentlyAbled"],
+		language: obj["language"]
+	};
+	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, parameters, populateJobs);
+	$('.jobs_wrapper').empty();
+}
+
 // When the user clicks anywhere outside of the modal, close it
  /*window.onclick = function(event) {
 	if (event.target == modal[0]) {
@@ -42,8 +89,9 @@ var jobs = $(".jobs");
 var tableRow = $(".jobs_content.prototype");
 var columnOrg =  $(".organization.prototype");
 var columnIns =  $(".institute.prototype");
-var st = $(".jobs .menu");
+var viewByOptions = $(".jobs .menu .stat");
 var pageNumber = 1;
+var pageContent = 5;
 
 $(document).ready(function(){
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, {
@@ -52,80 +100,52 @@ $(document).ready(function(){
 	   }, populateJobs)
 	
 	openModalBtn.click(openModal);
-	closeModal.click(closeModal);
-})
-
-  st.find(".stat").click(function() {
-	var id = $(this).attr('data-attribute');
-	pageNumber = 1
-	var queryString = {};
-	if(id=='magicsort'){
-	  queryString["sortBy"] = 1;
-	}
-	else if(id==-1 || (id>0 && id <4)){
-	  queryString["status"] = id;
-	}
-	queryString["pageContent"] = 5;
-	queryString["pageNumber"] = 1;
-	st.find(".stat").removeClass("highlight");
-	$(this).addClass("highlight");
-	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, queryString, populateJobs)
-	$('.jobs_wrapper').empty();
-
-  });
-
-
-
-
+	closeModalBtn.click(closeModal);
+	viewByOptions.click(loadViewByData);
+	$(".submit-filters").click(submitFilters);
+});
 
 var populateJobs = function(res){
-//  console.log(res["data"]["data"]);
 	if(res.status=="success"){
-	var res = res["data"];
-	jobs.find(".status_all").text(res["total"]);
-	jobs.find(".status_shortlisted").text(res["shortlisted"]);
-	jobs.find(".status_rejected").text(res["rejected"]);
-	jobs.find(".status_saved").text(res["save"]);
-
+		var res = res["data"];
+		jobs.find(".status_all").text(res["total"]);
+		jobs.find(".status_shortlisted").text(res["shortlisted"]);
+		jobs.find(".status_rejected").text(res["rejected"]);
+		jobs.find(".status_saved").text(res["save"]);
 		res["data"].forEach(function(aJob){
 			//console.log(total_exp);
-	  var card = tableRow.clone().removeClass('prototype hidden');
+			var card = tableRow.clone().removeClass('prototype hidden');
+			card.find(".user_name").text(aJob["name"]);
+			card.attr("href","/profile/"+aJob["userID"]+"?jobID="+jobID)
+			card.find(".user_experience").text(getJobExperience(aJob["exp_y"], aJob["exp_m"]));
+			card.find(".current_location").text(aJob["current_location"]);
+			card.find(".applied_date").text(ISODateToD_M_Y(aJob["apply_date"]));
+			card.find(".user_sex").text(aJob["sex"]);
+			card.find(".user_age").text(getAge(aJob["dob"]));
+			card.find(".user_img").attr('src', aJob["imgUrl"]);
+			var orgArray = aJob["jobs"];
+			var i;
+			var len = orgArray.length;
+			var loop = len < 3 ? len:3;
+			for(i=0; i<loop; i++) {
+				var anOrg ={};
+				anOrg = orgArray[i];
+				var column = columnOrg.clone().removeClass('prototype hidden');
+				column.find(".name").text(anOrg["organization"]);
+				column.find(".designation").text(anOrg["designation"]);
+				column.find(".extra_info").text(getOrgExp(anOrg["from_exp_month"],anOrg["from_exp_year"],anOrg["to_exp_month"],anOrg["to_exp_year"],anOrg["is_current"]));
+				card.find('.content_organization').append(column);
+			}
+			aJob["edu"].forEach(function(anEdu){
+				var column = columnIns.clone().removeClass('prototype hidden');
 
-		 card.find(".user_name").text(aJob["name"]);
-	   card.attr("href","/profile/"+aJob["userID"]+"?jobID="+jobID)
-	  card.find(".user_experience").text(getJobExperience(aJob["exp_y"], aJob["exp_m"]));
-	  card.find(".current_location").text(aJob["current_location"]);
-	  card.find(".applied_date").text(ISODateToD_M_Y(aJob["apply_date"]));
-	  card.find(".user_sex").text(aJob["sex"]);
-	  card.find(".user_age").text(getAge(aJob["dob"]));
-	  card.find(".user_img").attr('src', aJob["imgUrl"]);
-	  var orgArray = aJob["jobs"];
-	  var i;
-	  var len = orgArray.length;
-	  var loop = len < 3 ? len:3;
-	  for(i=0; i<loop; i++) {
-
-		var anOrg ={};
-		anOrg = orgArray[i];
-		var column = columnOrg.clone().removeClass('prototype hidden');
-
-		column.find(".name").text(anOrg["organization"]);
-		column.find(".designation").text(anOrg["designation"]);
-		column.find(".extra_info").text(getOrgExp(anOrg["from_exp_month"],anOrg["from_exp_year"],anOrg["to_exp_month"],anOrg["to_exp_year"],anOrg["is_current"]));
-		card.find('.content_organization').append(column);
-	  }
-	  aJob["edu"].forEach(function(anEdu){
-		var column = columnIns.clone().removeClass('prototype hidden');
-
-		column.find(".name").text(anEdu["institute"]);
-		column.find(".start_duration").text(anEdu["batch_from"]);
-		column.find(".end_duration").text(anEdu["batch_to"]);
-		column.find(".degree").text(anEdu["degree"]);
-		card.find('.content_institute').append(column);
-	  })
-	  $('.jobs_container .jobs_wrapper').append(card);
-
-
+				column.find(".name").text(anEdu["institute"]);
+				column.find(".start_duration").text(anEdu["batch_from"]);
+				column.find(".end_duration").text(anEdu["batch_to"]);
+				column.find(".degree").text(anEdu["degree"]);
+				card.find('.content_institute').append(column);
+			})
+			$('.jobs_container .jobs_wrapper').append(card);
 		})
 	}
 }
@@ -181,6 +201,17 @@ function getAge(dateString) {
 
 var obj = {};
 
+filters.find('input[type="checkbox"]').on('change', function(){
+	var name = $(this).attr('name');
+	var tagsArray = [];
+	var elements = filters.find('input[name="'+name+'"]:checked');
+	elements.each(function(index,anElement){
+		tagsArray.push(anElement.value);
+	});
+	obj[name] = tagsArray;
+});
+
+/* the above snippet eliminates the need for an individual event binding on every section
 filters.find('input[type="checkbox"][name="industry[]"]').on('change', function() {
 	var industryTags = filters.find('input[name="industry[]"]:checked').map(function() {
 		return this.value;
@@ -246,6 +277,9 @@ filters.find('input[type="checkbox"][name="languages[]"]').on('change', function
 
 
 });
+
+*/
+
 
 filters.find('#min-experience').on('change', function() {
 	var minExperienceTag = this.value;
@@ -358,37 +392,6 @@ filters.find("input[name='abled']").on('change', function() {
 
 
 });
-
-
-filters.find(".submit-filters").click(function() {
-
-	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, {
-		industry: obj["industry"],
-		location: obj["currentLocation"],
-		prefLocation: obj["preferredLocation"],
-		insti: obj["institute"],
-		minExp: obj["minExperience"],
-		maxExp: obj["maxExperience"],
-		minBatch: obj["minBatch"],
-		maxBatch: obj["maxBatch"],
-		minCTC: obj["minSalary"],
-		maxCTC: obj["maxSalary"],
-		minAge: obj["minAge"],
-		maxAge: obj["maxAge"],
-		sex: obj["gender"],
-		notice: obj["noticePeriod"],
-		applicationDate: obj["appliedDate"],
-		lastActive: obj["lastSeen"],
-		workPermit: obj["isWorkPermit"],
-		handleTeam: obj["hasHandledTeam"],
-		relocate: obj["canRelocate"],
-		diffAbled: obj["isDifferentlyAbled"],
-		language: obj["language"]
-
-
-	}, populateJobs);
-	$('.jobs_wrapper').empty();
-})
 
 var ticker;
 
