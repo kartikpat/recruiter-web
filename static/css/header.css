@@ -6,6 +6,9 @@ body, html {
   padding: 0;
   min-height: 100%; }
 
+* {
+  font-weight: normal; }
+
 .hidden {
   display: none; }
 
@@ -114,10 +117,10 @@ header nav {
         padding: 0;
         margin: 0; }
         header nav .menu .dropdown .options li {
-          padding: 6px 10px;
+          padding: 2px 10px;
           text-align: left; }
           header nav .menu .dropdown .options li a {
-            font-size: 14px;
+            font-size: 12px;
             color: black; }
             header nav .menu .dropdown .options li a:hover {
               color: #56A0FF; }

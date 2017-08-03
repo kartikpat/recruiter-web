@@ -3,10 +3,34 @@ var baseUrl = "http://13.126.92.102:8000"
 
 var profile = $(".user_profile");
 var tableRow = $(".jobs_content.prototype");
+
+
+var modal = $('.modal');
+var openGuidelines = $("#posting-guidelines");
+var closeModalBtn = $(".close");
+
+
+
 $(document).ready(function(){
 	getRequest(baseUrl+"/recruiter/"+recruiterID, {}, populateProfile);
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs", {}, populateJobs);
+
+	openGuidelines.click(openModal);
+	closeModalBtn.click(closeModal);
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.addClass('hidden');
+        }
+    }
 })
+
+var openModal = function() {
+    modal.removeClass('hidden');
+}
+
+var closeModal = function() {
+    modal.addClass('hidden');
+}
 
 var populateProfile = function(res){
 	if(res.status =="success"){
@@ -26,13 +50,11 @@ var populateJobs = function(res){
 		res["data"].forEach(function(aJob){
 			var card = tableRow.clone().removeClass('prototype hidden');
 			var status = "" ;
-			// if(aJob["rej"]===1){
-			// 	status = rejected;
-			// }
+
 			card.find(".date").text(date_ddmmyy(aJob["created"]));
 			card.find(".title").text(aJob["title"]);
 			card.find(".status").text(aJob["rej"]);
-			card.find(".views").html(( aJob["views"])? aJob["views"]+" views ("+( (aJob["applied"])? '<a href="/job-posting/'+aJob["id"]+'">'+aJob["applied"]+'</a>'+  ")": "0)" ): "" )
+			card.find(".views").html(( aJob["views"])? aJob["views"]+" views ("+( (aJob["applied"])? '<a href="/job/'+aJob["id"]+' + /candidates">'+aJob["applied"]+'</a>'+  ")": "0)" ): "" )
 			$('.jobs_container').append(card);
 		})
 	}

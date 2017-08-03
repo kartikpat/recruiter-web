@@ -2,6 +2,33 @@ var postJobForm = $(".post_job_form");
 var baseUrl = "http://13.126.92.102:8000"
 var recruiterID = localStorage.id;
 
+var modal = $('.modal');
+var openGuidelines = $("#posting-guidelines");
+var closeModalBtn = $(".close");
+
+var openModal = function() {
+    modal.removeClass('hidden');
+}
+
+var closeModal = function() {
+    modal.addClass('hidden');
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.addClass('hidden');
+    }
+}
+
+
+
+$(document).ready(function(){
+
+	openGuidelines.click(openModal);
+	closeModalBtn.click(closeModal);
+
+
+});
 
 function openMenu() {
     var x = document.getElementById("menu");

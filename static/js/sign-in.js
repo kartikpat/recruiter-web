@@ -5,7 +5,7 @@ $(document).ready(function(){
 	 * callback {@link authSuccess}
 	 * @event ".submit":click
 	 */
-	$(".submit").click(function(event){
+	$(".js-submit").click(function(event){
 		event.preventDefault();
 		var id= $("#userName").val();
 		localStorage.id = id;
