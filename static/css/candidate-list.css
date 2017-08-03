@@ -17,8 +17,10 @@ input:focus, select:focus {
   margin: 20px 0 20px 20px; }
 
 .highlight {
-  background-color: red;
-  color: #ffffff !important; }
+  background-color: #00FFC6; }
+
+.highlighted {
+  color: green !important; }
 
 * {
   font-family: 'Open Sans', sans-serif;
@@ -63,7 +65,8 @@ input:focus, select:focus {
           margin: 1px 0 6px 0;
           border: 1px solid #d8d8d8;
           border-radius: 4px;
-          width: 60%; }
+          width: 60%;
+          background-color: inherit; }
         .main-container .filters .menu .field input[type="checkbox"] {
           display: inline-block;
           width: auto; }
@@ -117,11 +120,12 @@ input:focus, select:focus {
       line-height: 40px;
       padding-left: 20px; }
       .main-container .jobs .calendar select {
-        padding: 8px 16px;
+        padding: 4px 16px;
         margin: 8px 0;
         border: 1px solid #ccc;
         border-radius: 4px;
-        width: auto; }
+        width: auto;
+        background-color: inherit; }
     .main-container .jobs .jobs_panel {
       width: 100%;
       margin: 40px auto;

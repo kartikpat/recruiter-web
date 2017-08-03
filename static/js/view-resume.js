@@ -1,12 +1,16 @@
 var profileContainer = $(".profile_container");
+var tabContainer = $(".tab_container");
+var resumeContainer = $(".resume-container");
+var baseUrl = "http://13.126.92.102:8000"
+var recruiterID = 45058;
 $(document).ready(function(){
 	var recruiterID = localStorage.id ;
-	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobID, {
+	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, {
 		userID: userID
 	}, storeProfile)
 	$('#slider').click(function() {
 	  $('.more_info').slideToggle();
-	  
+
 	});
 
 
@@ -22,25 +26,26 @@ var storeProfile = function(res){
 			profileContainer.find(".userDetail .notice").text(data["notice"]+ " months");
 			profileContainer.find(".user_img").text(data["imgUrl"]);
 			profileContainer.find(".userDetail .sex").text(data["sex"]);
-			profileContainer.find(".userDetail .age").text(data["dob"]);
-			profileContainer.find(".userDetail .applyDate").text(data["apply_date"]);
-			profileContainer.find(".userDetail .applyDate").text(data["apply_date"]);
+			profileContainer.find(".userDetail .age").text(getAge(data["dob"]));
+			profileContainer.find(".userDetail .applyDate").text("Applied: "+ISODateToD_M_Y(data["apply_date"]));
+			//profileContainer.find(".userDetail .applyDate").text(data["apply_date"]);
 
-			profileContainer.find(".extraInfo .prefLocation").text(data["pref_location"]);			
+			profileContainer.find(".extraInfo .prefLocation").text(data["pref_location"]);
 			profileContainer.find(".extraInfo .currentCTC").text(data["current_ctc"]);
 			profileContainer.find(".extraInfo .expectedCTC").text(data["expected_ctc"]);
 
-			profileContainer.find(".moreInfo .maritalStatus").text(data["marital_status"]);
+			profileContainer.find(".moreInfo .maritalStatus").text(boolean(data["marital_status"]));
 			profileContainer.find(".moreInfo .languages").text(formatLanguages(data["language_known"]));
-			profileContainer.find(".moreInfo .permit").text(data["work_permit"]);
-			profileContainer.find(".moreInfo .handleTeam").text(data["handle_team"]);
+			profileContainer.find(".moreInfo .permit").text(boolean(data["work_permit"]));
+			profileContainer.find(".moreInfo .handleTeam").text(boolean(data["handle_team"]));
 			profileContainer.find(".moreInfo .sixDayWorking").text(data[""]);
-			profileContainer.find(".moreInfo .relocate").text(data["relocate"]);
-			profileContainer.find(".moreInfo .differentlyAbled").text(data["differently_abled"]);
-			profileContainer.find(".moreInfo .earlyStartup").text(data["early_startup"]);
-			profileContainer.find(".moreInfo .travel").text(data["willing_travel"]);
-			profileContainer.find(".moreInfo .about").text(data["about"]);
-
+			profileContainer.find(".moreInfo .relocate").text(boolean(data["relocate"]));
+			profileContainer.find(".moreInfo .differentlyAbled").text(boolean(data["differently_abled"]));
+			profileContainer.find(".moreInfo .earlyStartup").text(boolean(data["early_startup"]));
+			profileContainer.find(".moreInfo .travel").text(boolean(data["willing_travel"]));
+			profileContainer.find(".moreInfo .about").text(boolean(data["about"]));
+			var status = data["status"];
+ 			profileContainer.find(".icon[data-attribute="+ status +"]").addClass("highlight");
 			data["jobs"].forEach(function(aJob, index){
 				if(index>2){
 					return
@@ -51,9 +56,67 @@ var storeProfile = function(res){
 				card.find(".exp").text(aJob["from_exp_month"]+"/"+aJob["from_exp_year"]+" - "+aJob["to_exp_month"]+"/"+aJob["to_exp_year"]);
 				profileContainer.find(".profile_content .organization").append(card);
 			})
+			data["edu"].forEach(function(anEdu,index){
+				if(index>2){
+					return
+				}
+				var column = $(".instituteCard.prototype").clone().removeClass('prototype hidden');
 
+				column.find(".name").text(anEdu["institute"]);
+				column.find(".start_duration").text(anEdu["batch_from"]);
+				column.find(".end_duration").text(anEdu["batch_to"]);
+				column.find(".degree").text(anEdu["degree"]);
+				profileContainer.find('.profile_content .institute').append(column);
+			})
+ 			tabContainer.find(".email").text(data["email"]);
+			if(data["phone"]) {
+				tabContainer.find(".contact").text(data["phone"]);
+			}
+			else {
+				tabContainer.find(".info.phone").addClass("hidden");
+			}
+			resumeContainer.find(".resume-embed").atrr("src",data["resumeUrl"]);
 		}
 	}
+}
+
+function boolean(data) {
+	if(data === 1) {
+		return "yes"
+	}
+	else if (data === 0) {
+		return "no"
+	}
+}
+
+
+function ISODateToD_M_Y(aDate) {
+  var date = new Date(aDate),
+	year = date.getFullYear(),
+	month = date.getMonth(),
+	dt = date.getDate();
+
+  if (dt < 10) {
+	dt = '0' + dt;
+  }
+  if (month < 10) {
+	month = '0' + month;
+  }
+
+  var str = dt + "-" + month + "-" + year;
+  return str;
+}
+
+function getAge(dateString) {
+	var today = new Date();
+	var birthDate = new Date(dateString);
+	var age = today.getFullYear() - birthDate.getFullYear();
+	var m = today.getMonth() - birthDate.getMonth();
+	if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+		age--;
+	}
+
+	 return age;
 }
 
 function formatLanguages(data){

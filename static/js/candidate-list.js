@@ -98,7 +98,7 @@ $(document).ready(function(){
 	  pageContent: 5,
 	  pageNumber: pageNumber
 	   }, populateJobs)
-	
+
 	openModalBtn.click(openModal);
 	closeModalBtn.click(closeModal);
 	viewByOptions.click(loadViewByData);
@@ -112,6 +112,10 @@ var populateJobs = function(res){
 		jobs.find(".status_shortlisted").text(res["shortlisted"]);
 		jobs.find(".status_rejected").text(res["rejected"]);
 		jobs.find(".status_saved").text(res["save"]);
+		var unread = res["total"] - (res["shortlisted"] + res["rejected"] + res["save"]);
+		jobs.find(".status_unread").text(unread);
+		jobs.find(".status_sort").text(unread);
+
 		res["data"].forEach(function(aJob){
 			//console.log(total_exp);
 			var card = tableRow.clone().removeClass('prototype hidden');
@@ -123,6 +127,9 @@ var populateJobs = function(res){
 			card.find(".user_sex").text(aJob["sex"]);
 			card.find(".user_age").text(getAge(aJob["dob"]));
 			card.find(".user_img").attr('src', aJob["imgUrl"]);
+			var iconStatus = aJob["status"];
+			card.find(".icon[data-attribute= " + iconStatus + "]").addClass("highlighted");
+			card.find(".icon[data-attribute=4]").attr("href","/profile/"+aJob["userID"]+"?jobID="+jobID);
 			var orgArray = aJob["jobs"];
 			var i;
 			var len = orgArray.length;
@@ -199,6 +206,8 @@ function getAge(dateString) {
 	 return age;
 }
 
+
+
 var obj = {};
 
 filters.find('input[type="checkbox"]').on('change', function(){
@@ -210,76 +219,6 @@ filters.find('input[type="checkbox"]').on('change', function(){
 	});
 	obj[name] = tagsArray;
 });
-
-/* the above snippet eliminates the need for an individual event binding on every section
-filters.find('input[type="checkbox"][name="industry[]"]').on('change', function() {
-	var industryTags = filters.find('input[name="industry[]"]:checked').map(function() {
-		return this.value;
-	})
-	.get();
-
-	obj["industry"] = industryTags.join(',');
-
-
-});
-
-filters.find('input[type="checkbox"][name="functional-area[]"]').on('change', function() {
-	var functionalAreaTags = filters.find('input[name="functional-area[]"]:checked').map(function() {
-		return this.value;
-	})
-	.get();
-
-	obj["functionalArea"] = functionalAreaTags.join(',');
-
-
-});
-
-filters.find('input[type="checkbox"][name="cur-loc[]"]').on('change', function() {
-	var currentLocationTags = filters.find('input[name="cur-loc[]"]:checked').map(function() {
-		return this.value;
-	})
-	.get();
-
-	obj["currentLocation"] = currentLocationTags.join(',');
-
-
-});
-
-filters.find('input[type="checkbox"][name="institute[]"]').on('change', function() {
-	var instituteTags = filters.find('input[name="institute[]"]:checked').map(function() {
-		return this.value;
-	})
-	.get();
-
-	obj["institute"] = instituteTags.join(',');
-
-
-});
-
-filters.find('input[type="checkbox"][name="pref-loc[]"]').on('change', function() {
-	var preferredLocationTags = filters.find('input[name="pref-loc[]"]:checked').map(function() {
-		return this.value;
-	})
-	.get();
-
-	obj["preferredLocation"] = preferredLocationTags.join(',');
-
-
-});
-
-filters.find('input[type="checkbox"][name="languages[]"]').on('change', function() {
-	var languageTags = filters.find('input[name="languages[]"]:checked').map(function() {
-		return this.value;
-	})
-	.get();
-
-	obj["language"] = languageTags.join(',');
-
-
-});
-
-*/
-
 
 filters.find('#min-experience').on('change', function() {
 	var minExperienceTag = this.value;
@@ -396,7 +335,7 @@ filters.find("input[name='abled']").on('change', function() {
 var ticker;
 
 function checkScrollEnd() {
-  return
+
 	if($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
 		var attribute = $('.stat.highlight')[0];
 		var id = $(attribute).attr("data-attribute");

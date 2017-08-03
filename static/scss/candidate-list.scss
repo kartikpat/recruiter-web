@@ -32,8 +32,11 @@ input,select {
 }
 
 .highlight {
-  background-color: red;
-  color: #ffffff !important;
+  background-color: #00FFC6    ;
+
+}
+.highlighted {
+    color: green !important;
 }
 
 
@@ -84,8 +87,7 @@ input,select {
                         border: 1px solid #d8d8d8;
                         border-radius: 4px;
                         width: 60%;
-
-
+                        background-color: inherit;
                 }
                 input[type="checkbox"] {
                         display: inline-block;
@@ -161,11 +163,12 @@ input,select {
             line-height: 40px;
             padding-left: 20px;
             select {
-                    padding: 8px 16px;
+                    padding: 4px 16px;
                     margin: 8px 0;
                     border: 1px solid #ccc;
                     border-radius: 4px;
                     width: auto;
+                    background-color: inherit;
             }
         }
         .jobs_panel {
