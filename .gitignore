@@ -1,4 +1,9 @@
 #excluding node_modules
 node_modules
 deploy.sh
+<<<<<<< HEAD
 static/build/*
+=======
+static/build
+*.sublime-workspace
+>>>>>>> feature/candidate-list

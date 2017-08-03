@@ -88,11 +88,11 @@
 			]
 		}
 	},
-	"job-posting": {
+	"candidate-list": {
 		"styles": {
 			"debug" : [
 				"static/css/header.css",
-            	"static/css/job-posting.css",
+            	"static/css/candidate-list.css",
 				"static/css/footer.css",
 				"static/css/buttons.css",
 				"static/css/colors.css"
@@ -100,7 +100,7 @@
 
 			],
 			"prod": [
-				"static/build/css/job-posting.min.css"
+				"static/build/css/candidate-list.min.css"
 
 			]
 		},
@@ -108,10 +108,10 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/request.js",
-				"static/js/job-posting.js"
+				"static/js/candidate-list.js"
 			],
 			"prod" : [
-				"static/build/js/job-posting.min.js"
+				"static/build/js/candidate-list.min.js"
 			]
 		}
 	},
