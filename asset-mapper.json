@@ -3,7 +3,8 @@
 		"styles": {
 			"debug" : [
 				"static/css/header.css",
-        "static/css/index.css",
+        		"static/css/index.css",
+				"static/css/buttons.css",
 				"static/css/footer.css"
 
 			],
@@ -23,10 +24,13 @@
 			]
 		}
 	},
-	"postjob": {
+	"post-job": {
 		"styles": {
 			"debug" : [
-        "static/css/index.css"
+				"static/css/header.css",
+        		"static/css/index.css",
+				"static/css/footer.css",
+				"static/css/buttons.css"
 
 
 			],
@@ -69,7 +73,8 @@
 	"sign-in": {
 		"styles": {
 			"debug" : [
-            	"static/css/sign-in.css"
+            	"static/css/sign-in.css",
+				"static/css/buttons.css"
 
 			],
 			"prod": [

@@ -727,7 +727,7 @@
                 <li><a href="javascript:void(0)" class="stat" data-attribute="3">Saved<span class="status status_saved">22</span></a></li>
             </ul>
        </div>
-        
+
        <div class="calendar box_shadow">
             <span>Send calendar</span>
             <select>
@@ -768,7 +768,7 @@
       <input type="checkbox">
     </span>
     <span class="content content_name">
-      <img class="user_img" src="../static/img/tree.jpg">
+      <img class="user_img" src="../static/img/tree.jpg" onerror="this.src='http://www.iimjobs.com/resources/img/user_profile_new.png';">
      <div class="info">
          <div class="important_info user_name">Nitish</div>
          <div class="important_info"><span>Experience: </span><span class="user_experience">3y 6m</span></div>
@@ -802,15 +802,16 @@
    </div>
     <span class="content content_more">
        <div class="info">
-            <a href="" class="icon"><i class="fa fa-check-square-o" aria-hidden="true"></i><span>Shortlist</span></a>
-            <a href="" class="icon"><i class="fa fa-ban" aria-hidden="true"></i><span>Reject</span></a>
-            <a href="" class="icon"><i class="fa fa-floppy-o" aria-hidden="true"></i><span>Save for future use</span></a>
-            <a href="" class="icon"><i class="fa fa-eye" aria-hidden="true"></i><span>View Resume</span></a>
-            <a href="" class="icon"><i class="fa fa-download" aria-hidden="true"></i><span>Download Resume</span></a>
+            <a href="" class="icon " data-attribute="1"><i class="fa fa-check-square-o" aria-hidden="true"></i><span>Shortlist</span></a>
+            <a href="" class="icon " data-attribute="2"><i class="fa fa-ban" aria-hidden="true"></i><span>Reject</span></a>
+            <a href="" class="icon " data-attribute="3"><i class="fa fa-floppy-o" aria-hidden="true"></i><span>Save for future use</span></a>
+            <a href="" class="icon " data-attribute="4"><i class="fa fa-eye" aria-hidden="true"></i><span>View Resume</span></a>
+            <a href="" class="icon" data-attribute="5"><i class="fa fa-download" aria-hidden="true"></i><span>Download Resume</span></a>
             <a href="" class="icon"><i class="fa fa-list-alt" aria-hidden="true"></i><span>Cover Letter</span></a>
             <a href="" class="icon"><i class="fa fa-comment" aria-hidden="true"></i><span>Comment</span></a>
             <a href="" class="icon"><i class="fa fa-mobile" aria-hidden="true"></i><span>Contact information</span></a>
             <a href="" class="icon"><i class="fa fa-tags" aria-hidden="true"></i><span>Tags</span></a>
+
        </div>
        <div class="info">
             <a href="" class="icon"><i class="fa fa-whatsapp" aria-hidden="true"></i><span>chat with<span class="user_name">kartik</span></span></a>
@@ -819,9 +820,11 @@
     </span>
 </div>
 
-<div class="modal hidden" data-attribute="menu-industry">
-   <div class="modal-content white-bg">
+<div class="filters">
+    <div class="modal hidden" data-attribute="menu-industry">
+    <div class="modal-content white-bg">
         <span class="close js-close-modal" data-attribute="menu-industry">&times;</span>
+        <button class="button small submit-filters" data-attribute="menu-industry">Submit</button>
        <div class="row" data-attribute="menu-industry">
             <span class="js-tags-modal" data-attribute="menu-industry">
                <div>
@@ -961,10 +964,10 @@
        <div>
             <button class="button small submit-filters" data-attribute="menu-industry">Submit</button>
        </div>
-   </div>
-</div>
-<div class="modal hidden" data-attribute="menu-functional-area">
-   <div class="modal-content white-bg">
+    </div>
+    </div>
+    <div class="modal hidden" data-attribute="menu-functional-area">
+    <div class="modal-content white-bg">
         <span class="close js-close-modal" data-attribute="menu-functional-area">&times;</span>
        <div class="row" data-attribute="menu-functional-area">
              <span class="js-tags-modal" data-attribute="menu-functional-area">
@@ -1057,10 +1060,10 @@
        <div>
             <button class="button small submit-filters" data-attribute="menu-functional-area">Submit</button>
        </div>
-   </div>
-</div>
-<div class="modal hidden" data-attribute="menu-current-location">
-   <div class="modal-content white-bg">
+    </div>
+    </div>
+    <div class="modal hidden" data-attribute="menu-current-location">
+    <div class="modal-content white-bg">
         <span class="close js-close-modal" data-attribute="menu-current-location">&times;</span>
        <div class="row" data-attribute="menu-current-location">
         <span class="js-tags-modal" data-attribute="menu-current-location">
@@ -2135,10 +2138,10 @@
        <div>
             <button class="button small submit-filters" data-attribute="menu-current-location">Submit</button>
        </div>
-   </div>
-</div>
-<div class="modal hidden" data-attribute="menu-preferred-location">
-   <div class="modal-content white-bg">
+    </div>
+    </div>
+    <div class="modal hidden" data-attribute="menu-preferred-location">
+    <div class="modal-content white-bg">
         <span class="close js-close-modal" data-attribute="menu-preferred-location">&times;</span>
        <div class="row" data-attribute="menu-preferred-location">
              <span class="js-tags-modal" data-attribute="menu-preferred-location">
@@ -3216,9 +3219,9 @@
        <div>
             <button class="button small submit-filters" data-attribute="menu-preferred-location">Submit</button>
        </div>
-   </div>
-</div>
-<div class="modal hidden" data-attribute="menu-institute">
+    </div>
+    </div>
+    <div class="modal hidden" data-attribute="menu-institute">
     <div class="modal-content white-bg">
         <span class="close js-close-modal" data-attribute="menu-institute">&times;</span>
         <div class="row" data-attribute="menu-institute">
@@ -3915,10 +3918,10 @@
        <div>
             <button class="button small submit-filters" data-attribute="menu-institute">Submit</button>
        </div>
-   </div>
-</div>
-<div class="modal hidden" data-attribute="menu-languages">
-   <div class="modal-content white-bg">
+    </div>
+    </div>
+    <div class="modal hidden" data-attribute="menu-languages">
+    <div class="modal-content white-bg">
         <span class="close js-close-modal" data-attribute="menu-languages">&times;</span>
        <div class="row" data-attribute="menu-languages">
            <span class="js-tags-modal" data-attribute="menu-languages">
@@ -4031,6 +4034,7 @@
        <div>
             <button class="button small submit-filters" data-attribute="menu-languages">Submit</button>
        </div>
-   </div>
+    </div>
+    </div>
 </div>
 {{> footer}}

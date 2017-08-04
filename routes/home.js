@@ -63,11 +63,13 @@ module.exports = function(settings){
 		return
 	});
 
+
+
 	app.get("/post-job", function(req, res){
-		res.render("postjob",{
+		res.render("post-job",{
 			title: "IIM JOBS | Post job",
-			styles:  assetsMapper["postjob"]["styles"][mode],
-			scripts: assetsMapper["postjob"]["scripts"][mode],
+			styles:  assetsMapper["post-job"]["styles"][mode],
+			scripts: assetsMapper["post-job"]["scripts"][mode],
 			baseUrl: baseUrl
 		})
 		return
@@ -121,6 +123,8 @@ module.exports = function(settings){
 
 	app.get("/logout", function(req,res){
 		req.session = null;
+
 		res.redirect("/");
+
 	});
 }

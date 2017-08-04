@@ -17,8 +17,10 @@ input:focus, select:focus {
   margin: 20px 0 20px 20px; }
 
 .highlight {
-  background-color: red;
-  color: #ffffff !important; }
+  background-color: #00FFC6; }
+
+.highlighted {
+  color: green !important; }
 
 * {
   font-family: 'Open Sans', sans-serif;
@@ -63,7 +65,8 @@ input:focus, select:focus {
           margin: 1px 0 6px 0;
           border: 1px solid #d8d8d8;
           border-radius: 4px;
-          width: 60%; }
+          width: 60%;
+          background-color: inherit; }
         .main-container .filters .menu .field input[type="checkbox"] {
           display: inline-block;
           width: auto; }
@@ -117,11 +120,12 @@ input:focus, select:focus {
       line-height: 40px;
       padding-left: 20px; }
       .main-container .jobs .calendar select {
-        padding: 8px 16px;
+        padding: 4px 16px;
         margin: 8px 0;
         border: 1px solid #ccc;
         border-radius: 4px;
-        width: auto; }
+        width: auto;
+        background-color: inherit; }
     .main-container .jobs .jobs_panel {
       width: 100%;
       margin: 40px auto;
@@ -210,6 +214,7 @@ input:focus, select:focus {
   top: 0;
   min-width: 100%; }
   .modal .modal-content {
+    position: relative;
     margin: 200px auto;
     padding: 20px;
     border: 1px solid #888;
@@ -227,13 +232,19 @@ input:focus, select:focus {
           padding: 0;
           margin: 0; }
         .modal .modal-content .row div span {
-          font-size: 10px; }
+          font-size: 12px; }
     .modal .modal-content .close {
       color: #aaa;
-      float: right;
+      position: absolute;
+      right: 3%;
+      top: 5%;
       font-size: 28px;
       font-weight: bold; }
       .modal .modal-content .close:hover, .modal .modal-content .close:focus {
         color: black;
         text-decoration: none;
         cursor: pointer; }
+    .modal .modal-content .submit-filters {
+      position: absolute;
+      right: 2%;
+      top: 20%; }
