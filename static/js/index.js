@@ -32,7 +32,7 @@ var populateJobs = function(res){
 			card.find(".date").text(date_ddmmyy(aJob["created"]));
 			card.find(".title").text(aJob["title"]);
 			card.find(".status").text(aJob["rej"]);
-			card.find(".views").html(( aJob["views"])? aJob["views"]+" views ("+( (aJob["applied"])? '<a href="/job-posting/'+aJob["id"]+'">'+aJob["applied"]+'</a>'+  ")": "0)" ): "" )
+			card.find(".views").html(( aJob["views"])? aJob["views"]+" views ("+( (aJob["applied"])? '<a href="/job/'+aJob["id"]+'/candidates">'+aJob["applied"]+'</a>'+  ")": "0)" ): "" )
 			$('.jobs_container').append(card);
 		})
 	}
