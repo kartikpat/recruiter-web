@@ -5,7 +5,7 @@ node_modules
 deploy.sh
 
 #excluding build
-static/build
+static/build/*
 
 #excluding editor preferences
 *.sublime-workspace

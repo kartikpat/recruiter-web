@@ -77,7 +77,8 @@ var storeProfile = function(res){
 			else {
 				tabContainer.find(".info.phone").addClass("hidden");
 			}
-			//resumeContainer.find(".resume-embed").atrr("src",data["resumeUrl"]);
+
+			resumeContainer.find(".resume-embed-container").html('<embed src="'+data["resumeUrl"]+'" class="resume-embed" type="application/pdf">')
 		/*	if(data.hasOwnProperty("cover_text")) {
 				console.log(data);
 				var coverText = data["cover_text"];
