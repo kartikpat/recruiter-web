@@ -2,6 +2,7 @@ var modal = $(".modal");
 var openModalBtn = $(".js-open-modal");
 var closeModalBtn = $(".js-close-modal");
 var filters = $(".filters");
+var jobContainer =$(".jobs_wrapper");
 
 /**
  * opens the respective modal depending upon the data-attribute passed through the clicked element
@@ -47,7 +48,7 @@ var loadViewByData = function() {
 }
 
 
-var submitFilters = function() {
+/*var submitFilters = function() {
 	var parameters = {
 		industry: (obj["industry"])? obj["industry"].join(","): null,
 		location: (obj["location"])? obj["location"].join(","): null,
@@ -73,7 +74,7 @@ var submitFilters = function() {
 	};
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, parameters, populateJobs);
 	$('.jobs_wrapper').empty();
-}
+} */
 
 // When the user clicks anywhere outside of the modal, close it
  /*window.onclick = function(event) {
@@ -102,7 +103,9 @@ $(document).ready(function(){
 	openModalBtn.click(openModal);
 	closeModalBtn.click(closeModal);
 	viewByOptions.click(loadViewByData);
-	$(".submit-filters").click(submitFilters);
+	//jobContainer.mouseenter(onHoverDisplayIcons);
+	//jobContainer.mousleave(onHoverUnDisplayIcons);
+	//$(".submit-filters").click(submitFilters);
 });
 
 var populateJobs = function(res){
@@ -206,6 +209,10 @@ function getAge(dateString) {
 	 return age;
 }
 
+var onHoverDisplayIcons = function() {
+	$(".js-hover-icons").removeClass("hidden");
+}
+
 
 
 var obj = {};
@@ -218,6 +225,7 @@ filters.find('input[type="checkbox"]').on('change', function(){
 		tagsArray.push(anElement.value);
 	});
 	obj[name] = tagsArray;
+	console.log(obj[name]);
 });
 
 filters.find('#min-experience').on('change', function() {

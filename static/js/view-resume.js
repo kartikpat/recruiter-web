@@ -31,8 +31,10 @@ var storeProfile = function(res){
 			//profileContainer.find(".userDetail .applyDate").text(data["apply_date"]);
 
 			profileContainer.find(".extraInfo .prefLocation").text(data["pref_location"]);
-			profileContainer.find(".extraInfo .currentCTC").text(data["current_ctc"]);
-			profileContainer.find(".extraInfo .expectedCTC").text(data["expected_ctc"]);
+			var curSalary = (data["current_ctc"])? data["current_ctc"]+" Lakhs": "confidential";
+			profileContainer.find(".extraInfo .currentCTC").text("Current Salary: "+ curSalary);
+			var expSalary = (data["expected_ctc"])? data["expected_ctc"]+" Lakhs": "confidential";
+			profileContainer.find(".extraInfo .expectedCTC").text("Expected Salary: "+ expSalary);
 
 			profileContainer.find(".moreInfo .maritalStatus").text(boolean(data["marital_status"]));
 			profileContainer.find(".moreInfo .languages").text(formatLanguages(data["language_known"]));
@@ -75,7 +77,17 @@ var storeProfile = function(res){
 			else {
 				tabContainer.find(".info.phone").addClass("hidden");
 			}
-			resumeContainer.find(".resume-embed").atrr("src",data["resumeUrl"]);
+			//resumeContainer.find(".resume-embed").atrr("src",data["resumeUrl"]);
+		/*	if(data.hasOwnProperty("cover_text")) {
+				console.log(data);
+				var coverText = data["cover_text"];
+				if(cover_text) {
+					resumeContainer.find(".cover_content").text(coverText);
+				}
+				else {
+					resumeContainer.find(".cover_letter .content").addClass("hidden");
+				}
+			} */
 		}
 	}
 }

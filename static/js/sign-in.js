@@ -8,6 +8,8 @@ $(document).ready(function(){
 	$(".js-submit").click(function(event){
 		event.preventDefault();
 		var id= $("#userName").val();
+		var userEmail = $("#user-email").val();
+		var userPassword = $("#user-password").val();
 		localStorage.id = id;
 		postRequest("/sign-in", null, {id: id},authSuccess, authFail,true,null)
 	})

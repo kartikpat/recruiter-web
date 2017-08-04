@@ -297,6 +297,7 @@ input,select {
     top: 0;
     min-width: 100%;
     .modal-content {
+        position: relative;
         margin: 200px auto;
         padding: 20px;
         border: 1px solid #888;
@@ -315,13 +316,15 @@ input,select {
                 margin: 0;
             }
             span{
-                font-size: 10px;
+                font-size: 12px;
             }
           }
         }
         .close {
             color: #aaa;
-            float: right;
+            position: absolute;
+            right: 3%;
+            top: 5%;
             font-size: 28px;
             font-weight: bold;
             &:hover, &:focus {
@@ -329,6 +332,11 @@ input,select {
               text-decoration: none;
               cursor: pointer;
             }
+        }
+        .submit-filters {
+            position: absolute;
+            right: 2%;
+            top: 20%;
         }
     }
 }
