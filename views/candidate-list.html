@@ -109,7 +109,7 @@
             <span>Experience</span>
             <button class="button x-small submit-filters" data-attribute="menu-experience" ><i class="fa fa-search" aria-hidden="true"></i></button>
            <div class="field">
-                <select class="half" id="min-experience">
+                <select class="half js-filters" name="minExperience">
                     <option value="">Min</option>
                     <option value="0">0</option>
                     <option value="1">1</option>
@@ -144,7 +144,7 @@
                     <option value="30">30</option>
                     <option value="31">31</option>
                 </select>
-                <select class="half" id="max-experience">
+                <select class="half js-filters" name="maxExperience">
                     <option value="">Max</option>
                     <option value="0">0</option>
                     <option value="1">1</option>
@@ -186,7 +186,7 @@
             <span>Batch</span>
             <button class="button x-small submit-filters" data-attribute="menu-batch"><i class="fa fa-search" aria-hidden="true"></i></button>
            <div class="field">
-                <select class="half" id="min-batch">
+                <select class="half js-filters" name="minBatch">
                     <option value="">Min</option>
                     <option value="2018">2018</option>
                     <option value="2017">2017</option>
@@ -228,7 +228,7 @@
                     <option value="1981">1981</option>
                     <option value="1980">1980</option>
                 </select>
-                <select class="half" id="max-batch">
+                <select class="half js-filters" name="maxBatch">
                     <option value="">Max</option>
                     <option value="2018">2018</option>
                     <option value="2017">2017</option>
@@ -278,7 +278,7 @@
             <button class="button x-small submit-filters" data-attribute="menu-salary"><i class="fa fa-search" aria-hidden="true"></i></button>
 
            <div class="field">
-                <select class="half" id="min-salary">
+                <select class="half js-filters" name="minSalary">
                     <option value="">Min</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
@@ -379,7 +379,7 @@
                     <option value="99">99</option>
                     <option value="100">100</option>
                 </select>
-                <select class="half" id="max-salary">
+                <select class="half js-filters" name="maxSalary">
                     <option value="">Max</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
@@ -488,7 +488,7 @@
             <button class="button x-small submit-filters" data-attribute="menu-age"><i class="fa fa-search" aria-hidden="true"></i></button>
 
            <div class="field">
-                <select class="half" id="min-age">
+                <select class="half js-filters" name="minAge">
                     <option value="">Min</option>
                     <option value="22">22</option>
                     <option value="23">23</option>
@@ -535,7 +535,7 @@
                     <option value="64">64</option>
                     <option value="65">65</option>
                 </select>
-                <select class="half" id="max-age">
+                <select class="half js-filters" name="maxAge">
                     <option value="" >Max</option>
                     <option value="22">22</option>
                     <option value="23">23</option>
@@ -589,13 +589,13 @@
             <button class="button x-small submit-filters" data-attribute="menu-gender"><i class="fa fa-search" aria-hidden="true"></i></button>
            <div class="field">
                <div>
-                    <input type="radio" name="gender" value="0"><span class="font-xs"> Male</span><br>
+                    <input type="radio" name="gender" value="1" class="js-filters"><span class="font-xs"> Male</span><br>
                </div>
                <div>
-                    <input type="radio" name="gender" value="1" class="font-xs"><span class="font-xs"> Female</span><br>
+                    <input type="radio" name="gender" value="2" class="font-xs js-filters"><span class="font-xs"> Female</span><br>
                </div>
                <div>
-                    <input type="radio" name="gender" value="2" class="font-xs"><span class="font-xs"> Not Mentioned</span>
+                    <input type="radio" name="gender" value="3" class="font-xs js-filters"><span class="font-xs"> Not Mentioned</span>
                </div>
            </div>
        </div>
@@ -604,7 +604,7 @@
             <button class="button x-small submit-filters" data-attribute="menu-notice-period"><i class="fa fa-search" aria-hidden="true"></i></button>
 
            <div class="field">
-                <select id="notice-period">
+                <select class="js-filters" name="notice-period">
                     <option value="-1">Select</option>
                     <option value="7">Immediately Available</option>
                     <option value="1">1 month</option>
@@ -622,7 +622,7 @@
             <button class="button x-small submit-filters" data-attribute="menu-application-date"><i class="fa fa-search" aria-hidden="true"></i></button>
 
            <div class="field">
-                <select id="application-date">
+                <select class="js-filters" name="application-date">
                     <option value="-1">Select</option>
                     <option value="3">3 days</option>
                     <option value="7">7 days</option>
@@ -637,7 +637,7 @@
             <button class="button x-small submit-filters" data-attribute="menu-last-seen"><i class="fa fa-search" aria-hidden="true"></i></button>
 
            <div class="field">
-                <select id="last-seen">
+                <select class="js-filters" name="lastSeen">
                     <option value="">All</option>
                     <option value="1">Last 1 Month</option>
                     <option value="3">Last 3 Months</option>
@@ -650,8 +650,8 @@
             <button class="button x-small submit-filters" data-attribute="menu-work-permit"><i class="fa fa-search" aria-hidden="true"></i></button>
            <div class="field">
 
-              <input type="radio" name="work-permit" value="1"><span class="font-xs"> Yes</span>
-              <input type="radio" name="work-permit" value="0"><span class="font-xs"> No</span>
+              <input type="radio" class="js-filters" name="isWorkPermit" value="1"><span class="font-xs"> Yes</span>
+              <input type="radio" class="js-filters" name="isWorkPermit" value="0"><span class="font-xs"> No</span>
 
 
            </div>
@@ -661,8 +661,8 @@
             <button class="button x-small submit-filters" data-attribute="menu-team-handle"><i class="fa fa-search" aria-hidden="true"></i></button>
            <div class="field">
 
-              <input type="radio" name="team-handle" value="1"><span class="font-xs"> Yes</span>
-              <input type="radio" name="team-handle" value="0"><span class="font-xs"> No</span>
+              <input type="radio" class="js-filters" name="hasHandledTeam" value="1"><span class="font-xs"> Yes</span>
+              <input type="radio" class="js-filters" name="hasHandledTeam" value="0"><span class="font-xs"> No</span>
 
            </div>
        </div>
@@ -671,8 +671,8 @@
             <button class="button x-small submit-filters" data-attribute="menu-relocate"><i class="fa fa-search" aria-hidden="true"></i></button>
            <div class="field">
 
-              <input type="radio" name="relocate" value="1"><span class="font-xs"> Yes</span>
-              <input type="radio" name="relocate" value="0"><span class="font-xs"> No</span>
+              <input type="radio" class="js-filters" name="canRelocate" value="1"><span class="font-xs"> Yes</span>
+              <input type="radio" class="js-filters" name="canRelocate" value="0"><span class="font-xs"> No</span>
 
            </div>
        </div>
@@ -682,8 +682,8 @@
             <button class="button x-small submit-filters" data-attribute="menu-abled"><i class="fa fa-search" aria-hidden="true"></i></button>
            <div class="field">
 
-              <input type="radio" name="abled" value="1"><span class="font-xs"> Yes</span>
-              <input type="radio" name="abled" value="0"><span class="font-xs"> No</span>
+              <input type="radio" class="js-filters" name="isDifferentlyAbled" value="1"><span class="font-xs"> Yes</span>
+              <input type="radio" class="js-filters" name="isDifferentlyAbled" value="0"><span class="font-xs"> No</span>
 
            </div>
        </div>
@@ -820,7 +820,7 @@
     </span>
 </div>
 
-<div class="filters">
+<div class="filters-modal">
     <div class="modal hidden" data-attribute="menu-industry">
     <div class="modal-content white-bg">
         <span class="close js-close-modal" data-attribute="menu-industry">&times;</span>

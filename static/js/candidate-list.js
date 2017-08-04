@@ -2,6 +2,7 @@ var modal = $(".modal");
 var openModalBtn = $(".js-open-modal");
 var closeModalBtn = $(".js-close-modal");
 var filters = $(".filters");
+var filtersModal = $(".filters-modal");
 var jobContainer =$(".jobs_wrapper");
 
 /**
@@ -48,7 +49,7 @@ var loadViewByData = function() {
 }
 
 
-/*var submitFilters = function() {
+var submitFilters = function() {
 	var parameters = {
 		industry: (obj["industry"])? obj["industry"].join(","): null,
 		location: (obj["location"])? obj["location"].join(","): null,
@@ -74,7 +75,7 @@ var loadViewByData = function() {
 	};
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, parameters, populateJobs);
 	$('.jobs_wrapper').empty();
-} */
+}
 
 // When the user clicks anywhere outside of the modal, close it
  /*window.onclick = function(event) {
@@ -103,9 +104,8 @@ $(document).ready(function(){
 	openModalBtn.click(openModal);
 	closeModalBtn.click(closeModal);
 	viewByOptions.click(loadViewByData);
-	//jobContainer.mouseenter(onHoverDisplayIcons);
-	//jobContainer.mousleave(onHoverUnDisplayIcons);
-	//$(".submit-filters").click(submitFilters);
+
+	$(".submit-filters").click(submitFilters);
 });
 
 var populateJobs = function(res){
@@ -217,128 +217,38 @@ var onHoverDisplayIcons = function() {
 
 var obj = {};
 
-filters.find('input[type="checkbox"]').on('change', function(){
+filtersModal.find('.js-tags-modal input[type="checkbox"]').on('change', function(){
+	var name = $(this).attr('name');
+	var uncheckedElements = filtersModal.find('.js-tags-modal input[name="'+name+'"]:not(:checked)');
+	var checkedElements = filtersModal.find('.js-tags-modal input[name="'+name+'"]:checked')
+	uncheckedElements.each(function(index,anElement){
+		var val = $(this).val();
+		$(".js-tags input[name="+name+"][value=  " + val +"]").prop('checked',false);
+	});
+	checkedElements.each(function(index,anElement){
+		var val = $(this).val();
+		$(".js-tags input[name="+name+"][value=  " + val +"]").prop('checked',true);
+	});
+});
+
+filtersModal.find('input[type="checkbox"]').on('change', function(){
 	var name = $(this).attr('name');
 	var tagsArray = [];
-	var elements = filters.find('input[name="'+name+'"]:checked');
+	var elements = filtersModal.find('input[name="'+name+'"]:checked');
 	elements.each(function(index,anElement){
 		tagsArray.push(anElement.value);
 	});
 	obj[name] = tagsArray;
-	console.log(obj[name]);
+	
 });
 
-filters.find('#min-experience').on('change', function() {
-	var minExperienceTag = this.value;
-	obj["minExperience"] = minExperienceTag;
-
-
-});
-
-filters.find('#max-experience').on('change', function() {
-	var maxExperienceTag = this.value;
-	obj["maxExperience"] = maxExperienceTag;
-
+filters.find('.js-filters').on('change', function(){
+	var name = $(this).attr('name');
+	obj[name] = $(this).val();
 
 });
 
-filters.find('#min-batch').on('change', function() {
-	var minBatchTag = this.value;
-	obj["minBatch"] = minBatchTag;
 
-
-});
-
-filters.find('#max-batch').on('change', function() {
-	var maxBatchTag = this.value;
-	obj["maxBatch"] = maxBatchTag;
-
-
-});
-
-filters.find('#min-salary').on('change', function() {
-	var minSalaryTag = this.value;
-	obj["minSalary"] = minSalaryTag;
-
-
-});
-
-filters.find('#max-salary').on('change', function() {
-	var maxSalaryTag = this.value;
-	obj["maxSalary"] = maxSalaryTag;
-
-
-});
-
-filters.find('#min-age').on('change', function() {
-	var minAgeTag = this.value;
-	obj["minAge"] = minAgeTag;
-
-
-});
-
-filters.find('#max-age').on('change', function() {
-	var maxAgeTag = this.value;
-	obj["maxAge"] = maxAgeTag;
-
-
-});
-
-filters.find("input[name='gender']").on('change', function() {
-	var gender = this.value;
-	obj["gender"] = gender;
-
-
-});
-
-filters.find('#notice-period').on('change', function() {
-	var noticePeriodTag = this.value;
-	obj["noticePeriod"] = noticePeriodTag;
-
-
-});
-
-filters.find('#applied-date').on('change', function() {
-	var appliedDateTag = this.value;
-	obj["appliedDate"] = appliedDateTag;
-
-
-});
-
-filters.find('#last-seen').on('change', function() {
-	var lastSeenTag = this.value;
-	obj["lastSeen"] = lastSeenTag;
-
-
-});
-
-filters.find("input[name='work-permit']").on('change', function() {
-	var isWorkPermitTag = this.value;
-	obj["isWorkPermit"] = isWorkPermitTag;
-
-
-});
-
-filters.find("input[name='team-handle']").on('change', function() {
-	var hasHandledTeamTag = this.value;
-	obj["hasHandledTeam"] = hasHandledTeamTag;
-
-
-});
-
-filters.find("input[name='relocate']").on('change', function() {
-	var canRelocateTag = this.value;
-	obj["canRelocate"] = canRelocateTag;
-
-
-});
-
-filters.find("input[name='abled']").on('change', function() {
-	var isDifferentlyAbledTag = this.value;
-	obj["isDifferentlyAbled"] = isDifferentlyAbledTag;
-
-
-});
 
 var ticker;
 
