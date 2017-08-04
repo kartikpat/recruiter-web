@@ -10,7 +10,7 @@ body, html {
   font-weight: normal; }
 
 .hidden {
-  display: none; }
+  display: none !important; }
 
 .container {
   height: calc(100% - 84px); }

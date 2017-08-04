@@ -79,16 +79,13 @@ var storeProfile = function(res){
 			}
 
 			resumeContainer.find(".resume-embed-container").html('<embed src="'+data["resumeUrl"]+'" class="resume-embed" type="application/pdf">')
-		/*	if(data.hasOwnProperty("cover_text")) {
-				console.log(data);
+			if(data["cover_text"]) {
 				var coverText = data["cover_text"];
-				if(cover_text) {
-					resumeContainer.find(".cover_content").text(coverText);
-				}
-				else {
-					resumeContainer.find(".cover_letter .content").addClass("hidden");
-				}
-			} */
+				resumeContainer.find(".cover_content").text(coverText);
+			}
+			else{
+				resumeContainer.find(".cover_letter	").addClass("hidden");
+			}
 		}
 	}
 }
