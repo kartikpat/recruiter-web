@@ -823,143 +823,20 @@
 <div class="filters-modal">
     <div class="modal hidden" data-attribute="menu-industry">
     <div class="modal-content white-bg">
+        <span>
+            <input type="text" id="search-tags">
+        </span>
+        <span class="tags-alphabets">
+        </span>
         <span class="close js-close-modal" data-attribute="menu-industry">&times;</span>
         <button class="button small submit-filters" data-attribute="menu-industry">Submit</button>
-       <div class="row" data-attribute="menu-industry">
-            <span class="js-tags-modal" data-attribute="menu-industry">
-               <div>
-                    <input type="checkbox" value="24" name="industry">
-                    <span >Accounting</span>
-               </div>
-               <div>
-                    <input type="checkbox" value="25" name="industry">
-                    <span>Advertising / PR / Events</span>
-               </div>
+       <div class="row js-menu-industry" data-attribute="menu-industry">
+            <!--<span class="js-tags-modal" data-attribute="menu-industry">
+
             </span>
-           <div>
-                <input type="checkbox" value="1" name="industry">
-                <span>Auto / Auto Ancillary</span>
-           </div>
-           <div>
-                <input type="checkbox" value="2" name="industry">
-                <span>Banking / Financial Services</span>
-           </div>
-           <div>
-                <input type="checkbox" value="3" name="industry">
-                <span>BPO / ITeS</span>
-           </div>
-           <div>
-                <input type="checkbox" value="26" name="industry">
-                <span>Chemicals</span>
-           </div>
-           <div>
-                <input type="checkbox" value="5" name="industry">
-                <span>Construction / Engineering / Cement</span>
-           </div>
-           <div>
-                <input type="checkbox" value="4" name="industry">
-                <span>Consulting</span>
-           </div>
-           <div>
-                <input type="checkbox" value="6" name="industry">
-                <span>Education / Training</span>
-           </div>
-           <div>
-                <input type="checkbox" value="27" name="industry">
-                <span>Facility Management</span>
-           </div>
-           <div>
-                <input type="checkbox" value="7" name="industry">
-                <span>FMCG / Durables / F&amp;B</span>
-           </div>
-           <div>
-                <input type="checkbox" value="8" name="industry">
-                <span>Healthcare / Medical / Hospital</span>
-           </div>
-           <div>
-                <input type="checkbox" value="10" name="industry">
-                <span>Industrial Products / Heavy Machinery</span>
-           </div>
-           <div>
-                <input type="checkbox" value="11" name="industry">
-                <span>Infrastructure / Oil &amp; Gas / Power / Energy</span>
-           </div>
-           <div>
-                <input type="checkbox" value="12" name="industry">
-                <span>Insurance</span>
-           </div>
-           <div>
-                <input type="checkbox" value="13" name="industry">
-                <span>Internet / Online / eCommerce</span>
-           </div>
-           <div>
-                <input type="checkbox" value="14" name="industry">
-                <span>IT</span>
-           </div>
-           <div>
-                <input type="checkbox" value="15" name="industry">
-                <span>KPO / Research / Analytics</span>
-           </div>
-           <div>
-                <input type="checkbox" value="16" name="industry">
-                <span>Legal</span>
-           </div>
-           <div>
-                <input type="checkbox" value="17" name="industry">
-                <span>Manufacturing</span>
-           </div>
-           <div>
-                <input type="checkbox" value="18" name="industry">
-                <span>Media / Entertainment</span>
-           </div>
-           <div>
-                <input type="checkbox" value="19" name="industry">
-                <span>Mining / Steel / Shipping</span>
-           </div>
-           <div>
-                <input type="checkbox" value="20" name="industry">
-                <span>NGO / Social Service</span>
-           </div>
-           <div>
-                <input type="checkbox" value="28" name="industry">
-                <span>Pharma / Biotech</span>
-           </div>
-           <div>
-                <input type="checkbox" value="29" name="industry">
-                <span>Real Estate</span>
-           </div>
-           <div>
-                <input type="checkbox" value="30" name="industry">
-                <span>Recruitment / Staffing</span>
-           </div>
-           <div>
-                <input type="checkbox" value="22" name="industry">
-                <span>Retail</span>
-           </div>
-           <div>
-                <input type="checkbox" value="31" name="industry">
-                <span>Semiconductors / Electronics</span>
-           </div>
-           <div>
-                <input type="checkbox" value="23" name="industry">
-                <span>Telecom</span>
-           </div>
-           <div>
-                <input type="checkbox" value="32" name="industry">
-                <span>Textile / Garments / Accessories / Fashion</span>
-           </div>
-           <div>
-                <input type="checkbox" value="9" name="industry">
-                <span>Travel Hospitality</span>
-           </div>
-           <div>
-                <input type="checkbox" value="34" name="industry">
-                <span>Agriculture &amp; Dairy</span>
-           </div>
-           <div>
-                <input type="checkbox" value="33" name="industry">
-                <span>Other</span>
-           </div>
+            <span class="js-load-tags">
+
+            </span> -->
        </div>
        <div>
             <button class="button small submit-filters" data-attribute="menu-industry">Submit</button>
@@ -973,7 +850,7 @@
              <span class="js-tags-modal" data-attribute="menu-functional-area">
                <div>
                     <input type="checkbox" value="1" name="functionalArea">
-                    <span >Accounting / Taxation / Audit</span>
+                    <label >Accounting / Taxation / Audit</span>
                </div>
                <div>
                     <input type="checkbox" value="7" name="functionalArea">
@@ -3288,7 +3165,7 @@
                  <span  title="Birla Institute of Technology and Science (BITS), Pilani">Birla Institute of Technology and Science (BITS), Pilani</span>
             </div>
             <div>
-                 <input  type="checkbox" value="160" name="institute" loctext="Birla Institute of Technology, Mesra">
+                 <input  type="checkbox" value="160" name="institute" >
                  <span  title="Birla Institute of Technology, Mesra">Birla Institute of Technology, Mesra</span>
             </div>
             <div>
@@ -3372,51 +3249,51 @@
                  <span  title="Institute of Company Secretaries of India (ICSI)">Institute of Company Secretaries of India (ICSI)</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="102" loctext="B. S. Abdur Rahman University">
+                 <input name="institute"  type="checkbox" value="102" >
                  <span  title="B. S. Abdur Rahman University">B. S. Abdur Rahman University</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="103" loctext="Anna University">
+                 <input name="institute" type="checkbox" value="103" >
                  <span  title="Anna University">Anna University</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="104" loctext="Visvesvaraya Technological University">
+                 <input name="institute" type="checkbox" value="104" >
                  <span  title="Visvesvaraya Technological University">Visvesvaraya Technological University</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="105" loctext="Birsa Institute of Technology Sindri">
+                 <input name="institute" type="checkbox" value="105" >
                  <span  title="Birsa Institute of Technology Sindri">Birsa Institute of Technology Sindri</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="106" loctext="Osmania University">
+                 <input name="institute" type="checkbox" value="106" >
                  <span  title="Osmania University">Osmania University</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="107" loctext="College of Engineering, Guindy">
+                 <input name="institute" type="checkbox" value="107" >
                  <span  title="College of Engineering, Guindy">College of Engineering, Guindy</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="108" loctext="University of Mumbai">
+                 <input name="institute" type="checkbox" value="108" >
                  <span  title="University of Mumbai">University of Mumbai</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="109" loctext="Uttarakhand Technical University">
+                 <input name="institute" type="checkbox" value="109" >
                  <span  title="Uttarakhand Technical University">Uttarakhand Technical University</span>
             </div>
             <div>
-                 <input  name="institute" type="checkbox" value="110" loctext="Delhi Technological University">
+                 <input  name="institute" type="checkbox" value="110" >
                  <span  title="Delhi Technological University">Delhi Technological University</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="111" loctext="Dhirubhai Ambani Institute of Information and Communication Technology">
+                 <input name="institute"  type="checkbox" value="111" >
                  <span  title="Dhirubhai Ambani Institute of Information and Communication Technology">Dhirubhai Ambani Institute of Information and Communication Technology</span>
             </div>
             <div>
-                 <input  type="checkbox" value="112" loctext="Malaviya National Institute of Technology, Jaipur">
+                 <input  type="checkbox" value="112" >
                  <span  title="Malaviya National Institute of Technology, Jaipur">Malaviya National Institute of Technology, Jaipur</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="113" loctext="Government College of Engineering, Amravati">
+                 <input name="institute" type="checkbox" value="113" >
                  <span  title="Government College of Engineering, Amravati">Government College of Engineering, Amravati</span>
             </div>
             <div>
@@ -3424,11 +3301,11 @@
                  <span  title="Harcourt Butler Technological Institute Kanpur (HBTI)">Harcourt Butler Technological Institute Kanpur (HBTI)</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="115" loctext="Walchand Institute of Technology">
+                 <input name="institute" type="checkbox" value="115" >
                  <span  title="Walchand Institute of Technology">Walchand Institute of Technology</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="116" loctext="Guru Gobind Singh Indraprastha University">
+                 <input name="institute" type="checkbox" value="116" >
                  <span  title="Guru Gobind Singh Indraprastha University">Guru Gobind Singh Indraprastha University</span>
             </div>
             <div>
@@ -3436,35 +3313,35 @@
                  <span  title="Indian Institute of Information Technology, Allahabad (IITA)">Indian Institute of Information Technology, Allahabad (IITA)</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="118" loctext="IIT, Dhanbad">
+                 <input name="institute"  type="checkbox" value="118" >
                  <span  title="IIT, Dhanbad">IIT, Dhanbad</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="119" loctext="Institute of Technology, Nirma University">
+                 <input name="institute" type="checkbox" value="119" >
                  <span  title="Institute of Technology, Nirma University">Institute of Technology, Nirma University</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="120" loctext="International Institute of Information Technology, Hyderabad">
+                 <input name="institute" type="checkbox" value="120" >
                  <span  title="International Institute of Information Technology, Hyderabad">International Institute of Information Technology, Hyderabad</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="121" loctext="University of Pune">
+                 <input name="institute" type="checkbox" value="121" >
                  <span  title="University of Pune">University of Pune</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="122" loctext="Manipal Institute of Technology Manipal University">
+                 <input name="institute" type="checkbox" value="122" >
                  <span  title="Manipal Institute of Technology Manipal University">Manipal Institute of Technology Manipal University</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="123" loctext="M.S.Ramaiah Institute of Technology">
+                 <input name="institute" type="checkbox" value="123" >
                  <span  title="M.S.Ramaiah Institute of Technology">M.S.Ramaiah Institute of Technology</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="124" loctext="Mepco Schlenk Engineering College">
+                 <input name="institute" type="checkbox" value="124" >
                  <span  title="Mepco Schlenk Engineering College">Mepco Schlenk Engineering College</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="125" loctext="Model Engineering College">
+                 <input name="institute" type="checkbox" value="125" >
                  <span  title="Model Engineering College">Model Engineering College</span>
             </div>
             <div>
@@ -3472,11 +3349,11 @@
                  <span  title="Motilal Nehru National Institute of Technology, Allahabad (NIT)">Motilal Nehru National Institute of Technology, Allahabad (NIT)</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="159" loctext="National Institute of Construction Management and Research">
+                 <input name="institute" type="checkbox" value="159" >
                  <span  title="National Institute of Construction Management and Research">National Institute of Construction Management and Research</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="127" loctext="National Institute of Engineering Visvesvaraya Technological University">
+                 <input name="institute" type="checkbox" value="127" >
                  <span  title="National Institute of Engineering Visvesvaraya Technological University">National Institute of Engineering Visvesvaraya Technological University</span>
             </div>
             <div>
@@ -3521,23 +3398,23 @@
                  <span  title="Netaji Subhas Institute of Technology (NSIT)">Netaji Subhas Institute of Technology (NSIT)</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="138" loctext="P.S.G. College of Technology">
+                 <input name="institute" type="checkbox" value="138" >
                  <span  title="P.S.G. College of Technology">P.S.G. College of Technology</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="139" loctext="P.E.S. College of Engineering">
+                 <input name="institute" type="checkbox" value="139" >
                  <span  title="P.E.S. College of Engineering">P.E.S. College of Engineering</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="140" loctext="P.E.S. Institute of Technology">
+                 <input name="institute" type="checkbox" value="140" >
                  <span  title="P.E.S. Institute of Technology">P.E.S. Institute of Technology</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="141" loctext="PEC University of Technology">
+                 <input name="institute" type="checkbox" value="141" >
                  <span  title="PEC University of Technology">PEC University of Technology</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="142" loctext="R.V. College of Engineering">
+                 <input name="institute" type="checkbox" value="142" >
                  <span  title="R.V. College of Engineering">R.V. College of Engineering</span>
             </div>
             <div>
@@ -3545,47 +3422,47 @@
                  <span  title="Rajagiri School of Engineering &amp; Technology">Rajagiri School of Engineering &amp; Technology</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="144" loctext="Sardar Vallabhbhai National Institute of Technology, Surat">
+                 <input name="institute" type="checkbox" value="144" >
                  <span  title="Sardar Vallabhbhai National Institute of Technology, Surat">Sardar Vallabhbhai National Institute of Technology, Surat</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="145" loctext="Shri Mata Vaishno Devi University">
+                 <input name="institute" type="checkbox" value="145" >
                  <span  title="Shri Mata Vaishno Devi University">Shri Mata Vaishno Devi University</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="146" loctext="Sir M. Visvesvaraya Institute of Technology">
+                 <input name="institute"  type="checkbox" value="146" >
                  <span  title="Sir M. Visvesvaraya Institute of Technology">Sir M. Visvesvaraya Institute of Technology</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="147" loctext="SSN College of Engineering">
+                 <input name="institute" type="checkbox" value="147" >
                  <span  title="SSN College of Engineering">SSN College of Engineering</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="148" loctext="SRM University">
+                 <input name="institute" type="checkbox" value="148" >
                  <span  title="SRM University">SRM University</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="149" loctext="Thadomal Shahani Engineering College">
+                 <input name="institute" type="checkbox" value="149" >
                  <span  title="Thadomal Shahani Engineering College">Thadomal Shahani Engineering College</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="150" loctext="Thapar University">
+                 <input name="institute" type="checkbox" value="150" >
                  <span  title="Thapar University">Thapar University</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="151" loctext="Veermata Jijabai Technological Institute">
+                 <input name="institute" type="checkbox" value="151" >
                  <span  title="Veermata Jijabai Technological Institute">Veermata Jijabai Technological Institute</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="152" loctext="Vellore Institute of Technology">
+                 <input name="institute" type="checkbox" value="152" >
                  <span  title="Vellore Institute of Technology">Vellore Institute of Technology</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="153" loctext="Visvesvaraya National Institute of Technology">
+                 <input name="institute" type="checkbox" value="153" >
                  <span  title="Visvesvaraya National Institute of Technology">Visvesvaraya National Institute of Technology</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="154" loctext="West Bengal University of Technology">
+                 <input name="institute" type="checkbox" value="154" >
                  <span  title="West Bengal University of Technology">West Bengal University of Technology</span>
             </div>
             <div>
@@ -3674,11 +3551,11 @@
                  <span  title="Lal Bahadur Shastri Institute of Management (LBSIM), New Delhi">Lal Bahadur Shastri Institute of Management (LBSIM), New Delhi</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="30" loctext="Fore School of Management Delhi">
+                 <input name="institute" type="checkbox" value="30" >
                  <span  title="Fore School of Management Delhi">Fore School of Management Delhi</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="31" loctext="KJ Somaiya Institute of Management Studies and Research, Mumbai">
+                 <input name="institute"  type="checkbox" value="31" >
                  <span  title="KJ Somaiya Institute of Management Studies and Research, Mumbai">KJ Somaiya Institute of Management Studies and Research, Mumbai</span>
             </div>
             <div>
@@ -3686,7 +3563,7 @@
                  <span  title="ICFAI Business School (IBS), Hyderabad">ICFAI Business School (IBS), Hyderabad</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="33" loctext="ICFAI, Gurgaon">
+                 <input name="institute" type="checkbox" value="33" >
                  <span  title="ICFAI, Gurgaon">ICFAI, Gurgaon</span>
             </div>
             <div>
@@ -3694,7 +3571,7 @@
                  <span  title="Institute of Management Technology (IMT), Nagpur">Institute of Management Technology (IMT), Nagpur</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="35" loctext="Symbiosis Institute of International Business, Pune">
+                 <input name="institute" type="checkbox" value="35" >
                  <span  title="Symbiosis Institute of International Business, Pune">Symbiosis Institute of International Business, Pune</span>
             </div>
             <div>
@@ -3706,7 +3583,7 @@
                  <span  title="Loyola Institute of Business Administration (LIBA), Chennai">Loyola Institute of Business Administration (LIBA), Chennai</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="38" loctext="BIM Trichy">
+                 <input name="institute" type="checkbox" value="38" >
                  <span  title="BIM Trichy">BIM Trichy</span>
             </div>
             <div>
@@ -3714,11 +3591,11 @@
                  <span  title="Lal Bahadur Shastri Institute of Management (LBSIM), New Delhi">Lal Bahadur Shastri Institute of Management (LBSIM), New Delhi</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="40" loctext="Institute of Management, Nirma University, Ahmedabad">
+                 <input name="institute" type="checkbox" value="40" >
                  <span  title="Institute of Management, Nirma University, Ahmedabad">Institute of Management, Nirma University, Ahmedabad</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="41" loctext="SIMS">
+                 <input name="institute"  type="checkbox" value="41" >
                  <span  title="SIMS">SIMS</span>
             </div>
             <div>
@@ -3734,7 +3611,7 @@
                  <span  title="Delhi School of Economics (DSE)">Delhi School of Economics (DSE)</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="60" loctext="Great Lakes Institute of Management">
+                 <input name="institute" type="checkbox" value="60" >
                  <span  title="Great Lakes Institute of Management">Great Lakes Institute of Management</span>
             </div>
             <div>
@@ -3742,27 +3619,27 @@
                  <span  title="Institute for Financial Management and Research (IFMR)">Institute for Financial Management and Research (IFMR)</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="63" loctext="Columbia Business School">
+                 <input name="institute"  type="checkbox" value="63" >
                  <span  title="Columbia Business School">Columbia Business School</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="64" loctext="Harvard Business School">
+                 <input name="institute"  type="checkbox" value="64" >
                  <span  title="Harvard Business School">Harvard Business School</span>
             </div>
             <div>
-                 <input  name="institute" type="checkbox" value="65" loctext="Johnson Graduate School of Management, Cornell University">
+                 <input  name="institute" type="checkbox" value="65" >
                  <span  title="Johnson Graduate School of Management, Cornell University">Johnson Graduate School of Management, Cornell University</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="66" loctext="The Wharton School of the University of Pennsylvania">
+                 <input name="institute"  type="checkbox" value="66" >
                  <span  title="The Wharton School of the University of Pennsylvania">The Wharton School of the University of Pennsylvania</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="67" loctext="Tuck School of Business at Dartmouth">
+                 <input name="institute"  type="checkbox" value="67" >
                  <span  title="Tuck School of Business at Dartmouth">Tuck School of Business at Dartmouth</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="68" loctext="Yale School of Management">
+                 <input name="institute"  type="checkbox" value="68" >
                  <span  title="Yale School of Management">Yale School of Management</span>
             </div>
             <div>
@@ -3774,7 +3651,7 @@
                  <span  title="Kellogg School of Management - Northwestern University">Kellogg School of Management - Northwestern University</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="71" loctext="London Business School, UK">
+                 <input name="institute"  type="checkbox" value="71" >
                  <span  title="London Business School, UK">London Business School, UK</span>
             </div>
             <div>
@@ -3782,19 +3659,19 @@
                  <span  title="London School of Economics (LSE)">London School of Economics (LSE)</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="72" loctext="MIT Sloan School of Management">
+                 <input name="institute"  type="checkbox" value="72" >
                  <span  title="MIT Sloan School of Management">MIT Sloan School of Management</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="73" loctext="NYU Stern School of Business">
+                 <input name="institute"  type="checkbox" value="73" >
                  <span  title="NYU Stern School of Business">NYU Stern School of Business</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="74" loctext="Stanford Graduate School of Business">
+                 <input name="institute"  type="checkbox" value="74" >
                  <span  title="Stanford Graduate School of Business">Stanford Graduate School of Business</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="75" loctext="ESCP Europe Business School">
+                 <input name="institute"  type="checkbox" value="75" >
                  <span  title="ESCP Europe Business School">ESCP Europe Business School</span>
             </div>
             <div>
@@ -3806,35 +3683,35 @@
                  <span  title="University of Cambridge - Judge, UK">University of Cambridge - Judge, UK</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="78" loctext="IE Business School, Spain">
+                 <input name="institute"  type="checkbox" value="78" >
                  <span  title="IE Business School, Spain">IE Business School, Spain</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="79" loctext="HEC Paris, France">
+                 <input name="institute"  type="checkbox" value="79" >
                  <span  title="HEC Paris, France">HEC Paris, France</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="80" loctext="Esade Business School, Spain">
+                 <input name="institute"  type="checkbox" value="80" >
                  <span  title="Esade Business School, Spain">Esade Business School, Spain</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="81" loctext="Iese Business School, Spain">
+                 <input name="institute"  type="checkbox" value="81" >
                  <span  title="Iese Business School, Spain">Iese Business School, Spain</span>
             </div>
             <div>
-                 <input  name="institute" type="checkbox" value="82" loctext="IMD, Switzerland">
+                 <input  name="institute" type="checkbox" value="82" >
                  <span  title="IMD, Switzerland">IMD, Switzerland</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="83" loctext="University of St Gallen, Switzerland">
+                 <input name="institute"  type="checkbox" value="83" >
                  <span  title="University of St Gallen, Switzerland">University of St Gallen, Switzerland</span>
             </div>
             <div>
-                 <input  name="institute" type="checkbox" value="84" loctext="Rotterdam School of Management, Erasmus University, Netherlands">
+                 <input  name="institute" type="checkbox" value="84" >
                  <span  title="Rotterdam School of Management, Erasmus University, Netherlands">Rotterdam School of Management, Erasmus University, Netherlands</span>
             </div>
             <div>
-                 <input  name="institute" type="checkbox" value="85" loctext="SDA Bocconi, Italy">
+                 <input  name="institute" type="checkbox" value="85" >
                  <span  title="SDA Bocconi, Italy">SDA Bocconi, Italy</span>
             </div>
             <div>
@@ -3842,7 +3719,7 @@
                  <span  title="Asian Institute of Management (AIM), Philippines">Asian Institute of Management (AIM), Philippines</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="90" loctext="Haas School of Business, University of California Berkeley">
+                 <input name="institute"  type="checkbox" value="90" >
                  <span  title="Haas School of Business, University of California Berkeley">Haas School of Business, University of California Berkeley</span>
             </div>
             <div>
@@ -3854,7 +3731,7 @@
                  <span  title="Institute of Management Technology (IMT) Dubai">Institute of Management Technology (IMT) Dubai</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="157" loctext="Department of Financial Studies, University of Delhi">
+                 <input name="institute" type="checkbox" value="157" >
                  <span  title="Department of Financial Studies, University of Delhi">Department of Financial Studies, University of Delhi</span>
             </div>
             <div>
@@ -3866,7 +3743,7 @@
                  <span  title="Dr. B. R. Ambedkar National Institute of Technology (NIT) Jalandhar">Dr. B. R. Ambedkar National Institute of Technology (NIT) Jalandhar</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="162" loctext="MYRA School of Business">
+                 <input name="institute" type="checkbox" value="162" >
                  <span  title="MYRA School of Business">MYRA School of Business</span>
             </div>
             <div>
@@ -3886,15 +3763,15 @@
                  <span  title="National Institute of Technology (NIT), Patna">National Institute of Technology (NIT), Patna</span>
             </div>
             <div>
-                 <input name="institute"  type="checkbox" value="167" loctext="Indian Institute of Management, Visakhapatnam">
+                 <input name="institute"  type="checkbox" value="167" >
                  <span  title="Indian Institute of Management, Visakhapatnam">Indian Institute of Management, Visakhapatnam</span>
             </div>
             <div>
-                 <input  name="institute" type="checkbox" value="168" loctext="Indian Institute of Forest Management, Bhopal">
+                 <input  name="institute" type="checkbox" value="168" >
                  <span  title="Indian Institute of Forest Management, Bhopal">Indian Institute of Forest Management, Bhopal</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="44" loctext="Other">
+                 <input name="institute" type="checkbox" value="44" >
                  <span  title="Other">Other</span>
             </div>
             <div>
@@ -3906,11 +3783,11 @@
                  <span  title="IIM-Vishakhapatnam">IIM-Vishakhapatnam</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="171" loctext="IFIM Business School, Bangalore">
+                 <input name="institute" type="checkbox" value="171" >
                  <span  title="IFIM Business School, Bangalore">IFIM Business School, Bangalore</span>
             </div>
             <div>
-                 <input name="institute" type="checkbox" value="172" loctext="VES Institute of Management Studies and Research">
+                 <input name="institute" type="checkbox" value="172" >
                  <span  title="VES Institute of Management Studies and Research">VES Institute of Management Studies and Research</span>
             </div>
 
@@ -4036,5 +3913,10 @@
        </div>
     </div>
     </div>
+</div>
+<div class="tags-wrapper prototype hidden">
+</div>
+<div class="industry-tags prototype hidden">
+     <label for="" class="label"></label>
 </div>
 {{> footer}}

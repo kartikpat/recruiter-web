@@ -1,0 +1,134 @@
+
+[
+  {
+     "text":"Accounting"
+    ,"value":24
+  },
+  {
+     "text":"Advertising / PR / Events"
+    ,"value":25
+  },
+  {
+     "text":"Auto / Auto Ancillary"
+    ,"value":1
+  },
+  {
+     "text":"Banking / Financial Services"
+    ,"value":2
+  },
+  {
+     "text":"BPO / ITeS"
+    ,"value":3
+  },
+  {
+     "text":"Chemicals"
+    ,"value":26
+  },
+  {
+     "text":"Construction / Engineering / Cement"
+    ,"value":5
+  },
+  {
+     "text":"Consulting"
+    ,"value":4
+  },
+  {
+     "text":"Education / Training"
+    ,"value":6
+  },
+  {
+     "text":"Facility Management"
+    ,"value":27
+  },
+  {
+     "text":"FMCG / Durables / F&amp;B"
+    ,"value":7
+  },
+  {
+     "text":"Healthcare / Medical / Hospital"
+    ,"value":8
+  },
+  {
+     "text":"Industrial Products / Heavy Machinery"
+    ,"value":10
+  },
+  {
+     "text":"Infrastructure / Oil &amp; Gas / Power / Energy"
+    ,"value":11
+  },
+  {
+     "text":"Insurance"
+    ,"value":12
+  },
+  {
+     "text":"Internet / Online / eCommerce"
+    ,"value":13
+  },
+  {
+     "text":"IT"
+    ,"value":14
+  },
+  {
+     "text":"KPO / Research / Analytics"
+    ,"value":15
+  },
+  {
+     "text":"Legal"
+    ,"value":16
+  },
+  {
+     "text":"Manufacturing"
+    ,"value":17
+  },
+  {
+     "text":"Media / Entertainment"
+    ,"value":18
+  },
+  {
+     "text":"Mining / Steel / Shipping"
+    ,"value":19
+  },
+  {
+     "text":"NGO / Social Service"
+    ,"value":20
+  },
+  {
+     "text":"Pharma / Biotech"
+    ,"value":28
+  },
+  {
+     "text":"Real Estate"
+    ,"value":29
+  },
+  {
+     "text":"Recruitment / Staffing"
+    ,"value":30
+  },
+  {
+     "text":"Retail"
+    ,"value":22
+  },
+  {
+     "text":"Semiconductors / Electronics"
+    ,"value":31
+  },
+  {
+     "text":"Telecom"
+    ,"value":23
+  },
+  {
+     "text":"Textile / Garments / Accessories / Fashion"
+    ,"value":32
+  },
+  {
+     "text":"Travel Hospitality"
+    ,"value":9
+  },
+  {
+     "text":"Agriculture &amp; Dairy"
+    ,"value":34
+  },
+  {
+     "text":"Other"
+    ,"value":33
+  }]

@@ -75,15 +75,11 @@ var submitFilters = function() {
 	};
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, parameters, populateJobs);
 	$('.jobs_wrapper').empty();
+	var id = $(this).attr('data-attribute');
+	var modal = $('.modal[data-attribute= ' + id + ']');
+	modal.addClass('hidden');
 }
 
-// When the user clicks anywhere outside of the modal, close it
- /*window.onclick = function(event) {
-	if (event.target == modal[0]) {
-		modal[0].style.display = "none";
-  //      tags.style.display = "block";
-	}
-}*/
 
 var baseUrl = "http://13.126.92.102:8000"
 var recruiterID = 45058;
@@ -91,6 +87,8 @@ var jobs = $(".jobs");
 var tableRow = $(".jobs_content.prototype");
 var columnOrg =  $(".organization.prototype");
 var columnIns =  $(".institute.prototype");
+var industryTags = $(".industry-tags.prototype");
+var tagsWrapper = $(".tags-wrapper.prototype");
 var viewByOptions = $(".jobs .menu .stat");
 var pageNumber = 1;
 var pageContent = 5;
@@ -101,12 +99,75 @@ $(document).ready(function(){
 	  pageNumber: pageNumber
 	   }, populateJobs)
 
+	populateIndustryTags(industryTagsData);
+
 	openModalBtn.click(openModal);
 	closeModalBtn.click(closeModal);
 	viewByOptions.click(loadViewByData);
 
 	$(".submit-filters").click(submitFilters);
+
+	$("#search-tags").on('input',searchTags);
+
+	$("span[data-attribute='alphabet-hover']").on('mouseover', showCheckboxFilter);
+
+	$("span[data-attribute='alphabet-hover']").on('mouseout', hideCheckboxFilter);
+
+	filtersModal.find('.js-tags-modal input[type="checkbox"]').on('change', syncTags);
 });
+
+var showCheckboxFilter = function() {
+	var id = $(this).attr('class');
+	console.log(id);
+	//return;
+	$(".row.js-menu-industry input").parent().addClass("invisible");
+	$(".row.js-menu-industry span").addClass("invisible");
+	var elements = $(".row.js-menu-industry input."+id+"");
+	console.log(elements);
+	var spanElement = $(".row.js-menu-industry span."+id+"");
+	console.log(spanElement)
+	elements.each(function(index,anElement){
+
+		$(anElement).parent().removeClass("invisible");
+	});
+	$(spanElement).removeClass("invisible")
+}
+
+var hideCheckboxFilter = function() {
+	$(".row.js-menu-industry input").parent().removeClass("invisible");
+	$(".row.js-menu-industry span").removeClass("invisible");
+}
+
+
+var searchTags = function() {
+	var string = $("#search-tags").val();
+	var resultTags = []
+
+    for (var i=0; i < industryTagsData.length; i++) {
+        if (industryTagsData[i]["text"].includes(string)) {
+            resultTags.push(industryTagsData[i]);
+        }
+    }
+
+	$(".row.js-menu-industry").empty();
+	$(".tags-alphabets").empty();
+	populateIndustryTags(resultTags);
+
+}
+
+var syncTags = function() {
+	var name = $(this).attr('name');
+	var uncheckedElements = filtersModal.find('.js-tags-modal input[name="'+name+'"]:not(:checked)');
+	var checkedElements = filtersModal.find('.js-tags-modal input[name="'+name+'"]:checked')
+	uncheckedElements.each(function(index,anElement){
+		var val = $(this).val();
+		$(".js-tags input[name="+name+"][value=  " + val +"]").prop('checked',false);
+	});
+	checkedElements.each(function(index,anElement){
+		var val = $(this).val();
+		$(".js-tags input[name="+name+"][value=  " + val +"]").prop('checked',true);
+	});
+}
 
 var populateJobs = function(res){
 	if(res.status=="success"){
@@ -217,19 +278,7 @@ var onHoverDisplayIcons = function() {
 
 var obj = {};
 
-filtersModal.find('.js-tags-modal input[type="checkbox"]').on('change', function(){
-	var name = $(this).attr('name');
-	var uncheckedElements = filtersModal.find('.js-tags-modal input[name="'+name+'"]:not(:checked)');
-	var checkedElements = filtersModal.find('.js-tags-modal input[name="'+name+'"]:checked')
-	uncheckedElements.each(function(index,anElement){
-		var val = $(this).val();
-		$(".js-tags input[name="+name+"][value=  " + val +"]").prop('checked',false);
-	});
-	checkedElements.each(function(index,anElement){
-		var val = $(this).val();
-		$(".js-tags input[name="+name+"][value=  " + val +"]").prop('checked',true);
-	});
-});
+
 
 filtersModal.find('input[type="checkbox"]').on('change', function(){
 	var name = $(this).attr('name');
@@ -239,7 +288,7 @@ filtersModal.find('input[type="checkbox"]').on('change', function(){
 		tagsArray.push(anElement.value);
 	});
 	obj[name] = tagsArray;
-	
+
 });
 
 filters.find('.js-filters').on('change', function(){
@@ -247,6 +296,53 @@ filters.find('.js-filters').on('change', function(){
 	obj[name] = $(this).val();
 
 });
+
+
+
+var populateIndustryTags = function(array) {
+
+	var sorted = array.sort((a, b) => {
+        return a["text"].localeCompare(b.text)
+	});
+
+	//console.log(sorted);
+
+
+	var bool = 1;
+	var j;
+	var k = 0;
+
+		var tagsWrapperClone = tagsWrapper.clone().removeClass('prototype hidden');
+		$(".row.js-menu-industry").append(tagsWrapperClone);
+		var aCharacter = sorted[0]["text"].charAt(0);
+		$(".tags-alphabets").append('<span class="alphabet-hover-'+aCharacter+'" data-attribute="alphabet-hover">'+aCharacter+'</span>');
+		tagsWrapperClone.append('<span class="alphabet-hover-'+aCharacter+'">'+aCharacter+'</span>');
+		k++;
+
+	for(var i = 0; i < sorted.length; i++) {
+		 var obj = sorted[i];
+		if(i!=0 && obj["text"].charAt(0) > sorted[i-1]["text"].charAt(0)) {
+			aCharacter = obj["text"].charAt(0);
+			tagsWrapperClone.append('<span class="alphabet-hover-'+aCharacter+'" >'+aCharacter+'</span>');
+			$(".tags-alphabets").append('<span class="alphabet-hover-'+aCharacter+'" data-attribute="alphabet-hover">'+aCharacter+'</span>');
+			k++;
+		}
+		j = k + i;
+		if(!(j%10)) {
+			var tagsWrapperClone = tagsWrapper.clone().removeClass('prototype hidden');
+			$(".row.js-menu-industry").append(tagsWrapperClone);
+		}
+
+		var industryTagCheckbox = industryTags.clone().removeClass('prototype hidden');
+
+
+		industryTagCheckbox.find(".label").append('<input id="'+obj["text"]+'" type="checkbox" value="'+obj["val"]+'" name="industry" class="alphabet-hover-'+aCharacter+'">'+ obj["text"]);
+		industryTagCheckbox.find(".label").attr("for", obj["text"]);
+
+		tagsWrapperClone.append(industryTagCheckbox);
+
+ 	}
+}
 
 
 

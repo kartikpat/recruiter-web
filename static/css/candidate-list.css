@@ -29,6 +29,9 @@ input:focus, select:focus {
 .hidden {
   display: none; }
 
+.invisible {
+  visibility: hidden; }
+
 .main-container {
   padding: 10px; }
   .main-container .filters {
@@ -215,23 +218,24 @@ input:focus, select:focus {
   min-width: 100%; }
   .modal .modal-content {
     position: relative;
-    margin: 200px auto;
     padding: 20px;
     border: 1px solid #888;
     box-shadow: 0 0 20px 1px #d8d8d8;
-    width: 80%;
+    max-width: 700px;
     height: 24em;
-    overflow: auto; }
+    overflow: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%); }
     .modal .modal-content .row {
-      padding: 20px; }
+      padding: 20px;
+      overflow-x: auto;
+      width: 2000px; }
       .modal .modal-content .row div {
         display: inline-block;
         vertical-align: top;
-        width: 30%; }
-        .modal .modal-content .row div input[type="checkbox"] {
-          padding: 0;
-          margin: 0; }
-        .modal .modal-content .row div span {
+        width: 350px; }
+        .modal .modal-content .row div label {
           font-size: 12px; }
     .modal .modal-content .close {
       color: #aaa;
