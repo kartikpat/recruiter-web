@@ -30,7 +30,7 @@ input:focus, select:focus {
   display: none; }
 
 .invisible {
-  visibility: hidden; }
+  opacity: 0.2; }
 
 .main-container {
   padding: 10px; }
@@ -215,40 +215,60 @@ input:focus, select:focus {
   z-index: 1;
   left: 0;
   top: 0;
-  min-width: 100%; }
+  width: 100%;
+  height: 100%; }
   .modal .modal-content {
     position: relative;
-    padding: 20px;
-    border: 1px solid #888;
     box-shadow: 0 0 20px 1px #d8d8d8;
     max-width: 700px;
     height: 24em;
-    overflow: auto;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, 50%); }
-    .modal .modal-content .row {
+    transform: translate(-50%, -50%); }
+    .modal .modal-content .modal-top {
       padding: 20px;
-      overflow-x: auto;
-      width: 2000px; }
-      .modal .modal-content .row div {
+      position: relative; }
+      .modal .modal-content .modal-top .search-tags {
+        display: inline-block; }
+        .modal .modal-content .modal-top .search-tags input {
+          box-sizing: border-box;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          padding: 4px 8px; }
+      .modal .modal-content .modal-top .tags-alphabets {
         display: inline-block;
-        vertical-align: top;
-        width: 350px; }
-        .modal .modal-content .row div label {
-          font-size: 12px; }
-    .modal .modal-content .close {
-      color: #aaa;
-      position: absolute;
-      right: 3%;
-      top: 5%;
-      font-size: 28px;
-      font-weight: bold; }
-      .modal .modal-content .close:hover, .modal .modal-content .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer; }
-    .modal .modal-content .submit-filters {
-      position: absolute;
-      right: 2%;
-      top: 20%; }
+        margin: 0;
+        padding: 0 15px; }
+        .modal .modal-content .modal-top .tags-alphabets li {
+          display: inline-block; }
+          .modal .modal-content .modal-top .tags-alphabets li a {
+            text-decoration: none;
+            padding: 4px;
+            color: #000; }
+      .modal .modal-content .modal-top .close {
+        display: inline-block;
+        color: #aaa;
+        line-height: 28px;
+        font-size: 28px;
+        position: absolute;
+        right: 30px; }
+        .modal .modal-content .modal-top .close:hover, .modal .modal-content .modal-top .close:focus {
+          color: black;
+          text-decoration: none;
+          cursor: pointer; }
+      .modal .modal-content .modal-top .submit {
+        display: inline-block;
+        padding: 0 15px; }
+    .modal .modal-content .modal-bottom {
+      overflow-x: scroll;
+      padding: 10px 20px;
+      margin: 0 10px; }
+      .modal .modal-content .modal-bottom .row {
+        overflow-x: auto;
+        width: 2000px; }
+        .modal .modal-content .modal-bottom .row .tags-wrapper {
+          display: inline-block;
+          vertical-align: top;
+          width: 300px; }
+          .modal .modal-content .modal-bottom .row .tags-wrapper label {
+            font-size: 12px; }

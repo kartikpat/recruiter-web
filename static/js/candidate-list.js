@@ -93,6 +93,33 @@ var viewByOptions = $(".jobs .menu .stat");
 var pageNumber = 1;
 var pageContent = 5;
 
+var showCheckboxFilter = function() {
+
+	var id = $(this).attr('class');
+
+	$(".row.js-menu-industry input").parent().addClass("invisible");
+	$(".row.js-menu-industry span").addClass("invisible");
+	var elements = $(".row.js-menu-industry input."+id+"");
+
+	var spanElement = $(".row.js-menu-industry span."+id+"");
+
+	elements.each(function(index,anElement){
+
+		$(anElement).parent().removeClass("invisible");
+	});
+	$(spanElement).removeClass("invisible")
+}
+
+var hideCheckboxFilter = function() {
+	$(".row.js-menu-industry input").parent().removeClass("invisible");
+	$(".row.js-menu-industry span").removeClass("invisible");
+}
+
+var slideToThatFilter = function() {
+	var href = $(this).attr('href');
+	jQuery(".modal-bottom").scrollLeft($(href)[0].offsetLeft);
+}
+
 $(document).ready(function(){
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, {
 	  pageContent: 5,
@@ -109,34 +136,25 @@ $(document).ready(function(){
 
 	$("#search-tags").on('input',searchTags);
 
-	$("span[data-attribute='alphabet-hover']").on('mouseover', showCheckboxFilter);
+	// $(".modal-top a[data-attribute='alphabet-hover']").on('mouseover', showCheckboxFilter);
 
-	$("span[data-attribute='alphabet-hover']").on('mouseout', hideCheckboxFilter);
+	//$("a[data-attribute='alphabet-hover']").on('mouseout', hideCheckboxFilter);
+
+	$("a[data-attribute='alphabet-hover']").on('click', slideToThatFilter);
 
 	filtersModal.find('.js-tags-modal input[type="checkbox"]').on('change', syncTags);
 });
 
-var showCheckboxFilter = function() {
-	var id = $(this).attr('class');
-	console.log(id);
-	//return;
-	$(".row.js-menu-industry input").parent().addClass("invisible");
-	$(".row.js-menu-industry span").addClass("invisible");
-	var elements = $(".row.js-menu-industry input."+id+"");
-	console.log(elements);
-	var spanElement = $(".row.js-menu-industry span."+id+"");
-	console.log(spanElement)
-	elements.each(function(index,anElement){
+$(".modal-top").on('mouseover','.tags-alphabets a[data-attribute="alphabet-hover"] ', showCheckboxFilter);
+$(".modal-top").on('mouseout','.tags-alphabets a[data-attribute="alphabet-hover"] ', hideCheckboxFilter);
+$(".modal-top").on('click',".tags-alphabets a[data-attribute='alphabet-hover']", slideToThatFilter);
 
-		$(anElement).parent().removeClass("invisible");
-	});
-	$(spanElement).removeClass("invisible")
-}
 
-var hideCheckboxFilter = function() {
-	$(".row.js-menu-industry input").parent().removeClass("invisible");
-	$(".row.js-menu-industry span").removeClass("invisible");
-}
+
+
+
+
+
 
 
 var searchTags = function() {
@@ -306,42 +324,39 @@ var populateIndustryTags = function(array) {
 	});
 
 	//console.log(sorted);
-
-
 	var bool = 1;
-	var j;
-	var k = 0;
+	var j = 0;
+	//var tagsWrapperClone = tagsWrapper.clone().removeClass('prototype hidden');
+		// $(".row.js-menu-industry").append(tagsWrapperClone);
+		// var aCharacter = sorted[0]["text"].charAt(0);
+		// $(".tags-alphabets").append('<li><a href="#'+aCharacter+'" class="alphabet-hover-'+aCharacter+'" data-attribute="alphabet-hover">'+aCharacter+'</a></li>');
+		// tagsWrapperClone.append('<span id="'+aCharacter+'" class="alphabet-hover-'+aCharacter+'">'+aCharacter+'</span>');
 
-		var tagsWrapperClone = tagsWrapper.clone().removeClass('prototype hidden');
-		$(".row.js-menu-industry").append(tagsWrapperClone);
-		var aCharacter = sorted[0]["text"].charAt(0);
-		$(".tags-alphabets").append('<span class="alphabet-hover-'+aCharacter+'" data-attribute="alphabet-hover">'+aCharacter+'</span>');
-		tagsWrapperClone.append('<span class="alphabet-hover-'+aCharacter+'">'+aCharacter+'</span>');
-		k++;
-
-	for(var i = 0; i < sorted.length; i++) {
-		 var obj = sorted[i];
-		if(i!=0 && obj["text"].charAt(0) > sorted[i-1]["text"].charAt(0)) {
+var flag = 0;
+for(var i = 0; j < sorted.length; i++) {
+		 var obj = sorted[j];
+		 if(!(i%10)) {
+			 //console.log("new column");
+ 			var tagsWrapperClone = tagsWrapper.clone().removeClass('prototype hidden');
+ 			$(".row.js-menu-industry").append(tagsWrapperClone);
+ 		}
+		if((flag==0) && (!sorted[j-1] || obj["text"].charAt(0) != sorted[j-1]["text"].charAt(0))) {
+			flag=1;
+			//console.log("new alphabet tag");
 			aCharacter = obj["text"].charAt(0);
-			tagsWrapperClone.append('<span class="alphabet-hover-'+aCharacter+'" >'+aCharacter+'</span>');
-			$(".tags-alphabets").append('<span class="alphabet-hover-'+aCharacter+'" data-attribute="alphabet-hover">'+aCharacter+'</span>');
-			k++;
+			tagsWrapperClone.append('<span id="'+aCharacter+'" class="alphabet-hover-'+aCharacter+'" >'+aCharacter+'</span>');
+			$(".tags-alphabets").append('<li><a href="#'+aCharacter+'" class="alphabet-hover-'+aCharacter+'" data-attribute="alphabet-hover">'+aCharacter+'</a></li>');
+			continue;
 		}
-		j = k + i;
-		if(!(j%10)) {
-			var tagsWrapperClone = tagsWrapper.clone().removeClass('prototype hidden');
-			$(".row.js-menu-industry").append(tagsWrapperClone);
-		}
-
+		//console.log("new element")
 		var industryTagCheckbox = industryTags.clone().removeClass('prototype hidden');
-
-
 		industryTagCheckbox.find(".label").append('<input id="'+obj["text"]+'" type="checkbox" value="'+obj["val"]+'" name="industry" class="alphabet-hover-'+aCharacter+'">'+ obj["text"]);
 		industryTagCheckbox.find(".label").attr("for", obj["text"]);
 
 		tagsWrapperClone.append(industryTagCheckbox);
-
- 	}
+		flag=0;
+		j++;
+}
 }
 
 
