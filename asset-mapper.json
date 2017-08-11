@@ -114,8 +114,8 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/request.js",
-				"static/js/tags/industry.js",
 				"static/js/candidate-list.js",
+				"static/js/tags/industry.js",
 				"static/js/tags/current-location.js",
 				"static/js/tags/preferred-location.js",
 				"static/js/tags/language.js",

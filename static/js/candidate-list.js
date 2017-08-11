@@ -80,7 +80,6 @@ var submitFilters = function() {
 	modal.addClass('hidden');
 }
 
-
 var baseUrl = "http://13.126.92.102:8000"
 var recruiterID = 45058;
 var jobs = $(".jobs");
@@ -92,6 +91,8 @@ var tagsWrapper = $(".tags-wrapper.prototype");
 var viewByOptions = $(".jobs .menu .stat");
 var pageNumber = 1;
 var pageContent = 5;
+
+// Break point one
 
 var showCheckboxFilter = function() {
 
@@ -165,13 +166,12 @@ $(".modal-top").on('mouseout','.tags-alphabets a[data-attribute="alphabet-hover"
 $(".modal-top").on('click',".tags-alphabets a[data-attribute='alphabet-hover']", slideToThatFilter);
 
 
+//break point second
 
 var populateTags = function(array,metaData) {
-
-	var sorted = array.sort((a, b) => {
+	var sorted = array.sort(function(a, b){
         return a["text"].localeCompare(b.text)
 	});
-
 	var j = 0;
 	var flag = 0;
 	var dataAttribute = metaData["data-attribute"];
@@ -202,7 +202,7 @@ var populateTags = function(array,metaData) {
 var searchTags = function(array, metaData, elem) {
 	var str = $(elem).val();
 	str=str.toLowerCase();
-	var resultTags = []
+	var resultTags = [];
     for (var i=0; i < array.length; i++) {
         if (array[i]["text"] && array[i]["text"].toLowerCase().indexOf(str)>-1) {
             resultTags.push(array[i]);
@@ -254,10 +254,9 @@ var populateJobs = function(res){
 			card.find(".icon[data-attribute= " + iconStatus + "]").addClass("highlighted");
 			card.find(".icon[data-attribute=4]").attr("href","/profile/"+aJob["userID"]+"?jobID="+jobID);
 			var orgArray = aJob["jobs"];
-			var i;
 			var len = orgArray.length;
 			var loop = len < 3 ? len:3;
-			for(i=0; i<loop; i++) {
+			for(var i=0; i<loop; i++) {
 				var anOrg ={};
 				anOrg = orgArray[i];
 				var column = columnOrg.clone().removeClass('prototype hidden');
@@ -355,12 +354,6 @@ filters.find('.js-filters').on('change', function(){
 	obj[name] = $(this).val();
 
 });
-
-
-
-
-
-
 
 var ticker;
 
