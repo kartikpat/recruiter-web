@@ -1,12 +1,13 @@
 $color-white: #ffffff;
 
-
 .white-bg {
     background-color: $color-white;
 }
-.bg-overlay{
-	background-color: rgba(0, 0, 0, 0.7);
+
+.bg-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
 }
-.animated{
-	animation-duration: 500ms !important;
+
+.animated {
+    animation-duration: 500ms !important;
 }

@@ -1,45 +1,43 @@
-
-
 .footer {
+    width: 100%;
 
-	width: 100%;
-	nav {
-		background:#1c1c1c;
+    nav {
+        background: #1c1c1c;
 
-		.menu {
-           padding: 0;
-		   margin: 0;
-			li.menu_link {
+        .menu {
+            padding: 0;
+            margin: 0;
 
-				display:inline-block;
-				padding:12px;
+            li.menu_link {
+                display: inline-block;
+                padding: 12px;
 
-				a {
-					color:white;
-					font-size:13px;
-					font-family: 'Droid Sans';
-          &:hover {
-						color: #56A0FF;
-					}
-				}
+                a {
+                    color: white;
+                    font-size: 13px;
+                    font-family: 'Droid Sans';
 
-			}
-		}
-  }
-}
-
-@media only screen and (max-width : 768px) {
-
-    .footer {
-          nav {
-             .menu {
-                  li.menu_link {
-                     padding: 10px;
-                       a {
-                          font-size: 12px;
+                    &:hover {
+                        color: #56A0FF;
                     }
                 }
             }
-         }
-     }
- }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .footer {
+        nav {
+            .menu {
+                li.menu_link {
+                    padding: 10px;
+
+                    a {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
