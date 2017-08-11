@@ -114,7 +114,12 @@
 				"static/js/vendor/jquery.min.js",
 				"static/js/request.js",
 				"static/js/tags/industry.js",
-				"static/js/candidate-list.js"
+				"static/js/candidate-list.js",
+				"static/js/tags/current-location.js",
+				"static/js/tags/preferred-location.js",
+				"static/js/tags/language.js",
+				"static/js/tags/functional-area.js",
+				"static/js/tags/institute.js"
 			],
 			"prod" : [
 				"static/build/js/candidate-list.min.js"
