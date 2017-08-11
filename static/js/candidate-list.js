@@ -96,9 +96,7 @@ var pageContent = 5;
 var showCheckboxFilter = function() {
 
 	var id = $(this).attr('class');
-	var att = $(this).attr('data-att');
-	console.log(att);
-
+	var att = $(this).attr('data-att');	
 	$(".row.js-"+att+" input").parent().addClass("invisible");
 	$(".row.js-"+att+" span").addClass("invisible");
 	var elements = $(".row.js-"+att+" input."+id+"");
@@ -124,6 +122,10 @@ var slideToThatFilter = function(event) {
 	jQuery(".modal-bottom").scrollLeft($(href)[0].offsetLeft - 30);
 }
 
+function searchTagWrapper(callback) {
+	callback(arguments[1], arguments[2], arguments[3])
+}
+
 $(document).ready(function(){
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, {
 	  pageContent: 5,
@@ -144,7 +146,16 @@ $(document).ready(function(){
 
 	$(".submit-filters").click(submitFilters);
 
-	$("#search-tags").on('input',searchTags);
+	$(".search-tags-menu-industry").on('input', function(){
+		var ele = this;
+		//searchTagWrapper(searchTags, industryTagsData, industryMetaData, this)
+		searchTags(industryTagsData, industryMetaData, ele);
+	});
+	// $(".search-tags-menu-functional-area").on('input',searchTags(functionalAreaTagsData, functionalAreaMetaData));
+	// $(".search-tags-menu-current-location").on('input',searchTags(currentLocationTagsData, currentLocationMetaData));
+	// $(".search-tags-menu-preferred-location").on('input',searchTags(prefeLocationTagsData, preferredLocationMetaData));
+	// $(".search-tags-menu-institute").on('input',searchTags(instituteTagsData, instituteMetaData));
+	// $(".search-tags-menu-languages").on('input',searchTags(languageTagsData,languageMetaData));
 
 	filtersModal.find('.js-tags-modal input[type="checkbox"]').on('change', syncTags);
 });
@@ -152,6 +163,7 @@ $(document).ready(function(){
 $(".modal-top").on('mouseover','.tags-alphabets a[data-attribute="alphabet-hover"] ', showCheckboxFilter);
 $(".modal-top").on('mouseout','.tags-alphabets a[data-attribute="alphabet-hover"] ', hideCheckboxFilter);
 $(".modal-top").on('click',".tags-alphabets a[data-attribute='alphabet-hover']", slideToThatFilter);
+
 
 
 var populateTags = function(array,metaData) {
@@ -187,24 +199,18 @@ var populateTags = function(array,metaData) {
 	}
 }
 
-
-
-
-
-
-var searchTags = function() {
-	var string = $("#search-tags").val();
+var searchTags = function(array, metaData, elem) {
+	var str = $(elem).val();
+	str=str.toLowerCase();
 	var resultTags = []
-
-    for (var i=0; i < industryTagsData.length; i++) {
-        if (industryTagsData[i]["text"].includes(string)) {
-            resultTags.push(industryTagsData[i]);
+    for (var i=0; i < array.length; i++) {
+        if (array[i]["text"] && array[i]["text"].toLowerCase().indexOf(str)>-1) {
+            resultTags.push(array[i]);
         }
     }
-
 	$(".row.js-menu-industry").empty();
 	$(".tags-alphabets").empty();
-	populateIndustryTags(resultTags);
+	populateTags(resultTags, metaData);
 
 }
 
