@@ -1,13 +1,17 @@
+var industryMetaData = {
+    "data-attribute": "menu-industry",
+    "name": "industry"
+}
+
 var industryTagsData =    [
                           {
                              "text":"Accounting"
-                            ,"val":24,
-                             "bool": "true"
+                            ,"val":24
+
                           },
                           {
                              "text":"Advertising / PR / Events"
-                            ,"val":25,
-                             "bool": "true"
+                            ,"val":25
                           },
                           {
                              "text":"Auto / Auto Ancillary"

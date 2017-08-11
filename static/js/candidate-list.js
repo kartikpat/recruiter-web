@@ -87,7 +87,7 @@ var jobs = $(".jobs");
 var tableRow = $(".jobs_content.prototype");
 var columnOrg =  $(".organization.prototype");
 var columnIns =  $(".institute.prototype");
-var industryTags = $(".industry-tags.prototype");
+var tags = $(".tags.prototype");
 var tagsWrapper = $(".tags-wrapper.prototype");
 var viewByOptions = $(".jobs .menu .stat");
 var pageNumber = 1;
@@ -96,12 +96,14 @@ var pageContent = 5;
 var showCheckboxFilter = function() {
 
 	var id = $(this).attr('class');
+	var att = $(this).attr('data-att');
+	console.log(att);
 
-	$(".row.js-menu-industry input").parent().addClass("invisible");
-	$(".row.js-menu-industry span").addClass("invisible");
-	var elements = $(".row.js-menu-industry input."+id+"");
+	$(".row.js-"+att+" input").parent().addClass("invisible");
+	$(".row.js-"+att+" span").addClass("invisible");
+	var elements = $(".row.js-"+att+" input."+id+"");
 
-	var spanElement = $(".row.js-menu-industry span."+id+"");
+	var spanElement = $(".row.js-"+att+" span."+id+"");
 
 	elements.each(function(index,anElement){
 
@@ -111,13 +113,15 @@ var showCheckboxFilter = function() {
 }
 
 var hideCheckboxFilter = function() {
-	$(".row.js-menu-industry input").parent().removeClass("invisible");
-	$(".row.js-menu-industry span").removeClass("invisible");
+	var att = $(this).attr('data-att');
+	$(".row.js-"+att+" input").parent().removeClass("invisible");
+	$(".row.js-"+att+" span").removeClass("invisible");
 }
 
-var slideToThatFilter = function() {
+var slideToThatFilter = function(event) {
+	event.preventDefault();
 	var href = $(this).attr('href');
-	jQuery(".modal-bottom").scrollLeft($(href)[0].offsetLeft);
+	jQuery(".modal-bottom").scrollLeft($(href)[0].offsetLeft - 30);
 }
 
 $(document).ready(function(){
@@ -126,7 +130,13 @@ $(document).ready(function(){
 	  pageNumber: pageNumber
 	   }, populateJobs)
 
-	populateIndustryTags(industryTagsData);
+	populateTags(industryTagsData, industryMetaData);
+	populateTags(languageTagsData,languageMetaData);
+	populateTags(functionalAreaTagsData, functionalAreaMetaData);
+	populateTags(instituteTagsData, instituteMetaData);
+	populateTags(currentLocationTagsData, currentLocationMetaData);
+	populateTags(prefeLocationTagsData, preferredLocationMetaData);
+
 
 	openModalBtn.click(openModal);
 	closeModalBtn.click(closeModal);
@@ -136,12 +146,6 @@ $(document).ready(function(){
 
 	$("#search-tags").on('input',searchTags);
 
-	// $(".modal-top a[data-attribute='alphabet-hover']").on('mouseover', showCheckboxFilter);
-
-	//$("a[data-attribute='alphabet-hover']").on('mouseout', hideCheckboxFilter);
-
-	$("a[data-attribute='alphabet-hover']").on('click', slideToThatFilter);
-
 	filtersModal.find('.js-tags-modal input[type="checkbox"]').on('change', syncTags);
 });
 
@@ -150,7 +154,38 @@ $(".modal-top").on('mouseout','.tags-alphabets a[data-attribute="alphabet-hover"
 $(".modal-top").on('click',".tags-alphabets a[data-attribute='alphabet-hover']", slideToThatFilter);
 
 
+var populateTags = function(array,metaData) {
 
+	var sorted = array.sort((a, b) => {
+        return a["text"].localeCompare(b.text)
+	});
+
+	var j = 0;
+	var flag = 0;
+	var dataAttribute = metaData["data-attribute"];
+	var name = metaData["name"];
+	for(var i = 0; j < sorted.length; i++) {
+		 var obj = sorted[j];
+		 if(!(i%10)) {
+ 			var tagsWrapperClone = tagsWrapper.clone().removeClass('prototype hidden');
+ 			$(".row.js-"+dataAttribute+"").append(tagsWrapperClone);
+ 		}
+		if((flag==0) && (!sorted[j-1] || obj["text"].charAt(0) != sorted[j-1]["text"].charAt(0))) {
+			flag=1;
+			aCharacter = obj["text"].charAt(0);
+			tagsWrapperClone.append('<span id="'+dataAttribute+'-'+aCharacter+'" class="'+dataAttribute+'-alphabet-hover-'+aCharacter+'" >'+aCharacter+'</span>');
+			$(".tags-alphabets.tags-alphabets-"+dataAttribute+"").append('<li><a href="#'+dataAttribute+'-'+aCharacter+'" class="'+dataAttribute+'-alphabet-hover-'+aCharacter+'" data-attribute="alphabet-hover" data-att = "'+dataAttribute+'">'+aCharacter+'</a></li>');
+			continue;
+		}
+		var tagCheckbox = tags.clone().removeClass('prototype hidden');
+		tagCheckbox.find(".label").append('<input id="'+obj["text"]+'" type="checkbox" value="'+obj["val"]+'" name="'+name+'" class="'+dataAttribute+'-alphabet-hover-'+aCharacter+'">'+ obj["text"]);
+		tagCheckbox.find(".label").attr("for", obj["text"]);
+
+		tagsWrapperClone.append(tagCheckbox);
+		flag=0;
+		j++;
+	}
+}
 
 
 
@@ -317,47 +352,7 @@ filters.find('.js-filters').on('change', function(){
 
 
 
-var populateIndustryTags = function(array) {
 
-	var sorted = array.sort((a, b) => {
-        return a["text"].localeCompare(b.text)
-	});
-
-	//console.log(sorted);
-	var bool = 1;
-	var j = 0;
-	//var tagsWrapperClone = tagsWrapper.clone().removeClass('prototype hidden');
-		// $(".row.js-menu-industry").append(tagsWrapperClone);
-		// var aCharacter = sorted[0]["text"].charAt(0);
-		// $(".tags-alphabets").append('<li><a href="#'+aCharacter+'" class="alphabet-hover-'+aCharacter+'" data-attribute="alphabet-hover">'+aCharacter+'</a></li>');
-		// tagsWrapperClone.append('<span id="'+aCharacter+'" class="alphabet-hover-'+aCharacter+'">'+aCharacter+'</span>');
-
-var flag = 0;
-for(var i = 0; j < sorted.length; i++) {
-		 var obj = sorted[j];
-		 if(!(i%10)) {
-			 //console.log("new column");
- 			var tagsWrapperClone = tagsWrapper.clone().removeClass('prototype hidden');
- 			$(".row.js-menu-industry").append(tagsWrapperClone);
- 		}
-		if((flag==0) && (!sorted[j-1] || obj["text"].charAt(0) != sorted[j-1]["text"].charAt(0))) {
-			flag=1;
-			//console.log("new alphabet tag");
-			aCharacter = obj["text"].charAt(0);
-			tagsWrapperClone.append('<span id="'+aCharacter+'" class="alphabet-hover-'+aCharacter+'" >'+aCharacter+'</span>');
-			$(".tags-alphabets").append('<li><a href="#'+aCharacter+'" class="alphabet-hover-'+aCharacter+'" data-attribute="alphabet-hover">'+aCharacter+'</a></li>');
-			continue;
-		}
-		//console.log("new element")
-		var industryTagCheckbox = industryTags.clone().removeClass('prototype hidden');
-		industryTagCheckbox.find(".label").append('<input id="'+obj["text"]+'" type="checkbox" value="'+obj["val"]+'" name="industry" class="alphabet-hover-'+aCharacter+'">'+ obj["text"]);
-		industryTagCheckbox.find(".label").attr("for", obj["text"]);
-
-		tagsWrapperClone.append(industryTagCheckbox);
-		flag=0;
-		j++;
-}
-}
 
 
 
