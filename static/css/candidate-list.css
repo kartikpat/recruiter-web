@@ -100,7 +100,8 @@ input:focus, select:focus {
         .main-container .jobs .tabs .menu li {
           display: inline-block;
           border: 1px solid #d8d8d8;
-          padding: 2px 0; }
+          padding: 2px 0;
+          border-radius: 2px; }
           .main-container .jobs .tabs .menu li a {
             text-decoration: none;
             color: #000;
@@ -219,12 +220,13 @@ input:focus, select:focus {
   height: 100%; }
   .modal .modal-content {
     position: relative;
-    box-shadow: 0 0 20px 1px #d8d8d8;
+    box-shadow: 0 0 1px #d8d8d8;
     max-width: 700px;
     height: 24em;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); }
+    transform: translate(-50%, -50%);
+    border-radius: 2px; }
     .modal .modal-content .modal-top {
       padding: 20px;
       position: relative; }

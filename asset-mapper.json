@@ -100,7 +100,8 @@
             	"static/css/candidate-list.css",
 				"static/css/footer.css",
 				"static/css/buttons.css",
-				"static/css/colors.css"
+				"static/css/colors.css",
+				"static/css/animate.css"
 
 
 			],

@@ -12,6 +12,11 @@ body, html {
 .hidden {
   display: none !important; }
 
+.transition {
+  -webkit-transition: background-color 2000ms linear, opacity 600ms, visibility 600ms;
+  -ms-transition: background-color 2000ms linear,  opacity 600ms, visibility 600ms;
+  transition: background-color 2000ms linear,  opacity 600ms, visibility 600ms; }
+
 .container {
   height: calc(100% - 84px); }
 

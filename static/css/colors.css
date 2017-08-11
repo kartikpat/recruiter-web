@@ -1,2 +1,8 @@
 .white-bg {
   background-color: #ffffff; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
