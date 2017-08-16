@@ -101,7 +101,8 @@
 				"static/css/footer.css",
 				"static/css/buttons.css",
 				"static/css/colors.css",
-				"static/css/animate.css"
+				"static/css/animate.css",
+				"static/css/utilities.css"
 
 
 			],

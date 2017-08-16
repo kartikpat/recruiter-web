@@ -4,6 +4,8 @@ var closeModalBtn = $(".js-close-modal");
 var filters = $(".filters");
 var filtersModal = $(".filters-modal");
 var jobContainer =$(".jobs_wrapper");
+var obj = {};
+
 
 /**
  * opens the respective modal depending upon the data-attribute passed through the clicked element
@@ -12,11 +14,11 @@ var jobContainer =$(".jobs_wrapper");
 var openModal = function() {
 	var id = $(this).attr('data-attribute');
 	var modal = $('.modal[data-attribute= ' + id + ']');
-	var tags = filters.find('.js-tags[data-attribute= ' + id + ']');
+	/*var tags = filters.find('.js-tags[data-attribute= ' + id + ']');
 	tags.find("input[type='checkbox']:checked").each(function() {
 		var value= $(this).val();
 	  	$(".js-tags-modal[data-attribute=" + id + "] input[type='checkbox'][value=  " + value +"]").prop('checked',true);
-	});
+	});*/
 	modal.removeClass('hidden');
 };
 
@@ -96,7 +98,7 @@ var pageContent = 5;
 var showCheckboxFilter = function() {
 
 	var id = $(this).attr('class');
-	var att = $(this).attr('data-att');	
+	var att = $(this).attr('data-att');
 	$(".row.js-"+att+" input").parent().addClass("invisible");
 	$(".row.js-"+att+" span").addClass("invisible");
 	var elements = $(".row.js-"+att+" input."+id+"");
@@ -122,10 +124,6 @@ var slideToThatFilter = function(event) {
 	jQuery(".modal-bottom").scrollLeft($(href)[0].offsetLeft - 30);
 }
 
-function searchTagWrapper(callback) {
-	callback(arguments[1], arguments[2], arguments[3])
-}
-
 $(document).ready(function(){
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, {
 	  pageContent: 5,
@@ -148,23 +146,110 @@ $(document).ready(function(){
 
 	$(".search-tags-menu-industry").on('input', function(){
 		var ele = this;
-		//searchTagWrapper(searchTags, industryTagsData, industryMetaData, this)
 		searchTags(industryTagsData, industryMetaData, ele);
 	});
-	// $(".search-tags-menu-functional-area").on('input',searchTags(functionalAreaTagsData, functionalAreaMetaData));
-	// $(".search-tags-menu-current-location").on('input',searchTags(currentLocationTagsData, currentLocationMetaData));
-	// $(".search-tags-menu-preferred-location").on('input',searchTags(prefeLocationTagsData, preferredLocationMetaData));
-	// $(".search-tags-menu-institute").on('input',searchTags(instituteTagsData, instituteMetaData));
-	// $(".search-tags-menu-languages").on('input',searchTags(languageTagsData,languageMetaData));
+	$(".search-tags-menu-functional-area").on('input',function(){
+		var ele = this;
+		searchTags(functionalAreaTagsData, functionalAreaMetaData, ele);
+	});
+	$(".search-tags-menu-current-location").on('input',function(){
+		var ele = this;
+		searchTags(currentLocationTagsData, currentLocationMetaData, ele);
+	});
+	$(".search-tags-menu-preferred-location").on('input',function(){
+		var ele = this;
+		searchTags(prefeLocationTagsData, preferredLocationMetaData, ele);
+	});
+	$(".search-tags-menu-institute").on('input',function(){
+		var ele = this;
+		searchTags(instituteTagsData, instituteMetaData, ele);
+	});
+	$(".search-tags-menu-languages").on('input',function(){
+		var ele = this;
+		searchTags(languageTagsData,languageMetaData, ele);
+	});
 
 	filtersModal.find('.js-tags-modal input[type="checkbox"]').on('change', syncTags);
+
+	// $('.loader').bind('ajaxStart', function(){
+	//     $(this).removeClass('hidden');
+	// }).bind('ajaxStop', function(){
+	//     $(this).addClass('hidden');
+	// });
+
 });
+
+filtersModal.on('change','input[type="checkbox"]', function(){
+	var name = $(this).attr('name');
+	var tagsArray = [];
+	var elements = filtersModal.find('input[name="'+name+'"]:checked');
+	elements.each(function(index,anElement){
+		tagsArray.push(anElement.value);
+	});
+	obj[name] = tagsArray;
+	console.log(obj);
+	showFilterTags(obj);
+});
+
+filters.find('.js-filters').on('change', function(){
+	var name = $(this).attr('name');
+	var tagsArray = [];
+	tagsArray.push($(this).val());
+	obj[name] = tagsArray;
+	console.log(obj);
+	showFilterTags(obj);
+});
+
+var hideFilterTag = function() {
+	var name = $(this).attr('data-name');
+	var value = $(this).attr('data-value');
+//	console.log(value);
+//	console.log(obj[name]);
+	var index = obj[name].indexOf(value);
+	obj[name].splice(index, 1);
+//	console.log(obj);
+	showFilterTags(obj);
+	filtersModal.find('input[type="checkbox"][name="'+name+'"][value="'+value+'"]').prop('checked', false);
+	filters.find('.js-filters[name="'+name+'"] option:selected').prop("selected", false);
+	filters.find('.js-filters[name="'+name+'"]:checked').prop("checked", false);
+	//console.log(element);
+	submitFilters();
+}
 
 $(".modal-top").on('mouseover','.tags-alphabets a[data-attribute="alphabet-hover"] ', showCheckboxFilter);
 $(".modal-top").on('mouseout','.tags-alphabets a[data-attribute="alphabet-hover"] ', hideCheckboxFilter);
 $(".modal-top").on('click',".tags-alphabets a[data-attribute='alphabet-hover']", slideToThatFilter);
+$('.filter-tags').on('click', '.js-remove-tag', hideFilterTag);
 
+var showFilterTags = function(obj) {
 
+	$('.filter-tags').empty();
+	$.each(obj, function(objKey, array) {
+		$.each(array, function(arrKey, value) {
+			var filterTag = $('.js-tags.prototype').clone().removeClass('prototype hidden');
+			var valueCheckbox = filtersModal.find('input[type="checkbox"][name="'+objKey+'"][value="'+value+'"]').parent().text();
+			var valueSelect = filters.find('.js-filters[name="'+objKey+'"] option:selected').text();
+			var valueRadio = filters.find('.js-filters[name="'+objKey+'"]:checked').parent().text();
+			var elementValue;
+			if(valueCheckbox) {
+				elementValue = valueCheckbox;
+			}
+			else if (valueSelect) {
+				elementValue = valueSelect;
+			}
+			else if (valueRadio) {
+				elementValue = valueRadio;
+			}
+			filterTag.attr("data-name", objKey);
+			filterTag.attr("data-value", value);
+			filterTag.text(elementValue);
+			filterTag.addClass('inline-block box_shadow js-remove-tag');
+			$('.filter-tags').append(filterTag);
+		});
+
+	})
+
+}
 
 var populateTags = function(array,metaData) {
 
@@ -174,6 +259,7 @@ var populateTags = function(array,metaData) {
 
 	var j = 0;
 	var flag = 0;
+	var count = 0;
 	var dataAttribute = metaData["data-attribute"];
 	var name = metaData["name"];
 	for(var i = 0; j < sorted.length; i++) {
@@ -181,6 +267,7 @@ var populateTags = function(array,metaData) {
 		 if(!(i%10)) {
  			var tagsWrapperClone = tagsWrapper.clone().removeClass('prototype hidden');
  			$(".row.js-"+dataAttribute+"").append(tagsWrapperClone);
+			count++;
  		}
 		if((flag==0) && (!sorted[j-1] || obj["text"].charAt(0) != sorted[j-1]["text"].charAt(0))) {
 			flag=1;
@@ -197,19 +284,22 @@ var populateTags = function(array,metaData) {
 		flag=0;
 		j++;
 	}
+	var widt = count * 300;
+	$(".row.js-"+dataAttribute+"").width(widt);
 }
 
 var searchTags = function(array, metaData, elem) {
 	var str = $(elem).val();
 	str=str.toLowerCase();
+	var dataAttribute = metaData["data-attribute"];
 	var resultTags = []
     for (var i=0; i < array.length; i++) {
         if (array[i]["text"] && array[i]["text"].toLowerCase().indexOf(str)>-1) {
             resultTags.push(array[i]);
         }
     }
-	$(".row.js-menu-industry").empty();
-	$(".tags-alphabets").empty();
+	$(".row.js-"+dataAttribute+"").empty();
+	$(".tags-alphabets-"+dataAttribute+"").empty();
 	populateTags(resultTags, metaData);
 
 }
@@ -240,7 +330,6 @@ var populateJobs = function(res){
 		jobs.find(".status_sort").text(unread);
 
 		res["data"].forEach(function(aJob){
-			//console.log(total_exp);
 			var card = tableRow.clone().removeClass('prototype hidden');
 			card.find(".user_name").text(aJob["name"]);
 			card.attr("href","/profile/"+aJob["userID"]+"?jobID="+jobID)
@@ -276,6 +365,7 @@ var populateJobs = function(res){
 				card.find('.content_institute').append(column);
 			})
 			$('.jobs_container .jobs_wrapper').append(card);
+
 		})
 	}
 }
@@ -329,41 +419,11 @@ function getAge(dateString) {
 	 return age;
 }
 
-var onHoverDisplayIcons = function() {
-	$(".js-hover-icons").removeClass("hidden");
-}
-
-
-
-var obj = {};
-
-
-
-filtersModal.find('input[type="checkbox"]').on('change', function(){
-	var name = $(this).attr('name');
-	var tagsArray = [];
-	var elements = filtersModal.find('input[name="'+name+'"]:checked');
-	elements.each(function(index,anElement){
-		tagsArray.push(anElement.value);
-	});
-	obj[name] = tagsArray;
-
-});
-
-filters.find('.js-filters').on('change', function(){
-	var name = $(this).attr('name');
-	obj[name] = $(this).val();
-
-});
-
-
-
 
 
 
 
 var ticker;
-
 function checkScrollEnd() {
 
 	if($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
@@ -380,7 +440,14 @@ function checkScrollEnd() {
 		pageNumber = pageNumber + 1;
 		queryString["pageNumber"] = pageNumber;
 		if(queryString["pageNumber"] != 1) {
+			//$('.loader').removeClass('hidden');
+
 			getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, queryString, populateJobs)
+			// setTimeout( function(){
+    		// 	$('.loader').addClass('hidden');
+			//
+  	// 		}  , 300 );
+
 		}
 	}
 }
