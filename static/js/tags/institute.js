@@ -688,4 +688,6 @@ var instituteTagsData = [
   {
      "text":"VES Institute of Management Studies and Research"
     ,"val":172
-  }]
+  }].sort(function(a, b){
+      return a["text"].localeCompare(b.text)
+  });

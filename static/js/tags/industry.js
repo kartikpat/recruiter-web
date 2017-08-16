@@ -137,4 +137,6 @@ var industryTagsData =    [
                              "text":"Other"
                             ,"val":33
                           }
-                      ]
+                      ].sort(function(a, b){
+                          return a["text"].localeCompare(b.text)
+                      });

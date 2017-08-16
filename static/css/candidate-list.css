@@ -278,3 +278,9 @@ input:focus, select:focus {
           width: 300px; }
           .modal .modal-content .modal-bottom .row .tags-wrapper label {
             font-size: 12px; }
+
+.js-show-tags {
+  padding: 5px;
+  cursor: pointer; }
+  .js-show-tags:hover {
+    background-color: #eee; }

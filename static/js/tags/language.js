@@ -100,4 +100,6 @@ var languageTagsData = [
   {
      "text":"Sindhi"
     ,"val":"Sindhi"
-  }]
+  }].sort(function(a, b){
+      return a["text"].localeCompare(b.text)
+  });

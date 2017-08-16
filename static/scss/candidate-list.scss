@@ -421,3 +421,11 @@ input, select {
         }
     }
 }
+
+.js-show-tags {
+    padding: 5px;
+    cursor: pointer;
+    &:hover {
+        background-color: #eee;
+    }
+}

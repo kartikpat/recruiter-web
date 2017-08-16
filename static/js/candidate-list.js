@@ -14,11 +14,6 @@ var obj = {};
 var openModal = function() {
 	var id = $(this).attr('data-attribute');
 	var modal = $('.modal[data-attribute= ' + id + ']');
-	/*var tags = filters.find('.js-tags[data-attribute= ' + id + ']');
-	tags.find("input[type='checkbox']:checked").each(function() {
-		var value= $(this).val();
-	  	$(".js-tags-modal[data-attribute=" + id + "] input[type='checkbox'][value=  " + value +"]").prop('checked',true);
-	});*/
 	modal.removeClass('hidden');
 };
 
@@ -94,8 +89,6 @@ var viewByOptions = $(".jobs .menu .stat");
 var pageNumber = 1;
 var pageContent = 5;
 
-// Break point one
-
 var showCheckboxFilter = function() {
 
 	var id = $(this).attr('class');
@@ -103,11 +96,8 @@ var showCheckboxFilter = function() {
 	$(".row.js-"+att+" input").parent().addClass("invisible");
 	$(".row.js-"+att+" span").addClass("invisible");
 	var elements = $(".row.js-"+att+" input."+id+"");
-
 	var spanElement = $(".row.js-"+att+" span."+id+"");
-
 	elements.each(function(index,anElement){
-
 		$(anElement).parent().removeClass("invisible");
 	});
 	$(spanElement).removeClass("invisible")
@@ -137,6 +127,13 @@ $(document).ready(function(){
 	populateTags(instituteTagsData, instituteMetaData);
 	populateTags(currentLocationTagsData, currentLocationMetaData);
 	populateTags(prefeLocationTagsData, preferredLocationMetaData);
+
+	populateMainTags(industryTagsData, industryMetaData);
+	populateMainTags(languageTagsData,languageMetaData);
+	populateMainTags(functionalAreaTagsData, functionalAreaMetaData);
+	populateMainTags(instituteTagsData, instituteMetaData);
+	populateMainTags(currentLocationTagsData, currentLocationMetaData);
+	populateMainTags(prefeLocationTagsData, preferredLocationMetaData);
 
 
 	openModalBtn.click(openModal);
@@ -170,8 +167,6 @@ $(document).ready(function(){
 		searchTags(languageTagsData,languageMetaData, ele);
 	});
 
-	filtersModal.find('.js-tags-modal input[type="checkbox"]').on('change', syncTags);
-
 	// $('.loader').bind('ajaxStart', function(){
 	//     $(this).removeClass('hidden');
 	// }).bind('ajaxStop', function(){
@@ -183,9 +178,34 @@ $(document).ready(function(){
 filtersModal.on('change','input[type="checkbox"]', function(){
 	var name = $(this).attr('name');
 	var tagsArray = [];
-	var elements = filtersModal.find('input[name="'+name+'"]:checked');
-	elements.each(function(index,anElement){
-		tagsArray.push(anElement.value);
+	var checkedElements = filtersModal.find('input[name="'+name+'"]:checked');
+	var uncheckedElements = filtersModal.find('input[name="'+name+'"]:not(:checked)');
+	checkedElements.each(function(index,anElement){
+		var value = anElement.value;
+		filters.find('input[name="'+name+'"][value="'+value+'"]').prop('checked', true);
+		tagsArray.push(value);
+	});
+	uncheckedElements.each(function(index,anElement){
+		filters.find('input[name="'+name+'"][value="'+value+'"]').prop('checked', false);
+	});
+	obj[name] = tagsArray;
+	console.log(obj);
+	showFilterTags(obj);
+});
+
+filters.on('change','input[type="checkbox"]', function(){
+	var name = $(this).attr('name');
+	var tagsArray = [];
+	var checkedElements = filters.find('input[name="'+name+'"]:checked');
+	var uncheckedElements = filters.find('input[name="'+name+'"]:not(:checked)');
+	checkedElements.each(function(index,anElement){
+		var value = anElement.value;
+		filtersModal.find('input[name="'+name+'"][value="'+value+'"]').prop('checked',true);
+		tagsArray.push(value);
+	});
+	uncheckedElements.each(function(index,anElement){
+		var value = anElement.value;
+		filtersModal.find('input[name="'+name+'"][value="'+value+'"]').prop('checked', false);
 	});
 	obj[name] = tagsArray;
 	console.log(obj);
@@ -211,6 +231,7 @@ var hideFilterTag = function() {
 //	console.log(obj);
 	showFilterTags(obj);
 	filtersModal.find('input[type="checkbox"][name="'+name+'"][value="'+value+'"]').prop('checked', false);
+	filters.find('input[type="checkbox"][name="'+name+'"][value="'+value+'"]').prop('checked', false);
 	filters.find('.js-filters[name="'+name+'"] option:selected').prop("selected", false);
 	filters.find('.js-filters[name="'+name+'"]:checked').prop("checked", false);
 	//console.log(element);
@@ -227,7 +248,7 @@ var showFilterTags = function(obj) {
 	$('.filter-tags').empty();
 	$.each(obj, function(objKey, array) {
 		$.each(array, function(arrKey, value) {
-			var filterTag = $('.js-tags.prototype').clone().removeClass('prototype hidden');
+			var filterTag = $('.js-show-tags.prototype').clone().removeClass('prototype hidden');
 			var valueCheckbox = filtersModal.find('input[type="checkbox"][name="'+objKey+'"][value="'+value+'"]').parent().text();
 			var valueSelect = filters.find('.js-filters[name="'+objKey+'"] option:selected').text();
 			var valueRadio = filters.find('.js-filters[name="'+objKey+'"]:checked').parent().text();
@@ -244,18 +265,30 @@ var showFilterTags = function(obj) {
 			filterTag.attr("data-name", objKey);
 			filterTag.attr("data-value", value);
 			filterTag.text(elementValue);
-			filterTag.addClass('inline-block box_shadow js-remove-tag');
+			filterTag.addClass('inline-block box_shadow js-remove-tag font-sm');
 			$('.filter-tags').append(filterTag);
 		});
-
 	})
-
 }
 
-var populateTags = function(array,metaData) {
-	var sorted = array.sort(function(a, b){
-        return a["text"].localeCompare(b.text)
-	});
+var populateMainTags = function(sorted,metaData) {
+	var dataAttribute = metaData["data-attribute"];
+	var name = metaData["name"];
+	$.each(sorted, function(index, value) {
+		if(index > 1){
+			return
+		}
+		var obj = sorted[index];
+		var tagCheckbox = tags.clone().removeClass('prototype hidden');
+		tagCheckbox.find(".label").append('<input id="'+obj["text"]+'" type="checkbox" value="'+obj["val"]+'" name="'+name+'">'+ obj["text"]);
+		tagCheckbox.find(".label").attr("for", obj["text"]);
+		tagCheckbox.find(".label").addClass("font-sm");
+		$('.js-tags[data-attribute='+dataAttribute+']').append(tagCheckbox);
+	})
+}
+
+var populateTags = function(sorted,metaData) {
+
 	var j = 0;
 	var flag = 0;
 	var count = 0;
@@ -303,19 +336,7 @@ var searchTags = function(array, metaData, elem) {
 
 }
 
-var syncTags = function() {
-	var name = $(this).attr('name');
-	var uncheckedElements = filtersModal.find('.js-tags-modal input[name="'+name+'"]:not(:checked)');
-	var checkedElements = filtersModal.find('.js-tags-modal input[name="'+name+'"]:checked')
-	uncheckedElements.each(function(index,anElement){
-		var val = $(this).val();
-		$(".js-tags input[name="+name+"][value=  " + val +"]").prop('checked',false);
-	});
-	checkedElements.each(function(index,anElement){
-		var val = $(this).val();
-		$(".js-tags input[name="+name+"][value=  " + val +"]").prop('checked',true);
-	});
-}
+
 
 var populateJobs = function(res){
 	if(res.status=="success"){
@@ -416,10 +437,6 @@ function getAge(dateString) {
 
 	 return age;
 }
-
-
-
-
 
 var ticker;
 function checkScrollEnd() {
