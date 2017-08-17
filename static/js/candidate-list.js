@@ -5,6 +5,7 @@ var filters = $(".filters");
 var filtersModal = $(".filters-modal");
 var jobContainer =$(".jobs_wrapper");
 var obj = {};
+var tabId;
 
 
 /**
@@ -28,15 +29,14 @@ var closeModal = function() {
 }
 
 var loadViewByData = function() {
-	var id = $(this).attr('data-attribute');
-	localStorage.setItem("tabId",id);
+	tabId = $(this).attr('data-attribute');
 	var queryString = {};
 	pageNumber = 1;
-	if(id=='magicsort'){
+	if(tabId=='magicsort'){
 	  queryString["sortBy"] = 1;
 	}
-	else if(id==-1 || (id>0 && id <4)){
-	  queryString["status"] = id;
+	else if(tabId==-1 || (tabId>0 && tabId <4)){
+	  queryString["status"] = tabId;
 	}
 	queryString["pageContent"] = 5;
 	queryString["pageNumber"] = pageNumber;
@@ -46,11 +46,7 @@ var loadViewByData = function() {
 	$('.jobs_wrapper').empty();
 }
 
-
-
 var submitFilters = function() {
-	var id = localStorage.getItem("tabId");
-
 	var parameters = {
 		industry: (obj["industry"])? obj["industry"].join(","): null,
 		location: (obj["location"])? obj["location"].join(","): null,
@@ -75,11 +71,11 @@ var submitFilters = function() {
 		language: obj["language"],
 
 	};
-	if(id=='magicsort'){
+	if(tabId=='magicsort'){
 	  parameters["sortBy"] = 1;
 	}
-	else if(id==-1 || (id>0 && id <4)){
-	  parameters["status"] = id;
+	else if(tabId==-1 || (tabId>0 && tabId <4)){
+	  parameters["status"] = tabId;
 	}
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, parameters, populateJobs, showLoader, hideLoader);
 	$('.jobs_wrapper').empty();
@@ -346,10 +342,11 @@ var searchTags = function(array, metaData, elem) {
 
 }
 
-
+var resultLength;
 
 var populateJobs = function(res){
 	if(res.status=="success"){
+		resultLength = res["data"]["data"].length;
 		var res = res["data"];
 		jobs.find(".status_all").text(res["total"]);
 		jobs.find(".status_shortlisted").text(res["shortlisted"]);
@@ -481,13 +478,11 @@ function checkScrollEnd() {
 		queryString["pageContent"] = 5;
 		pageNumber = pageNumber + 1;
 		queryString["pageNumber"] = pageNumber;
-		if(queryString["pageNumber"] != 1) {
+		if(queryString["pageNumber"] != 1 && resultLength == queryString["pageContent"] ) {
 			getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, queryString, populateJobs, showLoaderScroll, hideLoaderScroll)
 		}
 	}
 }
-
-
 
 $(window).scroll(function() {
  clearTimeout(ticker);

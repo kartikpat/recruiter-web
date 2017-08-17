@@ -59,7 +59,7 @@ input:focus, select:focus {
       border-bottom: 1px solid #d8d8d8;
       margin-bottom: 5px; }
       .main-container .filters .menu > span {
-        font-size: 12px; }
+        font-size: 10px; }
       .main-container .filters .menu > button {
         float: right; }
       .main-container .filters .menu .field {
@@ -90,16 +90,16 @@ input:focus, select:focus {
     display: inline-block;
     width: 79%;
     vertical-align: top;
-    padding: 10px 0 0 10px;
+    padding: 0 0 0 10px;
     position: relative; }
     .main-container .jobs .tabs {
       width: auto;
-      display: inline-block;
-      margin-left: 20px; }
+      display: inline-block; }
       .main-container .jobs .tabs .menu {
         list-style: none;
         padding: 0;
-        display: inline-block; }
+        display: inline-block;
+        margin: 0 0 10px 0; }
         .main-container .jobs .tabs .menu li {
           display: inline-block;
           border: 1px solid #d8d8d8;
@@ -114,14 +114,6 @@ input:focus, select:focus {
               background-color: #7d7d7d;
               padding: 2px 6px;
               color: #ffffff; }
-    .main-container .jobs .page_number {
-      display: inline-block;
-      position: absolute;
-      right: 0;
-      top: 25px;
-      min-height: 28px;
-      line-height: 28px;
-      padding: 0 10px; }
     .main-container .jobs .calendar {
       min-height: 40px;
       line-height: 40px;
@@ -135,8 +127,9 @@ input:focus, select:focus {
         background-color: inherit; }
     .main-container .jobs .jobs_panel {
       width: 100%;
-      margin: 40px auto;
-      min-height: 300px; }
+      margin: 20px auto;
+      min-height: 300px;
+      position: relative; }
       .main-container .jobs .jobs_panel .jobs_header {
         width: auto;
         margin: 0 auto;
@@ -146,7 +139,7 @@ input:focus, select:focus {
           padding: 3px;
           margin: 3px;
           overflow: auto;
-          font-size: 16px;
+          font-size: 12px;
           text-align: left; }
         .main-container .jobs .jobs_panel .jobs_header .header_name {
           width: 18%; }
@@ -284,6 +277,6 @@ input:focus, select:focus {
 .js-show-tags {
   padding: 5px;
   cursor: pointer;
-  margin: 5px; }
+  margin-bottom: 10px; }
   .js-show-tags:hover {
     background-color: #eee; }

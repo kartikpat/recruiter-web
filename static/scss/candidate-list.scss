@@ -85,7 +85,7 @@ input, select {
             margin-bottom: 5px;
 
             > span {
-                font-size: 12px;
+                font-size: 10px;
             }
 
             > button {
@@ -136,18 +136,19 @@ input, select {
         display: inline-block;
         width: 79%;
         vertical-align: top;
-        padding: 10px 0 0 10px;
+        padding: 0 0 0 10px;
         position: relative;
 
         .tabs {
             width: auto;
             display: inline-block;
-            margin-left: 20px;
+
 
             .menu {
                 list-style: none;
                 padding: 0;
                 display: inline-block;
+                margin: 0 0 10px 0;
 
                 li {
                     display: inline-block;
@@ -171,16 +172,6 @@ input, select {
             }
         }
 
-        .page_number {
-            display: inline-block;
-            position: absolute;
-            right: 0;
-            top: 25px;
-            min-height: 28px;
-            line-height: 28px;
-            padding: 0 10px;
-        }
-
         .calendar {
             min-height: 40px;
             line-height: 40px;
@@ -198,8 +189,9 @@ input, select {
 
         .jobs_panel {
             width: 100%;
-            margin: 40px auto;
+            margin: 20px auto;
             min-height: 300px;
+            position: relative;
 
             .jobs_header {
                 width: auto;
@@ -211,7 +203,7 @@ input, select {
                     padding: 3px;
                     margin: 3px;
                     overflow: auto;
-                    font-size: 16px;
+                    font-size: 12px;
                     text-align: left;
                 }
 
@@ -427,7 +419,7 @@ input, select {
 .js-show-tags {
     padding: 5px;
     cursor: pointer;
-    margin: 5px;
+    margin-bottom: 10px;
     &:hover {
         background-color: #eee;
     }
