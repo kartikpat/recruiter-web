@@ -29,6 +29,7 @@ var closeModal = function() {
 
 var loadViewByData = function() {
 	var id = $(this).attr('data-attribute');
+	localStorage.setItem("tabId",id);
 	var queryString = {};
 	pageNumber = 1;
 	if(id=='magicsort'){
@@ -37,16 +38,19 @@ var loadViewByData = function() {
 	else if(id==-1 || (id>0 && id <4)){
 	  queryString["status"] = id;
 	}
-	queryString["pageContent"] = pageContent;
+	queryString["pageContent"] = 5;
 	queryString["pageNumber"] = pageNumber;
 	viewByOptions.removeClass("highlight");
 	$(this).addClass("highlight");
-	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, queryString, populateJobs)
+	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, queryString, populateJobs, showLoader, hideLoader)
 	$('.jobs_wrapper').empty();
 }
 
 
+
 var submitFilters = function() {
+	var id = localStorage.getItem("tabId");
+
 	var parameters = {
 		industry: (obj["industry"])? obj["industry"].join(","): null,
 		location: (obj["location"])? obj["location"].join(","): null,
@@ -68,9 +72,16 @@ var submitFilters = function() {
 		handleTeam: obj["hasHandledTeam"],
 		relocate: obj["canRelocate"],
 		diffAbled: obj["isDifferentlyAbled"],
-		language: obj["language"]
+		language: obj["language"],
+
 	};
-	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, parameters, populateJobs);
+	if(id=='magicsort'){
+	  parameters["sortBy"] = 1;
+	}
+	else if(id==-1 || (id>0 && id <4)){
+	  parameters["status"] = id;
+	}
+	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, parameters, populateJobs, showLoader, hideLoader);
 	$('.jobs_wrapper').empty();
 	var id = $(this).attr('data-attribute');
 	var modal = $('.modal[data-attribute= ' + id + ']');
@@ -119,7 +130,7 @@ $(document).ready(function(){
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, {
 	  pageContent: 5,
 	  pageNumber: pageNumber
-	   }, populateJobs)
+  	}, populateJobs, showLoader, hideLoader)
 
 	populateTags(industryTagsData, industryMetaData);
 	populateTags(languageTagsData,languageMetaData);
@@ -167,12 +178,10 @@ $(document).ready(function(){
 		searchTags(languageTagsData,languageMetaData, ele);
 	});
 
-	// $('.loader').bind('ajaxStart', function(){
-	//     $(this).removeClass('hidden');
-	// }).bind('ajaxStop', function(){
-	//     $(this).addClass('hidden');
-	// });
-
+	$(".jobs_wrapper").on('click','.jobs_content', function() {
+		var dataAttribute = $(this).attr('data-attribute');
+		$(".jobs_content[data-attribute="+dataAttribute+"] .slide-container").toggleClass('hidden');
+	});
 });
 
 filtersModal.on('change','input[type="checkbox"]', function(){
@@ -186,6 +195,7 @@ filtersModal.on('change','input[type="checkbox"]', function(){
 		tagsArray.push(value);
 	});
 	uncheckedElements.each(function(index,anElement){
+		var value = anElement.value;
 		filters.find('input[name="'+name+'"][value="'+value+'"]').prop('checked', false);
 	});
 	obj[name] = tagsArray;
@@ -351,8 +361,9 @@ var populateJobs = function(res){
 
 		res["data"].forEach(function(aJob){
 			var card = tableRow.clone().removeClass('prototype hidden');
+			card.attr("data-attribute",'js-'+aJob['id']+'');
 			card.find(".user_name").text(aJob["name"]);
-			card.attr("href","/profile/"+aJob["userID"]+"?jobID="+jobID)
+			//card.attr("href","/profile/"+aJob["userID"]+"?jobID="+jobID)
 			card.find(".user_experience").text(getJobExperience(aJob["exp_y"], aJob["exp_m"]));
 			card.find(".current_location").text(aJob["current_location"]);
 			card.find(".applied_date").text(ISODateToD_M_Y(aJob["apply_date"]));
@@ -438,6 +449,22 @@ function getAge(dateString) {
 	 return age;
 }
 
+var showLoader = function() {
+	 $('.loader').removeClass('hidden');
+}
+
+var hideLoader = function() {
+	$('.loader').addClass('hidden');
+}
+
+var showLoaderScroll = function() {
+	$('.loader-scroll').removeClass('hidden')
+}
+
+var hideLoaderScroll = function() {
+	$('.loader-scroll').addClass('hidden');
+}
+
 var ticker;
 function checkScrollEnd() {
 
@@ -455,17 +482,12 @@ function checkScrollEnd() {
 		pageNumber = pageNumber + 1;
 		queryString["pageNumber"] = pageNumber;
 		if(queryString["pageNumber"] != 1) {
-			//$('.loader').removeClass('hidden');
-
-			getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, queryString, populateJobs)
-			// setTimeout( function(){
-    		// 	$('.loader').addClass('hidden');
-			//
-  	// 		}  , 300 );
-
+			getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, queryString, populateJobs, showLoaderScroll, hideLoaderScroll)
 		}
 	}
 }
+
+
 
 $(window).scroll(function() {
  clearTimeout(ticker);

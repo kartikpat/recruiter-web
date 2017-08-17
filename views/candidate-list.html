@@ -689,15 +689,31 @@
 <div role="tabpanel" class="jobs_panel">
  <div class="jobs_container">
 	 <div class="jobs_header">
-	  <span ><input type="checkbox"></span>
-	  <span class="header_name">Name</span>
-	  <span class="header_organization" >Organization, Title</span>
-	  <span class="header_institute">Institute</span>
-	  <span class="header_more">More</span>
+	  <div class="header header_name"><input  type="checkbox">Name</div>
+      <div class="vertical_outside hide">
+           <div class="vertical_top"></div>
+           <div class="vertical_middle"></div>
+           <div class="vertical_bottom"></div>
+      </div>
+	  <div class="header header_organization" >Organization, Title</div>
+      <div class="vertical_outside hide">
+           <div class="vertical_top"></div>
+           <div class="vertical_middle"></div>
+           <div class="vertical_bottom"></div>
+      </div>
+	  <div class="header header_institute">Institute</div>
+      <div class="vertical_outside hide">
+           <div class="vertical_top"></div>
+           <div class="vertical_middle"></div>
+           <div class="vertical_bottom"></div>
+      </div>
+	  <div class="header header_more">More</div>
   </div>
   <div class="jobs_wrapper">
   </div>
+
 </div>
+ <div class="loader-scroll hidden"></div>
 </div>
 </div>
 </div>
@@ -715,10 +731,8 @@
 
 <div href="#" class="jobs_content prototype hidden">
 	<div class="content-container">
-			<span class="content checkbox">
-			<input type="checkbox">
-		</span>
-		<span class="content content_name">
+		<div class="content content_name">
+            <input class="checkbox" type="checkbox">
 			<img class="user_img" src="../static/img/tree.jpg" onerror="this.src='http://www.iimjobs.com/resources/img/user_profile_new.png';">
 			<div class="info">
 				<div class="important_info user_name">Nitish</div>
@@ -730,28 +744,28 @@
 				<div class="extra_info"><span class="user_sex">Male </span>, <span class="user_age">29 </span><span> years</span></div>
 				<div class="extra_info"><span>Applied: </span><span class="applied_date">15-05-2016</span></div>
 			</div>
-		</span>
-		<div class="vertical_outside">
-			<div class="vertical_top"></div>
-			<div class="vertical_middle"></div>
-			<div class="vertical_bottom"></div>
 		</div>
-		<span class="content content_organization">
-		</span>
-		<div class="vertical_outside">
-			<div class="vertical_top"></div>
-			<div class="vertical_middle"></div>
-			<div class="vertical_bottom"></div>
+	       <div class="vertical_outside">
+    			<div class="vertical_top"></div>
+    			<div class="vertical_middle"></div>
+    			<div class="vertical_bottom"></div>
+		   </div>
+		<div class="content content_organization">
 		</div>
-		<span class="content content_institute">
+        <div class="vertical_outside">
+             <div class="vertical_top"></div>
+             <div class="vertical_middle"></div>
+             <div class="vertical_bottom"></div>
+        </div>
+		<div class="content content_institute">
 
-		</span>
-		<div class="vertical_outside">
-			<div class="vertical_top"></div>
-			<div class="vertical_middle"></div>
-			<div class="vertical_bottom"></div>
 		</div>
-		<span class="content content_more">
+        <div class="vertical_outside">
+             <div class="vertical_top"></div>
+             <div class="vertical_middle"></div>
+             <div class="vertical_bottom"></div>
+        </div>
+		<div class="content content_more">
 			<div class="info">
 				<a href="" class="icon " data-attribute="1"><i class="fa fa-check-square-o" aria-hidden="true"></i><span>Shortlist</span></a>
 				<a href="" class="icon " data-attribute="2"><i class="fa fa-ban" aria-hidden="true"></i><span>Reject</span></a>
@@ -768,7 +782,7 @@
 				<a href="" class="icon"><i class="fa fa-whatsapp" aria-hidden="true"></i><span>chat with<span class="user_name">kartik</span></span></a>
 				<a href="" class="icon"><i class="fa fa-calendar" aria-hidden="true"></i><span>Send Interview Invite</span></a>
 			</div>
-		</span>
+		</div>
 	</div>
 	<div class="slide-container hidden"></div>
 </div>
