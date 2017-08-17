@@ -234,7 +234,7 @@ footer, header, hgroup, menu, nav, section {
                 margin: 8px 0;
                 border: 1px solid #ccc;
                 border-radius: 4px;
-                width: 80%;
+                width: 60%;
                 background-color: inherit;
 
                 &:focus {
@@ -249,11 +249,11 @@ footer, header, hgroup, menu, nav, section {
             }
 
             select.half {
-                width: 39.5%;
+                width: 29.5%;
             }
 
             textarea {
-                width: 100%;
+                width: 70%;
                 height: 150px;
                 padding: 12px 20px;
                 box-sizing: border-box;
@@ -293,7 +293,7 @@ footer, header, hgroup, menu, nav, section {
                 margin: 0;
                 border: 1px solid #ccc;
                 border-radius: 4px;
-                width: 80%;
+                width: 30%;
             }
         }
     }

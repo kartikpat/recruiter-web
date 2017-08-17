@@ -174,8 +174,8 @@ $(document).ready(function(){
 		searchTags(languageTagsData,languageMetaData, ele);
 	});
 
-	$(".jobs_wrapper").on('click','.jobs_content', function() {
-		var dataAttribute = $(this).attr('data-attribute');
+	$(".jobs_wrapper").on('click','.content-container', function() {
+		var dataAttribute = $(this).parent().attr('data-attribute');
 		$(".jobs_content[data-attribute="+dataAttribute+"] .slide-container").toggleClass('hidden');
 	});
 });
@@ -357,6 +357,7 @@ var populateJobs = function(res){
 		jobs.find(".status_sort").text(unread);
 
 		res["data"].forEach(function(aJob){
+			console.log(aJob);
 			var card = tableRow.clone().removeClass('prototype hidden');
 			card.attr("data-attribute",'js-'+aJob['id']+'');
 			card.find(".user_name").text(aJob["name"]);
@@ -391,10 +392,53 @@ var populateJobs = function(res){
 				column.find(".degree").text(anEdu["degree"]);
 				card.find('.content_institute').append(column);
 			})
+			card.find(".resume").attr("href",aJob["resumeUrl"]);
+			var tagLine = aJob["about"];
+			if(tagLine) {
+				card.find(".tagline-content").text(tagLine);
+			}
+			else {
+				card.find(".tagline-container").addClass("hidden");
+			}
+			card.find(".email-content").text(aJob["email"]);
+			var contactNo = aJob["phone"];
+			if(contactNo) {
+				card.find(".contact-content").text(contactNo);
+			}
+			else {
+				card.find(".contact").addClass("hidden");
+			}
+			card.find(".extra-info-container .maritalStatus").text(boolean(aJob["marital_status"]));
+			//card.find("extra-info-container .languages").text(formatLanguages(aJob["language_known"]));
+			card.find(".extra-info-container .permit").text(boolean(aJob["work_permit"]));
+			card.find(".extra-info-container .handleTeam").text(boolean(aJob["handle_team"]));
+			card.find(".extra-info-container .sixDayWorking").text(aJob[""]);
+			card.find(".extra-info-container .relocate").text(boolean(aJob["relocate"]));
+			card.find(".extra-info-container .differentlyAbled").text(boolean(aJob["differently_abled"]));
+			card.find(".extra-info-container .earlyStartup").text(boolean(aJob["early_startup"]));
+			card.find(".extra-info-container .travel").text(boolean(aJob["willing_travel"]));
 			$('.jobs_container .jobs_wrapper').append(card);
 
 		})
 	}
+}
+
+function boolean(data) {
+	if(data === 1) {
+		return "yes"
+	}
+	else if (data === 0) {
+		return "no"
+	}
+}
+
+function formatLanguages(data){
+	var ob = JSON.parse(data);
+	var langArray = [];
+	for(var key in ob){
+		langArray.push(ob[key]["language_text"]);
+	}
+	return langArray.join(", ");
 }
 
 function getJobExperience(expInYrs, expInMnth) {

@@ -165,7 +165,7 @@ footer, header, hgroup, menu, nav, section {
         margin: 8px 0;
         border: 1px solid #ccc;
         border-radius: 4px;
-        width: 80%;
+        width: 60%;
         background-color: inherit; }
         .job_posting .post_job .field input:focus, .job_posting .post_job .field select:focus {
           outline: none;
@@ -174,9 +174,9 @@ footer, header, hgroup, menu, nav, section {
         display: inline-block;
         width: auto; }
       .job_posting .post_job .field select.half {
-        width: 39.5%; }
+        width: 29.5%; }
       .job_posting .post_job .field textarea {
-        width: 100%;
+        width: 70%;
         height: 150px;
         padding: 12px 20px;
         box-sizing: border-box;
@@ -202,7 +202,7 @@ footer, header, hgroup, menu, nav, section {
         margin: 0;
         border: 1px solid #ccc;
         border-radius: 4px;
-        width: 80%; }
+        width: 30%; }
 
 p.extra_info, span.extra_info {
   font-size: 13px; }
