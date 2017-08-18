@@ -6,6 +6,7 @@ var filtersModal = $(".filters-modal");
 var jobContainer =$(".jobs_wrapper");
 var obj = {};
 var tabId;
+var jobId;
 
 
 /**
@@ -28,8 +29,7 @@ var closeModal = function() {
 	modal.addClass('hidden');
 }
 
-var loadViewByData = function() {
-	tabId = $(this).attr('data-attribute');
+var loadViewByDataWrapper = function(tabId) {
 	var queryString = {};
 	pageNumber = 1;
 	if(tabId=='magicsort'){
@@ -40,11 +40,43 @@ var loadViewByData = function() {
 	}
 	queryString["pageContent"] = 5;
 	queryString["pageNumber"] = pageNumber;
+	return queryString;
+}
+
+var loadViewByDataByTab = function() {
+	tabId = $(this).attr('data-attribute');
+	var queryString = loadViewByDataWrapper(tabId);
+	console.log(queryString);
 	viewByOptions.removeClass("highlight");
 	$(this).addClass("highlight");
-	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, queryString, populateJobs, showLoader, hideLoader)
+	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId, queryString, populateJobs, showLoader, hideLoader)
 	$('.jobs_wrapper').empty();
 }
+
+var loadViewByData = function(status) {
+	tabId = status;
+	var queryString = loadViewByDataWrapper(tabId);
+	console.log(queryString);
+	viewByOptions.removeClass("highlight");
+	$(".stat[data-attribute="+tabId+"]").addClass("highlight");
+	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId, queryString, populateJobs, showLoader, hideLoader)
+	$('.jobs_wrapper').empty();
+}
+
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
 
 var submitFilters = function() {
 	var parameters = {
@@ -77,7 +109,7 @@ var submitFilters = function() {
 	else if(tabId==-1 || (tabId>0 && tabId <4)){
 	  parameters["status"] = tabId;
 	}
-	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, parameters, populateJobs, showLoader, hideLoader);
+	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId, parameters, populateJobs, showLoader, hideLoader);
 	$('.jobs_wrapper').empty();
 	var id = $(this).attr('data-attribute');
 	var modal = $('.modal[data-attribute= ' + id + ']');
@@ -123,10 +155,14 @@ var slideToThatFilter = function(event) {
 }
 
 $(document).ready(function(){
-	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, {
-	  pageContent: 5,
-	  pageNumber: pageNumber
-  	}, populateJobs, showLoader, hideLoader)
+
+	var urlObject = fetchURL();
+	var res = urlObject["pathname"].split("/");
+	console.log(res);
+	if(!(isNaN(res[2]))){
+		jobId = res[2];
+	}
+
 
 	populateTags(industryTagsData, industryMetaData);
 	populateTags(languageTagsData,languageMetaData);
@@ -145,7 +181,7 @@ $(document).ready(function(){
 
 	openModalBtn.click(openModal);
 	closeModalBtn.click(closeModal);
-	viewByOptions.click(loadViewByData);
+	viewByOptions.click(loadViewByDataByTab);
 
 	$(".submit-filters").click(submitFilters);
 
@@ -178,6 +214,17 @@ $(document).ready(function(){
 		var dataAttribute = $(this).parent().attr('data-attribute');
 		$(".jobs_content[data-attribute="+dataAttribute+"] .slide-container").toggleClass('hidden');
 	});
+	var status = getUrlParameter('status');
+	if(status) {
+		loadViewByData(status);
+	}
+	else {
+		getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId, {
+		  pageContent: 5,
+		  pageNumber: pageNumber
+	  	}, populateJobs, showLoader, hideLoader)
+	}
+
 });
 
 filtersModal.on('change','input[type="checkbox"]', function(){
@@ -523,7 +570,7 @@ function checkScrollEnd() {
 		pageNumber = pageNumber + 1;
 		queryString["pageNumber"] = pageNumber;
 		if(queryString["pageNumber"] != 1 && resultLength == queryString["pageContent"] ) {
-			getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, queryString, populateJobs, showLoaderScroll, hideLoaderScroll)
+			getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId, queryString, populateJobs, showLoaderScroll, hideLoaderScroll)
 		}
 	}
 }
@@ -534,3 +581,29 @@ $(window).scroll(function() {
  ticker = setTimeout(checkScrollEnd,100);
 
 });
+
+function fetchURL(){
+       var obj = {}
+       for(var key in window["location"]){
+               if(typeof(window["location"][key])=="string"){
+                       obj[key]= window["location"][key];
+               }
+       }
+       return obj;
+}
+
+
+function fetchQueryVariable(stringToFind) {
+       var obj = fetchURL();
+       if(obj["search"]){
+               var testString = obj["search"];
+               testString= testString.replace("?", "");
+               testString= testString.split("&");
+               for(var i=0; i < testString.length; i++){
+                       var temp=testString[i].split("=");
+                       if(temp[0]==stringToFind){
+                               return temp[1];
+                       }
+               }
+       }
+}

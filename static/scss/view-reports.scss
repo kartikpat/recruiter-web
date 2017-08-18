@@ -1,0 +1,60 @@
+@import "colors.scss";
+
+.container {
+    padding: 20px;
+
+    .heading-container {
+        position: relative;
+        height: 50px;
+        line-height: 50px;
+        .heading-content {
+            position: absolute;
+            left: 0;
+        }
+        .download-excel {
+            position: absolute;
+            right: 0;
+        }
+    }
+    .reports-table {
+        overflow-x: auto;
+        .view-reports-table {
+            border-collapse: collapse;
+            width: 100%;
+            .heading-row {
+                padding: 10px;
+                font-size: 10px;
+                th {
+                    padding: 6px 2px;
+                    text-align: left;
+                }
+            }
+            .data-row {
+                border-bottom: 1px solid #ddd;
+                font-size: 12px;
+                &:nth-child(even) {
+                    background-color: $color-light-grey;
+                }
+                td {
+                    padding: 8px 2px;
+                    a {
+                        text-decoration: none;
+                        &:hover {
+                            color: $link-hover-color;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+                .created-date{
+                    min-width: 85px;
+                }
+                .job-title {
+                    min-width: 285px;
+                }
+                .posted-by {
+                    min-width: 105px;
+                }
+            }
+        }
+    }
+}

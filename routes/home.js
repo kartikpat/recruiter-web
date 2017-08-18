@@ -127,4 +127,14 @@ module.exports = function(settings){
 		res.redirect("/");
 
 	});
+
+	app.get("/view-reports", function(req, res){
+		res.render("view-reports",{
+			title: "IIM JOBS | View Reports",
+			styles:  assetsMapper["view-reports"]["styles"][mode],
+			scripts: assetsMapper["view-reports"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
 }

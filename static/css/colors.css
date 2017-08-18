@@ -1,5 +1,17 @@
+.link-color {
+  color: #337ab7; }
+
 .white-bg {
   background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
 
 .bg-overlay {
   background-color: rgba(0, 0, 0, 0.7); }

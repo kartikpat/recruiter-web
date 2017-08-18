@@ -1,7 +1,29 @@
 $color-white: #ffffff;
+$color-heading: #708732;
+$color-light-grey: #f5f6f7;
+$color-black-text: #4b4b4b;
+$link-color: #337ab7;
+$link-hover-color: #23527c;
+
+
+.link-color {
+    color: $link-color;
+}
 
 .white-bg {
     background-color: $color-white;
+}
+
+.heading-clr {
+    color: $color-heading;
+}
+
+.light-grey-bg {
+    background-color: $color-light-grey;
+}
+
+.text-clr {
+    color: $color-black-text;
 }
 
 .bg-overlay {

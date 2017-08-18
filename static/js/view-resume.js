@@ -2,7 +2,7 @@ var profileContainer = $(".profile_container");
 var tabContainer = $(".tab_container");
 var resumeContainer = $(".resume-container");
 var baseUrl = "http://13.126.92.102:8000"
-var recruiterID = 45058;
+//var recruiterID = 45058;
 $(document).ready(function(){
 	var recruiterID = localStorage.id ;
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, {

@@ -184,6 +184,30 @@
 				"static/build/js/calendar.min.js"
 			]
 		}
+	},
+	"view-reports": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+				"static/css/view-reports.css",
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/utilities.css",
+				"static/css/footer.css"
+			],
+			"prod": [
+				"static/build/css/view-reports.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/view-reports.js"
+			],
+			"prod" : [
+				"static/build/js/view-reports.min.js"
+			]
+		}
 	}
-
 }
