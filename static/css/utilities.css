@@ -1,3 +1,27 @@
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
 .loader {
   border: 8px solid #f3f3f3;
   border-top: 8px solid #3498db;
@@ -46,3 +70,23 @@
 * {
   font-family: 'Open Sans', sans-serif;
   font-weight: normal; }
+
+.overlay-show {
+  box-shadow: 2px 5px 18px 0px rgba(0, 0, 0, 0.2);
+  margin: 20px 0 !important;
+  margin-bottom: 50px !important; }
+
+.divider {
+  border: 0;
+  height: 0;
+  border-bottom: 1px solid #f5f6f7;
+  width: 90%; }
+
+.no-results {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  width: 75%;
+  text-align: center; }

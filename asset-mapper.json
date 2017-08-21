@@ -17,7 +17,9 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/request.js",
+				"static/js/header.js",
 				"static/js/index.js"
+
 			],
 			"prod" : [
 				"static/build/js/index.min.js"
@@ -31,8 +33,6 @@
         		"static/css/index.css",
 				"static/css/footer.css",
 				"static/css/buttons.css"
-
-
 			],
 			"prod": [
 				"static/build/css/index.min.css"
@@ -42,6 +42,7 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/request.js",
+				"static/js/header.js",
 				"static/js/postJob.js"
 			],
 			"prod" : [
@@ -63,6 +64,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
+				"static/js/header.js",
 				"static/js/index.js"
 			],
 			"prod" : [
@@ -86,6 +88,7 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/request.js",
+				"static/js/header.js",
 				"static/js/sign-in.js"
 			],
 			"prod" : [
@@ -103,8 +106,6 @@
 				"static/css/colors.css",
 				"static/css/animate.css",
 				"static/css/utilities.css"
-
-
 			],
 			"prod": [
 				"static/build/css/candidate-list.min.css"
@@ -115,6 +116,7 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/request.js",
+				"static/js/header.js",
 				"static/js/candidate-list.js",
 				"static/js/tags/industry.js",
 				"static/js/tags/current-location.js",
@@ -146,6 +148,7 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/request.js",
+				"static/js/header.js",
 				"static/js/view-resume.js"
 			],
 			"prod" : [
@@ -161,9 +164,6 @@
         "static/css/fullcalendar.min.css",
 				"static/css/calendar.css",
 				"static/css/footer.css"
-
-
-
 			],
 			"prod": [
 				"static/build/css/calendar.min.css"
@@ -172,13 +172,11 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-
 				"static/js/vendor/moment.min.js",
-
-        "static/js/vendor/fullcalendar.js",
+        		"static/js/vendor/fullcalendar.js",
 				"static/js/vendor/gcal.min.js",
-				"static/js/calendar.js"
-
+				"static/js/calendar.js",
+				"static/js/header.js"
 			],
 			"prod" : [
 				"static/build/js/calendar.min.js"
@@ -203,6 +201,7 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/request.js",
+				"static/js/header.js",
 				"static/js/view-reports.js"
 			],
 			"prod" : [

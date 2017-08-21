@@ -7,6 +7,7 @@ var jobContainer =$(".jobs_wrapper");
 var obj = {};
 var tabId;
 var jobId;
+var jobTitle;
 
 
 /**
@@ -29,9 +30,37 @@ var closeModal = function() {
 	modal.addClass('hidden');
 }
 
+var createObject = function() {
+	return {
+		industry: (obj["industry"])? obj["industry"].join(","): null,
+		location: (obj["location"])? obj["location"].join(","): null,
+		prefLocation: (obj["prefLocation"])? obj["prefLocation"].join(","): null,
+		institute: (obj["institute"])? obj["institute"].join(","): null ,
+		minExp: obj["minExperience"],
+		maxExp: obj["maxExperience"],
+		minBatch: obj["minBatch"],
+		maxBatch: obj["maxBatch"],
+		minCTC: obj["minSalary"],
+		maxCTC: obj["maxSalary"],
+		minAge: obj["minAge"],
+		maxAge: obj["maxAge"],
+		sex: obj["gender"],
+		notice: obj["noticePeriod"],
+		applicationDate: obj["appliedDate"],
+		lastActive: obj["lastSeen"],
+		workPermit: obj["isWorkPermit"],
+		handleTeam: obj["hasHandledTeam"],
+		relocate: obj["canRelocate"],
+		diffAbled: obj["isDifferentlyAbled"],
+		language: obj["language"],
+	};
+}
+
 var loadViewByDataWrapper = function(tabId) {
 	var queryString = {};
 	pageNumber = 1;
+	queryString = createObject();
+	console.log(queryString);
 	if(tabId=='magicsort'){
 	  queryString["sortBy"] = 1;
 	}
@@ -46,7 +75,7 @@ var loadViewByDataWrapper = function(tabId) {
 var loadViewByDataByTab = function() {
 	tabId = $(this).attr('data-attribute');
 	var queryString = loadViewByDataWrapper(tabId);
-	console.log(queryString);
+	//console.log(queryString);
 	viewByOptions.removeClass("highlight");
 	$(this).addClass("highlight");
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId, queryString, populateJobs, showLoader, hideLoader)
@@ -56,7 +85,7 @@ var loadViewByDataByTab = function() {
 var loadViewByData = function(status) {
 	tabId = status;
 	var queryString = loadViewByDataWrapper(tabId);
-	console.log(queryString);
+	//console.log(queryString);
 	viewByOptions.removeClass("highlight");
 	$(".stat[data-attribute="+tabId+"]").addClass("highlight");
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId, queryString, populateJobs, showLoader, hideLoader)
@@ -79,37 +108,10 @@ var getUrlParameter = function getUrlParameter(sParam) {
 };
 
 var submitFilters = function() {
-	var parameters = {
-		industry: (obj["industry"])? obj["industry"].join(","): null,
-		location: (obj["location"])? obj["location"].join(","): null,
-		prefLocation: (obj["prefLocation"])? obj["prefLocation"].join(","): null,
-		institute: (obj["institute"])? obj["institute"].join(","): null ,
-		minExp: obj["minExperience"],
-		maxExp: obj["maxExperience"],
-		minBatch: obj["minBatch"],
-		maxBatch: obj["maxBatch"],
-		minCTC: obj["minSalary"],
-		maxCTC: obj["maxSalary"],
-		minAge: obj["minAge"],
-		maxAge: obj["maxAge"],
-		sex: obj["gender"],
-		notice: obj["noticePeriod"],
-		applicationDate: obj["appliedDate"],
-		lastActive: obj["lastSeen"],
-		workPermit: obj["isWorkPermit"],
-		handleTeam: obj["hasHandledTeam"],
-		relocate: obj["canRelocate"],
-		diffAbled: obj["isDifferentlyAbled"],
-		language: obj["language"],
-
-	};
-	if(tabId=='magicsort'){
-	  parameters["sortBy"] = 1;
-	}
-	else if(tabId==-1 || (tabId>0 && tabId <4)){
-	  parameters["status"] = tabId;
-	}
-	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId, parameters, populateJobs, showLoader, hideLoader);
+	//console.log(tabId);
+	var queryString = loadViewByDataWrapper(tabId);
+	//console.log(queryString);
+	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId, queryString, populateJobs, showLoader, hideLoader);
 	$('.jobs_wrapper').empty();
 	var id = $(this).attr('data-attribute');
 	var modal = $('.modal[data-attribute= ' + id + ']');
@@ -163,6 +165,10 @@ $(document).ready(function(){
 		jobId = res[2];
 	}
 
+	jobTitle = getUrlParameter('title');
+	if(jobTitle && jobId) {
+		$(".heading").text("Job : "+jobId+" , "+jobTitle+"");
+	}
 
 	populateTags(industryTagsData, industryMetaData);
 	populateTags(languageTagsData,languageMetaData);
@@ -213,6 +219,8 @@ $(document).ready(function(){
 	$(".jobs_wrapper").on('click','.content-container', function() {
 		var dataAttribute = $(this).parent().attr('data-attribute');
 		$(".jobs_content[data-attribute="+dataAttribute+"] .slide-container").toggleClass('hidden');
+		$(".jobs_content[data-attribute="+dataAttribute+"] .divider.prototype").toggleClass('hidden');
+		$(".jobs_content[data-attribute="+dataAttribute+"]").toggleClass('overlay-show');
 	});
 	var status = getUrlParameter('status');
 	if(status) {
@@ -220,7 +228,7 @@ $(document).ready(function(){
 	}
 	else {
 		getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId, {
-		  pageContent: 5,
+		  pageContent: pageContent,
 		  pageNumber: pageNumber
 	  	}, populateJobs, showLoader, hideLoader)
 	}
@@ -242,7 +250,7 @@ filtersModal.on('change','input[type="checkbox"]', function(){
 		filters.find('input[name="'+name+'"][value="'+value+'"]').prop('checked', false);
 	});
 	obj[name] = tagsArray;
-	console.log(obj);
+	//console.log(obj);
 	showFilterTags(obj);
 });
 
@@ -335,7 +343,7 @@ var populateMainTags = function(sorted,metaData) {
 		var tagCheckbox = tags.clone().removeClass('prototype hidden');
 		tagCheckbox.find(".label").append('<input id="'+obj["text"]+'" type="checkbox" value="'+obj["val"]+'" name="'+name+'">'+ obj["text"]);
 		tagCheckbox.find(".label").attr("for", obj["text"]);
-		tagCheckbox.find(".label").addClass("font-sm");
+		tagCheckbox.find(".label").css("font-size","11px");
 		$('.js-tags[data-attribute='+dataAttribute+']').append(tagCheckbox);
 	})
 }
@@ -393,7 +401,17 @@ var resultLength;
 
 var populateJobs = function(res){
 	if(res.status=="success"){
-		resultLength = res["data"]["data"].length;
+		console.log(res["data"]["data"]);
+		if(res["data"]["data"]) {
+			resultLength = res["data"]["data"].length;
+			$(".no-results").addClass("hidden");
+		}
+		else {
+			hideLoader();
+			$(".no-results").removeClass("hidden");
+			return;
+		}
+
 		var res = res["data"];
 		jobs.find(".status_all").text(res["total"]);
 		jobs.find(".status_shortlisted").text(res["shortlisted"]);
@@ -416,8 +434,9 @@ var populateJobs = function(res){
 			card.find(".user_age").text(getAge(aJob["dob"]));
 			card.find(".user_img").attr('src', aJob["imgUrl"]);
 			var iconStatus = aJob["status"];
-			card.find(".icon[data-attribute= " + iconStatus + "]").addClass("highlighted");
-			card.find(".icon[data-attribute=4]").attr("href","/profile/"+aJob["userID"]+"?jobID="+jobID);
+			//console.log(iconStatus);
+			card.find(".content_more .icon[data-attribute= " + iconStatus + "]").addClass("highlighted");
+			card.find(".content_more .icon[data-attribute=4]").attr("href","/profile/"+aJob["userID"]+"?jobID="+jobID);
 			var orgArray = aJob["jobs"];
 			var len = orgArray.length;
 			var loop = len < 3 ? len:3;
@@ -446,6 +465,7 @@ var populateJobs = function(res){
 			}
 			else {
 				card.find(".tagline-container").addClass("hidden");
+				card.find(".tagline-divider").addClass("hidden");
 			}
 			card.find(".email-content").text(aJob["email"]);
 			var contactNo = aJob["phone"];
@@ -453,7 +473,7 @@ var populateJobs = function(res){
 				card.find(".contact-content").text(contactNo);
 			}
 			else {
-				card.find(".contact").addClass("hidden");
+			//	card.find(".contact").addClass("hidden");
 			}
 			card.find(".extra-info-container .maritalStatus").text(boolean(aJob["marital_status"]));
 			//card.find("extra-info-container .languages").text(formatLanguages(aJob["language_known"]));
@@ -559,7 +579,7 @@ function checkScrollEnd() {
 	if($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
 		var attribute = $('.stat.highlight')[0];
 		var id = $(attribute).attr("data-attribute");
-		var queryString = {};
+		var queryString = createObject();
 		if(id=='magicsort'){
 		  queryString["sortBy"] = 1;
 		}
@@ -569,6 +589,7 @@ function checkScrollEnd() {
 		queryString["pageContent"] = 5;
 		pageNumber = pageNumber + 1;
 		queryString["pageNumber"] = pageNumber;
+		console.log(queryString);
 		if(queryString["pageNumber"] != 1 && resultLength == queryString["pageContent"] ) {
 			getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId, queryString, populateJobs, showLoaderScroll, hideLoaderScroll)
 		}

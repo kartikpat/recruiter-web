@@ -17,12 +17,6 @@ body, html {
   -ms-transition: background-color 2000ms linear,  opacity 600ms, visibility 600ms;
   transition: background-color 2000ms linear,  opacity 600ms, visibility 600ms; }
 
-.divider {
-  border: 0;
-  height: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
-
 *, *:before, *:after {
   box-sizing: border-box;
   -moz-box-sizing: border-box;

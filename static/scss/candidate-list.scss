@@ -13,18 +13,18 @@ input, select {
     }
 }
 
-
-
 .heading {
+    font-size: 18px;
     margin: 20px 0 20px 20px;
+    color: $color-green;
 }
 
 .highlight {
-    background-color: #00FFC6;
+    background-color: $color-bg-green;
 }
 
 .highlighted {
-    color: green !important;
+    color: $color-green !important;
 }
 
 * {
@@ -49,27 +49,28 @@ input, select {
 
     .filters {
         display: inline-block;
-        width: 20%;
+        width: 18%;
         padding-right: 10px;
         border-right: 2px dotted #d8d8d8;
         height: auto;
 
         .search-by-keyword {
             width: 100%;
-            border-bottom: 1px solid #d8d8d8;
+            border-bottom: 1px solid $color-light-grey;
             padding-bottom: 5px;
             margin-bottom: 5px;
 
             input {
                 @include input-styling;
 
-                width: 80%;
-                padding: 6px 12px;
+                width: 75%;
+                padding: 4px 6px;
+                font-size: 11px;
             }
         }
 
         .menu {
-            border-bottom: 1px solid #d8d8d8;
+            border-bottom: 1px solid $color-light-grey;
             margin-bottom: 5px;
 
             > span {
@@ -99,7 +100,7 @@ input, select {
                     width: auto;
 
                     span {
-                        font-size: 12px;
+                        font-size: 11px;
                     }
                 }
 
@@ -109,11 +110,11 @@ input, select {
                 }
 
                 select.half {
-                    width: calc(96%/2);
+                    width: 48%;
                     padding: 4px 8px;
 
                     option {
-                        font-size: 12px;
+                        font-size: 11px;
                     }
                 }
             }
@@ -122,7 +123,7 @@ input, select {
 
     .jobs {
         display: inline-block;
-        width: 79%;
+        width: 81%;
         vertical-align: top;
         padding: 0 0 0 10px;
         position: relative;
@@ -183,21 +184,25 @@ input, select {
 
             .jobs_header {
                 width: auto;
-                margin: 0 auto;
+                margin: 0 20px;
                 background-color: $color-light-grey;
-
+                padding: 0 10px;
                 .header {
                     display: inline-block;
-                    padding: 3px;
-                    margin: 3px;
+                    padding: 0 2px;
                     overflow: auto;
-                    font-size: 12px;
+                    font-size: 11px;
                     text-align: left;
                     color: $color-black-text;
+                    height: 30px;
+                    line-height: 30px;
                 }
 
                 .header_name {
                     width: 18%;
+                    .checkbox {
+                        margin: 0 15px 0 0;
+                    }
                 }
 
                 .header_organization {
@@ -214,155 +219,201 @@ input, select {
             }
 
             .jobs_content {
-
-                border: thin solid #d8d8d8;
-                margin-bottom: 2px;
+                border-bottom: thin solid #ececec;
+                padding-bottom: 5px;
+                margin: 0 20px;
+                &:nth-child(even){
+                    background-color: #fbfbfb;
+                }
                 .content-container {
-                    height: 200px;
+                    height: 180px;
                     cursor: pointer;
+                    padding: 10px 10px 0 10px;
                 }
                 .slide-container{
                     height: auto;
-                    .container {
-                        width: 98%;
-                        margin: 0 auto;
-                        .top-heading {
-                            background-color: #eeeeee;
-                            padding: 10px;
+                    padding: 10px;
+                    .tagline-container {
+                        height: 35px;
+                        line-height: 15px;
+                        .tagline-heading {
+                            display: inline-block;
+                            vertical-align: top;
+                            width: 50px;
+                        }
+                        .tagline-content {
+                            display: inline-block;
+                            max-width: 90%;
                         }
                     }
-                    .extra-info-container {
-                        .layer {
-                            .info {
+                    .info-container-first {
+                        position: relative;
+                        height: 70px;
+                        .contact-container {
+                            position: absolute;
+                            left: 0;
+                            .contact-heading, .email-heading {
                                 display: inline-block;
-                                width: 32%;
-                                padding: 10px 0 10px 20px;
-                                .css-heading {
-                                    font-size: 10px;
-                                    color: #7c7c7c;
-                                }
-                                .css-content {
-                                    font-size: 14px;
+                                width: 50px;
+                            }
+                            .contact-content, .email-content {
+                                display: inline-block;
+                            }
+                        }
+                        .bio-container {
+                            position: absolute;
+                            right: 0;
+                            width: 50%;
+                            .icon {
+                                width: 100%;
+                                div {
+                                    display: inline-block;
+                                    width: 49%;
+                                    margin: 0 0 5px 0;
+                                    a {
+                                        text-decoration: none;
+                                        color: $extra-info-color;
+                                        i {
+                                            display: inline-block;
+                                            font-size: 30px;
+                                            width: 40px;
+                                        }
+                                        span {
+                                            vertical-align: text-top;
+                                        }
+                                        &.video:hover {
+                                            color: red;
+                                        }
+                                        &.resume:hover {
+                                            color: blue;
+                                        }
+                                        &.cover-letter:hover {
+                                            color: green;
+                                        }
+                                        &.audio:hover {
+                                            color: orange;
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
-                    .tagline-container {
-                        padding: 10px;
-                        .tagline-heading {
+                    .info-container-second {
+                        position: relative;
+                        height: 80px;
+                        .comment-container {
+                            position: absolute;
+                            left: 0;
                             display: inline-block;
-                            vertical-align: top;
-                        }
-                        .tagline-content {
-                            display: inline-block;
-                            width: 93%;
-                            font-size: 13px;
-                        }
-                    }
-                    .info-container {
-                        padding-bottom: 10px;
-                        .css-container {
-                            display: inline-block;
-                            width: 48%;
-                            vertical-align: top;
-                            min-height: 150px;
-                            .css-input {
-                                padding: 15px;
-                                .css-content {
+                            width: 49%;
+                            .comment {
+                                margin: 0 0 5px 0;
+                                .comment-content {
                                     display: inline-block;
-                                    width: 60%;
                                     input {
                                         @include input-styling;
                                     }
                                 }
-                                .css-heading {
+                                .comment-heading {
                                     display: inline-block;
                                 }
                             }
-                            .contact, .email {
-                                padding: 15px 15px 0 15px;
-                                .contact-heading,.email-heading {
-                                    display: inline-block;
-                                    width: 30%;
-                                }
-                                .contact-content, .email-content {
-                                    display: inline-block;
-                                    width: 60%;
-                                }
-                            }
-                        }
-                        .contact-container,.comment-container {
-                            margin-right: 3.4%;
-                        }
-                        .bio-container {
-                            .icon {
-                                width: 90%;
-                                margin: 6px auto;
-                                a {
-                                    text-decoration: none;
-                                    border: 1px solid #eeeeee;
-                                    text-align: center;
-                                    display: inline-block;
-                                    width: 25%;
-                                    padding: 7px 0;
-                                    &:first-child {
-                                        margin-right: 24%;
-                                        margin-left: 13%;
-                                    }
-                                    i {
-                                        font-size: 26px;
-                                    }
-                                }
-                            }
-                        }
-                        .comment-container {
                             .posted-comment {
-                                ul{
+                                ul {
                                     margin: 0;
                                 }
                             }
                         }
+                        .tags-container {
+                            position: absolute;
+                            right: 0;
+                            display: inline-block;
+                            width: 49%;
+                            .tags {
+                                margin: 5px 0;
+                                .tags-content {
+                                    display: inline-block;
+                                    input {
+                                        @include input-styling;
+                                    }
+                                }
+                                .tags-heading {
+                                    display: inline-block;
+                                }
+                            }
+                            .posted-tags {
 
+                            }
+                        }
                     }
+                    .extra-info-container {
+                        .layer-first {
+                            .info {
+                                display: inline-block;
+                                width: 16%;
+                                vertical-align: top;
+
+                            }
+                        }
+                        .layer-second {
+                            .marks-wrapper {
+                                display: inline-block;
+                                width: 35%;
+                                .marks {
+                                    display: inline-block;
+                                    padding: 0 5px;
+                                }
+                            }
+                            .info {
+                                display: inline-block;
+                                width: 21%;
+                                vertical-align: top;
+                            }
+                        }
+                        .css-heading {
+                            font-size: 10px;
+                            color: $extra-info-color;
+                        }
+                        .css-content {
+                            font-size: 12px;
+                            color: $important-info-color;
+                        }
+                    }
+
                 }
 
                 .content {
                     display: inline-block;
-                    padding: 3px;
-                    margin: 3px;
+                    padding: 5px 0 0 2px;
                     overflow: hidden;
-                    font-size: 12px;
+                    font-size: 11px;
                     vertical-align: top;
-
                     .info {
-                        padding: 0 0 8px 0;
-
+                        padding: 0 0 5px 0;
                         .important_info {
-                            font-size: 12px;
-                            color: #000000;
-
+                            font-size: 11px;
+                            color: $important-info-color;
                             &.name {
-                                font-size: 14px;
+                                font-size: 13px;
                             }
                         }
-
                         .extra_info {
-                            color: #727272;
+                            color: $extra-info-color;
                         }
-
                         .icon {
                             display: block;
-                            font-size: 13px;
-                            color: #424242;
-                            padding: 2px;
-
+                            color: $extra-info-color;
+                            font-size: 12px;
+                            padding: 1px 0;
+                            text-decoration: none;
                             span {
-                                font-size: 12px;
-                                padding: 2px;
+
+                                padding: 0 3px;
                             }
 
                             &:hover {
                                 color: green;
+                                text-decoration: underline;
                             }
                         }
                     }
@@ -371,13 +422,14 @@ input, select {
                 .content.content_name {
                     .checkbox {
                         vertical-align: top;
+                        margin: 0 15px 0 0;
                     }
                     width: 18%;
 
                     img {
                         width: 50px;
                         height: 50px;
-                        border-radius: 25px;
+                        border-radius: 50%;
                         max-width: 100%;
                         max-height: 100%;
                     }
@@ -408,12 +460,12 @@ input, select {
     height: 100%;
 
     .vertical_top, .vertical_bottom{
-        height: 5%;
+        height: 25%;
     }
 
     .vertical_middle {
-        border-left: 1px solid #d8d8d8;
-        height: 90%;
+        border-left: 1px solid #ececec;
+        height: 50%;
     }
 }
 
