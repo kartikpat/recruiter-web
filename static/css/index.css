@@ -1,3 +1,27 @@
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -85,8 +109,7 @@ footer, header, hgroup, menu, nav, section {
       top: 4em;
       right: 3em; }
   .user_profile .bottom_information {
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
-    background-color: #e9e9e9;
+    background-color: #f5f6f7;
     margin: 0 auto;
     margin-top: 10px;
     min-height: 40px;
@@ -135,7 +158,7 @@ footer, header, hgroup, menu, nav, section {
       overflow: hidden;
       font-size: 14px; }
   .jobs_panel div.jobs_container > div.jobs_content:nth-of-type(even) {
-    background: #e9e9e9; }
+    background: #f5f6f7; }
 
 .job_posting {
   padding: 20px; }

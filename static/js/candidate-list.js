@@ -4,6 +4,7 @@ var closeModalBtn = $(".js-close-modal");
 var filters = $(".filters");
 var filtersModal = $(".filters-modal");
 var jobContainer =$(".jobs_wrapper");
+var calendarOption = $(".calendar-option.prototype");
 var obj = {};
 var tabId;
 var jobId;
@@ -56,18 +57,22 @@ var createObject = function() {
 	};
 }
 
-var loadViewByDataWrapper = function(tabId) {
-	var queryString = {};
-	pageNumber = 1;
-	queryString = createObject();
-	console.log(queryString);
+var checkTabId = function(tabId, queryString) {
 	if(tabId=='magicsort'){
 	  queryString["sortBy"] = 1;
 	}
 	else if(tabId==-1 || (tabId>0 && tabId <4)){
 	  queryString["status"] = tabId;
 	}
-	queryString["pageContent"] = 5;
+	return queryString;
+}
+
+var loadViewByDataWrapper = function(tabId) {
+	var queryString = {};
+	pageNumber = 1;
+	queryString = createObject();
+	queryString = checkTabId(tabId, queryString)
+	queryString["pageContent"] = pageContent;
 	queryString["pageNumber"] = pageNumber;
 	return queryString;
 }
@@ -119,7 +124,8 @@ var submitFilters = function() {
 }
 
 var baseUrl = "http://13.126.92.102:8000"
-var recruiterID = 45058;
+//var baseUrl = "http://192.168.86.162:8000";
+var recruiterID = localStorage.id;
 var jobs = $(".jobs");
 var tableRow = $(".jobs_content.prototype");
 var columnOrg =  $(".organization.prototype");
@@ -131,7 +137,6 @@ var pageNumber = 1;
 var pageContent = 5;
 
 var showCheckboxFilter = function() {
-
 	var id = $(this).attr('class');
 	var att = $(this).attr('data-att');
 	$(".row.js-"+att+" input").parent().addClass("invisible");
@@ -154,6 +159,82 @@ var slideToThatFilter = function(event) {
 	event.preventDefault();
 	var href = $(this).attr('href');
 	jQuery(".modal-bottom").scrollLeft($(href)[0].offsetLeft - 30);
+}
+
+var populateTags = function(sorted,metaData) {
+
+	var j = 0;
+	var flag = 0;
+	var count = 0;
+	var dataAttribute = metaData["data-attribute"];
+	var name = metaData["name"];
+	for(var i = 0; j < sorted.length; i++) {
+		 var obj = sorted[j];
+		 if(!(i%10)) {
+ 			var tagsWrapperClone = tagsWrapper.clone().removeClass('prototype hidden');
+ 			$(".row.js-"+dataAttribute+"").append(tagsWrapperClone);
+			count++;
+ 		}
+		if((flag==0) && (!sorted[j-1] || obj["text"].charAt(0) != sorted[j-1]["text"].charAt(0))) {
+			flag=1;
+			aCharacter = obj["text"].charAt(0);
+			tagsWrapperClone.append('<span id="'+dataAttribute+'-'+aCharacter+'" class="'+dataAttribute+'-alphabet-hover-'+aCharacter+'" >'+aCharacter+'</span>');
+			$(".tags-alphabets.tags-alphabets-"+dataAttribute+"").append('<li><a href="#'+dataAttribute+'-'+aCharacter+'" class="'+dataAttribute+'-alphabet-hover-'+aCharacter+'" data-attribute="alphabet-hover" data-att = "'+dataAttribute+'">'+aCharacter+'</a></li>');
+			continue;
+		}
+		var tagCheckbox = tags.clone().removeClass('prototype hidden');
+		tagCheckbox.find(".label").append('<input id="'+obj["text"]+'" type="checkbox" value="'+obj["val"]+'" name="'+name+'" class="'+dataAttribute+'-alphabet-hover-'+aCharacter+'">'+ obj["text"]);
+		tagCheckbox.find(".label").attr("for", obj["text"]);
+
+		tagsWrapperClone.append(tagCheckbox);
+		flag=0;
+		j++;
+	}
+	var widt = count * 300;
+	$(".row.js-"+dataAttribute+"").width(widt);
+}
+
+var populateMainTags = function(sorted,metaData) {
+	var dataAttribute = metaData["data-attribute"];
+	var name = metaData["name"];
+	$.each(sorted, function(index, value) {
+		if(index > 1){
+			return
+		}
+		var obj = sorted[index];
+		var tagCheckbox = tags.clone().removeClass('prototype hidden');
+		tagCheckbox.find(".label").append('<input id="'+obj["text"]+'" type="checkbox" value="'+obj["val"]+'" name="'+name+'">'+ obj["text"]);
+		tagCheckbox.find(".label").attr("for", obj["text"]);
+		tagCheckbox.find(".label").css("font-size","11px");
+		$('.js-tags[data-attribute='+dataAttribute+']').append(tagCheckbox);
+	})
+}
+
+var performAction = function(event) {
+	event.preventDefault();
+	event.stopPropagation();
+	var hasClass = $(this).hasClass("highlighted");
+	if(!(hasClass)) {
+		var applicationId = $(this).attr("data-application-id");
+		var dataAttribute = $(this).attr("data-attribute");
+		postRequest(baseUrl+"/recruiter/"+recruiterID+"/action/"+jobId, null ,{
+			action: dataAttribute,
+			id: applicationId
+		}, successActionCallback);
+	}
+}
+
+var successActionCallback = function(res) {
+	if(res["status"] == "success") {
+		var queryString = createObject();
+		queryString = checkTabId(tabId, queryString);
+		queryString["pageContent"] = pageContent;
+		$('.jobs_wrapper').empty();
+		for(var i = 1; i <= pageNumber; i++ ) {
+			queryString["pageNumber"] = i;
+			getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId, queryString, populateJobs, showLoader, hideLoader);
+		}
+	}
 }
 
 $(document).ready(function(){
@@ -232,8 +313,24 @@ $(document).ready(function(){
 		  pageNumber: pageNumber
 	  	}, populateJobs, showLoader, hideLoader)
 	}
+	getRequest(baseUrl+"/recruiter/"+recruiterID+"/calendar/"+jobId, {} , populateCalendarOptions );
+
+	$(".set-default-calendar-button").click(setDefaultCalendar)
 
 });
+
+var setDefaultCalendar = function() {
+	var calendarId = $(".calendar-select option:selected").val();
+	var defaultCalendarId = $(this).attr("data-default");
+	console.log(defaultCalendarId);
+	postRequest(baseUrl+"/recruiter/"+recruiterID+"/calendar/"+jobId+"/default/"+calendarId, null ,{
+		defaultCalendarID: defaultCalendarId
+	}, successCallback);
+}
+
+var successCallback = function(res){
+    console.log(res);
+}
 
 filtersModal.on('change','input[type="checkbox"]', function(){
 	var name = $(this).attr('name');
@@ -299,10 +396,18 @@ var hideFilterTag = function() {
 	submitFilters();
 }
 
+var openResume = function(event) {
+	event.preventDefault();
+	var resumeOpenVariable = $(this).attr("data-resume-open");
+	$(".resume-container[data-resume-open="+resumeOpenVariable+"]").removeClass("hidden");
+}
+
 $(".modal-top").on('mouseover','.tags-alphabets a[data-attribute="alphabet-hover"] ', showCheckboxFilter);
 $(".modal-top").on('mouseout','.tags-alphabets a[data-attribute="alphabet-hover"] ', hideCheckboxFilter);
 $(".modal-top").on('click',".tags-alphabets a[data-attribute='alphabet-hover']", slideToThatFilter);
 $('.filter-tags').on('click', '.js-remove-tag', hideFilterTag);
+$('.jobs_wrapper').on('click', 'a.icon' , performAction);
+$('.jobs_wrapper').on('click', '.icon-resume', openResume);
 
 var showFilterTags = function(obj) {
 
@@ -332,55 +437,6 @@ var showFilterTags = function(obj) {
 	})
 }
 
-var populateMainTags = function(sorted,metaData) {
-	var dataAttribute = metaData["data-attribute"];
-	var name = metaData["name"];
-	$.each(sorted, function(index, value) {
-		if(index > 1){
-			return
-		}
-		var obj = sorted[index];
-		var tagCheckbox = tags.clone().removeClass('prototype hidden');
-		tagCheckbox.find(".label").append('<input id="'+obj["text"]+'" type="checkbox" value="'+obj["val"]+'" name="'+name+'">'+ obj["text"]);
-		tagCheckbox.find(".label").attr("for", obj["text"]);
-		tagCheckbox.find(".label").css("font-size","11px");
-		$('.js-tags[data-attribute='+dataAttribute+']').append(tagCheckbox);
-	})
-}
-
-var populateTags = function(sorted,metaData) {
-
-	var j = 0;
-	var flag = 0;
-	var count = 0;
-	var dataAttribute = metaData["data-attribute"];
-	var name = metaData["name"];
-	for(var i = 0; j < sorted.length; i++) {
-		 var obj = sorted[j];
-		 if(!(i%10)) {
- 			var tagsWrapperClone = tagsWrapper.clone().removeClass('prototype hidden');
- 			$(".row.js-"+dataAttribute+"").append(tagsWrapperClone);
-			count++;
- 		}
-		if((flag==0) && (!sorted[j-1] || obj["text"].charAt(0) != sorted[j-1]["text"].charAt(0))) {
-			flag=1;
-			aCharacter = obj["text"].charAt(0);
-			tagsWrapperClone.append('<span id="'+dataAttribute+'-'+aCharacter+'" class="'+dataAttribute+'-alphabet-hover-'+aCharacter+'" >'+aCharacter+'</span>');
-			$(".tags-alphabets.tags-alphabets-"+dataAttribute+"").append('<li><a href="#'+dataAttribute+'-'+aCharacter+'" class="'+dataAttribute+'-alphabet-hover-'+aCharacter+'" data-attribute="alphabet-hover" data-att = "'+dataAttribute+'">'+aCharacter+'</a></li>');
-			continue;
-		}
-		var tagCheckbox = tags.clone().removeClass('prototype hidden');
-		tagCheckbox.find(".label").append('<input id="'+obj["text"]+'" type="checkbox" value="'+obj["val"]+'" name="'+name+'" class="'+dataAttribute+'-alphabet-hover-'+aCharacter+'">'+ obj["text"]);
-		tagCheckbox.find(".label").attr("for", obj["text"]);
-
-		tagsWrapperClone.append(tagCheckbox);
-		flag=0;
-		j++;
-	}
-	var widt = count * 300;
-	$(".row.js-"+dataAttribute+"").width(widt);
-}
-
 var searchTags = function(array, metaData, elem) {
 	var str = $(elem).val();
 	str=str.toLowerCase();
@@ -398,6 +454,27 @@ var searchTags = function(array, metaData, elem) {
 }
 
 var resultLength;
+
+var populateCalendarOptions = function(res) {
+	if(res.status == "success") {
+		data = res["data"];
+		//console.log(data);
+		data.forEach(function(anOption) {
+			console.log(anOption);
+			var optionElement = calendarOption.clone().removeClass('prototype hidden');
+			//console.log(optionElement);
+			optionElement.text(anOption["name"]);
+			if(anOption["isDefault"]) {
+				optionElement.attr("selected", "selected");
+			}
+			optionElement.attr("value",anOption["id"]);
+			if(anOption["isDefault"]==true) {
+				$(".set-default-calendar-button").attr("data-default", anOption["defaultID"]);
+			}
+			$(".calendar-select").append(optionElement);
+		})
+	}
+}
 
 var populateJobs = function(res){
 	if(res.status=="success"){
@@ -422,7 +499,7 @@ var populateJobs = function(res){
 		jobs.find(".status_sort").text(unread);
 
 		res["data"].forEach(function(aJob){
-			console.log(aJob);
+			//console.log(aJob);
 			var card = tableRow.clone().removeClass('prototype hidden');
 			card.attr("data-attribute",'js-'+aJob['id']+'');
 			card.find(".user_name").text(aJob["name"]);
@@ -435,11 +512,15 @@ var populateJobs = function(res){
 			card.find(".user_img").attr('src', aJob["imgUrl"]);
 			var iconStatus = aJob["status"];
 			//console.log(iconStatus);
+			var iconElements = card.find(".content_more .icon");
+			iconElements.each(function(index,anElement){
+				$(anElement).attr("data-application-id", aJob["id"]);
+			});
 			card.find(".content_more .icon[data-attribute= " + iconStatus + "]").addClass("highlighted");
 			card.find(".content_more .icon[data-attribute=4]").attr("href","/profile/"+aJob["userID"]+"?jobID="+jobID);
 			var orgArray = aJob["jobs"];
 			var len = orgArray.length;
-			var loop = len < 3 ? len:3;
+			var loop = len < 2 ? len:2;
 			for(var i=0; i<loop; i++) {
 				var anOrg ={};
 				anOrg = orgArray[i];
@@ -449,7 +530,10 @@ var populateJobs = function(res){
 				column.find(".extra_info").text(getOrgExp(anOrg["from_exp_month"],anOrg["from_exp_year"],anOrg["to_exp_month"],anOrg["to_exp_year"],anOrg["is_current"]));
 				card.find('.content_organization').append(column);
 			}
-			aJob["edu"].forEach(function(anEdu){
+			aJob["edu"].forEach(function(anEdu, index){
+				if(index > 1) {
+					return
+				}
 				var column = columnIns.clone().removeClass('prototype hidden');
 
 				column.find(".name").text(anEdu["institute"]);
@@ -458,7 +542,9 @@ var populateJobs = function(res){
 				column.find(".degree").text(anEdu["degree"]);
 				card.find('.content_institute').append(column);
 			})
-			card.find(".resume").attr("href",aJob["resumeUrl"]);
+			card.find(".icon-resume").attr("data-resume-open",'js-open-'+aJob['id']+'');
+			card.find(".resume-container").attr("data-resume-open",'js-open-'+aJob['id']+'');
+			card.find(".resume-container .resume-content").attr("data",aJob["resumeUrl"]);
 			var tagLine = aJob["about"];
 			if(tagLine) {
 				card.find(".tagline-content").text(tagLine);
@@ -576,17 +662,12 @@ var hideLoaderScroll = function() {
 var ticker;
 function checkScrollEnd() {
 
-	if($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
+	if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
 		var attribute = $('.stat.highlight')[0];
 		var id = $(attribute).attr("data-attribute");
 		var queryString = createObject();
-		if(id=='magicsort'){
-		  queryString["sortBy"] = 1;
-		}
-		else if(id==-1 || (id>0 && id <4)){
-		  queryString["status"] = id;
-		}
-		queryString["pageContent"] = 5;
+		queryString = checkTabId(id, queryString);
+		queryString["pageContent"] = pageContent;
 		pageNumber = pageNumber + 1;
 		queryString["pageNumber"] = pageNumber;
 		console.log(queryString);

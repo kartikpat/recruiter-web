@@ -2,7 +2,7 @@
 
 @mixin input-styling {
     box-sizing: border-box;
-    border: 1px solid #ccc;
+    border: 1px solid $select-border;
     border-radius: 4px;
     padding: 4px 8px;
 }
@@ -167,9 +167,9 @@ input, select {
             padding-left: 20px;
 
             select {
-                padding: 4px 16px;
+                padding: 2px 6px;
                 margin: 8px 0;
-                border: 1px solid #ccc;
+                border: 1px solid $select-border;
                 border-radius: 4px;
                 width: auto;
                 background-color: inherit;
@@ -284,7 +284,7 @@ input, select {
                                         &.video:hover {
                                             color: red;
                                         }
-                                        &.resume:hover {
+                                        &.icon-resume:hover {
                                             color: blue;
                                         }
                                         &.cover-letter:hover {
@@ -565,5 +565,21 @@ input, select {
     margin-bottom: 10px;
     &:hover {
         background-color: #eee;
+    }
+}
+
+.resume-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        height: 100%;
     }
 }

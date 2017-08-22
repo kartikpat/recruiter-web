@@ -20,13 +20,12 @@ window.onclick = function(event) {
     }
 }
 
-
-
 $(document).ready(function(){
 
 	openGuidelines.click(openModal);
 	closeModalBtn.click(closeModal);
 
+    $(".submit-form").click(submitForm);
 
 });
 
@@ -55,8 +54,8 @@ function setDefaultVal(value){
    return (value === undefined) ? 0 : 1;
 }
 
-function submitForm() {
-    var object = {}
+var submitForm = function() {
+    //console.log("hi");
 	var industry = [];
 	var courseType = [];
 	var tags = [];
@@ -98,9 +97,6 @@ function submitForm() {
 		    tags.push(postJobForm.find(this).val());
 	});
 
-
-
-
   	postRequest(baseUrl+"/recruiter/"+recruiterID+"/job", null, {
 		max: maxYearsOfExperience,
 		tags: tags,
@@ -123,17 +119,11 @@ function submitForm() {
         batch: graduatingStartYear,
         maxBatch: graduatingEndYear,
         salShow: salaryShow
-	}).then(
-        function(returnedData) {
-            console.log("Good: ", returnedData);
-        }
-    ).catch(
-        function(errorThrown) {
-            console.log("Exception: ", errorThrown);
-        }
-    );
+	}, successCallback);
 
 }
-/*var successCallback = function(res){
+
+
+var successCallback = function(res){
     console.log(res);
-}*/
+}

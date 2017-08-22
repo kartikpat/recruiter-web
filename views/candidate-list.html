@@ -678,11 +678,11 @@
 </div>
 
 <div class="calendar box_shadow">
-	<span>Send calendar</span>
-	<select>
-		<option value="">Shreya Jain</option>
+	<span class="font-sm">Send calendar</span>
+	<select class="calendar-select">
+
 	</select>
-	<button class="button">Set Default</button>
+	<button class="button set-default-calendar-button">Set Default</button>
 </div>
 
 <div role="tabpanel" class="jobs_panel">
@@ -772,8 +772,8 @@
 				<a href="" class="icon" data-attribute="2"><i class="fa fa-ban" aria-hidden="true"></i><span>Reject</span></a>
 				<a href="" class="icon" data-attribute="3"><i class="fa fa-floppy-o" aria-hidden="true"></i><span>Save for future use</span></a>
 				<a href="" class="icon" data-attribute="4"><i class="fa fa-eye" aria-hidden="true"></i><span>View Profile</span></a>
-			<!--	<a href="" class="icon" data-attribute="5"><i class="fa fa-download" aria-hidden="true"></i><span>Download Resume</span></a>
-				<a href="" class="icon"><i class="fa fa-list-alt" aria-hidden="true"></i><span>Cover Letter</span></a>
+			    <a href="" class="icon" data-attribute="5"><i class="fa fa-download" aria-hidden="true"></i><span>Download Resume</span></a>
+				<!--<a href="" class="icon"><i class="fa fa-list-alt" aria-hidden="true"></i><span>Cover Letter</span></a>
 				<a href="" class="icon"><i class="fa fa-comment" aria-hidden="true"></i><span>Comment</span></a>
 				<a href="" class="icon"><i class="fa fa-mobile" aria-hidden="true"></i><span>Contact information</span></a>
 				<a href="" class="icon"><i class="fa fa-tags" aria-hidden="true"></i><span>Tags</span></a> -->
@@ -809,7 +809,7 @@
                         <a href="" class="video"><i class="fa fa-play-circle" aria-hidden="true"></i><span class="font-xs">Watch Video</span></a>
                     </div>
                     <div>
-                        <a href="" class="resume"><i class="fa fa-file-pdf-o" aria-hidden="true"></i><span class="font-xs">Download Resume</span></a>
+                        <a href="" class="icon-resume" data-attribute="5"><i class="fa fa-file-pdf-o" aria-hidden="true"></i><span class="font-xs">Download Resume</span></a>
                     </div>
                     <div>
                         <a href="" class="cover-letter"><i class="fa fa-envelope-o" aria-hidden="true"></i><span class="font-xs">Download Cover Letter</span></a>
@@ -900,7 +900,9 @@
                 </div>
             </div>
         </div>
-
+    </div>
+    <div class="resume-container animated fadeIn bg-overlay hidden">
+            <object class="resume-content" data="" type="application/pdf"></object>
     </div>
 </div>
 
@@ -1038,7 +1040,7 @@
 <div class="tags prototype hidden">
    <label for="" class="label"></label>
 </div>
-
-
 <div class="js-show-tags prototype hidden"></div>
+<option class="prototype hidden calendar-option"></option>
+
 {{> footer}}
