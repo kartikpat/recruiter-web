@@ -31,6 +31,12 @@ var closeModal = function() {
 	modal.addClass('hidden');
 }
 
+$(window).click(function() {
+	$(".resume-container").addClass("hidden");
+});
+
+
+
 var createObject = function() {
 	return {
 		industry: (obj["industry"])? obj["industry"].join(","): null,
@@ -398,6 +404,7 @@ var hideFilterTag = function() {
 
 var openResume = function(event) {
 	event.preventDefault();
+	event.stopPropagation();
 	var resumeOpenVariable = $(this).attr("data-resume-open");
 	$(".resume-container[data-resume-open="+resumeOpenVariable+"]").removeClass("hidden");
 }
