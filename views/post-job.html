@@ -540,8 +540,42 @@
     <div class="label top">
      <label for="job_description">Job Description</label>
     </div>
+
     <div class="field">
      <textarea id="job_description" name="job_description" placeholder="Job Description...."></textarea>
+    </div>
+     <div class="tags-container">
+         <div class="suggested-tags-container hidden">
+             <div class="label top">
+                 <div class="suggested-tags-heading font-sm extra-info-color">Suggested Tags</div>
+             </div>
+             <div class="field">
+                 <div class="suggested-tags-content"></div>
+             </div>
+         </div>
+         <div class="selected-tags-container hidden">
+             <div class="label top">
+                 <div class="selected-tags-heading font-sm extra-info-color">Selected Tags</div>
+             </div>
+             <div class="field">
+                 <div class="selected-tags-content"></div>
+             </div>
+         </div>
+         <div class="add-tags-container">
+             <div class="label top">
+                 <div class="add-tags-heading font-sm extra-info-color">Add Tags</div>
+             </div>
+             <div class="field">
+                 <div class="add-tags-content">
+                     <input type="text" class="tag-input">
+                     <button class="button add-new-tag">Add New Tag</button>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <div class="label">
+     </div>
+     <div class="field">
      <div><input type="checkbox" id="female_candidates" value="1"><span class="extra_info">  Would prefer Female candidates for this role.</span></div>
      <div><input type="checkbox" id="differently_abled" value="1"><span class="extra_info">  Would prefer Differently-abled candidates for this role. This includes Physical disability, Vision or Hearing impairment, etc.</span></div>
      <div><input type="checkbox" id="ex_defence" value="1"><span class="extra_info"> Would prefer ex-defence personnel.<span></div>
@@ -558,21 +592,10 @@
 </div>
 </div>
 
-<div class="tags box_shadow">
-  <h2>Add Tags</h2>
-  <div id="keywords">
-  <div class="label">
-    <label for="keyword1">Keyword #1</label>
-  </div>
-  <div class="field">
-   <input type="text" id="keyword1" name="keyword1">
-  </div>
-</div>
-  <div class="label">
-    <button class="button" onclick="addNewKeyword()">Add New</button>
-  </div>
 
 </div>
-</div>
+
+<div class="js-show-tags js-show-suggested-tags prototype hidden"></div>
+<div class="js-show-tags js-show-selected-tags prototype hidden"></div>
 
 {{> footer}}

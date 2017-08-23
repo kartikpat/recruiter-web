@@ -32,7 +32,8 @@
 				"static/css/header.css",
         		"static/css/index.css",
 				"static/css/footer.css",
-				"static/css/buttons.css"
+				"static/css/buttons.css",
+				"static/css/utilities.css"
 			],
 			"prod": [
 				"static/build/css/index.min.css"

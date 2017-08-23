@@ -215,10 +215,11 @@ footer, header, hgroup, menu, nav, section {
 
         .label {
             display: inline-block;
-            margin-left: 2em;
+            margin-left: 35px;
             padding: 15px;
             width: 15%;
-            font-size: 14px;
+            font-size: 12px;
+            color: $extra-info-color;
         }
 
         .label.top {
@@ -231,8 +232,12 @@ footer, header, hgroup, menu, nav, section {
             margin-left: 2em;
             padding: 4px 0;
 
+            .js-show-selected-tags, .js-show-suggested-tags {
+                margin-right: 10px;
+            }
+
             input, select {
-                padding: 8px 16px;
+                padding: 4px 8px;
                 margin: 8px 0;
                 border: 1px solid #ccc;
                 border-radius: 4px;
@@ -271,35 +276,64 @@ footer, header, hgroup, menu, nav, section {
         }
     }
 
-    .tags {
-        margin-left: 20px;
-
-        h2 {
-            padding: 20px 0 0 20px;
-            font-size: 20px;
-        }
-
-        .label {
-            padding: 20px 0 10px 20px;
-
-            label {
-                cursor: pointer;
+    /*.tags-container {
+        margin-left: 35px;
+        .suggested-tags-container {
+            margin-bottom: 10px;
+            .suggested-tags-heading {
+                padding: 0 0 10px 15px;
+                display: inline-block;
+                width: 15%;
+                vertical-align: top;
+            }
+            .suggested-tags-content {
+                display: inline-block;
+                width: 70%;
+                margin-left: 2em;
+                .js-show-suggested-tags {
+                    margin-right: 10px;
+                }
             }
         }
-
-        .field {
-            padding: 0 0 0 20px;
-
-            input {
-                padding: 8px 16px;
-                margin: 0;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                width: 30%;
+        .selected-tags-container {
+            margin-bottom: 10px;
+            .selected-tags-heading {
+                padding: 0 0 10px 15px;
+                display: inline-block;
+                width: 15%;
+                vertical-align: top;
+            }
+            .selected-tags-content {
+                display: inline-block;
+                width: 70%;
+                margin-left: 2em;
+                .js-show-selected-tags {
+                    margin-right: 10px;
+                }
             }
         }
+        .add-tags-container {
+            .add-tags-heading {
+                padding: 0 0 10px 15px;
+                display: inline-block;
+                width: 15%;
+            }
+            .add-tags-content {
+                display: inline-block;
+                width: 70%;
+                margin-left: 2em;
+                input {
+                    box-sizing: border-box;
+                    border: 1px solid $select-border;
+                    border-radius: 4px;
+                    padding: 4px 8px;
+                }
+            }
+
+        } */
+
     }
-}
+
 
 p.extra_info, span.extra_info {
     font-size: 13px;

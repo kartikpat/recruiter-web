@@ -19,10 +19,6 @@ input, select {
     color: $color-green;
 }
 
-.highlight {
-    background-color: $color-bg-green;
-}
-
 .highlighted {
     color: $color-green !important;
 }
@@ -559,14 +555,7 @@ input, select {
     }
 }
 
-.js-show-tags {
-    padding: 5px;
-    cursor: pointer;
-    margin-bottom: 10px;
-    &:hover {
-        background-color: #eee;
-    }
-}
+
 
 .resume-container {
     position: fixed;

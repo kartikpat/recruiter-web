@@ -14,12 +14,7 @@ var postRequest = function(url,headers,data,successCallback,failCallback,process
     $.ajax({
         method: "POST",
         url: url,
-        headers: {
-            appID: null,
-            version: null,
-            empID: null,
-            token: null
-        },
+        headers: headers,
         data: data,
         scopeTest: scopeTest,
         processData: processData,

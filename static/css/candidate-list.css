@@ -30,9 +30,6 @@ input:focus, select:focus {
   margin: 20px 0 20px 20px;
   color: #708732; }
 
-.highlight {
-  background-color: #d9e1c4; }
-
 .highlighted {
   color: #708732 !important; }
 
@@ -405,13 +402,6 @@ input:focus, select:focus {
           width: 300px; }
           .modal .modal-content .modal-bottom .row .tags-wrapper label {
             font-size: 12px; }
-
-.js-show-tags {
-  padding: 5px;
-  cursor: pointer;
-  margin-bottom: 10px; }
-  .js-show-tags:hover {
-    background-color: #eee; }
 
 .resume-container {
   position: fixed;

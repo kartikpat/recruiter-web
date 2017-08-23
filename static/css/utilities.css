@@ -90,3 +90,13 @@
   padding: 10px;
   width: 75%;
   text-align: center; }
+
+.js-show-tags {
+  padding: 5px;
+  cursor: pointer;
+  margin-bottom: 10px; }
+  .js-show-tags:hover {
+    background-color: #eee; }
+
+.highlight {
+  background-color: #d9e1c4; }

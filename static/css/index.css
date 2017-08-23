@@ -161,7 +161,62 @@ footer, header, hgroup, menu, nav, section {
     background: #f5f6f7; }
 
 .job_posting {
-  padding: 20px; }
+  padding: 20px;
+  /*.tags-container {
+        margin-left: 35px;
+        .suggested-tags-container {
+            margin-bottom: 10px;
+            .suggested-tags-heading {
+                padding: 0 0 10px 15px;
+                display: inline-block;
+                width: 15%;
+                vertical-align: top;
+            }
+            .suggested-tags-content {
+                display: inline-block;
+                width: 70%;
+                margin-left: 2em;
+                .js-show-suggested-tags {
+                    margin-right: 10px;
+                }
+            }
+        }
+        .selected-tags-container {
+            margin-bottom: 10px;
+            .selected-tags-heading {
+                padding: 0 0 10px 15px;
+                display: inline-block;
+                width: 15%;
+                vertical-align: top;
+            }
+            .selected-tags-content {
+                display: inline-block;
+                width: 70%;
+                margin-left: 2em;
+                .js-show-selected-tags {
+                    margin-right: 10px;
+                }
+            }
+        }
+        .add-tags-container {
+            .add-tags-heading {
+                padding: 0 0 10px 15px;
+                display: inline-block;
+                width: 15%;
+            }
+            .add-tags-content {
+                display: inline-block;
+                width: 70%;
+                margin-left: 2em;
+                input {
+                    box-sizing: border-box;
+                    border: 1px solid $select-border;
+                    border-radius: 4px;
+                    padding: 4px 8px;
+                }
+            }
+
+        } */ }
   .job_posting .post_job {
     margin: 40px 0; }
     .job_posting .post_job .heading .back {
@@ -172,10 +227,11 @@ footer, header, hgroup, menu, nav, section {
       font-size: 14px; }
     .job_posting .post_job .label {
       display: inline-block;
-      margin-left: 2em;
+      margin-left: 35px;
       padding: 15px;
       width: 15%;
-      font-size: 14px; }
+      font-size: 12px;
+      color: #808080; }
     .job_posting .post_job .label.top {
       vertical-align: top !important; }
     .job_posting .post_job .field {
@@ -183,8 +239,10 @@ footer, header, hgroup, menu, nav, section {
       display: inline-block;
       margin-left: 2em;
       padding: 4px 0; }
+      .job_posting .post_job .field .js-show-selected-tags, .job_posting .post_job .field .js-show-suggested-tags {
+        margin-right: 10px; }
       .job_posting .post_job .field input, .job_posting .post_job .field select {
-        padding: 8px 16px;
+        padding: 4px 8px;
         margin: 8px 0;
         border: 1px solid #ccc;
         border-radius: 4px;
@@ -209,23 +267,6 @@ footer, header, hgroup, menu, nav, section {
         resize: none; }
         .job_posting .post_job .field textarea:focus {
           outline: none; }
-  .job_posting .tags {
-    margin-left: 20px; }
-    .job_posting .tags h2 {
-      padding: 20px 0 0 20px;
-      font-size: 20px; }
-    .job_posting .tags .label {
-      padding: 20px 0 10px 20px; }
-      .job_posting .tags .label label {
-        cursor: pointer; }
-    .job_posting .tags .field {
-      padding: 0 0 0 20px; }
-      .job_posting .tags .field input {
-        padding: 8px 16px;
-        margin: 0;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        width: 30%; }
 
 p.extra_info, span.extra_info {
   font-size: 13px; }
