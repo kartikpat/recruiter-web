@@ -1,5 +1,4 @@
 var recruiterID = localStorage.id;
-var baseUrl = "http://13.126.92.102:8000"
 
 $(document).ready(function(){
 	getRequest(baseUrl+"/recruiter/"+recruiterID, {}, populateHeader);

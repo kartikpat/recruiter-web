@@ -1,6 +1,5 @@
 var postJobForm = $(".post_job_form");
 var tagsContainer = $(".tags-container");
-var baseUrl = "http://13.126.92.102:8000"
 var baseUrlTags = "http://13.126.180.75:5000"
 var recruiterID = localStorage.id;
 

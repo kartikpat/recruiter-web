@@ -1,4 +1,4 @@
-var baseUrl = "http://13.126.92.102:8000";
+
 var reportsTable = $(".view-reports-table");
 var headingRow = $(".heading-row");
 

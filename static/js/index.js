@@ -1,6 +1,4 @@
 var recruiterID = localStorage.id;
-var baseUrl = "http://13.126.92.102:8000"
-
 var profile = $(".user_profile");
 var tableRow = $(".jobs_content.prototype");
 
