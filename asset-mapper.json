@@ -54,22 +54,22 @@
 	"login": {
 		"styles": {
 			"debug" : [
-              "static/css/index.css"
-
-
+              "static/css/login.css",
+			  "static/css/buttons.css",
+			  "static/css/utilities.css",
+			  "static/css/colors.css"
 			],
 			"prod": [
-				"static/build/css/index.min.css"
+				"static/build/css/login.min.css"
 			]
 		},
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/header.js",
-				"static/js/index.js"
+				"static/js/login.js"
 			],
 			"prod" : [
-				"static/build/js/index.min.js"
+				"static/build/js/login.min.js"
 			]
 		}
 	},
@@ -209,5 +209,62 @@
 				"static/build/js/view-reports.min.js"
 			]
 		}
+	},
+	"calendar-events": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+				"static/css/calendar-events.css",
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/utilities.css",
+				"static/css/footer.css"
+			],
+			"prod": [
+				"static/build/css/calendar-events.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/calendar-events.js"
+			],
+			"prod" : [
+				"static/build/js/calendar-events.min.js"
+			]
+		}
+	},
+	"manage-calendar": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+				"static/css/jquery.timepicker.min.css",
+				"static/css/jquery-ui.min.css",
+				"static/css/manage-calendar.css",
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/utilities.css",
+				"static/css/footer.css"
+			],
+			"prod": [
+				"static/build/css/manage-calendar.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/vendor/jquery-ui.min.js",
+				"static/js/vendor/jquery.timepicker.min.js",
+				"static/js/header.js",
+				"static/js/manage-calendar.js"
+			],
+			"prod" : [
+				"static/build/js/manage-calendar.min.js"
+			]
+		}
 	}
+
 }

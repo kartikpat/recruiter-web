@@ -100,3 +100,20 @@
 
 .highlight {
   background-color: #d9e1c4; }
+
+.error {
+  font-size: 12px;
+  color: #d00a42;
+  padding: 4px 0 0 0; }
+
+.hidden {
+  display: none; }
+
+.invisible {
+  opacity: 0.2; }
+
+.hide {
+  visibility: hidden; }
+
+input:focus, select:focus {
+  outline: none; }

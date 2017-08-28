@@ -137,4 +137,36 @@ module.exports = function(settings){
 		})
 		return
 	})
+
+	app.get("/recruiter/:recruiterID/calendar", function(req, res){
+		res.render("calendar-events",{
+			title: "IIM JOBS | Calendar Events",
+			styles:  assetsMapper["calendar-events"]["styles"][mode],
+			scripts: assetsMapper["calendar-events"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/:recruiterID/slots/:calendarID", function(req, res){
+		res.render("manage-calendar",{
+			title: "IIM JOBS | Manage Calendar",
+			styles:  assetsMapper["manage-calendar"]["styles"][mode],
+			scripts: assetsMapper["manage-calendar"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/:recruiterID/slots", function(req, res){console.log(baseUrl)
+
+		res.render("manage-calendar",{
+			title: "IIM JOBS | Manage Calendar",
+			styles:  assetsMapper["manage-calendar"]["styles"][mode],
+			scripts: assetsMapper["manage-calendar"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
 }

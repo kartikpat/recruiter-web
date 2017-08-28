@@ -79,10 +79,7 @@ header {
         .user_profile_side {
             position: absolute;
             right: 20px;
-            top: 17px;
             display: inline-block;
-            height: 0px;
-
             .dropdown {
                 position: relative;
                 list-style: none;
@@ -125,10 +122,6 @@ header {
                             }
                         }
                     }
-                }
-
-                &:hover ul.options {
-                    display: block;
                 }
             }
         }

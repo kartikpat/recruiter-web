@@ -218,13 +218,13 @@ footer, header, hgroup, menu, nav, section {
 
         } */ }
   .job_posting .post_job {
-    margin: 40px 0; }
+    margin: 21px 0; }
     .job_posting .post_job .heading .back {
       display: block; }
     .job_posting .post_job .heading > span {
       font-size: 24px; }
     .job_posting .post_job .heading .guidelines {
-      font-size: 14px; }
+      font-size: 12px; }
     .job_posting .post_job .label {
       display: inline-block;
       margin-left: 35px;
@@ -235,9 +235,9 @@ footer, header, hgroup, menu, nav, section {
     .job_posting .post_job .label.top {
       vertical-align: top !important; }
     .job_posting .post_job .field {
-      width: 70%;
+      width: 60%;
       display: inline-block;
-      margin-left: 2em;
+      margin-left: 60px;
       padding: 4px 0; }
       .job_posting .post_job .field .js-show-selected-tags, .job_posting .post_job .field .js-show-suggested-tags {
         margin-right: 10px; }
@@ -267,43 +267,6 @@ footer, header, hgroup, menu, nav, section {
         resize: none; }
         .job_posting .post_job .field textarea:focus {
           outline: none; }
-
-p.extra_info, span.extra_info {
-  font-size: 13px; }
-
-span.extra_info {
-  position: relative;
-  top: -3px;
-  right: -3px;
-  margin-right: 1em; }
-
-.login {
-  width: 60%;
-  margin: 20px auto; }
-  .login form {
-    display: inline-block;
-    width: calc(90%/2);
-    padding: 0 20px; }
-    .login form .form_heading {
-      display: block;
-      font-size: 20px; }
-    .login form .field {
-      padding: 10px 0; }
-      .login form .field input, .login form .field select {
-        padding: 8px 16px;
-        margin: 0;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        width: 80%; }
-  .login form:first-child {
-    vertical-align: top; }
-  .login form:not(:first-child) {
-    border-left: 2px solid black;
-    height: 100%; }
-
-.error {
-  color: red;
-  font-size: 12px; }
 
 .modal {
   position: fixed;

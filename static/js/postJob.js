@@ -22,16 +22,17 @@ window.onclick = function(event) {
     }
 }
 
-var titleTags = ''
-var jobDescriptionTags = ''
-
 var requestTags = function() {
-     title = postJobForm.find("#title").val();
-     jobDescription = postJobForm.find("#job_description").val();
-    if(title && jobDescription ) {
+     var title = postJobForm.find("#title").val();
+     console.log(title);
+     var jobDescription = postJobForm.find("#job_description").val();
+     var category = postJobForm.find("#category").val();
+
+    if(title && jobDescription && category) {
         postRequest(baseUrlTags+"/result",  { "content-type": "application/json"}, JSON.stringify({
-            "TITLE": "Wipro BPS - Data Scientist - Analytics (6-12 yrs)  Premium",
-            "JD": "Provide insight into leading analytic practices, design, and lead iterative learning and development cycles. Ultimately produce new and creative analytic solutions that will become part of our Applications "
+            "TITLE": title,
+            "JD": jobDescription,
+            "CATEGORY": category
         }), showSuggestedTags, null)
     }
 }
@@ -101,6 +102,7 @@ $(document).ready(function(){
     $(".submit-form").click(submitForm);
     postJobForm.find("#title").focusout(requestTags);
     postJobForm.find("#job_description").focusout(requestTags);
+    postJobForm.find("#category").focusout(requestTags);
 });
 
 function openMenu() {
@@ -111,18 +113,6 @@ function openMenu() {
         x.className = "menu";
     }
 }
-
-/* function addNewKeyword() {
-
-  $("#keywords").append("<div class='label'>\
-    <label for='keyword"+($("#keywords .label").length+1)+"'>Keyword #"+($("#keywords .label").length+1)+"</label>\
-    </div>\
-    <div class='field'>\
-    <input type='text' id='keyword"+($("#keywords .label").length+1)+"' name='keyword"+($("#keywords .label").length+1)+"'>\
-    </div>"
-  );
-
-} */
 
 function setDefaultVal(value){
    return (value === undefined) ? 0 : 1;
@@ -172,7 +162,7 @@ var submitForm = function() {
 
 
 	});
-    
+
   	postRequest(baseUrl+"/recruiter/"+recruiterID+"/job", null, {
 		max: maxYearsOfExperience,
 		tags: tags,

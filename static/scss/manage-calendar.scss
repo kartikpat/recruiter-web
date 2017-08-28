@@ -1,0 +1,132 @@
+@import "colors.scss";
+
+.main-container {
+    padding: 20px;
+    .heading-container {
+        padding: 20px;
+        .heading {
+            margin-top: 4px;
+        }
+    }
+    .create-slots-container {
+        padding: 20px;
+        display: inline-block;
+        width: 45%;
+        margin-right: 5%;
+        .slots-box {
+            position: relative;
+            padding: 10px 30px;
+            border: 1px solid $color-light-grey;
+            margin-bottom: 10px;
+            .label {
+                display: inline-block;
+                width: 30%;
+                vertical-align: top;
+                padding: 10px;
+            }
+            .field {
+                display: inline-block;
+                width: 60%;
+                padding: 10px;
+                .radio-info {
+                    padding: 2px 0;
+                    input {
+                        margin: 0 5px 0 0;
+                    }
+                }
+                .datepicker {
+                    margin-top: 2px;
+                    padding: 2px 8px;
+                }
+                &.checkbox {
+                    label {
+                        color: $extra-info-color;
+                        font-size: 14px;
+                        input {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+            .timepicker-container {
+                padding: 10px;
+                position: relative;
+                .label-from {
+                    display: inline-block;
+                    width: 35%;
+                    vertical-align: top;
+                    select {
+                        width: 100%;
+                        padding: 2px 4px;
+                        background-color: inherit;
+                    }
+                    .from {
+                        display: block;
+                    }
+                }
+                .dash {
+                    display: inline-block;
+                    width: 20%;
+                    text-align: center;
+                }
+                .label-to {
+                    display: inline-block;
+                    width: 35%;
+                    vertical-align: top;
+                    select {
+                        width: 100%;
+                        padding: 2px 4px;
+                        background-color: inherit;
+                    }
+                    .to {
+                        display: block;
+                    }
+                }
+            }
+            .close-slot-box {
+                position: absolute;
+                top: 50%;
+                left: 106%;
+                transform: translate(-50%,-50%);
+                font-size: 30px;
+                color: #b1b1b1;
+                &:hover {
+                    color: #ff7171;
+                }
+            }
+        }
+    }
+    .slots-info-container {
+        padding: 20px;
+        display: inline-block;
+        width: 45%;
+        vertical-align: top;
+        .label {
+            padding: 5px;
+            color: $extra-info-color;
+            font-size: 12px;
+        }
+        .field {
+            padding: 0 5px;
+            input {
+                width: 100%;
+                padding: 6px 14px;
+            }
+            textarea {
+                width: 100%;
+                padding: 6px 14px;
+                min-height: 100px;
+            }
+        }
+    }
+    .buttons {
+        display: inline-block;
+        padding: 0 0 0 20px;
+    }
+}
+
+input,textarea,select {
+    &:focus {
+        outline: none;
+    }
+}

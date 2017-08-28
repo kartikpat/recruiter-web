@@ -35,8 +35,6 @@ $(window).click(function() {
 	$(".resume-container").addClass("hidden");
 });
 
-
-
 var createObject = function() {
 	return {
 		industry: (obj["industry"])? obj["industry"].join(","): null,
@@ -129,7 +127,7 @@ var submitFilters = function() {
 	modal.addClass('hidden');
 }
 
-var baseUrl = "http://13.126.92.102:8000"
+//var baseUrl = "http://13.126.92.102:8000"
 //var baseUrl = "http://192.168.86.162:8000";
 var recruiterID = localStorage.id;
 var jobs = $(".jobs");
@@ -189,9 +187,8 @@ var populateTags = function(sorted,metaData) {
 			continue;
 		}
 		var tagCheckbox = tags.clone().removeClass('prototype hidden');
-		tagCheckbox.find(".label").append('<input id="'+obj["text"]+'" type="checkbox" value="'+obj["val"]+'" name="'+name+'" class="'+dataAttribute+'-alphabet-hover-'+aCharacter+'">'+ obj["text"]);
-		tagCheckbox.find(".label").attr("for", obj["text"]);
-
+		tagCheckbox.find(".label").append('<input id="'+dataAttribute+ "-" +obj["text"]+'" type="checkbox" value="'+obj["val"]+'" name="'+name+'" class="'+dataAttribute+'-alphabet-hover-'+aCharacter+'">'+ obj["text"]);
+		tagCheckbox.find(".label").attr("for", dataAttribute + "-" + obj["text"]);
 		tagsWrapperClone.append(tagCheckbox);
 		flag=0;
 		j++;
@@ -209,8 +206,8 @@ var populateMainTags = function(sorted,metaData) {
 		}
 		var obj = sorted[index];
 		var tagCheckbox = tags.clone().removeClass('prototype hidden');
-		tagCheckbox.find(".label").append('<input id="'+obj["text"]+'" type="checkbox" value="'+obj["val"]+'" name="'+name+'">'+ obj["text"]);
-		tagCheckbox.find(".label").attr("for", obj["text"]);
+		tagCheckbox.find(".label").append('<input id="'+dataAttribute+ "-"+obj["text"]+'" type="checkbox" value="'+obj["val"]+'" name="'+name+'">'+ obj["text"]);
+		tagCheckbox.find(".label").attr("for", dataAttribute + "-" + obj["text"]);
 		tagCheckbox.find(".label").css("font-size","11px");
 		$('.js-tags[data-attribute='+dataAttribute+']').append(tagCheckbox);
 	})
@@ -230,6 +227,27 @@ var performAction = function(event) {
 	}
 }
 
+jobContainer.on('click','.jobs_content .send-interview-invite', function(event){
+	event.preventDefault();
+	event.stopPropagation();
+	var slotType = $(this).attr("data-attribute");
+	var seekerId = $(this).attr("data-user-id");
+	postRequest(baseUrl+"/recruiter/"+recruiterID+"/calendar/"+calendarId+"/invite/"+jobId, null ,{
+		seekerID: seekerId,
+		slotType: slotType
+	}, successCallback);
+})
+
+jobContainer.on('click','.jobs_content .interview-invite.icon', function(){
+	var dataInterviewInvite = $(this).attr("data-interview-invite");
+	jobContainer.find('.slot-type-container[data-interview-invite='+dataInterviewInvite+']').toggleClass("hidden");
+})
+
+// /jobContainer.on('mouseout','.jobs_content .interview-invite.icon', function(){
+// 	var dataInterviewInvite = $(this).attr("data-interview-invite");
+// 	jobContainer.find('.slot-type-container[data-interview-invite='+dataInterviewInvite+']').addClass("hidden");
+// })
+
 var successActionCallback = function(res) {
 	if(res["status"] == "success") {
 		var queryString = createObject();
@@ -247,7 +265,7 @@ $(document).ready(function(){
 
 	var urlObject = fetchURL();
 	var res = urlObject["pathname"].split("/");
-	console.log(res);
+
 	if(!(isNaN(res[2]))){
 		jobId = res[2];
 	}
@@ -320,15 +338,15 @@ $(document).ready(function(){
 	  	}, populateJobs, showLoader, hideLoader)
 	}
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/calendar/"+jobId, {} , populateCalendarOptions );
-
+	//console.log(calendarId);
 	$(".set-default-calendar-button").click(setDefaultCalendar)
 
 });
 
 var setDefaultCalendar = function() {
-	var calendarId = $(".calendar-select option:selected").val();
+	calendarId = $(".calendar-select option:selected").val();
 	var defaultCalendarId = $(this).attr("data-default");
-	console.log(defaultCalendarId);
+	//console.log(defaultCalendarId);
 	postRequest(baseUrl+"/recruiter/"+recruiterID+"/calendar/"+jobId+"/default/"+calendarId, null ,{
 		defaultCalendarID: defaultCalendarId
 	}, successCallback);
@@ -372,7 +390,7 @@ filters.on('change','input[type="checkbox"]', function(){
 		filtersModal.find('input[name="'+name+'"][value="'+value+'"]').prop('checked', false);
 	});
 	obj[name] = tagsArray;
-	console.log(obj);
+	//console.log(obj);
 	showFilterTags(obj);
 });
 
@@ -381,7 +399,7 @@ filters.find('.js-filters').on('change', function(){
 	var tagsArray = [];
 	tagsArray.push($(this).val());
 	obj[name] = tagsArray;
-	console.log(obj);
+//	console.log(obj);
 	showFilterTags(obj);
 });
 
@@ -465,16 +483,14 @@ var resultLength;
 var populateCalendarOptions = function(res) {
 	if(res.status == "success") {
 		data = res["data"];
-		//console.log(data);
 		data.forEach(function(anOption) {
-			console.log(anOption);
 			var optionElement = calendarOption.clone().removeClass('prototype hidden');
-			//console.log(optionElement);
 			optionElement.text(anOption["name"]);
+			optionElement.attr("value",anOption["id"]);
 			if(anOption["isDefault"]) {
 				optionElement.attr("selected", "selected");
+				calendarId = optionElement.val();
 			}
-			optionElement.attr("value",anOption["id"]);
 			if(anOption["isDefault"]==true) {
 				$(".set-default-calendar-button").attr("data-default", anOption["defaultID"]);
 			}
@@ -485,7 +501,6 @@ var populateCalendarOptions = function(res) {
 
 var populateJobs = function(res){
 	if(res.status=="success"){
-		console.log(res["data"]["data"]);
 		if(res["data"]["data"]) {
 			resultLength = res["data"]["data"].length;
 			$(".no-results").addClass("hidden");
@@ -506,11 +521,10 @@ var populateJobs = function(res){
 		jobs.find(".status_sort").text(unread);
 
 		res["data"].forEach(function(aJob){
-			//console.log(aJob);
 			var card = tableRow.clone().removeClass('prototype hidden');
 			card.attr("data-attribute",'js-'+aJob['id']+'');
+			card.find(".send-interview-invite").attr("data-user-id", aJob['userID']);
 			card.find(".user_name").text(aJob["name"]);
-			//card.attr("href","/profile/"+aJob["userID"]+"?jobID="+jobID)
 			card.find(".user_experience").text(getJobExperience(aJob["exp_y"], aJob["exp_m"]));
 			card.find(".current_location").text(aJob["current_location"]);
 			card.find(".applied_date").text(ISODateToD_M_Y(aJob["apply_date"]));
@@ -518,13 +532,14 @@ var populateJobs = function(res){
 			card.find(".user_age").text(getAge(aJob["dob"]));
 			card.find(".user_img").attr('src', aJob["imgUrl"]);
 			var iconStatus = aJob["status"];
-			//console.log(iconStatus);
 			var iconElements = card.find(".content_more .icon");
 			iconElements.each(function(index,anElement){
 				$(anElement).attr("data-application-id", aJob["id"]);
 			});
 			card.find(".content_more .icon[data-attribute= " + iconStatus + "]").addClass("highlighted");
 			card.find(".content_more .icon[data-attribute=4]").attr("href","/profile/"+aJob["userID"]+"?jobID="+jobID);
+			card.find(".interview-invite.icon").attr("data-interview-invite","js-"+aJob['id']+"");
+			card.find(".slot-type-container").attr("data-interview-invite","js-"+aJob['id']+"");
 			var orgArray = aJob["jobs"];
 			var len = orgArray.length;
 			var loop = len < 2 ? len:2;

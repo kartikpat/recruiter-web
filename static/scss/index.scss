@@ -197,7 +197,7 @@ footer, header, hgroup, menu, nav, section {
     padding: 20px;
 
     .post_job {
-        margin: 40px 0;
+        margin: 21px 0;
 
         .heading {
             .back {
@@ -209,7 +209,7 @@ footer, header, hgroup, menu, nav, section {
             }
 
             .guidelines {
-                font-size: 14px;
+                font-size: 12px;
             }
         }
 
@@ -227,9 +227,9 @@ footer, header, hgroup, menu, nav, section {
         }
 
         .field {
-            width: 70%;
+            width: 60%;
             display: inline-block;
-            margin-left: 2em;
+            margin-left: 60px;
             padding: 4px 0;
 
             .js-show-selected-tags, .js-show-suggested-tags {
@@ -239,7 +239,7 @@ footer, header, hgroup, menu, nav, section {
             input, select {
                 padding: 4px 8px;
                 margin: 8px 0;
-                border: 1px solid #ccc;
+                border: 1px solid $select-border;
                 border-radius: 4px;
                 width: 60%;
                 background-color: inherit;
@@ -335,58 +335,9 @@ footer, header, hgroup, menu, nav, section {
     }
 
 
-p.extra_info, span.extra_info {
-    font-size: 13px;
-}
 
-span.extra_info {
-    position: relative;
-    top: -3px;
-    right: -3px;
-    margin-right: 1em;
-}
 
-.login {
-    width: 60%;
-    margin: 20px auto;
 
-    form {
-        display: inline-block;
-        width: calc(90%/2);
-        padding: 0 20px;
-
-        .form_heading {
-            display: block;
-            font-size: 20px;
-        }
-
-        .field {
-            padding: 10px 0;
-
-            input, select {
-                padding: 8px 16px;
-                margin: 0;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                width: 80%;
-            }
-        }
-    }
-
-    form:first-child {
-        vertical-align: top;
-    }
-
-    form:not(:first-child) {
-        border-left: 2px solid black;
-        height: 100%;
-    }
-}
-
-.error {
-    color: red;
-    font-size: 12px;
-}
 
 .modal {
     position: fixed;

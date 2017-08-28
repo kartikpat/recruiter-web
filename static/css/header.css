@@ -61,9 +61,7 @@ header .top_banner {
   header .top_banner .user_profile_side {
     position: absolute;
     right: 20px;
-    top: 17px;
-    display: inline-block;
-    height: 0px; }
+    display: inline-block; }
     header .top_banner .user_profile_side .dropdown {
       position: relative;
       list-style: none; }
@@ -95,8 +93,6 @@ header .top_banner {
             font-size: 14px; }
             header .top_banner .user_profile_side .dropdown .options li a:hover {
               color: #56A0FF; }
-      header .top_banner .user_profile_side .dropdown:hover ul.options {
-        display: block; }
 
 header nav {
   background: #1c1c1c;
