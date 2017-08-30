@@ -1,0 +1,66 @@
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
+.main-container {
+  padding: 20px; }
+  .main-container .booked-slots-container {
+    display: inline-block;
+    width: 20%;
+    padding: 10px;
+    overflow-y: auto;
+    height: 560px;
+    margin-right: 15px; }
+    .main-container .booked-slots-container .booked-slots-heading {
+      margin-bottom: 10px;
+      width: 200px;
+      height: 20px;
+      text-align: left;
+      cursor: pointer; }
+      .main-container .booked-slots-container .booked-slots-heading:hover {
+        color: #23527c;
+        text-decoration: underline; }
+    .main-container .booked-slots-container .booked-slots-card {
+      min-height: 25px;
+      width: 100%; }
+      .main-container .booked-slots-container .booked-slots-card .booked-slots-card-header {
+        width: 150px;
+        height: 20px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        color: #337ab7;
+        font-size: 14px;
+        padding-left: 15px; }
+        .main-container .booked-slots-container .booked-slots-card .booked-slots-card-header:hover {
+          color: #23527c;
+          text-decoration: underline; }
+  .main-container .calendar-view {
+    display: inline-block;
+    width: 77%;
+    vertical-align: top; }
+
+.fc-state-highlight {
+  background-color: #708732; }
+
+.fc-state-highlight-specific {
+  background-color: red !important; }

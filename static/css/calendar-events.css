@@ -50,4 +50,5 @@
       padding: 10px 5px; }
       .main-container .calendar-events-container .calendar-events-header .column {
         display: inline-block;
-        width: 33%; }
+        width: 33%;
+        font-size: 12px; }

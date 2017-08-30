@@ -238,15 +238,15 @@ jobContainer.on('click','.jobs_content .send-interview-invite', function(event){
 	}, successCallback);
 })
 
-jobContainer.on('click','.jobs_content .interview-invite.icon', function(){
+jobContainer.on('mouseover','.jobs_content .interview-invite.icon', function(event){
 	var dataInterviewInvite = $(this).attr("data-interview-invite");
-	jobContainer.find('.slot-type-container[data-interview-invite='+dataInterviewInvite+']').toggleClass("hidden");
+	jobContainer.find('.slot-type-container[data-interview-invite='+dataInterviewInvite+']').removeClass("hidden");
 })
 
-// /jobContainer.on('mouseout','.jobs_content .interview-invite.icon', function(){
-// 	var dataInterviewInvite = $(this).attr("data-interview-invite");
-// 	jobContainer.find('.slot-type-container[data-interview-invite='+dataInterviewInvite+']').addClass("hidden");
-// })
+jobContainer.on('mouseout','.jobs_content .interview-invite.icon', function(){
+ 	var dataInterviewInvite = $(this).attr("data-interview-invite");
+ 	jobContainer.find('.slot-type-container[data-interview-invite='+dataInterviewInvite+']').addClass("hidden");
+})
 
 var successActionCallback = function(res) {
 	if(res["status"] == "success") {
@@ -716,7 +716,6 @@ function fetchURL(){
        return obj;
 }
 
-
 function fetchQueryVariable(stringToFind) {
        var obj = fetchURL();
        if(obj["search"]){
@@ -725,7 +724,7 @@ function fetchQueryVariable(stringToFind) {
                testString= testString.split("&");
                for(var i=0; i < testString.length; i++){
                        var temp=testString[i].split("=");
-                       if(temp[0]==stringToFind){
+                       if(temp[0]==stringToFind) {
                                return temp[1];
                        }
                }
