@@ -9,11 +9,12 @@
         display: inline-block;
         padding: 12px; }
         .footer nav .menu li.menu_link a {
-          color: white;
-          font-size: 13px;
-          font-family: 'Droid Sans'; }
+          color: #ffffff;
+          font-size: 12px;
+          text-decoration: none; }
           .footer nav .menu li.menu_link a:hover {
-            color: #56A0FF; }
+            color: #56A0FF;
+            text-decoration: underline; }
 
 @media only screen and (max-width: 768px) {
   .footer nav .menu li.menu_link {

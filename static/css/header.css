@@ -7,7 +7,8 @@ body, html {
   min-height: 100%; }
 
 * {
-  font-weight: normal; }
+  font-weight: normal;
+  font-family: 'Open Sans'; }
 
 .hidden {
   display: none !important; }
@@ -50,11 +51,9 @@ header .top_banner {
     header .top_banner .logo h3 {
       font-size: 30px;
       line-height: 20px;
-      font-family: 'Comfortaa';
       margin: 0; }
     header .top_banner .logo span {
       font-size: 13px;
-      font-family: 'Comfortaa';
       position: absolute;
       top: 110%;
       left: 70%; }
@@ -111,8 +110,7 @@ header nav {
       header nav .menu li.menu_link > a {
         color: white;
         text-decoration: none;
-        font-size: 14px;
-        font-family: 'Droid Sans'; }
+        font-size: 12px; }
       header nav .menu li.menu_link:hover {
         background: #7c7c7c;
         border-bottom: 2px solid #fff; }
