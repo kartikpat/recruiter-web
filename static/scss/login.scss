@@ -1,0 +1,73 @@
+@import "colors.scss";
+
+.logo-container {
+    width: 60%;
+    margin: 20px auto;
+    text-align: center;
+    .logo-main {
+        font-size: 64px;
+        display: inline-block;
+    }
+    .logo-extra {
+        font-size: 30px;
+        text-align: right;
+        margin-right: 10px;
+    }
+}
+
+.login-container {
+    width: 60%;
+    margin: 20px auto;
+
+    .form {
+        display: inline-block;
+        width: 38%;
+        padding: 0 20px;
+
+        .form_heading {
+            display: inline-block;
+            font-size: 20px;
+            color: $color-black-text;
+            margin-bottom: 10px;
+        }
+
+        .field {
+            padding: 10px 0 5px 0;
+            position: relative;
+            &.links {
+                height: 20px;
+                line-height: 20px;
+            }
+            .button.log-in {
+                position: absolute;
+                left: 0;
+            }
+            .lost-paswd-link {
+                position: absolute;
+                right: 0;
+
+            }
+            input, select {
+                padding: 8px 16px;
+                border: 1px solid $select-border;
+                width: 100%;
+                box-sizing: border-box;
+                background-color: inherit;
+            }
+        }
+    }
+
+    .login-form {
+        vertical-align: top;
+        padding-right: 40px;
+        .forgot-password-form {
+            margin-top: 20px;
+        }
+    }
+
+    .register-form {
+        border-left: 1px solid #d8d8d8;
+        height: 100%;
+        padding-left: 40px;
+    }
+}

@@ -137,4 +137,58 @@ module.exports = function(settings){
 		})
 		return
 	})
+
+	app.get("/recruiter/:recruiterID/calendar", function(req, res){
+		res.render("calendar-events",{
+			title: "IIM JOBS | Calendar Events",
+			styles:  assetsMapper["calendar-events"]["styles"][mode],
+			scripts: assetsMapper["calendar-events"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/:recruiterID/slots/:calendarID", function(req, res){
+		res.render("manage-calendar",{
+			title: "IIM JOBS | Manage Calendar",
+			styles:  assetsMapper["manage-calendar"]["styles"][mode],
+			scripts: assetsMapper["manage-calendar"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/:recruiterID/slots", function(req, res){
+
+		res.render("manage-calendar",{
+			title: "IIM JOBS | Manage Calendar",
+			styles:  assetsMapper["manage-calendar"]["styles"][mode],
+			scripts: assetsMapper["manage-calendar"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/view-booked-slots", function(req, res){
+
+		res.render("view-booked-slots",{
+			title: "IIM JOBS | View Booked Slots",
+			styles:  assetsMapper["view-booked-slots"]["styles"][mode],
+			scripts: assetsMapper["view-booked-slots"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/myChat", function(req, res){
+
+		res.render("chat",{
+			title: "IIM JOBS | myChat",
+			styles:  assetsMapper["chat"]["styles"][mode],
+			scripts: assetsMapper["chat"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
 }

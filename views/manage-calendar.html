@@ -1,0 +1,144 @@
+{{> header}}
+
+<div class="main-container">
+    <div class="heading-container">
+        <div class="main-heading font-lg">Manage Calendar Slots</div>
+        <div class="remaining-slots font-xs">fddddddddd</div>
+        <div class="heading font-xs">Please create calendar slots. Candidates will get an option to pick from these.</div>
+    </div>
+    <div>
+        <div class="create-slots-container">
+        </div>
+        <div class="slots-info-container">
+            <div class="label">
+                <label >Calendar Name*</label>
+            </div>
+            <div class="field">
+                <input id="calendar-name">
+                <div class="error hidden">Please enter the Calendar Name</div>
+            </div>
+            <div class="label">
+                <label >Message for Face-to-Face interviews*</label>
+            </div>
+            <div class="field">
+                <textarea class="input-large" id="mssg-f2f"></textarea>
+                <div class="error hidden">Please fill the face to face message.</div>
+            </div>
+
+            <div class="label">
+                <label >Message for Telephonic interview*</label>
+            </div>
+            <div class="field">
+                <textarea class="input-large" id="mssg-telephonic"></textarea>
+                <div class="error hidden">Please fill the telephonic message.</div>
+            </div>
+        </div>
+    </div>
+    <div class="buttons"><button class="add-more-slots button">Add More Slots</button></div>
+    <div class="buttons"><button class="save-slots-data button">Save Changes</button></div>
+</div>
+
+<div class="slots-box prototype hidden">
+    <div class="label">
+        <label  class="font-sm extra-info-color">Repeats weekly on every*</label>
+    </div>
+    <div class="field checkbox" id="repeat-every">
+        <label ><input value="1" id="Mon" type="checkbox"> M</label>
+        <label ><input value="2" id="Tue" type="checkbox"> T</label>
+        <label ><input value="3" id="Wed" type="checkbox"> W</label>
+        <label ><input value="4" id="Thurs" type="checkbox"> T</label>
+        <label ><input value="5" id="Fri" type="checkbox"> F</label>
+        <label ><input value="6" id="Sat" type="checkbox"> S</label>
+        <label ><input value="7" id="Sun" type="checkbox"> S</label>
+    </div>
+    <div class="error hidden">Please select one of the days</div>
+    <div class="timepicker-container">
+        <div class="label-from">
+            <label class="from font-sm extra-info-color">From*</label>
+            <select class="from timepicker">
+                <option value="" selected="">Select</option>
+                <option value="0900">9:00 AM</option>
+                <option value="0930">9:30 AM</option>
+                <option value="1000">10:00 AM</option>
+                <option value="1030">10:30 AM</option>
+                <option value="1100">11:00 AM</option>
+                <option value="1130">11:30 AM</option>
+                <option value="1200">12:00 PM</option>
+                <option value="1230">12:30 PM</option>
+                <option value="1300">1:00 PM</option>
+                <option value="1330">1:30 PM</option>
+                <option value="1400">2:00 PM</option>
+                <option value="1430">2:30 PM</option>
+                <option value="1500">3:00 PM</option>
+                <option value="1530">3:30 PM</option>
+                <option value="1600">4:00 PM</option>
+                <option value="1630">4:30 PM</option>
+                <option value="1700">5:00 PM</option>
+                <option value="1730">5:30 PM</option>
+                <option value="1800">6:00 PM</option>
+                <option value="1830">6:30 PM</option>
+                <option value="1900">7:00 PM</option>
+                <option value="1930">7:30 PM</option>
+                <option value="2000">8:00 PM</option>
+                <option value="2030">8:30 PM</option>
+                <option value="2100">9:00 PM</option>
+                <option value="2130">9:30 PM</option>
+                <option value="2200">10:00 PM</option>
+            </select>
+            <div class="error hidden">Please select the starting time</div>
+        </div>
+        <div class="dash">-</div>
+        <div class="label-to">
+            <label class="to font-sm extra-info-color">To*</label>
+            <select class="to timepicker">
+                <option value="" selected="">Select</option>
+                <option value="0900">9:00 AM</option>
+                <option value="0930">9:30 AM</option>
+                <option value="1000">10:00 AM</option>
+                <option value="1030">10:30 AM</option>
+                <option value="1100">11:00 AM</option>
+                <option value="1130">11:30 AM</option>
+                <option value="1200">12:00 PM</option>
+                <option value="1230">12:30 PM</option>
+                <option value="1300">1:00 PM</option>
+                <option value="1330">1:30 PM</option>
+                <option value="1400">2:00 PM</option>
+                <option value="1430">2:30 PM</option>
+                <option value="1500">3:00 PM</option>
+                <option value="1530">3:30 PM</option>
+                <option value="1600">4:00 PM</option>
+                <option value="1630">4:30 PM</option>
+                <option value="1700">5:00 PM</option>
+                <option value="1730">5:30 PM</option>
+                <option value="1800">6:00 PM</option>
+                <option value="1830">6:30 PM</option>
+                <option value="1900">7:00 PM</option>
+                <option value="1930">7:30 PM</option>
+                <option value="2000">8:00 PM</option>
+                <option value="2030">8:30 PM</option>
+                <option value="2100">9:00 PM</option>
+                <option value="2130">9:30 PM</option>
+                <option value="2200">10:00 PM</option>
+            </select>
+            <div class="error hidden">Please select the ending time</div>
+        </div>
+    </div>
+    <div class="label">
+        <label  class="font-sm extra-info-color">Start Date*</label>
+    </div>
+    <div class="field">
+        <input class="datepicker from">
+        <div class="error hidden">Please select the starting date</div>
+    </div>
+    <div class="label">
+        <label  class="font-sm extra-info-color">End Date</label>
+    </div>
+    <div class="field">
+        <div class="radio-info"><label  class="font-sm extra-info-color"><input value="0" checked="checked" class="never"  type="radio">Never</label></div>
+        <div class="radio-info"><label  class="font-sm extra-info-color"><input value="1"  class="on"  type="radio">On</label></div>
+        <input class="datepicker to" disabled="disabled">
+    </div>
+    <i class="close-slot-box fa fa-times-circle-o" aria-hidden="true"></i>
+</div>
+
+{{> footer}}

@@ -10,6 +10,7 @@ body, html {
 
 * {
     font-weight: normal;
+    font-family: 'Open Sans';
 }
 
 .hidden {
@@ -63,13 +64,13 @@ header {
             h3 {
                 font-size: 30px;
                 line-height: 20px;
-                font-family: 'Comfortaa';
+
                 margin: 0;
             }
 
             span {
                 font-size: 13px;
-                font-family: 'Comfortaa';
+
                 position: absolute;
                 top: 110%;
                 left: 70%;
@@ -79,10 +80,7 @@ header {
         .user_profile_side {
             position: absolute;
             right: 20px;
-            top: 17px;
             display: inline-block;
-            height: 0px;
-
             .dropdown {
                 position: relative;
                 list-style: none;
@@ -98,7 +96,7 @@ header {
                     background: #fff;
                     min-width: 200px;
                     right: 0;
-                    z-index: 1;
+                    z-index: 15;
                     padding: 0;
                     list-style: none;
                     margin: 0;
@@ -126,10 +124,6 @@ header {
                         }
                     }
                 }
-
-                &:hover ul.options {
-                    display: block;
-                }
             }
         }
     }
@@ -156,8 +150,8 @@ header {
                 > a {
                     color: white;
                     text-decoration: none;
-                    font-size: 14px;
-                    font-family: 'Droid Sans';
+                    font-size: 12px;
+
                 }
 
                 &:hover {
@@ -176,7 +170,7 @@ header {
                     min-width: 150px;
                     left: 0;
                     list-style: none;
-                    z-index: 1;
+                    z-index: 15;
                     padding: 0;
                     margin: 0;
 

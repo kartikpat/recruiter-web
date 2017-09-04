@@ -20,6 +20,7 @@ $(document).ready(function(){
             modal.addClass('hidden');
         }
     }
+
 })
 
 var openModal = function() {
@@ -34,12 +35,12 @@ var populateProfile = function(res){
 	if(res.status =="success"){
 		var data = res["data"][0];
 		profile.find(".edit_profile img").attr('src', data["img_link"]);
-		profile.find(".user_name").text(data["name"]);
-		profile.find(".user_designation").text(data["desg"]);
-		profile.find(".extra_info .viewed").text(data["hits"]);
-		profile.find(".extra_info .last_login").text( new Date(data["d_login"]).toLocaleString());
-		profile.find(".profile_link").text(data["rurl"]);
-		
+		profile.find(".user_name").text(data["name"]).removeClass("animated-background");
+		profile.find(".user_designation").text(data["desg"]).removeClass("animated-background");
+		profile.find(".extra_info .viewed").text("Viewed: "+data["hits"]).removeClass("animated-background");
+		profile.find(".extra_info .last_login").text("Last Login: "+new Date(data["d_login"]).toLocaleString()).removeClass("animated-background");
+		profile.find(".profile_link").text(data["rurl"]).removeClass("animated-background");
+		profile.find(".edit_profile").removeClass("animated-background");
 	}
 }
 

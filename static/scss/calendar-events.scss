@@ -1,0 +1,45 @@
+@import "colors.scss";
+
+.main-container {
+    padding: 20px;
+    height: 500px;
+    .heading-container {
+        position: relative;
+        height: 40px;
+        line-height: 40px;
+        .heading-content {
+            display: inline-block;
+            position: absolute;
+            left: 0;
+        }
+        .heading-button {
+            display: inline-block;
+            position: absolute;
+            right: 0;
+        }
+    }
+    .calendar-events-container {
+        margin-top: 20px;
+        .calendar-events-content {
+            .calendar-row {
+                .column {
+                    display: inline-block;
+                    width: 33%;
+                    padding: 10px 5px;
+                }
+                &:nth-child(even) {
+                    background-color: $color-light-grey;
+                }
+            }
+        }
+        .calendar-events-header {
+            background-color: $color-light-grey;
+            padding: 10px 5px;
+            .column {
+                display: inline-block;
+                width: 33%;
+                font-size: 12px;
+            }
+        }
+    }
+}

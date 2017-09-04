@@ -1,0 +1,126 @@
+@import "colors.scss";
+
+.main-container {
+    height: 683px;
+    .chat-side-profile-container {
+        display: inline-block;
+        width: 20%;
+        box-shadow: 5px 0px 20px 4px #ccc;
+        .chat-side-profile-header {
+            padding: 15px;
+            .profile-image {
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+            .profile-info {
+                display: inline-block;
+                height: 40px;
+                vertical-align: bottom;
+                .profile-info-name {
+                    min-width: 100px;
+                    height: 10px;
+                    margin-bottom: 10px;
+                }
+                .profile-info-isonline {
+                    width: 70px;
+                    height: 10px;
+                }
+            }
+        }
+        .divider-full {
+            margin: 0;
+        }
+        .chat-side-profile-search {
+            padding: 15px;
+            width: 100%;
+            height: 60px;
+            input {
+                box-sizing: border-box;
+                border: 1px solid $select-border;
+                border-radius: 4px;
+                padding: 4px 8px;
+            }
+        }
+        .chat-side-profile-candidates {
+            overflow-y: scroll;
+            height: 543px;
+            .candidate-card {
+                height: 75px;
+                padding: 15px;
+                &:hover {
+
+                }
+                .candidate-image {
+                    display: inline-block;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    margin-right: 10px;
+                }
+                .candidate-info {
+                    display: inline-block;
+                    .candidate-name {
+                        width: 70px;
+                        height: 15px;
+                        margin-bottom: 10px;
+                    }
+                    .candidate-designation {
+                        width: 150px;
+                        height: 10px;
+                    }
+                }
+            }
+        }
+    }
+    .candidate-chat-container {
+        display: inline-block;
+        width: 78%;
+        vertical-align: top;
+        position: relative;
+        height: 100%;
+        .candidate-chat-header {
+            padding: 15px;
+            .profile-image {
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+            .profile-info {
+                display: inline-block;
+                height: 40px;
+                vertical-align: bottom;
+                .profile-info-name {
+                    min-width: 100px;
+                    height: 10px;
+                    margin-bottom: 10px;
+                }
+                .profile-info-organisation {
+                    width: 70px;
+                    height: 10px;
+                }
+            }
+        }
+        .candidate-chat-footer {
+            position: absolute;
+            display: block;
+            height: 40px;
+            width: 90%;
+            bottom: 30px;
+            line-height: 40px;
+            left: 50%;
+            transform: translate(-50%,0);
+            input {
+                box-sizing: border-box;
+                border: 1px solid $select-border;
+                border-radius: 4px;
+                padding: 12px;
+                width: 100%;
+            }
+        }
+    }
+}
