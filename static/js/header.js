@@ -29,6 +29,7 @@ var showMenuMore = function() {
 
 var populateHeader = function(res) {
     if(res.status =="success") {
+		//console.log(res);
         userProfile.find('.email').text(res["data"][0]["email"])
     }
 }

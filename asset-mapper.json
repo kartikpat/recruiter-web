@@ -17,6 +17,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
+				"service-worker.js",
 				"static/js/request.js",
 				"static/js/header.js",
 				"static/js/index.js"
@@ -317,6 +318,7 @@
 				"static/js/vendor/jquery.min.js",
 				"static/js/request.js",
 				"static/js/header.js",
+				"static/js/chatObject.js",
 				"static/js/chat.js"
 			],
 			"prod" : [
