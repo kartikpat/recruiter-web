@@ -14,6 +14,11 @@
                 height: 40px;
                 border-radius: 50%;
                 margin-right: 10px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                }
             }
             .profile-info {
                 display: inline-block;
@@ -27,12 +32,11 @@
                 .profile-info-isonline {
                     width: 70px;
                     height: 10px;
+                    color: #83c500;
                 }
             }
         }
-        .divider-full {
-            margin: 0;
-        }
+
         .chat-side-profile-search {
             padding: 15px;
             width: 100%;
@@ -50,8 +54,10 @@
             .candidate-card {
                 height: 75px;
                 padding: 15px;
+                position: relative;
                 &:hover {
-
+                    background-color: $color-light-grey;
+                    cursor: pointer;
                 }
                 .candidate-image {
                     display: inline-block;
@@ -59,6 +65,11 @@
                     height: 40px;
                     border-radius: 50%;
                     margin-right: 10px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 50%;
+                    }
                 }
                 .candidate-info {
                     display: inline-block;
@@ -72,6 +83,15 @@
                         height: 10px;
                     }
                 }
+                .remove-candidate {
+                    position: absolute;
+                    display: inline-block;
+                    font-size: 13px;
+                    top: 20px;
+                    i:hover {
+                        color: $error-color;
+                    }
+                }
             }
         }
     }
@@ -81,46 +101,112 @@
         vertical-align: top;
         position: relative;
         height: 100%;
-        .candidate-chat-header {
-            padding: 15px;
-            .profile-image {
-                display: inline-block;
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                margin-right: 10px;
-            }
-            .profile-info {
-                display: inline-block;
-                height: 40px;
-                vertical-align: bottom;
-                .profile-info-name {
-                    min-width: 100px;
-                    height: 10px;
-                    margin-bottom: 10px;
-                }
-                .profile-info-organisation {
-                    width: 70px;
-                    height: 10px;
-                }
-            }
-        }
-        .candidate-chat-footer {
+        .welcome-message-container {
             position: absolute;
-            display: block;
-            height: 40px;
-            width: 90%;
-            bottom: 30px;
-            line-height: 40px;
             left: 50%;
-            transform: translate(-50%,0);
-            input {
-                box-sizing: border-box;
-                border: 1px solid $select-border;
-                border-radius: 4px;
-                padding: 12px;
-                width: 100%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            .welcome-message-image {
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            .welcome-message-content {
+                text-align: center;
+                margin-bottom: 10px;
+                font-size: 26px;
+                color: #86c5f8;
             }
         }
+        .candidate-chat-messages-container {
+
+            .candidate-chat-header {
+                width: 90%;
+                margin: 0 auto;
+                padding: 15px;
+                .profile-image {
+                    display: inline-block;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    margin-right: 10px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 50%;
+                    }
+                }
+                .profile-info {
+                    display: inline-block;
+                    height: 40px;
+                    vertical-align: bottom;
+                    .profile-info-name {
+                        min-width: 100px;
+                        height: 10px;
+                        margin-bottom: 10px;
+                    }
+                    .profile-info-organisation {
+                        min-width: 70px;
+                        height: 10px;
+                    }
+                }
+            }
+            .candidate-chat-content {
+                width: 90%;
+                margin: 0 auto;
+            }
+            .candidate-chat-footer {
+                position: absolute;
+                display: block;
+                height: 40px;
+                width: 90%;
+                bottom: 30px;
+                line-height: 40px;
+                left: 50%;
+                transform: translate(-50%,0);
+                input {
+                    box-sizing: border-box;
+                    border: 1px solid $select-border;
+                    border-radius: 4px;
+                    padding: 12px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.divider-full {
+    margin: 0 auto;
+}
+
+.left-message {
+
+    display: inline-block;
+    box-shadow: 1px 1px 0px 0px #ccc;
+    padding: 5px;
+    background-color: #D3FF7C;
+}
+.right-message {
+
+    display: inline-block;
+    box-shadow: 1px 1px 0px 0px #ccc;
+    padding: 5px;
+    background-color: #CFF4FD;
+}
+
+.current-time {
+    font-size: 10px;
+    vertical-align: sub;
+    padding: 0 0 0px 10px;
+}
+
+.message-container {
+    margin: 10px 0;
+
+    &.left {
+        text-align: left;
+    }
+    &.right {
+        text-align: right;
     }
 }

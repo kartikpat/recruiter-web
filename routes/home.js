@@ -17,7 +17,7 @@ module.exports = function(settings){
 	else
 		baseUrl = config["baseUrl"];
 	function isAuthenticated(req, res, next) {
-
+		console.log(req.session);
 		// for disabling authentication
 		//return next()
 		//bypassing the auth for development
@@ -26,6 +26,8 @@ module.exports = function(settings){
     	if (req.session.authenticated)
         	return next();
     // IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
+
+
     	res.redirect('/sign-in');
 	}
 	app.post("/sign-in", function(req, res){
@@ -77,7 +79,7 @@ module.exports = function(settings){
 
 	app.get("/job/:jobID/candidates", function(req, res){
 		var jobID = req.params.jobID;
-		res.render("candidate-list",{
+		res.render("candidate-list", {
 			title: "IIM JOBS | Candidates",
 			styles:  assetsMapper["candidate-list"]["styles"][mode],
 			scripts: assetsMapper["candidate-list"]["scripts"][mode],

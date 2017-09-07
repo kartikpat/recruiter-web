@@ -14,7 +14,6 @@ var closeModalBtn = $(".close");
 $(document).ready(function(){
 	getRequest(baseUrl+"/recruiter/"+recruiterID, {}, populateProfile);
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs", {}, populateJobs);
-
 	openGuidelines.click(openModal);
 	closeModalBtn.click(closeModal);
     window.onclick = function(event) {
@@ -22,6 +21,20 @@ $(document).ready(function(){
             modal.addClass('hidden');
         }
     }
+
+	if('serviceWorker' in navigator) {
+	  //browser supports now register it
+	  navigator.serviceWorker
+			 .register('service-worker.js') //Note that we have not passed scope object here now by default it will pick root scope
+			 .then(function() {
+				  console.log('Service Worker Registered');
+			  })
+			  .catch(function(err) {
+				  console.error(err);
+			  })
+	} else {
+	  console.log("Ahh! Your browser does not supports serviceWorker");
+	}
 
 })
 

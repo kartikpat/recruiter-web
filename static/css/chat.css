@@ -36,6 +36,10 @@
         height: 40px;
         border-radius: 50%;
         margin-right: 10px; }
+        .main-container .chat-side-profile-container .chat-side-profile-header .profile-image img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%; }
       .main-container .chat-side-profile-container .chat-side-profile-header .profile-info {
         display: inline-block;
         height: 40px;
@@ -46,9 +50,8 @@
           margin-bottom: 10px; }
         .main-container .chat-side-profile-container .chat-side-profile-header .profile-info .profile-info-isonline {
           width: 70px;
-          height: 10px; }
-    .main-container .chat-side-profile-container .divider-full {
-      margin: 0; }
+          height: 10px;
+          color: #83c500; }
     .main-container .chat-side-profile-container .chat-side-profile-search {
       padding: 15px;
       width: 100%;
@@ -63,13 +66,21 @@
       height: 543px; }
       .main-container .chat-side-profile-container .chat-side-profile-candidates .candidate-card {
         height: 75px;
-        padding: 15px; }
+        padding: 15px;
+        position: relative; }
+        .main-container .chat-side-profile-container .chat-side-profile-candidates .candidate-card:hover {
+          background-color: #f5f6f7;
+          cursor: pointer; }
         .main-container .chat-side-profile-container .chat-side-profile-candidates .candidate-card .candidate-image {
           display: inline-block;
           width: 40px;
           height: 40px;
           border-radius: 50%;
           margin-right: 10px; }
+          .main-container .chat-side-profile-container .chat-side-profile-candidates .candidate-card .candidate-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%; }
         .main-container .chat-side-profile-container .chat-side-profile-candidates .candidate-card .candidate-info {
           display: inline-block; }
           .main-container .chat-side-profile-container .chat-side-profile-candidates .candidate-card .candidate-info .candidate-name {
@@ -79,32 +90,61 @@
           .main-container .chat-side-profile-container .chat-side-profile-candidates .candidate-card .candidate-info .candidate-designation {
             width: 150px;
             height: 10px; }
+        .main-container .chat-side-profile-container .chat-side-profile-candidates .candidate-card .remove-candidate {
+          position: absolute;
+          display: inline-block;
+          font-size: 13px;
+          top: 20px; }
+          .main-container .chat-side-profile-container .chat-side-profile-candidates .candidate-card .remove-candidate i:hover {
+            color: #d00a42; }
   .main-container .candidate-chat-container {
     display: inline-block;
     width: 78%;
     vertical-align: top;
     position: relative;
     height: 100%; }
-    .main-container .candidate-chat-container .candidate-chat-header {
+    .main-container .candidate-chat-container .welcome-message-container {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%); }
+      .main-container .candidate-chat-container .welcome-message-container .welcome-message-image {
+        text-align: center;
+        margin-bottom: 10px; }
+      .main-container .candidate-chat-container .welcome-message-container .welcome-message-content {
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 26px;
+        color: #86c5f8; }
+    .main-container .candidate-chat-container .candidate-chat-messages-container .candidate-chat-header {
+      width: 90%;
+      margin: 0 auto;
       padding: 15px; }
-      .main-container .candidate-chat-container .candidate-chat-header .profile-image {
+      .main-container .candidate-chat-container .candidate-chat-messages-container .candidate-chat-header .profile-image {
         display: inline-block;
         width: 40px;
         height: 40px;
         border-radius: 50%;
         margin-right: 10px; }
-      .main-container .candidate-chat-container .candidate-chat-header .profile-info {
+        .main-container .candidate-chat-container .candidate-chat-messages-container .candidate-chat-header .profile-image img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%; }
+      .main-container .candidate-chat-container .candidate-chat-messages-container .candidate-chat-header .profile-info {
         display: inline-block;
         height: 40px;
         vertical-align: bottom; }
-        .main-container .candidate-chat-container .candidate-chat-header .profile-info .profile-info-name {
+        .main-container .candidate-chat-container .candidate-chat-messages-container .candidate-chat-header .profile-info .profile-info-name {
           min-width: 100px;
           height: 10px;
           margin-bottom: 10px; }
-        .main-container .candidate-chat-container .candidate-chat-header .profile-info .profile-info-organisation {
-          width: 70px;
+        .main-container .candidate-chat-container .candidate-chat-messages-container .candidate-chat-header .profile-info .profile-info-organisation {
+          min-width: 70px;
           height: 10px; }
-    .main-container .candidate-chat-container .candidate-chat-footer {
+    .main-container .candidate-chat-container .candidate-chat-messages-container .candidate-chat-content {
+      width: 90%;
+      margin: 0 auto; }
+    .main-container .candidate-chat-container .candidate-chat-messages-container .candidate-chat-footer {
       position: absolute;
       display: block;
       height: 40px;
@@ -113,9 +153,36 @@
       line-height: 40px;
       left: 50%;
       transform: translate(-50%, 0); }
-      .main-container .candidate-chat-container .candidate-chat-footer input {
+      .main-container .candidate-chat-container .candidate-chat-messages-container .candidate-chat-footer input {
         box-sizing: border-box;
         border: 1px solid #ccc;
         border-radius: 4px;
         padding: 12px;
         width: 100%; }
+
+.divider-full {
+  margin: 0 auto; }
+
+.left-message {
+  display: inline-block;
+  box-shadow: 1px 1px 0px 0px #ccc;
+  padding: 5px;
+  background-color: #D3FF7C; }
+
+.right-message {
+  display: inline-block;
+  box-shadow: 1px 1px 0px 0px #ccc;
+  padding: 5px;
+  background-color: #CFF4FD; }
+
+.current-time {
+  font-size: 10px;
+  vertical-align: sub;
+  padding: 0 0 0px 10px; }
+
+.message-container {
+  margin: 10px 0; }
+  .message-container.left {
+    text-align: left; }
+  .message-container.right {
+    text-align: right; }
