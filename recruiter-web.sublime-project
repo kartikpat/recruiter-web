@@ -1,0 +1,20 @@
+{
+	"folders":
+	[
+		{
+			"path": "static/js"
+		},
+		{
+			"path": "routes"
+		},
+		{
+			"path": "views"
+		},
+		{
+			"path": "static/scss"
+		},
+		{
+			"path": "test"
+		}
+	]
+}

@@ -29,7 +29,7 @@
 				<ul class="options hidden box_shadow">
 					<li><a href="#">My Profile</a></li>
 					<hr class="seperator">
-					<li><a href="#">My chat</a></li>
+					<li><a href="/recruiter/myChat">My chat</a></li>
 					<hr class="seperator">
 					<li><a href="#">Settings/ Edit Profile</a></li>
 					<hr class="seperator">
@@ -39,7 +39,7 @@
 					<hr class="seperator">
 					<li><a href="#">Change Password</a></li>
 					<hr class="seperator">
-					<li><a href="#">Logout</a></li>
+					<li><a href="/logout">Logout</a></li>
 
 				</ul>
 			</li>
@@ -47,26 +47,24 @@
 
 	</div>
 
-<!-- navigation menu -->
-	<nav>
+	<nav class="navbar">
 			<ul class="menu" id="menu">
 				<li class="menu_link"><a href="javascript:void(0);" onclick="openMenu()"><i class="fa fa-bars fa-lg" aria-hidden="true"></i></a>
-				<li class="menu_link"><a href="#">My Jobs</a></li>
-				<li class="menu_link"><a href="#">Post Jobs</a></li>
-				<li class="menu_link"><a href="#">Reports</a></li>
-				<li class="menu_link"><a href="#">My Chat</a></li>
-				<li class="menu_link dropdown">
+				<li class="menu_link"><a href="/">My Jobs</a></li>
+				<li class="menu_link"><a href="/post-job">Post Jobs</a></li>
+				<li class="menu_link"><a href="/view-reports">Reports</a></li>
+				<li class="menu_link"><a href="/recruiter/myChat">My Chat</a></li>
+				<li class="menu_link menu-calendar dropdown">
 					<a href="#">My Calendar</a>
-					<ul class="options hidden box-shadow">
-						<li><a href="#">Manage Bookings</a></li>
-						<li><a href="#">View Booked Slots</a></li>
+					<ul class="options hidden box_shadow">
+						<li><a class="manage-bookings" href="">Manage Bookings</a></li>
+						<li><a href="/recruiter/view-booked-slots">View Booked Slots</a></li>
 					</ul>
 				</li>
 				<li class="menu_link"><a href="#">Search Resume Database</a></li>
-				<li class="menu_link dropdown">
+				<li class="menu_link menu-more dropdown">
 					<a href="#">More</a>
-					<ul class="options hidden box-shadow">
-						<li><a href="#">Showcase Followers</a></li>
+					<ul class="options hidden box_shadow">
 						<li><a href="#">My Tags</a></li>
 						<li><a href="#">Saved/Shortlisted Candidates</a></li>
 					</ul>

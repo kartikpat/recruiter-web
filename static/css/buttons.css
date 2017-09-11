@@ -1,23 +1,48 @@
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
 .button {
   background-color: white;
   border: 1px solid #e7e7e7;
   color: black;
-  padding: 4px 20px;
+  padding: 4px 12px;
   text-align: center;
   text-decoration: none;
   font-size: 14px;
   -webkit-transition-duration: 0.4s;
+  font-size: 10px;
   /* Safari */
   transition-duration: 0.4s;
   cursor: pointer; }
   .button:hover {
-    background-color: #e7e7e7; }
+    background-color: #f5f6f7; }
   .button:focus {
     outline: none; }
   .button.small {
     padding: 4px 8px; }
   .button.x-small {
-    padding: 0 6px; }
+    padding: 2px 6px; }
     .button.x-small i {
       font-size: 10px;
       position: relative;

@@ -1,0 +1,137 @@
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-bottom: 8px solid #3498db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 44%; }
+
+.loader-scroll {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-bottom: 4px solid #3498db;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  left: 46%;
+  margin: 1px auto; }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+.font-xs {
+  font-size: 10px; }
+
+.font-sm {
+  font-size: 12px; }
+
+.font-md {
+  font-size: 14px; }
+
+.font-lg {
+  font-size: 16px; }
+
+.font-heading {
+  font-size: 20px; }
+
+* {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: normal; }
+
+.overlay-show {
+  box-shadow: 2px 5px 18px 0px rgba(0, 0, 0, 0.2);
+  margin: 20px 0 !important;
+  margin-bottom: 50px !important; }
+
+.divider {
+  border: 0;
+  height: 0;
+  border-bottom: 1px solid #f5f6f7;
+  width: 90%; }
+
+.no-results {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  width: 75%;
+  text-align: center; }
+
+.js-show-tags {
+  padding: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  margin-right: 10px; }
+  .js-show-tags:hover {
+    background-color: #eee; }
+
+.highlight {
+  background-color: #d9e1c4; }
+
+.error {
+  font-size: 12px;
+  color: #d00a42;
+  padding: 4px 0 0 0; }
+
+.hidden {
+  display: none; }
+
+.invisible {
+  opacity: 0.2; }
+
+.hide {
+  visibility: hidden; }
+
+input:focus, select:focus {
+  outline: none; }
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0; }
+  100% {
+    background-position: 468px 0; } }
+
+.animated-background {
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #f6f7f8 8%, #e9e9e9 18%, #f6f7f8 33%);
+  background-size: 800px 104px;
+  border-radius: 4px; }

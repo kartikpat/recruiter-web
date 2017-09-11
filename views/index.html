@@ -1,10 +1,10 @@
 {{> header }}
 <!-- user profile section -->
- <div class="user_profile">
+ <div class="user_profile box_shadow">
    <!-- user image -->
-   <div class="image">
-    <div class="edit_profile">
-        <img class="thumbnail" src="../static/img/tree.jpg">
+   <div class="image ">
+    <div class="edit_profile animated-background">
+        <img class="thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA">
     </div>
    </div>
 
@@ -12,33 +12,28 @@
 
    <!-- user details -->
    <div class="user_details">
-
-     <div class="user_information">
-      <h2 class="user_name">kartik</h2>
-      <span class="user_designation">developer</span>
-     </div>
-     <div class="edit_profile">
-       <button><i class="fa fa-pencil" aria-hidden="true"></i></button>
-     </div>
-     <div class="social_buttons">
-      <button class="button">Linked In</button>
-      <button class="button">Twitter</button>
-      <button class="button">Facebook</button>
-    </div>
-
+       <div class="user_information">
+           <div class="user_name animated-background font-lg"></div>
+           <div class="user_designation animated-background font-sm extra-info-color"></div>
+       </div>
+       <div class="edit_profile animated-background">
+           <button><i class="fa fa-pencil" aria-hidden="true"></i></button>
+       </div>
+       <div class="social_buttons">
+           <button class="button">Linked In</button>
+           <button class="button">Twitter</button>
+           <button class="button">Facebook</button>
+       </div>
    </div>
-   <div class="clearfix"></div>
    <!-- end user details -->
 
    <!-- stats -->
    <div class="bottom_information" >
-     <a href="#" class="profile_link">hello</a>
-     <div class="extra_info">
-         <span >Viewed: <span class="viewed">0 times</span></span>
-         <span>Last Login: <span class="last_login">14/09/1994</span></span>
-
-     </div>
-
+       <a href="#" class="link-color font-md profile_link animated-background"></a>
+       <div class="extra_info">
+           <div class="viewed animated-background font-sm"></div>
+           <div class="last_login animated-background font-sm"></div>
+       </div>
    </div>
    <!-- end stats -->
  </div>
@@ -46,7 +41,7 @@
 
 <!-- jobs posted section -->
   <div role="tabpanel" class="jobs_panel">
-    <span class="panel_heading">Jobs Posted<a href="">Posting Guidelines</a></span>
+    <span class="panel_heading text-clr">Jobs Posted<a href="javascript:void(0)" id="posting-guidelines" class="link-color guidelines">Posting Guidelines</a></span>
     <div class="jobs_container">
       <div class="jobs_header">
         <span >Date</span>
@@ -66,4 +61,41 @@
     </div>
   <!-- end jobs posted section -->
 
+  <div class="modal hidden">
+      <!-- Modal content -->
+
+      <div class="modal-content">
+          <div class="modal-header">
+              <span class="modal-heading">Posting Guidelines</span>
+              <span class="close">&times;</span>
+          </div>
+          <div class="modal-center">
+              <div class="list">
+                  <ul>
+                      <li>Job Title (Max 40 characters including years of experience)</li>
+                      <li>Location</li>
+                      <li>Years of experience</li>
+                      <li>Category</li>
+                      <li>Contact mail ID</li>
+                  </ul>
+              </div>
+              <div class="heading">Few Guidelines</div>
+              <div class="list">
+                  <ul>
+                      <li>Proper formatting of text/content of the posting with clear spaces
+                          and standard bullets (-) to be used.</li>
+                      <li>No short forms/abbreviations to be used in the text</li>
+                      <li>Correct mail ID to be included at the end of the posting</li>
+                      <li>No spelling mistakes in the content</li>
+                      <li>JD should be concise and crisp - to the point</li>
+                  </ul>
+              </div>
+              <div class="list">
+                  <div>For any clarifications/queries/doubts, please contact -</div>
+                  <div>Aayam Khanna - 011-65655702</div>
+              </div>
+          </div>
+      </div>
+  </div>
+ 
 {{> footer }}

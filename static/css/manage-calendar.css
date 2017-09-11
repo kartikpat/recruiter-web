@@ -1,0 +1,121 @@
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
+.main-container {
+  padding: 20px; }
+  .main-container .heading-container {
+    padding: 20px; }
+    .main-container .heading-container .heading {
+      margin-top: 4px; }
+  .main-container .create-slots-container {
+    padding: 20px;
+    display: inline-block;
+    width: 45%;
+    margin-right: 5%; }
+    .main-container .create-slots-container .slots-box {
+      position: relative;
+      padding: 10px 30px;
+      border: 1px solid #f5f6f7;
+      margin-bottom: 10px; }
+      .main-container .create-slots-container .slots-box .label {
+        display: inline-block;
+        width: 30%;
+        vertical-align: top;
+        padding: 10px; }
+      .main-container .create-slots-container .slots-box .field {
+        display: inline-block;
+        width: 60%;
+        padding: 10px; }
+        .main-container .create-slots-container .slots-box .field .radio-info {
+          padding: 2px 0; }
+          .main-container .create-slots-container .slots-box .field .radio-info input {
+            margin: 0 5px 0 0; }
+        .main-container .create-slots-container .slots-box .field .datepicker {
+          margin-top: 2px;
+          padding: 2px 8px; }
+        .main-container .create-slots-container .slots-box .field.checkbox label {
+          color: #808080;
+          font-size: 14px; }
+          .main-container .create-slots-container .slots-box .field.checkbox label input {
+            margin: 0; }
+      .main-container .create-slots-container .slots-box .timepicker-container {
+        padding: 10px;
+        position: relative; }
+        .main-container .create-slots-container .slots-box .timepicker-container .label-from {
+          display: inline-block;
+          width: 35%;
+          vertical-align: top; }
+          .main-container .create-slots-container .slots-box .timepicker-container .label-from select {
+            width: 100%;
+            padding: 2px 4px;
+            background-color: inherit; }
+          .main-container .create-slots-container .slots-box .timepicker-container .label-from .from {
+            display: block; }
+        .main-container .create-slots-container .slots-box .timepicker-container .dash {
+          display: inline-block;
+          width: 20%;
+          text-align: center; }
+        .main-container .create-slots-container .slots-box .timepicker-container .label-to {
+          display: inline-block;
+          width: 35%;
+          vertical-align: top; }
+          .main-container .create-slots-container .slots-box .timepicker-container .label-to select {
+            width: 100%;
+            padding: 2px 4px;
+            background-color: inherit; }
+          .main-container .create-slots-container .slots-box .timepicker-container .label-to .to {
+            display: block; }
+      .main-container .create-slots-container .slots-box .close-slot-box {
+        position: absolute;
+        top: 50%;
+        left: 106%;
+        transform: translate(-50%, -50%);
+        font-size: 30px;
+        color: #b1b1b1; }
+        .main-container .create-slots-container .slots-box .close-slot-box:hover {
+          color: #ff7171; }
+  .main-container .slots-info-container {
+    padding: 20px;
+    display: inline-block;
+    width: 45%;
+    vertical-align: top; }
+    .main-container .slots-info-container .label {
+      padding: 5px;
+      color: #808080;
+      font-size: 12px; }
+    .main-container .slots-info-container .field {
+      padding: 0 5px; }
+      .main-container .slots-info-container .field input {
+        width: 100%;
+        padding: 6px 14px; }
+      .main-container .slots-info-container .field textarea {
+        width: 100%;
+        padding: 6px 14px;
+        min-height: 100px; }
+  .main-container .buttons {
+    display: inline-block;
+    padding: 0 0 0 20px; }
+
+input:focus, textarea:focus, select:focus {
+  outline: none; }

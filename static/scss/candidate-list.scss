@@ -1,0 +1,573 @@
+@import "colors.scss";
+
+@mixin input-styling {
+    box-sizing: border-box;
+    border: 1px solid $select-border;
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+
+input, select {
+    &:focus {
+        outline: none;
+    }
+}
+
+.heading {
+    font-size: 18px;
+    margin: 20px 0 20px 20px;
+    color: $color-green;
+}
+
+.highlighted {
+    color: $color-green !important;
+}
+
+* {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+}
+
+.main-container {
+    padding: 10px;
+
+    .filters {
+        display: inline-block;
+        width: 18%;
+        padding-right: 10px;
+        border-right: 2px dotted #d8d8d8;
+        height: auto;
+
+        .search-by-keyword {
+            width: 100%;
+            border-bottom: 1px solid $color-light-grey;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+
+            input {
+                @include input-styling;
+
+                width: 75%;
+                padding: 4px 6px;
+                font-size: 11px;
+            }
+        }
+
+        .menu {
+            border-bottom: 1px solid $color-light-grey;
+            margin-bottom: 5px;
+
+            > span {
+                font-size: 10px;
+            }
+
+            > button {
+                float: right;
+            }
+
+            .field {
+                margin: 0 auto;
+                width: 100%;
+                padding: 2px 0 4px 0;
+
+                input, select {
+                    padding: 4px 8px;
+                    margin: 1px 0 6px 0;
+                    border: 1px solid #d8d8d8;
+                    border-radius: 4px;
+                    width: 60%;
+                    background-color: inherit;
+                }
+
+                input[type="checkbox"] {
+                    display: inline-block;
+                    width: auto;
+
+                    span {
+                        font-size: 11px;
+                    }
+                }
+
+                input[type="radio"] {
+                    display: inline-block;
+                    width: auto;
+                }
+
+                select.half {
+                    width: 48%;
+                    padding: 4px 8px;
+
+                    option {
+                        font-size: 11px;
+                    }
+                }
+            }
+        }
+    }
+
+    .jobs {
+        display: inline-block;
+        width: 81%;
+        vertical-align: top;
+        padding: 0 0 0 10px;
+        position: relative;
+
+        .tabs {
+            width: auto;
+            display: inline-block;
+
+
+            .menu {
+                list-style: none;
+                padding: 0;
+                display: inline-block;
+                margin: 0 0 10px 0;
+
+                li {
+                    display: inline-block;
+                    border: 1px solid #d8d8d8;
+                    padding: 2px 0;
+                    border-radius: 2px;
+
+                    a {
+                        text-decoration: none;
+                        color: #000;
+                        padding: 2px 0 2px 6px;
+
+                        .status {
+                            margin-left: 1em;
+                            background-color: #7d7d7d;
+                            padding: 2px 6px;
+                            color: #ffffff;
+                        }
+                    }
+                }
+            }
+        }
+
+        .calendar {
+            min-height: 40px;
+            line-height: 40px;
+            padding-left: 20px;
+
+            select {
+                padding: 2px 6px;
+                margin: 8px 0;
+                border: 1px solid $select-border;
+                border-radius: 4px;
+                width: auto;
+                background-color: inherit;
+            }
+        }
+
+        .jobs_panel {
+            width: 100%;
+            margin: 20px auto;
+            min-height: 300px;
+            position: relative;
+
+            .jobs_header {
+                width: auto;
+                margin: 0 20px;
+                background-color: $color-light-grey;
+                padding: 0 10px;
+                .header {
+                    display: inline-block;
+                    padding: 0 2px;
+                    overflow: auto;
+                    font-size: 11px;
+                    text-align: left;
+                    color: $color-black-text;
+                    height: 30px;
+                    line-height: 30px;
+                }
+
+                .header_name {
+                    width: 18%;
+                    .checkbox {
+                        margin: 0 15px 0 0;
+                    }
+                }
+
+                .header_organization {
+                    width: 28%;
+                }
+
+                .header_institute {
+                    width: 28%;
+                }
+
+                .header_more {
+                    width: 19%;
+                }
+            }
+
+            .jobs_content {
+                border-bottom: thin solid #ececec;
+                padding-bottom: 5px;
+                margin: 0 20px;
+                &:nth-child(even){
+                    background-color: #fbfbfb;
+                }
+                .content-container {
+                    height: 200px;
+                    cursor: pointer;
+                    padding: 10px 10px 0 10px;
+                }
+                .slide-container{
+                    height: auto;
+                    padding: 10px;
+                    .tagline-container {
+                        height: 35px;
+                        line-height: 15px;
+                        .tagline-heading {
+                            display: inline-block;
+                            vertical-align: top;
+                            width: 50px;
+                        }
+                        .tagline-content {
+                            display: inline-block;
+                            max-width: 90%;
+                        }
+                    }
+                    .info-container-first {
+                        position: relative;
+                        height: 70px;
+                        .contact-container {
+                            position: absolute;
+                            left: 0;
+                            .contact-heading, .email-heading {
+                                display: inline-block;
+                                width: 50px;
+                            }
+                            .contact-content, .email-content {
+                                display: inline-block;
+                            }
+                        }
+                        .bio-container {
+                            position: absolute;
+                            right: 0;
+                            width: 50%;
+                            .icon {
+                                width: 100%;
+                                div {
+                                    display: inline-block;
+                                    width: 49%;
+                                    margin: 0 0 5px 0;
+                                    a {
+                                        text-decoration: none;
+                                        color: $extra-info-color;
+                                        i {
+                                            display: inline-block;
+                                            font-size: 30px;
+                                            width: 40px;
+                                        }
+                                        span {
+                                            vertical-align: text-top;
+                                        }
+                                        &.video:hover {
+                                            color: red;
+                                        }
+                                        &.icon-resume:hover {
+                                            color: blue;
+                                        }
+                                        &.cover-letter:hover {
+                                            color: green;
+                                        }
+                                        &.audio:hover {
+                                            color: orange;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .info-container-second {
+                        position: relative;
+                        height: 80px;
+                        .comment-container {
+                            position: absolute;
+                            left: 0;
+                            display: inline-block;
+                            width: 49%;
+                            .comment {
+                                margin: 0 0 5px 0;
+                                .comment-content {
+                                    display: inline-block;
+                                    input {
+                                        @include input-styling;
+                                    }
+                                }
+                                .comment-heading {
+                                    display: inline-block;
+                                }
+                            }
+                            .posted-comment {
+                                ul {
+                                    margin: 0;
+                                }
+                            }
+                        }
+                        .tags-container {
+                            position: absolute;
+                            right: 0;
+                            display: inline-block;
+                            width: 49%;
+                            .tags {
+                                margin: 5px 0;
+                                .tags-content {
+                                    display: inline-block;
+                                    input {
+                                        @include input-styling;
+                                    }
+                                }
+                                .tags-heading {
+                                    display: inline-block;
+                                }
+                            }
+                            .posted-tags {
+
+                            }
+                        }
+                    }
+                    .extra-info-container {
+                        .layer-first {
+                            .info {
+                                display: inline-block;
+                                width: 16%;
+                                vertical-align: top;
+
+                            }
+                        }
+                        .layer-second {
+                            .marks-wrapper {
+                                display: inline-block;
+                                width: 35%;
+                                .marks {
+                                    display: inline-block;
+                                    padding: 0 5px;
+                                }
+                            }
+                            .info {
+                                display: inline-block;
+                                width: 21%;
+                                vertical-align: top;
+                            }
+                        }
+                        .css-heading {
+                            font-size: 10px;
+                            color: $extra-info-color;
+                        }
+                        .css-content {
+                            font-size: 12px;
+                            color: $important-info-color;
+                        }
+                    }
+
+                }
+
+                .content {
+                    display: inline-block;
+                    padding: 5px 0 0 2px;
+                    overflow: hidden;
+                    font-size: 11px;
+                    vertical-align: top;
+                    .info {
+                        padding: 0 0 5px 0;
+                        .important_info {
+                            font-size: 11px;
+                            color: $important-info-color;
+                            &.name {
+                                font-size: 13px;
+                            }
+                        }
+                        .extra_info {
+                            color: $extra-info-color;
+                        }
+                        .icon {
+                            display: block;
+                            color: $extra-info-color;
+                            font-size: 12px;
+                            padding: 1px 0;
+                            text-decoration: none;
+                            span {
+
+                                padding: 0 3px;
+                            }
+
+                            &:hover {
+                                color: green;
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+
+                .content.content_name {
+                    .checkbox {
+                        vertical-align: top;
+                        margin: 0 15px 0 0;
+                    }
+                    width: 18%;
+
+                    img {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        max-width: 100%;
+                        max-height: 100%;
+                    }
+                }
+
+                .content.content_organization {
+                    width: 28%;
+                }
+
+                .content.content_institute {
+                    width: 28%;
+                }
+
+                .content.content_more {
+                    width: 19%;
+                }
+            }
+
+            div.jobs_container > div.jobs_content:nth-of-type(even) {
+                background: #fafafa;
+            }
+        }
+    }
+}
+
+.vertical_outside {
+    display: inline-block;
+    height: 100%;
+
+    .vertical_top, .vertical_bottom{
+        height: 25%;
+    }
+
+    .vertical_middle {
+        border-left: 1px solid #ececec;
+        height: 50%;
+    }
+}
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    .modal-content {
+        position: relative;
+        box-shadow: 0 0 1px #d8d8d8;
+        max-width: 700px;
+        height: 24em;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 2px;
+
+        .modal-top {
+            padding: 20px;
+            position: relative;
+
+            .search-tags {
+                display: inline-block;
+
+                input {
+                    @include input-styling;
+                }
+            }
+
+            .tags-alphabets {
+                display: inline-block;
+                margin: 0;
+                padding: 0 15px;
+
+                li {
+                    display: inline-block;
+
+                    a {
+                        text-decoration: none;
+                        padding: 4px;
+                        color: #000;
+                    }
+                }
+            }
+
+            .close {
+                display: inline-block;
+                color: #aaa;
+                line-height: 28px;
+                font-size: 28px;
+                position: absolute;
+                right: 30px;
+
+                &:hover, &:focus {
+                    color: black;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+            }
+
+            .submit {
+                display: inline-block;
+                padding: 0 15px;
+            }
+        }
+
+        .modal-bottom {
+            overflow-x: scroll;
+            padding: 10px 20px;
+            margin: 0 10px;
+
+            .row {
+                overflow-x: auto;
+                width: 2000px;
+
+                .tags-wrapper {
+                    display: inline-block;
+                    vertical-align: top;
+                    width: 300px;
+
+                    label {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+.resume-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70%;
+        height: 100%;
+    }
+}
+
+
+	.slot-type-container {
+		margin-top: 5px;
+		a {
+			color: $extra-info-color;
+			font-size: 10px;
+			padding: 0 8px;
+			text-decoration: none;
+		}
+	}

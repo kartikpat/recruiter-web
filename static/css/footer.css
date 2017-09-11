@@ -3,16 +3,18 @@
   .footer nav {
     background: #1c1c1c; }
     .footer nav .menu {
-      padding: 0; }
+      padding: 0;
+      margin: 0; }
       .footer nav .menu li.menu_link {
         display: inline-block;
         padding: 12px; }
         .footer nav .menu li.menu_link a {
-          color: white;
-          font-size: 13px;
-          font-family: 'Droid Sans'; }
+          color: #ffffff;
+          font-size: 12px;
+          text-decoration: none; }
           .footer nav .menu li.menu_link a:hover {
-            color: #56A0FF; }
+            color: #56A0FF;
+            text-decoration: underline; }
 
 @media only screen and (max-width: 768px) {
   .footer nav .menu li.menu_link {

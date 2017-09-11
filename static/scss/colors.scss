@@ -1,6 +1,44 @@
 $color-white: #ffffff;
+$color-heading: #708732;
+$color-light-grey: #f5f6f7;
+$color-black-text: #4b4b4b;
+$link-color: #337ab7;
+$link-hover-color: #23527c;
+$important-info-color: #333;
+$extra-info-color: #808080;
+$color-green: #708732;
+$color-bg-green: #d9e1c4;
+$select-border: #ccc;
+$error-color: #d00a42;
 
+.link-color {
+    color: $link-color;
+}
 
 .white-bg {
     background-color: $color-white;
+}
+
+.heading-clr {
+    color: $color-heading;
+}
+
+.light-grey-bg {
+    background-color: $color-light-grey;
+}
+
+.text-clr {
+    color: $color-black-text;
+}
+
+.extra-info-color {
+    color: $extra-info-color;
+}
+
+.bg-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.animated {
+    animation-duration: 500ms !important;
 }

@@ -1,9 +1,8 @@
-
-
-.clearfix {
-  clear: both;
-  display: block;
+.highlight {
+    color: green !important;
 }
+
+
 
 .profile_container {
    width: 95%;
@@ -163,13 +162,6 @@ div.jobs_container >div.jobs_content:nth-of-type(even){
     }
 }
 
-.divider {
-   border: 0;
-   height: 0;
-   border-top: 1px solid rgba(0, 0, 0, 0.1);
-   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-
 
 
 .tab_container {
@@ -183,7 +175,7 @@ div.jobs_container >div.jobs_content:nth-of-type(even){
     min-height: 150px;
     vertical-align: top;
     &.center {
-      margin: 0 4%;
+      margin: 0 4.5%;
 
     }
     .tab_heading {
@@ -204,29 +196,47 @@ div.jobs_container >div.jobs_content:nth-of-type(even){
               width: 80%;
       }
       .info {
-        margin-bottom: 20px;
+        margin-bottom: 40px;
+        position: relative;
+        .left {
+            position: absolute;
+            left: 0;
+
+        }
+        .right {
+            position: absolute;
+            right: 0;
+        }
       }
     }
   }
 }
 
-.container {
+.resume-container {
   width: 95%;
   margin: 40px auto;
 
+
   .resume {
+      display: inline-block;
     width: 65%;
     height: 800px;
-    .embed {
+    vertical-align: top;
+    margin-right: 4.5%;
+    .resume-embed-container{
       width: 100%;
-      height: 100%;
-
-
+      height: calc(100% - 48px );
+      .resume-embed{
+        width: 100%;
+        height: 100%;
+      }
     }
   }
   .cover_letter {
+      display: inline-block;
     width: 30%;
     height: 800px;
+    vertical-align: top;
     .content {
       padding: 20px;
     }

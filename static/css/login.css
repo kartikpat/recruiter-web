@@ -1,0 +1,75 @@
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
+.logo-container {
+  width: 60%;
+  margin: 20px auto;
+  text-align: center; }
+  .logo-container .logo-main {
+    font-size: 64px;
+    display: inline-block; }
+  .logo-container .logo-extra {
+    font-size: 30px;
+    text-align: right;
+    margin-right: 10px; }
+
+.login-container {
+  width: 60%;
+  margin: 20px auto; }
+  .login-container .form {
+    display: inline-block;
+    width: 38%;
+    padding: 0 20px; }
+    .login-container .form .form_heading {
+      display: inline-block;
+      font-size: 20px;
+      color: #4b4b4b;
+      margin-bottom: 10px; }
+    .login-container .form .field {
+      padding: 10px 0 5px 0;
+      position: relative; }
+      .login-container .form .field.links {
+        height: 20px;
+        line-height: 20px; }
+      .login-container .form .field .button.log-in {
+        position: absolute;
+        left: 0; }
+      .login-container .form .field .lost-paswd-link {
+        position: absolute;
+        right: 0; }
+      .login-container .form .field input, .login-container .form .field select {
+        padding: 8px 16px;
+        border: 1px solid #ccc;
+        width: 100%;
+        box-sizing: border-box;
+        background-color: inherit; }
+  .login-container .login-form {
+    vertical-align: top;
+    padding-right: 40px; }
+    .login-container .login-form .forgot-password-form {
+      margin-top: 20px; }
+  .login-container .register-form {
+    border-left: 1px solid #d8d8d8;
+    height: 100%;
+    padding-left: 40px; }

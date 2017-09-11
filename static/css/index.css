@@ -1,3 +1,27 @@
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -29,66 +53,55 @@ footer, header, hgroup, menu, nav, section {
   clear: both;
   display: block; }
 
-.hidden {
-  display: none; }
-
-.button {
-  background-color: white;
-  border: 1px solid #e7e7e7;
-  color: black;
-  padding: 4px 20px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 14px;
-  -webkit-transition-duration: 0.4s;
-  /* Safari */
-  transition-duration: 0.4s;
-  cursor: pointer; }
-  .button:hover {
-    background-color: #e7e7e7; }
-
 .user_profile {
   width: 95%;
   margin: 40px auto;
-  padding: 20px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7); }
+  padding: 20px; }
   .user_profile .image {
-    float: left;
-    width: 19%;
-    margin-right: 1em;
-    min-height: 150px; }
+    display: inline-block;
+    margin-right: 10px;
+    width: 18%; }
     .user_profile .image .edit_profile {
       position: relative;
       display: inline-block;
-      border: 1px solid #DDDDDD; }
+      width: 150px;
+      height: 200px;
+      /*&:after {
+                font-family: 'FontAwesome';
+                content: "\f040";
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                color: white;
+                font-size: 18px;
+            }*/ }
       .user_profile .image .edit_profile img {
-        max-width: 100%;
-        max-height: 100%; }
-      .user_profile .image .edit_profile:after {
-        font-family: 'FontAwesome';
-        content: "\f040";
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        color: white;
-        font-size: 18px; }
+        width: 100%;
+        height: 100%; }
   .user_profile .user_details {
-    float: left;
-    width: 79%;
+    display: inline-block;
+    width: 80%;
     min-height: 150px;
-    position: relative; }
+    position: relative;
+    vertical-align: top; }
     .user_profile .user_details .user_information {
       position: absolute;
       top: 0;
-      left: 0; }
+      left: 0;
+      min-height: 50px; }
       .user_profile .user_details .user_information .user_name {
-        font-size: 18px; }
+        height: 25px;
+        width: 150px;
+        margin-bottom: 10px; }
       .user_profile .user_details .user_information .user_designation {
-        font-size: 14px; }
+        height: 15px;
+        width: 250px; }
     .user_profile .user_details .edit_profile {
       position: absolute;
       top: 0;
-      right: 0; }
+      right: 0;
+      width: 35px;
+      height: 25px; }
       .user_profile .user_details .edit_profile button {
         background-color: inherit;
         border: none;
@@ -103,24 +116,29 @@ footer, header, hgroup, menu, nav, section {
       top: 4em;
       right: 3em; }
   .user_profile .bottom_information {
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
-    background-color: #e9e9e9;
     margin: 0 auto;
-    margin-top: 10px;
-    min-height: 40px;
+    min-height: 30px;
     position: relative;
-    display: block; }
+    line-height: 30px; }
     .user_profile .bottom_information .profile_link {
       position: absolute;
       top: 10px;
-      left: 10px; }
+      left: 0px;
+      min-width: 300px;
+      height: 30px; }
     .user_profile .bottom_information .extra_info {
       position: absolute;
       top: 10px;
       right: 10px; }
-      .user_profile .bottom_information .extra_info > span {
-        font-size: 14px;
-        padding: 3px 5px; }
+      .user_profile .bottom_information .extra_info .viewed, .user_profile .bottom_information .extra_info .last_login {
+        display: inline-block;
+        padding: 0 5px; }
+      .user_profile .bottom_information .extra_info .viewed {
+        min-width: 50px;
+        height: 25px; }
+      .user_profile .bottom_information .extra_info .last_login {
+        min-width: 100px;
+        height: 25px; }
 
 .jobs_panel {
   width: 95%;
@@ -140,116 +158,180 @@ footer, header, hgroup, menu, nav, section {
       padding: 5px;
       margin: 5px;
       overflow: auto;
-      font-size: 16px;
-      text-align: left; }
-  .jobs_panel .jobs_content {
+      font-size: 12px;
+      text-align: left;
+      color: #808080; }
+  .jobs_panel .jobs_content span {
+    display: inline-block;
+    width: 18%;
+    padding: 5px;
     margin: 5px;
-    padding: 2px; }
-    .jobs_panel .jobs_content span {
-      display: inline-block;
-      width: 18%;
-      padding: 5px;
-      margin: 5px;
-      overflow: hidden;
-      font-size: 14px; }
+    overflow: hidden;
+    font-size: 14px; }
   .jobs_panel div.jobs_container > div.jobs_content:nth-of-type(even) {
-    background: #e9e9e9; }
+    background: #f5f6f7; }
 
 .job_posting {
-  display: flex;
-  padding: 20px; }
+  padding: 20px;
+  /*.tags-container {
+        margin-left: 35px;
+        .suggested-tags-container {
+            margin-bottom: 10px;
+            .suggested-tags-heading {
+                padding: 0 0 10px 15px;
+                display: inline-block;
+                width: 15%;
+                vertical-align: top;
+            }
+            .suggested-tags-content {
+                display: inline-block;
+                width: 70%;
+                margin-left: 2em;
+                .js-show-suggested-tags {
+                    margin-right: 10px;
+                }
+            }
+        }
+        .selected-tags-container {
+            margin-bottom: 10px;
+            .selected-tags-heading {
+                padding: 0 0 10px 15px;
+                display: inline-block;
+                width: 15%;
+                vertical-align: top;
+            }
+            .selected-tags-content {
+                display: inline-block;
+                width: 70%;
+                margin-left: 2em;
+                .js-show-selected-tags {
+                    margin-right: 10px;
+                }
+            }
+        }
+        .add-tags-container {
+            .add-tags-heading {
+                padding: 0 0 10px 15px;
+                display: inline-block;
+                width: 15%;
+            }
+            .add-tags-content {
+                display: inline-block;
+                width: 70%;
+                margin-left: 2em;
+                input {
+                    box-sizing: border-box;
+                    border: 1px solid $select-border;
+                    border-radius: 4px;
+                    padding: 4px 8px;
+                }
+            }
+
+        } */ }
   .job_posting .post_job {
-    width: 70%;
-    margin: 40px 0; }
+    margin: 21px 0; }
+    .job_posting .post_job .heading .back {
+      display: block; }
+    .job_posting .post_job .heading > span {
+      font-size: 24px; }
+    .job_posting .post_job .heading .guidelines {
+      font-size: 12px; }
     .job_posting .post_job .label {
       display: inline-block;
-      margin-left: 2em;
+      margin-left: 35px;
       padding: 15px;
       width: 15%;
-      font-size: 14px; }
+      font-size: 12px;
+      color: #808080; }
     .job_posting .post_job .label.top {
       vertical-align: top !important; }
     .job_posting .post_job .field {
-      width: 70%;
+      width: 60%;
       display: inline-block;
-      margin-left: 2em;
+      margin-left: 60px;
       padding: 4px 0; }
+      .job_posting .post_job .field .js-show-selected-tags, .job_posting .post_job .field .js-show-suggested-tags {
+        margin-right: 10px; }
       .job_posting .post_job .field input, .job_posting .post_job .field select {
-        padding: 8px 16px;
+        padding: 4px 8px;
         margin: 8px 0;
         border: 1px solid #ccc;
         border-radius: 4px;
-        width: 80%; }
+        width: 60%;
+        background-color: inherit; }
+        .job_posting .post_job .field input:focus, .job_posting .post_job .field select:focus {
+          outline: none;
+          border: 1px solid #00C99C; }
       .job_posting .post_job .field input[type="checkbox"] {
         display: inline-block;
         width: auto; }
       .job_posting .post_job .field select.half {
-        width: calc(79%/2); }
+        width: 29.5%; }
       .job_posting .post_job .field textarea {
-        width: 100%;
+        width: 70%;
         height: 150px;
         padding: 12px 20px;
         box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 4px;
-        background-color: #f8f8f8;
+        background-color: inherit;
         resize: none; }
-  .job_posting .tags {
-    flex: 1;
-    box-shadow: 2px 2px 3px black;
-    margin-left: 20px; }
-    .job_posting .tags h2 {
-      padding: 20px 0 0 20px;
-      font-size: 20px; }
-    .job_posting .tags .label {
-      padding: 20px 0 10px 20px; }
-      .job_posting .tags .label label {
-        cursor: pointer; }
-    .job_posting .tags .field {
-      padding: 0 0 0 20px; }
-      .job_posting .tags .field input {
-        padding: 8px 16px;
-        margin: 0;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        width: 80%; }
+        .job_posting .post_job .field textarea:focus {
+          outline: none; }
 
-p.extra_info, span.extra_info {
-  font-size: 13px; }
+.modal {
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */ }
 
-span.extra_info {
-  position: relative;
-  top: -3px;
-  right: -3px;
-  margin-right: 1em; }
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  border: 1px solid #888;
+  width: 50%; }
 
-.login {
-  width: 60%;
-  margin: 20px auto; }
-  .login form {
-    display: inline-block;
-    width: calc(90%/2);
-    padding: 0 20px; }
-    .login form .form_heading {
-      display: block;
-      font-size: 20px; }
-    .login form .field {
-      padding: 10px 0; }
-      .login form .field input, .login form .field select {
-        padding: 8px 16px;
-        margin: 0;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        width: 80%; }
-  .login form:first-child {
-    vertical-align: top; }
-  .login form:not(:first-child) {
-    border-left: 2px solid black;
-    height: 100%; }
+.modal-header {
+  background-color: #e9e9e9;
+  padding: 12px; }
+  .modal-header .modal-heading {
+    font-size: 20px; }
 
-.error {
+.modal-center {
+  padding: 0 10px; }
+  .modal-center .list {
+    padding: 10px 20px;
+    font-size: 14px; }
+    .modal-center .list li {
+      padding: 3px; }
+  .modal-center .heading {
+    font-size: 16px; }
+
+/* The Close Button */
+.close {
+  color: black;
+  float: right;
+  font-size: 20px;
+  font-weight: bold; }
+
+.close:hover,
+.close:focus {
   color: red;
-  font-size: 12px; }
+  text-decoration: none;
+  cursor: pointer; }
 
 @media only screen and (min-width: 900px) and (max-width: 1024px) {
   .user_profile .image {

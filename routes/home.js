@@ -17,7 +17,7 @@ module.exports = function(settings){
 	else
 		baseUrl = config["baseUrl"];
 	function isAuthenticated(req, res, next) {
-
+		console.log(req.session);
 		// for disabling authentication
 		//return next()
 		//bypassing the auth for development
@@ -26,6 +26,8 @@ module.exports = function(settings){
     	if (req.session.authenticated)
         	return next();
     // IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
+
+
     	res.redirect('/sign-in');
 	}
 	app.post("/sign-in", function(req, res){
@@ -63,22 +65,24 @@ module.exports = function(settings){
 		return
 	});
 
+
+
 	app.get("/post-job", function(req, res){
-		res.render("postjob",{
+		res.render("post-job",{
 			title: "IIM JOBS | Post job",
-			styles:  assetsMapper["postjob"]["styles"][mode],
-			scripts: assetsMapper["postjob"]["scripts"][mode],
+			styles:  assetsMapper["post-job"]["styles"][mode],
+			scripts: assetsMapper["post-job"]["scripts"][mode],
 			baseUrl: baseUrl
 		})
 		return
 	})
 
-	app.get("/job-posting/:jobID", function(req, res){
+	app.get("/job/:jobID/candidates", function(req, res){
 		var jobID = req.params.jobID;
-		res.render("job-posting",{
-			title: "IIM JOBS | Post job",
-			styles:  assetsMapper["job-posting"]["styles"][mode],
-			scripts: assetsMapper["job-posting"]["scripts"][mode],
+		res.render("candidate-list", {
+			title: "IIM JOBS | Candidates",
+			styles:  assetsMapper["candidate-list"]["styles"][mode],
+			scripts: assetsMapper["candidate-list"]["scripts"][mode],
 			baseUrl: baseUrl,
 			jobID: jobID
 		})
@@ -121,6 +125,72 @@ module.exports = function(settings){
 
 	app.get("/logout", function(req,res){
 		req.session = null;
+
 		res.redirect("/");
+
 	});
+
+	app.get("/view-reports", function(req, res){
+		res.render("view-reports",{
+			title: "IIM JOBS | View Reports",
+			styles:  assetsMapper["view-reports"]["styles"][mode],
+			scripts: assetsMapper["view-reports"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/:recruiterID/calendar", function(req, res){
+		res.render("calendar-events",{
+			title: "IIM JOBS | Calendar Events",
+			styles:  assetsMapper["calendar-events"]["styles"][mode],
+			scripts: assetsMapper["calendar-events"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/:recruiterID/slots/:calendarID", function(req, res){
+		res.render("manage-calendar",{
+			title: "IIM JOBS | Manage Calendar",
+			styles:  assetsMapper["manage-calendar"]["styles"][mode],
+			scripts: assetsMapper["manage-calendar"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/:recruiterID/slots", function(req, res){
+
+		res.render("manage-calendar",{
+			title: "IIM JOBS | Manage Calendar",
+			styles:  assetsMapper["manage-calendar"]["styles"][mode],
+			scripts: assetsMapper["manage-calendar"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/view-booked-slots", function(req, res){
+
+		res.render("view-booked-slots",{
+			title: "IIM JOBS | View Booked Slots",
+			styles:  assetsMapper["view-booked-slots"]["styles"][mode],
+			scripts: assetsMapper["view-booked-slots"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/myChat", function(req, res){
+
+		res.render("chat",{
+			title: "IIM JOBS | myChat",
+			styles:  assetsMapper["chat"]["styles"][mode],
+			scripts: assetsMapper["chat"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
 }

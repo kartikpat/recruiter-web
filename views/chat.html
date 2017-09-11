@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>myChat</title>
+	{{#styles.length}}
+    	{{#styles}}
+    		<link rel="stylesheet" href="../{{.}}">
+    	{{/styles}}
+	{{/styles.length}}
+</head>
+<body>
+<div class="main-container">
+    <div class="chat-side-profile-container ">
+        <div class="chat-side-profile-header">
+            <div class="profile-image "><img class="animated-background" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA"></div>
+            <div class="profile-info">
+                <div class="profile-info-name animated-background text-clr font-md"></div>
+                <div class="profile-info-isonline animated-background font-sm"></div>
+            </div>
+        </div>
+        <hr class="divider divider-full">
+        <div class="chat-side-profile-search">
+            <input type="text" placeholder="Search Candidates" id="search-candidate">
+        </div>
+        <hr class="divider divider-full">
+        <div class="chat-side-profile-candidates">
+			<div class="candidates-wrapper">
+				<div class="candidate-card">
+					<div class="candidate-image animated-background"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA"></div>
+					<div class="candidate-info">
+						<div class="candidate-name animated-background"></div>
+						<div class="candidate-designation animated-background"></div>
+					</div>
+				</div>
+				<hr class="divider divider-full">
+				<div class="candidate-card">
+					<div class="candidate-image animated-background"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA"></div>
+					<div class="candidate-info">
+						<div class="candidate-name animated-background"></div>
+						<div class="candidate-designation animated-background"></div>
+					</div>
+				</div>
+				<hr class="divider divider-full">
+				<div class="candidate-card">
+					<div class="candidate-image animated-background"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA"></div>
+					<div class="candidate-info">
+						<div class="candidate-name animated-background"></div>
+						<div class="candidate-designation animated-background"></div>
+					</div>
+				</div>
+				<hr class="divider divider-full">
+				<div class="candidate-card">
+					<div class="candidate-image animated-background"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA"></div>
+					<div class="candidate-info">
+						<div class="candidate-name animated-background"></div>
+						<div class="candidate-designation animated-background"></div>
+					</div>
+				</div>
+				<hr class="divider divider-full">
+				<div class="candidate-card">
+					<div class="candidate-image animated-background"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA"></div>
+					<div class="candidate-info">
+						<div class="candidate-name animated-background"></div>
+						<div class="candidate-designation animated-background"></div>
+					</div>
+				</div>
+				<hr class="divider divider-full">
+				<div class="candidate-card">
+					<div class="candidate-image animated-background"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA"></div>
+					<div class="candidate-info">
+						<div class="candidate-name animated-background"></div>
+						<div class="candidate-designation animated-background"></div>
+					</div>
+				</div>
+				<hr class="divider divider-full">
+				<div class="candidate-card">
+					<div class="candidate-image animated-background"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA"></div>
+					<div class="candidate-info">
+						<div class="candidate-name animated-background"></div>
+						<div class="candidate-designation animated-background"></div>
+					</div>
+				</div>
+				<hr class="divider divider-full">
+				<div class="candidate-card">
+					<div class="candidate-image animated-background"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA"></div>
+					<div class="candidate-info">
+						<div class="candidate-name animated-background"></div>
+						<div class="candidate-designation animated-background"></div>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+    <div class="candidate-chat-container">
+		<div class="candidate-chat-messages-container hidden">
+			<div class="candidate-chat-header">
+	            <div class="profile-image animated-background"><img src=""></div>
+	            <div class="profile-info">
+	                <div class="profile-info-name animated-background text-clr font-md"></div>
+	                <div class="profile-info-organisation animated-background  extra-info-color font-sm"></div>
+	            </div>
+	        </div>
+			<hr class="divider divider-full">
+			<div class="candidate-chat-content">
+			</div>
+
+	        <div class="candidate-chat-footer">
+	            <input id="text-message" type="text" placeholder="Type A Message">
+	        </div>
+		</div>
+		<div class="welcome-message-container hidden">
+			<div class="welcome-message-image"><img src="http://www.iimjobs.com/pub_chat/chatv2/images/chatuseriim.png"></div>
+			<div class="welcome-message-content"></div>
+			<div class="welcome-message-info extra-info-color">Select a user from left panel to view chat.</div>
+		</div>
+
+    </div>
+</div>
+
+
+	<div class="candidate-card prototype hidden">
+		<div class="candidate-image animated-background"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA"></div>
+		<div class="candidate-info">
+			<div class="candidate-name animated-background text-clr font-md"></div>
+			<div class="candidate-designation animated-background extra-info-color font-sm"></div>
+		</div>
+		<div class="remove-candidate extra-info-color"><i class="fa fa-times" aria-hidden="true"></i></div>
+	</div>
+	<hr class="divider divider-full">
+
+
+
+</body>
+{{#scripts.length}}
+	{{#scripts}}
+		<script type="text/javascript" src="../{{.}}"></script>
+	{{/scripts}}
+{{/scripts.length}}
+<script src="https://use.fontawesome.com/6eabda8944.js"></script>
+</html>

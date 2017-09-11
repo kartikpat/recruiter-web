@@ -14,12 +14,7 @@ var postRequest = function(url,headers,data,successCallback,failCallback,process
     $.ajax({
         method: "POST",
         url: url,
-        headers: {
-            appID: null,
-            version: null,
-            empID: null,
-            token: null
-        },
+        headers: headers,
         data: data,
         scopeTest: scopeTest,
         processData: processData,
@@ -56,7 +51,7 @@ var postRequest = function(url,headers,data,successCallback,failCallback,process
  * @param  {Function} callback             function to be invoked on request success
  * @param  {object}   additionalParameters reference object if any to be accessed in the callback
  */
-var getRequest = function(url,parameters,callback, additionalParameters){
+var getRequest = function(url,parameters,callback1,callback2,callback3, additionalParameters){
     var argumentsArray = Array.from(arguments);
     var fun = arguments.callee;
     var insert = true;
@@ -72,7 +67,12 @@ var getRequest = function(url,parameters,callback, additionalParameters){
             token: null
         },
         additionalParameters: additionalParameters,
-        success: callback
+        success: callback1,
+        complete: callback3,
+        beforeSend: callback2,
+        /*error: function(thrownError) {
+            alert(thrownError);
+        }*/
     });
 
 }

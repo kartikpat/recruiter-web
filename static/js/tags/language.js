@@ -1,0 +1,105 @@
+var languageMetaData ={
+    "data-attribute": "menu-languages",
+    "name": "language"
+}
+
+var languageTagsData = [
+  {
+     "text":"English"
+    ,"val":"English",
+
+  },
+  {
+     "text":"Hindi"
+    ,"val":"Hindi"
+  },
+  {
+     "text":"Arabic"
+    ,"val":"Arabic"
+  },
+  {
+     "text":"Portuguese"
+    ,"val":"Portuguese"
+  },
+  {
+     "text":"Bengali"
+    ,"val":"Bengali"
+  },
+  {
+     "text":"Bihari"
+    ,"val":"Bihari"
+  },
+  {
+     "text":"Marathi"
+    ,"val":"Marathi"
+  },
+  {
+     "text":"German"
+    ,"val":"German"
+  },
+  {
+     "text":"French"
+    ,"val":"French"
+  },
+  {
+     "text":"Gujarati"
+    ,"val":"Gujarati"
+  },
+  {
+     "text":"Kannada"
+    ,"val":"Kannada"
+  },
+  {
+     "text":"Malayalam"
+    ,"val":"Malayalam"
+  },
+  {
+     "text":"Panjabi"
+    ,"val":"Panjabi"
+  },
+  {
+     "text":"Telugu"
+    ,"val":"Telugu"
+  },
+  {
+     "text":"Tamil"
+    ,"val":"Tamil"
+  },
+  {
+     "text":"Urdu"
+    ,"val":"Urdu"
+  },
+  {
+     "text":"Oriya"
+    ,"val":"Oriya"
+  },
+  {
+     "text":"Nepali"
+    ,"val":"Nepali"
+  },
+  {
+     "text":"Kashmiri"
+    ,"val":"Kashmiri"
+  },
+  {
+     "text":"Irish"
+    ,"val":"Irish"
+  },
+  {
+     "text":"Persian"
+    ,"val":"Persian"
+  },
+  {
+     "text":"Russian"
+    ,"val":"Russian"
+  },
+  {
+     "text":"Italian"
+    ,"val":"Italian"
+  },
+  {
+     "text":"Sindhi"
+    ,"val":"Sindhi"
+  }].sort(function(a, b){
+      return a["text"].localeCompare(b.text)
+  });

@@ -1,6 +1,5 @@
-.clearfix {
-  clear: both;
-  display: block; }
+.highlight {
+  color: green !important; }
 
 .profile_container {
   width: 95%;
@@ -110,12 +109,6 @@
     border-left: 1px solid #d8d8d8;
     height: 90%; }
 
-.divider {
-  border: 0;
-  height: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
-
 .tab_container {
   width: 95%;
   margin: 40px auto; }
@@ -125,7 +118,7 @@
     min-height: 150px;
     vertical-align: top; }
     .tab_container .tab.center {
-      margin: 0 4%; }
+      margin: 0 4.5%; }
     .tab_container .tab .tab_heading {
       background-color: #666;
       padding: 10px; }
@@ -140,23 +133,38 @@
         border-radius: 4px;
         width: 80%; }
       .tab_container .tab .tab_content .info {
-        margin-bottom: 20px; }
+        margin-bottom: 40px;
+        position: relative; }
+        .tab_container .tab .tab_content .info .left {
+          position: absolute;
+          left: 0; }
+        .tab_container .tab .tab_content .info .right {
+          position: absolute;
+          right: 0; }
 
-.container {
+.resume-container {
   width: 95%;
   margin: 40px auto; }
-  .container .resume {
+  .resume-container .resume {
+    display: inline-block;
     width: 65%;
-    height: 800px; }
-    .container .resume .embed {
+    height: 800px;
+    vertical-align: top;
+    margin-right: 4.5%; }
+    .resume-container .resume .resume-embed-container {
       width: 100%;
-      height: 100%; }
-  .container .cover_letter {
+      height: calc(100% - 48px); }
+      .resume-container .resume .resume-embed-container .resume-embed {
+        width: 100%;
+        height: 100%; }
+  .resume-container .cover_letter {
+    display: inline-block;
     width: 30%;
-    height: 800px; }
-    .container .cover_letter .content {
+    height: 800px;
+    vertical-align: top; }
+    .resume-container .cover_letter .content {
       padding: 20px; }
-  .container .head {
+  .resume-container .head {
     background-color: #666;
     padding: 15px;
     color: #fff; }
