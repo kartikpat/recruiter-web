@@ -177,7 +177,7 @@ pubnub.addListener({
         var subscribedChannel = m.subscribedChannel;
         var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
         var pubTT = m.timetoken; // Publish timetoken     
-        console.log(m) ;
+        console.log(m);
     },
     presence: function(p) {
         // handle presence
