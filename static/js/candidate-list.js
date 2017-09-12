@@ -262,7 +262,6 @@ var successActionCallback = function(res) {
 }
 
 $(document).ready(function(){
-
 	var urlObject = fetchURL();
 	var res = urlObject["pathname"].split("/");
 

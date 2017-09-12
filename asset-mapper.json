@@ -319,7 +319,9 @@
 				"static/js/request.js",
 				"static/js/header.js",
 				"static/js/chatObject.js",
-				"static/js/chat.js"
+				"static/js/chat.js",
+				
+				"static/js/chat_pubnub.js"
 			],
 			"prod" : [
 				"static/build/js/chat.min.js"
