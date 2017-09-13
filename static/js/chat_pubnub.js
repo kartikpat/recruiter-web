@@ -169,12 +169,12 @@ var pubnub = new PubNub({
     // logVerbosity: true,
     uuid            : "NDUwNTgtLXNocmV5YUBpaW1qb2JzLmNvbQ==",
     heartbeat       : 120,
-    heartbeat_interval: 30,
-    logVerbosity: true,
+    heartbeat_interval: 30
+    //logVerbosity: true,
     // ssl : true
     },function(status){console.log(status);
 });
-pubnub.addListener({   
+pubnub.addListener({
     message: onNewMessage,
     presence: onNewPresence,
     status: onNewStatus
@@ -188,7 +188,7 @@ function onNewMessage(m) {
     var publisher = m.publisher;
     var subscribedChannel = m.subscribedChannel;
     var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
-    var pubTT = m.timetoken; // Publish timetoken     
+    var pubTT = m.timetoken; // Publish timetoken
     console.log(m);
 }
 function onNewPresence(p) {
@@ -247,4 +247,3 @@ pubnub.history(
       console.log(status);
       console.log(response)
     });
-
