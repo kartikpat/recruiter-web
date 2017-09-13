@@ -154,7 +154,7 @@ var channelsArray = [{
         console.log(status);
     });
 
-
+addListeners();
 function addListeners(){
     pubnub.addListener({
         message: onNewMessage,
@@ -172,7 +172,7 @@ function onNewMessage(m) {
     var subscribedChannel = m.subscribedChannel;
     var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
     var pubTT = m.timetoken; // Publish timetoken
-    receiveMessage(msg);
+    receiveMessage(msg["such"]);
 }
 
 function onNewPresence(p) {

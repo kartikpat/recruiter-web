@@ -6,7 +6,8 @@ var chatMainContainer = $(".candidate-chat-container");
 var displayAMessage = function(event) {
     var key = event.which;
     if(key == 13) {
-        $(".candidate-chat-content").append("<div class='message-container right'><div class='right-message'>"+$(this).val()+"<span class='current-time'>"+startTime()+"</span></div></div>");
+        var message = $(this).val();
+        sendMessage(message);
         $(this).val('');
     }
 }
@@ -14,7 +15,6 @@ var displayAMessage = function(event) {
 var sendMessage = function(message) {
     $(".candidate-chat-content").append("<div class='message-container right'><div class='right-message'>"+message+"<span class='current-time'>"+startTime()+"</span></div></div>");
     publish(message,  "iimjobs--r45058-j709365", function(m){
-        console.log(m)
         console.log("message sent");
     })
 }
