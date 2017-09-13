@@ -154,6 +154,7 @@ var channelsArray = [{
         console.log(status);
     });
 
+
 function addListeners(){
     pubnub.addListener({
         message: onNewMessage,
@@ -170,7 +171,7 @@ function onNewMessage(m) {
     var publisher = m.publisher;
     var subscribedChannel = m.subscribedChannel;
     var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
-    var pubTT = m.timetoken; // Publish timetoken     
+    var pubTT = m.timetoken; // Publish timetoken
     console.log(m);
 }
 
@@ -209,6 +210,7 @@ function fetchHistory(channel, count, onFetchHistory) {
         channel: channel, //"my_channel",
         count: count,
         includeTimetoken: false
+
     }, onFetchHistory);
 }
 
