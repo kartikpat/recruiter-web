@@ -148,8 +148,8 @@ function init(recruiterID){
     // logVerbosity: true,
     uuid: atob(recruiterID),
     heartbeat: 120,
-    heartbeat_interval: 30,
-    logVerbosity: true,
+    heartbeat_interval: 30
+    // logVerbosity: true,
     // ssl : true
     }, function(status) {
         console.log(status);
