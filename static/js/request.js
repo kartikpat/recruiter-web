@@ -51,7 +51,7 @@ var postRequest = function(url,headers,data,successCallback,failCallback,process
  * @param  {Function} callback             function to be invoked on request success
  * @param  {object}   additionalParameters reference object if any to be accessed in the callback
  */
-var getRequest = function(url,parameters,callback1,callback2,callback3, additionalParameters){
+var getRequest = function(url,parameters,callback1,callback2,callback3, additionalParameters,showError){
     var argumentsArray = Array.from(arguments);
     var fun = arguments.callee;
     var insert = true;
@@ -69,10 +69,9 @@ var getRequest = function(url,parameters,callback1,callback2,callback3, addition
         additionalParameters: additionalParameters,
         success: callback1,
         complete: callback3,
-        beforeSend: callback2,
-        /*error: function(thrownError) {
-            alert(thrownError);
-        }*/
+        beforeSend: callback2
+        //error: showError
+
     });
 
 }

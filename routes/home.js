@@ -193,4 +193,26 @@ module.exports = function(settings){
 		return
 	})
 
+	app.get("/recruiter/recruiter-plan", function(req, res){
+
+		res.render("premium-posting",{
+			title: "IIM JOBS | Premium Posting",
+			styles:  assetsMapper["premium-posting"]["styles"][mode],
+			scripts: assetsMapper["premium-posting"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/my-profile", function(req, res){
+
+		res.render("my-profile",{
+			title: "IIM JOBS | My Profile",
+			styles:  assetsMapper["my-profile"]["styles"][mode],
+			scripts: assetsMapper["my-profile"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
 }

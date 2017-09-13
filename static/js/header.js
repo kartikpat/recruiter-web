@@ -28,8 +28,9 @@ var showMenuMore = function() {
 }
 
 var populateHeader = function(res) {
+	console.log(res);
     if(res.status =="success") {
-		//console.log(res);
-        userProfile.find('.email').text(res["data"][0]["email"])
+        userProfile.find('.email').text(res["data"][0]["email"]).removeClass("animated-background");
+		userProfile.find('.image-container img').attr('src', res["data"][0]["img_link"]).removeClass("animated-background");
     }
 }

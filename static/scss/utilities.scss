@@ -66,7 +66,7 @@
 .divider {
    border: 0;
    height: 0;
-   border-bottom: 1px solid $color-light-grey;
+   border-bottom: 1px solid $divider-color;
    width: 90%;
 }
 
@@ -92,6 +92,10 @@
 
 .highlight {
     background-color: $color-bg-green;
+}
+
+.highlighted {
+    color: $color-green !important;
 }
 
 .error {

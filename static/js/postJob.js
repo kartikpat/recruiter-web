@@ -99,11 +99,37 @@ tagsContainer.find('.add-new-tag').on('click', function(){
 $(document).ready(function(){
 	openGuidelines.click(openModal);
 	closeModalBtn.click(closeModal);
+    $(".close-modal").click(closeModal);
     $(".submit-form").click(submitForm);
+    $(".cancel-form").click(cancelForm);
     postJobForm.find("#title").focusout(requestTags);
     postJobForm.find("#job_description").focusout(requestTags);
     postJobForm.find("#category").focusout(requestTags);
+    postJobForm.find("#title").on('input',function() {
+        var elem = $(this);
+        elem.val() === '' ? elem.next().removeClass("hidden"): elem.next().addClass("hidden");
+    });
+    postJobForm.find("#industry").on('input',function() {
+        var elem = $(this);
+        elem.val() === '' ? elem.next().removeClass("hidden"): elem.next().addClass("hidden");
+    });
+    postJobForm.find("#functional_area").on('input',function() {
+        var elem = $(this);
+        elem.val() === '' ? elem.next().removeClass("hidden"): elem.next().addClass("hidden");
+    });
+    postJobForm.find("#min_experience").on('input',function() {
+        var elem = $(this);
+        elem.val() === '' ? postJobForm.find("#min-experience-label").removeClass("hidden"): postJobForm.find("#min-experience-label").addClass("hidden");
+    });
+    postJobForm.find(" #max_experience").on('input',function() {
+        var elem = $(this);
+        elem.val() === '' ? postJobForm.find("#max-experience-label").removeClass("hidden"): postJobForm.find("#max-experience-label").addClass("hidden");
+    });
 });
+
+var cancelForm = function() {
+    window.location = "/";
+}
 
 function openMenu() {
     var x = document.getElementById("menu");
@@ -125,7 +151,7 @@ var submitForm = function() {
 	var tags = [];
 	var title = postJobForm.find("#title").val();
     if(!title) {
-        postJobForm.find("#title_label").css("display","block");
+        postJobForm.find("#title_label").removeClass("hidden");
     }
 	var location = postJobForm.find("#location").val();
 	var category = postJobForm.find("#category").val();
@@ -134,14 +160,24 @@ var submitForm = function() {
             industry.push(postJobForm.find(this).val());
 	});
     if(industry.length == 0) {
-        postJobForm.find("#industry_label").css("display","block");
+        postJobForm.find("#industry_label").removeClass("hidden");
     }
 	var functionalArea = postJobForm.find("#functional_area").val();
+    if(!functionalArea) {
+        postJobForm.find("#functional_area-label").removeClass("hidden");
+    }
     var minSalary = postJobForm.find("#min_salary").val();
 	var maxSalary = postJobForm.find("#max_salary").val();
+
 	var salaryShow = setDefaultVal(postJobForm.find("#salary_show:checked").val()); //$("#salary_show:checked").val() || 0,
 	var minYearsOfExperience = postJobForm.find("#min_experience").val();
 	var maxYearsOfExperience = postJobForm.find("#max_experience").val();
+    if(!minYearsOfExperience ) {
+        postJobForm.find("#min-experience-label").removeClass("hidden");
+    }
+    if(!maxYearsOfExperience ) {
+        postJobForm.find("#max-experience-label").removeClass("hidden");
+    }
 
 	postJobForm.find("input[name='course_type[]']:checked").each(function() {
 		    courseType.push(postJobForm.find(this).val());
@@ -186,10 +222,11 @@ var submitForm = function() {
         maxBatch: graduatingEndYear,
         salShow: salaryShow
 	}, successCallback);
-
 }
 
 
 var successCallback = function(res){
-    console.log(res);
+    if(res.status === "success") {
+        window.location = "/recruiter/recruiter-plan";
+    }
 }

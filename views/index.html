@@ -14,22 +14,36 @@
    <div class="user_details">
        <div class="user_information">
            <div class="user_name animated-background font-lg"></div>
-           <div class="user_designation animated-background font-sm extra-info-color"></div>
+           <div class="user_designation animated-background"></div>
        </div>
-       <div class="edit_profile animated-background">
+       <hr class="divider">
+       <div class="user-about animated-background font-sm extra-info-color"></div>
+       <div class="edit_profile">
            <button><i class="fa fa-pencil" aria-hidden="true"></i></button>
        </div>
-       <div class="social_buttons">
-           <button class="button">Linked In</button>
-           <button class="button">Twitter</button>
-           <button class="button">Facebook</button>
+       <div class="social-buttons-container">
+           <div class="social-buttons-not-connected">
+               <!-- <button class="button">Linked In</button>
+               <button class="button">Twitter</button>
+               <button class="button">Facebook</button> -->
+           </div>
+           <div class="social-buttons-connected">
+               <!-- <button class="button">Linked In</button>
+               <button class="button">Twitter</button>
+               <button class="button">Facebook</button> -->
+           </div>
        </div>
+
    </div>
+
+
+
+
    <!-- end user details -->
 
    <!-- stats -->
    <div class="bottom_information" >
-       <a href="#" class="link-color font-md profile_link animated-background"></a>
+       <a href="#" class="link-color profile_link animated-background"></a>
        <div class="extra_info">
            <div class="viewed animated-background font-sm"></div>
            <div class="last_login animated-background font-sm"></div>
@@ -41,14 +55,14 @@
 
 <!-- jobs posted section -->
   <div role="tabpanel" class="jobs_panel">
-    <span class="panel_heading text-clr">Jobs Posted<a href="javascript:void(0)" id="posting-guidelines" class="link-color guidelines">Posting Guidelines</a></span>
+    <span class="panel_heading text-clr">Jobs Posted<a href="javascript:void(0)" id="posting-guidelines" class="link-color guidelines">(Posting Guidelines)</a></span>
     <div class="jobs_container">
       <div class="jobs_header">
-        <span >Date</span>
-        <span >Title</span>
-        <span >Status</span>
-        <span>Views</span>
-        <span>Action</span>
+        <span class="date">Date</span>
+        <span class="title">Title</span>
+        <span class="status">Status</span>
+        <span class="views">Views</span>
+        <span class="action">Action</span>
       </div>
   </div>
  </div>
@@ -61,10 +75,10 @@
     </div>
   <!-- end jobs posted section -->
 
-  <div class="modal hidden">
+  <div class="modal hidden animated fadeIn bg-overlay">
       <!-- Modal content -->
 
-      <div class="modal-content">
+      <div class="modal-content  ">
           <div class="modal-header">
               <span class="modal-heading">Posting Guidelines</span>
               <span class="close">&times;</span>
@@ -92,10 +106,17 @@
               </div>
               <div class="list">
                   <div>For any clarifications/queries/doubts, please contact -</div>
-                  <div>Aayam Khanna - 011-65655702</div>
+                  <div class="contact-person">Aayam Khanna - <span class="text-clr">011-65655702</span></div>
               </div>
+          </div>
+          <div class="modal-footer">
+              <button class="button close-modal">Close</button>
           </div>
       </div>
   </div>
- 
+
+
+  <button class="button connect-to-social hidden prototype"></button>
+  <button class="button connected-to-social hidden prototype"></button>
+
 {{> footer }}

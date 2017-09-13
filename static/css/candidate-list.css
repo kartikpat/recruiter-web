@@ -16,6 +16,9 @@
 .extra-info-color {
   color: #808080; }
 
+.important-info-color {
+  color: #333; }
+
 .bg-overlay {
   background-color: rgba(0, 0, 0, 0.7); }
 
@@ -29,9 +32,6 @@ input:focus, select:focus {
   font-size: 18px;
   margin: 20px 0 20px 20px;
   color: #708732; }
-
-.highlighted {
-  color: #708732 !important; }
 
 * {
   font-family: 'Open Sans', sans-serif;

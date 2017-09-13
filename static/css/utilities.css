@@ -16,6 +16,9 @@
 .extra-info-color {
   color: #808080; }
 
+.important-info-color {
+  color: #333; }
+
 .bg-overlay {
   background-color: rgba(0, 0, 0, 0.7); }
 
@@ -79,7 +82,7 @@
 .divider {
   border: 0;
   height: 0;
-  border-bottom: 1px solid #f5f6f7;
+  border-bottom: 1px solid #ebebeb;
   width: 90%; }
 
 .no-results {
@@ -101,6 +104,9 @@
 
 .highlight {
   background-color: #d9e1c4; }
+
+.highlighted {
+  color: #708732 !important; }
 
 .error {
   font-size: 12px;

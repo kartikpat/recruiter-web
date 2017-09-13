@@ -21,33 +21,63 @@ var storeProfile = function(res){
 		if(res["data"]["data"].length>0){
 			var data = res["data"]["data"][0];
 			profileContainer.find(".userDetail .name").text(data["name"]);
-			profileContainer.find(".userDetail .experience").text("Experience: "+data["exp_y"]+"y "+data["exp_m"]+"m");
-			profileContainer.find(".userDetail .location").text(data["current_location"]);
-			profileContainer.find(".userDetail .notice").text(data["notice"]+ " months");
-			profileContainer.find(".user_img").text(data["imgUrl"]);
+			if(data["email"]) {
+				profileContainer.find(".userDetail .email").html(data["email"]+"<span class='important-info-color'> (Verified)</span>");
+			}
+			else {
+				profileContainer.find(".userDetail .email").addClass("hidden");
+			}
+			if(data["phone"]) {
+				profileContainer.find(".userDetail .contact").html(data["phone"]+"<span class='important-info-color'> (Verified)</span>");
+			}
+			else {
+				profileContainer.find(".userDetail .contact").addClass("hidden");
+			}
+			profileContainer.find(".userDetail .name").text(data["name"]);
+			profileContainer.find(".extraInfo .experience").text("Experience: "+data["exp_y"]+"y "+data["exp_m"]+"m");
+			profileContainer.find(".extraInfo .location").text("Location: "+data["current_location"]);
+			profileContainer.find(".userDetail .notice").text("Notice: "+data["notice"]+ " months");
+			profileContainer.find(".user_img").attr("src", data["imgUrl"]);
 			profileContainer.find(".userDetail .sex").text(data["sex"]);
 			profileContainer.find(".userDetail .age").text(getAge(data["dob"]));
+			profileContainer.find(".userDetail .last-login").text("Last Login: "+ISODateToD_M_Y(data["last_active_date"]));
 			profileContainer.find(".userDetail .applyDate").text("Applied: "+ISODateToD_M_Y(data["apply_date"]));
 			//profileContainer.find(".userDetail .applyDate").text(data["apply_date"]);
+			if(data["pref_location"]) {
+				profileContainer.find(".extraInfo .prefLocation").text("Preferred Location: "+data["pref_location"]);
+			}
+			else {
+				profileContainer.find(".extraInfo .prefLocation").addClass("hidden");
+			}
 
-			profileContainer.find(".extraInfo .prefLocation").text(data["pref_location"]);
 			var curSalary = (data["current_ctc"])? data["current_ctc"]+" Lakhs": "confidential";
 			profileContainer.find(".extraInfo .currentCTC").text("Current Salary: "+ curSalary);
 			var expSalary = (data["expected_ctc"])? data["expected_ctc"]+" Lakhs": "confidential";
 			profileContainer.find(".extraInfo .expectedCTC").text("Expected Salary: "+ expSalary);
 
 			profileContainer.find(".moreInfo .maritalStatus").text(boolean(data["marital_status"]));
-			profileContainer.find(".moreInfo .languages").text(formatLanguages(data["language_known"]));
+			if(data["language_known"]!= "") {
+				profileContainer.find(".moreInfo .languages").text(formatLanguages(data["language_known"]));
+			}
+			else {
+				profileContainer.find(".moreInfo .languages").text("nil");
+			}
 			profileContainer.find(".moreInfo .permit").text(boolean(data["work_permit"]));
 			profileContainer.find(".moreInfo .handleTeam").text(boolean(data["handle_team"]));
-			profileContainer.find(".moreInfo .sixDayWorking").text(data[""]);
+			//profileContainer.find(".moreInfo .sixDayWorking").text(data[""]);
 			profileContainer.find(".moreInfo .relocate").text(boolean(data["relocate"]));
 			profileContainer.find(".moreInfo .differentlyAbled").text(boolean(data["differently_abled"]));
 			profileContainer.find(".moreInfo .earlyStartup").text(boolean(data["early_startup"]));
 			profileContainer.find(".moreInfo .travel").text(boolean(data["willing_travel"]));
-			profileContainer.find(".moreInfo .about").text(boolean(data["about"]));
+			if(data["about"]!= "") {
+				profileContainer.find(".moreInfo .about").text(boolean(data["about"]));
+			}
+			else {
+				profileContainer.find(".moreInfo .about").addClass("hidden");
+			}
+
 			var status = data["status"];
- 			profileContainer.find(".icon[data-attribute="+ status +"]").addClass("highlight");
+ 			profileContainer.find(".icon[data-attribute="+ status +"]").addClass("highlighted");
 			data["jobs"].forEach(function(aJob, index){
 				if(index>2){
 					return
@@ -85,6 +115,7 @@ var storeProfile = function(res){
 			}
 			else{
 				resumeContainer.find(".cover_letter	").addClass("hidden");
+				resumeContainer.find(".resume").css("width","100%");
 			}
 		}
 	}
@@ -105,7 +136,7 @@ function ISODateToD_M_Y(aDate) {
 	year = date.getFullYear(),
 	month = date.getMonth(),
 	dt = date.getDate();
-
+	month = month + 1
   if (dt < 10) {
 	dt = '0' + dt;
   }

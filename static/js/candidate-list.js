@@ -424,8 +424,16 @@ var openResume = function(event) {
 	event.preventDefault();
 	event.stopPropagation();
 	var resumeOpenVariable = $(this).attr("data-resume-open");
-	$(".resume-container[data-resume-open="+resumeOpenVariable+"]").removeClass("hidden");
+	// var url = $(".resume-container[data-resume-open="+resumeOpenVariable+"] .resume-content").attr("data");
+	// getRequest(url, null, null,null,null,null, function() {
+	// 	$(".resume-container[data-resume-open="+resumeOpenVariable+"] .resume-content").attr("data", "http//localhost:8000/error.html");
+	// });
+    $(".resume-container[data-resume-open="+resumeOpenVariable+"]").removeClass("hidden");
+
+
 }
+
+
 
 $(".modal-top").on('mouseover','.tags-alphabets a[data-attribute="alphabet-hover"] ', showCheckboxFilter);
 $(".modal-top").on('mouseout','.tags-alphabets a[data-attribute="alphabet-hover"] ', hideCheckboxFilter);
@@ -500,7 +508,9 @@ var populateCalendarOptions = function(res) {
 }
 
 var populateJobs = function(res){
+
 	if(res.status=="success"){
+		console.log(res)
 		if(res["data"]["data"]) {
 			resultLength = res["data"]["data"].length;
 			$(".no-results").addClass("hidden");
@@ -729,3 +739,7 @@ function fetchQueryVariable(stringToFind) {
                }
        }
 }
+
+$(".resume-content")[0].addEventListener('error', function(e) {
+   console.log(e);
+}, true);

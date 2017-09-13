@@ -6,6 +6,7 @@
         		"static/css/index.css",
 				"static/css/buttons.css",
 				"static/css/footer.css",
+				"static/css/animate.css",
 				"static/css/utilities.css"
 
 			],
@@ -28,6 +29,35 @@
 			]
 		}
 	},
+	"my-profile": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+        		"static/css/index.css",
+				"static/css/buttons.css",
+				"static/css/footer.css",
+				"static/css/animate.css",
+				"static/css/utilities.css"
+
+			],
+			"prod": [
+				"static/build/css/index.min.css"
+
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/index.js"
+
+			],
+			"prod" : [
+				"static/build/js/index.min.js"
+			]
+		}
+	},
 	"post-job": {
 		"styles": {
 			"debug" : [
@@ -35,7 +65,8 @@
         		"static/css/index.css",
 				"static/css/footer.css",
 				"static/css/buttons.css",
-				"static/css/utilities.css"
+				"static/css/utilities.css",
+				"static/css/colors.css"
 			],
 			"prod": [
 				"static/build/css/index.min.css"
@@ -53,6 +84,33 @@
 			]
 		}
 	},
+	"premium-posting": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+        		"static/css/premium-posting.css",
+				"static/css/footer.css",
+				"static/css/buttons.css",
+				"static/css/utilities.css",
+				"static/css/colors.css"
+			],
+			"prod": [
+				"static/build/css/premium-posting.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/postJob.js"
+			],
+			"prod" : [
+				"static/build/js/premium-posting.min.js"
+			]
+		}
+	},
+
 	"login": {
 		"styles": {
 			"debug" : [
@@ -139,7 +197,9 @@
 				"static/css/header.css",
         		"static/css/view-resume.css",
 				"static/css/footer.css",
-				"static/css/buttons.css"
+				"static/css/buttons.css",
+				"static/css/utilities.css",
+				"static/css/colors.css"
 
 
 			],

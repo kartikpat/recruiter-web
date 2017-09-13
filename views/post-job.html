@@ -6,10 +6,10 @@
     <a href="/" class="back link-color">Back</a>
     <span>Post a Job</span>
     <a href="javascript:void(0)" id="posting-guidelines" class="guidelines link-color">(Posting Guidelines)</a>
-    <div class="modal hidden">
+    <div class="modal hidden animated fadeIn bg-overlay">
         <!-- Modal content -->
 
-        <div class="modal-content">
+        <div class="modal-content  ">
             <div class="modal-header">
                 <span class="modal-heading">Posting Guidelines</span>
                 <span class="close">&times;</span>
@@ -37,8 +37,11 @@
                 </div>
                 <div class="list">
                     <div>For any clarifications/queries/doubts, please contact -</div>
-                    <div>Aayam Khanna - 011-65655702</div>
+                    <div class="contact-person">Aayam Khanna - <span class="text-clr">011-65655702</span></div>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button class="button close-modal">Close</button>
             </div>
         </div>
     </div>
@@ -181,16 +184,18 @@
                	    <option value="33">
 		Other	    </option>
     </select>
-    <p class=" extra-info-color font-xs">Press Ctrl Key to select multiple industries. You can select upto 5 industries.</p>
     <div id="industry_label" class="error hidden">Please select atleast one industry</div>
+    <p class=" extra-info-color font-xs">Press Ctrl Key to select multiple industries. You can select upto 5 industries.</p>
+
     </div>
 
 
-    <div class="label">
+    <div class="label top">
     <label for="functional_area">Functional Area*</label>
     </div>
     <div class="field">
     <select id="functional_area" name="functional_area">
+        <option class="extra-info-color" value="">Select</option>
       <option value="1">
 		Accounting / Taxation / Audit	    </option>
 	    	    <option value="7">
@@ -232,7 +237,7 @@
 	    	    <option value="20">
 		Other	    </option>
     </select>
-    <div class="error hidden">Please select functional area</div>
+    <div id="functional_area-label" class="error hidden">Please select functional area</div>
     </div>
 
     <div class="label top">
@@ -320,7 +325,10 @@
         <option value="29">29</option>
         <option value="30">30</option>
       </select>
-      <div class="error hidden">Please select Min and Max Salary</div>
+      <div class="experience-label-container">
+          <div id="min-experience-label" class="error hidden">Please select Min Experience</div>
+          <div id="max-experience-label" class="error hidden">Please select Max Experience</div>
+      </div>
     </div>
 
     <div class="label top">
@@ -604,7 +612,7 @@
     </div>
     <div class="field">
     <button class="button submit-form">Submit</button>
-    <button class="button">Cancel</button>
+    <button class="button cancel-form">Cancel</button>
   </div>
 </div>
 </div>
