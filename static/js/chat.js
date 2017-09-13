@@ -11,6 +11,10 @@ var displayAMessage = function(event) {
     }
 }
 
+var sendMessage = function(message) {
+    $(".candidate-chat-content").append("<div class='message-container right'><div class='right-message'>"+message+"<span class='current-time'>"+startTime()+"</span></div></div>");
+}
+
 var populateChatView = function(array) {
     $(".chat-side-profile-candidates .candidates-wrapper").addClass("hidden");
     chatSideHeader.find(".profile-image img").attr("src",recruiter["img_url"]).removeClass("animated-background");
@@ -21,12 +25,13 @@ var populateChatView = function(array) {
     else {
         chatSideHeader.find(".profile-info-isonline").text("offline").removeClass("animated-background");
     }
-    array.forEach(function(aCandidate) {
+
+    channelsArray.forEach(function(aCandidate) {
         var card = candidatesWrapper.clone().removeClass('prototype hidden');
-        card.find(".candidate-image img").attr("src",aCandidate["img_url"]).removeClass("animated-background");
+        card.find(".candidate-image img").attr("src","http://www.iimjobs.com/resources/img/user_profile_new.png").removeClass("animated-background");
         card.attr("data-id",aCandidate["id"]);
-        card.find(".candidate-name").text(aCandidate["name"]).removeClass("animated-background");
-        card.find(".candidate-designation").text(aCandidate["designation"]).removeClass("animated-background");
+        card.find(".candidate-name").text(aCandidate["jobseekerID"]).removeClass("animated-background");
+        card.find(".candidate-designation").text("Software Developer").removeClass("animated-background");
         $(".chat-side-profile-candidates").append(card);
         $(".chat-side-profile-candidates").append("<hr class='divider divider-full'>");
     })
@@ -41,12 +46,11 @@ $(".chat-side-profile-candidates").on('click', '.candidate-card', function() {
     var candidateId = $(this).attr("data-id");
     chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").empty();
     var obj;
-    candidates.forEach(function(aCandidate) {
+    channelsArray.forEach(function(aCandidate) {
         if(aCandidate["id"] == candidateId) {
             obj = aCandidate;
         }
     })
-    console.log(obj["message"]);
     if(!(chatMainContainer.find(".welcome-message-container").hasClass("hidden"))) {
         chatMainContainer.find(".welcome-message-container").addClass("hidden");
     }
@@ -56,10 +60,14 @@ $(".chat-side-profile-candidates").on('click', '.candidate-card', function() {
     chatMainContainer.find(".candidate-chat-messages-container .profile-image img").attr("src",$(this).find(".candidate-image img").attr("src")).removeClass("animated-background");
     chatMainContainer.find(".candidate-chat-messages-container .profile-info-name").text($(this).find(".candidate-name").text()).removeClass("animated-background");
     chatMainContainer.find(".candidate-chat-messages-container .profile-info-organisation").text($(this).find(".candidate-designation").text()).removeClass("animated-background");
-    obj["message"].forEach(function(val) {
-        chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").append("<div class='message-container left'><div class='left-message'>"+val["mssg"]+"<span class='current-time'>"+val["time"]+"</span></div></div>")
-    })
+    // obj["message"].forEach(function(val) {
+    //     chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").append("<div class='message-container left'><div class='left-message'>"+val["mssg"]+"<span class='current-time'>"+val["time"]+"</span></div></div>")
+    // })
 })
+
+var receiveMessage = function(message) {
+    chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").append("<div class='message-container left'><div class='left-message'>"+message+"<span class='current-time'>"+startTime()+"</span></div></div>")
+}
 
 $(".chat-side-profile-candidates").on('click', '.candidate-card .remove-candidate', function(event) {
     event.stopPropagation();
