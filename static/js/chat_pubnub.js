@@ -143,9 +143,7 @@ var channelsArray = [{
     var pubnub = new PubNub({
     publishKey: 'pub-c-63069c70-3e81-42b3-b5f6-dc0bd232f845', //"pub-c-71dbc9d4-a833-4c0a-b47e-9955abbb9dac",
     subscribeKey: 'sub-c-760e7840-9e47-11e5-8db0-0619f8945a4f', //"sub-c-59cd3794-96d3-11e7-b1db-b273e40390ab",
-    // authKey: authkey,
-    // logVerbosity: true,
-    uuid: atob(45058),
+    uuid: btoa(45056),
     heartbeat: 120,
     heartbeat_interval: 30
     // logVerbosity: true,
@@ -219,16 +217,14 @@ function onFetchHistory(status, response) {
     console.log(response)
 }
 
-publish("hello" ,"iimjobs--r45058-j709365", function(res){
-    console.log(res)
-})
+
 
 function publish(message, channel, onPublish) {
     pubnub.publish({
         message: {
             such: message
         },
-        channel: 'test_1',
+        channel: channel,
         sendByPost: false, // true to send via post
         storeInHistory: true, //override default storage options
         meta: {
