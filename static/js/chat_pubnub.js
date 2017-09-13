@@ -155,6 +155,7 @@ var channelsArray = [{
     });
 
 addListeners();
+subscribe([ "iimjobs--r45058-j709365"]);
 function addListeners(){
     pubnub.addListener({
         message: onNewMessage,
