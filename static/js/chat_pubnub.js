@@ -1,4 +1,4 @@
-var channelsArray = [
+/*var channelsArray = [
   {
      "id":9443,
     "jobseekerID":"511594",
@@ -153,10 +153,17 @@ var channelsArray = [
     "name":"iimjobs--r45058-j229312",
     "lastActive":"NULL"
   }];
+*/
+var channelsArray = ["aWltam9icy0tUmVjcnVpdGVyLS00NTA1OA==", "iimjobs--r45058-j511594", "iimjobs--r45058-j90519", "iimjobs--r45058-j709365", "iimjobs--r45058-j612792", "iimjobs--r45058-j110923", "iimjobs--r45058-j706831", "iimjobs--r45058-j676776", "iimjobs--r45058-j712558", "iimjobs--r45058-j337587", "iimjobs--r45058-j651703", "iimjobs--r45058-j462122", "iimjobs--r45058-j178541", "iimjobs--r45058-j699540", "iimjobs--r45058-j293084", "iimjobs--r45058-j62147", "iimjobs--r45058-j419400", "iimjobs--r45058-j480373", "iimjobs--r45058-j959940", "iimjobs--r45058-j323756", "iimjobs--r45058-j57221", "iimjobs--r45058-j243816", "iimjobs--r45058-j435817", "iimjobs--r45058-j229312", "iimjobs--r45058-j260854", "iimjobs--r45058-j712518", "iimjobs--r45058-j429324", "iimjobs--r45058-j"];
+
+// var MainUUID = 'NDUwNTgtLXNocmV5YUBpaW1qb2JzLmNvbQ==';
+//     var Mainchannel = 'aWltam9icy0tUmVjcnVpdGVyLS00NTA1OA==';
+//     var key1 = 'pub-c-63069c70-3e81-42b3-b5f6-dc0bd232f845';
+//     var key2 = 'sub-c-760e7840-9e47-11e5-8db0-0619f8945a4f';
 
 var pubnub = new PubNub({
-    publishKey: "pub-c-71dbc9d4-a833-4c0a-b47e-9955abbb9dac",
-    subscribeKey: "sub-c-59cd3794-96d3-11e7-b1db-b273e40390ab",
+    publishKey: 'pub-c-63069c70-3e81-42b3-b5f6-dc0bd232f845',//"pub-c-71dbc9d4-a833-4c0a-b47e-9955abbb9dac",
+    subscribeKey: 'sub-c-760e7840-9e47-11e5-8db0-0619f8945a4f', //"sub-c-59cd3794-96d3-11e7-b1db-b273e40390ab",
     // authKey: authkey,
     // logVerbosity: true,
     uuid            : "NDUwNTgtLXNocmV5YUBpaW1qb2JzLmNvbQ==",
@@ -177,6 +184,7 @@ pubnub.addListener({
         var subscribedChannel = m.subscribedChannel;
         var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
         var pubTT = m.timetoken; // Publish timetoken     
+        console.log(".................................................")
         console.log(m);
     },
     presence: function(p) {
@@ -204,30 +212,30 @@ pubnub.addListener({
 });
   
 pubnub.subscribe({
-  channels: ["my_channel"]
+  channels: channelsArray
 });
 
-pubnub.publish(
-    {
-        message: {
-            such: 'string'
-        },
-        channel: 'my_channel',
-        sendByPost: false, // true to send via post
-        storeInHistory: true, //override default storage options
-        meta: {
-            "cool": "meta"
-        } // publish extra meta with the request
-    },
-    function (status, response) {
-        console.log(status)
-        console.log(response)
-    }
-);
+// pubnub.publish(
+//     {
+//         message: {
+//             such: 'string'
+//         },
+//         channel: 'test_1',
+//         sendByPost: false, // true to send via post
+//         storeInHistory: true, //override default storage options
+//         meta: {
+//             "cool": "meta"
+//         } // publish extra meta with the request
+//     },
+//     function (status, response) {
+//         console.log(status)
+//         console.log(response)
+//     }
+// );
 
 pubnub.history(
     {
-        channel: "my_channel",
+        channel: "iimjobs--r45058-j511594",//"my_channel",
         count: 10,
         includeTimetoken: false
     },
