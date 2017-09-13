@@ -1,4 +1,4 @@
-/*var channelsArray = [
+var channelsArray = [
   {
      "id":9443,
     "jobseekerID":"511594",
@@ -153,8 +153,9 @@
     "name":"iimjobs--r45058-j229312",
     "lastActive":"NULL"
   }];
-*/
-var channelsArray = ["aWltam9icy0tUmVjcnVpdGVyLS00NTA1OA==", "iimjobs--r45058-j511594", "iimjobs--r45058-j90519", "iimjobs--r45058-j709365", "iimjobs--r45058-j612792", "iimjobs--r45058-j110923", "iimjobs--r45058-j706831", "iimjobs--r45058-j676776", "iimjobs--r45058-j712558", "iimjobs--r45058-j337587", "iimjobs--r45058-j651703", "iimjobs--r45058-j462122", "iimjobs--r45058-j178541", "iimjobs--r45058-j699540", "iimjobs--r45058-j293084", "iimjobs--r45058-j62147", "iimjobs--r45058-j419400", "iimjobs--r45058-j480373", "iimjobs--r45058-j959940", "iimjobs--r45058-j323756", "iimjobs--r45058-j57221", "iimjobs--r45058-j243816", "iimjobs--r45058-j435817", "iimjobs--r45058-j229312", "iimjobs--r45058-j260854", "iimjobs--r45058-j712518", "iimjobs--r45058-j429324", "iimjobs--r45058-j"];
+
+
+// var channelsArray = ["aWltam9icy0tUmVjcnVpdGVyLS00NTA1OA==", "iimjobs--r45058-j511594", "iimjobs--r45058-j90519", "iimjobs--r45058-j709365", "iimjobs--r45058-j612792", "iimjobs--r45058-j110923", "iimjobs--r45058-j706831", "iimjobs--r45058-j676776", "iimjobs--r45058-j712558", "iimjobs--r45058-j337587", "iimjobs--r45058-j651703", "iimjobs--r45058-j462122", "iimjobs--r45058-j178541", "iimjobs--r45058-j699540", "iimjobs--r45058-j293084", "iimjobs--r45058-j62147", "iimjobs--r45058-j419400", "iimjobs--r45058-j480373", "iimjobs--r45058-j959940", "iimjobs--r45058-j323756", "iimjobs--r45058-j57221", "iimjobs--r45058-j243816", "iimjobs--r45058-j435817", "iimjobs--r45058-j229312", "iimjobs--r45058-j260854", "iimjobs--r45058-j712518", "iimjobs--r45058-j429324", "iimjobs--r45058-j"];
 
 // var MainUUID = 'NDUwNTgtLXNocmV5YUBpaW1qb2JzLmNvbQ==';
 //     var Mainchannel = 'aWltam9icy0tUmVjcnVpdGVyLS00NTA1OA==';
@@ -173,44 +174,47 @@ var pubnub = new PubNub({
     // ssl : true
     },function(status){console.log(status);
 });
-
 pubnub.addListener({   
-    message: function(m) {
-        // handle message
-        var actualChannel = m.actualChannel;
-        var channelName = m.channel; // The channel for which the message belongs
-        var msg = m.message; // The Payload
-        var publisher = m.publisher;
-        var subscribedChannel = m.subscribedChannel;
-        var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
-        var pubTT = m.timetoken; // Publish timetoken     
-        console.log(".................................................")
-        console.log(m);
-    },
-    presence: function(p) {
-        // handle presence
-        var action = p.action; // Can be join, leave, state-change or timeout
-        var channelName = p.channel; // The channel for which the message belongs
-        var channelGroup = p.subscription; //  The channel group or wildcard subscription match (if exists)
-        var presenceEventTime = p.timestamp; // Presence event timetoken
-        var status = p.status; // 200
-        var message = p.message; // OK
-        var service = p.service; // service
-        var uuids = p.uuids;  // UUIDs of users who are connected with the channel with their state
-        var occupancy = p.occupancy; // No. of users connected with the channel
-    },
-    status: function(s) {
-        // handle status
-        var category = s.category; // PNConnectedCategory
-        var operation = s.operation; // PNSubscribeOperation
-        var affectedChannels = s.affectedChannels; // The channels affected in the operation, of type array.
-        var subscribedChannels = s.subscribedChannels; // All the current subscribed channels, of type array.
-        var affectedChannelGroups = s.affectedChannelGroups; // The channel groups affected in the operation, of type array.
-        var lastTimetoken = s.lastTimetoken; // The last timetoken used in the subscribe request, of type long.
-        var currentTimetoken = s.currentTimetoken; // The current timetoken fetched in the subscribe response, which is going to be used in the next request, of type long.
-    }
+    message: onNewMessage,
+    presence: onNewPresence,
+    status: onNewStatus
 });
-  
+
+function onNewMessage(m) {
+    // handle message
+    var actualChannel = m.actualChannel;
+    var channelName = m.channel; // The channel for which the message belongs
+    var msg = m.message; // The Payload
+    var publisher = m.publisher;
+    var subscribedChannel = m.subscribedChannel;
+    var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
+    var pubTT = m.timetoken; // Publish timetoken     
+    console.log(m);
+}
+function onNewPresence(p) {
+    // handle presence
+    var action = p.action; // Can be join, leave, state-change or timeout
+    var channelName = p.channel; // The channel for which the message belongs
+    var channelGroup = p.subscription; //  The channel group or wildcard subscription match (if exists)
+    var presenceEventTime = p.timestamp; // Presence event timetoken
+    var status = p.status; // 200
+    var message = p.message; // OK
+    var service = p.service; // service
+    var uuids = p.uuids;  // UUIDs of users who are connected with the channel with their state
+    var occupancy = p.occupancy; // No. of users connected with the channel
+}
+
+function onNewStatus(s) {
+    // handle status
+    var category = s.category; // PNConnectedCategory
+    var operation = s.operation; // PNSubscribeOperation
+    var affectedChannels = s.affectedChannels; // The channels affected in the operation, of type array.
+    var subscribedChannels = s.subscribedChannels; // All the current subscribed channels, of type array.
+    var affectedChannelGroups = s.affectedChannelGroups; // The channel groups affected in the operation, of type array.
+    var lastTimetoken = s.lastTimetoken; // The last timetoken used in the subscribe request, of type long.
+    var currentTimetoken = s.currentTimetoken; // The current timetoken fetched in the subscribe response, which is going to be used in the next request, of type long.
+}
+
 pubnub.subscribe({
   channels: channelsArray
 });
