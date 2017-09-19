@@ -408,3 +408,9 @@ footer, header, hgroup, menu, nav, section {
 .experience-label-container div {
   display: inline-block;
   width: 29.5%; }
+
+.social-links {
+  margin-right: 10px; }
+  .social-links img {
+    width: 100px;
+    height: 30px; }

@@ -98,14 +98,16 @@ header .top_banner {
       header .top_banner .user_profile_side .dropdown .email {
         display: inline-block;
         height: 14px;
-        min-width: 100px;
+        line-height: 0px;
+        min-width: 125px;
         color: #666;
         font-size: 12px;
         text-decoration: none;
         font-family: "Droid Sans",sans-serif;
         vertical-align: top;
         padding-left: 5px;
-        padding-top: 8px; }
+        padding-top: 8px;
+        margin-top: 7px; }
       header .top_banner .user_profile_side .dropdown .image-container {
         display: inline-block;
         width: 30px;

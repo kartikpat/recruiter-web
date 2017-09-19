@@ -215,4 +215,26 @@ module.exports = function(settings){
 		return
 	})
 
+	app.get("/recruiter/edit-profile", function(req, res){
+
+		res.render("edit-profile",{
+			title: "IIM JOBS | Edit Profile",
+			styles:  assetsMapper["edit-profile"]["styles"][mode],
+			scripts: assetsMapper["edit-profile"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/profile-view", function(req, res){
+
+		res.render("profile-view",{
+			title: "IIM JOBS | Profile View",
+			styles:  assetsMapper["profile-view"]["styles"][mode],
+			scripts: assetsMapper["profile-view"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
 }

@@ -28,7 +28,8 @@
 .logo-container {
   width: 60%;
   margin: 20px auto;
-  text-align: center; }
+  text-align: center;
+  font-family: "Droid Sans", sans-serif; }
   .logo-container .logo-main {
     font-size: 64px;
     display: inline-block; }
@@ -40,6 +41,26 @@
 .login-container {
   width: 60%;
   margin: 20px auto; }
+  .login-container .login-tab-container {
+    text-align: center;
+    margin-bottom: 50px; }
+    .login-container .login-tab-container .login-tab {
+      display: inline-block;
+      padding: 0 32px;
+      line-height: 49px;
+      font-size: 24px; }
+      .login-container .login-tab-container .login-tab.recruiter {
+        background-color: #996;
+        color: #fff;
+        border: 1px solid #996;
+        border-radius: 0 4px 4px 0; }
+      .login-container .login-tab-container .login-tab.jobseeker {
+        background-color: #fff;
+        color: #4b4b4b;
+        border: 1px solid #996;
+        border-radius: 4px 0 0 4px;
+        cursor: pointer;
+        margin-right: -10px; }
   .login-container .form {
     display: inline-block;
     width: 38%;

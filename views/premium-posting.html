@@ -1,6 +1,7 @@
 {{> header}}
 
 <div class="main-container">
+    <div id="success-job-posted" class="success-job-posted hidden">Job Posted Successfully!!</div>
     <div class="recruiter-plan-banner-container">
         <div class="recruiter-plan-banner">
             Increase the visibility of your posting
@@ -13,6 +14,7 @@
         <div class="recruiter-plan-basic">
             <div class="recruiter-plan-basic-header">
                 BASIC
+                <div class="icon-container"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
             </div>
             <div class="recruiter-plan-basic-content">
                 <div class="top-content">
@@ -27,9 +29,10 @@
                     </div>
                 </div>
                 <div class="button-container">
-                    <button class="button" name="button">CONTINUE</button>
+                    <button class="button" id="basic-buy" name="button">CONTINUE</button>
                 </div>
             </div>
+
         </div>
         <div class="recruiter-plan-signature">
             <div class="recruiter-plan-signature-header-container">
@@ -39,6 +42,7 @@
                 <div class="recruiter-plan-signature-header-extra">
                     VIEWED 20 TIMES MORE THAN A FREE POSTING
                 </div>
+                <div class="icon-container"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
             </div>
             <div class="recruiter-plan-signature-content">
                 <div class="top-content">
@@ -63,7 +67,7 @@
 
                 </div>
                 <div class="button-container">
-                    <button class="button" name="button">BUY NOW</button>
+                    <button id="signature-buy" class="button" name="button">BUY NOW</button>
                 </div>
             </div>
         </div>
@@ -75,6 +79,7 @@
                 <div class="recruiter-plan-platinum-header-extra">
                     VIEWED 10 TIMES MORE THAN A FREE POSTING
                 </div>
+                <div class="icon-container"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
             </div>
             <div class="recruiter-plan-platinum-content">
                 <div class="top-content">
@@ -102,6 +107,64 @@
     </div>
 
 </div>
+
+<div id="signature-modal" class="modal hidden animated fadeIn bg-overlay">
+    <!-- Modal content -->
+
+    <div class="modal-content  ">
+        <div class="modal-header">
+            <span class="modal-heading">Signature Posting</span>
+            <span class="close">&times;</span>
+        </div>
+        <div class="modal-center">
+            <div class="list">
+                Thank you for choosing the Signature plan.
+            </div>
+            <div class="list">
+                Please confirm your phone number below. We will call you back.
+            </div>
+            <div class="list">
+                <input id="signature-contact" type="text">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="buttons-container">
+                <button class="button signature-continue">Continue</button>
+                <button class="button close-modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div id="platinum-modal" class="modal hidden animated fadeIn bg-overlay">
+        <!-- Modal content -->
+
+        <div class="modal-content  ">
+            <div class="modal-header">
+                <span class="modal-heading">Platinum Posting</span>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-center">
+                <div class="list">
+                    Thank you for choosing the Platinum plan.
+                </div>
+                <div class="list">
+                    Please confirm your phone number below. We will call you back.
+                </div>
+                <div class="list">
+                    <input id="platinum-contact" type="text">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="buttons-container">
+                    <button class="button platinum-continue">Continue</button>
+                    <button class="button close-modal">Close</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 
 
 

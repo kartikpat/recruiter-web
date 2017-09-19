@@ -37,17 +37,19 @@
   top: 50%;
   left: 44%; }
 
-.loader-scroll {
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #3498db;
-  border-bottom: 4px solid #3498db;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  animation: spin 2s linear infinite;
-  position: absolute;
-  left: 46%;
-  margin: 1px auto; }
+.loader-scroll-container {
+  height: 50px; }
+  .loader-scroll-container .loader-scroll {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-bottom: 4px solid #3498db;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    left: 46%;
+    margin: 1px auto; }
 
 @keyframes spin {
   0% {
@@ -69,10 +71,6 @@
 
 .font-heading {
   font-size: 20px; }
-
-* {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: normal; }
 
 .overlay-show {
   box-shadow: 2px 5px 18px 0px rgba(0, 0, 0, 0.2);

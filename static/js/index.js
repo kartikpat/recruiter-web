@@ -22,7 +22,14 @@ $(document).ready(function(){
             modal.addClass('hidden');
         }
     }
-	$(".social-buttons-connected").on('click','.connected-to-social',openSocialProfile);
+	$("#edit-profile").click(function() {
+		window.location = "/recruiter/edit-profile";
+	})
+	// $(".profile_link").click(function(event) {
+	// 	event.preventDefault();
+	// 	window.location = "http://www.iimjobs.com/r/"+recruiterID+"-shreya-jain";
+	// })
+	//$(".social-buttons-connected").on('click','.connected-to-social',openSocialProfile);
 	//
 	// if('serviceWorker' in navigator) {
 	//   //browser supports now register it
@@ -38,11 +45,15 @@ $(document).ready(function(){
 	//   console.log("Ahh! Your browser does not supports serviceWorker");
 	// }
 
+	windowH();
+
 })
 
-var openSocialProfile = function() {
-	window.location = $(this).attr("data-social-link");
+function windowH() {
+	var wH = $(window).height();
+	$('.main-container').css({height: wH-'200'});
 }
+
 
 var openModal = function() {
     modal.removeClass('hidden');
@@ -62,37 +73,38 @@ var populateProfile = function(res) {
 		profile.find(".extra_info .viewed").text("Viewed: "+data["hits"]).removeClass("animated-background");
 		profile.find(".extra_info .last_login").text("Last Login: "+ISODateToD_M_Y(data["d_login"])).removeClass("animated-background");
 		profile.find(".profile_link").text(data["rurl"]).removeClass("animated-background");
+		profile.find(".profile_link").attr("href",data["rurl"]);
 		if(data["lurl"]) {
-			var btn = $('.connected-to-social.prototype').clone().removeClass('prototype hidden');
-			btn.text("Linked In");
-			btn.attr("data-social-link", data["lurl"]);
+			var btn = $('.linked-in').removeClass('hidden');
+
+			btn.attr("href", data["lurl"]);
 			$(".social-buttons-connected").append(btn);
 		}
 		else {
-			var btn = $('.connect-to-social.prototype').clone().removeClass('prototype hidden');
-			btn.text("Linked In");
+			var btn = $('.linked-in').removeClass('hidden');
+
 			$(".social-buttons-not-connected").append(btn);
 		}
 		if(data["furl"]) {
-			var btn = $('.connected-to-social.prototype').clone().removeClass('prototype hidden');
-			btn.text("Facebook");
-			btn.attr("data-social-link", data["lurl"]);
+			var btn = $('.facebook').removeClass('hidden');
+
+			btn.attr("href", data["furl"]);
 			$(".social-buttons-connected").append(btn);
 		}
 		else {
-			var btn = $('.connect-to-social.prototype').clone().removeClass('prototype hidden');
-			btn.text("Facebook");
+			var btn = $('.facebook').removeClass('hidden');
+
 			$(".social-buttons-not-connected").append(btn);
 		}
 		if(data["turl"]) {
-			var btn = $('.connected-to-social.prototype').clone().removeClass('prototype hidden');
-			btn.text("Linked In");
-			btn.attr("data-social-link", data["lurl"]);
+			var btn = $('.twitter').removeClass('hidden');
+
+			btn.attr("src", data["turl"]);
 			$(".social-buttons-connected").append(btn);
 		}
 		else {
-			var btn = $('.connect-to-social.prototype').clone().removeClass('prototype hidden');
-			btn.text("Twitter");
+			var btn = $('.twitter').removeClass('hidden');
+
 			$(".social-buttons-not-connected").append(btn);
 		}
 

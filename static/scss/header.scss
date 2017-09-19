@@ -92,7 +92,8 @@ header {
                 .email {
                     display: inline-block;
                     height: 14px;
-                    min-width: 100px;
+                    line-height: 0px;
+                    min-width: 125px;
                     color: $hyperlink-color;
                     font-size: 12px;
                     text-decoration: none;
@@ -100,6 +101,7 @@ header {
                     vertical-align: top;
                     padding-left: 5px;
                     padding-top: 8px;
+                    margin-top: 7px;
                 }
 
                 .image-container {

@@ -58,6 +58,35 @@
 			]
 		}
 	},
+	"edit-profile": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+        		"static/css/edit-profile.css",
+				"static/css/buttons.css",
+				"static/css/footer.css",
+				"static/css/animate.css",
+				"static/css/utilities.css"
+
+			],
+			"prod": [
+				"static/build/css/edit-profile.min.css"
+
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/edit-profile.js"
+
+			],
+			"prod" : [
+				"static/build/js/edit-profile.min.js"
+			]
+		}
+	},
 	"post-job": {
 		"styles": {
 			"debug" : [
@@ -103,10 +132,36 @@
 				"static/js/vendor/jquery.min.js",
 				"static/js/request.js",
 				"static/js/header.js",
-				"static/js/postJob.js"
+				"static/js/premium-posting.js"
 			],
 			"prod" : [
 				"static/build/js/premium-posting.min.js"
+			]
+		}
+	},
+	"profile-view": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+        		"static/css/profile-view.css",
+				"static/css/footer.css",
+				"static/css/buttons.css",
+				"static/css/utilities.css",
+				"static/css/colors.css"
+			],
+			"prod": [
+				"static/build/css/profile-view.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/profile-view.js"
+			],
+			"prod" : [
+				"static/build/js/profile-view.min.js"
 			]
 		}
 	},
@@ -136,9 +191,10 @@
 	"sign-in": {
 		"styles": {
 			"debug" : [
-            	"static/css/sign-in.css",
-				"static/css/buttons.css"
-
+            	"static/css/login.css",
+				"static/css/buttons.css",
+				"static/css/utilities.css",
+  			  	"static/css/colors.css"
 			],
 			"prod": [
 				"static/build/css/sign-in.min.css"

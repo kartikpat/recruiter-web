@@ -227,6 +227,6 @@ var submitForm = function() {
 
 var successCallback = function(res){
     if(res.status === "success") {
-        window.location = "/recruiter/recruiter-plan";
+        window.location = "/recruiter/recruiter-plan?success=1";
     }
 }

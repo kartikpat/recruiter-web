@@ -460,8 +460,9 @@ input, select {
     .modal-content {
         position: relative;
         box-shadow: 0 0 1px #d8d8d8;
-        max-width: 700px;
-        height: 24em;
+        max-width: 900px;
+        min-width: 700px;
+        min-height: 330px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -567,3 +568,122 @@ input, select {
 			text-decoration: none;
 		}
 	}
+
+.jobs-wrapper-shell-loader {
+
+    .shell-loaders {
+        margin: 0 20px;
+        padding: 0 10px;
+
+        .content {
+            display: inline-block;
+            padding: 5px 0 0 2px;
+            overflow: hidden;
+            font-size: 11px;
+            vertical-align: top;
+            .info {
+                padding: 0 0 5px 0;
+                .user_name {
+                    margin-top: 15px;
+                    width: 70px;
+                    height: 15px;
+                }
+                .user-experience {
+                    margin-top: 10px;
+                    width: 100px;
+                    height: 15px;
+                }
+                .user-extra {
+                    margin-top: 20px;
+                    width: 50px;
+                    height: 10px;
+                }
+                .important_info {
+                    font-size: 11px;
+                    color: $important-info-color;
+                    &.name {
+                        font-size: 13px;
+                    }
+                }
+                .extra_info {
+                    color: $extra-info-color;
+                }
+                .icon {
+                    display: block;
+                    color: $extra-info-color;
+                    font-size: 12px;
+                    padding: 1px 0;
+                    text-decoration: none;
+                    span {
+
+                        padding: 0 3px;
+                    }
+
+                    &:hover {
+                        color: green;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+        .content.content_name {
+            padding-top: 25px;
+            width: 18%;
+
+            img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                max-width: 100%;
+                max-height: 100%;
+            }
+        }
+
+        .content.content_organization {
+            width: 28%;
+            padding-top: 35px;
+            .name {
+                width: 150px;
+                height: 20px;
+                margin-bottom: 10px;
+            }
+            .designation {
+                width: 75px;
+                height: 15px;
+                margin-bottom: 15px;
+            }
+            .experience {
+                width: 150px;
+                height: 15px;
+                margin-bottom: 10px;
+            }
+        }
+
+        .content.content_institute {
+            width: 28%;
+            padding-top: 35px;
+            .name {
+                width: 150px;
+                height: 20px;
+                margin-bottom: 10px;
+            }
+            .degree {
+                width: 75px;
+                height: 15px;
+                margin-bottom: 15px;
+            }
+        }
+        .content.content_more {
+            padding-top: 35px;
+            width: 19%;
+            .icon {
+                width: 125px;
+                height: 10px;
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+
+}
