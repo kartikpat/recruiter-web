@@ -42,9 +42,9 @@
 
 	var app = express();
 	app.use(session({
-	  secret: 'some secret',
-	  resave: false,
-	  saveUninitialized: true,
+		name: 'sessID',
+		keys: ['key-1'],
+		httpOnly: false
 	}));
 	app.use(bodyParser.urlencoded({ extended: true }))
 	app.use(compression()); //compressing payload on every request

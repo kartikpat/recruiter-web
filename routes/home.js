@@ -39,8 +39,9 @@ module.exports = function(settings){
 			});
 			return
 		}
-
-		req.session.authenticated = true;
+		var cookieValue = new Buffer.from(""+Date.now()).toString('base64');
+		res.cookie("sessID", cookieValue, {overwrite: true})
+		req.session.user=cookieValue;
 		return res.json({
 			status: "success"
 		});
@@ -183,7 +184,7 @@ module.exports = function(settings){
 	})
 
 	app.get("/recruiter/myChat", function(req, res){
-
+		console.log(req.isNew);
 		res.render("chat",{
 			title: "IIM JOBS | myChat",
 			styles:  assetsMapper["chat"]["styles"][mode],

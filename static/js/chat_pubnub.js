@@ -154,8 +154,20 @@ var channelsArray = [{
         console.log(status);
     });
 
+function getCookie(name) {
+  var value = "; " + document.cookie;
+  var parts = value.split("; " + name + "=");
+  if (parts.length == 2) return parts.pop().split(";").shift();
+}
+
 addListeners();
-subscribe([ "iimjobs--r45058-j709365"]);
+subscribe((function(){
+    var tempArray = [];
+    channelsArray.forEach(function(aChannel){
+        tempArray.push(aChannel["name"]);
+    });
+    return tempArray;
+})());
 function addListeners(){
     pubnub.addListener({
         message: onNewMessage,
@@ -173,7 +185,9 @@ function onNewMessage(m) {
     var subscribedChannel = m.subscribedChannel;
     var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
     var pubTT = m.timetoken; // Publish timetoken
-    receiveMessage(msg["such"]);
+    console.log("receieved new message")
+    console.log(msg)
+    receiveMessage(msg);
 }
 
 function onNewPresence(p) {
@@ -222,11 +236,9 @@ function onFetchHistory(status, response) {
 
 function publish(message, channel, onPublish) {
     pubnub.publish({
-        message: {
-            such: message
-        },
+        message: message,
         channel: channel,
-        sendByPost: false, // true to send via post
+        sendByPost: true, // true to send via post
         storeInHistory: true, //override default storage options
         meta: {
             "cool": "meta"
