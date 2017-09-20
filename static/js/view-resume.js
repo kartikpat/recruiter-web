@@ -2,24 +2,68 @@ var profileContainer = $(".profile_container");
 var tabContainer = $(".tab_container");
 var resumeContainer = $(".resume-container");
 var baseUrl = "http://13.126.92.102:8000"
+var jobId;
+var jobTitle;
 //var recruiterID = 45058;
 $(document).ready(function(){
 	var recruiterID = localStorage.id ;
+	jobId = getUrlParameter("jobID");
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+334895, {
 		userID: userID
 	}, storeProfile)
-	$('#slider').click(function() {
-	  $('.more_info').slideToggle();
-
+	$('#slider-down').click(function() {
+		$(this).addClass("hidden");
+		$("#slider-up").removeClass("hidden");
+	  	$('.more_info').slideToggle();
+	});
+	$('#slider-up').click(function() {
+		$(this).addClass("hidden");
+		$("#slider-down").removeClass("hidden");
+	  	$('.more_info').slideToggle();
 	});
 
+	profileContainer.find(".buttons .icon-status").click(performAction);
 
+	jobTitle = getUrlParameter('jobTitle');
+	if(jobTitle && jobId) {
+		$(".job-title").text("Job : "+jobId+" , "+jobTitle+"");
+	}
 })
+
+var performAction = function(event) {
+	event.preventDefault();
+	var hasClass = $(this).hasClass("highlighted");
+	if(!(hasClass)) {
+		var applicationId = profileContainer.attr("data-application-id");
+		var dataAttribute = $(this).attr("data-attribute");
+		postRequest(baseUrl+"/recruiter/"+recruiterID+"/action/"+jobId, null ,{
+			action: dataAttribute,
+			id: applicationId
+		}, function(res) {
+			if(res["status"] == "success") {
+				profileContainer.find(".icon").removeClass("highlighted")
+				profileContainer.find(".icon[data-attribute="+ dataAttribute +"]").addClass("highlighted");
+			}
+		}, hideDotLoader, showDotLoader)
+	}
+}
+
+var showDotLoader = function() {
+	$(".dot-loader-container").removeClass("hidden");
+	profileContainer.find(".buttons").addClass("extra-height");
+}
+
+var hideDotLoader = function() {
+	$(".dot-loader-container").addClass("hidden");
+	profileContainer.find(".buttons").removeClass("extra-height");
+}
+
 var storeProfile = function(res){
 	console.log(res)
 	if(res.status=="success"){
 		if(res["data"]["data"].length>0){
 			var data = res["data"]["data"][0];
+			profileContainer.attr("data-application-id", data["id"]);
 			profileContainer.find(".userDetail .name").text(data["name"]);
 			if(data["email"]) {
 				profileContainer.find(".userDetail .email").html(data["email"]+"<span class='important-info-color'> (Verified)</span>");
@@ -168,3 +212,18 @@ function formatLanguages(data){
 	}
 	return langArray.join(", ");
 }
+
+var getUrlParameter = function(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};

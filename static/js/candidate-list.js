@@ -211,7 +211,7 @@ var populateMainTags = function(sorted,metaData) {
 		var tagCheckbox = tags.clone().removeClass('prototype hidden');
 		tagCheckbox.find(".label").append('<input id="'+dataAttribute+ "-"+obj["text"]+'" type="checkbox" value="'+obj["val"]+'" name="'+name+'">'+ obj["text"]);
 		tagCheckbox.find(".label").attr("for", dataAttribute + "-" + obj["text"]);
-		tagCheckbox.find(".label").css("font-size","11px");
+		tagCheckbox.find(".label").addClass("checkboxes");
 		$('.js-tags[data-attribute='+dataAttribute+']').append(tagCheckbox);
 	})
 }
@@ -229,7 +229,7 @@ var performAction = function(event) {
 		}, function(res) {
 			if(res["status"] == "success") {
 			// if(tabId!= '') {
-			// 	$(".jobs_content[data-attribute=js-"+applicationId+"]").addClass("remove");
+			// 	// c$(".jobs_content[data-attribute=js-"+applicationId+"]").addClass("remove");
 			// 	//$(".jobs_content[data-attribute=js-"+applicationId+"]").css("background","red")
 			// }
 			$('.jobs-wrapper-shell-loader').removeClass('hidden');
@@ -562,7 +562,7 @@ var populateJobs = function(res){
 				$(anElement).attr("data-application-id", aJob["id"]);
 			});
 			card.find(".content_more .icon[data-attribute= " + iconStatus + "]").addClass("highlighted");
-			card.find(".content_more .icon[data-attribute=4]").attr("href","/profile/"+aJob["userID"]+"?jobID="+jobID);
+			card.find(".content_more .icon[data-attribute=4]").attr("href","/profile/"+aJob["userID"]+"?jobID="+jobID+"&jobTitle="+jobTitle);
 			card.find(".interview-invite.icon").attr("data-interview-invite","js-"+aJob['id']+"");
 			card.find(".slot-type-container").attr("data-interview-invite","js-"+aJob['id']+"");
 			var orgArray = aJob["jobs"];

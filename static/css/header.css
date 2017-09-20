@@ -230,3 +230,8 @@ header nav {
     display: block;
     padding: 12px;
     border-bottom: 1px solid gray; } }
+
+.email-caret {
+  margin-top: -5px;
+  vertical-align: top;
+  padding-left: 5px; }

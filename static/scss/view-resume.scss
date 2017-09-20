@@ -1,6 +1,13 @@
 @import "colors.scss";
 @import "fonts.scss";
 
+.job-title {
+    width: 95%;
+    font-size: 18px;
+    margin: 20px auto;
+    color: $color-green;
+}
+
 .profile_container {
    width: 95%;
    margin: 40px auto;
@@ -30,6 +37,10 @@
         .more {
             width: 24%;
         }
+   }
+
+   .buttons.extra-height {
+       height: 30px;
    }
 
   .profile_content {

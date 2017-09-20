@@ -4,7 +4,7 @@ var headingRow = $(".heading-row");
 
 $(document).ready(function(){
 	var recruiterID = localStorage.id ;
-	getRequest(baseUrl+"/recruiter/"+2804+"/reports/", {
+	getRequest(baseUrl+"/recruiter/"+recruiterID+"/reports", {
 		pageNumber: 5,
         pageContent: 20
 	}, populateReportsTable)
@@ -21,6 +21,7 @@ reportsTable.on('click', '.data-row a', function(){
 
 var populateReportsTable = function(res) {
     if(res["status"] == "success") {
+		console.log(res);
         var data = res["data"];
         if(data.length > 0) {
             headingRow.removeClass("hidden");
