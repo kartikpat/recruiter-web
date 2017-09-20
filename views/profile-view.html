@@ -1,0 +1,22 @@
+{{> header}}
+<div class="main-container">
+    <div class="profile-view-container">
+        <div class="last-login animated-background"></div>
+        <div class="image-container">
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA" class="animated-background" alt="">
+        </div>
+        <div class="name animated-background"></div>
+        <div class="about animated-background"></div>
+        <div class="profile-url animated-background"></div>
+    </div>
+    <hr class="divider">
+</div>
+
+</body>
+{{#scripts.length}}
+	{{#scripts}}
+		<script type="text/javascript" src="/{{.}}"></script>
+	{{/scripts}}
+{{/scripts.length}}
+<script src="https://use.fontawesome.com/6eabda8944.js"></script>
+</html>

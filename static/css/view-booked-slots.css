@@ -16,6 +16,9 @@
 .extra-info-color {
   color: #808080; }
 
+.important-info-color {
+  color: #333; }
+
 .bg-overlay {
   background-color: rgba(0, 0, 0, 0.7); }
 

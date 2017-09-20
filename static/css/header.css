@@ -1,3 +1,30 @@
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.important-info-color {
+  color: #333; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
 html {
   height: 100%; }
 
@@ -50,26 +77,49 @@ header .top_banner {
     position: relative; }
     header .top_banner .logo h3 {
       font-size: 30px;
+      font-family: 'Comfortaa', cursive;
       line-height: 20px;
       margin: 0; }
     header .top_banner .logo span {
       font-size: 13px;
       position: absolute;
       top: 110%;
-      left: 70%; }
+      left: 70%;
+      font-family: 'Droid Sans', sans-serif; }
   header .top_banner .user_profile_side {
     position: absolute;
     right: 20px;
-    display: inline-block; }
+    display: inline-block;
+    cursor: pointer;
+    min-height: 30px; }
     header .top_banner .user_profile_side .dropdown {
       position: relative;
       list-style: none; }
-      header .top_banner .user_profile_side .dropdown > a {
-        color: #000000;
-        font-size: 14px; }
+      header .top_banner .user_profile_side .dropdown .email {
+        display: inline-block;
+        height: 14px;
+        line-height: 0px;
+        min-width: 125px;
+        color: #666;
+        font-size: 12px;
+        text-decoration: none;
+        font-family: "Droid Sans",sans-serif;
+        vertical-align: top;
+        padding-left: 5px;
+        padding-top: 8px;
+        margin-top: 7px; }
+      header .top_banner .user_profile_side .dropdown .image-container {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%; }
+        header .top_banner .user_profile_side .dropdown .image-container img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%; }
       header .top_banner .user_profile_side .dropdown .options {
         position: absolute;
-        top: 104%;
+        top: 102%;
         background: #fff;
         min-width: 200px;
         right: 0;
@@ -89,7 +139,9 @@ header .top_banner {
           text-align: left; }
           header .top_banner .user_profile_side .dropdown .options li a {
             color: #666;
-            font-size: 14px; }
+            font-size: 12px;
+            text-decoration: none;
+            display: block; }
             header .top_banner .user_profile_side .dropdown .options li a:hover {
               color: #56A0FF; }
 
@@ -110,7 +162,8 @@ header nav {
       header nav .menu li.menu_link > a {
         color: white;
         text-decoration: none;
-        font-size: 12px; }
+        font-size: 13px;
+        font-family: "Droid Sans",sans-serif; }
       header nav .menu li.menu_link:hover {
         background: #7c7c7c;
         border-bottom: 2px solid #fff; }
@@ -177,3 +230,8 @@ header nav {
     display: block;
     padding: 12px;
     border-bottom: 1px solid gray; } }
+
+.email-caret {
+  margin-top: -5px;
+  vertical-align: top;
+  padding-left: 5px; }

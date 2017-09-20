@@ -16,6 +16,9 @@
 .extra-info-color {
   color: #808080; }
 
+.important-info-color {
+  color: #333; }
+
 .bg-overlay {
   background-color: rgba(0, 0, 0, 0.7); }
 
@@ -30,11 +33,8 @@ input:focus, select:focus {
   margin: 20px 0 20px 20px;
   color: #708732; }
 
-.highlighted {
-  color: #708732 !important; }
-
 * {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Droid Sans", sans-serif;
   font-weight: normal; }
 
 .main-container {
@@ -48,7 +48,7 @@ input:focus, select:focus {
     .main-container .filters .search-by-keyword {
       width: 100%;
       border-bottom: 1px solid #f5f6f7;
-      padding-bottom: 5px;
+      padding: 0 10px 10px 10px;
       margin-bottom: 5px; }
       .main-container .filters .search-by-keyword input {
         box-sizing: border-box;
@@ -56,13 +56,19 @@ input:focus, select:focus {
         border-radius: 4px;
         padding: 4px 8px;
         width: 75%;
-        padding: 4px 6px;
+        padding: 6px 8px;
         font-size: 11px; }
+      .main-container .filters .search-by-keyword button {
+        float: right; }
     .main-container .filters .menu {
       border-bottom: 1px solid #f5f6f7;
-      margin-bottom: 5px; }
+      margin-bottom: 5px;
+      line-height: 22px;
+      padding: 5px 10px; }
       .main-container .filters .menu > span {
-        font-size: 10px; }
+        font-size: 15px;
+        font-family: "Droid Sans", sans-serif;
+        color: #4b4b4b; }
       .main-container .filters .menu > button {
         float: right; }
       .main-container .filters .menu .field {
@@ -152,7 +158,8 @@ input:focus, select:focus {
           .main-container .jobs .jobs_panel .jobs_header .header_name .checkbox {
             margin: 0 15px 0 0; }
         .main-container .jobs .jobs_panel .jobs_header .header_organization {
-          width: 28%; }
+          width: 28%;
+          padding-left: 10px; }
         .main-container .jobs .jobs_panel .jobs_header .header_institute {
           width: 28%; }
         .main-container .jobs .jobs_panel .jobs_header .header_more {
@@ -164,7 +171,6 @@ input:focus, select:focus {
         .main-container .jobs .jobs_panel .jobs_content:nth-child(even) {
           background-color: #fbfbfb; }
         .main-container .jobs .jobs_panel .jobs_content .content-container {
-          height: 200px;
           cursor: pointer;
           padding: 10px 10px 0 10px; }
         .main-container .jobs .jobs_panel .jobs_content .slide-container {
@@ -280,16 +286,20 @@ input:focus, select:focus {
           padding: 5px 0 0 2px;
           overflow: hidden;
           font-size: 11px;
-          vertical-align: top; }
+          vertical-align: top;
+          line-height: 20px; }
           .main-container .jobs .jobs_panel .jobs_content .content .info {
-            padding: 0 0 5px 0; }
+            padding: 0 0 10px 0; }
             .main-container .jobs .jobs_panel .jobs_content .content .info .important_info {
-              font-size: 11px;
+              font-size: 13px;
               color: #333; }
               .main-container .jobs .jobs_panel .jobs_content .content .info .important_info.name {
-                font-size: 13px; }
+                font-size: 13px;
+                font-weight: bold;
+                font-family: Arial !important; }
             .main-container .jobs .jobs_panel .jobs_content .content .info .extra_info {
-              color: #808080; }
+              color: #333;
+              font-size: 13px; }
             .main-container .jobs .jobs_panel .jobs_content .content .info .icon {
               display: block;
               color: #808080;
@@ -313,7 +323,8 @@ input:focus, select:focus {
             max-width: 100%;
             max-height: 100%; }
         .main-container .jobs .jobs_panel .jobs_content .content.content_organization {
-          width: 28%; }
+          width: 28%;
+          padding-left: 10px; }
         .main-container .jobs .jobs_panel .jobs_content .content.content_institute {
           width: 28%; }
         .main-container .jobs .jobs_panel .jobs_content .content.content_more {
@@ -340,8 +351,9 @@ input:focus, select:focus {
   .modal .modal-content {
     position: relative;
     box-shadow: 0 0 1px #d8d8d8;
-    max-width: 700px;
-    height: 24em;
+    max-width: 900px;
+    min-width: 700px;
+    min-height: 330px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -392,7 +404,8 @@ input:focus, select:focus {
           vertical-align: top;
           width: 300px; }
           .modal .modal-content .modal-bottom .row .tags-wrapper label {
-            font-size: 12px; }
+            font-size: 13px;
+            font-family: "Droid Sans", sans-serif; }
 
 .resume-container {
   position: fixed;
@@ -415,3 +428,96 @@ input:focus, select:focus {
     font-size: 10px;
     padding: 0 8px;
     text-decoration: none; }
+
+.jobs-wrapper-shell-loader .shell-loaders {
+  margin: 0 20px;
+  padding: 0 10px; }
+  .jobs-wrapper-shell-loader .shell-loaders .content {
+    display: inline-block;
+    padding: 5px 0 0 2px;
+    overflow: hidden;
+    font-size: 11px;
+    vertical-align: top; }
+    .jobs-wrapper-shell-loader .shell-loaders .content .info {
+      padding: 0 0 5px 0; }
+      .jobs-wrapper-shell-loader .shell-loaders .content .info .user_name {
+        margin-top: 15px;
+        width: 70px;
+        height: 15px; }
+      .jobs-wrapper-shell-loader .shell-loaders .content .info .user-experience {
+        margin-top: 10px;
+        width: 100px;
+        height: 15px; }
+      .jobs-wrapper-shell-loader .shell-loaders .content .info .user-extra {
+        margin-top: 20px;
+        width: 50px;
+        height: 10px; }
+      .jobs-wrapper-shell-loader .shell-loaders .content .info .important_info {
+        font-size: 11px;
+        color: #333; }
+        .jobs-wrapper-shell-loader .shell-loaders .content .info .important_info.name {
+          font-size: 13px; }
+      .jobs-wrapper-shell-loader .shell-loaders .content .info .extra_info {
+        color: #808080; }
+      .jobs-wrapper-shell-loader .shell-loaders .content .info .icon {
+        display: block;
+        color: #808080;
+        font-size: 12px;
+        padding: 1px 0;
+        text-decoration: none; }
+        .jobs-wrapper-shell-loader .shell-loaders .content .info .icon span {
+          padding: 0 3px; }
+        .jobs-wrapper-shell-loader .shell-loaders .content .info .icon:hover {
+          color: green;
+          text-decoration: underline; }
+  .jobs-wrapper-shell-loader .shell-loaders .content.content_name {
+    padding-top: 25px;
+    width: 18%; }
+    .jobs-wrapper-shell-loader .shell-loaders .content.content_name img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      max-width: 100%;
+      max-height: 100%; }
+  .jobs-wrapper-shell-loader .shell-loaders .content.content_organization {
+    width: 28%;
+    padding-top: 35px; }
+    .jobs-wrapper-shell-loader .shell-loaders .content.content_organization .name {
+      width: 150px;
+      height: 20px;
+      margin-bottom: 10px; }
+    .jobs-wrapper-shell-loader .shell-loaders .content.content_organization .designation {
+      width: 75px;
+      height: 15px;
+      margin-bottom: 15px; }
+    .jobs-wrapper-shell-loader .shell-loaders .content.content_organization .experience {
+      width: 150px;
+      height: 15px;
+      margin-bottom: 10px; }
+  .jobs-wrapper-shell-loader .shell-loaders .content.content_institute {
+    width: 28%;
+    padding-top: 35px; }
+    .jobs-wrapper-shell-loader .shell-loaders .content.content_institute .name {
+      width: 150px;
+      height: 20px;
+      margin-bottom: 10px; }
+    .jobs-wrapper-shell-loader .shell-loaders .content.content_institute .degree {
+      width: 75px;
+      height: 15px;
+      margin-bottom: 15px; }
+  .jobs-wrapper-shell-loader .shell-loaders .content.content_more {
+    padding-top: 35px;
+    width: 19%; }
+    .jobs-wrapper-shell-loader .shell-loaders .content.content_more .icon {
+      width: 125px;
+      height: 10px;
+      margin-bottom: 10px; }
+
+.checkboxes {
+  font-size: 13px;
+  font-family: "Droid Sans", sans-serif !important;
+  color: #1b1b1b;
+  cursor: pointer; }
+  .checkboxes input {
+    margin: 0 5px 0 0 !important;
+    vertical-align: middle; }
