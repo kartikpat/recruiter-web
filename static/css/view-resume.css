@@ -1,5 +1,29 @@
-.highlight {
-  color: green !important; }
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.important-info-color {
+  color: #333; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
 
 .profile_container {
   width: 95%;
@@ -7,24 +31,25 @@
   .profile_container .profile_header {
     width: auto;
     margin: 0 auto;
-    background-color: #f1f1f1;
+    background-color: #efefef;
     padding: 10px 15px; }
     .profile_container .profile_header span {
       display: inline-block;
       overflow: auto;
-      font-size: 16px;
-      text-align: left; }
+      font-size: 13px;
+      font-family: 'Noto Sans',sans-serif;
+      text-align: left;
+      font-weight: bold; }
     .profile_container .profile_header .name {
-      width: 21%; }
+      width: 18%; }
     .profile_container .profile_header .organization {
-      width: 25%; }
+      width: 26%; }
     .profile_container .profile_header .institute {
-      width: 28%; }
+      width: 30%; }
     .profile_container .profile_header .more {
       width: 24%; }
   .profile_container .profile_content {
-    margin: 5px;
-    padding: 2px; }
+    padding: 0 15px 10px 15px; }
     .profile_container .profile_content .content {
       display: inline-block;
       padding: 1px;
@@ -36,11 +61,14 @@
         padding: 10px 0; }
         .profile_container .profile_content .content .info .important_info {
           font-size: 12px;
-          color: #000000; }
+          color: #333;
+          font-family: 'Open Sans'; }
           .profile_container .profile_content .content .info .important_info.name {
-            font-size: 16px; }
+            font-size: 13px; }
         .profile_container .profile_content .content .info .extra_info {
-          color: #727272; }
+          color: #808080;
+          font-family: "Droid Sans",sans-serif;
+          padding: 2px 0; }
         .profile_container .profile_content .content .info .icon {
           display: block;
           font-size: 16px;
@@ -52,7 +80,7 @@
           .profile_container .profile_content .content .info .icon:hover {
             color: green; }
     .profile_container .profile_content .content.name {
-      width: 21%; }
+      width: 18%; }
       .profile_container .profile_content .content.name img {
         width: 50px;
         height: 50px;
@@ -60,37 +88,41 @@
         max-width: 100%;
         max-height: 100%; }
     .profile_container .profile_content .content.organization {
-      width: 25%; }
+      width: 26%; }
     .profile_container .profile_content .content.institute {
-      width: 28%; }
+      width: 30%; }
     .profile_container .profile_content .content.more {
       width: 24%; }
     .profile_container .profile_content .buttons a {
-      padding: 5px;
+      font-size: 12px;
       text-decoration: none;
       display: inline-block;
       width: 19%;
-      color: #666; }
+      color: #808080; }
       .profile_container .profile_content .buttons a:hover {
-        color: green; }
+        text-decoration: underline; }
     .profile_container .profile_content .more_info {
       width: 99%;
       margin: 0 auto;
       display: none; }
-      .profile_container .profile_content .more_info .layer {
-        padding: 10px; }
-        .profile_container .profile_content .more_info .layer .row .column {
-          width: 33%;
+      .profile_container .profile_content .more_info .layer .marital-status-container {
+        width: 18%;
+        vertical-align: top; }
+      .profile_container .profile_content .more_info .layer .permit-container {
+        width: 26%;
+        vertical-align: top; }
+      .profile_container .profile_content .more_info .layer .score-container {
+        width: 30%; }
+      .profile_container .profile_content .more_info .layer .languages-container {
+        width: 24%;
+        vertical-align: top; }
+      .profile_container .profile_content .more_info .layer .row .column {
+        width: 33%;
+        display: inline-block; }
+      .profile_container .profile_content .more_info .layer .info {
+        display: inline-block; }
+        .profile_container .profile_content .more_info .layer .info .score {
           display: inline-block; }
-        .profile_container .profile_content .more_info .layer .info {
-          display: inline-block;
-          width: 18%; }
-          .profile_container .profile_content .more_info .layer .info.s {
-            width: auto; }
-          .profile_container .profile_content .more_info .layer .info .score {
-            display: inline-block; }
-  .profile_container div.jobs_container > div.jobs_content:nth-of-type(even) {
-    background: #e9e9e9; }
 
 .heading {
   font-size: 12px;
@@ -120,12 +152,14 @@
     .tab_container .tab.center {
       margin: 0 4.5%; }
     .tab_container .tab .tab_heading {
-      background-color: #666;
+      background-color: #efefef;
       padding: 10px; }
       .tab_container .tab .tab_heading span {
-        color: #fff; }
+        color: #4b4b4b;
+        font-size: 14px;
+        font-family: "Droid Sans", sans-serif; }
     .tab_container .tab .tab_content {
-      padding: 20px; }
+      padding: 10px; }
       .tab_container .tab .tab_content input {
         padding: 8px 12px;
         margin: 1px 0 10px 0;

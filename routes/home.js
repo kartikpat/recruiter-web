@@ -17,7 +17,6 @@ module.exports = function(settings){
 	else
 		baseUrl = config["baseUrl"];
 	function isAuthenticated(req, res, next) {
-		console.log(req.session);
 		// for disabling authentication
 		//return next()
 		//bypassing the auth for development
@@ -188,6 +187,50 @@ module.exports = function(settings){
 			title: "IIM JOBS | myChat",
 			styles:  assetsMapper["chat"]["styles"][mode],
 			scripts: assetsMapper["chat"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/recruiter-plan", function(req, res){
+
+		res.render("premium-posting",{
+			title: "IIM JOBS | Premium Posting",
+			styles:  assetsMapper["premium-posting"]["styles"][mode],
+			scripts: assetsMapper["premium-posting"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/my-profile", function(req, res){
+
+		res.render("my-profile",{
+			title: "IIM JOBS | My Profile",
+			styles:  assetsMapper["my-profile"]["styles"][mode],
+			scripts: assetsMapper["my-profile"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/edit-profile", function(req, res){
+
+		res.render("edit-profile",{
+			title: "IIM JOBS | Edit Profile",
+			styles:  assetsMapper["edit-profile"]["styles"][mode],
+			scripts: assetsMapper["edit-profile"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/profile-view", function(req, res){
+
+		res.render("profile-view",{
+			title: "IIM JOBS | Profile View",
+			styles:  assetsMapper["profile-view"]["styles"][mode],
+			scripts: assetsMapper["profile-view"]["scripts"][mode],
 			baseUrl: baseUrl
 		})
 		return

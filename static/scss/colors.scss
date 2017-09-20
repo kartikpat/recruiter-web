@@ -10,6 +10,9 @@ $color-green: #708732;
 $color-bg-green: #d9e1c4;
 $select-border: #ccc;
 $error-color: #d00a42;
+$hyperlink-color: #666;
+$divider-color: #ebebeb;
+$tab-background-color: #efefef;
 
 .link-color {
     color: $link-color;
@@ -33,6 +36,11 @@ $error-color: #d00a42;
 
 .extra-info-color {
     color: $extra-info-color;
+}
+
+
+.important-info-color {
+    color: $important-info-color;
 }
 
 .bg-overlay {

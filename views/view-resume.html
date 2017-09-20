@@ -1,4 +1,4 @@
-{{> header}}
+ {{> header}}
 
 <div class="profile_container box_shadow">
 
@@ -12,18 +12,18 @@
 <div class="profile_content">
 
   <span class="content name userDetail">
-
-    <img class="user_img" src="../static/img/tree.jpg">
+      <div class="info">
+          <img class="user_img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA">
+      </div>
     <div class="info">
         <div class="important_info name">Nitish</div>
-        <div class="important_info experience">Experience: 3y 6m</div>
-        <div class="important_info location">Location: Delhi</div>
-        <div class="important_info notice">Immediately Available</div>
-    </div>
-
-    <div class="info">
+        <div class="extra_info email">Nitish</div>
+        <div class="extra_info contact">Nitish</div>
         <div class="extra_info"><span class="sex">Male</span> , <span class="age">29</span> years</div>
-        <div class="extra_info applyDate">Applied: 15-05-2016</div>
+        <div class="extra_info notice">Immediately Available</div>
+
+        <!-- <div class="extra_info applyDate">Applied: 15-05-2016</div> -->
+        <div class="extra_info last-login">Immediately Available</div>
     </div>
 
     <div class="info">
@@ -40,7 +40,8 @@
 
   <span class="content more extraInfo">
     <div class="info">
-        <div class="extra_info hidden">Experience: 1y 6m</div>
+        <div class="extra_info experience">Experience: 3y 6m</div>
+        <div class="extra_info location">Location: Delhi</div>
         <div class="extra_info hidden">Location: Dadra &amp; Nagar Haveli</div>
         <div class="extra_info prefLocation">Preferred Location: Delhi, Gurgaon, Noida</div>
         <div class="extra_info currentCTC">Current Salary: Confidential</div>
@@ -58,34 +59,35 @@
   <hr class="divider">
 
   <div class="more_info moreInfo">
-    <div class="layer">
-    <div class="info">
-      <div class="heading">Marital Status</div>
-      <div class="content maritalStatus">Single</div>
-    </div>
-    <div class="info">
-      <div class="heading">Languages</div>
-      <div class="content languages">English, Hindi</div>
-    </div>
-    <div class="info">
-      <div class="heading">Work Permit for USA</div>
-      <div class="content permit">No</div>
-    </div>
-    <div class="info s">
-    <div class="score ">
-      <div class="heading">CAT Percentile</div>
-      <div class="content">-</div>
-    </div>
-    <div class="score ">
-      <div class="heading">IIT-JEE All India Rank (AIR)</div>
-      <div class="content">-</div>
-    </div>
-    <div class="score">
-      <div class="heading">GMAT Score</div>
-      <div class="content">-</div>
-    </div>
-  </div>
-  </div>
+      <div class="layer">
+            <div class="info marital-status-container">
+              <div class="heading">Marital Status</div>
+              <div class="content maritalStatus">Single</div>
+            </div>
+            <div class="info permit-container">
+              <div class="heading">Work Permit for USA</div>
+              <div class="content permit">No</div>
+            </div>
+            <div class="info score-container">
+                <div class="score ">
+                  <div class="heading">CAT Percentile</div>
+                  <div class="content">-</div>
+                </div>
+                <div class="score ">
+                  <div class="heading">IIT-JEE All India Rank (AIR)</div>
+                  <div class="content">-</div>
+                </div>
+                <div class="score">
+                  <div class="heading">GMAT Score</div>
+                  <div class="content">-</div>
+                </div>
+            </div>
+            <div class="info languages-container">
+              <div class="heading">Languages</div>
+              <div class="content languages">English, Hindi</div>
+            </div>
+        </div>
+
   <hr class="divider">
   <div class="layer">
     <div class="row">
@@ -153,8 +155,8 @@
     </div>
     <div class="tab_content">
       <div class="info">
-        <span class="left email">Shreya3.jain@gmail.com</span>
-        <span class="right"><i class="fa fa-check" aria-hidden="true"></i> Verified</span>
+        <span class="left email text-clr font-lg">Shreya3.jain@gmail.com</span>
+        <span class="right"><i class="highlighted fa fa-check" aria-hidden="true"></i><span class="font-md extra-info-color"> Verified</span></span>
     </div>
 
     <div class="info phone">
