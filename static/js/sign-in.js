@@ -11,7 +11,7 @@ $(document).ready(function(){
 		var userEmail = $("#user-email").val();
 		var userPassword = $("#user-password").val();
 		localStorage.id = id;
-		postRequest("/sign-in", null, {id: id},authSuccess, authFail,true,null)
+		postRequest("/sign-in", null, {id: id},authSuccess,null,null, authFail,true,null)
 	})
 
 	$(".login-tab.jobseeker").click(function(){
