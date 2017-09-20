@@ -25,6 +25,12 @@
 .animated {
   animation-duration: 500ms !important; }
 
+.job-title {
+  width: 95%;
+  font-size: 18px;
+  margin: 20px auto;
+  color: #708732; }
+
 .profile_container {
   width: 95%;
   margin: 40px auto; }
@@ -48,6 +54,8 @@
       width: 30%; }
     .profile_container .profile_header .more {
       width: 24%; }
+  .profile_container .buttons.extra-height {
+    height: 30px; }
   .profile_container .profile_content {
     padding: 0 15px 10px 15px; }
     .profile_container .profile_content .content {

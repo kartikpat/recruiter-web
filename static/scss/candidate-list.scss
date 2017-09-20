@@ -1,4 +1,6 @@
+
 @import "colors.scss";
+@import "fonts.scss";
 
 @mixin input-styling {
     box-sizing: border-box;
@@ -20,7 +22,7 @@ input, select {
 }
 
 * {
-    font-family: 'Open Sans', sans-serif;
+    font-family: $droid-font;
     font-weight: normal;
 }
 
@@ -54,7 +56,9 @@ input, select {
             margin-bottom: 5px;
 
             > span {
-                font-size: 10px;
+                font-size: 15px;
+                font-family: $droid-font;
+                color: #4b4b4b;
             }
 
             > button {
@@ -78,6 +82,7 @@ input, select {
                 input[type="checkbox"] {
                     display: inline-block;
                     width: auto;
+
 
                     span {
                         font-size: 11px;
@@ -371,7 +376,7 @@ input, select {
                     .info {
                         padding: 0 0 5px 0;
                         .important_info {
-                            font-size: 11px;
+                            font-size: 13px;
                             color: $important-info-color;
                             &.name {
                                 font-size: 13px;
@@ -379,6 +384,7 @@ input, select {
                         }
                         .extra_info {
                             color: $extra-info-color;
+                            font-size: 13px;
                         }
                         .icon {
                             display: block;
@@ -532,7 +538,8 @@ input, select {
                     width: 300px;
 
                     label {
-                        font-size: 12px;
+                        font-size: 13px;
+                        font-family: $droid-font;
                     }
                 }
             }
@@ -686,4 +693,15 @@ input, select {
     }
 
 
+}
+
+.checkboxes {
+    font-size: 13px;
+    font-family: $droid-font !important;
+    color: #1b1b1b;
+    input {
+        margin: 0 5px 0 0!important;
+        vertical-align: middle;
+    }
+    cursor: pointer;
 }

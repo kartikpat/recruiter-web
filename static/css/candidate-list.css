@@ -34,7 +34,7 @@ input:focus, select:focus {
   color: #708732; }
 
 * {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Droid Sans", sans-serif;
   font-weight: normal; }
 
 .main-container {
@@ -62,7 +62,9 @@ input:focus, select:focus {
       border-bottom: 1px solid #f5f6f7;
       margin-bottom: 5px; }
       .main-container .filters .menu > span {
-        font-size: 10px; }
+        font-size: 15px;
+        font-family: "Droid Sans", sans-serif;
+        color: #4b4b4b; }
       .main-container .filters .menu > button {
         float: right; }
       .main-container .filters .menu .field {
@@ -284,12 +286,13 @@ input:focus, select:focus {
           .main-container .jobs .jobs_panel .jobs_content .content .info {
             padding: 0 0 5px 0; }
             .main-container .jobs .jobs_panel .jobs_content .content .info .important_info {
-              font-size: 11px;
+              font-size: 13px;
               color: #333; }
               .main-container .jobs .jobs_panel .jobs_content .content .info .important_info.name {
                 font-size: 13px; }
             .main-container .jobs .jobs_panel .jobs_content .content .info .extra_info {
-              color: #808080; }
+              color: #808080;
+              font-size: 13px; }
             .main-container .jobs .jobs_panel .jobs_content .content .info .icon {
               display: block;
               color: #808080;
@@ -393,7 +396,8 @@ input:focus, select:focus {
           vertical-align: top;
           width: 300px; }
           .modal .modal-content .modal-bottom .row .tags-wrapper label {
-            font-size: 12px; }
+            font-size: 13px;
+            font-family: "Droid Sans", sans-serif; }
 
 .resume-container {
   position: fixed;
@@ -500,3 +504,12 @@ input:focus, select:focus {
       width: 125px;
       height: 10px;
       margin-bottom: 10px; }
+
+.checkboxes {
+  font-size: 13px;
+  font-family: "Droid Sans", sans-serif !important;
+  color: #1b1b1b;
+  cursor: pointer; }
+  .checkboxes input {
+    margin: 0 5px 0 0 !important;
+    vertical-align: middle; }

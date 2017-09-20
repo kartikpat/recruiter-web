@@ -235,7 +235,7 @@ footer, header, hgroup, menu, nav, section {
         }
 
         .jobs_content {
-            border-bottom: 1px solid $color-light-grey;
+            border-bottom: 1px solid #d0d0d0;
             span {
                 display: inline-block;
                 color: #242424;
@@ -268,7 +268,8 @@ footer, header, hgroup, menu, nav, section {
 
     .post_job {
         margin: 21px 0;
-
+        .post_job_form {
+            max-width: 1200px;
         .heading {
             .back {
                 display: block;
@@ -345,6 +346,7 @@ footer, header, hgroup, menu, nav, section {
             }
         }
     }
+}
 
     /*.tags-container {
         margin-left: 35px;

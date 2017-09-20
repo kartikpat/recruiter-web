@@ -30,7 +30,7 @@ var showMenuMore = function() {
 var populateHeader = function(res) {
 	console.log(res);
     if(res.status =="success") {
-        userProfile.find('.email').text(res["data"][0]["email"]).removeClass("animated-background");
+        userProfile.find('.email').append(res["data"][0]["email"]+"<i class='email-caret fa fa-caret-down' aria-hidden='true'></i>").removeClass("animated-background");
 		userProfile.find('.image-container img').attr('src', res["data"][0]["img_link"]).removeClass("animated-background");
     }
 }
