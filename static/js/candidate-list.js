@@ -35,6 +35,10 @@ $(window).click(function() {
 	$(".resume-container").addClass("hidden");
 });
 
+window.addEventListener('error', function(e) {
+   console.log(e);
+}, true);
+
 var createObject = function() {
 	return {
 		industry: (obj["industry"])? obj["industry"].join(","): null,
@@ -204,7 +208,7 @@ var populateMainTags = function(sorted,metaData) {
 	var dataAttribute = metaData["data-attribute"];
 	var name = metaData["name"];
 	$.each(sorted, function(index, value) {
-		if(index > 1){
+		if(index > 4){
 			return
 		}
 		var obj = sorted[index];

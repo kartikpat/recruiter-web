@@ -39,22 +39,25 @@ input, select {
         .search-by-keyword {
             width: 100%;
             border-bottom: 1px solid $color-light-grey;
-            padding-bottom: 5px;
+            padding: 0 10px 10px 10px;
             margin-bottom: 5px;
 
             input {
                 @include input-styling;
-
                 width: 75%;
-                padding: 4px 6px;
+                padding: 6px 8px;
                 font-size: 11px;
+            }
+            button {
+                float: right;
             }
         }
 
         .menu {
             border-bottom: 1px solid $color-light-grey;
             margin-bottom: 5px;
-
+            line-height: 22px;
+            padding: 5px 10px;
             > span {
                 font-size: 15px;
                 font-family: $droid-font;
@@ -192,6 +195,7 @@ input, select {
 
                 .header_organization {
                     width: 28%;
+                    padding-left: 10px;
                 }
 
                 .header_institute {
@@ -211,7 +215,7 @@ input, select {
                     background-color: #fbfbfb;
                 }
                 .content-container {
-                    height: 200px;
+
                     cursor: pointer;
                     padding: 10px 10px 0 10px;
                 }
@@ -373,17 +377,20 @@ input, select {
                     overflow: hidden;
                     font-size: 11px;
                     vertical-align: top;
+                    line-height: 20px;
                     .info {
-                        padding: 0 0 5px 0;
+                        padding: 0 0 10px 0;
                         .important_info {
                             font-size: 13px;
                             color: $important-info-color;
                             &.name {
                                 font-size: 13px;
+                                font-weight: bold;
+                                font-family: Arial !important;
                             }
                         }
                         .extra_info {
-                            color: $extra-info-color;
+                            color: $important-info-color;
                             font-size: 13px;
                         }
                         .icon {
@@ -423,6 +430,7 @@ input, select {
 
                 .content.content_organization {
                     width: 28%;
+                    padding-left: 10px;
                 }
 
                 .content.content_institute {
@@ -650,6 +658,7 @@ input, select {
         .content.content_organization {
             width: 28%;
             padding-top: 35px;
+
             .name {
                 width: 150px;
                 height: 20px;
