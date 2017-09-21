@@ -25,6 +25,9 @@ $(document).ready(function(){
 	$("#edit-profile").click(function() {
 		window.location = "/recruiter/edit-profile";
 	})
+	$("#edit-pencil").click(function() {
+		window.location = "/recruiter/edit-profile";
+	})
 	// $(".profile_link").click(function(event) {
 	// 	event.preventDefault();
 	// 	window.location = "http://www.iimjobs.com/r/"+recruiterID+"-shreya-jain";

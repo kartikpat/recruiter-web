@@ -35,7 +35,7 @@ body, html {
 
 * {
   font-weight: normal;
-  font-family: 'Open Sans'; }
+  font-family: "Droid Sans", sans-serif; }
 
 .hidden {
   display: none !important; }

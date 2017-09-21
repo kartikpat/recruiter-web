@@ -2,7 +2,7 @@
 
 <div class="job_posting">
   <div class="post_job">
-   <div class="heading">
+   <div class="form-heading">
     <a href="/" class="back link-color">Back</a>
     <div>
         <span>Post a Job</span>
@@ -63,7 +63,7 @@
     <label for="location">Location</label>
     </div>
     <div class="field">
-    <input type="text" id="location" name="location" placeholder="location..">
+        <input type="text" id="location" name="location" placeholder="location..">
     </div>
 
     <div class="label">
@@ -86,7 +86,7 @@
     <label for="industry">Industry*</label>
     </div>
     <div class="field">
-    <select id="industry" name="industry" multiple>
+    <select class="multiple industry" id="industry" name="industry" multiple>
       <option value="24">
 		Accounting / Finance / Audit	    </option>
 	                <!--<option value='' >-->
@@ -187,7 +187,7 @@
 		Other	    </option>
     </select>
     <div id="industry_label" class="error hidden">Please select atleast one industry</div>
-    <p class=" extra-info-color font-xs">Press Ctrl Key to select multiple industries. You can select upto 5 industries.</p>
+    <p class="extra-info extra-info-color font-xs">Press Ctrl Key to select multiple industries. You can select upto 5 industries.</p>
 
     </div>
 
@@ -247,11 +247,11 @@
     </div>
     <div class="field">
     <input type="text" id="min_salary" name="min_salary" placeholder="Min Salary..">
-    <p class="extra-info-color font-xs">Min (in lakhs per annum)</p>
+    <p class="salary-info extra-info-color font-xs">Min (in lakhs per annum)</p>
     <input type="text" id="max_salary" name="max_salary" placeholder="Max Salary..">
-    <p class="extra-info-color font-xs">Max (in lakhs per annum)</p>
-    <label for="salary_show" class="important-info-color font-sm">
-        <input type="checkbox" id="salary_show" value="1">Don't show this to candidates.
+    <p class="salary-info extra-info-color font-xs">Max (in lakhs per annum)</p>
+    <label for="salary_show" class="checkbox important-info-color font-sm">
+        <input type="checkbox" id="salary_show" value="1"><span>Don't show this to candidates.</span>
     </label>
     </div>
 
@@ -333,24 +333,24 @@
       </div>
     </div>
 
-    <div class="label top">
-    <label for="course_type">Course Type</label>
+    <div class="label course-type top">
+    <label  for="course_type">Course Type</label>
     </div>
-    <div class="field">
-        <label for="full-time" class="important-info-color font-sm">
-            <input id="full-time" type="checkbox" name="course_type[]" value="1">Full Time
+    <div class="field course-type">
+        <label for="full-time" class="checkbox important-info-color font-sm">
+            <input id="full-time" type="checkbox" name="course_type[]" value="1"><span>Full Time</span>
         </label>
-        <label for="part-time" class="important-info-color font-sm">
-            <input id="part-time" type="checkbox" name="course_type[]" value="2">Part Time
+        <label for="part-time" class="checkbox important-info-color font-sm">
+            <input id="part-time" type="checkbox" name="course_type[]" value="2"><span>Part Time</span>
         </label>
-        <label for="distance-learning-program" class="important-info-color font-sm">
-            <input id="distance-learning-program" type="checkbox" name="course_type[]" value="3">Distance Learning program
+        <label for="distance-learning-program" class="checkbox important-info-color font-sm">
+            <input id="distance-learning-program" type="checkbox" name="course_type[]" value="3"><span>Distance Learning program</span>
         </label>
-        <label for="exec-program" class="important-info-color font-sm">
-            <input id="exec-prog" type="checkbox" name="course_type[]" value="4">Executive Program
+        <label for="exec-program" class="checkbox important-info-color font-sm">
+            <input id="exec-prog" type="checkbox" name="course_type[]" value="4"><span>Executive Program</span>
         </label>
-        <label for="certify" class="important-info-color font-sm">
-            <input id="certify" type="checkbox" name="course_type[]" value="5">Certification
+        <label for="certify" class="checkbox important-info-color font-sm">
+            <input id="certify" type="checkbox" name="course_type[]" value="5"><span>Certification</span>
         </label>
     </div>
 
@@ -557,9 +557,9 @@
    1970	    </option>
       </select>
       <div>
-          <label for="premium_job" class="important-info-color font-sm">
+          <label for="premium_job" class="checkbox premium-job important-info-color font-sm">
               <input type="checkbox" id="premium_job" name="premium" value="0">
-              Please make this job premium (highlighted) for higher visibility.
+              <span>Please make this job premium (highlighted) for higher visibility.<span>
           </label>
       </div>
     </div>
@@ -594,7 +594,7 @@
              </div>
              <div class="field">
                  <div class="add-tags-content">
-                     <input type="text" class="tag-input">
+                     <input type="text" class="tag-input" placeholder="Add New Tag">
                      <button class="button add-new-tag">Add New Tag</button>
                  </div>
              </div>
@@ -602,12 +602,12 @@
      </div>
      <div class="label">
      </div>
-     <div class="field">
-         <div><label for="female_candidate" class="important-info-color font-sm"><input type="checkbox" id="female_candidates" value="1"> Would prefer Female candidates for this role.</label></div>
-         <div><label for="differently_abled" class="important-info-color font-sm"><input type="checkbox" id="differently_abled" value="1"> Would prefer Differently-abled candidates for this role. This includes Physical disability, Vision or Hearing impairment, etc.</label></div>
-         <div><label for="ex_defence" class="important-info-color font-sm"><input type="checkbox" id="ex_defence" value="1"> Would prefer ex-defence personnel.</label></div>
-         <div><label for="work_home" class="important-info-color font-sm"><input type="checkbox" id="work_home" value="1"> May work from home.</label></div>
-         <div><label for="female_back_workforce" class="important-info-color font-sm"><input type="checkbox" id="female_back_workforce" value="1"> Would prefer women joining back the workforce.</label></div>
+     <div class="field checkboxes">
+         <div><label for="female_candidate" class="checkbox important-info-color font-sm"><input type="checkbox" id="female_candidate" value="1"> <span>Would prefer Female candidates for this role.</span></label></div>
+         <div><label for="differently_abled" class="checkbox important-info-color font-sm"><input type="checkbox" id="differently_abled" value="1"><span> Would prefer Differently-abled candidates for this role. This includes Physical disability, Vision or Hearing impairment, etc.</label></div>
+         <div><label for="ex_defence" class="checkbox important-info-color font-sm"><input type="checkbox" id="ex_defence" value="1"><span> Would prefer ex-defence personnel.</span></label></div>
+         <div><label for="work_home" class="checkbox important-info-color font-sm"><input type="checkbox" id="work_home" value="1"><span> May work from home.</span></label></div>
+         <div><label for="female_back_workforce" class="checkbox important-info-color font-sm"><input type="checkbox" id="female_back_workforce" value="1"><span> Would prefer women joining back the workforce.</span></label></div>
     </div>
 
     <div class="label">
