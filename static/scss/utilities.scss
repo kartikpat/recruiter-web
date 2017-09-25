@@ -127,6 +127,10 @@ $dot-size: 7px;
     &:hover {
         background-color: #eee;
     }
+    i {
+        margin-left: 5px;
+        color: rgb(170, 170, 170);
+    }
 }
 
 .highlight {

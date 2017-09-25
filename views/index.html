@@ -17,7 +17,7 @@
            <div class="user_name animated-background font-lg"></div>
            <div class="user_designation animated-background"></div>
        </div>
-       <hr class="divider">
+       <hr class="divider hidden">
        <div class="user-about animated-background font-sm extra-info-color"></div>
        <div class="edit_profile">
            <button id="edit-profile"><i class="fa fa-pencil" aria-hidden="true"></i></button>
@@ -70,13 +70,31 @@
  <div class="jobs_content prototype hidden">
         <span class="date">Date</span>
         <span class="title">Title</span>
-        <span class="status">Status</span>
+        <span class="status"></span>
         <span class="views">Views</span>
-        <span class="action">Action</span>
+        <span class="action"></span>
+        <div id="modal-rejected" class="modal-rejected modal hidden animated fadeIn bg-overlay">
+            <!-- Modal content -->
+
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <span class="modal-heading ">Why Rejected</span>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-center">
+                    <div class="list">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="button close-modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
   <!-- end jobs posted section -->
 
-  <div class="modal hidden animated fadeIn bg-overlay">
+  <div id="modal-guidelines" class="modal hidden animated fadeIn bg-overlay">
       <!-- Modal content -->
 
       <div class="modal-content ">

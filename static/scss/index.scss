@@ -223,6 +223,7 @@ footer, header, hgroup, menu, nav, section {
             padding: 5px;
             font-size: 13px;
             font-family: "Droid Sans",sans-serif;
+            text-decoration: none;
         }
     }
 
@@ -242,36 +243,89 @@ footer, header, hgroup, menu, nav, section {
                 overflow: auto;
                 font-size: 12px;
                 text-align: left;
-
+                font-weight: bold;
                 font-family: "Droid Sans",sans-serif;
             }
         }
 
         .jobs_content {
             border-bottom: 1px solid #d0d0d0;
+            &:hover {
+                background-color: $color-light-grey;
+                // cursor: pointer;
+            }
             span {
                 display: inline-block;
                 color: #242424;
                 padding: 5px;
                 margin: 5px;
-                overflow: hidden;
                 font-size: 13px;
                 font-family: "Droid Sans",sans-serif;
 
             }
+            .date, .title, .status, .views {
+                position: relative;
+                top: -20px;
+            }
         }
         .date {
             width: 10%;
+
         }
         .title {
             width: 40%;
+
         }
         .status {
-            width: 10%;
+            display: inline-block;
+            width: 15%;
+
+            .rejected-message {
+                margin-left: 10px;
+                border-radius: 50%;
+                padding: 4px 6px 3px 6px;
+                background: #469de7;
+                cursor: pointer;
+                width: 20px;
+                height: 20px;
+                color: $color-white;
+                position: relative;
+                &:hover .tooltip-message{
+                    visibility: visible;
+                    opacity: 1;
+                }
+                .tooltip-message {
+                    position: absolute;
+                    visibility: hidden;
+                    z-index: 2;
+                    top: 50%;
+                    left: 120%;
+                    transform: translate(-1%,-61%);
+                    padding: 15px 15px;
+                    width: 175px;
+                    background-color: #555;
+                    color: #fff;
+                    opacity: 0;
+                    transition: opacity 0.5s;
+                    border-radius: 7px;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        transform: translate(0%, -50%);
+                        margin-left: -10px;
+                        border-width: 5px;
+                        border-style: solid;
+                        border-color: transparent #555 transparent transparent;
+                    }
+                }
+            }
         }
         .views {
             width: 12%;
             min-width: 40px;
+
         }
     }
 }
@@ -280,111 +334,120 @@ footer, header, hgroup, menu, nav, section {
     padding: 20px;
 
     .post_job {
-        margin: 21px 0;
-        .post_job_form {
-            max-width: 1200px;
-            margin-top: 25px;
+
+
         .form-heading {
-            margin-bottom: 25px !important;
+            margin-bottom: 25px ;
             .back {
                 display: block;
+                margin-bottom: 10px ;
+                text-decoration: none;
+                font-size: 13px;
             }
 
-            > span {
-                font-size: 24px;
-            }
+            .post-job-heading {
+                font-size: 18px;
+                color: $color-heading;
+             }
 
             .guidelines {
-                font-size: 12px;
+                font-size: 18px;
+                text-decoration: none;
             }
         }
+        .post_job_form {
+            max-width: 1200px;
+            margin: 25px 0 0 50px;
+            .field-container {
+                padding: 10px;
+                .label {
+                    display: inline-block;
+                    width: 15%;
+                    font-size: 14px;
+                    color: $color-black-text;
+                    vertical-align: top;
+                    height: 34px;
+                    line-height: 34px;
+                    cursor: pointer;
+                }
 
-        .label {
-            display: inline-block;
-            margin-left: 35px;
-            padding: 15px;
-            width: 15%;
-            font-size: 12px;
-            color: $extra-info-color;
-        }
+                .field {
+                    width: 60%;
+                    display: inline-block;
+                    &.course-type {
+                        height: 34px;
+                        line-height: 40px;
+                    }
+                    .js-show-selected-tags, .js-show-suggested-tags {
+                        margin-right: 10px;
+                    }
 
-        .label.top {
-            vertical-align: top !important;
-        }
+                    .salary-info {
+                        margin: 10px 0;
+                    }
 
-        .label.course-type {
-            padding: 6px 15px;
-        }
+                    input, select {
+                        display: block;
+                        width: 70%;
+                        height: 34px;
+                        padding: 6px 12px;
+                        font-size: 14px;
+                        line-height: 34px;
+                        color: $input-color;
+                        border: 1px solid #ccc;
+                        transition: border-color 0.20s ease-in-out;
+                        background-color: inherit;
+                        border-radius: 2px;
+                        &:focus {
+                            outline: none;
+                            border-color: $input-focus-color;
+                        }
+                    }
+                    input::-webkit-input-placeholder {
+                        height: 34px;
+                        line-height: 34px;
+                    }
+                    select.multiple {
+                        height: 75px;
+                    }
 
-        .field {
-            width: 60%;
-            display: inline-block;
-            margin-left: 60px;
-            margin-bottom: 15px;
-            &.course-type {
-                height: 30px;
-                line-height: 30px;
-            }
-            .js-show-selected-tags, .js-show-suggested-tags {
-                margin-right: 10px;
-            }
+                    .multiple.industry {
+                        margin-bottom: 10px;
+                    }
 
-            .salary-info {
-                margin: 10px 0;
-            }
+                    input[type="checkbox"] {
+                        display: inline-block;
+                        width: auto;
+                        height: auto;
+                        margin: 0 3px 0 0;
+                    }
 
-            input, select {
-                display: block;
-                width: 60%;
-                height: 34px;
-                padding: 6px 12px;
-                font-size: 14px;
-                line-height: 1.42857143;
-                color: $input-color;
-                border: 1px solid #ccc;
-                transition: border-color 0.20s ease-in-out;
-                background-color: inherit;
+                    select.half {
+                        width: 29.5%;
+                        display: inline-block;
+                    }
 
-                &:focus {
-                    outline: none;
-                    border-color: $input-focus-color;
+                    textarea {
+                        width: 70%;
+                        min-height: 250px;
+                        padding: 12px 20px;
+                        box-sizing: border-box;
+                        border: 1px solid #ccc;
+                        border-radius: 2px;
+                        background-color: inherit;
+
+                        transition: border-color 0.20s ease-in-out;
+                        &:focus {
+                            outline: none;
+                            border-color: $input-focus-color;
+                        }
+
+
+                    }
                 }
             }
-            select.multiple {
-                height: 75px;
-            }
 
-            .multiple.industry {
-                margin-bottom: 10px;
-            }
 
-            input[type="checkbox"] {
-                display: inline-block;
-                width: auto;
-                height: auto;
-                margin: 0 3px 0 0;
-            }
-
-            select.half {
-                width: 29.5%;
-                display: inline-block;
-            }
-
-            textarea {
-                width: 70%;
-                height: 150px;
-                padding: 12px 20px;
-                box-sizing: border-box;
-                border: 2px solid #ccc;
-                border-radius: 4px;
-                background-color: inherit;
-                resize: none;
-
-                &:focus {
-                    outline: none;
-                }
-            }
-        }
     }
 }
 
@@ -441,15 +504,8 @@ footer, header, hgroup, menu, nav, section {
                     padding: 4px 8px;
                 }
             }
-
         } */
-
     }
-
-
-
-
-
 
 .modal {
     position: fixed;
@@ -472,6 +528,24 @@ footer, header, hgroup, menu, nav, section {
     background-color: rgba(0, 0, 0, 0.4);
 
     /* Black w/ opacity */
+    &.modal-rejected {
+        .modal-header {
+            padding: 6px 10px;
+            .modal-heading {
+                font-size: 14px;
+            }
+            .close {
+                font-size: 16px;
+            }
+        }
+        .modal-center {
+            padding: 20px 10px;
+        }
+        .modal-footer {
+            padding: 6px 10px;
+            min-height: 40px;
+        }
+    }
 }
 
 .modal-content {
@@ -533,6 +607,9 @@ footer, header, hgroup, menu, nav, section {
     .close-modal.button {
         position: absolute;
         right: 20px;
+        font-size: 14px;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+        padding: 6px 12px;
     }
 }
 
@@ -642,6 +719,7 @@ footer, header, hgroup, menu, nav, section {
 
 .checkbox {
     margin-right: 5px;
+    font-size: 14px;
     cursor: pointer;
     span {
         position: relative;
@@ -675,3 +753,28 @@ label.premium-job {
 .checkboxes div {
     margin-bottom: 4px;
 }
+
+.edit-job-container {
+    width: 25px;
+    margin-top: 10px;
+    box-shadow: 4px 5px 5px 0px #e9e9e9;
+    cursor: pointer;
+    height: 27px;
+}
+
+.add-tags-content {
+    input {
+        display: inline-block !important;
+        margin-right: 30px;
+    }
+    button {
+        font-size: 12px;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+        padding: 6px 12px;
+    }
+}
+
+.applied-link {
+    position: relative;
+    top: 5px;
+    }

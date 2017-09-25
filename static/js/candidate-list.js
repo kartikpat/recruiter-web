@@ -224,29 +224,39 @@ var performAction = function(event) {
 	event.preventDefault();
 	event.stopPropagation();
 	var hasClass = $(this).hasClass("highlighted");
+	var dataAttribute = $(this).attr("data-attribute");
 	if(!(hasClass)) {
 		var applicationId = $(this).attr("data-application-id");
-		var dataAttribute = $(this).attr("data-attribute");
+
+		var elem = $(this);
 		postRequest(baseUrl+"/recruiter/"+recruiterID+"/action/"+jobId, null ,{
 			action: dataAttribute,
 			id: applicationId
-		}, function(res) {
-			if(res["status"] == "success") {
-			// if(tabId!= '') {
-			// 	// c$(".jobs_content[data-attribute=js-"+applicationId+"]").addClass("remove");
-			// 	//$(".jobs_content[data-attribute=js-"+applicationId+"]").css("background","red")
-			// }
-			$('.jobs-wrapper-shell-loader').removeClass('hidden');
-			var queryString = createObject();
-			queryString = checkTabId(tabId, queryString);
-			queryString["pageContent"] = pageContent;
-			$('.jobs_wrapper').empty();
-			for(var i = 1; i <= pageNumber; i++ ) {
-				queryString["pageNumber"] = i;
-				getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId, queryString, populateJobs);
-			}
-			}
+		 }, function(res) {
+		 	if(res["status"] == "success") {
+				$(".jobs_wrapper .jobs_content[data-attribute=js-"+applicationId+"] .icon").removeClass("highlighted");
+				console.log($(this));
+				elem.addClass("highlighted");
+		// 	// if(tabId!= '') {
+		// 	// 	// c$(".jobs_content[data-attribute=js-"+applicationId+"]").addClass("remove");
+		// 	// 	//$(".jobs_content[data-attribute=js-"+applicationId+"]").css("background","red")
+		// 	// }
+		// 	$('.jobs-wrapper-shell-loader').removeClass('hidden');
+		// 	var queryString = createObject();
+		// 	queryString = checkTabId(tabId, queryString);
+		// 	queryString["pageContent"] = pageContent;
+		// 	$('.jobs_wrapper').empty();
+		// 	for(var i = 1; i <= pageNumber; i++ ) {
+		// 		queryString["pageNumber"] = i;
+		// 		getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId, queryString, populateJobs);
+		// 	}
+		 	}
 		});
+
+	}
+	if(dataAttribute == 4) {
+		var redirectionLocation = $(this).attr("href");
+		window.location = redirectionLocation;
 	}
 }
 
@@ -356,7 +366,19 @@ $(document).ready(function(){
 	//console.log(calendarId);
 	$(".set-default-calendar-button").click(setDefaultCalendar)
 
+	$("#search-by-keyword-button").click(searchByKeyword);
+
 });
+
+var searchByKeyword = function() {
+	var searchStr = $("#search-by-keyword").val();
+	console.log(searchStr);
+	if(searchStr!= '') {
+		$('.jobs-wrapper-shell-loader').removeClass('hidden');
+		$('.jobs_wrapper').empty();
+		getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId+"?searchString="+searchStr ,{ }, populateJobs);
+	}
+}
 
 var setDefaultCalendar = function() {
 	calendarId = $(".calendar-select option:selected").val();
@@ -481,7 +503,7 @@ var showFilterTags = function(obj) {
 			}
 			filterTag.attr("data-name", objKey);
 			filterTag.attr("data-value", value);
-			filterTag.text(elementValue);
+			filterTag.append(elementValue+"<i class='fa fa-times' aria-hidden='true'></i>");
 			filterTag.addClass('inline-block box_shadow js-remove-tag font-sm');
 			$('.filter-tags').append(filterTag);
 		});

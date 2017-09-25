@@ -1,7 +1,7 @@
 var postJobForm = $(".post_job_form");
 var tagsContainer = $(".tags-container");
 var baseUrl = "http://13.126.92.102:8000"
-var baseUrlTags = "http://13.126.180.75:5000"
+var baseUrlTags = "http://13.126.180.75:4000"
 var recruiterID = localStorage.id;
 
 var modal = $('.modal');
@@ -41,7 +41,7 @@ var showSuggestedTags = function(res) {
     tagsContainer.find('.suggested-tags-content').empty();
 	$.each(res["tags"], function(arrayKey, anElement) {
 		var filterTag = $('.js-show-suggested-tags.prototype').clone().removeClass('prototype hidden');
-		filterTag.text(anElement);
+		filterTag.html(anElement);
         filterTag.attr("data-value", anElement);
 		filterTag.addClass('inline-block box_shadow  font-sm');
 	    tagsContainer.find('.suggested-tags-content').append(filterTag);
@@ -56,7 +56,7 @@ tagsContainer.on('click', '.js-show-suggested-tags', function() {
     if(!($(this).hasClass("highlight"))) {
         tagsContainer.find('.suggested-tags-content .js-show-suggested-tags[data-value="'+value+'"]').addClass("highlight");
         var filterTag = $('.js-show-selected-tags.prototype').clone().removeClass('prototype hidden');
-        filterTag.text(value);
+        filterTag.html(value+"<i class='fa fa-times' aria-hidden='true'></i>");
         filterTag.addClass('inline-block box_shadow font-sm');
         filterTag.attr("data-value", value);
         tagsContainer.find('.selected-tags-content').append(filterTag);
@@ -86,7 +86,7 @@ tagsContainer.find('.add-new-tag').on('click', function(){
     var inputValue = tagsContainer.find(".tag-input").val();
     if(inputValue) {
         var filterTag = $('.js-show-selected-tags.prototype').clone().removeClass('prototype hidden');
-        filterTag.text(inputValue);
+        filterTag.html(inputValue+"<i class='fa fa-times' aria-hidden='true'></i>");
         filterTag.addClass('inline-block box_shadow font-sm');
         tagsContainer.find('.selected-tags-content').append(filterTag);
     }

@@ -125,6 +125,9 @@
   margin-right: 10px; }
   .js-show-tags:hover {
     background-color: #eee; }
+  .js-show-tags i {
+    margin-left: 5px;
+    color: #aaaaaa; }
 
 .highlight {
   background-color: #d9e1c4; }

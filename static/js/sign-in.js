@@ -20,6 +20,8 @@ $(document).ready(function(){
 		window.location = "https://www.updazz.com/registration/login.php";
 	})
 
+	//loginForm.find('#login-email').on('keyup', validateEmail);
+
 	loginForm.find(".register").click(registerUser);
     loginForm.find(".log-in").click(loginUser);
 
@@ -35,6 +37,15 @@ $(document).ready(function(){
         checkErrorClass(this);
     });
 });
+
+// function validateEmail() {
+// 	var email = $(this).val();
+//   	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+//   	var isValidEmail = re.test(email);
+// 	if(isValidEmail) {
+// 		$(this)
+// 	}
+// }
 
 /**
  * error handler for login
@@ -99,6 +110,7 @@ var registerUser = function() {
         checkErrorClass(this);
         obj = getValue(this, obj);
     });
+	window.location = "/recruiter/export-profile";
 }
 
 var loginUser = function() {

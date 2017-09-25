@@ -14,7 +14,8 @@ var closeModalBtn = $(".close");
 $(document).ready(function(){
 	getRequest(baseUrl+"/recruiter/"+recruiterID, {}, populateProfile);
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs", {}, populateJobs);
-	openGuidelines.click(openModal);
+	openGuidelines.click(openGuidelinesModal);
+
 	closeModalBtn.click(closeModal);
 	$(".close-modal").click(closeModal);
     window.onclick = function(event) {
@@ -58,9 +59,25 @@ function windowH() {
 }
 
 
-var openModal = function() {
-    modal.removeClass('hidden');
+var openGuidelinesModal = function() {
+    $("#modal-guidelines").removeClass('hidden');
 }
+
+var openRejectedModal = function() {
+	console.log("hi");
+	var dataAttr = $(this).attr("data-attribute");
+    $(".modal-rejected[data-attribute="+dataAttr+"]").removeClass('hidden');
+}
+
+var closeRejectedModal = function() {
+	console.log("hi");
+	var dataAttr = $(this).attr("data-attribute");
+    $(".modal-rejected[data-attribute="+dataAttr+"]").addClass('hidden');
+}
+
+$(".jobs_container").on('click','.rejected-message',openRejectedModal);
+$(".jobs_container").on('click','.modal .modal-header .close',closeRejectedModal);
+$(".jobs_container").on('click','.modal .modal-footer .close-modal',closeRejectedModal);
 
 var closeModal = function() {
     modal.addClass('hidden');
@@ -77,6 +94,7 @@ var populateProfile = function(res) {
 		profile.find(".extra_info .last_login").text("Last Login: "+ISODateToD_M_Y(data["d_login"])).removeClass("animated-background");
 		profile.find(".profile_link").text(data["rurl"]).removeClass("animated-background");
 		profile.find(".profile_link").attr("href",data["rurl"]);
+		profile.find(".user_details .divider").removeClass("hidden");
 		if(data["lurl"]) {
 			var btn = $('.linked-in').removeClass('hidden');
 
@@ -121,12 +139,23 @@ var populateJobs = function(res){
 		res["data"].forEach(function(aJob){
 			var card = tableRow.clone().removeClass('prototype hidden');
 			var status = "" ;
+			var rejMssg;
+			if(aJob["rej_msg"]){
+				rejMssg = aJob["rej_msg"];
+			}
+			else {
+				rejMssg = "Nothing to show";
+			}
 
 			card.find(".date").text(ISODateToD_M_Y(aJob["created"]));
 			card.find(".title").text(aJob["title"]);
-			card.find(".status").text(aJob["rej"]);
-			card.find(".action").text(aJob["loc"]);
-			card.find(".views").html(( aJob["views"])? aJob["views"]+" views ("+( (aJob["applied"])? '<a href="/job/'+aJob["id"]+'/candidates?title='+aJob["title"]+'">'+aJob["applied"]+'</a>'+  ")": "0)" ): "" )
+			card.find(".status").append(aJob["status"]+"<i data-attribute="+aJob["timestamp"]+" class='rejected-message fa fa-question' aria-hidden='true'><span class='tooltip-message'>"+rejMssg+"</span></i>");
+			card.find(".modal").attr("data-attribute",aJob["timestamp"]);
+			card.find(".modal .modal-header .close").attr("data-attribute",aJob["timestamp"]);
+			card.find(".modal .modal-footer .close-modal").attr("data-attribute",aJob["timestamp"]);
+			card.find(".modal .modal-content .modal-center .list").text(rejMssg);
+			card.find(".action").append(aJob["loc"]+"<div class='edit-job-container'><img src='https://static.iimjobs.com/recruiter/resources/images/edit-grey.png'></div>");
+			card.find(".views").html(( aJob["views"])? aJob["views"]+" views "+( (aJob["applied"])? '<div class="applied-link"><a class="link-color" href="/job/'+aJob["id"]+'/candidates?title='+aJob["title"]+'">'+aJob["applied"]+'applied</a></div>'+  "": "0)" ): "" )
 			$('.jobs_container').append(card);
 		})
 	}

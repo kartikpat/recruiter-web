@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+	<!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet"> -->
+	{{#styles.length}}
+    	{{#styles}}
+    		<link rel="stylesheet" href="/{{.}}">
+			<!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> -->
+			<link href="https://fonts.googleapis.com/css?family=Comfortaa|Droid+Sans|Noto+Sans" rel="stylesheet">
+    	{{/styles}}
+	{{/styles.length}}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript">
+		var baseUrl = '{{baseUrl}}';
+		var userID = '{{userID}}';
+		var jobID = '{{jobID}}';
+	</script>
+</head>
+<body>
+<header>
+
+	<div class="top_banner">
+		<div class="logo">
+			<h3>updazz</h3><span>.com</span>
+		</div>
+		<div class="user_profile_side">
+			<a href="/sign-in">RECRUITERS</a>
+            <span>|</span>
+            <a href="https://www.updazz.com/registration/login.php">JOBSEEKERS</a>
+		</div>
+
+	</div>
+
+	<nav class="navbar">
+			<ul class="menu" id="menu">
+				<li class="menu_link"><a href="javascript:void(0);" onclick="openMenu()"><i class="fa fa-bars fa-lg" aria-hidden="true"></i></a>
+				<li class="menu_link"><a href="/">Home</a></li>
+				<li class="menu_link menu-more dropdown">
+					<a href="#">More</a>
+					<ul class="options hidden box_shadow">
+						<li><a href="#">My Tags</a></li>
+						<li><a href="#">Saved/Shortlisted Candidates</a></li>
+					</ul>
+				</li>
+			</ul>
+			<div class="search_container">
+				<input type="text" class="searchform" placeholder="Search"/>
+			</div>
+	</nav>
+<!-- end navigation menu -->
+
+</header>
+
+<div class="main-container">
+	<div class="confirmation-mssg hidden">
+		<div class="heading">
+			Thank you for registering on updazz.com
+		</div>
+		<div class="footer">
+			<span class="first">Last Step - Check your mail.</span>
+			<span class="second">Please click on confirmation link in the email we sent you just now.<br>
+					Check your SPAM folder, if you can't find it in your inbox. This is to confirm your email address.<br>
+					Please drop us an email at <a href="mailto:info@updazz.com" class="link-color">info@updazz.com</a> if you face any problem in activating your account.</span>
+		</div>
+	</div>
+    <div class="connect-boxes-container hidden">
+        <div class="linkedin-connect">
+            <div class="panel-header">
+                LET'S CONNECT YOUR LINKEDIN ACCOUNT!
+            </div>
+            <div class="panel-footer">
+                <div class="list-group">
+                   <div class="list-group-item">
+                       <i><img src="https://static.updazz.com/recruiter/resources/images/expprofgreyicon.png"></i>
+                       <span>Import profile information to jumpstart your recruiter profile.</span>
+                   </div>
+                   <div class="list-group-item">
+                      <i><img src="https://static.updazz.com/recruiter/resources/images/expprofgreyicon.png"></i>
+                      <span> Automatically promote your jobs on LinkedIn.</span>
+                   </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="image-container">
+            <img class="" src="https://static.updazz.com/recruiter/resources/images/hirist/hirist_promotejob.png">
+        </div>
+
+    </div>
+    <div class="connect-box-bottom hidden">
+        <a href=""><img src="https://static.updazz.com/recruiter/resources/images/cnwlinkin.png"></a>
+        <a href="" class="link-color skip">Skip &amp; Continue</a>
+    </div>
+</div>
+
+{{> footer}}

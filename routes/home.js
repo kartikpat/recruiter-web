@@ -237,4 +237,15 @@ module.exports = function(settings){
 		return
 	})
 
+	app.get("/recruiter/export-profile", function(req, res){
+
+		res.render("export-profile",{
+			title: "IIM JOBS | Export Profile",
+			styles:  assetsMapper["export-profile"]["styles"][mode],
+			scripts: assetsMapper["export-profile"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
 }
