@@ -1,5 +1,6 @@
 var recruiterID = localStorage.id;
 var baseUrl = "http://13.126.92.102:8000"
+var maxCandidateChats;
 
 var profile = $(".user_profile");
 var tableRow = $(".jobs_content.prototype");
@@ -9,9 +10,149 @@ var modal = $('.modal');
 var openGuidelines = $("#posting-guidelines");
 var closeModalBtn = $(".close");
 
+var candidatesWrapper = $(".candidate-card.prototype");
+
+var chatContainer = $(".chat-div");
+
+var chatDivBox = $(".chat-div-candidate.prototype");
+
+var displayAMessage = function(event) {
+    var key = event.which;
+    if(key == 13) {
+        $(".chat-candidate-boxes .chat-div-candidate .chat-div-content").append("<div class='message-container right'><div class='message-sent'>"+$(this).val()+"</div></div>");
+        $(this).val('');
+    }
+}
+
+var isShowCollapsedCandidate = 0;
+var count = 0;
+
+chatContainer.on('click','.candidate-card', function() {
+	console.log("hi");
+	if(!($(this).hasClass("selected"))) {
+		var chatContainerBox = chatDivBox.clone().removeClass('prototype hidden');
+		chatContainerBox.find(".candidate-name").text($(this).find(".candidate-name").text());
+		chatContainerBox.find(".last-active-date").text(startTime());
+		chatContainerBox.find(".chat-div-header").attr("data-id",$(this).attr("data-id"));
+		chatContainerBox.find(".info-buttons .info-icon").attr("data-id",$(this).attr("data-id"));
+		chatContainerBox.find(".info-buttons .minus-icon").attr("data-id",$(this).attr("data-id"));
+		chatContainerBox.find(".info-buttons .close-icon").attr("data-id",$(this).attr("data-id"));
+		chatContainerBox.attr("data-id",$(this).attr("data-id"));
+		if($(".chat-candidate-boxes").children().length < maxCandidateChats) {
+			$(".chat-candidate-boxes").prepend(chatContainerBox);
+		}
+		else {
+			var clonedElement = $(".candidate-collapsed-block.prototype").clone().removeClass('prototype hidden');
+			$(".chat-candidate-boxes").prepend(chatContainerBox);
+			var hideElement = 1+maxCandidateChats;
+			var dataIdLocal = $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").attr("data-id");
+			clonedElement.attr("data-id",dataIdLocal);
+			clonedElement.html($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").find(".candidate-name").text()+"<i data-id="+dataIdLocal+" class='fa fa-times' aria-hidden='true'></i>");
+			$(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").addClass("hidden");
+
+			if($(".chat-collapsed-candidate-container").hasClass("hidden")) {
+				$(".chat-collapsed-candidate-container").removeClass("hidden");
+			}
+
+
+			$(".chat-collapsed-candidate-container .chat-collapsed-candidate .chat-collapsed-candidate-wrapper").append(clonedElement);
+		}
+		reposition_chat_windows();
+		$(this).addClass("selected");
+	}
+})
+
+$("#chat-collapsed-container").on('click',".chat-collapsed-candidate-container .candidate-collapsed-block i", function(event) {
+	event.stopPropagation();
+	var dataId = $(this).attr("data-id");
+	console.log(dataId)
+	$("#chat-collapsed-container .candidate-collapsed-block[data-id="+dataId+"]").remove();
+	chatContainer.find(".candidate-card[data-id="+dataId+"]").removeClass("selected");
+	if($(".chat-collapsed-candidate-container .chat-collapsed-candidate-wrapper").children().length == 0) {
+		$(".chat-collapsed-candidate-container").addClass("hidden");
+	}
+})
+
+var populateChatView = function(array) {
+	array.forEach(function(aCandidate) {
+		var card = candidatesWrapper.clone().removeClass('prototype hidden');
+		card.find(".candidate-image img").attr("src",aCandidate["img_url"]).removeClass("animated-background");
+		card.attr("data-id",aCandidate["id"]);
+		card.find(".candidate-name").text(aCandidate["name"]).removeClass("animated-background");
+		card.find(".candidate-designation").text(aCandidate["designation"]).removeClass("animated-background");
+		$(".chat-div .chat-div-content").append(card);
+		$(".chat-div .chat-div-content").append("<hr class='divider divider-full'>");
+	})
+}
+
+$(".chat-candidate-boxes").on('click','.chat-div-candidate .chat-div-header', function() {
+	var dataId = $(this).attr("data-id");
+	$('.chat-div-candidate[data-id='+dataId+'] .content-footer-container').toggleClass("show");
+})
+
+$(".chat-candidate-boxes").on('click','.chat-div-candidate .info-buttons .close-icon', function() {
+	event.stopPropagation();
+	var dataId = $(this).attr("data-id");
+	hideElement = 1 + maxCandidateChats;
+	if($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").hasClass("hidden")) {
+		$(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").removeClass("hidden");
+		var collapsedDataId = $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").attr("data-id");
+		console.log(collapsedDataId)
+		$(".chat-collapsed-candidate-container .candidate-collapsed-block[data-id="+collapsedDataId+"]").remove();
+		if($(".chat-collapsed-candidate-container .chat-collapsed-candidate-wrapper").children().length == 0) {
+			$(".chat-collapsed-candidate-container").addClass("hidden");
+		}
+	}
+	$('.chat-div-candidate[data-id='+dataId+']').remove();
+	chatContainer.find(".candidate-card[data-id="+dataId+"]").removeClass("selected");
+	reposition_chat_windows();
+
+})
+
+$(".chat-candidate-boxes").on('keypress','#chat-input', displayAMessage);
+
+
+
+function reposition_chat_windows() {
+    var rightOffset = 290;
+
+    jQuery(".chat-candidate-boxes .chat-div-candidate").each(function(i, el) {
+		if(!($(this).hasClass("hidden"))) {
+		    jQuery(this).css("right", rightOffset);
+		    rightOffset = rightOffset + 280
+		}
+    });
+
+	if(!($(".chat-collapsed-candidate-container").hasClass("hidden"))) {
+		$(".chat-collapsed-candidate-container").css("right", rightOffset );
+	}
+
+
+    // position_collapsed_chat();
+    // $(".nchatscrolllisperch").on("mousewheel DOMMouseScroll", function(e) {
+    //     var delta = -e.originalEvent.wheelDelta || e.originalEvent.detail;
+    //     var scrollTop = this.scrollTop;
+    //     if ((delta < 0 && scrollTop === 0) || (delta > 0 && this.scrollHeight - this.clientHeight - scrollTop === 0)) {
+    //         e.preventDefault()
+    //     }
+    // })
+}
 
 
 $(document).ready(function(){
+
+        if ($(document).width() < 1000) {
+            maxCandidateChats = 1
+        } else {
+            if ($(document).width() < 1450) {
+
+                maxCandidateChats = 2
+            } else {
+
+                maxCandidateChats = 3
+            }
+        }
+
 	getRequest(baseUrl+"/recruiter/"+recruiterID, {}, populateProfile);
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs", {}, populateJobs);
 	openGuidelines.click(openGuidelinesModal);
@@ -51,7 +192,34 @@ $(document).ready(function(){
 
 	windowH();
 
+	// $("#chat_div").chatbox({id : "chat_div",
+	// 							 title : "Inbox",
+	// 							 user : "can be anything",
+	// 							 offset: 200
+	// 							//  messageSent: function(id, user, msg){
+	// 							// 	  alert("DOM " + id + " just typed in " + msg);
+	// 							//  }
+	// 						});
+	// 	//  // to insert a message
+	// 	//  $("#chat_div").chatbox("option", "boxManager").addMsg("Mr. Foo", "Barrr!");
+
+	$('.chat-div .chat-div-header').click(function() {
+
+	  	$('.chat-div .chat-div-content').toggleClass("show");
+		//$('.chat-div .minus-icon').toggleClass("show");
+	});
+
+
+
+	populateChatView(candidates);
+
 })
+
+
+
+
+
+
 
 function windowH() {
 	var wH = $(window).height();
@@ -184,4 +352,21 @@ function compare(a,b) {
   if (a.created > b.created)
     return -1;
   return 0;
+}
+
+function checkTime(i) {
+ if (i < 10) {
+   i = "0" + i;
+ }
+ return i;
+}
+
+function startTime() {
+  var today = new Date();
+  var h = today.getHours();
+  var m = today.getMinutes();
+  // add a zero in front of numbers<10
+  m = checkTime(m);
+  var time = h + ":" + m;
+  return time;
 }

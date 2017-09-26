@@ -3,11 +3,13 @@
 		"styles": {
 			"debug" : [
 				"static/css/header.css",
+				"static/css/jquery-ui.min.css",
         		"static/css/index.css",
 				"static/css/buttons.css",
 				"static/css/footer.css",
 				"static/css/animate.css",
-				"static/css/utilities.css"
+				"static/css/utilities.css",
+				"static/css/jquery-chatbox.css"
 
 			],
 			"prod": [
@@ -18,10 +20,14 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/jquery-ui.min.js",
+				"static/js/chatObject.js",
+				"static/js/jquery-chat.js",
 				"service-worker.js",
 				"static/js/request.js",
 				"static/js/header.js",
 				"static/js/index.js"
+
 
 			],
 			"prod" : [
