@@ -1,0 +1,10 @@
+{
+  "UUID": "NDUwNTgtLXNocmV5YUBpaW1qb2JzLmNvbQ:=", // btoa("45058--shreya@iimjobs.com")
+  "time": 1505385492014, // UTC timestamp 13 digits
+  "usr": "WlqbmrE=", // encrypted recruiter id or jobseeker id
+  "name": "Shreya Jain", // name of the sender
+  "tt": 1, // 1 for recruiter, 0 for jobseeker
+  "msg": "testing for payload", // acatual text
+  "img": "https://edgar.iimjobs.com/media/recruiterpics/2016/05/12/2016-05-12-16-26-57-45058.jpg", // avatar url
+  "type": 1 // Always 1 ( need to check the cases here )
+}

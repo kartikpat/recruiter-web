@@ -286,7 +286,6 @@ jobContainer.on('mouseout','.jobs_content .interview-invite.icon', function(){
 
 
 $(document).ready(function(){
-
 	var urlObject = fetchURL();
 	var res = urlObject["pathname"].split("/");
 

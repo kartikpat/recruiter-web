@@ -1,7 +1,5 @@
 var recruiterID = localStorage.id;
-var baseUrl = "http://13.126.92.102:8000"
 var maxCandidateChats;
-
 var profile = $(".user_profile");
 var tableRow = $(".jobs_content.prototype");
 
@@ -192,17 +190,6 @@ $(document).ready(function(){
 
 	windowH();
 
-	// $("#chat_div").chatbox({id : "chat_div",
-	// 							 title : "Inbox",
-	// 							 user : "can be anything",
-	// 							 offset: 200
-	// 							//  messageSent: function(id, user, msg){
-	// 							// 	  alert("DOM " + id + " just typed in " + msg);
-	// 							//  }
-	// 						});
-	// 	//  // to insert a message
-	// 	//  $("#chat_div").chatbox("option", "boxManager").addMsg("Mr. Foo", "Barrr!");
-
 	$('.chat-div .chat-div-header').click(function() {
 
 	  	$('.chat-div .chat-div-content').toggleClass("show");
@@ -212,7 +199,6 @@ $(document).ready(function(){
 
 
 	populateChatView(candidates);
-
 })
 
 

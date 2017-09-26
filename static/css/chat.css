@@ -87,7 +87,7 @@
         .main-container .chat-side-profile-container .chat-side-profile-candidates .candidate-card .candidate-info {
           display: inline-block; }
           .main-container .chat-side-profile-container .chat-side-profile-candidates .candidate-card .candidate-info .candidate-name {
-            width: 70px;
+            width: 100%;
             height: 15px;
             margin-bottom: 10px; }
           .main-container .chat-side-profile-container .chat-side-profile-candidates .candidate-card .candidate-info .candidate-designation {
