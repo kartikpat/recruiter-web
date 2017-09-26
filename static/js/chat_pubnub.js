@@ -3,67 +3,67 @@ var channelsArray = [{
         "jobseekerID": "511594",
         "jobID": "334895",
         "name": "iimjobs--r45058-j511594",
-        "lastActive": "2017-06-1418:20:28"
+        "lastActive": "2012-07-14T01:00:00+01:00"
     }, {
         "id": 24615,
         "jobseekerID": "709365",
         "jobID": "334895",
         "name": "iimjobs--r45058-j709365",
-        "lastActive": "2016-10-0317:22:05"
+        "lastActive": "2012-07-14T01:00:00+01:00"
     }, {
         "id": 24608,
         "jobseekerID": "612792",
         "jobID": "334895",
         "name": "iimjobs--r45058-j612792",
-        "lastActive": "2016-10-0316:04:23"
+        "lastActive": "2012-07-14T01:00:00+01:00"
     }, {
         "id": 24607,
         "jobseekerID": "110923",
         "jobID": "334895",
         "name": "iimjobs--r45058-j110923",
-        "lastActive": "2016-10-0316:04:18"
+        "lastActive": "2012-07-14T01:00:00+01:00"
     }, {
         "id": 24606,
         "jobseekerID": "711080",
         "jobID": "334895",
         "name": "iimjobs--r45058-j711080",
-        "lastActive": "2016-10-0316:04:14"
+        "lastActive": "2012-07-14T01:00:00+01:00"
     }, {
         "id": 23623,
         "jobseekerID": "706831",
         "jobID": "334895",
         "name": "iimjobs--r45058-j706831",
-        "lastActive": "2016-09-2117:17:20"
+        "lastActive": "2012-07-14T01:00:00+01:00"
     }, {
         "id": 23622,
         "jobseekerID": "676776",
         "jobID": "334895",
         "name": "iimjobs--r45058-j676776",
-        "lastActive": "2016-09-2117:17:12"
+        "lastActive": "2012-07-14T01:00:00+01:00"
     }, {
         "id": 23621,
         "jobseekerID": "712558",
         "jobID": "334895",
         "name": "iimjobs--r45058-j712558",
-        "lastActive": "2016-09-2117:17:09"
+        "lastActive": "2012-07-14T01:00:00+01:00"
     }, {
         "id": 22909,
         "jobseekerID": "337587",
         "jobID": "0",
         "name": "iimjobs--r45058-j337587",
-        "lastActive": "2016-09-1412:22:23"
+        "lastActive": "2012-07-14T01:00:00+01:00"
     }, {
         "id": 9441,
         "jobseekerID": "651703",
         "jobID": "334895",
         "name": "iimjobs--r45058-j651703",
-        "lastActive": "2016-05-2611:30:21"
+        "lastActive": "2012-07-14T01:00:00+01:00"
     }, {
         "id": 9531,
         "jobseekerID": "462122",
         "jobID": "334895",
         "name": "iimjobs--r45058-j462122",
-        "lastActive": "2016-05-2112:44:01"
+        "lastActive": "2012-07-14T01:00:00+01:00"
     }, {
         "id": 9497,
         "jobseekerID": "178541",
