@@ -290,7 +290,7 @@ var loginUser = function() {
     });
 
 	if(checkErrorClassLogin($("#login-email")) && checkErrorClassLogin($("#login-password"))) {
-		postRequest(baseUrl+"/recruiter/login",  null,
+		postRequest("/sign-in",  null,
 				obj
 			, authSuccess ,null , null , authFail )
 		}
