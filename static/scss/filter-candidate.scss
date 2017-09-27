@@ -1,0 +1,408 @@
+@import "colors.scss";
+
+@mixin input-styling {
+    box-sizing: border-box;
+    border: 1px solid $select-border;
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+
+.main-container {
+    padding: 20px;
+    .heading {
+        margin-bottom: 20px;
+    }
+    .jobs_container {
+        .jobs_header {
+            width: auto;
+            margin: 0 20px;
+            background-color: $color-light-grey;
+            padding: 0 10px;
+            .header {
+                display: inline-block;
+                padding: 0 2px;
+                overflow: auto;
+                font-size: 11px;
+                text-align: left;
+                color: $color-black-text;
+                height: 30px;
+                line-height: 30px;
+            }
+
+            .header_name {
+                width: 22%;
+                .checkbox {
+                    margin: 0 15px 0 0;
+                }
+            }
+
+            .header_organization {
+                width: 28%;
+                
+            }
+
+            .header_institute {
+                width: 28%;
+            }
+
+            .header_more {
+                width: 20%;
+            }
+        }
+        .jobs-wrapper-shell-loader {
+
+            .shell-loaders {
+                margin: 0 20px;
+                padding: 0 10px;
+
+                .content {
+                    display: inline-block;
+                    padding: 5px 0 0 2px;
+                    overflow: hidden;
+                    font-size: 11px;
+                    vertical-align: top;
+                    .info {
+                        padding: 0 0 5px 0;
+                        .user_name {
+                            margin-top: 15px;
+                            width: 70px;
+                            height: 15px;
+                        }
+                        .user-experience {
+                            margin-top: 10px;
+                            width: 100px;
+                            height: 15px;
+                        }
+                        .user-extra {
+                            margin-top: 20px;
+                            width: 50px;
+                            height: 10px;
+                        }
+                        .important_info {
+                            font-size: 11px;
+                            color: $important-info-color;
+                            &.name {
+                                font-size: 13px;
+                            }
+                        }
+                        .extra_info {
+                            color: $extra-info-color;
+                        }
+                        .icon {
+                            display: block;
+                            color: $extra-info-color;
+                            font-size: 12px;
+                            padding: 1px 0;
+                            text-decoration: none;
+                            span {
+
+                                padding: 0 3px;
+                            }
+
+                            &:hover {
+                                color: green;
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+
+                .content.content_name {
+                    padding-top: 25px;
+                    width: 22%;
+
+                    img {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        max-width: 100%;
+                        max-height: 100%;
+                    }
+                }
+
+                .content.content_organization {
+                    width: 28%;
+                    padding-top: 35px;
+
+                    .name {
+                        width: 150px;
+                        height: 20px;
+                        margin-bottom: 10px;
+                    }
+                    .designation {
+                        width: 75px;
+                        height: 15px;
+                        margin-bottom: 15px;
+                    }
+                    .experience {
+                        width: 150px;
+                        height: 15px;
+                        margin-bottom: 10px;
+                    }
+                }
+
+                .content.content_institute {
+                    width: 28%;
+                    padding-top: 35px;
+                    .name {
+                        width: 150px;
+                        height: 20px;
+                        margin-bottom: 10px;
+                    }
+                    .degree {
+                        width: 75px;
+                        height: 15px;
+                        margin-bottom: 15px;
+                    }
+                }
+                .content.content_more {
+                    padding-top: 35px;
+                    width: 20%;
+                    .icon {
+                        width: 125px;
+                        height: 10px;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+
+
+        }
+        .jobs_wrapper {
+            .jobs_content {
+                border-bottom: thin solid #ececec;
+                padding-bottom: 5px;
+                margin: 0 20px;
+                &:nth-child(even){
+                    background-color: #fbfbfb;
+                }
+                .content-container {
+
+                    cursor: pointer;
+                    padding: 10px 10px 0 10px;
+                }
+                .slide-container{
+                    height: auto;
+                    padding: 10px;
+                    .tagline-container {
+                        height: 35px;
+                        line-height: 15px;
+                        .tagline-heading {
+                            display: inline-block;
+                            vertical-align: top;
+                            width: 50px;
+                        }
+                        .tagline-content {
+                            display: inline-block;
+                            max-width: 90%;
+                        }
+                    }
+                    .info-container-first {
+                        position: relative;
+                        height: 70px;
+                        .contact-container {
+                            position: absolute;
+                            left: 0;
+                            .contact-heading, .email-heading {
+                                display: inline-block;
+                                width: 50px;
+                            }
+                            .contact-content, .email-content {
+                                display: inline-block;
+                            }
+                        }
+                        .bio-container {
+                            position: absolute;
+                            right: 0;
+                            width: 50%;
+                            .icon {
+                                width: 100%;
+                                div {
+                                    display: inline-block;
+                                    width: 49%;
+                                    margin: 0 0 5px 0;
+                                    a {
+                                        text-decoration: none;
+                                        color: $extra-info-color;
+                                        i {
+                                            display: inline-block;
+                                            font-size: 30px;
+                                            width: 40px;
+                                        }
+                                        span {
+                                            vertical-align: text-top;
+                                        }
+                                        &.video:hover {
+                                            color: red;
+                                        }
+                                        &.icon-resume:hover {
+                                            color: blue;
+                                        }
+                                        &.cover-letter:hover {
+                                            color: green;
+                                        }
+                                        &.audio:hover {
+                                            color: orange;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .info-container-second {
+                        position: relative;
+                        height: 80px;
+                        .comment-container {
+                            position: absolute;
+                            left: 0;
+                            display: inline-block;
+                            width: 49%;
+                            .comment {
+                                margin: 0 0 5px 0;
+                                .comment-content {
+                                    display: inline-block;
+                                    input {
+                                        @include input-styling;
+                                    }
+                                }
+                                .comment-heading {
+                                    display: inline-block;
+                                }
+                            }
+                            .posted-comment {
+                                ul {
+                                    margin: 0;
+                                }
+                            }
+                        }
+                        .tags-container {
+                            position: absolute;
+                            right: 0;
+                            display: inline-block;
+                            width: 49%;
+                            .tags {
+                                margin: 5px 0;
+                                .tags-content {
+                                    display: inline-block;
+                                    input {
+                                        @include input-styling;
+                                    }
+                                }
+                                .tags-heading {
+                                    display: inline-block;
+                                }
+                            }
+                            .posted-tags {
+
+                            }
+                        }
+                    }
+                    .extra-info-container {
+                        .layer-first {
+                            .info {
+                                display: inline-block;
+                                width: 16%;
+                                vertical-align: top;
+
+                            }
+                        }
+                        .layer-second {
+                            .marks-wrapper {
+                                display: inline-block;
+                                width: 35%;
+                                .marks {
+                                    display: inline-block;
+                                    padding: 0 5px;
+                                }
+                            }
+                            .info {
+                                display: inline-block;
+                                width: 21%;
+                                vertical-align: top;
+                            }
+                        }
+                        .css-heading {
+                            font-size: 10px;
+                            color: $extra-info-color;
+                        }
+                        .css-content {
+                            font-size: 12px;
+                            color: $important-info-color;
+                        }
+                    }
+
+                }
+
+                .content {
+                    display: inline-block;
+                    padding: 5px 0 0 2px;
+                    overflow: hidden;
+                    font-size: 11px;
+                    vertical-align: top;
+                    line-height: 20px;
+                    .info {
+                        padding: 0 0 10px 0;
+                        .important_info {
+                            font-size: 13px;
+                            color: $important-info-color;
+                            &.name {
+                                font-size: 13px;
+                                font-weight: bold;
+                                font-family: Arial !important;
+                            }
+                        }
+                        .extra_info {
+                            color: $important-info-color;
+                            font-size: 13px;
+                        }
+                        .icon {
+                            display: block;
+                            color: $extra-info-color;
+                            font-size: 12px;
+                            padding: 1px 0;
+                            text-decoration: none;
+                            span {
+
+                                padding: 0 3px;
+                            }
+
+                            &:hover {
+                                color: green;
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+
+                .content.content_name {
+                    .checkbox {
+                        vertical-align: top;
+                        margin: 0 15px 0 0;
+                    }
+                    width: 22%;
+
+                    img {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        max-width: 100%;
+                        max-height: 100%;
+                    }
+                }
+
+                .content.content_organization {
+                    width: 28%;
+                    padding-left: 10px;
+                }
+
+                .content.content_institute {
+                    width: 28%;
+                }
+
+                .content.content_more {
+                    width: 22%;
+                }
+            }
+        }
+    }
+}

@@ -11,7 +11,7 @@ module.exports = function(settings){
 	var mode = settings.mode;
 	var config = settings.config;
 	var env = settings.env;
-	var baseUrl =  config["baseUrl"];
+	var baseUrl = config["baseUrl"];
 	var request = settings["request"];
 	if(env=="local")
 		baseUrl= config["baseUrl_local"];
@@ -254,6 +254,28 @@ module.exports = function(settings){
 			title: "IIM JOBS | Export Profile",
 			styles:  assetsMapper["export-profile"]["styles"][mode],
 			scripts: assetsMapper["export-profile"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/tags", function(req, res){
+
+		res.render("tags",{
+			title: "IIM JOBS | Tags",
+			styles:  assetsMapper["tags"]["styles"][mode],
+			scripts: assetsMapper["tags"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/filter-candidate", function(req, res){
+
+		res.render("filter-candidate",{
+			title: "IIM JOBS | Filter Candidate",
+			styles:  assetsMapper["filter-candidate"]["styles"][mode],
+			scripts: assetsMapper["filter-candidate"]["scripts"][mode],
 			baseUrl: baseUrl
 		})
 		return

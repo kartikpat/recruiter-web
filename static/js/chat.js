@@ -13,7 +13,7 @@ var displayAMessage = function(event) {
 }
 
 var sendMessage = function(message) {
-    $(".candidate-chat-content").append("<div class='message-container right'><div class='right-message'>"+message+"<span class='current-time'>"+startTime()+"</span></div></div>");
+    $(".candidate-chat-content").append("<div class='message-container right'><div class='message-sent'>"+message+"<span class='current-time'>"+startTime()+"</span></div></div>");
     var channel = chatMainContainer.attr('data-id');
     publish({
         uuid: btoa(localStorage.recruiterID+'--'+localStorage.recruiterEmail),
@@ -46,7 +46,7 @@ var populateChatView = function(array) {
         card.attr("data-id",aCandidate["id"]);
         card.find(".candidate-name").text(aCandidate["name"]).removeClass("animated-background");
         card.find(".candidate-designation").text(aCandidate["jobseekerID"]).removeClass("animated-background");
-        card.find(".last-active-date").text(ISODateToD_M_Y(aCandidate["lastActive"]));
+        card.find(".last-active-date").text(ISODateToD_M(aCandidate["lastActive"]));
         $(".chat-side-profile-candidates").append(card);
         $(".chat-side-profile-candidates").append("<hr class='divider divider-full'>");
     })
@@ -61,12 +61,12 @@ $(".chat-side-profile-candidates").on('click', '.candidate-card', function() {
     var candidateId = $(this).attr("data-id");
     chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").empty();
     var obj;
-    candidates.forEach(function(aCandidate) {
+    channelsArray.forEach(function(aCandidate) {
         if(aCandidate["id"] == candidateId) {
             obj = aCandidate;
         }
     })
-    console.log(obj["message"]);
+    fetchHistory(obj["name"], 20 , onFetchHistory);
     if(!(chatMainContainer.find(".welcome-message-container").hasClass("hidden"))) {
         chatMainContainer.find(".welcome-message-container").addClass("hidden");
     }
@@ -80,6 +80,22 @@ $(".chat-side-profile-candidates").on('click', '.candidate-card', function() {
     //     chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").append("<div class='message-container left'><div class='left-message'>"+val["mssg"]+"<span class='current-time'>"+val["time"]+"</span></div></div>")
     // })
 })
+
+var onFetchHistory = function(status, response) {
+    console.log(response);
+    response["messages"].forEach(function(elem, index){
+        elem["entry"]["time"] = ISODateToD_M_Y(elem["entry"]["time"]);
+        if(index == 0) {
+             chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").append("<div class='date-block '><div class='date'>"+elem["entry"]["time"]+"</div></div>")
+            //  if(elem["entry"])
+            //  chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").append("<div class='image-name-container'><img src="+elem["entry"]["img"]">"+elem["entry"]["time"]+"</div></div>")
+        }
+        if (index > 0 && (response["messages"][index - 1]["entry"]["time"] != elem["entry"]["time"])) {
+             chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").append("<div class='date-block '><div class='date'>"+elem["entry"]["time"]+"</div></div>")
+        }
+         chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").append("<div class='message-container left'><div class='message-received'>"+elem["entry"]["msg"]+"</div></div>")
+    })
+}
 
 var receiveMessage = function(message) {
     console.log(message)
@@ -125,8 +141,14 @@ var searchCandidate = function(array, elem) {
  		searchCandidate(candidates, ele);
  	});
 
-    var candidateChatContainer = $(".candidate-chat-container").height();
-    $(".chat-side-profile-candidates").height(candidateChatContainer - 131);
+    var candidateChatContainerHeight = $(".candidate-chat-container").height();
+    var candidateChatContainerWidth = $(window).width();
+    $(".chat-side-profile-candidates").height(candidateChatContainerHeight - 131);
+    $(".candidate-chat-container").width(candidateChatContainerWidth - 270);
+    $(window).resize(function(){
+        $(".candidate-chat-container").width($(window).width() - 265);
+    });
+    chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").height($(".candidate-chat-container").height() - 163)
  })
 
  function checkTime(i) {
@@ -146,9 +168,8 @@ function startTime() {
   return time;
 }
 
-function ISODateToD_M_Y(aDate) {
+function ISODateToD_M(aDate) {
   var date = new Date(aDate),
-	year = date.getFullYear(),
 	month = date.getMonth(),
 	dt = date.getDate();
 
@@ -159,6 +180,26 @@ function ISODateToD_M_Y(aDate) {
 	month = '0' + month;
   }
 
-  var str = dt + "-" + month + "-" + year;
+  var str = dt + "/" + month;
+  return str;
+}
+
+function ISODateToD_M_Y(aDate) {
+    var monthNames = ["Jan", "Feb", "March", "April", "May", "June",
+                        "July", "Aug", "Sep", "Oct", "Nov", "Dec"
+                    ];
+  var date = new Date(aDate),
+	month = monthNames[date.getMonth()],
+    year = date.getFullYear(),
+	dt = date.getDate();
+
+  if (dt < 10) {
+	dt = '0' + dt;
+  }
+  if (month < 10) {
+	month = '0' + month;
+  }
+
+  var str = dt + " " + month + " " + year;
   return str;
 }

@@ -229,10 +229,7 @@ function fetchHistory(channel, count, onFetchHistory) {
     }, onFetchHistory);
 }
 
-function onFetchHistory(status, response) {
-    console.log(status);
-    console.log(response)
-}
+
 
 function publish(message, channel, onPublish) {
     pubnub.publish({

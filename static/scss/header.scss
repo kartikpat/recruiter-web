@@ -210,10 +210,13 @@ header {
                         a {
                             font-size: 12px;
                             color: black;
-
+                            text-decoration: none;
                             &:hover {
-                                color: #56A0FF;
+                                text-decoration: underline;
                             }
+                        }
+                        &:hover {
+                            background: #e1e1e1;
                         }
                     }
                 }

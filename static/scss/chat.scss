@@ -4,7 +4,7 @@
     height: 683px;
     .chat-side-profile-container {
         display: inline-block;
-        width: 22%;
+        width: 260px;
         border: 1px solid #ccc;
         height: 100%;
         .chat-side-profile-header {
@@ -99,6 +99,7 @@
                     font-size: 13px;
                     top: 10px;
                     right: 5px;
+                    color: $select-border;
                     i:hover {
                         color: $error-color;
                     }
@@ -116,7 +117,7 @@
     }
     .candidate-chat-container {
         display: inline-block;
-        width: 77%;
+
         vertical-align: top;
         position: relative;
         height: 100%;
@@ -137,9 +138,11 @@
             }
         }
         .candidate-chat-messages-container {
-
+            .divider.divider-full {
+                width: 95%;
+            }
             .candidate-chat-header {
-                width: 90%;
+                width: 95%;
                 margin: 0 auto;
                 padding: 15px;
                 .profile-image {
@@ -170,14 +173,55 @@
                 }
             }
             .candidate-chat-content {
-                width: 90%;
+                width: 95%;
                 margin: 0 auto;
+                overflow: auto;
+                padding: 10px 0;
+                .date-block {
+                    text-align: center;
+                    .date {
+                        background: #e1f3fb;
+                        padding: 8px 20px;
+
+                        display: inline-block;
+                        font-size: 12.4px;
+                        color: #777777;
+                        border-radius: 3px;
+                    }
+                }
+                .message-container {
+                    margin: 10px 0;
+                    .message-received {
+
+                        display: inline-block;
+                        box-shadow: 1px 1px 0px 0px #ccc;
+                        padding: 5px 10px;
+                        color: #1c1c1c;
+                        border-radius: 4px;
+                        background-color: rgba(201, 255, 95, 0.38);
+                    }
+                    .message-sent {
+
+                        display: inline-block;
+                        box-shadow: 1px 1px 0px 0px #ccc;
+                        padding: 5px 10px;
+                        color: #1c1c1c;
+                        border-radius: 4px;
+                        background-color: rgba(207, 244, 253, 0.28);
+                    }
+                    &.left {
+                        text-align: left;
+                    }
+                    &.right {
+                        text-align: right;
+                    }
+                }
             }
             .candidate-chat-footer {
                 position: absolute;
                 display: block;
                 height: 40px;
-                width: 90%;
+                width: 95%;
                 bottom: 30px;
                 line-height: 40px;
                 left: 50%;
@@ -198,34 +242,11 @@
     margin: 0 auto;
 }
 
-.left-message {
 
-    display: inline-block;
-    box-shadow: 1px 1px 0px 0px #ccc;
-    padding: 5px;
-    background-color: #D3FF7C;
-}
-.right-message {
 
-    display: inline-block;
-    box-shadow: 1px 1px 0px 0px #ccc;
-    padding: 5px;
-    background-color: #CFF4FD;
-}
 
 .current-time {
     font-size: 10px;
     vertical-align: sub;
     padding: 0 0 0px 10px;
-}
-
-.message-container {
-    margin: 10px 0;
-
-    &.left {
-        text-align: left;
-    }
-    &.right {
-        text-align: right;
-    }
 }

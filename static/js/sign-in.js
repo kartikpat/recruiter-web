@@ -1,5 +1,5 @@
 var loginForm = $(".login-container");
-var baseUrl = "http://13.126.92.102:8000";
+
 
 
 
