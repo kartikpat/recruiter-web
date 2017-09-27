@@ -12,6 +12,7 @@ module.exports = function(settings){
 	var config = settings.config;
 	var env = settings.env;
 	var baseUrl =  config["baseUrl"];
+	var request = settings["request"];
 	if(env=="local")
 		baseUrl= config["baseUrl_local"];
 	else
@@ -31,19 +32,28 @@ module.exports = function(settings){
     	res.redirect('/sign-in');
 	}
 	app.post("/sign-in", function(req, res){
-		var id = req.body.id || null;
-		if(!id){
+		var email = req.body.email || null;
+		var password = req.body.password || null;
+		if(! ( email && password ) ){
 			res.status(422).json({
 				status: 'fail',
 				message: 'missing parameters'
 			});
 			return
 		}
-		var cookieValue = new Buffer.from(""+Date.now()).toString('base64');
-		res.cookie("sessID", cookieValue, {overwrite: true})
-		req.session.user=cookieValue;
-		return res.json({
-			status: "success"
+		request.post({
+		  url:     baseUrl+'/recruiter/login',
+		  body:  "email="+email+"&password="+password,
+		  form: {email: email, password: password }
+		}, function(error, response, body){
+			console.log(body)
+			var jsonBody = JSON.parse(body);
+		  if(jsonBody.status=="success"){
+		  	var cookieValue = new Buffer.from(""+Date.now()).toString('base64');
+			res.cookie("sessID", cookieValue, {overwrite: true})
+			req.session.user=cookieValue;
+		  }
+		  res.json(jsonBody)
 		});
 	})
 	app.get("/", isAuthenticated,function(req, res){
