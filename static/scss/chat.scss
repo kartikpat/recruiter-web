@@ -5,7 +5,8 @@
     .chat-side-profile-container {
         display: inline-block;
         width: 22%;
-        box-shadow: 0px 15px 5px 3px #ccc;
+        border: 1px solid #ccc;
+        height: 100%;
         .chat-side-profile-header {
             padding: 15px;
             .profile-image {
@@ -55,7 +56,7 @@
         }
         .chat-side-profile-candidates {
             overflow-y: scroll;
-            height: 543px;
+            height: 100%;
             .candidate-card {
                 height: 59px;
                 padding: 15px;
@@ -115,7 +116,7 @@
     }
     .candidate-chat-container {
         display: inline-block;
-        width: 78%;
+        width: 77%;
         vertical-align: top;
         position: relative;
         height: 100%;

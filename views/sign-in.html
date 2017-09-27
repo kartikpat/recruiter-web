@@ -24,18 +24,18 @@
 			<div class="login-container">
 				<div class="form login-form">
 					<div class="form_heading">Recruiter Login</div>
-					<div class="field">
+					<!-- <div class="field">
 					   <input type="email" id="userName" name="" placeholder="ID">
 					   <div class="error hidden email">Please enter the email address.</div>
-				   </div>
+				   </div> -->
 					<div class="field">
-						<input type="email" id="login-email" name="login-email" placeholder="Email">
+						<input data-attribute="1" type="email" id="login-email" name="email" placeholder="Email">
 						<div class="error hidden email"></div>
 
 					</div>
 					<div class="field">
-						<input type="password" id="login-password" name="login-password" placeholder="Password">
-						<div class="error hidden password">Please enter the password.</div>
+						<input data-attribute="1" type="password" id="login-password" name="password" placeholder="Password">
+						<div class="error hidden password"></div>
 					</div>
 					<div class="field links">
 						<button class="button log-in">Log In</button>
@@ -67,33 +67,32 @@
 					<div class="form_heading">New Recruiter Registration</div>
 					<div class="field">
 						<input type="text" id="name" name="name" placeholder="Name">
-						<div class="error hidden name">Please enter your name.</div>
+						<div class="error hidden name"></div>
 					</div>
 					<div class="field">
 						<input type="email" id="email" name="email" placeholder="Official Email">
-						<div class="error hidden email">Please enter the email address.</div>
+						<div class="error hidden email"></div>
 					</div>
 					<div class="field">
 						<input type="text" id="phone" name="phone" placeholder="Phone">
-						<div class="error hidden phone">Please enter phone number.</div>
-						<div class="error hidden phone">Phone number should be digits only.</div>
+						<div class="error hidden phone"></div>
+
 					</div>
 					<div class="field">
 						<input type="password" id="password" name="password" placeholder="Password">
-						<div class="error hidden password">Please provide a password.</div>
+						<div class="error hidden password"></div>
 					</div>
 					<div class="field">
 						<input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password">
-						<div class="error hidden confirm-password">Please provide confirm password.</div>
-						<div class="error hidden" id="same-password">Password and Confirm Password should be same.</div>
+						<div class="error hidden confirm-password"></div>
 					</div>
 					<div class="field">
 						<input type="text" id="designation" name="designation" placeholder="Designation">
-						<div class="error hidden designation">Please enter the designation.</div>
+						<div class="error hidden designation"></div>
 					</div>
 					<div class="field">
 						<input type="text" id="organisation" name="organisation" placeholder="Organisation">
-						<div class="error hidden organisation">Please enter the organisation.</div>
+						<div class="error hidden organisation"></div>
 					</div>
 					<div class="field">
 						<select id="recruiter-type" name="recruiter-type">
@@ -101,7 +100,7 @@
 							<option value="1">Direct Employer</option>
 							<option value="2">Recruitment Firm</option>
 						</select>
-						<div class="error hidden recruiter-type">Please select recruiter type.</div>
+						<div class="error hidden recruiter-type"></div>
 					</div>
 					<div class="field">
 						<button class="button register">Register</button>

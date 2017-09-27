@@ -6,9 +6,28 @@ var chatMainContainer = $(".candidate-chat-container");
 var displayAMessage = function(event) {
     var key = event.which;
     if(key == 13) {
-        $(".candidate-chat-content").append("<div class='message-container right'><div class='right-message'>"+$(this).val()+"<span class='current-time'>"+startTime()+"</span></div></div>");
+        var message = $(this).val();
+        sendMessage(message);
         $(this).val('');
     }
+}
+
+var sendMessage = function(message) {
+    $(".candidate-chat-content").append("<div class='message-container right'><div class='right-message'>"+message+"<span class='current-time'>"+startTime()+"</span></div></div>");
+    var channel = chatMainContainer.attr('data-id');
+    publish({
+        uuid: btoa(localStorage.recruiterID+'--'+localStorage.recruiterEmail),
+        deviceID: getCookie("sessID"),
+        time: Date.now(),
+        usr: localStorage.recruiterID,
+        name: localStorage.recruiterName,
+        tt:1,
+        msg: message,
+        img: localStorage.recruiterImage,
+        type: 1
+    }, channel, function(m){
+        console.log("message sent");
+    })
 }
 
 var populateChatView = function(array) {
@@ -57,10 +76,18 @@ $(".chat-side-profile-candidates").on('click', '.candidate-card', function() {
     chatMainContainer.find(".candidate-chat-messages-container .profile-image img").attr("src",$(this).find(".candidate-image img").attr("src")).removeClass("animated-background");
     chatMainContainer.find(".candidate-chat-messages-container .profile-info-name").text($(this).find(".candidate-name").text()).removeClass("animated-background");
     chatMainContainer.find(".candidate-chat-messages-container .profile-info-organisation").text($(this).find(".candidate-designation").text()).removeClass("animated-background");
-    obj["message"].forEach(function(val) {
-        chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").append("<div class='message-container left'><div class='left-message'>"+val["mssg"]+"<span class='current-time'>"+val["time"]+"</span></div></div>")
-    })
+    // obj["message"].forEach(function(val) {
+    //     chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").append("<div class='message-container left'><div class='left-message'>"+val["mssg"]+"<span class='current-time'>"+val["time"]+"</span></div></div>")
+    // })
 })
+
+var receiveMessage = function(message) {
+    console.log(message)
+    if( message["deviceID"] == getCookie("sessID") && message["uuid"] == btoa(localStorage.recruiterID+'--'+localStorage.recruiterEmail) ){
+        return
+    }
+    chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").append("<div class='message-container left'><div class='left-message'>"+message["msg"]+"<span class='current-time'>"+startTime()+"</span></div></div>")
+}
 
 $(".chat-side-profile-candidates").on('click', '.candidate-card .remove-candidate', function(event) {
     event.stopPropagation();
@@ -98,6 +125,8 @@ var searchCandidate = function(array, elem) {
  		searchCandidate(candidates, ele);
  	});
 
+    var candidateChatContainer = $(".candidate-chat-container").height();
+    $(".chat-side-profile-candidates").height(candidateChatContainer - 131);
  })
 
  function checkTime(i) {

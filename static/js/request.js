@@ -24,7 +24,7 @@ var postRequest = function(url,headers,data,successCallback,completeCallback,bef
         async: async
     });
 };
-
+ 
 // var postRequest = function(url,headers,data,processData,async,scopeTest) {
 //     return new Promise(function(resolve,reject) {
 //      $.ajax({
