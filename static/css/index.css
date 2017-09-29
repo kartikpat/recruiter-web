@@ -59,7 +59,8 @@ footer, header, hgroup, menu, nav, section {
 .user_profile {
   width: 95%;
   margin: 40px auto;
-  padding: 20px; }
+  padding: 20px;
+  box-shadow: 0 1px 2px #ccc; }
   .user_profile .image {
     display: inline-block;
     margin-right: 10px;
@@ -81,6 +82,15 @@ footer, header, hgroup, menu, nav, section {
       .user_profile .image .edit_profile img {
         width: 100%;
         height: 100%; }
+      .user_profile .image .edit_profile i {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(0, 153, 255, 0.57);
+        border-radius: 50%;
+        padding: 8px;
+        color: rgba(255, 255, 255, 0.63);
+        cursor: pointer; }
   .user_profile .user_details {
     display: inline-block;
     width: 80%;
@@ -184,41 +194,101 @@ footer, header, hgroup, menu, nav, section {
     .jobs_panel .panel_heading a {
       padding: 5px;
       font-size: 13px;
-      font-family: "Droid Sans",sans-serif; }
+      font-family: "Droid Sans",sans-serif;
+      text-decoration: none; }
   .jobs_panel .jobs_container {
     margin-top: 10px; }
     .jobs_panel .jobs_container .jobs_header {
       width: auto;
+      padding: 0 10px;
       margin: 0 auto;
       border-radius: 1px;
-      background: #ececec; }
+      background: #ececec;
+      border: 1px solid #d8d8d8; }
       .jobs_panel .jobs_container .jobs_header span {
         display: inline-block;
-        padding: 5px;
-        margin: 5px;
-        overflow: auto;
         font-size: 12px;
         text-align: left;
+        font-weight: bold;
         font-family: "Droid Sans",sans-serif; }
     .jobs_panel .jobs_container .jobs_content {
-      border-bottom: 1px solid #d0d0d0; }
-      .jobs_panel .jobs_container .jobs_content span {
+      border-bottom: 1px solid #d0d0d0;
+      height: 60px;
+      line-height: 60px;
+      padding: 0 10px; }
+      .jobs_panel .jobs_container .jobs_content:hover {
+        background-color: #f5f6f7; }
+      .jobs_panel .jobs_container .jobs_content .column {
         display: inline-block;
         color: #242424;
-        padding: 5px;
-        margin: 5px;
-        overflow: hidden;
         font-size: 13px;
         font-family: "Droid Sans",sans-serif; }
     .jobs_panel .jobs_container .date {
       width: 10%; }
     .jobs_panel .jobs_container .title {
-      width: 40%; }
+      width: 38%; }
     .jobs_panel .jobs_container .status {
-      width: 10%; }
+      width: 15%; }
+      .jobs_panel .jobs_container .status .rejected-message {
+        margin-left: 10px;
+        border-radius: 50%;
+        padding: 4px 6px 3px 6px;
+        background: #469de7;
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        color: #ffffff;
+        position: relative; }
+        .jobs_panel .jobs_container .status .rejected-message:hover .tooltip-message {
+          visibility: visible;
+          opacity: 1; }
+        .jobs_panel .jobs_container .status .rejected-message .tooltip-message {
+          position: absolute;
+          visibility: hidden;
+          z-index: 2;
+          top: 50%;
+          left: 120%;
+          transform: translate(-1%, -61%);
+          padding: 15px 15px;
+          width: 175px;
+          background-color: #555;
+          color: #fff;
+          opacity: 0;
+          transition: opacity 0.5s;
+          border-radius: 7px; }
+          .jobs_panel .jobs_container .status .rejected-message .tooltip-message::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(0%, -50%);
+            margin-left: -10px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent #555 transparent transparent; }
     .jobs_panel .jobs_container .views {
-      width: 12%;
-      min-width: 40px; }
+      width: 14%;
+      position: relative;
+      top: -8px; }
+      .jobs_panel .jobs_container .views .applied-link {
+        position: relative; }
+        .jobs_panel .jobs_container .views .applied-link a {
+          position: absolute;
+          left: -64px;
+          top: -45%; }
+    .jobs_panel .jobs_container .action {
+      position: relative;
+      top: -15px; }
+      .jobs_panel .jobs_container .action .edit-job-container {
+        width: 25px;
+        position: relative;
+        box-shadow: 4px 5px 5px 0px #e9e9e9;
+        cursor: pointer;
+        height: 27px; }
+        .jobs_panel .jobs_container .action .edit-job-container img {
+          position: absolute;
+          left: -28px;
+          top: 129%; }
 
 .job_posting {
   padding: 20px;
@@ -275,60 +345,86 @@ footer, header, hgroup, menu, nav, section {
                     padding: 4px 8px;
                 }
             }
-
         } */ }
-  .job_posting .post_job {
-    margin: 21px 0; }
-    .job_posting .post_job .post_job_form {
-      max-width: 1200px; }
-      .job_posting .post_job .post_job_form .heading .back {
-        display: block; }
-      .job_posting .post_job .post_job_form .heading > span {
-        font-size: 24px; }
-      .job_posting .post_job .post_job_form .heading .guidelines {
-        font-size: 12px; }
-      .job_posting .post_job .post_job_form .label {
+  .job_posting .post_job .form-heading {
+    margin-bottom: 25px; }
+    .job_posting .post_job .form-heading .back {
+      display: block;
+      margin-bottom: 10px;
+      text-decoration: none;
+      font-size: 13px; }
+    .job_posting .post_job .form-heading .post-job-heading {
+      font-size: 18px;
+      color: #708732; }
+    .job_posting .post_job .form-heading .guidelines {
+      font-size: 18px;
+      text-decoration: none; }
+  .job_posting .post_job .post_job_form {
+    max-width: 1200px;
+    margin: 25px 0 0 50px; }
+    .job_posting .post_job .post_job_form .field-container {
+      padding: 10px; }
+      .job_posting .post_job .post_job_form .field-container .label {
         display: inline-block;
-        margin-left: 35px;
-        padding: 15px;
         width: 15%;
-        font-size: 12px;
-        color: #808080; }
-      .job_posting .post_job .post_job_form .label.top {
-        vertical-align: top !important; }
-      .job_posting .post_job .post_job_form .field {
+        font-size: 14px;
+        color: #4b4b4b;
+        vertical-align: top;
+        height: 34px;
+        line-height: 34px;
+        cursor: pointer; }
+      .job_posting .post_job .post_job_form .field-container .field {
         width: 60%;
-        display: inline-block;
-        margin-left: 60px;
-        padding: 4px 0; }
-        .job_posting .post_job .post_job_form .field .js-show-selected-tags, .job_posting .post_job .post_job_form .field .js-show-suggested-tags {
+        display: inline-block; }
+        .job_posting .post_job .post_job_form .field-container .field.course-type {
+          height: 34px;
+          line-height: 40px; }
+        .job_posting .post_job .post_job_form .field-container .field .js-show-selected-tags, .job_posting .post_job .post_job_form .field-container .field .js-show-suggested-tags {
           margin-right: 10px; }
-        .job_posting .post_job .post_job_form .field input, .job_posting .post_job .post_job_form .field select {
-          padding: 4px 8px;
-          margin: 8px 0;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          width: 60%;
-          background-color: inherit; }
-          .job_posting .post_job .post_job_form .field input:focus, .job_posting .post_job .post_job_form .field select:focus {
-            outline: none;
-            border: 1px solid #00C99C; }
-        .job_posting .post_job .post_job_form .field input[type="checkbox"] {
-          display: inline-block;
-          width: auto; }
-        .job_posting .post_job .post_job_form .field select.half {
-          width: 29.5%; }
-        .job_posting .post_job .post_job_form .field textarea {
+        .job_posting .post_job .post_job_form .field-container .field .salary-info {
+          margin: 10px 0; }
+        .job_posting .post_job .post_job_form .field-container .field input, .job_posting .post_job .post_job_form .field-container .field select {
+          display: block;
           width: 70%;
-          height: 150px;
+          height: 34px;
+          padding: 6px 12px;
+          font-size: 14px;
+          line-height: 34px;
+          color: #555;
+          border: 1px solid #ccc;
+          transition: border-color 0.20s ease-in-out;
+          background-color: inherit;
+          border-radius: 2px; }
+          .job_posting .post_job .post_job_form .field-container .field input:focus, .job_posting .post_job .post_job_form .field-container .field select:focus {
+            outline: none;
+            border-color: #66afe9; }
+        .job_posting .post_job .post_job_form .field-container .field input::-webkit-input-placeholder {
+          height: 34px;
+          line-height: 34px; }
+        .job_posting .post_job .post_job_form .field-container .field select.multiple {
+          height: 75px; }
+        .job_posting .post_job .post_job_form .field-container .field .multiple.industry {
+          margin-bottom: 10px; }
+        .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] {
+          display: inline-block;
+          width: auto;
+          height: auto;
+          margin: 0 3px 0 0; }
+        .job_posting .post_job .post_job_form .field-container .field select.half {
+          width: 29.5%;
+          display: inline-block; }
+        .job_posting .post_job .post_job_form .field-container .field textarea {
+          width: 70%;
+          min-height: 250px;
           padding: 12px 20px;
           box-sizing: border-box;
-          border: 2px solid #ccc;
-          border-radius: 4px;
+          border: 1px solid #ccc;
+          border-radius: 2px;
           background-color: inherit;
-          resize: none; }
-          .job_posting .post_job .post_job_form .field textarea:focus {
-            outline: none; }
+          transition: border-color 0.20s ease-in-out; }
+          .job_posting .post_job .post_job_form .field-container .field textarea:focus {
+            outline: none;
+            border-color: #66afe9; }
 
 .modal {
   position: fixed;
@@ -345,6 +441,17 @@ footer, header, hgroup, menu, nav, section {
   /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4);
   /* Black w/ opacity */ }
+  .modal.modal-rejected .modal-header {
+    padding: 6px 10px; }
+    .modal.modal-rejected .modal-header .modal-heading {
+      font-size: 14px; }
+    .modal.modal-rejected .modal-header .close {
+      font-size: 16px; }
+  .modal.modal-rejected .modal-center {
+    padding: 20px 10px; }
+  .modal.modal-rejected .modal-footer {
+    padding: 6px 10px;
+    min-height: 40px; }
 
 .modal-content {
   background-color: #ffffff;
@@ -390,7 +497,10 @@ footer, header, hgroup, menu, nav, section {
   min-height: 52px; }
   .modal-footer .close-modal.button {
     position: absolute;
-    right: 20px; }
+    right: 20px;
+    font-size: 14px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+    padding: 6px 12px; }
 
 /* The Close Button */
 .close {
@@ -416,3 +526,194 @@ footer, header, hgroup, menu, nav, section {
   .social-links img {
     width: 100px;
     height: 30px; }
+
+.checkbox {
+  margin-right: 5px;
+  font-size: 14px;
+  cursor: pointer; }
+  .checkbox span {
+    position: relative;
+    top: -2px; }
+
+.button.submit-form {
+  font-family: "Droid Sans", sans-serif;
+  background: #7e7e63 !important;
+  color: #ffffff;
+  text-shadow: none;
+  border: 1px solid #4a4a3b !important;
+  font-size: 14px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+  padding: 6px 12px;
+  margin-right: 15px; }
+
+.button.cancel-form {
+  font-size: 14px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+  padding: 6px 12px; }
+
+label.premium-job {
+  height: 30px;
+  line-height: 40px; }
+
+.checkboxes div {
+  margin-bottom: 4px; }
+
+.add-tags-content input {
+  display: inline-block !important;
+  margin-right: 30px; }
+
+.add-tags-content button {
+  font-size: 12px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+  padding: 6px 12px; }
+
+.chat-div {
+  position: fixed;
+  bottom: 0;
+  right: 10px;
+  width: 270px;
+  border: 1px solid #ccc; }
+  .chat-div .chat-div-header {
+    padding: 10px 12px;
+    background-color: #4b4b4b;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer; }
+    .chat-div .chat-div-header .minus-icon {
+      height: 12px;
+      width: 12px;
+      float: right;
+      background: url(https://static.iimjobs.com/pub_chat/v4/images/minus.jpg) no-repeat; }
+      .chat-div .chat-div-header .minus-icon.show {
+        margin-top: 10px; }
+  .chat-div .chat-div-content {
+    height: 0;
+    background-color: #fff;
+    z-index: 2;
+    transition: 0.2s height ease-in-out;
+    overflow: auto; }
+    .chat-div .chat-div-content.show {
+      height: 300px; }
+    .chat-div .chat-div-content .divider {
+      margin: 0 auto; }
+    .chat-div .chat-div-content .candidate-card {
+      padding: 4px 10px;
+      position: relative; }
+      .chat-div .chat-div-content .candidate-card:hover {
+        background-color: #f5f6f7;
+        cursor: pointer; }
+      .chat-div .chat-div-content .candidate-card .candidate-image {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin-right: 5px;
+        vertical-align: top;
+        margin-top: 5px; }
+        .chat-div .chat-div-content .candidate-card .candidate-image img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%; }
+      .chat-div .chat-div-content .candidate-card .candidate-info {
+        display: inline-block;
+        margin-top: 5px; }
+        .chat-div .chat-div-content .candidate-card .candidate-info .candidate-name {
+          font-size: 13px;
+          color: #676666; }
+        .chat-div .chat-div-content .candidate-card .candidate-info .candidate-designation {
+          font-size: 11px;
+          color: #a0a0a0; }
+      .chat-div .chat-div-content .candidate-card .remove-candidate {
+        position: absolute;
+        display: inline-block;
+        font-size: 13px;
+        top: 20px; }
+        .chat-div .chat-div-content .candidate-card .remove-candidate i:hover {
+          color: #d00a42; }
+
+.chat-div-candidate {
+  position: fixed;
+  bottom: 0;
+  width: 270px;
+  border: 1px solid #ccc; }
+  .chat-div-candidate .chat-div-header {
+    padding: 2px 12px;
+    background-color: #4b4b4b;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    position: relative; }
+    .chat-div-candidate .chat-div-header .candidate-name-container {
+      display: inline-block; }
+    .chat-div-candidate .chat-div-header .info-buttons {
+      display: inline-block;
+      position: absolute;
+      right: 10px;
+      height: 30px;
+      line-height: 30px; }
+      .chat-div-candidate .chat-div-header .info-buttons span {
+        padding: 0 4px; }
+  .chat-div-candidate .content-footer-container {
+    height: 0;
+    transition: 0.2s height ease-in-out; }
+    .chat-div-candidate .content-footer-container .chat-div-content {
+      height: 265px;
+      background-color: #f1f1f1;
+      z-index: 2;
+      overflow: auto;
+      padding: 10px 20px; }
+    .chat-div-candidate .content-footer-container.show {
+      height: 300px; }
+    .chat-div-candidate .content-footer-container .footer input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-top: 1px solid #ccc; }
+
+.selected {
+  background-color: #f5f6f7; }
+
+.message-sent {
+  display: inline-block;
+  box-shadow: 1px 1px 0px 0px #ccc;
+  padding: 5px;
+  background-color: #CFF4FD; }
+
+.message-container {
+  margin: 10px 0; }
+  .message-container.left {
+    text-align: left; }
+  .message-container.right {
+    text-align: right; }
+
+.chat-collapsed-candidate-container {
+  position: fixed;
+  bottom: 0; }
+  .chat-collapsed-candidate-container .chat-collapsed-candidate {
+    cursor: pointer;
+    padding: 6px 10px 1px;
+    max-width: 50px;
+    position: relative;
+    background: #f1f1f1;
+    border: 1px solid #CCC;
+    border-bottom: 0;
+    position: relative;
+    z-index: 2;
+    background: url(https://static.iimjobs.com/pub_chat/v4/images/collapsed_chats.png) no-repeat center center;
+    min-height: 27px;
+    min-width: 27px;
+    background-color: #f1f1f1;
+    box-sizing: content-box; }
+    .chat-collapsed-candidate-container .chat-collapsed-candidate .chat-collapsed-candidate-wrapper {
+      position: absolute;
+      bottom: 100%;
+      min-width: 125px;
+      text-align: right;
+      background: #f1f1f1;
+      right: -1px; }
+      .chat-collapsed-candidate-container .chat-collapsed-candidate .chat-collapsed-candidate-wrapper .candidate-collapsed-block {
+        padding: 10px 15px;
+        font-size: 13px;
+        color: #4b4b4b; }
+        .chat-collapsed-candidate-container .chat-collapsed-candidate .chat-collapsed-candidate-wrapper .candidate-collapsed-block i {
+          margin-left: 10px; }

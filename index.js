@@ -7,6 +7,7 @@
 	var program = require("commander");
 	var compression = require("compression");
 	var session = require("cookie-session");
+	var request = require("request");
 	var mode = "prod";
 	var env = "cloud";
 	var staticMiddlewareOptions = {
@@ -42,9 +43,9 @@
 
 	var app = express();
 	app.use(session({
-	  secret: 'some secret',
-	  resave: false,
-	  saveUninitialized: true,
+		name: 'sessID',
+		keys: ['key-1'],
+		httpOnly: false
 	}));
 	app.use(bodyParser.urlencoded({ extended: true }))
 	app.use(compression()); //compressing payload on every request
@@ -71,7 +72,8 @@
 		app: app,
 		mode: mode,
 		env: env,
-		cprint: cprint
+		cprint: cprint,
+	request: request
 	}
 
 	require(__dirname+"/routes/home.js")(settings);

@@ -1,0 +1,100 @@
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.important-info-color {
+  color: #333; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
+.ui-chatbox {
+  position: fixed;
+  bottom: 0;
+  border: 1px solid #ccc; }
+
+.ui-chatbox-titlebar {
+  padding: 10px;
+  cursor: pointer; }
+
+.ui-chatbox-content {
+  padding: 0px;
+  margin: 0px;
+  border: 0px; }
+
+.ui-chatbox-log {
+  padding: 3px;
+  height: 250px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #FFFFFF; }
+
+.ui-chatbox-input {
+  padding: 3px;
+  border-top: 1px solid grey;
+  overflow: hidden; }
+
+.ui-chatbox-input-box {
+  margin: 5px;
+  border: 2px solid lightgrey;
+  /* #6699FF */
+  padding: 2px;
+  height: 50px; }
+
+.ui-chatbox-icon {
+  float: right; }
+
+.ui-chatbox-input-focus {
+  border-color: #6699FF; }
+
+.ui-chatbox-msg {
+  margin-top: 10px;
+  float: left;
+  clear: both;
+  /* Source: http://snipplr.com/view/10979/css-cross-browser-word-wrap */
+  white-space: pre-wrap;
+  /* CSS3 */
+  white-space: -moz-pre-wrap;
+  /* Firefox */
+  white-space: -pre-wrap;
+  /* Opera <7 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* IE */ }
+
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {
+  border-top-right-radius: 0; }
+
+.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {
+  border-top-left-radius: 0; }
+
+.ui-widget-header {
+  border: none;
+  background: #4b4b4b;
+  color: #ffffff; }
+
+.ui-widget-content {
+  border: none;
+  background: #fff;
+  color: #333; }
+
+.ui-chatbox-input-box {
+  display: none; }

@@ -35,7 +35,7 @@ body, html {
 
 * {
   font-weight: normal;
-  font-family: 'Open Sans'; }
+  font-family: "Droid Sans", sans-serif; }
 
 .hidden {
   display: none !important; }
@@ -184,9 +184,12 @@ header nav {
           text-align: left; }
           header nav .menu .dropdown .options li a {
             font-size: 12px;
-            color: black; }
+            color: black;
+            text-decoration: none; }
             header nav .menu .dropdown .options li a:hover {
-              color: #56A0FF; }
+              text-decoration: underline; }
+          header nav .menu .dropdown .options li:hover {
+            background: #e1e1e1; }
       header nav .menu .dropdown:hover > ul {
         display: block; }
   header nav .search_container {

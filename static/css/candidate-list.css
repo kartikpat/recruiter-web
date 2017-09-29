@@ -53,7 +53,7 @@ input:focus, select:focus {
       .main-container .filters .search-by-keyword input {
         box-sizing: border-box;
         border: 1px solid #ccc;
-        border-radius: 4px;
+        border-radius: 2px;
         padding: 4px 8px;
         width: 75%;
         padding: 6px 8px;
@@ -143,20 +143,20 @@ input:focus, select:focus {
         width: auto;
         margin: 0 20px;
         background-color: #f5f6f7;
-        padding: 0 10px; }
+        padding: 0 10px;
+        line-height: 30px; }
         .main-container .jobs .jobs_panel .jobs_header .header {
           display: inline-block;
           padding: 0 2px;
-          overflow: auto;
           font-size: 11px;
           text-align: left;
-          color: #4b4b4b;
-          height: 30px;
-          line-height: 30px; }
+          color: #4b4b4b; }
         .main-container .jobs .jobs_panel .jobs_header .header_name {
           width: 18%; }
           .main-container .jobs .jobs_panel .jobs_header .header_name .checkbox {
-            margin: 0 15px 0 0; }
+            margin: 0 15px 0 0;
+            position: relative;
+            top: 3px; }
         .main-container .jobs .jobs_panel .jobs_header .header_organization {
           width: 28%;
           padding-left: 10px; }
@@ -191,7 +191,8 @@ input:focus, select:focus {
             height: 70px; }
             .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-first .contact-container {
               position: absolute;
-              left: 0; }
+              left: 0;
+              margin-top: 15px; }
               .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-first .contact-container .contact-heading, .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-first .contact-container .email-heading {
                 display: inline-block;
                 width: 50px; }
@@ -200,7 +201,7 @@ input:focus, select:focus {
             .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-first .bio-container {
               position: absolute;
               right: 0;
-              width: 50%; }
+              width: 52%; }
               .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-first .bio-container .icon {
                 width: 100%; }
                 .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-first .bio-container .icon div {
@@ -226,7 +227,8 @@ input:focus, select:focus {
                       color: orange; }
           .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second {
             position: relative;
-            height: 80px; }
+            height: 80px;
+            padding-top: 10px; }
             .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .comment-container {
               position: absolute;
               left: 0;
@@ -239,8 +241,9 @@ input:focus, select:focus {
                   .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .comment-container .comment .comment-content input {
                     box-sizing: border-box;
                     border: 1px solid #ccc;
-                    border-radius: 4px;
-                    padding: 4px 8px; }
+                    border-radius: 2px;
+                    padding: 4px 8px;
+                    margin-right: 25px; }
                 .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .comment-container .comment .comment-heading {
                   display: inline-block; }
               .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .comment-container .posted-comment ul {
@@ -249,18 +252,23 @@ input:focus, select:focus {
               position: absolute;
               right: 0;
               display: inline-block;
-              width: 49%; }
-              .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .tags-container .tags {
-                margin: 5px 0; }
-                .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .tags-container .tags .tags-content {
-                  display: inline-block; }
-                  .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .tags-container .tags .tags-content input {
-                    box-sizing: border-box;
-                    border: 1px solid #ccc;
-                    border-radius: 4px;
-                    padding: 4px 8px; }
-                .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .tags-container .tags .tags-heading {
-                  display: inline-block; }
+              width: 52%; }
+              .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .tags-container .ta .tags-content {
+                display: inline-block; }
+                .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .tags-container .ta .tags-content input {
+                  box-sizing: border-box;
+                  border: 1px solid #ccc;
+                  border-radius: 2px;
+                  padding: 4px 8px;
+                  margin-right: 25px; }
+              .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .tags-container .posted-tags {
+                margin-top: 10px; }
+                .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .tags-container .posted-tags .tags-jobSeeker {
+                  display: inline-block;
+                  width: 85px;
+                  margin-right: 5px; }
+                  .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .tags-container .posted-tags .tags-jobSeeker .tags-content {
+                    cursor: pointer; }
           .main-container .jobs .jobs_panel .jobs_content .slide-container .extra-info-container .layer-first .info {
             display: inline-block;
             width: 16%;
@@ -366,7 +374,7 @@ input:focus, select:focus {
         .modal .modal-content .modal-top .search-tags input {
           box-sizing: border-box;
           border: 1px solid #ccc;
-          border-radius: 4px;
+          border-radius: 2px;
           padding: 4px 8px; }
       .modal .modal-content .modal-top .tags-alphabets {
         display: inline-block;
@@ -521,3 +529,23 @@ input:focus, select:focus {
   .checkboxes input {
     margin: 0 5px 0 0 !important;
     vertical-align: middle; }
+
+.ui-widget input {
+  font-family: "Droid Sans", sans-serif;
+  font-size: 15px; }
+
+.ui-widget button {
+  font-family: "Droid Sans", sans-serif;
+  font-size: 13px; }
+
+.margin-right {
+  margin-right: 0 !important; }
+
+.js-remove-tag.job-seeker-tags {
+  height: 24px;
+  border: 1px solid #ececec;
+  color: #4b4b4b;
+  font-size: 12px;
+  padding: 2px 4px;
+  cursor: pointer;
+  background: #f5f6f7; }

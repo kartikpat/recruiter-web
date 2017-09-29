@@ -1,4 +1,5 @@
 @import "colors.scss";
+@import "fonts.scss";
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -39,6 +40,7 @@ footer, header, hgroup, menu, nav, section {
     width: 95%;
     margin: 40px auto;
     padding: 20px;
+    box-shadow: 0 1px 2px #ccc;
 
     .image {
         display: inline-block;
@@ -53,6 +55,16 @@ footer, header, hgroup, menu, nav, section {
                 width: 100%;
                 height: 100%;
 
+            }
+            i {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                background: rgba(0, 153, 255, 0.57);
+                border-radius: 50%;
+                padding: 8px;
+                color: rgba(255, 255, 255, 0.63);
+                cursor: pointer;
             }
 
             /*&:after {
@@ -211,6 +223,7 @@ footer, header, hgroup, menu, nav, section {
             padding: 5px;
             font-size: 13px;
             font-family: "Droid Sans",sans-serif;
+            text-decoration: none;
         }
     }
 
@@ -218,47 +231,118 @@ footer, header, hgroup, menu, nav, section {
         margin-top: 10px;
         .jobs_header {
             width: auto;
+            padding: 0 10px;
             margin: 0 auto;
             border-radius: 1px;
             background: #ececec;
+            border: 1px solid #d8d8d8;
 
             span {
                 display: inline-block;
-                padding: 5px;
-                margin: 5px;
-                overflow: auto;
                 font-size: 12px;
                 text-align: left;
-
+                font-weight: bold;
                 font-family: "Droid Sans",sans-serif;
             }
         }
 
         .jobs_content {
             border-bottom: 1px solid #d0d0d0;
-            span {
+            height: 60px;
+            line-height: 60px;
+            padding: 0 10px;
+            &:hover {
+                background-color: $color-light-grey;
+            }
+            .column {
                 display: inline-block;
                 color: #242424;
-                padding: 5px;
-                margin: 5px;
-                overflow: hidden;
                 font-size: 13px;
                 font-family: "Droid Sans",sans-serif;
-
             }
         }
         .date {
             width: 10%;
+
         }
         .title {
-            width: 40%;
+            width: 38%;
+
         }
         .status {
-            width: 10%;
+            width: 15%;
+
+            .rejected-message {
+                margin-left: 10px;
+                border-radius: 50%;
+                padding: 4px 6px 3px 6px;
+                background: #469de7;
+                cursor: pointer;
+                width: 20px;
+                height: 20px;
+                color: $color-white;
+                position: relative;
+                &:hover .tooltip-message{
+                    visibility: visible;
+                    opacity: 1;
+                }
+                .tooltip-message {
+                    position: absolute;
+                    visibility: hidden;
+                    z-index: 2;
+                    top: 50%;
+                    left: 120%;
+                    transform: translate(-1%,-61%);
+                    padding: 15px 15px;
+                    width: 175px;
+                    background-color: #555;
+                    color: #fff;
+                    opacity: 0;
+                    transition: opacity 0.5s;
+                    border-radius: 7px;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        transform: translate(0%, -50%);
+                        margin-left: -10px;
+                        border-width: 5px;
+                        border-style: solid;
+                        border-color: transparent #555 transparent transparent;
+                    }
+                }
+            }
         }
         .views {
-            width: 12%;
-            min-width: 40px;
+            width: 14%;
+            position: relative;
+            top: -8px;
+            .applied-link {
+                position: relative;
+                    a {
+                        position: absolute;
+                        left: -64px;
+                        top: -45%;
+                    }
+                }
+
+        }
+        .action {
+            position: relative;
+            top: -15px;
+            .edit-job-container {
+                width: 25px;
+                position: relative;
+                box-shadow: 4px 5px 5px 0px #e9e9e9;
+                cursor: pointer;
+                height: 27px;
+                img {
+                    position: absolute;
+                    left: -28px;
+                    top: 129%;
+                }
+            }
         }
     }
 }
@@ -267,84 +351,120 @@ footer, header, hgroup, menu, nav, section {
     padding: 20px;
 
     .post_job {
-        margin: 21px 0;
-        .post_job_form {
-            max-width: 1200px;
-        .heading {
+
+
+        .form-heading {
+            margin-bottom: 25px ;
             .back {
                 display: block;
+                margin-bottom: 10px ;
+                text-decoration: none;
+                font-size: 13px;
             }
 
-            > span {
-                font-size: 24px;
-            }
+            .post-job-heading {
+                font-size: 18px;
+                color: $color-heading;
+             }
 
             .guidelines {
-                font-size: 12px;
+                font-size: 18px;
+                text-decoration: none;
             }
         }
+        .post_job_form {
+            max-width: 1200px;
+            margin: 25px 0 0 50px;
+            .field-container {
+                padding: 10px;
+                .label {
+                    display: inline-block;
+                    width: 15%;
+                    font-size: 14px;
+                    color: $color-black-text;
+                    vertical-align: top;
+                    height: 34px;
+                    line-height: 34px;
+                    cursor: pointer;
+                }
 
-        .label {
-            display: inline-block;
-            margin-left: 35px;
-            padding: 15px;
-            width: 15%;
-            font-size: 12px;
-            color: $extra-info-color;
-        }
+                .field {
+                    width: 60%;
+                    display: inline-block;
+                    &.course-type {
+                        height: 34px;
+                        line-height: 40px;
+                    }
+                    .js-show-selected-tags, .js-show-suggested-tags {
+                        margin-right: 10px;
+                    }
 
-        .label.top {
-            vertical-align: top !important;
-        }
+                    .salary-info {
+                        margin: 10px 0;
+                    }
 
-        .field {
-            width: 60%;
-            display: inline-block;
-            margin-left: 60px;
-            padding: 4px 0;
+                    input, select {
+                        display: block;
+                        width: 70%;
+                        height: 34px;
+                        padding: 6px 12px;
+                        font-size: 14px;
+                        line-height: 34px;
+                        color: $input-color;
+                        border: 1px solid #ccc;
+                        transition: border-color 0.20s ease-in-out;
+                        background-color: inherit;
+                        border-radius: 2px;
+                        &:focus {
+                            outline: none;
+                            border-color: $input-focus-color;
+                        }
+                    }
+                    input::-webkit-input-placeholder {
+                        height: 34px;
+                        line-height: 34px;
+                    }
+                    select.multiple {
+                        height: 75px;
+                    }
 
-            .js-show-selected-tags, .js-show-suggested-tags {
-                margin-right: 10px;
-            }
+                    .multiple.industry {
+                        margin-bottom: 10px;
+                    }
 
-            input, select {
-                padding: 4px 8px;
-                margin: 8px 0;
-                border: 1px solid $select-border;
-                border-radius: 4px;
-                width: 60%;
-                background-color: inherit;
+                    input[type="checkbox"] {
+                        display: inline-block;
+                        width: auto;
+                        height: auto;
+                        margin: 0 3px 0 0;
+                    }
 
-                &:focus {
-                    outline: none;
-                    border: 1px solid #00C99C;
+                    select.half {
+                        width: 29.5%;
+                        display: inline-block;
+                    }
+
+                    textarea {
+                        width: 70%;
+                        min-height: 250px;
+                        padding: 12px 20px;
+                        box-sizing: border-box;
+                        border: 1px solid #ccc;
+                        border-radius: 2px;
+                        background-color: inherit;
+
+                        transition: border-color 0.20s ease-in-out;
+                        &:focus {
+                            outline: none;
+                            border-color: $input-focus-color;
+                        }
+
+
+                    }
                 }
             }
 
-            input[type="checkbox"] {
-                display: inline-block;
-                width: auto;
-            }
 
-            select.half {
-                width: 29.5%;
-            }
-
-            textarea {
-                width: 70%;
-                height: 150px;
-                padding: 12px 20px;
-                box-sizing: border-box;
-                border: 2px solid #ccc;
-                border-radius: 4px;
-                background-color: inherit;
-                resize: none;
-
-                &:focus {
-                    outline: none;
-                }
-            }
-        }
     }
 }
 
@@ -401,15 +521,8 @@ footer, header, hgroup, menu, nav, section {
                     padding: 4px 8px;
                 }
             }
-
         } */
-
     }
-
-
-
-
-
 
 .modal {
     position: fixed;
@@ -432,6 +545,24 @@ footer, header, hgroup, menu, nav, section {
     background-color: rgba(0, 0, 0, 0.4);
 
     /* Black w/ opacity */
+    &.modal-rejected {
+        .modal-header {
+            padding: 6px 10px;
+            .modal-heading {
+                font-size: 14px;
+            }
+            .close {
+                font-size: 16px;
+            }
+        }
+        .modal-center {
+            padding: 20px 10px;
+        }
+        .modal-footer {
+            padding: 6px 10px;
+            min-height: 40px;
+        }
+    }
 }
 
 .modal-content {
@@ -480,6 +611,7 @@ footer, header, hgroup, menu, nav, section {
         font-weight: 500;
         color: $important-info-color;
         font-family: "Droid Sans",sans-serif;
+
     }
 }
 
@@ -492,6 +624,9 @@ footer, header, hgroup, menu, nav, section {
     .close-modal.button {
         position: absolute;
         right: 20px;
+        font-size: 14px;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+        padding: 6px 12px;
     }
 }
 
@@ -597,4 +732,261 @@ footer, header, hgroup, menu, nav, section {
     width: 100px;
     height: 30px;
     }
+}
+
+.checkbox {
+    margin-right: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    span {
+        position: relative;
+        top: -2px;
+    }
+}
+
+.button.submit-form {
+    font-family: $droid-font;
+    background: $post-job-submit-bg-color !important;
+    color: $color-white;
+    text-shadow: none;
+    border: 1px solid #4a4a3b !important;
+    font-size: 14px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+    padding: 6px 12px;
+    margin-right: 15px;
+}
+
+.button.cancel-form {
+    font-size: 14px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+    padding: 6px 12px;
+}
+
+label.premium-job {
+    height: 30px;
+    line-height: 40px;
+}
+
+.checkboxes div {
+    margin-bottom: 4px;
+}
+
+
+
+.add-tags-content {
+    input {
+        display: inline-block !important;
+        margin-right: 30px;
+    }
+    button {
+        font-size: 12px;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+        padding: 6px 12px;
+    }
+}
+
+
+
+.chat-div {
+    position: fixed;
+    bottom: 0;
+    right: 10px;
+    width: 270px;
+    border: 1px solid #ccc;
+    .chat-div-header {
+        padding: 10px 12px;
+        background-color: #4b4b4b;
+        color: #fff;
+        font-size: 13px;
+        cursor: pointer;
+        .minus-icon {
+            height: 12px;
+            width: 12px;
+            float: right;
+            background: url(https://static.iimjobs.com/pub_chat/v4/images/minus.jpg) no-repeat;
+            &.show {
+                margin-top: 10px;
+            }
+        }
+    }
+    .chat-div-content {
+        height: 0;
+        background-color: #fff;
+        z-index: 2;
+        transition: 0.2s height ease-in-out;
+        overflow: auto;
+        &.show {
+            height: 300px;
+        }
+        .divider {
+            margin: 0 auto;
+        }
+        .candidate-card {
+
+            padding: 4px 10px;
+            position: relative;
+            &:hover {
+                background-color: $color-light-grey;
+                cursor: pointer;
+            }
+            .candidate-image {
+                display: inline-block;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                margin-right: 5px;
+                vertical-align: top;
+                margin-top: 5px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                }
+            }
+            .candidate-info {
+                display: inline-block;
+                margin-top: 5px;
+                .candidate-name {
+
+                    font-size: 13px;
+                    color: #676666;
+                }
+                .candidate-designation {
+                    font-size: 11px;
+                    color: #a0a0a0;
+                }
+            }
+            .remove-candidate {
+                position: absolute;
+                display: inline-block;
+                font-size: 13px;
+                top: 20px;
+                i:hover {
+                    color: $error-color;
+                }
+            }
+        }
+    }
+}
+
+.chat-div-candidate {
+    position: fixed;
+    bottom: 0;
+    width: 270px;
+    border: 1px solid #ccc;
+    .chat-div-header {
+        padding: 2px 12px;
+        background-color: #4b4b4b;
+        color: #fff;
+        font-size: 13px;
+        cursor: pointer;
+        position: relative;
+        .candidate-name-container {
+            display: inline-block;
+            .candidate-name {
+
+            }
+            .last-active-date {
+
+            }
+        }
+        .info-buttons {
+            display: inline-block;
+            position: absolute;
+            right: 10px;
+            height: 30px;
+            line-height: 30px;
+            span {
+                padding: 0 4px;
+            }
+        }
+
+    }
+    .content-footer-container {
+        height: 0;
+        transition: 0.2s height ease-in-out;
+        .chat-div-content {
+            height: 265px;
+            background-color: #f1f1f1;
+            z-index: 2;
+            overflow: auto;
+            padding: 10px 20px;
+        }
+        &.show {
+            height: 300px;
+        }
+        .footer {
+            input {
+                width: 100%;
+                padding: 12px;
+                border: none;
+                border-top: 1px solid #ccc;
+
+            }
+        }
+    }
+
+}
+
+.selected {
+    background-color: $color-light-grey;
+}
+
+.message-sent {
+
+    display: inline-block;
+    box-shadow: 1px 1px 0px 0px #ccc;
+    padding: 5px;
+    background-color: #CFF4FD;
+}
+
+.message-container {
+    margin: 10px 0;
+
+    &.left {
+        text-align: left;
+    }
+    &.right {
+        text-align: right;
+    }
+}
+
+.chat-collapsed-candidate-container {
+    position: fixed;
+    bottom: 0;
+    .chat-collapsed-candidate {
+        cursor: pointer;
+        padding: 6px 10px 1px;
+        max-width: 50px;
+        position: relative;
+        background: #f1f1f1;
+        border: 1px solid #CCC;
+        border-bottom: 0;
+        position: relative;
+        z-index: 2;
+        background: url(https://static.iimjobs.com/pub_chat/v4/images/collapsed_chats.png) no-repeat center center;
+        min-height: 27px;
+        min-width: 27px;
+        background-color: #f1f1f1;
+        box-sizing: content-box;
+        .chat-collapsed-candidate-wrapper {
+            position: absolute;
+            bottom: 100%;
+            min-width: 125px;
+            text-align: right;
+            background: #f1f1f1;
+            right: -1px;
+
+            .candidate-collapsed-block {
+                padding: 10px 15px;
+                font-size: 13px;
+                color: $color-black-text;
+                i {
+                    margin-left: 10px;
+
+                }
+            }
+        }
+    }
+
 }

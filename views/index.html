@@ -1,10 +1,11 @@
 {{> header }}
 <!-- user profile section -->
- <div class="user_profile box_shadow">
+ <div class="user_profile ">
    <!-- user image -->
    <div class="image ">
     <div class="edit_profile animated-background">
         <img class="thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA">
+        <i id="edit-pencil" class=" fa fa-pencil" aria-hidden="true"></i>
     </div>
    </div>
 
@@ -16,7 +17,7 @@
            <div class="user_name animated-background font-lg"></div>
            <div class="user_designation animated-background"></div>
        </div>
-       <hr class="divider">
+       <hr class="divider hidden">
        <div class="user-about animated-background font-sm extra-info-color"></div>
        <div class="edit_profile">
            <button id="edit-profile"><i class="fa fa-pencil" aria-hidden="true"></i></button>
@@ -67,15 +68,33 @@
   </div>
  </div>
  <div class="jobs_content prototype hidden">
-        <span class="date">Date</span>
-        <span class="title">Title</span>
-        <span class="status">Status</span>
-        <span class="views">Views</span>
-        <span class="action">Action</span>
+        <span class="column date">Date</span>
+        <span class="column title">Title</span>
+        <span class="column status"></span>
+        <span class="column views">Views</span>
+        <span class="column action"></span>
+        <div id="modal-rejected" class="modal-rejected modal hidden animated fadeIn bg-overlay">
+            <!-- Modal content -->
+
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <span class="modal-heading ">Why Rejected</span>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-center">
+                    <div class="list">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="button close-modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
   <!-- end jobs posted section -->
 
-  <div class="modal hidden animated fadeIn bg-overlay">
+  <div id="modal-guidelines" class="modal hidden animated fadeIn bg-overlay">
       <!-- Modal content -->
 
       <div class="modal-content ">
@@ -113,6 +132,71 @@
               <button class="button close-modal">Close</button>
           </div>
       </div>
+  </div>
+
+  <div id="chat-div" class="chat-div">
+      <div class="chat-div-header">
+          Inbox<span class="minus-icon"></span>
+      </div>
+      <div class="chat-div-content">
+
+      </div>
+  </div>
+  <div class="chat-candidate-boxes">
+
+  </div>
+
+  <div class="chat-div-candidate prototype hidden">
+      <div class="chat-div-header">
+          <div class="candidate-name-container">
+              <div class="candidate-name">
+
+              </div>
+              <div class="last-active-date">
+
+              </div>
+          </div>
+          <div class="info-buttons">
+              <span class="info-icon"><i class=" fa fa-info" aria-hidden="true"></i></span>
+              <span class="minus-icon"><i class="fa fa-minus" aria-hidden="true"></i></span>
+              <span class="close-icon"><i class=" fa fa-times" aria-hidden="true"></i></span>
+          </div>
+      </div>
+      <div class="content-footer-container">
+          <div class="chat-div-content">
+
+          </div>
+          <div class="footer">
+              <input id="chat-input" type="text" placeholder="Write a Message">
+          </div>
+      </div>
+
+  </div>
+
+<div id="chat-collapsed-container">
+    <div class="chat-collapsed-candidate-container hidden">
+        <div class="chat-collapsed-candidate">
+            <div class="chat-collapsed-candidate-wrapper">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+  <div class="candidate-card prototype hidden">
+      <div class="candidate-image animated-background"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA"></div>
+      <div class="candidate-info">
+          <div class="candidate-name animated-background text-clr font-md"></div>
+          <div class="candidate-designation animated-background extra-info-color font-sm"></div>
+      </div>
+      <!-- <div class="remove-candidate extra-info-color"><i class="fa fa-times" aria-hidden="true"></i></div> -->
+  </div>
+  <hr class="divider divider-full hidden">
+
+  <div class="candidate-collapsed-block prototype hidden">
+
   </div>
 
 
