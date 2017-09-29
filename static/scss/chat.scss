@@ -179,10 +179,10 @@
                 padding: 10px 0;
                 .date-block {
                     text-align: center;
+                    margin: 25px 0;
                     .date {
                         background: #e1f3fb;
                         padding: 8px 20px;
-
                         display: inline-block;
                         font-size: 12.4px;
                         color: #777777;
@@ -192,16 +192,17 @@
                 .message-container {
                     margin: 10px 0;
                     .message-received {
-
                         display: inline-block;
                         box-shadow: 1px 1px 0px 0px #ccc;
                         padding: 5px 10px;
                         color: #1c1c1c;
                         border-radius: 4px;
-                        background-color: rgba(201, 255, 95, 0.38);
+                        background-color: rgba(236, 236, 236, 0.38);
+                        position: relative;
+
                     }
                     .message-sent {
-
+                        position: relative;
                         display: inline-block;
                         box-shadow: 1px 1px 0px 0px #ccc;
                         padding: 5px 10px;
@@ -214,6 +215,16 @@
                     }
                     &.right {
                         text-align: right;
+                    }
+                    .current-time {
+                        font-size: 10px;
+                        vertical-align: sub;
+                        padding: 0 0 0px 10px;
+                    }
+                    .caret {
+                        position: absolute;
+                        background: #ccc;
+                        
                     }
                 }
             }
@@ -240,13 +251,4 @@
 
 .divider-full {
     margin: 0 auto;
-}
-
-
-
-
-.current-time {
-    font-size: 10px;
-    vertical-align: sub;
-    padding: 0 0 0px 10px;
 }

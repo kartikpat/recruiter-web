@@ -362,16 +362,108 @@ $(document).ready(function(){
 	  	}, populateJobs)
 	}
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/calendar/"+jobId, {} , populateCalendarOptions );
+	//
 	//console.log(calendarId);
 	$(".set-default-calendar-button").click(setDefaultCalendar)
 
 	$("#search-by-keyword-button").click(searchByKeyword);
 
+
+
 });
+
+$(".jobs_wrapper").on("keyup", '#add-tag', function() {
+	var string = $(this).val();
+	console.log(string);
+	if(string != '') {
+		getRequest(baseUrl+"/recruiter/"+recruiterID+"/tag?str="+string, {} , function(res) {
+			if(res.status == "success") {
+				var suggestedTagsArray = [];
+				res["data"].forEach(function(aTag) {
+					suggestedTagsArray.push({
+						"label": aTag["name"],
+						"value": aTag["name"],
+						"id": aTag["id"]
+				});
+			})
+				$("#add-tag").autocomplete({
+			      source: suggestedTagsArray,
+				  select: function (event, ui) {
+					  $(this).attr("tag-id", ui.item.id);
+				  }
+			  });
+			}
+		});
+	}
+})
+
+$(".jobs_wrapper").on("click", '#submit-tag', function() {
+	var obj = {};
+	obj["name"] = $("#add-tag").val();
+	$("#add-tag").val('');
+	var tagId = $("#add-tag").attr("tag-id");
+	if(tagId != '') {
+		obj["id"] = tagId;
+	}
+	obj["seekerID"] = $(this).attr("data-jobseeker-id");
+	obj["applicationID"] = $(this).attr("data-jobapplication-id");
+	console.log(obj);
+	if(obj["name"] != '') {
+		postRequest(baseUrl+"/recruiter/"+recruiterID+"/tag", null ,
+		obj, function(res) {
+				if(res["status"] == "success") {
+					var divEl = $('.tags-jobSeeker.prototype').clone().removeClass('prototype hidden');
+
+					divEl.find(".tags-content").attr("data-id",tagId);
+					divEl.find(".tags-content").attr("data-jobseeker-id",obj["seekerID"]);
+					divEl.find(".tags-content").attr("data-jobapplication-id",obj["applicationID"]);
+					divEl.find(".tags-content").text(obj["name"]);
+					divEl.find(".tags-content").addClass(' margin-right font-sm');
+					divEl.find(".js-remove-tag").attr("data-jobseeker-id",obj["seekerID"]);
+					divEl.find(".js-remove-tag").attr("data-jobapplication-id",obj["applicationID"]);
+
+					$('.posted-tags').append(divEl);
+				}
+		});
+
+
+
+	}
+
+})
+
+$(".jobs_wrapper").on("click", '.posted-tags .tags-content', function() {
+
+});
+
+$(".jobs_wrapper").on("click", '.js-remove-tag.job-seeker-tags', function() {
+	var tagId = $(this).attr("data-id");
+	var obj = {}
+	obj["seekerID"] = $(this).attr("data-jobseeker-id");
+	obj["applicationID"] = $(this).attr("data-jobapplication-id");
+	var elem = $(this);
+
+	postRequest(baseUrl+"/recruiter/"+recruiterID+"/tag/"+tagId+"/delete", null ,
+	obj, function(res) {
+			if(res["status"] == "success") {
+				console.log("hi");
+
+				elem.parent().remove();
+
+			}
+	});
+
+})
+
+
+
+var populateTags = function(res) {
+	console.log(res);
+}
 
 var searchByKeyword = function() {
 	var searchStr = $("#search-by-keyword").val();
-	console.log(searchStr);
+
 	if(searchStr!= '') {
 		$('.jobs-wrapper-shell-loader').removeClass('hidden');
 		$('.jobs_wrapper').empty();
@@ -614,6 +706,23 @@ var populateJobs = function(res){
 				column.find(".degree").text(anEdu["degree"]);
 				card.find('.content_institute').append(column);
 			})
+			console.log(aJob["tags"]);
+			aJob["tags"].forEach(function(anTag, index){
+				if(index > 3) {
+					return
+				}
+				var divEl = $('.tags-jobSeeker.prototype').clone().removeClass('prototype hidden');
+
+				divEl.find(".tags-content").attr("data-id",anTag["id"]);
+				divEl.find(".tags-content").attr("data-jobseeker-id",aJob['userID']);
+				divEl.find(".tags-content").attr("data-jobapplication-id",aJob['id']);
+				divEl.find(".tags-content").text(anTag["name"]);
+				divEl.find(".tags-content").addClass(' margin-right font-sm');
+				divEl.find(".js-remove-tag").attr("data-jobseeker-id",aJob['userID']);
+				divEl.find(".js-remove-tag").attr("data-jobapplication-id",aJob['id']);
+
+				card.find('.posted-tags').append(divEl);
+			})
 			card.find(".icon-resume").attr("data-resume-open",'js-open-'+aJob['id']+'');
 			card.find(".resume-container").attr("data-resume-open",'js-open-'+aJob['id']+'');
 			card.find(".resume-container .resume-content").attr("data",aJob["resumeUrl"]);
@@ -633,6 +742,10 @@ var populateJobs = function(res){
 			else {
 			//	card.find(".contact").addClass("hidden");
 			}
+
+			$("#submit-tag").attr("data-jobseeker-id",aJob["userID"]);
+			$("#submit-tag").attr("data-jobapplication-id",aJob["id"]);
+
 			card.find(".extra-info-container .maritalStatus").text(boolean(aJob["marital_status"]));
 			//card.find("extra-info-container .languages").text(formatLanguages(aJob["language_known"]));
 			card.find(".extra-info-container .permit").text(boolean(aJob["work_permit"]));

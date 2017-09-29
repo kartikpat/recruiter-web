@@ -168,7 +168,8 @@
       overflow: auto;
       padding: 10px 0; }
       .main-container .candidate-chat-container .candidate-chat-messages-container .candidate-chat-content .date-block {
-        text-align: center; }
+        text-align: center;
+        margin: 25px 0; }
         .main-container .candidate-chat-container .candidate-chat-messages-container .candidate-chat-content .date-block .date {
           background: #e1f3fb;
           padding: 8px 20px;
@@ -184,8 +185,10 @@
           padding: 5px 10px;
           color: #1c1c1c;
           border-radius: 4px;
-          background-color: rgba(201, 255, 95, 0.38); }
+          background-color: rgba(236, 236, 236, 0.38);
+          position: relative; }
         .main-container .candidate-chat-container .candidate-chat-messages-container .candidate-chat-content .message-container .message-sent {
+          position: relative;
           display: inline-block;
           box-shadow: 1px 1px 0px 0px #ccc;
           padding: 5px 10px;
@@ -196,6 +199,13 @@
           text-align: left; }
         .main-container .candidate-chat-container .candidate-chat-messages-container .candidate-chat-content .message-container.right {
           text-align: right; }
+        .main-container .candidate-chat-container .candidate-chat-messages-container .candidate-chat-content .message-container .current-time {
+          font-size: 10px;
+          vertical-align: sub;
+          padding: 0 0 0px 10px; }
+        .main-container .candidate-chat-container .candidate-chat-messages-container .candidate-chat-content .message-container .caret {
+          position: absolute;
+          background: #ccc; }
     .main-container .candidate-chat-container .candidate-chat-messages-container .candidate-chat-footer {
       position: absolute;
       display: block;
@@ -214,8 +224,3 @@
 
 .divider-full {
   margin: 0 auto; }
-
-.current-time {
-  font-size: 10px;
-  vertical-align: sub;
-  padding: 0 0 0px 10px; }

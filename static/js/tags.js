@@ -33,7 +33,8 @@ var array = [
 
 var showFilteredCandidatesBasedOnTags = function() {
     var tagId = $(this).attr("data-id");
-    window.location = "/recruiter/filter-candidate?tagID="+tagId;
+	var tagName = $(this).attr("data-tag-name");
+    window.location = "/recruiter/filter-candidate?tagID="+tagId+"&tagName="+tagName;
     console.log("hi")
 }
 
@@ -49,6 +50,7 @@ var getTags = function(arr) {
     arr.forEach(function(aTag){
         var clonedTag = $(".js-show-tags.prototype").clone().removeClass('prototype hidden');
         clonedTag.attr("data-id",aTag["id"]);
+		clonedTag.attr("data-tag-name",aTag["name"]);
         clonedTag.text(aTag["name"]);
         $(".show-tags-container").append(clonedTag);
     })

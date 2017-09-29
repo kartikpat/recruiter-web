@@ -27,22 +27,30 @@
 
 .main-container {
   padding: 20px; }
-  .main-container .heading {
-    margin-bottom: 20px; }
+  .main-container .top-container {
+    position: relative;
+    margin-bottom: 40px; }
+    .main-container .top-container .heading {
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      margin-bottom: 40px; }
+    .main-container .top-container #download-excel {
+      display: inline-block;
+      position: absolute;
+      right: 0; }
   .main-container .jobs_container .jobs_header {
     width: auto;
     margin: 0 20px;
     background-color: #f5f6f7;
-    padding: 0 10px; }
+    padding: 0 10px;
+    line-height: 34px; }
     .main-container .jobs_container .jobs_header .header {
       display: inline-block;
       padding: 0 2px;
-      overflow: auto;
       font-size: 11px;
       text-align: left;
-      color: #4b4b4b;
-      height: 30px;
-      line-height: 30px; }
+      color: #4b4b4b; }
     .main-container .jobs_container .jobs_header .header_name {
       width: 22%; }
       .main-container .jobs_container .jobs_header .header_name .checkbox {
@@ -145,114 +153,6 @@
     .main-container .jobs_container .jobs_wrapper .jobs_content .content-container {
       cursor: pointer;
       padding: 10px 10px 0 10px; }
-    .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container {
-      height: auto;
-      padding: 10px; }
-      .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .tagline-container {
-        height: 35px;
-        line-height: 15px; }
-        .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .tagline-container .tagline-heading {
-          display: inline-block;
-          vertical-align: top;
-          width: 50px; }
-        .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .tagline-container .tagline-content {
-          display: inline-block;
-          max-width: 90%; }
-      .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-first {
-        position: relative;
-        height: 70px; }
-        .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-first .contact-container {
-          position: absolute;
-          left: 0; }
-          .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-first .contact-container .contact-heading, .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-first .contact-container .email-heading {
-            display: inline-block;
-            width: 50px; }
-          .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-first .contact-container .contact-content, .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-first .contact-container .email-content {
-            display: inline-block; }
-        .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-first .bio-container {
-          position: absolute;
-          right: 0;
-          width: 50%; }
-          .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-first .bio-container .icon {
-            width: 100%; }
-            .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-first .bio-container .icon div {
-              display: inline-block;
-              width: 49%;
-              margin: 0 0 5px 0; }
-              .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-first .bio-container .icon div a {
-                text-decoration: none;
-                color: #808080; }
-                .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-first .bio-container .icon div a i {
-                  display: inline-block;
-                  font-size: 30px;
-                  width: 40px; }
-                .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-first .bio-container .icon div a span {
-                  vertical-align: text-top; }
-                .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-first .bio-container .icon div a.video:hover {
-                  color: red; }
-                .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-first .bio-container .icon div a.icon-resume:hover {
-                  color: blue; }
-                .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-first .bio-container .icon div a.cover-letter:hover {
-                  color: green; }
-                .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-first .bio-container .icon div a.audio:hover {
-                  color: orange; }
-      .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-second {
-        position: relative;
-        height: 80px; }
-        .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-second .comment-container {
-          position: absolute;
-          left: 0;
-          display: inline-block;
-          width: 49%; }
-          .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-second .comment-container .comment {
-            margin: 0 0 5px 0; }
-            .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-second .comment-container .comment .comment-content {
-              display: inline-block; }
-              .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-second .comment-container .comment .comment-content input {
-                box-sizing: border-box;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                padding: 4px 8px; }
-            .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-second .comment-container .comment .comment-heading {
-              display: inline-block; }
-          .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-second .comment-container .posted-comment ul {
-            margin: 0; }
-        .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-second .tags-container {
-          position: absolute;
-          right: 0;
-          display: inline-block;
-          width: 49%; }
-          .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-second .tags-container .tags {
-            margin: 5px 0; }
-            .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-second .tags-container .tags .tags-content {
-              display: inline-block; }
-              .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-second .tags-container .tags .tags-content input {
-                box-sizing: border-box;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                padding: 4px 8px; }
-            .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .info-container-second .tags-container .tags .tags-heading {
-              display: inline-block; }
-      .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .extra-info-container .layer-first .info {
-        display: inline-block;
-        width: 16%;
-        vertical-align: top; }
-      .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .extra-info-container .layer-second .marks-wrapper {
-        display: inline-block;
-        width: 35%; }
-        .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .extra-info-container .layer-second .marks-wrapper .marks {
-          display: inline-block;
-          padding: 0 5px; }
-      .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .extra-info-container .layer-second .info {
-        display: inline-block;
-        width: 21%;
-        vertical-align: top; }
-      .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .extra-info-container .css-heading {
-        font-size: 10px;
-        color: #808080; }
-      .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container .extra-info-container .css-content {
-        font-size: 12px;
-        color: #333; }
     .main-container .jobs_container .jobs_wrapper .jobs_content .content {
       display: inline-block;
       padding: 5px 0 0 2px;
@@ -300,4 +200,4 @@
     .main-container .jobs_container .jobs_wrapper .jobs_content .content.content_institute {
       width: 28%; }
     .main-container .jobs_container .jobs_wrapper .jobs_content .content.content_more {
-      width: 22%; }
+      width: 20%; }

@@ -222,7 +222,9 @@
 	"candidate-list": {
 		"styles": {
 			"debug" : [
+				"static/css/jquery-ui.min.css",
 				"static/css/header.css",
+
             	"static/css/candidate-list.css",
 				"static/css/footer.css",
 				"static/css/buttons.css",
@@ -238,6 +240,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/jquery-ui.min.js",
 				"static/js/request.js",
 				"static/js/header.js",
 				"static/js/candidate-list.js",

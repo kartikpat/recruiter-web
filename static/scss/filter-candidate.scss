@@ -9,8 +9,20 @@
 
 .main-container {
     padding: 20px;
-    .heading {
-        margin-bottom: 20px;
+    .top-container {
+        position: relative;
+        margin-bottom: 40px;
+        .heading {
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            margin-bottom: 40px;
+        }
+        #download-excel {
+            display: inline-block;
+            position: absolute;
+            right: 0;
+        }
     }
     .jobs_container {
         .jobs_header {
@@ -18,15 +30,14 @@
             margin: 0 20px;
             background-color: $color-light-grey;
             padding: 0 10px;
+            line-height: 34px;
             .header {
                 display: inline-block;
                 padding: 0 2px;
-                overflow: auto;
                 font-size: 11px;
                 text-align: left;
                 color: $color-black-text;
-                height: 30px;
-                line-height: 30px;
+
             }
 
             .header_name {
@@ -38,7 +49,7 @@
 
             .header_organization {
                 width: 28%;
-                
+
             }
 
             .header_institute {
@@ -181,157 +192,7 @@
                     cursor: pointer;
                     padding: 10px 10px 0 10px;
                 }
-                .slide-container{
-                    height: auto;
-                    padding: 10px;
-                    .tagline-container {
-                        height: 35px;
-                        line-height: 15px;
-                        .tagline-heading {
-                            display: inline-block;
-                            vertical-align: top;
-                            width: 50px;
-                        }
-                        .tagline-content {
-                            display: inline-block;
-                            max-width: 90%;
-                        }
-                    }
-                    .info-container-first {
-                        position: relative;
-                        height: 70px;
-                        .contact-container {
-                            position: absolute;
-                            left: 0;
-                            .contact-heading, .email-heading {
-                                display: inline-block;
-                                width: 50px;
-                            }
-                            .contact-content, .email-content {
-                                display: inline-block;
-                            }
-                        }
-                        .bio-container {
-                            position: absolute;
-                            right: 0;
-                            width: 50%;
-                            .icon {
-                                width: 100%;
-                                div {
-                                    display: inline-block;
-                                    width: 49%;
-                                    margin: 0 0 5px 0;
-                                    a {
-                                        text-decoration: none;
-                                        color: $extra-info-color;
-                                        i {
-                                            display: inline-block;
-                                            font-size: 30px;
-                                            width: 40px;
-                                        }
-                                        span {
-                                            vertical-align: text-top;
-                                        }
-                                        &.video:hover {
-                                            color: red;
-                                        }
-                                        &.icon-resume:hover {
-                                            color: blue;
-                                        }
-                                        &.cover-letter:hover {
-                                            color: green;
-                                        }
-                                        &.audio:hover {
-                                            color: orange;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .info-container-second {
-                        position: relative;
-                        height: 80px;
-                        .comment-container {
-                            position: absolute;
-                            left: 0;
-                            display: inline-block;
-                            width: 49%;
-                            .comment {
-                                margin: 0 0 5px 0;
-                                .comment-content {
-                                    display: inline-block;
-                                    input {
-                                        @include input-styling;
-                                    }
-                                }
-                                .comment-heading {
-                                    display: inline-block;
-                                }
-                            }
-                            .posted-comment {
-                                ul {
-                                    margin: 0;
-                                }
-                            }
-                        }
-                        .tags-container {
-                            position: absolute;
-                            right: 0;
-                            display: inline-block;
-                            width: 49%;
-                            .tags {
-                                margin: 5px 0;
-                                .tags-content {
-                                    display: inline-block;
-                                    input {
-                                        @include input-styling;
-                                    }
-                                }
-                                .tags-heading {
-                                    display: inline-block;
-                                }
-                            }
-                            .posted-tags {
 
-                            }
-                        }
-                    }
-                    .extra-info-container {
-                        .layer-first {
-                            .info {
-                                display: inline-block;
-                                width: 16%;
-                                vertical-align: top;
-
-                            }
-                        }
-                        .layer-second {
-                            .marks-wrapper {
-                                display: inline-block;
-                                width: 35%;
-                                .marks {
-                                    display: inline-block;
-                                    padding: 0 5px;
-                                }
-                            }
-                            .info {
-                                display: inline-block;
-                                width: 21%;
-                                vertical-align: top;
-                            }
-                        }
-                        .css-heading {
-                            font-size: 10px;
-                            color: $extra-info-color;
-                        }
-                        .css-content {
-                            font-size: 12px;
-                            color: $important-info-color;
-                        }
-                    }
-
-                }
 
                 .content {
                     display: inline-block;
@@ -400,7 +261,7 @@
                 }
 
                 .content.content_more {
-                    width: 22%;
+                    width: 20%;
                 }
             }
         }

@@ -84,7 +84,9 @@ $(".chat-side-profile-candidates").on('click', '.candidate-card', function() {
 var onFetchHistory = function(status, response) {
     console.log(response);
     response["messages"].forEach(function(elem, index){
+        var postedTime = ISODateToTime(elem["entry"]["time"]);
         elem["entry"]["time"] = ISODateToD_M_Y(elem["entry"]["time"]);
+
         if(index == 0) {
              chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").append("<div class='date-block '><div class='date'>"+elem["entry"]["time"]+"</div></div>")
             //  if(elem["entry"])
@@ -93,7 +95,7 @@ var onFetchHistory = function(status, response) {
         if (index > 0 && (response["messages"][index - 1]["entry"]["time"] != elem["entry"]["time"])) {
              chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").append("<div class='date-block '><div class='date'>"+elem["entry"]["time"]+"</div></div>")
         }
-         chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").append("<div class='message-container left'><div class='message-received'>"+elem["entry"]["msg"]+"</div></div>")
+         chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").append("<div class='message-container left'><div class='message-received'>"+elem["entry"]["msg"]+"<div class='caret'></div><span class='current-time'>"+postedTime+"</span></div></div>")
     })
 }
 
@@ -182,6 +184,17 @@ function ISODateToD_M(aDate) {
 
   var str = dt + "/" + month;
   return str;
+
+
+}
+
+function ISODateToTime(aDate) {
+  var date = new Date(aDate),
+	hours = date.getHours(),
+	mins = date.getMinutes();
+    mins = checkTime(mins);
+      var str = hours + ":" + mins;
+      return str;
 }
 
 function ISODateToD_M_Y(aDate) {

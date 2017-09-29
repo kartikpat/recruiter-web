@@ -5,7 +5,7 @@
 @mixin input-styling {
     box-sizing: border-box;
     border: 1px solid $select-border;
-    border-radius: 4px;
+    border-radius: 2px;
     padding: 4px 8px;
 }
 
@@ -13,7 +13,7 @@ input, select {
     &:focus {
         outline: none;
     }
-} 
+}
 
 .heading {
     font-size: 18px;
@@ -175,21 +175,22 @@ input, select {
                 margin: 0 20px;
                 background-color: $color-light-grey;
                 padding: 0 10px;
+
+                line-height: 30px;
                 .header {
                     display: inline-block;
                     padding: 0 2px;
-                    overflow: auto;
                     font-size: 11px;
                     text-align: left;
                     color: $color-black-text;
-                    height: 30px;
-                    line-height: 30px;
                 }
 
                 .header_name {
                     width: 18%;
                     .checkbox {
                         margin: 0 15px 0 0;
+                        position: relative;
+                        top: 3px;
                     }
                 }
 
@@ -241,6 +242,7 @@ input, select {
                         .contact-container {
                             position: absolute;
                             left: 0;
+                            margin-top: 15px;
                             .contact-heading, .email-heading {
                                 display: inline-block;
                                 width: 50px;
@@ -252,7 +254,7 @@ input, select {
                         .bio-container {
                             position: absolute;
                             right: 0;
-                            width: 50%;
+                            width: 52%;
                             .icon {
                                 width: 100%;
                                 div {
@@ -290,6 +292,7 @@ input, select {
                     .info-container-second {
                         position: relative;
                         height: 80px;
+                        padding-top: 10px;
                         .comment-container {
                             position: absolute;
                             left: 0;
@@ -301,6 +304,7 @@ input, select {
                                     display: inline-block;
                                     input {
                                         @include input-styling;
+                                        margin-right: 25px;
                                     }
                                 }
                                 .comment-heading {
@@ -317,21 +321,28 @@ input, select {
                             position: absolute;
                             right: 0;
                             display: inline-block;
-                            width: 49%;
-                            .tags {
-                                margin: 5px 0;
+                            width: 52%;
+                            .ta {
+
                                 .tags-content {
                                     display: inline-block;
                                     input {
                                         @include input-styling;
+                                        margin-right: 25px;
                                     }
                                 }
-                                .tags-heading {
-                                    display: inline-block;
-                                }
+
                             }
                             .posted-tags {
-
+                                margin-top: 10px;
+                                .tags-jobSeeker {
+                                    display: inline-block;
+                                    width: 85px;
+                                    margin-right: 5px;
+                                    .tags-content {
+                                            cursor: pointer;
+                                    }
+                                }
                             }
                         }
                     }
@@ -713,4 +724,28 @@ input, select {
         vertical-align: middle;
     }
     cursor: pointer;
+}
+
+.ui-widget input {
+    font-family: $droid-font ;
+    font-size: 15px;
+}
+
+.ui-widget button {
+    font-family: $droid-font ;
+    font-size: 13px;
+}
+
+.margin-right {
+    margin-right: 0 !important;
+}
+
+.js-remove-tag.job-seeker-tags {
+    height: 24px;
+    border: 1px solid #ececec;
+    color: #4b4b4b;
+    font-size: 12px;
+    padding: 2px 4px;
+    cursor: pointer;
+    background: #f5f6f7;
 }

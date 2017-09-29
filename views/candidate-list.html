@@ -977,7 +977,7 @@
 				<div class="important_info user_name">Nitish</div>
 				<div class="important_info"><span>Experience: </span><span class="user_experience">3y 6m</span></div>
 				<div class="important_info"><span>Location: </span><span class="current_location">Delhi</span></div>
-				<div class="important_info">Immediately Available</div>
+				<!-- <div class="important_info">Immediately Available</div> -->
 			</div>
 			<div class="info">
 				<div class="extra_info"><span class="user_sex">Male </span>, <span class="user_age">29 </span><span> years</span></div>
@@ -1070,8 +1070,10 @@
         <div class="container info-container-second">
             <div class=" comment-container ">
                 <div class=" comment">
-                    <div class=" comment-content"><input type="text" placeholder="Add Comment..."></div>
-                    <div class=" comment-heading"><button class="button ">Comment</button></div>
+                    <div class=" comment-content ui-widget">
+                        <input type="text" placeholder="Add comment">
+                        <button class="button ">Comment</button>
+                    </div>
                 </div>
                 <div class=" posted-comment">
 
@@ -1079,12 +1081,16 @@
             </div>
             <div class=" tags-container ">
 
-                <div class=" tags">
-                    <div class=" tags-content"><input type="text" placeholder="Add Tag..."></div>
-                    <div class=" tags-heading"><button class="button">Submit</button></div>
+                <div class=" ta ">
+                    <div class=" tags-content ui-widget">
+                        <input type="text" placeholder="Add tag" id="add-tag">
+                        <button id="submit-tag" class="button">Submit</button>
+
+                    </div>
+
                 </div>
                 <div class=" posted-tags">
-                    <div class="js-show-tags"></div>
+
                 </div>
             </div>
         </div>
@@ -1287,6 +1293,10 @@
    <label for="" class="label"></label>
 </div>
 <div class="js-show-tags prototype hidden"></div>
+<div class="tags-jobSeeker prototype hidden">
+    <span class="tags-content"></span>
+    <span data-jobseeker-id="" data-jobapplication-id="" class="js-remove-tag job-seeker-tags"><i class='fa fa-times' aria-hidden='true'></i></span>
+</div>
 <option class="prototype hidden calendar-option"></option>
 
 {{> footer}}
