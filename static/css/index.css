@@ -199,9 +199,12 @@ footer, header, hgroup, menu, nav, section {
   .jobs_panel .jobs_container {
     margin-top: 10px; }
     .jobs_panel .jobs_container .jobs_header {
-      width: auto;
+      width: 100%;
+      display: table;
       padding: 0 10px;
       margin: 0 auto;
+      height: 30px;
+      line-height: 30px;
       border-radius: 1px;
       background: #ececec;
       border: 1px solid #d8d8d8; }
@@ -214,15 +217,18 @@ footer, header, hgroup, menu, nav, section {
     .jobs_panel .jobs_container .jobs_content {
       border-bottom: 1px solid #d0d0d0;
       height: 60px;
-      line-height: 60px;
-      padding: 0 10px; }
+      line-height: 1.4;
+      padding: 0 10px;
+      display: table;
+      width: 100%; }
       .jobs_panel .jobs_container .jobs_content:hover {
         background-color: #f5f6f7; }
       .jobs_panel .jobs_container .jobs_content .column {
-        display: inline-block;
+        display: table-cell;
         color: #242424;
         font-size: 13px;
-        font-family: "Droid Sans",sans-serif; }
+        font-family: "Droid Sans",sans-serif;
+        vertical-align: middle; }
     .jobs_panel .jobs_container .date {
       width: 10%; }
     .jobs_panel .jobs_container .title {
@@ -267,28 +273,19 @@ footer, header, hgroup, menu, nav, section {
             border-style: solid;
             border-color: transparent #555 transparent transparent; }
     .jobs_panel .jobs_container .views {
-      width: 14%;
-      position: relative;
-      top: -8px; }
+      width: 14%; }
       .jobs_panel .jobs_container .views .applied-link {
-        position: relative; }
-        .jobs_panel .jobs_container .views .applied-link a {
-          position: absolute;
-          left: -64px;
-          top: -45%; }
-    .jobs_panel .jobs_container .action {
+        display: block; }
+    .jobs_panel .jobs_container .action .edit-job-container {
+      width: 25px;
       position: relative;
-      top: -15px; }
-      .jobs_panel .jobs_container .action .edit-job-container {
-        width: 25px;
-        position: relative;
-        box-shadow: 4px 5px 5px 0px #e9e9e9;
-        cursor: pointer;
-        height: 27px; }
-        .jobs_panel .jobs_container .action .edit-job-container img {
-          position: absolute;
-          left: -28px;
-          top: 129%; }
+      box-shadow: 4px 5px 5px 0px #e9e9e9;
+      cursor: pointer;
+      height: 27px;
+      font-size: 0; }
+    .jobs_panel .jobs_container .action span {
+      display: block;
+      line-height: 1.4; }
 
 .job_posting {
   padding: 20px;
@@ -442,7 +439,7 @@ footer, header, hgroup, menu, nav, section {
   background-color: rgba(0, 0, 0, 0.4);
   /* Black w/ opacity */ }
   .modal.modal-rejected .modal-header {
-    padding: 6px 10px; }
+    padding: 10px; }
     .modal.modal-rejected .modal-header .modal-heading {
       font-size: 14px; }
     .modal.modal-rejected .modal-header .close {

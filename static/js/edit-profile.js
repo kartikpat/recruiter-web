@@ -77,22 +77,25 @@ var submitProfile = function() {
 	profile.find("textarea").each(function(index,anInput){
 			obj[$(anInput).attr("name")] = $(anInput).val();
 	})
+	var form = new FormData();
+	form.append("image", obj["profile-photo"]);
+	form.append("logo", obj["company-logo"]);
+	form.append("name", obj["name"]);
+	form.append("phone", obj["phone"]);
+	form.append("about", obj["about"]);
+	form.append("wURL", obj["company-url"]);
+	form.append("fURL", obj["social-fb"]);
+	form.append("tURL", obj["social-tw"]);
+	form.append("lURL", obj["social-lin"]);
+	form.append("notify", obj["settings"]);
+	form.append("type", obj["type"]);
+	form.append("location", obj["location"]);
+	console.log(obj)
 	checkErrorClass(profile.find("#name"));
 	checkErrorClass(profile.find("#phone"));
 	if(checkEmpty(profile.find("#name")) && checkEmpty(profile.find("#phone"))) {
-		postRequest(baseUrl+"/recruiter/"+recruiterID, null ,{
-		name: obj["name"],
-		phone: obj["phone"],
-		about: obj["about"],
-		wUrl: obj["company-url"],
-		fUrl: obj["social-fb"],
-		lUrl: obj["social-lin"],
-		tUrl: obj["social-tw"],
-		notify: obj["settings"],
-		type: obj["type"],
-		location: obj["location"]
-
-		} , postSuccessCallback)
+		postRequest("http://192.168.86.199:8000/recruiter/"+recruiterID,null, form
+ 		, postSuccessCallback, null , null , null ,null, true, null , "multipart/form-data");
 	}
 }
 
