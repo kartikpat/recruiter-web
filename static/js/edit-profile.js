@@ -67,6 +67,9 @@ var submitProfile = function() {
 		if($(anInput).attr("type") == "radio" ) {
 			obj[$(anInput).attr("name")] = $('input[name=settings]:checked').val();
 		}
+		else if($(anInput).attr("type")== "file"){
+			obj[$(anInput).attr("name")] = $(anInput)[0].files[0]	;
+		}
 		else {
 			obj[$(anInput).attr("name")] = $(anInput).val();
 		}
@@ -78,9 +81,9 @@ var submitProfile = function() {
 			obj[$(anInput).attr("name")] = $(anInput).val();
 	})
 	var form = new FormData();
-	form.append("image", obj["profile-photo"]);
 	form.append("logo", obj["company-logo"]);
 	form.append("name", obj["name"]);
+	form.append("image", $("#profile-photo")[0].files[0], $("#profile-photo")[0].files[0].name);
 	form.append("phone", obj["phone"]);
 	form.append("about", obj["about"]);
 	form.append("wURL", obj["company-url"]);
@@ -90,12 +93,12 @@ var submitProfile = function() {
 	form.append("notify", obj["settings"]);
 	form.append("type", obj["type"]);
 	form.append("location", obj["location"]);
-	console.log(obj)
+	console.log(form)
 	checkErrorClass(profile.find("#name"));
 	checkErrorClass(profile.find("#phone"));
 	if(checkEmpty(profile.find("#name")) && checkEmpty(profile.find("#phone"))) {
 		postRequest("http://192.168.86.199:8000/recruiter/"+recruiterID,null, form
- 		, postSuccessCallback, null , null , null ,null, true, null , "multipart/form-data");
+ 		, postSuccessCallback, null , null , null ,false, true, null);
 	}
 }
 
