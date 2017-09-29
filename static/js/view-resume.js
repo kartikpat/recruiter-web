@@ -3,7 +3,6 @@ var tabContainer = $(".tab_container");
 var resumeContainer = $(".resume-container");
 var jobId;
 var jobTitle;
-
 //var recruiterID = 45058;
 $(document).ready(function(){
 	var recruiterID = localStorage.id ;

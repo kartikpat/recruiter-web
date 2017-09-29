@@ -1,11 +1,14 @@
-#excluding node_modules
+# excluding node_modules
 node_modules
 
-#excluding deployment script
+# excluding deployment script
 deploy.sh
 
-#excluding build
+# excluding configuration.json
+configuration.json
+
+# excluding build
 static/build/*
 
-#excluding editor preferences
+# excluding editor preferences
 *.sublime-workspace

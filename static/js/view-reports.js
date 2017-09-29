@@ -2,12 +2,19 @@
 var reportsTable = $(".view-reports-table");
 var headingRow = $(".heading-row");
 
+function windowH() {
+	var wH = $(window).height();
+	$('.main-container').css({height: wH-'50'});
+}
+
 $(document).ready(function(){
 	var recruiterID = localStorage.id ;
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/reports", {
 		pageNumber: 5,
         pageContent: 20
 	}, populateReportsTable)
+
+	windowH();
 
 })
 

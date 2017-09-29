@@ -3,11 +3,13 @@
 		"styles": {
 			"debug" : [
 				"static/css/header.css",
+				"static/css/jquery-ui.min.css",
         		"static/css/index.css",
 				"static/css/buttons.css",
 				"static/css/footer.css",
 				"static/css/animate.css",
-				"static/css/utilities.css"
+				"static/css/utilities.css",
+				"static/css/jquery-chatbox.css"
 
 			],
 			"prod": [
@@ -18,10 +20,14 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/jquery-ui.min.js",
+				"static/js/chatObject.js",
+				"static/js/jquery-chat.js",
 				"service-worker.js",
 				"static/js/request.js",
 				"static/js/header.js",
 				"static/js/index.js"
+
 
 			],
 			"prod" : [
@@ -216,7 +222,9 @@
 	"candidate-list": {
 		"styles": {
 			"debug" : [
+				"static/css/jquery-ui.min.css",
 				"static/css/header.css",
+
             	"static/css/candidate-list.css",
 				"static/css/footer.css",
 				"static/css/buttons.css",
@@ -232,6 +240,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/jquery-ui.min.js",
 				"static/js/request.js",
 				"static/js/header.js",
 				"static/js/candidate-list.js",
@@ -432,15 +441,96 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/moment.min.js",
 				"static/js/request.js",
 				"static/js/header.js",
 				"static/js/chatObject.js",
+				"static/js/chat_pubnub.js",
 				"static/js/chat.js"
 			],
 			"prod" : [
 				"static/build/js/chat.min.js"
 			]
 		}
+	},
+	"export-profile": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/export-profile.css",
+				"static/css/utilities.css",
+				"static/css/footer.css"
+			],
+			"prod": [
+				"static/build/css/export-profile.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/export-profile.js"
+			],
+			"prod" : [
+				"static/build/js/export-profile.min.js"
+			]
+		}
+	},
+	"tags": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/tags.css",
+				"static/css/utilities.css",
+				"static/css/footer.css"
+			],
+			"prod": [
+				"static/build/css/tags.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/tags.js"
+			],
+			"prod" : [
+				"static/build/js/tags.min.js"
+			]
+		}
+	},
+	"filter-candidate": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/filter-candidate.css",
+				"static/css/utilities.css",
+				"static/css/footer.css"
+			],
+			"prod": [
+				"static/build/css/filter-candidate.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/filter-candidate.js"
+			],
+			"prod" : [
+				"static/build/js/filter-candidate.min.js"
+			]
+		}
 	}
+
 
 }

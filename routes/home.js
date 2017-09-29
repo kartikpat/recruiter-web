@@ -11,7 +11,8 @@ module.exports = function(settings){
 	var mode = settings.mode;
 	var config = settings.config;
 	var env = settings.env;
-	var baseUrl =  config["baseUrl"];
+	var baseUrl = config["baseUrl"];
+	var request = settings["request"];
 	if(env=="local")
 		baseUrl= config["baseUrl_local"];
 	else
@@ -22,7 +23,7 @@ module.exports = function(settings){
 		//bypassing the auth for development
     // CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     // you can do this however you want with whatever variables you set up
-    	if (req.session.authenticated)
+    	if (req.session.user)
         	return next();
     // IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
 
@@ -30,18 +31,28 @@ module.exports = function(settings){
     	res.redirect('/sign-in');
 	}
 	app.post("/sign-in", function(req, res){
-		var id = req.body.id || null;
-		if(!id){
+		var email = req.body.email || null;
+		var password = req.body.password || null;
+		if(! ( email && password ) ){
 			res.status(422).json({
 				status: 'fail',
 				message: 'missing parameters'
 			});
 			return
 		}
-
-		req.session.authenticated = true;
-		return res.json({
-			status: "success"
+		request.post({
+		  url:     baseUrl+'/recruiter/login',
+		  body:  "email="+email+"&password="+password,
+		  form: {email: email, password: password }
+		}, function(error, response, body){
+			console.log(body)
+			var jsonBody = JSON.parse(body);
+		  if(jsonBody.status=="success"){
+		  	var cookieValue = new Buffer.from(""+Date.now()).toString('base64');
+			res.cookie("sessID", cookieValue, {overwrite: true})
+			req.session.user=cookieValue;
+		  }
+		  res.json(jsonBody)
 		});
 	})
 	app.get("/", isAuthenticated,function(req, res){
@@ -182,7 +193,7 @@ module.exports = function(settings){
 	})
 
 	app.get("/recruiter/myChat", function(req, res){
-
+		console.log(req.isNew);
 		res.render("chat",{
 			title: "IIM JOBS | myChat",
 			styles:  assetsMapper["chat"]["styles"][mode],
@@ -231,6 +242,39 @@ module.exports = function(settings){
 			title: "IIM JOBS | Profile View",
 			styles:  assetsMapper["profile-view"]["styles"][mode],
 			scripts: assetsMapper["profile-view"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/export-profile", function(req, res){
+
+		res.render("export-profile",{
+			title: "IIM JOBS | Export Profile",
+			styles:  assetsMapper["export-profile"]["styles"][mode],
+			scripts: assetsMapper["export-profile"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/tags", function(req, res){
+
+		res.render("tags",{
+			title: "IIM JOBS | Tags",
+			styles:  assetsMapper["tags"]["styles"][mode],
+			scripts: assetsMapper["tags"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/filter-candidate", function(req, res){
+
+		res.render("filter-candidate",{
+			title: "IIM JOBS | Filter Candidate",
+			styles:  assetsMapper["filter-candidate"]["styles"][mode],
+			scripts: assetsMapper["filter-candidate"]["scripts"][mode],
 			baseUrl: baseUrl
 		})
 		return
