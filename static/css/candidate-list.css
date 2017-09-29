@@ -271,8 +271,15 @@ input:focus, select:focus {
                     cursor: pointer; }
           .main-container .jobs .jobs_panel .jobs_content .slide-container .extra-info-container .layer-first .info {
             display: inline-block;
-            width: 16%;
             vertical-align: top; }
+            .main-container .jobs .jobs_panel .jobs_content .slide-container .extra-info-container .layer-first .info.name-e {
+              width: 18%; }
+            .main-container .jobs .jobs_panel .jobs_content .slide-container .extra-info-container .layer-first .info.org-e {
+              width: 28%; }
+            .main-container .jobs .jobs_panel .jobs_content .slide-container .extra-info-container .layer-first .info.ins-e {
+              width: 28%; }
+            .main-container .jobs .jobs_panel .jobs_content .slide-container .extra-info-container .layer-first .info.more-e {
+              width: 19%; }
           .main-container .jobs .jobs_panel .jobs_content .slide-container .extra-info-container .layer-second .marks-wrapper {
             display: inline-block;
             width: 35%; }
@@ -285,7 +292,8 @@ input:focus, select:focus {
             vertical-align: top; }
           .main-container .jobs .jobs_panel .jobs_content .slide-container .extra-info-container .css-heading {
             font-size: 10px;
-            color: #808080; }
+            color: #808080;
+            line-height: 2.5; }
           .main-container .jobs .jobs_panel .jobs_content .slide-container .extra-info-container .css-content {
             font-size: 12px;
             color: #333; }

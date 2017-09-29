@@ -9,12 +9,18 @@ $(document).ready(function(){
 
     getRequest(baseUrl+"/recruiter/"+recruiterID+"/tag/"+tagId+"/seekers" ,{ }, populateCandidates);
 
+    windowH();
 });
 
 $("#download-excel").click(function() {
     console.log("hi");
     getRequest(baseUrl+"/recruiter/"+recruiterID+"/tag/"+tagId+"/export" ,{ }, successCallback);
 })
+
+function windowH() {
+	var wH = $(window).height();
+	$('.main-container').css({height: wH-'50'});
+}
 
 var successCallback = function(res) {
     console.log(res);
