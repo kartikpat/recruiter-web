@@ -9,7 +9,7 @@ $(document).ready(function(){
 
     getRequest(baseUrl+"/recruiter/"+recruiterID+"/tag/"+tagId+"/seekers" ,{ }, populateCandidates);
 
-    windowH();
+    //windowH();
 });
 
 $("#download-excel").click(function() {
@@ -18,8 +18,13 @@ $("#download-excel").click(function() {
 })
 
 function windowH() {
+
 	var wH = $(window).height();
-	$('.main-container').css({height: wH-'50'});
+    console.log($('.main-container').height())
+    if($('.main-container').height() < 634)
+        {
+	       $('.main-container').css({height: wH-'50'});
+       }
 }
 
 var successCallback = function(res) {

@@ -372,9 +372,10 @@ $(document).ready(function(){
 
 });
 
-$(".jobs_wrapper").on("keyup", '#add-tag', function() {
+$(".jobs_wrapper").on("keyup", '.add-tag', function() {
 	var string = $(this).val();
 	console.log(string);
+	var elem = $(this);
 	if(string != '') {
 		getRequest(baseUrl+"/recruiter/"+recruiterID+"/tag?str="+string, {} , function(res) {
 			if(res.status == "success") {
@@ -386,7 +387,7 @@ $(".jobs_wrapper").on("keyup", '#add-tag', function() {
 						"id": aTag["id"]
 				});
 			})
-				$("#add-tag").autocomplete({
+				elem.autocomplete({
 			      source: suggestedTagsArray,
 				  select: function (event, ui) {
 					  $(this).attr("tag-id", ui.item.id);
@@ -397,11 +398,17 @@ $(".jobs_wrapper").on("keyup", '#add-tag', function() {
 	}
 })
 
-$(".jobs_wrapper").on("click", '#submit-tag', function() {
+$(".jobs_wrapper").on("click", '.tags-jobSeeker .tags-content', function() {
+	var dataId = $(this).attr("data-id");
+	var dataName = $(this).attr("data-tag-name");
+	window.location = "/recruiter/filter-candidate?tagID="+dataId+"&tagName="+dataName;
+})
+
+$(".jobs_wrapper").on("click", '.submit-tag', function() {
 	var obj = {};
-	obj["name"] = $("#add-tag").val();
-	$("#add-tag").val('');
-	var tagId = $("#add-tag").attr("tag-id");
+	obj["name"] = $(this).prev().val();
+	$(this).prev().val('');
+	var tagId = $(this).prev().attr("tag-id");
 	if(tagId != '') {
 		obj["id"] = tagId;
 	}
@@ -413,12 +420,13 @@ $(".jobs_wrapper").on("click", '#submit-tag', function() {
 		obj, function(res) {
 				if(res["status"] == "success") {
 					var divEl = $('.tags-jobSeeker.prototype').clone().removeClass('prototype hidden');
-
+					divEl.find(".tags-content").attr("data-tag-name",obj["name"]);
 					divEl.find(".tags-content").attr("data-id",tagId);
 					divEl.find(".tags-content").attr("data-jobseeker-id",obj["seekerID"]);
 					divEl.find(".tags-content").attr("data-jobapplication-id",obj["applicationID"]);
 					divEl.find(".tags-content").text(obj["name"]);
 					divEl.find(".tags-content").addClass(' margin-right font-sm');
+					divEl.find(".js-remove-tag").attr("data-id",tagId);
 					divEl.find(".js-remove-tag").attr("data-jobseeker-id",obj["seekerID"]);
 					divEl.find(".js-remove-tag").attr("data-jobapplication-id",obj["applicationID"]);
 
@@ -712,12 +720,13 @@ var populateJobs = function(res){
 					return
 				}
 				var divEl = $('.tags-jobSeeker.prototype').clone().removeClass('prototype hidden');
-
+				divEl.find(".tags-content").attr("data-tag-name",anTag["name"]);
 				divEl.find(".tags-content").attr("data-id",anTag["id"]);
 				divEl.find(".tags-content").attr("data-jobseeker-id",aJob['userID']);
 				divEl.find(".tags-content").attr("data-jobapplication-id",aJob['id']);
 				divEl.find(".tags-content").text(anTag["name"]);
 				divEl.find(".tags-content").addClass(' margin-right font-sm');
+				divEl.find(".js-remove-tag").attr("data-id",anTag["id"]);
 				divEl.find(".js-remove-tag").attr("data-jobseeker-id",aJob['userID']);
 				divEl.find(".js-remove-tag").attr("data-jobapplication-id",aJob['id']);
 
@@ -743,8 +752,8 @@ var populateJobs = function(res){
 			//	card.find(".contact").addClass("hidden");
 			}
 
-			$("#submit-tag").attr("data-jobseeker-id",aJob["userID"]);
-			$("#submit-tag").attr("data-jobapplication-id",aJob["id"]);
+			card.find(".submit-tag").attr("data-jobseeker-id",aJob["userID"]);
+			card.find(".submit-tag").attr("data-jobapplication-id",aJob["id"]);
 
 			card.find(".extra-info-container .maritalStatus").text(boolean(aJob["marital_status"]));
 			//card.find("extra-info-container .languages").text(formatLanguages(aJob["language_known"]));

@@ -22,8 +22,7 @@ var postRequest = function(url,headers,data,successCallback,completeCallback,bef
         complete: completeCallback,
         beforeSend: beforeSendCallback,
         async: async,
-        mimeType: miType,
-        processData: false
+        mimeType: miType
     });
 };
 
