@@ -188,24 +188,27 @@ $(document).ready(function(){
 	//   console.log("Ahh! Your browser does not supports serviceWorker");
 	// }
 
+	// if('serviceWorker' in navigator) {
+	//   //browser supports now register it
+	//   navigator.serviceWorker
+	// 		 .register('service-worker.js') //Note that we have not passed scope object here now by default it will pick root scope
+	// 		 .then(function() {
+	// 			  console.log('Service Worker Registered');
+	// 		  })
+	// 		  .catch(function(err) {
+	// 			  console.error(err);
+	// 		  })
+	// } else {
+	//   console.log("Ahh! Your browser does not supports serviceWorker");
+	// }
 	windowH();
-
 	$('.chat-div .chat-div-header').click(function() {
 
 	  	$('.chat-div .chat-div-content').toggleClass("show");
 		//$('.chat-div .minus-icon').toggleClass("show");
 	});
-
-
-
 	populateChatView(candidates);
 })
-
-
-
-
-
-
 
 function windowH() {
 	var wH = $(window).height();

@@ -1,7 +1,6 @@
 var profileContainer = $(".profile_container");
 var tabContainer = $(".tab_container");
 var resumeContainer = $(".resume-container");
-var baseUrl = "http://13.126.92.102:8000"
 var jobId;
 var jobTitle;
 //var recruiterID = 45058;

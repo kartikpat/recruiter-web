@@ -18,7 +18,6 @@ module.exports = function(settings){
 	else
 		baseUrl = config["baseUrl"];
 	function isAuthenticated(req, res, next) {
-		console.log(req.session);
 		// for disabling authentication
 		//return next()
 		//bypassing the auth for development

@@ -10,19 +10,19 @@
  * @param  {boolean} async           set this to true when making synchronous request
  * @param  {object} scopeTest       reference object if any to be accessed in the callback
  */
-var postRequest = function(url,headers,data,successCallback,completeCallback,beforeSendCallback,failCallback,processData,async,scopeTest,miType){
+var postRequest = function(url,headers,data,successCallback,completeCallback,beforeSendCallback,failCallback,processData,async,scopeTest){
     $.ajax({
         method: "POST",
         url: url,
-        headers: headers,
+        headers: {},
         data: data,
         scopeTest: scopeTest,
-        processData: processData,
+        processData:processData,
         success: successCallback,
         complete: completeCallback,
         beforeSend: beforeSendCallback,
         async: async,
-        mimeType: miType
+        contentType: false
     });
 };
 
