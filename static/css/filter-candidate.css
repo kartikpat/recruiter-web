@@ -44,13 +44,15 @@
     margin: 0 20px;
     background-color: #f5f6f7;
     padding: 0 10px;
-    line-height: 34px; }
+    line-height: 34px;
+    border: 1px solid #e1e1e1; }
     .main-container .jobs_container .jobs_header .header {
       display: inline-block;
       padding: 0 2px;
-      font-size: 11px;
+      font-size: 12px;
       text-align: left;
-      color: #4b4b4b; }
+      color: #4b4b4b;
+      font-weight: bold; }
     .main-container .jobs_container .jobs_header .header_name {
       width: 22%; }
       .main-container .jobs_container .jobs_header .header_name .checkbox {
@@ -195,8 +197,7 @@
         max-width: 100%;
         max-height: 100%; }
     .main-container .jobs_container .jobs_wrapper .jobs_content .content.content_organization {
-      width: 28%;
-      padding-left: 10px; }
+      width: 28%; }
     .main-container .jobs_container .jobs_wrapper .jobs_content .content.content_institute {
       width: 28%; }
     .main-container .jobs_container .jobs_wrapper .jobs_content .content.content_more {

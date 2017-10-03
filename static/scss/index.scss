@@ -789,7 +789,7 @@ label.premium-job {
     bottom: 0;
     right: 10px;
     width: 270px;
-    border: 1px solid #ccc;
+    box-shadow: 0 0 2px #CCC;
     .chat-div-header {
         padding: 10px 12px;
         background-color: #4b4b4b;
@@ -813,7 +813,7 @@ label.premium-job {
         transition: 0.2s height ease-in-out;
         overflow: auto;
         &.show {
-            height: 300px;
+            height: 315px;
         }
         .divider {
             margin: 0 auto;
@@ -870,9 +870,9 @@ label.premium-job {
     position: fixed;
     bottom: 0;
     width: 270px;
-    border: 1px solid #ccc;
+    box-shadow: 0 0 2px #CCC;
     .chat-div-header {
-        padding: 2px 12px;
+        padding: 2.5px 12px;
         background-color: #4b4b4b;
         color: #fff;
         font-size: 13px;
@@ -881,10 +881,10 @@ label.premium-job {
         .candidate-name-container {
             display: inline-block;
             .candidate-name {
-
+                margin-bottom: 3px;
             }
             .last-active-date {
-
+                font-size: 10px;
             }
         }
         .info-buttons {
@@ -903,21 +903,24 @@ label.premium-job {
         height: 0;
         transition: 0.2s height ease-in-out;
         .chat-div-content {
-            height: 265px;
-            background-color: #f1f1f1;
+            height: 274px;
+            background-color: #f6f7f8;
             z-index: 2;
             overflow: auto;
             padding: 10px 20px;
         }
         &.show {
-            height: 300px;
+            height: 315px;
         }
         .footer {
             input {
                 width: 100%;
                 padding: 12px;
-                border: none;
-                border-top: 1px solid #ccc;
+                border: 1px solid #ccc;
+                border-radius: 2px;
+                &:focus {
+                    border: 1px solid $input-focus-color;
+                }
 
             }
         }

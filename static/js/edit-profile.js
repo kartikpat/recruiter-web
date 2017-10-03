@@ -68,7 +68,7 @@ var submitProfile = function() {
 			obj[$(anInput).attr("name")] = $('input[name=settings]:checked').val();
 		}
 		else if($(anInput).attr("type")== "file"){
-			obj[$(anInput).attr("name")] = $(anInput)[0].files[0]	;
+			obj[$(anInput).attr("name")] = $(anInput)[0].files[0];
 		}
 		else {
 			obj[$(anInput).attr("name")] = $(anInput).val();
@@ -81,9 +81,13 @@ var submitProfile = function() {
 			obj[$(anInput).attr("name")] = $(anInput).val();
 	})
 	var form = new FormData();
-	form.append("logo", obj["company-logo"]);
+	if($("#company-logo")[0].files[0] != undefined) {
+		form.append("logo", $("#company-logo")[0].files[0], $("#company-logo")[0].files[0].name);
+	}
 	form.append("name", obj["name"]);
-	form.append("image", $("#profile-photo")[0].files[0], $("#profile-photo")[0].files[0].name);
+	if($("#profile-photo")[0].files[0] != undefined) {
+		form.append("image", $("#profile-photo")[0].files[0], $("#profile-photo")[0].files[0].name);
+	}
 	form.append("phone", obj["phone"]);
 	form.append("about", obj["about"]);
 	form.append("wURL", obj["company-url"]);
@@ -103,5 +107,7 @@ var submitProfile = function() {
 }
 
 var postSuccessCallback = function(res) {
-	console.log(res);
+	if(res.status == "success") {
+		window.location = "/";
+	}
 }

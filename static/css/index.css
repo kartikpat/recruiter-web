@@ -569,7 +569,7 @@ label.premium-job {
   bottom: 0;
   right: 10px;
   width: 270px;
-  border: 1px solid #ccc; }
+  box-shadow: 0 0 2px #CCC; }
   .chat-div .chat-div-header {
     padding: 10px 12px;
     background-color: #4b4b4b;
@@ -590,7 +590,7 @@ label.premium-job {
     transition: 0.2s height ease-in-out;
     overflow: auto; }
     .chat-div .chat-div-content.show {
-      height: 300px; }
+      height: 315px; }
     .chat-div .chat-div-content .divider {
       margin: 0 auto; }
     .chat-div .chat-div-content .candidate-card {
@@ -632,9 +632,9 @@ label.premium-job {
   position: fixed;
   bottom: 0;
   width: 270px;
-  border: 1px solid #ccc; }
+  box-shadow: 0 0 2px #CCC; }
   .chat-div-candidate .chat-div-header {
-    padding: 2px 12px;
+    padding: 2.5px 12px;
     background-color: #4b4b4b;
     color: #fff;
     font-size: 13px;
@@ -642,6 +642,10 @@ label.premium-job {
     position: relative; }
     .chat-div-candidate .chat-div-header .candidate-name-container {
       display: inline-block; }
+      .chat-div-candidate .chat-div-header .candidate-name-container .candidate-name {
+        margin-bottom: 3px; }
+      .chat-div-candidate .chat-div-header .candidate-name-container .last-active-date {
+        font-size: 10px; }
     .chat-div-candidate .chat-div-header .info-buttons {
       display: inline-block;
       position: absolute;
@@ -654,18 +658,20 @@ label.premium-job {
     height: 0;
     transition: 0.2s height ease-in-out; }
     .chat-div-candidate .content-footer-container .chat-div-content {
-      height: 265px;
-      background-color: #f1f1f1;
+      height: 274px;
+      background-color: #f6f7f8;
       z-index: 2;
       overflow: auto;
       padding: 10px 20px; }
     .chat-div-candidate .content-footer-container.show {
-      height: 300px; }
+      height: 315px; }
     .chat-div-candidate .content-footer-container .footer input {
       width: 100%;
       padding: 12px;
-      border: none;
-      border-top: 1px solid #ccc; }
+      border: 1px solid #ccc;
+      border-radius: 2px; }
+      .chat-div-candidate .content-footer-container .footer input:focus {
+        border: 1px solid #66afe9; }
 
 .selected {
   background-color: #f5f6f7; }

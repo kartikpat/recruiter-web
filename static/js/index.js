@@ -22,6 +22,30 @@ var displayAMessage = function(event) {
     }
 }
 
+profile.on('click',".social-links.facebook", function() {
+    hello('facebook').login();
+});
+
+hello.on('auth.login', function(auth) {
+    console.log(auth.authResponse)
+	// Call user information, for the given network
+	// hello(auth.network).api('me').then(function(r) {
+	// 	// Inject it into the container
+    //
+	// 	// var label = document.getElementById('profile_' + auth.network);
+	// 	// if (!label) {
+	// 	// 	label = document.createElement('div');
+	// 	// 	label.id = 'profile_' + auth.network;
+	// 	// 	document.getElementById('profile').appendChild(label);
+	// 	// }
+	// 	// label.innerHTML = '<img src="' + r.thumbnail + '" /> Hey ' + r.name;
+	// });
+});
+
+hello.init({
+	facebook: 1530995060277473
+}, {redirect_uri: '/'});
+
 var isShowCollapsedCandidate = 0;
 var count = 0;
 
@@ -37,7 +61,7 @@ chatContainer.on('click','.candidate-card', function() {
 		chatContainerBox.find(".info-buttons .close-icon").attr("data-id",$(this).attr("data-id"));
 		chatContainerBox.attr("data-id",$(this).attr("data-id"));
 		if($(".chat-candidate-boxes").children().length < maxCandidateChats) {
-			$(".chat-candidate-boxes").prepend(chatContainerBox);
+		    $(".chat-candidate-boxes").prepend(chatContainerBox);
 		}
 		else {
 			var clonedElement = $(".candidate-collapsed-block.prototype").clone().removeClass('prototype hidden');
@@ -47,13 +71,11 @@ chatContainer.on('click','.candidate-card', function() {
 			clonedElement.attr("data-id",dataIdLocal);
 			clonedElement.html($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").find(".candidate-name").text()+"<i data-id="+dataIdLocal+" class='fa fa-times' aria-hidden='true'></i>");
 			$(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").addClass("hidden");
-
 			if($(".chat-collapsed-candidate-container").hasClass("hidden")) {
 				$(".chat-collapsed-candidate-container").removeClass("hidden");
 			}
-
-
 			$(".chat-collapsed-candidate-container .chat-collapsed-candidate .chat-collapsed-candidate-wrapper").append(clonedElement);
+
 		}
 		reposition_chat_windows();
 		$(this).addClass("selected");
@@ -65,10 +87,30 @@ $("#chat-collapsed-container").on('click',".chat-collapsed-candidate-container .
 	var dataId = $(this).attr("data-id");
 	console.log(dataId)
 	$("#chat-collapsed-container .candidate-collapsed-block[data-id="+dataId+"]").remove();
+    $('.chat-div-candidate[data-id='+dataId+']').remove();
 	chatContainer.find(".candidate-card[data-id="+dataId+"]").removeClass("selected");
 	if($(".chat-collapsed-candidate-container .chat-collapsed-candidate-wrapper").children().length == 0) {
 		$(".chat-collapsed-candidate-container").addClass("hidden");
 	}
+})
+
+$("#chat-collapsed-container").on('click',".chat-collapsed-candidate-container .candidate-collapsed-block", function(event) {
+    console.log("bye");
+	var dataId = $(this).attr("data-id");
+    $(this).remove();
+    var clonedElement = $(".candidate-collapsed-block.prototype").clone().removeClass('prototype hidden');
+    var hideElement = maxCandidateChats;
+    var elem = $(".chat-candidate-boxes .chat-div-candidate:not(.hidden)").get(maxCandidateChats-1);
+    console.log(elem);
+    var dataIdLocal = $(elem).attr("data-id");
+    clonedElement.attr("data-id",dataIdLocal);
+    clonedElement.html($(elem).find(".candidate-name").text()+"<i data-id="+dataIdLocal+" class='fa fa-times' aria-hidden='true'></i>");
+    //$(this).attr("data-id",$('.chat-candidate-boxes .chat-div-candidate:nth-child('+maxCandidateChats+')').attr("data-id"));
+    $('.chat-candidate-boxes .chat-div-candidate[data-id='+dataId+']').removeClass("hidden");
+
+    $(elem).addClass("hidden");
+    $(".chat-collapsed-candidate-container .chat-collapsed-candidate .chat-collapsed-candidate-wrapper").append(clonedElement);
+    reposition_chat_windows();
 })
 
 var populateChatView = function(array) {

@@ -267,11 +267,24 @@ jobContainer.on('click','.jobs_content .send-interview-invite', function(event){
 	event.stopPropagation();
 	var slotType = $(this).attr("data-attribute");
 	var seekerId = $(this).attr("data-user-id");
+	var elem = $(this);
 	postRequest(baseUrl+"/recruiter/"+recruiterID+"/calendar/"+calendarId+"/invite/"+jobId, null ,{
 		seekerID: seekerId,
 		slotType: slotType
-	}, successCallback);
+	}, function(res) {
+		if(res["status"] == "success") {
+			elem.parent().parent().addClass("hidden");
+			if(slotType == 1) {
+				elem.parent().parent().next().text("Face to Face interview invitation sent").removeClass("hidden");
+			}
+			else if(slotType == 2){
+				elem.parent().parent().next().text("Telephonic interview interview sent").removeClass("hidden");
+			}
+		}
+	});
 })
+
+
 
 jobContainer.on('mouseover','.jobs_content .interview-invite.icon', function(event){
 	var dataInterviewInvite = $(this).attr("data-interview-invite");
@@ -348,6 +361,7 @@ $(document).ready(function(){
 		var dataAttribute = $(this).parent().attr('data-attribute');
 		$(".jobs_content[data-attribute="+dataAttribute+"] .slide-container").toggleClass('hidden');
 		$(".jobs_content[data-attribute="+dataAttribute+"] .divider.prototype").toggleClass('hidden');
+		$(".jobs_content[data-attribute="+dataAttribute+"] .content_organization .organisation-hidden").toggleClass('hidden');
 		$(".jobs_content[data-attribute="+dataAttribute+"]").toggleClass('overlay-show');
 	});
 	var status = getUrlParameter('status');
@@ -465,9 +479,9 @@ $(".jobs_wrapper").on("click", '.js-remove-tag.job-seeker-tags', function() {
 
 
 
-var populateTags = function(res) {
-	console.log(res);
-}
+// var populateTags = function(res) {
+// 	console.log(res);
+// }
 
 var searchByKeyword = function() {
 	var searchStr = $("#search-by-keyword").val();
@@ -678,7 +692,7 @@ var populateJobs = function(res){
 			card.find(".user_experience").text(getJobExperience(aJob["exp_y"], aJob["exp_m"]));
 			card.find(".current_location").text(aJob["current_location"]);
 			card.find(".applied_date").text(ISODateToD_M_Y(aJob["apply_date"]));
-			card.find(".user_sex").text(aJob["sex"]);
+			card.find(".user_sex").text(getTypeGender(aJob["sex"]));
 			card.find(".user_age").text(getAge(aJob["dob"]));
 			card.find(".user_img").attr('src', aJob["imgUrl"]);
 			var iconStatus = aJob["status"];
@@ -693,26 +707,36 @@ var populateJobs = function(res){
 			var orgArray = aJob["jobs"];
 			var len = orgArray.length;
 			var loop = len < 2 ? len:2;
-			for(var i=0; i<loop; i++) {
+			for(var i=0; i<len; i++) {
 				var anOrg ={};
 				anOrg = orgArray[i];
 				var column = columnOrg.clone().removeClass('prototype hidden');
+
+
 				column.find(".name").text(anOrg["organization"]);
 				column.find(".designation").text(anOrg["designation"]);
 				column.find(".extra_info").text(getOrgExp(anOrg["from_exp_month"],anOrg["from_exp_year"],anOrg["to_exp_month"],anOrg["to_exp_year"],anOrg["is_current"]));
-				card.find('.content_organization').append(column);
+				if(i < loop) {
+					card.find('.content_organization .organisation-show').append(column);
+				}
+				else {
+					card.find('.content_organization .organisation-hidden').append(column);
+				}
 			}
 			aJob["edu"].forEach(function(anEdu, index){
-				if(index > 1) {
-					return
-				}
+
 				var column = columnIns.clone().removeClass('prototype hidden');
 
 				column.find(".name").text(anEdu["institute"]);
 				column.find(".start_duration").text(anEdu["batch_from"]);
 				column.find(".end_duration").text(anEdu["batch_to"]);
 				column.find(".degree").text(anEdu["degree"]);
-				card.find('.content_institute').append(column);
+				if(index > 1) {
+					card.find('.content_institute .institute-hidden').append(column);
+				}
+				else {
+					card.find('.content_institute .institute-show').append(column);
+				}
 			})
 			console.log(aJob["tags"]);
 			aJob["tags"].forEach(function(anTag, index){
@@ -900,6 +924,23 @@ function fetchQueryVariable(stringToFind) {
                        }
                }
        }
+}
+
+function getTypeGender(gender) {
+	var gen;
+	if(gender == -1) {
+		gen = "";
+	}
+	else if (gender == 1) {
+		gen = "Male";
+	}
+	else if (gender == 2) {
+		gen = "Female";
+	}
+	else if (gender == 3) {
+		gen = "Not Mentioned"
+	}
+	return gen;
 }
 
 $(".resume-content")[0].addEventListener('error', function(e) {

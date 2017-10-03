@@ -1,4 +1,3 @@
-
 @import "colors.scss";
 @import "fonts.scss";
 
@@ -216,10 +215,14 @@ input, select {
                     background-color: #fbfbfb;
                 }
                 .content-container {
-
+                    //height: 225px;
                     cursor: pointer;
                     padding: 10px 10px 0 10px;
+                    .interview-invite.icon {
+                        height: 40px;
+                    }
                 }
+
                 .slide-container{
                     height: auto;
                     padding: 10px;
@@ -306,6 +309,9 @@ input, select {
                                         @include input-styling;
                                         margin-right: 25px;
                                     }
+                                    button {
+                                        padding: 5px 12px;
+                                    }
                                 }
                                 .comment-heading {
                                     display: inline-block;
@@ -329,6 +335,9 @@ input, select {
                                     input {
                                         @include input-styling;
                                         margin-right: 25px;
+                                    }
+                                    button {
+                                        padding: 5px 12px;
                                     }
                                 }
 
@@ -598,7 +607,7 @@ input, select {
 
 
 	.slot-type-container {
-		margin-top: 5px;
+
 		a {
 			color: $extra-info-color;
 			font-size: 10px;
@@ -760,4 +769,9 @@ input, select {
     padding: 2px 4px;
     cursor: pointer;
     background: #f5f6f7;
+}
+
+.interview-invite-message {
+    color: $extra-info-color;
+    font-size: 12px;
 }

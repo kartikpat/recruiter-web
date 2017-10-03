@@ -21,6 +21,7 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/vendor/jquery-ui.min.js",
+				"static/js/vendor/hello.min.js",
 				"static/js/chatObject.js",
 				"static/js/jquery-chat.js",
 				"service-worker.js",

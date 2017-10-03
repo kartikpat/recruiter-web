@@ -31,13 +31,14 @@
             background-color: $color-light-grey;
             padding: 0 10px;
             line-height: 34px;
+            border: 1px solid #e1e1e1;
             .header {
                 display: inline-block;
                 padding: 0 2px;
-                font-size: 11px;
+                font-size: 12px;
                 text-align: left;
                 color: $color-black-text;
-
+                font-weight: bold;
             }
 
             .header_name {
@@ -253,7 +254,6 @@
 
                 .content.content_organization {
                     width: 28%;
-                    padding-left: 10px;
                 }
 
                 .content.content_institute {

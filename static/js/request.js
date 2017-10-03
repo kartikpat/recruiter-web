@@ -21,8 +21,8 @@ var postRequest = function(url,headers,data,successCallback,completeCallback,bef
         success: successCallback,
         complete: completeCallback,
         beforeSend: beforeSendCallback,
-        async: async,
-        contentType: false
+        async: async
+        //contentType: false
     });
 };
 

@@ -5,32 +5,6 @@ function windowH() {
 	$('.main-container').css({height: wH-'50'});
 }
 
-var array = [
-    {
-        "id": 1,
-        "name": "aaaaaa"
-    },
-    {
-        "id": 2,
-        "name": "aaaaaa"
-    },{
-        "id": 3,
-        "name": "aaaaaa"
-    },{
-        "id": 4,
-        "name": "aaaaaa"
-    },{
-        "id": 5,
-        "name": "aaaaaa"
-    },{
-        "id": 6,
-        "name": "aaaaaa"
-    },{
-        "id": 7,
-        "name": "aaaaaa"
-    }
-];
-
 var showFilteredCandidatesBasedOnTags = function() {
     var tagId = $(this).attr("data-id");
 	var tagName = $(this).attr("data-tag-name");
@@ -40,18 +14,21 @@ var showFilteredCandidatesBasedOnTags = function() {
 
 $(document).ready(function(){
 
-    getTags(array);
+    getRequest(baseUrl+"/recruiter/"+recruiterID+"/tag/", {}, getTags)
 
 });
 
 $(".show-tags-container").on('click','.js-show-tags',showFilteredCandidatesBasedOnTags)
 
-var getTags = function(arr) {
-    arr.forEach(function(aTag){
-        var clonedTag = $(".js-show-tags.prototype").clone().removeClass('prototype hidden');
-        clonedTag.attr("data-id",aTag["id"]);
-		clonedTag.attr("data-tag-name",aTag["name"]);
-        clonedTag.text(aTag["name"]);
-        $(".show-tags-container").append(clonedTag);
-    })
+var getTags = function(res) {
+	console.log(res)
+	if(res["status"] == "success") {
+	    res["data"].forEach(function(aTag){
+	        var clonedTag = $(".js-show-tags.prototype").clone().removeClass('prototype hidden');
+	        clonedTag.attr("data-id",aTag["id"]);
+			clonedTag.attr("data-tag-name",aTag["name"]);
+	        clonedTag.text(aTag["name"]);
+	        $(".show-tags-container").append(clonedTag);
+	    })
+	}
 }

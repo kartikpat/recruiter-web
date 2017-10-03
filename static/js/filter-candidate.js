@@ -10,12 +10,11 @@ $(document).ready(function(){
     getRequest(baseUrl+"/recruiter/"+recruiterID+"/tag/"+tagId+"/seekers" ,{ }, populateCandidates);
 
     //windowH();
+	$("#download-excel").attr("href",baseUrl+"/recruiter/"+recruiterID+"/tag/"+tagId+"/export");
 });
 
-$("#download-excel").click(function() {
-    console.log("hi");
-    getRequest(baseUrl+"/recruiter/"+recruiterID+"/tag/"+tagId+"/export" ,{ }, successCallback);
-})
+
+
 
 function windowH() {
 
@@ -67,8 +66,9 @@ var populateCandidates = function(res){
 			card.find(".user_experience").text(getJobExperience(aJob["exp_y"], aJob["exp_m"]));
 			card.find(".current_location").text(aJob["current_location"]);
 			// card.find(".applied_date").text(ISODateToD_M_Y(aJob["apply_date"]));
-			card.find(".user_sex").text(aJob["sex"]);
+			card.find(".user_sex").text(getTypeGender(aJob["sex"]));
 			card.find(".user_age").text(getAge(aJob["dob"]));
+			card.find(".notice-period").text("Notice: "+aJob["notice"]+" month");
 			// card.find(".user_img").attr('src', aJob["imgUrl"]);
 			// var iconStatus = aJob["status"];
 			// var iconElements = card.find(".content_more .icon");
@@ -80,29 +80,33 @@ var populateCandidates = function(res){
 			// card.find(".interview-invite.icon").attr("data-interview-invite","js-"+aJob['id']+"");
 			// card.find(".slot-type-container").attr("data-interview-invite","js-"+aJob['id']+"");
 			var orgArray = aJob["jobs"];
-			var len = orgArray.length;
-			var loop = len < 2 ? len:2;
-			for(var i=0; i<loop; i++) {
-				var anOrg ={};
-				anOrg = orgArray[i];
-				var column = columnOrg.clone().removeClass('prototype hidden');
-				column.find(".name").text(anOrg["organization"]);
-				column.find(".designation").text(anOrg["designation"]);
-				column.find(".extra_info").text(getOrgExp(anOrg["from_exp_month"],anOrg["from_exp_year"],anOrg["to_exp_month"],anOrg["to_exp_year"],anOrg["is_current"]));
-				card.find('.content_organization').append(column);
-			}
-			aJob["edu"].forEach(function(anEdu, index){
-				if(index > 1) {
-					return
+			if(orgArray) {
+				var len = orgArray.length;
+				var loop = len < 2 ? len:2;
+				for(var i=0; i<loop; i++) {
+					var anOrg ={};
+					anOrg = orgArray[i];
+					var column = columnOrg.clone().removeClass('prototype hidden');
+					column.find(".name").text(anOrg["organization"]);
+					column.find(".designation").text(anOrg["designation"]);
+					column.find(".extra_info").text(getOrgExp(anOrg["from_exp_month"],anOrg["from_exp_year"],anOrg["to_exp_month"],anOrg["to_exp_year"],anOrg["is_current"]));
+					card.find('.content_organization').append(column);
 				}
-				var column = columnIns.clone().removeClass('prototype hidden');
+			}
+			if(aJob["edu"]) {
+				aJob["edu"].forEach(function(anEdu, index){
+					if(index > 1) {
+						return
+					}
+					var column = columnIns.clone().removeClass('prototype hidden');
 
-				column.find(".name").text(anEdu["institute"]);
-				column.find(".start_duration").text(anEdu["batch_from"]);
-				column.find(".end_duration").text(anEdu["batch_to"]);
-				column.find(".degree").text(anEdu["degree"]);
-				card.find('.content_institute').append(column);
-			})
+					column.find(".name").text(anEdu["institute"]);
+					column.find(".start_duration").text(anEdu["batch_from"]);
+					column.find(".end_duration").text(anEdu["batch_to"]);
+					column.find(".degree").text(anEdu["degree"]);
+					card.find('.content_institute').append(column);
+				})
+			}
 			// card.find(".icon-resume").attr("data-resume-open",'js-open-'+aJob['id']+'');
 			// card.find(".resume-container").attr("data-resume-open",'js-open-'+aJob['id']+'');
 			// card.find(".resume-container .resume-content").attr("data",aJob["resumeUrl"]);
@@ -139,6 +143,23 @@ var populateCandidates = function(res){
 
 		})
 	}
+}
+
+function getTypeGender(gender) {
+	var gen;
+	if(gender == -1) {
+		gen = "";
+	}
+	else if (gender == 1) {
+		gen = "Male";
+	}
+	else if (gender == 2) {
+		gen = "Female";
+	}
+	else if (gender == 3) {
+		gen = "Not Mentioned"
+	}
+	return gen;
 }
 
 function getOrgExp(fromExpMonth, fromExpYear,toExpMonth,toExpYear,isCurrent) {

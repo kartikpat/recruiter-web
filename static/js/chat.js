@@ -140,7 +140,7 @@ var searchCandidate = function(array, elem) {
 
      $("#search-candidate").on('input', function(){
  		var ele = this;
- 		searchCandidate(candidates, ele);
+ 		searchCandidate(channelsArray, ele);
  	});
 
     var candidateChatContainerHeight = $(".candidate-chat-container").height();
