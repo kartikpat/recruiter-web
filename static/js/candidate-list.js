@@ -272,6 +272,7 @@ jobContainer.on('click','.jobs_content .send-interview-invite', function(event){
 		seekerID: seekerId,
 		slotType: slotType
 	}, function(res) {
+		console.log(res);
 		if(res["status"] == "success") {
 			elem.parent().parent().addClass("hidden");
 			if(slotType == 1) {
@@ -292,6 +293,16 @@ jobContainer.on('mouseover','.jobs_content .interview-invite.icon', function(eve
 })
 
 jobContainer.on('mouseout','.jobs_content .interview-invite.icon', function(){
+ 	var dataInterviewInvite = $(this).attr("data-interview-invite");
+ 	jobContainer.find('.slot-type-container[data-interview-invite='+dataInterviewInvite+']').addClass("hidden");
+})
+
+jobContainer.on('mouseover','.jobs_content .resend-interview-invite.icon', function(event){
+	var dataInterviewInvite = $(this).attr("data-interview-invite");
+	jobContainer.find('.slot-type-container[data-interview-invite='+dataInterviewInvite+']').removeClass("hidden");
+})
+
+jobContainer.on('mouseout','.jobs_content .resend-interview-invite.icon', function(){
  	var dataInterviewInvite = $(this).attr("data-interview-invite");
  	jobContainer.find('.slot-type-container[data-interview-invite='+dataInterviewInvite+']').addClass("hidden");
 })
@@ -642,23 +653,36 @@ var searchTags = function(array, metaData, elem) {
 var resultLength;
 
 var populateCalendarOptions = function(res) {
+	console.log(res);
 	if(res.status == "success") {
 		data = res["data"];
-		data.forEach(function(anOption) {
-			var optionElement = calendarOption.clone().removeClass('prototype hidden');
-			optionElement.text(anOption["name"]);
-			optionElement.attr("value",anOption["id"]);
-			if(anOption["isDefault"]) {
-				optionElement.attr("selected", "selected");
-				calendarId = optionElement.val();
-			}
-			if(anOption["isDefault"]==true) {
-				$(".set-default-calendar-button").attr("data-default", anOption["defaultID"]);
-			}
-			$(".calendar-select").append(optionElement);
-		})
+		console.log(data.length)
+		if(data.length != 0) {
+			data.forEach(function(anOption) {
+				var optionElement = calendarOption.clone().removeClass('prototype hidden');
+				optionElement.text(anOption["name"]);
+				optionElement.attr("value",anOption["id"]);
+				if(anOption["isDefault"]) {
+					optionElement.attr("selected", "selected");
+					calendarId = optionElement.val();
+				}
+				if(anOption["isDefault"]==true) {
+					$(".set-default-calendar-button").attr("data-default", anOption["defaultID"]);
+				}
+				$(".calendar-select").append(optionElement);
+			})
+		}
+		else {
+			$(".calendar-options-container").addClass("hidden");
+			$(".create-new-calendar-container").removeClass("hidden");
+
+		}
 	}
 }
+
+$(".calendar").on('click','.create-new-calendar',function(){
+	window.location = "/recruiter/"+recruiterID+"/slots?createNew=1";
+})
 
 var populateJobs = function(res){
 
@@ -687,7 +711,8 @@ var populateJobs = function(res){
 		res["data"].forEach(function(aJob){
 			var card = tableRow.clone().removeClass('prototype hidden');
 			card.attr("data-attribute",'js-'+aJob['id']+'');
-			card.find(".send-interview-invite").attr("data-user-id", aJob['userID']);
+			card.find(".interview-invite .send-interview-invite").attr("data-user-id", aJob['userID']);
+			card.find(".resend-interview-invite .send-interview-invite").attr("data-user-id", aJob['userID']);
 			card.find(".user_name").text(aJob["name"]);
 			card.find(".user_experience").text(getJobExperience(aJob["exp_y"], aJob["exp_m"]));
 			card.find(".current_location").text(aJob["current_location"]);
@@ -703,7 +728,20 @@ var populateJobs = function(res){
 			card.find(".content_more .icon[data-attribute= " + iconStatus + "]").addClass("highlighted");
 			card.find(".content_more .icon[data-attribute=4]").attr("href","/profile/"+aJob["userID"]+"?jobID="+jobID+"&jobTitle="+jobTitle);
 			card.find(".interview-invite.icon").attr("data-interview-invite","js-"+aJob['id']+"");
-			card.find(".slot-type-container").attr("data-interview-invite","js-"+aJob['id']+"");
+			card.find(".resend-interview-invite.icon").attr("data-interview-invite","js-"+aJob['id']+"");
+			card.find(".interview-invite.icon .slot-type-container").attr("data-interview-invite","js-"+aJob['id']+"");
+			card.find(".resend-interview-invite.icon .slot-type-container").attr("data-interview-invite","js-"+aJob['id']+"");
+			if(!("invite" in aJob)) {
+				card.find(".interview-invite.icon").removeClass("hidden");
+			}
+			else {
+				if(aJob["invite"] == 1) {
+					card.find(".resend-interview-invite.icon").removeClass("hidden");
+				}
+				else if(aJob["invite"] == 2) {
+					card.find(".interview-invite-message").text("Interview Set On "+ISODateToD_M_Y(aJob["inviteDate"])+" at "+aJob["inviteTime"]).removeClass("hidden");
+				}
+			}
 			var orgArray = aJob["jobs"];
 			var len = orgArray.length;
 			var loop = len < 2 ? len:2;

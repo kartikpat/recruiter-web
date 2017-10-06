@@ -678,11 +678,17 @@
 </div>
 
 <div class="calendar box_shadow">
-	<span class="font-sm">Send calendar</span>
-	<select class="calendar-select">
+    <div class="create-new-calendar-container hidden">
+        <button class="button create-new-calendar">Create New Calendar</button>
+    </div>
+    <div class="calendar-options-container">
+        <span class="font-sm">Send calendar</span>
+        <select class="calendar-select">
 
-	</select>
-	<button class="button set-default-calendar-button">Set Default</button>
+        </select>
+        <button class="button set-default-calendar-button">Set Default</button>
+    </div>
+
 </div>
 
 <div role="tabpanel" class="jobs_panel">
@@ -861,7 +867,7 @@
                 <div class="important_info name animated-background"></div>
                 <div class="extra_info degree animated-background"></div>
             </div>
-              
+
             <div class="content content_more">
                 <div class="info">
                     <div class="icon animated-background"></div>
@@ -942,9 +948,19 @@
 			<div class="info">
 				<a href="" class="icon"><i class="fa fa-whatsapp" aria-hidden="true"></i><span>chat with<span class="user_name">kartik</span></span></a>
 
-				<div class="interview-invite icon">
+				<div class="interview-invite icon hidden">
                     <i class="fa fa-calendar" aria-hidden="true"></i>
                     <span>Send Interview Invite</span>
+
+                    <div class="slot-type-container hidden">
+                        <a class="link-color send-interview-invite" href="" data-attribute="1">Face-to-Face</a>
+                        <a class="link-color send-interview-invite" href="" data-attribute="2">Telephonic</a>
+                    </div>
+                </div>
+                <div class="resend-interview-invite icon hidden">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                    <span>Resend Interview Invite</span>
+
                     <div class="slot-type-container hidden">
                         <a class="link-color send-interview-invite" href="" data-attribute="1">Face-to-Face</a>
                         <a class="link-color send-interview-invite" href="" data-attribute="2">Telephonic</a>

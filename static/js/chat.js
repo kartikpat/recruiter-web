@@ -12,6 +12,7 @@ var displayAMessage = function(event) {
     }
 }
 
+
 var sendMessage = function(message) {
     $(".candidate-chat-content").append("<div class='message-container right'><div class='message-sent'>"+message+"<span class='current-time'>"+startTime()+"</span></div></div>");
     var channel = chatMainContainer.attr('data-id');
@@ -44,6 +45,7 @@ var populateChatView = function(array) {
         var card = candidatesWrapper.clone().removeClass('prototype hidden');
         card.find(".candidate-image img").attr("src",recruiter["img_url"]).removeClass("animated-background");
         card.attr("data-id",aCandidate["id"]);
+        card.attr("data-name",aCandidate["name"]);
         card.find(".candidate-name").text(aCandidate["name"]).removeClass("animated-background");
         card.find(".candidate-designation").text(aCandidate["jobseekerID"]).removeClass("animated-background");
         card.find(".last-active-date").text(ISODateToD_M(aCandidate["lastActive"]));
@@ -99,6 +101,13 @@ var onFetchHistory = function(status, response) {
     })
 }
 
+var receivePresence = function(presence) {
+    if(presence["action"] == "join" && presence["occupancy"] > 1) {
+        $(".chat-side-profile-candidates .candidate-card[data-name="+presence["channel"]+"]").find(".candidate-image .online-icon").removeClass("hidden");
+    }
+    console.log(presence);
+}
+
 var receiveMessage = function(message) {
     console.log(message)
     if( message["deviceID"] == getCookie("sessID") && message["uuid"] == btoa(localStorage.recruiterID+'--'+localStorage.recruiterEmail) ){
@@ -150,6 +159,9 @@ var searchCandidate = function(array, elem) {
     $(window).resize(function(){
         $(".candidate-chat-container").width($(window).width() - 265);
     });
+
+
+
     chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").height($(".candidate-chat-container").height() - 163)
  })
 

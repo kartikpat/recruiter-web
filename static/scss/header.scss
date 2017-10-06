@@ -314,3 +314,252 @@ header {
     padding-left: 5px;
 
 }
+
+.chat-div {
+    position: fixed;
+    bottom: 0;
+    right: 10px;
+    width: 270px;
+    box-shadow: 0 0 2px #CCC;
+    z-index: 10;
+    .chat-div-header {
+        padding: 10px 12px;
+        background-color: #4b4b4b;
+        color: #fff;
+        font-size: 13px;
+        cursor: pointer;
+        .minus-icon {
+            height: 12px;
+            width: 12px;
+            float: right;
+            background: url(https://static.iimjobs.com/pub_chat/v4/images/minus.jpg) no-repeat;
+            &.show {
+                margin-top: 10px;
+            }
+        }
+    }
+    .chat-div-content {
+        height: 0;
+        background-color: #fff;
+        z-index: 2;
+        transition: 0.2s height ease-in-out;
+        overflow: auto;
+
+        &.show {
+            height: 315px;
+        }
+        .divider {
+            margin: 0 auto;
+        }
+        .candidate-card {
+
+            padding: 4px 10px;
+            position: relative;
+            &:hover {
+                background-color: $color-light-grey;
+                cursor: pointer;
+            }
+            .candidate-image {
+                display: inline-block;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                margin-right: 5px;
+                vertical-align: top;
+                margin-top: 5px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                }
+            }
+            .candidate-info {
+                display: inline-block;
+                margin-top: 5px;
+                .candidate-name {
+
+                    font-size: 13px;
+                    color: #676666;
+                }
+                .candidate-designation {
+                    font-size: 11px;
+                    color: #a0a0a0;
+                }
+            }
+            .remove-candidate {
+                position: absolute;
+                display: inline-block;
+                font-size: 13px;
+                top: 20px;
+                i:hover {
+                    color: $error-color;
+                }
+            }
+        }
+    }
+}
+
+.chat-div-candidate {
+    position: fixed;
+    bottom: 0;
+    width: 270px;
+    box-shadow: 0 0 2px #CCC;
+    z-index: 10;
+    .chat-div-header {
+        padding: 2.5px 12px;
+        background-color: #4b4b4b;
+        color: #fff;
+        font-size: 13px;
+        cursor: pointer;
+        position: relative;
+        .candidate-name-container {
+            display: inline-block;
+            .candidate-name {
+                margin-bottom: 3px;
+            }
+            .last-active-date {
+                font-size: 10px;
+            }
+        }
+        .info-buttons {
+            display: inline-block;
+            position: absolute;
+            right: 10px;
+            height: 30px;
+            line-height: 30px;
+            span {
+                padding: 0 4px;
+            }
+        }
+
+    }
+    .content-footer-container {
+        height: 0;
+        transition: 0.2s height ease-in-out;
+        .chat-div-content {
+            height: 274px;
+            background-color: #f6f7f8;
+            z-index: 2;
+            overflow: auto;
+            padding: 10px 20px;
+            .date-block {
+                text-align: center;
+                margin: 25px 0;
+                .date {
+                    background: #e1f3fb;
+                    padding: 8px 20px;
+                    display: inline-block;
+                    font-size: 10.4px;
+                    color: #777777;
+                    border-radius: 3px;
+                }
+            }
+            .message-container {
+                margin: 10px 0;
+
+                .message-received {
+                    display: inline-block;
+                    box-shadow: 1px 1px 0px 0px #ccc;
+                    padding: 5px 10px;
+                    color: #1c1c1c;
+                    border-radius: 4px;
+                    background-color: rgba(236, 236, 236, 0.38);
+                    position: relative;
+                    width: auto;
+                    max-width: 150px;
+                    font-size: 12px;
+                    word-wrap: break-word;
+                    overflow-wrap: break-word;
+
+                }
+                .message-sent {
+                    position: relative;
+                    display: inline-block;
+                    box-shadow: 1px 1px 0px 0px #ccc;
+                    padding: 5px 10px;
+                    color: #1c1c1c;
+                    border-radius: 4px;
+                    background-color: rgba(207, 244, 253, 0.28);
+                }
+                &.left {
+                    text-align: left;
+                }
+                &.right {
+                    text-align: right;
+                }
+                .current-time {
+
+                    vertical-align: sub;
+                    padding: 0 0 0px 10px;
+                    font-size: 9px;
+                }
+                .caret {
+                    position: absolute;
+                    background: #ccc;
+
+                }
+            }
+        }
+        &.show {
+            height: 315px;
+        }
+        .footer {
+            input {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 2px;
+                &:focus {
+                    border: 1px solid $input-focus-color;
+                }
+
+            }
+        }
+    }
+
+}
+
+.selected {
+    background-color: $color-light-grey;
+}
+
+.chat-collapsed-candidate-container {
+    position: fixed;
+    bottom: 0;
+    z-index: 3;
+    .chat-collapsed-candidate {
+        cursor: pointer;
+        padding: 6px 10px 1px;
+        max-width: 50px;
+        position: relative;
+        background: #f1f1f1;
+        border: 1px solid #CCC;
+        border-bottom: 0;
+        position: relative;
+        z-index: 2;
+        background: url(https://static.iimjobs.com/pub_chat/v4/images/collapsed_chats.png) no-repeat center center;
+        min-height: 27px;
+        min-width: 27px;
+        background-color: #f1f1f1;
+        box-sizing: content-box;
+        .chat-collapsed-candidate-wrapper {
+            position: absolute;
+            bottom: 100%;
+            min-width: 125px;
+            text-align: right;
+            background: #f1f1f1;
+            right: -1px;
+
+            .candidate-collapsed-block {
+                padding: 10px 15px;
+                font-size: 13px;
+                color: $color-black-text;
+                i {
+                    margin-left: 10px;
+
+                }
+            }
+        }
+    }
+
+}

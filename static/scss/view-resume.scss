@@ -1,6 +1,13 @@
 @import "colors.scss";
 @import "fonts.scss";
 
+@mixin input-styling {
+    box-sizing: border-box;
+    border: 1px solid $select-border;
+    border-radius: 2px;
+    padding: 4px 8px;
+}
+
 .job-title {
     width: 95%;
     font-size: 18px;
@@ -265,4 +272,53 @@
     padding: 15px;
     color: #fff;
   }
+}
+
+.margin-right {
+    margin-right: 0 !important;
+}
+
+// .tags-container {
+//     position: absolute;
+//     right: 0;
+//     display: inline-block;
+//     width: 52%;
+//     .ta {
+//
+//         .tags-content {
+//             display: inline-block;
+//             input {
+//                 @include input-styling;
+//                 margin-right: 25px;
+//             }
+//             button {
+//                 padding: 5px 12px;
+//             }
+//         }
+//
+//     }
+//
+// }
+
+.posted-tags {
+    margin-top: 10px;
+    line-height: 3;
+    .tags-jobSeeker {
+        display: inline-block;
+        width: 85px;
+        margin-right: 5px;
+        .tags-content {
+                cursor: pointer;
+        }
+    }
+}
+
+.js-remove-tag.job-seeker-tags {
+    height: 24px;
+    border: 1px solid #ececec;
+    color: #4b4b4b;
+    font-size: 12px;
+    padding: 2px 4px;
+    cursor: pointer;
+    background: #f5f6f7;
 }

@@ -64,7 +64,8 @@ footer, header, hgroup, menu, nav, section {
   .user_profile .image {
     display: inline-block;
     margin-right: 10px;
-    width: 18%; }
+    width: 18%;
+    min-width: 150px; }
     .user_profile .image .edit_profile {
       position: relative;
       display: inline-block;
@@ -116,12 +117,13 @@ footer, header, hgroup, menu, nav, section {
       .user_profile .user_details .user_information .user_designation .organisation-url {
         text-decoration: none; }
     .user_profile .user_details .user-about {
-      max-width: 350px;
-      height: 15px;
       min-width: 250px;
       color: #333;
       font-size: 14px;
       font-family: "Droid Sans",sans-serif; }
+      .user_profile .user_details .user-about.animated-background {
+        max-width: 350px;
+        height: 15px; }
     .user_profile .user_details .edit_profile {
       position: absolute;
       top: 0;
@@ -145,11 +147,18 @@ footer, header, hgroup, menu, nav, section {
       .user_profile .user_details .social-buttons-container .social-buttons-not-connected {
         position: absolute;
         right: 0; }
+        .user_profile .user_details .social-buttons-container .social-buttons-not-connected .social-links {
+          margin-right: 10px; }
+          .user_profile .user_details .social-buttons-container .social-buttons-not-connected .social-links img {
+            width: 100px;
+            height: 30px; }
         .user_profile .user_details .social-buttons-container .social-buttons-not-connected .connect-to-social {
           margin-right: 5px; }
       .user_profile .user_details .social-buttons-container .social-buttons-connected {
         position: absolute;
         left: 0; }
+        .user_profile .user_details .social-buttons-container .social-buttons-connected .social-links {
+          margin-right: 10px; }
         .user_profile .user_details .social-buttons-container .social-buttons-connected .connected-to-social {
           margin-right: 5px; }
   .user_profile .bottom_information {
@@ -246,21 +255,18 @@ footer, header, hgroup, menu, nav, section {
         color: #ffffff;
         position: relative; }
         .jobs_panel .jobs_container .status .rejected-message:hover .tooltip-message {
-          visibility: visible;
-          opacity: 1; }
+          visibility: visible; }
         .jobs_panel .jobs_container .status .rejected-message .tooltip-message {
           position: absolute;
           visibility: hidden;
           z-index: 2;
           top: 50%;
           left: 120%;
-          transform: translate(-1%, -61%);
+          transform: translate(0%, -50%);
           padding: 15px 15px;
           width: 175px;
           background-color: #555;
           color: #fff;
-          opacity: 0;
-          transition: opacity 0.5s;
           border-radius: 7px; }
           .jobs_panel .jobs_container .status .rejected-message .tooltip-message::after {
             content: "";
@@ -276,6 +282,11 @@ footer, header, hgroup, menu, nav, section {
       width: 14%; }
       .jobs_panel .jobs_container .views .applied-link {
         display: block; }
+        .jobs_panel .jobs_container .views .applied-link a {
+          text-decoration: none; }
+          .jobs_panel .jobs_container .views .applied-link a:hover {
+            text-decoration: underline;
+            color: #23527c; }
     .jobs_panel .jobs_container .action .edit-job-container {
       width: 25px;
       position: relative;
@@ -518,12 +529,6 @@ footer, header, hgroup, menu, nav, section {
   display: inline-block;
   width: 29.5%; }
 
-.social-links {
-  margin-right: 10px; }
-  .social-links img {
-    width: 100px;
-    height: 30px; }
-
 .checkbox {
   margin-right: 5px;
   font-size: 14px;
@@ -564,118 +569,6 @@ label.premium-job {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
   padding: 6px 12px; }
 
-.chat-div {
-  position: fixed;
-  bottom: 0;
-  right: 10px;
-  width: 270px;
-  box-shadow: 0 0 2px #CCC; }
-  .chat-div .chat-div-header {
-    padding: 10px 12px;
-    background-color: #4b4b4b;
-    color: #fff;
-    font-size: 13px;
-    cursor: pointer; }
-    .chat-div .chat-div-header .minus-icon {
-      height: 12px;
-      width: 12px;
-      float: right;
-      background: url(https://static.iimjobs.com/pub_chat/v4/images/minus.jpg) no-repeat; }
-      .chat-div .chat-div-header .minus-icon.show {
-        margin-top: 10px; }
-  .chat-div .chat-div-content {
-    height: 0;
-    background-color: #fff;
-    z-index: 2;
-    transition: 0.2s height ease-in-out;
-    overflow: auto; }
-    .chat-div .chat-div-content.show {
-      height: 315px; }
-    .chat-div .chat-div-content .divider {
-      margin: 0 auto; }
-    .chat-div .chat-div-content .candidate-card {
-      padding: 4px 10px;
-      position: relative; }
-      .chat-div .chat-div-content .candidate-card:hover {
-        background-color: #f5f6f7;
-        cursor: pointer; }
-      .chat-div .chat-div-content .candidate-card .candidate-image {
-        display: inline-block;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        margin-right: 5px;
-        vertical-align: top;
-        margin-top: 5px; }
-        .chat-div .chat-div-content .candidate-card .candidate-image img {
-          width: 100%;
-          height: 100%;
-          border-radius: 50%; }
-      .chat-div .chat-div-content .candidate-card .candidate-info {
-        display: inline-block;
-        margin-top: 5px; }
-        .chat-div .chat-div-content .candidate-card .candidate-info .candidate-name {
-          font-size: 13px;
-          color: #676666; }
-        .chat-div .chat-div-content .candidate-card .candidate-info .candidate-designation {
-          font-size: 11px;
-          color: #a0a0a0; }
-      .chat-div .chat-div-content .candidate-card .remove-candidate {
-        position: absolute;
-        display: inline-block;
-        font-size: 13px;
-        top: 20px; }
-        .chat-div .chat-div-content .candidate-card .remove-candidate i:hover {
-          color: #d00a42; }
-
-.chat-div-candidate {
-  position: fixed;
-  bottom: 0;
-  width: 270px;
-  box-shadow: 0 0 2px #CCC; }
-  .chat-div-candidate .chat-div-header {
-    padding: 2.5px 12px;
-    background-color: #4b4b4b;
-    color: #fff;
-    font-size: 13px;
-    cursor: pointer;
-    position: relative; }
-    .chat-div-candidate .chat-div-header .candidate-name-container {
-      display: inline-block; }
-      .chat-div-candidate .chat-div-header .candidate-name-container .candidate-name {
-        margin-bottom: 3px; }
-      .chat-div-candidate .chat-div-header .candidate-name-container .last-active-date {
-        font-size: 10px; }
-    .chat-div-candidate .chat-div-header .info-buttons {
-      display: inline-block;
-      position: absolute;
-      right: 10px;
-      height: 30px;
-      line-height: 30px; }
-      .chat-div-candidate .chat-div-header .info-buttons span {
-        padding: 0 4px; }
-  .chat-div-candidate .content-footer-container {
-    height: 0;
-    transition: 0.2s height ease-in-out; }
-    .chat-div-candidate .content-footer-container .chat-div-content {
-      height: 274px;
-      background-color: #f6f7f8;
-      z-index: 2;
-      overflow: auto;
-      padding: 10px 20px; }
-    .chat-div-candidate .content-footer-container.show {
-      height: 315px; }
-    .chat-div-candidate .content-footer-container .footer input {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 2px; }
-      .chat-div-candidate .content-footer-container .footer input:focus {
-        border: 1px solid #66afe9; }
-
-.selected {
-  background-color: #f5f6f7; }
-
 .message-sent {
   display: inline-block;
   box-shadow: 1px 1px 0px 0px #ccc;
@@ -688,35 +581,3 @@ label.premium-job {
     text-align: left; }
   .message-container.right {
     text-align: right; }
-
-.chat-collapsed-candidate-container {
-  position: fixed;
-  bottom: 0; }
-  .chat-collapsed-candidate-container .chat-collapsed-candidate {
-    cursor: pointer;
-    padding: 6px 10px 1px;
-    max-width: 50px;
-    position: relative;
-    background: #f1f1f1;
-    border: 1px solid #CCC;
-    border-bottom: 0;
-    position: relative;
-    z-index: 2;
-    background: url(https://static.iimjobs.com/pub_chat/v4/images/collapsed_chats.png) no-repeat center center;
-    min-height: 27px;
-    min-width: 27px;
-    background-color: #f1f1f1;
-    box-sizing: content-box; }
-    .chat-collapsed-candidate-container .chat-collapsed-candidate .chat-collapsed-candidate-wrapper {
-      position: absolute;
-      bottom: 100%;
-      min-width: 125px;
-      text-align: right;
-      background: #f1f1f1;
-      right: -1px; }
-      .chat-collapsed-candidate-container .chat-collapsed-candidate .chat-collapsed-candidate-wrapper .candidate-collapsed-block {
-        padding: 10px 15px;
-        font-size: 13px;
-        color: #4b4b4b; }
-        .chat-collapsed-candidate-container .chat-collapsed-candidate .chat-collapsed-candidate-wrapper .candidate-collapsed-block i {
-          margin-left: 10px; }

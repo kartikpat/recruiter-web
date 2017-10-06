@@ -280,4 +280,15 @@ module.exports = function(settings){
 		return
 	})
 
+	app.get("/recruiter/change-password", function(req, res){
+
+		res.render("change-password", {
+			title: "IIM JOBS | Change Password",
+			styles:  assetsMapper["change-password"]["styles"][mode],
+			scripts: assetsMapper["change-password"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
 }

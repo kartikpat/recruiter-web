@@ -141,7 +141,10 @@ var saveSlotsData = function() {
 
 
 var successCallback = function(res) {
-    console.log(res);
+    console.log(res)
+    if(res["message"] == "records updated successfully") {
+        window.location = "/recruiter/"+recruiterID+"/calendar";
+    }
 }
 
 createSlotsContainer.on('focus','.datepicker', function() {

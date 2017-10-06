@@ -531,6 +531,32 @@
 				"static/build/js/filter-candidate.min.js"
 			]
 		}
+	},
+	"change-password": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/change-password.css",
+				"static/css/utilities.css",
+				"static/css/footer.css"
+			],
+			"prod": [
+				"static/build/css/change-password.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/change-password.js"
+			],
+			"prod" : [
+				"static/build/js/change-password.min.js"
+			]
+		}
 	}
 
 

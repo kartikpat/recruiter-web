@@ -46,6 +46,7 @@ footer, header, hgroup, menu, nav, section {
         display: inline-block;
         margin-right: 10px;
         width: 18%;
+        min-width: 150px;
         .edit_profile {
             position: relative;
             display: inline-block;
@@ -112,12 +113,14 @@ footer, header, hgroup, menu, nav, section {
         }
 
         .user-about {
-            max-width: 350px;
-            height: 15px;
             min-width: 250px;
             color: $important-info-color;
             font-size: 14px;
             font-family: "Droid Sans",sans-serif;
+            &.animated-background {
+                max-width: 350px;
+                height: 15px;
+            }
         }
 
         .edit_profile {
@@ -149,6 +152,13 @@ footer, header, hgroup, menu, nav, section {
             .social-buttons-not-connected {
                 position: absolute;
                 right: 0;
+                .social-links {
+                    margin-right: 10px;
+                     img {
+                    width: 100px;
+                    height: 30px;
+                    }
+                }
                 .connect-to-social {
                     margin-right: 5px;
                 }
@@ -156,6 +166,9 @@ footer, header, hgroup, menu, nav, section {
             .social-buttons-connected {
                 position: absolute;
                 left: 0;
+                .social-links{
+                    margin-right: 10px;
+                }
                 .connected-to-social {
                     margin-right: 5px;
                 }
@@ -290,7 +303,7 @@ footer, header, hgroup, menu, nav, section {
                 position: relative;
                 &:hover .tooltip-message{
                     visibility: visible;
-                    opacity: 1;
+                    // opacity: 1;
                 }
                 .tooltip-message {
                     position: absolute;
@@ -298,13 +311,13 @@ footer, header, hgroup, menu, nav, section {
                     z-index: 2;
                     top: 50%;
                     left: 120%;
-                    transform: translate(-1%,-61%);
+                    transform: translate(0%,-50%);
                     padding: 15px 15px;
                     width: 175px;
                     background-color: #555;
                     color: #fff;
-                    opacity: 0;
-                    transition: opacity 0.5s;
+                    // opacity: 0;
+                    // transition: opacity 0.2s;
                     border-radius: 7px;
                     &::after {
                         content: "";
@@ -324,6 +337,13 @@ footer, header, hgroup, menu, nav, section {
             width: 14%;
             .applied-link {
                 display: block;
+                a {
+                    text-decoration: none;
+                    &:hover {
+                        text-decoration: underline;
+                        color: $link-hover-color;
+                    }
+                }
             }
         }
         .action {
@@ -723,13 +743,7 @@ footer, header, hgroup, menu, nav, section {
     }
 }
 
-.social-links {
-    margin-right: 10px;
-     img {
-    width: 100px;
-    height: 30px;
-    }
-}
+
 
 .checkbox {
     margin-right: 5px;
@@ -784,153 +798,11 @@ label.premium-job {
 
 
 
-.chat-div {
-    position: fixed;
-    bottom: 0;
-    right: 10px;
-    width: 270px;
-    box-shadow: 0 0 2px #CCC;
-    .chat-div-header {
-        padding: 10px 12px;
-        background-color: #4b4b4b;
-        color: #fff;
-        font-size: 13px;
-        cursor: pointer;
-        .minus-icon {
-            height: 12px;
-            width: 12px;
-            float: right;
-            background: url(https://static.iimjobs.com/pub_chat/v4/images/minus.jpg) no-repeat;
-            &.show {
-                margin-top: 10px;
-            }
-        }
-    }
-    .chat-div-content {
-        height: 0;
-        background-color: #fff;
-        z-index: 2;
-        transition: 0.2s height ease-in-out;
-        overflow: auto;
-        &.show {
-            height: 315px;
-        }
-        .divider {
-            margin: 0 auto;
-        }
-        .candidate-card {
 
-            padding: 4px 10px;
-            position: relative;
-            &:hover {
-                background-color: $color-light-grey;
-                cursor: pointer;
-            }
-            .candidate-image {
-                display: inline-block;
-                width: 30px;
-                height: 30px;
-                border-radius: 50%;
-                margin-right: 5px;
-                vertical-align: top;
-                margin-top: 5px;
-                img {
-                    width: 100%;
-                    height: 100%;
-                    border-radius: 50%;
-                }
-            }
-            .candidate-info {
-                display: inline-block;
-                margin-top: 5px;
-                .candidate-name {
 
-                    font-size: 13px;
-                    color: #676666;
-                }
-                .candidate-designation {
-                    font-size: 11px;
-                    color: #a0a0a0;
-                }
-            }
-            .remove-candidate {
-                position: absolute;
-                display: inline-block;
-                font-size: 13px;
-                top: 20px;
-                i:hover {
-                    color: $error-color;
-                }
-            }
-        }
-    }
-}
 
-.chat-div-candidate {
-    position: fixed;
-    bottom: 0;
-    width: 270px;
-    box-shadow: 0 0 2px #CCC;
-    .chat-div-header {
-        padding: 2.5px 12px;
-        background-color: #4b4b4b;
-        color: #fff;
-        font-size: 13px;
-        cursor: pointer;
-        position: relative;
-        .candidate-name-container {
-            display: inline-block;
-            .candidate-name {
-                margin-bottom: 3px;
-            }
-            .last-active-date {
-                font-size: 10px;
-            }
-        }
-        .info-buttons {
-            display: inline-block;
-            position: absolute;
-            right: 10px;
-            height: 30px;
-            line-height: 30px;
-            span {
-                padding: 0 4px;
-            }
-        }
 
-    }
-    .content-footer-container {
-        height: 0;
-        transition: 0.2s height ease-in-out;
-        .chat-div-content {
-            height: 274px;
-            background-color: #f6f7f8;
-            z-index: 2;
-            overflow: auto;
-            padding: 10px 20px;
-        }
-        &.show {
-            height: 315px;
-        }
-        .footer {
-            input {
-                width: 100%;
-                padding: 12px;
-                border: 1px solid #ccc;
-                border-radius: 2px;
-                &:focus {
-                    border: 1px solid $input-focus-color;
-                }
 
-            }
-        }
-    }
-
-}
-
-.selected {
-    background-color: $color-light-grey;
-}
 
 .message-sent {
 
@@ -949,44 +821,4 @@ label.premium-job {
     &.right {
         text-align: right;
     }
-}
-
-.chat-collapsed-candidate-container {
-    position: fixed;
-    bottom: 0;
-    .chat-collapsed-candidate {
-        cursor: pointer;
-        padding: 6px 10px 1px;
-        max-width: 50px;
-        position: relative;
-        background: #f1f1f1;
-        border: 1px solid #CCC;
-        border-bottom: 0;
-        position: relative;
-        z-index: 2;
-        background: url(https://static.iimjobs.com/pub_chat/v4/images/collapsed_chats.png) no-repeat center center;
-        min-height: 27px;
-        min-width: 27px;
-        background-color: #f1f1f1;
-        box-sizing: content-box;
-        .chat-collapsed-candidate-wrapper {
-            position: absolute;
-            bottom: 100%;
-            min-width: 125px;
-            text-align: right;
-            background: #f1f1f1;
-            right: -1px;
-
-            .candidate-collapsed-block {
-                padding: 10px 15px;
-                font-size: 13px;
-                color: $color-black-text;
-                i {
-                    margin-left: 10px;
-
-                }
-            }
-        }
-    }
-
 }

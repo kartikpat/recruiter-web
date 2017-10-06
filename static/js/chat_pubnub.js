@@ -1,3 +1,9 @@
+var recruiter = {
+    "name": "Shreya Jain",
+    "isOnline": 1,
+    "img_url": "http://www.iimjobs.com/resources/img/user_profile_new.png"
+}
+
 var channelsArray = [{
         "id": 9443,
         "jobseekerID": "511594",
@@ -140,6 +146,11 @@ var channelsArray = [{
 //     var key1 = 'pub-c-63069c70-3e81-42b3-b5f6-dc0bd232f845';
 //     var key2 = 'sub-c-760e7840-9e47-11e5-8db0-0619f8945a4f';
 
+// window.onbeforeunload = function () {
+//     console.log("ji")
+//     unsubscribe(channelsArray);
+// };
+
     var pubnub = new PubNub({
     publishKey: 'pub-c-63069c70-3e81-42b3-b5f6-dc0bd232f845', //"pub-c-71dbc9d4-a833-4c0a-b47e-9955abbb9dac",
     subscribeKey: 'sub-c-760e7840-9e47-11e5-8db0-0619f8945a4f', //"sub-c-59cd3794-96d3-11e7-b1db-b273e40390ab",
@@ -161,13 +172,19 @@ function getCookie(name) {
 }
 
 addListeners();
+
 subscribe((function(){
+    getArray(channelsArray);
+})());
+
+function getArray(array) {
     var tempArray = [];
-    channelsArray.forEach(function(aChannel){
+    array.forEach(function(aChannel){
         tempArray.push(aChannel["name"]);
     });
     return tempArray;
-})());
+}
+
 function addListeners(){
     pubnub.addListener({
         message: onNewMessage,
@@ -201,6 +218,8 @@ function onNewPresence(p) {
     var service = p.service; // service
     var uuids = p.uuids; // UUIDs of users who are connected with the channel with their state
     var occupancy = p.occupancy; // No. of users connected with the channel
+    console.log(p);
+    receivePresence(p)
 }
 
 function onNewStatus(s) {
@@ -216,7 +235,14 @@ function onNewStatus(s) {
 
 function subscribe(channelsArray) {
     pubnub.subscribe({
-        channels: channelsArray
+        channels: channelsArray,
+        withPresence: true
+    });
+}
+
+function unsubscribe(channelsArray) {
+    pubnub.unsubscribe({
+        channels: getArray(channelsArray)
     });
 }
 
@@ -229,7 +255,19 @@ function fetchHistory(channel, count, onFetchHistory) {
     }, onFetchHistory);
 }
 
+function hereNow(channel, onHereNow) {
+    pubnub.hereNow({
+        channel: channel ,
+        includeUUIDs: true,
+        includeState: true
 
+    }, onHereNow);
+}
+
+function onHereNow(status, response) {
+    console.log(status)
+    console.log(response)
+}
 
 function publish(message, channel, onPublish) {
     pubnub.publish({

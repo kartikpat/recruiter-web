@@ -175,6 +175,8 @@ input:focus, select:focus {
           padding: 10px 10px 0 10px; }
           .main-container .jobs .jobs_panel .jobs_content .content-container .interview-invite.icon {
             height: 40px; }
+          .main-container .jobs .jobs_panel .jobs_content .content-container .resend-interview-invite.icon {
+            height: 40px; }
         .main-container .jobs .jobs_panel .jobs_content .slide-container {
           height: auto;
           padding: 10px; }
@@ -563,5 +565,5 @@ input:focus, select:focus {
   background: #f5f6f7; }
 
 .interview-invite-message {
-  color: #808080;
+  color: #4b4b4b;
   font-size: 12px; }

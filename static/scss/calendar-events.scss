@@ -26,6 +26,14 @@
                     display: inline-block;
                     width: 33%;
                     padding: 10px 5px;
+                    font-size: 13px;
+                    a {
+                        text-decoration: none;
+                        &:hover {
+                            text-decoration: underline;
+                            color: $link-hover-color;
+                        }
+                    }
                 }
                 &:nth-child(even) {
                     background-color: $color-light-grey;
@@ -33,12 +41,13 @@
             }
         }
         .calendar-events-header {
-            background-color: $color-light-grey;
+            background-color: #eee;
             padding: 10px 5px;
             .column {
                 display: inline-block;
                 width: 33%;
                 font-size: 12px;
+                font-weight: bold;
             }
         }
     }

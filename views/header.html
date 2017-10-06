@@ -38,7 +38,7 @@
 					<hr class="seperator">
 					<li><a href="#">Premium Posting(0)</a></li>
 					<hr class="seperator">
-					<li><a href="#">Change Password</a></li>
+					<li><a href="/recruiter/change-password">Change Password</a></li>
 					<hr class="seperator">
 					<li><a href="/logout">Logout</a></li>
 
@@ -55,27 +55,92 @@
 				<li class="menu_link"><a href="/post-job">Post Jobs</a></li>
 				<li class="menu_link"><a href="/view-reports">Reports</a></li>
 				<li class="menu_link"><a href="/recruiter/myChat">My Chat</a></li>
-				<!-- <li class="menu_link menu-calendar dropdown">
+				<li class="menu_link menu-calendar dropdown">
 					<a href="#">My Calendar</a>
 					<ul class="options hidden box_shadow">
 						<li><a class="manage-bookings" href="">Manage Bookings</a></li>
 						<li><a href="/recruiter/view-booked-slots">View Booked Slots</a></li>
 					</ul>
-				</li> -->
+				</li>
 				<li class="menu_link"><a href="#">Search Resume Database</a></li>
 				<li class="menu_link menu-more dropdown">
 					<a href="#">More</a>
 					<ul class="options hidden box_shadow">
 						<li><a href="/recruiter/tags">My Tags</a></li>
-						<li><a href="#">Saved/Shortlisted Candidates</a></li>
+						<li><a class="saved-shortlisted" href="">Saved/Shortlisted Candidates</a></li>
 					</ul>
 				</li>
 			</ul>
 			<div class="search_container">
-				<input type="text" class="searchform" placeholder="Search"/>
+				<input type="text" class="searchform" placeholder="Search" id="search-solar"/>
 			</div>
 
 	</nav>
+
+	<div id="chat-div" class="chat-div">
+        <div class="chat-div-header">
+            Inbox<span class="minus-icon"></span>
+        </div>
+        <div class="chat-div-content">
+
+        </div>
+    </div>
+    <div class="chat-candidate-boxes">
+
+    </div>
+
+    <div class="chat-div-candidate prototype hidden">
+        <div class="chat-div-header">
+            <div class="candidate-name-container">
+                <div class="candidate-name">
+
+                </div>
+                <div class="last-active-date">
+
+                </div>
+            </div>
+            <div class="info-buttons">
+                <span class="info-icon"><i class=" fa fa-info" aria-hidden="true"></i></span>
+                <span class="minus-icon"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                <span class="close-icon"><i class=" fa fa-times" aria-hidden="true"></i></span>
+            </div>
+        </div>
+        <div class="content-footer-container">
+            <div class="chat-div-content">
+
+            </div>
+            <div class="footer">
+                <input id="chat-input" type="text" placeholder="Write a Message">
+            </div>
+        </div>
+
+    </div>
+
+  <div id="chat-collapsed-container">
+      <div class="chat-collapsed-candidate-container hidden">
+          <div class="chat-collapsed-candidate">
+              <div class="chat-collapsed-candidate-wrapper">
+
+              </div>
+          </div>
+
+      </div>
+  </div>
+
+
+    <div class="candidate-card prototype hidden">
+        <div class="candidate-image animated-background"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA"></div>
+        <div class="candidate-info">
+            <div class="candidate-name animated-background text-clr font-md"></div>
+            <div class="candidate-designation animated-background extra-info-color font-sm"></div>
+        </div>
+        <!-- <div class="remove-candidate extra-info-color"><i class="fa fa-times" aria-hidden="true"></i></div> -->
+    </div>
+    <hr class="divider divider-full hidden">
+
+    <div class="candidate-collapsed-block prototype hidden">
+
+    </div>
 <!-- end navigation menu -->
 
 </header>

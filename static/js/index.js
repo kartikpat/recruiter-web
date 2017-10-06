@@ -8,11 +8,7 @@ var modal = $('.modal');
 var openGuidelines = $("#posting-guidelines");
 var closeModalBtn = $(".close");
 
-var candidatesWrapper = $(".candidate-card.prototype");
 
-var chatContainer = $(".chat-div");
-
-var chatDivBox = $(".chat-div-candidate.prototype");
 
 var displayAMessage = function(event) {
     var key = event.which;
@@ -22,161 +18,58 @@ var displayAMessage = function(event) {
     }
 }
 
-profile.on('click',".social-links.facebook", function() {
-    hello('facebook').login();
+profile.on('click',".social-buttons-not-connected .social-links.facebook", function(event) {
+    event.preventDefault();
+    hello('facebook').login().then(function(auth){
+        console.log(auth.network)
+        hello(auth.network).api('me?fields=link').then(function(json) {
+            profile.find(".social-buttons-not-connected .social-links.facebook").remove();
+            var btn = $('.facebook').clone().removeClass('hidden');
+			btn.attr("href", json["link"]);
+            btn.find("img").attr("src","http://qa100.iimjobs.com/resources/images/fb1.png");
+			$(".social-buttons-connected").append(btn);
+
+
+        }, function(e) {
+            alert('Whoops! ' + e.error.message);
+        });
+    });
 });
 
-hello.on('auth.login', function(auth) {
-    console.log(auth.authResponse)
-	// Call user information, for the given network
-	// hello(auth.network).api('me').then(function(r) {
-	// 	// Inject it into the container
-    //
-	// 	// var label = document.getElementById('profile_' + auth.network);
-	// 	// if (!label) {
-	// 	// 	label = document.createElement('div');
-	// 	// 	label.id = 'profile_' + auth.network;
-	// 	// 	document.getElementById('profile').appendChild(label);
-	// 	// }
-	// 	// label.innerHTML = '<img src="' + r.thumbnail + '" /> Hey ' + r.name;
-	// });
+profile.on('click',".social-buttons-not-connected .social-links.twitter", function(event) {
+    event.preventDefault();
+    hello('twitter').login().then(function(auth){
+        console.log(auth)
+        hello(auth.network).api('me').then(function(json) {
+            console.log(json)
+            profile.find(".social-buttons-not-connected .social-links.twitter").remove();
+            var btn = $('.twitter').clone().removeClass('hidden');
+            btn.find("img").attr("src","http://qa100.iimjobs.com/resources/images/twtr1.png");
+			btn.attr("href", "https://twitter.com/"+json["screen_name"]);
+			$(".social-buttons-connected").append(btn);
+
+
+        }, function(e) {
+            alert('Whoops! ' + e.error.message);
+        });
+    }, function(e) {
+        alert('Whoops! ' + e.error.message);
+    });
 });
 
 hello.init({
-	facebook: 1530995060277473
+	facebook: '1530995060277473',
+    linkedin: '81mt7lu5kzjey3',
+    twitter: 'JENpmbzmuZQXd0Ga2I1jzmxL9'
 }, {redirect_uri: '/'});
 
-var isShowCollapsedCandidate = 0;
-var count = 0;
-
-chatContainer.on('click','.candidate-card', function() {
-	console.log("hi");
-	if(!($(this).hasClass("selected"))) {
-		var chatContainerBox = chatDivBox.clone().removeClass('prototype hidden');
-		chatContainerBox.find(".candidate-name").text($(this).find(".candidate-name").text());
-		chatContainerBox.find(".last-active-date").text(startTime());
-		chatContainerBox.find(".chat-div-header").attr("data-id",$(this).attr("data-id"));
-		chatContainerBox.find(".info-buttons .info-icon").attr("data-id",$(this).attr("data-id"));
-		chatContainerBox.find(".info-buttons .minus-icon").attr("data-id",$(this).attr("data-id"));
-		chatContainerBox.find(".info-buttons .close-icon").attr("data-id",$(this).attr("data-id"));
-		chatContainerBox.attr("data-id",$(this).attr("data-id"));
-		if($(".chat-candidate-boxes").children().length < maxCandidateChats) {
-		    $(".chat-candidate-boxes").prepend(chatContainerBox);
-		}
-		else {
-			var clonedElement = $(".candidate-collapsed-block.prototype").clone().removeClass('prototype hidden');
-			$(".chat-candidate-boxes").prepend(chatContainerBox);
-			var hideElement = 1+maxCandidateChats;
-			var dataIdLocal = $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").attr("data-id");
-			clonedElement.attr("data-id",dataIdLocal);
-			clonedElement.html($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").find(".candidate-name").text()+"<i data-id="+dataIdLocal+" class='fa fa-times' aria-hidden='true'></i>");
-			$(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").addClass("hidden");
-			if($(".chat-collapsed-candidate-container").hasClass("hidden")) {
-				$(".chat-collapsed-candidate-container").removeClass("hidden");
-			}
-			$(".chat-collapsed-candidate-container .chat-collapsed-candidate .chat-collapsed-candidate-wrapper").append(clonedElement);
-
-		}
-		reposition_chat_windows();
-		$(this).addClass("selected");
-	}
-})
-
-$("#chat-collapsed-container").on('click',".chat-collapsed-candidate-container .candidate-collapsed-block i", function(event) {
-	event.stopPropagation();
-	var dataId = $(this).attr("data-id");
-	console.log(dataId)
-	$("#chat-collapsed-container .candidate-collapsed-block[data-id="+dataId+"]").remove();
-    $('.chat-div-candidate[data-id='+dataId+']').remove();
-	chatContainer.find(".candidate-card[data-id="+dataId+"]").removeClass("selected");
-	if($(".chat-collapsed-candidate-container .chat-collapsed-candidate-wrapper").children().length == 0) {
-		$(".chat-collapsed-candidate-container").addClass("hidden");
-	}
-})
-
-$("#chat-collapsed-container").on('click',".chat-collapsed-candidate-container .candidate-collapsed-block", function(event) {
-    console.log("bye");
-	var dataId = $(this).attr("data-id");
-    $(this).remove();
-    var clonedElement = $(".candidate-collapsed-block.prototype").clone().removeClass('prototype hidden');
-    var hideElement = maxCandidateChats;
-    var elem = $(".chat-candidate-boxes .chat-div-candidate:not(.hidden)").get(maxCandidateChats-1);
-    console.log(elem);
-    var dataIdLocal = $(elem).attr("data-id");
-    clonedElement.attr("data-id",dataIdLocal);
-    clonedElement.html($(elem).find(".candidate-name").text()+"<i data-id="+dataIdLocal+" class='fa fa-times' aria-hidden='true'></i>");
-    //$(this).attr("data-id",$('.chat-candidate-boxes .chat-div-candidate:nth-child('+maxCandidateChats+')').attr("data-id"));
-    $('.chat-candidate-boxes .chat-div-candidate[data-id='+dataId+']').removeClass("hidden");
-
-    $(elem).addClass("hidden");
-    $(".chat-collapsed-candidate-container .chat-collapsed-candidate .chat-collapsed-candidate-wrapper").append(clonedElement);
-    reposition_chat_windows();
-})
-
-var populateChatView = function(array) {
-	array.forEach(function(aCandidate) {
-		var card = candidatesWrapper.clone().removeClass('prototype hidden');
-		card.find(".candidate-image img").attr("src",aCandidate["img_url"]).removeClass("animated-background");
-		card.attr("data-id",aCandidate["id"]);
-		card.find(".candidate-name").text(aCandidate["name"]).removeClass("animated-background");
-		card.find(".candidate-designation").text(aCandidate["designation"]).removeClass("animated-background");
-		$(".chat-div .chat-div-content").append(card);
-		$(".chat-div .chat-div-content").append("<hr class='divider divider-full'>");
-	})
-}
-
-$(".chat-candidate-boxes").on('click','.chat-div-candidate .chat-div-header', function() {
-	var dataId = $(this).attr("data-id");
-	$('.chat-div-candidate[data-id='+dataId+'] .content-footer-container').toggleClass("show");
-})
-
-$(".chat-candidate-boxes").on('click','.chat-div-candidate .info-buttons .close-icon', function() {
-	event.stopPropagation();
-	var dataId = $(this).attr("data-id");
-	hideElement = 1 + maxCandidateChats;
-	if($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").hasClass("hidden")) {
-		$(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").removeClass("hidden");
-		var collapsedDataId = $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").attr("data-id");
-		console.log(collapsedDataId)
-		$(".chat-collapsed-candidate-container .candidate-collapsed-block[data-id="+collapsedDataId+"]").remove();
-		if($(".chat-collapsed-candidate-container .chat-collapsed-candidate-wrapper").children().length == 0) {
-			$(".chat-collapsed-candidate-container").addClass("hidden");
-		}
-	}
-	$('.chat-div-candidate[data-id='+dataId+']').remove();
-	chatContainer.find(".candidate-card[data-id="+dataId+"]").removeClass("selected");
-	reposition_chat_windows();
-
-})
-
-$(".chat-candidate-boxes").on('keypress','#chat-input', displayAMessage);
+// hello.init({
+//     twitter: 'JENpmbzmuZQXd0Ga2I1jzmxL9'
+// }, {redirect_uri: 'http://127.0.0.1:8000'})
 
 
 
-function reposition_chat_windows() {
-    var rightOffset = 290;
 
-    jQuery(".chat-candidate-boxes .chat-div-candidate").each(function(i, el) {
-		if(!($(this).hasClass("hidden"))) {
-		    jQuery(this).css("right", rightOffset);
-		    rightOffset = rightOffset + 280
-		}
-    });
-
-	if(!($(".chat-collapsed-candidate-container").hasClass("hidden"))) {
-		$(".chat-collapsed-candidate-container").css("right", rightOffset );
-	}
-
-
-    // position_collapsed_chat();
-    // $(".nchatscrolllisperch").on("mousewheel DOMMouseScroll", function(e) {
-    //     var delta = -e.originalEvent.wheelDelta || e.originalEvent.detail;
-    //     var scrollTop = this.scrollTop;
-    //     if ((delta < 0 && scrollTop === 0) || (delta > 0 && this.scrollHeight - this.clientHeight - scrollTop === 0)) {
-    //         e.preventDefault()
-    //     }
-    // })
-}
 
 
 $(document).ready(function(){
@@ -244,12 +137,7 @@ $(document).ready(function(){
 	//   console.log("Ahh! Your browser does not supports serviceWorker");
 	// }
 	windowH();
-	$('.chat-div .chat-div-header').click(function() {
 
-	  	$('.chat-div .chat-div-content').toggleClass("show");
-		//$('.chat-div .minus-icon').toggleClass("show");
-	});
-	populateChatView(candidates);
 })
 
 function windowH() {
@@ -295,36 +183,38 @@ var populateProfile = function(res) {
 		profile.find(".profile_link").attr("href",data["rurl"]);
 		profile.find(".user_details .divider").removeClass("hidden");
 		if(data["lurl"]) {
-			var btn = $('.linked-in').removeClass('hidden');
+			var btn = $('.linked-in').clone().removeClass('hidden');
 
 			btn.attr("href", data["lurl"]);
+            btn.find("img").attr("src","http://qa100.iimjobs.com/resources/images/in1.png");
 			$(".social-buttons-connected").append(btn);
 		}
 		else {
-			var btn = $('.linked-in').removeClass('hidden');
-
+			var btn = $('.linked-in').clone().removeClass('hidden');
+            btn.find("img").attr("src","http://qa100.iimjobs.com/resources/images/innew.png");
 			$(".social-buttons-not-connected").append(btn);
 		}
 		if(data["furl"]) {
-			var btn = $('.facebook').removeClass('hidden');
+			var btn = $('.facebook').clone().removeClass('hidden');
 
 			btn.attr("href", data["furl"]);
+            btn.find("img").attr("src","http://qa100.iimjobs.com/resources/images/fb1.png");
 			$(".social-buttons-connected").append(btn);
 		}
 		else {
-			var btn = $('.facebook').removeClass('hidden');
-
+			var btn = $('.facebook').clone().removeClass('hidden');
+            btn.find("img").attr("src","https://static.iimjobs.com/resources/images/fbnew.png");
 			$(".social-buttons-not-connected").append(btn);
 		}
 		if(data["turl"]) {
-			var btn = $('.twitter').removeClass('hidden');
-
+			var btn = $('.twitter').clone().removeClass('hidden');
+            btn.find("img").attr("src","http://qa100.iimjobs.com/resources/images/twtr1.png");
 			btn.attr("src", data["turl"]);
 			$(".social-buttons-connected").append(btn);
 		}
 		else {
-			var btn = $('.twitter').removeClass('hidden');
-
+			var btn = $('.twitter').clone().removeClass('hidden');
+            btn.find("img").attr("src","https://static.iimjobs.com/resources/images/twtrnew.png");
 			$(".social-buttons-not-connected").append(btn);
 		}
 

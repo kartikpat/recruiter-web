@@ -292,7 +292,7 @@ var loginUser = function() {
 	if(checkErrorClassLogin($("#login-email")) && checkErrorClassLogin($("#login-password"))) {
 		postRequest("/sign-in",  null,
 				obj
-			, authSuccess ,null , null , authFail )
+			, authSuccess ,null , null , authFail , true ,true, null,"application/x-www-form-urlencoded; charset=UTF-8" )
 		}
 }
 

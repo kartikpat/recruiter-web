@@ -45,13 +45,20 @@
     .main-container .calendar-events-container .calendar-events-content .calendar-row .column {
       display: inline-block;
       width: 33%;
-      padding: 10px 5px; }
+      padding: 10px 5px;
+      font-size: 13px; }
+      .main-container .calendar-events-container .calendar-events-content .calendar-row .column a {
+        text-decoration: none; }
+        .main-container .calendar-events-container .calendar-events-content .calendar-row .column a:hover {
+          text-decoration: underline;
+          color: #23527c; }
     .main-container .calendar-events-container .calendar-events-content .calendar-row:nth-child(even) {
       background-color: #f5f6f7; }
     .main-container .calendar-events-container .calendar-events-header {
-      background-color: #f5f6f7;
+      background-color: #eee;
       padding: 10px 5px; }
       .main-container .calendar-events-container .calendar-events-header .column {
         display: inline-block;
         width: 33%;
-        font-size: 12px; }
+        font-size: 12px;
+        font-weight: bold; }

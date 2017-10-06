@@ -1,10 +1,25 @@
 {{> header}}
 <div class="main-container">
-    <div class="top-container">
-        <div class="heading heading-clr">
-
+    <div class="top-container hidden">
+        <div class="tag-heading-container hidden">
+            <div class="heading heading-clr"></div>
+            <a href="" class="button" id="download-excel">Download Excel</a>
         </div>
-        <a href="" class="button" id="download-excel">Download Excel</a>
+        <div class="solar-search-container hidden">
+            <input type="text" class="solar-search">
+        </div>
+
+    </div>
+    <div class="saved-shortlisted-container hidden">
+        <div class="heading heading-clr">All Shortlisted/Saved Candidates</div>
+        <div class="select-options">
+            View:
+            <select>
+                <option value="">Shortlisted/Saved</option>
+                <option value="3">Shortlisted</option>
+                <option value="1">Saved</option>
+            </select>
+        </div>
     </div>
 
     <div class="jobs_container">
@@ -139,6 +154,7 @@
 
 			</div>
 
+
 		</div>
 
 		<div class="content content_organization">
@@ -154,7 +170,26 @@
                <div class="notice-period extra_info"></div>
                <!-- <div class="extra_info"><span>Applied: </span><span class="applied_date">15-05-2016</span></div> -->
            </div>
+           <div class="icons-status info hidden">
+               <!-- <a href="" class="icon" data-attribute="1"><i class="fa fa-check-square-o" aria-hidden="true"></i><span>Shortlist</span></a>
+               <a href="" class="icon" data-attribute="2"><i class="fa fa-ban" aria-hidden="true"></i><span>Reject</span></a>
+               <a href="" class="icon" data-attribute="3"><i class="fa fa-floppy-o" aria-hidden="true"></i><span>Save for future use</span></a>
+               <a href="" class="icon" data-attribute="4"><i class="fa fa-eye" aria-hidden="true"></i><span>View Profile</span></a>
+               <a href="" class="icon" data-attribute="5"><i class="fa fa-download" aria-hidden="true"></i><span>Download Resume</span></a> -->
+               <!-- <a href="" class="icon"><i class="fa fa-list-alt" aria-hidden="true"></i><span>Cover Letter</span></a> -->
+               <!--<a href="" class="icon"><i class="fa fa-comment" aria-hidden="true"></i><span>Comment</span></a>
+               <a href="" class="icon"><i class="fa fa-mobile" aria-hidden="true"></i><span>Contact information</span></a>
+               <a href="" class="icon"><i class="fa fa-tags" aria-hidden="true"></i><span>Tags</span></a> -->
+           </div>
         </div>
+    </div>
+    <div class="applied-jobs-container-show hidden">
+        <div class=" applied-jobs-container hidden">
+            <button class="button list-all-applied-jobs "></button>
+        </div>
+    </div>
+    <div class="slide-container ">
+
     </div>
 </div>
 

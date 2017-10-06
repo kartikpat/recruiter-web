@@ -80,11 +80,13 @@ var submitProfile = function() {
 	profile.find("textarea").each(function(index,anInput){
 			obj[$(anInput).attr("name")] = $(anInput).val();
 	})
+	console.log(obj);
 	var form = new FormData();
 	if($("#company-logo")[0].files[0] != undefined) {
 		form.append("logo", $("#company-logo")[0].files[0], $("#company-logo")[0].files[0].name);
 	}
 	form.append("name", obj["name"]);
+
 	if($("#profile-photo")[0].files[0] != undefined) {
 		form.append("image", $("#profile-photo")[0].files[0], $("#profile-photo")[0].files[0].name);
 	}
@@ -101,12 +103,13 @@ var submitProfile = function() {
 	checkErrorClass(profile.find("#name"));
 	checkErrorClass(profile.find("#phone"));
 	if(checkEmpty(profile.find("#name")) && checkEmpty(profile.find("#phone"))) {
-		postRequest("http://192.168.86.199:8000/recruiter/"+recruiterID,null, form
- 		, postSuccessCallback, null , null , null ,false, true, null);
+		postRequest(baseUrl+"/recruiter/"+recruiterID,null, form
+ 		, postSuccessCallback, null , null , null ,null, true ,null,false);
 	}
 }
 
 var postSuccessCallback = function(res) {
+	console.log(res)
 	if(res.status == "success") {
 		window.location = "/";
 	}

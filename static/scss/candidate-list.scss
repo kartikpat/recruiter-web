@@ -221,6 +221,9 @@ input, select {
                     .interview-invite.icon {
                         height: 40px;
                     }
+                    .resend-interview-invite.icon {
+                        height: 40px;
+                    }
                 }
 
                 .slide-container{
@@ -772,6 +775,6 @@ input, select {
 }
 
 .interview-invite-message {
-    color: $extra-info-color;
+    color: $color-black-text;
     font-size: 12px;
 }
