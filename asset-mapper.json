@@ -212,7 +212,6 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/request.js",
-				"static/js/header.js",
 				"static/js/sign-in.js"
 			],
 			"prod" : [

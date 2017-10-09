@@ -1,7 +1,7 @@
 var loginForm = $(".login-container");
 
-
-
+var baseUrl = "http://13.126.92.102:8000";
+var recruiterID = localStorage.id;
 
 $(document).ready(function(){
 	$(".login-tab.jobseeker").click(function(){
@@ -27,12 +27,8 @@ $(document).ready(function(){
     });
     loginForm.find('#password, #confirm-password').on('keyup', isSamePassword);
     loginForm.find('.lost-paswd-link').click(showForgotPasswordForm);
-    loginForm.find('.forgot-password-form input').on('input',function() {
-        checkErrorClass(this);
-    });
+
 });
-
-
 
 /**
  * error handler for login
@@ -57,16 +53,62 @@ function authSuccess(res){
 		$(".error-message").text(res.message);
 }
 
+loginForm.find('.forgot-password-form input').focusout(function() {
+	checkErrorClassForgotPassword(this);
+});
 
-
-
-
-//loginForm.find(".forgot-password-form").on('click',".send-forgot-paswd",sendForgotPaswd);
+loginForm.find('.forgot-password-form input').focusin(function() {
+	removeErrorClass(this);
+});
 
 var sendForgotPaswd = function() {
-    loginForm.find('.forgot-password-form input').on('input',function() {
-        checkErrorClass(this);
+	var obj = {}
+    loginForm.find(".forgot-password-form input").each(function() {
+
+        obj = getValue(this, obj);
+		console.log(obj);
     });
+	if(checkErrorClassForgotPassword($("#forgot-password-email")) ) {
+		postRequest(baseUrl+"/recruiter/"+recruiterID+"/recover",  null, {
+				email: obj["forgot-password-email"]
+			}, forgotPasswordSuccess )
+		}
+}
+
+var forgotPasswordSuccess = function(res) {
+	if(res["status"] == "success") {
+		loginForm.find(".forgot-password-message").removeClass("hidden");
+	}
+}
+
+loginForm.find(".forgot-password-form").on('click',".forgot-password-close-message", function(){
+	$(this).parent().addClass("hidden");
+});
+
+
+loginForm.find(".forgot-password-form").on('click',".send-forgot-paswd",sendForgotPaswd);
+
+
+
+var checkErrorClassForgotPassword = function(ele) {
+	var elem = $(ele);
+	var value = elem.val();
+	if(elem.attr("id") == "forgot-password-email") {
+		if(value == '') {
+			elem.next().text("Please enter the email address").removeClass("hidden");
+			return false;
+		}
+		else {
+			if(!(isEmail(value))) {
+				elem.next().text("Please enter valid email address").removeClass("hidden");
+				return false;
+			}
+			else {
+				elem.next().addClass("hidden");
+				return true;
+			}
+		}
+	}
 }
 
 var showForgotPasswordForm = function(event) {

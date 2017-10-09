@@ -3,9 +3,10 @@ var tabContainer = $(".tab_container");
 var resumeContainer = $(".resume-container");
 var jobId;
 var jobTitle;
+var recruiterID = localStorage.id ;
 //var recruiterID = 45058;
 $(document).ready(function() {
-	var recruiterID = localStorage.id ;
+
 	jobId = getUrlParameter("jobID");
 	console.log(userID);
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId, {
@@ -153,7 +154,7 @@ var storeProfile = function(res){
 				divEl.find(".tags-content").attr("data-jobapplication-id",data['id']);
 				divEl.find(".tags-content").text(anTag["name"]);
 				divEl.find(".tags-content").addClass(' margin-right font-sm');
-				divEl.find(".js-remove-tag").attr("data-id",data["id"]);
+				divEl.find(".js-remove-tag").attr("data-id",anTag["id"]);
 				divEl.find(".js-remove-tag").attr("data-jobseeker-id",data['userID']);
 				divEl.find(".js-remove-tag").attr("data-jobapplication-id",data['id']);
 
@@ -228,6 +229,7 @@ $(".profile_container").on("click", '.js-remove-tag.job-seeker-tags', function()
 
 	postRequest(baseUrl+"/recruiter/"+recruiterID+"/tag/"+tagId+"/delete", null ,
 	obj, function(res) {
+
 			if(res["status"] == "success") {
 				console.log("hi");
 
