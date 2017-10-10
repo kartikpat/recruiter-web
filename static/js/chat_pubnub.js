@@ -173,9 +173,7 @@ function getCookie(name) {
 
 addListeners();
 
-subscribe((function(){
-    getArray(channelsArray);
-})());
+subscribe(getArray(channelsArray));
 
 function getArray(array) {
     var tempArray = [];
