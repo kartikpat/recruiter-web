@@ -123,14 +123,14 @@ var populateSolarSearch = function(res) {
 				}
 				else if(aJob["appliedJobs"].length > 1) {
 					aJob["appliedJobs"].forEach(function(aAppliedJob, index) {
+						console.log(index)
 						if(index == 0) {
-							card.find(".applied-jobs-container-show").prepend("<div><a target='_blank' href='/profile/"+aJob["userID"]+"?jobID="+aJob["appliedJobs"][0]["jobID"]+"&jobTitle="+aJob["appliedJobs"][0]["title"]+"' class='link-color font-sm'>"+aAppliedJob["title"]+"</a></div>").removeClass("hidden");
+							card.find(".applied-jobs-container-show").prepend("<div><a target='_blank' href='/profile/"+aJob["userID"]+"?jobID="+aJob["appliedJobs"][index]["jobID"]+"&jobTitle="+aJob["appliedJobs"][index]["title"]+"' class='link-color font-sm'>"+aAppliedJob["title"]+"</a></div>").removeClass("hidden");
 							card.find(".applied-jobs-container .list-all-applied-jobs").text("+" +(aJob["appliedJobs"].length - 1) +" more");
 						}
 						else {
-							card.find(".slide-container").append("<div><a target='_blank' href='/profile/"+aJob["userID"]+"?jobID="+aJob["appliedJobs"][0]["jobID"]+"&jobTitle="+aJob["appliedJobs"][0]["title"]+"' class='link-color'>"+aAppliedJob["title"]+"</a></div>");
+							card.find(".slide-container").append("<div><a target='_blank' href='/profile/"+aJob["userID"]+"?jobID="+aJob["appliedJobs"][index]["jobID"]+"&jobTitle="+aJob["appliedJobs"][index]["title"]+"' class='link-color'>"+aAppliedJob["title"]+"</a></div>");
 						}
-
 					})
 
 					card.find(".applied-jobs-container").removeClass("hidden");

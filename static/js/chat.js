@@ -32,6 +32,7 @@ var sendMessage = function(message) {
 }
 
 var populateChatView = function(array) {
+
     $(".chat-side-profile-candidates .candidates-wrapper").addClass("hidden");
     chatSideHeader.find(".profile-image img").attr("src",recruiter["img_url"]).removeClass("animated-background");
     chatSideHeader.find(".profile-info-name").text(recruiter["name"]).removeClass("animated-background");
@@ -102,6 +103,7 @@ var onFetchHistory = function(status, response) {
 }
 
 var receivePresence = function(presence) {
+    console.log(presence);
     if(presence["action"] == "join" && presence["occupancy"] > 1) {
         $(".chat-side-profile-candidates .candidate-card[data-name="+presence["channel"]+"]").find(".candidate-image .online-icon").removeClass("hidden");
     }

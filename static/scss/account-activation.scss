@@ -1,0 +1,25 @@
+@import "colors.scss";
+
+.main-container {
+    padding: 20px;
+}
+
+
+.account-activation-message {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 30px 10px;
+    text-align: center;
+    width: 600px;
+    margin: 50px auto;
+    border-radius: 5px;
+    box-shadow: 0 5px 20px #e6e6e6;
+    .log-in {
+        text-decoration: none;
+        font-size: 14px;
+        &:hover {
+            text-decoration: underline;
+            color: $link-hover-color;
+        }
+    }
+}

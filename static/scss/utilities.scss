@@ -13,19 +13,23 @@ $dot-size: 7px;
 }
 
 .alert-message {
+    margin: 10px 0;
     font-size: 13px;
     position: relative;
-    padding: 5px 10px;
+    padding:  10px;
     padding-right: 25px;
     box-sizing: border-box;
     background: #999966;
     border-radius: 2px;
-    box-shadow: 2px 2px 5px 0 #ccc;
+    box-shadow: 2px 2px 5px 0 #ebebeb;
     color: #fff;
+    &.half {
+        width: 50%;
+    }
     i {
         position: absolute;
         right: 8px;
-        top: 6px;
+        top: 11px;
         cursor: pointer;
     }
 }

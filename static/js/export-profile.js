@@ -22,6 +22,26 @@ $(document).ready(function(){
     windowH();
 });
 
+
+$(".main-container").on('click',".connect-box-bottom .linkedin-connect", function(event) {
+    event.preventDefault();
+    hello('linkedin').login().then(function(auth){
+        console.log(auth)
+        hello(auth.network).api('me').then(function(json) {
+            console.log(json)
+
+        }, function(e) {
+            alert('Whoops! ' + e.error.message);
+        });
+    }, function(e) {
+        alert('Whoops! ' + e.error.message);
+    });
+});
+
+hello.init({
+    linkedin: '81yy7zniicncli'
+}, {redirect_uri: '/recruiter/export-profile?status=1'});
+
 function windowH() {
 	var wH = $(window).height();
 	$('.main-container').css({height: wH-'50'});

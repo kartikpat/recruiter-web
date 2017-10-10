@@ -172,8 +172,8 @@
         padding: 8px 12px;
         margin: 1px 0 10px 0;
         border: 1px solid #ccc;
-        border-radius: 4px;
-        width: 80%; }
+        border-radius: 2px;
+        width: 70%; }
       .tab_container .tab .tab_content .info {
         margin-bottom: 40px;
         position: relative; }

@@ -177,7 +177,7 @@
       padding: 10px 10px 0 10px; }
     .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container {
       display: none;
-      padding: 5px 15px; }
+      padding-top: 5px; }
       .main-container .jobs_container .jobs_wrapper .jobs_content .slide-container div {
         margin-bottom: 5px;
         color: #4b4b4b;

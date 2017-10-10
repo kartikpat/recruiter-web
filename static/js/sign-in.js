@@ -1,9 +1,17 @@
 var loginForm = $(".login-container");
 
-var baseUrl = "http://13.126.92.102:8000";
+// var baseUrl = "http://13.126.92.102:8000";
 var recruiterID = localStorage.id;
 
+
 $(document).ready(function(){
+
+	var isSetNewPassword = getUrlParameter("setNewPassword");
+
+	if(isSetNewPassword && isSetNewPassword == 1 ) {
+		loginForm.find(".set-new-password-message").html("You can login with new password.<i class='new-password-close-message fa fa-times' aria-hidden='true'></i>").removeClass("hidden");
+	}
+
 	$(".login-tab.jobseeker").click(function(){
 		window.location = "https://www.updazz.com/registration/login.php";
 	})
@@ -77,11 +85,15 @@ var sendForgotPaswd = function() {
 
 var forgotPasswordSuccess = function(res) {
 	if(res["status"] == "success") {
-		loginForm.find(".forgot-password-message").removeClass("hidden");
+		loginForm.find(".forgot-password-message").html("Your forgot password link has been sent.<i class='forgot-password-close-message fa fa-times' aria-hidden='true'></i>").removeClass("hidden");
 	}
 }
 
 loginForm.find(".forgot-password-form").on('click',".forgot-password-close-message", function(){
+	$(this).parent().addClass("hidden");
+});
+
+loginForm.find(".login-form").on('click',".new-password-close-message", function(){
 	$(this).parent().addClass("hidden");
 });
 
@@ -341,6 +353,21 @@ var loginUser = function() {
 function isEmail(emailAddress) {
     var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
     return pattern.test(emailAddress);
+};
+
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
 };
 
 // $(".log-in").click(function(event){

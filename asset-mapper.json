@@ -65,6 +65,64 @@
 			]
 		}
 	},
+	"reset-password": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+        		"static/css/reset-password.css",
+				"static/css/buttons.css",
+				"static/css/footer.css",
+				"static/css/animate.css",
+				"static/css/utilities.css"
+
+			],
+			"prod": [
+				"static/build/css/reset-password.min.css"
+
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/reset-password.js"
+
+			],
+			"prod" : [
+				"static/build/js/reset-password.min.js"
+			]
+		}
+	},
+	"mass-resume": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+        		"static/css/mass-resume.css",
+				"static/css/buttons.css",
+				"static/css/footer.css",
+				"static/css/animate.css",
+				"static/css/utilities.css"
+
+			],
+			"prod": [
+				"static/build/css/mass-resume.min.css"
+
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/mass-resume.js"
+
+			],
+			"prod" : [
+				"static/build/js/mass-resume.min.js"
+			]
+		}
+	},
 	"edit-profile": {
 		"styles": {
 			"debug" : [
@@ -470,12 +528,39 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/hello.min.js",
 				"static/js/request.js",
 				"static/js/header.js",
 				"static/js/export-profile.js"
 			],
 			"prod" : [
 				"static/build/js/export-profile.min.js"
+			]
+		}
+	},
+	"account-activation": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/account-activation.css",
+				"static/css/utilities.css",
+				"static/css/footer.css"
+			],
+			"prod": [
+				"static/build/css/account-activation.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/account-activation.js"
+			],
+			"prod" : [
+				"static/build/js/account-activation.min.js"
 			]
 		}
 	},

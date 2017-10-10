@@ -160,8 +160,17 @@ var storeProfile = function(res){
 
 				profileContainer.find('.posted-tags').append(divEl);
 			})
+			tabContainer.find(".submit-comment").attr("data-job-seeker-id",data["userID"]);
+			tabContainer.find(".submit-comment").attr("data-application-id",data["id"]);
 			tabContainer.find(".submit-tag").attr("data-jobseeker-id",data["userID"]);
 			tabContainer.find(".submit-tag").attr("data-jobapplication-id",data["id"]);
+			if(data["comment"]) {
+				tabContainer.find(".add-comment").val(data["comment"]);
+				tabContainer.find(".submit-comment").text("Update");
+			}
+			else {
+				tabContainer.find(".submit-comment").text("Comment");
+			}
  			tabContainer.find(".email").text(data["email"]);
 			if(data["phone"]) {
 				tabContainer.find(".contact").text(data["phone"]);
@@ -182,6 +191,25 @@ var storeProfile = function(res){
 		}
 	}
 }
+
+tabContainer.on('click',".comment-close-message", function(){
+	$(this).parent().addClass("hidden");
+});
+
+tabContainer.on("click", '.submit-comment', function() {
+
+	var obj = {};
+	obj["comment"] = $(this).prev().val();
+	obj["seekerID"] = $(this).attr("data-job-seeker-id");
+	var applicationId = $(this).attr("data-application-id");
+	var elem = $(this);
+	postRequest(baseUrl+"/recruiter/"+recruiterID+"/job/"+jobId+"/application/"+applicationId+"/comment", null,
+	 obj , function(res) {
+		 if(res["status"] == "success") {
+		 	tabContainer.find(".posted-comment").html("successfully posted<i class='comment-close-message fa fa-times' aria-hidden='true'></i>").removeClass("hidden");
+		}
+	});
+});
 
 $(".tab_container").on("click", '.tab_content .submit-tag', function() {
 	var obj = {};

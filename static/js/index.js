@@ -3,11 +3,9 @@ var maxCandidateChats;
 var profile = $(".user_profile");
 var tableRow = $(".jobs_content.prototype");
 
-
 var modal = $('.modal');
 var openGuidelines = $("#posting-guidelines");
 var closeModalBtn = $(".close");
-
 
 
 var displayAMessage = function(event) {
@@ -29,7 +27,6 @@ profile.on('click',".social-buttons-not-connected .social-links.facebook", funct
             btn.find("img").attr("src","http://qa100.iimjobs.com/resources/images/fb1.png");
 			$(".social-buttons-connected").append(btn);
 
-
         }, function(e) {
             alert('Whoops! ' + e.error.message);
         });
@@ -46,6 +43,27 @@ profile.on('click',".social-buttons-not-connected .social-links.twitter", functi
             var btn = $('.twitter').clone().removeClass('hidden');
             btn.find("img").attr("src","http://qa100.iimjobs.com/resources/images/twtr1.png");
 			btn.attr("href", "https://twitter.com/"+json["screen_name"]);
+			$(".social-buttons-connected").append(btn);
+
+
+        }, function(e) {
+            alert('Whoops! ' + e.error.message);
+        });
+    }, function(e) {
+        alert('Whoops! ' + e.error.message);
+    });
+});
+
+profile.on('click',".social-buttons-not-connected .social-links.linked-in", function(event) {
+    event.preventDefault();
+    hello('linkedin').login().then(function(auth){
+        console.log(auth)
+        hello(auth.network).api('me').then(function(json) {
+            console.log(json)
+            profile.find(".social-buttons-not-connected .social-links.linked-in").remove();
+            var btn = $('.linked-in').clone().removeClass('hidden');
+            btn.find("img").attr("src","http://qa100.iimjobs.com/resources/images/in1.png");
+			//btn.attr("href", "https://twitter.com/"+json["screen_name"]);
 			$(".social-buttons-connected").append(btn);
 
 

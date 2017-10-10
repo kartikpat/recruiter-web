@@ -291,4 +291,37 @@ module.exports = function(settings){
 		return
 	})
 
+	app.get("/recruiter/landing", function(req, res){
+
+		res.render("account-activation", {
+			title: "IIM JOBS | Account Activation",
+			styles:  assetsMapper["account-activation"]["styles"][mode],
+			scripts: assetsMapper["account-activation"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/mass-resume-status", function(req, res){
+
+		res.render("mass-resume", {
+			title: "IIM JOBS | Mass Resume",
+			styles:  assetsMapper["mass-resume"]["styles"][mode],
+			scripts: assetsMapper["mass-resume"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/reset", function(req, res){
+
+		res.render("reset-password", {
+			title: "IIM JOBS | Reset Password",
+			styles:  assetsMapper["reset-password"]["styles"][mode],
+			scripts: assetsMapper["reset-password"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
 }
