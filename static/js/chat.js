@@ -16,8 +16,9 @@ var displayAMessage = function(event) {
 var sendMessage = function(message) {
     $(".candidate-chat-content").append("<div class='message-container right'><div class='message-sent'>"+message+"<span class='current-time'>"+startTime()+"</span></div></div>");
     var channel = chatMainContainer.attr('data-id');
+    console.log(channel);
     publish({
-        uuid: btoa(localStorage.recruiterID+'--'+localStorage.recruiterEmail),
+        UUID: btoa(localStorage.recruiterID+'--'+localStorage.recruiterEmail),
         deviceID: getCookie("sessID"),
         time: Date.now(),
         usr: localStorage.recruiterID,
@@ -62,6 +63,7 @@ var populateMainView = function() {
 
 $(".chat-side-profile-candidates").on('click', '.candidate-card', function() {
     var candidateId = $(this).attr("data-id");
+    var candidateName = $(this).attr("data-name");
     chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").empty();
     var obj;
     channelsArray.forEach(function(aCandidate) {
@@ -76,6 +78,7 @@ $(".chat-side-profile-candidates").on('click', '.candidate-card', function() {
     if(chatMainContainer.find(".candidate-chat-messages-container").hasClass("hidden")) {
         chatMainContainer.find(".candidate-chat-messages-container").removeClass("hidden");
     }
+    chatMainContainer.attr("data-id", candidateName);
     chatMainContainer.find(".candidate-chat-messages-container .profile-image img").attr("src",$(this).find(".candidate-image img").attr("src")).removeClass("animated-background");
     chatMainContainer.find(".candidate-chat-messages-container .profile-info-name").text($(this).find(".candidate-name").text()).removeClass("animated-background");
     chatMainContainer.find(".candidate-chat-messages-container .profile-info-organisation").text($(this).find(".candidate-designation").text()).removeClass("animated-background");

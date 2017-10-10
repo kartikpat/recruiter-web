@@ -194,7 +194,7 @@ function addListeners(){
 }
 
 function onNewMessage(m) {
-    // handle message
+    console.log(m);
     var actualChannel = m.actualChannel;
     var channelName = m.channel; // The channel for which the message belongs
     var msg = m.message; // The Payload
@@ -270,6 +270,7 @@ function onHereNow(status, response) {
 }
 
 function publish(message, channel, onPublish) {
+    console.log(message);
     pubnub.publish({
         message: message,
         channel: channel,
@@ -282,6 +283,7 @@ function publish(message, channel, onPublish) {
 }
 
 function onPublish(status, response) {
+    console.log("hi")
     console.log(status)
     console.log(response)
 }

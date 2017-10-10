@@ -47,6 +47,8 @@
   color: #fff; }
   .alert-message.half {
     width: 50%; }
+  .alert-message.err {
+    background: #b86363; }
   .alert-message i {
     position: absolute;
     right: 8px;

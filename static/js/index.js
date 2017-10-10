@@ -227,7 +227,7 @@ var populateProfile = function(res) {
 		if(data["turl"]) {
 			var btn = $('.twitter').clone().removeClass('hidden');
             btn.find("img").attr("src","http://qa100.iimjobs.com/resources/images/twtr1.png");
-			btn.attr("src", data["turl"]);
+			btn.attr("href", data["turl"]);
 			$(".social-buttons-connected").append(btn);
 		}
 		else {

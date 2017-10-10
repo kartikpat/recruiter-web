@@ -26,6 +26,9 @@ $dot-size: 7px;
     &.half {
         width: 50%;
     }
+    &.err {
+        background: #b86363;
+    }
     i {
         position: absolute;
         right: 8px;

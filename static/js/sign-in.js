@@ -58,7 +58,7 @@ function authSuccess(res){
 		window.location="/";
 	}
 	else
-		$(".error-message").text(res.message);
+		$(".incorrect-password-message").html("Please enter correct email or password.<i class='incorrect-password-close-message fa fa-times' aria-hidden='true'></i>").removeClass("hidden");
 }
 
 loginForm.find('.forgot-password-form input').focusout(function() {
