@@ -121,11 +121,11 @@ var onFetchHistory = function(status, response) {
 }
 
 var receivePresence = function(presence) {
-    console.log(presence);
+    console.log(presence["occupancy"]);
     if(presence["action"] == "join" && presence["occupancy"] > 1) {
         $(".chat-side-profile-candidates .candidate-card[data-name="+presence["channel"]+"]").find(".candidate-image .online-icon").removeClass("hidden");
     }
-    console.log(presence);
+    
 }
 
 var receiveMessage = function(message) {

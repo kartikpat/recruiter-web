@@ -22,14 +22,9 @@
 				"static/js/vendor/jquery.min.js",
 				"static/js/vendor/jquery-ui.min.js",
 				"static/js/vendor/hello.min.js",
-				"static/js/chatObject.js",
-				"static/js/jquery-chat.js",
-				"service-worker.js",
 				"static/js/request.js",
 				"static/js/header.js",
 				"static/js/index.js"
-
-
 			],
 			"prod" : [
 				"static/build/js/index.min.js"
