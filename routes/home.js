@@ -31,9 +31,12 @@ module.exports = function(settings){
     	res.redirect('/sign-in');
 	}
 	app.post("/sign-in", function(req, res){
-		console.log(req)
+
+		console.log(baseUrl)
 		var email = req.body.email || null;
 		var password = req.body.password || null;
+		console.log(email);
+		console.log(password)
 		if(! ( email && password ) ){
 			res.status(422).json({
 				status: 'fail',

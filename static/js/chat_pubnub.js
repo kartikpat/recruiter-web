@@ -156,7 +156,7 @@ var channelsArray = [{
     subscribeKey: "sub-c-13938756-ada8-11e7-85f8-821de3cbacaa", //'sub-c-760e7840-9e47-11e5-8db0-0619f8945a4f',
     // authKey: authkey,
     // logVerbosity: true,
-    uuid: btoa(45058),
+    uuid: btoa(localStorage.id),
     heartbeat: 120,
     heartbeat_interval: 30
     // logVerbosity: true,
@@ -174,6 +174,8 @@ function getCookie(name) {
 addListeners();
 
 subscribe(getArray(channelsArray));
+
+
 
 function getArray(array) {
     var tempArray = [];
@@ -216,7 +218,7 @@ function onNewPresence(p) {
     var service = p.service; // service
     var uuids = p.uuids; // UUIDs of users who are connected with the channel with their state
     var occupancy = p.occupancy; // No. of users connected with the channel
-    console.log(p);
+
     receivePresence(p)
 }
 
@@ -240,7 +242,7 @@ function subscribe(channelsArray) {
 
 function unsubscribe(channelName) {
     pubnub.unsubscribe({
-        channel: channelName
+        channels: ['channelName']
     });
 }
 
