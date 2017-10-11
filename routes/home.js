@@ -31,6 +31,7 @@ module.exports = function(settings){
     	res.redirect('/sign-in');
 	}
 	app.post("/sign-in", function(req, res){
+		console.log(req)
 		var email = req.body.email || null;
 		var password = req.body.password || null;
 		if(! ( email && password ) ){

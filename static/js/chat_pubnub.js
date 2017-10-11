@@ -238,9 +238,9 @@ function subscribe(channelsArray) {
     });
 }
 
-function unsubscribe(channelsArray) {
+function unsubscribe(channelName) {
     pubnub.unsubscribe({
-        channels: getArray(channelsArray)
+        channel: channelName
     });
 }
 

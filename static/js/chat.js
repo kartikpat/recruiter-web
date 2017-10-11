@@ -1,6 +1,21 @@
 var candidatesWrapper = $(".candidate-card.prototype");
 var chatSideHeader = $(".chat-side-profile-header");
 var chatMainContainer = $(".candidate-chat-container");
+var recruiterID = localStorage.id;
+var recruiterEmail;
+var recruiterName;
+var recruiterImage;
+
+getRequest(baseUrl+"/recruiter/"+recruiterID, {}, function(res) {
+
+    if(res["status"] == "success") {
+        recruiterEmail = res["data"][0]["email"];
+        recruiterName = res["data"][0]["name"];
+        recruiterImage = res["data"][0]["img_link"];
+        populateChatView(channelsArray);
+        populateMainView();
+    }
+});
 
 
 var displayAMessage = function(event) {
@@ -12,20 +27,20 @@ var displayAMessage = function(event) {
     }
 }
 
-
 var sendMessage = function(message) {
     $(".candidate-chat-content").append("<div class='message-container right'><div class='message-sent'>"+message+"<span class='current-time'>"+startTime()+"</span></div></div>");
     var channel = chatMainContainer.attr('data-id');
     console.log(channel);
+
     publish({
-        UUID: btoa(localStorage.recruiterID+'--'+localStorage.recruiterEmail),
+        UUID: btoa(recruiterID+'--'+recruiterEmail),
         deviceID: getCookie("sessID"),
         time: Date.now(),
-        usr: localStorage.recruiterID,
-        name: localStorage.recruiterName,
+        usr: recruiterID,
+        name: recruiterName,
         tt:1,
         msg: message,
-        img: localStorage.recruiterImage,
+        img: recruiterImage,
         type: 1
     }, channel, function(m){
         console.log("message sent");
@@ -35,8 +50,8 @@ var sendMessage = function(message) {
 var populateChatView = function(array) {
 
     $(".chat-side-profile-candidates .candidates-wrapper").addClass("hidden");
-    chatSideHeader.find(".profile-image img").attr("src",recruiter["img_url"]).removeClass("animated-background");
-    chatSideHeader.find(".profile-info-name").text(recruiter["name"]).removeClass("animated-background");
+    chatSideHeader.find(".profile-image img").attr("src",recruiterImage).removeClass("animated-background");
+    chatSideHeader.find(".profile-info-name").text(recruiterName).removeClass("animated-background");
     if(recruiter["isOnline"] == 1) {
         chatSideHeader.find(".profile-info-isonline").text("online").removeClass("animated-background");
     }
@@ -115,10 +130,10 @@ var receivePresence = function(presence) {
 
 var receiveMessage = function(message) {
     console.log(message)
-    if( message["deviceID"] == getCookie("sessID") && message["uuid"] == btoa(localStorage.recruiterID+'--'+localStorage.recruiterEmail) ){
+    if( message["deviceID"] == getCookie("sessID") && message["UUID"] == btoa(recruiterID+'--'+recruiterEmail) ){
         return
     }
-    chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").append("<div class='message-container left'><div class='left-message'>"+message["msg"]+"<span class='current-time'>"+startTime()+"</span></div></div>")
+    chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").append("<div class='message-container left'><div class='message-received'>"+message["msg"]+"<span class='current-time'>"+startTime()+"</span></div></div>")
 }
 
 $(".chat-side-profile-candidates").on('click', '.candidate-card .remove-candidate', function(event) {
@@ -148,26 +163,27 @@ var searchCandidate = function(array, elem) {
 }
 
  $(document).ready(function() {
+
      $("#text-message").keypress(displayAMessage);
-     populateChatView(channelsArray);
-     populateMainView();
 
      $("#search-candidate").on('input', function(){
  		var ele = this;
  		searchCandidate(channelsArray, ele);
  	});
 
-    var candidateChatContainerHeight = $(".candidate-chat-container").height();
-    var candidateChatContainerWidth = $(window).width();
-    $(".chat-side-profile-candidates").height(candidateChatContainerHeight - 131);
-    $(".candidate-chat-container").width(candidateChatContainerWidth - 270);
+    var windowHeight = $(window).height();
+    var windowWidth = $(window).width();
+    $(".chat-side-profile-candidates").height(windowHeight - 129);
+    $(".candidate-chat-container").width(windowWidth - 270);
     $(window).resize(function(){
         $(".candidate-chat-container").width($(window).width() - 265);
     });
 
 
 
-    chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").height($(".candidate-chat-container").height() - 163)
+    chatMainContainer.find(".candidate-chat-messages-container .candidate-chat-content").height(windowHeight - 140)
+
+
  })
 
  function checkTime(i) {

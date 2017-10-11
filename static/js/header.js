@@ -108,7 +108,7 @@ chatContainer.on('click','.candidate-card', function() {
 	}
 })
 
-var onFetchHistory =
+
 
 $("#chat-collapsed-container").on('click',".chat-collapsed-candidate-container .candidate-collapsed-block i", function(event) {
 	event.stopPropagation();

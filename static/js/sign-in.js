@@ -1,7 +1,7 @@
 var loginForm = $(".login-container");
 
 // var baseUrl = "http://13.126.92.102:8000";
-var recruiterID = localStorage.id;
+// var recruiterID = localStorage.id;
 
 
 $(document).ready(function(){
@@ -77,7 +77,7 @@ var sendForgotPaswd = function() {
 		console.log(obj);
     });
 	if(checkErrorClassForgotPassword($("#forgot-password-email")) ) {
-		postRequest(baseUrl+"/recruiter/"+recruiterID+"/recover",  null, {
+		postRequest(baseUrl+"/recruiter/recover",  null, {
 				email: obj["forgot-password-email"]
 			}, forgotPasswordSuccess )
 		}
@@ -346,7 +346,7 @@ var loginUser = function() {
 	if(checkErrorClassLogin($("#login-email")) && checkErrorClassLogin($("#login-password"))) {
 		postRequest("/sign-in",  null,
 				obj
-			, authSuccess ,null , null , authFail , true ,true, null,"application/x-www-form-urlencoded; charset=UTF-8" )
+			, authSuccess)
 		}
 }
 
