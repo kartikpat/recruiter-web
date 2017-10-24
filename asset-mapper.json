@@ -8,8 +8,7 @@
 				"static/css/buttons.css",
 				"static/css/footer.css",
 				"static/css/animate.css",
-				"static/css/utilities.css",
-				"static/css/jquery-chatbox.css"
+				"static/css/utilities.css"
 
 			],
 			"prod": [
@@ -28,6 +27,37 @@
 			],
 			"prod" : [
 				"static/build/js/index.min.js"
+			]
+		}
+	},
+	"index-one": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+				"static/css/jquery-ui.min.css",
+        		"static/css/index-one.css",
+				"static/css/buttons.css",
+				"static/css/footer.css",
+				"static/css/animate.css",
+				"static/css/utilities.css"
+
+			],
+			"prod": [
+				"static/build/css/index-one.min.css"
+
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/jquery-ui.min.js",
+				"static/js/vendor/hello.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/index-one.js"
+			],
+			"prod" : [
+				"static/build/js/index-one.min.js"
 			]
 		}
 	},
@@ -230,10 +260,12 @@
 	"login": {
 		"styles": {
 			"debug" : [
+				"static/css/header.css",
               "static/css/login.css",
 			  "static/css/buttons.css",
 			  "static/css/utilities.css",
-			  "static/css/colors.css"
+			  "static/css/colors.css",
+			  "static/css/footer.css"
 			],
 			"prod": [
 				"static/build/css/login.min.css"
@@ -307,6 +339,43 @@
 			],
 			"prod" : [
 				"static/build/js/candidate-list.min.js"
+			]
+		}
+	},
+	"candidate-list-one": {
+		"styles": {
+			"debug" : [
+				"static/css/jquery-ui.min.css",
+				"static/css/header.css",
+
+            	"static/css/candidate-list-one.css",
+				"static/css/footer.css",
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/animate.css",
+				"static/css/utilities.css"
+			],
+			"prod": [
+				"static/build/css/candidate-list-one.min.css"
+
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/jquery-ui.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/candidate-list-one.js",
+				"static/js/tags/industry.js",
+				"static/js/tags/current-location.js",
+				"static/js/tags/preferred-location.js",
+				"static/js/tags/language.js",
+				"static/js/tags/functional-area.js",
+				"static/js/tags/institute.js"
+			],
+			"prod" : [
+				"static/build/js/candidate-list-one.min.js"
 			]
 		}
 	},
@@ -497,7 +566,6 @@
 				"static/js/vendor/jquery.min.js",
 				"static/js/vendor/moment.min.js",
 				"static/js/request.js",
-				"static/js/chatObject.js",
 				"static/js/chat_pubnub.js",
 				"static/js/chat.js"
 			],

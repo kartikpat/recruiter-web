@@ -29,10 +29,10 @@ body, html {
   overflow: hidden; }
 
 .main-container {
-  height: 683px; }
+  min-height: calc(100% - 155px); }
   .main-container .chat-side-profile-container {
     display: inline-block;
-    width: 260px;
+    width: 300px;
     border: 1px solid #ccc;
     height: 100%; }
     .main-container .chat-side-profile-container .chat-side-profile-header {
@@ -122,6 +122,19 @@ body, html {
           right: 5px;
           top: 45px;
           color: #808080; }
+        .main-container .chat-side-profile-container .chat-side-profile-candidates .candidate-card .new-message-icon {
+          display: inline-block;
+          position: absolute;
+          top: 18px;
+          font-size: 12px;
+          color: white;
+          right: 28px;
+          background: rgba(255, 0, 0, 0.65);
+          border-radius: 50%;
+          width: 25px;
+          height: 25px;
+          text-align: center;
+          padding-top: 6px; }
   .main-container .candidate-chat-container {
     display: inline-block;
     vertical-align: top;
@@ -205,8 +218,8 @@ body, html {
           padding: 5px 10px;
           color: #1c1c1c;
           border-radius: 4px;
-          background-color: rgba(207, 244, 253, 0.28);
-          font-size: 13px;
+          background-color: #ffffff;
+          font-size: 13.5px;
           width: auto;
           max-width: 250px;
           word-break: break-word;
@@ -216,20 +229,28 @@ body, html {
         .main-container .candidate-chat-container .candidate-chat-messages-container .candidate-chat-content .message-container.right {
           text-align: right; }
         .main-container .candidate-chat-container .candidate-chat-messages-container .candidate-chat-content .message-container .current-time {
-          font-size: 9px;
+          font-size: 10px;
           vertical-align: sub;
           padding: 0 0 0px 10px; }
+        .main-container .candidate-chat-container .candidate-chat-messages-container .candidate-chat-content .message-container .tick {
+          background: url(https://static.iimjobs.com/pub_chat/chatv2/images/tickgreydouble.png) no-repeat;
+          display: inline-block;
+          height: 12px;
+          width: 12px;
+          vertical-align: bottom;
+          margin-left: 5px; }
         .main-container .candidate-chat-container .candidate-chat-messages-container .candidate-chat-content .message-container .caret {
           position: absolute;
           background: #ccc; }
     .main-container .candidate-chat-container .candidate-chat-messages-container .candidate-chat-footer {
-      width: 100%; }
+      width: 100%;
+      text-align: center; }
       .main-container .candidate-chat-container .candidate-chat-messages-container .candidate-chat-footer input {
         box-sizing: border-box;
         border: 1px solid #ccc;
         border-radius: 4px;
         padding: 12px;
-        width: 100%; }
+        width: 94%; }
 
 .divider-full {
   margin: 0 auto; }

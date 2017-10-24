@@ -95,10 +95,35 @@
         border-radius: 25px;
         max-width: 100%;
         max-height: 100%; }
+      .profile_container .profile_content .content.name .name.animated-background {
+        width: 100px;
+        min-height: 10px;
+        margin-bottom: 10px; }
+      .profile_container .profile_content .content.name .email {
+        width: 100px;
+        min-height: 10px; }
     .profile_container .profile_content .content.organization {
       width: 26%; }
+      .profile_container .profile_content .content.organization .shell-loader-container {
+        padding-top: 40px; }
+        .profile_container .profile_content .content.organization .shell-loader-container .name.animated-background {
+          width: 150px;
+          min-height: 10px;
+          margin-bottom: 20px; }
+        .profile_container .profile_content .content.organization .shell-loader-container .designation.animated-background {
+          width: 150px;
+          min-height: 10px; }
     .profile_container .profile_content .content.institute {
       width: 30%; }
+      .profile_container .profile_content .content.institute .shell-loader-container {
+        padding-top: 40px; }
+        .profile_container .profile_content .content.institute .shell-loader-container .name.animated-background {
+          width: 150px;
+          min-height: 10px;
+          margin-bottom: 20px; }
+        .profile_container .profile_content .content.institute .shell-loader-container .designation.animated-background {
+          width: 150px;
+          min-height: 10px; }
     .profile_container .profile_content .content.more {
       width: 24%; }
     .profile_container .profile_content .buttons a {

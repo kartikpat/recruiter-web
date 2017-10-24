@@ -226,7 +226,7 @@ function onNewMessage(m) {
     var pubTT = m.timetoken; // Publish timetoken
     console.log("receieved new message")
     console.log(msg)
-    receiveMessage(msg,channelName);
+    receiveMessage(msg, channelName);
 }
 
 function onNewPresence(p) {

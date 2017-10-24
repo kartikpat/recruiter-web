@@ -50,10 +50,11 @@
   .button.link {
     border: none;
     padding: 0;
-    color: #888;
-    font-size: x-small; }
+    color: #337ab7;
+    font-size: x-small;
+    box-shadow: none; }
     .button.link:hover {
-      color: blue;
+      color: #23527c;
       background-color: #ffffff; }
     .button.link:focus {
       outline: none; }

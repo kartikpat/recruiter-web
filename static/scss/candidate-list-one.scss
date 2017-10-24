@@ -446,22 +446,6 @@ input, select {
                                 text-decoration: underline;
                             }
                         }
-                        .view-icon {
-                            display: block;
-                            color: $extra-info-color;
-                            font-size: 12px;
-                            padding: 1px 0;
-                            text-decoration: none;
-                            span {
-
-                                padding: 0 3px;
-                            }
-
-                            &:hover {
-                                color: green;
-                                text-decoration: underline;
-                            }
-                        }
                     }
                 }
 

@@ -103,12 +103,45 @@
               max-width: 100%;
               max-height: 100%;
           }
+          .name.animated-background {
+              width: 100px;
+              min-height: 10px;
+              margin-bottom: 10px;
+          }
+          .email {
+              width: 100px;
+              min-height: 10px;
+          }
       }
       .content.organization {
           width: 26%;
+          .shell-loader-container {
+              padding-top: 40px;
+              .name.animated-background {
+                  width: 150px;
+                  min-height: 10px;
+                  margin-bottom: 20px;
+              }
+              .designation.animated-background {
+                  width: 150px;
+                  min-height: 10px;
+              }
+          }
       }
       .content.institute {
           width: 30%;
+          .shell-loader-container {
+               padding-top: 40px;
+              .name.animated-background {
+                  width: 150px;
+                  min-height: 10px;
+                  margin-bottom: 20px;
+              }
+              .designation.animated-background {
+                  width: 150px;
+                  min-height: 10px;
+              }
+          }
       }
       .content.more {
           width: 24%;

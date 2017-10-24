@@ -56,8 +56,8 @@
                <label for="job_tile">Title*</label>
            </div>
            <div class="field">
-               <input type="text" id="title" name="job_title" placeholder="Job title">
-               <div id="title_label" class="error hidden">Please enter Job title</div>
+               <input type="text" id="title" data-attribute="mandatory" name="job_title" placeholder="Job title">
+               <div id="title_label" class="error hidden"></div>
            </div>
        </div>
 
@@ -93,7 +93,7 @@
                <label for="industry">Industry*</label>
            </div>
            <div class="field">
-               <select class="multiple industry" id="industry" name="industry" multiple>
+               <select class="multiple industry" id="industry" data-attribute="mandatory" name="industry" multiple>
                    <option value="24">     		Accounting / Finance / Audit	    </option>
        	                <!--<option value='' >-->
                         <option value="25">       		Advertising / PR / Events	    </option>
@@ -160,7 +160,7 @@
        	                <!--<option value='' >-->
                       	    <option value="33">       		Other	    </option>
                 </select>
-                <div id="industry_label" class="error hidden">Please select atleast one industry</div>
+                <div id="industry_label" class="error hidden"></div>
                 <p class="extra-info extra-info-color font-xs">Press Ctrl Key to select multiple industries. You can select upto 5 industries.</p>
            </div>
        </div>
@@ -170,7 +170,7 @@
                <label for="functional_area">Functional Area*</label>
            </div>
            <div class="field">
-               <select id="functional_area" name="functional_area">
+               <select id="functional_area" data-attribute="mandatory" name="functional_area">
                    <option class="extra-info-color" value="">Select</option>
                    <option value="1">       		Accounting / Taxation / Audit	    </option>
        	    	    <option value="7">       		Administration	    </option>
@@ -193,7 +193,7 @@
        	    	    <option value="19">       		Travel / Hospitality	    </option>
        	    	    <option value="20">       		Other	    </option>
                </select>
-               <div id="functional_area-label" class="error hidden">Please select functional area</div>
+               <div id="functional_area-label" class="error hidden"></div>
            </div>
        </div>
 
@@ -209,6 +209,7 @@
                <label for="salary_show" class="checkbox important-info-color font-sm">
                    <input type="checkbox" id="salary_show" value="1"><span>Don't show this to candidates.</span>
                </label>
+               <div id="salary-label" class="error hidden"></div>
            </div>
        </div>
 
@@ -217,7 +218,7 @@
                <label for="min_experience">Yrs of exp*</label>
            </div>
            <div class="field">
-               <select class="half" id="min_experience" name="min_experience">
+               <select class="half" id="min_experience" data-attribute="mandatory" name="min_experience" >
                    <option value="">Min</option>
                    <option value="0">0</option>
                    <option value="1">1</option>
@@ -251,7 +252,7 @@
                    <option value="29">29</option>
                    <option value="30">30</option>
                </select>
-               <select class="half" id="max_experience" name="max_experience">
+               <select class="half" id="max_experience" data-attribute="mandatory" name="max_experience">
                    <option value="">Max</option>
                    <option value="0">0</option>
                    <option value="1">1</option>
@@ -285,9 +286,9 @@
                    <option value="29">29</option>
                    <option value="30">30</option>
                </select>
-               <div class="experience-label-container">
-                   <div id="min-experience-label" class="error hidden">Please select Min Experience</div>
-                   <div id="max-experience-label" class="error hidden">Please select Max Experience</div>
+               <div class="experience-label-container hidden">
+                   <div id="min-experience-label" class="error hide"></div>
+                   <div id="max-experience-label" class="error hide"></div>
                </div>
            </div>
        </div>
@@ -298,19 +299,19 @@
            </div>
            <div class="field course-type">
                <label for="full-time" class="checkbox important-info-color font-sm">
-                   <input id="full-time" type="checkbox" name="course_type[]" value="1"><span>Full Time</span>
+                   <input id="full-time" type="checkbox" name="course_type[]" value="1" checked><span>Full Time</span>
                </label>
                <label for="part-time" class="checkbox important-info-color font-sm">
-                   <input id="part-time" type="checkbox" name="course_type[]" value="2"><span>Part Time</span>
+                   <input id="part-time" type="checkbox" name="course_type[]" value="2" checked><span>Part Time</span>
                </label>
                <label for="distance-learning-program" class="checkbox important-info-color font-sm">
-                   <input id="distance-learning-program" type="checkbox" name="course_type[]" value="3"><span>Distance Learning program</span>
+                   <input id="distance-learning-program" type="checkbox" name="course_type[]" value="3" checked><span>Distance Learning program</span>
                </label>
                <label for="exec-program" class="checkbox important-info-color font-sm">
-                   <input id="exec-prog" type="checkbox" name="course_type[]" value="4"><span>Executive Program</span>
+                   <input id="exec-prog" type="checkbox" name="course_type[]" value="4" checked><span>Executive Program</span>
                </label>
                <label for="certify" class="checkbox important-info-color font-sm">
-                   <input id="certify" type="checkbox" name="course_type[]" value="5"><span>Certification</span>
+                   <input id="certify" type="checkbox" name="course_type[]" value="5" checked><span>Certification</span>
                </label>
            </div>
        </div>
@@ -428,16 +429,18 @@
                      <span>Please make this job premium (highlighted) for higher visibility.<span>
                  </label>
              </div>
+             <div id="graduating-year-label" class="error hidden"></div>
            </div>
        </div>
 
        <div class="field-container">
            <div class="label">
-               <label for="job_description">Job Description</label>
+               <label for="job_description">Job Description*</label>
            </div>
 
            <div class="field">
-               <textarea id="job_description" name="job_description" placeholder="Job description"></textarea>
+               <textarea data-attribute="mandatory" id="job_description" name="job_description" placeholder="Job description"></textarea>
+               <div id="job_description-label" class="error hidden"></div>
            </div>
        </div>
        <div class="tags-container">
@@ -450,23 +453,24 @@
                </div>
            </div>
 
-           <div class="field-container selected-tags-container hidden">
+           <!-- <div class="field-container selected-tags-container hidden">
                <div class="label">
                    <div class="selected-tags-heading">Selected Tags</div>
                </div>
                <div class="field">
                    <div class="selected-tags-content"></div>
                </div>
-           </div>
+           </div> -->
 
            <div class="field-container add-tags-container">
                <div class="label">
-                   <div class="add-tags-heading">Add Tags</div>
+                   <div class="add-tags-heading">Tags</div>
                </div>
                <div class="field">
                    <div class="add-tags-content">
-                       <input type="text" class="tag-input" placeholder="Add a tag">
-                       <button class="button add-new-tag">Add Tag</button>
+                       <!-- <div class="selected-tags-content hidden"></div> -->
+                       <div class="tag-input" contenteditable="true" data-text="Type here to add tags"></div>
+                       <!-- <button class="button add-new-tag">Add Tag</button> -->
                    </div>
                </div>
            </div>

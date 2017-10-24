@@ -41,11 +41,11 @@
     &.link {
         border: none;
         padding: 0;
-        color: #888;
+        color: $link-color;
         font-size: x-small;
-
+        box-shadow: none;
         &:hover {
-            color: blue;
+            color: $link-hover-color;
             background-color: #ffffff;
         }
 

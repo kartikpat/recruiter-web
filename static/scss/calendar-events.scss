@@ -2,7 +2,8 @@
 
 .main-container {
     padding: 20px;
-    height: 500px;
+
+    min-height: calc(100% - 155px);
     .heading-container {
         position: relative;
         height: 40px;

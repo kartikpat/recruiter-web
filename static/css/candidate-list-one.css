@@ -336,17 +336,6 @@ input:focus, select:focus {
               .main-container .jobs .jobs_panel .jobs_content .content .info .icon:hover {
                 color: green;
                 text-decoration: underline; }
-            .main-container .jobs .jobs_panel .jobs_content .content .info .view-icon {
-              display: block;
-              color: #808080;
-              font-size: 12px;
-              padding: 1px 0;
-              text-decoration: none; }
-              .main-container .jobs .jobs_panel .jobs_content .content .info .view-icon span {
-                padding: 0 3px; }
-              .main-container .jobs .jobs_panel .jobs_content .content .info .view-icon:hover {
-                color: green;
-                text-decoration: underline; }
         .main-container .jobs .jobs_panel .jobs_content .content.content_name {
           width: 18%; }
           .main-container .jobs .jobs_panel .jobs_content .content.content_name .checkbox {

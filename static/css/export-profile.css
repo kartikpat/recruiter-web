@@ -32,7 +32,8 @@
 
 .main-container {
   padding: 60px;
-  background: #f1f2f3; }
+  background: #f1f2f3;
+  min-height: calc(100% - 155px); }
   .main-container .connect-boxes-container {
     margin-bottom: 80px; }
     .main-container .connect-boxes-container .linkedin-connect {

@@ -261,7 +261,10 @@ var populateJobs = function(res){
 			card.find(".modal .modal-header .close").attr("data-attribute",aJob["timestamp"]);
 			card.find(".modal .modal-footer .close-modal").attr("data-attribute",aJob["timestamp"]);
 			card.find(".modal .modal-content .modal-center .list").text(rejMssg);
-			card.find(".action").append("<span>"+aJob["loc"]+"</span><span class='edit-job-container'><img src='https://static.iimjobs.com/recruiter/resources/images/edit-grey.png'></span>");
+
+                card.find(".location").text(aJob["loc"]);
+            
+			card.find(".action").append("<span class='edit-job-container'><img src='https://static.iimjobs.com/recruiter/resources/images/edit-grey.png'></span>");
 			card.find(".views").html(( aJob["views"])? aJob["views"]+" views "+( (aJob["applied"])? '<span class="applied-link"><a class="link-color" href="/job/'+aJob["id"]+'/candidates?title='+aJob["title"]+'">'+aJob["applied"]+'applied</a></span>'+  "": "0)" ): "" )
 			$('.jobs_container').append(card);
 		})

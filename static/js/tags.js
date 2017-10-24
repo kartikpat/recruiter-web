@@ -1,4 +1,4 @@
-windowH();
+// windowH();
 
 function windowH() {
 	var wH = $(window).height();

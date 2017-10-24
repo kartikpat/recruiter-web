@@ -202,6 +202,9 @@ var populateCalendarSlots = function(res) {
             $.each(anObj["day"], function(index, aDay) {
                 row.find("#repeat-every input[value="+aDay+"]").attr("checked", true);
             })
+            if(array.length==1) {
+                row.find(".close-slot-box").addClass("hidden");
+            }
             createSlotsContainer.append(row);
         })
     }

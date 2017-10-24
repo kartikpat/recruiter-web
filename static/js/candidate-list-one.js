@@ -259,9 +259,9 @@ var performAction = function(event) {
 			id: applicationId
 		 }, function(res) {
 		 	if(res["status"] == "success") {
-				$(".jobs_wrapper .jobs_content[data-attribute=js-"+applicationId+"] .icon").removeClass("highlighted");
-				// console.log($(this));
-				elem.addClass("highlighted");
+				// $(".jobs_wrapper .jobs_content[data-attribute=js-"+applicationId+"] .icon").removeClass("highlighted");
+				// // console.log($(this));
+				// elem.addClass("highlighted");
 		// 	// if(tabId!= '') {
 		// 	// 	// c$(".jobs_content[data-attribute=js-"+applicationId+"]").addClass("remove");
 		// 	// 	//$(".jobs_content[data-attribute=js-"+applicationId+"]").css("background","red")
@@ -275,6 +275,15 @@ var performAction = function(event) {
 		// 		queryString["pageNumber"] = i;
 		// 		getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId, queryString, populateJobs);
 		// 	}
+        getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId, {}, populateTabs);
+        console.log(tabId)
+        if(tabId!= '') {
+            $(".jobs_wrapper .jobs_content[data-attribute=js-"+applicationId+"]").slideUp(300);
+        }
+        else {
+            $(".jobs_wrapper .jobs_content[data-attribute=js-"+applicationId+"] .icon").removeClass("highlighted");
+            elem.addClass("highlighted");
+        }
 		 	}
 		});
 
@@ -285,41 +294,17 @@ var performAction = function(event) {
 	}
 }
 
-var performViewIcon = function(event) {
-
-	event.stopPropagation();
-	var hasClass = $(this).hasClass("highlighted");
-	var dataAttribute = $(this).attr("data-attribute");
-	if(!(hasClass) && tabId != 1 && tabId != 2 && tabId != 3) {
-		var applicationId = $(this).attr("data-application-id");
-
-		var elem = $(this);
-		postRequest(baseUrl+"/recruiter/"+recruiterID+"/action/"+jobId, null ,{
-			action: dataAttribute,
-			id: applicationId
-		 }, function(res) {
-		 	if(res["status"] == "success") {
-				$(".jobs_wrapper .jobs_content[data-attribute=js-"+applicationId+"] .icon").removeClass("highlighted");
-				// console.log($(this));
-				elem.addClass("highlighted");
-		// 	// if(tabId!= '') {
-		// 	// 	// c$(".jobs_content[data-attribute=js-"+applicationId+"]").addClass("remove");
-		// 	// 	//$(".jobs_content[data-attribute=js-"+applicationId+"]").css("background","red")
-		// 	// }
-		// 	$('.jobs-wrapper-shell-loader').removeClass('hidden');
-		// 	var queryString = createObject();
-		// 	queryString = checkTabId(tabId, queryString);
-		// 	queryString["pageContent"] = pageContent;
-		// 	$('.jobs_wrapper').empty();
-		// 	for(var i = 1; i <= pageNumber; i++ ) {
-		// 		queryString["pageNumber"] = i;
-		// 		getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId, queryString, populateJobs);
-		// 	}
-		 	}
-		});
-
-	}
-
+var populateTabs = function(res) {
+    if(res["status"] == "success") {
+        var res = res["data"];
+        jobs.find(".status_all").text(res["total"]);
+        jobs.find(".status_shortlisted").text(res["shortlisted"]);
+        jobs.find(".status_rejected").text(res["rejected"]);
+        jobs.find(".status_saved").text(res["save"]);
+        var unread = res["total"] - (res["shortlisted"] + res["rejected"] + res["save"]);
+        jobs.find(".status_unread").text(unread);
+        jobs.find(".status_sort").text(unread);
+    }
 }
 
 
@@ -447,6 +432,7 @@ $(document).ready(function(){
 		  pageContent: pageContent,
 		  pageNumber: pageNumber
 	  	}, populateJobs)
+        tabId = '';
 	}
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/calendar/"+jobId, {} , populateCalendarOptions );
 	//
@@ -594,9 +580,6 @@ filtersModal.on('change','input[type="checkbox"]', function(){
 		filters.find('input[name="'+name+'"][value="'+value+'"]').prop('checked', false);
 	});
 	obj[name] = tagsArray;
-	if(obj[name].length == 0) {
-		delete obj[name];
-	}
 	//console.log(obj);
 	showFilterTags(obj);
 });
@@ -605,32 +588,18 @@ filters.on('change','input[type="checkbox"]', function(){
 	var name = $(this).attr('name');
 	var tagsArray = [];
 	var checkedElements = filters.find('input[name="'+name+'"]:checked');
-	// console.log(checkedElements);
 	var uncheckedElements = filters.find('input[name="'+name+'"]:not(:checked)');
-	// console.log(uncheckedElements);
 	checkedElements.each(function(index,anElement){
 		var value = anElement.value;
-		// console.log(value);
 		filtersModal.find('input[name="'+name+'"][value="'+value+'"]').prop('checked',true);
+		tagsArray.push(value);
 	});
-
 	uncheckedElements.each(function(index,anElement){
 		var value = anElement.value;
 		filtersModal.find('input[name="'+name+'"][value="'+value+'"]').prop('checked', false);
 	});
-	var checkedModalElements = filtersModal.find('input[name="'+name+'"]:checked');
-	console.log(checkedModalElements);
-	checkedModalElements.each(function(index,anElement){
-		var value = anElement.value;
-		console.log(value);
-		tagsArray.push(value);
-	});
-
 	obj[name] = tagsArray;
-	if(obj[name].length == 0) {
-		delete obj[name];
-	}
-	console.log(obj);
+	//console.log(obj);
 	showFilterTags(obj);
 });
 
@@ -686,7 +655,6 @@ $(".modal-top").on('mouseout','.tags-alphabets a[data-attribute="alphabet-hover"
 $(".modal-top").on('click',".tags-alphabets a[data-attribute='alphabet-hover']", slideToThatFilter);
 $('.filter-tags').on('click', '.js-remove-tag', hideFilterTag);
 $('.jobs_wrapper').on('click', 'a.icon' , performAction);
-$('.jobs_wrapper').on('click', 'a.view-icon' , performViewIcon);
 $('.jobs_wrapper').on('click', '.icon-resume', openResume);
 $('.jobs_wrapper').on('click', '.checkbox', function(event) {
 	event.stopPropagation();
@@ -859,9 +827,7 @@ var populateJobs = function(res) {
 				$(anElement).attr("data-application-id", aJob["id"]);
 			});
 			card.find(".content_more .icon[data-attribute= " + iconStatus + "]").addClass("highlighted");
-			card.find(".content_more .view-icon[data-attribute= " + iconStatus + "]").addClass("highlighted");
-			card.find(".content_more .view-icon[data-attribute=4]").attr("href","/profile/"+aJob["userID"]+"?jobID="+jobID+"&jobTitle="+jobTitle);
-			card.find(".content_more .view-icon[data-attribute=4]").attr("target","_blank");
+			card.find(".content_more .icon[data-attribute=4]").attr("href","/profile/"+aJob["userID"]+"?jobID="+jobID+"&jobTitle="+jobTitle);
 			card.find(".interview-invite.icon").attr("data-interview-invite","js-"+aJob['id']+"");
 			card.find(".resend-interview-invite.icon").attr("data-interview-invite","js-"+aJob['id']+"");
 			card.find(".interview-invite.icon .slot-type-container").attr("data-interview-invite","js-"+aJob['id']+"");

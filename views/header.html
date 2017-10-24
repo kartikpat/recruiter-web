@@ -8,6 +8,7 @@
     		<link rel="stylesheet" href="/{{.}}">
 			<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 			<link href="https://fonts.googleapis.com/css?family=Comfortaa|Droid+Sans|Noto+Sans" rel="stylesheet">
+			<link href="../../static/css/chat-sticky.css" rel="stylesheet">
     	{{/styles}}
 	{{/styles.length}}
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,20 +52,20 @@
 	<nav class="navbar">
 			<ul class="menu" id="menu">
 				<li class="menu_link"><a href="javascript:void(0);" onclick="openMenu()"><i class="fa fa-bars fa-lg" aria-hidden="true"></i></a>
-				<li class="menu_link"><a href="/">My Jobs</a></li>
-				<li class="menu_link"><a href="/post-job">Post Jobs</a></li>
-				<li class="menu_link"><a href="/view-reports">Reports</a></li>
-				<li class="menu_link"><a href="/recruiter/myChat">My Chat</a></li>
+				<li class="menu_link"><a class="menu_link_a" href="/">My Jobs</a></li>
+				<li class="menu_link"><a class="menu_link_a" href="/post-job">Post Jobs</a></li>
+				<li class="menu_link"><a class="menu_link_a" href="/view-reports">Reports</a></li>
+				<li class="menu_link"><a class="menu_link_a" href="/recruiter/myChat">My Chat</a></li>
 				<li class="menu_link menu-calendar dropdown">
-					<a href="#">My Calendar</a>
+					<a class="menu_link_a" href="#">My Calendar</a>
 					<ul class="options hidden box_shadow">
 						<li><a class="manage-bookings" href="">Manage Bookings</a></li>
 						<li><a href="/recruiter/view-booked-slots">View Booked Slots</a></li>
 					</ul>
 				</li>
-				<li class="menu_link"><a href="#">Search Resume Database</a></li>
+				<li class="menu_link"><a class="menu_link_a" href="#">Search Resume Database</a></li>
 				<li class="menu_link menu-more dropdown">
-					<a href="#">More</a>
+					<a class="menu_link_a" href="#">More</a>
 					<ul class="options hidden box_shadow">
 						<li><a href="/recruiter/tags">My Tags</a></li>
 						<li><a class="saved-shortlisted" href="">Saved/Shortlisted Candidates</a></li>
@@ -110,7 +111,7 @@
 
             </div>
             <div class="footer">
-                <input id="chat-input" type="text" placeholder="Write a Message">
+                <input class="chat-input" id="chat-input" type="text" placeholder="Write a Message">
             </div>
         </div>
 
@@ -129,7 +130,9 @@
 
 
     <div class="candidate-card prototype hidden">
-        <div class="candidate-image animated-background"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA"></div>
+        <div class="candidate-image animated-background"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA">
+		<div class="online-icon hidden"></div>
+	</div>
         <div class="candidate-info">
             <div class="candidate-name animated-background text-clr font-md"></div>
             <div class="candidate-designation animated-background extra-info-color font-sm"></div>

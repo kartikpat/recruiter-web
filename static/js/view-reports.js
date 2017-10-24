@@ -14,7 +14,7 @@ $(document).ready(function(){
         pageContent: 20
 	}, populateReportsTable)
 
-	windowH();
+	// windowH();
 
 })
 

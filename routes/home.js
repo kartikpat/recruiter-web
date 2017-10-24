@@ -69,6 +69,16 @@ module.exports = function(settings){
 		return
 	});
 
+	app.get("/dashboard-clone", isAuthenticated,function(req, res){
+		res.render("index-one", {
+			title: "IIM JOBS | Dashboard",
+			styles:  assetsMapper["index-one"]["styles"][mode],
+			scripts: assetsMapper["index-one"]["scripts"][mode],
+			baseUrl: baseUrl
+		});
+		return
+	});
+
 	app.get("/sign-in",function(req, res){
 		res.render("sign-in", {
 			title: "IIM JOBS | Sign in",
@@ -97,6 +107,18 @@ module.exports = function(settings){
 			title: "IIM JOBS | Candidates",
 			styles:  assetsMapper["candidate-list"]["styles"][mode],
 			scripts: assetsMapper["candidate-list"]["scripts"][mode],
+			baseUrl: baseUrl,
+			jobID: jobID
+		})
+		return
+	})
+
+	app.get("/job/:jobID/candidates-one", function(req, res){
+		var jobID = req.params.jobID;
+		res.render("candidate-list-one", {
+			title: "IIM JOBS | Candidates",
+			styles:  assetsMapper["candidate-list-one"]["styles"][mode],
+			scripts: assetsMapper["candidate-list-one"]["scripts"][mode],
 			baseUrl: baseUrl,
 			jobID: jobID
 		})
@@ -196,7 +218,7 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/recruiter/myChat", function(req, res){
+	app.get("/recruiter/myChat", function(req, res) {
 		console.log(req.isNew);
 		res.render("chat",{
 			title: "IIM JOBS | myChat",
@@ -209,7 +231,7 @@ module.exports = function(settings){
 
 	app.get("/recruiter/recruiter-plan", function(req, res){
 
-		res.render("premium-posting",{
+		res.render("premium-posting", {
 			title: "IIM JOBS | Premium Posting",
 			styles:  assetsMapper["premium-posting"]["styles"][mode],
 			scripts: assetsMapper["premium-posting"]["scripts"][mode],

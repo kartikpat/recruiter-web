@@ -7,7 +7,7 @@ $(document).ready(function(){
         postRequest(baseUrl+"/activate?k="+passKey,  null, {}, successCallback )
     }
 
-    windowH();
+    // windowH();
 
 });
 

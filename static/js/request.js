@@ -14,7 +14,7 @@ var postRequest = function(url,headers,data,successCallback,completeCallback,bef
     $.ajax({
         method: "POST",
         url: url,
-        headers: {},
+        headers: headers,
         data: data,
         scopeTest: scopeTest,
         processData:processData,
