@@ -1,5 +1,5 @@
 var recruiterID = localStorage.id;
-var maxCandidateChats;
+
 var profile = $(".user_profile");
 var tableRow = $(".jobs_content.prototype");
 
@@ -92,17 +92,17 @@ hello.init({
 
 $(document).ready(function(){
 
-        if ($(document).width() < 1000) {
-            maxCandidateChats = 1
-        } else {
-            if ($(document).width() < 1450) {
-
-                maxCandidateChats = 2
-            } else {
-
-                maxCandidateChats = 3
-            }
-        }
+        // if ($(document).width() < 1000) {
+        //     maxCandidateChats = 1
+        // } else {
+        //     if ($(document).width() < 1450) {
+        //
+        //         maxCandidateChats = 2
+        //     } else {
+        //
+        //         maxCandidateChats = 3
+        //     }
+        // }
 
 	getRequest(baseUrl+"/recruiter/"+recruiterID, {}, populateProfile);
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs", {}, populateJobs);

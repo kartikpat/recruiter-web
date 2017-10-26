@@ -254,6 +254,8 @@ chatContainer.on('click','.candidate-card', function() {
 
 
 
+
+
 $("#chat-collapsed-container").on('click',".chat-collapsed-candidate-container .candidate-collapsed-block i", function(event) {
 	event.stopPropagation();
 	var dataId = $(this).attr("data-id");
@@ -544,4 +546,21 @@ function ISODateToTime(aDate) {
     mins = checkTime(mins);
       var str = hours + ":" + mins;
       return str;
+}
+
+function checkTime(i) {
+ if (i < 10) {
+   i = "0" + i;
+ }
+ return i;
+}
+
+function startTime() {
+ var today = new Date();
+ var h = today.getHours();
+ var m = today.getMinutes();
+ // add a zero in front of numbers<10
+ m = checkTime(m);
+ var time = h + ":" + m;
+ return time;
 }

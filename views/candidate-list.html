@@ -2,7 +2,7 @@
 
 <div class="container"></div>
 
-<h2 class="heading">Job : 334895, iimjobs.com - Product Manager - Internet/Mobile (0-3 yrs)</h2>
+<h2 class="job-heading">Job : 334895, iimjobs.com - Product Manager - Internet/Mobile (0-3 yrs)</h2>
 
 <div class="main-container">
  <div class="filters">
@@ -145,7 +145,7 @@
 
 <div class="menu">
 	<span>Batch</span>
-	<button class="button x-small submit-filters" data-attribute="menu-batch">Apply</button>
+	<button class="button link submit-filters" data-attribute="menu-batch">Apply</button>
 	<div class="field">
 		<select class="half js-filters" name="minBatch">
 			<option value="">Min</option>
@@ -921,14 +921,14 @@
 
 		<div class="content content_organization">
             <div class="organisation-show"></div>
-            <div class="organisation-hidden hidden"></div>
+            <!-- <div class="organisation-hidden hidden"></div> -->
 		</div>
 
 		<div class="content content_institute">
             <div class="institute-show">
 
             </div>
-            <div class="institute-hidden hidden"></div>
+            <!-- <div class="institute-hidden hidden"></div> -->
 		</div>
 
 
@@ -937,8 +937,8 @@
 				<a href="" class="icon" data-attribute="1"><i class="fa fa-check-square-o" aria-hidden="true"></i><span>Shortlist</span></a>
 				<a href="" class="icon" data-attribute="2"><i class="fa fa-ban" aria-hidden="true"></i><span>Reject</span></a>
 				<a href="" class="icon" data-attribute="3"><i class="fa fa-floppy-o" aria-hidden="true"></i><span>Save for future use</span></a>
-				<a href="" class="view-icon" data-attribute="4"><i class="fa fa-eye" aria-hidden="true"></i><span>View Profile</span></a>
-			    <a href="" class="icon" data-attribute="5"><i class="fa fa-download" aria-hidden="true"></i><span>Download Resume</span></a>
+				<!-- <a href="" class="view-icon" data-attribute="4"><i class="fa fa-eye" aria-hidden="true"></i><span>View Profile</span></a> -->
+			    <a href="" class=" download-icon"><i class="fa fa-download" aria-hidden="true"></i><span>Download Resume</span></a>
 				<!--<a href="" class="icon"><i class="fa fa-list-alt" aria-hidden="true"></i><span>Cover Letter</span></a>
 				<a href="" class="icon"><i class="fa fa-comment" aria-hidden="true"></i><span>Comment</span></a>
 				<a href="" class="icon"><i class="fa fa-mobile" aria-hidden="true"></i><span>Contact information</span></a>
@@ -974,7 +974,234 @@
 		</div>
 	</div>
     <hr class="divider prototype hidden">
-	<div class="slide-container hidden">
+    <div class="view-profile-modal hidden animated fadeIn">
+        <div class="close-overlay-profile-modal"><i class="fa fa-times" aria-hidden="true"></i></div>
+        <div class="profile_container box_shadow">
+
+            <div class="profile_header">
+                <span class="name">Name</span>
+                <span class="organization">Organization</span>
+                <span class="institute">Institute</span>
+                <span class="more">Exp./ Location More</span>
+            </div>
+
+            <div class="profile_content">
+
+                <span class="content name userDetail">
+                    <div class="info">
+                        <img class="user_img " src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA">
+                    </div>
+                    <div class="info">
+                        <div class="important_info name "></div>
+                        <div class="extra_info email "></div>
+                        <div class="extra_info contact"></div>
+                        <div class="extra_info"><span class="sex"></span> , <span class="age"></span> </div>
+                        <div class="extra_info notice"></div>
+                        <div class="extra_info last-login "></div>
+                    </div>
+
+                    <div class="info">
+                        <button  id="slider-down" class="slider-down button small">More Info    <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                        <button  id="slider-up" class="slider-up button small hidden">Less Info    <i class="fa fa-caret-up" aria-hidden="true"></i></button>
+                    </div>
+                </span>
+
+                <span class="content organization">
+                    <!-- <div class="shell-loader-container">
+                        <div class="important_info name "></div>
+                        <div class="important_info designation "></div>
+                    </div> -->
+                </span>
+
+                <span class="content institute">
+                    <!-- <div class="shell-loader-container">
+                        <div class="important_info name "></div>
+                        <div class="important_info designation "></div>
+                    </div> -->
+                </span>
+
+                <span class="content more extraInfo">
+                    <div class="info">
+                        <div class="extra_info experience"></div>
+                        <div class="extra_info location"></div>
+                        <div class="extra_info hidden"></div>
+                        <div class="extra_info prefLocation"></div>
+                        <div class="extra_info currentCTC"></div>
+                        <div class="extra_info expectedCTC"></div>
+                    </div>
+                    <div class="info">
+                        <div class=" posted-tags">
+
+                        </div>
+                        <!-- <a href="#">tags</a><button class="button x-small"><i class="fa fa-times fa-sm" aria-hidden="true"></i></button>
+                        <a href="#">tags</a><button class="button x-small"><i class="fa fa-times fa-sm" aria-hidden="true"></i></button>
+                        <a href="#">tags</a><button class="button x-small"><i class="fa fa-times fa-sm" aria-hidden="true"></i></button>
+                        <a href="#">tags</a><button class="button x-small"><i class="fa fa-times fa-sm" aria-hidden="true"></i></button> -->
+                    </div>
+                </span>
+
+                <hr class="divider">
+
+                <div class="more_info moreInfo">
+                    <div class="layer">
+                        <div class="info marital-status-container">
+                            <div class="heading">Marital Status</div>
+                            <div class="content maritalStatus">Single</div>
+                        </div>
+                        <div class="info permit-container">
+                            <div class="heading">Work Permit for USA</div>
+                            <div class="content permit">No</div>
+                        </div>
+                        <div class="info score-container">
+                            <div class="score ">
+                                <div class="heading">CAT Percentile</div>
+                                <div class="content">-</div>
+                            </div>
+                            <div class="score ">
+                                <div class="heading">IIT-JEE All India Rank (AIR)</div>
+                                <div class="content">-</div>
+                            </div>
+                            <div class="score">
+                                <div class="heading">GMAT Score</div>
+                                <div class="content">-</div>
+                            </div>
+                        </div>
+                        <div class="info languages-container">
+                            <div class="heading">Languages</div>
+                            <div class="content languages">English, Hindi</div>
+                        </div>
+                    </div>
+
+                    <hr class="divider">
+                    <div class="layer">
+                        <div class="row">
+                            <div class="column">
+                                <div class="heading">Have you handled a team?</div>
+                                <div class="content handleTeam">yes</div>
+                            </div>
+                            <div class="column">
+                                <div class="heading">Are you willing to work 6 days a week?</div>
+                                <div class="content sixDayWorking">yes</div>
+                            </div>
+                            <div class="column">
+                                <div class="heading">Are you willing to relocate?</div>
+                                <div class="content relocate">no</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="column">
+                                <div class="heading">Differently abled</div>
+                                <div class="content differentlyAbled">no</div>
+                            </div>
+                            <div class="column">
+                                <div class="heading">Are you open to joining an early stage start-up?</div>
+                                <div class="content earlyStartup">no</div>
+                            </div>
+                            <div class="column">
+                                <div class="heading">Willingness to Travel?</div>
+                                <div class="content travel">no</div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="divider">
+                    <div class="layer heading about">
+                        I am a Product Analyst for an ecommerce firm with 6 months of experience.
+                    </div>
+
+
+                </div>
+                <hr id="divide" class="divider" style="display:none">
+                <div class="buttons">
+                    <a href="#" class="ico icon-status" data-attribute="1"><i class="fa fa-check-square-o" aria-hidden="true"></i> Shortlist</a>
+                    <a href="#" class="ico icon-status" data-attribute="2"><i class="fa fa-ban" aria-hidden="true"></i> Reject</a>
+                    <a href="#" class="ico icon-status" data-attribute="3"><i class="fa fa-floppy-o" aria-hidden="true"></i> Saved</a>
+                    <a href="#" class="ico icon-status" data-attribute="5"><i class="fa fa-download" aria-hidden="true"></i> Download Resume</a>
+                    <a href="#" class="ico" style="text-align:center"><i class="fa fa-whatsapp" aria-hidden="true"></i> Chat</a>
+                    <div class="dot-loader-container hidden">
+                    	<div class="dot"></div>
+                    	<div class="dot"></div>
+                    	<div class="dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab_container">
+          <div class="tab  box_shadow">
+            <div class="tab_heading">
+              <span class="">Comments</span>
+            </div>
+            <div class="tab_content">
+
+              <input type="text" placeholder="Add Comment" class="add-comment">
+              <button class="submit-comment button"></button>
+              <div class=" posted-comment hidden alert-message half">
+
+              </div>
+            </div>
+          </div>
+          <div class="tab box_shadow center contact-info">
+            <div class="tab_heading">
+              <span class="">Contact Information</span>
+            </div>
+            <div class="tab_content">
+              <div class="info">
+                <span class="left email text-clr ">Shreya3.jain@gmail.com</span>
+                <span class="right"><i class="highlighted fa fa-check" aria-hidden="true"></i><span class="font-md extra-info-color"> Verified</span></span>
+            </div>
+
+            <div class="info phone">
+              <span class="left contact text-clr">9999999999</span>
+              <span class="right"><i class="highlighted fa fa-check" aria-hidden="true"></i><span class="font-md extra-info-color"> Verified</span></span>
+            </div>
+          </div>
+        </div>
+          <div class="tab  box_shadow">
+            <div class="tab_heading">
+              <span class="">Tags</span>
+            </div>
+
+            <div class="tab_content">
+                <div class=" tags-container ">
+
+                    <div class=" ta ">
+                        <div class=" tags-content ui-widget">
+                            <input  type="text" placeholder="Add tag" class="add-tag">
+                            <button  class="submit-tag button" >Submit</button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="resume-container">
+          <div class="resume box_shadow ">
+            <div class="head">
+              <span>Resume</span>
+            </div>
+            <div class="resume-embed-container">
+            </div>
+
+          </div>
+
+          <div class="cover_letter box_shadow ">
+            <div class="head">
+              <span>Cover Letter</span>
+            </div>
+            <div class="content">
+              <span class="cover_content">scsocnwodicnwdoicnoiwdncwodincwiodcn</span>
+            </div>
+          </div>
+
+        </div>
+
+
+    </div>
+	<!-- <div class="slide-container hidden">
         <div class="container tagline-container">
             <div class="tagline-heading font-xs extra-info-color">Tagline:</div>
             <div class="tagline-content text-clr font-sm">I am a Product Analyst for an ecommerce firm with 6 months of experience.</div>
@@ -1098,10 +1325,10 @@
 
             </div>
         </div>
-    </div>
-    <div class="resume-container animated fadeIn bg-overlay hidden">
+    </div> -->
+    <!-- <div class="resume-container animated fadeIn bg-overlay hidden">
             <object class="resume-content" data="" type="application/pdf"></object>
-    </div>
+    </div> -->
 </div>
 
 <div class="filters-modal">
@@ -1233,16 +1460,31 @@
         </div>
     </div>
 </div>
+
 <div class="tags-wrapper prototype hidden">
 </div>
 <div class="tags prototype hidden">
    <label for="" class="label"></label>
 </div>
 <div class="js-show-tags prototype hidden"></div>
+
+<option class="prototype hidden calendar-option"></option>
+<div class="filter-tag-group prototype hidden"></div>
+
+<div class="info prototype hidden jobCard">
+    <div class="important_info name">Axis Bank</div>
+    <div class="important_info designation">Software Developer</div>
+    <div class="extra_info exp">Jun - 2015 to Present </div>
+</div>
+<div class="info prototype instituteCard hidden">
+   <div class="important_info name">Birla Institute of Technology and Science (BITS), Pilani</div>
+   <div class="extra_info "><span class="start_duration">2008</span> - <span class="end_duration">2012</span></div>
+   <div class="extra_info degree">B Tech / BE (Full Time)</div>
+</div>
+
+
 <div class="tags-jobSeeker prototype hidden">
     <span class="tags-content"></span>
     <span data-jobseeker-id="" data-jobapplication-id="" class="js-remove-tag job-seeker-tags"><i class='fa fa-times' aria-hidden='true'></i></span>
 </div>
-<option class="prototype hidden calendar-option"></option>
-<div class="filter-tag-group prototype hidden"></div>
 {{> footer}}

@@ -237,11 +237,13 @@ var submitForm = function() {
 	var isWorkHome = setDefaultVal(postJobForm.find("#work_home:checked").val());
 	var isFemaleBackWorkforce = setDefaultVal(postJobForm.find("#female_back_workforce:checked").val());
 
-	postJobForm.find(".selected-tags-container .field .selected-tags-content .js-show-selected-tags").each(function() {
+	postJobForm.find(".add-tags-content .js-show-selected-tags").each(function() {
 		    tags.push($(this).text());
 
 
 	});
+    console.log(tags);
+    return;
 
     if(checkErrorClass(postJobForm.find("#title")) && checkErrorClass(postJobForm.find("#industry")) && checkErrorClass(postJobForm.find("#functional_area")) && checkErrorClass(postJobForm.find("#min_experience")) && checkErrorClass(postJobForm.find("#max_experience")) && checkErrorClass(postJobForm.find("#job_description")) && isSalary && isGraduatingYear ) {
       	postRequest(baseUrl+"/recruiter/"+recruiterID+"/job", null, {

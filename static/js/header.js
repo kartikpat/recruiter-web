@@ -1,16 +1,29 @@
 var recruiterID = localStorage.id;
 var userProfile = $(".user_profile_side");
 var navBar = $(".navbar");
-
+var maxCandidateChats;
 
 
 $(document).ready(function(){
+
+	if ($(document).width() < 1000) {
+		maxCandidateChats = 1
+	} else {
+		if ($(document).width() < 1450) {
+
+			maxCandidateChats = 2
+		} else {
+
+			maxCandidateChats = 3
+		}
+	}
+
 	getRequest(baseUrl+"/recruiter/"+recruiterID, {}, populateHeader);
 	userProfile.find(".dropdown").hover(showMenu);
 	navBar.find(".menu-calendar").hover(showMenuCalendar);
 	navBar.find(".menu-more").hover(showMenuMore);
 	navBar.find(".manage-bookings").click(showAllCalendars);
-	
+
 	$("#search-solar").keyup(function(event){
     if(event.keyCode == 13){
         var queryParameter = $(this).val();

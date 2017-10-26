@@ -1,5 +1,5 @@
 var recruiterID = localStorage.id;
-var maxCandidateChats;
+
 var profile = $(".user_profile");
 var tableRow = $(".jobs_content.prototype");
 
@@ -92,17 +92,7 @@ hello.init({
 
 $(document).ready(function(){
 
-        if ($(document).width() < 1000) {
-            maxCandidateChats = 1
-        } else {
-            if ($(document).width() < 1450) {
 
-                maxCandidateChats = 2
-            } else {
-
-                maxCandidateChats = 3
-            }
-        }
 
 	getRequest(baseUrl+"/recruiter/"+recruiterID, {}, populateProfile);
 	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs", {}, populateJobs);
@@ -263,7 +253,7 @@ var populateJobs = function(res){
 			card.find(".modal .modal-content .modal-center .list").text(rejMssg);
 
                 card.find(".location").text(aJob["loc"]);
-            
+
 			card.find(".action").append("<span class='edit-job-container'><img src='https://static.iimjobs.com/recruiter/resources/images/edit-grey.png'></span>");
 			card.find(".views").html(( aJob["views"])? aJob["views"]+" views "+( (aJob["applied"])? '<span class="applied-link"><a class="link-color" href="/job/'+aJob["id"]+'/candidates?title='+aJob["title"]+'">'+aJob["applied"]+'applied</a></span>'+  "": "0)" ): "" )
 			$('.jobs_container').append(card);

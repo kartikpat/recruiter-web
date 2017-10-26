@@ -91,7 +91,7 @@ module.exports = function(settings){
 
 
 
-	app.get("/post-job", function(req, res){
+	app.get("/post-job",isAuthenticated, function(req, res){
 		res.render("post-job",{
 			title: "IIM JOBS | Post job",
 			styles:  assetsMapper["post-job"]["styles"][mode],
