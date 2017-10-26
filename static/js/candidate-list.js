@@ -1238,17 +1238,9 @@ var populateJobs = function(res) {
 				// PDFJS.getDocument("https://cdn.mozilla.net/pdfjs/helloworld.pdf").then(function(pdf) {
 				//   console.log(pdf.numPage);
 				// });
-				var url = "https://cdn.mozilla.net/pdfjs/tracemonkey.pdf";
-				getBinaryData(url, function (res){
-					PDFJS.getDocument(res).then(function getPdfHelloWorld(_pdfDoc) {
-  					 var numPages = _pdfDoc.pdfInfo.numPages;
-					 console.log(numPages);
 
-  				   	card.find(".resume-embed-container").html('<embed src="'+url+'" class="resume-embed" type="application/pdf">')
-					console.log($($(".resume-embed")[0]).height());
-  				  });
-				});
-
+				// getBinaryData("https://cdn.mozilla.net/pdfjs/helloworld.pdf");
+				card.find(".resume-embed-container").html('<embed src="'+aJob["resumeUrl"]+'" class="resume-embed" type="application/pdf">')
 
 				if(aJob["cover_text"]) {
 					var coverText = aJob["cover_text"];
@@ -1265,7 +1257,34 @@ var populateJobs = function(res) {
 	}
 }
 
-
+// function callGetDocment (response) {
+//   console.log(response)
+//
+//   PDFJS.getDocument(response).then(function getPdfHelloWorld(_pdfDoc) {
+// 	  console.log(_pdfDoc.pdfInf)
+//     pdfDoc = _pdfDoc;
+//     // renderPage(pageNum);
+//   });
+// }
+//
+// function getBinaryData (url) {
+//     // body...
+//     var xhr = new XMLHttpRequest();
+//
+//     xhr.open('GET', url, true);
+//     xhr.responseType = 'arraybuffer';
+//     xhr.onload = function(e) {
+//         //binary form of ajax response,
+//         callGetDocment(e.currentTarget.response);
+//     };
+//
+//     xhr.onerror = function  () {
+//         // body...
+//         alert("xhr error");
+//     }
+//
+//     xhr.send();
+// }
 
 function boolean(data) {
 	if(data === 1) {
