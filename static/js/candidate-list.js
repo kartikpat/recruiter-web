@@ -746,10 +746,12 @@ $(".jobs_wrapper").on('click','.content-container', function() {
 			if(aJob["cover_text"]) {
 				var coverText = aJob["cover_text"];
 				viewProfileModal.find(".cover_content").text(coverText);
+				viewProfileModal.find(".cover_letter	").removeClass("hidden");
+				viewProfileModal.find(".resume").removeClass("no-cover-but-resume");
 			}
 			else{
 				viewProfileModal.find(".cover_letter	").addClass("hidden");
-				viewProfileModal.find(".resume").css("width","100%");
+				viewProfileModal.find(".resume").addClass("no-cover-but-resume");
 			}
 
 			viewProfileModal.removeClass('hidden');

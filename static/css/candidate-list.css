@@ -451,9 +451,9 @@ input:focus, select:focus {
 
 .view-profile-modal {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  transform: translate3d(0, 0);
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -492,7 +492,8 @@ input:focus, select:focus {
         font-size: 11px;
         color: #333; }
         .jobs-wrapper-shell-loader .shell-loaders .content .info .important_info.name {
-          font-size: 13px; }
+          font-size: 13px;
+          font-weight: bold; }
       .jobs-wrapper-shell-loader .shell-loaders .content .info .extra_info {
         color: #808080; }
       .jobs-wrapper-shell-loader .shell-loaders .content .info .icon {
@@ -632,7 +633,8 @@ button.button.link.submit-filters {
           color: #333;
           font-family: 'Open Sans'; }
           .profile_container .profile_content .content .info .important_info.name {
-            font-size: 13px; }
+            font-size: 13px;
+            font-weight: bold; }
         .profile_container .profile_content .content .info .extra_info {
           color: #808080;
           font-family: "Droid Sans",sans-serif;
@@ -803,9 +805,13 @@ button.button.link.submit-filters {
   /* display: inline-block; */
   /* text-align: right; */
   display: inline-block;
-  position: fixed;
+  position: absolute;
   right: 10px;
   top: 10px;
   font-size: 20px;
   color: #ccc;
   cursor: pointer; }
+
+.no-cover-but-resume {
+  width: 100% !important;
+  margin-right: 0 !important; }

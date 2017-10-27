@@ -616,9 +616,9 @@ input, select {
 
 .view-profile-modal {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    top: 0;
+    left: 0;
+    transform: translate3d(0,0);
     width: 100%;
     height: 100%;
     overflow: auto;
@@ -688,6 +688,7 @@ input, select {
                     color: $important-info-color;
                     &.name {
                         font-size: 13px;
+                        font-weight: bold;
                     }
                 }
                 .extra_info {
@@ -880,6 +881,7 @@ button.button.link.submit-filters {
                     font-family: 'Open Sans';
                     &.name {
                         font-size: 13px;
+                        font-weight: bold;
                     }
 
                 }
@@ -1153,10 +1155,15 @@ button.button.link.submit-filters {
     /* display: inline-block; */
     /* text-align: right; */
     display: inline-block;
-    position: fixed;
+    position: absolute;
     right: 10px;
     top: 10px;
     font-size: 20px;
     color: #ccc;
     cursor: pointer;
+}
+
+.no-cover-but-resume {
+    width: 100% !important;
+    margin-right: 0 !important;
 }
