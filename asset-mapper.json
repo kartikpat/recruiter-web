@@ -308,7 +308,7 @@
 	"pdfTest": {
 		"styles": {
 			"debug" : [
-
+				"static/css/utilities.css"
 
 			],
 			"prod": [
@@ -322,7 +322,7 @@
 				"static/js/vendor/pdf.js",
 				"static/js/vendor/pdf.worker.js",
 				"static/js/pdfJs.js",
-				
+
 				"static/js/pdfTest.js"
 			],
 			"prod" : [
