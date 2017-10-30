@@ -737,10 +737,15 @@ $(".jobs_wrapper").on('click','.content-container', function() {
 			// PDFJS.getDocument("https://cdn.mozilla.net/pdfjs/helloworld.pdf").then(function(pdf) {
 			//   console.log(pdf.numPage);
 			// });
+			viewProfileModal.find(".resume-embed-container").empty();
+			if(isCanvasSupported()) {
+				getBinaryData("https://s3.ap-south-1.amazonaws.com/pat-resume-bucket/Resume.pdf",resumeCallback);
+			}
+			else {
+				viewProfileModal.find(".resume-embed-container").html('<iframe src="'+aJob["resumeUrl"]+'" class="resume-embed" type="application/pdf"></iframe>')
+			}
 
-			// getBinaryData("https://cdn.mozilla.net/pdfjs/helloworld.pdf");
-			// viewProfileModal.find(".resume-embed-container").empty();
-			viewProfileModal.find(".resume-embed-container").html('<embed src="'+aJob["resumeUrl"]+'" class="resume-embed" type="application/pdf">')
+
 			// viewProfileModal.find(".resume-overlay").remove();
 			// viewProfileModal.find(".resume-container").append("<div class='resume-overlay'></div>");
 			if(aJob["cover_text"]) {
@@ -765,6 +770,37 @@ $(".jobs_wrapper").on('click','.content-container', function() {
 	// $(".jobs_content[data-attribute="+dataAttribute+"] .content_organization .organisation-hidden").toggleClass('hidden');
 	// $(".jobs_content[data-attribute="+dataAttribute+"]").toggleClass('overlay-show');
 });
+
+function resumeCallback(res){
+    console.log(res)
+    PDFJS.getDocument(res).then(function getPdfHelloWorld(_pdfDoc) {
+     var numPages = _pdfDoc.pdfInfo.numPages;
+     console.log(numPages);
+
+        for(var i = 1; i <= numPages; i++) {
+            _pdfDoc.getPage(i).then(function(page) {
+                var scale = 1.5;
+                var viewport = page.getViewport(scale);
+                viewProfileModal.find(".resume-embed-container").append("<canvas id='canvas-"+page.pageIndex+"' class='canvas'></canvas>");
+                var canvas = document.getElementById("canvas-"+page.pageIndex+"");
+                var context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                // Render PDF page into canvas context
+                var renderContext = {
+                  canvasContext: context,
+                  viewport: viewport
+                };
+                var renderTask = page.render(renderContext);
+                renderTask.then(function () {
+                  console.log('Page rendered');
+                });
+         });
+        }
+    });
+
+}
 
 viewProfileModal.on('click','.close-overlay-profile-modal', function() {
 	// var dataAttribute = $(this).attr('data-application-id');
@@ -1731,6 +1767,11 @@ function getTypeGender(gender) {
 	return gen;
 }
 
-$(".resume-content")[0].addEventListener('error', function(e) {
-   // console.log(e);
-}, true);
+// $(".resume-content")[0].addEventListener('error', function(e) {
+//    // console.log(e);
+// }, true);
+
+function isCanvasSupported(){
+  var elem = document.createElement('canvas');
+  return !!(elem.getContext && elem.getContext('2d'));
+}

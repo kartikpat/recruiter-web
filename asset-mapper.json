@@ -330,6 +330,31 @@
 			]
 		}
 	},
+	"pdfIframe": {
+		"styles": {
+			"debug" : [
+				"static/css/utilities.css"
+
+			],
+			"prod": [
+				"static/build/css/pdfIframe.min.css"
+
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/pdf.js",
+				"static/js/vendor/pdf.worker.js",
+				"static/js/pdfJs.js",
+
+				"static/js/pdfTest.js"
+			],
+			"prod" : [
+				"static/build/js/pdfTest.min.js"
+			]
+		}
+	},
 	"candidate-list": {
 		"styles": {
 			"debug" : [

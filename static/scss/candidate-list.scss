@@ -1073,10 +1073,11 @@ button.button.link.submit-filters {
     margin-right: 4.5%;
     .resume-embed-container{
       width: 100%;
-
-      .resume-embed{
-        width: 100%;
-        height: 900px;
+      text-align: center;
+      background: $color-light-grey;
+      .canvas{
+          margin-top: 10px;
+          border: 1px solid #ccc;
       }
     }
   }
@@ -1091,9 +1092,16 @@ button.button.link.submit-filters {
     }
   }
   .head {
-    background-color: #666;
+    background-color: $tab-background-color;
     padding: 15px;
-    color: #fff;
+    color: $color-black-text;
+    font-size: 14px;
+    position: relative;
+    button {
+        position: absolute;
+        right: 18px;
+        top: 10px;
+    }
   }
 }
 

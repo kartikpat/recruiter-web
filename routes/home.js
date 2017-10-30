@@ -361,4 +361,15 @@ module.exports = function(settings){
 		return
 	})
 
+	app.get("/recruiter/pdfIframe", function(req, res){
+
+		res.render("pdfIframe", {
+			title: "IIM JOBS | Reset Password",
+			styles:  assetsMapper["pdfIframe"]["styles"][mode],
+			scripts: assetsMapper["pdfIframe"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
 }
