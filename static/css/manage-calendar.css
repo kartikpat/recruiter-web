@@ -16,6 +16,9 @@
 .extra-info-color {
   color: #808080; }
 
+.important-info-color {
+  color: #333; }
+
 .bg-overlay {
   background-color: rgba(0, 0, 0, 0.7); }
 
@@ -23,7 +26,8 @@
   animation-duration: 500ms !important; }
 
 .main-container {
-  padding: 20px; }
+  padding: 20px;
+  min-height: calc(100% - 155px); }
   .main-container .heading-container {
     padding: 20px; }
     .main-container .heading-container .heading {

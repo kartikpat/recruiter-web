@@ -1,0 +1,63 @@
+@import "colors.scss";
+
+.main-container {
+    padding: 20px;
+    min-height: calc(100% - 155px);
+    .page-heading {
+        margin-bottom: 20px;
+    }
+    .mass-resume-table {
+
+        width: 100%;
+        .mass-resume-header {
+            margin: 0;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #e2e2e2;
+            border-radius: 1px;
+            background: #ececec;
+            font-size: 12px;
+            display: table;
+            font-weight: bold;
+        }
+        .row {
+            display: table;
+            padding: 10px;
+            font-size: 13px;
+            border-bottom: 1px solid #ebebeb;
+        }
+        .column {
+            display: table-cell;
+            &.date {
+                width: 12%;
+            }
+            &.request-id {
+                width: 13%;
+            }
+            &.status {
+                width: 20%;
+                min-width: 300px;
+            }
+            &.downloaded {
+                width: 15%;
+            }
+            &.resumes {
+                width: 13%;
+                text-align: center;
+            }
+            &.download-link {
+                width: 22%;
+                .download-link {
+                    margin-top: 5px;
+                    a {
+                        text-decoration: none;
+                        &:hover {
+                            color: $link-hover-color;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

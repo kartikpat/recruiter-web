@@ -16,6 +16,9 @@
 .extra-info-color {
   color: #808080; }
 
+.important-info-color {
+  color: #333; }
+
 .bg-overlay {
   background-color: rgba(0, 0, 0, 0.7); }
 
@@ -26,43 +29,52 @@ input:focus, select:focus {
   outline: none; }
 
 .heading {
+  font-size: 12px;
+  color: #666;
+  padding-bottom: 1px; }
+
+.job-heading {
   font-size: 18px;
   margin: 20px 0 20px 20px;
   color: #708732; }
 
-.highlighted {
-  color: #708732 !important; }
-
 * {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Droid Sans", sans-serif;
   font-weight: normal; }
 
 .main-container {
-  padding: 10px; }
+  padding: 10px;
+  min-height: calc(100% - 155px); }
   .main-container .filters {
     display: inline-block;
     width: 18%;
     padding-right: 10px;
-    border-right: 2px dotted #d8d8d8;
+    border-right: 1px solid #f1f1f1;
     height: auto; }
     .main-container .filters .search-by-keyword {
       width: 100%;
       border-bottom: 1px solid #f5f6f7;
-      padding-bottom: 5px;
+      padding: 0 10px 10px 10px;
       margin-bottom: 5px; }
       .main-container .filters .search-by-keyword input {
         box-sizing: border-box;
         border: 1px solid #ccc;
-        border-radius: 4px;
+        border-radius: 2px;
         padding: 4px 8px;
         width: 75%;
-        padding: 4px 6px;
+        padding: 6px 8px;
         font-size: 11px; }
+      .main-container .filters .search-by-keyword button {
+        float: right; }
     .main-container .filters .menu {
       border-bottom: 1px solid #f5f6f7;
-      margin-bottom: 5px; }
+      margin-bottom: 5px;
+      line-height: 22px;
+      padding: 5px 10px; }
       .main-container .filters .menu > span {
-        font-size: 10px; }
+        font-size: 15px;
+        font-family: "Droid Sans", sans-serif;
+        color: #4b4b4b; }
       .main-container .filters .menu > button {
         float: right; }
       .main-container .filters .menu .field {
@@ -137,22 +149,23 @@ input:focus, select:focus {
         width: auto;
         margin: 0 20px;
         background-color: #f5f6f7;
-        padding: 0 10px; }
+        padding: 0 10px;
+        line-height: 30px; }
         .main-container .jobs .jobs_panel .jobs_header .header {
           display: inline-block;
           padding: 0 2px;
-          overflow: auto;
           font-size: 11px;
           text-align: left;
-          color: #4b4b4b;
-          height: 30px;
-          line-height: 30px; }
+          color: #4b4b4b; }
         .main-container .jobs .jobs_panel .jobs_header .header_name {
           width: 18%; }
           .main-container .jobs .jobs_panel .jobs_header .header_name .checkbox {
-            margin: 0 15px 0 0; }
+            margin: 0 15px 0 0;
+            position: relative;
+            top: 3px; }
         .main-container .jobs .jobs_panel .jobs_header .header_organization {
-          width: 28%; }
+          width: 28%;
+          padding-left: 10px; }
         .main-container .jobs .jobs_panel .jobs_header .header_institute {
           width: 28%; }
         .main-container .jobs .jobs_panel .jobs_header .header_more {
@@ -164,9 +177,12 @@ input:focus, select:focus {
         .main-container .jobs .jobs_panel .jobs_content:nth-child(even) {
           background-color: #fbfbfb; }
         .main-container .jobs .jobs_panel .jobs_content .content-container {
-          height: 200px;
           cursor: pointer;
           padding: 10px 10px 0 10px; }
+          .main-container .jobs .jobs_panel .jobs_content .content-container .interview-invite.icon {
+            height: 40px; }
+          .main-container .jobs .jobs_panel .jobs_content .content-container .resend-interview-invite.icon {
+            height: 40px; }
         .main-container .jobs .jobs_panel .jobs_content .slide-container {
           height: auto;
           padding: 10px; }
@@ -185,7 +201,8 @@ input:focus, select:focus {
             height: 70px; }
             .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-first .contact-container {
               position: absolute;
-              left: 0; }
+              left: 0;
+              margin-top: 15px; }
               .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-first .contact-container .contact-heading, .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-first .contact-container .email-heading {
                 display: inline-block;
                 width: 50px; }
@@ -194,7 +211,7 @@ input:focus, select:focus {
             .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-first .bio-container {
               position: absolute;
               right: 0;
-              width: 50%; }
+              width: 52%; }
               .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-first .bio-container .icon {
                 width: 100%; }
                 .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-first .bio-container .icon div {
@@ -220,7 +237,8 @@ input:focus, select:focus {
                       color: orange; }
           .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second {
             position: relative;
-            height: 80px; }
+            height: 80px;
+            padding-top: 10px; }
             .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .comment-container {
               position: absolute;
               left: 0;
@@ -233,8 +251,11 @@ input:focus, select:focus {
                   .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .comment-container .comment .comment-content input {
                     box-sizing: border-box;
                     border: 1px solid #ccc;
-                    border-radius: 4px;
-                    padding: 4px 8px; }
+                    border-radius: 2px;
+                    padding: 4px 8px;
+                    margin-right: 25px; }
+                  .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .comment-container .comment .comment-content button {
+                    padding: 5px 12px; }
                 .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .comment-container .comment .comment-heading {
                   display: inline-block; }
               .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .comment-container .posted-comment ul {
@@ -243,35 +264,50 @@ input:focus, select:focus {
               position: absolute;
               right: 0;
               display: inline-block;
-              width: 49%; }
-              .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .tags-container .tags {
-                margin: 5px 0; }
-                .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .tags-container .tags .tags-content {
-                  display: inline-block; }
-                  .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .tags-container .tags .tags-content input {
-                    box-sizing: border-box;
-                    border: 1px solid #ccc;
-                    border-radius: 4px;
-                    padding: 4px 8px; }
-                .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .tags-container .tags .tags-heading {
-                  display: inline-block; }
+              width: 52%; }
+              .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .tags-container .ta .tags-content {
+                display: inline-block; }
+                .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .tags-container .ta .tags-content input {
+                  box-sizing: border-box;
+                  border: 1px solid #ccc;
+                  border-radius: 2px;
+                  padding: 4px 8px;
+                  margin-right: 25px; }
+                .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .tags-container .ta .tags-content button {
+                  padding: 5px 12px; }
+              .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .tags-container .posted-tags {
+                margin-top: 10px; }
+                .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .tags-container .posted-tags .tags-jobSeeker {
+                  display: inline-block;
+                  width: 85px;
+                  margin-right: 5px; }
+                  .main-container .jobs .jobs_panel .jobs_content .slide-container .info-container-second .tags-container .posted-tags .tags-jobSeeker .tags-content {
+                    cursor: pointer; }
           .main-container .jobs .jobs_panel .jobs_content .slide-container .extra-info-container .layer-first .info {
             display: inline-block;
-            width: 16%;
             vertical-align: top; }
+            .main-container .jobs .jobs_panel .jobs_content .slide-container .extra-info-container .layer-first .info.name-e {
+              width: 18%; }
+            .main-container .jobs .jobs_panel .jobs_content .slide-container .extra-info-container .layer-first .info.org-e {
+              width: 29%; }
+            .main-container .jobs .jobs_panel .jobs_content .slide-container .extra-info-container .layer-first .info.ins-e {
+              width: 28%; }
+            .main-container .jobs .jobs_panel .jobs_content .slide-container .extra-info-container .layer-first .info.more-e {
+              width: 19%; }
           .main-container .jobs .jobs_panel .jobs_content .slide-container .extra-info-container .layer-second .marks-wrapper {
             display: inline-block;
-            width: 35%; }
+            width: 47.5%; }
             .main-container .jobs .jobs_panel .jobs_content .slide-container .extra-info-container .layer-second .marks-wrapper .marks {
               display: inline-block;
               padding: 0 5px; }
           .main-container .jobs .jobs_panel .jobs_content .slide-container .extra-info-container .layer-second .info {
             display: inline-block;
-            width: 21%;
+            width: 49%;
             vertical-align: top; }
           .main-container .jobs .jobs_panel .jobs_content .slide-container .extra-info-container .css-heading {
             font-size: 10px;
-            color: #808080; }
+            color: #808080;
+            line-height: 2.5; }
           .main-container .jobs .jobs_panel .jobs_content .slide-container .extra-info-container .css-content {
             font-size: 12px;
             color: #333; }
@@ -280,16 +316,20 @@ input:focus, select:focus {
           padding: 5px 0 0 2px;
           overflow: hidden;
           font-size: 11px;
-          vertical-align: top; }
+          vertical-align: top;
+          line-height: 20px; }
           .main-container .jobs .jobs_panel .jobs_content .content .info {
-            padding: 0 0 5px 0; }
+            padding: 0 0 10px 0; }
             .main-container .jobs .jobs_panel .jobs_content .content .info .important_info {
-              font-size: 11px;
+              font-size: 13px;
               color: #333; }
               .main-container .jobs .jobs_panel .jobs_content .content .info .important_info.name {
-                font-size: 13px; }
+                font-size: 13px;
+                font-weight: bold;
+                font-family: Arial !important; }
             .main-container .jobs .jobs_panel .jobs_content .content .info .extra_info {
-              color: #808080; }
+              color: #333;
+              font-size: 13px; }
             .main-container .jobs .jobs_panel .jobs_content .content .info .icon {
               display: block;
               color: #808080;
@@ -299,6 +339,17 @@ input:focus, select:focus {
               .main-container .jobs .jobs_panel .jobs_content .content .info .icon span {
                 padding: 0 3px; }
               .main-container .jobs .jobs_panel .jobs_content .content .info .icon:hover {
+                color: green;
+                text-decoration: underline; }
+            .main-container .jobs .jobs_panel .jobs_content .content .info .view-icon, .main-container .jobs .jobs_panel .jobs_content .content .info .download-icon {
+              display: block;
+              color: #808080;
+              font-size: 12px;
+              padding: 1px 0;
+              text-decoration: none; }
+              .main-container .jobs .jobs_panel .jobs_content .content .info .view-icon span, .main-container .jobs .jobs_panel .jobs_content .content .info .download-icon span {
+                padding: 0 3px; }
+              .main-container .jobs .jobs_panel .jobs_content .content .info .view-icon:hover, .main-container .jobs .jobs_panel .jobs_content .content .info .download-icon:hover {
                 color: green;
                 text-decoration: underline; }
         .main-container .jobs .jobs_panel .jobs_content .content.content_name {
@@ -313,7 +364,8 @@ input:focus, select:focus {
             max-width: 100%;
             max-height: 100%; }
         .main-container .jobs .jobs_panel .jobs_content .content.content_organization {
-          width: 28%; }
+          width: 28%;
+          padding-left: 10px; }
         .main-container .jobs .jobs_panel .jobs_content .content.content_institute {
           width: 28%; }
         .main-container .jobs .jobs_panel .jobs_content .content.content_more {
@@ -340,8 +392,9 @@ input:focus, select:focus {
   .modal .modal-content {
     position: relative;
     box-shadow: 0 0 1px #d8d8d8;
-    max-width: 700px;
-    height: 24em;
+    max-width: 900px;
+    min-width: 700px;
+    min-height: 330px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -354,7 +407,7 @@ input:focus, select:focus {
         .modal .modal-content .modal-top .search-tags input {
           box-sizing: border-box;
           border: 1px solid #ccc;
-          border-radius: 4px;
+          border-radius: 2px;
           padding: 4px 8px; }
       .modal .modal-content .modal-top .tags-alphabets {
         display: inline-block;
@@ -390,28 +443,383 @@ input:focus, select:focus {
         .modal .modal-content .modal-bottom .row .tags-wrapper {
           display: inline-block;
           vertical-align: top;
-          width: 300px; }
+          width: 300px;
+          line-height: 1.5; }
           .modal .modal-content .modal-bottom .row .tags-wrapper label {
-            font-size: 12px; }
+            font-size: 13px;
+            font-family: "Droid Sans", sans-serif; }
 
-.resume-container {
+.view-profile-modal {
   position: fixed;
   top: 0;
   left: 0;
+  transform: translate3d(0, 0);
   width: 100%;
-  height: 100%; }
-  .resume-container object {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 70%;
-    height: 100%; }
+  height: 100%;
+  overflow: auto;
+  background-color: white; }
 
-.slot-type-container {
-  margin-top: 5px; }
-  .slot-type-container a {
-    color: #808080;
-    font-size: 10px;
-    padding: 0 8px;
-    text-decoration: none; }
+.slot-type-container a {
+  color: #808080;
+  font-size: 10px;
+  padding: 0 8px;
+  text-decoration: none; }
+
+.jobs-wrapper-shell-loader .shell-loaders {
+  margin: 0 20px;
+  padding: 0 10px; }
+  .jobs-wrapper-shell-loader .shell-loaders .content {
+    display: inline-block;
+    padding: 5px 0 0 2px;
+    overflow: hidden;
+    font-size: 11px;
+    vertical-align: top; }
+    .jobs-wrapper-shell-loader .shell-loaders .content .info {
+      padding: 0 0 5px 0; }
+      .jobs-wrapper-shell-loader .shell-loaders .content .info .user_name {
+        margin-top: 15px;
+        width: 70px;
+        height: 15px; }
+      .jobs-wrapper-shell-loader .shell-loaders .content .info .user-experience {
+        margin-top: 10px;
+        width: 100px;
+        height: 15px; }
+      .jobs-wrapper-shell-loader .shell-loaders .content .info .user-extra {
+        margin-top: 20px;
+        width: 50px;
+        height: 10px; }
+      .jobs-wrapper-shell-loader .shell-loaders .content .info .important_info {
+        font-size: 11px;
+        color: #333; }
+        .jobs-wrapper-shell-loader .shell-loaders .content .info .important_info.name {
+          font-size: 13px;
+          font-weight: bold; }
+      .jobs-wrapper-shell-loader .shell-loaders .content .info .extra_info {
+        color: #808080; }
+      .jobs-wrapper-shell-loader .shell-loaders .content .info .icon {
+        display: block;
+        color: #808080;
+        font-size: 12px;
+        padding: 1px 0;
+        text-decoration: none; }
+        .jobs-wrapper-shell-loader .shell-loaders .content .info .icon span {
+          padding: 0 3px; }
+        .jobs-wrapper-shell-loader .shell-loaders .content .info .icon:hover {
+          color: green;
+          text-decoration: underline; }
+  .jobs-wrapper-shell-loader .shell-loaders .content.content_name {
+    padding-top: 25px;
+    width: 18%; }
+    .jobs-wrapper-shell-loader .shell-loaders .content.content_name img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      max-width: 100%;
+      max-height: 100%; }
+  .jobs-wrapper-shell-loader .shell-loaders .content.content_organization {
+    width: 28%;
+    padding-top: 35px; }
+    .jobs-wrapper-shell-loader .shell-loaders .content.content_organization .name {
+      width: 150px;
+      height: 20px;
+      margin-bottom: 10px; }
+    .jobs-wrapper-shell-loader .shell-loaders .content.content_organization .designation {
+      width: 75px;
+      height: 15px;
+      margin-bottom: 15px; }
+    .jobs-wrapper-shell-loader .shell-loaders .content.content_organization .experience {
+      width: 150px;
+      height: 15px;
+      margin-bottom: 10px; }
+  .jobs-wrapper-shell-loader .shell-loaders .content.content_institute {
+    width: 28%;
+    padding-top: 35px; }
+    .jobs-wrapper-shell-loader .shell-loaders .content.content_institute .name {
+      width: 150px;
+      height: 20px;
+      margin-bottom: 10px; }
+    .jobs-wrapper-shell-loader .shell-loaders .content.content_institute .degree {
+      width: 75px;
+      height: 15px;
+      margin-bottom: 15px; }
+  .jobs-wrapper-shell-loader .shell-loaders .content.content_more {
+    padding-top: 35px;
+    width: 19%; }
+    .jobs-wrapper-shell-loader .shell-loaders .content.content_more .icon {
+      width: 125px;
+      height: 10px;
+      margin-bottom: 10px; }
+
+.checkboxes {
+  font-size: 13px;
+  font-family: "Droid Sans", sans-serif !important;
+  color: #1b1b1b;
+  cursor: pointer; }
+  .checkboxes input {
+    margin: 0 5px 0 0 !important;
+    vertical-align: middle; }
+
+.ui-widget input {
+  font-family: "Droid Sans", sans-serif;
+  font-size: 15px; }
+
+.ui-widget button {
+  font-family: "Droid Sans", sans-serif;
+  font-size: 13px; }
+
+.margin-right {
+  margin-right: 0 !important; }
+
+.js-remove-tag.job-seeker-tags {
+  height: 24px;
+  border: 1px solid #ececec;
+  color: #4b4b4b;
+  font-size: 12px;
+  padding: 2px 4px;
+  cursor: pointer;
+  background: #f5f6f7; }
+
+.interview-invite-message {
+  color: #4b4b4b;
+  font-size: 12px; }
+
+.filter-tag-group {
+  display: inline-block;
+  font-size: 12px; }
+  .filter-tag-group .text {
+    margin-right: 5px; }
+
+button.button.link.submit-filters {
+  padding-top: 6px; }
+
+.profile_container {
+  width: 95%;
+  margin: 40px auto; }
+  .profile_container .profile_header {
+    width: auto;
+    margin: 0 auto;
+    background-color: #efefef;
+    padding: 10px 15px; }
+    .profile_container .profile_header span {
+      display: inline-block;
+      overflow: auto;
+      font-size: 13px;
+      font-family: 'Noto Sans',sans-serif;
+      text-align: left;
+      font-weight: bold; }
+    .profile_container .profile_header .name {
+      width: 18%; }
+    .profile_container .profile_header .organization {
+      width: 26%; }
+    .profile_container .profile_header .institute {
+      width: 30%; }
+    .profile_container .profile_header .more {
+      width: 24%; }
+  .profile_container .buttons.extra-height {
+    height: 30px; }
+  .profile_container .profile_content {
+    padding: 0 15px 10px 15px; }
+    .profile_container .profile_content .content {
+      display: inline-block;
+      padding: 1px;
+      margin: 0;
+      overflow: hidden;
+      font-size: 12px;
+      vertical-align: top; }
+      .profile_container .profile_content .content .info {
+        padding: 10px 0; }
+        .profile_container .profile_content .content .info .important_info {
+          font-size: 12px;
+          color: #333;
+          font-family: 'Open Sans'; }
+          .profile_container .profile_content .content .info .important_info.name {
+            font-size: 13px;
+            font-weight: bold; }
+        .profile_container .profile_content .content .info .extra_info {
+          color: #808080;
+          font-family: "Droid Sans",sans-serif;
+          padding: 2px 0; }
+        .profile_container .profile_content .content .info .icon {
+          display: block;
+          font-size: 16px;
+          color: #424242;
+          padding: 2px; }
+          .profile_container .profile_content .content .info .icon span {
+            font-size: 12px;
+            padding: 2px; }
+          .profile_container .profile_content .content .info .icon:hover {
+            color: green; }
+    .profile_container .profile_content .content.name {
+      width: 18%; }
+      .profile_container .profile_content .content.name img {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        max-width: 100%;
+        max-height: 100%; }
+    .profile_container .profile_content .content.organization {
+      width: 26%; }
+      .profile_container .profile_content .content.organization .shell-loader-container {
+        padding-top: 40px; }
+        .profile_container .profile_content .content.organization .shell-loader-container .name.animated-background {
+          width: 150px;
+          min-height: 10px;
+          margin-bottom: 20px; }
+        .profile_container .profile_content .content.organization .shell-loader-container .designation.animated-background {
+          width: 150px;
+          min-height: 10px; }
+    .profile_container .profile_content .content.institute {
+      width: 30%; }
+      .profile_container .profile_content .content.institute .shell-loader-container {
+        padding-top: 40px; }
+        .profile_container .profile_content .content.institute .shell-loader-container .name.animated-background {
+          width: 150px;
+          min-height: 10px;
+          margin-bottom: 20px; }
+        .profile_container .profile_content .content.institute .shell-loader-container .designation.animated-background {
+          width: 150px;
+          min-height: 10px; }
+    .profile_container .profile_content .content.more {
+      width: 24%; }
+    .profile_container .profile_content .buttons a {
+      font-size: 12px;
+      text-decoration: none;
+      display: inline-block;
+      width: 19%;
+      color: #808080; }
+      .profile_container .profile_content .buttons a:hover {
+        color: green;
+        text-decoration: underline; }
+    .profile_container .profile_content .more_info {
+      width: 99%;
+      margin: 0 auto;
+      display: none; }
+      .profile_container .profile_content .more_info .layer .marital-status-container {
+        width: 18%;
+        vertical-align: top; }
+      .profile_container .profile_content .more_info .layer .permit-container {
+        width: 26%;
+        vertical-align: top; }
+      .profile_container .profile_content .more_info .layer .score-container {
+        width: 30%; }
+      .profile_container .profile_content .more_info .layer .languages-container {
+        width: 24%;
+        vertical-align: top; }
+      .profile_container .profile_content .more_info .layer .row .column {
+        width: 33%;
+        display: inline-block;
+        padding-bottom: 5px; }
+      .profile_container .profile_content .more_info .layer .info {
+        display: inline-block; }
+        .profile_container .profile_content .more_info .layer .info .score {
+          display: inline-block; }
+
+.tab_container {
+  width: 95%;
+  margin: 40px auto; }
+  .tab_container .tab {
+    display: inline-block;
+    width: 30%;
+    min-height: 150px;
+    vertical-align: top; }
+    .tab_container .tab.center {
+      margin: 0 4.5%; }
+    .tab_container .tab .tab_heading {
+      background-color: #efefef;
+      padding: 10px; }
+      .tab_container .tab .tab_heading span {
+        color: #4b4b4b;
+        font-size: 14px;
+        font-family: "Droid Sans", sans-serif; }
+    .tab_container .tab .tab_content {
+      padding: 10px; }
+      .tab_container .tab .tab_content input {
+        padding: 8px 12px;
+        margin: 1px 0 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        width: 70%; }
+      .tab_container .tab .tab_content .info {
+        min-height: 40px; }
+        .tab_container .tab .tab_content .info .left {
+          display: inline-block;
+          min-width: 265px; }
+
+.resume-container {
+  width: 95%;
+  margin: 40px auto; }
+  .resume-container .resume-overlay {
+    position: relative;
+    top: -3000px;
+    height: 3000px;
+    background: rgba(255, 255, 255, 0.01); }
+  .resume-container .resume {
+    display: inline-block;
+    width: 65%;
+    vertical-align: top;
+    margin-right: 4.5%; }
+    .resume-container .resume .resume-embed-container {
+      width: 100%;
+      text-align: center;
+      background: #f5f6f7; }
+      .resume-container .resume .resume-embed-container .canvas {
+        margin-top: 10px;
+        border: 1px solid #ccc; }
+  .resume-container .cover_letter {
+    display: inline-block;
+    width: 30%;
+    height: 800px;
+    vertical-align: top; }
+    .resume-container .cover_letter .content {
+      padding: 20px;
+      font-size: 13px; }
+  .resume-container .head {
+    background-color: #efefef;
+    padding: 15px;
+    color: #4b4b4b;
+    font-size: 14px;
+    position: relative; }
+    .resume-container .head button {
+      position: absolute;
+      right: 18px;
+      top: 10px; }
+
+.margin-right {
+  margin-right: 0 !important; }
+
+.posted-tags {
+  margin-top: 10px;
+  line-height: 3; }
+  .posted-tags .tags-jobSeeker {
+    display: inline-block;
+    width: 85px;
+    margin-right: 5px; }
+    .posted-tags .tags-jobSeeker .tags-content {
+      cursor: pointer; }
+
+.js-remove-tag.job-seeker-tags {
+  height: 24px;
+  border: 1px solid #ececec;
+  color: #4b4b4b;
+  font-size: 12px;
+  padding: 2px 4px;
+  cursor: pointer;
+  background: #f5f6f7; }
+
+.overflow-hidden {
+  overflow: hidden; }
+
+.close-overlay-profile-modal {
+  /* display: inline-block; */
+  /* text-align: right; */
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 20px;
+  color: #ccc;
+  cursor: pointer; }
+
+.no-cover-but-resume {
+  width: 100% !important;
+  margin-right: 0 !important; }

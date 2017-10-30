@@ -1,0 +1,97 @@
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.important-info-color {
+  color: #333; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
+.user_profile_side a {
+  font-size: 12px;
+  color: #666;
+  text-decoration: none; }
+
+.main-container {
+  padding: 60px;
+  background: #f1f2f3;
+  min-height: calc(100% - 155px); }
+  .main-container .connect-boxes-container {
+    margin-bottom: 80px; }
+    .main-container .connect-boxes-container .linkedin-connect {
+      display: inline-block;
+      width: 48%;
+      margin-right: 40px;
+      vertical-align: top; }
+      .main-container .connect-boxes-container .linkedin-connect .panel-header {
+        border: 0 none;
+        background: url(https://static.updazz.com/recruiter/resources/images/greydotpattern.png) repeat;
+        padding: 35px;
+        text-transform: uppercase; }
+      .main-container .connect-boxes-container .linkedin-connect .panel-footer {
+        border-radius: 0;
+        background: url(https://static.updazz.com/recruiter/resources/images/whitedotpattern.png) repeat;
+        box-shadow: none; }
+        .main-container .connect-boxes-container .linkedin-connect .panel-footer .list-group {
+          box-shadow: none;
+          min-height: 190px; }
+          .main-container .connect-boxes-container .linkedin-connect .panel-footer .list-group .list-group-item {
+            margin: 15px 0 0 0;
+            border: 0 none;
+            vertical-align: middle;
+            background: #f5f5f5;
+            padding: 10px 30px 12px 30px;
+            box-shadow: 0 2px 2px -1px #ddd;
+            min-height: 50px; }
+            .main-container .connect-boxes-container .linkedin-connect .panel-footer .list-group .list-group-item i {
+              float: left;
+              margin-right: 15px; }
+            .main-container .connect-boxes-container .linkedin-connect .panel-footer .list-group .list-group-item span {
+              vertical-align: sub; }
+    .main-container .connect-boxes-container .image-container {
+      display: inline-block;
+      width: 46%;
+      vertical-align: top; }
+      .main-container .connect-boxes-container .image-container img {
+        width: 100%;
+        height: 100%; }
+  .main-container .connect-box-bottom {
+    text-align: center; }
+    .main-container .connect-box-bottom a {
+      display: block; }
+    .main-container .connect-box-bottom .skip {
+      text-decoration: none;
+      margin-top: 10px;
+      color: #a3a1a1;
+      font-size: 13px; }
+
+.confirmation-mssg .heading {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 10px; }
+
+.confirmation-mssg .footer {
+  font-size: 13px;
+  line-height: 25px; }
+  .confirmation-mssg .footer .first {
+    font-weight: bold; }
+  .confirmation-mssg .footer .second {
+    color: #4b4b4b; }

@@ -1,73 +1,206 @@
 @import "colors.scss";
+@import "fonts.scss";
 
-.logo-container {
-    width: 60%;
-    margin: 20px auto;
-    text-align: center;
-    .logo-main {
-        font-size: 64px;
-        display: inline-block;
-    }
-    .logo-extra {
-        font-size: 30px;
-        text-align: right;
-        margin-right: 10px;
-    }
-}
+.main-container {
+    font-family: $droid-font;
+    .logo-container {
 
-.login-container {
-    width: 60%;
-    margin: 20px auto;
-
-    .form {
-        display: inline-block;
-        width: 38%;
-        padding: 0 20px;
-
-        .form_heading {
+        margin: 60px 0 20px 0;
+        text-align: center;
+        font-family: $comfortaa;
+        color: $color-black;
+        font-weight: 500;
+        .logo-main {
+            font-size: 64px;
             display: inline-block;
-            font-size: 20px;
-            color: $color-black-text;
-            margin-bottom: 10px;
         }
-
-        .field {
-            padding: 10px 0 5px 0;
-            position: relative;
-            &.links {
-                height: 20px;
-                line-height: 20px;
-            }
-            .button.log-in {
-                position: absolute;
-                left: 0;
-            }
-            .lost-paswd-link {
-                position: absolute;
-                right: 0;
-
-            }
-            input, select {
-                padding: 8px 16px;
-                border: 1px solid $select-border;
-                width: 100%;
-                box-sizing: border-box;
-                background-color: inherit;
-            }
+        .logo-extra {
+            font-size: 30px;
+            text-align: right;
+            margin-right: 10px;
         }
     }
 
-    .login-form {
-        vertical-align: top;
-        padding-right: 40px;
-        .forgot-password-form {
-            margin-top: 20px;
+    .login-tab-container {
+        text-align: center;
+
+        margin-bottom: 30px;
+        font-family: $droid-font;
+        .login-tab {
+            display: inline-block;
+            padding: 0 32px;
+            line-height: 49px;
+            font-size: 24px;
+            &.recruiter {
+                background-color: #996;
+                color: #fff;
+                border: 1px solid #996;
+                border-radius: 0 4px 4px 0;
+
+            }
+            &.jobseeker {
+                background-color: #fff;
+                color: $color-black-text;
+                border: 1px solid #996;
+                border-radius: 4px 0 0 4px;
+                cursor: pointer;
+                margin-right: -10px;
+            }
         }
     }
 
-    .register-form {
-        border-left: 1px solid #d8d8d8;
-        height: 100%;
-        padding-left: 40px;
-    }
+    .container {
+
+
+        .login-container {
+            font-family: $droid-font;
+            text-align: center;
+            margin-bottom: 40px;
+            .vertical-line-container {
+                display: inline-block;
+                height: 489px;
+                vertical-align: top;
+                .vertical-line-top {
+
+                    border-right: 1px solid #d8d8d8;
+                    height: 50%;
+                }
+                .or {
+                    position: relative;
+                    left: 10px;
+                    padding: 5px 0;
+                    color: $extra-info-color;
+                }
+                .vertical-line-bottom {
+
+                    border-right: 1px solid #d8d8d8;
+                    height: 50%;
+                }
+            }
+            .form {
+                display: inline-block;
+                width: 26%;
+                padding: 0 40px;
+                text-align: left;
+                .form_heading {
+                    display: inline-block;
+                    font-size: 21px;
+                    color: $color-black;
+                    margin-bottom: 10px;
+                }
+                .field {
+                    padding: 10px 0 5px 0;
+                    position: relative;
+                    input, select {
+                        display: block;
+                        width: 100%;
+                        height: 34px;
+                        padding: 6px 12px;
+                        font-size: 14px;
+                        line-height: 1.428571429;
+                        color: $input-color;
+                        vertical-align: middle;
+                        border: 1px solid $select-border;
+                        border-radius: 0;
+                        box-sizing: border-box;
+                        background: inherit;
+                        transition: border-color 0.2s ease-in-out;
+                        &:focus {
+                            border-color: $input-focus-color;
+                        }
+                    }
+                    #login-email {
+                        background: url(https://static.updazz.com/resources/img/email.png) no-repeat 10px;
+                        padding-left: 41px;
+                    }
+                    #login-password {
+                        background: url(https://static.updazz.com/resources/img/lock.png) no-repeat 10px;
+                        padding-left: 41px;
+                    }
+                    &.links {
+                        height: 38px;
+                        line-height: 38px;
+                    }
+                    .button.log-in {
+                        position: absolute;
+                        left: 0;
+                        font-size: 20px;
+                        background-color: #9b9b9b;
+                        padding: 8px 30px;
+                        color: #fff;
+                        border: 0;
+                        font-family: inherit;
+                        &.hover {
+                            background-color: #c5c3c3;
+                        }
+                    }
+                    .button.register {
+                        padding: 8px 30px;
+                        color: #fff;
+                        border: 0;
+                        background-color: #9b9b9b;
+                        font-size: 20px;
+                        font-family: $droid-font;
+                        &.hover {
+                            background-color: #c5c3c3;
+                        }
+                    }
+                    .lost-paswd-link {
+                        position: absolute;
+                        right: 0;
+                        bottom: -10px;
+                        font-size: 13px;
+                        color: #97ab60;
+                        line-height: 38px;
+                        text-decoration: none;
+                        &:hover {
+                            text-decoration: underline;
+                            color: $color-black-text;
+                        }
+                    }
+
+                }
+            }
+
+            .login-form {
+                vertical-align: top;
+                padding-right: 40px;
+                .forgot-password-form {
+                    margin-top: 20px;
+                    .forgot-password-heading {
+
+                        font-weight: bold;
+                        font-size: 14px;
+                    }
+                    .send-forgot-paswd {
+                        background-color: #9b9b9b;
+                        padding: 8px 30px;
+                        color: #fff;
+                        border: 0;
+                        font-size: 15px;
+                    }
+                }
+            }
+
+            .register-form {
+                height: 100%;
+                padding-left: 60px;
+            }
+        }
+
+        .browse-link-container {
+            text-align: center;
+
+            .browse-link {
+                font-size: 13px;
+                color: #97ab60;
+                line-height: 38px;
+                text-decoration: none;
+                &:hover {
+                    text-decoration: underline;
+                    color: $color-black-text;
+                }
+            }
+        }
+}
 }

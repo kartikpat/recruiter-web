@@ -1,0 +1,86 @@
+@import "colors.scss";
+@import "fonts.scss";
+
+.main-container {
+    padding: 20px 10px;
+    min-height: calc(100% - 155px);
+    .edit-profile-form {
+        padding: 20px;
+        border: 1px solid $divider-color;
+        font-family: $droid-font;
+        color: $important-info-color;
+        .edit-profile-form-heading {
+            font-size: 18px;
+            color: $color-heading;
+            margin-bottom: 20px;
+        }
+        .form-left-container, .form-right-container {
+            display: inline-block;
+            width: 49%;
+            vertical-align: top;
+        }
+        .save-form-button {
+            text-align: center;
+            button {
+                margin-top: 20px;
+                padding: 6px 40px;
+                font-size: 16px;
+            }
+        }
+        .field-container {
+            padding: 10px;
+            vertical-align: middle;
+            .label {
+                display: inline-block;
+                width: 22%;
+                font-size: 12px;
+                &.about, &.social-links {
+                    vertical-align: top;
+                    padding-top: 15px;
+                }
+                &.no-effect {
+                    vertical-align: top;
+                    padding-top: 10px;
+                }
+            }
+            .field {
+                display: inline-block;
+                width: 75%;
+
+                .social-fields {
+                    margin: 10px 0;
+                }
+                &.radio-buttons-container {
+                    padding: 10px 20px;
+                    background: #ddd;
+                    box-sizing: border-box;
+                    width: 63.8%;
+                }
+                input, select, textarea {
+                    padding: 8px;
+                    border: 1px solid $select-border;
+                    width: 85%;
+                    background-color: inherit;
+                }
+                .radio-buttons {
+                    vertical-align: top;
+                    font-size: 12px;
+                    &:first-child {
+                    margin-right: 15%;
+                    }
+                    input{
+                        width: auto;
+
+                    }
+                    span {
+                        position: relative;
+                        top: -2px;
+                    }
+                }
+            }
+            .top {
+                vertical-align: top;
+            }
+        }
+    }
+}

@@ -1,8 +1,19 @@
-.highlight {
-    color: green !important;
+@import "colors.scss";
+@import "fonts.scss";
+
+@mixin input-styling {
+    box-sizing: border-box;
+    border: 1px solid $select-border;
+    border-radius: 2px;
+    padding: 4px 8px;
 }
 
-
+.job-title {
+    width: 95%;
+    font-size: 18px;
+    margin: 20px auto;
+    color: $color-green;
+}
 
 .profile_container {
    width: 95%;
@@ -11,34 +22,36 @@
   .profile_header {
       width: auto;
       margin: 0 auto;
-      background-color: #f1f1f1;
+      background-color: $tab-background-color;
       padding: 10px 15px;
-      span{
+      span {
           display: inline-block;
-
           overflow: auto;
-          font-size: 16px;
+          font-size: 13px;
+          font-family: 'Noto Sans',sans-serif;
           text-align: left;
+          font-weight: bold;
         }
         .name {
-            width: 21%;
+            width: 18%;
         }
         .organization {
-            width: 25%;
+            width: 26%;
         }
         .institute {
-            width: 28%;
+            width: 30%;
         }
         .more {
             width: 24%;
         }
    }
 
+   .buttons.extra-height {
+       height: 30px;
+   }
+
   .profile_content {
-    margin:5px;
-    padding: 2px;
-
-
+    padding: 0 15px 10px 15px;
 
     .content {
       display: inline-block;
@@ -52,14 +65,17 @@
                 padding: 10px 0;
                 .important_info {
                     font-size: 12px;
-                    color: #000000;
+                    color: $important-info-color;
+                    font-family: 'Open Sans';
                     &.name {
-                        font-size: 16px;
+                        font-size: 13px;
                     }
 
                 }
                 .extra_info {
-                    color: #727272;
+                    color: $extra-info-color;
+                    font-family: "Droid Sans",sans-serif;
+                    padding: 2px 0;
                 }
 
                 .icon {
@@ -79,7 +95,7 @@
 
     }
       .content.name {
-          width: 21%;
+          width: 18%;
           img{
               width: 50px;
               height: 50px;
@@ -87,25 +103,58 @@
               max-width: 100%;
               max-height: 100%;
           }
+          .name.animated-background {
+              width: 100px;
+              min-height: 10px;
+              margin-bottom: 10px;
+          }
+          .email {
+              width: 100px;
+              min-height: 10px;
+          }
       }
       .content.organization {
-          width: 25%;
+          width: 26%;
+          .shell-loader-container {
+              padding-top: 40px;
+              .name.animated-background {
+                  width: 150px;
+                  min-height: 10px;
+                  margin-bottom: 20px;
+              }
+              .designation.animated-background {
+                  width: 150px;
+                  min-height: 10px;
+              }
+          }
       }
       .content.institute {
-          width: 28%;
+          width: 30%;
+          .shell-loader-container {
+               padding-top: 40px;
+              .name.animated-background {
+                  width: 150px;
+                  min-height: 10px;
+                  margin-bottom: 20px;
+              }
+              .designation.animated-background {
+                  width: 150px;
+                  min-height: 10px;
+              }
+          }
       }
       .content.more {
           width: 24%;
       }
       .buttons {
         a {
-          padding: 5px;
+          font-size: 12px;
           text-decoration: none;
           display: inline-block;
           width: 19%;
-          color: #666;
+          color: $extra-info-color;
           &:hover {
-            color: green;
+            text-decoration: underline;
           }
         }
       }
@@ -114,7 +163,22 @@
          margin: 0 auto;
          display: none;
          .layer {
-                     padding: 10px;
+             .marital-status-container {
+                 width: 18%;
+                 vertical-align: top;
+             }
+             .permit-container {
+                 width: 26%;
+                 vertical-align: top;
+             }
+             .score-container {
+                 width: 30%;
+             }
+             .languages-container {
+                 width: 24%;
+                 vertical-align: top;
+             }
+
          .row {
            .column {
              width: 33%;
@@ -124,11 +188,6 @@
          }
         .info {
           display: inline-block;
-          width: 18%;
-
-          &.s {
-            width: auto;
-          }
           .score {
             display: inline-block;
           }
@@ -138,9 +197,7 @@
       }
   }
 
-div.jobs_container >div.jobs_content:nth-of-type(even){
-  background:#e9e9e9;
-}
+
 }
 .heading {
   font-size: 12px;
@@ -179,21 +236,23 @@ div.jobs_container >div.jobs_content:nth-of-type(even){
 
     }
     .tab_heading {
-      background-color: #666;
+      background-color: $tab-background-color;
       padding: 10px;
       span{
-        color: #fff;
+        color: $color-black-text;
+        font-size: 14px;
+        font-family: $droid-font;
       }
 
     }
     .tab_content {
-      padding: 20px;
+      padding: 10px;
       input {
               padding: 8px 12px;
               margin: 1px 0 10px 0;
               border: 1px solid #ccc;
-              border-radius: 4px;
-              width: 80%;
+              border-radius: 2px;
+              width: 70%;
       }
       .info {
         margin-bottom: 40px;
@@ -246,4 +305,53 @@ div.jobs_container >div.jobs_content:nth-of-type(even){
     padding: 15px;
     color: #fff;
   }
+}
+
+.margin-right {
+    margin-right: 0 !important;
+}
+
+// .tags-container {
+//     position: absolute;
+//     right: 0;
+//     display: inline-block;
+//     width: 52%;
+//     .ta {
+//
+//         .tags-content {
+//             display: inline-block;
+//             input {
+//                 @include input-styling;
+//                 margin-right: 25px;
+//             }
+//             button {
+//                 padding: 5px 12px;
+//             }
+//         }
+//
+//     }
+//
+// }
+
+.posted-tags {
+    margin-top: 10px;
+    line-height: 3;
+    .tags-jobSeeker {
+        display: inline-block;
+        width: 85px;
+        margin-right: 5px;
+        .tags-content {
+                cursor: pointer;
+        }
+    }
+}
+
+.js-remove-tag.job-seeker-tags {
+    height: 24px;
+    border: 1px solid #ececec;
+    color: #4b4b4b;
+    font-size: 12px;
+    padding: 2px 4px;
+    cursor: pointer;
+    background: #f5f6f7;
 }

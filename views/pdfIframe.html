@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+	<!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet"> -->
+	{{#styles.length}}
+    	{{#styles}}
+    		<link rel="stylesheet" href="/{{.}}">
+
+    	{{/styles}}
+	{{/styles.length}}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript">
+		var baseUrl = '{{baseUrl}}';
+		var userID = '{{userID}}';
+		var jobID = '{{jobID}}';
+	</script>
+</head>
+<body>
+<div class="pdf-container"><embed src=""></embed></div>
+
+<!-- <div  class="pdf-page " id="pdf-page" ></div> -->
+
+
+{{#scripts.length}}
+    {{#scripts}}
+        <script type="text/javascript" src="/{{.}}"></script>
+    {{/scripts}}
+{{/scripts.length}}
+
+</html>

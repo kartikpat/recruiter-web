@@ -1,0 +1,592 @@
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.important-info-color {
+  color: #333; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box; }
+
+.clearfix {
+  clear: both;
+  display: block; }
+
+.main-container {
+  min-height: calc(100% - 155px); }
+
+.user_profile {
+  width: 95%;
+  margin: 40px auto;
+  padding: 20px;
+  box-shadow: 0 1px 2px #ccc; }
+  .user_profile .image {
+    display: inline-block;
+    margin-right: 20px;
+    width: 180px;
+    min-width: 150px; }
+    .user_profile .image .edit_profile {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      height: 225px;
+      /*&:after {
+                font-family: 'FontAwesome';
+                content: "\f040";
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                color: white;
+                font-size: 18px;
+            }*/ }
+      .user_profile .image .edit_profile img {
+        width: 100%;
+        height: 100%; }
+      .user_profile .image .edit_profile i {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(0, 153, 255, 0.57);
+        border-radius: 50%;
+        padding: 8px;
+        color: rgba(255, 255, 255, 0.63);
+        cursor: pointer; }
+  .user_profile .user_details {
+    display: inline-block;
+    width: calc(100% - 205px);
+    min-height: 100px;
+    position: relative;
+    vertical-align: top; }
+    .user_profile .user_details .user_information .user_name {
+      display: inline-block;
+      height: 25px;
+      width: 150px;
+      margin-bottom: 5px;
+      font-size: 20px;
+      color: #333;
+      font-family: "Droid Sans",sans-serif; }
+    .user_profile .user_details .user_information .user_designation {
+      margin-bottom: 20px;
+      height: 15px;
+      min-width: 300px;
+      max-width: 400px;
+      color: #808080;
+      font-size: 16px;
+      font-family: "Droid Sans",sans-serif; }
+      .user_profile .user_details .user_information .user_designation .organisation-url {
+        text-decoration: none; }
+    .user_profile .user_details .user-about {
+      min-width: 250px;
+      color: #333;
+      font-size: 14px;
+      font-family: "Droid Sans",sans-serif; }
+      .user_profile .user_details .user-about.animated-background {
+        max-width: 350px;
+        height: 15px; }
+    .user_profile .user_details .edit_profile {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 35px;
+      height: 25px;
+      text-align: right; }
+      .user_profile .user_details .edit_profile button {
+        background-color: inherit;
+        border: none;
+        cursor: pointer;
+        outline: none; }
+        .user_profile .user_details .edit_profile button:hover {
+          color: blue; }
+        .user_profile .user_details .edit_profile button i {
+          font-size: 18px; }
+    .user_profile .user_details .social-buttons-container {
+      position: relative;
+      margin-top: 20px;
+      min-height: 40px; }
+      .user_profile .user_details .social-buttons-container .social-buttons-not-connected {
+        position: absolute;
+        right: 0; }
+        .user_profile .user_details .social-buttons-container .social-buttons-not-connected .social-links {
+          margin-right: 10px; }
+          .user_profile .user_details .social-buttons-container .social-buttons-not-connected .social-links img {
+            width: 100px;
+            height: 30px; }
+        .user_profile .user_details .social-buttons-container .social-buttons-not-connected .connect-to-social {
+          margin-right: 5px; }
+      .user_profile .user_details .social-buttons-container .social-buttons-connected {
+        position: absolute;
+        left: 0; }
+        .user_profile .user_details .social-buttons-container .social-buttons-connected .social-links {
+          margin-right: 10px; }
+        .user_profile .user_details .social-buttons-container .social-buttons-connected .connected-to-social {
+          margin-right: 5px; }
+  .user_profile .bottom_information {
+    margin: 0 auto;
+    min-height: 30px;
+    position: relative;
+    line-height: 30px; }
+    .user_profile .bottom_information .profile_link {
+      position: absolute;
+      top: 10px;
+      left: 0px;
+      min-width: 300px;
+      height: 30px;
+      text-decoration: none;
+      font-size: 13px;
+      font-family: "Droid Sans",sans-serif; }
+      .user_profile .bottom_information .profile_link:hover {
+        text-decoration: underline;
+        color: #23527c; }
+    .user_profile .bottom_information .extra_info {
+      position: absolute;
+      top: 10px;
+      right: 10px; }
+      .user_profile .bottom_information .extra_info .viewed, .user_profile .bottom_information .extra_info .last_login {
+        display: inline-block;
+        padding: 0 5px; }
+      .user_profile .bottom_information .extra_info .viewed {
+        min-width: 50px;
+        height: 25px; }
+      .user_profile .bottom_information .extra_info .last_login {
+        min-width: 100px;
+        height: 25px; }
+
+.jobs_panel {
+  width: 95%;
+  margin: 40px auto;
+  min-height: 300px; }
+  .jobs_panel .panel_heading {
+    font-size: 18px;
+    color: #708732;
+    font-family: "Droid Sans",sans-serif; }
+    .jobs_panel .panel_heading a {
+      padding: 5px;
+      font-size: 13px;
+      font-family: "Droid Sans",sans-serif;
+      text-decoration: none; }
+  .jobs_panel .jobs_container {
+    margin-top: 10px; }
+    .jobs_panel .jobs_container .jobs_header {
+      width: 100%;
+      display: table;
+      padding: 0 10px;
+      margin: 0 auto;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 1px;
+      background: #ececec;
+      border: 1px solid #d8d8d8; }
+      .jobs_panel .jobs_container .jobs_header span {
+        display: inline-block;
+        font-size: 12px;
+        text-align: left;
+        font-weight: bold;
+        font-family: "Droid Sans",sans-serif; }
+    .jobs_panel .jobs_container .jobs_content {
+      border-bottom: 1px solid #d0d0d0;
+      height: 60px;
+      line-height: 1.4;
+      padding: 0 10px;
+      display: table;
+      width: 100%; }
+      .jobs_panel .jobs_container .jobs_content:nth-child(odd) {
+        background-color: #f5f6f7; }
+      .jobs_panel .jobs_container .jobs_content .column {
+        display: table-cell;
+        color: #242424;
+        font-size: 13px;
+        font-family: "Droid Sans",sans-serif;
+        vertical-align: middle; }
+    .jobs_panel .jobs_container .date {
+      width: 10%; }
+    .jobs_panel .jobs_container .title {
+      width: 38%; }
+    .jobs_panel .jobs_container .status {
+      width: 15%; }
+      .jobs_panel .jobs_container .status .rejected-message {
+        margin-left: 10px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 27px;
+        background: #469de7;
+        cursor: pointer;
+        width: 25px;
+        height: 27px;
+        line-height: 27px;
+        color: #ffffff;
+        position: relative; }
+        .jobs_panel .jobs_container .status .rejected-message:hover .tooltip-message {
+          visibility: visible; }
+        .jobs_panel .jobs_container .status .rejected-message .tooltip-message {
+          position: absolute;
+          visibility: hidden;
+          z-index: 2;
+          top: 50%;
+          left: 120%;
+          transform: translate(0%, -50%);
+          padding: 15px 15px;
+          width: 175px;
+          background-color: #555;
+          color: #fff;
+          border-radius: 7px;
+          line-height: 10px; }
+          .jobs_panel .jobs_container .status .rejected-message .tooltip-message::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(0%, -50%);
+            margin-left: -10px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent #555 transparent transparent; }
+    .jobs_panel .jobs_container .views {
+      width: 14%; }
+      .jobs_panel .jobs_container .views .applied-link {
+        display: block; }
+        .jobs_panel .jobs_container .views .applied-link a {
+          text-decoration: none; }
+          .jobs_panel .jobs_container .views .applied-link a:hover {
+            text-decoration: underline;
+            color: #23527c; }
+    .jobs_panel .jobs_container .location {
+      width: 10%; }
+    .jobs_panel .jobs_container .action .edit-job-container {
+      display: inline-block;
+      width: 25px;
+      position: relative;
+      box-shadow: 4px 5px 5px 0px #e9e9e9;
+      cursor: pointer;
+      height: 27px;
+      vertical-align: middle;
+      font-size: 0; }
+    .jobs_panel .jobs_container .action span {
+      margin-right: 20px; }
+
+.job_posting {
+  padding: 20px;
+  /*.tags-container {
+        margin-left: 35px;
+        .suggested-tags-container {
+            margin-bottom: 10px;
+            .suggested-tags-heading {
+                padding: 0 0 10px 15px;
+                display: inline-block;
+                width: 15%;
+                vertical-align: top;
+            }
+            .suggested-tags-content {
+                display: inline-block;
+                width: 70%;
+                margin-left: 2em;
+                .js-show-suggested-tags {
+                    margin-right: 10px;
+                }
+            }
+        }
+        .selected-tags-container {
+            margin-bottom: 10px;
+            .selected-tags-heading {
+                padding: 0 0 10px 15px;
+                display: inline-block;
+                width: 15%;
+                vertical-align: top;
+            }
+            .selected-tags-content {
+                display: inline-block;
+                width: 70%;
+                margin-left: 2em;
+                .js-show-selected-tags {
+                    margin-right: 10px;
+                }
+            }
+        }
+        .add-tags-container {
+            .add-tags-heading {
+                padding: 0 0 10px 15px;
+                display: inline-block;
+                width: 15%;
+            }
+            .add-tags-content {
+                display: inline-block;
+                width: 70%;
+                margin-left: 2em;
+                input {
+                    box-sizing: border-box;
+                    border: 1px solid $select-border;
+                    border-radius: 4px;
+                    padding: 4px 8px;
+                }
+            }
+        } */ }
+  .job_posting .post_job .form-heading {
+    margin-bottom: 25px; }
+    .job_posting .post_job .form-heading .back {
+      display: block;
+      margin-bottom: 10px;
+      text-decoration: none;
+      font-size: 13px; }
+    .job_posting .post_job .form-heading .post-job-heading {
+      font-size: 18px;
+      color: #708732; }
+    .job_posting .post_job .form-heading .guidelines {
+      font-size: 18px;
+      text-decoration: none; }
+  .job_posting .post_job .post_job_form {
+    max-width: 1200px;
+    margin: 25px 0 0 50px; }
+    .job_posting .post_job .post_job_form .field-container {
+      padding: 10px; }
+      .job_posting .post_job .post_job_form .field-container .label {
+        display: inline-block;
+        width: 15%;
+        font-size: 14px;
+        color: #4b4b4b;
+        vertical-align: top;
+        height: 34px;
+        line-height: 34px;
+        cursor: pointer; }
+      .job_posting .post_job .post_job_form .field-container .field {
+        width: 60%;
+        display: inline-block; }
+        .job_posting .post_job .post_job_form .field-container .field.course-type {
+          height: 34px;
+          line-height: 40px; }
+        .job_posting .post_job .post_job_form .field-container .field .js-show-selected-tags, .job_posting .post_job .post_job_form .field-container .field .js-show-suggested-tags {
+          margin-right: 10px; }
+        .job_posting .post_job .post_job_form .field-container .field .salary-info {
+          margin: 10px 0; }
+        .job_posting .post_job .post_job_form .field-container .field input, .job_posting .post_job .post_job_form .field-container .field select {
+          display: block;
+          width: 70%;
+          height: 34px;
+          padding: 6px 12px;
+          font-size: 14px;
+          line-height: 34px;
+          color: #555;
+          border: 1px solid #ccc;
+          transition: border-color 0.20s ease-in-out;
+          background-color: inherit;
+          border-radius: 2px; }
+          .job_posting .post_job .post_job_form .field-container .field input:focus, .job_posting .post_job .post_job_form .field-container .field select:focus {
+            outline: none;
+            border-color: #66afe9; }
+        .job_posting .post_job .post_job_form .field-container .field input::-webkit-input-placeholder {
+          height: 34px;
+          line-height: 34px; }
+        .job_posting .post_job .post_job_form .field-container .field select.multiple {
+          height: 75px; }
+        .job_posting .post_job .post_job_form .field-container .field .multiple.industry {
+          margin-bottom: 10px; }
+        .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] {
+          display: inline-block;
+          width: auto;
+          height: auto;
+          margin: 0 3px 0 0; }
+        .job_posting .post_job .post_job_form .field-container .field select.half {
+          width: 29.5%;
+          display: inline-block; }
+        .job_posting .post_job .post_job_form .field-container .field textarea {
+          width: 70%;
+          min-height: 250px;
+          padding: 12px 20px;
+          box-sizing: border-box;
+          border: 1px solid #ccc;
+          border-radius: 2px;
+          background-color: inherit;
+          transition: border-color 0.20s ease-in-out; }
+          .job_posting .post_job .post_job_form .field-container .field textarea:focus {
+            outline: none;
+            border-color: #66afe9; }
+
+.modal {
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */ }
+  .modal.modal-rejected .modal-header {
+    padding: 10px; }
+    .modal.modal-rejected .modal-header .modal-heading {
+      font-size: 14px; }
+    .modal.modal-rejected .modal-header .close {
+      font-size: 16px; }
+  .modal.modal-rejected .modal-center {
+    padding: 20px 10px; }
+  .modal.modal-rejected .modal-footer {
+    padding: 6px 10px;
+    min-height: 40px; }
+
+.modal-content {
+  background-color: #ffffff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #888;
+  width: 60%;
+  border-radius: 5px; }
+
+.modal-header {
+  background-color: #e9e9e9;
+  padding: 15px;
+  position: relative; }
+  .modal-header .modal-heading {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    font-family: "Droid Sans",sans-serif; }
+
+.modal-center {
+  padding: 0 15px; }
+  .modal-center .list {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-family: "Droid Sans",sans-serif;
+    color: #4b4b4b; }
+    .modal-center .list .contact-person {
+      font-weight: bold; }
+    .modal-center .list li {
+      padding: 2px; }
+  .modal-center .heading {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    font-family: "Droid Sans",sans-serif; }
+
+.modal-footer {
+  background-color: #e9e9e9;
+  padding: 15px;
+  position: relative;
+  min-height: 52px; }
+  .modal-footer .close-modal.button {
+    position: absolute;
+    right: 20px;
+    font-size: 14px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+    padding: 6px 12px; }
+
+/* The Close Button */
+.close {
+  color: #808080;
+  position: absolute;
+  right: 20px;
+  font-size: 22px;
+  line-height: 20px;
+  font-weight: bold; }
+
+.close:hover,
+.close:focus {
+  color: #333;
+  text-decoration: none;
+  cursor: pointer; }
+
+.experience-label-container div {
+  display: inline-block;
+  width: 29.5%; }
+
+.checkbox {
+  margin-right: 5px;
+  font-size: 14px;
+  cursor: pointer; }
+  .checkbox span {
+    position: relative;
+    top: -2px; }
+
+.button.submit-form {
+  font-family: "Droid Sans", sans-serif;
+  background: #7e7e63 !important;
+  color: #ffffff;
+  text-shadow: none;
+  border: 1px solid #4a4a3b !important;
+  font-size: 14px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+  padding: 6px 12px;
+  margin-right: 15px; }
+
+.button.cancel-form {
+  font-size: 14px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+  padding: 6px 12px; }
+
+label.premium-job {
+  height: 30px;
+  line-height: 40px; }
+
+.checkboxes div {
+  margin-bottom: 4px; }
+
+.add-tags-content input {
+  display: inline-block !important;
+  margin-right: 30px; }
+
+.add-tags-content button {
+  font-size: 12px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+  padding: 6px 12px; }
+
+.message-sent {
+  display: inline-block;
+  box-shadow: 1px 1px 0px 0px #ccc;
+  padding: 5px;
+  background-color: #CFF4FD; }
+
+.message-container {
+  margin: 10px 0; }
+  .message-container.left {
+    text-align: left; }
+  .message-container.right {
+    text-align: right; }

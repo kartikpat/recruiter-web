@@ -1,0 +1,8 @@
+.main-container {
+  padding: 20px;
+  min-height: calc(100% - 155px); }
+  .main-container .heading {
+    font-size: 18px;
+    margin-bottom: 20px; }
+  .main-container .show-tags-container .js-show-tags {
+    font-size: 13px; }

@@ -1,0 +1,89 @@
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.important-info-color {
+  color: #333; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
+.main-container {
+  padding: 20px 10px;
+  min-height: calc(100% - 155px); }
+  .main-container .edit-profile-form {
+    padding: 20px;
+    border: 1px solid #ebebeb;
+    font-family: "Droid Sans", sans-serif;
+    color: #333; }
+    .main-container .edit-profile-form .edit-profile-form-heading {
+      font-size: 18px;
+      color: #708732;
+      margin-bottom: 20px; }
+    .main-container .edit-profile-form .form-left-container, .main-container .edit-profile-form .form-right-container {
+      display: inline-block;
+      width: 49%;
+      vertical-align: top; }
+    .main-container .edit-profile-form .save-form-button {
+      text-align: center; }
+      .main-container .edit-profile-form .save-form-button button {
+        margin-top: 20px;
+        padding: 6px 40px;
+        font-size: 16px; }
+    .main-container .edit-profile-form .field-container {
+      padding: 10px;
+      vertical-align: middle; }
+      .main-container .edit-profile-form .field-container .label {
+        display: inline-block;
+        width: 22%;
+        font-size: 12px; }
+        .main-container .edit-profile-form .field-container .label.about, .main-container .edit-profile-form .field-container .label.social-links {
+          vertical-align: top;
+          padding-top: 15px; }
+        .main-container .edit-profile-form .field-container .label.no-effect {
+          vertical-align: top;
+          padding-top: 10px; }
+      .main-container .edit-profile-form .field-container .field {
+        display: inline-block;
+        width: 75%; }
+        .main-container .edit-profile-form .field-container .field .social-fields {
+          margin: 10px 0; }
+        .main-container .edit-profile-form .field-container .field.radio-buttons-container {
+          padding: 10px 20px;
+          background: #ddd;
+          box-sizing: border-box;
+          width: 63.8%; }
+        .main-container .edit-profile-form .field-container .field input, .main-container .edit-profile-form .field-container .field select, .main-container .edit-profile-form .field-container .field textarea {
+          padding: 8px;
+          border: 1px solid #ccc;
+          width: 85%;
+          background-color: inherit; }
+        .main-container .edit-profile-form .field-container .field .radio-buttons {
+          vertical-align: top;
+          font-size: 12px; }
+          .main-container .edit-profile-form .field-container .field .radio-buttons:first-child {
+            margin-right: 15%; }
+          .main-container .edit-profile-form .field-container .field .radio-buttons input {
+            width: auto; }
+          .main-container .edit-profile-form .field-container .field .radio-buttons span {
+            position: relative;
+            top: -2px; }
+      .main-container .edit-profile-form .field-container .top {
+        vertical-align: top; }

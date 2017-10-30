@@ -3,9 +3,11 @@
 		"styles": {
 			"debug" : [
 				"static/css/header.css",
+				"static/css/jquery-ui.min.css",
         		"static/css/index.css",
 				"static/css/buttons.css",
 				"static/css/footer.css",
+				"static/css/animate.css",
 				"static/css/utilities.css"
 
 			],
@@ -17,7 +19,68 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"service-worker.js",
+				"static/js/vendor/jquery-ui.min.js",
+				"static/js/vendor/hello.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/index.js"
+			],
+			"prod" : [
+				"static/build/js/index.min.js"
+			]
+		}
+	},
+	"index-one": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+				"static/css/jquery-ui.min.css",
+        		"static/css/index-one.css",
+				"static/css/buttons.css",
+				"static/css/footer.css",
+				"static/css/animate.css",
+				"static/css/utilities.css"
+
+			],
+			"prod": [
+				"static/build/css/index-one.min.css"
+
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/jquery-ui.min.js",
+				"static/js/vendor/hello.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/index-one.js"
+			],
+			"prod" : [
+				"static/build/js/index-one.min.js"
+			]
+		}
+	},
+	"my-profile": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+        		"static/css/index.css",
+				"static/css/buttons.css",
+				"static/css/footer.css",
+				"static/css/animate.css",
+				"static/css/utilities.css"
+
+			],
+			"prod": [
+				"static/build/css/index.min.css"
+
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/hello.min.js",
 				"static/js/request.js",
 				"static/js/header.js",
 				"static/js/index.js"
@@ -28,6 +91,93 @@
 			]
 		}
 	},
+	"reset-password": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+        		"static/css/reset-password.css",
+				"static/css/buttons.css",
+				"static/css/footer.css",
+				"static/css/animate.css",
+				"static/css/utilities.css"
+
+			],
+			"prod": [
+				"static/build/css/reset-password.min.css"
+
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/reset-password.js"
+
+			],
+			"prod" : [
+				"static/build/js/reset-password.min.js"
+			]
+		}
+	},
+	"mass-resume": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+        		"static/css/mass-resume.css",
+				"static/css/buttons.css",
+				"static/css/footer.css",
+				"static/css/animate.css",
+				"static/css/utilities.css"
+
+			],
+			"prod": [
+				"static/build/css/mass-resume.min.css"
+
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/mass-resume.js"
+
+			],
+			"prod" : [
+				"static/build/js/mass-resume.min.js"
+			]
+		}
+	},
+	"edit-profile": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+        		"static/css/edit-profile.css",
+				"static/css/buttons.css",
+				"static/css/footer.css",
+				"static/css/animate.css",
+				"static/css/utilities.css"
+
+			],
+			"prod": [
+				"static/build/css/edit-profile.min.css"
+
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/edit-profile.js"
+
+			],
+			"prod" : [
+				"static/build/js/edit-profile.min.js"
+			]
+		}
+	},
 	"post-job": {
 		"styles": {
 			"debug" : [
@@ -35,7 +185,8 @@
         		"static/css/index.css",
 				"static/css/footer.css",
 				"static/css/buttons.css",
-				"static/css/utilities.css"
+				"static/css/utilities.css",
+				"static/css/colors.css"
 			],
 			"prod": [
 				"static/build/css/index.min.css"
@@ -53,13 +204,68 @@
 			]
 		}
 	},
+	"premium-posting": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+        		"static/css/premium-posting.css",
+				"static/css/footer.css",
+				"static/css/buttons.css",
+				"static/css/utilities.css",
+				"static/css/colors.css"
+			],
+			"prod": [
+				"static/build/css/premium-posting.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/premium-posting.js"
+			],
+			"prod" : [
+				"static/build/js/premium-posting.min.js"
+			]
+		}
+	},
+	"profile-view": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+        		"static/css/profile-view.css",
+				"static/css/footer.css",
+				"static/css/buttons.css",
+				"static/css/utilities.css",
+				"static/css/colors.css"
+			],
+			"prod": [
+				"static/build/css/profile-view.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/profile-view.js"
+			],
+			"prod" : [
+				"static/build/js/profile-view.min.js"
+			]
+		}
+	},
+
 	"login": {
 		"styles": {
 			"debug" : [
+				"static/css/header.css",
               "static/css/login.css",
 			  "static/css/buttons.css",
 			  "static/css/utilities.css",
-			  "static/css/colors.css"
+			  "static/css/colors.css",
+			  "static/css/footer.css"
 			],
 			"prod": [
 				"static/build/css/login.min.css"
@@ -78,9 +284,10 @@
 	"sign-in": {
 		"styles": {
 			"debug" : [
-            	"static/css/sign-in.css",
-				"static/css/buttons.css"
-
+            	"static/css/login.css",
+				"static/css/buttons.css",
+				"static/css/utilities.css",
+  			  	"static/css/colors.css"
 			],
 			"prod": [
 				"static/build/css/sign-in.min.css"
@@ -91,7 +298,6 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/request.js",
-				"static/js/header.js",
 				"static/js/sign-in.js"
 			],
 			"prod" : [
@@ -99,11 +305,65 @@
 			]
 		}
 	},
+	"pdfTest": {
+		"styles": {
+			"debug" : [
+				"static/css/utilities.css"
+
+			],
+			"prod": [
+				"static/build/css/pdfTest.min.css"
+
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/pdf.js",
+				"static/js/vendor/pdf.worker.js",
+				"static/js/pdfJs.js",
+
+				"static/js/pdfTest.js"
+			],
+			"prod" : [
+				"static/build/js/pdfTest.min.js"
+			]
+		}
+	},
+	"pdfIframe": {
+		"styles": {
+			"debug" : [
+				"static/css/utilities.css"
+
+			],
+			"prod": [
+				"static/build/css/pdfIframe.min.css"
+
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/pdf.js",
+				"static/js/vendor/pdf.worker.js",
+				"static/js/pdfJs.js",
+
+				"static/js/pdfTest.js"
+			],
+			"prod" : [
+				"static/build/js/pdfTest.min.js"
+			]
+		}
+	},
 	"candidate-list": {
 		"styles": {
 			"debug" : [
+				"static/css/jquery-ui.min.css",
 				"static/css/header.css",
+
             	"static/css/candidate-list.css",
+
+
 				"static/css/footer.css",
 				"static/css/buttons.css",
 				"static/css/colors.css",
@@ -118,6 +378,10 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/jquery-ui.min.js",
+				"static/js/vendor/pdf.js",
+				"static/js/vendor/pdf.worker.js",
+				"static/js/pdfJs.js",
 				"static/js/request.js",
 				"static/js/header.js",
 				"static/js/candidate-list.js",
@@ -133,13 +397,52 @@
 			]
 		}
 	},
+	"candidate-list-one": {
+		"styles": {
+			"debug" : [
+				"static/css/jquery-ui.min.css",
+				"static/css/header.css",
+
+            	"static/css/candidate-list-one.css",
+				"static/css/footer.css",
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/animate.css",
+				"static/css/utilities.css"
+			],
+			"prod": [
+				"static/build/css/candidate-list-one.min.css"
+
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/jquery-ui.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/candidate-list-one.js",
+				"static/js/tags/industry.js",
+				"static/js/tags/current-location.js",
+				"static/js/tags/preferred-location.js",
+				"static/js/tags/language.js",
+				"static/js/tags/functional-area.js",
+				"static/js/tags/institute.js"
+			],
+			"prod" : [
+				"static/build/js/candidate-list-one.min.js"
+			]
+		}
+	},
 	"view-resume": {
 		"styles": {
 			"debug" : [
 				"static/css/header.css",
         		"static/css/view-resume.css",
 				"static/css/footer.css",
-				"static/css/buttons.css"
+				"static/css/buttons.css",
+				"static/css/utilities.css",
+				"static/css/colors.css"
 
 
 			],
@@ -316,15 +619,147 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/moment.min.js",
 				"static/js/request.js",
-				"static/js/header.js",
-				"static/js/chatObject.js",
+				"static/js/chat_pubnub.js",
 				"static/js/chat.js"
 			],
 			"prod" : [
 				"static/build/js/chat.min.js"
 			]
 		}
+	},
+	"export-profile": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/export-profile.css",
+				"static/css/utilities.css",
+				"static/css/footer.css"
+			],
+			"prod": [
+				"static/build/css/export-profile.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/hello.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/export-profile.js"
+			],
+			"prod" : [
+				"static/build/js/export-profile.min.js"
+			]
+		}
+	},
+	"account-activation": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/account-activation.css",
+				"static/css/utilities.css",
+				"static/css/footer.css"
+			],
+			"prod": [
+				"static/build/css/account-activation.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/account-activation.js"
+			],
+			"prod" : [
+				"static/build/js/account-activation.min.js"
+			]
+		}
+	},
+	"tags": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/tags.css",
+				"static/css/utilities.css",
+				"static/css/footer.css"
+			],
+			"prod": [
+				"static/build/css/tags.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/tags.js"
+			],
+			"prod" : [
+				"static/build/js/tags.min.js"
+			]
+		}
+	},
+	"filter-candidate": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/filter-candidate.css",
+				"static/css/utilities.css",
+				"static/css/footer.css"
+			],
+			"prod": [
+				"static/build/css/filter-candidate.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/filter-candidate.js"
+			],
+			"prod" : [
+				"static/build/js/filter-candidate.min.js"
+			]
+		}
+	},
+	"change-password": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/change-password.css",
+				"static/css/utilities.css",
+				"static/css/footer.css"
+			],
+			"prod": [
+				"static/build/css/change-password.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/change-password.js"
+			],
+			"prod" : [
+				"static/build/js/change-password.min.js"
+			]
+		}
 	}
+
 
 }

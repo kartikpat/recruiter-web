@@ -141,7 +141,10 @@ var saveSlotsData = function() {
 
 
 var successCallback = function(res) {
-    console.log(res);
+    console.log(res)
+    if(res["message"] == "records updated successfully") {
+        window.location = "/recruiter/"+recruiterID+"/calendar";
+    }
 }
 
 createSlotsContainer.on('focus','.datepicker', function() {
@@ -199,6 +202,9 @@ var populateCalendarSlots = function(res) {
             $.each(anObj["day"], function(index, aDay) {
                 row.find("#repeat-every input[value="+aDay+"]").attr("checked", true);
             })
+            if(array.length==1) {
+                row.find(".close-slot-box").addClass("hidden");
+            }
             createSlotsContainer.append(row);
         })
     }

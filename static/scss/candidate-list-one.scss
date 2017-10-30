@@ -1,0 +1,1175 @@
+@import "colors.scss";
+@import "fonts.scss";
+
+@mixin input-styling {
+    box-sizing: border-box;
+    border: 1px solid $select-border;
+    border-radius: 2px;
+    padding: 4px 8px;
+}
+
+
+
+input, select {
+    &:focus {
+        outline: none;
+    }
+}
+
+.heading {
+  font-size: 12px;
+  color: #666;
+  padding-bottom: 1px;
+}
+
+.job-heading {
+    font-size: 18px;
+    margin: 20px 0 20px 20px;
+    color: $color-green;
+}
+
+* {
+    font-family: $droid-font;
+    font-weight: normal;
+}
+
+.main-container {
+    padding: 10px;
+    min-height: calc(100% - 155px);
+    .filters {
+        display: inline-block;
+        width: 18%;
+        padding-right: 10px;
+        border-right: 1px solid #f1f1f1;
+        height: auto;
+        // position: fixed;
+        .search-by-keyword {
+            width: 100%;
+            border-bottom: 1px solid $color-light-grey;
+            padding: 0 10px 10px 10px;
+            margin-bottom: 5px;
+
+            input {
+                @include input-styling;
+                width: 75%;
+                padding: 6px 8px;
+                font-size: 11px;
+            }
+            button {
+                float: right;
+            }
+        }
+
+        .menu {
+            border-bottom: 1px solid $color-light-grey;
+            margin-bottom: 5px;
+            line-height: 22px;
+            padding: 5px 10px;
+            > span {
+                font-size: 15px;
+                font-family: $droid-font;
+                color: #4b4b4b;
+            }
+
+            > button {
+                float: right;
+            }
+
+            .field {
+                margin: 0 auto;
+                width: 100%;
+                padding: 2px 0 4px 0;
+
+                input, select {
+                    padding: 4px 8px;
+                    margin: 1px 0 6px 0;
+                    border: 1px solid #d8d8d8;
+                    border-radius: 4px;
+                    width: 60%;
+                    background-color: inherit;
+                }
+
+                input[type="checkbox"] {
+                    display: inline-block;
+                    width: auto;
+
+
+                    span {
+                        font-size: 11px;
+                    }
+                }
+
+                input[type="radio"] {
+                    display: inline-block;
+                    width: auto;
+                }
+
+                select.half {
+                    width: 48%;
+                    padding: 4px 8px;
+
+                    option {
+                        font-size: 11px;
+                    }
+                }
+            }
+        }
+    }
+
+    .jobs {
+        display: inline-block;
+        width: 81%;
+        vertical-align: top;
+        padding: 0 0 0 10px;
+        position: relative;
+        // margin-left: 19%;
+        .tabs {
+            width: auto;
+            display: inline-block;
+
+
+            .menu {
+                list-style: none;
+                padding: 0;
+                display: inline-block;
+                margin: 0 0 10px 0;
+
+                li {
+                    display: inline-block;
+                    border: 1px solid #d8d8d8;
+                    padding: 2px 0;
+                    border-radius: 2px;
+
+                    a {
+                        text-decoration: none;
+                        color: #000;
+                        padding: 2px 0 2px 6px;
+
+                        .status {
+                            margin-left: 1em;
+                            background-color: #7d7d7d;
+                            padding: 2px 6px;
+                            color: #ffffff;
+                        }
+                    }
+                }
+            }
+        }
+
+        .calendar {
+            min-height: 40px;
+            line-height: 40px;
+            padding-left: 20px;
+
+            select {
+                padding: 2px 6px;
+                margin: 8px 0;
+                border: 1px solid $select-border;
+                border-radius: 4px;
+                width: auto;
+                background-color: inherit;
+            }
+        }
+
+        .jobs_panel {
+            width: 100%;
+            margin: 20px auto;
+            min-height: 300px;
+            position: relative;
+
+            .jobs_header {
+                width: auto;
+                margin: 0 20px;
+                background-color: $color-light-grey;
+                padding: 0 10px;
+
+                line-height: 30px;
+                .header {
+                    display: inline-block;
+                    padding: 0 2px;
+                    font-size: 11px;
+                    text-align: left;
+                    color: $color-black-text;
+                }
+
+                .header_name {
+                    width: 18%;
+                    .checkbox {
+                        margin: 0 15px 0 0;
+                        position: relative;
+                        top: 3px;
+                    }
+                }
+
+                .header_organization {
+                    width: 28%;
+                    padding-left: 10px;
+                }
+
+                .header_institute {
+                    width: 28%;
+                }
+
+                .header_more {
+                    width: 19%;
+                }
+            }
+
+            .jobs_content {
+                border-bottom: thin solid #ececec;
+                padding-bottom: 5px;
+                margin: 0 20px;
+                &:nth-child(even){
+                    background-color: #fbfbfb;
+                }
+                .content-container {
+                    //height: 225px;
+                    cursor: pointer;
+                    padding: 10px 10px 0 10px;
+                    .interview-invite.icon {
+                        height: 40px;
+                    }
+                    .resend-interview-invite.icon {
+                        height: 40px;
+                    }
+                }
+
+                .slide-container{
+                    height: auto;
+                    padding: 10px;
+                    .tagline-container {
+                        height: 35px;
+                        line-height: 15px;
+                        .tagline-heading {
+                            display: inline-block;
+                            vertical-align: top;
+                            width: 50px;
+                        }
+                        .tagline-content {
+                            display: inline-block;
+                            max-width: 90%;
+                        }
+                    }
+                    .info-container-first {
+                        position: relative;
+                        height: 70px;
+                        .contact-container {
+                            position: absolute;
+                            left: 0;
+                            margin-top: 15px;
+                            .contact-heading, .email-heading {
+                                display: inline-block;
+                                width: 50px;
+                            }
+                            .contact-content, .email-content {
+                                display: inline-block;
+                            }
+                        }
+                        .bio-container {
+                            position: absolute;
+                            right: 0;
+                            width: 52%;
+                            .icon {
+                                width: 100%;
+                                div {
+                                    display: inline-block;
+                                    width: 49%;
+                                    margin: 0 0 5px 0;
+                                    a {
+                                        text-decoration: none;
+                                        color: $extra-info-color;
+                                        i {
+                                            display: inline-block;
+                                            font-size: 30px;
+                                            width: 40px;
+                                        }
+                                        span {
+                                            vertical-align: text-top;
+                                        }
+                                        &.video:hover {
+                                            color: red;
+                                        }
+                                        &.icon-resume:hover {
+                                            color: blue;
+                                        }
+                                        &.cover-letter:hover {
+                                            color: green;
+                                        }
+                                        &.audio:hover {
+                                            color: orange;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .info-container-second {
+                        position: relative;
+                        height: 80px;
+                        padding-top: 10px;
+                        .comment-container {
+                            position: absolute;
+                            left: 0;
+                            display: inline-block;
+                            width: 49%;
+                            .comment {
+                                margin: 0 0 5px 0;
+                                .comment-content {
+                                    display: inline-block;
+                                    input {
+                                        @include input-styling;
+                                        margin-right: 25px;
+                                    }
+                                    button {
+                                        padding: 5px 12px;
+                                    }
+                                }
+                                .comment-heading {
+                                    display: inline-block;
+                                }
+                            }
+                            .posted-comment {
+                                ul {
+                                    margin: 0;
+                                }
+                            }
+                        }
+                        .tags-container {
+                            position: absolute;
+                            right: 0;
+                            display: inline-block;
+                            width: 52%;
+                            .ta {
+
+                                .tags-content {
+                                    display: inline-block;
+                                    input {
+                                        @include input-styling;
+                                        margin-right: 25px;
+                                    }
+                                    button {
+                                        padding: 5px 12px;
+                                    }
+                                }
+
+                            }
+                            .posted-tags {
+                                margin-top: 10px;
+                                .tags-jobSeeker {
+                                    display: inline-block;
+                                    width: 85px;
+                                    margin-right: 5px;
+                                    .tags-content {
+                                            cursor: pointer;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .extra-info-container {
+                        .layer-first {
+                            .info {
+                                display: inline-block;
+
+                                vertical-align: top;
+                                &.name-e {
+                                    width: 18%;
+                                }
+                                &.org-e {
+                                    width: 29%;
+                                }
+                                &.ins-e {
+                                    width: 28%;
+                                }
+                                &.more-e {
+                                    width: 19%;
+                                }
+                            }
+                        }
+                        .layer-second {
+                            .marks-wrapper {
+                                display: inline-block;
+                                width: 47.5%;
+                                .marks {
+                                    display: inline-block;
+                                    padding: 0 5px;
+                                }
+                            }
+                            .info {
+                                display: inline-block;
+                                width: 49%;
+                                vertical-align: top;
+                            }
+                        }
+                        .css-heading {
+                            font-size: 10px;
+                            color: $extra-info-color;
+                            line-height: 2.5;
+                        }
+                        .css-content {
+                            font-size: 12px;
+                            color: $important-info-color;
+                        }
+                    }
+
+                }
+
+                .content {
+                    display: inline-block;
+                    padding: 5px 0 0 2px;
+                    overflow: hidden;
+                    font-size: 11px;
+                    vertical-align: top;
+                    line-height: 20px;
+                    .info {
+                        padding: 0 0 10px 0;
+                        .important_info {
+                            font-size: 13px;
+                            color: $important-info-color;
+                            &.name {
+                                font-size: 13px;
+                                font-weight: bold;
+                                font-family: Arial !important;
+                            }
+                        }
+                        .extra_info {
+                            color: $important-info-color;
+                            font-size: 13px;
+                        }
+                        .icon {
+                            display: block;
+                            color: $extra-info-color;
+                            font-size: 12px;
+                            padding: 1px 0;
+                            text-decoration: none;
+                            span {
+
+                                padding: 0 3px;
+                            }
+
+                            &:hover {
+                                color: green;
+                                text-decoration: underline;
+                            }
+                        }
+                        .view-icon, .download-icon {
+                            display: block;
+                            color: $extra-info-color;
+                            font-size: 12px;
+                            padding: 1px 0;
+                            text-decoration: none;
+                            span {
+
+                                padding: 0 3px;
+                            }
+
+                            &:hover {
+                                color: green;
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+
+                .content.content_name {
+                    .checkbox {
+                        vertical-align: top;
+                        margin: 0 15px 0 0;
+                    }
+                    width: 18%;
+
+                    img {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        max-width: 100%;
+                        max-height: 100%;
+                    }
+                }
+
+                .content.content_organization {
+                    width: 28%;
+                    padding-left: 10px;
+                }
+
+                .content.content_institute {
+                    width: 28%;
+                }
+
+                .content.content_more {
+                    width: 19%;
+                }
+            }
+
+            div.jobs_container > div.jobs_content:nth-of-type(even) {
+                background: #fafafa;
+            }
+        }
+    }
+}
+
+.vertical_outside {
+    display: inline-block;
+    height: 100%;
+
+    .vertical_top, .vertical_bottom{
+        height: 25%;
+    }
+
+    .vertical_middle {
+        border-left: 1px solid #ececec;
+        height: 50%;
+    }
+}
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    .modal-content {
+        position: relative;
+        box-shadow: 0 0 1px #d8d8d8;
+        max-width: 900px;
+        min-width: 700px;
+        min-height: 330px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 2px;
+
+        .modal-top {
+            padding: 20px;
+            position: relative;
+
+            .search-tags {
+                display: inline-block;
+
+                input {
+                    @include input-styling;
+                }
+            }
+
+            .tags-alphabets {
+                display: inline-block;
+                margin: 0;
+                padding: 0 15px;
+
+                li {
+                    display: inline-block;
+
+                    a {
+                        text-decoration: none;
+                        padding: 4px;
+                        color: #000;
+                    }
+                }
+            }
+
+            .close {
+                display: inline-block;
+                color: #aaa;
+                line-height: 28px;
+                font-size: 28px;
+                position: absolute;
+                right: 30px;
+
+                &:hover, &:focus {
+                    color: black;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+            }
+
+            .submit {
+                display: inline-block;
+                padding: 0 15px;
+            }
+        }
+
+        .modal-bottom {
+            overflow-x: scroll;
+            padding: 10px 20px;
+            margin: 0 10px;
+
+            .row {
+                overflow-x: auto;
+                width: 2000px;
+
+                .tags-wrapper {
+                    display: inline-block;
+                    vertical-align: top;
+                    width: 300px;
+                    line-height: 1.5;
+                    label {
+                        font-size: 13px;
+                        font-family: $droid-font;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.view-profile-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate3d(0,0);
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(255,255,255,1);
+}
+
+
+
+// .resume-container {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     object {
+//         position: fixed;
+//         top: 50%;
+//         left: 50%;
+//         transform: translate(-50%, -50%);
+//         width: 70%;
+//         height: 100%;
+//     }
+// }
+
+
+	.slot-type-container {
+
+		a {
+			color: $extra-info-color;
+			font-size: 10px;
+			padding: 0 8px;
+			text-decoration: none;
+		}
+	}
+
+.jobs-wrapper-shell-loader {
+
+    .shell-loaders {
+        margin: 0 20px;
+        padding: 0 10px;
+
+        .content {
+            display: inline-block;
+            padding: 5px 0 0 2px;
+            overflow: hidden;
+            font-size: 11px;
+            vertical-align: top;
+            .info {
+                padding: 0 0 5px 0;
+                .user_name {
+                    margin-top: 15px;
+                    width: 70px;
+                    height: 15px;
+                }
+                .user-experience {
+                    margin-top: 10px;
+                    width: 100px;
+                    height: 15px;
+                }
+                .user-extra {
+                    margin-top: 20px;
+                    width: 50px;
+                    height: 10px;
+                }
+                .important_info {
+                    font-size: 11px;
+                    color: $important-info-color;
+                    &.name {
+                        font-size: 13px;
+                        font-weight: bold;
+                    }
+                }
+                .extra_info {
+                    color: $extra-info-color;
+                }
+                .icon {
+                    display: block;
+                    color: $extra-info-color;
+                    font-size: 12px;
+                    padding: 1px 0;
+                    text-decoration: none;
+                    span {
+
+                        padding: 0 3px;
+                    }
+
+                    &:hover {
+                        color: green;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+        .content.content_name {
+            padding-top: 25px;
+            width: 18%;
+
+            img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                max-width: 100%;
+                max-height: 100%;
+            }
+        }
+
+        .content.content_organization {
+            width: 28%;
+            padding-top: 35px;
+
+            .name {
+                width: 150px;
+                height: 20px;
+                margin-bottom: 10px;
+            }
+            .designation {
+                width: 75px;
+                height: 15px;
+                margin-bottom: 15px;
+            }
+            .experience {
+                width: 150px;
+                height: 15px;
+                margin-bottom: 10px;
+            }
+        }
+
+        .content.content_institute {
+            width: 28%;
+            padding-top: 35px;
+            .name {
+                width: 150px;
+                height: 20px;
+                margin-bottom: 10px;
+            }
+            .degree {
+                width: 75px;
+                height: 15px;
+                margin-bottom: 15px;
+            }
+        }
+        .content.content_more {
+            padding-top: 35px;
+            width: 19%;
+            .icon {
+                width: 125px;
+                height: 10px;
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+
+}
+
+.checkboxes {
+    font-size: 13px;
+    font-family: $droid-font !important;
+    color: #1b1b1b;
+    input {
+        margin: 0 5px 0 0!important;
+        vertical-align: middle;
+    }
+    cursor: pointer;
+}
+
+.ui-widget input {
+    font-family: $droid-font ;
+    font-size: 15px;
+}
+
+.ui-widget button {
+    font-family: $droid-font ;
+    font-size: 13px;
+}
+
+.margin-right {
+    margin-right: 0 !important;
+}
+
+.js-remove-tag.job-seeker-tags {
+    height: 24px;
+    border: 1px solid #ececec;
+    color: #4b4b4b;
+    font-size: 12px;
+    padding: 2px 4px;
+    cursor: pointer;
+    background: #f5f6f7;
+}
+
+.interview-invite-message {
+    color: $color-black-text;
+    font-size: 12px;
+}
+
+.filter-tag-group {
+    display: inline-block;
+    font-size: 12px;
+    .text {
+        margin-right: 5px;
+    }
+}
+
+button.button.link.submit-filters {
+    padding-top: 6px;
+}
+
+.profile_container {
+   width: 95%;
+   margin: 40px auto;
+
+  .profile_header {
+      width: auto;
+      margin: 0 auto;
+      background-color: $tab-background-color;
+      padding: 10px 15px;
+      span {
+          display: inline-block;
+          overflow: auto;
+          font-size: 13px;
+          font-family: 'Noto Sans',sans-serif;
+          text-align: left;
+          font-weight: bold;
+        }
+        .name {
+            width: 18%;
+        }
+        .organization {
+            width: 26%;
+        }
+        .institute {
+            width: 30%;
+        }
+        .more {
+            width: 24%;
+        }
+   }
+
+   .buttons.extra-height {
+       height: 30px;
+   }
+
+  .profile_content {
+    padding: 0 15px 10px 15px;
+
+    .content {
+      display: inline-block;
+      padding: 1px;
+      margin: 0;
+      overflow: hidden;
+      font-size: 12px;
+      vertical-align: top;
+
+            .info {
+                padding: 10px 0;
+                .important_info {
+                    font-size: 12px;
+                    color: $important-info-color;
+                    font-family: 'Open Sans';
+                    &.name {
+                        font-size: 13px;
+                        font-weight: bold;
+                    }
+
+                }
+                .extra_info {
+                    color: $extra-info-color;
+                    font-family: "Droid Sans",sans-serif;
+                    padding: 2px 0;
+                }
+
+                .icon {
+                    display: block;
+                    font-size: 16px;
+                    color: #424242;
+                    padding: 2px;
+                    span{
+                        font-size: 12px;
+                        padding: 2px;
+                    }
+                    &:hover {
+                        color: green;
+                    }
+                }
+            }
+
+    }
+      .content.name {
+          width: 18%;
+          img{
+              width: 50px;
+              height: 50px;
+              border-radius: 25px;
+              max-width: 100%;
+              max-height: 100%;
+          }
+
+      }
+      .content.organization {
+          width: 26%;
+          .shell-loader-container {
+              padding-top: 40px;
+              .name.animated-background {
+                  width: 150px;
+                  min-height: 10px;
+                  margin-bottom: 20px;
+              }
+              .designation.animated-background {
+                  width: 150px;
+                  min-height: 10px;
+              }
+          }
+      }
+      .content.institute {
+          width: 30%;
+          .shell-loader-container {
+               padding-top: 40px;
+              .name.animated-background {
+                  width: 150px;
+                  min-height: 10px;
+                  margin-bottom: 20px;
+              }
+              .designation.animated-background {
+                  width: 150px;
+                  min-height: 10px;
+              }
+          }
+      }
+      .content.more {
+          width: 24%;
+      }
+      .buttons {
+        a {
+          font-size: 12px;
+          text-decoration: none;
+          display: inline-block;
+          width: 19%;
+          color: $extra-info-color;
+          &:hover {
+            color: green;
+            text-decoration: underline;
+          }
+        }
+      }
+      .more_info {
+         width: 99%;
+         margin: 0 auto;
+         display: none;
+         .layer {
+             .marital-status-container {
+                 width: 18%;
+                 vertical-align: top;
+             }
+             .permit-container {
+                 width: 26%;
+                 vertical-align: top;
+             }
+             .score-container {
+                 width: 30%;
+             }
+             .languages-container {
+                 width: 24%;
+                 vertical-align: top;
+             }
+
+         .row {
+           .column {
+             width: 33%;
+             display: inline-block;
+             padding-bottom: 5px;
+           }
+         }
+        .info {
+          display: inline-block;
+          .score {
+            display: inline-block;
+          }
+
+        }
+      }
+      }
+  }
+
+
+}
+
+.tab_container {
+  width: 95%;
+  margin: 40px auto;
+
+
+  .tab {
+    display: inline-block;
+    width: 30%;
+    min-height: 150px;
+    vertical-align: top;
+    &.center {
+      margin: 0 4.5%;
+
+    }
+    .tab_heading {
+      background-color: $tab-background-color;
+      padding: 10px;
+      span{
+        color: $color-black-text;
+        font-size: 14px;
+        font-family: $droid-font;
+      }
+
+    }
+    .tab_content {
+      padding: 10px;
+      input {
+              padding: 8px 12px;
+              margin: 1px 0 10px 0;
+              border: 1px solid #ccc;
+              border-radius: 2px;
+              width: 70%;
+      }
+      .info {
+        min-height : 40px;
+
+        .left {
+            display: inline-block;
+            min-width: 265px;
+        }
+        .right {
+
+        }
+      }
+    }
+  }
+}
+
+.resume-container {
+  width: 95%;
+  margin: 40px auto;
+.resume-overlay {
+    position: relative;
+    top: -3000px;
+    height: 3000px;
+    background: rgba(255, 255, 255, 0.01);
+    }
+
+
+  .resume {
+      display: inline-block;
+    width: 65%;
+
+    vertical-align: top;
+    margin-right: 4.5%;
+    .resume-embed-container{
+      width: 100%;
+
+      .resume-embed{
+          width: 100%;
+          height: 900px;
+      }
+    }
+  }
+  .cover_letter {
+      display: inline-block;
+    width: 30%;
+    height: 800px;
+    vertical-align: top;
+    .content {
+      padding: 20px;
+      font-size: 13px;
+    }
+  }
+  .head {
+    background-color: #666;
+    padding: 15px;
+    color: #fff;
+    position: relative;
+    button {
+        position: absolute;
+        right: 18px;
+        top: 10px;
+    }
+  }
+}
+
+
+.margin-right {
+    margin-right: 0 !important;
+}
+
+// .tags-container {
+//     position: absolute;
+//     right: 0;
+//     display: inline-block;
+//     width: 52%;
+//     .ta {
+//
+//         .tags-content {
+//             display: inline-block;
+//             input {
+//                 @include input-styling;
+//                 margin-right: 25px;
+//             }
+//             button {
+//                 padding: 5px 12px;
+//             }
+//         }
+//
+//     }
+//
+// }
+
+.posted-tags {
+    margin-top: 10px;
+    line-height: 3;
+    .tags-jobSeeker {
+        display: inline-block;
+        width: 85px;
+        margin-right: 5px;
+        .tags-content {
+                cursor: pointer;
+        }
+    }
+}
+
+.js-remove-tag.job-seeker-tags {
+    height: 24px;
+    border: 1px solid #ececec;
+    color: #4b4b4b;
+    font-size: 12px;
+    padding: 2px 4px;
+    cursor: pointer;
+    background: #f5f6f7;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.close-overlay-profile-modal {
+    /* display: inline-block; */
+    /* text-align: right; */
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.no-cover-but-resume {
+    width: 100% !important;
+    margin-right: 0 !important;
+}

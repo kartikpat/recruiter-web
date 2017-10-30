@@ -1,11 +1,16 @@
 @import "colors.scss";
 
+body,html {
+    overflow: hidden;
+}
+
 .main-container {
-    height: 683px;
+    min-height: calc(100% - 155px);
     .chat-side-profile-container {
         display: inline-block;
-        width: 20%;
-        box-shadow: 5px 0px 20px 4px #ccc;
+        width: 300px;
+        border: 1px solid #ccc;
+        height: 100%;
         .chat-side-profile-header {
             padding: 15px;
             .profile-image {
@@ -14,6 +19,7 @@
                 height: 40px;
                 border-radius: 50%;
                 margin-right: 10px;
+                position: relative;
                 img {
                     width: 100%;
                     height: 100%;
@@ -38,21 +44,26 @@
         }
 
         .chat-side-profile-search {
-            padding: 15px;
+            padding: 12px 10px;
             width: 100%;
-            height: 60px;
+
+            text-align: center;
+            background: #eee;
             input {
                 box-sizing: border-box;
-                border: 1px solid $select-border;
-                border-radius: 4px;
-                padding: 4px 8px;
+                border: none;
+                border-radius: 2px;
+                padding: 8px 8px;
+                width: 85%;
+                box-shadow: 0 3px 6px -6px #777;
+
             }
         }
         .chat-side-profile-candidates {
             overflow-y: scroll;
-            height: 543px;
+            height: 100%;
             .candidate-card {
-                height: 75px;
+                height: 59px;
                 padding: 15px;
                 position: relative;
                 &:hover {
@@ -61,10 +72,11 @@
                 }
                 .candidate-image {
                     display: inline-block;
-                    width: 40px;
-                    height: 40px;
+                    width: 30px;
+                    height: 30px;
                     border-radius: 50%;
-                    margin-right: 10px;
+                    margin-right: 5px;
+                    position: relative;
                     img {
                         width: 100%;
                         height: 100%;
@@ -74,30 +86,57 @@
                 .candidate-info {
                     display: inline-block;
                     .candidate-name {
-                        width: 70px;
+                        width: 150px;
                         height: 15px;
-                        margin-bottom: 10px;
+                        margin-bottom: 5px;
+                        font-size: 13px;
+                        color: #777777;
                     }
                     .candidate-designation {
-                        width: 150px;
+                        width: 100px;
                         height: 10px;
+                        font-size: 11px;
+                        color: #bbbbbb;
                     }
                 }
                 .remove-candidate {
                     position: absolute;
                     display: inline-block;
                     font-size: 13px;
-                    top: 20px;
+                    top: 10px;
+                    right: 5px;
+                    color: $select-border;
                     i:hover {
                         color: $error-color;
                     }
+                }
+                .last-active-date {
+                    display: inline-block;
+                    position: absolute;
+                    font-size: 9px;
+                    right: 5px;
+                    top: 45px;
+                    color: $extra-info-color;
+                }
+                .new-message-icon {
+                    display: inline-block;
+                    position: absolute;
+                    top: 18px;
+                    font-size: 12px;
+                    color: white;
+                    right: 28px;
+                    background: rgba(255, 0, 0, 0.65);
+                    border-radius: 50%;
+                    width: 25px;
+                    height: 25px;
+                    text-align: center;
+                    padding-top: 6px;
                 }
             }
         }
     }
     .candidate-chat-container {
         display: inline-block;
-        width: 78%;
         vertical-align: top;
         position: relative;
         height: 100%;
@@ -118,9 +157,11 @@
             }
         }
         .candidate-chat-messages-container {
-
+            .divider.divider-full {
+                width: 95%;
+            }
             .candidate-chat-header {
-                width: 90%;
+                width: 100%;
                 margin: 0 auto;
                 padding: 15px;
                 .profile-image {
@@ -129,6 +170,7 @@
                     height: 40px;
                     border-radius: 50%;
                     margin-right: 10px;
+                    position: relative;
                     img {
                         width: 100%;
                         height: 100%;
@@ -151,24 +193,89 @@
                 }
             }
             .candidate-chat-content {
-                width: 90%;
+                width: 100%;
                 margin: 0 auto;
+                overflow-y: auto;
+                padding: 10px;
+                .date-block {
+                    text-align: center;
+                    margin: 25px 0;
+                    .date {
+                        background: #e1f3fb;
+                        padding: 8px 20px;
+                        display: inline-block;
+                        font-size: 12.4px;
+                        color: #777777;
+                        border-radius: 3px;
+                    }
+                }
+                .message-container {
+                    margin: 10px 0;
+
+                    .message-received {
+                        display: inline-block;
+                        box-shadow: 1px 1px 0px 0px #ccc;
+                        padding: 5px 10px;
+                        color: #1c1c1c;
+                        border-radius: 4px;
+                        background-color: rgba(236, 236, 236, 0.38);
+                        position: relative;
+                        font-size: 13px;
+                        width: auto;
+                        max-width: 250px;
+                        word-break: break-word;
+                        overflow-wrap: break-word;
+                    }
+                    .message-sent {
+                        position: relative;
+                        display: inline-block;
+                        box-shadow: 1px 1px 0px 0px #ccc;
+                        padding: 5px 10px;
+                        color: #1c1c1c;
+                        border-radius: 4px;
+                        background-color: #ffffff;
+                        font-size: 13.5px;
+                        width: auto;
+                        max-width: 250px;
+                        word-break: break-word;
+                        overflow-wrap: break-word;
+                    }
+                    &.left {
+                        text-align: left;
+                    }
+                    &.right {
+                        text-align: right;
+                    }
+                    .current-time {
+                        font-size: 10px;
+                        vertical-align: sub;
+                        padding: 0 0 0px 10px;
+
+                    }
+                    .tick {
+                        background: url(https://static.iimjobs.com/pub_chat/chatv2/images/tickgreydouble.png) no-repeat;
+                        display: inline-block;
+                        height: 12px;
+                        width: 12px;
+                        vertical-align: bottom;
+                        margin-left: 5px;
+                    }
+                    .caret {
+                        position: absolute;
+                        background: #ccc;
+
+                    }
+                }
             }
             .candidate-chat-footer {
-                position: absolute;
-                display: block;
-                height: 40px;
-                width: 90%;
-                bottom: 30px;
-                line-height: 40px;
-                left: 50%;
-                transform: translate(-50%,0);
+                width: 100%;
+                text-align: center;
                 input {
                     box-sizing: border-box;
                     border: 1px solid $select-border;
                     border-radius: 4px;
                     padding: 12px;
-                    width: 100%;
+                    width: 94%;
                 }
             }
         }
@@ -177,36 +284,4 @@
 
 .divider-full {
     margin: 0 auto;
-}
-
-.left-message {
-
-    display: inline-block;
-    box-shadow: 1px 1px 0px 0px #ccc;
-    padding: 5px;
-    background-color: #D3FF7C;
-}
-.right-message {
-
-    display: inline-block;
-    box-shadow: 1px 1px 0px 0px #ccc;
-    padding: 5px;
-    background-color: #CFF4FD;
-}
-
-.current-time {
-    font-size: 10px;
-    vertical-align: sub;
-    padding: 0 0 0px 10px;
-}
-
-.message-container {
-    margin: 10px 0;
-
-    &.left {
-        text-align: left;
-    }
-    &.right {
-        text-align: right;
-    }
 }

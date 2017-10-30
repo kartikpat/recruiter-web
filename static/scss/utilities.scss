@@ -1,4 +1,41 @@
 @import "colors.scss";
+$animation-speed: 300ms;
+$dot-size: 7px;
+
+.online-icon {
+    position: absolute;
+    top: 20px;
+    right: 1px;
+    width: 8px;
+    height: 8px;
+    background: #83c500;
+    border-radius: 50%;
+}
+
+.alert-message {
+    margin: 10px 0;
+    font-size: 13px;
+    position: relative;
+    padding:  10px;
+    padding-right: 25px;
+    box-sizing: border-box;
+    background: #999966;
+    border-radius: 2px;
+    box-shadow: 2px 2px 5px 0 #ebebeb;
+    color: #fff;
+    &.half {
+        width: 50%;
+    }
+    &.err {
+        background: #b86363;
+    }
+    i {
+        position: absolute;
+        right: 8px;
+        top: 11px;
+        cursor: pointer;
+    }
+}
 
 .loader {
     border: 8px solid #f3f3f3;
@@ -13,17 +50,57 @@
     left: 44%;
 
 }
-.loader-scroll {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #3498db;
-    border-bottom: 4px solid #3498db;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    animation: spin 2s linear infinite;
-    position: absolute;
-    left: 46%;
-    margin: 1px auto;
+.loader-scroll-container {
+    height: 50px;
+    .loader-scroll {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-bottom: 4px solid #3498db;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 2s linear infinite;
+        position: absolute;
+        left: 46%;
+        margin: 1px auto;
+    }
+}
+
+.dot-loader-container {
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0%);
+}
+
+.dot {
+
+	width: $dot-size;
+	height: $dot-size;
+	border: ($dot-size / 5) solid $important-info-color;
+	border-radius: 50%;
+	float: left;
+	margin: 0 ($dot-size / 2);
+	transform: scale(0);
+	animation: fx $animation-speed ease infinite 0ms;
+	&:nth-child(2) {
+        animation: fx $animation-speed ease infinite $animation-speed * 0.3;
+
+	}
+	&:nth-child(3) {
+		animation: fx $animation-speed ease infinite $animation-speed * 0.3;
+	}
+}
+
+
+
+@keyframes fx {
+	50% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
 }
 
 @keyframes spin {
@@ -51,10 +128,7 @@
     font-size: 20px;
 }
 
-* {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: normal;
-}
+
 
 .overlay-show {
     box-shadow: 2px 5px 18px 0px rgba(0,0,0,0.2);
@@ -66,7 +140,7 @@
 .divider {
    border: 0;
    height: 0;
-   border-bottom: 1px solid $color-light-grey;
+   border-bottom: 1px solid $divider-color;
    width: 90%;
 }
 
@@ -88,10 +162,18 @@
     &:hover {
         background-color: #eee;
     }
+    i {
+        margin-left: 5px;
+        color: rgb(170, 170, 170);
+    }
 }
 
 .highlight {
     background-color: $color-bg-green;
+}
+
+.highlighted {
+    color: $color-green !important;
 }
 
 .error {

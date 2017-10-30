@@ -1,0 +1,72 @@
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.important-info-color {
+  color: #333; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
+.main-container {
+  padding: 20px;
+  min-height: calc(100% - 155px); }
+  .main-container .page-heading {
+    margin-bottom: 20px; }
+  .main-container .mass-resume-table {
+    width: 100%; }
+    .main-container .mass-resume-table .mass-resume-header {
+      margin: 0;
+      padding: 10px;
+      width: 100%;
+      border: 1px solid #e2e2e2;
+      border-radius: 1px;
+      background: #ececec;
+      font-size: 12px;
+      display: table;
+      font-weight: bold; }
+    .main-container .mass-resume-table .row {
+      display: table;
+      padding: 10px;
+      font-size: 13px;
+      border-bottom: 1px solid #ebebeb; }
+    .main-container .mass-resume-table .column {
+      display: table-cell; }
+      .main-container .mass-resume-table .column.date {
+        width: 12%; }
+      .main-container .mass-resume-table .column.request-id {
+        width: 13%; }
+      .main-container .mass-resume-table .column.status {
+        width: 20%;
+        min-width: 300px; }
+      .main-container .mass-resume-table .column.downloaded {
+        width: 15%; }
+      .main-container .mass-resume-table .column.resumes {
+        width: 13%;
+        text-align: center; }
+      .main-container .mass-resume-table .column.download-link {
+        width: 22%; }
+        .main-container .mass-resume-table .column.download-link .download-link {
+          margin-top: 5px; }
+          .main-container .mass-resume-table .column.download-link .download-link a {
+            text-decoration: none; }
+            .main-container .mass-resume-table .column.download-link .download-link a:hover {
+              color: #23527c;
+              text-decoration: underline; }

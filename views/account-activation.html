@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+	<!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet"> -->
+	{{#styles.length}}
+    	{{#styles}}
+    		<link rel="stylesheet" href="/{{.}}">
+			<!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> -->
+			<link href="https://fonts.googleapis.com/css?family=Comfortaa|Droid+Sans|Noto+Sans" rel="stylesheet">
+    	{{/styles}}
+	{{/styles.length}}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript">
+		var baseUrl = '{{baseUrl}}';
+		var userID = '{{userID}}';
+		var jobID = '{{jobID}}';
+	</script>
+</head>
+<body>
+<header>
+	
+
+
+
+	<div class="top_banner">
+		<div class="logo">
+			<h3>updazz</h3><span>.com</span>
+		</div>
+		<div class="user_profile_side">
+			<a href="/sign-in">RECRUITERS</a>
+            <span>|</span>
+            <a href="https://www.updazz.com/registration/login.php">JOBSEEKERS</a>
+		</div>
+
+	</div>
+
+	<nav class="navbar">
+			<ul class="menu" id="menu">
+				<li class="menu_link"><a href="javascript:void(0);" onclick="openMenu()"><i class="fa fa-bars fa-lg" aria-hidden="true"></i></a>
+				<li class="menu_link"><a href="/">Home</a></li>
+				<!-- <li class="menu_link menu-more dropdown">
+					<a href="#">More</a>
+					<ul class="options hidden box_shadow">
+						<li><a href="#">My Tags</a></li>
+						<li><a href="#">Saved/Shortlisted Candidates</a></li>
+					</ul>
+				</li>
+			</ul>
+			<div class="search_container">
+				<input type="text" class="searchform" placeholder="Search"/>
+			</div> -->
+	</nav>
+<!-- end navigation menu -->
+
+</header>
+
+<div class="main-container">
+    <div class="account-activation-heading heading-clr">Account Activation</div>
+    <div class="account-activation-message">
+    </div>
+</div>
+
+
+
+
+{{> footer}}

@@ -16,6 +16,9 @@
 .extra-info-color {
   color: #808080; }
 
+.important-info-color {
+  color: #333; }
+
 .bg-overlay {
   background-color: rgba(0, 0, 0, 0.7); }
 
@@ -24,7 +27,7 @@
 
 .main-container {
   padding: 20px;
-  height: 500px; }
+  min-height: calc(100% - 155px); }
   .main-container .heading-container {
     position: relative;
     height: 40px;
@@ -42,13 +45,20 @@
     .main-container .calendar-events-container .calendar-events-content .calendar-row .column {
       display: inline-block;
       width: 33%;
-      padding: 10px 5px; }
+      padding: 10px 5px;
+      font-size: 13px; }
+      .main-container .calendar-events-container .calendar-events-content .calendar-row .column a {
+        text-decoration: none; }
+        .main-container .calendar-events-container .calendar-events-content .calendar-row .column a:hover {
+          text-decoration: underline;
+          color: #23527c; }
     .main-container .calendar-events-container .calendar-events-content .calendar-row:nth-child(even) {
       background-color: #f5f6f7; }
     .main-container .calendar-events-container .calendar-events-header {
-      background-color: #f5f6f7;
+      background-color: #eee;
       padding: 10px 5px; }
       .main-container .calendar-events-container .calendar-events-header .column {
         display: inline-block;
         width: 33%;
-        font-size: 12px; }
+        font-size: 12px;
+        font-weight: bold; }

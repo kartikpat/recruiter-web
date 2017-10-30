@@ -1,13 +1,40 @@
 var recruiterID = localStorage.id;
 var userProfile = $(".user_profile_side");
 var navBar = $(".navbar");
+var maxCandidateChats;
+
 
 $(document).ready(function(){
+
+	if ($(document).width() < 1000) {
+		maxCandidateChats = 1
+	} else {
+		if ($(document).width() < 1450) {
+
+			maxCandidateChats = 2
+		} else {
+
+			maxCandidateChats = 3
+		}
+	}
+
 	getRequest(baseUrl+"/recruiter/"+recruiterID, {}, populateHeader);
 	userProfile.find(".dropdown").hover(showMenu);
 	navBar.find(".menu-calendar").hover(showMenuCalendar);
 	navBar.find(".menu-more").hover(showMenuMore);
 	navBar.find(".manage-bookings").click(showAllCalendars);
+
+	$("#search-solar").keyup(function(event){
+    if(event.keyCode == 13){
+        var queryParameter = $(this).val();
+		window.location = "/recruiter/filter-candidate?queryParameter="+queryParameter;
+    }
+
+});
+	$(".saved-shortlisted").click(function(event) {
+		event.preventDefault();
+		window.location = "/recruiter/filter-candidate";
+	})
 })
 
 var showAllCalendars = function(event) {
@@ -28,8 +55,86 @@ var showMenuMore = function() {
 }
 
 var populateHeader = function(res) {
+	console.log(res);
     if(res.status =="success") {
-		//console.log(res);
-        userProfile.find('.email').text(res["data"][0]["email"])
+		recruiterEmail = res["data"][0]["email"];
+		recruiterImage = res["data"][0]["img_link"];
+        userProfile.find('.email').append(recruiterEmail+"<i class='email-caret fa fa-caret-down' aria-hidden='true'></i>").removeClass("animated-background");
+		userProfile.find('.image-container img').attr('src', recruiterImage).removeClass("animated-background");
     }
+}
+
+var displayAMessage = function(event) {
+    var key = event.which;
+    if(key == 13) {
+        var message = $(this).val();
+        sendMessage(message);
+        $(this).val('');
+    }
+}
+
+var sendMessage = function(message) {
+    $(".candidate-chat-content").append("<div class='message-container right'><div class='message-sent'>"+message+"<span class='current-time'>"+startTime()+"</span></div></div>");
+    var channel = chatMainContainer.attr('data-id');
+    console.log(channel);
+
+    publish({
+        UUID: btoa(recruiterID+'--'+recruiterEmail),
+        deviceID: getCookie("sessID"),
+        time: Date.now(),
+        usr: recruiterID,
+        name: recruiterName,
+        tt:1,
+        msg: message,
+        img: recruiterImage,
+        type: 1
+    }, channel, function(m){
+        console.log("message sent");
+    })
+}
+
+function ISODateToD_M(aDate) {
+  var date = new Date(aDate),
+	month = date.getMonth(),
+	dt = date.getDate();
+
+  if (dt < 10) {
+	dt = '0' + dt;
+  }
+  if (month < 10) {
+	month = '0' + month;
+  }
+
+  var str = dt + "/" + month;
+  return str;
+
+}
+
+function ISODateToD_M_Y(aDate) {
+    var monthNames = ["Jan", "Feb", "March", "April", "May", "June",
+                        "July", "Aug", "Sep", "Oct", "Nov", "Dec"
+                    ];
+  var date = new Date(aDate),
+	month = monthNames[date.getMonth()],
+    year = date.getFullYear(),
+	dt = date.getDate();
+
+  if (dt < 10) {
+	dt = '0' + dt;
+  }
+  if (month < 10) {
+	month = '0' + month;
+  }
+
+  var str = dt + " " + month + " " + year;
+  return str;
+}
+
+function ISODateToTime(aDate) {
+  var date = new Date(aDate),
+	hours = date.getHours(),
+	mins = date.getMinutes();
+    mins = checkTime(mins);
+      var str = hours + ":" + mins;
+      return str;
 }

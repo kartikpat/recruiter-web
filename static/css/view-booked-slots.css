@@ -16,6 +16,9 @@
 .extra-info-color {
   color: #808080; }
 
+.important-info-color {
+  color: #333; }
+
 .bg-overlay {
   background-color: rgba(0, 0, 0, 0.7); }
 
@@ -23,17 +26,19 @@
   animation-duration: 500ms !important; }
 
 .main-container {
-  padding: 20px; }
+  padding: 20px;
+  min-height: 100%;
+  height: calc(100% - 155px); }
   .main-container .booked-slots-container {
     display: inline-block;
     width: 20%;
     padding: 10px;
     overflow-y: auto;
-    height: 560px;
+    height: 100%;
     margin-right: 15px; }
     .main-container .booked-slots-container .booked-slots-heading {
       margin-bottom: 10px;
-      width: 200px;
+      width: 150px;
       height: 20px;
       text-align: left;
       cursor: pointer; }
