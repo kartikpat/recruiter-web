@@ -25,7 +25,20 @@
 .animated {
   animation-duration: 500ms !important; }
 
-select.select-dropdown {
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
+.clear {
+  clear: both;
+  overflow: auto; }
+
+a {
+  text-decoration: none; }
+
+select.select-dropdown, .job_posting .post_job .post_job_form .field-container .field select {
   -webkit-appearance: none;
   -moz-appearance: none;
   -o-appearanance: none;
@@ -43,10 +56,10 @@ select.select-dropdown {
   font-size: 14px;
   color: #818181;
   padding: 16px 22px; }
-  select.select-dropdown[multiple] {
+  select.select-dropdown[multiple], .job_posting .post_job .post_job_form .field-container .field select[multiple] {
     background-image: none;
     height: 120px; }
-  select.select-dropdown.inactive .dropdown-list {
+  select.select-dropdown.inactive .dropdown-list, .job_posting .post_job .post_job_form .field-container .field select.inactive .dropdown-list {
     display: none; }
 
 label {
@@ -56,7 +69,7 @@ label {
   label.title {
     margin-bottom: 14px; }
 
-.error-field, .error {
+.error-field {
   margin: 7px 0 0 3px;
   font-size: 11px;
   color: #ec1c2a; }
@@ -116,7 +129,7 @@ label {
     font-size: 14px;
     color: #4fa995; }
 
-.input-field {
+.input-field, .job_posting .post_job .post_job_form .field-container .field input[type=text] {
   -webkit-appearance: none;
   -moz-appearance: none;
   -o-appearanance: none;
@@ -127,7 +140,7 @@ label {
   cursor: pointer;
   padding: 16px 22px;
   font-size: 14px; }
-  .input-field:focus {
+  .input-field:focus, .job_posting .post_job .post_job_form .field-container .field input[type=text]:focus {
     border-color: #4fa995; }
 
 .radio-input input {
@@ -146,24 +159,24 @@ label {
 .radio-input input:checked + label {
   background-image: url("/static/images/checked_radio.svg"); }
 
-.check-input input {
+.check-input input, .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] input, .premium_job_section .contents input {
   display: none; }
 
-.check-input label {
+.check-input label, .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] label, .premium_job_section .contents label {
   display: inline-block;
   cursor: pointer; }
 
-.check-input input + label {
+.check-input input + label, .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] input + label, .premium_job_section .contents input + label {
   padding: 4px 0 4px 35px;
   background-image: url("/static/images/unchecked_checkbox.svg");
   background-repeat: no-repeat;
   background-size: 20px;
   background-position: left 2px center; }
 
-.check-input input:checked + label {
+.check-input input:checked + label, .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] input:checked + label, .premium_job_section .contents input:checked + label {
   background-image: url("/static/images/checked_checkbox.svg"); }
 
-button {
+button, .submit-action-buttons button {
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
@@ -255,176 +268,99 @@ span.sticker {
         font-size: 13px;
         color: #1a5e98; }
 
-.online-icon {
-  position: absolute;
-  top: 20px;
-  right: 1px;
-  width: 8px;
-  height: 8px;
-  background: #83c500;
-  border-radius: 50%; }
+.area-heading, .job_posting .post_job .section-heading, .premium_job_section .section-head {
+  margin-bottom: 20px; }
+  .area-heading h3, .job_posting .post_job .section-heading h3, .premium_job_section .section-head h3 {
+    margin: 0;
+    font-size: 26px;
+    color: #149075;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e8e8e8; }
 
-.alert-message {
-  margin: 10px 0;
-  font-size: 13px;
-  position: relative;
-  padding: 10px;
-  padding-right: 25px;
-  box-sizing: border-box;
-  background: #999966;
-  border-radius: 2px;
-  box-shadow: 2px 2px 5px 0 #ebebeb;
-  color: #fff; }
-  .alert-message.half {
-    width: 50%; }
-  .alert-message.err {
-    background: #b86363; }
-  .alert-message i {
-    position: absolute;
-    right: 8px;
-    top: 11px;
-    cursor: pointer; }
+.job_posting {
+  padding: 20px; }
+  .job_posting .post_job {
+    display: inline-block;
+    width: 70%; }
+    .job_posting .post_job .post-job-heading {
+      margin: 10px 0 0 0;
+      font-size: 22px;
+      color: #5d5d5d;
+      line-height: 1; }
+    .job_posting .post_job .form-heading {
+      margin-bottom: 35px; }
+      .job_posting .post_job .form-heading .guidelines {
+        font-size: 18px;
+        text-decoration: none; }
+    .job_posting .post_job .post_job_form .field-container {
+      padding: 0px;
+      margin-bottom: 30px;
+      position: relative;
+      overflow: auto;
+      width: 70%; }
+      .job_posting .post_job .post_job_form .field-container.courses {
+        width: 100%; }
+      .job_posting .post_job .post_job_form .field-container .label {
+        display: block;
+        font-size: 14px;
+        color: #4b4b4b;
+        cursor: pointer;
+        margin-bottom: 14px; }
+      .job_posting .post_job .post_job_form .field-container .field {
+        display: block;
+        font-size: 0; }
+        .job_posting .post_job .post_job_form .field-container .field .add-tags-content {
+          width: 70%;
+          border: 1px solid #ccc;
+          padding: 12px; }
+          .job_posting .post_job .post_job_form .field-container .field .add-tags-content .selected-tags-content {
+            display: inline-block; }
+          .job_posting .post_job .post_job_form .field-container .field .add-tags-content .tag-input {
+            color: #676666;
+            font-size: 13.33px;
+            outline: none;
+            cursor: text; }
+            .job_posting .post_job .post_job_form .field-container .field .add-tags-content .tag-input:focus {
+              color: #000000; }
+        .job_posting .post_job .post_job_form .field-container .field .js-show-selected-tags, .job_posting .post_job .post_job_form .field-container .field .js-show-suggested-tags {
+          margin-right: 10px; }
+        .job_posting .post_job .post_job_form .field-container .field .salary-info {
+          margin: 10px 0; }
+        .job_posting .post_job .post_job_form .field-container .field select.half {
+          width: 49%;
+          display: inline-block; }
+        .job_posting .post_job .post_job_form .field-container .field textarea {
+          width: 100%;
+          max-width: 100%;
+          min-height: 250px;
+          padding: 9px 12px;
+          box-sizing: border-box;
+          border: 1px solid #e8e8e8;
+          border-radius: 2px;
+          background-color: inherit;
+          font-size: 14px; }
+          .job_posting .post_job .post_job_form .field-container .field textarea:focus {
+            outline: none;
+            border-color: #4fa995; }
 
-.loader {
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid #3498db;
-  border-bottom: 8px solid #3498db;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: spin 2s linear infinite;
-  position: absolute;
-  top: 50%;
-  left: 44%; }
+.premium_job_section {
+  clear: both;
+  margin: -20px 0 0 -20px;
+  padding: 30px;
+  width: 100%;
+  background: #f3fbfb; }
+  .premium_job_section label span {
+    font-size: 14px; }
+  .premium_job_section p {
+    font-size: 13px; }
 
-.loader-scroll-container {
-  height: 50px; }
-  .loader-scroll-container .loader-scroll {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #3498db;
-    border-bottom: 4px solid #3498db;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    animation: spin 2s linear infinite;
-    position: absolute;
-    left: 46%;
-    margin: 1px auto; }
-
-.dot-loader-container {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0%); }
-
-.dot {
-  width: 7px;
-  height: 7px;
-  border: 1.4px solid #333;
-  border-radius: 50%;
-  float: left;
-  margin: 0 3.5px;
-  transform: scale(0);
-  animation: fx 300ms ease infinite 0ms; }
-  .dot:nth-child(2) {
-    animation: fx 300ms ease infinite 90ms; }
-  .dot:nth-child(3) {
-    animation: fx 300ms ease infinite 90ms; }
-
-@keyframes fx {
-  50% {
-    transform: scale(1);
-    opacity: 1; }
-  100% {
-    opacity: 0; } }
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg); }
-  100% {
-    transform: rotate(360deg); } }
-
-.font-xs {
-  font-size: 10px; }
-
-.font-sm {
-  font-size: 12px; }
-
-.font-md {
-  font-size: 14px; }
-
-.font-lg {
-  font-size: 16px; }
-
-.font-heading {
-  font-size: 20px; }
-
-.overlay-show {
-  box-shadow: 2px 5px 18px 0px rgba(0, 0, 0, 0.2);
-  margin: 20px 0 !important;
-  margin-bottom: 50px !important; }
-
-.divider {
-  border: 0;
-  height: 0;
-  border-bottom: 1px solid #ebebeb;
-  width: 90%; }
-
-.no-results {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 10px;
-  width: 75%;
-  text-align: center; }
-
-.js-show-tags {
-  padding: 5px;
-  cursor: pointer;
-  margin-bottom: 10px;
-  margin-right: 10px; }
-  .js-show-tags:hover {
-    background-color: #eee; }
-  .js-show-tags i {
-    margin-left: 5px;
-    color: #aaaaaa; }
-
-.highlight {
-  background-color: #d9e1c4; }
-
-.highlighted {
-  color: #708732 !important; }
-
-.error {
-  position: absolute;
-  left: 0px;
-  bottom: -20px; }
-
-.hidden {
-  display: none; }
-
-.invisible {
-  opacity: 0.2; }
-
-.hide {
-  visibility: hidden; }
-
-input:focus, select:focus {
-  outline: none; }
-
-@keyframes placeHolderShimmer {
-  0% {
-    background-position: -468px 0; }
-  100% {
-    background-position: 468px 0; } }
-
-.animated-background {
-  animation-duration: 1.5s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-  animation-name: placeHolderShimmer;
-  animation-timing-function: linear;
-  background: #f6f7f8;
-  background: linear-gradient(to right, #f6f7f8 8%, #e9e9e9 18%, #f6f7f8 33%);
-  background-size: 800px 104px;
-  border-radius: 4px; }
+.submit-action-buttons {
+  margin: 20px 0; }
+  .submit-action-buttons button.submit-form {
+    padding: 10px;
+    background-color: #1f8f75; }
+  .submit-action-buttons button.cancel-form {
+    padding: 10px;
+    color: #1a5e98;
+    box-shadow: none;
+    border: 0; }

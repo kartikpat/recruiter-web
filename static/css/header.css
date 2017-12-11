@@ -25,6 +25,19 @@
 .animated {
   animation-duration: 500ms !important; }
 
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
+.clear {
+  clear: both;
+  overflow: auto; }
+
+a {
+  text-decoration: none; }
+
 body, html {
   margin: 0;
   padding: 0;
@@ -66,178 +79,110 @@ body, html {
 .inline-block {
   display: inline-block; }
 
-header .top_banner {
-  padding: 20px 10px 10px 10px;
-  margin: 0 0 15px 0;
-  position: relative; }
-  header .top_banner .logo {
+.header {
+  min-height: 75px;
+  background: #2b2b2b;
+  display: block;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px; }
+  .header .header_item {
+    height: 40px;
+    margin-top: 18px;
     display: inline-block;
-    position: relative; }
-    header .top_banner .logo h3 {
-      font-size: 30px;
-      font-family: 'Comfortaa', cursive;
-      line-height: 20px;
-      margin: 0; }
-    header .top_banner .logo span {
-      font-size: 13px;
-      position: absolute;
-      top: 110%;
-      left: 70%;
-      font-family: 'Droid Sans', sans-serif; }
-  header .top_banner .user_profile_side {
-    position: absolute;
-    right: 20px;
-    display: inline-block;
-    cursor: pointer;
-    min-height: 30px; }
-    header .top_banner .user_profile_side .dropdown {
+    vertical-align: middle; }
+    .header .header_item.mobile-menu {
       position: relative;
-      list-style: none; }
-      header .top_banner .user_profile_side .dropdown .email {
-        display: inline-block;
-        height: 14px;
-        line-height: 0px;
-        min-width: 125px;
-        color: #666;
-        font-size: 12px;
-        text-decoration: none;
-        font-family: "Droid Sans",sans-serif;
-        vertical-align: top;
-        padding-left: 5px;
-        padding-top: 8px;
-        margin-top: 7px; }
-      header .top_banner .user_profile_side .dropdown .image-container {
-        display: inline-block;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%; }
-        header .top_banner .user_profile_side .dropdown .image-container img {
-          width: 100%;
-          height: 100%;
-          border-radius: 50%; }
-      header .top_banner .user_profile_side .dropdown .options {
-        position: absolute;
-        top: 102%;
-        background: #fff;
-        min-width: 200px;
-        right: 0;
-        z-index: 15;
-        padding: 0;
-        list-style: none;
-        margin: 0;
-        border-radius: 4px; }
-        header .top_banner .user_profile_side .dropdown .options .seperator {
-          border: 0;
-          height: 0;
-          border-top: 1px solid rgba(0, 0, 0, 0.1);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-          width: 90%;
-          margin: 0 auto; }
-        header .top_banner .user_profile_side .dropdown .options li {
-          padding: 10px;
-          text-align: left; }
-          header .top_banner .user_profile_side .dropdown .options li a {
-            color: #666;
-            font-size: 12px;
-            text-decoration: none;
-            display: block; }
-            header .top_banner .user_profile_side .dropdown .options li a:hover {
-              color: #56A0FF; }
-
-header nav {
-  background: #1c1c1c;
-  position: relative; }
-  header nav .menu {
-    display: inline-block;
-    vertical-align: top;
-    margin: 0;
-    padding: 0; }
-    header nav .menu li.menu_link:first-child {
+      width: 40px;
       display: none; }
-    header nav .menu li.menu_link {
-      display: inline-block;
-      padding: 0;
-      border-bottom: 2px solid transparent;
-      height: 44px;
-      line-height: 44px; }
-      header nav .menu li.menu_link > a {
-        color: white;
-        text-decoration: none;
-        font-size: 13px;
-        font-family: "Droid Sans",sans-serif; }
-      header nav .menu li.menu_link .menu_link_a {
-        width: 100%;
-        height: 100%;
-        padding: 0 10px;
-        display: block; }
-      header nav .menu li.menu_link:hover {
-        background: #7c7c7c;
-        border-bottom: 2px solid #fff; }
-    header nav .menu .dropdown {
-      position: relative; }
-      header nav .menu .dropdown .options {
+      .header .header_item.mobile-menu img {
         position: absolute;
-        top: 104%;
-        background: #fff;
-        min-width: 150px;
+        top: 0;
+        bottom: 0;
+        right: 0;
         left: 0;
-        list-style: none;
-        z-index: 15;
-        padding: 0;
-        margin: 0; }
-        header nav .menu .dropdown .options li {
-          padding: 2px 10px;
-          text-align: left;
-          line-height: 1.5; }
-          header nav .menu .dropdown .options li a {
-            font-size: 12px;
-            color: black;
-            text-decoration: none; }
-            header nav .menu .dropdown .options li a:hover {
-              text-decoration: underline; }
-          header nav .menu .dropdown .options li:hover {
-            background: #e1e1e1; }
-      header nav .menu .dropdown:hover > ul {
-        display: block; }
-  header nav .search_container {
+        margin: auto; }
+  .header .domain_logo {
     display: inline-block;
-    padding: 6px;
-    position: absolute;
-    right: 1%; }
-    header nav .search_container:after {
-      font-family: 'FontAwesome';
-      content: "\f002";
-      color: gray;
-      position: absolute;
-      top: 12px;
-      right: 10px;
-      font-size: 16px; }
-    header nav .search_container input {
-      height: 30px;
-      border: 0;
+    vertical-align: middle;
+    color: #FFF;
+    font-family: "Comfortaa", sans-serif; }
+    .header .domain_logo h1 {
+      font-size: 30px;
+      font-family: inherit;
+      line-height: 20px;
       margin: 0;
-      padding: 0 12px;
-      border-radius: 5px;
-      width: 250px; }
+      display: inline-block; }
+    .header .domain_logo span {
+      font-family: inherit;
+      font-size: 14px; }
+    .header .domain_logo p {
+      font-family: inherit;
+      line-height: 1;
+      color: #7b7b7b;
+      font-size: 11px;
+      margin-left: 20px;
+      margin-top: 5px; }
+  .header .profile_actions .action-icon {
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden; }
+    .header .profile_actions .action-icon img {
+      padding: 10px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin: auto; }
+  .header .navigation {
+    display: inline-block;
+    vertical-align: middle;
+    width: 65%; }
+    .header .navigation ul {
+      list-style: none;
+      font-family: "Comfortaa", sans-serif;
+      margin: 0; }
+      .header .navigation ul .menu-list-item {
+        line-height: 40px;
+        font-family: inherit;
+        font-size: 14px;
+        display: inline-block;
+        width: 20%;
+        min-width: 120px;
+        text-align: center; }
+        .header .navigation ul .menu-list-item a {
+          font-family: inherit;
+          color: #FFF; }
 
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-  header nav .menu li.menu_link > a {
-    font-size: 12px; }
-  header nav .search_container input {
-    width: 180px; } }
-
-@media only screen and (max-width: 768px) {
-  header nav .menu li.menu_link:first-child {
+@media all and (max-width: 992px) {
+  .header .header_item.mobile-menu {
     display: inline-block; }
-  header nav .menu li.menu_link {
-    display: none;
-    padding: 12px; }
-  header nav .search_container input {
-    width: 180px; }
-  header nav .menu.responsive li.menu_link:not(:first-child) {
-    display: block;
-    padding: 12px;
-    border-bottom: 1px solid gray; } }
+  .header .navigation {
+    display: none; } }
+
+@media all and (max-width: 768px) {
+  .header {
+    padding-left: 10px;
+    padding-right: 10px; }
+    .header .header_item.domain_logo h1 {
+      font-size: 21px; }
+    .header .header_item.domain_logo span {
+      font-size: 11px; }
+    .header .header_item.domain_logo p {
+      font-size: 9px;
+      margin-left: 3px; }
+    .header .header_item.mobile-menu {
+      height: 30px;
+      width: 30px;
+      vertical-align: top; }
+    .header .header_item.profile_actions .action-icon {
+      height: 30px;
+      width: 30px; } }
 
 .email-caret {
   margin-top: -5px;

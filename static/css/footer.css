@@ -1,20 +1,76 @@
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.important-info-color {
+  color: #333; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
+.clear {
+  clear: both;
+  overflow: auto; }
+
+a {
+  text-decoration: none; }
+
 .footer {
-  width: 100%; }
-  .footer nav {
-    background: #1c1c1c; }
-    .footer nav .menu {
-      padding: 0;
-      margin: 0; }
-      .footer nav .menu li.menu_link {
-        display: inline-block;
-        padding: 12px; }
-        .footer nav .menu li.menu_link a {
-          color: #ffffff;
-          font-size: 12px;
-          text-decoration: none; }
-          .footer nav .menu li.menu_link a:hover {
-            color: #56A0FF;
-            text-decoration: underline; }
+  width: 100%;
+  background: #2b2b2b;
+  padding: 20px; }
+  .footer .footer-column-container {
+    display: block;
+    width: 75%;
+    font-size: 0;
+    margin: 20px auto; }
+    .footer .footer-column-container .footer-column {
+      display: inline-block;
+      width: 25%;
+      vertical-align: top; }
+      .footer .footer-column-container .footer-column .footer-links-list {
+        padding: 0;
+        list-style: none; }
+        .footer .footer-column-container .footer-column .footer-links-list .footer-link-item {
+          padding: 5px 10px; }
+          .footer .footer-column-container .footer-column .footer-links-list .footer-link-item a {
+            font-size: 14px;
+            text-decoration: none;
+            color: #c1c1c1; }
+  .footer .footer-social-media {
+    text-align: center;
+    margin: 20px 0; }
+    .footer .footer-social-media .social-media-icon {
+      display: inline-block;
+      margin: 0 10px; }
+  .footer .footer-copy-text p {
+    text-align: center;
+    font-size: 14px;
+    text-decoration: none;
+    color: #c1c1c1; }
 
 @media only screen and (max-width: 768px) {
   .footer nav .menu li.menu_link {

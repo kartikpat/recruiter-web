@@ -1,0 +1,100 @@
+{{>header}}
+	<div class="page-content">
+		<div class="sidebar left">
+			<div class="section">
+				<h3>Form Elements</h3>
+			</div>
+		</div>
+
+		<div class="content-block right form-elements">
+			<div class="section">
+				<label class="title" for="select-dropdown">Location</label>
+				<select class="select-dropdown inactive">
+					<div class="dropdown-list">
+						<option value="0" selected>Select</option>
+						<option value="1">Option 1</option>
+						<option value="2">Option 2</option>
+						<option value="3">Option 3</option>
+						<option value="4">Option 4</li>
+					</div>
+				</select>
+				<div class="error-field"><p>Please select location</p></div>
+			</div>
+			<div class="section">
+				<label class="title" for="course-selection">Course Type</label>
+				<div class="course-option full-time">
+					<div class="course-content">
+						<img class="course-icon" src="/static/images/course-type-full-time.svg">
+						<label class="course-option-label">Full-time</label>
+					</div>
+					<img class="course-selected" src="/static/images/course-selected.svg">
+				</div>
+			</div>
+			<div class="section">
+				<label for="job-title">Job Title</label>
+					<input type="text" class="input-field job-title"/>
+			</div>
+			<div class="section">
+				<div class="radio-input">
+					<input type="radio" id="radio-button-male" name="gender">
+					<label for="radio-button-male">Male</label>
+				</div>
+				<div class="radio-input">
+					<input type="radio" id="radio-button-female" name="gender">
+					<label for="radio-button-female">Female</label>
+				</div>
+			</div>
+			<div class="section">
+				<div class="check-input">
+					<input type="checkbox" id="check-button-male" name="gender">
+					<label for="check-button-male">Male</label>
+				</div>
+				<div class="check-input">
+					<input type="checkbox" id="check-button-female" name="gender">
+					<label for="check-button-female">Female</label>
+				</div>
+			</div>
+		</div>
+		<div class="content-block button-elements right">
+			<div class="section">
+				<button class="shortlist green">Shortlist</button>
+				<button class="reject red">Reject</button>
+			</div>
+			<div class="section">
+				<button class="edit white"><img src="/static/images/edit-icon.svg"></button>
+				<button class="premium white">Make Premium</button>
+				<button class="unpublish white">Unpublish</button>
+			</div>
+			<div class="section">
+				<div class="button-action-list inactive">
+					<label class="action-list-label">Other Actions</label>
+					<ul class="action-list-items">
+						<li><a href="#">Send Message</a></li>
+						<li><a href="#">Send Interview Invite</a></li>
+						<li><a href="#">Download Resume</a></li>
+						<li><a href="#">Save for later</a></li>
+						<li><a href="#">Add Comment</a></li>
+						<li><a href="#">Add Tag</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="section">
+				<span class="sticker followed-up">Followed up</span>
+				<span class="sticker pro-member">Pro</span>
+			</div>
+			<div class="pill-button inactive">
+				<input type="text" placeholder="Click me">
+				<div class="pill-listing">
+					<ul>
+						<li>List Item 1</li>
+						<li>List Item 2</li>
+						<li>List Item 3</li>
+						<li>List Item 4</li>
+						<li>List Item 5</li>
+
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+{{>footer}}

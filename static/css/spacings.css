@@ -1,0 +1,50 @@
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.important-info-color {
+  color: #333; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
+.page-content {
+  min-height: 100%;
+  padding: 0;
+  overflow: auto;
+  position: relative;
+  padding: 20px; }
+  .page-content .sidebar {
+    width: 15%;
+    padding: 20px;
+    background: #1f8f75;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 43px; }
+    .page-content .sidebar h3 {
+      font-size: 30px;
+      text-transform: uppercase;
+      color: #ffffff; }
+  .page-content .content-block {
+    width: 85%;
+    padding: 40px 70px; }
+    .page-content .content-block .section {
+      margin-bottom: 60px; }
