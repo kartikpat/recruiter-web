@@ -21,6 +21,13 @@ select.select-dropdown {
     height: 120px; }
   select.select-dropdown.inactive .dropdown-list {
     display: none; }
+  select.select-dropdown.minimal {
+    display: inline-block;
+    width: 150px;
+    border: 0;
+    padding: 10px;
+    background-color: transparent;
+    margin-bottom: 10px; }
 
 label {
   font-size: 14px;
@@ -82,7 +89,9 @@ label {
     .course-option .course-content span {
       display: block;
       margin-top: 5px;
-      cursor: pointer; }
+      cursor: pointer;
+      padding: 0 10px;
+      white-space: normal; }
   .course-option.active .course-selected {
     display: block; }
   .course-option.active label {
@@ -227,6 +236,66 @@ span.sticker {
       .button-action-list .action-list-items li a {
         font-size: 13px;
         color: #1a5e98; }
+
+.tag-container {
+  border: 1px solid #e8e8e8;
+  display: block;
+  padding: 5px 20px; }
+
+.pill-button {
+  position: relative;
+  display: inline-block; }
+  .pill-button input[type=text] {
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid #e8e8e8;
+    color: #2b2b2b;
+    font-size: 14px;
+    border: 1px solid transparent;
+    background: #FFF;
+    z-index: 10;
+    width: 200px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out; }
+    .pill-button input[type=text]:focus {
+      border-color: #4fa995; }
+  .pill-button .pill-listing {
+    display: inline-block;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    transform: translateY(38px);
+    opacity: 1;
+    left: 0;
+    z-index: 3;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; }
+    .pill-button .pill-listing ul {
+      margin: 0;
+      list-style: none;
+      padding: 0;
+      max-height: 150px;
+      overflow: auto;
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e8e8e8; }
+      .pill-button .pill-listing ul li {
+        padding: 5px 20px;
+        display: block;
+        width: 100%;
+        background: #FFF;
+        border-bottom: 1px solid #e8e8e8; }
+        .pill-button .pill-listing ul li:hover {
+          cursor: pointer;
+          background-color: #e9f5f2; }
+        .pill-button .pill-listing ul li:last-child {
+          border: 0; }
+  .pill-button.inactive .pill-listing {
+    transform: translateY(25px);
+    opacity: 1; }
+    .pill-button.inactive .pill-listing ul {
+      height: 0;
+      overflow: auto;
+      box-shadow: none;
+      border: 0; }
 
 .link-color {
   color: #337ab7; }

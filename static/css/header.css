@@ -102,21 +102,21 @@ body, html {
         right: 0;
         left: 0;
         margin: auto; }
-  .header .domain_logo {
+  .header .domain_logo a {
     display: inline-block;
     vertical-align: middle;
     color: #FFF;
     font-family: "Comfortaa", sans-serif; }
-    .header .domain_logo h1 {
+    .header .domain_logo a h1 {
       font-size: 30px;
       font-family: inherit;
       line-height: 20px;
       margin: 0;
       display: inline-block; }
-    .header .domain_logo span {
+    .header .domain_logo a span {
       font-family: inherit;
       font-size: 14px; }
-    .header .domain_logo p {
+    .header .domain_logo a p {
       font-family: inherit;
       line-height: 1;
       color: #7b7b7b;
@@ -168,21 +168,27 @@ body, html {
 @media all and (max-width: 768px) {
   .header {
     padding-left: 10px;
-    padding-right: 10px; }
-    .header .header_item.domain_logo h1 {
-      font-size: 21px; }
-    .header .header_item.domain_logo span {
-      font-size: 11px; }
-    .header .header_item.domain_logo p {
-      font-size: 9px;
-      margin-left: 3px; }
-    .header .header_item.mobile-menu {
-      height: 30px;
-      width: 30px;
-      vertical-align: top; }
-    .header .header_item.profile_actions .action-icon {
-      height: 30px;
-      width: 30px; } }
+    padding-right: 10px;
+    min-height: 55px; }
+    .header .header_item {
+      margin-top: 13px;
+      height: 30px; }
+      .header .header_item.domain_logo h1 {
+        font-size: 21px; }
+      .header .header_item.domain_logo span {
+        font-size: 11px; }
+      .header .header_item.domain_logo p {
+        font-size: 9px;
+        margin-left: 3px;
+        margin-top: 2px; }
+      .header .header_item.mobile-menu {
+        height: 30px;
+        width: 30px;
+        vertical-align: top;
+        cursor: pointer; }
+      .header .header_item.profile_actions .action-icon {
+        height: 30px;
+        width: 30px; } }
 
 .email-caret {
   margin-top: -5px;

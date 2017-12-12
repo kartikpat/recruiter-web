@@ -1,0 +1,77 @@
+{{>header}}
+	
+	<div class="page-content">
+		<div class="my-jobs">
+			<div class="page-header">
+				<select class="minimal" id="">
+					<option value="0">All Jobs</option>
+				</select>
+
+				<div class="action-buttons right">
+					<button class="post-job green">Post Job</button>
+				</div> 
+			</div>
+
+			<div class="my-jobs-listing">
+				<table>
+					<tr>
+						<th cellspacing="0">Created on</th>
+						<th cellspacing="0">Job Title</th>
+						<th cellspacing="0">Status</th>
+						<th cellspacing="0">Engagement</th>
+						<th cellspacing="0">Actions</th>
+					</tr>
+					<tr class="prototype job-row hidden">
+						<td>
+							<span class="created-on"></span>
+						</td>
+						<td>
+							<span class="job-title"></span>
+							<span class="location"></span>
+							<span class="bull-separator">&bull;</span>
+							<span class="experience"></span>
+
+							<p class="suggested-candidates">
+								<a href="#"><span class="suggested-count"></span> Suggested Candidates</a> 
+								<span class="caret">
+								<img src="/static/images/job_suggested_candidates.svg"></span>
+							</p>
+						</td>
+						<td>
+							<span class="status"></span>
+						</td>
+						<td>
+							<span class="views"><span class="view-count"></span> views.</span>
+							<span class="applied"><a href="#"><span class="apply-count"></span> applied</a></span>
+						</td>
+						<td class="actions">
+							<div class="action-icon cancel">
+								<img src="/static/images/job_cancel_icon.svg">
+							</div>
+							<div class="action-icon refresh">
+								<img src="/static/images/job_refresh_icon.svg">
+							</div>
+							<div class="action-icon star">
+								<img src="/static/images/job_star_icon.svg">
+							</div>
+							<div class="action-icon facebook">
+								<img src="/static/images/job_facebook_icon.svg">
+							</div>
+							<div class="action-icon twitter">
+								<img src="/static/images/job_twitter_icon.svg">
+							</div>
+							<div class="action-icon linkedin">
+								<img src="/static/images/job_linkedin_icon.svg">
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<div class="conversations">
+			
+		</div>
+	</div>
+
+{{>minifooter}}

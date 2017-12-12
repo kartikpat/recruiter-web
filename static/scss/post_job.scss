@@ -6,6 +6,7 @@
 @import 'components/_global.scss';
 @import 'components/_theme.scss';
 
+@import 'spacings';
 @import 'input-elements';
 
 .area-heading {
@@ -21,17 +22,23 @@
 
 .job_posting {
     padding: 20px;
+    font-size:0;
 
     .post_job {
-
         display:inline-block;
         width:70%;
+        padding: 0 20px 0 0;
 
         .post-job-heading {
             margin:10px 0 0 0;
             font-size:$page-title-size;
             color:$page-title-color;
             line-height:1;
+
+            .title-subtext {
+                display:none;
+                cursor:pointer;
+            }
         }
 
         .section-heading {
@@ -176,5 +183,109 @@
             border:0;
         }
 
+    }
+}
+
+.guidelines-container {
+    display: inline-block;
+    width: 30%;
+    vertical-align: top;
+    background-color:$premium-section-background;
+    padding:20px;
+    margin-top:50px;
+
+    h4 {
+        font-size:$page-subtitle-font-size;
+        color:$page-section-title-color;
+    }
+
+    ul {
+        padding-left:20px;
+
+        li {
+            font-size:$base-font-size;
+            margin-bottom:20px;
+            color:$page-list-item-color;
+        }
+    }
+}
+
+@media all and (max-width:768px) {
+    .guidelines-container {
+        display:none;
+    }
+    .job_posting {
+        .post_job {
+            width:100%;
+
+            .form-heading {
+                margin-bottom:25px;
+            }
+
+            .post-job-heading {
+                font-size:$mobile-page-title-size;
+
+                .title-subtext {
+                    display:block;
+                    font-size:$mobile-page-subtitle-size;
+                    color:$link-color;
+                }
+            }
+
+            .section-heading {
+                h3 {
+                    font-size:$mobile-page-section-title-size;
+                }
+            }
+
+            .post_job_form {
+
+                .field-container {
+                    width:100%;
+                    
+                    .field {
+                     
+                        input[type=text], select, textarea {
+                            padding:12px 20px;
+                            font-size:$mobile-base-font-size;
+
+                            option {
+                                padding:5px;
+                            }
+                        }
+
+                        select {
+
+                            &.half {
+                                width:48%;
+                            }
+                        }
+                    }
+
+                    &.courses {
+                        white-space:nowrap;
+                    }
+                }
+            }
+        }
+    }
+    .premium_job_section {
+
+        font-size:$mobile-base-font-size;
+        .section-head {
+            h3 {
+                font-size:$mobile-page-section-title-size;
+            }
+        }   
+
+        label {
+            span {
+                font-size:$mobile-base-font-size;
+            }
+        }
+
+        p {
+            font-size:$mobile-base-font-size;
+        }
     }
 }

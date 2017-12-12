@@ -790,6 +790,34 @@
 				"static/build/js/ui-components.min.js"
 			]
 		}
+	},
+	"my-jobs": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/my-jobs.css",
+				"static/css/utilities.css",
+				"static/css/footer.css"
+			],
+			"prod": [
+				"static/build/css/my-jobs.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/change-password.js",
+				"static/js/my-jobs.js",
+				"static/js/utilities.js"
+			],
+			"prod" : [
+				"static/build/js/my-jobs.min.js"
+			]
+		}
 	}
 
 

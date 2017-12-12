@@ -1,0 +1,106 @@
+@import "colors.scss";
+@import "fonts.scss";
+
+@import 'components/_colors.scss';
+@import 'components/_type.scss';
+@import 'components/_global.scss';
+@import 'components/_theme.scss';
+
+@import 'spacings';
+@import 'input-elements';
+
+
+.page-content {
+	background-color:$page-background-color;
+	.page-header {
+		select {
+			@extend select.select-dropdown;
+			font-size:$select-minimal-font-size;
+			background-image:url("/static/images/minimal_select_dropdown.svg");
+		}
+	}
+
+	.my-jobs-listing {
+		background:$color-white;
+		border:1px solid $border-color-base;
+		border-radius:4px;
+
+		table {
+			width:100%;
+			font-family:$primary-font;
+			border-spacing:0;
+			tr {
+				th {
+					text-transform:uppercase;
+					border-bottom:1px solid $border-color-base;
+					padding: 25px 10px 10px 25px;
+					font-size:$page-table-header-font-size;
+					text-align:left;
+				}
+
+				&.job-row {
+					vertical-align:top;
+
+					&:last-child {
+						&:after {
+							border:0;
+						}
+					}					
+				}
+				td {
+					padding: 25px 10px 25px 25px;
+					border-bottom:1px solid $border-color-base;
+					p {
+						margin:5px 0;
+
+						a {
+							font-size:$base-font-size;
+							color:$link-color;
+						}
+
+						span.caret {
+							line-height:1;
+							margin-left:5px;
+
+							img {
+								height:10px;
+							}
+						}
+					}
+					span {
+						font-size:$base-font-size;
+						line-height:1.5;
+					
+						&.job-title {
+							display:block;
+						}
+
+						&.bull-separator {
+							margin:0 5px;
+						}
+
+						&.views {
+							display:block;
+						}
+
+						&.applied {
+
+							a {
+								color:$link-color;
+							}
+						}
+					}
+
+					&.actions {
+						div.action-icon {
+						    display: inline-block;
+						    vertical-align: top;
+						    margin: 0 5px;
+						    cursor:pointer;
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,4 +1,95 @@
-select.select-dropdown {
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.important-info-color {
+  color: #333; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
+.clear {
+  clear: both;
+  overflow: auto; }
+
+a {
+  text-decoration: none; }
+
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.important-info-color {
+  color: #333; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
+.page-content {
+  min-height: 100%;
+  padding: 0;
+  overflow: auto;
+  position: relative;
+  padding: 20px; }
+  .page-content .sidebar {
+    width: 15%;
+    padding: 20px;
+    background: #1f8f75;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 43px; }
+    .page-content .sidebar h3 {
+      font-size: 30px;
+      text-transform: uppercase;
+      color: #ffffff; }
+  .page-content .content-block {
+    width: 85%;
+    padding: 40px 70px; }
+    .page-content .content-block .section {
+      margin-bottom: 60px; }
+
+select.select-dropdown, .page-content .page-header select {
   -webkit-appearance: none;
   -moz-appearance: none;
   -o-appearanance: none;
@@ -16,12 +107,12 @@ select.select-dropdown {
   font-size: 14px;
   color: #818181;
   padding: 16px 22px; }
-  select.select-dropdown[multiple] {
+  select.select-dropdown[multiple], .page-content .page-header select[multiple] {
     background-image: none;
     height: 120px; }
-  select.select-dropdown.inactive .dropdown-list {
+  select.select-dropdown.inactive .dropdown-list, .page-content .page-header select.inactive .dropdown-list {
     display: none; }
-  select.select-dropdown.minimal {
+  select.select-dropdown.minimal, .page-content .page-header select.minimal {
     display: inline-block;
     width: 150px;
     border: 0;
@@ -296,3 +387,56 @@ span.sticker {
       overflow: auto;
       box-shadow: none;
       border: 0; }
+
+.page-content {
+  background-color: #F4F4F4; }
+  .page-content .page-header select {
+    font-size: 16px;
+    background-image: url("/static/images/minimal_select_dropdown.svg"); }
+  .page-content .my-jobs-listing {
+    background: #FFF;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px; }
+    .page-content .my-jobs-listing table {
+      width: 100%;
+      font-family: "Droid Sans", sans-serif;
+      border-spacing: 0; }
+      .page-content .my-jobs-listing table tr th {
+        text-transform: uppercase;
+        border-bottom: 1px solid #e8e8e8;
+        padding: 25px 10px 10px 25px;
+        font-size: 15px;
+        text-align: left; }
+      .page-content .my-jobs-listing table tr.job-row {
+        vertical-align: top; }
+        .page-content .my-jobs-listing table tr.job-row:last-child:after {
+          border: 0; }
+      .page-content .my-jobs-listing table tr td {
+        padding: 25px 10px 25px 25px;
+        border-bottom: 1px solid #e8e8e8; }
+        .page-content .my-jobs-listing table tr td p {
+          margin: 5px 0; }
+          .page-content .my-jobs-listing table tr td p a {
+            font-size: 14px;
+            color: #155d9a; }
+          .page-content .my-jobs-listing table tr td p span.caret {
+            line-height: 1;
+            margin-left: 5px; }
+            .page-content .my-jobs-listing table tr td p span.caret img {
+              height: 10px; }
+        .page-content .my-jobs-listing table tr td span {
+          font-size: 14px;
+          line-height: 1.5; }
+          .page-content .my-jobs-listing table tr td span.job-title {
+            display: block; }
+          .page-content .my-jobs-listing table tr td span.bull-separator {
+            margin: 0 5px; }
+          .page-content .my-jobs-listing table tr td span.views {
+            display: block; }
+          .page-content .my-jobs-listing table tr td span.applied a {
+            color: #155d9a; }
+        .page-content .my-jobs-listing table tr td.actions div.action-icon {
+          display: inline-block;
+          vertical-align: top;
+          margin: 0 5px;
+          cursor: pointer; }

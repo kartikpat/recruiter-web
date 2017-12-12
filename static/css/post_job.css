@@ -38,6 +38,57 @@
 a {
   text-decoration: none; }
 
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.important-info-color {
+  color: #333; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
+.page-content {
+  min-height: 100%;
+  padding: 0;
+  overflow: auto;
+  position: relative;
+  padding: 20px; }
+  .page-content .sidebar {
+    width: 15%;
+    padding: 20px;
+    background: #1f8f75;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 43px; }
+    .page-content .sidebar h3 {
+      font-size: 30px;
+      text-transform: uppercase;
+      color: #ffffff; }
+  .page-content .content-block {
+    width: 85%;
+    padding: 40px 70px; }
+    .page-content .content-block .section {
+      margin-bottom: 60px; }
+
 select.select-dropdown, .job_posting .post_job .post_job_form .field-container .field select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -61,6 +112,13 @@ select.select-dropdown, .job_posting .post_job .post_job_form .field-container .
     height: 120px; }
   select.select-dropdown.inactive .dropdown-list, .job_posting .post_job .post_job_form .field-container .field select.inactive .dropdown-list {
     display: none; }
+  select.select-dropdown.minimal, .job_posting .post_job .post_job_form .field-container .field select.minimal {
+    display: inline-block;
+    width: 150px;
+    border: 0;
+    padding: 10px;
+    background-color: transparent;
+    margin-bottom: 10px; }
 
 label {
   font-size: 14px;
@@ -122,7 +180,9 @@ label {
     .course-option .course-content span {
       display: block;
       margin-top: 5px;
-      cursor: pointer; }
+      cursor: pointer;
+      padding: 0 10px;
+      white-space: normal; }
   .course-option.active .course-selected {
     display: block; }
   .course-option.active label {
@@ -268,6 +328,66 @@ span.sticker {
         font-size: 13px;
         color: #1a5e98; }
 
+.tag-container {
+  border: 1px solid #e8e8e8;
+  display: block;
+  padding: 5px 20px; }
+
+.pill-button {
+  position: relative;
+  display: inline-block; }
+  .pill-button input[type=text] {
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid #e8e8e8;
+    color: #2b2b2b;
+    font-size: 14px;
+    border: 1px solid transparent;
+    background: #FFF;
+    z-index: 10;
+    width: 200px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out; }
+    .pill-button input[type=text]:focus {
+      border-color: #4fa995; }
+  .pill-button .pill-listing {
+    display: inline-block;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    transform: translateY(38px);
+    opacity: 1;
+    left: 0;
+    z-index: 3;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; }
+    .pill-button .pill-listing ul {
+      margin: 0;
+      list-style: none;
+      padding: 0;
+      max-height: 150px;
+      overflow: auto;
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e8e8e8; }
+      .pill-button .pill-listing ul li {
+        padding: 5px 20px;
+        display: block;
+        width: 100%;
+        background: #FFF;
+        border-bottom: 1px solid #e8e8e8; }
+        .pill-button .pill-listing ul li:hover {
+          cursor: pointer;
+          background-color: #e9f5f2; }
+        .pill-button .pill-listing ul li:last-child {
+          border: 0; }
+  .pill-button.inactive .pill-listing {
+    transform: translateY(25px);
+    opacity: 1; }
+    .pill-button.inactive .pill-listing ul {
+      height: 0;
+      overflow: auto;
+      box-shadow: none;
+      border: 0; }
+
 .area-heading, .job_posting .post_job .section-heading, .premium_job_section .section-head {
   margin-bottom: 20px; }
   .area-heading h3, .job_posting .post_job .section-heading h3, .premium_job_section .section-head h3 {
@@ -278,15 +398,20 @@ span.sticker {
     border-bottom: 1px solid #e8e8e8; }
 
 .job_posting {
-  padding: 20px; }
+  padding: 20px;
+  font-size: 0; }
   .job_posting .post_job {
     display: inline-block;
-    width: 70%; }
+    width: 70%;
+    padding: 0 20px 0 0; }
     .job_posting .post_job .post-job-heading {
       margin: 10px 0 0 0;
       font-size: 22px;
       color: #5d5d5d;
       line-height: 1; }
+      .job_posting .post_job .post-job-heading .title-subtext {
+        display: none;
+        cursor: pointer; }
     .job_posting .post_job .form-heading {
       margin-bottom: 35px; }
       .job_posting .post_job .form-heading .guidelines {
@@ -361,6 +486,58 @@ span.sticker {
     background-color: #1f8f75; }
   .submit-action-buttons button.cancel-form {
     padding: 10px;
-    color: #1a5e98;
+    color: #155d9a;
     box-shadow: none;
     border: 0; }
+
+.guidelines-container {
+  display: inline-block;
+  width: 30%;
+  vertical-align: top;
+  background-color: #f3fbfb;
+  padding: 20px;
+  margin-top: 50px; }
+  .guidelines-container h4 {
+    font-size: 18px;
+    color: #149075; }
+  .guidelines-container ul {
+    padding-left: 20px; }
+    .guidelines-container ul li {
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #5d5d5d; }
+
+@media all and (max-width: 768px) {
+  .guidelines-container {
+    display: none; }
+  .job_posting .post_job {
+    width: 100%; }
+    .job_posting .post_job .form-heading {
+      margin-bottom: 25px; }
+    .job_posting .post_job .post-job-heading {
+      font-size: 16px; }
+      .job_posting .post_job .post-job-heading .title-subtext {
+        display: block;
+        font-size: 12px;
+        color: #155d9a; }
+    .job_posting .post_job .section-heading h3 {
+      font-size: 20px; }
+    .job_posting .post_job .post_job_form .field-container {
+      width: 100%; }
+      .job_posting .post_job .post_job_form .field-container .field input[type=text], .job_posting .post_job .post_job_form .field-container .field select, .job_posting .post_job .post_job_form .field-container .field textarea {
+        padding: 12px 20px;
+        font-size: 12px; }
+        .job_posting .post_job .post_job_form .field-container .field input[type=text] option, .job_posting .post_job .post_job_form .field-container .field select option, .job_posting .post_job .post_job_form .field-container .field textarea option {
+          padding: 5px; }
+      .job_posting .post_job .post_job_form .field-container .field select.half {
+        width: 48%; }
+      .job_posting .post_job .post_job_form .field-container.courses {
+        white-space: nowrap; }
+  .premium_job_section {
+    font-size: 12px; }
+    .premium_job_section .section-head h3 {
+      font-size: 20px; }
+    .premium_job_section label span {
+      font-size: 12px; }
+    .premium_job_section p {
+      font-size: 12px; } }

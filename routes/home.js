@@ -383,4 +383,14 @@ module.exports = function(settings){
 		return
 	})
 
+	app.get("/my-jobs", function(req,res){
+		res.render("my-jobs", {
+			title:"Recruiter Web - My Jobs | iimjobs.com",
+			styles:  assetsMapper["my-jobs"]["styles"][mode],
+			scripts: assetsMapper["my-jobs"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
+		})
+		return
+	});
 }

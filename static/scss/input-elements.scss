@@ -40,6 +40,15 @@ select.select-dropdown {
 	font-size:$select-font-size;
 	color:$select-color;
 	padding:16px 22px;
+
+	&.minimal {
+		display:inline-block;
+		width:150px;
+		border:0;
+		padding:10px;
+		background-color:transparent;
+		margin-bottom:10px;
+	}
 }
 
 label {
@@ -116,6 +125,8 @@ label {
 			display:block;
 			margin-top:5px;
 			cursor:pointer;
+			padding:0 10px;
+			white-space:normal;
 		}
 	}
 
@@ -302,4 +313,88 @@ span {
 	    	}
 	    }
     }
+}
+
+
+.tag-container {
+	border:1px solid $border-color-base;
+	display:block;
+	padding:5px 20px;
+}
+.pill-button {
+	position:relative;
+	display:inline-block;
+	input[type=text] {
+		padding:10px 20px;
+		border-radius:50px;
+		border:1px solid $border-color-base;
+		color:$color-label;
+		font-size:$base-font-size;
+		border:1px solid transparent;
+		background:$color-white;
+		z-index:10;
+		width:200px;
+		cursor:pointer;
+
+		transition:all 0.2s ease-in-out;
+
+		&:focus {
+			border-color:$border-color-active;
+		}
+	}
+
+	.pill-listing {
+		display:inline-block;
+		width:100%;
+		position:absolute;
+		top:0;
+		transform:translateY(38px);
+		opacity:1;
+		left:0;
+		z-index:3;
+		transition:opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+		ul {
+			margin:0;
+			list-style:none;
+			padding:0;
+			max-height:150px;
+			overflow:auto;
+			box-shadow:0 3px 3px $shadow-color;
+			border:1px solid $border-color-base;
+
+
+			li {
+				padding:5px 20px;
+				display:block;
+				width:100%;
+				background:$color-white;
+				border-bottom:1px solid $border-color-base;
+
+				&:hover {
+					cursor:pointer;
+					background-color:$active-hover-background;
+				}
+
+				&:last-child {
+					border:0;
+				}
+			}
+		}
+	}
+
+	&.inactive {
+
+		.pill-listing {
+			transform:translateY(25px);
+			opacity:1;
+			
+			ul {
+				height:0;
+				overflow:auto;
+				box-shadow:none;
+				border:0;
+			}
+		}
+	}
 }

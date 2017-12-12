@@ -53,7 +53,8 @@
 	app.engine('html', require('hogan-express'));
 	app.set('partials',{
 		header: 'header',
-		footer: 'footer'
+		footer: 'footer',
+		minifooter:'mini-footer'
 	});
 	app.set('view engine', 'html');
 	app.set('views', __dirname + '/views');
