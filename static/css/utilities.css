@@ -268,61 +268,72 @@ span.sticker {
   border: 1px solid #e8e8e8;
   display: block;
   padding: 5px 20px; }
-
-.pill-button {
-  position: relative;
-  display: inline-block; }
-  .pill-button input[type=text] {
-    padding: 10px 20px;
-    border-radius: 50px;
-    border: 1px solid #e8e8e8;
-    color: #2b2b2b;
-    font-size: 14px;
-    border: 1px solid transparent;
-    background: #FFF;
-    z-index: 10;
-    width: 200px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out; }
-    .pill-button input[type=text]:focus {
-      border-color: #4fa995; }
-  .pill-button .pill-listing {
+  .tag-container .input-tag {
     display: inline-block;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    transform: translateY(38px);
-    opacity: 1;
-    left: 0;
-    z-index: 3;
-    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; }
-    .pill-button .pill-listing ul {
-      margin: 0;
-      list-style: none;
-      padding: 0;
-      max-height: 150px;
-      overflow: auto;
-      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
-      border: 1px solid #e8e8e8; }
-      .pill-button .pill-listing ul li {
-        padding: 5px 20px;
-        display: block;
-        width: 100%;
-        background: #FFF;
-        border-bottom: 1px solid #e8e8e8; }
-        .pill-button .pill-listing ul li:hover {
-          cursor: pointer;
-          background-color: #e9f5f2; }
-        .pill-button .pill-listing ul li:last-child {
-          border: 0; }
-  .pill-button.inactive .pill-listing {
-    transform: translateY(25px);
-    opacity: 1; }
-    .pill-button.inactive .pill-listing ul {
-      height: 0;
-      overflow: auto;
-      box-shadow: none;
-      border: 0; }
+    background: #4fa995; }
+    .tag-container .input-tag .tag-icons {
+      display: inline-block;
+      font-size: 14px;
+      padding: 5px 10px; }
+    .tag-container .input-tag .tag-name {
+      display: inline-block; }
+    .tag-container .input-tag span {
+      color: #FFF; }
+  .tag-container .pill-button {
+    position: relative;
+    display: inline-block; }
+    .tag-container .pill-button input[type=text] {
+      padding: 10px 20px;
+      border-radius: 50px;
+      border: 1px solid #e8e8e8;
+      color: #2b2b2b;
+      font-size: 14px;
+      border: 1px solid transparent;
+      background: #FFF;
+      z-index: 10;
+      width: 200px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out; }
+      .tag-container .pill-button input[type=text]:focus {
+        border-color: #4fa995; }
+    .tag-container .pill-button .pill-listing {
+      display: inline-block;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      transform: translateY(38px);
+      opacity: 1;
+      left: 0;
+      z-index: 3;
+      transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; }
+      .tag-container .pill-button .pill-listing ul {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+        max-height: 150px;
+        overflow: auto;
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e8e8e8; }
+        .tag-container .pill-button .pill-listing ul li {
+          padding: 5px 20px;
+          display: block;
+          width: 100%;
+          font-size: 14px;
+          background: #FFF;
+          border-bottom: 1px solid #e8e8e8; }
+          .tag-container .pill-button .pill-listing ul li:hover {
+            cursor: pointer;
+            background-color: #e9f5f2; }
+          .tag-container .pill-button .pill-listing ul li:last-child {
+            border: 0; }
+    .tag-container .pill-button.inactive .pill-listing {
+      transform: translateY(25px);
+      opacity: 1; }
+      .tag-container .pill-button.inactive .pill-listing ul {
+        height: 0;
+        overflow: auto;
+        box-shadow: none;
+        border: 0; }
 
 .online-icon {
   position: absolute;

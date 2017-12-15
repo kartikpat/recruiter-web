@@ -30,3 +30,8 @@ jQuery(".pill-button input").on('keyup', function(e) {
 		}
 	})
 });
+
+jQuery("body").on("mousedown", "li", function(e) {
+	var tagName = jQuery(this).text();
+	var tag = jQuery(".tag.prototype.hidden").clone().removeClass("prototype hidden");
+});
