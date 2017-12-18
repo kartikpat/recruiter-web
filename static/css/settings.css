@@ -808,7 +808,7 @@ a {
   content: '\e831'; }
 
 /* '' */
-select.select-dropdown, .job_posting .post_job .post_job_form .field-container .field select {
+select.select-dropdown, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup select {
   -webkit-appearance: none;
   -moz-appearance: none;
   -o-appearanance: none;
@@ -826,12 +826,12 @@ select.select-dropdown, .job_posting .post_job .post_job_form .field-container .
   font-size: 14px;
   color: #818181;
   padding: 16px 22px; }
-  select.select-dropdown[multiple], .job_posting .post_job .post_job_form .field-container .field select[multiple] {
+  select.select-dropdown[multiple], .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup select[multiple] {
     background-image: none;
     height: 120px; }
-  select.select-dropdown.inactive .dropdown-list, .job_posting .post_job .post_job_form .field-container .field select.inactive .dropdown-list {
+  select.select-dropdown.inactive .dropdown-list, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup select.inactive .dropdown-list {
     display: none; }
-  select.select-dropdown.minimal, .job_posting .post_job .post_job_form .field-container .field select.minimal {
+  select.select-dropdown.minimal, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup select.minimal {
     display: inline-block;
     width: 150px;
     border: 0;
@@ -839,11 +839,11 @@ select.select-dropdown, .job_posting .post_job .post_job_form .field-container .
     background-color: transparent;
     margin-bottom: 10px; }
 
-label {
+label, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .label {
   font-size: 14px;
   color: #2b2b2b;
   display: block; }
-  label.title {
+  label.title, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .title.label {
     margin-bottom: 14px; }
 
 .error-field {
@@ -863,15 +863,15 @@ label {
   margin: 20px 20px 0 0; }
   .course-option input {
     display: none; }
-  .course-option input:checked + label {
+  .course-option input:checked + label, .course-option .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input:checked + .label, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .course-option input:checked + .label {
     border-color: #4fa995;
     box-shadow: inset 0 0 3px #4fa995; }
-    .course-option input:checked + label span {
+    .course-option input:checked + label span, .course-option .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input:checked + .label span, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .course-option input:checked + .label span {
       font-size: 14px;
       color: #4fa995; }
-    .course-option input:checked + label img {
+    .course-option input:checked + label img, .course-option .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input:checked + .label img, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .course-option input:checked + .label img {
       opacity: 1; }
-  .course-option label {
+  .course-option label, .course-option .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .label, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .course-option .label {
     color: #818181;
     height: 100%;
     display: inline-block;
@@ -904,11 +904,11 @@ label {
       white-space: normal; }
   .course-option.active .course-selected {
     display: block; }
-  .course-option.active label {
+  .course-option.active label, .course-option.active .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .label, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .course-option.active .label {
     font-size: 14px;
     color: #4fa995; }
 
-.input-field, .job_posting .post_job .post_job_form .field-container .field input[type=text] {
+.input-field, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
   -o-appearanance: none;
@@ -919,43 +919,43 @@ label {
   cursor: pointer;
   padding: 16px 22px;
   font-size: 14px; }
-  .input-field:focus, .job_posting .post_job .post_job_form .field-container .field input[type=text]:focus {
+  .input-field:focus, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input:focus, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup textarea:focus {
     border-color: #4fa995; }
 
 .radio-input input {
   display: none; }
 
-.radio-input label {
+.radio-input label, .radio-input .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .label, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .radio-input .label {
   display: inline-block;
   cursor: pointer; }
 
-.radio-input input + label {
+.radio-input input + label, .radio-input .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input + .label, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .radio-input input + .label {
   padding: 4px 0 4px 35px;
   background-image: url("/static/images/unchecked_radio.svg");
   background-repeat: no-repeat;
   background-size: 20px; }
 
-.radio-input input:checked + label {
+.radio-input input:checked + label, .radio-input .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input:checked + .label, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .radio-input input:checked + .label {
   background-image: url("/static/images/checked_radio.svg"); }
 
-.check-input input, .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] input, .premium_job_section .contents input {
+.check-input input {
   display: none; }
 
-.check-input label, .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] label, .premium_job_section .contents label {
+.check-input label, .check-input .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .label, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .check-input .label {
   display: inline-block;
   cursor: pointer; }
 
-.check-input input + label, .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] input + label, .premium_job_section .contents input + label {
+.check-input input + label, .check-input .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input + .label, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .check-input input + .label {
   padding: 4px 0 4px 35px;
   background-image: url("/static/images/unchecked_checkbox.svg");
   background-repeat: no-repeat;
   background-size: 20px;
   background-position: left 2px center; }
 
-.check-input input:checked + label, .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] input:checked + label, .premium_job_section .contents input:checked + label {
+.check-input input:checked + label, .check-input .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input:checked + .label, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .check-input input:checked + .label {
   background-image: url("/static/images/checked_checkbox.svg"); }
 
-button, .submit-action-buttons button {
+button {
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
@@ -1019,7 +1019,7 @@ span.sticker {
   background: #faf9f9;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0; }
-  .button-action-list label {
+  .button-action-list label, .button-action-list .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .label, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button-action-list .label {
     cursor: pointer;
     background-image: url("/static/images/black_caret_down.svg");
     background-position: right center;
@@ -1119,156 +1119,88 @@ span.sticker {
         box-shadow: none;
         border: 0; }
 
-.area-heading, .job_posting .post_job .section-heading, .premium_job_section .section-head {
-  margin-bottom: 20px; }
-  .area-heading h3, .job_posting .post_job .section-heading h3, .premium_job_section .section-head h3 {
-    margin: 0;
-    font-size: 26px;
-    color: #149075;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #e8e8e8; }
-
-.job_posting {
-  padding: 20px;
-  font-size: 0; }
-  .job_posting .post_job {
+.page-content .settings-page {
+  font-size: 0;
+  max-width: 1280px;
+  margin: 45px auto;
+  display: block; }
+  .page-content .settings-page .settings-sidebar {
+    width: 25%;
     display: inline-block;
-    width: 70%;
-    padding: 0 20px 0 0; }
-    .job_posting .post_job .post-job-heading {
-      margin: 10px 0 0 0;
-      font-size: 22px;
-      color: #5d5d5d;
-      line-height: 1; }
-      .job_posting .post_job .post-job-heading .title-subtext {
-        display: none;
-        cursor: pointer; }
-    .job_posting .post_job .form-heading {
-      margin-bottom: 35px; }
-      .job_posting .post_job .form-heading .guidelines {
-        font-size: 18px;
-        text-decoration: none; }
-    .job_posting .post_job .post_job_form .field-container {
-      padding: 0px;
-      margin-bottom: 30px;
-      position: relative;
-      overflow: auto;
-      width: 70%; }
-      .job_posting .post_job .post_job_form .field-container.courses {
-        width: 100%; }
-      .job_posting .post_job .post_job_form .field-container .label {
-        display: block;
-        font-size: 14px;
-        color: #4b4b4b;
+    padding-right: 40px;
+    vertical-align: top; }
+    .page-content .settings-page .settings-sidebar ul {
+      border: 1px solid #e8e8e8;
+      padding-left: 0;
+      border-radius: 4px; }
+      .page-content .settings-page .settings-sidebar ul li {
         cursor: pointer;
-        margin-bottom: 14px; }
-      .job_posting .post_job .post_job_form .field-container .field {
-        display: block;
-        font-size: 0; }
-        .job_posting .post_job .post_job_form .field-container .field .add-tags-content {
-          width: 70%;
-          border: 1px solid #ccc;
-          padding: 12px; }
-          .job_posting .post_job .post_job_form .field-container .field .add-tags-content .selected-tags-content {
-            display: inline-block; }
-          .job_posting .post_job .post_job_form .field-container .field .add-tags-content .tag-input {
-            color: #676666;
-            font-size: 13.33px;
-            outline: none;
-            cursor: text; }
-            .job_posting .post_job .post_job_form .field-container .field .add-tags-content .tag-input:focus {
-              color: #000000; }
-        .job_posting .post_job .post_job_form .field-container .field .js-show-selected-tags, .job_posting .post_job .post_job_form .field-container .field .js-show-suggested-tags {
-          margin-right: 10px; }
-        .job_posting .post_job .post_job_form .field-container .field .salary-info {
-          margin: 10px 0; }
-        .job_posting .post_job .post_job_form .field-container .field select.half {
-          width: 49%;
-          display: inline-block; }
-        .job_posting .post_job .post_job_form .field-container .field textarea {
-          width: 100%;
-          max-width: 100%;
-          min-height: 250px;
-          padding: 9px 12px;
-          box-sizing: border-box;
-          border: 1px solid #e8e8e8;
-          border-radius: 2px;
-          background-color: inherit;
-          font-size: 14px; }
-          .job_posting .post_job .post_job_form .field-container .field textarea:focus {
-            outline: none;
-            border-color: #4fa995; }
-
-.premium_job_section {
-  clear: both;
-  margin: -20px 0 0 -20px;
-  padding: 30px;
-  width: 100%;
-  background: #f3fbfb; }
-  .premium_job_section label span {
-    font-size: 14px; }
-  .premium_job_section p {
-    font-size: 13px; }
-
-.submit-action-buttons {
-  margin: 20px 0; }
-  .submit-action-buttons button.submit-form {
-    padding: 10px;
-    background-color: #1f8f75; }
-  .submit-action-buttons button.cancel-form {
-    padding: 10px;
-    color: #155d9a;
-    box-shadow: none;
-    border: 0; }
-
-.guidelines-container {
-  display: inline-block;
-  width: 30%;
-  vertical-align: top;
-  background-color: #f3fbfb;
-  padding: 20px;
-  margin-top: 50px; }
-  .guidelines-container h4 {
-    font-size: 18px;
-    color: #149075; }
-  .guidelines-container ul {
-    padding-left: 20px; }
-    .guidelines-container ul li {
-      font-size: 14px;
-      margin-bottom: 20px;
-      color: #5d5d5d; }
-
-@media all and (max-width: 768px) {
-  .guidelines-container {
-    display: none; }
-  .job_posting .post_job {
-    width: 100%; }
-    .job_posting .post_job .form-heading {
+        border-bottom: 1px solid #e8e8e8; }
+        .page-content .settings-page .settings-sidebar ul li:last-child {
+          border-bottom: 0; }
+        .page-content .settings-page .settings-sidebar ul li p {
+          font-size: 14px;
+          margin: 0;
+          padding: 15px 0 15px 15px;
+          border-left: 3px solid transparent;
+          font-size: 16px;
+          font-weight: 400; }
+          .page-content .settings-page .settings-sidebar ul li p span.arrow {
+            font-size: 14px;
+            margin-right: 15px;
+            opacity: 0; }
+        .page-content .settings-page .settings-sidebar ul li.active {
+          background-color: #f4fbfb; }
+          .page-content .settings-page .settings-sidebar ul li.active p {
+            border-color: #4fa995;
+            color: #1f8f75; }
+            .page-content .settings-page .settings-sidebar ul li.active p span.arrow {
+              opacity: 1; }
+  .page-content .settings-page .settings-body {
+    font-size: initial;
+    width: 75%;
+    padding-left: 40px;
+    display: inline-block;
+    vertical-align: top; }
+    .page-content .settings-page .settings-body .settings-section .settings-section-header h3 {
+      font-size: 22px;
+      margin: 0 0 25px 0; }
+    .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor {
+      background: #f4fbfb;
+      padding: 20px;
+      border: 1px solid #e8e8e8;
+      font-size: 0;
       margin-bottom: 25px; }
-    .job_posting .post_job .post-job-heading {
-      font-size: 16px; }
-      .job_posting .post_job .post-job-heading .title-subtext {
-        display: block;
-        font-size: 12px;
-        color: #155d9a; }
-    .job_posting .post_job .section-heading h3 {
-      font-size: 20px; }
-    .job_posting .post_job .post_job_form .field-container {
-      width: 100%; }
-      .job_posting .post_job .post_job_form .field-container .field input[type=text], .job_posting .post_job .post_job_form .field-container .field select, .job_posting .post_job .post_job_form .field-container .field textarea {
-        padding: 12px 20px;
-        font-size: 12px; }
-        .job_posting .post_job .post_job_form .field-container .field input[type=text] option, .job_posting .post_job .post_job_form .field-container .field select option, .job_posting .post_job .post_job_form .field-container .field textarea option {
-          padding: 5px; }
-      .job_posting .post_job .post_job_form .field-container .field select.half {
-        width: 48%; }
-      .job_posting .post_job .post_job_form .field-container.courses {
-        white-space: nowrap; }
-  .premium_job_section {
-    font-size: 12px; }
-    .premium_job_section .section-head h3 {
-      font-size: 20px; }
-    .premium_job_section label span {
-      font-size: 12px; }
-    .premium_job_section p {
-      font-size: 12px; } }
+      .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-preview {
+        display: inline-block;
+        vertical-align: middle;
+        width: 20%; }
+      .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info {
+        width: 80%;
+        display: inline-block;
+        vertical-align: middle;
+        font-size: initial; }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info span {
+          font-size: 14px; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info span.choose-file {
+            padding: 10px 20px;
+            display: inline-block;
+            background: #FFF;
+            border: 1px solid #e8e8e8;
+            cursor: pointer;
+            margin-right: 10px; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info span.upload-rules {
+            display: inline-block;
+            margin: 10px 0;
+            color: #7b7b7b; }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit button {
+          color: white;
+          border: 0;
+          padding: 12px 25px;
+          margin: 0; }
+    .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup {
+      margin-bottom: 15px; }
+      .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .label {
+        margin-bottom: 10px; }
+      .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup textarea:focus {
+        outline: 0; }

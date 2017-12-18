@@ -276,6 +276,10 @@
 a {
   cursor: pointer; }
 
+@media all and (max-width: 700px) {
+  .hidden-mobile {
+    display: none !important; } }
+
 a {
   text-decoration: none; }
 

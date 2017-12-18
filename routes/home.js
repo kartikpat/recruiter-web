@@ -393,4 +393,15 @@ module.exports = function(settings){
 		})
 		return
 	});
+
+	app.get("/settings", function(req,res){
+		res.render("settings", {
+			title:"Recruiter Web - Settings | iimjobs.com",
+			styles:  assetsMapper["settings"]["styles"][mode],
+			scripts: assetsMapper["settings"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
+		})
+		return
+	});
 }

@@ -1,0 +1,156 @@
+@import "colors.scss";
+@import "fonts.scss";
+
+@import 'components/_colors.scss';
+@import 'components/_type.scss';
+@import 'components/_global.scss';
+@import 'components/_theme.scss';
+@import 'spacings';
+
+
+@import 'input-elements';
+
+.page-content {
+	.settings-page {
+		font-size:0;
+		max-width:1280px;
+		margin:45px auto;
+		display:block;
+		.settings-sidebar {
+			width:25%;
+ 			display:inline-block;
+ 			padding-right:40px;
+ 			vertical-align:top;
+
+			ul {
+				border:1px solid $border-color-base;
+				padding-left:0;
+				border-radius:4px;
+				li {
+					cursor:pointer;
+					border-bottom:1px solid $border-color-base;					
+					&:last-child {
+						border-bottom:0;
+					}
+					
+					p {
+						font-size:$base-font-size;
+						margin:0;
+						padding:15px 0 15px 15px;
+						border-left:3px solid transparent;
+						font-size:$base-subtitle-size;
+						font-weight:400;
+
+						span.arrow {
+							font-size:$base-font-size;
+							margin-right:15px;
+							opacity:0;
+						}
+					}
+
+					&.active {
+						background-color:$active-section-background;
+						p {
+							border-color:$border-color-active;
+							color:$header-link-active-color;
+							span.arrow {
+								opacity:1;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.settings-body {
+			font-size:initial;
+			width:75%;
+			padding-left:40px;
+			display:inline-block;
+			vertical-align: top;
+			.settings-section {
+				
+				.settings-section-header {
+					
+					h3 {
+						font-size:$page-title-size;
+						margin:0 0 25px 0;
+					}
+				}
+
+				.settings-section-content {
+	
+					.profile-image-editor {
+						background:$active-section-background;
+						padding:20px;
+						border:1px solid $border-color-base;
+						font-size:0;
+						margin-bottom:25px;
+						.profile-image-preview {
+							display:inline-block;
+							vertical-align: middle;
+							width:20%;
+						}
+
+						.profile-image-info {
+							width:80%;
+							display:inline-block;
+							vertical-align:middle;
+							font-size:initial;
+
+							span {
+								font-size:$base-font-size;
+								&.choose-file {
+									padding:10px 20px;
+									display:inline-block;
+									background:#FFF;
+									border:1px solid $border-color-base;
+									cursor:pointer;
+									margin-right:10px;
+								}
+								&.upload-rules {
+									display:inline-block;
+									margin:10px 0;
+									color:$logoTaglineColor;
+								}
+							}
+
+							.submit {
+								button {
+									color:white;
+									border:0;
+									padding:12px 25px;
+									margin:0;
+								}
+							}
+						}
+					}
+
+					.section-form {
+
+						.formgroup {
+							margin-bottom:15px;
+							.label {
+								@extend label;
+								margin-bottom:10px;
+							}
+							input {
+								@extend .input-field;
+							}
+							select {
+								@extend select.select-dropdown;
+							}
+							textarea {
+								@extend .input-field;
+
+								&:focus {
+									outline:0;
+								}
+							}
+						}	
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,100 @@
+{{>header}}
+	
+<div class="page-content">
+	<div class="settings-page">
+		<div class="settings-sidebar">
+			<ul>
+				<li class="profile active" data-selector="profile">
+					<p>Profile<span class="arrow right"><i class="icon-right_arrow"></i></span></p>
+				</li>
+				<li class="social-accounts" data-selector="social-accounts">
+					<p>Social Accounts<span class="arrow right"><i class="icon-right_arrow"></i></span></p>
+				</li>
+				<li class="change-password" data-selector="change-password">
+					<p>Change Password<span class="arrow right"><i class="icon-right_arrow"></i></span></p>
+				</li>
+				<li class="notification-settings" data-selector="notification-settings">
+					<p>Notification Settings<span class="arrow right"><i class="icon-right_arrow"></i></span></p>
+				</li>
+				<li class="plans-subscriptions" data-selector="plans-subscriptions">
+					<p>Plans &amp; Subscriptions<span class="arrow right"><i class="icon-right_arrow"></i></span></p>
+				</li>
+			</ul>
+		</div>
+
+		<div class="settings-body">
+			<div class="settings-section profile">
+				<div class="settings-section-header">
+					<h3>Profile</h3>
+				</div>
+				<div class="settings-section-content">
+					<div class="profile-image-editor">
+						<div class="profile-image-preview">
+							<img src="https://placehold.it/100x100/fff?text=+">
+						</div>
+						<div class="profile-image-info">
+							<form id="profile-image-form">
+								<input name="profile-image" type="file" class="hidden" id="trigger-file-upload" accept=".png,.jpg,.jpeg,.gif" >
+								<div class="file-uploader">
+									<span class="choose-file">Choose file</span>
+									<span class="file-name">No file chosen</span>
+								</div>
+								<span class="upload-rules">JPG, GIF or PNG. Max size of 800K</span>
+								<div class="submit">
+									<button class="button green" type="submit">Upload Now</button>
+								</div>
+							</form>
+						</div>
+					</div>
+
+					<div class="section-form">
+						<div class="formgroup">
+							<div class="label" for="profile-name">Name</div>
+							<input type="text" id="profile-name" placeholder="Name">
+						</div>
+						<div class="formgroup">
+							<div class="label" for="profile-number">Phone Number</div>
+							<input type="text" id="profile-number" placeholder="Phone Number">
+						</div>
+						<div class="formgroup">
+							<div class="label" for="profile-email">Email ID</div>
+							<input type="text" id="profile-email" placeholder="email">
+						</div>
+						<div class="formgroup">
+							<div class="label" for="profile-designation">Designation</div>
+							<input type="text" id="profile-designation" placeholder="designation">
+						</div>
+						<div class="formgroup">
+							<div class="label" for="profile-organization">Organization</div>
+							<input type="text" id="profile-organization" placeholder="organization">
+						</div>
+						<div class="formgroup">
+							<div class="label" for="profile-website">Website</div>
+							<input type="text" id="profile-website" placeholder="website">
+						</div>
+						<div class="formgroup">
+							<div class="label" for="profile-recruiter-type">Recruiter Type</div>
+							<select>
+								<option value="0">Select</option>
+								<option value="1">Direct Employer</option>
+								<option value="2">Recruitment Firm</option>
+							</select>
+						</div>
+						<div class="formgroup">
+							<div class="label" for="profile-location">Location</div>
+							<select>
+								<option value="0">Select</option>
+							</select>
+						</div>
+						<div class="formgroup">
+							<div class="label" for="profile-about">About</div>
+							<textarea id="profile-about"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{{>footer}}
