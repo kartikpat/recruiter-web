@@ -215,6 +215,7 @@ button {
 	color:$color-white;
 	display:inline-block;
 	vertical-align:top;
+	cursor:pointer;
 
 	&.green {
 		background-color:$button-color-green;

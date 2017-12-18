@@ -1,19 +1,21 @@
 {{>header}}
 	
 	<div class="page-content">
-		<div class="my-jobs">
+		<div class="my-jobs left">
 			<div class="page-header">
 				<select class="minimal" id="">
 					<option value="0">All Jobs</option>
 				</select>
 
 				<div class="action-buttons right">
-					<button class="post-job green">Post Job</button>
+					<a href="/post-job">
+						<button class="post-job green">Post Job</button>
+					</a>
 				</div> 
 			</div>
 
 			<div class="my-jobs-listing">
-				<table>
+				<!-- <table>
 					<tr>
 						<th cellspacing="0">Created on</th>
 						<th cellspacing="0">Job Title</th>
@@ -65,12 +67,76 @@
 							</div>
 						</td>
 					</tr>
-				</table>
+				</table> -->
+			
+				<div class="table-container">
+					<div class="table-row table-headings">
+				        <div class="table-cell heading">
+				            <span>Created On</span>
+				        </div>
+				        <div class="table-cell heading job-title">
+				            <span>Job Title</span>
+				        </div>
+				        <div class="table-cell heading">
+				            <span>Status</span>
+				        </div>
+				        <div class="table-cell heading">
+				            <span>Engagement</span>
+				        </div>
+				        <div class="table-cell heading">
+				            <span>Actions</span>
+				        </div>
+				    </div>
+				    <div class="table-row job prototype hidden">
+				        <div class="table-cell created">
+				            <span class="job-created-on"></span>
+				        </div>
+				    
+				        <div class="table-cell title">
+				            <span class="job-title"></span>
+				            <span class="job-location"></span>
+				            <span class="job-meta-separator">•</span>
+				            <span class="job-experience"></span>
+				        </div>
+				    
+				        <div class="table-cell status">
+				            <span class="job-status"></span>
+				    	</div>
+
+				        <div class="table-cell engagement">
+				            <span class="job-view-count"></span>
+				            <span class="job-applied-count"></span>
+				    	</div>
+				    
+				    	<div class="table-cell actions">
+				            <div class="job-actions-container">
+							    <div class="action-icon job-cancel">
+							    	<i class="icon-close_icon"></i>
+							    </div>
+							    <div class="action-icon job-refresh">
+							        <i class="icon-refresh"></i>
+							    </div>
+							    <div class="action-icon job-star">
+							        <i class="icon-star"></i>
+							    </div>
+							    <div class="action-icon job-facebook">
+							        <i class="icon-facebook-logo"></i>
+							    </div>
+							    <div class="action-icon job-twitter">
+							        <i class="icon-twitter"></i>
+							    </div>
+							    <div class="action-icon job-linkedin">
+							        <i class="icon-linkedin-logo"></i>
+							    </div>
+					    	</div>
+				    	</div>
+				    </div>
+				</div>
 			</div>
 		</div>
 
-		<div class="conversations">
-			
+		<div class="conversations right">
+			{{>chatSidebar}}
 		</div>
 	</div>
 

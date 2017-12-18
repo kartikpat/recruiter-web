@@ -54,7 +54,8 @@
 	app.set('partials',{
 		header: 'header',
 		footer: 'footer',
-		minifooter:'mini-footer'
+		minifooter:'mini-footer',
+		chatSidebar: 'chat-sidebar'
 	});
 	app.set('view engine', 'html');
 	app.set('views', __dirname + '/views');
