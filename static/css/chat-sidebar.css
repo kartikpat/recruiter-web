@@ -991,18 +991,14 @@ label {
     opacity: 0;
     visibility: none;
     position: absolute;
-    right: -7px;
-    top: -7px; }
+    right: -4px;
+    top: -3px; }
   .course-option .course-content {
     width: 100%;
     text-align: center;
-    height: 80px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto; }
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); }
     .course-option .course-content span {
       display: block;
       cursor: pointer;
@@ -1160,18 +1156,26 @@ span.sticker {
 .tag-container {
   border: 1px solid #e8e8e8;
   display: block;
-  padding: 5px 20px; }
+  padding: 7px 20px;
+  position: relative;
+  font-size: 0; }
   .tag-container .input-tag {
     display: inline-block;
-    background: #4fa995; }
+    background: #4fa995;
+    margin: 3px;
+    padding: 3px 10px;
+    border-radius: 20px; }
     .tag-container .input-tag .tag-icons {
       display: inline-block;
       font-size: 14px;
-      padding: 5px 10px; }
+      padding: 5px 0 5px;
+      cursor: pointer; }
     .tag-container .input-tag .tag-name {
       display: inline-block; }
     .tag-container .input-tag span {
-      color: #FFF; }
+      color: #FFF;
+      font-size: 14px;
+      padding: 0 5px 0 0; }
   .tag-container .pill-button {
     position: relative;
     display: inline-block; }
@@ -1205,7 +1209,7 @@ span.sticker {
         padding: 0;
         max-height: 150px;
         overflow: auto;
-        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         border: 1px solid #e8e8e8; }
         .tag-container .pill-button .pill-listing ul li {
           padding: 5px 20px;
@@ -1213,10 +1217,12 @@ span.sticker {
           width: 100%;
           font-size: 14px;
           background: #FFF;
-          border-bottom: 1px solid #e8e8e8; }
-          .tag-container .pill-button .pill-listing ul li:hover {
-            cursor: pointer;
+          border-bottom: 1px solid #e8e8e8;
+          cursor: pointer; }
+          .tag-container .pill-button .pill-listing ul li.selected {
             background-color: #e9f5f2; }
+          .tag-container .pill-button .pill-listing ul li.tag-added {
+            display: none !important; }
           .tag-container .pill-button .pill-listing ul li:last-child {
             border: 0; }
     .tag-container .pill-button.inactive .pill-listing {

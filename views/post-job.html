@@ -126,51 +126,53 @@
                 <h3>Targeting</h3>
             </div>
 
-               <div class="field-container">
-               <div class="label">
-                   <label for="industry">Industry*</label>
-               </div>
-               <div class="field">
-                   <select class="multiple industry" id="industry" data-attribute="mandatory" name="industry" multiple>
-                        <option value="24">Accounting / Finance / Audit</option>
-                        <option value="25">Advertising / PR / Events</option>
-                        <option value="1"> Auto / Auto Ancillary</option>
-                        <option value="2"> Banking / Financial Services</option>
-                        <option value="3"> BPO / ITeS</option>
-                        <option value="26">Chemicals</option>
-                        <option value="5"> Construction / Engineering / Cement / Metals</option>
-                        <option value="4"> Consulting</option>
-                        <option value="6"> Education / Training</option>
-                        <option value="27">Facility Management</option>
-                        <option value="7"> FMCG / Durables / F&amp;B</option>
-                        <option value="8"> Healthcare / Medical / Hospital</option>
-                        <option value="10">Industrial Products / Heavy Machinery</option>
-                        <option value="11">Infrastructure / Oil &amp; Gas / Power / Energy</option>
-                        <option value="12">Insurance</option>
-                        <option value="13">Internet / Online / eCommerce</option>
-                        <option value="14">IT</option>
-                        <option value="15">KPO / Research / Analytics</option>
-                        <option value="16">Legal</option>
-                        <option value="17">Manufacturing</option>
-                        <option value="18">Media / Entertainment</option>
-                        <option value="19">Mining / Steel / Shipping</option>
-                        <option value="20">NGO / Social Service</option>
-                        <option value="28">Pharma / Biotech</option>
-                        <option value="29">Real Estate</option>
-                        <option value="30">Recruitment / Staffing</option>
-                        <option value="22">Retail</option>
-                        <option value="31">Semiconductors / Electronics</option>
-                        <option value="23">Telecom</option>
-                        <option value="32">Textile / Garments / Accessories / Fashion</option>
-                        <option value="9"> Travel / Hospitality</option>
-                        <option value="34">Agriculture &amp; Dairy</option>
-                        <option value="33">Other</option>
-                    </select>
-                    <div id="industry_label" class="error hidden"></div>
-                    <p class="extra-info extra-info-color font-xs">Press Ctrl Key to select multiple industries. You can select upto 5 industries.</p>
-               </div>
-           </div>
-
+            <div class="field-container">
+                <div class="label">
+                    <label for="industry">Industry</label>
+                </div>
+                <div class="tag-container">
+                    <div class="pill-button inactive">
+                        <input type="text" data-placeholder-value="+ Add company industry" placeholder="+ Add company industry">
+                        <div class="pill-listing">
+                            <ul>
+                                <li data-value="24">Accounting / Finance / Audit</li>data-
+                                <li data-value="25">Advertising / PR / Events</li>data-
+                                <li data-value="1"> Auto / Auto Ancillary</li>data-
+                                <li data-value="2"> Banking / Financial Services</li>data-
+                                <li data-value="3"> BPO / ITeS</li>data-
+                                <li data-value="26">Chemicals</li>data-
+                                <li data-value="5"> Construction / Engineering / Cement / Metals</li>data-
+                                <li data-value="4"> Consulting</li>data-
+                                <li data-value="6"> Education / Training</li>data-
+                                <li data-value="27">Facility Management</li>data-
+                                <li data-value="7"> FMCG / Durables / F&amp;B</li>data-
+                                <li data-value="8"> Healthcare / Medical / Hospital</li>data-
+                                <li data-value="10">Industrial Products / Heavy Machinery</li>data-
+                                <li data-value="11">Infrastructure / Oil &amp; Gas / Power / Energy</li>data-
+                                <li data-value="12">Insurance</li>data-
+                                <li data-value="13">Internet / Online / eCommerce</li>data-
+                                <li data-value="14">IT</li>data-
+                                <li data-value="15">KPO / Research / Analytics</li>data-
+                                <li data-value="16">Legal</li>data-
+                                <li data-value="17">Manufacturing</li>data-
+                                <li data-value="18">Media / Entertainment</li>data-
+                                <li data-value="19">Mining / Steel / Shipping</li>data-
+                                <li data-value="20">NGO / Social Service</li>data-
+                                <li data-value="28">Pharma / Biotech</li>data-
+                                <li data-value="29">Real Estate</li>data-
+                                <li data-value="30">Recruitment / Staffing</li>data-
+                                <li data-value="22">Retail</li>data-
+                                <li data-value="31">Semiconductors / Electronics</li>data-
+                                <li data-value="23">Telecom</li>data-
+                                <li data-value="32">Textile / Garments / Accessories / Fashion</li>data-
+                                <li data-value="9"> Travel / Hospitality</li>data-
+                                <li data-value="34">Agriculture &amp; Dairy</li>data-
+                                <li data-value="33">Other</li>data-
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
            <div class="field-container">
                <div class="label">
@@ -394,11 +396,11 @@
                </div>
            </div>
 
-           <div class="field-container">
-               <div class="label">
+            <div class="field-container">
+                <div class="label">
                    <label for="graduating_year">Graduating Year</label>
-               </div>
-               <div class="field">
+                </div>
+                <div class="field">
                     <select class="half left" id="graduating_start_year" name="start_year">
                         <option value="" hidden>Min Batch</option>
                         <option value="2017">2017</option>
@@ -501,43 +503,34 @@
                         <option value="1971">1971</option>
                         <option value="1970">1970</option>
                     </select>
-               <div>
-                 </div>
-                 <div id="graduating-year-label" class="error hidden"></div>
-               </div>
-           </div>
-           <div class="tags-container">
-               <div class="field-container suggested-tags-container hidden">
-                   <div class="label">
-                       <div class="suggested-tags-heading ">Suggested Tags</div>
-                   </div>
-                   <div class="field">
-                       <div class="suggested-tags-content"></div>
-                   </div>
-               </div>
+                    
+                    <div class="clearfix"></div>
+                
+                    <div id="graduating-year-label" class="error hidden"></div>
+                </div>
+            </div>
+            
+            <div class="field-container">
+                <div class="label">
+                    <label for="tags">Tags</label>
+                </div>
+                <div class="tag-container">
+                    <div class="pill-button inactive">
+                        <input type="text" data-placeholder-value="+ Add company industry" placeholder="+ Add company industry">
+                        <div class="pill-listing">
+                            <ul>
+                                <li data-value="List Item 1">List Item 1</li>
+                                <li data-value="List Item 2">List Item 2</li>
+                                <li data-value="List Item 3">List Item 3</li>
+                                <li data-value="List Item 4">List Item 4</li>
+                                <li data-value="List Item 5">List Item 5</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-               <!-- <div class="field-container selected-tags-container hidden">
-                   <div class="label">
-                       <div class="selected-tags-heading">Selected Tags</div>
-                   </div>
-                   <div class="field">
-                       <div class="selected-tags-content"></div>
-                   </div>
-               </div> -->
-
-               <div class="field-container add-tags-container">
-                   <div class="label">
-                       <div class="add-tags-heading">Tags</div>
-                   </div>
-                   <div class="field">
-                       <div class="add-tags-content">
-                           <!-- <div class="selected-tags-content hidden"></div> -->
-                           <div class="tag-input" contenteditable="true" data-text="Type here to add tags"></div>
-                           <!-- <button class="button add-new-tag">Add Tag</button> -->
-                       </div>
-                   </div>
-               </div>
-           </div>
+           <!-- </div> -->
         </div>
     </div>
     <div class="guidelines-container">
@@ -596,5 +589,14 @@
             </div>
         </div>
  </div>
+</div>
+
+<div class="input-tag prototype hidden">
+    <div class="tag-icons">
+        <span class="tag-remove"><i class="icon-close_icon"></i></span>
+    </div>
+    <div class="tag-name">
+        <span>Preselected Tag</span>
+    </div>
 </div>
 {{> footer}}

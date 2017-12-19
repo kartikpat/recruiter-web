@@ -57,7 +57,7 @@
                 padding: 0px;
                 margin-bottom:30px;
                 position:relative;
-                overflow:auto;
+                overflow:visible;
                 width:70%;
 
                 &.courses {
@@ -137,6 +137,10 @@
                             border-color: $border-color-active;;
                         }
                     }
+                }
+
+                .industry-tags {
+                    @extend .tag-container;
                 }
             }
         }

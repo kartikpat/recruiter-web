@@ -115,15 +115,16 @@ label {
 		opacity:0;
 		visibility: none;
 		position:absolute;
-		right:-7px;
-		top:-7px;
+		right:-4px;
+		top:-3px;
 	}
 
 	.course-content {
 		width:100%;
 		text-align: center;
-		height:80px;
-		@include absolutely-centered;
+		position:relative;
+		top:50%;
+		transform:translateY(-50%);
 
 		span {
 			display:block;
@@ -324,20 +325,25 @@ span {
     }
 }
 
-
 .tag-container {
 	border:1px solid $border-color-base;
 	display:block;
-	padding:5px 20px;
+	padding:7px 20px;
+	position:relative;
 	
+	font-size:0;
 	.input-tag {
 		display:inline-block;
 		background:$border-color-active;
+		margin:3px;
+		padding:3px 10px;
+		border-radius:20px;
 
 		.tag-icons {
 			display:inline-block;
 			font-size:$base-font-size;
-			padding:5px 10px;
+			padding:5px 0 5px;
+			cursor:pointer;
 		}
 
 		.tag-name {
@@ -345,6 +351,8 @@ span {
 		}
 		span {
 			color:$color-white;
+			font-size:$base-font-size;
+			padding:0 5px 0 0;
 		}
 	}
 	.pill-button {
@@ -361,7 +369,6 @@ span {
 			z-index:10;
 			width:200px;
 			cursor:pointer;
-
 			transition:all 0.2s ease-in-out;
 
 			&:focus {
@@ -386,7 +393,7 @@ span {
 				padding:0;
 				max-height:150px;
 				overflow:auto;
-				box-shadow:0 3px 3px $shadow-color;
+				box-shadow:0 1px 2px $shadow-color;
 				border:1px solid $border-color-base;
 
 
@@ -397,10 +404,14 @@ span {
 					font-size:$base-font-size;
 					background:$color-white;
 					border-bottom:1px solid $border-color-base;
+					cursor:pointer;
 
-					&:hover {
-						cursor:pointer;
+					&.selected {
 						background-color:$active-hover-background;
+					}
+
+					&.tag-added {
+						display:none !important;
 					}
 
 					&:last-child {

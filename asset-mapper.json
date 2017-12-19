@@ -202,7 +202,8 @@
 				"static/js/request.js",
 				"static/js/header.js",
 				"static/js/postJob.js",
-				"static/js/modal.js"
+				"static/js/modal.js",
+				"static/js/ui-components.js"
 			],
 			"prod" : [
 				"static/build/js/post-job.min.js"
