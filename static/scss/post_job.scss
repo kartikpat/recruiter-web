@@ -21,13 +21,17 @@
 }
 
 .job_posting {
-    padding: 20px;
+    padding: 0px;
     font-size:0;
+
+    .job-form-content {
+        padding:30px 30px 10px 30px;
+    }
 
     .post_job {
         display:inline-block;
         width:70%;
-        padding: 0 20px 0 0;
+        padding-right:30px;
 
         .post-job-heading {
             margin:10px 0 0 0;
@@ -60,7 +64,7 @@
                 overflow:visible;
                 width:70%;
 
-                &.courses {
+                &.tile-section {
                     width:100%;
                 }
                 .label {
@@ -69,6 +73,14 @@
                     color: $color-black-text;
                     cursor: pointer;
                     margin-bottom:14px;
+                }
+
+
+                .formgroup {
+                    &.half {
+                        width:49%;
+                        display:inline-block;
+                    }
                 }
 
                 .field {
@@ -125,7 +137,7 @@
                     textarea {
                         width:100%;
                         max-width:100%;
-                        min-height: 250px;
+                        min-height: 150px;
                         padding: 9px 12px;
                         box-sizing: border-box;
                         border: 1px solid $border-color-base;;
@@ -149,7 +161,7 @@
 
 .premium_job_section {
     clear:both;
-    margin:-20px 0 0 -20px;
+    margin:0;
     padding:30px;
     width:100%;
     background:$premium-section-background;
@@ -167,16 +179,19 @@
         }
     }
     p {
+        margin-top:15px;
         font-size:$page-section-font-size;
     }
 }
 
 .submit-action-buttons {
     margin:20px 0;
+    padding:0 30px;
 
     button {
         @extend button;
         &.submit-form {
+            margin:0;
             padding:10px;
             background-color:$button-color-green;
         }
@@ -266,8 +281,9 @@
                         }
                     }
 
-                    &.courses {
+                    &.tile-section {
                         white-space:nowrap;
+                        overflow:auto;
                     }
                 }
             }

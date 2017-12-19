@@ -289,7 +289,7 @@ label {
   background-size: 34px 37px;
   display: inline-block;
   vertical-align: top;
-  margin: 20px 20px 0 0; }
+  margin: 0px 20px 0 0; }
   .course-option input {
     display: none; }
   .course-option input:checked + label {

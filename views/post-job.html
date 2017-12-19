@@ -1,549 +1,605 @@
 {{> header }}
 
 <div class="page-content job_posting">
-    <div class="post_job">
-        <div class="form-heading">
-          <h1 class="post-job-heading">Post a Job <span class="right guideline-modal-trigger title-subtext">Posting Guidelines &gt;</span></h1>
-        </div>
-        <div class="section-heading basic-details">
-            <h3>Basic Details</h3>
-        </div>
-
-        <div action="" class="post_job_form" >
-           <div class="field-container">
-               <div class="label">
-                   <label for="job_tile">Title*</label>
-               </div>
-               <div class="field">
-                   <input type="text" id="title" data-attribute="mandatory" name="job_title" placeholder="Job title">
-                   <div id="title_label" class="error hidden"></div>
-               </div>
-           </div>
-
-           <div class="field-container">
-               <div class="label">
-                   <label for="location">Location</label>
-               </div>
-               <div class="field">
-                   <input type="text" id="location" name="location" placeholder="location">
-               </div>
-           </div>
-
-           <div class="field-container">
-                <div class="label">
-                    <label for="min_experience">Years of experience</label>
-                </div>
-                <div class="field">
-                    <div class="select_field_container clear">
-                    <select class="half left" id="min_experience" data-attribute="mandatory" name="min_experience" >
-                       <option value="">Min</option>
-                       <option value="0">0</option>
-                       <option value="1">1</option>
-                       <option value="2">2</option>
-                       <option value="3">3</option>
-                       <option value="4">4</option>
-                       <option value="5">5</option>
-                       <option value="6">6</option>
-                       <option value="7">7</option>
-                       <option value="8">8</option>
-                       <option value="9">9</option>
-                       <option value="10">10</option>
-                       <option value="11">11</option>
-                       <option value="12">12</option>
-                       <option value="13">13</option>
-                       <option value="14">14</option>
-                       <option value="15">15</option>
-                       <option value="16">16</option>
-                       <option value="17">17</option>
-                       <option value="18">18</option>
-                       <option value="19">19</option>
-                       <option value="20">20</option>
-                       <option value="21">21</option>
-                       <option value="22">22</option>
-                       <option value="23">23</option>
-                       <option value="24">24</option>
-                       <option value="25">25</option>
-                       <option value="26">26</option>
-                       <option value="27">27</option>
-                       <option value="28">28</option>
-                       <option value="29">29</option>
-                       <option value="30">30</option>
-                   </select>
-                   <select class="half right" id="max_experience" data-attribute="mandatory" name="max_experience">
-                       <option value="">Max</option>
-                       <option value="0">0</option>
-                       <option value="1">1</option>
-                       <option value="2">2</option>
-                       <option value="3">3</option>
-                       <option value="4">4</option>
-                       <option value="5">5</option>
-                       <option value="6">6</option>
-                       <option value="7">7</option>
-                       <option value="8">8</option>
-                       <option value="9">9</option>
-                       <option value="10">10</option>
-                       <option value="11">11</option>
-                       <option value="12">12</option>
-                       <option value="13">13</option>
-                       <option value="14">14</option>
-                       <option value="15">15</option>
-                       <option value="16">16</option>
-                       <option value="17">17</option>
-                       <option value="18">18</option>
-                       <option value="19">19</option>
-                       <option value="20">20</option>
-                       <option value="21">21</option>
-                       <option value="22">22</option>
-                       <option value="23">23</option>
-                       <option value="24">24</option>
-                       <option value="25">25</option>
-                       <option value="26">26</option>
-                       <option value="27">27</option>
-                       <option value="28">28</option>
-                       <option value="29">29</option>
-                       <option value="30">30</option>
-                   </select>
-                </div>
-                <div class="experience-label-container hidden">
-                   <div id="min-experience-label" class="error hide"></div>
-                   <div id="max-experience-label" class="error hide"></div>
-                </div>
-               </div>
-             </div>
-
-            <div class="field-container">
-               <div class="label">
-                   <label for="job_description">Job Description*</label>
-               </div>
-
-               <div class="field">
-                   <textarea data-attribute="mandatory" id="job_description" name="job_description" placeholder="Job description"></textarea>
-                   <div id="job_description-label" class="error hidden"></div>
-               </div>
-           </div>
-
+    <div class="job-form-content">
+        <div class="post_job">
+            <div class="form-heading">
+              <h1 class="post-job-heading">Post Job <span class="right guideline-modal-trigger title-subtext">Posting Guidelines &gt;</span></h1>
+            </div>
             <div class="section-heading basic-details">
-                <h3>Targeting</h3>
+                <h3>Basic Details</h3>
             </div>
 
-            <div class="field-container">
-                <div class="label">
-                    <label for="industry">Industry</label>
-                </div>
-                <div class="tag-container">
-                    <div class="pill-button inactive">
-                        <input type="text" data-placeholder-value="+ Add company industry" placeholder="+ Add company industry">
-                        <div class="pill-listing">
-                            <ul>
-                                <li data-value="24">Accounting / Finance / Audit</li>data-
-                                <li data-value="25">Advertising / PR / Events</li>data-
-                                <li data-value="1"> Auto / Auto Ancillary</li>data-
-                                <li data-value="2"> Banking / Financial Services</li>data-
-                                <li data-value="3"> BPO / ITeS</li>data-
-                                <li data-value="26">Chemicals</li>data-
-                                <li data-value="5"> Construction / Engineering / Cement / Metals</li>data-
-                                <li data-value="4"> Consulting</li>data-
-                                <li data-value="6"> Education / Training</li>data-
-                                <li data-value="27">Facility Management</li>data-
-                                <li data-value="7"> FMCG / Durables / F&amp;B</li>data-
-                                <li data-value="8"> Healthcare / Medical / Hospital</li>data-
-                                <li data-value="10">Industrial Products / Heavy Machinery</li>data-
-                                <li data-value="11">Infrastructure / Oil &amp; Gas / Power / Energy</li>data-
-                                <li data-value="12">Insurance</li>data-
-                                <li data-value="13">Internet / Online / eCommerce</li>data-
-                                <li data-value="14">IT</li>data-
-                                <li data-value="15">KPO / Research / Analytics</li>data-
-                                <li data-value="16">Legal</li>data-
-                                <li data-value="17">Manufacturing</li>data-
-                                <li data-value="18">Media / Entertainment</li>data-
-                                <li data-value="19">Mining / Steel / Shipping</li>data-
-                                <li data-value="20">NGO / Social Service</li>data-
-                                <li data-value="28">Pharma / Biotech</li>data-
-                                <li data-value="29">Real Estate</li>data-
-                                <li data-value="30">Recruitment / Staffing</li>data-
-                                <li data-value="22">Retail</li>data-
-                                <li data-value="31">Semiconductors / Electronics</li>data-
-                                <li data-value="23">Telecom</li>data-
-                                <li data-value="32">Textile / Garments / Accessories / Fashion</li>data-
-                                <li data-value="9"> Travel / Hospitality</li>data-
-                                <li data-value="34">Agriculture &amp; Dairy</li>data-
-                                <li data-value="33">Other</li>data-
-                            </ul>
+            <div action="" class="post_job_form" >
+               <div class="field-container">
+                   <div class="label">
+                       <label for="job_tile">Job Title</label>
+                   </div>
+                   <div class="field">
+                       <input type="text" id="title" data-attribute="mandatory" name="job_title" placeholder="Write a title that appropriately describes this job">
+                       <div id="title_label" class="error hidden"></div>
+                   </div>
+               </div>
+
+               <div class="field-container">
+                   <div class="label">
+                       <label for="location">Location</label>
+                   </div>
+                   <div class="tag-container">
+                        <div class="pill-button inactive">
+                            <input type="text" data-placeholder-value="+ Add location" placeholder="+ Add location">
+                            <div class="pill-listing">
+                                <ul>
+                                    <li data-value="Location 1">Location 1</li>
+                                    <li data-value="Location 2">Location 2</li>
+                                    <li data-value="Location 3">Location 3</li>
+                                    <li data-value="Location 4">Location 4</li>
+                                    <li data-value="Location 5">Location 5</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-           <div class="field-container">
-               <div class="label">
-                   <label for="category">Category</label>
+               <div class="field-container">
+                    <div class="label">
+                        <label for="min_experience">Years of experience</label>
+                    </div>
+                    <div class="field">
+                        <div class="select_field_container clear">
+                        <select class="half left" id="min_experience" data-attribute="mandatory" name="min_experience" >
+                           <option value="">Min</option>
+                           <option value="0">0</option>
+                           <option value="1">1</option>
+                           <option value="2">2</option>
+                           <option value="3">3</option>
+                           <option value="4">4</option>
+                           <option value="5">5</option>
+                           <option value="6">6</option>
+                           <option value="7">7</option>
+                           <option value="8">8</option>
+                           <option value="9">9</option>
+                           <option value="10">10</option>
+                           <option value="11">11</option>
+                           <option value="12">12</option>
+                           <option value="13">13</option>
+                           <option value="14">14</option>
+                           <option value="15">15</option>
+                           <option value="16">16</option>
+                           <option value="17">17</option>
+                           <option value="18">18</option>
+                           <option value="19">19</option>
+                           <option value="20">20</option>
+                           <option value="21">21</option>
+                           <option value="22">22</option>
+                           <option value="23">23</option>
+                           <option value="24">24</option>
+                           <option value="25">25</option>
+                           <option value="26">26</option>
+                           <option value="27">27</option>
+                           <option value="28">28</option>
+                           <option value="29">29</option>
+                           <option value="30">30</option>
+                       </select>
+                       <select class="half right" id="max_experience" data-attribute="mandatory" name="max_experience">
+                           <option value="">Max</option>
+                           <option value="0">0</option>
+                           <option value="1">1</option>
+                           <option value="2">2</option>
+                           <option value="3">3</option>
+                           <option value="4">4</option>
+                           <option value="5">5</option>
+                           <option value="6">6</option>
+                           <option value="7">7</option>
+                           <option value="8">8</option>
+                           <option value="9">9</option>
+                           <option value="10">10</option>
+                           <option value="11">11</option>
+                           <option value="12">12</option>
+                           <option value="13">13</option>
+                           <option value="14">14</option>
+                           <option value="15">15</option>
+                           <option value="16">16</option>
+                           <option value="17">17</option>
+                           <option value="18">18</option>
+                           <option value="19">19</option>
+                           <option value="20">20</option>
+                           <option value="21">21</option>
+                           <option value="22">22</option>
+                           <option value="23">23</option>
+                           <option value="24">24</option>
+                           <option value="25">25</option>
+                           <option value="26">26</option>
+                           <option value="27">27</option>
+                           <option value="28">28</option>
+                           <option value="29">29</option>
+                           <option value="30">30</option>
+                       </select>
+                    </div>
+                    <div class="experience-label-container hidden">
+                       <div id="min-experience-label" class="error hide"></div>
+                       <div id="max-experience-label" class="error hide"></div>
+                    </div>
+                   </div>
+                 </div>
+
+                <div class="field-container">
+                   <div class="label">
+                       <label for="job_description">Job Description</label>
+                   </div>
+
+                   <div class="field">
+                       <textarea data-attribute="mandatory" id="job_description" name="job_description" placeholder="Describe the role, talk about the role and responsibilities and help potential applicants understand what makes this a great opportunity." onkeyup="new do_resize(this)"></textarea>
+                       <div id="job_description-label" class="error hidden"></div>
+                   </div>
                </div>
-               <div class="field">
-                   <select id="category" name="category">
-                       <option value="13">Finance</option>
-                       <option value="14">Sales &amp; Marketing</option>
-                       <option value="16">Consulting</option>
-                       <option value="17">HR</option>
-                       <option value="15">IT &amp; Systems</option>
-                       <option value="19">Operations</option>
-                       <option value="21">Legal</option>
-                       <option value="22">BPO</option>
-                   </select>
+
+               <div class="field-container">
+                   <div class="label">
+                       <label for="job_description">Video JD</label>
+                   </div>
+
+                   <div class="field">
+                       <input type="text" placeholder="Give job seekers an insight into your company" onchange="check_youtube_embed(this.value)">
+                       <div id="video-jd-label" class="error hidden"></div>
+                   </div>
                </div>
-           </div>
-
-
-           <div class="field-container">
-               <div class="label">
-                   <label for="functional_area">Functional Area*</label>
-               </div>
-               <div class="field">
-                   <select id="functional_area" data-attribute="mandatory" name="functional_area">
-                       <option class="extra-info-color" value="">Select</option>
-                       <option value="1">       		Accounting / Taxation / Audit	    </option>
-           	    	    <option value="7">       		Administration	    </option>
-           	    	    <option value="2">       		Analytics &amp; Business Intelligence	    </option>
-           	    	    <option value="3">       		Banking / Financial Services	    </option>
-           	    	    <option value="4">       		Corporate Planning / Consulting	    </option>
-           	    	    <option value="5">       		Export / Import / Merchandising	    </option>
-           	    	    <option value="6">       		HR / IR	    </option>
-           	    	    <option value="9">       		Insurance	    </option>
-           	    	    <option value="8">       		IT	    </option>
-           	    	    <option value="10">       		ITeS / BPO / Customer Service	    </option>
-           	    	    <option value="12">       		KPO / Research	    </option>
-           	    	    <option value="11">       		Legal / Company Secretary	    </option>
-           	    	    <option value="13">       		Marketing / Advertising / Public Relations	    </option>
-           	    	    <option value="14">       		Media / Entertainment	    </option>
-           	    	    <option value="16">       		Pharma / Biotech / Healthcare / Medical / R&amp;D	    </option>
-           	    	    <option value="17">       		Production / Maintenance / Quality	    </option>
-           	    	    <option value="18">       		Purchase / Supply Chain / Logistics	    </option>
-           	    	    <option value="15">       		Sales / Business Development	    </option>
-           	    	    <option value="19">       		Travel / Hospitality	    </option>
-           	    	    <option value="20">       		Other	    </option>
-                   </select>
-                   <div id="functional_area-label" class="error hidden"></div>
-               </div>
-           </div>
-
-           <div class="field-container">
-               <div class="label">
-                   <label for="min_salary">Salary</label>
-               </div>
-               <div class="field">
-                   <input type="text" id="min_salary" name="min_salary" placeholder="Min salary">
-                   <p class="salary-info extra-info-color font-xs">Min (in lakhs per annum)</p>
-                   <input type="text" id="max_salary" name="max_salary" placeholder="Max salary">
-                   <p class="salary-info extra-info-color font-xs">Max (in lakhs per annum)</p>
-                   <label for="salary_show" class="checkbox important-info-color font-sm">
-                       <input type="checkbox" id="salary_show" value="1"><span>Don't show this to candidates.</span>
-                   </label>
-                   <div id="salary-label" class="error hidden"></div>
-               </div>
-           </div>
-
-           <div class="field-container courses">
-               <div class="label course-type">
-                   <label  for="course_type">Course Type</label>
-               </div>
-               <div class="field">
-                   <!-- <label for="full-time" class="checkbox important-info-color font-sm">
-                       <input id="full-time" type="checkbox" name="course_type[]" value="1"><span>Full Time</span>
-                   </label>
-                   <label for="part-time" class="checkbox important-info-color font-sm">
-                       <input id="part-time" type="checkbox" name="course_type[]" value="2"><span>Part Time</span>
-                   </label>
-                   <label for="distance-learning-program" class="checkbox important-info-color font-sm">
-                       <input id="distance-learning-program" type="checkbox" name="course_type[]" value="3"><span>Distance Learning program</span>
-                   </label>
-                   <label for="exec-program" class="checkbox important-info-color font-sm">
-                       <input id="exec-program" type="checkbox" name="course_type[]" value="4"><span>Executive Program</span>
-                   </label>
-                   <label for="certify" class="checkbox important-info-color font-sm">
-                       <input id="certify" type="checkbox" name="course_type[]" value="5"><span>Certification</span>
-                   </label> -->
-
-                    <div class="course-option full-time">
-                        <input type="checkbox" id="course-type-full-time">
-                        <label for="course-type-full-time">
-                            <div class="course-content">
-                                <span class="course-icon"><i class="icon-full-time"></i></span>
-                                <span class="course-option-label">Full time</span>
-                            </div>
-                            <img class="course-selected" src="/static/images/course-selected.svg">
-                        </label>
-                    </div>
-
-                    <div class="course-option part-time">
-                        <input type="checkbox" id="course-type-part-time">
-                        <label for="course-type-part-time">
-                            <div class="course-content">
-                                <span class="course-icon"><i class="icon-part-time"></i></span>
-                                <span class="course-option-label">Part time</span>
-                            </div>
-                            <img class="course-selected" src="/static/images/course-selected.svg">
-                        </label>
-                    </div>
-
-                    <div class="course-option distance-learning">
-                        <input type="checkbox" id="course-type-distance-learning">
-                        <label for="course-type-distance-learning">
-                            <div class="course-content">
-                                <span class="course-icon"><i class="icon-distance_learning"></i></span>
-                                <span class="course-option-label">Distance Learning Program</span>
-                            </div>
-                            <img class="course-selected" src="/static/images/course-selected.svg">
-                        </label>
-                    </div>
-
-                    <div class="course-option executive-learning">
-                        <input type="checkbox" id="course-type-executive-learning">
-                        <label for="course-type-executive-learning">
-                            <div class="course-content">
-                                <span class="course-icon"><i class="icon-executive-program"></i></span>
-                                <span class="course-option-label">Executive Program</span>
-                            </div>
-                            <img class="course-selected" src="/static/images/course-selected.svg">
-                        </label>
-                    </div>
-
-                    <div class="course-option certification">
-                        <input type="checkbox" id="course-type-certification">
-                        <label for="course-type-certification">
-                            <div class="course-content">
-                                <span class="course-icon"><i class="icon-certification"></i></span>
-                                <span class="course-option-label">Certification</span>
-                            </div>
-                            <img class="course-selected" src="/static/images/course-selected.svg">
-                        </label>
-                    </div>
-
-
-               </div>
-           </div>
-
-           <div class="field-container courses">
-               <div class="label course-type">
-                   <label  for="course_type">Preferences</label>
-               </div>
-               <div class="field">
-                    <div class="course-option preference-female">
-                        <input type="checkbox" id="preference-female">
-                        <label for="preference-female">
-                            <div class="course-content">
-                                <span class="course-icon"><i class="icon-woman"></i></span>
-                                <span class="course-option-label">Female Candidates</span>
-                            </div>
-                            <img class="course-selected" src="/static/images/course-selected.svg">
-                        </label>
-                    </div>
-
-                    <div class="course-option preference-defence">
-                        <input type="checkbox" id="preference-defence">
-                        <label for="preference-defence">
-                            <div class="course-content">
-                                <span class="course-icon"><i class="icon-shield"></i></span>
-                                <span class="course-option-label">Ex-defence personnel</span>
-                            </div>
-                            <img class="course-selected" src="/static/images/course-selected.svg">
-                        </label>
-                    </div>
-
-                    <div class="course-option preference-women">
-                        <input type="checkbox" id="preference-women">
-                        <label for="preference-women">
-                            <div class="course-content">
-                                <span class="course-icon"><i class="icon-woman"></i></span>
-                                <span class="course-option-label">Women Joining back the workforce</span>
-                            </div>
-                            <img class="course-selected" src="/static/images/course-selected.svg">
-                        </label>
-                    </div>
-
-                    <div class="course-option preference-diff-abled">
-                        <input type="checkbox" id="preference-diff-abled">
-                        <label for="preference-diff-abled">
-                            <div class="course-content">
-                                <span class="course-icon"><i class="icon-disabillity-symbol"></i></span>
-                                <span class="course-option-label">Differently-abled candidates</span>
-                            </div>
-                            <img class="course-selected" src="/static/images/course-selected.svg">
-                        </label>
-                    </div>
-
-                    <div class="course-option preference-alumni">
-                        <input type="checkbox" id="preference-alumni">
-                        <label for="preference-alumni">
-                            <div class="course-content">
-                                <span class="course-icon"><i class="icon-ex--alunmi"></i></span>
-                                <span class="course-option-label">Ex-alumni</span>
-                            </div>
-                            <img class="course-selected" src="/static/images/course-selected.svg">
-                        </label>
-                    </div>
-
-                    <div class="course-option preference-career">
-                        <input type="checkbox" id="preference-career">
-                        <label for="preference-career">
-                            <div class="course-content">
-                                <span class="course-icon"><i class="icon-candidate"></i></span>
-                                <span class="course-option-label">Candidates looking to switch careers</span>
-                            </div>
-                            <img class="course-selected" src="/static/images/course-selected.svg">
-                        </label>
-                    </div>
-
-
-               </div>
-           </div>
-
-            <div class="field-container">
-                <div class="label">
-                   <label for="graduating_year">Graduating Year</label>
-                </div>
-                <div class="field">
-                    <select class="half left" id="graduating_start_year" name="start_year">
-                        <option value="" hidden>Min Batch</option>
-                        <option value="2017">2017</option>
-                        <option value="2016">2016</option>
-                        <option value="2015">2015</option>
-                        <option value="2014">2014</option>
-                        <option value="2013">2013</option>
-                        <option value="2012">2012</option>
-                        <option value="2011">2011</option>
-                        <option value="2010">2010</option>
-                        <option value="2009">2009</option>
-                        <option value="2008">2008</option>
-                        <option value="2007">2007</option>
-                        <option value="2006">2006</option>
-                        <option value="2005">2005</option>
-                        <option value="2004">2004</option>
-                        <option value="2003">2003</option>
-                        <option value="2002">2002</option>
-                        <option value="2001">2001</option>
-                        <option value="2000">2000</option>
-                        <option value="1999">1999</option>
-                        <option value="1998">1998</option>
-                        <option value="1997">1997</option>
-                        <option value="1996">1996</option>
-                        <option value="1995">1995</option>
-                        <option value="1994">1994</option>
-                        <option value="1993">1993</option>
-                        <option value="1992">1992</option>
-                        <option value="1991">1991</option>
-                        <option value="1990">1990</option>
-                        <option value="1989">1989</option>
-                        <option value="1988">1988</option>
-                        <option value="1987">1987</option>
-                        <option value="1986">1986</option>
-                        <option value="1985">1985</option>
-                        <option value="1984">1984</option>
-                        <option value="1983">1983</option>
-                        <option value="1982">1982</option>
-                        <option value="1981">1981</option>
-                        <option value="1980">1980</option>
-                        <option value="1979">1979</option>
-                        <option value="1978">1978</option>
-                        <option value="1977">1977</option>
-                        <option value="1976">1976</option>
-                        <option value="1975">1975</option>
-                        <option value="1974">1974</option>
-                        <option value="1973">1973</option>
-                        <option value="1972">1972</option>
-                        <option value="1971">1971</option>
-                        <option value="1970">1970</option>
-                    </select>
-                    <select class="half right" id="graduating_end_year" name="end_year">
-                        <option value="" hidden>Max Batch</option>
-                        <option value="2017">2017</option>
-                        <option value="2016">2016</option>
-                        <option value="2015">2015</option>
-                        <option value="2014">2014</option>
-                        <option value="2013">2013</option>
-                        <option value="2012">2012</option>
-                        <option value="2011">2011</option>
-                        <option value="2010">2010</option>
-                        <option value="2009">2009</option>
-                        <option value="2008">2008</option>
-                        <option value="2007">2007</option>
-                        <option value="2006">2006</option>
-                        <option value="2005">2005</option>
-                        <option value="2004">2004</option>
-                        <option value="2003">2003</option>
-                        <option value="2002">2002</option>
-                        <option value="2001">2001</option>
-                        <option value="2000">2000</option>
-                        <option value="1999">1999</option>
-                        <option value="1998">1998</option>
-                        <option value="1997">1997</option>
-                        <option value="1996">1996</option>
-                        <option value="1995">1995</option>
-                        <option value="1994">1994</option>
-                        <option value="1993">1993</option>
-                        <option value="1992">1992</option>
-                        <option value="1991">1991</option>
-                        <option value="1990">1990</option>
-                        <option value="1989">1989</option>
-                        <option value="1988">1988</option>
-                        <option value="1987">1987</option>
-                        <option value="1986">1986</option>
-                        <option value="1985">1985</option>
-                        <option value="1984">1984</option>
-                        <option value="1983">1983</option>
-                        <option value="1982">1982</option>
-                        <option value="1981">1981</option>
-                        <option value="1980">1980</option>
-                        <option value="1979">1979</option>
-                        <option value="1978">1978</option>
-                        <option value="1977">1977</option>
-                        <option value="1976">1976</option>
-                        <option value="1975">1975</option>
-                        <option value="1974">1974</option>
-                        <option value="1973">1973</option>
-                        <option value="1972">1972</option>
-                        <option value="1971">1971</option>
-                        <option value="1970">1970</option>
-                    </select>
-                    
-                    <div class="clearfix"></div>
                 
-                    <div id="graduating-year-label" class="error hidden"></div>
+               <div class="field-container youtube-preview hidden">
+                    <iframe width="500" height="315" src="" frameborder="0" allowfullscreen></iframe>
+               </div>
+
+                <div class="section-heading basic-details">
+                    <h3>Targeting</h3>
                 </div>
-            </div>
-            
-            <div class="field-container">
-                <div class="label">
-                    <label for="tags">Tags</label>
-                </div>
-                <div class="tag-container">
-                    <div class="pill-button inactive">
-                        <input type="text" data-placeholder-value="+ Add company industry" placeholder="+ Add company industry">
-                        <div class="pill-listing">
-                            <ul>
-                                <li data-value="List Item 1">List Item 1</li>
-                                <li data-value="List Item 2">List Item 2</li>
-                                <li data-value="List Item 3">List Item 3</li>
-                                <li data-value="List Item 4">List Item 4</li>
-                                <li data-value="List Item 5">List Item 5</li>
-                            </ul>
+
+                <div class="field-container">
+                    <div class="label">
+                        <label for="industry">Industry</label>
+                    </div>
+                    <div class="tag-container">
+                        <div class="pill-button inactive">
+                            <input type="text" data-placeholder-value="+ Add company industry" placeholder="+ Add company industry">
+                            <div class="pill-listing">
+                                <ul>
+                                    <li data-value="24">Accounting / Finance / Audit</li>data-
+                                    <li data-value="25">Advertising / PR / Events</li>data-
+                                    <li data-value="1"> Auto / Auto Ancillary</li>data-
+                                    <li data-value="2"> Banking / Financial Services</li>data-
+                                    <li data-value="3"> BPO / ITeS</li>data-
+                                    <li data-value="26">Chemicals</li>data-
+                                    <li data-value="5"> Construction / Engineering / Cement / Metals</li>data-
+                                    <li data-value="4"> Consulting</li>data-
+                                    <li data-value="6"> Education / Training</li>data-
+                                    <li data-value="27">Facility Management</li>data-
+                                    <li data-value="7"> FMCG / Durables / F&amp;B</li>data-
+                                    <li data-value="8"> Healthcare / Medical / Hospital</li>data-
+                                    <li data-value="10">Industrial Products / Heavy Machinery</li>data-
+                                    <li data-value="11">Infrastructure / Oil &amp; Gas / Power / Energy</li>data-
+                                    <li data-value="12">Insurance</li>data-
+                                    <li data-value="13">Internet / Online / eCommerce</li>data-
+                                    <li data-value="14">IT</li>data-
+                                    <li data-value="15">KPO / Research / Analytics</li>data-
+                                    <li data-value="16">Legal</li>data-
+                                    <li data-value="17">Manufacturing</li>data-
+                                    <li data-value="18">Media / Entertainment</li>data-
+                                    <li data-value="19">Mining / Steel / Shipping</li>data-
+                                    <li data-value="20">NGO / Social Service</li>data-
+                                    <li data-value="28">Pharma / Biotech</li>data-
+                                    <li data-value="29">Real Estate</li>data-
+                                    <li data-value="30">Recruitment / Staffing</li>data-
+                                    <li data-value="22">Retail</li>data-
+                                    <li data-value="31">Semiconductors / Electronics</li>data-
+                                    <li data-value="23">Telecom</li>data-
+                                    <li data-value="32">Textile / Garments / Accessories / Fashion</li>data-
+                                    <li data-value="9"> Travel / Hospitality</li>data-
+                                    <li data-value="34">Agriculture &amp; Dairy</li>data-
+                                    <li data-value="33">Other</li>data-
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="field-container">
+                    <div class="formgroup half left">
+                        <div class="label">
+                           <label for="category">Category</label>
+                        </div>
+                        <div class="field">
+                            <select id="category" name="category">
+                                <option value="13">Finance</option>
+                                <option value="14">Sales &amp; Marketing</option>
+                                <option value="16">Consulting</option>
+                                <option value="17">HR</option>
+                                <option value="15">IT &amp; Systems</option>
+                                <option value="19">Operations</option>
+                                <option value="21">Legal</option>
+                                <option value="22">BPO</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="formgroup half right">
+                        <div class="label">
+                            <label for="functional_area">Functional Area*</label>
+                        </div>
+                        <div class="field">
+                            <select id="functional_area" data-attribute="mandatory" name="functional_area">
+                                <option class="extra-info-color" value="">Select</option>
+                                <option value="1">Accounting / Taxation / Audit</option>
+                                <option value="7">Administration</option>
+                                <option value="2">Analytics &amp; Business Intelligence</option>
+                                <option value="3">Banking / Financial Services</option>
+                                <option value="4">Corporate Planning / Consulting</option>
+                                <option value="5">Export / Import / Merchandising</option>
+                                <option value="6">HR / IR</option>
+                                <option value="9">Insurance</option>
+                                <option value="8">IT</option>
+                                <option value="10">ITeS / BPO / Customer Service</option>
+                                <option value="12">KPO / Research</option>
+                                <option value="11">Legal / Company Secretary</option>
+                                <option value="13">Marketing / Advertising / Public Relations</option>
+                                <option value="14">Media / Entertainment</option>
+                                <option value="16">Pharma / Biotech / Healthcare / Medical / R&amp;D</option>
+                                <option value="17">Production / Maintenance / Quality</option>
+                                <option value="18">Purchase / Supply Chain / Logistics</option>
+                                <option value="15">Sales / Business Development</option>
+                                <option value="19">Travel / Hospitality</option>
+                                <option value="20">Other</option>
+                            </select>
+                            <div id="functional_area-label" class="error hidden"></div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+               <div class="field-container">
+                   <div class="label">
+                       <label for="min_salary">Salary</label>
+                   </div>
+                   <div class="field">
+                       <!-- <input type="text" id="min_salary" name="min_salary" placeholder="Min salary"> -->
+                       <select class="half left" id="min_salary" name="min_salary">
+                            <option value="0">Minimum Salary</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                        </select>
+                       <!-- <p class="salary-info extra-info-color font-xs">Min (in lakhs per annum)</p> -->
+                       <!-- <input type="text" id="max_salary" name="max_salary" placeholder="Max salary"> -->
+                       <select class="half right" id="max_salary" name="max_salary">
+                            <option value="0">Maximum Salary</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                        </select>
+                       <!-- <p class="salary-info extra-info-color font-xs">Max (in lakhs per annum)</p> -->
+                            <div class="clearfix"></div>
+                           <div id="salary-label" class="error hidden"></div>
+                   </div>
+                </div>
+
+                <div class="field-container">
+                    <div class="check-input">
+                        <input type="checkbox" id="salary_show" value="1">
+                        <label for="salary_show" class="checkbox important-info-color"><span>Don't show this to candidates.</span></label>
+                    </div>
+                </div>
+
+
+                <div class="field-container">
+                    <div class="label">
+                       <label for="graduating_year">Graduating Year</label>
+                    </div>
+                    <div class="field">
+                        <select class="half left" id="graduating_start_year" name="start_year">
+                            <option value="" hidden>Min Batch</option>
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+                            <option value="2014">2014</option>
+                            <option value="2013">2013</option>
+                            <option value="2012">2012</option>
+                            <option value="2011">2011</option>
+                            <option value="2010">2010</option>
+                            <option value="2009">2009</option>
+                            <option value="2008">2008</option>
+                            <option value="2007">2007</option>
+                            <option value="2006">2006</option>
+                            <option value="2005">2005</option>
+                            <option value="2004">2004</option>
+                            <option value="2003">2003</option>
+                            <option value="2002">2002</option>
+                            <option value="2001">2001</option>
+                            <option value="2000">2000</option>
+                            <option value="1999">1999</option>
+                            <option value="1998">1998</option>
+                            <option value="1997">1997</option>
+                            <option value="1996">1996</option>
+                            <option value="1995">1995</option>
+                            <option value="1994">1994</option>
+                            <option value="1993">1993</option>
+                            <option value="1992">1992</option>
+                            <option value="1991">1991</option>
+                            <option value="1990">1990</option>
+                            <option value="1989">1989</option>
+                            <option value="1988">1988</option>
+                            <option value="1987">1987</option>
+                            <option value="1986">1986</option>
+                            <option value="1985">1985</option>
+                            <option value="1984">1984</option>
+                            <option value="1983">1983</option>
+                            <option value="1982">1982</option>
+                            <option value="1981">1981</option>
+                            <option value="1980">1980</option>
+                            <option value="1979">1979</option>
+                            <option value="1978">1978</option>
+                            <option value="1977">1977</option>
+                            <option value="1976">1976</option>
+                            <option value="1975">1975</option>
+                            <option value="1974">1974</option>
+                            <option value="1973">1973</option>
+                            <option value="1972">1972</option>
+                            <option value="1971">1971</option>
+                            <option value="1970">1970</option>
+                        </select>
+                        <select class="half right" id="graduating_end_year" name="end_year">
+                            <option value="" hidden>Max Batch</option>
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+                            <option value="2014">2014</option>
+                            <option value="2013">2013</option>
+                            <option value="2012">2012</option>
+                            <option value="2011">2011</option>
+                            <option value="2010">2010</option>
+                            <option value="2009">2009</option>
+                            <option value="2008">2008</option>
+                            <option value="2007">2007</option>
+                            <option value="2006">2006</option>
+                            <option value="2005">2005</option>
+                            <option value="2004">2004</option>
+                            <option value="2003">2003</option>
+                            <option value="2002">2002</option>
+                            <option value="2001">2001</option>
+                            <option value="2000">2000</option>
+                            <option value="1999">1999</option>
+                            <option value="1998">1998</option>
+                            <option value="1997">1997</option>
+                            <option value="1996">1996</option>
+                            <option value="1995">1995</option>
+                            <option value="1994">1994</option>
+                            <option value="1993">1993</option>
+                            <option value="1992">1992</option>
+                            <option value="1991">1991</option>
+                            <option value="1990">1990</option>
+                            <option value="1989">1989</option>
+                            <option value="1988">1988</option>
+                            <option value="1987">1987</option>
+                            <option value="1986">1986</option>
+                            <option value="1985">1985</option>
+                            <option value="1984">1984</option>
+                            <option value="1983">1983</option>
+                            <option value="1982">1982</option>
+                            <option value="1981">1981</option>
+                            <option value="1980">1980</option>
+                            <option value="1979">1979</option>
+                            <option value="1978">1978</option>
+                            <option value="1977">1977</option>
+                            <option value="1976">1976</option>
+                            <option value="1975">1975</option>
+                            <option value="1974">1974</option>
+                            <option value="1973">1973</option>
+                            <option value="1972">1972</option>
+                            <option value="1971">1971</option>
+                            <option value="1970">1970</option>
+                        </select>
+                        
+                        <div class="clearfix"></div>
+                    
+                        <div id="graduating-year-label" class="error hidden"></div>
+                    </div>
+                </div>
+
+                <div class="field-container">
+                    <div class="label">
+                        <label for="tags">Tags</label>
+                    </div>
+                    <div class="tag-container">
+                        <div class="pill-button inactive">
+                            <input type="text" data-placeholder-value="+ Add job tag" placeholder="+ Add job tag">
+                            <div class="pill-listing">
+                                <ul>
+                                    <li data-value="Job Tag 1">Job Tag 1</li>
+                                    <li data-value="Job Tag 2">Job Tag 2</li>
+                                    <li data-value="Job Tag 3">Job Tag 3</li>
+                                    <li data-value="Job Tag 4">Job Tag 4</li>
+                                    <li data-value="Job Tag 5">Job Tag 5</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+               <div class="field-container tile-section">
+                   <div class="label course-type">
+                       <label  for="course_type">Course Type</label>
+                   </div>
+                   <div class="field">
+                        <div class="course-option full-time">
+                            <input type="checkbox" id="course-type-full-time">
+                            <label for="course-type-full-time">
+                                <div class="course-content">
+                                    <span class="course-icon"><i class="icon-full-time"></i></span>
+                                    <span class="course-option-label">Full time</span>
+                                </div>
+                                <img class="course-selected" src="/static/images/course-selected.svg">
+                            </label>
+                        </div>
+
+                        <div class="course-option part-time">
+                            <input type="checkbox" id="course-type-part-time">
+                            <label for="course-type-part-time">
+                                <div class="course-content">
+                                    <span class="course-icon"><i class="icon-part-time"></i></span>
+                                    <span class="course-option-label">Part time</span>
+                                </div>
+                                <img class="course-selected" src="/static/images/course-selected.svg">
+                            </label>
+                        </div>
+
+                        <div class="course-option distance-learning">
+                            <input type="checkbox" id="course-type-distance-learning">
+                            <label for="course-type-distance-learning">
+                                <div class="course-content">
+                                    <span class="course-icon"><i class="icon-distance_learning"></i></span>
+                                    <span class="course-option-label">Distance Learning Program</span>
+                                </div>
+                                <img class="course-selected" src="/static/images/course-selected.svg">
+                            </label>
+                        </div>
+
+                        <div class="course-option executive-learning">
+                            <input type="checkbox" id="course-type-executive-learning">
+                            <label for="course-type-executive-learning">
+                                <div class="course-content">
+                                    <span class="course-icon"><i class="icon-executive-program"></i></span>
+                                    <span class="course-option-label">Executive Program</span>
+                                </div>
+                                <img class="course-selected" src="/static/images/course-selected.svg">
+                            </label>
+                        </div>
+
+                        <div class="course-option certification">
+                            <input type="checkbox" id="course-type-certification">
+                            <label for="course-type-certification">
+                                <div class="course-content">
+                                    <span class="course-icon"><i class="icon-certification"></i></span>
+                                    <span class="course-option-label">Certification</span>
+                                </div>
+                                <img class="course-selected" src="/static/images/course-selected.svg">
+                            </label>
+                        </div>
+
+
+                   </div>
+               </div>
+
+               <div class="field-container tile-section">
+                   <div class="label course-type">
+                       <label for="course_type">Preferences</label>
+                   </div>
+                   <div class="field">
+                        <div class="course-option preference-female">
+                            <input type="checkbox" id="preference-female">
+                            <label for="preference-female">
+                                <div class="course-content">
+                                    <span class="course-icon"><i class="icon-woman"></i></span>
+                                    <span class="course-option-label">Female Candidates</span>
+                                </div>
+                                <img class="course-selected" src="/static/images/course-selected.svg">
+                            </label>
+                        </div>
+
+                        <div class="course-option preference-defence">
+                            <input type="checkbox" id="preference-defence">
+                            <label for="preference-defence">
+                                <div class="course-content">
+                                    <span class="course-icon"><i class="icon-shield"></i></span>
+                                    <span class="course-option-label">Ex-defence personnel</span>
+                                </div>
+                                <img class="course-selected" src="/static/images/course-selected.svg">
+                            </label>
+                        </div>
+
+                        <div class="course-option preference-women">
+                            <input type="checkbox" id="preference-women">
+                            <label for="preference-women">
+                                <div class="course-content">
+                                    <span class="course-icon"><i class="icon-woman"></i></span>
+                                    <span class="course-option-label">Women Joining back the workforce</span>
+                                </div>
+                                <img class="course-selected" src="/static/images/course-selected.svg">
+                            </label>
+                        </div>
+
+                        <div class="course-option preference-diff-abled">
+                            <input type="checkbox" id="preference-diff-abled">
+                            <label for="preference-diff-abled">
+                                <div class="course-content">
+                                    <span class="course-icon"><i class="icon-disabillity-symbol"></i></span>
+                                    <span class="course-option-label">Differently-abled candidates</span>
+                                </div>
+                                <img class="course-selected" src="/static/images/course-selected.svg">
+                            </label>
+                        </div>
+
+                        <div class="course-option preference-alumni">
+                            <input type="checkbox" id="preference-alumni">
+                            <label for="preference-alumni">
+                                <div class="course-content">
+                                    <span class="course-icon"><i class="icon-ex--alunmi"></i></span>
+                                    <span class="course-option-label">Ex-alumni</span>
+                                </div>
+                                <img class="course-selected" src="/static/images/course-selected.svg">
+                            </label>
+                        </div>
+
+                        <div class="course-option preference-career">
+                            <input type="checkbox" id="preference-career">
+                            <label for="preference-career">
+                                <div class="course-content">
+                                    <span class="course-icon"><i class="icon-candidate"></i></span>
+                                    <span class="course-option-label">Candidates looking to switch careers</span>
+                                </div>
+                                <img class="course-selected" src="/static/images/course-selected.svg">
+                            </label>
+                        </div>
+
+
+                   </div>
+               </div>
+                <div class="clearfix"></div>
             </div>
-
-           <!-- </div> -->
         </div>
-    </div>
-    <div class="guidelines-container">
-        <h4>Few guidelines</h4>
+        <div class="guidelines-container">
+            <h4>Few guidelines</h4>
 
-        <ul>
-            <li>Proper formatting of the text/content of the posting with clear spaces and standard bullets (-) to be used.</li>
-            <li>No short forms/abbreviations to be used in the text.</li>
-            <li>Correct mail ID to be included at the end of the posting.</li>
-            <li>No spelling mistakes in the content.</li>
-            <li>JD should be concise and crisp - to the point.</li>
-        </ul>
-    </div>
+            <ul>
+                <li>Proper formatting of the text/content of the posting with clear spaces and standard bullets (-) to be used.</li>
+                <li>No short forms/abbreviations to be used in the text.</li>
+                <li>Correct mail ID to be included at the end of the posting.</li>
+                <li>No spelling mistakes in the content.</li>
+                <li>JD should be concise and crisp - to the point.</li>
+            </ul>
+        </div>
+    </div> 
 <div class="premium_job_section">
     <div class="section-head job-visibility">
         <h3>Job Visibility</h3>

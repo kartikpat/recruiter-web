@@ -965,7 +965,7 @@ label {
   background-size: 34px 37px;
   display: inline-block;
   vertical-align: top;
-  margin: 20px 20px 0 0; }
+  margin: 0px 20px 0 0; }
   .course-option input {
     display: none; }
   .course-option input:checked + label {
@@ -1244,12 +1244,14 @@ span.sticker {
     border-bottom: 1px solid #e8e8e8; }
 
 .job_posting {
-  padding: 20px;
+  padding: 0px;
   font-size: 0; }
+  .job_posting .job-form-content {
+    padding: 30px 30px 10px 30px; }
   .job_posting .post_job {
     display: inline-block;
     width: 70%;
-    padding: 0 20px 0 0; }
+    padding-right: 30px; }
     .job_posting .post_job .post-job-heading {
       margin: 10px 0 0 0;
       font-size: 22px;
@@ -1269,7 +1271,7 @@ span.sticker {
       position: relative;
       overflow: visible;
       width: 70%; }
-      .job_posting .post_job .post_job_form .field-container.courses {
+      .job_posting .post_job .post_job_form .field-container.tile-section {
         width: 100%; }
       .job_posting .post_job .post_job_form .field-container .label {
         display: block;
@@ -1277,6 +1279,9 @@ span.sticker {
         color: #4b4b4b;
         cursor: pointer;
         margin-bottom: 14px; }
+      .job_posting .post_job .post_job_form .field-container .formgroup.half {
+        width: 49%;
+        display: inline-block; }
       .job_posting .post_job .post_job_form .field-container .field {
         display: block;
         font-size: 0; }
@@ -1303,7 +1308,7 @@ span.sticker {
         .job_posting .post_job .post_job_form .field-container .field textarea {
           width: 100%;
           max-width: 100%;
-          min-height: 250px;
+          min-height: 150px;
           padding: 9px 12px;
           box-sizing: border-box;
           border: 1px solid #e8e8e8;
@@ -1316,18 +1321,21 @@ span.sticker {
 
 .premium_job_section {
   clear: both;
-  margin: -20px 0 0 -20px;
+  margin: 0;
   padding: 30px;
   width: 100%;
   background: #f3fbfb; }
   .premium_job_section label span {
     font-size: 14px; }
   .premium_job_section p {
+    margin-top: 15px;
     font-size: 13px; }
 
 .submit-action-buttons {
-  margin: 20px 0; }
+  margin: 20px 0;
+  padding: 0 30px; }
   .submit-action-buttons button.submit-form {
+    margin: 0;
     padding: 10px;
     background-color: #1f8f75; }
   .submit-action-buttons button.cancel-form {
@@ -1377,8 +1385,9 @@ span.sticker {
           padding: 5px; }
       .job_posting .post_job .post_job_form .field-container .field select.half {
         width: 48%; }
-      .job_posting .post_job .post_job_form .field-container.courses {
-        white-space: nowrap; }
+      .job_posting .post_job .post_job_form .field-container.tile-section {
+        white-space: nowrap;
+        overflow: auto; }
   .premium_job_section {
     font-size: 12px; }
     .premium_job_section .section-head h3 {
