@@ -118,5 +118,7 @@ function addNewTag(labelName, labelValue, selector) {
 	tag.find(".tag-name span").html(labelName);
 	jQuery(selector).find(".pill-button").before(tag);
 
+	jQuery(selector).find("input[type=text]").val('').trigger('blur keydown');
+
 	jQuery(selector).find(".pill-listing li.selected").addClass("tag-added").removeClass("selected");
 }
