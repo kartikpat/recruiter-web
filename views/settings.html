@@ -24,7 +24,7 @@
 
 		<div class="settings-body">
 			<div class="settings-section profile">
-				<div class="settings-section-header">
+				<div class="settings-section-header profile">
 					<h3>Profile</h3>
 				</div>
 				<div class="settings-section-content">
@@ -90,7 +90,97 @@
 							<div class="label" for="profile-about">About</div>
 							<textarea id="profile-about"></textarea>
 						</div>
+						<div class="formgroup">
+							<span class="button green submit">Save</span>
+						</div>
 					</div>
+				</div>
+			</div>
+
+			<div class="settings-section social-accounts hidden">
+				<div class="settings-section-header">
+					<h3>Social Accounts</h3>
+				</div>
+				<div class="settings-section-content">
+					<div class="section-form">
+
+						<div class="formgroup">
+							<div class="label" for="social-twitter">Twitter</div>
+							<input type="text" id="social-twitter" class="social-placeholder twitter">
+						</div>
+						<div class="formgroup">
+							<div class="label" for="social-facebook">Facebook</div>
+							<input type="text" id="social-facebook" class="social-placeholder facebook">
+						</div>
+						<div class="formgroup">
+							<div class="label" for="social-linkedin">LinkedIn</div>
+							<input type="text" id="social-linkedin" class="social-placeholder linkedin">
+						</div>
+						<div class="formgroup">
+							<span class="button green submit">Save</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="settings-section change-password hidden">
+				<div class="settings-section-header">
+					<h3>Change Password</h3>
+				</div>
+				<div class="settings-section-content">
+					<div class="section-form">
+
+						<div class="formgroup">
+							<div class="label" for="old-password">Old Password</div>
+							<input type="text" id="old-password">
+						</div>
+						<div class="formgroup">
+							<div class="label" for="new-password">New Password</div>
+							<input type="text" id="new-password">
+						</div>
+						<div class="formgroup">
+							<div class="label" for="confirm-password">Confirm Password</div>
+							<input type="text" id="confirm-password">
+						</div>
+						<div class="formgroup">
+							<span class="button green submit">Save</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="settings-section notification-settings hidden">
+				<div class="settings-section-header">
+					<h3>Notification Settings</h3>
+				</div>
+				<div class="settings-section-content">
+					<div class="section-form">
+						<div class="radio-group-container">
+							<div class="radio-option">
+								<div class="radio-input">
+									<input type="radio" name="notification-type" id="instant-notification">
+									<label for="instant-notification">Instant Notifications</label>
+								</div>
+								<p class="describer">Send me an email as soon as the candidate applies to my job.</p>
+							</div>
+							<div class="radio-option">
+								<div class="radio-input">
+									<input type="radio" name="notification-type" id="digest-email-notification">
+									<label for="digest-email-notification">Digest Email</label>
+								</div>
+								<p class="describer no-border">Send me an email once a day about all the applications on my job.</p>
+							</div>
+						</div>
+						<div class="formgroup">
+							<span class="button green submit">Save</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="settings-section plans-subscriptions hidden">
+				<div class="settings-section-header">
+					<h3>Plans &amp; Subscriptions</h3>
 				</div>
 			</div>
 		</div>

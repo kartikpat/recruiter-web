@@ -1038,7 +1038,8 @@ label, .page-content .settings-page .settings-body .settings-section .settings-s
   padding: 4px 0 4px 35px;
   background-image: url("/static/images/unchecked_radio.svg");
   background-repeat: no-repeat;
-  background-size: 20px; }
+  background-size: 20px;
+  background-position: left center; }
 
 .radio-input input:checked + label, .radio-input .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input:checked + .label, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .radio-input input:checked + .label {
   background-image: url("/static/images/checked_radio.svg"); }
@@ -1060,7 +1061,7 @@ label, .page-content .settings-page .settings-body .settings-section .settings-s
 .check-input input:checked + label, .check-input .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input:checked + .label, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .check-input input:checked + .label {
   background-image: url("/static/images/checked_checkbox.svg"); }
 
-button {
+button, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button {
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
@@ -1078,16 +1079,16 @@ button {
   display: inline-block;
   vertical-align: top;
   cursor: pointer; }
-  button.green {
+  button.green, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .green.button {
     background-color: #1f8f75; }
-  button.red {
+  button.red, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .red.button {
     background-color: #af595a; }
-  button.white {
+  button.white, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .white.button {
     border: 1px solid #8f8a8a;
     color: #2b2b2b; }
-  button.edit {
+  button.edit, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .edit.button {
     padding: 3px 9px; }
-    button.edit img {
+    button.edit img, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .edit.button img {
       width: 17px;
       height: 17px; }
 
@@ -1238,7 +1239,8 @@ span.sticker {
   font-size: 0;
   max-width: 1280px;
   margin: 45px auto;
-  display: block; }
+  display: block;
+  width: 80%; }
   .page-content .settings-page .settings-sidebar {
     width: 25%;
     display: inline-block;
@@ -1279,7 +1281,11 @@ span.sticker {
     vertical-align: top; }
     .page-content .settings-page .settings-body .settings-section .settings-section-header h3 {
       font-size: 22px;
-      margin: 0 0 25px 0; }
+      margin: 0 0 25px 0;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #e8e8e8; }
+    .page-content .settings-page .settings-body .settings-section .settings-section-header.profile h3 {
+      border: 0; }
     .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor {
       background: #f4fbfb;
       padding: 20px;
@@ -1308,7 +1314,7 @@ span.sticker {
             display: inline-block;
             margin: 10px 0;
             color: #7b7b7b; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit button {
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit button, .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit .section-form .formgroup .button, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .profile-image-editor .profile-image-info .submit .button {
           color: white;
           border: 0;
           padding: 12px 25px;
@@ -1317,5 +1323,41 @@ span.sticker {
       margin-bottom: 15px; }
       .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .label {
         margin-bottom: 10px; }
+      .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input.social-placeholder {
+        padding-left: 40px;
+        background-color: #FFF;
+        background-repeat: no-repeat;
+        background-position: left 10px center; }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input.social-placeholder.twitter {
+          background-image: url("/static/images/twitter-colored.png"); }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input.social-placeholder.facebook {
+          background-image: url("/static/images/facebook-colored.png");
+          background-position: left 15px center; }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input.social-placeholder.linkedin {
+          background-image: url("/static/images/linkedin-colored.png"); }
       .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup textarea:focus {
         outline: 0; }
+      .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button {
+        padding: 12px 30px;
+        margin: 0; }
+    .page-content .settings-page .settings-body .settings-section .settings-section-content .radio-group-container {
+      background: red;
+      padding: 15px 60px 30px 60px;
+      background-color: #f3fbfb;
+      border: 1px solid #e8e8e8;
+      margin-bottom: 35px; }
+      .page-content .settings-page .settings-body .settings-section .settings-section-content .radio-group-container .radio-option {
+        padding: 0;
+        margin: 25px 0 10px; }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .radio-group-container .radio-option label, .page-content .settings-page .settings-body .settings-section .settings-section-content .radio-group-container .radio-option .section-form .formgroup .label, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .radio-group-container .radio-option .label {
+          font-size: 16px; }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .radio-group-container .radio-option p.describer {
+          margin-top: 10px;
+          margin-left: 35px;
+          color: #808080;
+          font-size: 14px;
+          border-bottom: 1px solid #e8e8e8;
+          padding-bottom: 30px; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .radio-group-container .radio-option p.describer.no-border {
+            border: 0;
+            padding-bottom: 5px; }
