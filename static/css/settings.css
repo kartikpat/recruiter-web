@@ -287,6 +287,10 @@ body.posf {
   .hidden-mobile {
     display: none !important; } }
 
+.clearfix {
+  display: table;
+  clear: both; }
+
 a {
   text-decoration: none; }
 
@@ -300,10 +304,7 @@ a {
   background: #26252a;
   z-index: 7; }
   .mobile-menu-container .close-mobile-menu {
-    position: absolute;
-    right: 0px;
-    padding: 20px;
-    top: 0px;
+    padding: 10px;
     cursor: pointer; }
     .mobile-menu-container .close-mobile-menu span {
       color: #FFF;

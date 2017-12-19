@@ -23,12 +23,15 @@
 			<div class="section">
 				<label class="title" for="course-selection">Course Type</label>
 				<div class="course-option full-time">
-					<div class="course-content">
-						<img class="course-icon" src="/static/images/course-type-full-time.svg">
-						<label class="course-option-label">Full-time</label>
-					</div>
-					<img class="course-selected" src="/static/images/course-selected.svg">
-				</div>
+                        <input type="checkbox" id="course-type-full-time">
+                        <label for="course-type-full-time">
+                            <div class="course-content">
+                                <span class="course-icon"><i class="icon-full-time"></i></span>
+                                <span class="course-option-label">Full time</span>
+                            </div>
+                            <img class="course-selected" src="/static/images/course-selected.svg">
+                        </label>
+                    </div>
 			</div>
 			<div class="section">
 				<label for="job-title">Job Title</label>
@@ -116,6 +119,19 @@
 						</div>
 					</div>
 				</div>
+			</div>
+
+			<div class="section">
+				<input type="text"values="text,raghav,saurabh,test,this,is,awesome,what">
+				<br/><br/>
+
+				<select multiple  id="selectize">
+					<option value="0">Zero</option>
+					<option value="1">One</option>
+					<option value="2">Two</option>
+					<option value="3">Three</option>
+					<option value="4">Four</option>
+				</select>
 			</div>
 		</div>
 	</div>
