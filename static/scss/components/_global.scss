@@ -24,6 +24,15 @@ a {
 	cursor:pointer;
 }
 
+p {
+	margin:0;
+}
+body {
+	&.posf {
+		overflow:hidden;
+	}
+}
+
 @media all and (max-width:700px){
 	.hidden-mobile {
 		display:none !important;

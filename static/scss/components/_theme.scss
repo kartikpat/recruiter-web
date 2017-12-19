@@ -1,3 +1,141 @@
 a {
 	text-decoration:none;
 }
+
+.mobile-menu-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 75%;
+    background: $mobile-menu-background-color;
+    z-index: 7;
+
+	.close-mobile-menu {
+		position:absolute;
+		right:0px;
+		padding:20px;
+		top:0px;
+		cursor:pointer;
+		span {
+			color:$color-white;
+			font-size:$base-font-size;
+		}
+	}
+
+    .mobile-menu-content {
+    	padding:0;
+    	overflow-x:hidden;
+    	overflow-y:auto;
+    	height:100%;
+
+
+    	.domain_logo {
+    		padding:15px 25px;
+	        a {
+	            display:inline-block;
+	            vertical-align:middle;
+	            color:$color-white;
+	            font-family:$logoFontName, sans-serif;
+	    
+	            h1 {
+	                font-size: $logoFontSize;
+	                font-family:inherit;
+	                line-height:20px;
+	                margin: 0;
+	                display:inline-block;
+	            }
+	            span {
+	                font-family:inherit;
+	                font-size: $logoBylineFontSize;
+	            }
+	            p {
+	                font-family: inherit;
+	                line-height: 1;
+	                color: #7b7b7b;
+	                font-size: 11px;
+	                margin-left: 0px;
+	                margin-top: 5px;
+	            }
+	        }
+	    }
+
+	    .menu-link-listing {
+	    	ul {
+	    		list-style:none;
+	    		padding:0;
+	    		margin:0;
+
+				a {
+    				color:$color-white;
+    				font-size:$base-font-size;
+    				
+		    		li {
+		    			padding:19px 25px;
+		    			border-top:1px solid $mobile-menu-border-color;
+		    		}					
+    			}
+	
+	    	}
+	    }
+
+	    .mobile-profile-section {
+	    	background:$mobile-profile-section-background;
+	    	padding:15px 25px;
+			display:inline-block;
+			font-size:0;
+			width:100%;
+			vertical-align:middle;
+
+			.profile-image {
+				display:inline-block;
+				width:20%;
+
+				img {
+					width:37px;
+					height:37px;
+				}
+			}
+			.profile-info {
+				display:inline-block;
+				width:80%;
+				padding-left:15px;
+				p {
+					text-align:left;
+					color:$color-white;
+					line-height:1.5;
+					font-size:$base-font-size;
+
+					&.profile-email {
+						font-size:12px;
+					}
+				}
+			}
+	    }
+
+	    .mobile-profile-actions {
+	    	margin-top:20px;
+	    	ul {
+	    		list-style:none;
+	    		padding:0;
+
+	    		a {
+	    			color:$color-white;
+	    			font-size:$base-font-size;
+					li {
+		    			padding:19px 25px;
+
+		    			span {
+	    					display:inline-block;
+		    				&.button {
+		    					margin:10px 0 0 0;
+		    					border-radius:4px;
+		    				}
+		    			}
+		    		}
+	    		}
+	    	}
+	    }
+    }
+}

@@ -29,7 +29,7 @@ jQuery(document).ready( function() {
 				else {
 					card.find(".engagement").addClass("hidden-mobile").html('<span class="engagement-default">--</span>');
 					card.find(".actions .job-actions-container").addClass("hidden");
-					console.log(card.find(".actions .job-actions-container"));
+					// console.log(card.find(".actions .job-actions-container"));
 					card.find(".actions .job-edit-container").removeClass("hidden");
 				}
 				$('.my-jobs-listing .table-container').append(card);

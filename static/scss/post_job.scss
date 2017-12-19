@@ -288,4 +288,35 @@
             font-size:$mobile-base-font-size;
         }
     }
+
+    .modal-close {
+        span {
+            color:$page-section-title-color;
+        }
+    }
+
+    .guidelines-section {
+        display: inline-block;
+        width: 100%;
+        vertical-align: top;
+        background-color:$premium-section-background;
+        padding:20px;
+
+        h4 {
+            margin-top:5px;
+            font-size:$page-subtitle-font-size;
+            color:$page-section-title-color;
+        }
+
+        ul {
+            padding-left:20px;
+
+            li {
+                font-size:$base-font-size;
+                margin-bottom:20px;
+                color:$page-list-item-color;
+            }
+        }
+    }
 }
+

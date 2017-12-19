@@ -31,7 +31,8 @@ $button-color-red:#af595a;
 
 $sticker-background-color:#26252a;
 
-$shadow-color:rgba(0,0,0,0.1);
+$shadow-color:rgba(0,0,0,0.2);
+$shadow-color-dark:rgba(0,0,0,0.5);
 
 $options-list-background-color:#faf9f9;
 
@@ -57,3 +58,13 @@ $chat-sidebar-header-background:#26252a;
 $header-link-active-color:#1f8f75;
 
 $settings-highlight-background:#F2F8F8;
+
+
+
+
+/** Mobile Menu **/
+
+$mobile-menu-background-color:#26252a;
+$mobile-menu-border-color:#2E2E2E;
+
+$mobile-profile-section-background:#403f44;

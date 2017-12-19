@@ -264,7 +264,7 @@
                         <input type="checkbox" id="course-type-full-time">
                         <label for="course-type-full-time">
                             <div class="course-content">
-                                <img class="course-icon" src="/static/images/course-type-full-time.svg">
+                                <span class="course-icon"><i class="icon-full-time"></i></span>
                                 <span class="course-option-label">Full time</span>
                             </div>
                             <img class="course-selected" src="/static/images/course-selected.svg">
@@ -275,7 +275,7 @@
                         <input type="checkbox" id="course-type-part-time">
                         <label for="course-type-part-time">
                             <div class="course-content">
-                                <img class="course-icon" src="/static/images/course-type-part-time.svg">
+                                <span class="course-icon"><i class="icon-part-time"></i></span>
                                 <span class="course-option-label">Part time</span>
                             </div>
                             <img class="course-selected" src="/static/images/course-selected.svg">
@@ -286,7 +286,7 @@
                         <input type="checkbox" id="course-type-distance-learning">
                         <label for="course-type-distance-learning">
                             <div class="course-content">
-                                <img class="course-icon" src="/static/images/course-type-distance-learning.svg">
+                                <span class="course-icon"><i class="icon-distance_learning"></i></span>
                                 <span class="course-option-label">Distance Learning Program</span>
                             </div>
                             <img class="course-selected" src="/static/images/course-selected.svg">
@@ -297,7 +297,7 @@
                         <input type="checkbox" id="course-type-executive-learning">
                         <label for="course-type-executive-learning">
                             <div class="course-content">
-                                <img class="course-icon" src="/static/images/course-type-executive-learning.svg">
+                                <span class="course-icon"><i class="icon-executive-program"></i></span>
                                 <span class="course-option-label">Executive Program</span>
                             </div>
                             <img class="course-selected" src="/static/images/course-selected.svg">
@@ -308,7 +308,7 @@
                         <input type="checkbox" id="course-type-certification">
                         <label for="course-type-certification">
                             <div class="course-content">
-                                <img class="course-icon" src="/static/images/course-type-certification.svg">
+                                <span class="course-icon"><i class="icon-certification"></i></span>
                                 <span class="course-option-label">Certification</span>
                             </div>
                             <img class="course-selected" src="/static/images/course-selected.svg">
@@ -328,7 +328,7 @@
                         <input type="checkbox" id="preference-female">
                         <label for="preference-female">
                             <div class="course-content">
-                                <img class="course-icon" src="/static/images/preference-female.svg">
+                                <span class="course-icon"><i class="icon-woman"></i></span>
                                 <span class="course-option-label">Female Candidates</span>
                             </div>
                             <img class="course-selected" src="/static/images/course-selected.svg">
@@ -339,7 +339,7 @@
                         <input type="checkbox" id="preference-defence">
                         <label for="preference-defence">
                             <div class="course-content">
-                                <img class="course-icon" src="/static/images/preference-defence.svg">
+                                <span class="course-icon"><i class="icon-shield"></i></span>
                                 <span class="course-option-label">Ex-defence personnel</span>
                             </div>
                             <img class="course-selected" src="/static/images/course-selected.svg">
@@ -350,7 +350,7 @@
                         <input type="checkbox" id="preference-women">
                         <label for="preference-women">
                             <div class="course-content">
-                                <img class="course-icon" src="/static/images/preference-women.svg">
+                                <span class="course-icon"><i class="icon-woman"></i></span>
                                 <span class="course-option-label">Women Joining back the workforce</span>
                             </div>
                             <img class="course-selected" src="/static/images/course-selected.svg">
@@ -361,7 +361,7 @@
                         <input type="checkbox" id="preference-diff-abled">
                         <label for="preference-diff-abled">
                             <div class="course-content">
-                                <img class="course-icon" src="/static/images/preference-diff-abled.svg">
+                                <span class="course-icon"><i class="icon-disabillity-symbol"></i></span>
                                 <span class="course-option-label">Differently-abled candidates</span>
                             </div>
                             <img class="course-selected" src="/static/images/course-selected.svg">
@@ -372,7 +372,7 @@
                         <input type="checkbox" id="preference-alumni">
                         <label for="preference-alumni">
                             <div class="course-content">
-                                <img class="course-icon" src="/static/images/preference-alumni.svg">
+                                <span class="course-icon"><i class="icon-ex--alunmi"></i></span>
                                 <span class="course-option-label">Ex-alumni</span>
                             </div>
                             <img class="course-selected" src="/static/images/course-selected.svg">
@@ -383,7 +383,7 @@
                         <input type="checkbox" id="preference-career">
                         <label for="preference-career">
                             <div class="course-content">
-                                <img class="course-icon" src="/static/images/preference-career.svg">
+                                <span class="course-icon"><i class="icon-candidate"></i></span>
                                 <span class="course-option-label">Candidates looking to switch careers</span>
                             </div>
                             <img class="course-selected" src="/static/images/course-selected.svg">
@@ -576,4 +576,25 @@
 
 <div class="js-show-tags js-show-suggested-tags prototype hidden"></div>
 <div class="js-show-tags js-show-selected-tags prototype hidden"></div>
+
+<div class="modal-overlay hidden">
+    <div class="modal-content ">
+        <div class="close-modal">
+            <span><i class="icon-close_icon"></i></span>
+        </div>
+        <div class="guidelines-modal-body modal-body">
+            <div class="guidelines-section">
+                <h4>Few guidelines</h4>
+
+                <ul>
+                    <li>Proper formatting of the text/content of the posting with clear spaces and standard bullets (-) to be used.</li>
+                    <li>No short forms/abbreviations to be used in the text.</li>
+                    <li>Correct mail ID to be included at the end of the posting.</li>
+                    <li>No spelling mistakes in the content.</li>
+                    <li>JD should be concise and crisp - to the point.</li>
+                </ul>
+            </div>
+        </div>
+ </div>
+</div>
 {{> footer}}

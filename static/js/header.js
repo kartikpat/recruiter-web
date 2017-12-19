@@ -138,3 +138,21 @@ function ISODateToTime(aDate) {
       var str = hours + ":" + mins;
       return str;
 }
+
+jQuery(".header .mobile-menu").on("click", function() {
+  jQuery("body").addClass("posf");
+  jQuery(".body-overlay").removeClass("hidden").addClass("veiled");
+  jQuery(".mobile-menu-container").removeClass("hidden");
+});
+var closeMobileMenu = function() {
+   jQuery("body").removeClass("posf");
+    jQuery(".body-overlay").removeClass("veiled").addClass("hidden");
+    jQuery(".mobile-menu-container").addClass("hidden");
+}
+jQuery(".body-overlay").on('click',function() {
+  if(jQuery(this).hasClass("veiled")) {
+    closeMobileMenu();
+  }
+});
+
+jQuery(".mobile-menu-container").on('click', ".close-mobile-menu", closeMobileMenu);

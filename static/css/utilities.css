@@ -263,6 +263,7 @@
   content: '\e831'; }
 
 /* '' */
+/** Mobile Menu **/
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
@@ -500,6 +501,7 @@
   content: '\e831'; }
 
 /* '' */
+/** Mobile Menu **/
 select.select-dropdown {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -561,6 +563,8 @@ label {
     .course-option input:checked + label span {
       font-size: 14px;
       color: #4fa995; }
+      .course-option input:checked + label span.course-icon {
+        color: #4fa995; }
     .course-option input:checked + label img {
       opacity: 1; }
   .course-option label {
@@ -581,7 +585,7 @@ label {
   .course-option .course-content {
     width: 100%;
     text-align: center;
-    height: 65px;
+    height: 80px;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -590,10 +594,12 @@ label {
     margin: auto; }
     .course-option .course-content span {
       display: block;
-      margin-top: 5px;
       cursor: pointer;
       padding: 0 10px;
       white-space: normal; }
+      .course-option .course-content span.course-icon {
+        font-size: 40px;
+        color: #818181; }
   .course-option.active .course-selected {
     display: block; }
   .course-option.active label {
@@ -788,7 +794,7 @@ span.sticker {
         padding: 0;
         max-height: 150px;
         overflow: auto;
-        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
         border: 1px solid #e8e8e8; }
         .tag-container .pill-button .pill-listing ul li {
           padding: 5px 20px;

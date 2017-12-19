@@ -88,6 +88,10 @@ label {
     	span {
     		font-size:$label-font-size;
 			color:$course-option-active;
+
+			&.course-icon {
+				color:$course-option-active;
+			}
     	}
 
     	img {
@@ -118,15 +122,19 @@ label {
 	.course-content {
 		width:100%;
 		text-align: center;
-		height:65px;
+		height:80px;
 		@include absolutely-centered;
 
 		span {
 			display:block;
-			margin-top:5px;
 			cursor:pointer;
 			padding:0 10px;
 			white-space:normal;
+
+			&.course-icon {
+				font-size:40px;
+				color:$course-option-base;
+			}
 		}
 	}
 

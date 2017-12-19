@@ -188,7 +188,8 @@
 				"static/css/utilities.css",
 				"static/css/colors.css",
 				"static/css/spacings.css",
-				"static/css/post_job.css"
+				"static/css/post_job.css",
+				"static/css/modal.css"
 			],
 			"prod": [
 				"static/build/css/index.min.css"
@@ -200,7 +201,8 @@
 				"static/js/utilities.js",
 				"static/js/request.js",
 				"static/js/header.js",
-				"static/js/postJob.js"
+				"static/js/postJob.js",
+				"static/js/modal.js"
 			],
 			"prod" : [
 				"static/build/js/post-job.min.js"

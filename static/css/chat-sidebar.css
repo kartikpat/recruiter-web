@@ -26,6 +26,7 @@
 .animated {
   animation-duration: 500ms !important; }
 
+/** Mobile Menu **/
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
@@ -276,12 +277,114 @@
 a {
   cursor: pointer; }
 
+p {
+  margin: 0; }
+
+body.posf {
+  overflow: hidden; }
+
 @media all and (max-width: 700px) {
   .hidden-mobile {
     display: none !important; } }
 
 a {
   text-decoration: none; }
+
+.mobile-menu-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 75%;
+  background: #26252a;
+  z-index: 7; }
+  .mobile-menu-container .close-mobile-menu {
+    position: absolute;
+    right: 0px;
+    padding: 20px;
+    top: 0px;
+    cursor: pointer; }
+    .mobile-menu-container .close-mobile-menu span {
+      color: #FFF;
+      font-size: 14px; }
+  .mobile-menu-container .mobile-menu-content {
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%; }
+    .mobile-menu-container .mobile-menu-content .domain_logo {
+      padding: 15px 25px; }
+      .mobile-menu-container .mobile-menu-content .domain_logo a {
+        display: inline-block;
+        vertical-align: middle;
+        color: #FFF;
+        font-family: "Comfortaa", sans-serif; }
+        .mobile-menu-container .mobile-menu-content .domain_logo a h1 {
+          font-size: 30px;
+          font-family: inherit;
+          line-height: 20px;
+          margin: 0;
+          display: inline-block; }
+        .mobile-menu-container .mobile-menu-content .domain_logo a span {
+          font-family: inherit;
+          font-size: 14px; }
+        .mobile-menu-container .mobile-menu-content .domain_logo a p {
+          font-family: inherit;
+          line-height: 1;
+          color: #7b7b7b;
+          font-size: 11px;
+          margin-left: 0px;
+          margin-top: 5px; }
+    .mobile-menu-container .mobile-menu-content .menu-link-listing ul {
+      list-style: none;
+      padding: 0;
+      margin: 0; }
+      .mobile-menu-container .mobile-menu-content .menu-link-listing ul a {
+        color: #FFF;
+        font-size: 14px; }
+        .mobile-menu-container .mobile-menu-content .menu-link-listing ul a li {
+          padding: 19px 25px;
+          border-top: 1px solid #2E2E2E; }
+    .mobile-menu-container .mobile-menu-content .mobile-profile-section {
+      background: #403f44;
+      padding: 15px 25px;
+      display: inline-block;
+      font-size: 0;
+      width: 100%;
+      vertical-align: middle; }
+      .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-image {
+        display: inline-block;
+        width: 20%; }
+        .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-image img {
+          width: 37px;
+          height: 37px; }
+      .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-info {
+        display: inline-block;
+        width: 80%;
+        padding-left: 15px; }
+        .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-info p {
+          text-align: left;
+          color: #FFF;
+          line-height: 1.5;
+          font-size: 14px; }
+          .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-info p.profile-email {
+            font-size: 12px; }
+    .mobile-menu-container .mobile-menu-content .mobile-profile-actions {
+      margin-top: 20px; }
+      .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul {
+        list-style: none;
+        padding: 0; }
+        .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a {
+          color: #FFF;
+          font-size: 14px; }
+          .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a li {
+            padding: 19px 25px; }
+            .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a li span {
+              display: inline-block; }
+              .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a li span.button {
+                margin: 10px 0 0 0;
+                border-radius: 4px; }
 
 .link-color {
   color: #337ab7; }
@@ -808,6 +911,7 @@ a {
   content: '\e831'; }
 
 /* '' */
+/** Mobile Menu **/
 select.select-dropdown {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -869,6 +973,8 @@ label {
     .course-option input:checked + label span {
       font-size: 14px;
       color: #4fa995; }
+      .course-option input:checked + label span.course-icon {
+        color: #4fa995; }
     .course-option input:checked + label img {
       opacity: 1; }
   .course-option label {
@@ -889,7 +995,7 @@ label {
   .course-option .course-content {
     width: 100%;
     text-align: center;
-    height: 65px;
+    height: 80px;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -898,10 +1004,12 @@ label {
     margin: auto; }
     .course-option .course-content span {
       display: block;
-      margin-top: 5px;
       cursor: pointer;
       padding: 0 10px;
       white-space: normal; }
+      .course-option .course-content span.course-icon {
+        font-size: 40px;
+        color: #818181; }
   .course-option.active .course-selected {
     display: block; }
   .course-option.active label {
@@ -1096,7 +1204,7 @@ span.sticker {
         padding: 0;
         max-height: 150px;
         overflow: auto;
-        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
         border: 1px solid #e8e8e8; }
         .tag-container .pill-button .pill-listing ul li {
           padding: 5px 20px;
