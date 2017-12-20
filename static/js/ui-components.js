@@ -57,32 +57,29 @@ jQuery(".tag-container").on("mousedown", ".pill-listing li", function() {
 	}
 });
 
-jQuery("body").on("mousedown", "li", function(e) {
-	var tagName = jQuery(this).text();
-	var tag = jQuery(".tag.prototype.hidden").clone().removeClass("prototype hidden");
-});
-
 jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function(e) {
 	var listItems = jQuery(this).siblings(".pill-listing").find("li");
 	var selectedItem =  jQuery(this).siblings(".pill-listing").find("li.selected");
 	switch(e.which){
-		case 38: //console.log("Up Arrow");
+		case 38: 
 				if(selectedItem.length == 0 ) {
-					// console.log("No Selected option. Tagging first visible option.");
 					jQuery(this).siblings(".pill-listing").find("li:visible").last(0).addClass("selected");
 				} else {
 					var newSelectedItem = selectedItem.prevAll("li:visible").first();
-					// console.log(newSelectedItem);
 					if(newSelectedItem.length) {
 						newSelectedItem.addClass("selected");
 						selectedItem.removeClass("selected");
 					}
-					console.log(jQuery(this).closest(".pill-listing").siblings("input").attr("placeholder", newSelectedItem.text()));
 				}
+
+				var selectedOption = jQuery(this).siblings(".pill-listing").find("li.selected");
+				console.log(selectedOption.position().top);
+				jQuery(this).siblings(".pill-listing").find("ul").scrollTop(0)
+				jQuery(this).siblings(".pill-listing").find("ul").scrollTop(selectedOption.position().top); 
+
 				break;
-		case 40: //console.log("Down Arrow");
+		case 40: 
 				if(selectedItem.length == 0 ) {
-					// console.log("No Selected option. Tagging first visible option.");
 					jQuery(this).siblings(".pill-listing").find("li:visible").eq(0).addClass("selected");
 				} else {
 					var newSelectedItem = selectedItem.nextAll("li:visible").first();
@@ -91,28 +88,31 @@ jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function
 						selectedItem.removeClass("selected");
 					}
 				}
-				if(newSelectedItem.offset()) {
-					console.log(jQuery(selectedItem));
-					// jQuery(newSelectedItem.closest(".pill-listing ul").scrollTop(newSelectedItem.offset().top) - newSelectedItem.closest(".pill-listing").height());
-				}
-				break;
-		case 13:if(selectedItem.length) {
 
+				var selectedOption = jQuery(this).siblings(".pill-listing").find("li.selected");
+				console.log(selectedOption.position().top);
+				jQuery(this).siblings(".pill-listing").find("ul").scrollTop(0)
+				jQuery(this).siblings(".pill-listing").find("ul").scrollTop(selectedOption.position().top);
+
+				break;
+		case 13:
+					if(selectedItem.length) {
 					if(checkMaxTags(listItems.closest(".tag-container"))){
-						console.log("Submitted option!");
 						addNewTag(selectedItem.text(), selectedItem.attr("data-value"),jQuery(this).closest(".tag-container"));
 					}
 				}
 				break;
-		default:break;
-	}
+		default:
+				break;
+	};
+
+	var selectedOption = jQuery(this).siblings(".pill-listing").find("li.selected"); 
+	jQuery(this).attr("placeholder", selectedOption.text() || jQuery(this).attr("data-placeholder-value"));
 });
 
 jQuery(".tag-container").on("click", ".input-tag .tag-remove", function() {
 	var selector = jQuery(this).closest(".input-tag").attr("data-id");
-	// console.log(jQuery(this).closest(".input-tag").attr("data-id"));
 	jQuery(this).closest(".tag-container").find("li.tag-added").each(function(i,el) {
-		// console.log(jQuery(el).attr("data-value") + "|" + selector);
 		if(jQuery(el).attr("data-value") == selector) {
 			jQuery(el).removeClass("tag-added");
 		}
