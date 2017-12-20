@@ -93,7 +93,7 @@ jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function
 				}
 				if(newSelectedItem.offset()) {
 					console.log(jQuery(selectedItem));
-					jQuery(newSelectedItem.closest(".pill-listing ul").scrollTop(newSelectedItem.offset().top) - newSelectedItem.closest(".pill-listing").height());
+					// jQuery(newSelectedItem.closest(".pill-listing ul").scrollTop(newSelectedItem.offset().top) - newSelectedItem.closest(".pill-listing").height());
 				}
 				break;
 		case 13:if(selectedItem.length) {
