@@ -59,6 +59,18 @@ a {
 	                margin-left: 0px;
 	                margin-top: 5px;
 	            }
+
+                h1 {
+                    font-size:$logo-font-size-mobile;
+                }
+                span {
+                    font-size:$logo-byline-font-size-mobile;
+                }
+                p {
+                    font-size:$logo-tagline-font-size-mobile;
+                    margin-left:3px;
+                    margin-top:2px;
+                }
 	        }
 	    }
 

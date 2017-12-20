@@ -337,6 +337,14 @@ a {
           font-size: 11px;
           margin-left: 0px;
           margin-top: 5px; }
+        .mobile-menu-container .mobile-menu-content .domain_logo a h1 {
+          font-size: 21px; }
+        .mobile-menu-container .mobile-menu-content .domain_logo a span {
+          font-size: 11px; }
+        .mobile-menu-container .mobile-menu-content .domain_logo a p {
+          font-size: 9px;
+          margin-left: 3px;
+          margin-top: 2px; }
     .mobile-menu-container .mobile-menu-content .menu-link-listing ul {
       list-style: none;
       padding: 0;

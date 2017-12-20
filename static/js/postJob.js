@@ -150,6 +150,7 @@ $(document).ready(function(){
 
 	postJobForm.find("input[data-attribute='mandatory'],textarea[data-attribute='mandatory']").focusin(function() {
         removeErrorClass(this);
+        jQuery(this).removeClass("error-border");
     });
     postJobForm.find("#graduating_start_year,#graduating_end_year").focusin(function() {
         postJobForm.find("#graduating-year-label").addClass("hidden");
@@ -285,6 +286,7 @@ var checkErrorClass = function(ele) {
 	if(elem.attr("id") == "title") {
 		if(value == '') {
 			elem.next().text("Please enter the job title").removeClass("hidden");
+            elem.addClass("error-border");
 			return false;
 		}
 		else {
@@ -393,6 +395,18 @@ function check_youtube_embed(url) {
     } else {
         jQuery(".youtube-preview").addClass("hidden")
     }
+}
 
+var textarea = document.querySelector('#job_description');
 
+textarea.addEventListener('keydown', autosize);
+             
+function autosize(){
+  var el = this;
+  setTimeout(function(){
+    el.style.cssText = 'height:auto; padding:0';
+    // for box-sizing other than "content-box" use:
+    el.style.cssText = '-moz-box-sizing:content-box';
+    el.style.cssText = 'height:' + el.scrollHeight + 'px';
+  },0);
 }

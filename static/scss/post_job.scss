@@ -139,12 +139,15 @@
                         width:100%;
                         max-width:100%;
                         min-height: 150px;
-                        padding: 9px 12px;
+                        padding: 12px;
                         box-sizing: border-box;
                         border: 1px solid $border-color-base;;
                         border-radius: 2px;
                         background-color: inherit;
                         font-size:$base-font-size;
+                        line-height:1.5;
+                        overflow-y:hidden;
+                        // box-sizing:content-box;
                         &:focus {
                             outline: none;
                             border-color: $border-color-active;;
@@ -235,9 +238,13 @@
         display:none;
     }
     .job_posting {
+
+        .job-form-content {
+            padding:10px 20px;
+        }
         .post_job {
             width:100%;
-
+            padding:0;
             .form-heading {
                 margin-bottom:25px;
             }

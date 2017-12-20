@@ -337,6 +337,14 @@ a {
           font-size: 11px;
           margin-left: 0px;
           margin-top: 5px; }
+        .mobile-menu-container .mobile-menu-content .domain_logo a h1 {
+          font-size: 21px; }
+        .mobile-menu-container .mobile-menu-content .domain_logo a span {
+          font-size: 11px; }
+        .mobile-menu-container .mobile-menu-content .domain_logo a p {
+          font-size: 9px;
+          margin-left: 3px;
+          margin-top: 2px; }
     .mobile-menu-container .mobile-menu-content .menu-link-listing ul {
       list-style: none;
       padding: 0;
@@ -1026,6 +1034,8 @@ label, .page-content .settings-page .settings-body .settings-section .settings-s
   font-size: 14px; }
   .input-field:focus, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input:focus, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup textarea:focus {
     border-color: #4fa995; }
+  .input-field.error-border, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input.error-border, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup textarea.error-border {
+    border-color: #ee1620; }
 
 .radio-input input {
   display: none; }
@@ -1213,7 +1223,8 @@ span.sticker {
         position: relative;
         overflow: auto;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-        border: 1px solid #e8e8e8; }
+        border: 1px solid #e8e8e8;
+        -webkit-overflow-scrolling: touch; }
         .tag-container .pill-button .pill-listing ul li {
           padding: 5px 20px;
           display: block;
@@ -1236,6 +1247,10 @@ span.sticker {
         overflow: auto;
         box-shadow: none;
         border: 0; }
+
+@media all and (max-width: 768px) {
+  .tag-container .pill-button .pill-listing ul {
+    max-height: 300px; } }
 
 .page-content .settings-page {
   font-size: 0;

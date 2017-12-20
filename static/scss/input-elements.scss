@@ -166,6 +166,10 @@ label {
 	&:focus {
 		border-color:$border-color-active;
 	}
+	
+	&.error-border {
+		border-color:$border-color-error;
+	}
 }
 
 .radio-input {
@@ -398,7 +402,7 @@ span {
 				overflow:auto;
 				box-shadow:0 1px 2px $shadow-color;
 				border:1px solid $border-color-base;
-
+				-webkit-overflow-scrolling:touch;
 
 				li {
 					padding:5px 20px;
@@ -435,6 +439,19 @@ span {
 					overflow:auto;
 					box-shadow:none;
 					border:0;
+				}
+			}
+		}
+	}
+}
+
+@media all and (max-width:768px) {
+	
+	.tag-container {
+		.pill-button {
+			.pill-listing {
+				ul {
+				max-height:300px;
 				}
 			}
 		}
