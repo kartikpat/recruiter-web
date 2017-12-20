@@ -51,8 +51,10 @@ jQuery(".tag-container").on("mouseleave", ".pill-listing li", function() {
 
 
 jQuery(".tag-container").on("mousedown", ".pill-listing li", function() {
-	var selectedValue = jQuery(this).text();
-	addNewTag(selectedValue,  jQuery(this).attr("data-value"), jQuery(this).closest(".tag-container"));
+	if(checkMaxTags(jQuery(this).closest(".tag-container"))) {
+		var selectedValue = jQuery(this).text();
+		addNewTag(selectedValue,  jQuery(this).attr("data-value"), jQuery(this).closest(".tag-container"));
+	}
 });
 
 jQuery("body").on("mousedown", "li", function(e) {
@@ -64,23 +66,23 @@ jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function
 	var listItems = jQuery(this).siblings(".pill-listing").find("li");
 	var selectedItem =  jQuery(this).siblings(".pill-listing").find("li.selected");
 	switch(e.which){
-		case 38:console.log("Up Arrow");
+		case 38: //console.log("Up Arrow");
 				if(selectedItem.length == 0 ) {
-					console.log("No Selected option. Tagging first visible option.");
+					// console.log("No Selected option. Tagging first visible option.");
 					jQuery(this).siblings(".pill-listing").find("li:visible").last(0).addClass("selected");
 				} else {
 					var newSelectedItem = selectedItem.prevAll("li:visible").first();
-					console.log(newSelectedItem);
+					// console.log(newSelectedItem);
 					if(newSelectedItem.length) {
 						newSelectedItem.addClass("selected");
 						selectedItem.removeClass("selected");
 					}
-						
+					console.log(jQuery(this).closest(".pill-listing").siblings("input").attr("placeholder", newSelectedItem.text()));
 				}
 				break;
-		case 40:console.log("Down Arrow");
+		case 40: //console.log("Down Arrow");
 				if(selectedItem.length == 0 ) {
-					console.log("No Selected option. Tagging first visible option.");
+					// console.log("No Selected option. Tagging first visible option.");
 					jQuery(this).siblings(".pill-listing").find("li:visible").eq(0).addClass("selected");
 				} else {
 					var newSelectedItem = selectedItem.nextAll("li:visible").first();
@@ -89,10 +91,17 @@ jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function
 						selectedItem.removeClass("selected");
 					}
 				}
+				if(newSelectedItem.offset()) {
+					console.log(jQuery(selectedItem));
+					jQuery(newSelectedItem.closest(".pill-listing ul").scrollTop(newSelectedItem.offset().top) - newSelectedItem.closest(".pill-listing").height());
+				}
 				break;
 		case 13:if(selectedItem.length) {
-					console.log("Submitted option!");
-					addNewTag(selectedItem.text(), selectedItem.attr("data-value"),jQuery(this).closest(".tag-container"));
+
+					if(checkMaxTags(listItems.closest(".tag-container"))){
+						console.log("Submitted option!");
+						addNewTag(selectedItem.text(), selectedItem.attr("data-value"),jQuery(this).closest(".tag-container"));
+					}
 				}
 				break;
 		default:break;
@@ -110,8 +119,20 @@ jQuery(".tag-container").on("click", ".input-tag .tag-remove", function() {
 	})
 	jQuery(this).closest(".input-tag").remove();
 });
+
+jQuery(".tag-container").on("mouseenter",".tag-icons", function() {
+	jQuery(this).find(".tag-added").addClass("hidden");
+	jQuery(this).find(".tag-remove").removeClass("hidden");
+});
+
+jQuery(".tag-container").on("mouseleave",".tag-icons", function() {
+	jQuery(this).find(".tag-remove").addClass("hidden");
+	jQuery(this).find(".tag-added").removeClass("hidden");
+});
+
+
 function addNewTag(labelName, labelValue, selector) {
-	console.log(labelName, selector);
+	// console.log(labelName, selector);
 
 	var tag = jQuery(".input-tag.prototype.hidden").clone().removeClass("prototype hidden");
 	tag.attr("data-id",labelValue);
@@ -121,4 +142,23 @@ function addNewTag(labelName, labelValue, selector) {
 	jQuery(selector).find("input[type=text]").val('').trigger('blur keydown');
 
 	jQuery(selector).find(".pill-listing li.selected").addClass("tag-added").removeClass("selected");
+}
+
+function checkMaxTags(selector) {
+	var maxOptions = jQuery(selector).attr("data-max-options") || 5;
+
+	var currentOptions = jQuery(selector).find(".input-tag").length;
+	// console.log("Max : " + maxOptions, "Current : " + currentOptions);
+	if(currentOptions >= maxOptions) { 
+		sendErrorMessage(selector,"Please choose at most " + maxOptions + " values.");
+		jQuery(selector).find("input").trigger("blur");
+		return 0;
+	} else {
+		return 1;
+	}
+}
+
+function sendErrorMessage(selector, errorString) {
+	jQuery(selector).closest(".field-container").find(".error").removeClass("hidden").html(errorString);
+	return false;
 }
