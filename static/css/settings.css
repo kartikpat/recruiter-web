@@ -1302,6 +1302,7 @@ span.sticker {
       padding-bottom: 20px;
       border-bottom: 1px solid #e8e8e8; }
     .page-content .settings-page .settings-body .settings-section .settings-section-header.profile h3 {
+      padding-bottom: 0;
       border: 0; }
     .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor {
       background: #f4fbfb;
@@ -1357,24 +1358,119 @@ span.sticker {
       .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button {
         padding: 12px 30px;
         margin: 0; }
-    .page-content .settings-page .settings-body .settings-section .settings-section-content .radio-group-container {
+    .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container {
       background: red;
       padding: 15px 60px 30px 60px;
       background-color: #f3fbfb;
       border: 1px solid #e8e8e8;
       margin-bottom: 35px; }
-      .page-content .settings-page .settings-body .settings-section .settings-section-content .radio-group-container .radio-option {
+      .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container .radio-option {
         padding: 0;
         margin: 25px 0 10px; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .radio-group-container .radio-option label, .page-content .settings-page .settings-body .settings-section .settings-section-content .radio-group-container .radio-option .section-form .formgroup .label, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .radio-group-container .radio-option .label {
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container .radio-option label, .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container .radio-option .section-form .formgroup .label, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .group-container .radio-option .label {
           font-size: 16px; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .radio-group-container .radio-option p.describer {
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container .radio-option p.describer {
           margin-top: 10px;
           margin-left: 35px;
           color: #808080;
           font-size: 14px;
           border-bottom: 1px solid #e8e8e8;
           padding-bottom: 30px; }
-          .page-content .settings-page .settings-body .settings-section .settings-section-content .radio-group-container .radio-option p.describer.no-border {
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container .radio-option p.describer.no-border {
             border: 0;
             padding-bottom: 5px; }
+      .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container.plan-container .plan-section h3 {
+        clear: both;
+        font-size: 16px;
+        padding: 25px 0;
+        line-height: 1;
+        margin: 0; }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container.plan-container .plan-section h3.basic {
+          border-bottom: 1px solid #e8e8e8; }
+      .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container.plan-container .plan-section .plan-block-content p {
+        color: #4b4b4b;
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 10px; }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container.plan-container .plan-section .plan-block-content p a {
+          color: #149075; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container.plan-container .plan-section .plan-block-content p a span.right-arrow i {
+            font-size: 12px; }
+
+@media all and (max-width: 768px) {
+  .page-content {
+    padding: 10px;
+    background: #f7f7f7; }
+    .page-content .settings-page {
+      margin: 0;
+      width: 100%;
+      background: #FFF;
+      border: 1px solid #e8e8e8;
+      border-radius: 4px; }
+      .page-content .settings-page .settings-sidebar {
+        display: none; }
+      .page-content .settings-page .settings-mobile-header {
+        font-size: 14px; }
+        .page-content .settings-page .settings-mobile-header .mobile-title {
+          margin: 0;
+          padding: 15px 20px;
+          background: #f3fbfb;
+          border-top-right-radius: 4px;
+          border-top-left-radius: 4px; }
+        .page-content .settings-page .settings-mobile-header .settings-mobile-nav ul {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          font-size: 0;
+          white-space: nowrap;
+          overflow: scroll;
+          border-bottom: 1px solid #e8e8e8;
+          margin-bottom: 20px;
+          width: 100% !important; }
+          .page-content .settings-page .settings-mobile-header .settings-mobile-nav ul li {
+            display: inline-block;
+            border-bottom: 3px solid transparent;
+            cursor: pointer; }
+            .page-content .settings-page .settings-mobile-header .settings-mobile-nav ul li span {
+              font-size: 14px;
+              padding: 10px 15px;
+              display: inline-block; }
+            .page-content .settings-page .settings-mobile-header .settings-mobile-nav ul li.active {
+              border-color: #4fa995; }
+              .page-content .settings-page .settings-mobile-header .settings-mobile-nav ul li.active span {
+                color: #149075; }
+      .page-content .settings-page .settings-body {
+        padding: 0;
+        width: 100%;
+        padding: 5px 20px; }
+        .page-content .settings-page .settings-body .settings-section .settings-section-header {
+          display: none; }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor {
+          padding: 20px 20px 15px; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-preview {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px; }
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-preview img {
+              border-radius: 50%; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info {
+            width: 100%;
+            padding-left: 0px; }
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info span {
+              display: block;
+              text-align: center;
+              margin: 10px 0; }
+              .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info span.choose-file {
+                display: block;
+                margin-right: 0; }
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit {
+              display: block;
+              text-align: center;
+              margin: 10px auto; }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container.radio-group-container {
+          padding: 15px; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container.radio-group-container .radio-option {
+            margin-top: 5px;
+            padding-top: 10px; }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container.plan-container {
+          padding: 15px; } }

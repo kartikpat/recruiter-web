@@ -22,6 +22,29 @@
 			</ul>
 		</div>
 
+		<div class="settings-mobile-header">
+			<h3 class="mobile-title">Settings</h3>
+			<div class="settings-mobile-nav">
+				<ul>
+					<li class="profile active" data-selector="profile">
+						<span>Profile</span>
+					</li>
+					<li class="social-accounts" data-selector="social-accounts">
+						<span>Social Accounts</span>
+					</li>
+					<li class="change-password" data-selector="change-password">
+						<span>Change Password</span>
+					</li>
+					<li class="notification-settings" data-selector="notification-settings">
+						<span>Notification Settings</span>
+					</li>
+					<li class="plans-subscriptions" data-selector="plans-subscriptions">
+						<span>Plans &amp; Subscriptions</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+
 		<div class="settings-body">
 			<div class="settings-section profile">
 				<div class="settings-section-header profile">
@@ -58,19 +81,19 @@
 						</div>
 						<div class="formgroup">
 							<div class="label" for="profile-email">Email ID</div>
-							<input type="text" id="profile-email" placeholder="email">
+							<input type="text" id="profile-email" placeholder="Email">
 						</div>
 						<div class="formgroup">
 							<div class="label" for="profile-designation">Designation</div>
-							<input type="text" id="profile-designation" placeholder="designation">
+							<input type="text" id="profile-designation" placeholder="Designation">
 						</div>
 						<div class="formgroup">
 							<div class="label" for="profile-organization">Organization</div>
-							<input type="text" id="profile-organization" placeholder="organization">
+							<input type="text" id="profile-organization" placeholder="Organization">
 						</div>
 						<div class="formgroup">
 							<div class="label" for="profile-website">Website</div>
-							<input type="text" id="profile-website" placeholder="website">
+							<input type="text" id="profile-website" placeholder="Website">
 						</div>
 						<div class="formgroup">
 							<div class="label" for="profile-recruiter-type">Recruiter Type</div>
@@ -155,7 +178,7 @@
 				</div>
 				<div class="settings-section-content">
 					<div class="section-form">
-						<div class="radio-group-container">
+						<div class="radio-group-container group-container">
 							<div class="radio-option">
 								<div class="radio-input">
 									<input type="radio" name="notification-type" id="instant-notification">
@@ -181,6 +204,43 @@
 			<div class="settings-section plans-subscriptions hidden">
 				<div class="settings-section-header">
 					<h3>Plans &amp; Subscriptions</h3>
+				</div>
+				<div class="settings-section-content">
+					<div class="section-form">
+						<div class="plan-container group-container">
+							<div class="basic-plan plan-section">
+								<h3 class="basic">
+									<span class="left title">1. Basic Postings</span>
+									<span class="right detail">Unlimited</span>
+									<div class="clearfix"></div>
+								</h3>
+							</div>
+
+							<div class="premium-plan plan-section">
+								<h3>
+									<span class="text-left title">2. Premium Postings</span>
+								</h3>
+								<div class="plan-block-content">
+									<p>Reach out to more candidates in less time with our Premium Post</p>
+									<p>
+										<a href="#">See all Premium Posting Features 
+											<span class="right-arrow"><i class="icon-right_arrow"></i>
+											</span>
+										</a>
+									</p>
+									<p>
+										<a href="#">Buy more credits 
+											<span class="right-arrow"><i class="icon-right_arrow"></i>
+											</span>
+										</a>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="formgroup">
+							<span class="button green submit">Save</span>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -11,213 +11,371 @@
 @import 'input-elements';
 
 .page-content {
-	.settings-page {
-		font-size:0;
-		max-width:1280px;
-		margin:45px auto;
-		display:block;
-		width:80%;
-		.settings-sidebar {
-			width:25%;
- 			display:inline-block;
- 			padding-right:40px;
- 			vertical-align:top;
+    .settings-page {
+        font-size: 0;
+        max-width: 1280px;
+        margin: 45px auto;
+        display: block;
+        width: 80%;
+        .settings-sidebar {
+            width: 25%;
+            display: inline-block;
+            padding-right: 40px;
+            vertical-align: top;
 
-			ul {
-				border:1px solid $border-color-base;
-				padding-left:0;
-				border-radius:4px;
-				li {
-					cursor:pointer;
-					border-bottom:1px solid $border-color-base;					
-					&:last-child {
-						border-bottom:0;
-					}
-					
-					p {
-						font-size:$base-font-size;
-						margin:0;
-						padding:15px 0 15px 15px;
-						border-left:3px solid transparent;
-						font-size:$base-subtitle-size;
-						font-weight:400;
+            ul {
+                border: 1px solid $border-color-base;
+                padding-left: 0;
+                border-radius: 4px;
+                li {
+                    cursor: pointer;
+                    border-bottom: 1px solid $border-color-base;
+                    &:last-child {
+                        border-bottom: 0;
+                    }
 
-						span.arrow {
-							font-size:$base-font-size;
-							margin-right:15px;
-							opacity:0;
-						}
-					}
+                    p {
+                        font-size: $base-font-size;
+                        margin: 0;
+                        padding: 15px 0 15px 15px;
+                        border-left: 3px solid transparent;
+                        font-size: $base-subtitle-size;
+                        font-weight: 400;
 
-					&.active {
-						background-color:$active-section-background;
-						p {
-							border-color:$border-color-active;
-							color:$header-link-active-color;
-							span.arrow {
-								opacity:1;
-							}
-						}
-					}
-				}
-			}
-		}
+                        span.arrow {
+                            font-size: $base-font-size;
+                            margin-right: 15px;
+                            opacity: 0;
+                        }
+                    }
 
-		.settings-body {
-			font-size:initial;
-			width:75%;
-			padding-left:40px;
-			display:inline-block;
-			vertical-align: top;
-			.settings-section {
-				
-				.settings-section-header {
-					
-					h3 {
-						font-size:$page-title-size;
-						margin:0 0 25px 0;
-						padding-bottom:20px;
-						border-bottom:1px solid $border-color-base;
-					}
+                    &.active {
+                        background-color: $active-section-background;
+                        p {
+                            border-color: $border-color-active;
+                            color: $header-link-active-color;
+                            span.arrow {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
-					&.profile {
-						h3 {
-							border:0;
-						}
-					}
-				}
+        .settings-body {
+            font-size: initial;
+            width: 75%;
+            padding-left: 40px;
+            display: inline-block;
+            vertical-align: top;
+            .settings-section {
 
-				.settings-section-content {
-	
-					.profile-image-editor {
-						background:$active-section-background;
-						padding:20px;
-						border:1px solid $border-color-base;
-						font-size:0;
-						margin-bottom:25px;
-						.profile-image-preview {
-							display:inline-block;
-							vertical-align: middle;
-							width:20%;
-						}
+                .settings-section-header {
 
-						.profile-image-info {
-							width:80%;
-							display:inline-block;
-							vertical-align:middle;
-							font-size:initial;
+                    h3 {
+                        font-size: $page-title-size;
+                        margin: 0 0 25px 0;
+                        padding-bottom: 20px;
+                        border-bottom: 1px solid $border-color-base;
+                    }
 
-							span {
-								font-size:$base-font-size;
-								&.choose-file {
-									padding:10px 20px;
-									display:inline-block;
-									background:#FFF;
-									border:1px solid $border-color-base;
-									cursor:pointer;
-									margin-right:10px;
-								}
-								&.upload-rules {
-									display:inline-block;
-									margin:10px 0;
-									color:$logoTaglineColor;
-								}
-							}
+                    &.profile {
+                        h3 {
+                        	padding-bottom:0;
+                            border: 0;
+                        }
+                    }
+                }
 
-							.submit {
-								button {
-									color:white;
-									border:0;
-									padding:12px 25px;
-									margin:0;
-								}
-							}
-						}
-					}
+                .settings-section-content {
 
-					.section-form {
+                    .profile-image-editor {
+                        background: $active-section-background;
+                        padding: 20px;
+                        border: 1px solid $border-color-base;
+                        font-size: 0;
+                        margin-bottom: 25px;
+                        .profile-image-preview {
+                            display: inline-block;
+                            vertical-align: middle;
+                            width: 20%;
+                        }
 
-						.formgroup {
-							margin-bottom:15px;
-							.label {
-								@extend label;
-								margin-bottom:10px;
-							}
-							input {
-								@extend .input-field;
+                        .profile-image-info {
+                            width: 80%;
+                            display: inline-block;
+                            vertical-align: middle;
+                            font-size: initial;
 
-								&.social-placeholder {
+                            span {
+                                font-size: $base-font-size;
+                                &.choose-file {
+                                    padding: 10px 20px;
+                                    display: inline-block;
+                                    background: #FFF;
+                                    border: 1px solid $border-color-base;
+                                    cursor: pointer;
+                                    margin-right: 10px;
+                                }
+                                &.upload-rules {
+                                    display: inline-block;
+                                    margin: 10px 0;
+                                    color: $logoTaglineColor;
+                                }
+                            }
 
-									padding-left:40px;
-									background-color:$color-white;
-								    background-repeat: no-repeat;
-								    background-position: left 10px center;
+                            .submit {
+                                button {
+                                    color: white;
+                                    border: 0;
+                                    padding: 12px 25px;
+                                    margin: 0;
+                                }
+                            }
+                        }
+                    }
 
-								    &.twitter {
-								    	background-image:url('/static/images/twitter-colored.png');
-								    }
+                    .section-form {
 
-								    &.facebook {
-								    	background-image:url('/static/images/facebook-colored.png');
-								    	background-position:left 15px center;
-								    }
+                        .formgroup {
+                            margin-bottom: 15px;
+                            .label {
+                                @extend label;
+                                margin-bottom: 10px;
+                            }
+                            input {
+                                @extend .input-field;
 
-								    &.linkedin {
-								    	background-image:url('/static/images/linkedin-colored.png');
-								    }
-								}
-							}
-							select {
-								@extend select.select-dropdown;
-							}
-							textarea {
-								@extend .input-field;
+                                &.social-placeholder {
 
-								&:focus {
-									outline:0;
-								}
-							}
+                                    padding-left: 40px;
+                                    background-color: $color-white;
+                                    background-repeat: no-repeat;
+                                    background-position: left 10px center;
 
-							.button {
-								@extend button;
-								padding:12px 30px;
-								margin:0;
-							}
-						}	
-					}
+                                    &.twitter {
+                                        background-image: url('/static/images/twitter-colored.png');
+                                    }
 
-					.radio-group-container {
-						background:red;
-						padding:15px 60px 30px 60px;
-						background-color:$premium-section-background;
-						border:1px solid $border-color-base;
-						margin-bottom:35px;
+                                    &.facebook {
+                                        background-image: url('/static/images/facebook-colored.png');
+                                        background-position: left 15px center;
+                                    }
 
-						.radio-option {
-							padding:0;
-							margin:25px 0 10px;
+                                    &.linkedin {
+                                        background-image: url('/static/images/linkedin-colored.png');
+                                    }
+                                }
+                            }
+                            select {
+                                @extend select.select-dropdown;
+                            }
+                            textarea {
+                                @extend .input-field;
 
-							label {
-								font-size:$base-subtitle-size;
-							}
+                                &:focus {
+                                    outline: 0;
+                                }
+                            }
 
-							p.describer {
-								margin-top:10px;
-								margin-left:35px;
-								color:$extra-info-color;
-								font-size:$base-font-size;
-								border-bottom:1px solid $border-color-base;
-								padding-bottom:30px;
+                            .button {
+                                @extend button;
+                                padding: 12px 30px;
+                                margin: 0;
+                            }
+                        }
+                    }
 
-								&.no-border {
-									border:0;
-									padding-bottom:5px;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+                    .group-container {
+                        background: red;
+                        padding: 15px 60px 30px 60px;
+                        background-color: $premium-section-background;
+                        border: 1px solid $border-color-base;
+                        margin-bottom: 35px;
+
+                        .radio-option {
+                            padding: 0;
+                            margin: 25px 0 10px;
+
+                            label {
+                                font-size: $base-subtitle-size;
+                            }
+
+                            p.describer {
+                                margin-top: 10px;
+                                margin-left: 35px;
+                                color: $extra-info-color;
+                                font-size: $base-font-size;
+                                border-bottom: 1px solid $border-color-base;
+                                padding-bottom: 30px;
+
+                                &.no-border {
+                                    border: 0;
+                                    padding-bottom: 5px;
+                                }
+                            }
+                        }
+
+                        &.plan-container {
+
+                        	.plan-section {
+                        		h3 {
+                        			clear:both;
+                        			font-size:$base-subtitle-size;
+                        			padding:25px 0;
+                        			line-height:1;
+                                    margin:0;
+
+                        			&.basic {
+                        				border-bottom:1px solid $border-color-base;
+                        			}
+                        		}
+
+                        		.plan-block-content {
+                                    p {
+                                        color:$color-black-text;
+                                        font-size:$base-font-size;
+                                        line-height:1.5;
+                                        margin-bottom:10px;
+                                        a {
+                                            color:$inline-link-color;
+                                            
+                                            span.right-arrow {
+                                                i {
+                                                    font-size:12px;
+                                                }
+                                            }
+                                        }
+                                    }
+                        		}
+                        	}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media all and (max-width:768px) {
+    .page-content {
+        padding:10px;
+        background:$mobile-background-color;
+        .settings-page {
+            margin:0;
+            width:100%;
+            background:$color-white;
+            border:1px solid $border-color-base;
+            border-radius:4px;
+
+            .settings-sidebar {
+                display:none;
+            }
+
+            .settings-mobile-header {
+                font-size:$base-font-size;
+
+                .mobile-title {
+                    margin:0;
+                    padding:15px 20px;
+                    background:$mobile-highlight-background-color;
+                    border-top-right-radius:4px;
+                    border-top-left-radius:4px;
+                }
+
+                .settings-mobile-nav {
+                    ul {
+                        margin:0;
+                        padding:0;
+                        list-style:none;
+                        font-size:0;
+                        white-space: nowrap;
+                        overflow: scroll;
+                        border-bottom:1px solid $border-color-base;
+                        margin-bottom:20px;
+                        width: 100% !important;
+                        li {
+                            display:inline-block;
+                            border-bottom:3px solid transparent;
+                            cursor:pointer;
+                            span {
+                                font-size:$base-font-size;
+                                padding:10px 15px;
+                                display:inline-block;
+                            }
+
+                            &.active {
+                                border-color:$border-color-active;
+                                span {
+                                    color:$inline-link-color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .settings-body {
+                padding:0;
+                width:100%;
+                padding:5px 20px;
+
+                .settings-section {
+                   .settings-section-header {
+                        display:none;
+                    }
+
+                    .settings-section-content {
+                        .profile-image-editor {
+                            padding:20px 20px 15px;
+                            .profile-image-preview {
+                                width:100%;
+                                text-align:center;
+                                margin-bottom:20px;
+                                img {
+                                    border-radius:50%;
+                                }
+                            }
+                            .profile-image-info {
+                                width:100%;
+                                padding-left:0px;
+
+                                span {
+                                    display:block;
+                                    text-align:center;
+                                    margin:10px 0;
+                                    &.choose-file {
+                                        display:block;
+                                        margin-right:0;
+                                    }
+                                }
+                                .submit {
+                                    display:block;
+                                    text-align: center;
+                                    margin:10px auto;
+                                }
+                            }
+                        }
+
+                        .group-container {
+                            &.radio-group-container {
+                                    padding:15px;
+
+                                    .radio-option {
+                                        margin-top:5px;
+                                        padding-top:10px;
+                                    }
+                            }
+
+                            &.plan-container {
+                                padding:15px;
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }   
+    }
 }
