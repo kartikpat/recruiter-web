@@ -1258,6 +1258,8 @@ span.sticker {
   margin: 45px auto;
   display: block;
   width: 80%; }
+  .page-content .settings-page .settings-mobile-header {
+    display: none; }
   .page-content .settings-page .settings-sidebar {
     width: 25%;
     display: inline-block;
@@ -1407,6 +1409,8 @@ span.sticker {
       background: #FFF;
       border: 1px solid #e8e8e8;
       border-radius: 4px; }
+      .page-content .settings-page .settings-mobile-header {
+        display: block; }
       .page-content .settings-page .settings-sidebar {
         display: none; }
       .page-content .settings-page .settings-mobile-header {
