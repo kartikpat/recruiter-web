@@ -1300,7 +1300,7 @@ span.sticker {
     vertical-align: top; }
     .page-content .settings-page .settings-body .settings-section .settings-section-header h3 {
       font-size: 22px;
-      margin: 0 0 25px 0;
+      margin: 0 0 20px 0;
       padding-bottom: 20px;
       border-bottom: 1px solid #e8e8e8; }
     .page-content .settings-page .settings-body .settings-section .settings-section-header.profile h3 {
@@ -1314,8 +1314,12 @@ span.sticker {
       margin-bottom: 25px; }
       .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-preview {
         display: inline-block;
-        vertical-align: middle;
-        width: 20%; }
+        vertical-align: top;
+        width: 20%;
+        text-align: center; }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-preview img {
+          border-radius: 50%;
+          object-fit: cover; }
       .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info {
         width: 80%;
         display: inline-block;
@@ -1324,7 +1328,7 @@ span.sticker {
         .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info span {
           font-size: 14px; }
           .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info span.choose-file {
-            padding: 10px 20px;
+            padding: 10px 24px;
             display: inline-block;
             background: #FFF;
             border: 1px solid #e8e8e8;
@@ -1332,7 +1336,7 @@ span.sticker {
             margin-right: 10px; }
           .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info span.upload-rules {
             display: inline-block;
-            margin: 10px 0;
+            margin: 10px 0 20px;
             color: #7b7b7b; }
         .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit button, .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit .section-form .formgroup .button, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .profile-image-editor .profile-image-info .submit .button {
           color: white;
@@ -1359,7 +1363,8 @@ span.sticker {
         outline: 0; }
       .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button {
         padding: 12px 30px;
-        margin: 0; }
+        margin: 0;
+        border-radius: 3px; }
     .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container {
       background: red;
       padding: 15px 60px 30px 60px;
@@ -1467,6 +1472,8 @@ span.sticker {
               .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info span.choose-file {
                 display: block;
                 margin-right: 0; }
+              .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info span.upload-rules {
+                display: block; }
             .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit {
               display: block;
               text-align: center;

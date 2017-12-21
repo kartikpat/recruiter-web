@@ -79,7 +79,7 @@
 
                     h3 {
                         font-size: $page-title-size;
-                        margin: 0 0 25px 0;
+                        margin: 0 0 20px 0;
                         padding-bottom: 20px;
                         border-bottom: 1px solid $border-color-base;
                     }
@@ -102,8 +102,14 @@
                         margin-bottom: 25px;
                         .profile-image-preview {
                             display: inline-block;
-                            vertical-align: middle;
+                            vertical-align: top;
                             width: 20%;
+                            text-align:center;
+
+                            img {
+                                border-radius:50%;
+                                object-fit:cover;
+                            }
                         }
 
                         .profile-image-info {
@@ -115,7 +121,7 @@
                             span {
                                 font-size: $base-font-size;
                                 &.choose-file {
-                                    padding: 10px 20px;
+                                    padding: 10px 24px;
                                     display: inline-block;
                                     background: #FFF;
                                     border: 1px solid $border-color-base;
@@ -124,7 +130,7 @@
                                 }
                                 &.upload-rules {
                                     display: inline-block;
-                                    margin: 10px 0;
+                                    margin: 10px 0 20px;
                                     color: $logoTaglineColor;
                                 }
                             }
@@ -187,6 +193,7 @@
                                 @extend button;
                                 padding: 12px 30px;
                                 margin: 0;
+                                border-radius:3px;
                             }
                         }
                     }
@@ -356,6 +363,10 @@
                                     &.choose-file {
                                         display:block;
                                         margin-right:0;
+                                    }
+
+                                    &.upload-rules {
+                                        display:block;
                                     }
                                 }
                                 .submit {
