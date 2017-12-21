@@ -1,0 +1,288 @@
+@charset "UTF-8";
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.important-info-color {
+  color: #333; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
+/**** Fontello Font Icons : ****/
+@font-face {
+  font-family: 'fontello';
+  src: url("../fonts/fontello.eot");
+  src: url("../fonts/fontello.eot#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2") format("woff2"), url("../fonts/fontello.woff") format("woff"), url("../fonts/fontello.ttf") format("truetype"), url("../fonts/fontello.svg#fontello") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?75489480#fontello') format('svg');
+  }
+}
+*/
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
+
+.icon-certification:before {
+  content: '\e800'; }
+
+/* '' */
+.icon-cross:before {
+  content: '\e801'; }
+
+/* '' */
+.icon-disabillity-symbol:before {
+  content: '\e802'; }
+
+/* '' */
+.icon-chat_icon:before {
+  content: '\e803'; }
+
+/* '' */
+.icon-distance_learning:before {
+  content: '\e804'; }
+
+/* '' */
+.icon-down_arrow:before {
+  content: '\e805'; }
+
+/* '' */
+.icon-edit:before {
+  content: '\e806'; }
+
+/* '' */
+.icon-ex--alunmi:before {
+  content: '\e807'; }
+
+/* '' */
+.icon-ex-defence:before {
+  content: '\e808'; }
+
+/* '' */
+.icon-executive-program:before {
+  content: '\e809'; }
+
+/* '' */
+.icon-facebook-logo:before {
+  content: '\e80a'; }
+
+/* '' */
+.icon-full-time:before {
+  content: '\e80b'; }
+
+/* '' */
+.icon-gender:before {
+  content: '\e80c'; }
+
+/* '' */
+.icon-information:before {
+  content: '\e80d'; }
+
+/* '' */
+.icon-linkedin-logo:before {
+  content: '\e80e'; }
+
+/* '' */
+.icon-part-time:before {
+  content: '\e80f'; }
+
+/* '' */
+.icon-refresh:before {
+  content: '\e810'; }
+
+/* '' */
+.icon-refresh2:before {
+  content: '\e811'; }
+
+/* '' */
+.icon-right_arrow:before {
+  content: '\e812'; }
+
+/* '' */
+.icon-shield:before {
+  content: '\e813'; }
+
+/* '' */
+.icon-star:before {
+  content: '\e814'; }
+
+/* '' */
+.icon-star2:before {
+  content: '\e815'; }
+
+/* '' */
+.icon-twitter:before {
+  content: '\e816'; }
+
+/* '' */
+.icon-woman:before {
+  content: '\e817'; }
+
+/* '' */
+.icon-candidate:before {
+  content: '\e818'; }
+
+/* '' */
+.icon-checked_icon:before {
+  content: '\e819'; }
+
+/* '' */
+.icon-close_icon:before {
+  content: '\e81a'; }
+
+/* '' */
+.icon-group:before {
+  content: '\e81b'; }
+
+/* '' */
+.icon-document_search_interface_symbol:before {
+  content: '\e81c'; }
+
+/* '' */
+.icon-down_arrow-1:before {
+  content: '\e81d'; }
+
+/* '' */
+.icon-download_arrow:before {
+  content: '\e81e'; }
+
+/* '' */
+.icon-email_envelope:before {
+  content: '\e81f'; }
+
+/* '' */
+.icon-envelope:before {
+  content: '\e820'; }
+
+/* '' */
+.icon-info:before {
+  content: '\e821'; }
+
+/* '' */
+.icon-search_icon:before {
+  content: '\e822'; }
+
+/* '' */
+.icon-notification_bell_outline_interface_symbol:before {
+  content: '\e823'; }
+
+/* '' */
+.icon-politics:before {
+  content: '\e824'; }
+
+/* '' */
+.icon-denied:before {
+  content: '\e825'; }
+
+/* '' */
+.icon-star_shaped_medal:before {
+  content: '\e826'; }
+
+/* '' */
+.icon-sunrise:before {
+  content: '\e827'; }
+
+/* '' */
+.icon-tick:before {
+  content: '\e828'; }
+
+/* '' */
+.icon-add_icon:before {
+  content: '\e82a'; }
+
+/* '' */
+.icon-back_icon:before {
+  content: '\e82b'; }
+
+/* '' */
+.icon-badge:before {
+  content: '\e82c'; }
+
+/* '' */
+.icon-box:before {
+  content: '\e82d'; }
+
+/* '' */
+.icon-interview:before {
+  content: '\e82f'; }
+
+/* '' */
+.icon-mail:before {
+  content: '\e830'; }
+
+/* '' */
+.icon-user:before {
+  content: '\e831'; }
+
+/* '' */
+.page-content {
+  min-height: 100%;
+  padding: 0;
+  overflow: auto;
+  position: relative;
+  padding: 20px; }
+  .page-content .sidebar {
+    width: 15%;
+    padding: 20px;
+    background: #1f8f75;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 43px; }
+    .page-content .sidebar h3 {
+      font-size: 30px;
+      text-transform: uppercase;
+      color: #ffffff; }
+  .page-content .content-block {
+    width: 85%;
+    padding: 40px 70px; }
+    .page-content .content-block .section {
+      margin-bottom: 60px; }
