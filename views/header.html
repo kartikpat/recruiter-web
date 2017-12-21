@@ -2,148 +2,118 @@
 <html>
 <head>
 	<title>{{title}}</title>
-	<!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet"> -->
 	{{#styles.length}}
     	{{#styles}}
     		<link rel="stylesheet" href="/{{.}}">
-			<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-			<link href="https://fonts.googleapis.com/css?family=Comfortaa|Droid+Sans|Noto+Sans" rel="stylesheet">
-			<link href="../../static/css/chat-sticky.css" rel="stylesheet">
     	{{/styles}}
 	{{/styles.length}}
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa|Droid+Sans|Noto+Sans" rel="stylesheet">
+	<link href="../../static/css/chat-sticky.css" rel="stylesheet">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 	<script type="text/javascript">
 		var baseUrl = '{{baseUrl}}';
 		var userID = '{{userID}}';
-		var jobID = '{{jobID}}';
+		var jobID = '{{jobID}}';	
+		var baseDomain = '{{baseDomain}}';
 	</script>
 </head>
 <body>
-<header>
 
-	<div class="top_banner">
-		<div class="logo">
-			<h3>updazz</h3><span>.com</span>
+	<div class="header">
+		<div class="mobile-menu header_item">
+			<img src="/static/images/hamburger.svg">
 		</div>
-		<div class="user_profile_side">
-			<li class="dropdown">
-				<div class="image-container animated-background"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA"></div>
-				<a class="email animated-background" href=""></a>
-
-				<ul class="options hidden box_shadow">
-					<li><a href="/recruiter/my-profile">My Profile</a></li>
-					<hr class="seperator">
-					<li><a href="/recruiter/edit-profile">Settings/ Edit Profile</a></li>
-					<hr class="seperator">
-					<li><a href="#">Basic Posting(unlimited)</a></li>
-					<hr class="seperator">
-					<li><a href="#">Premium Posting(0)</a></li>
-					<hr class="seperator">
-					<li><a href="/recruiter/change-password">Change Password</a></li>
-					<hr class="seperator">
-					<li><a href="/logout">Logout</a></li>
-
-				</ul>
-			</li>
+		<div class="domain_logo header_item">
+			<a href="/">
+				<h1></h1><span>.com</span>
+				<p class="logo_tagline">Hire better. Hire Faster.</p>
+			</a>
 		</div>
-
+		<div class="navigation header_item">
+			<ul class="menu-listing">
+				<li class="menu-list-item my-jobs"><a href="/my-jobs">My Jobs</a></li>
+				<li class="menu-list-item search-resume"><a href="javscript:void(0);">Search Resume</a></li>
+				<li class="menu-list-item interviews"><a href="javscript:void(0);">Interviews</a></li>
+				<li class="menu-list-item reports"><a href="javscript:void(0);">Reports</a></li>
+			</ul>
+		</div>
+		<div class="profile_actions right header_item">
+			<div class="search action-icon">
+				<img src="/static/images/search_icon.svg">
+			</div>
+			<div class="messages action-icon">
+				<img src="/static/images/chat_icon.svg">
+			</div>
+			<div class="notifications action-icon">
+				<img src="/static/images/notification_icon.svg">
+			</div>
+			<div class="profile action-icon">
+				<img src="/static/images/profile-image.svg">
+				<div class="profile-menu">
+					<div class="profile-header">
+						<p class="user-name">Arun Kumar</p>
+						<p class="user-email">arun.kumar@gmail.com</p>
+					</div>
+					<div class="profile-body">
+						<ul class="profile-item-listing">
+							<li>Basic Account <span class="upgrade">Buy Premium</span></li>
+							<li class="settings"><a href="/settings">Account Settings</a></li>
+							<li class="logout"><a href="/logout">Logout</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
-	<nav class="navbar">
-			<ul class="menu" id="menu">
-				<li class="menu_link"><a href="javascript:void(0);" onclick="openMenu()"><i class="fa fa-bars fa-lg" aria-hidden="true"></i></a>
-				<li class="menu_link"><a class="menu_link_a" href="/">My Jobs</a></li>
-				<li class="menu_link"><a class="menu_link_a" href="/post-job">Post Jobs</a></li>
-				<li class="menu_link"><a class="menu_link_a" href="/view-reports">Reports</a></li>
-				<li class="menu_link"><a class="menu_link_a" href="/recruiter/myChat">My Chat</a></li>
-				<li class="menu_link menu-calendar dropdown">
-					<a class="menu_link_a" href="#">My Calendar</a>
-					<ul class="options hidden box_shadow">
-						<li><a class="manage-bookings" href="">Manage Bookings</a></li>
-						<li><a href="/recruiter/view-booked-slots">View Booked Slots</a></li>
-					</ul>
-				</li>
-				<li class="menu_link"><a class="menu_link_a" href="#">Search Resume Database</a></li>
-				<li class="menu_link menu-more dropdown">
-					<a class="menu_link_a" href="#">More</a>
-					<ul class="options hidden box_shadow">
-						<li><a href="/recruiter/tags">My Tags</a></li>
-						<li><a class="saved-shortlisted" href="">Saved/Shortlisted Candidates</a></li>
-					</ul>
-				</li>
-			</ul>
-			<div class="search_container">
-				<input type="text" class="searchform" placeholder="Search" id="search-solar"/>
+	<div class="mobile-menu-container hidden">
+		
+		<div class="mobile-menu-content">
+			<div class="mobile-logo mobile-menu-item left">
+				<div class="domain_logo header_item">
+					<a href="/">
+						<h1>updazz</h1><span>.com</span>
+						<p class="logo_tagline">Hire better. Hire Faster.</p>
+					</a>
+				</div>
+			</div>
+			<div class="close-mobile-menu mobile-menu-item right">
+				<span><i class="icon-close_icon"></i></span>
+			</div>
+			<div class="clearfix"></div>
+		    <div class="menu-link-listing mobile-menu-item">
+		    	<ul>
+		    		<a href="/"><li class="menu-list-item my-jobs">Dashboard</li></a>
+		    		<a href="/my-jobs"><li class="menu-list-item my-jobs">My Jobs</li></a>
+					<a href="javscript:void(0);"><li class="menu-list-item search-resume">Search Resume</li></a>
+					<a href="javscript:void(0);"><li class="menu-list-item interviews">Interviews</li></a>
+					<a href="javscript:void(0);"><li class="menu-list-item reports">Reports</li></a>
+		    	</ul>
 			</div>
 
-	</nav>
+			<div class="mobile-profile-section">
+				<div class="profile-image left">
+					<img src="/static/images/profile-image.svg">
+				</div>
+				<div class="profile-info right">
+					<p class="profile-name">Arun Kumar</p>
+					<p class="profile-email">arun.kumar@gmail.com</p>
+				</div>
+			</div>
 
-	<div id="chat-div" class="chat-div">
-        <div class="chat-div-header">
-            Inbox<span class="minus-icon"></span>
-        </div>
-        <div class="chat-div-content">
-
-        </div>
-    </div>
-    <div class="chat-candidate-boxes">
-
-    </div>
-
-    <div class="chat-div-candidate prototype hidden">
-        <div class="chat-div-header">
-            <div class="candidate-name-container">
-                <div class="candidate-name">
-
-                </div>
-                <div class="last-active-date">
-
-                </div>
-            </div>
-            <div class="info-buttons">
-                <span class="info-icon"><i class=" fa fa-info" aria-hidden="true"></i></span>
-                <span class="minus-icon"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                <span class="close-icon"><i class=" fa fa-times" aria-hidden="true"></i></span>
-            </div>
-        </div>
-        <div class="content-footer-container">
-            <div class="chat-div-content">
-
-            </div>
-            <div class="footer">
-                <input class="chat-input" id="chat-input" type="text" placeholder="Write a Message">
-            </div>
-        </div>
-
-    </div>
-
-  <div id="chat-collapsed-container">
-      <div class="chat-collapsed-candidate-container hidden">
-          <div class="chat-collapsed-candidate">
-              <div class="chat-collapsed-candidate-wrapper">
-
-              </div>
-          </div>
-
-      </div>
-  </div>
-
-
-    <div class="candidate-card prototype hidden">
-        <div class="candidate-image animated-background"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA">
-		<div class="online-icon hidden"></div>
+			<div class="mobile-profile-actions">
+				<ul class="profile-item-listing">
+					<a href="#"><li>Basic Account <span class="upgrade button white">Buy Premium</span></li>
+					<a href="/settings"><li class="settings">Account Settings</li></a>
+					<a href="/logout"><li class="logout">Logout</li></a>
+				</ul>
+			</div>
+		</div>
 	</div>
-        <div class="candidate-info">
-            <div class="candidate-name animated-background text-clr font-md"></div>
-            <div class="candidate-designation animated-background extra-info-color font-sm"></div>
-        </div>
-        <!-- <div class="remove-candidate extra-info-color"><i class="fa fa-times" aria-hidden="true"></i></div> -->
-    </div>
-    <hr class="divider divider-full hidden">
 
-    <div class="candidate-collapsed-block prototype hidden">
 
-    </div>
-<!-- end navigation menu -->
-
-</header>
+	<div class="body-overlay hidden">
+	</div>

@@ -13,6 +13,7 @@ module.exports = function(settings){
 	var env = settings.env;
 	var baseUrl = config["baseUrl"];
 	var request = settings["request"];
+	var baseDomain = config["baseDomain"];
 	if(env=="local")
 		baseUrl= config["baseUrl_local"];
 	else
@@ -31,12 +32,8 @@ module.exports = function(settings){
     	res.redirect('/sign-in');
 	}
 	app.post("/sign-in", function(req, res){
-
-		console.log(baseUrl)
 		var email = req.body.email || null;
 		var password = req.body.password || null;
-		console.log(email);
-		console.log(password)
 		if(! ( email && password ) ){
 			res.status(422).json({
 				status: 'fail',
@@ -64,7 +61,8 @@ module.exports = function(settings){
 			title: "IIM JOBS | Dashboard",
 			styles:  assetsMapper["index"]["styles"][mode],
 			scripts: assetsMapper["index"]["scripts"][mode],
-			baseUrl: baseUrl
+			baseUrl: baseUrl,
+			baseDomain:baseDomain
 		});
 		return
 	});
@@ -96,7 +94,8 @@ module.exports = function(settings){
 			title: "IIM JOBS | Post job",
 			styles:  assetsMapper["post-job"]["styles"][mode],
 			scripts: assetsMapper["post-job"]["scripts"][mode],
-			baseUrl: baseUrl
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
 		})
 		return
 	})
@@ -372,4 +371,37 @@ module.exports = function(settings){
 		return
 	})
 
+	app.get("/ui_components", function(req, res){
+
+		res.render("ui_components", {
+			title: "Recruiter Web - UI Components | iimjobs.com",
+			styles:  assetsMapper["ui-components"]["styles"][mode],
+			scripts: assetsMapper["ui-components"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
+		})
+		return
+	})
+
+	app.get("/my-jobs", function(req,res){
+		res.render("my-jobs", {
+			title:"Recruiter Web - My Jobs | iimjobs.com",
+			styles:  assetsMapper["my-jobs"]["styles"][mode],
+			scripts: assetsMapper["my-jobs"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
+		})
+		return
+	});
+
+	app.get("/settings", function(req,res){
+		res.render("settings", {
+			title:"Recruiter Web - Settings | iimjobs.com",
+			styles:  assetsMapper["settings"]["styles"][mode],
+			scripts: assetsMapper["settings"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
+		})
+		return
+	});
 }

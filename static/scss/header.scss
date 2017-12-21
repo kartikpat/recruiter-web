@@ -1,6 +1,11 @@
 @import "colors.scss";
 @import "fonts.scss";
 
+@import 'components/_colors.scss';
+@import 'components/_type.scss';
+@import 'components/_global.scss';
+@import 'components/_theme.scss';
+
 body, html {
     margin: 0;
     padding: 0;
@@ -52,262 +57,233 @@ body, html {
     display: inline-block;
 }
 
-header {
-    .top_banner {
-        padding: 20px 10px 10px 10px;
-        margin: 0 0 15px 0;
-        position: relative;
+.header {
+    min-height:75px;
+    background: $header-background-color;
+    display:block;
+    width:100%;
+    padding-left:20px;
+    padding-right:20px;
 
-        .logo {
-            display: inline-block;
-            position: relative;
+    .header_item {
+        height:40px;
+        margin-top:18px;
+        display:inline-block;
+        vertical-align: middle;
+        position:relative;
 
-            h3 {
-                font-size: 30px;
-                font-family: 'Comfortaa', cursive;
-                line-height: 20px;
-                margin: 0;
+        &.mobile-menu {
+            position:relative;
+            width:40px;
+            display:none;
+            img {
+                @include abolulute-center;
             }
-
+        }
+    }
+    .domain_logo {
+        a {
+            display:inline-block;
+            vertical-align:middle;
+            color:$color-white;
+            font-family:$logoFontName, sans-serif;
+    
+            h1 {
+                font-size: $logoFontSize;
+                font-family:inherit;
+                line-height:20px;
+                margin: 0;
+                display:inline-block;
+            }
             span {
-                font-size: 13px;
-                position: absolute;
-                top: 110%;
-                left: 70%;
-                font-family: 'Droid Sans', sans-serif;
+                font-family:inherit;
+                font-size: $logoBylineFontSize;
+            }
+            p {
+                font-family: inherit;
+                line-height: 1;
+                color: #7b7b7b;
+                font-size: 11px;
+                margin-left: 20px;
+                margin-top: 5px;
             }
         }
+    }
 
-        .user_profile_side {
-            position: absolute;
-            right: 20px;
-            display: inline-block;
-            cursor: pointer;
-            min-height: 30px;
-            .dropdown {
-                position: relative;
-                list-style: none;
+    .profile_actions {
+        .action-icon {
+            height:40px;
+            width:40px;
+            display:inline-block;
+            vertical-align: middle;
+            position:relative;
+            cursor:pointer;
+            
+            img {
+                padding:10px;
+                @include abolulute-center;
+            }
+        }
+        .profile {
+            img {
+                padding:0;
+                height:37px;
+                width:37px;
+                border-radius:50%;     
+            }
+            
+            .profile-menu {
+                position:absolute;
+                width:280px;
+                top:80%;
+                right:0;
+                z-index: 10;
+                background:#FFF;
+                margin-top:15px;
+                box-shadow:0 4px 8px $shadow-color;
+                border-radius:4px;
+                transition:all 0.2s ease-in-out;
+                height:0;
+                opacity:0;
+                visibility: hidden;
 
-                .email {
-                    display: inline-block;
-                    height: 14px;
-                    line-height: 0px;
-                    min-width: 125px;
-                    color: $hyperlink-color;
-                    font-size: 12px;
-                    text-decoration: none;
-                    font-family: "Droid Sans",sans-serif;
-                    vertical-align: top;
-                    padding-left: 5px;
-                    padding-top: 8px;
-                    margin-top: 7px;
+                &:before {
+                    content:'';
+                    border-right:10px solid transparent;
+                    border-bottom:10px solid $header-link-active-color;
+                    border-left:10px solid transparent;
+                    position:absolute;
+                    top:-8px;
+                    right:10px;
                 }
 
-                .image-container {
-                    display: inline-block;
-                    width: 30px;
-                    height: 30px;
-                    border-radius: 50%;
-                    img {
-                        width: 100%;
-                        height: 100%;
-                        border-radius: 50%;
+                .profile-header {
+                    padding:15px;
+                    background:$header-link-active-color;
+                    border-top-right-radius:4px;
+                    border-top-left-radius:4px;
+                    p {
+                        margin:0;
+                        color:$color-white;
+                        font-size:$base-font-size;
+                        line-height:1.3;
+
+                        &.user-name {
+                            font-size:$page-subtitle-font-size;
+                        }
                     }
                 }
 
-                .options {
-                    position: absolute;
-                    top: 102%;
-                    background: #fff;
-                    min-width: 200px;
-                    right: 0;
-                    z-index: 15;
-                    padding: 0;
-                    list-style: none;
-                    margin: 0;
-                    border-radius: 4px;
+                .profile-body {
+                    background:$color-white;
+                    padding:15px;
+                    border-bottom-right-radius:4px;
+                    border-bottom-left-radius:4px;
+                    ul {
+                        margin:0;
+                        list-style:none;
+                        padding-left:0;
 
-                    .seperator {
-                        border: 0;
-                        height: 0;
-                        border-top: 1px solid rgba(0, 0, 0, 0.1);
-                        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-                        width: 90%;
-                        margin: 0 auto;
-                    }
-
-                    li {
-                        padding:  10px;
-                        text-align: left;
-
-                        a {
-                            color: $hyperlink-color;
-                            font-size: 12px;
-                            text-decoration: none;
-                            display: block;
-                            &:hover {
-                                color: #56A0FF;
+                        li {
+                            margin:10px 0;
+                            font-size:$base-font-size;
+                            a {
+                                color:inherit;
                             }
                         }
                     }
+                }
+
+                &.active {
+                    opacity:1;
+                    visibility:visible;
+                    top:100%;
+                    height:auto;
                 }
             }
         }
     }
 
-    nav {
-        background: #1c1c1c;
-        position: relative;
-
-        .menu {
-            display: inline-block;
-            vertical-align: top;
-            margin: 0;
-            padding: 0;
-
-            li.menu_link:first-child {
-                display: none;
-            }
-
-            li.menu_link {
-                display: inline-block;
-                padding: 0;
-                border-bottom: 2px solid transparent;
-                height: 44px;
-                line-height: 44px;
-                > a {
-                    color: white;
-                    text-decoration: none;
-                    font-size: 13px;
-                    font-family: "Droid Sans",sans-serif;
-
-                }
-                .menu_link_a {
-                    width: 100%;
-                    height: 100%;
-                    padding: 0 10px;
-                    display: block;
+    .navigation {
+        display:inline-block;
+        vertical-align: middle;
+        width:65%;
+        ul {
+            list-style:none;
+            font-family:$logoFontName, sans-serif;
+            margin:0;
+            .menu-list-item {
+                line-height:40px;
+                font-family:inherit;
+                font-size:$logoBylineFontSize;
+                display:inline-block;
+                width:20%;
+                min-width:120px;
+                text-align: center;
+                a {
+                    font-family:inherit;
+                    color:$color-white;
                 }
 
-                &:hover {
-                    background: #7c7c7c;
-                    border-bottom: 2px solid #fff;
-                }
-            }
-
-            .dropdown {
-                position: relative;
-
-                .options {
-                    position: absolute;
-                    top: 104%;
-                    background: #fff;
-                    min-width: 150px;
-                    left: 0;
-                    list-style: none;
-                    z-index: 15;
-                    padding: 0;
-                    margin: 0;
-
-                    li {
-                        padding: 2px 10px;
-                        text-align: left;
-                        line-height: 1.5;
-                        a {
-                            font-size: 12px;
-                            color: black;
-                            text-decoration: none;
-                            &:hover {
-                                text-decoration: underline;
-                            }
-                        }
-                        &:hover {
-                            background: #e1e1e1;
-                        }
+                &.active {
+                    a {
+                        color:$header-link-active-color;
                     }
-                }
-
-                &:hover > ul {
-                    display: block;
-                }
-            }
-        }
-
-        .search_container {
-            display: inline-block;
-            padding: 6px;
-            position: absolute;
-            right: 1%;
-
-            &:after {
-                font-family: 'FontAwesome';
-                content: "\f002";
-                color: gray;
-                position: absolute;
-                top: 12px;
-                right: 10px;
-                font-size: 16px;
-            }
-
-            input {
-                height: 30px;
-                border: 0;
-                margin: 0;
-                padding: 0 12px;
-                border-radius: 5px;
-                width: 250px;
-            }
-        }
-    }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-    header {
-        nav {
-            .menu {
-                li.menu_link {
-
-
-                    > a {
-                        font-size: 12px;
-                    }
-                }
-            }
-
-            .search_container {
-                input {
-                    width: 180px;
                 }
             }
         }
     }
 }
 
-@media only screen and (max-width: 768px) {
-    header {
-        nav {
-            .menu {
-                li.menu_link:first-child {
-                    display: inline-block;
-                }
+@media all and (max-width: 992px) {
+    .header {
+        .header_item {
+            &.mobile-menu {
+                display:inline-block;
+            }   
+        }
+        .navigation {
+            display:none;
+        }
+    }
+}
 
-                li.menu_link {
-                    display: none;
-                    padding: 12px;
+@media all and (max-width:768px) {
+    .header {
+        padding-left:10px;
+        padding-right:10px;
+        min-height:55px;
+        .header_item {
+            margin-top:13px;
+            height:30px;
+            &.domain_logo {
+                h1 {
+                    font-size:$logo-font-size-mobile;
+                }
+                span {
+                    font-size:$logo-byline-font-size-mobile;
+                }
+                p {
+                    font-size:$logo-tagline-font-size-mobile;
+                    margin-left:3px;
+                    margin-top:2px;
                 }
             }
 
-            .search_container {
-                input {
-                    width: 180px;
-                }
+            &.mobile-menu {
+                height:30px;
+                width:30px;
+                vertical-align: top;
+                cursor:pointer;
             }
+            &.profile_actions {
+                .action-icon {
+                    height:30px;
+                    width:30px;
+                }   
 
-            .menu.responsive {
-                li.menu_link:not(:first-child) {
-                    display: block;
-                    padding: 12px;
-                    border-bottom: 1px solid gray;
+                .profile {
+                    display:none;
                 }
             }
         }
@@ -319,4 +295,17 @@ header {
     vertical-align: top;
     padding-left: 5px;
 
+}
+
+.body-overlay {
+
+    &.veiled {
+        position:fixed;
+        top:0;
+        bottom:0;
+        right:0;
+        left:0;
+        z-index:5;
+        background:$shadow-color-dark;
+    }
 }

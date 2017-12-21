@@ -150,6 +150,7 @@ $(document).ready(function(){
 
 	postJobForm.find("input[data-attribute='mandatory'],textarea[data-attribute='mandatory']").focusin(function() {
         removeErrorClass(this);
+        jQuery(this).removeClass("error-border");
     });
     postJobForm.find("#graduating_start_year,#graduating_end_year").focusin(function() {
         postJobForm.find("#graduating-year-label").addClass("hidden");
@@ -284,7 +285,8 @@ var checkErrorClass = function(ele) {
 	var value = elem.val();
 	if(elem.attr("id") == "title") {
 		if(value == '') {
-			elem.next().text("Please provide the title").removeClass("hidden");
+			elem.next().text("Please enter the job title").removeClass("hidden");
+            elem.addClass("error-border");
 			return false;
 		}
 		else {
@@ -319,7 +321,7 @@ var checkErrorClass = function(ele) {
     if(elem.attr("id") == "min_experience") {
 		if(value == '') {
             postJobForm.find(".experience-label-container").removeClass("hidden");
-			postJobForm.find("#min-experience-label").text("Please select Min Experience").removeClass("hide")
+			postJobForm.find("#min-experience-label").text("Please choose years of experience required for the job").removeClass("hide")
 			return false;
 		}
 		else {
@@ -327,7 +329,7 @@ var checkErrorClass = function(ele) {
             var maxExp = postJobForm.find("#max_experience").val();
             if(maxExp != '') {
                 if(parseInt(maxExp) < parseInt(value)) {
-                    postJobForm.find("#min-experience-label").text("Max Experience Should be greater than Min Experience").removeClass("hide");
+                    postJobForm.find("#min-experience-label").text("Maximum Years of Experience should be greater than Minimum Years of Experience").removeClass("hide");
                     postJobForm.find(".experience-label-container").removeClass("hidden");
                 }
                 else {
@@ -382,4 +384,29 @@ var checkErrorClass = function(ele) {
 var removeErrorClass = function(ele) {
 	var elem = $(ele);
 	elem.next().addClass("hidden");
+}
+
+
+function check_youtube_embed(url) {
+    var id = url.split("?v=")[1];
+    var embedlink = "http://www.youtube.com/embed/" + id;
+    if(url.indexOf('youtube.com/') !== -1) {
+        jQuery(".youtube-preview").removeClass("hidden").find("iframe").attr("src", embedlink);
+    } else {
+        jQuery(".youtube-preview").addClass("hidden")
+    }
+}
+
+var textarea = document.querySelector('#job_description');
+
+textarea.addEventListener('keydown', autosize);
+             
+function autosize(){
+  var el = this;
+  setTimeout(function(){
+    el.style.cssText = 'height:auto; padding:0';
+    // for box-sizing other than "content-box" use:
+    el.style.cssText = '-moz-box-sizing:content-box';
+    el.style.cssText = 'height:' + el.scrollHeight + 'px';
+  },0);
 }

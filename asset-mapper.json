@@ -2,9 +2,9 @@
 	"index": {
 		"styles": {
 			"debug" : [
-				"static/css/header.css",
 				"static/css/jquery-ui.min.css",
         		"static/css/index.css",
+				"static/css/header.css",
 				"static/css/buttons.css",
 				"static/css/footer.css",
 				"static/css/animate.css",
@@ -23,7 +23,8 @@
 				"static/js/vendor/hello.min.js",
 				"static/js/request.js",
 				"static/js/header.js",
-				"static/js/index.js"
+				"static/js/index.js",
+				"static/js/utilities.js"
 			],
 			"prod" : [
 				"static/build/js/index.min.js"
@@ -182,11 +183,13 @@
 		"styles": {
 			"debug" : [
 				"static/css/header.css",
-        		"static/css/index.css",
 				"static/css/footer.css",
 				"static/css/buttons.css",
 				"static/css/utilities.css",
-				"static/css/colors.css"
+				"static/css/colors.css",
+				"static/css/spacings.css",
+				"static/css/post_job.css",
+				"static/css/modal.css"
 			],
 			"prod": [
 				"static/build/css/index.min.css"
@@ -195,9 +198,12 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
+				"static/js/utilities.js",
 				"static/js/request.js",
 				"static/js/header.js",
-				"static/js/postJob.js"
+				"static/js/postJob.js",
+				"static/js/modal.js",
+				"static/js/ui-components.js"
 			],
 			"prod" : [
 				"static/build/js/post-job.min.js"
@@ -759,7 +765,90 @@
 				"static/build/js/change-password.min.js"
 			]
 		}
+	},
+	"ui-components": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/ui-components.css",
+				"static/css/utilities.css",
+				"static/css/footer.css"
+			],
+			"prod": [
+				"static/build/css/ui-components.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/change-password.js",
+				"static/js/ui-components.js",
+				"static/js/utilities.js"
+			],
+			"prod" : [
+				"static/build/js/ui-components.min.js"
+			]
+		}
+	},
+	"my-jobs": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/my-jobs.css",
+				"static/css/utilities.css",
+				"static/css/footer.css"
+			],
+			"prod": [
+				"static/build/css/my-jobs.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/change-password.js",
+				"static/js/my-jobs.js",
+				"static/js/utilities.js"
+			],
+			"prod" : [
+				"static/build/js/my-jobs.min.js"
+			]
+		}
+	},
+	"settings": {
+		"styles": {
+			"debug" : [
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/settings.css",
+				"static/css/utilities.css",
+				"static/css/footer.css",
+				"static/css/header.css",
+				"static/css/settings.css"
+			],
+			"prod": [
+				"static/build/css/settings.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/change-password.js",
+				"static/js/utilities.js",
+				"static/js/settings.js"
+			],
+			"prod" : [
+				"static/build/js/settings.min.js"
+			]
+		}
 	}
-
-
 }

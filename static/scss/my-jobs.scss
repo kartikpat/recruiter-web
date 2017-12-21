@@ -1,0 +1,243 @@
+@import "colors.scss";
+@import "fonts.scss";
+
+@import 'components/_colors.scss';
+@import 'components/_type.scss';
+@import 'components/_global.scss';
+@import 'components/_theme.scss';
+
+@import 'spacings';
+@import 'input-elements';
+
+@import 'chat-sidebar';
+
+
+.page-content {
+	background-color:$page-background-color;
+	.page-header {
+		select {
+			@extend select.select-dropdown;
+
+			&.minimal {
+				font-size:$select-minimal-font-size;
+				background-image:url("/static/images/minimal_select_dropdown.svg");
+			}
+		}
+
+		.action-buttons {
+			padding:5px 0 0 0;
+		}
+	}
+
+	.my-jobs {
+		width:80%;	
+
+		.my-jobs-listing {
+			.table-container {
+			    display: inline-block;
+			    width: 100%;
+			    background: $color-white;
+			    border-radius: 4px;
+			    box-shadow: 0 1px 2px $shadow-color;
+			    border: 1px solid #e8e8e8;
+			    padding:0;
+
+			    .table-row {
+			    	display:inline-block;
+			    	width:100%;
+			    	vertical-align: middle;
+			    	font-size:0;
+			    	.table-cell {
+						display:inline-block;
+						font-size:14px;
+						vertical-align: top;
+						width:15%;
+
+						&.heading {
+							border-bottom:1px solid $border-color-base;
+							padding:20px 10px 10px;	
+
+							span {
+								font-family:$primary-font;
+								font-size:$base-font-size;
+								color:$color-label;
+								text-transform:uppercase;
+							}
+
+							&.job-title {
+								width:40%;
+							}
+						}
+			    	}
+
+			    	&.job {
+						.table-cell {
+							vertical-align:top;
+							padding:10px;
+
+							span {
+								line-height:1.5;
+							}
+
+							&.title {
+								width:40%;
+
+								span {
+									&.job-title {
+										display:block;
+									}
+								}
+							}		
+
+							&.engagement {
+								span {
+									display:block;
+								}
+							}
+
+							&.status {
+								position:relative;
+								text-transform:capitalize;
+								i {
+									cursor:pointer;
+
+									span.tooltip-message {
+									    position: absolute;
+									    background: $color-white;
+									    padding: 10px;
+									    top: 0;
+									    right: -30px;
+									    border: 1px solid $border-color-base;;
+									    border-radius: 4px;
+									    display:none;
+									}
+
+									&:hover {
+										span.tooltip-message {
+											display:block;
+										}
+									}
+								}
+							}
+							&.actions {
+								.action-icon {
+									display:inline-block;
+									margin:3px;
+									vertical-align: middle;
+									cursor:pointer;
+
+									i {
+									    border: 1px solid #e8e8e8;
+									    display: inline-block;
+									    padding: 2px;
+									    border-radius: 4px;
+									    text-align: center;
+									    color: #757575;
+									}
+									span {
+										display:none;
+									}
+								}
+							}					
+						}
+			    	}
+			    }
+			}
+		}
+	}
+}
+
+@media all and (max-width:768px) {
+
+	.page-content {
+		.my-jobs {
+			width:auto;
+			margin:-20px;
+
+			.page-header {
+				padding:10px 10px;
+
+				select {
+					margin-bottom:0;
+				}
+			}
+			
+			.my-jobs-listing {
+				.table-container {
+					background-color:transparent;
+					border-radius:0;
+					box-shadow:none;
+					.table-row {
+	
+						&.table-headings {
+							display:none;
+						}
+	
+						&.job {
+							padding:10px;
+							border-bottom:1px solid $border-color-base;
+							.table-cell {
+								display:block;
+								width:100%;
+								padding:0px 10px;
+
+								span {
+									line-height:1;
+								}
+								&.title {
+									width:100%;
+									margin:11px 0 19px;
+
+									span {
+										&.job-title {
+											font-weight:bold;
+											line-height:1.5;
+										}
+									}
+								}
+
+								&.status {
+									margin:10px 0;
+								}
+
+								&.engagement {
+									margin-bottom:10px;
+									span {
+										&.view-count{
+											display:inline-block;
+											margin-right:20px;
+										}
+
+										&.applied-link {
+											display:inline-block;
+										}
+									}
+								}
+
+								&.actions {
+									.action-icon {
+										margin-right:7%;
+
+										i {
+											border:0;
+											font-size:15px;
+										}
+										span {
+											display:inline-block;
+											margin-left:10px;
+										}
+									}		
+								}
+							}
+						}
+					}
+				}
+			}
+		}	
+	}
+
+
+	.conversations {
+		display:none;
+	}
+}

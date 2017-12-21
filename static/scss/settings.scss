@@ -1,0 +1,400 @@
+@import "colors.scss";
+@import "fonts.scss";
+
+@import 'components/_colors.scss';
+@import 'components/_type.scss';
+@import 'components/_global.scss';
+@import 'components/_theme.scss';
+@import 'spacings';
+
+
+@import 'input-elements';
+
+.page-content {
+    .settings-page {
+        font-size: 0;
+        max-width: 1280px;
+        margin: 45px auto;
+        display: block;
+        width: 80%;
+
+        .settings-mobile-header {
+            display:none;
+        }
+        .settings-sidebar {
+            width: 25%;
+            display: inline-block;
+            padding-right: 40px;
+            vertical-align: top;
+
+            ul {
+                border: 1px solid $border-color-base;
+                padding-left: 0;
+                border-radius: 4px;
+                li {
+                    cursor: pointer;
+                    border-bottom: 1px solid $border-color-base;
+                    &:last-child {
+                        border-bottom: 0;
+                    }
+
+                    p {
+                        font-size: $base-font-size;
+                        margin: 0;
+                        padding: 15px 0 15px 15px;
+                        border-left: 3px solid transparent;
+                        font-size: $base-subtitle-size;
+                        font-weight: 400;
+
+                        span.arrow {
+                            font-size: $base-font-size;
+                            margin-right: 15px;
+                            opacity: 0;
+                        }
+                    }
+
+                    &.active {
+                        background-color: $active-section-background;
+                        p {
+                            border-color: $border-color-active;
+                            color: $header-link-active-color;
+                            span.arrow {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .settings-body {
+            font-size: initial;
+            width: 75%;
+            padding-left: 40px;
+            display: inline-block;
+            vertical-align: top;
+            .settings-section {
+
+                .settings-section-header {
+
+                    h3 {
+                        font-size: $page-title-size;
+                        margin: 0 0 20px 0;
+                        padding-bottom: 20px;
+                        border-bottom: 1px solid $border-color-base;
+                    }
+
+                    &.profile {
+                        h3 {
+                        	padding-bottom:0;
+                            border: 0;
+                        }
+                    }
+                }
+
+                .settings-section-content {
+
+                    .profile-image-editor {
+                        background: $active-section-background;
+                        padding: 20px;
+                        border: 1px solid $border-color-base;
+                        font-size: 0;
+                        margin-bottom: 25px;
+                        .profile-image-preview {
+                            display: inline-block;
+                            vertical-align: top;
+                            width: 20%;
+                            text-align:center;
+
+                            img {
+                                border-radius:50%;
+                                object-fit:cover;
+                            }
+                        }
+
+                        .profile-image-info {
+                            width: 80%;
+                            display: inline-block;
+                            vertical-align: middle;
+                            font-size: initial;
+
+                            span {
+                                font-size: $base-font-size;
+                                &.choose-file {
+                                    padding: 10px 24px;
+                                    display: inline-block;
+                                    background: #FFF;
+                                    border: 1px solid $border-color-base;
+                                    cursor: pointer;
+                                    margin-right: 10px;
+                                }
+                                &.upload-rules {
+                                    display: inline-block;
+                                    margin: 10px 0 20px;
+                                    color: $logoTaglineColor;
+                                }
+                            }
+
+                            .submit {
+                                button {
+                                    color: white;
+                                    border: 0;
+                                    padding: 12px 25px;
+                                    margin: 0;
+                                }
+                            }
+                        }
+                    }
+
+                    .section-form {
+
+                        .formgroup {
+                            margin-bottom: 15px;
+                            .label {
+                                @extend label;
+                                margin-bottom: 10px;
+                            }
+                            input {
+                                @extend .input-field;
+
+                                &.social-placeholder {
+
+                                    padding-left: 40px;
+                                    background-color: $color-white;
+                                    background-repeat: no-repeat;
+                                    background-position: left 10px center;
+
+                                    &.twitter {
+                                        background-image: url('/static/images/twitter-colored.png');
+                                    }
+
+                                    &.facebook {
+                                        background-image: url('/static/images/facebook-colored.png');
+                                        background-position: left 15px center;
+                                    }
+
+                                    &.linkedin {
+                                        background-image: url('/static/images/linkedin-colored.png');
+                                    }
+                                }
+                            }
+                            select {
+                                @extend select.select-dropdown;
+                            }
+                            textarea {
+                                @extend .input-field;
+
+                                &:focus {
+                                    outline: 0;
+                                }
+                            }
+
+                            .button {
+                                @extend button;
+                                padding: 12px 30px;
+                                margin: 0;
+                                border-radius:3px;
+                            }
+                        }
+                    }
+
+                    .group-container {
+                        background: red;
+                        padding: 15px 60px 30px 60px;
+                        background-color: $premium-section-background;
+                        border: 1px solid $border-color-base;
+                        margin-bottom: 35px;
+
+                        .radio-option {
+                            padding: 0;
+                            margin: 25px 0 10px;
+
+                            label {
+                                font-size: $base-subtitle-size;
+                            }
+
+                            p.describer {
+                                margin-top: 10px;
+                                margin-left: 35px;
+                                color: $extra-info-color;
+                                font-size: $base-font-size;
+                                border-bottom: 1px solid $border-color-base;
+                                padding-bottom: 30px;
+
+                                &.no-border {
+                                    border: 0;
+                                    padding-bottom: 5px;
+                                }
+                            }
+                        }
+
+                        &.plan-container {
+
+                        	.plan-section {
+                        		h3 {
+                        			clear:both;
+                        			font-size:$base-subtitle-size;
+                        			padding:25px 0;
+                        			line-height:1;
+                                    margin:0;
+
+                        			&.basic {
+                        				border-bottom:1px solid $border-color-base;
+                        			}
+                        		}
+
+                        		.plan-block-content {
+                                    p {
+                                        color:$color-black-text;
+                                        font-size:$base-font-size;
+                                        line-height:1.5;
+                                        margin-bottom:10px;
+                                        a {
+                                            color:$inline-link-color;
+                                            
+                                            span.right-arrow {
+                                                i {
+                                                    font-size:12px;
+                                                }
+                                            }
+                                        }
+                                    }
+                        		}
+                        	}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media all and (max-width:768px) {
+    .page-content {
+        padding:10px;
+        background:$mobile-background-color;
+        .settings-page {
+            margin:0;
+            width:100%;
+            background:$color-white;
+            border:1px solid $border-color-base;
+            border-radius:4px;
+
+            .settings-mobile-header {
+                display:block;
+            }
+
+            .settings-sidebar {
+                display:none;
+            }
+
+            .settings-mobile-header {
+                font-size:$base-font-size;
+
+                .mobile-title {
+                    margin:0;
+                    padding:15px 20px;
+                    background:$mobile-highlight-background-color;
+                    border-top-right-radius:4px;
+                    border-top-left-radius:4px;
+                }
+
+                .settings-mobile-nav {
+                    ul {
+                        margin:0;
+                        padding:0;
+                        list-style:none;
+                        font-size:0;
+                        white-space: nowrap;
+                        overflow: scroll;
+                        border-bottom:1px solid $border-color-base;
+                        margin-bottom:20px;
+                        width: 100% !important;
+                        li {
+                            display:inline-block;
+                            border-bottom:3px solid transparent;
+                            cursor:pointer;
+                            span {
+                                font-size:$base-font-size;
+                                padding:10px 15px;
+                                display:inline-block;
+                            }
+
+                            &.active {
+                                border-color:$border-color-active;
+                                span {
+                                    color:$inline-link-color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .settings-body {
+                padding:0;
+                width:100%;
+                padding:5px 20px;
+
+                .settings-section {
+                   .settings-section-header {
+                        display:none;
+                    }
+
+                    .settings-section-content {
+                        .profile-image-editor {
+                            padding:20px 20px 15px;
+                            .profile-image-preview {
+                                width:100%;
+                                text-align:center;
+                                margin-bottom:20px;
+                                img {
+                                    border-radius:50%;
+                                }
+                            }
+                            .profile-image-info {
+                                width:100%;
+                                padding-left:0px;
+
+                                span {
+                                    display:block;
+                                    text-align:center;
+                                    margin:10px 0;
+                                    &.choose-file {
+                                        display:block;
+                                        margin-right:0;
+                                    }
+
+                                    &.upload-rules {
+                                        display:block;
+                                    }
+                                }
+                                .submit {
+                                    display:block;
+                                    text-align: center;
+                                    margin:10px auto;
+                                }
+                            }
+                        }
+
+                        .group-container {
+                            &.radio-group-container {
+                                    padding:15px;
+
+                                    .radio-option {
+                                        margin-top:5px;
+                                        padding-top:10px;
+                                    }
+                            }
+
+                            &.plan-container {
+                                padding:15px;
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }   
+    }
+}

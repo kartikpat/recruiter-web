@@ -1,0 +1,149 @@
+{{>header}}
+	
+	<div class="page-content">
+		<div class="my-jobs left">
+			<div class="page-header">
+				<select class="minimal" id="">
+					<option value="0">All Jobs</option>
+				</select>
+
+				<div class="action-buttons right">
+					<a href="/post-job">
+						<button class="post-job green">Post Job</button>
+					</a>
+				</div> 
+			</div>
+
+			<div class="my-jobs-listing">
+				<!-- <table>
+					<tr>
+						<th cellspacing="0">Created on</th>
+						<th cellspacing="0">Job Title</th>
+						<th cellspacing="0">Status</th>
+						<th cellspacing="0">Engagement</th>
+						<th cellspacing="0">Actions</th>
+					</tr>
+					<tr class="prototype job-row hidden">
+						<td>
+							<span class="created-on"></span>
+						</td>
+						<td>
+							<span class="job-title"></span>
+							<span class="location"></span>
+							<span class="bull-separator">&bull;</span>
+							<span class="experience"></span>
+
+							<p class="suggested-candidates">
+								<a href="#"><span class="suggested-count"></span> Suggested Candidates</a> 
+								<span class="caret">
+								<img src="/static/images/job_suggested_candidates.svg"></span>
+							</p>
+						</td>
+						<td>
+							<span class="status"></span>
+						</td>
+						<td>
+							<span class="views"><span class="view-count"></span> views.</span>
+							<span class="applied"><a href="#"><span class="apply-count"></span> applied</a></span>
+						</td>
+						<td class="actions">
+							<div class="action-icon cancel">
+								<img src="/static/images/job_cancel_icon.svg">
+							</div>
+							<div class="action-icon refresh">
+								<img src="/static/images/job_refresh_icon.svg">
+							</div>
+							<div class="action-icon star">
+								<img src="/static/images/job_star_icon.svg">
+							</div>
+							<div class="action-icon facebook">
+								<img src="/static/images/job_facebook_icon.svg">
+							</div>
+							<div class="action-icon twitter">
+								<img src="/static/images/job_twitter_icon.svg">
+							</div>
+							<div class="action-icon linkedin">
+								<img src="/static/images/job_linkedin_icon.svg">
+							</div>
+						</td>
+					</tr>
+				</table> -->
+			
+				<div class="table-container">
+					<div class="table-row table-headings">
+				        <div class="table-cell heading">
+				            <span>Created On</span>
+				        </div>
+				        <div class="table-cell heading job-title">
+				            <span>Job Title</span>
+				        </div>
+				        <div class="table-cell heading">
+				            <span>Status</span>
+				        </div>
+				        <div class="table-cell heading">
+				            <span>Engagement</span>
+				        </div>
+				        <div class="table-cell heading">
+				            <span>Actions</span>
+				        </div>
+				    </div>
+				    <div class="table-row job prototype hidden">
+				        <div class="table-cell created">
+				            <span class="job-created-on"></span>
+				        </div>
+				    
+				        <div class="table-cell title">
+				            <span class="job-title"></span>
+				            <span class="job-location"></span>
+				            <span class="job-meta-separator">•</span>
+				            <span class="job-experience"></span>
+				        </div>
+				    
+				        <div class="table-cell status">
+				            <span class="job-status"></span>
+				    	</div>
+
+				        <div class="table-cell engagement">
+				            <span class="job-view-count"></span>
+				            <span class="job-applied-count"></span>
+				    	</div>
+				    
+				    	<div class="table-cell actions">
+				            <div class="job-actions-container">
+							    <div class="action-icon job-cancel">
+							    	<i class="icon-close_icon"></i>
+							    </div>
+							    <div class="action-icon job-refresh">
+							        <i class="icon-refresh"></i>
+							    </div>
+							    <div class="action-icon job-star">
+							        <i class="icon-star"></i>
+							    </div>
+							    <div class="action-icon job-facebook">
+							        <i class="icon-facebook-logo"></i>
+							    </div>
+							    <div class="action-icon job-twitter">
+							        <i class="icon-twitter"></i>
+							    </div>
+							    <div class="action-icon job-linkedin">
+							        <i class="icon-linkedin-logo"></i>
+							    </div>
+					    	</div>
+					    	<div class="job-edit-container hidden">
+					    		<div class="action-icon job-edit">
+					    			<i class="icon-edit"></i>
+					    			<span class="edit-label">Edit</span>
+					    		</div>
+					    	</div>
+				    	</div>
+				    </div>
+				</div>
+			</div>
+		</div>
+
+		<div class="conversations right">
+			{{>chatSidebar}}
+		</div>
+	</div>
+
+{{>footer}}
