@@ -26,7 +26,8 @@
   animation-duration: 500ms !important; }
 
 .main-container {
-  padding: 20px; }
+  padding: 20px;
+  min-height: calc(100% - 155px); }
   .main-container .recruiter-plan-banner-container {
     margin-bottom: 30px; }
     .main-container .recruiter-plan-banner-container .recruiter-plan-banner {

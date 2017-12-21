@@ -1,0 +1,1440 @@
+@charset "UTF-8";
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.important-info-color {
+  color: #333; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
+/** Mobile Menu **/
+/**** Fontello Font Icons : ****/
+@font-face {
+  font-family: 'fontello';
+  src: url("../fonts/fontello.eot");
+  src: url("../fonts/fontello.eot#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2") format("woff2"), url("../fonts/fontello.woff") format("woff"), url("../fonts/fontello.ttf") format("truetype"), url("../fonts/fontello.svg#fontello") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?75489480#fontello') format('svg');
+  }
+}
+*/
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
+
+.icon-certification:before {
+  content: '\e800'; }
+
+/* '' */
+.icon-cross:before {
+  content: '\e801'; }
+
+/* '' */
+.icon-disabillity-symbol:before {
+  content: '\e802'; }
+
+/* '' */
+.icon-chat_icon:before {
+  content: '\e803'; }
+
+/* '' */
+.icon-distance_learning:before {
+  content: '\e804'; }
+
+/* '' */
+.icon-down_arrow:before {
+  content: '\e805'; }
+
+/* '' */
+.icon-edit:before {
+  content: '\e806'; }
+
+/* '' */
+.icon-ex--alunmi:before {
+  content: '\e807'; }
+
+/* '' */
+.icon-ex-defence:before {
+  content: '\e808'; }
+
+/* '' */
+.icon-executive-program:before {
+  content: '\e809'; }
+
+/* '' */
+.icon-facebook-logo:before {
+  content: '\e80a'; }
+
+/* '' */
+.icon-full-time:before {
+  content: '\e80b'; }
+
+/* '' */
+.icon-gender:before {
+  content: '\e80c'; }
+
+/* '' */
+.icon-information:before {
+  content: '\e80d'; }
+
+/* '' */
+.icon-linkedin-logo:before {
+  content: '\e80e'; }
+
+/* '' */
+.icon-part-time:before {
+  content: '\e80f'; }
+
+/* '' */
+.icon-refresh:before {
+  content: '\e810'; }
+
+/* '' */
+.icon-refresh2:before {
+  content: '\e811'; }
+
+/* '' */
+.icon-right_arrow:before {
+  content: '\e812'; }
+
+/* '' */
+.icon-shield:before {
+  content: '\e813'; }
+
+/* '' */
+.icon-star:before {
+  content: '\e814'; }
+
+/* '' */
+.icon-star2:before {
+  content: '\e815'; }
+
+/* '' */
+.icon-twitter:before {
+  content: '\e816'; }
+
+/* '' */
+.icon-woman:before {
+  content: '\e817'; }
+
+/* '' */
+.icon-candidate:before {
+  content: '\e818'; }
+
+/* '' */
+.icon-checked_icon:before {
+  content: '\e819'; }
+
+/* '' */
+.icon-close_icon:before {
+  content: '\e81a'; }
+
+/* '' */
+.icon-group:before {
+  content: '\e81b'; }
+
+/* '' */
+.icon-document_search_interface_symbol:before {
+  content: '\e81c'; }
+
+/* '' */
+.icon-down_arrow-1:before {
+  content: '\e81d'; }
+
+/* '' */
+.icon-download_arrow:before {
+  content: '\e81e'; }
+
+/* '' */
+.icon-email_envelope:before {
+  content: '\e81f'; }
+
+/* '' */
+.icon-envelope:before {
+  content: '\e820'; }
+
+/* '' */
+.icon-info:before {
+  content: '\e821'; }
+
+/* '' */
+.icon-search_icon:before {
+  content: '\e822'; }
+
+/* '' */
+.icon-notification_bell_outline_interface_symbol:before {
+  content: '\e823'; }
+
+/* '' */
+.icon-politics:before {
+  content: '\e824'; }
+
+/* '' */
+.icon-denied:before {
+  content: '\e825'; }
+
+/* '' */
+.icon-star_shaped_medal:before {
+  content: '\e826'; }
+
+/* '' */
+.icon-sunrise:before {
+  content: '\e827'; }
+
+/* '' */
+.icon-tick:before {
+  content: '\e828'; }
+
+/* '' */
+.icon-add_icon:before {
+  content: '\e82a'; }
+
+/* '' */
+.icon-back_icon:before {
+  content: '\e82b'; }
+
+/* '' */
+.icon-badge:before {
+  content: '\e82c'; }
+
+/* '' */
+.icon-box:before {
+  content: '\e82d'; }
+
+/* '' */
+.icon-interview:before {
+  content: '\e82f'; }
+
+/* '' */
+.icon-mail:before {
+  content: '\e830'; }
+
+/* '' */
+.icon-user:before {
+  content: '\e831'; }
+
+/* '' */
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
+.clear {
+  clear: both;
+  overflow: auto; }
+
+a {
+  cursor: pointer; }
+
+p {
+  margin: 0; }
+
+body.posf {
+  overflow: hidden; }
+
+@media all and (max-width: 700px) {
+  .hidden-mobile {
+    display: none !important; } }
+
+.clearfix {
+  display: table;
+  clear: both; }
+
+a {
+  text-decoration: none; }
+
+.mobile-menu-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 75%;
+  background: #26252a;
+  z-index: 7; }
+  .mobile-menu-container .close-mobile-menu {
+    padding: 10px;
+    cursor: pointer; }
+    .mobile-menu-container .close-mobile-menu span {
+      color: #FFF;
+      font-size: 14px; }
+  .mobile-menu-container .mobile-menu-content {
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%; }
+    .mobile-menu-container .mobile-menu-content .domain_logo {
+      padding: 15px 25px; }
+      .mobile-menu-container .mobile-menu-content .domain_logo a {
+        display: inline-block;
+        vertical-align: middle;
+        color: #FFF;
+        font-family: "Comfortaa", sans-serif; }
+        .mobile-menu-container .mobile-menu-content .domain_logo a h1 {
+          font-size: 30px;
+          font-family: inherit;
+          line-height: 20px;
+          margin: 0;
+          display: inline-block; }
+        .mobile-menu-container .mobile-menu-content .domain_logo a span {
+          font-family: inherit;
+          font-size: 14px; }
+        .mobile-menu-container .mobile-menu-content .domain_logo a p {
+          font-family: inherit;
+          line-height: 1;
+          color: #7b7b7b;
+          font-size: 11px;
+          margin-left: 0px;
+          margin-top: 5px; }
+        .mobile-menu-container .mobile-menu-content .domain_logo a h1 {
+          font-size: 21px; }
+        .mobile-menu-container .mobile-menu-content .domain_logo a span {
+          font-size: 11px; }
+        .mobile-menu-container .mobile-menu-content .domain_logo a p {
+          font-size: 9px;
+          margin-left: 3px;
+          margin-top: 2px; }
+    .mobile-menu-container .mobile-menu-content .menu-link-listing ul {
+      list-style: none;
+      padding: 0;
+      margin: 0; }
+      .mobile-menu-container .mobile-menu-content .menu-link-listing ul a {
+        color: #FFF;
+        font-size: 14px; }
+        .mobile-menu-container .mobile-menu-content .menu-link-listing ul a li {
+          padding: 19px 25px;
+          border-top: 1px solid #2E2E2E; }
+    .mobile-menu-container .mobile-menu-content .mobile-profile-section {
+      background: #403f44;
+      padding: 15px 25px;
+      display: inline-block;
+      font-size: 0;
+      width: 100%;
+      vertical-align: middle; }
+      .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-image {
+        display: inline-block;
+        width: 20%; }
+        .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-image img {
+          width: 37px;
+          height: 37px; }
+      .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-info {
+        display: inline-block;
+        width: 80%;
+        padding-left: 15px; }
+        .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-info p {
+          text-align: left;
+          color: #FFF;
+          line-height: 1.5;
+          font-size: 14px; }
+          .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-info p.profile-email {
+            font-size: 12px; }
+    .mobile-menu-container .mobile-menu-content .mobile-profile-actions {
+      margin-top: 20px; }
+      .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul {
+        list-style: none;
+        padding: 0; }
+        .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a {
+          color: #FFF;
+          font-size: 14px; }
+          .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a li {
+            padding: 19px 25px; }
+            .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a li span {
+              display: inline-block; }
+              .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a li span.button {
+                margin: 10px 0 0 0;
+                border-radius: 4px; }
+
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.important-info-color {
+  color: #333; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
+/**** Fontello Font Icons : ****/
+@font-face {
+  font-family: 'fontello';
+  src: url("../fonts/fontello.eot");
+  src: url("../fonts/fontello.eot#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2") format("woff2"), url("../fonts/fontello.woff") format("woff"), url("../fonts/fontello.ttf") format("truetype"), url("../fonts/fontello.svg#fontello") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?75489480#fontello') format('svg');
+  }
+}
+*/
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
+
+.icon-certification:before {
+  content: '\e800'; }
+
+/* '' */
+.icon-cross:before {
+  content: '\e801'; }
+
+/* '' */
+.icon-disabillity-symbol:before {
+  content: '\e802'; }
+
+/* '' */
+.icon-chat_icon:before {
+  content: '\e803'; }
+
+/* '' */
+.icon-distance_learning:before {
+  content: '\e804'; }
+
+/* '' */
+.icon-down_arrow:before {
+  content: '\e805'; }
+
+/* '' */
+.icon-edit:before {
+  content: '\e806'; }
+
+/* '' */
+.icon-ex--alunmi:before {
+  content: '\e807'; }
+
+/* '' */
+.icon-ex-defence:before {
+  content: '\e808'; }
+
+/* '' */
+.icon-executive-program:before {
+  content: '\e809'; }
+
+/* '' */
+.icon-facebook-logo:before {
+  content: '\e80a'; }
+
+/* '' */
+.icon-full-time:before {
+  content: '\e80b'; }
+
+/* '' */
+.icon-gender:before {
+  content: '\e80c'; }
+
+/* '' */
+.icon-information:before {
+  content: '\e80d'; }
+
+/* '' */
+.icon-linkedin-logo:before {
+  content: '\e80e'; }
+
+/* '' */
+.icon-part-time:before {
+  content: '\e80f'; }
+
+/* '' */
+.icon-refresh:before {
+  content: '\e810'; }
+
+/* '' */
+.icon-refresh2:before {
+  content: '\e811'; }
+
+/* '' */
+.icon-right_arrow:before {
+  content: '\e812'; }
+
+/* '' */
+.icon-shield:before {
+  content: '\e813'; }
+
+/* '' */
+.icon-star:before {
+  content: '\e814'; }
+
+/* '' */
+.icon-star2:before {
+  content: '\e815'; }
+
+/* '' */
+.icon-twitter:before {
+  content: '\e816'; }
+
+/* '' */
+.icon-woman:before {
+  content: '\e817'; }
+
+/* '' */
+.icon-candidate:before {
+  content: '\e818'; }
+
+/* '' */
+.icon-checked_icon:before {
+  content: '\e819'; }
+
+/* '' */
+.icon-close_icon:before {
+  content: '\e81a'; }
+
+/* '' */
+.icon-group:before {
+  content: '\e81b'; }
+
+/* '' */
+.icon-document_search_interface_symbol:before {
+  content: '\e81c'; }
+
+/* '' */
+.icon-down_arrow-1:before {
+  content: '\e81d'; }
+
+/* '' */
+.icon-download_arrow:before {
+  content: '\e81e'; }
+
+/* '' */
+.icon-email_envelope:before {
+  content: '\e81f'; }
+
+/* '' */
+.icon-envelope:before {
+  content: '\e820'; }
+
+/* '' */
+.icon-info:before {
+  content: '\e821'; }
+
+/* '' */
+.icon-search_icon:before {
+  content: '\e822'; }
+
+/* '' */
+.icon-notification_bell_outline_interface_symbol:before {
+  content: '\e823'; }
+
+/* '' */
+.icon-politics:before {
+  content: '\e824'; }
+
+/* '' */
+.icon-denied:before {
+  content: '\e825'; }
+
+/* '' */
+.icon-star_shaped_medal:before {
+  content: '\e826'; }
+
+/* '' */
+.icon-sunrise:before {
+  content: '\e827'; }
+
+/* '' */
+.icon-tick:before {
+  content: '\e828'; }
+
+/* '' */
+.icon-add_icon:before {
+  content: '\e82a'; }
+
+/* '' */
+.icon-back_icon:before {
+  content: '\e82b'; }
+
+/* '' */
+.icon-badge:before {
+  content: '\e82c'; }
+
+/* '' */
+.icon-box:before {
+  content: '\e82d'; }
+
+/* '' */
+.icon-interview:before {
+  content: '\e82f'; }
+
+/* '' */
+.icon-mail:before {
+  content: '\e830'; }
+
+/* '' */
+.icon-user:before {
+  content: '\e831'; }
+
+/* '' */
+.page-content {
+  min-height: 100%;
+  padding: 0;
+  overflow: auto;
+  position: relative;
+  padding: 20px; }
+  .page-content .sidebar {
+    width: 15%;
+    padding: 20px;
+    background: #1f8f75;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 43px; }
+    .page-content .sidebar h3 {
+      font-size: 30px;
+      text-transform: uppercase;
+      color: #ffffff; }
+  .page-content .content-block {
+    width: 85%;
+    padding: 40px 70px; }
+    .page-content .content-block .section {
+      margin-bottom: 60px; }
+
+/**** Fontello Font Icons : ****/
+@font-face {
+  font-family: 'fontello';
+  src: url("../fonts/fontello.eot");
+  src: url("../fonts/fontello.eot#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2") format("woff2"), url("../fonts/fontello.woff") format("woff"), url("../fonts/fontello.ttf") format("truetype"), url("../fonts/fontello.svg#fontello") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?75489480#fontello') format('svg');
+  }
+}
+*/
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
+
+.icon-certification:before {
+  content: '\e800'; }
+
+/* '' */
+.icon-cross:before {
+  content: '\e801'; }
+
+/* '' */
+.icon-disabillity-symbol:before {
+  content: '\e802'; }
+
+/* '' */
+.icon-chat_icon:before {
+  content: '\e803'; }
+
+/* '' */
+.icon-distance_learning:before {
+  content: '\e804'; }
+
+/* '' */
+.icon-down_arrow:before {
+  content: '\e805'; }
+
+/* '' */
+.icon-edit:before {
+  content: '\e806'; }
+
+/* '' */
+.icon-ex--alunmi:before {
+  content: '\e807'; }
+
+/* '' */
+.icon-ex-defence:before {
+  content: '\e808'; }
+
+/* '' */
+.icon-executive-program:before {
+  content: '\e809'; }
+
+/* '' */
+.icon-facebook-logo:before {
+  content: '\e80a'; }
+
+/* '' */
+.icon-full-time:before {
+  content: '\e80b'; }
+
+/* '' */
+.icon-gender:before {
+  content: '\e80c'; }
+
+/* '' */
+.icon-information:before {
+  content: '\e80d'; }
+
+/* '' */
+.icon-linkedin-logo:before {
+  content: '\e80e'; }
+
+/* '' */
+.icon-part-time:before {
+  content: '\e80f'; }
+
+/* '' */
+.icon-refresh:before {
+  content: '\e810'; }
+
+/* '' */
+.icon-refresh2:before {
+  content: '\e811'; }
+
+/* '' */
+.icon-right_arrow:before {
+  content: '\e812'; }
+
+/* '' */
+.icon-shield:before {
+  content: '\e813'; }
+
+/* '' */
+.icon-star:before {
+  content: '\e814'; }
+
+/* '' */
+.icon-star2:before {
+  content: '\e815'; }
+
+/* '' */
+.icon-twitter:before {
+  content: '\e816'; }
+
+/* '' */
+.icon-woman:before {
+  content: '\e817'; }
+
+/* '' */
+.icon-candidate:before {
+  content: '\e818'; }
+
+/* '' */
+.icon-checked_icon:before {
+  content: '\e819'; }
+
+/* '' */
+.icon-close_icon:before {
+  content: '\e81a'; }
+
+/* '' */
+.icon-group:before {
+  content: '\e81b'; }
+
+/* '' */
+.icon-document_search_interface_symbol:before {
+  content: '\e81c'; }
+
+/* '' */
+.icon-down_arrow-1:before {
+  content: '\e81d'; }
+
+/* '' */
+.icon-download_arrow:before {
+  content: '\e81e'; }
+
+/* '' */
+.icon-email_envelope:before {
+  content: '\e81f'; }
+
+/* '' */
+.icon-envelope:before {
+  content: '\e820'; }
+
+/* '' */
+.icon-info:before {
+  content: '\e821'; }
+
+/* '' */
+.icon-search_icon:before {
+  content: '\e822'; }
+
+/* '' */
+.icon-notification_bell_outline_interface_symbol:before {
+  content: '\e823'; }
+
+/* '' */
+.icon-politics:before {
+  content: '\e824'; }
+
+/* '' */
+.icon-denied:before {
+  content: '\e825'; }
+
+/* '' */
+.icon-star_shaped_medal:before {
+  content: '\e826'; }
+
+/* '' */
+.icon-sunrise:before {
+  content: '\e827'; }
+
+/* '' */
+.icon-tick:before {
+  content: '\e828'; }
+
+/* '' */
+.icon-add_icon:before {
+  content: '\e82a'; }
+
+/* '' */
+.icon-back_icon:before {
+  content: '\e82b'; }
+
+/* '' */
+.icon-badge:before {
+  content: '\e82c'; }
+
+/* '' */
+.icon-box:before {
+  content: '\e82d'; }
+
+/* '' */
+.icon-interview:before {
+  content: '\e82f'; }
+
+/* '' */
+.icon-mail:before {
+  content: '\e830'; }
+
+/* '' */
+.icon-user:before {
+  content: '\e831'; }
+
+/* '' */
+/** Mobile Menu **/
+select.select-dropdown, .job_posting .post_job .post_job_form .field-container .field select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearanance: none;
+  border-radius: 3px;
+  background: #FFF;
+  width: 100%;
+  border: 1px solid #e8e8e8;
+  background-image: url("/static/images/down-caret.svg");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  cursor: pointer;
+  border-color: #e8e8e8;
+  font-family: inherit;
+  display: inline-block;
+  font-size: 14px;
+  color: #818181;
+  padding: 16px 22px; }
+  select.select-dropdown[multiple], .job_posting .post_job .post_job_form .field-container .field select[multiple] {
+    background-image: none;
+    height: 120px; }
+  select.select-dropdown.inactive .dropdown-list, .job_posting .post_job .post_job_form .field-container .field select.inactive .dropdown-list {
+    display: none; }
+  select.select-dropdown.minimal, .job_posting .post_job .post_job_form .field-container .field select.minimal {
+    display: inline-block;
+    width: 150px;
+    border: 0;
+    padding: 10px;
+    background-color: transparent;
+    margin-bottom: 10px; }
+
+label {
+  font-size: 14px;
+  color: #2b2b2b;
+  display: block; }
+  label.title {
+    margin-bottom: 14px; }
+
+.error-field {
+  margin: 7px 0 0 3px;
+  font-size: 11px;
+  color: #ec1c2a; }
+
+.course-option {
+  position: relative;
+  width: 135px;
+  height: 123px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 34px 37px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0px 20px 0 0; }
+  .course-option input {
+    display: none; }
+  .course-option input:checked + label {
+    border-color: #4fa995;
+    box-shadow: inset 0 0 3px #4fa995; }
+    .course-option input:checked + label span {
+      font-size: 14px;
+      color: #4fa995; }
+      .course-option input:checked + label span.course-icon {
+        color: #4fa995; }
+    .course-option input:checked + label img {
+      opacity: 1; }
+  .course-option label {
+    color: #818181;
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    cursor: pointer;
+    border: 1px solid #e8e8e8;
+    border-radius: 3px; }
+  .course-option .course-selected {
+    opacity: 0;
+    visibility: none;
+    position: absolute;
+    right: -4px;
+    top: -3px; }
+  .course-option .course-content {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); }
+    .course-option .course-content span {
+      display: block;
+      cursor: pointer;
+      padding: 0 10px;
+      white-space: normal; }
+      .course-option .course-content span.course-icon {
+        font-size: 40px;
+        color: #818181; }
+  .course-option.active .course-selected {
+    display: block; }
+  .course-option.active label {
+    font-size: 14px;
+    color: #4fa995; }
+
+.input-field, .job_posting .post_job .post_job_form .field-container .field input[type=text] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearanance: none;
+  border-radius: 3px;
+  background: #FFF;
+  width: 100%;
+  border: 1px solid #e8e8e8;
+  cursor: pointer;
+  padding: 16px 22px;
+  font-size: 14px; }
+  .input-field:focus, .job_posting .post_job .post_job_form .field-container .field input[type=text]:focus {
+    border-color: #4fa995; }
+  .input-field.error-border, .job_posting .post_job .post_job_form .field-container .field input.error-border[type=text] {
+    border-color: #ee1620; }
+
+.radio-input input {
+  display: none; }
+
+.radio-input label {
+  display: inline-block;
+  cursor: pointer; }
+
+.radio-input input + label {
+  padding: 4px 0 4px 35px;
+  background-image: url("/static/images/unchecked_radio.svg");
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: left center; }
+
+.radio-input input:checked + label {
+  background-image: url("/static/images/checked_radio.svg"); }
+
+.check-input input, .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] input, .premium_job_section .contents input {
+  display: none; }
+
+.check-input label, .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] label, .premium_job_section .contents label {
+  display: inline-block;
+  cursor: pointer; }
+
+.check-input input + label, .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] input + label, .premium_job_section .contents input + label {
+  padding: 4px 0 4px 35px;
+  background-image: url("/static/images/unchecked_checkbox.svg");
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: left 2px center; }
+
+.check-input input:checked + label, .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] input:checked + label, .premium_job_section .contents input:checked + label {
+  background-image: url("/static/images/checked_checkbox.svg"); }
+
+button, .submit-action-buttons button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: #FFF;
+  border-color: #8f8a8a;
+  border-radius: 4px;
+  padding: 5px 14px;
+  font-size: 14px;
+  margin: 0 5px;
+  color: #FFF;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer; }
+  button.green {
+    background-color: #1f8f75; }
+  button.red {
+    background-color: #af595a; }
+  button.white {
+    border: 1px solid #8f8a8a;
+    color: #2b2b2b; }
+  button.edit {
+    padding: 3px 9px; }
+    button.edit img {
+      width: 17px;
+      height: 17px; }
+
+span.sticker {
+  display: inline-block;
+  background: #26252a;
+  color: #FFF;
+  font-size: 12px;
+  font-family: inherit;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  margin: 0 5px;
+  display: inline-block;
+  vertical-align: middle; }
+  span.sticker.followed-up {
+    padding: 6px 10px 6px 25px;
+    background-image: url("/static/images/white-tick.svg");
+    background-repeat: no-repeat;
+    background-size: 12px 9px;
+    background-position: left 6px center; }
+  span.sticker.pro-member {
+    padding: 3px;
+    border-radius: 4px;
+    font-size: 10px; }
+
+.button-action-list {
+  display: inline-block;
+  width: 165px;
+  padding: 6px 15px;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  background: #faf9f9;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0; }
+  .button-action-list label {
+    cursor: pointer;
+    background-image: url("/static/images/black_caret_down.svg");
+    background-position: right center;
+    background-repeat: no-repeat; }
+  .button-action-list.inactive {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px; }
+    .button-action-list.inactive .action-list-items {
+      display: none; }
+  .button-action-list .action-list-items {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 165px;
+    left: 0;
+    margin: 0 -1px;
+    background: #FFF;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e8e8e8;
+    list-style: none;
+    padding: 5px 0; }
+    .button-action-list .action-list-items li {
+      padding: 0 10px;
+      margin: 5px 0; }
+      .button-action-list .action-list-items li a {
+        font-size: 13px;
+        color: #1a5e98; }
+
+.tag-container, .job_posting .post_job .post_job_form .field-container .industry-tags {
+  border: 1px solid #e8e8e8;
+  display: block;
+  padding: 7px 20px;
+  position: relative;
+  font-size: 0; }
+  .tag-container .input-tag, .job_posting .post_job .post_job_form .field-container .industry-tags .input-tag {
+    display: inline-block;
+    background: #4fa995;
+    margin: 3px;
+    padding: 3px 10px;
+    border-radius: 20px; }
+    .tag-container .input-tag .tag-icons, .job_posting .post_job .post_job_form .field-container .industry-tags .input-tag .tag-icons {
+      display: inline-block;
+      font-size: 14px;
+      padding: 5px 0 5px;
+      cursor: pointer; }
+    .tag-container .input-tag .tag-name, .job_posting .post_job .post_job_form .field-container .industry-tags .input-tag .tag-name {
+      display: inline-block; }
+    .tag-container .input-tag span, .job_posting .post_job .post_job_form .field-container .industry-tags .input-tag span {
+      color: #FFF;
+      font-size: 14px;
+      padding: 0 5px 0 0; }
+  .tag-container .pill-button, .job_posting .post_job .post_job_form .field-container .industry-tags .pill-button {
+    position: relative;
+    display: inline-block; }
+    .tag-container .pill-button input[type=text], .job_posting .post_job .post_job_form .field-container .industry-tags .pill-button input[type=text] {
+      padding: 7px 17px;
+      margin: 3px;
+      border-radius: 50px;
+      border: 1px solid #e8e8e8;
+      color: #2b2b2b;
+      font-size: 14px;
+      border: 1px solid transparent;
+      background: #FFF;
+      z-index: 10;
+      width: 200px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out; }
+      .tag-container .pill-button input[type=text]:focus, .job_posting .post_job .post_job_form .field-container .industry-tags .pill-button input[type=text]:focus {
+        border-color: #4fa995; }
+    .tag-container .pill-button .pill-listing, .job_posting .post_job .post_job_form .field-container .industry-tags .pill-button .pill-listing {
+      display: inline-block;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      transform: translateY(38px);
+      opacity: 1;
+      left: 0;
+      z-index: 3;
+      transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; }
+      .tag-container .pill-button .pill-listing ul, .job_posting .post_job .post_job_form .field-container .industry-tags .pill-button .pill-listing ul {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+        max-height: 150px;
+        position: relative;
+        overflow: auto;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        border: 1px solid #e8e8e8;
+        -webkit-overflow-scrolling: touch; }
+        .tag-container .pill-button .pill-listing ul li, .job_posting .post_job .post_job_form .field-container .industry-tags .pill-button .pill-listing ul li {
+          padding: 5px 20px;
+          display: block;
+          width: 100%;
+          font-size: 14px;
+          background: #FFF;
+          border-bottom: 1px solid #e8e8e8;
+          cursor: pointer; }
+          .tag-container .pill-button .pill-listing ul li.selected, .job_posting .post_job .post_job_form .field-container .industry-tags .pill-button .pill-listing ul li.selected {
+            background-color: #e9f5f2; }
+          .tag-container .pill-button .pill-listing ul li.tag-added, .job_posting .post_job .post_job_form .field-container .industry-tags .pill-button .pill-listing ul li.tag-added {
+            display: none !important; }
+          .tag-container .pill-button .pill-listing ul li:last-child, .job_posting .post_job .post_job_form .field-container .industry-tags .pill-button .pill-listing ul li:last-child {
+            border: 0; }
+    .tag-container .pill-button.inactive .pill-listing, .job_posting .post_job .post_job_form .field-container .industry-tags .pill-button.inactive .pill-listing {
+      transform: translateY(25px);
+      opacity: 1; }
+      .tag-container .pill-button.inactive .pill-listing ul, .job_posting .post_job .post_job_form .field-container .industry-tags .pill-button.inactive .pill-listing ul {
+        height: 0;
+        overflow: auto;
+        box-shadow: none;
+        border: 0; }
+
+@media all and (max-width: 768px) {
+  .tag-container .pill-button .pill-listing ul, .job_posting .post_job .post_job_form .field-container .industry-tags .pill-button .pill-listing ul {
+    max-height: 300px; } }
+
+.area-heading, .job_posting .post_job .section-heading, .premium_job_section .section-head {
+  margin-bottom: 20px; }
+  .area-heading h3, .job_posting .post_job .section-heading h3, .premium_job_section .section-head h3 {
+    margin: 0;
+    font-size: 26px;
+    color: #149075;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e8e8e8; }
+
+.job_posting {
+  padding: 0px;
+  font-size: 0; }
+  .job_posting .job-form-content {
+    padding: 30px 30px 10px 30px; }
+  .job_posting .post_job {
+    display: inline-block;
+    width: 70%;
+    padding-right: 30px; }
+    .job_posting .post_job .post-job-heading {
+      margin: 10px 0 0 0;
+      font-size: 22px;
+      color: #5d5d5d;
+      line-height: 1; }
+      .job_posting .post_job .post-job-heading .title-subtext {
+        display: none;
+        cursor: pointer; }
+    .job_posting .post_job .form-heading {
+      margin-bottom: 35px; }
+      .job_posting .post_job .form-heading .guidelines {
+        font-size: 18px;
+        text-decoration: none; }
+    .job_posting .post_job .post_job_form .field-container {
+      padding: 0px;
+      margin-bottom: 30px;
+      position: relative;
+      overflow: visible;
+      width: 70%; }
+      .job_posting .post_job .post_job_form .field-container.tile-section {
+        width: 100%; }
+      .job_posting .post_job .post_job_form .field-container .label {
+        display: block;
+        font-size: 14px;
+        color: #4b4b4b;
+        cursor: pointer;
+        margin-bottom: 14px; }
+      .job_posting .post_job .post_job_form .field-container .formgroup.half {
+        width: 49%;
+        display: inline-block;
+        position: relative; }
+      .job_posting .post_job .post_job_form .field-container .field {
+        display: block;
+        font-size: 0; }
+        .job_posting .post_job .post_job_form .field-container .field .add-tags-content {
+          width: 70%;
+          border: 1px solid #ccc;
+          padding: 12px; }
+          .job_posting .post_job .post_job_form .field-container .field .add-tags-content .selected-tags-content {
+            display: inline-block; }
+          .job_posting .post_job .post_job_form .field-container .field .add-tags-content .tag-input {
+            color: #676666;
+            font-size: 13.33px;
+            outline: none;
+            cursor: text; }
+            .job_posting .post_job .post_job_form .field-container .field .add-tags-content .tag-input:focus {
+              color: #000000; }
+        .job_posting .post_job .post_job_form .field-container .field .js-show-selected-tags, .job_posting .post_job .post_job_form .field-container .field .js-show-suggested-tags {
+          margin-right: 10px; }
+        .job_posting .post_job .post_job_form .field-container .field .salary-info {
+          margin: 10px 0; }
+        .job_posting .post_job .post_job_form .field-container .field select.half {
+          width: 49%;
+          display: inline-block; }
+        .job_posting .post_job .post_job_form .field-container .field textarea {
+          width: 100%;
+          max-width: 100%;
+          min-height: 150px;
+          padding: 12px;
+          box-sizing: border-box;
+          border: 1px solid #e8e8e8;
+          border-radius: 2px;
+          background-color: inherit;
+          font-size: 14px;
+          line-height: 1.5;
+          overflow-y: hidden; }
+          .job_posting .post_job .post_job_form .field-container .field textarea:focus {
+            outline: none;
+            border-color: #4fa995; }
+
+.premium_job_section {
+  clear: both;
+  margin: 0;
+  padding: 30px;
+  width: 100%;
+  background: #f3fbfb; }
+  .premium_job_section label span {
+    font-size: 14px; }
+  .premium_job_section p {
+    margin-top: 15px;
+    font-size: 13px; }
+
+.submit-action-buttons {
+  margin: 20px 0;
+  padding: 0 30px; }
+  .submit-action-buttons button.submit-form {
+    margin: 0;
+    padding: 10px;
+    background-color: #1f8f75; }
+  .submit-action-buttons button.cancel-form {
+    padding: 10px;
+    color: #155d9a;
+    box-shadow: none;
+    border: 0; }
+
+.guidelines-container {
+  display: inline-block;
+  width: 30%;
+  vertical-align: top;
+  background-color: #f3fbfb;
+  padding: 20px;
+  margin-top: 50px; }
+  .guidelines-container h4 {
+    font-size: 18px;
+    color: #149075; }
+  .guidelines-container ul {
+    padding-left: 20px; }
+    .guidelines-container ul li {
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #5d5d5d; }
+
+@media all and (max-width: 768px) {
+  .guidelines-container {
+    display: none; }
+  .job_posting .job-form-content {
+    padding: 10px 20px; }
+  .job_posting .post_job {
+    width: 100%;
+    padding: 0; }
+    .job_posting .post_job .form-heading {
+      margin-bottom: 25px; }
+    .job_posting .post_job .post-job-heading {
+      font-size: 16px; }
+      .job_posting .post_job .post-job-heading .title-subtext {
+        display: block;
+        font-size: 12px;
+        color: #155d9a; }
+    .job_posting .post_job .section-heading h3 {
+      font-size: 20px; }
+    .job_posting .post_job .post_job_form .field-container {
+      width: 100%; }
+      .job_posting .post_job .post_job_form .field-container .field input[type=text], .job_posting .post_job .post_job_form .field-container .field select, .job_posting .post_job .post_job_form .field-container .field textarea {
+        padding: 12px 20px;
+        font-size: 12px; }
+        .job_posting .post_job .post_job_form .field-container .field input[type=text] option, .job_posting .post_job .post_job_form .field-container .field select option, .job_posting .post_job .post_job_form .field-container .field textarea option {
+          padding: 5px; }
+      .job_posting .post_job .post_job_form .field-container .field select.half {
+        width: 48%; }
+      .job_posting .post_job .post_job_form .field-container.tile-section {
+        white-space: nowrap;
+        overflow: auto; }
+  .premium_job_section {
+    font-size: 12px; }
+    .premium_job_section .section-head h3 {
+      font-size: 20px; }
+    .premium_job_section label span {
+      font-size: 12px; }
+    .premium_job_section p {
+      font-size: 12px; }
+  .modal-close span {
+    color: #149075; }
+  .guidelines-section {
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
+    background-color: #f3fbfb;
+    padding: 20px; }
+    .guidelines-section h4 {
+      margin-top: 5px;
+      font-size: 18px;
+      color: #149075; }
+    .guidelines-section ul {
+      padding-left: 20px; }
+      .guidelines-section ul li {
+        font-size: 14px;
+        margin-bottom: 20px;
+        color: #5d5d5d; } }

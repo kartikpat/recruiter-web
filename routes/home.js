@@ -13,6 +13,7 @@ module.exports = function(settings){
 	var env = settings.env;
 	var baseUrl = config["baseUrl"];
 	var request = settings["request"];
+	var baseDomain = config["baseDomain"];
 	if(env=="local")
 		baseUrl= config["baseUrl_local"];
 	else
@@ -31,12 +32,8 @@ module.exports = function(settings){
     	res.redirect('/sign-in');
 	}
 	app.post("/sign-in", function(req, res){
-
-		console.log(baseUrl)
 		var email = req.body.email || null;
 		var password = req.body.password || null;
-		console.log(email);
-		console.log(password)
 		if(! ( email && password ) ){
 			res.status(422).json({
 				status: 'fail',
@@ -64,6 +61,17 @@ module.exports = function(settings){
 			title: "IIM JOBS | Dashboard",
 			styles:  assetsMapper["index"]["styles"][mode],
 			scripts: assetsMapper["index"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain:baseDomain
+		});
+		return
+	});
+
+	app.get("/dashboard-clone", isAuthenticated,function(req, res){
+		res.render("index-one", {
+			title: "IIM JOBS | Dashboard",
+			styles:  assetsMapper["index-one"]["styles"][mode],
+			scripts: assetsMapper["index-one"]["scripts"][mode],
 			baseUrl: baseUrl
 		});
 		return
@@ -81,17 +89,18 @@ module.exports = function(settings){
 
 
 
-	app.get("/post-job", function(req, res){
+	app.get("/post-job",isAuthenticated, function(req, res){
 		res.render("post-job",{
 			title: "IIM JOBS | Post job",
 			styles:  assetsMapper["post-job"]["styles"][mode],
 			scripts: assetsMapper["post-job"]["scripts"][mode],
-			baseUrl: baseUrl
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
 		})
 		return
 	})
 
-	app.get("/job/:jobID/candidates", function(req, res){
+	app.get("/job/:jobID/candidates",isAuthenticated, function(req, res){
 		var jobID = req.params.jobID;
 		res.render("candidate-list", {
 			title: "IIM JOBS | Candidates",
@@ -103,7 +112,19 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/profile/:userID", function(req, res){
+	app.get("/job/:jobID/candidates-one",isAuthenticated, function(req, res){
+		var jobID = req.params.jobID;
+		res.render("candidate-list-one", {
+			title: "IIM JOBS | Candidates",
+			styles:  assetsMapper["candidate-list-one"]["styles"][mode],
+			scripts: assetsMapper["candidate-list-one"]["scripts"][mode],
+			baseUrl: baseUrl,
+			jobID: jobID
+		})
+		return
+	})
+
+	app.get("/profile/:userID",isAuthenticated, function(req, res){
 		var userID = req.params.userID;
 		var jobID = req.query.jobID || null;
 		res.render("view-resume",{
@@ -117,7 +138,7 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/calendar", function(req, res){
+	app.get("/calendar",isAuthenticated, function(req, res){
 		res.render("calendar",{
 			title: "IIM JOBS | Calendar",
 			styles:  assetsMapper["calendar"]["styles"][mode],
@@ -144,7 +165,7 @@ module.exports = function(settings){
 
 	});
 
-	app.get("/view-reports", function(req, res){
+	app.get("/view-reports",isAuthenticated, function(req, res){
 		res.render("view-reports",{
 			title: "IIM JOBS | View Reports",
 			styles:  assetsMapper["view-reports"]["styles"][mode],
@@ -154,7 +175,7 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/recruiter/:recruiterID/calendar", function(req, res){
+	app.get("/recruiter/:recruiterID/calendar",isAuthenticated, function(req, res){
 		res.render("calendar-events",{
 			title: "IIM JOBS | Calendar Events",
 			styles:  assetsMapper["calendar-events"]["styles"][mode],
@@ -164,7 +185,7 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/recruiter/:recruiterID/slots/:calendarID", function(req, res){
+	app.get("/recruiter/:recruiterID/slots/:calendarID",isAuthenticated, function(req, res){
 		res.render("manage-calendar",{
 			title: "IIM JOBS | Manage Calendar",
 			styles:  assetsMapper["manage-calendar"]["styles"][mode],
@@ -174,7 +195,7 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/recruiter/:recruiterID/slots", function(req, res){
+	app.get("/recruiter/:recruiterID/slots",isAuthenticated, function(req, res){
 
 		res.render("manage-calendar",{
 			title: "IIM JOBS | Manage Calendar",
@@ -185,7 +206,7 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/recruiter/view-booked-slots", function(req, res){
+	app.get("/recruiter/view-booked-slots",isAuthenticated, function(req, res){
 
 		res.render("view-booked-slots",{
 			title: "IIM JOBS | View Booked Slots",
@@ -196,7 +217,7 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/recruiter/myChat", function(req, res){
+	app.get("/recruiter/myChat",isAuthenticated, function(req, res) {
 		console.log(req.isNew);
 		res.render("chat",{
 			title: "IIM JOBS | myChat",
@@ -207,9 +228,9 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/recruiter/recruiter-plan", function(req, res){
+	app.get("/recruiter/recruiter-plan",isAuthenticated, function(req, res){
 
-		res.render("premium-posting",{
+		res.render("premium-posting", {
 			title: "IIM JOBS | Premium Posting",
 			styles:  assetsMapper["premium-posting"]["styles"][mode],
 			scripts: assetsMapper["premium-posting"]["scripts"][mode],
@@ -218,7 +239,7 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/recruiter/my-profile", function(req, res){
+	app.get("/recruiter/my-profile",isAuthenticated, function(req, res){
 
 		res.render("my-profile",{
 			title: "IIM JOBS | My Profile",
@@ -229,7 +250,7 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/recruiter/edit-profile", function(req, res){
+	app.get("/recruiter/edit-profile",isAuthenticated, function(req, res){
 
 		res.render("edit-profile",{
 			title: "IIM JOBS | Edit Profile",
@@ -240,7 +261,7 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/recruiter/profile-view", function(req, res){
+	app.get("/recruiter/profile-view",isAuthenticated, function(req, res){
 
 		res.render("profile-view",{
 			title: "IIM JOBS | Profile View",
@@ -251,7 +272,7 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/recruiter/export-profile", function(req, res){
+	app.get("/recruiter/export-profile",isAuthenticated, function(req, res){
 
 		res.render("export-profile",{
 			title: "IIM JOBS | Export Profile",
@@ -262,7 +283,7 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/recruiter/tags", function(req, res){
+	app.get("/recruiter/tags",isAuthenticated, function(req, res){
 
 		res.render("tags",{
 			title: "IIM JOBS | Tags",
@@ -273,7 +294,7 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/recruiter/filter-candidate", function(req, res){
+	app.get("/recruiter/filter-candidate",isAuthenticated, function(req, res){
 
 		res.render("filter-candidate",{
 			title: "IIM JOBS | Filter Candidate",
@@ -306,7 +327,7 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/recruiter/mass-resume-status", function(req, res){
+	app.get("/recruiter/mass-resume-status",isAuthenticated, function(req, res){
 
 		res.render("mass-resume", {
 			title: "IIM JOBS | Mass Resume",
@@ -328,4 +349,59 @@ module.exports = function(settings){
 		return
 	})
 
+	app.get("/recruiter/pdf", function(req, res){
+
+		res.render("pdfTest", {
+			title: "IIM JOBS | Reset Password",
+			styles:  assetsMapper["pdfTest"]["styles"][mode],
+			scripts: assetsMapper["pdfTest"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/recruiter/pdfIframe", function(req, res){
+
+		res.render("pdfIframe", {
+			title: "IIM JOBS | Reset Password",
+			styles:  assetsMapper["pdfIframe"]["styles"][mode],
+			scripts: assetsMapper["pdfIframe"]["scripts"][mode],
+			baseUrl: baseUrl
+		})
+		return
+	})
+
+	app.get("/ui_components", function(req, res){
+
+		res.render("ui_components", {
+			title: "Recruiter Web - UI Components | iimjobs.com",
+			styles:  assetsMapper["ui-components"]["styles"][mode],
+			scripts: assetsMapper["ui-components"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
+		})
+		return
+	})
+
+	app.get("/my-jobs", function(req,res){
+		res.render("my-jobs", {
+			title:"Recruiter Web - My Jobs | iimjobs.com",
+			styles:  assetsMapper["my-jobs"]["styles"][mode],
+			scripts: assetsMapper["my-jobs"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
+		})
+		return
+	});
+
+	app.get("/settings", function(req,res){
+		res.render("settings", {
+			title:"Recruiter Web - Settings | iimjobs.com",
+			styles:  assetsMapper["settings"]["styles"][mode],
+			scripts: assetsMapper["settings"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
+		})
+		return
+	});
 }

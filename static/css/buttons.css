@@ -35,8 +35,6 @@
   font-size: 13px;
   cursor: pointer;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075); }
-  .button:hover {
-    background-color: #f5f6f7; }
   .button:focus {
     outline: none; }
   .button.small {
@@ -50,10 +48,11 @@
   .button.link {
     border: none;
     padding: 0;
-    color: #888;
-    font-size: x-small; }
+    color: #337ab7;
+    font-size: x-small;
+    box-shadow: none; }
     .button.link:hover {
-      color: blue;
+      color: #23527c;
       background-color: #ffffff; }
     .button.link:focus {
       outline: none; }

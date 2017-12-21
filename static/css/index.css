@@ -25,6 +25,9 @@
 .animated {
   animation-duration: 500ms !important; }
 
+[contenteditable=true]:empty:not(:focus):before {
+  content: attr(data-text); }
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -56,6 +59,9 @@ footer, header, hgroup, menu, nav, section {
   clear: both;
   display: block; }
 
+.main-container {
+  min-height: calc(100% - 155px); }
+
 .user_profile {
   width: 95%;
   margin: 40px auto;
@@ -63,14 +69,14 @@ footer, header, hgroup, menu, nav, section {
   box-shadow: 0 1px 2px #ccc; }
   .user_profile .image {
     display: inline-block;
-    margin-right: 10px;
-    width: 18%;
+    margin-right: 20px;
+    width: 180px;
     min-width: 150px; }
     .user_profile .image .edit_profile {
       position: relative;
       display: inline-block;
-      width: 150px;
-      height: 200px;
+      width: 100%;
+      height: 225px;
       /*&:after {
                 font-family: 'FontAwesome';
                 content: "\f040";
@@ -94,7 +100,7 @@ footer, header, hgroup, menu, nav, section {
         cursor: pointer; }
   .user_profile .user_details {
     display: inline-block;
-    width: 80%;
+    width: calc(100% - 205px);
     min-height: 100px;
     position: relative;
     vertical-align: top; }
@@ -387,6 +393,19 @@ footer, header, hgroup, menu, nav, section {
         .job_posting .post_job .post_job_form .field-container .field.course-type {
           height: 34px;
           line-height: 40px; }
+        .job_posting .post_job .post_job_form .field-container .field .add-tags-content {
+          width: 70%;
+          border: 1px solid #ccc;
+          padding: 12px; }
+          .job_posting .post_job .post_job_form .field-container .field .add-tags-content .selected-tags-content {
+            display: inline-block; }
+          .job_posting .post_job .post_job_form .field-container .field .add-tags-content .tag-input {
+            color: #676666;
+            font-size: 13.33px;
+            outline: none;
+            cursor: text; }
+            .job_posting .post_job .post_job_form .field-container .field .add-tags-content .tag-input:focus {
+              color: #000000; }
         .job_posting .post_job .post_job_form .field-container .field .js-show-selected-tags, .job_posting .post_job .post_job_form .field-container .field .js-show-suggested-tags {
           margin-right: 10px; }
         .job_posting .post_job .post_job_form .field-container .field .salary-info {
@@ -424,7 +443,7 @@ footer, header, hgroup, menu, nav, section {
         .job_posting .post_job .post_job_form .field-container .field textarea {
           width: 70%;
           min-height: 250px;
-          padding: 12px 20px;
+          padding: 9px 12px;
           box-sizing: border-box;
           border: 1px solid #ccc;
           border-radius: 2px;
@@ -559,15 +578,6 @@ label.premium-job {
 
 .checkboxes div {
   margin-bottom: 4px; }
-
-.add-tags-content input {
-  display: inline-block !important;
-  margin-right: 30px; }
-
-.add-tags-content button {
-  font-size: 12px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
-  padding: 6px 12px; }
 
 .message-sent {
   display: inline-block;

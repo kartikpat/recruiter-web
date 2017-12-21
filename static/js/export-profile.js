@@ -19,7 +19,7 @@ $(document).ready(function(){
         window.location = "/recruiter/export-profile?status=1";
     });
 
-    windowH();
+    // windowH();
 });
 
 

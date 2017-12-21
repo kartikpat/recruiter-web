@@ -1,4 +1,11 @@
 @import "colors.scss";
+
+@import 'components/_type';
+@import 'components/_colors';
+
+
+@import 'input-elements';
+
 $animation-speed: 300ms;
 $dot-size: 7px;
 
@@ -177,9 +184,10 @@ $dot-size: 7px;
 }
 
 .error {
-    font-size: 12px;
-    color: $error-color;
-    padding: 4px 0 0 0;
+    position:absolute;
+    left:0px;
+    bottom:-20px;
+    @extend .error-field;
 }
 
 

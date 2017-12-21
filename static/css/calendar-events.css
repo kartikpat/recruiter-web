@@ -27,7 +27,7 @@
 
 .main-container {
   padding: 20px;
-  height: 500px; }
+  min-height: calc(100% - 155px); }
   .main-container .heading-container {
     position: relative;
     height: 40px;

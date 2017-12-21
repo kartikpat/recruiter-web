@@ -1,0 +1,45 @@
+.left {
+	float:left;
+}
+
+.right {
+	float:right;
+}
+
+.clear {
+	clear:both;
+	overflow:auto;
+}
+
+@mixin abolulute-center {
+	position:absolute;
+	top:0;
+	bottom:0;
+	right:0;
+	left:0;
+	margin:auto;
+}
+
+a {
+	cursor:pointer;
+}
+
+p {
+	margin:0;
+}
+body {
+	&.posf {
+		overflow:hidden;
+	}
+}
+
+@media all and (max-width:700px){
+	.hidden-mobile {
+		display:none !important;
+	}
+}
+
+.clearfix {
+	display:table;
+	clear:both;
+}

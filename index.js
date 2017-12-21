@@ -1,13 +1,13 @@
 	/*
 	Entry point for the project. All the configurations and settings take place here.
 	*/
-	var express = require ("express");
-	var fs = require("fs");
-	var bodyParser = require("body-parser");
-	var program = require("commander");
-	var compression = require("compression");
-	var session = require("cookie-session");
-	var request = require("request");
+	var express = require ("express"); //a minimalistic node.js framework
+	var fs = require("fs"); //file system module to read/write or perform different operations on file.
+	var bodyParser = require("body-parser"); //parses the body portion of an incoming HTTP request and makes it easier to extract different parts of the contained information.
+	var program = require("commander"); //options generator for command line interface
+	var compression = require("compression"); //compresses the request payload
+	var session = require("cookie-session"); //stores the session data on the client within a cookie
+	var request = require("request"); //for making http and https requests
 	var mode = "prod";
 	var env = "cloud";
 	var staticMiddlewareOptions = {
@@ -53,7 +53,9 @@
 	app.engine('html', require('hogan-express'));
 	app.set('partials',{
 		header: 'header',
-		footer: 'footer'
+		footer: 'footer',
+		minifooter:'mini-footer',
+		chatSidebar: 'chat-sidebar'
 	});
 	app.set('view engine', 'html');
 	app.set('views', __dirname + '/views');
@@ -73,7 +75,7 @@
 		mode: mode,
 		env: env,
 		cprint: cprint,
-	request: request
+		request: request
 	}
 
 	require(__dirname+"/routes/home.js")(settings);

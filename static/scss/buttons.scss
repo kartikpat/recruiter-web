@@ -8,16 +8,11 @@
     text-align: center;
     text-decoration: none;
     font-size: 13px;
-
-
-
     cursor: pointer;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
 
-
-
     &:hover {
-        background-color: $color-light-grey;
+        // background-color: $color-light-grey;
     }
 
     &:focus {
@@ -41,11 +36,11 @@
     &.link {
         border: none;
         padding: 0;
-        color: #888;
+        color: $link-color;
         font-size: x-small;
-
+        box-shadow: none;
         &:hover {
-            color: blue;
+            color: $link-hover-color;
             background-color: #ffffff;
         }
 

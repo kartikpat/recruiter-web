@@ -5,10 +5,10 @@ body,html {
 }
 
 .main-container {
-    height: 683px;
+    min-height: calc(100% - 155px);
     .chat-side-profile-container {
         display: inline-block;
-        width: 260px;
+        width: 300px;
         border: 1px solid #ccc;
         height: 100%;
         .chat-side-profile-header {
@@ -118,12 +118,25 @@ body,html {
                     top: 45px;
                     color: $extra-info-color;
                 }
+                .new-message-icon {
+                    display: inline-block;
+                    position: absolute;
+                    top: 18px;
+                    font-size: 12px;
+                    color: white;
+                    right: 28px;
+                    background: rgba(255, 0, 0, 0.65);
+                    border-radius: 50%;
+                    width: 25px;
+                    height: 25px;
+                    text-align: center;
+                    padding-top: 6px;
+                }
             }
         }
     }
     .candidate-chat-container {
         display: inline-block;
-
         vertical-align: top;
         position: relative;
         height: 100%;
@@ -220,8 +233,8 @@ body,html {
                         padding: 5px 10px;
                         color: #1c1c1c;
                         border-radius: 4px;
-                        background-color: rgba(207, 244, 253, 0.28);
-                        font-size: 13px;
+                        background-color: #ffffff;
+                        font-size: 13.5px;
                         width: auto;
                         max-width: 250px;
                         word-break: break-word;
@@ -234,10 +247,18 @@ body,html {
                         text-align: right;
                     }
                     .current-time {
-                        font-size: 9px;
+                        font-size: 10px;
                         vertical-align: sub;
                         padding: 0 0 0px 10px;
 
+                    }
+                    .tick {
+                        background: url(https://static.iimjobs.com/pub_chat/chatv2/images/tickgreydouble.png) no-repeat;
+                        display: inline-block;
+                        height: 12px;
+                        width: 12px;
+                        vertical-align: bottom;
+                        margin-left: 5px;
                     }
                     .caret {
                         position: absolute;
@@ -248,12 +269,13 @@ body,html {
             }
             .candidate-chat-footer {
                 width: 100%;
+                text-align: center;
                 input {
                     box-sizing: border-box;
                     border: 1px solid $select-border;
                     border-radius: 4px;
                     padding: 12px;
-                    width: 100%;
+                    width: 94%;
                 }
             }
         }

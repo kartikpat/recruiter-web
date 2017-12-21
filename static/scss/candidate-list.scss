@@ -17,6 +17,12 @@ input, select {
 }
 
 .heading {
+  font-size: 12px;
+  color: #666;
+  padding-bottom: 1px;
+}
+
+.job-heading {
     font-size: 18px;
     margin: 20px 0 20px 20px;
     color: $color-green;
@@ -29,14 +35,14 @@ input, select {
 
 .main-container {
     padding: 10px;
-
+    min-height: calc(100% - 155px);
     .filters {
         display: inline-block;
         width: 18%;
         padding-right: 10px;
-        border-right: 2px dotted #d8d8d8;
+        border-right: 1px solid #f1f1f1;
         height: auto;
-
+        // position: fixed;
         .search-by-keyword {
             width: 100%;
             border-bottom: 1px solid $color-light-grey;
@@ -116,7 +122,7 @@ input, select {
         vertical-align: top;
         padding: 0 0 0 10px;
         position: relative;
-
+        // margin-left: 19%;
         .tabs {
             width: auto;
             display: inline-block;
@@ -446,6 +452,22 @@ input, select {
                                 text-decoration: underline;
                             }
                         }
+                        .view-icon, .download-icon {
+                            display: block;
+                            color: $extra-info-color;
+                            font-size: 12px;
+                            padding: 1px 0;
+                            text-decoration: none;
+                            span {
+
+                                padding: 0 3px;
+                            }
+
+                            &:hover {
+                                color: green;
+                                text-decoration: underline;
+                            }
+                        }
                     }
                 }
 
@@ -581,7 +603,7 @@ input, select {
                     display: inline-block;
                     vertical-align: top;
                     width: 300px;
-
+                    line-height: 1.5;
                     label {
                         font-size: 13px;
                         font-family: $droid-font;
@@ -592,23 +614,34 @@ input, select {
     }
 }
 
-
-
-.resume-container {
+.view-profile-modal {
     position: fixed;
     top: 0;
     left: 0;
+    transform: translate3d(0,0);
     width: 100%;
     height: 100%;
-    object {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 70%;
-        height: 100%;
-    }
+    overflow: auto;
+    background-color: rgba(255,255,255,1);
 }
+
+
+
+// .resume-container {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     object {
+//         position: fixed;
+//         top: 50%;
+//         left: 50%;
+//         transform: translate(-50%, -50%);
+//         width: 70%;
+//         height: 100%;
+//     }
+// }
 
 
 	.slot-type-container {
@@ -655,6 +688,7 @@ input, select {
                     color: $important-info-color;
                     &.name {
                         font-size: 13px;
+                        font-weight: bold;
                     }
                 }
                 .extra_info {
@@ -779,4 +813,365 @@ input, select {
 .interview-invite-message {
     color: $color-black-text;
     font-size: 12px;
+}
+
+.filter-tag-group {
+    display: inline-block;
+    font-size: 12px;
+    .text {
+        margin-right: 5px;
+    }
+}
+
+button.button.link.submit-filters {
+    padding-top: 6px;
+}
+
+.profile_container {
+   width: 95%;
+   margin: 40px auto;
+
+  .profile_header {
+      width: auto;
+      margin: 0 auto;
+      background-color: $tab-background-color;
+      padding: 10px 15px;
+      span {
+          display: inline-block;
+          overflow: auto;
+          font-size: 13px;
+          font-family: 'Noto Sans',sans-serif;
+          text-align: left;
+          font-weight: bold;
+        }
+        .name {
+            width: 18%;
+        }
+        .organization {
+            width: 26%;
+        }
+        .institute {
+            width: 30%;
+        }
+        .more {
+            width: 24%;
+        }
+   }
+
+   .buttons.extra-height {
+       height: 30px;
+   }
+
+  .profile_content {
+    padding: 0 15px 10px 15px;
+
+    .content {
+      display: inline-block;
+      padding: 1px;
+      margin: 0;
+      overflow: hidden;
+      font-size: 12px;
+      vertical-align: top;
+
+            .info {
+                padding: 10px 0;
+                .important_info {
+                    font-size: 12px;
+                    color: $important-info-color;
+                    font-family: 'Open Sans';
+                    &.name {
+                        font-size: 13px;
+                        font-weight: bold;
+                    }
+
+                }
+                .extra_info {
+                    color: $extra-info-color;
+                    font-family: "Droid Sans",sans-serif;
+                    padding: 2px 0;
+                }
+
+                .icon {
+                    display: block;
+                    font-size: 16px;
+                    color: #424242;
+                    padding: 2px;
+                    span{
+                        font-size: 12px;
+                        padding: 2px;
+                    }
+                    &:hover {
+                        color: green;
+                    }
+                }
+            }
+
+    }
+      .content.name {
+          width: 18%;
+          img{
+              width: 50px;
+              height: 50px;
+              border-radius: 25px;
+              max-width: 100%;
+              max-height: 100%;
+          }
+
+      }
+      .content.organization {
+          width: 26%;
+          .shell-loader-container {
+              padding-top: 40px;
+              .name.animated-background {
+                  width: 150px;
+                  min-height: 10px;
+                  margin-bottom: 20px;
+              }
+              .designation.animated-background {
+                  width: 150px;
+                  min-height: 10px;
+              }
+          }
+      }
+      .content.institute {
+          width: 30%;
+          .shell-loader-container {
+               padding-top: 40px;
+              .name.animated-background {
+                  width: 150px;
+                  min-height: 10px;
+                  margin-bottom: 20px;
+              }
+              .designation.animated-background {
+                  width: 150px;
+                  min-height: 10px;
+              }
+          }
+      }
+      .content.more {
+          width: 24%;
+      }
+      .buttons {
+        a {
+          font-size: 12px;
+          text-decoration: none;
+          display: inline-block;
+          width: 19%;
+          color: $extra-info-color;
+          &:hover {
+            color: green;
+            text-decoration: underline;
+          }
+        }
+      }
+      .more_info {
+         width: 99%;
+         margin: 0 auto;
+         display: none;
+         .layer {
+             .marital-status-container {
+                 width: 18%;
+                 vertical-align: top;
+             }
+             .permit-container {
+                 width: 26%;
+                 vertical-align: top;
+             }
+             .score-container {
+                 width: 30%;
+             }
+             .languages-container {
+                 width: 24%;
+                 vertical-align: top;
+             }
+
+         .row {
+           .column {
+             width: 33%;
+             display: inline-block;
+             padding-bottom: 5px;
+           }
+         }
+        .info {
+          display: inline-block;
+          .score {
+            display: inline-block;
+          }
+
+        }
+      }
+      }
+  }
+
+
+}
+
+.tab_container {
+  width: 95%;
+  margin: 40px auto;
+
+
+  .tab {
+    display: inline-block;
+    width: 30%;
+    min-height: 150px;
+    vertical-align: top;
+    &.center {
+      margin: 0 4.5%;
+
+    }
+    .tab_heading {
+      background-color: $tab-background-color;
+      padding: 10px;
+      span{
+        color: $color-black-text;
+        font-size: 14px;
+        font-family: $droid-font;
+      }
+
+    }
+    .tab_content {
+      padding: 10px;
+      input {
+              padding: 8px 12px;
+              margin: 1px 0 10px 0;
+              border: 1px solid #ccc;
+              border-radius: 2px;
+              width: 70%;
+      }
+      .info {
+        min-height : 40px;
+
+        .left {
+            display: inline-block;
+            min-width: 265px;
+        }
+        .right {
+
+        }
+      }
+    }
+  }
+}
+
+.resume-container {
+  width: 95%;
+  margin: 40px auto;
+.resume-overlay {
+    position: relative;
+    top: -3000px;
+    height: 3000px;
+    background: rgba(255, 255, 255, 0.01);
+    }
+
+
+  .resume {
+      display: inline-block;
+    width: 65%;
+
+    vertical-align: top;
+    margin-right: 4.5%;
+    .resume-embed-container{
+      width: 100%;
+      text-align: center;
+      background: $color-light-grey;
+      .canvas{
+          margin-top: 10px;
+          border: 1px solid #ccc;
+      }
+    }
+  }
+  .cover_letter {
+      display: inline-block;
+    width: 30%;
+    height: 800px;
+    vertical-align: top;
+    .content {
+      padding: 20px;
+      font-size: 13px;
+    }
+  }
+  .head {
+    background-color: $tab-background-color;
+    padding: 15px;
+    color: $color-black-text;
+    font-size: 14px;
+    position: relative;
+    button {
+        position: absolute;
+        right: 18px;
+        top: 10px;
+    }
+  }
+}
+
+
+.margin-right {
+    margin-right: 0 !important;
+}
+
+// .tags-container {
+//     position: absolute;
+//     right: 0;
+//     display: inline-block;
+//     width: 52%;
+//     .ta {
+//
+//         .tags-content {
+//             display: inline-block;
+//             input {
+//                 @include input-styling;
+//                 margin-right: 25px;
+//             }
+//             button {
+//                 padding: 5px 12px;
+//             }
+//         }
+//
+//     }
+//
+// }
+
+.posted-tags {
+    margin-top: 10px;
+    line-height: 3;
+    .tags-jobSeeker {
+        display: inline-block;
+        width: 85px;
+        margin-right: 5px;
+        .tags-content {
+                cursor: pointer;
+        }
+    }
+}
+
+.js-remove-tag.job-seeker-tags {
+    height: 24px;
+    border: 1px solid #ececec;
+    color: #4b4b4b;
+    font-size: 12px;
+    padding: 2px 4px;
+    cursor: pointer;
+    background: #f5f6f7;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.close-overlay-profile-modal {
+    /* display: inline-block; */
+    /* text-align: right; */
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.no-cover-but-resume {
+    width: 100% !important;
+    margin-right: 0 !important;
 }

@@ -16,6 +16,7 @@
 }
 .main-container {
     padding: 20px;
+    min-height: calc(100% - 155px);
     .recruiter-plan-banner-container {
         margin-bottom: 30px;
         .recruiter-plan-banner {

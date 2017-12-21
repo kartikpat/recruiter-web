@@ -26,7 +26,8 @@
   animation-duration: 500ms !important; }
 
 .main-container {
-  padding: 20px 10px; }
+  padding: 20px 10px;
+  min-height: calc(100% - 155px); }
   .main-container .edit-profile-form {
     padding: 20px;
     border: 1px solid #ebebeb;
