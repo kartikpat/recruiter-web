@@ -404,4 +404,15 @@ module.exports = function(settings){
 		})
 		return
 	});
+
+	app.get("/tagged-candidates", function(req,res){
+		res.render("tagged-candidates", {
+			title:"Recruiter Web - Tagged Candidates | iimjobs.com",
+			styles:  assetsMapper["tagged-candidates"]["styles"][mode],
+			scripts: assetsMapper["tagged-candidates"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
+		})
+		return
+	});
 }

@@ -1,0 +1,79 @@
+@import "colors.scss";
+@import "fonts.scss";
+
+@import 'components/_colors.scss';
+@import 'components/_type.scss';
+@import 'components/_global.scss';
+@import 'components/_theme.scss';
+@import 'spacings';
+@import 'input-elements';
+
+@import 'chat-sidebar';
+
+
+.page-content {
+	background:$body-background-color;
+	font-size:0;
+	.tagged-candidates {
+		width:80%;
+		display:inline-block;
+		vertical-align:top;
+		font-size:initial;
+		
+		.page-header {
+			select {
+				@extend select.select-dropdown;
+			}
+		}
+
+		.tagged-candidates-listing {
+			background:$color-white;
+			border-radius:6px;
+			border:1px solid $border-color-base;
+			min-height:30px;
+
+			.candidate-item {
+				padding:30px 18px 15px;
+				font-size:0;
+
+				.candidate-item-section {
+					display:inline-block;
+					vertical-align:top;
+					font-size:$base-font-size;
+
+					&.image {
+						img {
+							border-radius:50%;
+							object-fit:cover;
+						}
+					}
+
+					p {
+						line-height:1.5;
+					}
+					
+					&.personal-details {	
+						p {
+							&.profile-name {
+								color:$inline-link-color;
+								font-weight:bold;
+							}	
+						}
+					}
+
+					&.educational-details {
+					}
+
+				}
+
+				.tagged-on-label {
+					font-size:$base-font-size;
+				}
+			}
+		}
+	}
+	.conversations {
+		width:20%;
+		padding-left:30px;
+	}
+}

@@ -6,7 +6,7 @@
 @import 'components/_global.scss';
 @import 'components/_theme.scss';
 
-@import 'spacings';
+@import 'common/spacings';
 @import 'input-elements';
 
 @import 'chat-sidebar';
@@ -17,11 +17,6 @@
 	.page-header {
 		select {
 			@extend select.select-dropdown;
-
-			&.minimal {
-				font-size:$select-minimal-font-size;
-				background-image:url("/static/images/minimal_select_dropdown.svg");
-			}
 		}
 
 		.action-buttons {

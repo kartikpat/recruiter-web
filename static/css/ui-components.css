@@ -262,11 +262,13 @@ select.select-dropdown {
     display: none; }
   select.select-dropdown.minimal {
     display: inline-block;
-    width: 150px;
+    width: auto;
     border: 0;
-    padding: 10px;
+    padding: 10px 40px 10px 10px;
     background-color: transparent;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    font-size: 16px;
+    background-image: url("/static/images/minimal_select_dropdown.svg"); }
 
 label {
   font-size: 14px;
