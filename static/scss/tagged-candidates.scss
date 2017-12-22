@@ -1,17 +1,12 @@
-@import "colors.scss";
-@import "fonts.scss";
+@import 'common/spacings';
 
-@import 'components/_colors.scss';
-@import 'components/_type.scss';
-@import 'components/_global.scss';
-@import 'components/_theme.scss';
-@import 'spacings';
 @import 'input-elements';
 
 @import 'chat-sidebar';
 
 
 .page-content {
+	@include page-content;
 	background:$body-background-color;
 	font-size:0;
 	.tagged-candidates {

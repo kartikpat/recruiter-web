@@ -1,16 +1,9 @@
-@import "colors.scss";
-@import "fonts.scss";
-
-@import 'components/_colors.scss';
-@import 'components/_type.scss';
-@import 'components/_global.scss';
-@import 'components/_theme.scss';
 @import 'common/spacings';
-
 
 @import 'input-elements';
 
 .page-content {
+    @include page-content;
     .settings-page {
         font-size: 0;
         max-width: 1280px;
@@ -137,6 +130,7 @@
 
                             .submit {
                                 button {
+                                    @include button($button-color-green);
                                     color: white;
                                     border: 0;
                                     padding: 12px 25px;
@@ -151,11 +145,11 @@
                         .formgroup {
                             margin-bottom: 15px;
                             .label {
-                                @extend label;
+                                @include formgroup-label;
                                 margin-bottom: 10px;
                             }
                             input {
-                                @extend .input-field;
+                                @include input-field;
 
                                 &.social-placeholder {
 
@@ -179,10 +173,10 @@
                                 }
                             }
                             select {
-                                @extend select.select-dropdown;
+                                @include select-dropdown;
                             }
                             textarea {
-                                @extend .input-field;
+                                @include input-field;
 
                                 &:focus {
                                     outline: 0;
@@ -190,7 +184,7 @@
                             }
 
                             .button {
-                                @extend button;
+                                @include button($link-color);
                                 padding: 12px 30px;
                                 margin: 0;
                                 border-radius:3px;

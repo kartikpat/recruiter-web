@@ -185,7 +185,6 @@
 			"debug" : [
 				"static/css/header.css",
 				"static/css/footer.css",
-				"static/css/buttons.css",
 				"static/css/utilities.css",
 				"static/css/colors.css",
 				"static/css/spacings.css",
@@ -799,7 +798,6 @@
 		"styles": {
 			"debug" : [
 				"static/css/header.css",
-				"static/css/buttons.css",
 				"static/css/colors.css",
 				"static/css/my-jobs.css",
 				"static/css/utilities.css",
@@ -826,13 +824,11 @@
 	"settings": {
 		"styles": {
 			"debug" : [
-				"static/css/buttons.css",
 				"static/css/colors.css",
 				"static/css/settings.css",
 				"static/css/utilities.css",
 				"static/css/footer.css",
-				"static/css/header.css",
-				"static/css/settings.css"
+				"static/css/header.css"
 			],
 			"prod": [
 				"static/build/css/settings.min.css"
@@ -860,8 +856,7 @@
 				"static/css/tagged-candidates.css",
 				"static/css/utilities.css",
 				"static/css/footer.css",
-				"static/css/header.css",
-				"static/css/tagged-candidates.css"
+				"static/css/header.css"
 			],
 			"prod": [
 				"static/build/css/tagged-candidates.min.css"
