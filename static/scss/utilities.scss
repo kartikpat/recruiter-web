@@ -3,9 +3,6 @@
 @import 'components/_type';
 @import 'components/_colors';
 
-
-@import 'input-elements';
-
 $animation-speed: 300ms;
 $dot-size: 7px;
 
@@ -187,7 +184,9 @@ $dot-size: 7px;
     position:absolute;
     left:0px;
     bottom:-20px;
-    @extend .error-field;
+    margin:7px 0 0 3px;
+    font-size:$error-message-font-size;
+    color:$error-message-color;
 }
 
 

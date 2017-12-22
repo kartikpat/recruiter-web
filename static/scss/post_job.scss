@@ -1,11 +1,3 @@
-@import "colors.scss";
-@import "fonts.scss";
-
-@import 'components/_colors.scss';
-@import 'components/_type.scss';
-@import 'components/_global.scss';
-@import 'components/_theme.scss';
-
 @import 'common/spacings';
 @import 'input-elements';
 
@@ -119,15 +111,15 @@
                     }
 
                     input[type=text] {
-                        @extend .input-field;
+                        @include input-field;
                     }
 
                     select {
-                        @extend select.select-dropdown;
+                        @include select-dropdown;
                     }
 
                     input[type="checkbox"] {
-                        @extend .check-input;
+                        @include check-input;
                     }
 
                     select.half {
@@ -171,7 +163,7 @@
     background:$premium-section-background;
 
     .contents {
-        @extend .check-input;
+        @include check-input;
     }
 
     .section-head {
@@ -193,7 +185,7 @@
     padding:0 30px;
 
     button {
-        @extend button;
+        @include button($button-color-green);
         &.submit-form {
             margin:0;
             padding:10px;
@@ -204,8 +196,9 @@
             color:$link-color;
             box-shadow:none;
             border:0;
+            background:none;
+            border:0;
         }
-
     }
 }
 

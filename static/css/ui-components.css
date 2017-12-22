@@ -238,9 +238,11 @@
 /* '' */
 /** Mobile Menu **/
 select.select-dropdown {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -o-appearanance: none;
+  font-family: inherit;
+  display: inline-block;
+  font-size: 14px;
+  color: #818181;
+  padding: 16px 22px;
   border-radius: 3px;
   background: #FFF;
   width: 100%;
@@ -250,25 +252,14 @@ select.select-dropdown {
   background-position: right 18px center;
   cursor: pointer;
   border-color: #e8e8e8;
-  font-family: inherit;
-  display: inline-block;
-  font-size: 14px;
-  color: #818181;
-  padding: 16px 22px; }
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearanance: none; }
   select.select-dropdown[multiple] {
     background-image: none;
     height: 120px; }
   select.select-dropdown.inactive .dropdown-list {
     display: none; }
-  select.select-dropdown.minimal {
-    display: inline-block;
-    width: auto;
-    border: 0;
-    padding: 10px 40px 10px 10px;
-    background-color: transparent;
-    margin-bottom: 10px;
-    font-size: 16px;
-    background-image: url("/static/images/minimal_select_dropdown.svg"); }
 
 label {
   font-size: 14px;
@@ -388,37 +379,6 @@ label {
 
 .check-input input:checked + label {
   background-image: url("/static/images/checked_checkbox.svg"); }
-
-button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  -o-appearance: none;
-  border: 0;
-  padding: 0;
-  margin: 0;
-  background: #FFF;
-  border-color: #8f8a8a;
-  border-radius: 4px;
-  padding: 5px 14px;
-  font-size: 14px;
-  margin: 0 5px;
-  color: #FFF;
-  display: inline-block;
-  vertical-align: top;
-  cursor: pointer; }
-  button.green {
-    background-color: #1f8f75; }
-  button.red {
-    background-color: #af595a; }
-  button.white {
-    border: 1px solid #8f8a8a;
-    color: #2b2b2b; }
-  button.edit {
-    padding: 3px 9px; }
-    button.edit img {
-      width: 17px;
-      height: 17px; }
 
 span.sticker {
   display: inline-block;
@@ -834,30 +794,6 @@ span.sticker {
   content: '\e831'; }
 
 /* '' */
-.page-content {
-  min-height: 100%;
-  padding: 0;
-  overflow: auto;
-  position: relative;
-  padding: 20px; }
-  .page-content .sidebar {
-    width: 15%;
-    padding: 20px;
-    background: #1f8f75;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    bottom: 43px; }
-    .page-content .sidebar h3 {
-      font-size: 30px;
-      text-transform: uppercase;
-      color: #ffffff; }
-  .page-content .content-block {
-    width: 85%;
-    padding: 40px 70px; }
-    .page-content .content-block .section {
-      margin-bottom: 60px; }
-
 .form-elements {
   line-height: 1; }
 

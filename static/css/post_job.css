@@ -26,7 +26,6 @@
 .animated {
   animation-duration: 500ms !important; }
 
-/** Mobile Menu **/
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
@@ -264,425 +263,6 @@
   content: '\e831'; }
 
 /* '' */
-.left {
-  float: left; }
-
-.right {
-  float: right; }
-
-.clear {
-  clear: both;
-  overflow: auto; }
-
-a {
-  cursor: pointer; }
-
-p {
-  margin: 0; }
-
-body.posf {
-  overflow: hidden; }
-
-@media all and (max-width: 700px) {
-  .hidden-mobile {
-    display: none !important; } }
-
-.clearfix {
-  display: table;
-  clear: both; }
-
-a {
-  text-decoration: none; }
-
-.mobile-menu-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 75%;
-  background: #26252a;
-  z-index: 7; }
-  .mobile-menu-container .close-mobile-menu {
-    padding: 10px;
-    cursor: pointer; }
-    .mobile-menu-container .close-mobile-menu span {
-      color: #FFF;
-      font-size: 14px; }
-  .mobile-menu-container .mobile-menu-content {
-    padding: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    height: 100%; }
-    .mobile-menu-container .mobile-menu-content .domain_logo {
-      padding: 15px 25px; }
-      .mobile-menu-container .mobile-menu-content .domain_logo a {
-        display: inline-block;
-        vertical-align: middle;
-        color: #FFF;
-        font-family: "Comfortaa", sans-serif; }
-        .mobile-menu-container .mobile-menu-content .domain_logo a h1 {
-          font-size: 30px;
-          font-family: inherit;
-          line-height: 20px;
-          margin: 0;
-          display: inline-block; }
-        .mobile-menu-container .mobile-menu-content .domain_logo a span {
-          font-family: inherit;
-          font-size: 14px; }
-        .mobile-menu-container .mobile-menu-content .domain_logo a p {
-          font-family: inherit;
-          line-height: 1;
-          color: #7b7b7b;
-          font-size: 11px;
-          margin-left: 0px;
-          margin-top: 5px; }
-        .mobile-menu-container .mobile-menu-content .domain_logo a h1 {
-          font-size: 21px; }
-        .mobile-menu-container .mobile-menu-content .domain_logo a span {
-          font-size: 11px; }
-        .mobile-menu-container .mobile-menu-content .domain_logo a p {
-          font-size: 9px;
-          margin-left: 3px;
-          margin-top: 2px; }
-    .mobile-menu-container .mobile-menu-content .menu-link-listing ul {
-      list-style: none;
-      padding: 0;
-      margin: 0; }
-      .mobile-menu-container .mobile-menu-content .menu-link-listing ul a {
-        color: #FFF;
-        font-size: 14px; }
-        .mobile-menu-container .mobile-menu-content .menu-link-listing ul a li {
-          padding: 19px 25px;
-          border-top: 1px solid #2E2E2E; }
-    .mobile-menu-container .mobile-menu-content .mobile-profile-section {
-      background: #403f44;
-      padding: 15px 25px;
-      display: inline-block;
-      font-size: 0;
-      width: 100%;
-      vertical-align: middle; }
-      .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-image {
-        display: inline-block;
-        width: 20%; }
-        .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-image img {
-          width: 37px;
-          height: 37px; }
-      .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-info {
-        display: inline-block;
-        width: 80%;
-        padding-left: 15px; }
-        .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-info p {
-          text-align: left;
-          color: #FFF;
-          line-height: 1.5;
-          font-size: 14px; }
-          .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-info p.profile-email {
-            font-size: 12px; }
-    .mobile-menu-container .mobile-menu-content .mobile-profile-actions {
-      margin-top: 20px; }
-      .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul {
-        list-style: none;
-        padding: 0; }
-        .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a {
-          color: #FFF;
-          font-size: 14px; }
-          .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a li {
-            padding: 19px 25px; }
-            .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a li span {
-              display: inline-block; }
-              .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a li span.button {
-                margin: 10px 0 0 0;
-                border-radius: 4px; }
-
-.link-color {
-  color: #337ab7; }
-
-.white-bg {
-  background-color: #ffffff; }
-
-.heading-clr {
-  color: #708732; }
-
-.light-grey-bg {
-  background-color: #f5f6f7; }
-
-.text-clr {
-  color: #4b4b4b; }
-
-.extra-info-color {
-  color: #808080; }
-
-.important-info-color {
-  color: #333; }
-
-.bg-overlay {
-  background-color: rgba(0, 0, 0, 0.7); }
-
-.animated {
-  animation-duration: 500ms !important; }
-
-/**** Fontello Font Icons : ****/
-@font-face {
-  font-family: 'fontello';
-  src: url("../fonts/fontello.eot");
-  src: url("../fonts/fontello.eot#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2") format("woff2"), url("../fonts/fontello.woff") format("woff"), url("../fonts/fontello.ttf") format("truetype"), url("../fonts/fontello.svg#fontello") format("svg");
-  font-weight: normal;
-  font-style: normal; }
-
-/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
-/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
-/*
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  @font-face {
-    font-family: 'fontello';
-    src: url('../font/fontello.svg?75489480#fontello') format('svg');
-  }
-}
-*/
-[class^="icon-"]:before, [class*=" icon-"]:before {
-  font-family: "fontello";
-  font-style: normal;
-  font-weight: normal;
-  speak: none;
-  display: inline-block;
-  text-decoration: inherit;
-  width: 1em;
-  margin-right: .2em;
-  text-align: center;
-  /* opacity: .8; */
-  /* For safety - reset parent styles, that can break glyph codes*/
-  font-variant: normal;
-  text-transform: none;
-  /* fix buttons height, for twitter bootstrap */
-  line-height: 1em;
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
-  margin-left: .2em;
-  /* you can be more comfortable with increased icons size */
-  /* font-size: 120%; */
-  /* Font smoothing. That was taken from TWBS */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* Uncomment for 3D effect */
-  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
-
-.icon-certification:before {
-  content: '\e800'; }
-
-/* '' */
-.icon-cross:before {
-  content: '\e801'; }
-
-/* '' */
-.icon-disabillity-symbol:before {
-  content: '\e802'; }
-
-/* '' */
-.icon-chat_icon:before {
-  content: '\e803'; }
-
-/* '' */
-.icon-distance_learning:before {
-  content: '\e804'; }
-
-/* '' */
-.icon-down_arrow:before {
-  content: '\e805'; }
-
-/* '' */
-.icon-edit:before {
-  content: '\e806'; }
-
-/* '' */
-.icon-ex--alunmi:before {
-  content: '\e807'; }
-
-/* '' */
-.icon-ex-defence:before {
-  content: '\e808'; }
-
-/* '' */
-.icon-executive-program:before {
-  content: '\e809'; }
-
-/* '' */
-.icon-facebook-logo:before {
-  content: '\e80a'; }
-
-/* '' */
-.icon-full-time:before {
-  content: '\e80b'; }
-
-/* '' */
-.icon-gender:before {
-  content: '\e80c'; }
-
-/* '' */
-.icon-information:before {
-  content: '\e80d'; }
-
-/* '' */
-.icon-linkedin-logo:before {
-  content: '\e80e'; }
-
-/* '' */
-.icon-part-time:before {
-  content: '\e80f'; }
-
-/* '' */
-.icon-refresh:before {
-  content: '\e810'; }
-
-/* '' */
-.icon-refresh2:before {
-  content: '\e811'; }
-
-/* '' */
-.icon-right_arrow:before {
-  content: '\e812'; }
-
-/* '' */
-.icon-shield:before {
-  content: '\e813'; }
-
-/* '' */
-.icon-star:before {
-  content: '\e814'; }
-
-/* '' */
-.icon-star2:before {
-  content: '\e815'; }
-
-/* '' */
-.icon-twitter:before {
-  content: '\e816'; }
-
-/* '' */
-.icon-woman:before {
-  content: '\e817'; }
-
-/* '' */
-.icon-candidate:before {
-  content: '\e818'; }
-
-/* '' */
-.icon-checked_icon:before {
-  content: '\e819'; }
-
-/* '' */
-.icon-close_icon:before {
-  content: '\e81a'; }
-
-/* '' */
-.icon-group:before {
-  content: '\e81b'; }
-
-/* '' */
-.icon-document_search_interface_symbol:before {
-  content: '\e81c'; }
-
-/* '' */
-.icon-down_arrow-1:before {
-  content: '\e81d'; }
-
-/* '' */
-.icon-download_arrow:before {
-  content: '\e81e'; }
-
-/* '' */
-.icon-email_envelope:before {
-  content: '\e81f'; }
-
-/* '' */
-.icon-envelope:before {
-  content: '\e820'; }
-
-/* '' */
-.icon-info:before {
-  content: '\e821'; }
-
-/* '' */
-.icon-search_icon:before {
-  content: '\e822'; }
-
-/* '' */
-.icon-notification_bell_outline_interface_symbol:before {
-  content: '\e823'; }
-
-/* '' */
-.icon-politics:before {
-  content: '\e824'; }
-
-/* '' */
-.icon-denied:before {
-  content: '\e825'; }
-
-/* '' */
-.icon-star_shaped_medal:before {
-  content: '\e826'; }
-
-/* '' */
-.icon-sunrise:before {
-  content: '\e827'; }
-
-/* '' */
-.icon-tick:before {
-  content: '\e828'; }
-
-/* '' */
-.icon-add_icon:before {
-  content: '\e82a'; }
-
-/* '' */
-.icon-back_icon:before {
-  content: '\e82b'; }
-
-/* '' */
-.icon-badge:before {
-  content: '\e82c'; }
-
-/* '' */
-.icon-box:before {
-  content: '\e82d'; }
-
-/* '' */
-.icon-interview:before {
-  content: '\e82f'; }
-
-/* '' */
-.icon-mail:before {
-  content: '\e830'; }
-
-/* '' */
-.icon-user:before {
-  content: '\e831'; }
-
-/* '' */
-.page-content {
-  min-height: 100%;
-  padding: 0;
-  overflow: auto;
-  position: relative;
-  padding: 20px; }
-  .page-content .sidebar {
-    width: 15%;
-    padding: 20px;
-    background: #1f8f75;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    bottom: 43px; }
-    .page-content .sidebar h3 {
-      font-size: 30px;
-      text-transform: uppercase;
-      color: #ffffff; }
-  .page-content .content-block {
-    width: 85%;
-    padding: 40px 70px; }
-    .page-content .content-block .section {
-      margin-bottom: 60px; }
-
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
@@ -921,10 +501,12 @@ a {
 
 /* '' */
 /** Mobile Menu **/
-select.select-dropdown, .job_posting .post_job .post_job_form .field-container .field select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -o-appearanance: none;
+select.select-dropdown {
+  font-family: inherit;
+  display: inline-block;
+  font-size: 14px;
+  color: #818181;
+  padding: 16px 22px;
   border-radius: 3px;
   background: #FFF;
   width: 100%;
@@ -934,25 +516,14 @@ select.select-dropdown, .job_posting .post_job .post_job_form .field-container .
   background-position: right 18px center;
   cursor: pointer;
   border-color: #e8e8e8;
-  font-family: inherit;
-  display: inline-block;
-  font-size: 14px;
-  color: #818181;
-  padding: 16px 22px; }
-  select.select-dropdown[multiple], .job_posting .post_job .post_job_form .field-container .field select[multiple] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearanance: none; }
+  select.select-dropdown[multiple] {
     background-image: none;
     height: 120px; }
-  select.select-dropdown.inactive .dropdown-list, .job_posting .post_job .post_job_form .field-container .field select.inactive .dropdown-list {
+  select.select-dropdown.inactive .dropdown-list {
     display: none; }
-  select.select-dropdown.minimal, .job_posting .post_job .post_job_form .field-container .field select.minimal {
-    display: inline-block;
-    width: auto;
-    border: 0;
-    padding: 10px 40px 10px 10px;
-    background-color: transparent;
-    margin-bottom: 10px;
-    font-size: 16px;
-    background-image: url("/static/images/minimal_select_dropdown.svg"); }
 
 label {
   font-size: 14px;
@@ -1023,7 +594,7 @@ label {
     font-size: 14px;
     color: #4fa995; }
 
-.input-field, .job_posting .post_job .post_job_form .field-container .field input[type=text] {
+.input-field {
   -webkit-appearance: none;
   -moz-appearance: none;
   -o-appearanance: none;
@@ -1034,9 +605,9 @@ label {
   cursor: pointer;
   padding: 16px 22px;
   font-size: 14px; }
-  .input-field:focus, .job_posting .post_job .post_job_form .field-container .field input[type=text]:focus {
+  .input-field:focus {
     border-color: #4fa995; }
-  .input-field.error-border, .job_posting .post_job .post_job_form .field-container .field input.error-border[type=text] {
+  .input-field.error-border {
     border-color: #ee1620; }
 
 .radio-input input {
@@ -1056,53 +627,22 @@ label {
 .radio-input input:checked + label {
   background-image: url("/static/images/checked_radio.svg"); }
 
-.check-input input, .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] input, .premium_job_section .contents input {
+.check-input input {
   display: none; }
 
-.check-input label, .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] label, .premium_job_section .contents label {
+.check-input label {
   display: inline-block;
   cursor: pointer; }
 
-.check-input input + label, .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] input + label, .premium_job_section .contents input + label {
+.check-input input + label {
   padding: 4px 0 4px 35px;
   background-image: url("/static/images/unchecked_checkbox.svg");
   background-repeat: no-repeat;
   background-size: 20px;
   background-position: left 2px center; }
 
-.check-input input:checked + label, .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] input:checked + label, .premium_job_section .contents input:checked + label {
+.check-input input:checked + label {
   background-image: url("/static/images/checked_checkbox.svg"); }
-
-button, .submit-action-buttons button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  -o-appearance: none;
-  border: 0;
-  padding: 0;
-  margin: 0;
-  background: #FFF;
-  border-color: #8f8a8a;
-  border-radius: 4px;
-  padding: 5px 14px;
-  font-size: 14px;
-  margin: 0 5px;
-  color: #FFF;
-  display: inline-block;
-  vertical-align: top;
-  cursor: pointer; }
-  button.green {
-    background-color: #1f8f75; }
-  button.red {
-    background-color: #af595a; }
-  button.white {
-    border: 1px solid #8f8a8a;
-    color: #2b2b2b; }
-  button.edit {
-    padding: 3px 9px; }
-    button.edit img {
-      width: 17px;
-      height: 17px; }
 
 span.sticker {
   display: inline-block;
@@ -1323,6 +863,57 @@ span.sticker {
           margin-right: 10px; }
         .job_posting .post_job .post_job_form .field-container .field .salary-info {
           margin: 10px 0; }
+        .job_posting .post_job .post_job_form .field-container .field input[type=text] {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          -o-appearanance: none;
+          border-radius: 3px;
+          background: #FFF;
+          width: 100%;
+          border: 1px solid #e8e8e8;
+          cursor: pointer;
+          padding: 16px 22px;
+          font-size: 14px; }
+          .job_posting .post_job .post_job_form .field-container .field input[type=text]:focus {
+            border-color: #4fa995; }
+          .job_posting .post_job .post_job_form .field-container .field input[type=text].error-border {
+            border-color: #ee1620; }
+        .job_posting .post_job .post_job_form .field-container .field select {
+          font-family: inherit;
+          display: inline-block;
+          font-size: 14px;
+          color: #818181;
+          padding: 16px 22px;
+          border-radius: 3px;
+          background: #FFF;
+          width: 100%;
+          border: 1px solid #e8e8e8;
+          background-image: url("/static/images/down-caret.svg");
+          background-repeat: no-repeat;
+          background-position: right 18px center;
+          cursor: pointer;
+          border-color: #e8e8e8;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          -o-appearanance: none; }
+          .job_posting .post_job .post_job_form .field-container .field select[multiple] {
+            background-image: none;
+            height: 120px; }
+          .job_posting .post_job .post_job_form .field-container .field select.inactive .dropdown-list {
+            display: none; }
+        .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] input {
+          display: none; }
+        .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] label {
+          display: inline-block;
+          cursor: pointer; }
+        .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] input + label {
+          padding: 4px 0 4px 35px;
+          background-image: url("/static/images/unchecked_checkbox.svg");
+          background-repeat: no-repeat;
+          background-size: 20px;
+          background-position: left 2px center; }
+        .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] input:checked + label {
+          background-image: url("/static/images/checked_checkbox.svg"); }
         .job_posting .post_job .post_job_form .field-container .field select.half {
           width: 49%;
           display: inline-block; }
@@ -1348,6 +939,19 @@ span.sticker {
   padding: 30px;
   width: 100%;
   background: #f3fbfb; }
+  .premium_job_section .contents input {
+    display: none; }
+  .premium_job_section .contents label {
+    display: inline-block;
+    cursor: pointer; }
+  .premium_job_section .contents input + label {
+    padding: 4px 0 4px 35px;
+    background-image: url("/static/images/unchecked_checkbox.svg");
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: left 2px center; }
+  .premium_job_section .contents input:checked + label {
+    background-image: url("/static/images/checked_checkbox.svg"); }
   .premium_job_section label span {
     font-size: 14px; }
   .premium_job_section p {
@@ -1357,15 +961,47 @@ span.sticker {
 .submit-action-buttons {
   margin: 20px 0;
   padding: 0 30px; }
-  .submit-action-buttons button.submit-form {
+  .submit-action-buttons button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    border: 0;
+    padding: 0;
     margin: 0;
-    padding: 10px;
-    background-color: #1f8f75; }
-  .submit-action-buttons button.cancel-form {
-    padding: 10px;
-    color: #155d9a;
-    box-shadow: none;
-    border: 0; }
+    background: #1f8f75;
+    border-color: #8f8a8a;
+    border-radius: 4px;
+    padding: 5px 14px;
+    font-size: 14px;
+    margin: 0 5px;
+    color: #FFF;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer; }
+    .submit-action-buttons button.green {
+      background-color: #1f8f75; }
+    .submit-action-buttons button.red {
+      background-color: #af595a; }
+    .submit-action-buttons button.white {
+      border: 1px solid #8f8a8a;
+      color: #2b2b2b; }
+    .submit-action-buttons button.edit {
+      padding: 3px 9px; }
+      .submit-action-buttons button.edit img {
+        width: 17px;
+        height: 17px; }
+    .submit-action-buttons button.submit-form {
+      margin: 0;
+      padding: 10px;
+      background-color: #1f8f75; }
+    .submit-action-buttons button.cancel-form {
+      padding: 10px;
+      color: #155d9a;
+      box-shadow: none;
+      border: 0;
+      background: none;
+      border: 0; }
 
 .guidelines-container {
   display: inline-block;
