@@ -147,8 +147,8 @@
                     }
                 }
 
-                .industry-tags {
-                    @extend .tag-container;
+                .industry-tags, .location-tags, .skill-tags {
+                    @include tag-container;
                 }
             }
         }

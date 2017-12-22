@@ -402,7 +402,7 @@ span {
     }
 }
 
-.tag-container {
+@mixin tag-container {
 	border:1px solid $border-color-base;
 	display:block;
 	padding:7px 20px;

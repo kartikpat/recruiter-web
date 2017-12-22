@@ -3,6 +3,7 @@
 @import 'input-elements';
 
 .page-content {
+    @include page-content;
     .settings-page {
         font-size: 0;
         max-width: 1280px;
