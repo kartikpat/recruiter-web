@@ -10,10 +10,12 @@
 	margin:auto;
 }
 
-select.select-dropdown {
-	-webkit-appearance:none;
-	-moz-appearance:none;
-	-o-appearanance:none;
+@mixin select-dropdown {
+	font-family:inherit;
+	display:inline-block;
+	font-size:$select-font-size;
+	color:$select-color;
+	padding:16px 22px;
 	border-radius:3px;
 	background:$color-white;
 	width:100%;
@@ -23,6 +25,11 @@ select.select-dropdown {
 	background-position:right 18px center;
 	cursor:pointer;
 	border-color:$border-color-base;
+	
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	-o-appearanance:none;
+
 
 	&[multiple] {
 		background-image:none;
@@ -34,25 +41,49 @@ select.select-dropdown {
 			display:none;
 		}
 	}
+}
 
+select.select-dropdown {
 	font-family:inherit;
 	display:inline-block;
 	font-size:$select-font-size;
 	color:$select-color;
 	padding:16px 22px;
+	border-radius:3px;
+	background:$color-white;
+	width:100%;
+	border:1px solid $select-border-color;
+	background-image:url('/static/images/down-caret.svg');
+	background-repeat:no-repeat;
+	background-position:right 18px center;
+	cursor:pointer;
+	border-color:$border-color-base;
+	
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	-o-appearanance:none;
 
-	&.minimal {
-		display:inline-block;
-		width:auto;
-		border:0;
-		padding:10px 40px 10px 10px;
-		background-color:transparent;
-		margin-bottom:10px;
-		font-size:$select-minimal-font-size;
-		background-image:url("/static/images/minimal_select_dropdown.svg");		
+
+	&[multiple] {
+		background-image:none;
+		height:120px;
+	}
+
+	&.inactive {
+		.dropdown-list {
+			display:none;
+		}
 	}
 }
 
+@mixin formgroup-label {
+	font-size:$label-font-size;
+	color:$color-label;
+	display:block;
+	&.title {
+		margin-bottom:14px;
+	}
+}
 label {
 	font-size:$label-font-size;
 	color:$color-label;
@@ -153,6 +184,26 @@ label {
 	}
 }
 
+@mixin input-field {
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	-o-appearanance:none;
+	border-radius:3px;
+	background:$color-white;
+	width:100%;
+	border:1px solid $select-border-color;
+	cursor:pointer;
+	padding:16px 22px;
+	font-size:$label-font-size;
+
+	&:focus {
+		border-color:$border-color-active;
+	}
+	
+	&.error-border {
+		border-color:$border-color-error;
+	}
+}
 .input-field {
 	-webkit-appearance:none;
 	-moz-appearance:none;
@@ -214,7 +265,7 @@ label {
 	}
 }
 
-button {
+@mixin button($background) {
 	-webkit-appearance:none;
 	-moz-appearance:none;
 	-ms-appearance:none;
@@ -222,7 +273,7 @@ button {
 	border:0;
 	padding:0;
 	margin:0;
-	background:$color-white;
+	background:$background;
 	border-color:$button-border-color;
 	border-radius:4px;
 	padding:5px 14px;
