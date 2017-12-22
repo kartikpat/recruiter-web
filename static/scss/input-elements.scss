@@ -265,6 +265,25 @@ label {
 	}
 }
 
+@mixin check-input {
+	input {
+		display:none;
+	}
+	label {
+		display:inline-block;
+		cursor:pointer;
+	}
+	input+label {
+		padding:4px 0 4px 35px;
+		background-image:url('/static/images/unchecked_checkbox.svg');
+		background-repeat:no-repeat;
+		background-size:20px;
+		background-position:left 2px center;
+	}
+	input:checked+label {
+		background-image:url('/static/images/checked_checkbox.svg');
+	}
+}
 @mixin button($background) {
 	-webkit-appearance:none;
 	-moz-appearance:none;
