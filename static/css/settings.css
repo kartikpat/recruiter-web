@@ -706,181 +706,213 @@ span.sticker {
         font-size: 13px;
         color: #1a5e98; }
 
-.tag-container {
-  border: 1px solid #e8e8e8;
-  display: block;
-  padding: 7px 20px;
-  position: relative;
-  font-size: 0; }
-  .tag-container .input-tag {
-    display: inline-block;
-    background: #4fa995;
-    margin: 3px;
-    padding: 3px 10px;
-    border-radius: 20px; }
-    .tag-container .input-tag .tag-icons {
-      display: inline-block;
-      font-size: 14px;
-      padding: 5px 0 5px;
-      cursor: pointer; }
-    .tag-container .input-tag .tag-name {
-      display: inline-block; }
-    .tag-container .input-tag span {
-      color: #FFF;
-      font-size: 14px;
-      padding: 0 5px 0 0; }
-  .tag-container .pill-button {
-    position: relative;
-    display: inline-block; }
-    .tag-container .pill-button input[type=text] {
-      padding: 7px 17px;
-      margin: 3px;
-      border-radius: 50px;
-      border: 1px solid #e8e8e8;
-      color: #2b2b2b;
-      font-size: 14px;
-      border: 1px solid transparent;
-      background: #FFF;
-      z-index: 10;
-      width: 200px;
-      cursor: pointer;
-      transition: all 0.2s ease-in-out; }
-      .tag-container .pill-button input[type=text]:focus {
-        border-color: #4fa995; }
-    .tag-container .pill-button .pill-listing {
-      display: inline-block;
-      width: 100%;
-      position: absolute;
-      top: 0;
-      transform: translateY(38px);
-      opacity: 1;
-      left: 0;
-      z-index: 3;
-      transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; }
-      .tag-container .pill-button .pill-listing ul {
-        margin: 0;
-        list-style: none;
-        padding: 0;
-        max-height: 150px;
-        position: relative;
-        overflow: auto;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-        border: 1px solid #e8e8e8;
-        -webkit-overflow-scrolling: touch; }
-        .tag-container .pill-button .pill-listing ul li {
-          padding: 5px 20px;
-          display: block;
-          width: 100%;
-          font-size: 14px;
-          background: #FFF;
-          border-bottom: 1px solid #e8e8e8;
-          cursor: pointer; }
-          .tag-container .pill-button .pill-listing ul li.selected {
-            background-color: #e9f5f2; }
-          .tag-container .pill-button .pill-listing ul li.tag-added {
-            display: none !important; }
-          .tag-container .pill-button .pill-listing ul li:last-child {
-            border: 0; }
-    .tag-container .pill-button.inactive .pill-listing {
-      transform: translateY(25px);
-      opacity: 1; }
-      .tag-container .pill-button.inactive .pill-listing ul {
-        height: 0;
-        overflow: auto;
-        box-shadow: none;
-        border: 0; }
-
 @media all and (max-width: 768px) {
   .tag-container .pill-button .pill-listing ul {
     max-height: 300px; } }
 
-.page-content .settings-page {
-  font-size: 0;
-  max-width: 1280px;
-  margin: 45px auto;
-  display: block;
-  width: 80%; }
-  .page-content .settings-page .settings-mobile-header {
-    display: none; }
-  .page-content .settings-page .settings-sidebar {
-    width: 25%;
-    display: inline-block;
-    padding-right: 40px;
-    vertical-align: top; }
-    .page-content .settings-page .settings-sidebar ul {
-      border: 1px solid #e8e8e8;
-      padding-left: 0;
-      border-radius: 4px; }
-      .page-content .settings-page .settings-sidebar ul li {
-        cursor: pointer;
-        border-bottom: 1px solid #e8e8e8; }
-        .page-content .settings-page .settings-sidebar ul li:last-child {
-          border-bottom: 0; }
-        .page-content .settings-page .settings-sidebar ul li p {
-          font-size: 14px;
-          margin: 0;
-          padding: 15px 0 15px 15px;
-          border-left: 3px solid transparent;
-          font-size: 16px;
-          font-weight: 400; }
-          .page-content .settings-page .settings-sidebar ul li p span.arrow {
+.page-content {
+  min-height: 100%;
+  padding: 0;
+  overflow: auto;
+  position: relative;
+  padding: 20px; }
+  .page-content .settings-page {
+    font-size: 0;
+    max-width: 1280px;
+    margin: 45px auto;
+    display: block;
+    width: 80%; }
+    .page-content .settings-page .settings-mobile-header {
+      display: none; }
+    .page-content .settings-page .settings-sidebar {
+      width: 25%;
+      display: inline-block;
+      padding-right: 40px;
+      vertical-align: top; }
+      .page-content .settings-page .settings-sidebar ul {
+        border: 1px solid #e8e8e8;
+        padding-left: 0;
+        border-radius: 4px; }
+        .page-content .settings-page .settings-sidebar ul li {
+          cursor: pointer;
+          border-bottom: 1px solid #e8e8e8; }
+          .page-content .settings-page .settings-sidebar ul li:last-child {
+            border-bottom: 0; }
+          .page-content .settings-page .settings-sidebar ul li p {
             font-size: 14px;
-            margin-right: 15px;
-            opacity: 0; }
-        .page-content .settings-page .settings-sidebar ul li.active {
-          background-color: #f4fbfb; }
-          .page-content .settings-page .settings-sidebar ul li.active p {
-            border-color: #4fa995;
-            color: #1f8f75; }
-            .page-content .settings-page .settings-sidebar ul li.active p span.arrow {
-              opacity: 1; }
-  .page-content .settings-page .settings-body {
-    font-size: initial;
-    width: 75%;
-    padding-left: 40px;
-    display: inline-block;
-    vertical-align: top; }
-    .page-content .settings-page .settings-body .settings-section .settings-section-header h3 {
-      font-size: 22px;
-      margin: 0 0 20px 0;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #e8e8e8; }
-    .page-content .settings-page .settings-body .settings-section .settings-section-header.profile h3 {
-      padding-bottom: 0;
-      border: 0; }
-    .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor {
-      background: #f4fbfb;
-      padding: 20px;
-      border: 1px solid #e8e8e8;
-      font-size: 0;
-      margin-bottom: 25px; }
-      .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-preview {
-        display: inline-block;
-        vertical-align: top;
-        width: 20%;
-        text-align: center; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-preview img {
-          border-radius: 50%;
-          object-fit: cover; }
-      .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info {
-        width: 80%;
-        display: inline-block;
-        vertical-align: middle;
-        font-size: initial; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info span {
-          font-size: 14px; }
-          .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info span.choose-file {
-            padding: 10px 24px;
+            margin: 0;
+            padding: 15px 0 15px 15px;
+            border-left: 3px solid transparent;
+            font-size: 16px;
+            font-weight: 400; }
+            .page-content .settings-page .settings-sidebar ul li p span.arrow {
+              font-size: 14px;
+              margin-right: 15px;
+              opacity: 0; }
+          .page-content .settings-page .settings-sidebar ul li.active {
+            background-color: #f4fbfb; }
+            .page-content .settings-page .settings-sidebar ul li.active p {
+              border-color: #4fa995;
+              color: #1f8f75; }
+              .page-content .settings-page .settings-sidebar ul li.active p span.arrow {
+                opacity: 1; }
+    .page-content .settings-page .settings-body {
+      font-size: initial;
+      width: 75%;
+      padding-left: 40px;
+      display: inline-block;
+      vertical-align: top; }
+      .page-content .settings-page .settings-body .settings-section .settings-section-header h3 {
+        font-size: 22px;
+        margin: 0 0 20px 0;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #e8e8e8; }
+      .page-content .settings-page .settings-body .settings-section .settings-section-header.profile h3 {
+        padding-bottom: 0;
+        border: 0; }
+      .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor {
+        background: #f4fbfb;
+        padding: 20px;
+        border: 1px solid #e8e8e8;
+        font-size: 0;
+        margin-bottom: 25px; }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-preview {
+          display: inline-block;
+          vertical-align: top;
+          width: 20%;
+          text-align: center; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-preview img {
+            border-radius: 50%;
+            object-fit: cover; }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info {
+          width: 80%;
+          display: inline-block;
+          vertical-align: middle;
+          font-size: initial; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info span {
+            font-size: 14px; }
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info span.choose-file {
+              padding: 10px 24px;
+              display: inline-block;
+              background: #FFF;
+              border: 1px solid #e8e8e8;
+              cursor: pointer;
+              margin-right: 10px; }
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info span.upload-rules {
+              display: inline-block;
+              margin: 10px 0 20px;
+              color: #7b7b7b; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+            -o-appearance: none;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            background: #1f8f75;
+            border-color: #8f8a8a;
+            border-radius: 4px;
+            padding: 5px 14px;
+            font-size: 14px;
+            margin: 0 5px;
+            color: #FFF;
             display: inline-block;
-            background: #FFF;
-            border: 1px solid #e8e8e8;
+            vertical-align: top;
             cursor: pointer;
-            margin-right: 10px; }
-          .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info span.upload-rules {
-            display: inline-block;
-            margin: 10px 0 20px;
-            color: #7b7b7b; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit button {
+            color: white;
+            border: 0;
+            padding: 12px 25px;
+            margin: 0; }
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit button.green {
+              background-color: #1f8f75; }
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit button.red {
+              background-color: #af595a; }
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit button.white {
+              border: 1px solid #8f8a8a;
+              color: #2b2b2b; }
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit button.edit {
+              padding: 3px 9px; }
+              .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit button.edit img {
+                width: 17px;
+                height: 17px; }
+      .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup {
+        margin-bottom: 15px; }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .label {
+          font-size: 14px;
+          color: #2b2b2b;
+          display: block;
+          margin-bottom: 10px; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .label.title {
+            margin-bottom: 14px; }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          -o-appearanance: none;
+          border-radius: 3px;
+          background: #FFF;
+          width: 100%;
+          border: 1px solid #e8e8e8;
+          cursor: pointer;
+          padding: 16px 22px;
+          font-size: 14px; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input:focus {
+            border-color: #4fa995; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input.error-border {
+            border-color: #ee1620; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input.social-placeholder {
+            padding-left: 40px;
+            background-color: #FFF;
+            background-repeat: no-repeat;
+            background-position: left 10px center; }
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input.social-placeholder.twitter {
+              background-image: url("/static/images/twitter-colored.png"); }
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input.social-placeholder.facebook {
+              background-image: url("/static/images/facebook-colored.png");
+              background-position: left 15px center; }
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input.social-placeholder.linkedin {
+              background-image: url("/static/images/linkedin-colored.png"); }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup select {
+          font-family: inherit;
+          display: inline-block;
+          font-size: 14px;
+          color: #818181;
+          padding: 16px 22px;
+          border-radius: 3px;
+          background: #FFF;
+          width: 100%;
+          border: 1px solid #e8e8e8;
+          background-image: url("/static/images/down-caret.svg");
+          background-repeat: no-repeat;
+          background-position: right 18px center;
+          cursor: pointer;
+          border-color: #e8e8e8;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          -o-appearanance: none; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup select[multiple] {
+            background-image: none;
+            height: 120px; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup select.inactive .dropdown-list {
+            display: none; }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup textarea {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          -o-appearanance: none;
+          border-radius: 3px;
+          background: #FFF;
+          width: 100%;
+          border: 1px solid #e8e8e8;
+          cursor: pointer;
+          padding: 16px 22px;
+          font-size: 14px; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup textarea:focus {
+            border-color: #4fa995; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup textarea.error-border {
+            border-color: #ee1620; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup textarea:focus {
+            outline: 0; }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button {
           -webkit-appearance: none;
           -moz-appearance: none;
           -ms-appearance: none;
@@ -888,7 +920,7 @@ span.sticker {
           border: 0;
           padding: 0;
           margin: 0;
-          background: #1f8f75;
+          background: #155d9a;
           border-color: #8f8a8a;
           border-radius: 4px;
           padding: 5px 14px;
@@ -898,169 +930,59 @@ span.sticker {
           display: inline-block;
           vertical-align: top;
           cursor: pointer;
-          color: white;
-          border: 0;
-          padding: 12px 25px;
-          margin: 0; }
-          .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit button.green {
+          padding: 12px 30px;
+          margin: 0;
+          border-radius: 3px; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button.green {
             background-color: #1f8f75; }
-          .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit button.red {
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button.red {
             background-color: #af595a; }
-          .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit button.white {
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button.white {
             border: 1px solid #8f8a8a;
             color: #2b2b2b; }
-          .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit button.edit {
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button.edit {
             padding: 3px 9px; }
-            .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit button.edit img {
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button.edit img {
               width: 17px;
               height: 17px; }
-    .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup {
-      margin-bottom: 15px; }
-      .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .label {
-        font-size: 14px;
-        color: #2b2b2b;
-        display: block;
-        margin-bottom: 10px; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .label.title {
-          margin-bottom: 14px; }
-      .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        -o-appearanance: none;
-        border-radius: 3px;
-        background: #FFF;
-        width: 100%;
+      .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container {
+        background: red;
+        padding: 15px 60px 30px 60px;
+        background-color: #f3fbfb;
         border: 1px solid #e8e8e8;
-        cursor: pointer;
-        padding: 16px 22px;
-        font-size: 14px; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input:focus {
-          border-color: #4fa995; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input.error-border {
-          border-color: #ee1620; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input.social-placeholder {
-          padding-left: 40px;
-          background-color: #FFF;
-          background-repeat: no-repeat;
-          background-position: left 10px center; }
-          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input.social-placeholder.twitter {
-            background-image: url("/static/images/twitter-colored.png"); }
-          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input.social-placeholder.facebook {
-            background-image: url("/static/images/facebook-colored.png");
-            background-position: left 15px center; }
-          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup input.social-placeholder.linkedin {
-            background-image: url("/static/images/linkedin-colored.png"); }
-      .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup select {
-        font-family: inherit;
-        display: inline-block;
-        font-size: 14px;
-        color: #818181;
-        padding: 16px 22px;
-        border-radius: 3px;
-        background: #FFF;
-        width: 100%;
-        border: 1px solid #e8e8e8;
-        background-image: url("/static/images/down-caret.svg");
-        background-repeat: no-repeat;
-        background-position: right 18px center;
-        cursor: pointer;
-        border-color: #e8e8e8;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        -o-appearanance: none; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup select[multiple] {
-          background-image: none;
-          height: 120px; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup select.inactive .dropdown-list {
-          display: none; }
-      .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup textarea {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        -o-appearanance: none;
-        border-radius: 3px;
-        background: #FFF;
-        width: 100%;
-        border: 1px solid #e8e8e8;
-        cursor: pointer;
-        padding: 16px 22px;
-        font-size: 14px; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup textarea:focus {
-          border-color: #4fa995; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup textarea.error-border {
-          border-color: #ee1620; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup textarea:focus {
-          outline: 0; }
-      .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        -ms-appearance: none;
-        -o-appearance: none;
-        border: 0;
-        padding: 0;
-        margin: 0;
-        background: #155d9a;
-        border-color: #8f8a8a;
-        border-radius: 4px;
-        padding: 5px 14px;
-        font-size: 14px;
-        margin: 0 5px;
-        color: #FFF;
-        display: inline-block;
-        vertical-align: top;
-        cursor: pointer;
-        padding: 12px 30px;
-        margin: 0;
-        border-radius: 3px; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button.green {
-          background-color: #1f8f75; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button.red {
-          background-color: #af595a; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button.white {
-          border: 1px solid #8f8a8a;
-          color: #2b2b2b; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button.edit {
-          padding: 3px 9px; }
-          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button.edit img {
-            width: 17px;
-            height: 17px; }
-    .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container {
-      background: red;
-      padding: 15px 60px 30px 60px;
-      background-color: #f3fbfb;
-      border: 1px solid #e8e8e8;
-      margin-bottom: 35px; }
-      .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container .radio-option {
-        padding: 0;
-        margin: 25px 0 10px; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container .radio-option label {
-          font-size: 16px; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container .radio-option p.describer {
-          margin-top: 10px;
-          margin-left: 35px;
-          color: #808080;
+        margin-bottom: 35px; }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container .radio-option {
+          padding: 0;
+          margin: 25px 0 10px; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container .radio-option label {
+            font-size: 16px; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container .radio-option p.describer {
+            margin-top: 10px;
+            margin-left: 35px;
+            color: #808080;
+            font-size: 14px;
+            border-bottom: 1px solid #e8e8e8;
+            padding-bottom: 30px; }
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container .radio-option p.describer.no-border {
+              border: 0;
+              padding-bottom: 5px; }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container.plan-container .plan-section h3 {
+          clear: both;
+          font-size: 16px;
+          padding: 25px 0;
+          line-height: 1;
+          margin: 0; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container.plan-container .plan-section h3.basic {
+            border-bottom: 1px solid #e8e8e8; }
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container.plan-container .plan-section .plan-block-content p {
+          color: #4b4b4b;
           font-size: 14px;
-          border-bottom: 1px solid #e8e8e8;
-          padding-bottom: 30px; }
-          .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container .radio-option p.describer.no-border {
-            border: 0;
-            padding-bottom: 5px; }
-      .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container.plan-container .plan-section h3 {
-        clear: both;
-        font-size: 16px;
-        padding: 25px 0;
-        line-height: 1;
-        margin: 0; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container.plan-container .plan-section h3.basic {
-          border-bottom: 1px solid #e8e8e8; }
-      .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container.plan-container .plan-section .plan-block-content p {
-        color: #4b4b4b;
-        font-size: 14px;
-        line-height: 1.5;
-        margin-bottom: 10px; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container.plan-container .plan-section .plan-block-content p a {
-          color: #149075; }
-          .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container.plan-container .plan-section .plan-block-content p a span.right-arrow i {
-            font-size: 12px; }
+          line-height: 1.5;
+          margin-bottom: 10px; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container.plan-container .plan-section .plan-block-content p a {
+            color: #149075; }
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container.plan-container .plan-section .plan-block-content p a span.right-arrow i {
+              font-size: 12px; }
 
 @media all and (max-width: 768px) {
   .page-content {
