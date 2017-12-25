@@ -8,8 +8,7 @@
 				"static/css/buttons.css",
 				"static/css/footer.css",
 				"static/css/common/spacings.css",
-				"static/css/animate.css",
-				"static/css/utilities.css"
+				"static/css/animate.css"
 
 			],
 			"prod": [
@@ -873,6 +872,32 @@
 			],
 			"prod" : [
 				"static/build/js/tagged-candidates.min.js"
+			]
+		}
+	},
+	"dashboard": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+				"static/css/colors.css",
+				"static/css/footer.css",
+				"static/css/dashboard.css"
+			],
+			"prod": [
+				"static/build/css/dashboard.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/change-password.js",
+				"static/js/dashboard.js",
+				"static/js/utilities.js"
+			],
+			"prod" : [
+				"static/build/js/dashboard.min.js"
 			]
 		}
 	}

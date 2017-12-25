@@ -9,6 +9,27 @@
 	padding:20px;
 }
 
-@mixin card-container {
+@mixin main-wrapper {
+	width: 80%;
+	height: 600px;
+	float: left;
+}
 
+@mixin main-container{
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1200px;
+}
+
+@mixin container{
+	padding: 20px;
+	width: 100%;
+}
+
+@mixin block-container{
+	width: 100%;
+}
+@mixin block{
+	display: inline-block;
+	vertical-align: top;
 }

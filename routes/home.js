@@ -57,10 +57,10 @@ module.exports = function(settings){
 		});
 	})
 	app.get("/", isAuthenticated,function(req, res){
-		res.render("index", {
+		res.render("dashboard", {
 			title: "IIM JOBS | Dashboard",
-			styles:  assetsMapper["index"]["styles"][mode],
-			scripts: assetsMapper["index"]["scripts"][mode],
+			styles:  assetsMapper["dashboard"]["styles"][mode],
+			scripts: assetsMapper["dashboard"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain:baseDomain
 		});
