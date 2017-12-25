@@ -662,8 +662,6 @@ a {
 
 /* '' */
 /** Mobile Menu **/
-/* [Down Arrows] : */
-/* [/Down Arrows] : */
 select.select-dropdown {
   font-family: inherit;
   display: inline-block;
@@ -674,7 +672,7 @@ select.select-dropdown {
   background: #FFF;
   width: 100%;
   border: 1px solid #e8e8e8;
-  background-image: url("/static/images/down-caret.svg");
+  background-image: url("/static/images/black_caret_down.svg");
   background-repeat: no-repeat;
   background-position: right 18px center;
   cursor: pointer;

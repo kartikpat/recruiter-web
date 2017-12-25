@@ -1,0 +1,7 @@
+@import 'common/spacings';
+@import 'input-elements';
+@import 'chat-sidebar';
+
+.page-content {
+	@include page-content;
+}
