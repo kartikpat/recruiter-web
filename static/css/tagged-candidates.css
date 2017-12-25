@@ -265,6 +265,8 @@
 
 /* '' */
 /** Mobile Menu **/
+/* [Down Arrows] : */
+/* [/Down Arrows] : */
 select.select-dropdown {
   font-family: inherit;
   display: inline-block;
@@ -275,7 +277,7 @@ select.select-dropdown {
   background: #FFF;
   width: 100%;
   border: 1px solid #e8e8e8;
-  background-image: url("/static/images/black_caret_down.svg");
+  background-image: url("/static/images/down-caret.svg");
   background-repeat: no-repeat;
   background-position: right 18px center;
   cursor: pointer;
@@ -1137,6 +1139,8 @@ a {
 
 /* '' */
 /** Mobile Menu **/
+/* [Down Arrows] : */
+/* [/Down Arrows] : */
 select.select-dropdown {
   font-family: inherit;
   display: inline-block;
@@ -1147,7 +1151,7 @@ select.select-dropdown {
   background: #FFF;
   width: 100%;
   border: 1px solid #e8e8e8;
-  background-image: url("/static/images/black_caret_down.svg");
+  background-image: url("/static/images/down-caret.svg");
   background-repeat: no-repeat;
   background-position: right 18px center;
   cursor: pointer;
@@ -1446,7 +1450,7 @@ span.sticker {
         padding: 10px 40px 10px 10px;
         background-color: transparent;
         margin-bottom: 10px;
-        background-image: url("/static/images/black_caret_down.svg"); }
+        background-image: url("/static/images/minimal_select_dropdown.svg"); }
     .page-content .tagged-candidates .tagged-candidates-listing {
       background: #FFF;
       border-radius: 6px;
@@ -1649,7 +1653,7 @@ span.sticker {
           padding: 10px 40px 10px 10px;
           background-color: transparent;
           margin-bottom: 10px;
-          background-image: url("/static/images/black_caret_down.svg"); }
+          background-image: url("/static/images/minimal_select_dropdown.svg"); }
     .page-content .tagged-candidates .tagged-candidates-listing {
       background-color: #f7f7f7;
       border: 0; }

@@ -1,5 +1,6 @@
 @import 'components/_type';
 @import 'components/_colors';
+@import 'components/_images';
 
 @mixin absolutely-centered {
 	position:absolute;
@@ -20,7 +21,7 @@
 	background:$color-white;
 	width:100%;
 	border:1px solid $select-border-color;
-	background-image:url('/static/images/down-caret.svg');
+	background-image:url($green-caret-down);
 	background-repeat:no-repeat;
 	background-position:right 18px center;
 	cursor:pointer;
@@ -49,7 +50,7 @@
 	    padding: 10px 40px 10px 10px;
 	    background-color: transparent;
 	    margin-bottom: 10px;
-	    background-image: url('/static/images/black_caret_down.svg');
+	    background-image: url($black-caret-down);
 	}
 }
 
@@ -63,7 +64,7 @@ select.select-dropdown {
 	background:$color-white;
 	width:100%;
 	border:1px solid $select-border-color;
-	background-image:url('/static/images/black_caret_down.svg');
+	background-image:url($green-caret-down);
 	background-repeat:no-repeat;
 	background-position:right 18px center;
 	cursor:pointer;
