@@ -426,4 +426,15 @@ module.exports = function(settings){
 		})
 		return
 	});
+
+	app.get("/candidate-apply-list", function(req,res){
+		res.render("candidate-apply-list", {
+			title:"Recruiter Web - Candidate Apply List | iimjobs.com",
+			styles:  assetsMapper["candidate-apply-list"]["styles"][mode],
+			scripts: assetsMapper["candidate-apply-list"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
+		})
+		return
+	});
 }
