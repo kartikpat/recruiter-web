@@ -1,5 +1,4 @@
 @import '../colors';
-@import '../components/_type';
 
 @mixin page-content {
 	min-height:100%;
@@ -7,8 +6,4 @@
 	overflow:auto;
 	position:relative;
 	padding:20px;
-}
-
-@mixin card-container {
-
 }

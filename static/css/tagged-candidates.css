@@ -26,243 +26,7 @@
 .animated {
   animation-duration: 500ms !important; }
 
-/**** Fontello Font Icons : ****/
-@font-face {
-  font-family: 'fontello';
-  src: url("../fonts/fontello.eot");
-  src: url("../fonts/fontello.eot#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2") format("woff2"), url("../fonts/fontello.woff") format("woff"), url("../fonts/fontello.ttf") format("truetype"), url("../fonts/fontello.svg#fontello") format("svg");
-  font-weight: normal;
-  font-style: normal; }
-
-/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
-/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
-/*
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  @font-face {
-    font-family: 'fontello';
-    src: url('../font/fontello.svg?75489480#fontello') format('svg');
-  }
-}
-*/
-[class^="icon-"]:before, [class*=" icon-"]:before {
-  font-family: "fontello";
-  font-style: normal;
-  font-weight: normal;
-  speak: none;
-  display: inline-block;
-  text-decoration: inherit;
-  width: 1em;
-  margin-right: .2em;
-  text-align: center;
-  /* opacity: .8; */
-  /* For safety - reset parent styles, that can break glyph codes*/
-  font-variant: normal;
-  text-transform: none;
-  /* fix buttons height, for twitter bootstrap */
-  line-height: 1em;
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
-  margin-left: .2em;
-  /* you can be more comfortable with increased icons size */
-  /* font-size: 120%; */
-  /* Font smoothing. That was taken from TWBS */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* Uncomment for 3D effect */
-  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
-
-.icon-certification:before {
-  content: '\e800'; }
-
-/* '' */
-.icon-cross:before {
-  content: '\e801'; }
-
-/* '' */
-.icon-disabillity-symbol:before {
-  content: '\e802'; }
-
-/* '' */
-.icon-chat_icon:before {
-  content: '\e803'; }
-
-/* '' */
-.icon-distance_learning:before {
-  content: '\e804'; }
-
-/* '' */
-.icon-down_arrow:before {
-  content: '\e805'; }
-
-/* '' */
-.icon-edit:before {
-  content: '\e806'; }
-
-/* '' */
-.icon-ex--alunmi:before {
-  content: '\e807'; }
-
-/* '' */
-.icon-ex-defence:before {
-  content: '\e808'; }
-
-/* '' */
-.icon-executive-program:before {
-  content: '\e809'; }
-
-/* '' */
-.icon-facebook-logo:before {
-  content: '\e80a'; }
-
-/* '' */
-.icon-full-time:before {
-  content: '\e80b'; }
-
-/* '' */
-.icon-gender:before {
-  content: '\e80c'; }
-
-/* '' */
-.icon-information:before {
-  content: '\e80d'; }
-
-/* '' */
-.icon-linkedin-logo:before {
-  content: '\e80e'; }
-
-/* '' */
-.icon-part-time:before {
-  content: '\e80f'; }
-
-/* '' */
-.icon-refresh:before {
-  content: '\e810'; }
-
-/* '' */
-.icon-refresh2:before {
-  content: '\e811'; }
-
-/* '' */
-.icon-right_arrow:before {
-  content: '\e812'; }
-
-/* '' */
-.icon-shield:before {
-  content: '\e813'; }
-
-/* '' */
-.icon-star:before {
-  content: '\e814'; }
-
-/* '' */
-.icon-star2:before {
-  content: '\e815'; }
-
-/* '' */
-.icon-twitter:before {
-  content: '\e816'; }
-
-/* '' */
-.icon-woman:before {
-  content: '\e817'; }
-
-/* '' */
-.icon-candidate:before {
-  content: '\e818'; }
-
-/* '' */
-.icon-checked_icon:before {
-  content: '\e819'; }
-
-/* '' */
-.icon-close_icon:before {
-  content: '\e81a'; }
-
-/* '' */
-.icon-group:before {
-  content: '\e81b'; }
-
-/* '' */
-.icon-document_search_interface_symbol:before {
-  content: '\e81c'; }
-
-/* '' */
-.icon-down_arrow-1:before {
-  content: '\e81d'; }
-
-/* '' */
-.icon-download_arrow:before {
-  content: '\e81e'; }
-
-/* '' */
-.icon-email_envelope:before {
-  content: '\e81f'; }
-
-/* '' */
-.icon-envelope:before {
-  content: '\e820'; }
-
-/* '' */
-.icon-info:before {
-  content: '\e821'; }
-
-/* '' */
-.icon-search_icon:before {
-  content: '\e822'; }
-
-/* '' */
-.icon-notification_bell_outline_interface_symbol:before {
-  content: '\e823'; }
-
-/* '' */
-.icon-politics:before {
-  content: '\e824'; }
-
-/* '' */
-.icon-denied:before {
-  content: '\e825'; }
-
-/* '' */
-.icon-star_shaped_medal:before {
-  content: '\e826'; }
-
-/* '' */
-.icon-sunrise:before {
-  content: '\e827'; }
-
-/* '' */
-.icon-tick:before {
-  content: '\e828'; }
-
-/* '' */
-.icon-add_icon:before {
-  content: '\e82a'; }
-
-/* '' */
-.icon-back_icon:before {
-  content: '\e82b'; }
-
-/* '' */
-.icon-badge:before {
-  content: '\e82c'; }
-
-/* '' */
-.icon-box:before {
-  content: '\e82d'; }
-
-/* '' */
-.icon-interview:before {
-  content: '\e82f'; }
-
-/* '' */
-.icon-mail:before {
-  content: '\e830'; }
-
-/* '' */
-.icon-user:before {
-  content: '\e831'; }
-
-/* '' */
+/** Mobile Menu **/
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
@@ -501,7 +265,9 @@
 
 /* '' */
 /** Mobile Menu **/
-select.select-dropdown, .page-content .tagged-candidates .page-header select {
+/* [Down Arrows] : */
+/* [/Down Arrows] : */
+select.select-dropdown {
   font-family: inherit;
   display: inline-block;
   font-size: 14px;
@@ -519,10 +285,10 @@ select.select-dropdown, .page-content .tagged-candidates .page-header select {
   -webkit-appearance: none;
   -moz-appearance: none;
   -o-appearanance: none; }
-  select.select-dropdown[multiple], .page-content .tagged-candidates .page-header select[multiple] {
+  select.select-dropdown[multiple] {
     background-image: none;
     height: 120px; }
-  select.select-dropdown.inactive .dropdown-list, .page-content .tagged-candidates .page-header select.inactive .dropdown-list {
+  select.select-dropdown.inactive .dropdown-list {
     display: none; }
 
 label {
@@ -737,6 +503,7 @@ span.sticker {
 .animated {
   animation-duration: 500ms !important; }
 
+/** Mobile Menu **/
 /** Mobile Menu **/
 /**** Fontello Font Icons : ****/
 @font-face {
@@ -1133,243 +900,7 @@ a {
 .animated {
   animation-duration: 500ms !important; }
 
-/**** Fontello Font Icons : ****/
-@font-face {
-  font-family: 'fontello';
-  src: url("../fonts/fontello.eot");
-  src: url("../fonts/fontello.eot#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2") format("woff2"), url("../fonts/fontello.woff") format("woff"), url("../fonts/fontello.ttf") format("truetype"), url("../fonts/fontello.svg#fontello") format("svg");
-  font-weight: normal;
-  font-style: normal; }
-
-/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
-/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
-/*
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  @font-face {
-    font-family: 'fontello';
-    src: url('../font/fontello.svg?75489480#fontello') format('svg');
-  }
-}
-*/
-[class^="icon-"]:before, [class*=" icon-"]:before {
-  font-family: "fontello";
-  font-style: normal;
-  font-weight: normal;
-  speak: none;
-  display: inline-block;
-  text-decoration: inherit;
-  width: 1em;
-  margin-right: .2em;
-  text-align: center;
-  /* opacity: .8; */
-  /* For safety - reset parent styles, that can break glyph codes*/
-  font-variant: normal;
-  text-transform: none;
-  /* fix buttons height, for twitter bootstrap */
-  line-height: 1em;
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
-  margin-left: .2em;
-  /* you can be more comfortable with increased icons size */
-  /* font-size: 120%; */
-  /* Font smoothing. That was taken from TWBS */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* Uncomment for 3D effect */
-  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
-
-.icon-certification:before {
-  content: '\e800'; }
-
-/* '' */
-.icon-cross:before {
-  content: '\e801'; }
-
-/* '' */
-.icon-disabillity-symbol:before {
-  content: '\e802'; }
-
-/* '' */
-.icon-chat_icon:before {
-  content: '\e803'; }
-
-/* '' */
-.icon-distance_learning:before {
-  content: '\e804'; }
-
-/* '' */
-.icon-down_arrow:before {
-  content: '\e805'; }
-
-/* '' */
-.icon-edit:before {
-  content: '\e806'; }
-
-/* '' */
-.icon-ex--alunmi:before {
-  content: '\e807'; }
-
-/* '' */
-.icon-ex-defence:before {
-  content: '\e808'; }
-
-/* '' */
-.icon-executive-program:before {
-  content: '\e809'; }
-
-/* '' */
-.icon-facebook-logo:before {
-  content: '\e80a'; }
-
-/* '' */
-.icon-full-time:before {
-  content: '\e80b'; }
-
-/* '' */
-.icon-gender:before {
-  content: '\e80c'; }
-
-/* '' */
-.icon-information:before {
-  content: '\e80d'; }
-
-/* '' */
-.icon-linkedin-logo:before {
-  content: '\e80e'; }
-
-/* '' */
-.icon-part-time:before {
-  content: '\e80f'; }
-
-/* '' */
-.icon-refresh:before {
-  content: '\e810'; }
-
-/* '' */
-.icon-refresh2:before {
-  content: '\e811'; }
-
-/* '' */
-.icon-right_arrow:before {
-  content: '\e812'; }
-
-/* '' */
-.icon-shield:before {
-  content: '\e813'; }
-
-/* '' */
-.icon-star:before {
-  content: '\e814'; }
-
-/* '' */
-.icon-star2:before {
-  content: '\e815'; }
-
-/* '' */
-.icon-twitter:before {
-  content: '\e816'; }
-
-/* '' */
-.icon-woman:before {
-  content: '\e817'; }
-
-/* '' */
-.icon-candidate:before {
-  content: '\e818'; }
-
-/* '' */
-.icon-checked_icon:before {
-  content: '\e819'; }
-
-/* '' */
-.icon-close_icon:before {
-  content: '\e81a'; }
-
-/* '' */
-.icon-group:before {
-  content: '\e81b'; }
-
-/* '' */
-.icon-document_search_interface_symbol:before {
-  content: '\e81c'; }
-
-/* '' */
-.icon-down_arrow-1:before {
-  content: '\e81d'; }
-
-/* '' */
-.icon-download_arrow:before {
-  content: '\e81e'; }
-
-/* '' */
-.icon-email_envelope:before {
-  content: '\e81f'; }
-
-/* '' */
-.icon-envelope:before {
-  content: '\e820'; }
-
-/* '' */
-.icon-info:before {
-  content: '\e821'; }
-
-/* '' */
-.icon-search_icon:before {
-  content: '\e822'; }
-
-/* '' */
-.icon-notification_bell_outline_interface_symbol:before {
-  content: '\e823'; }
-
-/* '' */
-.icon-politics:before {
-  content: '\e824'; }
-
-/* '' */
-.icon-denied:before {
-  content: '\e825'; }
-
-/* '' */
-.icon-star_shaped_medal:before {
-  content: '\e826'; }
-
-/* '' */
-.icon-sunrise:before {
-  content: '\e827'; }
-
-/* '' */
-.icon-tick:before {
-  content: '\e828'; }
-
-/* '' */
-.icon-add_icon:before {
-  content: '\e82a'; }
-
-/* '' */
-.icon-back_icon:before {
-  content: '\e82b'; }
-
-/* '' */
-.icon-badge:before {
-  content: '\e82c'; }
-
-/* '' */
-.icon-box:before {
-  content: '\e82d'; }
-
-/* '' */
-.icon-interview:before {
-  content: '\e82f'; }
-
-/* '' */
-.icon-mail:before {
-  content: '\e830'; }
-
-/* '' */
-.icon-user:before {
-  content: '\e831'; }
-
-/* '' */
+/** Mobile Menu **/
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
@@ -1608,7 +1139,9 @@ a {
 
 /* '' */
 /** Mobile Menu **/
-select.select-dropdown, .page-content .tagged-candidates .page-header select {
+/* [Down Arrows] : */
+/* [/Down Arrows] : */
+select.select-dropdown {
   font-family: inherit;
   display: inline-block;
   font-size: 14px;
@@ -1626,10 +1159,10 @@ select.select-dropdown, .page-content .tagged-candidates .page-header select {
   -webkit-appearance: none;
   -moz-appearance: none;
   -o-appearanance: none; }
-  select.select-dropdown[multiple], .page-content .tagged-candidates .page-header select[multiple] {
+  select.select-dropdown[multiple] {
     background-image: none;
     height: 120px; }
-  select.select-dropdown.inactive .dropdown-list, .page-content .tagged-candidates .page-header select.inactive .dropdown-list {
+  select.select-dropdown.inactive .dropdown-list {
     display: none; }
 
 label {
@@ -1885,28 +1418,312 @@ span.sticker {
     display: inline-block;
     vertical-align: top;
     font-size: initial; }
+    .page-content .tagged-candidates .page-mobile-header {
+      display: none; }
+    .page-content .tagged-candidates .page-header select {
+      font-family: inherit;
+      display: inline-block;
+      font-size: 14px;
+      color: #818181;
+      padding: 16px 22px;
+      border-radius: 3px;
+      background: #FFF;
+      width: 100%;
+      border: 1px solid #e8e8e8;
+      background-image: url("/static/images/down-caret.svg");
+      background-repeat: no-repeat;
+      background-position: right 18px center;
+      cursor: pointer;
+      border-color: #e8e8e8;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -o-appearanance: none; }
+      .page-content .tagged-candidates .page-header select[multiple] {
+        background-image: none;
+        height: 120px; }
+      .page-content .tagged-candidates .page-header select.inactive .dropdown-list {
+        display: none; }
+      .page-content .tagged-candidates .page-header select.minimal {
+        display: inline-block;
+        width: auto;
+        border: 0;
+        padding: 10px 40px 10px 10px;
+        background-color: transparent;
+        margin-bottom: 10px;
+        background-image: url("/static/images/minimal_select_dropdown.svg"); }
     .page-content .tagged-candidates .tagged-candidates-listing {
       background: #FFF;
       border-radius: 6px;
       border: 1px solid #e8e8e8;
       min-height: 30px; }
       .page-content .tagged-candidates .tagged-candidates-listing .candidate-item {
-        padding: 30px 18px 15px;
+        padding: 30px 18px 0px;
         font-size: 0; }
+        .page-content .tagged-candidates .tagged-candidates-listing .candidate-item p {
+          line-height: 1.3;
+          margin-bottom: 3px; }
+          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item p a {
+            color: #155d9a; }
         .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section {
           display: inline-block;
           vertical-align: top;
-          font-size: 14px; }
-          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.image img {
-            border-radius: 50%;
-            object-fit: cover; }
-          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section p {
-            line-height: 1.5; }
-          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.personal-details p.profile-name {
-            color: #149075;
-            font-weight: bold; }
+          font-size: 14px;
+          padding-right: 20px; }
+          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section .datum {
+            margin-bottom: 15px; }
+            .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section .datum p.data {
+              color: #2b2b2b;
+              font-weight: bold; }
+            .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section .datum p.detail {
+              color: #808080; }
+          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.image {
+            width: 9%; }
+            .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.image .candidate-image {
+              display: inline-block;
+              position: relative; }
+              .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.image .candidate-image img {
+                border-radius: 50%;
+                object-fit: cover;
+                border: 1px solid #e8e8e8; }
+              .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-status {
+                width: 12px;
+                height: 12px;
+                display: block;
+                border: 2px solid #FFF;
+                border-radius: 50%;
+                position: absolute;
+                bottom: 5px;
+                right: 5px; }
+                .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-status.offline {
+                  background-color: #b6b6b5; }
+                .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-status.online {
+                  background-color: #6dd51e; }
+          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.personal-details {
+            width: 20%; }
+            .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.personal-details p.profile-name {
+              color: #149075;
+              font-weight: bold;
+              font-size: 18px; }
+            .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.personal-details p span.bold {
+              font-weight: bold;
+              color: #333; }
+            .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.personal-details p span.value {
+              color: #2b2b2b; }
+            .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.personal-details .external-links {
+              margin-top: 10px; }
+          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.professional-information {
+            width: 18%; }
+            .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.professional-information .datum:last-child {
+              margin: 0; }
+          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.educational-details {
+            width: 33%; }
+            .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.educational-details .datum:last-child {
+              margin: 0; }
+          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions {
+            width: 20%; }
+            .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area {
+              margin-bottom: 15px; }
+              .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area button {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                -ms-appearance: none;
+                -o-appearance: none;
+                border: 0;
+                padding: 0;
+                margin: 0;
+                background: #1f8f75;
+                border-color: #8f8a8a;
+                border-radius: 4px;
+                padding: 5px 14px;
+                font-size: 14px;
+                margin: 0 5px;
+                color: #FFF;
+                display: inline-block;
+                vertical-align: top;
+                cursor: pointer;
+                margin: 0;
+                padding: 7px 24px; }
+                .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area button.green {
+                  background-color: #1f8f75; }
+                .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area button.red {
+                  background-color: #af595a; }
+                .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area button.white {
+                  border: 1px solid #8f8a8a;
+                  color: #2b2b2b; }
+                .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area button.edit {
+                  padding: 3px 9px; }
+                  .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area button.edit img {
+                    width: 17px;
+                    height: 17px; }
+            .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .skill-tag-listing .skill-tag {
+              margin: 5px;
+              display: inline-block;
+              padding: 5px 15px;
+              border-radius: 50px;
+              background-color: #f1efef;
+              color: #6e6e6e;
+              font-size: 12px; }
         .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .tagged-on-label {
+          margin-left: 9%;
+          padding-top: 20px;
           font-size: 14px; }
+        .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .separator {
+          display: block;
+          margin: 20px 0 0 9%;
+          border-bottom: 1px solid #e8e8e8;
+          width: 91%; }
+        .page-content .tagged-candidates .tagged-candidates-listing .candidate-item:last-child .separator {
+          border: 0; }
   .page-content .conversations {
     width: 20%;
     padding-left: 30px; }
+
+@media all and (max-width: 1439px) {
+  .conversations {
+    display: none; }
+  .page-content .tagged-candidates {
+    width: 100%; } }
+
+@media all and (max-width: 992px) {
+  .page-content .tagged-candidates {
+    width: 100%; }
+    .page-content .tagged-candidates .tagged-candidates-listing .candidate-item {
+      padding: 30px 10px 0; }
+      .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section {
+        padding-right: 5px;
+        padding-left: 5px; }
+        .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.image {
+          padding-left: 0; } }
+
+@media all and (max-width: 768px) {
+  .page-content .tagged-candidates {
+    width: 100%; }
+    .page-content .tagged-candidates .page-header {
+      display: none; }
+    .page-content .tagged-candidates .page-mobile-header {
+      display: block;
+      font-size: 14px;
+      background: #f3fbfb;
+      padding: 15px 20px 10px;
+      border: 1px solid #e8e8e8;
+      border-bottom: 0;
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px; }
+      .page-content .tagged-candidates .page-mobile-header .mobile-title {
+        margin: 0;
+        border-top-right-radius: 4px;
+        border-top-left-radius: 4px;
+        line-height: 1.5;
+        font-weight: bold; }
+      .page-content .tagged-candidates .page-mobile-header .stats > span {
+        display: inline-block;
+        border-right: 1px solid #e8e8e8;
+        padding-right: 20px; }
+      .page-content .tagged-candidates .page-mobile-header .stats select {
+        font-family: inherit;
+        display: inline-block;
+        font-size: 14px;
+        color: #818181;
+        padding: 16px 22px;
+        border-radius: 3px;
+        background: #FFF;
+        width: 100%;
+        border: 1px solid #e8e8e8;
+        background-image: url("/static/images/down-caret.svg");
+        background-repeat: no-repeat;
+        background-position: right 18px center;
+        cursor: pointer;
+        border-color: #e8e8e8;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -o-appearanance: none;
+        margin-bottom: 0 !important;
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+        padding-left: 0 !important; }
+        .page-content .tagged-candidates .page-mobile-header .stats select[multiple] {
+          background-image: none;
+          height: 120px; }
+        .page-content .tagged-candidates .page-mobile-header .stats select.inactive .dropdown-list {
+          display: none; }
+        .page-content .tagged-candidates .page-mobile-header .stats select.minimal {
+          display: inline-block;
+          width: auto;
+          border: 0;
+          padding: 10px 40px 10px 10px;
+          background-color: transparent;
+          margin-bottom: 10px;
+          background-image: url("/static/images/minimal_select_dropdown.svg"); }
+    .page-content .tagged-candidates .tagged-candidates-listing {
+      background-color: #f7f7f7;
+      border: 0; }
+      .page-content .tagged-candidates .tagged-candidates-listing .candidate-item {
+        padding: 20px 15px 20px;
+        background-color: #FFF;
+        margin-bottom: 15px;
+        border-radius: 4px;
+        border: 1px solid #e8e8e8; }
+        .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .separator {
+          display: none; }
+        .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .tagged-on-label {
+          margin: 0; }
+        .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section {
+          padding: 0;
+          display: block;
+          width: 100%;
+          border-bottom: 1px solid #e8e8e8;
+          padding: 15px 0; }
+          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section:first-child {
+            padding-top: 0; }
+          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section:last-child {
+            border: 0; }
+          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.image {
+            padding-left: 0;
+            width: 100%;
+            padding-bottom: 0;
+            border-bottom: 0; }
+          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.personal-details {
+            width: 100%;
+            padding-top: 10px; }
+          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.professional-information {
+            width: 100%; }
+            .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.professional-information .datum:last-child {
+              margin: 0; }
+          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.educational-details {
+            width: 100%; }
+            .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.educational-details .datum:last-child {
+              margin: 0; }
+          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions {
+            width: 100%; }
+        .page-content .tagged-candidates .tagged-candidates-listing .candidate-item:first-child {
+          border-top-right-radius: 0;
+          border-top-left-radius: 0; }
+        .page-content .tagged-candidates .tagged-candidates-listing .candidate-item:last-child {
+          margin: 0; } }
+
+@media all and (max-width: 360px) {
+  .page-content .tagged-candidates {
+    width: 100%; }
+    .page-content .tagged-candidates .page-header {
+      display: none; }
+    .page-content .tagged-candidates .page-mobile-header {
+      display: block;
+      font-size: 14px;
+      background: #f3fbfb;
+      padding: 15px 20px 10px;
+      border: 1px solid #e8e8e8;
+      border-bottom: 0;
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px; }
+      .page-content .tagged-candidates .page-mobile-header .mobile-title {
+        margin: 0;
+        border-top-right-radius: 4px;
+        border-top-left-radius: 4px;
+        line-height: 1.5;
+        font-weight: bold; }
+      .page-content .tagged-candidates .page-mobile-header .stats > span {
+        display: block;
+        border: 0;
+        margin: 5px 0; }
+      .page-content .tagged-candidates .page-mobile-header .stats select {
+        display: block !important; } }
