@@ -480,4 +480,9 @@ span.sticker {
   line-height: 1; }
 
 .page-content {
-  padding: 0; }
+  padding: 0;
+  min-height: 100%;
+  padding: 0;
+  overflow: auto;
+  position: relative;
+  padding: 20px; }
