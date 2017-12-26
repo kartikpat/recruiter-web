@@ -482,7 +482,8 @@ span.sticker {
   padding: 0;
   overflow: auto;
   position: relative;
-  padding: 20px; }
+  padding: 20px;
+  width: 100%; }
   .page-content .settings-page {
     font-size: 0;
     max-width: 1280px;

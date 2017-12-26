@@ -1413,6 +1413,7 @@ span.sticker {
   overflow: auto;
   position: relative;
   padding: 20px;
+  width: 100%;
   background: #f7f7f7;
   font-size: 0; }
   .page-content .tagged-candidates {

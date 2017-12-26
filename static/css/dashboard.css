@@ -889,8 +889,7 @@ span.sticker {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     border: 1px solid #e8e8e8;
     list-style: none;
-    padding: 5px 0;
-    z-index: 5; }
+    padding: 5px 0; }
     .button-action-list .action-list-items li {
       padding: 0 10px;
       margin: 5px 0; }
@@ -958,6 +957,7 @@ span.sticker {
         border-color: transparent; }
 
 .page-content {
+  color: #2b2b2b;
   min-height: 100%;
   padding: 0;
   overflow: auto;
@@ -1036,123 +1036,129 @@ span.sticker {
         .page-content .page-header .action-buttons button.edit img {
           width: 17px;
           height: 17px; }
-  .page-content .my-jobs {
-    width: 80%; }
-    .page-content .my-jobs .my-jobs-listing .table-container {
+  .page-content .main-wrapper {
+    width: 80%;
+    float: left; }
+  .page-content .main-container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px; }
+  .page-content .container {
+    width: 100%;
+    margin-bottom: 40px; }
+  .page-content .block-container {
+    width: 100%;
+    background-color: #f3fbfb;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    background-color: #f3fbfb; }
+  .page-content .block {
+    display: inline-block;
+    vertical-align: top;
+    background-color: #f3fbfb;
+    width: 25%;
+    height: 170px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    text-align: center; }
+    .page-content .block .stats {
+      margin: 0 auto;
+      margin-top: 35px;
+      height: 60px;
+      max-width: 150px; }
+      .page-content .block .stats .number {
+        color: #149075;
+        font-size: 34px;
+        font-weight: 400;
+        height: 34px; }
+      .page-content .block .stats .legend {
+        font-size: 13px;
+        color: #2b2b2b; }
+    .page-content .block .icon {
+      margin-top: 15px; }
+      .page-content .block .icon img {
+        height: 35px; }
+  .page-content .feed-column {
+    width: 70%;
+    display: inline-block; }
+  .page-content .notification-column {
+    width: 30%;
+    display: inline-block; }
+  .page-content .dashboard {
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e8e8e8;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 8px 0px rgba(214, 214, 214, 0.3); }
+    .page-content .dashboard .header-row {
+      margin-top: 23px;
+      padding: 0 18px; }
+      .page-content .dashboard .header-row .heading {
+        font-size: 20px;
+        color: #149075; }
+      .page-content .dashboard .header-row .sub-heading {
+        font-size: 14px;
+        margin-top: 14px;
+        margin-bottom: 22px; }
+  .page-content .separater {
+    height: 124px;
+    width: 1px;
+    background: #e4e4e4;
+    float: right;
+    margin-top: -119px; }
+  .page-content .salutation-icon {
+    margin-right: 18px; }
+  .page-content .header-row .heading {
+    width: 70%;
+    display: inline-block; }
+  .page-content .header-row .heading-button {
+    width: 20%;
+    display: inline-block;
+    text-align: right; }
+  .page-content .detail-card {
+    min-height: 300px;
+    box-shadow: 0px 2px 8px 0px rgba(214, 214, 214, 0.3);
+    border: 1px solid #e8e8e8;
+    background-color: #ffffff;
+    border-radius: 6px; }
+    .page-content .detail-card .meta-prop {
       display: inline-block;
+      margin-right: 10px; }
+      .page-content .detail-card .meta-prop .icon, .page-content .detail-card .meta-prop .label {
+        display: inline-block; }
+        .page-content .detail-card .meta-prop .icon img, .page-content .detail-card .meta-prop .label img {
+          height: 17px; }
+      .page-content .detail-card .meta-prop .label {
+        color: #737373;
+        font-size: 13px; }
+    .page-content .detail-card .horizontal-separator {
       width: 100%;
-      background: #FFF;
-      border-radius: 4px;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-      border: 1px solid #e8e8e8;
-      padding: 0; }
-      .page-content .my-jobs .my-jobs-listing .table-container .table-row {
+      height: 1px;
+      background-color: #e9eef8;
+      margin-top: 20px; }
+  .page-content .feed-row {
+    padding: 10px 25px; }
+    .page-content .feed-row .main-content {
+      margin-bottom: 16px; }
+      .page-content .feed-row .main-content .title {
         display: inline-block;
-        width: 100%;
-        vertical-align: middle;
-        font-size: 0; }
-        .page-content .my-jobs .my-jobs-listing .table-container .table-row .table-cell {
+        width: 60%;
+        font-size: 14px;
+        font-weight: 700; }
+      .page-content .feed-row .main-content .stats {
+        display: inline-block;
+        width: 35%; }
+        .page-content .feed-row .main-content .stats .value, .page-content .feed-row .main-content .stats .label {
           display: inline-block;
-          font-size: 14px;
-          vertical-align: top;
-          width: 15%; }
-          .page-content .my-jobs .my-jobs-listing .table-container .table-row .table-cell.heading {
-            border-bottom: 1px solid #e8e8e8;
-            padding: 20px 10px 10px; }
-            .page-content .my-jobs .my-jobs-listing .table-container .table-row .table-cell.heading span {
-              font-family: "Droid Sans", sans-serif;
-              font-size: 14px;
-              color: #2b2b2b;
-              text-transform: uppercase; }
-            .page-content .my-jobs .my-jobs-listing .table-container .table-row .table-cell.heading.job-title {
-              width: 40%; }
-        .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell {
-          vertical-align: top;
-          padding: 10px; }
-          .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell span {
-            line-height: 1.5; }
-          .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.title {
-            width: 40%; }
-            .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.title span.job-title {
-              display: block; }
-          .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.engagement span {
-            display: block; }
-          .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.status {
-            position: relative;
-            text-transform: capitalize; }
-            .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.status i {
-              cursor: pointer; }
-              .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.status i span.tooltip-message {
-                position: absolute;
-                background: #FFF;
-                padding: 10px;
-                top: 0;
-                right: -30px;
-                border: 1px solid #e8e8e8;
-                border-radius: 4px;
-                display: none; }
-              .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.status i:hover span.tooltip-message {
-                display: block; }
-          .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon {
-            display: inline-block;
-            margin: 3px;
-            vertical-align: middle;
-            cursor: pointer; }
-            .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon i {
-              border: 1px solid #e8e8e8;
-              display: inline-block;
-              padding: 2px;
-              border-radius: 4px;
-              text-align: center;
-              color: #757575; }
-            .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon span {
-              display: none; }
-
-@media all and (max-width: 768px) {
-  .page-content .my-jobs {
-    width: auto;
-    margin: -20px; }
-    .page-content .my-jobs .page-header {
-      padding: 10px 10px; }
-      .page-content .my-jobs .page-header select {
-        margin-bottom: 0; }
-    .page-content .my-jobs .my-jobs-listing .table-container {
-      background-color: transparent;
-      border-radius: 0;
-      box-shadow: none; }
-      .page-content .my-jobs .my-jobs-listing .table-container .table-row.table-headings {
-        display: none; }
-      .page-content .my-jobs .my-jobs-listing .table-container .table-row.job {
-        padding: 10px;
-        border-bottom: 1px solid #e8e8e8; }
-        .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell {
-          display: block;
-          width: 100%;
-          padding: 0px 10px; }
-          .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell span {
-            line-height: 1; }
-          .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.title {
-            width: 100%;
-            margin: 11px 0 19px; }
-            .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.title span.job-title {
-              font-weight: bold;
-              line-height: 1.5; }
-          .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.status {
-            margin: 10px 0; }
-          .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.engagement {
-            margin-bottom: 10px; }
-            .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.engagement span.view-count {
-              display: inline-block;
-              margin-right: 20px; }
-            .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.engagement span.applied-link {
-              display: inline-block; }
-          .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon {
-            margin-right: 7%; }
-            .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon i {
-              border: 0;
-              font-size: 15px; }
-            .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon span {
-              display: inline-block;
-              margin-left: 10px; }
-  .conversations {
-    display: none; } }
+          font-size: 14px; }
+        .page-content .feed-row .main-content .stats .value {
+          color: #149075; }
+      .page-content .feed-row .main-content .action-panel {
+        float: right;
+        margin-top: 5px; }
+        .page-content .feed-row .main-content .action-panel .img {
+          height: 17px;
+          width: 5px;
+          margin-right: -5px; }
