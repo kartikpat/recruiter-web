@@ -6,6 +6,9 @@ $light-green-bg: #f3fbfb;
 $green: #149075;
 $black: #2b2b2b;
 $separater-grey: #e4e4e4;
+$white: #ffffff;
+$shadow: rgba(214, 214, 214, 0.3);
+$card-border: #e8e8e8;
 
 .page-content {
 	color: $black;
@@ -31,9 +34,11 @@ $separater-grey: #e4e4e4;
 			}
 		}
 	}
-	.card{
-		box-shadow: 1px 1px 1px #aaa;
-	}
+
+	// TODO
+	// .card{
+	// 	box-shadow: 1px 1px 1px #aaa;
+	// }
 
 	.main-wrapper{
 		@include main-wrapper;
@@ -102,6 +107,19 @@ $separater-grey: #e4e4e4;
 	    box-sizing: border-box;
 	    background-color: #ffffff;
 	    box-shadow: 0px 2px 8px 0px rgba(214, 214, 214, 0.3);
+	    .header-row{
+			margin-top: 23px;
+			padding: 0 18px;
+			.heading{
+				font-size: 20px;
+				color: $green;
+			}
+			.sub-heading{
+				font-size: 14px;
+				margin-top: 14px;
+				margin-bottom: 22px;
+			}
+		}
 	}
 	
 	.separater {
@@ -111,21 +129,43 @@ $separater-grey: #e4e4e4;
 	    float: right;
 	    margin-top: -119px;
 	}
-
-	.header-row{
-		margin-top: 23px;
-		padding: 0 18px;
-		.heading{
-			font-size: 20px;
-			color: $green;
-		}
-		.sub-heading{
-			font-size: 14px;
-			margin-top: 14px;
-			margin-bottom: 22px;
-		}
-	}
 	.salutation-icon{
 		margin-right: 18px;
+	}
+	.header-row{
+		.heading{
+			width: 70%;
+			display: inline-block;
+		}
+		.heading-button{
+			width: 20%;
+			display: inline-block;
+			text-align: right;
+		}
+	}
+	.detail-card{
+		min-height: 300px;
+		box-shadow: 0px 2px 8px 0px $shadow;
+		border: 1px solid $card-border;
+		background-color: $white;
+		border-radius: 6px;
+		.meta-prop{
+				display: inline-block;
+				padding: 0 10px;
+			}
+	}
+	.feed-row{
+		.main-content{
+			.title{
+				display: inline-block;
+				width: 60%;
+				font-size: 14px;
+				font-weight: 700;
+			}
+			.stats{
+				display: inline-block;
+				width: 35%;
+			}
+		}
 	}
 }

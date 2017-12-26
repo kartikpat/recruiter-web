@@ -1431,6 +1431,7 @@ span.sticker {
   overflow: auto;
   position: relative;
   padding: 20px;
+  width: 100%;
   background-color: #F4F4F4; }
   .page-content .page-header select {
     font-family: inherit;

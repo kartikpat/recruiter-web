@@ -1432,6 +1432,7 @@ span.sticker {
   overflow: auto;
   position: relative;
   padding: 20px;
+  width: 100%;
   background-color: #F4F4F4; }
   .page-content .page-header select {
     font-family: inherit;
@@ -1496,18 +1497,16 @@ span.sticker {
         .page-content .page-header .action-buttons button.edit img {
           width: 17px;
           height: 17px; }
-  .page-content .card {
-    box-shadow: 1px 1px 1px #aaa; }
   .page-content .main-wrapper {
     width: 80%;
-    height: 600px;
     float: left; }
   .page-content .main-container {
     margin: 0 auto;
     width: 100%;
     max-width: 1200px; }
   .page-content .container {
-    width: 100%; }
+    width: 100%;
+    margin-bottom: 40px; }
   .page-content .block-container {
     width: 100%;
     background-color: #f3fbfb;
@@ -1554,21 +1553,45 @@ span.sticker {
     box-sizing: border-box;
     background-color: #ffffff;
     box-shadow: 0px 2px 8px 0px rgba(214, 214, 214, 0.3); }
+    .page-content .dashboard .header-row {
+      margin-top: 23px;
+      padding: 0 18px; }
+      .page-content .dashboard .header-row .heading {
+        font-size: 20px;
+        color: #149075; }
+      .page-content .dashboard .header-row .sub-heading {
+        font-size: 14px;
+        margin-top: 14px;
+        margin-bottom: 22px; }
   .page-content .separater {
     height: 124px;
     width: 1px;
     background: #e4e4e4;
     float: right;
     margin-top: -119px; }
-  .page-content .header-row {
-    margin-top: 23px;
-    padding: 0 18px; }
-    .page-content .header-row .heading {
-      font-size: 20px;
-      color: #149075; }
-    .page-content .header-row .sub-heading {
-      font-size: 14px;
-      margin-top: 14px;
-      margin-bottom: 22px; }
   .page-content .salutation-icon {
     margin-right: 18px; }
+  .page-content .header-row .heading {
+    width: 70%;
+    display: inline-block; }
+  .page-content .header-row .heading-button {
+    width: 20%;
+    display: inline-block;
+    text-align: right; }
+  .page-content .detail-card {
+    min-height: 300px;
+    box-shadow: 0px 2px 8px 0px rgba(214, 214, 214, 0.3);
+    border: 1px solid #e8e8e8;
+    background-color: #ffffff;
+    border-radius: 6px; }
+    .page-content .detail-card .meta-prop {
+      display: inline-block;
+      padding: 0 10px; }
+  .page-content .feed-row .main-content .title {
+    display: inline-block;
+    width: 60%;
+    font-size: 14px;
+    font-weight: 700; }
+  .page-content .feed-row .main-content .stats {
+    display: inline-block;
+    width: 35%; }

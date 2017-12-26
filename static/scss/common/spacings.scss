@@ -7,11 +7,11 @@
 	overflow:auto;
 	position:relative;
 	padding:20px;
+	width: 100%;
 }
 
 @mixin main-wrapper {
 	width: 80%;
-	height: 600px;
 	float: left;
 }
 
@@ -23,6 +23,7 @@
 
 @mixin container{
 	width: 100%;
+	margin-bottom: 40px;
 }
 
 @mixin block-container{
