@@ -937,7 +937,8 @@
 				"static/css/utilities.css",
 				"static/css/footer.css",
 				"static/css/header.css",
-				"static/css/candidate-apply-list.css"
+				"static/css/candidate-apply-list.css",
+				"static/css/jquery-ui.min.css"
 			],
 			"prod": [
 				"static/build/css/candidate-apply-list.min.css"
@@ -950,7 +951,8 @@
 				"static/js/header.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
-				"static/js/candidate-apply-list.js"
+				"static/js/candidate-apply-list.js",
+				"static/js/vendor/jquery-ui.min.js"
 			],
 			"prod" : [
 				"static/build/js/candidate-apply-list.min.js"

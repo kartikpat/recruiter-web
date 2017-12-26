@@ -402,5 +402,138 @@
 			{{>chatSidebar}}
 		</div>
 	</div>
-	
+
+<div class="view-resume-modal hidden">
+    <div class="main-wrapper left">
+        <div class="main-container">
+            <div class="container resume-header">
+                <div class="profile-image">
+                	<img src="https://www.placehold.it/100x100/f5f5f5?text=+">
+                </div>
+                <div class="profile-information">
+                	<p class="profile-name">Shreya Sharma</p>
+
+                	<div class="social-media-accounts">
+                		<span class="social facebook"><img src="/static/images/facebook-round.svg"></span>
+                		<span class="social twitter"><img src="/static/images/twitter-round.svg"></span>
+                	</div>
+                </div>
+
+                <div class="profile-snapshot">
+                	<div class="snap current-location">
+                		<p class="snap-title">Current Location</p>
+                		<p class="snap-value">Delhi</p>
+                	</div>
+                	<div class="snap preferred-location">
+                		<p class="snap-title">Preferred Location</p>
+                		<p class="snap-value">Delhi</p>
+                	</div>
+                	<div class="snap experience">
+                		<p class="snap-title">Experience</p>
+                		<p class="snap-value">Delhi</p>
+                	</div>
+                	<div class="snap location">
+                		<p class="snap-title">Mobile</p>
+                		<p class="snap-value">9654723723</p>
+                	</div>
+                	<div class="snap location">
+                		<p class="snap-title">Current Salary</p>
+                		<p class="snap-value">18LPA</p>
+                	</div>
+                </div>
+
+                <div class="skills-area">
+                	<div class="tag">
+                		<span class="skill-name">UI Development</span>
+                	</div>
+                	<div class="tag">
+                		<span class="skill-name">JavaScript</span>
+                	</div>
+                	<div class="tag">
+                		<span class="skill-name">UI Development</span>
+                	</div>	
+                	<div class="tag">
+                		<span class="skill-name">A/B Testing</span>
+                	</div>
+                </div>
+                <div class="last-login-container">
+                	<p>Last Login: <span class="last-login"> 13 days ago</span></p>
+                </div>
+            </div>
+
+            <div class="resume-body container">
+
+            	<div id="tabbed-content">
+	            	<ul>
+	            		<li><a href="#view-profile-info">Profile</a></li>
+	            		<li><a href="#view-resume">Resume</a></li>
+	            		<li><a href="#view-cover-letter">Cover Letter</a></li>
+	            	</ul>
+	            	<div id="view-resume"></div>
+	            	<div id="view-profile-info"></div>
+	            	<div id="view-cover-letter"></div>	
+            	</div>
+            	
+            </div>
+        </div>
+    </div>
+    <div class="resume-sidebar right">
+    	<div class=" action-buttons">
+    		<span class="accept button green">Shortlist</span>
+    		<span class="reject button red">Reject</span>
+    	</div>
+    	<div class="sidebar-section external-links">
+    		<ul>
+    			<li class="save"><span class="icon"><i class="icon-star"></i></span>Save for Later</li>
+    			<li class="chat"><span class="icon"><i class="icon-chat_icon"></i></span>Chat with <span class="candidate-first-name">Shreya</span></li>
+    			<li class="invite"><span class="icon"><i class="icon-interview"></i></span>Send Interview Invite</li>
+    		</ul>
+
+    		<ul>
+    			<li class="save"><span class="icon"><i class="icon-star"></i></span>Share Resume</li>
+    			<li class="invite"><span class="icon"><i class="icon-interview"></i></span>Report this candidate</li>
+    		</ul>
+    	</div>
+
+    	<div class="sidebar-section comments">
+    		<h3>Comments</h3>
+    		<div class="comment-block">
+    			<div class="content">
+    				<p>Lorem Ipsum is simply dummy text for the 19th century.</p>	
+    			</div>
+    			<div class="clearfix"></div>
+    			<p class="comment-timestamp right">3 minutes ago</p>
+				<div class="clearfix"></div>
+    		</div>
+    		<div class="comment-block">
+    			<div class="content">
+    				<p>Lorem Ipsum is simply dummy text for the 19th century.</p>	
+    			</div>
+    			<div class="clearfix"></div>
+    			<p class="comment-timestamp right">3 minutes ago</p>
+				<div class="clearfix"></div>
+    		</div>
+    	</div>
+
+    	<div class="sidebar-section tags">
+    		<h3>Tags</h3>
+			<div class="skill-tags-area">
+				<div class="skill-tag">
+					<div class="active-skill-label"><span class="icon-label">UI/UX</span></div>
+					<div class="remove-active-skill"><span class="close-icon"><i class="icon-close_icon"></i></span></div>
+				</div>
+
+				<div class="skill-tag">
+					<div class="active-skill-label"><span class="icon-label">Product Management</span></div>
+					<div class="remove-active-skill"><span class="close-icon"><i class="icon-close_icon"></i></span></div>
+				</div>
+
+				<div class="skill-tag">
+					<div class="active-skill-label"><span class="icon-label">Database Analysis</span></div>
+					<div class="remove-active-skill"><span class="close-icon"><i class="icon-close_icon"></i></span></div>
+				</div>
+			</div>
+    	</div>
+    </div>
+</div>
 {{>footer}}
