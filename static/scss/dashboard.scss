@@ -116,7 +116,6 @@ $separater-grey: #e4e4e4;
 		margin-top: 23px;
 		padding: 0 18px;
 		.heading{
-			margin-left: 63px;
 			font-size: 20px;
 			color: $green;
 		}
@@ -125,5 +124,8 @@ $separater-grey: #e4e4e4;
 			margin-top: 14px;
 			margin-bottom: 22px;
 		}
+	}
+	.salutation-icon{
+		margin-right: 18px;
 	}
 }

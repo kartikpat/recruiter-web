@@ -1507,7 +1507,6 @@ span.sticker {
     width: 100%;
     max-width: 1200px; }
   .page-content .container {
-    padding: 20px;
     width: 100%; }
   .page-content .block-container {
     width: 100%;
@@ -1565,10 +1564,11 @@ span.sticker {
     margin-top: 23px;
     padding: 0 18px; }
     .page-content .header-row .heading {
-      margin-left: 63px;
       font-size: 20px;
       color: #149075; }
     .page-content .header-row .sub-heading {
       font-size: 14px;
       margin-top: 14px;
       margin-bottom: 22px; }
+  .page-content .salutation-icon {
+    margin-right: 18px; }
