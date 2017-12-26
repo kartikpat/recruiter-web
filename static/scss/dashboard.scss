@@ -91,14 +91,15 @@ $horizontal-separator-color: #e9eef8;
 		}
 	}
 	.feed-column{
-		width: 70%;
+		width: 65%;
 		display: inline-block;
+		padding-right: 20px;
 	}
 	.feed-card{
-
+		margin-bottom: 40px;
 	}
 	.notification-column{
-		width: 30%;
+		width: 35%;
 		display: inline-block;
 	}
 	.dashboard{
@@ -135,22 +136,30 @@ $horizontal-separator-color: #e9eef8;
 		margin-right: 18px;
 	}
 	.header-row{
+		margin-bottom: 10px;
 		.heading{
 			width: 70%;
 			display: inline-block;
+			font-size: 16px;
+			font-weight: 400;
 		}
 		.heading-button{
 			width: 20%;
 			display: inline-block;
 			text-align: right;
+			font-size: 13px;
+			margin-right: 5px;
+			img{
+				margin-left: 5px;
+			}
 		}
 	}
 	.detail-card{
-		min-height: 300px;
 		box-shadow: 0px 2px 8px 0px $shadow;
 		border: 1px solid $card-border;
 		background-color: $white;
 		border-radius: 6px;
+		padding: 10px 0;
 		.meta-prop{
 			display: inline-block;
 			margin-right: 10px;
@@ -171,19 +180,99 @@ $horizontal-separator-color: #e9eef8;
 			background-color: $horizontal-separator-color;
 			margin-top: 20px;
 		}
+		.profile{
+			.icon, .general{
+				display: inline-block;
+				vertical-align: top;
+			}
+			.icon{
+			    width: 80px;
+			    padding: 0 10px;
+				img{
+					width: 100%;
+				}
+			}
+			.general{
+				padding: 10px;
+				padding-left: 0px;
+				.name{
+					color: $green;
+					font-size: 16px;
+					font-weight: 400;
+				}
+				.meta{
+					color: $black;
+					font-size: 16px;
+				}
+			}
+		}
+		.profile-detail{
+			margin-left: 80px;	
+    		padding: 0 10px;
+    		.profile-row{
+    			padding: 10px 0;
+    			.title, .label{
+    				padding-bottom: 5px;
+    			}
+    		}
+    		.title{
+    			font-size: 14px;
+    			color: $black;
+    		}
+    		.label{
+    			font-size: 13px;
+    			color: $meta-grey;
+    		}
+		}
+		.action-buttons{
+			width: 100%;
+			text-align: center;
+			.button{
+				 margin: 0 auto;
+				 min-width: 50px;
+				 display: inline-block;
+				 padding: 5px 15px;
+				 border: thin solid $black;
+				 border-radius: 4px;
+				 cursor: pointer;
+			}
+		}
 	}
 	.feed-row{
 		padding: 10px 25px;
+		.title{
+			color: $meta-grey;
+			font-size: 14px;
+		}
+		.list{
+			.name{
+				color: $black;
+				font-size: 14px;
+			}
+			.description{
+				color: $meta-grey;
+				font-size: 14px;
+			}
+			li{
+				padding: 5px;
+			}
+		}
 		.main-content{
-			margin-bottom: 16px;
-			.title{
+			margin-bottom: 10px;
+			.title, .stats{
 				display: inline-block;
+				vertical-align: top
+			}
+			.title{
 				width: 60%;
 				font-size: 14px;
 				font-weight: 700;
+				.text{
+					max-width: 300px;
+					color: $black;
+				}
 			}
 			.stats{
-				display: inline-block;
 				width: 35%;
 				.value, .label{
 					display: inline-block;

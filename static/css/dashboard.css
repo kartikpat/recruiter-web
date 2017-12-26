@@ -1079,10 +1079,13 @@ span.sticker {
       .page-content .block .icon img {
         height: 35px; }
   .page-content .feed-column {
-    width: 70%;
-    display: inline-block; }
+    width: 65%;
+    display: inline-block;
+    padding-right: 20px; }
+  .page-content .feed-card {
+    margin-bottom: 40px; }
   .page-content .notification-column {
-    width: 30%;
+    width: 35%;
     display: inline-block; }
   .page-content .dashboard {
     border-radius: 6px;
@@ -1110,19 +1113,27 @@ span.sticker {
     margin-top: -119px; }
   .page-content .salutation-icon {
     margin-right: 18px; }
-  .page-content .header-row .heading {
-    width: 70%;
-    display: inline-block; }
-  .page-content .header-row .heading-button {
-    width: 20%;
-    display: inline-block;
-    text-align: right; }
+  .page-content .header-row {
+    margin-bottom: 10px; }
+    .page-content .header-row .heading {
+      width: 70%;
+      display: inline-block;
+      font-size: 16px;
+      font-weight: 400; }
+    .page-content .header-row .heading-button {
+      width: 20%;
+      display: inline-block;
+      text-align: right;
+      font-size: 13px;
+      margin-right: 5px; }
+      .page-content .header-row .heading-button img {
+        margin-left: 5px; }
   .page-content .detail-card {
-    min-height: 300px;
     box-shadow: 0px 2px 8px 0px rgba(214, 214, 214, 0.3);
     border: 1px solid #e8e8e8;
     background-color: #ffffff;
-    border-radius: 6px; }
+    border-radius: 6px;
+    padding: 10px 0; }
     .page-content .detail-card .meta-prop {
       display: inline-block;
       margin-right: 10px; }
@@ -1138,17 +1149,74 @@ span.sticker {
       height: 1px;
       background-color: #e9eef8;
       margin-top: 20px; }
+    .page-content .detail-card .profile .icon, .page-content .detail-card .profile .general {
+      display: inline-block;
+      vertical-align: top; }
+    .page-content .detail-card .profile .icon {
+      width: 80px;
+      padding: 0 10px; }
+      .page-content .detail-card .profile .icon img {
+        width: 100%; }
+    .page-content .detail-card .profile .general {
+      padding: 10px;
+      padding-left: 0px; }
+      .page-content .detail-card .profile .general .name {
+        color: #149075;
+        font-size: 16px;
+        font-weight: 400; }
+      .page-content .detail-card .profile .general .meta {
+        color: #2b2b2b;
+        font-size: 16px; }
+    .page-content .detail-card .profile-detail {
+      margin-left: 80px;
+      padding: 0 10px; }
+      .page-content .detail-card .profile-detail .profile-row {
+        padding: 10px 0; }
+        .page-content .detail-card .profile-detail .profile-row .title, .page-content .detail-card .profile-detail .profile-row .label {
+          padding-bottom: 5px; }
+      .page-content .detail-card .profile-detail .title {
+        font-size: 14px;
+        color: #2b2b2b; }
+      .page-content .detail-card .profile-detail .label {
+        font-size: 13px;
+        color: #737373; }
+    .page-content .detail-card .action-buttons {
+      width: 100%;
+      text-align: center; }
+      .page-content .detail-card .action-buttons .button {
+        margin: 0 auto;
+        min-width: 50px;
+        display: inline-block;
+        padding: 5px 15px;
+        border: thin solid #2b2b2b;
+        border-radius: 4px;
+        cursor: pointer; }
   .page-content .feed-row {
     padding: 10px 25px; }
+    .page-content .feed-row .title {
+      color: #737373;
+      font-size: 14px; }
+    .page-content .feed-row .list .name {
+      color: #2b2b2b;
+      font-size: 14px; }
+    .page-content .feed-row .list .description {
+      color: #737373;
+      font-size: 14px; }
+    .page-content .feed-row .list li {
+      padding: 5px; }
     .page-content .feed-row .main-content {
-      margin-bottom: 16px; }
-      .page-content .feed-row .main-content .title {
+      margin-bottom: 10px; }
+      .page-content .feed-row .main-content .title, .page-content .feed-row .main-content .stats {
         display: inline-block;
+        vertical-align: top; }
+      .page-content .feed-row .main-content .title {
         width: 60%;
         font-size: 14px;
         font-weight: 700; }
+        .page-content .feed-row .main-content .title .text {
+          max-width: 300px;
+          color: #2b2b2b; }
       .page-content .feed-row .main-content .stats {
-        display: inline-block;
         width: 35%; }
         .page-content .feed-row .main-content .stats .value, .page-content .feed-row .main-content .stats .label {
           display: inline-block;
