@@ -25,6 +25,7 @@
 .animated {
   animation-duration: 500ms !important; }
 
+/** Mobile Menu **/
 .user_profile_side a {
   font-size: 12px;
   color: #666;

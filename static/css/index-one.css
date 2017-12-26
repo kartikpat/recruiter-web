@@ -25,6 +25,7 @@
 .animated {
   animation-duration: 500ms !important; }
 
+/** Mobile Menu **/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -257,7 +258,7 @@ footer, header, hgroup, menu, nav, section {
         width: 25px;
         height: 27px;
         line-height: 27px;
-        color: #ffffff;
+        color: #FFF;
         position: relative; }
         .jobs_panel .jobs_container .status .rejected-message:hover .tooltip-message {
           visibility: visible; }
@@ -471,7 +472,7 @@ footer, header, hgroup, menu, nav, section {
     min-height: 40px; }
 
 .modal-content {
-  background-color: #ffffff;
+  background-color: #FFF;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -549,7 +550,7 @@ footer, header, hgroup, menu, nav, section {
 .button.submit-form {
   font-family: "Droid Sans", sans-serif;
   background: #7e7e63 !important;
-  color: #ffffff;
+  color: #FFF;
   text-shadow: none;
   border: 1px solid #4a4a3b !important;
   font-size: 14px;

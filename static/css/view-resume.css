@@ -25,6 +25,7 @@
 .animated {
   animation-duration: 500ms !important; }
 
+/** Mobile Menu **/
 .job-title {
   width: 95%;
   font-size: 18px;

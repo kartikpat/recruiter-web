@@ -25,6 +25,7 @@
 .animated {
   animation-duration: 500ms !important; }
 
+/** Mobile Menu **/
 .main-container {
   padding: 20px;
   min-height: calc(100% - 155px); }
@@ -38,7 +39,7 @@
       height: 28px;
       line-height: 28px;
       margin: 0 auto;
-      color: #ffffff;
+      color: #FFF;
       font-size: 13px;
       font-family: "Droid Sans", sans-serif; }
     .main-container .recruiter-plan-banner-container .recruiter-plan-tagline {
@@ -122,7 +123,7 @@
       width: 32.33%;
       background: #b33646;
       box-sizing: border-box;
-      color: #ffffff;
+      color: #FFF;
       font-family: "Droid Sans", sans-serif; }
       .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-header-container {
         padding: 16px 10px 20px 10px;
@@ -174,8 +175,8 @@
             margin: 15px 0;
             border: 2px solid #4c4c4c;
             background: 0;
-            color: #ffffff;
-            border-color: #ffffff;
+            color: #FFF;
+            border-color: #FFF;
             font-size: 20px;
             width: 50%;
             border-radius: 2px;
@@ -262,7 +263,7 @@
   /* Black w/ opacity */ }
 
 .modal-content {
-  background-color: #ffffff;
+  background-color: #FFF;
   position: fixed;
   top: 50%;
   left: 50%;
