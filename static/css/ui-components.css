@@ -1417,3 +1417,20 @@ span.sticker {
   overflow: auto;
   position: relative;
   padding: 20px; }
+  .page-content .sidebar {
+    width: 15%;
+    padding: 20px;
+    background: #1f8f75;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 43px; }
+    .page-content .sidebar h3 {
+      font-size: 30px;
+      text-transform: uppercase;
+      color: #FFF; }
+  .page-content .content-block {
+    width: 85%;
+    padding: 40px 70px; }
+    .page-content .content-block .section {
+      margin-bottom: 60px; }
