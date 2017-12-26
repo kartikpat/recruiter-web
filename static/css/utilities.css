@@ -26,6 +26,7 @@
 .animated {
   animation-duration: 500ms !important; }
 
+/** Mobile Menu **/
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';

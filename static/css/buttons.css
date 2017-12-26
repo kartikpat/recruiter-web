@@ -25,6 +25,7 @@
 .animated {
   animation-duration: 500ms !important; }
 
+/** Mobile Menu **/
 .button {
   background-color: white;
   border: 1px solid #e7e7e7;
@@ -48,7 +49,7 @@
   .button.link {
     border: none;
     padding: 0;
-    color: #337ab7;
+    color: #155d9a;
     font-size: x-small;
     box-shadow: none; }
     .button.link:hover {
