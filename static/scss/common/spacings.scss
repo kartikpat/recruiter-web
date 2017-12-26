@@ -6,8 +6,31 @@
 	overflow:auto;
 	position:relative;
 	padding:20px;
+	width: 100%;
+}
+@mixin main-wrapper {
+	width: 80%;
+	float: left;
 }
 
+@mixin main-container{
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1200px;
+}
+
+@mixin container{
+	width: 100%;
+	margin-bottom: 40px;
+}
+
+@mixin block-container{
+	width: 100%;
+}
+@mixin block{
+	display: inline-block;
+	vertical-align: top;
+}
 @mixin card-container {
 	background-color:$color-white;
 	border:1px solid $border-color-base;

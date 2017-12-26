@@ -1411,6 +1411,7 @@ span.sticker {
   overflow: auto;
   position: relative;
   padding: 20px;
+  width: 100%;
   background-color: #f7f7f7; }
   .page-content .page-header {
     padding: 15px 0; }

@@ -485,4 +485,5 @@ span.sticker {
   padding: 0;
   overflow: auto;
   position: relative;
-  padding: 20px; }
+  padding: 20px;
+  width: 100%; }
