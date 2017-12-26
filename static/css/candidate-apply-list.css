@@ -1576,6 +1576,7 @@ span.sticker {
             display: inline-block;
             vertical-align: middle; }
             .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search-results .active-filters .filter-tag div.remove-active-filter {
+              cursor: pointer;
               vertical-align: top; }
               .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search-results .active-filters .filter-tag div.remove-active-filter span {
                 font-size: 12px;
@@ -1588,6 +1589,15 @@ span.sticker {
             font-size: 14px;
             color: #155d9a;
             text-transform: uppercase; }
+      .page-content .candidate-apply-listing .candidates-area .candidates-area-body .selection-bar {
+        margin: 0 -15px;
+        padding: 5px 15px;
+        border-top: 1px solid #e8e8e8;
+        border-bottom: 1px solid #e8e8e8;
+        font-size: 0; }
+        .page-content .candidate-apply-listing .candidates-area .candidates-area-body .selection-bar .bulk-selection-item {
+          display: inline-block;
+          font-size: initial; }
       .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing {
         background: #FFF;
         border-radius: 6px;
@@ -1619,6 +1629,27 @@ span.sticker {
               .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image {
                 display: inline-block;
                 position: relative; }
+                .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select {
+                  display: none;
+                  position: absolute;
+                  top: -20px;
+                  left: -10px; }
+                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select .checkbox input {
+                    display: none; }
+                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select .checkbox label {
+                    display: inline-block;
+                    cursor: pointer; }
+                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select .checkbox input + label {
+                    padding: 4px 0 4px 35px;
+                    background-image: url("/static/images/unchecked_checkbox.svg");
+                    background-repeat: no-repeat;
+                    background-size: 20px;
+                    background-position: left 2px center; }
+                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select .checkbox input:checked + label {
+                    background-image: url("/static/images/checked_checkbox.svg"); }
+                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select .checkbox label {
+                    min-height: 20px;
+                    min-width: 16px; }
                 .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image img {
                   border-radius: 50%;
                   object-fit: cover;
@@ -1746,6 +1777,8 @@ span.sticker {
               border: 0; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover {
             box-shadow: 0 0 6px rgba(0, 0, 0, 0.4); }
+            .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover .candidate-item-section.image .candidate-select {
+              display: block; }
 
 @media all and (max-width: 992px) {
   .page-content .candidates-listing .candidate-item {

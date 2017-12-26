@@ -136,6 +136,7 @@
 								vertical-align: middle;
 
 								&.remove-active-filter {
+									cursor:pointer;
 									vertical-align:top;
 									span {
 										font-size:$filter-tag-size;
@@ -160,6 +161,17 @@
 			}
 
 			.candidates-area-body {
+				.selection-bar {
+				    margin: 0 -15px;
+				    padding: 5px 15px;
+				    border-top: 1px solid $border-color-base;
+				    border-bottom: 1px solid $border-color-base;
+					font-size:0;
+				    .bulk-selection-item {
+				    	display:inline-block;
+				    	font-size:initial;
+				    }
+				}
 						.candidates-listing {
 							background:$color-white;
 							border-radius:6px;
@@ -205,6 +217,21 @@
 											display:inline-block;
 											position:relative;
 											
+											.candidate-select {
+												display:none;
+												position:absolute;
+												top:-20px;
+												left:-10px;
+												.checkbox {
+													@include check-input;
+
+													label {
+														min-height:20px;
+														min-width:16px;
+
+													}
+												}
+											}
 											img {
 												border-radius:50%;
 												object-fit:cover;
@@ -372,6 +399,14 @@
 
 								&:hover {
 									box-shadow:0 0 6px rgba(0,0,0,0.4);
+
+									.candidate-item-section {
+										&.image {
+											.candidate-select {
+												display:block;
+											}
+										}
+									}
 								}
 							}
 						}
