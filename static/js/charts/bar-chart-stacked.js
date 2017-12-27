@@ -1,5 +1,6 @@
 var MasterColorArray = function(){
-    return ['#28354F', '#3A4C70', '#53688c', '#6A82B3', '#9AAACB', '#DAE2F4'];
+    return [ '#3b3838', '#757070', '#ccc7c7', '#eaeaea' ]
+    //return ['#28354F', '#3A4C70', '#53688c', '#6A82B3', '#9AAACB', '#DAE2F4'];
 }
 var ColumnChartOptions = function() {
     this.isStacked= true;
@@ -10,14 +11,17 @@ var ColumnChartOptions = function() {
         width: "80%",
         height: "80%"
     };
-    this.height= 380;
+    this.height= 220;
     this.width= '100%';
     this.legend= {
         position: "top"
     };
-    // this.bar= {
-    //     groupWidth: 50
-    // };
+    this.bar= {
+        groupWidth: 32
+    };
+    this.chartArea = {
+        top: 50
+    }
     // this.hAxis= {
     //     baseline: 1,
     //     minValue: 0,

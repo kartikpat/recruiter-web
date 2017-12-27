@@ -443,5 +443,27 @@ $button-border-color: #8f8a8a;
 	    	}
     	} 
     }
+    .separater.positive-bottom{
+    	width: 90%;
+	    height: 1px;
+	    margin-top: 18px;
+	    float: left;
+    }
+    .separater.positive-top{
+		margin-top: -152px;
+		height: 1px;
+		width: 90%;
+    }
+    .separater.positive-left{
+		float: left;
+		height: 90%;
+		margin-top: -152px;
+    }
+    .separater.positive-right {
+	    margin-top: -135px;
+	    height: 90%;
+	    margin-right: 0px;
+	    /* z-index: 999999; */
+	}
 
 }
