@@ -1592,7 +1592,7 @@ var populateJobs = function(res) {
 //
 // function getBinaryData (url) {
 //     // body...
-//     var xhr = new XMLHttpRequest();
+//     var xhr = new 	XMLHttpRequest();
 //
 //     xhr.open('GET', url, true);
 //     xhr.responseType = 'arraybuffer';

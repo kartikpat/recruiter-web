@@ -1467,7 +1467,7 @@ span.sticker {
       border-radius: 4px;
       padding: 20px;
       margin: 10px;
-      margin: 5px 0 0 0;
+      margin: 0 0 0 0;
       padding: 15px; }
       .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search {
         margin-bottom: 20px; }
@@ -2149,6 +2149,73 @@ span.sticker {
               border-color: #149075; }
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-active a:focus {
                 outline: 0; }
+          .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info {
+            padding: 20px 0; }
+            .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block {
+              margin: 20px 0 0 0;
+              border: 1px solid #e8e8e8;
+              width: 100%;
+              padding: 25px; }
+              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content-heading {
+                margin-top: 0;
+                font-weight: bold;
+                font-size: 22px; }
+              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content .datum p {
+                line-height: 1.5;
+                font-size: 15px; }
+                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content .datum p.data-name {
+                  font-weight: bold;
+                  color: #333; }
+                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content .datum p.data-detail {
+                  color: #808080; }
+              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content .datum .separator {
+                margin: 20px 0;
+                border-bottom: 1px solid #e8e8e8; }
+              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul {
+                margin: 0;
+                padding: 0;
+                list-style: none; }
+                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul li {
+                  font-size: 0;
+                  margin: 10px 0; }
+                  .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul li span {
+                    display: inline-block;
+                    width: 50%;
+                    font-size: 15px; }
+                    .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul li span.key {
+                      color: #808080; }
+                    .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul li span.value {
+                      color: #333; }
+              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-header .user-image {
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 20px; }
+                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-header .user-image img {
+                  border-radius: 50%; }
+              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-header .user-details {
+                display: inline-block;
+                vertical-align: top;
+                padding: 9px 0; }
+                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-header .user-details p {
+                  line-height: 1.5;
+                  color: #333; }
+                  .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-header .user-details p.user-name {
+                    font-weight: bold;
+                    font-size: 15px; }
+                  .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-header .user-details p.user-link a {
+                    color: #155d9a; }
+              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-body {
+                margin: 20px 0 0 0; }
+                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-body p {
+                  line-height: 1.5; }
+          .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-resume {
+            margin: 20px 0 0 0;
+            background-color: #C0C0C0; }
+            .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-resume canvas {
+              border: 1px solid #e8e8e8;
+              margin: 10px 0 0 0; }
+          .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-cover-letter {
+            padding: 20px 0 0 0; }
   .view-resume-modal .resume-sidebar {
     width: 20%; }
     .view-resume-modal .resume-sidebar .action-buttons {
