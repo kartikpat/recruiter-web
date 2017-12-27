@@ -76,5 +76,14 @@ function resumeCallback(res){
          });
         }
     });
-
 }
+
+jQuery(".first-fold").on('click', ".view-more", function() {
+  if(jQuery(".first-fold").hasClass("top")){
+    jQuery(".first-fold").removeClass("top");
+    jQuery(".second-fold").addClass("top").removeClass("hidden");
+  } else {
+    jQuery(".first-fold").addClass("top");
+    jQuery(".second-fold").addClass("hidden").removeClass("top");
+  }
+});

@@ -802,16 +802,22 @@
 					background-image:url('/static/images/view-resume-banner.jpg');
 					background-repeat:no-repeat;
 					background-position:center top;
-					background-size:100%;
+					background-size:100% 95px;
 					vertical-align: top;
 				    display: inline-block;
 				    width: 100%;
 				    border-bottom:1px solid $border-color-base;
+				    position:relative;
+				    padding-top:165px;
 
 					.profile-image {
-						margin:60px auto 20px;
+						position:absolute;
+						top:35px;
 						display:block;
-						width:100px;
+						margin:auto;
+						left:0;
+						right:0;
+						width:110px;
 
 						img {
 							border-radius:50%;
@@ -862,6 +868,7 @@
 
 							.snap-value {
 								color:$extra-info-color;
+								font-size:$view-resume-byline-font-size;
 							}
 
 							&:last-child {
@@ -1077,6 +1084,7 @@
 							background-color:$resume-background-color;
 							
 							canvas {
+								width:100%;
 								border:1px solid $border-color-base;
 								margin:10px 0 0 0;
 							}
@@ -1090,6 +1098,10 @@
 			}
 
 		}
+    }
+
+    .mobile-resume-sidebar {
+    	display:none;
     }
 
     .resume-sidebar {
@@ -1196,3 +1208,140 @@
 }
 
 /** [/Modal] **/
+
+@media all and (max-width:1024px) {
+	.view-resume-modal {
+		padding-bottom:60px;
+		.resume-sidebar {
+			display:none;
+		}
+		.main-wrapper {
+			width:100%;
+			padding-right:0;
+		}
+		.mobile-resume-sidebar {
+			display:block;
+
+		    background:$color-white;
+		    box-shadow:0 0 10px rgba(0,0,0,0.2);
+
+		    .fold {
+		    	position: fixed;
+			    height: 60px;
+			    right: 0;
+			    width: 85%;
+			    padding:20px;
+
+				&.top {
+					box-shadow:0 0 10px rgba(0,0,0,0.2);
+				}
+
+				&.first-fold {
+ 					bottom: 0;
+ 					background:$color-white;
+
+				}
+
+				&.second-fold {
+					bottom:60px;
+					background:$extra-info-color;
+					
+					&.hidden {
+
+					}
+				}
+				.action-buttons {
+					font-size:0;
+					span {
+						@include button($color-white);
+						display:inline-block;
+
+						&.multi-options {
+							background-color:transparent;
+							padding-left:0;
+							padding-right:0;
+						}
+					}
+				}
+		    }
+		}
+	}	
+}
+
+@media all and (max-width:768px) {
+
+		
+	.view-resume-modal {
+		width:100%;
+		padding:20px 10px;
+		box-shadow:0;
+		padding-bottom:70px;
+
+		.main-wrapper {
+			.main-container {
+				.container {
+					&.resume-header {
+						.profile-snapshot {
+							font-size:0;
+							padding:10px 0;
+
+							.snap {
+								width:33.3333%;
+								text-align:center;
+								padding:0;
+								margin:10px 0;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.mobile-resume-sidebar {
+			display:block;
+		    background:$color-white;
+		    box-shadow:0 0 10px rgba(0,0,0,0.2);
+
+
+		    .fold {
+		    	position: fixed;
+			    height: 60px;
+			    right: 0;
+			    width: 100%;
+			    padding:20px;
+
+				&.top {
+					box-shadow:0 0 10px rgba(0,0,0,0.2);
+				}
+
+				&.first-fold {
+ 					bottom: 0;
+ 					background:$color-white;
+
+				}
+
+				&.second-fold {
+					bottom:60px;
+					background:$extra-info-color;
+					
+					&.hidden {
+
+					}
+				}
+				.action-buttons {
+					font-size:0;
+					span {
+						@include button($color-white);
+						display:inline-block;
+
+						&.multi-options {
+							background-color:transparent;
+							padding-left:0;
+							padding-right:0;
+						}
+					}
+				}
+		    }
+		}
+	}	
+}
