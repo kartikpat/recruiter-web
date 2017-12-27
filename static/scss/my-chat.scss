@@ -1,0 +1,249 @@
+@import 'common/spacings';
+@import 'input-elements';
+@import 'chat-sidebar';
+
+.page-content {
+	@include page-content;
+
+	.main-wrapper {
+		width:100%;
+	}
+	.chat-container {
+		display:block;
+		width:100%;
+		border:1px solid $border-color-base;
+		background-color:$color-white;
+		border-radius:4px;
+
+		.chat-header {
+			padding:20px;
+			border-bottom:1px solid $border-color-base;
+			h3 {
+				margin:0;
+				display:inline-block;
+				font-size:$page-subtitle-font-size;
+			}
+
+			span {
+				&.user-status-indicator {
+					display:inline-block;
+					width:10px;
+					height:10px;
+					border-radius:50%;	
+					font-size:$base-font-size;
+					margin:0 2px 0 15px;
+					&.online {
+						background:$user-status-online;
+					}
+
+					&.offline {
+						background:$user-status-offline;
+					}
+				}
+
+				&.user-status {
+					color:$extra-info-color;	
+				}
+			}
+		}
+
+		.chat-body {
+			.sidebar {
+				width:20%;
+				display:inline-block;
+				height:525px;
+				vertical-align:top;
+				&.conversations-list {
+					border-right:1px solid $border-color-base;
+					.search {
+						input {
+							width:100%;
+							display:block;
+							padding:10px 10px 10px 30px;
+							font-size:$base-font-size;
+							border:0;
+							border-bottom:1px solid $border-color-base;
+						}
+					}
+
+					.conversation-item {
+					    display: inline-block;
+					    vertical-align: middle;
+					    width: 100%;
+					    padding: 5px 0 0 0;
+					    font-size: 0;
+						
+						.user-item {
+						    display: inline-block;
+						    vertical-align: middle;
+						    padding:10px 20px;
+
+							&.user-image {
+								display:inline-block;
+								vertical-align:middle;
+								position:relative;
+								img {
+								    border-radius: 50%;
+								    margin-right: 0px;
+								    width: 50px;
+								    height: 50px;
+								}
+
+								.candidate-status {
+									width:12px;
+									height:12px;
+									display:block;
+									border:2px solid $color-white;
+									border-radius:50%;
+									position:absolute;
+									bottom:10px;
+									right:20px;
+									&.offline {
+										background-color:$user-status-offline;
+									}
+									&.online {
+										background-color:$user-status-online;
+									}
+								}
+							}
+
+							&.user-info {
+								display:inline-block;
+								vertical-align:middle;
+								padding-left:0;
+								p {
+									margin: 0;
+
+									&.user-name {
+									    font-size: $chat-sidebar-user-name-font-size;
+									    line-height: 1.5;
+									    display: inline-block;
+									}
+
+									&.user-designation {
+									    font-size: $chat-sidebar-user-designation-font-size;
+									    line-height: 1.5;
+									    color: #888;
+									}
+
+								}
+							}
+						}
+
+						.conversation-item-separator {
+							margin:5px 0px 0 0;
+							border-bottom:1px solid $border-color-base;
+						}
+
+						&:last-child {
+
+							.user-item {
+								&.user-info {
+									p {
+										&.user-designation {
+											border-color:transparent;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.chat-window {
+				width:60%;
+				background:$color-white;
+				display:inline-block;	
+				height:525px;
+				vertical-align:top;
+				position:relative;
+
+				.new-message {
+					border-top:1px solid $border-color-base;
+					position:absolute;
+					height:150px;
+					left:0;
+					right:0;
+					bottom:0;
+					background:$body-background-color;
+					padding:20px;
+
+					textarea {
+						width:100%;
+						display:block;
+						min-height:110px;
+						border:1px solid $border-color-base;
+						resize:none;
+
+						@include input-field;
+						line-height:1.4;
+
+						&:focus {
+							outline:none;
+						}
+					}
+
+					.send-message {
+						@include button($button-color-green);
+						margin:0;
+						position:absolute;
+						bottom:30px;
+						right:30px;
+					}
+				}
+			}
+
+			.user-profile {
+				width:20%;
+				display:inline-block;
+				padding:50px 0 0 0;
+				border-left:1px solid $border-color-base;
+				vertical-align:top;
+				height:525px;
+
+				.user-item {
+					text-align:center;
+					margin:20px 0;
+
+					&.user-image {
+						margin:20px auto;
+
+						img {
+							max-width:140px;
+							max-height:140px;
+							object-fit:cover;
+							border-radius:50%;
+							border:3px solid $color-white;
+							box-shadow:0 0 3px rgba(0,0,0,0.3);
+						}
+					}
+
+					&.user-info {
+						p {
+							color:$extra-info-color;
+							line-height:1.5;
+							font-size:$base-font-size;
+							&.user-name {
+								font-size:$base-subtitle-size;
+								color:$inline-link-color;
+							}
+
+							&.user-organization {
+								color:$color-black;
+							}
+						}
+
+						.user-detail {
+							margin:10px 0 0 0;
+
+							p {
+								color:$color-black;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

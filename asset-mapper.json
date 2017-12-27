@@ -933,6 +933,34 @@
 			]
 		}
 	},
+	"my-chat": {
+		"styles": {
+			"debug" : [
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/utilities.css",
+				"static/css/footer.css",
+				"static/css/header.css",
+				"static/css/my-chat.css"
+			],
+			"prod": [
+				"static/build/css/my-chat.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/change-password.js",
+				"static/js/utilities.js",
+				"static/js/my-chat.js"
+			],
+			"prod" : [
+				"static/build/js/my-chat.min.js"
+			]
+		}
+	},
 	"candidate-apply-list": {
 		"styles": {
 			"debug" : [
