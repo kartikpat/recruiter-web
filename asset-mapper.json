@@ -893,6 +893,10 @@
 				"static/js/request.js",
 				"static/js/header.js",
 				"static/js/change-password.js",
+				"static/js/vendor/slick.js",
+				"static/js/vendor/google-charts-loader.min.js",
+				"static/js/charts/bar-chart-stacked.js",
+				"static/js/new-jobs-chart.js",
 				"static/js/dashboard.js",
 				"static/js/utilities.js"
 			],

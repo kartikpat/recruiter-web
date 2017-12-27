@@ -1,5 +1,5 @@
 @import 'common/spacings';
-
+@import 'common/slider';
 @import 'chat-sidebar';
 
 $light-green-bg: #f3fbfb;
@@ -11,6 +11,8 @@ $shadow: rgba(214, 214, 214, 0.3);
 $card-border: #e8e8e8;
 $meta-grey: #737373;
 $horizontal-separator-color: #e9eef8;
+$white-highlight-color:  #f7f8fa;
+$button-border-color: #8f8a8a;
 
 .page-content {
 	color: $black;
@@ -91,15 +93,19 @@ $horizontal-separator-color: #e9eef8;
 		}
 	}
 	.feed-column{
-		width: 70%;
+		width: 65%;
 		display: inline-block;
+		padding-right: 20px;
 	}
 	.feed-card{
-
+		margin-bottom: 40px;
 	}
 	.notification-column{
-		width: 30%;
+		width: 35%;
 		display: inline-block;
+	}
+	.notification-card{
+		margin-bottom: 40px;
 	}
 	.dashboard{
 		border-radius: 6px;
@@ -135,22 +141,30 @@ $horizontal-separator-color: #e9eef8;
 		margin-right: 18px;
 	}
 	.header-row{
+		margin-bottom: 10px;
 		.heading{
 			width: 70%;
 			display: inline-block;
+			font-size: 16px;
+			font-weight: 400;
 		}
 		.heading-button{
 			width: 20%;
 			display: inline-block;
 			text-align: right;
+			font-size: 13px;
+			margin-right: 5px;
+			img{
+				margin-left: 5px;
+			}
 		}
 	}
 	.detail-card{
-		min-height: 300px;
 		box-shadow: 0px 2px 8px 0px $shadow;
 		border: 1px solid $card-border;
 		background-color: $white;
 		border-radius: 6px;
+		padding: 10px 0;
 		.meta-prop{
 			display: inline-block;
 			margin-right: 10px;
@@ -171,19 +185,164 @@ $horizontal-separator-color: #e9eef8;
 			background-color: $horizontal-separator-color;
 			margin-top: 20px;
 		}
+		.profile{
+			.icon, .general{
+				display: inline-block;
+				vertical-align: top;
+			}
+			.icon{
+			    width: 80px;
+			    padding: 0 10px;
+			    padding-right: 0px;
+				img{
+					width: 100%;
+				}
+			}
+			.general{
+				padding: 10px;
+				width: calc(100% - 90px);
+				display: inline-block;
+				.name{
+					color: $green;
+					font-size: 16px;
+					font-weight: 400;
+					img{
+						width: 17px;
+					}
+				}
+				.meta{
+					color: $black;
+					font-size: 16px;
+				}
+				.highlighted-meta{
+					background-color: $white-highlight-color;
+					font-size: 13px;
+					font-weight: 400;
+					margin-bottom: 15px;
+					padding: 5px 10px;
+					display: inline-block;
+					margin-left: -14px;
+				}
+
+			}
+
+		}
+		.highlighted-banner{
+			background-color: $light-green-bg;
+			height: 40px;
+			line-height: 40px;
+			font-size: 16px;
+			text-align: center;
+			.number{
+				color: $green
+			}
+		}
+		.profile-detail{
+			margin-left: 80px;	
+    		padding: 0 10px;
+    		.profile-row{
+    			padding: 10px 0;
+    			.title, .label{
+    				padding-bottom: 5px;
+    			}
+    		}
+    		.title{
+    			font-size: 14px;
+    			color: $black;
+    		}
+    		.label{
+    			font-size: 13px;
+    			color: $meta-grey;
+    		}
+		}
+		.action-buttons{
+			width: 100%;
+			text-align: center;
+			.button{
+				 margin: 0 auto;
+				 min-width: 50px;
+				 display: inline-block;
+				 padding: 5px 15px;
+				 border: thin solid $button-border-color;
+				 border-radius: 4px;
+				 cursor: pointer;
+			}
+		}
+		.icon{
+			padding-right: 0px;
+			.separater{
+				height: 114px;
+    			margin-top: -83px;
+			}
+		}
+		.custom-icon{
+			border: thin solid $card-border;
+			border-top: 4px solid $green;
+			text-align: center;
+			padding: 10px;
+			border-radius: 6px;
+			border-top-left-radius: 0px;
+			border-top-right-radius: 0px;
+			margin-top: 30px;
+			width: 60px;
+			height: 56px;
+			.number{
+				color: $green;
+			}
+		}
+	}
+	.interview{
+		.profile{
+			.general{
+				.name{
+					color: $black;
+					font-size: 14px;
+					font-weight: 700;
+				}
+				.meta{
+					font-size: 13px;
+					color: $meta-grey;
+				}
+			}
+		}
 	}
 	.feed-row{
 		padding: 10px 25px;
+		.title{
+			color: $meta-grey;
+			font-size: 14px;
+		}
+		.list{
+			.name{
+				color: $black;
+				font-size: 14px;
+			}
+			.description{
+				color: $meta-grey;
+				font-size: 14px;
+			}
+			li{
+				padding: 5px;
+			}
+		}
 		.main-content{
-			margin-bottom: 16px;
-			.title{
+			.meta-content{
+				margin-top: 10px;	
+			}
+			.title, .stats{
 				display: inline-block;
+				vertical-align: top
+			}
+			.title{
 				width: 60%;
 				font-size: 14px;
 				font-weight: 700;
+				.text{
+					max-width: 300px;
+					color: $black;
+				}
 			}
 			.stats{
-				display: inline-block;
 				width: 35%;
 				.value, .label{
 					display: inline-block;
@@ -204,4 +363,85 @@ $horizontal-separator-color: #e9eef8;
 			}
 		}
 	}
+}
+.slider{
+	width: 116px;
+	margin: 0 auto;
+	padding: 10px 0;	
+	img{
+		width:116px;
+	}
+	.left-arrow{
+		width: 20px;
+	    float: left;
+	    margin-top: 20px;
+	    margin-left: -70px;
+	    cursor: pointer;
+	}
+	.right-arrow{
+		width: 20px;
+	    float: right;
+	    margin-top: -70px;
+	    margin-right: -70px;
+	    cursor: pointer;
+	}
+	
+
+}
+
+@media all and (max-width: 992px) {
+	.page-content{
+		.conversations{
+	    	display: none;
+	    }
+	    .main-wrapper{
+	    	width: 100%;
+	    }
+	}
+}
+
+@media all and (max-width:768px) {
+    .page-content{
+    	padding: 20px 10px;
+    	.feed-column, .notification-column{
+    		width: 100%;
+    		padding-right: 0px;
+    	}
+    	.block{
+    		width: 50%;
+    		.separater{
+    			display: none;
+    		}
+    	}
+    	$block-border: thin solid $separater-grey;
+    	.border-top-mobile {
+    		border-top: $block-border;
+    	}
+    	.border-bottom-mobile {
+    		border-bottom: $block-border;
+    	}
+    	.border-right-mobile{
+			border-right: $block-border;
+    	}
+    	.border-left-mobile{
+			border-left: $block-border;
+    	}
+    	.feed-row{
+			.main-content{
+				.stats, .title{
+					width: 90%;		
+				}
+				.meta-content{
+					margin-top: 20px;
+				}
+				.stats{
+					margin-top: 20px;
+				}
+				.action-panel{
+					margin-top: -68px;
+				}
+	    	}
+    	} 
+    }
+
 }
