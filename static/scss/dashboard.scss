@@ -326,7 +326,9 @@ $button-border-color: #8f8a8a;
 			}
 		}
 		.main-content{
-			margin-bottom: 10px;
+			.meta-content{
+				margin-top: 10px;	
+			}
 			.title, .stats{
 				display: inline-block;
 				vertical-align: top
@@ -365,7 +367,7 @@ $button-border-color: #8f8a8a;
 .slider{
 	width: 116px;
 	margin: 0 auto;
-	padding: 10px 0;
+	padding: 10px 0;	
 	img{
 		width:116px;
 	}
@@ -384,5 +386,60 @@ $button-border-color: #8f8a8a;
 	    cursor: pointer;
 	}
 	
+
+}
+
+@media all and (max-width: 992px) {
+	.page-content{
+		.conversations{
+	    	display: none;
+	    }
+	    .main-wrapper{
+	    	width: 100%;
+	    }
+	}
+}
+
+@media all and (max-width:768px) {
+    .page-content{
+    	.feed-column, .notification-column{
+    		width: 100%;
+    	}
+    	.block{
+    		width: 50%;
+    		.separater{
+    			display: none;
+    		}
+    	}
+    	$block-border: thin solid $separater-grey;
+    	.border-top-mobile {
+    		border-top: $block-border;
+    	}
+    	.border-bottom-mobile {
+    		border-bottom: $block-border;
+    	}
+    	.border-right-mobile{
+			border-right: $block-border;
+    	}
+    	.border-left-mobile{
+			border-left: $block-border;
+    	}
+    	.feed-row{
+			.main-content{
+				.stats, .title{
+					width: 90%;		
+				}
+				.meta-content{
+					margin-top: 20px;
+				}
+				.stats{
+					margin-top: 20px;
+				}
+				.action-panel{
+					margin-top: -68px;
+				}
+	    	}
+    	} 
+    }
 
 }

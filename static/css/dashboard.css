@@ -1459,32 +1459,32 @@ span.sticker {
       font-size: 14px; }
     .page-content .feed-row .list li {
       padding: 5px; }
-    .page-content .feed-row .main-content {
-      margin-bottom: 10px; }
-      .page-content .feed-row .main-content .title, .page-content .feed-row .main-content .stats {
+    .page-content .feed-row .main-content .meta-content {
+      margin-top: 10px; }
+    .page-content .feed-row .main-content .title, .page-content .feed-row .main-content .stats {
+      display: inline-block;
+      vertical-align: top; }
+    .page-content .feed-row .main-content .title {
+      width: 60%;
+      font-size: 14px;
+      font-weight: 700; }
+      .page-content .feed-row .main-content .title .text {
+        max-width: 300px;
+        color: #2b2b2b; }
+    .page-content .feed-row .main-content .stats {
+      width: 35%; }
+      .page-content .feed-row .main-content .stats .value, .page-content .feed-row .main-content .stats .label {
         display: inline-block;
-        vertical-align: top; }
-      .page-content .feed-row .main-content .title {
-        width: 60%;
-        font-size: 14px;
-        font-weight: 700; }
-        .page-content .feed-row .main-content .title .text {
-          max-width: 300px;
-          color: #2b2b2b; }
-      .page-content .feed-row .main-content .stats {
-        width: 35%; }
-        .page-content .feed-row .main-content .stats .value, .page-content .feed-row .main-content .stats .label {
-          display: inline-block;
-          font-size: 14px; }
-        .page-content .feed-row .main-content .stats .value {
-          color: #149075; }
-      .page-content .feed-row .main-content .action-panel {
-        float: right;
-        margin-top: 5px; }
-        .page-content .feed-row .main-content .action-panel .img {
-          height: 17px;
-          width: 5px;
-          margin-right: -5px; }
+        font-size: 14px; }
+      .page-content .feed-row .main-content .stats .value {
+        color: #149075; }
+    .page-content .feed-row .main-content .action-panel {
+      float: right;
+      margin-top: 5px; }
+      .page-content .feed-row .main-content .action-panel .img {
+        height: 17px;
+        width: 5px;
+        margin-right: -5px; }
 
 .slider {
   width: 116px;
@@ -1504,3 +1504,33 @@ span.sticker {
     margin-top: -70px;
     margin-right: -70px;
     cursor: pointer; }
+
+@media all and (max-width: 992px) {
+  .page-content .conversations {
+    display: none; }
+  .page-content .main-wrapper {
+    width: 100%; } }
+
+@media all and (max-width: 768px) {
+  .page-content .feed-column, .page-content .notification-column {
+    width: 100%; }
+  .page-content .block {
+    width: 50%; }
+    .page-content .block .separater {
+      display: none; }
+  .page-content .border-top-mobile {
+    border-top: thin solid #e4e4e4; }
+  .page-content .border-bottom-mobile {
+    border-bottom: thin solid #e4e4e4; }
+  .page-content .border-right-mobile {
+    border-right: thin solid #e4e4e4; }
+  .page-content .border-left-mobile {
+    border-left: thin solid #e4e4e4; }
+  .page-content .feed-row .main-content .stats, .page-content .feed-row .main-content .title {
+    width: 90%; }
+  .page-content .feed-row .main-content .meta-content {
+    margin-top: 20px; }
+  .page-content .feed-row .main-content .stats {
+    margin-top: 20px; }
+  .page-content .feed-row .main-content .action-panel {
+    margin-top: -68px; } }
