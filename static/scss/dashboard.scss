@@ -402,8 +402,10 @@ $button-border-color: #8f8a8a;
 
 @media all and (max-width:768px) {
     .page-content{
+    	padding: 20px 10px;
     	.feed-column, .notification-column{
     		width: 100%;
+    		padding-right: 0px;
     	}
     	.block{
     		width: 50%;
