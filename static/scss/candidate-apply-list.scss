@@ -1021,6 +1021,7 @@
 
 											span {
 												display:inline-block;
+												vertical-align:top;
 												width:50%;
 												font-size:$resume-listing-font-size;
 
@@ -1344,4 +1345,22 @@
 		    }
 		}
 	}	
+}
+
+@media all and (max-width:480px) {
+	.view-resume-modal {
+		.main-wrapper {
+			.main-container {
+				.container {
+					&.resume-header {
+						.profile-snapshot {
+							.snap {
+								width:50%;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }

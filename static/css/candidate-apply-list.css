@@ -2187,6 +2187,7 @@ span.sticker {
                   margin: 10px 0; }
                   .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul li span {
                     display: inline-block;
+                    vertical-align: top;
                     width: 50%;
                     font-size: 15px; }
                     .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul li span.key {
@@ -2454,3 +2455,7 @@ span.sticker {
               background-color: transparent;
               padding-left: 0;
               padding-right: 0; } }
+
+@media all and (max-width: 480px) {
+  .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot .snap {
+    width: 50%; } }
