@@ -1,5 +1,5 @@
 @import 'common/spacings';
-
+@import 'common/slider';
 @import 'chat-sidebar';
 
 $light-green-bg: #f3fbfb;
@@ -11,6 +11,8 @@ $shadow: rgba(214, 214, 214, 0.3);
 $card-border: #e8e8e8;
 $meta-grey: #737373;
 $horizontal-separator-color: #e9eef8;
+$white-highlight-color:  #f7f8fa;
+$button-border-color: #8f8a8a;
 
 .page-content {
 	color: $black;
@@ -102,6 +104,9 @@ $horizontal-separator-color: #e9eef8;
 		width: 35%;
 		display: inline-block;
 	}
+	.notification-card{
+		margin-bottom: 40px;
+	}
 	.dashboard{
 		border-radius: 6px;
 	    border-style: solid;
@@ -188,22 +193,48 @@ $horizontal-separator-color: #e9eef8;
 			.icon{
 			    width: 80px;
 			    padding: 0 10px;
+			    padding-right: 0px;
 				img{
 					width: 100%;
 				}
 			}
 			.general{
 				padding: 10px;
-				padding-left: 0px;
+				width: calc(100% - 90px);
+				display: inline-block;
 				.name{
 					color: $green;
 					font-size: 16px;
 					font-weight: 400;
+					img{
+						width: 17px;
+					}
 				}
 				.meta{
 					color: $black;
 					font-size: 16px;
 				}
+				.highlighted-meta{
+					background-color: $white-highlight-color;
+					font-size: 13px;
+					font-weight: 400;
+					margin-bottom: 15px;
+					padding: 5px 10px;
+					display: inline-block;
+					margin-left: -14px;
+				}
+
+			}
+
+		}
+		.highlighted-banner{
+			background-color: $light-green-bg;
+			height: 40px;
+			line-height: 40px;
+			font-size: 16px;
+			text-align: center;
+			.number{
+				color: $green
 			}
 		}
 		.profile-detail{
@@ -232,9 +263,46 @@ $horizontal-separator-color: #e9eef8;
 				 min-width: 50px;
 				 display: inline-block;
 				 padding: 5px 15px;
-				 border: thin solid $black;
+				 border: thin solid $button-border-color;
 				 border-radius: 4px;
 				 cursor: pointer;
+			}
+		}
+		.icon{
+			padding-right: 0px;
+			.separater{
+				height: 114px;
+    			margin-top: -83px;
+			}
+		}
+		.custom-icon{
+			border: thin solid $card-border;
+			border-top: 4px solid $green;
+			text-align: center;
+			padding: 10px;
+			border-radius: 6px;
+			border-top-left-radius: 0px;
+			border-top-right-radius: 0px;
+			margin-top: 30px;
+			width: 60px;
+			height: 56px;
+			.number{
+				color: $green;
+			}
+		}
+	}
+	.interview{
+		.profile{
+			.general{
+				.name{
+					color: $black;
+					font-size: 14px;
+					font-weight: 700;
+				}
+				.meta{
+					font-size: 13px;
+					color: $meta-grey;
+				}
 			}
 		}
 	}
@@ -293,4 +361,28 @@ $horizontal-separator-color: #e9eef8;
 			}
 		}
 	}
+}
+.slider{
+	width: 116px;
+	margin: 0 auto;
+	padding: 10px 0;
+	img{
+		width:116px;
+	}
+	.left-arrow{
+		width: 20px;
+	    float: left;
+	    margin-top: 20px;
+	    margin-left: -70px;
+	    cursor: pointer;
+	}
+	.right-arrow{
+		width: 20px;
+	    float: right;
+	    margin-top: -70px;
+	    margin-right: -70px;
+	    cursor: pointer;
+	}
+	
+
 }

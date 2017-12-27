@@ -320,6 +320,9 @@ body.posf {
   display: table;
   clear: both; }
 
+.center {
+  text-align: center; }
+
 a {
   text-decoration: none; }
 
