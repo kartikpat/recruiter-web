@@ -1,31 +1,30 @@
-@import "colors.scss";
-@import "fonts.scss";
-
-@import 'components/_colors.scss';
-@import 'components/_type.scss';
-@import 'components/_global.scss';
-@import 'components/_theme.scss';
-
-@import 'spacings';
-@import 'input-elements';
+@import 'common/spacings';
 
 @import 'chat-sidebar';
 
-
 .page-content {
+	@include page-content;
 	background-color:$page-background-color;
 	.page-header {
 		select {
-			@extend select.select-dropdown;
-
+			@include select-dropdown;
 			&.minimal {
-				font-size:$select-minimal-font-size;
-				background-image:url("/static/images/minimal_select_dropdown.svg");
+				display:inline-block;
+				width:auto;
+				border:0;
+				padding:10px 40px 10px 10px;
+				background-color:transparent;
+				margin-bottom:10px;
+				background-image:url("/static/images/minimal_select_dropdown.svg");		
 			}
 		}
 
 		.action-buttons {
 			padding:5px 0 0 0;
+
+			button {
+				@include button($button-color-green)
+			}
 		}
 	}
 

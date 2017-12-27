@@ -1,5 +1,5 @@
 @import 'input-elements';	
-@import 'spacings';
+@import 'common/spacings';
 
 .form-elements {
 	line-height:1;
@@ -7,4 +7,5 @@
 
 .page-content {
 	padding:0;
+	@include page-content;
 }

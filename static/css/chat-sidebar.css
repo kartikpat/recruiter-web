@@ -27,6 +27,7 @@
   animation-duration: 500ms !important; }
 
 /** Mobile Menu **/
+/** Mobile Menu **/
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
@@ -291,6 +292,9 @@ body.posf {
   display: table;
   clear: both; }
 
+.center {
+  text-align: center; }
+
 a {
   text-decoration: none; }
 
@@ -422,267 +426,7 @@ a {
 .animated {
   animation-duration: 500ms !important; }
 
-/**** Fontello Font Icons : ****/
-@font-face {
-  font-family: 'fontello';
-  src: url("../fonts/fontello.eot");
-  src: url("../fonts/fontello.eot#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2") format("woff2"), url("../fonts/fontello.woff") format("woff"), url("../fonts/fontello.ttf") format("truetype"), url("../fonts/fontello.svg#fontello") format("svg");
-  font-weight: normal;
-  font-style: normal; }
-
-/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
-/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
-/*
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  @font-face {
-    font-family: 'fontello';
-    src: url('../font/fontello.svg?75489480#fontello') format('svg');
-  }
-}
-*/
-[class^="icon-"]:before, [class*=" icon-"]:before {
-  font-family: "fontello";
-  font-style: normal;
-  font-weight: normal;
-  speak: none;
-  display: inline-block;
-  text-decoration: inherit;
-  width: 1em;
-  margin-right: .2em;
-  text-align: center;
-  /* opacity: .8; */
-  /* For safety - reset parent styles, that can break glyph codes*/
-  font-variant: normal;
-  text-transform: none;
-  /* fix buttons height, for twitter bootstrap */
-  line-height: 1em;
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
-  margin-left: .2em;
-  /* you can be more comfortable with increased icons size */
-  /* font-size: 120%; */
-  /* Font smoothing. That was taken from TWBS */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* Uncomment for 3D effect */
-  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
-
-.icon-certification:before {
-  content: '\e800'; }
-
-/* '' */
-.icon-cross:before {
-  content: '\e801'; }
-
-/* '' */
-.icon-disabillity-symbol:before {
-  content: '\e802'; }
-
-/* '' */
-.icon-chat_icon:before {
-  content: '\e803'; }
-
-/* '' */
-.icon-distance_learning:before {
-  content: '\e804'; }
-
-/* '' */
-.icon-down_arrow:before {
-  content: '\e805'; }
-
-/* '' */
-.icon-edit:before {
-  content: '\e806'; }
-
-/* '' */
-.icon-ex--alunmi:before {
-  content: '\e807'; }
-
-/* '' */
-.icon-ex-defence:before {
-  content: '\e808'; }
-
-/* '' */
-.icon-executive-program:before {
-  content: '\e809'; }
-
-/* '' */
-.icon-facebook-logo:before {
-  content: '\e80a'; }
-
-/* '' */
-.icon-full-time:before {
-  content: '\e80b'; }
-
-/* '' */
-.icon-gender:before {
-  content: '\e80c'; }
-
-/* '' */
-.icon-information:before {
-  content: '\e80d'; }
-
-/* '' */
-.icon-linkedin-logo:before {
-  content: '\e80e'; }
-
-/* '' */
-.icon-part-time:before {
-  content: '\e80f'; }
-
-/* '' */
-.icon-refresh:before {
-  content: '\e810'; }
-
-/* '' */
-.icon-refresh2:before {
-  content: '\e811'; }
-
-/* '' */
-.icon-right_arrow:before {
-  content: '\e812'; }
-
-/* '' */
-.icon-shield:before {
-  content: '\e813'; }
-
-/* '' */
-.icon-star:before {
-  content: '\e814'; }
-
-/* '' */
-.icon-star2:before {
-  content: '\e815'; }
-
-/* '' */
-.icon-twitter:before {
-  content: '\e816'; }
-
-/* '' */
-.icon-woman:before {
-  content: '\e817'; }
-
-/* '' */
-.icon-candidate:before {
-  content: '\e818'; }
-
-/* '' */
-.icon-checked_icon:before {
-  content: '\e819'; }
-
-/* '' */
-.icon-close_icon:before {
-  content: '\e81a'; }
-
-/* '' */
-.icon-group:before {
-  content: '\e81b'; }
-
-/* '' */
-.icon-document_search_interface_symbol:before {
-  content: '\e81c'; }
-
-/* '' */
-.icon-down_arrow-1:before {
-  content: '\e81d'; }
-
-/* '' */
-.icon-download_arrow:before {
-  content: '\e81e'; }
-
-/* '' */
-.icon-email_envelope:before {
-  content: '\e81f'; }
-
-/* '' */
-.icon-envelope:before {
-  content: '\e820'; }
-
-/* '' */
-.icon-info:before {
-  content: '\e821'; }
-
-/* '' */
-.icon-search_icon:before {
-  content: '\e822'; }
-
-/* '' */
-.icon-notification_bell_outline_interface_symbol:before {
-  content: '\e823'; }
-
-/* '' */
-.icon-politics:before {
-  content: '\e824'; }
-
-/* '' */
-.icon-denied:before {
-  content: '\e825'; }
-
-/* '' */
-.icon-star_shaped_medal:before {
-  content: '\e826'; }
-
-/* '' */
-.icon-sunrise:before {
-  content: '\e827'; }
-
-/* '' */
-.icon-tick:before {
-  content: '\e828'; }
-
-/* '' */
-.icon-add_icon:before {
-  content: '\e82a'; }
-
-/* '' */
-.icon-back_icon:before {
-  content: '\e82b'; }
-
-/* '' */
-.icon-badge:before {
-  content: '\e82c'; }
-
-/* '' */
-.icon-box:before {
-  content: '\e82d'; }
-
-/* '' */
-.icon-interview:before {
-  content: '\e82f'; }
-
-/* '' */
-.icon-mail:before {
-  content: '\e830'; }
-
-/* '' */
-.icon-user:before {
-  content: '\e831'; }
-
-/* '' */
-.page-content {
-  min-height: 100%;
-  padding: 0;
-  overflow: auto;
-  position: relative;
-  padding: 20px; }
-  .page-content .sidebar {
-    width: 15%;
-    padding: 20px;
-    background: #1f8f75;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    bottom: 43px; }
-    .page-content .sidebar h3 {
-      font-size: 30px;
-      text-transform: uppercase;
-      color: #ffffff; }
-  .page-content .content-block {
-    width: 85%;
-    padding: 40px 70px; }
-    .page-content .content-block .section {
-      margin-bottom: 60px; }
-
+/** Mobile Menu **/
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
@@ -921,10 +665,14 @@ a {
 
 /* '' */
 /** Mobile Menu **/
+/* [Down Arrows] : */
+/* [/Down Arrows] : */
 select.select-dropdown {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -o-appearanance: none;
+  font-family: inherit;
+  display: inline-block;
+  font-size: 14px;
+  color: #818181;
+  padding: 16px 22px;
   border-radius: 3px;
   background: #FFF;
   width: 100%;
@@ -934,23 +682,14 @@ select.select-dropdown {
   background-position: right 18px center;
   cursor: pointer;
   border-color: #e8e8e8;
-  font-family: inherit;
-  display: inline-block;
-  font-size: 14px;
-  color: #818181;
-  padding: 16px 22px; }
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearanance: none; }
   select.select-dropdown[multiple] {
     background-image: none;
     height: 120px; }
   select.select-dropdown.inactive .dropdown-list {
     display: none; }
-  select.select-dropdown.minimal {
-    display: inline-block;
-    width: 150px;
-    border: 0;
-    padding: 10px;
-    background-color: transparent;
-    margin-bottom: 10px; }
 
 label {
   font-size: 14px;
@@ -1071,37 +810,6 @@ label {
 .check-input input:checked + label {
   background-image: url("/static/images/checked_checkbox.svg"); }
 
-button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  -o-appearance: none;
-  border: 0;
-  padding: 0;
-  margin: 0;
-  background: #FFF;
-  border-color: #8f8a8a;
-  border-radius: 4px;
-  padding: 5px 14px;
-  font-size: 14px;
-  margin: 0 5px;
-  color: #FFF;
-  display: inline-block;
-  vertical-align: top;
-  cursor: pointer; }
-  button.green {
-    background-color: #1f8f75; }
-  button.red {
-    background-color: #af595a; }
-  button.white {
-    border: 1px solid #8f8a8a;
-    color: #2b2b2b; }
-  button.edit {
-    padding: 3px 9px; }
-    button.edit img {
-      width: 17px;
-      height: 17px; }
-
 span.sticker {
   display: inline-block;
   background: #26252a;
@@ -1164,97 +872,15 @@ span.sticker {
         font-size: 13px;
         color: #1a5e98; }
 
-.tag-container {
-  border: 1px solid #e8e8e8;
-  display: block;
-  padding: 7px 20px;
-  position: relative;
-  font-size: 0; }
-  .tag-container .input-tag {
-    display: inline-block;
-    background: #4fa995;
-    margin: 3px;
-    padding: 3px 10px;
-    border-radius: 20px; }
-    .tag-container .input-tag .tag-icons {
-      display: inline-block;
-      font-size: 14px;
-      padding: 5px 0 5px;
-      cursor: pointer; }
-    .tag-container .input-tag .tag-name {
-      display: inline-block; }
-    .tag-container .input-tag span {
-      color: #FFF;
-      font-size: 14px;
-      padding: 0 5px 0 0; }
-  .tag-container .pill-button {
-    position: relative;
-    display: inline-block; }
-    .tag-container .pill-button input[type=text] {
-      padding: 7px 17px;
-      margin: 3px;
-      border-radius: 50px;
-      border: 1px solid #e8e8e8;
-      color: #2b2b2b;
-      font-size: 14px;
-      border: 1px solid transparent;
-      background: #FFF;
-      z-index: 10;
-      width: 200px;
-      cursor: pointer;
-      transition: all 0.2s ease-in-out; }
-      .tag-container .pill-button input[type=text]:focus {
-        border-color: #4fa995; }
-    .tag-container .pill-button .pill-listing {
-      display: inline-block;
-      width: 100%;
-      position: absolute;
-      top: 0;
-      transform: translateY(38px);
-      opacity: 1;
-      left: 0;
-      z-index: 3;
-      transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; }
-      .tag-container .pill-button .pill-listing ul {
-        margin: 0;
-        list-style: none;
-        padding: 0;
-        max-height: 150px;
-        position: relative;
-        overflow: auto;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-        border: 1px solid #e8e8e8;
-        -webkit-overflow-scrolling: touch; }
-        .tag-container .pill-button .pill-listing ul li {
-          padding: 5px 20px;
-          display: block;
-          width: 100%;
-          font-size: 14px;
-          background: #FFF;
-          border-bottom: 1px solid #e8e8e8;
-          cursor: pointer; }
-          .tag-container .pill-button .pill-listing ul li.selected {
-            background-color: #e9f5f2; }
-          .tag-container .pill-button .pill-listing ul li.tag-added {
-            display: none !important; }
-          .tag-container .pill-button .pill-listing ul li:last-child {
-            border: 0; }
-    .tag-container .pill-button.inactive .pill-listing {
-      transform: translateY(25px);
-      opacity: 1; }
-      .tag-container .pill-button.inactive .pill-listing ul {
-        height: 0;
-        overflow: auto;
-        box-shadow: none;
-        border: 0; }
-
 @media all and (max-width: 768px) {
   .tag-container .pill-button .pill-listing ul {
     max-height: 300px; } }
 
 .conversations {
   width: 20%;
-  padding-left: 30px; }
+  padding-left: 30px;
+  display: inline-block;
+  vertical-align: top; }
   .conversations .conversation-listing-container .listing-header.add-new-conversation {
     background: transparent; }
   .conversations .conversation-listing-container .listing-header h3 {

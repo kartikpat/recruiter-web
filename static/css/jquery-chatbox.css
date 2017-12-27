@@ -25,6 +25,7 @@
 .animated {
   animation-duration: 500ms !important; }
 
+/** Mobile Menu **/
 .ui-chatbox {
   position: fixed;
   bottom: 0;
@@ -89,7 +90,7 @@
 .ui-widget-header {
   border: none;
   background: #4b4b4b;
-  color: #ffffff; }
+  color: #FFF; }
 
 .ui-widget-content {
   border: none;

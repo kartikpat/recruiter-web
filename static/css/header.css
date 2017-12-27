@@ -27,6 +27,7 @@
   animation-duration: 500ms !important; }
 
 /** Mobile Menu **/
+/** Mobile Menu **/
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
@@ -290,6 +291,9 @@ body.posf {
 .clearfix {
   display: table;
   clear: both; }
+
+.center {
+  text-align: center; }
 
 a {
   text-decoration: none; }

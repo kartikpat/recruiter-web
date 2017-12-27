@@ -57,10 +57,10 @@ module.exports = function(settings){
 		});
 	})
 	app.get("/", isAuthenticated,function(req, res){
-		res.render("index", {
+		res.render("dashboard", {
 			title: "IIM JOBS | Dashboard",
-			styles:  assetsMapper["index"]["styles"][mode],
-			scripts: assetsMapper["index"]["scripts"][mode],
+			styles:  assetsMapper["dashboard"]["styles"][mode],
+			scripts: assetsMapper["dashboard"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain:baseDomain
 		});
@@ -399,6 +399,39 @@ module.exports = function(settings){
 			title:"Recruiter Web - Settings | iimjobs.com",
 			styles:  assetsMapper["settings"]["styles"][mode],
 			scripts: assetsMapper["settings"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
+		})
+		return
+	});
+
+	app.get("/tagged-candidates", function(req,res){
+		res.render("tagged-candidates", {
+			title:"Recruiter Web - Tagged Candidates | iimjobs.com",
+			styles:  assetsMapper["tagged-candidates"]["styles"][mode],
+			scripts: assetsMapper["tagged-candidates"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
+		})
+		return
+	});
+
+	app.get("/shortlisted-candidates", function(req,res){
+		res.render("shortlisted-candidates", {
+			title:"Recruiter Web - Shortlisted Candidates | iimjobs.com",
+			styles:  assetsMapper["shortlisted-candidates"]["styles"][mode],
+			scripts: assetsMapper["shortlisted-candidates"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
+		})
+		return
+	});
+
+	app.get("/candidate-apply-list", function(req,res){
+		res.render("candidate-apply-list", {
+			title:"Recruiter Web - Candidate Apply List | iimjobs.com",
+			styles:  assetsMapper["candidate-apply-list"]["styles"][mode],
+			scripts: assetsMapper["candidate-apply-list"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain
 		})
