@@ -234,7 +234,8 @@ module.exports = function(settings){
 			title: "IIM JOBS | Premium Posting",
 			styles:  assetsMapper["premium-posting"]["styles"][mode],
 			scripts: assetsMapper["premium-posting"]["scripts"][mode],
-			baseUrl: baseUrl
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
 		})
 		return
 	})

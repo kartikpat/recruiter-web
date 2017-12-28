@@ -1416,12 +1416,22 @@ span.sticker {
   overflow: auto;
   position: relative;
   padding: 20px;
-  width: 100%; }
+  width: 100%;
+  min-height: calc(100% - 75px); }
   .page-content .main-wrapper {
-    width: 100%; }
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    right: 20px;
+    left: 20px; }
+    .page-content .main-wrapper .main-container {
+      height: 100%; }
+      .page-content .main-wrapper .main-container .container {
+        height: 100%; }
   .page-content .chat-container {
     display: block;
     width: 100%;
+    height: 100%;
     border: 1px solid #e8e8e8;
     background-color: #FFF;
     border-radius: 4px; }
@@ -1445,173 +1455,242 @@ span.sticker {
           background: #b6b6b5; }
       .page-content .chat-container .chat-header span.user-status {
         color: #808080; }
-    .page-content .chat-container .chat-body .sidebar {
-      width: 20%;
-      display: inline-block;
-      height: 525px;
-      vertical-align: top; }
-      .page-content .chat-container .chat-body .sidebar.conversations-list {
-        border-right: 1px solid #e8e8e8; }
-        .page-content .chat-container .chat-body .sidebar.conversations-list .search input {
-          width: 100%;
-          display: block;
-          padding: 10px 10px 10px 30px;
-          font-size: 14px;
-          border: 0;
-          border-bottom: 1px solid #e8e8e8; }
-        .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item {
-          display: inline-block;
-          vertical-align: middle;
-          width: 100%;
-          padding: 5px 0 0 0;
-          font-size: 0; }
-          .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item {
+    .page-content .chat-container .chat-body {
+      height: 90%;
+      height: calc(100% - 62px); }
+      .page-content .chat-container .chat-body .sidebar {
+        width: 20%;
+        height: 100%;
+        display: inline-block;
+        vertical-align: top; }
+        .page-content .chat-container .chat-body .sidebar.conversations-list {
+          border-right: 1px solid #e8e8e8; }
+          .page-content .chat-container .chat-body .sidebar.conversations-list .search input {
+            width: 100%;
+            display: block;
+            padding: 10px 10px 10px 30px;
+            font-size: 14px;
+            border: 0;
+            border-bottom: 1px solid #e8e8e8; }
+          .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item {
             display: inline-block;
             vertical-align: middle;
-            padding: 10px 20px; }
-            .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item.user-image {
+            width: 100%;
+            padding: 5px 0 0 0;
+            font-size: 0; }
+            .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item {
               display: inline-block;
               vertical-align: middle;
-              position: relative; }
-              .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item.user-image img {
-                border-radius: 50%;
-                margin-right: 0px;
-                width: 50px;
-                height: 50px; }
-              .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item.user-image .candidate-status {
-                width: 12px;
-                height: 12px;
-                display: block;
-                border: 2px solid #FFF;
-                border-radius: 50%;
-                position: absolute;
-                bottom: 10px;
-                right: 20px; }
-                .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item.user-image .candidate-status.offline {
-                  background-color: #b6b6b5; }
-                .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item.user-image .candidate-status.online {
-                  background-color: #6dd51e; }
-            .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item.user-info {
+              padding: 10px 20px; }
+              .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item.user-image {
+                display: inline-block;
+                vertical-align: middle;
+                position: relative; }
+                .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item.user-image img {
+                  border-radius: 50%;
+                  margin-right: 0px;
+                  width: 50px;
+                  height: 50px; }
+                .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item.user-image .candidate-status {
+                  width: 12px;
+                  height: 12px;
+                  display: block;
+                  border: 2px solid #FFF;
+                  border-radius: 50%;
+                  position: absolute;
+                  bottom: 10px;
+                  right: 20px; }
+                  .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item.user-image .candidate-status.offline {
+                    background-color: #b6b6b5; }
+                  .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item.user-image .candidate-status.online {
+                    background-color: #6dd51e; }
+              .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item.user-info {
+                display: inline-block;
+                vertical-align: middle;
+                padding-left: 0; }
+                .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item.user-info p {
+                  margin: 0; }
+                  .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item.user-info p.user-name {
+                    font-size: 13px;
+                    line-height: 1.5;
+                    display: inline-block; }
+                  .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item.user-info p.user-designation {
+                    font-size: 12px;
+                    line-height: 1.5;
+                    color: #888; }
+            .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .conversation-item-separator {
+              margin: 5px 0px 0 0;
+              border-bottom: 1px solid #e8e8e8; }
+            .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item:last-child .user-item.user-info p.user-designation {
+              border-color: transparent; }
+      .page-content .chat-container .chat-body .chat-window {
+        width: 60%;
+        height: 100%;
+        background: #FFF;
+        display: inline-block;
+        vertical-align: top;
+        position: relative; }
+        .page-content .chat-container .chat-body .chat-window .current-chat {
+          max-height: calc(100% - 150px);
+          overflow: auto; }
+        .page-content .chat-container .chat-body .chat-window ul {
+          padding: 20px; }
+          .page-content .chat-container .chat-body .chat-window ul .time-separator {
+            margin: 15px 0;
+            text-align: center; }
+            .page-content .chat-container .chat-body .chat-window ul .time-separator span {
               display: inline-block;
-              vertical-align: middle;
-              padding-left: 0; }
-              .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item.user-info p {
-                margin: 0; }
-                .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item.user-info p.user-name {
-                  font-size: 13px;
-                  line-height: 1.5;
-                  display: inline-block; }
-                .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item.user-info p.user-designation {
+              font-size: 14px;
+              color: #808080;
+              text-transform: capitalize;
+              letter-spacing: 0.5px; }
+          .page-content .chat-container .chat-body .chat-window ul li.message {
+            margin: 15px 0;
+            clear: both;
+            overflow: auto; }
+            .page-content .chat-container .chat-body .chat-window ul li.message.received .user-image {
+              float: left;
+              margin: 0 15px 0 0; }
+              .page-content .chat-container .chat-body .chat-window ul li.message.received .user-image img {
+                border-radius: 50%; }
+            .page-content .chat-container .chat-body .chat-window ul li.message.received .message-area {
+              max-width: 80%;
+              display: inline-block;
+              float: left; }
+              .page-content .chat-container .chat-body .chat-window ul li.message.received .message-area p {
+                line-height: 1.5; }
+                .page-content .chat-container .chat-body .chat-window ul li.message.received .message-area p.message-content {
+                  background-color: #FFF;
+                  border: 1px solid #e8e8e8;
+                  border-radius: 4px;
+                  padding: 10px;
+                  font-size: 14px; }
+                .page-content .chat-container .chat-body .chat-window ul li.message.received .message-area p.message-timestamp {
+                  text-align: left;
+                  margin: 5px 0 0 0;
                   font-size: 12px;
-                  line-height: 1.5;
-                  color: #888; }
-          .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .conversation-item-separator {
-            margin: 5px 0px 0 0;
-            border-bottom: 1px solid #e8e8e8; }
-          .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item:last-child .user-item.user-info p.user-designation {
-            border-color: transparent; }
-    .page-content .chat-container .chat-body .chat-window {
-      width: 60%;
-      background: #FFF;
-      display: inline-block;
-      height: 525px;
-      vertical-align: top;
-      position: relative; }
-      .page-content .chat-container .chat-body .chat-window .new-message {
-        border-top: 1px solid #e8e8e8;
-        position: absolute;
-        height: 150px;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: #f7f7f7;
-        padding: 20px; }
-        .page-content .chat-container .chat-body .chat-window .new-message textarea {
-          width: 100%;
-          display: block;
-          min-height: 110px;
-          border: 1px solid #e8e8e8;
-          resize: none;
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          -o-appearanance: none;
-          border-radius: 3px;
-          background: #FFF;
-          width: 100%;
-          border: 1px solid #e8e8e8;
-          cursor: pointer;
-          padding: 16px 22px;
-          font-size: 14px;
-          line-height: 1.4; }
-          .page-content .chat-container .chat-body .chat-window .new-message textarea:focus {
-            border-color: #4fa995; }
-          .page-content .chat-container .chat-body .chat-window .new-message textarea.error-border {
-            border-color: #ee1620; }
-          .page-content .chat-container .chat-body .chat-window .new-message textarea:focus {
-            outline: none; }
-        .page-content .chat-container .chat-body .chat-window .new-message .send-message {
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          -ms-appearance: none;
-          -o-appearance: none;
-          border: 0;
-          padding: 0;
-          margin: 0;
-          background: #1f8f75;
-          border-color: #8f8a8a;
-          border-radius: 4px;
-          padding: 5px 14px;
-          font-size: 14px;
-          margin: 0 5px;
-          color: #FFF;
-          display: inline-block;
-          vertical-align: top;
-          cursor: pointer;
-          margin: 0;
+                  color: #808080; }
+            .page-content .chat-container .chat-body .chat-window ul li.message.sent .user-image {
+              float: right;
+              margin: 0 0 0 15px; }
+              .page-content .chat-container .chat-body .chat-window ul li.message.sent .user-image img {
+                border-radius: 50%; }
+            .page-content .chat-container .chat-body .chat-window ul li.message.sent .message-area {
+              max-width: 80%;
+              display: inline-block;
+              float: right; }
+              .page-content .chat-container .chat-body .chat-window ul li.message.sent .message-area p {
+                line-height: 1.5;
+                text-align: right; }
+                .page-content .chat-container .chat-body .chat-window ul li.message.sent .message-area p.message-content {
+                  background-color: #FFF;
+                  border: 1px solid #e8e8e8;
+                  border-radius: 4px;
+                  padding: 10px;
+                  font-size: 14px; }
+                .page-content .chat-container .chat-body .chat-window ul li.message.sent .message-area p.message-timestamp {
+                  text-align: right;
+                  margin: 5px 0 0 0;
+                  font-size: 12px;
+                  color: #808080; }
+        .page-content .chat-container .chat-body .chat-window .new-message {
+          border-top: 1px solid #e8e8e8;
           position: absolute;
-          bottom: 30px;
-          right: 30px; }
-          .page-content .chat-container .chat-body .chat-window .new-message .send-message.green {
-            background-color: #1f8f75; }
-          .page-content .chat-container .chat-body .chat-window .new-message .send-message.red {
-            background-color: #af595a; }
-          .page-content .chat-container .chat-body .chat-window .new-message .send-message.white {
-            border: 1px solid #8f8a8a;
-            color: #2b2b2b; }
-          .page-content .chat-container .chat-body .chat-window .new-message .send-message.edit {
-            padding: 3px 9px; }
-            .page-content .chat-container .chat-body .chat-window .new-message .send-message.edit img {
-              width: 17px;
-              height: 17px; }
-    .page-content .chat-container .chat-body .user-profile {
-      width: 20%;
-      display: inline-block;
-      padding: 50px 0 0 0;
-      border-left: 1px solid #e8e8e8;
-      vertical-align: top;
-      height: 525px; }
-      .page-content .chat-container .chat-body .user-profile .user-item {
-        text-align: center;
-        margin: 20px 0; }
-        .page-content .chat-container .chat-body .user-profile .user-item.user-image {
-          margin: 20px auto; }
-          .page-content .chat-container .chat-body .user-profile .user-item.user-image img {
-            max-width: 140px;
-            max-height: 140px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 3px solid #FFF;
-            box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); }
-        .page-content .chat-container .chat-body .user-profile .user-item.user-info p {
-          color: #808080;
-          line-height: 1.5;
-          font-size: 14px; }
-          .page-content .chat-container .chat-body .user-profile .user-item.user-info p.user-name {
-            font-size: 16px;
-            color: #149075; }
-          .page-content .chat-container .chat-body .user-profile .user-item.user-info p.user-organization {
-            color: #333; }
-        .page-content .chat-container .chat-body .user-profile .user-item.user-info .user-detail {
-          margin: 10px 0 0 0; }
-          .page-content .chat-container .chat-body .user-profile .user-item.user-info .user-detail p {
-            color: #333; }
+          height: 150px;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: #f7f7f7;
+          padding: 20px; }
+          .page-content .chat-container .chat-body .chat-window .new-message textarea {
+            width: 100%;
+            display: block;
+            min-height: 110px;
+            border: 1px solid #e8e8e8;
+            resize: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -o-appearanance: none;
+            border-radius: 3px;
+            background: #FFF;
+            width: 100%;
+            border: 1px solid #e8e8e8;
+            cursor: pointer;
+            padding: 16px 22px;
+            font-size: 14px;
+            line-height: 1.4; }
+            .page-content .chat-container .chat-body .chat-window .new-message textarea:focus {
+              border-color: #4fa995; }
+            .page-content .chat-container .chat-body .chat-window .new-message textarea.error-border {
+              border-color: #ee1620; }
+            .page-content .chat-container .chat-body .chat-window .new-message textarea:focus {
+              outline: none; }
+          .page-content .chat-container .chat-body .chat-window .new-message .send-message {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+            -o-appearance: none;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            background: #1f8f75;
+            border-color: #8f8a8a;
+            border-radius: 4px;
+            padding: 5px 14px;
+            font-size: 14px;
+            margin: 0 5px;
+            color: #FFF;
+            display: inline-block;
+            vertical-align: top;
+            cursor: pointer;
+            margin: 0;
+            position: absolute;
+            bottom: 30px;
+            right: 30px; }
+            .page-content .chat-container .chat-body .chat-window .new-message .send-message.green {
+              background-color: #1f8f75; }
+            .page-content .chat-container .chat-body .chat-window .new-message .send-message.red {
+              background-color: #af595a; }
+            .page-content .chat-container .chat-body .chat-window .new-message .send-message.white {
+              border: 1px solid #8f8a8a;
+              color: #2b2b2b; }
+            .page-content .chat-container .chat-body .chat-window .new-message .send-message.edit {
+              padding: 3px 9px; }
+              .page-content .chat-container .chat-body .chat-window .new-message .send-message.edit img {
+                width: 17px;
+                height: 17px; }
+      .page-content .chat-container .chat-body .user-profile {
+        width: 20%;
+        height: 100%;
+        display: inline-block;
+        padding: 50px 0 0 0;
+        border-left: 1px solid #e8e8e8;
+        vertical-align: top; }
+        .page-content .chat-container .chat-body .user-profile .user-item {
+          text-align: center;
+          margin: 20px 0; }
+          .page-content .chat-container .chat-body .user-profile .user-item.user-image {
+            margin: 20px auto; }
+            .page-content .chat-container .chat-body .user-profile .user-item.user-image img {
+              max-width: 140px;
+              max-height: 140px;
+              object-fit: cover;
+              border-radius: 50%;
+              border: 3px solid #FFF;
+              box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); }
+          .page-content .chat-container .chat-body .user-profile .user-item.user-info p {
+            color: #808080;
+            line-height: 1.5;
+            font-size: 14px; }
+            .page-content .chat-container .chat-body .user-profile .user-item.user-info p.user-name {
+              font-size: 16px;
+              color: #149075; }
+            .page-content .chat-container .chat-body .user-profile .user-item.user-info p.user-organization {
+              color: #333; }
+          .page-content .chat-container .chat-body .user-profile .user-item.user-info .user-detail {
+            margin: 10px 0 0 0; }
+            .page-content .chat-container .chat-body .user-profile .user-item.user-info .user-detail p {
+              color: #333; }
+
+.footer {
+  display: none; }

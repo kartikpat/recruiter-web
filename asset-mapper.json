@@ -228,6 +228,7 @@
 				"static/js/vendor/jquery.min.js",
 				"static/js/request.js",
 				"static/js/header.js",
+				"static/js/utilities.js",
 				"static/js/premium-posting.js"
 			],
 			"prod" : [

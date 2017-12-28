@@ -5,12 +5,27 @@
 .page-content {
 	@include page-content;
 
+	min-height:calc(100% - 75px);
+
 	.main-wrapper {
-		width:100%;
+		position:absolute;
+		top:20px;
+		bottom:20px;
+		right:20px;
+		left:20px;
+
+		.main-container {
+			height:100%;
+
+			.container {
+				height:100%;
+			}
+		}
 	}
 	.chat-container {
 		display:block;
 		width:100%;
+		height:100%;
 		border:1px solid $border-color-base;
 		background-color:$color-white;
 		border-radius:4px;
@@ -48,10 +63,12 @@
 		}
 
 		.chat-body {
+			height:90%;
+			height:calc(100% - 62px);
 			.sidebar {
 				width:20%;
+				height:100%;
 				display:inline-block;
-				height:525px;
 				vertical-align:top;
 				&.conversations-list {
 					border-right:1px solid $border-color-base;
@@ -153,11 +170,110 @@
 
 			.chat-window {
 				width:60%;
+				height:100%;
 				background:$color-white;
-				display:inline-block;	
-				height:525px;
+				display:inline-block;
 				vertical-align:top;
 				position:relative;
+
+				.current-chat {
+					max-height:calc(100% - 150px);
+					overflow:auto;
+				}
+
+				ul {
+					padding:20px;
+					.time-separator {
+						margin:15px 0;
+						text-align: center;
+
+						span {
+							display:inline-block;
+							font-size:$base-font-size;
+							color:$extra-info-color;
+							text-transform:capitalize;
+							letter-spacing: 0.5px;
+						}
+					}
+
+					li {
+						&.message {
+							margin:15px 0;
+							clear:both;
+							overflow:auto;
+							&.received {
+								.user-image {
+									float:left;
+									margin:0 15px 0 0;
+
+									img {
+										border-radius:50%;
+									}
+								}
+								.message-area {
+
+									max-width:80%;
+									display:inline-block;
+									float:left;
+
+									p {
+										line-height:1.5;
+
+										&.message-content {
+											background-color:$color-white;
+											border:1px solid $border-color-base;
+											border-radius:4px;
+											padding:10px;
+											font-size:$base-font-size;
+										}
+
+										&.message-timestamp {
+											text-align:left;
+											margin:5px 0 0 0;
+											font-size:$chat-timestamp-font-size;
+											color:$extra-info-color;
+										}
+									}
+								}
+							}
+							&.sent {
+								.user-image {
+									float:right;
+									margin:0 0 0 15px;
+
+									img {
+										border-radius:50%;
+									}
+								}
+								.message-area {
+									max-width:80%;
+									display:inline-block;
+									float:right;
+
+									p {
+										line-height:1.5;
+										text-align:right;
+
+										&.message-content {
+											background-color:$color-white;
+											border:1px solid $border-color-base;
+											border-radius:4px;
+											padding:10px;
+											font-size:$base-font-size;
+										}
+
+										&.message-timestamp {
+											text-align:right;
+											margin:5px 0 0 0;
+											font-size:$chat-timestamp-font-size;
+											color:$extra-info-color;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
 
 				.new-message {
 					border-top:1px solid $border-color-base;
@@ -196,11 +312,11 @@
 
 			.user-profile {
 				width:20%;
+				height:100%;
 				display:inline-block;
 				padding:50px 0 0 0;
 				border-left:1px solid $border-color-base;
 				vertical-align:top;
-				height:525px;
 
 				.user-item {
 					text-align:center;
@@ -246,4 +362,8 @@
 			}
 		}
 	}
+}
+
+.footer {
+	display:none;
 }
