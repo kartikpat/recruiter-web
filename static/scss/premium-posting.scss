@@ -52,9 +52,12 @@
     .recruiter-plans-container {
         position: relative;
         height: 600px;
-
         width: 90%;
         margin: 0 auto;
+
+        &.mobile-swipe-container {
+            display:none;
+        }
         .recruiter-plan-basic {
             position: absolute;
             left: 0;
@@ -427,5 +430,41 @@
     margin: 0 auto;
     margin-bottom: 20px;
     font-family: $droid-font;
+}
 
+@media all and (max-width:1024px) {
+    .recruiter-plans-container {
+        display:none;
+    }
+    .main-container {
+        .recruiter-plans-container {
+
+            &.mobile-swipe-container {
+                display:block;
+                overflow: hidden;
+                visibility: hidden;
+                position: relative;
+                padding-bottom:30px;
+
+                .recruiter-plans-wrapper {
+                    overflow: hidden;
+                    position: relative;
+
+                    & > div {
+                        float: left;
+                        width: 100%;
+                        position: relative;
+                        overflow: hidden;
+                        margin:10px 0;
+
+                        .list {
+                            padding: 10px 10px 10px 45px!important;
+                            background-position-y:10px !important;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
 }

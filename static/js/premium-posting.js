@@ -13,6 +13,8 @@ $(document).ready(function(){
     if(isSuccess == 1) {
         $("#success-job-posted").removeClass("hidden");
     }
+
+    window.mySwipe = $('.mobile-swipe-container').Swipe().data('Swipe');
 });
 
 var basicPosting = function() {

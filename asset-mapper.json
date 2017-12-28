@@ -229,6 +229,7 @@
 				"static/js/request.js",
 				"static/js/header.js",
 				"static/js/utilities.js",
+				"static/js/vendor/swipe.js",
 				"static/js/premium-posting.js"
 			],
 			"prod" : [

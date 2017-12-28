@@ -59,6 +59,8 @@
     height: 600px;
     width: 90%;
     margin: 0 auto; }
+    .main-container .recruiter-plans-container.mobile-swipe-container {
+      display: none; }
     .main-container .recruiter-plans-container .recruiter-plan-basic {
       position: absolute;
       left: 0;
@@ -356,3 +358,25 @@
   margin: 0 auto;
   margin-bottom: 20px;
   font-family: "Droid Sans", sans-serif; }
+
+@media all and (max-width: 1024px) {
+  .recruiter-plans-container {
+    display: none; }
+  .main-container .recruiter-plans-container.mobile-swipe-container {
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    position: relative;
+    padding-bottom: 30px; }
+    .main-container .recruiter-plans-container.mobile-swipe-container .recruiter-plans-wrapper {
+      overflow: hidden;
+      position: relative; }
+      .main-container .recruiter-plans-container.mobile-swipe-container .recruiter-plans-wrapper > div {
+        float: left;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        margin: 10px 0; }
+        .main-container .recruiter-plans-container.mobile-swipe-container .recruiter-plans-wrapper > div .list {
+          padding: 10px 10px 10px 45px !important;
+          background-position-y: 10px !important; } }
