@@ -234,7 +234,8 @@ module.exports = function(settings){
 			title: "IIM JOBS | Premium Posting",
 			styles:  assetsMapper["premium-posting"]["styles"][mode],
 			scripts: assetsMapper["premium-posting"]["scripts"][mode],
-			baseUrl: baseUrl
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
 		})
 		return
 	})
@@ -432,6 +433,17 @@ module.exports = function(settings){
 			title:"Recruiter Web - Candidate Apply List | iimjobs.com",
 			styles:  assetsMapper["candidate-apply-list"]["styles"][mode],
 			scripts: assetsMapper["candidate-apply-list"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
+		})
+		return
+	});
+
+	app.get("/my-chat", function(req,res){
+		res.render("my-chat", {
+			title:"Recruiter Web - My Chat | iimjobs.com",
+			styles:  assetsMapper["my-chat"]["styles"][mode],
+			scripts: assetsMapper["my-chat"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain
 		})
