@@ -802,7 +802,8 @@
 				"static/css/colors.css",
 				"static/css/my-jobs.css",
 				"static/css/utilities.css",
-				"static/css/footer.css"
+				"static/css/footer.css",
+				"static/css/vendor/tooltipster.css"
 			],
 			"prod": [
 				"static/build/css/my-jobs.min.css"
@@ -815,7 +816,8 @@
 				"static/js/header.js",
 				"static/js/change-password.js",
 				"static/js/my-jobs.js",
-				"static/js/utilities.js"
+				"static/js/utilities.js",
+				"static/js/vendor/tooltipster.main.min.js"
 			],
 			"prod" : [
 				"static/build/js/my-jobs.min.js"
