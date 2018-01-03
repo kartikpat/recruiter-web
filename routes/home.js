@@ -460,4 +460,15 @@ module.exports = function(settings){
 		})
 		return
 	});
+	
+	app.get("/landing", function(req,res){
+		res.render("landing", {
+			title:"Recruiter Web - Landing Page | iimjobs.com",
+			styles:  assetsMapper["landing"]["styles"][mode],
+			scripts: assetsMapper["landing"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
+		})
+		return
+	});
 }
