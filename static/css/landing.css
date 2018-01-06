@@ -269,6 +269,94 @@
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 6; }
+  .modal-overlay .modal-content {
+    display: block;
+    overflow-y: auto;
+    padding: 30px;
+    width: 500px;
+    max-width: 90%;
+    background-color: #FFF;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
+    .modal-overlay .modal-content .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer; }
+    .modal-overlay .modal-content.recruiter-register-modal {
+      max-height: 560px; }
+    .modal-overlay .modal-content.recruiter-sign-in-modal {
+      max-height: 340px; }
+    .modal-overlay .modal-content .modal-body h1 {
+      width: 80%;
+      margin: 0 auto 20px;
+      margin-top: 0;
+      font-size: 24px; }
+    .modal-overlay .modal-content .modal-body .recruiter-form {
+      width: 80%;
+      margin: 0 auto; }
+      .modal-overlay .modal-content .modal-body .recruiter-form p {
+        margin: 15px 0 0;
+        text-align: center;
+        font-size: 15px; }
+        .modal-overlay .modal-content .modal-body .recruiter-form p a {
+          color: #155d9a;
+          text-decoration: none; }
+      .modal-overlay .modal-content .modal-body .recruiter-form .form-group {
+        position: relative;
+        margin-bottom: 15px; }
+        .modal-overlay .modal-content .modal-body .recruiter-form .form-group input {
+          background-color: transparent;
+          font-size: 14px;
+          border: 0;
+          border-bottom: 2px solid #e8e8e8;
+          padding: 10px 10px 7px 0;
+          width: 100%; }
+          .modal-overlay .modal-content .modal-body .recruiter-form .form-group input:focus {
+            outline: none; }
+        .modal-overlay .modal-content .modal-body .recruiter-form .form-group button {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          -ms-appearance: none;
+          -o-appearance: none;
+          border: 0;
+          padding: 0;
+          margin: 0;
+          background: #0c9175;
+          border-color: #8f8a8a;
+          border-radius: 4px;
+          padding: 5px 14px;
+          font-size: 14px;
+          margin: 10px 0 10px 0;
+          display: block;
+          width: 100%;
+          padding: 12px;
+          color: #FFF;
+          display: inline-block;
+          vertical-align: top;
+          cursor: pointer;
+          font-size: 18px;
+          font-weight: bold; }
+
+body {
+  position: relative; }
+  body.fixed {
+    overflow: hidden; }
+
 .page-content {
   min-height: 100%;
   padding: 0;
@@ -341,12 +429,16 @@
           font-size: 24px;
           font-weight: bold;
           color: #333;
-          margin-bottom: 30px; }
+          margin-bottom: 30px;
+          width: 85%;
+          margin-left: auto;
+          margin-right: auto; }
         .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container form {
           width: 85%;
           margin: 0 auto; }
         .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container .formgroup {
-          margin-bottom: 20px; }
+          position: relative;
+          margin-bottom: 25px; }
           .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container .formgroup input {
             background-color: transparent;
             font-size: 16px;
@@ -354,6 +446,8 @@
             border-bottom: 2px solid #e8e8e8;
             padding: 10px 10px 10px 0;
             width: 100%; }
+            .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container .formgroup input:focus {
+              outline: none; }
           .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container .formgroup button {
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -547,12 +641,8 @@
               border-bottom: 1px solid #e8e8e8; }
             .page-content .highlight-wrapper .main-container .container ul.category-listing li.category-item.border-right {
               border-right: 1px solid #e8e8e8; }
-            .page-content .highlight-wrapper .main-container .container ul.category-listing li.category-item:hover {
-              background-color: #f6f6f6; }
-              .page-content .highlight-wrapper .main-container .container ul.category-listing li.category-item:hover .category-icon {
-                top: -5px; }
-              .page-content .highlight-wrapper .main-container .container ul.category-listing li.category-item:hover .category-title {
-                top: -5px; }
+            .page-content .highlight-wrapper .main-container .container ul.category-listing li.category-item:hover .category-icon {
+              top: -5px; }
 
 @media all and (max-width: 1280px) {
   .page-content .main-wrapper .main-container .intro-container .intro-wrapper h1 {
@@ -564,12 +654,16 @@
   .page-content .main-wrapper .main-container .intro-container .intro-wrapper {
     width: 100%; }
     .page-content .main-wrapper .main-container .intro-container .intro-wrapper h1 {
-      text-align: center; }
+      text-align: center;
+      letter-spacing: 4px; }
     .page-content .main-wrapper .main-container .intro-container .intro-wrapper span {
       width: 80%;
-      margin: 20px auto 40px; }
-    .page-content .main-wrapper .main-container .intro-container .intro-wrapper .image-container img {
-      width: 100%; }
+      margin: 20px auto; }
+    .page-content .main-wrapper .main-container .intro-container .intro-wrapper .image-container {
+      margin-bottom: 20px; }
+      .page-content .main-wrapper .main-container .intro-container .intro-wrapper .image-container img {
+        width: 70%;
+        margin: 0 auto; }
   .page-content .main-wrapper .main-container .intro-container .login-wrapper {
     width: 100%;
     margin: 30px 0; }
@@ -589,6 +683,70 @@
         opacity: 1;
         left: 0;
         width: 100%; }
+  .page-content .main-wrapper .main-container .recruit-container .hero-image-container {
+    width: 100%; }
+  .page-content .main-wrapper .main-container .recruit-container .hero-content-container {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 100px; }
+  .page-content .main-wrapper.footer-bottom {
+    background-size: auto; }
+  .page-content .highlight-wrapper .main-container .container ul.category-listing li.category-item {
+    width: 50%;
+    border-right: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8; }
+    .page-content .highlight-wrapper .main-container .container ul.category-listing li.category-item.no-right-border {
+      border-right: 0; }
+    .page-content .highlight-wrapper .main-container .container ul.category-listing li.category-item.no-bottom-border {
+      border-bottom: 0; } }
+
+@media all and (max-width: 480px) {
+  .page-content .main-wrapper .main-container .intro-container .intro-wrapper {
+    width: 100%; }
+    .page-content .main-wrapper .main-container .intro-container .intro-wrapper h1 {
+      text-align: center;
+      letter-spacing: 2px; }
+    .page-content .main-wrapper .main-container .intro-container .intro-wrapper span {
+      width: 90%;
+      margin: 20px auto; }
+    .page-content .main-wrapper .main-container .intro-container .intro-wrapper .image-container {
+      margin-bottom: 20px; }
+      .page-content .main-wrapper .main-container .intro-container .intro-wrapper .image-container img {
+        width: 90%;
+        margin: 0 auto; }
+  .page-content .main-wrapper .main-container .intro-container .login-wrapper {
+    width: 100%;
+    margin: 30px 0; }
+    .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container {
+      padding: 20px; }
+      .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container h3 {
+        width: 100%; }
+      .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container form {
+        width: 100%; }
+  .page-content .main-wrapper .main-container .features-container h1.center-highlight span {
+    display: block;
+    padding: 0; }
+  .page-content .main-wrapper .main-container .features-container h1.center-highlight:before {
+    content: none; }
+  .page-content .main-wrapper .main-container .features-container .hero-container {
+    padding-top: 0px; }
+    .page-content .main-wrapper .main-container .features-container .hero-container .hero-content {
+      width: 100%; }
+      .page-content .main-wrapper .main-container .features-container .hero-container .hero-content.text-container {
+        position: initial; }
+      .page-content .main-wrapper .main-container .features-container .hero-container .hero-content.image-container {
+        padding-top: 20px;
+        opacity: 1; }
+        .page-content .main-wrapper .main-container .features-container .hero-container .hero-content.image-container img {
+          width: 100%; }
+        .page-content .main-wrapper .main-container .features-container .hero-container .hero-content.image-container.left {
+          opacity: 1;
+          right: 0;
+          width: 100%; }
+        .page-content .main-wrapper .main-container .features-container .hero-container .hero-content.image-container.right {
+          opacity: 1;
+          left: 0;
+          width: 100%; }
   .page-content .main-wrapper .main-container .recruit-container .hero-image-container {
     width: 100%; }
   .page-content .main-wrapper .main-container .recruit-container .hero-content-container {

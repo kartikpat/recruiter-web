@@ -1,4 +1,63 @@
 {{>header}}
+	<div class="modal-overlay hidden">
+		<div class="modal-content recruiter-register-modal hidden">
+			<div class="close-modal"><i class="icon-close_icon"></i></div>
+			<div class="modal-subsection">
+				<div class="modal-body">
+					<h1 class="heading">New Recruiter Registration</h1>
+					<div class="recruiter-form">
+						<div class="form-group">
+							<input id="rec-name" type="text" placeholder="Name" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<input id="rec-work-email" type="text" placeholder="Your Work Email ID" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<input id="rec-phone" type="text" placeholder="Phone" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<input id="rec-designation" type="text" placeholder="Designation" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<input id="rec-organization" type="text" placeholder="Organization" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<input id="rec-password" type="password" placeholder="Password" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<input id="rec-confirm-password" type="password" placeholder="Confirm Password" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<button class="rec-sign-in" value="Login">Register</button>
+						</div>
+						<p>Already have an account? <a href="#" class="trigger-register-sign-in-modal">Sign in</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-content recruiter-sign-in-modal hidden">
+			<div class="close-modal"><i class="icon-close_icon"></i></div>
+			<div class="modal-subsection">
+				<div class="modal-body">
+					<h1 class="heading">Recruiter Sign-in</h1>
+					<div class="recruiter-form">
+						<div class="form-group">
+							<input id="rec-sign-in-email" type="text" placeholder="Email" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<input id="rec-sign-in-password" type="password" placeholder="Password" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<button class="rec-sign-in" value="Login">Login</button>
+						</div>
+						<p><a href="#" class="forgot-recruiter-password">Forgot Password?</a></p>
+						<p>Don't have an account? <a href="#" class="trigger-register-registration-modal">Register</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 	<div class="page-content">
 		<div class="main-wrapper">
 			<div class="main-container">
@@ -29,7 +88,7 @@
 								</div>
 
 								<p class="register-link">
-									Don't have an account? <a href="#" class="trigger-register-modal">Register</a>
+									Don't have an account? <a href="#" class="trigger-register-registration-modal">Register</a>
 								</p>
 							</form>
 						</div>

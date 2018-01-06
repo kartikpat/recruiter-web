@@ -9,7 +9,6 @@
 
 
 jQuery(document).ready(function() {
-	console.log("Bhalle")
 	document.querySelector(".domain_logo h1").innerText = baseDomain;
 
 	jQuery(".header .profile.action-icon").on('click', function() {

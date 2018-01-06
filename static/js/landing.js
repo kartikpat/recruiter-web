@@ -29,4 +29,32 @@ jQuery(document).ready(function() {
 		jQuery(".highlight-wrapper .category-item").eq(-1).addClass("no-bottom-border");
 		jQuery(".highlight-wrapper .category-item").eq(-2).addClass("no-bottom-border");
 	}
+
+	jQuery(".trigger-register-registration-modal").on('click', function() {
+		jQuery("body").addClass("fixed");
+		jQuery(".recruiter-sign-in-modal").addClass("hidden");
+		jQuery(".modal-overlay").removeClass("hidden");
+		jQuery(".recruiter-register-modal").removeClass("hidden");
+	});
+
+	jQuery(".trigger-register-sign-in-modal").on('click', function() {
+		jQuery("body").addClass("fixed");
+		jQuery(".recruiter-register-modal").addClass("hidden");
+		jQuery(".modal-overlay").removeClass("hidden");
+		jQuery(".recruiter-sign-in-modal").removeClass("hidden");
+	});
+
+	jQuery(".close-modal").on("click", function() {
+		jQuery("body").removeClass("fixed");
+		jQuery(".modal-content").addClass("hidden");
+		jQuery(".modal-overlay").addClass("hidden");
+
+	})
+
+	jQuery(".modal-overlay").on("click", function(e) {
+		if(!jQuery(e.target).parents(".modal-overlay").length) {
+			jQuery("body").removeClass("fixed");
+			jQuery(this).addClass("hidden");
+		}
+	})
 });

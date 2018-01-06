@@ -3,6 +3,125 @@
 @import 'components/_type';
 @import 'components/_colors';
 
+
+.modal-overlay {
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	background-color:rgba(0,0,0,0.4);
+	z-index:6;
+
+	.modal-content {
+		display:block;
+		
+		overflow-y:auto;
+		padding:30px;
+		width:500px;
+		max-width:90%;
+		background-color:$color-white;
+		position:absolute;
+		top:0;
+		bottom:0;
+		left:0;
+		right:0;
+		margin:auto;
+		z-index:10;
+		box-shadow:0 0 10px rgba(0,0,0,0.2);
+
+		.close-modal {
+			position:absolute;
+			top:10px;
+			right:10px;
+			cursor:pointer;
+		}
+
+		&.recruiter-register-modal {
+			max-height:560px;
+		}
+
+		&.recruiter-sign-in-modal {
+			max-height:340px;
+		}
+		
+		.modal-body {
+			h1 {
+				width:80%;
+				margin:0 auto 20px;
+				margin-top:0;
+				font-size:$modal-title-font-size;
+			}
+			.recruiter-form {
+				width:80%;
+				margin:0 auto;
+
+				p {
+					margin:15px 0 0;
+					text-align:center;
+					font-size:15px;
+
+					a {
+						color:$link-color;
+						text-decoration:none;
+					}
+				}
+				.form-group { 
+					position:relative;
+					margin-bottom:15px;
+
+				    input {
+				        background-color:transparent;
+						font-size:$base-font-size;
+						border:0;
+						border-bottom:2px solid $border-color-base;
+						padding:10px 10px 7px 0;
+						width:100%;
+
+				        &:focus {
+				            outline:none;
+				        }
+				    }
+
+				    button {
+						-webkit-appearance:none;
+						-moz-appearance:none;
+						-ms-appearance:none;
+						-o-appearance:none;
+						border:0;
+						padding:0;
+						margin:0;
+						background:$login-button-color;
+						border-color:$button-border-color;
+						border-radius:4px;
+						padding:5px 14px;
+						font-size:$base-font-size;
+						margin: 10px 0 10px 0;
+						display:block;
+						width:100%;
+						padding:12px;
+						color:$color-white;
+						display:inline-block;
+						vertical-align:top;
+						cursor:pointer;
+						font-size:18px;
+						font-weight:bold;
+					}
+				}
+			}
+		}
+	}
+}
+
+body {
+	position:relative;
+
+	&.fixed {
+		overflow:hidden;
+	}
+}
+
+
 .page-content {
 	@include page-content;
 	padding:0;
@@ -95,24 +214,45 @@
 							font-weight:bold;
 							color:$color-black;
 							margin-bottom:30px;
+							width:85%;
+							margin-left:auto;
+							margin-right:auto;
 						}
 						
 						form {
 							width:85%;
 							margin:0 auto; 
 						}
-						.formgroup {
-							margin-bottom:20px;
-							input {
-								background-color:transparent;
+						// .formgroup {
+						// 	margin-bottom:20px;
+						// 	input {
+						// 		background-color:transparent;
+						// 		font-size:$login-input-font-size;
+						// 		border:0;
+						// 		border-bottom:2px solid $border-color-base;
+						// 		padding:10px 10px 10px 0;
+						// 		width:100%;
+						// 	}
+						// }
+
+						.formgroup { 
+							position:relative;
+							margin-bottom:25px; 
+
+						    input {
+						        background-color:transparent;
 								font-size:$login-input-font-size;
 								border:0;
 								border-bottom:2px solid $border-color-base;
 								padding:10px 10px 10px 0;
 								width:100%;
-							}
 
-							button {
+						        &:focus {
+						            outline:none;
+						        }
+						    }
+
+						    button {
 								-webkit-appearance:none;
 								-moz-appearance:none;
 								-ms-appearance:none;
@@ -137,7 +277,6 @@
 								font-weight:bold;
 							}
 						}
-
 						p {
 							color:$intro-subtitle-color;
 
@@ -401,12 +540,7 @@
 						}
 
 						&:hover {
-							background-color:#f6f6f6;
 							.category-icon {
-								top:-5px;
-							}
-
-							.category-title {
 								top:-5px;
 							}
 						}
@@ -450,16 +584,19 @@
 						
 						h1 {
 							text-align:center;
+							letter-spacing:4px;
 						}
 
 						span {
 							width:80%;
-							margin:20px auto 40px;
+							margin:20px auto;
 						}
 
 						.image-container {
+							margin-bottom:20px;
 							img {
-								width:100%;
+								width:70%;
+								margin:0 auto;
 							}
 						}
 					}
@@ -480,6 +617,133 @@
 							}
 
 							&.image-container {
+								img {
+									width:100%;
+								}
+								&.left {
+									opacity:1;
+									right:0;
+									width:100%;
+								}
+								&.right {
+									opacity:1;
+									left:0;
+									width:100%;
+								}
+								opacity:1;
+							}
+						}
+					}
+				}
+				.recruit-container {
+					.hero-image-container {
+						width:100%;
+					}
+					.hero-content-container {
+						width:100%;
+						margin-top:30px;
+						margin-bottom:100px;
+					}
+				}
+			}
+
+			&.footer-bottom {
+				background-size:auto;
+			}
+		}
+		.highlight-wrapper {
+			.main-container {
+				.container {
+					ul.category-listing {
+						li.category-item {
+							width:50%;
+							border-right:1px solid $border-color-base;
+							border-bottom:1px solid $border-color-base;
+
+							&.no-right-border {
+								border-right:0;
+							}
+							&.no-bottom-border {
+								border-bottom:0;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media all and (max-width:480px) {
+	.page-content {
+		.main-wrapper {
+			.main-container {
+				.intro-container {
+					.intro-wrapper {
+						width:100%;
+						
+						h1 {
+							text-align:center;
+							letter-spacing:2px;
+						}
+
+						span {
+							width:90%;
+							margin:20px auto;
+						}
+
+						.image-container {
+							margin-bottom:20px;
+							img {
+								width:90%;
+								margin:0 auto;
+							}
+						}
+					}
+					.login-wrapper {
+						width:100%;
+						margin:30px 0;
+
+
+						.login-container {
+							padding:20px;
+
+							h3 {
+								width:100%;
+							}
+							form {
+								width:100%;
+							}
+						}
+					}
+
+				}
+
+				.features-container {
+
+					h1 {
+						&.center-highlight {
+							span {
+								display:block;
+								padding:0;
+							}
+
+							&:before {
+								content:none;
+							}
+						}
+					}
+					.hero-container {
+						padding-top:0px;
+						.hero-content {
+							width:100%;
+
+							&.text-container {
+								position:initial
+							}
+
+							&.image-container {
+								padding-top:20px;
 								img {
 									width:100%;
 								}
