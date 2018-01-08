@@ -1053,5 +1053,80 @@
 				"static/build/js/landing.min.js"
 			]
 		}
+	},
+	"welcome": {
+		"styles": {
+			"debug" : [
+				"static/css/utilities.css",
+				"static/css/footer.css",
+				"static/css/header.css",
+				"static/css/welcome.css"
+			],
+			"prod": [
+				"static/build/css/welcome.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/utilities.js",
+				"static/js/welcome.js"
+			],
+			"prod" : [
+				"static/build/js/welcome.min.js"
+			]
+		}
+	},
+	"account-verified": {
+		"styles": {
+			"debug" : [
+				"static/css/utilities.css",
+				"static/css/footer.css",
+				"static/css/header.css",
+				"static/css/account-verified.css"
+			],
+			"prod": [
+				"static/build/css/account-verified.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/utilities.js",
+				"static/js/account-verified.js"
+			],
+			"prod" : [
+				"static/build/js/account-verified.min.js"
+			]
+		}
+	},
+	"account-created": {
+		"styles": {
+			"debug" : [
+				"static/css/utilities.css",
+				"static/css/footer.css",
+				"static/css/header.css",
+				"static/css/account-created.css"
+			],
+			"prod": [
+				"static/build/css/account-created.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/request.js",
+				"static/js/header.js",
+				"static/js/utilities.js",
+				"static/js/account-created.js"
+			],
+			"prod" : [
+				"static/build/js/account-created.min.js"
+			]
+		}
 	}
 }
