@@ -14,6 +14,8 @@ module.exports = function(settings){
 	var baseUrl = config["baseUrl"];
 	var request = settings["request"];
 	var baseDomain = config["baseDomain"];
+	var welcome = config["welcome"];
+	var verifyAccount = config["verify"];
 	if(env=="local")
 		baseUrl= config["baseUrl_local"];
 	else
@@ -466,6 +468,41 @@ module.exports = function(settings){
 			title:"Recruiter Web - Landing Page | iimjobs.com",
 			styles:  assetsMapper["landing"]["styles"][mode],
 			scripts: assetsMapper["landing"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
+		})
+		return
+	});
+	
+	app.get("/welcome", function(req,res){
+		res.render("welcome", {
+			title:"Recruiter Web - Welcome Page | iimjobs.com",
+			styles:  assetsMapper["welcome"]["styles"][mode],
+			scripts: assetsMapper["welcome"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			welcome:welcome
+		})
+		return
+	});
+
+	app.get("/account-created", function(req,res){
+		res.render("account-created", {
+			title:"Recruiter Web - Account Created Page | iimjobs.com",
+			styles:  assetsMapper["account-created"]["styles"][mode],
+			scripts: assetsMapper["account-created"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			verify:verifyAccount
+		})
+		return
+	});
+
+	app.get("/account-verified", function(req,res){
+		res.render("account-verified", {
+			title:"Recruiter Web - Account Verified Page | iimjobs.com",
+			styles:  assetsMapper["account-verified"]["styles"][mode],
+			scripts: assetsMapper["account-verified"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain
 		})
