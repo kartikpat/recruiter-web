@@ -1,4 +1,32 @@
 @charset "UTF-8";
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.important-info-color {
+  color: #333; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
+/** Mobile Menu **/
 /*[Recruiter_Homepage]*/
 /*[/Recruiter_Homepage]*/
 /**** Fontello Font Icons : ****/
@@ -452,3 +480,138 @@ span.sticker {
 @media all and (max-width: 768px) {
   .tag-container .pill-button .pill-listing ul {
     max-height: 300px; } }
+
+.page-content {
+  min-height: 100%;
+  padding: 0;
+  overflow: auto;
+  position: relative;
+  padding: 20px;
+  width: 100%;
+  background-color: #f7f7f7; }
+  .page-content .main-wrapper .main-container .heading {
+    margin: 0 0 30px 0; }
+    .page-content .main-wrapper .main-container .heading h1 {
+      margin: 10px 0 0 0;
+      font-size: 22px;
+      color: #5d5d5d;
+      line-height: 1;
+      font-weight: bold; }
+    .page-content .main-wrapper .main-container .heading .action-buttons span {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      -o-appearance: none;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      background: #FFF;
+      border-color: #8f8a8a;
+      border-radius: 4px;
+      padding: 5px 14px;
+      font-size: 14px;
+      margin: 0 5px;
+      color: #FFF;
+      display: inline-block;
+      vertical-align: top;
+      cursor: pointer; }
+      .page-content .main-wrapper .main-container .heading .action-buttons span.green {
+        background-color: #1f8f75; }
+      .page-content .main-wrapper .main-container .heading .action-buttons span.red {
+        background-color: #af595a; }
+      .page-content .main-wrapper .main-container .heading .action-buttons span.white {
+        border: 1px solid #8f8a8a;
+        color: #2b2b2b; }
+      .page-content .main-wrapper .main-container .heading .action-buttons span.edit {
+        padding: 3px 9px; }
+        .page-content .main-wrapper .main-container .heading .action-buttons span.edit img {
+          width: 17px;
+          height: 17px; }
+  .page-content .main-wrapper .main-container .reports-wrapper {
+    background-color: #FFF;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 10px;
+    padding: 0;
+    margin: 0; }
+    .page-content .main-wrapper .main-container .reports-wrapper .reports-header {
+      padding: 20px; }
+      .page-content .main-wrapper .main-container .reports-wrapper .reports-header .keyword-search {
+        display: inline-block;
+        width: 40%;
+        position: relative;
+        vertical-align: top; }
+        .page-content .main-wrapper .main-container .reports-wrapper .reports-header .keyword-search input {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          -o-appearanance: none;
+          border-radius: 3px;
+          background: #FFF;
+          width: 100%;
+          border: 1px solid #e8e8e8;
+          cursor: pointer;
+          padding: 16px 22px;
+          font-size: 14px;
+          border-radius: 0;
+          padding: 8px 35px 8px;
+          background-image: url("/static/images/search-icon.svg");
+          background-repeat: no-repeat;
+          background-position: left 10px center;
+          background-size: 14px;
+          font-size: 14px; }
+          .page-content .main-wrapper .main-container .reports-wrapper .reports-header .keyword-search input:focus {
+            border-color: #4fa995; }
+          .page-content .main-wrapper .main-container .reports-wrapper .reports-header .keyword-search input.error-border {
+            border-color: #ee1620; }
+          .page-content .main-wrapper .main-container .reports-wrapper .reports-header .keyword-search input:focus {
+            border-color: #e8e8e8; }
+        .page-content .main-wrapper .main-container .reports-wrapper .reports-header .keyword-search button {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          width: 80px;
+          text-transform: uppercase;
+          background-color: #FFF;
+          border: 1px solid #e8e8e8;
+          cursor: pointer;
+          font-size: 14px; }
+          .page-content .main-wrapper .main-container .reports-wrapper .reports-header .keyword-search button:focus {
+            outline: none; }
+        .page-content .main-wrapper .main-container .reports-wrapper .reports-header .keyword-search:after {
+          content: '';
+          border-right: 7px solid transparent;
+          border-left: 7px solid transparent;
+          border-top: 7px solid #808080;
+          position: absolute;
+          top: 50%;
+          right: 85px;
+          transform: translate(-50%, -50%); }
+    .page-content .main-wrapper .main-container .reports-wrapper .reports-body {
+      font-size: 0; }
+      .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row {
+        width: 100%; }
+        .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row.head {
+          background: #f3fbfb; }
+          .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row.head .report-item {
+            padding: 15px 10px;
+            border-top: 1px solid #e8e8e8;
+            border-bottom: 1px solid #e8e8e8;
+            font-size: 14px;
+            text-align: left; }
+        .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row .report-item {
+          font-size: initial;
+          font-size: 14px;
+          padding: 10px; }
+          .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row .report-item a {
+            color: #155d9a; }
+          .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row .report-item.title span {
+            color: #808080; }
+            .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row .report-item.title span.report-views-count {
+              color: #333; }
+          .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row .report-item.title .job-title {
+            display: block;
+            margin-bottom: 10px; }
+          .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row .report-item.title .report-author-link {
+            margin-right: 20px; }
