@@ -1,0 +1,56 @@
+.link-color {
+  color: #337ab7; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.important-info-color {
+  color: #333; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
+/** Mobile Menu **/
+/** Mobile Menu **/
+/* [Recruiter_HomePage : ] */
+/* [/Recruiter_HomePage : ] */
+.page-content {
+  min-height: 100%;
+  padding: 0;
+  overflow: auto;
+  position: relative;
+  padding: 20px;
+  width: 100%;
+  background-image: url("/static/images/footer-background.png");
+  background-size: 100%;
+  background-position: center bottom;
+  background-repeat: no-repeat; }
+  .page-content .main-wrapper {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto; }
+    .page-content .main-wrapper h1 {
+      color: #333;
+      margin-top: 50px;
+      line-height: 1.5; }
+    .page-content .main-wrapper p {
+      color: #5b5b5b;
+      margin: 15px 0;
+      line-height: 1.5; }
+      .page-content .main-wrapper p a {
+        color: #155d9a; }

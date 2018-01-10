@@ -30,7 +30,10 @@
   padding: 20px;
   min-height: calc(100% - 155px); }
   .main-container .recruiter-plan-banner-container {
-    margin-bottom: 30px; }
+    margin-bottom: 30px;
+    text-align: center; }
+    .main-container .recruiter-plan-banner-container h3 strong {
+      font-weight: bold; }
     .main-container .recruiter-plan-banner-container .recruiter-plan-banner {
       background: url(https://static.iimjobs.com/recruiter/resources/images/tag.png);
       text-align: center;
@@ -56,86 +59,98 @@
     height: 600px;
     width: 90%;
     margin: 0 auto; }
+    .main-container .recruiter-plans-container.mobile-swipe-container {
+      display: none; }
     .main-container .recruiter-plans-container .recruiter-plan-basic {
       position: absolute;
       left: 0;
       display: inline-block;
       width: 32.33%;
       margin-top: 40px;
-      background: #eee;
+      background: #FFF;
       box-sizing: border-box;
       color: #333;
-      font-family: "Droid Sans", sans-serif; }
+      font-family: "Droid Sans", sans-serif;
+      border: 1px solid #e8e8e8;
+      border-top: 5px solid #e8e8e8;
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px; }
       .main-container .recruiter-plans-container .recruiter-plan-basic .recruiter-plan-basic-header {
-        font-style: italic;
         font-size: 22px;
         padding: 16px 10px 20px 10px;
-        border-bottom: 1px solid #c3c3c3;
+        border-bottom: 1px solid #e8e8e8;
         text-align: center;
         position: relative; }
-        .main-container .recruiter-plans-container .recruiter-plan-basic .recruiter-plan-basic-header .icon-container {
-          display: inline-block;
-          position: absolute;
-          top: 66%;
-          height: 25px;
-          line-height: 23px;
-          width: 25px;
-          box-sizing: border-box;
-          border: 1px solid;
-          border-radius: 50%;
-          left: 50%;
-          transform: translate(-50%, 35%);
-          background: #d5d5d5; }
-      .main-container .recruiter-plans-container .recruiter-plan-basic .recruiter-plan-basic-content {
-        border-top: 1px solid #fff;
-        padding-top: 20px; }
-        .main-container .recruiter-plans-container .recruiter-plan-basic .recruiter-plan-basic-content .top-content {
-          text-align: center;
-          font-size: 25px;
-          background: #d5d5d5;
-          margin: 0 0 5px 0;
-          padding: 7px 5px;
-          font-weight: 500; }
-        .main-container .recruiter-plans-container .recruiter-plan-basic .recruiter-plan-basic-content .list-container {
-          margin: 10px 0 20px 0; }
-          .main-container .recruiter-plans-container .recruiter-plan-basic .recruiter-plan-basic-content .list-container .list {
-            background: url(https://static.iimjobs.com/recruiter/resources/images/greycon.png) #d5d5d5 no-repeat;
-            padding: 8px 15px 8px 45px;
-            margin-bottom: 1px;
-            font-size: 13px;
-            background-position: 15px center;
-            background-size: 20px 20px; }
-        .main-container .recruiter-plans-container .recruiter-plan-basic .recruiter-plan-basic-content .button-container {
-          text-align: center; }
-          .main-container .recruiter-plans-container .recruiter-plan-basic .recruiter-plan-basic-content .button-container button {
-            margin: 15px 0;
-            border: 2px solid #4c4c4c;
-            background: 0;
-            color: #4c4c4c;
-            font-size: 20px;
-            width: 50%;
-            border-radius: 2px;
-            padding: 8px; }
+        .main-container .recruiter-plans-container .recruiter-plan-basic .recruiter-plan-basic-header h5 {
+          margin: 10px 0;
+          font-style: none; }
+          .main-container .recruiter-plans-container .recruiter-plan-basic .recruiter-plan-basic-header h5.cost {
+            font-weight: bold; }
+        .main-container .recruiter-plans-container .recruiter-plan-basic .recruiter-plan-basic-header .plan-title-separator {
+          width: 100px;
+          margin: 0 auto;
+          border-bottom: 1px solid #e8e8e8; }
+      .main-container .recruiter-plans-container .recruiter-plan-basic .recruiter-plan-basic-content .top-content {
+        text-align: center;
+        font-size: 25px;
+        background: #d5d5d5;
+        margin: 0 0 5px 0;
+        padding: 7px 5px;
+        font-weight: 500; }
+      .main-container .recruiter-plans-container .recruiter-plan-basic .recruiter-plan-basic-content .list-container {
+        margin: 0; }
+        .main-container .recruiter-plans-container .recruiter-plan-basic .recruiter-plan-basic-content .list-container .list {
+          background: url(https://static.iimjobs.com/recruiter/resources/images/greycon.png) #FFF no-repeat;
+          padding: 15px 15px 15px 45px;
+          margin-bottom: 1px;
+          font-size: 13px;
+          background-position: 15px 15px;
+          background-size: 20px 20px;
+          border-bottom: 1px solid #e8e8e8;
+          padding-bottom: 20px; }
+          .main-container .recruiter-plans-container .recruiter-plan-basic .recruiter-plan-basic-content .list-container .list p {
+            line-height: 1.5; }
+      .main-container .recruiter-plans-container .recruiter-plan-basic .recruiter-plan-basic-content .button-container {
+        text-align: center; }
+        .main-container .recruiter-plans-container .recruiter-plan-basic .recruiter-plan-basic-content .button-container button {
+          margin: 15px 0;
+          border: 0;
+          background: #808080;
+          color: #FFF;
+          font-size: 20px;
+          width: 50%;
+          border-radius: 4px;
+          padding: 8px; }
     .main-container .recruiter-plans-container .recruiter-plan-signature {
       position: absolute;
       left: 33.33%;
       display: inline-block;
       width: 32.33%;
-      background: #b33646;
+      background: #FFF;
       box-sizing: border-box;
-      color: #FFF;
-      font-family: "Droid Sans", sans-serif; }
+      font-family: "Droid Sans", sans-serif;
+      border: 1px solid #e8e8e8;
+      border-top: 5px solid #149075;
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px; }
       .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-header-container {
+        font-size: 22px;
         padding: 16px 10px 20px 10px;
-        border-bottom: 1px solid #c3c3c3;
+        border-bottom: 1px solid #e8e8e8;
         text-align: center;
         position: relative; }
-        .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-header-container .recruiter-plan-signature-header-main {
-          font-style: italic;
-          font-size: 22px; }
-        .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-header-container .recruiter-plan-signature-header-extra {
-          padding-top: 4px;
-          font-size: 13px; }
+        .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-header-container h5 {
+          margin: 10px 0; }
+          .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-header-container h5.cost {
+            font-weight: bold; }
+        .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-header-container h6 {
+          margin: 0 0 10px 0; }
+          .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-header-container h6 strong {
+            font-weight: bold; }
+        .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-header-container .plan-title-separator {
+          width: 100px;
+          margin: 0 auto;
+          border-bottom: 1px solid #e8e8e8; }
         .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-header-container .icon-container {
           display: inline-block;
           position: absolute;
@@ -149,37 +164,37 @@
           left: 50%;
           transform: translate(-50%, 35%);
           top: 80%;
-          background: #c43d4e; }
+          background: #FFF; }
       .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-content {
-        border-top: 1px solid #fff;
-        padding-top: 20px; }
+        border-top: 1px solid #fff; }
         .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-content .top-content {
           text-align: center;
           font-size: 25px;
-          background: #c43d4e;
+          background: #FFF;
           margin: 0 0 5px 0;
           padding: 7px 5px;
           font-weight: 500; }
-        .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-content .list-container {
-          margin: 10px 0 20px 0; }
-          .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-content .list-container .list {
-            background: url(https://static.iimjobs.com/recruiter/resources/images/pinkicon.png) #c43d4e no-repeat;
-            padding: 8px 15px 8px 45px;
-            margin-bottom: 1px;
-            font-size: 13px;
-            background-position: 15px center;
-            background-size: 20px 20px; }
+        .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-content .list-container .list {
+          background: url(https://static.iimjobs.com/recruiter/resources/images/greycon.png) #FFF no-repeat;
+          padding: 15px 15px 15px 45px;
+          margin-bottom: 1px;
+          font-size: 13px;
+          background-position: 15px 15px;
+          background-size: 20px 20px;
+          border-bottom: 1px solid #e8e8e8;
+          padding-bottom: 20px; }
+          .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-content .list-container .list p {
+            line-height: 1.5; }
         .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-content .button-container {
           text-align: center; }
           .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-content .button-container button {
             margin: 15px 0;
-            border: 2px solid #4c4c4c;
-            background: 0;
+            border: 0;
+            background: #149075;
             color: #FFF;
-            border-color: #FFF;
             font-size: 20px;
             width: 50%;
-            border-radius: 2px;
+            border-radius: 4px;
             padding: 8px; }
     .main-container .recruiter-plans-container .recruiter-plan-platinum {
       position: absolute;
@@ -187,20 +202,35 @@
       display: inline-block;
       width: 33.33%;
       margin-top: 40px;
-      background: #5eb9a7;
+      background: #FFF;
       color: #333;
-      font-family: "Droid Sans", sans-serif; }
+      font-family: "Droid Sans", sans-serif;
+      border: 1px solid #e8e8e8;
+      border-top: 5px solid #155d9a;
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px; }
       .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-header-container {
         padding: 16px 10px 20px 10px;
         border-bottom: 1px solid #3bb39b;
         text-align: center;
+        position: relative;
+        font-size: 22px;
+        padding: 16px 10px 20px 10px;
+        border-bottom: 1px solid #e8e8e8;
+        text-align: center;
         position: relative; }
-        .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-header-container .recruiter-plan-platinum-header-main {
-          font-style: italic;
-          font-size: 22px; }
-        .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-header-container .recruiter-plan-platinum-header-extra {
-          padding-top: 4px;
-          font-size: 13px; }
+        .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-header-container h5 {
+          margin: 10px 0; }
+          .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-header-container h5.cost {
+            font-weight: bold; }
+        .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-header-container h6 {
+          margin: 0 0 10px 0; }
+          .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-header-container h6 strong {
+            font-weight: bold; }
+        .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-header-container .plan-title-separator {
+          width: 100px;
+          margin: 0 auto;
+          border-bottom: 1px solid #e8e8e8; }
         .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-header-container .icon-container {
           display: inline-block;
           position: absolute;
@@ -216,34 +246,34 @@
           top: 80%;
           background: #63cdb8; }
       .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-content {
-        border-top: 1px solid #62cab6;
-        padding-top: 20px; }
+        border-top: 1px solid #e8e8e8; }
         .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-content .top-content {
           text-align: center;
           font-size: 25px;
-          background: #63cdb8;
+          background: #FFF;
           margin: 0 0 5px 0;
           padding: 7px 5px;
           font-weight: 500; }
-        .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-content .list-container {
-          margin: 10px 0 20px 0; }
-          .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-content .list-container .list {
-            background: url(https://static.iimjobs.com/recruiter/resources/images/greencon.png) #63cdb8 no-repeat;
-            padding: 8px 15px 8px 45px;
-            margin-bottom: 1px;
-            font-size: 13px;
-            background-position: 15px center;
-            background-size: 20px 20px; }
+        .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-content .list-container .list {
+          background: url(https://static.iimjobs.com/recruiter/resources/images/greycon.png) #FFF no-repeat;
+          padding: 15px 15px 15px 45px;
+          margin-bottom: 1px;
+          font-size: 13px;
+          background-position: 15px 15px;
+          background-size: 20px 20px;
+          border-bottom: 1px solid #e8e8e8; }
+          .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-content .list-container .list p {
+            line-height: 1.5; }
         .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-content .button-container {
           text-align: center; }
           .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-content .button-container button {
             margin: 15px 0;
-            border: 2px solid #4c4c4c;
-            background: 0;
-            color: #4c4c4c;
+            border: 0px solid #4c4c4c;
+            background: #155d9a;
+            color: #FFF;
             font-size: 20px;
             width: 50%;
-            border-radius: 2px;
+            border-radius: 4px;
             padding: 8px; }
 
 .modal {
@@ -328,3 +358,25 @@
   margin: 0 auto;
   margin-bottom: 20px;
   font-family: "Droid Sans", sans-serif; }
+
+@media all and (max-width: 1024px) {
+  .recruiter-plans-container {
+    display: none; }
+  .main-container .recruiter-plans-container.mobile-swipe-container {
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    position: relative;
+    padding-bottom: 30px; }
+    .main-container .recruiter-plans-container.mobile-swipe-container .recruiter-plans-wrapper {
+      overflow: hidden;
+      position: relative; }
+      .main-container .recruiter-plans-container.mobile-swipe-container .recruiter-plans-wrapper > div {
+        float: left;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        margin: 10px 0; }
+        .main-container .recruiter-plans-container.mobile-swipe-container .recruiter-plans-wrapper > div .list {
+          padding: 10px 10px 10px 45px !important;
+          background-position-y: 10px !important; } }
