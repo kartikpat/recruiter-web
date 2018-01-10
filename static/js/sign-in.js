@@ -54,7 +54,7 @@ function authFail(res){
 function authSuccess(res){
 	console.log(res)
 	if(res.status=="success"){
-		localStorage.id = res["data"][0]["id"];
+		localStorage.id = res["data"]["id"];
 		window.location="/";
 	}
 	else
@@ -344,7 +344,7 @@ var loginUser = function() {
     });
 
 	if(checkErrorClassLogin($("#login-email")) && checkErrorClassLogin($("#login-password"))) {
-		postRequest("/sign-in",  null,
+		postRequest(baseUrl+"/recruiter/login",  null,
 				obj
 			, authSuccess)
 		}
