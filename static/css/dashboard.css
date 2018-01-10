@@ -1520,8 +1520,6 @@ span.sticker {
       padding-right: 0px; }
     .page-content .block {
       width: 50%; }
-      .page-content .block .separater {
-        display: none; }
     .page-content .border-top-mobile {
       border-top: thin solid #e4e4e4; }
     .page-content .border-bottom-mobile {
@@ -1552,7 +1550,8 @@ span.sticker {
     height: 90%;
     margin-top: -152px; }
   .separater.positive-right {
-    margin-top: -135px;
+    margin-top: -134px;
     height: 90%;
     margin-right: 0px;
-    /* z-index: 999999; */ } }
+    position: relative;
+    left: 1px; } }
