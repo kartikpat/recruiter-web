@@ -46,14 +46,8 @@ var ColumnChartOptions = function() {
     // }
 };
 
-function drawBarChartGraph(response, elementID) {
-    var chartData = new google.visualization.arrayToDataTable([
-            ['Active jobs', 'Shortlisted', 'Viewed', 'Saved', 'rejected'],
-            ['Job 1', 30, 20, 35, 40],
-            ['Job 2', 46, 21, 34, 48],
-            ['Job 3', 16, 41, 14, 38],
-            ['Job 4', 26, 21, 64, 10]
-        ])
+function drawBarChartGraph(data, elementID) {;
+    var chartData = new google.visualization.arrayToDataTable(data)
     var chart = new google.visualization.BarChart(document.getElementById(elementID));
     var options = new ColumnChartOptions();
     options.colors = new MasterColorArray()

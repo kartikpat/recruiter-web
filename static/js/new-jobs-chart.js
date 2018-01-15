@@ -1,10 +1,6 @@
 var lockResize = false;
 $(document).ready(function(){
-     google.charts.load('current', {
-        'packages': ['corechart']
-    }).then(function() {
-        drawBarChartGraph(null, 'new-jobs-chart');
-    }); 
+     loadChartsLibrary();
 })
 $(window).resize(function () {
     if(lockResize)
@@ -16,3 +12,13 @@ $(window).resize(function () {
         lockResize = false;
     }, 250)
 });
+
+function loadChartsLibrary(){
+    google.charts.load('current', {
+        'packages': ['corechart']
+    })
+    google.charts.setOnLoadCallback(function(){
+        console.log('loaded charts library');
+        pubsub.publish("loadedChartLibrary", 1)
+    })
+}

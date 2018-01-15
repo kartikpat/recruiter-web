@@ -15,6 +15,9 @@ $white-highlight-color:  #f7f8fa;
 $button-border-color: #8f8a8a;
 
 .page-content {
+	.anchor-caret{
+		margin-left: 5px;
+	}
 	color: $black;
 	@include page-content;
 	background-color:$page-background-color;
@@ -142,6 +145,9 @@ $button-border-color: #8f8a8a;
 	}
 	.header-row{
 		margin-bottom: 10px;
+		a{
+			color: $black;
+		}
 		.heading{
 			width: 70%;
 			display: inline-block;
@@ -213,19 +219,42 @@ $button-border-color: #8f8a8a;
 				.meta{
 					color: $black;
 					font-size: 16px;
+
 				}
 				.highlighted-meta{
 					background-color: $white-highlight-color;
 					font-size: 13px;
 					font-weight: 400;
-					margin-bottom: 15px;
+					margin-bottom: 10px;
 					padding: 5px 10px;
 					display: inline-block;
-					margin-left: -14px;
+					margin-left: -10px;
 				}
-
 			}
 
+		}
+		.highlighted-profile{
+			position: relative;
+		    top: -10px;
+		    padding-top: 10px;
+		    background: $white-highlight-color;
+		    border-radius: 6px;
+		}
+		.notification-row.multiple{
+			padding: 5px 0;
+			.meta{
+				color: $meta-grey;
+				font-size: 13px;
+			}
+			.see-all{
+				text-align: center;
+			}
+			.button{
+				font-size: 13px;
+			}
+			.profile-detail{
+				display: none;
+			}
 		}
 		.highlighted-banner{
 			background-color: $light-green-bg;
@@ -283,7 +312,7 @@ $button-border-color: #8f8a8a;
 			border-radius: 6px;
 			border-top-left-radius: 0px;
 			border-top-right-radius: 0px;
-			margin-top: 30px;
+			margin-top: 25px;
 			width: 60px;
 			height: 56px;
 			.number{
@@ -292,8 +321,16 @@ $button-border-color: #8f8a8a;
 		}
 	}
 	.interview{
+		.horizontal-separator{
+			margin-top: 0px;
+		}
+		.row{
+			margin-bottom: 20px;
+		}
 		.profile{
 			.general{
+				border-left: thin solid #e4e4e4;
+    			margin-left: -5px;
 				.name{
 					color: $black;
 					font-size: 14px;
