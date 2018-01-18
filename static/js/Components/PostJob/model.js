@@ -2,18 +2,26 @@ function Job(){
 	var settings ={};
 	var submitButton = $('.submit-form');
 	function validate(){
-		for(var key in this.settings){
+		console.log(settings)
+		if(Object.keys(settings).length ===0){
+			console.log('Blank values')
+			return false
+		}
+		for(var key in settings){
 			if([ "title", "location", "minExp", "maxExp", "jobDescription",  "category", "functionalArea"].indexOf(key) > -1){
-				if(!(jobDetails.key && jobDetails.key)){
+				if(!(settings.key && settings.key)){
 					console.log("Missing mandatory field "+key);
+					return
 				}
 			}
 			if(["location", "industry"].indexOf(key) > -1){
-				if(!(jobDetails.key && jobDetails.key)){
+				if(!(settings.key && settings.key)){
 					console.log("Missing mandatory field "+key);
+					return
 				}
-				if(!(jobDetails.key.length <5)){
+				if(!(settings.key.length <5)){
 					console.log("Cannot have more than 5 values: "+key);
+					return
 				}
 			}
 		}
@@ -55,18 +63,22 @@ function Job(){
 				min: settings.batchFrom,
 				max: settings.batchTo
 			}
+		console.log(ob)
 		return ob;
 	}
 
 	function submitHandler(fn){
-		$(this.submitButton).click(fn)
+		console.log(fn);
+		console.log(this)
+		console.log(submitButton)
+		$(submitButton).click(fn)
 	}
 
 	return {
 		init: function(fn){
 			if(fn)
 				this.submitHandler(fn);
-			this.settings = {
+			settings = {
 			 	title: $('#title').val(),
 				location: getPillValues("#locationTags"),
 				minExp: $("#min_experience").val(),
@@ -81,7 +93,7 @@ function Job(){
 				showSal: $("#salary_show").is("checked"),
 				batchFrom: $("#graduating_start_year").val(),
 				batchTo: $("#graduating_end_year").val(),
-				tags: getPillValues("#tags"),
+				tags: getPillValues("#jobTags"),
 				courseType: getMultipleCheckboxes("#courseType"),
 				preferences: getMultipleCheckboxes("#preferences"),
 				isPremium: $("#isPremium").is("checked")
@@ -105,7 +117,7 @@ function cancelButton(){
  * @return {[type]} [description]
  */
 function getPillValues(elementId){
-	var el = $(elementID + ' .input-tag');
+	var el = $(elementId + ' .input-tag');
 	var temp = [];
 	el.each(function(index, value){
 		temp.push($(value).attr('data-id'))
