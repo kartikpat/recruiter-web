@@ -25,7 +25,7 @@
                    <div class="label">
                        <label for="location">Location</label>
                    </div>
-                   <div class="tag-container location-tags" data-max-options="5">
+                   <div class="tag-container location-tags" data-max-options="5" id="locationTags">
                         <div class="pill-button inactive">
                             <input type="text" data-placeholder-value="+ Add location" placeholder="+ Add location">
                             <div class="pill-listing">
@@ -419,7 +419,7 @@
                    </div>
 
                    <div class="field">
-                       <input type="text" placeholder="Give job seekers an insight into your company" onchange="check_youtube_embed(this.value)">
+                       <input type="text" id="videoID" placeholder="Give job seekers an insight into your company" onchange="check_youtube_embed(this.value)">
                        <div id="video-jd-label" class="error hidden"></div>
                    </div>
                </div>
@@ -436,7 +436,7 @@
                     <div class="label">
                         <label for="industry">Industry</label>
                     </div>
-                    <div class="tag-container industry-tags">
+                    <div class="tag-container industry-tags" id="industryTags">
                         <div class="pill-button inactive">
                             <input type="text" data-placeholder-value="+ Add company industry" placeholder="+ Add company industry">
                             <div class="pill-listing">
@@ -711,7 +711,7 @@
                     <div class="label">
                         <label for="tags">Tags</label>
                     </div>
-                    <div class="tag-container skill-tags" data-max-options="3">
+                    <div class="tag-container skill-tags" data-max-options="3" id="jobTags">
                         <div class="pill-button inactive">
                             <input type="text" data-placeholder-value="+ Add job tag" placeholder="+ Add job tag">
                             <div class="pill-listing">
@@ -729,7 +729,7 @@
                 </div>
 
 
-               <div class="field-container tile-section">
+               <div class="field-container tile-section" id="courseType">
                    <div class="label course-type">
                        <label  for="course_type">Course Type</label>
                    </div>
@@ -793,7 +793,7 @@
                    </div>
                </div>
 
-               <div class="field-container tile-section">
+               <div class="field-container tile-section" id="preferences">
                    <div class="label course-type">
                        <label for="course_type">Preferences</label>
                    </div>
@@ -888,8 +888,8 @@
     </div>
 
     <div class="contents">
-        <input type="checkbox" id="premium_job" name="premium" value="0">
-        <label for="premium_job" class="checkbox premium-job important-info-color font-sm">
+        <input type="checkbox" id="isPremium" name="premium" value="0">
+        <label for="isPremium" class="checkbox premium-job important-info-color font-sm">
             <span>Make Job Premium.</span>
         </label>
         <p> You have 3 credits left.</p>

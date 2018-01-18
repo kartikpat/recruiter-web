@@ -6,7 +6,9 @@ $(document).ready(function(){
 	var notificationCard = $(".prototype.notificationRow")
 	var greetingsContainer = $(".dashboard .header-row");
 	var notificationContainer = $('#notificationContainer');
-	var seeMoreSection = $('.seeMoreSection.prototype')
+	var seeMoreSection = $('.seeMoreSection.prototype');
+
+	var candidateApplyUrl = "/candidate-apply-list/:publishedId?type=:status";
 	function onStatsUpdate(topic, data){
 		data.forEach(function(aData){
 			dashboardStatsContainer.find(".block."+aData['label']+' .number').text(aData['value']);
@@ -37,7 +39,6 @@ $(document).ready(function(){
 	    fetchActiveJobStats();
 	}
 	var chartLibraryLoadSubscription = pubsub.subscribe("loadedChartLibrary", onLoadChartLibrary)
-
 	function onFetchJobs(topic, data){
 		console.log(data)
 		var len = data.length;
@@ -48,8 +49,8 @@ $(document).ready(function(){
 			card.find(".title .meta-content .location .label").text(aJob["loc"])
 			card.find(".title .meta-content .experience .label").text(experience)
 			card.find(".title .meta-content .postedOn .label").text(moment(aJob['created']).format('D MMM YYYY'));
-			card.find(".stats .totalApplications .value").text(aJob["totalApplications"]);
-			card.find(".stats .newApplications .value").text(aJob["newApplications"]);
+			card.find(".stats .totalApplications .value").text(aJob["totalApplications"]).attr('href', candidateApplyUrl.replace(':publishedId', aJob['publishedId']).replace(':status', 'all'));
+			card.find(".stats .newApplications .value").text(aJob["newApplications"]).attr('href', candidateApplyUrl.replace(':publishedId', aJob['publishedId']).replace(':status', 'all'));
 			if(len-1 == index)
 				card.find('.horizontal-separator').addClass('hidden');
 			$('#recentJobsContainer .detail-card').append(card);

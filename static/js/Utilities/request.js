@@ -55,10 +55,6 @@ var postRequest = function(url,headers,data,successCallback,completeCallback,bef
  * @param  {object}   additionalParameters reference object if any to be accessed in the callback
  */
 var getRequest = function(url,parameters,callback1,callback2,callback3, additionalParameters,showError){
-    var argumentsArray = Array.from(arguments);
-    var fun = arguments.callee;
-    var insert = true;
-
       $.ajax({
         method: "GET",
         url: url,
