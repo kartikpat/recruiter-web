@@ -1058,7 +1058,12 @@
 				"static/js/header.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
-				"static/js/landing.js"
+				"static/js/landing.js",
+				"static/js/Utilities/pubsub.js",
+				"static/js/Utilities/common.js",
+				"static/js/Services/submitLogin.js",
+				"static/js/Components/Landing/model.js",
+				"static/js/Components/Landing/index.js"
 			],
 			"prod" : [
 				"static/build/js/landing.min.js"

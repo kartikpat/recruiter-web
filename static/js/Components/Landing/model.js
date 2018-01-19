@@ -5,6 +5,7 @@ var errorResponses = {
 	invalidPassword: 'Please enter a valid password',
 	userFail: 'Email address does not exist',
 	passwordFail: 'Incorrect password',
+	missingParameters: 'Oops! Our engineers will fix this shortly. Please try again after sometime.',
 	serviceError: 'Oops! Our engineers are working on fixing this, please try again after sometime.'	
 }
 function userCredentials(){
@@ -12,7 +13,8 @@ function userCredentials(){
 	function init(){
 		user.email = $("#email");
 		user.password = $("#password");
-		user.login = $("#login")
+		user.login = $("#login");
+		user.errors = $('.error');
 
 	}
 	function loginHandler(fn){
@@ -24,31 +26,57 @@ function userCredentials(){
 			password: user.password.val()
 		}
 	}
+	function eraseErrors(){
+		user.errors.text('');
+	}
+	function errorHandler(res){
+		var message = '';
+		console.log(res)
+		switch(res.status){
+			case 404:
+				message = errorResponses.userFail;
+				break;
+			case 401:
+				message = errorResponses.passwordFail;
+				break;
+			case 503:
+				message = errorResponses.serviceError;
+				break;
+			case 422:
+				message = errorResponses.missingParameters
+				break;
+		}
+		user.password.next('.error').text(message)
+		return
+	}
 	function validateLogin(){
-		if(Object.keys(user).length ===0){
-			console.log('empty user')
-			return false
-		}
-
+		eraseErrors();
+		
 		if(!( user.email && user.email.val() )){
-			user.email.find('.error').text(errorResponses['missingEmail'])
+			console.log(user.email.next('.error'))
+			user.email.next('.error').text(errorResponses['missingEmail'])
 			return false
 		}
-		if(isValidEmail(creds.email)){
-			user.email.find('.error').text(errorResponses['invalidEmail'])
+		if(!isValidEmail(user.email.val())){
+			user.email.next('.error').text(errorResponses['invalidEmail'])
 			return false
 		}
 		if(!( user.password && user.password.val() )){
-			user.password.find('.error').text(errorResponses['missingPassword']);
+			user.password.next('.error').text(errorResponses['missingPassword']);
 			return false;
 		}
 		return true;
+	}
+	function test(fn){
+		fn(user);
 	}
 	return {
 		init: init,
 		getData: getData,
 		validateLogin: validateLogin,
-		loginHandler: loginHandler
+		loginHandler: loginHandler,
+		errorHandler: errorHandler,
+		test: test
 	}
 
 }
