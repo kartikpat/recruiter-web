@@ -1062,7 +1062,9 @@
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/common.js",
 				"static/js/Services/submitLogin.js",
+				"static/js/Services/submitRegister.js",
 				"static/js/Components/Landing/model.js",
+				"static/js/Components/Landing/registerModel.js",
 				"static/js/Components/Landing/index.js"
 			],
 			"prod" : [

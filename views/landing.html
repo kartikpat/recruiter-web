@@ -7,28 +7,37 @@
 					<h1 class="heading">New Recruiter Registration</h1>
 					<div class="recruiter-form">
 						<div class="form-group">
-							<input id="rec-name" type="text" placeholder="Name" autocomplete="off">
+							<input id="registerName" type="text" placeholder="Name" name='Name' autocomplete="off">
+							<div class="error"></div>
+
 						</div>
 						<div class="form-group">
-							<input id="rec-work-email" type="text" placeholder="Your Work Email ID" autocomplete="off">
+							<input id="registerWorkEmail" type="text" placeholder="Your Work Email ID" name='Email' autocomplete="off">
+							<div class="error"></div>
 						</div>
 						<div class="form-group">
-							<input id="rec-phone" type="text" placeholder="Phone" autocomplete="off">
+							<input id="registerPhone" type="text" placeholder="Phone" name='Phone' autocomplete="off">
+							<div class="error"></div>
 						</div>
 						<div class="form-group">
-							<input id="rec-designation" type="text" placeholder="Designation" autocomplete="off">
+							<input id="registerDesignation" type="text" placeholder="Designation" name='Designation' 
+							autocomplete="off">
+							<div class="error"></div>
 						</div>
 						<div class="form-group">
-							<input id="rec-organization" type="text" placeholder="Organization" autocomplete="off">
+							<input id="registerOrganization" type="text" placeholder="Organization" name='Organization' autocomplete="off">
+							<div class="error"></div>
 						</div>
 						<div class="form-group">
-							<input id="rec-password" type="password" placeholder="Password" autocomplete="off">
+							<input id="registerPassword" type="password" placeholder="Password" name='Password' autocomplete="off">
+							<div class="error"></div>
 						</div>
 						<div class="form-group">
-							<input id="rec-confirm-password" type="password" placeholder="Confirm Password" autocomplete="off">
+							<input id="registerConfirmPassword" type="password" placeholder="Confirm Password" name='ConfirmPassword' autocomplete="off">
+							<div class="error"></div>
 						</div>
 						<div class="form-group">
-							<button class="rec-sign-in" value="Login">Register</button>
+							<button class="rec-sign-in" id="register" value="Login">Register</button>
 						</div>
 						<p>Already have an account? <a href="#" class="trigger-register-sign-in-modal">Sign in</a></p>
 					</div>
