@@ -31,7 +31,7 @@ module.exports = function(settings){
     // IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
 
 
-    	res.redirect('/sign-in');
+    	res.redirect('/login');
 	}
 	app.post("/sign-in", function(req, res){
 		var email = req.body.email || null;
@@ -150,15 +150,16 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/login", function(req, res){
-		res.render("login",{
-			title: "IIM JOBS | Login",
-			styles:  assetsMapper["login"]["styles"][mode],
-			scripts: assetsMapper["login"]["scripts"][mode],
-			baseUrl: baseUrl
+	app.get("/login", function(req,res){
+		res.render("landing", {
+			title:"Recruiter Web - Landing Page | iimjobs.com",
+			styles:  assetsMapper["landing"]["styles"][mode],
+			scripts: assetsMapper["landing"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
 		})
 		return
-	})
+	});
 
 	app.get("/logout", function(req,res){
 		req.session = null;
@@ -457,17 +458,6 @@ module.exports = function(settings){
 			title:"Recruiter Web - Reports | iimjobs.com",
 			styles:  assetsMapper["reports"]["styles"][mode],
 			scripts: assetsMapper["reports"]["scripts"][mode],
-			baseUrl: baseUrl,
-			baseDomain: baseDomain
-		})
-		return
-	});
-	
-	app.get("/landing", function(req,res){
-		res.render("landing", {
-			title:"Recruiter Web - Landing Page | iimjobs.com",
-			styles:  assetsMapper["landing"]["styles"][mode],
-			scripts: assetsMapper["landing"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain
 		})

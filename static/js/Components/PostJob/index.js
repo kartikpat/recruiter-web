@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	var jobDetails = Job();
+	jobDetails.init();
 	jobDetails.submitHandler(function(){
-			jobDetails.init();
 			if(jobDetails.validate())
 				submitNewJob(jobDetails.getData());
 		})
