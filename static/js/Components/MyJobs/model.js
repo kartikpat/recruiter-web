@@ -47,22 +47,23 @@ function Jobs(){
 			if(anItem["rej_msg"]){
 				message = anItem["rej_msg"];
 			}
-			item.status.append(anItem["status"]+"<i data-attribute="+anItem["timestamp"]+" class='rejected-message icon-information tooltip' aria-hidden='true' title='"+message+"'></i>");
+			var status = anItem['status'];
+			if(status =='pending'){
+				status = 'Under Review'
+				message = 'We are reviewing this job. This usually takes upto 24 hours.'
+			}
+
+			item.status.append(status+"<i data-attribute="+anItem["timestamp"]+" class='rejected-message icon-information tooltip' aria-hidden='true' title='"+message+"'></i>");
 			if(anItem['views']){
 				item.views.text(anItem['views']+' Views');
-				item.applications.html('<a class="link-color" href="/job/'+anItem["id"]+'/candidates?title='+anItem["title"]+'">'+anItem["totalApplications"]+'Applied</a>');
+				item.applications.html('<a class="link-color" href="/job/'+anItem["id"]+'/candidates?title='+anItem["title"]+'">'+anItem["totalApplications"]+' Applied</a>');
 			}
 			else{
 				item.element.find(".engagement").addClass("hidden-mobile").html('<span class="engagement-default">--</span>');
 				item.element.find(".actions .job-actions-container").addClass("hidden");
-				// console.log(element.find(".actions .job-actions-container"));
 				item.element.find(".actions .job-edit-container").removeClass("hidden");
-			}
-			
-				
+			}		
 			str+=item.element[0].outerHTML;
-			console.log(item.element)
-			console.log(item.element[0].outerHTML)
 		});
 		list.rowContainer.append(str);
 	}
