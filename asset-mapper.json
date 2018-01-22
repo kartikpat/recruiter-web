@@ -816,12 +816,15 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/tooltipster.main.min.js",
 				"static/js/request.js",
 				"static/js/header.js",
-				"static/js/change-password.js",
-				"static/js/my-jobs.js",
 				"static/js/utilities.js",
-				"static/js/vendor/tooltipster.main.min.js"
+				"static/js/Utilities/pubsub.js",
+				"static/js/vendor/moment.min.js",
+				"static/js/Services/fetchJobs.js",
+				"static/js/Components/MyJobs/model.js",
+				"static/js/Components/MyJobs/index.js"
 			],
 			"prod" : [
 				"static/build/js/my-jobs.min.js"
