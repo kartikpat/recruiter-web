@@ -1182,6 +1182,8 @@ span.sticker {
   padding: 20px;
   width: 100%;
   background-color: #F4F4F4; }
+  .page-content .anchor-caret {
+    margin-left: 5px; }
   .page-content .page-header select {
     font-family: inherit;
     display: inline-block;
@@ -1334,6 +1336,8 @@ span.sticker {
     margin-right: 18px; }
   .page-content .header-row {
     margin-bottom: 10px; }
+    .page-content .header-row a {
+      color: #2b2b2b; }
     .page-content .header-row .heading {
       width: 70%;
       display: inline-block;
@@ -1394,10 +1398,27 @@ span.sticker {
         background-color: #f7f8fa;
         font-size: 13px;
         font-weight: 400;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
         padding: 5px 10px;
         display: inline-block;
-        margin-left: -14px; }
+        margin-left: -10px; }
+    .page-content .detail-card .highlighted-profile {
+      position: relative;
+      top: -10px;
+      padding-top: 10px;
+      background: #f7f8fa;
+      border-radius: 6px; }
+    .page-content .detail-card .notification-row.multiple {
+      padding: 5px 0; }
+      .page-content .detail-card .notification-row.multiple .meta {
+        color: #737373;
+        font-size: 13px; }
+      .page-content .detail-card .notification-row.multiple .see-all {
+        text-align: center; }
+      .page-content .detail-card .notification-row.multiple .button {
+        font-size: 13px; }
+      .page-content .detail-card .notification-row.multiple .profile-detail {
+        display: none; }
     .page-content .detail-card .highlighted-banner {
       background-color: #f3fbfb;
       height: 40px;
@@ -1443,18 +1464,25 @@ span.sticker {
       border-radius: 6px;
       border-top-left-radius: 0px;
       border-top-right-radius: 0px;
-      margin-top: 30px;
+      margin-top: 25px;
       width: 60px;
       height: 56px; }
       .page-content .detail-card .custom-icon .number {
         color: #149075; }
-  .page-content .interview .profile .general .name {
-    color: #2b2b2b;
-    font-size: 14px;
-    font-weight: 700; }
-  .page-content .interview .profile .general .meta {
-    font-size: 13px;
-    color: #737373; }
+  .page-content .interview .horizontal-separator {
+    margin-top: 0px; }
+  .page-content .interview .row {
+    margin-bottom: 20px; }
+  .page-content .interview .profile .general {
+    border-left: thin solid #e4e4e4;
+    margin-left: -5px; }
+    .page-content .interview .profile .general .name {
+      color: #2b2b2b;
+      font-size: 14px;
+      font-weight: 700; }
+    .page-content .interview .profile .general .meta {
+      font-size: 13px;
+      color: #737373; }
   .page-content .feed-row {
     padding: 10px 25px; }
     .page-content .feed-row .title {
@@ -1528,8 +1556,6 @@ span.sticker {
       padding-right: 0px; }
     .page-content .block {
       width: 50%; }
-      .page-content .block .separater {
-        display: none; }
     .page-content .border-top-mobile {
       border-top: thin solid #e4e4e4; }
     .page-content .border-bottom-mobile {
@@ -1545,4 +1571,23 @@ span.sticker {
     .page-content .feed-row .main-content .stats {
       margin-top: 20px; }
     .page-content .feed-row .main-content .action-panel {
-      margin-top: -68px; } }
+      margin-top: -68px; }
+  .separater.positive-bottom {
+    width: 90%;
+    height: 1px;
+    margin-top: 18px;
+    float: left; }
+  .separater.positive-top {
+    margin-top: -152px;
+    height: 1px;
+    width: 90%; }
+  .separater.positive-left {
+    float: left;
+    height: 90%;
+    margin-top: -152px; }
+  .separater.positive-right {
+    margin-top: -134px;
+    height: 90%;
+    margin-right: 0px;
+    position: relative;
+    left: 1px; } }

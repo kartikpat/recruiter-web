@@ -9,36 +9,36 @@
                         <div class="heading"><img class="salutation-icon" src="/static/images/morning-icon.png">Good Morning, Arun</div>
                         <div class="sub-heading">It looks busy around here! Good luck for your day ahead. Here is a quick update</div>
                     </div>
-                    <div class="block-container">
-                        <div class="block border-right-mobile border-bottom-mobile">
+                    <div class="block-container" id="dashboardStatsContainer">
+                        <div class="block activeJobs">
                             <div class="stats">
-                                <div class="number">5</div>
+                                <div class="number">0</div>
                                 <div class="legend">Open jobs</div>
                             </div>
                             <div class="icon"><img src="/static/images/open-jobs-icon.png"></div>
-                            <div class="separater"></div>
-                        </div><div class="block border-left-mobile border-bottom-mobile">
+                            <div class="separater positive-right"></div>
+                        </div><div class="block newApplications">
                             <div class="stats">
-                                <div class="number">5</div>
+                                <div class="number">0</div>
                                 <div class="legend">New Applications</div>
                             </div>
                             <div class="icon"><img src="/static/images/new-applications-icon.png"></div>
-                            <div class="separater"></div>
-                        </div><div class="block border-right-mobile border-top-mobile">
+                            <div class="separater positive-bottom"></div>
+                        </div><div class="block awaitedApplications">
                             <div class="stats">
-                                <div class="number">5</div>
+                                <div class="number">0</div>
                                 <div class="legend">Applications waiting for your actions</div>
                             </div>
                             <div class="icon"><img src="/static/images/waiting-applications-icon.png"></div>
-                            <div class="separater"></div>
-                        </div><div class="block  border-left-mobile border-top-mobile">
+                            <div class="separater positive-top"></div>
+                        </div><div class="block  shortlistedApplications">
                             <div class="stats">
-                                <div class="number">5</div>
+                                <div class="number">0</div>
                                 <div class="legend">Shortlisted candidates to be interviewed</div>
                             </div>
                             <div class="icon"><img src="/static/images/shortlisted-icon.png"></div>
-                        </div>
-                        
+                            <div class="separater positive-left"></div>
+                        </div>             
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                     <div class="feed-card">
                         <div class="header-row">
                             <div class="heading">Jobs Posted</div>
-                            <div class="heading-button right">See All <img src="/static/images/right-arrow-icon.png"></div>
+                            <div class="heading-button right"><a href="/my-jobs">See All</a><img src="/static/images/right-arrow-icon.png"></div>
                         </div>
                         <div class="detail-card ">
                             <div id="new-jobs-chart" class="graph_holder">
@@ -63,122 +63,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="feed-card">
+                    <div class="feed-card" id="recentJobsContainer">
                         <div class="header-row">
                             <div class="heading">Recent Jobs</div>
-                            <div class="heading-button right">See All <img src="/static/images/right-arrow-icon.png"></div>
+                            <div class="heading-button right"><a href="/my-jobs">See All</a> <img src="/static/images/right-arrow-icon.png"></div>
                         </div>
                         <div class="detail-card ">
-                            <div class="feed-row">
-                                <div class="main-content">
-                                    <div class="title">
-                                        <div class="text">iimjobs.com - Associate Product Manager - Mobile/Internet</div>
-                                         <div class="meta-content">
-                                            <div class="meta-prop">
-                                                <div class="icon"><img src="/static/images/location-icon.png"></div>
-                                                <div class="label">Delhi</div>
-                                            </div>
-                                             <div class="meta-prop">
-                                                <div class="icon"><img src="/static/images/experience-icon.png"></div>
-                                                <div class="label">0-3yrs</div>
-                                            </div>
-                                             <div class="meta-prop">
-                                                <div class="icon"><img src="/static/images/clock-icon.png"></div>
-                                                <div class="label">5 Jan 2017</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="stats">
-                                        <div class="applications">
-                                            <div class="value">520</div>
-                                            <div class="label">Applications</div>
-                                        </div>
-                                        <div class="applications">
-                                            <div class="value">20</div>
-                                            <div class="label">New</div>
-                                        </div>
-                                    </div>
-                                    <div class="action-panel">
-                                        <img src="/static/images/settings-icon.png">
-                                    </div>
-                                </div>
-                               
-                                <div class="horizontal-separator"></div>
-                            </div>
-                            <div class="feed-row">
-                                <div class="main-content">
-                                    <div class="title">
-                                        <div class="text">iimjobs.com - Associate Product Manager - Mobile/Internet</div>
-                                        <div class="meta-content">
-                                            <div class="meta-prop">
-                                                <div class="icon"><img src="/static/images/location-icon.png"></div>
-                                                <div class="label">Delhi</div>
-                                            </div>
-                                             <div class="meta-prop">
-                                                <div class="icon"><img src="/static/images/experience-icon.png"></div>
-                                                <div class="label">0-3yrs</div>
-                                            </div>
-                                             <div class="meta-prop">
-                                                <div class="icon"><img src="/static/images/clock-icon.png"></div>
-                                                <div class="label">5 Jan 2017</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="stats">
-                                        <div class="applications">
-                                            <div class="value">520</div>
-                                            <div class="label">Applications</div>
-                                        </div>
-                                        <div class="applications">
-                                            <div class="value">20</div>
-                                            <div class="label">New</div>
-                                        </div>
-                                    </div>
-                                    <div class="action-panel">
-                                        <img src="/static/images/settings-icon.png">
-                                    </div>
-                                </div>
-                                        
-                                <div class="horizontal-separator"></div>
-                            </div>
-                           <div class="feed-row">
-                                <div class="main-content">
-                                    <div class="title">
-                                        <div class="text">iimjobs.com - Associate Product Manager - Mobile/Internet</div>
-                                        <div class="meta-content">
-                                            <div class="meta-prop">
-                                                <div class="icon"><img src="/static/images/location-icon.png"></div>
-                                                <div class="label">Delhi</div>
-                                            </div>
-                                             <div class="meta-prop">
-                                                <div class="icon"><img src="/static/images/experience-icon.png"></div>
-                                                <div class="label">0-3yrs</div>
-                                            </div>
-                                             <div class="meta-prop">
-                                                <div class="icon"><img src="/static/images/clock-icon.png"></div>
-                                                <div class="label">5 Jan 2017</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="stats">
-                                        <div class="applications">
-                                            <div class="value">520</div>
-                                            <div class="label">Applications</div>
-                                        </div>
-                                        <div class="applications">
-                                            <div class="value">20</div>
-                                            <div class="label">New</div>
-                                        </div>
-                                    </div>
-                                    <div class="action-panel">
-                                        <img src="/static/images/settings-icon.png">
-                                    </div>
-                                </div>
-                                <div class="horizontal-separator hidden"></div>
-                            </div>
                         </div>  
                     </div>
-                    <div class="feed-card">
+                    <div class="feed-card hidden" id="savedSearchContainer">
                         <div class="header-row">
                             <div class="heading">Saved Searches</div>
                             <div class="heading-button right">See All <img src="/static/images/right-arrow-icon.png"></div>
@@ -285,70 +178,57 @@
                     </div>
                 </div>
                 <div class="notification-column right">
-                    <div class="notification-card">
+                    <div class="notification-card" id="notificationContainer">
                         <div class="header-row">
                             <div class="heading">Notification</div>
                         </div>
                         <div class="detail-card ">
-                            <div class="profile">
-                                <div class="icon"><img src="/static/images/dummy-face-icon.png"></div>
-                                <div class="general">
-                                    <div class="name">Shally Jain</div>
-                                    <div class="meta">Delhi, 3y 7m</div>
-                                </div>
-                            </div>
-                            <div class="profile-detail">
-                                <div class="profile-row">
-                                    <div class="title">Organization</div>
-                                    <div class="label">Product Manager at Blackbuck</div>
-                                    <div class="label">Jun - 2016 to Present</div>
-                                </div>
-                                <div class="profile-row">
-                                    <div class="title">Institute</div>
-                                    <div class="label">Inidian Institute of Management, Indore</div>
-                                    <div class="label">2012 - 2014</div>
-                                    <div class="label">MBA / PGDM (Full Time)</div>
-                                </div>
-                            </div>
-                            <div class="action-buttons">
-                                <div class="button">Download Resume</div>
-                            </div>
-                        </div> 
+                        </div>
                     </div>
-                    <div class="notification-card">
+                    <div class="notification-card" id="interviewContainer">
                         <div class="header-row">
                             <div class="heading">Upcoming Interviews</div>
                         </div>
                         <div class="detail-card interview">
-                            <div class="profile">
-                                <div class="icon">
-                                    <div class="custom-icon">
-                                        <div class="number">21</div>
-                                        <div class="label">Jul</div>
+                            <div class="interviewRow hidden">
+                                <div class="profile">
+                                    <div class="icon">
+                                        <div class="custom-icon">
+                                            <div class="number">21</div>
+                                            <div class="label">Jul</div>
+                                        </div>
                                     </div>
-                                    <div class="separater"></div>
-                                </div>
-                                <div class="general">
-                                    <div class="highlighted-meta">00:00 - 00:30 AM</div>
-                                    <div class="name">Applicant Name <span class="right"><img src="/static/images/edit-icon.png"></span></div>
-                                    <div class="meta">Designation</div>
-                                    <div class="meta">Company</div>
-
-                                </div>
-                            </div>
-                            <div class="highlighted-banner"><span class="number">0</span> Interviews Scheduled</div>
-                            <div class="feed-row">
-                                <div class="title"><span><img src="/static/images/interview-light-bulb.png"></span> Scheduling an interview will help you:</div>
-                                <div class="list">
-                                    <ul>
-                                        <li>It helps to avoid a slow interviewing process</li>
-                                        <li>Helps in allocating ample amounts of time to every candidate</li>
-                                        <li>Enhances the interaction between candidates & recruiters by promoting fast and easy scheduling</li>
-                                    </ul>
+                                    <div class="general">
+                                        <div class="row">
+                                            <div class="highlighted-meta">00:00 - 00:30 AM</div>
+                                            <div class="name">Applicant Name <span class="right"><img src="/static/images/edit-icon.png"></span></div>
+                                            <div class="meta">Designation</div>
+                                            <div class="meta">Company</div>
+                                        </div>                                
+                                    </div>
                                 </div>
                             </div>
-                            <div class="action-buttons">
-                                <div class="button">Start Scheduling Interviews</div>
+                            <div class="horizontal-separator hidden"></div>
+                            
+                            <div class="horizontal-separator hidden"></div>
+                            <div class="single-interview hidden">
+                                <div class="highlighted-banner"><span class="number">0</span> Interviews Scheduled</div>
+                                <div class="feed-row ">
+                                    <div class="title"><span><img src="/static/images/interview-light-bulb.png"></span> Scheduling an interview will help you:</div>
+                                    <div class="list">
+                                        <ul>
+                                            <li>It helps to avoid a slow interviewing process</li>
+                                            <li>Helps in allocating ample amounts of time to every candidate</li>
+                                            <li>Enhances the interaction between candidates & recruiters by promoting fast and easy scheduling</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="action-buttons">
+                                    <div class="button">Start Scheduling Interviews</div>
+                                </div>
+                            </div>                   
+                            <div class="notification-row multiple hidden">
+                                 <div class="seeAll see-all"><a class="meta" href="">See More</a><img class="anchor-caret" src="/static/images/right-arrow-icon.png"></div>
                             </div>
                         </div> 
                     </div>
@@ -387,5 +267,90 @@
   <div class="conversations right">
       {{>chatSidebar}}
   </div>
+</div>
+<div class="feed-row prototype hidden jobRow" >
+    <div class="main-content">
+        <div class="title">
+            <div class="text"></div>
+             <div class="meta-content">
+                <div class="meta-prop location">
+                    <div class="icon"><img src="/static/images/location-icon.png"></div>
+                    <div class="label"></div>
+                </div>
+                 <div class="meta-prop experience">
+                    <div class="icon"><img src="/static/images/experience-icon.png"></div>
+                    <div class="label"></div>
+                </div>
+                 <div class="meta-prop postedOn">
+                    <div class="icon"><img src="/static/images/clock-icon.png"></div>
+                    <div class="label"></div>
+                </div>
+            </div>
+        </div>
+        <div class="stats">
+            <div class="applications totalApplications">
+                <a href = "#" class="value"></a>
+                <div class="label">Applications</div>
+            </div>
+            <div class="applications newApplications">
+                <a href="#" class="value"></a>
+                <div class="label">New</div>
+            </div>
+        </div>
+        <div class="action-panel">
+            <img src="/static/images/settings-icon.png">
+        </div>
+    </div>
+   
+    <div class="horizontal-separator"></div>
+</div>
+<div class="notification-row prototype multiple hidden notificationRow">
+    <div class="profile">
+        <div class="icon"><img src="/static/images/dummy-face-icon.png"></div>
+        <div class="general">
+            <div class="name">Shally Jain</div>
+            <div class="meta designationOrganization">Product Manager at Blackbuck</div>
+            <div class="meta locationExperience">Delhi, 3y 7m</div>
+        </div>
+    </div>
+    <div class="profile-detail">
+        <div class="profile-row  profession">
+            <div class="title">Organization</div>
+            <div class="label designationOrganization">Product Manager at Blackbuck</div>
+            <div class="label designationExperience">Jun - 2016 to Present</div>
+        </div>
+        <div class="profile-row education">
+            <div class="title">Institute</div>
+            <div class="label institute">Inidian Institute of Management, Indore</div>
+            <div class="label batch">2012 - 2014</div>
+            <div class="label courseType">MBA / PGDM (Full Time)</div>
+        </div>
+    </div>
+    <div class="action-buttons">
+        <div class="button">Download Resume</div>
+    </div>  
+    <div class="horizontal-separator"></div>
+</div>
+<div class="notification-row multiple prototype hidden seeMoreSection">
+     <div class="seeAll see-all"><a class="meta" href="">See More</a><img class="anchor-caret" src="/static/images/right-arrow-icon.png"></div>
+</div>
+<div class="interviewRow notification-row prototype hidden">
+    <div class="profile">
+        <div class="icon">
+            <div class="custom-icon">
+                <div class="number">21</div>
+                <div class="label">Jul</div>
+            </div>
+        </div>
+        <div class="general">
+        </div>
+    </div>
+    <div class="horizontal-separator"></div>
+</div>
+<div class="row interviewCandidateRow prototype hidden">
+    <div class="highlighted-meta">00:00 - 00:30 AM</div>
+    <div class="name">Applicant Name <span class="right"><img src="/static/images/edit-icon.png"></span></div>
+    <div class="meta designation">Designation</div>
+    <div class="meta organization">Company</div>
 </div>
 {{> footer}}

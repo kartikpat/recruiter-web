@@ -6,7 +6,7 @@
 	var bodyParser = require("body-parser"); //parses the body portion of an incoming HTTP request and makes it easier to extract different parts of the contained information.
 	var program = require("commander"); //options generator for command line interface
 	var compression = require("compression"); //compresses the request payload
-	var session = require("cookie-session"); //stores the session data on the client within a cookie
+	var cookieParser = require("cookie-parser"); //stores the session data on the client within a cookie
 	var request = require("request"); //for making http and https requests
 	var mode = "prod";
 	var env = "cloud";
@@ -42,11 +42,13 @@
 
 
 	var app = express();
-	app.use(session({
-		name: 'sessID',
-		keys: ['key-1'],
-		httpOnly: false
-	}));
+	app.use(cookieParser())
+	// not using cookie-session in this case
+	// app.use(session({
+	// 	name: 'sessID',
+	// 	keys: ['key-1'],
+	// 	httpOnly: false
+	// }));
 	app.use(bodyParser.urlencoded({ extended: true }))
 	app.use(compression()); //compressing payload on every request
 

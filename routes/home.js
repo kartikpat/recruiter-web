@@ -26,12 +26,12 @@ module.exports = function(settings){
 		//bypassing the auth for development
     // CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     // you can do this however you want with whatever variables you set up
-    	if (req.session.user)
+    	if (req.cookies["recruiter-access-token"])
         	return next();
     // IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
 
 
-    	res.redirect('/sign-in');
+    	res.redirect('/login');
 	}
 	app.post("/sign-in", function(req, res){
 		var email = req.body.email || null;
@@ -150,15 +150,16 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/login", function(req, res){
-		res.render("login",{
-			title: "IIM JOBS | Login",
-			styles:  assetsMapper["login"]["styles"][mode],
-			scripts: assetsMapper["login"]["scripts"][mode],
-			baseUrl: baseUrl
+	app.get("/login", function(req,res){
+		res.render("landing", {
+			title:"Recruiter Web - Landing Page | iimjobs.com",
+			styles:  assetsMapper["landing"]["styles"][mode],
+			scripts: assetsMapper["landing"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
 		})
 		return
-	})
+	});
 
 	app.get("/logout", function(req,res){
 		req.session = null;
@@ -430,7 +431,7 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/candidate-apply-list", function(req,res){
+	app.get("/candidate-apply-list/:jobID", function(req,res){
 		res.render("candidate-apply-list", {
 			title:"Recruiter Web - Candidate Apply List | iimjobs.com",
 			styles:  assetsMapper["candidate-apply-list"]["styles"][mode],
@@ -457,17 +458,6 @@ module.exports = function(settings){
 			title:"Recruiter Web - Reports | iimjobs.com",
 			styles:  assetsMapper["reports"]["styles"][mode],
 			scripts: assetsMapper["reports"]["scripts"][mode],
-			baseUrl: baseUrl,
-			baseDomain: baseDomain
-		})
-		return
-	});
-	
-	app.get("/landing", function(req,res){
-		res.render("landing", {
-			title:"Recruiter Web - Landing Page | iimjobs.com",
-			styles:  assetsMapper["landing"]["styles"][mode],
-			scripts: assetsMapper["landing"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain
 		})

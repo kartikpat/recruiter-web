@@ -51,10 +51,12 @@ function authFail(res){
  * success handler for login
  * @param  {object} res ajax response object
  */
-function authSuccess(res){
-	console.log(res)
+function authSuccess(res, status, xhr){
 	if(res.status=="success"){
-		localStorage.id = res["data"][0]["id"];
+		localStorage.id = res["data"]["id"];
+		var token = xhr.getResponseHeader('Set-Token');
+		localStorage["recruiter-access-token"] = token;
+		Set_Cookie('recruiter-access-token', token);
 		window.location="/";
 	}
 	else
@@ -344,7 +346,7 @@ var loginUser = function() {
     });
 
 	if(checkErrorClassLogin($("#login-email")) && checkErrorClassLogin($("#login-password"))) {
-		postRequest("/sign-in",  null,
+		postRequest(baseUrl+"/recruiter/login",  null,
 				obj
 			, authSuccess)
 		}

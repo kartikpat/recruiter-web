@@ -202,7 +202,11 @@
 				"static/js/header.js",
 				"static/js/postJob.js",
 				"static/js/modal.js",
-				"static/js/ui-components.js"
+				"static/js/ui-components.js",
+				"static/js/Utilities/pubsub.js",
+				"static/js/Services/submitNewJob.js",
+				"static/js/Components/PostJob/model.js",
+				"static/js/Components/PostJob/index.js"
 			],
 			"prod" : [
 				"static/build/js/post-job.min.js"
@@ -812,12 +816,15 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/tooltipster.main.min.js",
 				"static/js/request.js",
 				"static/js/header.js",
-				"static/js/change-password.js",
-				"static/js/my-jobs.js",
 				"static/js/utilities.js",
-				"static/js/vendor/tooltipster.main.min.js"
+				"static/js/Utilities/pubsub.js",
+				"static/js/vendor/moment.min.js",
+				"static/js/Services/fetchJobs.js",
+				"static/js/Components/MyJobs/model.js",
+				"static/js/Components/MyJobs/index.js"
 			],
 			"prod" : [
 				"static/build/js/my-jobs.min.js"
@@ -894,9 +901,16 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/pubsub.js",
+				"static/js/Utilities/request.js",
+				"static/js/vendor/moment.min.js",
+				"static/js/Services/fetchDashboardStats.js",
+				"static/js/Services/fetchActiveJobStats.js",
+				"static/js/Services/fetchJobs.js",
+				"static/js/Services/fetchFollowUps.js",
+				"static/js/Services/fetchInterviews.js",
+				"static/js/Components/Dashboard/index.js",
 				"static/js/header.js",
-				"static/js/change-password.js",
 				"static/js/vendor/slick.js",
 				"static/js/vendor/google-charts-loader.min.js",
 				"static/js/charts/bar-chart-stacked.js",
@@ -1047,7 +1061,14 @@
 				"static/js/header.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
-				"static/js/landing.js"
+				"static/js/landing.js",
+				"static/js/Utilities/pubsub.js",
+				"static/js/Utilities/common.js",
+				"static/js/Services/submitLogin.js",
+				"static/js/Services/submitRegister.js",
+				"static/js/Components/Landing/model.js",
+				"static/js/Components/Landing/registerModel.js",
+				"static/js/Components/Landing/index.js"
 			],
 			"prod" : [
 				"static/build/js/landing.min.js"
