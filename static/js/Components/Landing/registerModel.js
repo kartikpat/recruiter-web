@@ -102,7 +102,6 @@ function registerUser(){
 	}
 }
 function checkPassword(one, two){
-	console.log(two)
 	if(!ifBothMatches(one.val(), two.val())){
 		two.next('.error').text(errorResponses['passwordMismatch'])
 	}
