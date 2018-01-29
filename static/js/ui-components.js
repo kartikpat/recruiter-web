@@ -41,11 +41,8 @@ jQuery(".pill-button input").on('keyup', function(e) {
 		jQuery(".pill-listing ul").removeClass("hidden");
 	}
 
-	if(searchString.length == 0) {
-		jQuery(this).siblings(".pill-listing").find("li[data-value=custom]").addClass("hidden");
-	} else {
-		jQuery(this).siblings(".pill-listing").find("li[data-value=custom]").removeClass("hidden");
-	}
+	
+	jQuery(this).siblings(".pill-listing").find("li[data-value=custom]").addClass("hidden");
 });
 
 jQuery(".tag-container").on("mouseenter", ".pill-listing li", function() {
@@ -78,6 +75,7 @@ jQuery(document).ready(function(){
 jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function(e) {
 	var listItems = jQuery(this).siblings(".pill-listing").find("li");
 	var selectedItem =  jQuery(this).siblings(".pill-listing").find("li.selected");
+	var closestTag = jQuery(this).closest(".tag-container");
 	switch(e.which){
 		case 38: 
 				if(selectedItem.length == 0 ) {
@@ -114,9 +112,15 @@ jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function
 
 				break;
 		case 13:
-					if(selectedItem.length) {
+				if(closestTag.attr("data-enable-custom") && closestTag.attr("data-enable-custom") == "true") {
 					if(checkMaxTags(listItems.closest(".tag-container"))){
-						addNewTag(selectedItem.text(), selectedItem.attr("data-value"),jQuery(this).closest(".tag-container"));
+							addNewTag(jQuery(this).val(), selectedItem.attr("data-value"),jQuery(this).closest(".tag-container"));
+						}
+				} else {
+					if(selectedItem.length) {
+						if(checkMaxTags(listItems.closest(".tag-container"))){
+							addNewTag(selectedItem.text(), selectedItem.attr("data-value"),jQuery(this).closest(".tag-container"));
+						}
 					}
 				}
 				break;
