@@ -122,7 +122,6 @@ $(document).ready(function(){
 	openGuidelines.click(openModal);
 	closeModalBtn.click(closeModal);
     $(".close-modal").click(closeModal);
-    $(".submit-form").click(submitForm);
     $(".cancel-form").click(cancelForm);
     postJobForm.find("#title").focusout(requestTags);
     postJobForm.find("#job_description").focusout(requestTags);

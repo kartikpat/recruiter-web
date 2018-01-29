@@ -27,6 +27,8 @@
   animation-duration: 500ms !important; }
 
 /** Mobile Menu **/
+/*[Recruiter_Homepage]*/
+/*[/Recruiter_Homepage]*/
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
@@ -265,6 +267,8 @@
 
 /* '' */
 /** Mobile Menu **/
+/* [Recruiter_HomePage : ] */
+/* [/Recruiter_HomePage : ] */
 .online-icon {
   position: absolute;
   top: 20px;
@@ -408,7 +412,6 @@
 .error {
   position: absolute;
   left: 0px;
-  bottom: -20px;
   margin: 7px 0 0 3px;
   font-size: 11px;
   color: #ec1c2a; }

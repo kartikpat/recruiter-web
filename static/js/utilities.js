@@ -1,8 +1,8 @@
-//Setting Domain from Config
-(function() {
+
+jQuery(document).ready(function() {
 	document.querySelector(".domain_logo h1").innerText = baseDomain;
 
 	jQuery(".header .profile.action-icon").on('click', function() {
 		jQuery(this).find(".profile-menu").toggleClass("active");
 	});
-}());
+});

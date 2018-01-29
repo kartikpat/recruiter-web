@@ -1,4 +1,6 @@
 @charset "UTF-8";
+/*[Recruiter_Homepage]*/
+/*[/Recruiter_Homepage]*/
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
@@ -237,6 +239,8 @@
 
 /* '' */
 /** Mobile Menu **/
+/* [Recruiter_HomePage : ] */
+/* [/Recruiter_HomePage : ] */
 /* [Down Arrows] : */
 /* [/Down Arrows] : */
 select.select-dropdown {

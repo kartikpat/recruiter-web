@@ -28,6 +28,10 @@
 
 /** Mobile Menu **/
 /** Mobile Menu **/
+/* [Recruiter_HomePage : ] */
+/* [/Recruiter_HomePage : ] */
+/*[Recruiter_Homepage]*/
+/*[/Recruiter_Homepage]*/
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
@@ -291,6 +295,9 @@ body.posf {
 .clearfix {
   display: table;
   clear: both; }
+
+.center {
+  text-align: center; }
 
 a {
   text-decoration: none; }
