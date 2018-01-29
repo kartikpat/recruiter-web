@@ -23,6 +23,10 @@ jQuery(".pill-button input").on('blur', function() {
 
 jQuery(".pill-button input").on('keyup', function(e) {
 	var searchString = jQuery(this).val();
+
+	if(jQuery(this).closest(".tag-container").attr("data-enable-custom") && jQuery(this).closest(".tag-container").attr("data-enable-custom") == "true") {
+		jQuery(this).siblings(".pill-listing").find("li[data-value=custom]").text(searchString);
+	}
 	jQuery(this).siblings(".pill-listing").find("ul li").each(function(i,el) {
 		if(jQuery(el).text().toLowerCase().indexOf(searchString.toLowerCase()) >= 0) {
 			jQuery(el).removeClass("hidden");
@@ -35,6 +39,12 @@ jQuery(".pill-button input").on('keyup', function(e) {
 		jQuery(".pill-listing ul").addClass("hidden");
 	} else {
 		jQuery(".pill-listing ul").removeClass("hidden");
+	}
+
+	if(searchString.length == 0) {
+		jQuery(this).siblings(".pill-listing").find("li[data-value=custom]").addClass("hidden");
+	} else {
+		jQuery(this).siblings(".pill-listing").find("li[data-value=custom]").removeClass("hidden");
 	}
 });
 
@@ -55,6 +65,14 @@ jQuery(".tag-container").on("mousedown", ".pill-listing li", function() {
 		var selectedValue = jQuery(this).text();
 		addNewTag(selectedValue,  jQuery(this).attr("data-value"), jQuery(this).closest(".tag-container"));
 	}
+});
+
+jQuery(document).ready(function(){
+	jQuery(".tag-container").each(function(i,el) {
+		if(jQuery(el).attr("data-enable-custom")== "true") {
+			jQuery(el).find(".pill-listing ul").prepend("<li data-value='custom' class='hidden'></li>");
+		}
+	});
 });
 
 jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function(e) {
@@ -143,6 +161,10 @@ function addNewTag(labelName, labelValue, selector) {
 	jQuery(selector).find(".pill-listing ul li").removeClass("hidden");
 
 	jQuery(selector).find(".pill-listing li.selected").addClass("tag-added").removeClass("selected");
+	if(jQuery(selector).attr("data-enable-custom") && jQuery(selector).attr("data-enable-custom") == "true") {
+		tag.find(".pill-listing ul").prepend("<li data-value='custom' class='hidden'></li>")
+		jQuery(selector).find(".pill-listing li[data-value=custom]").removeClass("tag-added");
+	}
 }
 
 function checkMaxTags(selector) {
