@@ -119,16 +119,16 @@ tagsContainer.find('.tag-input').keypress(function(event) {
 })
 
 $(document).ready(function(){
-	openGuidelines.click(openModal);
-	closeModalBtn.click(closeModal);
-    $(".close-modal").click(closeModal);
-    $(".cancel-form").click(cancelForm);
-    postJobForm.find("#title").focusout(requestTags);
-    postJobForm.find("#job_description").focusout(requestTags);
-    postJobForm.find("#category").focusout(requestTags);
-    postJobForm.find("input[data-attribute='mandatory'],textarea[data-attribute='mandatory'], select[data-attribute='mandatory']").focusout(function() {
-        checkErrorClass(this);
-    });
+	// openGuidelines.click(openModal);
+	// closeModalBtn.click(closeModal);
+    // $(".close-modal").click(closeModal);
+    // $(".cancel-form").click(cancelForm);
+    // postJobForm.find("#title").focusout(requestTags);
+    // postJobForm.find("#job_description").focusout(requestTags);
+    // postJobForm.find("#category").focusout(requestTags);
+    // postJobForm.find("input[data-attribute='mandatory'],textarea[data-attribute='mandatory'], select[data-attribute='mandatory']").focusout(function() {
+    //     checkErrorClass(this);
+    // });
 
     // postJobForm.find("#industry").on('input',function() {
     //     var elem = $(this);
@@ -147,28 +147,28 @@ $(document).ready(function(){
     //     elem.val() === '' ? postJobForm.find("#max-experience-label").removeClass("hidden"): postJobForm.find("#max-experience-label").addClass("hidden");
     // });
 
-	postJobForm.find("input[data-attribute='mandatory'],textarea[data-attribute='mandatory']").focusin(function() {
-        removeErrorClass(this);
-        jQuery(this).removeClass("error-border");
-    });
-    postJobForm.find("#graduating_start_year,#graduating_end_year").focusin(function() {
-        postJobForm.find("#graduating-year-label").addClass("hidden");
-    });
-    postJobForm.find("#min_salary,#max_salary").focusin(function() {
-        postJobForm.find("#salary-label").addClass("hidden");
-    });
-    postJobForm.find("#min_experience").focusin(function(){
-        postJobForm.find("#min-experience-label").addClass("hide");
-        if(postJobForm.find("#max_experience").val() != '') {
-            postJobForm.find(".experience-label-container").addClass("hidden");
-        }
-    })
-    postJobForm.find("#max_experience").focusin(function(){
-        postJobForm.find("#max-experience-label").addClass("hide");
-        if(postJobForm.find("#min_experience").val() != '') {
-            postJobForm.find(".experience-label-container").addClass("hidden");
-        }
-    })
+	// postJobForm.find("input[data-attribute='mandatory'],textarea[data-attribute='mandatory']").focusin(function() {
+    //     removeErrorClass(this);
+    //     jQuery(this).removeClass("error-border");
+    // });
+    // postJobForm.find("#graduating_start_year,#graduating_end_year").focusin(function() {
+    //     postJobForm.find("#graduating-year-label").addClass("hidden");
+    // });
+    // postJobForm.find("#min_salary,#max_salary").focusin(function() {
+    //     postJobForm.find("#salary-label").addClass("hidden");
+    // });
+    // postJobForm.find("#min_experience").focusin(function(){
+    //     postJobForm.find("#min-experience-label").addClass("hide");
+    //     if(postJobForm.find("#max_experience").val() != '') {
+    //         postJobForm.find(".experience-label-container").addClass("hidden");
+    //     }
+    // })
+    // postJobForm.find("#max_experience").focusin(function(){
+    //     postJobForm.find("#max-experience-label").addClass("hide");
+    //     if(postJobForm.find("#min_experience").val() != '') {
+    //         postJobForm.find(".experience-label-container").addClass("hidden");
+    //     }
+    // })
 });
 
 var cancelForm = function() {
@@ -399,7 +399,7 @@ function check_youtube_embed(url) {
 var textarea = document.querySelector('#job_description');
 
 textarea.addEventListener('keydown', autosize);
-             
+
 function autosize(){
   var el = this;
   setTimeout(function(){

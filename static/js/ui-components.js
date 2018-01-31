@@ -56,12 +56,14 @@ jQuery(".tag-container").on("mouseleave", ".pill-listing li", function() {
 	jQuery(this).siblings().removeClass("selected");
 });
 
-
 jQuery(".tag-container").on("mousedown", ".pill-listing li", function() {
-	if(checkMaxTags(jQuery(this).closest(".tag-container"))) {
+	var selector = jQuery(this).closest(".tag-container");
+	if(checkMaxTags(selector)) {
+		selector.closest(".field-container").find(".error").removeClass("hidden")
 		var selectedValue = jQuery(this).text();
 		addNewTag(selectedValue,  jQuery(this).attr("data-value"), jQuery(this).closest(".tag-container"));
 	}
+
 });
 
 jQuery(document).ready(function(){
@@ -77,7 +79,7 @@ jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function
 	var selectedItem =  jQuery(this).siblings(".pill-listing").find("li.selected");
 	var closestTag = jQuery(this).closest(".tag-container");
 	switch(e.which){
-		case 38: 
+		case 38:
 				if(selectedItem.length == 0 ) {
 					jQuery(this).siblings(".pill-listing").find("li:visible").last(0).addClass("selected");
 				} else {
@@ -91,10 +93,10 @@ jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function
 				var selectedOption = jQuery(this).siblings(".pill-listing").find("li.selected");
 				console.log(selectedOption.position().top);
 				jQuery(this).siblings(".pill-listing").find("ul").scrollTop(0)
-				jQuery(this).siblings(".pill-listing").find("ul").scrollTop(selectedOption.position().top); 
+				jQuery(this).siblings(".pill-listing").find("ul").scrollTop(selectedOption.position().top);
 
 				break;
-		case 40: 
+		case 40:
 				if(selectedItem.length == 0 ) {
 					jQuery(this).siblings(".pill-listing").find("li:visible").eq(0).addClass("selected");
 				} else {
@@ -128,7 +130,7 @@ jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function
 				break;
 	};
 
-	var selectedOption = jQuery(this).siblings(".pill-listing").find("li.selected"); 
+	var selectedOption = jQuery(this).siblings(".pill-listing").find("li.selected");
 	jQuery(this).attr("placeholder", selectedOption.text() || jQuery(this).attr("data-placeholder-value"));
 });
 
@@ -176,7 +178,7 @@ function checkMaxTags(selector) {
 
 	var currentOptions = jQuery(selector).find(".input-tag").length;
 	// console.log("Max : " + maxOptions, "Current : " + currentOptions);
-	if(currentOptions >= maxOptions) { 
+	if(currentOptions >= maxOptions) {
 		sendErrorMessage(selector,"Please choose at most " + maxOptions + " values.");
 		jQuery(selector).find("input").trigger("blur");
 		return 0;

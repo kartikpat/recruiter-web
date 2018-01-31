@@ -16,8 +16,13 @@
 	<script type="text/javascript">
 		var baseUrl = '{{baseUrl}}';
 		var userID = '{{userID}}';
-		var jobID = '{{jobID}}';	
+		var jobID = '{{jobID}}';
 		var baseDomain = '{{baseDomain}}';
+		var profile  = {
+			name: '{{profile.recname}}',
+			email: '{{profile.email}}',
+			pic: '{{profile.picture_url}}'
+		}
 	</script>
 </head>
 <body>
@@ -53,11 +58,11 @@
 				<img src="/static/images/notification_icon.svg">
 			</div>
 			<div class="profile action-icon">
-				<img src="/static/images/profile-image.svg">
+				<img class="user_img" src="/static/images/profile-image.svg">
 				<div class="profile-menu">
 					<div class="profile-header">
-						<p class="user-name">Arun Kumar</p>
-						<p class="user-email">arun.kumar@gmail.com</p>
+						<p class="user-name user_name" id="">Arun Kumar</p>
+						<p class="user-email user_email" id="">arun.kumar@gmail.com</p>
 					</div>
 					<div class="profile-body">
 						<ul class="profile-item-listing">
@@ -72,7 +77,7 @@
 	</div>
 
 	<div class="mobile-menu-container hidden">
-		
+
 		<div class="mobile-menu-content">
 			<div class="mobile-logo mobile-menu-item left">
 				<div class="domain_logo header_item">
@@ -98,11 +103,11 @@
 
 			<div class="mobile-profile-section">
 				<div class="profile-image left">
-					<img src="/static/images/profile-image.svg">
+					<img class="user_img" src="/static/images/profile-image.svg">
 				</div>
 				<div class="profile-info right">
-					<p class="profile-name">Arun Kumar</p>
-					<p class="profile-email">arun.kumar@gmail.com</p>
+					<p class="profile-name user_name" id="">Arun Kumar</p>
+					<p class="profile-email user_email">arun.kumar@gmail.com</p>
 				</div>
 			</div>
 

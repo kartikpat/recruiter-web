@@ -908,6 +908,25 @@ a {
 /* [/Recruiter_HomePage : ] */
 /* [Down Arrows] : */
 /* [/Down Arrows] : */
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  line-height: 1.5; }
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  line-height: 1.5; }
+
+:-ms-input-placeholder {
+  /* IE 10+ */
+  line-height: 1.5; }
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  line-height: 1.5; }
+
+.error-border {
+  border-color: #ee1620 !important; }
+
 select.select-dropdown {
   font-family: inherit;
   display: inline-block;
@@ -953,7 +972,7 @@ label {
   background-size: 34px 37px;
   display: inline-block;
   vertical-align: top;
-  margin: 0px 20px 0 0; }
+  margin: 0px 20px 20px 0; }
   .course-option input {
     display: none; }
   .course-option input:checked + label {
@@ -1011,7 +1030,8 @@ label {
   border: 1px solid #e8e8e8;
   cursor: pointer;
   padding: 16px 22px;
-  font-size: 14px; }
+  font-size: 14px;
+  line-height: 1.5; }
   .input-field:focus {
     border-color: #4fa995; }
   .input-field.error-border {
@@ -1201,7 +1221,8 @@ span.sticker {
     border-color: #e8e8e8;
     -webkit-appearance: none;
     -moz-appearance: none;
-    -o-appearanance: none; }
+    -o-appearanance: none;
+    line-height: 1.5; }
     .page-content .page-header select[multiple] {
       background-image: none;
       height: 120px; }

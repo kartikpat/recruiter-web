@@ -13,21 +13,21 @@
             <div action="" class="post_job_form" >
                <div class="field-container">
                    <div class="label">
-                       <label for="job_tile">Job Title</label>
+                       <label for="title">Job Title*</label>
                    </div>
                    <div class="field">
-                       <input type="text" id="title" data-attribute="mandatory" name="job_title" placeholder="Write a title that appropriately describes this job">
+                       <input type="text" id="title" data-attribute="mandatory" name="Title" placeholder="Write a title that appropriately describes this job">
                        <div id="title_label" class="error hidden"></div>
                    </div>
                </div>
 
                <div class="field-container">
                    <div class="label">
-                       <label for="location">Location</label>
+                       <label for="location">Location*</label>
                    </div>
-                   <div class="tag-container location-tags" data-max-options="5" data-enable-custom="true" id="locationTags">
+                   <div class="tag-container location-tags" data-max-options="5" data-enable-custom="true" id="locationTags" name="Location">
                         <div class="pill-button inactive">
-                            <input type="text" data-placeholder-value="+ Add location" placeholder="+ Add location">
+                            <input type="text" id="location" data-placeholder-value="+ Add location" placeholder="+ Add location">
                             <div class="pill-listing">
                                 <ul>
                                     <li data-value="1">Ahmedabad</li>
@@ -311,103 +311,101 @@
                             </div>
                         </div>
                     </div>
-                    <div class="location-error-label error hidden"></div> 
+                    <div class="location-error-label error hidden"></div>
                 </div>
 
-               <div class="field-container">
+
+
+                <div class="field-container">
                     <div class="label">
-                        <label for="min_experience">Years of experience</label>
+                        <label for="min_experience">Years of experience*</label>
                     </div>
-                    <div class="formgroup half left">
-                        <div class="field">
-                            <select id="min_experience" data-attribute="mandatory" name="min_experience" >
-                                <option value="">Min</option>
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                                <option value="13">13</option>
-                                <option value="14">14</option>
-                                <option value="15">15</option>
-                                <option value="16">16</option>
-                                <option value="17">17</option>
-                                <option value="18">18</option>
-                                <option value="19">19</option>
-                                <option value="20">20</option>
-                                <option value="21">21</option>
-                                <option value="22">22</option>
-                                <option value="23">23</option>
-                                <option value="24">24</option>
-                                <option value="25">25</option>
-                                <option value="26">26</option>
-                                <option value="27">27</option>
-                                <option value="28">28</option>
-                                <option value="29">29</option>
-                                <option value="30">30</option>
-                            </select>
-                            <div id="min-experience-label" class="error hide"></div>
-                        </div>
-                    </div>
-                    <div class="formgroup half right">
-                        <div class="field">
-                            <select id="max_experience" data-attribute="mandatory" name="max_experience">
-                                <option value="">Max</option>
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                                <option value="13">13</option>
-                                <option value="14">14</option>
-                                <option value="15">15</option>
-                                <option value="16">16</option>
-                                <option value="17">17</option>
-                                <option value="18">18</option>
-                                <option value="19">19</option>
-                                <option value="20">20</option>
-                                <option value="21">21</option>
-                                <option value="22">22</option>
-                                <option value="23">23</option>
-                                <option value="24">24</option>
-                                <option value="25">25</option>
-                                <option value="26">26</option>
-                                <option value="27">27</option>
-                                <option value="28">28</option>
-                                <option value="29">29</option>
-                                <option value="30">30</option>
-                            </select>
-                            <div id="max-experience-label" class="error hide"></div>
-                        </div>
-                   </div>
-                   <div class="clearfix"></div>
-                </div>
+                    <div class="field">
 
-                <div class="clearfix"></div>
+                        <select class="half left" id="min_experience" name="MinExp" >
+                            <option class="extra-info-color" value="">Select Min</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                        </select>
+
+                        <select class="half right" id="max_experience" name="MaxExp">
+                            <option class="extra-info-color" value="">Select Max</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                        </select>
+                        <div class="clearfix"></div>
+                        <div class="error hidden"></div>
+
+                    </div>
+                 </div>
+
+
 
                 <div class="field-container">
                    <div class="label">
-                       <label for="job_description">Job Description</label>
+                       <label for="job_description">Job Description*</label>
                    </div>
 
                    <div class="field">
-                       <textarea data-attribute="mandatory" id="job_description" name="job_description" placeholder="Describe the role, talk about the role and responsibilities and help potential applicants understand what makes this a great opportunity."></textarea>
+                       <textarea data-attribute="mandatory" id="job_description" name="Description" placeholder="Describe the role, talk about the role and responsibilities and help potential applicants understand what makes this a great opportunity."></textarea>
                        <div id="job_description-label" class="error hidden"></div>
                    </div>
                </div>
@@ -418,11 +416,11 @@
                    </div>
 
                    <div class="field">
-                       <input type="text" id="videoID" placeholder="Give job seekers an insight into your company" onchange="check_youtube_embed(this.value)">
+                       <input type="text" id="videoID" placeholder="Give job seekers an insight into your company" onchange="check_youtube_embed(this.value)" name="VideoUrl">
                        <div id="video-jd-label" class="error hidden"></div>
                    </div>
                </div>
-                
+
                <div class="field-container youtube-preview hidden">
                     <iframe width="500" height="315" src="" frameborder="0" allowfullscreen></iframe>
                </div>
@@ -433,11 +431,11 @@
 
                 <div class="field-container">
                     <div class="label">
-                        <label for="industry">Industry</label>
+                        <label for="industry">Industry*</label>
                     </div>
-                    <div class="tag-container industry-tags" id="industryTags">
+                    <div class="tag-container industry-tags" id="industryTags" name="Industry">
                         <div class="pill-button inactive">
-                            <input type="text" data-placeholder-value="+ Add company industry" placeholder="+ Add company industry">
+                            <input type="text" id="industry" data-placeholder-value="+ Add company industry" placeholder="+ Add company industry">
                             <div class="pill-listing">
                                 <ul>
                                     <li data-value="24">Accounting / Finance / Audit</li>data-
@@ -483,10 +481,11 @@
                 <div class="field-container">
                     <div class="formgroup half left">
                         <div class="label">
-                           <label for="category">Category</label>
+                           <label for="category">Category*</label>
                         </div>
                         <div class="field">
-                            <select id="category" name="category">
+                            <select id="category" name="Category">
+                                <option class="extra-info-color" value="">Select</option>
                                 <option value="13">Finance</option>
                                 <option value="14">Sales &amp; Marketing</option>
                                 <option value="16">Consulting</option>
@@ -499,13 +498,13 @@
                             <div id="category-label" class="error hidden"></div>
                         </div>
                     </div>
-                    
+
                     <div class="formgroup half right">
                         <div class="label">
-                            <label for="functional_area">Functional Area</label>
+                            <label for="functional_area">Functional Area*</label>
                         </div>
                         <div class="field">
-                            <select id="functional_area" data-attribute="mandatory" name="functional_area">
+                            <select id="functional_area" data-attribute="mandatory" name="FunctionalArea">
                                 <option class="extra-info-color" value="">Select</option>
                                 <option value="1">Accounting / Taxation / Audit</option>
                                 <option value="7">Administration</option>
@@ -539,8 +538,8 @@
                        <label for="min_salary">Salary</label>
                    </div>
                    <div class="field">
-                       <!-- <input type="text" id="min_salary" name="min_salary" placeholder="Min salary"> -->
-                       <select class="half left" id="min_salary" name="min_salary">
+
+                       <select class="half left" id="min_salary" name="Sal">
                             <option value="0">Min salary</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -558,9 +557,8 @@
                             <option value="14">14</option>
                             <option value="15">15</option>
                         </select>
-                       <!-- <p class="salary-info extra-info-color font-xs">Min (in lakhs per annum)</p> -->
-                       <!-- <input type="text" id="max_salary" name="max_salary" placeholder="Max salary"> -->
-                       <select class="half right" id="max_salary" name="max_salary">
+
+                       <select class="half right" id="max_salary" name="Sal">
                             <option value="0">Max salary</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -578,9 +576,9 @@
                             <option value="14">14</option>
                             <option value="15">15</option>
                         </select>
-                       <!-- <p class="salary-info extra-info-color font-xs">Max (in lakhs per annum)</p> -->
-                            <div class="clearfix"></div>
-                           <div id="salary-label" class="error hidden"></div>
+
+                       <div class="clearfix"></div>
+                       <div id="salary-label" class="error hidden"></div>
                    </div>
                 </div>
 
@@ -597,8 +595,8 @@
                        <label for="graduating_year">Graduating Year</label>
                     </div>
                     <div class="field">
-                        <select class="half left" id="graduating_start_year" name="start_year">
-                            <option value="" hidden>Min Batch</option>
+                        <select class="half left" id="graduating_start_year" name="Batch">
+                            <option value="" class="extra-info-color">Min Batch</option>
                             <option value="2017">2017</option>
                             <option value="2016">2016</option>
                             <option value="2015">2015</option>
@@ -648,8 +646,8 @@
                             <option value="1971">1971</option>
                             <option value="1970">1970</option>
                         </select>
-                        <select class="half right" id="graduating_end_year" name="end_year">
-                            <option value="" hidden>Max Batch</option>
+                        <select class="half right" id="graduating_end_year" name="Batch">
+                            <option value="" class="extra-info-color">Max Batch</option>
                             <option value="2017">2017</option>
                             <option value="2016">2016</option>
                             <option value="2015">2015</option>
@@ -699,9 +697,9 @@
                             <option value="1971">1971</option>
                             <option value="1970">1970</option>
                         </select>
-                        
+
                         <div class="clearfix"></div>
-                    
+
                         <div id="graduating-year-label" class="error hidden"></div>
                     </div>
                 </div>
@@ -710,7 +708,7 @@
                     <div class="label">
                         <label for="tags">Tags</label>
                     </div>
-                    <div class="tag-container skill-tags" data-max-options="3" id="jobTags">
+                    <div class="tag-container skill-tags"  id="jobTags">
                         <div class="pill-button inactive">
                             <input type="text" data-placeholder-value="+ Add job tag" placeholder="+ Add job tag">
                             <div class="pill-listing">
@@ -798,7 +796,7 @@
                    </div>
                    <div class="field">
                         <div class="course-option preference-female">
-                            <input type="checkbox" id="preference-female">
+                            <input type="checkbox" id="preference-female" data-id="femaleCandidate">
                             <label for="preference-female">
                                 <div class="course-content">
                                     <span class="course-icon"><i class="icon-woman"></i></span>
@@ -809,7 +807,7 @@
                         </div>
 
                         <div class="course-option preference-defence">
-                            <input type="checkbox" id="preference-defence">
+                            <input type="checkbox" id="preference-defence" data-id="exDefence">
                             <label for="preference-defence">
                                 <div class="course-content">
                                     <span class="course-icon"><i class="icon-shield"></i></span>
@@ -820,7 +818,7 @@
                         </div>
 
                         <div class="course-option preference-women">
-                            <input type="checkbox" id="preference-women">
+                            <input type="checkbox" id="preference-women" data-id="femaleBackWorkForce">
                             <label for="preference-women">
                                 <div class="course-content">
                                     <span class="course-icon"><i class="icon-woman"></i></span>
@@ -831,7 +829,7 @@
                         </div>
 
                         <div class="course-option preference-diff-abled">
-                            <input type="checkbox" id="preference-diff-abled">
+                            <input type="checkbox" id="preference-diff-abled" data-id="differentlyAbled">
                             <label for="preference-diff-abled">
                                 <div class="course-content">
                                     <span class="course-icon"><i class="icon-disabillity-symbol"></i></span>
@@ -841,18 +839,18 @@
                             </label>
                         </div>
 
-                        <div class="course-option preference-alumni">
+                        <!-- <div class="course-option preference-alumni hidden">
                             <input type="checkbox" id="preference-alumni">
                             <label for="preference-alumni">
                                 <div class="course-content">
-                                    <span class="course-icon"><i class="icon-ex--alunmi"></i></span>
+                                    <span class="course-icon"><i class="icon-ex-alunmi"></i></span>
                                     <span class="course-option-label">Ex-alumni</span>
                                 </div>
                                 <img class="course-selected" src="/static/images/course-selected.svg">
                             </label>
                         </div>
 
-                        <div class="course-option preference-career">
+                        <div class="course-option preference-career hidden">
                             <input type="checkbox" id="preference-career">
                             <label for="preference-career">
                                 <div class="course-content">
@@ -861,7 +859,7 @@
                                 </div>
                                 <img class="course-selected" src="/static/images/course-selected.svg">
                             </label>
-                        </div>
+                        </div> -->
 
 
                    </div>
@@ -880,7 +878,7 @@
                 <li>JD should be concise and crisp - to the point.</li>
             </ul>
         </div>
-    </div> 
+    </div>
 <div class="premium_job_section">
     <div class="section-head job-visibility">
         <h3>Job Visibility</h3>

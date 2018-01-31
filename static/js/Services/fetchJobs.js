@@ -23,7 +23,7 @@ function fetchJobs(type){
 //             "newApplications": 5
 //         }
 //     ],
-//     "status": "success"
+//     "status": "success" 
 // }
 // 	return pubsub.publish("fetchedJobs:"+type, sampleData.data);
 	if(!type)

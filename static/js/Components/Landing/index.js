@@ -7,7 +7,7 @@ $(document).ready(function() {
 		if(userLogin.validateLogin()){
 			submitLogin(userLogin.getData());
 		}
-	})	
+	})
 
 	function onSuccessfulLogin(topic, data){
 		console.log('Login successful');
