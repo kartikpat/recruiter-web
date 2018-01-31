@@ -23,6 +23,10 @@ jQuery(".pill-button input").on('blur', function() {
 
 jQuery(".pill-button input").on('keyup', function(e) {
 	var searchString = jQuery(this).val();
+
+	if(jQuery(this).closest(".tag-container").attr("data-enable-custom") && jQuery(this).closest(".tag-container").attr("data-enable-custom") == "true") {
+		jQuery(this).siblings(".pill-listing").find("li[data-value=custom]").text(searchString);
+	}
 	jQuery(this).siblings(".pill-listing").find("ul li").each(function(i,el) {
 		if(jQuery(el).text().toLowerCase().indexOf(searchString.toLowerCase()) >= 0) {
 			jQuery(el).removeClass("hidden");
@@ -36,6 +40,9 @@ jQuery(".pill-button input").on('keyup', function(e) {
 	} else {
 		jQuery(".pill-listing ul").removeClass("hidden");
 	}
+
+	
+	jQuery(this).siblings(".pill-listing").find("li[data-value=custom]").addClass("hidden");
 });
 
 jQuery(".tag-container").on("mouseenter", ".pill-listing li", function() {
@@ -59,9 +66,18 @@ jQuery(".tag-container").on("mousedown", ".pill-listing li", function() {
 
 });
 
+jQuery(document).ready(function(){
+	jQuery(".tag-container").each(function(i,el) {
+		if(jQuery(el).attr("data-enable-custom")== "true") {
+			jQuery(el).find(".pill-listing ul").prepend("<li data-value='custom' class='hidden'></li>");
+		}
+	});
+});
+
 jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function(e) {
 	var listItems = jQuery(this).siblings(".pill-listing").find("li");
 	var selectedItem =  jQuery(this).siblings(".pill-listing").find("li.selected");
+	var closestTag = jQuery(this).closest(".tag-container");
 	switch(e.which){
 		case 38:
 				if(selectedItem.length == 0 ) {
@@ -98,9 +114,15 @@ jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function
 
 				break;
 		case 13:
-					if(selectedItem.length) {
+				if(closestTag.attr("data-enable-custom") && closestTag.attr("data-enable-custom") == "true") {
 					if(checkMaxTags(listItems.closest(".tag-container"))){
-						addNewTag(selectedItem.text(), selectedItem.attr("data-value"),jQuery(this).closest(".tag-container"));
+							addNewTag(jQuery(this).val(), selectedItem.attr("data-value"),jQuery(this).closest(".tag-container"));
+						}
+				} else {
+					if(selectedItem.length) {
+						if(checkMaxTags(listItems.closest(".tag-container"))){
+							addNewTag(selectedItem.text(), selectedItem.attr("data-value"),jQuery(this).closest(".tag-container"));
+						}
 					}
 				}
 				break;
@@ -145,6 +167,10 @@ function addNewTag(labelName, labelValue, selector) {
 	jQuery(selector).find(".pill-listing ul li").removeClass("hidden");
 
 	jQuery(selector).find(".pill-listing li.selected").addClass("tag-added").removeClass("selected");
+	if(jQuery(selector).attr("data-enable-custom") && jQuery(selector).attr("data-enable-custom") == "true") {
+		tag.find(".pill-listing ul").prepend("<li data-value='custom' class='hidden'></li>")
+		jQuery(selector).find(".pill-listing li[data-value=custom]").removeClass("tag-added");
+	}
 }
 
 function checkMaxTags(selector) {
