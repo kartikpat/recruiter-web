@@ -15,7 +15,7 @@
 				padding:10px 40px 10px 10px;
 				background-color:transparent;
 				margin-bottom:10px;
-				background-image:url("/static/images/minimal_select_dropdown.svg");		
+				background-image:url("/static/images/minimal_select_dropdown.svg");
 			}
 		}
 
@@ -29,7 +29,7 @@
 	}
 
 	.my-jobs {
-		width:80%;	
+		width:80%;
 
 		.my-jobs-listing {
 			.table-container {
@@ -54,7 +54,7 @@
 
 						&.heading {
 							border-bottom:1px solid $border-color-base;
-							padding:20px 10px 10px;	
+							padding:20px 10px 10px;
 
 							span {
 								font-family:$primary-font;
@@ -64,7 +64,13 @@
 							}
 
 							&.job-title {
-								width:40%;
+								width:35%;
+							}
+							&.actions {
+								width: 23%;
+							}
+							&.created {
+								width: 12%;
 							}
 						}
 			    	}
@@ -73,20 +79,25 @@
 						.table-cell {
 							vertical-align:top;
 							padding:15px 10px;
-
+							&.actions {
+								width: 23%;
+							}
+							&.created {
+								width: 12%;
+							}
 							span {
 								line-height:1.5;
 							}
 
 							&.title {
-								width:40%;
+								width:35%;
 
 								span {
 									&.job-title {
 										display:block;
 									}
 								}
-							}		
+							}
 
 							.mobile-engagement {
 								display:none;
@@ -145,7 +156,7 @@
 										display:none;
 									}
 								}
-							}					
+							}
 						}
 			    	}
 			    	.table-row-separator {
@@ -180,18 +191,18 @@
 					margin-bottom:0;
 				}
 			}
-			
+
 			.my-jobs-listing {
 				.table-container {
 					background-color:transparent;
 					border-radius:0;
 					box-shadow:none;
 					.table-row {
-	
+
 						&.table-headings {
 							display:none;
 						}
-	
+
 						&.job {
 							padding:10px 5px;
 							.table-cell {
@@ -264,7 +275,7 @@
 											display:inline-block;
 											margin-left:-5px;
 										}
-									}		
+									}
 								}
 							}
 						}
@@ -277,7 +288,7 @@
 					}
 				}
 			}
-		}	
+		}
 	}
 
 

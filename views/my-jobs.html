@@ -11,13 +11,13 @@
 				<a href="/post-job">
 					<button class="post-job green">Post Job</button>
 				</a>
-			</div> 
+			</div>
 		</div>
 
 		<div class="my-jobs-listing">
 				<div class="table-container jobRowList">
 					<div class="table-row table-headings">
-						<div class="table-cell heading">
+						<div class="table-cell heading created">
 							<span>Created On</span>
 						</div>
 						<div class="table-cell heading job-title">
@@ -29,7 +29,7 @@
 						<div class="table-cell heading">
 							<span>Engagement</span>
 						</div>
-						<div class="table-cell heading">
+						<div class="table-cell heading actions">
 							<span>Actions</span>
 						</div>
 						<div class="row-separator"></div>
@@ -50,7 +50,7 @@
 		<div class="table-cell title">
 			<span class="job-title jobTitle"></span>
 			<span class="job-location jobLocation"></span>
-			<span class="job-meta-separator">•</span>
+			<span class="job-meta-separator">&nbsp; -- &nbsp;</span>
 			<span class="job-experience jobExperience"></span>
 		</div>
 
@@ -68,31 +68,31 @@
 		</div>
 
 		<div class="table-cell actions">
-			<div class="job-actions-container">
-				<div class="action-icon job-cancel">
-					<i class="icon-close_icon"></i>
-				</div>
-				<div class="action-icon job-refresh">
-					<i class="icon-refresh"></i>
-				</div>
-				<div class="action-icon job-star">
-					<i class="icon-star"></i>
-				</div>
-				<div class="action-icon job-facebook">
-					<i class="icon-facebook-logo"></i>
-				</div>
-				<div class="action-icon job-twitter">
-					<i class="icon-twitter"></i>
-				</div>
-				<div class="action-icon job-linkedin">
+			<div class="job-actions-container hidden jobActions">
+				<a href="" class="action-icon job-cancel jobCancel tooltip" aria-hidden="true" title="Unpublish Job">
+					<i class="icon-close_icon " ></i>
+				</a>
+				<a href="" class="action-icon job-refresh jobRefresh tooltip" aria-hidden="true" title="Refresh Job">
+					<i class="icon-refresh" ></i>
+				</a>
+				<a href="" class="action-icon job-star jobPremium tooltip" aria-hidden="true" title="Make Job Premium">
+					<i class="icon-star" ></i>
+				</a>
+				<a href="" class="action-icon job-facebook jobFb tooltip" aria-hidden="true" title="Post on Facebook">
+					<i class="icon-facebook-logo" ></i>
+				</a>
+				<a href="" class="action-icon job-twitter jobTwitter tooltip" aria-hidden="true" title="Post on Twitter">
+					<i class="icon-twitter" ></i>
+				</a>
+				<a href="" class="action-icon job-linkedin jobLinkedIn tooltip" aria-hidden="true" title="Post on LinkedIn">
 					<i class="icon-linkedin-logo"></i>
-				</div>
+				</a>
 			</div>
-			<div class="job-edit-container hidden">
-				<div class="action-icon job-edit">
-					<i class="icon-edit"></i>
+			<div class="job-edit-container hidden jobEdit">
+				<a href="" class="action-icon job-edit">
+					<i class="icon-edit tooltip" aria-hidden="true" title=""></i>
 					<span class="edit-label">Edit</span>
-				</div>
+				</a>
 			</div>
 		</div>
 		<div class="table-row-separator"></div>

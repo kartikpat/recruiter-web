@@ -444,3 +444,6 @@ input:focus, select:focus {
   background: linear-gradient(to right, #f6f7f8 8%, #e9e9e9 18%, #f6f7f8 33%);
   background-size: 800px 104px;
   border-radius: 4px; }
+
+.disable {
+  cursor: not-allowed; }

@@ -4,8 +4,8 @@ function submitNewJob(data){
 		"Content-Type": "application/json",
 	}, JSON.stringify(data), function(res){
 		if(res.status && res.status =='success'){
-			return pubsub.publish("submittedNewJob", res.data);
+			return pubsub.publish("submittedNewJob", res);
 		}
-		return pubsub.publish("failedNewJobSubmission", res.data);
+		return pubsub.publish("failedNewJobSubmission", res);
 	});
 }

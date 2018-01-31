@@ -16,6 +16,8 @@ module.exports = function(settings){
 	var baseDomain = config["baseDomain"];
 	var welcome = config["welcome"];
 	var verifyAccount = config["verify"];
+	var recruiterID = 45058;
+	var profile = {};
 	if(env=="local")
 		baseUrl= config["baseUrl_local"];
 	else
@@ -26,12 +28,34 @@ module.exports = function(settings){
 		//bypassing the auth for development
     // CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     // you can do this however you want with whatever variables you set up
-    	if (req.cookies["recruiter-access-token"])
-        	return next();
-    // IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
-
-
-    	res.redirect('/login');
+		console.log(req.cookies)
+    	if (req.cookies["recruiter-access-token"]) {
+			console.log(baseUrl)
+			return request.get({
+				url: baseUrl+"/recruiter/"+recruiterID+""
+			},function(err, res, body){
+				if(err){
+					console.log(err);
+					return res.redirect('/login');
+				}
+				const jsonBody = JSON.parse(body)
+				if(jsonBody.status && jsonBody.status =='success'){
+					profile = jsonBody.data[0];
+					console.log(profile)
+					return next();
+				}
+			})
+			// getRequest(baseUrl+"/recruiter/"+recruiterID+"", {}, function(res){
+			// 	if(res.status && res.status =='success'){
+			// 		profile = res;
+			// 		return next();
+			// 	}
+			// });
+		}
+		else{
+			// IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
+			return res.redirect('/login');
+		}
 	}
 	app.post("/sign-in", function(req, res){
 		var email = req.body.email || null;
@@ -64,32 +88,11 @@ module.exports = function(settings){
 			styles:  assetsMapper["dashboard"]["styles"][mode],
 			scripts: assetsMapper["dashboard"]["scripts"][mode],
 			baseUrl: baseUrl,
-			baseDomain:baseDomain
+			baseDomain:baseDomain,
+			profile: profile
 		});
 		return
 	});
-
-	app.get("/dashboard-clone", isAuthenticated,function(req, res){
-		res.render("index-one", {
-			title: "IIM JOBS | Dashboard",
-			styles:  assetsMapper["index-one"]["styles"][mode],
-			scripts: assetsMapper["index-one"]["scripts"][mode],
-			baseUrl: baseUrl
-		});
-		return
-	});
-
-	app.get("/sign-in",function(req, res){
-		res.render("sign-in", {
-			title: "IIM JOBS | Sign in",
-			styles:  assetsMapper["sign-in"]["styles"][mode],
-			scripts: assetsMapper["sign-in"]["scripts"][mode],
-			baseUrl: baseUrl
-		});
-		return
-	});
-
-
 
 	app.get("/post-job",isAuthenticated, function(req, res){
 		res.render("post-job",{
@@ -97,7 +100,8 @@ module.exports = function(settings){
 			styles:  assetsMapper["post-job"]["styles"][mode],
 			scripts: assetsMapper["post-job"]["scripts"][mode],
 			baseUrl: baseUrl,
-			baseDomain: baseDomain
+			baseDomain: baseDomain,
+			profile: profile
 		})
 		return
 	})
@@ -109,7 +113,8 @@ module.exports = function(settings){
 			styles:  assetsMapper["candidate-list"]["styles"][mode],
 			scripts: assetsMapper["candidate-list"]["scripts"][mode],
 			baseUrl: baseUrl,
-			jobID: jobID
+			jobID: jobID,
+			profile: profile
 		})
 		return
 	})
@@ -463,7 +468,7 @@ module.exports = function(settings){
 		})
 		return
 	});
-	
+
 	app.get("/welcome", function(req,res){
 		res.render("welcome", {
 			title:"Recruiter Web - Welcome Page | iimjobs.com",
@@ -498,5 +503,5 @@ module.exports = function(settings){
 		})
 		return
 	});
-	
+
 }
