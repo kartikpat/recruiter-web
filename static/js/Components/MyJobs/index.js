@@ -6,6 +6,8 @@ jQuery(document).ready( function() {
 	var fetchJobSuccessSubscription = pubsub.subscribe('fetchedJobs:all', onJobsFetchSuccess)
 	var fetchJobFailSubscription = pubsub.subscribe('fetchJobsFail', onJobsFetchFail)
 
+	jobList.onClickJobCancel(unPublishJob);
+
 	function onJobsFetchSuccess(topic, data){
 		console.log(topic)
 		console.log(data)
@@ -21,6 +23,11 @@ jQuery(document).ready( function() {
 	function onJobsFetchFail(topic, data){
 		console.log(topic)
 		console.log(data)
+	}
+
+	function unPublishJob(jobId){
+		openJobUnpublishModel(jobId);
+		trackEventCancelButtonClick();
 	}
 
 	return

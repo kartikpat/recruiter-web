@@ -3,16 +3,24 @@ function Jobs(){
 		rowContainer: $('.jobRowList')
 	};
 
+	function onClickJobCancel(fn){
+		list.rowContainer.find('.jobCancel').click(function(){
+			var jobId = $(this).attr('data-id');
+			fn(jobId);
+		});
+	}
+
 	function cloneElement(id) {
 		var card = $('.table-row.job.prototype').clone().removeClass('prototype hidden')
 		card.attr('id', 'job-'+id);
 		return {
 			element: card,
 			createdOn: card.find('.js_jobCreatedOn'),
-			title: card.find('.js_jobTitle'),
+			title: card.find('.js_jobTitle_new'),
 			status: card.find('.js_jobStatus'),
 			engagement: card.find('.js_jobEngagement'),
 			actions: card.find('.js_jobActions')
+
 		}
 	}
 
@@ -57,11 +65,27 @@ function Jobs(){
 
 	function createElement(aData){
 		var item = cloneElement(aData["id"]);
-		setJobCreatedOn(aData["created"], item.createdOn);
+		item.title.find('.tit')
+		item.createdOn.text(getSuitableDateFormat(aData["created"]))
+		// setJobCreatedOn(aData["created"], item.createdOn);
 		setJobTitle(aData["title"], item.title);
 		setJobLocation(aData["loc"], item.title);
 		item.title.find('.js_experience').text(aData["exp"]['min']+'-'+aData['exp']['max']+' yrs')
 		setJobStatus(aData, item.status, item)
+		if(aData['condition'])
+			actions.populate(refreshFlag, unpublishFlag, premium, fb , linkedIn, twitter, edit)
+		else 
+			actions.populate(refreshFlag, unpublishFlag, premium, fb , linkedIn, twitter, null);
+	}	
+
+	function getSuitableDateFormat(aData){
+
+	}
+
+	function populateActions(item, refreshFlag, unpublishFlag, premium, fb , linkedIn, twitter, edit){
+
+		if(refreshFlag)
+			item.find('.refreshFlagIcon').removeClass('hidden');
 	}
 
 	function init(data){
