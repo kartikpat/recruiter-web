@@ -718,6 +718,9 @@ span.sticker {
                 background: #FFF;
                 border-bottom: 1px solid #e8e8e8;
                 cursor: pointer; }
+                .job_posting .post_job .post_job_form .field-container .industry-tags .pill-button .pill-listing ul li:first-child, .job_posting .post_job .post_job_form .field-container .location-tags .pill-button .pill-listing ul li:first-child, .job_posting .post_job .post_job_form .field-container .skill-tags .pill-button .pill-listing ul li:first-child {
+                  border: 0;
+                  padding: 0; }
                 .job_posting .post_job .post_job_form .field-container .industry-tags .pill-button .pill-listing ul li.selected, .job_posting .post_job .post_job_form .field-container .location-tags .pill-button .pill-listing ul li.selected, .job_posting .post_job .post_job_form .field-container .skill-tags .pill-button .pill-listing ul li.selected {
                   background-color: #e9f5f2; }
                 .job_posting .post_job .post_job_form .field-container .industry-tags .pill-button .pill-listing ul li.tag-added, .job_posting .post_job .post_job_form .field-container .location-tags .pill-button .pill-listing ul li.tag-added, .job_posting .post_job .post_job_form .field-container .skill-tags .pill-button .pill-listing ul li.tag-added {

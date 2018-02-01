@@ -8,7 +8,7 @@ $(document).ready(function(){
 				submitNewJob(jobDetails.getData());
 		})
 	if(jobId) {
-		jobDetails.setData(jobId);
+		fetchJob(jobId);
 	}
  	function onSuccessfulSubmitJob(topic, data){
 		alert(res.status)
@@ -22,6 +22,19 @@ $(document).ready(function(){
 		console.log(data);
 
 	}
+	function onSuccessfulFetchJob(topic, data) {
+		console.log(topic)
+		console.log(data);
+		jobDetails.setData(jobId,data[0]);
+	}
+	function onFailedFetchJob(topic, data){
+		alert(res.status)
+		console.log(topic)
+		console.log(data);
+
+	}
+	var fetchJobSuccessSubscription = pubsub.subscribe("fetchedJob:"+jobId, onSuccessfulFetchJob);
+	var fetchJobFailSubscription = pubsub.subscribe("failedToFetchJob:"+jobId, onFailedFetchJob);
 	var jobSubmitSuccessSubscription = pubsub.subscribe('submittedNewJob', onSuccessfulSubmitJob);
 	var jobSubmitFailSubscription = pubsub.subscribe('failedNewJobSubmission', onFailedSubmitJob)
 })

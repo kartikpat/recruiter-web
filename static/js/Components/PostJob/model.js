@@ -1,31 +1,34 @@
-var obj = {
-	"title": "test title",
-	"description": "This ia a test job",
-	"isPremium": false,
-	"videoUrl": "http:test",
-	"category": "14",
-	"functionalArea": "8",
-	"courseType": [ 1, 2, 3, 4, 5 ],
-	"location": [ 1,2, 3, 4, 5],
-	"industry": [ 1,2, 5, 6 ],
-	"otherLocation": [ "Delhi" ],
-	"preferences": [ "femaleCandidate", "differentlyAbled", "femaleBackWorkForce", "exDefence", "workHome"  ],
-	"tags": [],
-	"sal": {
-		"min": 10,
-		"max": 15,
-		"isShow": true
-	},
-	"batch": {
-		"min": 2014,
-		"max": 2017
-	},
-
-	"exp": {
-		"min": 8,
-		"max": 10
-	}
-}
+// var obj = {
+// 	"title": "test title",
+// 	"description": "This ia a test job",
+// 	"isPremium": false,
+// 	"videoUrl": "http:test",
+// 	"catid": "14",
+// 	"functionalAreaid": "8",
+// 	"courseType": [ 1, 2, 3, 4, 5 ],
+// 	"location": [ {
+// 		"id": 1,
+// 		"label": "Delhi"
+// 	}],
+// 	"industry": [ 1,2, 5, 6 ],
+// 	"otherLocation": [ "Delhi" ],
+// 	"preferences": [ "femaleCandidate", "differentlyAbled", "femaleBackWorkForce", "exDefence", "workHome"  ],
+// 	"tags": [],
+// 	"sal": {
+// 		"min": 10,
+// 		"max": 15,
+// 		"isShow": true
+// 	},
+// 	"batch": {
+// 		"min": 2014,
+// 		"max": 2017
+// 	},
+//
+// 	"exp": {
+// 		"min": 8,
+// 		"max": 10
+// 	}
+// }
 
 var errorResponses = {
 	missingTitle: 'title cannot be blank',
@@ -116,25 +119,30 @@ function Job(){
 		return true;
 	}
 	function getJobData(){
+		var locationObj = getPillValues(settings.location.attr('id'));
+		var industryObj = getPillValues(settings.industry.attr('id'));
+
 		var ob = {
 			title: settings.title.val(),
 			description: settings.description.val(),
 			isPremium: settings.isPremium.is("checked"),
 			category: settings.category.val(),
 			functionalArea: settings.functionalArea.val(),
-			location: getPillValues(settings.location.attr('id')),
-			industry: getPillValues(settings.industry.attr('id'))
+			location: locationObj["temp"],
+			otherLocation: locationObj["tempLabel"],
+			industry: industryObj["temp"]
 		}
-		if( getPillValues(settings.tags.attr('id')).length > 0)
-			ob.tags = getPillValues(settings.tags.attr('id'));
+
+		var tagsObj = getPillValues(settings.tags.attr('id'));
+		if( tagsObj["temp"].length > 0 || tagsObj["tempLabel"].length > 0)
+			ob.tags = tagsObj["temp"].concat(tagsObj["tempLabel"]);
 		if(settings.videoUrl.val() && settings.videoUrl.val() !='')
 			ob.videoUrl = settings.videoUrl.val()
 		if( getMultipleCheckboxes(settings.courseType.attr('id')).length >0)
 			ob.courseType = getMultipleCheckboxes(settings.courseType.attr('id'))
 		if( getMultipleCheckboxes(settings.preferences.attr('id')).length >0)
 			ob.preferences = getMultipleCheckboxes(settings.preferences.attr('id'))
-		if( getPillValues(settings.otherLocation && settings.otherLocation.attr('id')).length >0)
-			ob.otherLocation = getPillValues(settings.otherLocation.attr('id'))
+
 		if(settings.minSal.val() && settings.maxSal.val())
 			ob.sal = {
 				min: settings.minSal.val(),
@@ -155,26 +163,42 @@ function Job(){
 		return ob;
 	}
 
-	function setJobData(jobId) {
+	function setJobData(jobId, obj) {
 		settings.title.val(obj["title"]);
 		settings.description.val(obj["description"]);
 		settings.isPremium.prop("checked", obj["isPremium"]);
-		settings.category.val(obj["category"]);
+		settings.category.val(obj["catid"]);
 		settings.functionalArea.val(obj["functionalArea"]);
-		// setPillValues(settings.location.attr('id'), obj["location"]);
-		// setPillValues(settings.industry.attr('id'), obj["industry"]);
-		settings.videoUrl.val(obj["videoUrl"]);
-		settings.videoUrl.val(obj["videoUrl"]);
-		setMultipleCheckboxes(settings.courseType.attr('id'), obj["courseType"]);
-		setMultipleCheckboxes(settings.preferences.attr('id'), obj["preferences"]);
-		// setPillValues(settings.industry.attr('id'), obj["industry"]);
-		settings.minSal.val(obj["sal"]["min"]);
-		settings.maxSal.val(obj["sal"]["max"]);
-		settings.showSal.prop("checked", obj["sal"]["isShow"]);
+		var loca = [ {
+			"id": 1,
+			"label": "Delhi"
+		},
+		{
+			"label": "Karnal"
+		}]
+		console.log(settings.location.attr('id'))
+		// setPillValues(settings.location.attr('id'), loca);
+		setPillValues(settings.location.attr('id'), obj["location"]);
+
+		setPillValues(settings.industry.attr('id'), obj["industry"]);
+		if(obj["videoUrl"])
+			settings.videoUrl.val(obj["videoUrl"]);
+		if(obj["courseType"])
+			setMultipleCheckboxes(settings.courseType.attr('id'), obj["courseType"]);
+		if(obj["preferences"])
+			setMultipleCheckboxes(settings.preferences.attr('id'), obj["preferences"]);
+		setPillValues(settings.tags.attr('id'), obj["tags"]);
+		if(obj["sal"]) {
+			settings.minSal.val(obj["sal"]["min"]);
+			settings.maxSal.val(obj["sal"]["max"]);
+			settings.showSal.prop("checked", obj["sal"]["isShow"]);
+		}
 		settings.minExp.val(obj["exp"]["min"]);
 		settings.maxExp.val(obj["exp"]["max"]);
-		settings.batchFrom.val(obj["batch"]["min"]);
-		settings.batchTo.val(obj["exp"]["max"]);
+		if(obj["batch"]) {
+			settings.batchFrom.val(obj["batch"]["min"]);
+			settings.batchTo.val(obj["batch"]["max"]);
+		}
 	}
 
 	function submitHandler(fn){
@@ -222,7 +246,7 @@ function checkPillValues(element){
 }
 
 function checkVideoLink(element){
-	if(!( element && element.val() && isYouTubeLink(element.val()))){
+	if(element && element.val() && !( isYouTubeLink(element.val()))){
 		element.next('.error').text(errorResponses['invalid'+element.attr('name')]).removeClass("hidden");
 		element.addClass("error-border");
 		return false;
@@ -246,27 +270,27 @@ function isYouTubeLink(link){
  */
 function getPillValues(elementId){
 	var el = $('#'+elementId + ' .input-tag');
-	var temp = [];
+	var obj = {
+		temp: [],
+		tempLabel: []
+	}
 	el.each(function(index, value){
-		temp.push($(value).attr('data-id'))
+		console.log()
+		$(value).attr('data-id') ? obj["temp"].push($(value).attr('data-id')) : obj["tempLabel"].push($(value).find(".tag-name span").text());
 	})
-	return temp;
+
+	return obj;
 }
 
 /**
  * set multiple values on the pill widget
  * @return {[type]} [description]
  */
-function setPillValues(elementId){
-	var el = $('#'+elementId + ' .input-tag');
-	var temp = [];
-	el.each(function(index, value){
-		temp.push($(value).attr('data-id'))
+function setPillValues(elementId, arr){
+	$.each(arr, function( index, value ) {
+		addNewTag(value["label"], value["id"], '#'+elementId+'')
 	})
-	return temp;
 }
-
-
 
 function eraseError(element){
 	element.removeClass("error-border");
@@ -279,7 +303,7 @@ function ifGreater(elementA, elementB){
 	console.log(typeof(elementA.val()), typeof(elementB.val()))
 	var val1 = parseInt(elementB.val());
 	var val2 = parseInt(elementA.val());
-	if(!( val1 >= val2)){
+	if(val1 && val2 && !( val1 >= val2)){
 		elementA.siblings('.error').text(errorResponses['invalid'+elementA.attr('name')]).removeClass("hidden");
 		elementA.addClass("error-border");
 		elementB.addClass("error-border");

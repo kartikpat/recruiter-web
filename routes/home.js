@@ -40,7 +40,7 @@ module.exports = function(settings){
 				}
 				const jsonBody = JSON.parse(body)
 				if(jsonBody.status && jsonBody.status =='success'){
-					profile = jsonBody.data[0];
+					profile = jsonBody.data;
 					console.log(profile)
 					return next();
 				}
@@ -105,6 +105,18 @@ module.exports = function(settings){
 		})
 		return
 	})
+
+	app.get("/my-jobs",isAuthenticated, function(req,res){
+		res.render("my-jobs", {
+			title:"Recruiter Web - My Jobs | iimjobs.com",
+			styles:  assetsMapper["my-jobs"]["styles"][mode],
+			scripts: assetsMapper["my-jobs"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			profile: profile
+		})
+		return
+	});
 
 	app.get("/job/:jobID/candidates",isAuthenticated, function(req, res){
 		var jobID = req.params.jobID;
@@ -392,16 +404,7 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/my-jobs", function(req,res){
-		res.render("my-jobs", {
-			title:"Recruiter Web - My Jobs | iimjobs.com",
-			styles:  assetsMapper["my-jobs"]["styles"][mode],
-			scripts: assetsMapper["my-jobs"]["scripts"][mode],
-			baseUrl: baseUrl,
-			baseDomain: baseDomain
-		})
-		return
-	});
+
 
 	app.get("/settings", function(req,res){
 		res.render("settings", {

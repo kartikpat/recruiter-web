@@ -514,6 +514,11 @@ span {
 					border-bottom:1px solid $border-color-base;
 					cursor:pointer;
 
+                    &:first-child {
+                        border: 0;
+                        padding: 0;
+                    }
+
 					&.selected {
 						background-color:$active-hover-background;
 					}
