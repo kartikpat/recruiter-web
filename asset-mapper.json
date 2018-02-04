@@ -145,6 +145,7 @@
 				"static/js/ui-components.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/common.js",
+				"static/js/Utilities/modal.js",
 				"static/js/Services/fetchJob.js",
 				"static/js/Services/submitNewJob.js",
 				"static/js/Components/PostJob/model.js",
@@ -727,6 +728,7 @@
 				"static/css/utilities.css",
 				"static/css/footer.css",
 				"static/css/icons/icons.css",
+				"static/css/modal.css",
 				"static/css/vendor/tooltipster.css"
 			],
 			"prod": [
@@ -742,6 +744,7 @@
 				"static/js/utilities.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/common.js",
+				"static/js/Utilities/modal.js",
 				"static/js/vendor/moment.min.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",

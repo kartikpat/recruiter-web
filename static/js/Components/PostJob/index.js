@@ -3,6 +3,8 @@ $(document).ready(function(){
 
 	var jobDetails = Job();
 	jobDetails.init();
+	console.log(profile)
+	jobDetails.setAvailableCredits(profile["availableCredits"]);
 	jobDetails.submitHandler(function(){
 			if(jobDetails.validate())
 				submitNewJob(jobDetails.getData());

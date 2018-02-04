@@ -988,6 +988,10 @@ span.sticker {
       .conversations .conversation-listing-container .conversations-listing .conversation-item:last-child .user-item.user-info p.user-designation {
         border-color: transparent; }
 
+.premium_highlight {
+  background-color: #e97e00;
+  color: #fff !important; }
+
 .page-content {
   min-height: 100%;
   padding: 0;

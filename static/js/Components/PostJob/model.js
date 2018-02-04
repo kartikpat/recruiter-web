@@ -1,34 +1,4 @@
-// var obj = {
-// 	"title": "test title",
-// 	"description": "This ia a test job",
-// 	"isPremium": false,
-// 	"videoUrl": "http:test",
-// 	"catid": "14",
-// 	"functionalAreaid": "8",
-// 	"courseType": [ 1, 2, 3, 4, 5 ],
-// 	"location": [ {
-// 		"id": 1,
-// 		"label": "Delhi"
-// 	}],
-// 	"industry": [ 1,2, 5, 6 ],
-// 	"otherLocation": [ "Delhi" ],
-// 	"preferences": [ "femaleCandidate", "differentlyAbled", "femaleBackWorkForce", "exDefence", "workHome"  ],
-// 	"tags": [],
-// 	"sal": {
-// 		"min": 10,
-// 		"max": 15,
-// 		"isShow": true
-// 	},
-// 	"batch": {
-// 		"min": 2014,
-// 		"max": 2017
-// 	},
-//
-// 	"exp": {
-// 		"min": 8,
-// 		"max": 10
-// 	}
-// }
+
 
 var errorResponses = {
 	missingTitle: 'title cannot be blank',
@@ -69,7 +39,11 @@ function Job(){
 			settings.isPremium= $("#isPremium")
 			settings.submitButton = $('.submit-form'),
 			settings.cancelButton = $('.cancel-button'),
-			settings.error = $('.error');
+			settings.error = $('.error'),
+			settings.credits = $('.js_availableCredits');
+	}
+	function setAvailableCredits(credits) {
+		settings.credits.text("You have "+credits+" credits left.")
 	}
 	function loginHandler(fn){
 		settings.login.click(fn);
@@ -199,6 +173,7 @@ function Job(){
 			settings.batchFrom.val(obj["batch"]["min"]);
 			settings.batchTo.val(obj["batch"]["max"]);
 		}
+
 	}
 
 	function submitHandler(fn){
@@ -210,7 +185,8 @@ function Job(){
 		validate: validate,
 		getData: getJobData,
 		submitHandler: submitHandler,
-		setData: setJobData
+		setData: setJobData,
+		setAvailableCredits: setAvailableCredits
 	}
 }
 
