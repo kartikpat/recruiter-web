@@ -439,13 +439,14 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/candidate-apply-list/:jobID", function(req,res){
+	app.get("/candidate-apply-list/:jobID",isAuthenticated, function(req,res){
 		res.render("candidate-apply-list", {
 			title:"Recruiter Web - Candidate Apply List | iimjobs.com",
 			styles:  assetsMapper["candidate-apply-list"]["styles"][mode],
 			scripts: assetsMapper["candidate-apply-list"]["scripts"][mode],
 			baseUrl: baseUrl,
-			baseDomain: baseDomain
+			baseDomain: baseDomain,
+			profile: profile
 		})
 		return
 	});

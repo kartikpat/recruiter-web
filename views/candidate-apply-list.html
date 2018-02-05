@@ -64,337 +64,88 @@
 				</div>
 
 				<div class="candidates-area-body">
-
 					<div class="selection-bar">
-						<div class="bulk-selection-item bulk-select">
+						<!-- <div class="bulk-selection-item bulk-select">
 							<div class="select-all">
 								<input type="checkbox" id="select-all-candidates">
 								<label for="select-all-candidates"></label>
 							</div>
-						</div>
-						<div class="bulk-selection-item all active">
-							<span class="bulk-action-icon"><i class="icon-box"></i></span>
-							<span class="bulk-action-label">All</span>
-						</div>
-						<div class="bulk-selection-item unread">
-							<span class="bulk-action-icon"><i class="icon-envelope"></i></span>
-							<span class="bulk-action-label">Unread</span>
-						</div>
-						<div class="bulk-selection-item reviewed">
-							<span class="bulk-action-icon"><i class="icon-document_search_interface_symbol"></i></span>
-							<span class="bulk-action-label">Reviewed</span>
-						</div>
-						<div class="bulk-selection-item shortlisted">
-							<span class="bulk-action-icon"><i class="icon-tick"></i></span>
-							<span class="bulk-action-label">Shortlisted</span>
-						</div>
-						<div class="bulk-selection-item rejected">
-							<span class="bulk-action-icon"><i class="icon-denied"></i></span>
-							<span class="bulk-action-label">Rejected</span>
-						</div>
-						<div class="bulk-selection-item saved">
-							<span class="bulk-action-icon"><i class="icon-download_arrow"></i></span>
-							<span class="bulk-action-label">Saved</span>
-						</div>
-					</div>
-
-			<div class="candidates-listing">
-				<div class="candidate-item">
-					<div class="candidate-item-section image">
-						<div class="candidate-image">
-							<div class="candidate-select">
-								<div class="checkbox">
-									<input type="checkbox" id="candidate-1">
-									<label for="candidate-1"></label>
-								</div>
+						</div> -->
+						<div id="jobs-category-tabs" class="hidden">
+							<div class="tabs_scroll_container">
+								<ul id="">
+				            		<li data-attribute="">
+										<a href="#all-jobs">
+											<div class="bulk-selection-item all active">
+												<span class="bulk-action-icon"><i class="icon-box"></i></span>
+												<span class="bulk-action-label js_all">All</span>
+											</div>
+										</a>
+									</li>
+				            		<li data-attribute="-1">
+										<a href="#unread-jobs">
+											<div class="bulk-selection-item unread">
+												<span class="bulk-action-icon"><i class="icon-envelope"></i></span>
+												<span class="bulk-action-label js_unread">Unread</span>
+											</div>
+										</a>
+									</li>
+				            		<li data-attribute="4,5">
+										<a href="#reviewed-jobs">
+											<div class="bulk-selection-item reviewed">
+												<span class="bulk-action-icon"><i class="icon-document_search_interface_symbol"></i></span>
+												<span class="bulk-action-label">Reviewed</span>
+											</div>
+										</a>
+									</li>
+									<li data-attribute="1">
+										<a href="#shortlisted-jobs">
+											<div class="bulk-selection-item shortlisted">
+												<span class="bulk-action-icon"><i class="icon-tick"></i></span>
+												<span class="bulk-action-label js_shortlisted">Shortlisted</span>
+											</div>
+										</a>
+									</li>
+									<li data-attribute="2">
+										<a href="#rejected-jobs">
+											<div class="bulk-selection-item rejected">
+												<span class="bulk-action-icon"><i class="icon-denied"></i></span>
+												<span class="bulk-action-label js_rejected">Rejected</span>
+											</div>
+										</a>
+									</li>
+									<li data-attribute="3">
+										<a href="#saved-jobs">
+											<div class="bulk-selection-item saved">
+												<span class="bulk-action-icon"><i class="icon-download_arrow"></i></span>
+												<span class="bulk-action-label js_saved">Saved</span>
+											</div>
+										</a>
+									</li>
+			            		</ul>
 							</div>
-							<img src="http://placehold.it/60x60/f5f5f5?text=+">
-							<div class="candidate-status online"></div>
-						</div>
-					</div>
+							<div id="all-jobs" class="candidates-listing js_candidate_listing">
 
-					<div class="candidate-item-section personal-details">
-						<p class="profile-name">Shelly Sharma</p>
-						<p class="experience-label data-label">
-							<span class="bold">Experience: </span>
-							<span class="experience value">2y 3m</span>
-						</p>
-						<p class="location-label data-label">
-							<span class="bold">Location: </span>
-							<span class="location value">Delhi</span>
-						</p>
-						<p class="applied-label data-label">
-							<span class="bold">Applied: </span>
-							<span class="applied value">15-06-2017</span>
-						</p>
-						<p class="notice-period-label data-label">
-							<span class="bold">Notice Period: </span>
-							<span class="notice-period value">1 month</span>
-						</p>
-
-						<p><a href="#" class="cover-letter info-link">Cover letter</a></p>
-						<p><a href="#" class="recommendations info-link">Recommendations</a></p>
-
-						<div class="skill-tag-listing">
-							<span class="skill-tag">Data Analytics</span>
-							<span class="skill-tag">UI/UX</span>
-							<span class="skill-tag">Data Analytics</span>
-							<span class="skill-tag">Product Management</span>
-						</div>
-
-					</div>
-
-					<div class="candidate-item-section professional-information">
-						<div class="datum">
-				            <p class="data name">iimjobs.com</p>
-				            <p class="detail designation">Full Stack Engineer</p>
-				        	<p class="detail tenure">2008-2012</p>
-				        </div>
-				        <div class="datum">
-				            <p class="data name">Mobikasa Inc</p>
-				            <p class="detail designation">UI Developer - Level II</p>
-				        	<p class="detail tenure">2006-2008</p>
-				        </div>
-					</div>
-
-					<div class="candidate-item-section educational-details">
-						<div class="datum">
-				            <p class="data name">Indian Institute of Management, Indore (IIMI)</p>
-				        	<p class="detail tenure">2008-2012</p>
-				            <p class="detail degree">B Tech / BE (Full Time)</p>
-				        </div>
-				        <div class="datum">
-				            <p class="data name">B.Tech</p>
-				        	<p class="detail tenure">2008-2012</p>
-				            <p class="detail degree">B Tech / BE (Full Time)</p>
-				        </div>
-					</div>
-
-					<div class="candidate-item-section profile-actions">
-						<div class="candidate-action-area">
-							<button class="button green shortlist left">Shortlist</span></button>
-							<button class="button red reject right">Reject</span></button>
-							<div class="clearfix"></div>
-
-							<div class="candidate-options">
-								<div class="button-action-list inactive">
-									<label class="action-list-label">Other Actions</label>
-									<ul class="action-list-items">
-										<li><a href="#">Send Message</a></li>
-										<li><a href="#">Send Interview Invite</a></li>
-										<li><a href="#">Download Resume</a></li>
-										<li><a href="#">Save for later</a></li>
-										<li><a href="#">Add Comment</a></li>
-										<li><a href="#">Add Tag</a></li>
-									</ul>
-								</div>
 							</div>
+							<div id="unread-jobs" class="candidates-listing js_candidate_listing">
 
-							<div class="view-links">
-								<span class="comments"><a href="#">View Comments</a></span>
-								<span class="tags"><a href="#">View Tags</a></span>
+							</div>
+							<div id="reviewed-jobs" class="candidates-listing js_candidate_listing">
+
+							</div>
+							<div id="shortlisted-jobs" class="candidates-listing js_candidate_listing">
+
+							</div>
+							<div id="rejected-jobs" class="candidates-listing js_candidate_listing">
+
+							</div>
+							<div id="saved-jobs" class="candidates-listing js_candidate_listing">
+
 							</div>
 						</div>
 					</div>
-					<div class="separator"></div>
-				</div>
-				<div class="candidate-item">
-					<div class="candidate-item-section image">
-						<div class="candidate-image">
-							<div class="candidate-select">
-								<div class="checkbox">
-									<input type="checkbox" id="candidate-2">
-									<label for="candidate-2"></label>
-								</div>
-							</div>
-							<img src="http://placehold.it/60x60/f5f5f5?text=+">
-							<div class="candidate-status online"></div>
-						</div>
-					</div>
 
-					<div class="candidate-item-section personal-details">
-						<p class="profile-name">Shelly Sharma</p>
-						<p class="experience-label data-label">
-							<span class="bold">Experience: </span>
-							<span class="experience value">2y 3m</span>
-						</p>
-						<p class="location-label data-label">
-							<span class="bold">Location: </span>
-							<span class="location value">Delhi</span>
-						</p>
-						<p class="applied-label data-label">
-							<span class="bold">Applied: </span>
-							<span class="applied value">15-06-2017</span>
-						</p>
-						<p class="notice-period-label data-label">
-							<span class="bold">Notice Period: </span>
-							<span class="notice-period value">1 month</span>
-						</p>
 
-						<p><a href="#" class="cover-letter info-link">Cover letter</a></p>
-						<p><a href="#" class="recommendations info-link">Recommendations</a></p>
-
-						<div class="skill-tag-listing">
-							<span class="skill-tag">Product Management</span>
-							<span class="skill-tag">Data Analytics</span>
-						</div>
-
-					</div>
-
-					<div class="candidate-item-section professional-information">
-						<div class="datum">
-				            <p class="data name">iimjobs.com</p>
-				            <p class="detail designation">Full Stack Engineer</p>
-				        	<p class="detail tenure">2008-2012</p>
-				        </div>
-				        <div class="datum">
-				            <p class="data name">Mobikasa Inc</p>
-				            <p class="detail designation">UI Developer - Level II</p>
-				        	<p class="detail tenure">2006-2008</p>
-				        </div>
-					</div>
-
-					<div class="candidate-item-section educational-details">
-						<div class="datum">
-				            <p class="data name">Indian Institute of Management, Indore (IIMI)</p>
-				        	<p class="detail tenure">2008-2012</p>
-				            <p class="detail degree">B Tech / BE (Full Time)</p>
-				        </div>
-				        <div class="datum">
-				            <p class="data name">B.Tech</p>
-				        	<p class="detail tenure">2008-2012</p>
-				            <p class="detail degree">B Tech / BE (Full Time)</p>
-				        </div>
-					</div>
-
-					<div class="candidate-item-section profile-actions">
-						<div class="candidate-action-area">
-							<button class="button green shortlist left">Shortlist</span></button>
-							<button class="button red reject right">Reject</span></button>
-							<div class="clearfix"></div>
-
-							<div class="candidate-options">
-								<div class="button-action-list inactive">
-									<label class="action-list-label">Other Actions</label>
-									<ul class="action-list-items">
-										<li><a href="#">Send Message</a></li>
-										<li><a href="#">Send Interview Invite</a></li>
-										<li><a href="#">Download Resume</a></li>
-										<li><a href="#">Save for later</a></li>
-										<li><a href="#">Add Comment</a></li>
-										<li><a href="#">Add Tag</a></li>
-									</ul>
-								</div>
-							</div>
-
-							<div class="view-links">
-								<span class="comments"><a href="#">View Comments</a></span>
-								<span class="tags"><a href="#">View Tags</a></span>
-							</div>
-						</div>
-					</div>
-					<div class="separator"></div>
-				</div>
-				<div class="candidate-item">
-					<div class="candidate-item-section image">
-						<div class="candidate-image">
-							<div class="candidate-select">
-								<div class="checkbox">
-									<input type="checkbox" id="candidate-3">
-									<label for="candidate-3"></label>
-								</div>
-							</div>
-							<img src="http://placehold.it/60x60/f5f5f5?text=+">
-							<div class="candidate-status online"></div>
-						</div>
-					</div>
-
-					<div class="candidate-item-section personal-details">
-						<p class="profile-name">Shelly Sharma</p>
-						<p class="experience-label data-label">
-							<span class="bold">Experience: </span>
-							<span class="experience value">2y 3m</span>
-						</p>
-						<p class="location-label data-label">
-							<span class="bold">Location: </span>
-							<span class="location value">Delhi</span>
-						</p>
-						<p class="applied-label data-label">
-							<span class="bold">Applied: </span>
-							<span class="applied value">15-06-2017</span>
-						</p>
-						<p class="notice-period-label data-label">
-							<span class="bold">Notice Period: </span>
-							<span class="notice-period value">1 month</span>
-						</p>
-
-						<p><a href="#" class="cover-letter info-link">Cover letter</a></p>
-						<p><a href="#" class="recommendations info-link">Recommendations</a></p>
-
-						<div class="skill-tag-listing">
-							<span class="skill-tag">Data Analytics</span>
-							<span class="skill-tag">UI/UX</span>
-							<span class="skill-tag">Data Analytics</span>
-							<span class="skill-tag">Product Management</span>
-						</div>
-
-					</div>
-
-					<div class="candidate-item-section professional-information">
-						<div class="datum">
-				            <p class="data name">iimjobs.com</p>
-				            <p class="detail designation">Full Stack Engineer</p>
-				        	<p class="detail tenure">2008-2012</p>
-				        </div>
-				        <div class="datum">
-				            <p class="data name">Mobikasa Inc</p>
-				            <p class="detail designation">UI Developer - Level II</p>
-				        	<p class="detail tenure">2006-2008</p>
-				        </div>
-					</div>
-
-					<div class="candidate-item-section educational-details">
-						<div class="datum">
-				            <p class="data name">Indian Institute of Management, Indore (IIMI)</p>
-				        	<p class="detail tenure">2008-2012</p>
-				            <p class="detail degree">B Tech / BE (Full Time)</p>
-				        </div>
-				        <div class="datum">
-				            <p class="data name">B.Tech</p>
-				        	<p class="detail tenure">2008-2012</p>
-				            <p class="detail degree">B Tech / BE (Full Time)</p>
-				        </div>
-					</div>
-
-					<div class="candidate-item-section profile-actions">
-						<div class="candidate-action-area">
-							<button class="button green shortlist left">Shortlist</span></button>
-							<button class="button red reject right">Reject</span></button>
-							<div class="clearfix"></div>
-
-							<div class="candidate-options">
-								<div class="button-action-list inactive">
-									<label class="action-list-label">Other Actions</label>
-									<ul class="action-list-items">
-										<li><a href="#">Send Message</a></li>
-										<li><a href="#">Send Interview Invite</a></li>
-										<li><a href="#">Download Resume</a></li>
-										<li><a href="#">Save for later</a></li>
-										<li><a href="#">Add Comment</a></li>
-										<li><a href="#">Add Tag</a></li>
-									</ul>
-								</div>
-							</div>
-
-							<div class="view-links">
-								<span class="comments"><a href="#">View Comments</a></span>
-								<span class="tags"><a href="#">View Tags</a></span>
-							</div>
-						</div>
-					</div>
-					<div class="separator"></div>
-				</div>
-			</div>
 				</div>
 			</div>
 		</div>
@@ -403,115 +154,17 @@
 		</div>
 	</div>
 
-	<div class="candidate-item prototype hidden">
-		<div class="candidate-item-section image">
-			<div class="candidate-image">
-				<div class="candidate-select">
-					<div class="checkbox">
-						<input type="checkbox" id="candidate-3">
-						<label for="candidate-3"></label>
-					</div>
-				</div>
-				<img class="js_img" src="http://placehold.it/60x60/f5f5f5?text=+">
-				<div class="candidate-status online"></div>
-			</div>
-		</div>
 
-		<div class="candidate-item-section personal-details">
-			<p class="profile-name js_name">Shelly Sharma</p>
-			<p class="experience-label data-label">
-				<span class="bold">Experience: </span>
-				<span class="experience value js_exp">2y 3m</span>
-			</p>
-			<p class="location-label data-label">
-				<span class="bold">Location: </span>
-				<span class="location value js_location">Delhi</span>
-			</p>
-			<p class="applied-label data-label">
-				<span class="bold">Applied: </span>
-				<span class="applied value js_appliedOn">15-06-2017</span>
-			</p>
-			<p class="notice-period-label data-label">
-				<span class="bold">Notice Period: </span>
-				<span class="notice-period value">1 month</span>
-			</p>
 
-			<p><a href="#" class="cover-letter info-link">Cover letter</a></p>
-			<p><a href="#" class="recommendations info-link">Recommendations</a></p>
-
-			<div class="skill-tag-listing">
-				<span class="skill-tag">Data Analytics</span>
-				<span class="skill-tag">UI/UX</span>
-				<span class="skill-tag">Data Analytics</span>
-				<span class="skill-tag">Product Management</span>
-			</div>
-
-		</div>
-
-		<div class="candidate-item-section professional-information">
-			<div class="datum">
-				<p class="data name">iimjobs.com</p>
-				<p class="detail designation">Full Stack Engineer</p>
-				<p class="detail tenure">2008-2012</p>
-			</div>
-			<div class="datum">
-				<p class="data name">Mobikasa Inc</p>
-				<p class="detail designation">UI Developer - Level II</p>
-				<p class="detail tenure">2006-2008</p>
-			</div>
-		</div>
-
-		<div class="candidate-item-section educational-details">
-			<div class="datum">
-				<p class="data name">Indian Institute of Management, Indore (IIMI)</p>
-				<p class="detail tenure">2008-2012</p>
-				<p class="detail degree">B Tech / BE (Full Time)</p>
-			</div>
-			<div class="datum">
-				<p class="data name">B.Tech</p>
-				<p class="detail tenure">2008-2012</p>
-				<p class="detail degree">B Tech / BE (Full Time)</p>
-			</div>
-		</div>
-
-		<div class="candidate-item-section profile-actions">
-			<div class="candidate-action-area">
-				<button class="button green shortlist left">Shortlist</span></button>
-				<button class="button red reject right">Reject</span></button>
-				<div class="clearfix"></div>
-
-				<div class="candidate-options">
-					<div class="button-action-list inactive">
-						<label class="action-list-label">Other Actions</label>
-						<ul class="action-list-items">
-							<li><a href="#">Send Message</a></li>
-							<li><a href="#">Send Interview Invite</a></li>
-							<li><a href="#">Download Resume</a></li>
-							<li><a href="#">Save for later</a></li>
-							<li><a href="#">Add Comment</a></li>
-							<li><a href="#">Add Tag</a></li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="view-links">
-					<span class="comments"><a href="#">View Comments</a></span>
-					<span class="tags"><a href="#">View Tags</a></span>
-				</div>
-			</div>
-		</div>
-		<div class="separator"></div>
-	</div>
-
-<div class="view-resume-modal hidden">
+<div class="view-resume-modal js_candidate_modal hidden">
     <div class="main-wrapper left">
         <div class="main-container">
             <div class="container resume-header">
                 <div class="profile-image">
-                	<img src="https://www.placehold.it/100x100/f5f5f5?text=+">
+                	<img class="js_img" src="https://www.placehold.it/100x100/f5f5f5?text=+">
                 </div>
                 <div class="profile-information">
-                	<p class="profile-name">Shreya Sharma</p>
+                	<p class="profile-name js_name">Shreya Sharma</p>
 
                 	<div class="social-media-accounts">
                 		<span class="social facebook"><img src="/static/images/facebook-round.svg"></span>
@@ -522,42 +175,31 @@
                 <div class="profile-snapshot">
                 	<div class="snap current-location">
                 		<p class="snap-title">Current Location</p>
-                		<p class="snap-value">Delhi</p>
+                		<p class="snap-value js_loc">Delhi</p>
                 	</div>
                 	<div class="snap preferred-location">
                 		<p class="snap-title">Preferred Location</p>
-                		<p class="snap-value">Delhi</p>
+                		<p class="snap-value js_pref_loc">Delhi</p>
                 	</div>
                 	<div class="snap experience">
                 		<p class="snap-title">Experience</p>
-                		<p class="snap-value">Delhi</p>
+                		<p class="snap-value js_experience">Delhi</p>
                 	</div>
                 	<div class="snap location">
                 		<p class="snap-title">Mobile</p>
-                		<p class="snap-value">9654723723</p>
+                		<p class="snap-value js_contact">9654723723</p>
                 	</div>
                 	<div class="snap location">
                 		<p class="snap-title">Current Salary</p>
-                		<p class="snap-value">18LPA</p>
+                		<p class="snap-value js_sal">18LPA</p>
                 	</div>
                 </div>
 
-                <div class="skills-area">
-                	<div class="tag">
-                		<span class="skill-name">UI Development</span>
-                	</div>
-                	<div class="tag">
-                		<span class="skill-name">JavaScript</span>
-                	</div>
-                	<div class="tag">
-                		<span class="skill-name">UI Development</span>
-                	</div>
-                	<div class="tag">
-                		<span class="skill-name">A/B Testing</span>
-                	</div>
+                <div class="skills-area js_skills_list">
+
                 </div>
                 <div class="last-login-container">
-                	<p>Last Login: <span class="last-login"> 13 days ago</span></p>
+                	<p>Last Login: <span class="last-login js_last_login"> 13 days ago</span></p>
                 </div>
             </div>
 
@@ -569,46 +211,18 @@
 	            		<li><a href="#view-resume">Resume</a></li>
 	            		<li><a href="#view-cover-letter">Cover Letter</a></li>
 	            	</ul>
-	            	<div id="view-resume">
-
-	            	<!-- <p>Resume comes here. URL for Resume : <br/>
-	            		<a href="http://dfdceb975cf775e45220-2337082ec7eb862d3cd0ed59dd611802.r50.cf1.rackcdn.com/media/profiles/2017/01/24/2017-01-24-22-21-29-72691.pdf" target="_blank">Here</a>
-	            	 </p> -->
-
-
-	            	</div>
-	            	<div id="view-profile-info">
+					<div id="view-profile-info">
 	            		<div class="content-block education">
 	            			<h3 class="content-heading">Educational Qualifications</h3>
-	            			<div class="content">
-	            				<div class="datum">
-	            					<p class="data-name">Indian Institute of Management, Indore (IIMI)</p>
-	            					<p class="data-detail">2012 - 2014</p>
-	            					<p class="data-detail">MBA / PGDM (Full Time)</p>
-	            					<div class="separator"></div>
-	            				</div>
-	            				<div class="datum">
-	            					<p class="data-name">Indian Institute of Management, Indore (IIMI)</p>
-	            					<p class="data-detail">2012 - 2014</p>
-	            					<p class="data-detail">MBA / PGDM (Full Time)</p>
-	            				</div>
+	            			<div class="content js_edu_list">
+
 	            			</div>
 	            		</div>
 
 	            		<div class="content-block organization">
-	            			<h3 class="content-heading">Organization Details</h3>
-	            			<div class="content">
-	            				<div class="datum">
-	            					<p class="data-name">Peele Technologies</p>
-	            					<p class="data-detail">Business Analyst</p>
-	            					<p class="data-detail">Dec 2015 to Present</p>
-	            					<div class="separator"></div>
-	            				</div>
-	            				<div class="datum">
-	            					<p class="data-name">Talencia Software</p>
-	            					<p class="data-detail">Senior Software Engineer (Data Scientist)</p>
-	            					<p class="data-detail">Aug 2013 to Dec 2015</p>
-	            				</div>
+	            			<h3 class="content-heading">Professional Details</h3>
+	            			<div class="content js_prof_list">
+
 	            			</div>
 	            		</div>
 
@@ -619,55 +233,55 @@
 	            					<li>
 	            						<p class="location">
 	            							<span class="key">Location</span>
-	            							<span class="value">Delhi</span>
+	            							<span class="value js_loc">Delhi</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="applied">
 	            							<span class="key">Applied</span>
-	            							<span class="value">15-06-2017</span>
+	            							<span class="value js_appliedOn">15-06-2017</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="notice-period">
 	            							<span class="key">Notice Period</span>
-	            							<span class="value">2 months</span>
+	            							<span class="value js_notice">2 months</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="gender">
 	            							<span class="key">Gender</span>
-	            							<span class="value">Male</span>
+	            							<span class="value js_gender">Male</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="age">
 	            							<span class="key">Age</span>
-	            							<span class="value">28 years</span>
+	            							<span class="value js_age">28 years</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="experience">
 	            							<span class="key">Experience</span>
-	            							<span class="value">3y 4m</span>
+	            							<span class="value js_experience">3y 4m</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="preferred-location">
 	            							<span class="key">Preferred Location</span>
-	            							<span class="value">Bangalore / Chennai</span>
+	            							<span class="value js_pref_loc">Bangalore / Chennai</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="current-salary">
 	            							<span class="key">Current Salary</span>
-	            							<span class="value">18 LPA</span>
+	            							<span class="value js_sal">18 LPA</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="expected-salary">
 	            							<span class="key">Expected Salary</span>
-	            							<span class="value">20LPA</span>
+	            							<span class="value js_expected_sal">20LPA</span>
 	            						</p>
 	            					</li>
 	            				</ul>
@@ -681,68 +295,68 @@
 	            					<li>
 	            						<p class="marital-status">
 	            							<span class="key">Marital Status</span>
-	            							<span class="value">Single</span>
+	            							<span class="value js_marital_status">Single</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="languages">
 	            							<span class="key">Languages</span>
-	            							<span class="value">English, Hindi, Tamil</span>
+	            							<span class="value js_languages">English, Hindi, Tamil</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="work-usa">
 	            							<span class="key">Work Permit for USA</span>
-	            							<span class="value">No</span>
+	            							<span class="value js_work_permit">No</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="cat-percentile">
 	            							<span class="key">CAT Percentile</span>
-	            							<span class="value">N.A</span>
+	            							<span class="value js_percentile">N.A</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="handled-team">
 	            							<span class="key">Have you handled a team?</span>
-	            							<span class="value">Yes</span>
+	            							<span class="value js_handled_team">Yes</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="willing-six-days">
 	            							<span class="key">Are you willing to work 6 days?</span>
-	            							<span class="value">No</span>
+	            							<span class="value js_six_days">No</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="willing-relocate">
 	            							<span class="key">Are you willing to relocate</span>
-	            							<span class="value">No</span>
+	            							<span class="value js_relocate">No</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="differently-abled">
 	            							<span class="key">Differently Abled?</span>
-	            							<span class="value">No</span>
+	            							<span class="value js_different_abled">No</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="willing-startup">
 	            							<span class="key">Are you willing to join an early-stage startup?</span>
-	            							<span class="value">Yes</span>
+	            							<span class="value js_startup">Yes</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="willing-travel">
 	            							<span class="key">Willingness to travel?</span>
-	            							<span class="value">N.A</span>
+	            							<span class="value js_travel">N.A</span>
 	            						</p>
 	            					</li>
 	            				</ul>
 	            			</div>
 	            		</div>
 
-	            		<div class="content-block recommendations">
+	            		<!-- <div class="content-block recommendations">
 	            			<h3 class="content-heading">Recommendations</h3>
 	            			<div class="content">
 	            				<div class="recommendation-header">
@@ -759,39 +373,42 @@
 	            					<p>Akshay for one and half years while building tiksha.com, Akshay for one and half years while building tiksha.com Akshay for one and half years while building tiksha.com Akshay for one and half years while building tiksha.com</p>
 	            				</div>
 	            			</div>
-	            		</div>
+	            		</div> -->
 
 	            	</div>
-	            	<div id="view-cover-letter">
+	            	<div id="view-resume" class="js_resume">
+
+	            	</div>
+
+	            	<div id="view-cover-letter" class="js_cover_letter">
 	            		<p>Dear Sir/Madam,<br><br/>
 
-I would like to introduce myself as a skilled human resource professional with experience in a wide range of HR functions; I am pleased to present the enclosed resume. You will find my dedication and enthusiastic attitude to be of value to your company as your next HR Gen
-eralist and Strategic Business Partner.<br><br>
+						I would like to introduce myself as a skilled human resource professional with experience in a wide range of HR functions; I am pleased to present the enclosed resume. You will find my dedication and enthusiastic attitude to be of value to your company as your next HR Gen
+						eralist and Strategic Business Partner.<br><br>
 
-My expertise lies in successfully coordinating organizational planning and development through strategic HR initiatives and programs. Throughout my career, I have facilitated staff recruitment, benefits administration, compensation planning, staff and management training programs, and employee relations practices. With complementary skills in process improvement, records      management, and team collaboration, I am confident that I can make an immediate and positive contribution to any organization.<br><br>
+						My expertise lies in successfully coordinating organizational planning and development through strategic HR initiatives and programs. Throughout my career, I have facilitated staff recruitment, benefits administration, compensation planning, staff and management training programs, and employee relations practices. With complementary skills in process improvement, records      management, and team collaboration, I am confident that I can make an immediate and positive contribution to any organization.<br><br>
 
-The following achievements demonstrate my qualification for this position:<br><br>
+						The following achievements demonstrate my qualification for this position:<br><br>
 
-Performed the full range of HR responsibilities?including exempt and non-exempt talent acquisition, payroll and benefits administration, reporting, performance evaluation, coaching, and employee relations.<br>
-Developed and implemented new strategic HR policies and programs.eenly aware of up-to-date industry best practices and market conditions.
-Established solid partnerships through exceptional relationship-building skills; utilized solid communication and interpersonal abilities to secure employee and management trust.<br>
-Implemented effective policies, programs, and initiatives to optimize organizational productivity and boosted employee morale and improved retention.<br>
-Performed numerous, competing tasks while optimizing workflow and maximizing productivity.<br><br>
+						Performed the full range of HR responsibilities?including exempt and non-exempt talent acquisition, payroll and benefits administration, reporting, performance evaluation, coaching, and employee relations.<br>
+						Developed and implemented new strategic HR policies and programs.eenly aware of up-to-date industry best practices and market conditions.
+						Established solid partnerships through exceptional relationship-building skills; utilized solid communication and interpersonal abilities to secure employee and management trust.<br>
+						Implemented effective policies, programs, and initiatives to optimize organizational productivity and boosted employee morale and improved retention.<br>
+						Performed numerous, competing tasks while optimizing workflow and maximizing productivity.<br><br>
 
-My proven dedication to optimizing organizational success through my expert knowledge of human resources operations and strategies will contribute immensely to the success of any organization. <br><br>
+						My proven dedication to optimizing organizational success through my expert knowledge of human resources operations and strategies will contribute immensely to the success of any organization. <br><br>
 
-It will be a pleasure to offer more insight into my qualifications, and I look forward to meeting with you soon. Thank you for your consideration.<br><br>
+						It will be a pleasure to offer more insight into my qualifications, and I look forward to meeting with you soon. Thank you for your consideration.<br><br>
 
-Sincerely,<br><br>
+						Sincerely,<br><br>
 
-Shreya Sharma</p>
+						Shreya Sharma</p>
 	            	</div>
             	</div>
 
             </div>
         </div>
     </div>
-
     <div class="mobile-resume-sidebar">
     	<div class="clearfix"></div>
     	<div class="first-fold fold top">
@@ -829,21 +446,8 @@ Shreya Sharma</p>
 
     	<div class="sidebar-section comments">
     		<h3>Comments</h3>
-    		<div class="comment-block">
-    			<div class="content">
-    				<p>Lorem Ipsum is simply dummy text for the 19th century.</p>
-    			</div>
-    			<div class="clearfix"></div>
-    			<p class="comment-timestamp right">3 minutes ago</p>
-				<div class="clearfix"></div>
-    		</div>
-    		<div class="comment-block">
-    			<div class="content">
-    				<p>Lorem Ipsum is simply dummy text for the 19th century.</p>
-    			</div>
-    			<div class="clearfix"></div>
-    			<p class="comment-timestamp right">3 minutes ago</p>
-				<div class="clearfix"></div>
+    		<div class="js_comments_list">
+
     		</div>
     	</div>
 
@@ -868,4 +472,111 @@ Shreya Sharma</p>
     	</div>
     </div>
 </div>
+
+<div class="tag js_skill_tag prototype hidden">
+	<span class="skill-name js_skill_name">UI Development</span>
+</div>
+
+<div class="candidate-item js_candidate_item prototype hidden">
+	<div class="candidate-item-section image">
+		<div class="candidate-image">
+			<div class="candidate-select">
+				<div class="checkbox">
+					<input type="checkbox" id="candidate-3">
+					<label for="candidate-3"></label>
+				</div>
+			</div>
+			<img class="js_img" src="http://placehold.it/60x60/f5f5f5?text=+">
+			<div class="candidate-status online"></div>
+		</div>
+	</div>
+
+	<div class="candidate-item-section personal-details">
+		<p class="profile-name js_name">Shelly Sharma</p>
+		<p class="experience-label data-label">
+			<span class="bold">Experience: </span>
+			<span class="experience value js_exp">2y 3m</span>
+		</p>
+		<p class="location-label data-label">
+			<span class="bold">Location: </span>
+			<span class="location value js_loc">Delhi</span>
+		</p>
+		<p class="applied-label data-label">
+			<span class="bold">Applied: </span>
+			<span class="applied value js_appliedOn">15-06-2017</span>
+		</p>
+		<p class="notice-period-label data-label">
+			<span class="bold">Notice Period: </span>
+			<span class="notice-period value js_notice">1 month</span>
+		</p>
+
+		<p><a href="#" class="cover-letter info-link">Cover letter</a></p>
+		<p><a href="#" class="recommendations info-link">Recommendations</a></p>
+
+		<div class="skill-tag-listing js_skill_tag_list">
+
+		</div>
+
+	</div>
+
+	<div class="candidate-item-section professional-information js_prof_list">
+
+	</div>
+
+	<div class="candidate-item-section educational-details js_edu_list">
+
+	</div>
+
+	<div class="candidate-item-section profile-actions">
+		<div class="candidate-action-area">
+			<button class="button green shortlist left">Shortlist</span></button>
+			<button class="button red reject right">Reject</span></button>
+			<div class="clearfix"></div>
+
+			<div class="candidate-options">
+				<div class="button-action-list inactive">
+					<label class="action-list-label">Other Actions</label>
+					<ul class="action-list-items">
+						<li><a href="#">Send Message</a></li>
+						<li><a href="#">Send Interview Invite</a></li>
+						<li><a href="#">Download Resume</a></li>
+						<li><a href="#">Save for later</a></li>
+						<li><a href="#">Add Comment</a></li>
+						<li><a href="#">Add Tag</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="view-links">
+				<span class="comments"><a href="#">View Comments</a></span>
+				<span class="tags"><a href="#">View Tags</a></span>
+			</div>
+		</div>
+	</div>
+	<div class="separator"></div>
+</div>
+
+<span class="skill-tag js_skill_tag prototype hidden"></span>
+
+<div class="datum js_prof prototype hidden">
+	<p class="data name js_prof_name">iimjobs.com</p>
+	<p class="detail designation js_prof_designation">Full Stack Engineer</p>
+	<p class="detail tenure js_prof_tenure">2008-2012</p>
+</div>
+
+<div class="datum js_edu prototype hidden">
+	<p class="data name js_edu_name">Indian Institute of Management, Indore (IIMI)</p>
+	<p class="detail tenure js_edu_tenure">2008-2012</p>
+	<p class="detail degree js_edu_degree">B Tech / BE (Full Time)</p>
+</div>
+
+<div class="comment-block js_comment prototype hidden">
+	<div class="content">
+		<p class="js_comment">Lorem Ipsum is simply dummy text for the 19th century.</p>
+	</div>
+	<div class="clearfix"></div>
+	<p class="comment-timestamp right js_time">3 minutes ago</p>
+	<div class="clearfix"></div>
+</div>
+
 {{>footer}}

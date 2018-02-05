@@ -54,16 +54,34 @@ function getUrlParameter(sParam) {
     }
 };
 
-function getParameterFromTimestamp(timestamp, param) {
-	var d = (timestamp) ? new Date(timestamp) : new Date();
-	switch(param) {
-		case "y":
-			return d.getFullYear()
-		case "m":
-			return (d.getMonth()+1)
-		case "d":
-			return d.getDate()
-		default:
-			return "wrong parameter passed"
-	}
+function fetchURL(){
+       var obj = {}
+       for(var key in window["location"]){
+               if(typeof(window["location"][key])=="string"){
+                       obj[key]= window["location"][key];
+               }
+       }
+       return obj;
+}
+
+function fetchQueryVariable(stringToFind) {
+       var obj = fetchURL();
+       if(obj["search"]){
+               var testString = obj["search"];
+               testString= testString.replace("?", "");
+               testString= testString.split("&");
+               for(var i=0; i < testString.length; i++){
+                       var temp=testString[i].split("=");
+                       if(temp[0]==stringToFind) {
+                               return temp[1];
+                       }
+               }
+       }
+}
+
+function getMonthName(month) {
+	var monthNames = ["Jan", "Feb", "March", "April", "May", "June",
+                        "July", "Aug", "Sep", "Oct", "Nov", "Dec"
+                    ];
+	return monthNames[month];
 }

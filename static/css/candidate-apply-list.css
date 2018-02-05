@@ -1680,7 +1680,8 @@ span.sticker {
       .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing {
         background: #FFF;
         border-radius: 6px;
-        min-height: 30px; }
+        min-height: 30px;
+        margin-top: 2px; }
         .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item {
           padding: 30px 20px 0px;
           font-size: 0;
@@ -1707,7 +1708,9 @@ span.sticker {
               width: 9%; }
               .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image {
                 display: inline-block;
-                position: relative; }
+                position: relative;
+                width: 75px;
+                height: 75px; }
                 .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select {
                   display: none;
                   position: absolute;
@@ -1730,6 +1733,8 @@ span.sticker {
                     min-height: 20px;
                     min-width: 16px; }
                 .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image img {
+                  width: 100%;
+                  height: 100%;
                   border-radius: 50%;
                   object-fit: cover;
                   border: 1px solid #e8e8e8; }
@@ -2204,6 +2209,8 @@ span.sticker {
               border-bottom: 3px solid transparent; }
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default a:focus {
                 outline: 0; }
+              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default a.ui-tabs-anchor:focus {
+                outline: 0; }
           .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-active {
             background: transparent url(img/uiTabsArrow.png) no-repeat bottom center;
             border: none; }
@@ -2516,3 +2523,18 @@ span.sticker {
 @media all and (max-width: 480px) {
   .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot .snap {
     width: 50%; } }
+
+#jobs-category-tabs {
+  border: 0; }
+  #jobs-category-tabs .tabs_scroll_container {
+    overflow-x: auto;
+    overflow-y: hidden; }
+  #jobs-category-tabs .ui-tabs-nav {
+    border: 0;
+    background: #fff;
+    width: 1200px; }
+  #jobs-category-tabs .ui-tabs-tab {
+    border: 0;
+    background: #fff; }
+    #jobs-category-tabs .ui-tabs-tab a.ui-tabs-anchor:focus {
+      outline: 0; }
