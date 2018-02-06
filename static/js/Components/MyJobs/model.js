@@ -153,7 +153,7 @@ function Jobs(){
 
 		if(aData['views']){
 			item.views.text(aData['views']+' Views');
-			item.applications.html('<a class="link-color" href="candidate-apply-list/'+aData["id"]+'?title='+aData["title"]+'">'+aData["totalApplications"]+' Applied</a>');
+			item.applications.html('<a class="link-color" href="candidate-apply-list/'+aData["publishedId"]+'?title='+aData["title"]+'">'+aData["totalApplications"]+' Applied</a>');
 			item.element.find(".js_engagement").removeClass("hidden");
 			item.element.find(".js_engagement_default").addClass("hidden");
 		}
