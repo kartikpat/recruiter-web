@@ -28,6 +28,7 @@ function Candidate() {
             contact: modal.find(".js_contact"),
             salary: modal.find(".js_sal"),
             skillsList: modal.find(".js_skills_list"),
+            jobTagList: modal.find('.js_job_tag_list'),
             lastActive: modal.find(".js_last_login"),
             eduList: modal.find(".js_edu_list"),
             profList: modal.find(".js_prof_list"),
@@ -117,6 +118,12 @@ function Candidate() {
 
             profStr+=item.element[0].outerHTML
         })
+        var tagStr = '';
+        $.each(aData["tags"],function(index, aTag) {
+            var tag =  $('.js_job_tag.prototype').clone().text(aTag["name"]).removeClass("prototype hidden");
+            tagStr+=tag[0].outerHTML
+        })
+        item.jobTagList.html(tagStr)
         item.profList.html(profStr)
         item.gender.text(gender[aData["sex"]])
         item.age.text(getAge(aData["dob"]) + " years")
@@ -131,18 +138,57 @@ function Candidate() {
         	item.resume.html('<iframe src="'+aData["resume"]+'" class="resume-embed" type="application/pdf"></iframe>')
         }
         item.coverLetter.text(aData["cover"]);
+
         openModal()
     }
 
+    function resetCandidateData() {
+        var item = getElement();
+        item.image.attr("src", "")
+        item.name.text("");
+        item.experience.text("");
+        item.location.text("");
+        item.contact.text("");
+        item.appliedOn.text("")
+        item.notice.text("");
+        item.salary.text("");
+        item.lastActive.text("");
+        item.gender.text("");
+        item.age.text("")
+        item.expectedSalary.text("")
+        item.maritalStatus.text("");
+        item.languages.text("");
+        item.workPermit.text("");
+        // if(isCanvasSupported()) {
+        // 	getBinaryData(aData["resume"],resumeCallback);
+        // }
+        // else {
+        // 	item.resume.html('<iframe src="'+aData["resume"]+'" class="resume-embed" type="application/pdf"></iframe>')
+        // }
+        item.coverLetter.text("");
+
+    }
+
     function openModal() {
+
     	$(".body-overlay").removeClass("hidden").addClass("veiled");
     	$("body").addClass("posf");
+        modal.removeClass("hidden");
     	jQuery("#tabbed-content").tabs({
     		create:function(){
-                modal.removeClass("hidden");
+
     		}
     	});
     }
+
+    jQuery(".body-overlay").on("click", function(e) {
+    	if(jQuery(e.target).parents(".view-resume-modal").length) {
+    		e.stopImmediatePropagation();
+    	}
+
+    	jQuery(".view-resume-modal").addClass("hidden");
+        resetCandidateData()
+    });
 
     return {
 		onClickShowDetails: showCandidateDetails,

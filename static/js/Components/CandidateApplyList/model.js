@@ -23,7 +23,7 @@ function Candidates() {
             location: card.find('.js_loc'),
 			appliedOn: card.find('.js_appliedOn'),
 			notice: card.find('.js_notice'),
-			skillTag: card.find('.js_skill_tag_list'),
+			jobTagList: card.find('.js_job_tag_list'),
 			eduList: card.find('.js_edu_list'),
 			profList: card.find('.js_prof_list')
 		}
@@ -59,10 +59,10 @@ function Candidates() {
         item.notice.text(aData["notice"] + " months");
         var tagStr = '';
         $.each(aData["tags"],function(index, aTag) {
-            var tag =  $('.js_skill_tag.prototype').clone().text(aTag["name"]).removeClass("prototype hidden");
+            var tag =  $('.js_job_tag.prototype').clone().text(aTag["name"]).removeClass("prototype hidden");
             tagStr+=tag[0].outerHTML
         })
-        item.skillTag.append(tagStr)
+        item.jobTagList.html(tagStr)
         var profStr = '';
         $.each(aData["jobs"],function(index, anObj) {
             var item = getProfessionalElement()

@@ -85,3 +85,8 @@ function getMonthName(month) {
                     ];
 	return monthNames[month];
 }
+
+function isCanvasSupported() {
+    var elem = document.createElement('canvas');
+    return !!(elem.getContext && elem.getContext('2d'));
+}
