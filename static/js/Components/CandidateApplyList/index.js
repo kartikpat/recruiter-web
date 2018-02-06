@@ -1,20 +1,35 @@
-
 var initialLoad = 1;
 jQuery(document).ready( function() {
+    var urlParams = fetchURL();
+    var queryParameters = getQueryParameter(urlParams.search); // fetching the entire query parameters object;
 
-    var urlObject = fetchURL();
+    var jobId = urlParams.pathname.split("/")[2];
+    var title = queryParameters.title;
 
-    var res = urlObject["pathname"].split("/");
+// Deprecated
+ //    var res = urlObject["pathname"].split("/");
 
-    if(!(isNaN(res[2]))){
-	    var jobId = res[2];
-	}
+ //    if(!(isNaN(res[2]))){
+	//     var jobId = res[2];
+	// }
 
-	var candidateList = Candidates();
-
+    // initializing the models
+	var candidateList = candidateList();
     var aCandidate = Candidate();
 
+    /**
+     * Making the initial page load call.
+     * check for status in the queryString
+     */
 	fetchJobApplications(jobId,"");
+
+    candidateList.onClickCandidate(openSingleCandidate);
+
+    function openSingleCandidate(candidateId){
+        // TODO:
+        var candidateDetails = store.getCandidate(candidateId);
+        aCandidate.showCandidateDetails(candidateDetails);
+    }
 
     aCandidate.onClickShowDetails();
 
@@ -44,3 +59,11 @@ jQuery(document).ready( function() {
     var fetchJobApplicationsFailSubscription = pubsub.subscribe("failedTofetchJobApplication:"+jobId, onJobsApplicationsFetchFail)
 
 });
+
+function getQueryParameter(){
+
+}
+
+function fetchURL(){
+
+}

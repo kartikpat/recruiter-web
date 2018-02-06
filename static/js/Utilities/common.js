@@ -39,13 +39,14 @@ function ifBothMatches(one, two){
 	return true;
 }
 
+// TODO:
+// Deperecated.
 function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
         sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
+        sParameterName;
 
-    for (i = 0; i < sURLVariables.length; i++) {
+    for (var i = 0; i < sURLVariables.length; i++) {
         sParameterName = sURLVariables[i].split('=');
 
         if (sParameterName[0] === sParam) {
@@ -64,7 +65,16 @@ function fetchURL(){
        return obj;
 }
 
-function fetchQueryVariable(stringToFind) {
+function fetchQueryVariable(queryString) {
+      if(!queryString){
+        // return entire queryString object.
+        // example: URL-> /test?q1=1&q2=2&q3=3
+        // output: {
+        //  q1: 1,
+        //  q2: 2,
+        //  q3
+        // }
+      }
        var obj = fetchURL();
        if(obj["search"]){
                var testString = obj["search"];

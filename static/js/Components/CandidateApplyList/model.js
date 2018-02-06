@@ -1,5 +1,3 @@
-
-
 function Candidates() {
 
     var list = {
@@ -134,6 +132,21 @@ function Candidates() {
             activate: fn
         })
     }
+    
+    function onClickCandidate(fn) {
+        list.rowContainer.on('click', "candidate-item", function(e){
+            var candidateId = $(this).attr('id');
+            candidateId = (candidateId) ? candidateId.replace('candidate-', "");
+            return fn(candidateId);
+        })
+        // settings.candidateList.on("click", ".candidate-item", function(e) {
+        //     if((!jQuery(e.target).parents(".candidate-item-section.profile-actions").length) && (!jQuery(e.target).parents(".candidate-item-section.image").length)) {
+        //         var str = $(this).attr("id");
+        //         var candidateId = str.substr(10, str.len);
+        //         populateCandidateData(store[candidateId]);
+        //     }
+        // });
+    }
 
     function activateStatsTab(event, ui) {
         $(ui.oldTab[0]).find(".bulk-selection-item").removeClass("active");
@@ -147,6 +160,7 @@ function Candidates() {
 		setConfig : setConfig,
         createJobStatsTabs: createJobStatsTabs,
         setJobStats: setJobStats,
-        activateStatsTab: activateStatsTab
+        activateStatsTab: activateStatsTab,
+        onClickCandidate: onClickCandidate
 	}
 }

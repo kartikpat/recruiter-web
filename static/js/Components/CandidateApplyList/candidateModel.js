@@ -6,6 +6,10 @@ function Candidate() {
 
     var store = {};
 
+    function showCandidateDetails(details){
+        // render logic
+    }
+
     function saveToStore(dataArray){
         $.each(dataArray, function(index, anObj) {
             store[anObj["userID"]] = anObj;
@@ -51,16 +55,6 @@ function Candidate() {
             resume: modal.find(".js_resume"),
             coverLetter: modal.find(".js_cover_letter")
         }
-    }
-
-    function showCandidateDetails() {
-        settings.candidateList.on("click", ".candidate-item", function(e) {
-        	if((!jQuery(e.target).parents(".candidate-item-section.profile-actions").length) && (!jQuery(e.target).parents(".candidate-item-section.image").length)) {
-                var str = $(this).attr("id");
-                var candidateId = str.substr(10, str.len);
-                populateCandidateData(store[candidateId]);
-        	}
-        });
     }
 
     function getEducationElement() {
@@ -191,10 +185,13 @@ function Candidate() {
     });
 
     return {
-		onClickShowDetails: showCandidateDetails,
+		onClickShowDetails: onClickShowDetails,
         saveToStore : saveToStore,
-        emptyStore: emptyStore
+        emptyStore: emptyStore,
+        showCandidateDetails: showCandidateDetails
 	}
+
+
 
     function getAge(dateString) {
     	var today = new Date();
