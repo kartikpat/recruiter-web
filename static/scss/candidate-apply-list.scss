@@ -2,6 +2,8 @@
 @import 'input-elements';
 @import 'chat-sidebar';
 
+@import 'components/modal';
+
 .page-content {
 	@include page-content;
 	background-color:$body-background-color;

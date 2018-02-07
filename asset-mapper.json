@@ -1005,7 +1005,8 @@
 				"static/js/vendor/pdf.worker.js",
 				"static/js/pdfJs.js",
 				"static/js/candidate-apply-list.js",
-				"static/js/vendor/jquery-ui.min.js"
+				"static/js/vendor/jquery-ui.min.js",
+				"static/js/modal.js"
 			],
 			"prod" : [
 				"static/build/js/candidate-apply-list.min.js"
