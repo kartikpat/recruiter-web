@@ -440,6 +440,7 @@ module.exports = function(settings){
 	});
 
 	app.get("/candidate-apply-list/:jobID",isAuthenticated, function(req,res){
+		var jobId = req.params.jobId;
 		res.render("candidate-apply-list", {
 			title:"Recruiter Web - Candidate Apply List | iimjobs.com",
 			styles:  assetsMapper["candidate-apply-list"]["styles"][mode],

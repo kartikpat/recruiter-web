@@ -915,8 +915,10 @@
 				"static/css/utilities.css",
 				"static/css/footer.css",
 				"static/css/header.css",
+				"static/css/modal.css",
 				"static/css/candidate-apply-list.css",
 				"static/css/jquery-ui.min.css"
+
 			],
 			"prod": [
 				"static/build/css/candidate-apply-list.min.css"
@@ -935,13 +937,16 @@
 				"static/js/pdfJs.js",
 				"static/js/candidate-apply-list.js",
 				"static/js/vendor/jquery-ui.min.js",
+				"static/js/modal.js",
 				"static/js/Components/Header/model.js",
-				"static/js/Components/header/index.js",
+				"static/js/Components/Header/index.js",
 				"static/js/Services/fetchJobApplications.js",
+				"static/js/Services/fetchJob.js",
 				"static/js/ui-components.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/common.js",
 				"static/js/Utilities/modal.js",
+				"static/js/Components/CandidateApplyList/store.js",
 				"static/js/Components/CandidateApplyList/mapping.js",
 				"static/js/Components/CandidateApplyList/candidateModel.js",
 				"static/js/Components/CandidateApplyList/model.js",

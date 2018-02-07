@@ -4,20 +4,9 @@ function Candidate() {
         candidateList: $('.js_candidate_listing')
     }
 
-    var store = {};
 
     function showCandidateDetails(details){
-        // render logic
-    }
-
-    function saveToStore(dataArray){
-        $.each(dataArray, function(index, anObj) {
-            store[anObj["userID"]] = anObj;
-        })
-    }
-
-    function emptyStore(){
-        store = {};
+        populateCandidateData(details)
     }
 
     function getElement() {
@@ -63,7 +52,8 @@ function Candidate() {
             element: card,
             name: card.find('.js_edu_name'),
             degree: card.find('.js_edu_degree'),
-            tenure: card.find('.js_edu_tenure')
+            tenure: card.find('.js_edu_tenure'),
+            seperator: card.find('.jsSeperator')
         }
     }
 
@@ -73,7 +63,8 @@ function Candidate() {
             element: card,
             name: card.find('.js_prof_name'),
 			tenure: card.find('.js_prof_tenure'),
-			designation: card.find('.js_prof_designation')
+			designation: card.find('.js_prof_designation'),
+            seperator: card.find('.jsSeperator')
         }
     }
 
@@ -87,18 +78,23 @@ function Candidate() {
         item.appliedOn.text(moment(aData["timestamp"]).format('DD-MM-YYYY'))
         item.notice.text(aData["notice"] + " months");
         item.salary.text(aData["ctc"]+ " LPA");
-        item.lastActive.text(aData["date"] + " days ago");
+        var lastActiveDays = getLastActiveDay(aData["lastActive"])
+
+        item.lastActive.text(lastActiveDays > 1 ? lastActiveDays + " days ago": lastActiveDays + " day ago");
         var eduStr = '';
         $.each(aData["education"],function(index, anObj) {
+
             var item = getEducationElement()
             item.name.text(anObj["institute"])
             item.tenure.text(anObj["batch"]["from"] + " - " + anObj["batch"]["to"] )
             item.degree.text(anObj["degree"] + "("+anObj["courseType"]+")")
+            item.seperator.removeClass("hidden")
             eduStr+=item.element[0].outerHTML
         })
         item.eduList.html(eduStr)
         var profStr = '';
         $.each(aData["jobs"],function(index, anObj) {
+
             var item = getProfessionalElement()
             item.name.text(anObj["organization"])
             item.designation.text(anObj["designation"]);
@@ -109,7 +105,7 @@ function Candidate() {
             var toYear = anObj["exp"]["from"]["year"];
             var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
             item.tenure.text(str);
-
+            item.seperator.removeClass("hidden")
             profStr+=item.element[0].outerHTML
         })
         var tagStr = '';
@@ -153,12 +149,6 @@ function Candidate() {
         item.maritalStatus.text("");
         item.languages.text("");
         item.workPermit.text("");
-        // if(isCanvasSupported()) {
-        // 	getBinaryData(aData["resume"],resumeCallback);
-        // }
-        // else {
-        // 	item.resume.html('<iframe src="'+aData["resume"]+'" class="resume-embed" type="application/pdf"></iframe>')
-        // }
         item.coverLetter.text("");
 
     }
@@ -167,12 +157,9 @@ function Candidate() {
 
     	$(".body-overlay").removeClass("hidden").addClass("veiled");
     	$("body").addClass("posf");
+        jQuery("#tabbed-content").tabs({});
         modal.removeClass("hidden");
-    	jQuery("#tabbed-content").tabs({
-    		create:function(){
 
-    		}
-    	});
     }
 
     jQuery(".body-overlay").on("click", function(e) {
@@ -185,13 +172,8 @@ function Candidate() {
     });
 
     return {
-		onClickShowDetails: onClickShowDetails,
-        saveToStore : saveToStore,
-        emptyStore: emptyStore,
         showCandidateDetails: showCandidateDetails
 	}
-
-
 
     function getAge(dateString) {
     	var today = new Date();
@@ -211,5 +193,11 @@ function Candidate() {
     		langArray.push(ob[key]["language_text"]);
     	}
     	return langArray.join(", ");
+    }
+
+    function getLastActiveDay(date) {
+        var todaysDate = moment(new Date());
+        date = moment(date);
+        return diffDays = todaysDate.diff(date, 'days');
     }
 }

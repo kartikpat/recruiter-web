@@ -57,6 +57,7 @@ function Jobs(){
 			}
 			modal.find(".js_modalText").text("Reach out to more candidates in less amount of time by making your job premium.")
 			modal.find(".section.modal_text").text("You don’t have any premium credits right now! We’ll reach out to you to help you with it!")
+			modal.removeClass('hidden');
 			//shootEmail()
 			return false;
 		})
@@ -125,9 +126,9 @@ function Jobs(){
 
 	function createElement(aData) {
 		var item = cloneElement(aData["id"]);
-
+		var title = getTitleFormat(aData["title"], (/\(\d+-\d+ \w+\)$/));
 		item.createdOn.text(getDateFormat(aData["created"]))
-		item.title.text(getTitleFormat(aData["title"], (/\(\d+-\d+ \w+\)$/)))
+		item.title.text(title)
 		item.element.find('.action-icon').attr('data-id',aData["id"]);
 		var loc = aData["loc"];
 		var locShow = loc.toString();
@@ -135,8 +136,8 @@ function Jobs(){
 			item.seperator.removeClass("hidden")
 			(loc.length <= 3) ? item.location.append("<span>"+locShow+"</span>") : item.multipleLocation.attr("title",locShow).removeClass("hidden");
 		}
-
-		item.experience.text(aData["exp"]['min']+'-'+aData['exp']['max']+' yrs')
+		var experience = aData["exp"]['min']+'-'+aData['exp']['max'] +' yrs'
+		item.experience.text(experience);
 
 		var obj = setJobStatus(aData)
 		item.status.append(obj["status"]);
@@ -153,7 +154,7 @@ function Jobs(){
 
 		if(aData['views']){
 			item.views.text(aData['views']+' Views');
-			item.applications.html('<a class="link-color" href="candidate-apply-list/'+aData["publishedId"]+'?title='+aData["title"]+'">'+aData["totalApplications"]+' Applied</a>');
+			item.applications.html('<a class="link-color" href="candidate-apply-list/'+aData["publishedId"]+'?title='+title+'&experience='+experience+'&location='+locShow+'">'+aData["totalApplications"]+' Applied</a>');
 			item.element.find(".js_engagement").removeClass("hidden");
 			item.element.find(".js_engagement_default").addClass("hidden");
 		}
