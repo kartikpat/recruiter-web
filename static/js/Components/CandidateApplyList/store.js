@@ -1,17 +1,23 @@
 function Store (){
+	var store = {}
 
-	// Replace $.each with forEach
 	function saveToStore(dataArray){
-        $.each(dataArray, function(index, anObj) {
+        dataArray.forEach(function(anObj) {
             store[anObj["userID"]] = anObj;
         })
     }
 
     function emptyStore(){
-
+		store = {};
     }
 
-    function getCandidate(candidateId){
-    	
+    function getCandidateFromStore(candidateId){
+		return store[candidateId]
     }
+
+	return {
+		saveToStore: saveToStore,
+		emptyStore: emptyStore,
+		getCandidateFromStore: getCandidateFromStore
+	}
 }

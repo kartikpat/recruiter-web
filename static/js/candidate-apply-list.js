@@ -7,15 +7,6 @@ jQuery(".button-action-list").on("click", function() {
 
 
 
-
-jQuery(".body-overlay").on("click", function(e) {
-	if(jQuery(e.target).parents(".view-resume-modal").length) {
-		e.stopImmediatePropagation();
-	}
-	jQuery(".view-resume-modal").addClass("hidden");
-});
-
-
 function resumeCallback(res){
     console.log(res)
     PDFJS.getDocument(res).then(function getPdfHelloWorld(_pdfDoc) {
