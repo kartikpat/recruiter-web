@@ -1,67 +1,5 @@
 {
-	"index": {
-		"styles": {
-			"debug" : [
-				"static/css/jquery-ui.min.css",
-        		"static/css/index.css",
-				"static/css/header.css",
-				"static/css/buttons.css",
-				"static/css/footer.css",
-				"static/css/common/spacings.css",
-				"static/css/animate.css"
 
-			],
-			"prod": [
-				"static/build/css/index.min.css"
-
-			]
-		},
-		"scripts": {
-			"debug": [
-				"static/js/vendor/jquery.min.js",
-				"static/js/vendor/jquery-ui.min.js",
-				"static/js/vendor/hello.min.js",
-				"static/js/request.js",
-				"static/js/header.js",
-				"static/js/index.js",
-				"static/js/utilities.js"
-			],
-			"prod" : [
-				"static/build/js/index.min.js"
-			]
-		}
-	},
-	"index-one": {
-		"styles": {
-			"debug" : [
-				"static/css/header.css",
-				"static/css/jquery-ui.min.css",
-        		"static/css/index-one.css",
-				"static/css/buttons.css",
-				"static/css/footer.css",
-				"static/css/animate.css",
-				"static/css/utilities.css"
-
-			],
-			"prod": [
-				"static/build/css/index-one.min.css"
-
-			]
-		},
-		"scripts": {
-			"debug": [
-				"static/js/vendor/jquery.min.js",
-				"static/js/vendor/jquery-ui.min.js",
-				"static/js/vendor/hello.min.js",
-				"static/js/request.js",
-				"static/js/header.js",
-				"static/js/index-one.js"
-			],
-			"prod" : [
-				"static/build/js/index-one.min.js"
-			]
-		}
-	},
 	"my-profile": {
 		"styles": {
 			"debug" : [
@@ -202,11 +140,17 @@
 				"static/js/header.js",
 				"static/js/postJob.js",
 				"static/js/modal.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js",
 				"static/js/ui-components.js",
 				"static/js/Utilities/pubsub.js",
+				"static/js/Utilities/common.js",
+				"static/js/Utilities/modal.js",
+				"static/js/Services/fetchJob.js",
 				"static/js/Services/submitNewJob.js",
 				"static/js/Components/PostJob/model.js",
 				"static/js/Components/PostJob/index.js"
+
 			],
 			"prod" : [
 				"static/build/js/post-job.min.js"
@@ -289,30 +233,6 @@
 			],
 			"prod" : [
 				"static/build/js/login.min.js"
-			]
-		}
-	},
-	"sign-in": {
-		"styles": {
-			"debug" : [
-            	"static/css/login.css",
-				"static/css/buttons.css",
-				"static/css/utilities.css",
-  			  	"static/css/colors.css"
-			],
-			"prod": [
-				"static/build/css/sign-in.min.css"
-
-			]
-		},
-		"scripts": {
-			"debug": [
-				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
-				"static/js/sign-in.js"
-			],
-			"prod" : [
-				"static/build/js/sign-in.min.js"
 			]
 		}
 	},
@@ -807,6 +727,8 @@
 				"static/css/my-jobs.css",
 				"static/css/utilities.css",
 				"static/css/footer.css",
+				"static/css/icons/icons.css",
+				"static/css/modal.css",
 				"static/css/vendor/tooltipster.css"
 			],
 			"prod": [
@@ -821,7 +743,11 @@
 				"static/js/header.js",
 				"static/js/utilities.js",
 				"static/js/Utilities/pubsub.js",
+				"static/js/Utilities/common.js",
+				"static/js/Utilities/modal.js",
 				"static/js/vendor/moment.min.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js",
 				"static/js/Services/fetchJobs.js",
 				"static/js/Components/MyJobs/model.js",
 				"static/js/Components/MyJobs/index.js"
@@ -909,6 +835,8 @@
 				"static/js/Services/fetchJobs.js",
 				"static/js/Services/fetchFollowUps.js",
 				"static/js/Services/fetchInterviews.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js",
 				"static/js/Components/Dashboard/index.js",
 				"static/js/header.js",
 				"static/js/vendor/slick.js",
@@ -1002,11 +930,25 @@
 				"static/js/change-password.js",
 				"static/js/utilities.js",
 				"static/js/vendor/pdf.js",
+				"static/js/vendor/moment.min.js",
 				"static/js/vendor/pdf.worker.js",
 				"static/js/pdfJs.js",
 				"static/js/candidate-apply-list.js",
 				"static/js/vendor/jquery-ui.min.js",
 				"static/js/modal.js"
+				"static/js/Components/Header/model.js",
+				"static/js/Components/header/index.js",
+				"static/js/Services/fetchJobApplications.js",
+				"static/js/Services/fetchJob.js",
+				"static/js/ui-components.js",
+				"static/js/Utilities/pubsub.js",
+				"static/js/Utilities/common.js",
+				"static/js/Utilities/modal.js",
+				"static/js/Components/CandidateApplyList/store.js",
+				"static/js/Components/CandidateApplyList/mapping.js",
+				"static/js/Components/CandidateApplyList/candidateModel.js",
+				"static/js/Components/CandidateApplyList/model.js",
+				"static/js/Components/CandidateApplyList/index.js"
 			],
 			"prod" : [
 				"static/build/js/candidate-apply-list.min.js"

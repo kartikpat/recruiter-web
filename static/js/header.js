@@ -18,7 +18,7 @@ $(document).ready(function(){
 		}
 	}
 
-	getRequest(baseUrl+"/recruiter/"+recruiterID, {}, populateHeader);
+	// getRequest(baseUrl+"/recruiter/"+recruiterID, {}, populateHeader);
 	userProfile.find(".dropdown").hover(showMenu);
 	navBar.find(".menu-calendar").hover(showMenuCalendar);
 	navBar.find(".menu-more").hover(showMenuMore);

@@ -33,7 +33,7 @@
 
 	.candidate-apply-listing {
 		width:80%;
-		
+
 		.candidates-area {
 			@include card-container;
 			margin:0 0 0 0;
@@ -107,7 +107,7 @@
 									display:inline-block;
 									padding-left:0;
 									margin-left:15px;
-								}	
+								}
 							}
 
 							&.sort-button {
@@ -205,6 +205,7 @@
 							background:$color-white;
 							border-radius:6px;
 							min-height:30px;
+							margin-top: 2px;
 							.candidate-item {
 								padding: 30px 20px 0px;
 							    font-size: 0;
@@ -245,7 +246,8 @@
 										.candidate-image {
 											display:inline-block;
 											position:relative;
-											
+											width: 75px;
+											height: 75px;
 											.candidate-select {
 												display:none;
 												position:absolute;
@@ -262,6 +264,8 @@
 												}
 											}
 											img {
+												width: 100%;
+												height: 100%;
 												border-radius:50%;
 												object-fit:cover;
 												border:1px solid $border-color-base;
@@ -283,11 +287,11 @@
 													background-color:$user-status-online;
 												}
 											}
-										}	
+										}
 									}
 
-									
-									&.personal-details {	
+
+									&.personal-details {
 										width:20%;
 										// max-width:200px;
 										p {
@@ -295,7 +299,7 @@
 												color:$inline-link-color;
 												font-weight:bold;
 												font-size:$page-subtitle-font-size;
-											}	
+											}
 
 											span {
 												&.bold {
@@ -329,7 +333,7 @@
 
 									&.professional-information {
 										width:18%;
-										
+
 										.datum {
 											&:last-child {
 												margin:0;
@@ -411,14 +415,14 @@
 									padding-top:20px;
 									font-size:$base-font-size;
 								}
-									
+
 								.separator {
 									display:block;
 									margin:20px 0 0 9%;
 									border-bottom:1px solid $border-color-base;
 									width:91%;
 								}
-								
+
 								&:last-child {
 									padding-bottom:1px;
 									.separator {
@@ -458,7 +462,7 @@
 					&.image {
 						padding-left:0;
 					}
-				}				
+				}
 			}
 		}
 	}
@@ -506,10 +510,10 @@
             		padding-right:20px;
             	}
             	select {
-            		@include select-dropdown;	
+            		@include select-dropdown;
             		margin-bottom:0 !important;
-            		padding-top:5px !important; 
-            		padding-bottom:5px !important; 
+            		padding-top:5px !important;
+            		padding-bottom:5px !important;
             		padding-left:0 !important;
             	}
             }
@@ -525,7 +529,7 @@
 				margin-bottom:15px;
 				border-radius:4px;
 				border:1px solid $border-color-base;
-				
+
 				.separator {
 					display:none;
 				}
@@ -540,7 +544,7 @@
 
 					border-bottom:1px solid $border-color-base;
 					padding:15px 0;
-					
+
 
 					&:first-child {
 						padding-top:0;
@@ -556,7 +560,7 @@
 						border-bottom:0;
 					}
 
-					&.personal-details {	
+					&.personal-details {
 						width:100%;
 						padding-top:10px;
 					}
@@ -585,7 +589,7 @@
 						width:100%;
 					}
 				}
-				
+
 				&:first-child {
 					border-top-right-radius:0;
 					border-top-left-radius:0;
@@ -640,14 +644,14 @@
 	.conversations {
 		display:none;
 	}
-	
+
 	.page-content {
 		.candidate-apply-listing {
 			width:100%;
 
 			.candidates-area {
 				.candidates-area-header {
-					
+
 				}
 
 				.candidates-area-body {
@@ -675,7 +679,7 @@
 					padding:20px 20px 0 20px;
 					border:1px solid $border-color-base;
 					border-bottom:0;
-					
+
 					.candidates-search {
 						margin-bottom:10px;
 						.keyword-search{
@@ -759,7 +763,7 @@
 							&:hover {
 								box-shadow:none;
 							}
-							
+
 							&:first-child {
 								margin-top:0;
 								border-top:0;
@@ -819,9 +823,12 @@
 						margin:auto;
 						left:0;
 						right:0;
-						width:110px;
+						width:125px;
+						height: 125px;
 
 						img {
+							width: 100%;
+							height: 100%;
 							border-radius:50%;
 							border:5px solid $color-white;
 							box-shadow:0 0 3px $shadow-color;
@@ -921,50 +928,57 @@
 				&.resume-body {
 					padding:20px;
 
-					#tabbed-content { 
-					    background: transparent; 
-					    border: none; 
+					#tabbed-content {
+					    background: transparent;
+					    border: none;
 					    padding:0;
 					    width:90%;
 					    margin:0 auto;
-					    
-					    .ui-widget-header { 
-						    background: transparent; 
-						    border: none; 
-						    border-bottom: 1px solid $border-color-base; 
-						    -moz-border-radius: 0px; 
-						    -webkit-border-radius: 0px; 
+
+					    .ui-widget-header {
+						    background: transparent;
+						    border: none;
+						    border-bottom: 1px solid $border-color-base;
+						    -moz-border-radius: 0px;
+						    -webkit-border-radius: 0px;
 						    border-radius: 0px;
-						    padding:0; 
-						} 
+						    padding:0;
+						}
 
 						.ui-tabs-nav {
-							.ui-state-default { 
-							    background: transparent; 
-							    border: none; 
+							.ui-state-default {
+							    background: transparent;
+							    border: none;
 							    margin:0 5px 0 0;
 							    position:relative;
 							    top:1px;
 
-							    a { 
+							    a {
 							    	padding:10px 5px;
 							    	text-transform:uppercase;
-								    color: $extra-info-color; 
+								    color: $extra-info-color;
 								    border-bottom:3px solid transparent;
-								    
+
 								    &:focus {
 								    	outline:0;
 								    }
-								} 
+
+									&.ui-tabs-anchor {
+										&:focus {
+											outline:0;
+										}
+									}
+								}
 							}
 
-							.ui-state-active { 
-							    background: transparent url(img/uiTabsArrow.png) no-repeat bottom center; 
-							    border: none; 
+
+							.ui-state-active {
+							    background: transparent url(img/uiTabsArrow.png) no-repeat bottom center;
+							    border: none;
 
 							    a {
 							    	text-transform:uppercase;
-							    	color:$inline-link-color;  
+							    	color:$inline-link-color;
 							    	border-color:$inline-link-color;
 
 							    	&:focus {
@@ -995,21 +1009,21 @@
 											line-height:1.5;
 											font-size:$resume-listing-font-size;
 
-											&.data-name {
+											&.name {
 												font-weight:bold;
 												color:$color-black;
 											}
 
-											&.data-detail {
+											&.detail {
 												color:$extra-info-color;
-											}	
+											}
 										}
 
 										.separator {
 											margin:20px 0;
 											border-bottom:1px solid $border-color-base;
 										}
-										
+
 									}
 
 									ul {
@@ -1085,7 +1099,7 @@
 						#view-resume {
 							margin:20px 0 0 0;
 							background-color:$resume-background-color;
-							
+
 							canvas {
 								width:100%;
 								border:1px solid $border-color-base;
@@ -1096,7 +1110,7 @@
 						#view-cover-letter {
 							padding:20px 0 0 0;
 						}
-					} 
+					}
 				}
 			}
 
@@ -1176,7 +1190,7 @@
 					color:$extra-info-color;
     			}
     		}
-    	
+
 			&.tags {
 
 				border-bottom:0;
@@ -1248,7 +1262,7 @@
 				&.second-fold {
 					bottom:60px;
 					background:$extra-info-color;
-					
+
 					&.hidden {
 
 					}
@@ -1268,12 +1282,12 @@
 				}
 		    }
 		}
-	}	
+	}
 }
 
 @media all and (max-width:768px) {
 
-		
+
 	.view-resume-modal {
 		width:100%;
 		padding:20px 10px;
@@ -1326,7 +1340,7 @@
 				&.second-fold {
 					bottom:60px;
 					background:$extra-info-color;
-					
+
 					&.hidden {
 
 					}
@@ -1346,7 +1360,7 @@
 				}
 		    }
 		}
-	}	
+	}
 }
 
 @media all and (max-width:480px) {
@@ -1362,6 +1376,29 @@
 						}
 					}
 				}
+			}
+		}
+	}
+}
+
+#jobs-category-tabs {
+	.tabs_scroll_container {
+		overflow-x: auto;
+		overflow-y: hidden;
+	}
+	border: 0;
+	.ui-tabs-nav {
+		border: 0;
+		background: #fff;
+		width: 1200px;
+	}
+	.ui-tabs-tab {
+		border: 0;
+		background: #fff;
+
+		a.ui-tabs-anchor {
+			&:focus {
+				outline:0;
 			}
 		}
 	}

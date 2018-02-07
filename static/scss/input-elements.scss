@@ -2,6 +2,23 @@
 @import 'components/_colors';
 @import 'components/_images';
 
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  line-height: 1.5;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  line-height: 1.5;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  line-height: 1.5;
+}
+:-moz-placeholder { /* Firefox 18- */
+  line-height: 1.5;
+}
+
+.error-border {
+    border-color:$border-color-error !important;
+}
+
 @mixin absolutely-centered {
 	position:absolute;
 	top:0;
@@ -26,11 +43,11 @@
 	background-position:right 18px center;
 	cursor:pointer;
 	border-color:$border-color-base;
-	
+
 	-webkit-appearance:none;
 	-moz-appearance:none;
 	-o-appearanance:none;
-
+    line-height: 1.5;
 
 	&[multiple] {
 		background-image:none;
@@ -69,7 +86,7 @@ select.select-dropdown {
 	background-position:right 18px center;
 	cursor:pointer;
 	border-color:$border-color-base;
-	
+
 	-webkit-appearance:none;
 	-moz-appearance:none;
 	-o-appearanance:none;
@@ -113,13 +130,13 @@ label {
 .course-option {
 	position:relative;
 	width:135px;
-	height:123px;	
+	height:123px;
 	background-position:center center;
 	background-repeat:no-repeat;
 	background-size:34px 37px;
 	display:inline-block;
 	vertical-align:top;
-	margin: 0px 20px 0 0;
+	margin: 0px 20px 20px 0;
 
 	input {
 		display:none;
@@ -206,11 +223,11 @@ label {
 	cursor:pointer;
 	padding:16px 22px;
 	font-size:$label-font-size;
-
+	line-height: 1.5;
 	&:focus {
 		border-color:$border-color-active;
 	}
-	
+
 	&.error-border {
 		border-color:$border-color-error;
 	}
@@ -226,11 +243,11 @@ label {
 	cursor:pointer;
 	padding:16px 22px;
 	font-size:$label-font-size;
-
+	line-height: 1.5;
 	&:focus {
 		border-color:$border-color-active;
 	}
-	
+
 	&.error-border {
 		border-color:$border-color-error;
 	}
@@ -349,7 +366,7 @@ span {
 		display:inline-block;
 		vertical-align:middle;
 		&.followed-up {
-			padding:6px 10px 6px 25px;	
+			padding:6px 10px 6px 25px;
 			background-image:url('/static/images/white-tick.svg');
 			background-repeat:no-repeat;
 			background-size:12px 9px;
@@ -419,7 +436,7 @@ span {
 	display:block;
 	padding:7px 20px;
 	position:relative;
-	
+
 	font-size:0;
 	.input-tag {
 		display:inline-block;
@@ -497,6 +514,11 @@ span {
 					border-bottom:1px solid $border-color-base;
 					cursor:pointer;
 
+                    &:first-child {
+                        border: 0;
+                        padding: 0;
+                    }
+
 					&.selected {
 						background-color:$active-hover-background;
 					}
@@ -517,7 +539,7 @@ span {
 			.pill-listing {
 				transform:translateY(25px);
 				opacity:1;
-				
+
 				ul {
 					height:0;
 					overflow:auto;
@@ -530,7 +552,7 @@ span {
 }
 
 @media all and (max-width:768px) {
-	
+
 	.tag-container {
 		.pill-button {
 			.pill-listing {

@@ -23,8 +23,7 @@
 	title.val('testing job data');
 
 	// setting location tags
-	$(location.find('.pill-listing ul li')[0]).mousedown()
-	$(location.find(".pill-listing ul li")[0]).mousedown()
+
 	$(location.find(".pill-listing ul li")[1]).mousedown()
 	$(location.find(".pill-listing ul li")[2]).mousedown()
 	$(location.find(".pill-listing ul li")[3]).mousedown()
@@ -33,12 +32,14 @@
 	$(minExp.find('option')[3]).attr('selected', true)
 	// setting maximum experience
 	$(maxExp.find('option')[5]).attr('selected', true);
-	
+
 	// Setting for job description
 	description.val('Hello, this is a dummy job description');
 
 	//Setting video url
 	videoUrl.val("https://www.youtube.com/watch?v=iHWIZsIBj3Q")
+
+	videoUrl.change()
 
 	// Setting industry
 	$(industry.find('.pill-listing ul li')[0]).mousedown()
@@ -63,15 +64,15 @@
 	showSal.click()
 
 	//Setting bacthed
-	$(batchTo.find('option')[3]).attr('selected', true)	
-	$(batchFrom.find('option')[5]).attr('selected', true)	
+	$(batchTo.find('option')[3]).attr('selected', true)
+	$(batchFrom.find('option')[5]).attr('selected', true)
 
 	// Setting tags
-	$(tags.find('.pill-listing ul li')[0]).mousedown()
-	$(tags.find(".pill-listing ul li")[0]).mousedown()
+	// $(tags.find('.pill-listing ul li')[0]).mousedown()
+	// $(tags.find(".pill-listing ul li")[0]).mousedown()
 	$(tags.find(".pill-listing ul li")[1]).mousedown()
 	$(tags.find(".pill-listing ul li")[2]).mousedown()
-	$(tags.find(".pill-listing ul li")[3]).mousedown()	
+	$(tags.find(".pill-listing ul li")[3]).mousedown()
 
 
 	// setting preferences

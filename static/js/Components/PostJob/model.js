@@ -1,16 +1,20 @@
+
+
 var errorResponses = {
 	missingTitle: 'title cannot be blank',
 	missingLocation: 'location cannot be blank',
 	missingMinExp: 'minimum experience cannot be blank',
 	missingMaxExp: 'maximum experience cannot be blank',
 	missingDescription: 'job description cannot be blank',
-	invalidVideoUrl: 'youtube url cannot be blank',
+	invalidVideoUrl: 'enter proper youtubeURL',
 	missingIndustry: 'please choose atleast one industry',
 	missingCategory: 'category cannot be blank',
 	missingFunctionalArea: 'functional area cannot be blank',
 	invalidSal: 'minimum salary cannot be greater than maximum salary',
-	invalidBatch: 'minimum batch cannot be greater than maximum batch'
+	invalidBatch: 'minimum batch cannot be greater than maximum batch',
+	invalidMinExp: 'minimum experience cannot be greater than maximum experience'
 }
+
 function Job(){
 	var settings ={};
 	function init(){
@@ -34,7 +38,12 @@ function Job(){
 			settings.preferences= $("#preferences"),
 			settings.isPremium= $("#isPremium")
 			settings.submitButton = $('.submit-form'),
-			settings.cancelButton = $('.cancel-button')
+			settings.cancelButton = $('.cancel-button'),
+			settings.error = $('.error'),
+			settings.credits = $('.js_availableCredits');
+	}
+	function setAvailableCredits(credits) {
+		settings.credits.text("You have "+credits+" credits left.")
 	}
 	function loginHandler(fn){
 		settings.login.click(fn);
@@ -46,6 +55,7 @@ function Job(){
 				&& checkPillValues(settings.location)
 				&& ifExists(settings.minExp)
 				&& ifExists(settings.maxExp)
+				&& ifGreater(settings.minExp, settings.maxExp)
 				&& ifExists(settings.description)
 				&& checkVideoLink(settings.videoUrl)
 				&& checkPillValues(settings.industry)
@@ -83,25 +93,30 @@ function Job(){
 		return true;
 	}
 	function getJobData(){
+		var locationObj = getPillValues(settings.location.attr('id'));
+		var industryObj = getPillValues(settings.industry.attr('id'));
+
 		var ob = {
 			title: settings.title.val(),
 			description: settings.description.val(),
 			isPremium: settings.isPremium.is("checked"),
 			category: settings.category.val(),
 			functionalArea: settings.functionalArea.val(),
-			location: getPillValues(settings.location.attr('id')),
-			industry: getPillValues(settings.industry.attr('id'))
+			location: locationObj["temp"],
+			otherLocation: locationObj["tempLabel"],
+			industry: industryObj["temp"]
 		}
-		if( getPillValues(settings.tags.attr('id')).length > 0)
-			ob.tags = getPillValues(settings.tags.attr('id'));
+
+		var tagsObj = getPillValues(settings.tags.attr('id'));
+		if( tagsObj["temp"].length > 0 || tagsObj["tempLabel"].length > 0)
+			ob.tags = tagsObj["temp"].concat(tagsObj["tempLabel"]);
 		if(settings.videoUrl.val() && settings.videoUrl.val() !='')
 			ob.videoUrl = settings.videoUrl.val()
 		if( getMultipleCheckboxes(settings.courseType.attr('id')).length >0)
 			ob.courseType = getMultipleCheckboxes(settings.courseType.attr('id'))
 		if( getMultipleCheckboxes(settings.preferences.attr('id')).length >0)
 			ob.preferences = getMultipleCheckboxes(settings.preferences.attr('id'))
-		if( getPillValues(settings.otherLocation && settings.otherLocation.attr('id')).length >0)
-			ob.otherLocation = getPillValues(settings.otherLocation.attr('id'))
+
 		if(settings.minSal.val() && settings.maxSal.val())
 			ob.sal = {
 				min: settings.minSal.val(),
@@ -122,6 +137,45 @@ function Job(){
 		return ob;
 	}
 
+	function setJobData(jobId, obj) {
+		settings.title.val(obj["title"]);
+		settings.description.val(obj["description"]);
+		settings.isPremium.prop("checked", obj["isPremium"]);
+		settings.category.val(obj["catid"]);
+		settings.functionalArea.val(obj["functionalArea"]);
+		var loca = [ {
+			"id": 1,
+			"label": "Delhi"
+		},
+		{
+			"label": "Karnal"
+		}]
+		console.log(settings.location.attr('id'))
+		// setPillValues(settings.location.attr('id'), loca);
+		setPillValues(settings.location.attr('id'), obj["location"]);
+
+		setPillValues(settings.industry.attr('id'), obj["industry"]);
+		if(obj["videoUrl"])
+			settings.videoUrl.val(obj["videoUrl"]);
+		if(obj["courseType"])
+			setMultipleCheckboxes(settings.courseType.attr('id'), obj["courseType"]);
+		if(obj["preferences"])
+			setMultipleCheckboxes(settings.preferences.attr('id'), obj["preferences"]);
+		setPillValues(settings.tags.attr('id'), obj["tags"]);
+		if(obj["sal"]) {
+			settings.minSal.val(obj["sal"]["min"]);
+			settings.maxSal.val(obj["sal"]["max"]);
+			settings.showSal.prop("checked", obj["sal"]["isShow"]);
+		}
+		settings.minExp.val(obj["exp"]["min"]);
+		settings.maxExp.val(obj["exp"]["max"]);
+		if(obj["batch"]) {
+			settings.batchFrom.val(obj["batch"]["min"]);
+			settings.batchTo.val(obj["batch"]["max"]);
+		}
+
+	}
+
 	function submitHandler(fn){
 		$(settings.submitButton).click(fn)
 	}
@@ -130,16 +184,26 @@ function Job(){
 		init: init,
 		validate: validate,
 		getData: getJobData,
-		submitHandler: submitHandler
+		submitHandler: submitHandler,
+		setData: setJobData,
+		setAvailableCredits: setAvailableCredits
 	}
 }
 
 function ifExists(element){
 	console.log(element)
+	var errorElement = element.next('.error').length ? element.next('.error') : element.siblings('.error');
+	console.log(errorElement)
 	if(!( element && element.val() )){
-		element.next('.error').text(errorResponses['missing'+element.attr('name')]);
+		errorElement.text(errorResponses['missing'+element.attr('name')]).removeClass("hidden");
+		element.addClass("error-border");
 		return false;
 	}
+	else if (!errorElement.hasClass("hidden")) {
+		eraseError(element)
+		console.log("entering in else if")
+	}
+	console.log("returning true")
 	return true;
 }
 
@@ -147,16 +211,24 @@ function checkPillValues(element){
 	console.log(element.attr('id'))
 	console.log(getPillValues(element.attr('id')).length)
 	if( getPillValues(element.attr('id')).length <1 ){
-		element.next('.error').text(errorResponses['missing'+element.attr('name')]);
+		element.next('.error').text(errorResponses['missing'+element.attr('name')]).removeClass("hidden");
+		element.addClass("error-border");
 		return false;
+	}
+	else if (!element.next('.error').hasClass("hidden")) {
+		eraseError(element)
 	}
 	return true;
 }
 
 function checkVideoLink(element){
-	if(!( element && element.val() && isYouTubeLink(element.val()))){
-		element.next('.error').text(errorResponses['invalid'+element.attr('name')]);
+	if(element && element.val() && !( isYouTubeLink(element.val()))){
+		element.next('.error').text(errorResponses['invalid'+element.attr('name')]).removeClass("hidden");
+		element.addClass("error-border");
 		return false;
+	}
+	else if (!element.next('.error').hasClass("hidden")) {
+		eraseError(element)
 	}
 	return true;
 }
@@ -174,22 +246,52 @@ function isYouTubeLink(link){
  */
 function getPillValues(elementId){
 	var el = $('#'+elementId + ' .input-tag');
-	var temp = [];
+	var obj = {
+		temp: [],
+		tempLabel: []
+	}
 	el.each(function(index, value){
-		temp.push($(value).attr('data-id'))
+		console.log()
+		$(value).attr('data-id') ? obj["temp"].push($(value).attr('data-id')) : obj["tempLabel"].push($(value).find(".tag-name span").text());
 	})
-	return temp;
+
+	return obj;
 }
 
-function eraseErrors(){
-	settings.errors.text('');
+/**
+ * set multiple values on the pill widget
+ * @return {[type]} [description]
+ */
+function setPillValues(elementId, arr){
+	$.each(arr, function( index, value ) {
+		addNewTag(value["label"], value["id"], '#'+elementId+'')
+	})
+}
+
+function eraseError(element){
+	element.removeClass("error-border");
+	element.next('.error').text('').addClass("hidden");
 }
 
 function ifGreater(elementA, elementB){
-	if(!(elementB.val()>=  elementA.val() )){
+	console.log(elementB.val())
+	console.log(elementA.val())
+	console.log(typeof(elementA.val()), typeof(elementB.val()))
+	var val1 = parseInt(elementB.val());
+	var val2 = parseInt(elementA.val());
+	if(val1 && val2 && !( val1 >= val2)){
+		elementA.siblings('.error').text(errorResponses['invalid'+elementA.attr('name')]).removeClass("hidden");
+		elementA.addClass("error-border");
+		elementB.addClass("error-border");
 		console.log('returning false')
 		return false;
 	}
+	else if (!elementA.siblings('.error').hasClass("hidden")) {
+		elementA.siblings('.error').text('').addClass("hidden");
+		elementA.removeClass("error-border");
+		elementB.removeClass("error-border");
+	}
+
 	return true;
 }
 
@@ -205,4 +307,16 @@ function getMultipleCheckboxes(elementId){
 		temp.push($(el).attr('data-id'))
 	});
 	return temp;
+}
+
+/**
+ * set multiple checboxes
+ * @param  {[type]} element [description]
+ * @return {[type]}         [description]
+ */
+function setMultipleCheckboxes(elementId, arr){
+	$.each(arr, function( index, value ) {
+		var el = $('#'+elementId+ ' .field .course-option input[data-id='+value+']');
+		el.prop("checked","true");
+	})
 }
