@@ -2639,3 +2639,8 @@ span.sticker {
     background: #fff; }
     #jobs-category-tabs .ui-tabs-tab a.ui-tabs-anchor:focus {
       outline: 0; }
+
+.button-action-list {
+  background: #fff;
+  padding: 0;
+  border: 0; }

@@ -57,6 +57,7 @@ function Jobs(){
 			}
 			modal.find(".js_modalText").text("Reach out to more candidates in less amount of time by making your job premium.")
 			modal.find(".section.modal_text").text("You don’t have any premium credits right now! We’ll reach out to you to help you with it!")
+			modal.removeClass('hidden');
 			//shootEmail()
 			return false;
 		})

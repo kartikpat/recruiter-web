@@ -5,9 +5,9 @@
 			<div class="page-header jsHeader">
 				<h1 class="job-title left jsTitle hidden">iimjobs.com - Product Manager</h1>
 				<div class="action-buttons right jsActionButtons">
-					<div class="section">
-						<div class="button-action-list inactive">
-							<label class="action-list-label">Link </label>
+					<span class="section white jsCalendar hidden">
+						<div class="button-action-list jsCalendarList inactive">
+							<label class="action-list-label">Calendar Link: Select </label>
 							<ul class="action-list-items">
 								<li><a href="#">Send Message</a></li>
 								<li><a href="#">Send Interview Invite</a></li>
@@ -17,10 +17,10 @@
 								<li><a href="#">Add Tag</a></li>
 							</ul>
 						</div>
-					</div>
-					<span class="edit button white jsEdit"><img src="/static/images/edit-icon.svg"></span>
-					<span class="button white jsMakePremium">Make Premium</span>
-					<span class="button white unpublish-job jsUnpublish">Unpublish</span>
+					</span>
+					<span class="edit button white jsEdit hidden"><img src="/static/images/edit-icon.svg"></span>
+					<span class="button white jsMakePremium hidden">Make Premium</span>
+					<span class="button white unpublish-job jsUnpublish hidden">Unpublish</span>
 
 					<span class="multi-options"><img src="/static/images/multi-options.svg"></span>
 				</div>
@@ -585,6 +585,81 @@
 	<p class="comment-timestamp right js_time">3 minutes ago</p>
 	<div class="clearfix"></div>
 </div>
+
+
+
+
+<div id="" class="modal unpublishModal hidden">
+
+	<!-- Modal content -->
+	<div class="modal_wrapper" >
+		<span class="modal_close">&times;</span>
+		<div class="modal_header">
+			<div class="modal_heading">Unpublish Job</div>
+		</div>
+		<div class="modal_content">
+			<div class="modal_text">Please choose a reason for unpublishing this job</div>
+			<div class="section">
+				<div class="radio-input">
+					<input type="radio" id="1" name="gender">
+					<label for="1">This position has been closed via iimjobs.</label>
+				</div>
+				<div class="radio-input">
+					<input type="radio" id="2" name="gender">
+					<label for="2">This position has been closed via other channel.</label>
+				</div>
+				<div class="radio-input">
+					<input type="radio" id="3" name="gender">
+					<label for="3">This position has gone on hold.</label>
+				</div>
+				<div class="radio-input">
+					<input type="radio" id="4" name="gender">
+					<label for="4">I have received enough responses for this position.</label>
+				</div>
+			</div>
+
+			<div class="action-buttons"><button class="unpublishButton">Unpublish</button></div>
+		</div>
+
+	</div>
+</div>
+
+<div id="" class="modal refreshModal hidden">
+
+	<!-- Modal content -->
+	<div class="modal_wrapper" >
+		<span class="modal_close">&times;</span>
+		<div class="modal_header">
+			<div class="modal_heading">Refresh Job</div>
+		</div>
+		<div class="modal_content">
+			<div class="modal_text">Are you sure you want to refresh this job?</div>
+			<div class="section modal_text">
+				When you refresh a job, it is moved to the top.
+			</div>
+			<div class="action-buttons"><button class="refreshButton">Refresh</button></div>
+		</div>
+	</div>
+</div>
+
+<div id="" class="modal premiumModal hidden">
+
+	<!-- Modal content -->
+	<div class="modal_wrapper" >
+		<span class="modal_close">&times;</span>
+		<div class="modal_header">
+			<div class="modal_heading">Make Premium.</div>
+		</div>
+		<div class="modal_content">
+			<div class="modal_text js_modalText">You are about to make this job premium.</div>
+			<div class="section modal_text">
+				This job will be highlighted and moved to top of the list for 15 days starting today. You will have credits left.
+			</div>
+			<div class="action-buttons"><button class="premiumButton hidden">Make Premium</button></div>
+		</div>
+	</div>
+</div>
+
 
 {{>modalContent}}
 {{>footer}}

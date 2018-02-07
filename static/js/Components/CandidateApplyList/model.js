@@ -1,7 +1,8 @@
 function candidateList() {
 
     var list = {
-		rowContainer: $('.js_candidate_listing')
+		rowContainer: $('.js_candidate_listing'),
+        header: $('.jsHeader')
 	};
 
     var config = {};
@@ -115,7 +116,7 @@ function candidateList() {
     }
 
     function getHeaderElement() {
-        var card = $(".jsHeader");
+        var card = list.header;
         return {
             element : card,
             title : card.find(".jsTitle"),
@@ -190,8 +191,54 @@ function candidateList() {
 
     //Actions Component
     function onClickJobEdit() {
-		list.rowContainer.find('.js_edit').click(function(event) {
+		list.header.find('.js_edit').click(function(event) {
 			return parseInt($(this).attr('data-editable')) ? true : false;
+		})
+	}
+
+    function onClickJobCancel(fn){
+		list.header.on('click','.jsUnpublish',function(){
+			var modal = $(".unpublishModal")
+			var jobId = $(this).attr("data-id");
+			modal.removeClass('hidden');
+			modal.find(".unpublishButton").click(function(){
+				fn(jobId)
+			});
+			return false;
+		});
+	}
+
+	function onClickJobRefresh(fn) {
+		list.header.on('click','.jsRefresh',function(event) {
+			var modal = $(".refreshModal")
+			if(parseInt($(this).attr("data-refresh"))) {
+				var jobId = $(this).attr("data-id");
+				modal.removeClass('hidden');
+				modal.find(".refreshButton").click(function(){
+					fn(jobId)
+				});
+			}
+			return false;
+		})
+	}
+
+	function onClickJobMakePremium(fn) {
+		list.header.on('click','.jsMakePremium',function(event) {
+			var jobId = $(this).attr("data-id");
+			var modal = $(".premiumModal");
+			if(config["availableCredits"] > 10) {
+				modal.find('.premiumButton').click(function(){
+					fn(jobId)
+				}).removeClass("hidden");
+				modal.find(".section.modal_text").text("This job will be highlighted and moved to top of the list for 15 days starting today. You will have "+(parseInt(config["availableCredits"]) - 1)+" credits left.")
+				modal.removeClass('hidden');
+				return false
+			}
+			modal.find(".js_modalText").text("Reach out to more candidates in less amount of time by making your job premium.")
+			modal.find(".section.modal_text").text("You don’t have any premium credits right now! We’ll reach out to you to help you with it!")
+            modal.removeClass('hidden');
+			//shootEmail()
+			return false;
 		})
 	}
 
@@ -202,24 +249,42 @@ function candidateList() {
 			edit: card.find('.jsEdit'),
 			premium: card.find('.jsMakePremium'),
 			unpublish: card.find('.jsUnpublish'),
-			multipleLocation: card.find('.js_multipleLocation'),
-			seperator: card.find('.js_seperator'),
-			experience: card.find('.js_experience'),
-			status: card.find('.js_status'),
-			statusMsg: card.find('.js_status_msg'),
-			views: card.find('.js_views'),
-			applications: card.find('.js_applications'),
-			edit: card.find('.js_edit'),
-			cancel: card.find('.js_cancel'),
-			refresh: card.find('.js_refresh'),
-			premium: card.find('.js_premium'),
-			facebook: card.find('.js_facebook'),
-			twitter: card.find('.js_twiiter'),
-			linkedIn: card.find('.js_linkedIn')
+			calendar: card.find('.jsCalendar'),
+            calendarList: card.find('.jsCalendarList'),
+            refresh: card.find('jsRefresh')
+			// seperator: card.find('.js_seperator'),
+			// experience: card.find('.js_experience'),
+			// status: card.find('.js_status'),
+			// statusMsg: card.find('.js_status_msg'),
+			// views: card.find('.js_views'),
+			// applications: card.find('.js_applications'),
+			// edit: card.find('.js_edit'),
+			// cancel: card.find('.js_cancel'),
+			// refresh: card.find('.js_refresh'),
+			// premium: card.find('.js_premium'),
+			// facebook: card.find('.js_facebook'),
+			// twitter: card.find('.js_twiiter'),
+			// linkedIn: card.find('.js_linkedIn')
 		}
 	}
 
     function showActions(data) {
+        var item = getActionElement();
+        console.log(data)
+        if(data["status"] == "published" && !data["premium"]) {
+            item.calendar.removeClass("hidden")
+            item.edit.removeClass("hidden")
+
+            item.unpublish.removeClass("hidden")
+            if(data["refresh"])
+    		    item.refresh.removeClass("hidden")
+            if(!data["premium"] )
+                item.premium.removeClass("hidden")
+        }
+        else if(data["status"] == "unpublished") {
+            item.calendar.removeClass("hidden")
+            item.edit.removeClass("hidden")
+        }
 
     }
 
@@ -231,6 +296,10 @@ function candidateList() {
         setJobStats: setJobStats,
         activateStatsTab: activateStatsTab,
         onClickCandidate: onClickCandidate,
-        showActions : showActions
+        showActions : showActions,
+        onClickJobEdit: onClickJobEdit,
+		onClickJobCancel: onClickJobCancel,
+		onClickJobRefresh: onClickJobRefresh,
+		onClickJobMakePremium: onClickJobMakePremium
 	}
 }

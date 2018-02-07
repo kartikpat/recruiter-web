@@ -11,7 +11,7 @@ jQuery(document).ready( function() {
 	var candidates = candidateList();
     var aCandidate = Candidate();
     var store = Store();
-
+    candidates.setConfig("availableCredits", profile["availableCredits"]);
     candidates.init(queryParameters)
     /**
      * Making the initial page load call.
@@ -26,6 +26,19 @@ jQuery(document).ready( function() {
         var candidateDetails = store.getCandidateFromStore(candidateId);
         aCandidate.showCandidateDetails(candidateDetails);
     }
+
+    candidates.onClickJobEdit()
+    candidates.onClickJobCancel(function(jobId){
+        alert(jobId)
+        // unPublishJob(jobId)
+        trackEventCancelButtonClick();
+    })
+    candidates.onClickJobRefresh(function(jobId) {
+        alert(jobId)
+    })
+    candidates.onClickJobMakePremium(function(jobId){
+        alert(jobId)
+    })
 
 
     candidates.createJobStatsTabs(onClickTab)
