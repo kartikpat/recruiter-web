@@ -1,4 +1,4 @@
-function fetchJobs(type){
+function fetchJobs(type, recruiterId){
 // 	var sampleData = {
 //     "data": [
 //         {
@@ -28,7 +28,7 @@ function fetchJobs(type){
 // 	return pubsub.publish("fetchedJobs:"+type, sampleData.data);
 	if(!type)
 		type='all';
-	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs", {type: type}, function(res){
+	getRequest(baseUrl+"/recruiter/"+recruiterId+"/jobs", {type: type}, function(res){
 		if(res.status && res.status =='success'){
 			pubsub.publish("fetchedJobs:"+type, res.data);
 		}

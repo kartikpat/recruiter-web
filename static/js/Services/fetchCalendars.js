@@ -1,5 +1,5 @@
-function fetchCalendars(jobId){
-	return getRequest(baseUrl+"/recruiter/"+recruiterID+"/job/"+jobId+"", {}, function(res){
+function fetchCalendars(jobId, recruiterId){
+	return getRequest(baseUrl+"/recruiter/"+recruiterId+"/job/"+jobId+"", {}, function(res){
 		if(res.status && res.status =='success'){
 			return pubsub.publish("fetchedCalendars:"+jobId, res.data);
 		}

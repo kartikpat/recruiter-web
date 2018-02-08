@@ -5,6 +5,27 @@ jQuery(document).ready( function() {
     var queryParameters = getQueryParameter();
     var jobId = urlParams.pathname.split("/")[2];
 
+    $.when(fetchJob(jobId, ), fetchCalendars(jobId, recruiterId)).then(function(a, b){
+        console.log(a);
+        console.log(b);
+        if(a[0] && b[0] && a[0]["status"] == "success" && b[0]["status"] =="success" && a[0]['data'].length >0 ) {
+            var jobRows = a[0]['data'][0];
+            var calendarRows = b[0]['data'];
+            var data = {
+               jobTitle: jobRows["title"],
+               jobLocation: jobRows["loc"],
+               jobExperience: jobRows["exp"],
+               jobId: jobRows['id'],
+               jobStatus: jobRows['status'],
+               isPremium: jobRows['premium'],
+               isEditable: jobRows['editable'],
+               calendars: calendarRows
+            }
+            return pubsub.publish("fetchedParallelJobStatusAndCalendars:"+jobId, data);
+        }
+        return pubsub.publish("failedToFetchParallelJobStatusAndCalendars:"+jobId, data);
+    });
+
     // initializing the models
 	var candidates = candidateList();
     var aCandidate = Candidate();
@@ -18,17 +39,7 @@ jQuery(document).ready( function() {
      * check for status in the queryString
      */
     //fetchCalendars(jobId)
-    // $.when(fetchJob(jobId), fetchCalendars(jobId)).then(function(a, b){
-    //     if(a[1] && b[1]) {
-    //         var data = {
-    //             "JobStats": a[0],
-    //             "calendars" b[0]
-    //         }
-    //         pubsub.publish("fetchedParallelJobStatusAndCalendars:"+jobId, data);
-    //         return
-    //     }
-    //     pubsub.publish("failedToFetchParallelJobStatusAndCalendars:"+jobId, data);
-    // });
+  
 
     fetchJob(jobId);
 	fetchJobApplications(jobId,"");

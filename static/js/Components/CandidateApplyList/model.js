@@ -2,7 +2,7 @@ function candidateList() {
 
     var list = {
 		rowContainer: $('.js_candidate_listing'),
-        header: $('.jsHeader'),
+        header: $('#jobDetails'),
         candidatesContainer: $('.jsCandidatesArea')
 	};
 
@@ -100,11 +100,11 @@ function candidateList() {
     }
 
     function init(data){
-        setPageHeader(data)
+        setJobDetails(data)
 	}
 
-    function setPageHeader(data) {
-        var item = getHeaderElement();
+    function setJobDetails(data) {
+        var item = getJobElements();
         item.title.text(unescape(data["title"])).removeClass("hidden");
         if(data["location"]) {
             item.location.text(data["location"]).removeClass("hidden")
@@ -116,7 +116,7 @@ function candidateList() {
         }
     }
 
-    function getHeaderElement() {
+    function getJobElements() {
         var card = list.header;
         return {
             element : card,
