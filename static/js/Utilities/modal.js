@@ -1,8 +1,9 @@
 var closeModal = function() {
-	jQuery("html").removeClass("overflow_hidden");
+	jQuery("body").removeClass("posf");
 	jQuery(".modal").addClass("hidden");
 };
 
 jQuery(".modal_close").on("click", function() {
 	closeModal();
+
 });

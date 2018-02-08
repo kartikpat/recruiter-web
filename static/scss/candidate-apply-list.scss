@@ -1414,3 +1414,21 @@
 		color: #000;
 	}
 }
+
+.multi-options.button-action-list {
+	width: auto;
+	.action-list-items {
+		left: -160px;
+	}
+}
+
+.comment-modal {
+	textarea {
+		width: 100%;
+		min-height: 50px;
+		&:focus {
+			outline: none;
+			border: 1px solid $border-color-active
+		}
+	}
+}

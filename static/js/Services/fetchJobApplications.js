@@ -1,5 +1,5 @@
 function fetchJobApplications(jobId,status){
-	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId+"/applications", {
+	return getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId+"/applications", {
         status: status
     }, function(res){
 		if(res.status && res.status =='success'){

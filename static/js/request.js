@@ -11,7 +11,7 @@
  * @param  {object} scopeTest       reference object if any to be accessed in the callback
  */
 var postRequest = function(url,headers,data,successCallback,completeCallback,beforeSendCallback,failCallback,processData,async,scopeTest,contentType){
-    $.ajax({
+    return $.ajax({
         method: "POST",
         url: url,
         headers: headers,
@@ -59,7 +59,7 @@ var getRequest = function(url,parameters,callback1,callback2,callback3, addition
     var fun = arguments.callee;
     var insert = true;
 
-      $.ajax({
+      return $.ajax({
         method: "GET",
         url: url,
         data: parameters,

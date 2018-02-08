@@ -18,6 +18,18 @@ jQuery(document).ready( function() {
      * check for status in the queryString
      */
     //fetchCalendars(jobId)
+    // $.when(fetchJob(jobId), fetchCalendars(jobId)).then(function(a, b){
+    //     if(a[1] && b[1]) {
+    //         var data = {
+    //             "JobStats": a[0],
+    //             "calendars" b[0]
+    //         }
+    //         pubsub.publish("fetchedParallelJobStatusAndCalendars:"+jobId, data);
+    //         return
+    //     }
+    //     pubsub.publish("failedToFetchParallelJobStatusAndCalendars:"+jobId, data);
+    // });
+
     fetchJob(jobId);
 	fetchJobApplications(jobId,"");
 
@@ -27,8 +39,9 @@ jQuery(document).ready( function() {
         aCandidate.showCandidateDetails(candidateDetails);
     }
 
-    candidates.onClickOtherActions();
+    candidates.onClickCandidateOtherActions();
     candidates.onClickFilters();
+    candidates.onClickJobOtherActions();
 
     candidates.onClickAddTag(openAddTagModal);
     function openAddTagModal() {
@@ -95,5 +108,6 @@ jQuery(document).ready( function() {
 	var fetchJobFailSubscription = pubsub.subscribe("failedToFetchJob:"+jobId, onFailedFetchJob);
     var fetchJobApplicationsSuccessSubscription = pubsub.subscribe("fetchedJobApplication:"+jobId, onJobsApplicationsFetchSuccess)
     var fetchJobApplicationsFailSubscription = pubsub.subscribe("failedTofetchJobApplication:"+jobId, onJobsApplicationsFetchFail)
-
+    // var fetchParallelJobStatusAndCalendarsSubscription = pubsub.subscribe("fetchedParallelJobStatusAndCalendars:"+jobId, onJobStatusAndCalendarsFetchSuccess)
+    // var fetchParallelJobStatusAndCalendarsFailSubscription = pubsub.subscribe("failedToFetchParallelJobStatusAndCalendars:"+jobId, onJobStatusAndCalendarsFetchFail)
 });

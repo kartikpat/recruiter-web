@@ -135,18 +135,20 @@ function candidateList() {
             unread: card.find(".js_unread"),
             shortlisted: card.find(".js_shortlisted"),
             rejected: card.find(".js_rejected"),
-            saved: card.find(".js_saved")
+            saved: card.find(".js_saved"),
+            reviewed: card.find(".jsReviewed")
         }
     }
 
     function setJobStats(data) {
         var item = getJobsCategoryTabsElement()
-        var unread = data["total"] - (data["shortlisted"] + data["rejected"] + data["save"])
+        var unread = data["total"] - (data["shortlisted"] + data["rejected"] + data["save"] + data["reviewed"]);
         item.all.text("All"+"("+data["total"]+")");
         item.unread.text("Unread"+"("+unread+")")
         item.shortlisted.text("Shortlisted"+"("+data["shortlisted"]+")")
         item.rejected.text("Rejected"+"("+data["rejected"]+")")
         item.saved.text("Saved"+"("+data["save"]+")")
+        item.reviewed.text("Reviewed"+"("+data["reviewed"]+")")
     }
 
     function addToList(dataArray){
@@ -200,13 +202,12 @@ function candidateList() {
 	function onClickJobRefresh(fn) {
 		list.header.on('click','.jsRefresh',function(event) {
 			var modal = $(".refreshModal")
-			if(parseInt($(this).attr("data-refresh"))) {
-				var jobId = $(this).attr("data-id");
-				modal.removeClass('hidden');
-				modal.find(".refreshButton").click(function(){
-					fn(jobId)
-				});
-			}
+			var jobId = $(this).attr("data-id");
+			modal.removeClass('hidden');
+			modal.find(".refreshButton").click(function(){
+				fn(jobId)
+			});
+            return false;
 		})
 	}
 
@@ -230,7 +231,7 @@ function candidateList() {
 	}
 
     function getActionElement() {
-		var card = $('.jsActionButtons');
+		var card = $('.jsJobActions');
 		return {
 			element: card,
 			edit: card.find('.jsEdit'),
@@ -238,7 +239,10 @@ function candidateList() {
 			unpublish: card.find('.jsUnpublish'),
 			calendar: card.find('.jsCalendar'),
             calendarList: card.find('.jsCalendarList'),
-            refresh: card.find('jsRefresh')
+            refresh: card.find('.jsRefresh'),
+            facebook: card.find('.jsPostFacebook'),
+            twitter: card.find('.jsTwitter'),
+			linkedIn: card.find('.jsLinkedIn')
 			// seperator: card.find('.js_seperator'),
 			// experience: card.find('.js_experience'),
 			// status: card.find('.js_status'),
@@ -250,8 +254,7 @@ function candidateList() {
 			// refresh: card.find('.js_refresh'),
 			// premium: card.find('.js_premium'),
 			// facebook: card.find('.js_facebook'),
-			// twitter: card.find('.js_twiiter'),
-			// linkedIn: card.find('.js_linkedIn')
+
 		}
 	}
 
@@ -293,8 +296,14 @@ function candidateList() {
         })
     }
 
-    function onClickOtherActions() {
-        list.rowContainer.on('click','.jsOtherActions',function(event) {
+    function onClickCandidateOtherActions() {
+        list.rowContainer.on('click','.jsCandidateOtherActions',function(event) {
+            $(this).toggleClass("inactive");
+        })
+    }
+
+    function onClickJobOtherActions() {
+        list.header.on('click','.jsJobOtherActions',function(event) {
             $(this).toggleClass("inactive");
         })
     }
@@ -322,6 +331,7 @@ function candidateList() {
             modal.find(".jsAddComment").click(function(){
                 fn(jobId)
             });
+            addBodyFixed()
             modal.removeClass("hidden")
             return false;
         })
@@ -334,6 +344,7 @@ function candidateList() {
             modal.find(".jsAddTag").click(function(){
                 fn(jobId)
             });
+            addBodyFixed()
             modal.removeClass("hidden")
             return false;
         })
@@ -342,6 +353,7 @@ function candidateList() {
     function onClickFilters() {
         list.candidatesContainer.on('click','.jsFilter',function(event){
             var modal = $(".jsFiltersModal");
+            addBodyFixed()
             modal.removeClass("hidden");
         })
     }
@@ -358,11 +370,12 @@ function candidateList() {
 		onClickJobCancel: onClickJobCancel,
 		onClickJobRefresh: onClickJobRefresh,
 		onClickJobMakePremium: onClickJobMakePremium,
-        onClickOtherActions: onClickOtherActions,
+        onClickCandidateOtherActions: onClickCandidateOtherActions,
         populateCalendarOptions: populateCalendarOptions,
         onClickAddTag: onClickAddTag,
         onClickAddComment: onClickAddComment,
-        onClickFilters: onClickFilters
+        onClickFilters: onClickFilters,
+        onClickJobOtherActions: onClickJobOtherActions
 	}
 
 

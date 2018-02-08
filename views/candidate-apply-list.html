@@ -4,7 +4,7 @@
 		<div class="candidate-apply-listing left">
 			<div class="page-header jsHeader">
 				<h1 class="job-title left jsTitle hidden">iimjobs.com - Product Manager</h1>
-				<div class="action-buttons right jsActionButtons">
+				<div class="action-buttons right jsJobActions">
 					<span class="section calendar-options jsCalendar hidden">
 						<select class="select-dropdown jsCalendarList inactive">
 							<div class="dropdown-list">
@@ -12,14 +12,21 @@
 
 							</div>
 						</select>
-						<div class="error-field hidden"><p>Please select location</p></div>
+						<div class="error-field jsCalendarSelectError hidden"><p>Please select Calendar</p></div>
 					</span>
 
 					<a href="" class="jsEdit hidden"><span class="edit button white"><img src="/static/images/edit-icon.svg"></span></a>
 					<span class="button white jsMakePremium hidden">Make Premium</span>
 					<span class="button white unpublish-job jsUnpublish hidden">Unpublish</span>
 
-					<span class="multi-options"><img src="/static/images/multi-options.svg"></span>
+					<span class="multi-options inactive button-action-list jsJobOtherActions"><img src="/static/images/multi-options.svg">
+						<ul class="action-list-items">
+							<li><a href="#" class="jsRefresh">Refresh</a></li>
+							<li><a href="#" class="jsPostFacebook">Post On Facebook</a></li>
+							<li><a href="#" class="jsPostTwitter">Post On Twitter</a></li>
+							<li><a href="#" class="jsPostLinkedIn">Post On Linkedin</a></li>
+						</ul>
+					</span>
 				</div>
 				<div class="clearfix"></div>
 				<p class="job-meta">
@@ -104,7 +111,7 @@
 										<a href="#reviewed-jobs">
 											<div class="bulk-selection-item reviewed">
 												<span class="bulk-action-icon"><i class="icon-document_search_interface_symbol"></i></span>
-												<span class="bulk-action-label">Reviewed</span>
+												<span class="bulk-action-label jsReviewed">Reviewed</span>
 											</div>
 										</a>
 									</li>
@@ -533,7 +540,7 @@
 			</div>
 
 			<div class="candidate-options jsClickableActions">
-				<div class="button-action-list jsOtherActions inactive">
+				<div class="button-action-list jsCandidateOtherActions inactive">
 					<label class="action-list-label">Other Actions</label>
 					<ul class="action-list-items">
 						<li><a href="#" class="jsSendMessage">Send Message</a></li>
@@ -676,7 +683,7 @@
 	</div>
 </div>
 
-<div id="" class="modal jsAddCommentModal hidden">
+<div id="" class="modal comment-modal jsAddCommentModal hidden">
 
 	<!-- Modal content -->
 	<div class="modal_wrapper" >
@@ -687,7 +694,7 @@
 		<div class="modal_content">
 			<div class="modal_text jsModalText"></div>
 			<div class="section">
-				<textarea name="name" rows="8" cols="80"></textarea>
+				<textarea name="name" rows="" cols=""></textarea>
 			</div>
 			<div class="action-buttons"><button class="jsAddComment">Add</button></div>
 		</div>
