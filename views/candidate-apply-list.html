@@ -5,20 +5,17 @@
 			<div class="page-header jsHeader">
 				<h1 class="job-title left jsTitle hidden">iimjobs.com - Product Manager</h1>
 				<div class="action-buttons right jsActionButtons">
-					<span class="section white jsCalendar hidden">
-						<div class="button-action-list jsCalendarList inactive">
-							<label class="action-list-label">Calendar Link: Select </label>
-							<ul class="action-list-items">
-								<li><a href="#">Send Message</a></li>
-								<li><a href="#">Send Interview Invite</a></li>
-								<li><a href="#">Download Resume</a></li>
-								<li><a href="#">Save for later</a></li>
-								<li><a href="#">Add Comment</a></li>
-								<li><a href="#">Add Tag</a></li>
-							</ul>
-						</div>
+					<span class="section calendar-options jsCalendar hidden">
+						<select class="select-dropdown jsCalendarList inactive">
+							<div class="dropdown-list">
+								<option value="0" selected>Calendar Link: Select</option>
+
+							</div>
+						</select>
+						<div class="error-field hidden"><p>Please select location</p></div>
 					</span>
-					<span class="edit button white jsEdit hidden"><img src="/static/images/edit-icon.svg"></span>
+
+					<a href="" class="jsEdit hidden"><span class="edit button white"><img src="/static/images/edit-icon.svg"></span></a>
 					<span class="button white jsMakePremium hidden">Make Premium</span>
 					<span class="button white unpublish-job jsUnpublish hidden">Unpublish</span>
 
@@ -32,14 +29,14 @@
 				</p>
 			</div>
 
-			<div class="candidates-area">
+			<div class="candidates-area jsCandidatesArea">
 				<div class="candidates-area-header">
 					<div class="candidates-search">
 						<div class="keyword-search">
 							<input type="text" placeholder="Search candidate" class="candidate-keyword-filter left"><button class="right search-trigger">Search</button>
 						</div>
 						<div class="filter-search">
-							<span class="button white filter-button"><span class="button-label">Filter</span></span>
+							<span class="button white filter-button jsFilter"><span class="button-label">Filter</span></span>
 							<span class="button white sort-button"><span class="button-label">Sort by: </span><span class="filter-type">Magic Sort</span></span>
 						</div>
 					</div>
@@ -529,20 +526,22 @@
 
 	<div class="candidate-item-section profile-actions">
 		<div class="candidate-action-area">
-			<button class="button green shortlist left">Shortlist</span></button>
-			<button class="button red reject right">Reject</span></button>
-			<div class="clearfix"></div>
+			<div class="jsClickableActions">
+				<button class="button green shortlist left jsShortlist">Shortlist</span></button>
+				<button class="button red reject right jsReject">Reject</span></button>
+				<div class="clearfix"></div>
+			</div>
 
-			<div class="candidate-options">
-				<div class="button-action-list inactive">
+			<div class="candidate-options jsClickableActions">
+				<div class="button-action-list jsOtherActions inactive">
 					<label class="action-list-label">Other Actions</label>
 					<ul class="action-list-items">
-						<li><a href="#">Send Message</a></li>
-						<li><a href="#">Send Interview Invite</a></li>
-						<li><a href="#">Download Resume</a></li>
-						<li><a href="#">Save for later</a></li>
-						<li><a href="#">Add Comment</a></li>
-						<li><a href="#">Add Tag</a></li>
+						<li><a href="#" class="jsSendMessage">Send Message</a></li>
+						<li><a href="#" class="jsSendInterviewInvite">Send Interview Invite</a></li>
+						<li><a href="#" class="jsDownloadResume">Download Resume</a></li>
+						<li><a href="#" class="jsSave">Save for later</a></li>
+						<li><a href="#" class="jsAddComment">Add Comment</a></li>
+						<li><a href="#" class="jsAddTag">Add Tag</a></li>
 					</ul>
 				</div>
 			</div>
@@ -586,8 +585,7 @@
 	<div class="clearfix"></div>
 </div>
 
-
-
+<option class="jsCalendarOptions prototype hidden" value="">Option 1</option>
 
 <div id="" class="modal unpublishModal hidden">
 
@@ -656,6 +654,42 @@
 				This job will be highlighted and moved to top of the list for 15 days starting today. You will have credits left.
 			</div>
 			<div class="action-buttons"><button class="premiumButton hidden">Make Premium</button></div>
+		</div>
+	</div>
+</div>
+
+<div id="" class="modal jsAddTagModal hidden">
+
+	<!-- Modal content -->
+	<div class="modal_wrapper" >
+		<span class="modal_close">&times;</span>
+		<div class="modal_header">
+			<div class="modal_heading">Add Tag.</div>
+		</div>
+		<div class="modal_content">
+			<div class="modal_text jsModalText hidden"></div>
+			<div class="section">
+				<input type="text" name="" value="" class="input-field">
+			</div>
+			<div class="action-buttons"><button class="jsAddTag">Add</button></div>
+		</div>
+	</div>
+</div>
+
+<div id="" class="modal jsAddCommentModal hidden">
+
+	<!-- Modal content -->
+	<div class="modal_wrapper" >
+		<span class="modal_close">&times;</span>
+		<div class="modal_header">
+			<div class="modal_heading">Add Comment.</div>
+		</div>
+		<div class="modal_content">
+			<div class="modal_text jsModalText"></div>
+			<div class="section">
+				<textarea name="name" rows="8" cols="80"></textarea>
+			</div>
+			<div class="action-buttons"><button class="jsAddComment">Add</button></div>
 		</div>
 	</div>
 </div>

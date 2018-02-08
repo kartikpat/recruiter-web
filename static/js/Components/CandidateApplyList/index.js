@@ -1,48 +1,62 @@
 var initialLoad = 1;
 jQuery(document).ready( function() {
-
+    // fetching url parameters
     var urlParams = fetchURL();
     var queryParameters = getQueryParameter();
-
     var jobId = urlParams.pathname.split("/")[2];
-    // populate title location exp
 
     // initializing the models
 	var candidates = candidateList();
     var aCandidate = Candidate();
     var store = Store();
+
     candidates.setConfig("availableCredits", profile["availableCredits"]);
     candidates.init(queryParameters)
+
     /**
      * Making the initial page load call.
      * check for status in the queryString
      */
+    //fetchCalendars(jobId)
     fetchJob(jobId);
 	fetchJobApplications(jobId,"");
 
     candidates.onClickCandidate(openSingleCandidate);
-
     function openSingleCandidate(candidateId){
         var candidateDetails = store.getCandidateFromStore(candidateId);
         aCandidate.showCandidateDetails(candidateDetails);
     }
 
-    candidates.onClickJobEdit()
-    candidates.onClickJobCancel(function(jobId){
-        alert(jobId)
-        // unPublishJob(jobId)
-        trackEventCancelButtonClick();
-    })
-    candidates.onClickJobRefresh(function(jobId) {
-        alert(jobId)
-    })
-    candidates.onClickJobMakePremium(function(jobId){
-        alert(jobId)
-    })
+    candidates.onClickOtherActions();
+    candidates.onClickFilters();
 
+    candidates.onClickAddTag(openAddTagModal);
+    function openAddTagModal() {
+        alert("added");
+    }
+
+    candidates.onClickAddComment();
+    function openAddCommentModal() {
+        alert("added");
+    }
+
+    candidates.onClickJobCancel(openUnpublishModal)
+    function openUnpublishModal(jobId){
+        alert(jobId)
+        trackEventCancelButtonClick();
+    }
+
+    candidates.onClickJobRefresh(openRefreshModal)
+    function openRefreshModal(jobId) {
+        alert(jobId)
+    }
+
+    candidates.onClickJobMakePremium(openPremiumModal)
+    function openPremiumModal(jobId){
+        alert(jobId)
+    }
 
     candidates.createJobStatsTabs(onClickTab)
-
     function onClickTab(event, ui) {
         var status = candidates.activateStatsTab(event, ui)
         fetchJobApplications(jobId, status);
@@ -69,6 +83,7 @@ jQuery(document).ready( function() {
 		console.log(data);
 		candidates.showActions(data[0]);
 	}
+
 	function onFailedFetchJob(topic, data){
 		alert(res.status)
 		console.log(topic)
@@ -80,6 +95,5 @@ jQuery(document).ready( function() {
 	var fetchJobFailSubscription = pubsub.subscribe("failedToFetchJob:"+jobId, onFailedFetchJob);
     var fetchJobApplicationsSuccessSubscription = pubsub.subscribe("fetchedJobApplication:"+jobId, onJobsApplicationsFetchSuccess)
     var fetchJobApplicationsFailSubscription = pubsub.subscribe("failedTofetchJobApplication:"+jobId, onJobsApplicationsFetchFail)
-
 
 });

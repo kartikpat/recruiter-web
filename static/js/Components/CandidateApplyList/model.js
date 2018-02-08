@@ -2,7 +2,8 @@ function candidateList() {
 
     var list = {
 		rowContainer: $('.js_candidate_listing'),
-        header: $('.jsHeader')
+        header: $('.jsHeader'),
+        candidatesContainer: $('.jsCandidatesArea')
 	};
 
     var config = {};
@@ -169,16 +170,11 @@ function candidateList() {
 
     function onClickCandidate(fn) {
         list.rowContainer.on('click', ".candidate-item", function(e){
-            var candidateId = $(this).attr('data-candidate-id');
-            return fn(candidateId);
+            if((!jQuery(e.target).parents(".jsClickableActions").length) && (!jQuery(e.target).parents(".candidate-item-section.image").length)) {
+                var candidateId = $(this).attr('data-candidate-id');
+                return fn(candidateId);
+            }
         })
-        // settings.candidateList.on("click", ".candidate-item", function(e) {
-        //     if((!jQuery(e.target).parents(".candidate-item-section.profile-actions").length) && (!jQuery(e.target).parents(".candidate-item-section.image").length)) {
-        //         var str = $(this).attr("id");
-        //         var candidateId = str.substr(10, str.len);
-        //         populateCandidateData(store[candidateId]);
-        //     }
-        // });
     }
 
     function activateStatsTab(event, ui) {
@@ -187,14 +183,8 @@ function candidateList() {
         return $(ui.newTab[0]).attr("data-attribute");
     }
 
-
-
     //Actions Component
-    function onClickJobEdit() {
-		list.header.find('.js_edit').click(function(event) {
-			return parseInt($(this).attr('data-editable')) ? true : false;
-		})
-	}
+
 
     function onClickJobCancel(fn){
 		list.header.on('click','.jsUnpublish',function(){
@@ -204,7 +194,6 @@ function candidateList() {
 			modal.find(".unpublishButton").click(function(){
 				fn(jobId)
 			});
-			return false;
 		});
 	}
 
@@ -218,7 +207,6 @@ function candidateList() {
 					fn(jobId)
 				});
 			}
-			return false;
 		})
 	}
 
@@ -226,7 +214,7 @@ function candidateList() {
 		list.header.on('click','.jsMakePremium',function(event) {
 			var jobId = $(this).attr("data-id");
 			var modal = $(".premiumModal");
-			if(config["availableCredits"] > 10) {
+			if(config["availableCredits"] > 0) {
 				modal.find('.premiumButton').click(function(){
 					fn(jobId)
 				}).removeClass("hidden");
@@ -238,7 +226,6 @@ function candidateList() {
 			modal.find(".section.modal_text").text("You don’t have any premium credits right now! We’ll reach out to you to help you with it!")
             modal.removeClass('hidden');
 			//shootEmail()
-			return false;
 		})
 	}
 
@@ -273,8 +260,6 @@ function candidateList() {
         console.log(data)
         if(data["status"] == "published" && !data["premium"]) {
             item.calendar.removeClass("hidden")
-            item.edit.removeClass("hidden")
-
             item.unpublish.removeClass("hidden")
             if(data["refresh"])
     		    item.refresh.removeClass("hidden")
@@ -283,9 +268,82 @@ function candidateList() {
         }
         else if(data["status"] == "unpublished") {
             item.calendar.removeClass("hidden")
-            item.edit.removeClass("hidden")
+        }
+        if(data["editable"]) {
+            item.edit.attr("href","/post-job?jobId="+data["id"]+"").removeClass("hidden")
         }
 
+    }
+
+    function populateCalendarOptions() {
+        if(array.length < 1)
+            return
+        else if(array.length == 1) {
+            list.rowContainer.find(".jsSendInterviewInvite").attr("data-calendar-id",array[0]["id"])
+            return
+        }
+        var item = $(".jsCalendarOptions.prototype").clone().removeClass("prototype hidden");
+        array.forEach(function(anObj){
+            item.text(anObj["name"]);
+            item.attr("value",anObj["id"]);
+            if(anObj["isDefault"]) {
+                item.attr("selected", "selected");
+                list.rowContainer.find(".jsSendInterviewInvite").attr("data-calendar-id",anObj["id"])
+            }
+        })
+    }
+
+    function onClickOtherActions() {
+        list.rowContainer.on('click','.jsOtherActions',function(event) {
+            $(this).toggleClass("inactive");
+        })
+    }
+
+    function onClickSendMessage() {
+
+    }
+
+    function onClickSendInterviewInvite() {
+
+    }
+
+    function onClickDownloadResume() {
+
+    }
+
+    function onClickSave() {
+
+    }
+
+    function onClickAddComment(fn) {
+        list.rowContainer.on('click','.jsAddComment',function(event) {
+			// var jobId = $(this).attr("data-id");
+			var modal = $(".jsAddCommentModal");
+            modal.find(".jsAddComment").click(function(){
+                fn(jobId)
+            });
+            modal.removeClass("hidden")
+            return false;
+        })
+    }
+
+    function onClickAddTag() {
+        list.rowContainer.on('click','.jsAddTag',function(event) {
+			// var jobId = $(this).attr("data-id");
+			var modal = $(".jsAddTagModal");
+            modal.find(".jsAddTag").click(function(){
+                fn(jobId)
+            });
+            modal.removeClass("hidden")
+            return false;
+        })
+    }
+
+    function onClickFilters() {
+        list.candidatesContainer.on('click','.jsFilter',function(event){
+            var modal = $(".jsFiltersModal");
+            modal.removeClass("hidden");
+        })
     }
 
     return {
@@ -297,9 +355,15 @@ function candidateList() {
         activateStatsTab: activateStatsTab,
         onClickCandidate: onClickCandidate,
         showActions : showActions,
-        onClickJobEdit: onClickJobEdit,
 		onClickJobCancel: onClickJobCancel,
 		onClickJobRefresh: onClickJobRefresh,
-		onClickJobMakePremium: onClickJobMakePremium
+		onClickJobMakePremium: onClickJobMakePremium,
+        onClickOtherActions: onClickOtherActions,
+        populateCalendarOptions: populateCalendarOptions,
+        onClickAddTag: onClickAddTag,
+        onClickAddComment: onClickAddComment,
+        onClickFilters: onClickFilters
 	}
+
+
 }
