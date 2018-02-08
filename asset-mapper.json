@@ -916,8 +916,9 @@
 				"static/css/footer.css",
 				"static/css/header.css",
 				"static/css/modal.css",
-				"static/css/candidate-apply-list.css",
-				"static/css/jquery-ui.min.css"
+
+				"static/css/jquery-ui.min.css",
+				"static/css/candidate-apply-list.css"
 
 			],
 			"prod": [

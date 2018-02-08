@@ -2640,7 +2640,10 @@ span.sticker {
     #jobs-category-tabs .ui-tabs-tab a.ui-tabs-anchor:focus {
       outline: 0; }
 
-.button-action-list {
-  background: #fff;
-  padding: 0;
-  border: 0; }
+.action-buttons .calendar-options {
+  padding: 0 !important; }
+
+.action-buttons .select-dropdown {
+  padding: 5px 45px 5px 15px;
+  border: 1px solid #8f8a8a;
+  color: #000; }
