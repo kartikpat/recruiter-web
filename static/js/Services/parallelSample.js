@@ -1,4 +1,4 @@
- $.when(fetchJobApplications(334895), fetchJob()).then(function(a, b){
-        console.log(a, b);
+ $.when(fetchJob(), fetchCalendars()).then(function(a, b){
+        pubsub.publish("callJobList", 1);
     });
      return
