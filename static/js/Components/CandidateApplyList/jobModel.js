@@ -15,7 +15,8 @@ function Job(){
 		settings.jobPostTwitter = $("#jobPostTwitter");
 		settings.jobPostLinkedin = $("#jobPostLinkedin");
 		settings.defaultCalendar = null;
-		settings.jobOtherActions = $("#jobOtherActions")
+		settings.jobOtherActions = $("#jobOtherActions");
+		settings.calendarSelectError = $("#calendarSelectError");
 	}
 
 	function setJobDetails(data){
@@ -99,12 +100,10 @@ function Job(){
 	function populateCalendarOptions(array) {
         if(array.length < 1)
             return
-        else if(array.length == 1) {
-            list.rowContainer.find(".jsSendInterviewInvite").attr("data-calendar-id",array[0]["id"])
-            return
-        }
+		if(array.length == 1)
+			setDefaultCalendar(array[0]["id"]);
 		var calendarOptionsStr = '';
-		var item = getCalendarElement()
+		var item = getCalendarElement();
 		item.element.text("Calendar Link: Select");
 		item.element.attr("value","");
 		calendarOptionsStr += item.element[0].outerHTML;
@@ -113,38 +112,34 @@ function Job(){
             item.element.text(anObj["name"]);
             item.element.attr("value",anObj["id"]);
             if(anObj["isDefault"]) {
+				setDefaultCalendar(anObj["id"])
                 item.element.attr("selected", "selected");
             }
 			calendarOptionsStr += item.element[0].outerHTML;
         })
-		console.log(calendarOptionsStr)
 		settings.calendarContainer.find(".calendarSelect").html(calendarOptionsStr)
 		settings.calendarContainer.removeClass("hidden")
     }
 
     function setDefaultCalendar(calendarId){
     	if(!calendarId)
-    		return alert('Select a default calendar');
+    		showCalendarMissingError()
     	settings.defaultCalendar = calendarId
-
     }
 
     function getDefaultCalendar(){
     	return settings.defaultCalendar;
     }
 
-	// function showActions(data) {
-    //     console.log(data)
-	//
-
-	//
-    // }
-
 	function onClickJobOtherActions() {
         settings.jobOtherActions.click(function(event) {
             $(this).toggleClass("inactive");
         })
     }
+
+	function showCalendarMissingError() {
+		settings.calendarSelectError.text("Please Select the calendar!").removeClass("hidden");
+	}
 
 	return {
 		init: init,
@@ -153,6 +148,8 @@ function Job(){
 		onClickJobCancel: onClickJobCancel,
 		onClickJobRefresh: onClickJobRefresh,
 		onClickJobMakePremium: onClickJobMakePremium,
+		getDefaultCalendar: getDefaultCalendar,
+		showCalendarMissingError: showCalendarMissingError
 	}
 
 }

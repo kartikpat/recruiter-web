@@ -34,12 +34,12 @@ jQuery(document).ready( function() {
     // initializing the models
 	var candidates = candidateList();
     var aCandidate = Candidate();
-    var aJob = Job();
+    var theJob = Job();
     var store = Store();
 
     candidates.setConfig("availableCredits", profile["availableCredits"]);
 
-    aJob.init()
+    theJob.init();
 
     candidates.onClickCandidate(openSingleCandidate);
     function openSingleCandidate(candidateId){
@@ -48,8 +48,8 @@ jQuery(document).ready( function() {
     }
 
     candidates.onClickCandidateOtherActions();
-    candidates.onClickFilters();
-    aJob.onClickJobOtherActions();
+    // candidates.onClickFilters();
+    theJob.onClickJobOtherActions();
 
     candidates.onClickAddTag(openAddTagModal);
     function openAddTagModal() {
@@ -61,18 +61,18 @@ jQuery(document).ready( function() {
         alert("added");
     }
 
-    aJob.onClickJobCancel(openUnpublishModal)
+    theJob.onClickJobCancel(openUnpublishModal)
     function openUnpublishModal(jobId){
         alert(jobId)
         trackEventCancelButtonClick();
     }
 
-    aJob.onClickJobRefresh(openRefreshModal)
+    theJob.onClickJobRefresh(openRefreshModal)
     function openRefreshModal(jobId) {
         alert(jobId)
     }
 
-    aJob.onClickJobMakePremium(openPremiumModal)
+    theJob.onClickJobMakePremium(openPremiumModal)
     function openPremiumModal(jobId){
         alert(jobId)
     }
@@ -113,16 +113,18 @@ jQuery(document).ready( function() {
 
     function onSuccessfulFetchJobDetails(topic, data) {
         fetchJobApplications(jobId,"",recruiterId);
-        aJob.setJobDetails(data);
+        theJob.setJobDetails(data);
     }
 
 
      candidates.onClickSendInterviewInvite(sendInterviewInvite);
      function sendInterviewInvite(candidateId, applicationId){
-        var defaultCalendarId = aJob.getDefaultCalendar();
+        var defaultCalendarId = theJob.getDefaultCalendar();
+        if(!defaultCalendarId)
+            theJob.showCalendarMissingError();
         if(!(defaultCalendarId && candidateId && applicationId ))
             return alert('Please provide all values');
-        postInterviewInvite()
+        // postInterviewInvite()
      }
 
     var fetchJobDetailsSubscription = pubsub.subscribe("fetchedJobDetails:"+jobId, onSuccessfulFetchJobDetails)

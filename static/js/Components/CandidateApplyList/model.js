@@ -1,12 +1,16 @@
 function candidateList() {
 
-    var list = {
+    var settings = {
 		rowContainer: $('.js_candidate_listing'),
         header: $('#jobDetails'),
         candidatesContainer: $('.jsCandidatesArea'),
-        defaultCalendar: null,
-        candidateRow: $(".js_candidate_item"),
-        candidateInviteButton : $(".jsSendInterviewInvite")
+        candidateRow: $(".candidateItem.prototype"),
+        candidateInviteButton : $(".candidateSendInterviewInvite"),
+        candidateAddTagButton: $(".candidateAddTag"),
+        candidateAddCommentButton : $(".candidateAddComment"),
+        candidateSaveButton : $(".candidateSave"),
+        candidateDownloadResumeButton : $(".candidateDownloadResume"),
+        candidateSendMessageButton : $(".candidateSendMessage")
 	};
 
     var config = {};
@@ -16,7 +20,7 @@ function candidateList() {
 	}
 
     function getElement(id) {
-		var card = $('.js_candidate_item.prototype').clone().removeClass('prototype hidden')
+		var card = settings.candidateRow.clone().removeClass('prototype hidden')
 		card.attr('data-candidate-id', id);
 		return {
 			element: card,
@@ -106,19 +110,6 @@ function candidateList() {
 
 	}
 
-
-
-    function getJobElements() {
-        var card = list.header;
-        return {
-            element : card,
-            title : card.find(".jsTitle"),
-            location : card.find(".jsLocation"),
-            seperator : card.find(".jsSeperator"),
-            experience : card.find(".jsExperience"),
-        }
-    }
-
     function getJobsCategoryTabsElement() {
         var card = $("#jobs-category-tabs");
         return {
@@ -149,7 +140,7 @@ function candidateList() {
 			var item = createElement(aData);
 			str+=item.element[0].outerHTML;
 		});
-		list.rowContainer.html(str);
+		settings.rowContainer.html(str);
 	}
 
     function createJobStatsTabs(fn) {
@@ -163,7 +154,7 @@ function candidateList() {
     }
 
     function onClickCandidate(fn) {
-        list.rowContainer.on('click', ".candidate-item", function(e){
+        settings.rowContainer.on('click', ".candidate-item", function(e){
             if((!jQuery(e.target).parents(".jsClickableActions").length) && (!jQuery(e.target).parents(".candidate-item-section.image").length)) {
                 var candidateId = $(this).attr('data-candidate-id');
                 return fn(candidateId);
@@ -214,7 +205,7 @@ function candidateList() {
 
 
     function onClickCandidateOtherActions() {
-        list.rowContainer.on('click','.jsCandidateOtherActions',function(event) {
+        settings.rowContainer.on('click','.jsCandidateOtherActions',function(event) {
             $(this).toggleClass("inactive");
         })
     }
@@ -226,7 +217,7 @@ function candidateList() {
     }
 
     function onClickSendInterviewInvite(fn) {
-        list.rowContainer.on('click', settings.candidateInviteButton, function(){
+        settings.rowContainer.on('click', settings.candidateInviteButton, function(){
             var candidateId = $(this).closest(candidateItem).attr('data-candidate-id');
             var applicationId = $(this).closest(candidateItem).attr('application-id');
             return fn(candidateId, applicationId);
@@ -242,7 +233,7 @@ function candidateList() {
     }
 
     function onClickAddComment(fn) {
-        list.rowContainer.on('click','.jsAddComment',function(event) {
+        settings.rowContainer.on('click', settings.candidateAddComment ,function(event) {
 			// var jobId = $(this).attr("data-id");
 			var modal = $(".jsAddCommentModal");
             modal.find(".jsAddComment").click(function(){
@@ -255,7 +246,7 @@ function candidateList() {
     }
 
     function onClickAddTag() {
-        list.rowContainer.on('click','.jsAddTag',function(event) {
+        settings.rowContainer.on('click',settings.candidateAddTag,function(event) {
 			// var jobId = $(this).attr("data-id");
 			var modal = $(".jsAddTagModal");
             modal.find(".jsAddTag").click(function(){
@@ -267,13 +258,13 @@ function candidateList() {
         })
     }
 
-    function onClickFilters() {
-        list.candidatesContainer.on('click','.jsFilter',function(event){
-            var modal = $(".jsFiltersModal");
-            addBodyFixed()
-            modal.removeClass("hidden");
-        })
-    }
+    // function onClickFilters() {
+    //     settings.candidatesContainer.on('click','.jsFilter',function(event){
+    //         var modal = $(".jsFiltersModal");
+    //         addBodyFixed()
+    //         modal.removeClass("hidden");
+    //     })
+    // }
 
     return {
 		init: init,
@@ -283,12 +274,10 @@ function candidateList() {
         setJobStats: setJobStats,
         activateStatsTab: activateStatsTab,
         onClickCandidate: onClickCandidate,
-		
+        onClickSendInterviewInvite: onClickSendInterviewInvite,
         onClickCandidateOtherActions: onClickCandidateOtherActions,
         onClickAddTag: onClickAddTag,
-        onClickAddComment: onClickAddComment,
-        onClickFilters: onClickFilters,
-
+        onClickAddComment: onClickAddComment
 	}
 
 

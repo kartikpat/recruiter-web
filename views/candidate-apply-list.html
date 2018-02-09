@@ -7,18 +7,17 @@
 				<div class="action-buttons right jsJobActions">
 					<span class="section calendar-options hidden" id="calendarContainer">
 						<select class="select-dropdown calendarSelect">
-
 						</select>
-						<div class="error-field jsCalendarSelectError hidden"><p>Please select Calendar</p></div>
+						<div class="error-field hidden" id="calendarSelectError"><p>Please select Calendar</p></div>
 					</span>
 
 					<a href="" class="hidden" id="jobEditButton"><span class="edit button white"><img src="/static/images/edit-icon.svg"></span></a>
 					<span class="button white hidden" id="jobPremiumButton">Make Premium</span>
 					<span class="button white unpublish-job hidden" id="jobUnpublishButton">Unpublish</span>
 
-					<span class="multi-options inactive button-action-list hidden" id="jobOtherActions"><img src="/static/images/multi-options.svg">
+					<span class="multi-options inactive button-action-list" id="jobOtherActions"><img src="/static/images/multi-options.svg">
 						<ul class="action-list-items">
-							<li><a href="#" class="" id="jobRefreshButton">Refresh</a></li>
+							<li><a href="#" class="hidden" id="jobRefreshButton">Refresh</a></li>
 							<li><a href="#" class="" id="jobPostFacebook">Post On Facebook</a></li>
 							<li><a href="#" class="" id=jobPostTwitter>Post On Twitter</a></li>
 							<li><a href="#" class="" id="jobPostLinkedin">Post On Linkedin</a></li>
@@ -480,7 +479,7 @@
 	<span class="skill-name js_skill_name">UI Development</span>
 </div> -->
 
-<div class="candidate-item js_candidate_item prototype hidden">
+<div class="candidate-item candidateItem prototype hidden">
 	<div class="candidate-item-section image">
 		<div class="candidate-image">
 			<div class="candidate-select">
@@ -542,12 +541,12 @@
 				<div class="button-action-list jsCandidateOtherActions inactive">
 					<label class="action-list-label">Other Actions</label>
 					<ul class="action-list-items">
-						<li><a href="#" class="jsSendMessage">Send Message</a></li>
-						<li><a href="#" class="jsSendInterviewInvite">Send Interview Invite</a></li>
-						<li><a href="#" class="jsDownloadResume">Download Resume</a></li>
-						<li><a href="#" class="jsSave">Save for later</a></li>
-						<li><a href="#" class="jsAddComment">Add Comment</a></li>
-						<li><a href="#" class="jsAddTag">Add Tag</a></li>
+						<li><a href="#" class="candidateSendMessage">Send Message</a></li>
+						<li><a href="#" class="candidateSendInterviewInvite">Send Interview Invite</a></li>
+						<li><a href="#" class="candidateDownloadResume">Download Resume</a></li>
+						<li><a href="#" class="candidateSave">Save for later</a></li>
+						<li><a href="#" class="candidateAddComment">Add Comment</a></li>
+						<li><a href="#" class="candidateAddTag">Add Tag</a></li>
 					</ul>
 				</div>
 			</div>
