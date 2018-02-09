@@ -117,6 +117,14 @@ jQuery(document).ready( function() {
     }
 
 
+     candidates.onClickSendInterviewInvite(sendInterviewInvite);
+     function sendInterviewInvite(candidateId, applicationId){
+        var defaultCalendarId = aJob.getDefaultCalendar();
+        if(!(defaultCalendarId && candidateId && applicationId ))
+            return alert('Please provide all values');
+        postInterviewInvite()
+     }
+
     var fetchJobDetailsSubscription = pubsub.subscribe("fetchedJobDetails:"+jobId, onSuccessfulFetchJobDetails)
     var fetchJobSuccessSubscription = pubsub.subscribe("fetchedJob:"+jobId, onSuccessfulFetchJob);
 	var fetchJobFailSubscription = pubsub.subscribe("failedToFetchJob:"+jobId, onFailedFetchJob);

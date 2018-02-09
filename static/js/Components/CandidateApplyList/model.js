@@ -271,7 +271,9 @@ function candidateList() {
 
     function onClickSendInterviewInvite(fn) {
         list.rowContainer.on('click', settings.candidateInviteButton, function(){
-
+            var candidateId = $(this).closest(candidateItem).attr('data-candidate-id');
+            var applicationId = $(this).closest(candidateItem).attr('application-id');
+            return fn(candidateId, applicationId);
         })
     }
 

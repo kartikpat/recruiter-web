@@ -14,6 +14,7 @@ function Job(){
 		settings.jobPostFacebook = $("#jobPostFacebook");
 		settings.jobPostTwitter = $("#jobPostTwitter");
 		settings.jobPostLinkedin = $("#jobPostLinkedin");
+		settings.defaultCalendar = null;
 	}
 
 	function setJobDetails(data){
@@ -71,6 +72,17 @@ function Job(){
 		console.log(calendarOptionsStr)
 		settings.calendarContainer.find(".calendarSelect").html(calendarOptionsStr)
 		settings.calendarContainer.removeClass("hidden")
+    }
+
+    function setDefaultCalendar(calendarId){
+    	if(!calendarId)
+    		return alert('Select a default calendar');
+    	settings.defaultCalendar = calendarId
+
+    }
+
+    function getDefaultCalendar(){
+    	return settings.defaultCalendar;
     }
 
 	// function showActions(data) {
