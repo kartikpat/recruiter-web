@@ -29,27 +29,61 @@ function Job(){
         }
 		var status = data["jobStatus"];
 		if(status == "published" && !data["isPremium"]) {
-            item.calendar.removeClass("hidden")
-            item.unpublish.removeClass("hidden")
-            if(data["refresh"])
-    		    item.refresh.removeClass("hidden")
-            if(!data["premium"] )
-                item.premium.removeClass("hidden")
+			console.log("a")
+			populateCalendarOptions(data["calendars"])
+            // item.unpublish.removeClass("hidden")
+            // if(data["refresh"])
+    		//     item.refresh.removeClass("hidden")
+            // if(!data["premium"] )
+            //     item.premium.removeClass("hidden")
         }
 
 	}
 
-	function showActions(data) {
-        console.log(data)
+	function getCalendarElement() {
+		var card = $(".calendarOptions.prototype").clone().removeClass("prototype hidden");
+		return {
+			element : card
+		}
+	}
 
-        else if(data["status"] == "unpublished") {
-            item.calendar.removeClass("hidden")
+	function populateCalendarOptions(array) {
+        if(array.length < 1)
+            return
+        else if(array.length == 1) {
+            list.rowContainer.find(".jsSendInterviewInvite").attr("data-calendar-id",array[0]["id"])
+            return
         }
-        if(data["editable"]) {
-            item.edit.attr("href","/post-job?jobId="+data["id"]+"").removeClass("hidden")
-        }
-
+		var calendarOptionsStr = '';
+		var item = getCalendarElement()
+		item.element.text("Calendar Link: Select");
+		item.element.attr("value","");
+		calendarOptionsStr += item.element[0].outerHTML;
+        array.forEach(function(anObj){
+			var item = getCalendarElement()
+            item.element.text(anObj["name"]);
+            item.element.attr("value",anObj["id"]);
+            if(anObj["isDefault"]) {
+                item.element.attr("selected", "selected");
+            }
+			calendarOptionsStr += item.element[0].outerHTML;
+        })
+		console.log(calendarOptionsStr)
+		settings.calendarContainer.find(".calendarSelect").html(calendarOptionsStr)
+		settings.calendarContainer.removeClass("hidden")
     }
+
+	// function showActions(data) {
+    //     console.log(data)
+	//
+    //     else if(data["status"] == "unpublished") {
+    //         item.calendar.removeClass("hidden")
+    //     }
+    //     if(data["editable"]) {
+    //         item.edit.attr("href","/post-job?jobId="+data["id"]+"").removeClass("hidden")
+    //     }
+	//
+    // }
 
 	return {
 		init: init,

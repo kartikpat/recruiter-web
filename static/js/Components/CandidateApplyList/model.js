@@ -3,7 +3,10 @@ function candidateList() {
     var list = {
 		rowContainer: $('.js_candidate_listing'),
         header: $('#jobDetails'),
-        candidatesContainer: $('.jsCandidatesArea')
+        candidatesContainer: $('.jsCandidatesArea'),
+        defaultCalendar: null,
+        candidateRow: $(".js_candidate_item"),
+        candidateInviteButton : $(".jsSendInterviewInvite")
 	};
 
     var config = {};
@@ -201,7 +204,7 @@ function candidateList() {
 	}
 
 	function onClickJobMakePremium(fn) {
-		list.header.on('click','.jsMakePremium',function(event) {
+		list.header.on('click','.jsMakePremium',function(fevent) {
 			var jobId = $(this).attr("data-id");
 			var modal = $(".premiumModal");
 			if(config["availableCredits"] > 0) {
@@ -218,72 +221,37 @@ function candidateList() {
 			//shootEmail()
 		})
 	}
+    // function getActionElement() {
+	// 	var card = $('.jsJobActions');
+	// 	return {
+	// 		element: card,
+	// 		edit: card.find('.jsEdit'),
+	// 		premium: card.find('.jsMakePremium'),
+	// 		unpublish: card.find('.jsUnpublish'),
+	// 		calendar: card.find('.jsCalendar'),
+    //         calendarList: card.find('.jsCalendarList'),
+    //         refresh: card.find('.jsRefresh'),
+    //         facebook: card.find('.jsPostFacebook'),
+    //         twitter: card.find('.jsTwitter'),
+	// 		linkedIn: card.find('.jsLinkedIn')
+	// 		// seperator: card.find('.js_seperator'),
+	// 		// experience: card.find('.js_experience'),
+	// 		// status: card.find('.js_status'),
+	// 		// statusMsg: card.find('.js_status_msg'),
+	// 		// views: card.find('.js_views'),
+	// 		// applications: card.find('.js_applications'),
+	// 		// edit: card.find('.js_edit'),
+	// 		// cancel: card.find('.js_cancel'),
+	// 		// refresh: card.find('.js_refresh'),
+	// 		// premium: card.find('.js_premium'),
+	// 		// facebook: card.find('.js_facebook'),
+    //
+	// 	}
+	// }
 
-    function getActionElement() {
-		var card = $('.jsJobActions');
-		return {
-			element: card,
-			edit: card.find('.jsEdit'),
-			premium: card.find('.jsMakePremium'),
-			unpublish: card.find('.jsUnpublish'),
-			calendar: card.find('.jsCalendar'),
-            calendarList: card.find('.jsCalendarList'),
-            refresh: card.find('.jsRefresh'),
-            facebook: card.find('.jsPostFacebook'),
-            twitter: card.find('.jsTwitter'),
-			linkedIn: card.find('.jsLinkedIn')
-			// seperator: card.find('.js_seperator'),
-			// experience: card.find('.js_experience'),
-			// status: card.find('.js_status'),
-			// statusMsg: card.find('.js_status_msg'),
-			// views: card.find('.js_views'),
-			// applications: card.find('.js_applications'),
-			// edit: card.find('.js_edit'),
-			// cancel: card.find('.js_cancel'),
-			// refresh: card.find('.js_refresh'),
-			// premium: card.find('.js_premium'),
-			// facebook: card.find('.js_facebook'),
 
-		}
-	}
 
-    function showActions(data) {
-        var item = getActionElement();
-        console.log(data)
-        if(data["status"] == "published" && !data["premium"]) {
-            item.calendar.removeClass("hidden")
-            item.unpublish.removeClass("hidden")
-            if(data["refresh"])
-    		    item.refresh.removeClass("hidden")
-            if(!data["premium"] )
-                item.premium.removeClass("hidden")
-        }
-        else if(data["status"] == "unpublished") {
-            item.calendar.removeClass("hidden")
-        }
-        if(data["editable"]) {
-            item.edit.attr("href","/post-job?jobId="+data["id"]+"").removeClass("hidden")
-        }
 
-    }
-
-    function populateCalendarOptions() {
-        if(array.length < 1)
-            return
-        else if(array.length == 1) {
-            list.rowContainer.find(".jsSendInterviewInvite").attr("data-calendar-id",array[0]["id"])
-            return
-        }
-        var item = $(".jsCalendarOptions.prototype").clone().removeClass("prototype hidden");
-        array.forEach(function(anObj){
-            item.text(anObj["name"]);
-            item.attr("value",anObj["id"]);
-            if(anObj["isDefault"]) {
-                item.attr("selected", "selected");
-                list.rowContainer.find(".jsSendInterviewInvite").attr("data-calendar-id",anObj["id"])
-            }
-        })
-    }
 
     function onClickCandidateOtherActions() {
         list.rowContainer.on('click','.jsCandidateOtherActions',function(event) {
@@ -301,8 +269,10 @@ function candidateList() {
 
     }
 
-    function onClickSendInterviewInvite() {
+    function onClickSendInterviewInvite(fn) {
+        list.rowContainer.on('click', settings.candidateInviteButton, function(){
 
+        })
     }
 
     function onClickDownloadResume() {
@@ -355,12 +325,10 @@ function candidateList() {
         setJobStats: setJobStats,
         activateStatsTab: activateStatsTab,
         onClickCandidate: onClickCandidate,
-        showActions : showActions,
 		onClickJobCancel: onClickJobCancel,
 		onClickJobRefresh: onClickJobRefresh,
 		onClickJobMakePremium: onClickJobMakePremium,
         onClickCandidateOtherActions: onClickCandidateOtherActions,
-        populateCalendarOptions: populateCalendarOptions,
         onClickAddTag: onClickAddTag,
         onClickAddComment: onClickAddComment,
         onClickFilters: onClickFilters,

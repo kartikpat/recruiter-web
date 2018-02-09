@@ -3453,3 +3453,6 @@ span.sticker {
   .comment-modal textarea:focus {
     outline: none;
     border: 1px solid #4fa995; }
+
+.action-buttons .select-dropdown {
+  line-height: 1.5; }

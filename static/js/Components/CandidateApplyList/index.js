@@ -13,6 +13,7 @@ jQuery(document).ready( function() {
     $.when(fetchJob(jobId, recruiterId ), fetchCalendars(jobId, recruiterId)).then(function(a, b){
         if(a[0] && b[0] && a[0]["status"] == "success" && b[0]["status"] =="success" && a[0]['data'].length >0 ) {
             var jobRow = a[0]['data'][0];
+            console.log(b)
             var calendarRows = b[0]['data'];
 
             var data = {
@@ -101,7 +102,7 @@ jQuery(document).ready( function() {
     function onSuccessfulFetchJob(topic, data) {
 		console.log(topic)
 		console.log(data);
-		candidates.showActions(data[0]);
+		// candidates.showActions(data[0]);
 	}
 
 	function onFailedFetchJob(topic, data){
