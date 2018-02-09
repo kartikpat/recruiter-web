@@ -99,22 +99,11 @@ function candidateList() {
         return item
     }
 
-    function init(data){
-        setJobDetails(data)
+    function init(){
+
 	}
 
-    function setJobDetails(data) {
-        var item = getJobElements();
-        item.title.text(unescape(data["title"])).removeClass("hidden");
-        if(data["location"]) {
-            item.location.text(data["location"]).removeClass("hidden")
-            item.seperator.removeClass("hidden")
 
-        }
-        if(data["experience"]) {
-            item.experience.text(unescape(data["experience"])).removeClass("hidden")
-        }
-    }
 
     function getJobElements() {
         var card = list.header;

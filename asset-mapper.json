@@ -958,6 +958,7 @@
 				"static/js/Components/CandidateApplyList/mapping.js",
 				"static/js/Components/CandidateApplyList/candidateModel.js",
 				"static/js/Components/CandidateApplyList/model.js",
+				"static/js/Components/CandidateApplyList/jobModel.js",
 				"static/js/Components/CandidateApplyList/index.js"
 			],
 			"prod" : [

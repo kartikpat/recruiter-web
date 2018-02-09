@@ -1,48 +1,44 @@
 var initialLoad = 1;
 jQuery(document).ready( function() {
+
     // fetching url parameters
     var urlParams = fetchURL();
-    var queryParameters = getQueryParameter();
+
     var jobId = urlParams.pathname.split("/")[2];
 
-    $.when(fetchJob(jobId, ), fetchCalendars(jobId, recruiterId)).then(function(a, b){
-        console.log(a);
-        console.log(b);
+    function getTitleFormat(title, regex) {
+		return title.replace(regex, '');
+	}
+
+    $.when(fetchJob(jobId, recruiterId ), fetchCalendars(jobId, recruiterId)).then(function(a, b){
         if(a[0] && b[0] && a[0]["status"] == "success" && b[0]["status"] =="success" && a[0]['data'].length >0 ) {
-            var jobRows = a[0]['data'][0];
+            var jobRow = a[0]['data'][0];
             var calendarRows = b[0]['data'];
+
             var data = {
-               jobTitle: jobRows["title"],
-               jobLocation: jobRows["loc"],
-               jobExperience: jobRows["exp"],
-               jobId: jobRows['id'],
-               jobStatus: jobRows['status'],
-               isPremium: jobRows['premium'],
-               isEditable: jobRows['editable'],
+               jobTitle: getTitleFormat(jobRow["title"],(/\(\d+-\d+ \w+\)$/)),
+               jobLocation: jobRow["loc"].toString(),
+               jobExperience: jobRow["exp"]['min']+'-'+ jobRow['exp']['max'] +' yrs',
+               jobId: jobRow['id'],
+               jobStatus: jobRow['status'],
+               isPremium: jobRow['premium'],
+               isEditable: jobRow['editable'],
                calendars: calendarRows
             }
-            return pubsub.publish("fetchedParallelJobStatusAndCalendars:"+jobId, data);
+            return pubsub.publish("fetchedJobDetails:"+jobId, data);
         }
-        return pubsub.publish("failedToFetchParallelJobStatusAndCalendars:"+jobId, data);
+        return pubsub.publish("failedToFetchJobDetails:"+jobId, data);
     });
 
     // initializing the models
 	var candidates = candidateList();
     var aCandidate = Candidate();
+    var aJob = Job();
     var store = Store();
 
     candidates.setConfig("availableCredits", profile["availableCredits"]);
-    candidates.init(queryParameters)
 
-    /**
-     * Making the initial page load call.
-     * check for status in the queryString
-     */
-    //fetchCalendars(jobId)
-  
-
-    fetchJob(jobId);
-	fetchJobApplications(jobId,"");
+    aJob.init()
 
     candidates.onClickCandidate(openSingleCandidate);
     function openSingleCandidate(candidateId){
@@ -112,9 +108,15 @@ jQuery(document).ready( function() {
 		alert(res.status)
 		console.log(topic)
 		console.log(data);
-
 	}
 
+    function onSuccessfulFetchJobDetails(topic, data) {
+        fetchJobApplications(jobId,"",recruiterId);
+        aJob.setJobDetails(data);
+    }
+
+
+    var fetchJobDetailsSubscription = pubsub.subscribe("fetchedJobDetails:"+jobId, onSuccessfulFetchJobDetails)
     var fetchJobSuccessSubscription = pubsub.subscribe("fetchedJob:"+jobId, onSuccessfulFetchJob);
 	var fetchJobFailSubscription = pubsub.subscribe("failedToFetchJob:"+jobId, onFailedFetchJob);
     var fetchJobApplicationsSuccessSubscription = pubsub.subscribe("fetchedJobApplication:"+jobId, onJobsApplicationsFetchSuccess)
