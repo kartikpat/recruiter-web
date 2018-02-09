@@ -49,7 +49,7 @@ jQuery(document).ready( function() {
 
     candidates.onClickCandidateOtherActions();
     candidates.onClickFilters();
-    candidates.onClickJobOtherActions();
+    aJob.onClickJobOtherActions();
 
     candidates.onClickAddTag(openAddTagModal);
     function openAddTagModal() {
@@ -61,18 +61,18 @@ jQuery(document).ready( function() {
         alert("added");
     }
 
-    candidates.onClickJobCancel(openUnpublishModal)
+    aJob.onClickJobCancel(openUnpublishModal)
     function openUnpublishModal(jobId){
         alert(jobId)
         trackEventCancelButtonClick();
     }
 
-    candidates.onClickJobRefresh(openRefreshModal)
+    aJob.onClickJobRefresh(openRefreshModal)
     function openRefreshModal(jobId) {
         alert(jobId)
     }
 
-    candidates.onClickJobMakePremium(openPremiumModal)
+    aJob.onClickJobMakePremium(openPremiumModal)
     function openPremiumModal(jobId){
         alert(jobId)
     }

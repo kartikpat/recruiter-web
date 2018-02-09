@@ -14,6 +14,7 @@ function Job(){
 		settings.jobPostFacebook = $("#jobPostFacebook");
 		settings.jobPostTwitter = $("#jobPostTwitter");
 		settings.jobPostLinkedin = $("#jobPostLinkedin");
+		settings.jobOtherActions = $("#jobOtherActions")
 	}
 
 	function setJobDetails(data){
@@ -28,16 +29,63 @@ function Job(){
             settings.jobExperience.text(data["experience"]).removeClass("hidden")
         }
 		var status = data["jobStatus"];
+		var statusArr = ["published", "unpublished"];
+		if(statusArr.indexOf(status) != -1) {
+			populateCalendarOptions(data["calendars"])
+		}
 		if(status == "published" && !data["isPremium"]) {
 			console.log("a")
-			populateCalendarOptions(data["calendars"])
-            // item.unpublish.removeClass("hidden")
-            // if(data["refresh"])
-    		//     item.refresh.removeClass("hidden")
-            // if(!data["premium"] )
-            //     item.premium.removeClass("hidden")
+            settings.jobUnpublishButton.removeClass("hidden")
+            if(data["refresh"])
+    		    settings.jobRefreshButton.removeClass("hidden")
+            if(!data["premium"])
+                settings.jobPremiumButton.removeClass("hidden")
         }
+        if(data["editable"]) {
+            settings.jobEditButton.attr("href","/post-job?jobId="+data["id"]+"").removeClass("hidden")
+        }
+	}
 
+	function onClickJobCancel(fn){
+		settings.jobUnpublishButton.click(function(e){
+			var modal = $(".unpublishModal")
+			var jobId = $(this).attr("data-id");
+			modal.removeClass('hidden');
+			modal.find(".unpublishButton").click(function(){
+				fn(jobId)
+			});
+		});
+	}
+
+	function onClickJobRefresh(fn) {
+		settings.jobRefreshButton.click(function(e) {
+			var modal = $(".refreshModal")
+			var jobId = $(this).attr("data-id");
+			modal.removeClass('hidden');
+			modal.find(".refreshButton").click(function(){
+				fn(jobId)
+			});
+            return false;
+		})
+	}
+
+	function onClickJobMakePremium(fn) {
+		settings.jobPremiumButton.click(function(e) {
+			var jobId = $(this).attr("data-id");
+			var modal = $(".premiumModal");
+			if(config["availableCredits"] > 0) {
+				modal.find('.premiumButton').click(function(){
+					fn(jobId)
+				}).removeClass("hidden");
+				modal.find(".section.modal_text").text("This job will be highlighted and moved to top of the list for 15 days starting today. You will have "+(parseInt(config["availableCredits"]) - 1)+" credits left.")
+				modal.removeClass('hidden');
+				return false
+			}
+			modal.find(".js_modalText").text("Reach out to more candidates in less amount of time by making your job premium.")
+			modal.find(".section.modal_text").text("You don’t have any premium credits right now! We’ll reach out to you to help you with it!")
+            modal.removeClass('hidden');
+			//shootEmail()
+		})
 	}
 
 	function getCalendarElement() {
@@ -76,18 +124,23 @@ function Job(){
 	// function showActions(data) {
     //     console.log(data)
 	//
-    //     else if(data["status"] == "unpublished") {
-    //         item.calendar.removeClass("hidden")
-    //     }
-    //     if(data["editable"]) {
-    //         item.edit.attr("href","/post-job?jobId="+data["id"]+"").removeClass("hidden")
-    //     }
+
 	//
     // }
 
+	function onClickJobOtherActions() {
+        settings.jobOtherActions.click(function(event) {
+            $(this).toggleClass("inactive");
+        })
+    }
+
 	return {
 		init: init,
-        setJobDetails: setJobDetails
+        setJobDetails: setJobDetails,
+		onClickJobOtherActions: onClickJobOtherActions,
+		onClickJobCancel: onClickJobCancel,
+		onClickJobRefresh: onClickJobRefresh,
+		onClickJobMakePremium: onClickJobMakePremium,
 	}
 
 }

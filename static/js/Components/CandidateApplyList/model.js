@@ -180,47 +180,7 @@ function candidateList() {
     //Actions Component
 
 
-    function onClickJobCancel(fn){
-		list.header.on('click','.jsUnpublish',function(){
-			var modal = $(".unpublishModal")
-			var jobId = $(this).attr("data-id");
-			modal.removeClass('hidden');
-			modal.find(".unpublishButton").click(function(){
-				fn(jobId)
-			});
-		});
-	}
 
-	function onClickJobRefresh(fn) {
-		list.header.on('click','.jsRefresh',function(event) {
-			var modal = $(".refreshModal")
-			var jobId = $(this).attr("data-id");
-			modal.removeClass('hidden');
-			modal.find(".refreshButton").click(function(){
-				fn(jobId)
-			});
-            return false;
-		})
-	}
-
-	function onClickJobMakePremium(fn) {
-		list.header.on('click','.jsMakePremium',function(fevent) {
-			var jobId = $(this).attr("data-id");
-			var modal = $(".premiumModal");
-			if(config["availableCredits"] > 0) {
-				modal.find('.premiumButton').click(function(){
-					fn(jobId)
-				}).removeClass("hidden");
-				modal.find(".section.modal_text").text("This job will be highlighted and moved to top of the list for 15 days starting today. You will have "+(parseInt(config["availableCredits"]) - 1)+" credits left.")
-				modal.removeClass('hidden');
-				return false
-			}
-			modal.find(".js_modalText").text("Reach out to more candidates in less amount of time by making your job premium.")
-			modal.find(".section.modal_text").text("You don’t have any premium credits right now! We’ll reach out to you to help you with it!")
-            modal.removeClass('hidden');
-			//shootEmail()
-		})
-	}
     // function getActionElement() {
 	// 	var card = $('.jsJobActions');
 	// 	return {
@@ -259,18 +219,14 @@ function candidateList() {
         })
     }
 
-    function onClickJobOtherActions() {
-        list.header.on('click','.jsJobOtherActions',function(event) {
-            $(this).toggleClass("inactive");
-        })
-    }
+
 
     function onClickSendMessage() {
 
     }
 
     function onClickSendInterviewInvite(fn) {
-        list.rowContainer.on('click', settings.candidateInviteButton, function(){
+        list.rowContainer.on('click', settings.candidateInviteButton, function(e){
 
         })
     }
@@ -325,14 +281,12 @@ function candidateList() {
         setJobStats: setJobStats,
         activateStatsTab: activateStatsTab,
         onClickCandidate: onClickCandidate,
-		onClickJobCancel: onClickJobCancel,
-		onClickJobRefresh: onClickJobRefresh,
-		onClickJobMakePremium: onClickJobMakePremium,
+		
         onClickCandidateOtherActions: onClickCandidateOtherActions,
         onClickAddTag: onClickAddTag,
         onClickAddComment: onClickAddComment,
         onClickFilters: onClickFilters,
-        onClickJobOtherActions: onClickJobOtherActions
+
 	}
 
 
