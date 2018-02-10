@@ -3,8 +3,9 @@ jQuery(".header .menu-list-item.my-jobs").addClass("active");
 jQuery(document).ready( function() {
 	var jobList = Jobs();
 	fetchJobs();
-	console.log()
 	jobList.setConfig("availableCredits", profile["availableCredits"]);
+
+	
 	var fetchJobSuccessSubscription = pubsub.subscribe('fetchedJobs:all', onJobsFetchSuccess)
 	var fetchJobFailSubscription = pubsub.subscribe('fetchJobsFail', onJobsFetchFail)
 	var unPublishJobSuccessSubscription = pubsub.subscribe("unPublishedJob", onSuccessfulUnpublishedJob);

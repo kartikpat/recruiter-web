@@ -37,7 +37,7 @@ jQuery(document).ready( function() {
     var theJob = Job();
     var store = Store();
 
-    candidates.setConfig("availableCredits", profile["availableCredits"]);
+    theJob.setConfig("availableCredits", profile["availableCredits"]);
 
     theJob.init();
 
@@ -56,7 +56,7 @@ jQuery(document).ready( function() {
         alert("added");
     }
 
-    candidates.onClickAddComment();
+    candidates.onClickAddComment(openAddCommentModal);
     function openAddCommentModal() {
         alert("added");
     }
@@ -75,6 +75,12 @@ jQuery(document).ready( function() {
     theJob.onClickJobMakePremium(openPremiumModal)
     function openPremiumModal(jobId){
         alert(jobId)
+    }
+
+    theJob.onChangeDefaultCalendar(setDefaultCalendar)
+    function setDefaultCalendar(calendarId) {
+        alert(calendarId)
+        //postRequestDefaultCalendar
     }
 
     candidates.createJobStatsTabs(onClickTab)
@@ -122,8 +128,8 @@ jQuery(document).ready( function() {
         var defaultCalendarId = theJob.getDefaultCalendar();
         if(!defaultCalendarId)
             theJob.showCalendarMissingError();
-        if(!(defaultCalendarId && candidateId && applicationId ))
-            return alert('Please provide all values');
+        // if(!(defaultCalendarId && candidateId && applicationId ))
+        //     return alert('Please provide all values');
         // postInterviewInvite()
      }
 

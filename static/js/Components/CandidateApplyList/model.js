@@ -10,7 +10,8 @@ function candidateList() {
         candidateAddCommentButton : $(".candidateAddComment"),
         candidateSaveButton : $(".candidateSave"),
         candidateDownloadResumeButton : $(".candidateDownloadResume"),
-        candidateSendMessageButton : $(".candidateSendMessage")
+        candidateSendMessageButton : $(".candidateSendMessage"),
+        candidateOtherActions: $('.candidateOtherActions')
 	};
 
     var config = {};
@@ -155,10 +156,10 @@ function candidateList() {
 
     function onClickCandidate(fn) {
         settings.rowContainer.on('click', ".candidate-item", function(e){
-            if((!jQuery(e.target).parents(".jsClickableActions").length) && (!jQuery(e.target).parents(".candidate-item-section.image").length)) {
+            //if((!jQuery(e.target).parents(".jsClickableActions").length) && (!jQuery(e.target).parents(".candidate-item-section.image").length)) {
                 var candidateId = $(this).attr('data-candidate-id');
                 return fn(candidateId);
-            }
+            // }
         })
     }
 
@@ -202,10 +203,14 @@ function candidateList() {
 
 
 
-
+    function retrieveClasses(elem){
+        return "."+elem.attr("class").replace(/ +/g, ".");
+    }
 
     function onClickCandidateOtherActions() {
-        settings.rowContainer.on('click','.jsCandidateOtherActions',function(event) {
+        settings.rowContainer.on('click', retrieveClasses(settings.candidateOtherActions),function(event) {
+            console.log("s")
+            event.stopPropagation();
             $(this).toggleClass("inactive");
         })
     }
@@ -217,10 +222,11 @@ function candidateList() {
     }
 
     function onClickSendInterviewInvite(fn) {
-        settings.rowContainer.on('click', settings.candidateInviteButton, function(){
-            var candidateId = $(this).closest(candidateItem).attr('data-candidate-id');
-            var applicationId = $(this).closest(candidateItem).attr('application-id');
-            return fn(candidateId, applicationId);
+        settings.rowContainer.on('click', retrieveClasses(settings.candidateInviteButton), function(event){
+            event.stopPropagation();
+            // var candidateId = $(this).closest(candidateItem).attr('data-candidate-id');
+            // var applicationId = $(this).closest(candidateItem).attr('application-id');
+            return fn;
         })
     }
 
@@ -233,11 +239,12 @@ function candidateList() {
     }
 
     function onClickAddComment(fn) {
-        settings.rowContainer.on('click', settings.candidateAddComment ,function(event) {
+        settings.rowContainer.on('click', retrieveClasses(settings.candidateAddCommentButton) ,function(event) {
+            event.stopPropagation();
 			// var jobId = $(this).attr("data-id");
 			var modal = $(".jsAddCommentModal");
             modal.find(".jsAddComment").click(function(){
-                fn(jobId)
+                return fn
             });
             addBodyFixed()
             modal.removeClass("hidden")
@@ -246,7 +253,8 @@ function candidateList() {
     }
 
     function onClickAddTag() {
-        settings.rowContainer.on('click',settings.candidateAddTag,function(event) {
+        settings.rowContainer.on('click',retrieveClasses(settings.candidateAddTagButton) ,function(event) {
+            event.stopPropagation()
 			// var jobId = $(this).attr("data-id");
 			var modal = $(".jsAddTagModal");
             modal.find(".jsAddTag").click(function(){
@@ -279,6 +287,4 @@ function candidateList() {
         onClickAddTag: onClickAddTag,
         onClickAddComment: onClickAddComment
 	}
-
-
 }

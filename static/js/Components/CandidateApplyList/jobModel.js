@@ -1,5 +1,11 @@
 function Job(){
 	var settings = {};
+	var config = {};
+
+	function setConfig(key, value) {
+		config[key] = value;
+	}
+
 	function init(){
 		settings.jobId = $("#jobCode");
 		settings.jobTitle = $("#jobTitle");
@@ -10,6 +16,7 @@ function Job(){
 		settings.jobPremiumButton = $("#jobPremiumButton");
 		settings.jobUnpublishButton = $("#jobUnpublishButton");
 		settings.calendarContainer = $("#calendarContainer");
+		settings.calendarSelect = $("#calendarSelect");
 		settings.jobRefreshButton = $("#jobRefreshButton");
 		settings.jobPostFacebook = $("#jobPostFacebook");
 		settings.jobPostTwitter = $("#jobPostTwitter");
@@ -36,7 +43,6 @@ function Job(){
 			populateCalendarOptions(data["calendars"])
 		}
 		if(status == "published" && !data["isPremium"]) {
-			console.log("a")
             settings.jobUnpublishButton.removeClass("hidden")
             if(data["refresh"])
     		    settings.jobRefreshButton.removeClass("hidden")
@@ -100,8 +106,8 @@ function Job(){
 	function populateCalendarOptions(array) {
         if(array.length < 1)
             return
-		if(array.length == 1)
-			setDefaultCalendar(array[0]["id"]);
+		// if(array.length == 1)
+		// 	setDefaultCalendar(array[0]["id"]);
 		var calendarOptionsStr = '';
 		var item = getCalendarElement();
 		item.element.text("Calendar Link: Select");
@@ -117,7 +123,7 @@ function Job(){
             }
 			calendarOptionsStr += item.element[0].outerHTML;
         })
-		settings.calendarContainer.find(".calendarSelect").html(calendarOptionsStr)
+		settings.calendarSelect.html(calendarOptionsStr)
 		settings.calendarContainer.removeClass("hidden")
     }
 
@@ -137,19 +143,29 @@ function Job(){
         })
     }
 
+	function onChangeDefaultCalendar(fn) {
+		settings.calendarSelect.on('change', function(e) {
+			console.log("a")
+			var calendarId = $(this).val();
+			return fn(calendarId)
+		})
+	}
+
 	function showCalendarMissingError() {
 		settings.calendarSelectError.text("Please Select the calendar!").removeClass("hidden");
 	}
 
 	return {
 		init: init,
+		setConfig: setConfig,
         setJobDetails: setJobDetails,
 		onClickJobOtherActions: onClickJobOtherActions,
 		onClickJobCancel: onClickJobCancel,
 		onClickJobRefresh: onClickJobRefresh,
 		onClickJobMakePremium: onClickJobMakePremium,
 		getDefaultCalendar: getDefaultCalendar,
-		showCalendarMissingError: showCalendarMissingError
+		showCalendarMissingError: showCalendarMissingError,
+		onChangeDefaultCalendar: onChangeDefaultCalendar
 	}
 
 }
