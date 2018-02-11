@@ -68,7 +68,7 @@ function getQueryParameter(queryString) {
     }
 }
 
-function getMonthName(month) {
+function getMonthName(month){
 	if(!month || month > 12) {
 		return ""
 	}
@@ -85,4 +85,8 @@ function isCanvasSupported() {
 
 function addBodyFixed() {
 	jQuery("body").addClass("posf");
+}
+
+function removeBodyFixed(){
+	jQuery("body").removeClass("posf");	
 }

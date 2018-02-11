@@ -1,4 +1,4 @@
-function fetchJobs(type, recruiterId){
+function fetchJobs(recruiterId, type){
 // 	var sampleData = {
 //     "data": [
 //         {

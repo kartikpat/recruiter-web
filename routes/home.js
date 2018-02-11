@@ -33,7 +33,7 @@ module.exports = function(settings){
 			console.log(baseUrl)
 			return request.get({
 				url: baseUrl+"/recruiter/"+recruiterID+""
-			},function(err, res, body){
+			},function(err, response, body){
 				if(err){
 					console.log(err);
 					return res.redirect('/login');

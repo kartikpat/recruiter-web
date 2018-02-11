@@ -2,8 +2,7 @@ jQuery(".header .menu-list-item.my-jobs").addClass("active");
 
 jQuery(document).ready( function() {
 	var jobList = Jobs();
-	fetchJobs();
-	console.log()
+	fetchJobs(recruiterId);
 	jobList.setConfig("availableCredits", profile["availableCredits"]);
 	var fetchJobSuccessSubscription = pubsub.subscribe('fetchedJobs:all', onJobsFetchSuccess)
 	var fetchJobFailSubscription = pubsub.subscribe('fetchJobsFail', onJobsFetchFail)
@@ -19,13 +18,13 @@ jQuery(document).ready( function() {
 			alert(jobId)
 			// unPublishJob(jobId)
 			trackEventCancelButtonClick();
-		})
-		jobList.onClickJobRefresh(function(jobId) {
+		});
+		jobList.onClickJobRefresh(function(jobId){
 			alert(jobId)
-		})
+		});
 		jobList.onClickJobMakePremium(function(jobId){
 			alert(jobId)
-		})
+		});
 	}
 
 	function onJobsFetchFail(topic, data){
