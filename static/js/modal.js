@@ -31,56 +31,56 @@ jQuery(".modal_overlay").on('click', ".close_modal",function(e) {
     jQuery(".modal_overlay").addClass("hidden");
 });
 
-industryTagsData.forEach(function(anObj) {
-    var checkbox = $(".jsCheckInput.prototype").clone().removeClass("prototype hidden");
-    checkbox.find(".in").attr("value", anObj["val"]);
-    checkbox.find(".in").attr("id", "indus-"+anObj["val"]);
-    checkbox.find(".lab").text(anObj["text"]);
-    checkbox.find(".lab").attr("for","indus-"+anObj["val"]);
-    $(".jsIndustry").append(checkbox);
-})
+// industryTagsData.forEach(function(anObj) {
+//     var checkbox = $(".jsCheckInput.prototype").clone().removeClass("prototype hidden");
+//     checkbox.find(".in").attr("value", anObj["val"]);
+//     checkbox.find(".in").attr("id", "indus-"+anObj["val"]);
+//     checkbox.find(".lab").text(anObj["text"]);
+//     checkbox.find(".lab").attr("for","indus-"+anObj["val"]);
+//     $(".jsIndustry").append(checkbox);
+// })
 
-currentLocationTagsData.forEach(function(anObj) {
-    var checkbox = $(".jsCheckInput.prototype").clone().removeClass("prototype hidden");
-    checkbox.find(".in").attr("value", anObj["val"]);
-    checkbox.find(".in").attr("id", "curloc-"+anObj["val"]);
-    checkbox.find(".lab").text(anObj["text"]);
-    checkbox.find(".lab").attr("for","curloc-"+anObj["val"]);
-    $(".jsCurLoc").append(checkbox);
-})
+// currentLocationTagsData.forEach(function(anObj) {
+//     var checkbox = $(".jsCheckInput.prototype").clone().removeClass("prototype hidden");
+//     checkbox.find(".in").attr("value", anObj["val"]);
+//     checkbox.find(".in").attr("id", "curloc-"+anObj["val"]);
+//     checkbox.find(".lab").text(anObj["text"]);
+//     checkbox.find(".lab").attr("for","curloc-"+anObj["val"]);
+//     $(".jsCurLoc").append(checkbox);
+// })
 
-prefeLocationTagsData.forEach(function(anObj) {
-    var checkbox = $(".jsCheckInput.prototype").clone().removeClass("prototype hidden");
-    checkbox.find(".in").attr("value", anObj["val"]);
-    checkbox.find(".in").attr("id", "prefloc-"+anObj["val"]);
-    checkbox.find(".lab").text(anObj["text"]);
-    checkbox.find(".lab").attr("for","prefloc-"+anObj["val"]);
-    $(".jsPrefLoc").append(checkbox);
-})
+// prefeLocationTagsData.forEach(function(anObj) {
+//     var checkbox = $(".jsCheckInput.prototype").clone().removeClass("prototype hidden");
+//     checkbox.find(".in").attr("value", anObj["val"]);
+//     checkbox.find(".in").attr("id", "prefloc-"+anObj["val"]);
+//     checkbox.find(".lab").text(anObj["text"]);
+//     checkbox.find(".lab").attr("for","prefloc-"+anObj["val"]);
+//     $(".jsPrefLoc").append(checkbox);
+// })
 
-functionalAreaTagsData.forEach(function(anObj) {
-    var checkbox = $(".jsCheckInput.prototype").clone().removeClass("prototype hidden");
-    checkbox.find(".in").attr("value", anObj["val"]);
-    checkbox.find(".in").attr("id", "funcArea-"+anObj["val"]);
-    checkbox.find(".lab").text(anObj["text"]);
-    checkbox.find(".lab").attr("for","funcArea-"+anObj["val"]);
-    $(".jsFuncArea").append(checkbox);
-})
+// functionalAreaTagsData.forEach(function(anObj) {
+//     var checkbox = $(".jsCheckInput.prototype").clone().removeClass("prototype hidden");
+//     checkbox.find(".in").attr("value", anObj["val"]);
+//     checkbox.find(".in").attr("id", "funcArea-"+anObj["val"]);
+//     checkbox.find(".lab").text(anObj["text"]);
+//     checkbox.find(".lab").attr("for","funcArea-"+anObj["val"]);
+//     $(".jsFuncArea").append(checkbox);
+// })
 
-instituteTagsData.forEach(function(anObj) {
-    var checkbox = $(".jsCheckInput.prototype").clone().removeClass("prototype hidden");
-    checkbox.find(".in").attr("value", anObj["val"]);
-    checkbox.find(".in").attr("id", "inst-"+anObj["val"]);
-    checkbox.find(".lab").text(anObj["text"]);
-    checkbox.find(".lab").attr("for","inst-"+anObj["val"]);
-    $(".jsInstitute").append(checkbox);
-})
+// instituteTagsData.forEach(function(anObj) {
+//     var checkbox = $(".jsCheckInput.prototype").clone().removeClass("prototype hidden");
+//     checkbox.find(".in").attr("value", anObj["val"]);
+//     checkbox.find(".in").attr("id", "inst-"+anObj["val"]);
+//     checkbox.find(".lab").text(anObj["text"]);
+//     checkbox.find(".lab").attr("for","inst-"+anObj["val"]);
+//     $(".jsInstitute").append(checkbox);
+// })
 
-languageTagsData.forEach(function(anObj) {
-    var checkbox = $(".jsCheckInput.prototype").clone().removeClass("prototype hidden");
-    checkbox.find(".in").attr("value", anObj["val"]);
-    checkbox.find(".in").attr("id",  "lang-"+anObj["val"]);
-    checkbox.find(".lab").text(anObj["text"]);
-    checkbox.find(".lab").attr("for", "lang-"+anObj["val"]);
-    $(".jsLanguage").append(checkbox);
-})
+// languageTagsData.forEach(function(anObj) {
+//     var checkbox = $(".jsCheckInput.prototype").clone().removeClass("prototype hidden");
+//     checkbox.find(".in").attr("value", anObj["val"]);
+//     checkbox.find(".in").attr("id",  "lang-"+anObj["val"]);
+//     checkbox.find(".lab").text(anObj["text"]);
+//     checkbox.find(".lab").attr("for", "lang-"+anObj["val"]);
+//     $(".jsLanguage").append(checkbox);
+// })
