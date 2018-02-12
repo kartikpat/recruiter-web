@@ -1,7 +1,20 @@
-function Jobs(){
-	var list = {
-		rowContainer: $('.jobRowList')
+function Jobs() {
+
+	var settings = {
+		rowContainer: $('.jobRowList'),
+		jobFilters: $('#jobFilters'),
+		jobEditButton: '.jobEdit',
+		openJobUnpublishModalButton: '.unpublishModalButton',
+		openJobRefreshModalButton: '.refreshModalButton',
+		openMakeJobPremiumModalButton: '.makePremiumModalButton',
+		jobUnpublishModal: $('.unpublishModal'),
+		jobUnpublishButton: $('.jobUnpublishButton'),
+		jobRefreshModal: $(".refreshModal"),
+		jobRefreshButton: $(".jobRefreshButton"),
+		jobMakePremiumModal: $(".premiumModal"),
+		jobMakePremiumButton: $(".jobMakePremiumButton")
 	};
+
 	var config = {};
 
 	function setConfig(key, value) {
@@ -9,57 +22,56 @@ function Jobs(){
 	}
 
 	function onClickJobCancel(fn){
-		list.rowContainer.find('.js_cancel').click(function(){
-			var modal = $(".unpublishModal")
+		settings.rowContainer.on('click',settings.openJobUnpublishModalButton,function(e){
 			var jobId = $(this).attr("data-id");
-			modal.removeClass('hidden');
-			modal.find(".unpublishButton").click(function(){
-				fn(jobId)
-			});
+			settings.jobUnpublishModal.removeClass('hidden');
+			settings.jobUnpublishButton.click(fn);
 			return false;
 		});
 	}
 
 	function onClickJobEdit() {
-		list.rowContainer.find('.js_edit').click(function(event) {
+		settings.rowContainer.on('click', settings.jobEditButton ,function(e) {
 			return parseInt($(this).attr('data-editable')) ? true : false;
 		})
 	}
 
 	function onClickJobRefresh(fn) {
-		list.rowContainer.find('.js_refresh').click(function(event) {
-			var modal = $(".refreshModal")
+		settings.rowContainer.on('click', settings.openJobRefreshModalButton,function(e) {
 			if(parseInt($(this).attr("data-refresh"))) {
 				var jobId = $(this).attr("data-id");
-				modal.removeClass('hidden');
-				modal.find(".refreshButton").click(function(){
-					fn(jobId)
-				});
+				settings.jobRefreshModal.removeClass('hidden');
+				settings.jobRefreshButton.click(fn);
 			}
 			return false;
 		})
 	}
 
 	function onClickJobMakePremium(fn) {
-		list.rowContainer.find('.js_premium').click(function(event) {
+		settings.rowContainer.on('click', settings.openMakeJobPremiumModalButton,function(event) {
 			if(parseInt($(this).attr("data-premium"))) {
 				return false;
 			}
 			var jobId = $(this).attr("data-id");
-			var modal = $(".premiumModal");
 			if(config["availableCredits"] > 0) {
-				modal.find('.premiumButton').click(function(){
-					fn(jobId)
-				}).removeClass("hidden");
-				modal.find(".section.modal_text").text("This job will be highlighted and moved to top of the list for 15 days starting today. You will have "+(parseInt(config["availableCredits"]) - 1)+" credits left.")
-				modal.removeClass('hidden');
+				settings.jobMakePremiumButton.click(fn)
+				settings.jobMakePremiumButton.removeClass("hidden")
+				settings.jobMakePremiumModal.find(".section.modal_text").text("This job will be highlighted and moved to top of the list for 15 days starting today. You will have "+(parseInt(config["availableCredits"]) - 1)+" credits left.")
+				settings.jobMakePremiumModal.removeClass('hidden');
 				return false
 			}
-			modal.find(".js_modalText").text("Reach out to more candidates in less amount of time by making your job premium.")
-			modal.find(".section.modal_text").text("You don’t have any premium credits right now! We’ll reach out to you to help you with it!")
-			modal.removeClass('hidden');
+			settings.jobMakePremiumModal.find(".js_modalText").text("Reach out to more candidates in less amount of time by making your job premium.")
+			settings.jobMakePremiumModal.find(".section.modal_text").text("You don’t have any premium credits right now! We’ll reach out to you to help you with it!")
+			settings.jobMakePremiumModal.removeClass('hidden');
 			//shootEmail()
 			return false;
+		})
+	}
+
+	function onChangeJobFilters(fn) {
+		settings.jobFilters.change(function() {
+			var status = $(this).val();
+		    return fn(status);
 		})
 	}
 
@@ -78,13 +90,13 @@ function Jobs(){
 			statusMsg: card.find('.js_status_msg'),
 			views: card.find('.js_views'),
 			applications: card.find('.js_applications'),
-			edit: card.find('.js_edit'),
-			cancel: card.find('.js_cancel'),
-			refresh: card.find('.js_refresh'),
-			premium: card.find('.js_premium'),
-			facebook: card.find('.js_facebook'),
-			twitter: card.find('.js_twiiter'),
-			linkedIn: card.find('.js_linkedIn')
+			edit: card.find(settings.jobEditButton),
+			cancel: card.find(settings.openJobUnpublishModalButton),
+			refresh: card.find(settings.openJobRefreshModalButton),
+			premium: card.find(settings.openMakeJobPremiumModalButton),
+			facebook: card.find('.jobFacebook'),
+			twitter: card.find('.jobTwitter'),
+			linkedIn: card.find('.jobLinkedin')
 		}
 	}
 
@@ -130,12 +142,14 @@ function Jobs(){
 		item.createdOn.text(getDateFormat(aData["created"]))
 		item.title.text(title)
 		item.element.find('.action-icon').attr('data-id',aData["id"]);
+
 		var loc = aData["loc"];
 		var locShow = loc.toString();
 		if(loc.length) {
 			item.seperator.removeClass("hidden")
 			(loc.length <= 3) ? item.location.append("<span>"+locShow+"</span>") : item.multipleLocation.attr("title",locShow).removeClass("hidden");
 		}
+
 		var experience = aData["exp"]['min']+'-'+aData['exp']['max'] +' yrs'
 		item.experience.text(experience);
 
@@ -160,20 +174,22 @@ function Jobs(){
 			item.element.find(".js_engagement_default").addClass("hidden");
 		}
 
-		item.edit.attr("data-editable", aData["editable"])
-		var refresh = 1;
-		item.refresh.attr("data-refresh", refresh)
-		if(!refresh)
+
+		item.refresh.attr("data-refresh", aData["refresh"])
+		if(!aData["refresh"])
 			item.refresh.attr("title", "You can refresh this job after 7 days")
+
+		item.edit.attr("data-editable", aData["editable"])
 		item.edit.attr("href","/post-job?jobId="+aData["id"]+"")
 		if(!aData["editable"]) {
-			item.edit.find('.js_edit_icon').attr("title","This job cannot be edited now. Reach us at hello@iimjobs.com in case of any issue.");
+			item.edit.attr("title","This job cannot be edited now. Reach us at hello@iimjobs.com in case of any issue.");
 		}
 
 		item.premium.attr("data-premium", aData["premium"]);
 		if(aData["premium"]) {
 			item.premium.find('.icon-star').addClass("premium_highlight");
 		}
+
 		return item;
 	}
 
@@ -194,7 +210,7 @@ function Jobs(){
 			var item = createElement(aData);
 			str+=item.element[0].outerHTML;
 		});
-		list.rowContainer.append(str);
+		settings.rowContainer.html(str);
 	}
 
 	return {
@@ -204,6 +220,7 @@ function Jobs(){
 		onClickJobCancel: onClickJobCancel,
 		onClickJobRefresh: onClickJobRefresh,
 		setConfig : setConfig,
-		onClickJobMakePremium: onClickJobMakePremium
+		onClickJobMakePremium: onClickJobMakePremium,
+		onChangeJobFilters: onChangeJobFilters
 	}
 }

@@ -540,7 +540,7 @@
                    <div class="field">
 
                        <select class="half left" id="min_salary" name="Sal">
-                            <option value="0">Min salary</option>
+                            <option value="">Min salary</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -559,7 +559,7 @@
                         </select>
 
                        <select class="half right" id="max_salary" name="Sal">
-                            <option value="0">Max salary</option>
+                            <option value="">Max salary</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -879,25 +879,24 @@
             </ul>
         </div>
     </div>
-<div class="premium_job_section">
-    <div class="section-head job-visibility">
-        <h3>Job Visibility</h3>
+    <div class="premium_job_section">
+        <div class="section-head job-visibility">
+            <h3>Job Visibility</h3>
+        </div>
+
+        <div class="contents">
+            <input type="checkbox" id="isPremium" name="premium" value="0">
+            <label for="isPremium" class="checkbox premium-job important-info-color font-sm">
+                <span>Make Job Premium.</span>
+            </label>
+            <p class="" id="creditsText"> You have 3 credits left.</p>
+        </div>
     </div>
 
-    <div class="contents">
-        <input type="checkbox" id="isPremium" name="premium" value="0">
-        <label for="isPremium" class="checkbox premium-job important-info-color font-sm">
-            <span>Make Job Premium.</span>
-        </label>
-        <p class="js_availableCredits"> You have 3 credits left.</p>
-        <p>Reach out to more candidates in less time by making your job Premium. <a class="link">Know more</a></p>
+    <div class="submit-action-buttons">
+        <button class="button submit-form" id="submitForm">Submit</button>
+        <button class="button cancel-form" id="cancelForm">Cancel</button>
     </div>
-</div>
-
-<div class="submit-action-buttons">
-    <button class="button submit-form">Submit</button>
-    <button class="button cancel-form">Cancel</button>
-</div>
 
 
 </div>

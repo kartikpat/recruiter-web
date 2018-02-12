@@ -4,14 +4,14 @@ function candidateList() {
 		rowContainer: $('.js_candidate_listing'),
         header: $('#jobDetails'),
         candidatesContainer: $('.jsCandidatesArea'),
-        candidateRow: $(".candidateItem.prototype"),
-        candidateInviteButton : $(".candidateSendInterviewInvite"),
-        candidateAddTagButton: $(".candidateAddTag"),
-        candidateAddCommentButton : $(".candidateAddComment"),
+        candidateRow: $(".candidateItem"),
+        candidateInviteButton : ".candidateSendInterviewInvite",
+        candidateAddTagButton: ".candidateAddTag",
+        candidateAddCommentButton : ".candidateAddComment",
         candidateSaveButton : $(".candidateSave"),
         candidateDownloadResumeButton : $(".candidateDownloadResume"),
         candidateSendMessageButton : $(".candidateSendMessage"),
-        candidateOtherActions: $('.candidateOtherActions')
+        candidateOtherActions: '.candidateOtherActions'
 	};
 
     var config = {};
@@ -21,7 +21,7 @@ function candidateList() {
 	}
 
     function getElement(id) {
-		var card = settings.candidateRow.clone().removeClass('prototype hidden')
+		var card = $(".candidateItem.prototype").clone().removeClass('prototype hidden')
 		card.attr('data-candidate-id', id);
 		return {
 			element: card,
@@ -136,30 +136,34 @@ function candidateList() {
     }
 
     function addToList(dataArray){
+        console.log(dataArray)
 		var str = '';
-		dataArray.forEach(function(aData){
+		dataArray.forEach(function(aData, index){
 			var item = createElement(aData);
 			str+=item.element[0].outerHTML;
+            console.log(index)
 		});
-		settings.rowContainer.html(str);
+		settings.rowContainer.append(str);
+        $("#jobs-tabs").removeClass("hidden")
 	}
 
     function createJobStatsTabs(fn) {
-        jQuery("#jobs-category-tabs").tabs({
+        jQuery("#jobs-tabs").tabs({
             active: 0,
             create:function(){
-                $(this).removeClass("hidden")
+
             },
-            activate: fn
+            activate: function(event, ui){
+                settings.rowContainer.empty();
+                fn(event, ui);
+            }
         })
     }
 
     function onClickCandidate(fn) {
         settings.rowContainer.on('click', ".candidate-item", function(e){
-            //if((!jQuery(e.target).parents(".jsClickableActions").length) && (!jQuery(e.target).parents(".candidate-item-section.image").length)) {
-                var candidateId = $(this).attr('data-candidate-id');
-                return fn(candidateId);
-            // }
+            var candidateId = $(this).attr('data-candidate-id');
+            return fn(candidateId);
         })
     }
 
@@ -169,60 +173,20 @@ function candidateList() {
         return $(ui.newTab[0]).attr("data-attribute");
     }
 
-    //Actions Component
-
-
-
-    // function getActionElement() {
-	// 	var card = $('.jsJobActions');
-	// 	return {
-	// 		element: card,
-	// 		edit: card.find('.jsEdit'),
-	// 		premium: card.find('.jsMakePremium'),
-	// 		unpublish: card.find('.jsUnpublish'),
-	// 		calendar: card.find('.jsCalendar'),
-    //         calendarList: card.find('.jsCalendarList'),
-    //         refresh: card.find('.jsRefresh'),
-    //         facebook: card.find('.jsPostFacebook'),
-    //         twitter: card.find('.jsTwitter'),
-	// 		linkedIn: card.find('.jsLinkedIn')
-	// 		// seperator: card.find('.js_seperator'),
-	// 		// experience: card.find('.js_experience'),
-	// 		// status: card.find('.js_status'),
-	// 		// statusMsg: card.find('.js_status_msg'),
-	// 		// views: card.find('.js_views'),
-	// 		// applications: card.find('.js_applications'),
-	// 		// edit: card.find('.js_edit'),
-	// 		// cancel: card.find('.js_cancel'),
-	// 		// refresh: card.find('.js_refresh'),
-	// 		// premium: card.find('.js_premium'),
-	// 		// facebook: card.find('.js_facebook'),
-    //
-	// 	}
-	// }
-
-
-
-    function retrieveClasses(elem){
-        return "."+elem.attr("class").replace(/ +/g, ".");
-    }
-
     function onClickCandidateOtherActions() {
-        settings.rowContainer.on('click', retrieveClasses(settings.candidateOtherActions),function(event) {
+        settings.rowContainer.on('click', settings.candidateOtherActions,function(event) {
             console.log("s")
             event.stopPropagation();
             $(this).toggleClass("inactive");
         })
     }
 
-
-
     function onClickSendMessage() {
 
     }
 
     function onClickSendInterviewInvite(fn) {
-        settings.rowContainer.on('click', retrieveClasses(settings.candidateInviteButton), function(event){
+        settings.rowContainer.on('click', settings.candidateInviteButton, function(event){
             event.stopPropagation();
             // var candidateId = $(this).closest(candidateItem).attr('data-candidate-id');
             // var applicationId = $(this).closest(candidateItem).attr('application-id');
@@ -239,7 +203,7 @@ function candidateList() {
     }
 
     function onClickAddComment(fn) {
-        settings.rowContainer.on('click', retrieveClasses(settings.candidateAddCommentButton) ,function(event) {
+        settings.rowContainer.on('click', settings.candidateAddCommentButton ,function(event) {
             event.stopPropagation();
 			// var jobId = $(this).attr("data-id");
 			var modal = $(".jsAddCommentModal");
@@ -253,7 +217,7 @@ function candidateList() {
     }
 
     function onClickAddTag() {
-        settings.rowContainer.on('click',retrieveClasses(settings.candidateAddTagButton) ,function(event) {
+        settings.rowContainer.on('click',settings.candidateAddTagButton ,function(event) {
             event.stopPropagation()
 			// var jobId = $(this).attr("data-id");
 			var modal = $(".jsAddTagModal");
@@ -265,14 +229,6 @@ function candidateList() {
             return false;
         })
     }
-
-    // function onClickFilters() {
-    //     settings.candidatesContainer.on('click','.jsFilter',function(event){
-    //         var modal = $(".jsFiltersModal");
-    //         addBodyFixed()
-    //         modal.removeClass("hidden");
-    //     })
-    // }
 
     return {
 		init: init,
@@ -286,5 +242,22 @@ function candidateList() {
         onClickCandidateOtherActions: onClickCandidateOtherActions,
         onClickAddTag: onClickAddTag,
         onClickAddComment: onClickAddComment
+	}
+}
+
+function checkScrollEnd() {
+
+	if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+		var attribute = $('.stat.highlight')[0];
+		var id = $(attribute).attr("data-attribute");
+		var queryString = createObject();
+		queryString = checkTabId(id, queryString);
+		queryString["pageContent"] = pageContent;
+		pageNumber = pageNumber + 1;
+		queryString["pageNumber"] = pageNumber;
+		// console.log(queryString);
+		if(queryString["pageNumber"] != 1 && resultLength == queryString["pageContent"] ) {
+			getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId, queryString, populateJobs, showLoaderScroll, hideLoaderScroll)
+		}
 	}
 }

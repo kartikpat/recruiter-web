@@ -1,12 +1,32 @@
 jQuery(".header .menu-list-item.my-jobs").addClass("active");
-
 jQuery(document).ready( function() {
 	var jobList = Jobs();
-	fetchJobs();
+	fetchJobs(status,recruiterId);
 	jobList.setConfig("availableCredits", profile["availableCredits"]);
 
-	
-	var fetchJobSuccessSubscription = pubsub.subscribe('fetchedJobs:all', onJobsFetchSuccess)
+	jobList.onChangeJobFilters(openFiltersOptions)
+	function openFiltersOptions(type) {
+		status = type;
+		fetchJobs(status,recruiterId);
+	}
+
+	jobList.onClickJobEdit()
+	jobList.onClickJobCancel(openUnpublishJobModal)
+	function openUnpublishJobModal(jobId){
+		alert(jobId)
+		// unPublishJob(jobId)
+		trackEventCancelButtonClick();
+	}
+	jobList.onClickJobRefresh(openRefreshJobModal)
+	function openRefreshJobModal(jobId) {
+		alert(jobId)
+	}
+	jobList.onClickJobMakePremium(openMakeJobPremiumModal)
+	function openMakeJobPremiumModal(jobId){
+		alert(jobId)
+	}
+
+	var fetchJobSuccessSubscription = pubsub.subscribe('fetchedJobs:', onJobsFetchSuccess)
 	var fetchJobFailSubscription = pubsub.subscribe('fetchJobsFail', onJobsFetchFail)
 	var unPublishJobSuccessSubscription = pubsub.subscribe("unPublishedJob", onSuccessfulUnpublishedJob);
 	var unPublishJobFailSubscription = pubsub.subscribe("unPublishedJobFail", onFailedUnpublishedJob);
@@ -15,18 +35,7 @@ jQuery(document).ready( function() {
 		console.log(topic)
 		console.log(data)
 		jobList.init(data);
-		jobList.onClickJobEdit()
-		jobList.onClickJobCancel(function(jobId){
-			alert(jobId)
-			// unPublishJob(jobId)
-			trackEventCancelButtonClick();
-		})
-		jobList.onClickJobRefresh(function(jobId) {
-			alert(jobId)
-		})
-		jobList.onClickJobMakePremium(function(jobId){
-			alert(jobId)
-		})
+
 	}
 
 	function onJobsFetchFail(topic, data){

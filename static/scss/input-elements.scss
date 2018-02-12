@@ -514,10 +514,8 @@ span {
 					border-bottom:1px solid $border-color-base;
 					cursor:pointer;
 
-                    &:first-child {
-                        border: 0;
-                        padding: 0;
-                    }
+
+
 
 					&.selected {
 						background-color:$active-hover-background;
@@ -549,6 +547,15 @@ span {
 			}
 		}
 	}
+}
+
+#locationTags {
+    .pill-listing {
+        li:first-child {
+            padding: 0;
+            border: 0;
+        }
+    }
 }
 
 @media all and (max-width:768px) {
