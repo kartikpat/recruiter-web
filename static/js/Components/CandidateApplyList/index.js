@@ -28,12 +28,20 @@ jQuery(document).ready( function() {
         var parameters = filters.getAppliedFilters();
         globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
-        debugger
         parameters.pageContent = globalParameters.pageContent;
         parameters.status = globalParameters.status;
-        debugger
         return fetchJobApplications(jobId, parameters, recruiterId)
     });
+    filters.onClickRemoveFilter(function(element){
+        filters.removeFilter(element);
+        var parameters = filters.getAppliedFilters();
+        debugger
+        globalParameters.pageNumber = 1;
+        parameters.pageNumber = globalParameters.pageNumber;
+        parameters.pageContent = globalParameters.pageContent;
+        parameters.status = globalParameters.status;
+        return fetchJobApplications(jobId, parameters, recruiterId);
+    })
 
     $.when(fetchJob(jobId, recruiterId ), fetchCalendars(jobId, recruiterId)).then(function(a, b){
         if(a[0] && b[0] && a[0]["status"] == "success" && b[0]["status"] =="success" && a[0]['data'].length >0 ) {
