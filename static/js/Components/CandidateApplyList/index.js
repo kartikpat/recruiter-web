@@ -1,5 +1,5 @@
 var initialLoad = 1;
-var queryParameters = {
+var globalParameters = {
     pageContent: 10,
     pageNumber: 1,
     status: ""
@@ -15,7 +15,7 @@ jQuery(document).ready( function() {
 		return title.replace(regex, '');
 	}
 
-    var filters = Filters();
+    var filters = Filters();    
     filters.init();
     filters.addFilterData('industry', industryTagsData);
     filters.addFilterData('functionalArea',functionalAreaTagsData)
@@ -26,6 +26,12 @@ jQuery(document).ready( function() {
     filters.onClickApplyFilterButton(function(name){
         filters.setAppliedFilters(name);
         var parameters = filters.getAppliedFilters();
+        globalParameters.pageNumber = 1;
+        parameters.pageNumber = globalParameters.pageNumber;
+        debugger
+        parameters.pageContent = globalParameters.pageContent;
+        parameters.status = globalParameters.status;
+        debugger
         return fetchJobApplications(jobId, parameters, recruiterId)
     });
 
@@ -104,9 +110,9 @@ jQuery(document).ready( function() {
     candidates.createJobStatsTabs(onClickTab)
     function onClickTab(event, ui) {
         var status = candidates.activateStatsTab(event, ui)
-        queryParameters["status"] = status;
-        queryParameters["pageNumber"] = 1;
-        fetchJobApplications(jobId, queryParameters,recruiterId);
+        globalParameters["status"] = status;
+        globalParameters["pageNumber"] = 1;
+        fetchJobApplications(jobId, globalParameters,recruiterId);
     }
 
     candidates.onClickSendInterviewInvite(sendInterviewInvite);
@@ -137,7 +143,7 @@ jQuery(document).ready( function() {
 	}
 
     function onSuccessfulFetchJobDetails(topic, data) {
-        fetchJobApplications(jobId,queryParameters,recruiterId);
+        fetchJobApplications(jobId,globalParameters,recruiterId);
         theJob.setJobDetails(data);
     }
 
@@ -159,9 +165,9 @@ jQuery(document).ready( function() {
 
     function checkScrollEnd() {
     	if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-    		queryParameters["pageNumber"] = queryParameters["pageNumber"] + 1;
-    		if(queryParameters["pageNumber"] != 1 && length == queryParameters["pageContent"]) {
-    			fetchJobApplications(jobId,queryParameters,recruiterId)
+    		globalParameters["pageNumber"] = globalParameters["pageNumber"] + 1;
+    		if(globalParameters["pageNumber"] != 1 && length == globalParameters["pageContent"]) {
+    			fetchJobApplications(jobId,globalParameters,recruiterId)
     		}
     	}
     }
