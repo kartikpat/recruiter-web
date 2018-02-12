@@ -37,15 +37,20 @@ function Filters(){
 		settings.sortButton = "";
 		settings.appliedFiltersContainer = "";
 		settings.resultText = "";
-		settings.clearButtton = "";
+		settings.clearButtton = $(".clear-all-filters");
+		settings.activeFilters = $(".active-filters .filter-tag");
 		settings.filterModal = $(".jsFiltersModal");
 		settings.filterModalCancelButton = settings.filterModal.find('.close_modal');
 		settings.candidatesContainer = $('.jsCandidatesArea');
 		settings.checkbox = $(".jsCheckInput.prototype");
+		settings.removeFilterButtonClass = ".remove-active-filter";
 
 
 		setOnClickFilters();
 		setOnClickCloseFilters();
+		onClickClearButton(removeAllFilters);
+		onClickRemoveFilter(removeFilter)
+
 
 	}
 
@@ -57,12 +62,21 @@ function Filters(){
 		fn()
 	}
 
-	function onClickClearButton(){
+	function onClickClearButton(fn){
+		settings.clearButtton.click(function(event) {
+			fn()
+		});
+	}
 
+	function onClickRemoveFilter(fn){
+		settings.activeFilters.on('click', settings.removeFilterButtonClass, function(e){
+			var filterElement = $(this).closest('.filter-tag');
+			fn(filterElement)
+		})
 	}
 
 	function removeAllFilters(){
-
+		settings.activeFilters.remove();
 	}
 
 	function onClickFilterButton(){
@@ -71,8 +85,8 @@ function Filters(){
 	function onClickSortButton(){
 
 	}
-	function removeFilter(){
-
+	function removeFilter(el){
+		el.remove();
 	}
 
 	function addFilterData(name, data){
@@ -90,7 +104,6 @@ function Filters(){
 			    checkbox.find(".lab").attr("for",name+"-"+aRow["val"]);
 			    str+= checkbox[0].outerHTML;
 			})
-			console.log(str)
 			filtersTarget[name].target.html(str);
 		}
 	}
