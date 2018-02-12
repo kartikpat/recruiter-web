@@ -1390,7 +1390,7 @@
 	.ui-tabs-nav {
 		border: 0;
 		background: #fff;
-		width: 1200px;
+		width: 1000px;
 	}
 	.ui-tabs-tab {
 		border: 0;
@@ -1435,4 +1435,12 @@
 
 .action-buttons .select-dropdown {
 	line-height: 1.5;
+}
+
+.select-all.check-input input + label {
+	padding: 25px 0 0px 25px;
+}
+
+#jobs-tabs {
+	border: 0;
 }

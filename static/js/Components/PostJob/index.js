@@ -2,9 +2,13 @@ var jobId = getQueryParameter("jobId");
 $(document).ready(function(){
 
 	var jobDetails = Job();
+	jobDetails.setConfig("availableCredits", profile["availableCredits"]);
 	jobDetails.init();
-	console.log(profile)
-	jobDetails.setAvailableCredits(profile["availableCredits"]);
+
+
+	jobDetails.onChangeJobPremium(function(){
+		alert("hi")
+	})
 	jobDetails.submitHandler(function(){
 			if(jobDetails.validate())
 				submitNewJob(jobDetails.getData());
@@ -13,8 +17,11 @@ $(document).ready(function(){
 		fetchJob(jobId);
 	}
  	function onSuccessfulSubmitJob(topic, data){
-		alert(res.status)
-		console.log(topic)
+		// alert("You have successfully posted your job.Our team is reviewing your job and it usually takes upto 24 hours for a job to get published.")
+		if(profile["availableCredits"] > 0)
+			return window.location.href = "/dashboard";
+		window.location.href = "/recruiter/recruiter-plan"
+ 		console.log(topic)
 		console.log(data);
 
 	}

@@ -1,3 +1,5 @@
+
+
 function Candidate() {
     var settings = {
         modal: $('.js_candidate_modal'),
@@ -175,29 +177,31 @@ function Candidate() {
         showCandidateDetails: showCandidateDetails
 	}
 
-    function getAge(dateString) {
-    	var today = new Date();
-    	var birthDate = new Date(dateString);
-    	var age = today.getFullYear() - birthDate.getFullYear();
-    	var m = today.getMonth() - birthDate.getMonth();
-    	if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-    		age--;
-    	}
-    	 return age;
-    }
 
-    function formatLanguages(data){
-    	var ob = JSON.parse(data);
-    	var langArray = [];
-    	for(var key in ob){
-    		langArray.push(ob[key]["language_text"]);
-    	}
-    	return langArray.join(", ");
-    }
+}
 
-    function getLastActiveDay(date) {
-        var todaysDate = moment(new Date());
-        date = moment(date);
-        return diffDays = todaysDate.diff(date, 'days');
+function getAge(dateString) {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
     }
+     return age;
+}
+
+function formatLanguages(data){
+    var ob = JSON.parse(data);
+    var langArray = [];
+    for(var key in ob){
+        langArray.push(ob[key]["language_text"]);
+    }
+    return langArray.join(", ");
+}
+
+function getLastActiveDay(date) {
+    var todaysDate = moment(new Date());
+    date = moment(date);
+    return diffDays = todaysDate.diff(date, 'days');
 }

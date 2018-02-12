@@ -1,22 +1,27 @@
 
 
 var errorResponses = {
-	missingTitle: 'title cannot be blank',
-	missingLocation: 'location cannot be blank',
-	missingMinExp: 'minimum experience cannot be blank',
-	missingMaxExp: 'maximum experience cannot be blank',
-	missingDescription: 'job description cannot be blank',
+	missingTitle: 'Please enter the job title',
+	missingLocation: 'Please choose a location',
+	missingMinExp: 'Please choose years of experience required for the job',
+	missingMaxExp: 'Please choose years of experience required for the job',
+	missingDescription: 'Please fill the job description',
 	invalidVideoUrl: 'enter proper youtubeURL',
-	missingIndustry: 'please choose atleast one industry',
-	missingCategory: 'category cannot be blank',
-	missingFunctionalArea: 'functional area cannot be blank',
-	invalidSal: 'minimum salary cannot be greater than maximum salary',
-	invalidBatch: 'minimum batch cannot be greater than maximum batch',
-	invalidMinExp: 'minimum experience cannot be greater than maximum experience'
+	missingIndustry: 'Please choose an industry from the drop-down',
+	missingCategory: 'Please choose a category from the drop-down',
+	missingFunctionalArea: 'Please choose a functional-area from the drop-down',
+	invalidSal: 'Maximum Salary should be greater than Minimum Salary',
+	invalidBatch: 'Maximum Batch should be greater than Minimum Batch',
+	invalidMinExp: 'Maximum Years of Experience should be greater than Minimum Years of Experience'
 }
 
 function Job(){
 	var settings ={};
+	var config = {};
+
+	function setConfig(key, value) {
+		config[key] = value;
+	}
 	function init(){
 			settings.title= $('#title'),
 			settings.location= $("#locationTags"),
@@ -38,16 +43,35 @@ function Job(){
 			settings.preferences= $("#preferences"),
 			settings.isPremium= $("#isPremium")
 			settings.submitButton = $('.submit-form'),
-			settings.cancelButton = $('.cancel-button'),
+			settings.cancelFormButton = $('#cancelForm'),
 			settings.error = $('.error'),
-			settings.credits = $('.js_availableCredits');
+			settings.creditsText = $('#creditsText');
+			setAvailableCredits(settings.creditsText, config["availableCredits"]);
+			onClickCancelForm(settings.cancelFormButton);
 	}
-	function setAvailableCredits(credits) {
-		settings.credits.text("You have "+credits+" credits left.")
+
+
+	function onChangeJobPremium(fn) {
+		settings.isPremium.change(function() {
+			console.log(this.checked)
+			if(this.checked) {
+				if(config["availableCredits"]) {
+					settings.creditsText.text("This job will be posted as premium. You will have "+(config["availableCredits"]-1)+" credits left.")
+					return
+				}
+				$(this).prop("checked", false)
+				settings.creditsText.text("You don’t have any premium credits right now! We’ll reach out to you to help you with it!")
+				return fn();
+			}
+			settings.creditsText.text("You have "+config["availableCredits"]+" credits left.")
+		})
+
 	}
+
 	function loginHandler(fn){
 		settings.login.click(fn);
 	}
+
 	function validate(){
 		console.log(settings)
 		if(!(
@@ -99,7 +123,7 @@ function Job(){
 		var ob = {
 			title: settings.title.val(),
 			description: settings.description.val(),
-			isPremium: settings.isPremium.is("checked"),
+			isPremium: settings.isPremium.checked,
 			category: settings.category.val(),
 			functionalArea: settings.functionalArea.val(),
 			location: locationObj["temp"],
@@ -143,14 +167,7 @@ function Job(){
 		settings.isPremium.prop("checked", obj["isPremium"]);
 		settings.category.val(obj["catid"]);
 		settings.functionalArea.val(obj["functionalArea"]);
-		var loca = [ {
-			"id": 1,
-			"label": "Delhi"
-		},
-		{
-			"label": "Karnal"
-		}]
-		console.log(settings.location.attr('id'))
+
 		// setPillValues(settings.location.attr('id'), loca);
 		setPillValues(settings.location.attr('id'), obj["location"]);
 
@@ -162,7 +179,7 @@ function Job(){
 		if(obj["preferences"])
 			setMultipleCheckboxes(settings.preferences.attr('id'), obj["preferences"]);
 		setPillValues(settings.tags.attr('id'), obj["tags"]);
-		if(obj["sal"]) {
+		if(obj["sal"] && obj["sal"]["min"]!= 0 && obj["sal"]["max"]!=0) {
 			settings.minSal.val(obj["sal"]["min"]);
 			settings.maxSal.val(obj["sal"]["max"]);
 			settings.showSal.prop("checked", obj["sal"]["isShow"]);
@@ -180,23 +197,41 @@ function Job(){
 		$(settings.submitButton).click(fn)
 	}
 
+
+
 	return {
 		init: init,
+		setConfig : setConfig,
 		validate: validate,
 		getData: getJobData,
 		submitHandler: submitHandler,
 		setData: setJobData,
-		setAvailableCredits: setAvailableCredits
+		onChangeJobPremium: onChangeJobPremium
 	}
 }
 
+function setAvailableCredits(element, credits) {
+	if(!credits) {
+		element.text("Reach out to more candidates in less amount of time by making your job premium.")
+		return
+	}
+	element.text("You have "+credits+" credits left.")
+}
+
+
+function onClickCancelForm(element) {
+	element.click(function() {
+		window.location.href = "/"
+	})
+}
+
 function ifExists(element){
-	console.log(element)
+
 	var errorElement = element.next('.error').length ? element.next('.error') : element.siblings('.error');
-	console.log(errorElement)
 	if(!( element && element.val() )){
 		errorElement.text(errorResponses['missing'+element.attr('name')]).removeClass("hidden");
-		element.addClass("error-border");
+		focusOnElement(element)
+
 		return false;
 	}
 	else if (!errorElement.hasClass("hidden")) {
@@ -207,12 +242,22 @@ function ifExists(element){
 	return true;
 }
 
-function checkPillValues(element){
-	console.log(element.attr('id'))
-	console.log(getPillValues(element.attr('id')).length)
-	if( getPillValues(element.attr('id')).length <1 ){
+function checkPillValues(element) {
+	var obj = getPillValues(element.attr('id'))
+	if(element.attr('data-enable-custom') == true) {
+		if( obj["temp"].length < 1 && obj["tempLabel"].length < 1 ){
+			element.next('.error').text(errorResponses['missing'+element.attr('name')]).removeClass("hidden");
+			focusOnElement(element)
+			return false;
+		}
+		else if (!element.next('.error').hasClass("hidden")) {
+			eraseError(element)
+		}
+		return true;
+	}
+	if( obj["temp"].length < 1 ){
 		element.next('.error').text(errorResponses['missing'+element.attr('name')]).removeClass("hidden");
-		element.addClass("error-border");
+		focusOnElement(element)
 		return false;
 	}
 	else if (!element.next('.error').hasClass("hidden")) {
@@ -224,7 +269,7 @@ function checkPillValues(element){
 function checkVideoLink(element){
 	if(element && element.val() && !( isYouTubeLink(element.val()))){
 		element.next('.error').text(errorResponses['invalid'+element.attr('name')]).removeClass("hidden");
-		element.addClass("error-border");
+		focusOnElement(element)
 		return false;
 	}
 	else if (!element.next('.error').hasClass("hidden")) {
@@ -281,8 +326,9 @@ function ifGreater(elementA, elementB){
 	var val2 = parseInt(elementA.val());
 	if(val1 && val2 && !( val1 >= val2)){
 		elementA.siblings('.error').text(errorResponses['invalid'+elementA.attr('name')]).removeClass("hidden");
-		elementA.addClass("error-border");
+		focusOnElement(elementA)
 		elementB.addClass("error-border");
+
 		console.log('returning false')
 		return false;
 	}
@@ -293,6 +339,13 @@ function ifGreater(elementA, elementB){
 	}
 
 	return true;
+}
+
+function focusOnElement(element) {
+	element.addClass("error-border");
+	$('html, body').animate({
+		scrollTop: (element.closest('.field-container').offset().top)
+	},200);
 }
 
 /**

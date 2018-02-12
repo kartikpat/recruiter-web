@@ -1,9 +1,14 @@
 var initialLoad = 1;
+var queryParameters = {
+    pageContent: 10,
+    pageNumber: 1,
+    status: ""
+}
+var length;
 jQuery(document).ready( function() {
 
     // fetching url parameters
     var urlParams = fetchURL();
-
     var jobId = urlParams.pathname.split("/")[2];
 
     function getTitleFormat(title, regex) {
@@ -51,7 +56,7 @@ jQuery(document).ready( function() {
     var theJob = Job();
     var store = Store();
 
-    candidates.setConfig("availableCredits", profile["availableCredits"]);
+    theJob.setConfig("availableCredits", profile["availableCredits"]);
 
     theJob.init();
 
@@ -62,7 +67,6 @@ jQuery(document).ready( function() {
     }
 
     candidates.onClickCandidateOtherActions();
-    // candidates.onClickFilters();
     theJob.onClickJobOtherActions();
 
     candidates.onClickAddTag(openAddTagModal);
@@ -70,7 +74,7 @@ jQuery(document).ready( function() {
         alert("added");
     }
 
-    candidates.onClickAddComment();
+    candidates.onClickAddComment(openAddCommentModal);
     function openAddCommentModal() {
         alert("added");
     }
@@ -91,11 +95,29 @@ jQuery(document).ready( function() {
         alert(jobId)
     }
 
+    theJob.onChangeDefaultCalendar(setDefaultCalendar)
+    function setDefaultCalendar(calendarId) {
+        alert(calendarId)
+        //postRequestDefaultCalendar
+    }
+
     candidates.createJobStatsTabs(onClickTab)
     function onClickTab(event, ui) {
         var status = candidates.activateStatsTab(event, ui)
-        fetchJobApplications(jobId, status);
+        queryParameters["status"] = status;
+        queryParameters["pageNumber"] = 1;
+        fetchJobApplications(jobId, queryParameters,recruiterId);
     }
+
+    candidates.onClickSendInterviewInvite(sendInterviewInvite);
+    function sendInterviewInvite(candidateId, applicationId) {
+        var defaultCalendarId = theJob.getDefaultCalendar();
+        if(!defaultCalendarId)
+            theJob.showCalendarMissingError();
+        // if(!(defaultCalendarId && candidateId && applicationId ))
+        //     return alert('Please provide all values');
+        // postInterviewInvite()
+     }
 
     function onJobsApplicationsFetchSuccess(topic, data) {
         //Call only on initial load
@@ -103,6 +125,7 @@ jQuery(document).ready( function() {
             candidates.setJobStats(data["stats"]);
             initialLoad = 0;
         }
+        length = data["data"].length;
         candidates.addToList(data["data"]);
         store.emptyStore(data["data"]);
         store.saveToStore(data["data"]);
@@ -113,39 +136,33 @@ jQuery(document).ready( function() {
 		console.log(data)
 	}
 
-    function onSuccessfulFetchJob(topic, data) {
-		console.log(topic)
-		console.log(data);
-		// candidates.showActions(data[0]);
-	}
-
-	function onFailedFetchJob(topic, data){
-		alert(res.status)
-		console.log(topic)
-		console.log(data);
-	}
-
     function onSuccessfulFetchJobDetails(topic, data) {
-        fetchJobApplications(jobId,"",recruiterId);
+        fetchJobApplications(jobId,queryParameters,recruiterId);
         theJob.setJobDetails(data);
     }
 
-
-     candidates.onClickSendInterviewInvite(sendInterviewInvite);
-     function sendInterviewInvite(candidateId, applicationId){
-        var defaultCalendarId = theJob.getDefaultCalendar();
-        if(!defaultCalendarId)
-            theJob.showCalendarMissingError();
-        if(!(defaultCalendarId && candidateId && applicationId ))
-            return alert('Please provide all values');
-        // postInterviewInvite()
-     }
+    function onFailedFetchJobDetails(topic, data) {
+        console.log(topic)
+		console.log(data)
+    }
 
     var fetchJobDetailsSubscription = pubsub.subscribe("fetchedJobDetails:"+jobId, onSuccessfulFetchJobDetails)
-    var fetchJobSuccessSubscription = pubsub.subscribe("fetchedJob:"+jobId, onSuccessfulFetchJob);
-	var fetchJobFailSubscription = pubsub.subscribe("failedToFetchJob:"+jobId, onFailedFetchJob);
+	var fetchJobDetailsFailSubscription = pubsub.subscribe("failedToFetchJobDetails:"+jobId, onFailedFetchJobDetails);
     var fetchJobApplicationsSuccessSubscription = pubsub.subscribe("fetchedJobApplication:"+jobId, onJobsApplicationsFetchSuccess)
     var fetchJobApplicationsFailSubscription = pubsub.subscribe("failedTofetchJobApplication:"+jobId, onJobsApplicationsFetchFail)
-    // var fetchParallelJobStatusAndCalendarsSubscription = pubsub.subscribe("fetchedParallelJobStatusAndCalendars:"+jobId, onJobStatusAndCalendarsFetchSuccess)
-    // var fetchParallelJobStatusAndCalendarsFailSubscription = pubsub.subscribe("failedToFetchParallelJobStatusAndCalendars:"+jobId, onJobStatusAndCalendarsFetchFail)
+
+    var ticker;
+    $(window).scroll(function() {
+     clearTimeout(ticker);
+     ticker = setTimeout(checkScrollEnd,100);
+    });
+
+    function checkScrollEnd() {
+    	if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+    		queryParameters["pageNumber"] = queryParameters["pageNumber"] + 1;
+    		if(queryParameters["pageNumber"] != 1 && length == queryParameters["pageContent"]) {
+    			fetchJobApplications(jobId,queryParameters,recruiterId)
+    		}
+    	}
+    }
 });
