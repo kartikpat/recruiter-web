@@ -3,31 +3,113 @@ function Filters(){
 	var filtersTarget = {
 		industry: {
 			target: $(".jsIndustry") ,
-			type: 'checkbox'			
+			type: 'checkbox',
+			selection: []			
 		},
 		functionalArea: {
 			target: $(".jsFuncArea"),
-			type: 'checkbox'
+			type: 'checkbox',
+			selection: []
 		}, 
 		currentLocation:  {
 			target: $(".jsCurLoc") ,
-			type: 'checkbox'
+			type: 'checkbox',
+			selection: []
 		}, 
 		preferredLocation: {
 			target: $(".jsPrefLoc"),
-			type: 'checkbox'
+			type: 'checkbox',
+			selection: []
 		}, 	
 		functionalArea: {
 			target:  $(".jsFuncArea"),
-			type: 'checkbox'
+			type: 'checkbox',
+			selection: []
 		}, 
 		institute: {
 			target: $(".jsInstitute"),
-			type: 'checkbox'
+			type: 'checkbox',
+			selection: []
 		}, 
 		language: {
 			target:  $(".jsLanguage"),
-			type: 'checkbox'
+			type: 'checkbox',
+			selection: []
+		},
+		minExp: {
+			target: "",
+			type: 'dropdown',
+			selection: null
+		},
+		maxExp : {
+			target: "",
+			type: 'dropdown',
+			selection: null
+		},
+		minCtc : {
+			target: "",
+			type: 'dropdown',
+			selection: null
+		},
+		maxCtc: {
+			target: "",
+			type: 'dropdown',
+			selection: null
+		},
+		minAge: {
+			target: "",
+			type: 'dropdown',
+			selection: null
+		},
+		maxAge: {
+			target: "",
+			type: 'dropdown',
+			selection: null
+		},
+		sex : {
+			target: "",
+			type: 'radio',
+			selection: null
+		},
+		notice: {
+			target: "",
+			type: 'dropdown',
+			selection: null
+		},
+		applicationDate : {
+			target: "",
+			type: 'dropdown',
+			selection: null
+		},
+		lastActive: {
+			target: "",
+			type: 'dropdown',
+			selection: null
+		},
+		permit: {
+			target: "",
+			type: 'dropdown',
+			selection: null
+		},
+		handleTeam: {
+			target: "",
+			type: 'dropdown',
+			selection: null
+		},
+		relocate: {
+			target: "",
+			type: 'dropdown',
+			selection: null
+		},
+		differentlyAbled: {
+			target: "",
+			type: 'dropdown',
+			selection: null
+		},
+		searchString: {
+			target: "",
+			type: 'input',
+			selection: null
 		}
 	}
 	function init(){
@@ -44,12 +126,15 @@ function Filters(){
 		settings.candidatesContainer = $('.jsCandidatesArea');
 		settings.checkbox = $(".jsCheckInput.prototype");
 		settings.removeFilterButtonClass = ".remove-active-filter";
+		settings.applyFilterButton = $(".applyFilterButton");
+		settings.activeFilterListingClass = ".activeFilterListing";
 
 
 		setOnClickFilters();
 		setOnClickCloseFilters();
 		onClickClearButton(removeAllFilters);
 		onClickRemoveFilter(removeFilter)
+		// onClickApplyFilterButton(setAppliedFilters)
 
 
 	}
@@ -88,12 +173,75 @@ function Filters(){
 	function removeFilter(el){
 		el.remove();
 	}
+	function onClickApplyFilterButton(fn){
+		console.log('clicking apply filter')
+		settings.applyFilterButton.click(function(e){
+			console.log('clicking event set on applied filters');
+			var name = $(settings.activeFilterListingClass).attr('data-label');
+			fn(name);
+		})
+	}
+	function setAppliedFilters(name){
+		console.log('Calling setAppliedFilters')
+		console.log(name)
+		if(filtersTarget[name]['type'] == "checkbox"){
+			filtersTarget[name]['selection'] = [];
+			console.log(filtersTarget[name]['selection'])
+			filtersTarget[name]['target'].find('input:checked').each(function(index, el){
+				filtersTarget[name]['selection'].push(el.value)
+			})
+			console.log(filtersTarget[name]['selection'])
+		}
+	}
+	function getAppliedFilters(){
+		var ob ={};
+		if(filtersTarget.industry.selection.length >0)
+			ob.industry = filtersTarget.industry.selection.join(',');
+		if(filtersTarget.currentLocation.selection.length > 0)
+			ob.location = filtersTarget.currentLocation.selection.join(',');
+		if(filtersTarget.preferredLocation.selection.length > 0)
+			ob.preferredLocation = filtersTarget.preferredLocation.selection.join(',');
+		if(filtersTarget.institute.selection.length > 0)
+			ob.institute = filtersTarget.institute.selection.join(',');
+
+		if(filtersTarget.minExp.selection)
+			ob.minExp = filtersTarget.minExp.selection
+		if(filtersTarget.maxExp.selection)
+			ob.maxExp = filtersTarget.maxExp.selection
+		if(filtersTarget.minCtc.selection)
+			ob.minCtc = filtersTarget.minCtc.selection
+		if(filtersTarget.maxCtc.selection)
+			ob.maxCtc = filtersTarget.maxCtc.selection
+		if(filtersTarget.minAge.selection)
+			ob.minAge = filtersTarget.minAge.selection
+		if(filtersTarget.maxAge.selection)
+			ob.maxAge = filtersTarget.maxAge.selection
+		if(filtersTarget.sex.selection)
+			ob.sex = filtersTarget.sex.selection
+		if(filtersTarget.notice.selection)
+			ob.notice = filtersTarget.notice.selection
+		if(filtersTarget.applicationDate.selection)
+			ob.applicationDate = filtersTarget.applicationDate.selection
+		if(filtersTarget.lastActive.selection)
+			ob.lastActive = filtersTarget.lastActive.selection
+		if(filtersTarget.permit.selection)
+			ob.permit = filtersTarget.permit.selection
+		if(filtersTarget.handleTeam.selection)
+			ob.handleTeam = filtersTarget.handleTeam.selection
+		if(filtersTarget.relocate.selection)
+			ob.relocate = filtersTarget.relocate.selection
+		if(filtersTarget.differentlyAbled.selection)
+			ob.differentlyAbled = filtersTarget.differentlyAbled.selection
+		if(filtersTarget.language.selection)
+			ob.language = filtersTarget.language.selection
+		if(filtersTarget.searchString.selection)
+			ob.searchString = filtersTarget.searchString.selection
+		return ob;
+	}
 
 	function addFilterData(name, data){
 		if(name && ['industry', 'functionalArea', 'currentLocation', 'preferredLocation', 'institute', 'experience', 'batch', 'salary', 'age', 'gender', 'noticePeriod', 'appliedDate', 'lastSeen', 'workPermit', 'handleTeam', 'relocate', 'differentlyAbled', 'language'].indexOf(name) ==-1)
 			return console.log('not a valid filter');
-		console.log(name)
-		console.log(filtersTarget[name])
 		if(filtersTarget[name]){
 			var str = ''
 			data.forEach(function(aRow){
@@ -104,7 +252,7 @@ function Filters(){
 			    checkbox.find(".lab").attr("for",name+"-"+aRow["val"]);
 			    str+= checkbox[0].outerHTML;
 			})
-			filtersTarget[name].target.html(str);
+			filtersTarget[name].target.html(str).attr('data-label', name);
 		}
 	}
 
@@ -122,6 +270,9 @@ function Filters(){
     }
     return {
     	init: init,
-    	addFilterData: addFilterData
+    	addFilterData: addFilterData,
+    	getAppliedFilters: getAppliedFilters,
+    	onClickApplyFilterButton: onClickApplyFilterButton,
+    	setAppliedFilters: setAppliedFilters
     }
 }
