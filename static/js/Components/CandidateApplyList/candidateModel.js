@@ -192,6 +192,8 @@ function getAge(dateString) {
 }
 
 function formatLanguages(data){
+    if(!data)
+        return
     var ob = JSON.parse(data);
     var langArray = [];
     for(var key in ob){

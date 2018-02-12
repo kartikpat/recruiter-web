@@ -15,7 +15,7 @@ jQuery(document).ready( function() {
 		return title.replace(regex, '');
 	}
 
-    var filters = Filters();    
+    var filters = Filters();
     filters.init();
     filters.addFilterData('industry', industryTagsData);
     filters.addFilterData('functionalArea',functionalAreaTagsData)
@@ -85,6 +85,10 @@ jQuery(document).ready( function() {
         alert("added");
     }
 
+    candidates.onClickSendMessage(function(candidateId){
+        alert(candidateId)
+    })
+
     theJob.onClickJobCancel(openUnpublishModal)
     function openUnpublishModal(jobId){
         alert(jobId)
@@ -125,6 +129,22 @@ jQuery(document).ready( function() {
         // postInterviewInvite()
      }
 
+     candidates.onClickDownloadResume(function(candidateId){
+         alert(candidateId)
+     });
+
+     candidates.onClickSaveJob(function(candidateId){
+         alert(candidateId)
+     })
+
+     candidates.onClickShortlistCandidate(function(candidateId){
+         alert(candidateId)
+     })
+
+     candidates.onClickRejectCandidate(function(candidateId){
+         alert(candidateId)
+     })
+
     function onJobsApplicationsFetchSuccess(topic, data) {
         //Call only on initial load
         if(initialLoad) {
@@ -133,8 +153,11 @@ jQuery(document).ready( function() {
         }
         length = data["data"].length;
         candidates.addToList(data["data"]);
+        console.log(store)
         store.emptyStore(data["data"]);
+        console.log(store)
         store.saveToStore(data["data"]);
+        console.log(store)
     }
 
 	function onJobsApplicationsFetchFail(topic, data){
