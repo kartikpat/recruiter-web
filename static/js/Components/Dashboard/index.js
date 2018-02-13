@@ -36,7 +36,7 @@ $(document).ready(function(){
 
 	function onLoadChartLibrary(topic, data){
 		console.log("calling onLoadChartLibrary");
-	    fetchActiveJobStats();
+	    fetchActiveJobStats(recruiterId);
 	}
 	var chartLibraryLoadSubscription = pubsub.subscribe("loadedChartLibrary", onLoadChartLibrary)
 	function onFetchJobs(topic, data){
@@ -181,10 +181,10 @@ $(document).ready(function(){
 
 	function init(){
 		pubsub.publish("pageVisit", 1);
-		fetchDashboardStats();
-		fetchJobs("published");
-		fetchFollowUps();
-		fetchInterviews();
+		fetchDashboardStats(recruiterId);
+		fetchJobs("published", recruiterId);
+		fetchFollowUps(recruiterId);
+		fetchInterviews(recruiterId);
 	}
 	init()
 
