@@ -34,7 +34,7 @@
 				</p>
 			</div>
 
-			<div class="candidates-area jsCandidatesArea">
+			<div class="candidates-area">
 				<div class="candidates-area-header">
 					<div class="candidates-search">
 						<div class="keyword-search">
@@ -121,22 +121,22 @@
 									</li>
 		            			</ul>
 							</div>
-							<div id="all-jobs" class="candidates-listing js_candidate_listing">
+							<div id="all-jobs" class="candidates-listing candidateListing" data-status-attribute="">
 
 							</div>
-							<div id="unread-jobs" class="candidates-listing js_candidate_listing">
+							<div id="unread-jobs" class="candidates-listing candidateListing" data-status-attribute="0">
 
 							</div>
-							<div id="reviewed-jobs" class="candidates-listing js_candidate_listing">
+							<div id="reviewed-jobs" class="candidates-listing candidateListing" data-status-attribute="4,5">
 
 							</div>
-							<div id="shortlisted-jobs" class="candidates-listing js_candidate_listing">
+							<div id="shortlisted-jobs" class="candidates-listing candidateListing" data-status-attribute="1">
 
 							</div>
-							<div id="rejected-jobs" class="candidates-listing js_candidate_listing">
+							<div id="rejected-jobs" class="candidates-listing candidateListing" data-status-attribute="2">
 
 							</div>
-							<div id="saved-jobs" class="candidates-listing js_candidate_listing">
+							<div id="saved-jobs" class="candidates-listing candidateListing" data-status-attribute="3">
 
 							</div>
 						</div>
@@ -461,13 +461,13 @@
 	<span class="skill-name js_skill_name">UI Development</span>
 </div> -->
 
-<div class="candidate-item candidateItem prototype hidden">
+<div class="candidate-item candidateRow prototype hidden">
 	<div class="candidate-item-section image">
 		<div class="candidate-image">
 			<div class="candidate-select">
-				<div class="checkbox">
-					<input type="checkbox" id="candidate-3">
-					<label for="candidate-3"></label>
+				<div class="checkbox candidateCheckboxContainer">
+					<input class="candidateCheckbox" type="checkbox" id="candidate-3">
+					<label class="candidateCheckboxLabel" for="candidate-3"></label>
 				</div>
 			</div>
 			<img class="js_img" src="http://placehold.it/60x60/f5f5f5?text=+">
@@ -514,8 +514,8 @@
 	<div class="candidate-item-section profile-actions">
 		<div class="candidate-action-area">
 			<div class="jsClickableActions">
-				<button class="button green shortlist left jsShortlist">Shortlist</span></button>
-				<button class="button red reject right jsReject">Reject</span></button>
+				<button class="button green shortlist left candidateShortlist">Shortlist</span></button>
+				<button class="button red reject right candidateReject">Reject</span></button>
 				<div class="clearfix"></div>
 			</div>
 

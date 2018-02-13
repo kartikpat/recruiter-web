@@ -238,7 +238,9 @@
 
 								&.status {
 									margin:10px 0;
-
+									.job-status {
+										display: none;
+									}
 									.mobile-status {
 										display:inline-block;
 									}

@@ -1,27 +1,32 @@
 function candidateList() {
 
-    var settings = {
-		rowContainer: $('.js_candidate_listing'),
-        header: $('#jobDetails'),
-        candidatesContainer: $('.jsCandidatesArea'),
-        candidateRow: $(".candidateItem"),
-        candidateInviteButton : ".candidateSendInterviewInvite",
-        candidateAddTagButton: ".candidateAddTag",
-        candidateAddCommentButton : ".candidateAddComment",
-        candidateSaveButton : $(".candidateSave"),
-        candidateDownloadResumeButton : $(".candidateDownloadResume"),
-        candidateSendMessageButton : $(".candidateSendMessage"),
-        candidateOtherActions: '.candidateOtherActions'
-	};
-
+    var settings = {};
     var config = {};
+
+    function init(){
+        settings.rowContainer= $('.candidateListing'),
+        settings.header= $('#jobDetails'),
+        settings.candidateRow= ".candidateRow",
+        settings.candidateInviteButton= ".candidateSendInterviewInvite",
+        settings.candidateAddTagButton= ".candidateAddTag",
+        settings.candidateAddCommentButton= ".candidateAddComment",
+        settings.candidateSaveButton= ".candidateSave",
+        settings.candidateDownloadResumeButton= ".candidateDownloadResume",
+        settings.candidateSendMessageButton= ".candidateSendMessage",
+        settings.candidateOtherActions= '.candidateOtherActions',
+        settings.candidateShortlistButton='.candidateShortlist',
+        settings.candidateRejectButton= '.candidateReject',
+        settings.candidateCheckbox= '.candidateCheckbox',
+        settings.candidateCheckboxLabel= '.candidateCheckboxLabel',
+        settings.candidateCheckboxContainer = '.candidateCheckboxContainer'
+	}
 
 	function setConfig(key, value) {
 		config[key] = value;
 	}
 
     function getElement(id) {
-		var card = $(".candidateItem.prototype").clone().removeClass('prototype hidden')
+		var card = $(""+settings.candidateRow+".prototype").clone().removeClass('prototype hidden')
 		card.attr('data-candidate-id', id);
 		return {
 			element: card,
@@ -33,7 +38,9 @@ function candidateList() {
 			notice: card.find('.js_notice'),
 			jobTagList: card.find('.js_job_tag_list'),
 			eduList: card.find('.js_edu_list'),
-			profList: card.find('.js_prof_list')
+			profList: card.find('.js_prof_list'),
+            candidateCheckbox: card.find(settings.candidateCheckbox),
+            candidateCheckboxLabel: card.find(settings.candidateCheckboxLabel)
 		}
 	}
 
@@ -104,12 +111,13 @@ function candidateList() {
             eduStr+=item.element[0].outerHTML
         })
         item.eduList.html(eduStr)
+
+        item.candidateCheckbox.attr("id",aData["userID"]);
+        item.candidateCheckboxLabel.attr("for",aData["userID"]);
         return item
     }
 
-    function init(){
 
-	}
 
     function getJobsCategoryTabsElement() {
         var card = $("#jobs-category-tabs");
@@ -135,15 +143,15 @@ function candidateList() {
         item.reviewed.text("Reviewed"+"("+data["reviewed"]+")")
     }
 
-    function addToList(dataArray){
-        console.log(dataArray)
+    function addToList(dataArray, status){
+        console.log(status)
 		var str = '';
 		dataArray.forEach(function(aData, index){
 			var item = createElement(aData);
 			str+=item.element[0].outerHTML;
             console.log(index)
 		});
-		settings.rowContainer.append(str);
+		$(".candidateListing[data-status-attribute='"+status+"']").append(str);
         $("#jobs-tabs").removeClass("hidden")
 	}
 
@@ -181,25 +189,36 @@ function candidateList() {
         })
     }
 
-    function onClickSendMessage() {
-
+    function onClickSendMessage(fn) {
+        settings.rowContainer.on('click', settings.candidateSendMessageButton,function(event) {
+            event.stopPropagation();
+            var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
+            fn(candidateId);
+        });
     }
 
     function onClickSendInterviewInvite(fn) {
         settings.rowContainer.on('click', settings.candidateInviteButton, function(event){
             event.stopPropagation();
-            // var candidateId = $(this).closest(candidateItem).attr('data-candidate-id');
-            // var applicationId = $(this).closest(candidateItem).attr('application-id');
-            return fn;
+            var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
+            fn(candidateId);
         })
     }
 
-    function onClickDownloadResume() {
-
+    function onClickDownloadResume(fn) {
+        settings.rowContainer.on('click', settings.candidateDownloadResumeButton, function(event){
+            event.stopPropagation();
+            var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
+            fn(candidateId);
+        })
     }
 
-    function onClickSave() {
-
+    function onClickSaveJob(fn) {
+        settings.rowContainer.on('click', settings.candidateSaveButton, function(event){
+            event.stopPropagation();
+            var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
+            fn(candidateId);
+        })
     }
 
     function onClickAddComment(fn) {
@@ -230,6 +249,30 @@ function candidateList() {
         })
     }
 
+    function onClickShortlistCandidate(fn) {
+        settings.rowContainer.on('click', settings.candidateShortlistButton, function(event) {
+            event.stopPropagation();
+            var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
+            fn(candidateId);
+        })
+    }
+
+    function onClickRejectCandidate(fn) {
+        settings.rowContainer.on('click', settings.candidateRejectButton, function(event) {
+            event.stopPropagation();
+            var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
+            fn(candidateId);
+        })
+    }
+
+    function onChangeCandidateCheckbox(fn) {
+        settings.rowContainer.off('click').on('click', settings.candidateCheckboxContainer, function(event) {
+            event.stopPropagation();
+            var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
+            fn(candidateId);
+        })
+    }
+
     return {
 		init: init,
 		addToList: addToList,
@@ -241,23 +284,12 @@ function candidateList() {
         onClickSendInterviewInvite: onClickSendInterviewInvite,
         onClickCandidateOtherActions: onClickCandidateOtherActions,
         onClickAddTag: onClickAddTag,
-        onClickAddComment: onClickAddComment
-	}
-}
-
-function checkScrollEnd() {
-
-	if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-		var attribute = $('.stat.highlight')[0];
-		var id = $(attribute).attr("data-attribute");
-		var queryString = createObject();
-		queryString = checkTabId(id, queryString);
-		queryString["pageContent"] = pageContent;
-		pageNumber = pageNumber + 1;
-		queryString["pageNumber"] = pageNumber;
-		// console.log(queryString);
-		if(queryString["pageNumber"] != 1 && resultLength == queryString["pageContent"] ) {
-			getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/"+jobId, queryString, populateJobs, showLoaderScroll, hideLoaderScroll)
-		}
+        onClickAddComment: onClickAddComment,
+        onClickSendMessage: onClickSendMessage,
+        onClickSaveJob: onClickSaveJob,
+        onClickDownloadResume: onClickDownloadResume,
+        onClickShortlistCandidate: onClickShortlistCandidate,
+        onClickRejectCandidate: onClickRejectCandidate,
+        onChangeCandidateCheckbox: onChangeCandidateCheckbox
 	}
 }
