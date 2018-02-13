@@ -1,3 +1,4 @@
+var test = null;
 function Jobs() {
 
 	var settings = {};
@@ -149,8 +150,15 @@ function Jobs() {
 		var loc = aData["loc"];
 		var locShow = loc.toString();
 		if(loc.length) {
-			item.metaSeperator.removeClass("hidden")
-			(loc.length <= 3) ? item.location.append("<span>"+locShow+"</span>") : item.multipleLocation.attr("title",locShow).removeClass("hidden");
+			item.metaSeperator.removeClass("hidden");
+			if(loc.length <= 3){
+				item.location.append("<span>"+locShow+"</span>") 
+			}
+			else{
+				item.multipleLocation.attr("title",locShow).removeClass("hidden");
+			}
+			 	
+			
 		}
 
 		var experience = aData["exp"]['min']+'-'+aData['exp']['max'] +' yrs'
