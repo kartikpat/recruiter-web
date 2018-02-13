@@ -63,7 +63,7 @@ jQuery(document).ready( function() {
     var store = Store();
 
     theJob.setConfig("availableCredits", profile["availableCredits"]);
-
+    candidates.init();
     theJob.init();
 
     candidates.onClickCandidate(openSingleCandidate);
@@ -86,6 +86,10 @@ jQuery(document).ready( function() {
     }
 
     candidates.onClickSendMessage(function(candidateId){
+        alert(candidateId)
+    })
+
+    candidates.onChangeCandidateCheckbox(function(candidateId){
         alert(candidateId)
     })
 
@@ -151,13 +155,11 @@ jQuery(document).ready( function() {
             candidates.setJobStats(data["stats"]);
             initialLoad = 0;
         }
+
         length = data["data"].length;
-        candidates.addToList(data["data"]);
-        console.log(store)
+        candidates.addToList(data["data"], globalParameters["status"]);
         store.emptyStore(data["data"]);
-        console.log(store)
         store.saveToStore(data["data"]);
-        console.log(store)
     }
 
 	function onJobsApplicationsFetchFail(topic, data){

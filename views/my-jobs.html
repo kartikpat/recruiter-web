@@ -38,7 +38,7 @@
 						</div>
 						<div class="row-separator"></div>
 					</div>
-					<div class="jobRowList"></div>
+					<div id="jobRowList"></div>
 				</div>
 			</div>
 		</div>
@@ -48,29 +48,29 @@
 		</div>
 	</div>
 	<div class="table-row job prototype hidden">
-		<div class="table-cell created js_jobCreatedOn">
-			<span class="job-created-on js_createdOn"></span>
+		<div class="table-cell created ">
+			<span class="job-created-on createdOn"></span>
 		</div>
 
-		<div class="table-cell title js_jobTitle">
-			<span class="job-title jobTitle js_title"></span>
-			<span class="job-location jobLocation js_location"></span>
-			<span class="js_multipleLocation hidden tooltip" aria-hidden="true" title="">Multiple location</span>
-			<span class="job-meta-separator js_seperator hidden">&nbsp; -- &nbsp;</span>
-			<span class="job-experience jobExperience js_experience"></span>
+		<div class="table-cell title ">
+			<span class="job-title jobTitle title"></span>
+			<span class="job-location jobLocation location"></span>
+			<span class="multipleLocation hidden tooltip" aria-hidden="true" title="">Multiple location</span>
+			<span class="job-meta-separator metaSeperator hidden">&nbsp; -- &nbsp;</span>
+			<span class="job-experience jobExperience experience"></span>
 		</div>
 
-		<div class="table-cell status js_jobStatus">
-			<span class="mobile-status jobStatus">Status:<span class="js_status"></span><i data-attribute="" class='icon-information js_status_msg hidden tooltip' aria-hidden='true' title=""></i> </span>
-			<span class="job-status jobStatus js_status"></span><i data-attribute="" class='icon-information js_status_msg hidden tooltip' aria-hidden='true' title=""></i>
+		<div class="table-cell status">
+			<span class="mobile-status">Status:<span class="jobStatus"></span><i data-attribute="" class='icon-information statusMsg hidden tooltip' aria-hidden='true' title=""></i> </span>
+			<span class="job-status jobStatus"></span><i data-attribute="" class='icon-information statusMsg hidden tooltip' aria-hidden='true' title=""></i>
 		</div>
 
-		<div class="table-cell js_jobEngagement">
-			<span class="js_engagement_default">--</span>
-			<span class="mobile-engagement js_engagement hidden">Engagement: <span class="job-view-count jobViews js_views"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="job-applied-count jobApplications js_applications"></span></span>
-			<span class="engagement jobEngagement js_engagement hidden">
-				<span class="job-view-count jobViews js_views"></span>
-				<span class="job-applied-count jobApplications js_applications"></span>
+		<div class="table-cell">
+			<span class="engagementDefault">--</span>
+			<span class="mobile-engagement engagement hidden">Engagement: <span class="job-view-count jobViews views"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="job-applied-count jobApplications js_applications"></span></span>
+			<span class="engagement jobEngagement engagement hidden">
+				<span class="job-view-count jobViews views"></span>
+				<span class="job-applied-count jobApplications applications"></span>
 			</span>
 		</div>
 
@@ -167,8 +167,8 @@
 				<div class="modal_heading">Make Premium.</div>
 			</div>
 			<div class="modal_content">
-				<div class="modal_text js_modalText">You are about to make this job premium.</div>
-				<div class="section modal_text">
+				<div class="modal_text modalTextPrimary">You are about to make this job premium.</div>
+				<div class="section modal_text modalTextSecondary">
 					This job will be highlighted and moved to top of the list for 15 days starting today. You will have credits left.
 				</div>
 				<div class="action-buttons"><button class="jobMakePremiumButton hidden">Make Premium</button></div>

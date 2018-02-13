@@ -1201,6 +1201,8 @@ span.sticker {
               display: inline-block; }
           .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.status {
             margin: 10px 0; }
+            .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.status .job-status {
+              display: none; }
             .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.status .mobile-status {
               display: inline-block; }
           .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell .engagement {

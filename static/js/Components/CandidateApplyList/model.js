@@ -1,29 +1,32 @@
 function candidateList() {
 
-    var settings = {
-		rowContainer: $('.js_candidate_listing'),
-        header: $('#jobDetails'),
-        candidatesContainer: $('.jsCandidatesArea'),
-        candidateRow: ".candidateRow",
-        candidateInviteButton : ".candidateSendInterviewInvite",
-        candidateAddTagButton: ".candidateAddTag",
-        candidateAddCommentButton : ".candidateAddComment",
-        candidateSaveButton : ".candidateSave",
-        candidateDownloadResumeButton : ".candidateDownloadResume",
-        candidateSendMessageButton : ".candidateSendMessage",
-        candidateOtherActions: '.candidateOtherActions',
-        candidateShortlistButton: '.candidateShortlist',
-        candidateRejectButton: '.candidateReject'
-	};
-
+    var settings = {};
     var config = {};
+
+    function init(){
+        settings.rowContainer= $('.candidateListing'),
+        settings.header= $('#jobDetails'),
+        settings.candidateRow= ".candidateRow",
+        settings.candidateInviteButton= ".candidateSendInterviewInvite",
+        settings.candidateAddTagButton= ".candidateAddTag",
+        settings.candidateAddCommentButton= ".candidateAddComment",
+        settings.candidateSaveButton= ".candidateSave",
+        settings.candidateDownloadResumeButton= ".candidateDownloadResume",
+        settings.candidateSendMessageButton= ".candidateSendMessage",
+        settings.candidateOtherActions= '.candidateOtherActions',
+        settings.candidateShortlistButton='.candidateShortlist',
+        settings.candidateRejectButton= '.candidateReject',
+        settings.candidateCheckbox= '.candidateCheckbox',
+        settings.candidateCheckboxLabel= '.candidateCheckboxLabel',
+        settings.candidateCheckboxContainer = '.candidateCheckboxContainer'
+	}
 
 	function setConfig(key, value) {
 		config[key] = value;
 	}
 
     function getElement(id) {
-		var card = $(".candidateRow.prototype").clone().removeClass('prototype hidden')
+		var card = $(""+settings.candidateRow+".prototype").clone().removeClass('prototype hidden')
 		card.attr('data-candidate-id', id);
 		return {
 			element: card,
@@ -35,7 +38,9 @@ function candidateList() {
 			notice: card.find('.js_notice'),
 			jobTagList: card.find('.js_job_tag_list'),
 			eduList: card.find('.js_edu_list'),
-			profList: card.find('.js_prof_list')
+			profList: card.find('.js_prof_list'),
+            candidateCheckbox: card.find(settings.candidateCheckbox),
+            candidateCheckboxLabel: card.find(settings.candidateCheckboxLabel)
 		}
 	}
 
@@ -106,12 +111,13 @@ function candidateList() {
             eduStr+=item.element[0].outerHTML
         })
         item.eduList.html(eduStr)
+
+        item.candidateCheckbox.attr("id",aData["userID"]);
+        item.candidateCheckboxLabel.attr("for",aData["userID"]);
         return item
     }
 
-    function init(){
 
-	}
 
     function getJobsCategoryTabsElement() {
         var card = $("#jobs-category-tabs");
@@ -137,15 +143,15 @@ function candidateList() {
         item.reviewed.text("Reviewed"+"("+data["reviewed"]+")")
     }
 
-    function addToList(dataArray){
-        console.log(dataArray)
+    function addToList(dataArray, status){
+        console.log(status)
 		var str = '';
 		dataArray.forEach(function(aData, index){
 			var item = createElement(aData);
 			str+=item.element[0].outerHTML;
             console.log(index)
 		});
-		settings.rowContainer.append(str);
+		$(".candidateListing[data-status-attribute='"+status+"']").append(str);
         $("#jobs-tabs").removeClass("hidden")
 	}
 
@@ -259,6 +265,14 @@ function candidateList() {
         })
     }
 
+    function onChangeCandidateCheckbox(fn) {
+        settings.rowContainer.off('click').on('click', settings.candidateCheckboxContainer, function(event) {
+            event.stopPropagation();
+            var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
+            fn(candidateId);
+        })
+    }
+
     return {
 		init: init,
 		addToList: addToList,
@@ -275,6 +289,7 @@ function candidateList() {
         onClickSaveJob: onClickSaveJob,
         onClickDownloadResume: onClickDownloadResume,
         onClickShortlistCandidate: onClickShortlistCandidate,
-        onClickRejectCandidate: onClickRejectCandidate
+        onClickRejectCandidate: onClickRejectCandidate,
+        onChangeCandidateCheckbox: onChangeCandidateCheckbox
 	}
 }
