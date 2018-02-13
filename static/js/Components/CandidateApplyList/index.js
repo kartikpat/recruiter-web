@@ -42,6 +42,17 @@ jQuery(document).ready( function() {
         parameters.status = globalParameters.status;
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
+    filters.onClickSearchButton(function(){
+        var str = filters.getSearchString();
+        var parameters = filters.getAppliedFilters();
+        debugger
+        globalParameters.pageNumber = 1;
+        parameters.pageNumber = globalParameters.pageNumber;
+        parameters.pageContent = globalParameters.pageContent;
+        parameters.status = globalParameters.status;
+        parameters.searchString = str;
+        return fetchJobApplications(jobId, parameters, recruiterId);
+    })
 
     $.when(fetchJob(jobId, recruiterId ), fetchCalendars(jobId, recruiterId)).then(function(a, b){
         if(a[0] && b[0] && a[0]["status"] == "success" && b[0]["status"] =="success" && a[0]['data'].length >0 ) {

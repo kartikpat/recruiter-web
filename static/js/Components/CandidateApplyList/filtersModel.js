@@ -113,8 +113,8 @@ function Filters(){
 		}
 	}
 	function init(){
-		settings.searchInput = "";
-		settings.searchButton = "";
+		settings.searchInput = $(".searchInput");
+		settings.searchButton = $(".searchButton");
 		settings.filterButton = "";
 		settings.sortButton = "";
 		settings.appliedFiltersContainer = $(".active-filters .clear-all-filters");
@@ -152,7 +152,14 @@ function Filters(){
 	}
 
 	function onClickSearchButton(fn){
-		fn()
+		settings.searchButton.click(function(event){
+			fn();
+		})
+	}
+
+	function getSearchString(){
+		var str = settings.searchInput.val();
+		return str;
 	}
 
 	function onClickClearButton(fn){
@@ -299,6 +306,8 @@ function Filters(){
     	onClickApplyFilterButton: onClickApplyFilterButton,
     	setAppliedFilters: setAppliedFilters,
     	onClickRemoveFilter: onClickRemoveFilter,
-    	removeFilter:removeFilter
+    	removeFilter:removeFilter,
+    	onClickSearchButton: onClickSearchButton,
+    	getSearchString: getSearchString
     }
 }
