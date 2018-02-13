@@ -13,8 +13,8 @@ function candidateList() {
         settings.candidateSaveButton= ".candidateSave",
         settings.candidateDownloadResumeButton= ".candidateDownloadResume",
         settings.candidateSendMessageButton= ".candidateSendMessage",
-        settings.candidateOtherActions= '.candidateOtherActions',
-        settings.candidateShortlistButton='.candidateShortlist',
+        settings.candidateOtherActionsClass= '.candidateOtherActions',
+        settings.candidateShortlistButton='.cadidateShortlist',
         settings.candidateRejectButton= '.candidateReject',
         settings.candidateCheckbox= '.candidateCheckbox',
         settings.candidateCheckboxLabel= '.candidateCheckboxLabel',
@@ -169,7 +169,13 @@ function candidateList() {
     }
 
     function onClickCandidate(fn) {
+        debugger
+        settings.rowContainer.on('click','.candidate-item', function(e){
+            console.log(e);
+        } )
         settings.rowContainer.on('click', ".candidate-item", function(e){
+            console.log('clicked')
+            debugger
             var candidateId = $(this).attr('data-candidate-id');
             return fn(candidateId);
         })
@@ -182,7 +188,7 @@ function candidateList() {
     }
 
     function onClickCandidateOtherActions() {
-        settings.rowContainer.on('click', settings.candidateOtherActions,function(event) {
+        settings.rowContainer.on('click', settings.candidateOtherActionsClass,function(event) {
             console.log("s")
             event.stopPropagation();
             $(this).toggleClass("inactive");
@@ -266,10 +272,14 @@ function candidateList() {
     }
 
     function onChangeCandidateCheckbox(fn) {
-        settings.rowContainer.off('click').on('click', settings.candidateCheckboxContainer, function(event) {
+        settings.rowContainer.on('click', '.candidateCheckbox', function(event){
+            event.stopPropagation();
+        })
+        settings.rowContainer.on('click', settings.candidateCheckboxLabel, function(event) {
             event.stopPropagation();
             var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
-            fn(candidateId);
+            debugger
+            return fn(candidateId);
         })
     }
 

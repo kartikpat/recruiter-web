@@ -85,8 +85,10 @@ jQuery(document).ready( function() {
     candidates.init();
     theJob.init();
 
+    debugger
     candidates.onClickCandidate(openSingleCandidate);
     function openSingleCandidate(candidateId){
+        debugger
         var candidateDetails = store.getCandidateFromStore(candidateId);
         aCandidate.showCandidateDetails(candidateDetails);
     }
