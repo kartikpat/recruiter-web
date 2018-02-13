@@ -381,9 +381,9 @@ var sampleData = {
     ],
     "status": "success"
 }
-function fetchInterviews(){
+function fetchInterviews(recruiterId){
 	// return pubsub.publish("fetchedInterviews", sampleData.data);
-	getRequest(baseUrl+"/recruiter/"+recruiterID+"/interviews", {}, function(res){
+	getRequest(baseUrl+"/recruiter/"+recruiterId+"/interviews", {}, function(res){
 		if(res.status && res.status =='success'){
 			pubsub.publish("fetchedInterviews", res.data);
 		}
