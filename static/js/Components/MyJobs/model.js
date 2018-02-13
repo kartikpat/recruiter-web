@@ -84,15 +84,15 @@ function Jobs() {
 		return {
 			element: card,
 			createdOn: card.find('.createdOn'),
-			title: card.find('.title'),
-			location: card.find('.location'),
-			multipleLocation: card.find('.multipleLocation'),
-			metaSeperator: card.find('.metaSeperator'),
-			experience: card.find('.experience'),
+			title: card.find('.jobTitle'),
+			location: card.find('.jobLocation'),
+			multipleLocation: card.find('.jobMultipleLocation'),
+			metaSeperator: card.find('.jobMetaSeperator'),
+			experience: card.find('.jobExperience'),
 			status: card.find('.jobStatus'),
-			statusMsg: card.find('.statusMsg'),
-			views: card.find('.views'),
-			applications: card.find('.applications'),
+			statusMsg: card.find('.jobStatusMsg'),
+			views: card.find('.jobViews'),
+			applications: card.find('.jobApplications'),
 			edit: card.find(settings.jobEditButton),
 			cancel: card.find(settings.openJobUnpublishModalButton),
 			refresh: card.find(settings.openJobRefreshModalButton),
@@ -149,8 +149,10 @@ function Jobs() {
 		var loc = aData["loc"];
 		var locShow = loc.toString();
 		if(loc.length) {
-			item.metaSeperator.removeClass("hidden")
-			(loc.length <= 3) ? item.location.append("<span>"+locShow+"</span>") : item.multipleLocation.attr("title",locShow).removeClass("hidden");
+			item.metaSeperator.removeClass("hidden");
+			item.location.append("<span>"+locShow+"</span>");
+
+			//(loc.length <= 3) ? item.location.append("<span>"+locShow+"</span>") : item.multipleLocation.attr("title",locShow).removeClass("hidden");
 		}
 
 		var experience = aData["exp"]['min']+'-'+aData['exp']['max'] +' yrs'
@@ -179,7 +181,7 @@ function Jobs() {
 
 
 		item.refresh.attr("data-job-refresh", aData["refresh"])
-		if(!aData["refresh"])
+		if(!aData["refreshable"])
 			item.refresh.attr("title", "You can refresh this job after 7 days")
 
 		item.edit.attr("data-job-isEditable", aData["editable"])
@@ -188,7 +190,7 @@ function Jobs() {
 			item.edit.attr("title","This job cannot be edited now. Reach us at hello@iimjobs.com in case of any issue.");
 		}
 
-		item.premium.attr("data-job-isPremiumpremium", aData["premium"]);
+		item.premium.attr("data-job-isPremium", aData["premium"]);
 		if(aData["premium"]) {
 			item.premium.find('.icon-star').addClass("premium_highlight");
 		}

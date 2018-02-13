@@ -1,18 +1,28 @@
 
 
 function Candidate() {
-    var settings = {
-        modal: $('.js_candidate_modal'),
-        candidateList: $('.js_candidate_listing')
+    var settings = {}
+
+    function init() {
+        settings.candidateDetailsModal= $('.candidateDetailsModal')
+        settings.candidateCommentContainerClass= '.candidateCommentContainer',
+        settings.candidateTagContainerClass= '.candidateTagContainer',
+        settings.mobCandidateTagContainerClass= '.mobCandidateTagContainer',
+        settings.mobCandidateCommentContainerClass= '.mobCandidateCommentContainer',
+        settings.candidateTagsPrototype= $('.candidateTags.prototype'),
+        settings.candidateAddCommentButtonClass= '.candidateAddCommentButton',
+        settings.candidateAddTagButtonClass= '.candidateAddTagButton',
+        settings.candidateCommentTextareaClass= '.candidateCommentTextarea',
+        settings.candidateTagInputClass = '.candidateTagInput'
     }
 
-
-    function showCandidateDetails(details){
-        populateCandidateData(details)
+    function showCandidateDetails(details, type){
+        return populateCandidateData(details, type)
     }
 
-    function getElement() {
-        modal = settings.modal;
+    function getElement(userID) {
+        var modal = settings.candidateDetailsModal;
+        modal.attr("data-candidate-id",userID)
         return {
             element: modal,
             image: modal.find(".js_img"),
@@ -44,7 +54,11 @@ function Candidate() {
             startup: modal.find(".js_startup"),
             travel: modal.find(".js_travel"),
             resume: modal.find(".js_resume"),
-            coverLetter: modal.find(".js_cover_letter")
+            coverLetter: modal.find(".js_cover_letter"),
+            comment: modal.find(".candidateCommentTextarea"),
+            tag: modal.find(".candidateTagInput"),
+            mobTag: modal.find(".mobCandidateTagInput"),
+            mobComment: modal.find(".mobCandidateCommentTextarea"),
         }
     }
 
@@ -70,8 +84,8 @@ function Candidate() {
         }
     }
 
-    function populateCandidateData(aData) {
-        var item = getElement();
+    function populateCandidateData(aData, type) {
+        var item = getElement(aData["userID"]);
         item.image.attr("src", aData["img"])
         item.name.text(aData["name"]);
         item.experience.text(aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m");
@@ -112,7 +126,7 @@ function Candidate() {
         })
         var tagStr = '';
         $.each(aData["tags"],function(index, aTag) {
-            var tag =  $('.js_job_tag.prototype').clone().text(aTag["name"]).removeClass("prototype hidden");
+            var tag =  settings.candidateTagsPrototype.clone().text(aTag["name"]).removeClass("prototype hidden");
             tagStr+=tag[0].outerHTML
         })
         item.jobTagList.html(tagStr)
@@ -131,8 +145,25 @@ function Candidate() {
         }
         item.coverLetter.text(aData["cover"]);
 
-        openModal()
+        openModal(item)
+        console.log(type)
+        if(!type)
+            return
+        if(type == "tag") {
+            if(window.innerWidth <= 1024)
+                return focusOnElement(item.mobTag, settings.mobCandidateTagContainerClass)
+            return focusOnElement(item.tag, settings.candidateTagContainerClass)
+        }
+
+        if(type == "comment") {
+            if(window.innerWidth <= 1024)
+                return focusOnElement(item.mobComment, settings.mobCandidateCommentContainerClass)
+            return focusOnElement(item.comment, settings.candidateCommentContainerClass)
+        }
+
     }
+
+
 
     function resetCandidateData() {
         var item = getElement();
@@ -160,25 +191,68 @@ function Candidate() {
     	$(".body-overlay").removeClass("hidden").addClass("veiled");
     	$("body").addClass("posf");
         jQuery("#tabbed-content").tabs({});
-        modal.removeClass("hidden");
-
+        settings.candidateDetailsModal.removeClass("hidden");
     }
 
     jQuery(".body-overlay").on("click", function(e) {
     	if(jQuery(e.target).parents(".view-resume-modal").length) {
     		e.stopImmediatePropagation();
     	}
-
-    	jQuery(".view-resume-modal").addClass("hidden");
+        settings.candidateDetailsModal.scrollTop(0)
+    	settings.candidateDetailsModal.addClass("hidden");
         resetCandidateData()
     });
 
+    function onClickAddComment(fn) {
+        // settings.candidateDetailsModal.on('keyup', settings.candidateCommentTextareaClass,function(event) {
+        //     event.stopPropagation();
+        //     if (event.which == 13) {
+        //         return alert("k")
+        //         var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
+        //         return fn(candidateId);
+        //     }
+        //
+        // });
+
+        settings.candidateDetailsModal.on('click', settings.candidateAddCommentButtonClass,function(event) {
+            event.stopPropagation();
+            var candidateId = $(this).closest(settings.candidateDetailsModal).attr("data-candidate-id")
+            fn(candidateId);
+        });
+    }
+
+    function onClickAddTag(fn) {
+        settings.candidateDetailsModal.on('keyup', settings.candidateTagInputClass,function(event) {
+            event.stopPropagation();
+            if (event.which == 13) {
+                var candidateId = $(this).closest(settings.candidateDetailsModal).attr("data-candidate-id")
+                return fn(candidateId);
+            }
+        });
+        settings.candidateDetailsModal.on('click', settings.candidateAddTagButtonClass,function(event) {
+            event.stopPropagation();
+            var candidateId = $(this).closest(settings.candidateDetailsModal).attr("data-candidate-id")
+            fn(candidateId);
+        });
+    }
+
     return {
-        showCandidateDetails: showCandidateDetails
+        init: init,
+        showCandidateDetails: showCandidateDetails,
+        onClickAddComment: onClickAddComment,
+        onClickAddTag: onClickAddTag
 	}
 
-
+    function focusOnElement(element, container) {
+        
+        element.focus();
+        settings.candidateDetailsModal.animate({
+    		scrollTop: (element.closest(container).position().top)
+    	},200);
+    }
 }
+
+
 
 function getAge(dateString) {
     var today = new Date();

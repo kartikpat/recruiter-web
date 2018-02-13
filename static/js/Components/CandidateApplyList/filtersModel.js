@@ -4,33 +4,33 @@ function Filters(){
 		industry: {
 			target: $(".jsIndustry") ,
 			type: 'checkbox',
-			selection: []			
+			selection: []
 		},
 		functionalArea: {
 			target: $(".jsFuncArea"),
 			type: 'checkbox',
 			selection: []
-		}, 
+		},
 		currentLocation:  {
 			target: $(".jsCurLoc") ,
 			type: 'checkbox',
 			selection: []
-		}, 
+		},
 		preferredLocation: {
 			target: $(".jsPrefLoc"),
 			type: 'checkbox',
 			selection: []
-		}, 	
+		},
 		functionalArea: {
 			target:  $(".jsFuncArea"),
 			type: 'checkbox',
 			selection: []
-		}, 
+		},
 		institute: {
 			target: $(".jsInstitute"),
 			type: 'checkbox',
 			selection: []
-		}, 
+		},
 		language: {
 			target:  $(".jsLanguage"),
 			type: 'checkbox',
@@ -124,7 +124,7 @@ function Filters(){
 		settings.activeFiltersContainer = $(".active-filters");
 		settings.filterModal = $(".jsFiltersModal");
 		settings.filterModalCancelButton = settings.filterModal.find('.close_modal');
-		settings.candidatesContainer = $('.jsCandidatesArea');
+		settings.candidatesContainer = $('#candidatesArea');
 		settings.checkbox = $(".jsCheckInput.prototype");
 		settings.removeFilterButtonClass = ".remove-active-filter";
 		settings.applyFilterButton = $(".applyFilterButton");
@@ -147,7 +147,7 @@ function Filters(){
 		aFilter.attr('data-value', value);
 		aFilter.find('.icon-label').text(label)
 		console.log(aFilter)
-		
+
 		return aFilter;
 	}
 
@@ -169,7 +169,7 @@ function Filters(){
 	}
 
 	function addFilterToContainer(value, label, category){
-		
+
 		var aFilter = createPill(value, label, category);
 		settings.appliedFiltersContainer.prepend(aFilter);
 	}
@@ -288,7 +288,7 @@ function Filters(){
 	}
 
 	function setOnClickFilters() {
-        settings.candidatesContainer.on('click','.jsFilter',function(event){ 
+        settings.candidatesContainer.on('click','.jsFilter',function(event){
             addBodyFixed()
             settings.filterModal.removeClass("hidden");
         })

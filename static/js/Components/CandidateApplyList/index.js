@@ -84,11 +84,10 @@ jQuery(document).ready( function() {
     theJob.setConfig("availableCredits", profile["availableCredits"]);
     candidates.init();
     theJob.init();
+    aCandidate.init();
 
-    debugger
     candidates.onClickCandidate(openSingleCandidate);
     function openSingleCandidate(candidateId){
-        debugger
         var candidateDetails = store.getCandidateFromStore(candidateId);
         aCandidate.showCandidateDetails(candidateDetails);
     }
@@ -96,15 +95,17 @@ jQuery(document).ready( function() {
     candidates.onClickCandidateOtherActions();
     theJob.onClickJobOtherActions();
 
-    candidates.onClickAddTag(openAddTagModal);
-    function openAddTagModal() {
-        alert("added");
-    }
+    candidates.onClickAddTag(function(candidateId) {
+        var candidateDetails = store.getCandidateFromStore(candidateId);
+        aCandidate.showCandidateDetails(candidateDetails, "tag");
 
-    candidates.onClickAddComment(openAddCommentModal);
-    function openAddCommentModal() {
-        alert("added");
-    }
+    })
+
+    candidates.onClickAddComment(function(candidateId) {
+        var candidateDetails = store.getCandidateFromStore(candidateId);
+        aCandidate.showCandidateDetails(candidateDetails, "comment");
+
+    })
 
     candidates.onClickSendMessage(function(candidateId){
         alert(candidateId)
@@ -170,6 +171,14 @@ jQuery(document).ready( function() {
          alert(candidateId)
      })
 
+     aCandidate.onClickAddTag(function(candidateId){
+         alert(candidateId)
+     })
+
+     aCandidate.onClickAddComment(function(candidateId){
+         alert(candidateId)
+     })
+
     function onJobsApplicationsFetchSuccess(topic, data) {
         //Call only on initial load
         if(initialLoad) {
@@ -217,4 +226,5 @@ jQuery(document).ready( function() {
     		}
     	}
     }
+
 });

@@ -16,9 +16,9 @@ function candidateList() {
         settings.candidateOtherActionsClass= '.candidateOtherActions',
         settings.candidateShortlistButton='.cadidateShortlist',
         settings.candidateRejectButton= '.candidateReject',
-        settings.candidateCheckbox= '.candidateCheckbox',
-        settings.candidateCheckboxLabel= '.candidateCheckboxLabel',
-        settings.candidateCheckboxContainer = '.candidateCheckboxContainer'
+        settings.candidateCheckboxClass= '.candidateCheckbox',
+        settings.candidateCheckboxLabelClass= '.candidateCheckboxLabel',
+        settings.candidateTagsPrototype= $('.candidateTags.prototype')
 	}
 
 	function setConfig(key, value) {
@@ -76,7 +76,7 @@ function candidateList() {
         item.notice.text(aData["notice"] + " months");
         var tagStr = '';
         $.each(aData["tags"],function(index, aTag) {
-            var tag =  $('.js_job_tag.prototype').clone().text(aTag["name"]).removeClass("prototype hidden");
+            var tag =  settings.candidateTagsPrototype.clone().text(aTag["name"]).removeClass("prototype hidden");
             tagStr+=tag[0].outerHTML
         })
         item.jobTagList.html(tagStr)
@@ -169,13 +169,7 @@ function candidateList() {
     }
 
     function onClickCandidate(fn) {
-        debugger
-        settings.rowContainer.on('click','.candidate-item', function(e){
-            console.log(e);
-        } )
         settings.rowContainer.on('click', ".candidate-item", function(e){
-            console.log('clicked')
-            debugger
             var candidateId = $(this).attr('data-candidate-id');
             return fn(candidateId);
         })
@@ -189,7 +183,6 @@ function candidateList() {
 
     function onClickCandidateOtherActions() {
         settings.rowContainer.on('click', settings.candidateOtherActionsClass,function(event) {
-            console.log("s")
             event.stopPropagation();
             $(this).toggleClass("inactive");
         })
@@ -200,6 +193,7 @@ function candidateList() {
             event.stopPropagation();
             var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
             fn(candidateId);
+            return false
         });
     }
 
@@ -208,6 +202,7 @@ function candidateList() {
             event.stopPropagation();
             var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
             fn(candidateId);
+            return false
         })
     }
 
@@ -216,6 +211,7 @@ function candidateList() {
             event.stopPropagation();
             var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
             fn(candidateId);
+            return false
         })
     }
 
@@ -224,36 +220,55 @@ function candidateList() {
             event.stopPropagation();
             var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
             fn(candidateId);
+            return false
+        })
+    }
+
+    // function onClickAddComment(fn) {
+    //     settings.rowContainer.on('click', settings.candidateAddCommentButton ,function(event) {
+    //         event.stopPropagation();
+	// 		// var jobId = $(this).attr("data-id");
+	// 		var modal = $(".jsAddCommentModal");
+    //         modal.find(".jsAddComment").click(function(){
+    //             return fn
+    //         });
+    //         addBodyFixed()
+    //         modal.removeClass("hidden")
+    //         return false;
+    //     })
+    // }
+    //
+    // function onClickAddTag() {
+    //     settings.rowContainer.on('click',settings.candidateAddTagButton ,function(event) {
+    //         event.stopPropagation()
+	// 		// var jobId = $(this).attr("data-id");
+	// 		var modal = $(".jsAddTagModal");
+    //         modal.find(".jsAddTag").click(function(){
+    //             fn(jobId)
+    //         });
+    //         addBodyFixed()
+    //         modal.removeClass("hidden")
+    //         return false;
+    //     })
+    // }
+
+    function onClickAddTag(fn) {
+        settings.rowContainer.on('click',settings.candidateAddTagButton ,function(event) {
+            var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
+            fn(candidateId);
+            return false
         })
     }
 
     function onClickAddComment(fn) {
-        settings.rowContainer.on('click', settings.candidateAddCommentButton ,function(event) {
-            event.stopPropagation();
-			// var jobId = $(this).attr("data-id");
-			var modal = $(".jsAddCommentModal");
-            modal.find(".jsAddComment").click(function(){
-                return fn
-            });
-            addBodyFixed()
-            modal.removeClass("hidden")
-            return false;
+        settings.rowContainer.on('click',settings.candidateAddCommentButton ,function(event) {
+            var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
+            fn(candidateId);
+            return false
         })
     }
 
-    function onClickAddTag() {
-        settings.rowContainer.on('click',settings.candidateAddTagButton ,function(event) {
-            event.stopPropagation()
-			// var jobId = $(this).attr("data-id");
-			var modal = $(".jsAddTagModal");
-            modal.find(".jsAddTag").click(function(){
-                fn(jobId)
-            });
-            addBodyFixed()
-            modal.removeClass("hidden")
-            return false;
-        })
-    }
+
 
     function onClickShortlistCandidate(fn) {
         settings.rowContainer.on('click', settings.candidateShortlistButton, function(event) {
@@ -271,14 +286,17 @@ function candidateList() {
         })
     }
 
+    function candidateActionTransition(candidateId) {
+        settings.rowContainer.find(".candidateRow[data-candidate-id="+candidateId+"]").addClass("hidden")
+    }
+
     function onChangeCandidateCheckbox(fn) {
-        settings.rowContainer.on('click', '.candidateCheckbox', function(event){
+        settings.rowContainer.on('click', settings.candidateCheckboxClass, function(event){
             event.stopPropagation();
         })
-        settings.rowContainer.on('click', settings.candidateCheckboxLabel, function(event) {
+        settings.rowContainer.on('click', settings.candidateCheckboxLabelClass, function(event) {
             event.stopPropagation();
             var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
-            debugger
             return fn(candidateId);
         })
     }
@@ -300,6 +318,9 @@ function candidateList() {
         onClickDownloadResume: onClickDownloadResume,
         onClickShortlistCandidate: onClickShortlistCandidate,
         onClickRejectCandidate: onClickRejectCandidate,
-        onChangeCandidateCheckbox: onChangeCandidateCheckbox
+        onChangeCandidateCheckbox: onChangeCandidateCheckbox,
+        candidateActionTransition: candidateActionTransition
 	}
+
+
 }

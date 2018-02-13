@@ -2996,6 +2996,10 @@ span.sticker {
   background-color: #f7f7f7;
   z-index: 5;
   padding: 30px; }
+  .view-resume-modal .mob.comments {
+    display: none; }
+  .view-resume-modal .mob.tags {
+    display: none; }
   .view-resume-modal .main-wrapper {
     width: 80%;
     padding-right: 20px;
@@ -3296,6 +3300,10 @@ span.sticker {
 @media all and (max-width: 1024px) {
   .view-resume-modal {
     padding-bottom: 60px; }
+    .view-resume-modal .mob.comments {
+      display: block; }
+    .view-resume-modal .mob.tags {
+      display: block; }
     .view-resume-modal .resume-sidebar {
       display: none; }
     .view-resume-modal .main-wrapper {
@@ -3474,3 +3482,16 @@ span.sticker {
 
 #jobs-tabs {
   border: 0; }
+
+.sidebar-section.comments textarea {
+  width: 100%;
+  padding: 5px;
+  border-left: 3px solid green;
+  min-height: 50px; }
+  .sidebar-section.comments textarea:focus {
+    outline: none;
+    border: 1px solid #4fa995;
+    border-left: 3px solid green; }
+
+.sidebar-section.comments .action-buttons {
+  margin-bottom: 0; }

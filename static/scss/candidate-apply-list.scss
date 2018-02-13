@@ -450,6 +450,7 @@
 }
 
 
+
 @media all and (max-width:992px) {
 	.page-content {
 		.candidates-listing {
@@ -791,6 +792,14 @@
     background-color:$body-background-color;
     z-index:5;
     padding:30px;
+
+	.mob.comments {
+		display: none;
+	}
+
+	.mob.tags {
+		display: none;
+	}
 
     .main-wrapper {
     	width:80%;
@@ -1229,6 +1238,13 @@
 @media all and (max-width:1024px) {
 	.view-resume-modal {
 		padding-bottom:60px;
+		.mob.comments {
+			display: block;
+		}
+
+		.mob.tags {
+			display: block;
+		}
 		.resume-sidebar {
 			display:none;
 		}
@@ -1443,4 +1459,21 @@
 
 #jobs-tabs {
 	border: 0;
+}
+
+.sidebar-section.comments {
+	textarea {
+		width: 100%;
+		padding: 5px;
+		border-left: 3px solid green;
+		min-height: 50px;
+		&:focus {
+			outline: none;
+			border: 1px solid $border-color-active;
+			border-left: 3px solid green;
+		}
+	}
+	.action-buttons {
+		margin-bottom: 0;
+	}
 }

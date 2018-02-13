@@ -34,7 +34,7 @@
 				</p>
 			</div>
 
-			<div class="candidates-area">
+			<div class="candidates-area" id="candidatesArea">
 				<div class="candidates-area-header">
 					<div class="candidates-search">
 						<div class="keyword-search">
@@ -141,8 +141,6 @@
 							</div>
 						</div>
 					</div>
-
-
 				</div>
 			</div>
 		</div>
@@ -153,7 +151,7 @@
 
 
 
-<div class="view-resume-modal js_candidate_modal hidden">
+<div class="view-resume-modal candidateDetailsModal hidden">
     <div class="main-wrapper left">
         <div class="main-container">
             <div class="container resume-header">
@@ -372,6 +370,33 @@
 	            			</div>
 	            		</div> -->
 
+						<div class="content-block comments mob mobCandidateCommentContainer">
+	            			<h3 class="content-heading">Comments</h3>
+	            			<div class="content">
+								<textarea  placeholder="Add Comment" name="name" class="mobCandidateCommentTextarea"></textarea>
+								<div class="action-buttons">
+									<span class="button green candidateAddCommentButton">Add</span>
+								</div>
+	            			</div>
+	            		</div>
+
+						<div class="content-block tags mob mobCandidateTagContainer">
+	            			<h3 class="content-heading">Tags</h3>
+	            			<div class="content">
+								<div class="">
+									<div>
+										<input class="mobCandidateTagInput" type="text" name="" value="">
+										<div class="action-buttons">
+											<span class="button green candidateAddTagButton">Add</span>
+										</div>
+									</div>
+									<div class="skill-tags-area js_job_tag_list">
+
+									</div>
+								</div>
+	            			</div>
+	            		</div>
+
 	            	</div>
 	            	<div id="view-resume" class="js_resume">
 
@@ -441,18 +466,30 @@
     		</ul>
     	</div>
 
-    	<div class="sidebar-section comments">
+    	<div class="sidebar-section comments candidateCommentContainer">
     		<h3>Comments</h3>
-    		<div class="js_comments_list">
-
+    		<div class="">
+				<textarea id="" placeholder="Add Comments" name="name" class="candidateCommentTextarea"></textarea>
     		</div>
+			<div class="action-buttons">
+				<span class="button green candidateAddCommentButton">Add</span>
+			</div>
     	</div>
 
-    	<div class="sidebar-section tags">
+    	<div class="sidebar-section tags candidateTagContainer">
     		<h3>Tags</h3>
-			<div class="skill-tags-area js_job_tag_list">
+			<div class="">
+				<div>
+					<input class="input-field candidateTagInput" type="text" name="" value="">
+					<div class="action-buttons">
+						<span class="button green candidateAddTagButton">Add</span>
+					</div>
+				</div>
+				<div class="skill-tags-area js_job_tag_list">
 
+				</div>
 			</div>
+
     	</div>
     </div>
 </div>
@@ -544,7 +581,7 @@
 
 <span class="skill-tag js_skill_tag prototype hidden"></span>
 
-<div class="skill-tag js_job_tag prototype hidden">
+<div class="skill-tag candidateTags prototype hidden">
 	<div class="active-skill-label"><span class="icon-label">UI/UX</span></div>
 	<div class="remove-active-skill"><span class="close-icon"><i class="icon-close_icon"></i></span></div>
 </div>
