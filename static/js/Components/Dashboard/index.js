@@ -44,7 +44,7 @@ $(document).ready(function(){
 		var len = data.length;
 		data.forEach(function(aJob, index){
 			var card = jobRowCard.clone().removeClass('hidden prototype');
-			var experience = aJob['min']+'-'+aJob['max']+'yrs'
+			var experience = aJob['exp']['min']+'-'+aJob['exp']['max']+'yrs'
 			card.find(".title .text").text(aJob['title']);
 			card.find(".title .meta-content .location .label").text(aJob["loc"])
 			card.find(".title .meta-content .experience .label").text(experience)
@@ -56,7 +56,7 @@ $(document).ready(function(){
 			$('#recentJobsContainer .detail-card').append(card);
 		});
 	}
-	var fetchJobsSubscription = pubsub.subscribe("fetchedJobs:published", onFetchJobs);
+	var fetchJobsSubscription = pubsub.subscribe("fetchedJobs", onFetchJobs);
 
 	function onVisit(){
 		var recruiterName = 'Shreya Jain';

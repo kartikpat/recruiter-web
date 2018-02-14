@@ -1,3 +1,4 @@
+var test = null;
 function Jobs() {
 
 	var settings = {};
@@ -41,7 +42,7 @@ function Jobs() {
 
 	function onClickJobRefresh(fn) {
 		settings.rowContainer.on('click', settings.openJobRefreshModalButton,function(e) {
-			if(parseInt($(this).attr("data-job-refresh"))) {
+			if(parseInt($(this).attr("data-job-refreshable"))) {
 				var jobId = $(this).attr("data-job-id");
 				settings.jobRefreshModal.removeClass('hidden');
 				settings.jobRefreshButton.click(fn);
@@ -150,9 +151,12 @@ function Jobs() {
 		var locShow = loc.toString();
 		if(loc.length) {
 			item.metaSeperator.removeClass("hidden");
-			item.location.append("<span>"+locShow+"</span>");
-
-			//(loc.length <= 3) ? item.location.append("<span>"+locShow+"</span>") : item.multipleLocation.attr("title",locShow).removeClass("hidden");
+			if(loc.length <= 3){
+				item.location.append("<span>"+locShow+"</span>")
+			}
+			else{
+				item.multipleLocation.attr("title",locShow).removeClass("hidden");
+			}
 		}
 
 		var experience = aData["exp"]['min']+'-'+aData['exp']['max'] +' yrs'
@@ -180,7 +184,7 @@ function Jobs() {
 		}
 
 
-		item.refresh.attr("data-job-refresh", aData["refresh"])
+		item.refresh.attr("data-job-refreshable", aData["refreshable"])
 		if(!aData["refreshable"])
 			item.refresh.attr("title", "You can refresh this job after 7 days")
 

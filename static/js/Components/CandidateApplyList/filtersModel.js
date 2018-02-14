@@ -21,11 +21,6 @@ function Filters(){
 			type: 'checkbox',
 			selection: []
 		},
-		functionalArea: {
-			target:  $(".jsFuncArea"),
-			type: 'checkbox',
-			selection: []
-		},
 		institute: {
 			target: $(".jsInstitute"),
 			type: 'checkbox',
@@ -152,6 +147,7 @@ function Filters(){
 		settings.applyFilterButton = $(".applyFilterButton");
 		settings.activeFilterListingClass = ".activeFilterListing";
 		settings.filterPill = $(".prototype.filterPill")
+		settings.filterSearch = $(".filterSearch");
 
 
 		setOnClickFilters();
@@ -278,7 +274,10 @@ function Filters(){
 			ob.preferredLocation = filtersTarget.preferredLocation.selection.join(',');
 		if(filtersTarget.institute.selection.length > 0)
 			ob.institute = filtersTarget.institute.selection.join(',');
-
+		if(filtersTarget.functionalArea.selection.length > 0)
+			ob.functionalArea = filtersTarget.functionalArea.selection.join(',');
+		if(filtersTarget.language.selection.length > 0)
+			ob.language = filtersTarget.language.selection.join(',');
 		if(filtersTarget.experience.props.min.selection)
 			ob.minExp = filtersTarget.experience.props.min.selection
 		if(filtersTarget.experience.props.max.selection)
@@ -311,8 +310,7 @@ function Filters(){
 			ob.relocate = filtersTarget.relocate.selection
 		if(filtersTarget.differentlyAbled.selection)
 			ob.differentlyAbled = filtersTarget.differentlyAbled.selection
-		if(filtersTarget.language.selection)
-			ob.language = filtersTarget.language.selection
+
 		if(filtersTarget.searchString.selection)
 			ob.searchString = filtersTarget.searchString.selection
 		return ob;
@@ -321,6 +319,7 @@ function Filters(){
 	function addFilterData(name, data){
 		if(name && ['industry', 'functionalArea', 'currentLocation', 'preferredLocation', 'institute', 'experience', 'batch', 'salary', 'age', 'gender', 'noticePeriod', 'appliedDate', 'lastSeen', 'workPermit', 'handleTeam', 'relocate', 'differentlyAbled', 'language'].indexOf(name) ==-1)
 			return console.log('not a valid filter');
+		
 		if(filtersTarget[name]){
 			var str = ''
 			data.forEach(function(aRow){
