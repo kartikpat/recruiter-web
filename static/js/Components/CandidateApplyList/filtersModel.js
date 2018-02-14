@@ -36,35 +36,57 @@ function Filters(){
 			type: 'checkbox',
 			selection: []
 		},
-		minExp: {
-			target: "",
+		experience: {
 			type: 'dropdown',
-			selection: null
+			props: {
+				min: {
+					target: $("#minExp"),
+					selection: null
+				},
+				max: {
+					target: $("#maxExp"),
+					selection: null
+				}
+			}
 		},
-		maxExp : {
-			target: "",
+		batch: {
 			type: 'dropdown',
-			selection: null
+			props: {
+				min: {
+					target: $("#minBatch"),
+					selection: null
+				},
+				max: {
+					target: $("#maxBatch"),
+					selection: null
+				}
+			}
 		},
-		minCtc : {
-			target: "",
+		salary: {
 			type: 'dropdown',
-			selection: null
+			props: {
+				min: {
+					target: $("#minSal"),
+					selection: null
+				},
+				max: {
+					target: $("#maxSal"),
+					selection: null
+				}
+			}
 		},
-		maxCtc: {
-			target: "",
+		age: {
 			type: 'dropdown',
-			selection: null
-		},
-		minAge: {
-			target: "",
-			type: 'dropdown',
-			selection: null
-		},
-		maxAge: {
-			target: "",
-			type: 'dropdown',
-			selection: null
+			props: {
+				min: {
+					target: $("#minAge"),
+					selection: null
+				},
+				max: {
+					target: $("#maxAge"),
+					selection: null
+				}
+			}
 		},
 		sex : {
 			target: "",
@@ -88,22 +110,22 @@ function Filters(){
 		},
 		permit: {
 			target: "",
-			type: 'dropdown',
+			type: 'radio',
 			selection: null
 		},
 		handleTeam: {
 			target: "",
-			type: 'dropdown',
+			type: 'radio',
 			selection: null
 		},
 		relocate: {
 			target: "",
-			type: 'dropdown',
+			type: 'radio',
 			selection: null
 		},
 		differentlyAbled: {
 			target: "",
-			type: 'dropdown',
+			type: 'radio',
 			selection: null
 		},
 		searchString: {
@@ -135,17 +157,22 @@ function Filters(){
 		setOnClickFilters();
 		setOnClickCloseFilters();
 		onClickClearButton(removeAllFilters);
-		onClickRemoveFilter(removeFilter)
+		// onClickRemoveFilter(removeFilter)
 		// onClickApplyFilterButton(setAppliedFilters)
-
+		onChangeFilter()
 
 	}
 
-	function createPill(value, label, category){
+	function onChangeFilter() {
+
+	}
+
+	function createPill(value, label, category, type){
 		var aFilter = settings.filterPill.clone().removeClass('hidden prototype');
 		aFilter.attr('data-category', category)
 		aFilter.attr('data-value', value);
-		aFilter.find('.icon-label').text(label)
+		aFilter.attr('data-type', type);
+		aFilter.find('.icon-label').text(category + ": " + label)
 		console.log(aFilter)
 
 		return aFilter;
@@ -168,9 +195,9 @@ function Filters(){
 		});
 	}
 
-	function addFilterToContainer(value, label, category){
+	function addFilterToContainer(value, label, category, type){
 
-		var aFilter = createPill(value, label, category);
+		var aFilter = createPill(value, label, category, type);
 		settings.appliedFiltersContainer.prepend(aFilter);
 	}
 
@@ -194,12 +221,14 @@ function Filters(){
 	function removeFilter(el){
 		var value = el.attr('data-value');
 		var category = el.attr('data-category');
-		var index = filtersTarget[category]['selection'].indexOf(value)
-		console.log(filtersTarget)
-		if(index > -1){
-			debugger
-			filtersTarget[category]['selection'].splice(index, 1);
-			el.remove();
+		var type = el.attr('data-type');
+		if(type == "checkbox"){
+			var index = filtersTarget[category]['selection'].indexOf(value)
+			if(index > -1){
+				filtersTarget[category]['selection'].splice(index, 1);
+				el.remove();
+				filtersTarget[category]['target'].find('input[value='+value+']').prop('checked', false)
+			}
 		}
 	}
 	function onClickApplyFilterButton(fn){
@@ -211,15 +240,31 @@ function Filters(){
 		})
 	}
 	function setAppliedFilters(name){
-		if(filtersTarget[name]['type'] == "checkbox"){
+		var type = filtersTarget[name]['type']
+		if(type == "checkbox"){
 			filtersTarget[name]['selection'] = [];
 			filtersTarget[name]['target'].find('input:checked').each(function(index, el){
 				var value = el.value;
 				var category = name;
 				var label = $(el).attr('data-label');
 				filtersTarget[name]['selection'].push(el.value)
-				addFilterToContainer(value, label, category);
+				debugger
+				addFilterToContainer(value, label, category, type);
 			})
+			return
+		}
+
+		if(type == "dropdown"){
+			for(var key in filtersTarget[name]["props"]) {
+				var value = filtersTarget[name]["props"][key]['target'].val();
+				if(!value) {
+					return
+				}
+				var category = key + name;
+				var label = value;
+				addFilterToContainer(value, label, category, type);
+			}
+			return
 		}
 
 	}
@@ -234,18 +279,22 @@ function Filters(){
 		if(filtersTarget.institute.selection.length > 0)
 			ob.institute = filtersTarget.institute.selection.join(',');
 
-		if(filtersTarget.minExp.selection)
-			ob.minExp = filtersTarget.minExp.selection
-		if(filtersTarget.maxExp.selection)
-			ob.maxExp = filtersTarget.maxExp.selection
-		if(filtersTarget.minCtc.selection)
-			ob.minCtc = filtersTarget.minCtc.selection
-		if(filtersTarget.maxCtc.selection)
-			ob.maxCtc = filtersTarget.maxCtc.selection
-		if(filtersTarget.minAge.selection)
-			ob.minAge = filtersTarget.minAge.selection
-		if(filtersTarget.maxAge.selection)
-			ob.maxAge = filtersTarget.maxAge.selection
+		if(filtersTarget.experience.props.min.selection)
+			ob.minExp = filtersTarget.experience.props.min.selection
+		if(filtersTarget.experience.props.max.selection)
+			ob.maxExp = filtersTarget.experience.props.max.selection
+		if(filtersTarget.salary.props.min.selection)
+			ob.minCtc = filtersTarget.salary.props.min.selection
+		if(filtersTarget.salary.props.max.selection)
+			ob.maxCtc = filtersTarget.salary.props.max.selection
+		if(filtersTarget.age.props.min.selection)
+			ob.minAge = filtersTarget.age.props.min.selection
+		if(filtersTarget.age.props.max.selection)
+			ob.maxAge = filtersTarget.age.props.max.selection
+		if(filtersTarget.batch.props.min.selection)
+			ob.minAge = filtersTarget.batch.props.min.selection
+		if(filtersTarget.batch.props.max.selection)
+			ob.maxAge = filtersTarget.batch.props.max.selection
 		if(filtersTarget.sex.selection)
 			ob.sex = filtersTarget.sex.selection
 		if(filtersTarget.notice.selection)

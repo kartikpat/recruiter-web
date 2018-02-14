@@ -6,7 +6,7 @@ function candidateList() {
     function init(){
         settings.rowContainer= $('.candidateListing'),
         settings.header= $('#jobDetails'),
-        settings.candidateRow= ".candidateRow",
+        settings.candidateRowClass= ".candidateRow",
         settings.candidateInviteButton= ".candidateSendInterviewInvite",
         settings.candidateAddTagButton= ".candidateAddTag",
         settings.candidateAddCommentButton= ".candidateAddComment",
@@ -26,7 +26,7 @@ function candidateList() {
 	}
 
     function getElement(id) {
-		var card = $(""+settings.candidateRow+".prototype").clone().removeClass('prototype hidden')
+		var card = $(""+settings.candidateRowClass+".prototype").clone().removeClass('prototype hidden')
 		card.attr('data-candidate-id', id);
 		return {
 			element: card,
@@ -191,7 +191,7 @@ function candidateList() {
     function onClickSendMessage(fn) {
         settings.rowContainer.on('click', settings.candidateSendMessageButton,function(event) {
             event.stopPropagation();
-            var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
+            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
             fn(candidateId);
             return false
         });
@@ -200,7 +200,7 @@ function candidateList() {
     function onClickSendInterviewInvite(fn) {
         settings.rowContainer.on('click', settings.candidateInviteButton, function(event){
             event.stopPropagation();
-            var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
+            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
             fn(candidateId);
             return false
         })
@@ -209,7 +209,7 @@ function candidateList() {
     function onClickDownloadResume(fn) {
         settings.rowContainer.on('click', settings.candidateDownloadResumeButton, function(event){
             event.stopPropagation();
-            var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
+            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
             fn(candidateId);
             return false
         })
@@ -218,7 +218,7 @@ function candidateList() {
     function onClickSaveJob(fn) {
         settings.rowContainer.on('click', settings.candidateSaveButton, function(event){
             event.stopPropagation();
-            var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
+            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
             fn(candidateId);
             return false
         })
@@ -254,7 +254,7 @@ function candidateList() {
 
     function onClickAddTag(fn) {
         settings.rowContainer.on('click',settings.candidateAddTagButton ,function(event) {
-            var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
+            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
             fn(candidateId);
             return false
         })
@@ -262,7 +262,7 @@ function candidateList() {
 
     function onClickAddComment(fn) {
         settings.rowContainer.on('click',settings.candidateAddCommentButton ,function(event) {
-            var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
+            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
             fn(candidateId);
             return false
         })
@@ -273,7 +273,7 @@ function candidateList() {
     function onClickShortlistCandidate(fn) {
         settings.rowContainer.on('click', settings.candidateShortlistButton, function(event) {
             event.stopPropagation();
-            var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
+            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
             fn(candidateId);
         })
     }
@@ -281,7 +281,7 @@ function candidateList() {
     function onClickRejectCandidate(fn) {
         settings.rowContainer.on('click', settings.candidateRejectButton, function(event) {
             event.stopPropagation();
-            var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
+            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
             fn(candidateId);
         })
     }
@@ -296,7 +296,7 @@ function candidateList() {
         })
         settings.rowContainer.on('click', settings.candidateCheckboxLabelClass, function(event) {
             event.stopPropagation();
-            var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
+            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
             return fn(candidateId);
         })
     }

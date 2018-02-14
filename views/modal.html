@@ -49,12 +49,12 @@
                 <ul class="subcategory_listing hidden institute jsInstitute">
 
                 </ul>
-                <ul class="subcategory_listing hidden experience half jsExperience" >
+                <ul class="subcategory_listing hidden experience half jsExperience" data-label="experience">
                     <div class="section left">
         				<label class="title" for="select-dropdown">Min Exp</label>
-        				<select class="select-dropdown inactive">
+        				<select class="select-dropdown inactive" id="minExp">
         					<div class="dropdown-list">
-                                <option value="-1" selected="selected">Min </option>
+                                <option value="" selected="selected">Min </option>
                                <option value="0" label="0">0</option>
                                <option value="1" label="1">1</option>
                                <option value="2" label="2">2</option>
@@ -93,9 +93,9 @@
         			</div>
                     <div class="section right">
         				<label class="title" for="select-dropdown">Max Exp</label>
-        				<select class="select-dropdown inactive">
+        				<select class="select-dropdown inactive" id="maxExp">
         					<div class="dropdown-list">
-                                   <option value="-1" selected="selected">Max </option>
+                                   <option value="" selected="selected">Max </option>
                                    <option value="0" label="0">0</option>
                                    <option value="1" label="1">1</option>
                                    <option value="2" label="2">2</option>
@@ -136,12 +136,12 @@
 
                     </div>
                 </ul>
-                <ul class="subcategory_listing hidden batch half jsBatch" >
+                <ul class="subcategory_listing hidden batch half jsBatch" data-label="batch">
                     <div class="section left">
         				<label class="title" for="select-dropdown">Min Batch</label>
-        				<select class="select-dropdown inactive">
+        				<select class="select-dropdown inactive" id="minBatch">
         					<div class="dropdown-list">
-                                <option value="-1">Min</option>
+                                <option value="">Min</option>
                                   <option value="2019">2019</option>
                                   <option value="2018">2018</option>
                                   <option value="2017">2017</option>
@@ -188,9 +188,9 @@
         			</div>
                     <div class="section right">
         				<label class="title" for="select-dropdown">Max Batch</label>
-        				<select class="select-dropdown inactive">
+        				<select class="select-dropdown inactive" id="maxBatch">
         					<div class="dropdown-list">
-                                <option value="-1">Max</option>
+                                <option value="">Max</option>
                                 <option value="2019">2019</option>
                                 <option value="2018">2018</option>
                                 <option value="2017">2017</option>
@@ -237,10 +237,10 @@
         			</div>
                     <div class="clearfix"></div>
                 </ul>
-                <ul class="subcategory_listing hidden salary half" >
+                <ul class="subcategory_listing hidden salary half" data-label="salary">
                     <div class="section left">
         				<label class="title" for="select-dropdown">Min Salary</label>
-        				<select class="select-dropdown inactive">
+        				<select class="select-dropdown inactive" id="minSal">
         					<div class="dropdown-list">
                                 <option value="">Min</option>
                     			<option value="3">3</option>
@@ -347,7 +347,7 @@
         			</div>
                     <div class="section right">
         				<label class="title" for="select-dropdown">Max Salary</label>
-        				<select class="select-dropdown inactive">
+        				<select class="select-dropdown inactive" id="maxSal">
         					<div class="dropdown-list">
                                 <option value="">Max</option>
                              <option value="3">3</option>
@@ -456,10 +456,10 @@
 
                     </div>
                 </ul>
-                <ul class="subcategory_listing hidden age half" >
+                <ul class="subcategory_listing hidden age half" data-label="age">
                     <div class="section left">
         				<label class="title" for="select-dropdown">Min Age</label>
-        				<select class="select-dropdown inactive">
+        				<select class="select-dropdown inactive" id="minAge">
         					<div class="dropdown-list">
                                 <option value="">Min</option>
                                 <option value="">Min</option>
@@ -513,7 +513,7 @@
         			</div>
                     <div class="section right">
         				<label class="title" for="select-dropdown">Max Age</label>
-        				<select class="select-dropdown inactive">
+        				<select class="select-dropdown inactive" id="maxAge">
         					<div class="dropdown-list">
                                 <option value="">Max</option>
                     			<option value="22">22</option>
@@ -572,15 +572,15 @@
                     <div class="section">
 
         				<div class="radio-input">
-        					<input type="radio" id="radio-button-male" name="gender" value="1">
+        					<input type="radio" id="radio-button-male" name="gender[]" value="1">
         					<label for="radio-button-male">Male</label>
         				</div>
         				<div class="radio-input">
-        					<input type="radio" id="radio-button-female" name="gender" value="2">
+        					<input type="radio" id="radio-button-female" name="gender[]" value="2">
         					<label for="radio-button-female">Female</label>
         				</div>
                         <div class="radio-input">
-        					<input type="radio" id="radio-button-not-mentioned" name="gender" value="3">
+        					<input type="radio" id="radio-button-not-mentioned" name="gender[]" value="3">
         					<label for="radio-button-not-mentioned">Not Mentioned</label>
         				</div>
         			</div>
