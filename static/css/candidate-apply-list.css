@@ -2574,7 +2574,9 @@ span.sticker {
               font-size: 18px;
               line-height: 1; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-body .selection-bar .bulk-selection-item.active {
-            border-color: #1f8f75; }
+            border-color: #1f8f75;
+            position: relative;
+            top: 1px; }
             .page-content .candidate-apply-listing .candidates-area .candidates-area-body .selection-bar .bulk-selection-item.active span {
               color: #1f8f75; }
       .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing {
@@ -2642,6 +2644,9 @@ span.sticker {
                   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select .checkbox label {
                     min-height: 20px;
                     min-width: 16px; }
+                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select.selected {
+                    display: inline-block;
+                    background-color: transparent; }
                 .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image img {
                   width: 100%;
                   height: 100%;

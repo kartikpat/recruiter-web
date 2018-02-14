@@ -192,6 +192,8 @@
 
 				    	&.active {
 				    		border-color:$button-color-green;
+				    		position:relative;
+				    		top:1px;
 
 				    		span {
 				    			color:$button-color-green;
@@ -275,6 +277,11 @@
 														min-width:16px;
 
 													}
+												}
+
+												&.selected {
+													display:inline-block;
+													background-color:transparent;
 												}
 											}
 											img {
