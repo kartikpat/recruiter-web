@@ -143,6 +143,7 @@ function Jobs() {
 
 	function createElement(aData) {
 		var item = cloneElement(aData["id"]);
+		console.log(item.element[0].outerHTML);
 		var title = getTitleFormat(aData["title"], (/\(\d+-\d+ \w+\)$/));
 		item.createdOn.text(getDateFormat(aData["created"]))
 		item.title.text(title)
@@ -232,7 +233,7 @@ function Jobs() {
 	}
 
 	function initializeTooltip() {
-		 $(".tooltip").tooltipster({
+		 $(".tooltip").not(".prototype .tooltip").tooltipster({
 			animation: 'fade',
 			delay: 0,
 			side:['right'],
