@@ -20,11 +20,9 @@ jQuery(".modal_overlay").on("click",".category_listing li",function() {
   jQuery(this).siblings().removeClass("active");
   var title = jQuery(this).text();
   var selector = jQuery(this).attr("data-selector");
-  if(['industry', 'functional-area', 'cur-loc', 'pref-loc', 'institute', 'language'].indexOf(selector) != -1) {
-      $(".filterSearch").removeClass("hidden");
-  }
-  else
+  if(['industry', 'functional-area', 'cur-loc', 'pref-loc', 'institute', 'language'].indexOf(selector) == -1) {
       $(".filterSearch").addClass("hidden");
+  }
   jQuery(".modal_content").find(".modal_body .modal_body_header .title").html(title);
   jQuery(".modal_overlay").find(".subcategory_listing").addClass('hidden').removeClass('activeFilterListing');
   jQuery(".modal_overlay").find(".subcategory_listing." + selector).removeClass('hidden').addClass('activeFilterListing');

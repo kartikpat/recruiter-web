@@ -14,6 +14,7 @@ module.exports = function(settings){
 	var baseUrl = config["baseUrl"];
 	var request = settings["request"];
 	var baseDomain = config["baseDomain"];
+	var baseUrlJob = config["baseUrlJob"];
 	var welcome = config["welcome"];
 	var verifyAccount = config["verify"];
 	var recruiterID = 45058;
@@ -113,6 +114,7 @@ module.exports = function(settings){
 			scripts: assetsMapper["my-jobs"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
+			baseUrlJob: baseUrlJob,
 			profile: profile
 		})
 		return

@@ -1,4 +1,5 @@
 var test = null;
+
 function Jobs() {
 
 	var settings = {};
@@ -199,6 +200,13 @@ function Jobs() {
 			item.premium.find('.icon-star').addClass("premium_highlight");
 		}
 
+		if(aData["url"]) {
+			var url = config["baseUrlJob"] + aData["url"];
+			item.facebook.attr("href", getFacebookShareLink(url))
+			item.twitter.attr("href", getTwitterShareLink(url))
+			item.linkedIn.attr("href", getLinkedInShareUrl(url))
+		}
+
 		return item;
 	}
 
@@ -252,7 +260,3 @@ function getLinkedInShareUrl(url){
 	// TO create a link with all parameters
 	// "https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=Some%20Title&summary=Some%20Summary&source=YourWebsiteName"
 }
-
-baseUrlJob = "http://qa200.iimjobs.com/j/"
-linkURL = baseUrlJob+ aJob['url']
-

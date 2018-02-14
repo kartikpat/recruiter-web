@@ -4,7 +4,7 @@ jQuery(document).ready( function() {
 
 	jobList.init()
 	jobList.setConfig("availableCredits", profile["availableCredits"]);
-
+	jobList.setConfig("baseUrlJob", baseUrlJob);
 	jobList.onChangeJobFilters(function(type){
 		status = type;
 		fetchJobs(status,recruiterId);

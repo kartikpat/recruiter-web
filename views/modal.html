@@ -31,7 +31,7 @@
         <div class="modal_body">
             <div class="modal_body_header">
                 <div class="title">Industry</div>
-                <div><input type="text" placeholder="Search" class="filters-search filterSearch hidden"></div>
+                <div><input type="text" placeholder="Search" class="filters-search filterSearch"></div>
             </div>
             <div class="filter-tags-container">
                 <ul class="subcategory_listing activeFilterListing industry jsIndustry" >
@@ -586,10 +586,34 @@
         			</div>
                 </ul>
                 <ul class="subcategory_listing hidden notice-period" >
+                    <div class="section">
 
+                        <select id="noticePeriod" class="select-dropdown inactive">
+                            <div class="dropdown-list">
+                                <option value="">Select Notice Period</option>
+                                <option value="7">Immediately Available</option>
+                                <option value="1">1 month</option>
+                                <option value="2">2 months</option>
+                                <option value="3">3 months</option>
+                                <option value="4">4 months</option>
+                                <option value="5">5 months</option>
+                                <option value="6">6 months</option>
+                            </div>
+                        </select>
+                    </div>
                 </ul>
                 <ul class="subcategory_listing hidden applied-date" >
-
+                    <div class="section">
+                        <select id="applicationDate" class="select-dropdown inactive">
+                            <div class="dropdown-list">
+                                <option value="">Select</option>
+                                <option value="3">3 days</option>
+                                <option value="7">7 days</option>
+                                <option value="15">15 days</option>
+                                <option value="30">30 days</option>
+                            </div>
+                        </select>
+                    </div>
                 </ul>
                 <ul class="subcategory_listing hidden last-seen" >
 

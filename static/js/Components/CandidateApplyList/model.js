@@ -40,7 +40,9 @@ function candidateList() {
 			eduList: card.find('.js_edu_list'),
 			profList: card.find('.js_prof_list'),
             candidateCheckbox: card.find(settings.candidateCheckbox),
-            candidateCheckboxLabel: card.find(settings.candidateCheckboxLabel)
+            candidateCheckboxLabel: card.find(settings.candidateCheckboxLabel),
+            proMember: card.find('.isPro'),
+            isFollowedUp: card.find('.isFollowedUp')
 		}
 	}
 
@@ -114,6 +116,12 @@ function candidateList() {
 
         item.candidateCheckbox.attr("id",aData["userID"]);
         item.candidateCheckboxLabel.attr("for",aData["userID"]);
+        if(aData["pro"]) {
+            item.pro.removeClass("hidden")
+        }
+        if(aData["follow"]) {
+            item.isFollowedUp.removeClass("hidden")
+        }
         return item
     }
 
