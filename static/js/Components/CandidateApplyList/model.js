@@ -39,8 +39,8 @@ function candidateList() {
 			jobTagList: card.find('.js_job_tag_list'),
 			eduList: card.find('.js_edu_list'),
 			profList: card.find('.js_prof_list'),
-            candidateCheckbox: card.find(settings.candidateCheckbox),
-            candidateCheckboxLabel: card.find(settings.candidateCheckboxLabel),
+            candidateCheckbox: card.find(settings.candidateCheckboxClass),
+            candidateCheckboxLabel: card.find(settings.candidateCheckboxLabelClass),
             proMember: card.find('.isPro'),
             isFollowedUp: card.find('.isFollowedUp')
 		}
@@ -114,6 +114,7 @@ function candidateList() {
         })
         item.eduList.html(eduStr)
 
+        console.log(aData['userID']);
         item.candidateCheckbox.attr("id",aData["userID"]);
         item.candidateCheckboxLabel.attr("for",aData["userID"]);
         if(aData["pro"]) {
@@ -304,6 +305,12 @@ function candidateList() {
     function onChangeCandidateCheckbox(fn) {
         settings.rowContainer.on('click', settings.candidateCheckboxClass, function(event){
             event.stopPropagation();
+
+            if(jQuery(this).is(":checked")){
+                jQuery(this).closest(".candidate-select").addClass("selected");
+            } else {
+                jQuery(this).closest(".candidate-select").removeClass("selected");
+            }
         })
         settings.rowContainer.on('click', settings.candidateCheckboxLabelClass, function(event) {
             event.stopPropagation();

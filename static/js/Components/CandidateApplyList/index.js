@@ -128,7 +128,7 @@ jQuery(document).ready( function() {
     })
 
     candidates.onChangeCandidateCheckbox(function(candidateId){
-        alert(candidateId)
+        // alert(candidateId)
     })
 
     theJob.onClickJobCancel(openUnpublishModal)
