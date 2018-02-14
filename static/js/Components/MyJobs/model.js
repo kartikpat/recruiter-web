@@ -75,8 +75,8 @@ function Jobs() {
 
 	function onChangeJobFilters(fn) {
 		settings.jobFilters.change(function() {
-			var status = $(this).val();
-		    return fn(status);
+			var sortById = $(this).val();
+		    return fn(sortById);
 		})
 	}
 

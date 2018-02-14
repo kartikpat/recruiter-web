@@ -2,7 +2,8 @@ var initialLoad = 1;
 var globalParameters = {
     pageContent: 10,
     pageNumber: 1,
-    status: ""
+    status: "",
+    orderBy: 1
 }
 var length;
 jQuery(document).ready( function() {
@@ -35,7 +36,6 @@ jQuery(document).ready( function() {
     filters.onClickRemoveFilter(function(element){
         filters.removeFilter(element);
         var parameters = filters.getAppliedFilters();
-        debugger
         globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
@@ -46,12 +46,27 @@ jQuery(document).ready( function() {
     filters.onClickSearchButton(function(){
         var str = filters.getSearchString();
         var parameters = filters.getAppliedFilters();
-        debugger
         globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
         parameters.status = globalParameters.status;
         parameters.searchString = str;
+        return fetchJobApplications(jobId, parameters, recruiterId);
+    })
+    filters.onSelectSortByOption(function(){
+        var parameters = filters.getAppliedFilters();
+        globalParameters.pageNumber = 1;
+        parameters.pageNumber = globalParameters.pageNumber;
+        parameters.pageContent = globalParameters.pageContent;
+        parameters.status = globalParameters.status;
+        return fetchJobApplications(jobId, parameters, recruiterId);
+    })
+    filters.onClickRemoveAllFilters(function(){
+        var parameters = filters.getAppliedFilters();
+        globalParameters.pageNumber = 1;
+        parameters.pageNumber = globalParameters.pageNumber;
+        parameters.pageContent = globalParameters.pageContent;
+        parameters.status = globalParameters.status;
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
 
@@ -141,9 +156,14 @@ jQuery(document).ready( function() {
     candidates.createJobStatsTabs(onClickTab)
     function onClickTab(event, ui) {
         var status = candidates.activateStatsTab(event, ui)
-        globalParameters["status"] = status;
-        globalParameters["pageNumber"] = 1;
-        fetchJobApplications(jobId, globalParameters,recruiterId);
+        var parameters = filters.getAppliedFilters();
+        console.log(parameters)
+        globalParameters.status = status;
+        globalParameters.pageNumber = 1;
+        parameters.pageNumber = globalParameters.pageNumber;
+        parameters.pageContent = globalParameters.pageContent;
+        parameters.status = globalParameters.status;
+        fetchJobApplications(jobId, parameters,recruiterId);
     }
 
     candidates.onClickSendInterviewInvite(sendInterviewInvite);
@@ -222,9 +242,13 @@ jQuery(document).ready( function() {
 
     function checkScrollEnd() {
     	if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-    		globalParameters["pageNumber"] = globalParameters["pageNumber"] + 1;
+    		globalParameters.pageNumber = globalParameters.pageNumber + 1;
     		if(globalParameters["pageNumber"] != 1 && length == globalParameters["pageContent"]) {
-    			fetchJobApplications(jobId,globalParameters,recruiterId)
+                var parameters = filters.getAppliedFilters();
+                parameters.pageNumber = globalParameters.pageNumber;
+                parameters.pageContent = globalParameters.pageContent;
+                parameters.status = globalParameters.status;
+    			fetchJobApplications(jobId,parameters,recruiterId)
     		}
     	}
     }

@@ -117,7 +117,7 @@ function candidateList() {
         item.candidateCheckbox.attr("id",aData["userID"]);
         item.candidateCheckboxLabel.attr("for",aData["userID"]);
         if(aData["pro"]) {
-            item.pro.removeClass("hidden")
+            item.proMember.removeClass("hidden")
         }
         if(aData["follow"]) {
             item.isFollowedUp.removeClass("hidden")

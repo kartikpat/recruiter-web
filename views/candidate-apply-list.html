@@ -42,7 +42,14 @@
 						</div>
 						<div class="filter-search">
 							<span class="button white filter-button jsFilter"><span class="button-label">Filter</span></span>
-							<span class="button white sort-button"><span class="button-label">Sort by: </span><span class="filter-type">Magic Sort</span></span>
+							<span class="action-buttons sortBy">
+								<span class="section sortBy" id="sortBy">
+									<select class="select-dropdown" id="sortBySelect">
+										<option value="1">SortBy: Magic Sort</option>
+										<option value="2">SortBy: Application Date</option>
+									</select>
+								</span>
+							</span>
 						</div>
 					</div>
 					<div class="candidates-search-results">
@@ -53,7 +60,7 @@
 						<div class="active-filters">
 
 							<span class="clear-all-filters">
-								<a href="#" id="clear-all">Clear filters</a>
+								<span id="clear-all">Clear filters</span>
 							</span>
 						</div>
 					</div>

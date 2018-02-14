@@ -91,10 +91,15 @@
 							padding:4px 10px;
 							color:$color-darkgrey;
 							text-transform:capitalize;
-
+							&.sortBy {
+								padding: 0;
+							}
 							span {
 								padding:4px 5px;
 								margin:0;
+								&.sortBy {
+									padding: 0;
+								}
 							}
 
 							&.filter-button {

@@ -127,6 +127,11 @@ function Filters(){
 			target: "",
 			type: 'input',
 			selection: null
+		},
+		orderBy: {
+			target: $("#sortBySelect"),
+			type: 'dropdown',
+			selection: 1
 		}
 	}
 	function init(){
@@ -137,7 +142,7 @@ function Filters(){
 		settings.appliedFiltersContainer = $(".active-filters .clear-all-filters");
 		settings.resultText = "";
 		settings.clearButtton = $(".clear-all-filters");
-		settings.activeFilters = $(".active-filters .filter-tag");
+		// settings.activeFilters = $(".active-filters .filter-tag");
 		settings.activeFiltersContainer = $(".active-filters");
 		settings.filterModal = $(".jsFiltersModal");
 		settings.filterModalCancelButton = settings.filterModal.find('.close_modal');
@@ -148,15 +153,27 @@ function Filters(){
 		settings.activeFilterListingClass = ".activeFilterListing";
 		settings.filterPill = $(".prototype.filterPill")
 		settings.filterSearch = $(".filterSearch");
+		settings.sortBySelect = $("#sortBySelect");
+		settings.sortBy = $("#sortBy");
+		settings.clearAllFitersbutton = $("#clear-all")
 
 
 		setOnClickFilters();
 		setOnClickCloseFilters();
-		onClickClearButton(removeAllFilters);
-		// onClickRemoveFilter(removeFilter)
+
 		// onClickApplyFilterButton(setAppliedFilters)
 		onInputSearchFilter()
 
+	}
+
+	function onClickRemoveAllFilters(fn) {
+		settings.clearAllFitersbutton.click(function(){
+
+			removeAllFilters()
+			fn()
+		})
+
+		console.log(filtersTarget)
 	}
 
 	function onInputSearchFilter() {
@@ -209,17 +226,11 @@ function Filters(){
 		return str;
 	}
 
-	function onClickClearButton(fn){
-		settings.clearButtton.click(function(event) {
-			fn()
-		});
-	}
-
 	function addFilterToContainer(value, label, category, type){
 		if(["dropdown","dropdownHalf"].indexOf(type) != -1) {
 			var elem = settings.appliedFiltersContainer.find(".filterPill[data-category="+category+"]")
 			if(elem.length) {
-				debugger
+
 				$(elem).attr("data-value", value);
 				$(elem).find('.icon-label').text(category + ": " + label)
 				return
@@ -250,7 +261,27 @@ function Filters(){
 	}
 
 	function removeAllFilters(){
-		settings.activeFilters.remove();
+
+		for (var key in filtersTarget) {
+
+			if(filtersTarget[key]["type"] == "checkbox") {
+
+				filtersTarget[key]["selection"] = [];
+				filtersTarget[key]['target'].find('input').prop('checked', false)
+			}
+			else if(filtersTarget[key]["type"] == "dropdownHalf") {
+				for (var k in key["props"]) {
+					filtersTarget[key]["props"][k]["selection"] = null;
+					filtersTarget[key]["props"][k]['target'].val("")
+				}
+			}
+			else if(key["type"] == "dropdown") {
+				filtersTarget[key]["selection"] = null;
+				filtersTarget[key]['target'].val("")
+			}
+		}
+
+		settings.activeFiltersContainer.find(".filter-tag").remove();
 	}
 
 	function onClickFilterButton(){
@@ -327,7 +358,7 @@ function Filters(){
 				var category = key +"-"+ name;
 
 				var elem = settings.appliedFiltersContainer.find(".filterPill[data-category="+category+"]")
-				debugger;
+				;
 				if(parseInt(value) == -1 && !elem.length  ) {
 					return
 				}
@@ -361,7 +392,6 @@ function Filters(){
 	}
 	function getAppliedFilters(){
 		var ob ={};
-		debugger
 		if(filtersTarget.industry.selection.length >0)
 			ob.industry = filtersTarget.industry.selection.join(',');
 		if(filtersTarget.currentLocation.selection.length > 0)
@@ -408,7 +438,8 @@ function Filters(){
 			ob.differentlyAbled = filtersTarget.differentlyAbled.selection
 		if(filtersTarget.searchString.selection)
 			ob.searchString = filtersTarget.searchString.selection
-		debugger
+		if(filtersTarget.orderBy.selection)
+			ob.orderBy = filtersTarget.orderBy.selection
 		return ob;
 	}
 
@@ -452,6 +483,15 @@ function Filters(){
             settings.filterModal.addClass("hidden");
     	})
     }
+
+	function onSelectSortByOption(fn) {
+		settings.sortBySelect.change(function() {
+			var sortById = $(this).val();
+		    filtersTarget.orderBy.selection = sortById;
+			return fn()
+		})
+	}
+
     return {
     	init: init,
     	addFilterData: addFilterData,
@@ -461,7 +501,9 @@ function Filters(){
     	onClickRemoveFilter: onClickRemoveFilter,
     	removeFilter:removeFilter,
     	onClickSearchButton: onClickSearchButton,
-    	getSearchString: getSearchString
+    	getSearchString: getSearchString,
+		onSelectSortByOption: onSelectSortByOption,
+		onClickRemoveAllFilters: onClickRemoveAllFilters
     }
 	function searchTags(name, array, str) {
 		str=str.toLowerCase();

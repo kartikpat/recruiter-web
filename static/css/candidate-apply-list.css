@@ -2510,9 +2510,13 @@ span.sticker {
               .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span.edit img {
                 width: 17px;
                 height: 17px; }
+            .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span.sortBy {
+              padding: 0; }
             .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span span {
               padding: 4px 5px;
               margin: 0; }
+              .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span span.sortBy {
+                padding: 0; }
             .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span.filter-button {
               background-image: url("/static/images/filter-icon.svg");
               background-position: left 5px center;
