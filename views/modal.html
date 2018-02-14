@@ -54,7 +54,7 @@
         				<label class="title" for="select-dropdown">Min Exp</label>
         				<select class="select-dropdown inactive" id="minExp">
         					<div class="dropdown-list">
-                                <option value="" selected="selected">Min </option>
+                                <option value="-1" selected="selected">Min </option>
                                <option value="0" label="0">0</option>
                                <option value="1" label="1">1</option>
                                <option value="2" label="2">2</option>
@@ -95,7 +95,7 @@
         				<label class="title" for="select-dropdown">Max Exp</label>
         				<select class="select-dropdown inactive" id="maxExp">
         					<div class="dropdown-list">
-                                   <option value="" selected="selected">Max </option>
+                                   <option value="-1" selected="selected">Max </option>
                                    <option value="0" label="0">0</option>
                                    <option value="1" label="1">1</option>
                                    <option value="2" label="2">2</option>
@@ -141,7 +141,7 @@
         				<label class="title" for="select-dropdown">Min Batch</label>
         				<select class="select-dropdown inactive" id="minBatch">
         					<div class="dropdown-list">
-                                <option value="">Min</option>
+                                <option value="-1">Min</option>
                                   <option value="2019">2019</option>
                                   <option value="2018">2018</option>
                                   <option value="2017">2017</option>
@@ -190,7 +190,7 @@
         				<label class="title" for="select-dropdown">Max Batch</label>
         				<select class="select-dropdown inactive" id="maxBatch">
         					<div class="dropdown-list">
-                                <option value="">Max</option>
+                                <option value="-1">Max</option>
                                 <option value="2019">2019</option>
                                 <option value="2018">2018</option>
                                 <option value="2017">2017</option>
@@ -242,7 +242,7 @@
         				<label class="title" for="select-dropdown">Min Salary</label>
         				<select class="select-dropdown inactive" id="minSal">
         					<div class="dropdown-list">
-                                <option value="">Min</option>
+                                <option value="-1">Min</option>
                     			<option value="3">3</option>
                     			<option value="4">4</option>
                     			<option value="5">5</option>
@@ -349,7 +349,7 @@
         				<label class="title" for="select-dropdown">Max Salary</label>
         				<select class="select-dropdown inactive" id="maxSal">
         					<div class="dropdown-list">
-                                <option value="">Max</option>
+                                <option value="-1">Max</option>
                              <option value="3">3</option>
                              <option value="4">4</option>
                              <option value="5">5</option>
@@ -461,8 +461,7 @@
         				<label class="title" for="select-dropdown">Min Age</label>
         				<select class="select-dropdown inactive" id="minAge">
         					<div class="dropdown-list">
-                                <option value="">Min</option>
-                                <option value="">Min</option>
+                                <option value="-1">Min</option>
                     			<option value="22">22</option>
                     			<option value="23">23</option>
                     			<option value="24">24</option>
@@ -515,7 +514,7 @@
         				<label class="title" for="select-dropdown">Max Age</label>
         				<select class="select-dropdown inactive" id="maxAge">
         					<div class="dropdown-list">
-                                <option value="">Max</option>
+                                <option value="-1">Max</option>
                     			<option value="22">22</option>
                     			<option value="23">23</option>
                     			<option value="24">24</option>
@@ -568,29 +567,25 @@
 
                     </div>
                 </ul>
-                <ul class="subcategory_listing hidden gender" >
+                <ul class="subcategory_listing hidden gender" data-label="sex">
                     <div class="section">
 
-        				<div class="radio-input">
-        					<input type="radio" id="radio-button-male" name="gender[]" value="1">
-        					<label for="radio-button-male">Male</label>
-        				</div>
-        				<div class="radio-input">
-        					<input type="radio" id="radio-button-female" name="gender[]" value="2">
-        					<label for="radio-button-female">Female</label>
-        				</div>
-                        <div class="radio-input">
-        					<input type="radio" id="radio-button-not-mentioned" name="gender[]" value="3">
-        					<label for="radio-button-not-mentioned">Not Mentioned</label>
-        				</div>
+                        <select id="gender" class="select-dropdown inactive">
+                            <div class="dropdown-list">
+                                <option value="0">Select Gender</option>
+                              <option value="1">Male</option>
+                              <option value="2">Female</option>
+                              <option value="3">Not Mentioned</option>
+                            </div>
+                        </select>
         			</div>
                 </ul>
-                <ul class="subcategory_listing hidden notice-period" >
+                <ul class="subcategory_listing hidden notice-period" data-label="notice">
                     <div class="section">
 
                         <select id="noticePeriod" class="select-dropdown inactive">
                             <div class="dropdown-list">
-                                <option value="">Select Notice Period</option>
+                                <option value="0">Select Notice Period</option>
                                 <option value="7">Immediately Available</option>
                                 <option value="1">1 month</option>
                                 <option value="2">2 months</option>
@@ -602,11 +597,11 @@
                         </select>
                     </div>
                 </ul>
-                <ul class="subcategory_listing hidden applied-date" >
+                <ul class="subcategory_listing hidden applied-date" data-label="applicationDate">
                     <div class="section">
                         <select id="applicationDate" class="select-dropdown inactive">
                             <div class="dropdown-list">
-                                <option value="">Select</option>
+                                <option value="0">Select</option>
                                 <option value="3">3 days</option>
                                 <option value="7">7 days</option>
                                 <option value="15">15 days</option>
@@ -615,49 +610,66 @@
                         </select>
                     </div>
                 </ul>
-                <ul class="subcategory_listing hidden last-seen" >
-
+                <ul class="subcategory_listing hidden last-seen" data-label="lastActive">
+                    <div class="section">
+                        <select id="lastSeen" class="select-dropdown inactive">
+                            <div class="dropdown-list">
+                                <option value="0">All</option>
+                    			<option value="1">Last 1 Month</option>
+                    			<option value="3">Last 3 Months</option>
+                    			<option value="6">Last 6 Months</option>
+                            </div>
+                        </select>
+                    </div>
                 </ul>
-                <ul class="subcategory_listing hidden work-permit">
-
+                <ul class="subcategory_listing hidden work-permit" data-label="permit">
+                    <div class="section">
+                        <select id="workPermit" class="select-dropdown inactive">
+                            <div class="dropdown-list">
+                                <option value="0">Select Work Permit for USA</option>
+                                   <option value="1">No</option>
+                                   <option value="2">Have H1 Visa</option>
+                                   <option value="3">TN Permit Holder</option>
+                                   <option value="4">Green Card Holder</option>
+                                   <option value="5">US Citizen</option>
+                                   <option value="6">Authorized to work in US</option>
+                            </div>
+                        </select>
+                    </div>
                 </ul>
-                <ul class="subcategory_listing hidden handle-team" >
+                <ul class="subcategory_listing hidden handle-team" data-label="handleTeam">
+                    <div class="section">
+                        <select id="handleTeam" class="select-dropdown inactive">
+                            <div class="dropdown-list">
+                                    <option value="0">Select</option>
+                                    <option value="1">Yes</option>
+                                    <option value="2">No</option>
+                            </div>
+                        </select>
+                    </div>
+                </ul>
+                <ul class="subcategory_listing hidden relocate" data-label="relocate">
                     <div class="section">
 
-        				<div class="radio-input">
-        					<input type="radio" id="radio-button-handle-yes" name="handle" value="1">
-        					<label for="radio-button-handle-yes">Yes</label>
-        				</div>
-                        <div class="radio-input">
-        					<input type="radio" id="radio-button-handle-no" name="handle" value="0">
-        					<label for="radio-button-handle-no">No</label>
-        				</div>
+                        <select id="relocate" class="select-dropdown inactive">
+                            <div class="dropdown-list">
+                                    <option value="0">Select</option>
+                                    <option value="1">Yes</option>
+                                    <option value="2">No</option>
+                            </div>
+                        </select>
         			</div>
                 </ul>
-                <ul class="subcategory_listing hidden relocate" >
+                <ul class="subcategory_listing hidden diff-abled" data-label="differentlyAbled">
                     <div class="section">
 
-        				<div class="radio-input">
-        					<input type="radio" id="radio-button-relocate-yes" name="handle" value="1">
-        					<label for="radio-button-relocate-yes">Yes</label>
-        				</div>
-                        <div class="radio-input">
-        					<input type="radio" id="radio-button-relocate-no" name="handle" value="0">
-        					<label for="radio-button-handle-no">No</label>
-        				</div>
-        			</div>
-                </ul>
-                <ul class="subcategory_listing hidden diff-abled" >
-                    <div class="section">
-
-        				<div class="radio-input">
-        					<input type="radio" id="radio-button-abled-yes" name="handle" value="1">
-        					<label for="radio-button-abled-yes">Yes</label>
-        				</div>
-                        <div class="radio-input">
-        					<input type="radio" id="radio-button-abled-no" name="handle" value="0">
-        					<label for="radio-button-abled-no">No</label>
-        				</div>
+                        <select id="differentlyAbled" class="select-dropdown inactive">
+                            <div class="dropdown-list">
+                                    <option value="">Select</option>
+                                    <option value="1">Yes</option>
+                                    <option value="2">No</option>
+                            </div>
+                        </select>
         			</div>
                 </ul>
                 <ul class="subcategory_listing hidden language jsLanguage" >

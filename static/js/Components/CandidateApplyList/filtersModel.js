@@ -32,7 +32,7 @@ function Filters(){
 			selection: []
 		},
 		experience: {
-			type: 'dropdown',
+			type: 'dropdownHalf',
 			props: {
 				min: {
 					target: $("#minExp"),
@@ -45,7 +45,7 @@ function Filters(){
 			}
 		},
 		batch: {
-			type: 'dropdown',
+			type: 'dropdownHalf',
 			props: {
 				min: {
 					target: $("#minBatch"),
@@ -58,7 +58,7 @@ function Filters(){
 			}
 		},
 		salary: {
-			type: 'dropdown',
+			type: 'dropdownHalf',
 			props: {
 				min: {
 					target: $("#minSal"),
@@ -71,7 +71,7 @@ function Filters(){
 			}
 		},
 		age: {
-			type: 'dropdown',
+			type: 'dropdownHalf',
 			props: {
 				min: {
 					target: $("#minAge"),
@@ -84,43 +84,43 @@ function Filters(){
 			}
 		},
 		sex : {
-			target: "",
-			type: 'radio',
+			target: $("#gender"),
+			type: 'dropdown',
 			selection: null
 		},
 		notice: {
-			target: "",
+			target: $("#noticePeriod"),
 			type: 'dropdown',
 			selection: null
 		},
 		applicationDate : {
-			target: "",
+			target: $("#applicationDate"),
 			type: 'dropdown',
 			selection: null
 		},
 		lastActive: {
-			target: "",
+			target: $("#lastSeen"),
 			type: 'dropdown',
 			selection: null
 		},
 		permit: {
-			target: "",
-			type: 'radio',
+			target: $("#workPermit"),
+			type: 'dropdown',
 			selection: null
 		},
 		handleTeam: {
-			target: "",
-			type: 'radio',
+			target: $("#handleTeam"),
+			type: 'dropdown',
 			selection: null
 		},
 		relocate: {
-			target: "",
-			type: 'radio',
+			target: $("#relocate"),
+			type: 'dropdown',
 			selection: null
 		},
 		differentlyAbled: {
-			target: "",
-			type: 'radio',
+			target: $("#differentlyAbled"),
+			type: 'dropdown',
 			selection: null
 		},
 		searchString: {
@@ -155,13 +155,37 @@ function Filters(){
 		onClickClearButton(removeAllFilters);
 		// onClickRemoveFilter(removeFilter)
 		// onClickApplyFilterButton(setAppliedFilters)
-		onChangeFilter()
+		onInputSearchFilter()
 
 	}
 
-	function onChangeFilter() {
-
+	function onInputSearchFilter() {
+		settings.filterSearch.on('input', function(){
+			var str = $(this).val();
+			var dataLabel = $(settings.activeFilterListingClass).attr("data-label");
+			console.log(dataLabel)
+			if(dataLabel == "functionalArea") {
+				searchTags(dataLabel, functionalAreaTagsData, str)
+			}
+			if(dataLabel == "industry") {
+				searchTags(dataLabel, industryTagsData, str)
+			}
+			if(dataLabel == "currentLocation") {
+				searchTags(dataLabel, currentLocationTagsData, str)
+			}
+			if(dataLabel == "preferredLocation") {
+				searchTags(dataLabel, currentLocationTagsData, str)
+			}
+			if(dataLabel == "institute") {
+				searchTags(dataLabel, instituteTagsData, str)
+			}
+			if(dataLabel == "language") {
+				searchTags(dataLabel, languageTagsData, str)
+			}
+		})
 	}
+
+
 
 	function createPill(value, label, category, type){
 		var aFilter = settings.filterPill.clone().removeClass('hidden prototype');
@@ -192,7 +216,28 @@ function Filters(){
 	}
 
 	function addFilterToContainer(value, label, category, type){
-
+		if(["dropdown","dropdownHalf"].indexOf(type) != -1) {
+			var elem = settings.appliedFiltersContainer.find(".filterPill[data-category="+category+"]")
+			if(elem.length) {
+				debugger
+				$(elem).attr("data-value", value);
+				$(elem).find('.icon-label').text(category + ": " + label)
+				return
+			}
+		}
+		if(type == "checkbox"){
+			var elArr = settings.appliedFiltersContainer.find(".filterPill[data-category="+category+"]")
+			$.each(elArr, function(index, el){
+				if(filtersTarget[category]["selection"].indexOf($(el).attr("data-value")) == -1){
+					el.remove()
+					return
+				}
+			})
+			var val = settings.appliedFiltersContainer.find(".filterPill[data-category="+category+"][data-value="+value+"]")
+			if(val.length) {
+				return
+			}
+		}
 		var aFilter = createPill(value, label, category, type);
 		settings.appliedFiltersContainer.prepend(aFilter);
 	}
@@ -218,6 +263,7 @@ function Filters(){
 		var value = el.attr('data-value');
 		var category = el.attr('data-category');
 		var type = el.attr('data-type');
+
 		if(type == "checkbox"){
 			var index = filtersTarget[category]['selection'].indexOf(value)
 			if(index > -1){
@@ -225,6 +271,32 @@ function Filters(){
 				el.remove();
 				filtersTarget[category]['target'].find('input[value='+value+']').prop('checked', false)
 			}
+			return
+		}
+		if(type == "dropdownHalf"){
+
+			var temp = category.split("-");
+
+			var key = temp[0];
+			var category = temp[1];
+			var str = filtersTarget[category]["props"][key]['selection'];
+
+			if(str){
+
+				filtersTarget[category]["props"][key]['selection'] = null;
+				el.remove();
+				filtersTarget[category]["props"][key]['target'].val("")
+			}
+			return
+		}
+		if(type == "dropdown"){
+			var str = filtersTarget[category]['selection']
+			if(str){
+				filtersTarget[category]['selection'] = null;
+				el.remove();
+				filtersTarget[category]['target'].val("")
+			}
+			return
 		}
 	}
 	function onClickApplyFilterButton(fn){
@@ -244,28 +316,52 @@ function Filters(){
 				var category = name;
 				var label = $(el).attr('data-label');
 				filtersTarget[name]['selection'].push(el.value)
-				debugger
 				addFilterToContainer(value, label, category, type);
 			})
 			return
 		}
 
-		if(type == "dropdown"){
+		if(type == "dropdownHalf"){
 			for(var key in filtersTarget[name]["props"]) {
 				var value = filtersTarget[name]["props"][key]['target'].val();
-				if(!value) {
+				var category = key +"-"+ name;
+
+				var elem = settings.appliedFiltersContainer.find(".filterPill[data-category="+category+"]")
+				debugger;
+				if(parseInt(value) == -1 && !elem.length  ) {
 					return
 				}
-				var category = key + name;
+				if(parseInt(value) == -1 && elem.length) {
+					filtersTarget[name]["props"][key]['selection'] = null;
+					elem.remove();
+					return
+				}
+				filtersTarget[name]["props"][key]['selection'] = value
 				var label = value;
 				addFilterToContainer(value, label, category, type);
 			}
 			return
 		}
 
+		if(type == "dropdown"){
+			var value = filtersTarget[name]['target'].val();
+			var category = name
+			var elem = settings.appliedFiltersContainer.find(".filterPill[data-category="+category+"]")
+			if(!parseInt(value) && elem.length) {
+				filtersTarget[category]['selection'] = null;
+				elem.remove();
+				return
+			}
+			filtersTarget[name]['selection'] = value
+			var label = filtersTarget[name]['target'].find('option:selected').text();
+			addFilterToContainer(value, label, category, type);
+			return
+		}
+
 	}
 	function getAppliedFilters(){
 		var ob ={};
+		debugger
 		if(filtersTarget.industry.selection.length >0)
 			ob.industry = filtersTarget.industry.selection.join(',');
 		if(filtersTarget.currentLocation.selection.length > 0)
@@ -310,16 +406,16 @@ function Filters(){
 			ob.relocate = filtersTarget.relocate.selection
 		if(filtersTarget.differentlyAbled.selection)
 			ob.differentlyAbled = filtersTarget.differentlyAbled.selection
-
 		if(filtersTarget.searchString.selection)
 			ob.searchString = filtersTarget.searchString.selection
+		debugger
 		return ob;
 	}
 
 	function addFilterData(name, data){
 		if(name && ['industry', 'functionalArea', 'currentLocation', 'preferredLocation', 'institute', 'experience', 'batch', 'salary', 'age', 'gender', 'noticePeriod', 'appliedDate', 'lastSeen', 'workPermit', 'handleTeam', 'relocate', 'differentlyAbled', 'language'].indexOf(name) ==-1)
 			return console.log('not a valid filter');
-		
+
 		if(filtersTarget[name]){
 			var str = ''
 			data.forEach(function(aRow){
@@ -333,6 +429,15 @@ function Filters(){
 			})
 			filtersTarget[name].target.html(str).attr('data-label', name);
 		}
+	}
+
+	function addFilterDataOnSearch(name, resultTags) {
+		filtersTarget[name].target.find(".jsCheckInput").addClass("hidden")
+		var inputElem = filtersTarget[name].target.find("input");
+		resultTags.forEach(function(obj) {
+			console.log("input[value='"+obj["val"]+"']")
+			filtersTarget[name].target.find("input[value='"+obj["val"]+"']").closest('.jsCheckInput').removeClass("hidden")
+		})
 	}
 
 	function setOnClickFilters() {
@@ -358,4 +463,15 @@ function Filters(){
     	onClickSearchButton: onClickSearchButton,
     	getSearchString: getSearchString
     }
+	function searchTags(name, array, str) {
+		str=str.toLowerCase();
+		var resultTags = []
+	    for (var i=0; i < array.length; i++) {
+	        if (array[i]["text"] && array[i]["text"].toLowerCase().indexOf(str)>-1) {
+	            resultTags.push(array[i]);
+	        }
+	    }
+		addFilterDataOnSearch(name ,resultTags)
+
+	}
 }

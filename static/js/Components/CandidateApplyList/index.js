@@ -42,7 +42,7 @@ jQuery(document).ready( function() {
         parameters.status = globalParameters.status;
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
-    
+
     filters.onClickSearchButton(function(){
         var str = filters.getSearchString();
         var parameters = filters.getAppliedFilters();
@@ -165,6 +165,7 @@ jQuery(document).ready( function() {
      })
 
      candidates.onClickShortlistCandidate(function(candidateId){
+         debugger
          alert(candidateId)
      })
 

@@ -1,5 +1,5 @@
 var functionalAreaMetaData = {
-    "data-attribute": "menu-functional-area",
+    "data-selector": "functional-area",
     "name": "funcArea"
 }
 

@@ -14,8 +14,8 @@ function candidateList() {
         settings.candidateDownloadResumeButton= ".candidateDownloadResume",
         settings.candidateSendMessageButton= ".candidateSendMessage",
         settings.candidateOtherActionsClass= '.candidateOtherActions',
-        settings.candidateShortlistButton='.cadidateShortlist',
-        settings.candidateRejectButton= '.candidateReject',
+        settings.candidateShortlistButtonClass='.candidateShortlist',
+        settings.candidateRejectButtonClass= '.candidateReject',
         settings.candidateCheckboxClass= '.candidateCheckbox',
         settings.candidateCheckboxLabelClass= '.candidateCheckboxLabel',
         settings.candidateTagsPrototype= $('.candidateTags.prototype')
@@ -279,7 +279,10 @@ function candidateList() {
 
 
     function onClickShortlistCandidate(fn) {
-        settings.rowContainer.on('click', settings.candidateShortlistButton, function(event) {
+
+        settings.rowContainer.on('click', settings.candidateShortlistButtonClass, function(event) {
+            debugger
+            console.log("a")
             event.stopPropagation();
             var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
             fn(candidateId);
@@ -287,7 +290,7 @@ function candidateList() {
     }
 
     function onClickRejectCandidate(fn) {
-        settings.rowContainer.on('click', settings.candidateRejectButton, function(event) {
+        settings.rowContainer.on('click', settings.candidateRejectButtonClass, function(event) {
             event.stopPropagation();
             var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
             fn(candidateId);
