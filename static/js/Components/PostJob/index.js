@@ -1,4 +1,3 @@
-var jobId = getQueryParameter("jobId");
 $(document).ready(function(){
 
 	var jobDetails = Job();

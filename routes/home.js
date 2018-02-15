@@ -98,6 +98,7 @@ module.exports = function(settings){
 	app.get("/post-job",isAuthenticated, function(req, res){
 		res.render("post-job",{
 			title: "IIM JOBS | Post job",
+			action: "Post Job",
 			styles:  assetsMapper["post-job"]["styles"][mode],
 			scripts: assetsMapper["post-job"]["scripts"][mode],
 			baseUrl: baseUrl,
@@ -105,6 +106,19 @@ module.exports = function(settings){
 			profile: profile
 		})
 		return
+	})
+	app.get("/job/:jobId/edit", isAuthenticated, function(req, res){
+		res.render("post-job",{
+			title: "IIM JOBS | Edit job",
+			action: "Edit Job",
+			styles:  assetsMapper["post-job"]["styles"][mode],
+			scripts: assetsMapper["post-job"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			profile: profile,
+			jobId: req.params.jobId
+		})
+		return	
 	})
 
 	app.get("/my-jobs",isAuthenticated, function(req,res){
