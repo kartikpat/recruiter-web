@@ -206,6 +206,7 @@ jQuery(document).ready( function() {
      candidates.onClickShortlistCandidate(function(candidateId){
          globalParameters.action = "shortlist"
          setCandidateAction(recruiterId, jobId, globalParameters.action , candidateId, {});
+         updateJobStats(status)
      })
 
      candidates.onClickRejectCandidate(function(candidateId){
@@ -213,30 +214,30 @@ jQuery(document).ready( function() {
          setCandidateAction(recruiterId, jobId, globalParameters.action , candidateId, {});
      })
 
-     aCandidate.onClickAddTag(function(candidateId, tagName){
+     aCandidate.onClickAddTag(function(applicationId, tagName){
          var ob = {
              "name": tagName,
 	         "type": "add"
          }
          globalParameters.action = "tag"
-         setCandidateAction(recruiterId, jobId, globalParameters.action , candidateId, ob);
+         setCandidateAction(recruiterId, jobId, globalParameters.action , applicationId, ob);
      })
 
-     aCandidate.onClickDeleteTag(function(candidateId, tagId){
+     aCandidate.onClickDeleteTag(function(applicationId, tagId){
          var ob = {
              "tagId": tagId,
 	         "type": "delete"
          }
          globalParameters.action = "tag"
-         setCandidateAction(recruiterId, jobId, globalParameters.action , candidateId, ob);
+         setCandidateAction(recruiterId, jobId, globalParameters.action , applicationId, ob);
      })
 
-     aCandidate.onClickAddComment(function(candidateId, comment){
+     aCandidate.onClickAddComment(function(applicationId, comment){
          var ob = {
              "comment": comment
          }
          globalParameters.action = "comment"
-         setCandidateAction(recruiterId, jobId, globalParameters.action , candidateId, ob);
+         setCandidateAction(recruiterId, jobId, globalParameters.action , applicationId, ob);
      })
 
 

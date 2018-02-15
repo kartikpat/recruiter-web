@@ -88,6 +88,7 @@ function Candidate() {
 
     function populateCandidateData(aData, type) {
         var item = getElement(aData["userID"]);
+        item.element.attr("data-application-id", aData["id"])
         item.image.attr("src", aData["img"])
         item.name.text(aData["name"]);
         item.experience.text(aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m");
@@ -232,9 +233,9 @@ function Candidate() {
 
         settings.candidateDetailsModal.on('click', settings.candidateAddCommentButtonClass,function(event) {
             event.stopPropagation();
-            var candidateId = $(this).closest(settings.candidateDetailsModal).attr("data-candidate-id");
+            var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
             var comment = $(settings.candidateCommentTextareaClass).val();
-            fn(candidateId, comment);
+            fn(applicationId, comment);
         });
     }
 
@@ -244,15 +245,15 @@ function Candidate() {
 
             if (event.which == 13) {
                 var tagName = $(this).val();
-                var candidateId = $(this).closest(settings.candidateDetailsModal).attr("data-candidate-id")
-                return fn(candidateId, tagName);
+                var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
+                return fn(applicationId, tagName);
             }
         });
         settings.candidateDetailsModal.on('click', settings.candidateAddTagButtonClass,function(event) {
             event.stopPropagation();
             var tagName = $(settings.candidateTagInputClass).val();
-            var candidateId = $(this).closest(settings.candidateDetailsModal).attr("data-candidate-id")
-            return fn(candidateId, tagName);
+            var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
+            return fn(applicationId, tagName);
         });
     }
 
@@ -260,8 +261,8 @@ function Candidate() {
         settings.candidateDetailsModal.on('click', settings.candidateTagRemoveClass,function(event) {
             event.stopPropagation();
             var tagId = $(this).attr("data-tag-id");
-            var candidateId = $(this).closest(settings.candidateDetailsModal).attr("data-candidate-id")
-            return fn(candidateId, tagId);
+            var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
+            return fn(applicationId, tagId);
         });
     }
 

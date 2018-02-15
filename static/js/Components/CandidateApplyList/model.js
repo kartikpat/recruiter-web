@@ -51,7 +51,10 @@ function candidateList() {
             candidateCheckbox: card.find(settings.candidateCheckboxClass),
             candidateCheckboxLabel: card.find(settings.candidateCheckboxLabelClass),
             proMember: card.find('.isPro'),
-            isFollowedUp: card.find('.isFollowedUp')
+            isFollowedUp: card.find('.isFollowedUp'),
+            shortlistButton: card.find(settings.candidateShortlistButtonClass),
+            rejectButton: card.find(settings.candidateRejectButtonClass),
+            savedButton: card.find(settings.candidateSaveButton)
 		}
 	}
 
@@ -79,12 +82,16 @@ function candidateList() {
 
     function createElement(aData) {
 		var item = getElement(aData["userID"]);
+        item.element.attr("data-application-id", aData["id"]);
         item.image.attr("src",aData["img"]);
         item.name.text(aData["name"]);
         item.experience.text(aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m");
         item.location.text(aData["preferredLocation"]);
         item.appliedOn.text(moment(aData["timestamp"]).format('DD-MM-YYYY'))
         item.notice.text(aData["notice"] + " months");
+        item.shortlistButton.attr("data-status", "1");
+        item.rejectButton.attr("data-status", "2");
+        item.savedButton.attr("data-status", "3");
         // var tagStr = '';
         // $.each(aData["tags"],function(index, aTag) {
         //     var tag =  settings.candidateTagsPrototype.clone().text(aTag["name"]).removeClass("prototype hidden");
@@ -316,16 +323,16 @@ function candidateList() {
             debugger
             console.log("a")
             event.stopPropagation();
-            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
-            fn(candidateId);
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            fn(applicationId);
         })
     }
 
     function onClickRejectCandidate(fn) {
         settings.rowContainer.on('click', settings.candidateRejectButtonClass, function(event) {
             event.stopPropagation();
-            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
-            fn(candidateId);
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            fn(applicationId);
         })
     }
 
@@ -385,7 +392,8 @@ function candidateList() {
         onClickViewTag: onClickViewTag,
         emptyCandidateList: emptyCandidateList,
         onClickMassReject: onClickMassReject,
-        onClickMassShortlist: onClickMassShortlist
+        onClickMassShortlist: onClickMassShortlist,
+        updateJobStats: updateJobStats
 	}
 
 
