@@ -22,7 +22,7 @@ function Job(){
 	function setConfig(key, value) {
 		config[key] = value;
 	}
-	function init(){
+	function init(type){
 			settings.title= $('#title'),
 			settings.location= $("#locationTags"),
 			settings.otherLocation = $("#locationTags"),
@@ -48,6 +48,18 @@ function Job(){
 			settings.creditsText = $('#creditsText');
 			setAvailableCredits(settings.creditsText, config["availableCredits"]);
 			onClickCancelForm(settings.cancelFormButton);
+
+			if(type=='edit'){
+				settings.editor = new MediumEditor("#job_description", {
+					toolbar: false,
+					placeholder: {
+				        text: 'Describe the role, talk about the role and responsibilities and help potential applicants understand what makes this a great opportunity.'
+				    }
+				})
+				settings.editor.subscribe('editableInput', function(event, editorElement){
+					settings.description.val(settings.editor.getContent());
+				})
+			}
 	}
 
 
@@ -163,6 +175,9 @@ function Job(){
 
 	function setJobData(jobId, obj) {
 		settings.title.val(obj["title"]);
+		if(settings.editor){
+			settings.editor.setContent(obj["description"])
+		}
 		settings.description.val(obj["description"]);
 		settings.isPremium.prop("checked", obj["isPremium"]);
 		settings.category.val(obj["catid"]);
@@ -246,7 +261,7 @@ function ifExists(element){
 function checkPillValues(element) {
 	var obj = getPillValues(element.attr('id'))
 	if(element.attr('data-enable-custom') == true) {
-		if( obj["temp"].length < 1 && obj["tempLabel"].length < 1 ){
+		if( obj.length < 1 && obj.length < 1 ){
 			element.next('.error').text(errorResponses['missing'+element.attr('name')]).removeClass("hidden");
 			focusOnElement(element)
 			return false;
@@ -256,7 +271,7 @@ function checkPillValues(element) {
 		}
 		return true;
 	}
-	if( obj["temp"].length < 1 ){
+	if( obj.length < 1 ){
 		element.next('.error').text(errorResponses['missing'+element.attr('name')]).removeClass("hidden");
 		focusOnElement(element)
 		return false;
@@ -292,16 +307,13 @@ function isYouTubeLink(link){
  */
 function getPillValues(elementId){
 	var el = $('#'+elementId + ' .input-tag');
-	var obj = {
-		temp: [],
-		tempLabel: []
-	}
+	var data = [];
 	el.each(function(index, value){
 		console.log()
-		$(value).attr('data-id') ? obj["temp"].push($(value).attr('data-id')) : obj["tempLabel"].push($(value).find(".tag-name span").text());
+		$(value).attr('data-id') ? data.push($(value).attr('data-id')) : data.push($(value).attr('data-name'));
 	})
 
-	return obj;
+	return data;
 }
 
 /**
@@ -386,3 +398,13 @@ function setMultipleCheckboxes(elementId, arr){
 		el.prop("checked","true");
 	})
 }
+function check_youtube_embed(url) {
+    var id = url.split("?v=")[1];
+    var embedlink = "http://www.youtube.com/embed/" + id;
+    if(url.indexOf('youtube.com/') !== -1) {
+        jQuery(".youtube-preview").removeClass("hidden").find("iframe").attr("src", embedlink);
+    } else {
+        jQuery(".youtube-preview").addClass("hidden")
+    }
+}
+

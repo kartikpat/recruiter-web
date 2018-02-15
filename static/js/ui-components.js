@@ -159,9 +159,8 @@ function addNewTag(labelName, labelValue, selector) {
 	// console.log(labelName, selector);
 
 	var tag = jQuery(".input-tag.prototype.hidden").clone().removeClass("prototype hidden");
-	console.log(labelName)
-	debugger
 	tag.attr("data-id",labelValue);
+	tag.attr("data-name", labelName);
 	tag.find(".tag-name span").html(labelName);
 	jQuery(selector).find(".pill-button").before(tag);
 

@@ -2,7 +2,10 @@ $(document).ready(function(){
 
 	var jobDetails = Job();
 	jobDetails.setConfig("availableCredits", profile["availableCredits"]);
-	jobDetails.init();
+	var type = 'post'
+	if(jobId)
+		type='edit';
+	jobDetails.init(type);
 
 
 	jobDetails.onChangeJobPremium(function(){
