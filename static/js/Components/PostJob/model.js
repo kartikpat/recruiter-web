@@ -141,17 +141,17 @@ function Job(){
 		var ob = {
 			title: settings.title.val(),
 			description: settings.description.val(),
-			isPremium: settings.isPremium.checked,
+			premium: settings.isPremium.is(':checked') ? 1 : 0,
 			category: settings.category.val(),
 			functionalArea: settings.functionalArea.val(),
-			location: locationObj["temp"],
-			otherLocation: locationObj["tempLabel"],
-			industry: industryObj["temp"]
+			location: locationObj.id,
+			otherLocation: locationObj.label,
+			industry: industryObj.id
 		}
 
 		var tagsObj = getPillValues(settings.tags.attr('id'));
-		if( tagsObj["temp"].length > 0 || tagsObj["tempLabel"].length > 0)
-			ob.tags = tagsObj["temp"].concat(tagsObj["tempLabel"]);
+		if( tagsObj['label'].length > 0 )
+			ob.tags = tagsObj['label'];
 		if(settings.videoUrl.val() && settings.videoUrl.val() !='')
 			ob.videoUrl = settings.videoUrl.val()
 		if( getMultipleCheckboxes(settings.courseType.attr('id')).length >0)
@@ -163,7 +163,7 @@ function Job(){
 			ob.sal = {
 				min: settings.minSal.val(),
 				max: settings.maxSal.val(),
-				cnfi: settings.confidential.is('checked') ? 1 : 0
+				cnfi: settings.confidential.is(':checked') ? 1 : 0
 			}
 		if(settings.minExp.val() && settings.maxExp.val())
 			ob.exp = {
@@ -203,10 +203,7 @@ function Job(){
 		setPillValues(settings.tags.attr('id'), obj["tags"]);
 		if(obj["sal"] && obj["sal"]["min"]!= 0 && obj["sal"]["max"]!=0) {
 			settings.minSal.val(obj["sal"]["min"]);
-			debugger
 			settings.maxSal.val(obj["sal"]["max"]);
-			console.log(obj["sal"]["max"])
-			debugger
 			settings.confidential.prop("checked", obj["sal"]["cnfi"]);
 		}
 		settings.minExp.val(obj["exp"]["min"]);
@@ -316,10 +313,13 @@ function isYouTubeLink(link){
  */
 function getPillValues(elementId){
 	var el = $('#'+elementId + ' .input-tag');
-	var data = [];
+	var data = {
+		id: [],
+		label: []
+	};
 	el.each(function(index, value){
 		console.log()
-		$(value).attr('data-id') ? data.push($(value).attr('data-id')) : data.push($(value).attr('data-name'));
+		$(value).attr('data-id') ? data['id'].push($(value).attr('data-id')) : data['label'].push($(value).attr('data-name'));
 	})
 
 	return data;

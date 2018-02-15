@@ -12,8 +12,12 @@ $(document).ready(function(){
 		alert("hi")
 	})
 	jobDetails.submitHandler(function(){
-			if(jobDetails.validate())
-				submitNewJob(jobDetails.getData());
+			if(jobDetails.validate()){
+				if(jobId)
+					submitEditJob(recruiterId ,jobId,jobDetails.getData())
+				else
+					submitNewJob(jobDetails.getData());
+			}
 		})
 	if(jobId) {
 		fetchJob(jobId);
@@ -21,7 +25,7 @@ $(document).ready(function(){
  	function onSuccessfulSubmitJob(topic, data){
 		// alert("You have successfully posted your job.Our team is reviewing your job and it usually takes upto 24 hours for a job to get published.")
 		if(profile["availableCredits"] > 0)
-			return window.location.href = "/dashboard";
+			return window.location.href = "/";
 		window.location.href = "/recruiter/recruiter-plan"
  		console.log(topic)
 		console.log(data);
@@ -42,5 +46,9 @@ $(document).ready(function(){
 	var fetchJobSuccessSubscription = pubsub.subscribe("fetchedJob:"+jobId, onSuccessfulFetchJob);
 	var fetchJobFailSubscription = pubsub.subscribe("failedToFetchJob:"+jobId, onFailedFetchJob);
 	var jobSubmitSuccessSubscription = pubsub.subscribe('submittedNewJob', onSuccessfulSubmitJob);
-	var jobSubmitFailSubscription = pubsub.subscribe('failedNewJobSubmission', onFailedSubmitJob)
+	var jobSubmitFailSubscription = pubsub.subscribe('failedNewJobSubmission', onFailedSubmitJob);
+
+	var jobEditSuccessSubscription = pubsub.subscribe('jobEdited', onSuccessfulSubmitJob);
+
+	var jobEditSuccessSubscription = pubsub.subscribe('failedEditJobSubmission', onFailedSubmitJob);
 })
