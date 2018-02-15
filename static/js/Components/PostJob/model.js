@@ -22,7 +22,7 @@ function Job(){
 	function setConfig(key, value) {
 		config[key] = value;
 	}
-	function init(){
+	function init(type){
 			settings.title= $('#title'),
 			settings.location= $("#locationTags"),
 			settings.otherLocation = $("#locationTags"),
@@ -35,7 +35,7 @@ function Job(){
 			settings.functionalArea= $("#functional_area"),
 			settings.minSal= $("#min_salary"),
 			settings.maxSal= $("#max_salary"),
-			settings.showSal= $("#salary_show"),
+			settings.confidential= $("#salary_show"),
 			settings.batchFrom= $("#graduating_start_year"),
 			settings.batchTo= $("#graduating_end_year"),
 			settings.tags= $("#jobTags"),
@@ -48,6 +48,24 @@ function Job(){
 			settings.creditsText = $('#creditsText');
 			setAvailableCredits(settings.creditsText, config["availableCredits"]);
 			onClickCancelForm(settings.cancelFormButton);
+
+			var salaryRange = 100;
+			for(var i=0; i< salaryRange; i++){
+				settings.maxSal.append('<option value="'+(i+1)+'">'+(i+1)+'</option>')
+				settings.minSal.append('<option value="'+(i+1)+'">'+(i+1)+'</option>')
+			}
+
+			if(type=='edit'){
+				settings.editor = new MediumEditor("#job_description", {
+					toolbar: false,
+					placeholder: {
+				        text: 'Describe the role, talk about the role and responsibilities and help potential applicants understand what makes this a great opportunity.'
+				    }
+				})
+				settings.editor.subscribe('editableInput', function(event, editorElement){
+					settings.description.val(settings.editor.getContent());
+				})
+			}
 	}
 
 
@@ -123,17 +141,17 @@ function Job(){
 		var ob = {
 			title: settings.title.val(),
 			description: settings.description.val(),
-			isPremium: settings.isPremium.checked,
+			premium: settings.isPremium.is(':checked') ? 1 : 0,
 			category: settings.category.val(),
 			functionalArea: settings.functionalArea.val(),
-			location: locationObj["temp"],
-			otherLocation: locationObj["tempLabel"],
-			industry: industryObj["temp"]
+			location: locationObj.id,
+			otherLocation: locationObj.label,
+			industry: industryObj.id
 		}
 
 		var tagsObj = getPillValues(settings.tags.attr('id'));
-		if( tagsObj["temp"].length > 0 || tagsObj["tempLabel"].length > 0)
-			ob.tags = tagsObj["temp"].concat(tagsObj["tempLabel"]);
+		if( tagsObj['label'].length > 0 )
+			ob.tags = tagsObj['label'];
 		if(settings.videoUrl.val() && settings.videoUrl.val() !='')
 			ob.videoUrl = settings.videoUrl.val()
 		if( getMultipleCheckboxes(settings.courseType.attr('id')).length >0)
@@ -145,7 +163,7 @@ function Job(){
 			ob.sal = {
 				min: settings.minSal.val(),
 				max: settings.maxSal.val(),
-				isShow: settings.showSal.is('checked') || false
+				cnfi: settings.confidential.is(':checked') ? 1 : 0
 			}
 		if(settings.minExp.val() && settings.maxExp.val())
 			ob.exp = {
@@ -163,15 +181,19 @@ function Job(){
 
 	function setJobData(jobId, obj) {
 		settings.title.val(obj["title"]);
+		if(settings.editor){
+			settings.editor.setContent(obj["description"])
+		}
 		settings.description.val(obj["description"]);
-		settings.isPremium.prop("checked", obj["isPremium"]);
-		settings.category.val(obj["catid"]);
+		settings.isPremium.prop("checked", obj["premium"]);
+		settings.category.val(obj["category"]);
 		settings.functionalArea.val(obj["functionalArea"]);
+		console.log(obj)
 
 		// setPillValues(settings.location.attr('id'), loca);
 		setPillValues(settings.location.attr('id'), obj["location"]);
 
-		setPillValues(settings.industry.attr('id'), obj["industry"]);
+		setPillValues(settings.industry.attr('id'), obj["industry"], industryTagsData);
 		if(obj["videoUrl"])
 			settings.videoUrl.val(obj["videoUrl"]);
 		if(obj["courseType"])
@@ -182,7 +204,7 @@ function Job(){
 		if(obj["sal"] && obj["sal"]["min"]!= 0 && obj["sal"]["max"]!=0) {
 			settings.minSal.val(obj["sal"]["min"]);
 			settings.maxSal.val(obj["sal"]["max"]);
-			settings.showSal.prop("checked", obj["sal"]["isShow"]);
+			settings.confidential.prop("checked", obj["sal"]["cnfi"]);
 		}
 		settings.minExp.val(obj["exp"]["min"]);
 		settings.maxExp.val(obj["exp"]["max"]);
@@ -245,7 +267,7 @@ function ifExists(element){
 function checkPillValues(element) {
 	var obj = getPillValues(element.attr('id'))
 	if(element.attr('data-enable-custom') == true) {
-		if( obj["temp"].length < 1 && obj["tempLabel"].length < 1 ){
+		if( obj.length < 1 && obj.length < 1 ){
 			element.next('.error').text(errorResponses['missing'+element.attr('name')]).removeClass("hidden");
 			focusOnElement(element)
 			return false;
@@ -255,7 +277,7 @@ function checkPillValues(element) {
 		}
 		return true;
 	}
-	if( obj["temp"].length < 1 ){
+	if( obj.length < 1 ){
 		element.next('.error').text(errorResponses['missing'+element.attr('name')]).removeClass("hidden");
 		focusOnElement(element)
 		return false;
@@ -291,25 +313,37 @@ function isYouTubeLink(link){
  */
 function getPillValues(elementId){
 	var el = $('#'+elementId + ' .input-tag');
-	var obj = {
-		temp: [],
-		tempLabel: []
-	}
+	var data = {
+		id: [],
+		label: []
+	};
 	el.each(function(index, value){
 		console.log()
-		$(value).attr('data-id') ? obj["temp"].push($(value).attr('data-id')) : obj["tempLabel"].push($(value).find(".tag-name span").text());
+		$(value).attr('data-id') ? data['id'].push($(value).attr('data-id')) : data['label'].push($(value).attr('data-name'));
 	})
 
-	return obj;
+	return data;
 }
 
 /**
  * set multiple values on the pill widget
  * @return {[type]} [description]
  */
-function setPillValues(elementId, arr){
-	$.each(arr, function( index, value ) {
-		addNewTag(value["label"], value["id"], '#'+elementId+'')
+function setPillValues(elementId, arr, globalArray){
+	arr.forEach(function(value, index){
+		if(globalArray)
+			globalArray.forEach(function(anItem){
+				if(value==anItem['val']){
+					var label = anItem['text']
+					var id = anItem['val']
+					addNewTag(label, id, '#'+elementId+'')
+				}
+			})
+		else{
+			var label = value
+			var id =""
+			addNewTag(label, id, '#'+elementId+'')
+		}
 	})
 }
 
@@ -373,3 +407,13 @@ function setMultipleCheckboxes(elementId, arr){
 		el.prop("checked","true");
 	})
 }
+function check_youtube_embed(url) {
+    var id = url.split("?v=")[1];
+    var embedlink = "http://www.youtube.com/embed/" + id;
+    if(url.indexOf('youtube.com/') !== -1) {
+        jQuery(".youtube-preview").removeClass("hidden").find("iframe").attr("src", embedlink);
+    } else {
+        jQuery(".youtube-preview").addClass("hidden")
+    }
+}
+

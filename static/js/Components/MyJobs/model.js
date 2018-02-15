@@ -191,7 +191,7 @@ function Jobs() {
 			item.refresh.attr("title", "You can refresh this job after 7 days")
 
 		item.edit.attr("data-job-isEditable", aData["editable"])
-		item.edit.attr("href","/post-job?jobId="+aData["id"]+"")
+		item.edit.attr("href","/job/"+aData["id"]+"/edit")
 		if(!aData["editable"]) {
 			item.edit.attr("title","This job cannot be edited now. Reach us at hello@iimjobs.com in case of any issue.");
 		}

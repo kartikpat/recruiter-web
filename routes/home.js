@@ -29,7 +29,6 @@ module.exports = function(settings){
 		//bypassing the auth for development
     // CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     // you can do this however you want with whatever variables you set up
-		console.log(req.cookies)
     	if (req.cookies["recruiter-access-token"]) {
 			console.log(baseUrl)
 			return request.get({
@@ -42,7 +41,6 @@ module.exports = function(settings){
 				const jsonBody = JSON.parse(body)
 				if(jsonBody.status && jsonBody.status =='success'){
 					profile = jsonBody.data;
-					console.log(profile)
 					return next();
 				}
 			})
@@ -98,6 +96,7 @@ module.exports = function(settings){
 	app.get("/post-job",isAuthenticated, function(req, res){
 		res.render("post-job",{
 			title: "IIM JOBS | Post job",
+			action: "Post Job",
 			styles:  assetsMapper["post-job"]["styles"][mode],
 			scripts: assetsMapper["post-job"]["scripts"][mode],
 			baseUrl: baseUrl,
@@ -105,6 +104,19 @@ module.exports = function(settings){
 			profile: profile
 		})
 		return
+	})
+	app.get("/job/:jobId/edit", isAuthenticated, function(req, res){
+		res.render("post-job",{
+			title: "IIM JOBS | Edit job",
+			action: "Edit Job",
+			styles:  assetsMapper["post-job"]["styles"][mode],
+			scripts: assetsMapper["post-job"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			profile: profile,
+			jobId: req.params.jobId
+		})
+		return	
 	})
 
 	app.get("/my-jobs",isAuthenticated, function(req,res){

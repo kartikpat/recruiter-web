@@ -127,7 +127,7 @@
                         display: inline-block;
                     }
 
-                    textarea {
+                    textarea,.medium-editor-element {
                         width:100%;
                         max-width:100%;
                         min-height: 150px;
@@ -339,5 +339,10 @@
             }
         }
     }
+}
+.medium-editor-placeholder-relative:after, .medium-editor-placeholder:after{
+    color:$select-color;
+    font-style: normal;
+    white-space: normal;
 }
 

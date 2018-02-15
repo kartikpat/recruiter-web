@@ -2,7 +2,7 @@ var status = "all";
 jQuery(document).ready( function() {
 	var jobList = Jobs();
 
-	jobList.init()
+	jobList.init();
 	jobList.setConfig("availableCredits", profile["availableCredits"]);
 	jobList.setConfig("baseUrlJob", baseUrlJob);
 	jobList.onChangeJobFilters(function(type){

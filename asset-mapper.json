@@ -125,6 +125,7 @@
 				"static/css/utilities.css",
 				"static/css/colors.css",
 				"static/css/spacings.css",
+				"static/css/vendor/medium-editor.min.css",
 				"static/css/post_job.css",
 				"static/css/modal.css"
 			],
@@ -135,19 +136,23 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/utilities.js",
-				"static/js/request.js",
-				"static/js/header.js",
-				"static/js/postJob.js",
-				"static/js/modal.js",
+				"static/js/tags/industry.js",
+				"static/js/tags/current-location.js",
+				"static/js/tags/preferred-location.js",
+				"static/js/tags/language.js",
+				"static/js/tags/functional-area.js",
+				"static/js/tags/institute.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
+				"static/js/vendor/medium-editor.min.js",
 				"static/js/ui-components.js",
+				"static/js/Utilities/request.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/common.js",
 				"static/js/Utilities/modal.js",
 				"static/js/Services/fetchJob.js",
 				"static/js/Services/submitNewJob.js",
+				"static/js/Services/submitEditJob.js",
 				"static/js/Components/PostJob/model.js",
 				"static/js/Components/PostJob/index.js"
 

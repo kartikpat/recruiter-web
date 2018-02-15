@@ -638,7 +638,7 @@ span.sticker {
         .job_posting .post_job .post_job_form .field-container .field select.half {
           width: 49%;
           display: inline-block; }
-        .job_posting .post_job .post_job_form .field-container .field textarea {
+        .job_posting .post_job .post_job_form .field-container .field textarea, .job_posting .post_job .post_job_form .field-container .field .medium-editor-element {
           width: 100%;
           max-width: 100%;
           min-height: 150px;
@@ -650,7 +650,7 @@ span.sticker {
           font-size: 14px;
           line-height: 1.5;
           overflow-y: hidden; }
-          .job_posting .post_job .post_job_form .field-container .field textarea:focus {
+          .job_posting .post_job .post_job_form .field-container .field textarea:focus, .job_posting .post_job .post_job_form .field-container .field .medium-editor-element:focus {
             outline: none;
             border-color: #4fa995; }
       .job_posting .post_job .post_job_form .field-container .industry-tags, .job_posting .post_job .post_job_form .field-container .location-tags, .job_posting .post_job .post_job_form .field-container .skill-tags {
@@ -880,3 +880,8 @@ span.sticker {
         font-size: 14px;
         margin-bottom: 20px;
         color: #5d5d5d; } }
+
+.medium-editor-placeholder-relative:after, .medium-editor-placeholder:after {
+  color: #818181;
+  font-style: normal;
+  white-space: normal; }
