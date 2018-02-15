@@ -413,6 +413,9 @@ body, html {
   font-weight: normal;
   font-family: "Droid Sans", sans-serif; }
 
+b {
+  font-weight: bold; }
+
 .hidden {
   display: none !important; }
 
