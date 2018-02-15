@@ -29,7 +29,6 @@ module.exports = function(settings){
 		//bypassing the auth for development
     // CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     // you can do this however you want with whatever variables you set up
-		console.log(req.cookies)
     	if (req.cookies["recruiter-access-token"]) {
 			console.log(baseUrl)
 			return request.get({
