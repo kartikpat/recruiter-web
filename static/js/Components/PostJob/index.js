@@ -27,13 +27,8 @@ $(document).ready(function(){
 	}
 	function onFailedSubmitJob(topic, data){
 		alert(res.status)
-		console.log(topic)
-		console.log(data);
-
 	}
 	function onSuccessfulFetchJob(topic, data) {
-		console.log(topic)
-		console.log(data);
 		jobDetails.setData(jobId,data[0]);
 	}
 	function onFailedFetchJob(topic, data){

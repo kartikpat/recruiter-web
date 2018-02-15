@@ -167,11 +167,12 @@ function Job(){
 		settings.isPremium.prop("checked", obj["isPremium"]);
 		settings.category.val(obj["catid"]);
 		settings.functionalArea.val(obj["functionalArea"]);
+		console.log(obj)
 
 		// setPillValues(settings.location.attr('id'), loca);
 		setPillValues(settings.location.attr('id'), obj["location"]);
 
-		setPillValues(settings.industry.attr('id'), obj["industry"]);
+		setPillValues(settings.industry.attr('id'), obj["industry"], industryTagsData);
 		if(obj["videoUrl"])
 			settings.videoUrl.val(obj["videoUrl"]);
 		if(obj["courseType"])
@@ -307,9 +308,21 @@ function getPillValues(elementId){
  * set multiple values on the pill widget
  * @return {[type]} [description]
  */
-function setPillValues(elementId, arr){
-	$.each(arr, function( index, value ) {
-		addNewTag(value["label"], value["id"], '#'+elementId+'')
+function setPillValues(elementId, arr, globalArray){
+	arr.forEach(function(value, index){
+		if(globalArray)
+			globalArray.forEach(function(anItem){
+				if(value==anItem['val']){
+					var label = anItem['text']
+					var id = anItem['val']
+					addNewTag(label, id, '#'+elementId+'')
+				}
+			})
+		else{
+			var label = value
+			var id =""
+			addNewTag(label, id, '#'+elementId+'')
+		}
 	})
 }
 

@@ -159,6 +159,8 @@ function addNewTag(labelName, labelValue, selector) {
 	// console.log(labelName, selector);
 
 	var tag = jQuery(".input-tag.prototype.hidden").clone().removeClass("prototype hidden");
+	console.log(labelName)
+	debugger
 	tag.attr("data-id",labelValue);
 	tag.find(".tag-name span").html(labelName);
 	jQuery(selector).find(".pill-button").before(tag);
@@ -167,6 +169,7 @@ function addNewTag(labelName, labelValue, selector) {
 	jQuery(selector).find(".pill-listing ul li").removeClass("hidden");
 
 	jQuery(selector).find(".pill-listing li.selected").addClass("tag-added").removeClass("selected");
+
 	if(jQuery(selector).attr("data-enable-custom") && jQuery(selector).attr("data-enable-custom") == "true") {
 		tag.find(".pill-listing ul").prepend("<li data-value='custom' class='hidden'></li>")
 		jQuery(selector).find(".pill-listing li[data-value=custom]").removeClass("tag-added");
