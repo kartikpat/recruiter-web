@@ -449,6 +449,7 @@ module.exports = function(settings){
 			scripts: assetsMapper["candidate-apply-list"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
+			baseUrlJob: baseUrlJob,
 			profile: profile
 		})
 		return

@@ -24,6 +24,9 @@ function Job(){
 		settings.defaultCalendar = null;
 		settings.jobOtherActions = $("#jobOtherActions");
 		settings.calendarSelectError = $("#calendarSelectError");
+		settings.createCalendar = $("#createCalendar");
+
+		onClickCreateCalendar();
 	}
 
 	function setJobDetails(data){
@@ -42,16 +45,31 @@ function Job(){
 		if(statusArr.indexOf(status) != -1) {
 			populateCalendarOptions(data["calendars"])
 		}
-		if(status == "published" && !data["isPremium"]) {
+		if(status == "published") {
             settings.jobUnpublishButton.removeClass("hidden")
-            if(data["refresh"])
+			settings.jobOtherActions.removeClass("hidden")
+            if(data["refreshable"])
     		    settings.jobRefreshButton.removeClass("hidden")
-            if(!data["premium"])
+            if(!data["isPremium"])
                 settings.jobPremiumButton.removeClass("hidden")
+			if(data["url"]) {
+				var url = config["baseUrlJob"] + data["url"];
+				settings.jobPostFacebook.attr("href", getFacebookShareLink(url))
+				settings.jobPostTwitter.attr("href", getTwitterShareLink(url))
+				settings.jobPostLinkedin.attr("href", getLinkedInShareUrl(url))
+			}
         }
         if(data["editable"]) {
             settings.jobEditButton.attr("href","/post-job?jobId="+data["id"]+"").removeClass("hidden")
         }
+
+
+	}
+
+	function onClickCreateCalendar() {
+		settings.createCalendar.click(function(e){
+			alert("clicked")
+		})
 	}
 
 	function onClickJobCancel(fn){
@@ -105,7 +123,7 @@ function Job(){
 
 	function populateCalendarOptions(array) {
         if(array.length < 1)
-            return
+        	settings.createCalendar.removeClass("hidden");
 		// if(array.length == 1)
 		// 	setDefaultCalendar(array[0]["id"]);
 		var calendarOptionsStr = '';

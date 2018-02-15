@@ -9,11 +9,13 @@ function Candidate() {
         settings.candidateTagContainerClass= '.candidateTagContainer',
         settings.mobCandidateTagContainerClass= '.mobCandidateTagContainer',
         settings.mobCandidateCommentContainerClass= '.mobCandidateCommentContainer',
-        settings.candidateTagsPrototype= $('.candidateTags.prototype'),
+        settings.candidateTagPrototype= $('.candidateTag.prototype'),
         settings.candidateAddCommentButtonClass= '.candidateAddCommentButton',
         settings.candidateAddTagButtonClass= '.candidateAddTagButton',
         settings.candidateCommentTextareaClass= '.candidateCommentTextarea',
-        settings.candidateTagInputClass = '.candidateTagInput'
+        settings.candidateTagInputClass = '.candidateTagInput',
+        settings.candidateTagRemoveClass = '.tagRemove',
+        settings.candidateTagListClass = '.candidateTagList'
     }
 
     function showCandidateDetails(details, type){
@@ -33,7 +35,7 @@ function Candidate() {
             contact: modal.find(".js_contact"),
             salary: modal.find(".js_sal"),
             skillsList: modal.find(".js_skills_list"),
-            jobTagList: modal.find('.js_job_tag_list'),
+            candidateTagList: modal.find(settings.candidateTagListClass),
             lastActive: modal.find(".js_last_login"),
             eduList: modal.find(".js_edu_list"),
             profList: modal.find(".js_prof_list"),
@@ -126,10 +128,10 @@ function Candidate() {
         })
         var tagStr = '';
         $.each(aData["tags"],function(index, aTag) {
-            var tag =  settings.candidateTagsPrototype.clone().text(aTag["name"]).removeClass("prototype hidden");
+            var tag = getCandidateTag(aTag)
             tagStr+=tag[0].outerHTML
         })
-        item.jobTagList.html(tagStr)
+        item.candidateTagList.html(tagStr)
         item.profList.html(profStr)
         item.gender.text(gender[aData["sex"]])
         item.age.text(getAge(aData["dob"]) + " years")
@@ -144,6 +146,10 @@ function Candidate() {
         	item.resume.html('<iframe src="'+aData["resume"]+'" class="resume-embed" type="application/pdf"></iframe>')
         }
         item.coverLetter.text(aData["cover"]);
+        if(aData["comment"]) {
+            item.comment.val(aData["comment"]);
+            item.mobComment.val(aData["comment"]);
+        }
 
         openModal(item)
         console.log(type)
@@ -163,7 +169,17 @@ function Candidate() {
 
     }
 
+    function getCandidateTag(aTag) {
+        var tag =  settings.candidateTagPrototype.clone().removeClass("prototype hidden");
+        tag.find(".tagLabel").text(aTag["name"]);
+        tag.find(".tagRemove").attr("data-tag-id", aTag["id"]);
+        return tag
+    }
 
+    function appendCandidateTag(aTag){
+        var tag = getCandidateTag(aTag);
+        settings.candidateDetailsModal.find(settings.candidateTagListClass).append(tag)
+    }
 
     function resetCandidateData() {
         var item = getElement();
@@ -216,23 +232,36 @@ function Candidate() {
 
         settings.candidateDetailsModal.on('click', settings.candidateAddCommentButtonClass,function(event) {
             event.stopPropagation();
-            var candidateId = $(this).closest(settings.candidateDetailsModal).attr("data-candidate-id")
-            fn(candidateId);
+            var candidateId = $(this).closest(settings.candidateDetailsModal).attr("data-candidate-id");
+            var comment = $(settings.candidateCommentTextareaClass).val();
+            fn(candidateId, comment);
         });
     }
 
     function onClickAddTag(fn) {
         settings.candidateDetailsModal.on('keyup', settings.candidateTagInputClass,function(event) {
             event.stopPropagation();
+
             if (event.which == 13) {
+                var tagName = $(this).val();
                 var candidateId = $(this).closest(settings.candidateDetailsModal).attr("data-candidate-id")
-                return fn(candidateId);
+                return fn(candidateId, tagName);
             }
         });
         settings.candidateDetailsModal.on('click', settings.candidateAddTagButtonClass,function(event) {
             event.stopPropagation();
+            var tagName = $(settings.candidateTagInputClass).val();
             var candidateId = $(this).closest(settings.candidateDetailsModal).attr("data-candidate-id")
-            fn(candidateId);
+            return fn(candidateId, tagName);
+        });
+    }
+
+    function onClickDeleteTag(fn) {
+        settings.candidateDetailsModal.on('click', settings.candidateTagRemoveClass,function(event) {
+            event.stopPropagation();
+            var tagId = $(this).attr("data-tag-id");
+            var candidateId = $(this).closest(settings.candidateDetailsModal).attr("data-candidate-id")
+            return fn(candidateId, tagId);
         });
     }
 
@@ -240,11 +269,12 @@ function Candidate() {
         init: init,
         showCandidateDetails: showCandidateDetails,
         onClickAddComment: onClickAddComment,
-        onClickAddTag: onClickAddTag
+        onClickAddTag: onClickAddTag,
+        onClickDeleteTag: onClickDeleteTag
 	}
 
     function focusOnElement(element, container) {
-        
+
         element.focus();
         settings.candidateDetailsModal.animate({
     		scrollTop: (element.closest(container).position().top)

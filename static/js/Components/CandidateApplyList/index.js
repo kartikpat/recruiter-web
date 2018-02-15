@@ -3,9 +3,10 @@ var globalParameters = {
     pageContent: 10,
     pageNumber: 1,
     status: "",
-    orderBy: 1
+    orderBy: 1,
+    action: ""
 }
-var length;
+var candidateListLength;
 jQuery(document).ready( function() {
 
     // fetching url parameters
@@ -31,6 +32,7 @@ jQuery(document).ready( function() {
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
         parameters.status = globalParameters.status;
+        candidates.emptyCandidateList()
         return fetchJobApplications(jobId, parameters, recruiterId)
     });
     filters.onClickRemoveFilter(function(element){
@@ -40,18 +42,18 @@ jQuery(document).ready( function() {
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
         parameters.status = globalParameters.status;
+        candidates.emptyCandidateList()
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
 
     filters.onClickSearchButton(function(){
-        var str = filters.getSearchString();
         var parameters = filters.getAppliedFilters();
         globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
         parameters.status = globalParameters.status;
-        parameters.searchString = str;
-        return fetchJobApplications(jobId, parameters, recruiterId);
+        candidates.emptyCandidateList()
+        fetchJobApplications(jobId, parameters, recruiterId);
     })
     filters.onSelectSortByOption(function(){
         var parameters = filters.getAppliedFilters();
@@ -59,6 +61,7 @@ jQuery(document).ready( function() {
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
         parameters.status = globalParameters.status;
+        candidates.emptyCandidateList()
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
     filters.onClickRemoveAllFilters(function(){
@@ -67,6 +70,7 @@ jQuery(document).ready( function() {
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
         parameters.status = globalParameters.status;
+        candidates.emptyCandidateList()
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
 
@@ -123,6 +127,18 @@ jQuery(document).ready( function() {
 
     })
 
+    candidates.onClickViewComment(function(candidateId) {
+        var candidateDetails = store.getCandidateFromStore(candidateId);
+        aCandidate.showCandidateDetails(candidateDetails, "comment");
+
+    })
+
+    candidates.onClickViewTag(function(candidateId) {
+        var candidateDetails = store.getCandidateFromStore(candidateId);
+        aCandidate.showCandidateDetails(candidateDetails, "tag");
+
+    })
+
     candidates.onClickSendMessage(function(candidateId){
         alert(candidateId)
     })
@@ -163,6 +179,7 @@ jQuery(document).ready( function() {
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
         parameters.status = globalParameters.status;
+        candidates.emptyCandidateList()
         fetchJobApplications(jobId, parameters,recruiterId);
     }
 
@@ -177,29 +194,51 @@ jQuery(document).ready( function() {
      }
 
      candidates.onClickDownloadResume(function(candidateId){
-         alert(candidateId)
+         globalParameters.action = "download"
+         setCandidateAction(recruiterId, jobId, globalParameters.action , candidateId, {});
      });
 
      candidates.onClickSaveJob(function(candidateId){
-         alert(candidateId)
+         globalParameters.action = "save"
+         setCandidateAction(recruiterId, jobId, globalParameters.action , candidateId, {});
      })
 
      candidates.onClickShortlistCandidate(function(candidateId){
-         debugger
-         alert(candidateId)
+         globalParameters.action = "shortlist"
+         setCandidateAction(recruiterId, jobId, globalParameters.action , candidateId, {});
      })
 
      candidates.onClickRejectCandidate(function(candidateId){
-         alert(candidateId)
+         globalParameters.action = "reject"
+         setCandidateAction(recruiterId, jobId, globalParameters.action , candidateId, {});
      })
 
-     aCandidate.onClickAddTag(function(candidateId){
-         alert(candidateId)
+     aCandidate.onClickAddTag(function(candidateId, tagName){
+         var ob = {
+             "name": tagName,
+	         "type": "add"
+         }
+         globalParameters.action = "tag"
+         setCandidateAction(recruiterId, jobId, globalParameters.action , candidateId, ob);
      })
 
-     aCandidate.onClickAddComment(function(candidateId){
-         alert(candidateId)
+     aCandidate.onClickDeleteTag(function(candidateId, tagId){
+         var ob = {
+             "tagId": tagId,
+	         "type": "delete"
+         }
+         globalParameters.action = "tag"
+         setCandidateAction(recruiterId, jobId, globalParameters.action , candidateId, ob);
      })
+
+     aCandidate.onClickAddComment(function(candidateId, comment){
+         var ob = {
+             "comment": comment
+         }
+         globalParameters.action = "comment"
+         setCandidateAction(recruiterId, jobId, globalParameters.action , candidateId, ob);
+     })
+
 
     function onJobsApplicationsFetchSuccess(topic, data) {
         //Call only on initial load
@@ -208,8 +247,9 @@ jQuery(document).ready( function() {
             initialLoad = 0;
         }
 
-        length = data["data"].length;
+        candidateListLength = data["data"].length;
         candidates.addToList(data["data"], globalParameters["status"]);
+        filters.showResultsFound(candidateListLength)
         store.emptyStore(data["data"]);
         store.saveToStore(data["data"]);
     }
@@ -229,10 +269,44 @@ jQuery(document).ready( function() {
 		console.log(data)
     }
 
+    function onSuccessfullCandidateAction(res) {
+        if(globalParameters.action == "tag") {
+            alert("success")
+            //aCandidate.appendCandidateTag()
+        }
+        if(globalParameters.action == "comment") {
+            alert("success")
+        }
+        // if(globalParameters.action == "tag") {
+        //     alert("success")
+        // }
+        // if(globalParameters.action == "tag") {
+        //     alert("success")
+        // }
+        // if(globalParameters.action == "tag") {
+        //     alert("success")
+        // }
+        // if(globalParameters.action == "tag") {
+        //     alert("success")
+        // }
+        // if(globalParameters.action == "tag") {
+        //     alert("success")
+        // }
+        // if(globalParameters.action == "tag") {
+        //     alert("success")
+        // }
+    }
+
+    function onFailCandidateAction() {
+
+    }
+
     var fetchJobDetailsSubscription = pubsub.subscribe("fetchedJobDetails:"+jobId, onSuccessfulFetchJobDetails)
 	var fetchJobDetailsFailSubscription = pubsub.subscribe("failedToFetchJobDetails:"+jobId, onFailedFetchJobDetails);
     var fetchJobApplicationsSuccessSubscription = pubsub.subscribe("fetchedJobApplication:"+jobId, onJobsApplicationsFetchSuccess)
     var fetchJobApplicationsFailSubscription = pubsub.subscribe("failedTofetchJobApplication:"+jobId, onJobsApplicationsFetchFail)
+    var setCandidateActionSuccessSubscription = pubsub.subscribe("setCandidateActionSuccess:"+globalParameters.action, onSuccessfullCandidateAction)
+    var setCandidateActionFailSubscription = pubsub.subscribe("setCandidateActionFail:"+globalParameters.action, onFailCandidateAction)
 
     var ticker;
     $(window).scroll(function() {
@@ -243,7 +317,7 @@ jQuery(document).ready( function() {
     function checkScrollEnd() {
     	if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
     		globalParameters.pageNumber = globalParameters.pageNumber + 1;
-    		if(globalParameters["pageNumber"] != 1 && length == globalParameters["pageContent"]) {
+    		if(globalParameters["pageNumber"] != 1 && candidateListLength == globalParameters["pageContent"]) {
                 var parameters = filters.getAppliedFilters();
                 parameters.pageNumber = globalParameters.pageNumber;
                 parameters.pageContent = globalParameters.pageContent;

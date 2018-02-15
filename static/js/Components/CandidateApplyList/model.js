@@ -18,7 +18,16 @@ function candidateList() {
         settings.candidateRejectButtonClass= '.candidateReject',
         settings.candidateCheckboxClass= '.candidateCheckbox',
         settings.candidateCheckboxLabelClass= '.candidateCheckboxLabel',
-        settings.candidateTagsPrototype= $('.candidateTags.prototype')
+        settings.candidateTagsPrototype= $('.candidateTags.prototype'),
+        settings.viewCommentButtonClass = '.viewCommentButton',
+        settings.viewTagButtonClass = '.viewTagButton',
+        settings.massResumeDownload = $("#downloadResumeMass"),
+        settings.massReject = $("#massReject"),
+        settings.massShortlist = $("#massShortlist"),
+        settings.massComment = $("#massComment"),
+        settings.massTag = $("#massTag"),
+        settings.downloadExcelMass = $("#downloadExcelMass")
+
 	}
 
 	function setConfig(key, value) {
@@ -76,12 +85,12 @@ function candidateList() {
         item.location.text(aData["preferredLocation"]);
         item.appliedOn.text(moment(aData["timestamp"]).format('DD-MM-YYYY'))
         item.notice.text(aData["notice"] + " months");
-        var tagStr = '';
-        $.each(aData["tags"],function(index, aTag) {
-            var tag =  settings.candidateTagsPrototype.clone().text(aTag["name"]).removeClass("prototype hidden");
-            tagStr+=tag[0].outerHTML
-        })
-        item.jobTagList.html(tagStr)
+        // var tagStr = '';
+        // $.each(aData["tags"],function(index, aTag) {
+        //     var tag =  settings.candidateTagsPrototype.clone().text(aTag["name"]).removeClass("prototype hidden");
+        //     tagStr+=tag[0].outerHTML
+        // })
+        // item.jobTagList.html(tagStr)
         var profStr = '';
         $.each(aData["jobs"],function(index, anObj) {
             if(index > 2) {
@@ -132,24 +141,32 @@ function candidateList() {
         var card = $("#jobs-category-tabs");
         return {
             element: card,
-            all: card.find(".js_all"),
-            unread: card.find(".js_unread"),
-            shortlisted: card.find(".js_shortlisted"),
-            rejected: card.find(".js_rejected"),
-            saved: card.find(".js_saved"),
-            reviewed: card.find(".jsReviewed")
+            all: card.find("#allNo"),
+            unread: card.find("#unreadNo"),
+            shortlisted: card.find("#shortlistedNo"),
+            rejected: card.find("#rejectedNo"),
+            saved: card.find("#savedNo"),
+            reviewed: card.find("#reviewedNo")
         }
     }
 
     function setJobStats(data) {
         var item = getJobsCategoryTabsElement()
         var unread = data["total"] - (data["shortlisted"] + data["rejected"] + data["save"] + data["reviewed"]);
-        item.all.text("All"+"("+data["total"]+")");
-        item.unread.text("Unread"+"("+unread+")")
-        item.shortlisted.text("Shortlisted"+"("+data["shortlisted"]+")")
-        item.rejected.text("Rejected"+"("+data["rejected"]+")")
-        item.saved.text("Saved"+"("+data["save"]+")")
-        item.reviewed.text("Reviewed"+"("+data["reviewed"]+")")
+        item.all.text("("+data["total"]+")");
+        item.unread.text("("+unread+")")
+        item.shortlisted.text("("+data["shortlisted"]+")")
+        item.rejected.text("("+data["rejected"]+")")
+        item.saved.text("("+data["save"]+")")
+        item.reviewed.text("("+data["reviewed"]+")")
+    }
+
+    function updateJobStats(status, newStatus) {
+        var item = getJobsCategoryTabsElement();
+        var oldCount = item.find("li[data-attribute='"+status+"'] .tabStats").text()
+        item.find("li[data-attribute='"+status+"'] .tabStats").text(oldCount - 1);
+        var newCount = item.find("li[data-attribute='"+newStatus+"'] .tabStats").text()
+        item.find("li[data-attribute='"+newStatus+"'] .tabStats").text(newCount + 1);
     }
 
     function addToList(dataArray, status){
@@ -167,13 +184,30 @@ function candidateList() {
     function createJobStatsTabs(fn) {
         jQuery("#jobs-tabs").tabs({
             active: 0,
-            create:function(){
-
-            },
+            create:function(){},
             activate: function(event, ui){
-                settings.rowContainer.empty();
                 fn(event, ui);
             }
+        })
+    }
+
+    function emptyCandidateList() {
+        settings.rowContainer.empty();
+    }
+
+    function onClickViewComment(fn) {
+        settings.rowContainer.on('click', settings.viewCommentButtonClass, function(e){
+            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
+            fn(candidateId);
+            return false
+        })
+    }
+
+    function onClickViewTag(fn) {
+        settings.rowContainer.on('click', settings.viewTagButtonClass, function(e){
+            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
+            fn(candidateId);
+            return false
         })
     }
 
@@ -233,33 +267,30 @@ function candidateList() {
         })
     }
 
-    // function onClickAddComment(fn) {
-    //     settings.rowContainer.on('click', settings.candidateAddCommentButton ,function(event) {
-    //         event.stopPropagation();
-	// 		// var jobId = $(this).attr("data-id");
-	// 		var modal = $(".jsAddCommentModal");
-    //         modal.find(".jsAddComment").click(function(){
-    //             return fn
-    //         });
-    //         addBodyFixed()
-    //         modal.removeClass("hidden")
-    //         return false;
-    //     })
-    // }
-    //
-    // function onClickAddTag() {
-    //     settings.rowContainer.on('click',settings.candidateAddTagButton ,function(event) {
-    //         event.stopPropagation()
-	// 		// var jobId = $(this).attr("data-id");
-	// 		var modal = $(".jsAddTagModal");
-    //         modal.find(".jsAddTag").click(function(){
-    //             fn(jobId)
-    //         });
-    //         addBodyFixed()
-    //         modal.removeClass("hidden")
-    //         return false;
-    //     })
-    // }
+    function onClickMassComment(fn) {
+        settings.massComment.click(function(event) {
+			// var jobId = $(this).attr("data-id");
+			var modal = $(".jsAddCommentModal");
+            modal.find(".jsAddComment").click(function(){
+                return fn
+            });
+            addBodyFixed()
+            modal.removeClass("hidden")
+        })
+    }
+
+    function onClickMassTag() {
+        settings.rowContainer.on('click',settings.candidateAddTagButton ,function(event) {
+            event.stopPropagation()
+			// var jobId = $(this).attr("data-id");
+			var modal = $(".jsAddTagModal");
+            modal.find(".jsAddTag").click(function(){
+                fn(jobId)
+            });
+            addBodyFixed()
+            modal.removeClass("hidden")
+        })
+    }
 
     function onClickAddTag(fn) {
         settings.rowContainer.on('click',settings.candidateAddTagButton ,function(event) {
@@ -319,6 +350,18 @@ function candidateList() {
         })
     }
 
+    function onClickMassReject() {
+        settings.massReject.click(function(){
+            alert()
+        })
+    }
+
+    function onClickMassShortlist() {
+        settings.massReject.click(function(){
+            alert()
+        })
+    }
+
     return {
 		init: init,
 		addToList: addToList,
@@ -337,7 +380,12 @@ function candidateList() {
         onClickShortlistCandidate: onClickShortlistCandidate,
         onClickRejectCandidate: onClickRejectCandidate,
         onChangeCandidateCheckbox: onChangeCandidateCheckbox,
-        candidateActionTransition: candidateActionTransition
+        candidateActionTransition: candidateActionTransition,
+        onClickViewComment: onClickViewComment,
+        onClickViewTag: onClickViewTag,
+        emptyCandidateList: emptyCandidateList,
+        onClickMassReject: onClickMassReject,
+        onClickMassShortlist: onClickMassShortlist
 	}
 
 

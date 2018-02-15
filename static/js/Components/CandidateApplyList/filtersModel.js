@@ -124,7 +124,7 @@ function Filters(){
 			selection: null
 		},
 		searchString: {
-			target: "",
+			target: $("#searchInput"),
 			type: 'input',
 			selection: null
 		},
@@ -135,8 +135,7 @@ function Filters(){
 		}
 	}
 	function init(){
-		settings.searchInput = $(".searchInput");
-		settings.searchButton = $(".searchButton");
+		settings.searchButton = $("#searchButton");
 		settings.filterButton = "";
 		settings.sortButton = "";
 		settings.appliedFiltersContainer = $(".active-filters .clear-all-filters");
@@ -155,7 +154,8 @@ function Filters(){
 		settings.filterSearch = $(".filterSearch");
 		settings.sortBySelect = $("#sortBySelect");
 		settings.sortBy = $("#sortBy");
-		settings.clearAllFitersbutton = $("#clear-all")
+		settings.clearAllFitersbutton = $("#clear-all");
+		settings.resultFoundText = $("#resultFound")
 
 
 		setOnClickFilters();
@@ -202,8 +202,6 @@ function Filters(){
 		})
 	}
 
-
-
 	function createPill(value, label, category, type){
 		var aFilter = settings.filterPill.clone().removeClass('hidden prototype');
 		aFilter.attr('data-category', category)
@@ -217,13 +215,10 @@ function Filters(){
 
 	function onClickSearchButton(fn){
 		settings.searchButton.click(function(event){
+			var str = filtersTarget["searchString"]["target"].val();
+			filtersTarget["searchString"]["selection"] = str;
 			fn();
 		})
-	}
-
-	function getSearchString(){
-		var str = settings.searchInput.val();
-		return str;
 	}
 
 	function addFilterToContainer(value, label, category, type){
@@ -275,7 +270,12 @@ function Filters(){
 					filtersTarget[key]["props"][k]['target'].val("")
 				}
 			}
-			else if(key["type"] == "dropdown") {
+			else if(filtersTarget[key]["type"] == "dropdown") {
+
+				if(key == "orderBy") {
+
+					continue
+				}
 				filtersTarget[key]["selection"] = null;
 				filtersTarget[key]['target'].val("")
 			}
@@ -492,6 +492,14 @@ function Filters(){
 		})
 	}
 
+	function showResultsFound(totalFound) {
+		if(filtersTarget["searchString"]["selection"]) {
+			settings.resultFoundText.text(totalFound + " results found for " + filtersTarget["searchString"]["selection"]).removeClass("hidden");
+			return
+		}
+		settings.resultFoundText.addClass("hidden")
+	}
+
     return {
     	init: init,
     	addFilterData: addFilterData,
@@ -501,9 +509,9 @@ function Filters(){
     	onClickRemoveFilter: onClickRemoveFilter,
     	removeFilter:removeFilter,
     	onClickSearchButton: onClickSearchButton,
-    	getSearchString: getSearchString,
 		onSelectSortByOption: onSelectSortByOption,
-		onClickRemoveAllFilters: onClickRemoveAllFilters
+		onClickRemoveAllFilters: onClickRemoveAllFilters,
+		showResultsFound: showResultsFound
     }
 	function searchTags(name, array, str) {
 		str=str.toLowerCase();
