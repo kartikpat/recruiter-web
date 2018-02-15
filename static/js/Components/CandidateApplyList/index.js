@@ -4,7 +4,8 @@ var globalParameters = {
     pageNumber: 1,
     status: "",
     orderBy: 1,
-    action: ""
+    action: "",
+    newStatus: ""
 }
 var candidateListLength;
 jQuery(document).ready( function() {
@@ -198,19 +199,22 @@ jQuery(document).ready( function() {
          setCandidateAction(recruiterId, jobId, globalParameters.action , candidateId, {});
      });
 
-     candidates.onClickSaveJob(function(candidateId){
+     candidates.onClickSaveJob(function(candidateId, newStatus){
          globalParameters.action = "save"
+         globalParameters.newStatus = newStatus
          setCandidateAction(recruiterId, jobId, globalParameters.action , candidateId, {});
      })
 
-     candidates.onClickShortlistCandidate(function(candidateId){
+     candidates.onClickShortlistCandidate(function(candidateId, newStatus){
          globalParameters.action = "shortlist"
+         globalParameters.newStatus = newStatus
          setCandidateAction(recruiterId, jobId, globalParameters.action , candidateId, {});
-         updateJobStats(status)
+
      })
 
-     candidates.onClickRejectCandidate(function(candidateId){
+     candidates.onClickRejectCandidate(function(candidateId, newStatus){
          globalParameters.action = "reject"
+         globalParameters.newStatus = newStatus
          setCandidateAction(recruiterId, jobId, globalParameters.action , candidateId, {});
      })
 
@@ -270,23 +274,28 @@ jQuery(document).ready( function() {
 		console.log(data)
     }
 
-    function onSuccessfullCandidateAction(res) {
-        if(globalParameters.action == "tag") {
+    function onSuccessfullCandidateAction(topic, res, type) {
+        debugger
+        if(type == "tag") {
             alert("success")
             //aCandidate.appendCandidateTag()
         }
-        if(globalParameters.action == "comment") {
+        if(type == "comment") {
             alert("success")
         }
-        // if(globalParameters.action == "tag") {
-        //     alert("success")
-        // }
-        // if(globalParameters.action == "tag") {
-        //     alert("success")
-        // }
-        // if(globalParameters.action == "tag") {
-        //     alert("success")
-        // }
+        if(type == "shortlist") {
+            candidates.updateJobStats(globalParameters.status, globalParameters.newStatus)
+            candidates.candidateActionTransition()
+        }
+        if(type == "reject") {
+            debugger
+            candidates.updateJobStats(globalParameters.status, globalParameters.newStatus)
+            candidates.candidateActionTransition()
+        }
+        if(type == "save") {
+            candidates.updateJobStats(globalParameters.status, globalParameters.newStatus)
+            candidates.candidateActionTransition()
+        }
         // if(globalParameters.action == "tag") {
         //     alert("success")
         // }
@@ -306,8 +315,8 @@ jQuery(document).ready( function() {
 	var fetchJobDetailsFailSubscription = pubsub.subscribe("failedToFetchJobDetails:"+jobId, onFailedFetchJobDetails);
     var fetchJobApplicationsSuccessSubscription = pubsub.subscribe("fetchedJobApplication:"+jobId, onJobsApplicationsFetchSuccess)
     var fetchJobApplicationsFailSubscription = pubsub.subscribe("failedTofetchJobApplication:"+jobId, onJobsApplicationsFetchFail)
-    var setCandidateActionSuccessSubscription = pubsub.subscribe("setCandidateActionSuccess:"+globalParameters.action, onSuccessfullCandidateAction)
-    var setCandidateActionFailSubscription = pubsub.subscribe("setCandidateActionFail:"+globalParameters.action, onFailCandidateAction)
+    var setCandidateActionSuccessSubscription = pubsub.subscribe("setCandidateActionSuccess", onSuccessfullCandidateAction)
+    var setCandidateActionFailSubscription = pubsub.subscribe("setCandidateActionFail", onFailCandidateAction)
 
     var ticker;
     $(window).scroll(function() {

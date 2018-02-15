@@ -268,8 +268,9 @@ function candidateList() {
     function onClickSaveJob(fn) {
         settings.rowContainer.on('click', settings.candidateSaveButton, function(event){
             event.stopPropagation();
+            var status = $(this).attr("data-status");
             var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
-            fn(candidateId);
+            fn(candidateId, status);
             return false
         })
     }
@@ -322,16 +323,18 @@ function candidateList() {
         settings.rowContainer.on('click', settings.candidateShortlistButtonClass, function(event) {
             console.log("a")
             event.stopPropagation();
+            var status = $(this).attr("data-status");
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            fn(applicationId);
+            fn(applicationId, status);
         })
     }
 
     function onClickRejectCandidate(fn) {
         settings.rowContainer.on('click', settings.candidateRejectButtonClass, function(event) {
             event.stopPropagation();
+            var status = $(this).attr("data-status");
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            fn(applicationId);
+            fn(applicationId, status);
         })
     }
 
