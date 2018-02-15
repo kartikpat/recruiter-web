@@ -2783,6 +2783,44 @@ span.sticker {
             .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover .candidate-item-section.image .candidate-select {
               display: block; }
 
+.mass-action-container {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  bottom: 0;
+  padding: 15px 20px;
+  background-color: #f7f7f7; }
+  .mass-action-container .action-buttons span.button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: #FFF;
+    border-color: #8f8a8a;
+    border-radius: 4px;
+    padding: 5px 14px;
+    font-size: 14px;
+    margin: 0 5px;
+    color: #FFF;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer; }
+    .mass-action-container .action-buttons span.button.green {
+      background-color: #1f8f75; }
+    .mass-action-container .action-buttons span.button.red {
+      background-color: #af595a; }
+    .mass-action-container .action-buttons span.button.white {
+      border: 1px solid #8f8a8a;
+      color: #2b2b2b; }
+    .mass-action-container .action-buttons span.button.edit {
+      padding: 3px 9px; }
+      .mass-action-container .action-buttons span.button.edit img {
+        width: 17px;
+        height: 17px; }
+
 @media all and (max-width: 992px) {
   .page-content .candidates-listing .candidate-item {
     padding: 30px 10px 0; }
@@ -3224,6 +3262,8 @@ span.sticker {
     width: 20%; }
     .view-resume-modal .resume-sidebar .action-buttons {
       margin-bottom: 30px; }
+      .view-resume-modal .resume-sidebar .action-buttons.cand-add-tag-action-btn {
+        margin-bottom: 15px; }
       .view-resume-modal .resume-sidebar .action-buttons span.button {
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -3242,6 +3282,11 @@ span.sticker {
         display: inline-block;
         vertical-align: top;
         cursor: pointer; }
+        .view-resume-modal .resume-sidebar .action-buttons span.button.cand-comment-button {
+          margin: 0;
+          margin-top: 5px; }
+        .view-resume-modal .resume-sidebar .action-buttons span.button.cand-add-tag-button {
+          margin: 0; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.green {
           background-color: #1f8f75; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.red {
@@ -3277,6 +3322,11 @@ span.sticker {
         font-size: 16px;
         color: #333;
         margin-top: 20px; }
+      .view-resume-modal .resume-sidebar .sidebar-section .cand-add-tag {
+        height: 40px;
+        line-height: 40px;
+        margin-bottom: 10px;
+        padding: 10px; }
       .view-resume-modal .resume-sidebar .sidebar-section .comment-block {
         margin-bottom: 15px; }
         .view-resume-modal .resume-sidebar .sidebar-section .comment-block .content {
@@ -3309,7 +3359,7 @@ span.sticker {
               cursor: pointer;
               vertical-align: top; }
               .view-resume-modal .resume-sidebar .sidebar-section.tags .skill-tag div.remove-active-skill span {
-                font-size: 13px;
+                font-size: 11px;
                 display: inline-block;
                 vertical-align: middle;
                 color: #808080; }
@@ -3468,7 +3518,8 @@ span.sticker {
     background: #fff;
     padding: 0;
     overflow-x: auto;
-    white-space: nowrap; }
+    white-space: nowrap;
+    overflow-y: hidden; }
   #jobs-category-tabs .ui-tabs-tab {
     border: 0;
     background: #fff;
@@ -3507,11 +3558,11 @@ span.sticker {
 .sidebar-section.comments textarea {
   width: 100%;
   padding: 5px;
-  border-left: 3px solid green;
+  border-left: 3px solid #1f8f75;
   min-height: 50px; }
   .sidebar-section.comments textarea:focus {
     outline: none;
-    border: 1px solid #4fa995;
+    border: 1px solid #1f8f75;
     border-left: 3px solid green; }
 
 .sidebar-section.comments .action-buttons {

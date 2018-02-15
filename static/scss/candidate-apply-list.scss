@@ -475,7 +475,19 @@
 	}
 }
 
-
+.mass-action-container {
+	position: fixed;
+	width: 100%;
+	z-index: 10;
+	bottom: 0;
+	padding: 15px 20px;
+	background-color: $mass-action-bar;
+	.action-buttons {
+		span.button {
+			@include button($color-white);
+		}
+	}
+}
 
 @media all and (max-width:992px) {
 	.page-content {
@@ -1165,8 +1177,18 @@
 
     	.action-buttons {
     		margin-bottom:30px;
+			&.cand-add-tag-action-btn {
+				margin-bottom: 15px;
+			}
     		span {
     			&.button {
+					&.cand-comment-button{
+						margin: 0;
+						margin-top: 5px;
+					}
+					&.cand-add-tag-button {
+							margin: 0;
+						}
     				@include button($color-white);
     			}
     		}
@@ -1209,6 +1231,15 @@
     			margin-top:20px;
     		}
 
+			.cand-add-tag {
+				height: 40px;
+			    line-height: 40px;
+			    margin-bottom: 10px;
+				padding: 10px;
+			}
+
+
+
     		.comment-block {
 				margin-bottom:15px;
     			.content {
@@ -1250,7 +1281,7 @@
 								cursor:pointer;
 								vertical-align:top;
 								span {
-									font-size:$view-resume-byline-font-size;
+									font-size:$view-resume-clear-tag-font-size;
 									display:inline-block;
 									vertical-align: middle;
 									color:$extra-info-color;
@@ -1442,6 +1473,7 @@
 		padding:0;
 		overflow-x:auto;
 		white-space:nowrap;
+		overflow-y: hidden;
 	}
 	.ui-tabs-tab {
 		border: 0;
@@ -1499,11 +1531,11 @@
 	textarea {
 		width: 100%;
 		padding: 5px;
-		border-left: 3px solid green;
+		border-left: 3px solid $button-color-green;
 		min-height: 50px;
 		&:focus {
 			outline: none;
-			border: 1px solid $border-color-active;
+			border: 1px solid $button-color-green;
 			border-left: 3px solid green;
 		}
 	}

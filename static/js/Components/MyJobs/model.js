@@ -242,22 +242,3 @@ function Jobs() {
 	}
 
 }
-
-// Sample link
-// <a href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank">Share</a>
-
-function getFacebookShareLink(url){
-	return "https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(url);
-}
-
-function getTwitterShareLink(url){
-	return "https://twitter.com/share?url="+encodeURIComponent(url);
-	// "http://twitter.com/share?text=text goes here&url=http://url goes here&hashtags=hashtag1,hashtag2,hashtag3"
-}
-
-function getLinkedInShareUrl(url){
-	return "https://www.linkedin.com/shareArticle?mini=true&url="+encodeURIComponent(url)
-
-	// TO create a link with all parameters
-	// "https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=Some%20Title&summary=Some%20Summary&source=YourWebsiteName"
-}

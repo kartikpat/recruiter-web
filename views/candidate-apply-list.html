@@ -1,5 +1,14 @@
 {{>header}}
-
+	<div class="first-fold fold top mass-action-container" id="massActionContainer">
+		<div class="action-buttons">
+			<span class=" button white" id="downloadResumeMass">Download Resume</span>
+			<span class=" button white" id="downloadExcelMass">Download Excel</span>
+			<span class=" button white" id="massReject">Reject</span>
+			<span class=" button white" id="massShortlist">Shortlist</span>
+			<span class=" button white" id="massComment">Add Comment</span>
+			<span class=" button white" id="massTag">Add Tag</span>
+		</div>
+	</div>
 	<div class="page-content">
 		<div class="candidate-apply-listing left">
 			<div class="page-header" id="jobDetails">
@@ -10,12 +19,12 @@
 						</select>
 						<div class="error-field hidden" id="calendarSelectError"><p>Please select Calendar</p></div>
 					</span>
-
+					<span class="button white hidden" id="createCalendar">Create Calendar</span>
 					<a href="" class="hidden" id="jobEditButton"><span class="edit button white"><img src="/static/images/edit-icon.svg"></span></a>
 					<span class="button white hidden" id="jobPremiumButton">Make Premium</span>
 					<span class="button white unpublish-job hidden" id="jobUnpublishButton">Unpublish</span>
 
-					<span class="multi-options inactive button-action-list" id="jobOtherActions"><img src="/static/images/multi-options.svg">
+					<span class="multi-options inactive button-action-list hidden" id="jobOtherActions"><img src="/static/images/multi-options.svg">
 						<ul class="action-list-items">
 							<li><a href="#" class="hidden" id="jobRefreshButton">Refresh</a></li>
 							<li><a href="#" class="" id="jobPostFacebook">Post On Facebook</a></li>
@@ -38,7 +47,7 @@
 				<div class="candidates-area-header">
 					<div class="candidates-search">
 						<div class="keyword-search">
-							<input type="text" placeholder="Search candidate" class="candidate-keyword-filter left searchInput"><button class="right search-trigger searchButton">Search</button>
+							<input type="text" placeholder="Search candidate" class="candidate-keyword-filter left " id="searchInput"><button class="right search-trigger " id="searchButton" >Search</button>
 						</div>
 						<div class="filter-search">
 							<span class="button white filter-button jsFilter"><span class="button-label">Filter</span></span>
@@ -53,9 +62,8 @@
 						</div>
 					</div>
 					<div class="candidates-search-results">
-						<p class="results-count">
-							<span class="result-number">14</span>
-							<span> results found.</span>
+						<p class="results-count hidden" id="resultFound">
+
 						</p>
 						<div class="active-filters">
 
@@ -69,7 +77,7 @@
 				<div class="candidates-area-body">
 					<div class="">
 						<div class="selection-bar tabs_scroll_container hidden" id="jobs-tabs">
-							
+
 							<div id="jobs-category-tabs" class="">
 
 								<ul id="">
@@ -85,7 +93,7 @@
 										<a href="#all-jobs">
 											<div class="bulk-selection-item all active">
 												<span class="bulk-action-icon"><i class="icon-box"></i></span>
-												<span class="bulk-action-label js_all">All</span>
+												<span class="bulk-action-label">All<span class="tabStats"  id="allNo"></span></span>
 											</div>
 										</a>
 									</li>
@@ -93,7 +101,7 @@
 										<a href="#unread-jobs">
 											<div class="bulk-selection-item unread">
 												<span class="bulk-action-icon"><i class="icon-envelope"></i></span>
-												<span class="bulk-action-label js_unread">Unread</span>
+												<span class="bulk-action-label ">Unread<span class="tabStats" id="unreadNo"></span></span>
 											</div>
 										</a>
 									</li>
@@ -101,7 +109,7 @@
 										<a href="#reviewed-jobs">
 											<div class="bulk-selection-item reviewed">
 												<span class="bulk-action-icon"><i class="icon-document_search_interface_symbol"></i></span>
-												<span class="bulk-action-label jsReviewed">Reviewed</span>
+												<span class="bulk-action-label ">Reviewed<span class="tabStats" id="reviewedNo"></span></span>
 											</div>
 										</a>
 									</li>
@@ -109,7 +117,7 @@
 										<a href="#shortlisted-jobs">
 											<div class="bulk-selection-item shortlisted">
 												<span class="bulk-action-icon"><i class="icon-tick"></i></span>
-												<span class="bulk-action-label js_shortlisted">Shortlisted</span>
+												<span class="bulk-action-label">Shortlisted<span class="tabStats" id="shortlistedNo"></span></span>
 											</div>
 										</a>
 									</li>
@@ -117,7 +125,7 @@
 										<a href="#rejected-jobs">
 											<div class="bulk-selection-item rejected">
 												<span class="bulk-action-icon"><i class="icon-denied"></i></span>
-												<span class="bulk-action-label js_rejected">Rejected</span>
+												<span class="bulk-action-label">Rejected<span class="tabStats" id="rejectedNo"></span></span>
 											</div>
 										</a>
 									</li>
@@ -125,7 +133,7 @@
 										<a href="#saved-jobs">
 											<div class="bulk-selection-item saved">
 												<span class="bulk-action-icon"><i class="icon-download_arrow"></i></span>
-												<span class="bulk-action-label js_saved">Saved</span>
+												<span class="bulk-action-label">Saved<span class="tabStats" id="savedNo  "></span></span>
 											</div>
 										</a>
 									</li>
@@ -158,8 +166,6 @@
 			{{>chatSidebar}}
 		</div>
 	</div>
-
-
 
 <div class="view-resume-modal candidateDetailsModal hidden">
     <div class="main-wrapper left">
@@ -385,7 +391,7 @@
 	            			<div class="content">
 								<textarea  placeholder="Add Comment" name="name" class="mobCandidateCommentTextarea"></textarea>
 								<div class="action-buttons">
-									<span class="button green candidateAddCommentButton">Add</span>
+									<span class="cand-comment-button button green candidateAddCommentButton">Add</span>
 								</div>
 	            			</div>
 	            		</div>
@@ -400,7 +406,7 @@
 											<span class="button green candidateAddTagButton">Add</span>
 										</div>
 									</div>
-									<div class="skill-tags-area js_job_tag_list">
+									<div class="skill-tags-area candidateTagList">
 
 									</div>
 								</div>
@@ -448,15 +454,15 @@
 	    		<span class="accept button green">Shortlist</span>
 	    		<span class="reject button red">Reject</span>
 
-	    		<span class="view-more button white"><i class="icon-down_arrow"></i></span>
+	    		<!-- <span class="view-more button white"><i class="icon-down_arrow"></i></span> -->
 	    	</div>
     	</div>
-    	<div class="second-fold fold hidden">
+    	<!-- <div class="second-fold fold hidden">
     		<div class="action-buttons">
     			<span class="comment button white">Comment</span>
 	    		<span class="tag button white">Tag</span>
     		</div>
-    	</div>
+    	</div> -->
     </div>
     <div class="resume-sidebar right">
     	<div class=" action-buttons">
@@ -477,12 +483,12 @@
     	</div>
 
     	<div class="sidebar-section comments candidateCommentContainer">
-    		<h3>Comments</h3>
+    		<h3>Comment</h3>
     		<div class="">
-				<textarea id="" placeholder="Add Comments" name="name" class="candidateCommentTextarea"></textarea>
+				<textarea id="" placeholder="Add Comment" name="name" class="candidateCommentTextarea"></textarea>
     		</div>
 			<div class="action-buttons">
-				<span class="button green candidateAddCommentButton">Add</span>
+				<span class="cand-comment-button button green candidateAddCommentButton">Add</span>
 			</div>
     	</div>
 
@@ -490,13 +496,13 @@
     		<h3>Tags</h3>
 			<div class="">
 				<div>
-					<input class="input-field candidateTagInput" type="text" name="" value="">
-					<div class="action-buttons">
-						<span class="button green candidateAddTagButton">Add</span>
+					<input placeholder="Add Tag" class="cand-add-tag input-field candidateTagInput" type="text" name="" value="">
+					<div class="action-buttons cand-add-tag-action-btn">
+						<span class="button green candidateAddTagButton cand-add-tag-button">Add</span>
 					</div>
 				</div>
-				<div class="skill-tags-area js_job_tag_list">
-
+				<div class="skill-tags-area candidateTagList">
+					<h5>
 				</div>
 			</div>
 
@@ -547,7 +553,7 @@
 		<p><a href="#" class="cover-letter info-link">Cover letter</a></p>
 		<p><a href="#" class="recommendations info-link">Recommendations</a></p>
 
-		<div class="skill-tag-listing js_job_tag_list">
+		<div class="skill-tag-listing ">
 
 		</div>
 
@@ -584,8 +590,8 @@
 			</div>
 
 			<div class="view-links">
-				<span class="comments"><a href="#">View Comments</a></span>
-				<span class="tags"><a href="#">View Tags</a></span>
+				<span class="comments"><a href="#" class="viewCommentButton">View Comment</a></span>
+				<span class="tags"><a href="#" class="viewTagButton">View Tags</a></span>
 			</div>
 		</div>
 	</div>
@@ -595,11 +601,13 @@
 	<div class="separator"></div>
 </div>
 
-<span class="skill-tag js_skill_tag prototype hidden"></span>
+<span class="skill-tag candidateSkillTag prototype hidden">
+		<div class="active-skill-label"><span class="icon-label">UI/UX</span></div>
+</span>
 
-<div class="skill-tag candidateTags prototype hidden">
-	<div class="active-skill-label"><span class="icon-label">UI/UX</span></div>
-	<div class="remove-active-skill"><span class="close-icon"><i class="icon-close_icon"></i></span></div>
+<div class="skill-tag candidateTag prototype hidden">
+	<div class="active-skill-label tagLabel"><span class="icon-label">UI/UX</span></div>
+	<div class="remove-active-skill tagRemove"><span class="close-icon"><i class="icon-close_icon"></i></span></div>
 </div>
 
 <div class="datum js_prof prototype hidden">
