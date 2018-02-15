@@ -42,7 +42,6 @@ module.exports = function(settings){
 				const jsonBody = JSON.parse(body)
 				if(jsonBody.status && jsonBody.status =='success'){
 					profile = jsonBody.data;
-					console.log(profile)
 					return next();
 				}
 			})
