@@ -82,7 +82,7 @@ jQuery(document).ready( function() {
 
             var data = {
                jobTitle: getTitleFormat(jobRow["title"],(/\(\d+-\d+ \w+\)$/)),
-               jobLocation: jobRow["loc"].toString(),
+               jobLocation: jobRow["location"].toString(),
                jobExperience: jobRow["exp"]['min']+'-'+ jobRow['exp']['max'] +' yrs',
                jobId: jobRow['id'],
                jobStatus: jobRow['status'],

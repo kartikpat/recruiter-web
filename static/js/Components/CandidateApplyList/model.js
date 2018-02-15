@@ -313,7 +313,6 @@ function candidateList() {
     function onClickShortlistCandidate(fn) {
 
         settings.rowContainer.on('click', settings.candidateShortlistButtonClass, function(event) {
-            debugger
             console.log("a")
             event.stopPropagation();
             var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
