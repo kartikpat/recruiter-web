@@ -201,7 +201,11 @@ $button-border-color: #8f8a8a;
 			    padding: 0 10px;
 			    padding-right: 0px;
 				img{
-					width: 100%;
+					width: 70px;
+				    height: 70px;
+				    border-radius: 50%;
+				    object-fit: cover;
+				    border: 1px solid $select-border-color;
 				}
 			}
 			.general{
@@ -295,6 +299,7 @@ $button-border-color: #8f8a8a;
 				 border: thin solid $button-border-color;
 				 border-radius: 4px;
 				 cursor: pointer;
+				 color: $color-darkgrey;
 			}
 		}
 		.icon{

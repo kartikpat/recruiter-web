@@ -1405,7 +1405,11 @@ span.sticker {
       padding: 0 10px;
       padding-right: 0px; }
       .page-content .detail-card .profile .icon img {
-        width: 100%; }
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1px solid #e8e8e8; }
     .page-content .detail-card .profile .general {
       padding: 10px;
       width: calc(100% - 90px);
@@ -1475,7 +1479,8 @@ span.sticker {
         padding: 5px 15px;
         border: thin solid #8f8a8a;
         border-radius: 4px;
-        cursor: pointer; }
+        cursor: pointer;
+        color: #2b2b2b; }
     .page-content .detail-card .icon {
       padding-right: 0px; }
       .page-content .detail-card .icon .separater {

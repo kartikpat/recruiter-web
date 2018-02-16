@@ -217,20 +217,29 @@ $(document).ready(function(){
 				card.find('.profile').addClass('highlighted-profile')
 			}
 			var designationOrganization = aRow['designation'] + ' at '+ aRow['organization'];
-			var designationExperience = (function(fromExp, toExp){
-				fromExp = fromExp.split('-');
-				toExp = toExp.split('-');
-				fromExp = moment().month(fromExp[0]).format('MMM')+' - '+ fromExp[1];
-				toExp = moment().month(toExp[0]).format('MMM')+' - '+ toExp[1];
-				return fromExp + ' to ' + toExp;
+			var currentFromMonth = moment().month(parseInt(aRow['currentExp']['from']['month']) -1).format('MMM');
+			var currentFromYear = aRow['currentExp']['from']['year'] ;
+			var currentToMonth = (aRow['currentExp']['to']['month'])? moment().month(parseInt(aRow['currentExp']['to']['month']) -1).format('MMM') : "";
+			var currentToYear = (aRow['currentExp']['to']['year'])? aRow['currentExp']['to']['year'] : "" ;
+			var currentExperienceText= currentToMonth + '-'+ currentToYear ;
+			if(currentToMonth==0 || currentToYear==0)
+				currentExperienceText = "Present"
 
-			})(aRow['fromExp'],aRow['toExp'])
+			var designationExperience = currentFromMonth+ '-'+ currentFromYear + ' to ' + currentExperienceText;
+			// (function(fromExp, toExp){
+			// 	fromExp = fromExp.split('-');
+			// 	toExp = toExp.split('-');
+			// 	fromExp = moment().month(fromExp[0]).format('MMM')+' - '+ fromExp[1];
+			// 	toExp = moment().month(toExp[0]).format('MMM')+' - '+ toExp[1];
+			// 	return fromExp + ' to ' + toExp;
+
+			// })(aRow["currentExperience"]['fromExp'],aRow['toExp'])
 			var locationExperience = (function(exp, location){
-				exp = exp.split('-');
-				exp = exp[1] +'y '+ exp[0] + 'm'
+				exp = exp["year"] +'y '+ exp["month"] + 'm'
 				return location+', ' +exp;
-			})(aRow['exp'], aRow['current_location'])
-			card.find('.profile .name').text(aRow['name']);
+			})(aRow['exp'], aRow['location'])
+			card.find('.profile .name').text(aRow['name']).attr('href', '/job/'+aRow['jobId']+'/candidates/'+aRow['userId']);
+			card.find('.profile .icon img').attr('src', aRow['img']);
 			card.find('.profile .designationOrganization').text(designationOrganization);
 			card.find('.profile .locationExperience').text(locationExperience);
 			card.find('.profile-detail .profession .designationOrganization').text(designationOrganization)
@@ -238,6 +247,7 @@ $(document).ready(function(){
 			card.find('.profile-detail .education .institute').text(aRow['institute']);
 			card.find('.profile-detail .education .batch').text(aRow['batch']);
 			card.find('.profile-detail .education .courseType').text(aRow['courseType']);
+			card.find('.action-buttons .button').attr('href', aRow['resume']).attr('download', aRow['name'].replace(/ +/g, '_').toLowerCase()+'_resume.pdf').attr('target', '_blank');
 			notificationContainer.find('.detail-card').append(card);
 		});
 		if( data.length>4){
