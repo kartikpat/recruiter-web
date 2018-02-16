@@ -2792,7 +2792,8 @@ input::-webkit-input-placeholder {
   z-index: 10;
   bottom: 0;
   padding: 15px 20px;
-  background-color: #f7f7f7; }
+  background-color: #f7f7f7;
+  box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.5); }
   .mass-action-container .action-buttons span.button {
     -webkit-appearance: none;
     -moz-appearance: none;

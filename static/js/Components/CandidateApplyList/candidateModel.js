@@ -23,9 +23,11 @@ function Candidate() {
         settings.candidateShortlistModal = $(".candidateShortlistModal"),
         settings.candidateRejectModal = $(".candidateRejectModal"),
         settings.candidateSaveModal = $("#candidateSaveModal"),
-        settings.candidateChatModal = $("#candidateChatModal")
+        settings.candidateChatModal = $("#candidateChatModal"),
+
 
         onClickChatCandidateModal()
+        
     }
 
     function showCandidateDetails(details, type){

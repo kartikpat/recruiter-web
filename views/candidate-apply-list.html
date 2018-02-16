@@ -1,5 +1,5 @@
 {{>header}}
-	<div class="first-fold fold top mass-action-container" id="massActionContainer">
+	<div class="first-fold fold top mass-action-container hidden" id="massActionContainer">
 		<div class="action-buttons">
 			<span class=" button white" id="downloadResumeMass">Download Resume</span>
 			<span class=" button white" id="downloadExcelMass">Download Excel</span>
@@ -84,8 +84,8 @@
 									<li>
 										<div class="bulk-selection-item bulk-select section">
 										<div class="select-all check-input">
-											<input type="checkbox" id="select-all-candidates">
-											<label for="select-all-candidates"></label>
+											<input type="checkbox" class="" id="massCheckboxInput">
+											<label for="massCheckboxInput" id="massCheckboxLabel"></label>
 										</div>
 									</div>
 								</li>
@@ -584,7 +584,7 @@
 					<ul class="action-list-items">
 						<li><a href="#" class="candidateSendMessage">Send Message</a></li>
 						<li><a href="#" class="candidateSendInterviewInvite">Send Interview Invite</a></li>
-						<li><a href="#" class="candidateDownloadResume">Download Resume</a></li>
+						<li><a href="#" download="" class="candidateDownloadResume">Download Resume</a></li>
 						<li><a href="#" class="candidateSave">Save for later</a></li>
 						<li><a href="#" class="candidateAddComment">Add Comment</a></li>
 						<li><a href="#" class="candidateAddTag">Add Tag</a></li>
@@ -715,7 +715,7 @@
 	<div class="modal_wrapper" >
 		<span class="modal_close">&times;</span>
 		<div class="modal_header">
-			<div class="modal_heading">Add Tag.</div>
+			<div class="modal_heading">Add Tag</div>
 		</div>
 		<div class="modal_content">
 			<div class="modal_text jsModalText hidden"></div>
