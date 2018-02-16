@@ -84,6 +84,8 @@ $(document).ready(function(){
 				card.find('.horizontal-separator').addClass('hidden');
 			recentJobsContainer.find('.detail-card').append(card);
 		});
+		if(data.length >0 )
+			recentJobsContainer.removeClass('hidden')
 	}
 	var fetchJobsSubscription = pubsub.subscribe("fetchedJobs", onFetchJobs);
 
