@@ -217,10 +217,8 @@ $(document).ready(function(){
 			seeMore.find(".seeAll a").attr('href', '/interviews')
 			interviewContainer.find('.detail-card').append(seeMore);
 		}
-		if( data.length>4){
-			var seeMore= seeMoreSection.clone().removeClass('hidden prototype');
-			seeMore.find(".seeAll a").attr('href', '/interviews')
-			interviewContainer.find('.detail-card').append(seeMore);
+		if( data.length>0){
+			interviewContainer.removeClass('hidden');
 		}
 	}
 	var fetchInterviewsSubscription = pubsub.subscribe("fetchedInterviews", onFetchInterviews);
