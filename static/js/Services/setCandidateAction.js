@@ -3,7 +3,7 @@ function setCandidateAction(recruiterId, jobId, action, applicationId , data, pa
 		if(res.status && res.status =='success'){
 			res.action = action;
 			res.parameters = parameters;
-			res.applicationId = applicationId; 
+			res.applicationId = applicationId;
 			return pubsub.publish("setCandidateActionSuccess", res);
 		}
 	}, function(res){

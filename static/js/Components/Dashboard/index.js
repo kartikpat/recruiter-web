@@ -1,4 +1,16 @@
 var dataModel = {};
+dataModel.revisit = false;
+profile.lastSeen = moment().subtract(1, 'days').format("x");
+var settings = {}
+
+function modalInit(){
+	settings.openJobUnpublishModalButton= '.jobUnpublish';
+	settings.openJobRefreshModalButton= '.jobRefresh';
+	settings.jobUnpublishModal= $('.unpublishModal');
+	settings.jobUnpublishButton= $('.jobUnpublishButton');
+	settings.jobRefreshModal= $(".refreshModal");
+	settings.jobRefreshButton= $(".jobRefreshButton");
+}
 $(document).ready(function(){
 	var dashboardStatsContainer = $("#dashboardStatsContainer");
 	var activeJobsChartContainer = $("#new-jobs-chart");
@@ -7,11 +19,83 @@ $(document).ready(function(){
 	var greetingsContainer = $(".dashboard .header-row");
 	var notificationContainer = $('#notificationContainer');
 	var seeMoreSection = $('.seeMoreSection.prototype');
+	var otherRolesContainer = $("#otherRolesContainer");
+	var recentJobsContainer = $("#recentJobsContainer");
+	var postedJobsContainer = $("#postedJobsContainer");
+	var jobOtherActionsClass = ".action-panel"
+
+	modalInit();
+	onClickJobRefresh();
+	onClickJobCancel();
+
+	dataModel.greetingText = {
+		"morning": ""
+	}
+	dataModel.greetingSubText = {
+		"noActiveJob": "It’s quite silent around here. Get started - Post Jobs/Discover Candidates/Build your Brand",
+		"busy": "It looks busy around here! Good luck for your day ahead! ",
+		"revisit": "We missed you while you were away! To keep you up-to-date, here is a quick glance of what has changed - ",
+		default: ""
+	}
+
+	function onClickJobOtherActions() {
+		recentJobsContainer.on('click', jobOtherActionsClass, function(e){
+			$(this).toggleClass("inactive");
+		})
+    }
+
+	function onClickJobRefresh(fn) {
+		recentJobsContainer.on('click', settings.openJobRefreshModalButton,function(e) {
+			e.preventDefault()
+				var jobId = $(this).attr("data-job-id");
+				settings.jobRefreshModal.removeClass('hidden');
+				settings.jobRefreshButton.attr('data-refresh-job-id', jobId);
+				debugger
+			return false;
+		})
+	}
+	function onClickJobCancel(fn){
+		recentJobsContainer.on('click',settings.openJobUnpublishModalButton,function(e){
+			e.preventDefault();
+			settings.jobUnpublishModal.find("input:radio[name='unpublishReason']:checked").prop('checked', false);
+			settings.jobUnpublishButton.attr('data-unpublish-job-id', '');
+			var jobId = $(this).attr("data-job-id");
+			settings.jobUnpublishModal.removeClass('hidden');
+			settings.jobUnpublishButton.attr('data-unpublish-job-id', jobId);
+			debugger
+			return false;
+		});
+	}
+
+	settings.jobUnpublishButton.click(function(e){
+		var jobId= $(this).attr('data-unpublish-job-id');
+		var reason = settings.jobUnpublishModal.find("input:radio[name='unpublishReason']:checked").attr('id');
+		if(!reason){
+			settings.jobUnpublishModal.find('.error').removeClass('hidden');
+			return
+		}
+		submitUnpublishJob(recruiterId, jobId, {reasonId: reason});
+
+	})
+	settings.jobRefreshButton.click(function(e) {
+		var jobId = $(this).attr('data-refresh-job-id');
+		submitRefreshJob(recruiterId, jobId);
+	});
+
+
+    onClickJobOtherActions();
 
 	var candidateApplyUrl = "/candidate-apply-list/:publishedId?type=:status";
 	function onStatsUpdate(topic, data){
 		data.forEach(function(aData){
 			dashboardStatsContainer.find(".block."+aData['label']+' .number').text(aData['value']);
+			if(aData['label']=='activeJobs' && !dataModel.revisit ){
+				if(aData['value'] < 1)
+					return updateSubGreetings(dataModel.greetingSubText['noActiveJob'])
+				if(aData['value'] > 10)
+					return updateSubGreetings(dataModel.greetingSubText['busy']);
+				return updateSubGreetings(dataModel.greetingSubText['default']);
+			}
 		})
 	};
 	var dashboardStatsSubscription = pubsub.subscribe("fetchedDashboardStats", onStatsUpdate);
@@ -30,7 +114,13 @@ $(document).ready(function(){
 	            ])
 	    })
 	    dataModel[topic] = temp;
-	    drawBarChartGraph(temp, activeJobsChartContainer.attr('id'));
+	    if(temp.length >1){
+	    	postedJobsContainer.removeClass('hidden')
+	    	drawBarChartGraph(temp, activeJobsChartContainer.attr('id'));
+	    	$(window).resize(function(){
+	    		drawBarChartGraph(dataModel[topic], activeJobsChartContainer.attr('id'));
+	    	})
+	    }
 	}
 	var activeJobStatsSubscription = pubsub.subscribe("fetchedActiveJobStats", onActiveJobStatsUpdate)
 
@@ -45,26 +135,40 @@ $(document).ready(function(){
 		data.forEach(function(aJob, index){
 			var card = jobRowCard.clone().removeClass('hidden prototype');
 			var experience = aJob['exp']['min']+'-'+aJob['exp']['max']+'yrs'
-			card.find(".title .text").text(aJob['title']);
-			card.find(".title .meta-content .location .label").text(aJob["loc"])
+			card.find(".title .text").text(aJob['title']).attr('href', '/job/'+aJob['id']);
+			aJob["location"] = ['Delhi', 'Chandigarh', 'Mumbai', 'Chennai']
+			var locationTitle = (aJob["location"] && aJob["location"].length >3) ? aJob["location"].join(','): null;
+			var location = (aJob["location"] && aJob["location"].length >3) ? "Multiple" : aJob["location"].join(',');
+			card.find(".title .meta-content .location .label").text(location).attr('title', locationTitle);
 			card.find(".title .meta-content .experience .label").text(experience)
 			card.find(".title .meta-content .postedOn .label").text(moment(aJob['created']).format('D MMM YYYY'));
 			card.find(".stats .totalApplications .value").text(aJob["totalApplications"]).attr('href', candidateApplyUrl.replace(':publishedId', aJob['publishedId']).replace(':status', 'all'));
 			card.find(".stats .newApplications .value").text(aJob["newApplications"]).attr('href', candidateApplyUrl.replace(':publishedId', aJob['publishedId']).replace(':status', 'all'));
+			var url = baseUrlJob + aJob["url"];
+
+			card.find('.action-panel .action-list-items .jobRefresh').attr("data-job-id", aJob['id']);
+			card.find('.action-panel .action-list-items .jobUnpublish').attr("data-job-id", aJob['id']);
+			card.find('.action-panel .action-list-items .jobFacebook').attr("href", getFacebookShareLink(url))
+			card.find('.action-panel .action-list-items .jobTwitter').attr("href", getTwitterShareLink(url))
+			card.find('.action-panel .action-list-items .jobLinkedin').attr("href", getLinkedInShareUrl(url))
 			if(len-1 == index)
 				card.find('.horizontal-separator').addClass('hidden');
-			$('#recentJobsContainer .detail-card').append(card);
+			recentJobsContainer.find('.detail-card').append(card);
 		});
+		if(data.length >0 )
+			recentJobsContainer.removeClass('hidden')
 	}
 	var fetchJobsSubscription = pubsub.subscribe("fetchedJobs", onFetchJobs);
 
 	function onVisit(){
-		var recruiterName = 'Shreya Jain';
-		var lastSeen = 1515749878943;
+		var recruiterName = profile.name;
+		var lastSeen = profile.lastSeen;
 		var now = Date.now();
 		var text = "Welcome, "+recruiterName; // TODO: get recruitername from the recruiterobject;
 		if(now - lastSeen > 72*60*60*1000){
-			text = "Welcome back, "+recruiterName
+			text = "Welcome back, "+recruiterName;
+			dataModel.revisit = true;
+			updateSubGreetings(dataModel.greetingSubText['revisit']);
 		}
 		else{
 			var currentHour = moment(now).hour();
@@ -79,14 +183,19 @@ $(document).ready(function(){
 			text: text,
 			icon: "/static/images/morning-icon.png"
 		}
-		pubsub.publish("greetingsUpdate", data);
+		updateGreetings(data);
 	}
 
-	function updateGreetings(topic, data){
+	function updateGreetings(data){
 		var img = '<img class="salutation-icon" src="'+data.icon+'">';
 		var text = data.text;
 		greetingsContainer.find(".heading").html(img+text);
 	}
+
+	function updateSubGreetings(data){
+		greetingsContainer.find(".sub-heading").html(data);
+	}
+
 
 	var visitSubscription= pubsub.subscribe("pageVisit", onVisit);
 	var greetingsUpdateSubscription = pubsub.subscribe("greetingsUpdate", updateGreetings);
@@ -136,6 +245,9 @@ $(document).ready(function(){
 			seeMore.find(".seeAll a").attr('href', '/followUps')
 			notificationContainer.find('.detail-card').append(seeMore);
 		}
+		if( data.length>0){
+			notificationContainer.removeClass('hidden');
+		}
 
 	}
 	var followUpsUpdateSubscription = pubsub.subscribe("fetchedFollowups", onFetchFollowUps);
@@ -176,7 +288,12 @@ $(document).ready(function(){
 			seeMore.find(".seeAll a").attr('href', '/interviews')
 			interviewContainer.find('.detail-card').append(seeMore);
 		}
+		if( data.length>0){
+			interviewContainer.removeClass('hidden');
+		}
 	}
+
+
 	var fetchInterviewsSubscription = pubsub.subscribe("fetchedInterviews", onFetchInterviews);
 
 	function init(){

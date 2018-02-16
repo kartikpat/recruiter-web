@@ -18,14 +18,32 @@ module.exports = function(settings){
 	var welcome = config["welcome"];
 	var verifyAccount = config["verify"];
 	var recruiterID = 45058;
-	var profile = {};
 	if(env=="local")
 		baseUrl= config["baseUrl_local"];
 	else
 		baseUrl = config["baseUrl"];
 	function isAuthenticated(req, res, next) {
 		// for disabling authentication
-		//return next()
+		req.profile = {
+		        "id": "45058",
+		        "name": "Shreya Jain",
+		        "org": "iimjobs.com",
+		        "email": "shreya@iimjobs.com",
+		        "phone": "9811233306",
+		        "about": "Associate Product Manager at iimjobs.com",
+		        "wurl": "http://iimjobs.com",
+		        "turl": "",
+		        "furl": "",
+		        "lurl": "https://www.linkedin.com/in/shreya-jain-8839b07b",
+		        "desg": "Associate Product Manager",
+		        "hits": 55,
+		        "availableCredits": 10,
+		        "rurl": "http://www.iimjobs.com/r/45058-Shreya-Jain",
+		        "i_name": "2016-05-12-16-26-57-45058.jpg",
+		        "i_name_new": "2016-05-12-16-26-57-45058.jpg",
+		        "img_link": "https://s3.ap-south-1.amazonaws.com/iimjobsmedia/media/recruiterpics/2016/05/12/2016-05-12-16-26-57-45058.jpg"
+		    }
+		return next()
 		//bypassing the auth for development
     // CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     // you can do this however you want with whatever variables you set up
@@ -40,7 +58,7 @@ module.exports = function(settings){
 				}
 				const jsonBody = JSON.parse(body)
 				if(jsonBody.status && jsonBody.status =='success'){
-					profile = jsonBody.data;
+					req.profile = jsonBody.data;
 					return next();
 				}
 			})
@@ -88,7 +106,8 @@ module.exports = function(settings){
 			scripts: assetsMapper["dashboard"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain:baseDomain,
-			profile: profile
+			profile: req.profile,
+			baseUrlJob: baseUrlJob
 		});
 		return
 	});
@@ -101,7 +120,7 @@ module.exports = function(settings){
 			scripts: assetsMapper["post-job"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			profile: profile
+			profile: req.profile
 		})
 		return
 	})
@@ -113,7 +132,7 @@ module.exports = function(settings){
 			scripts: assetsMapper["post-job"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			profile: profile,
+			profile: req.profile,
 			jobId: req.params.jobId
 		})
 		return	
@@ -127,7 +146,7 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			baseUrlJob: baseUrlJob,
-			profile: profile
+			profile: req.profile
 		})
 		return
 	});
@@ -140,7 +159,7 @@ module.exports = function(settings){
 			scripts: assetsMapper["candidate-list"]["scripts"][mode],
 			baseUrl: baseUrl,
 			jobID: jobID,
-			profile: profile
+			profile: req.profile
 		})
 		return
 	})
@@ -462,7 +481,7 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			baseUrlJob: baseUrlJob,
-			profile: profile
+			profile: req.profile
 		})
 		return
 	});

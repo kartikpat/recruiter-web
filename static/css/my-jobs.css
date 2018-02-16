@@ -1232,3 +1232,6 @@ span.sticker {
         border-bottom: 1px solid #e8e8e8; }
   .conversations {
     display: none; } }
+
+.error {
+  position: relative !important; }

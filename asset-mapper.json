@@ -823,7 +823,9 @@
 				"static/css/header.css",
 				"static/css/colors.css",
 				"static/css/footer.css",
-				"static/css/dashboard.css"
+				"static/css/dashboard.css",
+				"static/css/modal.css",
+				"static/css/utilities.css"
 			],
 			"prod": [
 				"static/build/css/dashboard.min.css"
@@ -834,12 +836,15 @@
 				"static/js/vendor/jquery.min.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/request.js",
+				"static/js/Utilities/common.js",
 				"static/js/vendor/moment.min.js",
 				"static/js/Services/fetchDashboardStats.js",
 				"static/js/Services/fetchActiveJobStats.js",
 				"static/js/Services/fetchJobs.js",
 				"static/js/Services/fetchFollowUps.js",
 				"static/js/Services/fetchInterviews.js",
+				"static/js/Services/submitUnpublishJob.js",
+				"static/js/Services/submitRefreshJob.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Components/Dashboard/index.js",
@@ -849,7 +854,8 @@
 				"static/js/charts/bar-chart-stacked.js",
 				"static/js/new-jobs-chart.js",
 				"static/js/dashboard.js",
-				"static/js/utilities.js"
+				"static/js/utilities.js",
+				"static/js/utilities/modal.js"
 			],
 			"prod" : [
 				"static/build/js/dashboard.min.js"
