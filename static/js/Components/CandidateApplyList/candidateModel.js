@@ -15,7 +15,11 @@ function Candidate() {
         settings.candidateCommentTextareaClass= '.candidateCommentTextarea',
         settings.candidateTagInputClass = '.candidateTagInput',
         settings.candidateTagRemoveClass = '.tagRemove',
-        settings.candidateTagListClass = '.candidateTagList'
+        settings.candidateTagListClass = '.candidateTagList',
+        settings.mobCandidateTagInputClass = '.mobCandidateTagInput',
+        settings.mobCandidateAddTagButtonClass = '.mobCandidateAddTagButton',
+        settings.mobCandidateCommentTextareaClass = '.mobCandidateCommentTextarea',
+        settings.mobCandidateAddCommentButtonClass = '.mobCandidateAddCommentButton'
     }
 
     function showCandidateDetails(details, type){
@@ -90,14 +94,14 @@ function Candidate() {
         var item = getElement(aData["userID"]);
         item.element.attr("data-application-id", aData["id"])
         item.image.attr("src", aData["img"])
-        item.name.text(aData["name"]);
-        item.experience.text(aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m");
-        item.location.text(aData["preferredLocation"]);
-        item.contact.text(aData["phone"]);
-        item.appliedOn.text(moment(aData["timestamp"]).format('DD-MM-YYYY'))
-        item.notice.text(aData["notice"] + " months");
-        item.salary.text(aData["ctc"]+ " LPA");
-        var lastActiveDays = getLastActiveDay(aData["lastActive"])
+        item.name.text(aData["name"] || "NA");
+        item.experience.text(aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m" || "NA");
+        item.location.text(aData["preferredLocation"] || "NA");
+        item.contact.text(aData["phone"] || "NA");
+        item.appliedOn.text(moment(aData["timestamp"]).format('DD-MM-YYYY') || "NA")
+        item.notice.text(aData["notice"] + " months" || "NA");
+        item.salary.text(aData["ctc"]+ " LPA" || "NA");
+        var lastActiveDays = getLastActiveDay(aData["lastActive"]) 
 
         item.lastActive.text(lastActiveDays > 1 ? lastActiveDays + " days ago": lastActiveDays + " day ago");
         var eduStr = '';
@@ -180,6 +184,11 @@ function Candidate() {
     function appendCandidateTag(aTag){
         var tag = getCandidateTag(aTag);
         settings.candidateDetailsModal.find(settings.candidateTagListClass).append(tag)
+        emptyInputElement($(settings.candidateTagInputClass));
+    }
+
+    function emptyInputElement(element) {
+        element.val("")
     }
 
     function resetCandidateData() {
@@ -239,8 +248,27 @@ function Candidate() {
         });
     }
 
+    function onClickAddCommentMob(fn) {
+        // settings.candidateDetailsModal.on('keyup', settings.candidateCommentTextareaClass,function(event) {
+        //     event.stopPropagation();
+        //     if (event.which == 13) {
+        //         return alert("k")
+        //         var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
+        //         return fn(candidateId);
+        //     }
+        //
+        // });
+
+        settings.candidateDetailsModal.on('click', settings.mobCandidateAddCommentButtonClass,function(event) {
+            event.stopPropagation();
+            var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
+            var comment = $(settings.mobCandidateCommentTextareaClass).val();
+            fn(applicationId, comment);
+        });
+    }
+
     function onClickAddTag(fn) {
-        settings.candidateDetailsModal.on('keyup', settings.candidateTagInputClass,function(event) {
+        settings.candidateDetailsModal.on('keyup', settings.candidateTagInputClass ,function(event) {
             event.stopPropagation();
 
             if (event.which == 13) {
@@ -257,6 +285,24 @@ function Candidate() {
         });
     }
 
+    function onClickAddTagMob(fn) {
+        settings.candidateDetailsModal.on('keyup', settings.mobCandidateTagInputClass ,function(event) {
+            event.stopPropagation();
+
+            if (event.which == 13) {
+                var tagName = $(this).val();
+                var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
+                return fn(applicationId, tagName);
+            }
+        });
+        settings.candidateDetailsModal.on('click', settings.mobCandidateAddTagButtonClass,function(event) {
+            event.stopPropagation();
+            var tagName = $(settings.mobCandidateTagInputClass).val();
+            var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
+            return fn(applicationId, tagName);
+        });
+    }
+
     function onClickDeleteTag(fn) {
         settings.candidateDetailsModal.on('click', settings.candidateTagRemoveClass,function(event) {
             event.stopPropagation();
@@ -266,12 +312,20 @@ function Candidate() {
         });
     }
 
+    function removeTag(tagId) {
+        $(settings.candidateTagListClass).find(".tagRemove[data-tag-id="+tagId+"]").closest(".candidateTag").remove()
+    }
+
     return {
         init: init,
         showCandidateDetails: showCandidateDetails,
         onClickAddComment: onClickAddComment,
         onClickAddTag: onClickAddTag,
-        onClickDeleteTag: onClickDeleteTag
+        onClickDeleteTag: onClickDeleteTag,
+        appendCandidateTag: appendCandidateTag,
+        onClickAddTagMob: onClickAddTagMob,
+        removeTag: removeTag,
+        onClickAddCommentMob: onClickAddCommentMob
 	}
 
     function focusOnElement(element, container) {

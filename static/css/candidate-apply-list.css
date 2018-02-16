@@ -2366,6 +2366,9 @@ span.sticker {
       .modal_overlay .modal_content .modal_body .subcategory_listing li a:hover {
         text-decoration: underline; }
 
+input::-webkit-input-placeholder {
+  font-size: 13px; }
+
 .page-content {
   min-height: 100%;
   padding: 0;
@@ -2458,8 +2461,6 @@ span.sticker {
               border-color: #4fa995; }
             .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .keyword-search input.error-border {
               border-color: #ee1620; }
-            .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .keyword-search input:focus {
-              border-color: #e8e8e8; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .keyword-search button {
             position: absolute;
             top: 0;
@@ -3194,6 +3195,105 @@ span.sticker {
               border: 1px solid #e8e8e8;
               width: 100%;
               padding: 25px; }
+              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .cand-add-tag {
+                width: 50%;
+                height: 40px;
+                line-height: 40px;
+                margin-bottom: 15px; }
+              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments textarea {
+                width: 50%;
+                padding: 5px;
+                border-left: 3px solid #1f8f75;
+                min-height: 50px; }
+                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments textarea:focus {
+                  outline: none;
+                  border: 1px solid #1f8f75;
+                  border-left: 3px solid green; }
+              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons {
+                margin-top: 10px; }
+                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons span.button {
+                  -webkit-appearance: none;
+                  -moz-appearance: none;
+                  -ms-appearance: none;
+                  -o-appearance: none;
+                  border: 0;
+                  padding: 0;
+                  margin: 0;
+                  background: #708732;
+                  border-color: #8f8a8a;
+                  border-radius: 4px;
+                  padding: 5px 14px;
+                  font-size: 14px;
+                  margin: 0 5px;
+                  color: #FFF;
+                  display: inline-block;
+                  vertical-align: top;
+                  cursor: pointer;
+                  margin-left: 0px; }
+                  .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons span.button.green {
+                    background-color: #1f8f75; }
+                  .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons span.button.red {
+                    background-color: #af595a; }
+                  .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons span.button.white {
+                    border: 1px solid #8f8a8a;
+                    color: #2b2b2b; }
+                  .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons span.button.edit {
+                    padding: 3px 9px; }
+                    .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons span.button.edit img {
+                      width: 17px;
+                      height: 17px; }
+              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .action-buttons span.button {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                -ms-appearance: none;
+                -o-appearance: none;
+                border: 0;
+                padding: 0;
+                margin: 0;
+                background: #708732;
+                border-color: #8f8a8a;
+                border-radius: 4px;
+                padding: 5px 14px;
+                font-size: 14px;
+                margin: 0 5px;
+                color: #FFF;
+                display: inline-block;
+                vertical-align: top;
+                cursor: pointer;
+                margin-left: 0px; }
+                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .action-buttons span.button.green {
+                  background-color: #1f8f75; }
+                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .action-buttons span.button.red {
+                  background-color: #af595a; }
+                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .action-buttons span.button.white {
+                  border: 1px solid #8f8a8a;
+                  color: #2b2b2b; }
+                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .action-buttons span.button.edit {
+                  padding: 3px 9px; }
+                  .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .action-buttons span.button.edit img {
+                    width: 17px;
+                    height: 17px; }
+              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .skill-tags-area {
+                margin-top: 10px; }
+              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .skill-tag {
+                display: inline-block;
+                margin: 5px;
+                border: 1px solid #e8e8e8;
+                padding: 2px 15px;
+                border-radius: 50px;
+                font-size: 13px;
+                background-color: #FFF; }
+                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .skill-tag div {
+                  display: inline-block;
+                  vertical-align: middle; }
+                  .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .skill-tag div.remove-active-skill {
+                    cursor: pointer;
+                    vertical-align: top; }
+                    .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .skill-tag div.remove-active-skill span {
+                      font-size: 11px;
+                      display: inline-block;
+                      vertical-align: middle;
+                      color: #808080; }
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content-heading {
                 margin-top: 0;
                 font-weight: bold;
@@ -3567,3 +3667,7 @@ span.sticker {
 
 .sidebar-section.comments .action-buttons {
   margin-bottom: 0; }
+
+#clear-all {
+  cursor: pointer;
+  color: #155d9a; }

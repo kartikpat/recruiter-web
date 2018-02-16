@@ -160,20 +160,22 @@ function candidateList() {
     function setJobStats(data) {
         var item = getJobsCategoryTabsElement()
         var unread = data["total"] - (data["shortlisted"] + data["rejected"] + data["save"] + data["reviewed"]);
-        item.all.text("("+data["total"]+")");
-        item.unread.text("("+unread+")")
-        item.shortlisted.text("("+data["shortlisted"]+")")
-        item.rejected.text("("+data["rejected"]+")")
-        item.saved.text("("+data["save"]+")")
-        item.reviewed.text("("+data["reviewed"]+")")
+        item.all.text(data["total"]);
+        item.unread.text(unread)
+        item.shortlisted.text(data["shortlisted"])
+        item.rejected.text(data["rejected"])
+        item.saved.text(data["save"])
+        item.reviewed.text(data["reviewed"])
     }
 
     function updateJobStats(status, newStatus) {
         var item = getJobsCategoryTabsElement();
-        var oldCount = item.find("li[data-attribute='"+status+"'] .tabStats").text()
-        item.find("li[data-attribute='"+status+"'] .tabStats").text(oldCount - 1);
-        var newCount = item.find("li[data-attribute='"+newStatus+"'] .tabStats").text()
-        item.find("li[data-attribute='"+newStatus+"'] .tabStats").text(newCount + 1);
+        var oldCount = item.element.find("li[data-attribute='"+status+"'] .tabStats").text()
+        debugger
+        item.element.find("li[data-attribute='"+status+"'] .tabStats").text(parseInt(oldCount) - 1);
+        var newCount = item.element.find("li[data-attribute='"+newStatus+"'] .tabStats").text()
+        debugger
+        item.element.find("li[data-attribute='"+newStatus+"'] .tabStats").text(parseInt(newCount) + 1);
     }
 
     function addToList(dataArray, status){
@@ -259,8 +261,8 @@ function candidateList() {
     function onClickDownloadResume(fn) {
         settings.rowContainer.on('click', settings.candidateDownloadResumeButton, function(event){
             event.stopPropagation();
-            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
-            fn(candidateId);
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            fn(applicationId);
             return false
         })
     }
@@ -269,8 +271,8 @@ function candidateList() {
         settings.rowContainer.on('click', settings.candidateSaveButton, function(event){
             event.stopPropagation();
             var status = $(this).attr("data-status");
-            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
-            fn(candidateId, status);
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            fn(applicationId, status);
             return false
         })
     }
@@ -338,8 +340,8 @@ function candidateList() {
         })
     }
 
-    function candidateActionTransition(candidateId) {
-        settings.rowContainer.find(".candidateRow[data-candidate-id="+candidateId+"]").addClass("hidden")
+    function candidateActionTransition(applicationId) {
+        settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"]").addClass("hidden")
     }
 
     function onChangeCandidateCheckbox(fn) {

@@ -27,8 +27,10 @@ jQuery(document).ready( function() {
     filters.addFilterData('language', languageTagsData)
     filters.addFilterData('preferredLocation', prefeLocationTagsData);
     filters.onClickApplyFilterButton(function(name){
+
         filters.setAppliedFilters(name);
         var parameters = filters.getAppliedFilters();
+
         globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
@@ -75,7 +77,7 @@ jQuery(document).ready( function() {
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
 
-    $.when(fetchJob(jobId, recruiterId ), fetchCalendars(jobId, recruiterId)).then(function(a, b){
+    $.when(fetchJob(jobId, recruiterId, {idType: 'publish'}), fetchCalendars(jobId, recruiterId)).then(function(a, b){
         if(a[0] && b[0] && a[0]["status"] == "success" && b[0]["status"] =="success" && a[0]['data'].length >0 ) {
             var jobRow = a[0]['data'][0];
             console.log(b)
@@ -141,7 +143,7 @@ jQuery(document).ready( function() {
     })
 
     candidates.onClickSendMessage(function(candidateId){
-        alert(candidateId)
+        window.location.href = "/my-chat"
     })
 
     candidates.onChangeCandidateCheckbox(function(candidateId){
@@ -194,54 +196,79 @@ jQuery(document).ready( function() {
         // postInterviewInvite()
      }
 
-     candidates.onClickDownloadResume(function(candidateId){
-         globalParameters.action = "download"
-         setCandidateAction(recruiterId, jobId, globalParameters.action , candidateId, {});
+     candidates.onClickDownloadResume(function(applicationId){
+         setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
      });
 
-     candidates.onClickSaveJob(function(candidateId, newStatus){
-         globalParameters.action = "save"
-         globalParameters.newStatus = newStatus
-         setCandidateAction(recruiterId, jobId, globalParameters.action , candidateId, {});
+     candidates.onClickSaveJob(function(applicationId, newStatus){
+         var parameters = {};
+         parameters.oldStatus = globalParameters.status
+         parameters.newStatus = newStatus
+         setCandidateAction(recruiterId, jobId, "save" , applicationId, {}, parameters);
      })
 
-     candidates.onClickShortlistCandidate(function(candidateId, newStatus){
-         globalParameters.action = "shortlist"
-         globalParameters.newStatus = newStatus
-         setCandidateAction(recruiterId, jobId, globalParameters.action , candidateId, {});
+     candidates.onClickShortlistCandidate(function(applicationId, newStatus){
+         var parameters = {};
+         parameters.oldStatus = globalParameters.status
+         parameters.newStatus = newStatus
+         setCandidateAction(recruiterId, jobId, "shortlist" , applicationId, {}, parameters);
 
      })
 
-     candidates.onClickRejectCandidate(function(candidateId, newStatus){
-         globalParameters.action = "reject"
-         globalParameters.newStatus = newStatus
-         setCandidateAction(recruiterId, jobId, globalParameters.action , candidateId, {});
+     candidates.onClickRejectCandidate(function(applicationId, newStatus){
+         var parameters= {};
+         parameters.oldStatus = globalParameters.status
+         parameters.newStatus = newStatus
+         setCandidateAction(recruiterId, jobId, "reject" , applicationId, {}, parameters);
      })
 
      aCandidate.onClickAddTag(function(applicationId, tagName){
+         var parameters = {}
          var ob = {
              "name": tagName,
 	         "type": "add"
          }
-         globalParameters.action = "tag"
-         setCandidateAction(recruiterId, jobId, globalParameters.action , applicationId, ob);
+         parameters.type = "add"
+         parameters.tagName = tagName
+         setCandidateAction(recruiterId, jobId, "tag" , applicationId, ob, parameters);
      })
 
      aCandidate.onClickDeleteTag(function(applicationId, tagId){
+         var parameters = {}
          var ob = {
              "tagId": tagId,
 	         "type": "delete"
          }
-         globalParameters.action = "tag"
-         setCandidateAction(recruiterId, jobId, globalParameters.action , applicationId, ob);
+         parameters.type = "delete"
+         parameters.tagId = tagId
+         setCandidateAction(recruiterId, jobId, "tag" , applicationId, ob, parameters);
      })
 
      aCandidate.onClickAddComment(function(applicationId, comment){
+         var parameters = {}
          var ob = {
              "comment": comment
          }
-         globalParameters.action = "comment"
-         setCandidateAction(recruiterId, jobId, globalParameters.action , applicationId, ob);
+         setCandidateAction(recruiterId, jobId, "comment" , applicationId, ob);
+     })
+
+     aCandidate.onClickAddCommentMob(function(applicationId, comment){
+         var parameters = {}
+         var ob = {
+             "comment": comment
+         }
+         setCandidateAction(recruiterId, jobId, "comment" , applicationId, ob);
+     })
+
+     aCandidate.onClickAddTagMob(function(applicationId, tagName){
+         var parameters = {}
+         var ob = {
+             "name": tagName,
+	         "type": "add"
+         }
+         parameters.type = "add"
+         parameters.tagName = tagName
+         setCandidateAction(recruiterId, jobId, "tag" , applicationId, ob, parameters);
      })
 
 
@@ -274,27 +301,37 @@ jQuery(document).ready( function() {
 		console.log(data)
     }
 
-    function onSuccessfullCandidateAction(topic, res, type) {
-        debugger
-        if(type == "tag") {
-            alert("success")
-            //aCandidate.appendCandidateTag()
-        }
-        if(type == "comment") {
-            alert("success")
-        }
-        if(type == "shortlist") {
-            candidates.updateJobStats(globalParameters.status, globalParameters.newStatus)
-            candidates.candidateActionTransition()
-        }
-        if(type == "reject") {
+    function onSuccessfullCandidateAction(topic, res) {
+        alert("success")
+        if(res.action == "tag") {
             debugger
-            candidates.updateJobStats(globalParameters.status, globalParameters.newStatus)
-            candidates.candidateActionTransition()
+            if(res.parameters.type == "add") {
+                var tag = {
+                    "name": res.parameters.tagName,
+                    "id": res.data.id
+                }
+                aCandidate.appendCandidateTag(tag)
+                return
+            }
+            var tagId = res.parameters.tagId
+            aCandidate.removeTag(tagId)
         }
-        if(type == "save") {
-            candidates.updateJobStats(globalParameters.status, globalParameters.newStatus)
-            candidates.candidateActionTransition()
+        if(res.action == "comment") {
+            alert("success")
+        }
+        if(res.action == "shortlist") {
+
+            candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus)
+            candidates.candidateActionTransition(res.applicationId)
+        }
+        if(res.action == "reject") {
+            debugger
+            candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus)
+            candidates.candidateActionTransition(res.applicationId)
+        }
+        if(res.action == "save") {
+            candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus)
+            candidates.candidateActionTransition(res.applicationId)
         }
         // if(globalParameters.action == "tag") {
         //     alert("success")

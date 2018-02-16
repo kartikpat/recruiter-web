@@ -282,6 +282,7 @@ function Filters(){
 		}
 
 		settings.activeFiltersContainer.find(".filter-tag").remove();
+		$("#clear-all").addClass("hidden")
 	}
 
 	function onClickFilterButton(){
@@ -333,9 +334,14 @@ function Filters(){
 	function onClickApplyFilterButton(fn){
 		console.log('clicking apply filter')
 		settings.applyFilterButton.click(function(e){
+			$("#clear-all").removeClass("hidden")
+			removeBodyFixed();
+            settings.filterModal.addClass("hidden");
+
 			console.log('clicking event set on applied filters');
 			var name = $(settings.activeFilterListingClass).attr('data-label');
 			fn(name);
+
 		})
 	}
 	function setAppliedFilters(name){
