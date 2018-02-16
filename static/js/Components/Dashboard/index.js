@@ -1,6 +1,16 @@
 var dataModel = {};
 dataModel.revisit = false;
-profile.lastSeen = moment().subtract(1, 'days').format("x")
+profile.lastSeen = moment().subtract(1, 'days').format("x");
+var settings = {}
+
+function modalInit(){
+	settings.openJobUnpublishModalButton= '.jobUnpublish';
+	settings.openJobRefreshModalButton= '.jobRefresh';
+	settings.jobUnpublishModal= $('.unpublishModal');
+	settings.jobUnpublishButton= $('.jobUnpublishButton');
+	settings.jobRefreshModal= $(".refreshModal");
+	settings.jobRefreshButton= $(".jobRefreshButton");
+}
 $(document).ready(function(){
 	var dashboardStatsContainer = $("#dashboardStatsContainer");
 	var activeJobsChartContainer = $("#new-jobs-chart");
@@ -13,6 +23,10 @@ $(document).ready(function(){
 	var recentJobsContainer = $("#recentJobsContainer");
 	var postedJobsContainer = $("#postedJobsContainer");
 	var jobOtherActionsClass = ".action-panel"
+
+	modalInit();
+	onClickJobRefresh();
+	onClickJobCancel();
 
 	dataModel.greetingText = {
 		"morning": ""
@@ -29,6 +43,46 @@ $(document).ready(function(){
 			$(this).toggleClass("inactive");
 		})
     }
+
+	function onClickJobRefresh(fn) {
+		recentJobsContainer.on('click', settings.openJobRefreshModalButton,function(e) {
+			e.preventDefault()
+				var jobId = $(this).attr("data-job-id");
+				settings.jobRefreshModal.removeClass('hidden');
+				settings.jobRefreshButton.attr('data-refresh-job-id', jobId);
+				debugger
+			return false;
+		})
+	}
+	function onClickJobCancel(fn){
+		recentJobsContainer.on('click',settings.openJobUnpublishModalButton,function(e){
+			e.preventDefault();
+			settings.jobUnpublishModal.find("input:radio[name='unpublishReason']:checked").prop('checked', false);
+			settings.jobUnpublishButton.attr('data-unpublish-job-id', '');
+			var jobId = $(this).attr("data-job-id");
+			settings.jobUnpublishModal.removeClass('hidden');
+			settings.jobUnpublishButton.attr('data-unpublish-job-id', jobId);
+			debugger
+			return false;
+		});
+	}
+
+	settings.jobUnpublishButton.click(function(e){
+		var jobId= $(this).attr('data-unpublish-job-id');
+		var reason = settings.jobUnpublishModal.find("input:radio[name='unpublishReason']:checked").attr('id');
+		if(!reason){
+			settings.jobUnpublishModal.find('.error').removeClass('hidden');
+			return
+		}
+		submitUnpublishJob(recruiterId, jobId, {reasonId: reason});
+
+	})
+	settings.jobRefreshButton.click(function(e) {
+		var jobId = $(this).attr('data-refresh-job-id');
+		submitRefreshJob(recruiterId, jobId);
+	});
+
+
     onClickJobOtherActions();
 
 	var candidateApplyUrl = "/candidate-apply-list/:publishedId?type=:status";
@@ -91,6 +145,9 @@ $(document).ready(function(){
 			card.find(".stats .totalApplications .value").text(aJob["totalApplications"]).attr('href', candidateApplyUrl.replace(':publishedId', aJob['publishedId']).replace(':status', 'all'));
 			card.find(".stats .newApplications .value").text(aJob["newApplications"]).attr('href', candidateApplyUrl.replace(':publishedId', aJob['publishedId']).replace(':status', 'all'));
 			var url = baseUrlJob + aJob["url"];
+
+			card.find('.action-panel .action-list-items .jobRefresh').attr("data-job-id", aJob['id']);
+			card.find('.action-panel .action-list-items .jobUnpublish').attr("data-job-id", aJob['id']);
 			card.find('.action-panel .action-list-items .jobFacebook').attr("href", getFacebookShareLink(url))
 			card.find('.action-panel .action-list-items .jobTwitter').attr("href", getTwitterShareLink(url))
 			card.find('.action-panel .action-list-items .jobLinkedin').attr("href", getLinkedInShareUrl(url))
@@ -235,6 +292,8 @@ $(document).ready(function(){
 			interviewContainer.removeClass('hidden');
 		}
 	}
+
+
 	var fetchInterviewsSubscription = pubsub.subscribe("fetchedInterviews", onFetchInterviews);
 
 	function init(){

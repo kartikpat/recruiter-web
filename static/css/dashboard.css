@@ -1636,3 +1636,6 @@ span.sticker {
     margin-right: 0px;
     position: relative;
     left: 1px; } }
+
+.error {
+  position: relative !important; }
