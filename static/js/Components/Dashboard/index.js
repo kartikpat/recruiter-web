@@ -1,4 +1,6 @@
 var dataModel = {};
+dataModel.revisit = false;
+profile.lastSeen = moment().subtract(1, 'days').format("x")
 $(document).ready(function(){
 	var dashboardStatsContainer = $("#dashboardStatsContainer");
 	var activeJobsChartContainer = $("#new-jobs-chart");
@@ -8,10 +10,28 @@ $(document).ready(function(){
 	var notificationContainer = $('#notificationContainer');
 	var seeMoreSection = $('.seeMoreSection.prototype');
 
+	dataModel.greetingText = {
+		"morning": ""
+	}
+	dataModel.greetingSubText = {
+		"noActiveJob": "It’s quite silent around here. Get started - Post Jobs/Discover Candidates/Build your Brand",
+		"busy": "It looks busy around here! Good luck for your day ahead! ",
+		"revisit": "We missed you while you were away! To keep you up-to-date, here is a quick glance of what has changed - ",
+		default: ""
+	}
+
+
 	var candidateApplyUrl = "/candidate-apply-list/:publishedId?type=:status";
 	function onStatsUpdate(topic, data){
 		data.forEach(function(aData){
 			dashboardStatsContainer.find(".block."+aData['label']+' .number').text(aData['value']);
+			if(aData['label']=='activeJobs' && !dataModel.revisit ){
+				if(aData['value'] < 1)
+					return updateSubGreetings(dataModel.greetingSubText['noActiveJob'])
+				if(aData['value'] > 10)
+					return updateSubGreetings(dataModel.greetingSubText['busy']);
+				return updateSubGreetings(dataModel.greetingSubText['default']);
+			}
 		})
 	};
 	var dashboardStatsSubscription = pubsub.subscribe("fetchedDashboardStats", onStatsUpdate);
@@ -59,12 +79,14 @@ $(document).ready(function(){
 	var fetchJobsSubscription = pubsub.subscribe("fetchedJobs", onFetchJobs);
 
 	function onVisit(){
-		var recruiterName = 'Shreya Jain';
-		var lastSeen = 1515749878943;
+		var recruiterName = profile.name;
+		var lastSeen = profile.lastSeen;
 		var now = Date.now();
 		var text = "Welcome, "+recruiterName; // TODO: get recruitername from the recruiterobject;
 		if(now - lastSeen > 72*60*60*1000){
-			text = "Welcome back, "+recruiterName
+			text = "Welcome back, "+recruiterName;
+			dataModel.revisit = true;
+			updateSubGreetings(dataModel.greetingSubText['revisit']);
 		}
 		else{
 			var currentHour = moment(now).hour();
@@ -79,14 +101,19 @@ $(document).ready(function(){
 			text: text,
 			icon: "/static/images/morning-icon.png"
 		}
-		pubsub.publish("greetingsUpdate", data);
+		updateGreetings(data);
 	}
 
-	function updateGreetings(topic, data){
+	function updateGreetings(data){
 		var img = '<img class="salutation-icon" src="'+data.icon+'">';
 		var text = data.text;
 		greetingsContainer.find(".heading").html(img+text);
 	}
+
+	function updateSubGreetings(data){
+		greetingsContainer.find(".sub-heading").html(data);
+	}
+
 
 	var visitSubscription= pubsub.subscribe("pageVisit", onVisit);
 	var greetingsUpdateSubscription = pubsub.subscribe("greetingsUpdate", updateGreetings);
