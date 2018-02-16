@@ -485,6 +485,7 @@ input::-webkit-input-placeholder {
 	bottom: 0;
 	padding: 15px 20px;
 	background-color: $mass-action-bar;
+    box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.5);
 	.action-buttons {
 		span.button {
 			@include button($color-white);

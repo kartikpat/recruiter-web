@@ -87,7 +87,7 @@ jQuery(document).ready( function() {
                jobTitle: getTitleFormat(jobRow["title"],(/\(\d+-\d+ \w+\)$/)),
                jobLocation: jobRow["location"].toString(),
                jobExperience: jobRow["exp"]['min']+'-'+ jobRow['exp']['max'] +' yrs',
-               jobId: jobRow['id'],
+               jobId: jobRow['publishedId'],
                jobStatus: jobRow['status'],
                isPremium: jobRow['premium'],
                isEditable: jobRow['editable'],
@@ -204,6 +204,7 @@ jQuery(document).ready( function() {
          var parameters = {};
          parameters.oldStatus = globalParameters.status
          parameters.newStatus = newStatus
+         parameters.action = true
          setCandidateAction(recruiterId, jobId, "save" , applicationId, {}, parameters);
      })
 
@@ -211,6 +212,7 @@ jQuery(document).ready( function() {
          var parameters = {};
          parameters.oldStatus = globalParameters.status
          parameters.newStatus = newStatus
+         parameters.action = true
          setCandidateAction(recruiterId, jobId, "shortlist" , applicationId, {}, parameters);
 
      })
@@ -219,7 +221,16 @@ jQuery(document).ready( function() {
          var parameters= {};
          parameters.oldStatus = globalParameters.status
          parameters.newStatus = newStatus
+         parameters.action = true
          setCandidateAction(recruiterId, jobId, "reject" , applicationId, {}, parameters);
+     })
+
+     candidates.onClickMassTag(function(){
+         alert("success")
+     })
+
+     candidates.onClickMassComment(function(){
+         alert("success")
      })
 
      aCandidate.onClickAddTag(function(applicationId, tagName){
@@ -338,25 +349,28 @@ jQuery(document).ready( function() {
             alert("success")
         }
         if(res.action == "shortlist") {
-            if(!parameters.action) {
+            if(!res.parameters.action) {
                 return alert("success")
             }
             candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus)
-            candidates.candidateActionTransition(res.applicationId)
+            if(res.parameters.oldStatus != "")
+                candidates.candidateActionTransition(res.applicationId)
         }
         if(res.action == "reject") {
-            if(!parameters.action) {
+            if(!res.parameters.action) {
                 return alert("success")
             }
             candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus)
-            candidates.candidateActionTransition(res.applicationId)
+            if(res.parameters.oldStatus != "")
+                candidates.candidateActionTransition(res.applicationId)
         }
         if(res.action == "save") {
-            if(!parameters.action) {
+            if(!res.parameters.action) {
                 return alert("success")
             }
             candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus)
-            candidates.candidateActionTransition(res.applicationId)
+            if(res.parameters.oldStatus != "")
+                candidates.candidateActionTransition(res.applicationId)
         }
         // if(globalParameters.action == "tag") {
         //     alert("success")

@@ -27,9 +27,12 @@ function candidateList() {
         settings.massComment = $("#massComment"),
         settings.massTag = $("#massTag"),
         settings.downloadExcelMass = $("#downloadExcelMass")
+        settings.bulkActionContainer = $("#massActionContainer"),
+        settings.massCheckboxInput = $("#massCheckboxInput"),
+        settings.massCheckboxLabel = $("#massCheckboxLabel"),
+        settings.candidateSelectedLength = null
 
-
-
+        onClickMassCheckbox()
 	}
 
 	function setConfig(key, value) {
@@ -96,6 +99,7 @@ function candidateList() {
         item.rejectButton.attr("data-status", "2");
         item.savedButton.attr("data-status", "3");
         item.downloadResumeButton.attr("href", aData["resume"])
+        item.downloadResumeButton.attr("download", aData["name"].replace(/ +/g, '_')+'_resume.pdf')
         // var tagStr = '';
         // $.each(aData["tags"],function(index, aTag) {
         //     var tag =  settings.candidateTagsPrototype.clone().text(aTag["name"]).removeClass("prototype hidden");
@@ -176,7 +180,9 @@ function candidateList() {
         var item = getJobsCategoryTabsElement();
         var oldCount = item.element.find("li[data-attribute='"+status+"'] .tabStats").text()
         debugger
-        item.element.find("li[data-attribute='"+status+"'] .tabStats").text(parseInt(oldCount) - 1);
+        if(status != "") {
+            item.element.find("li[data-attribute='"+status+"'] .tabStats").text(parseInt(oldCount) - 1);
+        }
         var newCount = item.element.find("li[data-attribute='"+newStatus+"'] .tabStats").text()
         debugger
         item.element.find("li[data-attribute='"+newStatus+"'] .tabStats").text(parseInt(newCount) + 1);
@@ -191,6 +197,7 @@ function candidateList() {
             console.log(index)
 		});
 		$(".candidateListing[data-status-attribute='"+status+"']").append(str);
+        settings.rowContainer.find(".candidate-select").removeClass("selected");
         $("#jobs-tabs").removeClass("hidden")
 	}
 
@@ -199,6 +206,10 @@ function candidateList() {
             active: 0,
             create:function(){},
             activate: function(event, ui){
+
+                settings.bulkActionContainer.addClass("hidden")
+                settings.massCheckboxInput.prop("checked", false)
+
                 fn(event, ui);
             }
         })
@@ -280,28 +291,27 @@ function candidateList() {
     }
 
     function onClickMassComment(fn) {
+        var modal = $(".jsAddCommentModal");
         settings.massComment.click(function(event) {
-			// var jobId = $(this).attr("data-id");
-			var modal = $(".jsAddCommentModal");
-            modal.find(".jsAddComment").click(function(){
-                return fn
-            });
-            addBodyFixed()
+            modal.find(".jsModalText").text("You are about to add Comment on "+settings.candidateSelectedLength+" candidates.")
+			addBodyFixed()
             modal.removeClass("hidden")
         })
+        modal.find(".jsAddComment").click(function(){
+            return fn()
+        });
     }
 
-    function onClickMassTag() {
-        settings.rowContainer.on('click',settings.candidateAddTagButton ,function(event) {
-            event.stopPropagation()
-			// var jobId = $(this).attr("data-id");
-			var modal = $(".jsAddTagModal");
-            modal.find(".jsAddTag").click(function(){
-                fn(jobId)
-            });
+    function onClickMassTag(fn) {
+        var modal = $(".jsAddTagModal");
+        settings.massTag.click(function(event) {
+            modal.find(".jsModalText").text("You are about to add Tag on "+settings.candidateSelectedLength+" candidates.")
             addBodyFixed()
             modal.removeClass("hidden")
         })
+        modal.find(".jsAddTag").click(function(){
+            fn()
+        });
     }
 
     function onClickAddTag(fn) {
@@ -352,14 +362,82 @@ function candidateList() {
 
             if(jQuery(this).is(":checked")){
                 jQuery(this).closest(".candidate-select").addClass("selected");
+                var el = jQuery(".candidate-select.selected");
+                settings.candidateSelectedLength =  el.length
+                if(el.length >=2) {
+                    settings.bulkActionContainer.removeClass("hidden")
+                }
+                else {
+                    settings.bulkActionContainer.addClass("hidden")
+                }
+                // jQuery(".candidate-select").css({"display": "block"});
             } else {
                 jQuery(this).closest(".candidate-select").removeClass("selected");
+                var el = jQuery(".candidate-select.selected");
+                console.log(el.length)
+                settings.candidateSelectedLength =  el.length
+                if(el.length >=2) {
+                    settings.bulkActionContainer.removeClass("hidden")
+                }
+                else {
+                    settings.bulkActionContainer.addClass("hidden")
+                }
+                // if(el.length == 0) {
+                //     jQuery(".candidate-select").css({"display": "none"});
+                // }
+
+
             }
+            // var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
+            // return fn(candidateId);
         })
         settings.rowContainer.on('click', settings.candidateCheckboxLabelClass, function(event) {
             event.stopPropagation();
-            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
-            return fn(candidateId);
+
+        })
+    }
+
+    function onClickMassCheckbox(){
+        settings.massCheckboxInput.click(function(event){
+            event.stopPropagation();
+
+            if(jQuery(this).is(":checked")){
+                var candidateSelect = jQuery(".candidate-select")
+                candidateSelect.not(".candidate-select.prototype").addClass("selected");
+                candidateSelect.find("input").prop("checked",  true);
+                var el = jQuery(".candidate-select.selected");
+                settings.candidateSelectedLength =  el.length
+                if(el.length >=2) {
+                    settings.bulkActionContainer.removeClass("hidden")
+                }
+                else {
+                    settings.bulkActionContainer.addClass("hidden")
+                }
+                // jQuery(".candidate-select").css({"display": "block"});
+            } else {
+                var candidateSelect = jQuery(".candidate-select")
+
+                .not(".candidate-select.prototype").removeClass("selected");
+                jQuery(".candidate-select input").prop("checked",  false);
+                var el = jQuery(".candidate-select.selected");
+                settings.candidateSelectedLength =  el.length
+                console.log(el.length)
+                if(el.length >=2) {
+                    settings.bulkActionContainer.removeClass("hidden")
+                }
+                else {
+                    settings.bulkActionContainer.addClass("hidden")
+                }
+                // if(el.length == 0) {
+                //     jQuery(".candidate-select").css({"display": "none"});
+                // }
+
+
+            }
+        })
+        settings.massCheckboxLabel.click(function(event) {
+            event.stopPropagation();
+
         })
     }
 
@@ -399,7 +477,10 @@ function candidateList() {
         emptyCandidateList: emptyCandidateList,
         onClickMassReject: onClickMassReject,
         onClickMassShortlist: onClickMassShortlist,
-        updateJobStats: updateJobStats
+        updateJobStats: updateJobStats,
+        onClickMassComment: onClickMassComment,
+        onClickMassTag: onClickMassTag
+
 	}
 
 
