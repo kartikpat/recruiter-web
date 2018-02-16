@@ -28,6 +28,8 @@ function candidateList() {
         settings.massTag = $("#massTag"),
         settings.downloadExcelMass = $("#downloadExcelMass")
 
+
+
 	}
 
 	function setConfig(key, value) {
@@ -54,7 +56,8 @@ function candidateList() {
             isFollowedUp: card.find('.isFollowedUp'),
             shortlistButton: card.find(settings.candidateShortlistButtonClass),
             rejectButton: card.find(settings.candidateRejectButtonClass),
-            savedButton: card.find(settings.candidateSaveButton)
+            savedButton: card.find(settings.candidateSaveButton),
+            downloadResumeButton: card.find(settings.candidateDownloadResumeButton)
 		}
 	}
 
@@ -92,6 +95,7 @@ function candidateList() {
         item.shortlistButton.attr("data-status", "1");
         item.rejectButton.attr("data-status", "2");
         item.savedButton.attr("data-status", "3");
+        item.downloadResumeButton.attr("href", aData["resume"])
         // var tagStr = '';
         // $.each(aData["tags"],function(index, aTag) {
         //     var tag =  settings.candidateTagsPrototype.clone().text(aTag["name"]).removeClass("prototype hidden");
@@ -261,9 +265,7 @@ function candidateList() {
     function onClickDownloadResume(fn) {
         settings.rowContainer.on('click', settings.candidateDownloadResumeButton, function(event){
             event.stopPropagation();
-            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            fn(applicationId);
-            return false
+            fn()
         })
     }
 

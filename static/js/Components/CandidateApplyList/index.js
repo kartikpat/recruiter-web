@@ -196,8 +196,8 @@ jQuery(document).ready( function() {
         // postInterviewInvite()
      }
 
-     candidates.onClickDownloadResume(function(applicationId){
-         setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
+     candidates.onClickDownloadResume(function(){
+         console.log("you can call track event")
      });
 
      candidates.onClickSaveJob(function(applicationId, newStatus){
@@ -271,6 +271,24 @@ jQuery(document).ready( function() {
          setCandidateAction(recruiterId, jobId, "tag" , applicationId, ob, parameters);
      })
 
+     aCandidate.onClickShortlistCandidateModal(function(applicationId) {
+         var parameters = {}
+         parameters.action = false
+         setCandidateAction(recruiterId, jobId, "shortlist" , applicationId, {}, parameters);
+     })
+
+     aCandidate.onClickRejectCandidateModal(function(applicationId) {
+         var parameters = {}
+         parameters.action = false
+         setCandidateAction(recruiterId, jobId, "reject" , applicationId, {}, parameters);
+     })
+
+     aCandidate.onClickSaveCandidateModal(function(applicationId) {
+         var parameters = {}
+         parameters.action = false
+         setCandidateAction(recruiterId, jobId, "save" , applicationId, {}, parameters);
+     })
+
 
     function onJobsApplicationsFetchSuccess(topic, data) {
         //Call only on initial load
@@ -320,16 +338,23 @@ jQuery(document).ready( function() {
             alert("success")
         }
         if(res.action == "shortlist") {
-
+            if(!parameters.action) {
+                return alert("success")
+            }
             candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus)
             candidates.candidateActionTransition(res.applicationId)
         }
         if(res.action == "reject") {
-            debugger
+            if(!parameters.action) {
+                return alert("success")
+            }
             candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus)
             candidates.candidateActionTransition(res.applicationId)
         }
         if(res.action == "save") {
+            if(!parameters.action) {
+                return alert("success")
+            }
             candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus)
             candidates.candidateActionTransition(res.applicationId)
         }

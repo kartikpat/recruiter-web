@@ -168,6 +168,9 @@
         overflow: auto;
         clear: both;
         margin-left: 15px;
+        &.full {
+            margin-right: 15px;
+        }
         &.half {
             margin-right: 15px;
             .section {

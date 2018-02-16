@@ -2349,6 +2349,8 @@ span.sticker {
   overflow: auto;
   clear: both;
   margin-left: 15px; }
+  .modal_overlay .modal_content .modal_body .subcategory_listing.full {
+    margin-right: 15px; }
   .modal_overlay .modal_content .modal_body .subcategory_listing.half {
     margin-right: 15px; }
     .modal_overlay .modal_content .modal_body .subcategory_listing.half .section {
@@ -3408,7 +3410,10 @@ input::-webkit-input-placeholder {
         font-size: 15px;
         color: #333;
         line-height: 1.3;
-        margin: 7px 0; }
+        margin: 7px 0;
+        cursor: pointer; }
+        .view-resume-modal .resume-sidebar .external-links ul li:hover {
+          text-decoration: underline; }
         .view-resume-modal .resume-sidebar .external-links ul li span.icon {
           width: 2em;
           margin-right: 10px; }

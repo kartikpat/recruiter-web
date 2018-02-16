@@ -265,9 +265,11 @@ function Filters(){
 				filtersTarget[key]['target'].find('input').prop('checked', false)
 			}
 			else if(filtersTarget[key]["type"] == "dropdownHalf") {
-				for (var k in key["props"]) {
+				debugger
+				for (var k in filtersTarget[key]["props"]) {
 					filtersTarget[key]["props"][k]["selection"] = null;
-					filtersTarget[key]["props"][k]['target'].val("")
+					debugger
+					filtersTarget[key]["props"][k]['target'].val("-1")
 				}
 			}
 			else if(filtersTarget[key]["type"] == "dropdown") {
@@ -277,7 +279,7 @@ function Filters(){
 					continue
 				}
 				filtersTarget[key]["selection"] = null;
-				filtersTarget[key]['target'].val("")
+				filtersTarget[key]['target'].val("-1")
 			}
 		}
 
@@ -303,9 +305,9 @@ function Filters(){
 				el.remove();
 				filtersTarget[category]['target'].find('input[value='+value+']').prop('checked', false)
 			}
-			return
+
 		}
-		if(type == "dropdownHalf"){
+		else if(type == "dropdownHalf"){
 
 			var temp = category.split("-");
 
@@ -317,19 +319,24 @@ function Filters(){
 
 				filtersTarget[category]["props"][key]['selection'] = null;
 				el.remove();
-				filtersTarget[category]["props"][key]['target'].val("")
+				filtersTarget[category]["props"][key]['target'].val("-1")
 			}
-			return
+
 		}
-		if(type == "dropdown"){
+		else if(type == "dropdown"){
 			var str = filtersTarget[category]['selection']
 			if(str){
 				filtersTarget[category]['selection'] = null;
 				el.remove();
-				filtersTarget[category]['target'].val("")
+				filtersTarget[category]['target'].val("-1")
 			}
-			return
+
 		}
+
+		if(!settings.activeFiltersContainer.find(".filter-tag").length) {
+			$("#clear-all").addClass("hidden")
+		}
+
 	}
 	function onClickApplyFilterButton(fn){
 		console.log('clicking apply filter')
