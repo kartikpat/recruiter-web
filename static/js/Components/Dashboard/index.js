@@ -9,6 +9,9 @@ $(document).ready(function(){
 	var greetingsContainer = $(".dashboard .header-row");
 	var notificationContainer = $('#notificationContainer');
 	var seeMoreSection = $('.seeMoreSection.prototype');
+	var otherRolesContainer = $("#otherRolesContainer");
+	var recentJobsContainer = $("#recentJobsContainer");
+	var postedJobsContainer = $("#postedJobsContainer")
 
 	dataModel.greetingText = {
 		"morning": ""
@@ -50,7 +53,13 @@ $(document).ready(function(){
 	            ])
 	    })
 	    dataModel[topic] = temp;
-	    drawBarChartGraph(temp, activeJobsChartContainer.attr('id'));
+	    if(temp.length >1){
+	    	postedJobsContainer.removeClass('hidden')
+	    	drawBarChartGraph(temp, activeJobsChartContainer.attr('id'));
+	    	$(window).resize(function(){
+	    		drawBarChartGraph(dataModel[topic], activeJobsChartContainer.attr('id'));
+	    	})
+	    }
 	}
 	var activeJobStatsSubscription = pubsub.subscribe("fetchedActiveJobStats", onActiveJobStatsUpdate)
 
@@ -73,7 +82,7 @@ $(document).ready(function(){
 			card.find(".stats .newApplications .value").text(aJob["newApplications"]).attr('href', candidateApplyUrl.replace(':publishedId', aJob['publishedId']).replace(':status', 'all'));
 			if(len-1 == index)
 				card.find('.horizontal-separator').addClass('hidden');
-			$('#recentJobsContainer .detail-card').append(card);
+			recentJobsContainer.find('.detail-card').append(card);
 		});
 	}
 	var fetchJobsSubscription = pubsub.subscribe("fetchedJobs", onFetchJobs);
@@ -163,6 +172,9 @@ $(document).ready(function(){
 			seeMore.find(".seeAll a").attr('href', '/followUps')
 			notificationContainer.find('.detail-card').append(seeMore);
 		}
+		if( data.length>0){
+			// notificationContainer.removeClass('hidden');
+		}
 
 	}
 	var followUpsUpdateSubscription = pubsub.subscribe("fetchedFollowups", onFetchFollowUps);
@@ -198,6 +210,11 @@ $(document).ready(function(){
 			card.find('.general').append(candidateCard)
 		})
 		interviewContainer.find('.detail-card').append(card);
+		if( data.length>4){
+			var seeMore= seeMoreSection.clone().removeClass('hidden prototype');
+			seeMore.find(".seeAll a").attr('href', '/interviews')
+			interviewContainer.find('.detail-card').append(seeMore);
+		}
 		if( data.length>4){
 			var seeMore= seeMoreSection.clone().removeClass('hidden prototype');
 			seeMore.find(".seeAll a").attr('href', '/interviews')

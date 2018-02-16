@@ -44,7 +44,7 @@
             </div>
             <div class="container">
                 <div class="feed-column">
-                    <div class="feed-card">
+                    <div class="feed-card hidden" id="postedJobsContainer">
                         <div class="header-row">
                             <div class="heading">Jobs Posted</div>
                             <div class="heading-button right"><a href="/my-jobs">See All</a><img src="/static/images/right-arrow-icon.png"></div>
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="feed-card" id="recentJobsContainer">
+                    <div class="feed-card hidden" id="recentJobsContainer">
                         <div class="header-row">
                             <div class="heading">Recent Jobs</div>
                             <div class="heading-button right"><a href="/my-jobs">See All</a> <img src="/static/images/right-arrow-icon.png"></div>
@@ -157,10 +157,10 @@
                             </div>
                         </div>  
                     </div>
-                     <div class="feed-card">
+                     <div class="feed-card" id="otherRolesContainer">
                         <div class="header-row">
                             <div class="heading">Hiring for other roles</div>
-                            <div class="heading-button right">See All <img src="/static/images/right-arrow-icon.png"></div>
+                            <div class="heading-button right hidden">See All <img src="/static/images/right-arrow-icon.png"></div>
                         </div>
                         <div class="detail-card ">
                             <div class="feed-row">
@@ -178,14 +178,14 @@
                     </div>
                 </div>
                 <div class="notification-column right">
-                    <div class="notification-card" id="notificationContainer">
+                    <div class="notification-card hidden" id="notificationContainer">
                         <div class="header-row">
                             <div class="heading">Notification</div>
                         </div>
                         <div class="detail-card ">
                         </div>
                     </div>
-                    <div class="notification-card" id="interviewContainer">
+                    <div class="notification-card hidden" id="interviewContainer">
                         <div class="header-row">
                             <div class="heading">Upcoming Interviews</div>
                         </div>
