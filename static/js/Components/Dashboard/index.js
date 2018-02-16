@@ -11,7 +11,8 @@ $(document).ready(function(){
 	var seeMoreSection = $('.seeMoreSection.prototype');
 	var otherRolesContainer = $("#otherRolesContainer");
 	var recentJobsContainer = $("#recentJobsContainer");
-	var postedJobsContainer = $("#postedJobsContainer")
+	var postedJobsContainer = $("#postedJobsContainer");
+	var jobOtherActionsClass = ".action-panel"
 
 	dataModel.greetingText = {
 		"morning": ""
@@ -23,6 +24,12 @@ $(document).ready(function(){
 		default: ""
 	}
 
+	function onClickJobOtherActions() {
+		recentJobsContainer.on('click', jobOtherActionsClass, function(e){
+			$(this).toggleClass("inactive");
+		})
+    }
+    onClickJobOtherActions();
 
 	var candidateApplyUrl = "/candidate-apply-list/:publishedId?type=:status";
 	function onStatsUpdate(topic, data){
@@ -74,12 +81,19 @@ $(document).ready(function(){
 		data.forEach(function(aJob, index){
 			var card = jobRowCard.clone().removeClass('hidden prototype');
 			var experience = aJob['exp']['min']+'-'+aJob['exp']['max']+'yrs'
-			card.find(".title .text").text(aJob['title']);
-			card.find(".title .meta-content .location .label").text(aJob["loc"])
+			card.find(".title .text").text(aJob['title']).attr('href', '/job/'+aJob['id']);
+			aJob["location"] = ['Delhi', 'Chandigarh', 'Mumbai', 'Chennai']
+			var locationTitle = (aJob["location"] && aJob["location"].length >3) ? aJob["location"].join(','): null;
+			var location = (aJob["location"] && aJob["location"].length >3) ? "Multiple" : aJob["location"].join(',');
+			card.find(".title .meta-content .location .label").text(location).attr('title', locationTitle);
 			card.find(".title .meta-content .experience .label").text(experience)
 			card.find(".title .meta-content .postedOn .label").text(moment(aJob['created']).format('D MMM YYYY'));
 			card.find(".stats .totalApplications .value").text(aJob["totalApplications"]).attr('href', candidateApplyUrl.replace(':publishedId', aJob['publishedId']).replace(':status', 'all'));
 			card.find(".stats .newApplications .value").text(aJob["newApplications"]).attr('href', candidateApplyUrl.replace(':publishedId', aJob['publishedId']).replace(':status', 'all'));
+			var url = baseUrlJob + aJob["url"];
+			card.find('.action-panel .action-list-items .jobFacebook').attr("href", getFacebookShareLink(url))
+			card.find('.action-panel .action-list-items .jobTwitter').attr("href", getTwitterShareLink(url))
+			card.find('.action-panel .action-list-items .jobLinkedin').attr("href", getLinkedInShareUrl(url))
 			if(len-1 == index)
 				card.find('.horizontal-separator').addClass('hidden');
 			recentJobsContainer.find('.detail-card').append(card);

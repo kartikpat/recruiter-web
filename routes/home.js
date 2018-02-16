@@ -88,7 +88,8 @@ module.exports = function(settings){
 			scripts: assetsMapper["dashboard"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain:baseDomain,
-			profile: profile
+			profile: profile,
+			baseUrlJob: baseUrlJob
 		});
 		return
 	});

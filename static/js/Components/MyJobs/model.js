@@ -149,7 +149,7 @@ function Jobs() {
 		item.title.text(title)
 		item.element.find('.action-icon').attr('data-job-id',aData["id"]);
 
-		var loc = aData["loc"];
+		var loc = aData["location"];
 		var locShow = loc.toString();
 		if(loc.length) {
 			item.metaSeperator.removeClass("hidden");

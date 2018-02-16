@@ -834,6 +834,7 @@
 				"static/js/vendor/jquery.min.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/request.js",
+				"static/js/Utilities/common.js",
 				"static/js/vendor/moment.min.js",
 				"static/js/Services/fetchDashboardStats.js",
 				"static/js/Services/fetchActiveJobStats.js",
