@@ -175,7 +175,7 @@ $(document).ready(function(){
 			notificationContainer.find('.detail-card').append(seeMore);
 		}
 		if( data.length>0){
-			// notificationContainer.removeClass('hidden');
+			notificationContainer.removeClass('hidden');
 		}
 
 	}
