@@ -113,7 +113,7 @@ function Candidate() {
         item.experience.text(aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m" || "NA");
         item.location.text(aData["preferredLocation"] || "NA");
         item.contact.text(aData["phone"] || "NA");
-        item.appliedOn.text(moment(aData["timestamp"]).format('DD-MM-YYYY') || "NA")
+        item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY') || "NA")
         item.notice.text(aData["notice"] + " months" || "NA");
         item.salary.text(aData["ctc"]+ " LPA" || "NA");
         item.firstName.text(aData["name"])

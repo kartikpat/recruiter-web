@@ -331,7 +331,6 @@ jQuery(document).ready( function() {
     }
 
     function onSuccessfullCandidateAction(topic, res) {
-        alert("success")
         if(res.action == "tag") {
             debugger
             if(res.parameters.type == "add") {
