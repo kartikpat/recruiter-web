@@ -46,3 +46,51 @@ body {
 .center{
 	text-align: center;
 }
+
+
+.toast-notification-container {
+    position: fixed;
+    bottom: -200px;
+    padding: 10px;
+    background-color: #757575;
+    left: 15px;
+    transition:all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    -webkit-transition:all 0.5s cubic-bezier(0.68,-0.55,0.265,1.55);
+    -moz-transition:all 0.5s cubic-bezier(0.68,-0.55,0.265,1.55);
+    z-index:1500;
+
+    &.show {
+    	bottom:15px;
+    }
+
+    &.error {
+    	background-color:#b66666;
+    }
+
+    &.success {
+    	background-color:#149075;
+    }
+
+    &.warning {
+    	background-color:#757575;
+    }
+
+	.notification-icon {
+		img {
+			height:20px;
+			width:20px;
+		}
+	}
+	.notification-icon,.notification-message {
+		display:table-cell;
+		vertical-align:middle;
+		padding:10px;
+	}
+	.notification-message  {
+		p {
+			color:$color-white;
+			font-family:$primary-font;
+			font-size:$base-font-size;
+		}
+	}
+}

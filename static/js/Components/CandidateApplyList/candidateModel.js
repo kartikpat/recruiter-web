@@ -203,6 +203,7 @@ function Candidate() {
         var tag = getCandidateTag(aTag);
         settings.candidateDetailsModal.find(settings.candidateTagListClass).append(tag)
         emptyInputElement($(settings.candidateTagInputClass));
+        emptyInputElement($(settings.mobCandidateTagInputClass));
     }
 
     function emptyInputElement(element) {
@@ -334,7 +335,7 @@ function Candidate() {
         $(settings.candidateTagListClass).find(".tagRemove[data-tag-id="+tagId+"]").closest(".candidateTag").remove()
     }
 
-    function onClickShortlistCandidateModal(fn) {
+    function onClickShortlistCandidate(fn) {
 
         settings.candidateShortlistModal.click(function(event) {
             event.stopPropagation();
@@ -343,7 +344,7 @@ function Candidate() {
         })
     }
 
-    function onClickRejectCandidateModal(fn) {
+    function onClickRejectCandidate(fn) {
         settings.candidateRejectModal.click(function(event) {
             event.stopPropagation();
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
@@ -351,7 +352,7 @@ function Candidate() {
         })
     }
 
-    function onClickSaveCandidateModal(fn) {
+    function onClickSaveCandidate(fn) {
         settings.candidateSaveModal.click(function(event) {
             event.stopPropagation();
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
@@ -369,9 +370,9 @@ function Candidate() {
         onClickAddTagMob: onClickAddTagMob,
         removeTag: removeTag,
         onClickAddCommentMob: onClickAddCommentMob,
-        onClickShortlistCandidateModal: onClickShortlistCandidateModal,
-        onClickRejectCandidateModal: onClickRejectCandidateModal,
-        onClickSaveCandidateModal:onClickSaveCandidateModal
+        onClickShortlistCandidate: onClickShortlistCandidate,
+        onClickRejectCandidate: onClickRejectCandidate,
+        onClickSaveCandidate:onClickSaveCandidate
 	}
 
     function focusOnElement(element, container) {
