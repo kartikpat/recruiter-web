@@ -1,5 +1,4 @@
 function submitPremiumJob(recruiterId, jobId){
-	return pubsub.publish("jobPremiumSuccess");
 	return postRequest(baseUrl+"/recruiter/"+recruiterId+"/job/"+jobId+'/action/premium',{
 		"Content-Type": "application/json",
 	}, function(res){

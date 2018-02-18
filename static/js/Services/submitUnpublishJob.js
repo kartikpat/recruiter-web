@@ -1,5 +1,4 @@
 function submitUnpublishJob(recruiterId, jobId, data){
-	return pubsub.publish("jobUnpublishSuccess");
 	return postRequest(baseUrl+"/recruiter/"+recruiterId+"/job/"+jobId+'/action/unpublish',{
 		"Content-Type": "application/json",
 	}, JSON.stringify(data), function(res){
