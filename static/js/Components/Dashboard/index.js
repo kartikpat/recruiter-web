@@ -62,7 +62,6 @@ $(document).ready(function(){
 			var jobId = $(this).attr("data-job-id");
 			settings.jobUnpublishModal.removeClass('hidden');
 			settings.jobUnpublishButton.attr('data-unpublish-job-id', jobId);
-			debugger
 			return false;
 		});
 	}

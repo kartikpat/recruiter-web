@@ -754,6 +754,9 @@
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Services/fetchJobs.js",
+				"static/js/Services/submitUnpublishJob.js",
+				"static/js/Services/submitPremiumJob.js",
+				"static/js/Services/submitRefreshJob.js",
 				"static/js/Components/MyJobs/model.js",
 				"static/js/Components/MyJobs/index.js"
 			],

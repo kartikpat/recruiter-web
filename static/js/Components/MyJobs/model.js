@@ -24,14 +24,31 @@ function Jobs() {
 		settings.jobMakePremiumButton= $(".jobMakePremiumButton")
 		settings.tooltip= $(".tooltip");
 		$(".header .menu-list-item.my-jobs").addClass("active");
+
+		onClickJobRefresh();
+		onClickJobCancel();
+		onClickJobMakePremium();
 	}
 
 	function onClickJobCancel(fn){
 		settings.rowContainer.on('click',settings.openJobUnpublishModalButton,function(e){
+			e.preventDefault();
 			var jobId = $(this).attr("data-job-id");
+			settings.jobUnpublishModal.find("input:radio[name='unpublishReason']:checked").prop('checked', false);
 			settings.jobUnpublishModal.removeClass('hidden');
-			settings.jobUnpublishButton.click(fn);
-			return false;
+			settings.jobUnpublishButton.attr('data-unpublish-job-id', jobId);
+		});
+	}
+
+	function onClickSubmitUnpublishJob(fn){
+		settings.jobUnpublishButton.click(function(e){
+			var jobId= $(this).attr('data-unpublish-job-id');
+			var reason = settings.jobUnpublishModal.find("input:radio[name='unpublishReason']:checked").attr('id');
+			if(!reason){
+				settings.jobUnpublishModal.find('.error').removeClass('hidden');
+				return
+			}
+			return fn(jobId,reason);
 		});
 	}
 
@@ -43,13 +60,21 @@ function Jobs() {
 
 	function onClickJobRefresh(fn) {
 		settings.rowContainer.on('click', settings.openJobRefreshModalButton,function(e) {
+			e.preventDefault();
 			if(parseInt($(this).attr("data-job-refreshable"))) {
 				var jobId = $(this).attr("data-job-id");
 				settings.jobRefreshModal.removeClass('hidden');
-				settings.jobRefreshButton.click(fn);
+				settings.jobRefreshButton.attr('data-refresh-job-id', jobId);
 			}
-			return false;
+			// return false;
 		})
+	}
+
+	function onClickSubmitRefreshJob(fn){
+		settings.jobRefreshButton.click(function(){
+			var jobId = $(this).attr('data-refresh-job-id');
+			return fn(jobId);
+		});
 	}
 
 	function onClickJobMakePremium(fn) {
@@ -58,8 +83,9 @@ function Jobs() {
 				return false;
 			}
 			var jobId = $(this).attr("data-job-id");
+			settings.jobMakePremiumButton.attr('data-premium-job-id', "");
 			if(config["availableCredits"] > 0) {
-				settings.jobMakePremiumButton.click(fn)
+				settings.jobMakePremiumButton.attr('data-premium-job-id', jobId);
 				settings.jobMakePremiumButton.removeClass("hidden")
 				settings.jobMakePremiumModal.find(".modalTextSecondary").text("This job will be highlighted and moved to top of the list for 15 days starting today. You will have "+(parseInt(config["availableCredits"]) - 1)+" credits left.")
 				settings.jobMakePremiumModal.removeClass('hidden');
@@ -70,6 +96,15 @@ function Jobs() {
 			settings.jobMakePremiumModal.removeClass('hidden');
 			//shootEmail()
 			return false;
+		})
+	}
+	function onClickSubmitPremiumJob(fn){
+		settings.jobMakePremiumButton.click(function(e){
+			e.preventDefault();
+			var jobId = $(this).attr('data-premium-job-id');
+			if(!jobId)
+				return
+			return fn(jobId);
 		})
 	}
 
@@ -143,7 +178,6 @@ function Jobs() {
 
 	function createElement(aData) {
 		var item = cloneElement(aData["id"]);
-		console.log(item.element[0].outerHTML);
 		var title = getTitleFormat(aData["title"], (/\(\d+-\d+ \w+\)$/));
 		item.createdOn.text(getDateFormat(aData["created"]))
 		item.title.text(title)
@@ -225,10 +259,13 @@ function Jobs() {
 		init: init,
 		addToList: addToList,
 		onClickJobEdit: onClickJobEdit,
-		onClickJobCancel: onClickJobCancel,
-		onClickJobRefresh: onClickJobRefresh,
+		// onClickJobCancel: onClickJobCancel,
+		// onClickJobRefresh: onClickJobRefresh,
+		onClickSubmitUnpublishJob: onClickSubmitUnpublishJob,
+		onClickSubmitRefreshJob: onClickSubmitRefreshJob,
 		setConfig : setConfig,
 		onClickJobMakePremium: onClickJobMakePremium,
+		onClickSubmitPremiumJob: onClickSubmitPremiumJob,
 		onChangeJobFilters: onChangeJobFilters
 	}
 

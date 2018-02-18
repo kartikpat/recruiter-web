@@ -12,16 +12,25 @@ jQuery(document).ready( function() {
 
 	jobList.onClickJobEdit()
 
-	jobList.onClickJobCancel(function(jobId){
-		alert(jobId)
+	jobList.onClickSubmitUnpublishJob(function(jobId, reason){
+		return submitUnpublishJob(recruiterId, jobId, {reasonId: reason});
+	});
+	jobList.onClickSubmitRefreshJob(function(jobId){
+		return submitRefreshJob(recruiterId, jobId);
 	})
+	// jobList.onClickJobCancel(function(jobId){
+	// 	alert(jobId)
+	// })
 
-	jobList.onClickJobRefresh(function(jobId) {
-		alert(jobId)
-	})
+	// jobList.onClickJobRefresh(function(jobId) {
+	// 	alert(jobId)
+	// })
 
-	jobList.onClickJobMakePremium(function(jobId){
-		alert(jobId)
+	// jobList.onClickJobMakePremium(function(jobId){
+	// 	alert(jobId)
+	// })
+	jobList.onClickSubmitPremiumJob(function(jobId){
+		return submitPremiumJob(recruiterId, jobId);
 	})
 
 	//Initial call
@@ -29,8 +38,14 @@ jQuery(document).ready( function() {
 
 	var fetchJobSuccessSubscription = pubsub.subscribe('fetchedJobs', onJobsFetchSuccess)
 	var fetchJobFailSubscription = pubsub.subscribe('fetchJobsFail', onJobsFetchFail)
-	// var unPublishJobSuccessSubscription = pubsub.subscribe("unPublishedJob", onSuccessfulUnpublishedJob);
-	// var unPublishJobFailSubscription = pubsub.subscribe("unPublishedJobFail", onFailedUnpublishedJob);
+	var unPublishJobSuccessSubscription = pubsub.subscribe("jobUnpublishSuccess", onSuccessfulUnpublishedJob);
+	var unPublishJobFailSubscription = pubsub.subscribe("jobUnpublishFail", onFailedUnpublishedJob);
+
+	var refreshJobSuccessSubscription = pubsub.subscribe("jobRefreshSuccess", onSuccessfulRefreshJob)
+	var refreshJobFailSubscription = pubsub.subscribe("jobRefreshFail", onFailedRefreshJob)
+
+	var premiumJobSuccessSubscription = pubsub.subscribe("jobPremiumSuccess", onSuccessfulPremiumJob)
+	var premiumJobFailSubscription = pubsub.subscribe("jobPremiumFail", onFailedPremiumJob);
 
 	function onJobsFetchSuccess(topic, data){
 		jobList.addToList(data);
@@ -39,13 +54,24 @@ jQuery(document).ready( function() {
 	function onJobsFetchFail(topic, data){
 
 	}
-
-	// function onSuccessfulUnpublishedJob(topic, data) {
-	// 	alert(data)
-	// }
-	//
-	// function onFailedUnpublishedJob(topic,data) {
-	// 	alert(data)
-	// }
+	function onSuccessfulUnpublishedJob(topic, data) {
+		alert(topic)
+	}
+	
+	function onFailedUnpublishedJob(topic,data) {
+		alert(topic)
+	}
+	function onSuccessfulRefreshJob(topic, data){
+		alert(topic);
+	}
+	function onFailedRefreshJob(topic, data){
+		alert(topic);
+	}
+	function onSuccessfulPremiumJob(topic, data){
+		alert(topic)
+	}
+	function onFailedPremiumJob(topic, data){
+		alert(topic);
+	}
 
 });
