@@ -7,6 +7,6 @@ function setCandidateAction(recruiterId, jobId, action, applicationId , data, pa
 			return pubsub.publish("setCandidateActionSuccess", res);
 		}
 	}, function(res){
-		return pubsub.publish("setCandidateActionFail", res);
+		return pubsub.publish("setCandidateActionFail", res.responseJSON);
 	});
 }

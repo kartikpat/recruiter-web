@@ -90,12 +90,12 @@ function candidateList() {
     function createElement(aData) {
 		var item = getElement(aData["userID"]);
         item.element.attr("data-application-id", aData["id"]);
-        item.image.attr("src",aData["img"]);
-        item.name.text(aData["name"]);
-        item.experience.text(aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m");
-        item.location.text(aData["preferredLocation"]);
-        item.appliedOn.text(moment(aData["timestamp"]).format('DD-MM-YYYY'))
-        item.notice.text(aData["notice"] + " months");
+        item.image.attr("src",(aData["img"] || "static/images/noimage.png"));
+        item.name.text(aData["name"] || "NA");
+        item.experience.text((aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m") || "NA");
+        item.location.text(aData["preferredLocation"] || "NA");
+        item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY'))
+        item.notice.text((aData["notice"] + " months"));
         item.shortlistButton.attr("data-status", "1");
         item.rejectButton.attr("data-status", "2");
         item.savedButton.attr("data-status", "3");
