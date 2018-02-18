@@ -27,7 +27,8 @@ function Candidate() {
 
 
         onClickChatCandidateModal()
-        
+        jQuery("#tabbed-content").tabs({});
+
     }
 
     function showCandidateDetails(details, type){
@@ -79,7 +80,8 @@ function Candidate() {
             tag: modal.find(".candidateTagInput"),
             mobTag: modal.find(".mobCandidateTagInput"),
             mobComment: modal.find(".mobCandidateCommentTextarea"),
-            firstName: modal.find("#firstName")
+            firstName: modal.find("#firstName"),
+            tabContent: modal.find("#tabbed-content")
         }
     }
 
@@ -225,14 +227,14 @@ function Candidate() {
         item.languages.text("");
         item.workPermit.text("");
         item.coverLetter.text("");
-
+        item.tabContent.tabs({active: 0});
     }
 
     function openModal() {
 
     	$(".body-overlay").removeClass("hidden").addClass("veiled");
     	$("body").addClass("posf");
-        jQuery("#tabbed-content").tabs({});
+
         settings.candidateDetailsModal.removeClass("hidden");
     }
 

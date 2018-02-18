@@ -79,6 +79,9 @@
             @include button($button-color-green)
             margin: 0;
         }
+        .action-buttons {
+            padding-right: 15px !important;
+        }
     }
 
 
@@ -170,9 +173,11 @@
         margin-left: 15px;
         &.full {
             margin-right: 15px;
+            min-height: 189px;
         }
         &.half {
             margin-right: 15px;
+            min-height: 189px;
             .section {
                 display: inline-block;
                 width: calc(50% - 20px);

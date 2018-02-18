@@ -27,6 +27,7 @@ function Job(){
 		settings.createCalendar = $("#createCalendar");
 
 		onClickCreateCalendar();
+		onClickJobOtherActions()
 	}
 
 	function setJobDetails(data){
@@ -177,7 +178,6 @@ function Job(){
 		init: init,
 		setConfig: setConfig,
         setJobDetails: setJobDetails,
-		onClickJobOtherActions: onClickJobOtherActions,
 		onClickJobCancel: onClickJobCancel,
 		onClickJobRefresh: onClickJobRefresh,
 		onClickJobMakePremium: onClickJobMakePremium,

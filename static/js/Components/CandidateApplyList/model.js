@@ -33,6 +33,7 @@ function candidateList() {
         settings.candidateSelectedLength = null
 
         onClickMassCheckbox()
+        onClickCandidateOtherActions()
 	}
 
 	function setConfig(key, value) {
@@ -201,7 +202,7 @@ function candidateList() {
         $("#jobs-tabs").removeClass("hidden")
 	}
 
-    function createJobStatsTabs(fn) {
+    function createJobApplicationStatsTabs(fn) {
         jQuery("#jobs-tabs").tabs({
             active: 0,
             create:function(){},
@@ -280,7 +281,7 @@ function candidateList() {
         })
     }
 
-    function onClickSaveJob(fn) {
+    function onClickSaveCandidate(fn) {
         settings.rowContainer.on('click', settings.candidateSaveButton, function(event){
             event.stopPropagation();
             var status = $(this).attr("data-status");
@@ -457,16 +458,15 @@ function candidateList() {
 		init: init,
 		addToList: addToList,
 		setConfig : setConfig,
-        createJobStatsTabs: createJobStatsTabs,
+        createJobApplicationStatsTabs: createJobApplicationStatsTabs,
         setJobStats: setJobStats,
         activateStatsTab: activateStatsTab,
         onClickCandidate: onClickCandidate,
         onClickSendInterviewInvite: onClickSendInterviewInvite,
-        onClickCandidateOtherActions: onClickCandidateOtherActions,
         onClickAddTag: onClickAddTag,
         onClickAddComment: onClickAddComment,
         onClickSendMessage: onClickSendMessage,
-        onClickSaveJob: onClickSaveJob,
+        onClickSaveCandidate: onClickSaveCandidate,
         onClickDownloadResume: onClickDownloadResume,
         onClickShortlistCandidate: onClickShortlistCandidate,
         onClickRejectCandidate: onClickRejectCandidate,

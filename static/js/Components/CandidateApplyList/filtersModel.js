@@ -134,6 +134,7 @@ function Filters(){
 			selection: 1
 		}
 	}
+
 	function init(){
 		settings.searchButton = $("#searchButton");
 		settings.filterButton = "";
@@ -152,35 +153,74 @@ function Filters(){
 		settings.activeFilterListingClass = ".activeFilterListing";
 		settings.filterPill = $(".prototype.filterPill")
 		settings.filterSearch = $(".filterSearch");
-		settings.sortBySelect = $("#sortBySelect");
 		settings.sortBy = $("#sortBy");
-		settings.clearAllFitersbutton = $("#clear-all");
-		settings.resultFoundText = $("#resultFound")
+		settings.clearAllFitersButton = $("#clear-all");
+		settings.resultFoundText = $("#resultFound");
+		settings.filterModalOpenButton = $("#filterModalOpenButton");
 
 
 		setOnClickFilters();
 		setOnClickCloseFilters();
-
-		// onClickApplyFilterButton(setAppliedFilters)
 		onInputSearchFilter()
 
 	}
 
-	function onClickRemoveAllFilters(fn) {
-		settings.clearAllFitersbutton.click(function(){
+	function onClickApplyFilterButton(fn){
+		settings.applyFilterButton.click(function(e){
+			settings.clearAllFitersButton.removeClass("hidden")
+			removeBodyFixed();
+            settings.filterModal.addClass("hidden");
+			var name = $(settings.activeFilterListingClass).attr('data-label');
+			fn(name);
+		})
+	}
 
+	function onClickRemoveFilter(fn){
+		settings.activeFiltersContainer.on('click', settings.removeFilterButtonClass, function(e){
+			var filterElement = $(this).closest('.filter-tag');
+			var value = filterElement.attr('data-value');
+			var category = filterElement.attr('data-category');
+			var type = filterElement.attr('data-type');
+			filterElement.remove();
+			fn(value,category,type)
+		})
+	}
+
+	function onClickRemoveAllFilters(fn) {
+		settings.clearAllFitersButton.click(function(){
 			removeAllFilters()
 			fn()
 		})
+	}
 
-		console.log(filtersTarget)
+	function onClickSearchButton(fn){
+		settings.searchButton.click(function(event){
+			var str = filtersTarget["searchString"]["target"].val();
+			filtersTarget["searchString"]["selection"] = str;
+			fn();
+		})
+
+		filtersTarget["searchString"]["target"].keyup(function(event){
+            if (event.which == 13) {
+				var str = filtersTarget["searchString"]["target"].val();
+				filtersTarget["searchString"]["selection"] = str;
+                fn();
+            }
+        });
+	}
+
+	function onSelectSortByOption(fn) {
+		filtersTarget["orderBy"]["target"].change(function() {
+			var sortById = $(this).val();
+		    filtersTarget.orderBy.selection = sortById;
+			fn()
+		})
 	}
 
 	function onInputSearchFilter() {
 		settings.filterSearch.on('input', function(){
 			var str = $(this).val();
 			var dataLabel = $(settings.activeFilterListingClass).attr("data-label");
-			console.log(dataLabel)
 			if(dataLabel == "functionalArea") {
 				searchTags(dataLabel, functionalAreaTagsData, str)
 			}
@@ -202,6 +242,28 @@ function Filters(){
 		})
 	}
 
+	function setOnClickFilters() {
+        settings.filterModalOpenButton.click(function(event){
+            addBodyFixed()
+            settings.filterModal.removeClass("hidden");
+        })
+    }
+
+    function setOnClickCloseFilters(){
+    	settings.filterModalCancelButton.click(function(event){
+    		removeBodyFixed();
+            settings.filterModal.addClass("hidden");
+    	})
+		settings.filterModal.click(function(event){
+			if($(event.target).parents(".modal_content").length) {
+				return event.stopPropagation();
+			}
+			removeBodyFixed();
+            settings.filterModal.addClass("hidden");
+		})
+
+    }
+
 	function createPill(value, label, category, type){
 		var aFilter = settings.filterPill.clone().removeClass('hidden prototype');
 		aFilter.attr('data-category', category)
@@ -213,13 +275,7 @@ function Filters(){
 		return aFilter;
 	}
 
-	function onClickSearchButton(fn){
-		settings.searchButton.click(function(event){
-			var str = filtersTarget["searchString"]["target"].val();
-			filtersTarget["searchString"]["selection"] = str;
-			fn();
-		})
-	}
+
 
 	function addFilterToContainer(value, label, category, type){
 		if(["dropdown","dropdownHalf"].indexOf(type) != -1) {
@@ -248,12 +304,7 @@ function Filters(){
 		settings.appliedFiltersContainer.prepend(aFilter);
 	}
 
-	function onClickRemoveFilter(fn){
-		settings.activeFiltersContainer.on('click', settings.removeFilterButtonClass, function(e){
-			var filterElement = $(this).closest('.filter-tag');
-			fn(filterElement)
-		})
-	}
+
 
 	function removeAllFilters(){
 
@@ -287,70 +338,36 @@ function Filters(){
 		$("#clear-all").addClass("hidden")
 	}
 
-	function onClickFilterButton(){
-
-	}
-	function onClickSortButton(){
-
-	}
-	function removeFilter(el){
-		var value = el.attr('data-value');
-		var category = el.attr('data-category');
-		var type = el.attr('data-type');
-
+	function removeFilter(value,category,type) {
 		if(type == "checkbox"){
 			var index = filtersTarget[category]['selection'].indexOf(value)
 			if(index > -1){
 				filtersTarget[category]['selection'].splice(index, 1);
-				el.remove();
 				filtersTarget[category]['target'].find('input[value='+value+']').prop('checked', false)
 			}
-
 		}
 		else if(type == "dropdownHalf"){
-
 			var temp = category.split("-");
-
 			var key = temp[0];
 			var category = temp[1];
 			var str = filtersTarget[category]["props"][key]['selection'];
-
 			if(str){
-
 				filtersTarget[category]["props"][key]['selection'] = null;
-				el.remove();
 				filtersTarget[category]["props"][key]['target'].val("-1")
 			}
-
 		}
 		else if(type == "dropdown"){
 			var str = filtersTarget[category]['selection']
 			if(str){
 				filtersTarget[category]['selection'] = null;
-				el.remove();
 				filtersTarget[category]['target'].val("-1")
 			}
-
 		}
-
 		if(!settings.activeFiltersContainer.find(".filter-tag").length) {
-			$("#clear-all").addClass("hidden")
+			settings.clearAllFitersButton.addClass("hidden");
 		}
-
 	}
-	function onClickApplyFilterButton(fn){
-		console.log('clicking apply filter')
-		settings.applyFilterButton.click(function(e){
-			$("#clear-all").removeClass("hidden")
-			removeBodyFixed();
-            settings.filterModal.addClass("hidden");
 
-			console.log('clicking event set on applied filters');
-			var name = $(settings.activeFilterListingClass).attr('data-label');
-			fn(name);
-
-		})
-	}
 	function setAppliedFilters(name){
 		var type = filtersTarget[name]['type']
 		if(type == "checkbox"){
@@ -362,20 +379,16 @@ function Filters(){
 				filtersTarget[name]['selection'].push(el.value)
 				addFilterToContainer(value, label, category, type);
 			})
-			return
 		}
-
-		if(type == "dropdownHalf"){
+		else if(type == "dropdownHalf"){
 			for(var key in filtersTarget[name]["props"]) {
 				var value = filtersTarget[name]["props"][key]['target'].val();
 				var category = key +"-"+ name;
-
 				var elem = settings.appliedFiltersContainer.find(".filterPill[data-category="+category+"]")
 				;
-				if(parseInt(value) == -1 && !elem.length  ) {
-					return
-				}
-				if(parseInt(value) == -1 && elem.length) {
+				if(parseInt(value) == -1) {
+					if(!elem.length)
+						return
 					filtersTarget[name]["props"][key]['selection'] = null;
 					elem.remove();
 					return
@@ -384,14 +397,12 @@ function Filters(){
 				var label = value;
 				addFilterToContainer(value, label, category, type);
 			}
-			return
 		}
-
-		if(type == "dropdown"){
+		else if(type == "dropdown"){
 			var value = filtersTarget[name]['target'].val();
 			var category = name
 			var elem = settings.appliedFiltersContainer.find(".filterPill[data-category="+category+"]")
-			if(!parseInt(value) && elem.length) {
+			if(parseInt(value) == -1 && elem.length) {
 				filtersTarget[category]['selection'] = null;
 				elem.remove();
 				return
@@ -399,10 +410,9 @@ function Filters(){
 			filtersTarget[name]['selection'] = value
 			var label = filtersTarget[name]['target'].find('option:selected').text();
 			addFilterToContainer(value, label, category, type);
-			return
 		}
-
 	}
+
 	function getAppliedFilters(){
 		var ob ={};
 		if(filtersTarget.industry.selection.length >0)
@@ -475,33 +485,23 @@ function Filters(){
 		}
 	}
 
-	function addFilterDataOnSearch(name, resultTags) {
+	function searchTags(name, array, str) {
+		str=str.toLowerCase();
+		var resultTags = []
+	    for (var i=0; i < array.length; i++) {
+	        if (array[i]["text"] && array[i]["text"].toLowerCase().indexOf(str)>-1) {
+	            resultTags.push(array[i]);
+	        }
+	    }
+		showSearchResults(name ,resultTags)
+	}
+
+	function showSearchResults(name, resultTags) {
 		filtersTarget[name].target.find(".jsCheckInput").addClass("hidden")
 		var inputElem = filtersTarget[name].target.find("input");
 		resultTags.forEach(function(obj) {
 			console.log("input[value='"+obj["val"]+"']")
 			filtersTarget[name].target.find("input[value='"+obj["val"]+"']").closest('.jsCheckInput').removeClass("hidden")
-		})
-	}
-
-	function setOnClickFilters() {
-        settings.candidatesContainer.on('click','.jsFilter',function(event){
-            addBodyFixed()
-            settings.filterModal.removeClass("hidden");
-        })
-    }
-    function setOnClickCloseFilters(){
-    	settings.filterModalCancelButton.click(function(event){
-    		removeBodyFixed();
-            settings.filterModal.addClass("hidden");
-    	})
-    }
-
-	function onSelectSortByOption(fn) {
-		settings.sortBySelect.change(function() {
-			var sortById = $(this).val();
-		    filtersTarget.orderBy.selection = sortById;
-			return fn()
 		})
 	}
 
@@ -512,6 +512,8 @@ function Filters(){
 		}
 		settings.resultFoundText.addClass("hidden")
 	}
+
+
 
     return {
     	init: init,
@@ -526,15 +528,6 @@ function Filters(){
 		onClickRemoveAllFilters: onClickRemoveAllFilters,
 		showResultsFound: showResultsFound
     }
-	function searchTags(name, array, str) {
-		str=str.toLowerCase();
-		var resultTags = []
-	    for (var i=0; i < array.length; i++) {
-	        if (array[i]["text"] && array[i]["text"].toLowerCase().indexOf(str)>-1) {
-	            resultTags.push(array[i]);
-	        }
-	    }
-		addFilterDataOnSearch(name ,resultTags)
 
-	}
+
 }
