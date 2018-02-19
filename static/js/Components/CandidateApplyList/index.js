@@ -305,6 +305,8 @@ jQuery(document).ready( function() {
             candidates.setJobStats(data["stats"]);
             globalParameters.initialLoad = 0;
         }
+        console.log(data)
+        debugger
 
         globalParameters.candidateListLength = data["data"].length;
         candidates.addToList(data["data"], globalParameters["status"]);

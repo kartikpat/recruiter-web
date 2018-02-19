@@ -90,7 +90,7 @@ function candidateList() {
     function createElement(aData, status) {
 		var item = getElement(aData["userID"]);
         item.element.attr("data-application-id", aData["id"]);
-        item.image.attr("src",(aData["img"] || "static/images/noimage.png"));
+        item.image.attr("src",(aData["img"] || "/static/images/noimage.png"));
         item.name.text(aData["name"] || "NA");
         item.experience.text((aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m") || "NA");
         item.location.text(aData["preferredLocation"] || "NA");
