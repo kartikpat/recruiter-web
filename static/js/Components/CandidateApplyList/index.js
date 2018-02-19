@@ -285,10 +285,12 @@ jQuery(document).ready( function() {
                 jobTitle: getTitleFormat(jobRow["title"],(/\(\d+-\d+ \w+\)$/)),
                 jobLocation: jobRow["location"].toString(),
                 jobExperience: jobRow["exp"]['min']+'-'+ jobRow['exp']['max'] +' yrs',
-                jobId: jobRow['publishedId'],
+                jobPublishedId: jobRow['publishedId'],
+                jobId: jobRow['id'],
                 jobStatus: jobRow['status'],
                 isPremium: jobRow['premium'],
                 isEditable: jobRow['editable'],
+                isRefreshable: jobRow["refreshable"],
                 calendars: calendarRows
              }
              return pubsub.publish("fetchedJobDetails:"+jobId, data);

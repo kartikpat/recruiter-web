@@ -47,7 +47,7 @@ input::-webkit-input-placeholder {
 			font-size:0;
 			span {
 				@include button($color-white);
-
+                padding: 7px 14px;
 				&.multi-options {
 					background-color:transparent;
 					padding-left:0;
@@ -1607,6 +1607,14 @@ input::-webkit-input-placeholder {
 		border: 1px solid $button-border-color;
 		color: #000;
 	}
+    span.edit {
+        padding:7px 14px !important;
+        img {
+            width:16px;
+            height:16px;
+            vertical-align: bottom;
+        }
+    }
 }
 
 .multi-options.button-action-list {

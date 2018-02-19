@@ -164,10 +164,12 @@ function Candidate() {
         item.expectedSalary.text(aData["expectedCtc"]+ " LPA")
         item.maritalStatus.text(getMaritalStatus(aData["maritalStatus"]));
         item.languages.text(formatLanguages(aData["languages"]));
-        item.workPermit.text(binary[aData["permit"]]);
-        item.teamHandling.text(binary[aData["permit"]])
+        item.workPermit.text(binary[aData["permit"] || ""]);
+        item.teamHandling.text(binary[aData["permit"] || ""])
         item.workSixDays.text("no");
-        item.relocate.text(binary[aData["relocate"]])
+        item.relocate.text(binary[aData["relocate"] || ""] )
+        item.startup.text(binary[aData["joinStartup"] || ""])
+        item.travel.text(binary[aData["travel"] || ""])
         if(isCanvasSupported()) {
         	getBinaryData(aData["resume"],resumeCallback);
         }

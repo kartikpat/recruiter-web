@@ -316,10 +316,10 @@ function Filters(){
 				filtersTarget[key]['target'].find('input').prop('checked', false)
 			}
 			else if(filtersTarget[key]["type"] == "dropdownHalf") {
-				debugger
+				
 				for (var k in filtersTarget[key]["props"]) {
 					filtersTarget[key]["props"][k]["selection"] = null;
-					debugger
+					
 					filtersTarget[key]["props"][k]['target'].val("-1")
 				}
 			}

@@ -7,5 +7,6 @@ var gender = {
 
 var binary = {
     1: "Yes",
-    0: "No"
+    0: "No",
+    "": "N.A."
 }

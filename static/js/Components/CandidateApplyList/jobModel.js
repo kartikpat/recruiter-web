@@ -49,7 +49,8 @@ function Job(){
 		if(status == "published") {
             settings.jobUnpublishButton.removeClass("hidden")
 			settings.jobOtherActions.removeClass("hidden")
-            if(data["refreshable"])
+
+            if(data["isRefreshable"])
     		    settings.jobRefreshButton.removeClass("hidden")
             if(!data["isPremium"])
                 settings.jobPremiumButton.removeClass("hidden")
@@ -60,8 +61,10 @@ function Job(){
 				settings.jobPostLinkedin.attr("href", getLinkedInShareUrl(url))
 			}
         }
-        if(data["editable"]) {
-            settings.jobEditButton.attr("href","/post-job?jobId="+data["id"]+"").removeClass("hidden")
+
+        if(data["isEditable"]) {
+			
+            settings.jobEditButton.attr("href","/job/"+data["jobId"]+"/edit").removeClass("hidden")
         }
 
 

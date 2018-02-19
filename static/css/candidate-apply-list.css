@@ -2458,7 +2458,8 @@ input::-webkit-input-placeholder {
         color: #FFF;
         display: inline-block;
         vertical-align: top;
-        cursor: pointer; }
+        cursor: pointer;
+        padding: 7px 14px; }
         .page-content .page-header .action-buttons span.green {
           background-color: #1f8f75; }
         .page-content .page-header .action-buttons span.red {
@@ -3788,6 +3789,13 @@ input::-webkit-input-placeholder {
   padding: 5px 45px 5px 15px;
   border: 1px solid #8f8a8a;
   color: #000; }
+
+.action-buttons span.edit {
+  padding: 7px 14px !important; }
+  .action-buttons span.edit img {
+    width: 16px;
+    height: 16px;
+    vertical-align: bottom; }
 
 .multi-options.button-action-list {
   width: auto; }
