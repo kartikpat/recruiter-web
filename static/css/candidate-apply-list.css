@@ -2405,6 +2405,19 @@ span.sticker {
 input::-webkit-input-placeholder {
   font-size: 13px; }
 
+.bulkActionModal .modal_text {
+  padding: 10px 0; }
+
+.bulkActionModal .jsModalTextSecondary {
+  color: #808080; }
+
+.bulkActionModal textarea {
+  width: 100%;
+  min-height: 50px; }
+  .bulkActionModal textarea:focus {
+    outline: none;
+    border: 1px solid #4fa995; }
+
 .pill-listingg-container {
   position: relative; }
   .pill-listingg-container #tagListing {

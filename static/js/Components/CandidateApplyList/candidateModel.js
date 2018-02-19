@@ -191,15 +191,15 @@ function Candidate() {
         item.shortlistButton.attr("data-status", "1");
         item.rejectButton.attr("data-status", "2");
         item.savedButton.attr("data-status", "3");
-        if(status == "1") {
-            console.log("1")
-            item.shortlistButton.text("Shortlisted")
+        var status = aData["status"];
+        if(status == 1) {
+            item.shortlistButton.text("Shortlisted").attr("data-isNotAction", true)
         }
-        else if(status == "2") {
-            item.rejectButton.text("Rejected")
+        else if(status == 2) {
+            item.rejectButton.text("Rejected").attr("data-isNotAction", true)
         }
-        else if(status == "3") {
-            item.savedButton.html("<span class='icon'><i class='icon-star'></i></span>Saved for later")
+        else if(status == 3) {
+            item.savedButton.html("<span class='icon'><i class='icon-star'></i></span>Saved for Later").attr("data-isNotAction", true)
         }
 
         openModal(item)
@@ -257,9 +257,11 @@ function Candidate() {
         item.workPermit.text("");
         item.coverLetter.text("");
         item.tabContent.tabs({active: 0});
+        debugger
         item.shortlistButton.text("Shortlist");
-        item.rejectButton.attr("Reject");
-        item.savedButton.attr("Save for Later");
+        debugger
+        item.rejectButton.text("Reject");
+        item.savedButton.html("<span class='icon'><i class='icon-star'></i></span>Save for Later");
     }
 
     function openModal() {
@@ -275,8 +277,9 @@ function Candidate() {
     		e.stopImmediatePropagation();
     	}
         settings.candidateDetailsModal.scrollTop(0)
-    	settings.candidateDetailsModal.addClass("hidden");
         resetCandidateData()
+    	settings.candidateDetailsModal.addClass("hidden");
+
     });
 
     function onClickAddComment(fn) {
@@ -374,7 +377,8 @@ function Candidate() {
             event.stopPropagation();
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
             var status = $(this).attr("data-status");
-            fn(applicationId, status);
+            var isNotAction = $(this).attr("data-isNotAction");
+            fn(applicationId, status, isNotAction);
         })
     }
 
@@ -383,7 +387,8 @@ function Candidate() {
             event.stopPropagation();
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
             var status = $(this).attr("data-status");
-            fn(applicationId, status);
+            var isNotAction = $(this).attr("data-isNotAction");
+            fn(applicationId, status, isNotAction);
         })
     }
 
@@ -392,7 +397,8 @@ function Candidate() {
             event.stopPropagation();
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
             var status = $(this).attr("data-status");
-            fn(applicationId, status);
+            var isNotAction = $(this).attr("data-isNotAction");
+            fn(applicationId, status, isNotAction);
         })
     }
 

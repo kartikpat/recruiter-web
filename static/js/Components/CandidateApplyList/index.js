@@ -137,8 +137,8 @@ jQuery(document).ready( function() {
     candidates.onClickDownloadResume(function(){
         console.log("you can call track event")
     });
-    candidates.onClickSaveCandidate(function(applicationId, newStatus){
-        if(newStatus == globalParameters.status) {
+    candidates.onClickSaveCandidate(function(applicationId, newStatus, isNotAction){
+        if(isNotAction) {
             return toastNotify("3", "Already Saved for later")
         }
          var parameters = {};
@@ -147,8 +147,8 @@ jQuery(document).ready( function() {
          parameters.isModalButton = false
          setCandidateAction(recruiterId, jobId, "save" , applicationId, {}, parameters);
      })
-    candidates.onClickShortlistCandidate(function(applicationId, newStatus){
-        if(newStatus == globalParameters.status) {
+    candidates.onClickShortlistCandidate(function(applicationId, newStatus,isNotAction){
+        if(isNotAction) {
             return toastNotify("3", "Already Shortlisted")
         }
         var parameters = {};
@@ -157,8 +157,8 @@ jQuery(document).ready( function() {
         parameters.isModalButton = false
         setCandidateAction(recruiterId, jobId, "shortlist" , applicationId, {}, parameters);
     })
-    candidates.onClickRejectCandidate(function(applicationId, newStatus){
-        if(newStatus == globalParameters.status) {
+    candidates.onClickRejectCandidate(function(applicationId, newStatus, isNotAction){
+        if(isNotAction) {
             return toastNotify("3", "Already Rejected")
         }
         var parameters= {};
@@ -173,14 +173,24 @@ jQuery(document).ready( function() {
     candidates.onClickMassComment(function(){
 
     })
-    candidates.onClickMassReject(function(){
+    // candidates.onClickMassReject(function(){
+    //
+    // })
+    // candidates.onClickMassShortlist(function(){
+    //
+    // })
+    // candidates.onClickMassSave(function(){
+    //
+    // })
 
-    })
-    candidates.onClickMassShortlist(function(){
-
-    })
-    candidates.onClickMassSave(function(){
-
+    candidates.onClickMassActionButton(function(applicationIds, action, comment, newStatus){
+        var data = {}
+        data.applicationId = applicationIds
+        data.comment = comment;
+        var parameters= {};
+        parameters.oldStatus = globalParameters.status
+        parameters.newStatus = newStatus
+        setBulkCandidateActions(recruiterId, jobId, action, data, parameters)
     })
 
     theJob.onClickJobCancel(function(jobId){
@@ -258,8 +268,8 @@ jQuery(document).ready( function() {
          fetchRecruiterTags(recruiterId, parameters)
      })
 
-     aCandidate.onClickShortlistCandidate(function(applicationId, newStatus) {
-         if(newStatus == globalParameters.status) {
+     aCandidate.onClickShortlistCandidate(function(applicationId, newStatus, isNotAction) {
+         if(isNotAction) {
              return toastNotify("3", "Already Shortlisted")
          }
          var parameters = {}
@@ -267,8 +277,8 @@ jQuery(document).ready( function() {
          setCandidateAction(recruiterId, jobId, "shortlist" , applicationId, {}, parameters);
      })
 
-     aCandidate.onClickRejectCandidate(function(applicationId, newStatus) {
-         if(newStatus == globalParameters.status) {
+     aCandidate.onClickRejectCandidate(function(applicationId, newStatus, isNotAction) {
+         if(isNotAction) {
              return toastNotify("3", "Already Rejected")
          }
          var parameters = {}
@@ -276,9 +286,9 @@ jQuery(document).ready( function() {
          setCandidateAction(recruiterId, jobId, "reject" , applicationId, {}, parameters);
      })
 
-     aCandidate.onClickSaveCandidate(function(applicationId, newStatus) {
-         if(newStatus == globalParameters.status) {
-             return toastNotify("3", "Already Saved for later")
+     aCandidate.onClickSaveCandidate(function(applicationId, newStatus, isNotAction) {
+         if(isNotAction) {
+             return toastNotify("3", "Already Saved")
          }
          var parameters = {}
          parameters.isModal = true
@@ -320,7 +330,7 @@ jQuery(document).ready( function() {
 
 
         globalParameters.candidateListLength = data["data"].length;
-        candidates.addToList(data["data"], globalParameters["status"]);
+        candidates.addToList(data["data"], globalParameters.status);
         filters.showResultsFound(globalParameters.candidateListLength)
         store.emptyStore(data["data"]);
         store.saveToStore(data["data"]);
@@ -362,42 +372,42 @@ jQuery(document).ready( function() {
             if(res.parameters.isModal) {
                 return toastNotify(1, "Shortlisted Successfully")
             }
-            candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus)
+            candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, 1)
             if(res.parameters.oldStatus != "") {
-                candidates.candidateActionTransition(res.applicationId)
+                var arr = [];
+                arr.push(res.applicationId)
+                candidates.candidateActionTransition(arr)
                 return toastNotify(1, "Moved to Shortlisted Tab")
             }
-
+            return toastNotify(1, "Shortlisted Successfully")
         }
         if(res.action == "reject") {
             if(res.parameters.isModal) {
                 return toastNotify(1, "Rejected Successfully")
             }
-            candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus)
+
+            candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, 1)
             if(res.parameters.oldStatus != "") {
-                candidates.candidateActionTransition(res.applicationId)
+                var arr = [];
+                arr.push(res.applicationId)
+                candidates.candidateActionTransition(arr)
                 return toastNotify(1, "Moved to Rejected Tab")
             }
+            return toastNotify(1, "Rejected Successfully")
         }
         if(res.action == "save") {
             if(res.parameters.isModal) {
                 return toastNotify(1, "Saved Successfully")
             }
-            candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus)
+            candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, 1)
             if(res.parameters.oldStatus != "") {
-                candidates.candidateActionTransition(res.applicationId)
+                var arr = [];
+                arr.push(res.applicationId)
+                candidates.candidateActionTransition(arr)
                 return toastNotify(1, "Moved to Saved Tab")
             }
+            return toastNotify(1, "Saved Successfully")
         }
-        // if(globalParameters.action == "tag") {
-        //     alert("success")
-        // }
-        // if(globalParameters.action == "tag") {
-        //     alert("success")
-        // }
-        // if(globalParameters.action == "tag") {
-        //     alert("success")
-        // }
     }
 
     function onFailCandidateAction(topic,res) {
@@ -420,8 +430,41 @@ jQuery(document).ready( function() {
         errorHandler(res);
     }
 
-    function onSuccessfullCandidateBulkAction() {
+    function onSuccessfullCandidateBulkAction(topic,res) {
+        if(res.action == "comment") {
+            return toastNotify(1, "Comment Added Successfully")
+        }
 
+        if(res.action == "shortlist") {
+            candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, res.applicationId.length)
+
+            if(res.parameters.oldStatus != "") {
+                candidates.candidateActionTransition(res.applicationId)
+                return toastNotify(1, res.applicationId.length +" candidates have been shortlisted and moved to the shortlisted tab.")
+            }
+            return toastNotify(1, res.applicationId.length +" candidates have been shortlisted")
+
+        }
+
+        if(res.action == "reject") {
+
+            candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, res.applicationId.length)
+
+            if(res.parameters.oldStatus != "") {
+                candidates.candidateActionTransition(res.applicationId)
+                return toastNotify(1, res.applicationId.length +" candidates have been rejected and moved to the rejected tab.")
+            }
+            return toastNotify(1, res.applicationId.length +" candidates have been rejected")
+        }
+        if(res.action == "save") {
+            candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, res.applicationId.length)
+
+            if(res.parameters.oldStatus != "") {
+                candidates.candidateActionTransition(res.applicationId)
+                return toastNotify(1, res.applicationId.length +" candidates have been saved and moved to the saved tab.")
+            }
+            return toastNotify(1, res.applicationId.length +" candidates have been saved")
+        }
     }
 
     function onFailCandidateBulkAction() {

@@ -37,6 +37,9 @@ function candidateList() {
 
         onClickMassCheckbox()
         onClickCandidateOtherActions()
+        onClickMassSave()
+        onClickMassReject()
+        onClickMassShortlist()
 	}
 
 	function setConfig(key, value) {
@@ -90,7 +93,7 @@ function candidateList() {
         }
     }
 
-    function createElement(aData, status) {
+    function createElement(aData) {
 		var item = getElement(aData["userID"]);
         item.element.attr("data-application-id", aData["id"]);
         item.image.attr("src",(aData["img"] || "/static/images/noimage.png"));
@@ -104,16 +107,15 @@ function candidateList() {
         item.savedButton.attr("data-status", "3");
         item.downloadResumeButton.attr("href", aData["resume"])
         item.downloadResumeButton.attr("download", aData["name"].replace(/ +/g, '_')+'_resume.pdf')
-        console.log(status)
-        if(status == "1") {
-            console.log("1")
-            item.shortlistButton.text("Shortlisted")
+        var status = aData["status"];
+        if(status == 1) {
+            item.shortlistButton.text("Shortlisted").attr("data-isNotAction", true)
         }
-        else if(status == "2") {
-            item.rejectButton.text("Rejected")
+        else if(status == 2) {
+            item.rejectButton.text("Rejected").attr("data-isNotAction", true)
         }
-        else if(status == "3") {
-            item.savedButton.text("Saved for later")
+        else if(status == 3) {
+            item.savedButton.text("Saved for later").attr("data-isNotAction", true)
         }
         // var tagStr = '';
         // $.each(aData["tags"],function(index, aTag) {
@@ -191,23 +193,23 @@ function candidateList() {
         item.reviewed.text(data["reviewed"])
     }
 
-    function updateJobStats(status, newStatus) {
+    function updateJobStats(status, newStatus, number) {
         var item = getJobsCategoryTabsElement();
         var oldCount = item.element.find("li[data-attribute='"+status+"'] .tabStats").text()
 
         if(status != "") {
-            item.element.find("li[data-attribute='"+status+"'] .tabStats").text(parseInt(oldCount) - 1);
+            item.element.find("li[data-attribute='"+status+"'] .tabStats").text(parseInt(oldCount) - number);
         }
         var newCount = item.element.find("li[data-attribute='"+newStatus+"'] .tabStats").text()
 
-        item.element.find("li[data-attribute='"+newStatus+"'] .tabStats").text(parseInt(newCount) + 1);
+        item.element.find("li[data-attribute='"+newStatus+"'] .tabStats").text(parseInt(newCount) + number);
     }
 
     function addToList(dataArray, status){
         console.log(status)
 		var str = '';
 		dataArray.forEach(function(aData, index){
-			var item = createElement(aData, status);
+			var item = createElement(aData);
 			str+=item.element[0].outerHTML;
             console.log(index)
 		});
@@ -300,7 +302,8 @@ function candidateList() {
             event.stopPropagation();
             var status = $(this).attr("data-status");
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            fn(applicationId, status);
+            var isNotAction = $(this).attr("data-isNotAction");
+            fn(applicationId, status, isNotAction);
             return false
         })
     }
@@ -354,7 +357,9 @@ function candidateList() {
             event.stopPropagation();
             var status = $(this).attr("data-status");
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            fn(applicationId, status);
+            var isNotAction = $(this).attr("data-isNotAction");
+            fn(applicationId, status, isNotAction);
+
         })
     }
 
@@ -363,12 +368,16 @@ function candidateList() {
             event.stopPropagation();
             var status = $(this).attr("data-status");
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            fn(applicationId, status);
+            var isNotAction = $(this).attr("data-isNotAction");
+            fn(applicationId, status, isNotAction);
         })
     }
 
-    function candidateActionTransition(applicationId) {
-        settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"]").addClass("hidden")
+    function candidateActionTransition(arr) {
+        arr.forEach(function(applicationId){
+            settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"]").remove()
+        })
+
     }
 
     function onChangeCandidateCheckbox(fn) {
@@ -377,32 +386,28 @@ function candidateList() {
 
             if(jQuery(this).is(":checked")){
                 jQuery(this).closest(".candidate-select").addClass("selected");
-                var applicationId =  $(this).closest(settings.candidateRowClass).attr("data-application-id")
-                settings.selectedApplicationIds[applicationId] = applicationId
-                console.log(settings.selectedApplicationIds)
+
+
                 var el = jQuery(".candidate-select.selected");
-                settings.candidateSelectedLength =  el.length
+
                 if(el.length >=2) {
                     settings.bulkActionContainer.removeClass("hidden")
                 }
                 else {
                     settings.bulkActionContainer.addClass("hidden")
                 }
-                // jQuery(".candidate-select").css({"display": "block"});
             } else {
                 jQuery(this).closest(".candidate-select").removeClass("selected");
                 var el = jQuery(".candidate-select.selected");
                 var applicationId =  $(this).closest(settings.candidateRowClass).attr("data-application-id")
-                delete settings.selectedApplicationIds[applicationId]
-                console.log(settings.selectedApplicationIds)
-                settings.candidateSelectedLength =  el.length
+
+
                 if(el.length >=2) {
                     settings.bulkActionContainer.removeClass("hidden")
                 }
                 else {
                     settings.bulkActionContainer.addClass("hidden")
                 }
-
             }
             // var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
             // return fn(candidateId);
@@ -422,12 +427,7 @@ function candidateList() {
                 candidateSelect.not(".candidate-select.prototype").addClass("selected");
                 candidateSelect.find("input").prop("checked",  true);
                 var el = jQuery(".candidate-select.selected");
-                $.each(el, function(anElem){
-                    var applicationId = $(anElem).closest(settings.candidateRowClass).attr("data-application-id")
-                    settings.selectedApplicationIds[applicationId] = applicationId
-                })
-                settings.candidateSelectedLength =  el.length - 1
-                if(settings.candidateSelectedLength >=2) {
+                if(el.length >=2) {
                     settings.bulkActionContainer.removeClass("hidden")
                 }
                 else {
@@ -439,12 +439,10 @@ function candidateList() {
                 candidateSelect.not(".candidate-select.prototype").removeClass("selected");
                 jQuery(".candidate-select input").prop("checked",  false);
 
-                settings.candidateSelectedLength =  0
-                settings.selectedApplicationIds = {}
+
                 settings.bulkActionContainer.addClass("hidden")
 
             }
-            console.log(settings.selectedApplicationIds)
         })
         settings.massCheckboxLabel.click(function(event) {
             event.stopPropagation();
@@ -454,31 +452,71 @@ function candidateList() {
 
     function onClickMassReject(fn) {
         settings.massReject.click(function(){
+            var arr = returnSelectedApplications();
 			settings.bulkActionModal.find(".modalHeading").text("Are you sure?");
-			settings.bulkActionModal.find(".jsModalText").text("You are about to reject "+settings.candidateSelectedLength+" candidates.")
+			settings.bulkActionModal.find(".jsModalText").text("You are about to reject "+arr.length+" candidates.")
 			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Rejected Tab.");
-            settings.bulkActionModal.find(".massActionButton").text("Reject")
+            settings.bulkActionModal.find(".massActionButton").text("Reject").attr("data-action", "reject").attr("data-status", "2")
+            settings.bulkActionModal.find(".massTextarea").val("")
             settings.bulkActionModal.removeClass("hidden")
         })
-        settings.bulkActionModal.find(".massActionButton").click(function(){
-            fn(settings.candidateSelectedLength)
-        })
+
     }
 
     function onClickMassShortlist() {
         settings.massShortlist.click(function(){
+            var arr = returnSelectedApplications();
             settings.bulkActionModal.find(".modalHeading").text("Are you sure?");
-			settings.bulkActionModal.find(".jsModalText").text("You are about to reject "+settings.candidateSelectedLength+" candidates.")
-			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Rejected Tab.");
-            settings.bulkActionModal.find(".massActionButton").text("Reject")
+			settings.bulkActionModal.find(".jsModalText").text("You are about to shortlist "+arr.length+" candidates.")
+			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Shortlisted Tab.");
+            settings.bulkActionModal.find(".massActionButton").text("Shortlist").attr("data-action", "shortlist").attr("data-status", "1")
+            settings.bulkActionModal.find(".massTextarea").val("")
             settings.bulkActionModal.removeClass("hidden")
         })
     }
 
     function onClickMassSave() {
         settings.massSave.click(function(){
-            alert()
+            var arr = returnSelectedApplications();
+            settings.bulkActionModal.find(".modalHeading").text("Are you sure?");
+			settings.bulkActionModal.find(".jsModalText").text("You are about to save "+arr.length+" candidates.")
+			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Saved Tab.");
+            settings.bulkActionModal.find(".massActionButton").text("Save for Later").attr("data-action", "save").attr("data-status", "3")
+            settings.bulkActionModal.find(".massTextarea").val("")
+            settings.bulkActionModal.removeClass("hidden")
         })
+    }
+
+    function onClickMassActionButton(fn) {
+        settings.bulkActionModal.find(".massActionButton").click(function(){
+            var selectedApplicationIds = returnSelectedApplications()
+            var action = $(this).attr("data-action");
+            var comment = settings.bulkActionModal.find(".massTextarea").val();
+            var newStatus =  $(this).attr("data-status");
+            if(!comment) {
+                settings.bulkActionModal.find(".errorField").removeClass("hidden")
+            }
+            else {
+                settings.bulkActionModal.find(".errorField").addClass("hidden")
+            }
+            settings.bulkActionModal.addClass("hidden")
+
+            fn(selectedApplicationIds, action, comment, newStatus)
+        })
+    }
+
+    function returnSelectedApplications() {
+        debugger
+        var el = settings.rowContainer.find(".candidate-select.selected")
+        debugger
+        var selectedApplicationIds = []
+        $.each(el, function(index,anElem){
+
+            var applicationId = $(anElem).closest(settings.candidateRowClass).attr("data-application-id")
+
+            selectedApplicationIds.push(applicationId)
+        })
+        return selectedApplicationIds
     }
 
     return {
@@ -502,12 +540,12 @@ function candidateList() {
         onClickViewComment: onClickViewComment,
         onClickViewTag: onClickViewTag,
         emptyCandidateList: emptyCandidateList,
-        onClickMassReject: onClickMassReject,
-        onClickMassShortlist: onClickMassShortlist,
+
         updateJobStats: updateJobStats,
         onClickMassComment: onClickMassComment,
         onClickMassTag: onClickMassTag,
-        onClickMassSave: onClickMassSave
+
+        onClickMassActionButton: onClickMassActionButton
 
 	}
 

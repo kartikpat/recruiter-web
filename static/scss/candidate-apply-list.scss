@@ -8,6 +8,23 @@ input::-webkit-input-placeholder {
     font-size: 13px;
 }
 
+.bulkActionModal {
+    .modal_text {
+        padding: 10px 0;
+    }
+    .jsModalTextSecondary {
+        color: $extra-info-color
+    }
+    textarea {
+		width: 100%;
+		min-height: 50px;
+		&:focus {
+			outline: none;
+			border: 1px solid $border-color-active
+		}
+	}
+}
+
 .pill-listingg-container {
     position: relative;
     #tagListing {

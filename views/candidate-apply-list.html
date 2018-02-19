@@ -6,8 +6,8 @@
 			<span class=" button white" id="massReject">Reject</span>
 			<span class=" button white" id="massShortlist">Shortlist</span>
 			<span class=" button white" id="massSave">Save for Later</span>
-			<span class=" button white" id="massComment">Add Comment</span>
-			<span class=" button white" id="massTag">Add Tag</span>
+			<!-- <span class=" button white" id="massComment">Add Comment</span> -->
+			<!-- <span class=" button white" id="massTag">Add Tag</span> -->
 		</div>
 	</div>
 	<div class="toast-notification-container">
@@ -771,9 +771,10 @@
 			<div class="modal_text jsModalText"></div>
 			<div class="modal_text jsModalTextSecondary"></div>
 			<div class="section">
-				<textarea name="name" rows="" cols="" placeholder="Add a Comment"></textarea>
+				<textarea class="massTextarea" name="name" rows="" cols="" placeholder="Add a Comment"></textarea>
+				<div class="error-field hidden errorField" id=""><p>Please add a Comment</p></div>
 			</div>
-			<div class="action-buttons"><button class="massShortlistButton"></button></div>
+			<div class="action-buttons"><button class="massActionButton"></button></div>
 		</div>
 	</div>
 </div>
