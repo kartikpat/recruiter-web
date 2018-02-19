@@ -16,7 +16,7 @@ $(document).ready(function(){
 				if(jobId)
 					submitEditJob(recruiterId ,jobId,jobDetails.getData())
 				else
-					submitNewJob(jobDetails.getData());
+					submitNewJob(jobDetails.getData(), recruiterId);
 			}
 		})
 	if(jobId) {

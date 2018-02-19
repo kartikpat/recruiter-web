@@ -508,8 +508,13 @@
     	<div class="sidebar-section tags candidateTagContainer">
     		<h3>Tags</h3>
 			<div class="">
-				<div>
-					<input placeholder="Add Tag" class="cand-add-tag input-field candidateTagInput" type="text" name="" value="">
+				<div class="pill-listingg-container" >
+
+						<input placeholder="Add Tag" class="cand-add-tag input-field candidateTagInput" type="text" name="" value="">
+						<div class="pill-listing hidden" id="tagListing">
+
+						</div>
+					</div>
 					<div class="action-buttons cand-add-tag-action-btn">
 						<span class="button green candidateAddTagButton cand-add-tag-button">Add</span>
 					</div>
@@ -758,6 +763,8 @@
 	<div class="active-filter-label"><span class="icon-label"></span></div>
 	<div class="remove-active-filter"><span class="close-icon"><i class="icon-close_icon"></i></span></div>
 </div>
+
+<p class="fetchTags prototype hidden" data-tag-id="1">Ahmedabad</p>
 
 {{>modalContent}}
 {{>footer}}

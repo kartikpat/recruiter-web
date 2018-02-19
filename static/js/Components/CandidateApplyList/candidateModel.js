@@ -24,15 +24,15 @@ function Candidate() {
         settings.candidateRejectModal = $(".candidateRejectModal"),
         settings.candidateSaveModal = $("#candidateSaveModal"),
         settings.candidateChatModal = $("#candidateChatModal"),
-
-
+        settings.tagListing = $("#tagListing")
+        settings.tagMobListing = $("#tagMobListing")
         onClickChatCandidateModal()
         jQuery("#tabbed-content").tabs({});
-
+        onClickAddPopulatedTags()
     }
 
-    function showCandidateDetails(details, type){
-        return populateCandidateData(details, type)
+    function showCandidateDetails(details, type, status){
+        return populateCandidateData(details, type, status)
     }
 
     function onClickChatCandidateModal() {
@@ -81,7 +81,10 @@ function Candidate() {
             mobTag: modal.find(".mobCandidateTagInput"),
             mobComment: modal.find(".mobCandidateCommentTextarea"),
             firstName: modal.find("#firstName"),
-            tabContent: modal.find("#tabbed-content")
+            tabContent: modal.find("#tabbed-content"),
+            shortlistButton: modal.find(".candidateShortlistModal"),
+            rejectButton: modal.find(".candidateRejectModal"),
+            savedButton : modal.find("#candidateSaveModal")
         }
     }
 
@@ -107,10 +110,10 @@ function Candidate() {
         }
     }
 
-    function populateCandidateData(aData, type) {
+    function populateCandidateData(aData, type, status) {
         var item = getElement(aData["userID"]);
         item.element.attr("data-application-id", aData["id"])
-        item.image.attr("src", aData["img"])
+        item.image.attr("src", (aData["img"] || "static/images/noimage.png"))
         item.name.text(aData["name"] || "NA");
         item.experience.text(aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m" || "NA");
         item.location.text(aData["preferredLocation"] || "NA");
@@ -159,9 +162,12 @@ function Candidate() {
         item.gender.text(gender[aData["sex"]])
         item.age.text(getAge(aData["dob"]) + " years")
         item.expectedSalary.text(aData["expectedCtc"]+ " LPA")
-        item.maritalStatus.text("Single");
+        item.maritalStatus.text(getMaritalStatus(aData["maritalStatus"]));
         item.languages.text(formatLanguages(aData["languages"]));
-        item.workPermit.text(binary["permit"]);
+        item.workPermit.text(binary[aData["permit"]]);
+        item.teamHandling.text(binary[aData["permit"]])
+        item.workSixDays.text("no");
+        item.relocate.text(binary[aData["relocate"]])
         if(isCanvasSupported()) {
         	getBinaryData(aData["resume"],resumeCallback);
         }
@@ -172,6 +178,19 @@ function Candidate() {
         if(aData["comment"]) {
             item.comment.val(aData["comment"]);
             item.mobComment.val(aData["comment"]);
+        }
+        item.shortlistButton.attr("data-status", "1");
+        item.rejectButton.attr("data-status", "2");
+        item.savedButton.attr("data-status", "3");
+        if(status == "1") {
+            console.log("1")
+            item.shortlistButton.text("Shortlisted")
+        }
+        else if(status == "2") {
+            item.rejectButton.text("Rejected")
+        }
+        else if(status == "3") {
+            item.savedButton.html("<span class='icon'><i class='icon-star'></i></span>Saved for later")
         }
 
         openModal(item)
@@ -229,6 +248,9 @@ function Candidate() {
         item.workPermit.text("");
         item.coverLetter.text("");
         item.tabContent.tabs({active: 0});
+        item.shortlistButton.text("Shortlist");
+        item.rejectButton.attr("Reject");
+        item.savedButton.attr("Save for Later");
     }
 
     function openModal() {
@@ -286,15 +308,16 @@ function Candidate() {
         });
     }
 
-    function onClickAddTag(fn) {
+    function onClickAddTag(fn, fn1) {
         settings.candidateDetailsModal.on('keyup', settings.candidateTagInputClass ,function(event) {
             event.stopPropagation();
-
+            var tagName = $(this).val();
             if (event.which == 13) {
-                var tagName = $(this).val();
+
                 var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
                 return fn(applicationId, tagName);
             }
+            return fn1(tagName)
         });
         settings.candidateDetailsModal.on('click', settings.candidateAddTagButtonClass,function(event) {
             event.stopPropagation();
@@ -304,15 +327,16 @@ function Candidate() {
         });
     }
 
-    function onClickAddTagMob(fn) {
+    function onClickAddTagMob(fn, fn1) {
         settings.candidateDetailsModal.on('keyup', settings.mobCandidateTagInputClass ,function(event) {
             event.stopPropagation();
-
+            var tagName = $(this).val();
             if (event.which == 13) {
-                var tagName = $(this).val();
+
                 var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
                 return fn(applicationId, tagName);
             }
+            return fn1(tagName)
         });
         settings.candidateDetailsModal.on('click', settings.mobCandidateAddTagButtonClass,function(event) {
             event.stopPropagation();
@@ -339,8 +363,9 @@ function Candidate() {
 
         settings.candidateShortlistModal.click(function(event) {
             event.stopPropagation();
-            var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
-            fn(applicationId);
+            var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
+            var status = $(this).attr("data-status");
+            fn(applicationId, status);
         })
     }
 
@@ -348,7 +373,8 @@ function Candidate() {
         settings.candidateRejectModal.click(function(event) {
             event.stopPropagation();
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
-            fn(applicationId);
+            var status = $(this).attr("data-status");
+            fn(applicationId, status);
         })
     }
 
@@ -356,7 +382,31 @@ function Candidate() {
         settings.candidateSaveModal.click(function(event) {
             event.stopPropagation();
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
-            fn(applicationId);
+            var status = $(this).attr("data-status");
+            fn(applicationId, status);
+        })
+    }
+
+    function showDropdownTags(data) {
+        var str = '';
+        console.log(data.length)
+        if(!data.length) {
+            return settings.tagListing.addClass("hidden")
+        }
+		data.forEach(function(aData, index){
+			var item = $(".fetchTags.prototype").clone().removeClass("prototype hidden");
+            item.text(aData["name"]);
+            item.attr("data-tag-id", aData["id"])
+			str+=item[0].outerHTML;
+            console.log(index)
+		});
+		settings.tagListing.html(str).removeClass("hidden");
+    }
+
+    function onClickAddPopulatedTags() {
+        settings.tagListing.on('click', ".fetchTags", function(){
+            $(settings.candidateTagInputClass).val($(this).text());
+            settings.tagListing.addClass("hidden")
         })
     }
 
@@ -372,7 +422,8 @@ function Candidate() {
         onClickAddCommentMob: onClickAddCommentMob,
         onClickShortlistCandidate: onClickShortlistCandidate,
         onClickRejectCandidate: onClickRejectCandidate,
-        onClickSaveCandidate:onClickSaveCandidate
+        onClickSaveCandidate:onClickSaveCandidate,
+        showDropdownTags: showDropdownTags
 	}
 
     function focusOnElement(element, container) {
@@ -384,7 +435,13 @@ function Candidate() {
     }
 }
 
+function getMaritalStatus(status) {
+    if(status = 2)
+        return "Married"
+    if(status = 1)
+        return "Single"
 
+}
 
 function getAge(dateString) {
     var today = new Date();

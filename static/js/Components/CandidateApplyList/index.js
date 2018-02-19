@@ -86,23 +86,28 @@ jQuery(document).ready( function() {
 
     candidates.onClickCandidate(function(candidateId){
         var candidateDetails = store.getCandidateFromStore(candidateId);
-        aCandidate.showCandidateDetails(candidateDetails);
+        var status = globalParameters.status
+        aCandidate.showCandidateDetails(candidateDetails,"", status);
     });
     candidates.onClickAddTag(function(candidateId) {
         var candidateDetails = store.getCandidateFromStore(candidateId);
-        aCandidate.showCandidateDetails(candidateDetails, "tag");
+        var status = globalParameters.status
+        aCandidate.showCandidateDetails(candidateDetails, "tag" , status);
     })
     candidates.onClickAddComment(function(candidateId) {
         var candidateDetails = store.getCandidateFromStore(candidateId);
-        aCandidate.showCandidateDetails(candidateDetails, "comment");
+        var status = globalParameters.status
+        aCandidate.showCandidateDetails(candidateDetails, "comment", status);
     })
     candidates.onClickViewComment(function(candidateId) {
         var candidateDetails = store.getCandidateFromStore(candidateId);
-        aCandidate.showCandidateDetails(candidateDetails, "comment");
+        var status = globalParameters.status
+        aCandidate.showCandidateDetails(candidateDetails, "comment", status);
     })
     candidates.onClickViewTag(function(candidateId) {
         var candidateDetails = store.getCandidateFromStore(candidateId);
-        aCandidate.showCandidateDetails(candidateDetails, "tag");
+        var status = globalParameters.status
+        aCandidate.showCandidateDetails(candidateDetails, "tag", status);
     })
     candidates.onClickSendMessage(function(candidateId){
         window.location.href = "/my-chat"
@@ -133,6 +138,9 @@ jQuery(document).ready( function() {
         console.log("you can call track event")
     });
     candidates.onClickSaveCandidate(function(applicationId, newStatus){
+        if(newStatus == globalParameters.status) {
+            return toastNotify("3", "Already Saved for later")
+        }
          var parameters = {};
          parameters.oldStatus = globalParameters.status
          parameters.newStatus = newStatus
@@ -140,6 +148,9 @@ jQuery(document).ready( function() {
          setCandidateAction(recruiterId, jobId, "save" , applicationId, {}, parameters);
      })
     candidates.onClickShortlistCandidate(function(applicationId, newStatus){
+        if(newStatus == globalParameters.status) {
+            return toastNotify("3", "Already Shortlisted")
+        }
         var parameters = {};
         parameters.oldStatus = globalParameters.status
         parameters.newStatus = newStatus
@@ -147,6 +158,9 @@ jQuery(document).ready( function() {
         setCandidateAction(recruiterId, jobId, "shortlist" , applicationId, {}, parameters);
     })
     candidates.onClickRejectCandidate(function(applicationId, newStatus){
+        if(newStatus == globalParameters.status) {
+            return toastNotify("3", "Already Rejected")
+        }
         var parameters= {};
         parameters.oldStatus = globalParameters.status
         parameters.newStatus = newStatus
@@ -184,6 +198,11 @@ jQuery(document).ready( function() {
          parameters.type = "add"
          parameters.tagName = tagName
          setCandidateAction(recruiterId, jobId, "tag" , applicationId, ob, parameters);
+     }, function(tagName){
+         var parameters = {}
+          parameters.pageNumber = 1;
+          parameters.str = tagName
+         fetchRecruiterTags(recruiterId, parameters)
      })
 
      aCandidate.onClickDeleteTag(function(applicationId, tagId){
@@ -222,21 +241,35 @@ jQuery(document).ready( function() {
          parameters.type = "add"
          parameters.tagName = tagName
          setCandidateAction(recruiterId, jobId, "tag" , applicationId, ob, parameters);
+     }, function(tagName){
+         var parameters = {}
+         parameters.pageNumber = 1;
+         parameters.str = tagName
+         fetchRecruiterTags(recruiterId, parameters)
      })
 
-     aCandidate.onClickShortlistCandidate(function(applicationId) {
+     aCandidate.onClickShortlistCandidate(function(applicationId, newStatus) {
+         if(newStatus == globalParameters.status) {
+             return toastNotify("3", "Already Shortlisted")
+         }
          var parameters = {}
          parameters.isModal = true
          setCandidateAction(recruiterId, jobId, "shortlist" , applicationId, {}, parameters);
      })
 
-     aCandidate.onClickRejectCandidate(function(applicationId) {
+     aCandidate.onClickRejectCandidate(function(applicationId, newStatus) {
+         if(newStatus == globalParameters.status) {
+             return toastNotify("3", "Already Rejected")
+         }
          var parameters = {}
          parameters.isModal = true
          setCandidateAction(recruiterId, jobId, "reject" , applicationId, {}, parameters);
      })
 
-     aCandidate.onClickSaveCandidate(function(applicationId) {
+     aCandidate.onClickSaveCandidate(function(applicationId, newStatus) {
+         if(newStatus == globalParameters.status) {
+             return toastNotify("3", "Already Saved for later")
+         }
          var parameters = {}
          parameters.isModal = true
          setCandidateAction(recruiterId, jobId, "save" , applicationId, {}, parameters);
@@ -359,12 +392,26 @@ jQuery(document).ready( function() {
         return toastNotify(3, res.message);
     }
 
+    function onSuccessfullFetchedTag(topic, res) {
+        aCandidate.showDropdownTags(res["data"]);
+    }
+
+    function onFailFetchedTag(topic, res) {
+        if(!res) {
+            return toastNotify(3, "You are not connected to the network");
+        }
+        return toastNotify(3, res.message);
+    }
+
+
     var fetchJobDetailsSubscription = pubsub.subscribe("fetchedJobDetails:"+jobId, onSuccessfulFetchJobDetails)
 	var fetchJobDetailsFailSubscription = pubsub.subscribe("failedToFetchJobDetails:"+jobId, onFailedFetchJobDetails);
     var fetchJobApplicationsSuccessSubscription = pubsub.subscribe("fetchedJobApplication:"+jobId, onJobsApplicationsFetchSuccess)
     var fetchJobApplicationsFailSubscription = pubsub.subscribe("failedTofetchJobApplication:"+jobId, onJobsApplicationsFetchFail)
     var setCandidateActionSuccessSubscription = pubsub.subscribe("setCandidateActionSuccess", onSuccessfullCandidateAction)
     var setCandidateActionFailSubscription = pubsub.subscribe("setCandidateActionFail", onFailCandidateAction)
+    var fetchedTagsSuccessSubscription = pubsub.subscribe("fetchedTags", onSuccessfullFetchedTag)
+    var fetchTagsFailSubscription = pubsub.subscribe("fetchTagsFail", onFailFetchedTag)
 
     var ticker;
     $(window).scroll(function() {

@@ -87,7 +87,7 @@ function candidateList() {
         }
     }
 
-    function createElement(aData) {
+    function createElement(aData, status) {
 		var item = getElement(aData["userID"]);
         item.element.attr("data-application-id", aData["id"]);
         item.image.attr("src",(aData["img"] || "static/images/noimage.png"));
@@ -101,6 +101,17 @@ function candidateList() {
         item.savedButton.attr("data-status", "3");
         item.downloadResumeButton.attr("href", aData["resume"])
         item.downloadResumeButton.attr("download", aData["name"].replace(/ +/g, '_')+'_resume.pdf')
+        console.log(status)
+        if(status == "1") {
+            console.log("1")
+            item.shortlistButton.text("Shortlisted")
+        }
+        else if(status == "2") {
+            item.rejectButton.text("Rejected")
+        }
+        else if(status == "3") {
+            item.savedButton.text("Saved for later")
+        }
         // var tagStr = '';
         // $.each(aData["tags"],function(index, aTag) {
         //     var tag =  settings.candidateTagsPrototype.clone().text(aTag["name"]).removeClass("prototype hidden");
@@ -180,12 +191,12 @@ function candidateList() {
     function updateJobStats(status, newStatus) {
         var item = getJobsCategoryTabsElement();
         var oldCount = item.element.find("li[data-attribute='"+status+"'] .tabStats").text()
-        debugger
+        
         if(status != "") {
             item.element.find("li[data-attribute='"+status+"'] .tabStats").text(parseInt(oldCount) - 1);
         }
         var newCount = item.element.find("li[data-attribute='"+newStatus+"'] .tabStats").text()
-        debugger
+        
         item.element.find("li[data-attribute='"+newStatus+"'] .tabStats").text(parseInt(newCount) + 1);
     }
 
@@ -193,7 +204,7 @@ function candidateList() {
         console.log(status)
 		var str = '';
 		dataArray.forEach(function(aData, index){
-			var item = createElement(aData);
+			var item = createElement(aData, status);
 			str+=item.element[0].outerHTML;
             console.log(index)
 		});
