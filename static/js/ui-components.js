@@ -13,6 +13,7 @@ jQuery(".button-action-list").on("click", function() {
 })
 
 jQuery(".pill-button input").on('focus', function() {
+	debugger
 	jQuery(this).parent().toggleClass("inactive");
 });
 
@@ -41,7 +42,7 @@ jQuery(".pill-button input").on('keyup', function(e) {
 		jQuery(".pill-listing ul").removeClass("hidden");
 	}
 
-	
+
 	jQuery(this).siblings(".pill-listing").find("li[data-value=custom]").addClass("hidden");
 });
 

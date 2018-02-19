@@ -8,6 +8,28 @@ input::-webkit-input-placeholder {
     font-size: 13px;
 }
 
+.pill-listingg-container {
+    position: relative;
+    #tagListing {
+        position: absolute;
+        background: #fff;
+        left: 0;
+        right: 0;
+        height: 125px;
+        overflow-y: auto;
+        top: 40px;
+        box-shadow: 1px 1px 1px 1px #ccc;
+    }
+    .fetchTags {
+        padding: 5px;
+        border-bottom: 1px solid $border-color-base;
+        cursor: pointer;
+        &:hover {
+            background-color: #e8e8e8;
+        }
+    }
+}
+
 .page-content {
 	@include page-content;
 	background-color:$body-background-color;
@@ -476,6 +498,22 @@ input::-webkit-input-placeholder {
 		}
 
 	}
+}
+
+.job-tags {
+
+    @include tag-container;
+    border: 0;
+    padding: 0;
+    .pill-button input[type=text] {
+    padding: 7px 17px;
+    margin: 3px;
+    border-radius: 0;
+    border: 1px solid #e8e8e8;
+    width: 100%;
+    cursor: pointer;
+    /* transition: all 0.2s ease-in-out; */
+}
 }
 
 .mass-action-container {
