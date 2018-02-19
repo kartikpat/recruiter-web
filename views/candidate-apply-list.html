@@ -5,6 +5,7 @@
 			<span class=" button white" id="downloadExcelMass">Download Excel</span>
 			<span class=" button white" id="massReject">Reject</span>
 			<span class=" button white" id="massShortlist">Shortlist</span>
+			<span class=" button white" id="massSave">Save for Later</span>
 			<span class=" button white" id="massComment">Add Comment</span>
 			<span class=" button white" id="massTag">Add Tag</span>
 		</div>
@@ -724,9 +725,9 @@
 	</div>
 </div>
 
-<div id="" class="modal jsAddTagModal hidden">
+<!-- <div id="" class="modal jsAddTagModal hidden">
 
-	<!-- Modal content -->
+
 	<div class="modal_wrapper" >
 		<span class="modal_close">&times;</span>
 		<div class="modal_header">
@@ -744,7 +745,7 @@
 
 <div id="" class="modal comment-modal jsAddCommentModal hidden">
 
-	<!-- Modal content -->
+
 	<div class="modal_wrapper" >
 		<span class="modal_close">&times;</span>
 		<div class="modal_header">
@@ -758,7 +759,25 @@
 			<div class="action-buttons"><button class="jsAddComment">Add</button></div>
 		</div>
 	</div>
+</div> -->
+<div id="" class="modal bulkActionModal hidden">
+
+	<div class="modal_wrapper" >
+		<span class="modal_close">&times;</span>
+		<div class="modal_header">
+			<div class="modal_heading modalHeading">Add Comment</div>
+		</div>
+		<div class="modal_content">
+			<div class="modal_text jsModalText"></div>
+			<div class="modal_text jsModalTextSecondary"></div>
+			<div class="section">
+				<textarea name="name" rows="" cols="" placeholder="Add a Comment"></textarea>
+			</div>
+			<div class="action-buttons"><button class="massShortlistButton"></button></div>
+		</div>
+	</div>
 </div>
+
 <div class="filter-tag prototype hidden filterPill">
 	<div class="active-filter-label"><span class="icon-label"></span></div>
 	<div class="remove-active-filter"><span class="close-icon"><i class="icon-close_icon"></i></span></div>

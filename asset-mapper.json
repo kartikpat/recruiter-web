@@ -967,6 +967,8 @@
 				"static/js/Services/fetchCalendars.js",
 				"static/js/Services/setCandidateAction.js",
 				"static/js/Services/fetchRecruiterTags.js",
+				"static/js/Services/setDefaultCalendar.js",
+				"static/js/Services/setBulkCandidateActions.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/common.js",
 				"static/js/Utilities/modal.js",

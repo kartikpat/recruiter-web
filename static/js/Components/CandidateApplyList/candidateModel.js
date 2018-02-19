@@ -113,10 +113,15 @@ function Candidate() {
     function populateCandidateData(aData, type, status) {
         var item = getElement(aData["userID"]);
         item.element.attr("data-application-id", aData["id"])
-        item.image.attr("src", (aData["img"] || "static/images/noimage.png"))
+        item.image.attr("src", (aData["img"] || "/static/images/noimage.png"))
         item.name.text(aData["name"] || "NA");
         item.experience.text(aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m" || "NA");
-        item.location.text(aData["preferredLocation"] || "NA");
+        item.location.text(aData["currentLocation"] || "NA");
+        var preferredLocationStr = "N.A."
+        if(aData["preferredLocation"].length) {
+            preferredLocationStr = aData["preferredLocation"].toString();
+        }
+        item.preferredLocation.text(preferredLocationStr);
         item.contact.text(aData["phone"] || "NA");
         item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY') || "NA")
         item.notice.text(aData["notice"] + " months" || "NA");
@@ -163,13 +168,15 @@ function Candidate() {
         item.age.text(getAge(aData["dob"]) + " years")
         item.expectedSalary.text(aData["expectedCtc"]+ " LPA")
         item.maritalStatus.text(getMaritalStatus(aData["maritalStatus"]));
-        item.languages.text(formatLanguages(aData["languages"]));
-        item.workPermit.text(binary[aData["permit"] || ""]);
-        item.teamHandling.text(binary[aData["permit"] || ""])
+        item.languages.text((formatLanguages(aData["languages"]) || "N.A."));
+        item.workPermit.text(binary[aData["permit"]]);
+        item.teamHandling.text(binary[aData["permit"]])
         item.workSixDays.text("no");
-        item.relocate.text(binary[aData["relocate"] || ""] )
-        item.startup.text(binary[aData["joinStartup"] || ""])
-        item.travel.text(binary[aData["travel"] || ""])
+        item.relocate.text(binary[aData["relocate"]] )
+        item.startup.text(binary[aData["joinStartup"]])
+        item.travel.text(binary[aData["travel"]])
+        item.percentile.text(aData["catScore"] || "N.A.")
+        item.workSixDays.text(binary[aData["sixDays"]])
         if(isCanvasSupported()) {
         	getBinaryData(aData["resume"],resumeCallback);
         }
@@ -438,11 +445,31 @@ function Candidate() {
 }
 
 function getMaritalStatus(status) {
-    if(status = 2)
-        return "Married"
-    if(status = 1)
-        return "Single"
 
+    switch (status) {
+      case 1:
+        maritalStatus = "Single";
+        break;
+      case 2:
+        maritalStatus = "Married";
+        break;
+      case 3:
+        maritalStatus = "Widow";
+        break;
+      case 4:
+        maritalStatus = "Divorced";
+        break;
+      case 5:
+        maritalStatus = "Seperated";
+        break;
+      case 6:
+        maritalStatus = "Others";
+        break;
+      default:
+        maritalStatus = "N.A.";
+        break;
+    }
+    return maritalStatus
 }
 
 function getAge(dateString) {

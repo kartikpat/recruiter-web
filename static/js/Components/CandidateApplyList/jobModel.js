@@ -33,7 +33,7 @@ function Job(){
 	function setJobDetails(data){
 		console.log(data)
 		settings.jobTitle.text(data["jobTitle"]).removeClass("hidden");
-		settings.jobId.text(data["jobId"]).removeClass("hidden");
+		settings.jobId.text(data["jobPublishedId"]).removeClass("hidden");
 		if(data["jobLocation"]) {
 	        settings.jobLocation.text(data["location"]).removeClass("hidden")
 	        settings.jobSeparator.removeClass("hidden")
@@ -54,8 +54,8 @@ function Job(){
     		    settings.jobRefreshButton.removeClass("hidden")
             if(!data["isPremium"])
                 settings.jobPremiumButton.removeClass("hidden")
-			if(data["url"]) {
-				var url = config["baseUrlJob"] + data["url"];
+			if(data["jobSocialShareUrl"]) {
+				var url = config["baseUrlJob"] + data["jobSocialShareUrl"];
 				settings.jobPostFacebook.attr("href", getFacebookShareLink(url))
 				settings.jobPostTwitter.attr("href", getTwitterShareLink(url))
 				settings.jobPostLinkedin.attr("href", getLinkedInShareUrl(url))
@@ -63,9 +63,11 @@ function Job(){
         }
 
         if(data["isEditable"]) {
-			
             settings.jobEditButton.attr("href","/job/"+data["jobId"]+"/edit").removeClass("hidden")
         }
+
+
+
 
 
 	}
@@ -140,7 +142,7 @@ function Job(){
             item.element.text(anObj["name"]);
             item.element.attr("value",anObj["id"]);
             if(anObj["isDefault"]) {
-				setDefaultCalendar(anObj["id"])
+				setDefaultCalendar(anObj["defaultID"])
                 item.element.attr("selected", "selected");
             }
 			calendarOptionsStr += item.element[0].outerHTML;

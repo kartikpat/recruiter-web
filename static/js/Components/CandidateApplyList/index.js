@@ -11,7 +11,6 @@ jQuery(document).ready( function() {
 
     // fetching url parameters
     var urlParams = fetchURL();
-    var jobId = urlParams.pathname.split("/")[2];
 
     // creating the instance of models
 	var candidates = candidateList();
@@ -29,6 +28,7 @@ jQuery(document).ready( function() {
 
     //setting config variables
     theJob.setConfig("availableCredits", profile["availableCredits"]);
+    theJob.setConfig("baseUrlJob", baseUrlJob);
 
     filters.addFilterData('industry', industryTagsData);
     filters.addFilterData('functionalArea',functionalAreaTagsData)
@@ -173,6 +173,15 @@ jQuery(document).ready( function() {
     candidates.onClickMassComment(function(){
 
     })
+    candidates.onClickMassReject(function(){
+
+    })
+    candidates.onClickMassShortlist(function(){
+
+    })
+    candidates.onClickMassSave(function(){
+
+    })
 
     theJob.onClickJobCancel(function(jobId){
         alert(jobId)
@@ -185,7 +194,8 @@ jQuery(document).ready( function() {
         alert(jobId)
     })
     theJob.onChangeDefaultCalendar(function(calendarId) {
-        alert(calendarId)
+        var defaultCalendarId = theJob.getDefaultCalendar();
+        setDefaultCalendar(recruiterId, jobId, calendarId, {defaultId: defaultCalendarId}, {})
         //postRequestDefaultCalendar
     })
 
@@ -291,6 +301,7 @@ jQuery(document).ready( function() {
                 isPremium: jobRow['premium'],
                 isEditable: jobRow['editable'],
                 isRefreshable: jobRow["refreshable"],
+                jobSocialShareUrl: jobRow["url"],
                 calendars: calendarRows
              }
              return pubsub.publish("fetchedJobDetails:"+jobId, data);
@@ -306,7 +317,7 @@ jQuery(document).ready( function() {
             globalParameters.initialLoad = 0;
         }
         console.log(data)
-        debugger
+
 
         globalParameters.candidateListLength = data["data"].length;
         candidates.addToList(data["data"], globalParameters["status"]);
@@ -390,10 +401,7 @@ jQuery(document).ready( function() {
     }
 
     function onFailCandidateAction(topic,res) {
-        if(!res) {
-            return toastNotify(3, "You are not connected to the network");
-        }
-        return toastNotify(3, res.message);
+        errorHandler(res);
     }
 
     function onSuccessfullFetchedTag(topic, res) {
@@ -401,12 +409,24 @@ jQuery(document).ready( function() {
     }
 
     function onFailFetchedTag(topic, res) {
-        if(!res) {
-            return toastNotify(3, "You are not connected to the network");
-        }
-        return toastNotify(3, res.message);
+        errorHandler(res);
     }
 
+    function onSuccessfullSetDefaultCalendar(topic, res) {
+        toastNotify(1, "Default Calendar Set.")
+    }
+
+    function onFailSetDefaultCalendar(topic, res) {
+        errorHandler(res);
+    }
+
+    function onSuccessfullCandidateBulkAction() {
+
+    }
+
+    function onFailCandidateBulkAction() {
+
+    }
 
     var fetchJobDetailsSubscription = pubsub.subscribe("fetchedJobDetails:"+jobId, onSuccessfulFetchJobDetails)
 	var fetchJobDetailsFailSubscription = pubsub.subscribe("failedToFetchJobDetails:"+jobId, onFailedFetchJobDetails);
@@ -416,6 +436,10 @@ jQuery(document).ready( function() {
     var setCandidateActionFailSubscription = pubsub.subscribe("setCandidateActionFail", onFailCandidateAction)
     var fetchedTagsSuccessSubscription = pubsub.subscribe("fetchedTags", onSuccessfullFetchedTag)
     var fetchTagsFailSubscription = pubsub.subscribe("fetchTagsFail", onFailFetchedTag)
+    var setDefaultCalendarSuccessSubscription = pubsub.subscribe("setDefaultCalendarSuccess", onSuccessfullSetDefaultCalendar)
+    var setDefaultCalendarFailSubscription = pubsub.subscribe("setDefaultCalendarFail", onFailSetDefaultCalendar)
+    var setCandidateBulkActionSuccessSubscription = pubsub.subscribe("setCandidateBulkActionSuccess", onSuccessfullCandidateBulkAction)
+    var setCandidateBulkActionFailSubscription = pubsub.subscribe("setCandidateBulkActionFail", onFailCandidateBulkAction)
 
     var ticker;
     $(window).scroll(function() {
@@ -439,4 +463,11 @@ jQuery(document).ready( function() {
 
 function getTitleFormat(title, regex) {
     return title.replace(regex, '');
+}
+
+function errorHandler(data) {
+    if(!data) {
+        return toastNotify(3, "Something went wrong");
+    }
+    return toastNotify(3, data.message);
 }

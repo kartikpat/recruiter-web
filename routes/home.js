@@ -135,7 +135,7 @@ module.exports = function(settings){
 			profile: req.profile,
 			jobId: req.params.jobId
 		})
-		return	
+		return
 	})
 
 	app.get("/my-jobs",isAuthenticated, function(req,res){
@@ -481,6 +481,7 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			baseUrlJob: baseUrlJob,
+			jobId: req.params.jobID,
 			profile: req.profile
 		})
 		return

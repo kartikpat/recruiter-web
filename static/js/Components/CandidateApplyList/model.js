@@ -23,6 +23,7 @@ function candidateList() {
         settings.viewTagButtonClass = '.viewTagButton',
         settings.massResumeDownload = $("#downloadResumeMass"),
         settings.massReject = $("#massReject"),
+        settings.massSave = $("#massSave"),
         settings.massShortlist = $("#massShortlist"),
         settings.massComment = $("#massComment"),
         settings.massTag = $("#massTag"),
@@ -30,7 +31,9 @@ function candidateList() {
         settings.bulkActionContainer = $("#massActionContainer"),
         settings.massCheckboxInput = $("#massCheckboxInput"),
         settings.massCheckboxLabel = $("#massCheckboxLabel"),
-        settings.candidateSelectedLength = null
+        settings.candidateSelectedLength = null,
+        settings.bulkActionModal = $(".bulkActionModal");
+        settings.selectedApplicationIds = {}
 
         onClickMassCheckbox()
         onClickCandidateOtherActions()
@@ -93,7 +96,7 @@ function candidateList() {
         item.image.attr("src",(aData["img"] || "/static/images/noimage.png"));
         item.name.text(aData["name"] || "NA");
         item.experience.text((aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m") || "NA");
-        item.location.text(aData["preferredLocation"] || "NA");
+        item.location.text(aData["currentLocation"] || "NA");
         item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY'))
         item.notice.text((aData["notice"] + " months"));
         item.shortlistButton.attr("data-status", "1");
@@ -191,12 +194,12 @@ function candidateList() {
     function updateJobStats(status, newStatus) {
         var item = getJobsCategoryTabsElement();
         var oldCount = item.element.find("li[data-attribute='"+status+"'] .tabStats").text()
-        
+
         if(status != "") {
             item.element.find("li[data-attribute='"+status+"'] .tabStats").text(parseInt(oldCount) - 1);
         }
         var newCount = item.element.find("li[data-attribute='"+newStatus+"'] .tabStats").text()
-        
+
         item.element.find("li[data-attribute='"+newStatus+"'] .tabStats").text(parseInt(newCount) + 1);
     }
 
@@ -374,6 +377,9 @@ function candidateList() {
 
             if(jQuery(this).is(":checked")){
                 jQuery(this).closest(".candidate-select").addClass("selected");
+                var applicationId =  $(this).closest(settings.candidateRowClass).attr("data-application-id")
+                settings.selectedApplicationIds[applicationId] = applicationId
+                console.log(settings.selectedApplicationIds)
                 var el = jQuery(".candidate-select.selected");
                 settings.candidateSelectedLength =  el.length
                 if(el.length >=2) {
@@ -386,7 +392,9 @@ function candidateList() {
             } else {
                 jQuery(this).closest(".candidate-select").removeClass("selected");
                 var el = jQuery(".candidate-select.selected");
-                console.log(el.length)
+                var applicationId =  $(this).closest(settings.candidateRowClass).attr("data-application-id")
+                delete settings.selectedApplicationIds[applicationId]
+                console.log(settings.selectedApplicationIds)
                 settings.candidateSelectedLength =  el.length
                 if(el.length >=2) {
                     settings.bulkActionContainer.removeClass("hidden")
@@ -394,10 +402,6 @@ function candidateList() {
                 else {
                     settings.bulkActionContainer.addClass("hidden")
                 }
-                // if(el.length == 0) {
-                //     jQuery(".candidate-select").css({"display": "none"});
-                // }
-
 
             }
             // var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
@@ -418,34 +422,29 @@ function candidateList() {
                 candidateSelect.not(".candidate-select.prototype").addClass("selected");
                 candidateSelect.find("input").prop("checked",  true);
                 var el = jQuery(".candidate-select.selected");
-                settings.candidateSelectedLength =  el.length
-                if(el.length >=2) {
+                $.each(el, function(anElem){
+                    var applicationId = $(anElem).closest(settings.candidateRowClass).attr("data-application-id")
+                    settings.selectedApplicationIds[applicationId] = applicationId
+                })
+                settings.candidateSelectedLength =  el.length - 1
+                if(settings.candidateSelectedLength >=2) {
                     settings.bulkActionContainer.removeClass("hidden")
                 }
                 else {
                     settings.bulkActionContainer.addClass("hidden")
                 }
-                // jQuery(".candidate-select").css({"display": "block"});
             } else {
                 var candidateSelect = jQuery(".candidate-select")
 
-                .not(".candidate-select.prototype").removeClass("selected");
+                candidateSelect.not(".candidate-select.prototype").removeClass("selected");
                 jQuery(".candidate-select input").prop("checked",  false);
-                var el = jQuery(".candidate-select.selected");
-                settings.candidateSelectedLength =  el.length
-                console.log(el.length)
-                if(el.length >=2) {
-                    settings.bulkActionContainer.removeClass("hidden")
-                }
-                else {
-                    settings.bulkActionContainer.addClass("hidden")
-                }
-                // if(el.length == 0) {
-                //     jQuery(".candidate-select").css({"display": "none"});
-                // }
 
+                settings.candidateSelectedLength =  0
+                settings.selectedApplicationIds = {}
+                settings.bulkActionContainer.addClass("hidden")
 
             }
+            console.log(settings.selectedApplicationIds)
         })
         settings.massCheckboxLabel.click(function(event) {
             event.stopPropagation();
@@ -453,14 +452,31 @@ function candidateList() {
         })
     }
 
-    function onClickMassReject() {
+    function onClickMassReject(fn) {
         settings.massReject.click(function(){
-            alert()
+			settings.bulkActionModal.find(".modalHeading").text("Are you sure?");
+			settings.bulkActionModal.find(".jsModalText").text("You are about to reject "+settings.candidateSelectedLength+" candidates.")
+			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Rejected Tab.");
+            settings.bulkActionModal.find(".massActionButton").text("Reject")
+            settings.bulkActionModal.removeClass("hidden")
+        })
+        settings.bulkActionModal.find(".massActionButton").click(function(){
+            fn(settings.candidateSelectedLength)
         })
     }
 
     function onClickMassShortlist() {
-        settings.massReject.click(function(){
+        settings.massShortlist.click(function(){
+            settings.bulkActionModal.find(".modalHeading").text("Are you sure?");
+			settings.bulkActionModal.find(".jsModalText").text("You are about to reject "+settings.candidateSelectedLength+" candidates.")
+			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Rejected Tab.");
+            settings.bulkActionModal.find(".massActionButton").text("Reject")
+            settings.bulkActionModal.removeClass("hidden")
+        })
+    }
+
+    function onClickMassSave() {
+        settings.massSave.click(function(){
             alert()
         })
     }
@@ -490,7 +506,8 @@ function candidateList() {
         onClickMassShortlist: onClickMassShortlist,
         updateJobStats: updateJobStats,
         onClickMassComment: onClickMassComment,
-        onClickMassTag: onClickMassTag
+        onClickMassTag: onClickMassTag,
+        onClickMassSave: onClickMassSave
 
 	}
 
