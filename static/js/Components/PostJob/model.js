@@ -266,8 +266,9 @@ function ifExists(element){
 
 function checkPillValues(element) {
 	var obj = getPillValues(element.attr('id'))
-	if(element.attr('data-enable-custom') == true) {
-		if( obj.length < 1 && obj.length < 1 ){
+	console.log(element.attr('data-enable-custom'));
+	if(element.attr('data-enable-custom') == "true") {
+		if( obj["id"].length < 1 && obj["label"].length < 1 ){
 			element.next('.error').text(errorResponses['missing'+element.attr('name')]).removeClass("hidden");
 			focusOnElement(element)
 			return false;
@@ -277,7 +278,7 @@ function checkPillValues(element) {
 		}
 		return true;
 	}
-	if( obj.length < 1 ){
+	if( obj['id'].length < 1 ){
 		element.next('.error').text(errorResponses['missing'+element.attr('name')]).removeClass("hidden");
 		focusOnElement(element)
 		return false;
