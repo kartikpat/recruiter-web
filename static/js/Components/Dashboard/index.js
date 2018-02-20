@@ -238,7 +238,7 @@ $(document).ready(function(){
 				return location+', ' +exp;
 			})(aRow['exp'], aRow['location'])
 			card.find('.profile .name').text(aRow['name']).attr('href', '/job/'+aRow['jobId']+'/candidates/'+aRow['userId']);
-			card.find('.profile .icon img').attr('src', aRow['img']);
+			card.find('.profile .icon img').attr('src', (aRow['img'])?aRow['img'] : "/static/images/noimage.png"  );
 			card.find('.profile .designationOrganization').text(designationOrganization);
 			card.find('.profile .locationExperience').text(locationExperience);
 			card.find('.profile-detail .profession .designationOrganization').text(designationOrganization)
