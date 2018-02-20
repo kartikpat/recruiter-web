@@ -975,6 +975,7 @@
 				"static/js/Services/submitRefreshJob.js",
 				"static/js/Services/submitPremiumJob.js",
 				"static/js/Services/setBulkCandidateActions.js",
+				"static/js/Services/submitPageVisit.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/common.js",
 				"static/js/Utilities/modal.js",

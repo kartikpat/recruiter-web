@@ -6,6 +6,7 @@ var globalParameters = {
     initialLoad: 1,
     candidateListLength: null
 }
+var screenName = "candidate-apply-list";
 jQuery(document).ready( function() {
 
 
@@ -25,6 +26,16 @@ jQuery(document).ready( function() {
     candidates.init();
     theJob.init();
     aCandidate.init();
+
+    submitPageVisit(recruiterId, screenName, jobId);
+    var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitSuccess:"+screenName, onPageVisitUpdateSuccess)
+    var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitFail:"+screenName, onPageVisitUpdateFail)
+    function onPageVisitUpdateSuccess(topic, data){
+        console.log('page visit done');
+    }
+    function onPageVisitUpdateFail(topic, data){
+        console.log('page visit error');
+    }
 
     //setting config variables
     theJob.setConfig("availableCredits", profile["availableCredits"]);
