@@ -2412,8 +2412,10 @@ input::-webkit-input-placeholder {
   color: #808080; }
 
 .bulkActionModal textarea {
-  width: 100%;
-  min-height: 50px; }
+  width: 50%;
+  min-height: 50px;
+  border: 1px solid #e8e8e8;
+  padding: 10px 20px; }
   .bulkActionModal textarea:focus {
     outline: none;
     border: 1px solid #4fa995; }

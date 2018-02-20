@@ -16,8 +16,10 @@ input::-webkit-input-placeholder {
         color: $extra-info-color
     }
     textarea {
-		width: 100%;
+		width: 50%;
 		min-height: 50px;
+        border: 1px solid $border-color-base;
+        padding: 10px 20px;
 		&:focus {
 			outline: none;
 			border: 1px solid $border-color-active

@@ -29,6 +29,7 @@ jQuery(document).ready( function() {
     //setting config variables
     theJob.setConfig("availableCredits", profile["availableCredits"]);
     theJob.setConfig("baseUrlJob", baseUrlJob);
+    $("#downloadExcelMass").attr('href', baseUrl+"/recruiter/"+recruiterId+"/jobs/"+jobId+"/applications/download/excel");
 
     filters.addFilterData('industry', industryTagsData);
     filters.addFilterData('functionalArea',functionalAreaTagsData)
@@ -173,15 +174,22 @@ jQuery(document).ready( function() {
     candidates.onClickMassComment(function(){
 
     })
-    // candidates.onClickMassReject(function(){
-    //
-    // })
-    // candidates.onClickMassShortlist(function(){
-    //
-    // })
-    // candidates.onClickMassSave(function(){
-    //
-    // })
+    candidates.onClickDownloadMassExcel(function(arr){
+
+        var parameters = filters.getAppliedFilters();
+        parameters.applicationId = arr.toString()
+        var str = "?"
+        for(var key in parameters) {
+            str+= key + "=" + parameters[key] + "&";
+        }
+        candidates.setHref(str)
+    })
+    candidates.onClickDownloadMassResume(function(arr){
+
+        parameters.applicationId = arr.toString()
+        downloadMassResume(recruiterId, jobId, parameters)
+    })
+
 
     candidates.onClickMassActionButton(function(applicationIds, action, comment, newStatus){
         var data = {}
@@ -193,16 +201,15 @@ jQuery(document).ready( function() {
         setBulkCandidateActions(recruiterId, jobId, action, data, parameters)
     })
 
-    theJob.onClickJobCancel(function(jobId){
-        alert(jobId)
-        trackEventCancelButtonClick();
-    })
-    theJob.onClickJobRefresh(function(jobId) {
-        alert(jobId)
-    })
-    theJob.onClickJobMakePremium(function(jobId){
-        alert(jobId)
-    })
+    theJob.onClickSubmitUnpublishJob(function(reason){
+		return submitUnpublishJob(recruiterId, globalParameters.jobId, {reasonId: reason});
+	});
+	theJob.onClickSubmitRefreshJob(function(){
+		return submitRefreshJob(recruiterId, globalParameters.jobId);
+	})
+    theJob.onClickSubmitPremiumJob(function(){
+		return submitPremiumJob(recruiterId, globalParameters.jobId);
+	})
     theJob.onChangeDefaultCalendar(function(calendarId) {
         var defaultCalendarId = theJob.getDefaultCalendar();
         setDefaultCalendar(recruiterId, jobId, calendarId, {defaultId: defaultCalendarId}, {})
@@ -342,6 +349,7 @@ jQuery(document).ready( function() {
 	}
 
     function onSuccessfulFetchJobDetails(topic, data) {
+        globalParameters.jobId = data["jobId"]
         fetchJobApplications(jobId,globalParameters,recruiterId);
         theJob.setJobDetails(data);
     }
@@ -436,6 +444,7 @@ jQuery(document).ready( function() {
         }
 
         if(res.action == "shortlist") {
+            theJob.closeModal()
             candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, res.applicationId.length)
 
             if(res.parameters.oldStatus != "") {
@@ -447,7 +456,7 @@ jQuery(document).ready( function() {
         }
 
         if(res.action == "reject") {
-
+            theJob.closeModal()
             candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, res.applicationId.length)
 
             if(res.parameters.oldStatus != "") {
@@ -457,6 +466,7 @@ jQuery(document).ready( function() {
             return toastNotify(1, res.applicationId.length +" candidates have been rejected")
         }
         if(res.action == "save") {
+            theJob.closeModal()
             candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, res.applicationId.length)
 
             if(res.parameters.oldStatus != "") {
@@ -467,9 +477,46 @@ jQuery(document).ready( function() {
         }
     }
 
-    function onFailCandidateBulkAction() {
-
+    function onFailCandidateBulkAction(topic, res) {
+        errorHandler(res)
     }
+
+    function onDownloadSuccess(topic, res) {
+        return toastNotify(1, "An Email has been sent!")
+    }
+
+    function onDownloadFail(topic, res) {
+        errorHandler(res)
+    }
+
+    function onSuccessfulUnpublishedJob(topic, data) {
+
+		theJob.closeModal()
+        toastNotify(1, "Job Unpublished Success")
+	}
+
+	function onFailedUnpublishedJob(topic,data) {
+		errorHandler(res)
+        theJob.closeModal()
+	}
+	function onSuccessfulRefreshJob(topic, data){
+
+		theJob.closeModal()
+        toastNotify(1, "Job Refreshed Success")
+	}
+	function onFailedRefreshJob(topic, data){
+		errorHandler(res)
+        theJob.closeModal()
+	}
+	function onSuccessfulPremiumJob(topic, data){
+
+		theJob.closeModal()
+        toastNotify(1, "Job Premium Success")
+	}
+	function onFailedPremiumJob(topic, data){
+		errorHandler(res)
+        theJob.closeModal()
+	}
 
     var fetchJobDetailsSubscription = pubsub.subscribe("fetchedJobDetails:"+jobId, onSuccessfulFetchJobDetails)
 	var fetchJobDetailsFailSubscription = pubsub.subscribe("failedToFetchJobDetails:"+jobId, onFailedFetchJobDetails);
@@ -483,6 +530,16 @@ jQuery(document).ready( function() {
     var setDefaultCalendarFailSubscription = pubsub.subscribe("setDefaultCalendarFail", onFailSetDefaultCalendar)
     var setCandidateBulkActionSuccessSubscription = pubsub.subscribe("setCandidateBulkActionSuccess", onSuccessfullCandidateBulkAction)
     var setCandidateBulkActionFailSubscription = pubsub.subscribe("setCandidateBulkActionFail", onFailCandidateBulkAction)
+    var downloadSuccessSubscription = pubsub.subscribe("downloadedSuccess", onDownloadSuccess)
+    var downloadFailSubscription = pubsub.subscribe("downloadedFail", onDownloadFail)
+    var unPublishJobSuccessSubscription = pubsub.subscribe("jobUnpublishSuccess", onSuccessfulUnpublishedJob);
+	var unPublishJobFailSubscription = pubsub.subscribe("jobUnpublishFail", onFailedUnpublishedJob);
+
+	var refreshJobSuccessSubscription = pubsub.subscribe("jobRefreshSuccess", onSuccessfulRefreshJob)
+	var refreshJobFailSubscription = pubsub.subscribe("jobRefreshFail", onFailedRefreshJob)
+
+	var premiumJobSuccessSubscription = pubsub.subscribe("jobPremiumSuccess", onSuccessfulPremiumJob)
+	var premiumJobFailSubscription = pubsub.subscribe("jobPremiumFail", onFailedPremiumJob);
 
     var ticker;
     $(window).scroll(function() {
