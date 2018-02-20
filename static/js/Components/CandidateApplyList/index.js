@@ -463,36 +463,35 @@ jQuery(document).ready( function() {
 
         if(res.action == "shortlist") {
             candidates.closeModal()
-            candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, res.applicationId.length)
-
             if(res.parameters.oldStatus != "") {
+                candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, res.applicationId.length)
                 candidates.candidateActionTransition(res.applicationId)
                 return toastNotify(1, res.applicationId.length +" candidates have been shortlisted and moved to the shortlisted tab.")
             }
-            
+            fetchJobApplicationCount(recruiterId, jobId)
             return toastNotify(1, res.applicationId.length +" candidates have been shortlisted")
 
         }
 
         if(res.action == "reject") {
             candidates.closeModal()
-            candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, res.applicationId.length)
-
             if(res.parameters.oldStatus != "") {
+                candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, res.applicationId.length)
                 candidates.candidateActionTransition(res.applicationId)
                 return toastNotify(1, res.applicationId.length +" candidates have been rejected and moved to the rejected tab.")
             }
+            fetchJobApplicationCount(recruiterId, jobId)
             return toastNotify(1, res.applicationId.length +" candidates have been rejected")
         }
 
         if(res.action == "save") {
             candidates.closeModal()
-            candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, res.applicationId.length)
-
             if(res.parameters.oldStatus != "") {
+                candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, res.applicationId.length)
                 candidates.candidateActionTransition(res.applicationId)
                 return toastNotify(1, res.applicationId.length +" candidates have been saved and moved to the saved tab.")
             }
+            fetchJobApplicationCount(recruiterId, jobId)
             return toastNotify(1, res.applicationId.length +" candidates have been saved")
         }
     }
@@ -538,6 +537,14 @@ jQuery(document).ready( function() {
         theJob.closeModal()
 	}
 
+    function onSuccessfulCount(topic, data) {
+        candidates.setJobStats(data);
+    }
+
+    function onFailedCount() {
+
+    }
+
     var fetchJobDetailsSubscription = pubsub.subscribe("fetchedJobDetails:"+jobId, onSuccessfulFetchJobDetails)
 	var fetchJobDetailsFailSubscription = pubsub.subscribe("failedToFetchJobDetails:"+jobId, onFailedFetchJobDetails);
     var fetchJobApplicationsSuccessSubscription = pubsub.subscribe("fetchedJobApplication:"+jobId, onJobsApplicationsFetchSuccess)
@@ -560,6 +567,9 @@ jQuery(document).ready( function() {
 
 	var premiumJobSuccessSubscription = pubsub.subscribe("jobPremiumSuccess", onSuccessfulPremiumJob)
 	var premiumJobFailSubscription = pubsub.subscribe("jobPremiumFail", onFailedPremiumJob);
+
+    var fetchedApplicationCountSuccessSubscription = pubsub.subscribe("fetchedApplicationCountSuccess", onSuccessfulCount)
+	var fetchedApplicationCountFailSubscription = pubsub.subscribe("fetchedApplicationCountFail", onFailedCount);
 
     var ticker;
     $(window).scroll(function() {

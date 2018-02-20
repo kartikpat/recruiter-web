@@ -1,7 +1,8 @@
-function fetchActiveJobStats(recruiterId){
-	return getRequest(baseUrl+"/recruiter/"+recruiterId+"/jobs/stats", {}, function(res){
+function fetchJobApplicationCount(recruiterId, jobId){
+	return getRequest(baseUrl+"/recruiter/"+recruiterId+"/jobs/"+jobId+"/applications/count", {}, function(res){
 		if(res.status && res.status =='success'){
-			pubsub.publish("fetchedActiveJobStats", res.data);
+			return pubsub.publish("fetchedApplicationCountSuccess", res.data);
 		}
+        return pubsub.publish("fetchedApplicationCountFail", res.responseJSON);
 	});
 }
