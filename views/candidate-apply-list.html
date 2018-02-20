@@ -6,7 +6,7 @@
 			<span class=" button white" id="massReject">Reject</span>
 			<span class=" button white" id="massShortlist">Shortlist</span>
 			<span class=" button white" id="massSave">Save for Later</span>
-			<!-- <span class=" button white" id="massComment">Add Comment</span> -->
+			<span class=" button white" id="massComment">Add Comment</span>
 			<!-- <span class=" button white" id="massTag">Add Tag</span> -->
 		</div>
 	</div>
@@ -23,7 +23,16 @@
 	<div class="page-content">
 		<div class="candidate-apply-listing left">
 			<div class="page-header" id="jobDetails">
-				<h1 class="job-title left hidden" id="jobTitle">iimjobs.com - Product Manager</h1>
+				<div class="left">
+					<h1 class="job-title hidden" id="jobTitle">iimjobs.com - Product Manager</h1>
+					<p class="job-meta">
+						<span class="job-location hidden" id="jobLocation">Delhi</span>
+						<span class="meta-separator hidden" id="jobSeparator">&bull;</span>
+						<span class="job-experience hidden" id="jobExperience">0-5 yrs</span>
+						<span class="meta-separator">&nbsp;|&nbsp;</span>
+						<span class="hidden" id="jobCode"></span>
+					</p>
+				</div>
 				<div class="action-buttons right jsJobActions">
 					<span class="section calendar-options hidden" id="calendarContainer">
 						<select class="select-dropdown" id="calendarSelect">
@@ -45,13 +54,7 @@
 					</span>
 				</div>
 				<div class="clearfix"></div>
-				<p class="job-meta">
-					<span class="job-location hidden" id="jobLocation">Delhi</span>
-					<span class="meta-separator hidden" id="jobSeparator">&bull;</span>
-					<span class="job-experience hidden" id="jobExperience">0-5 yrs</span>
-					<span class="meta-separator">&nbsp;|&nbsp;</span>
-					<span class="hidden" id="jobCode"></span>
-				</p>
+
 			</div>
 
 			<div class="candidates-area" id="candidatesArea">
@@ -415,7 +418,10 @@
 	            			<div class="content">
 								<div class="">
 									<div>
-										<input placeholder="Add Tag" class="cand-add-tag input-field mobCandidateTagInput" type="text" name="" value="">
+										<div class="ui-widget">
+											<input  placeholder="Add Tag" class="recruiterTags cand-add-tag input-field mobCandidateTagInput" type="text" name="" value="">
+											<div class="error-field hidden tagInputError" id=""><p>Tag Name can't be empty</p></div>
+										</div>
 										<div class="action-buttons cand-add-tag-action-btn">
 											<span class="button green mobCandidateAddTagButton cand-add-tag-button">Add</span>
 										</div>
@@ -424,6 +430,7 @@
 
 									</div>
 								</div>
+
 	            			</div>
 	            		</div>
 
@@ -510,11 +517,9 @@
     		<h3>Tags</h3>
 			<div class="">
 				<div class="pill-listingg-container" >
-
-						<input placeholder="Add Tag" class="cand-add-tag input-field candidateTagInput" type="text" name="" value="">
-						<div class="pill-listing hidden" id="tagListing">
-
-						</div>
+					<div  class="ui-widget">
+						<input  placeholder="Add Tag" class="recruiterTags cand-add-tag input-field candidateTagInput" type="text" name="" value="">
+						<div class="error-field hidden tagInputError" id=""><p>Input field can't be empty</p></div>
 					</div>
 					<div class="action-buttons cand-add-tag-action-btn">
 						<span class="button green candidateAddTagButton cand-add-tag-button">Add</span>

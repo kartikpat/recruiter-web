@@ -13,7 +13,7 @@ jQuery(".button-action-list").on("click", function() {
 })
 
 jQuery(".pill-button input").on('focus', function() {
-	
+
 	jQuery(this).parent().toggleClass("inactive");
 });
 

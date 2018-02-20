@@ -751,6 +751,7 @@
 				"static/js/Utilities/common.js",
 				"static/js/Utilities/modal.js",
 				"static/js/vendor/moment.min.js",
+
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Services/fetchJobs.js",
@@ -758,7 +759,8 @@
 				"static/js/Services/submitPremiumJob.js",
 				"static/js/Services/submitRefreshJob.js",
 				"static/js/Components/MyJobs/model.js",
-				"static/js/Components/MyJobs/index.js"
+				"static/js/Components/MyJobs/index.js",
+				"static/js/Utilities/toastNotifier.js"
 			],
 			"prod" : [
 				"static/build/js/my-jobs.min.js"

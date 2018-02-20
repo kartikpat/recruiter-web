@@ -40,8 +40,7 @@ function candidateList() {
         onClickMassSave()
         onClickMassReject()
         onClickMassShortlist()
-
-
+        onClickMassComment()
 	}
 
 	function setConfig(key, value) {
@@ -310,29 +309,19 @@ function candidateList() {
         })
     }
 
-    function onClickMassComment(fn) {
-        var modal = $(".jsAddCommentModal");
-        settings.massComment.click(function(event) {
-            modal.find(".jsModalText").text("You are about to add Comment on "+settings.candidateSelectedLength+" candidates.")
-			addBodyFixed()
-            modal.removeClass("hidden")
-        })
-        modal.find(".jsAddComment").click(function(){
-            return fn()
-        });
-    }
 
-    function onClickMassTag(fn) {
-        var modal = $(".jsAddTagModal");
-        settings.massTag.click(function(event) {
-            modal.find(".jsModalText").text("You are about to add Tag on "+settings.candidateSelectedLength+" candidates.")
-            addBodyFixed()
-            modal.removeClass("hidden")
-        })
-        modal.find(".jsAddTag").click(function(){
-            fn()
-        });
-    }
+
+    // function onClickMassTag(fn) {
+    //     var modal = $(".jsAddTagModal");
+    //     settings.massTag.click(function(event) {
+    //         modal.find(".jsModalText").text("You are about to add Tag on "+settings.candidateSelectedLength+" candidates.")
+    //         addBodyFixed()
+    //         modal.removeClass("hidden")
+    //     })
+    //     modal.find(".jsAddTag").click(function(){
+    //         fn()
+    //     });
+    // }
 
     function onClickAddTag(fn) {
         settings.rowContainer.on('click',settings.candidateAddTagButton ,function(event) {
@@ -457,7 +446,7 @@ function candidateList() {
             var arr = returnSelectedApplications();
 			settings.bulkActionModal.find(".modalHeading").text("Are you sure?");
 			settings.bulkActionModal.find(".jsModalText").text("You are about to reject "+arr.length+" candidates.")
-			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Rejected Tab.");
+			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Rejected Tab.").removeClass("hidden");
             settings.bulkActionModal.find(".massActionButton").text("Reject").attr("data-action", "reject").attr("data-status", "2")
             settings.bulkActionModal.find(".massTextarea").val("")
             addBodyFixed()
@@ -471,7 +460,7 @@ function candidateList() {
             var arr = returnSelectedApplications();
             settings.bulkActionModal.find(".modalHeading").text("Are you sure?");
 			settings.bulkActionModal.find(".jsModalText").text("You are about to shortlist "+arr.length+" candidates.")
-			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Shortlisted Tab.");
+			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Shortlisted Tab.").removeClass("hidden");
             settings.bulkActionModal.find(".massActionButton").text("Shortlist").attr("data-action", "shortlist").attr("data-status", "1")
             settings.bulkActionModal.find(".massTextarea").val("")
             addBodyFixed()
@@ -484,8 +473,21 @@ function candidateList() {
             var arr = returnSelectedApplications();
             settings.bulkActionModal.find(".modalHeading").text("Are you sure?");
 			settings.bulkActionModal.find(".jsModalText").text("You are about to save "+arr.length+" candidates.")
-			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Saved Tab.");
+			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Saved Tab.").removeClass("hidden");
             settings.bulkActionModal.find(".massActionButton").text("Save for Later").attr("data-action", "save").attr("data-status", "3")
+            settings.bulkActionModal.find(".massTextarea").val("")
+            addBodyFixed()
+            settings.bulkActionModal.removeClass("hidden")
+        })
+    }
+
+    function onClickMassComment() {
+        settings.massComment.click(function(){
+            var arr = returnSelectedApplications();
+            settings.bulkActionModal.find(".modalHeading").text("Add Comment");
+			settings.bulkActionModal.find(".jsModalText").text("The Comment will be added on "+arr.length+" candidates profiles.")
+			settings.bulkActionModal.find(".jsModalTextSecondary").addClass("hidden")
+            settings.bulkActionModal.find(".massActionButton").text("Add").attr("data-action", "comment")
             settings.bulkActionModal.find(".massTextarea").val("")
             addBodyFixed()
             settings.bulkActionModal.removeClass("hidden")
@@ -497,7 +499,11 @@ function candidateList() {
             var selectedApplicationIds = returnSelectedApplications()
             var action = $(this).attr("data-action");
             var comment = settings.bulkActionModal.find(".massTextarea").val();
-            var newStatus =  $(this).attr("data-status");
+            var newStatus;
+            if($(this).attr("data-status")) {
+                newStatus =  $(this).attr("data-status");
+            }
+
             if(!comment) {
                 settings.bulkActionModal.find(".errorField").removeClass("hidden")
             }
@@ -547,6 +553,11 @@ function candidateList() {
         settings.downloadExcelMass.attr("href", href);
     }
 
+    function closeModal() {
+		removeBodyFixed()
+		settings.bulkActionModal.addClass("hidden")
+	}
+
     return {
 		init: init,
 		addToList: addToList,
@@ -571,10 +582,10 @@ function candidateList() {
         onClickDownloadMassExcel: onClickDownloadMassExcel,
         updateJobStats: updateJobStats,
         onClickMassComment: onClickMassComment,
-        onClickMassTag: onClickMassTag,
         setHref: setHref,
         onClickMassActionButton: onClickMassActionButton,
-        onClickDownloadMassResume: onClickDownloadMassResume
+        onClickDownloadMassResume: onClickDownloadMassResume,
+        closeModal: closeModal
 
 	}
 

@@ -18,17 +18,7 @@ jQuery(document).ready( function() {
 	jobList.onClickSubmitRefreshJob(function(jobId){
 		return submitRefreshJob(recruiterId, jobId);
 	})
-	// jobList.onClickJobCancel(function(jobId){
-	// 	alert(jobId)
-	// })
 
-	// jobList.onClickJobRefresh(function(jobId) {
-	// 	alert(jobId)
-	// })
-
-	// jobList.onClickJobMakePremium(function(jobId){
-	// 	alert(jobId)
-	// })
 	jobList.onClickSubmitPremiumJob(function(jobId){
 		return submitPremiumJob(recruiterId, jobId);
 	})
@@ -55,29 +45,47 @@ jQuery(document).ready( function() {
 
 	}
 	function onSuccessfulUnpublishedJob(topic, data) {
-		alert(topic)
-		theJob.closeModal()
+
+		jobList.closeModal()
+		toastNotify(1, "Job Unpublish Successfully")
+		setTimeout(function(){
+			 location.reload()
+		 }, 1000);
 	}
 
 	function onFailedUnpublishedJob(topic,data) {
-		alert(topic)
-		theJob.closeModal()
+
+		jobList.closeModal()
+		errorHandler(data)
 	}
 	function onSuccessfulRefreshJob(topic, data){
-		alert(topic);
-		theJob.closeModal()
+		jobList.closeModal()
+		toastNotify(1, "Job Refreshed Successfully")
+		setTimeout(function(){
+			 location.reload()
+		 }, 1000);
 	}
 	function onFailedRefreshJob(topic, data){
 		alert(topic);
-		theJob.closeModal()
+		jobList.closeModal()
 	}
 	function onSuccessfulPremiumJob(topic, data){
-		alert(topic)
-		theJob.closeModal()
+		jobList.closeModal()
+		toastNotify(1, "Job Made Premium Successfully")
+		setTimeout(function(){
+			 location.reload()
+		 }, 1000);
 	}
 	function onFailedPremiumJob(topic, data){
-		alert(topic);
-		theJob.closeModal()
+		jobList.closeModal()
+		errorHandler(data)
 	}
 
 });
+
+function errorHandler(data) {
+    if(!data) {
+        return toastNotify(3, "Something went wrong");
+    }
+    return toastNotify(3, data.message);
+}

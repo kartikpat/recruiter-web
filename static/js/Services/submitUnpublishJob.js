@@ -5,7 +5,7 @@ function submitUnpublishJob(recruiterId, jobId, data){
 		if(res.status && res.status =='success'){
 			return pubsub.publish("jobUnpublishSuccess", res);
 		}
-		debugger
+		
 		return pubsub.publish("jobUnpublishFail", res.responseJSON);
 	});
 }

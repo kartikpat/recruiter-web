@@ -579,7 +579,14 @@ input::-webkit-input-placeholder {
 			border-bottom:0;
 			border-top-right-radius:4px;
 			border-top-left-radius:4px;
+            .action-buttons {
 
+            	.select-dropdown {
+            		padding: 5px 5px 5px 15px;
+
+            	}
+
+            }
 			h1 {
 				font-size:$mobile-page-title-size;
 			}
@@ -890,7 +897,8 @@ input::-webkit-input-placeholder {
     bottom: 0;
     right: 0;
     height: 100%;
-    overflow:auto;
+    overflow-y:auto;
+    overflow-x: hidden;
     box-shadow: 0 1px 20px rgba(0,0,0,0.8);
     background-color:$body-background-color;
     z-index:5;
@@ -1111,8 +1119,11 @@ input::-webkit-input-placeholder {
 									width: 50%;
 									height: 40px;
 									line-height: 40px;
-									margin-bottom: 15px;
+                                    margin-bottom: 5px;
 								}
+                                .cand-add-tag-action-btn {
+                                    margin-top: 10px;
+                                }
 								&.comments {
 									textarea {
 										width: 50%;
@@ -1302,7 +1313,7 @@ input::-webkit-input-placeholder {
     	.action-buttons {
     		margin-bottom:30px;
 			&.cand-add-tag-action-btn {
-				margin-bottom: 15px;
+				margin: 15px 0;
 			}
     		span {
     			&.button {
@@ -1361,7 +1372,7 @@ input::-webkit-input-placeholder {
 			.cand-add-tag {
 				height: 40px;
 			    line-height: 40px;
-			    margin-bottom: 10px;
+
 				padding: 10px;
 			}
 
@@ -1567,23 +1578,7 @@ input::-webkit-input-placeholder {
 	}
 }
 
-@media all and (max-width:480px) {
-	.view-resume-modal {
-		.main-wrapper {
-			.main-container {
-				.container {
-					&.resume-header {
-						.profile-snapshot {
-							.snap {
-								width:50%;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
+
 
 #jobs-category-tabs {
 	// border: 0;
@@ -1682,4 +1677,27 @@ input::-webkit-input-placeholder {
 #clear-all {
 	cursor: pointer;
     color: #155d9a;
+}
+
+@media all and (max-width:480px) {
+    .action-buttons {
+
+    	.select-dropdown {
+    		padding: 5px 5px 5px 15px;
+
+    	}
+
+    }
+    .active-filters {
+        padding-bottom:20px;
+        font-size: 14px;
+        .filter-tag {
+
+            padding:2px 10px;
+            #clear-all {
+                display: block;
+                margin-top: 5px;
+            }
+        }
+    }
 }

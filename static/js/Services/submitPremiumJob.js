@@ -5,6 +5,6 @@ function submitPremiumJob(recruiterId, jobId){
 		if(res.status && res.status =='success'){
 			return pubsub.publish("jobPremiumSuccess", res);
 		}
-		return pubsub.publish("jobPremiumFail", res);
+		return pubsub.publish("jobPremiumFail", res.responseJSON);
 	});
 }

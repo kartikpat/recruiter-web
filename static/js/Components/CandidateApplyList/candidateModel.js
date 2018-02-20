@@ -24,11 +24,12 @@ function Candidate() {
         settings.candidateRejectModal = $(".candidateRejectModal"),
         settings.candidateSaveModal = $("#candidateSaveModal"),
         settings.candidateChatModal = $("#candidateChatModal"),
-        settings.tagListing = $("#tagListing")
-        settings.tagMobListing = $("#tagMobListing")
+        settings.tagListing = $(".recruiterTags"),
+        settings.tagMobListing = $("#tagMobListing"),
+        settings.tagInputError = $(".tagInputError")
         onClickChatCandidateModal()
         jQuery("#tabbed-content").tabs({});
-        onClickAddPopulatedTags()
+        // onClickAddPopulatedTags()
     }
 
     function showCandidateDetails(details, type, status){
@@ -260,9 +261,9 @@ function Candidate() {
         item.workPermit.text("");
         item.coverLetter.text("");
         item.tabContent.tabs({active: 0});
-        debugger
+
         item.shortlistButton.text("Shortlist");
-        debugger
+
         item.rejectButton.text("Reject");
         item.savedButton.html("<span class='icon'><i class='icon-star'></i></span>Save for Later");
     }
@@ -327,18 +328,31 @@ function Candidate() {
         settings.candidateDetailsModal.on('keyup', settings.candidateTagInputClass ,function(event) {
             event.stopPropagation();
             var tagName = $(this).val();
-            if (event.which == 13) {
-
-                var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
-                return fn(applicationId, tagName);
+            if (event.which != 13) {
+                 $(this).removeAttr("tag-id")
             }
             return fn1(tagName)
         });
         settings.candidateDetailsModal.on('click', settings.candidateAddTagButtonClass,function(event) {
             event.stopPropagation();
             var tagName = $(settings.candidateTagInputClass).val();
+            if(!tagName) {
+                $(settings.candidateTagInputClass).addClass("error-border");
+                return settings.tagInputError.removeClass("hidden")
+            }
+            else {
+                $(settings.candidateTagInputClass).removeClass("error-border");
+                settings.tagInputError.addClass("hidden")
+            }
+            var tagId = $(settings.candidateTagInputClass).attr("tag-id")
+            $(this).removeAttr("tag-id")
+            var parameters = {}
+            if(tagId) {
+                parameters.tagId = tagId;
+            }
+            parameters.tagName = tagName;
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
-            return fn(applicationId, tagName);
+            return fn(applicationId, parameters);
         });
     }
 
@@ -346,18 +360,31 @@ function Candidate() {
         settings.candidateDetailsModal.on('keyup', settings.mobCandidateTagInputClass ,function(event) {
             event.stopPropagation();
             var tagName = $(this).val();
-            if (event.which == 13) {
-
-                var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
-                return fn(applicationId, tagName);
+            if (event.which != 13) {
+                 $(this).removeAttr("tag-id")
             }
             return fn1(tagName)
         });
         settings.candidateDetailsModal.on('click', settings.mobCandidateAddTagButtonClass,function(event) {
             event.stopPropagation();
             var tagName = $(settings.mobCandidateTagInputClass).val();
+            if(!tagName) {
+                $(settings.mobCandidateTagInputClass).addClass("error-border");
+                return settings.tagInputError.removeClass("hidden")
+            }
+            else {
+                $(settings.mobCandidateTagInputClass).removeClass("error-border");
+                settings.tagInputError.addClass("hidden")
+            }
+            var tagId = $(settings.mobCandidateTagInputClass).attr("tag-id")
+            $(this).removeAttr("tag-id")
+            var parameters = {}
+            if(tagId) {
+                parameters.tagId = tagId;
+            }
+            parameters.tagName = tagName;
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
-            return fn(applicationId, tagName);
+            return fn(applicationId, parameters);
         });
     }
 
@@ -406,27 +433,23 @@ function Candidate() {
     }
 
     function showDropdownTags(data) {
-        var str = '';
-        console.log(data.length)
-        if(!data.length) {
-            return settings.tagListing.addClass("hidden")
-        }
-		data.forEach(function(aData, index){
-			var item = $(".fetchTags.prototype").clone().removeClass("prototype hidden");
-            item.text(aData["name"]);
-            item.attr("data-tag-id", aData["id"])
-			str+=item[0].outerHTML;
-            console.log(index)
-		});
-		settings.tagListing.html(str).removeClass("hidden");
+        initializeAutoCompleteComponent(settings.tagListing, data)
     }
 
-    function onClickAddPopulatedTags() {
-        settings.tagListing.on('click', ".fetchTags", function(){
-            $(settings.candidateTagInputClass).val($(this).text());
-            settings.tagListing.addClass("hidden")
-        })
-    }
+    // function onClickAddPopulatedTags() {
+    //     settings.tagListing.on('click', ".fetchTags", function(){
+    //         $(settings.candidateTagInputClass).val($(this).text());
+    //         $(settings.candidateTagInputClass).attr("tag-id", $(this).attr("data-tag-id"));
+    //         settings.tagListing.addClass("hidden")
+    //     })
+    //     // settings.tagListing.on('keydown', ".fetchTags", function(e){
+    //     //     if (e.which == 40) {
+    //     //         $(settings.candidateTagInputClass).val($(this).text());
+    //     //
+    //     //         settings.tagListing.addClass("hidden")
+    //     //     }
+    //     // })
+    // }
 
     return {
         init: init,
@@ -452,6 +475,26 @@ function Candidate() {
     	},200);
     }
 }
+
+function initializeAutoCompleteComponent(selector, availableTags) {
+	var suggestedTagsArray = [];
+	availableTags.forEach(function(aTag) {
+		suggestedTagsArray.push({
+			"label": aTag["name"],
+			"value": aTag["name"],
+			"id": aTag["id"]
+	    });
+    })
+	selector.autocomplete({
+      	source: suggestedTagsArray,
+	    select: function( event, ui ) {
+	        selector.attr("tag-id", ui.item.id);
+            selector.val( ui.item.value);
+	        return false;
+	    }
+    });
+}
+
 
 function getMaritalStatus(status) {
 

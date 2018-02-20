@@ -168,12 +168,7 @@ jQuery(document).ready( function() {
         parameters.isModalButton = false
         setCandidateAction(recruiterId, jobId, "reject" , applicationId, {}, parameters);
     })
-    candidates.onClickMassTag(function(){
 
-    })
-    candidates.onClickMassComment(function(){
-
-    })
     candidates.onClickDownloadMassExcel(function(arr){
 
         var parameters = filters.getAppliedFilters();
@@ -185,7 +180,7 @@ jQuery(document).ready( function() {
         candidates.setHref(str)
     })
     candidates.onClickDownloadMassResume(function(arr){
-
+        var parameters = {}
         parameters.applicationId = arr.toString()
         downloadMassResume(recruiterId, jobId, parameters)
     })
@@ -216,14 +211,17 @@ jQuery(document).ready( function() {
         //postRequestDefaultCalendar
     })
 
-     aCandidate.onClickAddTag(function(applicationId, tagName){
-         var parameters = {}
-         var ob = {
-             "name": tagName,
-	         "type": "add"
+     aCandidate.onClickAddTag(function(applicationId, parameters){
+         var ob = {}
+         if(parameters.tagId) {
+             ob.tagId = parameters.tagId;
          }
-         parameters.type = "add"
-         parameters.tagName = tagName
+         else {
+             ob.name = parameters.tagName;
+         }
+
+         ob.type= "add";
+         parameters.type = "add";
          setCandidateAction(recruiterId, jobId, "tag" , applicationId, ob, parameters);
      }, function(tagName){
          var parameters = {}
@@ -259,14 +257,17 @@ jQuery(document).ready( function() {
          setCandidateAction(recruiterId, jobId, "comment" , applicationId, ob);
      })
 
-     aCandidate.onClickAddTagMob(function(applicationId, tagName){
-         var parameters = {}
-         var ob = {
-             "name": tagName,
-	         "type": "add"
+     aCandidate.onClickAddTagMob(function(applicationId, parameters){
+         var ob = {}
+         if(parameters.tagId) {
+             ob.tagId = parameters.tagId;
          }
-         parameters.type = "add"
-         parameters.tagName = tagName
+         else {
+             ob.name = parameters.tagName;
+         }
+
+         ob.type= "add";
+         parameters.type = "add";
          setCandidateAction(recruiterId, jobId, "tag" , applicationId, ob, parameters);
      }, function(tagName){
          var parameters = {}
@@ -274,6 +275,8 @@ jQuery(document).ready( function() {
          parameters.str = tagName
          fetchRecruiterTags(recruiterId, parameters)
      })
+
+
 
      aCandidate.onClickShortlistCandidate(function(applicationId, newStatus, isNotAction) {
          if(isNotAction) {
@@ -339,7 +342,10 @@ jQuery(document).ready( function() {
         globalParameters.candidateListLength = data["data"].length;
         candidates.addToList(data["data"], globalParameters.status);
         filters.showResultsFound(globalParameters.candidateListLength)
-        store.emptyStore(data["data"]);
+        console.log(data)
+        if(data["pageNumber"] == 1) {
+            store.emptyStore(data["data"]);
+        }
         store.saveToStore(data["data"]);
     }
 
@@ -440,23 +446,25 @@ jQuery(document).ready( function() {
 
     function onSuccessfullCandidateBulkAction(topic,res) {
         if(res.action == "comment") {
+            candidates.closeModal()
             return toastNotify(1, "Comment Added Successfully")
         }
 
         if(res.action == "shortlist") {
-            theJob.closeModal()
+            candidates.closeModal()
             candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, res.applicationId.length)
 
             if(res.parameters.oldStatus != "") {
                 candidates.candidateActionTransition(res.applicationId)
                 return toastNotify(1, res.applicationId.length +" candidates have been shortlisted and moved to the shortlisted tab.")
             }
+            
             return toastNotify(1, res.applicationId.length +" candidates have been shortlisted")
 
         }
 
         if(res.action == "reject") {
-            theJob.closeModal()
+            candidates.closeModal()
             candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, res.applicationId.length)
 
             if(res.parameters.oldStatus != "") {
@@ -465,8 +473,9 @@ jQuery(document).ready( function() {
             }
             return toastNotify(1, res.applicationId.length +" candidates have been rejected")
         }
+
         if(res.action == "save") {
-            theJob.closeModal()
+            candidates.closeModal()
             candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, res.applicationId.length)
 
             if(res.parameters.oldStatus != "") {
@@ -482,7 +491,7 @@ jQuery(document).ready( function() {
     }
 
     function onDownloadSuccess(topic, res) {
-        return toastNotify(1, "An Email has been sent!")
+        return toastNotify(1, "An Email has been sent with the download link!")
     }
 
     function onDownloadFail(topic, res) {
@@ -496,7 +505,7 @@ jQuery(document).ready( function() {
 	}
 
 	function onFailedUnpublishedJob(topic,data) {
-		errorHandler(res)
+		errorHandler(data)
         theJob.closeModal()
 	}
 	function onSuccessfulRefreshJob(topic, data){
@@ -505,7 +514,7 @@ jQuery(document).ready( function() {
         toastNotify(1, "Job Refreshed Success")
 	}
 	function onFailedRefreshJob(topic, data){
-		errorHandler(res)
+		errorHandler(data)
         theJob.closeModal()
 	}
 	function onSuccessfulPremiumJob(topic, data){
@@ -514,7 +523,7 @@ jQuery(document).ready( function() {
         toastNotify(1, "Job Premium Success")
 	}
 	function onFailedPremiumJob(topic, data){
-		errorHandler(res)
+		errorHandler(data)
         theJob.closeModal()
 	}
 

@@ -2370,7 +2370,7 @@ span.sticker {
   font-weight: bold;
   text-transform: uppercase;
   line-height: 1.5;
-  padding: 20px 15px 15px 0;
+  padding: 15px 15px 15px 0;
   border-bottom: 1px solid #e8e8e8;
   margin-left: 20px;
   margin-bottom: 15px; }
@@ -2401,6 +2401,32 @@ span.sticker {
       text-decoration: none; }
       .modal_overlay .modal_content .modal_body .subcategory_listing li a:hover {
         text-decoration: underline; }
+
+@media all and (max-width: 480px) {
+  .modal_overlay .filter-tags-container .check-input {
+    display: inline-block;
+    width: 100%; }
+  .modal_overlay .filter-tags-container ul {
+    height: 160px; }
+  .modal_overlay .modal_body_header {
+    margin-left: 10px; }
+    .modal_overlay .modal_body_header .title {
+      font-size: 14px; }
+  .modal_overlay .modal_content .modal_sidebar {
+    width: 135px; }
+    .modal_overlay .modal_content .modal_sidebar .modal_sidebar_header {
+      font-size: 14px; }
+    .modal_overlay .modal_content .modal_sidebar ul.category_listing li {
+      font-size: 12px; }
+  .modal_overlay .modal_content .modal_body {
+    width: calc(100% - 135px); }
+    .modal_overlay .modal_content .modal_body .subcategory_listing {
+      margin: 5px 10px;
+      margin-bottom: 10px; }
+      .modal_overlay .modal_content .modal_body .subcategory_listing.half {
+        min-height: 199px; }
+      .modal_overlay .modal_content .modal_body .subcategory_listing.full {
+        min-height: 199px; } }
 
 input::-webkit-input-placeholder {
   font-size: 13px; }
@@ -3006,6 +3032,8 @@ input::-webkit-input-placeholder {
     border-bottom: 0;
     border-top-right-radius: 4px;
     border-top-left-radius: 4px; }
+    .page-content .page-header .action-buttons .select-dropdown {
+      padding: 5px 5px 5px 15px; }
     .page-content .page-header h1 {
       font-size: 16px; }
   .page-content .page-mobile-header {
@@ -3213,7 +3241,8 @@ input::-webkit-input-placeholder {
   bottom: 0;
   right: 0;
   height: 100%;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   box-shadow: 0 1px 20px rgba(0, 0, 0, 0.8);
   background-color: #f7f7f7;
   z-index: 5;
@@ -3364,7 +3393,9 @@ input::-webkit-input-placeholder {
                 width: 50%;
                 height: 40px;
                 line-height: 40px;
-                margin-bottom: 15px; }
+                margin-bottom: 5px; }
+              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .cand-add-tag-action-btn {
+                margin-top: 10px; }
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments textarea {
                 width: 50%;
                 padding: 5px;
@@ -3528,7 +3559,7 @@ input::-webkit-input-placeholder {
     .view-resume-modal .resume-sidebar .action-buttons {
       margin-bottom: 30px; }
       .view-resume-modal .resume-sidebar .action-buttons.cand-add-tag-action-btn {
-        margin-bottom: 15px; }
+        margin: 15px 0; }
       .view-resume-modal .resume-sidebar .action-buttons span.button {
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -3593,7 +3624,6 @@ input::-webkit-input-placeholder {
       .view-resume-modal .resume-sidebar .sidebar-section .cand-add-tag {
         height: 40px;
         line-height: 40px;
-        margin-bottom: 10px;
         padding: 10px; }
       .view-resume-modal .resume-sidebar .sidebar-section .comment-block {
         margin-bottom: 15px; }
@@ -3771,10 +3801,6 @@ input::-webkit-input-placeholder {
               padding-left: 0;
               padding-right: 0; } }
 
-@media all and (max-width: 480px) {
-  .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot .snap {
-    width: 50%; } }
-
 #jobs-category-tabs {
   border-top: 1px solid #e8e8e8;
   overflow: auto; }
@@ -3846,3 +3872,15 @@ input::-webkit-input-placeholder {
 #clear-all {
   cursor: pointer;
   color: #155d9a; }
+
+@media all and (max-width: 480px) {
+  .action-buttons .select-dropdown {
+    padding: 5px 5px 5px 15px; }
+  .active-filters {
+    padding-bottom: 20px;
+    font-size: 14px; }
+    .active-filters .filter-tag {
+      padding: 2px 10px; }
+      .active-filters .filter-tag #clear-all {
+        display: block;
+        margin-top: 5px; } }

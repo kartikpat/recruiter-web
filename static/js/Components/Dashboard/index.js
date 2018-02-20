@@ -50,7 +50,7 @@ $(document).ready(function(){
 				var jobId = $(this).attr("data-job-id");
 				settings.jobRefreshModal.removeClass('hidden');
 				settings.jobRefreshButton.attr('data-refresh-job-id', jobId);
-				debugger
+				
 			return false;
 		})
 	}
