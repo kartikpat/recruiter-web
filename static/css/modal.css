@@ -766,7 +766,7 @@ span.sticker {
   width: 60%;
   padding: 0;
   margin: 0;
-  height: 55%; }
+  height: auto; }
   .modal_wrapper button {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -831,9 +831,9 @@ span.sticker {
 @media (min-width: 481px) and (max-width: 768px) {
   .modal_wrapper {
     width: 90%;
-    height: 45%; } }
+    height: auto; } }
 
 @media (min-width: 320px) and (max-width: 480px) {
   .modal_wrapper {
     width: 90%;
-    height: 35%; } }
+    height: auto; } }

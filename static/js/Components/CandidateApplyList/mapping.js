@@ -10,3 +10,12 @@ var binary = {
     2: "No",
     0: "N.A."
 }
+
+var workPermit = {
+    1: "No",
+    2: 'Have H1 Visa',
+    3: 'TN Permit Holder',
+    4: 'Green Card Holder',
+    5: 'US Citizen',
+    6: 'Authorized to work in US'
+}

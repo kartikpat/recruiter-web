@@ -125,7 +125,10 @@ function Candidate() {
         item.contact.text(aData["phone"] || "NA");
         item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY') || "NA")
         item.notice.text(aData["notice"] + " months" || "NA");
-        item.salary.text(aData["ctc"]+ " LPA" || "NA");
+        if(aData["ctc"] == "confidential")
+            item.salary.text("confidential");
+        else
+            item.salary.text(aData["ctc"]+ " LPA");
         item.firstName.text(aData["name"])
         var lastActiveDays = getLastActiveDay(aData["lastActive"])
 
@@ -169,7 +172,7 @@ function Candidate() {
         item.expectedSalary.text(aData["expectedCtc"]+ " LPA")
         item.maritalStatus.text(getMaritalStatus(aData["maritalStatus"]));
         item.languages.text((formatLanguages(aData["languages"]) || "N.A."));
-        item.workPermit.text(binary[aData["permit"]]);
+        item.workPermit.text((workPermit[aData["permit"]] || "N.A."));
         item.teamHandling.text(binary[aData["permit"]])
         item.workSixDays.text("no");
         item.relocate.text(binary[aData["relocate"]] )

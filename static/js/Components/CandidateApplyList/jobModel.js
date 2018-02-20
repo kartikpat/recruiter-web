@@ -25,9 +25,14 @@ function Job(){
 		settings.jobOtherActions = $("#jobOtherActions");
 		settings.calendarSelectError = $("#calendarSelectError");
 		settings.createCalendar = $("#createCalendar");
-
+		settings.jobUnpublishModal = $(".unpublishModal")
+		settings.jobRefreshModal = $(".refreshModal")
+		settings.jobPremiumModal = $(".premiumModal");
 		onClickCreateCalendar();
 		onClickJobOtherActions()
+		onClickJobRefresh();
+		onClickJobCancel();
+		onClickJobMakePremium();
 	}
 
 	function setJobDetails(data){
@@ -65,11 +70,6 @@ function Job(){
         if(data["isEditable"]) {
             settings.jobEditButton.attr("href","/job/"+data["jobId"]+"/edit").removeClass("hidden")
         }
-
-
-
-
-
 	}
 
 	function onClickCreateCalendar() {
@@ -80,43 +80,57 @@ function Job(){
 
 	function onClickJobCancel(fn){
 		settings.jobUnpublishButton.click(function(e){
-			var modal = $(".unpublishModal")
-			var jobId = $(this).attr("data-id");
-			modal.removeClass('hidden');
-			modal.find(".unpublishButton").click(function(){
-				fn(jobId)
-			});
+			settings.jobUnpublishModal.find("input:radio[name='unpublishReason']:checked").prop('checked', false);
+			addBodyFixed()
+			settings.jobUnpublishModal.removeClass('hidden');
+		});
+	}
+
+	function onClickSubmitUnpublishJob(fn){
+		settings.jobUnpublishModal.find(".jobUnpublishButton").click(function(e){
+			var reason = settings.jobUnpublishModal.find("input:radio[name='unpublishReason']:checked").attr('id');
+			if(!reason){
+				settings.jobUnpublishModal.find('.error').removeClass('hidden');
+				return
+			}
+			return fn(reason);
 		});
 	}
 
 	function onClickJobRefresh(fn) {
 		settings.jobRefreshButton.click(function(e) {
-			var modal = $(".refreshModal")
-			var jobId = $(this).attr("data-id");
-			modal.removeClass('hidden');
-			modal.find(".refreshButton").click(function(){
-				fn(jobId)
-			});
-            return false;
+			addBodyFixed()
+			settings.jobRefreshModal.removeClass('hidden');
 		})
+	}
+
+	function onClickSubmitRefreshJob(fn){
+		settings.jobRefreshButton.click(function(){
+			var jobId = $(this).attr('data-refresh-job-id');
+			return fn(jobId);
+		});
 	}
 
 	function onClickJobMakePremium(fn) {
 		settings.jobPremiumButton.click(function(e) {
-			var jobId = $(this).attr("data-id");
-			var modal = $(".premiumModal");
 			if(config["availableCredits"] > 0) {
-				modal.find('.premiumButton').click(function(){
-					fn(jobId)
-				}).removeClass("hidden");
-				modal.find(".section.modal_text").text("This job will be highlighted and moved to top of the list for 15 days starting today. You will have "+(parseInt(config["availableCredits"]) - 1)+" credits left.")
-				modal.removeClass('hidden');
+				settings.jobPremiumModal.find(".premiumButton").removeClass("hidden");
+				settings.jobPremiumModal.find(".section.modal_text").text("This job will be highlighted and moved to top of the list for 15 days starting today. You will have "+(parseInt(config["availableCredits"]) - 1)+" credits left.")
+				addBodyFixed()
+				settings.jobPremiumModal.removeClass('hidden');
 				return false
 			}
-			modal.find(".js_modalText").text("Reach out to more candidates in less amount of time by making your job premium.")
-			modal.find(".section.modal_text").text("You don’t have any premium credits right now! We’ll reach out to you to help you with it!")
-            modal.removeClass('hidden');
+			settings.jobPremiumModal.find(".js_modalText").text("Reach out to more candidates in less amount of time by making your job premium.")
+			settings.jobPremiumModal.find(".section.modal_text").text("You don’t have any premium credits right now! We’ll reach out to you to help you with it!")
+			addBodyFixed()
+            settings.jobPremiumModal.removeClass('hidden');
 			//shootEmail()
+		})
+	}
+
+	function onClickSubmitPremiumJob(fn){
+		settings.jobPremiumModal.find(".premiumButton").click(function(e){
+			return fn();
 		})
 	}
 
@@ -179,23 +193,22 @@ function Job(){
 		settings.calendarSelectError.text("Please Select the calendar!").removeClass("hidden");
 	}
 
+	function closeModal() {
+		removeBodyFixed()
+		$(".modal").addClass("hidden")
+	}
+
 	return {
 		init: init,
 		setConfig: setConfig,
         setJobDetails: setJobDetails,
-		onClickJobCancel: onClickJobCancel,
-		onClickJobRefresh: onClickJobRefresh,
-		onClickJobMakePremium: onClickJobMakePremium,
+		onClickSubmitUnpublishJob: onClickSubmitUnpublishJob,
+		onClickSubmitRefreshJob: onClickSubmitRefreshJob,
 		getDefaultCalendar: getDefaultCalendar,
 		showCalendarMissingError: showCalendarMissingError,
-		onChangeDefaultCalendar: onChangeDefaultCalendar
+		onChangeDefaultCalendar: onChangeDefaultCalendar,
+		onClickSubmitPremiumJob: onClickSubmitPremiumJob,
+		closeModal: closeModal
 	}
 
 }
-
-
- // function setJobDetails(data) {
- //        var item = getJobElements();
- //        item.title.text().removeClass("hidden");
- //
- //    }

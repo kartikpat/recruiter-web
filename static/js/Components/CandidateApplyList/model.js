@@ -40,6 +40,8 @@ function candidateList() {
         onClickMassSave()
         onClickMassReject()
         onClickMassShortlist()
+
+
 	}
 
 	function setConfig(key, value) {
@@ -458,6 +460,7 @@ function candidateList() {
 			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Rejected Tab.");
             settings.bulkActionModal.find(".massActionButton").text("Reject").attr("data-action", "reject").attr("data-status", "2")
             settings.bulkActionModal.find(".massTextarea").val("")
+            addBodyFixed()
             settings.bulkActionModal.removeClass("hidden")
         })
 
@@ -471,6 +474,7 @@ function candidateList() {
 			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Shortlisted Tab.");
             settings.bulkActionModal.find(".massActionButton").text("Shortlist").attr("data-action", "shortlist").attr("data-status", "1")
             settings.bulkActionModal.find(".massTextarea").val("")
+            addBodyFixed()
             settings.bulkActionModal.removeClass("hidden")
         })
     }
@@ -483,6 +487,7 @@ function candidateList() {
 			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Saved Tab.");
             settings.bulkActionModal.find(".massActionButton").text("Save for Later").attr("data-action", "save").attr("data-status", "3")
             settings.bulkActionModal.find(".massTextarea").val("")
+            addBodyFixed()
             settings.bulkActionModal.removeClass("hidden")
         })
     }
@@ -519,6 +524,29 @@ function candidateList() {
         return selectedApplicationIds
     }
 
+    function onClickDownloadMassExcel(fn) {
+        settings.downloadExcelMass.click(function(event){
+
+            var arr = returnSelectedApplications()
+            fn(arr)
+            return true;
+        })
+    }
+
+    function onClickDownloadMassResume(fn) {
+        settings.massResumeDownload.click(function(event){
+            var arr = returnSelectedApplications()
+            fn(arr)
+        })
+    }
+
+    function setHref(str) {
+        var href = settings.downloadExcelMass.attr("href");
+        href += str;
+        console.log(href)
+        settings.downloadExcelMass.attr("href", href);
+    }
+
     return {
 		init: init,
 		addToList: addToList,
@@ -540,12 +568,13 @@ function candidateList() {
         onClickViewComment: onClickViewComment,
         onClickViewTag: onClickViewTag,
         emptyCandidateList: emptyCandidateList,
-
+        onClickDownloadMassExcel: onClickDownloadMassExcel,
         updateJobStats: updateJobStats,
         onClickMassComment: onClickMassComment,
         onClickMassTag: onClickMassTag,
-
-        onClickMassActionButton: onClickMassActionButton
+        setHref: setHref,
+        onClickMassActionButton: onClickMassActionButton,
+        onClickDownloadMassResume: onClickDownloadMassResume
 
 	}
 

@@ -35,6 +35,7 @@ function Jobs() {
 			e.preventDefault();
 			var jobId = $(this).attr("data-job-id");
 			settings.jobUnpublishModal.find("input:radio[name='unpublishReason']:checked").prop('checked', false);
+			addBodyFixed()
 			settings.jobUnpublishModal.removeClass('hidden');
 			settings.jobUnpublishButton.attr('data-unpublish-job-id', jobId);
 		});
@@ -63,6 +64,7 @@ function Jobs() {
 			e.preventDefault();
 			if(parseInt($(this).attr("data-job-refreshable"))) {
 				var jobId = $(this).attr("data-job-id");
+				addBodyFixed()
 				settings.jobRefreshModal.removeClass('hidden');
 				settings.jobRefreshButton.attr('data-refresh-job-id', jobId);
 			}
@@ -88,11 +90,13 @@ function Jobs() {
 				settings.jobMakePremiumButton.attr('data-premium-job-id', jobId);
 				settings.jobMakePremiumButton.removeClass("hidden")
 				settings.jobMakePremiumModal.find(".modalTextSecondary").text("This job will be highlighted and moved to top of the list for 15 days starting today. You will have "+(parseInt(config["availableCredits"]) - 1)+" credits left.")
+				addBodyFixed()
 				settings.jobMakePremiumModal.removeClass('hidden');
 				return false
 			}
 			settings.jobMakePremiumModal.find(".modalTextPrimary").text("Reach out to more candidates in less amount of time by making your job premium.")
 			settings.jobMakePremiumModal.find(".modalTextSecondary").text("You don’t have any premium credits right now! We’ll reach out to you to help you with it!")
+			addBodyFixed()
 			settings.jobMakePremiumModal.removeClass('hidden');
 			//shootEmail()
 			return false;
@@ -255,6 +259,11 @@ function Jobs() {
 		initializeTooltip()
 	}
 
+	function closeModal() {
+		removeBodyFixed()
+		$(".modal").addClass("hidden")
+	}
+
 	return {
 		init: init,
 		addToList: addToList,
@@ -266,7 +275,8 @@ function Jobs() {
 		setConfig : setConfig,
 		onClickJobMakePremium: onClickJobMakePremium,
 		onClickSubmitPremiumJob: onClickSubmitPremiumJob,
-		onChangeJobFilters: onChangeJobFilters
+		onChangeJobFilters: onChangeJobFilters,
+		closeModal: closeModal
 	}
 
 	function initializeTooltip() {

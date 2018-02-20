@@ -56,22 +56,28 @@ jQuery(document).ready( function() {
 	}
 	function onSuccessfulUnpublishedJob(topic, data) {
 		alert(topic)
+		theJob.closeModal()
 	}
-	
+
 	function onFailedUnpublishedJob(topic,data) {
 		alert(topic)
+		theJob.closeModal()
 	}
 	function onSuccessfulRefreshJob(topic, data){
 		alert(topic);
+		theJob.closeModal()
 	}
 	function onFailedRefreshJob(topic, data){
 		alert(topic);
+		theJob.closeModal()
 	}
 	function onSuccessfulPremiumJob(topic, data){
 		alert(topic)
+		theJob.closeModal()
 	}
 	function onFailedPremiumJob(topic, data){
 		alert(topic);
+		theJob.closeModal()
 	}
 
 });
