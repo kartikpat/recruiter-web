@@ -310,7 +310,7 @@ $(document).ready(function(){
 		fetchDashboardStats(recruiterId);
 		fetchJobs("published", recruiterId);
 		fetchFollowUps(recruiterId);
-		fetchInterviews(recruiterId, {pageContent: 6, pageNumber: 1, status: 2, from: moment().format()});
+		fetchInterviews(recruiterId, {pageContent: 6, pageNumber: 1, status: 2});
 	}
 	init()
 
