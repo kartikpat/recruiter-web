@@ -835,6 +835,52 @@ body.posf {
     font-family: "Droid Sans", sans-serif;
     font-size: 14px; }
 
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.7); }
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 8px solid #3498db;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%); }
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg); } }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+.no-data {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  min-width: 350px;
+  margin: 0 auto;
+  font-size: 20px;
+  color: #2b2b2b; }
+
 a {
   text-decoration: none; }
 
@@ -1514,8 +1560,6 @@ span.sticker {
     display: inline-block;
     vertical-align: top;
     font-size: initial; }
-    .page-content .tagged-candidates .page-mobile-header {
-      display: none; }
     .page-content .tagged-candidates .page-header select {
       font-family: inherit;
       display: inline-block;
@@ -1548,6 +1592,8 @@ span.sticker {
         background-color: transparent;
         margin-bottom: 10px;
         background-image: url("/static/images/minimal_select_dropdown.svg"); }
+    .page-content .tagged-candidates .page-header .title {
+      margin-bottom: 0; }
     .page-content .tagged-candidates .tagged-candidates-listing {
       background: #FFF;
       border-radius: 6px;
@@ -1696,8 +1742,6 @@ span.sticker {
   .page-content .tagged-candidates {
     width: 100%; }
     .page-content .tagged-candidates .page-header {
-      display: none; }
-    .page-content .tagged-candidates .page-mobile-header {
       display: block;
       font-size: 14px;
       background: #f3fbfb;
@@ -1706,17 +1750,17 @@ span.sticker {
       border-bottom: 0;
       border-top-right-radius: 4px;
       border-top-left-radius: 4px; }
-      .page-content .tagged-candidates .page-mobile-header .mobile-title {
+      .page-content .tagged-candidates .page-header .title {
         margin: 0;
         border-top-right-radius: 4px;
         border-top-left-radius: 4px;
         line-height: 1.5;
         font-weight: bold; }
-      .page-content .tagged-candidates .page-mobile-header .stats > span {
+      .page-content .tagged-candidates .page-header .stats > span {
         display: inline-block;
         border-right: 1px solid #e8e8e8;
         padding-right: 20px; }
-      .page-content .tagged-candidates .page-mobile-header .stats select {
+      .page-content .tagged-candidates .page-header .stats select {
         font-family: inherit;
         display: inline-block;
         font-size: 14px;
@@ -1739,12 +1783,12 @@ span.sticker {
         padding-top: 5px !important;
         padding-bottom: 5px !important;
         padding-left: 0 !important; }
-        .page-content .tagged-candidates .page-mobile-header .stats select[multiple] {
+        .page-content .tagged-candidates .page-header .stats select[multiple] {
           background-image: none;
           height: 120px; }
-        .page-content .tagged-candidates .page-mobile-header .stats select.inactive .dropdown-list {
+        .page-content .tagged-candidates .page-header .stats select.inactive .dropdown-list {
           display: none; }
-        .page-content .tagged-candidates .page-mobile-header .stats select.minimal {
+        .page-content .tagged-candidates .page-header .stats select.minimal {
           display: inline-block;
           width: auto;
           border: 0;

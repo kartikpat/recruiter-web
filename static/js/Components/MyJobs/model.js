@@ -23,6 +23,8 @@ function Jobs() {
 		settings.jobMakePremiumModal= $(".premiumModal"),
 		settings.jobMakePremiumButton= $(".jobMakePremiumButton")
 		settings.tooltip= $(".tooltip");
+		settings.tableRowShell = $(".tableRow.shell");
+		settings.loaderOverlay = $("#loaderOverlay");
 		$(".header .menu-list-item.my-jobs").addClass("active");
 
 		onClickJobRefresh();
@@ -216,13 +218,11 @@ function Jobs() {
 		}
 
 		if(aData['views']){
-			item.views.text(aData['views']+' Views');
+			item.views.text(aData['views']+' Views').removeClass("hidden");
 			if(aData['totalApplications'])
-				item.applications.html('<a class="link-color" href="candidate-apply-list/'+aData["publishedId"]+'">'+aData["totalApplications"]+' Applied</a>');
-			item.element.find(".engagement").removeClass("hidden");
+				item.applications.html('<a class="link-color" href="candidate-apply-list/'+aData["publishedId"]+'">'+aData["totalApplications"]+' Applied</a>').removeClass("hidden");
 			item.element.find(".engagementDefault").addClass("hidden");
 		}
-
 
 		item.refresh.attr("data-job-refreshable", aData["refreshable"])
 		if(!aData["refreshable"])
@@ -251,10 +251,15 @@ function Jobs() {
 
 	function addToList(dataArray){
 		var str = '';
+		hideShell()
+		if(!dataArray.length) {
+			return settings.rowContainer.html("<div class='no-data'>No Jobs Found!</div>")
+		}
 		dataArray.forEach(function(aData){
 			var item = createElement(aData);
 			str+=item.element[0].outerHTML;
 		});
+
 		settings.rowContainer.html(str);
 		initializeTooltip()
 	}
@@ -262,6 +267,38 @@ function Jobs() {
 	function closeModal() {
 		removeBodyFixed()
 		$(".modal").addClass("hidden")
+	}
+
+	function hideShell() {
+		settings.tableRowShell.addClass("hidden")
+	}
+
+	function showShell() {
+		settings.tableRowShell.removeClass("hidden")
+	}
+
+	function showLoaderOverlay() {
+		settings.loaderOverlay.removeClass("hidden")
+	}
+
+	function hideLoaderOverlay() {
+		settings.loaderOverlay.addClass("hidden")
+	}
+
+	function openModal(type) {
+		if(type == "refresh") {
+			addBodyFixed()
+			settings.jobRefreshModal.removeClass("hidden")
+			return
+		}
+		if(type == "unpublish") {
+			addBodyFixed()
+			settings.jobUnpublishModal.removeClass("hidden")
+			return
+		}
+		addBodyFixed()
+		settings.jobMakePremiumModal.removeClass("hidden")
+
 	}
 
 	return {
@@ -276,7 +313,12 @@ function Jobs() {
 		onClickJobMakePremium: onClickJobMakePremium,
 		onClickSubmitPremiumJob: onClickSubmitPremiumJob,
 		onChangeJobFilters: onChangeJobFilters,
-		closeModal: closeModal
+		closeModal: closeModal,
+		openModal: openModal,
+		hideShell: hideShell,
+		showShell: showShell,
+		showLoaderOverlay: showLoaderOverlay,
+		hideLoaderOverlay: hideLoaderOverlay
 	}
 
 	function initializeTooltip() {

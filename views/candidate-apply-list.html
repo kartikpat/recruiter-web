@@ -24,13 +24,13 @@
 		<div class="candidate-apply-listing left">
 			<div class="page-header" id="jobDetails">
 				<div class="left">
-					<h1 class="job-title hidden" id="jobTitle">iimjobs.com - Product Manager</h1>
+					<h1 class="job-title shell" id="jobTitle">iimjobs.com - Product Manager</h1>
 					<p class="job-meta">
-						<span class="job-location hidden" id="jobLocation">Delhi</span>
+						<span class="job-location shell" id="jobLocation">Delhi</span>
 						<span class="meta-separator hidden" id="jobSeparator">&bull;</span>
-						<span class="job-experience hidden" id="jobExperience">0-5 yrs</span>
-						<span class="meta-separator">&nbsp;|&nbsp;</span>
-						<span class="hidden" id="jobCode"></span>
+						<span class="job-experience shell" id="jobExperience">0-5 yrs</span>
+						<span class="meta-separator hidden" id="locSeperator">&nbsp;|&nbsp;</span>
+						<span class="job-id shell" id="jobCode"></span>
 					</p>
 				</div>
 				<div class="action-buttons right jsJobActions">
@@ -107,7 +107,7 @@
 										<a href="#all-jobs">
 											<div class="bulk-selection-item all active">
 												<span class="bulk-action-icon"><i class="icon-box"></i></span>
-												<span class="bulk-action-label">All(<span class="tabStats"  id="allNo"></span>)</span>
+												<span class="bulk-action-label">All(<span class="tabStats"  id="allNo">0</span>)</span>
 											</div>
 										</a>
 									</li>
@@ -115,7 +115,7 @@
 										<a href="#unread-jobs">
 											<div class="bulk-selection-item unread">
 												<span class="bulk-action-icon"><i class="icon-envelope"></i></span>
-												<span class="bulk-action-label ">Unread(<span class="tabStats" id="unreadNo"></span>)</span>
+												<span class="bulk-action-label ">Unread(<span class="tabStats" id="unreadNo">0</span>)</span>
 											</div>
 										</a>
 									</li>
@@ -123,7 +123,7 @@
 										<a href="#reviewed-jobs">
 											<div class="bulk-selection-item reviewed">
 												<span class="bulk-action-icon"><i class="icon-document_search_interface_symbol"></i></span>
-												<span class="bulk-action-label ">Reviewed(<span class="tabStats" id="reviewedNo"></span>)</span>
+												<span class="bulk-action-label ">Reviewed(<span class="tabStats" id="reviewedNo">0</span>)</span>
 											</div>
 										</a>
 									</li>
@@ -131,7 +131,7 @@
 										<a href="#shortlisted-jobs">
 											<div class="bulk-selection-item shortlisted">
 												<span class="bulk-action-icon"><i class="icon-tick"></i></span>
-												<span class="bulk-action-label">Shortlisted(<span class="tabStats" id="shortlistedNo"></span>)</span>
+												<span class="bulk-action-label">Shortlisted(<span class="tabStats" id="shortlistedNo">0</span>)</span>
 											</div>
 										</a>
 									</li>
@@ -139,7 +139,7 @@
 										<a href="#rejected-jobs">
 											<div class="bulk-selection-item rejected">
 												<span class="bulk-action-icon"><i class="icon-denied"></i></span>
-												<span class="bulk-action-label">Rejected(<span class="tabStats" id="rejectedNo"></span>)</span>
+												<span class="bulk-action-label">Rejected(<span class="tabStats" id="rejectedNo">0</span>)</span>
 											</div>
 										</a>
 									</li>
@@ -147,29 +147,35 @@
 										<a href="#saved-jobs">
 											<div class="bulk-selection-item saved">
 												<span class="bulk-action-icon"><i class="icon-download_arrow"></i></span>
-												<span class="bulk-action-label">Saved(<span class="tabStats" id="savedNo"></span>)</span>
+												<span class="bulk-action-label">Saved(<span class="tabStats" id="savedNo">0</span>)</span>
 											</div>
 										</a>
 									</li>
 		            			</ul>
 							</div>
 							<div id="all-jobs" class="candidates-listing candidateListing" data-status-attribute="">
-
+								{{>candidateApplyListShell}}
+								{{>candidateApplyListShell}}
 							</div>
 							<div id="unread-jobs" class="candidates-listing candidateListing" data-status-attribute="0">
-
+								{{>candidateApplyListShell}}
+								{{>candidateApplyListShell}}
 							</div>
 							<div id="reviewed-jobs" class="candidates-listing candidateListing" data-status-attribute="4,5">
-
+								{{>candidateApplyListShell}}
+								{{>candidateApplyListShell}}
 							</div>
 							<div id="shortlisted-jobs" class="candidates-listing candidateListing" data-status-attribute="1">
-
+								{{>candidateApplyListShell}}
+								{{>candidateApplyListShell}}
 							</div>
 							<div id="rejected-jobs" class="candidates-listing candidateListing" data-status-attribute="2">
-
+								{{>candidateApplyListShell}}
+								{{>candidateApplyListShell}}
 							</div>
 							<div id="saved-jobs" class="candidates-listing candidateListing" data-status-attribute="3">
-
+								{{>candidateApplyListShell}}
+								{{>candidateApplyListShell}}
 							</div>
 						</div>
 					</div>
@@ -791,6 +797,10 @@
 </div>
 
 <p class="fetchTags prototype hidden" data-tag-id="1">Ahmedabad</p>
+
+<div class="loader-overlay hidden" id="loaderOverlay">
+	<div class="loader"></div>
+</div>
 
 {{>modalContent}}
 {{>footer}}

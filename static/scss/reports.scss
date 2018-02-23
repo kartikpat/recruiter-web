@@ -34,7 +34,7 @@
 
 					.keyword-search {
 						display:inline-block;
-						width:40%;
+						width:50%;
 						position:relative;
 						vertical-align:top;
 						input {
@@ -82,14 +82,18 @@
 				}
 
 				.reports-body {
+					overflow-x: auto;
 					font-size:0;
+					table {
+						min-width: 1200px;
+					}
 					.report-row {
 						// display:inline-block;
 						width:100%;
 
 						&.head {
 							background:$premium-section-background;
-							
+
 							.report-item {
 								padding:15px 10px;
 								border-top:1px solid $border-color-base;
@@ -109,6 +113,7 @@
 								color:$link-color;
 							}
 							&.title {
+								width: 100%;
 								span {
 									color:$extra-info-color;
 
@@ -116,7 +121,7 @@
 										color:$color-black;
 									}
 								}
-								
+
 								.job-title {
 									display:block;
 									margin-bottom:10px;
@@ -129,7 +134,51 @@
 							}
 						}
 					}
-				}	
+				}
+			}
+		}
+	}
+}
+
+@media all and (max-width:768px) {
+	.page-content {
+		.main-wrapper {
+			.main-container {
+
+
+				.reports-wrapper {
+
+
+					.reports-header {
+
+
+						.keyword-search {
+							width: 70%;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media all and (max-width:480px) {
+	.page-content {
+		.main-wrapper {
+			.main-container {
+
+
+				.reports-wrapper {
+
+
+					.reports-header {
+
+
+						.keyword-search {
+							width: 100%;
+						}
+					}
+				}
 			}
 		}
 	}

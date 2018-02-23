@@ -4,6 +4,20 @@
 
 @import 'components/modal';
 
+.shell {
+    .section {
+        margin-bottom: 10px !important;
+    }
+    p {
+        @include title-shell;
+    }
+    span {
+        display: inline-block;
+        width: calc(50% - 10px);
+        @include text-shell;
+    }
+}
+
 input::-webkit-input-placeholder {
     font-size: 13px;
 }
@@ -56,6 +70,10 @@ input::-webkit-input-placeholder {
 	.page-header {
 		padding:15px 0;
 		h1 {
+            &.shell {
+                @include title-shell;
+                min-width: 250px;
+            }
 	        margin: 0 0 0 0;
             font-size:$page-title-size;
             color:$page-title-color;
@@ -74,6 +92,28 @@ input::-webkit-input-placeholder {
 				}
 			}
 		}
+        .job-location {
+            display: inline-block;
+            &.shell {
+                @include text-shell;
+                min-width: 100px;
+            }
+        }
+        .job-experience {
+            display: inline-block;
+            &.shell {
+                @include text-shell;
+                min-width: 100px;
+            }
+        }
+        .job-id {
+            display: inline-block;
+            vertical-align: bottom;
+            &.shell {
+                @include text-shell;
+                min-width: 50px;
+            }
+        }
 	}
 
 	.candidate-apply-listing {
@@ -571,6 +611,7 @@ input::-webkit-input-placeholder {
 }
 
 @media all and (max-width:768px) {
+
 	.page-content {
 		.page-header {
 			display:block;
@@ -774,6 +815,21 @@ input::-webkit-input-placeholder {
 }
 
 @media all and (max-width:1024px){
+    .shell {
+
+        p {
+
+            width: 50%;
+        }
+        span {
+
+            width: 25%;
+            &.right {
+                display: none;
+            }
+
+        }
+    }
 	.page-content {
 		.candidate-apply-listing {
 			width:100%;

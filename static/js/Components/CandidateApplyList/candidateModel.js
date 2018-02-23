@@ -197,13 +197,13 @@ function Candidate() {
         item.savedButton.attr("data-status", "3");
         var status = aData["status"];
         if(status == 1) {
-            item.shortlistButton.text("Shortlisted").attr("data-isNotAction", true)
+            item.shortlistButton.text("Shortlisted")
         }
         else if(status == 2) {
-            item.rejectButton.text("Rejected").attr("data-isNotAction", true)
+            item.rejectButton.text("Rejected")
         }
         else if(status == 3) {
-            item.savedButton.html("<span class='icon'><i class='icon-star'></i></span>Saved for Later").attr("data-isNotAction", true)
+            item.savedButton.html("<span class='icon'><i class='icon-star'></i></span>Saved for Later")
         }
 
         openModal(item)
@@ -407,8 +407,8 @@ function Candidate() {
             event.stopPropagation();
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
             var status = $(this).attr("data-status");
-            var isNotAction = $(this).attr("data-isNotAction");
-            fn(applicationId, status, isNotAction);
+
+            fn(applicationId, status);
         })
     }
 
@@ -417,8 +417,7 @@ function Candidate() {
             event.stopPropagation();
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
             var status = $(this).attr("data-status");
-            var isNotAction = $(this).attr("data-isNotAction");
-            fn(applicationId, status, isNotAction);
+            fn(applicationId, status);
         })
     }
 
@@ -427,8 +426,7 @@ function Candidate() {
             event.stopPropagation();
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
             var status = $(this).attr("data-status");
-            var isNotAction = $(this).attr("data-isNotAction");
-            fn(applicationId, status, isNotAction);
+            fn(applicationId, status);
         })
     }
 

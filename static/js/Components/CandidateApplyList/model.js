@@ -32,8 +32,10 @@ function candidateList() {
         settings.massCheckboxInput = $("#massCheckboxInput"),
         settings.massCheckboxLabel = $("#massCheckboxLabel"),
         settings.candidateSelectedLength = null,
-        settings.bulkActionModal = $(".bulkActionModal");
-        settings.selectedApplicationIds = {}
+        settings.bulkActionModal = $(".bulkActionModal"),
+        settings.selectedApplicationIds = {},
+        settings.jobTabs = $("#jobs-tabs"),
+        settings.candidateItemShellClass = ".candidateItem.shell"
 
         onClickMassCheckbox()
         onClickCandidateOtherActions()
@@ -41,6 +43,7 @@ function candidateList() {
         onClickMassReject()
         onClickMassShortlist()
         onClickMassComment()
+
 	}
 
 	function setConfig(key, value) {
@@ -110,13 +113,13 @@ function candidateList() {
         item.downloadResumeButton.attr("download", aData["name"].replace(/ +/g, '_')+'_resume.pdf')
         var status = aData["status"];
         if(status == 1) {
-            item.shortlistButton.text("Shortlisted").attr("data-isNotAction", true)
+            item.shortlistButton.text("Shortlisted")
         }
         else if(status == 2) {
-            item.rejectButton.text("Rejected").attr("data-isNotAction", true)
+            item.rejectButton.text("Rejected")
         }
         else if(status == 3) {
-            item.savedButton.text("Saved for later").attr("data-isNotAction", true)
+            item.savedButton.text("Saved for later")
         }
         // var tagStr = '';
         // $.each(aData["tags"],function(index, aTag) {
@@ -207,35 +210,20 @@ function candidateList() {
     }
 
     function addToList(dataArray, status){
-        console.log(status)
 		var str = '';
+        var element = $(".candidateListing[data-status-attribute='"+status+"']");
+        hideShells(status);
+        if(!dataArray.length) {
+			return element.html("<div class='no-data'>No Applications Found!</div>")
+		}
 		dataArray.forEach(function(aData, index){
 			var item = createElement(aData);
 			str+=item.element[0].outerHTML;
             console.log(index)
 		});
-		$(".candidateListing[data-status-attribute='"+status+"']").append(str);
+		element.append(str);
         settings.rowContainer.find(".candidate-select").removeClass("selected");
-        $("#jobs-tabs").removeClass("hidden")
 	}
-
-    function createJobApplicationStatsTabs(fn) {
-        jQuery("#jobs-tabs").tabs({
-            active: 0,
-            create:function(){},
-            activate: function(event, ui){
-
-                settings.bulkActionContainer.addClass("hidden")
-                settings.massCheckboxInput.prop("checked", false)
-
-                fn(event, ui);
-            }
-        })
-    }
-
-    function emptyCandidateList() {
-        settings.rowContainer.empty();
-    }
 
     function onClickViewComment(fn) {
         settings.rowContainer.on('click', settings.viewCommentButtonClass, function(e){
@@ -303,8 +291,7 @@ function candidateList() {
             event.stopPropagation();
             var status = $(this).attr("data-status");
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            var isNotAction = $(this).attr("data-isNotAction");
-            fn(applicationId, status, isNotAction);
+            fn(applicationId, status);
             return false
         })
     }
@@ -339,8 +326,6 @@ function candidateList() {
         })
     }
 
-
-
     function onClickShortlistCandidate(fn) {
 
         settings.rowContainer.on('click', settings.candidateShortlistButtonClass, function(event) {
@@ -348,8 +333,7 @@ function candidateList() {
             event.stopPropagation();
             var status = $(this).attr("data-status");
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            var isNotAction = $(this).attr("data-isNotAction");
-            fn(applicationId, status, isNotAction);
+            fn(applicationId, status);
 
         })
     }
@@ -359,8 +343,7 @@ function candidateList() {
             event.stopPropagation();
             var status = $(this).attr("data-status");
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            var isNotAction = $(this).attr("data-isNotAction");
-            fn(applicationId, status, isNotAction);
+            fn(applicationId, status);
         })
     }
 
@@ -558,11 +541,44 @@ function candidateList() {
 		settings.bulkActionModal.addClass("hidden")
 	}
 
+    function initializeJqueryTabs(fn) {
+        settings.jobTabs.tabs({
+            active: 0,
+            create:function(){
+                $(this).removeClass("hidden")
+            },
+            activate: function(event, ui){
+
+                settings.bulkActionContainer.addClass("hidden")
+                settings.massCheckboxInput.prop("checked", false)
+                fn(event, ui);
+            }
+        })
+    }
+
+    function showShells(status) {
+        $(".candidateListing[data-status-attribute='"+status+"']").find(settings.candidateItemShellClass).removeClass("hidden")
+    }
+
+    function hideShells(status) {
+        $(".candidateListing[data-status-attribute='"+status+"']").find(settings.candidateItemShellClass).addClass("hidden")
+    }
+
+    function removeCandidate(status) {
+        $(".candidateListing[data-status-attribute='"+status+"']").find(settings.candidateRowClass).remove();
+    }
+
+    function changeButtonText(arr, newStatus) {
+        arr.forEach(function(applicationId){
+            $(settings.candidateRowClass).find(".candidateRow[data-application-id="+applicationId+"] button[data-status="+newStatus+"]").text("")
+        })
+    }
+
     return {
 		init: init,
 		addToList: addToList,
 		setConfig : setConfig,
-        createJobApplicationStatsTabs: createJobApplicationStatsTabs,
+        initializeJqueryTabs: initializeJqueryTabs,
         setJobStats: setJobStats,
         activateStatsTab: activateStatsTab,
         onClickCandidate: onClickCandidate,
@@ -578,16 +594,15 @@ function candidateList() {
         candidateActionTransition: candidateActionTransition,
         onClickViewComment: onClickViewComment,
         onClickViewTag: onClickViewTag,
-        emptyCandidateList: emptyCandidateList,
         onClickDownloadMassExcel: onClickDownloadMassExcel,
         updateJobStats: updateJobStats,
         onClickMassComment: onClickMassComment,
         setHref: setHref,
         onClickMassActionButton: onClickMassActionButton,
         onClickDownloadMassResume: onClickDownloadMassResume,
-        closeModal: closeModal
-
+        closeModal: closeModal,
+        showShells: showShells,
+        hideShells: hideShells,
+        removeCandidate: removeCandidate
 	}
-
-
 }

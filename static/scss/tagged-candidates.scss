@@ -12,7 +12,7 @@
 		display:inline-block;
 		vertical-align:top;
 		font-size:initial;
-		
+
 		.page-mobile-header {
 			display:none;
 		}
@@ -66,7 +66,7 @@
 						.candidate-image {
 							display:inline-block;
 							position:relative;
-							
+
 							img {
 								border-radius:50%;
 								object-fit:cover;
@@ -89,11 +89,11 @@
 									background-color:$user-status-online;
 								}
 							}
-						}	
+						}
 					}
 
-					
-					&.personal-details {	
+
+					&.personal-details {
 						width:20%;
 						// max-width:200px;
 						p {
@@ -101,7 +101,7 @@
 								color:$inline-link-color;
 								font-weight:bold;
 								font-size:$page-subtitle-font-size;
-							}	
+							}
 
 							span {
 								&.bold {
@@ -122,7 +122,7 @@
 
 					&.professional-information {
 						width:18%;
-						
+
 						.datum {
 							&:last-child {
 								margin:0;
@@ -174,14 +174,14 @@
 					padding-top:20px;
 					font-size:$base-font-size;
 				}
-					
+
 				.separator {
 					display:block;
 					margin:20px 0 0 9%;
 					border-bottom:1px solid $border-color-base;
 					width:91%;
 				}
-				
+
 				&:last-child {
 
 					.separator {
@@ -201,7 +201,7 @@
 	.conversations {
 		display:none;
 	}
-	
+
 	.page-content {
 		.tagged-candidates {
 			width:100%;
@@ -213,7 +213,7 @@
 	.page-content {
 		.tagged-candidates {
 			width:100%;
-			
+
 			.tagged-candidates-listing {
 				.candidate-item {
 					padding: 30px 10px 0;
@@ -224,7 +224,7 @@
 						&.image {
 							padding-left:0;
 						}
-					}				
+					}
 				}
 			}
 		}
@@ -238,7 +238,7 @@
 			width:100%;
 
 			.page-header {
-				display:none;
+				background:$mobile-highlight-background-color;
 			}
 
 			.page-mobile-header {
@@ -266,10 +266,10 @@
 	            		padding-right:20px;
 	            	}
 	            	select {
-	            		@include select-dropdown;	
+	            		@include select-dropdown;
 	            		margin-bottom:0 !important;
-	            		padding-top:5px !important; 
-	            		padding-bottom:5px !important; 
+	            		padding-top:5px !important;
+	            		padding-bottom:5px !important;
 	            		padding-left:0 !important;
 	            	}
 	            }
@@ -284,7 +284,7 @@
 					margin-bottom:15px;
 					border-radius:4px;
 					border:1px solid $border-color-base;
-					
+
 					.separator {
 						display:none;
 					}
@@ -299,7 +299,7 @@
 
 						border-bottom:1px solid $border-color-base;
 						padding:15px 0;
-						
+
 
 						&:first-child {
 							padding-top:0;
@@ -315,7 +315,7 @@
 							border-bottom:0;
 						}
 
-						&.personal-details {	
+						&.personal-details {
 							width:100%;
 							padding-top:10px;
 						}
@@ -344,7 +344,7 @@
 							width:100%;
 						}
 					}
-					
+
 					&:first-child {
 						border-top-right-radius:0;
 						border-top-left-radius:0;
@@ -358,47 +358,47 @@
 	}
 }
 
-@media all and (max-width:360px) {
-	.page-content {
-
-		.tagged-candidates {
-			width:100%;
-
-			.page-header {
-				display:none;
-			}
-
-			.page-mobile-header {
-				display:block;
-	            font-size:$base-font-size;
-                background:$mobile-highlight-background-color;
-                padding:15px 20px 10px;
-                border:1px solid $border-color-base;
-				border-bottom:0;
-				border-top-right-radius:4px;
-				border-top-left-radius:4px;
-
-	            .mobile-title {
-	                margin:0;
-	                border-top-right-radius:4px;
-	                border-top-left-radius:4px;
-	                line-height:1.5;
-	                font-weight:bold;
-	            }
-
-	            .stats {
-	            	& > span {
-	            		display:block;
-	            		border:0;
-	            		margin:5px 0;
-	            	}
-	            	select {
-	            		display:block !important;
-	            	}
-	            }
-	        }
-	    }
-	}
-
-
-}
+// @media all and (max-width:360px) {
+// 	.page-content {
+//
+// 		.tagged-candidates {
+// 			width:100%;
+//
+// 			.page-header {
+// 				display:none;
+// 			}
+//
+// 			.page-mobile-header {
+// 				display:block;
+// 	            font-size:$base-font-size;
+//                 background:$mobile-highlight-background-color;
+//                 padding:15px 20px 10px;
+//                 border:1px solid $border-color-base;
+// 				border-bottom:0;
+// 				border-top-right-radius:4px;
+// 				border-top-left-radius:4px;
+//
+// 	            .mobile-title {
+// 	                margin:0;
+// 	                border-top-right-radius:4px;
+// 	                border-top-left-radius:4px;
+// 	                line-height:1.5;
+// 	                font-weight:bold;
+// 	            }
+//
+// 	            .stats {
+// 	            	& > span {
+// 	            		display:block;
+// 	            		border:0;
+// 	            		margin:5px 0;
+// 	            	}
+// 	            	select {
+// 	            		display:block !important;
+// 	            	}
+// 	            }
+// 	        }
+// 	    }
+// 	}
+//
+//
+// }

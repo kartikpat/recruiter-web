@@ -563,7 +563,7 @@ span.sticker {
       padding: 20px; }
       .page-content .main-wrapper .main-container .reports-wrapper .reports-header .keyword-search {
         display: inline-block;
-        width: 40%;
+        width: 50%;
         position: relative;
         vertical-align: top; }
         .page-content .main-wrapper .main-container .reports-wrapper .reports-header .keyword-search input {
@@ -614,7 +614,10 @@ span.sticker {
           right: 85px;
           transform: translate(-50%, -50%); }
     .page-content .main-wrapper .main-container .reports-wrapper .reports-body {
+      overflow-x: auto;
       font-size: 0; }
+      .page-content .main-wrapper .main-container .reports-wrapper .reports-body table {
+        min-width: 1200px; }
       .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row {
         width: 100%; }
         .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row.head {
@@ -631,12 +634,22 @@ span.sticker {
           padding: 10px; }
           .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row .report-item a {
             color: #155d9a; }
-          .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row .report-item.title span {
-            color: #808080; }
-            .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row .report-item.title span.report-views-count {
-              color: #333; }
-          .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row .report-item.title .job-title {
-            display: block;
-            margin-bottom: 10px; }
-          .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row .report-item.title .report-author-link {
-            margin-right: 20px; }
+          .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row .report-item.title {
+            width: 100%; }
+            .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row .report-item.title span {
+              color: #808080; }
+              .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row .report-item.title span.report-views-count {
+                color: #333; }
+            .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row .report-item.title .job-title {
+              display: block;
+              margin-bottom: 10px; }
+            .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row .report-item.title .report-author-link {
+              margin-right: 20px; }
+
+@media all and (max-width: 768px) {
+  .page-content .main-wrapper .main-container .reports-wrapper .reports-header .keyword-search {
+    width: 70%; } }
+
+@media all and (max-width: 480px) {
+  .page-content .main-wrapper .main-container .reports-wrapper .reports-header .keyword-search {
+    width: 100%; } }

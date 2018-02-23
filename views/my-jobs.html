@@ -49,11 +49,20 @@
 						</div>
 						<div class="row-separator"></div>
 					</div>
-					<div id="jobRowList"></div>
+					<div class="">
+						{{>myJobsShell}}
+						{{>myJobsShell}}
+						{{>myJobsShell}}
+						{{>myJobsShell}}
+						<div id="jobRowList">
+
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>
-
+ 
 		<div class="conversations right">
 			{{>chatSidebar}}
 		</div>
@@ -72,16 +81,17 @@
 		</div>
 
 		<div class="table-cell status">
-			<span class="mobile-status">Status:<span class="jobStatus"></span><i data-attribute="" class='icon-information jobStatusMsg hidden tooltip' aria-hidden='true' title=""></i> </span>
-			<span class="job-status jobStatus"></span><i data-attribute="" class='icon-information jobStatusMsg hidden tooltip' aria-hidden='true' title=""></i>
+			<span class="mobile-status">Status : <span class="jobStatus"></span><i data-attribute="" class='icon-information jobStatusMsg hidden tooltip' aria-hidden='true' title=""></i> </span>
+			<span class="job-status"><span class=" jobStatus"></span><i data-attribute="" class='icon-information jobStatusMsg hidden tooltip' aria-hidden='true' title=""></i></span>
 		</div>
 
-		<div class="table-cell">
+		<div class="table-cell ">
+
+			<span class="mobile-engagement">Engagement : <span class="job-view-count jobViews hidden"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="job-applied-count jobApplications hidden js_applications"></span></span>
 			<span class="engagementDefault">--</span>
-			<span class="mobile-engagement engagement hidden">Engagement: <span class="job-view-count jobViews"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="job-applied-count jobApplications js_applications"></span></span>
-			<span class="engagement jobEngagement engagement hidden">
-				<span class="job-view-count jobViews "></span>
-				<span class="job-applied-count jobApplications "></span>
+			<span class="engagement jobEngagement">
+				<span class="job-view-count jobViews hidden"></span>
+				<span class="job-applied-count jobApplications hidden"></span>
 			</span>
 		</div>
 
@@ -187,5 +197,9 @@
 			</div>
         </div>
     </div>
+
+	<div class="loader-overlay hidden" id="loaderOverlay">
+		<div class="loader"></div>
+	</div>
 
 	{{>footer}}
