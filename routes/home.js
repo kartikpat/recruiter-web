@@ -82,6 +82,7 @@ module.exports = function(settings){
 		  res.json(jsonBody)
 		});
 	})
+	
 	app.get("/", isAuthenticated,function(req, res){
 		res.render("dashboard", {
 			title: "IIM JOBS | Dashboard",
@@ -504,4 +505,39 @@ module.exports = function(settings){
 		return
 	});
 
+	app.get("/interview-scheduler",function(req, res){
+		res.render("no-calendar-setup", {
+			title: "IIM JOBS | Dashboard",
+			styles:  assetsMapper["no-calendar-setup"]["styles"][mode],
+			scripts: assetsMapper["no-calendar-setup"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain:baseDomain,
+			profile: profile
+		});
+		return
+	});
+
+	app.get("/Interview-scheduler-updated",function(req, res){
+		res.render("Interview-scheduler-updated", {
+			title: "Calender | Dashboard",
+			styles:  assetsMapper["Interview-scheduler-updated"]["styles"][mode],
+			scripts: assetsMapper["Interview-scheduler-updated"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain:baseDomain,
+			profile: profile
+		});
+		return
+	});
+
+	app.get("/ui-test",function(req, res){
+		res.render("ui-test", {
+			title: "IIM JOBS | Dashboard",
+			styles:  assetsMapper["ui-test"]["styles"][mode],
+			scripts: assetsMapper["ui-test"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain:baseDomain,
+			profile: profile
+		});
+		return
+	});
 }

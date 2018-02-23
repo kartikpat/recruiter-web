@@ -1070,5 +1070,77 @@
 				"static/build/js/account-created.min.js"
 			]
 		}
+	},
+
+	"no-calendar-setup": {
+		"styles": {
+			"debug" : [
+				"static/css/footer.css",
+				"static/css/header.css",
+				"static/css/no-calendar-setup.css"
+			],
+			"prod": [
+				"static/build/css/no-calendar-setup.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/Components/no-calendar-setup/index.js"
+			
+			],
+			"prod" : [
+				"static/build/js/no-calendar.min.js"
+			]
+		}
+		
+	},
+
+	"Interview-scheduler-updated": {
+		"styles": {
+			"debug" : [
+				"static/css/footer.css",
+				"static/css/header.css",
+				"static/css/Interview-scheduler-updated.css"
+			],
+			"prod": [
+				"static/build/css/Interview-scheduler-updated.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/Components/Interview-scheduler-updated/index.js"
+				
+			
+			],
+			"prod" : [
+				"static/build/js/Interview-scheduler-updated.min.js"
+			]
+		}
+		
+	},
+	"ui-test": {
+		"styles": {
+			"debug" : [
+				
+				"static/css/ui-test.css",
+				"static/css/footer.css",
+				"static/css/header.css"
+			],
+			"prod": [
+				"static/build/css/ui-test.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/Components/ui-test/index.js"
+				
+			
+			],
+			"prod" : [
+				"static/build/js/ui-test.min.js"
+			]
+		}
+		
 	}
+	
 }

@@ -4,9 +4,11 @@ $(document).ready(function(){
 	var jobDetails = Job();
 	jobDetails.init();
 	jobDetails.submitHandler(function(){
-			if(jobDetails.validate())
-				submitNewJob(jobDetails.getData());
-		})
+			
+	if(jobDetails.validate())
+			submitNewJob(jobDetails.getData());
+	})
+	
 	if(jobId) {
 		jobDetails.setData(jobId);
 	}

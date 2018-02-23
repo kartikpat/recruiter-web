@@ -42,6 +42,7 @@ var errorResponses = {
 	invalidMinExp: 'minimum experience cannot be greater than maximum experience'
 }
 
+
 function Job(){
 	var settings ={};
 	function init(){

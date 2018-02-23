@@ -59,7 +59,7 @@
 		minifooter:'mini-footer',
 		chatSidebar: 'chat-sidebar',
 		welcome:'welcome-section',
-		verify:'verify-account'
+		verify:'verify-account',
 	});
 	app.set('view engine', 'html');
 	app.set('views', __dirname + '/views');
