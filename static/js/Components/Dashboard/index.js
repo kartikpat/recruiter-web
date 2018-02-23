@@ -263,9 +263,10 @@ $(document).ready(function(){
 
 	function onFetchInterviews(topic, data){
 		var isMultiple = true;
+		return 
 		if(data.length ==1)
 			isMultiple = false
-		var lastDate =data[0]['slotDate'];
+		var lastDate =(data[0] && data[0]['slot'] )? data[0]['slot'] : null;
 		var interviewContainer = $('#interviewContainer');
 		var interviewRowCard = $(".interviewRow.prototype");
 		var interviewCandidateCard = $('.interviewCandidateRow.prototype');
@@ -273,14 +274,14 @@ $(document).ready(function(){
 		data.forEach(function(aRow, index){
 			if(index>4)
 				return
-			if(lastDate != aRow['slotDate']){
-				lastDate = aRow['slotDate'];
+			if(lastDate != aRow['slot']['date']){
+				lastDate = aRow['slot']['date'];
 				interviewContainer.find('.detail-card').append(card);
 				interviewContainer.find('.detail-card').append('')
 				card = interviewRowCard.clone().removeClass('hidden prototype');
 			}
-			var slotDate = moment(aRow['slot_date']);
-			var slotTime = moment(aRow['slotTime'], 'hhmm')
+			var slotDate = moment(aRow['slot']['date']);
+			var slotTime = moment(aRow['slot']['time'], 'hhmm')
 			card.find('.profile .custom-icon .number').text(slotDate.date());
 			card.find('.profile .custom-icon .label').text(slotDate.format('MMM'));
 
@@ -290,12 +291,12 @@ $(document).ready(function(){
 			candidateCard.find('.designation').text(aRow['designation']);
 			candidateCard.find('.organization').text(aRow['organization']);
 			card.find('.general').append(candidateCard)
+			// interviewContainer.find('.detail-card').append(card);	
 		})
-		interviewContainer.find('.detail-card').append(card);
 		if( data.length>4){
 			var seeMore= seeMoreSection.clone().removeClass('hidden prototype');
-			seeMore.find(".seeAll a").attr('href', '/interviews')
-			interviewContainer.find('.detail-card').append(seeMore);
+			// seeMore.find(".seeAll a").attr('href', '/interviews')
+			// interviewContainer.find('.detail-card').append(seeMore);
 		}
 		if( data.length>0){
 			interviewContainer.removeClass('hidden');
@@ -310,7 +311,7 @@ $(document).ready(function(){
 		fetchDashboardStats(recruiterId);
 		fetchJobs("published", recruiterId);
 		fetchFollowUps(recruiterId);
-		fetchInterviews(recruiterId);
+		fetchInterviews(recruiterId, {pageContent: 6, pageNumber: 1, status: 2});
 	}
 	init()
 
