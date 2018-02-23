@@ -263,6 +263,7 @@ $(document).ready(function(){
 
 	function onFetchInterviews(topic, data){
 		var isMultiple = true;
+		return 
 		if(data.length ==1)
 			isMultiple = false
 		var lastDate =(data[0] && data[0]['slot'] )? data[0]['slot'] : null;
@@ -290,12 +291,12 @@ $(document).ready(function(){
 			candidateCard.find('.designation').text(aRow['designation']);
 			candidateCard.find('.organization').text(aRow['organization']);
 			card.find('.general').append(candidateCard)
+			// interviewContainer.find('.detail-card').append(card);	
 		})
-		interviewContainer.find('.detail-card').append(card);
 		if( data.length>4){
 			var seeMore= seeMoreSection.clone().removeClass('hidden prototype');
-			seeMore.find(".seeAll a").attr('href', '/interviews')
-			interviewContainer.find('.detail-card').append(seeMore);
+			// seeMore.find(".seeAll a").attr('href', '/interviews')
+			// interviewContainer.find('.detail-card').append(seeMore);
 		}
 		if( data.length>0){
 			interviewContainer.removeClass('hidden');
@@ -310,7 +311,7 @@ $(document).ready(function(){
 		fetchDashboardStats(recruiterId);
 		fetchJobs("published", recruiterId);
 		fetchFollowUps(recruiterId);
-		fetchInterviews(recruiterId, {pageContent: 6, pageNumber: 1, status: 2, from: moment().format()});
+		fetchInterviews(recruiterId, {pageContent: 6, pageNumber: 1, status: 2});
 	}
 	init()
 
