@@ -652,14 +652,13 @@ b {
       margin: 0; }
       .header .navigation ul .menu-list-item {
         line-height: 40px;
-        font-family: inherit;
         font-size: 14px;
         display: inline-block;
         width: 20%;
         min-width: 120px;
         text-align: center; }
         .header .navigation ul .menu-list-item a {
-          font-family: inherit;
+          font-family: "Droid Sans", sans-serif;
           color: #FFF; }
         .header .navigation ul .menu-list-item.active a {
           color: #1f8f75; }

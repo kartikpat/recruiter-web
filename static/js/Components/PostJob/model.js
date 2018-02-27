@@ -418,3 +418,10 @@ function check_youtube_embed(url) {
     }
 }
 
+function bindGuidelineModalLink() {
+	console.log("Binding...");
+	jQuery(".guideline-modal-trigger").on("click", function() {
+	    jQuery("body").addClass("posf");
+	    jQuery(".modal-overlay").removeClass("hidden")
+	});
+}

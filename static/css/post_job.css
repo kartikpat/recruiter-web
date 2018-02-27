@@ -519,7 +519,9 @@ span.sticker {
   padding: 0px;
   font-size: 0; }
   .job_posting .job-form-content {
-    padding: 30px 30px 10px 30px; }
+    padding: 30px 30px 10px 30px;
+    max-width: 1440px;
+    margin: 0 auto; }
   .job_posting .post_job {
     display: inline-block;
     width: 70%;
@@ -744,6 +746,10 @@ span.sticker {
   padding: 30px;
   width: 100%;
   background: #f3fbfb; }
+  .premium_job_section .premium-section-content {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 30px; }
   .premium_job_section .contents input {
     display: none; }
   .premium_job_section .contents label {
@@ -764,8 +770,9 @@ span.sticker {
     font-size: 13px; }
 
 .submit-action-buttons {
-  margin: 20px 0;
-  padding: 0 30px; }
+  padding: 0 30px;
+  max-width: 1440px;
+  margin: 20px auto; }
   .submit-action-buttons button {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -815,7 +822,8 @@ span.sticker {
   margin-top: 50px; }
   .guidelines-container h4 {
     font-size: 18px;
-    color: #149075; }
+    color: #149075;
+    margin-top: 0; }
   .guidelines-container ul {
     padding-left: 20px; }
     .guidelines-container ul li {
@@ -855,6 +863,8 @@ span.sticker {
         overflow: auto; }
   .premium_job_section {
     font-size: 12px; }
+    .premium_job_section .premium-section-content {
+      padding: 0; }
     .premium_job_section .section-head h3 {
       font-size: 20px; }
     .premium_job_section label span {
