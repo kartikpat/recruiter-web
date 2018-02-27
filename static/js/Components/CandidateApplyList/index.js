@@ -310,8 +310,7 @@ jQuery(document).ready( function() {
      })
 
      $.when(fetchJob(jobId, recruiterId, {idType: 'publish'}), fetchCalendars(jobId, recruiterId)).then(function(a, b){
-        console.log(a)
-        console.log(b)
+            debugger
          if(a[0] && b[0] && a[0]["status"] == "success" && b[0]["status"] =="success" && a[0]['data'].length >0 ) {
              var jobRow = a[0]['data'][0];
              console.log(b)
