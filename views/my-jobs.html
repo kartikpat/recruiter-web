@@ -1,72 +1,73 @@
 {{>header}}
-
-<div class="toast-notification-container">
-	<div class="toast-notification">
-		<!-- <div class="notification-icon">
-			<img src="/static/images/close-icon.png" />
-		</div> -->
-		<div class="notification-message">
-			<p></p> 
-		</div>
-	</div>
-</div>
-
-<div class="page-content">
-	<div class="my-jobs left">
-		<div class="page-header">
-			<select class="minimal" id="jobFilters">
-				<option value="all">All Jobs</option>
-				<option value="published">Published</option>
-				<option value="unpublished">Unpublished</option>
-				<option value="pending">Under Review</option>
-				<option value="rejected">Rejected</option>
-			</select>
-
-			<div class="action-buttons right">
-				<a href="/post-job">
-					<button class="post-job green">Post Job</button>
-				</a>
+	<div class="toast-notification-container">
+		<div class="toast-notification">
+			<!-- <div class="notification-icon">
+				<img src="/static/images/close-icon.png" />
+			</div> -->
+			<div class="notification-message">
+				<p></p> 
 			</div>
 		</div>
+	</div>
+	
+	<div class="page-content">
+		<div class="main-wrapper">	
+			<div class="my-jobs left">
+				<div class="page-header">
+					<select class="minimal" id="jobFilters">
+						<option value="all">All Jobs</option>
+						<option value="published">Published</option>
+						<option value="unpublished">Unpublished</option>
+						<option value="pending">Under Review</option>
+						<option value="rejected">Rejected</option>
+					</select>
 
-		<div class="my-jobs-listing">
-				<div class="table-container ">
-					<div class="table-row table-headings">
-						<div class="table-cell heading created">
-							<span>Created On</span>
-						</div>
-						<div class="table-cell heading job-title">
-							<span>Job Title</span>
-						</div>
-						<div class="table-cell heading">
-							<span>Status</span>
-						</div>
-						<div class="table-cell heading">
-							<span>Engagement</span>
-						</div>
-						<div class="table-cell heading actions">
-							<span>Actions</span>
-						</div>
-						<div class="row-separator"></div>
+					<div class="action-buttons right">
+						<a href="/post-job">
+							<button class="post-job green">Post Job</button>
+						</a>
 					</div>
-					<div class="">
-						{{>myJobsShell}}
-						{{>myJobsShell}}
-						{{>myJobsShell}}
-						{{>myJobsShell}}
-						<div id="jobRowList">
+				</div>
+
+				<div class="my-jobs-listing">
+						<div class="table-container ">
+							<div class="table-row table-headings">
+								<div class="table-cell heading created">
+									<span>Created On</span>
+								</div>
+								<div class="table-cell heading job-title">
+									<span>Job Title</span>
+								</div>
+								<div class="table-cell heading">
+									<span>Status</span>
+								</div>
+								<div class="table-cell heading">
+									<span>Engagement</span>
+								</div>
+								<div class="table-cell heading actions">
+									<span>Actions</span>
+								</div>
+								<div class="row-separator"></div>
+							</div>
+							<div class="">
+								{{>myJobsShell}}
+								{{>myJobsShell}}
+								{{>myJobsShell}}
+								{{>myJobsShell}}
+								<div id="jobRowList">
+
+								</div>
+							</div>
 
 						</div>
-					</div>
-
 				</div>
 			</div>
-		</div>
-
-		<div class="conversations right">
-			{{>chatSidebar}}
+			<div class="conversations right">
+				{{>chatSidebar}}
+			</div>
 		</div>
 	</div>
+
 	<div class="table-row job prototype hidden">
 		<div class="table-cell created ">
 			<span class="job-created-on createdOn"></span>
@@ -128,8 +129,8 @@
 
 	<div id="" class="modal unpublishModal hidden">
 
-        <!-- Modal content -->
-        <div class="modal_wrapper" >
+	    <!-- Modal content -->
+	    <div class="modal_wrapper" >
 			<span class="modal_close">&times;</span>
 			<div class="modal_header">
 				<div class="modal_heading">Unpublish Job</div>
@@ -159,13 +160,13 @@
 				<div class="action-buttons"><button class="jobUnpublishButton">Unpublish</button></div>
 			</div>
 
-        </div>
-    </div>
+	    </div>
+	</div>
 
 	<div id="" class="modal refreshModal hidden">
 
-        <!-- Modal content -->
-        <div class="modal_wrapper" >
+	    <!-- Modal content -->
+	    <div class="modal_wrapper" >
 			<span class="modal_close">&times;</span>
 			<div class="modal_header">
 				<div class="modal_heading">Refresh Job</div>
@@ -177,13 +178,13 @@
 				</div>
 				<div class="action-buttons"><button class="jobRefreshButton">Refresh</button></div>
 			</div>
-        </div>
-    </div>
+	    </div>
+	</div>
 
 	<div id="" class="modal premiumModal hidden">
 
-        <!-- Modal content -->
-        <div class="modal_wrapper" >
+	    <!-- Modal content -->
+	    <div class="modal_wrapper" >
 			<span class="modal_close">&times;</span>
 			<div class="modal_header">
 				<div class="modal_heading">Make Premium.</div>
@@ -195,8 +196,8 @@
 				</div>
 				<div class="action-buttons"><button class="jobMakePremiumButton hidden">Make Premium</button></div>
 			</div>
-        </div>
-    </div>
+	    </div>
+	</div>
 
 	<div class="loader-overlay hidden" id="loaderOverlay">
 		<div class="loader"></div>
