@@ -204,18 +204,18 @@ jQuery(document).ready( function() {
     })
 
     theJob.onClickSubmitUnpublishJob(function(reason){
-        jobList.closeModal()
-		jobList.showLoaderOverlay()
+        theJob.closeModal()
+		theJob.showLoaderOverlay()
 		return submitUnpublishJob(recruiterId, globalParameters.jobId, {reasonId: reason});
 	});
 	theJob.onClickSubmitRefreshJob(function(){
-        jobList.closeModal()
-		jobList.showLoaderOverlay()
+        theJob.closeModal()
+		theJob.showLoaderOverlay()
 		return submitRefreshJob(recruiterId, globalParameters.jobId);
 	})
     theJob.onClickSubmitPremiumJob(function(){
-        jobList.closeModal()
-		jobList.showLoaderOverlay()
+        theJob.closeModal()
+		theJob.showLoaderOverlay()
 		return submitPremiumJob(recruiterId, globalParameters.jobId);
 	})
     theJob.onChangeDefaultCalendar(function(calendarId) {

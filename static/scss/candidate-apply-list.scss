@@ -816,9 +816,7 @@ input::-webkit-input-placeholder {
 
 @media all and (max-width:1024px){
     .shell {
-
         p {
-
             width: 50%;
         }
         span {
@@ -827,10 +825,17 @@ input::-webkit-input-placeholder {
             &.right {
                 display: none;
             }
-
         }
     }
 	.page-content {
+        .page-header {
+    		.left, .right {
+                float: none;
+            }
+            .action-buttons {
+                margin-top: 15px;
+            }
+        }
 		.candidate-apply-listing {
 			width:100%;
 			background-color:$body-background-color;
@@ -1635,6 +1640,7 @@ input::-webkit-input-placeholder {
 		}
 	}
 }
+
 
 
 

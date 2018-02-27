@@ -27,7 +27,7 @@ jQuery(document).ready( function() {
 
     candidates.onFilterByJob(function(jobId){
         var parameters = {}
-        parameters.status = jobId;
+        parameters.status = jobId; 
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
         return alert(jobId)

@@ -163,7 +163,8 @@
 
 /* '' */
 .icon-twitter:before {
-  content: '\e816'; }
+  content: '\e816';
+  color: #1da1f2; }
 
 /* '' */
 .icon-woman:before {

@@ -154,8 +154,12 @@ function Job(){
 	}
 
 	function populateCalendarOptions(array) {
-        if(array.length < 1)
-        	settings.createCalendar.removeClass("hidden");
+        if(array.length < 1) {
+			settings.calendarContainer.addClass("hidden");
+			settings.createCalendar.removeClass("hidden");
+			return
+		}
+
 		// if(array.length == 1)
 		// 	setDefaultCalendar(array[0]["id"]);
 		var calendarOptionsStr = '';
