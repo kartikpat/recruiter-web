@@ -1623,8 +1623,12 @@ span.sticker {
             width: 9%; }
             .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.image .candidate-image {
               display: inline-block;
-              position: relative; }
+              position: relative;
+              width: 75px;
+              height: 75px; }
               .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.image .candidate-image img {
+                height: 100%;
+                width: 100%;
                 border-radius: 50%;
                 object-fit: cover;
                 border: 1px solid #e8e8e8; }
@@ -1666,7 +1670,7 @@ span.sticker {
             width: 20%; }
             .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area {
               margin-bottom: 15px; }
-              .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area button {
+              .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area a {
                 -webkit-appearance: none;
                 -moz-appearance: none;
                 -ms-appearance: none;
@@ -1686,16 +1690,16 @@ span.sticker {
                 cursor: pointer;
                 margin: 0;
                 padding: 7px 24px; }
-                .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area button.green {
+                .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area a.green {
                   background-color: #1f8f75; }
-                .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area button.red {
+                .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area a.red {
                   background-color: #af595a; }
-                .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area button.white {
+                .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area a.white {
                   border: 1px solid #8f8a8a;
                   color: #2b2b2b; }
-                .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area button.edit {
+                .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area a.edit {
                   padding: 3px 9px; }
-                  .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area button.edit img {
+                  .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area a.edit img {
                     width: 17px;
                     height: 17px; }
             .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .skill-tag-listing .skill-tag {
@@ -1738,7 +1742,7 @@ span.sticker {
         .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.image {
           padding-left: 0; } }
 
-@media all and (max-width: 768px) {
+@media all and (max-width: 1024px) {
   .page-content .tagged-candidates {
     width: 100%; }
     .page-content .tagged-candidates .page-header {

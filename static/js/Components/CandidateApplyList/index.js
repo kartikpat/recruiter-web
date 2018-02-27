@@ -9,9 +9,8 @@ var globalParameters = {
 var screenName = "candidate-apply-list";
 jQuery(document).ready( function() {
 
-
     // fetching url parameters
-    var urlParams = fetchURL();
+    var defaultTab = parseInt(getQueryParameter("defaultTab"));
 
     // creating the instance of models
 	var candidates = candidateList();
@@ -132,7 +131,7 @@ jQuery(document).ready( function() {
     candidates.onChangeCandidateCheckbox(function(candidateId){
         // alert(candidateId)
     })
-    candidates.initializeJqueryTabs(function(event, ui) {
+    candidates.initializeJqueryTabs(defaultTab, function(event, ui) {
         var status = candidates.activateStatsTab(event, ui)
         candidates.showShells(status);
         candidates.removeCandidate(globalParameters.status)
@@ -338,7 +337,10 @@ jQuery(document).ready( function() {
     function onJobsApplicationsFetchSuccess(topic, data) {
         //Call only on initial load
         if(globalParameters.initialLoad) {
-            candidates.setJobStats(data["stats"]);
+            if(data["stats"]) {
+                candidates.setJobStats(data["stats"]);
+            }
+
             globalParameters.initialLoad = 0;
         }
         globalParameters.candidateListLength = data["data"].length;
@@ -359,7 +361,18 @@ jQuery(document).ready( function() {
 
     function onSuccessfulFetchJobDetails(topic, data) {
         globalParameters.jobId = data["jobId"]
-        fetchJobApplications(jobId,globalParameters,recruiterId);
+        var tabValue = [0,1,2,3,4,5]
+        if(tabValue.indexOf(defaultTab) != -1) {
+            globalParameters.status = defaultApplicationStatus[defaultTab];
+            candidates.setDefaultTab(globalParameters.status)
+        }
+        var parameters = {}
+        globalParameters.pageNumber = 1;
+        parameters.pageNumber = globalParameters.pageNumber;
+        parameters.pageContent = globalParameters.pageContent;
+        parameters.status = globalParameters.status;
+        parameters.orderBy = globalParameters.orderBy;
+        fetchJobApplications(jobId,parameters,recruiterId);
         theJob.setJobDetails(data);
     }
 

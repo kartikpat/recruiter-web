@@ -254,6 +254,11 @@ function candidateList() {
         return $(ui.newTab[0]).attr("data-attribute");
     }
 
+    function setDefaultTab(status) {
+        $("li .bulk-selection-item").removeClass("active")
+        $("li[data-attribute='"+status+"'] .bulk-selection-item").addClass("active")
+    }
+
     function onClickCandidateOtherActions() {
         settings.rowContainer.on('click', settings.candidateOtherActionsClass,function(event) {
             event.stopPropagation();
@@ -541,20 +546,20 @@ function candidateList() {
 		settings.bulkActionModal.addClass("hidden")
 	}
 
-    function initializeJqueryTabs(fn) {
+    function initializeJqueryTabs(defaultTab, fn) {
         settings.jobTabs.tabs({
-            active: 0,
+            active: defaultTab,
             create:function(){
                 $(this).removeClass("hidden")
             },
             activate: function(event, ui){
-
                 settings.bulkActionContainer.addClass("hidden")
                 settings.massCheckboxInput.prop("checked", false)
                 fn(event, ui);
             }
         })
     }
+
 
     function showShells(status) {
         $(".candidateListing[data-status-attribute='"+status+"']").find(settings.candidateItemShellClass).removeClass("hidden")
@@ -603,6 +608,7 @@ function candidateList() {
         closeModal: closeModal,
         showShells: showShells,
         hideShells: hideShells,
-        removeCandidate: removeCandidate
+        removeCandidate: removeCandidate,
+        setDefaultTab: setDefaultTab
 	}
 }

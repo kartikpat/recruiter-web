@@ -1,4 +1,4 @@
-function taggedCandidateList() {
+function candidateList() {
 
     var settings = {};
     var config = {};
@@ -10,7 +10,9 @@ function taggedCandidateList() {
         settings.candidateDownloadResumeButtonClass= ".candDownloadResume",
         settings.candidateProfessionalItemClass = '.candProfessionalItem',
         settings.candidateEducationItemClass = '.candEducationItem',
-        settings.candTagItemClass= '.candTagItem'
+        settings.candTagItemClass= '.candTagItem',
+        settings.tagOptionClass= '.tagOption',
+        settings.TagId = null
    }
 
    function setConfig(key, value) {
@@ -23,7 +25,7 @@ function taggedCandidateList() {
        return {
            element: card,
            image: card.find('.candImage'),
-           isOnline: card.find('.candStatus')
+           isOnline: card.find('.candStatus'),
            name: card.find('.candName'),
            experience: card.find('.candExperience'),
            location: card.find('.candCurrentLocation'),
@@ -39,7 +41,7 @@ function taggedCandidateList() {
    }
 
    function getEducationElement() {
-       var card = $(''+settings.candidateEducationItemClass.prototype+'.prototype').clone().removeClass("prototype hidden");
+       var card = $(''+settings.candidateEducationItemClass+'.prototype').clone().removeClass("prototype hidden");
        return {
            element: card,
            name: card.find('.instituteName'),
@@ -49,7 +51,7 @@ function taggedCandidateList() {
    }
 
    function getProfessionalElement() {
-       var card = $(''+settings.candidateProfessionalItemClass.prototype+'.prototype').clone().removeClass("prototype hidden");
+       var card = $(''+settings.candidateProfessionalItemClass+'.prototype').clone().removeClass("prototype hidden");
        return {
            element: card,
            name: card.find('.companyName'),
@@ -72,7 +74,8 @@ function taggedCandidateList() {
 
        var tagStr = '';
        $.each(aData["tags"],function(index, aTag) {
-           var tag =  $(""+settings.candTagItemClass+".prototype").clone().text(aTag["name"]).removeClass("prototype hidden");
+           var tag =  $(""+settings.candTagItemClass+".prototype").clone().removeClass("prototype hidden");
+           tag.find("a").text(aTag["name"]).attr("href","/tagged-candidates/334895?queryTag="+aTag["id"]+"");
            tagStr+=tag[0].outerHTML
        })
        item.candTagList.html(tagStr)
@@ -129,11 +132,46 @@ function taggedCandidateList() {
        settings.candidateListing.empty();
    }
 
+   function onFilterByTag(fn) {
+       settings.filterByTagList.change(function(){
+           var status = $(this).val();
+           return fn(status);
+       })
+   }
+
+   function getTagFitersElement() {
+       var card = $(""+settings.tagOptionClass+".prototype").clone().removeClass("prototype hidden");
+       return {
+           element : card
+       }
+   }
+
+   function populateTagsDropdown(dataArray) {
+       var str = '';
+       dataArray.forEach(function(aData, index){
+           var item = getTagFitersElement();
+           item.element.text(aData["name"]);
+           item.element.val(aData["id"]);
+           str+=item.element[0].outerHTML;
+       });
+       settings.filterByTagList.append(str);
+       if(settings.tagId) {
+           settings.filterByTagList.val(settings.tagId)
+       }
+   }
+
+   function setTagId(tagId) {
+       settings.tagId = tagId;
+   }
+
    return {
        init: init,
        addToList: addToList,
        setConfig : setConfig,
-       emptyCandidateList: emptyCandidateList
+       emptyCandidateList: emptyCandidateList,
+       onFilterByTag: onFilterByTag,
+       populateTagsDropdown: populateTagsDropdown,
+       setTagId: setTagId
    }
 
 }

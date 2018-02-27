@@ -1,10 +1,10 @@
-function shortlistedCandidateList() {
+function candidateList() {
 
     var settings = {};
     var config = {};
 
     function init() {
-        settings.candidateListing= $("#candidateListing"),
+        settings.candidateListing= $("#candidateList"),
         settings.filterByStatus= $('#filterByStatus'),
         settings.filterByJob= $('#filterByJob'),
         settings.candidateCount= $('#candidateCount'),
@@ -12,7 +12,14 @@ function shortlistedCandidateList() {
         settings.candidateDownloadResumeButtonClass= ".candDownloadResume",
         settings.candidateProfessionalItemClass = '.candProfessionalItem',
         settings.candidateEducationItemClass = '.candEducationItem',
-        settings.candTagItemClass= '.candTagItem'
+        settings.candTagItemClass= '.candTagItem',
+        settings.candJobOption= '.candJobOption',
+        settings.multipleJobListingClass= '.multipleJobListing',
+        settings.multipleJobListingTextClass= '.multipleJobListingText',
+        settings.candAppliedJobsClass= '.candAppliedJobs'
+
+
+        onToggleJobList();
    }
 
    function setConfig(key, value) {
@@ -25,7 +32,7 @@ function shortlistedCandidateList() {
        return {
            element: card,
            image: card.find('.candImage'),
-           isOnline: card.find('.candidateStatus')
+           isOnline: card.find('.candidateStatus'),
            name: card.find('.candName'),
            experience: card.find('.candExperience'),
            location: card.find('.candCurrentLocation'),
@@ -36,12 +43,17 @@ function shortlistedCandidateList() {
            profList: card.find('.candProfessionalList'),
            isProMember: card.find('.isProMember'),
            isFollowedUp: card.find('.isFollowedUp'),
-           downloadResumeButton: card.find(settings.candidateDownloadResumeButtonClass)
+           downloadResumeButton: card.find(settings.candidateDownloadResumeButtonClass),
+           candJobList: card.find('.jobListing'),
+           multipleCandJobListContainer: card.find('.multipleJobListingContainer'),
+           multipleJobListingText: card.find('.multipleJobListingText'),
+           multipleCandJobListing: card.find('.multipleJobListing'),
+           jobTitle: card.find('.jobTitle')
        }
    }
 
    function getEducationElement() {
-       var card = $(''+settings.candidateEducationItemClass.prototype+'.prototype').clone().removeClass("prototype hidden");
+       var card = $(''+settings.candidateEducationItemClass+'.prototype').clone().removeClass("prototype hidden");
        return {
            element: card,
            name: card.find('.instituteName'),
@@ -51,7 +63,8 @@ function shortlistedCandidateList() {
    }
 
    function getProfessionalElement() {
-       var card = $(''+settings.candidateProfessionalItemClass.prototype+'.prototype').clone().removeClass("prototype hidden");
+
+       var card = $(''+settings.candidateProfessionalItemClass+'.prototype').clone().removeClass("prototype hidden");
        return {
            element: card,
            name: card.find('.companyName'),
@@ -74,7 +87,8 @@ function shortlistedCandidateList() {
 
        var tagStr = '';
        $.each(aData["tags"],function(index, aTag) {
-           var tag =  $(""+settings.candTagItemClass+".prototype").clone().text(aTag["name"]).removeClass("prototype hidden");
+           var tag =  $(""+settings.candTagItemClass+".prototype").clone().removeClass("prototype hidden");
+           tag.find("a").text(aTag["name"]).attr("href","/tagged-candidates/334895?queryTag="+aTag["id"]+"");
            tagStr+=tag[0].outerHTML
        })
        item.candTagList.html(tagStr)
@@ -109,6 +123,21 @@ function shortlistedCandidateList() {
            eduStr+=item.element[0].outerHTML
        })
        item.eduList.html(eduStr)
+       if(aData["tags"].length > 1) {
+           item.candJobList.addClass("hidden")
+           item.multipleJobListingText.text("Applied to "+aData["tags"].length+" jobs")
+           var str = ""
+           $.each(aData["tags"],function(index, aTag) {
+               var item =  $(''+settings.candAppliedJobsClass+'.prototype').clone().removeClass("prototype hidden");;
+               item.text(aTag["name"])
+               str+=item[0].outerHTML
+           })
+           item.multipleCandJobListing.append(str);
+           item.multipleCandJobListContainer.removeClass("hidden");
+       }
+       else {
+           item.jobTitle.text(aData["name"])
+       }
        if(aData["pro"]) {
            item.proMember.removeClass("hidden")
        }
@@ -118,10 +147,16 @@ function shortlistedCandidateList() {
        return item
    }
 
+   function showCandidateCount(count) {
+       settings.candidateCount.text(count)
+   }
+
    function addToList(dataArray){
+
        var str = '';
        dataArray.forEach(function(aData, index){
            var item = createElement(aData);
+
            str+=item.element[0].outerHTML;
        });
        settings.candidateListing.append(str);
@@ -131,11 +166,54 @@ function shortlistedCandidateList() {
        settings.candidateListing.empty();
    }
 
+   function onFilterByStatus(fn) {
+       settings.filterByStatus.change(function(){
+           var status = $(this).val();
+           return fn(status);
+       })
+   }
+
+   function onFilterByJob(fn) {
+       settings.filterByJob.change(function(){
+           var jobId = $(this).val();
+           return fn(jobId);
+       })
+   }
+
+   function getJobFitersElement() {
+       var card = $(""+settings.candJobOption+".prototype").clone().removeClass("prototype hidden");
+       return {
+           element : card
+       }
+   }
+
+   function populateJobsDropdown(dataArray) {
+       var str = '';
+       dataArray.forEach(function(aData, index){
+           var item = getJobFitersElement(aData);
+           item.element.text(aData["title"]);
+           item.element.val(aData["publishedId"]);
+           str+=item.element[0].outerHTML;
+       });
+       settings.filterByJob.append(str);
+   }
+
+   function onToggleJobList() {
+       settings.candidateListing.on('click',settings.multipleJobListingTextClass, function(){
+           $(this).next().slideToggle();
+       })
+   }
+
+
    return {
        init: init,
        addToList: addToList,
        setConfig : setConfig,
-       emptyCandidateList: emptyCandidateList
+       emptyCandidateList: emptyCandidateList,
+       onFilterByStatus: onFilterByStatus,
+       onFilterByJob: onFilterByJob,
+       populateJobsDropdown: populateJobsDropdown,
+       showCandidateCount: showCandidateCount
    }
 
 }

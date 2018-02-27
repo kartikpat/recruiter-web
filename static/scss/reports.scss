@@ -1,6 +1,27 @@
 @import 'common/spacings';
 @import 'input-elements';
 
+@import 'chat-sidebar';
+
+@import 'components/modal';
+
+.shell {
+    .section {
+        margin-bottom: 10px !important;
+    }
+    p {
+        @include title-shell;
+    }
+    span {
+        display: inline-block;
+        width: calc(50% - 10px);
+        @include text-shell;
+        &.date {
+            width: 100%;
+        }
+    }
+}
+
 .page-content {
 	@include page-content;
 	background-color:$body-background-color;
@@ -111,6 +132,9 @@
 
 							a {
 								color:$link-color;
+							}
+							&.date {
+								width: 25%;
 							}
 							&.title {
 								width: 100%;

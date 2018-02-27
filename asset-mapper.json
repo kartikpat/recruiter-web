@@ -815,7 +815,16 @@
 				"static/js/header.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
-				"static/js/tagged-candidates.js"
+				"static/js/tagged-candidates.js",
+				"static/js/Utilities/pubsub.js",
+				"static/js/Utilities/common.js",
+				"static/js/vendor/moment.min.js",
+				"static/js/Services/fetchCandidatesByStatus.js",
+				"static/js/Services/fetchRecruiterTags.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js",
+				"static/js/Components/TaggedCandidates/model.js",
+				"static/js/Components/TaggedCandidates/index.js"
 			],
 			"prod" : [
 				"static/build/js/tagged-candidates.min.js"
@@ -888,7 +897,16 @@
 				"static/js/header.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
-				"static/js/shortlisted-candidates.js"
+				"static/js/shortlisted-candidates.js",
+				"static/js/Utilities/pubsub.js",
+				"static/js/Utilities/common.js",
+				"static/js/vendor/moment.min.js",
+				"static/js/Services/fetchCandidatesByStatus.js",
+				"static/js/Services/fetchJobs.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js",
+				"static/js/Components/ShortlistedCandidates/model.js",
+				"static/js/Components/ShortlistedCandidates/index.js"
 			],
 			"prod" : [
 				"static/build/js/shortlisted-candidates.min.js"
@@ -1014,10 +1032,13 @@
 				"static/js/request.js",
 				"static/js/header.js",
 				"static/js/change-password.js",
+				"static/js/vendor/moment.min.js",
 				"static/js/utilities.js",
 				"static/js/reports.js",
-				"static/js/Components/reports/model.js",
-				"static/js/Components/reports/index.js"
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js",
+				"static/js/Components/Reports/model.js",
+				"static/js/Components/Reports/index.js"
 			],
 			"prod" : [
 				"static/build/js/reports.min.js"
