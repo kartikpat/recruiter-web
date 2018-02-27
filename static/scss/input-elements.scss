@@ -443,13 +443,12 @@ span {
 		display:inline-block;
 		background:$border-color-active;
 		margin:3px;
-		padding:3px 10px;
+		padding:0px 10px;
 		border-radius:20px;
 
 		.tag-icons {
 			display:inline-block;
 			font-size:$base-font-size;
-			padding:5px 0 5px;
 			cursor:pointer;
 		}
 
@@ -459,7 +458,8 @@ span {
 		span {
 			color:$color-white;
 			font-size:$base-font-size;
-			padding:0 5px 0 0;
+			padding:8px 5px;
+			display:inline-block;
 		}
 	}
 	.pill-button {
@@ -565,7 +565,7 @@ span {
 		.pill-button {
 			.pill-listing {
 				ul {
-				max-height:300px;
+					max-height:300px;
 				}
 			}
 		}

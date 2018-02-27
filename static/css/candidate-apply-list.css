@@ -3052,19 +3052,19 @@ input::-webkit-input-placeholder {
     display: inline-block;
     background: #4fa995;
     margin: 3px;
-    padding: 3px 10px;
+    padding: 0px 10px;
     border-radius: 20px; }
     .job-tags .input-tag .tag-icons {
       display: inline-block;
       font-size: 14px;
-      padding: 5px 0 5px;
       cursor: pointer; }
     .job-tags .input-tag .tag-name {
       display: inline-block; }
     .job-tags .input-tag span {
       color: #FFF;
       font-size: 14px;
-      padding: 0 5px 0 0; }
+      padding: 8px 5px;
+      display: inline-block; }
   .job-tags .pill-button {
     position: relative;
     display: inline-block; }

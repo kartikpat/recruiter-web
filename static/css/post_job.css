@@ -666,19 +666,19 @@ span.sticker {
           display: inline-block;
           background: #4fa995;
           margin: 3px;
-          padding: 3px 10px;
+          padding: 0px 10px;
           border-radius: 20px; }
           .job_posting .post_job .post_job_form .field-container .industry-tags .input-tag .tag-icons, .job_posting .post_job .post_job_form .field-container .location-tags .input-tag .tag-icons, .job_posting .post_job .post_job_form .field-container .skill-tags .input-tag .tag-icons {
             display: inline-block;
             font-size: 14px;
-            padding: 5px 0 5px;
             cursor: pointer; }
           .job_posting .post_job .post_job_form .field-container .industry-tags .input-tag .tag-name, .job_posting .post_job .post_job_form .field-container .location-tags .input-tag .tag-name, .job_posting .post_job .post_job_form .field-container .skill-tags .input-tag .tag-name {
             display: inline-block; }
           .job_posting .post_job .post_job_form .field-container .industry-tags .input-tag span, .job_posting .post_job .post_job_form .field-container .location-tags .input-tag span, .job_posting .post_job .post_job_form .field-container .skill-tags .input-tag span {
             color: #FFF;
             font-size: 14px;
-            padding: 0 5px 0 0; }
+            padding: 8px 5px;
+            display: inline-block; }
         .job_posting .post_job .post_job_form .field-container .industry-tags .pill-button, .job_posting .post_job .post_job_form .field-container .location-tags .pill-button, .job_posting .post_job .post_job_form .field-container .skill-tags .pill-button {
           position: relative;
           display: inline-block; }
@@ -805,7 +805,8 @@ span.sticker {
         height: 17px; }
     .submit-action-buttons button.submit-form {
       margin: 0;
-      background-color: #1f8f75; }
+      background-color: #1f8f75;
+      padding: 10px 32px; }
     .submit-action-buttons button.cancel-form {
       color: #155d9a;
       box-shadow: none;
