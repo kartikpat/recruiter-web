@@ -197,8 +197,12 @@ function Jobs() {
 				item.location.append("<span>"+locShow+"</span>")
 			}
 			else{
+				item.location.addClass("hidden")
 				item.multipleLocation.attr("title",locShow).removeClass("hidden");
 			}
+		}
+		else {
+			item.location.addClass("hidden")
 		}
 
 		var experience = aData["exp"]['min']+'-'+aData['exp']['max'] +' yrs'

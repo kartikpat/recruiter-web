@@ -23,6 +23,7 @@ jQuery(document).ready( function() {
     fetchCandidatesByStatus(jobId, parameters, recruiterId)
 
     candidates.onFilterByTag(function(status){
+        candidates.showShell()
         var parameters = {}
         parameters.status = status;
         parameters.pageNumber = globalParameters.pageNumber;

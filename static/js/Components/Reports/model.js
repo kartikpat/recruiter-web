@@ -1,47 +1,3 @@
-var obj = {
-   "data": [
-       {
-           "id": 530185,
-           "title": "Data Analyst (5-7 yrs)",
-           "status": "unpublished",
-           "views": 3,
-           "createdAt": "2018-01-29T10:18:07.000Z",
-           "total": 0,
-           "rejected": 0,
-           "save": 0,
-           "shortlisted": 0,
-           "reviewed": 0,
-           "premium": 1
-       },
-       {
-           "id": 530187,
-           "title": "hr manager (3-5 yrs)",
-           "status": "unpublished",
-           "views": 0,
-           "createdAt": "2018-02-14T19:53:12.000Z",
-           "total": 0,
-           "rejected": 0,
-           "save": 0,
-           "shortlisted": 0,
-           "reviewed": 0
-       },
-       {
-           "id": 334895,
-           "title": "iimjobs.com - Product Manager - Internet/Mobile (0-3 yrs)",
-           "status": "unpublished",
-           "views": 3399,
-           "createdAt": "2016-05-12T10:53:42.000Z",
-           "total": 197,
-           "rejected": 107,
-           "save": 6,
-           "shortlisted": 44,
-           "reviewed": 40,
-           "premium": 1
-       }
-   ],
-   "status": "success"
-}
-
 function reportList() {
 
     var settings = {};
@@ -58,6 +14,8 @@ function reportList() {
         settings.candidateEducationItemClass = '.candEducationItem',
         settings.candTagItemClass= '.candTagItem',
         settings.reportRowShell = $(".reportRo.shell")
+
+
    }
 
    function setConfig(key, value) {
@@ -98,24 +56,27 @@ function reportList() {
        var item = getElement();
        item.element.attr("data-application-id", aData["id"]);
        item.publishedOn.text(moment(aData["createdAt"]).format('ll'));
-       item.jobTitle.text(getTitleFormat(aData["title"], (/\(\d+-\d+ \w+\)$/)));
+       var str = aData["by"];
+       var res = str.split(" ");
+       item.jobTitle.text(getTitleFormat(aData["title"], (/\(\d+-\d+ \w+\)$/))).attr("href", "https://www.iimjobs.com/j"+aData["url"]+"");
+       item.postedBy.text(aData["by"]).attr("href", "https://www.iimjobs.com/r/"+config["recruiterId"]+"-"+res[0]+"-"+res[1]+"");
        // item.experience.text((aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m") || "NA");
        // item.location.text(aData["currentLocation"] || "NA");
        item.postingViews.text(aData["views"]);
        item.allCandidates.text(aData["total"]).attr("href", getApplicationLink(0, aData["id"]));
        item.shortlistedCandidates.text(aData["shortlisted"]).attr("href", getApplicationLink(3, aData["id"]));
        item.rejectedCandidates.text(aData["rejected"]).attr("href", getApplicationLink(4, aData["id"]));
-       item.savedCandidates.text(aData["saved"]).attr("href", getApplicationLink(5, aData["id"]));
-       item.resumeViewedCount.text(aData["saved"]).attr("href", getApplicationLink(2, aData["id"]));
-       item.resumeDownloadedCount.text(aData["saved"]).attr("href", getApplicationLink(2, aData["id"]));
-       item.jobCurrentStatus.text(aData["status"]);
+       item.savedCandidates.text(aData["save"]).attr("href", getApplicationLink(5, aData["id"]));
+       item.resumeViewedCount.text(aData["reviewed"]).attr("href", getApplicationLink(2, aData["id"]));
+       item.resumeDownloadedCount.text(aData["download"] || 0).attr("href", getApplicationLink(2, aData["id"]));
+       item.jobCurrentStatus.text(aData["status"] || "N/A");
        item.isJobPremium.text(binary[aData["premium"]])
+       item.excelDownloadedCount.text(binary[aData["excelDownload"] || 0])
        return item
    }
 
-   function addToList(){
+   function addToList(dataArray){
        var str = '';
-       dataArray = obj["data"];
        dataArray.forEach(function(aData, index){
            var item = createElement(aData);
            str+=item.element[0].outerHTML;
@@ -132,10 +93,15 @@ function reportList() {
        settings.reportRowShell.addClass("hidden");
    }
 
+   function onClickDownloadExcelButton(fn) {
+       settings.downloadExcelButton.click(fn)
+   }
+
    return {
        init: init,
        addToList: addToList,
-       setConfig : setConfig
+       setConfig : setConfig,
+       onClickDownloadExcelButton: onClickDownloadExcelButton
    }
 }
 

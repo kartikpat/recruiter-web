@@ -2,6 +2,20 @@
 @import 'input-elements';
 @import 'chat-sidebar';
 
+.shell {
+    .section {
+        margin-bottom: 10px !important;
+    }
+    p {
+        @include title-shell;
+    }
+    span {
+        display: inline-block;
+        width: calc(50% - 10px);
+        @include text-shell;
+    }
+}
+
 .page-content {
 	@include page-content;
 	background:$body-background-color;
@@ -235,6 +249,21 @@
 }
 
 @media all and (max-width:1024px) {
+	.shell {
+
+        p {
+
+            width: 50%;
+        }
+        span {
+
+            width: 25%;
+            &.right {
+                display: none;
+            }
+
+        }
+    }
 	.page-content {
 
 		.tagged-candidates {

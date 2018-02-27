@@ -12,7 +12,8 @@ function candidateList() {
         settings.candidateEducationItemClass = '.candEducationItem',
         settings.candTagItemClass= '.candTagItem',
         settings.tagOptionClass= '.tagOption',
-        settings.TagId = null
+        settings.tagId = null,
+        settings.candidateItemShell= $(".candidateItem.shell")
    }
 
    function setConfig(key, value) {
@@ -125,6 +126,7 @@ function candidateList() {
            var item = createElement(aData);
            str+=item.element[0].outerHTML;
        });
+       hideShell()
        settings.candidateListing.append(str);
    }
 
@@ -162,6 +164,14 @@ function candidateList() {
 
    function setTagId(tagId) {
        settings.tagId = tagId;
+   }
+
+   function hideShell() {
+       settings.candidateItemShell.addClass("hidden")
+   }
+
+   function showShell() {
+       settings.candidateItemShell.removeClass("hidden")
    }
 
    return {

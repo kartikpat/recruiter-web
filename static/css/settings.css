@@ -163,7 +163,8 @@
 
 /* '' */
 .icon-twitter:before {
-  content: '\e816'; }
+  content: '\e816';
+  color: #1da1f2; }
 
 /* '' */
 .icon-woman:before {
@@ -609,7 +610,7 @@ span.sticker {
             background: #1f8f75;
             border-color: #8f8a8a;
             border-radius: 4px;
-            padding: 5px 14px;
+            padding: 8px 25px;
             font-size: 14px;
             margin: 0 5px;
             color: #FFF;
@@ -730,7 +731,7 @@ span.sticker {
           background: #155d9a;
           border-color: #8f8a8a;
           border-radius: 4px;
-          padding: 5px 14px;
+          padding: 8px 25px;
           font-size: 14px;
           margin: 0 5px;
           color: #FFF;

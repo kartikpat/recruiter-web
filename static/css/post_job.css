@@ -163,7 +163,8 @@
 
 /* '' */
 .icon-twitter:before {
-  content: '\e816'; }
+  content: '\e816';
+  color: #1da1f2; }
 
 /* '' */
 .icon-woman:before {
@@ -776,7 +777,7 @@ span.sticker {
     background: #1f8f75;
     border-color: #8f8a8a;
     border-radius: 4px;
-    padding: 5px 14px;
+    padding: 8px 25px;
     font-size: 14px;
     margin: 0 5px;
     color: #FFF;
@@ -797,10 +798,8 @@ span.sticker {
         height: 17px; }
     .submit-action-buttons button.submit-form {
       margin: 0;
-      padding: 10px;
       background-color: #1f8f75; }
     .submit-action-buttons button.cancel-form {
-      padding: 10px;
       color: #155d9a;
       box-shadow: none;
       border: 0;

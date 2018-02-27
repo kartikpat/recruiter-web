@@ -163,7 +163,8 @@
 
 /* '' */
 .icon-twitter:before {
-  content: '\e816'; }
+  content: '\e816';
+  color: #1da1f2; }
 
 /* '' */
 .icon-woman:before {
@@ -672,7 +673,8 @@ span.sticker {
 
 /* '' */
 .icon-twitter:before {
-  content: '\e816'; }
+  content: '\e816';
+  color: #1da1f2; }
 
 /* '' */
 .icon-woman:before {
@@ -1149,7 +1151,8 @@ a {
 
 /* '' */
 .icon-twitter:before {
-  content: '\e816'; }
+  content: '\e816';
+  color: #1da1f2; }
 
 /* '' */
 .icon-woman:before {
@@ -1546,6 +1549,41 @@ span.sticker {
       .conversations .conversation-listing-container .conversations-listing .conversation-item:last-child .user-item.user-info p.user-designation {
         border-color: transparent; }
 
+.shell .section {
+  margin-bottom: 10px !important; }
+
+.shell p {
+  font-size: 0;
+  background-color: #d8d5d5;
+  opacity: 0.4;
+  min-height: 15px;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+  position: relative; }
+
+.shell span {
+  display: inline-block;
+  width: calc(50% - 10px);
+  font-size: 0;
+  background-color: #d8d5d5;
+  opacity: 0.4;
+  min-height: 10px;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+  position: relative; }
+
 .page-content {
   min-height: 100%;
   padding: 0;
@@ -1681,7 +1719,7 @@ span.sticker {
                 background: #1f8f75;
                 border-color: #8f8a8a;
                 border-radius: 4px;
-                padding: 5px 14px;
+                padding: 8px 25px;
                 font-size: 14px;
                 margin: 0 5px;
                 color: #FFF;
@@ -1743,6 +1781,12 @@ span.sticker {
           padding-left: 0; } }
 
 @media all and (max-width: 1024px) {
+  .shell p {
+    width: 50%; }
+  .shell span {
+    width: 25%; }
+    .shell span.right {
+      display: none; }
   .page-content .tagged-candidates {
     width: 100%; }
     .page-content .tagged-candidates .page-header {

@@ -16,7 +16,8 @@ function candidateList() {
         settings.candJobOption= '.candJobOption',
         settings.multipleJobListingClass= '.multipleJobListing',
         settings.multipleJobListingTextClass= '.multipleJobListingText',
-        settings.candAppliedJobsClass= '.candAppliedJobs'
+        settings.candAppliedJobsClass= '.candAppliedJobs',
+        settings.candidateItemShell= $(".candidateItem.shell")
 
 
         onToggleJobList();
@@ -152,13 +153,12 @@ function candidateList() {
    }
 
    function addToList(dataArray){
-
        var str = '';
        dataArray.forEach(function(aData, index){
            var item = createElement(aData);
-
            str+=item.element[0].outerHTML;
        });
+       hideShell()
        settings.candidateListing.append(str);
    }
 
@@ -202,6 +202,14 @@ function candidateList() {
        settings.candidateListing.on('click',settings.multipleJobListingTextClass, function(){
            $(this).next().slideToggle();
        })
+   }
+
+   function hideShell() {
+       settings.candidateItemShell.addClass("hidden")
+   }
+
+   function showShell() {
+       settings.candidateItemShell.removeClass("hidden")
    }
 
 
