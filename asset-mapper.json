@@ -20,7 +20,7 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/vendor/hello.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/index.js"
 
@@ -49,7 +49,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/reset-password.js"
 
@@ -78,7 +78,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/mass-resume.js"
 
@@ -107,7 +107,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/edit-profile.js"
 
@@ -179,7 +179,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/utilities.js",
 				"static/js/vendor/swipe.js",
@@ -207,7 +207,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/profile-view.js"
 			],
@@ -318,7 +318,7 @@
 				"static/js/vendor/pdf.js",
 				"static/js/vendor/pdf.worker.js",
 				"static/js/pdfJs.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/candidate-list.js",
 				"static/js/tags/industry.js",
@@ -355,7 +355,7 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/vendor/jquery-ui.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/candidate-list-one.js",
 				"static/js/tags/industry.js",
@@ -389,7 +389,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/view-resume.js"
 			],
@@ -442,7 +442,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/view-reports.js"
 			],
@@ -468,7 +468,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/calendar-events.js"
 			],
@@ -496,7 +496,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/vendor/jquery-ui.min.js",
 				"static/js/vendor/jquery.timepicker.min.js",
 				"static/js/header.js",
@@ -529,7 +529,7 @@
 				"static/js/vendor/moment.min.js",
         		"static/js/vendor/fullcalendar.js",
 				"static/js/vendor/gcal.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/view-booked-slots.js"
 			],
@@ -556,7 +556,7 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/vendor/moment.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/chat_pubnub.js",
 				"static/js/chat.js"
 			],
@@ -583,7 +583,7 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/vendor/hello.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/export-profile.js"
 			],
@@ -609,7 +609,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/account-activation.js"
 			],
@@ -635,7 +635,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/tags.js"
 			],
@@ -661,7 +661,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/filter-candidate.js"
 			],
@@ -687,7 +687,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/change-password.js"
 			],
@@ -713,7 +713,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/change-password.js",
 				"static/js/ui-components.js",
@@ -744,7 +744,7 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/vendor/tooltipster.main.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/utilities.js",
 				"static/js/Utilities/pubsub.js",
@@ -783,7 +783,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
@@ -811,7 +811,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
@@ -884,7 +884,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
@@ -912,7 +912,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
@@ -944,7 +944,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
@@ -1011,7 +1011,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
@@ -1039,7 +1039,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
@@ -1072,7 +1072,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/utilities.js",
 				"static/js/welcome.js"
@@ -1097,7 +1097,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/utilities.js",
 				"static/js/account-verified.js"
@@ -1122,7 +1122,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/request.js",
+				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/utilities.js",
 				"static/js/account-created.js"
