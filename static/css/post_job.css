@@ -772,7 +772,7 @@ span.sticker {
 .submit-action-buttons {
   padding: 0 30px;
   max-width: 1440px;
-  margin: 20px auto; }
+  margin: 30px auto 50px; }
   .submit-action-buttons button {
     -webkit-appearance: none;
     -moz-appearance: none;
