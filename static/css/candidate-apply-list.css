@@ -2565,6 +2565,9 @@ input::-webkit-input-placeholder {
   padding: 20px;
   width: 100%;
   background-color: #f7f7f7; }
+  .page-content .main-wrapper {
+    max-width: 1440px;
+    margin: 0 auto; }
   .page-content .page-header {
     padding: 15px 0; }
     .page-content .page-header h1 {
@@ -3325,7 +3328,7 @@ input::-webkit-input-placeholder {
     .page-content .page-mobile-header .stats select {
       display: block !important; } }
 
-@media all and (max-width: 1439px) {
+@media all and (max-width: 1024px) {
   .conversations {
     display: none; }
   .page-content .candidate-apply-listing {

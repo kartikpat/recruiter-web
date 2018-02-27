@@ -67,6 +67,11 @@ input::-webkit-input-placeholder {
 	@include page-content;
 	background-color:$body-background-color;
 
+	.main-wrapper {
+		max-width:1440px;
+		margin:0 auto;
+	}
+
 	.page-header {
 		padding:15px 0;
 		h1 {
@@ -790,7 +795,7 @@ input::-webkit-input-placeholder {
 	}
 }
 
-@media all and (max-width:1439px) {
+@media all and (max-width:1024px) {
 	.conversations {
 		display:none;
 	}

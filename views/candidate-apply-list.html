@@ -21,169 +21,171 @@
 		</div>
 	</div>
 	<div class="page-content">
-		<div class="candidate-apply-listing left">
-			<div class="page-header" id="jobDetails">
-				<div class="left">
-					<h1 class="job-title shell" id="jobTitle">iimjobs.com - Product Manager</h1>
-					<p class="job-meta">
-						<span class="job-location shell" id="jobLocation">Delhi</span>
-						<span class="meta-separator hidden" id="jobSeparator">&bull;</span>
-						<span class="job-experience shell" id="jobExperience">0-5 yrs</span>
-						<span class="meta-separator hidden" id="locSeperator">&nbsp;|&nbsp;</span>
-						<span class="job-id shell" id="jobCode"></span>
-					</p>
-				</div>
-				<div class="action-buttons right jsJobActions">
-					<span class="section calendar-options hidden" id="calendarContainer">
-						<select class="select-dropdown" id="calendarSelect">
-						</select>
-						<div class="error-field hidden" id="calendarSelectError"><p>Please select Calendar</p></div>
-					</span>
-					<span class="button white hidden" id="createCalendar">Create Calendar</span>
-					<a href="" class="hidden" id="jobEditButton"><span class="edit button white">Edit Job&nbsp;&nbsp;<img src="/static/images/edit-icon.svg"></span></a>
-					<span class="button white hidden" id="jobPremiumButton">Make Premium</span>
-					<span class="button white unpublish-job hidden" id="jobUnpublishButton">Unpublish</span>
-
-					<span class="multi-options inactive button-action-list hidden" id="jobOtherActions"><img src="/static/images/multi-options.svg">
-						<ul class="action-list-items">
-							<li><a href="#" class="hidden" id="jobRefreshButton">Refresh</a></li>
-							<li><a href="#" class="" id="jobPostFacebook">Post On Facebook</a></li>
-							<li><a href="#" class="" id=jobPostTwitter>Post On Twitter</a></li>
-							<li><a href="#" class="" id="jobPostLinkedin">Post On Linkedin</a></li>
-						</ul>
-					</span>
-				</div>
-				<div class="clearfix"></div>
-
-			</div>
-
-			<div class="candidates-area" id="candidatesArea">
-				<div class="candidates-area-header">
-					<div class="candidates-search">
-						<div class="keyword-search">
-							<input type="text" placeholder="Search candidate" class="candidate-keyword-filter left " id="searchInput"><button class="right search-trigger " id="searchButton" >Search</button>
-						</div>
-						<div class="filter-search">
-							<span class="button white filter-button" id="filterModalOpenButton"><span class="button-label">Filter</span></span>
-							<span class="action-buttons sortBy">
-								<span class="section sortBy" id="sortBy">
-									<select class="select-dropdown" id="sortBySelect">
-										<option value="1">SortBy: Magic Sort</option>
-										<option value="2">SortBy: Application Date</option>
-									</select>
-								</span>
-							</span>
-						</div>
-					</div>
-					<div class="candidates-search-results">
-						<p class="results-count hidden" id="resultFound">
-
+		<div class="main-wrapper">
+			<div class="candidate-apply-listing left">
+				<div class="page-header" id="jobDetails">
+					<div class="left">
+						<h1 class="job-title shell" id="jobTitle">iimjobs.com - Product Manager</h1>
+						<p class="job-meta">
+							<span class="job-location shell" id="jobLocation">Delhi</span>
+							<span class="meta-separator hidden" id="jobSeparator">&bull;</span>
+							<span class="job-experience shell" id="jobExperience">0-5 yrs</span>
+							<span class="meta-separator hidden" id="locSeperator">&nbsp;|&nbsp;</span>
+							<span class="job-id shell" id="jobCode"></span>
 						</p>
-						<div class="active-filters">
-
-							<span  class="clear-all-filters ">
-								<span id="clear-all" class="hidden">Clear filters</span>
-							</span>
-						</div>
 					</div>
+					<div class="action-buttons right jsJobActions">
+						<span class="section calendar-options hidden" id="calendarContainer">
+							<select class="select-dropdown" id="calendarSelect">
+							</select>
+							<div class="error-field hidden" id="calendarSelectError"><p>Please select Calendar</p></div>
+						</span>
+						<span class="button white hidden" id="createCalendar">Create Calendar</span>
+						<a href="" class="hidden" id="jobEditButton"><span class="edit button white">Edit Job&nbsp;&nbsp;<img src="/static/images/edit-icon.svg"></span></a>
+						<span class="button white hidden" id="jobPremiumButton">Make Premium</span>
+						<span class="button white unpublish-job hidden" id="jobUnpublishButton">Unpublish</span>
+
+						<span class="multi-options inactive button-action-list hidden" id="jobOtherActions"><img src="/static/images/multi-options.svg">
+							<ul class="action-list-items">
+								<li><a href="#" class="hidden" id="jobRefreshButton">Refresh</a></li>
+								<li><a href="#" class="" id="jobPostFacebook">Post On Facebook</a></li>
+								<li><a href="#" class="" id=jobPostTwitter>Post On Twitter</a></li>
+								<li><a href="#" class="" id="jobPostLinkedin">Post On Linkedin</a></li>
+							</ul>
+						</span>
+					</div>
+					<div class="clearfix"></div>
+
 				</div>
 
-				<div class="candidates-area-body">
-					<div class="">
-						<div class="selection-bar tabs_scroll_container hidden" id="jobs-tabs">
+				<div class="candidates-area" id="candidatesArea">
+					<div class="candidates-area-header">
+						<div class="candidates-search">
+							<div class="keyword-search">
+								<input type="text" placeholder="Search candidate" class="candidate-keyword-filter left " id="searchInput"><button class="right search-trigger " id="searchButton" >Search</button>
+							</div>
+							<div class="filter-search">
+								<span class="button white filter-button" id="filterModalOpenButton"><span class="button-label">Filter</span></span>
+								<span class="action-buttons sortBy">
+									<span class="section sortBy" id="sortBy">
+										<select class="select-dropdown" id="sortBySelect">
+											<option value="1">SortBy: Magic Sort</option>
+											<option value="2">SortBy: Application Date</option>
+										</select>
+									</span>
+								</span>
+							</div>
+						</div>
+						<div class="candidates-search-results">
+							<p class="results-count hidden" id="resultFound">
 
-							<div id="jobs-category-tabs" class="">
+							</p>
+							<div class="active-filters">
 
-								<ul id="">
-									<li>
-										<div class="bulk-selection-item bulk-select section">
-										<div class="select-all check-input">
-											<input type="checkbox" class="" id="massCheckboxInput">
-											<label for="massCheckboxInput" id="massCheckboxLabel"></label>
+								<span  class="clear-all-filters ">
+									<span id="clear-all" class="hidden">Clear filters</span>
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="candidates-area-body">
+						<div class="">
+							<div class="selection-bar tabs_scroll_container hidden" id="jobs-tabs">
+
+								<div id="jobs-category-tabs" class="">
+
+									<ul id="">
+										<li>
+											<div class="bulk-selection-item bulk-select section">
+											<div class="select-all check-input">
+												<input type="checkbox" class="" id="massCheckboxInput">
+												<label for="massCheckboxInput" id="massCheckboxLabel"></label>
+											</div>
 										</div>
-									</div>
-								</li>
-				            		<li data-attribute="">
-										<a href="#all-jobs">
-											<div class="bulk-selection-item all active">
-												<span class="bulk-action-icon"><i class="icon-box"></i></span>
-												<span class="bulk-action-label">All(<span class="tabStats"  id="allNo">0</span>)</span>
-											</div>
-										</a>
 									</li>
-				            		<li data-attribute="0">
-										<a href="#unread-jobs">
-											<div class="bulk-selection-item unread">
-												<span class="bulk-action-icon"><i class="icon-envelope"></i></span>
-												<span class="bulk-action-label ">Unread(<span class="tabStats" id="unreadNo">0</span>)</span>
-											</div>
-										</a>
-									</li>
-				            		<li data-attribute="4,5">
-										<a href="#reviewed-jobs">
-											<div class="bulk-selection-item reviewed">
-												<span class="bulk-action-icon"><i class="icon-document_search_interface_symbol"></i></span>
-												<span class="bulk-action-label ">Reviewed(<span class="tabStats" id="reviewedNo">0</span>)</span>
-											</div>
-										</a>
-									</li>
-									<li data-attribute="1">
-										<a href="#shortlisted-jobs">
-											<div class="bulk-selection-item shortlisted">
-												<span class="bulk-action-icon"><i class="icon-tick"></i></span>
-												<span class="bulk-action-label">Shortlisted(<span class="tabStats" id="shortlistedNo">0</span>)</span>
-											</div>
-										</a>
-									</li>
-									<li data-attribute="2">
-										<a href="#rejected-jobs">
-											<div class="bulk-selection-item rejected">
-												<span class="bulk-action-icon"><i class="icon-denied"></i></span>
-												<span class="bulk-action-label">Rejected(<span class="tabStats" id="rejectedNo">0</span>)</span>
-											</div>
-										</a>
-									</li>
-									<li data-attribute="3">
-										<a href="#saved-jobs">
-											<div class="bulk-selection-item saved">
-												<span class="bulk-action-icon"><i class="icon-download_arrow"></i></span>
-												<span class="bulk-action-label">Saved(<span class="tabStats" id="savedNo">0</span>)</span>
-											</div>
-										</a>
-									</li>
-		            			</ul>
-							</div>
-							<div id="all-jobs" class="candidates-listing candidateListing" data-status-attribute="">
-								{{>candidateApplyListShell}}
-								{{>candidateApplyListShell}}
-							</div>
-							<div id="unread-jobs" class="candidates-listing candidateListing" data-status-attribute="0">
-								{{>candidateApplyListShell}}
-								{{>candidateApplyListShell}}
-							</div>
-							<div id="reviewed-jobs" class="candidates-listing candidateListing" data-status-attribute="4,5">
-								{{>candidateApplyListShell}}
-								{{>candidateApplyListShell}}
-							</div>
-							<div id="shortlisted-jobs" class="candidates-listing candidateListing" data-status-attribute="1">
-								{{>candidateApplyListShell}}
-								{{>candidateApplyListShell}}
-							</div>
-							<div id="rejected-jobs" class="candidates-listing candidateListing" data-status-attribute="2">
-								{{>candidateApplyListShell}}
-								{{>candidateApplyListShell}}
-							</div>
-							<div id="saved-jobs" class="candidates-listing candidateListing" data-status-attribute="3">
-								{{>candidateApplyListShell}}
-								{{>candidateApplyListShell}}
+					            		<li data-attribute="">
+											<a href="#all-jobs">
+												<div class="bulk-selection-item all active">
+													<span class="bulk-action-icon"><i class="icon-box"></i></span>
+													<span class="bulk-action-label">All(<span class="tabStats"  id="allNo">0</span>)</span>
+												</div>
+											</a>
+										</li>
+					            		<li data-attribute="0">
+											<a href="#unread-jobs">
+												<div class="bulk-selection-item unread">
+													<span class="bulk-action-icon"><i class="icon-envelope"></i></span>
+													<span class="bulk-action-label ">Unread(<span class="tabStats" id="unreadNo">0</span>)</span>
+												</div>
+											</a>
+										</li>
+					            		<li data-attribute="4,5">
+											<a href="#reviewed-jobs">
+												<div class="bulk-selection-item reviewed">
+													<span class="bulk-action-icon"><i class="icon-document_search_interface_symbol"></i></span>
+													<span class="bulk-action-label ">Reviewed(<span class="tabStats" id="reviewedNo">0</span>)</span>
+												</div>
+											</a>
+										</li>
+										<li data-attribute="1">
+											<a href="#shortlisted-jobs">
+												<div class="bulk-selection-item shortlisted">
+													<span class="bulk-action-icon"><i class="icon-tick"></i></span>
+													<span class="bulk-action-label">Shortlisted(<span class="tabStats" id="shortlistedNo">0</span>)</span>
+												</div>
+											</a>
+										</li>
+										<li data-attribute="2">
+											<a href="#rejected-jobs">
+												<div class="bulk-selection-item rejected">
+													<span class="bulk-action-icon"><i class="icon-denied"></i></span>
+													<span class="bulk-action-label">Rejected(<span class="tabStats" id="rejectedNo">0</span>)</span>
+												</div>
+											</a>
+										</li>
+										<li data-attribute="3">
+											<a href="#saved-jobs">
+												<div class="bulk-selection-item saved">
+													<span class="bulk-action-icon"><i class="icon-download_arrow"></i></span>
+													<span class="bulk-action-label">Saved(<span class="tabStats" id="savedNo">0</span>)</span>
+												</div>
+											</a>
+										</li>
+			            			</ul>
+								</div>
+								<div id="all-jobs" class="candidates-listing candidateListing" data-status-attribute="">
+									{{>candidateApplyListShell}}
+									{{>candidateApplyListShell}}
+								</div>
+								<div id="unread-jobs" class="candidates-listing candidateListing" data-status-attribute="0">
+									{{>candidateApplyListShell}}
+									{{>candidateApplyListShell}}
+								</div>
+								<div id="reviewed-jobs" class="candidates-listing candidateListing" data-status-attribute="4,5">
+									{{>candidateApplyListShell}}
+									{{>candidateApplyListShell}}
+								</div>
+								<div id="shortlisted-jobs" class="candidates-listing candidateListing" data-status-attribute="1">
+									{{>candidateApplyListShell}}
+									{{>candidateApplyListShell}}
+								</div>
+								<div id="rejected-jobs" class="candidates-listing candidateListing" data-status-attribute="2">
+									{{>candidateApplyListShell}}
+									{{>candidateApplyListShell}}
+								</div>
+								<div id="saved-jobs" class="candidates-listing candidateListing" data-status-attribute="3">
+									{{>candidateApplyListShell}}
+									{{>candidateApplyListShell}}
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="conversations right">
-			{{>chatSidebar}}
+			<div class="conversations right">
+				{{>chatSidebar}}
+			</div>
 		</div>
 	</div>
 
