@@ -48,5 +48,5 @@ $(document).ready(function(){
 	var jobSubmitFailSubscription = pubsub.subscribe('failedNewJobSubmission', onFailedSubmitJob);
 	var jobEditSuccessSubscription = pubsub.subscribe('jobEdited', onSuccessfulSubmitJob);
 	var jobEditFailSubscription = pubsub.subscribe('failedEditJobSubmission', onFailedSubmitJob);
-	bindGuidelineModalLink();
+	bindGuidelineModalFunctionality();
 })

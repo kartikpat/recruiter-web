@@ -15,6 +15,12 @@ jQuery(".modal-overlay").on('click', function(e) {
     }
 });
 
+jQuery(".modal_overlay").on('click', ".close_modal",function(e) {
+    jQuery("body").removeClass("posf");
+    jQuery(".modal_overlay").addClass("hidden");
+});
+
+
 jQuery(".modal_overlay").on("click",".category_listing li",function() {
   jQuery(this).addClass("active");
   jQuery(this).siblings().removeClass("active");
