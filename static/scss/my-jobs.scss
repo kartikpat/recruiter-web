@@ -7,6 +7,21 @@
 	color:  #fff !important;
 }
 
+.shell {
+    .section {
+        margin-bottom: 10px !important;
+    }
+    p {
+        @include title-shell;
+		width: 75%;
+    }
+    span {
+        display: inline-block;
+        width: 50%;
+        @include text-shell;
+    }
+}
+
 .page-content {
 	@include page-content;
 	background-color:$page-background-color;
@@ -186,14 +201,18 @@
 
 	.page-content {
 		.my-jobs {
-			width:auto;
-			margin:-20px;
+			width:100%;
+
 
 			.page-header {
-				padding:10px 10px;
+				padding:10px 0;
 
 				select {
 					margin-bottom:0;
+					padding-left: 0;
+				}
+				button {
+					margin-right: 0;
 				}
 			}
 
@@ -218,9 +237,12 @@
 								span {
 									line-height:1;
 								}
+								&.created {
+									width: 100%;
+								}
 								&.title {
 									width:100%;
-									margin:10px 0 15px;
+									margin:10px 0 10px;
 
 									span {
 										&.job-title {
@@ -247,13 +269,18 @@
 								}
 
 								.engagement {
-									margin-bottom:15px;
-									display:inline-block;
 
+									display:none;
+								}
+
+								.mobile-engagement {
+
+									display:inline-block;
+									margin-bottom: 10px;
 									span {
 										&.view-count{
 											display:inline-block;
-											margin-right:15px;
+											margin-right:10px;
 										}
 
 										&.applied-link {
@@ -262,11 +289,7 @@
 									}
 								}
 
-								&.mobile-label {
-									.mobile-engagement {
-										display:inline-block;
-									}
-								}
+
 
 								&.actions {
 									.action-icon {

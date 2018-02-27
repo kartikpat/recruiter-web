@@ -11,6 +11,7 @@ function Job(){
 		settings.jobTitle = $("#jobTitle");
 		settings.jobLocation = $("#jobLocation");
 		settings.jobSeparator = $("#jobSeparator");
+		settings.locSeperator = $("#locSeperator");
 		settings.jobExperience = $("#jobExperience");
 		settings.jobEditButton = $("#jobEditButton");
 		settings.jobPremiumButton = $("#jobPremiumButton");
@@ -28,6 +29,8 @@ function Job(){
 		settings.jobUnpublishModal = $(".unpublishModal")
 		settings.jobRefreshModal = $(".refreshModal")
 		settings.jobPremiumModal = $(".premiumModal");
+		settings.loaderOverlay = $("#loaderOverlay");
+
 		onClickCreateCalendar();
 		onClickJobOtherActions()
 		onClickJobRefresh();
@@ -37,15 +40,24 @@ function Job(){
 
 	function setJobDetails(data){
 		console.log(data)
-		settings.jobTitle.text(data["jobTitle"]).removeClass("hidden");
-		settings.jobId.text(data["jobPublishedId"]).removeClass("hidden");
+		settings.jobTitle.text(data["jobTitle"]).removeClass("shell");
+		settings.jobId.text(data["jobPublishedId"]).removeClass("shell");
 		if(data["jobLocation"]) {
-	        settings.jobLocation.text(data["location"]).removeClass("hidden")
+	        settings.jobLocation.text(data["location"]).removeClass("shell")
 	        settings.jobSeparator.removeClass("hidden")
 	    }
+		else {
+			settings.jobLocation.addClass("hidden")
+		}
         if(data["jobExperience"]) {
-            settings.jobExperience.text(data["experience"]).removeClass("hidden")
+            settings.jobExperience.text(data["experience"]).removeClass("shell")
         }
+		else {
+			settings.jobExperience.addClass("hidden")
+		}
+		if(data["jobLocation"] && data["jobExperience"]) {
+			settings.locSeperator.removeClass("hidden")
+		}
 		var status = data["jobStatus"];
 		var statusArr = ["published", "unpublished"];
 		if(statusArr.indexOf(status) != -1) {
@@ -198,6 +210,29 @@ function Job(){
 		$(".modal").addClass("hidden")
 	}
 
+	function showLoaderOverlay() {
+		settings.loaderOverlay.removeClass("hidden")
+	}
+
+	function hideLoaderOverlay() {
+		settings.loaderOverlay.addClass("hidden")
+	}
+
+	function openModal(type) {
+		if(type == "refresh") {
+			addBodyFixed()
+			settings.jobRefreshModal.removeClass("hidden")
+			return
+		}
+		if(type == "unpublish") {
+			addBodyFixed()
+			settings.jobUnpublishModal.removeClass("hidden")
+			return
+		}
+		addBodyFixed()
+		settings.jobPremiumModal.removeClass("hidden")
+	}
+
 	return {
 		init: init,
 		setConfig: setConfig,
@@ -208,7 +243,9 @@ function Job(){
 		showCalendarMissingError: showCalendarMissingError,
 		onChangeDefaultCalendar: onChangeDefaultCalendar,
 		onClickSubmitPremiumJob: onClickSubmitPremiumJob,
-		closeModal: closeModal
+		closeModal: closeModal,
+		openModal: openModal,
+		showLoaderOverlay: showLoaderOverlay,
+		hideLoaderOverlay: hideLoaderOverlay
 	}
-
 }

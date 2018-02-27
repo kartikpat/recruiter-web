@@ -6,6 +6,7 @@ jQuery(document).ready( function() {
 	jobList.setConfig("availableCredits", profile["availableCredits"]);
 	jobList.setConfig("baseUrlJob", baseUrlJob);
 	jobList.onChangeJobFilters(function(type){
+		jobList.showShell();
 		status = type;
 		fetchJobs(status,recruiterId);
 	})
@@ -13,13 +14,19 @@ jQuery(document).ready( function() {
 	jobList.onClickJobEdit()
 
 	jobList.onClickSubmitUnpublishJob(function(jobId, reason){
+		jobList.closeModal()
+		jobList.showLoaderOverlay()
 		return submitUnpublishJob(recruiterId, jobId, {reasonId: reason});
 	});
 	jobList.onClickSubmitRefreshJob(function(jobId){
+		jobList.closeModal()
+		jobList.showLoaderOverlay()
 		return submitRefreshJob(recruiterId, jobId);
 	})
 
 	jobList.onClickSubmitPremiumJob(function(jobId){
+		jobList.closeModal()
+		jobList.showLoaderOverlay()
 		return submitPremiumJob(recruiterId, jobId);
 	})
 
@@ -45,39 +52,37 @@ jQuery(document).ready( function() {
 
 	}
 	function onSuccessfulUnpublishedJob(topic, data) {
-
-		jobList.closeModal()
+		jobList.hideLoaderOverlay()
 		toastNotify(1, "Job Unpublish Successfully")
 		setTimeout(function(){
 			 location.reload()
-		 }, 1000);
+		 }, 2000);
 	}
 
 	function onFailedUnpublishedJob(topic,data) {
-
-		jobList.closeModal()
+		jobList.openModal("unpublish")
 		errorHandler(data)
 	}
 	function onSuccessfulRefreshJob(topic, data){
-		jobList.closeModal()
+		jobList.hideLoaderOverlay()
 		toastNotify(1, "Job Refreshed Successfully")
 		setTimeout(function(){
 			 location.reload()
-		 }, 1000);
+		 }, 2000);
 	}
 	function onFailedRefreshJob(topic, data){
-		alert(topic);
-		jobList.closeModal()
+		jobList.openModal("refresh")
+		errorHandler(data)
 	}
 	function onSuccessfulPremiumJob(topic, data){
-		jobList.closeModal()
+		jobList.hideLoaderOverlay()
 		toastNotify(1, "Job Made Premium Successfully")
 		setTimeout(function(){
 			 location.reload()
-		 }, 1000);
+		 }, 2000);
 	}
 	function onFailedPremiumJob(topic, data){
-		jobList.closeModal()
+		jobList.openModal("premium")
 		errorHandler(data)
 	}
 

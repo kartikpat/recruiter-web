@@ -9,9 +9,8 @@ var globalParameters = {
 var screenName = "candidate-apply-list";
 jQuery(document).ready( function() {
 
-
     // fetching url parameters
-    var urlParams = fetchURL();
+    var defaultTab = parseInt(getQueryParameter("defaultTab"));
 
     // creating the instance of models
 	var candidates = candidateList();
@@ -49,50 +48,55 @@ jQuery(document).ready( function() {
     filters.addFilterData('language', languageTagsData)
     filters.addFilterData('preferredLocation', prefeLocationTagsData);
     filters.onClickApplyFilterButton(function(name){
+        candidates.showShells(globalParameters.status)
+        candidates.removeCandidate(globalParameters.status)
         filters.setAppliedFilters(name);
         var parameters = filters.getAppliedFilters();
         globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
         parameters.status = globalParameters.status;
-        candidates.emptyCandidateList()
         return fetchJobApplications(jobId, parameters, recruiterId)
     });
     filters.onClickRemoveFilter(function(value,category,type){
+        candidates.showShells(globalParameters.status)
+        candidates.removeCandidate(globalParameters.status)
         filters.removeFilter(value,category,type);
         var parameters = filters.getAppliedFilters();
         globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
         parameters.status = globalParameters.status;
-        candidates.emptyCandidateList()
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
     filters.onClickSearchButton(function(){
+        candidates.showShells(globalParameters.status)
+        candidates.removeCandidate(globalParameters.status)
         var parameters = filters.getAppliedFilters();
         globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
         parameters.status = globalParameters.status;
-        candidates.emptyCandidateList()
         fetchJobApplications(jobId, parameters, recruiterId);
     })
     filters.onSelectSortByOption(function(){
+        candidates.showShells(globalParameters.status)
+        candidates.removeCandidate(globalParameters.status)
         var parameters = filters.getAppliedFilters();
         globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
         parameters.status = globalParameters.status;
-        candidates.emptyCandidateList()
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
     filters.onClickRemoveAllFilters(function(){
+        candidates.showShells(globalParameters.status)
+        candidates.removeCandidate(globalParameters.status)
         var parameters = filters.getAppliedFilters();
         globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
         parameters.status = globalParameters.status;
-        candidates.emptyCandidateList()
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
 
@@ -127,15 +131,16 @@ jQuery(document).ready( function() {
     candidates.onChangeCandidateCheckbox(function(candidateId){
         // alert(candidateId)
     })
-    candidates.createJobApplicationStatsTabs(function(event, ui) {
+    candidates.initializeJqueryTabs(defaultTab, function(event, ui) {
         var status = candidates.activateStatsTab(event, ui)
+        candidates.showShells(status);
+        candidates.removeCandidate(globalParameters.status)
         var parameters = filters.getAppliedFilters();
         globalParameters.status = status;
         globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
         parameters.status = globalParameters.status;
-        candidates.emptyCandidateList()
         fetchJobApplications(jobId, parameters,recruiterId);
     })
     candidates.onClickSendInterviewInvite(function(candidateId, applicationId) {
@@ -149,30 +154,21 @@ jQuery(document).ready( function() {
     candidates.onClickDownloadResume(function(){
         console.log("you can call track event")
     });
-    candidates.onClickSaveCandidate(function(applicationId, newStatus, isNotAction){
-        if(isNotAction) {
-            return toastNotify("3", "Already Saved for later")
-        }
+    candidates.onClickSaveCandidate(function(applicationId, newStatus){
          var parameters = {};
          parameters.oldStatus = globalParameters.status
          parameters.newStatus = newStatus
          parameters.isModalButton = false
          setCandidateAction(recruiterId, jobId, "save" , applicationId, {}, parameters);
      })
-    candidates.onClickShortlistCandidate(function(applicationId, newStatus,isNotAction){
-        if(isNotAction) {
-            return toastNotify("3", "Already Shortlisted")
-        }
+    candidates.onClickShortlistCandidate(function(applicationId, newStatus){
         var parameters = {};
         parameters.oldStatus = globalParameters.status
         parameters.newStatus = newStatus
         parameters.isModalButton = false
         setCandidateAction(recruiterId, jobId, "shortlist" , applicationId, {}, parameters);
     })
-    candidates.onClickRejectCandidate(function(applicationId, newStatus, isNotAction){
-        if(isNotAction) {
-            return toastNotify("3", "Already Rejected")
-        }
+    candidates.onClickRejectCandidate(function(applicationId, newStatus){
         var parameters= {};
         parameters.oldStatus = globalParameters.status
         parameters.newStatus = newStatus
@@ -208,12 +204,18 @@ jQuery(document).ready( function() {
     })
 
     theJob.onClickSubmitUnpublishJob(function(reason){
+        jobList.closeModal()
+		jobList.showLoaderOverlay()
 		return submitUnpublishJob(recruiterId, globalParameters.jobId, {reasonId: reason});
 	});
 	theJob.onClickSubmitRefreshJob(function(){
+        jobList.closeModal()
+		jobList.showLoaderOverlay()
 		return submitRefreshJob(recruiterId, globalParameters.jobId);
 	})
     theJob.onClickSubmitPremiumJob(function(){
+        jobList.closeModal()
+		jobList.showLoaderOverlay()
 		return submitPremiumJob(recruiterId, globalParameters.jobId);
 	})
     theJob.onChangeDefaultCalendar(function(calendarId) {
@@ -287,30 +289,21 @@ jQuery(document).ready( function() {
          fetchRecruiterTags(recruiterId, parameters)
      })
 
+     aCandidate.onClickShortlistCandidate(function(applicationId, newStatus) {
 
-
-     aCandidate.onClickShortlistCandidate(function(applicationId, newStatus, isNotAction) {
-         if(isNotAction) {
-             return toastNotify("3", "Already Shortlisted")
-         }
          var parameters = {}
          parameters.isModal = true
          setCandidateAction(recruiterId, jobId, "shortlist" , applicationId, {}, parameters);
      })
 
-     aCandidate.onClickRejectCandidate(function(applicationId, newStatus, isNotAction) {
-         if(isNotAction) {
-             return toastNotify("3", "Already Rejected")
-         }
+     aCandidate.onClickRejectCandidate(function(applicationId, newStatus) {
+
          var parameters = {}
          parameters.isModal = true
          setCandidateAction(recruiterId, jobId, "reject" , applicationId, {}, parameters);
      })
 
-     aCandidate.onClickSaveCandidate(function(applicationId, newStatus, isNotAction) {
-         if(isNotAction) {
-             return toastNotify("3", "Already Saved")
-         }
+     aCandidate.onClickSaveCandidate(function(applicationId, newStatus) {
          var parameters = {}
          parameters.isModal = true
          setCandidateAction(recruiterId, jobId, "save" , applicationId, {}, parameters);
@@ -344,13 +337,14 @@ jQuery(document).ready( function() {
     function onJobsApplicationsFetchSuccess(topic, data) {
         //Call only on initial load
         if(globalParameters.initialLoad) {
-            candidates.setJobStats(data["stats"]);
+            if(data["stats"]) {
+                candidates.setJobStats(data["stats"]);
+            }
+
             globalParameters.initialLoad = 0;
         }
-        console.log(data)
-
-
         globalParameters.candidateListLength = data["data"].length;
+
         candidates.addToList(data["data"], globalParameters.status);
         filters.showResultsFound(globalParameters.candidateListLength)
         console.log(data)
@@ -367,7 +361,18 @@ jQuery(document).ready( function() {
 
     function onSuccessfulFetchJobDetails(topic, data) {
         globalParameters.jobId = data["jobId"]
-        fetchJobApplications(jobId,globalParameters,recruiterId);
+        var tabValue = [0,1,2,3,4,5]
+        if(tabValue.indexOf(defaultTab) != -1) {
+            globalParameters.status = defaultApplicationStatus[defaultTab];
+            candidates.setDefaultTab(globalParameters.status)
+        }
+        var parameters = {}
+        globalParameters.pageNumber = 1;
+        parameters.pageNumber = globalParameters.pageNumber;
+        parameters.pageContent = globalParameters.pageContent;
+        parameters.status = globalParameters.status;
+        parameters.orderBy = globalParameters.orderBy;
+        fetchJobApplications(jobId,parameters,recruiterId);
         theJob.setJobDetails(data);
     }
 
@@ -397,13 +402,18 @@ jQuery(document).ready( function() {
             if(res.parameters.isModal) {
                 return toastNotify(1, "Shortlisted Successfully")
             }
-            candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, 1)
+
+            fetchJobApplicationCount(recruiterId, jobId)
+            var arr = [];
+            arr.push(res.applicationId)
             if(res.parameters.oldStatus != "") {
-                var arr = [];
-                arr.push(res.applicationId)
                 candidates.candidateActionTransition(arr)
+                if(res.parameters.oldStatus == res.parameters.newStatus) {
+                    return toastNotify(1, "Moved to Reviewed Tab")
+                }
                 return toastNotify(1, "Moved to Shortlisted Tab")
             }
+            candidates.changeButtonText(arr, newStatus)
             return toastNotify(1, "Shortlisted Successfully")
         }
         if(res.action == "reject") {
@@ -411,11 +421,14 @@ jQuery(document).ready( function() {
                 return toastNotify(1, "Rejected Successfully")
             }
 
-            candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, 1)
+            fetchJobApplicationCount(recruiterId, jobId)
             if(res.parameters.oldStatus != "") {
                 var arr = [];
                 arr.push(res.applicationId)
                 candidates.candidateActionTransition(arr)
+                if(res.parameters.oldStatus == res.parameters.newStatus) {
+                    return toastNotify(1, "Moved to Reviewed Tab")
+                }
                 return toastNotify(1, "Moved to Rejected Tab")
             }
             return toastNotify(1, "Rejected Successfully")
@@ -424,11 +437,14 @@ jQuery(document).ready( function() {
             if(res.parameters.isModal) {
                 return toastNotify(1, "Saved Successfully")
             }
-            candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, 1)
+            fetchJobApplicationCount(recruiterId, jobId)
             if(res.parameters.oldStatus != "") {
                 var arr = [];
                 arr.push(res.applicationId)
                 candidates.candidateActionTransition(arr)
+                if(res.parameters.oldStatus == res.parameters.newStatus) {
+                    return toastNotify(1, "Moved to Reviewed Tab")
+                }
                 return toastNotify(1, "Moved to Saved Tab")
             }
             return toastNotify(1, "Saved Successfully")
@@ -464,7 +480,7 @@ jQuery(document).ready( function() {
         if(res.action == "shortlist") {
             candidates.closeModal()
             if(res.parameters.oldStatus != "") {
-                candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, res.applicationId.length)
+
                 candidates.candidateActionTransition(res.applicationId)
                 return toastNotify(1, res.applicationId.length +" candidates have been shortlisted and moved to the shortlisted tab.")
             }
@@ -476,7 +492,7 @@ jQuery(document).ready( function() {
         if(res.action == "reject") {
             candidates.closeModal()
             if(res.parameters.oldStatus != "") {
-                candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, res.applicationId.length)
+
                 candidates.candidateActionTransition(res.applicationId)
                 return toastNotify(1, res.applicationId.length +" candidates have been rejected and moved to the rejected tab.")
             }
@@ -487,7 +503,6 @@ jQuery(document).ready( function() {
         if(res.action == "save") {
             candidates.closeModal()
             if(res.parameters.oldStatus != "") {
-                candidates.updateJobStats(res.parameters.oldStatus, res.parameters.newStatus, res.applicationId.length)
                 candidates.candidateActionTransition(res.applicationId)
                 return toastNotify(1, res.applicationId.length +" candidates have been saved and moved to the saved tab.")
             }
@@ -509,32 +524,38 @@ jQuery(document).ready( function() {
     }
 
     function onSuccessfulUnpublishedJob(topic, data) {
-
-		theJob.closeModal()
-        toastNotify(1, "Job Unpublished Success")
+        theJob.hideLoaderOverlay()
+		toastNotify(1, "Job Unpublish Successfully")
+		setTimeout(function(){
+			 location.reload()
+		 }, 2000);
 	}
 
 	function onFailedUnpublishedJob(topic,data) {
+        theJob.openModal("unpublish")
 		errorHandler(data)
-        theJob.closeModal()
 	}
 	function onSuccessfulRefreshJob(topic, data){
-
-		theJob.closeModal()
-        toastNotify(1, "Job Refreshed Success")
+        theJob.hideLoaderOverlay()
+        toastNotify(1, "Job Refreshed Successfully")
+        setTimeout(function(){
+             location.reload()
+         }, 2000);
 	}
 	function onFailedRefreshJob(topic, data){
+        theJob.openModal("refresh")
 		errorHandler(data)
-        theJob.closeModal()
 	}
 	function onSuccessfulPremiumJob(topic, data){
-
-		theJob.closeModal()
-        toastNotify(1, "Job Premium Success")
+        theJob.hideLoaderOverlay()
+        toastNotify(1, "Job Made Premium Successfully")
+        setTimeout(function(){
+             location.reload()
+         }, 2000);
 	}
 	function onFailedPremiumJob(topic, data){
+        theJob.openModal("premium")
 		errorHandler(data)
-        theJob.closeModal()
 	}
 
     function onSuccessfulCount(topic, data) {

@@ -429,30 +429,34 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/tagged-candidates", function(req,res){
+	app.get("/tagged-candidates/:jobID",isAuthenticated, function(req,res){
 		res.render("tagged-candidates", {
 			title:"Recruiter Web - Tagged Candidates | iimjobs.com",
 			styles:  assetsMapper["tagged-candidates"]["styles"][mode],
 			scripts: assetsMapper["tagged-candidates"]["scripts"][mode],
 			baseUrl: baseUrl,
-			baseDomain: baseDomain
+			baseDomain: baseDomain,
+			jobId: req.params.jobID,
+			profile: req.profile
 		})
 		return
 	});
 
-	app.get("/shortlisted-candidates", function(req,res){
+	app.get("/shortlisted-candidates/:jobID",isAuthenticated, function(req,res){
 		res.render("shortlisted-candidates", {
 			title:"Recruiter Web - Shortlisted Candidates | iimjobs.com",
 			styles:  assetsMapper["shortlisted-candidates"]["styles"][mode],
 			scripts: assetsMapper["shortlisted-candidates"]["scripts"][mode],
 			baseUrl: baseUrl,
-			baseDomain: baseDomain
+			baseDomain: baseDomain,
+			jobId: req.params.jobID,
+			profile: req.profile
 		})
 		return
 	});
 
 	app.get("/candidate-apply-list/:jobID",isAuthenticated, function(req,res){
-		var jobId = req.params.jobId;
+		// var jobId = req.params.jobId;
 		res.render("candidate-apply-list", {
 			title:"Recruiter Web - Candidate Apply List | iimjobs.com",
 			styles:  assetsMapper["candidate-apply-list"]["styles"][mode],
