@@ -56,6 +56,18 @@ jQuery(document).ready( function() {
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
         parameters.status = globalParameters.status;
+
+        var filterFlag = 0;
+        for(var key in parameters) {
+          if(!(key == "orderBy" || key == "pageNumber" || key == "pageContent" || key == "status")) {
+            filterFlag+= 1;
+          } 
+        }
+
+        if(filterFlag > 0) {
+            filters.showAppliedFilters();
+        }
+
         return fetchJobApplications(jobId, parameters, recruiterId)
     });
     filters.onClickRemoveFilter(function(value,category,type){
@@ -337,6 +349,20 @@ jQuery(document).ready( function() {
 
     function onJobsApplicationsFetchSuccess(topic, data) {
         //Call only on initial load
+        if(!globalParameters.initialLoad) {
+            var result =filters.getAppliedFilters();
+            var filterFlag = 0;
+             for(var key in result) {
+                  if(!(key == "orderBy" || key == "pageNumber" || key == "pageContent" || key == "status")) {
+                    filterFlag+= 1;
+                  } 
+                }
+            if(filterFlag > 0) {
+                filters.showAppliedFilters();
+            } else {
+                filters.hideAppliedFilters();
+            }
+        }
         if(globalParameters.initialLoad) {
             if(data["stats"]) {
                 candidates.setJobStats(data["stats"]);
@@ -344,11 +370,11 @@ jQuery(document).ready( function() {
 
             globalParameters.initialLoad = 0;
         }
+
         globalParameters.candidateListLength = data["data"].length;
 
         candidates.addToList(data["data"], globalParameters.status);
-        filters.showResultsFound(globalParameters.candidateListLength)
-        console.log(data)
+        filters.showResultsFound(globalParameters.candidateListLength);
         if(data["pageNumber"] == 1) {
             store.emptyStore(data["data"]);
         }
@@ -604,6 +630,7 @@ jQuery(document).ready( function() {
     		globalParameters.pageNumber = globalParameters.pageNumber + 1;
     		if(globalParameters.pageNumber != 1 && globalParameters.candidateListLength == globalParameters.pageContent) {
                 var parameters = filters.getAppliedFilters();
+                console.log("Filter Parameters | ", parameters);
                 parameters.pageNumber = globalParameters.pageNumber;
                 parameters.pageContent = globalParameters.pageContent;
                 parameters.status = globalParameters.status;

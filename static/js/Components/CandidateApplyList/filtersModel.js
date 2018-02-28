@@ -139,6 +139,7 @@ function Filters(){
 		settings.searchButton = $("#searchButton");
 		settings.filterButton = "";
 		settings.sortButton = "";
+		settings.appliedFilters = $(".active-filters"),
 		settings.appliedFiltersContainer = $(".active-filters .clear-all-filters");
 		settings.resultText = "";
 		settings.clearButtton = $(".clear-all-filters");
@@ -335,7 +336,7 @@ function Filters(){
 		}
 
 		settings.activeFiltersContainer.find(".filter-tag").remove();
-		$("#clear-all").addClass("hidden")
+		settings.appliedFilters.addClass("hidden")
 	}
 
 	function removeFilter(value,category,type) {
@@ -513,8 +514,14 @@ function Filters(){
 		settings.resultFoundText.addClass("hidden")
 	}
 
+	function hideAppliedFilters() {
+		settings.appliedFilters.addClass("hidden");
+	}
 
-
+	function showAppliedFilters() {
+		console.log("re");
+		settings.appliedFilters.removeClass("hidden");
+	}
     return {
     	init: init,
     	addFilterData: addFilterData,
@@ -526,7 +533,9 @@ function Filters(){
     	onClickSearchButton: onClickSearchButton,
 		onSelectSortByOption: onSelectSortByOption,
 		onClickRemoveAllFilters: onClickRemoveAllFilters,
-		showResultsFound: showResultsFound
+		showResultsFound: showResultsFound,
+		hideAppliedFilters:hideAppliedFilters,
+		showAppliedFilters:showAppliedFilters,
     }
 
 
