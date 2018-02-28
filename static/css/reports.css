@@ -2642,8 +2642,11 @@ span.sticker {
         border-collapse: collapse;
         min-width: 1215px; }
       .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row {
-        width: 100%;
-        border-bottom: 1px solid #e8e8e8; }
+        width: 100%; }
+        .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row.shell:not(:last-child) {
+          border-bottom: 1px solid #e8e8e8; }
+        .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row:not(:last-child) {
+          border-bottom: 1px solid #e8e8e8; }
         .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row.head {
           background: #f3fbfb; }
           .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row.head .report-item {
@@ -2651,6 +2654,12 @@ span.sticker {
             border-bottom: 1px solid #e8e8e8;
             font-size: 14px;
             text-align: left; }
+            .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row.head .report-item.job-current-status {
+              min-width: 100px; }
+            .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row.head .report-item.date {
+              min-width: 75px; }
+            .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row.head .report-item.title {
+              min-width: 275px; }
         .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row .report-item {
           font-size: initial;
           font-size: 14px;

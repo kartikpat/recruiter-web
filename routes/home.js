@@ -442,14 +442,13 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/shortlisted-candidates/:jobID",isAuthenticated, function(req,res){
+	app.get("/recruiter/candidates",isAuthenticated, function(req,res){
 		res.render("shortlisted-candidates", {
 			title:"Recruiter Web - Shortlisted Candidates | iimjobs.com",
 			styles:  assetsMapper["shortlisted-candidates"]["styles"][mode],
 			scripts: assetsMapper["shortlisted-candidates"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			jobId: req.params.jobID,
 			profile: req.profile
 		})
 		return

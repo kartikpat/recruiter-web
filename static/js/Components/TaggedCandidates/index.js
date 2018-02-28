@@ -8,6 +8,7 @@ jQuery(document).ready( function() {
     var candidates = candidateList();
 
     var tagId = getQueryParameter("queryTag");
+    
     if(tagId) {
         candidates.setTagId(tagId)
     }

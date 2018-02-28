@@ -12,6 +12,7 @@ jQuery(document).ready( function() {
 
     function onFetchReportsSuccess(topic, data) {
         console.log(data)
+    
         reports.addToList(data);
     }
 

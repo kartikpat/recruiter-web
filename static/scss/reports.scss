@@ -116,17 +116,32 @@
 					.report-row {
 						// display:inline-block;
 						width:100%;
-                        border-bottom: 1px solid #e8e8e8;
+
+                        &.shell {
+                            &:not(:last-child) {
+                                border-bottom: 1px solid #e8e8e8 ;
+                            }
+                        }
+                        &:not(:last-child) {
+                            border-bottom: 1px solid #e8e8e8;
+                        }
 						&.head {
 							background:$premium-section-background;
 
 							.report-item {
-
 								padding:10px;
-
 								border-bottom:1px solid $border-color-base;
 								font-size:$base-font-size;
 								text-align:left;
+                                &.job-current-status {
+                                    min-width: 100px;
+                                }
+                                &.date {
+                                    min-width: 75px;
+                                }
+                                &.title {
+                                    min-width: 275px;
+                                }
 							}
 						}
 
@@ -162,6 +177,9 @@
 								}
 
 							}
+
+                            // .jobCurrentStatus,.jobStatus {
+                            // }
 						}
 					}
 				}

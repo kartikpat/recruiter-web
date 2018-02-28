@@ -903,6 +903,7 @@
 				"static/js/vendor/moment.min.js",
 				"static/js/Services/fetchCandidatesByStatus.js",
 				"static/js/Services/fetchJobs.js",
+				"static/js/Services/fetchJobApplications.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Components/ShortlistedCandidates/model.js",

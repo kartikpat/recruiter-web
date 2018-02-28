@@ -3,6 +3,8 @@ function candidateList() {
     var settings = {};
     var config = {};
 
+
+
     function init() {
         settings.candidateListing= $("#candidateList"),
         settings.filterByStatus= $('#filterByStatus'),
@@ -17,9 +19,10 @@ function candidateList() {
         settings.multipleJobListingClass= '.multipleJobListing',
         settings.multipleJobListingTextClass= '.multipleJobListingText',
         settings.candAppliedJobsClass= '.candAppliedJobs',
-        settings.candidateItemShell= $(".candidateItem.shell")
-
-
+        settings.candidateItemShell= $(".candidateItem.shell"),
+        settings.status= "1,3",
+        settings.jobId= -1,
+        settings.jobTitle = ""
         onToggleJobList();
    }
 
@@ -124,20 +127,26 @@ function candidateList() {
            eduStr+=item.element[0].outerHTML
        })
        item.eduList.html(eduStr)
-       if(aData["tags"].length > 1) {
-           item.candJobList.addClass("hidden")
-           item.multipleJobListingText.text("Applied to "+aData["tags"].length+" jobs")
-           var str = ""
-           $.each(aData["tags"],function(index, aTag) {
-               var item =  $(''+settings.candAppliedJobsClass+'.prototype').clone().removeClass("prototype hidden");;
-               item.text(aTag["name"])
-               str+=item[0].outerHTML
-           })
-           item.multipleCandJobListing.append(str);
-           item.multipleCandJobListContainer.removeClass("hidden");
+       if(aData["applications"]) {
+           if(aData["applications"].length > 1) {
+               item.candJobList.addClass("hidden")
+               item.multipleJobListingText.text("Applied to "+aData["tags"].length+" jobs")
+               var str = ""
+               $.each(aData["applications"],function(index, application) {
+                   console.log(application)
+                   var item =  $(''+settings.candAppliedJobsClass+'.prototype').clone().removeClass("prototype hidden");;
+                   item.text(application["title"])
+                   str+=item[0].outerHTML
+               })
+               item.multipleCandJobListing.append(str);
+               item.multipleCandJobListContainer.removeClass("hidden");
+           }
+           else if(aData["applications"].length == 1) {
+               item.jobTitle.text(aData["applications"][0]["title"])
+           }
        }
        else {
-           item.jobTitle.text(aData["name"])
+            item.jobTitle.text(settings.jobTitle)
        }
        if(aData["pro"]) {
            item.proMember.removeClass("hidden")
@@ -154,11 +163,16 @@ function candidateList() {
 
    function addToList(dataArray){
        var str = '';
+       hideShell()
+
+    console.log(dataArray.length)
+       if(!dataArray.length) {
+           return settings.candidateListing.html("<div class='no-data'>No Applications Found!</div>")
+       }
        dataArray.forEach(function(aData, index){
            var item = createElement(aData);
            str+=item.element[0].outerHTML;
        });
-       hideShell()
        settings.candidateListing.append(str);
    }
 
@@ -169,6 +183,7 @@ function candidateList() {
    function onFilterByStatus(fn) {
        settings.filterByStatus.change(function(){
            var status = $(this).val();
+           settings.status = status;
            return fn(status);
        })
    }
@@ -176,6 +191,8 @@ function candidateList() {
    function onFilterByJob(fn) {
        settings.filterByJob.change(function(){
            var jobId = $(this).val();
+           settings.jobId = jobId;
+           settings.jobTitle = $(this).find("option:selected").text();
            return fn(jobId);
        })
    }
@@ -212,6 +229,12 @@ function candidateList() {
        settings.candidateItemShell.removeClass("hidden")
    }
 
+   function getAppliedFilters() {
+       var parameters = {}
+       parameters.status = settings.status;
+       parameters.jobId = settings.jobId;
+       return parameters;
+   }
 
    return {
        init: init,
@@ -221,7 +244,9 @@ function candidateList() {
        onFilterByStatus: onFilterByStatus,
        onFilterByJob: onFilterByJob,
        populateJobsDropdown: populateJobsDropdown,
-       showCandidateCount: showCandidateCount
+       showCandidateCount: showCandidateCount,
+       getAppliedFilters: getAppliedFilters,
+       showShell: showShell
    }
 
 }
