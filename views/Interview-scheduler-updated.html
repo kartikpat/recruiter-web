@@ -1,0 +1,335 @@
+{{> header }}
+<div class="wrap">
+	<p class="headings"> Create Calender</p>
+	<div class="container">
+			<div class="form">
+				<span class="details">Basic Details</span>
+				<div class="input-name">
+				<span>Name</span> <br>
+				<input type="text" name="FirstName" id="name">
+				</div>
+				<div class="message">
+					<span>Message for F2F Interview</span> <br>
+					<input type="text" id="message">
+				</div>
+				<div class="telephonic">
+					<span>Message for Telephonic Interview</span><br> 
+					<input type="text" id="telephonic">
+				</div>
+
+			</div>
+			
+		<div class="Availability">
+			<div class="heading">Availability</div>
+				<div class="sub_heading">
+				<span>Connect With Google</span>
+				<p>Integrate your Google account,to add your booked interviews on your google calender and check availability to avoid double bookings.</p>
+
+				</div> 
+				<div class="connect">
+				<img src="/static/images/goggle.png">
+				<div class="connecting">connect with Google</div>  
+				</div> 
+		</div>
+	</div>
+	
+	
+	<div class="second-container">
+			<div  class="available-hours"> <!left-->
+			<div class="Days-available">
+				<span id="available-span">Available Hours</span>
+				<p>Select the time during you are available</p>
+			   
+			<div class="table" id="example">
+				
+				<div class="D-avail">
+					<span id="one">DAYS AVAILABLE</span> 
+					<span id="two">START TIME</span>
+					<span id="three">END TIME</span>  
+				</div>
+				
+
+					
+							
+				<div class="day">
+					<div class="section">
+						<div class="check-input">
+							<span id="Check-span">DAYS AVAILABLE</span>
+							<input type="checkbox" id="check-button-mon">
+							<label for="check-button-mon">MON</label>
+						
+						</div>					 
+					  </div>			  
+				</div>
+			
+			
+				<div class="time-section" id="First">
+					<span class="section-one">
+						<span id="Checkin">START TIME</span>
+						<select class="select-dropdown Start-time" id="selectElementId-1" >
+							<div class="dropdown-list">
+							 <option value="0" selected>Select</option>
+								
+							</div>
+						</select>
+					</span>
+					<label>to</label>
+					<span class="section-one">
+						<span id="Checkin">END TIME</span>
+						<select class="select-dropdown End-time" id="selectElementId-2" >
+								<div class="dropdown-list">
+								 <option value="0" selected>Select</option>
+								
+								</div>
+						</select>
+					</span>
+					<span>   <button type="button" id="selectAll">Copy to All</button></span>
+				</div>
+
+				<div class="day">
+						<div class="section">
+							<div class="check-input">
+								<span id="Check-span">DAYS AVAILABLE</span>
+								<input type="checkbox" id="check-button-tues">
+								<label for="check-button-tues">TUES</label>
+							 </div>								
+						</div>
+				
+				</div>
+				<div class="time-section" id="Second">
+						<span class="section-one" >
+								<span id="Checkin">START TIME</span>
+							<select class="select-dropdown  Start-time">
+								<div class="dropdown-list">
+								 <option value="0" selected>Select</option>
+									
+								</div>
+							</select>
+						</span>
+						<label>to</label>
+						<span class="section-one">
+								<span id="Checkin">END TIME</span>
+							<select class="select-dropdown End-time">
+									<div class="dropdown-list">
+									 <option value="0" selected>Select</option>
+									</div>
+							</select>
+						</span>
+				</div>
+				
+				<div class="day">
+						<div class="section">
+							<div class="check-input">
+								<span id="Check-span">DAYS AVAILABLE</span>
+								<input type="checkbox" id="check-button-wed">
+								<label for="check-button-wed">WED</label>
+							 </div>								
+						</div>
+				
+				</div>
+				<div class="time-section" id="third">
+						<span class="section-one">
+								<span id="Checkin">START TIME</span>
+							<select class="select-dropdown  Start-time">
+								<div class="dropdown-list">
+								 <option value="0" selected>Select</option>
+									
+								</div>
+							</select>
+						</span>
+						<label>to</label>
+						<span class="section-one" >
+								<span id="Checkin">END TIME</span>
+							<select class="select-dropdown End-time">
+									<div class="dropdown-list">
+									 <option value="0" selected>Select</option>
+									</div>
+							</select>
+						</span>
+				</div>
+				<div class="day">
+						<div class="section">
+							<div class="check-input">
+							<span id="Check-span">DAYS AVAILABLE</span>	
+							<input type="checkbox" id="check-button-thurs">
+							<label for="check-button-thurs">THURS</label>
+							 </div>								
+						</div>
+				
+				</div>
+				<div class="time-section" id="four">
+						<span class="section-one">
+								<span id="Checkin">START TIME</span>
+							<select class="select-dropdown Start-time">
+								<div class="dropdown-list">
+								 <option value="0" selected>Select</option>
+									
+								</div>
+							</select>
+						</span>
+						<label>to</label>
+						<span class="section-one" >
+								<span id="Checkin">END TIME</span>
+							<select class="select-dropdown End-time">
+									<div class="dropdown-list">
+									 <option value="0" selected>Select</option>
+									</div>
+							</select>
+						</span>
+				</div>
+				<div class="day">
+						<div class="section">
+							<div class="check-input">
+							<span id="Check-span">DAYS AVAILABLE</span>
+							<input type="checkbox" id="check-button-fri">
+							<label for="check-button-fri">FRI</label>
+							 </div>								
+						</div>
+				
+				</div>
+				<div class="time-section" id="five">
+						<span class="section-one">
+								<span id="Checkin">START TIME</span>
+							<select class="select-dropdown  Start-time">
+								<div class="dropdown-list">
+								 <option value="0" selected>Select</option>
+									
+								</div>
+							</select>
+						</span>
+						<label>to</label>
+						<span class="section-one" >
+								<span id="Checkin">END TIME </span>
+							<select class="select-dropdown End-time">
+									<div class="dropdown-list">
+									 <option value="0" selected>Select</option>
+									</div>
+							</select>
+						</span>
+				</div>
+				<div class="day">
+						<div class="section">
+							<div class="check-input">
+								<span id="Check-span">DAYS AVAILABLE</span>
+								<input type="checkbox" id="check-button-sat">
+								<label for="check-button-sat">SAT</label>
+							</div>								
+						</div>
+				
+				</div>
+				<div class="time-section" id="six">
+						<span class="section-one">
+								<span id="Checkin">START TIME</span>
+								<select class="select-dropdown  Start-time">
+									<div class="dropdown-list">
+										<option value="0" selected>Select</option>
+										
+									</div>
+								</select>
+						</span>
+						<label>to</label>
+						<span class="section-one">
+								<span id="Checkin">END TIME</span>
+							<select class="select-dropdown End-time" >
+								<div class="dropdown-list">
+									<option value="0" selected>Select</option>
+								</div>
+							</select>
+						</span>
+
+	
+			</div>
+			
+		</div> 
+	</div>
+			
+			
+			   
+
+			<div class="preview">  <!right-->
+			
+				<p>calender here</p>
+
+				</div>
+
+			<div class="Breaks-available">
+				<span>Breaks Hours</span>
+				<p>Select your break hours. This will be marked as unavailable.</p>
+				<div class="table">
+					<div class="D-avail">
+							<span id="two">START TIME</span>
+							<span id="three">END TIME</span>  
+					</div>
+					<div class="time-section">
+							<span class="section-one">
+								<select class="select-dropdown" id="select">
+									<div class="dropdown-list">
+									<option value="0"selected>Select</option>
+										
+									</div>
+								</select>
+							</span>
+							<label>to</label>
+							<span class="section-one" >
+								<select class="select-dropdown" id="select">
+									<div class="dropdown-list">
+										<option  value="0"	  selected>Select</option>
+									</div>
+								</select>
+							</span>
+					</div>
+		
+
+
+				</div>
+			</div>
+			<div class="start-date">
+				<span>Start date</span>
+				<p>Determines when this schedule starts to produce starts time</p>
+				<div class="section">
+					<div class="radio-input">
+						<input type="radio" id="radio-button-male" name="gender">
+						<label for="radio-button-male">Now:This schedule is valid starting right now</label>
+					</div>
+					<div class="radio-input">
+						<input type="radio" id="radio-button-female" name="gender">
+						<label for="radio-button-female">Starts on date:This schedule starts on this date</label>
+					</div>
+					<img src="/static/images/calender.png">
+					<input type="text" class="input-field"/>
+				</div>
+			</div>
+			
+			<div class="end-date">
+			<span>End date</span>
+			<p>Determines when this schedule stops producing times</p>
+			<div class="section">
+				<div class="radio-input">
+					<input type="radio" id="radio-button-male" name="gender">
+					<label for="radio-button-male">Never ends:This schedule is valid forever</label>
+				</div>
+				<div class="radio-input">
+					<input type="radio" id="radio-button-female" name="gender">
+					<label for="radio-button-female">Ends on date:This schedule ends before midnight on this date</label>
+				</div>
+				<img src="/static/images/calender.png">
+				<input type="text" class="input-field"/>
+
+			</div>
+			</div>	
+
+			
+			</div>
+			
+	</div>
+
+	<div class="bottom-container">
+		<div class="formgroup">
+		   <button type="submit">Create Calender</button>
+		</div>
+	</div>  
+
+
+</div>
+
+{{> footer }}

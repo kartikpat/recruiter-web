@@ -1,0 +1,89 @@
+.fc-unselectable{
+    overflow-y: scroll;
+}
+
+.TimeLines{
+    background-color:white!important;
+    font-family: DroidSans;
+    color:  #149075;
+    font-size: 14px;/* Approximation due to font substitution */
+    font-weight: 400;
+    text-align: center;
+    border-style: solid;
+    border-width: 0.6px;
+    border-color:  #e4e4e4;
+    box-sizing: border-box;
+    padding-top: 10px;
+}
+
+.fc-button{
+    outline: none;
+}
+
+.fc-nonbusiness{
+    background-color: transparent;
+}    
+
+.fc-head-container{
+    background-color: #f3fbfb!important;
+    width: 500px;
+    height: 43px;
+}
+
+.fc-widget-header{
+   width: 97.5%;
+}
+
+a{
+    font-family: DroidSans;
+    color:  #2b2b2b;
+    font-size: 15.03px;/* Approximation due to font substitution */
+    font-weight: 400;
+    line-height: 23.122px;/* Approximation due to font substitution */
+    text-align: center;
+   
+  
+}
+
+.fc-day-grid{
+    height: 892px!important;
+    overflow: hidden;
+}
+
+.fc-day-header{
+    border-style: solid;
+    border-width: 2px;
+    border-color:  #e4e4e4;
+    box-sizing: border-box;
+    height: 43px;
+    background-color:  #f3fbfb;
+}
+
+ /* h2{
+    font-family: DroidSans;
+    color:  #2b2b2b;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: right;
+}*/
+
+/* .fc-toolbar h2 {
+    margin: 0;
+     margin-left: -100px; 
+    margin-left: -130px;
+    margin-top: 7px;
+} */
+
+#calendar{
+    width: 615px;
+    height: 682px;
+}
+
+.fc-bg{
+    display: inherit;
+}
+
+.fc-scroller{
+    overflow-x: hidden;
+    height: 581px!important;
+}

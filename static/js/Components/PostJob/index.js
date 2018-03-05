@@ -12,13 +12,13 @@ $(document).ready(function(){
 		alert("hi")
 	})
 	jobDetails.submitHandler(function(){
-			if(jobDetails.validate()){
-				if(jobId)
-					submitEditJob(recruiterId ,jobId,jobDetails.getData())
-				else
-					submitNewJob(jobDetails.getData(), recruiterId);
-			}
-		})
+		if(jobDetails.validate()){
+			if(jobId)
+				submitEditJob(recruiterId ,jobId,jobDetails.getData())
+			else
+				submitNewJob(jobDetails.getData(), recruiterId);
+		}
+	})
 	if(jobId) {
 		fetchJob(jobId);
 	}

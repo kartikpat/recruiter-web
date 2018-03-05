@@ -1,0 +1,168 @@
+@import "fonts.scss";
+@import 'chat-sidebar';
+
+.page-content{
+    min-height: 100%;
+    padding: 0;
+    overflow: auto;
+    position: relative;
+    padding: 20px;
+    width: 100%;
+    background-color: #f7f7f7;
+.container{
+    background-color: #f7f7f7;
+    height: 900px;
+    width: 80%;
+    float: left;
+    .header-slot{
+        background-color: #f7f7f7;
+        height: 80px;
+        float: left;
+        .tagline{
+            color:  #5d5d5d;
+            font-size: 22px;/* Approximation due to font substitution */
+            font-weight: 400;
+            text-align: left;
+            float: left;
+            margin-top: 30px;
+            margin-left:20px;
+        }
+        .manage-Calendar{
+            border-radius: 4px;
+            border-style: solid;
+            border-width: 1px;
+            border-color:  #8f8a8a;
+            box-sizing: border-box;
+            background-color:  #ffffff;
+            width: 144px;
+            height: 28px;
+            text-align: center;
+           // line-height: 28px;
+            font-size: 0.85em;
+            cursor: pointer;
+            line-height: 28px; 
+            margin-left: 855px;
+            float: left;
+             margin-top: -25px;
+        }
+    }
+    
+    .wrapper{
+        border-style: solid;
+        border-width: 1px;
+        border-color:  #e8e8e8;
+        box-sizing: border-box;
+        background-color:  #ffffff;
+        height: 555px;
+        float: left;
+        width: 100%;
+        .action-wrapper{
+            background-color: #ebe8e8;
+            height: 50px;
+           
+        }
+        .action{
+            width: 950px;
+            height: 16px;
+           
+            .interview-date{
+                color:  #2b2b2b;
+                font-size: 15px;/* Approximation due to font substitution */
+                font-weight: 400;
+                text-align: left;
+                float: left;
+                margin-top: 15px;
+                margin-left: 20px;
+                margin-right: 230px;
+            }
+            .time-slot{
+                color:  #2b2b2b;
+                font-size: 15px;/* Approximation due to font substitution */
+                font-weight: 400;
+                text-align: left;
+                float: left;
+                margin-top: 15px;
+                margin-right: 210px;
+            }
+            .calendar-name{
+                color:  #2b2b2b;
+                font-size: 15px;/* Approximation due to font substitution */
+                font-weight: 400;
+                text-align: left;
+                float: left;
+                margin-top: 15px;
+                //margin-right: 10px;
+            }
+        }
+        .schedule-container{
+            width:100%;
+            display: inline-block;
+            padding: 0%;
+            height: 700px;
+            background-color: white;
+            .schedule{
+                height: 50px;
+                margin-top: 28px;
+                border-bottom: 1px solid #e8e8e8;
+                .date{
+                    color:  #2b2b2b;
+                    font-size: 14px;/* Approximation due to font substitution */
+                    font-weight: 400;
+                    text-align: left;
+                    float: left;
+                    margin-left: 20px;
+                    margin-right: 130px;
+                }
+                .calendar-name{
+                    color:  #149075;
+                    font-size: 16px;/* Approximation due to font substitution */
+                    font-weight: 700;
+                    text-align: left;
+                    float: left;
+                    margin-left: 20px;
+                    margin-right: 130px;
+                    width: 160px;
+                }
+                .slots{
+                    color:  #2b2b2b;
+                    font-size: 14px;/* Approximation due to font substitution */
+                    font-weight: 400;
+                    text-align: left;
+                    float: left;
+                    width: 50px;
+                    margin-left: 20px;
+                    margin-right: 190px;
+                }
+                .edit-schedule{
+                    border-radius: 4px;
+                    border-style: solid;
+                    border-width: 1px;
+                    border-color:  #8f8a8a;
+                    box-sizing: border-box;
+                    background-color:  #ffffff;
+                    width: 68px;
+                    height: 28px;
+                    float: left;
+                    line-height: 28px;
+                    font-size: 0.85em;
+                    cursor: pointer;
+                    line-height: 28px; 
+                    text-align: center;
+                    
+                }
+            }
+        }
+    }
+
+}
+
+.conversations {
+    width: 20%;
+    padding-left: 30px;
+    display: inline-block;
+    vertical-align: top;
+    }
+    .right {
+    float: right;
+    }
+}    
