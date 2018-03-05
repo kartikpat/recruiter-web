@@ -161,12 +161,26 @@
 								}
 							}
 							&.actions {
+								.job-actions-container {
+									min-height: 33px;
+								}
 								.action-icon {
 									display:inline-block;
 									margin:3px;
 									vertical-align: middle;
 									cursor:pointer;
-
+									&.job-cancel {
+										margin-left: 0;
+									}
+									&.job-linkedin {
+										margin-right: 0;
+									}
+									&.job-edit {
+										margin-left: 0;
+										i {
+											padding-left: 0;
+										}
+									}
 									i {
 									    border: 1px solid #e8e8e8;
 									    display: inline-block;
@@ -174,6 +188,7 @@
 									    border-radius: 4px;
 									    text-align: center;
 									    color: #757575;
+
 										&.icon-edit {
 											border: 0;
 											border-radius: 0;
@@ -206,6 +221,13 @@
 			}
 		}
 	}
+}
+
+@media all and (max-width:1024px) {
+	.page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon.job-twitter {
+		margin-left: 0;
+	}
+
 }
 
 @media all and (max-width:768px) {

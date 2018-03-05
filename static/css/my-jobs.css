@@ -377,10 +377,7 @@ body.posf {
   animation: spin 2s linear infinite;
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%); }
+  left: calc(50% - 30px); }
 
 /* Safari */
 @-webkit-keyframes spin {
@@ -1171,7 +1168,7 @@ span.sticker {
       background: #1f8f75;
       border-color: #8f8a8a;
       border-radius: 4px;
-      padding: 8px 25px;
+      padding: 6px 25px;
       font-size: 14px;
       margin: 0 5px;
       color: #FFF;
@@ -1263,11 +1260,21 @@ span.sticker {
                 display: none; }
               .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.status i:hover span.tooltip-message {
                 display: block; }
+          .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .job-actions-container {
+            min-height: 33px; }
           .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon {
             display: inline-block;
             margin: 3px;
             vertical-align: middle;
             cursor: pointer; }
+            .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon.job-cancel {
+              margin-left: 0; }
+            .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon.job-linkedin {
+              margin-right: 0; }
+            .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon.job-edit {
+              margin-left: 0; }
+              .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon.job-edit i {
+                padding-left: 0; }
             .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon i {
               border: 1px solid #e8e8e8;
               display: inline-block;
@@ -1290,6 +1297,10 @@ span.sticker {
           border-bottom: 1px solid #e8e8e8; }
         .page-content .my-jobs .my-jobs-listing .table-container .table-row:last-child .table-row-separator {
           border: 0; }
+
+@media all and (max-width: 1024px) {
+  .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon.job-twitter {
+    margin-left: 0; } }
 
 @media all and (max-width: 768px) {
   .page-content {

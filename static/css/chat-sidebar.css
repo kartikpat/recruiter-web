@@ -349,10 +349,7 @@ body.posf {
   animation: spin 2s linear infinite;
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%); }
+  left: calc(50% - 30px); }
 
 /* Safari */
 @-webkit-keyframes spin {

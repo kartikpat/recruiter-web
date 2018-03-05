@@ -16,9 +16,10 @@ jQuery(document).ready( function() {
     fetchJobs("", recruiterId)
     fetchCandidatesByStatus(parameters, recruiterId)
 
-    candidates.onFilterByStatus(function(status){
+    candidates.onFilterByStatus(function(){
         var obj = candidates.getAppliedFilters();
         var parameters = {}
+        globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
         parameters.status = obj.status
@@ -31,9 +32,10 @@ jQuery(document).ready( function() {
 
     })
 
-    candidates.onFilterByJob(function(jobId){
+    candidates.onFilterByJob(function(){
         var obj = candidates.getAppliedFilters();
         var parameters = {}
+        globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
         parameters.status = obj.status
@@ -49,14 +51,19 @@ jQuery(document).ready( function() {
     function onFetchCandidatesByStatusSuccess(topic,res) {
         debugger
         globalParameters.candidateListLength = res.data.length
-        if(res.obj.status == "1,3" && res.stats) {
-            candidates.showCandidateCount(res.stats.shortlisted + res.stats.save);
+        if(res.stats) {
+            if(res.obj.status == "1,3") {
+                candidates.showCandidateCount(res.stats.shortlisted + res.stats.save);
+            }
+            else if(res.obj.status == "1") {
+                candidates.showCandidateCount(res.stats.shortlisted);
+            }
+            else if(res.obj.status == "3"){
+                candidates.showCandidateCount(res.stats.save);
+            }
         }
-        else if(res.obj.status == "1" && res.stats) {
-            candidates.showCandidateCount(res.stats.shortlisted);
-        }
-        else if(res.obj.status == "3" && res.stats){
-            candidates.showCandidateCount(res.stats.save);
+        else {
+            candidates.showCandidateCount(0)
         }
         candidates.addToList(res.data)
     }

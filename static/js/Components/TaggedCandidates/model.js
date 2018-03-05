@@ -12,7 +12,7 @@ function candidateList() {
         settings.candidateEducationItemClass = '.candEducationItem',
         settings.candTagItemClass= '.candTagItem',
         settings.tagOptionClass= '.tagOption',
-        settings.tagId = null,
+        settings.tagId = -1,
         settings.candidateItemShell= $(".candidateItem.shell")
    }
 
@@ -37,7 +37,13 @@ function candidateList() {
            profList: card.find('.candProfessionalList'),
            isProMember: card.find('.isProMember'),
            isFollowedUp: card.find('.isFollowedUp'),
-           downloadResumeButton: card.find(settings.candidateDownloadResumeButtonClass)
+           downloadResumeButton: card.find(settings.candidateDownloadResumeButtonClass),
+           candJobList: card.find('.jobListing'),
+           multipleCandJobListContainer: card.find('.multipleJobListingContainer'),
+           multipleJobListingText: card.find('.multipleJobListingText'),
+           multipleCandJobListing: card.find('.multipleJobListing'),
+           jobTitle: card.find('.jobTitle'),
+           candidateViewProfileLink: card.find('.candidateViewProfile')
        }
    }
 
@@ -76,7 +82,7 @@ function candidateList() {
        var tagStr = '';
        $.each(aData["tags"],function(index, aTag) {
            var tag =  $(""+settings.candTagItemClass+".prototype").clone().removeClass("prototype hidden");
-           tag.find("a").text(aTag["name"]).attr("href","/tagged-candidates/334895?queryTag="+aTag["id"]+"");
+           tag.find("a").text(aTag["name"]).attr("href","/recruiter/tagged-candidates?queryTag="+aTag["id"]+"");
            tagStr+=tag[0].outerHTML
        })
        item.candTagList.html(tagStr)
@@ -111,6 +117,25 @@ function candidateList() {
            eduStr+=item.element[0].outerHTML
        })
        item.eduList.html(eduStr)
+       if(aData["applications"]) {
+           if(aData["applications"].length > 1) {
+               item.candJobList.addClass("hidden")
+               item.multipleJobListingText.text("Applied to "+aData["applications"].length+" jobs")
+               var str = ""
+               $.each(aData["applications"],function(index, application) {
+                   console.log(application)
+                   var item =  $(''+settings.candAppliedJobsClass+'.prototype').clone().removeClass("prototype hidden");;
+                   item.html(application["title"] + " (<a href='/recruiter/job/"+application["jobID"]+"/applications/"+aData["id"]+"'>View Profile</a>) ")
+                   str+=item[0].outerHTML
+               })
+               item.multipleCandJobListing.append(str);
+               item.multipleCandJobListContainer.removeClass("hidden");
+           }
+           else if(aData["applications"].length == 1) {
+               item.jobTitle.text(aData["applications"][0]["title"])
+               item.candidateViewProfileLink.attr("href", "/recruiter/job/"+aData["applications"][0]["jobID"]+"/applications/"+aData["id"]+"")
+           }
+       }
        if(aData["pro"]) {
            item.proMember.removeClass("hidden")
        }
@@ -121,12 +146,16 @@ function candidateList() {
    }
 
    function addToList(dataArray){
+        hideShell()
+       if(!dataArray.length) {
+           return settings.candidateListing.html("<div class='no-data'>No Applications Found!</div>")
+       }
        var str = '';
        dataArray.forEach(function(aData, index){
            var item = createElement(aData);
            str+=item.element[0].outerHTML;
        });
-       hideShell()
+
        settings.candidateListing.append(str);
    }
 
@@ -136,8 +165,9 @@ function candidateList() {
 
    function onFilterByTag(fn) {
        settings.filterByTagList.change(function(){
-           var status = $(this).val();
-           return fn(status);
+           var tagId = $(this).val();
+           settings.tagId = tagId;
+           return fn(tagId);
        })
    }
 
@@ -157,13 +187,17 @@ function candidateList() {
            str+=item.element[0].outerHTML;
        });
        settings.filterByTagList.append(str);
+
        if(settings.tagId) {
            settings.filterByTagList.val(settings.tagId)
        }
+
    }
 
    function setTagId(tagId) {
+
        settings.tagId = tagId;
+
    }
 
    function hideShell() {
@@ -174,6 +208,12 @@ function candidateList() {
        settings.candidateItemShell.removeClass("hidden")
    }
 
+   function getAppliedFilters() {
+       var parameters = {}
+       parameters.tagId = settings.tagId;
+       return parameters;
+   }
+
    return {
        init: init,
        addToList: addToList,
@@ -181,7 +221,10 @@ function candidateList() {
        emptyCandidateList: emptyCandidateList,
        onFilterByTag: onFilterByTag,
        populateTagsDropdown: populateTagsDropdown,
-       setTagId: setTagId
+       setTagId: setTagId,
+       getAppliedFilters: getAppliedFilters,
+       showShell: showShell,
+       emptyCandidateList: emptyCandidateList
    }
 
 }

@@ -429,14 +429,13 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/tagged-candidates/:jobID",isAuthenticated, function(req,res){
+	app.get("/recruiter/tagged-candidates",isAuthenticated, function(req,res){
 		res.render("tagged-candidates", {
 			title:"Recruiter Web - Tagged Candidates | iimjobs.com",
 			styles:  assetsMapper["tagged-candidates"]["styles"][mode],
 			scripts: assetsMapper["tagged-candidates"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			jobId: req.params.jobID,
 			profile: req.profile
 		})
 		return
@@ -523,6 +522,20 @@ module.exports = function(settings){
 			scripts: assetsMapper["account-verified"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain
+		})
+		return
+	});
+
+	app.get("/recruiter/job/:jobID/applications/:applicationID",isAuthenticated, function(req,res){
+		res.render("candidate-profile", {
+			title:"Recruiter Web - Candidate Profile | iimjobs.com",
+			styles:  assetsMapper["candidate-profile"]["styles"][mode],
+			scripts: assetsMapper["candidate-profile"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			jobId: req.params.jobID,
+			applicationId: req.params.applicationID,
+			profile: req.profile
 		})
 		return
 	});

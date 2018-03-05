@@ -787,7 +787,12 @@
 				"static/js/header.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
-				"static/js/settings.js"
+				"static/js/settings.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js",
+				"static/js/Components/RecruiterProfile/model.js",
+				"static/js/Components/RecruiterProfile/index.js",
+				"static/js/Utilities/toastNotifier.js"
 			],
 			"prod" : [
 				"static/build/js/settings.min.js"
@@ -819,7 +824,7 @@
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/common.js",
 				"static/js/vendor/moment.min.js",
-				"static/js/Services/fetchCandidatesByStatus.js",
+				"static/js/Services/fetchCandidatesByTags.js",
 				"static/js/Services/fetchRecruiterTags.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
@@ -1157,6 +1162,45 @@
 			],
 			"prod" : [
 				"static/build/js/account-created.min.js"
+			]
+		}
+	},
+	"candidate-profile": {
+		"styles": {
+			"debug" : [
+				"static/css/jquery-ui.min.css",
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/utilities.css",
+				"static/css/footer.css",
+				"static/css/header.css",
+				"static/css/candidate-profile.css"
+			],
+			"prod": [
+				"static/build/css/candidate-profile.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/jquery-ui.min.js",
+				"static/js/Utilities/request.js",
+				"static/js/vendor/moment.min.js",
+				"static/js/utilities.js",
+				"static/js/Utilities/toastNotifier.js",
+				"static/js/Utilities/pubsub.js",
+				"static/js/Utilities/common.js",
+				"static/js/Services/setCandidateAction.js",
+				"static/js/Services/fetchCandidateProfile.js",
+				"static/js/Services/fetchRecruiterTags.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js",
+				"static/js/Components/CandidateProfile/model.js",
+				"static/js/Components/CandidateProfile/index.js",
+				"static/js/Services/submitPageVisit.js"
+			],
+			"prod" : [
+				"static/build/js/candidate-profile.min.js"
 			]
 		}
 	}

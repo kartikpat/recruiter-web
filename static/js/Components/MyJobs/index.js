@@ -60,6 +60,7 @@ jQuery(document).ready( function() {
 	}
 
 	function onFailedUnpublishedJob(topic,data) {
+		jobList.hideLoaderOverlay()
 		jobList.openModal("unpublish")
 		errorHandler(data)
 	}
@@ -71,6 +72,7 @@ jQuery(document).ready( function() {
 		 }, 2000);
 	}
 	function onFailedRefreshJob(topic, data){
+		jobList.hideLoaderOverlay()
 		jobList.openModal("refresh")
 		errorHandler(data)
 	}
@@ -82,6 +84,7 @@ jQuery(document).ready( function() {
 		 }, 2000);
 	}
 	function onFailedPremiumJob(topic, data){
+		jobList.hideLoaderOverlay()
 		jobList.openModal("premium")
 		errorHandler(data)
 	}
