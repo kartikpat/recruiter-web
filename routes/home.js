@@ -577,4 +577,18 @@ module.exports = function(settings){
 		return
 	});
 
+	app.get("/booked-slots",isAuthenticated, function(req,res){
+		res.render("booked-slots", {
+			title:"Recruiter Web - Candidate Profile | iimjobs.com",
+			styles:  assetsMapper["booked-slots"]["styles"][mode],
+			scripts: assetsMapper["booked-slots"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			jobId: req.params.jobID,
+			applicationId: req.params.applicationID,
+			profile: req.profile
+		})
+		return
+	});
+
 }
