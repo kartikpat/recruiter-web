@@ -1,6 +1,6 @@
-function submitNewJob(data){
+function submitNewJob(data, recruiterId){
 	console.log(data);
-	postRequest(baseUrl+"/recruiter/"+recruiterID+"/job",{
+	postRequest(baseUrl+"/recruiter/"+recruiterId+"/job",{
 		"Content-Type": "application/json",
 	}, JSON.stringify(data), function(res){
 		if(res.status && res.status =='success'){

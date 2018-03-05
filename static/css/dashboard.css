@@ -399,7 +399,8 @@
 
 /* '' */
 .icon-twitter:before {
-  content: '\e816'; }
+  content: '\e816';
+  color: #1da1f2; }
 
 /* '' */
 .icon-woman:before {
@@ -531,6 +532,79 @@ body.posf {
 
 .center {
   text-align: center; }
+
+.toast-notification-container {
+  position: fixed;
+  bottom: -200px;
+  padding: 10px;
+  background-color: #757575;
+  left: 15px;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -webkit-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -moz-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 1500; }
+  .toast-notification-container.show {
+    bottom: 15px; }
+  .toast-notification-container.error {
+    background-color: #b66666; }
+  .toast-notification-container.success {
+    background-color: #149075; }
+  .toast-notification-container.warning {
+    background-color: #757575; }
+  .toast-notification-container .notification-icon img {
+    height: 20px;
+    width: 20px; }
+  .toast-notification-container .notification-icon, .toast-notification-container .notification-message {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 10px; }
+  .toast-notification-container .notification-message p {
+    color: #FFF;
+    font-family: "Droid Sans", sans-serif;
+    font-size: 14px; }
+
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.7); }
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 8px solid #3498db;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 30px); }
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg); } }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+.no-data {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  min-width: 350px;
+  margin: 0 auto;
+  font-size: 20px;
+  color: #2b2b2b; }
 
 a {
   text-decoration: none; }
@@ -800,7 +874,8 @@ a {
 
 /* '' */
 .icon-twitter:before {
-  content: '\e816'; }
+  content: '\e816';
+  color: #1da1f2; }
 
 /* '' */
 .icon-woman:before {
@@ -1134,6 +1209,10 @@ span.sticker {
         font-size: 13px;
         color: #1a5e98; }
 
+#locationTags .pill-listing li:first-child {
+  padding: 0;
+  border: 0; }
+
 @media all and (max-width: 768px) {
   .tag-container .pill-button .pill-listing ul {
     max-height: 300px; } }
@@ -1257,7 +1336,7 @@ span.sticker {
       background: #1f8f75;
       border-color: #8f8a8a;
       border-radius: 4px;
-      padding: 5px 14px;
+      padding: 6px 25px;
       font-size: 14px;
       margin: 0 5px;
       color: #FFF;
@@ -1401,7 +1480,11 @@ span.sticker {
       padding: 0 10px;
       padding-right: 0px; }
       .page-content .detail-card .profile .icon img {
-        width: 100%; }
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1px solid #e8e8e8; }
     .page-content .detail-card .profile .general {
       padding: 10px;
       width: calc(100% - 90px);
@@ -1471,7 +1554,8 @@ span.sticker {
         padding: 5px 15px;
         border: thin solid #8f8a8a;
         border-radius: 4px;
-        cursor: pointer; }
+        cursor: pointer;
+        color: #2b2b2b; }
     .page-content .detail-card .icon {
       padding-right: 0px; }
       .page-content .detail-card .icon .separater {
@@ -1536,6 +1620,26 @@ span.sticker {
         font-size: 14px; }
       .page-content .feed-row .main-content .stats .value {
         color: #149075; }
+    .page-content .feed-row .main-content .button-action-list {
+      display: inline-block;
+      cursor: pointer;
+      position: relative;
+      width: 0px;
+      padding: 0;
+      border: 0; }
+      .page-content .feed-row .main-content .button-action-list .action-list-items {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 165px;
+        left: 0;
+        margin: 0 -1px;
+        background: #FFF;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e8e8e8;
+        list-style: none;
+        padding: 5px 0;
+        z-index: 5; }
     .page-content .feed-row .main-content .action-panel {
       float: right;
       margin-top: 5px; }
@@ -1612,3 +1716,6 @@ span.sticker {
     margin-right: 0px;
     position: relative;
     left: 1px; } }
+
+.error {
+  position: relative !important; }

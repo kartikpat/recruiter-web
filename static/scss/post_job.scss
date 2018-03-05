@@ -85,7 +85,7 @@
 
                         // line-height: 34px;
                         border: 1px solid $select-border;
-                        
+
                         padding: 12px;
                         .selected-tags-content {
                             display: inline-block;
@@ -127,7 +127,7 @@
                         display: inline-block;
                     }
 
-                    textarea {
+                    textarea,.medium-editor-element {
                         width:100%;
                         max-width:100%;
                         min-height: 150px;
@@ -188,11 +188,10 @@
         @include button($button-color-green);
         &.submit-form {
             margin:0;
-            padding:10px;
             background-color:$button-color-green;
         }
         &.cancel-form {
-            padding:10px;
+            
             color:$link-color;
             box-shadow:none;
             border:0;
@@ -262,9 +261,9 @@
 
                 .field-container {
                     width:100%;
-                    
+
                     .field {
-                     
+
                         input[type=text], select, textarea {
                             padding:12px 20px;
                             font-size:$mobile-base-font-size;
@@ -297,7 +296,7 @@
             h3 {
                 font-size:$mobile-page-section-title-size;
             }
-        }   
+        }
 
         label {
             span {
@@ -340,4 +339,8 @@
         }
     }
 }
-
+.medium-editor-placeholder-relative:after, .medium-editor-placeholder:after{
+    color:$select-color;
+    font-style: normal;
+    white-space: normal;
+}

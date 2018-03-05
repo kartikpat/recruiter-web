@@ -60,6 +60,13 @@
 		chatSidebar: 'chat-sidebar',
 		welcome:'welcome-section',
 		verify:'verify-account',
+<<<<<<< HEAD
+=======
+		modalContent:'modal',
+		candidateApplyListShell:'shells/candidate-apply-list-shell',
+		myJobsShell:'shells/my-jobs-shell',
+		reportsShell: 'shells/reports-shell.html'
+>>>>>>> 07bd20a3e1c7bbb6ba49968f54bb9b0a8f25b6b6
 	});
 	app.set('view engine', 'html');
 	app.set('views', __dirname + '/views');

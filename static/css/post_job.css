@@ -163,7 +163,8 @@
 
 /* '' */
 .icon-twitter:before {
-  content: '\e816'; }
+  content: '\e816';
+  color: #1da1f2; }
 
 /* '' */
 .icon-woman:before {
@@ -497,6 +498,10 @@ span.sticker {
         font-size: 13px;
         color: #1a5e98; }
 
+#locationTags .pill-listing li:first-child {
+  padding: 0;
+  border: 0; }
+
 @media all and (max-width: 768px) {
   .tag-container .pill-button .pill-listing ul {
     max-height: 300px; } }
@@ -634,7 +639,7 @@ span.sticker {
         .job_posting .post_job .post_job_form .field-container .field select.half {
           width: 49%;
           display: inline-block; }
-        .job_posting .post_job .post_job_form .field-container .field textarea {
+        .job_posting .post_job .post_job_form .field-container .field textarea, .job_posting .post_job .post_job_form .field-container .field .medium-editor-element {
           width: 100%;
           max-width: 100%;
           min-height: 150px;
@@ -646,7 +651,7 @@ span.sticker {
           font-size: 14px;
           line-height: 1.5;
           overflow-y: hidden; }
-          .job_posting .post_job .post_job_form .field-container .field textarea:focus {
+          .job_posting .post_job .post_job_form .field-container .field textarea:focus, .job_posting .post_job .post_job_form .field-container .field .medium-editor-element:focus {
             outline: none;
             border-color: #4fa995; }
       .job_posting .post_job .post_job_form .field-container .industry-tags, .job_posting .post_job .post_job_form .field-container .location-tags, .job_posting .post_job .post_job_form .field-container .skill-tags {
@@ -772,7 +777,7 @@ span.sticker {
     background: #1f8f75;
     border-color: #8f8a8a;
     border-radius: 4px;
-    padding: 5px 14px;
+    padding: 6px 25px;
     font-size: 14px;
     margin: 0 5px;
     color: #FFF;
@@ -793,10 +798,8 @@ span.sticker {
         height: 17px; }
     .submit-action-buttons button.submit-form {
       margin: 0;
-      padding: 10px;
       background-color: #1f8f75; }
     .submit-action-buttons button.cancel-form {
-      padding: 10px;
       color: #155d9a;
       box-shadow: none;
       border: 0;
@@ -876,3 +879,8 @@ span.sticker {
         font-size: 14px;
         margin-bottom: 20px;
         color: #5d5d5d; } }
+
+.medium-editor-placeholder-relative:after, .medium-editor-placeholder:after {
+  color: #818181;
+  font-style: normal;
+  white-space: normal; }

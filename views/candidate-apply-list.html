@@ -1,400 +1,197 @@
 {{>header}}
-	
+	<div class="first-fold fold top mass-action-container hidden" id="massActionContainer">
+		<div class="action-buttons">
+			<span class=" button white" id="downloadResumeMass">Download Resume</span>
+			<a href="" id="downloadExcelMass"><span class=" button white">Download Excel</span></a>
+			<span class=" button white" id="massReject">Reject</span>
+			<span class=" button white" id="massShortlist">Shortlist</span>
+			<span class=" button white" id="massSave">Save for Later</span>
+			<span class=" button white" id="massComment">Add Comment</span>
+			<!-- <span class=" button white" id="massTag">Add Tag</span> -->
+		</div>
+		<div class="action-buttons mobile">
+			<span class=" button white" id="massReject">Reject</span>
+			<span class=" button white" id="massShortlist">Shortlist</span>
+			<span class="view-more button white"><i class="icon-down_arrow"></i></span>
+		</div>
+	</div>
+	<div class="second-fold fold hidden mass-action-second">
+		<div class="action-buttons">
+			<span class=" button white" id="massSave">Save for Later</span>
+			<span class=" button white" id="massComment">Add Comment</span>
+			<span class=" button white" id="downloadResumeMass">Download Resume</span>
+			<a href="" id="downloadExcelMass"><span class=" button white">Download Excel</span></a>
+		</div>
+	</div>
+	<div class="toast-notification-container">
+		<div class="toast-notification">
+			<!-- <div class="notification-icon">
+				<img src="/static/images/close-icon.png" />
+			</div> -->
+			<div class="notification-message">
+				<p></p>
+			</div>
+		</div>
+	</div>
 	<div class="page-content">
 		<div class="candidate-apply-listing left">
-			<div class="page-header">
-				<h1 class="job-title left">iimjobs.com - Product Manager</h1>
-				<div class="action-buttons right">
-					<span class="edit button white"><img src="/static/images/edit-icon.svg"></span>
-					<span class="button white">Make Premium</span>
-					<span class="button white unpublish-job">Unpublish</span>
+			<div class="page-header" id="jobDetails">
+				<div class="left">
+					<h1 class="job-title shell" id="jobTitle">iimjobs.com - Product Manager</h1>
+					<p class="job-meta">
+						<span class="job-location shell" id="jobLocation">Delhi</span>
+						<span class="meta-separator hidden" id="jobSeparator">&bull;</span>
+						<span class="job-experience shell" id="jobExperience">0-5 yrs</span>
+						<span class="meta-separator hidden" id="locSeperator">&nbsp;|&nbsp;</span>
+						<span class="job-id shell" id="jobCode"></span>
+					</p>
+				</div>
+				<div class="action-buttons right jsJobActions">
+					<span class="section calendar-options hidden" id="calendarContainer">
+						<select class="select-dropdown" id="calendarSelect">
+						</select>
+						<div class="error-field hidden" id="calendarSelectError"><p>Please select Calendar</p></div>
+					</span>
+					<span class="button white hidden" id="createCalendar">Create Calendar</span>
+					<a href="" class="hidden" id="jobEditButton"><span class="edit button white">Edit Job&nbsp;&nbsp;<img src="/static/images/edit-icon.svg"></span></a>
+					<span class="button white hidden" id="jobPremiumButton">Make Premium</span>
+					<span class="button white unpublish-job hidden" id="jobUnpublishButton">Unpublish</span>
 
-					<span class="multi-options"><img src="/static/images/multi-options.svg"></span>
+					<span class="multi-options inactive button-action-list hidden" id="jobOtherActions"><img src="/static/images/multi-options.svg">
+						<ul class="action-list-items">
+							<li><a href="#" class="hidden" id="jobRefreshButton">Refresh</a></li>
+							<li><a href="#" class="" id="jobPostFacebook">Post On Facebook</a></li>
+							<li><a href="#" class="" id=jobPostTwitter>Post On Twitter</a></li>
+							<li><a href="#" class="" id="jobPostLinkedin">Post On Linkedin</a></li>
+						</ul>
+					</span>
 				</div>
 				<div class="clearfix"></div>
-				<p class="job-meta">
-					<span class="job-location">Delhi</span>
-					<span class="meta-separator">&bull;</span>
-					<span class="job-experience">0-5 yrs</span>
-				</p>
+
 			</div>
 
-			<div class="candidates-area">
+			<div class="candidates-area" id="candidatesArea">
 				<div class="candidates-area-header">
 					<div class="candidates-search">
 						<div class="keyword-search">
-							<input type="text" placeholder="Search candidate" class="candidate-keyword-filter left"><button class="right search-trigger">Search</button>	
+							<input type="text" placeholder="Search candidate" class="candidate-keyword-filter left " id="searchInput"><button class="right search-trigger " id="searchButton" >Search</button>
 						</div>
 						<div class="filter-search">
-							<span class="button white filter-button"><span class="button-label">Filter</span></span>
-							<span class="button white sort-button"><span class="button-label">Sort by: </span><span class="filter-type">Magic Sort</span></span>
+							<span class="button white filter-button" id="filterModalOpenButton"><span class="button-label">Filter</span></span>
+							<span class="action-buttons sortBy">
+								<span class="section sortBy" id="sortBy">
+									<select class="select-dropdown" id="sortBySelect">
+										<option value="1">SortBy: Magic Sort</option>
+										<option value="2">SortBy: Application Date</option>
+									</select>
+								</span>
+							</span>
 						</div>
 					</div>
 					<div class="candidates-search-results">
-						<p class="results-count">
-							<span class="result-number">14</span>
-							<span> results found.</span>
+						<p class="results-count hidden" id="resultFound">
+
 						</p>
 						<div class="active-filters">
-							<div class="filter-tag">
-								<div class="active-filter-label"><span class="icon-label">Delhi</span></div>
-								<div class="remove-active-filter"><span class="close-icon"><i class="icon-close_icon"></i></span></div>
-							</div>
 
-							<div class="filter-tag">
-								<div class="active-filter-label"><span class="icon-label">Mumbai</span></div>
-								<div class="remove-active-filter"><span class="close-icon"><i class="icon-close_icon"></i></span></div>
-							</div>
-
-							<div class="filter-tag">
-								<div class="active-filter-label"><span class="icon-label">Banking and Financial Services</span></div>
-								<div class="remove-active-filter"><span class="close-icon"><i class="icon-close_icon"></i></span></div>
-							</div>
-
-							<div class="filter-tag">
-								<div class="active-filter-label"><span class="icon-label">Delhi</span></div>
-								<div class="remove-active-filter"><span class="close-icon"><i class="icon-close_icon"></i></span></div>
-							</div>
-							
-							<span class="clear-all-filters">
-								<a href="#" id="clear-all">Clear filters</a>
+							<span  class="clear-all-filters ">
+								<span id="clear-all" class="hidden">Clear filters</span>
 							</span>
 						</div>
 					</div>
 				</div>
 
 				<div class="candidates-area-body">
+					<div class="">
+						<div class="selection-bar tabs_scroll_container hidden" id="jobs-tabs">
 
-					<div class="selection-bar">
-						<div class="bulk-selection-item bulk-select">
-							<div class="select-all">
-								<input type="checkbox" id="select-all-candidates">
-								<label for="select-all-candidates"></label>
+							<div id="jobs-category-tabs" class="">
+
+								<ul id="">
+									<li>
+										<div class="bulk-selection-item bulk-select section">
+										<div class="select-all check-input">
+											<input type="checkbox" class="" id="massCheckboxInput">
+											<label for="massCheckboxInput" id="massCheckboxLabel"></label>
+										</div>
+									</div>
+								</li>
+				            		<li data-attribute="">
+										<a href="#all-jobs">
+											<div class="bulk-selection-item all active">
+												<span class="bulk-action-icon"><i class="icon-box"></i></span>
+												<span class="bulk-action-label">All(<span class="tabStats"  id="allNo">0</span>)</span>
+											</div>
+										</a>
+									</li>
+				            		<li data-attribute="0">
+										<a href="#unread-jobs">
+											<div class="bulk-selection-item unread">
+												<span class="bulk-action-icon"><i class="icon-envelope"></i></span>
+												<span class="bulk-action-label ">Unread(<span class="tabStats" id="unreadNo">0</span>)</span>
+											</div>
+										</a>
+									</li>
+				            		<li data-attribute="4,5">
+										<a href="#reviewed-jobs">
+											<div class="bulk-selection-item reviewed">
+												<span class="bulk-action-icon"><i class="icon-document_search_interface_symbol"></i></span>
+												<span class="bulk-action-label ">Reviewed(<span class="tabStats" id="reviewedNo">0</span>)</span>
+											</div>
+										</a>
+									</li>
+									<li data-attribute="1">
+										<a href="#shortlisted-jobs">
+											<div class="bulk-selection-item shortlisted">
+												<span class="bulk-action-icon"><i class="icon-tick"></i></span>
+												<span class="bulk-action-label">Shortlisted(<span class="tabStats" id="shortlistedNo">0</span>)</span>
+											</div>
+										</a>
+									</li>
+									<li data-attribute="2">
+										<a href="#rejected-jobs">
+											<div class="bulk-selection-item rejected">
+												<span class="bulk-action-icon"><i class="icon-denied"></i></span>
+												<span class="bulk-action-label">Rejected(<span class="tabStats" id="rejectedNo">0</span>)</span>
+											</div>
+										</a>
+									</li>
+									<li data-attribute="3">
+										<a href="#saved-jobs">
+											<div class="bulk-selection-item saved">
+												<span class="bulk-action-icon"><i class="icon-download_arrow"></i></span>
+												<span class="bulk-action-label">Saved(<span class="tabStats" id="savedNo">0</span>)</span>
+											</div>
+										</a>
+									</li>
+		            			</ul>
 							</div>
-						</div>
-						<div class="bulk-selection-item all active">
-							<span class="bulk-action-icon"><i class="icon-box"></i></span>
-							<span class="bulk-action-label">All</span>
-						</div>
-						<div class="bulk-selection-item unread">
-							<span class="bulk-action-icon"><i class="icon-envelope"></i></span>
-							<span class="bulk-action-label">Unread</span>
-						</div>
-						<div class="bulk-selection-item reviewed">
-							<span class="bulk-action-icon"><i class="icon-document_search_interface_symbol"></i></span>
-							<span class="bulk-action-label">Reviewed</span>
-						</div>
-						<div class="bulk-selection-item shortlisted">
-							<span class="bulk-action-icon"><i class="icon-tick"></i></span>
-							<span class="bulk-action-label">Shortlisted</span>
-						</div>
-						<div class="bulk-selection-item rejected">
-							<span class="bulk-action-icon"><i class="icon-denied"></i></span>
-							<span class="bulk-action-label">Rejected</span>
-						</div>
-						<div class="bulk-selection-item saved">
-							<span class="bulk-action-icon"><i class="icon-download_arrow"></i></span>
-							<span class="bulk-action-label">Saved</span>
-						</div>
-					</div>
-					
-			<div class="candidates-listing">
-				<div class="candidate-item">
-					<div class="candidate-item-section image">
-						<div class="candidate-image">
-							<div class="candidate-select">
-								<div class="checkbox">
-									<input type="checkbox" id="candidate-1">
-									<label for="candidate-1"></label>
-								</div>
+							<div id="all-jobs" class="candidates-listing candidateListing" data-status-attribute="">
+								{{>candidateApplyListShell}}
+								{{>candidateApplyListShell}}
 							</div>
-							<img src="http://placehold.it/60x60/f5f5f5?text=+">
-							<div class="candidate-status online"></div>
-						</div>
-					</div>
-
-					<div class="candidate-item-section personal-details">
-						<p class="profile-name">Shelly Sharma</p>
-						<p class="experience-label data-label">
-							<span class="bold">Experience: </span>
-							<span class="experience value">2y 3m</span>
-						</p>
-						<p class="location-label data-label">
-							<span class="bold">Location: </span>
-							<span class="location value">Delhi</span>
-						</p>
-						<p class="applied-label data-label">
-							<span class="bold">Applied: </span>
-							<span class="applied value">15-06-2017</span>
-						</p>
-						<p class="notice-period-label data-label">
-							<span class="bold">Notice Period: </span>
-							<span class="notice-period value">1 month</span>
-						</p>
-
-						<p><a href="#" class="cover-letter info-link">Cover letter</a></p>
-						<p><a href="#" class="recommendations info-link">Recommendations</a></p>
-
-						<div class="skill-tag-listing">
-							<span class="skill-tag">Data Analytics</span>
-							<span class="skill-tag">UI/UX</span>
-							<span class="skill-tag">Data Analytics</span>
-							<span class="skill-tag">Product Management</span>
-						</div>
-
-					</div>
-
-					<div class="candidate-item-section professional-information">
-						<div class="datum">
-				            <p class="data name">iimjobs.com</p>
-				            <p class="detail designation">Full Stack Engineer</p>
-				        	<p class="detail tenure">2008-2012</p>
-				        </div>
-				        <div class="datum">
-				            <p class="data name">Mobikasa Inc</p>
-				            <p class="detail designation">UI Developer - Level II</p>
-				        	<p class="detail tenure">2006-2008</p>
-				        </div>
-					</div>
-
-					<div class="candidate-item-section educational-details">
-						<div class="datum">
-				            <p class="data name">Indian Institute of Management, Indore (IIMI)</p>
-				        	<p class="detail tenure">2008-2012</p>
-				            <p class="detail degree">B Tech / BE (Full Time)</p>
-				        </div>
-				        <div class="datum">
-				            <p class="data name">B.Tech</p>
-				        	<p class="detail tenure">2008-2012</p>
-				            <p class="detail degree">B Tech / BE (Full Time)</p>
-				        </div>
-					</div>
-
-					<div class="candidate-item-section profile-actions">
-						<div class="candidate-action-area">
-							<button class="button green shortlist left">Shortlist</span></button>
-							<button class="button red reject right">Reject</span></button>
-							<div class="clearfix"></div>
-
-							<div class="candidate-options">
-								<div class="button-action-list inactive">
-									<label class="action-list-label">Other Actions</label>
-									<ul class="action-list-items">
-										<li><a href="#">Send Message</a></li>
-										<li><a href="#">Send Interview Invite</a></li>
-										<li><a href="#">Download Resume</a></li>
-										<li><a href="#">Save for later</a></li>
-										<li><a href="#">Add Comment</a></li>
-										<li><a href="#">Add Tag</a></li>
-									</ul>
-								</div>
+							<div id="unread-jobs" class="candidates-listing candidateListing" data-status-attribute="0">
+								{{>candidateApplyListShell}}
+								{{>candidateApplyListShell}}
 							</div>
-
-							<div class="view-links">
-								<span class="comments"><a href="#">View Comments</a></span>
-								<span class="tags"><a href="#">View Tags</a></span>
+							<div id="reviewed-jobs" class="candidates-listing candidateListing" data-status-attribute="4,5">
+								{{>candidateApplyListShell}}
+								{{>candidateApplyListShell}}
+							</div>
+							<div id="shortlisted-jobs" class="candidates-listing candidateListing" data-status-attribute="1">
+								{{>candidateApplyListShell}}
+								{{>candidateApplyListShell}}
+							</div>
+							<div id="rejected-jobs" class="candidates-listing candidateListing" data-status-attribute="2">
+								{{>candidateApplyListShell}}
+								{{>candidateApplyListShell}}
+							</div>
+							<div id="saved-jobs" class="candidates-listing candidateListing" data-status-attribute="3">
+								{{>candidateApplyListShell}}
+								{{>candidateApplyListShell}}
 							</div>
 						</div>
 					</div>
-					<div class="separator"></div>
-				</div>
-				<div class="candidate-item">
-					<div class="candidate-item-section image">
-						<div class="candidate-image">
-							<div class="candidate-select">
-								<div class="checkbox">
-									<input type="checkbox" id="candidate-2">
-									<label for="candidate-2"></label>
-								</div>
-							</div>
-							<img src="http://placehold.it/60x60/f5f5f5?text=+">
-							<div class="candidate-status online"></div>
-						</div>
-					</div>
-
-					<div class="candidate-item-section personal-details">
-						<p class="profile-name">Shelly Sharma</p>
-						<p class="experience-label data-label">
-							<span class="bold">Experience: </span>
-							<span class="experience value">2y 3m</span>
-						</p>
-						<p class="location-label data-label">
-							<span class="bold">Location: </span>
-							<span class="location value">Delhi</span>
-						</p>
-						<p class="applied-label data-label">
-							<span class="bold">Applied: </span>
-							<span class="applied value">15-06-2017</span>
-						</p>
-						<p class="notice-period-label data-label">
-							<span class="bold">Notice Period: </span>
-							<span class="notice-period value">1 month</span>
-						</p>
-
-						<p><a href="#" class="cover-letter info-link">Cover letter</a></p>
-						<p><a href="#" class="recommendations info-link">Recommendations</a></p>
-
-						<div class="skill-tag-listing">
-							<span class="skill-tag">Product Management</span>
-							<span class="skill-tag">Data Analytics</span>
-						</div>
-
-					</div>
-
-					<div class="candidate-item-section professional-information">
-						<div class="datum">
-				            <p class="data name">iimjobs.com</p>
-				            <p class="detail designation">Full Stack Engineer</p>
-				        	<p class="detail tenure">2008-2012</p>
-				        </div>
-				        <div class="datum">
-				            <p class="data name">Mobikasa Inc</p>
-				            <p class="detail designation">UI Developer - Level II</p>
-				        	<p class="detail tenure">2006-2008</p>
-				        </div>
-					</div>
-
-					<div class="candidate-item-section educational-details">
-						<div class="datum">
-				            <p class="data name">Indian Institute of Management, Indore (IIMI)</p>
-				        	<p class="detail tenure">2008-2012</p>
-				            <p class="detail degree">B Tech / BE (Full Time)</p>
-				        </div>
-				        <div class="datum">
-				            <p class="data name">B.Tech</p>
-				        	<p class="detail tenure">2008-2012</p>
-				            <p class="detail degree">B Tech / BE (Full Time)</p>
-				        </div>
-					</div>
-
-					<div class="candidate-item-section profile-actions">
-						<div class="candidate-action-area">
-							<button class="button green shortlist left">Shortlist</span></button>
-							<button class="button red reject right">Reject</span></button>
-							<div class="clearfix"></div>
-
-							<div class="candidate-options">
-								<div class="button-action-list inactive">
-									<label class="action-list-label">Other Actions</label>
-									<ul class="action-list-items">
-										<li><a href="#">Send Message</a></li>
-										<li><a href="#">Send Interview Invite</a></li>
-										<li><a href="#">Download Resume</a></li>
-										<li><a href="#">Save for later</a></li>
-										<li><a href="#">Add Comment</a></li>
-										<li><a href="#">Add Tag</a></li>
-									</ul>
-								</div>
-							</div>
-
-							<div class="view-links">
-								<span class="comments"><a href="#">View Comments</a></span>
-								<span class="tags"><a href="#">View Tags</a></span>
-							</div>
-						</div>
-					</div>
-					<div class="separator"></div>
-				</div>
-				<div class="candidate-item">
-					<div class="candidate-item-section image">
-						<div class="candidate-image">
-							<div class="candidate-select">
-								<div class="checkbox">
-									<input type="checkbox" id="candidate-3">
-									<label for="candidate-3"></label>
-								</div>
-							</div>
-							<img src="http://placehold.it/60x60/f5f5f5?text=+">
-							<div class="candidate-status online"></div>
-						</div>
-					</div>
-
-					<div class="candidate-item-section personal-details">
-						<p class="profile-name">Shelly Sharma</p>
-						<p class="experience-label data-label">
-							<span class="bold">Experience: </span>
-							<span class="experience value">2y 3m</span>
-						</p>
-						<p class="location-label data-label">
-							<span class="bold">Location: </span>
-							<span class="location value">Delhi</span>
-						</p>
-						<p class="applied-label data-label">
-							<span class="bold">Applied: </span>
-							<span class="applied value">15-06-2017</span>
-						</p>
-						<p class="notice-period-label data-label">
-							<span class="bold">Notice Period: </span>
-							<span class="notice-period value">1 month</span>
-						</p>
-
-						<p><a href="#" class="cover-letter info-link">Cover letter</a></p>
-						<p><a href="#" class="recommendations info-link">Recommendations</a></p>
-
-						<div class="skill-tag-listing">
-							<span class="skill-tag">Data Analytics</span>
-							<span class="skill-tag">UI/UX</span>
-							<span class="skill-tag">Data Analytics</span>
-							<span class="skill-tag">Product Management</span>
-						</div>
-
-					</div>
-
-					<div class="candidate-item-section professional-information">
-						<div class="datum">
-				            <p class="data name">iimjobs.com</p>
-				            <p class="detail designation">Full Stack Engineer</p>
-				        	<p class="detail tenure">2008-2012</p>
-				        </div>
-				        <div class="datum">
-				            <p class="data name">Mobikasa Inc</p>
-				            <p class="detail designation">UI Developer - Level II</p>
-				        	<p class="detail tenure">2006-2008</p>
-				        </div>
-					</div>
-
-					<div class="candidate-item-section educational-details">
-						<div class="datum">
-				            <p class="data name">Indian Institute of Management, Indore (IIMI)</p>
-				        	<p class="detail tenure">2008-2012</p>
-				            <p class="detail degree">B Tech / BE (Full Time)</p>
-				        </div>
-				        <div class="datum">
-				            <p class="data name">B.Tech</p>
-				        	<p class="detail tenure">2008-2012</p>
-				            <p class="detail degree">B Tech / BE (Full Time)</p>
-				        </div>
-					</div>
-
-					<div class="candidate-item-section profile-actions">
-						<div class="candidate-action-area">
-							<button class="button green shortlist left">Shortlist</span></button>
-							<button class="button red reject right">Reject</span></button>
-							<div class="clearfix"></div>
-
-							<div class="candidate-options">
-								<div class="button-action-list inactive">
-									<label class="action-list-label">Other Actions</label>
-									<ul class="action-list-items">
-										<li><a href="#">Send Message</a></li>
-										<li><a href="#">Send Interview Invite</a></li>
-										<li><a href="#">Download Resume</a></li>
-										<li><a href="#">Save for later</a></li>
-										<li><a href="#">Add Comment</a></li>
-										<li><a href="#">Add Tag</a></li>
-									</ul>
-								</div>
-							</div>
-
-							<div class="view-links">
-								<span class="comments"><a href="#">View Comments</a></span>
-								<span class="tags"><a href="#">View Tags</a></span>
-							</div>
-						</div>
-					</div>
-					<div class="separator"></div>
-				</div>
-			</div>
 				</div>
 			</div>
 		</div>
@@ -403,15 +200,18 @@
 		</div>
 	</div>
 
-<div class="view-resume-modal hidden">
+<div class="view-resume-modal candidateDetailsModal hidden">
+	<div class="close_modal mobile">
+		<span><img src="/static/images/close-icon.png" alt="Close"></span>
+	</div>
     <div class="main-wrapper left">
         <div class="main-container">
             <div class="container resume-header">
                 <div class="profile-image">
-                	<img src="https://www.placehold.it/100x100/f5f5f5?text=+">
+                	<img class="js_img" src="https://www.placehold.it/100x100/f5f5f5?text=+">
                 </div>
                 <div class="profile-information">
-                	<p class="profile-name">Shreya Sharma</p>
+                	<p class="profile-name js_name">Shreya Sharma</p>
 
                 	<div class="social-media-accounts">
                 		<span class="social facebook"><img src="/static/images/facebook-round.svg"></span>
@@ -422,42 +222,31 @@
                 <div class="profile-snapshot">
                 	<div class="snap current-location">
                 		<p class="snap-title">Current Location</p>
-                		<p class="snap-value">Delhi</p>
+                		<p class="snap-value js_loc">Delhi</p>
                 	</div>
                 	<div class="snap preferred-location">
                 		<p class="snap-title">Preferred Location</p>
-                		<p class="snap-value">Delhi</p>
+                		<p class="snap-value js_pref_loc">Delhi</p>
                 	</div>
                 	<div class="snap experience">
                 		<p class="snap-title">Experience</p>
-                		<p class="snap-value">Delhi</p>
+                		<p class="snap-value js_experience">Delhi</p>
                 	</div>
                 	<div class="snap location">
                 		<p class="snap-title">Mobile</p>
-                		<p class="snap-value">9654723723</p>
+                		<p class="snap-value js_contact">9654723723</p>
                 	</div>
                 	<div class="snap location">
                 		<p class="snap-title">Current Salary</p>
-                		<p class="snap-value">18LPA</p>
+                		<p class="snap-value js_sal">18LPA</p>
                 	</div>
                 </div>
 
-                <div class="skills-area">
-                	<div class="tag">
-                		<span class="skill-name">UI Development</span>
-                	</div>
-                	<div class="tag">
-                		<span class="skill-name">JavaScript</span>
-                	</div>
-                	<div class="tag">
-                		<span class="skill-name">UI Development</span>
-                	</div>	
-                	<div class="tag">
-                		<span class="skill-name">A/B Testing</span>
-                	</div>
+                <div class="skills-area js_skills_list">
+
                 </div>
                 <div class="last-login-container">
-                	<p>Last Login: <span class="last-login"> 13 days ago</span></p>
+                	<p>Last Login: <span class="last-login js_last_login"> 13 days ago</span></p>
                 </div>
             </div>
 
@@ -469,46 +258,18 @@
 	            		<li><a href="#view-resume">Resume</a></li>
 	            		<li><a href="#view-cover-letter">Cover Letter</a></li>
 	            	</ul>
-	            	<div id="view-resume">
-	            		
-	            	<!-- <p>Resume comes here. URL for Resume : <br/>
-	            		<a href="http://dfdceb975cf775e45220-2337082ec7eb862d3cd0ed59dd611802.r50.cf1.rackcdn.com/media/profiles/2017/01/24/2017-01-24-22-21-29-72691.pdf" target="_blank">Here</a>
-	            	 </p> -->
-
-
-	            	</div>
-	            	<div id="view-profile-info">
+					<div id="view-profile-info">
 	            		<div class="content-block education">
 	            			<h3 class="content-heading">Educational Qualifications</h3>
-	            			<div class="content">
-	            				<div class="datum">
-	            					<p class="data-name">Indian Institute of Management, Indore (IIMI)</p>
-	            					<p class="data-detail">2012 - 2014</p>
-	            					<p class="data-detail">MBA / PGDM (Full Time)</p>
-	            					<div class="separator"></div>
-	            				</div>
-	            				<div class="datum">
-	            					<p class="data-name">Indian Institute of Management, Indore (IIMI)</p>
-	            					<p class="data-detail">2012 - 2014</p>
-	            					<p class="data-detail">MBA / PGDM (Full Time)</p>
-	            				</div>
+	            			<div class="content js_edu_list">
+
 	            			</div>
 	            		</div>
 
 	            		<div class="content-block organization">
-	            			<h3 class="content-heading">Organization Details</h3>
-	            			<div class="content">
-	            				<div class="datum">
-	            					<p class="data-name">Peele Technologies</p>
-	            					<p class="data-detail">Business Analyst</p>
-	            					<p class="data-detail">Dec 2015 to Present</p>
-	            					<div class="separator"></div>
-	            				</div>
-	            				<div class="datum">
-	            					<p class="data-name">Talencia Software</p>
-	            					<p class="data-detail">Senior Software Engineer (Data Scientist)</p>
-	            					<p class="data-detail">Aug 2013 to Dec 2015</p>
-	            				</div>
+	            			<h3 class="content-heading">Professional Details</h3>
+	            			<div class="content js_prof_list">
+
 	            			</div>
 	            		</div>
 
@@ -519,55 +280,55 @@
 	            					<li>
 	            						<p class="location">
 	            							<span class="key">Location</span>
-	            							<span class="value">Delhi</span>	
+	            							<span class="value js_loc">Delhi</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="applied">
 	            							<span class="key">Applied</span>
-	            							<span class="value">15-06-2017</span>	
+	            							<span class="value js_appliedOn">15-06-2017</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="notice-period">
 	            							<span class="key">Notice Period</span>
-	            							<span class="value">2 months</span>	
+	            							<span class="value js_notice">2 months</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="gender">
 	            							<span class="key">Gender</span>
-	            							<span class="value">Male</span>	
+	            							<span class="value js_gender">Male</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="age">
 	            							<span class="key">Age</span>
-	            							<span class="value">28 years</span>	
+	            							<span class="value js_age">28 years</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="experience">
 	            							<span class="key">Experience</span>
-	            							<span class="value">3y 4m</span>	
+	            							<span class="value js_experience">3y 4m</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="preferred-location">
 	            							<span class="key">Preferred Location</span>
-	            							<span class="value">Bangalore / Chennai</span>	
+	            							<span class="value js_pref_loc">Bangalore / Chennai</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="current-salary">
 	            							<span class="key">Current Salary</span>
-	            							<span class="value">18 LPA</span>	
+	            							<span class="value js_sal">18 LPA</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="expected-salary">
 	            							<span class="key">Expected Salary</span>
-	            							<span class="value">20LPA</span>	
+	            							<span class="value js_expected_sal">20LPA</span>
 	            						</p>
 	            					</li>
 	            				</ul>
@@ -581,68 +342,68 @@
 	            					<li>
 	            						<p class="marital-status">
 	            							<span class="key">Marital Status</span>
-	            							<span class="value">Single</span>	
+	            							<span class="value js_marital_status">Single</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="languages">
 	            							<span class="key">Languages</span>
-	            							<span class="value">English, Hindi, Tamil</span>	
+	            							<span class="value js_languages">English, Hindi, Tamil</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="work-usa">
 	            							<span class="key">Work Permit for USA</span>
-	            							<span class="value">No</span>	
+	            							<span class="value js_work_permit">No</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="cat-percentile">
 	            							<span class="key">CAT Percentile</span>
-	            							<span class="value">N.A</span>	
+	            							<span class="value js_percentile">N.A</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="handled-team">
 	            							<span class="key">Have you handled a team?</span>
-	            							<span class="value">Yes</span>	
+	            							<span class="value js_handled_team">Yes</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="willing-six-days">
 	            							<span class="key">Are you willing to work 6 days?</span>
-	            							<span class="value">No</span>	
+	            							<span class="value js_six_days">No</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="willing-relocate">
 	            							<span class="key">Are you willing to relocate</span>
-	            							<span class="value">No</span>	
+	            							<span class="value js_relocate">No</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="differently-abled">
 	            							<span class="key">Differently Abled?</span>
-	            							<span class="value">No</span>	
+	            							<span class="value js_different_abled">No</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="willing-startup">
 	            							<span class="key">Are you willing to join an early-stage startup?</span>
-	            							<span class="value">Yes</span>	
+	            							<span class="value js_startup">Yes</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="willing-travel">
 	            							<span class="key">Willingness to travel?</span>
-	            							<span class="value">N.A</span>	
+	            							<span class="value js_travel">N.A</span>
 	            						</p>
 	            					</li>
 	            				</ul>
 	            			</div>
 	            		</div>
 
-	            		<div class="content-block recommendations">
+	            		<!-- <div class="content-block recommendations">
 	            			<h3 class="content-heading">Recommendations</h3>
 	            			<div class="content">
 	            				<div class="recommendation-header">
@@ -659,65 +420,102 @@
 	            					<p>Akshay for one and half years while building tiksha.com, Akshay for one and half years while building tiksha.com Akshay for one and half years while building tiksha.com Akshay for one and half years while building tiksha.com</p>
 	            				</div>
 	            			</div>
+	            		</div> -->
+
+
+						<div class="content-block comments mob mobCandidateCommentContainer">
+	            			<h3 class="content-heading">Comment</h3>
+	            			<div class="content">
+								<textarea  placeholder="Add Comment" name="name" class="mobCandidateCommentTextarea"></textarea>
+								<div class="action-buttons">
+									<span class="cand-comment-button button green mobCandidateAddCommentButton">Add</span>
+								</div>
+	            			</div>
+	            		</div>
+
+
+
+						<div class="content-block tags mob mobCandidateTagContainer">
+	            			<h3 class="content-heading">Tags</h3>
+	            			<div class="content">
+								<div class="">
+									<div>
+										<div class="ui-widget">
+											<input  placeholder="Add Tag" class="recruiterTags cand-add-tag input-field mobCandidateTagInput" type="text" name="" value="">
+											<div class="error-field hidden tagInputError" id=""><p>Tag Name can't be empty</p></div>
+										</div>
+										<div class="action-buttons cand-add-tag-action-btn">
+											<span class="button green mobCandidateAddTagButton cand-add-tag-button">Add</span>
+										</div>
+									</div>
+									<div class="skill-tags-area candidateTagList">
+
+									</div>
+								</div>
+
+	            			</div>
 	            		</div>
 
 	            	</div>
-	            	<div id="view-cover-letter">
+	            	<div id="view-resume" class="js_resume">
+
+	            	</div>
+
+	            	<div id="view-cover-letter" class="js_cover_letter">
 	            		<p>Dear Sir/Madam,<br><br/>
-	            			
-I would like to introduce myself as a skilled human resource professional with experience in a wide range of HR functions; I am pleased to present the enclosed resume. You will find my dedication and enthusiastic attitude to be of value to your company as your next HR Gen
-eralist and Strategic Business Partner.<br><br>
 
-My expertise lies in successfully coordinating organizational planning and development through strategic HR initiatives and programs. Throughout my career, I have facilitated staff recruitment, benefits administration, compensation planning, staff and management training programs, and employee relations practices. With complementary skills in process improvement, records      management, and team collaboration, I am confident that I can make an immediate and positive contribution to any organization.<br><br>
+						I would like to introduce myself as a skilled human resource professional with experience in a wide range of HR functions; I am pleased to present the enclosed resume. You will find my dedication and enthusiastic attitude to be of value to your company as your next HR Gen
+						eralist and Strategic Business Partner.<br><br>
 
-The following achievements demonstrate my qualification for this position:<br><br>
+						My expertise lies in successfully coordinating organizational planning and development through strategic HR initiatives and programs. Throughout my career, I have facilitated staff recruitment, benefits administration, compensation planning, staff and management training programs, and employee relations practices. With complementary skills in process improvement, records      management, and team collaboration, I am confident that I can make an immediate and positive contribution to any organization.<br><br>
 
-Performed the full range of HR responsibilities?including exempt and non-exempt talent acquisition, payroll and benefits administration, reporting, performance evaluation, coaching, and employee relations.<br>
-Developed and implemented new strategic HR policies and programs.eenly aware of up-to-date industry best practices and market conditions.
-Established solid partnerships through exceptional relationship-building skills; utilized solid communication and interpersonal abilities to secure employee and management trust.<br>
-Implemented effective policies, programs, and initiatives to optimize organizational productivity and boosted employee morale and improved retention.<br>
-Performed numerous, competing tasks while optimizing workflow and maximizing productivity.<br><br>
+						The following achievements demonstrate my qualification for this position:<br><br>
 
-My proven dedication to optimizing organizational success through my expert knowledge of human resources operations and strategies will contribute immensely to the success of any organization. <br><br>
+						Performed the full range of HR responsibilities?including exempt and non-exempt talent acquisition, payroll and benefits administration, reporting, performance evaluation, coaching, and employee relations.<br>
+						Developed and implemented new strategic HR policies and programs.eenly aware of up-to-date industry best practices and market conditions.
+						Established solid partnerships through exceptional relationship-building skills; utilized solid communication and interpersonal abilities to secure employee and management trust.<br>
+						Implemented effective policies, programs, and initiatives to optimize organizational productivity and boosted employee morale and improved retention.<br>
+						Performed numerous, competing tasks while optimizing workflow and maximizing productivity.<br><br>
 
-It will be a pleasure to offer more insight into my qualifications, and I look forward to meeting with you soon. Thank you for your consideration.<br><br>
+						My proven dedication to optimizing organizational success through my expert knowledge of human resources operations and strategies will contribute immensely to the success of any organization. <br><br>
 
-Sincerely,<br><br>
+						It will be a pleasure to offer more insight into my qualifications, and I look forward to meeting with you soon. Thank you for your consideration.<br><br>
 
-Shreya Sharma</p>
-	            	</div>	
+						Sincerely,<br><br>
+
+						Shreya Sharma</p>
+	            	</div>
             	</div>
-            	
+
             </div>
         </div>
     </div>
-
     <div class="mobile-resume-sidebar">
     	<div class="clearfix"></div>
     	<div class="first-fold fold top">
 			<div class="action-buttons">
-	    		<span class="accept button green">Shortlist</span>
-	    		<span class="reject button red">Reject</span>
+	    		<span class="accept button green candidateShortlistModal">Shortlist</span>
+	    		<span class="reject button red candidateRejectModal">Reject</span>
 
-	    		<span class="view-more button white"><i class="icon-down_arrow"></i></span>
+	    		<!-- <span class="view-more button white"><i class="icon-down_arrow"></i></span> -->
 	    	</div>
     	</div>
-    	<div class="second-fold fold hidden">
+    	<!-- <div class="second-fold fold hidden">
     		<div class="action-buttons">
     			<span class="comment button white">Comment</span>
 	    		<span class="tag button white">Tag</span>
     		</div>
-    	</div>
+    	</div> -->
     </div>
     <div class="resume-sidebar right">
     	<div class=" action-buttons">
-    		<span class="accept button green">Shortlist</span>
-    		<span class="reject button red">Reject</span>
+    		<span class="accept button green candidateShortlistModal">Shortlist</span>
+    		<span class="reject button red candidateRejectModal">Reject</span>
     	</div>
     	<div class="sidebar-section external-links">
     		<ul>
-    			<li class="save"><span class="icon"><i class="icon-star"></i></span>Save for Later</li>
-    			<li class="chat"><span class="icon"><i class="icon-chat_icon"></i></span>Chat with <span class="candidate-first-name">Shreya</span></li>
+    			<li class="save" id="candidateSaveModal"><span class="icon"><i class="icon-star"></i></span>Save for Later</li>
+    			<li class="chat" id="candidateChatModal"><span class="icon"><i class="icon-chat_icon"></i></span>Chat with <span id="firstName" class="candidate-first-name">Shreya</span></li>
     			<li class="invite"><span class="icon"><i class="icon-interview"></i></span>Send Interview Invite</li>
     		</ul>
 
@@ -727,45 +525,298 @@ Shreya Sharma</p>
     		</ul>
     	</div>
 
-    	<div class="sidebar-section comments">
-    		<h3>Comments</h3>
-    		<div class="comment-block">
-    			<div class="content">
-    				<p>Lorem Ipsum is simply dummy text for the 19th century.</p>	
-    			</div>
-    			<div class="clearfix"></div>
-    			<p class="comment-timestamp right">3 minutes ago</p>
-				<div class="clearfix"></div>
+    	<div class="sidebar-section comments candidateCommentContainer">
+    		<h3>Comment</h3>
+    		<div class="">
+				<textarea id="" placeholder="Add Comment" name="name" class="candidateCommentTextarea"></textarea>
     		</div>
-    		<div class="comment-block">
-    			<div class="content">
-    				<p>Lorem Ipsum is simply dummy text for the 19th century.</p>	
-    			</div>
-    			<div class="clearfix"></div>
-    			<p class="comment-timestamp right">3 minutes ago</p>
-				<div class="clearfix"></div>
-    		</div>
+			<div class="action-buttons">
+				<span class="cand-comment-button button green candidateAddCommentButton">Add</span>
+			</div>
     	</div>
 
-    	<div class="sidebar-section tags">
+    	<div class="sidebar-section tags candidateTagContainer">
     		<h3>Tags</h3>
-			<div class="skill-tags-area">
-				<div class="skill-tag">
-					<div class="active-skill-label"><span class="icon-label">UI/UX</span></div>
-					<div class="remove-active-skill"><span class="close-icon"><i class="icon-close_icon"></i></span></div>
+			<div class="">
+				<div class="pill-listingg-container" >
+					<div  class="ui-widget">
+						<input  placeholder="Add Tag" class="recruiterTags cand-add-tag input-field candidateTagInput" type="text" name="" value="">
+						<div class="error-field hidden tagInputError" id=""><p>Input field can't be empty</p></div>
+					</div>
+					<div class="action-buttons cand-add-tag-action-btn">
+						<span class="button green candidateAddTagButton cand-add-tag-button">Add</span>
+					</div>
 				</div>
-
-				<div class="skill-tag">
-					<div class="active-skill-label"><span class="icon-label">Product Management</span></div>
-					<div class="remove-active-skill"><span class="close-icon"><i class="icon-close_icon"></i></span></div>
-				</div>
-
-				<div class="skill-tag">
-					<div class="active-skill-label"><span class="icon-label">Database Analysis</span></div>
-					<div class="remove-active-skill"><span class="close-icon"><i class="icon-close_icon"></i></span></div>
+				<div class="skill-tags-area candidateTagList">
+					<h5>
 				</div>
 			</div>
+
     	</div>
     </div>
 </div>
+
+<!-- <div class="tag js_skill_tag prototype hidden">
+	<span class="skill-name js_skill_name">UI Development</span>
+</div> -->
+
+<div class="candidate-item candidateRow prototype hidden">
+	<div class="candidate-item-section image">
+		<div class="candidate-image">
+			<div class="candidate-select">
+				<div class="checkbox candidateCheckboxContainer">
+					<input class="candidateCheckbox" type="checkbox" id="candidate-3">
+					<label class="candidateCheckboxLabel" for="candidate-3"></label>
+				</div>
+			</div>
+			<img class="js_img" src="http://placehold.it/60x60/f5f5f5?text=+">
+			<div class="candidate-status online"></div>
+		</div>
+		<div class="section">
+			<span class="sticker pro-member isPro hidden">Pro</span>
+		</div>
+	</div>
+
+	<div class="candidate-item-section personal-details">
+		<p class="profile-name js_name">Shelly Sharma</p>
+		<p class="experience-label data-label">
+			<span class="bold">Experience: </span>
+			<span class="experience value js_exp">2y 3m</span>
+		</p>
+		<p class="location-label data-label">
+			<span class="bold">Location: </span>
+			<span class="location value js_loc">Delhi</span>
+		</p>
+		<p class="applied-label data-label">
+			<span class="bold">Applied: </span>
+			<span class="applied value js_appliedOn">15-06-2017</span>
+		</p>
+		<p class="notice-period-label data-label">
+			<span class="bold">Notice Period: </span>
+			<span class="notice-period value js_notice">1 month</span>
+		</p>
+
+		<p><a href="#" class="cover-letter info-link">Cover letter</a></p>
+		<p><a href="#" class="recommendations info-link">Recommendations</a></p>
+
+		<div class="skill-tag-listing ">
+
+		</div>
+
+	</div>
+
+	<div class="candidate-item-section professional-information js_prof_list">
+
+	</div>
+
+	<div class="candidate-item-section educational-details js_edu_list">
+
+	</div>
+
+	<div class="candidate-item-section profile-actions">
+		<div class="candidate-action-area">
+			<div class="jsClickableActions">
+				<button class="button green shortlist left candidateShortlist">Shortlist</span></button>
+				<button class="button red reject right candidateReject">Reject</span></button>
+				<div class="clearfix"></div>
+			</div>
+
+			<div class="candidate-options jsClickableActions">
+				<div class="button-action-list candidateOtherActions inactive">
+					<label class="action-list-label">Other Actions</label>
+					<ul class="action-list-items">
+						<li><a href="#" class="candidateSendMessage">Send Message</a></li>
+						<li><a href="#" class="candidateSendInterviewInvite">Send Interview Invite</a></li>
+						<li><a href="#" download="" class="candidateDownloadResume">Download Resume</a></li>
+						<li><a href="#" class="candidateSave">Save for later</a></li>
+						<li><a href="#" class="candidateAddComment">Add Comment</a></li>
+						<li><a href="#" class="candidateAddTag">Add Tag</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="view-links">
+				<span class="comments"><a href="#" class="viewCommentButton">View Comment</a></span>
+				<span class="tags"><a href="#" class="viewTagButton">View Tags</a></span>
+			</div>
+		</div>
+	</div>
+	<div class="section sticker-container">
+		<span class="sticker followed-up hidden isFollowedUp">Followed up</span>
+	</div>
+	<div class="separator"></div>
+</div>
+
+<span class="skill-tag candidateSkillTag prototype hidden">
+		<div class="active-skill-label"><span class="icon-label">UI/UX</span></div>
+</span>
+
+<div class="skill-tag candidateTag prototype hidden">
+	<div class="active-skill-label tagLabel"><span class="icon-label">UI/UX</span></div>
+	<div class="remove-active-skill tagRemove"><span class="close-icon"><i class="icon-close_icon"></i></span></div>
+</div>
+
+<div class="datum js_prof prototype hidden">
+	<p class="data name js_prof_name">iimjobs.com</p>
+	<p class="detail designation js_prof_designation">Full Stack Engineer</p>
+	<p class="detail tenure js_prof_tenure">2008-2012</p>
+	<div class="separator jsSeperator hidden"></div>
+</div>
+
+<div class="datum js_edu prototype hidden">
+	<p class="data name js_edu_name">Indian Institute of Management, Indore (IIMI)</p>
+	<p class="detail tenure js_edu_tenure">2008-2012</p>
+	<p class="detail degree js_edu_degree">B Tech / BE (Full Time)</p>
+	<div class="separator jsSeperator hidden"></div>
+</div>
+
+<div class="comment-block js_comment prototype hidden">
+	<div class="content">
+		<p class="js_comment">Lorem Ipsum is simply dummy text for the 19th century.</p>
+	</div>
+	<div class="clearfix"></div>
+	<p class="comment-timestamp right js_time">3 minutes ago</p>
+	<div class="clearfix"></div>
+</div>
+
+<option class="calendarOptions prototype hidden" value="">Option 1</option>
+
+<div id="" class="modal unpublishModal hidden">
+
+	<!-- Modal content -->
+	<div class="modal_wrapper" >
+		<span class="modal_close">&times;</span>
+		<div class="modal_header">
+			<div class="modal_heading">Unpublish Job</div>
+		</div>
+		<div class="modal_content">
+			<div class="modal_text">Please choose a reason for unpublishing this job</div>
+			<div class="section">
+				<div class="radio-input">
+					<input type="radio" id="5" name="unpublishReason">
+					<label for="5">This position has been closed via iimjobs.</label>
+				</div>
+				<div class="radio-input">
+					<input type="radio" id="6" name="unpublishReason">
+					<label for="6">This position has been closed via other channel.</label>
+				</div>
+				<div class="radio-input">
+					<input type="radio" id="2" name="unpublishReason">
+					<label for="2">This position has gone on hold.</label>
+				</div>
+				<div class="radio-input">
+					<input type="radio" id="3" name="unpublishReason">
+					<label for="3">I have received enough responses for this position.</label>
+				</div>
+				<div class="hidden error">please select a reason</div>
+			</div>
+
+			<div class="action-buttons"><button class="jobUnpublishButton">Unpublish</button></div>
+		</div>
+
+	</div>
+</div>
+
+<div id="" class="modal refreshModal hidden">
+
+	<!-- Modal content -->
+	<div class="modal_wrapper" >
+		<span class="modal_close">&times;</span>
+		<div class="modal_header">
+			<div class="modal_heading">Refresh Job</div>
+		</div>
+		<div class="modal_content">
+			<div class="modal_text">Are you sure you want to refresh this job?</div>
+			<div class="section modal_text">
+				When you refresh a job, it is moved to the top.
+			</div>
+			<div class="action-buttons"><button class="refreshButton">Refresh</button></div>
+		</div>
+	</div>
+</div>
+
+<div id="" class="modal premiumModal hidden">
+
+	<!-- Modal content -->
+	<div class="modal_wrapper" >
+		<span class="modal_close">&times;</span>
+		<div class="modal_header">
+			<div class="modal_heading">Make Premium.</div>
+		</div>
+		<div class="modal_content">
+			<div class="modal_text js_modalText">You are about to make this job premium.</div>
+			<div class="section modal_text">
+				This job will be highlighted and moved to top of the list for 15 days starting today. You will have credits left.
+			</div>
+			<div class="action-buttons"><button class="premiumButton hidden">Make Premium</button></div>
+		</div>
+	</div>
+</div>
+
+<!-- <div id="" class="modal jsAddTagModal hidden">
+
+
+	<div class="modal_wrapper" >
+		<span class="modal_close">&times;</span>
+		<div class="modal_header">
+			<div class="modal_heading">Add Tag</div>
+		</div>
+		<div class="modal_content">
+			<div class="modal_text jsModalText hidden"></div>
+			<div class="section">
+				<input type="text" name="" value="" class="input-field">
+			</div>
+			<div class="action-buttons"><button class="jsAddTag">Add</button></div>
+		</div>
+	</div>
+</div>
+
+<div id="" class="modal comment-modal jsAddCommentModal hidden">
+
+
+	<div class="modal_wrapper" >
+		<span class="modal_close">&times;</span>
+		<div class="modal_header">
+			<div class="modal_heading">Add Comment.</div>
+		</div>
+		<div class="modal_content">
+			<div class="modal_text jsModalText"></div>
+			<div class="section">
+				<textarea name="name" rows="" cols=""></textarea>
+			</div>
+			<div class="action-buttons"><button class="jsAddComment">Add</button></div>
+		</div>
+	</div>
+</div> -->
+<div id="" class="modal bulkActionModal hidden">
+
+	<div class="modal_wrapper" >
+		<span class="modal_close">&times;</span>
+		<div class="modal_header">
+			<div class="modal_heading modalHeading">Add Comment</div>
+		</div>
+		<div class="modal_content">
+			<div class="modal_text jsModalText"></div>
+			<div class="modal_text jsModalTextSecondary"></div>
+			<div class="section">
+				<textarea class="massTextarea" name="name" rows="" cols="" placeholder="Add a Comment"></textarea>
+				<div class="error-field hidden errorField" id=""><p>Please add a Comment</p></div>
+			</div>
+			<div class="action-buttons"><button class="massActionButton"></button></div>
+		</div>
+	</div>
+</div>
+
+<div class="filter-tag prototype hidden filterPill">
+	<div class="active-filter-label"><span class="icon-label"></span></div>
+	<div class="remove-active-filter"><span class="close-icon"><i class="icon-close_icon"></i></span></div>
+</div>
+
+<p class="fetchTags prototype hidden" data-tag-id="1">Ahmedabad</p>
+
+<div class="loader-overlay hidden" id="loaderOverlay">
+	<div class="loader"></div>
+</div>
+
+{{>modalContent}}
 {{>footer}}

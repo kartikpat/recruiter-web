@@ -6,8 +6,8 @@
             <div class="container">
                 <div class="dashboard">
                     <div class="header-row">
-                        <div class="heading"><img class="salutation-icon" src="/static/images/morning-icon.png">Good Morning, Arun</div>
-                        <div class="sub-heading">It looks busy around here! Good luck for your day ahead. Here is a quick update</div>
+                        <div class="heading"><img class="salutation-icon" src="/static/images/morning-icon.png"></div>
+                        <div class="sub-heading"></div>
                     </div>
                     <div class="block-container" id="dashboardStatsContainer">
                         <div class="block activeJobs">
@@ -44,7 +44,7 @@
             </div>
             <div class="container">
                 <div class="feed-column">
-                    <div class="feed-card">
+                    <div class="feed-card hidden" id="postedJobsContainer">
                         <div class="header-row">
                             <div class="heading">Jobs Posted</div>
                             <div class="heading-button right"><a href="/my-jobs">See All</a><img src="/static/images/right-arrow-icon.png"></div>
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="feed-card" id="recentJobsContainer">
+                    <div class="feed-card hidden" id="recentJobsContainer">
                         <div class="header-row">
                             <div class="heading">Recent Jobs</div>
                             <div class="heading-button right"><a href="/my-jobs">See All</a> <img src="/static/images/right-arrow-icon.png"></div>
@@ -157,10 +157,10 @@
                             </div>
                         </div>  
                     </div>
-                     <div class="feed-card">
+                     <div class="feed-card" id="otherRolesContainer">
                         <div class="header-row">
                             <div class="heading">Hiring for other roles</div>
-                            <div class="heading-button right">See All <img src="/static/images/right-arrow-icon.png"></div>
+                            <div class="heading-button right hidden">See All <img src="/static/images/right-arrow-icon.png"></div>
                         </div>
                         <div class="detail-card ">
                             <div class="feed-row">
@@ -178,19 +178,19 @@
                     </div>
                 </div>
                 <div class="notification-column right">
-                    <div class="notification-card" id="notificationContainer">
+                    <div class="notification-card hidden" id="notificationContainer">
                         <div class="header-row">
                             <div class="heading">Notification</div>
                         </div>
                         <div class="detail-card ">
                         </div>
                     </div>
-                    <div class="notification-card" id="interviewContainer">
+                    <div class="notification-card " id="interviewContainer">
                         <div class="header-row">
                             <div class="heading">Upcoming Interviews</div>
                         </div>
                         <div class="detail-card interview">
-                            <div class="interviewRow hidden">
+                            <div class="interviewRow hidden" style="display:  none">
                                 <div class="profile">
                                     <div class="icon">
                                         <div class="custom-icon">
@@ -271,7 +271,7 @@
 <div class="feed-row prototype hidden jobRow" >
     <div class="main-content">
         <div class="title">
-            <div class="text"></div>
+            <a class="text" href="#"></a>
              <div class="meta-content">
                 <div class="meta-prop location">
                     <div class="icon"><img src="/static/images/location-icon.png"></div>
@@ -297,8 +297,15 @@
                 <div class="label">New</div>
             </div>
         </div>
-        <div class="action-panel">
+        <div class="action-panel multi-options button-action-list inactive">
             <img src="/static/images/settings-icon.png">
+             <ul class="action-list-items">
+                <li><a href="#" class="jobRefresh blockRequest">Refresh</a></li>
+                <li><a href="#" class="jobUnpublish blockRequest">Unpublish</a></li>
+                <li><a href="#" class="jobFacebook">Post On Facebook</a></li>
+                <li><a href="#" class="jobTwitter">Post On Twitter</a></li>
+                <li><a href="#" class="jobLinkedin">Post On Linkedin</a></li>
+            </ul>
         </div>
     </div>
    
@@ -308,7 +315,7 @@
     <div class="profile">
         <div class="icon"><img src="/static/images/dummy-face-icon.png"></div>
         <div class="general">
-            <div class="name">Shally Jain</div>
+            <a class="name" href="#">Shally Jain</a>
             <div class="meta designationOrganization">Product Manager at Blackbuck</div>
             <div class="meta locationExperience">Delhi, 3y 7m</div>
         </div>
@@ -327,7 +334,7 @@
         </div>
     </div>
     <div class="action-buttons">
-        <div class="button">Download Resume</div>
+        <a class="button" href="#" download="sample">Download Resume</a>
     </div>  
     <div class="horizontal-separator"></div>
 </div>
@@ -353,4 +360,58 @@
     <div class="meta designation">Designation</div>
     <div class="meta organization">Company</div>
 </div>
+<div id="" class="modal unpublishModal hidden">
+
+        <!-- Modal content -->
+        <div class="modal_wrapper" >
+            <span class="modal_close">&times;</span>
+            <div class="modal_header">
+                <div class="modal_heading">Unpublish Job</div>
+            </div>
+            <div class="modal_content">
+                <div class="modal_text">Please choose a reason for unpublishing this job</div>
+                <div class="section">
+                    <div class="radio-input">
+                        <input type="radio" id="5" name="unpublishReason">
+                        <label for="5">This position has been closed via iimjobs.</label>
+                    </div>
+                    <div class="radio-input">
+                        <input type="radio" id="6" name="unpublishReason">
+                        <label for="6">This position has been closed via other channel.</label>
+                    </div>
+                    <div class="radio-input">
+                        <input type="radio" id="2" name="unpublishReason">
+                        <label for="2">This position has gone on hold.</label>
+                    </div>
+                    <div class="radio-input">
+                        <input type="radio" id="3" name="unpublishReason">
+                        <label for="3">I have received enough responses for this position.</label>
+                    </div>
+                    <div class="error hidden">please select a reason</div>
+                </div>
+
+
+                <div class="action-buttons"><button class="jobUnpublishButton">Unpublish</button></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="" class="modal refreshModal hidden">
+
+        <!-- Modal content -->
+        <div class="modal_wrapper" >
+            <span class="modal_close">&times;</span>
+            <div class="modal_header">
+                <div class="modal_heading">Refresh Job</div>
+            </div>
+            <div class="modal_content">
+                <div class="modal_text">Are you sure you want to refresh this job?</div>
+                <div class="section modal_text">
+                    When you refresh a job, it is moved to the top.
+                </div>
+                <div class="action-buttons"><button class="jobRefreshButton">Refresh</button></div>
+            </div>
+        </div>
+    </div>
 {{> footer}}

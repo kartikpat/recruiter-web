@@ -323,7 +323,7 @@ label {
 	background:$background;
 	border-color:$button-border-color;
 	border-radius:4px;
-	padding:5px 14px;
+	padding:6px 25px;
 	font-size:$base-font-size;
 	margin:0 5px;
 	color:$color-white;
@@ -349,6 +349,7 @@ label {
 		img {
 			width:17px;
 			height:17px;
+
 		}
 	}
 }
@@ -514,6 +515,9 @@ span {
 					border-bottom:1px solid $border-color-base;
 					cursor:pointer;
 
+
+
+
 					&.selected {
 						background-color:$active-hover-background;
 					}
@@ -544,6 +548,15 @@ span {
 			}
 		}
 	}
+}
+
+#locationTags {
+    .pill-listing {
+        li:first-child {
+            padding: 0;
+            border: 0;
+        }
+    }
 }
 
 @media all and (max-width:768px) {

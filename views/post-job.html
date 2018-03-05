@@ -4,7 +4,7 @@
     <div class="job-form-content">
         <div class="post_job">
             <div class="form-heading">
-              <h1 class="post-job-heading">Post Job <span class="right guideline-modal-trigger title-subtext">Posting Guidelines &gt;</span></h1>
+              <h1 class="post-job-heading">{{action}} <span class="right guideline-modal-trigger title-subtext">Posting Guidelines &gt;</span></h1>
             </div>
             <div class="section-heading basic-details">
                 <h3>Basic Details</h3>
@@ -25,7 +25,7 @@
                    <div class="label">
                        <label for="location">Location*</label>
                    </div>
-                   <div class="tag-container location-tags" data-max-options="5" data-enable-custom="true" id="locationTags" name="Location">
+                   <div class="tag-container location-tags" data-enable-custom="true" id="locationTags" name="Location">
                         <div class="pill-button inactive">
                             <input type="text" id="location" data-placeholder-value="+ Add location" placeholder="+ Add location">
                             <div class="pill-listing">
@@ -405,14 +405,14 @@
                    </div>
 
                    <div class="field">
-                       <textarea data-attribute="mandatory" id="job_description" name="Description" placeholder="Describe the role, talk about the role and responsibilities and help potential applicants understand what makes this a great opportunity."></textarea>
+                       <textarea data-attribute="mandatory" id="job_description" name="Description" class="medium-editor" placeholder="Describe the role, talk about the role and responsibilities and help potential applicants understand what makes this a great opportunity."></textarea>
                        <div id="job_description-label" class="error hidden"></div>
                    </div>
                </div>
 
                <div class="field-container">
                    <div class="label">
-                       <label for="job_description">Video JD</label>
+                       <label for="job_description">Youtube URL for Video JD</label>
                    </div>
 
                    <div class="field">
@@ -540,41 +540,11 @@
                    <div class="field">
 
                        <select class="half left" id="min_salary" name="Sal">
-                            <option value="0">Min salary</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
+                            <option value="">Min salary</option>
                         </select>
 
                        <select class="half right" id="max_salary" name="Sal">
-                            <option value="0">Max salary</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
+                            <option value="">Max salary</option>
                         </select>
 
                        <div class="clearfix"></div>
@@ -708,7 +678,7 @@
                     <div class="label">
                         <label for="tags">Tags</label>
                     </div>
-                    <div class="tag-container skill-tags"  id="jobTags">
+                    <div class="tag-container skill-tags" data-enable-custom="true"  id="jobTags">
                         <div class="pill-button inactive">
                             <input type="text" data-placeholder-value="+ Add job tag" placeholder="+ Add job tag">
                             <div class="pill-listing">
@@ -879,25 +849,24 @@
             </ul>
         </div>
     </div>
-<div class="premium_job_section">
-    <div class="section-head job-visibility">
-        <h3>Job Visibility</h3>
+    <div class="premium_job_section">
+        <div class="section-head job-visibility">
+            <h3>Job Visibility</h3>
+        </div>
+
+        <div class="contents">
+            <input type="checkbox" id="isPremium" name="premium" value="0">
+            <label for="isPremium" class="checkbox premium-job important-info-color font-sm">
+                <span>Make Job Premium.</span>
+            </label>
+            <p class="" id="creditsText"> You have 3 credits left.</p>
+        </div>
     </div>
 
-    <div class="contents">
-        <input type="checkbox" id="isPremium" name="premium" value="0">
-        <label for="isPremium" class="checkbox premium-job important-info-color font-sm">
-            <span>Make Job Premium.</span>
-        </label>
-        <p> You have 3 credits left.</p>
-        <p>Reach out to more candidates in less time by making your job Premium. <a class="link">Know more</a></p>
+    <div class="submit-action-buttons">
+        <button class="button submit-form" id="submitForm">Submit</button>
+        <button class="button cancel-form" id="cancelForm">Cancel</button>
     </div>
-</div>
-
-<div class="submit-action-buttons">
-    <button class="button submit-form">Submit</button>
-    <button class="button cancel-form">Cancel</button>
-</div>
 
 
 </div>

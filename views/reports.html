@@ -1,284 +1,73 @@
 {{>header}}
+
+<div class="toast-notification-container">
+	<div class="toast-notification">
+		<!-- <div class="notification-icon">
+			<img src="/static/images/close-icon.png" />
+		</div> -->
+		<div class="notification-message">
+			<p></p>
+		</div>
+	</div>
+</div>
+
 	<div class="page-content">
 
 		<div class="main-wrapper">
 			<div class="main-container">
 				<div class="heading">
-					<h1 class="title left">Manager Dashboard</h1>
+					<h1 class="title left">Reports</h1>
 					<div class="action-buttons right">
-						<span class="button white">Download Excel</span>
+						<a href=""  id="downloadExcel"><span class="button white">Download Excel</span></a>
 					</div>
 					<div class="clearfix"></div>
 				</div>
 				<div class="reports-wrapper container">
-					<div class="reports-header">
+					<!-- <div class="reports-header">
 						<div class="keyword-search">
-							<input type="text" placeholder="Search candidate" class="candidate-keyword-filter left"><button class="right search-trigger">Search</button>	
+							<input type="text" placeholder="Search candidate" class="candidate-keyword-filter left" id="searchCandidate"><button class="right search-trigger" id="searchCandidateButton">Search</button>
 						</div>
-					</div>
+					</div> -->
 					<div class="reports-body">
-						<table cellspacing="0" cellpadding="0">
+						<table  cellspacing="0" cellpadding="0" id="reportsTable">
 							<tr class="report-row head">
-								<th class="report-item">Date</th>
-								<th class="report-item">Title</th>
+								<th class="report-item date">Date</th>
+								<th class="report-item title">Title</th>
 								<th class="report-item">Applications</th>
 								<th class="report-item">Shortlist</th>
 								<th class="report-item">Reject</th>
 								<th class="report-item">Save</th>
-								<th class="report-item">Resume Viewed</th>
+								<th class="report-item">Reviewed</th>
 								<th class="report-item">Resume Downloaded</th>
 								<th class="report-item">Excel Downloaded</th>
 								<th class="report-item">Recruiter Activity</th>
 								<th class="report-item">Job Status</th>
-								<th class="report-item">Premium Status</th>	
-								<th class="report-item">Job Current Status</th>	
+								<th class="report-item">Premium Status</th>
+								<th class="report-item job-current-status">Job Current Status</th>
 							</tr>
-							<tr class="report-row">
-								<td class="report-item date">5/12/17</td>
+							{{>reportsShell}}
+							{{>reportsShell}}
+							{{>reportsShell}}
+							{{>reportsShell}}
+							{{>reportsShell}}
+							<tr class="report-row reportRow prototype hidden">
+								<td class="report-item date publishedOn">5/12/17</td>
 								<td class="report-item title">
-									<span><a class="job-url job-title href="#">Ace Turtle - General Manager - Business Development (1-3 yrs)</a></span>
-									<span>Posted by: <span class="report-author"><a href="#" class="report-author-link">madhushree-lele</a></span></span>
-									<span>Views: <span class="report-views-count">76078</span></span>
+									<span><a class="job-url job-title jobTitle" href="" target="_blank">Ace Turtle - General Manager - Business Development (1-3 yrs)</a></span>
+									<span>Posted by: <span class="report-author"><a href="#" class="report-author-link postedBy" target="_blank">madhushree-lele</a></span></span>
+									<span>Views: <span class="report-views-count postingViews">76078</span></span>
 								</td>
-								<td class="report-item"><a class="applications" href="#">2729</a></td>
-								<td class="report-item"><a class="shortlist" href="#">527</a></td>
-								<td class="report-item"><a class="reject" href="#">1917</a></td>
-								<td class="report-item"><a class="save" href="#">3</a></td>
-								<td class="report-item"><a class="resume-viewed-count" href="#">110</a></td>
-								<td class="report-item"><a class="resume-downloaded-count" href="#">34</a></td>
-								<td class="report-item">N/<a class="excel-downloaded-count" href="#">A</a></td>
-								<td class="report-item"><a class="recruiter-actions" href="#">2458</a></td>
-								<td class="report-item"><a class="job-status" href="#">Normal</a></td>
-								<td class="report-item"><a class="premium-status" href="#">No</a></td>	
-								<td class="report-item"><a class="job-current-status" href="#">Published</a></td>	
-							</tr>
-							<tr class="report-row">
-								<td class="report-item date">5/12/17</td>
-								<td class="report-item title">
-									<span><a class="job-url job-title href="#">Ace Turtle - General Manager - Business Development (1-3 yrs)</a></span>
-									<span>Posted by: <span class="report-author"><a href="#" class="report-author-link">madhushree-lele</a></span></span>
-									<span>Views: <span class="report-views-count">76078</span></span>
-								</td>
-								<td class="report-item"><a class="applications" href="#">2729</a></td>
-								<td class="report-item"><a class="shortlist" href="#">527</a></td>
-								<td class="report-item"><a class="reject" href="#">1917</a></td>
-								<td class="report-item"><a class="save" href="#">3</a></td>
-								<td class="report-item"><a class="resume-viewed-count" href="#">110</a></td>
-								<td class="report-item"><a class="resume-downloaded-count" href="#">34</a></td>
-								<td class="report-item">N/<a class="excel-downloaded-count" href="#">A</a></td>
-								<td class="report-item"><a class="recruiter-actions" href="#">2458</a></td>
-								<td class="report-item"><a class="job-status" href="#">Normal</a></td>
-								<td class="report-item"><a class="premium-status" href="#">No</a></td>	
-								<td class="report-item"><a class="job-current-status" href="#">Published</a></td>	
-							</tr>
-							<tr class="report-row">
-								<td class="report-item date">5/12/17</td>
-								<td class="report-item title">
-									<span><a class="job-url job-title href="#">Ace Turtle - General Manager - Business Development (1-3 yrs)</a></span>
-									<span>Posted by: <span class="report-author"><a href="#" class="report-author-link">madhushree-lele</a></span></span>
-									<span>Views: <span class="report-views-count">76078</span></span>
-								</td>
-								<td class="report-item"><a class="applications" href="#">2729</a></td>
-								<td class="report-item"><a class="shortlist" href="#">527</a></td>
-								<td class="report-item"><a class="reject" href="#">1917</a></td>
-								<td class="report-item"><a class="save" href="#">3</a></td>
-								<td class="report-item"><a class="resume-viewed-count" href="#">110</a></td>
-								<td class="report-item"><a class="resume-downloaded-count" href="#">34</a></td>
-								<td class="report-item">N/<a class="excel-downloaded-count" href="#">A</a></td>
-								<td class="report-item"><a class="recruiter-actions" href="#">2458</a></td>
-								<td class="report-item"><a class="job-status" href="#">Normal</a></td>
-								<td class="report-item"><a class="premium-status" href="#">No</a></td>	
-								<td class="report-item"><a class="job-current-status" href="#">Published</a></td>	
-							</tr>
-							<tr class="report-row">
-								<td class="report-item date">5/12/17</td>
-								<td class="report-item title">
-									<span><a class="job-url job-title href="#">Ace Turtle - General Manager - Business Development (1-3 yrs)</a></span>
-									<span>Posted by: <span class="report-author"><a href="#" class="report-author-link">madhushree-lele</a></span></span>
-									<span>Views: <span class="report-views-count">76078</span></span>
-								</td>
-								<td class="report-item"><a class="applications" href="#">2729</a></td>
-								<td class="report-item"><a class="shortlist" href="#">527</a></td>
-								<td class="report-item"><a class="reject" href="#">1917</a></td>
-								<td class="report-item"><a class="save" href="#">3</a></td>
-								<td class="report-item"><a class="resume-viewed-count" href="#">110</a></td>
-								<td class="report-item"><a class="resume-downloaded-count" href="#">34</a></td>
-								<td class="report-item">N/<a class="excel-downloaded-count" href="#">A</a></td>
-								<td class="report-item"><a class="recruiter-actions" href="#">2458</a></td>
-								<td class="report-item"><a class="job-status" href="#">Normal</a></td>
-								<td class="report-item"><a class="premium-status" href="#">No</a></td>	
-								<td class="report-item"><a class="job-current-status" href="#">Published</a></td>	
-							</tr>
-							<tr class="report-row">
-								<td class="report-item date">5/12/17</td>
-								<td class="report-item title">
-									<span><a class="job-url job-title href="#">Ace Turtle - General Manager - Business Development (1-3 yrs)</a></span>
-									<span>Posted by: <span class="report-author"><a href="#" class="report-author-link">madhushree-lele</a></span></span>
-									<span>Views: <span class="report-views-count">76078</span></span>
-								</td>
-								<td class="report-item"><a class="applications" href="#">2729</a></td>
-								<td class="report-item"><a class="shortlist" href="#">527</a></td>
-								<td class="report-item"><a class="reject" href="#">1917</a></td>
-								<td class="report-item"><a class="save" href="#">3</a></td>
-								<td class="report-item"><a class="resume-viewed-count" href="#">110</a></td>
-								<td class="report-item"><a class="resume-downloaded-count" href="#">34</a></td>
-								<td class="report-item">N/<a class="excel-downloaded-count" href="#">A</a></td>
-								<td class="report-item"><a class="recruiter-actions" href="#">2458</a></td>
-								<td class="report-item"><a class="job-status" href="#">Normal</a></td>
-								<td class="report-item"><a class="premium-status" href="#">No</a></td>	
-								<td class="report-item"><a class="job-current-status" href="#">Published</a></td>	
-							</tr>
-							<tr class="report-row">
-								<td class="report-item date">5/12/17</td>
-								<td class="report-item title">
-									<span><a class="job-url job-title href="#">Ace Turtle - General Manager - Business Development (1-3 yrs)</a></span>
-									<span>Posted by: <span class="report-author"><a href="#" class="report-author-link">madhushree-lele</a></span></span>
-									<span>Views: <span class="report-views-count">76078</span></span>
-								</td>
-								<td class="report-item"><a class="applications" href="#">2729</a></td>
-								<td class="report-item"><a class="shortlist" href="#">527</a></td>
-								<td class="report-item"><a class="reject" href="#">1917</a></td>
-								<td class="report-item"><a class="save" href="#">3</a></td>
-								<td class="report-item"><a class="resume-viewed-count" href="#">110</a></td>
-								<td class="report-item"><a class="resume-downloaded-count" href="#">34</a></td>
-								<td class="report-item">N/<a class="excel-downloaded-count" href="#">A</a></td>
-								<td class="report-item"><a class="recruiter-actions" href="#">2458</a></td>
-								<td class="report-item"><a class="job-status" href="#">Normal</a></td>
-								<td class="report-item"><a class="premium-status" href="#">No</a></td>	
-								<td class="report-item"><a class="job-current-status" href="#">Published</a></td>	
-							</tr>
-							<tr class="report-row">
-								<td class="report-item date">5/12/17</td>
-								<td class="report-item title">
-									<span><a class="job-url job-title href="#">Ace Turtle - General Manager - Business Development (1-3 yrs)</a></span>
-									<span>Posted by: <span class="report-author"><a href="#" class="report-author-link">madhushree-lele</a></span></span>
-									<span>Views: <span class="report-views-count">76078</span></span>
-								</td>
-								<td class="report-item"><a class="applications" href="#">2729</a></td>
-								<td class="report-item"><a class="shortlist" href="#">527</a></td>
-								<td class="report-item"><a class="reject" href="#">1917</a></td>
-								<td class="report-item"><a class="save" href="#">3</a></td>
-								<td class="report-item"><a class="resume-viewed-count" href="#">110</a></td>
-								<td class="report-item"><a class="resume-downloaded-count" href="#">34</a></td>
-								<td class="report-item">N/<a class="excel-downloaded-count" href="#">A</a></td>
-								<td class="report-item"><a class="recruiter-actions" href="#">2458</a></td>
-								<td class="report-item"><a class="job-status" href="#">Normal</a></td>
-								<td class="report-item"><a class="premium-status" href="#">No</a></td>	
-								<td class="report-item"><a class="job-current-status" href="#">Published</a></td>	
-							</tr>
-							<tr class="report-row">
-								<td class="report-item date">5/12/17</td>
-								<td class="report-item title">
-									<span><a class="job-url job-title href="#">Ace Turtle - General Manager - Business Development (1-3 yrs)</a></span>
-									<span>Posted by: <span class="report-author"><a href="#" class="report-author-link">madhushree-lele</a></span></span>
-									<span>Views: <span class="report-views-count">76078</span></span>
-								</td>
-								<td class="report-item"><a class="applications" href="#">2729</a></td>
-								<td class="report-item"><a class="shortlist" href="#">527</a></td>
-								<td class="report-item"><a class="reject" href="#">1917</a></td>
-								<td class="report-item"><a class="save" href="#">3</a></td>
-								<td class="report-item"><a class="resume-viewed-count" href="#">110</a></td>
-								<td class="report-item"><a class="resume-downloaded-count" href="#">34</a></td>
-								<td class="report-item">N/<a class="excel-downloaded-count" href="#">A</a></td>
-								<td class="report-item"><a class="recruiter-actions" href="#">2458</a></td>
-								<td class="report-item"><a class="job-status" href="#">Normal</a></td>
-								<td class="report-item"><a class="premium-status" href="#">No</a></td>	
-								<td class="report-item"><a class="job-current-status" href="#">Published</a></td>	
-							</tr>
-							<tr class="report-row">
-								<td class="report-item date">5/12/17</td>
-								<td class="report-item title">
-									<span><a class="job-url job-title href="#">Ace Turtle - General Manager - Business Development (1-3 yrs)</a></span>
-									<span>Posted by: <span class="report-author"><a href="#" class="report-author-link">madhushree-lele</a></span></span>
-									<span>Views: <span class="report-views-count">76078</span></span>
-								</td>
-								<td class="report-item"><a class="applications" href="#">2729</a></td>
-								<td class="report-item"><a class="shortlist" href="#">527</a></td>
-								<td class="report-item"><a class="reject" href="#">1917</a></td>
-								<td class="report-item"><a class="save" href="#">3</a></td>
-								<td class="report-item"><a class="resume-viewed-count" href="#">110</a></td>
-								<td class="report-item"><a class="resume-downloaded-count" href="#">34</a></td>
-								<td class="report-item">N/<a class="excel-downloaded-count" href="#">A</a></td>
-								<td class="report-item"><a class="recruiter-actions" href="#">2458</a></td>
-								<td class="report-item"><a class="job-status" href="#">Normal</a></td>
-								<td class="report-item"><a class="premium-status" href="#">No</a></td>	
-								<td class="report-item"><a class="job-current-status" href="#">Published</a></td>	
-							</tr>
-							<tr class="report-row">
-								<td class="report-item date">5/12/17</td>
-								<td class="report-item title">
-									<span><a class="job-url job-title href="#">Ace Turtle - General Manager - Business Development (1-3 yrs)</a></span>
-									<span>Posted by: <span class="report-author"><a href="#" class="report-author-link">madhushree-lele</a></span></span>
-									<span>Views: <span class="report-views-count">76078</span></span>
-								</td>
-								<td class="report-item"><a class="applications" href="#">2729</a></td>
-								<td class="report-item"><a class="shortlist" href="#">527</a></td>
-								<td class="report-item"><a class="reject" href="#">1917</a></td>
-								<td class="report-item"><a class="save" href="#">3</a></td>
-								<td class="report-item"><a class="resume-viewed-count" href="#">110</a></td>
-								<td class="report-item"><a class="resume-downloaded-count" href="#">34</a></td>
-								<td class="report-item">N/<a class="excel-downloaded-count" href="#">A</a></td>
-								<td class="report-item"><a class="recruiter-actions" href="#">2458</a></td>
-								<td class="report-item"><a class="job-status" href="#">Normal</a></td>
-								<td class="report-item"><a class="premium-status" href="#">No</a></td>	
-								<td class="report-item"><a class="job-current-status" href="#">Published</a></td>	
-							</tr>
-							<tr class="report-row">
-								<td class="report-item date">5/12/17</td>
-								<td class="report-item title">
-									<span><a class="job-url job-title href="#">Ace Turtle - General Manager - Business Development (1-3 yrs)</a></span>
-									<span>Posted by: <span class="report-author"><a href="#" class="report-author-link">madhushree-lele</a></span></span>
-									<span>Views: <span class="report-views-count">76078</span></span>
-								</td>
-								<td class="report-item"><a class="applications" href="#">2729</a></td>
-								<td class="report-item"><a class="shortlist" href="#">527</a></td>
-								<td class="report-item"><a class="reject" href="#">1917</a></td>
-								<td class="report-item"><a class="save" href="#">3</a></td>
-								<td class="report-item"><a class="resume-viewed-count" href="#">110</a></td>
-								<td class="report-item"><a class="resume-downloaded-count" href="#">34</a></td>
-								<td class="report-item">N/<a class="excel-downloaded-count" href="#">A</a></td>
-								<td class="report-item"><a class="recruiter-actions" href="#">2458</a></td>
-								<td class="report-item"><a class="job-status" href="#">Normal</a></td>
-								<td class="report-item"><a class="premium-status" href="#">No</a></td>	
-								<td class="report-item"><a class="job-current-status" href="#">Published</a></td>	
-							</tr>
-							<tr class="report-row">
-								<td class="report-item date">5/12/17</td>
-								<td class="report-item title">
-									<span><a class="job-url job-title href="#">Ace Turtle - General Manager - Business Development (1-3 yrs)</a></span>
-									<span>Posted by: <span class="report-author"><a href="#" class="report-author-link">madhushree-lele</a></span></span>
-									<span>Views: <span class="report-views-count">76078</span></span>
-								</td>
-								<td class="report-item"><a class="applications" href="#">2729</a></td>
-								<td class="report-item"><a class="shortlist" href="#">527</a></td>
-								<td class="report-item"><a class="reject" href="#">1917</a></td>
-								<td class="report-item"><a class="save" href="#">3</a></td>
-								<td class="report-item"><a class="resume-viewed-count" href="#">110</a></td>
-								<td class="report-item"><a class="resume-downloaded-count" href="#">34</a></td>
-								<td class="report-item">N/<a class="excel-downloaded-count" href="#">A</a></td>
-								<td class="report-item"><a class="recruiter-actions" href="#">2458</a></td>
-								<td class="report-item"><a class="job-status" href="#">Normal</a></td>
-								<td class="report-item"><a class="premium-status" href="#">No</a></td>	
-								<td class="report-item"><a class="job-current-status" href="#">Published</a></td>	
-							</tr>
-							<tr class="report-row">
-								<td class="report-item date">5/12/17</td>
-								<td class="report-item title">
-									<span><a class="job-url job-title href="#">Ace Turtle - General Manager - Business Development (1-3 yrs)</a></span>
-									<span>Posted by: <span class="report-author"><a href="#" class="report-author-link">madhushree-lele</a></span></span>
-									<span>Views: <span class="report-views-count">76078</span></span>
-								</td>
-								<td class="report-item"><a class="applications" href="#">2729</a></td>
-								<td class="report-item"><a class="shortlist" href="#">527</a></td>
-								<td class="report-item"><a class="reject" href="#">1917</a></td>
-								<td class="report-item"><a class="save" href="#">3</a></td>
-								<td class="report-item"><a class="resume-viewed-count" href="#">110</a></td>
-								<td class="report-item"><a class="resume-downloaded-count" href="#">34</a></td>
-								<td class="report-item">N/<a class="excel-downloaded-count" href="#">A</a></td>
-								<td class="report-item"><a class="recruiter-actions" href="#">2458</a></td>
-								<td class="report-item"><a class="job-status" href="#">Normal</a></td>
-								<td class="report-item"><a class="premium-status" href="#">No</a></td>	
-								<td class="report-item"><a class="job-current-status" href="#">Published</a></td>	
+								<td class="report-item"><a class="applications allCandidates" href="#" target="_blank">2729</a></td>
+								<td class="report-item"><a class="shortlist shortlistedCandidates" href="#" target="_blank">527</a></td>
+								<td class="report-item"><a class="reject rejectedCandidates" href="#" target="_blank">1917</a></td>
+								<td class="report-item"><a class="save savedCandidates" href="#" target="_blank">3</a></td>
+								<td class="report-item"><a class="resume-viewed-count resumeViewedCount" href="#" target="_blank">110</a></td>
+								<td class="report-item"><a class="resume-downloaded-count resumeDownloadedCount" href="#" target="_blank">34</a></td>
+								<td class="report-item"><span class="excel-downloaded-count excelDownloadedCount" >N/A</span></td>
+								<td class="report-item"><span class="recruiter-actions recruiterActions" >2458</span></td>
+								<td class="report-item"><span class="job-status jobStatus" >Normal</span></td>
+								<td class="report-item"><span class="premium-status isJobPremium" >No</span></td>
+								<td class="report-item"><span class="job-current-status jobCurrentStatus" >Published</span></td>
 							</tr>
 						</table>
 						<!-- <div class="report-row head">
@@ -301,4 +90,6 @@
 			</div>
 		</div>
 	</div>
+
+
 {{>footer}}

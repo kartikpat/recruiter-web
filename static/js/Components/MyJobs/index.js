@@ -1,63 +1,99 @@
-jQuery(".header .menu-list-item.my-jobs").addClass("active");
-
+var status = "all";
 jQuery(document).ready( function() {
 	var jobList = Jobs();
-	fetchJobs();
-	var fetchJobSuccessSubscription = pubsub.subscribe('fetchedJobs:all', onJobsFetchSuccess)
+
+	jobList.init();
+	jobList.setConfig("availableCredits", profile["availableCredits"]);
+	jobList.setConfig("baseUrlJob", baseUrlJob);
+	jobList.onChangeJobFilters(function(type){
+		jobList.showShell();
+		status = type;
+		fetchJobs(status,recruiterId);
+	})
+
+	jobList.onClickJobEdit()
+
+	jobList.onClickSubmitUnpublishJob(function(jobId, reason){
+		jobList.closeModal()
+		jobList.showLoaderOverlay()
+		return submitUnpublishJob(recruiterId, jobId, {reasonId: reason});
+	});
+	jobList.onClickSubmitRefreshJob(function(jobId){
+		jobList.closeModal()
+		jobList.showLoaderOverlay()
+		return submitRefreshJob(recruiterId, jobId);
+	})
+
+	jobList.onClickSubmitPremiumJob(function(jobId){
+		jobList.closeModal()
+		jobList.showLoaderOverlay()
+		return submitPremiumJob(recruiterId, jobId);
+	})
+
+	//Initial call
+	fetchJobs(status,recruiterId);
+
+	var fetchJobSuccessSubscription = pubsub.subscribe('fetchedJobs', onJobsFetchSuccess)
 	var fetchJobFailSubscription = pubsub.subscribe('fetchJobsFail', onJobsFetchFail)
+	var unPublishJobSuccessSubscription = pubsub.subscribe("jobUnpublishSuccess", onSuccessfulUnpublishedJob);
+	var unPublishJobFailSubscription = pubsub.subscribe("jobUnpublishFail", onFailedUnpublishedJob);
+
+	var refreshJobSuccessSubscription = pubsub.subscribe("jobRefreshSuccess", onSuccessfulRefreshJob)
+	var refreshJobFailSubscription = pubsub.subscribe("jobRefreshFail", onFailedRefreshJob)
+
+	var premiumJobSuccessSubscription = pubsub.subscribe("jobPremiumSuccess", onSuccessfulPremiumJob)
+	var premiumJobFailSubscription = pubsub.subscribe("jobPremiumFail", onFailedPremiumJob);
 
 	function onJobsFetchSuccess(topic, data){
-		console.log(topic)
-		console.log(data)
-		jobList.init(data);
-		jQuery(".tooltip").tooltipster( {
-			    animation: 'fade',
-			    delay: 0,
-				side:['right'],
-			    theme: 'tooltipster-borderless'
-			});
-
+		jobList.addToList(data);
 	}
+
 	function onJobsFetchFail(topic, data){
-		console.log(topic)
-		console.log(data)
+
+	}
+	function onSuccessfulUnpublishedJob(topic, data) {
+		jobList.hideLoaderOverlay()
+		toastNotify(1, "Job Unpublish Successfully")
+		setTimeout(function(){
+			 location.reload()
+		 }, 2000);
 	}
 
-	return
-	getRequest(baseUrl+"/recruiter/"+recruiterID+"/jobs/", {}, function(response) {
-		if(response["status"] == "success") {
-			console.log(response["data"]);
-			
-			response["data"].forEach(function(aJob){
-				var card = jQuery(".table-row.prototype.hidden").clone().removeClass('prototype hidden');
-				var status = "";
-				var rejMssg;
-				if(aJob["rej_msg"]){
-					rejMssg = aJob["rej_msg"];
-				}
-				else {
-					rejMssg = "Nothing to show";
-				}
-				card.find(".job-created-on").text(ISODateToD_M_Y(aJob["created"]));
-				card.find(".job-title").text(aJob["title"]);
-				card.find(".job-status").append(aJob["status"]+"<i data-attribute="+aJob["timestamp"]+" class='rejected-message icon-information tooltip' aria-hidden='true' title='"+rejMssg+"'></i>");
-				// card.find(".modal").attr("data-attribute",aJob["timestamp"]);
-				// card.find(".modal .modal-header .close").attr("data-attribute",aJob["timestamp"]);
-				// card.find(".modal .modal-footer .close-modal").attr("data-attribute",aJob["timestamp"]);
-				// card.find(".modal .modal-content .modal-center .list").text(rejMssg);
-				card.find(".job-location").append("<span>"+aJob["loc"]+"</span><!--<span class='edit-job-container'><img src='https://static.iimjobs.com/recruiter/resources/images/edit-grey.png'></span>-->");
-				if(aJob["views"]) {
-					card.find(".engagement").closest(".table-cell").addClass("mobile-label");
-					card.find(".engagement").html(( aJob["views"]) ? '<span class="view-count">'+aJob["views"]+" views" +'</span>'+ (aJob["applied"] ? '<span class="applied-link"><a class="link-color" href="/job/'+aJob["id"]+'/candidates?title='+aJob["title"]+'">'+aJob["applied"]+'applied</a></span>'+  "" : '<span class="applied-link">0 applied</span>' ) : "" )	
-				}
-				else {
-					card.find(".engagement").addClass("hidden-mobile").html('<span class="engagement-default">--</span>');
-					card.find(".actions .job-actions-container").addClass("hidden");
-					// console.log(card.find(".actions .job-actions-container"));
-					card.find(".actions .job-edit-container").removeClass("hidden");
-				}
-				$('.my-jobs-listing .table-container').append(card);
-			});
-		}
-	});
+	function onFailedUnpublishedJob(topic,data) {
+		jobList.hideLoaderOverlay()
+		jobList.openModal("unpublish")
+		errorHandler(data)
+	}
+	function onSuccessfulRefreshJob(topic, data){
+		jobList.hideLoaderOverlay()
+		toastNotify(1, "Job Refreshed Successfully")
+		setTimeout(function(){
+			 location.reload()
+		 }, 2000);
+	}
+	function onFailedRefreshJob(topic, data){
+		jobList.hideLoaderOverlay()
+		jobList.openModal("refresh")
+		errorHandler(data)
+	}
+	function onSuccessfulPremiumJob(topic, data){
+		jobList.hideLoaderOverlay()
+		toastNotify(1, "Job Made Premium Successfully")
+		setTimeout(function(){
+			 location.reload()
+		 }, 2000);
+	}
+	function onFailedPremiumJob(topic, data){
+		jobList.hideLoaderOverlay()
+		jobList.openModal("premium")
+		errorHandler(data)
+	}
+
 });
+
+function errorHandler(data) {
+    if(!data) {
+        return toastNotify(3, "Something went wrong");
+    }
+    return toastNotify(3, data.message);
+}

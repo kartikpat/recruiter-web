@@ -39,31 +39,73 @@ function ifBothMatches(one, two){
 	return true;
 }
 
-function getUrlParameter(sParam) {
-    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
+function fetchURL(){
+       var obj = {}
+       for(var key in window["location"]){
+               if(typeof(window["location"][key])=="string"){
+                       obj[key]= window["location"][key];
+               }
+       }
+       return obj;
+}
 
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
+function getQueryParameter(queryString) {
 
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : sParameterName[1];
-        }
+	var urlObj = fetchURL();
+	var testString = urlObj["search"];
+    testString= testString.replace("?", "");
+    testString= testString.split("&");
+	var obj = {};
+	for(var i=0; i < testString.length; i++){
+        var temp=testString[i].split("=");
+	    obj[temp[0]] = temp[1]
+   	}
+    if(!queryString) {
+	    return obj
     }
-};
+    if(obj[queryString]) {
+        return obj[queryString];
+    }
+}
 
-function getParameterFromTimestamp(timestamp, param) {
-	var d = (timestamp) ? new Date(timestamp) : new Date();
-	switch(param) {
-		case "y":
-			return d.getFullYear()
-		case "m":
-			return (d.getMonth()+1)
-		case "d":
-			return d.getDate()
-		default:
-			return "wrong parameter passed"
+function getMonthName(month){
+	if(!month || month > 12) {
+		return ""
 	}
+	var monthNames = ["Jan", "Feb", "March", "April", "May", "June",
+                        "July", "Aug", "Sep", "Oct", "Nov", "Dec"
+                    ];
+	return monthNames[(month - 1)];
+}
+
+function isCanvasSupported() {
+    var elem = document.createElement('canvas');
+    return !!(elem.getContext && elem.getContext('2d'));
+}
+
+function addBodyFixed() {
+	jQuery("body").addClass("posf");
+}
+
+function removeBodyFixed(){
+	jQuery("body").removeClass("posf");
+}
+
+// Sample link
+// <a href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank">Share</a>
+
+function getFacebookShareLink(url){
+	return "https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(url);
+}
+
+function getTwitterShareLink(url){
+	return "https://twitter.com/share?url="+encodeURIComponent(url);
+	// "http://twitter.com/share?text=text goes here&url=http://url goes here&hashtags=hashtag1,hashtag2,hashtag3"
+}
+
+function getLinkedInShareUrl(url){
+	return "https://www.linkedin.com/shareArticle?mini=true&url="+encodeURIComponent(url)
+
+	// TO create a link with all parameters
+	// "https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=Some%20Title&summary=Some%20Summary&source=YourWebsiteName"
 }
