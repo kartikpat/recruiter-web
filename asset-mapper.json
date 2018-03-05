@@ -784,10 +784,12 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/Utilities/request.js",
+				"static/js/Utilities/pubsub.js",
 				"static/js/header.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
 				"static/js/settings.js",
+				"static/js/Services/updateRecruiterProfile.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Components/RecruiterProfile/model.js",
@@ -1186,6 +1188,10 @@
 				"static/js/vendor/jquery-ui.min.js",
 				"static/js/Utilities/request.js",
 				"static/js/vendor/moment.min.js",
+				"static/js/vendor/pdf.js",
+				"static/js/vendor/pdf.worker.js",
+				"static/js/pdfJs.js",
+				"static/js/candidate-apply-list.js",
 				"static/js/utilities.js",
 				"static/js/Utilities/toastNotifier.js",
 				"static/js/Utilities/pubsub.js",
@@ -1197,6 +1203,7 @@
 				"static/js/Components/Header/index.js",
 				"static/js/Components/CandidateProfile/model.js",
 				"static/js/Components/CandidateProfile/index.js",
+				"static/js/Components/CandidateProfile/mapping.js",
 				"static/js/Services/submitPageVisit.js"
 			],
 			"prod" : [

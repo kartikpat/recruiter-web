@@ -127,7 +127,7 @@ function Candidate() {
         item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY') || "NA")
         item.notice.text(aData["notice"] + " months" || "NA");
         if(aData["ctc"] == "confidential")
-            item.salary.text("confidential");
+            item.salary.text("Confidential");
         else
             item.salary.text(aData["ctc"]+ " LPA");
         item.firstName.text(aData["name"])
@@ -187,7 +187,7 @@ function Candidate() {
         else {
         	item.resume.html('<iframe src="'+aData["resume"]+'" class="resume-embed" type="application/pdf"></iframe>')
         }
-        item.coverLetter.text(aData["cover"]);
+        item.coverLetter.html(aData["cover"] || "<div class='no-data'>No Cover Letter!</div>");
         if(aData["comment"]) {
             item.comment.val(aData["comment"]);
             item.mobComment.val(aData["comment"]);

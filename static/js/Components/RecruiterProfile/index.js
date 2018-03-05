@@ -1,51 +1,36 @@
 $(document).ready(function(){
 
-	var profile = Profile();
+	var recruiterProfile = Profile();
 
-	profile.init();
+	recruiterProfile.init();
+	recruiterProfile.setProfile(profile)
 
+	recruiterProfile.submitHandler(function(){
+		if(recruiterProfile.validate()){
 
-	jobDetails.onChangeJobPremium(function(){
-		alert("hi")
+			updateRecruiterProfile(recruiterProfile.getProfile(), recruiterId);
+		}
 	})
-	jobDetails.submitHandler(function(){
-			if(jobDetails.validate()){
-				if(jobId)
-					submitEditJob(recruiterId ,jobId,jobDetails.getData())
-				else
-					submitNewJob(jobDetails.getData(), recruiterId);
-			}
-		})
-	if(jobId) {
-		fetchJob(jobId);
-	}
- 	function onSuccessfulSubmitJob(topic, data){
-		// alert("You have successfully posted your job.Our team is reviewing your job and it usually takes upto 24 hours for a job to get published.")
-		if(profile["availableCredits"] > 0)
-			return window.location.href = "/";
-		window.location.href = "/recruiter/recruiter-plan"
- 		console.log(topic)
-		console.log(data);
 
-	}
-	function onFailedSubmitJob(topic, data){
-		alert(res.status)
-	}
-	function onSuccessfulFetchJob(topic, data) {
-		jobDetails.setData(jobId,data[0]);
-	}
-	function onFailedFetchJob(topic, data){
-		alert(res.status)
-		console.log(topic)
-		console.log(data);
+	recruiterProfile.updatePic(function(){
+		updateRecruiterProfile(recruiterProfile.getPic(), recruiterId);
+	})
 
+ 	function onSuccessfulUpdateProfile(topic, data){
+		return toastNotify(1, "Profile Updated Success");
 	}
-	var fetchJobSuccessSubscription = pubsub.subscribe("fetchedJob:"+jobId, onSuccessfulFetchJob);
-	var fetchJobFailSubscription = pubsub.subscribe("failedToFetchJob:"+jobId, onFailedFetchJob);
-	var jobSubmitSuccessSubscription = pubsub.subscribe('submittedNewJob', onSuccessfulSubmitJob);
-	var jobSubmitFailSubscription = pubsub.subscribe('failedNewJobSubmission', onFailedSubmitJob);
+	function onFailedUpdateProfile(topic, data){
+		errorHandler(data)
+	}
 
-	var jobEditSuccessSubscription = pubsub.subscribe('jobEdited', onSuccessfulSubmitJob);
+	var updateRecruiterProfileSuccessSubscription = pubsub.subscribe("updateRecruiterProfileSuccess", onSuccessfulUpdateProfile);
+	var updateRecruiterProfileFailSubscription = pubsub.subscribe("updateRecruiterProfileFail", onFailedUpdateProfile);
 
-	var jobEditSuccessSubscription = pubsub.subscribe('failedEditJobSubmission', onFailedSubmitJob);
 })
+
+function errorHandler(data) {
+    if(!data) {
+        return toastNotify(3, "Something went wrong");
+    }
+    return toastNotify(3, data.message);
+}

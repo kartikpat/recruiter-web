@@ -1,7 +1,18 @@
 {{>header}}
 
-<div class="loader-overlay hidden" id="loaderOverlay">
+<div class="loader-overlay" id="loaderOverlay">
     <div class="loader"></div>
+</div>
+
+<div class="toast-notification-container">
+    <div class="toast-notification">
+        <!-- <div class="notification-icon">
+            <img src="/static/images/close-icon.png" />
+        </div> -->
+        <div class="notification-message">
+            <p></p>
+        </div>
+    </div>
 </div>
 
     <div class="page-content">
@@ -360,6 +371,25 @@
         </div>
     </div>
 
+    <div class="skill-tag candidateTag prototype hidden">
+    	<div class="active-skill-label tagLabel"><span class="icon-label">UI/UX</span></div>
+    	<div class="remove-active-skill tagRemove"><span class="close-icon"><i class="icon-close_icon"></i></span></div>
+    </div>
 
+    <div class="datum js_prof prototype hidden">
+    	<p class="data name js_prof_name">iimjobs.com</p>
+    	<p class="detail designation js_prof_designation">Full Stack Engineer</p>
+    	<p class="detail tenure js_prof_tenure">2008-2012</p>
+    	<div class="separator jsSeperator hidden"></div>
+    </div>
+
+    <div class="datum js_edu prototype hidden">
+    	<p class="data name js_edu_name">Indian Institute of Management, Indore (IIMI)</p>
+    	<p class="detail tenure js_edu_tenure">2008-2012</p>
+    	<p class="detail degree js_edu_degree">B Tech / BE (Full Time)</p>
+    	<div class="separator jsSeperator hidden"></div>
+    </div>
+
+    <p class="fetchTags prototype hidden" data-tag-id="1">Ahmedabad</p>
 
 {{>footer}}

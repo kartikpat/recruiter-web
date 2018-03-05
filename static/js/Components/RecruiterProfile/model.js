@@ -9,9 +9,15 @@ var errorResponses = {
 	missingCategory: 'Please choose a category from the drop-down',
 	missingFunctionalArea: 'Please choose a functional-area from the drop-down',
 	invalidSal: 'Maximum Salary should be greater than Minimum Salary',
-	invalidBatch: 'Maximum Batch should be greater than Minimum Batch',
-	invalidMinExp: 'Maximum Years of Experience should be greater than Minimum Years of Experience'
+	invalidEmail: 'Enter proper Email',
+	invalidWebsite: 'Enter proper Website Url',
+	invalidFacebook: 'Enter proper Facebook Url',
+	invalidTwitter: 'Enter proper Twitter Url',
+	invalidLinkedIn: 'Enter proper LinkedIn Url'
 }
+
+var emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+var urlRegex = /(http|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/;
 
 function Profile(){
 	var settings ={};
@@ -40,216 +46,174 @@ function Profile(){
 			settings.notification= $("#instant-notification"),
 			settings.emailNotification= $("#digest-email-notification"),
 			settings.uploadPic= $("#uploadPic")
-			settings.submitButton = $('.submit-form'),
-			settings.cancelFormButton = $('#cancelForm'),
+			settings.profileImg = $('#profileImg'),
 			settings.error = $('.error'),
-			settings.creditsText = $('#creditsText');
+			settings.creditsText = $('#creditsText'),
+			settings.fileUpload = $("#trigger-file-upload"),
+			settings.fileName = $("#fileName")
+			settings.type = ""
 
-
-
+			changeFileName()
 	}
 
-
-
-
-	function loginHandler(fn){
-		settings.login.click(fn);
+	function changeFileName() {
+		settings.fileUpload.change(function() {
+			if($(this).val()){
+				settings.fileName.text(settings.fileUpload[0].files[0]["name"])
+			}
+			else {
+				settings.fileName.text("No file chosen")
+			}
+		})
 	}
 
 	function validate(){
-		console.log(settings)
-		if(!(
-				ifExists(settings.title)
-				&& checkPillValues(settings.location)
-				&& ifExists(settings.minExp)
-				&& ifExists(settings.maxExp)
-				&& ifGreater(settings.minExp, settings.maxExp)
-				&& ifExists(settings.description)
-				&& checkVideoLink(settings.videoUrl)
-				&& checkPillValues(settings.industry)
-				&& ifExists(settings.category)
-				&& ifExists(settings.functionalArea)
-				&& ifGreater(settings.minSal , settings.maxSal)
-				&& ifGreater(settings.batchFrom, settings.batchTo)
-			)){
-			console.log('returninig false')
-			return false;
-		}
-		return true;
-		if(Object.keys(settings).length ===0){
-			console.log('Blank values')
-			return false
-		}
-		for(var key in settings){
-			if([ "title", "location", "minExp", "maxExp", "jobDescription",  "category", "functionalArea"].indexOf(key) > -1){
-				if(!(settings.key && settings.key)){
-					console.log("Missing mandatory field "+key);
-					return
-				}
+		if(settings.type == "profile") {
+			if(!(
+					checkEmail(settings.email)
+					&& checkUrl(settings.websiteUrl)
+				)){
+				return false;
 			}
-			if(["location", "industry"].indexOf(key) > -1){
-				if(!(settings.key && settings.key)){
-					console.log("Missing mandatory field "+key);
-					return
-				}
-				if(!(settings.key.length <5)){
-					console.log("Cannot have more than 5 values: "+key);
-					return
-				}
-			}
+			return true;
 		}
-		return true;
+		if(settings.type== "social-accounts") {
+			if(!(
+					checkUrl(settings.facebook)
+					&& checkUrl(settings.linkedIn)
+					&& checkUrl(settings.twitter)
+				)){
+				return false;
+			}
+			return true;
+		}
+		if(settings.type== "change-password") {
+
+		}
 	}
-	function getJobData(){
-		var locationObj = getPillValues(settings.location.attr('id'));
-		var industryObj = getPillValues(settings.industry.attr('id'));
+	function getProfile() {
+		var form = new FormData();
+		if(settings.type == "profile") {
+			if(settings.fileUpload[0].files[0] != undefined) {
+  		    	form.append("logo", settings.fileUpload[0].files[0], settings.fileUpload[0].files[0].name);
+  		  	}
+			if(settings.name.val()) {
+				form.append("name", settings.name.val())
+			}
+			if(settings.organization.val()) {
+				form.append("org", settings.organization.val())
+			}
+			if(settings.contact.val()) {
+				form.append("phone", settings.contact.val())
+			}
+			if(settings.about.val()) {
+				form.append("about", settings.about.val())
+			}
+			if(settings.email.val()) {
+				form.append("email", settings.email.val())
+			}
+			if(settings.designation.val()) {
+				form.append("designation", settings.designation.val())
+			}
+			if(settings.websiteUrl.val()) {
+				form.append("wurl", settings.websiteUrl.val())
+			}
+			if(settings.location.val()) {
+				form.append("location", settings.location.val())
+			}
+			if(settings.recruiterType.val()) {
+				form.append("recruiterType", settings.recruiterType.val())
+			}
+			return form
+		}
+		if(settings.type== "social-accounts") {
+			if(settings.facebook.val()) {
+				form.append("furl", settings.facebook.val())
+			}
+			if(settings.linkedIn.val()) {
+				form.append("lurl", settings.linkedIn.val())
+			}
+			if(settings.twitter.val()) {
+				form.append("turl", settings.twitter.val())
+			}
+			return form
+		}
+		if(settings.type== "change-password") {
 
-		var ob = {
-			title: settings.title.val(),
-			description: settings.description.val(),
-			premium: settings.isPremium.is(':checked') ? 1 : 0,
-			category: settings.category.val(),
-			functionalArea: settings.functionalArea.val(),
-			location: locationObj.id,
-			otherLocation: locationObj.label,
-			industry: industryObj.id
+		}
+		if(settings.type== "notification-settings") {
+			form.append("notificationEmail", $("input[name='notification-type']:checked").val())
 		}
 
-		var tagsObj = getPillValues(settings.tags.attr('id'));
-		if( tagsObj['label'].length > 0 )
-			ob.tags = tagsObj['label'];
-		if(settings.videoUrl.val() && settings.videoUrl.val() !='')
-			ob.videoUrl = settings.videoUrl.val()
-		if( getMultipleCheckboxes(settings.courseType.attr('id')).length >0)
-			ob.courseType = getMultipleCheckboxes(settings.courseType.attr('id'))
-		if( getMultipleCheckboxes(settings.preferences.attr('id')).length >0)
-			ob.preferences = getMultipleCheckboxes(settings.preferences.attr('id'))
-
-		if(settings.minSal.val() && settings.maxSal.val())
-			ob.sal = {
-				min: settings.minSal.val(),
-				max: settings.maxSal.val(),
-				cnfi: settings.confidential.is(':checked') ? 1 : 0
-			}
-		if(settings.minExp.val() && settings.maxExp.val())
-			ob.exp = {
-				min: settings.minExp.val(),
-				max: settings.maxExp.val()
-			}
-		if(settings.batchFrom.val() && settings.batchTo.val() )
-			ob.batch = {
-				min: settings.batchFrom.val(),
-				max: settings.batchTo.val()
-			}
-		console.log(ob)
 		return ob;
 	}
 
-	function setJobData(jobId, obj) {
-		settings.title.val(obj["title"]);
-		if(settings.editor){
-			settings.editor.setContent(obj["description"])
-		}
-		settings.description.val(obj["description"]);
-		settings.isPremium.prop("checked", obj["premium"]);
-		settings.category.val(obj["category"]);
-		settings.functionalArea.val(obj["functionalArea"]);
-		console.log(obj)
+	function setProfile(obj) {
+		settings.profileImg.attr("src", (obj["img_link"] || "/static/images/noimage.png"));
+		settings.name.val(obj["name"]);
+		settings.contact.val(obj["phone"]);
+		// settings.isPremium.prop("checked", obj["premium"]);
+		settings.email.val(obj["email"]);
+		settings.designation.val(obj["desg"]);
 
-		// setPillValues(settings.location.attr('id'), loca);
-		setPillValues(settings.location.attr('id'), obj["location"]);
-
-		setPillValues(settings.industry.attr('id'), obj["industry"], industryTagsData);
 		if(obj["videoUrl"])
 			settings.videoUrl.val(obj["videoUrl"]);
-		if(obj["courseType"])
-			setMultipleCheckboxes(settings.courseType.attr('id'), obj["courseType"]);
-		if(obj["preferences"])
-			setMultipleCheckboxes(settings.preferences.attr('id'), obj["preferences"]);
-		setPillValues(settings.tags.attr('id'), obj["tags"]);
-		if(obj["sal"] && obj["sal"]["min"]!= 0 && obj["sal"]["max"]!=0) {
-			settings.minSal.val(obj["sal"]["min"]);
-			settings.maxSal.val(obj["sal"]["max"]);
-			settings.confidential.prop("checked", obj["sal"]["cnfi"]);
-		}
-		settings.minExp.val(obj["exp"]["min"]);
-		settings.maxExp.val(obj["exp"]["max"]);
-		if(obj["batch"]) {
-			settings.batchFrom.val(obj["batch"]["min"]);
-			settings.batchTo.val(obj["batch"]["max"]);
-		}
+
+		settings.organization.val(obj["org"]);
+		settings.websiteUrl.val(obj["wurl"]);
+
+		settings.recruiterType.val(1);
+		settings.location.val();
+		settings.about.val(obj["about"]);
+		settings.twitter.val(obj["turl"]);
+		settings.facebook.val(obj["furl"]);
+		settings.linkedIn.val(obj["lurl"]);
+		// settings.twitter.val(obj["turl"]);
+		// settings.twitter.val(obj["turl"]);
+
+		$("input[name='notification-type']").val()
 
 	}
 
 	function submitHandler(fn){
-		$(settings.submitButton).click(fn)
+
+		$(settings.submitButton).click(function() {
+			var type = $(this).closest(".settings-page").find(".profile.active").attr("data-selector")
+			settings.type = type;
+			fn()
+		})
 	}
 
+	function updatePic(fn) {
+		settings.uploadPic.click(fn)
+	}
 
+	function getPic() {
+
+		if(settings.fileUpload[0].files[0] != undefined) {
+			var form = new FormData();
+			form.append("logo", settings.fileUpload[0].files[0], settings.fileUpload[0].files[0].name);
+		}
+
+	}
 
 	return {
 		init: init,
 		setConfig : setConfig,
 		validate: validate,
-		getData: getJobData,
+		getProfile: getProfile,
 		submitHandler: submitHandler,
-		setData: setJobData
+		setProfile: setProfile,
+		getPic: getPic,
+		updatePic: updatePic
 	}
 }
 
-
-
-
-function onClickCancelForm(element) {
-	element.click(function() {
-		window.location.href = "/"
-	})
-}
-
-function ifExists(element){
-
-	var errorElement = element.next('.error').length ? element.next('.error') : element.siblings('.error');
-	if(!( element && element.val() )){
-		errorElement.text(errorResponses['missing'+element.attr('name')]).removeClass("hidden");
-		focusOnElement(element)
-
-		return false;
+function checkEmail(element) {
+	if(!element.val()){
+		return true
 	}
-	else if (!errorElement.hasClass("hidden")) {
-		eraseError(element)
-		console.log("entering in else if")
-	}
-	console.log("returning true")
-	return true;
-}
-
-function checkPillValues(element) {
-	var obj = getPillValues(element.attr('id'))
-	console.log(element.attr('data-enable-custom'));
-	if(element.attr('data-enable-custom') == "true") {
-		if( obj["id"].length < 1 && obj["label"].length < 1 ){
-			element.next('.error').text(errorResponses['missing'+element.attr('name')]).removeClass("hidden");
-			focusOnElement(element)
-			return false;
-		}
-		else if (!element.next('.error').hasClass("hidden")) {
-			eraseError(element)
-		}
-		return true;
-	}
-	if( obj['id'].length < 1 ){
-		element.next('.error').text(errorResponses['missing'+element.attr('name')]).removeClass("hidden");
-		focusOnElement(element)
-		return false;
-	}
-	else if (!element.next('.error').hasClass("hidden")) {
-		eraseError(element)
-	}
-	return true;
-}
-
-function checkVideoLink(element){
-	if(element && element.val() && !( isYouTubeLink(element.val()))){
+	if(!emailRegex.test(element.val())) {
 		element.next('.error').text(errorResponses['invalid'+element.attr('name')]).removeClass("hidden");
 		focusOnElement(element)
 		return false;
@@ -260,51 +224,19 @@ function checkVideoLink(element){
 	return true;
 }
 
-function isYouTubeLink(link){
-	if(!(  link && link.indexOf('https://www.youtube.com/watch?v=') >-1  )){
+function checkUrl(element) {
+	if(!element.val()){
+		return true
+	}
+	if(!urlRegex.test(element.val())) {
+		element.next('.error').text(errorResponses['invalid'+element.attr('name')]).removeClass("hidden");
+		focusOnElement(element)
 		return false;
 	}
+	else if (!element.next('.error').hasClass("hidden")) {
+		eraseError(element)
+	}
 	return true;
-}
-
-/**
- * retrieve multiple values from the pill widget
- * @return {[type]} [description]
- */
-function getPillValues(elementId){
-	var el = $('#'+elementId + ' .input-tag');
-	var data = {
-		id: [],
-		label: []
-	};
-	el.each(function(index, value){
-		console.log()
-		$(value).attr('data-id') ? data['id'].push($(value).attr('data-id')) : data['label'].push($(value).attr('data-name'));
-	})
-
-	return data;
-}
-
-/**
- * set multiple values on the pill widget
- * @return {[type]} [description]
- */
-function setPillValues(elementId, arr, globalArray){
-	arr.forEach(function(value, index){
-		if(globalArray)
-			globalArray.forEach(function(anItem){
-				if(value==anItem['val']){
-					var label = anItem['text']
-					var id = anItem['val']
-					addNewTag(label, id, '#'+elementId+'')
-				}
-			})
-		else{
-			var label = value
-			var id =""
-			addNewTag(label, id, '#'+elementId+'')
-		}
-	})
 }
 
 function eraseError(element){
@@ -312,32 +244,9 @@ function eraseError(element){
 	element.next('.error').text('').addClass("hidden");
 }
 
-function ifGreater(elementA, elementB){
-	console.log(elementB.val())
-	console.log(elementA.val())
-	console.log(typeof(elementA.val()), typeof(elementB.val()))
-	var val1 = parseInt(elementB.val());
-	var val2 = parseInt(elementA.val());
-	if(val1 && val2 && !( val1 >= val2)){
-		elementA.siblings('.error').text(errorResponses['invalid'+elementA.attr('name')]).removeClass("hidden");
-		focusOnElement(elementA)
-		elementB.addClass("error-border");
-
-		console.log('returning false')
-		return false;
-	}
-	else if (!elementA.siblings('.error').hasClass("hidden")) {
-		elementA.siblings('.error').text('').addClass("hidden");
-		elementA.removeClass("error-border");
-		elementB.removeClass("error-border");
-	}
-
-	return true;
-}
-
 function focusOnElement(element) {
 	element.addClass("error-border");
 	$('html, body').animate({
-		scrollTop: (element.closest('.field-container').offset().top)
+		scrollTop: (element.closest('.formgroup').offset().top)
 	},200);
 }

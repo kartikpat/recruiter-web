@@ -1,5 +1,5 @@
 function fetchCandidateProfile(recruiterId, jobId, applicationId){
-	return getRequest(baseUrl+"/recruiter/"+recruiterId+"/job/"+jobId+"/applications/"+applicationId+"",{}, function(res){
+	return getRequest(baseUrl+"/recruiter/"+recruiterId+"/jobs/"+jobId+"/applications/"+applicationId+"",{}, function(res){
 		if(res.status && res.status =='success') {
 			res.obj = {}
 			res.obj.applicationId = applicationId;

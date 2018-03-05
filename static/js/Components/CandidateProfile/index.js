@@ -109,11 +109,12 @@ jQuery(document).ready( function() {
          setCandidateAction(recruiterId, jobId, "save" , applicationId, {}, parameters);
      })
 
-    function onJobsApplicationsFetchSuccess(topic, data) {
+    function onCandidateProfileFetchSuccess(topic, res) {
+        
         aCandidate.populateCandidateData(res.data[0])
     }
 
-   function onJobsApplicationsFetchFail(topic, data){
+   function onCandidateProfileFetchFail(topic, data){
        console.log(topic)
        console.log(data)
    }
@@ -150,7 +151,7 @@ jQuery(document).ready( function() {
 
         }
         if(res.action == "save") {
-            
+
                 return toastNotify(1, "Saved Successfully")
 
 
@@ -169,8 +170,8 @@ jQuery(document).ready( function() {
         errorHandler(res);
     }
 
-    var fetchJobApplicationsSuccessSubscription = pubsub.subscribe("fetchedJobApplication", onJobsApplicationsFetchSuccess)
-    var fetchJobApplicationsFailSubscription = pubsub.subscribe("failedTofetchJobApplication", onJobsApplicationsFetchFail)
+    var fetchJobApplicationsSuccessSubscription = pubsub.subscribe("fetchCandidateProfile", onCandidateProfileFetchSuccess)
+    var fetchJobApplicationsFailSubscription = pubsub.subscribe("fetchCandidateProfileFail", onCandidateProfileFetchFail)
     var setCandidateActionSuccessSubscription = pubsub.subscribe("setCandidateActionSuccess", onSuccessfullCandidateAction)
     var setCandidateActionFailSubscription = pubsub.subscribe("setCandidateActionFail", onFailCandidateAction)
     var fetchedTagsSuccessSubscription = pubsub.subscribe("fetchedTags", onSuccessfullFetchedTag)

@@ -30,9 +30,6 @@ function Candidate() {
         // onClickAddPopulatedTags()
     }
 
-    function showCandidateDetails(details, type, status){
-        return populateCandidateData(details, type, status)
-    }
 
     function onClickChatCandidateModal() {
         settings.candidateChatModal.click(function(){
@@ -125,7 +122,7 @@ function Candidate() {
         item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY') || "NA")
         item.notice.text(aData["notice"] + " months" || "NA");
         if(aData["ctc"] == "confidential")
-            item.salary.text("confidential");
+            item.salary.text("Confidential");
         else
             item.salary.text(aData["ctc"]+ " LPA");
         item.firstName.text(aData["name"])
@@ -185,7 +182,7 @@ function Candidate() {
         else {
            item.resume.html('<iframe src="'+aData["resume"]+'" class="resume-embed" type="application/pdf"></iframe>')
         }
-        item.coverLetter.text(aData["cover"]);
+        item.coverLetter.html(aData["cover"] || "<div class='no-data'>No Cover Letter!</div>");
         if(aData["comment"]) {
             item.comment.val(aData["comment"]);
             item.mobComment.val(aData["comment"]);
@@ -203,7 +200,7 @@ function Candidate() {
         else if(status == 3) {
             item.savedButton.html("<span class='icon'><i class='icon-star'></i></span>Saved for Later")
         }
-
+        $("#loaderOverlay").addClass("hidden");
     }
 
     function getCandidateTag(aTag) {
@@ -375,7 +372,7 @@ function Candidate() {
 
     return {
         init: init,
-        showCandidateDetails: showCandidateDetails,
+        populateCandidateData: populateCandidateData,
         onClickAddComment: onClickAddComment,
         onClickAddTag: onClickAddTag,
         onClickDeleteTag: onClickDeleteTag,

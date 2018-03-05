@@ -418,13 +418,14 @@ module.exports = function(settings){
 
 
 
-	app.get("/settings", function(req,res){
+	app.get("/settings",isAuthenticated, function(req,res){
 		res.render("settings", {
 			title:"Recruiter Web - Settings | iimjobs.com",
 			styles:  assetsMapper["settings"]["styles"][mode],
 			scripts: assetsMapper["settings"]["scripts"][mode],
 			baseUrl: baseUrl,
-			baseDomain: baseDomain
+			baseDomain: baseDomain,
+			profile: req.profile
 		})
 		return
 	});
