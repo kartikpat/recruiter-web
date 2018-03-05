@@ -529,7 +529,7 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/ui-test",function(req, res){
+	app.get("/",function(req, res){
 		res.render("ui-test", {
 			title: "IIM JOBS | Dashboard",
 			styles:  assetsMapper["ui-test"]["styles"][mode],
