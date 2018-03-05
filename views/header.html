@@ -9,7 +9,7 @@
 	{{/styles.length}}
 
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Comfortaa|Droid+Sans|Noto+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa|Droid+Sans:400,700|Noto+Sans" rel="stylesheet">
 	<link href="../../static/css/chat-sticky.css" rel="stylesheet">
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
@@ -18,11 +18,26 @@
 		var userID = '{{userID}}';
 		var jobID = '{{jobID}}';
 		var baseDomain = '{{baseDomain}}';
+		var baseUrlJob = '{{baseUrlJob}}';
+		var jobId = '{{jobId}}';
+		var recruiterId= '{{profile.id}}';
 		var profile  = {
-			name: '{{profile.recname}}',
+			name: '{{profile.name}}',
 			email: '{{profile.email}}',
-			pic: '{{profile.picture_url}}'
+			pic: '{{profile.img_link}}',
+			availableCredits: '{{profile.availableCredits}}',
+			org: '{{profile.org}}',
+			phone: '{{profile.phone}}',
+			about: '{{profile.about}}',
+			wurl: '{{profile.wurl}}',
+			turl: '{{profile.turl}}',
+			furl: '{{profile.furl}}',
+			lurl: '{{profile.lurl}}',
+			desg: '{{profile.desg}}',
+			rurl: '{{profile.rurl}}',
+			img_link: '{{profile.img_link}}'
 		}
+		var applicationId= '{{applicationId}}'
 	</script>
 </head>
 <body>
@@ -33,7 +48,7 @@
 		</div>
 		<div class="domain_logo header_item">
 			<a href="/">
-				<h1></h1><span>.com</span>
+				<h1>{{baseDomain}}</h1><span>.com</span>
 				<p class="logo_tagline">Hire better. Hire Faster.</p>
 			</a>
 		</div>
@@ -42,7 +57,7 @@
 				<li class="menu-list-item my-jobs"><a href="/my-jobs">My Jobs</a></li>
 				<li class="menu-list-item search-resume"><a href="javscript:void(0);">Search Resume</a></li>
 				<li class="menu-list-item interviews"><a href="javscript:void(0);">Interviews</a></li>
-				<li class="menu-list-item reports"><a href="javscript:void(0);">Reports</a></li>
+				<li class="menu-list-item reports"><a href="/reports">Reports</a></li>
 			</ul>
 		</div>
 		<div class="profile_actions right header_item">
@@ -97,7 +112,7 @@
 		    		<a href="/my-jobs"><li class="menu-list-item my-jobs">My Jobs</li></a>
 					<a href="javscript:void(0);"><li class="menu-list-item search-resume">Search Resume</li></a>
 					<a href="javscript:void(0);"><li class="menu-list-item interviews">Interviews</li></a>
-					<a href="javscript:void(0);"><li class="menu-list-item reports">Reports</li></a>
+					<a href="/reports"><li class="menu-list-item reports">Reports</li></a>
 		    	</ul>
 			</div>
 
@@ -113,7 +128,7 @@
 
 			<div class="mobile-profile-actions">
 				<ul class="profile-item-listing">
-					<a href="#"><li>Basic Account <span class="upgrade button white">Buy Premium</span></li>
+					<a href="#"><li>Basic Account <span class="upgrade button white">Buy Premium</span></li></a>
 					<a href="/settings"><li class="settings">Account Settings</li></a>
 					<a href="/logout"><li class="logout">Logout</li></a>
 				</ul>

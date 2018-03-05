@@ -163,7 +163,8 @@
 
 /* '' */
 .icon-twitter:before {
-  content: '\e816'; }
+  content: '\e816';
+  color: #1da1f2; }
 
 /* '' */
 .icon-woman:before {
@@ -497,6 +498,10 @@ span.sticker {
         font-size: 13px;
         color: #1a5e98; }
 
+#locationTags .pill-listing li:first-child {
+  padding: 0;
+  border: 0; }
+
 @media all and (max-width: 768px) {
   .tag-container .pill-button .pill-listing ul {
     max-height: 300px; } }
@@ -668,7 +673,8 @@ span.sticker {
 
 /* '' */
 .icon-twitter:before {
-  content: '\e816'; }
+  content: '\e816';
+  color: #1da1f2; }
 
 /* '' */
 .icon-woman:before {
@@ -800,6 +806,79 @@ body.posf {
 
 .center {
   text-align: center; }
+
+.toast-notification-container {
+  position: fixed;
+  bottom: -200px;
+  padding: 10px;
+  background-color: #757575;
+  left: 15px;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -webkit-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -moz-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 1500; }
+  .toast-notification-container.show {
+    bottom: 15px; }
+  .toast-notification-container.error {
+    background-color: #b66666; }
+  .toast-notification-container.success {
+    background-color: #149075; }
+  .toast-notification-container.warning {
+    background-color: #757575; }
+  .toast-notification-container .notification-icon img {
+    height: 20px;
+    width: 20px; }
+  .toast-notification-container .notification-icon, .toast-notification-container .notification-message {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 10px; }
+  .toast-notification-container .notification-message p {
+    color: #FFF;
+    font-family: "Droid Sans", sans-serif;
+    font-size: 14px; }
+
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.7); }
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 8px solid #3498db;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 30px); }
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg); } }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+.no-data {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  min-width: 350px;
+  margin: 0 auto;
+  font-size: 20px;
+  color: #2b2b2b; }
 
 a {
   text-decoration: none; }
@@ -1069,7 +1148,8 @@ a {
 
 /* '' */
 .icon-twitter:before {
-  content: '\e816'; }
+  content: '\e816';
+  color: #1da1f2; }
 
 /* '' */
 .icon-woman:before {
@@ -1403,6 +1483,10 @@ span.sticker {
         font-size: 13px;
         color: #1a5e98; }
 
+#locationTags .pill-listing li:first-child {
+  padding: 0;
+  border: 0; }
+
 @media all and (max-width: 768px) {
   .tag-container .pill-button .pill-listing ul {
     max-height: 300px; } }
@@ -1462,6 +1546,41 @@ span.sticker {
       .conversations .conversation-listing-container .conversations-listing .conversation-item:last-child .user-item.user-info p.user-designation {
         border-color: transparent; }
 
+.shell .section {
+  margin-bottom: 10px !important; }
+
+.shell p {
+  font-size: 0;
+  background-color: #d8d5d5;
+  opacity: 0.4;
+  min-height: 15px;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+  position: relative; }
+
+.shell span {
+  display: inline-block;
+  width: calc(50% - 10px);
+  font-size: 0;
+  background-color: #d8d5d5;
+  opacity: 0.4;
+  min-height: 10px;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+  position: relative; }
+
 .page-content {
   min-height: 100%;
   padding: 0;
@@ -1476,8 +1595,6 @@ span.sticker {
     display: inline-block;
     vertical-align: top;
     font-size: initial; }
-    .page-content .tagged-candidates .page-mobile-header {
-      display: none; }
     .page-content .tagged-candidates .page-header select {
       font-family: inherit;
       display: inline-block;
@@ -1510,6 +1627,8 @@ span.sticker {
         background-color: transparent;
         margin-bottom: 10px;
         background-image: url("/static/images/minimal_select_dropdown.svg"); }
+    .page-content .tagged-candidates .page-header .title {
+      margin-bottom: 0; }
     .page-content .tagged-candidates .tagged-candidates-listing {
       background: #FFF;
       border-radius: 6px;
@@ -1517,12 +1636,19 @@ span.sticker {
       min-height: 30px; }
       .page-content .tagged-candidates .tagged-candidates-listing .candidate-item {
         padding: 30px 18px 0px;
-        font-size: 0; }
+        font-size: 0;
+        position: relative; }
         .page-content .tagged-candidates .tagged-candidates-listing .candidate-item p {
           line-height: 1.3;
           margin-bottom: 3px; }
           .page-content .tagged-candidates .tagged-candidates-listing .candidate-item p a {
             color: #155d9a; }
+        .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .section.sticker-container {
+          position: absolute;
+          bottom: 0;
+          right: 0; }
+          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .section.sticker-container .sticker {
+            margin-right: 0; }
         .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section {
           display: inline-block;
           vertical-align: top;
@@ -1539,8 +1665,12 @@ span.sticker {
             width: 9%; }
             .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.image .candidate-image {
               display: inline-block;
-              position: relative; }
+              position: relative;
+              width: 75px;
+              height: 75px; }
               .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.image .candidate-image img {
+                width: 100%;
+                height: 100%;
                 border-radius: 50%;
                 object-fit: cover;
                 border: 1px solid #e8e8e8; }
@@ -1582,7 +1712,7 @@ span.sticker {
             width: 20%; }
             .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area {
               margin-bottom: 15px; }
-              .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area button {
+              .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area a {
                 -webkit-appearance: none;
                 -moz-appearance: none;
                 -ms-appearance: none;
@@ -1593,7 +1723,7 @@ span.sticker {
                 background: #1f8f75;
                 border-color: #8f8a8a;
                 border-radius: 4px;
-                padding: 5px 14px;
+                padding: 6px 25px;
                 font-size: 14px;
                 margin: 0 5px;
                 color: #FFF;
@@ -1602,16 +1732,16 @@ span.sticker {
                 cursor: pointer;
                 margin: 0;
                 padding: 7px 24px; }
-                .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area button.green {
+                .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area a.green {
                   background-color: #1f8f75; }
-                .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area button.red {
+                .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area a.red {
                   background-color: #af595a; }
-                .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area button.white {
+                .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area a.white {
                   border: 1px solid #8f8a8a;
                   color: #2b2b2b; }
-                .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area button.edit {
+                .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area a.edit {
                   padding: 3px 9px; }
-                  .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area button.edit img {
+                  .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .resume-download-area a.edit img {
                     width: 17px;
                     height: 17px; }
             .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .skill-tag-listing .skill-tag {
@@ -1626,6 +1756,41 @@ span.sticker {
           margin-left: 9%;
           padding-top: 20px;
           font-size: 14px; }
+          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .tagged-on-label .multipleJobListing {
+            display: none; }
+          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .tagged-on-label select {
+            font-family: inherit;
+            display: inline-block;
+            font-size: 14px;
+            color: #818181;
+            padding: 16px 22px;
+            border-radius: 3px;
+            background: #FFF;
+            width: 100%;
+            border: 1px solid #e8e8e8;
+            background-image: url("/static/images/down-caret.svg");
+            background-repeat: no-repeat;
+            background-position: right 18px center;
+            cursor: pointer;
+            border-color: #e8e8e8;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -o-appearanance: none;
+            line-height: 1.5;
+            color: #2b2b2b; }
+            .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .tagged-on-label select[multiple] {
+              background-image: none;
+              height: 120px; }
+            .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .tagged-on-label select.inactive .dropdown-list {
+              display: none; }
+            .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .tagged-on-label select.minimal {
+              display: inline-block;
+              width: auto;
+              border: 0;
+              padding: 10px 40px 10px 10px;
+              background-color: transparent;
+              margin-bottom: 10px;
+              background-image: url("/static/images/minimal_select_dropdown.svg"); }
         .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .separator {
           display: block;
           margin: 20px 0 0 9%;
@@ -1654,12 +1819,18 @@ span.sticker {
         .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.image {
           padding-left: 0; } }
 
-@media all and (max-width: 768px) {
+@media all and (max-width: 1024px) {
+  .no-data {
+    background-color: #FFF; }
+  .shell p {
+    width: 50%; }
+  .shell span {
+    width: 25%; }
+    .shell span.right {
+      display: none; }
   .page-content .tagged-candidates {
     width: 100%; }
     .page-content .tagged-candidates .page-header {
-      display: none; }
-    .page-content .tagged-candidates .page-mobile-header {
       display: block;
       font-size: 14px;
       background: #f3fbfb;
@@ -1668,17 +1839,17 @@ span.sticker {
       border-bottom: 0;
       border-top-right-radius: 4px;
       border-top-left-radius: 4px; }
-      .page-content .tagged-candidates .page-mobile-header .mobile-title {
+      .page-content .tagged-candidates .page-header .title {
         margin: 0;
         border-top-right-radius: 4px;
         border-top-left-radius: 4px;
         line-height: 1.5;
         font-weight: bold; }
-      .page-content .tagged-candidates .page-mobile-header .stats > span {
+      .page-content .tagged-candidates .page-header .stats > span {
         display: inline-block;
         border-right: 1px solid #e8e8e8;
         padding-right: 20px; }
-      .page-content .tagged-candidates .page-mobile-header .stats select {
+      .page-content .tagged-candidates .page-header .stats select {
         font-family: inherit;
         display: inline-block;
         font-size: 14px;
@@ -1701,12 +1872,12 @@ span.sticker {
         padding-top: 5px !important;
         padding-bottom: 5px !important;
         padding-left: 0 !important; }
-        .page-content .tagged-candidates .page-mobile-header .stats select[multiple] {
+        .page-content .tagged-candidates .page-header .stats select[multiple] {
           background-image: none;
           height: 120px; }
-        .page-content .tagged-candidates .page-mobile-header .stats select.inactive .dropdown-list {
+        .page-content .tagged-candidates .page-header .stats select.inactive .dropdown-list {
           display: none; }
-        .page-content .tagged-candidates .page-mobile-header .stats select.minimal {
+        .page-content .tagged-candidates .page-header .stats select.minimal {
           display: inline-block;
           width: auto;
           border: 0;
@@ -1787,3 +1958,13 @@ span.sticker {
         margin: 5px 0; }
       .page-content .tagged-candidates .page-mobile-header .stats select {
         display: block !important; } }
+
+span.multipleJobListingText {
+  cursor: pointer; }
+
+.multipleJobListing {
+  padding: 10px 0; }
+
+.candAppliedJobs {
+  min-height: 25px;
+  line-height: 1.3; }

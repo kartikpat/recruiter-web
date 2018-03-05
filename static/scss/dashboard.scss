@@ -201,7 +201,11 @@ $button-border-color: #8f8a8a;
 			    padding: 0 10px;
 			    padding-right: 0px;
 				img{
-					width: 100%;
+					width: 70px;
+				    height: 70px;
+				    border-radius: 50%;
+				    object-fit: cover;
+				    border: 1px solid $select-border-color;
 				}
 			}
 			.general{
@@ -295,6 +299,7 @@ $button-border-color: #8f8a8a;
 				 border: thin solid $button-border-color;
 				 border-radius: 4px;
 				 cursor: pointer;
+				 color: $color-darkgrey;
 			}
 		}
 		.icon{
@@ -387,6 +392,28 @@ $button-border-color: #8f8a8a;
 				}
 				.value{
 					color: $green;
+				}
+			}
+			.button-action-list{
+				display: inline-block;
+				cursor: pointer;
+				position: relative;
+			    width: 0px;
+			    padding: 0;
+			    border: 0;
+					.action-list-items {
+				    position: absolute;
+				    top: 100%;
+				    right: 0;
+				    width: 165px;
+				    left: 0;
+				    margin: 0 -1px;
+				    background: #FFF;
+				    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+				    border: 1px solid #e8e8e8;
+				    list-style: none;
+				    padding: 5px 0;
+				    z-index: 5;
 				}
 			}
 			.action-panel{
@@ -504,4 +531,7 @@ $button-border-color: #8f8a8a;
     	left: 1px;
 	}
 
+}
+.error{
+	position: relative !important;
 }

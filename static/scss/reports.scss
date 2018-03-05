@@ -1,6 +1,28 @@
 @import 'common/spacings';
 @import 'input-elements';
 
+@import 'chat-sidebar';
+
+@import 'components/modal';
+
+.shell {
+    .section {
+        margin-bottom: 10px !important;
+    }
+    p {
+        @include title-shell;
+        width: 100%;
+    }
+    span {
+        display: inline-block;
+        width: calc(50% - 10px);
+        @include text-shell;
+        &.date {
+            width: 100%;
+        }
+    }
+}
+
 .page-content {
 	@include page-content;
 	background-color:$body-background-color;
@@ -8,18 +30,21 @@
 	.main-wrapper {
 		.main-container {
 			.heading {
-				margin:0 0 30px 0;
+				margin:0 0 20px 0;
 				h1 {
-					margin:10px 0 0 0;
+					margin:0;
 		            font-size:$page-title-size;
 		            color:$page-title-color;
 		            line-height:1;
 		            font-weight:bold;
+                    height: 34px;
+                    line-height: 34px;
 				}
 
 				.action-buttons {
 					span {
 						@include button($color-white);
+                        margin-right: 0;
 					}
 				}
 			}
@@ -34,7 +59,7 @@
 
 					.keyword-search {
 						display:inline-block;
-						width:40%;
+						width:50%;
 						position:relative;
 						vertical-align:top;
 						input {
@@ -82,20 +107,41 @@
 				}
 
 				.reports-body {
+					overflow-x: auto;
 					font-size:0;
+					table {
+                        border-collapse: collapse;
+						min-width: 1215px;
+					}
 					.report-row {
 						// display:inline-block;
 						width:100%;
 
+                        &.shell {
+                            &:not(:last-child) {
+                                border-bottom: 1px solid #e8e8e8 ;
+                            }
+                        }
+                        &:not(:last-child) {
+                            border-bottom: 1px solid #e8e8e8;
+                        }
 						&.head {
 							background:$premium-section-background;
-							
+
 							.report-item {
-								padding:15px 10px;
-								border-top:1px solid $border-color-base;
+								padding:10px;
 								border-bottom:1px solid $border-color-base;
 								font-size:$base-font-size;
 								text-align:left;
+                                &.job-current-status {
+                                    min-width: 100px;
+                                }
+                                &.date {
+                                    min-width: 75px;
+                                }
+                                &.title {
+                                    min-width: 275px;
+                                }
 							}
 						}
 
@@ -103,12 +149,16 @@
 							// display:inline-block;
 							font-size:initial;
 							font-size:$base-font-size;
-							padding:10px;
+							padding:10px ;
 
 							a {
 								color:$link-color;
 							}
+							&.date {
+								width: 15%;
+							}
 							&.title {
+								width: 100%;
 								span {
 									color:$extra-info-color;
 
@@ -116,7 +166,7 @@
 										color:$color-black;
 									}
 								}
-								
+
 								.job-title {
 									display:block;
 									margin-bottom:10px;
@@ -127,9 +177,56 @@
 								}
 
 							}
+
+                            // .jobCurrentStatus,.jobStatus {
+                            // }
 						}
 					}
-				}	
+				}
+			}
+		}
+	}
+}
+
+@media all and (max-width:768px) {
+	.page-content {
+		.main-wrapper {
+			.main-container {
+
+
+				.reports-wrapper {
+
+
+					.reports-header {
+
+
+						.keyword-search {
+							width: 70%;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media all and (max-width:480px) {
+	.page-content {
+		.main-wrapper {
+			.main-container {
+
+
+				.reports-wrapper {
+
+
+					.reports-header {
+
+
+						.keyword-search {
+							width: 100%;
+						}
+					}
+				}
 			}
 		}
 	}

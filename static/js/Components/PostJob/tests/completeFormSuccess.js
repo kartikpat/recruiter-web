@@ -23,8 +23,7 @@
 	title.val('testing job data');
 
 	// setting location tags
-	$(location.find('.pill-listing ul li')[0]).mousedown()
-	$(location.find(".pill-listing ul li")[0]).mousedown()
+
 	$(location.find(".pill-listing ul li")[1]).mousedown()
 	$(location.find(".pill-listing ul li")[2]).mousedown()
 	$(location.find(".pill-listing ul li")[3]).mousedown()
@@ -69,8 +68,8 @@
 	$(batchFrom.find('option')[5]).attr('selected', true)
 
 	// Setting tags
-	$(tags.find('.pill-listing ul li')[0]).mousedown()
-	$(tags.find(".pill-listing ul li")[0]).mousedown()
+	// $(tags.find('.pill-listing ul li')[0]).mousedown()
+	// $(tags.find(".pill-listing ul li")[0]).mousedown()
 	$(tags.find(".pill-listing ul li")[1]).mousedown()
 	$(tags.find(".pill-listing ul li")[2]).mousedown()
 	$(tags.find(".pill-listing ul li")[3]).mousedown()

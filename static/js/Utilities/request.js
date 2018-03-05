@@ -11,7 +11,7 @@
  * @param  {object} scopeTest       reference object if any to be accessed in the callback
  */
 var postRequest = function(url,headers,data,successCallback,completeCallback,beforeSendCallback,failCallback,processData,async,scopeTest,contentType){
-    $.ajax({
+    return $.ajax({
         method: "POST",
         url: url,
         headers: headers,
@@ -26,27 +26,6 @@ var postRequest = function(url,headers,data,successCallback,completeCallback,bef
     });
 };
 
-// var postRequest = function(url,headers,data,processData,async,scopeTest) {
-//     return new Promise(function(resolve,reject) {
-//      $.ajax({
-//         method: "POST",
-//         url: url,
-//         headers: {
-//             appID: null,
-//             version: null,
-//             empID: null,
-//             token: null
-//         },
-//         data: data,
-//         scopeTest: scopeTest,
-//         processData: processData,
-//         success: resolve,
-//         error: reject,
-//         async: async
-//     });
-//  });
-//}
-
 /**
  * Wrapper for ajax get request
  * @param  {String}   url                  request url
@@ -55,7 +34,7 @@ var postRequest = function(url,headers,data,successCallback,completeCallback,bef
  * @param  {object}   additionalParameters reference object if any to be accessed in the callback
  */
 var getRequest = function(url,parameters,callback1,callback2,callback3, additionalParameters,showError){
-      $.ajax({
+    return  $.ajax({
         method: "GET",
         url: url,
         data: parameters,

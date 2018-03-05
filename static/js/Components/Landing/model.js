@@ -6,7 +6,7 @@ var errorResponses = {
 	userFail: 'Email address does not exist',
 	passwordFail: 'Incorrect password',
 	missingParameters: 'Oops! Our engineers will fix this shortly. Please try again after sometime.',
-	serviceError: 'Oops! Our engineers are working on fixing this, please try again after sometime.'	
+	serviceError: 'Oops! Our engineers are working on fixing this, please try again after sometime.'
 }
 function userCredentials(){
 	var user= {}
@@ -51,7 +51,7 @@ function userCredentials(){
 	}
 	function validateLogin(){
 		eraseErrors();
-		
+
 		if(!( user.email && user.email.val() )){
 			console.log(user.email.next('.error'))
 			user.email.next('.error').text(errorResponses['missingEmail'])

@@ -59,7 +59,11 @@
 		minifooter:'mini-footer',
 		chatSidebar: 'chat-sidebar',
 		welcome:'welcome-section',
-		verify:'verify-account'
+		verify:'verify-account',
+		modalContent:'modal',
+		candidateApplyListShell:'shells/candidate-apply-list-shell',
+		myJobsShell:'shells/my-jobs-shell',
+		reportsShell: 'shells/reports-shell.html'
 	});
 	app.set('view engine', 'html');
 	app.set('views', __dirname + '/views');

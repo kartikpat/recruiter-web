@@ -2,6 +2,67 @@
 @import 'input-elements';
 @import 'chat-sidebar';
 
+@import 'components/modal';
+
+.shell {
+    .section {
+        margin-bottom: 10px !important;
+    }
+    p {
+        @include title-shell;
+    }
+    span {
+        display: inline-block;
+        width: calc(50% - 10px);
+        @include text-shell;
+    }
+}
+
+input::-webkit-input-placeholder {
+    font-size: 13px;
+}
+
+.bulkActionModal {
+    .modal_text {
+        padding: 10px 0;
+    }
+    .jsModalTextSecondary {
+        color: $extra-info-color
+    }
+    textarea {
+		width: 50%;
+		min-height: 50px;
+        border: 1px solid $border-color-base;
+        padding: 10px 20px;
+		&:focus {
+			outline: none;
+			border: 1px solid $border-color-active
+		}
+	}
+}
+
+.pill-listingg-container {
+    position: relative;
+    #tagListing {
+        position: absolute;
+        background: #fff;
+        left: 0;
+        right: 0;
+        height: 125px;
+        overflow-y: auto;
+        top: 40px;
+        box-shadow: 1px 1px 1px 1px #ccc;
+    }
+    .fetchTags {
+        padding: 5px;
+        border-bottom: 1px solid $border-color-base;
+        cursor: pointer;
+        &:hover {
+            background-color: #e8e8e8;
+        }
+    }
+}
+
 .page-content {
 	@include page-content;
 	background-color:$body-background-color;
@@ -9,6 +70,10 @@
 	.page-header {
 		padding:15px 0;
 		h1 {
+            &.shell {
+                @include title-shell;
+                min-width: 250px;
+            }
 	        margin: 0 0 0 0;
             font-size:$page-title-size;
             color:$page-title-color;
@@ -19,7 +84,7 @@
 			font-size:0;
 			span {
 				@include button($color-white);
-
+                padding: 7px 14px;
 				&.multi-options {
 					background-color:transparent;
 					padding-left:0;
@@ -27,11 +92,33 @@
 				}
 			}
 		}
+        .job-location {
+            display: inline-block;
+            &.shell {
+                @include text-shell;
+                min-width: 100px;
+            }
+        }
+        .job-experience {
+            display: inline-block;
+            &.shell {
+                @include text-shell;
+                min-width: 100px;
+            }
+        }
+        .job-id {
+            display: inline-block;
+            vertical-align: bottom;
+            &.shell {
+                @include text-shell;
+                min-width: 50px;
+            }
+        }
 	}
 
 	.candidate-apply-listing {
 		width:80%;
-		
+
 		.candidates-area {
 			@include card-container;
 			margin:0 0 0 0;
@@ -56,9 +143,7 @@
 							background-size:14px;
 							font-size:$base-font-size;
 
-							&:focus {
-								border-color:$border-color-base;
-							}
+
 						}
 						button {
 							position:absolute;
@@ -89,10 +174,15 @@
 							padding:4px 10px;
 							color:$color-darkgrey;
 							text-transform:capitalize;
-
+							&.sortBy {
+								padding: 0;
+							}
 							span {
 								padding:4px 5px;
 								margin:0;
+								&.sortBy {
+									padding: 0;
+								}
 							}
 
 							&.filter-button {
@@ -105,7 +195,7 @@
 									display:inline-block;
 									padding-left:0;
 									margin-left:15px;
-								}	
+								}
 							}
 
 							&.sort-button {
@@ -163,18 +253,16 @@
 			.candidates-area-body {
 				.selection-bar {
 				    margin: 0 -15px;
-				    padding: 0 15px;
-				    border-top: 1px solid $border-color-base;
-				    border-bottom: 1px solid $border-color-base;
+				    padding: 0;
+				    // border-top: 0;//1px solid $border-color-base;
+				    // border-bottom: 1px solid $border-color-base;
+				    border:0;
 					font-size:0;
-					overflow-x:auto;
-					overflow-y:hidden;
-					white-space:nowrap;
 					background-color:$color-white;
 				    .bulk-selection-item {
 				    	display:inline-block;
 				    	font-size:initial;
-				    	padding:10px 30px;
+				    	padding:10px 30px 10px 10px;
 				    	border-bottom:2px solid transparent;
 				    	position:relative;
 				    	top:1px;
@@ -192,6 +280,8 @@
 
 				    	&.active {
 				    		border-color:$button-color-green;
+				    		position:relative;
+				    		top:1px;
 
 				    		span {
 				    			color:$button-color-green;
@@ -203,15 +293,30 @@
 							background:$color-white;
 							border-radius:6px;
 							min-height:30px;
+							margin-top: 2px;
 							.candidate-item {
-								padding: 30px 20px 0px;
+								padding: 30px 10px 0px;
 							    font-size: 0;
-							    margin: 0 -15px;
+							    margin: 0;
 							    cursor:pointer;
+							    position:relative;
+
+							    .section {
+							    	&.sticker-container {
+							    		position:absolute;
+							    		bottom:0;
+							    		right:0;
+
+							    		.sticker {
+							    			margin-right:0;
+							    		}
+							    	}
+							    }
 
 								p {
 									line-height:1.3;
 									margin-bottom:3px;
+									white-space:normal;
 
 									a {
 										color:$candidate-link-color;
@@ -238,12 +343,15 @@
 										}
 									}
 									&.image {
+										text-align:center;
 										width:9%;
 										// max-width:90px;
 										.candidate-image {
 											display:inline-block;
 											position:relative;
-											
+											width: 75px;
+											height: 75px;
+											margin-bottom:5px;
 											.candidate-select {
 												display:none;
 												position:absolute;
@@ -258,8 +366,15 @@
 
 													}
 												}
+
+												&.selected {
+													display:inline-block;
+													background-color:transparent;
+												}
 											}
 											img {
+												width: 100%;
+												height: 100%;
 												border-radius:50%;
 												object-fit:cover;
 												border:1px solid $border-color-base;
@@ -281,11 +396,11 @@
 													background-color:$user-status-online;
 												}
 											}
-										}	
+										}
 									}
 
-									
-									&.personal-details {	
+
+									&.personal-details {
 										width:20%;
 										// max-width:200px;
 										p {
@@ -293,7 +408,7 @@
 												color:$inline-link-color;
 												font-weight:bold;
 												font-size:$page-subtitle-font-size;
-											}	
+											}
 
 											span {
 												&.bold {
@@ -309,6 +424,7 @@
 
 										.external-links {
 											margin-top:10px;
+
 										}
 										.skill-tag-listing {
 											.skill-tag {
@@ -327,7 +443,7 @@
 
 									&.professional-information {
 										width:18%;
-										
+
 										.datum {
 											&:last-child {
 												margin:0;
@@ -409,14 +525,14 @@
 									padding-top:20px;
 									font-size:$base-font-size;
 								}
-									
+
 								.separator {
 									display:block;
 									margin:20px 0 0 9%;
 									border-bottom:1px solid $border-color-base;
 									width:91%;
 								}
-								
+
 								&:last-child {
 									padding-bottom:1px;
 									.separator {
@@ -443,6 +559,90 @@
 	}
 }
 
+.job-tags {
+
+    @include tag-container;
+    border: 0;
+    padding: 0;
+    .pill-button input[type=text] {
+    padding: 7px 17px;
+    margin: 3px;
+    border-radius: 0;
+    border: 1px solid #e8e8e8;
+    width: 100%;
+    cursor: pointer;
+    /* transition: all 0.2s ease-in-out; */
+}
+}
+
+.mass-action-container {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    top: 0;
+    padding: 24px 20px;
+    background-color: $mass-action-bar;
+    box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.5);
+    height: 75px;
+    /* line-height: 75px; */
+	.action-buttons {
+		span.button {
+			@include button($color-white);
+		}
+        &.mobile {
+            display: none;
+            
+        }
+	}
+}
+
+@media all and (max-width:1024px) {
+    .mass-action-container {
+
+    	.action-buttons {
+            display: none;
+    		span.button {
+    			@include button($color-white);
+    		}
+            &.mobile {
+                display: block;
+                .view-more.button {
+                    padding: 6px 15px;
+                }
+            }
+    	}
+    }
+    .mass-action-second {
+        &.second-fold {
+            top:75px;
+            background:rgba(128, 128, 128, 0.85);
+            position: fixed;
+            width: 100%;
+            z-index: 10;
+            padding: 15px 20px;
+            .action-buttons {
+
+        		span.button {
+        			@include button($color-white);
+        		}
+            }
+        }
+    }
+}
+
+@media all and (max-width:600px) {
+    .mass-action-second {
+        &.second-fold {
+
+            .action-buttons {
+
+        		span.button {
+        			margin-bottom: 10px;
+        		}
+            }
+        }
+    }
+}
 
 @media all and (max-width:992px) {
 	.page-content {
@@ -456,13 +656,14 @@
 					&.image {
 						padding-left:0;
 					}
-				}				
+				}
 			}
 		}
 	}
 }
 
 @media all and (max-width:768px) {
+
 	.page-content {
 		.page-header {
 			display:block;
@@ -473,7 +674,14 @@
 			border-bottom:0;
 			border-top-right-radius:4px;
 			border-top-left-radius:4px;
+            .action-buttons {
 
+            	.select-dropdown {
+            		padding: 5px 5px 5px 15px;
+
+            	}
+
+            }
 			h1 {
 				font-size:$mobile-page-title-size;
 			}
@@ -504,10 +712,10 @@
             		padding-right:20px;
             	}
             	select {
-            		@include select-dropdown;	
+            		@include select-dropdown;
             		margin-bottom:0 !important;
-            		padding-top:5px !important; 
-            		padding-bottom:5px !important; 
+            		padding-top:5px !important;
+            		padding-bottom:5px !important;
             		padding-left:0 !important;
             	}
             }
@@ -523,7 +731,7 @@
 				margin-bottom:15px;
 				border-radius:4px;
 				border:1px solid $border-color-base;
-				
+
 				.separator {
 					display:none;
 				}
@@ -538,7 +746,7 @@
 
 					border-bottom:1px solid $border-color-base;
 					padding:15px 0;
-					
+
 
 					&:first-child {
 						padding-top:0;
@@ -554,7 +762,7 @@
 						border-bottom:0;
 					}
 
-					&.personal-details {	
+					&.personal-details {
 						width:100%;
 						padding-top:10px;
 					}
@@ -583,7 +791,7 @@
 						width:100%;
 					}
 				}
-				
+
 				&:first-child {
 					border-top-right-radius:0;
 					border-top-left-radius:0;
@@ -638,14 +846,14 @@
 	.conversations {
 		display:none;
 	}
-	
+
 	.page-content {
 		.candidate-apply-listing {
 			width:100%;
 
 			.candidates-area {
 				.candidates-area-header {
-					
+
 				}
 
 				.candidates-area-body {
@@ -659,7 +867,27 @@
 }
 
 @media all and (max-width:1024px){
+    .shell {
+        p {
+            width: 50%;
+        }
+        span {
+
+            width: 25%;
+            &.right {
+                display: none;
+            }
+        }
+    }
 	.page-content {
+        .page-header {
+    		.left, .right {
+                float: none;
+            }
+            .action-buttons {
+                margin-top: 15px;
+            }
+        }
 		.candidate-apply-listing {
 			width:100%;
 			background-color:$body-background-color;
@@ -673,7 +901,7 @@
 					padding:20px 20px 0 20px;
 					border:1px solid $border-color-base;
 					border-bottom:0;
-					
+
 					.candidates-search {
 						margin-bottom:10px;
 						.keyword-search{
@@ -722,6 +950,7 @@
 						.candidate-item {
 							background-color:$color-white;
 							margin:15px 0;
+							padding-left:20px;
 							.separator {
 								display:none;
 							}
@@ -730,10 +959,12 @@
 								width:100%;
 								display:block;
 								border-bottom:1px solid $border-color-base;
+								padding:10px 0;
 
 								&.image {
 									width:100%;
 									border:0;
+									text-align:left;
 								}
 
 								&.personal-details {
@@ -757,10 +988,11 @@
 							&:hover {
 								box-shadow:none;
 							}
-							
+
 							&:first-child {
 								margin-top:0;
-								border-top:0;
+								border:0;
+
 							}
 						}
 					}
@@ -780,11 +1012,20 @@
     bottom: 0;
     right: 0;
     height: 100%;
-    overflow:auto;
+    overflow-y:auto;
+    overflow-x: hidden;
     box-shadow: 0 1px 20px rgba(0,0,0,0.8);
     background-color:$body-background-color;
     z-index:5;
     padding:30px;
+
+	.mob.comments {
+		display: none;
+	}
+
+	.mob.tags {
+		display: none;
+	}
 
     .main-wrapper {
     	width:80%;
@@ -817,9 +1058,12 @@
 						margin:auto;
 						left:0;
 						right:0;
-						width:110px;
+						width:125px;
+						height: 125px;
 
 						img {
+							width: 100%;
+							height: 100%;
 							border-radius:50%;
 							border:5px solid $color-white;
 							box-shadow:0 0 3px $shadow-color;
@@ -919,50 +1163,57 @@
 				&.resume-body {
 					padding:20px;
 
-					#tabbed-content { 
-					    background: transparent; 
-					    border: none; 
+					#tabbed-content {
+					    background: transparent;
+					    border: none;
 					    padding:0;
 					    width:90%;
 					    margin:0 auto;
-					    
-					    .ui-widget-header { 
-						    background: transparent; 
-						    border: none; 
-						    border-bottom: 1px solid $border-color-base; 
-						    -moz-border-radius: 0px; 
-						    -webkit-border-radius: 0px; 
+
+					    .ui-widget-header {
+						    background: transparent;
+						    border: none;
+						    border-bottom: 1px solid $border-color-base;
+						    -moz-border-radius: 0px;
+						    -webkit-border-radius: 0px;
 						    border-radius: 0px;
-						    padding:0; 
-						} 
+						    padding:0;
+						}
 
 						.ui-tabs-nav {
-							.ui-state-default { 
-							    background: transparent; 
-							    border: none; 
+							.ui-state-default {
+							    background: transparent;
+							    border: none;
 							    margin:0 5px 0 0;
 							    position:relative;
 							    top:1px;
 
-							    a { 
+							    a {
 							    	padding:10px 5px;
 							    	text-transform:uppercase;
-								    color: $extra-info-color; 
+								    color: $extra-info-color;
 								    border-bottom:3px solid transparent;
-								    
+
 								    &:focus {
 								    	outline:0;
 								    }
-								} 
+
+									&.ui-tabs-anchor {
+										&:focus {
+											outline:0;
+										}
+									}
+								}
 							}
 
-							.ui-state-active { 
-							    background: transparent url(img/uiTabsArrow.png) no-repeat bottom center; 
-							    border: none; 
+
+							.ui-state-active {
+							    background: transparent url(img/uiTabsArrow.png) no-repeat bottom center;
+							    border: none;
 
 							    a {
 							    	text-transform:uppercase;
-							    	color:$inline-link-color;  
+							    	color:$inline-link-color;
 							    	border-color:$inline-link-color;
 
 							    	&:focus {
@@ -979,7 +1230,73 @@
 								border:1px solid $border-color-base;
 								width:100%;
 								padding:25px;
+								.cand-add-tag {
+									width: 50%;
+									height: 40px;
+									line-height: 40px;
+                                    margin-bottom: 5px;
+								}
+                                .cand-add-tag-action-btn {
+                                    margin-top: 10px;
+                                }
+								&.comments {
+									textarea {
+										width: 50%;
+										padding: 5px;
+										border-left: 3px solid $button-color-green;
+										min-height: 50px;
+										&:focus {
+											outline: none;
+											border: 1px solid $button-color-green;
+											border-left: 3px solid green;
+										}
+									}
+									.action-buttons {
+										margin-top: 10px;
+										span.button {
 
+											@include button($color-green);
+											margin-left: 0px;
+										}
+									}
+								}
+								&.tags {
+									.action-buttons {
+										span.button {
+
+											@include button($color-green);
+											margin-left: 0px;
+										}
+									}
+									.skill-tags-area {
+										margin-top: 10px;
+									}
+									.skill-tag {
+											display:inline-block;
+											margin:5px;
+											border:1px solid $border-color-base;
+											padding:2px 15px;
+											border-radius:50px;
+											font-size:$view-resume-byline-font-size;
+											background-color:$color-white;
+
+											div {
+												display:inline-block;
+												vertical-align: middle;
+
+												&.remove-active-skill {
+													cursor:pointer;
+													vertical-align:top;
+													span {
+														font-size:$view-resume-clear-tag-font-size;
+														display:inline-block;
+														vertical-align: middle;
+														color:$extra-info-color;
+													}
+												}
+											}
+										}
+								}
 								.content-heading {
 									margin-top:0;
 									font-weight:bold;
@@ -993,21 +1310,21 @@
 											line-height:1.5;
 											font-size:$resume-listing-font-size;
 
-											&.data-name {
+											&.name {
 												font-weight:bold;
 												color:$color-black;
 											}
 
-											&.data-detail {
+											&.detail {
 												color:$extra-info-color;
-											}	
+											}
 										}
 
 										.separator {
 											margin:20px 0;
 											border-bottom:1px solid $border-color-base;
 										}
-										
+
 									}
 
 									ul {
@@ -1083,7 +1400,7 @@
 						#view-resume {
 							margin:20px 0 0 0;
 							background-color:$resume-background-color;
-							
+
 							canvas {
 								width:100%;
 								border:1px solid $border-color-base;
@@ -1094,7 +1411,7 @@
 						#view-cover-letter {
 							padding:20px 0 0 0;
 						}
-					} 
+					}
 				}
 			}
 
@@ -1110,8 +1427,18 @@
 
     	.action-buttons {
     		margin-bottom:30px;
+			&.cand-add-tag-action-btn {
+				margin: 15px 0;
+			}
     		span {
     			&.button {
+					&.cand-comment-button{
+						margin: 0;
+						margin-top: 5px;
+					}
+					&.cand-add-tag-button {
+							margin: 0;
+						}
     				@include button($color-white);
     			}
     		}
@@ -1129,7 +1456,10 @@
 					color:$color-black;
 					line-height:1.3;
 					margin:7px 0;
-
+                    cursor: pointer;
+                    &:hover {
+                        text-decoration: underline;
+                    }
 					span {
 						&.icon {
 							width:2em;
@@ -1154,6 +1484,15 @@
     			margin-top:20px;
     		}
 
+			.cand-add-tag {
+				height: 40px;
+			    line-height: 40px;
+
+				padding: 10px;
+			}
+
+
+
     		.comment-block {
 				margin-bottom:15px;
     			.content {
@@ -1174,7 +1513,7 @@
 					color:$extra-info-color;
     			}
     		}
-    	
+
 			&.tags {
 
 				border-bottom:0;
@@ -1195,7 +1534,7 @@
 								cursor:pointer;
 								vertical-align:top;
 								span {
-									font-size:$view-resume-byline-font-size;
+									font-size:$view-resume-clear-tag-font-size;
 									display:inline-block;
 									vertical-align: middle;
 									color:$extra-info-color;
@@ -1213,6 +1552,13 @@
 @media all and (max-width:1024px) {
 	.view-resume-modal {
 		padding-bottom:60px;
+		.mob.comments {
+			display: block;
+		}
+
+		.mob.tags {
+			display: block;
+		}
 		.resume-sidebar {
 			display:none;
 		}
@@ -1238,6 +1584,7 @@
 				}
 
 				&.first-fold {
+
  					bottom: 0;
  					background:$color-white;
 
@@ -1246,13 +1593,14 @@
 				&.second-fold {
 					bottom:60px;
 					background:$extra-info-color;
-					
+
 					&.hidden {
 
 					}
 				}
 				.action-buttons {
 					font-size:0;
+
 					span {
 						@include button($color-white);
 						display:inline-block;
@@ -1266,13 +1614,22 @@
 				}
 		    }
 		}
-	}	
+	}
+}
+
+.view-resume-modal {
+    .close_modal.mobile {
+        display: none;
+    }
 }
 
 @media all and (max-width:768px) {
 
-		
+
 	.view-resume-modal {
+        .close_modal.mobile {
+            display: block;
+        }
 		width:100%;
 		padding:20px 10px;
 		box-shadow:0;
@@ -1324,7 +1681,7 @@
 				&.second-fold {
 					bottom:60px;
 					background:$extra-info-color;
-					
+
 					&.hidden {
 
 					}
@@ -1344,23 +1701,138 @@
 				}
 		    }
 		}
-	}	
+	}
 }
 
-@media all and (max-width:480px) {
-	.view-resume-modal {
-		.main-wrapper {
-			.main-container {
-				.container {
-					&.resume-header {
-						.profile-snapshot {
-							.snap {
-								width:50%;
-							}
-						}
-					}
-				}
+
+
+
+#jobs-category-tabs {
+	// border: 0;
+	border-top:1px solid $border-color-base;
+    overflow: auto;
+
+	.tabs_scroll_container {
+		overflow-x: auto;
+		overflow-y: hidden;
+	}
+	.ui-tabs-nav {
+		border: 0;
+		background: #fff;
+		padding:0;
+		overflow-x:auto;
+		white-space:nowrap;
+		overflow-y: hidden;
+	}
+	.ui-tabs-tab {
+		border: 0;
+		background: #fff;
+		float:none;
+		display:inline-block;
+		margin:0;
+
+		a.ui-tabs-anchor {
+			&:focus {
+				outline:0;
 			}
 		}
 	}
+}
+
+.action-buttons {
+	.calendar-options {
+		padding: 0 !important;
+	}
+	.select-dropdown {
+		padding: 5px 45px 5px 15px;
+		border: 1px solid $button-border-color;
+		color: #000;
+	}
+    span.edit {
+        padding:7px 14px !important;
+        img {
+            width:16px;
+            height:16px;
+            vertical-align: bottom;
+        }
+    }
+}
+
+.multi-options.button-action-list {
+	width: auto;
+	.action-list-items {
+		left: -160px;
+	}
+}
+
+.comment-modal {
+	textarea {
+		width: 100%;
+		min-height: 50px;
+		&:focus {
+			outline: none;
+			border: 1px solid $border-color-active
+		}
+	}
+}
+
+.action-buttons .select-dropdown {
+	line-height: 1.5;
+}
+
+.select-all.check-input input + label {
+	padding: 25px 0 0px 25px;
+}
+
+.sidebar-section.comments {
+	textarea {
+		width: 100%;
+		padding: 5px;
+		border-left: 3px solid $button-color-green;
+		min-height: 50px;
+		&:focus {
+			outline: none;
+			border: 1px solid $button-color-green;
+			border-left: 3px solid green;
+		}
+	}
+	.action-buttons {
+		margin-bottom: 0;
+	}
+}
+
+#clear-all {
+	cursor: pointer;
+    color: #155d9a;
+}
+
+@media all and (max-width:480px) {
+    .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments textarea {
+        width: 100%;
+    }
+
+    .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .cand-add-tag {
+        width: 100%;
+    }
+
+    .action-buttons {
+
+    	.select-dropdown {
+    		padding: 5px 5px 5px 15px;
+
+    	}
+
+    }
+    .active-filters {
+        padding-bottom:20px;
+        font-size: 14px;
+        .filter-tag {
+
+            padding:2px 10px;
+            #clear-all {
+                display: block;
+                margin-top: 5px;
+            }
+        }
+    }
 }

@@ -1,0 +1,614 @@
+function candidateList() {
+
+    var settings = {};
+    var config = {};
+
+    function init(){
+        settings.rowContainer= $('.candidateListing'),
+        settings.header= $('#jobDetails'),
+        settings.candidateRowClass= ".candidateRow",
+        settings.candidateInviteButton= ".candidateSendInterviewInvite",
+        settings.candidateAddTagButton= ".candidateAddTag",
+        settings.candidateAddCommentButton= ".candidateAddComment",
+        settings.candidateSaveButton= ".candidateSave",
+        settings.candidateDownloadResumeButton= ".candidateDownloadResume",
+        settings.candidateSendMessageButton= ".candidateSendMessage",
+        settings.candidateOtherActionsClass= '.candidateOtherActions',
+        settings.candidateShortlistButtonClass='.candidateShortlist',
+        settings.candidateRejectButtonClass= '.candidateReject',
+        settings.candidateCheckboxClass= '.candidateCheckbox',
+        settings.candidateCheckboxLabelClass= '.candidateCheckboxLabel',
+        settings.candidateTagsPrototype= $('.candidateTags.prototype'),
+        settings.viewCommentButtonClass = '.viewCommentButton',
+        settings.viewTagButtonClass = '.viewTagButton',
+        settings.massResumeDownload = $("#downloadResumeMass"),
+        settings.massReject = $("#massReject"),
+        settings.massSave = $("#massSave"),
+        settings.massShortlist = $("#massShortlist"),
+        settings.massComment = $("#massComment"),
+        settings.massTag = $("#massTag"),
+        settings.downloadExcelMass = $("#downloadExcelMass")
+        settings.bulkActionContainer = $("#massActionContainer"),
+        settings.massCheckboxInput = $("#massCheckboxInput"),
+        settings.massCheckboxLabel = $("#massCheckboxLabel"),
+        settings.candidateSelectedLength = null,
+        settings.bulkActionModal = $(".bulkActionModal"),
+        settings.selectedApplicationIds = {},
+        settings.jobTabs = $("#jobs-tabs"),
+        settings.candidateItemShellClass = ".candidateItem.shell"
+
+        onClickMassCheckbox()
+        onClickCandidateOtherActions()
+        onClickMassSave()
+        onClickMassReject()
+        onClickMassShortlist()
+        onClickMassComment()
+
+	}
+
+	function setConfig(key, value) {
+		config[key] = value;
+	}
+
+    function getElement(id) {
+		var card = $(""+settings.candidateRowClass+".prototype").clone().removeClass('prototype hidden')
+		card.attr('data-candidate-id', id);
+		return {
+			element: card,
+            image: card.find('.js_img'),
+			name: card.find('.js_name'),
+			experience: card.find('.js_exp'),
+            location: card.find('.js_loc'),
+			appliedOn: card.find('.js_appliedOn'),
+			notice: card.find('.js_notice'),
+			jobTagList: card.find('.js_job_tag_list'),
+			eduList: card.find('.js_edu_list'),
+			profList: card.find('.js_prof_list'),
+            candidateCheckbox: card.find(settings.candidateCheckboxClass),
+            candidateCheckboxLabel: card.find(settings.candidateCheckboxLabelClass),
+            proMember: card.find('.isPro'),
+            isFollowedUp: card.find('.isFollowedUp'),
+            shortlistButton: card.find(settings.candidateShortlistButtonClass),
+            rejectButton: card.find(settings.candidateRejectButtonClass),
+            savedButton: card.find(settings.candidateSaveButton),
+            downloadResumeButton: card.find(settings.candidateDownloadResumeButton)
+		}
+	}
+
+    function getEducationElement() {
+        var card = $('.js_edu.prototype').clone().removeClass("prototype hidden");
+        return {
+            element: card,
+            name: card.find('.js_edu_name'),
+            degree: card.find('.js_edu_degree'),
+            tenure: card.find('.js_edu_tenure'),
+            seperator: card.find('.jsSeperator')
+        }
+    }
+
+    function getProfessionalElement() {
+        var card = $('.js_prof.prototype').clone().removeClass("prototype hidden");
+        return {
+            element: card,
+            name: card.find('.js_prof_name'),
+			tenure: card.find('.js_prof_tenure'),
+			designation: card.find('.js_prof_designation'),
+            seperator: card.find('.jsSeperator')
+        }
+    }
+
+    function createElement(aData) {
+		var item = getElement(aData["userID"]);
+        item.element.attr("data-application-id", aData["id"]);
+        item.image.attr("src",(aData["img"] || "/static/images/noimage.png"));
+        item.name.text(aData["name"] || "NA");
+        item.experience.text((aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m") || "NA");
+        item.location.text(aData["currentLocation"] || "NA");
+        item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY'))
+        item.notice.text((aData["notice"] + " months"));
+        item.shortlistButton.attr("data-status", "1");
+        item.rejectButton.attr("data-status", "2");
+        item.savedButton.attr("data-status", "3");
+        item.downloadResumeButton.attr("href", aData["resume"])
+        item.downloadResumeButton.attr("download", aData["name"].replace(/ +/g, '_')+'_resume.pdf')
+        var status = aData["status"];
+        if(status == 1) {
+            item.shortlistButton.text("Shortlisted")
+        }
+        else if(status == 2) {
+            item.rejectButton.text("Rejected")
+        }
+        else if(status == 3) {
+            item.savedButton.text("Saved for later")
+        }
+        // var tagStr = '';
+        // $.each(aData["tags"],function(index, aTag) {
+        //     var tag =  settings.candidateTagsPrototype.clone().text(aTag["name"]).removeClass("prototype hidden");
+        //     tagStr+=tag[0].outerHTML
+        // })
+        // item.jobTagList.html(tagStr)
+        var profStr = '';
+        $.each(aData["jobs"],function(index, anObj) {
+            if(index > 2) {
+                return
+            }
+            var item = getProfessionalElement()
+            item.name.text(anObj["organization"])
+            item.designation.text(anObj["designation"]);
+
+            var fromMon = getMonthName(anObj["exp"]["from"]["month"]);
+            var toMon = getMonthName(anObj["exp"]["to"]["month"]);
+            var fromYear = anObj["exp"]["from"]["year"];
+            var toYear = anObj["exp"]["from"]["year"];
+            var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
+            item.tenure.text(str);
+
+            profStr+=item.element[0].outerHTML
+        })
+        item.profList.html(profStr)
+        var eduStr = '';
+        $.each(aData["education"],function(index, anObj) {
+            if(index > 2) {
+                return
+            }
+            var item = getEducationElement()
+            item.name.text(anObj["institute"])
+            item.tenure.text(anObj["batch"]["from"] + " - " + anObj["batch"]["to"] )
+            item.degree.text(anObj["degree"] + "("+anObj["courseType"]+")")
+            eduStr+=item.element[0].outerHTML
+        })
+        item.eduList.html(eduStr)
+
+        console.log(aData['userID']);
+        item.candidateCheckbox.attr("id",aData["userID"]);
+        item.candidateCheckboxLabel.attr("for",aData["userID"]);
+        if(aData["pro"]) {
+            item.proMember.removeClass("hidden")
+        }
+        if(aData["follow"]) {
+            item.isFollowedUp.removeClass("hidden")
+        }
+        return item
+    }
+
+
+
+    function getJobsCategoryTabsElement() {
+        var card = $("#jobs-category-tabs");
+        return {
+            element: card,
+            all: card.find("#allNo"),
+            unread: card.find("#unreadNo"),
+            shortlisted: card.find("#shortlistedNo"),
+            rejected: card.find("#rejectedNo"),
+            saved: card.find("#savedNo"),
+            reviewed: card.find("#reviewedNo")
+        }
+    }
+
+    function setJobStats(data) {
+        var item = getJobsCategoryTabsElement()
+        var unread = data["total"] - (data["shortlisted"] + data["rejected"] + data["save"] + data["reviewed"]);
+        item.all.text(data["total"]);
+        item.unread.text(unread)
+        item.shortlisted.text(data["shortlisted"])
+        item.rejected.text(data["rejected"])
+        item.saved.text(data["save"])
+        item.reviewed.text(data["reviewed"])
+    }
+
+    function updateJobStats(status, newStatus, number) {
+        var item = getJobsCategoryTabsElement();
+        var oldCount = item.element.find("li[data-attribute='"+status+"'] .tabStats").text()
+
+        if(status != "") {
+            item.element.find("li[data-attribute='"+status+"'] .tabStats").text(parseInt(oldCount) - number);
+        }
+        var newCount = item.element.find("li[data-attribute='"+newStatus+"'] .tabStats").text()
+
+        item.element.find("li[data-attribute='"+newStatus+"'] .tabStats").text(parseInt(newCount) + number);
+    }
+
+    function addToList(dataArray, status){
+		var str = '';
+        var element = $(".candidateListing[data-status-attribute='"+status+"']");
+        hideShells(status);
+        if(!dataArray.length) {
+			return element.html("<div class='no-data'>No Applications Found!</div>")
+		}
+		dataArray.forEach(function(aData, index){
+			var item = createElement(aData);
+			str+=item.element[0].outerHTML;
+            console.log(index)
+		});
+		element.append(str);
+        settings.rowContainer.find(".candidate-select").removeClass("selected");
+	}
+
+    function onClickViewComment(fn) {
+        settings.rowContainer.on('click', settings.viewCommentButtonClass, function(e){
+            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
+            fn(candidateId);
+            return false
+        })
+    }
+
+    function onClickViewTag(fn) {
+        settings.rowContainer.on('click', settings.viewTagButtonClass, function(e){
+            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
+            fn(candidateId);
+            return false
+        })
+    }
+
+    function onClickCandidate(fn) {
+        settings.rowContainer.on('click', ".candidate-item", function(e){
+            var candidateId = $(this).attr('data-candidate-id');
+            return fn(candidateId);
+        })
+    }
+
+    function activateStatsTab(event, ui) {
+        $(ui.oldTab[0]).find(".bulk-selection-item").removeClass("active");
+        $(ui.newTab[0]).find(".bulk-selection-item").addClass("active");
+        return $(ui.newTab[0]).attr("data-attribute");
+    }
+
+    function setDefaultTab(status) {
+        $("li .bulk-selection-item").removeClass("active")
+        $("li[data-attribute='"+status+"'] .bulk-selection-item").addClass("active")
+    }
+
+    function onClickCandidateOtherActions() {
+        settings.rowContainer.on('click', settings.candidateOtherActionsClass,function(event) {
+            event.stopPropagation();
+            $(this).toggleClass("inactive");
+        })
+    }
+
+    function onClickSendMessage(fn) {
+        settings.rowContainer.on('click', settings.candidateSendMessageButton,function(event) {
+            event.stopPropagation();
+            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
+            fn(candidateId);
+            return false
+        });
+    }
+
+    function onClickSendInterviewInvite(fn) {
+        settings.rowContainer.on('click', settings.candidateInviteButton, function(event){
+            event.stopPropagation();
+            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
+            fn(candidateId);
+            return false
+        })
+    }
+
+    function onClickDownloadResume(fn) {
+        settings.rowContainer.on('click', settings.candidateDownloadResumeButton, function(event){
+            event.stopPropagation();
+            fn()
+        })
+    }
+
+    function onClickSaveCandidate(fn) {
+        settings.rowContainer.on('click', settings.candidateSaveButton, function(event){
+            event.stopPropagation();
+            var status = $(this).attr("data-status");
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            fn(applicationId, status);
+            return false
+        })
+    }
+
+
+
+    // function onClickMassTag(fn) {
+    //     var modal = $(".jsAddTagModal");
+    //     settings.massTag.click(function(event) {
+    //         modal.find(".jsModalText").text("You are about to add Tag on "+settings.candidateSelectedLength+" candidates.")
+    //         addBodyFixed()
+    //         modal.removeClass("hidden")
+    //     })
+    //     modal.find(".jsAddTag").click(function(){
+    //         fn()
+    //     });
+    // }
+
+    function onClickAddTag(fn) {
+        settings.rowContainer.on('click',settings.candidateAddTagButton ,function(event) {
+            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
+            fn(candidateId);
+            return false
+        })
+    }
+
+    function onClickAddComment(fn) {
+        settings.rowContainer.on('click',settings.candidateAddCommentButton ,function(event) {
+            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
+            fn(candidateId);
+            return false
+        })
+    }
+
+    function onClickShortlistCandidate(fn) {
+
+        settings.rowContainer.on('click', settings.candidateShortlistButtonClass, function(event) {
+            console.log("a")
+            event.stopPropagation();
+            var status = $(this).attr("data-status");
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            fn(applicationId, status);
+
+        })
+    }
+
+    function onClickRejectCandidate(fn) {
+        settings.rowContainer.on('click', settings.candidateRejectButtonClass, function(event) {
+            event.stopPropagation();
+            var status = $(this).attr("data-status");
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            fn(applicationId, status);
+        })
+    }
+
+    function candidateActionTransition(arr) {
+        arr.forEach(function(applicationId){
+            settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"]").remove()
+        })
+
+    }
+
+    function onChangeCandidateCheckbox(fn) {
+        settings.rowContainer.on('click', settings.candidateCheckboxClass, function(event){
+            event.stopPropagation();
+
+            if(jQuery(this).is(":checked")){
+                jQuery(this).closest(".candidate-select").addClass("selected");
+
+
+                var el = jQuery(".candidate-select.selected");
+
+                if(el.length >=2) {
+                    settings.bulkActionContainer.removeClass("hidden")
+                }
+                else {
+                    settings.bulkActionContainer.addClass("hidden")
+                }
+            } else {
+                jQuery(this).closest(".candidate-select").removeClass("selected");
+                var el = jQuery(".candidate-select.selected");
+                var applicationId =  $(this).closest(settings.candidateRowClass).attr("data-application-id")
+
+
+                if(el.length >=2) {
+                    settings.bulkActionContainer.removeClass("hidden")
+                }
+                else {
+                    settings.bulkActionContainer.addClass("hidden")
+                }
+            }
+            // var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
+            // return fn(candidateId);
+        })
+        settings.rowContainer.on('click', settings.candidateCheckboxLabelClass, function(event) {
+            event.stopPropagation();
+
+        })
+    }
+
+    function onClickMassCheckbox(){
+        settings.massCheckboxInput.click(function(event){
+            event.stopPropagation();
+
+            if(jQuery(this).is(":checked")){
+                var candidateSelect = jQuery(".candidate-select")
+                candidateSelect.not(".candidate-select.prototype").addClass("selected");
+                candidateSelect.find("input").prop("checked",  true);
+                var el = jQuery(".candidate-select.selected");
+                if(el.length >=2) {
+                    settings.bulkActionContainer.removeClass("hidden")
+                }
+                else {
+                    settings.bulkActionContainer.addClass("hidden")
+                }
+            } else {
+                var candidateSelect = jQuery(".candidate-select")
+
+                candidateSelect.not(".candidate-select.prototype").removeClass("selected");
+                jQuery(".candidate-select input").prop("checked",  false);
+
+
+                settings.bulkActionContainer.addClass("hidden")
+
+            }
+        })
+        settings.massCheckboxLabel.click(function(event) {
+            event.stopPropagation();
+
+        })
+    }
+
+    function onClickMassReject(fn) {
+        settings.massReject.click(function(){
+            var arr = returnSelectedApplications();
+			settings.bulkActionModal.find(".modalHeading").text("Are you sure?");
+			settings.bulkActionModal.find(".jsModalText").text("You are about to reject "+arr.length+" candidates.")
+			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Rejected Tab.").removeClass("hidden");
+            settings.bulkActionModal.find(".massActionButton").text("Reject").attr("data-action", "reject").attr("data-status", "2")
+            settings.bulkActionModal.find(".massTextarea").val("")
+            addBodyFixed()
+            settings.bulkActionModal.removeClass("hidden")
+        })
+
+    }
+
+    function onClickMassShortlist() {
+        settings.massShortlist.click(function(){
+            var arr = returnSelectedApplications();
+            settings.bulkActionModal.find(".modalHeading").text("Are you sure?");
+			settings.bulkActionModal.find(".jsModalText").text("You are about to shortlist "+arr.length+" candidates.")
+			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Shortlisted Tab.").removeClass("hidden");
+            settings.bulkActionModal.find(".massActionButton").text("Shortlist").attr("data-action", "shortlist").attr("data-status", "1")
+            settings.bulkActionModal.find(".massTextarea").val("")
+            addBodyFixed()
+            settings.bulkActionModal.removeClass("hidden")
+        })
+    }
+
+    function onClickMassSave() {
+        settings.massSave.click(function(){
+            var arr = returnSelectedApplications();
+            settings.bulkActionModal.find(".modalHeading").text("Are you sure?");
+			settings.bulkActionModal.find(".jsModalText").text("You are about to save "+arr.length+" candidates.")
+			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Saved Tab.").removeClass("hidden");
+            settings.bulkActionModal.find(".massActionButton").text("Save for Later").attr("data-action", "save").attr("data-status", "3")
+            settings.bulkActionModal.find(".massTextarea").val("")
+            addBodyFixed()
+            settings.bulkActionModal.removeClass("hidden")
+        })
+    }
+
+    function onClickMassComment() {
+        settings.massComment.click(function(){
+            var arr = returnSelectedApplications();
+            settings.bulkActionModal.find(".modalHeading").text("Add Comment");
+			settings.bulkActionModal.find(".jsModalText").text("The Comment will be added on "+arr.length+" candidates profiles.")
+			settings.bulkActionModal.find(".jsModalTextSecondary").addClass("hidden")
+            settings.bulkActionModal.find(".massActionButton").text("Add").attr("data-action", "comment")
+            settings.bulkActionModal.find(".massTextarea").val("")
+            addBodyFixed()
+            settings.bulkActionModal.removeClass("hidden")
+        })
+    }
+
+    function onClickMassActionButton(fn) {
+        settings.bulkActionModal.find(".massActionButton").click(function(){
+            var selectedApplicationIds = returnSelectedApplications()
+            var action = $(this).attr("data-action");
+            var comment = settings.bulkActionModal.find(".massTextarea").val();
+            var newStatus;
+            if($(this).attr("data-status")) {
+                newStatus =  $(this).attr("data-status");
+            }
+
+            if(!comment) {
+                settings.bulkActionModal.find(".errorField").removeClass("hidden")
+            }
+            else {
+                settings.bulkActionModal.find(".errorField").addClass("hidden")
+            }
+            settings.bulkActionModal.addClass("hidden")
+
+            fn(selectedApplicationIds, action, comment, newStatus)
+        })
+    }
+
+    function returnSelectedApplications() {
+        debugger
+        var el = settings.rowContainer.find(".candidate-select.selected")
+        debugger
+        var selectedApplicationIds = []
+        $.each(el, function(index,anElem){
+
+            var applicationId = $(anElem).closest(settings.candidateRowClass).attr("data-application-id")
+
+            selectedApplicationIds.push(applicationId)
+        })
+        return selectedApplicationIds
+    }
+
+    function onClickDownloadMassExcel(fn) {
+        settings.downloadExcelMass.click(function(event){
+
+            var arr = returnSelectedApplications()
+            fn(arr)
+            return true;
+        })
+    }
+
+    function onClickDownloadMassResume(fn) {
+        settings.massResumeDownload.click(function(event){
+            var arr = returnSelectedApplications()
+            fn(arr)
+        })
+    }
+
+    function setHref(str) {
+        var href = settings.downloadExcelMass.attr("href");
+        href += str;
+        console.log(href)
+        settings.downloadExcelMass.attr("href", href);
+    }
+
+    function closeModal() {
+		removeBodyFixed()
+		settings.bulkActionModal.addClass("hidden")
+	}
+
+    function initializeJqueryTabs(defaultTab, fn) {
+        settings.jobTabs.tabs({
+            active: defaultTab,
+            create:function(){
+                $(this).removeClass("hidden")
+            },
+            activate: function(event, ui){
+                settings.bulkActionContainer.addClass("hidden")
+                settings.massCheckboxInput.prop("checked", false)
+                fn(event, ui);
+            }
+        })
+    }
+
+
+    function showShells(status) {
+        $(".candidateListing[data-status-attribute='"+status+"']").find(settings.candidateItemShellClass).removeClass("hidden")
+    }
+
+    function hideShells(status) {
+        $(".candidateListing[data-status-attribute='"+status+"']").find(settings.candidateItemShellClass).addClass("hidden")
+    }
+
+    function removeCandidate(status) {
+        $(".candidateListing[data-status-attribute='"+status+"']").find(settings.candidateRowClass).remove();
+    }
+
+    function changeButtonText(arr, newStatus) {
+        arr.forEach(function(applicationId){
+            $(settings.candidateRowClass).find(".candidateRow[data-application-id="+applicationId+"] button[data-status="+newStatus+"]").text("")
+        })
+    }
+
+    return {
+		init: init,
+		addToList: addToList,
+		setConfig : setConfig,
+        initializeJqueryTabs: initializeJqueryTabs,
+        setJobStats: setJobStats,
+        activateStatsTab: activateStatsTab,
+        onClickCandidate: onClickCandidate,
+        onClickSendInterviewInvite: onClickSendInterviewInvite,
+        onClickAddTag: onClickAddTag,
+        onClickAddComment: onClickAddComment,
+        onClickSendMessage: onClickSendMessage,
+        onClickSaveCandidate: onClickSaveCandidate,
+        onClickDownloadResume: onClickDownloadResume,
+        onClickShortlistCandidate: onClickShortlistCandidate,
+        onClickRejectCandidate: onClickRejectCandidate,
+        onChangeCandidateCheckbox: onChangeCandidateCheckbox,
+        candidateActionTransition: candidateActionTransition,
+        onClickViewComment: onClickViewComment,
+        onClickViewTag: onClickViewTag,
+        onClickDownloadMassExcel: onClickDownloadMassExcel,
+        updateJobStats: updateJobStats,
+        onClickMassComment: onClickMassComment,
+        setHref: setHref,
+        onClickMassActionButton: onClickMassActionButton,
+        onClickDownloadMassResume: onClickDownloadMassResume,
+        closeModal: closeModal,
+        showShells: showShells,
+        hideShells: hideShells,
+        removeCandidate: removeCandidate,
+        setDefaultTab: setDefaultTab
+	}
+}
