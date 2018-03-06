@@ -731,6 +731,7 @@
 				"static/css/colors.css",
 				"static/css/my-jobs.css",
 				"static/css/utilities.css",
+				"static/css/chat-sticky.css",
 				"static/css/footer.css",
 				"static/css/icons/icons.css",
 				"static/css/modal.css",

@@ -252,10 +252,6 @@ chatContainer.on('click','.candidate-card', function() {
 })
 
 
-
-
-
-
 $("#chat-collapsed-container").on('click',".chat-collapsed-candidate-container .candidate-collapsed-block i", function(event) {
 	event.stopPropagation();
 	var dataId = $(this).attr("data-id");
