@@ -7,31 +7,67 @@ var candidatesWrapper = $(".candidate-card.prototype");
 
 
 $(document).ready(function(){
-
     if ($(document).width() < 1000) {
-        maxCandidateChats = 1
-    } else {
-        if ($(document).width() < 1450) {
-
-            maxCandidateChats = 2
+            maxCandidateChats = 1
         } else {
+            if ($(document).width() < 1450) {
 
-            maxCandidateChats = 3
+                maxCandidateChats = 2
+            } else {
+
+                maxCandidateChats = 3
+            }
         }
-    }
-
-
+        initializePubNub();
+        addListeners(onNewMessage, onNewPresence, onNewStatus);
+        subscribe(getArray(channelsArray));
+	
+	userProfile.find(".dropdown").hover(showMenu);
+	navBar.find(".menu-calendar").hover(showMenuCalendar);
+	navBar.find(".menu-more").hover(showMenuMore);
+	navBar.find(".manage-bookings").click(showAllCalendars);
 	$('.chat-div .chat-div-header').click(function() {
 
 		$('.chat-div .chat-div-content').toggleClass("show");
 		//$('.chat-div .minus-icon').toggleClass("show");
 	});
-
-
-
+	populateChatView(channelsArray);
+	$("#search-solar").keyup(function(event){
+    if(event.keyCode == 13){
+        var queryParameter = $(this).val();
+		window.location = "/recruiter/filter-candidate?queryParameter="+queryParameter;
+    }
+});
+	$(".saved-shortlisted").click(function(event) {
+		event.preventDefault();
+		window.location = "/recruiter/filter-candidate";
+	})
 })
 
+var showAllCalendars = function(event) {
+	event.preventDefault();
+	window.location =  "/recruiter/" + recruiterID + "/calendar";
+}
 
+var showMenu = function() {
+	userProfile.find(".options").toggleClass("hidden");
+}
+
+var showMenuCalendar = function() {
+	navBar.find(".menu-calendar .options").toggleClass("hidden");
+}
+
+var showMenuMore = function() {
+	navBar.find(".menu-more .options").toggleClass("hidden");
+}
+
+var populateHeader = function(res) {
+	console.log(res);
+    if(res.status =="success") {
+        userProfile.find('.email').append(res["data"][0]["email"]+"<i class='email-caret fa fa-caret-down' aria-hidden='true'></i>").removeClass("animated-background");
+		userProfile.find('.image-container img').attr('src', res["data"][0]["img_link"]).removeClass("animated-background");
+    }
+}
 
 var isShowCollapsedCandidate = 0;
 var count = 0;
@@ -48,22 +84,22 @@ chatContainer.on('click','.candidate-card', function() {
 		chatContainerBox.find(".info-buttons .close-icon").attr("data-id",$(this).attr("data-id"));
 		chatContainerBox.attr("data-id",$(this).attr("data-id"));
 		var dataID = chatContainerBox.attr("data-id");
-		// fetchHistory(chatContainerBox.find(".candidate-name").text(), 20 , function(status, response) {
-		//     console.log(response);
-		//     response["messages"].forEach(function(elem, index){
-		//         var postedTime = ISODateToTime(elem["entry"]["time"]);
-		//         elem["entry"]["time"] = ISODateToD_M_Y(elem["entry"]["time"]);
-        //
-		//         if(index == 0) {
-		// 			$(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content").append("<div class='date-block '><div class='date'>"+elem["entry"]["time"]+"</div></div>");
-        //
-		//         }
-		//         if (index > 0 && (response["messages"][index - 1]["entry"]["time"] != elem["entry"]["time"])) {
-		//              	$(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content").append("<div class='date-block '><div class='date'>"+elem["entry"]["time"]+"</div></div>");
-		//         }
-		//          $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content").append("<div class='message-container left'><div class='message-received'>"+elem["entry"]["msg"]+"<div class='caret'></div><span class='current-time'>"+postedTime+"</span></div></div>")
-		//     })
-		// });
+		fetchHistory(chatContainerBox.find(".candidate-name").text(), 20 , function(status, response) {
+		    console.log(response);
+		    response["messages"].forEach(function(elem, index){
+		        var postedTime = ISODateToTime(elem["entry"]["time"]);
+		        elem["entry"]["time"] = ISODateToD_M_Y(elem["entry"]["time"]);
+
+		        if(index == 0) {
+					$(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content").append("<div class='date-block '><div class='date'>"+elem["entry"]["time"]+"</div></div>");
+
+		        }
+		        if (index > 0 && (response["messages"][index - 1]["entry"]["time"] != elem["entry"]["time"])) {
+		             	$(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content").append("<div class='date-block '><div class='date'>"+elem["entry"]["time"]+"</div></div>");
+		        }
+		         $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content").append("<div class='message-container left'><div class='message-received'>"+elem["entry"]["msg"]+"<div class='caret'></div><span class='current-time'>"+postedTime+"</span></div></div>")
+		    })
+		});
 		if($(".chat-candidate-boxes").children().length < maxCandidateChats) {
 		    $(".chat-candidate-boxes").prepend(chatContainerBox);
 		}
@@ -119,7 +155,20 @@ $("#chat-collapsed-container").on('click',".chat-collapsed-candidate-container .
     reposition_chat_windows();
 })
 
+var populateChatView = function(array) {
 
+	array.forEach(function(aCandidate) {
+
+		var card = candidatesWrapper.clone().removeClass('prototype hidden');
+		card.find(".candidate-image img").attr("src",recruiter["img_url"]).removeClass("animated-background");
+        card.attr("data-id",aCandidate["id"]);
+        card.find(".candidate-name").text(aCandidate["name"]).removeClass("animated-background");
+        card.find(".candidate-designation").text(aCandidate["jobseekerID"]).removeClass("animated-background");
+        card.find(".last-active-date").text(ISODateToD_M(aCandidate["lastActive"]));
+		$(".chat-div .chat-div-content").append(card);
+		$(".chat-div .chat-div-content").append("<hr class='divider divider-full'>");
+	})
+}
 
 $(".chat-candidate-boxes").on('click','.chat-div-candidate .chat-div-header', function() {
 	var dataId = $(this).attr("data-id");
@@ -213,43 +262,7 @@ function ISODateToTime(aDate) {
   var date = new Date(aDate),
 	hours = date.getHours(),
 	mins = date.getMinutes();
-    mins = checkTime(mins);
+
       var str = hours + ":" + mins;
       return str;
 }
-
-
-var recruiterID = localStorage.id;
-var maxCandidateChats;
-var profile = $(".user_profile");
-var tableRow = $(".jobs_content.prototype");
-
-var modal = $('.modal');
-var openGuidelines = $("#posting-guidelines");
-var closeModalBtn = $(".close");
-
-
-var displayAMessage = function(event) {
-    var key = event.which;
-    if(key == 13) {
-        $(".chat-candidate-boxes .chat-div-candidate .chat-div-content").append("<div class='message-container right'><div class='message-sent'>"+$(this).val()+"</div></div>");
-        $(this).val('');
-    }
-}
-
-
-
-
-
-
-
-
-
-
-$(document).ready(function(){
-
-
-
-
-
-})
