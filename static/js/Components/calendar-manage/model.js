@@ -1,5 +1,6 @@
 function Manage() {
-    var settings = { };
+    var settings = {};
+
 
     function init() {
         settings.rowContainer=$('.schedule-container'),
@@ -23,7 +24,7 @@ function Manage() {
     
     return{
         init :init,
-        cloneRow: cloneRow
+        cloneRow:cloneRow,
     }
 
 }

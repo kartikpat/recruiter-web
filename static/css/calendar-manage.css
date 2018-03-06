@@ -1062,7 +1062,8 @@ span.sticker {
         font-weight: 400;
         text-align: left;
         display: inline-block;
-        margin-left: 20px; }
+        margin-left: 20px;
+        margin-bottom: 10px; }
       .page-content .container .header-slot .manage-Calendar {
         display: inline-block;
         border-radius: 4px;
@@ -1078,7 +1079,8 @@ span.sticker {
         cursor: pointer;
         margin-bottom: 17px;
         font-weight: 400;
-        float: right; }
+        float: right;
+        display: none; }
     .page-content .container .wrapper {
       border-style: solid;
       border-width: 1px;
@@ -1250,7 +1252,8 @@ span.sticker {
           float: right;
           margin-top: 20px;
           margin-bottom: 30px;
-          margin-right: 25px; }
+          margin-right: 25px;
+          display: none; }
       .page-content .container .wrapper {
         border-style: solid;
         border-width: 1px;
@@ -1381,37 +1384,8 @@ span.sticker {
         cursor: pointer;
         margin-right: 10px;
         margin-top: 25px;
-        margin-bottom: 30px; }
-    .page-content .container .table-row-separator {
-      width: 100% !important; }
-  .page-content .right {
-    display: none; } }
-
-@media only screen and (max-width: 420px) {
-  .page-content .container {
-    width: 100%; }
-    .page-content .container .header-slot {
-      width: 100%; }
-      .page-content .container .header-slot .tagline {
-        margin-top: 25px;
-        margin-left: 10px;
-        font-size: 14px; }
-      .page-content .container .header-slot .manage-Calendar {
-        display: inline-block;
-        border-radius: 4px;
-        border-style: solid;
-        border-width: 1px;
-        border-color: #8f8a8a;
-        box-sizing: border-box;
-        background-color: #ffffff;
-        width: 120px;
-        height: 28px;
-        text-align: center;
-        line-height: 28px;
-        float: right;
-        cursor: pointer;
-        font-size: 14px;
-        margin-top: 20px; }
+        margin-bottom: 30px;
+        display: none; }
     .page-content .container .table-row-separator {
       width: 100% !important; }
   .page-content .right {
