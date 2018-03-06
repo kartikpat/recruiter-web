@@ -183,6 +183,15 @@
                         border-bottom: 1px solid #e8e8e8;
                     }
                 }
+                .no-data{
+                    height: 50px;
+                    line-height: 50px;
+                    text-align: center;
+                    min-width: 350px;
+                    margin: 0 auto;
+                    font-size: 20px;
+                    color: #2b2b2b;
+                }
             }
         }
     }
@@ -397,6 +406,32 @@
                     margin-top: 25px;
                     margin-bottom: 30px;
                     font-size: 12px;
+                }
+            }
+            .wrapper{
+                border-style: solid;
+                border-width: 1px;
+                border-color:  #e8e8e8;
+                box-sizing: border-box;
+                background-color:  #ffffff;
+                width: 100%;
+                .action{
+                 display: none;
+                }
+                .schedule-container{
+                    width:100%;
+                    display: block;
+                    padding: 0%;
+                    background-color: white;
+                    .no-data{
+                        height: 50px;
+                        line-height: 50px;
+                        text-align: center;
+                        min-width: 100%;
+                        margin: 0 auto;
+                        font-size: 18px;
+                        color: #2b2b2b;
+                    }
                 }
             }
 

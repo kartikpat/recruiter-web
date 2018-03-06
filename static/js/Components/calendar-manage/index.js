@@ -8,7 +8,7 @@ jQuery(document).ready( function(){
         calendarManage.cloneRow(data.data);
     }
     function onFetchFail(){
-
+        alert(res.status);
     }
 
 });  
