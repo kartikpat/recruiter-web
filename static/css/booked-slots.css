@@ -2614,6 +2614,7 @@ span.sticker {
       background-position: right 18px center;
       outline: none;
       padding-left: 10px;
+      padding: 0px 15px;
       cursor: pointer;
       -webkit-appearance: none;
       -moz-appearance: none;

@@ -506,7 +506,7 @@ span.sticker {
   .tag-container .pill-button .pill-listing ul {
     max-height: 300px; } }
 
-.error {
+.formgroup .error {
   position: static !important; }
 
 .page-content {

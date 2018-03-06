@@ -71,6 +71,8 @@ function BookedSlots() {
 		return title.replace(regex, '');
 	}
 
+
+
 	function createElement(aData) {
 		var item = cloneElement();
 		// var title = getTitleFormat(aData["title"], (/\(\d+-\d+ \w+\)$/));
@@ -84,7 +86,9 @@ function BookedSlots() {
                 item.element.addClass("border-top")
             }
 			var time = aData["slot"]["time"];
-			var showTime = time.substr(0,1) + ":" + time.substr(2,3) + " to ";
+			var temp = time.substr(0,2) + ":" + time.substr(2,2);
+			var temp1 =	moment(temp, 'HH:mm').add(30, 'minutes').format('HH:mm');
+			var showTime = temp + " to " + temp1;
     		item.interviewTime.text(showTime)
         }
 

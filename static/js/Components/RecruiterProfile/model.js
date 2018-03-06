@@ -71,7 +71,7 @@ function Profile(){
 	}
 
 	function validate(){
-		debugger
+
 		if(settings.type == "profile") {
 			if(!(
 					checkEmail(settings.email)
@@ -82,7 +82,7 @@ function Profile(){
 			return true;
 		}
 		if(settings.type== "social-accounts") {
-			debugger
+
 			if(!(
 					checkUrl(settings.facebook)
 					&& checkUrl(settings.linkedIn)
@@ -95,7 +95,7 @@ function Profile(){
 		if(settings.type== "change-password") {
 
 		}
-		debugger
+
 	}
 	function getProfile() {
 		var form = new FormData();
@@ -158,7 +158,6 @@ function Profile(){
 		settings.profileImg.attr("src", (obj["img_link"] || "/static/images/noimage.png"));
 		settings.name.val(obj["name"]);
 		settings.contact.val(obj["phone"]);
-		// settings.isPremium.prop("checked", obj["premium"]);
 		settings.email.val(obj["email"]);
 		settings.designation.val(obj["desg"]);
 
@@ -168,8 +167,8 @@ function Profile(){
 		settings.organization.val(obj["org"]);
 		settings.websiteUrl.val(obj["wurl"]);
 
-		settings.recruiterType.val(1);
-		settings.location.val();
+		settings.recruiterType.val(obj["type"]);
+		settings.location.val(obj["location"]);
 		settings.about.val(obj["about"]);
 		settings.twitter.val(obj["turl"]);
 		settings.facebook.val(obj["furl"]);
@@ -177,10 +176,9 @@ function Profile(){
 		// settings.twitter.val(obj["turl"]);
 		// settings.twitter.val(obj["turl"]);
 
-		$("input[name='notification-type']").val()
+		$("input[name='notification-type']").val(obj["notificationEmail"])
 
 		if(obj["availableCredits"]) {
-
 			settings.buyMore.removeClass("hidden")
 			settings.premiumDetail.text(obj["availableCredits"] + " credits left.")
 		}
@@ -194,7 +192,7 @@ function Profile(){
 
 		$(settings.submitButton).click(function() {
 			var type = $(this).closest(".settings-page").find(".settings-sidebar li.active").attr("data-selector")
-			debugger
+
 			settings.type = type;
 			fn()
 		})
