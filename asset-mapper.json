@@ -1306,9 +1306,11 @@
         },
         "scripts": {
             "debug": [
-            
-                "static/js/Components/calendar-manage/index.js"
-            
+				"static/js/vendor/moment.min.js",
+				"static/js/Components/calendar-manage/model.js",
+				"static/js/Components/calendar-manage/index.js"
+				
+				
             ],
             "prod" :[
                 "static/build/js/calendar.min.js"
