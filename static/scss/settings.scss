@@ -2,6 +2,10 @@
 
 @import 'input-elements';
 
+.error {
+    position: static !important;
+}
+
 .page-content {
     @include page-content;
     .settings-page {

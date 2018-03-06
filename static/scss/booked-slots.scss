@@ -1,5 +1,58 @@
 @import "fonts.scss";
+@import 'input-elements';
+@import 'chat-sidebar';
 
+@import 'components/modal';
+.button-action-list {
+    display: inline-block;
+    width: 165px;
+    padding: 6px 15px;
+    border: 1px solid $border-color-base;
+    border-radius: 4px;
+	cursor:pointer;
+	position:relative;
+	background:$options-list-background-color;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+
+	label {
+		cursor:pointer;
+		background-image:url('/static/images/black_caret_down.svg');
+	    background-position:right center;
+	    background-repeat:no-repeat;
+	}
+    &.inactive {
+    	border-bottom-left-radius: 4px;
+    	border-bottom-right-radius: 4px;
+		.action-list-items {
+		    display: none;
+		}
+    }
+
+    .action-list-items {
+	    position: absolute;
+	    top: 100%;
+	    right: 0;
+	    width: 165px;
+	    left: 0;
+	    margin: 0 -1px;
+	    background: #FFF;
+	    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+	    border: 1px solid #e8e8e8;
+	    list-style: none;
+	    padding: 5px 0;
+	    z-index:5;
+
+	    li {
+	    	padding:0 10px;
+	    	margin:5px 0;
+	    	a {
+				font-size:$options-list-font-size;
+				color:$options-list-link-color;
+	    	}
+	    }
+    }
+}
 .container{
   //  font-family: $droid-font;
     //font-family: "Droid-Sans";
@@ -13,10 +66,10 @@
             text-align: left;
             float: left;
             padding-right: 60%;
-            margin-left: 30px; 
-              
+            margin-left: 30px;
+
         }
-        
+
            .section{
             float: left;
                  .select-dropdown{
@@ -36,11 +89,11 @@
                     background-position: right 18px center;
                     outline: none;
                     padding-left: 10px;
-                    
+
                     cursor: pointer;
                     -webkit-appearance: none;
                     -moz-appearance: none;
-                    -o-appearanance: none; 
+                    -o-appearanance: none;
                  }
             }
             .manage-Calendar{
@@ -58,7 +111,7 @@
                 line-height: 28px;
                 font-size: 0.85em;
                 cursor: pointer;
-                line-height: 28px; 
+                line-height: 28px;
             }
             .setting-bar{
             border-radius: 4px;
@@ -78,7 +131,7 @@
                     margin-top: 3px;
                 }
             }
-        }   
+        }
 
         .action-wrapper{
             width: 95%;
@@ -108,9 +161,6 @@
         .slot-date{
             //  clear: both;
             float: left;
-            border-bottom: 1px solid #e8e8e8;
-          //  margin-bottom: 20px;
-            margin-top: 18px;
             .date{
                 color:  #2b2b2b;
                 font-size: 14px;/* Approximation due to font substitution */
@@ -137,7 +187,7 @@
                         text-align: left;
                         float: left;
                         width: 115px;
-                       
+
                         .action-time{
                             display: none;
                         }
@@ -150,7 +200,7 @@
                         float: left;
                         margin-left: 45px;
                         width: 150px;
-                       
+
                         .action-name{
                             display: none;
                         }
@@ -171,7 +221,7 @@
                             font-size: 16px;/* Approximation due to font substitution */
                             font-weight: 700;
                             text-align: left;
-                           
+
                         }
                         .designation{
                             color:  #2b2b2b;
@@ -179,8 +229,8 @@
                             font-weight: 700;
                             line-height: 24px;/* Approximation due to font substitution */
                             text-align: left;
-                           
-                    
+
+
                         }
                         .experience{
                             color:  #2b2b2b;
@@ -189,9 +239,9 @@
                             line-height: 24px;/* Approximation due to font substitution */
                             text-align: left;
                             line-height: 24px;
-                           
+
                             span{
-                               
+
                                 color:  #2b2b2b;
                                 font-size: 14px;/* Approximation due to font substitution */
                                 font-weight: 400;
@@ -207,10 +257,10 @@
                             line-height: 24px;/* Approximation due to font substitution */
                             text-align: left;
                             line-height: 24px;
-                           
+
                             font-style: "bold";
                             span{
-                               
+
                                 color:  #2b2b2b;
                                 font-size: 14px;/* Approximation due to font substitution */
                                 font-weight: 400;
@@ -229,21 +279,21 @@
                             display: none;
                         }
                         #profile{
-                           
+
                             color:  #2b2b2b;
                             font-size: 14px;/* Approximation due to font substitution */
                             font-weight: 700;
                             line-height: 18px;/* Approximation due to font substitution */
                             text-align: left;
                         }
-                        #exp-details{   
-                               
+                        #exp-details{
+
                                 color:  #2b2b2b;
                                 font-size: 14px;/* Approximation due to font substitution */
                                 font-weight: 400;
                                 line-height: 24px;/* Approximation due to font substitution */
                                 text-align: left;
-                            
+
                         }
                     }
                     .action-buttons{
@@ -286,13 +336,13 @@
                                 cursor: pointer;
                                 -webkit-appearance: none;
                                 -moz-appearance: none;
-                                -o-appearanance: none; 
+                                -o-appearanance: none;
                                 }
                             }
                         }
                     }
                 }
-            }   
+            }
         }
     }
 }
@@ -325,10 +375,10 @@
                 padding-bottom: 40px;
                 margin-left: 20px;
                 margin-top: 10px;
-               
+
             }
         }
-        
+
         .action-wrapper{
             display: none;
         }
@@ -339,7 +389,7 @@
                 margin-left: -32px;
                 .date{
                 margin-top: -20px;
-                padding-bottom: 20px;    
+                padding-bottom: 20px;
                     .action-date{
                         display: block;
                         margin-top: 10px;
@@ -401,12 +451,12 @@
                                 font-size: 17px;/* Approximation due to font substitution */
                                 font-weight: 700;
                                 text-align: left;
-                                
+
                             }
                             .name{
                                 margin-top: -5px;
                             }
-                            
+
                         }
                         .job-details{
                             float: none;
@@ -422,7 +472,7 @@
                                 font-weight: 700;
                                 text-align: left;
                             }
-                            
+
                         }
                         .action-buttons{
                             float: none;
@@ -441,7 +491,7 @@
                 }
             }
         }
-    }   
+    }
 }
 
 @media only screen and (max-width: 900px){
@@ -472,11 +522,11 @@
                 padding-bottom: 40px;
                 margin-left: 20px;
                 margin-top: 10px;
-               
+
             }
 
         }
-    } 
+    }
 }
 
 @media only screen and (max-width: 480px){
@@ -496,13 +546,13 @@
             .section{
                 margin-left: 20px;
                 margin-top: 10px;
-               
+
             }
             .manage-Calendar{
                 margin-top: 10px;
                 width: 100px;
                 font-size: 12px;
-          
+
             }
             .setting-bar{
                margin-top: 10px;
@@ -511,7 +561,7 @@
                 padding-bottom: 40px;
                 margin-left: 20px;
                 margin-top: 10px;
-               
+
             }
 
         }
@@ -525,4 +575,7 @@
     }
 }
 
-
+.border-top {
+    border-top: 1px solid #e8e8e8;
+    padding-top: 15px;
+}

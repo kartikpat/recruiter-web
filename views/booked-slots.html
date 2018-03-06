@@ -1,17 +1,18 @@
 {{> header }}
+
+<div class="loader-overlay hidden" id="loaderOverlay">
+    <div class="loader"></div>
+</div>
+
 <div class="container">
     <div class="header-slot">
         <div class="tagline">
             Booked Slots
         </div>
             <div class="section">
-                <select class="select-dropdown inactive">
-                    <div class="dropdown-list">
-                        <option value="0" selected>All Upcoming</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                        <option value="4">Option 4</li>
+                <select class="select-dropdown inactive" id="calendarDropdown">
+                    <div class="dropdown-list" >
+                        <option value="-1" selected>Calendar</option>
                     </div>
                 </select>
             </div>
@@ -20,8 +21,8 @@
             </div>
             <div class="setting-bar">
                 <img src="/static/images/setting.png">
-            </div>   
-    </div>    
+            </div>
+    </div>
     <div class="action-wrapper">
         <div class="action Interview-Date">
             <label>Interview Date</label>
@@ -42,153 +43,73 @@
             <label>Actions</label>
         </div>
     </div>
-    <div class="booked-slots">
-        <div class="slot-date">
-            <div class="date"><div class="action-date">Interview Date</div>Jan,15 2017</div>
-            <div class="schedules-container">
-            <div class="schedules">               
-                <div class="time"><div class="action-time">Time Slots</div>10:00 to 11:00 AM</div>
-                <div class="interview-type"><div class="action-name">Calendar Name</div>Product Interviews</div>
-                <div class="details">
-                    <div class="action-detail">Candidate Details</div>
-                    <div class="name">Shally Sharma</div>
-                    <div class="designation">Product Manager at iimjobs</div>
-                    <div class="experience">Experience: <span>2yrs</span></div>
-                    <div class="location">Current Location: <span>Delhi</span></div>
-                </div>
-                <div class="job-details">
-                    <div class="action-job">Applied to job</div>
-                    <div id="profile">iimjobs.com-Associate Product Manager</div>
-                    <div id="exp-details">Delhi 0-5 yrs</div>
-                </div>
-                <div class="action-buttons">
-                    <div class="send-message">
-                        Send Message
-                    </div>
-                    <div class="other-actions">
-                        <div class="section">
-                            <select class="select-dropdown inactive">
-                                <div class="dropdown-list">
-                                    <option value="0" selected>Other Actions</option>
-                                    <option value="1">Option 1</option>
-                                    <option value="2">Option 2</option>
-                                    <option value="3">Option 3</option>
-                                    <option value="4">Option 4</option>
-                                </div>
-                            </select>
-                        </div>
-                    </div>
+    <div class="booked-slots bookedSlots">
+
+
+    </div>
+</div>
+
+<option class="prototype calendarOption" value="0" selected>Calendar</option>
+
+<div class="slot-date slotDate prototype hidden">
+    <div class="date"><div class="action-date">Interview Date</div><span class="interviewDate"></span></div>
+    <div class="schedules-container">
+    <div class="schedules">
+        <div class="time"><div class="action-time">Time Slots</div><span class="interviewTime">10:00 to 11:00 AM</span></div>
+        <div class="interview-type"><div class="action-name">Calendar Name</div><a href="" class="calendarName">Product Interviews</a></div>
+        <div class="details">
+            <div class="action-detail">Candidate Details</div>
+            <div class="name candName">Shally Sharma</div>
+            <div class="designation candDesignation">Product Manager at iimjobs</div>
+            <div class="experience ">Experience: <span class="candExperience">2yrs</span></div>
+            <div class="location">Current Location: <span class="candLocation">Delhi</span></div>
+        </div>
+        <div class="job-details">
+            <div class="action-job">Applied to job</div>
+            <div id="profile" ><a class="jobName" target="_blank">iimjobs.com-Associate Product Manager</a></div>
+            <div id="exp-details" class="jobExp"> Delhi 0-5 yrs</div>
+        </div>
+        <div class="action-buttons">
+            <div class="send-message">
+                Send Message
+            </div>
+            <div class="section">
+                <div class="button-action-list candidateOtherActions inactive">
+                    <label class="action-list-label">Other Actions</label>
+                    <ul class="action-list-items">
+                        <li><a href="#" class="candidateSendMessage">Chat</a></li>
+                        <li><a href="#" class="candidateCancelInterviewInvite">Cancel Interview</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+</div>
+
+
+<div id="" class="modal cancelInterviewModal hidden">
+
+    <!-- Modal content -->
+    <div class="modal_wrapper" >
+        <span class="modal_close">&times;</span>
+        <div class="modal_header">
+            <div class="modal_heading">Cancel Interview</div>
         </div>
-        <div class="slot-date">
-            <div class="date"><div class="action-date">Interview Date</div>Jan,15 2017</div>
-            <div class="schedules-container">
-                <div class="schedules">               
-                    <div class="time"><div class="action-time">Time Slots</div>10:00 to 11:00 AM</div>
-                    <div class="interview-type"><div class="action-name">Calendar Name</div>Product Interviews</div>
-                    <div class="details">
-                        <div class="action-detail">Candidate Details</div>
-                        <div class="name">Shally Sharma</div>
-                        <div class="designation">Product Manager at iimjobs</div>
-                        <div class="experience">Experience: <span>2yrs</span></div>
-                        <div class="location">Current Location:  <span>Delhi</span></div>
-                    </div>
-                    <div class="job-details">
-                        <div class="action-job">Applied to job</div>
-                        <div id="profile">iimjobs.com-Associate Product Manager</div>
-                        <div id="exp-details">Delhi 0-5 yrs</div>
-                    </div>
-                    <div class="action-buttons">
-                        <div class="send-message">
-                            Send Message
-                        </div>
-                        <div class="other-actions">
-                            <div class="section">
-                                <select class="select-dropdown inactive">
-                                    <div class="dropdown-list">
-                                        <option value="0" selected>Other Actions</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
-                                        <option value="4">Option 4</option>
-                                    </div>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+        <div class="modal_content">
+            <div class="modal_text">Are you sure you want to cancel this interview?</div>
+            <div class="section">
+                <div class="radio-input">
+                    <input type="radio" id="5" name="unpublishReason">
+                    <label for="5">Make this slot available to other candidates</label>
                 </div>
-                <div class="schedules">               
-                    <div class="time"><div class="action-time">Time Slots</div>12:00 to 1:00 PM</div>
-                    <div class="interview-type"><div class="action-name">Calendar Name</div>Tech Interviews</div>
-                    <div class="details">
-                        <div class="action-detail">Candidate Details</div> 
-                        <div class="name">Joly Kapoor</div>
-                        <div class="designation">Product Manager at iimjobs</div>
-                        <div class="experience">Experience: <span>2yrs</span></div>
-                        <div class="location">Current Location:  <span>Delhi</span></div>
-                    </div>
-                    <div class="job-details">
-                        <div class="action-job">Applied to job</div>
-                        <div id="profile">iimjobs.com-Associate Product Manager</div>
-                        <div id="exp-details">Delhi 0-5 yrs</div>
-                    </div>
-                    <div class="action-buttons">
-                        <div class="send-message">
-                            Send Message
-                        </div>
-                        <div class="other-actions">
-                            <div class="section">
-                                <select class="select-dropdown inactive">
-                                    <div class="dropdown-list">
-                                        <option value="0" selected>Other Actions</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
-                                        <option value="4">Option 4</option>
-                                    </div>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                <div class="radio-input">
+                    <input type="radio" id="6" name="unpublishReason">
+                    <label for="6">Mark this slot as unavailable</label>
                 </div>
-                <div class="schedules">               
-                    <div class="time"><div class="action-time">Time Slots</div>1:00 to 2:00 PM</div>
-                    <div class="interview-type"><div class="action-name">Calendar Name</div>Product Interviews</div>
-                    <div class="details">
-                        <div class="action-detail">Candidate Details</div> 
-                        <div class="name">Molly Khanna</div>
-                        <div class="designation">Product Manager at iimjobs</div>
-                        <div class="experience">Experience: <span>2yrs</span></div>
-                        <div class="location">Current Location:  <span>Delhi</span></div>
-                    </div>
-                    <div class="job-details">
-                        <div class="action-job">Applied to job</div>     
-                        <div id="profile">iimjobs.com-Associate Product Manager</div>
-                        <div id="exp-details">Delhi 0-5 yrs</div>
-                    </div>
-                    <div class="action-buttons">
-                        <div class="send-message">
-                            Send Message
-                        </div>
-                        <div class="other-actions">
-                            <div class="section">
-                                <select class="select-dropdown inactive">
-                                    <div class="dropdown-list">
-                                        <option value="0" selected>Other Actions</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
-                                        <option value="4">Option 4</option>
-                                    </div>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>    
-         </div>   
+            </div>
+            <div class="action-buttons"><button class="cancelInterviewButton">Submit</button></div>
+        </div>
     </div>
 </div>
 {{> footer }}

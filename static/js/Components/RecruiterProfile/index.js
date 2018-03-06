@@ -6,8 +6,9 @@ $(document).ready(function(){
 	recruiterProfile.setProfile(profile)
 
 	recruiterProfile.submitHandler(function(){
-		if(recruiterProfile.validate()){
 
+		if(recruiterProfile.validate()){
+			debugger
 			updateRecruiterProfile(recruiterProfile.getProfile(), recruiterId);
 		}
 	})

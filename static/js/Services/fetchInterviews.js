@@ -1,9 +1,9 @@
-var sampleData = {"data":[{"id":1406,"name":"Mayank Rawat","exp":{"month":7,"year":7},"location":"Gurgaon","imgUrl":"https://edgar.iimjobs.com/media/userpics/2016/05/23/2016-05-23-18-50-31-181836.jpg","designation":"Sr. Product Manager","slot":{"date":"2016-05-13T18:30:00.000Z","time":"1200"}},{"id":1415,"name":"Vivek Agarwal","exp":{"month":3,"year":4},"location":"Mumbai","imgUrl":"https://edgar.iimjobs.com/media/userpics/2017/08/07/2017-08-07-15-23-40-124667.jpg","designation":"Project Manager","slot":{"date":"2016-05-13T18:30:00.000Z","time":"1230"}},{"id":1451,"name":"Shrey Kaushik","exp":{"month":7,"year":6},"location":"Mumbai","imgUrl":"https://edgar.iimjobs.com/media/userpics/2016/07/17/2016-07-17-14-53-57-62147.jpg","designation":"AVP - Product & Sales","slot":{"date":"2016-05-13T18:30:00.000Z","time":"1300"}},{"id":1424,"name":"Vijay Singh","exp":{"month":9,"year":4},"location":"Bengaluru / Bangalore","imgUrl":"https://edgar.iimjobs.com/media/userpics/2017/05/03/2017-05-03-19-15-18-582710.jpg","designation":"Trainer, Quantitative & Logical Ability","slot":{"date":"2016-05-13T18:30:00.000Z","time":"1500"}},{"id":1449,"name":"Prasoon Priyank","exp":{"month":8,"year":1},"location":"Gurgaon","imgUrl":null,"designation":"Product Analyst","slot":{"date":"2016-05-13T18:30:00.000Z","time":"1600"}},{"id":1455,"name":"Sarthak Kapoor","exp":{"month":10,"year":2},"location":"Gurgaon","imgUrl":null,"designation":"Team Lead Product","slot":{"date":"2016-05-13T18:30:00.000Z","time":"1630"}}],"status":"success"};
-function fetchInterviews(recruiterId, data){
-    return pubsub.publish("fetchedInterviews", sampleData.data);
-	getRequest(baseUrl+"/recruiter/"+recruiterId+"/interviews",data, function(res){
+
+function fetchInterviews(recruiterId, parameters){
+	getRequest(baseUrl+"/recruiter/"+recruiterId+"/interviews",parameters, function(res){
 		if(res.status && res.status =='success'){
 			pubsub.publish("fetchedInterviews", res.data);
 		}
+        return pubsub.publish("fetchedInterviewsFail", res);
 	});
 }
