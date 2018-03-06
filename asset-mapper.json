@@ -735,7 +735,15 @@
 				"static/css/footer.css",
 				"static/css/icons/icons.css",
 				"static/css/modal.css",
-				"static/css/vendor/tooltipster.css"
+				"static/css/vendor/tooltipster.css",
+
+				"static/css/jquery-ui.min.css",
+        		"static/css/index.css",
+				"static/css/buttons.css",
+				"static/css/footer.css",
+				"static/css/animate.css",
+
+				"static/css/jquery-chatbox.css"
 			],
 			"prod": [
 				"static/build/css/my-jobs.min.css"
@@ -752,6 +760,13 @@
 				"static/js/Utilities/common.js",
 				"static/js/Utilities/modal.js",
 				"static/js/vendor/moment.min.js",
+
+				"static/js/vendor/jquery-ui.min.js",
+				"static/js/chatObject.js",
+				"static/js/jquery-chat.js",
+			
+
+				"static/js/header.js",
 
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
