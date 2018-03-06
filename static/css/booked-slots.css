@@ -2584,164 +2584,151 @@ span.sticker {
         font-size: 13px;
         color: #1a5e98; }
 
-.container .header-slot {
-  margin-top: 30px; }
-  .container .header-slot .tagline {
-    color: #5d5d5d;
-    font-size: 22px;
-    /* Approximation due to font substitution */
-    font-weight: 400;
-    text-align: left;
-    float: left;
-    padding-right: 60%;
+.page-content {
+  width: 100%; }
+  .page-content .header-slot {
+    margin-top: 20px;
+    width: 95%;
     margin-left: 30px; }
-  .container .header-slot .section {
-    float: left; }
-    .container .header-slot .section .select-dropdown {
-      font-family: inherit;
-      font-size: 14px;
-      color: #2b2b2b;
-      border-radius: 4px;
-      border-style: solid;
-      border-width: 1px;
-      border-color: #8f8a8a;
-      box-sizing: border-box;
-      background-color: #ffffff;
-      width: 135px;
-      height: 28px;
-      background-image: url("/static/images/black_caret_down.svg");
-      background-repeat: no-repeat;
-      background-position: right 18px center;
-      outline: none;
-      padding-left: 10px;
-      padding: 0px 15px;
-      cursor: pointer;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      -o-appearanance: none; }
-  .container .header-slot .manage-Calendar {
-    border-radius: 4px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #8f8a8a;
-    box-sizing: border-box;
-    background-color: #ffffff;
-    width: 135px;
-    height: 28px;
-    float: left;
-    margin-left: 10px;
-    text-align: center;
-    line-height: 28px;
-    font-size: 0.85em;
-    cursor: pointer;
-    line-height: 28px; }
-  .container .header-slot .setting-bar {
-    border-radius: 4px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #8f8a8a;
-    box-sizing: border-box;
-    width: 35px;
-    height: 28px;
-    float: left;
-    margin-left: 10px;
-    text-align: center;
-    cursor: pointer; }
-    .container .header-slot .setting-bar img {
-      width: 19px;
-      height: 19px;
-      margin-top: 3px; }
-
-.container .action-wrapper {
-  width: 95%;
-  height: 39px;
-  background-color: #ebe8e8;
-  margin-left: 30px;
-  float: left;
-  margin-top: 15px; }
-  .container .action-wrapper .action {
-    float: left;
-    margin-top: 1%;
-    margin-left: 25px;
-    margin-right: 70px; }
-    .container .action-wrapper .action label {
+    .page-content .header-slot .tagline {
+      color: #5d5d5d;
+      font-size: 22px;
+      /* Approximation due to font substitution */
+      font-weight: 400;
+      text-align: left;
+      width: 25%;
+      display: inline-block;
+      margin-left: 28px; }
+    .page-content .header-slot .right-container {
+      float: right; }
+      .page-content .header-slot .right-container .section {
+        display: inline-block; }
+        .page-content .header-slot .right-container .section .select-dropdown {
+          font-family: inherit;
+          font-size: 14px;
+          color: #2b2b2b;
+          border-radius: 4px;
+          border-style: solid;
+          border-width: 1px;
+          border-color: #8f8a8a;
+          box-sizing: border-box;
+          background-color: #ffffff;
+          width: 135px;
+          height: 28px;
+          background-image: url("/static/images/black_caret_down.svg");
+          background-repeat: no-repeat;
+          background-position: right 18px center;
+          outline: none;
+          padding-left: 10px;
+          padding: 0px 15px;
+          cursor: pointer;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          -o-appearanance: none;
+          display: inline-block; }
+      .page-content .header-slot .right-container .manage-Calendar {
+        border-radius: 4px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #8f8a8a;
+        box-sizing: border-box;
+        background-color: #ffffff;
+        width: 135px;
+        height: 28px;
+        text-align: center;
+        line-height: 28px;
+        font-size: 0.85em;
+        cursor: pointer;
+        line-height: 28px;
+        display: inline-block; }
+  .page-content .action-wrapper {
+    width: 95%;
+    background-color: #ebe8e8;
+    display: block;
+    margin-top: 30px;
+    height: 40px;
+    margin-left: 30px; }
+    .page-content .action-wrapper .action {
+      display: inline-block;
+      width: 15.8333%;
       color: #2b2b2b;
       font-size: 15px;
       /* Approximation due to font substitution */
       font-weight: 400;
-      text-align: left; }
-
-.container .booked-slots {
-  height: 720px;
-  margin-top: 32px;
-  margin-left: 32px; }
-  .container .booked-slots .slot-date {
-    float: left; }
-    .container .booked-slots .slot-date .date {
+      text-align: left;
+      margin-top: 12px; }
+    .page-content .action-wrapper .Interview-Date {
+      margin-left: 30px; }
+  .page-content .booked-slots .slot-date {
+    width: 100%;
+    display: inline-block;
+    padding: 0%;
+    vertical-align: top;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 30px; }
+    .page-content .booked-slots .slot-date .date {
       color: #2b2b2b;
       font-size: 14px;
       /* Approximation due to font substitution */
       font-weight: 400;
       text-align: left;
-      float: left;
-      margin-left: 22px; }
-      .container .booked-slots .slot-date .date .action-date {
+      display: inline-block;
+      width: 15%;
+      margin-left: 30px; }
+      .page-content .booked-slots .slot-date .date .action-date {
         display: none; }
-    .container .booked-slots .slot-date .schedules-container {
-      float: left;
-      margin-left: 120px; }
-      .container .booked-slots .slot-date .schedules-container .schedules {
-        float: left;
-        clear: both;
-        margin-bottom: 20px; }
-        .container .booked-slots .slot-date .schedules-container .schedules .time {
+    .page-content .booked-slots .slot-date .schedules-container {
+      display: inline-block;
+      width: 75%;
+      padding: 0%;
+      vertical-align: top; }
+      .page-content .booked-slots .slot-date .schedules-container .schedules {
+        height: 100px; }
+        .page-content .booked-slots .slot-date .schedules-container .schedules .time {
           color: #2b2b2b;
           font-size: 14px;
           /* Approximation due to font substitution */
           font-weight: 400;
           text-align: left;
-          float: left;
-          width: 115px; }
-          .container .booked-slots .slot-date .schedules-container .schedules .time .action-time {
+          display: inline-block;
+          width: 20%; }
+          .page-content .booked-slots .slot-date .schedules-container .schedules .time .action-time {
             display: none; }
-        .container .booked-slots .slot-date .schedules-container .schedules .interview-type {
+          .page-content .booked-slots .slot-date .schedules-container .schedules .time .interviewTime {
+            width: 100%; }
+        .page-content .booked-slots .slot-date .schedules-container .schedules .interview-type {
           color: #149075;
           font-size: 16px;
           /* Approximation due to font substitution */
           font-weight: 700;
           text-align: left;
-          float: left;
-          margin-left: 45px;
-          width: 150px; }
-          .container .booked-slots .slot-date .schedules-container .schedules .interview-type .action-name {
+          display: inline-block;
+          width: 20%;
+          vertical-align: top; }
+          .page-content .booked-slots .slot-date .schedules-container .schedules .interview-type .action-name {
             display: none; }
-        .container .booked-slots .slot-date .schedules-container .schedules .details {
-          float: left;
+        .page-content .booked-slots .slot-date .schedules-container .schedules .details {
           font-size: 14px;
           /* Approximation due to font substitution */
           font-weight: 700;
           line-height: 24px;
           /* Approximation due to font substitution */
           text-align: left;
-          margin-left: 46px;
-          width: 175px; }
-          .container .booked-slots .slot-date .schedules-container .schedules .details .action-detail {
+          display: inline-block;
+          width: 20%;
+          padding-bottom: 10px;
+          vertical-align: top; }
+          .page-content .booked-slots .slot-date .schedules-container .schedules .details .action-detail {
             display: none; }
-          .container .booked-slots .slot-date .schedules-container .schedules .details .name {
+          .page-content .booked-slots .slot-date .schedules-container .schedules .details .name {
             color: #149075;
             font-size: 16px;
             /* Approximation due to font substitution */
             font-weight: 700;
-            text-align: left; }
-          .container .booked-slots .slot-date .schedules-container .schedules .details .designation {
-            color: #2b2b2b;
-            font-size: 14px;
-            /* Approximation due to font substitution */
-            font-weight: 700;
-            line-height: 24px;
-            /* Approximation due to font substitution */
-            text-align: left; }
-          .container .booked-slots .slot-date .schedules-container .schedules .details .experience {
+            text-align: left;
+            width: 100%; }
+          .page-content .booked-slots .slot-date .schedules-container .schedules .details .designation {
             color: #2b2b2b;
             font-size: 14px;
             /* Approximation due to font substitution */
@@ -2749,16 +2736,8 @@ span.sticker {
             line-height: 24px;
             /* Approximation due to font substitution */
             text-align: left;
-            line-height: 24px; }
-            .container .booked-slots .slot-date .schedules-container .schedules .details .experience span {
-              color: #2b2b2b;
-              font-size: 14px;
-              /* Approximation due to font substitution */
-              font-weight: 400;
-              line-height: 24px;
-              /* Approximation due to font substitution */
-              text-align: left; }
-          .container .booked-slots .slot-date .schedules-container .schedules .details .location {
+            width: 100%; }
+          .page-content .booked-slots .slot-date .schedules-container .schedules .details .experience {
             color: #2b2b2b;
             font-size: 14px;
             /* Approximation due to font substitution */
@@ -2767,8 +2746,29 @@ span.sticker {
             /* Approximation due to font substitution */
             text-align: left;
             line-height: 24px;
-            font-style: "bold"; }
-            .container .booked-slots .slot-date .schedules-container .schedules .details .location span {
+            width: 100%; }
+            .page-content .booked-slots .slot-date .schedules-container .schedules .details .experience span {
+              color: #2b2b2b;
+              font-size: 14px;
+              /* Approximation due to font substitution */
+              font-weight: 400;
+              line-height: 24px;
+              /* Approximation due to font substitution */
+              text-align: left;
+              width: 100%; }
+          .page-content .booked-slots .slot-date .schedules-container .schedules .details .location {
+            color: #2b2b2b;
+            font-size: 14px;
+            /* Approximation due to font substitution */
+            font-weight: 700;
+            line-height: 24px;
+            /* Approximation due to font substitution */
+            text-align: left;
+            line-height: 24px;
+            font-style: "bold";
+            width: 100%;
+            vertical-align: top; }
+            .page-content .booked-slots .slot-date .schedules-container .schedules .details .location span {
               color: #2b2b2b;
               font-size: 14px;
               /* Approximation due to font substitution */
@@ -2776,14 +2776,14 @@ span.sticker {
               line-height: 24px;
               /* Approximation due to font substitution */
               text-align: left; }
-        .container .booked-slots .slot-date .schedules-container .schedules .job-details {
+        .page-content .booked-slots .slot-date .schedules-container .schedules .job-details {
           width: 155px;
-          height: 60px;
-          float: left;
-          margin-left: 40px; }
-          .container .booked-slots .slot-date .schedules-container .schedules .job-details .action-job {
+          display: inline-block;
+          width: 20%;
+          vertical-align: top; }
+          .page-content .booked-slots .slot-date .schedules-container .schedules .job-details .action-job {
             display: none; }
-          .container .booked-slots .slot-date .schedules-container .schedules .job-details #profile {
+          .page-content .booked-slots .slot-date .schedules-container .schedules .job-details #profile {
             color: #2b2b2b;
             font-size: 14px;
             /* Approximation due to font substitution */
@@ -2791,7 +2791,7 @@ span.sticker {
             line-height: 18px;
             /* Approximation due to font substitution */
             text-align: left; }
-          .container .booked-slots .slot-date .schedules-container .schedules .job-details #exp-details {
+          .page-content .booked-slots .slot-date .schedules-container .schedules .job-details #exp-details {
             color: #2b2b2b;
             font-size: 14px;
             /* Approximation due to font substitution */
@@ -2799,10 +2799,10 @@ span.sticker {
             line-height: 24px;
             /* Approximation due to font substitution */
             text-align: left; }
-        .container .booked-slots .slot-date .schedules-container .schedules .action-buttons {
-          float: left;
-          margin-left: 33px; }
-          .container .booked-slots .slot-date .schedules-container .schedules .action-buttons .send-message {
+        .page-content .booked-slots .slot-date .schedules-container .schedules .action-buttons {
+          display: inline-block;
+          vertical-align: top; }
+          .page-content .booked-slots .slot-date .schedules-container .schedules .action-buttons .send-message {
             border-radius: 4px;
             border-style: solid;
             border-width: 1px;
@@ -2812,11 +2812,11 @@ span.sticker {
             width: 135px;
             height: 28px;
             text-align: center;
-            margin-bottom: 10px;
             font-size: 0.85em;
             cursor: pointer;
-            line-height: 28px; }
-          .container .booked-slots .slot-date .schedules-container .schedules .action-buttons .other-actions .section .select-dropdown {
+            line-height: 28px;
+            margin-bottom: 10px; }
+          .page-content .booked-slots .slot-date .schedules-container .schedules .action-buttons .other-actions .section .select-dropdown {
             font-family: inherit;
             font-size: 14px;
             color: #2b2b2b;
@@ -2836,179 +2836,178 @@ span.sticker {
             cursor: pointer;
             -webkit-appearance: none;
             -moz-appearance: none;
-            -o-appearanance: none; }
+            -o-appearanance: none;
+            margin-bottom: 10px; }
 
-@media only screen and (max-width: 1024px) {
-  .container {
-    height: 2250px; }
-    .container .header-slot {
-      background-color: #f3fbfb;
-      margin-top: -10px;
-      height: 116px; }
-      .container .header-slot .tagline {
-        padding-right: 50%;
+@media only screen and (max-width: 1250px) {
+  .page-content .header-slot {
+    background-color: #f3fbfb;
+    display: inline-block;
+    height: 116px;
+    padding: 0%;
+    margin: 0%;
+    width: 100%; }
+    .page-content .header-slot .tagline {
+      margin-top: 50px;
+      width: 30%;
+      padding-left: 20px; }
+    .page-content .header-slot .right-container {
+      margin-right: 20px; }
+      .page-content .header-slot .right-container .section {
+        margin-top: 50px; }
+  .page-content .action-wrapper {
+    display: none; }
+  .page-content .booked-slots {
+    display: block; }
+    .page-content .booked-slots .slot-date {
+      display: block; }
+      .page-content .booked-slots .slot-date .date {
+        display: block;
         margin-left: 20px;
-        margin-top: 20px;
-        margin-bottom: 10px;
-        font-size: 20px; }
-      .container .header-slot .section {
-        margin-left: 20px;
-        margin-top: 20px; }
-      .container .header-slot .manage-Calendar {
-        margin-top: 20px; }
-      .container .header-slot .setting-bar {
-        margin-top: 20px; }
-      .container .header-slot .actions {
-        padding-bottom: 40px;
-        margin-left: 20px;
-        margin-top: 10px; }
-    .container .action-wrapper {
-      display: none; }
-    .container .booked-slots {
-      float: none; }
-      .container .booked-slots .slot-date {
+        padding-top: 20px;
+        padding-bottom: 30px;
+        width: 80%; }
+        .page-content .booked-slots .slot-date .date .action-date {
+          display: block;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          color: #2b2b2b;
+          font-size: 17px;
+          /* Approximation due to font substitution */
+          font-weight: 700;
+          text-align: left;
+          width: 100%; }
+        .page-content .booked-slots .slot-date .date .interviewDate {
+          width: 100%; }
+      .page-content .booked-slots .slot-date .schedules-container {
+        display: block;
         float: none;
-        margin-left: -32px; }
-        .container .booked-slots .slot-date .date {
-          margin-top: -20px;
-          padding-bottom: 20px; }
-          .container .booked-slots .slot-date .date .action-date {
-            display: block;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            color: #2b2b2b;
-            font-size: 17px;
-            /* Approximation due to font substitution */
-            font-weight: 700;
-            text-align: left; }
-        .container .booked-slots .slot-date .schedules-container {
-          float: none; }
-          .container .booked-slots .slot-date .schedules-container .schedules {
+        width: 100%; }
+        .page-content .booked-slots .slot-date .schedules-container .schedules {
+          float: none;
+          display: inline-block; }
+          .page-content .booked-slots .slot-date .schedules-container .schedules .time {
             float: none;
-            margin-left: -105px;
-            height: 470px; }
-            .container .booked-slots .slot-date .schedules-container .schedules .time {
-              float: none;
-              margin-left: 5px; }
-              .container .booked-slots .slot-date .schedules-container .schedules .time .action-time {
-                display: block;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                color: #2b2b2b;
-                font-size: 17px;
-                /* Approximation due to font substitution */
-                font-weight: 700;
-                text-align: left; }
-            .container .booked-slots .slot-date .schedules-container .schedules .interview-type {
-              float: none;
-              margin-left: 5px;
-              padding-top: 10px;
-              padding-bottom: 10px; }
-              .container .booked-slots .slot-date .schedules-container .schedules .interview-type .action-name {
-                display: block;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                color: #2b2b2b;
-                font-size: 17px;
-                /* Approximation due to font substitution */
-                font-weight: 700;
-                text-align: left; }
-            .container .booked-slots .slot-date .schedules-container .schedules .details {
-              float: none;
-              margin-left: 5px;
-              padding-bottom: 10px;
-              padding-top: 10px; }
-              .container .booked-slots .slot-date .schedules-container .schedules .details .action-detail {
-                display: block;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                color: #2b2b2b;
-                font-size: 17px;
-                /* Approximation due to font substitution */
-                font-weight: 700;
-                text-align: left; }
-              .container .booked-slots .slot-date .schedules-container .schedules .details .name {
-                margin-top: -5px; }
-            .container .booked-slots .slot-date .schedules-container .schedules .job-details {
-              float: none;
-              margin-left: 5px;
-              padding-bottom: 10px; }
-              .container .booked-slots .slot-date .schedules-container .schedules .job-details .action-job {
-                display: block;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                color: #2b2b2b;
-                font-size: 17px;
-                /* Approximation due to font substitution */
-                font-weight: 700;
-                text-align: left; }
-            .container .booked-slots .slot-date .schedules-container .schedules .action-buttons {
-              float: none;
-              margin-left: 5px;
-              margin-top: 25px;
-              padding-top: 15px; }
-              .container .booked-slots .slot-date .schedules-container .schedules .action-buttons .send-message {
-                float: left;
-                margin-right: 5px; }
-              .container .booked-slots .slot-date .schedules-container .schedules .action-buttons .other-actions {
-                margin-left: 45%; } }
-
-@media only screen and (max-width: 900px) {
-  .container {
-    height: 2250px; }
-    .container .header-slot {
-      background-color: #f3fbfb;
-      margin-top: -10px;
-      height: 116px; }
-      .container .header-slot .tagline {
-        padding-right: 20%;
-        margin-left: 20px;
-        margin-top: 40px;
-        margin-bottom: 10px;
-        font-size: 20px; }
-      .container .header-slot .section {
-        margin-left: 20px;
-        margin-top: 40px; }
-      .container .header-slot .manage-Calendar {
-        margin-top: 40px; }
-      .container .header-slot .setting-bar {
-        margin-top: 40px; }
-      .container .header-slot .actions {
-        padding-bottom: 40px;
-        margin-left: 20px;
-        margin-top: 10px; } }
+            margin-left: 20px;
+            padding-bottom: 30px;
+            width: 80%; }
+            .page-content .booked-slots .slot-date .schedules-container .schedules .time .action-time {
+              display: block;
+              margin-top: 10px;
+              margin-bottom: 10px;
+              color: #2b2b2b;
+              font-size: 17px;
+              /* Approximation due to font substitution */
+              font-weight: 700;
+              text-align: left;
+              width: 100%; }
+          .page-content .booked-slots .slot-date .schedules-container .schedules .interview-type {
+            display: block;
+            margin-left: 20px;
+            padding-bottom: 30px;
+            width: 80%; }
+            .page-content .booked-slots .slot-date .schedules-container .schedules .interview-type .action-name {
+              display: block;
+              margin-top: 10px;
+              margin-bottom: 10px;
+              color: #2b2b2b;
+              font-size: 17px;
+              /* Approximation due to font substitution */
+              font-weight: 700;
+              text-align: left;
+              width: 100%; }
+          .page-content .booked-slots .slot-date .schedules-container .schedules .details {
+            display: block;
+            margin-left: 20px;
+            padding-bottom: 30px;
+            width: 80%; }
+            .page-content .booked-slots .slot-date .schedules-container .schedules .details .action-detail {
+              display: block;
+              margin-top: 10px;
+              margin-bottom: 10px;
+              color: #2b2b2b;
+              font-size: 17px;
+              /* Approximation due to font substitution */
+              font-weight: 700;
+              text-align: left;
+              width: 100%; }
+          .page-content .booked-slots .slot-date .schedules-container .schedules .job-details {
+            display: block;
+            margin-left: 20px;
+            padding-bottom: 30px;
+            width: 80%; }
+            .page-content .booked-slots .slot-date .schedules-container .schedules .job-details .action-job {
+              display: block;
+              margin-top: 10px;
+              margin-bottom: 10px;
+              color: #2b2b2b;
+              font-size: 17px;
+              /* Approximation due to font substitution */
+              font-weight: 700;
+              text-align: left;
+              width: 100%; }
+          .page-content .booked-slots .slot-date .schedules-container .schedules .action-buttons {
+            width: 100%;
+            margin-left: 20px;
+            display: inline-block;
+            padding-bottom: 30px; }
+            .page-content .booked-slots .slot-date .schedules-container .schedules .action-buttons .send-message {
+              display: inline-block; }
+            .page-content .booked-slots .slot-date .schedules-container .schedules .action-buttons .other-actions {
+              display: inline-block; }
+            .page-content .booked-slots .slot-date .schedules-container .schedules .action-buttons .section {
+              display: inline-block;
+              margin-left: 50px; } }
 
 @media only screen and (max-width: 480px) {
-  .container {
-    height: 2250px; }
-    .container .header-slot {
-      background-color: #f3fbfb;
-      margin-top: -10px;
-      height: 116px; }
-      .container .header-slot .tagline {
-        padding-right: 50%;
-        margin-left: 20px;
-        margin-top: 40px;
-        margin-bottom: 10px;
-        font-size: 20px; }
-      .container .header-slot .section {
-        margin-left: 20px;
-        margin-top: 10px; }
-      .container .header-slot .manage-Calendar {
-        margin-top: 10px;
-        width: 100px;
-        font-size: 12px; }
-      .container .header-slot .setting-bar {
-        margin-top: 10px; }
-      .container .header-slot .actions {
-        padding-bottom: 40px;
-        margin-left: 20px;
-        margin-top: 10px; } }
+  .page-content .header-slot {
+    background-color: #f3fbfb;
+    display: inline-block;
+    height: 116px;
+    padding: 0%;
+    margin: 0%;
+    width: 100%; }
+    .page-content .header-slot .tagline {
+      margin-top: 21px;
+      width: 100%;
+      padding-left: 20px;
+      padding-bottom: 20px; }
+    .page-content .header-slot .right-container {
+      display: block;
+      float: none;
+      padding: 0%;
+      padding-left: 45px; }
+      .page-content .header-slot .right-container .section {
+        margin: 0%;
+        padding-right: 20px; } }
 
-@media only screen and (max-width: 320px) {
-  .container .booked-slots .slot-date .schedules-container .schedules .action-buttons .other-actions {
-    margin-left: 1%; } }
-
-.border-top {
-  border-top: 1px solid #e8e8e8;
-  padding-top: 15px; }
+@media only screen and (max-width: 380px) {
+  .page-content .header-slot {
+    background-color: #f3fbfb;
+    display: inline-block;
+    height: 116px;
+    padding: 0%;
+    margin: 0%;
+    width: 100%; }
+    .page-content .header-slot .tagline {
+      margin-top: 21px;
+      width: 100%;
+      padding-left: 20px;
+      padding-bottom: 20px; }
+    .page-content .header-slot .right-container {
+      display: block;
+      float: none;
+      padding: 0%;
+      padding-left: 45px; }
+      .page-content .header-slot .right-container .section {
+        margin: 0%;
+        padding-right: 20px;
+        width: 100px; }
+        .page-content .header-slot .right-container .section .select-dropdown {
+          width: 120px; }
+      .page-content .header-slot .right-container .manage-Calendar {
+        width: 120px;
+        margin: 0%;
+        margin-left: 25px; }
+  .page-content .action-buttons .section {
+    margin: 0% !important; } }
