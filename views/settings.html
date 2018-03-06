@@ -91,12 +91,12 @@
 						<div class="formgroup">
 							<div class="label" for="profile-number">Phone Number</div>
 							<input type="text" id="profile-number" placeholder="Phone Number">
-							<div id="" class="error hidden"></div>
+							<div id="" class=" error hidden"></div>
 						</div>
 						<div class="formgroup">
 							<div class="label" for="profile-email">Email ID</div>
 							<input name="Email" type="text" id="profile-email" placeholder="Email">
-							<div id="" class="error hidden"></div>
+							<div id="" class=" error hidden"></div>
 						</div>
 						<div class="formgroup">
 							<div class="label" for="profile-designation">Designation</div>
@@ -108,8 +108,8 @@
 						</div>
 						<div class="formgroup">
 							<div class="label" for="profile-website">Website</div>
-							<input type="text" id="profile-website" placeholder="Website">
-							<div name="Website" id="" class="error hidden"></div>
+							<input name="Website" type="text" id="profile-website" placeholder="Website">
+							<div  id="" class="error hidden"></div>
 						</div>
 						<div class="formgroup">
 							<div class="label" for="profile-recruiter-type">Recruiter Type</div>
@@ -949,18 +949,18 @@
 
 						<div class="formgroup">
 							<div class="label" for="social-twitter">Twitter</div>
-							<input type="text" id="social-twitter" class="social-placeholder twitter"  placeholder="Twitter">
-							<div name="Twitter" id="" class="error hidden"></div>
+							<input name="Twitter" type="text" id="social-twitter" class="social-placeholder twitter"  placeholder="Twitter">
+							<div  id="" class="error hidden"></div>
 						</div>
 						<div class="formgroup">
 							<div class="label" for="social-facebook">Facebook</div>
-							<input type="text" id="social-facebook" class="social-placeholder facebook"  placeholder="Facebook">
-							<div name="Facebook" id="" class="error hidden"></div>
+							<input name="Facebook" type="text" id="social-facebook" class="social-placeholder facebook"  placeholder="Facebook">
+							<div  id="" class="error hidden"></div>
 						</div>
 						<div class="formgroup">
 							<div class="label" for="social-linkedin">LinkedIn</div>
-							<input type="text" id="social-linkedin" class="social-placeholder linkedin"  placeholder="LinkedIn">
-							<div name="LinkedIn" id="" class="error hidden"></div>
+							<input name="LinkedIn" type="text" id="social-linkedin" class="social-placeholder linkedin"  placeholder="LinkedIn">
+							<div  id="" class="error hidden"></div>
 						</div>
 						<div class="formgroup">
 							<span class="button green submit">Save</span>
@@ -1004,14 +1004,14 @@
 						<div class="radio-group-container group-container">
 							<div class="radio-option">
 								<div class="radio-input">
-									<input type="radio" name="notification-type" id="instant-notification">
+									<input type="radio" name="notification-type" id="instant-notification" value="1">
 									<label for="instant-notification">Instant Notifications</label>
 								</div>
 								<p class="describer">Send me an email as soon as the candidate applies to my job.</p>
 							</div>
 							<div class="radio-option">
 								<div class="radio-input">
-									<input type="radio" name="notification-type" id="digest-email-notification">
+									<input type="radio" name="notification-type" id="digest-email-notification" value="0">
 									<label for="digest-email-notification">Digest Email</label>
 								</div>
 								<p class="describer no-border">Send me an email once a day about all the applications on my job.</p>
@@ -1041,18 +1041,20 @@
 
 							<div class="premium-plan plan-section">
 								<h3>
-									<span class="text-left title">2. Premium Postings</span>
+									<span class="left title">2. Premium Postings</span>
+                                    <span class="right detail" id="premiumDetail">Unlimited</span>
+                                    <div class="clearfix"></div>
 								</h3>
 								<div class="plan-block-content">
 									<p>Reach out to more candidates in less time with our Premium Post</p>
 									<p>
-										<a href="#">See all Premium Posting Features
+										<a id="seeAllPremium" href="/recruiter/recruiter-plan" class="hidden">See all Premium Posting Features
 											<span class="right-arrow"><i class="icon-right_arrow"></i>
 											</span>
 										</a>
 									</p>
 									<p>
-										<a href="#">Buy more credits
+										<a id="buyMore" href="/recruiter/recruiter-plan" class="hidden">Buy more credits
 											<span class="right-arrow"><i class="icon-right_arrow"></i>
 											</span>
 										</a>

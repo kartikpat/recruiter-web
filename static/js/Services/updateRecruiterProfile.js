@@ -6,5 +6,5 @@ function updateRecruiterProfile(form, recruiterId){
 		}
 	}, function(res){
 		return pubsub.publish("updateRecruiterProfileFail", res.responseJSON);
-	}, false,true,null,false);
+	},null,null, false,true,null,false);
 }
