@@ -535,7 +535,7 @@ module.exports = function(settings){
 			scripts: assetsMapper["no-calendar-setup"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain:baseDomain,
-			profile: profile
+			profile: req.profile
 		});
 		return
 	});
@@ -547,7 +547,7 @@ module.exports = function(settings){
 			scripts: assetsMapper["Interview-scheduler-updated"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain:baseDomain,
-			profile: profile
+			profile: req.profile
 		});
 		return
 	});
@@ -559,7 +559,7 @@ module.exports = function(settings){
 			scripts: assetsMapper["ui-test"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain:baseDomain,
-			profile: profile
+			profile: req.profile
 		});
 		return
 	});
