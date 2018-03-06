@@ -1384,7 +1384,7 @@ span.sticker {
   .page-content .right {
     display: none; } }
 
-@media only screen and (max-width: 370px) {
+@media only screen and (max-width: 420px) {
   .page-content .container {
     width: 100%; }
     .page-content .container .header-slot {
