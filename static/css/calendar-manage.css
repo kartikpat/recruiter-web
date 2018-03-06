@@ -1049,23 +1049,22 @@ span.sticker {
   background-color: #f7f7f7; }
   .page-content .container {
     background-color: #f7f7f7;
-    height: 900px;
     width: 80%;
     float: left; }
     .page-content .container .header-slot {
       background-color: #f7f7f7;
-      height: 80px;
-      float: left; }
+      width: 100%;
+      margin-top: 20px; }
       .page-content .container .header-slot .tagline {
         color: #5d5d5d;
         font-size: 22px;
         /* Approximation due to font substitution */
         font-weight: 400;
         text-align: left;
-        float: left;
-        margin-top: 30px;
+        display: inline-block;
         margin-left: 20px; }
       .page-content .container .header-slot .manage-Calendar {
+        display: inline-block;
         border-radius: 4px;
         border-style: solid;
         border-width: 1px;
@@ -1075,93 +1074,102 @@ span.sticker {
         width: 144px;
         height: 28px;
         text-align: center;
-        font-size: 0.85em;
-        cursor: pointer;
         line-height: 28px;
-        margin-left: 855px;
-        float: left;
-        margin-top: -25px; }
+        cursor: pointer;
+        margin-bottom: 17px;
+        font-weight: 400;
+        float: right; }
     .page-content .container .wrapper {
       border-style: solid;
       border-width: 1px;
       border-color: #e8e8e8;
       box-sizing: border-box;
       background-color: #ffffff;
-      height: 555px;
       float: left;
       width: 100%; }
-      .page-content .container .wrapper .action-wrapper {
+      .page-content .container .wrapper .action {
+        width: 100%;
         background-color: #ebe8e8;
         height: 50px; }
-      .page-content .container .wrapper .action {
-        width: 950px;
-        height: 16px; }
         .page-content .container .wrapper .action .interview-date {
           color: #2b2b2b;
           font-size: 15px;
-          /* Approximation due to font substitution */
           font-weight: 400;
           text-align: left;
           float: left;
-          margin-top: 15px;
-          margin-left: 20px;
-          margin-right: 230px; }
-        .page-content .container .wrapper .action .time-slot {
-          color: #2b2b2b;
-          font-size: 15px;
-          /* Approximation due to font substitution */
-          font-weight: 400;
-          text-align: left;
-          float: left;
-          margin-top: 15px;
-          margin-right: 210px; }
+          margin: 0;
+          width: 25%;
+          padding: 15px 0 15px 20px; }
         .page-content .container .wrapper .action .calendar-name {
           color: #2b2b2b;
           font-size: 15px;
-          /* Approximation due to font substitution */
           font-weight: 400;
           text-align: left;
-          float: left;
-          margin-top: 15px; }
+          display: inline-block;
+          margin: 0;
+          width: 25%;
+          padding: 15px 0 15px 5px; }
+        .page-content .container .wrapper .action .time-slot {
+          color: #2b2b2b;
+          font-size: 15px;
+          font-weight: 400;
+          text-align: left;
+          display: inline-block;
+          width: 25%;
+          margin: 0;
+          padding: 15px 0 15px 20px; }
       .page-content .container .wrapper .schedule-container {
         width: 100%;
         display: inline-block;
         padding: 0%;
-        height: 700px;
         background-color: white; }
         .page-content .container .wrapper .schedule-container .schedule {
-          height: 50px;
-          margin-top: 28px;
-          border-bottom: 1px solid #e8e8e8; }
+          height: 85px;
+          display: inline-block;
+          width: 100%;
+          padding-top: 25px; }
           .page-content .container .wrapper .schedule-container .schedule .date {
-            color: #2b2b2b;
-            font-size: 14px;
-            /* Approximation due to font substitution */
-            font-weight: 400;
-            text-align: left;
-            float: left;
-            margin-left: 20px;
-            margin-right: 130px; }
-          .page-content .container .wrapper .schedule-container .schedule .calendar-name {
-            color: #149075;
-            font-size: 16px;
-            /* Approximation due to font substitution */
-            font-weight: 700;
-            text-align: left;
-            float: left;
-            margin-left: 20px;
-            margin-right: 130px;
-            width: 160px; }
+            display: inline-block;
+            width: 25%;
+            padding-left: 20px; }
+            .page-content .container .wrapper .schedule-container .schedule .date .date-created {
+              display: none !important; }
+            .page-content .container .wrapper .schedule-container .schedule .date .calendar-date {
+              color: #2b2b2b;
+              font-size: 14px;
+              /* Approximation due to font substitution */
+              font-weight: 400;
+              text-align: left;
+              display: inline-block;
+              width: 100%; }
+          .page-content .container .wrapper .schedule-container .schedule .calendar-detail {
+            width: 25%;
+            display: inline-block; }
+            .page-content .container .wrapper .schedule-container .schedule .calendar-detail .calendar {
+              display: none; }
+            .page-content .container .wrapper .schedule-container .schedule .calendar-detail .calendar-wrap {
+              color: #149075;
+              font-size: 16px;
+              /* Approximation due to font substitution */
+              font-weight: 700;
+              text-align: left;
+              width: 100%; }
           .page-content .container .wrapper .schedule-container .schedule .slots {
-            color: #2b2b2b;
-            font-size: 14px;
-            /* Approximation due to font substitution */
-            font-weight: 400;
-            text-align: left;
-            float: left;
-            width: 50px;
-            margin-left: 20px;
-            margin-right: 190px; }
+            width: 32%;
+            display: inline-block; }
+            .page-content .container .wrapper .schedule-container .schedule .slots .remaining-slots {
+              display: none; }
+            .page-content .container .wrapper .schedule-container .schedule .slots .total-slots {
+              color: #2b2b2b;
+              font-size: 14px;
+              /* Approximation due to font substitution */
+              font-weight: 400;
+              text-align: left;
+              float: left;
+              width: 100%;
+              margin-left: 20px;
+              margin-right: 190px;
+              margin-top: 5px; }
           .page-content .container .wrapper .schedule-container .schedule .edit-schedule {
             border-radius: 4px;
             border-style: solid;
@@ -1169,18 +1177,238 @@ span.sticker {
             border-color: #8f8a8a;
             box-sizing: border-box;
             background-color: #ffffff;
-            width: 68px;
             height: 28px;
-            float: left;
             line-height: 28px;
             font-size: 0.85em;
             cursor: pointer;
             line-height: 28px;
-            text-align: center; }
-  .page-content .conversations {
-    width: 20%;
-    padding-left: 30px;
-    display: inline-block;
-    vertical-align: top; }
+            text-align: center;
+            display: inline-block;
+            width: 68px;
+            float: right;
+            margin-right: 24px; }
+            .page-content .container .wrapper .schedule-container .schedule .edit-schedule a {
+              color: #2b2b2b;
+              font-size: 15px;
+              /* Approximation due to font substitution */
+              font-weight: 400;
+              text-align: left;
+              width: 100%; }
+          .page-content .container .wrapper .schedule-container .schedule .table-row-separator {
+            clear: both;
+            width: 95%;
+            margin: 0 auto;
+            border-bottom: 1px solid #e8e8e8;
+            margin-top: 30px; }
+
+@media only screen and (max-width: 768px) {
+  .page-content {
+    min-height: 100%;
+    padding: 0;
+    overflow: auto;
+    position: relative;
+    padding: 20px;
+    width: 100%;
+    background-color: #f7f7f7; }
+    .page-content .container {
+      background-color: #f7f7f7;
+      width: 100%;
+      float: left; }
+      .page-content .container .header-slot {
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #e8e8e8;
+        box-sizing: border-box;
+        background-color: #f3fbfb;
+        height: 78px;
+        width: 100%;
+        margin-top: 5px; }
+        .page-content .container .header-slot .tagline {
+          color: #5d5d5d;
+          font-size: 22px;
+          /* Approximation due to font substitution */
+          font-weight: 400;
+          text-align: left;
+          display: inline-block;
+          margin-left: 20px;
+          margin-top: 20px; }
+        .page-content .container .header-slot .manage-Calendar {
+          display: inline-block;
+          border-radius: 4px;
+          border-style: solid;
+          border-width: 1px;
+          border-color: #8f8a8a;
+          box-sizing: border-box;
+          background-color: #ffffff;
+          width: 144px;
+          height: 28px;
+          text-align: center;
+          line-height: 28px;
+          cursor: pointer;
+          float: right;
+          margin-top: 20px;
+          margin-right: 25px; }
+      .page-content .container .wrapper {
+        border-style: solid;
+        border-width: 1px;
+        border-color: #e8e8e8;
+        box-sizing: border-box;
+        background-color: #ffffff;
+        width: 100%; }
+        .page-content .container .wrapper .action {
+          display: none; }
+        .page-content .container .wrapper .schedule-container {
+          width: 100%;
+          display: block;
+          padding: 0%;
+          background-color: white; }
+          .page-content .container .wrapper .schedule-container .schedule {
+            height: 350px;
+            display: block;
+            width: 100%;
+            padding-top: 10px; }
+            .page-content .container .wrapper .schedule-container .schedule .date {
+              display: block;
+              width: 100%;
+              padding-left: 20px;
+              padding-top: 20px;
+              padding-bottom: 20px; }
+              .page-content .container .wrapper .schedule-container .schedule .date .date-created {
+                display: block !important;
+                width: 100%;
+                color: #2b2b2b;
+                font-size: 17px;
+                /* Approximation due to font substitution */
+                font-weight: 700;
+                text-align: left; }
+              .page-content .container .wrapper .schedule-container .schedule .date .calendar-date {
+                color: #2b2b2b;
+                font-size: 14px;
+                /* Approximation due to font substitution */
+                font-weight: 400;
+                text-align: left;
+                display: block;
+                width: 100%;
+                margin-top: 10px; }
+            .page-content .container .wrapper .schedule-container .schedule .calendar-detail {
+              width: 100%;
+              display: block;
+              padding-left: 20px;
+              padding-top: 20px;
+              padding-bottom: 20px; }
+              .page-content .container .wrapper .schedule-container .schedule .calendar-detail .calendar {
+                display: block;
+                width: 100%;
+                color: #2b2b2b;
+                font-size: 17px;
+                /* Approximation due to font substitution */
+                font-weight: 700;
+                text-align: left; }
+              .page-content .container .wrapper .schedule-container .schedule .calendar-detail .calendar-wrap {
+                color: #149075;
+                font-size: 16px;
+                /* Approximation due to font substitution */
+                font-weight: 700;
+                text-align: left;
+                width: 148px;
+                margin-top: 10px; }
+            .page-content .container .wrapper .schedule-container .schedule .slots {
+              width: 100%;
+              display: block;
+              padding-left: 20px;
+              padding-top: 20px;
+              padding-bottom: 20px; }
+              .page-content .container .wrapper .schedule-container .schedule .slots .remaining-slots {
+                display: block;
+                width: 100%;
+                color: #2b2b2b;
+                font-size: 17px;
+                /* Approximation due to font substitution */
+                font-weight: 700;
+                text-align: left; }
+              .page-content .container .wrapper .schedule-container .schedule .slots .total-slots {
+                color: #2b2b2b;
+                font-size: 14px;
+                /* Approximation due to font substitution */
+                font-weight: 400;
+                width: 100%;
+                margin: 10px 0%; }
+            .page-content .container .wrapper .schedule-container .schedule .edit-schedule {
+              margin-left: 20px;
+              border-radius: 4px;
+              border-style: solid;
+              border-width: 1px;
+              border-color: #8f8a8a;
+              box-sizing: border-box;
+              background-color: #ffffff;
+              height: 28px;
+              line-height: 28px;
+              font-size: 0.85em;
+              cursor: pointer;
+              line-height: 28px;
+              text-align: center;
+              display: block;
+              width: 68px;
+              margin-top: 34px;
+              float: none; }
+    .page-content .right {
+      display: none; } }
+
+@media only screen and (max-width: 480px) {
+  .page-content .container {
+    width: 100%; }
+    .page-content .container .header-slot {
+      height: 78px;
+      width: 100%; }
+      .page-content .container .header-slot .tagline {
+        margin-top: 25px;
+        margin-left: 20px; }
+      .page-content .container .header-slot .manage-Calendar {
+        display: inline-block;
+        border-radius: 4px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #8f8a8a;
+        box-sizing: border-box;
+        background-color: #ffffff;
+        width: 149px;
+        height: 28px;
+        text-align: center;
+        line-height: 28px;
+        float: right;
+        cursor: pointer;
+        margin-right: 10px;
+        margin-top: 25px; }
   .page-content .right {
-    float: right; }
+    display: none; } }
+
+@media only screen and (max-width: 370px) {
+  .page-content .container {
+    width: 100%; }
+    .page-content .container .header-slot {
+      height: 78px;
+      width: 100%; }
+      .page-content .container .header-slot .tagline {
+        margin-top: 25px;
+        margin-left: 10px;
+        font-size: 14px; }
+      .page-content .container .header-slot .manage-Calendar {
+        display: inline-block;
+        border-radius: 4px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #8f8a8a;
+        box-sizing: border-box;
+        background-color: #ffffff;
+        width: 120px;
+        height: 28px;
+        text-align: center;
+        line-height: 28px;
+        float: right;
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 20px; }
+  .page-content .right {
+    display: none; } }

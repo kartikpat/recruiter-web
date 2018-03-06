@@ -590,5 +590,19 @@ module.exports = function(settings){
 		})
 		return
 	});
+	
+	app.get("/calendar-manage",isAuthenticated, function(req,res){
+		res.render("calendar-manage", {
+			title:"Recruiter Web - Candidate Profile | iimjobs.com",
+			styles:  assetsMapper["calendar-manage"]["styles"][mode],
+			scripts: assetsMapper["calendar-manage"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			jobId: req.params.jobID,
+			applicationId: req.params.applicationID,
+			profile: req.profile
+		})
+		return
+	});
 
 }

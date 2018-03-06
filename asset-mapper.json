@@ -1290,5 +1290,30 @@
             ]
         }
         
+	},
+	"calendar-manage": {
+        "styles": {
+            "debug" : [
+                
+                "static/css/header.css",
+                "static/css/calendar-manage.css",
+                "static/css/footer.css"
+            
+            ],
+            "prod": [
+                "static/build/css/booked-slots.min.css"
+            ]
+        },
+        "scripts": {
+            "debug": [
+            
+                "static/js/Components/calendar-manage/index.js"
+            
+            ],
+            "prod" :[
+                "static/build/js/calendar.min.js"
+            ]
+        }
+        
     }
 }
