@@ -50,7 +50,10 @@ function Profile(){
 			settings.error = $('.error'),
 			settings.creditsText = $('#creditsText'),
 			settings.fileUpload = $("#trigger-file-upload"),
-			settings.fileName = $("#fileName")
+			settings.fileName = $("#fileName"),
+			settings.seeAllPremium = $("#seeAllPremium"),
+			settings.buyMore = $("#buyMore"),
+			settings.premiumDetail = $("#premiumDetail")
 			settings.type = ""
 
 			changeFileName()
@@ -68,6 +71,7 @@ function Profile(){
 	}
 
 	function validate(){
+
 		if(settings.type == "profile") {
 			if(!(
 					checkEmail(settings.email)
@@ -78,6 +82,7 @@ function Profile(){
 			return true;
 		}
 		if(settings.type== "social-accounts") {
+
 			if(!(
 					checkUrl(settings.facebook)
 					&& checkUrl(settings.linkedIn)
@@ -90,18 +95,19 @@ function Profile(){
 		if(settings.type== "change-password") {
 
 		}
+
 	}
 	function getProfile() {
 		var form = new FormData();
 		if(settings.type == "profile") {
 			if(settings.fileUpload[0].files[0] != undefined) {
-  		    	form.append("logo", settings.fileUpload[0].files[0], settings.fileUpload[0].files[0].name);
+  		    	form.append("image", settings.fileUpload[0].files[0], settings.fileUpload[0].files[0].name);
   		  	}
 			if(settings.name.val()) {
 				form.append("name", settings.name.val())
 			}
 			if(settings.organization.val()) {
-				form.append("org", settings.organization.val())
+				form.append("organisation", settings.organization.val())
 			}
 			if(settings.contact.val()) {
 				form.append("phone", settings.contact.val())
@@ -116,25 +122,25 @@ function Profile(){
 				form.append("designation", settings.designation.val())
 			}
 			if(settings.websiteUrl.val()) {
-				form.append("wurl", settings.websiteUrl.val())
+				form.append("websiteUrl", settings.websiteUrl.val())
 			}
 			if(settings.location.val()) {
 				form.append("location", settings.location.val())
 			}
-			if(settings.recruiterType.val()) {
-				form.append("recruiterType", settings.recruiterType.val())
+			if(parseInt(settings.recruiterType.val())) {
+				form.append("type", settings.recruiterType.val())
 			}
 			return form
 		}
 		if(settings.type== "social-accounts") {
 			if(settings.facebook.val()) {
-				form.append("furl", settings.facebook.val())
+				form.append("facebookUrl", settings.facebook.val())
 			}
 			if(settings.linkedIn.val()) {
 				form.append("lurl", settings.linkedIn.val())
 			}
 			if(settings.twitter.val()) {
-				form.append("turl", settings.twitter.val())
+				form.append("twitterUrl", settings.twitter.val())
 			}
 			return form
 		}
@@ -152,7 +158,6 @@ function Profile(){
 		settings.profileImg.attr("src", (obj["img_link"] || "/static/images/noimage.png"));
 		settings.name.val(obj["name"]);
 		settings.contact.val(obj["phone"]);
-		// settings.isPremium.prop("checked", obj["premium"]);
 		settings.email.val(obj["email"]);
 		settings.designation.val(obj["desg"]);
 
@@ -162,8 +167,8 @@ function Profile(){
 		settings.organization.val(obj["org"]);
 		settings.websiteUrl.val(obj["wurl"]);
 
-		settings.recruiterType.val(1);
-		settings.location.val();
+		settings.recruiterType.val(obj["type"]);
+		settings.location.val(obj["location"]);
 		settings.about.val(obj["about"]);
 		settings.twitter.val(obj["turl"]);
 		settings.facebook.val(obj["furl"]);
@@ -171,14 +176,23 @@ function Profile(){
 		// settings.twitter.val(obj["turl"]);
 		// settings.twitter.val(obj["turl"]);
 
-		$("input[name='notification-type']").val()
+		$("input[name='notification-type']").val(obj["notificationEmail"])
+
+		if(obj["availableCredits"]) {
+			settings.buyMore.removeClass("hidden")
+			settings.premiumDetail.text(obj["availableCredits"] + " credits left.")
+		}
+		else {
+			settings.seeAllPremium.removeClass("hidden")
+		}
 
 	}
 
 	function submitHandler(fn){
 
 		$(settings.submitButton).click(function() {
-			var type = $(this).closest(".settings-page").find(".profile.active").attr("data-selector")
+			var type = $(this).closest(".settings-page").find(".settings-sidebar li.active").attr("data-selector")
+
 			settings.type = type;
 			fn()
 		})
@@ -229,6 +243,7 @@ function checkUrl(element) {
 		return true
 	}
 	if(!urlRegex.test(element.val())) {
+		console.log('invalid'+element.attr('name'))
 		element.next('.error').text(errorResponses['invalid'+element.attr('name')]).removeClass("hidden");
 		focusOnElement(element)
 		return false;

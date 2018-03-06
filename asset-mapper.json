@@ -1225,13 +1225,13 @@
         "scripts": {
             "debug": [
                 "static/js/Components/no-calendar-setup/index.js"
-            
+
             ],
             "prod" : [
                 "static/build/js/no-calendar.min.js"
             ]
         }
-        
+
     },
 
     "Interview-scheduler-updated": {
@@ -1257,23 +1257,27 @@
                 "static/js/vendor/fullcalendar.min.js",
                 "static/js/vendor/fullcalendar.js",
                 "static/js/Components/Interview-scheduler-updated/custom.js"
-                
-            
+
+
             ],
             "prod" : [
                 "static/build/js/Interview-scheduler-updated.min.js"
             ]
         }
-        
+
     },
     "booked-slots": {
         "styles": {
             "debug" : [
-                
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/utilities.css",
+
+				"static/css/modal.css",
                 "static/css/header.css",
                 "static/css/booked-slots.css",
                 "static/css/footer.css"
-            
+
             ],
             "prod": [
                 "static/build/css/booked-slots.min.css"
@@ -1281,41 +1285,27 @@
         },
         "scripts": {
             "debug": [
-            
-                "static/js/Components/Ui-Calendar/custom.js"
-            
+				"static/js/vendor/jquery.min.js",
+				"static/js/utilities.js",
+				"static/js/modal.js",
+				"static/js/ui-components.js",
+				"static/js/Utilities/request.js",
+				"static/js/vendor/moment.min.js",
+				"static/js/Utilities/modal.js",
+				"static/js/Utilities/toastNotifier.js",
+				"static/js/Utilities/pubsub.js",
+				"static/js/Utilities/common.js",
+				"static/js/Services/fetchRecruiterCalendar.js",
+				"static/js/Services/fetchInterviews.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js",
+				"static/js/Components/BookedSlots/model.js",
+				"static/js/Components/BookedSlots/index.js"
+
             ],
             "prod" :[
                 "static/build/js/ui-Calendar.min.js"
             ]
         }
-        
-	},
-	"calendar-manage": {
-        "styles": {
-            "debug" : [
-                
-                "static/css/header.css",
-                "static/css/calendar-manage.css",
-                "static/css/footer.css"
-            
-            ],
-            "prod": [
-                "static/build/css/booked-slots.min.css"
-            ]
-        },
-        "scripts": {
-            "debug": [
-				"static/js/vendor/moment.min.js",
-				"static/js/Components/calendar-manage/model.js",
-				"static/js/Components/calendar-manage/index.js"
-				
-				
-            ],
-            "prod" :[
-                "static/build/js/calendar.min.js"
-            ]
-        }
-        
     }
 }
