@@ -78,7 +78,7 @@ module.exports = function(settings){
 		  res.json(jsonBody)
 		});
 	})
-	
+
 	app.get("/", isAuthenticated,function(req, res){
 		res.render("dashboard", {
 			title: "IIM JOBS | Dashboard",
@@ -470,13 +470,14 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/my-chat", function(req,res){
+	app.get("/my-chat",isAuthenticated, function(req,res){
 		res.render("my-chat", {
 			title:"Recruiter Web - My Chat | iimjobs.com",
 			styles:  assetsMapper["my-chat"]["styles"][mode],
 			scripts: assetsMapper["my-chat"]["scripts"][mode],
 			baseUrl: baseUrl,
-			baseDomain: baseDomain
+			baseDomain: baseDomain,
+			profile: req.profile
 		})
 		return
 	});

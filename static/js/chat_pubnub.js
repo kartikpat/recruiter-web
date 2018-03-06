@@ -142,51 +142,22 @@ var recruiterID = localStorage.id;
 var recruiterEmail;
 var pubnub;
 
-getRequest(baseUrl+"/recruiter/"+recruiterID, {}, function(res) {
 
-    if(res["status"] == "success") {
-        recruiterEmail = res["data"][0]["email"];
-        recruiterName = res["data"][0]["name"];
-        recruiterImage = res["data"][0]["img_link"];
-        console.log(recruiterID);
-        console.log(recruiterEmail);
-        initializePubNub();
-        addListeners();
-
-        subscribe(getArray(channelsArray));
-    }
-});
-
-
-// var channelsArray = ["aWltam9icy0tUmVjcnVpdGVyLS00NTA1OA==", "iimjobs--r45058-j511594", "iimjobs--r45058-j90519", "iimjobs--r45058-j709365", "iimjobs--r45058-j612792", "iimjobs--r45058-j110923", "iimjobs--r45058-j706831", "iimjobs--r45058-j676776", "iimjobs--r45058-j712558", "iimjobs--r45058-j337587", "iimjobs--r45058-j651703", "iimjobs--r45058-j462122", "iimjobs--r45058-j178541", "iimjobs--r45058-j699540", "iimjobs--r45058-j293084", "iimjobs--r45058-j62147", "iimjobs--r45058-j419400", "iimjobs--r45058-j480373", "iimjobs--r45058-j959940", "iimjobs--r45058-j323756", "iimjobs--r45058-j57221", "iimjobs--r45058-j243816", "iimjobs--r45058-j435817", "iimjobs--r45058-j229312", "iimjobs--r45058-j260854", "iimjobs--r45058-j712518", "iimjobs--r45058-j429324", "iimjobs--r45058-j"];
-
-// var MainUUID = 'NDUwNTgtLXNocmV5YUBpaW1qb2JzLmNvbQ==';
-//     var Mainchannel = 'aWltam9icy0tUmVjcnVpdGVyLS00NTA1OA==';
-//     var key1 = 'pub-c-63069c70-3e81-42b3-b5f6-dc0bd232f845';
-//     var key2 = 'sub-c-760e7840-9e47-11e5-8db0-0619f8945a4f';
-
-// window.onbeforeunload = function () {
-//     console.log("ji")
-//     unsubscribe(channelsArray);
-// };
-
-    // console.log(recruiterEmail)
-
-    function initializePubNub() {
-        pubnub = new PubNub({
-        publishKey: "pub-c-5069ae94-20a5-4328-8281-4e1c630cd6f2", // 'pub-c-63069c70-3e81-42b3-b5f6-dc0bd232f845'
-        subscribeKey: "sub-c-13938756-ada8-11e7-85f8-821de3cbacaa", //'sub-c-760e7840-9e47-11e5-8db0-0619f8945a4f',
-        // authKey: authkey,
-        // logVerbosity: true,
-        uuid: btoa(recruiterID+'--'+recruiterEmail),
-        heartbeat: 120,
-        heartbeat_interval: 30
-        // logVerbosity: true,
-        // ssl : true
-        }, function(status) {
-            console.log(status);
-        });
-    }
+function initializePubNub() {
+    pubnub = new PubNub({
+    publishKey: "pub-c-5069ae94-20a5-4328-8281-4e1c630cd6f2", // 'pub-c-63069c70-3e81-42b3-b5f6-dc0bd232f845'
+    subscribeKey: "sub-c-13938756-ada8-11e7-85f8-821de3cbacaa", //'sub-c-760e7840-9e47-11e5-8db0-0619f8945a4f',
+    // authKey: authkey,
+    // logVerbosity: true,
+    uuid: btoa(recruiterID+'--'+recruiterEmail),
+    heartbeat: 120,
+    heartbeat_interval: 30
+    // logVerbosity: true,
+    // ssl : true
+    }, function(status) {
+        console.log(status);
+    });
+}
 
 function getUUID() {
     return pubnub.getUUID();

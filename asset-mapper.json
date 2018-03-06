@@ -760,7 +760,7 @@
 
 				"static/js/chatObject.js",
 				"static/js/chat-sticky.js",
-				
+
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Services/fetchJobs.js",
@@ -951,7 +951,12 @@
 				"static/js/header.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
-				"static/js/my-chat.js"
+				"static/js/my-chat.js",
+				"static/js/chat_pubnub.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js",
+				"static/js/Components/MyChat/model.js",
+				"static/js/Components/MyChat/index.js"
 			],
 			"prod" : [
 				"static/build/js/my-chat.min.js"

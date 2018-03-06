@@ -18,7 +18,6 @@ getRequest(baseUrl+"/recruiter/"+recruiterID, {}, function(res) {
         populateMainView();
     }
 
-
 });
 
 var sendMessage = function(event) {
