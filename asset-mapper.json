@@ -728,21 +728,18 @@
 		"styles": {
 			"debug" : [
 				"static/css/header.css",
-				"static/css/colors.css",
 				"static/css/my-jobs.css",
-				"static/css/utilities.css",
-				"static/css/chat-sticky.css",
 				"static/css/footer.css",
-				"static/css/icons/icons.css",
 				"static/css/modal.css",
 				"static/css/vendor/tooltipster.css",
-
 				"static/css/jquery-ui.min.css",
         		"static/css/index.css",
 				"static/css/buttons.css",
 				"static/css/footer.css",
-				"static/css/animate.css",
 
+				"static/css/chat-sticky.css",
+				"static/css/utilities.css",
+				"static/css/animate.css",
 				"static/css/jquery-chatbox.css"
 			],
 			"prod": [
@@ -754,20 +751,16 @@
 				"static/js/vendor/jquery.min.js",
 				"static/js/vendor/tooltipster.main.min.js",
 				"static/js/Utilities/request.js",
-				"static/js/header.js",
 				"static/js/utilities.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/common.js",
 				"static/js/Utilities/modal.js",
 				"static/js/vendor/moment.min.js",
 
-				"static/js/vendor/jquery-ui.min.js",
+
 				"static/js/chatObject.js",
-				"static/js/jquery-chat.js",
-			
-
-				"static/js/header.js",
-
+				"static/js/chat-sticky.js",
+				
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Services/fetchJobs.js",

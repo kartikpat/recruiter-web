@@ -63,7 +63,8 @@
 		modalContent:'modal',
 		candidateApplyListShell:'shells/candidate-apply-list-shell',
 		myJobsShell:'shells/my-jobs-shell',
-		reportsShell: 'shells/reports-shell.html'
+		reportsShell: 'shells/reports-shell.html',
+		chatSticky: 'chat-sticky'
 
 	});
 	app.set('view engine', 'html');
