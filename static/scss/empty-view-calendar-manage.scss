@@ -1,0 +1,254 @@
+@import "fonts.scss";
+@import 'chat-sidebar';
+
+.page-content{
+    min-height: 100%;
+    padding: 0;
+    overflow: auto;
+    position: relative;
+    padding: 20px;
+    width: 100%;
+    background-color: #f7f7f7;
+    .container{
+        background-color: #f7f7f7;
+       // height: 900px;
+        width: 80%;
+        float: left;
+        .header-slot{
+            background-color: #f7f7f7;
+          //  height: 80px;
+            width: 100%;
+            margin-top: 20px;
+            .tagline{
+                color:  #5d5d5d;
+                font-size: 22px;/* Approximation due to font substitution */
+                font-weight: 400;
+                text-align: left;
+                display: inline-block;
+                margin-left:20px;
+                margin-bottom: 10px;
+            }
+            .manage-Calendar{
+                display: inline-block;
+                border-radius: 4px;
+                border-style: solid;
+                border-width: 1px;
+                border-color:  #8f8a8a;
+                box-sizing: border-box;
+                background-color:  #ffffff;
+                width: 170px;
+                height: 28px;
+                text-align: center;
+                line-height: 28px;
+                cursor: pointer;
+                margin-bottom: 17px;
+                font-weight: 400;
+                float: right;
+              
+            }
+        }
+        
+        .wrapper{
+            border-style: solid;
+            border-width: 1px;
+            border-color:  #e8e8e8;
+            box-sizing: border-box;
+            background-color:  #ffffff;
+        //    height: 555px;
+            float: left;
+            width: 100%;
+            .action{
+                width: 100%;
+                background-color: #ebe8e8;
+                height: 50px;
+                .interview-date{
+                    color: #2b2b2b;
+                    font-size: 15px;
+                    font-weight: 400;
+                    text-align: left;
+                    float: left;
+                    margin: 0;
+                    width: 25%;
+                    padding: 15px 0 15px 20px;
+                }
+                .calendar-name{
+                    color: #2b2b2b;
+                    font-size: 15px;
+                    font-weight: 400;
+                    text-align: left;
+                    display: inline-block;
+                    margin: 0;
+                    width: 25%;
+                    padding: 15px 0 15px 5px;
+                }
+                .time-slot{
+                    color: #2b2b2b;
+                    font-size: 15px;
+                    font-weight: 400;
+                    text-align: left;
+                    display: inline-block;
+                    width: 25%;
+                    margin: 0;
+                    padding: 15px 0 15px 20px;
+                }
+            }
+            .schedule-container{
+                width: 100%;
+                background-color: white;
+                .no-data{
+                    height: 50px;
+                    line-height: 50px;
+                    text-align: center;
+                    min-width: 350px;
+                    margin: 0 auto;
+                    font-size: 20px;
+                    color: #2b2b2b;
+                }
+            }
+        }
+    }
+}            
+
+@media only screen and (max-width: 768px){
+    .page-content{
+        min-height: 100%;
+        padding: 0;
+        overflow: auto;
+        position: relative;
+        padding: 20px;
+        width: 100%;
+        background-color: #f7f7f7;
+        .container{
+            background-color: #f7f7f7;
+            width: 100%;
+            float: left;
+            .header-slot{
+                border-top-left-radius: 6px;
+                border-top-right-radius: 6px;
+                border-style: solid;
+                border-width: 1px;
+                border-color:  #e8e8e8;
+                box-sizing: border-box;
+                background-color:  #f3fbfb;
+                height: 81px;
+                width: 100%;
+                margin-top: 5px;
+                
+                .tagline{
+                    color:  #5d5d5d;
+                    font-size: 22px;/* Approximation due to font substitution */
+                    font-weight: 400;
+                    text-align: left;
+                    display: inline-block;
+                    margin-left:20px;
+                    margin-top: 20px;
+                }
+                .manage-Calendar{
+                    display: inline-block;
+                    border-radius: 4px;
+                    border-style: solid;
+                    border-width: 1px;
+                    border-color:  #8f8a8a;
+                    box-sizing: border-box;
+                    background-color:  #ffffff;
+                    width: 170px;
+                    height: 28px;
+                    text-align: center;
+                    line-height: 28px;
+                    cursor: pointer;
+                    float: right;
+                    margin-top: 20px;
+                    margin-bottom: 30px;
+                    margin-right: 25px;
+                  
+                }
+            }
+            
+            .wrapper{
+                border-style: solid;
+                border-width: 1px;
+                border-color:  #e8e8e8;
+                box-sizing: border-box;
+                background-color:  #ffffff;
+                width: 100%;
+                .action{
+                 display: none;
+                }
+                .schedule-container{
+                    width:100%;
+                    display: block;
+                    padding: 0%;
+                    background-color: white;
+                }
+            }
+        }
+        .right{
+            display: none!important;
+        }
+    }            
+                    
+}
+
+@media only screen and (max-width: 480px){
+    .page-content{
+        .container{
+            width: 100%;
+            .header-slot{
+                height: 85px;
+                width: 100%;
+                .tagline{
+                    margin-top: 30px;
+                    margin-left:10px;
+                    font-size: 17px;
+                   
+                }
+                .manage-Calendar{
+                    display: inline-block;
+                    border-radius: 4px;
+                    border-style: solid;
+                    border-width: 1px;
+                    border-color:  #8f8a8a;
+                    box-sizing: border-box;
+                    background-color:  #ffffff;
+                    width: 120px;
+                    height: 28px;
+                    text-align: center;
+                    line-height: 28px;
+                    float: right;
+                    cursor: pointer;
+                    margin-right: 10px;
+                    margin-top: 25px;
+                    margin-bottom: 30px;
+                    font-size: 12px;
+                }
+            }
+            .wrapper{
+                border-style: solid;
+                border-width: 1px;
+                border-color:  #e8e8e8;
+                box-sizing: border-box;
+                background-color:  #ffffff;
+                width: 100%;
+                .action{
+                 display: none;
+                }
+                .schedule-container{
+                    width:100%;
+                    display: block;
+                    padding: 0%;
+                    background-color: white;
+                    .no-data{
+                        height: 50px;
+                        line-height: 50px;
+                        text-align: center;
+                        min-width: 100%;
+                        margin: 0 auto;
+                        font-size: 18px;
+                        color: #2b2b2b;
+                    }
+                }
+            }
+        }
+    }
+}         
+

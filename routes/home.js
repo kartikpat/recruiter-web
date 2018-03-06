@@ -605,4 +605,18 @@ module.exports = function(settings){
 		return
 	});
 
+	app.get("/empty-view",isAuthenticated, function(req,res){
+		res.render("empty-view-calendar-manage", {
+			title:"Recruiter Web - Candidate Profile | iimjobs.com",
+			styles:  assetsMapper["empty-view-calendar-manage"]["styles"][mode],
+			scripts: assetsMapper["empty-view-calendar-manage"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			jobId: req.params.jobID,
+			applicationId: req.params.applicationID,
+			profile: req.profile
+		})
+		return
+	});
+
 }
