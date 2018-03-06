@@ -769,7 +769,11 @@
 				"static/js/Services/submitRefreshJob.js",
 				"static/js/Components/MyJobs/model.js",
 				"static/js/Components/MyJobs/index.js",
-				"static/js/Utilities/toastNotifier.js"
+				"static/js/Utilities/toastNotifier.js",
+				"static/js/chat_pubnub.js",
+				"static/js/Components/StickyChat/model.js",
+				"static/js/Components/StickyChat/index.js",
+				"static/js/Components/StickyChat/store.js"
 			],
 			"prod" : [
 				"static/build/js/my-jobs.min.js"
@@ -911,6 +915,7 @@
 				"static/js/vendor/jquery.min.js",
 				"static/js/Utilities/request.js",
 				"static/js/header.js",
+
 				"static/js/change-password.js",
 				"static/js/utilities.js",
 				"static/js/shortlisted-candidates.js",
@@ -953,10 +958,12 @@
 				"static/js/utilities.js",
 				"static/js/my-chat.js",
 				"static/js/chat_pubnub.js",
+				"static/js/vendor/moment.min.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Components/MyChat/model.js",
-				"static/js/Components/MyChat/index.js"
+				"static/js/Components/MyChat/index.js",
+				"static/js/Components/MyChat/store.js"
 			],
 			"prod" : [
 				"static/build/js/my-chat.min.js"
@@ -1309,6 +1316,7 @@
 				"static/js/Utilities/toastNotifier.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/common.js",
+
 				"static/js/Services/fetchRecruiterCalendar.js",
 				"static/js/Services/fetchInterviews.js",
 				"static/js/Components/Header/model.js",

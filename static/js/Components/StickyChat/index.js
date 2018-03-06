@@ -3,23 +3,23 @@ jQuery(document).ready( function() {
     initializePubNub();
     addListeners(onNewMessage, onNewPresence, onNewStatus);
     subscribe(getArray(channelsArray));
-    var chat = Chat();
+    var chatSticky = ChatSticky();
     var store = Store();
-    chat.init()
-    chat.setProfile(profile)
-    chat.addToList(channelsArray);
+    chatSticky.init()
+    chatSticky.setProfile(profile)
+    chatSticky.addToList(channelsArray);
 
     store.saveToStore(channelsArray);
-    chat.onClickSingleChatItem(function(candidateId){
+    chatSticky.onClickSingleChatItem(function(candidateId){
 
         var obj = store.getCandidateFromStore(candidateId)
 
         fetchHistory(obj["name"], 20 , onFetchHistory);
 
-        chat.setCandidateProfile(obj)
+        chatSticky.setCandidateProfile(obj)
     })
 
-    chat.onSendMessage(function(message, channelName){
+    chatSticky.onSendMessage(function(message, channelName){
 
         publish({
             UUID:btoa(recruiterId+'--'+profile["email"]),
@@ -57,7 +57,7 @@ jQuery(document).ready( function() {
        if( msg["deviceID"] == getCookie("sessID") && msg["UUID"] == btoa(recruiterId+'--'+profile["email"]) ){
            return
        }
-       chat.receiveMessage(msg,channelName);
+       chatSticky.receiveMessage(msg,channelName);
    }
 
    function onNewPresence(p) {
@@ -74,14 +74,14 @@ jQuery(document).ready( function() {
        console.log(p)
        var uuid = getUUID();
        if(p["action"] == "join" && p["occupancy"] >= 2 && p["uuid"] != uuid) {
-           chat.showStatusIcon(p.channel)
+           chatSticky.showStatusIcon(p.channel)
        }
        else if (p["action"] == "leave" && p["occupancy"] < 2 && p["uuid"] != uuid) {
-           chat.hideStatusIcon(p.channel)
+           chatSticky.hideStatusIcon(p.channel)
        }
    }
 
-   chat.onInputSearchCandidate(function(str){
+   chatSticky.onInputSearchCandidate(function(str){
        var resultTags = []
        var array = channelsArray;
          for (var i=0; i < array.length; i++) {
@@ -89,7 +89,7 @@ jQuery(document).ready( function() {
                  resultTags.push(array[i]);
              }
          }
-         chat.addToList(resultTags);
+         chatSticky.addToList(resultTags);
     })
 
 
@@ -98,6 +98,6 @@ jQuery(document).ready( function() {
    function onFetchHistory(data, response) {
        console.log(data)
        console.log(response)
-       chat.populateMessages(response.messages)
+       chatSticky.populateMessages(response.messages)
    }
 })

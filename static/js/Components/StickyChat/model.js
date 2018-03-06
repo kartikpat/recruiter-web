@@ -1,4 +1,4 @@
-function Chat() {
+function ChatSticky() {
 
    var settings = {};
    var config = {};
@@ -38,7 +38,7 @@ function Chat() {
    }
 
    function getElement(id) {
-       var card = $(".conversationItem.prototype").clone().removeClass('prototype hidden')
+       var card = $(".candidateCard.prototype").clone().removeClass('prototype hidden')
        card.attr('data-candidate-id', id);
 
        return {

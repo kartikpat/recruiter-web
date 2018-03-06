@@ -26,7 +26,7 @@ $(document).ready(function(){
 		$('.chat-div .chat-div-content').toggleClass("show");
 		//$('.chat-div .minus-icon').toggleClass("show");
 	});
-	populateChatView(candidates);
+
 
 
 })
@@ -119,20 +119,7 @@ $("#chat-collapsed-container").on('click',".chat-collapsed-candidate-container .
     reposition_chat_windows();
 })
 
-var populateChatView = function(array) {
 
-	array.forEach(function(aCandidate) {
-
-		var card = candidatesWrapper.clone().removeClass('prototype hidden');
-		card.find(".candidate-image img").attr("src",recruiter["img_url"]).removeClass("animated-background");
-        card.attr("data-id",aCandidate["id"]);
-        card.find(".candidate-name").text(aCandidate["name"]).removeClass("animated-background");
-        card.find(".candidate-designation").text(aCandidate["jobseekerID"]).removeClass("animated-background");
-        card.find(".last-active-date").text(ISODateToD_M(aCandidate["lastActive"]));
-		$(".chat-div .chat-div-content").append(card);
-		$(".chat-div .chat-div-content").append("<hr class='divider divider-full'>");
-	})
-}
 
 $(".chat-candidate-boxes").on('click','.chat-div-candidate .chat-div-header', function() {
 	var dataId = $(this).attr("data-id");

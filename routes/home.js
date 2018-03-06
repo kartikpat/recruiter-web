@@ -482,6 +482,19 @@ module.exports = function(settings){
 		return
 	});
 
+	app.get("/my-chat-test",isAuthenticated, function(req,res){
+		res.render("my-chat", {
+			title:"Recruiter Web - My Chat | iimjobs.com",
+			styles:  assetsMapper["my-chat"]["styles"][mode],
+			scripts: assetsMapper["my-chat"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			profile: req.profile,
+			uuid: "test"
+		})
+		return
+	});
+
 	app.get("/reports",isAuthenticated, function(req,res){
 		res.render("reports", {
 			title:"Recruiter Web - Reports | iimjobs.com",
