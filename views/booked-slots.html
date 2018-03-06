@@ -1,14 +1,12 @@
 {{> header }}
-
 <div class="loader-overlay hidden" id="loaderOverlay">
     <div class="loader"></div>
 </div>
 
-<div class="container">
+<div class="page-content">
     <div class="header-slot">
-        <div class="tagline">
-            Booked Slots
-        </div>
+        <div class="tagline">Booked Slots</div>
+        <div class="right-container">
             <div class="section">
                 <select class="select-dropdown inactive" id="calendarDropdown">
                     <div class="dropdown-list" >
@@ -19,28 +17,26 @@
             <div class="manage-Calendar">
                 Manage Calendar
             </div>
-            <!-- <div class="setting-bar">
-                <img src="/static/images/setting.png">
-            </div> -->
+        </div>    
     </div>
     <div class="action-wrapper">
         <div class="action Interview-Date">
-            <label>Interview Date</label>
+            Interview Date
         </div>
         <div class="action Time-Slot">
-            <label>Time Slot</label>
+            Time Slot
         </div>
         <div class="action Calendar-Name">
-            <label>Calendar Name</label>
+            Calendar Name
         </div>
         <div class="action Candidate-Details">
-            <label>Candidate Details</label>
+            Candidate Details
         </div>
         <div class="action Applied-job">
-            <label>Applied to job</label>
+            Applied to job
         </div>
         <div class="action task">
-            <label>Actions</label>
+           Actions
         </div>
     </div>
     <div class="booked-slots bookedSlots">
@@ -54,37 +50,37 @@
 <div class="slot-date slotDate prototype hidden">
     <div class="date"><div class="action-date">Interview Date</div><span class="interviewDate"></span></div>
     <div class="schedules-container">
-    <div class="schedules">
-        <div class="time"><div class="action-time">Time Slots</div><span class="interviewTime">10:00 to 11:00 AM</span></div>
-        <div class="interview-type"><div class="action-name">Calendar Name</div><a href="" class="calendarName">Product Interviews</a></div>
-        <div class="details">
-            <div class="action-detail">Candidate Details</div>
-            <div class="name candName">Shally Sharma</div>
-            <div class="designation candDesignation">Product Manager at iimjobs</div>
-            <div class="experience ">Experience: <span class="candExperience">2yrs</span></div>
-            <div class="location">Current Location: <span class="candLocation">Delhi</span></div>
-        </div>
-        <div class="job-details">
-            <div class="action-job">Applied to job</div>
-            <div id="profile" ><a class="jobName" target="_blank">iimjobs.com-Associate Product Manager</a></div>
-            <div id="exp-details" class="jobExp"> Delhi 0-5 yrs</div>
-        </div>
-        <div class="action-buttons">
-            <div class="send-message">
-                Send Message
+        <div class="schedules">
+            <div class="time"><div class="action-time">Time Slots</div><div class="interviewTime">10:00 to 11:00 AM</div></div>
+            <div class="interview-type"><div class="action-name">Calendar Name</div><a href="" class="calendarName">Product Interviews</a></div>
+            <div class="details">
+                <div class="action-detail">Candidate Details</div>
+                <div class="name candName">Shally Sharma</div>
+                <div class="designation candDesignation">Product Manager at iimjobs</div>
+                <div class="experience ">Experience: <span class="candExperience">2yrs</span></div>
+                <div class="location">Current Location: <span class="candLocation">Delhi</span></div>
             </div>
-            <div class="section">
-                <div class="button-action-list candidateOtherActions inactive">
-                    <label class="action-list-label">Other Actions</label>
-                    <ul class="action-list-items">
-                        <li><a href="#" class="candidateSendMessage">Chat</a></li>
-                        <li><a href="#" class="candidateCancelInterviewInvite">Cancel Interview</a></li>
-                    </ul>
+            <div class="job-details">
+                <div class="action-job">Applied to job</div>
+                <div id="profile" ><a class="jobName" target="_blank">iimjobs.com-Associate Product Manager</a></div>
+                <div id="exp-details" class="jobExp"> Delhi 0-5 yrs</div>
+            </div>
+            <div class="action-buttons">
+                <div class="send-message">
+                    Send Message
+                </div>
+                <div class="section">
+                    <div class="button-action-list candidateOtherActions inactive">
+                        <label class="action-list-label">Other Actions</label>
+                        <ul class="action-list-items">
+                            <li><a href="#" class="candidateSendMessage">Chat</a></li>
+                            <li><a href="#" class="candidateCancelInterviewInvite">Cancel Interview</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 

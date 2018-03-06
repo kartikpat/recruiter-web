@@ -3,40 +3,53 @@
     <div class="container">
         <div class="header-slot">
             <div class="tagline"> Manage Calendar</div>
-            <div class="manage-Calendar">Manage Calendar</div>
+            <div class="manage-Calendar">Create New Calendar</div>
         </div>
         <div class="wrapper">
-            <div class="action-wrapper">
                 <div class="action">
                     <div class="interview-date">
-                        <label>Date Created</label>
-                    </div>
-                    <div class="time-slot">
-                        <label>Calendar Name</label>
+                        Date Created
                     </div>
                     <div class="calendar-name">
-                        <label>Remaining Slots</label>
+                        Calendar Name
+                    </div>
+                    <div class="time-slot">
+                        Remaining Slots
                     </div>
                 </div>    
-            </div>
             <div class="schedule-container">
-                
-            </div>
             
-        </div>  
-    </div>
+            </div>
+        </div>   
+    </div> 
     <div class="conversations right">
-            {{>chatSidebar}}
-    </div>
+        {{>chatSidebar}}
+    </div> 
 </div>
 
-<div class="schedule prototype hidden calendarRow">
-    <div class="date"></div>
-    <div class="calendar-name"></div>
-    <div class="slots"></div>
-    <div class="edit-schedule editCalendar">
+<div class="schedule prototype hidden calendarRow ">
+    <div class="date">
+        <div class="date-created">Date Created</div>
+        <div class="calendar-date"></div>
+    </div>
+    <div class="calendar-detail">
+        <div class="calendar">Calendar Name</div>
+        <div class="calendar-wrap"></div>
+    </div>
+    <div class="slots">
+        <div class="remaining-slots">Remaining Slots</div>
+        <div class="total-slots"></div>
+    </div>
+    <div class="edit-schedule">
         <a href="#">Edit</a>
     </div>
+    <div class="table-row-separator"></div>
 </div>
+
+<div class="schedule prototype hidden empty-view">
+    <div class="no-data">
+       No calendar found.
+    </div>
+</div>    
 
 {{> footer }}

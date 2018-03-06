@@ -6,3 +6,4 @@ function fetchRecruiterCalendar(recruiterId){
 		return pubsub.publish("failedToFetchCalendars", res);
     });
 }
+
