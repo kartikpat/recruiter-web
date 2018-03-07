@@ -13,7 +13,7 @@ $(document).ready(function(){
 	navBar.find(".menu-more").hover(showMenuMore);
 	navBar.find(".manage-bookings").click(showAllCalendars);
 	$('.chat-div .chat-div-header').click(function() {
-
+		$(this).find(".minus-icon").toggleClass("active")
 		$('.chat-div .chat-div-content').toggleClass("show");
 		//$('.chat-div .minus-icon').toggleClass("show");
 	});
@@ -160,6 +160,7 @@ var populateChatView = function(array) {
 $(".chat-candidate-boxes").on('click','.chat-div-candidate .chat-div-header', function() {
 	var dataId = $(this).attr("data-id");
 	$('.chat-div-candidate[data-id='+dataId+'] .content-footer-container').toggleClass("show");
+	$('.chat-div-candidate .chat-div-header[data-id='+dataId+'] .minus-icon').toggleClass("active")
 })
 
 $(".chat-candidate-boxes").on('click','.chat-div-candidate .info-buttons .close-icon', function() {

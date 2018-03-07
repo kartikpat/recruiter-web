@@ -44,7 +44,7 @@
 					display:inline-block;
 					width:10px;
 					height:10px;
-					border-radius:50%;	
+					border-radius:50%;
 					font-size:$base-font-size;
 					margin:0 2px 0 15px;
 					&.online {
@@ -57,7 +57,7 @@
 				}
 
 				&.user-status {
-					color:$extra-info-color;	
+					color:$extra-info-color;
 				}
 			}
 		}
@@ -89,7 +89,7 @@
 					    width: 100%;
 					    padding: 5px 0 0 0;
 					    font-size: 0;
-						
+						cursor: pointer;
 						.user-item {
 						    display: inline-block;
 						    vertical-align: middle;
@@ -208,6 +208,8 @@
 
 									img {
 										border-radius:50%;
+										width: 50px;
+									    height: 50px;
 									}
 								}
 								.message-area {
@@ -243,6 +245,8 @@
 
 									img {
 										border-radius:50%;
+										width: 50px;
+									    height: 50px;
 									}
 								}
 								.message-area {
@@ -320,14 +324,14 @@
 
 				.user-item {
 					text-align:center;
-					margin:20px 0;
+					margin:20px;
 
 					&.user-image {
 						margin:20px auto;
 
 						img {
-							max-width:140px;
-							max-height:140px;
+							width:110px;
+							height:110px;
 							object-fit:cover;
 							border-radius:50%;
 							border:3px solid $color-white;
@@ -366,4 +370,9 @@
 
 .footer {
 	display:none;
+}
+
+.welcome-container {
+	width: 80%;
+    height: 100%;
 }

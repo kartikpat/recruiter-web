@@ -95,10 +95,15 @@ function Profile(){
 		if(settings.type== "change-password") {
 
 		}
+		if(settings.type== "notification-settings") {
+			return true
+		}
 
 	}
 	function getProfile() {
+
 		var form = new FormData();
+		
 		if(settings.type == "profile") {
 			if(settings.fileUpload[0].files[0] != undefined) {
   		    	form.append("image", settings.fileUpload[0].files[0], settings.fileUpload[0].files[0].name);
@@ -130,7 +135,7 @@ function Profile(){
 			if(parseInt(settings.recruiterType.val())) {
 				form.append("type", settings.recruiterType.val())
 			}
-			return form
+
 		}
 		if(settings.type== "social-accounts") {
 			if(settings.facebook.val()) {
@@ -142,16 +147,17 @@ function Profile(){
 			if(settings.twitter.val()) {
 				form.append("twitterUrl", settings.twitter.val())
 			}
-			return form
+
 		}
 		if(settings.type== "change-password") {
 
 		}
 		if(settings.type== "notification-settings") {
+
 			form.append("notificationEmail", $("input[name='notification-type']:checked").val())
 		}
-
-		return ob;
+		
+		return form;
 	}
 
 	function setProfile(obj) {
@@ -159,24 +165,24 @@ function Profile(){
 		settings.name.val(obj["name"]);
 		settings.contact.val(obj["phone"]);
 		settings.email.val(obj["email"]);
-		settings.designation.val(obj["desg"]);
+		settings.designation.val(obj["designation"]);
 
 		if(obj["videoUrl"])
 			settings.videoUrl.val(obj["videoUrl"]);
 
-		settings.organization.val(obj["org"]);
+		settings.organization.val(obj["organisation"]);
 		settings.websiteUrl.val(obj["wurl"]);
+		if(obj["type"]) {
+			settings.recruiterType.val(obj["type"]);
+		}
 
-		settings.recruiterType.val(obj["type"]);
 		settings.location.val(obj["location"]);
 		settings.about.val(obj["about"]);
 		settings.twitter.val(obj["turl"]);
 		settings.facebook.val(obj["furl"]);
 		settings.linkedIn.val(obj["lurl"]);
-		// settings.twitter.val(obj["turl"]);
-		// settings.twitter.val(obj["turl"]);
-
-		$("input[name='notification-type']").val(obj["notificationEmail"])
+		console.log(obj["notificationEmail"])
+		$("input[name='notification-type'][value='"+obj["notificationEmail"]+"']").attr('checked', true);
 
 		if(obj["availableCredits"]) {
 			settings.buyMore.removeClass("hidden")
@@ -191,9 +197,11 @@ function Profile(){
 	function submitHandler(fn){
 
 		$(settings.submitButton).click(function() {
-			var type = $(this).closest(".settings-page").find(".settings-sidebar li.active").attr("data-selector")
 
+			var type = $(this).closest(".settings-page").find(".settings-sidebar li.active").attr("data-selector")
+			console.log(type)
 			settings.type = type;
+			console.log(settings.type)
 			fn()
 		})
 	}

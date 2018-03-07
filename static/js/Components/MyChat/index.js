@@ -1,3 +1,5 @@
+var channelsArray = []
+
 jQuery(document).ready( function() {
 
     initializePubNub();
@@ -7,19 +9,17 @@ jQuery(document).ready( function() {
     var store = Store();
     chat.init()
     chat.setProfile(profile)
-    chat.addToList(channelsArray);
+    fetchRecruiterChats(recruiterId)
 
-    store.saveToStore(channelsArray);
     chat.onClickSingleChatItem(function(candidateId){
 
         var obj = store.getCandidateFromStore(candidateId)
 
-        fetchHistory(obj["name"], 20 , onFetchHistory);
-
+        fetchHistory(obj.channel , 20 , onFetchHistory);
         chat.setCandidateProfile(obj)
     })
 
-    chat.onSendMessage(function(message, channelName){
+    chat.onSendMessage(function(message, channelName, candidateId){
 
         publish({
             UUID:btoa(recruiterId+'--'+profile["email"]),
@@ -32,9 +32,26 @@ jQuery(document).ready( function() {
             img: profile["pic"],
             type: 1
         }, channelName, function(m){
-            console.log("message sent");
+            console.log(m)
+            var obj = store.getCandidateFromStore(candidateId)
+            chat.appendSendMessage(message, obj)
         })
+
     })
+
+    function onFetchRecruiterChats(topic, data) {
+        console.log(data)
+        chat.addToList(data);
+        channelsArray = data;
+        store.saveToStore(data);
+    }
+
+    function onFetchRecruiterChatsFail(topic, data) {
+        errorHandler(data)
+    }
+
+    var fetchedRecruiterChatsSuccessSubscription = pubsub.subscribe('fetchedRecruiterChats', onFetchRecruiterChats)
+	var fetchedRecruiterChatsFailSubscription = pubsub.subscribe('fetchedRecruiterChatsFail', onFetchRecruiterChatsFail)
 
     function getCookie(name) {
       var value = "; " + document.cookie;
@@ -92,12 +109,16 @@ jQuery(document).ready( function() {
          chat.addToList(resultTags);
     })
 
-
-
-
    function onFetchHistory(data, response) {
        console.log(data)
        console.log(response)
        chat.populateMessages(response.messages)
    }
 })
+
+function errorHandler(data) {
+    if(!data) {
+        return toastNotify(3, "Something went wrong");
+    }
+    return toastNotify(3, data.message);
+}

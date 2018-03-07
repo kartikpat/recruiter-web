@@ -1,4 +1,16 @@
 {{>header}}
+
+<div class="toast-notification-container">
+	<div class="toast-notification">
+		<!-- <div class="notification-icon">
+			<img src="/static/images/close-icon.png" />
+		</div> -->
+		<div class="notification-message">
+			<p></p>
+		</div>
+	</div>
+</div>
+
 <div class="page-content">
     <div class="main-wrapper left">
         <div class="main-container">
@@ -14,13 +26,14 @@
                     <div class="chat-body">
                         <div class="sidebar left conversations-list">
                             <div class="search">
-                                <input type="text" placeholder="Search Messages" id="searchCandidate">
+                                <input type="text" placeholder="Search Candidates" id="searchCandidate">
                             </div>
                             <div class="" id="conversationItemList">
 
                             </div>
                         </div>
-                        <div class="chat-window middle">
+                        <div class="welcome-container welcomeContainer right"></div>
+                        <div class="chat-window middle chatWindow hidden">
                             <div class="current-chat">
                                <ul id="mssgContainer">
 
@@ -32,7 +45,7 @@
                                 <span class="send-message button green" id="sendMsg">Send</span>
                             </div>
                         </div>
-                        <div class="user-profile right">
+                        <div class="user-profile right userProfile hidden">
                             <div class="user-image user-item">
                                 <img id="userImg" src="https://www.placehold.it/120x120/f5f5f5?text=+">
                             </div>

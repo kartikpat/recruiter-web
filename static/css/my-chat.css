@@ -878,7 +878,8 @@ body.posf {
   min-width: 350px;
   margin: 0 auto;
   font-size: 20px;
-  color: #2b2b2b; }
+  color: #2b2b2b;
+  background: #fff; }
 
 a {
   text-decoration: none; }
@@ -1613,7 +1614,8 @@ span.sticker {
             vertical-align: middle;
             width: 100%;
             padding: 5px 0 0 0;
-            font-size: 0; }
+            font-size: 0;
+            cursor: pointer; }
             .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item {
               display: inline-block;
               vertical-align: middle;
@@ -1688,7 +1690,9 @@ span.sticker {
               float: left;
               margin: 0 15px 0 0; }
               .page-content .chat-container .chat-body .chat-window ul li.message.received .user-image img {
-                border-radius: 50%; }
+                border-radius: 50%;
+                width: 50px;
+                height: 50px; }
             .page-content .chat-container .chat-body .chat-window ul li.message.received .message-area {
               max-width: 80%;
               display: inline-block;
@@ -1710,7 +1714,9 @@ span.sticker {
               float: right;
               margin: 0 0 0 15px; }
               .page-content .chat-container .chat-body .chat-window ul li.message.sent .user-image img {
-                border-radius: 50%; }
+                border-radius: 50%;
+                width: 50px;
+                height: 50px; }
             .page-content .chat-container .chat-body .chat-window ul li.message.sent .message-area {
               max-width: 80%;
               display: inline-block;
@@ -1805,12 +1811,12 @@ span.sticker {
         vertical-align: top; }
         .page-content .chat-container .chat-body .user-profile .user-item {
           text-align: center;
-          margin: 20px 0; }
+          margin: 20px; }
           .page-content .chat-container .chat-body .user-profile .user-item.user-image {
             margin: 20px auto; }
             .page-content .chat-container .chat-body .user-profile .user-item.user-image img {
-              max-width: 140px;
-              max-height: 140px;
+              width: 110px;
+              height: 110px;
               object-fit: cover;
               border-radius: 50%;
               border: 3px solid #FFF;
@@ -1831,3 +1837,7 @@ span.sticker {
 
 .footer {
   display: none; }
+
+.welcome-container {
+  width: 80%;
+  height: 100%; }
