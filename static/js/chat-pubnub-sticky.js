@@ -138,59 +138,20 @@ var channelsArray = [{
         "lastActive": "NULL"
 }];
 
-var recruiterID = localStorage.id;
-var recruiterEmail;
-var pubnub;
 
-getRequest(baseUrl+"/recruiter/"+recruiterID, {}, function(res) {
-
-    if(res["status"] == "success") {
-        recruiterEmail = res["data"][0]["email"];
-        recruiterName = res["data"][0]["name"];
-        recruiterImage = res["data"][0]["img_link"];
-        console.log(recruiterID);
-        console.log(recruiterEmail);
-        initializePubNub();
-        addListeners();
-
-        subscribe(getArray(channelsArray));
-    }
-});
-
-
-// var channelsArray = ["aWltam9icy0tUmVjcnVpdGVyLS00NTA1OA==", "iimjobs--r45058-j511594", "iimjobs--r45058-j90519", "iimjobs--r45058-j709365", "iimjobs--r45058-j612792", "iimjobs--r45058-j110923", "iimjobs--r45058-j706831", "iimjobs--r45058-j676776", "iimjobs--r45058-j712558", "iimjobs--r45058-j337587", "iimjobs--r45058-j651703", "iimjobs--r45058-j462122", "iimjobs--r45058-j178541", "iimjobs--r45058-j699540", "iimjobs--r45058-j293084", "iimjobs--r45058-j62147", "iimjobs--r45058-j419400", "iimjobs--r45058-j480373", "iimjobs--r45058-j959940", "iimjobs--r45058-j323756", "iimjobs--r45058-j57221", "iimjobs--r45058-j243816", "iimjobs--r45058-j435817", "iimjobs--r45058-j229312", "iimjobs--r45058-j260854", "iimjobs--r45058-j712518", "iimjobs--r45058-j429324", "iimjobs--r45058-j"];
-
-// var MainUUID = 'NDUwNTgtLXNocmV5YUBpaW1qb2JzLmNvbQ==';
-//     var Mainchannel = 'aWltam9icy0tUmVjcnVpdGVyLS00NTA1OA==';
-//     var key1 = 'pub-c-63069c70-3e81-42b3-b5f6-dc0bd232f845';
-//     var key2 = 'sub-c-760e7840-9e47-11e5-8db0-0619f8945a4f';
-
-// window.onbeforeunload = function () {
-//     console.log("ji")
-//     unsubscribe(channelsArray);
-// };
-
-    // console.log(recruiterEmail)
-
-    function initializePubNub() {
-        pubnub = new PubNub({
-        publishKey: "pub-c-5069ae94-20a5-4328-8281-4e1c630cd6f2", // 'pub-c-63069c70-3e81-42b3-b5f6-dc0bd232f845'
-        subscribeKey: "sub-c-13938756-ada8-11e7-85f8-821de3cbacaa", //'sub-c-760e7840-9e47-11e5-8db0-0619f8945a4f',
-        // authKey: authkey,
-        // logVerbosity: true,
-        uuid: btoa(recruiterID+'--'+recruiterEmail),
-        heartbeat: 120,
-        heartbeat_interval: 30
-        // logVerbosity: true,
-        // ssl : true
-        }, function(status) {
-            console.log(status);
-        });
-    }
-
-function getUUID() {
-    return pubnub.getUUID();
-}
+    var pubnub = new PubNub({
+    publishKey: "pub-c-5069ae94-20a5-4328-8281-4e1c630cd6f2", // 'pub-c-63069c70-3e81-42b3-b5f6-dc0bd232f845'
+    subscribeKey: "sub-c-13938756-ada8-11e7-85f8-821de3cbacaa", //'sub-c-760e7840-9e47-11e5-8db0-0619f8945a4f',
+    // authKey: authkey,
+    // logVerbosity: true,
+    uuid: btoa(45058),
+    heartbeat: 120,
+    heartbeat_interval: 30
+    // logVerbosity: true,
+    // ssl : true
+    }, function(status) {
+        console.log(status);
+    });
 
 function getCookie(name) {
   var value = "; " + document.cookie;
@@ -198,6 +159,9 @@ function getCookie(name) {
   if (parts.length == 2) return parts.pop().split(";").shift();
 }
 
+addListeners();
+
+subscribe(getArray(channelsArray));
 
 function getArray(array) {
     var tempArray = [];
@@ -226,7 +190,7 @@ function onNewMessage(m) {
     var pubTT = m.timetoken; // Publish timetoken
     console.log("receieved new message")
     console.log(msg)
-    receiveMessage(msg, channelName);
+    receiveMessage(msg);
 }
 
 function onNewPresence(p) {
@@ -240,7 +204,7 @@ function onNewPresence(p) {
     var service = p.service; // service
     var uuids = p.uuids; // UUIDs of users who are connected with the channel with their state
     var occupancy = p.occupancy; // No. of users connected with the channel
-
+    console.log(p);
     receivePresence(p)
 }
 
@@ -253,18 +217,6 @@ function onNewStatus(s) {
     var affectedChannelGroups = s.affectedChannelGroups; // The channel groups affected in the operation, of type array.
     var lastTimetoken = s.lastTimetoken; // The last timetoken used in the subscribe request, of type long.
     var currentTimetoken = s.currentTimetoken; // The current timetoken fetched in the subscribe response, which is going to be used in the next request, of type long.
-
-    checkForStatusChange(s);
-}
-
-function checkForStatusChange(status) {
-    if(status.operation=="PNSubscribeOperation"){
-        checkForOnline(status.affectedChannels);
-    }
-}
-
-function checkForOnline(channels) {
-    hereNow(channels)
 }
 
 function subscribe(channelsArray) {
@@ -274,10 +226,9 @@ function subscribe(channelsArray) {
     });
 }
 
-function unsubscribe(channelName) {
-    console.log(channelName);
+function unsubscribe(channelsArray) {
     pubnub.unsubscribe({
-        channels: [channelName]
+        channels: getArray(channelsArray)
     });
 }
 
@@ -290,30 +241,18 @@ function fetchHistory(channel, count, onFetchHistory) {
     }, onFetchHistory);
 }
 
-function hereNow(channels) {
+function hereNow(channel, onHereNow) {
     pubnub.hereNow({
-        channels: channels,
+        channel: channel ,
         includeUUIDs: true,
         includeState: true
 
-    }, function(status, response) {
-        if(status["statusCode"] == 200) {
-            channels.forEach(function(channel, index) {
-                if(response.channels[channel].occupancy >= 2) {
-                    showOnlineIcon(channel);
-                }
-                else {
-                    removeOnlineIcon(channel);
-                }
-            })
-        }
-    });
+    }, onHereNow);
 }
 
 function onHereNow(status, response) {
-    // console.log(status)
-    // console.log(response)
-
+    console.log(status)
+    console.log(response)
 }
 
 function publish(message, channel, onPublish) {

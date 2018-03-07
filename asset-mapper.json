@@ -758,8 +758,7 @@
 				"static/js/vendor/moment.min.js",
 
 
-				"static/js/chatObject.js",
-				"static/js/chat-sticky.js",
+
 
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
@@ -770,10 +769,10 @@
 				"static/js/Components/MyJobs/model.js",
 				"static/js/Components/MyJobs/index.js",
 				"static/js/Utilities/toastNotifier.js",
-				"static/js/chat_pubnub.js",
-				"static/js/Components/StickyChat/model.js",
-				"static/js/Components/StickyChat/index.js",
-				"static/js/Components/StickyChat/store.js"
+				"static/js/chat-pubnub-sticky.js",
+				"static/js/chatObject.js",
+				"static/js/chat-sticky.js"
+
 			],
 			"prod" : [
 				"static/build/js/my-jobs.min.js"
