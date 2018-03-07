@@ -549,7 +549,7 @@ module.exports = function(settings){
 			scripts: assetsMapper["no-calendar-setup"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain:baseDomain,
-			profile: profile
+			profile: req.profile
 		});
 		return
 	});
@@ -561,7 +561,7 @@ module.exports = function(settings){
 			scripts: assetsMapper["Interview-scheduler-updated"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain:baseDomain,
-			profile: profile
+			profile: req.profile
 		});
 		return
 	});
@@ -573,7 +573,7 @@ module.exports = function(settings){
 			scripts: assetsMapper["ui-test"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain:baseDomain,
-			profile: profile
+			profile: req.profile
 		});
 		return
 	});
@@ -596,6 +596,34 @@ module.exports = function(settings){
 			title:"Recruiter Web - Candidate Profile | iimjobs.com",
 			styles:  assetsMapper["booked-slots"]["styles"][mode],
 			scripts: assetsMapper["booked-slots"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			jobId: req.params.jobID,
+			applicationId: req.params.applicationID,
+			profile: req.profile
+		})
+		return
+	});
+	
+	app.get("/calendar-manage",isAuthenticated, function(req,res){
+		res.render("calendar-manage", {
+			title:"Recruiter Web - Candidate Profile | iimjobs.com",
+			styles:  assetsMapper["calendar-manage"]["styles"][mode],
+			scripts: assetsMapper["calendar-manage"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			jobId: req.params.jobID,
+			applicationId: req.params.applicationID,
+			profile: req.profile
+		})
+		return
+	});
+
+	app.get("/empty-view",isAuthenticated, function(req,res){
+		res.render("empty-view-calendar-manage", {
+			title:"Recruiter Web - Candidate Profile | iimjobs.com",
+			styles:  assetsMapper["empty-view-calendar-manage"]["styles"][mode],
+			scripts: assetsMapper["empty-view-calendar-manage"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			jobId: req.params.jobID,

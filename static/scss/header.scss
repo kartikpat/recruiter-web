@@ -217,14 +217,13 @@ b{
             margin:0;
             .menu-list-item {
                 line-height:40px;
-                font-family:inherit;
                 font-size:$logoBylineFontSize;
                 display:inline-block;
                 width:20%;
                 min-width:120px;
                 text-align: center;
                 a {
-                    font-family:inherit;
+                    font-family:$primary-font;
                     color:$color-white;
                 }
 

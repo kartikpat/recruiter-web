@@ -371,8 +371,7 @@ body.posf {
   min-width: 350px;
   margin: 0 auto;
   font-size: 20px;
-  color: #2b2b2b;
-  background: #fff; }
+  color: #2b2b2b; }
 
 a {
   text-decoration: none; }
@@ -1122,86 +1121,7 @@ span.sticker {
           padding: 15px 0 15px 20px; }
       .page-content .container .wrapper .schedule-container {
         width: 100%;
-        display: inline-block;
-        padding: 0%;
         background-color: white; }
-        .page-content .container .wrapper .schedule-container .schedule {
-          display: inline-block;
-          width: 100%; }
-          .page-content .container .wrapper .schedule-container .schedule .date {
-            display: inline-block;
-            width: 25%;
-            padding-left: 20px;
-            vertical-align: top;
-            padding: 30px 20px; }
-            .page-content .container .wrapper .schedule-container .schedule .date .date-created {
-              display: none !important; }
-            .page-content .container .wrapper .schedule-container .schedule .date .calendar-date {
-              color: #2b2b2b;
-              font-size: 14px;
-              /* Approximation due to font substitution */
-              font-weight: 400;
-              text-align: left;
-              display: inline-block;
-              width: 100%; }
-          .page-content .container .wrapper .schedule-container .schedule .calendar-detail {
-            width: 25%;
-            display: inline-block;
-            vertical-align: top;
-            padding: 30px 0px; }
-            .page-content .container .wrapper .schedule-container .schedule .calendar-detail .calendar {
-              display: none; }
-            .page-content .container .wrapper .schedule-container .schedule .calendar-detail .calendar-wrap {
-              color: #149075;
-              font-size: 16px;
-              /* Approximation due to font substitution */
-              font-weight: 700;
-              text-align: left;
-              width: 100%; }
-          .page-content .container .wrapper .schedule-container .schedule .slots {
-            width: 32%;
-            display: inline-block;
-            vertical-align: top;
-            padding: 30px 17px; }
-            .page-content .container .wrapper .schedule-container .schedule .slots .remaining-slots {
-              display: none; }
-            .page-content .container .wrapper .schedule-container .schedule .slots .total-slots {
-              color: #2b2b2b;
-              font-size: 14px;
-              /* Approximation due to font substitution */
-              font-weight: 400;
-              text-align: left;
-              float: left;
-              width: 100%; }
-          .page-content .container .wrapper .schedule-container .schedule .edit-schedule {
-            border-radius: 4px;
-            border-style: solid;
-            border-width: 1px;
-            border-color: #8f8a8a;
-            box-sizing: border-box;
-            background-color: #ffffff;
-            height: 28px;
-            line-height: 28px;
-            font-size: 0.85em;
-            cursor: pointer;
-            text-align: center;
-            display: inline-block;
-            width: 68px;
-            float: right;
-            margin-right: 24px;
-            margin-top: 25px; }
-            .page-content .container .wrapper .schedule-container .schedule .edit-schedule a {
-              color: #2b2b2b;
-              font-size: 15px;
-              /* Approximation due to font substitution */
-              font-weight: 400;
-              text-align: left;
-              width: 100%; }
-          .page-content .container .wrapper .schedule-container .schedule .table-row-separator {
-            clear: both;
-            width: 95%;
-            margin: 0 auto;
-            border-bottom: 1px solid #e8e8e8; }
         .page-content .container .wrapper .schedule-container .no-data {
           height: 50px;
           line-height: 50px;
@@ -1275,96 +1195,8 @@ span.sticker {
           display: block;
           padding: 0%;
           background-color: white; }
-          .page-content .container .wrapper .schedule-container .schedule {
-            display: block;
-            width: 100%; }
-            .page-content .container .wrapper .schedule-container .schedule .date {
-              display: block;
-              width: 100%;
-              padding-left: 20px;
-              padding-top: 20px;
-              padding-bottom: 20px; }
-              .page-content .container .wrapper .schedule-container .schedule .date .date-created {
-                display: block !important;
-                width: 100%;
-                color: #2b2b2b;
-                font-size: 17px;
-                /* Approximation due to font substitution */
-                font-weight: 700;
-                text-align: left; }
-              .page-content .container .wrapper .schedule-container .schedule .date .calendar-date {
-                color: #2b2b2b;
-                font-size: 14px;
-                /* Approximation due to font substitution */
-                font-weight: 400;
-                text-align: left;
-                display: block;
-                width: 100%;
-                margin-top: 10px; }
-            .page-content .container .wrapper .schedule-container .schedule .calendar-detail {
-              width: 100%;
-              display: block;
-              padding-left: 20px;
-              padding-top: 20px;
-              padding-bottom: 20px; }
-              .page-content .container .wrapper .schedule-container .schedule .calendar-detail .calendar {
-                display: block;
-                width: 100%;
-                color: #2b2b2b;
-                font-size: 17px;
-                /* Approximation due to font substitution */
-                font-weight: 700;
-                text-align: left; }
-              .page-content .container .wrapper .schedule-container .schedule .calendar-detail .calendar-wrap {
-                color: #149075;
-                font-size: 16px;
-                /* Approximation due to font substitution */
-                font-weight: 700;
-                text-align: left;
-                width: 100%;
-                margin-top: 10px; }
-            .page-content .container .wrapper .schedule-container .schedule .slots {
-              width: 100%;
-              display: block;
-              padding-left: 20px;
-              padding-top: 20px;
-              padding-bottom: 20px; }
-              .page-content .container .wrapper .schedule-container .schedule .slots .remaining-slots {
-                display: block;
-                width: 100%;
-                color: #2b2b2b;
-                font-size: 17px;
-                /* Approximation due to font substitution */
-                font-weight: 700;
-                text-align: left; }
-              .page-content .container .wrapper .schedule-container .schedule .slots .total-slots {
-                color: #2b2b2b;
-                font-size: 14px;
-                /* Approximation due to font substitution */
-                font-weight: 400;
-                width: 100%;
-                margin: 10px 0%; }
-            .page-content .container .wrapper .schedule-container .schedule .edit-schedule {
-              margin-left: 20px;
-              border-radius: 4px;
-              border-style: solid;
-              border-width: 1px;
-              border-color: #8f8a8a;
-              box-sizing: border-box;
-              background-color: #ffffff;
-              height: 28px;
-              line-height: 28px;
-              font-size: 0.85em;
-              cursor: pointer;
-              line-height: 28px;
-              text-align: center;
-              display: block;
-              width: 68px;
-              margin-top: 34px;
-              float: none;
-              margin-bottom: 30px; }
     .page-content .right {
-      display: none; } }
+      display: none !important; } }
 
 @media only screen and (max-width: 480px) {
   .page-content .container {
@@ -1415,8 +1247,4 @@ span.sticker {
           min-width: 100%;
           margin: 0 auto;
           font-size: 18px;
-          color: #2b2b2b; }
-    .page-content .container .table-row-separator {
-      width: 100% !important; }
-  .page-content .right {
-    display: none; } }
+          color: #2b2b2b; } }

@@ -18,6 +18,8 @@
 
     .job-form-content {
         padding:30px 30px 10px 30px;
+        max-width:1440px;
+        margin:0 auto;
     }
 
     .post_job {
@@ -162,6 +164,12 @@
     width:100%;
     background:$premium-section-background;
 
+    .premium-section-content {
+        max-width:1440px;
+        margin:0 auto;
+        padding:0 30px;
+    }
+
     .contents {
         @include check-input;
     }
@@ -181,14 +189,16 @@
 }
 
 .submit-action-buttons {
-    margin:20px 0;
     padding:0 30px;
+    max-width:1440px;
+    margin:30px auto 50px;
 
     button {
         @include button($button-color-green);
         &.submit-form {
             margin:0;
             background-color:$button-color-green;
+            padding:10px 32px;
         }
         &.cancel-form {
             
@@ -212,6 +222,7 @@
     h4 {
         font-size:$page-subtitle-font-size;
         color:$page-section-title-color;
+        margin-top:0;
     }
 
     ul {
@@ -292,6 +303,10 @@
     .premium_job_section {
 
         font-size:$mobile-base-font-size;
+
+        .premium-section-content {
+            padding:0;
+        }
         .section-head {
             h3 {
                 font-size:$mobile-page-section-title-size;

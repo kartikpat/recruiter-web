@@ -419,3 +419,25 @@ function check_youtube_embed(url) {
     }
 }
 
+function bindGuidelineModalFunctionality() {
+	var guidelineModalTrigger = jQuery(".guideline-modal-trigger");
+	var $body = $("body");
+	var $modalOverlay = $(".modal-overlay");
+
+	guidelineModalTrigger.on("click", function() {
+	    $body.addClass("posf");
+	    $modalOverlay.removeClass("hidden")
+	});
+
+	$modalOverlay.on('click', function(e) {
+	    if (jQuery(e.target).is(".modal-overlay")) {
+	        jQuery(this).addClass("hidden");
+	        $body.removeClass("posf")
+	    }
+	});
+
+	$modalOverlay.on('click', ".close-modal",function(e) {
+	    $body.removeClass("posf");
+	    $modalOverlay.addClass("hidden");
+	});
+}
