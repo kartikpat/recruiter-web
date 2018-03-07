@@ -14,8 +14,6 @@ function reportList() {
         settings.candidateEducationItemClass = '.candEducationItem',
         settings.candTagItemClass= '.candTagItem',
         settings.reportRowShell = $(".reportRo.shell")
-
-
    }
 
    function setConfig(key, value) {
@@ -93,15 +91,17 @@ function reportList() {
        settings.reportRowShell.addClass("hidden");
    }
 
-   function onClickDownloadExcelButton(fn) {
-       settings.downloadExcelButton.click(fn)
+
+
+   function setHref() {
+       settings.downloadExcelButton.attr("href", "http://13.126.92.102:8000/recruiter/"+config["recruiterId"]+"/reports-download");
    }
 
    return {
        init: init,
        addToList: addToList,
        setConfig : setConfig,
-       onClickDownloadExcelButton: onClickDownloadExcelButton
+       setHref: setHref
    }
 }
 

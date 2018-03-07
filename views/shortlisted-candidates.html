@@ -8,12 +8,12 @@
 					<span class="total-candidates"><span class="candidates-count" id="candidateCount">272</span> candidates</span>
 
 					<select class="minimal" id="filterByStatus">
-						<option value="0">All Candidates</option>
+						<option value="1,3">All Candidates</option>
 						<option value="1">Shortlisted Candidates</option>
-						<option value="2">Saved Candidates</option>
+						<option value="3">Saved Candidates</option>
 					</select>
 					<select class="minimal" id="filterByJob">
-						<option value="" class="">All Jobs</option>
+						<option value="-1" class="">All Jobs</option>
 					</select>
 				</div>
 			</div>
@@ -83,12 +83,16 @@
 
 			<div class="tagged-on-label">
 				<div class="jobListing">
-					<p>Applied to job - <span class="jobTitle">job title</span>(<a href=""></a>)</p>
+					<p>Applied to job - <span class="jobTitle">job title</span> (<a href="" class="candidateViewProfile">View Profile</a>) </p>
 				</div>
 				<div class="multipleJobListingContainer hidden">
 					<span class="multipleJobListingText"></span>
 					<div class="multipleJobListing"></div>
 				</div>
+			</div>
+
+			<div class="section sticker-container">
+				<span class="sticker followed-up hidden isFollowedUp">Followed up</span>
 			</div>
 			<div class="separator"></div>
 	</div>
@@ -109,6 +113,6 @@
 
 	<option value="" class="candJobOption prototype hidden"></option>
 
-	<div class="candAppliedJobs prototype hidden"></div>
+	<div class="candAppliedJobs prototype hidden"> </div>
 
 {{>footer}}

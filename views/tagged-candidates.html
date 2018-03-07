@@ -5,7 +5,7 @@
 		<div class="tagged-candidates">
 			<div class="page-header">
 				<select class="minimal" id="filterByTagList">
-					<option value="" class="">Tagged Candidates - All Tags</option>
+					<option value="-1" class="">Tagged Candidates - All Tags</option>
 				</select>
 			</div>
 
@@ -87,9 +87,18 @@
 				</div>
 			</div>
 
-			<!-- <div class="tagged-on-label">
-				<p>Tagged on <span class="label-category">search query</span> - <a href="#">job title</a></p>
-			</div> -->
+			<div class="tagged-on-label">
+				<div class="jobListing">
+					<p>Applied to job - <span class="jobTitle">job title</span> (<a href="" class="candidateViewProfile">View Profile</a>) </p>
+				</div>
+				<div class="multipleJobListingContainer hidden">
+					<span class="multipleJobListingText"></span>
+					<div class="multipleJobListing"></div>
+				</div>
+			</div>
+			<div class="section sticker-container">
+				<span class="sticker followed-up hidden isFollowedUp">Followed up</span>
+			</div>
 			<div class="separator"></div>
 	</div>
 
@@ -108,4 +117,7 @@
 	<span class="skill-tag candTagItem prototype hidden"><a href="">UI/UX</a></span>
 
 	<option value="" class="tagOption prototype hidden">Tagged Candidates - All Tags</option>
+
+	<div class="candAppliedJobs prototype hidden"></div>
+
 {{>footer}}

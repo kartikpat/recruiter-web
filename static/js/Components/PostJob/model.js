@@ -15,6 +15,7 @@ var errorResponses = {
 	invalidMinExp: 'Maximum Years of Experience should be greater than Minimum Years of Experience'
 }
 
+
 function Job(){
 	var settings ={};
 	var config = {};

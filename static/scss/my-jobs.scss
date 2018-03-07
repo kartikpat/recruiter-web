@@ -63,7 +63,6 @@
 			    width: 100%;
 			    background: $color-white;
 			    border-radius: 4px;
-			    box-shadow: 0 1px 2px $shadow-color;
 			    border: 1px solid #e8e8e8;
 			    padding:0;
 
@@ -76,27 +75,29 @@
 						display:inline-block;
 						font-size:14px;
 						vertical-align: top;
-						width:15%;
+						width:14%;
 
 						&.heading {
 							border-bottom:1px solid $border-color-base;
-							padding:20px 10px 10px;
+							padding:28px 10px 10px;
 
 							span {
 								font-family:$primary-font;
-								font-size:$base-font-size;
+								font-size:15px;
 								color:$color-label;
 								text-transform:uppercase;
 							}
 
 							&.job-title {
-								width:35%;
+								width:33%;
 							}
 							&.actions {
-								width: 23%;
+								width: 25%;
+								padding-right: 25px;
 							}
 							&.created {
-								width: 12%;
+								width: 14%;
+								padding-left: 25px;
 							}
 						}
 			    	}
@@ -106,17 +107,19 @@
 							vertical-align:top;
 							padding:15px 10px;
 							&.actions {
-								width: 23%;
+								width: 25%;
+								padding-right: 25px;
 							}
 							&.created {
-								width: 12%;
+								width: 14%;
+								padding-left: 25px;
 							}
 							span {
 								line-height:1.5;
 							}
 
 							&.title {
-								width:35%;
+								width:33%;
 
 								span {
 									&.job-title {
@@ -144,7 +147,7 @@
 								}
 								i {
 									cursor:pointer;
-
+									 color: #757575;
 									span.tooltip-message {
 									    position: absolute;
 									    background: $color-white;
@@ -164,12 +167,26 @@
 								}
 							}
 							&.actions {
+								.job-actions-container {
+									min-height: 33px;
+								}
 								.action-icon {
 									display:inline-block;
-									margin:3px 1px;
+									margin:3px;
 									vertical-align: middle;
 									cursor:pointer;
-
+									&.job-cancel {
+										margin-left: 0;
+									}
+									&.job-linkedin {
+										margin-right: 0;
+									}
+									&.job-edit {
+										margin-left: 0;
+										i {
+											padding-left: 0;
+										}
+									}
 									i {
 									    border: 1px solid #e8e8e8;
 									    display: inline-block;
@@ -177,6 +194,7 @@
 									    border-radius: 4px;
 									    text-align: center;
 									    color: #757575;
+
 										&.icon-edit {
 											border: 0;
 											border-radius: 0;
@@ -195,8 +213,8 @@
 			    	}
 			    	.table-row-separator {
 					    clear: both;
-					    width: 99%;
-					    margin:0 0 0 1%;
+					    width: 95%;
+					    margin:0 auto;
 					    border-bottom: 1px solid #e8e8e8;
 					}
 
@@ -209,6 +227,13 @@
 			}
 		}
 	}
+}
+
+@media all and (max-width:1024px) {
+	.page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon.job-twitter {
+		margin-left: 0;
+	}
+
 }
 
 @media all and (max-width:768px) {
@@ -262,6 +287,7 @@
 								}
 								&.created {
 									width: 100%;
+									padding-left: 0;
 								}
 								&.title {
 									width:100%;

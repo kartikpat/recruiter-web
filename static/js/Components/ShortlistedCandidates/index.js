@@ -1,7 +1,7 @@
 var globalParameters = {
     pageContent: 10,
     pageNumber: 1,
-    status: "",
+    status: "1,3",
     candidateListLength: null
 }
 jQuery(document).ready( function() {
@@ -14,28 +14,57 @@ jQuery(document).ready( function() {
     parameters.pageContent = globalParameters.pageContent;
 
     fetchJobs("", recruiterId)
-    fetchCandidatesByStatus(jobId, parameters, recruiterId)
+    fetchCandidatesByStatus(parameters, recruiterId)
 
-    candidates.onFilterByStatus(function(status){
+    candidates.onFilterByStatus(function(){
+        var obj = candidates.getAppliedFilters();
         var parameters = {}
-        parameters.status = status;
+        globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
-        return alert(status)
-        fetchCandidatesByStatus(jobId, parameters, recruiterId)
+        parameters.status = obj.status
+        candidates.emptyCandidateList()
+        candidates.showShell()
+        if(parseInt(obj.jobId) == -1) {
+            return fetchCandidatesByStatus(parameters, recruiterId)
+        }
+        fetchJobApplications(obj.jobId,parameters,recruiterId)
+
     })
 
-    candidates.onFilterByJob(function(jobId){
+    candidates.onFilterByJob(function(){
+        var obj = candidates.getAppliedFilters();
         var parameters = {}
-        parameters.status = jobId; 
+        globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
-        return alert(jobId)
-        fetchCandidatesByStatus(jobId, parameters, recruiterId)
+        parameters.status = obj.status
+        candidates.emptyCandidateList()
+        candidates.showShell()
+        console.log(obj.jobId)
+        if(parseInt(obj.jobId) == -1) {
+            return fetchCandidatesByStatus(parameters, recruiterId)
+        }
+        fetchJobApplications(obj.jobId,parameters,recruiterId)
     })
 
     function onFetchCandidatesByStatusSuccess(topic,res) {
-        candidates.showCandidateCount(200)
+        debugger
+        globalParameters.candidateListLength = res.data.length
+        if(res.stats) {
+            if(res.obj.status == "1,3") {
+                candidates.showCandidateCount(res.stats.shortlisted + res.stats.save);
+            }
+            else if(res.obj.status == "1") {
+                candidates.showCandidateCount(res.stats.shortlisted);
+            }
+            else if(res.obj.status == "3"){
+                candidates.showCandidateCount(res.stats.save);
+            }
+        }
+        else {
+            candidates.showCandidateCount(0)
+        }
         candidates.addToList(res.data)
     }
 
@@ -57,5 +86,31 @@ jQuery(document).ready( function() {
 
     var fetchJobSuccessSubscription = pubsub.subscribe('fetchedJobs', onJobsFetchSuccess)
 	var fetchJobFailSubscription = pubsub.subscribe('fetchJobsFail', onJobsFetchFail)
+
+    var fetchJobApplicationsSuccessSubscription = pubsub.subscribe("fetchedJobApplication", onFetchCandidatesByStatusSuccess)
+    var fetchJobApplicationsFailSubscription = pubsub.subscribe("failedTofetchJobApplication", onFetchCandidatesByStatusFail)
+
+    var ticker;
+    $(window).scroll(function() {
+       clearTimeout(ticker);
+       ticker = setTimeout(checkScrollEnd,100);
+    });
+
+    function checkScrollEnd() {
+    	if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+    		globalParameters.pageNumber = globalParameters.pageNumber + 1;
+    		if(globalParameters.pageNumber != 1 && globalParameters.candidateListLength == globalParameters.pageContent) {
+                var obj = candidates.getAppliedFilters();
+                var parameters = {}
+                parameters.pageNumber = globalParameters.pageNumber;
+                parameters.pageContent = globalParameters.pageContent;
+                parameters.status = obj.status
+                if(parseInt(obj.jobId) == -1) {
+                    return fetchCandidatesByStatus(parameters, recruiterId)
+                }
+    			fetchJobApplications(obj.jobId,parameters,recruiterId)
+    		}
+    	}
+    }
 
 })

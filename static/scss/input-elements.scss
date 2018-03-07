@@ -275,7 +275,7 @@ label {
 
 .check-input {
 	input {
-		display:none;
+		display: none;
 	}
 	label {
 		display:inline-block;
@@ -323,7 +323,7 @@ label {
 	background:$background;
 	border-color:$button-border-color;
 	border-radius:4px;
-	padding:8px 25px;
+	padding:6px 25px;
 	font-size:$base-font-size;
 	margin:0 5px;
 	color:$color-white;

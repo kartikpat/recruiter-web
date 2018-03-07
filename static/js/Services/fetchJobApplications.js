@@ -2,8 +2,10 @@ function fetchJobApplications(jobId,parameters, recruiterId){
 	return getRequest(baseUrl+"/recruiter/"+recruiterId+"/jobs/"+jobId+"/applications", parameters, function(res){
 		if(res.status && res.status =='success'){
 			res.pageNumber = parameters.pageNumber;
-			return pubsub.publish("fetchedJobApplication:"+jobId, res);
+			res.obj = {}
+			res.obj.status = parameters.status;
+			return pubsub.publish("fetchedJobApplication", res);
 		}
-		return pubsub.publish("failedTofetchJobApplication:"+jobId, res.responseJSON);
+		return pubsub.publish("failedTofetchJobApplication", res.responseJSON);
 	});
 }

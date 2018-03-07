@@ -1,0 +1,658 @@
+@import "fonts.scss";
+@import 'input-elements';
+@import 'chat-sidebar';
+@import 'components/modal';
+
+.button-action-list {
+    display: inline-block;
+    width: 165px;
+    padding: 6px 15px;
+    border: 1px solid $border-color-base;
+    border-radius: 4px;
+	cursor:pointer;
+	position:relative;
+	background:$options-list-background-color;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+
+	label {
+		cursor:pointer;
+		background-image:url('/static/images/black_caret_down.svg');
+	    background-position:right center;
+	    background-repeat:no-repeat;
+	}
+    &.inactive {
+    	border-bottom-left-radius: 4px;
+    	border-bottom-right-radius: 4px;
+		.action-list-items {
+		    display: none;
+		}
+    }
+
+    .action-list-items {
+	    position: absolute;
+	    top: 100%;
+	    right: 0;
+	    width: 165px;
+	    left: 0;
+	    margin: 0 -1px;
+	    background: #FFF;
+	    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+	    border: 1px solid #e8e8e8;
+	    list-style: none;
+	    padding: 5px 0;
+	    z-index:5;
+
+	    li {
+	    	padding:0 10px;
+	    	margin:5px 0;
+	    	a {
+				font-size:$options-list-font-size;
+				color:$options-list-link-color;
+	    	}
+	    }
+    }
+}
+
+.page-content{
+    width: 100%;
+    .header-slot{
+        margin-top: 20px;
+        width: 95%;
+        margin-left: 30px;
+        .tagline{
+            color:  #5d5d5d;
+            font-size: 22px;/* Approximation due to font substitution */
+            font-weight: 400;
+            text-align: left;
+            width: 25%;
+            display: inline-block;   
+            margin-left: 28px;
+        }
+        .right-container{
+           float: right;
+           .section{
+               display: inline-block;
+                .select-dropdown{
+                    font-family: inherit;
+                    font-size: 14px;
+                    color:  #2b2b2b;
+                    border-radius: 4px;
+                    border-style: solid;
+                    border-width: 1px;
+                    border-color:  #8f8a8a;
+                    box-sizing: border-box;
+                    background-color:  #ffffff;
+                    width: 135px;
+                    height: 28px;
+                    background-image: url("/static/images/black_caret_down.svg");
+                    background-repeat: no-repeat;
+                    background-position: right 18px center;
+                    outline: none;
+                    padding-left: 10px;
+                    padding: 0px 15px;
+                    cursor: pointer;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    -o-appearanance: none;
+                    display: inline-block;
+                }
+            }
+            .manage-Calendar{
+                border-radius: 4px;
+                border-style: solid;
+                border-width: 1px;
+                border-color:  #8f8a8a;
+                box-sizing: border-box;
+                background-color:  #ffffff;
+                width: 135px;
+                height: 28px;
+                text-align: center;
+                line-height: 28px;
+                font-size: 0.85em;
+                cursor: pointer;
+                line-height: 28px;
+                display: inline-block;
+            }
+          
+        }
+    }
+        .action-wrapper{
+            width: 95%;
+            background-color: #ebe8e8;
+            display: block;
+            margin-top: 30px;
+            height: 40px;
+            margin-left: 30px;
+            .action{
+                display: inline-block;
+                width: 15.8333%;
+                color:  #2b2b2b;
+                font-size: 15px;/* Approximation due to font substitution */
+                font-weight: 400;
+                text-align: left;
+                margin-top: 12px;
+            }
+            .Interview-Date{
+                margin-left: 30px;
+            }
+            
+        }
+
+    .booked-slots{
+        .slot-date{
+          width: 100%;
+          display: inline-block;
+          padding: 0%;
+          vertical-align: top;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          padding-left: 30px;
+          .date{
+                color:  #2b2b2b;
+                font-size: 14px;/* Approximation due to font substitution */
+                font-weight: 400;
+                text-align: left;
+                display: inline-block;
+                width: 15%;
+                margin-left: 30px;
+                .action-date{
+                    display: none;
+                }
+                .interviewDate{
+                   
+                }
+            }
+            .schedules-container{
+                display: inline-block;
+                width: 75%;
+                padding: 0%;
+                vertical-align: top;
+                .schedules{
+                    height: 100px;
+                    .time{
+                        color:  #2b2b2b;
+                        font-size: 14px;/* Approximation due to font substitution */
+                        font-weight: 400;
+                        text-align: left;
+                        display: inline-block;
+                        width: 20%;
+                        .action-time{
+                            display: none;
+                        }
+                        .interviewTime{
+                            width: 100%;
+                        }
+                    }
+                    .interview-type{
+                        color:  #149075;
+                        font-size: 16px;/* Approximation due to font substitution */
+                        font-weight: 700;
+                        text-align: left;
+                        display: inline-block;
+                        width: 20%;
+                        vertical-align: top;
+                        .action-name{
+                            display: none;
+                        }
+                    }
+                    .details{
+                        font-size: 14px;/* Approximation due to font substitution */
+                        font-weight: 700;
+                        line-height: 24px;/* Approximation due to font substitution */
+                        text-align: left;
+                        display: inline-block;
+                        width: 20%;
+                        padding-bottom: 10px;
+                        vertical-align: top;
+                        .action-detail{
+                            display: none;
+                        }
+                        .name{
+                            color:  #149075;
+                            font-size: 16px;/* Approximation due to font substitution */
+                            font-weight: 700;
+                            text-align: left;
+                            width: 100%;
+                        }
+                        .designation{
+                            color:  #2b2b2b;
+                            font-size: 14px;/* Approximation due to font substitution */
+                            font-weight: 700;
+                            line-height: 24px;/* Approximation due to font substitution */
+                            text-align: left;
+                            width: 100%;
+                        }
+                        .experience{
+                            color:  #2b2b2b;
+                            font-size: 14px;/* Approximation due to font substitution */
+                            font-weight: 700;
+                            line-height: 24px;/* Approximation due to font substitution */
+                            text-align: left;
+                            line-height: 24px;
+                            width: 100%;
+                        span{
+                            color:  #2b2b2b;
+                            font-size: 14px;/* Approximation due to font substitution */
+                            font-weight: 400;
+                            line-height: 24px;/* Approximation due to font substitution */
+                            text-align: left;
+                            width: 100%;
+                            }
+
+                        }
+                        .location{
+                            color:  #2b2b2b;
+                            font-size: 14px;/* Approximation due to font substitution */
+                            font-weight: 700;
+                            line-height: 24px;/* Approximation due to font substitution */
+                            text-align: left;
+                            line-height: 24px;
+                            font-style: "bold";
+                            width: 100%;
+                            vertical-align: top;
+                            span{
+
+                                color:  #2b2b2b;
+                                font-size: 14px;/* Approximation due to font substitution */
+                                font-weight: 400;
+                                line-height: 24px;/* Approximation due to font substitution */
+                                text-align: left;
+                            }
+                        }
+                    }
+
+                    .job-details{
+                        width: 155px;
+                        display: inline-block;
+                        width: 20%;
+                        vertical-align: top;
+                        .action-job{
+                            display: none;
+                        }
+                        #profile{
+
+                            color:  #2b2b2b;
+                            font-size: 14px;/* Approximation due to font substitution */
+                            font-weight: 700;
+                            line-height: 18px;/* Approximation due to font substitution */
+                            text-align: left;
+                        }
+                        #exp-details{
+
+                                color:  #2b2b2b;
+                                font-size: 14px;/* Approximation due to font substitution */
+                                font-weight: 400;
+                                line-height: 24px;/* Approximation due to font substitution */
+                                text-align: left;
+
+                        }
+                    }
+                    .action-buttons{
+                        display: inline-block;
+                        vertical-align: top;
+                        .send-message{
+                            border-radius: 4px;
+                            border-style: solid;
+                            border-width: 1px;
+                            border-color:  #8f8a8a;
+                            box-sizing: border-box;
+                            background-color:  #ffffff;
+                            width: 135px;
+                            height: 28px;
+                            text-align: center;
+                            font-size: 0.85em;
+                            cursor: pointer;
+                            line-height: 28px;
+                            margin-bottom: 10px;
+                        }
+                        .other-actions{
+                            .section{
+                                .select-dropdown{
+                                font-family: inherit;
+                                font-size: 14px;
+                                color:  #2b2b2b;
+                                border-radius: 4px;
+                                border-style: solid;
+                                border-width: 1px;
+                                border-color:  #8f8a8a;
+                                box-sizing: border-box;
+                                background-color:  #ffffff;
+                                width: 153px;
+                                height: 30px;
+                                background-image: url("/static/images/black_caret_down.svg");
+                                background-repeat: no-repeat;
+                                background-position: right 18px center;
+                                padding-left: 20px;
+                                outline: none;
+                                cursor: pointer;
+                                -webkit-appearance: none;
+                                -moz-appearance: none;
+                                -o-appearanance: none;
+                                margin-bottom: 10px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1250px){
+    .page-content{
+        .header-slot{
+            background-color:  #f3fbfb;
+            display: inline-block;
+            height: 116px;
+            padding: 0%;
+            margin: 0%;
+            width: 100%;
+            .tagline{
+                margin-top: 50px;
+                width: 30%;
+                padding-left: 20px;
+            }
+            .right-container{
+                margin-right: 20px;
+            .section{
+                margin-top: 50px;
+            }
+           
+            
+        }
+    }
+          .action-wrapper{
+            display: none;
+        }
+        .booked-slots{
+            display: block;
+            .slot-date{
+                display: block;
+                .date{
+                    display: block;
+                    margin-left: 20px;
+                    padding-top: 20px;
+                    padding-bottom: 30px;
+                    width: 80%;
+                    .action-date{
+                        display: block;
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                        // font-family: DroidSans;
+                        color:  #2b2b2b;
+                        font-size: 17px;/* Approximation due to font substitution */
+                        font-weight: 700;
+                        text-align: left;
+                        width: 100%;
+                    }
+                    .interviewDate{
+                        width: 100%;
+                    }
+                }
+                .schedules-container{
+                    display: block;
+                    float: none;
+                    width: 100%;
+                    .schedules{
+                        float: none;
+                        display: inline-block;
+                      //  height: 600px;
+                        .time{
+                            float: none;
+                            margin-left: 20px;
+                            padding-bottom: 30px;
+                            width: 80%;
+                            .action-time{
+                                display: block;
+                                margin-top: 10px;
+                                margin-bottom: 10px;
+                                // font-family: DroidSans;
+                                color:  #2b2b2b;
+                                font-size: 17px;/* Approximation due to font substitution */
+                                font-weight: 700;
+                                text-align: left;
+                                width: 100%;
+                            }
+                        }
+                        .interview-type{
+                            display: block;
+                            margin-left: 20px;
+                            padding-bottom: 30px;
+                            width: 80%;
+                            .action-name{
+                                display: block;
+                                margin-top: 10px;
+                                margin-bottom: 10px;
+                                // font-family: DroidSans;
+                                color:  #2b2b2b;
+                                font-size: 17px;/* Approximation due to font substitution */
+                                font-weight: 700;
+                                text-align: left;
+                                width: 100%;
+                            }
+                        }
+                        .details{
+                            display: block;
+                            margin-left: 20px;
+                            padding-bottom: 30px;
+                            width: 80%;
+                            .action-detail{
+                                display: block;
+                                margin-top: 10px;
+                                margin-bottom: 10px;
+                                // font-family: DroidSans;
+                                color:  #2b2b2b;
+                                font-size: 17px;/* Approximation due to font substitution */
+                                font-weight: 700;
+                                text-align: left;
+                                width: 100%;
+
+                            }
+                            .name{
+                               
+                            }
+
+                        }
+                        .job-details{
+                            display: block;
+                            margin-left: 20px;
+                            padding-bottom: 30px;
+                            width: 80%;
+                            .action-job{
+                                display: block;
+                                margin-top: 10px;
+                                margin-bottom: 10px;
+                                // font-family: DroidSans;
+                                color:  #2b2b2b;
+                                font-size: 17px;/* Approximation due to font substitution */
+                                font-weight: 700;
+                                text-align: left;
+                                width: 100%;
+                            }
+
+                        }
+                        .action-buttons{
+                            width: 100%;
+                            margin-left: 20px;
+                            display: inline-block;
+                            padding-bottom: 30px;
+                            .send-message{
+                                display: inline-block;
+                            }
+                            .other-actions{
+                                display: inline-block;
+                            }
+                            .section{
+                                display: inline-block;
+                                margin-left: 50px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+@media only screen and (max-width: 480px){
+    .page-content{
+            .header-slot{
+                background-color:  #f3fbfb;
+                display: inline-block;
+                height: 116px;
+                padding: 0%;
+                margin: 0%;
+                width: 100%;
+                .tagline{
+                    margin-top: 21px;
+                    width: 100%;
+                    padding-left: 20px;
+                    padding-bottom: 20px;
+                }
+                .right-container{
+                    display: block;
+                    float: none;
+                    padding: 0%;
+                    padding-left: 45px;
+                .section{
+                   margin: 0%;
+                   padding-right: 20px;
+                }
+                
+                
+            }
+        }
+       
+        
+    }
+
+}
+
+@media only screen and (max-width: 380px){
+    .page-content{
+        .header-slot{
+            background-color:  #f3fbfb;
+            display: inline-block;
+            height: 116px;
+            padding: 0%;
+            margin: 0%;
+            width: 100%;
+            .tagline{
+                margin-top: 21px;
+                width: 100%;
+                padding-left: 20px;
+                padding-bottom: 20px;
+                
+            }
+            .right-container{
+                display: block;
+                float: none;
+                padding: 0%;
+                padding-left: 45px;
+            .section{
+               margin: 0%;
+               padding-right: 20px;
+               width: 100px;
+               .select-dropdown{
+                   width: 120px;
+
+               }
+            }
+            .manage-Calendar{
+                width: 120px;
+                margin: 0%;
+                margin-left: 25px;
+            }
+                
+        }
+    }
+    .action-buttons{
+        .section{
+            margin:0%!important; 
+        }
+    }
+}
+
+}
+
+
+
+
+// @media only screen and (max-width: 900px){
+//     .container{
+//         height: 2250px;
+//         .header-slot{
+//             background-color:  #f3fbfb;
+//             margin-top: -10px;
+//             height: 116px;
+//             .tagline{
+//                 padding-right: 20%;
+//                 margin-left: 20px;
+//                 margin-top: 40px;
+//                 margin-bottom: 10px;
+//                 font-size: 20px;
+//             }
+//             .section{
+//                 margin-left: 20px;
+//                 margin-top: 40px;
+//             }
+//             .manage-Calendar{
+//                 margin-top: 40px;
+//             }
+            
+//             .actions{
+//                 padding-bottom: 40px;
+//                 margin-left: 20px;
+//                 margin-top: 10px;
+
+//             }
+
+//         }
+//     }
+// }
+
+// @media only screen and (max-width: 480px){
+//     .container{
+//         height: 2250px;
+//         .header-slot{
+//             background-color:  #f3fbfb;
+//             margin-top: -10px;
+//             height: 116px;
+//             .tagline{
+//                 padding-right: 50%;
+//                 margin-left: 20px;
+//                 margin-top: 40px;
+//                 margin-bottom: 10px;
+//                 font-size: 20px;
+//             }
+//             .section{
+//                 margin-left: 20px;
+//                 margin-top: 10px;
+
+//             }
+//             .manage-Calendar{
+//                 margin-top: 10px;
+//                 width: 100px;
+//                 font-size: 12px;
+
+//             }
+//             .setting-bar{
+//                margin-top: 10px;
+//             }
+//             .actions{
+//                 padding-bottom: 40px;
+//                 margin-left: 20px;
+//                 margin-top: 10px;
+
+//             }
+
+//         }
+//     }
+
+
+// }

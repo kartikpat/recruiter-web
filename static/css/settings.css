@@ -506,6 +506,9 @@ span.sticker {
   .tag-container .pill-button .pill-listing ul {
     max-height: 300px; } }
 
+.formgroup .error {
+  position: static !important; }
+
 .page-content {
   min-height: 100%;
   padding: 0;
@@ -577,12 +580,16 @@ span.sticker {
           display: inline-block;
           vertical-align: top;
           width: 20%;
-          text-align: center; }
+          text-align: center;
+          width: 100px;
+          height: 100px; }
           .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-preview img {
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             object-fit: cover; }
         .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info {
-          width: 80%;
+          width: calc(100% - 120px);
           display: inline-block;
           vertical-align: middle;
           font-size: initial; }
@@ -610,7 +617,7 @@ span.sticker {
             background: #1f8f75;
             border-color: #8f8a8a;
             border-radius: 4px;
-            padding: 8px 25px;
+            padding: 6px 25px;
             font-size: 14px;
             margin: 0 5px;
             color: #FFF;
@@ -731,7 +738,7 @@ span.sticker {
           background: #155d9a;
           border-color: #8f8a8a;
           border-radius: 4px;
-          padding: 8px 25px;
+          padding: 6px 25px;
           font-size: 14px;
           margin: 0 5px;
           color: #FFF;
@@ -823,7 +830,8 @@ span.sticker {
           overflow: scroll;
           border-bottom: 1px solid #e8e8e8;
           margin-bottom: 20px;
-          width: 100% !important; }
+          width: 100% !important;
+          overflow-y: hidden; }
           .page-content .settings-page .settings-mobile-header .settings-mobile-nav ul li {
             display: inline-block;
             border-bottom: 3px solid transparent;
@@ -849,6 +857,8 @@ span.sticker {
             text-align: center;
             margin-bottom: 20px; }
             .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-preview img {
+              margin: 0 auto;
+              width: 100px;
               border-radius: 50%; }
           .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info {
             width: 100%;

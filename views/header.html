@@ -11,8 +11,10 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Comfortaa|Droid+Sans:400,700|Noto+Sans" rel="stylesheet">
 	<link href="../../static/css/chat-sticky.css" rel="stylesheet">
-	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /> 
+
 	<script type="text/javascript">
 		var baseUrl = '{{baseUrl}}';
 		var userID = '{{userID}}';
@@ -25,8 +27,19 @@
 			name: '{{profile.name}}',
 			email: '{{profile.email}}',
 			pic: '{{profile.img_link}}',
-			availableCredits: '{{profile.availableCredits}}'
+			availableCredits: '{{profile.availableCredits}}',
+			org: '{{profile.org}}',
+			phone: '{{profile.phone}}',
+			about: '{{profile.about}}',
+			wurl: '{{profile.wurl}}',
+			turl: '{{profile.turl}}',
+			furl: '{{profile.furl}}',
+			lurl: '{{profile.lurl}}',
+			desg: '{{profile.desg}}',
+			rurl: '{{profile.rurl}}',
+			img_link: '{{profile.img_link}}'
 		}
+		var applicationId= '{{applicationId}}'
 	</script>
 </head>
 <body>

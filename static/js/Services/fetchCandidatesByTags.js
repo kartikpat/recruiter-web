@@ -1,9 +1,10 @@
-function fetchCandidatesByTags(jobId,parameters, recruiterId){
-	return getRequest(baseUrl+"/recruiter/"+recruiterId+"/jobs/"+jobId+"/applications", parameters, function(res){
-		if(res.status && res.status =='success'){
-			res.pageNumber = parameters.pageNumber;
-			return pubsub.publish("fetchedJobApplication:"+jobId, res);
+function fetchCandidatesByTags(parameters, recruiterId){
+	return getRequest(baseUrl+"/recruiter/"+recruiterId+"/tagged-candidates", parameters, function(res){
+		if(res.status && res.status =='success') {
+			res.obj = {}
+			res.obj.pageNumber = parameters.pageNumber;
+			return pubsub.publish("fetchCandidatesByTagsSuccess", res);
 		}
-		return pubsub.publish("failedTofetchJobApplication:"+jobId, res.responseJSON);
+		return pubsub.publish("fetchCandidatesByTagsFail", res.responseJSON);
 	});
 }
