@@ -25,6 +25,12 @@
 .page-content {
 	@include page-content;
 	background-color:$page-background-color;
+
+	.main-wrapper {
+		max-width:1440px;
+		margin:0 auto;
+	}
+	
 	.page-header {
 		select {
 			@include select-dropdown;

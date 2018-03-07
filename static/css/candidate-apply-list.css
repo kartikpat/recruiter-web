@@ -2650,12 +2650,15 @@ input::-webkit-input-placeholder {
   padding: 20px;
   width: 100%;
   background-color: #f7f7f7; }
+  .page-content .main-wrapper {
+    max-width: 1440px;
+    margin: 0 auto; }
   .page-content .page-header {
     padding: 15px 0; }
     .page-content .page-header h1 {
-      margin: 0 0 0 0;
-      font-size: 22px;
-      color: #5d5d5d;
+      margin: 0 0 5px 0;
+      font-size: 18px;
+      color: #2b2b2b;
       line-height: 1.3;
       font-weight: bold; }
       .page-content .page-header h1.shell {
@@ -2673,6 +2676,12 @@ input::-webkit-input-placeholder {
         background-size: 800px 104px;
         position: relative;
         min-width: 250px; }
+    .page-content .page-header .job-meta span {
+      font-size: 14px;
+      color: #5d5d5d;
+      margin: 0 5px 0 0; }
+      .page-content .page-header .job-meta span#locSeperator {
+        color: #c2c2c2; }
     .page-content .page-header .action-buttons {
       font-size: 0; }
       .page-content .page-header .action-buttons span {
@@ -2792,7 +2801,8 @@ input::-webkit-input-placeholder {
             font-size: 14px;
             line-height: 1.5;
             border-radius: 0;
-            padding: 8px 35px 8px;
+            padding: 4px 35px;
+            line-height: 20px;
             background-image: url("/static/images/search-icon.svg");
             background-repeat: no-repeat;
             background-position: left 10px center;
@@ -2818,6 +2828,13 @@ input::-webkit-input-placeholder {
         .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search {
           display: inline-block;
           vertical-align: top; }
+          .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search .action-buttons .select-dropdown {
+            font-size: 14px;
+            padding: 3px 0px 4px 10px;
+            background-size: 12px;
+            color: #2b2b2b;
+            background-position: right 10px center;
+            padding-right: 30px; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span {
             display: inline-block;
             -webkit-appearance: none;
@@ -2855,18 +2872,19 @@ input::-webkit-input-placeholder {
             .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span.sortBy {
               padding: 0; }
             .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span span {
-              padding: 4px 5px;
+              padding: 6px 5px;
               margin: 0; }
               .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span span.sortBy {
                 padding: 0; }
             .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span.filter-button {
               background-image: url("/static/images/filter-icon.svg");
-              background-position: left 5px center;
+              background-position: left 10px center;
               background-repeat: no-repeat;
-              background-size: 16px; }
+              background-size: 16px;
+              padding: 0 15px 0 10px; }
               .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span.filter-button span {
                 display: inline-block;
-                padding-left: 0;
+                padding-left: 8px;
                 margin-left: 15px; }
             .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span.sort-button span {
               padding-left: 0; }
@@ -3137,19 +3155,19 @@ input::-webkit-input-placeholder {
     display: inline-block;
     background: #4fa995;
     margin: 3px;
-    padding: 3px 10px;
+    padding: 0px 10px;
     border-radius: 20px; }
     .job-tags .input-tag .tag-icons {
       display: inline-block;
       font-size: 14px;
-      padding: 5px 0 5px;
       cursor: pointer; }
     .job-tags .input-tag .tag-name {
       display: inline-block; }
     .job-tags .input-tag span {
       color: #FFF;
       font-size: 14px;
-      padding: 0 5px 0 0; }
+      padding: 8px 5px;
+      display: inline-block; }
   .job-tags .pill-button {
     position: relative;
     display: inline-block; }
@@ -3491,7 +3509,7 @@ input::-webkit-input-placeholder {
     .page-content .page-mobile-header .stats select {
       display: block !important; } }
 
-@media all and (max-width: 1439px) {
+@media all and (max-width: 1024px) {
   .conversations {
     display: none; }
   .page-content .candidate-apply-listing {

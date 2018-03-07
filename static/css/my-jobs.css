@@ -1115,6 +1115,9 @@ span.sticker {
   padding: 20px;
   width: 100%;
   background-color: #F4F4F4; }
+  .page-content .main-wrapper {
+    max-width: 1440px;
+    margin: 0 auto; }
   .page-content .page-header select {
     font-family: inherit;
     display: inline-block;

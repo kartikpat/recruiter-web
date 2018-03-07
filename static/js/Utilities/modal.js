@@ -5,5 +5,4 @@ var closeModal = function() {
 
 jQuery(".modal_close").on("click", function() {
 	closeModal();
-
 });

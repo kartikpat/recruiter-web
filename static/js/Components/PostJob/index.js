@@ -41,14 +41,12 @@ $(document).ready(function(){
 		alert(res.status)
 		console.log(topic)
 		console.log(data);
-
 	}
 	var fetchJobSuccessSubscription = pubsub.subscribe("fetchedJob:"+jobId, onSuccessfulFetchJob);
 	var fetchJobFailSubscription = pubsub.subscribe("failedToFetchJob:"+jobId, onFailedFetchJob);
 	var jobSubmitSuccessSubscription = pubsub.subscribe('submittedNewJob', onSuccessfulSubmitJob);
 	var jobSubmitFailSubscription = pubsub.subscribe('failedNewJobSubmission', onFailedSubmitJob);
-
 	var jobEditSuccessSubscription = pubsub.subscribe('jobEdited', onSuccessfulSubmitJob);
-
-	var jobEditSuccessSubscription = pubsub.subscribe('failedEditJobSubmission', onFailedSubmitJob);
+	var jobEditFailSubscription = pubsub.subscribe('failedEditJobSubmission', onFailedSubmitJob);
+	bindGuidelineModalFunctionality();
 })
