@@ -6,212 +6,43 @@
                 <div class="chat-container">
                     <div class="chat-header">
                         <div class="current-conversation">
-                            <h3 class="current-user-name">Mohit Sharma</h3>
-                            <span class="user-status-indicator online"></span>
-                            <span class="user-status">Active now</span>
+                            <h3 class="current-user-name recruiterName">Mohit Sharma</h3>
+                            <span class="user-status-indicator online" id="isOnline"></span>
+                            <span class="user-status activeNow" id="isActive">Active now</span>
                         </div>
                     </div>
                     <div class="chat-body">
                         <div class="sidebar left conversations-list">
                             <div class="search">
-                                <input type="text" placeholder="Search Messages">
+                                <input type="text" placeholder="Search Messages" id="searchCandidate">
                             </div>
-                            <div class="conversation-item prototype">
-                                <div class="user-image user-item">
-                                    <img src="https://www.placehold.it/70x70/f5f5f5?text=+">
-                                    <div class="candidate-status online"></div>
-                                </div>
-                                <div class="user-info user-item">
-                                    <p class="user-name">Shreya Sharma</p>
-                                    <p class="user-designation">PHP Developer</p>
-                                </div>
-                                <div class="conversation-item-separator"></div>
-                            </div>
-                            <div class="conversation-item prototype">
-                                <div class="user-image user-item">
-                                    <img src="https://www.placehold.it/70x70/f5f5f5?text=+">
-                                    <div class="candidate-status online"></div>
-                                </div>
-                                <div class="user-info user-item">
-                                    <p class="user-name">Neha Verma</p>
-                                    <p class="user-designation">UI Developer</p>
-                                </div>
-                                <div class="conversation-item-separator"></div>
-                            </div>
-                            <div class="conversation-item prototype">
-                                <div class="user-image user-item">
-                                    <img src="https://www.placehold.it/70x70/f5f5f5?text=+">
-                                    <div class="candidate-status online"></div>
-                                </div>
-                                <div class="user-info user-item">
-                                    <p class="user-name">Arun Mehra</p>
-                                    <p class="user-designation">iOS Developer</p>
-                                </div>
-                                <div class="conversation-item-separator"></div>
-                            </div>
-                            <div class="conversation-item prototype">
-                                <div class="user-image user-item">
-                                    <img src="https://www.placehold.it/70x70/f5f5f5?text=+">
-                                    <div class="candidate-status online"></div>
-                                </div>
-                                <div class="user-info user-item">
-                                    <p class="user-name">Gyanesh Bhardwaj</p>
-                                    <p class="user-designation">Android Developer</p>
-                                </div>
-                                <div class="conversation-item-separator"></div>
-                            </div>
-                            <div class="conversation-item prototype">
-                                <div class="user-image user-item">
-                                    <img src="https://www.placehold.it/70x70/f5f5f5?text=+">
-                                    <div class="candidate-status online"></div>
-                                </div>
-                                <div class="user-info user-item">
-                                    <p class="user-name">Shreya Sharma</p>
-                                    <p class="user-designation">PHP Developer</p>
-                                </div>
-                                <div class="conversation-item-separator"></div>
-                            </div>
-                            <div class="conversation-item prototype">
-                                <div class="user-image user-item">
-                                    <img src="https://www.placehold.it/70x70/f5f5f5?text=+">
-                                    <div class="candidate-status online"></div>
-                                </div>
-                                <div class="user-info user-item">
-                                    <p class="user-name">Shreya Sharma</p>
-                                    <p class="user-designation">PHP Developer</p>
-                                </div>
+                            <div class="" id="conversationItemList">
+
                             </div>
                         </div>
                         <div class="chat-window middle">
                             <div class="current-chat">
-                               <ul>
-                                    <div class="time-separator"><span>Today</span></div>
-                                    <li class="message sent">
-                                        <div class="user-image">
-                                            <img src="http://www.placehold.it/50x50/f5f5f5?text=+">    
-                                        </div>
-                                        <div class="message-area">
-                                            <p class="message-content">The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.</p>
-                                            <p class="message-timestamp">12 min</p>
-                                        </div>
-                                    </li>
-                                    <li class="message received">
-                                        <div class="user-image">
-                                            <img src="http://www.placehold.it/50x50/f5f5f5?text=+">    
-                                        </div>
-                                        <div class="message-area">
-                                            <p class="message-content">Message Content</p>
-                                            <p class="message-timestamp">6 min</p>
-                                        </div>
-                                    </li>
-                                    <li class="message sent">
-                                        <div class="user-image">
-                                            <img src="http://www.placehold.it/50x50/f5f5f5?text=+">    
-                                        </div>
-                                        <div class="message-area">
-                                            <p class="message-content">Message Content</p>
-                                            <p class="message-timestamp">3 min</p>
-                                        </div>
-                                    </li>
-                                    <li class="message sent">
-                                        <div class="user-image">
-                                            <img src="http://www.placehold.it/50x50/f5f5f5?text=+">    
-                                        </div>
-                                        <div class="message-area">
-                                            <p class="message-content">Message Content</p>
-                                            <p class="message-timestamp">3 min</p>
-                                        </div>
-                                    </li>
-                                    <li class="message sent">
-                                        <div class="user-image">
-                                            <img src="http://www.placehold.it/50x50/f5f5f5?text=+">    
-                                        </div>
-                                        <div class="message-area">
-                                            <p class="message-content">Message Content</p>
-                                            <p class="message-timestamp">3 min</p>
-                                        </div>
-                                    </li>
-                                    <li class="message sent">
-                                        <div class="user-image">
-                                            <img src="http://www.placehold.it/50x50/f5f5f5?text=+">    
-                                        </div>
-                                        <div class="message-area">
-                                            <p class="message-content">Message Content</p>
-                                            <p class="message-timestamp">3 min</p>
-                                        </div>
-                                    </li>
-                                     <div class="time-separator"><span>Today</span></div>
-                                    <li class="message sent">
-                                        <div class="user-image">
-                                            <img src="http://www.placehold.it/50x50/f5f5f5?text=+">    
-                                        </div>
-                                        <div class="message-area">
-                                            <p class="message-content">The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.</p>
-                                            <p class="message-timestamp">12 min</p>
-                                        </div>
-                                    </li>
-                                    <li class="message received">
-                                        <div class="user-image">
-                                            <img src="http://www.placehold.it/50x50/f5f5f5?text=+">    
-                                        </div>
-                                        <div class="message-area">
-                                            <p class="message-content">Message Content</p>
-                                            <p class="message-timestamp">6 min</p>
-                                        </div>
-                                    </li>
-                                    <li class="message sent">
-                                        <div class="user-image">
-                                            <img src="http://www.placehold.it/50x50/f5f5f5?text=+">    
-                                        </div>
-                                        <div class="message-area">
-                                            <p class="message-content">Message Content</p>
-                                            <p class="message-timestamp">3 min</p>
-                                        </div>
-                                    </li>
-                                    <li class="message sent">
-                                        <div class="user-image">
-                                            <img src="http://www.placehold.it/50x50/f5f5f5?text=+">    
-                                        </div>
-                                        <div class="message-area">
-                                            <p class="message-content">Message Content</p>
-                                            <p class="message-timestamp">3 min</p>
-                                        </div>
-                                    </li>
-                                    <li class="message sent">
-                                        <div class="user-image">
-                                            <img src="http://www.placehold.it/50x50/f5f5f5?text=+">    
-                                        </div>
-                                        <div class="message-area">
-                                            <p class="message-content">Message Content</p>
-                                            <p class="message-timestamp">3 min</p>
-                                        </div>
-                                    </li>
-                                    <li class="message sent">
-                                        <div class="user-image">
-                                            <img src="http://www.placehold.it/50x50/f5f5f5?text=+">    
-                                        </div>
-                                        <div class="message-area">
-                                            <p class="message-content">Message Content</p>
-                                            <p class="message-timestamp">3 min</p>
-                                        </div>
-                                    </li>
+                               <ul id="mssgContainer">
+
+
                                 </ul>
                             </div>
                             <div class="new-message">
-                                <textarea id="message-content" placeholder="Write a message to send.."></textarea>
-                                <span class="send-message button green">Send</span>
+                                <textarea id="msgContent" placeholder="Write a message to send.."></textarea>
+                                <span class="send-message button green" id="sendMsg">Send</span>
                             </div>
-                        </div><div class="user-profile right">
+                        </div>
+                        <div class="user-profile right">
                             <div class="user-image user-item">
-                                <img src="https://www.placehold.it/120x120/f5f5f5?text=+">
+                                <img id="userImg" src="https://www.placehold.it/120x120/f5f5f5?text=+">
                             </div>
                             <div class="user-info user-item">
-                                <p class="user-name">Shreya Sharma</p>
-                                <p class="user-organization">Talencia Tech.</p>
-                                <p class="user-designation">PHP Developer</p>
+                                <p class="user-name userName">Shreya Sharma</p>
+                                <p class="user-organization" id="userOrg">Talencia Tech.</p>
+                                <p class="user-designation" id="userDes">PHP Developer</p>
                                 <div class="user-detail">
-                                    <p class="user-phone">9654732412</p>
-                                    <p class="user-meta"><span class="user-location">Delhi</span> &bull; <span class="exp">3 y 2m</span></p>
+                                    <p class="user-phone" id="userPhone">9654732412</p>
+                                    <p class="user-meta"><span class="user-location" id="userLoc">Delhi</span> &bull; <span class="exp" id="userExp">3 y 2m</span></p>
                                 </div>
                             </div>
                         </div>
@@ -223,5 +54,39 @@
     </div>
     <div class="clearfix"></div>
 </div>
+
+<div class="conversation-item conversationItem prototype hidden">
+    <div class="user-image user-item">
+        <img src="https://www.placehold.it/70x70/f5f5f5?text=+" class="userImg">
+        <div class="candidate-status online candStatus hidden" ></div>
+    </div>
+    <div class="user-info user-item">
+        <p class="user-name userName">Shreya Sharma</p>
+        <p class="user-designation userDesignation">PHP Developer</p>
+    </div>
+    <div class="conversation-item-separator"></div>
+</div>
+
+<li class="message sent prototype hidden">
+    <div class="user-image ">
+        <img class="useImg" src="http://www.placehold.it/50x50/f5f5f5?text=+">
+    </div>
+    <div class="message-area">
+        <p class="message-content msgContent">Message Content</p>
+        <p class="message-timestamp msgTime">3 min</p>
+    </div>
+</li>
+
+<li class="message received prototype hidden">
+    <div class="user-image userImg">
+        <img class="useImg" src="http://www.placehold.it/50x50/f5f5f5?text=+">
+    </div>
+    <div class="message-area">
+        <p class="message-content msgContent">Message Content</p>
+        <p class="message-timestamp msgTime">6 min</p>
+    </div>
+</li>
+
+<div class="time-separator timeSeperator prototype hidden"><span>Today</span></div>
 
 {{>footer}}
