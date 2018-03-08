@@ -1,4 +1,4 @@
-var recruiterID = localStorage.id;
+
 var userProfile = $(".user_profile_side");
 var navBar = $(".navbar");
 var chatContainer = $(".chat-div");
@@ -17,7 +17,13 @@ $(document).ready(function(){
 		$('.chat-div .chat-div-content').toggleClass("show");
 		//$('.chat-div .minus-icon').toggleClass("show");
 	});
-	populateChatView(channelsArray);
+	getRequest(baseUrl+"/recruiter/"+recruiterId+"/chat", {}, function(res){
+		if(res.status && res.status =='success'){
+			populateChatView(res.data);
+		}
+
+	});
+
 	$("#search-solar").keyup(function(event){
     if(event.keyCode == 13){
         var queryParameter = $(this).val();
@@ -109,7 +115,7 @@ chatContainer.on('click','.candidate-card', function() {
 	}
 })
 
-var onFetchHistory =
+
 
 $("#chat-collapsed-container").on('click',".chat-collapsed-candidate-container .candidate-collapsed-block i", function(event) {
 	event.stopPropagation();
@@ -147,11 +153,12 @@ var populateChatView = function(array) {
 	array.forEach(function(aCandidate) {
 
 		var card = candidatesWrapper.clone().removeClass('prototype hidden');
-		card.find(".candidate-image img").attr("src",recruiter["img_url"]).removeClass("animated-background");
-        card.attr("data-id",aCandidate["id"]);
-        card.find(".candidate-name").text(aCandidate["name"]).removeClass("animated-background");
-        card.find(".candidate-designation").text(aCandidate["jobseekerID"]).removeClass("animated-background");
-        card.find(".last-active-date").text(ISODateToD_M(aCandidate["lastActive"]));
+		card.find(".candidate-image img").attr("src",(aCandidate["img"] || "/static/images/noimage.png"));
+        card.attr("data-id",aCandidate["userId"]);
+        card.find(".candidate-name").text(aCandidate["name"]);
+        card.find(".candidate-designation").text(aCandidate["designation"]);
+		card.attr("data-channel-name" , aCandidate["channel"])
+        // card.find(".last-active-date").text(ISODateToD_M(aCandidate["lastActive"]));
 		$(".chat-div .chat-div-content").append(card);
 		$(".chat-div .chat-div-content").append("<hr class='divider divider-full'>");
 	})

@@ -475,7 +475,7 @@ a {
             .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a li span {
               display: inline-block; }
               .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a li span.button {
-                margin: 10px 0 0 0;
+                margin: 10px 0 0 10px;
                 border-radius: 4px; }
 
 .link-color {

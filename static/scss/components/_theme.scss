@@ -39,7 +39,7 @@ a {
 	            vertical-align:middle;
 	            color:$color-white;
 	            font-family:$logoFontName, sans-serif;
-	    
+
 	            h1 {
 	                font-size: $logoFontSize;
 	                font-family:inherit;
@@ -83,13 +83,13 @@ a {
 				a {
     				color:$color-white;
     				font-size:$base-font-size;
-    				
+
 		    		li {
 		    			padding:19px 25px;
 		    			border-top:1px solid $mobile-menu-border-color;
-		    		}					
+		    		}
     			}
-	
+
 	    	}
 	    }
 
@@ -142,7 +142,7 @@ a {
 		    			span {
 	    					display:inline-block;
 		    				&.button {
-		    					margin:10px 0 0 0;
+		    					margin:10px 0 0 10px;
 		    					border-radius:4px;
 		    				}
 		    			}

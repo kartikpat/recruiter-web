@@ -20,7 +20,7 @@ jQuery(document).ready( function() {
     })
 
     chat.onSendMessage(function(message, channelName, candidateId){
-
+        debugger
         publish({
             UUID:btoa(recruiterId+'--'+profile["email"]),
             deviceID: getCookie("sessID"),

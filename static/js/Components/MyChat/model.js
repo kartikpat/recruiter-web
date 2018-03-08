@@ -16,12 +16,12 @@ function Chat() {
        settings.conversationItemList= $("#conversationItemList"),
        settings.msgContent= $("#msgContent"),
        settings.sendMsg= $("#sendMsg"),
-       settings.userImg= $("#userImg"),
-       settings.userOrg= $("#userOrg"),
-       settings.userDes= $("#userDes"),
-       settings.userPhone= $("#userPhone"),
-       settings.userLoc= $("#userLoc"),
-       settings.userExp= $("#userExp"),
+       settings.userImg= $(".userImg"),
+       settings.userOrg= $(".userOrg"),
+       settings.userDes= $(".userDes"),
+       settings.userPhone= $(".userPhone"),
+       settings.userLoc= $(".userLoc"),
+       settings.userExp= $(".userExp"),
        settings.conversationItemClass = ".conversationItem",
        settings.mssgContainer = $("#mssgContainer"),
        settings.recruiterFullName = "",
@@ -29,8 +29,10 @@ function Chat() {
        settings.candidateId = null,
        settings.welcomeContainer = $(".welcomeContainer"),
        settings.chatWindow = $(".chatWindow"),
-       settings.userProfile = $(".userProfile")
-
+       settings.userProfile = $(".userProfile"),
+       settings.conversationList = $(".conversationList"),
+       settings.backButtonChat = $(".backButtonChat")
+       onClickBackButton()
    }
 
    function onInputSearchCandidate(fn) {
@@ -101,8 +103,11 @@ function Chat() {
            var channelName = $(this).attr("data-channel-name");
            var candidateId = $(this).attr("data-candidate-id");
            settings.msgContent.attr("data-channel-name",channelName)
-           settings.channelName = channelName
            settings.candidateId = candidateId
+           settings.channelName = channelName
+           if($(window).outerWidth() < 769 ) {
+               return fn(candidateId)
+           }
            settings.welcomeContainer.addClass("hidden")
            fn(candidateId)
        })
@@ -111,11 +116,11 @@ function Chat() {
    function getTimeElement(data) {
        var card = $(".timeSeperator.prototype").clone().removeClass('prototype hidden')
 
-       if(moment(data["entry"]["time"]).format("YYYY MM DD") == moment().format("YYYY MM DD")) {
+       if(moment(data["entry"]["time"]).format("DD MM YYYY") == moment().format("DD MM YYYY")) {
            card.text("Today");
        }
        else {
-           card.text(moment(data["entry"]["time"]).format("YYYY MM DD"))
+           card.text(moment(data["entry"]["time"]).format("DD MM YYYY"))
        }
        return card
    }
@@ -142,7 +147,7 @@ function Chat() {
         settings.mssgContainer.empty()
         var str = ""
         dataArray.forEach(function(elem, index){
-               if(index == 0 || (index > 0 && (moment(dataArray[index - 1]["entry"]["time"]).format("YYYY MM DD") != moment(elem["entry"]["time"]).format("YYYY MM DD"))) ) {
+               if(index == 0 || (index > 0 && (moment(dataArray[index - 1]["entry"]["time"]).format("DD MM YYYY") != moment(elem["entry"]["time"]).format("DD MM YYYY"))) ) {
                    var item = getTimeElement(elem)
                    str+=item[0].outerHTML;
                }
@@ -156,14 +161,31 @@ function Chat() {
                }
            })
            settings.mssgContainer.append(str)
+           if($(window).outerWidth() < 769 ) {
+               settings.backButtonChat.removeClass("hidden")
+               settings.conversationList.addClass("hidden")
+           }
            settings.chatWindow.removeClass("hidden")
            settings.userProfile.removeClass("hidden")
-        //    scrollToBottom();
+           scrollToBottom();
+   }
+
+   function onClickBackButton() {
+       settings.backButtonChat.click(function(){
+           settings.channelName = ""
+           settings.backButtonChat.addClass("hidden")
+           settings.chatWindow.addClass("hidden")
+           settings.userImg.attr("src", ("/static/images/noimage.png"));
+           settings.userName.text("Welcome!");
+           settings.conversationList.removeClass("hidden")
+       })
    }
 
    function onSendMessage(fn) {
        settings.sendMsg.click(function(){
+           debugger
            var message =  settings.msgContent.val();
+           debugger
 
            fn(message, settings.channelName, settings.candidateId)
        })
@@ -188,6 +210,7 @@ function Chat() {
        elem.entry.img = obj["img"]
        var item = getMsgSentElement(elem)
        settings.mssgContainer.append(item)
+       scrollToBottom()
        settings.msgContent.val('');
    }
 
@@ -199,6 +222,7 @@ function Chat() {
        elem.entry.img = msg.img;
        var item = getMsgReceivedElement(elem)
        settings.mssgContainer.append(item)
+       scrollToBottom()
    }
 
    function showStatusIcon(channelName) {
@@ -209,9 +233,9 @@ function Chat() {
        $(".conversationItem[data-channel-name="+channelName+"]").find(".candStatus").addClass("hidden")
    }
 
-   // var scrollToBottom = function () {
-   //     settings.mssgContainer.scrollTop(settings.mssgContainer[0].scrollHeight);
-   // }
+   function scrollToBottom() {
+       $(".current-chat").scrollTop(jQuery(".current-chat").outerHeight());
+   }
 
    return {
        init: init,

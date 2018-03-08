@@ -31,6 +31,8 @@ function Header(){
         settings.userImg.attr("src",profile["pic"]);
     }
 
+
+
 	return {
 		init: init,
 		populateData: setUserProfile
