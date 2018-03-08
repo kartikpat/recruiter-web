@@ -1250,16 +1250,13 @@
         },
         "scripts": {
             "debug": [
-                "static/js/Components/Interview-scheduler-updated/index.js",
-                "static/js/Components/Interview-scheduler-updated/model.js",
-                "static/js/vendor/moment.min.js",
-                "static/js/vendor/jquery.min.js",
+				"static/js/vendor/moment.min.js",
+				"static/js/vendor/jquery.min.js",
                 "static/js/vendor/jquery-ui.min.js",
-                "static/js/vendor/fullcalendar.min.js",
-                "static/js/vendor/fullcalendar.js",
-                "static/js/Components/Interview-scheduler-updated/custom.js"
-
-
+				"static/js/vendor/fullcalendar.js",
+				"static/js/Components/Interview-scheduler-updated/custom.js",
+                "static/js/Components/Interview-scheduler-updated/index.js",
+                "static/js/Components/Interview-scheduler-updated/model.js"
             ],
             "prod" : [
                 "static/build/js/Interview-scheduler-updated.min.js"
@@ -1340,12 +1337,12 @@
         }
 
 	},
-	"empty-view-calendar-manage": {
+	"dashboardview": {
         "styles": {
             "debug" : [
 
                 "static/css/header.css",
-                "static/css/empty-view-calendar-manage.css",
+                "static/css/dashboardview.css",
                 "static/css/footer.css"
             ],
             "prod": [

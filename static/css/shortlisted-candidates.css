@@ -945,6 +945,9 @@ a {
         .mobile-menu-container .mobile-menu-content .menu-link-listing ul a li {
           padding: 19px 25px;
           border-top: 1px solid #2E2E2E; }
+      .mobile-menu-container .mobile-menu-content .menu-link-listing ul .my-jobs-menu {
+        padding-left: 40px;
+        padding-top: 30px; }
     .mobile-menu-container .mobile-menu-content .mobile-profile-section {
       background: #403f44;
       padding: 15px 25px;

@@ -6,15 +6,15 @@
 				<span class="details">Basic Details</span>
 				<div class="input-name">
 				<span>Name</span> <br>
-				<input type="text" name="FirstName" id="name">
+				<textarea name="FirstName" id="name"></textarea>
 				</div>
 				<div class="message">
 					<span>Message for F2F Interview</span> <br>
-					<input type="text" id="message">
+					<textarea type="text" id="message"></textarea>
 				</div>
 				<div class="telephonic">
 					<span>Message for Telephonic Interview</span><br> 
-					<input type="text" id="telephonic">
+					<textarea type="text" id="telephonic"></textarea>
 				</div>
 
 			</div>
@@ -35,22 +35,17 @@
 	
 	
 	<div class="second-container">
-			<div  class="available-hours"> <!left-->
+		<div  class="available-hours"> <!left-->
 			<div class="Days-available">
 				<span id="available-span">Available Hours</span>
 				<p>Select the time during you are available</p>
 			   
 			<div class="table" id="example">
-				
 				<div class="D-avail">
 					<span id="one">DAYS AVAILABLE</span> 
 					<span id="two">START TIME</span>
 					<span id="three">END TIME</span>  
 				</div>
-				
-
-					
-							
 				<div class="day">
 					<div class="section">
 						<div class="check-input">
@@ -61,8 +56,6 @@
 						</div>					 
 					  </div>			  
 				</div>
-			
-			
 				<div class="time-section" id="First">
 					<span class="section-one">
 						<span id="Checkin">START TIME</span>
@@ -83,9 +76,8 @@
 								</div>
 						</select>
 					</span>
-					<span>   <button type="button" id="selectAll">Copy to All</button></span>
+					<span><button type="button" id="selectAll">Copy to All</button></span>
 				</div>
-
 				<div class="day">
 						<div class="section">
 							<div class="check-input">
@@ -94,29 +86,27 @@
 								<label for="check-button-tues">TUES</label>
 							 </div>								
 						</div>
-				
 				</div>
 				<div class="time-section" id="Second">
-						<span class="section-one" >
-								<span id="Checkin">START TIME</span>
-							<select class="select-dropdown  Start-time">
+					<span class="section-one" >
+							<span id="Checkin">START TIME</span>
+						<select class="select-dropdown  Start-time">
+							<div class="dropdown-list">
+								<option value="0" selected>Select</option>
+								
+							</div>
+						</select>
+					</span>
+					<label>to</label>
+					<span class="section-one">
+							<span id="Checkin">END TIME</span>
+						<select class="select-dropdown End-time">
 								<div class="dropdown-list">
-								 <option value="0" selected>Select</option>
-									
+									<option value="0" selected>Select</option>
 								</div>
-							</select>
-						</span>
-						<label>to</label>
-						<span class="section-one">
-								<span id="Checkin">END TIME</span>
-							<select class="select-dropdown End-time">
-									<div class="dropdown-list">
-									 <option value="0" selected>Select</option>
-									</div>
-							</select>
-						</span>
-				</div>
-				
+						</select>
+					</span>
+				</div>	
 				<div class="day">
 						<div class="section">
 							<div class="check-input">
@@ -236,19 +226,16 @@
 								</div>
 							</select>
 						</span>
-
-	
-			</div>
-			
-		</div> 
-	</div>
+				</div>	
+		    </div> 
+    	</div>
 			
 			
 			   
 
 			<div class="preview">  <!right-->
 			
-				<p>calender here</p>
+				<div id='calendar'></div>
 
 				</div>
 
@@ -295,27 +282,27 @@
 						<input type="radio" id="radio-button-female" name="gender">
 						<label for="radio-button-female">Starts on date:This schedule starts on this date</label>
 					</div>
+					
+					<textarea type="text" class="input-field"/></textarea>
 					<img src="/static/images/calender.png">
-					<input type="text" class="input-field"/>
 				</div>
 			</div>
-			
 			<div class="end-date">
-			<span>End date</span>
-			<p>Determines when this schedule stops producing times</p>
-			<div class="section">
-				<div class="radio-input">
-					<input type="radio" id="radio-button-male" name="gender">
-					<label for="radio-button-male">Never ends:This schedule is valid forever</label>
+				<span>End date</span>
+				<p>Determines when this schedule stops producing times</p>
+				<div class="section">
+					<div class="radio-input">
+						<input type="radio" id="radio-button-m" name="gender-m">
+						<label for="radio-button-m">Never ends:This schedule is valid forever</label>
+					</div>
+					<div class="radio-input">
+						<input type="radio" id="radio-button-fem" name="gender-m">
+						<label for="radio-button-fem">Ends on date:This schedule ends before midnight on this date</label>
+					</div>
+					
+					<textarea type="text" class="input-field"/></textarea>
+					<img src="/static/images/calender.png">
 				</div>
-				<div class="radio-input">
-					<input type="radio" id="radio-button-female" name="gender">
-					<label for="radio-button-female">Ends on date:This schedule ends before midnight on this date</label>
-				</div>
-				<img src="/static/images/calender.png">
-				<input type="text" class="input-field"/>
-
-			</div>
 			</div>	
 
 			
