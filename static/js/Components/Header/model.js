@@ -20,7 +20,15 @@ function Header(){
 	function init(){
 			settings.name= $('.user_name'),
 			settings.email = $('.user_email'),
-            settings.userImg = $('.user_img')
+			settings.userImg = $('.user_img'),
+			settings.myJobsview =$('.MyJobs'),
+			settings.myJobs=$('.sub-menu'),
+			settings.menucontainer=$('.menu-section'),
+			settings.backbutton=$('.my-jobs-menu-back'),
+			settings.searchButton=$('.search'),
+			settings.navigation=$('.navigation'),
+			settings.searchView=$('.search-container');
+			settings.navigationView=$('.exit-view');
 	}
 
 
@@ -29,10 +37,45 @@ function Header(){
         settings.name.text(profile["name"]);
         settings.email.text(profile["email"]);
         settings.userImg.attr("src",profile["pic"]);
-    }
+	}
+
+	
+    function myJobsView(){
+		settings.myJobs.on('click', function(){
+			settings.menucontainer.addClass("hidden");
+			settings.myJobsview.removeClass("hidden");
+		});
+	}
+
+	function dashboardView(){
+		settings.backbutton.on('click', function(){
+			settings.menucontainer.removeClass("hidden");
+			settings.myJobsview.addClass("hidden");
+		});
+	}
+
+	function searchView(){
+		settings.searchButton.on('click', function(){
+			console.log("hello");
+			settings.navigation.addClass("hidden");
+			settings.searchView.removeClass("hidden");
+		});
+	}
+
+	function navigationView(){
+		settings.navigationView.on('click', function(){
+			console.log("hello");
+			settings.navigation.removeClass("hidden");
+			settings.searchView.addClass("hidden");
+		});
+	}
 
 	return {
 		init: init,
-		populateData: setUserProfile
+		populateData: setUserProfile,
+		myJobsView :myJobsView,
+		dashboardView:dashboardView,
+		searchView:searchView,
+		navigationView:searchView,
 	}
 }

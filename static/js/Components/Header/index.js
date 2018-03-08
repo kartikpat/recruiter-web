@@ -3,5 +3,7 @@ $(document).ready(function(){
 	headerDetails.init();
 	console.log(profile)
 	headerDetails.populateData(profile);
-
+	headerDetails.myJobsView();
+	headerDetails.dashboardView();
+	headerDetails.searchView();
 })
