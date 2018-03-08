@@ -28,6 +28,7 @@ function Header(){
 			settings.searchButton=$('.search'),
 			settings.navigation=$('.navigation'),
 			settings.searchView=$('.search-container');
+			settings.searchInput=$('.search-container input');
 			settings.navigationView=$('.exit-view');
 	}
 
@@ -56,10 +57,10 @@ function Header(){
 
 	function searchView(){
 		settings.searchButton.on('click', function(){
-			console.log("hello");
-			settings.navigation.addClass("hidden");
-			settings.searchView.removeClass("hidden");
-			settings.searchButton.css("display","none");
+			// settings.navigation.addClass("hidden");
+			// settings.searchView.removeClass("hidden");
+			settings.navigation.toggleClass("hidden");
+    		settings.searchView.toggleClass("hidden");
 		});
 	}
 
