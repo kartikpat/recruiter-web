@@ -2,6 +2,19 @@
 @import 'input-elements';
 @import 'chat-sidebar';
 
+.back-button {
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	margin-top: 7px;
+	margin-right: 10px;
+	cursor: pointer;
+	img {
+		width: 100%;
+		height: 100%;
+	}
+}
+
 .page-content {
 	@include page-content;
 
@@ -44,7 +57,7 @@
 					display:inline-block;
 					width:10px;
 					height:10px;
-					border-radius:50%;	
+					border-radius:50%;
 					font-size:$base-font-size;
 					margin:0 2px 0 15px;
 					&.online {
@@ -57,19 +70,19 @@
 				}
 
 				&.user-status {
-					color:$extra-info-color;	
+					color:$extra-info-color;
 				}
 			}
 		}
 
 		.mobile-user-profile {
 			background-color:$settings-highlight-background;
-			padding:15px;
+			padding:10px;
 			font-size:$base-font-size;
-			height:160px;
+			height:50px;
 			overflow:hidden;
 			display:none;
-			
+
 			.user-details {
 
 				.user-item {
@@ -79,8 +92,8 @@
 					&.user-image {
 						padding-right:10px;
 						img {
-							height:80px;
-							width:80px;
+							height:30px;
+							width:30px;
 							border-radius:50%;
 						}
 					}
@@ -89,11 +102,12 @@
 						p {
 							line-height:1.5;
 							font-size:13px;
-						
+
 							&.user-name {
 								font-size:14px;
 								color:$inline-link-color;
 								line-height:1.5;
+								margin-top: 5px;
 							}
 
 							&.user-designation {
@@ -151,12 +165,14 @@
 					    width: 100%;
 					    padding: 5px 0 0 0;
 					    font-size: 0;
-						
+						cursor: pointer;
 						.user-item {
 						    display: inline-block;
 						    vertical-align: middle;
 						    padding:10px 15px;
-
+							&.user-info {
+								width: calc(100% - 80px)
+							}
 							&.user-image {
 								display:inline-block;
 								vertical-align:middle;
@@ -239,7 +255,7 @@
 				position:relative;
 
 				.current-chat {
-					max-height:calc(100% - 160px);
+					max-height:calc(100% - 150px);
 					overflow:auto;
 					height: 100%;
 				}
@@ -400,14 +416,14 @@
 
 				.user-item {
 					text-align:center;
-					margin:20px 0;
+					margin:20px;
 
 					&.user-image {
 						margin:20px auto;
 
 						img {
-							max-width:140px;
-							max-height:140px;
+							width:110px;
+							height:110px;
 							object-fit:cover;
 							border-radius:50%;
 							border:3px solid $color-white;
@@ -448,7 +464,16 @@
 	display:none;
 }
 
+
+.welcome-container {
+	width: 80%;
+    height: 100%;
+}
+
 @media all and (max-width:1280px) {
+	.welcome-container {
+		width: 75%;
+	}
 	.page-content {
 		.main-wrapper {
 			.main-container {
@@ -483,6 +508,9 @@
 }
 
 @media all and (max-width:1024px) {
+	.welcome-container {
+		width: 70%;
+	}
 	.page-content {
 		.main-wrapper {
 			.main-container {
@@ -495,7 +523,7 @@
 							display:block;
 						}
 						.chat-body {
-							height:calc(100% - 160px);
+							height:calc(100% - 52px);
 
 							.sidebar {
 								width:30%;
@@ -511,10 +539,10 @@
 
 							.chat-window {
 								width:70%;
-
+								padding-bottom:90px;
 								.current-chat {
 									max-height:calc(100%);
-									padding-bottom:90px;
+
 								}
 
 								.new-message {
@@ -539,6 +567,9 @@
 }
 
 @media all and (max-width:768px) {
+	.welcome-container {
+        display: none;
+    }
 	.page-content {
 		height:calc(100vh - 55px);
 
@@ -551,12 +582,13 @@
 						}
 						.mobile-user-profile {
 							display:block;
-						}	
+						}
 						.chat-body {
-							height: calc(100% - 160px);
+							height: calc(100% - 50px);
 
 							.sidebar {
-								display:none;
+								display:block;
+								width: 100%;
 							}
 
 							.chat-window {
@@ -584,7 +616,7 @@
 						.chat-header {
 						}
 						.mobile-user-profile {
-						}	
+						}
 						.chat-body {
 							.sidebar {
 							}

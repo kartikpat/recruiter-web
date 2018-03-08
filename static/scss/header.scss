@@ -108,7 +108,7 @@ b{
             vertical-align:middle;
             color:$color-white;
             font-family:$logoFontName, sans-serif;
-    
+
             h1 {
                 font-size: $logoFontSize;
                 font-family:inherit;
@@ -139,7 +139,7 @@ b{
             vertical-align: middle;
             position:relative;
             cursor:pointer;
-            
+
             img {
                 padding:10px;
                 @include abolulute-center;
@@ -150,9 +150,9 @@ b{
                 padding:0;
                 height:37px;
                 width:37px;
-                border-radius:50%;     
+                border-radius:50%;
             }
-            
+
             .profile-menu {
                 position:absolute;
                 width:280px;
@@ -208,8 +208,12 @@ b{
                         li {
                             margin:10px 0;
                             font-size:$base-font-size;
+
                             a {
-                                color:inherit;
+                                color: inherit;
+                                &:hover {
+                                    text-decoration: underline;
+                                }
                             }
                         }
                     }
@@ -240,9 +244,71 @@ b{
                 width:20%;
                 min-width:120px;
                 text-align: center;
+                &.my-jobs {
+                    position: relative;
+                }
                 a {
                     font-family:$primary-font;
                     color:$color-white;
+                }
+                .profile-menu {
+                    position:absolute;
+                    width:200px;
+                    top:110%;
+                    left:30%;
+                    z-index: 10;
+                    background:#FFF;
+
+                    box-shadow:0 4px 8px $shadow-color;
+                    border-radius:4px;
+                    transition:all 0.2s ease-in-out;
+                    height:0;
+                    opacity:0;
+                    visibility: hidden;
+
+                    &:before {
+                        content:'';
+                        border-right:10px solid transparent;
+                        border-bottom:10px solid #fff;
+                        border-left:10px solid transparent;
+                        position:absolute;
+                        top:-9px;
+                        left:15px;
+                    }
+
+                    .profile-body {
+                        background:$color-white;
+                        padding:10px 15px;
+                        border-bottom-right-radius:4px;
+                        border-bottom-left-radius:4px;
+                        border-radius: 4px;
+                        ul {
+                            margin:0;
+                            list-style:none;
+                            padding-left:0;
+
+                            li {
+                                margin: 10px 0;
+                                font-size:$base-font-size;
+                                text-align: left;
+                                line-height: 1.5;
+                                a {
+                                    color:$link-color;
+                                    &:hover {
+                                        text-decoration: underline;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &.active {
+
+                        opacity:1;
+                        visibility:visible;
+                        top:110%;
+                        height:auto;
+                    }
                 }
 
                 &.active {
@@ -260,7 +326,8 @@ b{
         .header_item {
             &.mobile-menu {
                 display:inline-block;
-            }   
+                cursor: pointer;
+            }
         }
         .navigation {
             display:none;
@@ -300,7 +367,7 @@ b{
                 .action-icon {
                     height:30px;
                     width:30px;
-                }   
+                }
 
                 .profile {
                     display:none;

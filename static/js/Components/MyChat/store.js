@@ -3,7 +3,7 @@ function Store (){
 
 	function saveToStore(dataArray){
         dataArray.forEach(function(anObj) {
-            store[anObj["id"]] = anObj;
+            store[anObj["userId"]] = anObj;
         })
     }
 

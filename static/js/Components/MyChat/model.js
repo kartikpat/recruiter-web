@@ -16,17 +16,23 @@ function Chat() {
        settings.conversationItemList= $("#conversationItemList"),
        settings.msgContent= $("#msgContent"),
        settings.sendMsg= $("#sendMsg"),
-       settings.userImg= $("#userImg"),
-       settings.userOrg= $("#userOrg"),
-       settings.userDes= $("#userDes"),
-       settings.userPhone= $("#userPhone"),
-       settings.userLoc= $("#userLoc"),
-       settings.userExp= $("#userExp"),
+       settings.userImg= $(".userImg"),
+       settings.userOrg= $(".userOrg"),
+       settings.userDes= $(".userDes"),
+       settings.userPhone= $(".userPhone"),
+       settings.userLoc= $(".userLoc"),
+       settings.userExp= $(".userExp"),
        settings.conversationItemClass = ".conversationItem",
        settings.mssgContainer = $("#mssgContainer"),
        settings.recruiterFullName = "",
-       settings.channelName = ""
-
+       settings.channelName = "",
+       settings.candidateId = null,
+       settings.welcomeContainer = $(".welcomeContainer"),
+       settings.chatWindow = $(".chatWindow"),
+       settings.userProfile = $(".userProfile"),
+       settings.conversationList = $(".conversationList"),
+       settings.backButtonChat = $(".backButtonChat")
+       onClickBackButton()
    }
 
    function onInputSearchCandidate(fn) {
@@ -51,10 +57,11 @@ function Chat() {
    }
 
    function createElement(aData) {
-       var item = getElement(aData["id"]);
+       var item = getElement(aData["userId"]);
+       item.image.attr("src", (aData["img"] || "/static/images/noimage.png"))
        item.name.text(aData["name"]);
-       item.designation.text(aData["name"]);
-       item.element.attr("data-channel-name", aData["name"]);
+       item.designation.text(aData["designation"]);
+       item.element.attr("data-channel-name", aData["channel"]);
        return item
    }
 
@@ -67,7 +74,6 @@ function Chat() {
        dataArray.forEach(function(aData, index){
            var item = createElement(aData);
            str+=item.element[0].outerHTML;
-
        });
        settings.conversationItemList.html(str);
    }
@@ -78,12 +84,15 @@ function Chat() {
    }
 
    function setCandidateProfile(obj) {
-       settings.userImg.attr("src", (obj["img_link"] || "/static/images/noimage.png"));
+       settings.userImg.attr("src", (obj["img"] || "/static/images/noimage.png"));
        settings.userName.text(obj["name"]);
        settings.userPhone.text(obj["phone"]);
-       settings.userDes.text(obj["desg"]);
+       settings.userDes.text(obj["designation"]);
        settings.userOrg.text(obj["org"]);
        settings.userLoc.text(obj["location"]);
+       if(obj["exp"]) {
+           settings.userExp.text(obj["exp"]["year"] + "y " + obj["exp"]["month"] + "m")
+       }
    }
 
    function onClickSingleChatItem(fn) {
@@ -94,7 +103,12 @@ function Chat() {
            var channelName = $(this).attr("data-channel-name");
            var candidateId = $(this).attr("data-candidate-id");
            settings.msgContent.attr("data-channel-name",channelName)
+           settings.candidateId = candidateId
            settings.channelName = channelName
+           if($(window).outerWidth() < 769 ) {
+               return fn(candidateId)
+           }
+           settings.welcomeContainer.addClass("hidden")
            fn(candidateId)
        })
    }
@@ -102,11 +116,11 @@ function Chat() {
    function getTimeElement(data) {
        var card = $(".timeSeperator.prototype").clone().removeClass('prototype hidden')
 
-       if(moment(data["entry"]["time"]).format("YYYY MM DD") == moment().format("YYYY MM DD")) {
+       if(moment(data["entry"]["time"]).format("DD MM YYYY") == moment().format("DD MM YYYY")) {
            card.text("Today");
        }
        else {
-           card.text(moment(data["entry"]["time"]).format("YYYY MM DD"))
+           card.text(moment(data["entry"]["time"]).format("DD MM YYYY"))
        }
        return card
    }
@@ -114,7 +128,8 @@ function Chat() {
    function getMsgSentElement(data) {
        console.log(data)
        var card = $(".message.sent.prototype").clone().removeClass('prototype hidden')
-       card.find(".useImg").attr("src", data["img"])
+
+       card.find(".useImg").attr("src", (data["entry"]["img"] || "/static/images/noimage.png"))
        card.find(".msgContent").html(data["entry"]["msg"])
        card.find(".msgTime").text(moment(data["entry"]["time"]).format("hh:mm a"))
        return card
@@ -122,7 +137,7 @@ function Chat() {
 
    function getMsgReceivedElement(data) {
        var card = $(".message.received.prototype").clone().removeClass('prototype hidden')
-       card.find(".useImg").attr("src", data["img"])
+       card.find(".useImg").attr("src", (data["entry"]["img"] || "/static/images/noimage.png"))
        card.find(".msgContent").html(data["entry"]["msg"])
        card.find(".msgTime").text(moment(data["entry"]["time"]).format("hh:mm a"))
        return card
@@ -132,7 +147,7 @@ function Chat() {
         settings.mssgContainer.empty()
         var str = ""
         dataArray.forEach(function(elem, index){
-               if(index == 0 || (index > 0 && (moment(dataArray[index - 1]["entry"]["time"]).format("YYYY MM DD") != moment(elem["entry"]["time"]).format("YYYY MM DD"))) ) {
+               if(index == 0 || (index > 0 && (moment(dataArray[index - 1]["entry"]["time"]).format("DD MM YYYY") != moment(elem["entry"]["time"]).format("DD MM YYYY"))) ) {
                    var item = getTimeElement(elem)
                    str+=item[0].outerHTML;
                }
@@ -146,21 +161,33 @@ function Chat() {
                }
            })
            settings.mssgContainer.append(str)
-        //    scrollToBottom();
+           if($(window).outerWidth() < 769 ) {
+               settings.backButtonChat.removeClass("hidden")
+               settings.conversationList.addClass("hidden")
+           }
+           settings.chatWindow.removeClass("hidden")
+           settings.userProfile.removeClass("hidden")
+           scrollToBottom();
+   }
+
+   function onClickBackButton() {
+       settings.backButtonChat.click(function(){
+           settings.channelName = ""
+           settings.backButtonChat.addClass("hidden")
+           settings.chatWindow.addClass("hidden")
+           settings.userImg.attr("src", ("/static/images/noimage.png"));
+           settings.userName.text("Welcome!");
+           settings.conversationList.removeClass("hidden")
+       })
    }
 
    function onSendMessage(fn) {
        settings.sendMsg.click(function(){
+           debugger
            var message =  settings.msgContent.val();
-           var channelName = settings.msgContent.attr("data-channel-name");
-           var elem = {}
-           elem.entry = {}
-           elem.entry.msg = message;
-           elem.entry.time = parseInt(moment().format('x'))
-           var item = getMsgSentElement(elem)
-           settings.mssgContainer.append(item)
-           settings.msgContent.val('');
-           fn(message, channelName)
+           debugger
+
+           fn(message, settings.channelName, settings.candidateId)
        })
     //    settings.msgContent.keypress(function(event){
     //        if(event.which == 13) {
@@ -175,14 +202,27 @@ function Chat() {
     //    })
    }
 
+   function appendSendMessage(message, obj) {
+       var elem = {}
+       elem.entry = {}
+       elem.entry.msg = message;
+       elem.entry.time = parseInt(moment().format('x'))
+       elem.entry.img = obj["img"]
+       var item = getMsgSentElement(elem)
+       settings.mssgContainer.append(item)
+       scrollToBottom()
+       settings.msgContent.val('');
+   }
+
    function receiveMessage(msg, channelName) {
        var elem = {}
        elem.entry = {}
        elem.entry.msg = msg.msg;
        elem.entry.time = msg.time;
-       elem.img = msg.img;
+       elem.entry.img = msg.img;
        var item = getMsgReceivedElement(elem)
        settings.mssgContainer.append(item)
+       scrollToBottom()
    }
 
    function showStatusIcon(channelName) {
@@ -193,9 +233,9 @@ function Chat() {
        $(".conversationItem[data-channel-name="+channelName+"]").find(".candStatus").addClass("hidden")
    }
 
-   // var scrollToBottom = function () {
-   //     settings.mssgContainer.scrollTop(settings.mssgContainer[0].scrollHeight);
-   // }
+   function scrollToBottom() {
+       $(".current-chat").scrollTop(jQuery(".current-chat").outerHeight());
+   }
 
    return {
        init: init,
@@ -209,7 +249,8 @@ function Chat() {
        receiveMessage: receiveMessage,
        showStatusIcon: showStatusIcon,
        hideStatusIcon: hideStatusIcon,
-       onInputSearchCandidate: onInputSearchCandidate
+       onInputSearchCandidate: onInputSearchCandidate,
+       appendSendMessage: appendSendMessage
    }
 
 }

@@ -70,6 +70,8 @@ function Header(){
 		});
 	}
 
+
+
 	return {
 		init: init,
 		populateData: setUserProfile,

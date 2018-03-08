@@ -136,6 +136,8 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
+				"static/js/header.js",
+				"static/js/utilities.js",
 				"static/js/tags/industry.js",
 				"static/js/tags/current-location.js",
 				"static/js/tags/preferred-location.js",
@@ -422,32 +424,6 @@
 			],
 			"prod" : [
 				"static/build/js/calendar.min.js"
-			]
-		}
-	},
-	"view-reports": {
-		"styles": {
-			"debug" : [
-				"static/css/header.css",
-				"static/css/view-reports.css",
-				"static/css/buttons.css",
-				"static/css/colors.css",
-				"static/css/utilities.css",
-				"static/css/footer.css"
-			],
-			"prod": [
-				"static/build/css/view-reports.min.css"
-			]
-		},
-		"scripts": {
-			"debug": [
-				"static/js/vendor/jquery.min.js",
-				"static/js/Utilities/request.js",
-				"static/js/header.js",
-				"static/js/view-reports.js"
-			],
-			"prod" : [
-				"static/build/js/view-reports.min.js"
 			]
 		}
 	},
@@ -756,16 +732,17 @@
 				"static/js/Utilities/common.js",
 				"static/js/Utilities/modal.js",
 				"static/js/vendor/moment.min.js",
+				"static/js/header.js",
 
 
 
 
-				"static/js/Components/Header/model.js",
-				"static/js/Components/Header/index.js",
 				"static/js/Services/fetchJobs.js",
 				"static/js/Services/submitUnpublishJob.js",
 				"static/js/Services/submitPremiumJob.js",
 				"static/js/Services/submitRefreshJob.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js",
 				"static/js/Components/MyJobs/model.js",
 				"static/js/Components/MyJobs/index.js",
 				"static/js/Utilities/toastNotifier.js",
@@ -958,6 +935,8 @@
 				"static/js/my-chat.js",
 				"static/js/chat_pubnub.js",
 				"static/js/vendor/moment.min.js",
+				"static/js/Utilities/pubsub.js",
+				"static/js/Services/fetchRecruiterChats.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Components/MyChat/model.js",
@@ -978,7 +957,7 @@
 				"static/css/footer.css",
 				"static/css/header.css",
 				"static/css/modal.css",
-
+				"static/css/vendor/tooltipster.css",
 				"static/css/jquery-ui.min.css",
 				"static/css/candidate-apply-list.css"
 
@@ -998,6 +977,7 @@
 				"static/js/tags/industry.js",
 				"static/js/tags/current-location.js",
 				"static/js/tags/preferred-location.js",
+				"static/js/vendor/tooltipster.main.min.js",
 				"static/js/tags/language.js",
 				"static/js/tags/functional-area.js",
 				"static/js/tags/institute.js",
@@ -1010,6 +990,7 @@
 				"static/js/ui-components.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
+				"static/js/Services/sendInterviewInvite.js",
 				"static/js/Services/fetchJobApplications.js",
 				"static/js/Services/fetchJob.js",
 				"static/js/Services/fetchCalendars.js",
@@ -1325,12 +1306,12 @@
                 "static/build/js/ui-Calendar.min.js"
             ]
         }
-        
+
 	},
 	"calendar-manage": {
         "styles": {
             "debug" : [
-                
+
                 "static/css/header.css",
                 "static/css/calendar-manage.css",
                 "static/css/footer.css"
@@ -1348,18 +1329,18 @@
 				"static/js/Services/fetchRecruiterCalendar.js",
 				"static/js/Components/calendar-manage/model.js",
 				"static/js/Components/calendar-manage/index.js"
-			
+
             ],
             "prod" :[
                 "static/build/js/calendar.min.js"
             ]
         }
-        
+
 	},
 	"dashboardview": {
         "styles": {
             "debug" : [
-                
+
                 "static/css/header.css",
                 "static/css/dashboardview.css",
                 "static/css/footer.css"
@@ -1377,12 +1358,12 @@
 				"static/js/Services/fetchRecruiterCalendar.js",
 				"static/js/Components/calendar-manage/model.js",
 				"static/js/Components/calendar-manage/index.js"
-			
+
             ],
             "prod" :[
                 "static/build/js/calendar.min.js"
             ]
         }
-        
-	}
+
+    }
 }

@@ -30,6 +30,7 @@ function Job(){
 		settings.jobRefreshModal = $(".refreshModal")
 		settings.jobPremiumModal = $(".premiumModal");
 		settings.loaderOverlay = $("#loaderOverlay");
+		settings.calendarLength = null
 
 		onClickCreateCalendar();
 		onClickJobOtherActions()
@@ -160,8 +161,7 @@ function Job(){
 			return
 		}
 
-		// if(array.length == 1)
-		// 	setDefaultCalendar(array[0]["id"]);
+		settings.calendarLength = array.length
 		var calendarOptionsStr = '';
 		var item = getCalendarElement();
 		item.element.text("Calendar Link: Select");
@@ -197,6 +197,10 @@ function Job(){
         })
     }
 
+	function getCalendarLength() {
+		return settings.calendarLength;
+	}
+
 	function onChangeDefaultCalendar(fn) {
 		settings.calendarSelect.on('change', function(e) {
 			console.log("a")
@@ -206,7 +210,10 @@ function Job(){
 	}
 
 	function showCalendarMissingError() {
-		settings.calendarSelectError.text("Please Select the calendar!").removeClass("hidden");
+		settings.calendarSelectError.text("Choose a calendar to send to the applicants for this job!").removeClass("hidden");
+		$('html, body').animate({
+			scrollTop: ($("#calendarSelectError").closest('.calendar-options').offset().top - 20)
+		},200);
 	}
 
 	function closeModal() {
@@ -250,6 +257,7 @@ function Job(){
 		closeModal: closeModal,
 		openModal: openModal,
 		showLoaderOverlay: showLoaderOverlay,
-		hideLoaderOverlay: hideLoaderOverlay
+		hideLoaderOverlay: hideLoaderOverlay,
+		getCalendarLength: getCalendarLength
 	}
 }

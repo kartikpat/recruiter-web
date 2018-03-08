@@ -4,6 +4,22 @@
 
 @import 'components/modal';
 
+#calendarSelectError {
+    margin: 0 !important;
+    padding-top: 7px;
+    padding-left: 1px;
+    background-color: #f7f7f7;
+    p {
+        max-width: 170px;
+    }
+}
+
+.interview-invite {
+    border-top: 1px solid #e8e8e8;
+    padding-top: 5px !important;
+    font-size: 13px !important;
+}
+
 .shell {
     .section {
         margin-bottom: 10px !important;
@@ -154,7 +170,7 @@ input::-webkit-input-placeholder {
 							@include input-field;
 							border-radius:0;
 							padding:4px 35px;
-							line-height:20px;
+							line-height:30px;
 							background-image:url("/static/images/search-icon.svg");
 							background-repeat:no-repeat;
 							background-position:left 10px center;
@@ -239,12 +255,12 @@ input::-webkit-input-placeholder {
 
 				.candidates-search-results {
 					p {
-						margin:10px 0 20px 0;
+						margin:10px 0 0px 0;
 						display:inline-block;
 					}
 
 					.active-filters {
-						padding-bottom:20px;
+						padding-bottom:0px;
 						.filter-tag {
 							display:inline-block;
 							margin:5px;
@@ -621,7 +637,7 @@ input::-webkit-input-placeholder {
 		}
         &.mobile {
             display: none;
-            
+
         }
 	}
 }
@@ -837,7 +853,7 @@ input::-webkit-input-placeholder {
 @media all and (max-width:360px) {
 	.page-content {
 		.page-header {
-			display:none;
+
 		}
 
 		.page-mobile-header {
@@ -928,7 +944,7 @@ input::-webkit-input-placeholder {
 				border:0;
 				.candidates-area-header {
 					background-color:$color-white;
-					padding:20px 20px 0 20px;
+					padding:20px;
 					border:1px solid $border-color-base;
 					border-bottom:0;
 
@@ -938,7 +954,7 @@ input::-webkit-input-placeholder {
 							display:block;
 							width:100%;
 							overflow:auto;
-							margin-bottom:20px;
+							margin-bottom:15px;
 						}
 
 						 .filter-search {

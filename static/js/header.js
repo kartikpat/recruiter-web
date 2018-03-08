@@ -139,7 +139,7 @@ function ISODateToTime(aDate) {
       return str;
 }
 
-jQuery(".header .mobile-menu").on("click", function() {
+jQuery(".header").on("click",".mobile-menu", function() {
   jQuery("body").addClass("posf");
   jQuery(".body-overlay").removeClass("hidden").addClass("veiled");
   jQuery(".mobile-menu-container").removeClass("hidden");

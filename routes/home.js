@@ -29,7 +29,10 @@ module.exports = function(settings){
     	if (req.cookies["recruiter-access-token"]) {
 			console.log(baseUrl)
 			return request.get({
-				url: baseUrl+"/recruiter/"+recruiterID+""
+				url: baseUrl+"/recruiter",
+				headers: {
+					Authorization: 'Bearer '+req.cookies["recruiter-access-token"]
+				}
 			},function(err, response, body){
 				if(err){
 					console.log(err);
@@ -53,31 +56,6 @@ module.exports = function(settings){
 			return res.redirect('/login');
 		}
 	}
-	app.post("/sign-in", function(req, res){
-		var email = req.body.email || null;
-		var password = req.body.password || null;
-		if(! ( email && password ) ){
-			res.status(422).json({
-				status: 'fail',
-				message: 'missing parameters'
-			});
-			return
-		}
-		request.post({
-		  url:     baseUrl+'/recruiter/login',
-		  body:  "email="+email+"&password="+password,
-		  form: {email: email, password: password }
-		}, function(error, response, body){
-			console.log(body)
-			var jsonBody = JSON.parse(body);
-		  if(jsonBody.status=="success"){
-		  	var cookieValue = new Buffer.from(""+Date.now()).toString('base64');
-			res.cookie("sessID", cookieValue, {overwrite: true})
-			req.session.user=cookieValue;
-		  }
-		  res.json(jsonBody)
-		});
-	})
 
 	app.get("/", isAuthenticated,function(req, res){
 		res.render("dashboard", {
@@ -191,12 +169,12 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/logout", function(req,res){
-		req.session = null;
-
-		res.redirect("/");
-
-	});
+	// app.get("/logout", function(req,res){
+	// 	req.session = null;
+	//
+	// 	res.redirect("/");
+	//
+	// });
 
 	app.get("/view-reports",isAuthenticated, function(req, res){
 		res.render("view-reports",{
@@ -604,7 +582,7 @@ module.exports = function(settings){
 		})
 		return
 	});
-	
+
 	app.get("/calendar-manage",isAuthenticated, function(req,res){
 		res.render("calendar-manage", {
 			title:"Recruiter Web - Candidate Profile | iimjobs.com",

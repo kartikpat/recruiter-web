@@ -61,7 +61,7 @@ jQuery(document).ready( function() {
         for(var key in parameters) {
           if(!(key == "orderBy" || key == "pageNumber" || key == "pageContent" || key == "status")) {
             filterFlag+= 1;
-          } 
+          }
         }
 
         if(filterFlag > 0) {
@@ -140,6 +140,26 @@ jQuery(document).ready( function() {
     candidates.onClickSendMessage(function(candidateId){
         window.location.href = "/my-chat"
     })
+    candidates.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
+        var defaultCalendarId = theJob.getDefaultCalendar();
+        if(!defaultCalendarId)
+            return theJob.showCalendarMissingError();
+        var obj = {
+            "type": inviteId,
+            "calendarId": defaultCalendarId
+        }
+        sendInterViewInvite(recruiterId, jobId, applicationId , obj)
+    })
+    candidates.onClickSendInterviewInviteTelephonic(function(applicationId, inviteId){
+        var defaultCalendarId = theJob.getDefaultCalendar();
+        if(!defaultCalendarId)
+            return theJob.showCalendarMissingError();
+        var obj = {
+            "type": inviteId,
+            "calendarId": defaultCalendarId
+        }
+        sendInterViewInvite(recruiterId, jobId, applicationId , obj)
+    })
     candidates.onChangeCandidateCheckbox(function(candidateId){
         // alert(candidateId)
     })
@@ -155,14 +175,14 @@ jQuery(document).ready( function() {
         parameters.status = globalParameters.status;
         fetchJobApplications(jobId, parameters,recruiterId);
     })
-    candidates.onClickSendInterviewInvite(function(candidateId, applicationId) {
-        var defaultCalendarId = theJob.getDefaultCalendar();
-        if(!defaultCalendarId)
-            theJob.showCalendarMissingError();
-        // if(!(defaultCalendarId && candidateId && applicationId ))
-        //     return alert('Please provide all values');
-        // postInterviewInvite()
-    })
+    // candidates.onClickSendInterviewInvite(function(candidateId, applicationId) {
+    //     var defaultCalendarId = theJob.getDefaultCalendar();
+    //     if(!defaultCalendarId)
+    //         theJob.showCalendarMissingError();
+    //     // if(!(defaultCalendarId && candidateId && applicationId ))
+    //     //     return alert('Please provide all values');
+    //     // postInterviewInvite()
+    // })
     candidates.onClickDownloadResume(function(){
         console.log("you can call track event")
     });
@@ -355,7 +375,7 @@ jQuery(document).ready( function() {
              for(var key in result) {
                   if(!(key == "orderBy" || key == "pageNumber" || key == "pageContent" || key == "status")) {
                     filterFlag+= 1;
-                  } 
+                  }
                 }
             if(filterFlag > 0) {
                 filters.showAppliedFilters();
@@ -374,6 +394,12 @@ jQuery(document).ready( function() {
         globalParameters.candidateListLength = data["data"].length;
 
         candidates.addToList(data["data"], globalParameters.status);
+
+        if(!theJob.getCalendarLength()){
+            candidates.setInvite(theJob.getCalendarLength())
+        }
+
+
         filters.showResultsFound(globalParameters.candidateListLength);
         if(data["pageNumber"] == 1) {
             store.emptyStore(data["data"]);
@@ -593,6 +619,17 @@ jQuery(document).ready( function() {
 
     }
 
+    function onSendInterViewInviteSuccess(topic, data) {
+        if(data.parameters.inviteId == 1)
+            toastNotify(1, "Face to Face Invite Sent Successfully!")
+        if(data.parameters.inviteId == 2)
+            toastNotify(1, "Telephonic Invite Sent Successfully!")
+    }
+
+    function onSendInterViewInviteFail(topic, data) {
+        errorHandler(data)
+    }
+
     var fetchJobDetailsSubscription = pubsub.subscribe("fetchedJobDetails:"+jobId, onSuccessfulFetchJobDetails)
 	var fetchJobDetailsFailSubscription = pubsub.subscribe("failedToFetchJobDetails:"+jobId, onFailedFetchJobDetails);
     var fetchJobApplicationsSuccessSubscription = pubsub.subscribe("fetchedJobApplication", onJobsApplicationsFetchSuccess)
@@ -618,6 +655,9 @@ jQuery(document).ready( function() {
 
     var fetchedApplicationCountSuccessSubscription = pubsub.subscribe("fetchedApplicationCountSuccess", onSuccessfulCount)
 	var fetchedApplicationCountFailSubscription = pubsub.subscribe("fetchedApplicationCountFail", onFailedCount);
+
+    var sendInterViewInviteSuccessSubscription = pubsub.subscribe("sendInterViewInviteSuccess", onSendInterViewInviteSuccess)
+	var sendInterViewInviteFailSubscription = pubsub.subscribe("sendInterViewInviteFail", onSendInterViewInviteFail);
 
     var ticker;
     $(window).scroll(function() {

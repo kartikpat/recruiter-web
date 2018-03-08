@@ -51,7 +51,7 @@
 						<span class="section calendar-options hidden" id="calendarContainer">
 							<select class="select-dropdown" id="calendarSelect">
 							</select>
-							<div class="error-field hidden" id="calendarSelectError"><p>Please select Calendar</p></div>
+							<div class="error-field hidden" id="calendarSelectError"><p>Choose a calendar to send to the applicants for this job!</p></div>
 						</span>
 						<span class="button white hidden" id="createCalendar">Create Calendar</span>
 						<a href="" class="hidden" id="jobEditButton"><span class="edit button white">Edit Job&nbsp;&nbsp;<img src="/static/images/edit-icon.svg"></span></a>
@@ -518,13 +518,13 @@
     		<ul>
     			<li class="save" id="candidateSaveModal"><span class="icon"><i class="icon-star"></i></span>Save for Later</li>
     			<li class="chat" id="candidateChatModal"><span class="icon"><i class="icon-chat_icon"></i></span>Chat with <span id="firstName" class="candidate-first-name">Shreya</span></li>
-    			<li class="invite"><span class="icon"><i class="icon-interview"></i></span>Send Interview Invite</li>
+    			<!-- <li class="invite"><span class="icon"><i class="icon-interview"></i></span>Send Interview Invite</li> -->
     		</ul>
-
+<!--
     		<ul>
     			<li class="save"><span class="icon"><i class="icon-star"></i></span>Share Resume</li>
     			<li class="invite"><span class="icon"><i class="icon-interview"></i></span>Report this candidate</li>
-    		</ul>
+    		</ul> -->
     	</div>
 
     	<div class="sidebar-section comments candidateCommentContainer">
@@ -613,7 +613,7 @@
 
 	<div class="candidate-item-section educational-details js_edu_list">
 
-	</div> 
+	</div>
 
 	<div class="candidate-item-section profile-actions">
 		<div class="candidate-action-area">
@@ -633,6 +633,9 @@
 						<li><a href="#" class="candidateSave">Save for later</a></li>
 						<li><a href="#" class="candidateAddComment">Add Comment</a></li>
 						<li><a href="#" class="candidateAddTag">Add Tag</a></li>
+						<li class="interview-invite">Send Interview Invite</li>
+						<li><a href="#" data-invite-id="1" class="inviteF2f tooltip">Face to Face</a></li>
+						<li><a href="#" data-invite-id="2" class="inviteTelephonic tooltip">Telephonic</a></li>
 					</ul>
 				</div>
 			</div>

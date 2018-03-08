@@ -878,7 +878,8 @@ body.posf {
   min-width: 350px;
   margin: 0 auto;
   font-size: 20px;
-  color: #2b2b2b; }
+  color: #2b2b2b;
+  background: #fff; }
 
 a {
   text-decoration: none; }
@@ -984,7 +985,7 @@ a {
             .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a li span {
               display: inline-block; }
               .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a li span.button {
-                margin: 10px 0 0 0;
+                margin: 10px 0 0 10px;
                 border-radius: 4px; }
 
 .link-color {
@@ -2574,6 +2575,19 @@ span.sticker {
   .modal_overlay .modal_content .modal_body .modal_body_header {
     border-bottom: 0; } }
 
+#calendarSelectError {
+  margin: 0 !important;
+  padding-top: 7px;
+  padding-left: 1px;
+  background-color: #f7f7f7; }
+  #calendarSelectError p {
+    max-width: 170px; }
+
+.interview-invite {
+  border-top: 1px solid #e8e8e8;
+  padding-top: 5px !important;
+  font-size: 13px !important; }
+
 .shell .section {
   margin-bottom: 10px !important; }
 
@@ -2805,7 +2819,7 @@ input::-webkit-input-placeholder {
             line-height: 1.5;
             border-radius: 0;
             padding: 4px 35px;
-            line-height: 20px;
+            line-height: 30px;
             background-image: url("/static/images/search-icon.svg");
             background-repeat: no-repeat;
             background-position: left 10px center;
@@ -2892,10 +2906,10 @@ input::-webkit-input-placeholder {
             .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span.sort-button span {
               padding-left: 0; }
       .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search-results p {
-        margin: 10px 0 20px 0;
+        margin: 10px 0 0px 0;
         display: inline-block; }
       .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search-results .active-filters {
-        padding-bottom: 20px; }
+        padding-bottom: 0px; }
         .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search-results .active-filters .filter-tag {
           display: inline-block;
           margin: 5px;
@@ -3488,8 +3502,6 @@ input::-webkit-input-placeholder {
         margin: 0; } }
 
 @media all and (max-width: 360px) {
-  .page-content .page-header {
-    display: none; }
   .page-content .page-mobile-header {
     display: block;
     font-size: 14px;
@@ -3538,7 +3550,7 @@ input::-webkit-input-placeholder {
       border: 0; }
       .page-content .candidate-apply-listing .candidates-area .candidates-area-header {
         background-color: #FFF;
-        padding: 20px 20px 0 20px;
+        padding: 20px;
         border: 1px solid #e8e8e8;
         border-bottom: 0; }
         .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search {
@@ -3547,7 +3559,7 @@ input::-webkit-input-placeholder {
             display: block;
             width: 100%;
             overflow: auto;
-            margin-bottom: 20px; }
+            margin-bottom: 15px; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span.button {
             margin-left: 0; }
         .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search-results .active-filters .filter-tag {

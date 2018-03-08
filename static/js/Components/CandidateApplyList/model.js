@@ -35,7 +35,10 @@ function candidateList() {
         settings.bulkActionModal = $(".bulkActionModal"),
         settings.selectedApplicationIds = {},
         settings.jobTabs = $("#jobs-tabs"),
-        settings.candidateItemShellClass = ".candidateItem.shell"
+        settings.candidateItemShellClass = ".candidateItem.shell",
+        settings.sendInterviewInviteF2FClass = ".inviteF2f",
+        settings.sendInterviewInviteTelephonicClass = ".inviteTelephonic",
+        settings.tooltip= $(".tooltip");
 
         onClickMassCheckbox()
         onClickCandidateOtherActions()
@@ -43,8 +46,36 @@ function candidateList() {
         onClickMassReject()
         onClickMassShortlist()
         onClickMassComment()
-
 	}
+
+    function onClickSendInterviewInviteF2F(fn) {
+        settings.rowContainer.on('click', settings.sendInterviewInviteF2FClass, function(e){
+            e.preventDefault()
+
+            if(parseInt($(this).attr("data-clickable")) == 1) {
+                window.location = "/booked-slots"
+
+            }
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            var inviteId = parseInt($(this).attr("data-invite-id"));
+            fn(applicationId, inviteId);
+            return false
+        })
+    }
+
+    function onClickSendInterviewInviteTelephonic(fn) {
+        settings.rowContainer.on('click', settings.sendInterviewInviteTelephonicClass, function(e){
+            e.preventDefault()
+            if(parseInt($(this).attr("data-clickable")) == 1) {
+                window.location = "/booked-slots"
+
+            }
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            var inviteId =  parseInt($(this).attr("data-invite-id"));
+            fn(applicationId, inviteId);
+            return false
+        })
+    }
 
 	function setConfig(key, value) {
 		config[key] = value;
@@ -579,6 +610,22 @@ function candidateList() {
         })
     }
 
+    function setInvite() {
+        $(settings.sendInterviewInviteF2FClass).attr("data-clickable","1")
+
+        $(settings.sendInterviewInviteTelephonicClass).attr("data-clickable","1")
+        $(settings.sendInterviewInviteF2FClass).attr("title","You need to set up your calendar before sending an invite. Click to set up calendar")
+        $(settings.sendInterviewInviteTelephonicClass).attr("title","You need to set up your calendar before sending an invite. Click to set up calendar")
+
+        settings.rowContainer.find(".tooltip").not(".prototype .tooltip").tooltipster({
+			animation: 'fade',
+			delay: 0,
+			side:['right'],
+			theme: 'tooltipster-borderless'
+		})
+
+    }
+
     return {
 		init: init,
 		addToList: addToList,
@@ -609,6 +656,9 @@ function candidateList() {
         showShells: showShells,
         hideShells: hideShells,
         removeCandidate: removeCandidate,
-        setDefaultTab: setDefaultTab
+        setDefaultTab: setDefaultTab,
+        onClickSendInterviewInviteTelephonic: onClickSendInterviewInviteTelephonic,
+        onClickSendInterviewInviteF2F: onClickSendInterviewInviteF2F,
+        setInvite: setInvite
 	}
 }
