@@ -4,14 +4,13 @@ $(document).ready(function() {
   $('#calendar').fullCalendar({
     header: {
       right: 'title,prev,next',
-      dateFormat : "D/M/Y",
-      left:''
+     // dateFormat : "D/M/Y",
+      left:'Preview of slots created'
    },
-
     navLinks: false, // can click day/week names to navigate views
     businessHours: false, // display business hours 
     defaultView: 'basicWeek',
-    columnHeaderFormat : 'ddd \n D/M/Y',
+    columnFormat :'ddd \n D/M/Y'
   
   });
   

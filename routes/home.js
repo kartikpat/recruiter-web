@@ -605,11 +605,11 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/empty-view",isAuthenticated, function(req,res){
-		res.render("empty-view-calendar-manage", {
+	app.get("/dashboardview",isAuthenticated, function(req,res){
+		res.render("dashboardview", {
 			title:"Recruiter Web - Candidate Profile | iimjobs.com",
-			styles:  assetsMapper["empty-view-calendar-manage"]["styles"][mode],
-			scripts: assetsMapper["empty-view-calendar-manage"]["scripts"][mode],
+			styles:  assetsMapper["dashboardview"]["styles"][mode],
+			scripts: assetsMapper["dashboardview"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			jobId: req.params.jobID,
