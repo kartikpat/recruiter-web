@@ -531,18 +531,44 @@ b {
   display: block;
   width: 100%;
   padding-left: 20px;
-  padding-right: 20px; }
+  padding-right: 20px;
+  position: relative; }
   .header .search-container {
-    width: 50%;
+    transition: all 0.3s ease-in-out;
     padding-left: 10px;
     padding-top: 0px;
     display: inline-block;
     vertical-align: top;
     text-align: center;
-    margin-top: 10px; }
-    .header .search-container form .search-box {
-      width: 80%;
-      height: 46px; }
+    margin-top: 10px;
+    position: absolute;
+    top: 0;
+    margin: 0;
+    left: 200px;
+    padding: 0;
+    right: 200px;
+    top: 0;
+    bottom: 0; }
+    .header .search-container form {
+      height: 100%; }
+      .header .search-container form .search-box {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        margin: 0;
+        background-color: #454545;
+        padding: 20px;
+        font-size: 20px;
+        color: white; }
+    .header .search-container .exit-view {
+      color: #FFF;
+      font-size: 25px;
+      right: 10px;
+      top: 50%;
+      transform: translate(0, -50%);
+      position: absolute;
+      cursor: pointer;
+      padding: 10px; }
   .header .header_item {
     height: 40px;
     margin-top: 18px;
@@ -588,6 +614,10 @@ b {
     vertical-align: middle;
     position: relative;
     cursor: pointer; }
+    .header .profile_actions .action-icon.search img {
+      width: 20px;
+      height: 20px;
+      padding: 0; }
     .header .profile_actions .action-icon img {
       padding: 10px;
       position: absolute;
@@ -728,6 +758,8 @@ b {
   .header .header_item.mobile-menu {
     display: inline-block;
     cursor: pointer; }
+  .header .search-container {
+    left: 230px; }
   .header .navigation {
     display: none; } }
 
@@ -736,6 +768,13 @@ b {
     padding-left: 10px;
     padding-right: 10px;
     min-height: 55px; }
+    .header .search-container {
+      left: 175px;
+      right: 120px; }
+      .header .search-container form input.search-box {
+        font-size: 14px; }
+      .header .search-container .exit-view {
+        font-size: 18px; }
     .header .header_item {
       margin-top: 13px;
       height: 30px; }
@@ -757,6 +796,20 @@ b {
         width: 30px; }
       .header .header_item.profile_actions .profile {
         display: none; } }
+
+@media all and (max-width: 600px) {
+  .header .mobile-menu {
+    display: none; }
+  .header .domain_logo {
+    display: none; }
+  .header .search-container {
+    left: 0px;
+    right: 110px; }
+    .header .search-container form .search-box {
+      font-size: 13px; }
+    .header .search-container .exit-view {
+      right: 0px;
+      font-size: 16px; } }
 
 .email-caret {
   margin-top: -5px;
