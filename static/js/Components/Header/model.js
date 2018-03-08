@@ -59,6 +59,7 @@ function Header(){
 			console.log("hello");
 			settings.navigation.addClass("hidden");
 			settings.searchView.removeClass("hidden");
+			settings.searchButton.css("display","none");
 		});
 	}
 
@@ -67,6 +68,8 @@ function Header(){
 			console.log("hello");
 			settings.navigation.removeClass("hidden");
 			settings.searchView.addClass("hidden");
+			settings.searchButton.css("display","inline-block");
+			
 		});
 	}
 
@@ -78,6 +81,6 @@ function Header(){
 		myJobsView :myJobsView,
 		dashboardView:dashboardView,
 		searchView:searchView,
-		navigationView:searchView,
+		navigationView:navigationView,
 	}
 }
