@@ -286,6 +286,8 @@
       margin-left: 50px; }
       .page-content .main-wrapper .container .dashboard .profile-content .profile-image {
         display: inline-block; }
+        .page-content .main-wrapper .container .dashboard .profile-content .profile-image img {
+          width: 70%; }
       .page-content .main-wrapper .container .dashboard .profile-content .profile-details {
         display: inline-block;
         padding-top: 20px; }
@@ -398,7 +400,8 @@
           vertical-align: top;
           display: inline-block;
           margin-top: 20px;
-          margin-bottom: 20px; }
+          margin-bottom: 20px;
+          text-align: center; }
     .page-content .main-wrapper .container .dashboard .tagline {
       color: #737373;
       font-size: 15.75px;

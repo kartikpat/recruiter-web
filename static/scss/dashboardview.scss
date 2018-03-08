@@ -26,6 +26,9 @@
                     margin-left: 50px;
                     .profile-image{
                         display: inline-block;
+                        img{
+                            width: 70%;
+                        }
                     }
                     .profile-details{
                         display: inline-block;
@@ -151,6 +154,7 @@
                             display: inline-block;
                             margin-top: 20px;
                             margin-bottom: 20px;
+                            text-align: center;
                         }
                     }   
                 }

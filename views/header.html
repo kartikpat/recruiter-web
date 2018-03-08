@@ -54,6 +54,12 @@
 				<p class="logo_tagline">Hire better. Hire Faster.</p>
 			</a>
 		</div>
+		<div class="search-container hidden">
+			<form action="#">
+				<input class="search-box" type="Text" placeholder="What are you searching for?" autocomplete="off" >
+				<div class="exit-view header_item">X</div>
+			</form>
+		</div>
 		<div class="navigation header_item">
 			<ul class="menu-listing">
 				<li class="menu-list-item my-jobs"><a href="/my-jobs">My Jobs</a></li>
@@ -108,17 +114,18 @@
 				<span><i class="icon-close_icon"></i></span>
 			</div>
 			<div class="clearfix"></div>
-		    <div class="menu-link-listing mobile-menu-item">
+
+		    <div class="menu-link-listing mobile-menu-item menu-section">
 		    	<ul>
 		    		<a href="/"><li class="menu-list-item my-jobs">Dashboard</li></a>
-		    		<a href="/my-jobs"><li class="menu-list-item my-jobs">My Jobs</li></a>
+		    		<a href="#"><li class="menu-list-item my-jobs sub-menu">My Jobs</li></a>
 					<a href="javscript:void(0);"><li class="menu-list-item search-resume">Search Resume</li></a>
 					<a href="javscript:void(0);"><li class="menu-list-item interviews">Interviews</li></a>
 					<a href="/reports"><li class="menu-list-item reports">Reports</li></a>
 		    	</ul>
 			</div>
 
-			<div class="mobile-profile-section">
+			<div class="mobile-profile-section mobile-menu-item menu-section">
 				<div class="profile-image left">
 					<img class="user_img" src="/static/images/profile-image.svg">
 				</div>
@@ -128,16 +135,25 @@
 				</div>
 			</div>
 
-			<div class="mobile-profile-actions">
+			<div class="mobile-profile-actions mobile-menu-item menu-section">
 				<ul class="profile-item-listing">
 					<a href="#"><li>Basic Account <span class="upgrade button white">Buy Premium</span></li></a>
 					<a href="/settings"><li class="settings">Account Settings</li></a>
 					<a href="/logout"><li class="logout">Logout</li></a>
 				</ul>
 			</div>
+
+			<div class="MyJobs menu-link-listing mobile-menu-item hidden">
+				<ul>
+					<a href="#"><li class="my-jobs-menu-back">Back</li></a>
+					<a href="#"><li class="my-jobs-menu">xxxxx</li></a>
+					<a href="#"><li class="my-jobs-menu">xxxxx</li></a>
+					<a href="#"><li class="my-jobs-menu">xxxxx</li></a>
+					<a href="#"><li class="my-jobs-menu">xxxxx</li></a>
+					<a href="#"><li class="my-jobs-menu">xxxxx</li></a>
+				</ul>
+			</div>
 		</div>
 	</div>
-
-
 	<div class="body-overlay hidden">
 	</div>
