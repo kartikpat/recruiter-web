@@ -194,9 +194,9 @@
             margin-top: 37px;
             margin-left: 35px;
             .Days-available{
-                display: inline-block;
+              //  display: inline-block;
                 float:left;
-                margin-right: 10px;
+                margin-right: 5%;
                 #available-span{
                     font-family:  $droid-font;
                     color:  #2b2b2b;
@@ -323,6 +323,12 @@
                             border-width: 1px;
                             border-color:  #e4e4e4;
                             box-sizing: border-box;
+                                .timer{
+                                    color:  #2b2b2b;
+                                    font-size: 14px;/* Approximation due to font substitution */
+                                    font-weight: 400;
+                                    text-align: left;
+                                }
                                 .section-one{
                                    margin-left: 15px;
                                    margin-right: 15px;
@@ -378,25 +384,33 @@
             }
 
             .preview{
-               
-                float: right;
-                border-style: solid;
-                border-width: 1px;
-                border-color:  #e4e4e4;
-                box-sizing: border-box;
-                background-color:  #ffffff;
                 width: 616px;
                 //height: 682px;
                 display: inline-block;
-                margin-top: 37px;
+                margin-top: 0px;
                 margin-right: 35px;
+                .heading{
+                    color:  #2b2b2b;
+                    font-size: 14px;/* Approximation due to font substitution */
+                    font-weight: 400;
+                    text-align: left;
+                    width: 50%;
+                    position: absolute;
+                    margin-top: 5px;
+                }
             }
 
             .Breaks-available{
                 float: none;
-                margin-top: 50px; 
-                vertical-align: top;
-                display: inline-block;
+                display: block;
+                position: relative;
+                top: -120px;
+                .timer{
+                    color:  #2b2b2b;
+                    font-size: 14px;/* Approximation due to font substitution */
+                    font-weight: 400;
+                    text-align: left;
+                }
                 span{
                     font-family:  $droid-font;
                     color:  #2b2b2b;
@@ -442,7 +456,8 @@
                             font-weight: 400;
                             line-height: 23px;/* Approximation due to font substitution */
                             text-align: left;
-                            margin-left: 46px;
+                            margin-left: 18px;
+                            width: 50%;
 
                         }
                         #three{
@@ -453,7 +468,7 @@
                             font-weight: 400;
                             line-height: 33px;/* Approximation due to font substitution */
                             text-align: left;
-                             margin-left: 46px;
+                             margin-left: 73px;
                         }
                     }
 
@@ -461,6 +476,7 @@
                            
                         height: 77px;
                         float: left;
+                        width: 100%;
                         display: inline-block;
                         border-style: solid;
                         border-width: 1px;
@@ -469,9 +485,6 @@
                             .section-one{
                                margin-left: 15px;
                                margin-right: 15px;
-                               
-                              
-                               
                                 .select-dropdown{
                                         margin-top: 10px;
                                         font-family: inherit;
@@ -500,14 +513,13 @@
 
 
             }
-
-
             .start-date{
                 clear: both;
                 float: left;
-                margin-top: 56px;
+               // margin-top: 56px;
                 margin-left: 10px;
                 width: 90%;
+                margin-top: -50px;
                
                 span{
                     font-family:  $droid-font;
@@ -576,6 +588,7 @@
                         margin-top: 21px;
                         resize:none;
                         outline: none;
+                        overflow: hidden;
                     }
                 }
 
@@ -584,7 +597,7 @@
             .end-date{
                 clear: both;
                 float: left;
-                margin-top: 56px;
+                margin-top: 46px;
                 margin-left: 10px;
                 margin-bottom: 30px;
                 width: 90%;
@@ -655,6 +668,7 @@
                         margin-top: 21px;
                         resize:none;
                         outline: none;
+                        overflow: hidden;
                     }
 
                 }
@@ -702,25 +716,21 @@
     }
 }
 
-
 //media queries
 
 @media only screen and (max-width: 1260px){
-
-    .wrap{   
-       // height: 2750px;
+    .wrap{
         .second-container{
-            // height: 1961px;
-         
             .available-hours{
                 .preview{
                     float: none;
+                    margin-top: 30px;
                 }
                 .Breaks-available{
                   
                     float: none;
                     display: block;
-                    margin-top: 80px;
+                    margin-top: 150px;
                 }
 
             }
@@ -756,42 +766,8 @@
                         }
                     }
                     
-
-                }   
-                
-                
+                }    
         }
-
-        // .second-container{
-        //     .available-hours{
-        //         .Days-available{
-        //             width: 100%;
-        //             .table{
-        //                 width: 80%;
-        //                 .D-avail{
-        //                     width: 100%;
-        //                 }
-        //                 .day{
-        //                     width: 100%;
-        //                 .section{
-        //                     width: 20%;
-        //                 }
-        //                 .time-section{
-        //                     width: 90%!important;
-        //                     margin: 0%;
-        //                     padding: 0%;
-        //                 }
-        //                 }
-                     
-        //             }
-                    
-        //         }
-        //         .preview{
-        //             width: 90%;
-
-        //         }
-        //     }
-        // }
     }
 
 }
@@ -799,11 +775,8 @@
 @media only screen and (max-width: 600px){
   
     .wrap{
-     //   height: 2850px;
         .second-container{
-       //     height: 2050px;
             .available-hours{   
-              
                 .Days-available{
                     width: 100%;
                     margin-top: -100px;
@@ -831,23 +804,20 @@
                                     transform: scaleX(1.0011);/* width and height properties ommitted due to transform */  
                                     width: 50%;
                                 }
-                                input+label{
-                                   // margin-left: 30%;
-                                }
                             }
                         }
                     }
-
                     .time-section{
                         width: 100%!important;
-                        height: 120px!important;
-                        margin-bottom: 20px;
-                        label{
+                        height: 125px!important;
+                        margin-bottom: 30px;
+                        span{
                             display: none;
                         }
                         button{
                             clear: both;
                             margin-left: 30%;
+                            padding-top:10px; 
                         }
                         .section-one{
                             display: block!important;
@@ -868,7 +838,8 @@
                     }
                 }
                 .Breaks-available{
-                    margin-top: 140px;
+                    top: 10px;
+                    margin-bottom: 100px;
                 }
                 .preview{
                  display: none!important;
@@ -898,9 +869,7 @@
 
 @media only screen and (max-width: 350px){
     .wrap{
-       // height: 3100px;
         .second-container{
-          //  height: 2250px;
             .available-hours{   
                 .Days-available{
                     width: 100%;
@@ -910,14 +879,9 @@
                     }
                     .D-avail{
                         display: none;
-                    }
-
-                   
+                    }   
                 }
                 .Breaks-available{
-                  //  margin-top: 140px;
-                    //margin-left: -5px;
-
                     .table{
                         width:90%;
                             .D-avail{
@@ -939,32 +903,39 @@
                 .preview{
                  display: none!important;
                 }
-
                 .start-date{
                     .section{
                        
                         .input-field{
                          width: 60%;
                         }
-                
+                        .radio-input {
+                            input + label {
+                                line-height: 20px;
+                            }
+                        }   
                     }
                 }    
                 .end-date{
                     .section{
                         .input-field{
-                         width: 60%;
+                         width: 55%;
                         }
                         img{
                             padding-right:52px;
                         }
+                        .radio-input {
+                            input + label {
+                                line-height: 20px;
+                            }
+                        } 
                 
                     }
                 }
             }
         }
     }
- 
-
-
 
 }
+
+

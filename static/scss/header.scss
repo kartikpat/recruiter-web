@@ -67,21 +67,39 @@ b{
     width:100%;
     padding-left:20px;
     padding-right:20px;
+    position:relative;
+
     .search-container{
-        width: 50%;
+        transition:all 0.3s ease-in-out;
         padding-left: 10px;
         padding-top: 0px;
         display: inline-block;
         vertical-align: top;
         text-align: center;
         margin-top: 10px;
+        position: absolute;
+        top: 0;
+        margin: 0;
+        left: 200px;
+        padding: 0;
+        right: 200px;
+        top: 0;
+        bottom: 0;
         form{
+            height:100%;
+
            .search-box{
-               width: 80%;
-               height: 46px;
+               width: 100%;
+                height: 100%;
+                border: 0;
+                margin: 0;
+                background-color: $search-background-color;
+                padding: 20px;
+                font-size: 18px;
+                color:$color-white;
            } 
         }
-
+       
     }
 
     .header_item {
@@ -99,8 +117,6 @@ b{
                 @include abolulute-center;
             }
         }
-       
-        
     }
     .domain_logo {
         a {
@@ -140,9 +156,18 @@ b{
             position:relative;
             cursor:pointer;
 
+            &.search {
+                img {
+                    width:20px;
+                    height:20px;
+                    padding:0;
+                }
+            }
+
             img {
                 padding:10px;
                 @include abolulute-center;
+
             }
         }
         .profile {
@@ -320,6 +345,27 @@ b{
         }
     }
 }
+@media all and (max-width: 1024px){
+    .header {
+        min-height:75px;
+        background: $header-background-color;
+        display:block;
+        width:100%;
+        padding-left:20px;
+        padding-right:20px;
+        .search-container{
+            width: 60%;
+            padding-left: 10px;
+            padding-top: 0px;
+            display: inline-block;
+            vertical-align: top;
+            text-align: center;
+            left:200px;
+    
+        }
+    
+    }
+}
 
 @media all and (max-width: 992px) {
     .header {
@@ -329,17 +375,30 @@ b{
                 cursor: pointer;
             }
         }
+        .search-container {
+            width:50%; 
+            left:230px;
+        }
         .navigation {
             display:none;
         }
     }
 }
 
+
+
 @media all and (max-width:768px) {
     .header {
         padding-left:10px;
         padding-right:10px;
         min-height:55px;
+        
+        .search-container {
+            width:60%; 
+            left:170px;
+        }
+       
+
         .header_item {
             margin-top:13px;
             height:30px;
@@ -355,7 +414,9 @@ b{
                     margin-left:3px;
                     margin-top:2px;
                 }
+               
             }
+          
 
             &.mobile-menu {
                 height:30px;
@@ -367,6 +428,10 @@ b{
                 .action-icon {
                     height:30px;
                     width:30px;
+                    .info-icon{
+                        width: 50%;
+                        height: 50%;
+                    }
                 }
 
                 .profile {
@@ -374,6 +439,26 @@ b{
                 }
             }
         }
+       
+       
+    }
+}
+
+@media all and (max-width:600px) {
+    .header {
+
+        .mobile-menu {
+            display:none
+        }
+        .domain_logo {
+            display:none;
+        }
+
+        .search-container {
+            width:70%; 
+            left:50px;
+        }
+
     }
 }
 
@@ -395,4 +480,47 @@ b{
         z-index:5;
         background:$shadow-color-dark;
     }
+}
+
+@media all and (max-width:480px){
+    .header {
+
+        .mobile-menu {
+            display:none
+        }
+        .domain_logo {
+            display:none;
+        }
+
+        .search-container {
+            width:73%; 
+            left:5px;
+            form{
+                .search-box{
+                    font-size:14px;
+                }
+                
+            }
+        }
+        
+    }
+
+}
+
+@media all and (max-width:420px){
+    .header{
+        .search-container {
+            width:63%; 
+            left:5px;
+            form{
+                .search-box{
+                    font-size:14px;
+                    padding:2px;
+                }
+                
+            }
+        }
+
+    }
+
 }

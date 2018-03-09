@@ -28,7 +28,11 @@ function Header(){
 			settings.searchButton=$('.search'),
 			settings.navigation=$('.navigation'),
 			settings.searchView=$('.search-container');
-			settings.navigationView=$('.exit-view');
+			settings.searchInput=$('.search-box');
+			settings.navigationView=$('.exit-view'),
+			settings.exitButton=$('.info-icon'),
+			settings.searchButton=$('.search-icon'),
+			settings.menuBar=$('.mobile-menu');
 	}
 
 
@@ -56,17 +60,27 @@ function Header(){
 
 	function searchView(){
 		settings.searchButton.on('click', function(){
-			console.log("hello");
+			if(jQuery(window).width()<=480){
+				settings.menuBar.addClass('hidden');
+			}
 			settings.navigation.addClass("hidden");
 			settings.searchView.removeClass("hidden");
+			settings.searchButton.addClass("hidden");
+			settings.exitButton.removeClass("hidden");
+			settings.searchInput.focus();
 		});
 	}
-
 	function navigationView(){
-		settings.navigationView.on('click', function(){
-			console.log("hello");
+		settings.exitButton.on('click', function(){
+			if(jQuery(window).width()<=480){
+				settings.menuBar.removeClass('hidden');
+			}
+			settings.searchInput.val('');
 			settings.navigation.removeClass("hidden");
 			settings.searchView.addClass("hidden");
+			settings.searchButton.removeClass("hidden");
+			settings.exitButton.addClass("hidden");
+			
 		});
 	}
 
@@ -78,6 +92,6 @@ function Header(){
 		myJobsView :myJobsView,
 		dashboardView:dashboardView,
 		searchView:searchView,
-		navigationView:searchView,
+		navigationView:navigationView,
 	}
 }

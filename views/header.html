@@ -12,6 +12,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Comfortaa|Droid+Sans:400,700|Noto+Sans" rel="stylesheet">
 	<link href="../../static/css/chat-sticky.css" rel="stylesheet">
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<link rel="stylesheet" href="css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 
@@ -57,13 +59,13 @@
 				<p class="logo_tagline">Hire better. Hire Faster.</p>
 			</a>
 		</div>
-		<div class="search-container hidden">
+		<div class="search-container hidden animated fadeIn">
 			<form action="#">
 				<input class="search-box" type="Text" placeholder="What are you searching for?" autocomplete="off" >
-				<div class="exit-view header_item">X</div>
 			</form>
+			<!-- <div class="exit-view">X</div> -->
 		</div>
-		<div class="navigation header_item">
+		<div class="navigation header_item animated fadeIn">
 			<ul class="menu-listing">
 				<li class="menu-list-item my-jobs">
 					<a >My Jobs</a>
@@ -78,7 +80,6 @@
 						</div>
 					</div>
 				</li>
-
 				<li class="menu-list-item search-resume"><a href="javscript:void(0);">Search Resume</a></li>
 				<li class="menu-list-item interviews"><a href="javscript:void(0);">Interviews</a></li>
 				<li class="menu-list-item reports"><a href="/reports">Reports</a></li>
@@ -86,7 +87,8 @@
 		</div>
 		<div class="profile_actions right header_item">
 			<div class="search action-icon">
-				<img src="/static/images/search_icon.svg">
+				<img class="info-icon hidden" src="/static/images/info-close.png">
+				<img class="search-icon" src="/static/images/search_icon.svg">
 			</div>
 			<div class="messages action-icon">
 				<a href="/my-chat">
@@ -162,11 +164,10 @@
 			<div class="MyJobs menu-link-listing mobile-menu-item hidden">
 				<ul>
 					<a href="#"><li class="my-jobs-menu-back">Back</li></a>
-					<a href="#"><li class="my-jobs-menu">xxxxx</li></a>
-					<a href="#"><li class="my-jobs-menu">xxxxx</li></a>
-					<a href="#"><li class="my-jobs-menu">xxxxx</li></a>
-					<a href="#"><li class="my-jobs-menu">xxxxx</li></a>
-					<a href="#"><li class="my-jobs-menu">xxxxx</li></a>
+					<a href="/my-jobs"><li class="my-jobs-menu">My Jobs</li></a>
+					<a href="/post-job"><li class="my-jobs-menu">Post Job</li></a>
+					<a href="/recruiter/tagged-candidates"><li class="my-jobs-menu">Tagged Candidates</li></a>
+					<a href="/recruiter/candidates"><li class="my-jobs-menu">Shortlisted/Saved Candidates</li></a>
 				</ul>
 			</div>
 		</div>

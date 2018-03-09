@@ -6,6 +6,11 @@ var maxCandidateChats;
 
 $(document).ready(function(){
 
+  jQuery(".exit-view").on("click", function() {
+    jQuery(".header .navigation").removeClass("hidden");
+    jQuery(".header .search-container").addClass("hidden");
+  });
+
 	if ($(document).width() < 1000) {
 		maxCandidateChats = 1
 	} else {

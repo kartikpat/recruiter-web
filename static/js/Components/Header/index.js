@@ -7,4 +7,5 @@ $(document).ready(function(){
 	headerDetails.myJobsView();
 	headerDetails.dashboardView();
 	headerDetails.searchView();
+	headerDetails.navigationView();
 })

@@ -176,9 +176,8 @@
       margin-top: 37px;
       margin-left: 35px; }
       .wrap .second-container .available-hours .Days-available {
-        display: inline-block;
         float: left;
-        margin-right: 10px; }
+        margin-right: 5%; }
         .wrap .second-container .available-hours .Days-available #available-span {
           font-family: "Droid Sans", sans-serif;
           color: #2b2b2b;
@@ -283,6 +282,12 @@
             border-width: 1px;
             border-color: #e4e4e4;
             box-sizing: border-box; }
+            .wrap .second-container .available-hours .Days-available .table .time-section .timer {
+              color: #2b2b2b;
+              font-size: 14px;
+              /* Approximation due to font substitution */
+              font-weight: 400;
+              text-align: left; }
             .wrap .second-container .available-hours .Days-available .table .time-section .section-one {
               margin-left: 15px;
               margin-right: 15px; }
@@ -319,21 +324,30 @@
               display: none;
               outline: none; }
       .wrap .second-container .available-hours .preview {
-        float: right;
-        border-style: solid;
-        border-width: 1px;
-        border-color: #e4e4e4;
-        box-sizing: border-box;
-        background-color: #ffffff;
         width: 616px;
         display: inline-block;
-        margin-top: 37px;
+        margin-top: 0px;
         margin-right: 35px; }
+        .wrap .second-container .available-hours .preview .heading {
+          color: #2b2b2b;
+          font-size: 14px;
+          /* Approximation due to font substitution */
+          font-weight: 400;
+          text-align: left;
+          width: 50%;
+          position: absolute;
+          margin-top: 5px; }
       .wrap .second-container .available-hours .Breaks-available {
         float: none;
-        margin-top: 50px;
-        vertical-align: top;
-        display: inline-block; }
+        display: block;
+        position: relative;
+        top: -120px; }
+        .wrap .second-container .available-hours .Breaks-available .timer {
+          color: #2b2b2b;
+          font-size: 14px;
+          /* Approximation due to font substitution */
+          font-weight: 400;
+          text-align: left; }
         .wrap .second-container .available-hours .Breaks-available span {
           font-family: "Droid Sans", sans-serif;
           color: #2b2b2b;
@@ -376,7 +390,8 @@
               line-height: 23px;
               /* Approximation due to font substitution */
               text-align: left;
-              margin-left: 46px; }
+              margin-left: 18px;
+              width: 50%; }
             .wrap .second-container .available-hours .Breaks-available .table .D-avail #three {
               font-family: "Droid Sans", sans-serif;
               color: #2b2b2b;
@@ -386,10 +401,11 @@
               line-height: 33px;
               /* Approximation due to font substitution */
               text-align: left;
-              margin-left: 46px; }
+              margin-left: 73px; }
           .wrap .second-container .available-hours .Breaks-available .table .time-section {
             height: 77px;
             float: left;
+            width: 100%;
             display: inline-block;
             border-style: solid;
             border-width: 1px;
@@ -420,9 +436,9 @@
       .wrap .second-container .available-hours .start-date {
         clear: both;
         float: left;
-        margin-top: 56px;
         margin-left: 10px;
-        width: 90%; }
+        width: 90%;
+        margin-top: -50px; }
         .wrap .second-container .available-hours .start-date span {
           font-family: "Droid Sans", sans-serif;
           color: #2b2b2b;
@@ -478,11 +494,12 @@
           height: 48px;
           margin-top: 21px;
           resize: none;
-          outline: none; }
+          outline: none;
+          overflow: hidden; }
       .wrap .second-container .available-hours .end-date {
         clear: both;
         float: left;
-        margin-top: 56px;
+        margin-top: 46px;
         margin-left: 10px;
         margin-bottom: 30px;
         width: 90%; }
@@ -541,7 +558,8 @@
           height: 48px;
           margin-top: 21px;
           resize: none;
-          outline: none; }
+          outline: none;
+          overflow: hidden; }
   .wrap .bottom-container {
     width: 100%;
     height: 100px; }
@@ -572,11 +590,12 @@
 
 @media only screen and (max-width: 1260px) {
   .wrap .second-container .available-hours .preview {
-    float: none; }
+    float: none;
+    margin-top: 30px; }
   .wrap .second-container .available-hours .Breaks-available {
     float: none;
     display: block;
-    margin-top: 80px; } }
+    margin-top: 150px; } }
 
 @media only screen and (max-width: 768px) {
   .wrap .container .form .input-name #name {
@@ -617,13 +636,14 @@
           width: 50%; }
     .wrap .second-container .available-hours .Days-available .time-section {
       width: 100% !important;
-      height: 120px !important;
-      margin-bottom: 20px; }
-      .wrap .second-container .available-hours .Days-available .time-section label {
+      height: 125px !important;
+      margin-bottom: 30px; }
+      .wrap .second-container .available-hours .Days-available .time-section span {
         display: none; }
       .wrap .second-container .available-hours .Days-available .time-section button {
         clear: both;
-        margin-left: 30%; }
+        margin-left: 30%;
+        padding-top: 10px; }
       .wrap .second-container .available-hours .Days-available .time-section .section-one {
         display: block !important;
         margin: 0% !important;
@@ -636,7 +656,8 @@
           display: inline-block !important;
           width: 50%; }
   .wrap .second-container .available-hours .Breaks-available {
-    margin-top: 140px; }
+    top: 10px;
+    margin-bottom: 100px; }
   .wrap .second-container .available-hours .preview {
     display: none !important; }
   .wrap .second-container .available-hours .start-date .section .input-field {
@@ -665,7 +686,11 @@
     display: none !important; }
   .wrap .second-container .available-hours .start-date .section .input-field {
     width: 60%; }
+  .wrap .second-container .available-hours .start-date .section .radio-input input + label {
+    line-height: 20px; }
   .wrap .second-container .available-hours .end-date .section .input-field {
-    width: 60%; }
+    width: 55%; }
   .wrap .second-container .available-hours .end-date .section img {
-    padding-right: 52px; } }
+    padding-right: 52px; }
+  .wrap .second-container .available-hours .end-date .section .radio-input input + label {
+    line-height: 20px; } }
