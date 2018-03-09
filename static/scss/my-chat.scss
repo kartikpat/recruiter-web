@@ -191,8 +191,8 @@
 									border:2px solid $color-white;
 									border-radius:50%;
 									position:absolute;
-									bottom:10px;
-									right:20px;
+									bottom:8px;
+									right:9px;
 									&.offline {
 										background-color:$user-status-offline;
 									}
@@ -589,6 +589,16 @@
 							.sidebar {
 								display:block;
 								width: 100%;
+								.conversations-list {
+									.conversation-item {
+										.user-item.user-image {
+											.candidate-status {
+												bottom: 8px;
+												right: 8px;
+											}
+										}
+									}
+								}
 							}
 
 							.chat-window {

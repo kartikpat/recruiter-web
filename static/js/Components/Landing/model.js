@@ -1,13 +1,13 @@
-var errorResponses = {
-	missingEmail: 'Please enter your Email address',
-	invalidEmail: 'Please enter a valid Email address',
-	missingPassword: 'Please enter your password',
-	invalidPassword: 'Please enter a valid password',
-	userFail: 'Email address does not exist',
-	passwordFail: 'Incorrect password',
-	missingParameters: 'Oops! Our engineers will fix this shortly. Please try again after sometime.',
-	serviceError: 'Oops! Our engineers are working on fixing this, please try again after sometime.'
-}
+// var errorResponses = {
+// 	missingEmail: 'Please enter the Email address',
+// 	invalidEmail: 'That looks like an invalid email address',
+// 	missingPassword: 'Please enter your password',
+// 	invalidPassword: 'Please enter a valid password',
+// 	userFail: 'Email address does not exist',
+// 	passwordFail: 'Incorrect password',
+// 	missingParameters: 'Oops! Our engineers will fix this shortly. Please try again after sometime.',
+// 	serviceError: 'Oops! Our engineers are working on fixing this, please try again after sometime.'
+// }
 function userCredentials(){
 	var user= {}
 	function init(){

@@ -102,7 +102,8 @@ function candidateList() {
             shortlistButton: card.find(settings.candidateShortlistButtonClass),
             rejectButton: card.find(settings.candidateRejectButtonClass),
             savedButton: card.find(settings.candidateSaveButton),
-            downloadResumeButton: card.find(settings.candidateDownloadResumeButton)
+            downloadResumeButton: card.find(settings.candidateDownloadResumeButton),
+            interviewinvite: card.find(".interviewinvite")
 		}
 	}
 
@@ -199,10 +200,11 @@ function candidateList() {
         if(aData["follow"]) {
             item.isFollowedUp.removeClass("hidden")
         }
+        // if(aData["invite"]) {
+        //     item.interviewinvite.text("Resend Interview Invite");
+        // }
         return item
     }
-
-
 
     function getJobsCategoryTabsElement() {
         var card = $("#jobs-category-tabs");
@@ -295,7 +297,7 @@ function candidateList() {
             event.stopPropagation();
             $(this).toggleClass("inactive");
         })
-    }
+    } 
 
     function onClickSendMessage(fn) {
         settings.rowContainer.on('click', settings.candidateSendMessageButton,function(event) {
@@ -626,6 +628,10 @@ function candidateList() {
 
     }
 
+    function changeInviteText(applicationId) {
+        $(settings.candidateRowClass).find(".candidateRow[data-application-id="+applicationId+"] .interviewinvite").text("Resend Interview Invite")
+    }
+
     return {
 		init: init,
 		addToList: addToList,
@@ -659,6 +665,7 @@ function candidateList() {
         setDefaultTab: setDefaultTab,
         onClickSendInterviewInviteTelephonic: onClickSendInterviewInviteTelephonic,
         onClickSendInterviewInviteF2F: onClickSendInterviewInviteF2F,
-        setInvite: setInvite
+        setInvite: setInvite,
+        changeInviteText: changeInviteText
 	}
 }

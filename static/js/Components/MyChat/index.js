@@ -1,10 +1,17 @@
 var channelsArray = []
+globalParameters = {
+    channelName: "",
+    messageNumber: 5,
+    clicked: 1,
+    startTimeToken: null,
+    endTimeToken: null
+}
 
 jQuery(document).ready( function() {
 
     initializePubNub();
     addListeners(onNewMessage, onNewPresence, onNewStatus);
-    subscribe(getArray(channelsArray));
+
     var chat = Chat();
     var store = Store();
     chat.init()
@@ -12,17 +19,23 @@ jQuery(document).ready( function() {
     fetchRecruiterChats(recruiterId)
 
     chat.onClickSingleChatItem(function(candidateId){
-
         var obj = store.getCandidateFromStore(candidateId)
-
-        fetchHistory(obj.channel , 20 , onFetchHistory);
+        globalParameters.channelName = obj.channel;
+        // var parameters = {}
+        // parameters.startTimeToken = moment().format('x')
+        // parameters.endTimeToken = moment(parseInt(parameters.startTimeToken)).subtract('months', 1).format('x')
+        // globalParameters.startTimeToken = parameters.startTimeToken
+        // globalParameters.endTimeToken = parameters.endTimeToken
+        fetchHistory(obj.channel , globalParameters.messageNumber , null, null, onFetchHistory);
         chat.setCandidateProfile(obj)
     })
 
+    chat.setUuid(uuid || btoa(recruiterId+'--'+profile["email"]))
+
     chat.onSendMessage(function(message, channelName, candidateId){
-        debugger
+
         publish({
-            UUID:btoa(recruiterId+'--'+profile["email"]),
+            UUID:uuid || btoa(recruiterId+'--'+profile["email"]),
             deviceID: getCookie("sessID"),
             time: Date.now(),
             usr: recruiterId,
@@ -32,18 +45,20 @@ jQuery(document).ready( function() {
             img: profile["pic"],
             type: 1
         }, channelName, function(m){
-            console.log(m)
-            var obj = store.getCandidateFromStore(candidateId)
-            chat.appendSendMessage(message, obj)
+
+            // var obj = store.getCandidateFromStore(candidateId)
+            chat.appendSendMessage(message, profile["pic"])
         })
 
     })
 
     function onFetchRecruiterChats(topic, data) {
-        console.log(data)
+
         chat.addToList(data);
         channelsArray = data;
         store.saveToStore(data);
+
+        subscribe(getArray(channelsArray));
     }
 
     function onFetchRecruiterChatsFail(topic, data) {
@@ -61,7 +76,7 @@ jQuery(document).ready( function() {
 
 
    function onNewMessage(m) {
-       console.log(m);
+
        var actualChannel = m.actualChannel;
        var channelName = m.channel; // The channel for which the message belongs
        var msg = m.message; // The Payload
@@ -69,9 +84,9 @@ jQuery(document).ready( function() {
        var subscribedChannel = m.subscribedChannel;
        var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
        var pubTT = m.timetoken; // Publish timetoken
-       console.log("receieved new message")
-       console.log(msg)
-       if( msg["deviceID"] == getCookie("sessID") && msg["UUID"] == btoa(recruiterId+'--'+profile["email"]) ){
+
+       if( msg["deviceID"] == getCookie("sessID") && msg["UUID"] == (uuid || btoa(recruiterId+'--'+profile["email"])) ){
+
            return
        }
        chat.receiveMessage(msg,channelName);
@@ -88,12 +103,11 @@ jQuery(document).ready( function() {
        var service = p.service; // service
        var uuids = p.uuids; // UUIDs of users who are connected with the channel with their state
        var occupancy = p.occupancy; // No. of users connected with the channel
-       console.log(p)
-       var uuid = getUUID();
-       if(p["action"] == "join" && p["occupancy"] >= 2 && p["uuid"] != uuid) {
+
+       if(p["action"] == "join" && p["occupancy"] >= 2 && p["uuid"] != (uuid || getUUID())) {
            chat.showStatusIcon(p.channel)
        }
-       else if (p["action"] == "leave" && p["occupancy"] < 2 && p["uuid"] != uuid) {
+       else if (p["action"] == "leave" && p["occupancy"] < 2 && p["uuid"] != (uuid || getUUID())) {
            chat.hideStatusIcon(p.channel)
        }
    }
@@ -112,7 +126,28 @@ jQuery(document).ready( function() {
    function onFetchHistory(data, response) {
        console.log(data)
        console.log(response)
+       globalParameters.startTimeToken = response.startTimeToken
+    //    globalParameters.startTimeToken = response.endTimeToken
        chat.populateMessages(response.messages)
+       if(globalParameters.clicked == 1) {
+           chat.scrollToBottom()
+       }
+   }
+
+   var ticker;
+   $(".current-chat").scroll(function(){
+       clearTimeout(ticker);
+       ticker = setTimeout(checkScrollEnd,100);
+   })
+
+   function checkScrollEnd() {
+       if($(".current-chat").scrollTop() < 5) {
+           globalParameters.clicked = 0;
+
+
+           fetchHistory(globalParameters.channelName , globalParameters.messageNumber ,globalParameters.startTimeToken, null, onFetchHistory);
+           $(".current-chat").scrollTop(6)
+       }
    }
 })
 

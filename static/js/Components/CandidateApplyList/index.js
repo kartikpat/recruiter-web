@@ -138,7 +138,10 @@ jQuery(document).ready( function() {
         aCandidate.showCandidateDetails(candidateDetails, "tag", status);
     })
     candidates.onClickSendMessage(function(candidateId){
-        window.location.href = "/my-chat"
+        var candidate = store.getCandidateFromStore(candidateId);
+        var array = [];
+        array.push(candidate);
+        cloneStickyChat(array, recruiterId)
     })
     candidates.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
         var defaultCalendarId = theJob.getDefaultCalendar();
@@ -620,10 +623,12 @@ jQuery(document).ready( function() {
     }
 
     function onSendInterViewInviteSuccess(topic, data) {
+        candidates.changeInviteText(data.parameters.applicationId)
         if(data.parameters.inviteId == 1)
             toastNotify(1, "Face to Face Invite Sent Successfully!")
         if(data.parameters.inviteId == 2)
             toastNotify(1, "Telephonic Invite Sent Successfully!")
+
     }
 
     function onSendInterViewInviteFail(topic, data) {

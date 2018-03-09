@@ -31,7 +31,8 @@ function Chat() {
        settings.chatWindow = $(".chatWindow"),
        settings.userProfile = $(".userProfile"),
        settings.conversationList = $(".conversationList"),
-       settings.backButtonChat = $(".backButtonChat")
+       settings.backButtonChat = $(".backButtonChat"),
+       settings.uuid = ""
        onClickBackButton()
    }
 
@@ -109,6 +110,7 @@ function Chat() {
                return fn(candidateId)
            }
            settings.welcomeContainer.addClass("hidden")
+           settings.mssgContainer.empty()
            fn(candidateId)
        })
    }
@@ -126,7 +128,7 @@ function Chat() {
    }
 
    function getMsgSentElement(data) {
-       console.log(data)
+       
        var card = $(".message.sent.prototype").clone().removeClass('prototype hidden')
 
        card.find(".useImg").attr("src", (data["entry"]["img"] || "/static/images/noimage.png"))
@@ -144,30 +146,33 @@ function Chat() {
    }
 
    function populateMessages(dataArray) {
-        settings.mssgContainer.empty()
+
         var str = ""
+
         dataArray.forEach(function(elem, index){
+
                if(index == 0 || (index > 0 && (moment(dataArray[index - 1]["entry"]["time"]).format("DD MM YYYY") != moment(elem["entry"]["time"]).format("DD MM YYYY"))) ) {
                    var item = getTimeElement(elem)
                    str+=item[0].outerHTML;
                }
-               if(elem["entry"]["name"] == settings.recruiterFullName ){
-                   var item = getMsgReceivedElement(elem)
+
+               if(elem["entry"]["UUID"] == settings.uuid ){
+                    var item = getMsgSentElement(elem)
                    str+=item[0].outerHTML;
                }
                else {
-                   var item = getMsgSentElement(elem)
+                   var item = getMsgReceivedElement(elem)
                    str+=item[0].outerHTML;
                }
            })
-           settings.mssgContainer.append(str)
+           settings.mssgContainer.prepend(str)
            if($(window).outerWidth() < 769 ) {
                settings.backButtonChat.removeClass("hidden")
                settings.conversationList.addClass("hidden")
            }
            settings.chatWindow.removeClass("hidden")
            settings.userProfile.removeClass("hidden")
-           scrollToBottom();
+
    }
 
    function onClickBackButton() {
@@ -183,31 +188,23 @@ function Chat() {
 
    function onSendMessage(fn) {
        settings.sendMsg.click(function(){
-           debugger
            var message =  settings.msgContent.val();
-           debugger
-
            fn(message, settings.channelName, settings.candidateId)
        })
-    //    settings.msgContent.keypress(function(event){
-    //        if(event.which == 13) {
-    //            var message = $(this).val();
-    //            var elem = {}
-    //            elem.entry.mssg = message;
-    //            elem.entry.time = moment().format('x')
-    //            var item = getMsgSentElement(elem)
-    //            settings.mssgContainer.append(item)
-    //            fn(message)
-    //        }
-    //    })
+       settings.msgContent.keypress(function(event){
+           if(event.which == 13) {
+               var message = $(this).val();
+               fn(message, settings.channelName, settings.candidateId)
+           }
+       })
    }
 
-   function appendSendMessage(message, obj) {
+   function appendSendMessage(message, pic) {
        var elem = {}
        elem.entry = {}
        elem.entry.msg = message;
        elem.entry.time = parseInt(moment().format('x'))
-       elem.entry.img = obj["img"]
+       elem.entry.img = pic
        var item = getMsgSentElement(elem)
        settings.mssgContainer.append(item)
        scrollToBottom()
@@ -234,7 +231,11 @@ function Chat() {
    }
 
    function scrollToBottom() {
-       $(".current-chat").scrollTop(jQuery(".current-chat").outerHeight());
+       $(".current-chat").scrollTop(jQuery("#mssgContainer").outerHeight());
+   }
+
+   function setUuid(uuid) {
+       settings.uuid = uuid
    }
 
    return {
@@ -250,7 +251,9 @@ function Chat() {
        showStatusIcon: showStatusIcon,
        hideStatusIcon: hideStatusIcon,
        onInputSearchCandidate: onInputSearchCandidate,
-       appendSendMessage: appendSendMessage
+       appendSendMessage: appendSendMessage,
+       setUuid: setUuid,
+       scrollToBottom: scrollToBottom
    }
 
 }

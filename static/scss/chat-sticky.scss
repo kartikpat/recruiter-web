@@ -3,6 +3,8 @@
 @import 'input-elements';
 @import 'chat-sidebar';
 
+
+
 .candidate-status {
     width:12px;
     height:12px;
@@ -192,68 +194,108 @@
             z-index: 2;
             overflow: auto;
             padding: 10px 20px;
-            .date-block {
-                text-align: center;
-                margin: 25px 0;
-                .date {
-                    background: #e1f3fb;
-                    padding: 8px 20px;
-                    display: inline-block;
-                    font-size: 10.4px;
-                    color: #777777;
-                    border-radius: 3px;
+
+            ul {
+                .time-separator {
+                    margin:15px 0;
+                    text-align: center;
+
+                    span {
+                        display:inline-block;
+                        font-size:$base-font-size;
+                        color:$extra-info-color;
+                        text-transform:capitalize;
+                        letter-spacing: 0.5px;
+                    }
+                }
+                li {
+                    &.message {
+                        margin:15px 0;
+                        clear:both;
+                        overflow:auto;
+                        &.received {
+                            .user-image {
+                                float:left;
+                                margin:0 15px 0 0;
+
+                                img {
+                                    border-radius:50%;
+                                    height:43px;
+                                    width:43px;
+                                }
+                            }
+                            .message-area {
+
+                                max-width:80%;
+                                display:inline-block;
+                                float:left;
+
+                                p {
+                                    line-height:1.5;
+
+                                    &.message-content {
+                                        background-color:$color-white;
+                                        border:1px solid $border-color-base;
+                                        border-radius:4px;
+                                        padding:10px;
+                                        font-size:$base-font-size;
+                                        max-width: calc(100vw - 130px);
+                                        word-break: break-all;
+                                    }
+
+                                    &.message-timestamp {
+                                        text-align:left;
+                                        margin:5px 0 0 0;
+                                        font-size:$chat-timestamp-font-size;
+                                        color:$extra-info-color;
+                                    }
+                                }
+                            }
+                        }
+                        &.sent {
+                            .user-image {
+                                float:right;
+                                margin:0 0 0 15px;
+
+                                img {
+                                    border-radius:50%;
+                                    height:43px;
+                                    width:43px;
+                                }
+                            }
+                            .message-area {
+                                max-width:80%;
+                                display:inline-block;
+                                float:right;
+
+                                p {
+                                    line-height:1.5;
+                                    text-align:right;
+
+                                    &.message-content {
+                                        background-color:$color-white;
+                                        border:1px solid $border-color-base;
+                                        border-radius:4px;
+                                        padding:10px;
+                                        font-size:$base-font-size;
+                                        max-width: calc(100vw - 130px);
+                                        word-break: break-all;
+                                    }
+
+                                    &.message-timestamp {
+                                        text-align:right;
+                                        margin:5px 0 0 0;
+                                        font-size:$chat-timestamp-font-size;
+                                        color:$extra-info-color;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
-            .message-container {
-                margin: 10px 0;
 
-                .message-received {
-                    display: inline-block;
-                    box-shadow: 1px 1px 0px 0px #ccc;
-                    padding: 5px 10px;
-                    color: #1c1c1c;
-                    border-radius: 4px;
-                    background-color: rgba(236, 236, 236, 0.38);
-                    position: relative;
-                    width: auto;
-                    max-width: 150px;
-                    font-size: 12px;
-                    word-wrap: break-word;
-                    overflow-wrap: break-word;
 
-                }
-                .message-sent {
-                    position: relative;
-                    display: inline-block;
-                    box-shadow: 1px 1px 0px 0px #ccc;
-                    padding: 5px 10px;
-                    color: #1c1c1c;
-                    border-radius: 4px;
-                    background-color: rgba(207, 244, 253, 0.28);
-                    width: auto;
-                    max-width: 150px;
-                    font-size: 12px;
-                    word-wrap: break-word;
-                    overflow-wrap: break-word;
-                }
-                &.left {
-                    text-align: left;
-                }
-                &.right {
-                    text-align: right;
-                }
-                .current-time {
-
-                    vertical-align: sub;
-                    padding: 0 0 0px 10px;
-                    font-size: 9px;
-                }
-                .caret {
-                    position: absolute;
-                    background: #ccc;
-
-                }
-            }
         }
         &.show {
             height: 315px;
@@ -318,4 +360,29 @@
         }
     }
 
+}
+
+.info-container {
+    padding: 10px;
+    background: #f7f7f7;
+    position: absolute;
+    .img-container {
+        padding: 0 5px 0 0px;
+        img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+    }
+    .info-content {
+        width: calc(100% - 35px);
+        .primary-content {
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+        .secondary-content {
+            font-size: 12px;
+            color: #6b6b6b;
+        }
+    }
 }

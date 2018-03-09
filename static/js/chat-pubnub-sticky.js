@@ -4,147 +4,15 @@ var recruiter = {
     "img_url": "http://www.iimjobs.com/resources/img/user_profile_new.png"
 }
 
-var channelsArray = [{
-        "id": 9443,
-        "jobseekerID": "511594",
-        "jobID": "334895",
-        "name": "iimjobs--r45058-j511594",
-        "lastActive": "2012-07-14T01:00:00+01:00"
-    }, {
-        "id": 24615,
-        "jobseekerID": "709365",
-        "jobID": "334895",
-        "name": "iimjobs--r45058-j709365",
-        "lastActive": "2012-07-14T01:00:00+01:00"
-    }, {
-        "id": 24608,
-        "jobseekerID": "612792",
-        "jobID": "334895",
-        "name": "iimjobs--r45058-j612792",
-        "lastActive": "2012-07-14T01:00:00+01:00"
-    }, {
-        "id": 24607,
-        "jobseekerID": "110923",
-        "jobID": "334895",
-        "name": "iimjobs--r45058-j110923",
-        "lastActive": "2012-07-14T01:00:00+01:00"
-    }, {
-        "id": 24606,
-        "jobseekerID": "711080",
-        "jobID": "334895",
-        "name": "iimjobs--r45058-j711080",
-        "lastActive": "2012-07-14T01:00:00+01:00"
-    }, {
-        "id": 23623,
-        "jobseekerID": "706831",
-        "jobID": "334895",
-        "name": "iimjobs--r45058-j706831",
-        "lastActive": "2012-07-14T01:00:00+01:00"
-    }, {
-        "id": 23622,
-        "jobseekerID": "676776",
-        "jobID": "334895",
-        "name": "iimjobs--r45058-j676776",
-        "lastActive": "2012-07-14T01:00:00+01:00"
-    }, {
-        "id": 23621,
-        "jobseekerID": "712558",
-        "jobID": "334895",
-        "name": "iimjobs--r45058-j712558",
-        "lastActive": "2012-07-14T01:00:00+01:00"
-    }, {
-        "id": 22909,
-        "jobseekerID": "337587",
-        "jobID": "0",
-        "name": "iimjobs--r45058-j337587",
-        "lastActive": "2012-07-14T01:00:00+01:00"
-    }, {
-        "id": 9441,
-        "jobseekerID": "651703",
-        "jobID": "334895",
-        "name": "iimjobs--r45058-j651703",
-        "lastActive": "2012-07-14T01:00:00+01:00"
-    }, {
-        "id": 9531,
-        "jobseekerID": "462122",
-        "jobID": "334895",
-        "name": "iimjobs--r45058-j462122",
-        "lastActive": "2012-07-14T01:00:00+01:00"
-    }, {
-        "id": 9497,
-        "jobseekerID": "178541",
-        "jobID": "0",
-        "name": "iimjobs--r45058-j178541",
-        "lastActive": "2016-05-2109:27:05"
-    }, {
-        "id": 9643,
-        "jobseekerID": "699540",
-        "jobID": "0",
-        "name": "iimjobs--r45058-j699540",
-        "lastActive": "2016-05-1810:59:43"
-    }, {
-        "id": 9411,
-        "jobseekerID": "293084",
-        "jobID": "334895",
-        "name": "iimjobs--r45058-j293084",
-        "lastActive": "2016-05-1613:09:53"
-    }, {
-        "id": 9388,
-        "jobseekerID": "62147",
-        "jobID": "334895",
-        "name": "iimjobs--r45058-j62147",
-        "lastActive": "2016-05-1422:24:58"
-    }, {
-        "id": 9341,
-        "jobseekerID": "419400",
-        "jobID": "0",
-        "name": "iimjobs--r45058-j419400",
-        "lastActive": "2016-05-1315:30:08"
-    }, {
-        "id": 9335,
-        "jobseekerID": "480373",
-        "jobID": "334895",
-        "name": "iimjobs--r45058-j480373",
-        "lastActive": "2016-05-1315:10:04"
-    }, {
-        "id": 30680,
-        "jobseekerID": "260854",
-        "jobID": "0",
-        "name": "iimjobs--r45058-j260854",
-        "lastActive": "NULL"
-    }, {
-        "id": 9644,
-        "jobseekerID": "429324",
-        "jobID": "0",
-        "name": "iimjobs--r45058-j429324",
-        "lastActive": "NULL"
-    }, {
-        "id": 9448,
-        "jobseekerID": "712518",
-        "jobID": "334895",
-        "name": "iimjobs--r45058-j712518",
-        "lastActive": "NULL"
-    }, {
-        "id": 9396,
-        "jobseekerID": "435817",
-        "jobID": "0",
-        "name": "iimjobs--r45058-j435817",
-        "lastActive": "NULL"
-    }, {
-        "id": 35214,
-        "jobseekerID": "229312",
-        "jobID": "0",
-        "name": "iimjobs--r45058-j229312",
-        "lastActive": "NULL"
-}];
-
+console.log(recruiterId)
+var recruiterEmail = profile.email
 
     var pubnub = new PubNub({
     publishKey: "pub-c-5069ae94-20a5-4328-8281-4e1c630cd6f2", // 'pub-c-63069c70-3e81-42b3-b5f6-dc0bd232f845'
     subscribeKey: "sub-c-13938756-ada8-11e7-85f8-821de3cbacaa", //'sub-c-760e7840-9e47-11e5-8db0-0619f8945a4f',
     // authKey: authkey,
     // logVerbosity: true,
-    uuid: btoa(45058),
+    uuid: btoa(recruiterId+'--'+recruiterEmail),
     heartbeat: 120,
     heartbeat_interval: 30
     // logVerbosity: true,
@@ -152,6 +20,8 @@ var channelsArray = [{
     }, function(status) {
         console.log(status);
     });
+
+
 
 function getCookie(name) {
   var value = "; " + document.cookie;
@@ -161,12 +31,12 @@ function getCookie(name) {
 
 addListeners();
 
-subscribe(getArray(channelsArray));
+
 
 function getArray(array) {
     var tempArray = [];
     array.forEach(function(aChannel){
-        tempArray.push(aChannel["name"]);
+        tempArray.push(aChannel["channel"]);
     });
     return tempArray;
 }
@@ -208,6 +78,8 @@ function onNewPresence(p) {
     receivePresence(p)
 }
 
+
+
 function onNewStatus(s) {
     // handle status
     var category = s.category; // PNConnectedCategory
@@ -232,12 +104,13 @@ function unsubscribe(channelsArray) {
     });
 }
 
-function fetchHistory(channel, count, onFetchHistory) {
+function fetchHistory(channel, count,startTimeToken, endTimeToken, onFetchHistory) {
     pubnub.history({
         channel: channel, //"my_channel",
         count: count,
-        includeTimetoken: false
-
+        stringifiedTimeToken: true,
+        start: startTimeToken,
+        end: endTimeToken
     }, onFetchHistory);
 }
 
