@@ -96,26 +96,11 @@ b{
                 margin: 0;
                 background-color: #454545;
                 padding: 20px;
-                font-size: 20px;
-                color: white;
+                font-size: 18px;
+                color:$color-white;
            } 
         }
-        .exit-view{
-            display: inline-block;
-            padding-left: 30px;
-        }
-
-        .exit-view {
-            color:$color-white;
-            font-size:25px;
-            right:10px;
-            top:50%;
-            transform:translate(0,-50%);
-            position:absolute;
-            cursor:pointer;
-            padding:10px;
-        }
-
+       
     }
 
     .header_item {
@@ -370,32 +355,13 @@ b{
         padding-left:20px;
         padding-right:20px;
         .search-container{
-            width: 70%;
+            width: 60%;
             padding-left: 10px;
             padding-top: 0px;
             display: inline-block;
             vertical-align: top;
             text-align: center;
-            margin-top: 15px;
-            form{
-                display: inline-block;
-                width:90%;
-               .search-box{
-                   width:100%;
-                   height: 46px;
-                   background-color: #414347;
-                   border-color: #56585c;
-                   opacity: 0.5;
-                   border-radius: 1%;
-                   color: white;
-                   font-size: 15px;
-                   font-weight: 400;
-               } 
-            }
-            .exit-view{
-                display: inline-block;
-                
-            }
+            left:200px;
     
         }
     
@@ -411,6 +377,7 @@ b{
             }
         }
         .search-container {
+            width:50%; 
             left:230px;
         }
         .navigation {
@@ -426,21 +393,12 @@ b{
         padding-left:10px;
         padding-right:10px;
         min-height:55px;
-
+        
         .search-container {
-            left:175px;
-            right:120px;
-
-            form {
-                input.search-box {
-                    font-size:14px;
-                }
-            }
-
-            .exit-view {
-                font-size:18px;
-            }
+            width:60%; 
+            left:170px;
         }
+       
 
         .header_item {
             margin-top:13px;
@@ -471,6 +429,10 @@ b{
                 .action-icon {
                     height:30px;
                     width:30px;
+                    .info-icon{
+                        width: 50%;
+                        height: 50%;
+                    }
                 }
 
                 .profile {
@@ -478,29 +440,8 @@ b{
                 }
             }
         }
-        .search-container{
-            width: 60%;
-            form{
-                display: inline-block;
-                width:80%;
-               .search-box{
-                   width:100%;
-                   height: 30px;
-                   background-color: #414347;
-                   border-color: #56585c;
-                   opacity: 0.5;
-                   border-radius: 1%;
-                   color: white;
-                   font-size: 15px;
-                   font-weight: 400;
-               } 
-            }
-            .exit-view{
-                display: inline-block;
-                
-            }
-    
-        }
+       
+       
     }
 }
 
@@ -515,21 +456,10 @@ b{
         }
 
         .search-container {
-            left:0px;
-            right:110px;
-
-            form {
-
-                .search-box {
-                    font-size:13px;
-                }
-            }
-
-            .exit-view {
-                right:0px;
-                font-size:16px;
-            }
+            width:70%; 
+            left:50px;
         }
+
     }
 }
 
@@ -551,4 +481,47 @@ b{
         z-index:5;
         background:$shadow-color-dark;
     }
+}
+
+@media all and (max-width:480px){
+    .header {
+
+        .mobile-menu {
+            display:none
+        }
+        .domain_logo {
+            display:none;
+        }
+
+        .search-container {
+            width:73%; 
+            left:5px;
+            form{
+                .search-box{
+                    font-size:14px;
+                }
+                
+            }
+        }
+        
+    }
+
+}
+
+@media all and (max-width:420px){
+    .header{
+        .search-container {
+            width:63%; 
+            left:5px;
+            form{
+                .search-box{
+                    font-size:14px;
+                    padding:2px;
+                }
+                
+            }
+        }
+
+    }
+
 }
