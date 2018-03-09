@@ -1,4 +1,7 @@
 {{>header}}
+
+	{{>chatSticky}}
+
 	<div class="first-fold fold top mass-action-container hidden" id="massActionContainer">
 		<div class="action-buttons">
 			<span class=" button white" id="downloadResumeMass">Download Resume</span>
@@ -572,7 +575,7 @@
 				</div>
 			</div>
 			<img class="js_img" src="http://placehold.it/60x60/f5f5f5?text=+">
-			<div class="candidate-status online"></div>
+			<div class="candidate-status online hidden"></div>
 		</div>
 		<div class="section">
 			<span class="sticker pro-member isPro hidden">Pro</span>
@@ -628,12 +631,12 @@
 					<label class="action-list-label">Other Actions</label>
 					<ul class="action-list-items">
 						<li><a href="#" class="candidateSendMessage">Send Message</a></li>
-						<li><a href="#" class="candidateSendInterviewInvite">Send Interview Invite</a></li>
+						<!-- <li><a href="#" class="candidateSendInterviewInvite">Send Interview Invite</a></li> -->
 						<li><a href="#" download="" class="candidateDownloadResume">Download Resume</a></li>
 						<li><a href="#" class="candidateSave">Save for later</a></li>
 						<li><a href="#" class="candidateAddComment">Add Comment</a></li>
 						<li><a href="#" class="candidateAddTag">Add Tag</a></li>
-						<li class="interview-invite">Send Interview Invite</li>
+						<li class="interview-invite interviewinvite">Send Interview Invite</li>
 						<li><a href="#" data-invite-id="1" class="inviteF2f tooltip">Face to Face</a></li>
 						<li><a href="#" data-invite-id="2" class="inviteTelephonic tooltip">Telephonic</a></li>
 					</ul>

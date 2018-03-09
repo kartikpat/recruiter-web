@@ -142,6 +142,8 @@ var recruiterID = localStorage.id;
 var recruiterEmail;
 var pubnub;
 
+console.log(uuid)
+
 
 function initializePubNub() {
     pubnub = new PubNub({
@@ -173,7 +175,7 @@ function getCookie(name) {
 function getArray(array) {
     var tempArray = [];
     array.forEach(function(aChannel){
-        tempArray.push(aChannel["name"]);
+        tempArray.push(aChannel["channel"]);
     });
     return tempArray;
 }
@@ -186,36 +188,37 @@ function addListeners(onNewMessage, onNewPresence, onNewStatus){
     });
 }
 
-function onNewMessage(m) {
-    console.log(m);
-    var actualChannel = m.actualChannel;
-    var channelName = m.channel; // The channel for which the message belongs
-    var msg = m.message; // The Payload
-    var publisher = m.publisher;
-    var subscribedChannel = m.subscribedChannel;
-    var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
-    var pubTT = m.timetoken; // Publish timetoken
-    console.log("receieved new message")
-    console.log(msg)
-    receiveMessage(msg,channelName);
-}
-
-function onNewPresence(p) {
-    // handle presence
-    var action = p.action; // Can be join, leave, state-change or timeout
-    var channelName = p.channel; // The channel for which the message belongs
-    var channelGroup = p.subscription; //  The channel group or wildcard subscription match (if exists)
-    var presenceEventTime = p.timestamp; // Presence event timetoken
-    var status = p.status; // 200
-    var message = p.message; // OK
-    var service = p.service; // service
-    var uuids = p.uuids; // UUIDs of users who are connected with the channel with their state
-    var occupancy = p.occupancy; // No. of users connected with the channel
-
-    receivePresence(p)
-}
+// function onNewMessage(m) {
+//     console.log(m);
+//     var actualChannel = m.actualChannel;
+//     var channelName = m.channel; // The channel for which the message belongs
+//     var msg = m.message; // The Payload
+//     var publisher = m.publisher;
+//     var subscribedChannel = m.subscribedChannel;
+//     var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
+//     var pubTT = m.timetoken; // Publish timetoken
+//     console.log("receieved new message")
+//     console.log(msg)
+//     receiveMessage(msg,channelName);
+// }
+//
+// function onNewPresence(p) {
+//     // handle presence
+//     var action = p.action; // Can be join, leave, state-change or timeout
+//     var channelName = p.channel; // The channel for which the message belongs
+//     var channelGroup = p.subscription; //  The channel group or wildcard subscription match (if exists)
+//     var presenceEventTime = p.timestamp; // Presence event timetoken
+//     var status = p.status; // 200
+//     var message = p.message; // OK
+//     var service = p.service; // service
+//     var uuids = p.uuids; // UUIDs of users who are connected with the channel with their state
+//     var occupancy = p.occupancy; // No. of users connected with the channel
+//
+//     receivePresence(p)
+// }
 
 function onNewStatus(s) {
+    console.log(s)
     // handle status
     var category = s.category; // PNConnectedCategory
     var operation = s.operation; // PNSubscribeOperation
@@ -225,18 +228,18 @@ function onNewStatus(s) {
     var lastTimetoken = s.lastTimetoken; // The last timetoken used in the subscribe request, of type long.
     var currentTimetoken = s.currentTimetoken; // The current timetoken fetched in the subscribe response, which is going to be used in the next request, of type long.
 
-    checkForStatusChange(s);
+    
 }
 
-function checkForStatusChange(status) {
-    if(status.operation=="PNSubscribeOperation"){
-        checkForOnline(status.affectedChannels);
-    }
-}
+// function checkForStatusChange(status) {
+//     if(status.operation=="PNSubscribeOperation"){
+//         checkForOnline(status.affectedChannels);
+//     }
+// }
 
-function checkForOnline(channels) {
-    hereNow(channels)
-}
+// function checkForOnline(channels) {
+//     hereNow(channels)
+// }
 
 function subscribe(channelsArray) {
     pubnub.subscribe({
@@ -245,18 +248,19 @@ function subscribe(channelsArray) {
     });
 }
 
-function unsubscribe(channelName) {
-    console.log(channelName);
+function unsubscribe(channelsArray) {
     pubnub.unsubscribe({
-        channels: [channelName]
+        channels:  getArray(channelsArray)
     });
 }
 
-function fetchHistory(channel, count, onFetchHistory) {
+function fetchHistory(channel, count, startTimeToken, endTimeToken, onFetchHistory) {
     pubnub.history({
         channel: channel, //"my_channel",
         count: count,
-        includeTimetoken: false
+        stringifiedTimeToken: true,
+        start: startTimeToken,
+        end: endTimeToken
 
     }, onFetchHistory);
 }

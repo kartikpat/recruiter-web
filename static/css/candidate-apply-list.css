@@ -3117,6 +3117,8 @@ input::-webkit-input-placeholder {
                       height: 17px; }
                 .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .candidate-options {
                   margin-top: 20px; }
+                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .candidate-options .button-action-list {
+                    width: 100%; }
                 .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .view-links {
                   font-size: 0;
                   margin-top: 20px;

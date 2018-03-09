@@ -1,7 +1,7 @@
 var errorResponses = {
 	missingName: 'Please enter your name',
-	missingEmail: 'Please enter your Email address',
-	invalidEmail: 'Please enter a valid Email address',
+	missingEmail: 'Please enter the Email address',
+	invalidEmail: 'That looks like an invalid email address',
 	missingPhone: 'Please enter your phone',
 	invalidPhone: 'Invalid phone number',
 	missingDesignation: 'Please enter your designation',
@@ -14,7 +14,7 @@ var errorResponses = {
 	passwordFail: 'Incorrect password',
 	missingParameters: 'Oops! Our engineers will fix this shortly. Please try again after sometime.',
 	serviceError: 'Oops! Our engineers are working on fixing this, please try again after sometime.',
-	duplicate: 'There is already an account registered with this email id'	
+	duplicate: 'There is already an account registered with this email id'
 }
 function registerUser(){
 	var user= {}
@@ -118,7 +118,7 @@ function checkPhone(element){
 	if(!( element && element.val() && isValidPhone(element.val()) )){
 		element.next('.error').text(errorResponses['invalidPhone']);
 		return false;
-	}	
+	}
 	return true
 }
 

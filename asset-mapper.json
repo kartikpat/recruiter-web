@@ -747,7 +747,6 @@
 				"static/js/Components/MyJobs/index.js",
 				"static/js/Utilities/toastNotifier.js",
 				"static/js/chat-pubnub-sticky.js",
-				"static/js/chatObject.js",
 				"static/js/chat-sticky.js"
 
 			],
@@ -959,7 +958,11 @@
 				"static/css/modal.css",
 				"static/css/vendor/tooltipster.css",
 				"static/css/jquery-ui.min.css",
-				"static/css/candidate-apply-list.css"
+				"static/css/candidate-apply-list.css",
+				"static/css/chat-sticky.css",
+				"static/css/utilities.css",
+				"static/css/animate.css",
+				"static/css/jquery-chatbox.css"
 
 			],
 			"prod": [
@@ -987,6 +990,8 @@
 				"static/js/candidate-apply-list.js",
 				"static/js/vendor/jquery-ui.min.js",
 				"static/js/modal.js",
+				"static/js/chat-pubnub-sticky.js",
+				"static/js/chat-sticky.js",
 				"static/js/ui-components.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
@@ -1015,6 +1020,7 @@
 				"static/js/Components/CandidateApplyList/model.js",
 				"static/js/Components/CandidateApplyList/jobModel.js",
 				"static/js/Components/CandidateApplyList/index.js"
+
 			],
 			"prod" : [
 				"static/build/js/candidate-apply-list.min.js"
