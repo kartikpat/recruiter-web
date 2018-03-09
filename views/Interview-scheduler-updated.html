@@ -46,13 +46,13 @@
 					<span id="two">START TIME</span>
 					<span id="three">END TIME</span>  
 				</div>
-				<div class="day">
+				<div class="dayId" id="1">
+					<div class="day">
 					<div class="section">
 						<div class="check-input">
 							<span id="Check-span">DAYS AVAILABLE</span>
 							<input type="checkbox" id="check-button-mon">
 							<label for="check-button-mon">MON</label>
-						
 						</div>					 
 					  </div>			  
 				</div>
@@ -66,7 +66,7 @@
 							</div>
 						</select>
 					</span>
-					<label>to</label>
+					<span class="timer">to</span>
 					<span class="section-one">
 						<span id="Checkin">END TIME</span>
 						<select class="select-dropdown End-time" id="selectElementId-2" >
@@ -76,8 +76,10 @@
 								</div>
 						</select>
 					</span>
-					<span><button type="button" id="selectAll">Copy to All</button></span>
+					<button type="button" id="selectAll">Copy to All</button>
 				</div>
+			</div>
+
 				<div class="day">
 						<div class="section">
 							<div class="check-input">
@@ -97,7 +99,7 @@
 							</div>
 						</select>
 					</span>
-					<label>to</label>
+					<span class="timer">to</span>
 					<span class="section-one">
 							<span id="Checkin">END TIME</span>
 						<select class="select-dropdown End-time">
@@ -127,7 +129,7 @@
 								</div>
 							</select>
 						</span>
-						<label>to</label>
+						<span class="timer">to</span>
 						<span class="section-one" >
 								<span id="Checkin">END TIME</span>
 							<select class="select-dropdown End-time">
@@ -157,7 +159,7 @@
 								</div>
 							</select>
 						</span>
-						<label>to</label>
+						<span class="timer">to</span>
 						<span class="section-one" >
 								<span id="Checkin">END TIME</span>
 							<select class="select-dropdown End-time">
@@ -187,7 +189,7 @@
 								</div>
 							</select>
 						</span>
-						<label>to</label>
+						<span class="timer">to</span>
 						<span class="section-one" >
 								<span id="Checkin">END TIME </span>
 							<select class="select-dropdown End-time">
@@ -217,7 +219,7 @@
 									</div>
 								</select>
 						</span>
-						<label>to</label>
+						<span class="timer">to</span>
 						<span class="section-one">
 								<span id="Checkin">END TIME</span>
 							<select class="select-dropdown End-time" >
@@ -234,8 +236,10 @@
 			   
 
 			<div class="preview">  <!right-->
-			
-				<div id='calendar'></div>
+				<div class="heading">Preview Of Slots Created</div>
+				<div id='calendar'>
+					
+				</div>
 
 				</div>
 
@@ -256,7 +260,7 @@
 									</div>
 								</select>
 							</span>
-							<label>to</label>
+							<span class="timer">to</span>
 							<span class="section-one" >
 								<select class="select-dropdown" id="select">
 									<div class="dropdown-list">
