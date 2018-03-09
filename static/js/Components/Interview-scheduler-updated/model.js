@@ -5,16 +5,12 @@ var obj = {
 	"telephone": "Get me a call",   
 }
 
-var timeTable= [{
-    name:[],
-    message:[],
-    telephonic:[],
-    slots: [{  
-        id:[],
-        startTime:[],
-        endtTime:[],
-     }]
-}]
+var timeTable= {
+    name:{},
+    message:{},
+    telephonic:{},
+    slots:[{ }]
+}
 
 function Calendar(){
     var settings ={};
@@ -31,11 +27,12 @@ function Calendar(){
         settings.table=$('#example'),
         settings.element1= $('#selectElementId-1'),
         settings.element2= $('#selectElementId-2'),
-        //settings.check=$('.Checked'),
+        settings.check=$('.Checked'),
         settings.dayId= $('.dayId'),
-        settings.checkbox=$(''),
+        settings.checkbox=$('.check-button'),
         settings.breakStart=$('.Break-start'),
-        settings.breakEnd=$('.Break-end')
+        settings.breakEnd=$('.Break-end'),
+        settings.breakhours=$('.Breaks-available')
     }
 
     function getDetails() {
@@ -47,40 +44,49 @@ function Calendar(){
         return object;
     }
 
-    function getDayid(){
+    function getslots(){
         settings.dayId.on('click',function(){
             var id=$(this).attr('id');
-            var startvalue=$("#"+id+ "").find( settings.start_time).val();
-            var endvalue=$("#"+id+ "").find( settings.end_time).val();
-            var checkbox= settings.check_button.prop("checked");
-        if(startvalue!=0 && endvalue!=0 && checkbox==true){    
-            var slot=[{
-                slots: [{
+            console.log(id);
+            // var today = new Date();
+            // var dd = today.getDate();
+            // var mm = today.getMonth()+1; 
+            // var yyyy = today.getFullYear();
+            // var today = dd+'/'+mm+'/'+yyyy;
+            var startvalue=$("#"+id+ "").find(settings.start_time).val();
+            var endvalue=$("#"+id+ "").find(settings.end_time).val();
+            var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
+            if(startvalue!=0 && endvalue!=0 && checkbox==true){    
+             var slot=[{
                     id: id,
                     startTime:startvalue,
-                    endtTime: endvalue
-                }]
+                    endtTime: endvalue      
             }]
-            timeTable.push(slot);
-            console.log(timeTable);
-        }
-       
+            //    timeTable.slots.push(slot);
+                finalslots(slot);
+               // console.log(timeTable);
+            }
+  
         })
        return timeTable;
     }
 
-    function getBreakhours(){
-
+    function finalslots(slot){
+        console.log(JSON.stringify(slot));
+        settings.breakhours.on('click',function(){
+        var startBreak=settings.breakStart.val();
+        var endBreak= settings.breakEnd.val();
+            // if(startBreak!=0 && endBreak!=0){
+            //     if(startTime>)
+                
+            // }
+        })
     }
-
-
-
 
 
     function selectCreater() {
         var min = 1,
-            max = 24;
-            
+            max = 24;     
         var select= settings.select_menu;
             for (var i = min; i<=max; i++){
                 var option = document.createElement('option');
@@ -148,9 +154,7 @@ function Calendar(){
     }
 
     function copyTime(){
-   
         settings.button.on('click', function (){
-            console.log("hello");
             if (settings.checkbox.hasClass('allChecked')){
                   $('input[type="checkbox"]', settings.table).prop('checked',false );
             } 
@@ -173,8 +177,8 @@ function Calendar(){
         copytoall:copytoall,
         copyTime:copyTime,
         time_mapper:time_mapper,
-        getDayid:getDayid,
-
+        getslots:getslots,
+        finalslots:finalslots,
     }
 };
 

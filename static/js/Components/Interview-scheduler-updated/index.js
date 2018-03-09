@@ -6,7 +6,7 @@ $(document).ready(function(){
     calendarDetails.selectCreater();
     calendarDetails.copyTime();
     calendarDetails.copytoall();
-    calendarDetails.getDayid();
+    calendarDetails.getslots();
     calendarDetails.time_mapper();
-
+    calendarDetails.finalslots();
 })    
