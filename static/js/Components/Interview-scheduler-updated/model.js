@@ -1,16 +1,3 @@
-var obj = {
-    
-    "name": "testing",
-	"message": "This ia a message",
-	"telephone": "Get me a call",   
-}
-
-var timeTable= {
-    name:{},
-    message:{},
-    telephonic:{},
-    slots:[{ }]
-}
 
 function Calendar(){
     var settings ={};
@@ -32,56 +19,77 @@ function Calendar(){
         settings.checkbox=$('.check-button'),
         settings.breakStart=$('.Break-start'),
         settings.breakEnd=$('.Break-end'),
-        settings.breakhours=$('.Breaks-available')
-    }
-
-    function getDetails() {
-        var object ={
-        name:  settings.name.val(),
-        message: settings.message.val(),
-        telephone: settings.telephone.val()
-        }
-        return object;
+        settings.breakhours=$('.Breaks-available'),
+        settings.createCalendar=$('.formgroup')
     }
 
     function getslots(){
-        settings.dayId.on('click',function(){
-            var id=$(this).attr('id');
-            console.log(id);
-            // var today = new Date();
-            // var dd = today.getDate();
-            // var mm = today.getMonth()+1; 
-            // var yyyy = today.getFullYear();
-            // var today = dd+'/'+mm+'/'+yyyy;
-            var startvalue=$("#"+id+ "").find(settings.start_time).val();
-            var endvalue=$("#"+id+ "").find(settings.end_time).val();
-            var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
-            if(startvalue!=0 && endvalue!=0 && checkbox==true){    
-             var slot=[{
-                    id: id,
-                    startTime:startvalue,
-                    endtTime: endvalue      
-            }]
-            //    timeTable.slots.push(slot);
-                finalslots(slot);
-               // console.log(timeTable);
+        var timetable={ };
+        var slots=[];
+        settings.createCalendar.on('click',function(){
+            $.each(settings.dayId,function(){
+                var id=$(this).attr('id');
+                var startvalue=$("#"+id+ "").find(settings.start_time).val();
+                var endvalue=$("#"+id+ "").find(settings.end_time).val();
+                var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
+                timetable.name=settings.name.val();
+                timetable.message=settings.message.val();
+                timetable.telephone=settings.telephone.val();
+                var fromDate=moment().format('ll');
+                var toDate= moment(fromDate, 'll').add(5, 'days').format('ll');
+                    if(startvalue!=null && endvalue!=null && checkbox==true){
+                        //debugger
+                        var slot={
+                            startTime:startvalue,
+                            endTime:endvalue,
+                            id:id,
+                            from:fromDate,
+                            to:toDate,
+                        };
+                        slots.push(slot);
+                        console.log(slots);
+                    }
+            });
+            var start=settings.breakStart.val();
+            var end=settings.breakEnd.val();
+            if(start>0 && end>0){
+                slots.forEach(function(aRow){
+                    if(parseInt(start)>parseInt(aRow.startTime) && parseInt(end)>parseInt(aRow.endTime)){
+                        slots.pop();
+                        aRow.endTime=start;
+                        slots.push(aRow);
+                    }
+                    else if(parseInt(start)<parseInt(aRow.startTime) && parseInt(end)>parseInt(aRow.endTime)){
+                          slots.pop();
+                          console.log("no slot");  
+                          return   
+                    }
+                    else{
+                        slots.pop();
+                        var Nextend=aRow.endTime;
+                        aRow.endTime=start;
+                        var Nextstart=end;
+                        slots.push(aRow);
+                        var Nextslot={
+                            id:aRow.id,
+                            startTime:Nextstart,
+                            endTime:Nextend,
+                            from:aRow.fromDate,
+                            to:aRow.toDate,
+                        }
+                        slots.push(Nextslot); 
+                    }
+                })
+                timetable.slots=slots;
             }
-  
+            else{
+            timetable.slots=slots;
+            }
+            console.log(timetable);
+
         })
-       return timeTable;
     }
 
-    function finalslots(slot){
-        console.log(JSON.stringify(slot));
-        settings.breakhours.on('click',function(){
-        var startBreak=settings.breakStart.val();
-        var endBreak= settings.breakEnd.val();
-            // if(startBreak!=0 && endBreak!=0){
-            //     if(startTime>)
-                
-            // }
-        })
-    }
 
 
     function selectCreater() {
@@ -103,7 +111,7 @@ function Calendar(){
                 option.innerHTML = (i-12)+"AM"; 
                 }
                 else{
-                option.text = i;
+                option.value = i;
                 option.innerHTML = (i-12)+"PM";
                 }
                 select.append(option.outerHTML);
@@ -134,7 +142,7 @@ function Calendar(){
                 end.val(k);
                 var value=$("#"+parent+" .Start-time option:selected").next().val();
                 end.val(value);
-                $("#"+parent+" .End-time").find('option').prop('disabled', false);
+                 $("#"+parent+" .End-time").find('option').prop('disabled', false);
                 var index = $("#"+parent+" .Start-time").find('option:selected').index();
                 $("#"+parent+" .End-time").not("#"+parent+" .Start-time").find('option:lt(' + (index+1) + ')').prop('disabled', true);
             }
@@ -172,13 +180,11 @@ function Calendar(){
 
     return {
         init:init,
-        getDetails: getDetails,
         selectCreater :selectCreater,
         copytoall:copytoall,
         copyTime:copyTime,
         time_mapper:time_mapper,
         getslots:getslots,
-        finalslots:finalslots,
     }
 };
 
