@@ -64,6 +64,9 @@ function Calendar(){
                           console.log("no slot");  
                           return   
                     }
+                    else if(parseInt(start)<parseInt(aRow.startTime) && parseInt(end)<parseInt(aRow.endTime)){
+                        return
+                    }
                     else{
                         slots.pop();
                         var Nextend=aRow.endTime;
