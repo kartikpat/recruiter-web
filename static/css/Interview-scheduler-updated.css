@@ -218,7 +218,7 @@
               font-size: 14px;
               /* Approximation due to font substitution */
               font-weight: 400;
-              line-height: 23px;
+              line-height: 35px;
               /* Approximation due to font substitution */
               text-align: left;
               margin-left: 15px; }
@@ -228,22 +228,21 @@
               font-size: 14px;
               /* Approximation due to font substitution */
               font-weight: 400;
-              line-height: 23px;
+              line-height: 35px;
               /* Approximation due to font substitution */
               text-align: left;
-              margin-top: 20px;
-              margin-left: 46px; }
+              margin-left: 30px; }
             .wrap .second-container .available-hours .Days-available .table .D-avail #three {
               font-family: "Droid Sans", sans-serif;
               color: #2b2b2b;
               font-size: 14px;
               /* Approximation due to font substitution */
               font-weight: 400;
-              line-height: 23px;
+              line-height: 35px;
               /* Approximation due to font substitution */
               text-align: left;
               margin-top: 20px;
-              margin-left: 66px; }
+              margin-left: 75px; }
           .wrap .second-container .available-hours .Days-available .table .day .section {
             background-color: #f3fbfb;
             width: 136px;
@@ -561,7 +560,7 @@
           overflow: hidden; }
   .wrap .bottom-container {
     width: 100%;
-    height: 100px; }
+    height: 135px; }
     .wrap .bottom-container .formgroup button {
       -webkit-appearance: none;
       -moz-appearance: none;
@@ -677,7 +676,9 @@
   .wrap .second-container .available-hours .Breaks-available .table {
     width: 90%; }
     .wrap .second-container .available-hours .Breaks-available .table .D-avail #two {
-      margin-left: 30px; }
+      margin-left: 8px; }
+    .wrap .second-container .available-hours .Breaks-available .table .D-avail #three {
+      margin-left: 65px; }
     .wrap .second-container .available-hours .Breaks-available .table .time-section {
       width: 100%; }
       .wrap .second-container .available-hours .Breaks-available .table .time-section .section-one .select-dropdown {
