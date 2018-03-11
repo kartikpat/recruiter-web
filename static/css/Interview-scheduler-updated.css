@@ -337,9 +337,9 @@
           position: absolute;
           margin-top: 5px; }
       .wrap .second-container .available-hours .Breaks-available {
-        float: none;
+        float: left;
         display: block;
-        position: relative;
+        margin-bottom: 100px;
         top: -120px; }
         .wrap .second-container .available-hours .Breaks-available .timer {
           color: #2b2b2b;

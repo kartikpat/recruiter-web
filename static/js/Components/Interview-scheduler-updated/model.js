@@ -215,14 +215,15 @@ function Calendar(){
 
     function highlighter(){
         settings.checkbox.on('click',function(){
-            var id=$(this).parent().parent().attr('id');
+            var id=$(this).parent().parent().parent().parent().attr('id');
             console.log(id);
             var startvalue=$("#"+id+ "").find(settings.start_time).val();
+            console.log(startvalue);
             var endvalue=$("#"+id+ "").find(settings.end_time).val();
             var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
             console.log(checkbox);
             if(startvalue>0 && endvalue>0 && checkbox==true){
-               // debugger
+                debugger
                 highlight(startvalue,endvalue,id);
             }
         })

@@ -395,9 +395,10 @@
             }
 
             .Breaks-available{
-                float: none;
+                float: left;
                 display: block;
-                position: relative;
+                // position: relative;
+                margin-bottom: 100px;
                 top: -120px;
                 .timer{
                     color:  #2b2b2b;
