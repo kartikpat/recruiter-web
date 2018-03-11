@@ -7,5 +7,7 @@ $(document).ready(function(){
     calendarDetails.copytoall();
     calendarDetails.getslots();
     calendarDetails.time_mapper();
-   // calendarDetails.finalslots();
+    calendarDetails.fullCalendar();
+    calendarDetails.highlighter();
+    calendarDetails.highlight();
 })    

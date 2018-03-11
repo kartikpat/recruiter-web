@@ -371,20 +371,14 @@
                                     outline: none;
                                    
                                 }
-                            
-
-                        }
-                    
-                    
-
-                    
+                            }
                 }
 
 
             }
 
             .preview{
-                width: 616px;
+              //  width: 616px;
                 //height: 682px;
                 display: inline-block;
                 margin-top: 0px;
@@ -778,7 +772,7 @@
         .second-container{
             .available-hours{   
                 .Days-available{
-                    width: 100%;
+                    width: 100%!important;
                     margin-top: -100px;
                     .table{
                      width: 90%;
@@ -788,10 +782,11 @@
                         display: none;
                     }
                     .day{
+                        width: 100%;
                         .section{
                             width: 100%!important;
                             .check-input{
-                                width: 100%;
+                                 width: 100%!important;
                                 margin-top: 20px!important;
                                 margin-left: 15px!important;
                                 #Check-span{

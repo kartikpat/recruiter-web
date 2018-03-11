@@ -324,7 +324,6 @@
               display: none;
               outline: none; }
       .wrap .second-container .available-hours .preview {
-        width: 616px;
         display: inline-block;
         margin-top: 0px;
         margin-right: 35px; }
@@ -609,31 +608,33 @@
 
 @media only screen and (max-width: 600px) {
   .wrap .second-container .available-hours .Days-available {
-    width: 100%;
+    width: 100% !important;
     margin-top: -100px; }
     .wrap .second-container .available-hours .Days-available .table {
       width: 90%;
       border-style: none; }
     .wrap .second-container .available-hours .Days-available .D-avail {
       display: none; }
-    .wrap .second-container .available-hours .Days-available .day .section {
-      width: 100% !important; }
-      .wrap .second-container .available-hours .Days-available .day .section .check-input {
-        width: 100%;
-        margin-top: 20px !important;
-        margin-left: 15px !important; }
-        .wrap .second-container .available-hours .Days-available .day .section .check-input #Check-span {
-          display: inline-block !important;
-          color: #2b2b2b;
-          font-size: 14px;
-          /* Approximation due to font substitution */
-          font-weight: 400;
-          line-height: 23px;
-          /* Approximation due to font substitution */
-          text-align: left;
-          transform: scaleX(1.0011);
-          /* width and height properties ommitted due to transform */
-          width: 50%; }
+    .wrap .second-container .available-hours .Days-available .day {
+      width: 100%; }
+      .wrap .second-container .available-hours .Days-available .day .section {
+        width: 100% !important; }
+        .wrap .second-container .available-hours .Days-available .day .section .check-input {
+          width: 100% !important;
+          margin-top: 20px !important;
+          margin-left: 15px !important; }
+          .wrap .second-container .available-hours .Days-available .day .section .check-input #Check-span {
+            display: inline-block !important;
+            color: #2b2b2b;
+            font-size: 14px;
+            /* Approximation due to font substitution */
+            font-weight: 400;
+            line-height: 23px;
+            /* Approximation due to font substitution */
+            text-align: left;
+            transform: scaleX(1.0011);
+            /* width and height properties ommitted due to transform */
+            width: 50%; }
     .wrap .second-container .available-hours .Days-available .time-section {
       width: 100% !important;
       height: 125px !important;

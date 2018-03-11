@@ -20,7 +20,10 @@ function Calendar(){
         settings.breakStart=$('.Break-start'),
         settings.breakEnd=$('.Break-end'),
         settings.breakhours=$('.Breaks-available'),
-        settings.createCalendar=$('.formgroup')
+        settings.createCalendar=$('.formgroup'),
+        settings.fullcalendar=$('#calendar'),
+        settings.Calendarhours= $('.fc-day'),
+        settings.Calendarbutton= $('.fc-button')
     }
 
     function getslots(){
@@ -86,14 +89,11 @@ function Calendar(){
                 timetable.slots=slots;
             }
             else{
-            timetable.slots=slots;
+                timetable.slots=slots;
             }
             console.log(timetable);
-
         })
     }
-
-
 
     function selectCreater() {
         var min = 1,
@@ -121,7 +121,6 @@ function Calendar(){
             }
     }
 
-
     function copytoall(){
         settings.check_button.change(function(event){
         if (this.checked){
@@ -133,7 +132,6 @@ function Calendar(){
       });
     }
 
-
     function time_mapper(){
         settings.start_time.change(function() {
             var parent=$(this).parent().parent().attr('id');
@@ -141,14 +139,14 @@ function Calendar(){
             var end=$("#"+parent+"").find(".End-time");
             var k=start.val();
             var check=$("#"+parent+" .End-time").find('option:selected').index();
-           if(check==0){
+        //    if(check==0){
                 end.val(k);
                 var value=$("#"+parent+" .Start-time option:selected").next().val();
                 end.val(value);
                  $("#"+parent+" .End-time").find('option').prop('disabled', false);
                 var index = $("#"+parent+" .Start-time").find('option:selected').index();
                 $("#"+parent+" .End-time").not("#"+parent+" .Start-time").find('option:lt(' + (index+1) + ')').prop('disabled', true);
-            }
+            // }
         })
 
         settings.end_time.change(function() {
@@ -181,6 +179,102 @@ function Calendar(){
         })
     }
 
+    function fullCalendar(){
+        settings.fullcalendar.fullCalendar({
+            header: {
+              right: 'title,prev,next',
+             // dateFormat : "D/M/Y",
+              left:'Preview of slots created'
+           },
+            navLinks: false, // can click day/week names to navigate views
+            businessHours: false, // display business hours 
+            defaultView: 'basicWeek',
+            columnFormat :'ddd \n D/M/Y'
+          
+          });
+          $(".fc-button").on("click", Timer);
+          Timer();
+    }
+
+    function Timer(e){       
+        for(i=1;i<=24;i++){   
+            if(i<12){
+                  $('.fc-day').append('<div id="hours-'+i+'" class="TimeLines">'+i+':00 AM </div>');
+            }
+            else if(i==12){
+                  $('.fc-day').append('<div id="hours-'+i+'" class="TimeLines">'+i+':00 PM </div>');
+            }
+            else if(i==24){
+                  $('.fc-day').append('<div id="hours-'+i+'" class="TimeLines">'+(i-12)+':00 AM </div>');
+            }
+            else{
+                  $('.fc-day').append('<div id="hours-'+i+'" class="TimeLines">'+(i-12)+':00 PM </div>');
+              }
+          }
+    }
+
+    function highlighter(){
+        settings.checkbox.on('click',function(){
+            var id=$(this).parent().parent().attr('id');
+            console.log(id);
+            var startvalue=$("#"+id+ "").find(settings.start_time).val();
+            var endvalue=$("#"+id+ "").find(settings.end_time).val();
+            var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
+            console.log(checkbox);
+            if(startvalue>0 && endvalue>0 && checkbox==true){
+               // debugger
+                highlight(startvalue,endvalue,id);
+            }
+        })
+    }
+
+    function highlight(startvalue,endvalue,id){
+        if(id=="1"){
+            $('.fc-mon .TimeLines').css("background-color","White");
+            for(i=startvalue;i<=endvalue;i++)
+            {
+                $('.fc-mon').find("#hours-" +i+ "").css("background-color","black");
+            }
+            
+        }
+        else if(id=="2"){
+            $('.fc-tue .TimeLines').css("background-color","White");
+            for(i=startvalue;i<=endvalue;i++)
+            {
+                $('.fc-tue').find("#hours-" +i+ "").css("background-color","black");
+            }
+        }
+        else if(id=="3"){
+            $('.fc-wed .TimeLines').css("background-color","White");
+            for(i=startvalue;i<=endvalue;i++)
+            {
+                $('.fc-wed').find("#hours-" +i+ "").css("background-color","black");
+            }
+        }
+        else if(id=="4"){
+            $('.fc-thu .TimeLines').css("background-color","White");
+            for(i=startvalue;i<=endvalue;i++)
+            {
+                $('.fc-thu').find("#hours-" +i+ "").css("background-color","black");
+            }
+        }
+        else if(id=="5"){
+            $('.fc-fri .TimeLines').css("background-color","White");
+            for(i=startvalue;i<=endvalue;i++)
+            {
+                $('.fc-fri').find("#hours-" +i+ "").css("background-color","black");
+            }
+        }
+        else if(id=="6"){
+            $('.fc-sat .TimeLines').css("background-color","White");
+            for(i=startvalue;i<=endvalue;i++)
+            {
+                $('.fc-sat').find("#hours-" +i+ "").css("background-color","black");
+            }
+        }
+
+    }
+
     return {
         init:init,
         selectCreater :selectCreater,
@@ -188,6 +282,9 @@ function Calendar(){
         copyTime:copyTime,
         time_mapper:time_mapper,
         getslots:getslots,
+        fullCalendar:fullCalendar,
+        highlighter:highlighter,
+        highlight:highlight,
     }
 };
 

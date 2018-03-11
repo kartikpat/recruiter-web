@@ -3,7 +3,7 @@
 }
 
 .TimeLines{
-    background-color:white!important;
+    background-color:white;
     font-family: DroidSans;
     color:  #149075;
     font-size: 14px;/* Approximation due to font substitution */
@@ -109,4 +109,8 @@ a{
 .fc-icon{
     width: 16px;
     height: 14px;
+}
+.TimeLines{
+    padding-bottom: 10px;
+    text-align: center;
 }
