@@ -291,7 +291,6 @@
   display: inline-block;
   text-decoration: inherit;
   width: 1em;
-  margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
   /* For safety - reset parent styles, that can break glyph codes*/
@@ -299,9 +298,10 @@
   text-transform: none;
   /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
+  font-size: 18px;
+  margin-left: -0.2em;
   /* Animation center compensation - margins should be symmetric */
   /* remove if not needed */
-  margin-left: .2em;
   /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
   /* Font smoothing. That was taken from TWBS */
@@ -503,6 +503,12 @@
   content: '\e831'; }
 
 /* '' */
+.icon-location:before {
+  content: '\e832'; }
+
+.icon-clock:before {
+  content: '\e83a'; }
+
 .left {
   float: left; }
 
@@ -770,7 +776,6 @@ a {
   display: inline-block;
   text-decoration: inherit;
   width: 1em;
-  margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
   /* For safety - reset parent styles, that can break glyph codes*/
@@ -778,9 +783,10 @@ a {
   text-transform: none;
   /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
+  font-size: 18px;
+  margin-left: -0.2em;
   /* Animation center compensation - margins should be symmetric */
   /* remove if not needed */
-  margin-left: .2em;
   /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
   /* Font smoothing. That was taken from TWBS */
@@ -982,6 +988,12 @@ a {
   content: '\e831'; }
 
 /* '' */
+.icon-location:before {
+  content: '\e832'; }
+
+.icon-clock:before {
+  content: '\e83a'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -1428,7 +1440,8 @@ span.sticker {
       padding: 0 18px; }
       .page-content .dashboard .header-row .heading {
         font-size: 20px;
-        color: #149075; }
+        color: #149075;
+        font-weight: 400; }
       .page-content .dashboard .header-row .sub-heading {
         font-size: 14px;
         margin-top: 14px;
@@ -1449,7 +1462,7 @@ span.sticker {
       width: 70%;
       display: inline-block;
       font-size: 16px;
-      font-weight: 400; }
+      font-weight: 600; }
     .page-content .header-row .heading-button {
       width: 20%;
       display: inline-block;
@@ -1466,7 +1479,8 @@ span.sticker {
     padding: 10px 0; }
     .page-content .detail-card .meta-prop {
       display: inline-block;
-      margin-right: 10px; }
+      margin-right: 10px;
+      line-height: 20px; }
       .page-content .detail-card .meta-prop .icon, .page-content .detail-card .meta-prop .label {
         display: inline-block; }
         .page-content .detail-card .meta-prop .icon img, .page-content .detail-card .meta-prop .label img {
@@ -1629,6 +1643,8 @@ span.sticker {
         font-size: 14px; }
       .page-content .feed-row .main-content .stats .value {
         color: #149075; }
+      .page-content .feed-row .main-content .stats .applications {
+        line-height: 20px; }
     .page-content .feed-row .main-content .button-action-list {
       display: inline-block;
       cursor: pointer;
