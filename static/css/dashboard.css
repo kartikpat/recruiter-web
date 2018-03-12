@@ -1619,7 +1619,9 @@ span.sticker {
       font-weight: 700; }
       .page-content .feed-row .main-content .title .text {
         max-width: 300px;
-        color: #2b2b2b; }
+        color: #2b2b2b;
+        font-weight: 600;
+        line-height: 20px; }
     .page-content .feed-row .main-content .stats {
       width: 35%; }
       .page-content .feed-row .main-content .stats .value, .page-content .feed-row .main-content .stats .label {

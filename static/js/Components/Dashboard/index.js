@@ -135,7 +135,6 @@ $(document).ready(function(){
 			var card = jobRowCard.clone().removeClass('hidden prototype');
 			var experience = aJob['exp']['min']+'-'+aJob['exp']['max']+'yrs'
 			card.find(".title .text").text(aJob['title']).attr('href', '/job/'+aJob['id']);
-			aJob["location"] = ['Delhi', 'Chandigarh', 'Mumbai', 'Chennai']
 			var locationTitle = (aJob["location"] && aJob["location"].length >3) ? aJob["location"].join(','): null;
 			var location = (aJob["location"] && aJob["location"].length >3) ? "Multiple" : aJob["location"].join(',');
 			card.find(".title .meta-content .location .label").text(location).attr('title', locationTitle);
@@ -309,7 +308,7 @@ $(document).ready(function(){
 	function init(){
 		pubsub.publish("pageVisit", 1);
 		fetchDashboardStats(recruiterId);
-		fetchJobs("published", recruiterId);
+		fetchJobs("published", recruiterId, 5,1);
 		fetchFollowUps(recruiterId);
 		fetchInterviews(recruiterId, {pageContent: 6, pageNumber: 1, status: 2});
 	}
