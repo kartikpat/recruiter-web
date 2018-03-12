@@ -137,11 +137,11 @@ jQuery(document).ready( function() {
         var status = globalParameters.status
         aCandidate.showCandidateDetails(candidateDetails, "tag", status);
     })
-    candidates.onClickSendMessage(function(candidateId){
+    candidates.onClickSendMessage(function(candidateId,applicationId){
         var candidate = store.getCandidateFromStore(candidateId);
         var array = [];
         array.push(candidate);
-        cloneStickyChat(array, recruiterId)
+        cloneStickyChat(array, recruiterId, jobId, applicationId)
     })
     candidates.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
         var defaultCalendarId = theJob.getDefaultCalendar();

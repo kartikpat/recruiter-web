@@ -1005,13 +1005,15 @@ span.sticker {
       font-size: 14px;
       margin-right: 10px; }
   .conversations .conversation-listing-container .conversations-listing {
-    max-height: 700px; }
+    max-height: 600px;
+    overflow-y: auto; }
     .conversations .conversation-listing-container .conversations-listing .conversation-item {
       display: inline-block;
       vertical-align: middle;
       width: 100%;
       padding: 10px 0 0 5px;
-      font-size: 0; }
+      font-size: 0;
+      cursor: pointer; }
       .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item {
         display: inline-block;
         vertical-align: middle; }
@@ -1025,7 +1027,8 @@ span.sticker {
             height: 33px; }
         .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info {
           display: inline-block;
-          vertical-align: middle; }
+          vertical-align: middle;
+          width: calc(100% - 53px); }
           .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info p {
             margin: 0; }
             .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info p.user-name {

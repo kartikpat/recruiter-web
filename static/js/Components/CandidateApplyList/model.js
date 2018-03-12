@@ -297,13 +297,14 @@ function candidateList() {
             event.stopPropagation();
             $(this).toggleClass("inactive");
         })
-    } 
+    }
 
     function onClickSendMessage(fn) {
         settings.rowContainer.on('click', settings.candidateSendMessageButton,function(event) {
             event.stopPropagation();
             var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
-            fn(candidateId);
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            fn(candidateId, applicationId);
             return false
         });
     }
@@ -312,6 +313,7 @@ function candidateList() {
         settings.rowContainer.on('click', settings.candidateInviteButton, function(event){
             event.stopPropagation();
             var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
+
             fn(candidateId);
             return false
         })

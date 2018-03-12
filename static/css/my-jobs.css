@@ -1033,13 +1033,15 @@ span.sticker {
       font-size: 14px;
       margin-right: 10px; }
   .conversations .conversation-listing-container .conversations-listing {
-    max-height: 700px; }
+    max-height: 600px;
+    overflow-y: auto; }
     .conversations .conversation-listing-container .conversations-listing .conversation-item {
       display: inline-block;
       vertical-align: middle;
       width: 100%;
       padding: 10px 0 0 5px;
-      font-size: 0; }
+      font-size: 0;
+      cursor: pointer; }
       .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item {
         display: inline-block;
         vertical-align: middle; }
@@ -1053,7 +1055,8 @@ span.sticker {
             height: 33px; }
         .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info {
           display: inline-block;
-          vertical-align: middle; }
+          vertical-align: middle;
+          width: calc(100% - 53px); }
           .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info p {
             margin: 0; }
             .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info p.user-name {
@@ -1307,7 +1310,11 @@ span.sticker {
 
 @media all and (max-width: 1024px) {
   .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon.job-twitter {
-    margin-left: 0; } }
+    margin-left: 0; }
+  .page-content .conversations {
+    display: none; }
+  .page-content .my-jobs {
+    width: 100%; } }
 
 @media all and (max-width: 768px) {
   .page-content {
@@ -1391,9 +1398,7 @@ span.sticker {
             clear: both;
             width: 100%;
             margin: 10px auto;
-            border-bottom: 1px solid #e8e8e8; }
-  .conversations {
-    display: none; } }
+            border-bottom: 1px solid #e8e8e8; } }
 
 .error {
   position: relative !important; }

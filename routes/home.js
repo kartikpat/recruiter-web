@@ -421,6 +421,18 @@ module.exports = function(settings){
 		return
 	});
 
+	app.get("/recruiter/search",isAuthenticated, function(req,res){
+		res.render("global-search", {
+			title:"Recruiter Web - Global Search | iimjobs.com",
+			styles:  assetsMapper["global-search"]["styles"][mode],
+			scripts: assetsMapper["global-search"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			profile: req.profile
+		})
+		return
+	});
+
 	app.get("/recruiter/candidates",isAuthenticated, function(req,res){
 		res.render("shortlisted-candidates", {
 			title:"Recruiter Web - Shortlisted Candidates | iimjobs.com",
@@ -610,6 +622,6 @@ module.exports = function(settings){
 		})
 		return
 	});
-	
+
 
 }

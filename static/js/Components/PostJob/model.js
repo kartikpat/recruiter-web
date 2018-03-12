@@ -47,6 +47,7 @@ function Job(){
 			settings.cancelFormButton = $('#cancelForm'),
 			settings.error = $('.error'),
 			settings.creditsText = $('#creditsText');
+			settings.initialPremium = null
 			setAvailableCredits(settings.creditsText, config["availableCredits"]);
 			onClickCancelForm(settings.cancelFormButton);
 
@@ -72,19 +73,26 @@ function Job(){
 
 	function onChangeJobPremium(fn) {
 		settings.isPremium.change(function() {
-			console.log(this.checked)
+			if(settings.initialPremium) {
+				if(this.checked) {
+					return settings.creditsText.text("You have "+config["availableCredits"]+" credits left.")
+				}
+				if(config["availableCredits"]) {
+					settings.creditsText.text(" You will have "+(parseInt(config["availableCredits"])+1)+" credits left.")
+					return
+				}
+			}
 			if(this.checked) {
 				if(config["availableCredits"]) {
-					settings.creditsText.text("This job will be posted as premium. You will have "+(config["availableCredits"]-1)+" credits left.")
+					settings.creditsText.text("This job will be posted as premium. You will have "+(parseInt(config["availableCredits"])-1)+" credits left.")
 					return
 				}
 				$(this).prop("checked", false)
-				settings.creditsText.text("You don’t have any premium credits right now! We’ll reach out to you to help you with it!")
-				return fn();
+				return settings.creditsText.text("You don’t have any premium credits right now! We’ll reach out to you to help you with it!")
+
 			}
 			settings.creditsText.text("You have "+config["availableCredits"]+" credits left.")
 		})
-
 	}
 
 	function loginHandler(fn){
@@ -142,7 +150,7 @@ function Job(){
 		var ob = {
 			title: settings.title.val(),
 			description: settings.description.val(),
-			premium: settings.isPremium.is(':checked') ? 1 : 0,
+			premium: settings.isPremium.is(':checked') ? true : false,
 			category: settings.category.val(),
 			functionalArea: settings.functionalArea.val(),
 			location: locationObj.id,
@@ -164,7 +172,7 @@ function Job(){
 			ob.sal = {
 				min: settings.minSal.val(),
 				max: settings.maxSal.val(),
-				cnfi: settings.confidential.is(':checked') ? 1 : 0
+				cnfi: settings.confidential.is(':checked') ? true : false
 			}
 		if(settings.minExp.val() && settings.maxExp.val())
 			ob.exp = {
@@ -186,6 +194,7 @@ function Job(){
 			settings.editor.setContent(obj["description"])
 		}
 		settings.description.val(obj["description"]);
+		settings.initialPremium = obj["premium"]
 		settings.isPremium.prop("checked", obj["premium"]);
 		settings.category.val(obj["category"]);
 		settings.functionalArea.val(obj["functionalArea"]);
@@ -234,8 +243,9 @@ function Job(){
 }
 
 function setAvailableCredits(element, credits) {
+	return element.html("Reach out to more candidates in less amount of time by making your job premium. <a target='_blank' style='color:#155d9a' href='/recruiter/recruiter-plan'>Learn More.</a>")
 	if(!credits) {
-		element.text("Reach out to more candidates in less amount of time by making your job premium.")
+		element.html("Reach out to more candidates in less amount of time by making your job premium.")
 		return
 	}
 	element.text("You have "+credits+" credits left.")
@@ -244,7 +254,7 @@ function setAvailableCredits(element, credits) {
 
 function onClickCancelForm(element) {
 	element.click(function() {
-		window.location.href = "/"
+		window.location.href = "/my-jobs"
 	})
 }
 

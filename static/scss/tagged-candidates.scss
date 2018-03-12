@@ -227,10 +227,13 @@
 	}
 }
 
-@media all and (max-width:1439px) {
-	.conversations {
-		display:none;
-	}
+@media all and (max-width:1024px) {
+    .page-content {
+        .conversations {
+    		display:none;
+    	}
+    }
+
 
 	.page-content {
 		.tagged-candidates {

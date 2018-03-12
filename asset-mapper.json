@@ -826,6 +826,42 @@
 			]
 		}
 	},
+	"global-search": {
+		"styles": {
+			"debug" : [
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/global-search.css",
+				"static/css/utilities.css",
+				"static/css/footer.css",
+				"static/css/header.css"
+			],
+			"prod": [
+				"static/build/css/global-search.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/Utilities/request.js",
+				"static/js/header.js",
+				"static/js/change-password.js",
+				"static/js/utilities.js",
+				"static/js/tagged-candidates.js",
+				"static/js/Utilities/pubsub.js",
+				"static/js/Utilities/common.js",
+				"static/js/vendor/moment.min.js",
+				"static/js/Services/fetchCandidatesByTags.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js",
+				"static/js/Components/GlobalSearch/model.js",
+				"static/js/Components/GlobalSearch/index.js"
+			],
+			"prod" : [
+				"static/build/js/global-search.min.js"
+			]
+		}
+	},
 	"dashboard": {
 		"styles": {
 			"debug" : [
@@ -940,7 +976,8 @@
 				"static/js/Components/Header/index.js",
 				"static/js/Components/MyChat/model.js",
 				"static/js/Components/MyChat/index.js",
-				"static/js/Components/MyChat/store.js"
+				"static/js/Components/MyChat/store.js",
+				"static/js/Utilities/toastNotifier.js"
 			],
 			"prod" : [
 				"static/build/js/my-chat.min.js"

@@ -30,7 +30,7 @@
 			    margin: 0;
 			    color: $color-black;
 			    font-size: $page-subtitle-font-size;
-			    border-bottom:2px solid $border-color-base;	
+			    border-bottom:2px solid $border-color-base;
 
 			    span {
 			    	font-size:$base-font-size;
@@ -42,14 +42,18 @@
 
 		.conversations-listing {
 
-			max-height:700px;
+			max-height:600px;
+			overflow-y: auto;
 			.conversation-item {
 			    display: inline-block;
 			    vertical-align: middle;
 			    width: 100%;
 			    padding: 10px 0 0 5px;
 			    font-size: 0;
+				cursor: pointer;
+
 				
+
 				.user-item {
 				    display: inline-block;
 				    vertical-align: middle;
@@ -57,6 +61,7 @@
 					&.user-image {
 						display:inline-block;
 						vertical-align:middle;
+
 						img {
 						    border-radius: 50%;
 						    margin-right: 20px;
@@ -68,6 +73,7 @@
 					&.user-info {
 						display:inline-block;
 						vertical-align:middle;
+						width: calc(100% - 53px);
 						p {
 							margin: 0;
 

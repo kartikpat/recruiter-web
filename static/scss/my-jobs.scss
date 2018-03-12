@@ -30,7 +30,7 @@
 		max-width:1440px;
 		margin:0 auto;
 	}
-	
+
 	.page-header {
 		select {
 			@include select-dropdown;
@@ -234,6 +234,16 @@
 		margin-left: 0;
 	}
 
+	.page-content {
+		.conversations {
+			display:none;
+		}
+	}
+
+	.page-content .my-jobs {
+    	width: 100%;
+	}
+
 }
 
 @media all and (max-width:768px) {
@@ -374,9 +384,7 @@
 	}
 
 
-	.conversations {
-		display:none;
-	}
+
 }
 .error{
 	position: relative !important;
