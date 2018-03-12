@@ -1,6 +1,7 @@
 
 function Calendar(){
     var settings ={};
+    var timetable={ };
     function init(){
         settings.name= $('#name'),
         settings.message= $("#message"),
@@ -25,8 +26,8 @@ function Calendar(){
         settings.Calendarhours= $('.fc-day'),
         settings.Calendarbutton= $('.fc-button'),
         settings.Highlighter=$('.highlighter')
-        // settings.startdate=$('#startdatepicker'),
-        // settings.enddate=$('#enddatepicker')
+        settings.startdate=$('#startdatepicker'),
+        settings.enddate=$('#enddatepicker')
     }
 
 
@@ -39,7 +40,6 @@ function Calendar(){
     }
 
     function getslots(e){
-        var timetable={ };
         var slots=[];
         var finalslots=[];
             $.each(settings.dayId,function(){
@@ -109,21 +109,32 @@ function Calendar(){
     }
 
     function highlight(timetable){
+        console.log("hy");
         var data=timetable.slots;
+        var currentDate=moment().format('L');
+        var startdate=currentDate;
+        var enddate='';
         $('.TimeLines').css("background-color","white");
         data.forEach(function(aRow){
-            //   var startdate=settings.startdate.val();
-            //   var enddate=settings.enddate.val();
-            var startdate="";
-            var enddate="";
-            currentDate=moment(aRow.from).format('L');
-            if(startdate==''){
-                startdate=currentDate;
-            }
+            debugger
+        
+        if($("#radio-button-start").prop("checked") == true){
+             startdate=currentDate;
+        }
+        if($('#radio-button-startend').prop("checked")==true){
+             startdate=settings.startdate.val();
+        }
+        if($('#radio-button-tillend').prop("checked")==true){
+             enddate=settings.enddate.val();
+        }
+        if($('#radio-button-end').prop("checked")==true){
+             enddate='';   
+        }
             console.log(startdate);
             console.log(enddate); 
             console.log(currentDate);
         if(enddate=='' && startdate==currentDate){ //enddate null +startdate!=currentdate
+        //debugger
             if(aRow.id=="1"){     
                   for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                     {
@@ -163,7 +174,7 @@ function Calendar(){
 
         }
         else if(enddate=='' && startdate!=currentDate){
-           
+         //  debugger
             if(aRow.id=="1"){
                 var datetomatch= moment($('.fc-mon').attr("data-date")).format('L')
                console.log(datetomatch);
@@ -421,17 +432,31 @@ function Calendar(){
           }
     }
 
-    // function startdate(){
-    // settings.startdate.on("click",function(){ 
-    //    $('.datepicker').datepicker();
-    //     })   
-    // }
+    function startdate(){
+        $("#startdatepicker").datepicker({
+            buttonImage: '/static/images/calender.png',
+            buttonImageOnly: true,
+            changeMonth: true,
+            changeYear: true,
+            showOn: 'both',
+            onSelect: function(dateText, inst) {
+                highlight(timetable);
+            }   
+         });
+    }
     
-    // function enddate(){
-    //     settings.enddate.on("click",function(){
-    //     settings.enddate.datepicker();  
-    //     })
-    // }
+    function enddate(){
+        $("#enddatepicker").datepicker({
+            buttonImage: '/static/images/calender.png',
+            buttonImageOnly: true,
+            changeMonth: true,
+            changeYear: true,
+            showOn: 'both',
+            onSelect: function(dateText, inst) {
+                highlight(timetable);
+            }
+         });
+    }
 
     return {
         init:init,
@@ -443,8 +468,8 @@ function Calendar(){
         fullCalendar:fullCalendar,
         highlighter:highlighter,
         highlight:highlight,
-        // startdate:startdate,
-        // enddate:enddate,
+        startdate:startdate,
+        enddate:enddate,
     }
 };
 

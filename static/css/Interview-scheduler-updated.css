@@ -477,7 +477,6 @@
         .wrap .second-container .available-hours .start-date .section img {
           float: none;
           display: inline-block;
-          margin-top: 21px;
           vertical-align: top;
           clear: both;
           margin-left: 20px; }
@@ -541,7 +540,6 @@
         .wrap .second-container .available-hours .end-date .section img {
           float: none;
           display: inline-block;
-          margin-top: 21px;
           vertical-align: top;
           clear: both;
           margin-left: 20px; }
