@@ -757,8 +757,7 @@ span.sticker {
   background: #f3fbfb; }
   .premium_job_section .premium-section-content {
     max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 30px; }
+    margin: 0 auto; }
   .premium_job_section .contents input {
     display: none; }
   .premium_job_section .contents label {
