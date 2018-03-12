@@ -9,4 +9,6 @@ $(document).ready(function(){
     calendarDetails.time_mapper();
     calendarDetails.fullCalendar();
     calendarDetails.highlighter();
+    calendarDetails.startdate();
+    calendarDetails.enddate();
 })    

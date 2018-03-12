@@ -24,19 +24,24 @@ function Calendar(){
         settings.fullcalendar=$('#calendar'),
         settings.Calendarhours= $('.fc-day'),
         settings.Calendarbutton= $('.fc-button'),
-        settings.Highlighter=$('.highlighter')
+        settings.Highlighter=$('.highlighter'),
+        settings.startdate=$('#startdatepicker'),
+        settings.enddate=$('#enddatepicker')
     }
 
 
     function highlighter(){
-        settings.createCalendar.on("click", getslots);
-        settings.Highlighter.on("change",getslots);
-        settings.button.on("click",getslots);
+          settings.createCalendar.on("click", getslots);
+          settings.Highlighter.on("change",getslots);
+          settings.button.on("click",getslots);
+          $(".fc-button").on("click", getslots);
+         
     }
 
     function getslots(e){
         var timetable={ };
         var slots=[];
+        var finalslots=[];
             $.each(settings.dayId,function(){
                 var id=$(this).attr('id');
                 var startvalue=$("#"+id+ "").find(settings.start_time).val();
@@ -59,133 +64,245 @@ function Calendar(){
                         slots.push(slot);
                     }
             });
+
             var start=settings.breakStart.val();
             var end=settings.breakEnd.val();
             if(start>0 && end>0){
                 slots.forEach(function(aRow){
                     if(parseInt(start)>parseInt(aRow.startTime) && parseInt(end)>parseInt(aRow.endTime)){
-                        slots.pop();
                         aRow.endTime=start;
-                        slots.push(aRow);
+                        finalslots.push(aRow);
                     }
                     else if(parseInt(start)<parseInt(aRow.startTime) && parseInt(end)>parseInt(aRow.endTime)){
-                          slots.pop();
-                          console.log("no slot");  
-                          return   
+                          console.log("no slot");    
                     }
-                    else if(parseInt(start)<parseInt(aRow.startTime) && parseInt(end)<parseInt(aRow.endTime)){
-                        return
+                    else if(parseInt(start)<parseInt(aRow.startTime) && parseInt(end)<parseInt(aRow.endTime) && parseInt(end)>parseInt(aRow.startTime)){
+                      //  console.log('nothing');
+                        aRow.startTime=end;
+                        finalslots.push(aRow);
                     }
                     else{
-                        slots.pop();
                         var Nextend=aRow.endTime;
                         aRow.endTime=start;
                         var Nextstart=end;
-                        slots.push(aRow);
-                        var Nextslot={
-                            id:aRow.id,
-                            startTime:Nextstart,
-                            endTime:Nextend,
-                            from:aRow.fromDate,
-                            to:aRow.toDate,
+                        finalslots.push(aRow);
+                        if(Nextend!=Nextstart){
+                            var Nextslot={
+                                id:aRow.id,
+                                startTime:Nextstart,
+                                endTime:Nextend,
+                                from:aRow.from,
+                                to:aRow.to,
+                            }
+                            finalslots.push(Nextslot); 
                         }
-                        slots.push(Nextslot); 
                     }
                 })
-                timetable.slots=slots;
+                console.log(finalslots);
+                timetable.slots=finalslots;
             }
             else{
                 timetable.slots=slots;
+               // console.log(slots);
             }
-           // console.log(timetable);
             highlight(timetable);
-        // })
     }
 
     function highlight(timetable){
         var data=timetable.slots;
-        console.log(data);
         $('.TimeLines').css("background-color","white");
         data.forEach(function(aRow){
-            console.log(aRow);
-            if(aRow.id=="1"){
-               for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
-                {
-                    $('.fc-mon').find("#hours-" +i+ "").css("background-color","black");
-                }
+              var startdate=settings.startdate.val();
+              var enddate=settings.enddate.val();
+           //  var startdate="";
+           //  var enddate="";
+            currentDate=moment(aRow.from).format('L');
+            if(startdate==''){
+                startdate=currentDate;
+            }
+            console.log(startdate);
+            console.log(enddate); 
+            console.log(currentDate);
+        if(enddate=='' && startdate==currentDate){ //enddate null +startdate!=currentdate
+            if(aRow.id=="1"){     
+                  for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                    {
+                        $('.fc-mon').find("#hours-" +i+ "").css("background-color","black");
+                    }
             }
             else if(aRow.id=="2"){
-                for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
-                {
-                    $('.fc-tue').find("#hours-" +i+ "").css("background-color","black");
-                }
+                    for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                    {
+                        $('.fc-tue').find("#hours-" +i+ "").css("background-color","black");
+                    }
             }
             else if(aRow.id=="3"){
-                for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
-                {
-                    $('.fc-wed').find("#hours-" +i+ "").css("background-color","black");
-                }
+                    for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                    {
+                        $('.fc-wed').find("#hours-" +i+ "").css("background-color","black");
+                    }  
             }
             else if(aRow.id=="4"){
-                for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
-                {
-                    $('.fc-thu').find("#hours-" +i+ "").css("background-color","black");
-                }
+                     for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                    {
+                        $('.fc-thu').find("#hours-" +i+ "").css("background-color","black");
+                    }
             }
             else if(aRow.id=="5"){
-                for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
-                {
-                    $('.fc-fri').find("#hours-" +i+ "").css("background-color","black");
-                }
+                    for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                    {
+                        $('.fc-fri').find("#hours-" +i+ "").css("background-color","black");
+                    }
             }
             else if(aRow.id=="6"){
-                for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
-                {
-                    $('.fc-sat').find("#hours-" +i+ "").css("background-color","black");
+                    for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                    {
+                        $('.fc-sat').find("#hours-" +i+ "").css("background-color","black");
+                    }
+            } 
+
+        }
+        else if(enddate=='' && startdate!=currentDate){
+           
+            if(aRow.id=="1"){
+                var datetomatch= moment($('.fc-mon').attr("data-date")).format('L')
+               console.log(datetomatch);
+                var match=moment(startdate).format('L');
+                console.log(typeof(match));
+                console.log(datetomatch)
+                console.log(startdate)
+                if(match===datetomatch || datetomatch>startdate){     
+                    for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                        {
+                            $('.fc-mon').find("#hours-" +i+ "").css("background-color","black");
+                        }
+                }
+                       
+            }
+            else if(aRow.id=="2"){
+                var datetomatch= moment($('.fc-tue').attr("data-date")).format('L')
+                var match=moment(startdate).format('L');
+                if(match===datetomatch || datetomatch>startdate){
+                    for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                    {
+                        $('.fc-tue').find("#hours-" +i+ "").css("background-color","black");
+                    }
+                }   
+            }
+            else if(aRow.id=="3"){
+                var datetomatch= moment($('.fc-wed').attr("data-date")).format('L')
+                var match=moment(startdate).format('L');
+                if(match===datetomatch || datetomatch>startdate){
+                    for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                    {
+                        $('.fc-wed').find("#hours-" +i+ "").css("background-color","black");
+                    }
+                }    
+            }
+            else if(aRow.id=="4"){
+                var datetomatch= moment($('.fc-thu').attr("data-date")).format('L')
+                var match=moment(startdate).format('L');
+                if(match===datetomatch || datetomatch>startdate){
+                    for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                    {
+                        $('.fc-thu').find("#hours-" +i+ "").css("background-color","black");
+                    }
+                }   
+            }
+            else if(aRow.id=="5"){
+                var datetomatch= moment($('.fc-fri').attr("data-date")).format('L')
+                var match=moment(startdate).format('L');
+                if(match===datetomatch || datetomatch>startdate){
+                    for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                    {
+                        $('.fc-fri').find("#hours-" +i+ "").css("background-color","black");
+                    }
+                }   
+            }
+            else if(aRow.id=="6"){
+                var datetomatch= moment($('.fc-sat').attr("data-date")).format('L')
+                var match=moment(startdate).format('L');
+                if(match===datetomatch || datetomatch>startdate){
+                    for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                    {
+                        $('.fc-sat').find("#hours-" +i+ "").css("background-color","black");
+                    }
                 }
             }
 
-        })
-   
-            
-        // }
-        // else if(id=="2"){
-        //     $('.fc-tue .TimeLines').css("background-color","White");
-        //     for(i=startvalue;i<=endvalue;i++)
-        //     {
-        //         $('.fc-tue').find("#hours-" +i+ "").css("background-color","black");
-        //     }
-        // }
-        // else if(id=="3"){
-        //     $('.fc-wed .TimeLines').css("background-color","White");
-        //     for(i=startvalue;i<=endvalue;i++)
-        //     {
-        //         $('.fc-wed').find("#hours-" +i+ "").css("background-color","black");
-        //     }
-        // }
-        // else if(id=="4"){
-        //     $('.fc-thu .TimeLines').css("background-color","White");
-        //     for(i=startvalue;i<=endvalue;i++)
-        //     {
-        //         $('.fc-thu').find("#hours-" +i+ "").css("background-color","black");
-        //     }
-        // }
-        // else if(id=="5"){
-        //     $('.fc-fri .TimeLines').css("background-color","White");
-        //     for(i=startvalue;i<=endvalue;i++)
-        //     {
-        //         $('.fc-fri').find("#hours-" +i+ "").css("background-color","black");
-        //     }
-        // }
-        // else if(id=="6"){
-        //     $('.fc-sat .TimeLines').css("background-color","White");
-        //     for(i=startvalue;i<=endvalue;i++)
-        //     {
-        //         $('.fc-sat').find("#hours-" +i+ "").css("background-color","black");
-        //     }
-        // }
+        }
+        else{                          //end not null start not null     
+            while(startdate<=enddate){
+                // debugger  
+                if(aRow.id=="1"){
+                    var datetomatch= moment($('.fc-mon').attr("data-date")).format('L')
+                    var match=moment(startdate).format('L');
+                    if(match===datetomatch){     
+                        for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                            {
+                                $('.fc-mon').find("#hours-" +i+ "").css("background-color","black");
+                            }
+                    }       
+                }
+                else if(aRow.id=="2"){
+                    var datetomatch= moment($('.fc-tue').attr("data-date")).format('L')
+                    var match=moment(startdate).format('L');
+                    if(match===datetomatch){
+                        for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                        {
+                            $('.fc-tue').find("#hours-" +i+ "").css("background-color","black");
+                        }
+                    }   
+                }
+                else if(aRow.id=="3"){
+                    var datetomatch= moment($('.fc-wed').attr("data-date")).format('L')
+                    var match=moment(startdate).format('L');
+                    if(match===datetomatch){
+                        for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                        {
+                            $('.fc-wed').find("#hours-" +i+ "").css("background-color","black");
+                        }
+                    }    
+                }
+                else if(aRow.id=="4"){
+                    var datetomatch= moment($('.fc-thu').attr("data-date")).format('L')
+                    var match=moment(startdate).format('L');
+                    if(match===datetomatch){
+                        for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                        {
+                            $('.fc-thu').find("#hours-" +i+ "").css("background-color","black");
+                        }
+                    }   
+                }
+                else if(aRow.id=="5"){
+                    var datetomatch= moment($('.fc-fri').attr("data-date")).format('L')
+                    var match=moment(startdate).format('L');
+                    if(match===datetomatch){
+                        for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                        {
+                            $('.fc-fri').find("#hours-" +i+ "").css("background-color","black");
+                        }
+                    }   
+                }
+                else if(aRow.id=="6"){
+                    var datetomatch= moment($('.fc-sat').attr("data-date")).format('L')
+                    var match=moment(startdate).format('L');
+                    if(match===datetomatch){
+                        for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                        {
+                            $('.fc-sat').find("#hours-" +i+ "").css("background-color","black");
+                        }
+                    }
+                }
 
-    }
+               console.log(startdate=moment(startdate).add(1, 'days').format('L'));
+            }
+              
+        }
+        
+    })
+    
+}
 
     function selectCreater(){
         var min = 1,
@@ -263,8 +380,8 @@ function Calendar(){
                   $('input[type="checkbox"]', settings.table).prop('checked',true);
             }
             settings.checkbox.toggleClass('allChecked').not(settings.button);
-            var x = settings.element1.val(); 
-            var y = settings.element2.val();  
+           // var x = settings.element1.val(); 
+           // var y = settings.element2.val();  
             settings.start_time.val(settings.element1.val());
             settings.end_time.val(settings.element2.val());
       
@@ -304,6 +421,13 @@ function Calendar(){
           }
     }
 
+    function startdate(){
+        settings.startdate.datepicker();
+    }
+
+    function enddate(){
+        settings.enddate.datepicker();  
+    }
 
     
 
@@ -317,6 +441,8 @@ function Calendar(){
         fullCalendar:fullCalendar,
         highlighter:highlighter,
         highlight:highlight,
+        startdate:startdate,
+        enddate:enddate,
     }
 };
 
