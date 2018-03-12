@@ -363,3 +363,6 @@
     font-style: normal;
     white-space: normal;
 }
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    font-size: 120% !important;
+}
