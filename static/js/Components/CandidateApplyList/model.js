@@ -103,7 +103,8 @@ function candidateList() {
             rejectButton: card.find(settings.candidateRejectButtonClass),
             savedButton: card.find(settings.candidateSaveButton),
             downloadResumeButton: card.find(settings.candidateDownloadResumeButton),
-            interviewinvite: card.find(".interviewinvite")
+            interviewinvite: card.find(".interviewinvite"),
+            coverLetterLink: card.find(".coverLetterLink")
 		}
 	}
 
@@ -177,6 +178,10 @@ function candidateList() {
 
             profStr+=item.element[0].outerHTML
         })
+        console.log(aData["jobs"].length)
+        if(aData["jobs"].length > 3) {
+            profStr+= "<a href='javascript:void(0)' style='color: #155d9a'>"+(aData["jobs"].length - 3)+" more work experience.</a>"
+        }
         item.profList.html(profStr)
         var eduStr = '';
         $.each(aData["education"],function(index, anObj) {
@@ -189,6 +194,10 @@ function candidateList() {
             item.degree.text(anObj["degree"] + "("+anObj["courseType"]+")")
             eduStr+=item.element[0].outerHTML
         })
+        if(aData["education"].length > 3) {
+            eduStr+= "<a href='javascript:void(0)' onclick=function(e){e.preventDefault()} style='color: #155d9a'>"+(aData["education"].length - 3)+" more education.</a>"
+        }
+
         item.eduList.html(eduStr)
 
         console.log(aData['userID']);
@@ -203,6 +212,9 @@ function candidateList() {
         // if(aData["invite"]) {
         //     item.interviewinvite.text("Resend Interview Invite");
         // }
+        if(aData["cover"]) {
+            item.isFollowedUp.removeClass("hidden")
+        }
         return item
     }
 

@@ -172,7 +172,8 @@
 				"static/css/footer.css",
 				"static/css/buttons.css",
 				"static/css/utilities.css",
-				"static/css/colors.css"
+				"static/css/colors.css",
+				"static/css/modal.css"
 			],
 			"prod": [
 				"static/build/css/premium-posting.min.css"
@@ -182,10 +183,14 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/Utilities/request.js",
+				"static/js/Utilities/modal.js",
+				"static/js/Utilities/common.js",
 				"static/js/header.js",
 				"static/js/utilities.js",
 				"static/js/vendor/swipe.js",
-				"static/js/premium-posting.js"
+				"static/js/premium-posting.js",
+				"static/js/Utilities/toastNotifier.js"
+
 			],
 			"prod" : [
 				"static/build/js/premium-posting.min.js"
@@ -834,7 +839,11 @@
 				"static/css/global-search.css",
 				"static/css/utilities.css",
 				"static/css/footer.css",
-				"static/css/header.css"
+				"static/css/header.css",
+				"static/css/chat-sticky.css",
+				"static/css/utilities.css",
+				"static/css/animate.css",
+				"static/css/jquery-chatbox.css"
 			],
 			"prod": [
 				"static/build/css/global-search.min.css"
@@ -850,8 +859,10 @@
 				"static/js/tagged-candidates.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/common.js",
+				"static/js/chat-pubnub-sticky.js",
+				"static/js/chat-sticky.js",
 				"static/js/vendor/moment.min.js",
-				"static/js/Services/fetchCandidatesByTags.js",
+				"static/js/Services/globalSearch.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Components/GlobalSearch/model.js",

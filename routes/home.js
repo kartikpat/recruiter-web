@@ -247,7 +247,8 @@ module.exports = function(settings){
 			styles:  assetsMapper["premium-posting"]["styles"][mode],
 			scripts: assetsMapper["premium-posting"]["scripts"][mode],
 			baseUrl: baseUrl,
-			baseDomain: baseDomain
+			baseDomain: baseDomain,
+			profile: req.profile
 		})
 		return
 	})

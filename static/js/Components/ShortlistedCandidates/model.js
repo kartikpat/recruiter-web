@@ -151,7 +151,7 @@ function candidateList() {
             item.candidateViewProfileLink.attr("href", "/recruiter/job/"+settings.jobId+"/applications/"+aData["id"]+"")
        }
        if(aData["pro"]) {
-           item.proMember.removeClass("hidden")
+           item.isProMember.removeClass("hidden")
        }
        if(aData["follow"]) {
            item.isFollowedUp.removeClass("hidden")

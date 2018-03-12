@@ -826,6 +826,22 @@ span.sticker {
     font-size: 14px; }
   .modal_content .section {
     padding: 20px 0; }
+    .modal_content .section input {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -o-appearanance: none;
+      border-radius: 3px;
+      background: #FFF;
+      width: 100%;
+      border: 1px solid #e8e8e8;
+      cursor: pointer;
+      padding: 16px 22px;
+      font-size: 14px;
+      line-height: 1.5; }
+      .modal_content .section input:focus {
+        border-color: #4fa995; }
+      .modal_content .section input.error-border {
+        border-color: #ee1620; }
 
 /* The Close Button */
 .modal_close {

@@ -44,6 +44,10 @@
 	}
 	.section {
 		padding: 20px 0;
+        input {
+            @include input-field;
+            
+        }
 	}
 
 }
@@ -106,7 +110,7 @@
 
 		.modal-body {
 			height:100%;
-			
+
 			.guidelines-section {
 				height:100%;
 			}

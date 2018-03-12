@@ -2,6 +2,8 @@
 
 var errorResponses = {
 	missingTitle: 'Please enter the job title',
+	maxLimitTitle: 'Cannot exceed 120 letters',
+	minLimitTitle: 'Atleast 3 letters',
 	missingLocation: 'Please choose a location',
 	missingMinExp: 'Please choose years of experience required for the job',
 	missingMaxExp: 'Please choose years of experience required for the job',
@@ -103,6 +105,7 @@ function Job(){
 		console.log(settings)
 		if(!(
 				ifExists(settings.title)
+				&& wordsLimit(settings.title)
 				&& checkPillValues(settings.location)
 				&& ifExists(settings.minExp)
 				&& ifExists(settings.maxExp)
@@ -188,8 +191,12 @@ function Job(){
 		return ob;
 	}
 
+	function getTitleFormat(title, regex) {
+		return title.replace(regex, '');
+	}
+
 	function setJobData(jobId, obj) {
-		settings.title.val(obj["title"]);
+		settings.title.val(getTitleFormat(obj["title"],(/\(\d+-\d+ \w+\)$/)));
 		if(settings.editor){
 			settings.editor.setContent(obj["description"])
 		}
@@ -256,6 +263,26 @@ function onClickCancelForm(element) {
 	element.click(function() {
 		window.location.href = "/my-jobs"
 	})
+}
+
+function wordsLimit(element) {
+	var errorElement = element.next('.error');
+	if(element && element.val() && element.val().length < 3){
+		errorElement.text(errorResponses['minLimit'+element.attr('name')]).removeClass("hidden");
+		focusOnElement(element)
+		return false;
+	}
+	if(element && element.val() && element.val().length > 120){
+		errorElement.text(errorResponses['maxLimit'+element.attr('name')]).removeClass("hidden");
+		focusOnElement(element)
+		return false;
+	}
+	else if (!errorElement.hasClass("hidden")) {
+		eraseError(element)
+		console.log("entering in else if")
+	}
+	console.log("returning true")
+	return true;
 }
 
 function ifExists(element){

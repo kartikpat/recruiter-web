@@ -14,19 +14,19 @@ var stat = {
     "4,5": "Reviewed"
 };
 
-var store= {}
+var chatStore= {}
 function saveToStore(dataArray){
     dataArray.forEach(function(anObj) {
-        store[anObj["userId"]] = anObj;
+        chatStore[anObj["userId"]] = anObj;
     })
 }
 
-function emptyStore(){
-    store = {};
-}
+// function emptyStore(){
+//     chatStore = {};
+// }
 
 function getCandidateFromStore(candidateId){
-    return store[candidateId]
+    return chatStore[candidateId]
 }
 
 function populateSideChatView(array) {
@@ -73,6 +73,7 @@ $(document).ready(function(){
             populateSideChatView(res.data);
 			subscribe(getArray(res.data));
             saveToStore(res.data)
+
             if($(document).width() > 1024 ){
                 $("#conversationListingContainer").removeClass("hidden")
             }
@@ -193,7 +194,7 @@ chatContainer.on('click','.candidate-card', function() {
 })
 
 $("#conversationListing").on('click','.conversationItem', function() {
-
+    console.log(chatStore)
 	if(!($(this).hasClass("selected"))) {
 
 		var channelName = $(this).attr("data-channel-name")
@@ -205,8 +206,11 @@ $("#conversationListing").on('click','.conversationItem', function() {
 		chatContainerBox.find(".info-buttons .minus-icon").attr("data-id",$(this).attr("data-id"));
 		chatContainerBox.find(".info-buttons .close-icon").attr("data-id",$(this).attr("data-id"));
 		chatContainerBox.attr("data-id",$(this).attr("data-id"));
-        var dataID = chatContainerBox.attr("data-id");
+        var dataID = $(this).attr("data-id");
+        console.log(dataID)
+        console.log(chatStore[dataID])
         var obj = getCandidateFromStore(dataID)
+        console.log(obj)
         chatContainerBox.attr("data-channel-name",channelName);
         chatContainerBox.find(".info-container img").attr("src", (obj["img"] || "/static/images/noimage.png"))
         chatContainerBox.find(".info-container .primary-content").text(obj["name"] + " works as " + obj["designation"] + " at iimjobs")
@@ -474,7 +478,7 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
         }
 
     else {
-        
+
         var channelName = "iimjobs--r"+recruiterId+"-j"+array[0]["userID"]+"";
         var chatContainerBox = chatDivBox.clone().removeClass('prototype hidden');
         chatContainerBox.find(".candidate-name").text(array[0]["name"]);
