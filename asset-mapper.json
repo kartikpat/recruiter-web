@@ -839,7 +839,11 @@
 				"static/css/global-search.css",
 				"static/css/utilities.css",
 				"static/css/footer.css",
-				"static/css/header.css"
+				"static/css/header.css",
+				"static/css/chat-sticky.css",
+				"static/css/utilities.css",
+				"static/css/animate.css",
+				"static/css/jquery-chatbox.css"
 			],
 			"prod": [
 				"static/build/css/global-search.min.css"
@@ -855,8 +859,10 @@
 				"static/js/tagged-candidates.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/common.js",
+				"static/js/chat-pubnub-sticky.js",
+				"static/js/chat-sticky.js",
 				"static/js/vendor/moment.min.js",
-				"static/js/Services/fetchCandidatesByTags.js",
+				"static/js/Services/globalSearch.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Components/GlobalSearch/model.js",

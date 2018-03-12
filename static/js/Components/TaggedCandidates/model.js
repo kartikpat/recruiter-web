@@ -137,7 +137,7 @@ function candidateList() {
            }
        }
        if(aData["pro"]) {
-           item.proMember.removeClass("hidden")
+           item.isProMember.removeClass("hidden")
        }
        if(aData["follow"]) {
            item.isFollowedUp.removeClass("hidden")

@@ -15,7 +15,8 @@ function candidateList() {
         settings.tagId = -1,
         settings.candidateItemShell= $(".candidateItem.shell"),
         settings.resultCount = $("#resultCount"),
-        settings.queryParam = $("#queryParam")
+        settings.queryParam = $("#queryParam"),
+        settings.candAppliedJobsClass = ".candAppliedJobs"
    }
 
    function setConfig(key, value) {
@@ -118,6 +119,7 @@ function candidateList() {
            item.degree.text(anObj["degree"] + "("+anObj["courseType"]+")")
            eduStr+=item.element[0].outerHTML
        })
+       
        item.eduList.html(eduStr)
        if(aData["applications"]) {
            if(aData["applications"].length > 1) {
@@ -139,7 +141,7 @@ function candidateList() {
            }
        }
        if(aData["pro"]) {
-           item.proMember.removeClass("hidden")
+           item.isProMember.removeClass("hidden")
        }
        if(aData["follow"]) {
            item.isFollowedUp.removeClass("hidden")

@@ -59,7 +59,7 @@ function userCredentials(){
 			user.email.next('.error').text(errorResponses['missingEmail'])
 			return false
 		}
-		alert(typeof(user.email.val()))
+		
 		if(!emailRegex.test(user.email.val())){
 			user.email.next('.error').text(errorResponses['invalidEmail'])
 			return false
