@@ -1,5 +1,16 @@
 {{> header}}
 
+<div class="toast-notification-container">
+	<div class="toast-notification">
+		<!-- <div class="notification-icon">
+			<img src="/static/images/close-icon.png" />
+		</div> -->
+		<div class="notification-message">
+			<p></p>
+		</div>
+	</div>
+</div>
+
 <div class="main-container">
     <div id="success-job-posted" class="success-job-posted hidden">Job Posted Successfully!!</div>
     <div class="recruiter-plan-banner-container">
@@ -30,12 +41,12 @@
         <div class="recruiter-plan-signature">
             <div class="recruiter-plan-signature-header-container">
                 <div class="recruiter-plan-basic-header">
-                
+
                     <h5>SIGNATURE POSTING</h5>
                     <h6>Viewed <strong>20 more times</strong> than a free posting</h6>
-                
+
                     <div class="plan-title-separator"></div>
-                
+
                     <h5 class="cost">Rs. 5000</h5>
                 </div>
             </div>
@@ -65,12 +76,12 @@
         </div>
         <div class="recruiter-plan-platinum">
             <div class="recruiter-plan-platinum-header-container">
-                <h5>SIGNATURE POSTING</h5>
+                <h5>PLATINUM POSTING</h5>
                     <h6>Viewed <strong>10 more times</strong> than a free posting</h6>
-                
+
                     <div class="plan-title-separator"></div>
-                
-                    <h5 class="cost">Rs. 3000</h5>  
+
+                    <h5 class="cost">Rs. 3000</h5>
             </div>
             <div class="recruiter-plan-platinum-content">
                 <div class="list-container">
@@ -119,12 +130,12 @@
             <div class="recruiter-plan-signature">
                 <div class="recruiter-plan-signature-header-container">
                     <div class="recruiter-plan-basic-header">
-                    
+
                         <h5>SIGNATURE POSTING</h5>
                         <h6>Viewed <strong>20 more times</strong> than a free posting</h6>
-                    
+
                         <div class="plan-title-separator"></div>
-                    
+
                         <h5 class="cost">Rs. 5000</h5>
                     </div>
                 </div>
@@ -154,12 +165,12 @@
             </div>
             <div class="recruiter-plan-platinum">
                 <div class="recruiter-plan-platinum-header-container">
-                    <h5>SIGNATURE POSTING</h5>
+                    <h5>PLATINUM POSTING</h5>
                         <h6>Viewed <strong>10 more times</strong> than a free posting</h6>
-                    
+
                         <div class="plan-title-separator"></div>
-                    
-                        <h5 class="cost">Rs. 3000</h5>  
+
+                        <h5 class="cost">Rs. 3000</h5>
                 </div>
                 <div class="recruiter-plan-platinum-content">
                     <div class="list-container">
@@ -170,7 +181,7 @@
                             <p>Promoted in daily newsletters circulated among all registered job seekers.</p>
                         </div>
                         <div class="list">
-                            <p>Logo/Branding in the posting.</p>
+                            <p>Logo/ in the posting.</p>
                         </div>
 
 
@@ -188,27 +199,21 @@
 <div id="signature-modal" class="modal hidden animated fadeIn bg-overlay">
     <!-- Modal content -->
 
-    <div class="modal-content  ">
-        <div class="modal-header">
-            <span class="modal-heading">Signature Posting</span>
-            <span class="close">&times;</span>
+    <div class="modal_wrapper">
+        <span class="modal_close">&times;</span>
+        <div class="modal_header">
+            <div class="modal_heading">Signature Posting</div>
         </div>
-        <div class="modal-center">
-            <div class="list">
-                Thank you for choosing the Signature plan.
+        <div class="modal_content">
+            <div class="modal_text modalTextPrimary">Thank you for choosing the Signature plan.</div>
+            <div class="section modal_text modalTextSecondary">
+                 Please confirm your phone number below. We will call you back.
             </div>
-            <div class="list">
-                Please confirm your phone number below. We will call you back.
+            <div class="section">
+                <input id="signature-contact" type="text" value="{{profile.phone}}">
+                <div id="title_label" class="error hidden"></div>
             </div>
-            <div class="list">
-                <input id="signature-contact" type="text">
-            </div>
-        </div>
-        <div class="modal-footer">
-            <div class="buttons-container">
-                <button class="button signature-continue">Continue</button>
-                <button class="button close-modal">Close</button>
-            </div>
+            <div class="action-buttons"><button class="signature-continue">Continue</button></div>
         </div>
     </div>
 </div>
@@ -216,28 +221,22 @@
     <div id="platinum-modal" class="modal hidden animated fadeIn bg-overlay">
         <!-- Modal content -->
 
-        <div class="modal-content  ">
-            <div class="modal-header">
-                <span class="modal-heading">Platinum Posting</span>
-                <span class="close">&times;</span>
-            </div>
-            <div class="modal-center">
-                <div class="list">
-                    Thank you for choosing the Platinum plan.
+        <div class="modal_wrapper">
+            <span class="modal_close">&times;</span>
+            <div class="modal_header">
+				<div class="modal_heading">Platinum Posting</div>
+			</div>
+            <div class="modal_content">
+				<div class="modal_text modalTextPrimary">Thank you for choosing the Platinum plan.</div>
+				<div class="section modal_text modalTextSecondary">
+				     Please confirm your phone number below. We will call you back.
+				</div>
+                <div class="section">
+                    <input id="platinum-contact" type="text" value="{{profile.phone}}">
+                    <div id="title_label" class="error hidden"></div>
                 </div>
-                <div class="list">
-                    Please confirm your phone number below. We will call you back.
-                </div>
-                <div class="list">
-                    <input id="platinum-contact" type="text">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="buttons-container">
-                    <button class="button platinum-continue">Continue</button>
-                    <button class="button close-modal">Close</button>
-                </div>
-            </div>
+				<div class="action-buttons"><button class="platinum-continue">Continue</button></div>
+			</div>
         </div>
 
     </div>

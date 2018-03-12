@@ -172,7 +172,8 @@
 				"static/css/footer.css",
 				"static/css/buttons.css",
 				"static/css/utilities.css",
-				"static/css/colors.css"
+				"static/css/colors.css",
+				"static/css/modal.css"
 			],
 			"prod": [
 				"static/build/css/premium-posting.min.css"
@@ -182,10 +183,14 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/Utilities/request.js",
+				"static/js/Utilities/modal.js",
+				"static/js/Utilities/common.js",
 				"static/js/header.js",
 				"static/js/utilities.js",
 				"static/js/vendor/swipe.js",
-				"static/js/premium-posting.js"
+				"static/js/premium-posting.js",
+				"static/js/Utilities/toastNotifier.js"
+
 			],
 			"prod" : [
 				"static/build/js/premium-posting.min.js"

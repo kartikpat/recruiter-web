@@ -8,6 +8,8 @@
 // 	missingParameters: 'Oops! Our engineers will fix this shortly. Please try again after sometime.',
 // 	serviceError: 'Oops! Our engineers are working on fixing this, please try again after sometime.'
 // }
+
+var emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 function userCredentials(){
 	var user= {}
 	function init(){
@@ -57,7 +59,8 @@ function userCredentials(){
 			user.email.next('.error').text(errorResponses['missingEmail'])
 			return false
 		}
-		if(!isValidEmail(user.email.val())){
+		alert(typeof(user.email.val()))
+		if(!emailRegex.test(user.email.val())){
 			user.email.next('.error').text(errorResponses['invalidEmail'])
 			return false
 		}

@@ -7,7 +7,6 @@ $(document).ready(function(){
 		type='edit';
 	jobDetails.init(type);
 
-
 	jobDetails.onChangeJobPremium(function(){
 		alert("hi")
 	})
@@ -23,11 +22,11 @@ $(document).ready(function(){
 		fetchJob(jobId);
 	}
  	function onSuccessfulSubmitJob(topic, data){
-		
+
 		// alert("You have successfully posted your job.Our team is reviewing your job and it usually takes upto 24 hours for a job to get published.")
 		if(profile["availableCredits"] > 0)
-			return window.location.href = "/my-jobs";
-		window.location.href = "/recruiter/recruiter-plan"
+			return window.location.href = "/my-jobs?jobPostSuccess=1";
+		window.location.href = "/recruiter/recruiter-plan?jobPostSuccess=1"
  		console.log(topic)
 		console.log(data);
 

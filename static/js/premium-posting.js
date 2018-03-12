@@ -8,17 +8,22 @@ $(document).ready(function(){
     $(".button.platinum-continue").click(platinumPosting);
 	$(".close-modal, .close").click(closeModal);
 
-    isSuccess = getUrlParameter('success');
+    // isSuccess = getUrlParameter('success');
+    //
+    // if(isSuccess == 1) {
+    //     $("#success-job-posted").removeClass("hidden");
+    // }
 
-    if(isSuccess == 1) {
-        $("#success-job-posted").removeClass("hidden");
-    }
+    var stat = getQueryParameter("jobPostSuccess")
+	if(parseInt(stat) == 1) {
+		toastNotify(1, "Job Posted Successfully!")
+	}
 
     window.mySwipe = $('.mobile-swipe-container').Swipe().data('Swipe');
 });
 
 var basicPosting = function() {
-    window.location = "/";
+    window.location = "/my-jobs";
 }
 
 var signaturePosting = function() {
@@ -34,18 +39,15 @@ var closeModal = function() {
 }
 
 var openSignatureModal = function() {
+    addBodyFixed()
     $("#signature-modal").removeClass("hidden");
-    getRequest(baseUrl+"/recruiter/"+recruiterID, {}, function(res){
-        $("#signature-contact").val(res["data"][0]["phone"]);
-    })
+
 }
 
 var openPlatinumModal = function() {
-
+    addBodyFixed()
     $("#platinum-modal").removeClass("hidden");
-    getRequest(baseUrl+"/recruiter/"+recruiterID, {}, function(res){
-        $("#platinum-contact").val(res["data"][0]["phone"]);
-    })
+
 }
 
 var getUrlParameter = function getUrlParameter(sParam) {
