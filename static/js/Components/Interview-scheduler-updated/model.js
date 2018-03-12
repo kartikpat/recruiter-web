@@ -24,9 +24,9 @@ function Calendar(){
         settings.fullcalendar=$('#calendar'),
         settings.Calendarhours= $('.fc-day'),
         settings.Calendarbutton= $('.fc-button'),
-        settings.Highlighter=$('.highlighter'),
-        settings.startdate=$('#startdatepicker'),
-        settings.enddate=$('#enddatepicker')
+        settings.Highlighter=$('.highlighter')
+        // settings.startdate=$('#startdatepicker'),
+        // settings.enddate=$('#enddatepicker')
     }
 
 
@@ -112,10 +112,10 @@ function Calendar(){
         var data=timetable.slots;
         $('.TimeLines').css("background-color","white");
         data.forEach(function(aRow){
-              var startdate=settings.startdate.val();
-              var enddate=settings.enddate.val();
-           //  var startdate="";
-           //  var enddate="";
+            //   var startdate=settings.startdate.val();
+            //   var enddate=settings.enddate.val();
+            var startdate="";
+            var enddate="";
             currentDate=moment(aRow.from).format('L');
             if(startdate==''){
                 startdate=currentDate;
@@ -125,37 +125,37 @@ function Calendar(){
             console.log(currentDate);
         if(enddate=='' && startdate==currentDate){ //enddate null +startdate!=currentdate
             if(aRow.id=="1"){     
-                  for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                  for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                     {
                         $('.fc-mon').find("#hours-" +i+ "").css("background-color","black");
                     }
             }
             else if(aRow.id=="2"){
-                    for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                    for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                     {
                         $('.fc-tue').find("#hours-" +i+ "").css("background-color","black");
                     }
             }
             else if(aRow.id=="3"){
-                    for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                    for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                     {
                         $('.fc-wed').find("#hours-" +i+ "").css("background-color","black");
                     }  
             }
             else if(aRow.id=="4"){
-                     for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                     for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                     {
                         $('.fc-thu').find("#hours-" +i+ "").css("background-color","black");
                     }
             }
             else if(aRow.id=="5"){
-                    for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                    for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                     {
                         $('.fc-fri').find("#hours-" +i+ "").css("background-color","black");
                     }
             }
             else if(aRow.id=="6"){
-                    for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                    for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                     {
                         $('.fc-sat').find("#hours-" +i+ "").css("background-color","black");
                     }
@@ -172,7 +172,7 @@ function Calendar(){
                 console.log(datetomatch)
                 console.log(startdate)
                 if(match===datetomatch || datetomatch>startdate){     
-                    for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                    for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                         {
                             $('.fc-mon').find("#hours-" +i+ "").css("background-color","black");
                         }
@@ -183,7 +183,7 @@ function Calendar(){
                 var datetomatch= moment($('.fc-tue').attr("data-date")).format('L')
                 var match=moment(startdate).format('L');
                 if(match===datetomatch || datetomatch>startdate){
-                    for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                    for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                     {
                         $('.fc-tue').find("#hours-" +i+ "").css("background-color","black");
                     }
@@ -193,7 +193,7 @@ function Calendar(){
                 var datetomatch= moment($('.fc-wed').attr("data-date")).format('L')
                 var match=moment(startdate).format('L');
                 if(match===datetomatch || datetomatch>startdate){
-                    for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                    for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                     {
                         $('.fc-wed').find("#hours-" +i+ "").css("background-color","black");
                     }
@@ -203,7 +203,7 @@ function Calendar(){
                 var datetomatch= moment($('.fc-thu').attr("data-date")).format('L')
                 var match=moment(startdate).format('L');
                 if(match===datetomatch || datetomatch>startdate){
-                    for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                    for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                     {
                         $('.fc-thu').find("#hours-" +i+ "").css("background-color","black");
                     }
@@ -213,7 +213,7 @@ function Calendar(){
                 var datetomatch= moment($('.fc-fri').attr("data-date")).format('L')
                 var match=moment(startdate).format('L');
                 if(match===datetomatch || datetomatch>startdate){
-                    for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                    for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                     {
                         $('.fc-fri').find("#hours-" +i+ "").css("background-color","black");
                     }
@@ -223,7 +223,7 @@ function Calendar(){
                 var datetomatch= moment($('.fc-sat').attr("data-date")).format('L')
                 var match=moment(startdate).format('L');
                 if(match===datetomatch || datetomatch>startdate){
-                    for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                    for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                     {
                         $('.fc-sat').find("#hours-" +i+ "").css("background-color","black");
                     }
@@ -238,7 +238,7 @@ function Calendar(){
                     var datetomatch= moment($('.fc-mon').attr("data-date")).format('L')
                     var match=moment(startdate).format('L');
                     if(match===datetomatch){     
-                        for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                        for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                             {
                                 $('.fc-mon').find("#hours-" +i+ "").css("background-color","black");
                             }
@@ -248,7 +248,7 @@ function Calendar(){
                     var datetomatch= moment($('.fc-tue').attr("data-date")).format('L')
                     var match=moment(startdate).format('L');
                     if(match===datetomatch){
-                        for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                        for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                         {
                             $('.fc-tue').find("#hours-" +i+ "").css("background-color","black");
                         }
@@ -258,7 +258,7 @@ function Calendar(){
                     var datetomatch= moment($('.fc-wed').attr("data-date")).format('L')
                     var match=moment(startdate).format('L');
                     if(match===datetomatch){
-                        for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                        for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                         {
                             $('.fc-wed').find("#hours-" +i+ "").css("background-color","black");
                         }
@@ -268,7 +268,7 @@ function Calendar(){
                     var datetomatch= moment($('.fc-thu').attr("data-date")).format('L')
                     var match=moment(startdate).format('L');
                     if(match===datetomatch){
-                        for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                        for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                         {
                             $('.fc-thu').find("#hours-" +i+ "").css("background-color","black");
                         }
@@ -278,7 +278,7 @@ function Calendar(){
                     var datetomatch= moment($('.fc-fri').attr("data-date")).format('L')
                     var match=moment(startdate).format('L');
                     if(match===datetomatch){
-                        for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                        for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                         {
                             $('.fc-fri').find("#hours-" +i+ "").css("background-color","black");
                         }
@@ -288,7 +288,7 @@ function Calendar(){
                     var datetomatch= moment($('.fc-sat').attr("data-date")).format('L')
                     var match=moment(startdate).format('L');
                     if(match===datetomatch){
-                        for(i=parseInt(aRow.startTime);i<=parseInt(aRow.endTime);i++)
+                        for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                         {
                             $('.fc-sat').find("#hours-" +i+ "").css("background-color","black");
                         }
@@ -421,15 +421,17 @@ function Calendar(){
           }
     }
 
-    function startdate(){
-        settings.startdate.datepicker();
-    }
-
-    function enddate(){
-        settings.enddate.datepicker();  
-    }
-
+    // function startdate(){
+    // settings.startdate.on("click",function(){ 
+    //    $('.datepicker').datepicker();
+    //     })   
+    // }
     
+    // function enddate(){
+    //     settings.enddate.on("click",function(){
+    //     settings.enddate.datepicker();  
+    //     })
+    // }
 
     return {
         init:init,
@@ -441,8 +443,8 @@ function Calendar(){
         fullCalendar:fullCalendar,
         highlighter:highlighter,
         highlight:highlight,
-        startdate:startdate,
-        enddate:enddate,
+        // startdate:startdate,
+        // enddate:enddate,
     }
 };
 
