@@ -542,3 +542,25 @@ $button-border-color: #8f8a8a;
 .error{
 	position: relative !important;
 }
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    text-align: center;
+    /* opacity: .8; */
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1em;
+    font-size: 18px;
+    /* font-size: 120%; */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+    margin-left: -0.2em;
+    margin-right: 0em;
+    /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}

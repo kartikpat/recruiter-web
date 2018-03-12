@@ -879,9 +879,9 @@
 				"static/css/header.css",
 				"static/css/colors.css",
 				"static/css/footer.css",
-				"static/css/dashboard.css",
 				"static/css/modal.css",
-				"static/css/utilities.css"
+				"static/css/utilities.css",
+				"static/css/dashboard.css"
 			],
 			"prod": [
 				"static/build/css/dashboard.min.css"
