@@ -165,9 +165,8 @@ jQuery(".tag-container").on("mouseleave",".tag-icons", function() {
 
 
 function addNewTag(labelName, labelValue, selector) {
-	
-	var maxOptions = jQuery(selector).attr("data-max-options");
 
+	var maxOptions = jQuery(selector).attr("data-max-options");
 
 	var tag = jQuery(".input-tag.prototype.hidden").clone().removeClass("prototype hidden");
 	tag.attr("data-id",labelValue);

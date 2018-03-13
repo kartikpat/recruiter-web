@@ -674,11 +674,11 @@
                     <div class="label">
                         <label for="tags">Tags</label>
                     </div>
-                    <div class="tag-container skill-tags" data-enable-custom="true"  id="jobTags" data-max-options=5>
+                    <div class="tag-container skill-tags" data-enable-custom="true"  id="jobTags" data-max-options=11>
                         <div class="pill-button inactive">
                             <input type="text" data-placeholder-value="+ Add job tag" placeholder="+ Add job tag">
                             <div class="pill-listing">
-                                <ul id="recruiterTags">
+                                <ul id="jobTagsList">
 
                                 </ul>
                             </div>
@@ -700,7 +700,7 @@
                                     <span class="course-icon"><i class="icon-full-time"></i></span>
                                     <span class="course-option-label">Full time</span>
                                 </div>
-                                <img class="course-selected" src="/static/images/course-selected.svg">
+                                <span class="course-selected"><i class="icon-checked_icon"></i></span>
                             </label>
                         </div>
 
@@ -711,7 +711,7 @@
                                     <span class="course-icon"><i class="icon-part-time"></i></span>
                                     <span class="course-option-label">Part time</span>
                                 </div>
-                                <img class="course-selected" src="/static/images/course-selected.svg">
+                                <span class="course-selected"><i class="icon-checked_icon"></i></span>
                             </label>
                         </div>
 
@@ -722,7 +722,7 @@
                                     <span class="course-icon"><i class="icon-distance_learning"></i></span>
                                     <span class="course-option-label">Distance Learning Program</span>
                                 </div>
-                                <img class="course-selected" src="/static/images/course-selected.svg">
+                                <span class="course-selected"><i class="icon-checked_icon"></i></span>
                             </label>
                         </div>
 
@@ -733,7 +733,7 @@
                                     <span class="course-icon"><i class="icon-executive-program"></i></span>
                                     <span class="course-option-label">Executive Program</span>
                                 </div>
-                                <img class="course-selected" src="/static/images/course-selected.svg">
+                                <span class="course-selected"><i class="icon-checked_icon"></i></span>
                             </label>
                         </div>
 
@@ -744,7 +744,7 @@
                                     <span class="course-icon"><i class="icon-certification"></i></span>
                                     <span class="course-option-label">Certification</span>
                                 </div>
-                                <img class="course-selected" src="/static/images/course-selected.svg">
+                                <span class="course-selected"><i class="icon-checked_icon"></i></span>
                             </label>
                         </div>
 
@@ -764,7 +764,7 @@
                                     <span class="course-icon"><i class="icon-woman"></i></span>
                                     <span class="course-option-label">Female Candidates</span>
                                 </div>
-                                <img class="course-selected" src="/static/images/course-selected.svg">
+                                <span class="course-selected"><i class="icon-checked_icon"></i></span>
                             </label>
                         </div>
 
@@ -775,7 +775,7 @@
                                     <span class="course-icon"><i class="icon-shield"></i></span>
                                     <span class="course-option-label">Ex-defence personnel</span>
                                 </div>
-                                <img class="course-selected" src="/static/images/course-selected.svg">
+                                <span class="course-selected"><i class="icon-checked_icon"></i></span>
                             </label>
                         </div>
 
@@ -786,7 +786,7 @@
                                     <span class="course-icon"><i class="icon-woman"></i></span>
                                     <span class="course-option-label">Women Joining back the workforce</span>
                                 </div>
-                                <img class="course-selected" src="/static/images/course-selected.svg">
+                                <span class="course-selected"><i class="icon-checked_icon"></i></span>
                             </label>
                         </div>
 
@@ -797,7 +797,7 @@
                                     <span class="course-icon"><i class="icon-disabillity-symbol"></i></span>
                                     <span class="course-option-label">Differently-abled candidates</span>
                                 </div>
-                                <img class="course-selected" src="/static/images/course-selected.svg">
+                                <span class="course-selected"><i class="icon-checked_icon"></i></span>
                             </label>
                         </div>
 
@@ -897,4 +897,6 @@
         <span>Preselected Tag</span>
     </div>
 </div>
+
+<li data-value="1" class="jobTag prototype hidden"></li>
 {{> footer}}

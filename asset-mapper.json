@@ -154,6 +154,7 @@
 				"static/js/Utilities/modal.js",
 				"static/js/Services/fetchJob.js",
 				"static/js/Services/submitNewJob.js",
+				"static/js/Services/fetchJobTags.js",
 				"static/js/Services/submitEditJob.js",
 				"static/js/Components/PostJob/model.js",
 				"static/js/Components/PostJob/index.js"

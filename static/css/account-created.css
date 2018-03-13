@@ -269,6 +269,9 @@
 .icon-clock:before {
   content: '\e83a'; }
 
+.icon-checked_icon:before {
+  content: '\e819'; }
+
 .page-content {
   min-height: 100%;
   padding: 0;

@@ -78,7 +78,10 @@
 					<div class="candidates-area-header">
 						<div class="candidates-search">
 							<div class="keyword-search">
-								<input type="text" placeholder="Search candidate" class="candidate-keyword-filter left " id="searchInput"><button class="right search-trigger " id="searchButton" >Search</button>
+								<div class="container">
+									<input type="text" placeholder="Search candidate" class="candidate-keyword-filter left " id="searchInput"><button class="right search-trigger " id="searchButton" >Search</button>
+								</div>
+								<span class="error hidden " id="searchCandidateError">Please enter keyword</span>
 							</div>
 							<div class="filter-search">
 								<span class="button white filter-button" id="filterModalOpenButton"><span class="button-label">Filter</span></span>
@@ -565,95 +568,97 @@
 	<span class="skill-name js_skill_name">UI Development</span>
 </div> -->
 
-<div class="candidate-item candidateRow prototype hidden">
-	<div class="candidate-item-section image">
-		<div class="candidate-image">
-			<div class="candidate-select">
-				<div class="checkbox candidateCheckboxContainer">
-					<input class="candidateCheckbox" type="checkbox" id="candidate-3">
-					<label class="candidateCheckboxLabel" for="candidate-3"></label>
+<a href="" class="candidate-item candidateRow prototype hidden">
+
+		<div class="candidate-item-section image">
+			<div class="candidate-image">
+				<div class="candidate-select">
+					<div class="checkbox candidateCheckboxContainer">
+						<input class="candidateCheckbox" type="checkbox" id="candidate-3">
+						<label class="candidateCheckboxLabel" for="candidate-3"></label>
+					</div>
+				</div>
+				<img class="js_img" src="http://placehold.it/60x60/f5f5f5?text=+">
+				<div class="candidate-status online hidden"></div>
+			</div>
+			<div class="section">
+				<span class="sticker pro-member isPro hidden">Pro</span>
+			</div>
+		</div>
+
+		<div class="candidate-item-section personal-details">
+			<p class="profile-name js_name">Shelly Sharma</p>
+			<p class="experience-label data-label">
+				<span class="bold">Experience: </span>
+				<span class="experience value js_exp">2y 3m</span>
+			</p>
+			<p class="location-label data-label">
+				<span class="bold">Location: </span>
+				<span class="location value js_loc">Delhi</span>
+			</p>
+			<p class="applied-label data-label">
+				<span class="bold">Applied: </span>
+				<span class="applied value js_appliedOn">15-06-2017</span>
+			</p>
+			<p class="notice-period-label data-label">
+				<span class="bold">Notice Period: </span>
+				<span class="notice-period value js_notice">1 month</span>
+			</p>
+
+			<p><a href="#" class="cover-letter info-link coverLetterLink hidden">Cover letter</a></p>
+			<!-- <p><a href="#" class="recommendations info-link">Recommendations</a></p> -->
+
+			<div class="skill-tag-listing ">
+
+			</div>
+
+		</div>
+
+		<div class="candidate-item-section professional-information js_prof_list">
+
+		</div>
+
+		<div class="candidate-item-section educational-details js_edu_list">
+
+		</div>
+
+		<div class="candidate-item-section profile-actions">
+			<div class="candidate-action-area">
+				<div class="jsClickableActions">
+					<button class="button green shortlist left candidateShortlist">Shortlist</span></button>
+					<button class="button red reject right candidateReject">Reject</span></button>
+					<div class="clearfix"></div>
+				</div>
+
+				<div class="candidate-options jsClickableActions">
+					<div class="button-action-list candidateOtherActions inactive">
+						<label class="action-list-label">Other Actions</label>
+						<ul class="action-list-items">
+							<li><a href="#" class="candidateSendMessage">Send Message</a></li>
+							<!-- <li><a href="#" class="candidateSendInterviewInvite">Send Interview Invite</a></li> -->
+							<li><a href="#" download="" class="candidateDownloadResume">Download Resume</a></li>
+							<li><a href="#" class="candidateSave">Save for later</a></li>
+							<li><a href="#" class="candidateAddComment">Add Comment</a></li>
+							<li><a href="#" class="candidateAddTag">Add Tag</a></li>
+							<li class="interview-invite interviewinvite">Send Interview Invite</li>
+							<li><a href="#" data-invite-id="1" class="inviteF2f tooltip">Face to Face</a></li>
+							<li><a href="#" data-invite-id="2" class="inviteTelephonic tooltip">Telephonic</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="view-links">
+					<span class="comments commentLink hidden"><a href="#" class="viewCommentButton">View Comment</a></span>
+					<span class="tags tagLink hidden"><a href="#" class="viewTagButton">View Tags</a></span>
 				</div>
 			</div>
-			<img class="js_img" src="http://placehold.it/60x60/f5f5f5?text=+">
-			<div class="candidate-status online hidden"></div>
 		</div>
-		<div class="section">
-			<span class="sticker pro-member isPro hidden">Pro</span>
+		<div class="section sticker-container">
+			<span class="sticker followed-up hidden isFollowedUp">Followed up</span>
 		</div>
-	</div>
+		<div class="separator"></div>
 
-	<div class="candidate-item-section personal-details">
-		<p class="profile-name js_name">Shelly Sharma</p>
-		<p class="experience-label data-label">
-			<span class="bold">Experience: </span>
-			<span class="experience value js_exp">2y 3m</span>
-		</p>
-		<p class="location-label data-label">
-			<span class="bold">Location: </span>
-			<span class="location value js_loc">Delhi</span>
-		</p>
-		<p class="applied-label data-label">
-			<span class="bold">Applied: </span>
-			<span class="applied value js_appliedOn">15-06-2017</span>
-		</p>
-		<p class="notice-period-label data-label">
-			<span class="bold">Notice Period: </span>
-			<span class="notice-period value js_notice">1 month</span>
-		</p>
-
-		<p><a href="#" class="cover-letter info-link coverLetterLink hidden">Cover letter</a></p>
-		<!-- <p><a href="#" class="recommendations info-link">Recommendations</a></p> -->
-
-		<div class="skill-tag-listing ">
-
-		</div>
-
-	</div>
-
-	<div class="candidate-item-section professional-information js_prof_list">
-
-	</div>
-
-	<div class="candidate-item-section educational-details js_edu_list">
-
-	</div>
-
-	<div class="candidate-item-section profile-actions">
-		<div class="candidate-action-area">
-			<div class="jsClickableActions">
-				<button class="button green shortlist left candidateShortlist">Shortlist</span></button>
-				<button class="button red reject right candidateReject">Reject</span></button>
-				<div class="clearfix"></div>
-			</div>
-
-			<div class="candidate-options jsClickableActions">
-				<div class="button-action-list candidateOtherActions inactive">
-					<label class="action-list-label">Other Actions</label>
-					<ul class="action-list-items">
-						<li><a href="#" class="candidateSendMessage">Send Message</a></li>
-						<!-- <li><a href="#" class="candidateSendInterviewInvite">Send Interview Invite</a></li> -->
-						<li><a href="#" download="" class="candidateDownloadResume">Download Resume</a></li>
-						<li><a href="#" class="candidateSave">Save for later</a></li>
-						<li><a href="#" class="candidateAddComment">Add Comment</a></li>
-						<li><a href="#" class="candidateAddTag">Add Tag</a></li>
-						<li class="interview-invite interviewinvite">Send Interview Invite</li>
-						<li><a href="#" data-invite-id="1" class="inviteF2f tooltip">Face to Face</a></li>
-						<li><a href="#" data-invite-id="2" class="inviteTelephonic tooltip">Telephonic</a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="view-links">
-				<span class="comments"><a href="#" class="viewCommentButton">View Comment</a></span>
-				<span class="tags"><a href="#" class="viewTagButton">View Tags</a></span>
-			</div>
-		</div>
-	</div>
-	<div class="section sticker-container">
-		<span class="sticker followed-up hidden isFollowedUp">Followed up</span>
-	</div>
-	<div class="separator"></div>
-</div>
+</a>
 
 <span class="skill-tag candidateSkillTag prototype hidden">
 		<div class="active-skill-label"><span class="icon-label">UI/UX</span></div>

@@ -205,7 +205,7 @@ function Jobs() {
 			item.location.addClass("hidden")
 		}
 
-		var experience = aData["exp"]['min']+'-'+aData['exp']['max'] +' yrs'
+		var experience = aData["exp"]['min']+' - '+aData['exp']['max'] +' yrs'
 		item.experience.text(experience);
 
 		var obj = setJobStatus(aData)
@@ -329,7 +329,7 @@ function Jobs() {
 		 $(".tooltip").not(".prototype .tooltip").tooltipster({
 			animation: 'fade',
 			delay: 0,
-			side:['right'],
+			side:['bottom'],
 			theme: 'tooltipster-borderless'
 		})
 	}
