@@ -1606,6 +1606,8 @@ span.sticker {
     .page-content .feed-row .list .description {
       color: #737373;
       font-size: 14px; }
+    .page-content .feed-row .list ul {
+      padding-left: 20px; }
     .page-content .feed-row .list li {
       padding: 5px; }
     .page-content .feed-row .main-content .meta-content {
@@ -1644,6 +1646,7 @@ span.sticker {
         right: 0;
         width: 165px;
         left: 0;
+        left: -158px;
         margin: 0 -1px;
         background: #FFF;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);

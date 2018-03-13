@@ -365,6 +365,9 @@ $button-border-color: #8f8a8a;
 				color: $meta-grey;
 				font-size: 14px;
 			}
+			ul{
+				padding-left: 20px;	
+			}
 			li{
 				padding: 5px;
 			}
@@ -414,6 +417,7 @@ $button-border-color: #8f8a8a;
 				    right: 0;
 				    width: 165px;
 				    left: 0;
+				    left: -158px;
 				    margin: 0 -1px;
 				    background: #FFF;
 				    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);

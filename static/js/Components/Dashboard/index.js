@@ -27,6 +27,9 @@ $(document).ready(function(){
 	modalInit();
 	onClickJobRefresh();
 	onClickJobCancel();
+	$(window).click(function(event) {
+		$(jobOtherActionsClass).addClass('inactive');
+	});
 
 	dataModel.greetingText = {
 		"morning": ""
@@ -40,7 +43,12 @@ $(document).ready(function(){
 
 	function onClickJobOtherActions() {
 		recentJobsContainer.on('click', jobOtherActionsClass, function(e){
-			$(this).toggleClass("inactive");
+			var hasClass = $(this).hasClass('inactive');
+			$(jobOtherActionsClass).addClass('inactive');
+			if(hasClass){
+				$(this).removeClass('inactive');
+			}
+			e.stopPropagation();
 		})
     }
 
