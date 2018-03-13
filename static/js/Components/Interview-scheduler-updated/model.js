@@ -30,7 +30,8 @@ function Calendar(){
         settings.startdate=$('#startdatepicker'),
         settings.enddate=$('#enddatepicker')
         settings.start=$('.start'),
-        settings.end=$('.end')
+        settings.end=$('.end'),
+        settings.firstDay=$('#1')
     }
 
     function highlighter(){
@@ -347,29 +348,20 @@ function Calendar(){
             if (settings.checkbox.hasClass('allChecked')){
                   $('input[type="checkbox"]', settings.table).prop('checked',false);
                   settings.check_button.prop('checked',true);
-                  settings.select_menu.val(0);    
-                //   settings.element1.find('option').val(startvalue);
-                //    settings.element2.find('option').val(endvalue);
+                  settings.select_menu.val(0);
+                  settings.firstDay.find(settings.element1).val(parseInt(startvalue));
+                  settings.firstDay.find(settings.element2).val(parseInt(endvalue));
             } 
             else{
                   $('input[type="checkbox"]', settings.table).prop('checked',true);
+                  settings.start_time.val(settings.element1.val());
+                  settings.end_time.val(settings.element2.val());
+                 
             }
-
-            
             settings.checkbox.toggleClass('allChecked');
-          
-            settings.start_time.val(settings.element1.val());
-          
-            settings.end_time.val(settings.element2.val());
-          
             settings.select_menu.find('option').prop('disabled', false);     
             getslots();
            
-            // if(settings.check_button.prop("checked")==true){
-            // //     settings.start_time.val(settings.element1.val());
-            //     settings.end_time.val(settings.element2.val());
-            //    // settings.checkbox.prop("checked")=true;
-            // }
         })
     }
 
