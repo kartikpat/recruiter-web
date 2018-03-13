@@ -171,7 +171,6 @@
     .premium-section-content {
         max-width:1440px;
         margin:0 auto;
-        padding:0 30px;
     }
 
     .contents {
@@ -362,4 +361,7 @@
     color:$select-color;
     font-style: normal;
     white-space: normal;
+}
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    font-size: 120% !important;
 }

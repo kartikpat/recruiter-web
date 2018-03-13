@@ -124,6 +124,7 @@ $button-border-color: #8f8a8a;
 			.heading{
 				font-size: 20px;
 				color: $green;
+				font-weight:400;
 			}
 			.sub-heading{
 				font-size: 14px;
@@ -152,7 +153,7 @@ $button-border-color: #8f8a8a;
 			width: 70%;
 			display: inline-block;
 			font-size: 16px;
-			font-weight: 400;
+			font-weight:600;
 		}
 		.heading-button{
 			width: 20%;
@@ -174,6 +175,7 @@ $button-border-color: #8f8a8a;
 		.meta-prop{
 			display: inline-block;
 			margin-right: 10px;
+			line-height: 20px;
 			.icon, .label{
 				display: inline-block;
 				img{
@@ -382,6 +384,8 @@ $button-border-color: #8f8a8a;
 				.text{
 					max-width: 300px;
 					color: $black;
+				    font-weight: 600;
+					line-height: 20px;
 				}
 			}
 			.stats{
@@ -392,6 +396,9 @@ $button-border-color: #8f8a8a;
 				}
 				.value{
 					color: $green;
+				}
+				.applications{
+					line-height: 20px;
 				}
 			}
 			.button-action-list{
@@ -534,4 +541,26 @@ $button-border-color: #8f8a8a;
 }
 .error{
 	position: relative !important;
+}
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    text-align: center;
+    /* opacity: .8; */
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1em;
+    font-size: 18px;
+    /* font-size: 120%; */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+    margin-left: -0.2em;
+    margin-right: 0em;
+    /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }

@@ -58,20 +58,13 @@
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
-  /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
-  /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
   margin-left: .2em;
-  /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
-  /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
 
 .icon-certification:before {
@@ -267,6 +260,12 @@
   content: '\e831'; }
 
 /* '' */
+.icon-location:before {
+  content: '\e832'; }
+
+.icon-clock:before {
+  content: '\e83a'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -751,8 +750,7 @@ span.sticker {
   background: #f3fbfb; }
   .premium_job_section .premium-section-content {
     max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 30px; }
+    margin: 0 auto; }
   .premium_job_section .contents input {
     display: none; }
   .premium_job_section .contents label {
@@ -898,3 +896,6 @@ span.sticker {
   color: #818181;
   font-style: normal;
   white-space: normal; }
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-size: 120% !important; }

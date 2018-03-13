@@ -43,6 +43,7 @@ module.exports = function(settings){
 					req.profile = jsonBody.data;
 					return next();
 				}
+				return res.redirect('/login');
 			})
 			// getRequest(baseUrl+"/recruiter/"+recruiterID+"", {}, function(res){
 			// 	if(res.status && res.status =='success'){
