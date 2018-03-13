@@ -4,6 +4,11 @@
 
 @import 'components/modal';
 
+#searchCandidateError {
+    position: static !important;
+    margin: 0;
+}
+
 #calendarSelectError {
     margin: 0 !important;
     padding-top: 7px;
@@ -164,8 +169,12 @@ input::-webkit-input-placeholder {
 					.keyword-search {
 						display:inline-block;
 						width:40%;
-						position:relative;
+
 						vertical-align:top;
+                        .container {
+                            position: relative;
+                            height: 40px;
+                        }
 						input {
 							@include input-field;
 							border-radius:0;
@@ -341,6 +350,7 @@ input::-webkit-input-placeholder {
 							min-height:30px;
 							margin-top: 2px;
 							.candidate-item {
+                                display: block;
 								padding: 30px 10px 0px;
 							    font-size: 0;
 							    margin: 0;

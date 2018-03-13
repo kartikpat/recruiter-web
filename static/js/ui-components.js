@@ -120,9 +120,9 @@ jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function
 				break;
 		case 13:
 				if(closestTag.attr("data-enable-custom") && closestTag.attr("data-enable-custom") == "true") {
-
+					var value = $(this).val() || selectedItem.text()
 					if(checkMaxTags(listItems.closest(".tag-container"))){
-							addNewTag(selectedItem.text(), selectedItem.attr("data-value"),jQuery(this).closest(".tag-container"));
+							addNewTag(value, selectedItem.attr("data-value"),jQuery(this).closest(".tag-container"));
 						}
 				} else {
 					if(selectedItem.length) {
@@ -165,8 +165,8 @@ jQuery(".tag-container").on("mouseleave",".tag-icons", function() {
 
 
 function addNewTag(labelName, labelValue, selector) {
-	var maxOptions = jQuery(selector).attr("data-max-options");
 
+	var maxOptions = jQuery(selector).attr("data-max-options");
 
 	var tag = jQuery(".input-tag.prototype.hidden").clone().removeClass("prototype hidden");
 	tag.attr("data-id",labelValue);

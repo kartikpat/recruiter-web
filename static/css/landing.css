@@ -266,6 +266,9 @@
 .icon-clock:before {
   content: '\e83a'; }
 
+.icon-checked_icon:before {
+  content: '\e819'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */

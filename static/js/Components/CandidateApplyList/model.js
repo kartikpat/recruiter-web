@@ -84,6 +84,7 @@ function candidateList() {
     function getElement(id) {
 		var card = $(""+settings.candidateRowClass+".prototype").clone().removeClass('prototype hidden')
 		card.attr('data-candidate-id', id);
+
 		return {
 			element: card,
             image: card.find('.js_img'),
@@ -104,7 +105,9 @@ function candidateList() {
             savedButton: card.find(settings.candidateSaveButton),
             downloadResumeButton: card.find(settings.candidateDownloadResumeButton),
             interviewinvite: card.find(".interviewinvite"),
-            coverLetterLink: card.find(".coverLetterLink")
+            coverLetterLink: card.find(".coverLetterLink"),
+            viewCommentLink: card.find(".commentLink"),
+            viewTagLink: card.find(".tagLink")
 		}
 	}
 
@@ -132,13 +135,20 @@ function candidateList() {
 
     function createElement(aData) {
 		var item = getElement(aData["userID"]);
+        item.element.attr('href',"/recruiter/job/"+config["jobId"]+"/applications/"+aData["id"]+"");
         item.element.attr("data-application-id", aData["id"]);
         item.image.attr("src",(aData["img"] || "/static/images/noimage.png"));
         item.name.text(aData["name"] || "NA");
         item.experience.text((aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m") || "NA");
         item.location.text(aData["currentLocation"] || "NA");
         item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY'))
-        item.notice.text((aData["notice"] + " months"));
+        if(aData["notice"] <= 7) {
+            item.notice.text("Immediately Available");
+        }
+        else {
+            item.notice.text((aData["notice"] + " months"));
+        }
+
         item.shortlistButton.attr("data-status", "1");
         item.rejectButton.attr("data-status", "2");
         item.savedButton.attr("data-status", "3");
@@ -213,7 +223,13 @@ function candidateList() {
         //     item.interviewinvite.text("Resend Interview Invite");
         // }
         if(aData["cover"]) {
-            item.isFollowedUp.removeClass("hidden")
+            item.coverLetterLink.removeClass("hidden")
+        }
+        if(aData["comment"]) {
+            item.viewCommentLink.removeClass("hidden")
+        }
+        if(aData["tags"].length) {
+            item.viewTagLink.removeClass("hidden")
         }
         return item
     }
@@ -260,7 +276,9 @@ function candidateList() {
         hideShells(status);
         if(!dataArray.length) {
 			return element.html("<div class='no-data'>No Applications Found!</div>")
-		}
+		}else {
+            element.find(".no-data").remove()
+        }
 		dataArray.forEach(function(aData, index){
 			var item = createElement(aData);
 			str+=item.element[0].outerHTML;

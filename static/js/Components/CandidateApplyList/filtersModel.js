@@ -1,3 +1,9 @@
+var errorResponses = {
+	invalidSal: 'Maximum Salary should be greater than Minimum Salary',
+	invalidBatch: 'Maximum Batch should be greater than Minimum Batch',
+	invalidMinExp: 'Maximum Years of Experience should be greater than Minimum Years of Experience'
+}
+
 function Filters(){
 	var settings = {};
 	var filtersTarget = {
@@ -158,6 +164,7 @@ function Filters(){
 		settings.clearAllFitersButton = $("#clear-all");
 		settings.resultFoundText = $("#resultFound");
 		settings.filterModalOpenButton = $("#filterModalOpenButton");
+		settings.searchCandidateError = $("#searchCandidateError")
 
 
 		setOnClickFilters();
@@ -196,13 +203,22 @@ function Filters(){
 
 	function onClickSearchButton(fn){
 		settings.searchButton.click(function(event){
+			settings.clearAllFitersButton.removeClass("hidden")
 			var str = filtersTarget["searchString"]["target"].val();
+			if(str == '') {
+				return settings.searchCandidateError.removeClass("hidden")
+			}
+			else {
+				settings.searchCandidateError.addClass("hidden")
+			}
 			filtersTarget["searchString"]["selection"] = str;
 			fn();
 		})
 
 		filtersTarget["searchString"]["target"].keyup(function(event){
+
             if (event.which == 13) {
+				settings.clearAllFitersButton.removeClass("hidden")
 				var str = filtersTarget["searchString"]["target"].val();
 				filtersTarget["searchString"]["selection"] = str;
                 fn();
@@ -317,10 +333,10 @@ function Filters(){
 				filtersTarget[key]['target'].find('input').prop('checked', false)
 			}
 			else if(filtersTarget[key]["type"] == "dropdownHalf") {
-				
+
 				for (var k in filtersTarget[key]["props"]) {
 					filtersTarget[key]["props"][k]["selection"] = null;
-					
+
 					filtersTarget[key]["props"][k]['target'].val("-1")
 				}
 			}
@@ -522,6 +538,19 @@ function Filters(){
 		console.log("re");
 		settings.appliedFilters.removeClass("hidden");
 	}
+
+	function checkForError() {
+		if(type == "dropdownHalf"){
+			
+			for(var key in filtersTarget[name]["props"]) {
+				var minValue = filtersTarget[name]["props"][key]['target'].val();
+				var maxValue = filtersTarget[name]["props"][key]['target'].val();
+			}
+			if(minValue != -1 && maxValue != -1 && maxValue < minValue) {
+
+			}
+		}
+	}
     return {
     	init: init,
     	addFilterData: addFilterData,
@@ -536,6 +565,7 @@ function Filters(){
 		showResultsFound: showResultsFound,
 		hideAppliedFilters:hideAppliedFilters,
 		showAppliedFilters:showAppliedFilters,
+		checkForError: checkForError
     }
 
 

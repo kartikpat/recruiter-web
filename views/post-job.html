@@ -32,7 +32,6 @@
                                 <ul>
                                     <li data-value="1">Ahmedabad</li>
                                     <li data-value="2">Bangalore</li>
-                                    <li data-value="41">Chandigarh</li>
                                     <li data-value="3">Chennai</li>
                                     <li data-value="221">Delhi</li>
                                     <li data-value="5">Gurgaon</li>
@@ -53,7 +52,6 @@
                                     <li data-value="162">Warangal</li>
                                     <li data-value="222">Anantapur</li>
                                     <li data-value="223">Guntakal</li>
-                                    <li data-value="6">Hyderabad</li>
                                     <li data-value="225">Rajahmundry</li>
                                     <li data-value="226">Secunderabad</li>
                                     <li data-value="227">Andhra Pradesh - Other</li>
@@ -103,7 +101,6 @@
                                     <li data-value="132">Rohtak</li>
                                     <li data-value="143">Sonipat / Sonepat</li>
                                     <li data-value="164">Yamunanagar</li>
-                                    <li data-value="41">Chandigarh</li>
                                     <li data-value="5">Gurgaon</li>
                                     <li data-value="242">Haryana - Other</li>
                                     <li data-value="25">Baddi</li>
@@ -191,7 +188,6 @@
                                     <li data-value="120">Pathankot</li>
                                     <li data-value="121">Patiala</li>
                                     <li data-value="265">Bathinda</li>
-                                    <li data-value="41">Chandigarh</li>
                                     <li data-value="267">Punjab - Other</li>
                                     <li data-value="15">Ajmer</li>
                                     <li data-value="74">Jaipur</li>
@@ -678,16 +674,12 @@
                     <div class="label">
                         <label for="tags">Tags</label>
                     </div>
-                    <div class="tag-container skill-tags" data-enable-custom="true"  id="jobTags">
+                    <div class="tag-container skill-tags" data-enable-custom="true"  id="jobTags" data-max-options=11>
                         <div class="pill-button inactive">
                             <input type="text" data-placeholder-value="+ Add job tag" placeholder="+ Add job tag">
                             <div class="pill-listing">
-                                <ul>
-                                    <li data-value="Job Tag 1">Job Tag 1</li>
-                                    <li data-value="Job Tag 2">Job Tag 2</li>
-                                    <li data-value="Job Tag 3">Job Tag 3</li>
-                                    <li data-value="Job Tag 4">Job Tag 4</li>
-                                    <li data-value="Job Tag 5">Job Tag 5</li>
+                                <ul id="jobTagsList">
+
                                 </ul>
                             </div>
                         </div>
@@ -708,7 +700,7 @@
                                     <span class="course-icon"><i class="icon-full-time"></i></span>
                                     <span class="course-option-label">Full time</span>
                                 </div>
-                                <img class="course-selected" src="/static/images/course-selected.svg">
+                                <span class="course-selected"><i class="icon-checked_icon"></i></span>
                             </label>
                         </div>
 
@@ -719,7 +711,7 @@
                                     <span class="course-icon"><i class="icon-part-time"></i></span>
                                     <span class="course-option-label">Part time</span>
                                 </div>
-                                <img class="course-selected" src="/static/images/course-selected.svg">
+                                <span class="course-selected"><i class="icon-checked_icon"></i></span>
                             </label>
                         </div>
 
@@ -730,7 +722,7 @@
                                     <span class="course-icon"><i class="icon-distance_learning"></i></span>
                                     <span class="course-option-label">Distance Learning Program</span>
                                 </div>
-                                <img class="course-selected" src="/static/images/course-selected.svg">
+                                <span class="course-selected"><i class="icon-checked_icon"></i></span>
                             </label>
                         </div>
 
@@ -741,7 +733,7 @@
                                     <span class="course-icon"><i class="icon-executive-program"></i></span>
                                     <span class="course-option-label">Executive Program</span>
                                 </div>
-                                <img class="course-selected" src="/static/images/course-selected.svg">
+                                <span class="course-selected"><i class="icon-checked_icon"></i></span>
                             </label>
                         </div>
 
@@ -752,7 +744,7 @@
                                     <span class="course-icon"><i class="icon-certification"></i></span>
                                     <span class="course-option-label">Certification</span>
                                 </div>
-                                <img class="course-selected" src="/static/images/course-selected.svg">
+                                <span class="course-selected"><i class="icon-checked_icon"></i></span>
                             </label>
                         </div>
 
@@ -772,7 +764,7 @@
                                     <span class="course-icon"><i class="icon-woman"></i></span>
                                     <span class="course-option-label">Female Candidates</span>
                                 </div>
-                                <img class="course-selected" src="/static/images/course-selected.svg">
+                                <span class="course-selected"><i class="icon-checked_icon"></i></span>
                             </label>
                         </div>
 
@@ -783,7 +775,7 @@
                                     <span class="course-icon"><i class="icon-shield"></i></span>
                                     <span class="course-option-label">Ex-defence personnel</span>
                                 </div>
-                                <img class="course-selected" src="/static/images/course-selected.svg">
+                                <span class="course-selected"><i class="icon-checked_icon"></i></span>
                             </label>
                         </div>
 
@@ -794,7 +786,7 @@
                                     <span class="course-icon"><i class="icon-woman"></i></span>
                                     <span class="course-option-label">Women Joining back the workforce</span>
                                 </div>
-                                <img class="course-selected" src="/static/images/course-selected.svg">
+                                <span class="course-selected"><i class="icon-checked_icon"></i></span>
                             </label>
                         </div>
 
@@ -805,7 +797,7 @@
                                     <span class="course-icon"><i class="icon-disabillity-symbol"></i></span>
                                     <span class="course-option-label">Differently-abled candidates</span>
                                 </div>
-                                <img class="course-selected" src="/static/images/course-selected.svg">
+                                <span class="course-selected"><i class="icon-checked_icon"></i></span>
                             </label>
                         </div>
 
@@ -905,4 +897,6 @@
         <span>Preselected Tag</span>
     </div>
 </div>
+
+<li data-value="1" class="jobTag prototype hidden"></li>
 {{> footer}}
