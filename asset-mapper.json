@@ -802,7 +802,11 @@
 				"static/css/tagged-candidates.css",
 				"static/css/utilities.css",
 				"static/css/footer.css",
-				"static/css/header.css"
+				"static/css/header.css",
+				"static/css/chat-sticky.css",
+				"static/css/utilities.css",
+				"static/css/animate.css",
+				"static/css/jquery-chatbox.css"
 			],
 			"prod": [
 				"static/build/css/tagged-candidates.min.css"
@@ -824,7 +828,9 @@
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Components/TaggedCandidates/model.js",
-				"static/js/Components/TaggedCandidates/index.js"
+				"static/js/Components/TaggedCandidates/index.js",
+				"static/js/chat-pubnub-sticky.js",
+				"static/js/chat-sticky.js"
 			],
 			"prod" : [
 				"static/build/js/tagged-candidates.min.js"
@@ -881,7 +887,11 @@
 				"static/css/footer.css",
 				"static/css/dashboard.css",
 				"static/css/modal.css",
-				"static/css/utilities.css"
+				"static/css/utilities.css",
+				"static/css/chat-sticky.css",
+				"static/css/utilities.css",
+				"static/css/animate.css",
+				"static/css/jquery-chatbox.css"
 			],
 			"prod": [
 				"static/build/css/dashboard.min.css"
@@ -911,7 +921,9 @@
 				"static/js/new-jobs-chart.js",
 				"static/js/dashboard.js",
 				"static/js/utilities.js",
-				"static/js/utilities/modal.js"
+				"static/js/utilities/modal.js",
+				"static/js/chat-pubnub-sticky.js",
+				"static/js/chat-sticky.js"
 			],
 			"prod" : [
 				"static/build/js/dashboard.min.js"

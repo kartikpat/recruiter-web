@@ -22,17 +22,22 @@ $(document).ready(function(){
 		fetchJob(jobId);
 	}
  	function onSuccessfulSubmitJob(topic, data){
+		if(type=='edit') {
+			localStorage.setItem("jobPostSuccessMessage", "Job updated successfully");
+		}
+		else {
+			localStorage.setItem("jobPostSuccessMessage", "Job posted successfully");
+		}
 
 		// alert("You have successfully posted your job.Our team is reviewing your job and it usually takes upto 24 hours for a job to get published.")
 		if(profile["availableCredits"] > 0)
-			return window.location.href = "/my-jobs?jobPostSuccess=1";
-		window.location.href = "/recruiter/recruiter-plan?jobPostSuccess=1"
+			return window.location.href = "/my-jobs";
+		window.location.href = "/recruiter/recruiter-plan"
  		console.log(topic)
 		console.log(data);
 
 	}
-	function onFailedSubmitJob(topic, data){
-		debugger
+	function onFailedSubmitJob(topic, data) {
 		alert(res.status)
 	}
 	function onSuccessfulFetchJob(topic, data) {

@@ -14,9 +14,10 @@ $(document).ready(function(){
     //     $("#success-job-posted").removeClass("hidden");
     // }
 
-    var stat = getQueryParameter("jobPostSuccess")
-	if(parseInt(stat) == 1) {
-		toastNotify(1, "Job Posted Successfully!")
+    var msg = localStorage.getItem("jobPostSuccessMessage")
+	if(msg!= '') {
+		toastNotify(1, msg)
+		localStorage.removeItem("jobPostSuccessMessage");
 	}
 
     window.mySwipe = $('.mobile-swipe-container').Swipe().data('Swipe');
