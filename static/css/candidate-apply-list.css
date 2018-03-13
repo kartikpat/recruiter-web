@@ -2591,6 +2591,9 @@ span.sticker {
   .modal_overlay .modal_content .modal_body .modal_body_header {
     border-bottom: 0; } }
 
+.link-color {
+  color: #155d9a !important; }
+
 #searchCandidateError {
   position: static !important;
   margin: 0; }
@@ -2994,6 +2997,30 @@ input::-webkit-input-placeholder {
           margin: 0;
           cursor: pointer;
           position: relative; }
+          .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-select {
+            display: none;
+            position: absolute;
+            top: 8px;
+            left: 9px; }
+            .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-select .checkbox input {
+              display: none; }
+            .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-select .checkbox label {
+              display: inline-block;
+              cursor: pointer; }
+            .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-select .checkbox input + label {
+              padding: 4px 0 4px 35px;
+              background-image: url("/static/images/unchecked_checkbox.svg");
+              background-repeat: no-repeat;
+              background-size: 20px;
+              background-position: left 2px center; }
+            .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-select .checkbox input:checked + label {
+              background-image: url("/static/images/checked_checkbox.svg"); }
+            .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-select .checkbox label {
+              min-height: 20px;
+              min-width: 16px; }
+            .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-select.selected {
+              display: inline-block;
+              background-color: transparent; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .section.sticker-container {
             position: absolute;
             bottom: 0;
@@ -3027,30 +3054,6 @@ input::-webkit-input-placeholder {
                 width: 75px;
                 height: 75px;
                 margin-bottom: 5px; }
-                .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select {
-                  display: none;
-                  position: absolute;
-                  top: -20px;
-                  left: -10px; }
-                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select .checkbox input {
-                    display: none; }
-                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select .checkbox label {
-                    display: inline-block;
-                    cursor: pointer; }
-                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select .checkbox input + label {
-                    padding: 4px 0 4px 35px;
-                    background-image: url("/static/images/unchecked_checkbox.svg");
-                    background-repeat: no-repeat;
-                    background-size: 20px;
-                    background-position: left 2px center; }
-                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select .checkbox input:checked + label {
-                    background-image: url("/static/images/checked_checkbox.svg"); }
-                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select .checkbox label {
-                    min-height: 20px;
-                    min-width: 16px; }
-                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select.selected {
-                    display: inline-block;
-                    background-color: transparent; }
                 .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image img {
                   width: 100%;
                   height: 100%;
@@ -3182,7 +3185,7 @@ input::-webkit-input-placeholder {
               border: 0; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover {
             box-shadow: 0 0 6px rgba(0, 0, 0, 0.4); }
-            .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover .candidate-item-section.image .candidate-select {
+            .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover .candidate-select {
               display: block; }
 
 .job-tags {
