@@ -38,7 +38,8 @@ function candidateList() {
         settings.candidateItemShellClass = ".candidateItem.shell",
         settings.sendInterviewInviteF2FClass = ".inviteF2f",
         settings.sendInterviewInviteTelephonicClass = ".inviteTelephonic",
-        settings.tooltip= $(".tooltip");
+        settings.tooltip= $(".tooltip"),
+        settings.coverLetterLink = $(".coverLetterLink")
 
         onClickMassCheckbox()
         onClickCandidateOtherActions()
@@ -46,7 +47,17 @@ function candidateList() {
         onClickMassReject()
         onClickMassShortlist()
         onClickMassComment()
+
+        onClickCoverLetterLink()
+        
 	}
+
+    function onClickCoverLetterLink() {
+        settings.rowContainer.on('click', settings.coverLetterLink, function(e){
+            e.preventDefault()
+            return false
+        })
+    }
 
     function onClickSendInterviewInviteF2F(fn) {
         settings.rowContainer.on('click', settings.sendInterviewInviteF2FClass, function(e){
@@ -135,7 +146,7 @@ function candidateList() {
 
     function createElement(aData) {
 		var item = getElement(aData["userID"]);
-        item.element.attr('href',"/recruiter/job/"+config["jobId"]+"/applications/"+aData["id"]+"");
+        item.element.find(".openCandidateLink").attr('href',"/recruiter/job/"+config["jobId"]+"/applications/"+aData["id"]+"");
         item.element.attr("data-application-id", aData["id"]);
         item.image.attr("src",(aData["img"] || "/static/images/noimage.png"));
         item.name.text(aData["name"] || "NA");
@@ -325,7 +336,9 @@ function candidateList() {
     function onClickCandidateOtherActions() {
         settings.rowContainer.on('click', settings.candidateOtherActionsClass,function(event) {
             event.stopPropagation();
+            event.stopPropagation()
             $(this).toggleClass("inactive");
+            return false
         })
     }
 
@@ -404,7 +417,7 @@ function candidateList() {
             var status = $(this).attr("data-status");
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             fn(applicationId, status);
-
+            return false
         })
     }
 
@@ -414,6 +427,7 @@ function candidateList() {
             var status = $(this).attr("data-status");
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             fn(applicationId, status);
+            return false
         })
     }
 
