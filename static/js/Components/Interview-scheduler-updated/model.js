@@ -29,8 +29,9 @@ function Calendar(){
         settings.Highlighter=$('.highlighter')
         settings.startdate=$('#startdatepicker'),
         settings.enddate=$('#enddatepicker')
+        settings.start=$('.start'),
+        settings.end=$('.end')
     }
-
 
     function highlighter(){
           settings.createCalendar.on("click", getslots);
@@ -40,35 +41,33 @@ function Calendar(){
          
     }
 
-
-
     function getslots(e){
         var slots=[];
         var finalslots=[];
-        //debugger
-        console.log("hhy");
             $.each(settings.dayId,function(){
+                settings.select_menu.find('option').prop('disabled', false); 
                 var id=$(this).attr('id');
                 var startvalue=$("#"+id+ "").find(settings.start_time).val();
                 var endvalue=$("#"+id+ "").find(settings.end_time).val();
                 var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
-               // debugger
                 timetable.name=settings.name.val();
                 timetable.message=settings.message.val();
                 timetable.telephone=settings.telephone.val();
-                var fromDate=moment().format('ll');
-                var toDate= moment(fromDate, 'll').add(5, 'days').format('ll');
-                    if(parseInt(startvalue)>0 && parseInt(endvalue)>0 && checkbox==true){
-                        var slot={
-                            startTime:startvalue,
-                            endTime:endvalue,
-                            id:id,
-                            from:fromDate,
-                            to:toDate,
-                        };
-                        slots.push(slot);
-                    }
-                    console.log(slots);
+                var currentDate=moment().format('L');
+                var fromDate=settings.startdate.val();
+                if(fromDate==''){
+                    fromDate=currentDate;
+                }
+                if(parseInt(startvalue)>0 && parseInt(endvalue)>0 && checkbox==true){
+                    var slot={
+                        startTime:startvalue,
+                        endTime:endvalue,
+                        id:id,
+                        from:fromDate,
+                        to:'',
+                    };
+                    slots.push(slot);
+                }
             });
 
             var start=settings.breakStart.val();
@@ -109,15 +108,11 @@ function Calendar(){
             }
             else{
                 timetable.slots=slots;
-               // console.log(slots);
             }
             highlight(timetable);
     }
 
-
     function highlight(timetable){
-        console.log("hy");
-     //   debugger
         var data=timetable.slots;
         console.log(timetable.slots);
         var currentDate=moment().format('L');
@@ -132,7 +127,6 @@ function Calendar(){
         }
         if($('#radio-button-tillend').prop("checked")==true){
             enddate='';
-            console("hyeaysah");
         }
         if($('#radio-button-end').prop("checked")==true){
             enddate=settings.enddate.val(); 
@@ -142,53 +136,15 @@ function Calendar(){
             console.log(enddate); 
             console.log(currentDate);
             console.log(aRow);
-        // if(enddate=='' && startdate==currentDate){ //enddate null +startdate!=currentdate
-        //     if(aRow.id=="1"){
-
-        //           for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-        //             {
-        //                 $('.fc-mon').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
-        //             }
-        //     }
-        //     else if(aRow.id=="2"){
-        //             for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-        //             {
-        //                 $('.fc-tue').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
-        //             }
-        //     }
-        //     else if(aRow.id=="3"){
-        //             for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-        //             {
-        //                 $('.fc-wed').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
-        //             }  
-        //     }
-        //     else if(aRow.id=="4"){
-        //              for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-        //             {
-        //                 $('.fc-thu').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
-        //             }
-        //     }
-        //     else if(aRow.id=="5"){
-        //             for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-        //             {
-        //                 $('.fc-fri').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
-        //             }
-        //     }
-        //     else if(aRow.id=="6"){
-        //             for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-        //             {
-        //                 $('.fc-sat').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
-        //             }
-        //     } 
-
-        // }
+            aRow.to=enddate;
+            console.log(aRow.to);
         if(enddate==''){
-        //    debugger
             if(aRow.id=="1"){
                 var datetomatch= moment($('.fc-mon').attr("data-date")).format('L');
                 var match=moment(startdate).format('L');
                 console.log(datetomatch)
                 console.log(startdate)
+               
                 if(match===datetomatch || datetomatch>startdate){     
                     for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                         {
@@ -248,8 +204,7 @@ function Calendar(){
             }
 
         }
-        else{ 
-         //   debugger                         //end not null start not null     
+        else{                          //end not null start not null     
             while(startdate<=enddate){ 
 
                 if(aRow.id=="1"){
@@ -319,8 +274,7 @@ function Calendar(){
         }
         
     })
-    
-}
+    }
 
     function selectCreater(){
         var min = 1,
@@ -353,53 +307,62 @@ function Calendar(){
         if (this.checked){
             settings.button.css("display","inline-block");
         }
-         // else{
-           //   $("#selectAll").css("display","none");
-         //}
+         else{
+             $("#selectAll").css("display","none");
+         }
       });
     }
 
     function time_mapper(){
-        settings.start_time.change(function() {
+        settings.start.change(function() {
             var parent=$(this).parent().parent().attr('id');
-            var start=$("#"+parent+"").find(".Start-time")
-            var end=$("#"+parent+"").find(".End-time");
+            var start=$("#"+parent+"").find(".start")
+            var end=$("#"+parent+"").find(".end");
             var k=start.val();
-            var check=$("#"+parent+" .End-time").find('option:selected').index();
+            var check=$("#"+parent+" .end").find('option:selected').index();
                 end.val(k);
-                var value=$("#"+parent+" .Start-time option:selected").next().val();
+                var value=$("#"+parent+" .start option:selected").next().val();
                 end.val(value);
-                 $("#"+parent+" .End-time").find('option').prop('disabled', false);
-                var index = $("#"+parent+" .Start-time").find('option:selected').index();
-                $("#"+parent+" .End-time").not("#"+parent+" .Start-time").find('option:lt(' + (index+1) + ')').prop('disabled', true);
+                 $("#"+parent+" .end").find('option').prop('disabled', false);
+                var index = $("#"+parent+" .start").find('option:selected').index();
+                $("#"+parent+" .end").not("#"+parent+" .start").find('option:lt(' + (index+1) + ')').prop('disabled', true);
         })
-        settings.end_time.change(function() {
+        settings.end.change(function() {
             var parent=$(this).parent().parent().attr('id');
             console.log(parent);
-            var start=$("#"+parent+"").find(".Start-time")
-            var end=$("#"+parent+"").find(".End-time");
-            var index = $("#"+parent+" .End-time").find('option:selected').index();
+            var start=$("#"+parent+"").find(".start")
+            var end=$("#"+parent+"").find(".end");
+            var index = $("#"+parent+" .end").find('option:selected').index();
             console.log(index);
-            $("#"+parent+" .Start-time").find('option').prop('disabled', false);
-            $("#"+parent+" .Start-time").not("#"+parent+" .End-time").find('option:gt(' + (index-1) + ')').prop('disabled', true);
+            $("#"+parent+" .start").find('option').prop('disabled', false);
+            $("#"+parent+" .start").not("#"+parent+" .end").find('option:gt(' + (index-1) + ')').prop('disabled', true);
             
         })
     }
 
-
     function copyTime(){
         settings.button.on('click', function (){
+            var startvalue=settings.element1.val();
+            var endvalue=settings.element2.val();
             if (settings.checkbox.hasClass('allChecked')){
-                  $('input[type="checkbox"]', settings.table).prop('checked',false );
+                  $('input[type="checkbox"]', settings.table).prop('checked',false);
+                  settings.check_button.prop('checked',true);
+                  settings.select_menu.val(0);    
+                //   settings.element1.find('option').val(startvalue);
+                //    settings.element2.find('option').val(endvalue);
             } 
             else{
                   $('input[type="checkbox"]', settings.table).prop('checked',true);
             }
-            settings.checkbox.toggleClass('allChecked').not(settings.check_button);
-            settings.start_time.val(settings.element1.val());
-            settings.end_time.val(settings.element2.val());
-            settings.select_menu.find('option').prop('disabled', false);
+
             
+            settings.checkbox.toggleClass('allChecked');
+          
+            settings.start_time.val(settings.element1.val());
+          
+            settings.end_time.val(settings.element2.val());
+          
+            settings.select_menu.find('option').prop('disabled', false);     
             getslots();
            
             // if(settings.check_button.prop("checked")==true){

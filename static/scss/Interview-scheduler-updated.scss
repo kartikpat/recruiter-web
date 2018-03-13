@@ -387,7 +387,7 @@
                     font-size: 14px;/* Approximation due to font substitution */
                     font-weight: 400;
                     text-align: left;
-                    width: 50%;
+                    width: 17%;
                     position: absolute;
                     margin-top: 5px;
                 }
@@ -466,8 +466,7 @@
                         }
                     }
 
-                    .time-section{
-                           
+                    .time-section{      
                         height: 77px;
                         float: left;
                         width: 100%;
@@ -825,13 +824,34 @@
                         .input-field{
                          width: 70%;
                         }
-                
+                        #startdatepicker{
+                            border-radius: 3px;
+                            border-style: solid;
+                            border-width: 1px;
+                            border-color: #e4e4e4;
+                            box-sizing: border-box;
+                            background-color: #ffffff;
+                            width: 203px;
+                            height: 40px;
+                            outline: none;
+                        }
                     }
                 }    
                 .end-date{
                     .section{
                         .input-field{
                          width: 70%;
+                        }
+                        #enddatepicker{
+                            border-radius: 3px;
+                            border-style: solid;
+                            border-width: 1px;
+                            border-color: #e4e4e4;
+                            box-sizing: border-box;
+                            background-color: #ffffff;
+                            width: 203px;
+                            height: 40px;
+                            outline: none;
                         }
                 
                     }
