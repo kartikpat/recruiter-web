@@ -1,15 +1,11 @@
-
+var test = null;
 $(document).ready(function(){
     var calendarDetails = Calendar();
     calendarDetails.init();
     calendarDetails.selectCreater();
-    calendarDetails.copyTime();
     calendarDetails.copytoall();
-    calendarDetails.getslots();
-    calendarDetails.time_mapper();
     calendarDetails.fullCalendar();
-    calendarDetails.highlighter();
     calendarDetails.startdate();
     calendarDetails.enddate();
-    // calendarDetails. break_timeMapper();
+    test= calendarDetails.testHighlight;
 })    

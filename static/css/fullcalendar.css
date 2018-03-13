@@ -1,6 +1,4 @@
 
-@import "fonts.scss";
-@import 'common/spacings';
 
 .fc-unselectable{
     overflow-y: scroll;
@@ -66,7 +64,7 @@ a{
 }
 
 .fc-day-grid{
-    height: 892px!important;
+    height: 940px!important;
     overflow: hidden;
     opacity: 0.8;
 }
@@ -83,7 +81,7 @@ a{
 
 #calendar{
     width: 615px;
-    height: 682px;
+    height: 782px;
 }
 
 .fc-bg{
@@ -92,7 +90,7 @@ a{
 
 .fc-scroller{
     overflow-x: hidden;
-    height: 581px!important;
+    height: 681px!important;
 }
 
 .fc-toolbar h2 {
