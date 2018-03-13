@@ -559,29 +559,19 @@
                             background-image:url('/static/images/checked_radio.svg');
                         }
                     }
-
-
-                    img{
-                        float: none;
-                        display: inline-block;
-                        vertical-align: top;
-                        clear: both;
-                        margin-left: 20px;
-                    }
-
-                    .input-field{
+                    #startdatepicker{
                         border-radius: 3px;
                         border-style: solid;
                         border-width: 1px;
-                        border-color:  #e4e4e4;
+                        border-color: #e4e4e4;
                         box-sizing: border-box;
-                        background-color:  #ffffff;
+                        background-color: #ffffff;
                         width: 283px;
                         height: 48px;
-                        margin-top: 21px;
-                        resize:none;
                         outline: none;
-                        overflow: hidden;
+                    }
+                    img{
+                        margin-left: 20px;
                     }
                 }
 
@@ -640,27 +630,19 @@
                         }
                     }
 
-                    img{
-                        float: none;
-                        display: inline-block;
-                        vertical-align: top;
-                        clear: both;
-                        margin-left: 20px;
-                       // padding-right: 15%;
-                    }
-                    .input-field{
+                    #enddatepicker{
                         border-radius: 3px;
                         border-style: solid;
                         border-width: 1px;
-                        border-color:  #e4e4e4;
+                        border-color: #e4e4e4;
                         box-sizing: border-box;
-                        background-color:  #ffffff;
+                        background-color: #ffffff;
                         width: 283px;
                         height: 48px;
-                        margin-top: 21px;
-                        resize:none;
                         outline: none;
-                        overflow: hidden;
+                    }
+                    img{
+                        margin-left: 20px;
                     }
 
                 }
@@ -909,6 +891,17 @@
                             input + label {
                                 line-height: 20px;
                             }
+                        }
+                        #startdatepicker{
+                            border-radius: 3px;
+                            border-style: solid;
+                            border-width: 1px;
+                            border-color: #e4e4e4;
+                            box-sizing: border-box;
+                            background-color: #ffffff;
+                            width: 183px;
+                            height: 40px;
+                            outline: none;
                         }   
                     }
                 }    
@@ -918,13 +911,25 @@
                          width: 55%;
                         }
                         img{
-                            padding-right:52px;
+                           // padding-right:52px;
+                           padding-top: 10px;
                         }
                         .radio-input {
                             input + label {
                                 line-height: 20px;
                             }
                         } 
+                        #enddatepicker{
+                            border-radius: 3px;
+                            border-style: solid;
+                            border-width: 1px;
+                            border-color: #e4e4e4;
+                            box-sizing: border-box;
+                            background-color: #ffffff;
+                            width: 183px;
+                            height: 40px;
+                            outline: none;
+                        }
                 
                     }
                 }

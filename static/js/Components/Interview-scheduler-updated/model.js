@@ -1,4 +1,5 @@
 
+
 function Calendar(){
     var settings ={};
     var timetable={ };
@@ -34,26 +35,30 @@ function Calendar(){
     function highlighter(){
           settings.createCalendar.on("click", getslots);
           settings.Highlighter.on("change",getslots);
-          settings.button.on("click",getslots);
+       //   settings.button.on("click",copytoallslots);
           $(".fc-button").on("click", getslots);
          
     }
 
+
+
     function getslots(e){
         var slots=[];
         var finalslots=[];
+        //debugger
+        console.log("hhy");
             $.each(settings.dayId,function(){
                 var id=$(this).attr('id');
                 var startvalue=$("#"+id+ "").find(settings.start_time).val();
                 var endvalue=$("#"+id+ "").find(settings.end_time).val();
                 var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
+               // debugger
                 timetable.name=settings.name.val();
                 timetable.message=settings.message.val();
                 timetable.telephone=settings.telephone.val();
                 var fromDate=moment().format('ll');
                 var toDate= moment(fromDate, 'll').add(5, 'days').format('ll');
-                    if(startvalue!=null && endvalue!=null && checkbox==true){
-                        //debugger
+                    if(parseInt(startvalue)>0 && parseInt(endvalue)>0 && checkbox==true){
                         var slot={
                             startTime:startvalue,
                             endTime:endvalue,
@@ -63,6 +68,7 @@ function Calendar(){
                         };
                         slots.push(slot);
                     }
+                    console.log(slots);
             });
 
             var start=settings.breakStart.val();
@@ -108,87 +114,87 @@ function Calendar(){
             highlight(timetable);
     }
 
+
     function highlight(timetable){
         console.log("hy");
+     //   debugger
         var data=timetable.slots;
+        console.log(timetable.slots);
         var currentDate=moment().format('L');
         var startdate=currentDate;
         var enddate='';
-        $('.TimeLines').css("background-color","white");
-        data.forEach(function(aRow){
-            debugger
-        
+        $('.TimeLines').css({"text-decoration":"line-through", "opacity":"1","color":"#b0b0b0"});
         if($("#radio-button-start").prop("checked") == true){
-             startdate=currentDate;
+            startdate=currentDate;
         }
         if($('#radio-button-startend').prop("checked")==true){
-             startdate=settings.startdate.val();
+            startdate=settings.startdate.val();
         }
         if($('#radio-button-tillend').prop("checked")==true){
-             enddate=settings.enddate.val();
+            enddate='';
+            console("hyeaysah");
         }
         if($('#radio-button-end').prop("checked")==true){
-             enddate='';   
+            enddate=settings.enddate.val(); 
         }
+        data.forEach(function(aRow){
             console.log(startdate);
             console.log(enddate); 
             console.log(currentDate);
-        if(enddate=='' && startdate==currentDate){ //enddate null +startdate!=currentdate
-        //debugger
-            if(aRow.id=="1"){     
-                  for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-                    {
-                        $('.fc-mon').find("#hours-" +i+ "").css("background-color","black");
-                    }
-            }
-            else if(aRow.id=="2"){
-                    for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-                    {
-                        $('.fc-tue').find("#hours-" +i+ "").css("background-color","black");
-                    }
-            }
-            else if(aRow.id=="3"){
-                    for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-                    {
-                        $('.fc-wed').find("#hours-" +i+ "").css("background-color","black");
-                    }  
-            }
-            else if(aRow.id=="4"){
-                     for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-                    {
-                        $('.fc-thu').find("#hours-" +i+ "").css("background-color","black");
-                    }
-            }
-            else if(aRow.id=="5"){
-                    for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-                    {
-                        $('.fc-fri').find("#hours-" +i+ "").css("background-color","black");
-                    }
-            }
-            else if(aRow.id=="6"){
-                    for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-                    {
-                        $('.fc-sat').find("#hours-" +i+ "").css("background-color","black");
-                    }
-            } 
+            console.log(aRow);
+        // if(enddate=='' && startdate==currentDate){ //enddate null +startdate!=currentdate
+        //     if(aRow.id=="1"){
 
-        }
-        else if(enddate=='' && startdate!=currentDate){
-         //  debugger
+        //           for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
+        //             {
+        //                 $('.fc-mon').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
+        //             }
+        //     }
+        //     else if(aRow.id=="2"){
+        //             for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
+        //             {
+        //                 $('.fc-tue').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
+        //             }
+        //     }
+        //     else if(aRow.id=="3"){
+        //             for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
+        //             {
+        //                 $('.fc-wed').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
+        //             }  
+        //     }
+        //     else if(aRow.id=="4"){
+        //              for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
+        //             {
+        //                 $('.fc-thu').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
+        //             }
+        //     }
+        //     else if(aRow.id=="5"){
+        //             for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
+        //             {
+        //                 $('.fc-fri').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
+        //             }
+        //     }
+        //     else if(aRow.id=="6"){
+        //             for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
+        //             {
+        //                 $('.fc-sat').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
+        //             }
+        //     } 
+
+        // }
+        if(enddate==''){
+        //    debugger
             if(aRow.id=="1"){
-                var datetomatch= moment($('.fc-mon').attr("data-date")).format('L')
-               console.log(datetomatch);
+                var datetomatch= moment($('.fc-mon').attr("data-date")).format('L');
                 var match=moment(startdate).format('L');
-                console.log(typeof(match));
                 console.log(datetomatch)
                 console.log(startdate)
                 if(match===datetomatch || datetomatch>startdate){     
                     for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                         {
-                            $('.fc-mon').find("#hours-" +i+ "").css("background-color","black");
+                            $('.fc-mon').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
                         }
-                }
-                       
+                }         
             }
             else if(aRow.id=="2"){
                 var datetomatch= moment($('.fc-tue').attr("data-date")).format('L')
@@ -196,7 +202,7 @@ function Calendar(){
                 if(match===datetomatch || datetomatch>startdate){
                     for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                     {
-                        $('.fc-tue').find("#hours-" +i+ "").css("background-color","black");
+                        $('.fc-tue').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
                     }
                 }   
             }
@@ -206,7 +212,7 @@ function Calendar(){
                 if(match===datetomatch || datetomatch>startdate){
                     for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                     {
-                        $('.fc-wed').find("#hours-" +i+ "").css("background-color","black");
+                        $('.fc-wed').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
                     }
                 }    
             }
@@ -216,7 +222,7 @@ function Calendar(){
                 if(match===datetomatch || datetomatch>startdate){
                     for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                     {
-                        $('.fc-thu').find("#hours-" +i+ "").css("background-color","black");
+                        $('.fc-thu').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
                     }
                 }   
             }
@@ -226,7 +232,7 @@ function Calendar(){
                 if(match===datetomatch || datetomatch>startdate){
                     for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                     {
-                        $('.fc-fri').find("#hours-" +i+ "").css("background-color","black");
+                        $('.fc-fri').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
                     }
                 }   
             }
@@ -236,22 +242,23 @@ function Calendar(){
                 if(match===datetomatch || datetomatch>startdate){
                     for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                     {
-                        $('.fc-sat').find("#hours-" +i+ "").css("background-color","black");
+                        $('.fc-sat').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
                     }
                 }
             }
 
         }
-        else{                          //end not null start not null     
-            while(startdate<=enddate){
-                // debugger  
+        else{ 
+         //   debugger                         //end not null start not null     
+            while(startdate<=enddate){ 
+
                 if(aRow.id=="1"){
                     var datetomatch= moment($('.fc-mon').attr("data-date")).format('L')
                     var match=moment(startdate).format('L');
                     if(match===datetomatch){     
                         for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                             {
-                                $('.fc-mon').find("#hours-" +i+ "").css("background-color","black");
+                                $('.fc-mon').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
                             }
                     }       
                 }
@@ -261,7 +268,7 @@ function Calendar(){
                     if(match===datetomatch){
                         for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                         {
-                            $('.fc-tue').find("#hours-" +i+ "").css("background-color","black");
+                            $('.fc-tue').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
                         }
                     }   
                 }
@@ -271,7 +278,7 @@ function Calendar(){
                     if(match===datetomatch){
                         for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                         {
-                            $('.fc-wed').find("#hours-" +i+ "").css("background-color","black");
+                            $('.fc-wed').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
                         }
                     }    
                 }
@@ -281,7 +288,7 @@ function Calendar(){
                     if(match===datetomatch){
                         for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                         {
-                            $('.fc-thu').find("#hours-" +i+ "").css("background-color","black");
+                            $('.fc-thu').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
                         }
                     }   
                 }
@@ -291,7 +298,7 @@ function Calendar(){
                     if(match===datetomatch){
                         for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                         {
-                            $('.fc-fri').find("#hours-" +i+ "").css("background-color","black");
+                            $('.fc-fri').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
                         }
                     }   
                 }
@@ -301,7 +308,7 @@ function Calendar(){
                     if(match===datetomatch){
                         for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
                         {
-                            $('.fc-sat').find("#hours-" +i+ "").css("background-color","black");
+                            $('.fc-sat').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
                         }
                     }
                 }
@@ -359,16 +366,13 @@ function Calendar(){
             var end=$("#"+parent+"").find(".End-time");
             var k=start.val();
             var check=$("#"+parent+" .End-time").find('option:selected').index();
-        //    if(check==0){
                 end.val(k);
                 var value=$("#"+parent+" .Start-time option:selected").next().val();
                 end.val(value);
                  $("#"+parent+" .End-time").find('option').prop('disabled', false);
                 var index = $("#"+parent+" .Start-time").find('option:selected').index();
                 $("#"+parent+" .End-time").not("#"+parent+" .Start-time").find('option:lt(' + (index+1) + ')').prop('disabled', true);
-            // }
         })
-
         settings.end_time.change(function() {
             var parent=$(this).parent().parent().attr('id');
             console.log(parent);
@@ -382,6 +386,7 @@ function Calendar(){
         })
     }
 
+
     function copyTime(){
         settings.button.on('click', function (){
             if (settings.checkbox.hasClass('allChecked')){
@@ -390,12 +395,18 @@ function Calendar(){
             else{
                   $('input[type="checkbox"]', settings.table).prop('checked',true);
             }
-            settings.checkbox.toggleClass('allChecked').not(settings.button);
-           // var x = settings.element1.val(); 
-           // var y = settings.element2.val();  
+            settings.checkbox.toggleClass('allChecked').not(settings.check_button);
             settings.start_time.val(settings.element1.val());
             settings.end_time.val(settings.element2.val());
-      
+            settings.select_menu.find('option').prop('disabled', false);
+            
+            getslots();
+           
+            // if(settings.check_button.prop("checked")==true){
+            // //     settings.start_time.val(settings.element1.val());
+            //     settings.end_time.val(settings.element2.val());
+            //    // settings.checkbox.prop("checked")=true;
+            // }
         })
     }
 
@@ -470,6 +481,7 @@ function Calendar(){
         highlight:highlight,
         startdate:startdate,
         enddate:enddate,
+        // break_timeMapper:break_timeMapper,
     }
 };
 
