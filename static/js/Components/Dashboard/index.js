@@ -208,6 +208,8 @@ $(document).ready(function(){
 
 	function onFetchFollowUps(topic, data){
 		var isMultiple = true;
+		// Debugging for single view
+		// data = [data[0]]
 		if(data.length ==1)
 			isMultiple = false
 
@@ -220,7 +222,8 @@ $(document).ready(function(){
 				card.removeClass('multiple');
 				card.find('.general .designationOrganization').addClass('hidden');
 				card.find('.horizontal-separator').addClass('hidden')
-				card.find('.profile').addClass('highlighted-profile')
+				card.find('.profile').addClass('highlighted-profile');
+				card.find('.profile .jobDetails').addClass('hidden');
 			}
 			var designationOrganization = aRow['designation'] + ' at '+ aRow['organization'];
 			var currentFromMonth = moment().month(parseInt(aRow['currentExp']['from']['month']) -1).format('MMM');

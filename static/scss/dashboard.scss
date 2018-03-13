@@ -175,7 +175,7 @@ $button-border-color: #8f8a8a;
 		.meta-prop{
 			display: inline-block;
 			margin-right: 10px;
-			line-height: 20px;
+			line-height: 25px;
 			.icon, .label{
 				display: inline-block;
 				img{
@@ -218,6 +218,8 @@ $button-border-color: #8f8a8a;
 					color: $green;
 					font-size: 16px;
 					font-weight: 400;
+					display: block;
+					margin-bottom: 5px;
 					img{
 						width: 17px;
 					}
@@ -245,12 +247,15 @@ $button-border-color: #8f8a8a;
 		    padding-top: 10px;
 		    background: $white-highlight-color;
 		    border-radius: 6px;
+		    padding-bottom: 10px;
 		}
 		.notification-row.multiple{
 			padding: 5px 0;
 			.meta{
 				color: $meta-grey;
 				font-size: 13px;
+				line-height: 18px;
+    			margin-bottom: 5px;
 			}
 			.see-all{
 				text-align: center;
@@ -260,6 +265,15 @@ $button-border-color: #8f8a8a;
 			}
 			.profile-detail{
 				display: none;
+			}
+			.action-buttons{
+				margin-left: 85px;
+				width: calc( 100% - 90px);
+				text-align: left;
+				padding-left: 10px;
+				.button{
+					margin-right: 10px;
+				}
 			}
 		}
 		.highlighted-banner{
@@ -291,8 +305,10 @@ $button-border-color: #8f8a8a;
     		}
 		}
 		.action-buttons{
-			width: 100%;
-			text-align: center;
+			// width: 100%;
+			text-align: left;
+			margin-left: 80px;
+			padding:10px;
 			.button{
 				 margin: 0 auto;
 				 min-width: 50px;
@@ -302,6 +318,7 @@ $button-border-color: #8f8a8a;
 				 border-radius: 4px;
 				 cursor: pointer;
 				 color: $color-darkgrey;
+				 margin-right: 10px;
 			}
 		}
 		.icon{
@@ -567,4 +584,8 @@ $button-border-color: #8f8a8a;
     margin-left: -0.2em;
     margin-right: 0em;
     /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+.demo-icon.icon-group:before,.demo-icon.icon-mail:before , .demo-icon.icon-interview:before, .demo-icon.icon-politics:before {
+	font-size: 47px;
+	color: #919191;
 }
