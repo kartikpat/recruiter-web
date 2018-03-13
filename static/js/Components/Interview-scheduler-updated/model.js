@@ -54,8 +54,8 @@ function Calendar(){
         var slots=[];
         var finalslots=[];    
         var currentDate=moment().format();
-        var fromDate="10-03-2018";
-        var toDate="16-03-2018"; 
+        var fromDate="2018-03-10";
+        var toDate="2018-03-16"; 
         // if($('#radio-button-startend').prop("checked")==true){
         //     fromDate=settings.startdate.val();
         // }
@@ -136,8 +136,7 @@ function Calendar(){
        console.log(fromDate);
        console.log(toDate);
        console.log(days.length); 
-       console.log(days[0].startTime);
-       console.log(days[0].endTime);
+       
         var daySchema ={
             0: "mon",
             1: "tue",
@@ -152,9 +151,9 @@ function Calendar(){
             var dateToMatch= moment($('.fc-'+daySchema[i]).attr("data-date")); 
             console.log(dateToMatch); 
             var fromDateMoment = moment(fromDate);
-            console.log(fromDateMoment);
+            console.log(fromDateMoment.format());
             var toDateMoment = moment(toDate);
-            console.log(toDateMoment);
+            console.log(toDateMoment.format());
             console.log(!(dateToMatch.isBefore(toDateMoment)))
             console.log(!(fromDateMoment.isBefore(dateToMatch)))
             if(!(dateToMatch.isBefore(toDateMoment)))
