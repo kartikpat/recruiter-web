@@ -153,7 +153,7 @@ function Calendar(){
             console.log(dateToMatch); 
             var fromDateMoment = moment(fromDate);
             console.log(fromDateMoment);
-            var toDateMoment = moment(toDate);
+            var toDateMoment = moment(toDate).format();
             console.log(toDateMoment);
             console.log(!(dateToMatch.isBefore(toDateMoment)))
             console.log(!(fromDateMoment.isBefore(dateToMatch)))
