@@ -161,8 +161,8 @@ function Job(){
 			settings.createCalendar.removeClass("hidden");
 			return
 		}
-
-		settings.calendarLength = array.length
+		settings.calendarLength =  null
+	//	settings.calendarLength =  array.length
 		var calendarOptionsStr = '';
 		var item = getCalendarElement();
 		item.element.text("Calendar Link: Select");

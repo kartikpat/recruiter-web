@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .link-color {
-  color: #337ab7; }
+  color: #155d9a; }
 
 .white-bg {
   background-color: #ffffff; }
@@ -510,7 +510,7 @@ span.sticker {
     max-height: 300px; } }
 
 .link-color {
-  color: #337ab7; }
+  color: #155d9a; }
 
 .white-bg {
   background-color: #ffffff; }
@@ -994,7 +994,7 @@ a {
                 border-radius: 4px; }
 
 .link-color {
-  color: #337ab7; }
+  color: #155d9a; }
 
 .white-bg {
   background-color: #ffffff; }
@@ -2288,6 +2288,16 @@ span.sticker {
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
+.filterCount {
+  margin-left: 5px;
+  display: inline-block;
+  min-width: 15px;
+  width: auto;
+  text-align: center;
+  background: #2b2b2b;
+  color: #fff;
+  border-radius: 50%; }
+
 .modal_overlay {
   position: fixed;
   top: 0;

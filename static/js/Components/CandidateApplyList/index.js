@@ -10,7 +10,11 @@ var screenName = "candidate-apply-list";
 jQuery(document).ready( function() {
 
     // fetching url parameters
-    var defaultTab = parseInt(getQueryParameter("defaultTab")) || 1;
+    var defaultTab;
+    if(parseInt(getQueryParameter("defaultTab")) === 0)
+        defaultTab = 0
+    else
+        defaultTab = parseInt(getQueryParameter("defaultTab")) || 1
     // creating the instance of models
 	var candidates = candidateList();
     var aCandidate = Candidate();
@@ -48,6 +52,7 @@ jQuery(document).ready( function() {
     filters.addFilterData('preferredLocation', prefeLocationTagsData);
     filters.onClickApplyFilterButton(function(name){
         if(!filters.checkForError(name)) {
+            debugger
             return
         }
         filters.closeFilterModal()
@@ -146,6 +151,26 @@ jQuery(document).ready( function() {
         var array = [];
         array.push(candidate);
         cloneStickyChat(array, recruiterId, jobId, applicationId)
+    })
+    aCandidate.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
+        var defaultCalendarId = theJob.getDefaultCalendar();
+        if(!defaultCalendarId)
+            return theJob.showCalendarMissingError();
+        var obj = {
+            "type": inviteId,
+            "calendarId": defaultCalendarId
+        }
+        sendInterViewInvite(recruiterId, jobId, applicationId , obj)
+    })
+    aCandidate.onClickSendInterviewInviteTelephonic(function(applicationId, inviteId){
+        var defaultCalendarId = theJob.getDefaultCalendar();
+        if(!defaultCalendarId)
+            return theJob.showCalendarMissingError();
+        var obj = {
+            "type": inviteId,
+            "calendarId": defaultCalendarId
+        }
+        sendInterViewInvite(recruiterId, jobId, applicationId , obj)
     })
     candidates.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
         var defaultCalendarId = theJob.getDefaultCalendar();
