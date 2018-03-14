@@ -58,20 +58,13 @@
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
-  /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
-  /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
   margin-left: .2em;
-  /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
-  /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
 
 .icon-certification:before {
@@ -267,6 +260,15 @@
   content: '\e831'; }
 
 /* '' */
+.icon-location:before {
+  content: '\e832'; }
+
+.icon-clock:before {
+  content: '\e83a'; }
+
+.icon-checked_icon:before {
+  content: '\e819'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -344,7 +346,8 @@ label {
     box-shadow: inset 0 0 3px #4fa995; }
     .course-option input:checked + label span {
       font-size: 14px;
-      color: #4fa995; }
+      color: #4fa995;
+      opacity: 1; }
       .course-option input:checked + label span.course-icon {
         color: #4fa995; }
     .course-option input:checked + label img {
@@ -506,6 +509,19 @@ span.sticker {
   .tag-container .pill-button .pill-listing ul {
     max-height: 300px; } }
 
+#title {
+  cursor: text; }
+
+#courseType, #preferences {
+  margin-bottom: 10px !important; }
+
+.course-selected {
+  font-size: 20px !important;
+  color: #4fa995;
+  font-size: 20px;
+  right: -9px !important;
+  top: -7px !important; }
+
 .area-heading, .job_posting .post_job .section-heading, .premium_job_section .section-head {
   margin-bottom: 20px; }
   .area-heading h3, .job_posting .post_job .section-heading h3, .premium_job_section .section-head h3 {
@@ -645,7 +661,8 @@ span.sticker {
           width: 100%;
           max-width: 100%;
           min-height: 150px;
-          padding: 12px;
+          height: auto;
+          padding: 12px 22px;
           box-sizing: border-box;
           border: 1px solid #e8e8e8;
           border-radius: 2px;
@@ -661,7 +678,8 @@ span.sticker {
         display: block;
         padding: 7px 20px;
         position: relative;
-        font-size: 0; }
+        font-size: 0;
+        padding-left: 0px; }
         .job_posting .post_job .post_job_form .field-container .industry-tags .input-tag, .job_posting .post_job .post_job_form .field-container .location-tags .input-tag, .job_posting .post_job .post_job_form .field-container .skill-tags .input-tag {
           display: inline-block;
           background: #4fa995;
@@ -748,8 +766,7 @@ span.sticker {
   background: #f3fbfb; }
   .premium_job_section .premium-section-content {
     max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 30px; }
+    margin: 0 auto; }
   .premium_job_section .contents input {
     display: none; }
   .premium_job_section .contents label {
@@ -772,7 +789,7 @@ span.sticker {
 .submit-action-buttons {
   padding: 0 30px;
   max-width: 1440px;
-  margin: 30px auto 50px; }
+  margin: 30px auto; }
   .submit-action-buttons button {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -812,7 +829,8 @@ span.sticker {
       box-shadow: none;
       border: 0;
       background: none;
-      border: 0; }
+      border: 0;
+      padding: 10px 32px; }
 
 .guidelines-container {
   display: inline-block;
@@ -830,9 +848,14 @@ span.sticker {
     .guidelines-container ul li {
       font-size: 14px;
       margin-bottom: 20px;
-      color: #5d5d5d; }
+      color: #5d5d5d;
+      line-height: 1.5; }
+      .guidelines-container ul li:last-child {
+        margin-bottom: 0px; }
 
 @media all and (max-width: 768px) {
+  #courseType {
+    margin-bottom: 10px !important; }
   .guidelines-container {
     display: none; }
   .job_posting .job-form-content {
@@ -895,3 +918,6 @@ span.sticker {
   color: #818181;
   font-style: normal;
   white-space: normal; }
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-size: 120% !important; }

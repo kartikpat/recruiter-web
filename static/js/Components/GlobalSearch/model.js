@@ -4,24 +4,19 @@ function candidateList() {
     var config = {};
 
     function init() {
-        settings.candidateListing= $("#candidateList"),
-        settings.filterByStatus= $('#filterByStatus'),
-        settings.filterByJob= $('#filterByJob'),
-        settings.candidateCount= $('#candidateCount'),
+        settings.candidateListing= $("#candidateListing"),
+        settings.filterByTagList= $('#filterByTagList'),
         settings.candidateItemClass= ".candidateItem",
         settings.candidateDownloadResumeButtonClass= ".candDownloadResume",
         settings.candidateProfessionalItemClass = '.candProfessionalItem',
         settings.candidateEducationItemClass = '.candEducationItem',
         settings.candTagItemClass= '.candTagItem',
-        settings.candJobOption= '.candJobOption',
-        settings.multipleJobListingClass= '.multipleJobListing',
-        settings.multipleJobListingTextClass= '.multipleJobListingText',
-        settings.candAppliedJobsClass= '.candAppliedJobs',
+        settings.tagOptionClass= '.tagOption',
+        settings.tagId = -1,
         settings.candidateItemShell= $(".candidateItem.shell"),
-        settings.status= "1,3",
-        settings.jobId= -1,
-        settings.jobTitle = ""
-        onToggleJobList();
+        settings.resultCount = $("#resultCount"),
+        settings.queryParam = $("#queryParam"),
+        settings.candAppliedJobsClass = ".candAppliedJobs"
    }
 
    function setConfig(key, value) {
@@ -34,7 +29,7 @@ function candidateList() {
        return {
            element: card,
            image: card.find('.candImage'),
-           isOnline: card.find('.candidateStatus'),
+           isOnline: card.find('.candStatus'),
            name: card.find('.candName'),
            experience: card.find('.candExperience'),
            location: card.find('.candCurrentLocation'),
@@ -66,7 +61,6 @@ function candidateList() {
    }
 
    function getProfessionalElement() {
-
        var card = $(''+settings.candidateProfessionalItemClass+'.prototype').clone().removeClass("prototype hidden");
        return {
            element: card,
@@ -125,6 +119,7 @@ function candidateList() {
            item.degree.text(anObj["degree"] + "("+anObj["courseType"]+")")
            eduStr+=item.element[0].outerHTML
        })
+       
        item.eduList.html(eduStr)
        if(aData["applications"]) {
            if(aData["applications"].length > 1) {
@@ -141,14 +136,9 @@ function candidateList() {
                item.multipleCandJobListContainer.removeClass("hidden");
            }
            else if(aData["applications"].length == 1) {
-               console.log(aData["applications"][0])
                item.jobTitle.text(aData["applications"][0]["title"])
                item.candidateViewProfileLink.attr("href", "/recruiter/job/"+aData["applications"][0]["jobID"]+"/applications/"+aData["id"]+"")
            }
-       }
-       else {
-            item.jobTitle.text(settings.jobTitle)
-            item.candidateViewProfileLink.attr("href", "/recruiter/job/"+settings.jobId+"/applications/"+aData["id"]+"")
        }
        if(aData["pro"]) {
            item.isProMember.removeClass("hidden")
@@ -159,66 +149,22 @@ function candidateList() {
        return item
    }
 
-   function showCandidateCount(count) {
-       settings.candidateCount.text(count)
-   }
-
    function addToList(dataArray){
-       var str = '';
-       hideShell()
+        hideShell()
        if(!dataArray.length) {
-           return settings.candidateListing.html("<div class='no-data'>No Applications Found!</div>")
+           return settings.candidateListing.html("<div class='no-data'>No Results Found!</div>")
        }
+       var str = '';
        dataArray.forEach(function(aData, index){
            var item = createElement(aData);
            str+=item.element[0].outerHTML;
        });
+
        settings.candidateListing.append(str);
    }
 
    function emptyCandidateList() {
        settings.candidateListing.empty();
-   }
-
-   function onFilterByStatus(fn) {
-       settings.filterByStatus.change(function(){
-           var status = $(this).val();
-           settings.status = status;
-           return fn();
-       })
-   }
-
-   function onFilterByJob(fn) {
-       settings.filterByJob.change(function(){
-           var jobId = $(this).val();
-           settings.jobId = jobId;
-           settings.jobTitle = $(this).find("option:selected").text();
-           return fn();
-       })
-   }
-
-   function getJobFitersElement() {
-       var card = $(""+settings.candJobOption+".prototype").clone().removeClass("prototype hidden");
-       return {
-           element : card
-       }
-   }
-
-   function populateJobsDropdown(dataArray) {
-       var str = '';
-       dataArray.forEach(function(aData, index){
-           var item = getJobFitersElement(aData);
-           item.element.text(aData["title"]);
-           item.element.val(aData["publishedId"]);
-           str+=item.element[0].outerHTML;
-       });
-       settings.filterByJob.append(str);
-   }
-
-   function onToggleJobList() {
-       settings.candidateListing.on('click',settings.multipleJobListingTextClass, function(){
-           $(this).next().slideToggle();
-       })
    }
 
    function hideShell() {
@@ -229,24 +175,20 @@ function candidateList() {
        settings.candidateItemShell.removeClass("hidden")
    }
 
-   function getAppliedFilters() {
-       var parameters = {}
-       parameters.status = settings.status;
-       parameters.jobId = settings.jobId;
-       return parameters;
+   function setHeader(count, str) {
+       settings.resultCount.text(count)
+       settings.queryParam.text(str)
    }
+
 
    return {
        init: init,
        addToList: addToList,
        setConfig : setConfig,
        emptyCandidateList: emptyCandidateList,
-       onFilterByStatus: onFilterByStatus,
-       onFilterByJob: onFilterByJob,
-       populateJobsDropdown: populateJobsDropdown,
-       showCandidateCount: showCandidateCount,
-       getAppliedFilters: getAppliedFilters,
-       showShell: showShell
+       setHeader: setHeader,
+       showShell: showShell,
+       emptyCandidateList: emptyCandidateList
    }
 
 }

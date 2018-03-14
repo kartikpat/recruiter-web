@@ -38,7 +38,8 @@ function candidateList() {
         settings.candidateItemShellClass = ".candidateItem.shell",
         settings.sendInterviewInviteF2FClass = ".inviteF2f",
         settings.sendInterviewInviteTelephonicClass = ".inviteTelephonic",
-        settings.tooltip= $(".tooltip");
+        settings.tooltip= $(".tooltip"),
+        settings.coverLetterLink = $(".coverLetterLink")
 
         onClickMassCheckbox()
         onClickCandidateOtherActions()
@@ -46,7 +47,17 @@ function candidateList() {
         onClickMassReject()
         onClickMassShortlist()
         onClickMassComment()
+
+        onClickCoverLetterLink()
+
 	}
+
+    function onClickCoverLetterLink() {
+        settings.rowContainer.on('click', settings.coverLetterLink, function(e){
+            e.preventDefault()
+            return false
+        })
+    }
 
     function onClickSendInterviewInviteF2F(fn) {
         settings.rowContainer.on('click', settings.sendInterviewInviteF2FClass, function(e){
@@ -84,6 +95,7 @@ function candidateList() {
     function getElement(id) {
 		var card = $(""+settings.candidateRowClass+".prototype").clone().removeClass('prototype hidden')
 		card.attr('data-candidate-id', id);
+
 		return {
 			element: card,
             image: card.find('.js_img'),
@@ -103,7 +115,10 @@ function candidateList() {
             rejectButton: card.find(settings.candidateRejectButtonClass),
             savedButton: card.find(settings.candidateSaveButton),
             downloadResumeButton: card.find(settings.candidateDownloadResumeButton),
-            interviewinvite: card.find(".interviewinvite")
+            interviewinvite: card.find(".interviewinvite"),
+            coverLetterLink: card.find(".coverLetterLink"),
+            viewCommentLink: card.find(".commentLink"),
+            viewTagLink: card.find(".tagLink")
 		}
 	}
 
@@ -131,17 +146,24 @@ function candidateList() {
 
     function createElement(aData) {
 		var item = getElement(aData["userID"]);
+        item.element.find(".openCandidateLink").attr('href',"/recruiter/job/"+config["jobId"]+"/applications/"+aData["id"]+"");
         item.element.attr("data-application-id", aData["id"]);
         item.image.attr("src",(aData["img"] || "/static/images/noimage.png"));
         item.name.text(aData["name"] || "NA");
         item.experience.text((aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m") || "NA");
         item.location.text(aData["currentLocation"] || "NA");
         item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY'))
-        item.notice.text((aData["notice"] + " months"));
+        if(aData["notice"] <= 7) {
+            item.notice.text("Immediately Available");
+        }
+        else {
+            item.notice.text((aData["notice"] + " months"));
+        }
+
         item.shortlistButton.attr("data-status", "1");
         item.rejectButton.attr("data-status", "2");
         item.savedButton.attr("data-status", "3");
-        item.downloadResumeButton.attr("href", aData["resume"])
+        item.downloadResumeButton.attr("data-href", aData["resume"])
         item.downloadResumeButton.attr("download", aData["name"].replace(/ +/g, '_')+'_resume.pdf')
         var status = aData["status"];
         if(status == 1) {
@@ -177,6 +199,10 @@ function candidateList() {
 
             profStr+=item.element[0].outerHTML
         })
+        console.log(aData["jobs"].length)
+        if(aData["jobs"].length > 3) {
+            profStr+= "<span style='color: #155d9a'>"+(aData["jobs"].length - 3)+" more work experience.</span>"
+        }
         item.profList.html(profStr)
         var eduStr = '';
         $.each(aData["education"],function(index, anObj) {
@@ -189,6 +215,10 @@ function candidateList() {
             item.degree.text(anObj["degree"] + "("+anObj["courseType"]+")")
             eduStr+=item.element[0].outerHTML
         })
+        if(aData["education"].length > 3) {
+            eduStr+= "<span style='color: #155d9a'>"+(aData["education"].length - 3)+" more education.</span>"
+        }
+
         item.eduList.html(eduStr)
 
         console.log(aData['userID']);
@@ -203,6 +233,15 @@ function candidateList() {
         // if(aData["invite"]) {
         //     item.interviewinvite.text("Resend Interview Invite");
         // }
+        if(aData["cover"]) {
+            item.coverLetterLink.removeClass("hidden")
+        }
+        if(aData["comment"]) {
+            item.viewCommentLink.removeClass("hidden")
+        }
+        if(aData["tags"].length) {
+            item.viewTagLink.removeClass("hidden")
+        }
         return item
     }
 
@@ -248,7 +287,9 @@ function candidateList() {
         hideShells(status);
         if(!dataArray.length) {
 			return element.html("<div class='no-data'>No Applications Found!</div>")
-		}
+		}else {
+            element.find(".no-data").remove()
+        }
 		dataArray.forEach(function(aData, index){
 			var item = createElement(aData);
 			str+=item.element[0].outerHTML;
@@ -295,15 +336,18 @@ function candidateList() {
     function onClickCandidateOtherActions() {
         settings.rowContainer.on('click', settings.candidateOtherActionsClass,function(event) {
             event.stopPropagation();
+            event.stopPropagation()
             $(this).toggleClass("inactive");
+            return false
         })
-    } 
+    }
 
     function onClickSendMessage(fn) {
         settings.rowContainer.on('click', settings.candidateSendMessageButton,function(event) {
             event.stopPropagation();
             var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
-            fn(candidateId);
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            fn(candidateId, applicationId);
             return false
         });
     }
@@ -312,6 +356,7 @@ function candidateList() {
         settings.rowContainer.on('click', settings.candidateInviteButton, function(event){
             event.stopPropagation();
             var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
+
             fn(candidateId);
             return false
         })
@@ -319,8 +364,9 @@ function candidateList() {
 
     function onClickDownloadResume(fn) {
         settings.rowContainer.on('click', settings.candidateDownloadResumeButton, function(event){
-            event.stopPropagation();
-            fn()
+            var url = $(this).attr("data-href");
+            window.open(url);
+            return false
         })
     }
 
@@ -372,7 +418,7 @@ function candidateList() {
             var status = $(this).attr("data-status");
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             fn(applicationId, status);
-
+            return false
         })
     }
 
@@ -382,6 +428,7 @@ function candidateList() {
             var status = $(this).attr("data-status");
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             fn(applicationId, status);
+            return false
         })
     }
 

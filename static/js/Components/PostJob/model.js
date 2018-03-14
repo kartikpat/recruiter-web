@@ -1,7 +1,9 @@
-
+var jobTagsArray = {}
 
 var errorResponses = {
 	missingTitle: 'Please enter the job title',
+	maxLimitTitle: 'Cannot exceed 120 letters',
+	minLimitTitle: 'Atleast 3 letters',
 	missingLocation: 'Please choose a location',
 	missingMinExp: 'Please choose years of experience required for the job',
 	missingMaxExp: 'Please choose years of experience required for the job',
@@ -14,7 +16,6 @@ var errorResponses = {
 	invalidBatch: 'Maximum Batch should be greater than Minimum Batch',
 	invalidMinExp: 'Maximum Years of Experience should be greater than Minimum Years of Experience'
 }
-
 
 function Job(){
 	var settings ={};
@@ -47,6 +48,7 @@ function Job(){
 			settings.cancelFormButton = $('#cancelForm'),
 			settings.error = $('.error'),
 			settings.creditsText = $('#creditsText');
+			settings.initialPremium = null
 			setAvailableCredits(settings.creditsText, config["availableCredits"]);
 			onClickCancelForm(settings.cancelFormButton);
 
@@ -56,35 +58,41 @@ function Job(){
 				settings.minSal.append('<option value="'+(i+1)+'">'+(i+1)+'</option>')
 			}
 
-			if(type=='edit'){
-				settings.editor = new MediumEditor("#job_description", {
-					toolbar: false,
-					placeholder: {
-				        text: 'Describe the role, talk about the role and responsibilities and help potential applicants understand what makes this a great opportunity.'
-				    }
-				})
-				settings.editor.subscribe('editableInput', function(event, editorElement){
-					settings.description.val(settings.editor.getContent());
-				})
-			}
+			settings.editor = new MediumEditor("#job_description", {
+				toolbar: false,
+				placeholder: {
+			        text: 'Describe the role, talk about the role and responsibilities and help potential applicants understand what makes this a great opportunity.'
+			    }
+			})
+			settings.editor.subscribe('editableInput', function(event, editorElement){
+				settings.description.val(settings.editor.getContent());
+			})
+
 	}
 
 
 	function onChangeJobPremium(fn) {
 		settings.isPremium.change(function() {
-			console.log(this.checked)
+			if(settings.initialPremium) {
+				if(this.checked) {
+					return settings.creditsText.text("You have "+config["availableCredits"]+" credits left.")
+				}
+				if(config["availableCredits"]) {
+					settings.creditsText.text(" You will have "+(parseInt(config["availableCredits"])+1)+" credits left.")
+					return
+				}
+			}
 			if(this.checked) {
 				if(config["availableCredits"]) {
-					settings.creditsText.text("This job will be posted as premium. You will have "+(config["availableCredits"]-1)+" credits left.")
+					settings.creditsText.text("This job will be posted as premium. You will have "+(parseInt(config["availableCredits"])-1)+" credits left.")
 					return
 				}
 				$(this).prop("checked", false)
-				settings.creditsText.text("You don’t have any premium credits right now! We’ll reach out to you to help you with it!")
-				return fn();
+				return settings.creditsText.text("You don’t have any premium credits right now! We’ll reach out to you to help you with it!")
+
 			}
 			settings.creditsText.text("You have "+config["availableCredits"]+" credits left.")
 		})
-
 	}
 
 	function loginHandler(fn){
@@ -95,6 +103,7 @@ function Job(){
 		console.log(settings)
 		if(!(
 				ifExists(settings.title)
+				&& wordsLimit(settings.title)
 				&& checkPillValues(settings.location)
 				&& ifExists(settings.minExp)
 				&& ifExists(settings.maxExp)
@@ -142,7 +151,7 @@ function Job(){
 		var ob = {
 			title: settings.title.val(),
 			description: settings.description.val(),
-			premium: settings.isPremium.is(':checked') ? 1 : 0,
+			premium: settings.isPremium.is(':checked') ? true : false,
 			category: settings.category.val(),
 			functionalArea: settings.functionalArea.val(),
 			location: locationObj.id,
@@ -151,6 +160,7 @@ function Job(){
 		}
 
 		var tagsObj = getPillValues(settings.tags.attr('id'));
+
 		if( tagsObj['label'].length > 0 )
 			ob.tags = tagsObj['label'];
 		if(settings.videoUrl.val() && settings.videoUrl.val() !='')
@@ -164,7 +174,7 @@ function Job(){
 			ob.sal = {
 				min: settings.minSal.val(),
 				max: settings.maxSal.val(),
-				cnfi: settings.confidential.is(':checked') ? 1 : 0
+				cnfi: settings.confidential.is(':checked') ? true : false
 			}
 		if(settings.minExp.val() && settings.maxExp.val())
 			ob.exp = {
@@ -180,20 +190,25 @@ function Job(){
 		return ob;
 	}
 
+	function getTitleFormat(title, regex) {
+		return title.replace(regex, '');
+	}
+
 	function setJobData(jobId, obj) {
-		settings.title.val(obj["title"]);
+		settings.title.val(getTitleFormat(obj["title"],(/\(\d+-\d+ \w+\)$/)));
 		if(settings.editor){
 			settings.editor.setContent(obj["description"])
 		}
 		settings.description.val(obj["description"]);
+		settings.initialPremium = obj["premium"]
 		settings.isPremium.prop("checked", obj["premium"]);
 		settings.category.val(obj["category"]);
 		settings.functionalArea.val(obj["functionalArea"]);
 		console.log(obj)
 
 		// setPillValues(settings.location.attr('id'), loca);
-		setPillValues(settings.location.attr('id'), obj["location"]);
-
+		setPillValues(settings.location.attr('id'), obj["location"], currentLocationTagsData);
+		setPillValues(settings.location.attr('id'), obj["otherLocation"]);
 		setPillValues(settings.industry.attr('id'), obj["industry"], industryTagsData);
 		if(obj["videoUrl"])
 			settings.videoUrl.val(obj["videoUrl"]);
@@ -209,18 +224,28 @@ function Job(){
 		}
 		settings.minExp.val(obj["exp"]["min"]);
 		settings.maxExp.val(obj["exp"]["max"]);
-		if(obj["batch"]) {
+		if(obj["batch"] && obj["sal"]["min"]!= 0 && obj["sal"]["max"]!=0) {
 			settings.batchFrom.val(obj["batch"]["min"]);
 			settings.batchTo.val(obj["batch"]["max"]);
 		}
-
+		settings.submitButton.text("Update")
 	}
 
 	function submitHandler(fn){
 		$(settings.submitButton).click(fn)
 	}
 
-
+	function populateJobTags(dataArray) {
+		var str = ""
+		dataArray.forEach(function(aTag, index){
+			var item = $(".jobTag.prototype").clone().removeClass("prototype hidden")
+			item.text(aTag["name"])
+			item.attr("data-value",aTag["id"])
+			item.attr("data-name", aTag["name"])
+			str += item[0].outerHTML
+		})
+		$("#jobTagsList").html(str)
+	}
 
 	return {
 		init: init,
@@ -229,14 +254,15 @@ function Job(){
 		getData: getJobData,
 		submitHandler: submitHandler,
 		setData: setJobData,
-		onChangeJobPremium: onChangeJobPremium
+		onChangeJobPremium: onChangeJobPremium,
+		populateJobTags: populateJobTags
 	}
 }
 
 function setAvailableCredits(element, credits) {
 	if(!credits) {
-		element.text("Reach out to more candidates in less amount of time by making your job premium.")
-		return
+		return element.html("Reach out to more candidates in less amount of time by making your job premium. <a target='_blank' style='color:#155d9a' href='/recruiter/recruiter-plan'>Learn More.</a>")
+
 	}
 	element.text("You have "+credits+" credits left.")
 }
@@ -244,8 +270,28 @@ function setAvailableCredits(element, credits) {
 
 function onClickCancelForm(element) {
 	element.click(function() {
-		window.location.href = "/"
+		window.location.href = "/my-jobs"
 	})
+}
+
+function wordsLimit(element) {
+	var errorElement = element.next('.error');
+	if(element && element.val() && element.val().length < 3){
+		errorElement.text(errorResponses['minLimit'+element.attr('name')]).removeClass("hidden");
+		focusOnElement(element)
+		return false;
+	}
+	if(element && element.val() && element.val().length > 120){
+		errorElement.text(errorResponses['maxLimit'+element.attr('name')]).removeClass("hidden");
+		focusOnElement(element)
+		return false;
+	}
+	else if (!errorElement.hasClass("hidden")) {
+		eraseError(element)
+		console.log("entering in else if")
+	}
+	console.log("returning true")
+	return true;
 }
 
 function ifExists(element){
@@ -319,11 +365,16 @@ function getPillValues(elementId){
 		id: [],
 		label: []
 	};
+
+	if(elementId == "jobTags") {
+		el.each(function(index, value){
+			data['label'].push($(value).attr('data-name'));
+		})
+		return data
+	}
 	el.each(function(index, value){
-		console.log()
 		$(value).attr('data-id') ? data['id'].push($(value).attr('data-id')) : data['label'].push($(value).attr('data-name'));
 	})
-
 	return data;
 }
 
@@ -332,8 +383,11 @@ function getPillValues(elementId){
  * @return {[type]} [description]
  */
 function setPillValues(elementId, arr, globalArray){
+
 	arr.forEach(function(value, index){
-		if(globalArray)
+
+		if(globalArray) {
+			$('#'+elementId+'').find(".pill-listing li[data-value='"+value+"']").addClass("selected")
 			globalArray.forEach(function(anItem){
 				if(value==anItem['val']){
 					var label = anItem['text']
@@ -341,7 +395,13 @@ function setPillValues(elementId, arr, globalArray){
 					addNewTag(label, id, '#'+elementId+'')
 				}
 			})
+		}
+
 		else{
+			if(elementId == "jobTags") {
+				$('#'+elementId+'').find(".pill-listing li[data-name='"+value+"']").addClass("selected")
+				debugger
+			}
 			var label = value
 			var id =""
 			addNewTag(label, id, '#'+elementId+'')

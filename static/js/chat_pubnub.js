@@ -149,16 +149,16 @@ function initializePubNub() {
     pubnub = new PubNub({
     publishKey: "pub-c-5069ae94-20a5-4328-8281-4e1c630cd6f2", // 'pub-c-63069c70-3e81-42b3-b5f6-dc0bd232f845'
     subscribeKey: "sub-c-13938756-ada8-11e7-85f8-821de3cbacaa", //'sub-c-760e7840-9e47-11e5-8db0-0619f8945a4f',
-    // authKey: authkey,
-    // logVerbosity: true,
-    uuid:  uuid ||  btoa(recruiterID+'--'+recruiterEmail),
+    uuid: setUUID(recruiterID+'--'+recruiterEmail),
     heartbeat: 120,
-    heartbeat_interval: 30
-    // logVerbosity: true,
-    // ssl : true
+    heartbeatInterval: 30
     }, function(status) {
         console.log(status);
     });
+}
+
+function setUUID(string) {
+    return btoa(string)
 }
 
 function getUUID() {
@@ -217,19 +217,19 @@ function addListeners(onNewMessage, onNewPresence, onNewStatus){
 //     receivePresence(p)
 // }
 
-function onNewStatus(s) {
-    console.log(s)
-    // handle status
-    var category = s.category; // PNConnectedCategory
-    var operation = s.operation; // PNSubscribeOperation
-    var affectedChannels = s.affectedChannels; // The channels affected in the operation, of type array.
-    var subscribedChannels = s.subscribedChannels; // All the current subscribed channels, of type array.
-    var affectedChannelGroups = s.affectedChannelGroups; // The channel groups affected in the operation, of type array.
-    var lastTimetoken = s.lastTimetoken; // The last timetoken used in the subscribe request, of type long.
-    var currentTimetoken = s.currentTimetoken; // The current timetoken fetched in the subscribe response, which is going to be used in the next request, of type long.
-
-    
-}
+// function onNewStatus(s) {
+//     console.log(s)
+//     // handle status
+//     var category = s.category; // PNConnectedCategory
+//     var operation = s.operation; // PNSubscribeOperation
+//     var affectedChannels = s.affectedChannels; // The channels affected in the operation, of type array.
+//     var subscribedChannels = s.subscribedChannels; // All the current subscribed channels, of type array.
+//     var affectedChannelGroups = s.affectedChannelGroups; // The channel groups affected in the operation, of type array.
+//     var lastTimetoken = s.lastTimetoken; // The last timetoken used in the subscribe request, of type long.
+//     var currentTimetoken = s.currentTimetoken; // The current timetoken fetched in the subscribe response, which is going to be used in the next request, of type long.
+//
+//
+// }
 
 // function checkForStatusChange(status) {
 //     if(status.operation=="PNSubscribeOperation"){
@@ -244,7 +244,10 @@ function onNewStatus(s) {
 function subscribe(channelsArray) {
     pubnub.subscribe({
         channels: channelsArray,
-        withPresence: true
+        withPresence: true,
+        restore : true,
+        disconnect: function() {alert("Connection Lost!")},
+        reconnect : function() {alert("And we're Back!")}
     });
 }
 
@@ -258,7 +261,7 @@ function fetchHistory(channel, count, startTimeToken, endTimeToken, onFetchHisto
     pubnub.history({
         channel: channel, //"my_channel",
         count: count,
-        stringifiedTimeToken: true,
+        stringifiedTimeToken: false,
         start: startTimeToken,
         end: endTimeToken
 
@@ -302,10 +305,4 @@ function publish(message, channel, onPublish) {
             "cool": "meta"
         } // publish extra meta with the request
     }, onPublish)
-}
-
-function onPublish(status, response) {
-    console.log("hi")
-    console.log(status)
-    console.log(response)
 }

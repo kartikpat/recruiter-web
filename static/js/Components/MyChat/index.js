@@ -1,7 +1,7 @@
 var channelsArray = []
 globalParameters = {
     channelName: "",
-    messageNumber: 5,
+    messageNumber: 10,
     clicked: 1,
     startTimeToken: null,
     endTimeToken: null
@@ -21,16 +21,12 @@ jQuery(document).ready( function() {
     chat.onClickSingleChatItem(function(candidateId){
         var obj = store.getCandidateFromStore(candidateId)
         globalParameters.channelName = obj.channel;
-        // var parameters = {}
-        // parameters.startTimeToken = moment().format('x')
-        // parameters.endTimeToken = moment(parseInt(parameters.startTimeToken)).subtract('months', 1).format('x')
-        // globalParameters.startTimeToken = parameters.startTimeToken
-        // globalParameters.endTimeToken = parameters.endTimeToken
+        globalParameters.clicked = 1;
         fetchHistory(obj.channel , globalParameters.messageNumber , null, null, onFetchHistory);
         chat.setCandidateProfile(obj)
     })
 
-    chat.setUuid(uuid || btoa(recruiterId+'--'+profile["email"]))
+    chat.setUuid(btoa(recruiterId+'--'+profile["email"]))
 
     chat.onSendMessage(function(message, channelName, candidateId){
 
@@ -44,20 +40,26 @@ jQuery(document).ready( function() {
             msg: message,
             img: profile["pic"],
             type: 1
-        }, channelName, function(m){
+        }, channelName, function(status,response){
+            console.log(status);
+            console.log(response)
+            if(status.statusCode == 200) {
+                chat.appendSendMessage(message, profile["pic"])
+            }
+            else if (status.category == "PNNetworkIssuesCategory") {
+                var data = {}
+                data.message = "Network Issues"
+                toastNotify(3, data.message)
+            }
 
-            // var obj = store.getCandidateFromStore(candidateId)
-            chat.appendSendMessage(message, profile["pic"])
         })
 
     })
 
     function onFetchRecruiterChats(topic, data) {
-
         chat.addToList(data);
         channelsArray = data;
         store.saveToStore(data);
-
         subscribe(getArray(channelsArray));
     }
 
@@ -85,8 +87,7 @@ jQuery(document).ready( function() {
        var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
        var pubTT = m.timetoken; // Publish timetoken
 
-       if( msg["deviceID"] == getCookie("sessID") && msg["UUID"] == (uuid || btoa(recruiterId+'--'+profile["email"])) ){
-
+       if( msg["deviceID"] == getCookie("sessID") && msg["UUID"] == btoa(recruiterId+'--'+profile["email"])){
            return
        }
        chat.receiveMessage(msg,channelName);
@@ -112,6 +113,25 @@ jQuery(document).ready( function() {
        }
    }
 
+   function onNewStatus(s) {
+       console.log(s)
+       // handle status
+       var category = s.category; // PNConnectedCategory
+       var operation = s.operation; // PNSubscribeOperation
+       var affectedChannels = s.affectedChannels; // The channels affected in the operation, of type array.
+       var subscribedChannels = s.subscribedChannels; // All the current subscribed channels, of type array.
+       var affectedChannelGroups = s.affectedChannelGroups; // The channel groups affected in the operation, of type array.
+       var lastTimetoken = s.lastTimetoken; // The last timetoken used in the subscribe request, of type long.
+       var currentTimetoken = s.currentTimetoken; // The current timetoken fetched in the subscribe response, which is going to be used in the next request, of type long.
+
+       if(s.category == "PNNetworkDownCategory") {
+           return chat.setRecruiterInactive(s)
+       }
+       if(s.category == "PNNetworkUpCategory") {
+           return chat.setRecruiterActive(s)
+       }
+   }
+
    chat.onInputSearchCandidate(function(str){
        var resultTags = []
        var array = channelsArray;
@@ -126,12 +146,12 @@ jQuery(document).ready( function() {
    function onFetchHistory(data, response) {
        console.log(data)
        console.log(response)
-       globalParameters.startTimeToken = response.startTimeToken
-    //    globalParameters.startTimeToken = response.endTimeToken
+       console.log(globalParameters)
+       globalParameters.startTimeToken = parseInt(response.startTimeToken)
        chat.populateMessages(response.messages)
-       if(globalParameters.clicked == 1) {
-           chat.scrollToBottom()
-       }
+    //    if(globalParameters.clicked == 1) {
+    //        chat.scrollToBottom()
+    //    }
    }
 
    var ticker;
@@ -142,11 +162,11 @@ jQuery(document).ready( function() {
 
    function checkScrollEnd() {
        if($(".current-chat").scrollTop() < 5) {
-           globalParameters.clicked = 0;
-
-
+        //    globalParameters.clicked = 0;
+           if(globalParameters.startTimeToken == 0) {
+               return
+           }
            fetchHistory(globalParameters.channelName , globalParameters.messageNumber ,globalParameters.startTimeToken, null, onFetchHistory);
-           $(".current-chat").scrollTop(6)
        }
    }
 })

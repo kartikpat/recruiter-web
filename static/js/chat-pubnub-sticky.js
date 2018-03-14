@@ -21,7 +21,9 @@ var recruiterEmail = profile.email
         console.log(status);
     });
 
-
+    function getUUID() {
+        return pubnub.getUUID();
+    }
 
 function getCookie(name) {
   var value = "; " + document.cookie;
@@ -60,7 +62,7 @@ function onNewMessage(m) {
     var pubTT = m.timetoken; // Publish timetoken
     console.log("receieved new message")
     console.log(msg)
-    receiveMessage(msg);
+    receiveMessage(m);
 }
 
 function onNewPresence(p) {
@@ -94,7 +96,9 @@ function onNewStatus(s) {
 function subscribe(channelsArray) {
     pubnub.subscribe({
         channels: channelsArray,
-        withPresence: true
+        withPresence: true,
+        disconnect: function() {alert("Connection Lost!")},
+        reconnect : function() {alert("And we're Back!")}
     });
 }
 

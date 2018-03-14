@@ -58,20 +58,13 @@
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
-  /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
-  /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
   margin-left: .2em;
-  /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
-  /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
 
 .icon-certification:before {
@@ -267,6 +260,15 @@
   content: '\e831'; }
 
 /* '' */
+.icon-location:before {
+  content: '\e832'; }
+
+.icon-clock:before {
+  content: '\e83a'; }
+
+.icon-checked_icon:before {
+  content: '\e819'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -344,7 +346,8 @@ label {
     box-shadow: inset 0 0 3px #4fa995; }
     .course-option input:checked + label span {
       font-size: 14px;
-      color: #4fa995; }
+      color: #4fa995;
+      opacity: 1; }
       .course-option input:checked + label span.course-icon {
         color: #4fa995; }
     .course-option input:checked + label img {
@@ -568,20 +571,13 @@ span.sticker {
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
-  /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
-  /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
   margin-left: .2em;
-  /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
-  /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
 
 .icon-certification:before {
@@ -777,6 +773,15 @@ span.sticker {
   content: '\e831'; }
 
 /* '' */
+.icon-location:before {
+  content: '\e832'; }
+
+.icon-clock:before {
+  content: '\e83a'; }
+
+.icon-checked_icon:before {
+  content: '\e819'; }
+
 .left {
   float: left; }
 
@@ -1047,20 +1052,13 @@ a {
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
-  /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
-  /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
   margin-left: .2em;
-  /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
-  /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
 
 .icon-certification:before {
@@ -1256,6 +1254,15 @@ a {
   content: '\e831'; }
 
 /* '' */
+.icon-location:before {
+  content: '\e832'; }
+
+.icon-clock:before {
+  content: '\e83a'; }
+
+.icon-checked_icon:before {
+  content: '\e819'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -1333,7 +1340,8 @@ label {
     box-shadow: inset 0 0 3px #4fa995; }
     .course-option input:checked + label span {
       font-size: 14px;
-      color: #4fa995; }
+      color: #4fa995;
+      opacity: 1; }
       .course-option input:checked + label span.course-icon {
         color: #4fa995; }
     .course-option input:checked + label img {
@@ -1512,13 +1520,15 @@ span.sticker {
       font-size: 14px;
       margin-right: 10px; }
   .conversations .conversation-listing-container .conversations-listing {
-    max-height: 700px; }
+    max-height: 600px;
+    overflow-y: auto; }
     .conversations .conversation-listing-container .conversations-listing .conversation-item {
       display: inline-block;
       vertical-align: middle;
       width: 100%;
       padding: 10px 0 0 5px;
-      font-size: 0; }
+      font-size: 0;
+      cursor: pointer; }
       .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item {
         display: inline-block;
         vertical-align: middle; }
@@ -1532,7 +1542,8 @@ span.sticker {
             height: 33px; }
         .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info {
           display: inline-block;
-          vertical-align: middle; }
+          vertical-align: middle;
+          width: calc(100% - 53px); }
           .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info p {
             margin: 0; }
             .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info p.user-name {
@@ -1581,20 +1592,13 @@ span.sticker {
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
-  /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
-  /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
   margin-left: .2em;
-  /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
-  /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
 
 .icon-certification:before {
@@ -1790,6 +1794,15 @@ span.sticker {
   content: '\e831'; }
 
 /* '' */
+.icon-location:before {
+  content: '\e832'; }
+
+.icon-clock:before {
+  content: '\e83a'; }
+
+.icon-checked_icon:before {
+  content: '\e819'; }
+
 /*[Recruiter_Homepage]*/
 /*[/Recruiter_Homepage]*/
 /**** Fontello Font Icons : ****/
@@ -1821,20 +1834,13 @@ span.sticker {
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
-  /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
-  /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
   margin-left: .2em;
-  /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
-  /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
 
 .icon-certification:before {
@@ -2030,6 +2036,15 @@ span.sticker {
   content: '\e831'; }
 
 /* '' */
+.icon-location:before {
+  content: '\e832'; }
+
+.icon-clock:before {
+  content: '\e83a'; }
+
+.icon-checked_icon:before {
+  content: '\e819'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -2107,7 +2122,8 @@ label {
     box-shadow: inset 0 0 3px #4fa995; }
     .course-option input:checked + label span {
       font-size: 14px;
-      color: #4fa995; }
+      color: #4fa995;
+      opacity: 1; }
       .course-option input:checked + label span.course-icon {
         color: #4fa995; }
     .course-option input:checked + label img {
@@ -2575,6 +2591,13 @@ span.sticker {
   .modal_overlay .modal_content .modal_body .modal_body_header {
     border-bottom: 0; } }
 
+.link-color {
+  color: #155d9a !important; }
+
+#searchCandidateError {
+  position: static !important;
+  margin: 0; }
+
 #calendarSelectError {
   margin: 0 !important;
   padding-top: 7px;
@@ -2803,8 +2826,10 @@ input::-webkit-input-placeholder {
         .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .keyword-search {
           display: inline-block;
           width: 40%;
-          position: relative;
           vertical-align: top; }
+          .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .keyword-search .container {
+            position: relative;
+            height: 40px; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .keyword-search input {
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -2942,11 +2967,11 @@ input::-webkit-input-placeholder {
         .page-content .candidate-apply-listing .candidates-area .candidates-area-body .selection-bar .bulk-selection-item {
           display: inline-block;
           font-size: initial;
-          padding: 10px 30px 10px 10px;
-          border-bottom: 2px solid transparent;
-          position: relative;
-          top: 1px;
-          cursor: pointer; }
+          padding: 7px 30px 0 10px;
+          border-bottom: 3px solid transparent;
+          height: 38px;
+          cursor: pointer;
+          line-height: 24px; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-body .selection-bar .bulk-selection-item span {
             font-size: 14px;
             text-transform: uppercase;
@@ -2966,11 +2991,40 @@ input::-webkit-input-placeholder {
         min-height: 30px;
         margin-top: 2px; }
         .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item {
+          display: block;
           padding: 30px 10px 0px;
           font-size: 0;
           margin: 0;
           cursor: pointer;
           position: relative; }
+          .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-select {
+            display: none;
+            position: absolute;
+            top: 8px;
+            left: 9px; }
+            .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-select .checkbox input {
+              display: none; }
+            .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-select .checkbox label {
+              display: inline-block;
+              cursor: pointer; }
+            .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-select .checkbox input + label {
+              padding: 4px 0 4px 35px;
+              background-image: url("/static/images/unchecked_checkbox.svg");
+              background-repeat: no-repeat;
+              background-size: 20px;
+              background-position: left 2px center; }
+            .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-select .checkbox input:checked + label {
+              background-image: url("/static/images/checked_checkbox.svg"); }
+            .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-select .checkbox label {
+              min-height: 20px;
+              min-width: 16px; }
+            .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-select.selected {
+              display: inline-block;
+              background-color: transparent; }
+          .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover {
+            background-color: #fafafa; }
+            .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover .separator {
+              border-color: transparent; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .section.sticker-container {
             position: absolute;
             bottom: 0;
@@ -3004,30 +3058,6 @@ input::-webkit-input-placeholder {
                 width: 75px;
                 height: 75px;
                 margin-bottom: 5px; }
-                .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select {
-                  display: none;
-                  position: absolute;
-                  top: -20px;
-                  left: -10px; }
-                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select .checkbox input {
-                    display: none; }
-                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select .checkbox label {
-                    display: inline-block;
-                    cursor: pointer; }
-                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select .checkbox input + label {
-                    padding: 4px 0 4px 35px;
-                    background-image: url("/static/images/unchecked_checkbox.svg");
-                    background-repeat: no-repeat;
-                    background-size: 20px;
-                    background-position: left 2px center; }
-                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select .checkbox input:checked + label {
-                    background-image: url("/static/images/checked_checkbox.svg"); }
-                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select .checkbox label {
-                    min-height: 20px;
-                    min-width: 16px; }
-                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-select.selected {
-                    display: inline-block;
-                    background-color: transparent; }
                 .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image img {
                   width: 100%;
                   height: 100%;
@@ -3158,8 +3188,8 @@ input::-webkit-input-placeholder {
             .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:last-child .separator {
               border: 0; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover {
-            box-shadow: 0 0 6px rgba(0, 0, 0, 0.4); }
-            .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover .candidate-item-section.image .candidate-select {
+            box-shadow: 0px 2px 8px 0px rgba(214, 214, 214, 0.85); }
+            .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover .candidate-select {
               display: block; }
 
 .job-tags {
@@ -4181,7 +4211,8 @@ input::-webkit-input-placeholder {
 
 #jobs-category-tabs {
   border-top: 1px solid #e8e8e8;
-  overflow: auto; }
+  overflow: auto;
+  border-bottom: 1px solid #e8e8e8; }
   #jobs-category-tabs .tabs_scroll_container {
     overflow-x: auto;
     overflow-y: hidden; }
