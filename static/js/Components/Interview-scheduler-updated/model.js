@@ -1,7 +1,8 @@
 
 function Calendar(){
     var settings ={};
-    var timetable={ };
+    var timetable={};
+
     function init(){
         settings.name= $('#name'),
         settings.message= $("#message"),
@@ -31,12 +32,14 @@ function Calendar(){
         settings.start=$('.start'),
         settings.end=$('.end'),
         settings.firstDay=$('#1');
+        selectCreater();
+        copytoall();
         time_mapper();
         fullCalendar();
         Timer();
+        copyTime();
         highlighter();
     }
-
     function highlighter(){
           settings.createCalendar.on("click", getslots);
           settings.Highlighter.on("change",function(e){
@@ -49,25 +52,36 @@ function Calendar(){
             var slots=getslots();
             testHighlight(slots.fromDate,slots.toDate,slots.highlightSlots);
           });
+          settings.button.on("click",function(e){
+            e.preventDefault();
+            var slots=getslots();
+            testHighlight(slots.fromDate,slots.toDate,slots.highlightSlots);
+        })
     }
     function getslots(){
         var slots=[];
         var finalslots=[];    
-        var currentDate=moment().format();
-        var fromDate="10-03-2018";
-        var toDate="16-03-2018"; 
-        // if($('#radio-button-startend').prop("checked")==true){
-        //     fromDate=settings.startdate.val();
-        // }
-        // if($("#radio-button-start").prop("checked") == true){
-        //     fromDate=currentDate;
-        // }
-        // if($('#radio-button-tillend').prop("checked")==true){
-        //     enddate='';
-        // }
-        // if($('#radio-button-end').prop("checked")==true){
-        //     enddate=settings.enddate.val(); 
-        // }       
+        var currentDate=moment().format("YYYY-MM-DD");
+        console.log(currentDate);
+          var fromDate=currentDate;
+          var toDate=""; 
+        if($('#radio-button-startend').prop("checked")==true){
+            fromDate=$('#start_date').datepicker().val();
+            console.log(fromDate);
+        }
+        if($("#radio-button-start").prop("checked") == true){
+            fromDate=currentDate;
+        }
+        if($('#radio-button-tillend').prop("checked")==true){
+            toDate="";
+        }
+        if($('#radio-button-end').prop("checked")==true){
+           // debugger
+          var toDate=$('#end_date').val();
+          console.log(toDate);
+           
+        }       
+
         $.each(settings.dayId,function(){
             settings.select_menu.find('option').prop('disabled', false); 
             var id=$(this).attr('id');
@@ -136,223 +150,41 @@ function Calendar(){
        console.log(fromDate);
        console.log(toDate);
        console.log(days.length); 
-       console.log(days[0].startTime);
-       console.log(days[0].endTime);
         var daySchema ={
-            0: "mon",
-            1: "tue",
-            2: "wed",
-            3: "thu",
-            4: "fri",
-            5: "sat"
+            1: "mon",
+            2: "tue",
+            3: "wed",
+            4: "thu",
+            5: "fri",
+            6: "sat"
         }
         
      $('.TimeLines').css({"text-decoration":"line-through", "opacity":"1","color":"#b0b0b0"})   
-       for(var i=0; i<6; i++){
-            var dateToMatch= moment($('.fc-'+daySchema[i]).attr("data-date")); 
+        for(var k=0;k<days.length;k++){ 
+            var start=days[k].startTime;
+            var end=days[k].endTime;
+            var id=days[k].id;
+            console.log(start);
+            console.log(end);
+            console.log(id);
+            console.log($('.fc-'+daySchema[id]).attr("data-date"));
+            var dateToMatch= moment($('.fc-'+daySchema[id]).attr("data-date")); 
             console.log(dateToMatch); 
             var fromDateMoment = moment(fromDate);
             console.log(fromDateMoment);
-            var toDateMoment = moment(toDate).format();
-            console.log(toDateMoment);
-            console.log(!(dateToMatch.isBefore(toDateMoment)))
-            console.log(!(fromDateMoment.isBefore(dateToMatch)))
-            if(!(dateToMatch.isBefore(toDateMoment)))
-                break;
-            if(!(toDateMoment && fromDateMoment.isBefore(dateToMatch)))
-            console.log(!(fromDateMoment.isBefore(dateToMatch)))
-            {
-                for(var j=1;j<=10; j+=1){
-                    console.log("hello");
-                    $('.fc-'+daySchema[i]).find("#hours-" +j+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
-                }
+            var toDateMoment = moment(toDate);
+            if(toDate && toDateMoment.isBefore(dateToMatch)){
+            //        debugger
+                    break;
             }
-        }
+            if(!(fromDateMoment.isBefore(dateToMatch) ||fromDateMoment.isSame(dateToMatch)))
+                continue
+            console.log("here");
+            for(var j=parseInt(start);j<parseInt(end); j+=1){
+                $('.fc-'+daySchema[id]).find("#hours-" +j+ "").css({"text-decoration":"none" ,"opacity":"1","color":"#149075","font-weight": "bold"});
+            }
+        }       
     }
-
-
-
-
-    // function highlight(timetable){
-    //     console.log(timetable);
-    //    // debugger
-    //     var data=timetable.slots;
-    //     console.log(timetable.slots);
-    //     var currentDate=moment().format('L');
-    //     var startdate=currentDate;
-    //     var enddate='';
-    //     $('.TimeLines').css({"text-decoration":"line-through", "opacity":"1","color":"#b0b0b0"});
-    //     if($("#radio-button-start").prop("checked") == true){
-    //         startdate=currentDate;
-    //     }
-    //     if($('#radio-button-startend').prop("checked")==true){
-    //         startdate=settings.startdate.val();
-    //     }
-    //     if($('#radio-button-tillend').prop("checked")==true){
-    //         enddate='';
-    //     }
-    //     if($('#radio-button-end').prop("checked")==true){
-    //         enddate=settings.enddate.val(); 
-    //     }
-    //     data.forEach(function(aRow){
-    //         aRow.to=enddate;
-    //         console.log(startdate);
-    //         console.log(enddate); 
-    //         console.log(currentDate);
-    //         console.log(aRow);
-            
-    //     if(enddate==''){
-    //         if(aRow.id=="1"){
-    //             var datetomatch= moment($('.fc-mon').attr("data-date")).format('L');
-    //             var match=moment(startdate).format('L');
-    //             if(match===datetomatch || datetomatch>startdate){     
-    //                 for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-    //                     {
-    //                         $('.fc-mon').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
-    //                     }
-    //             }         
-    //         }
-    //         else if(aRow.id=="2"){
-    //             var datetomatch= moment($('.fc-tue').attr("data-date")).format('L')
-    //             var match=moment(startdate).format('L');
-    //             if(match===datetomatch || datetomatch>startdate){
-    //                 for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-    //                 {
-    //                     $('.fc-tue').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
-    //                 }
-    //             }   
-    //         }
-    //         else if(aRow.id=="3"){
-    //             var datetomatch= moment($('.fc-wed').attr("data-date")).format('L')
-    //             var match=moment(startdate).format('L');
-    //             if(match===datetomatch || datetomatch>startdate){
-    //                 for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-    //                 {
-    //                     $('.fc-wed').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
-    //                 }
-    //             }    
-    //         }
-    //         else if(aRow.id=="4"){
-    //             var datetomatch= moment($('.fc-thu').attr("data-date")).format('L')
-    //             var match=moment(startdate).format('L');
-    //             if(match===datetomatch || datetomatch>startdate){
-    //                 for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-    //                 {
-    //                     $('.fc-thu').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
-    //                 }
-    //             }   
-    //         }
-    //         else if(aRow.id=="5"){
-    //             var datetomatch= moment($('.fc-fri').attr("data-date")).format('L')
-    //             var match=moment(startdate).format('L');
-    //             if(match===datetomatch || datetomatch>startdate){
-    //                 for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-    //                 {
-    //                     $('.fc-fri').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
-    //                 }
-    //             }   
-    //         }
-    //         else if(aRow.id=="6"){
-    //             var datetomatch= moment($('.fc-sat').attr("data-date")).format('L')
-    //             var match=moment(startdate).format('L');
-    //             if(match===datetomatch || datetomatch>startdate){
-    //                 for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-    //                 {
-    //                     $('.fc-sat').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
-    //                 }
-    //             }
-    //         }
-
-    //     }
-    //     else{   
-    //         console.log(aRow);                       //end not null start not null     
-    //         while(startdate<=enddate){ 
-    //         // debugger
-    //             if(aRow.id=="1"){
-    //                 debugger
-    //                 var datetomatch= moment($('.fc-mon').attr("data-date")).format('L');
-    //                 console.log(datetomatch);
-    //                 var match=moment(startdate).format('L');
-    //                 if(match==datetomatch){
-    //                     console.log("yes");     
-    //                     for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-    //                         {
-    //                             $('.fc-mon').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
-    //                         }
-    //                 }       
-    //             }
-    //             else if(aRow.id=="2"){
-    //                 debugger
-    //                 var datetomatch= moment($('.fc-tue').attr("data-date")).format('L');
-    //                 var match=moment(startdate).format('L');
-    //                 console.log(datetomatch);
-    //                 console.log(match);
-    //                 if(match==datetomatch){
-    //                     console.log("yes"); 
-    //                     for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-    //                     {
-    //                         $('.fc-tue').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
-    //                     }
-    //                 }   
-    //             }
-    //             else if(aRow.id=="3"){
-    //                 debugger
-    //                 var datetomatch= moment($('.fc-wed').attr("data-date")).format('L');
-    //                 var match=moment(startdate).format('L');
-    //                 console.log(match);
-    //                 if(match==datetomatch){
-    //                     console.log("yessss");
-    //                     for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-    //                     {
-    //                         $('.fc-wed').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
-    //                     }
-    //                 }    
-    //             }
-    //             else if(aRow.id=="4"){
-    //                 debugger
-    //                 var datetomatch= moment($('.fc-thu').attr("data-date")).format('L');
-    //                 var match=moment(startdate).format('L');
-    //                 console.log(match);
-    //                 if(match==datetomatch){
-    //                     console.log("yes"); 
-    //                     for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-    //                     {
-    //                         $('.fc-thu').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
-    //                     }
-    //                 }   
-    //             }
-    //             else if(aRow.id=="5"){
-    //                 debugger
-    //                 var datetomatch= moment($('.fc-fri').attr("data-date")).format('L');
-    //                 var match=moment(startdate).format('L');
-    //                 if(match==datetomatch){
-    //                     console.log("yes"); 
-    //                     for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-    //                     {
-    //                         $('.fc-fri').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
-    //                     }
-    //                 }   
-    //             }
-    //             else if(aRow.id=="6"){
-    //                 debugger
-    //                 var datetomatch= moment($('.fc-sat').attr("data-date")).format('L');
-    //                 var match=moment(startdate).format('L');
-    //                 if(match==datetomatch){
-    //                     console.log("yes"); 
-    //                     for(i=parseInt(aRow.startTime);i<parseInt(aRow.endTime);i++)
-    //                     {
-    //                         $('.fc-sat').find("#hours-" +i+ "").css({"text-decoration":"none" , "opacity":"1","color":"#149075","font-weight": "bold"});
-    //                     }
-    //                 }
-    //             }
-    //             startdate=moment(startdate).add(1, 'days').format('L');
-    //            console.log(startdate);
-    //         }
-              
-    //     }
-        
-    //  })
-    // }
 
     function selectCreater(){
         var min = 1,
@@ -465,9 +297,6 @@ function Calendar(){
             else if(i==1200){
                   $('.fc-day').append('<div id="hours-'+i/100+'" class="TimeLines">'+i/100+' :00 PM </div>');
             }
-            // else if(i==2400){
-            //       $('.fc-day').append('<div id="hours-'+i+'" class="TimeLines">'+i/100+' :00AM </div>');
-            // }
             else{
                   $('.fc-day').append('<div id="hours-'+i/100+'" class="TimeLines">'+i/100+' :00 PM </div>');
               }
@@ -480,9 +309,13 @@ function Calendar(){
             buttonImageOnly: true,
             changeMonth: true,
             changeYear: true,
+            fielddateFormat: 'dd-mm-yy',
+            altField:   '#start_date',
+            altFormat: "yy-mm-dd",
             showOn: 'both',
             onSelect: function(dateText, inst) {
-                highlight(timetable);
+                var slots=getslots();
+                testHighlight(slots.fromDate,slots.toDate,slots.highlightSlots);
             }   
          });
     }
@@ -493,10 +326,14 @@ function Calendar(){
             buttonImageOnly: true,
             changeMonth: true,
             changeYear: true,
+            fielddateFormat: 'dd-mm-yy',
+            altField:   '#end_date',
+            altFormat: "yy-mm-dd",
             showOn: 'both',
             onSelect: function(dateText, inst) {
-                highlight(timetable);
-            }
+                var slots=getslots();
+                testHighlight(slots.fromDate,slots.toDate,slots.highlightSlots);
+            } 
          });
     }
 
