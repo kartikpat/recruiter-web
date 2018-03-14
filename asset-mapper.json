@@ -1210,6 +1210,31 @@
 			]
 		}
 	},
+	"forgot-password": {
+		"styles": {
+			"debug" : [
+				"static/css/utilities.css",
+				"static/css/footer.css",
+				"static/css/header.css",
+				"static/css/forgot-password.css"
+			],
+			"prod": [
+				"static/build/css/forgot-password.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/Utilities/request.js",
+				"static/js/header.js",
+				"static/js/utilities.js",
+				"static/js/forgot-password.js"
+			],
+			"prod" : [
+				"static/build/js/forgot-password.min.js"
+			]
+		}
+	},
 	"account-created": {
 		"styles": {
 			"debug" : [
