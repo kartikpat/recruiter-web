@@ -1,7 +1,9 @@
 var errorResponses = {
-	missingName: 'Please enter your name',
-    missingMessage: 'Please enter a Message for F2F Interview',
-    missingTeleMessage: 'Please enter a Message for Telephonic Interview'
+	missingName: 'Please enter a calendar name',
+    missingMessage: 'Please enter a message for F2F interview',
+    missingTeleMessage: 'Please enter a message for telephonic interview',
+    missingvalues:'Please select your available hours',
+    missingslots:'Please select a slot',
 }
 
 function Calendar(){
@@ -11,7 +13,7 @@ function Calendar(){
     function init(){
         settings.name= $('#name'),
         settings.message= $("#message"),
-        settings.telephone= $("#telephonic"),
+        settings.teleMessage= $("#telephonic"),
         settings.select_menu= $(".select-dropdown"),
         settings.button=$("#selectAll"),
         settings.check_button=$("#check-button-mon"),
@@ -36,7 +38,9 @@ function Calendar(){
         settings.endDate=$('#enddatepicker')
         settings.start=$('.start'),
         settings.end=$('.end'),
-        settings.firstDay=$('#1');
+        settings.firstDay=$('#1'),
+        settings.error=$('.errors'),
+        settings.slots=$('.table'),
         selectCreater();
         copytoall();
         time_mapper();
@@ -45,10 +49,14 @@ function Calendar(){
         copyTime();
         highlighter();
     }
+
     function highlighter(){
           settings.createCalendar.on("click", getslots);
           settings.Highlighter.on("change",function(e){
               e.preventDefault();
+              var index=$(this).parent().parent().parent().parent().attr('id');
+              console.log(index);
+              timeSectionError(index);
               var slots=getslots();
               testHighlight(slots.fromDate,slots.toDate,slots.highlightSlots);
           }),
@@ -63,9 +71,10 @@ function Calendar(){
             testHighlight(slots.fromDate,slots.toDate,slots.highlightSlots);
         })
     }
+
     function getslots(){
         var slots=[];
-        var finalslots=[];    
+        var finalslots=[];   
         var currentDate=moment().format("YYYY-MM-DD");
         console.log(currentDate);
           var fromDate=currentDate;
@@ -94,7 +103,6 @@ function Calendar(){
             var startvalue=$("#"+id+ "").find(settings.start_time).val();
             var endvalue=$("#"+id+ "").find(settings.end_time).val();
             var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
-           // debugger
             if(parseInt(startvalue)>0 && parseInt(endvalue)>0 && checkbox==true){
           //      debugger
                 var slot={
@@ -346,7 +354,7 @@ function Calendar(){
     function getDetails(){
         timetable.name= settings.name.val(),
         timetable.message=  settings.message.val(),
-        timetable.telephone=settings.telephone.val()
+        timetable.telephone=settings.teleMessage.val()
         console.log(timetable);
         return timetable
     }
@@ -354,21 +362,105 @@ function Calendar(){
     function submitHandler(fn){
 		$(settings.createCalendar).click(fn)
     }
+
+    function timeSectionError(element){
+        console.log(element);
+        $("#"+element+ "").find('.error-slot').text('');
+        $("#"+element+ "").find('.error').text('');
+    }
     
+    function eraseErrors(){
+        settings.name.next('.error').text('');
+        settings.message.next('.error').text('');
+        settings.teleMessage.next('.error').text('');
+        settings.name.removeClass('error-border');
+        settings.message.removeClass('error-border');
+        settings.teleMessage.removeClass('error-border');
+    }
+
+    function focusOnElement(element) {
+        element.focus();
+        element.addClass("error-border");
+        $('html, body').animate({
+            scrollTop: (element.closest('.form').offset().top)
+        },200);
+    }
+
     function validate(){
+        eraseErrors();
 		if(!(settings.name.val())){
             console.log("fail");
-		//	user.email.next('.error').text(errorResponses['missingEmail'])
-			return false
+			settings.name.next('.error').text(errorResponses['missingName']);
+            focusOnElement(settings.name);
+            return false
         }
         if(!(settings.message.val())){
-
+            settings.message.next('.error').text(errorResponses['missingMessage']);
+            settings.message.addClass('error-border');
+            focusOnElement(settings.message);
+            return false
         }
         if(!(settings.teleMessage.val())){
-
+            settings.teleMessage.next('.error').text(errorResponses['missingTeleMessage']);
+            settings.teleMessage.addClass('error-border');
+            focusOnElement(settings.teleMessage);
+            return false
         }
+        var status=check();
+        console.log(status);
+        if((status>0)){
+            console.log('false');
+            return false;
+        }
+
+        var status=timetable.slots;
+        console.log(status);
+        if(!(status.length>0)){
+            settings.slots.find('.error').text(errorResponses['missingslots']);
+            $('html, body').animate({
+                scrollTop: (settings.slots.closest('.second-container').offset().top)
+            },200);
+            return false
+        }
+       
 		return true;
 	}
+
+    function check(){
+        var flag=0;
+        $.each(settings.dayId,function(){
+            var id=$(this).attr('id');
+            var startvalue=$("#"+id+ "").find(settings.start_time).val();
+            var endvalue=$("#"+id+ "").find(settings.end_time).val();
+            var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
+            if(parseInt(startvalue)==0 && parseInt(endvalue)==0 && checkbox==true){
+                $("#"+id+ "").find('.error-slot').text(errorResponses['missingvalues']);
+                      $('html, body').animate({
+                scrollTop: (settings.slots.closest('.second-container').offset().top)
+            },200);
+            flag++;    
+            }
+        });
+        return flag
+    }
+
+    function errorHandler(res){
+        var message = '';
+		console.log(res)
+		switch(res.status){
+			case 404:
+				message = "";
+                break;
+            case 401:
+				message = "";
+				break;
+			case 503:
+				message = "";
+				break;
+		}
+		return
+    }
+
 
     return {
         init:init,

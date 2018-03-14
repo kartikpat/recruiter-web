@@ -1339,7 +1339,6 @@
 				"static/css/buttons.css",
 				"static/css/colors.css",
 				"static/css/utilities.css",
-
 				"static/css/modal.css",
                 "static/css/header.css",
                 "static/css/booked-slots.css",
@@ -1362,7 +1361,6 @@
 				"static/js/Utilities/toastNotifier.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/common.js",
-
 				"static/js/Services/fetchRecruiterCalendar.js",
 				"static/js/Services/fetchInterviews.js",
 				"static/js/Components/Header/model.js",

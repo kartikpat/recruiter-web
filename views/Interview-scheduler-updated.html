@@ -6,7 +6,7 @@
 				<span class="details">Basic Details</span>
 				<div class="input-name">
 				<div class="tag">Name</div> 
-				<textarea name="FirstName" id="name"></textarea>
+				<textarea name="FirstName" id="name" ></textarea>
 				<div class="error"></div>
 				</div>
 				<div class="message">
@@ -16,7 +16,7 @@
 				</div>
 				<div class="telephonic">
 					<div class="tag">Message for Telephonic Interview</div> 
-					<textarea type="text" id="telephonic"></textarea>
+					<textarea type="text" id="telephonic" ></textarea>
 					<div class="error"></div>
 				</div>
 			</div>
@@ -33,15 +33,15 @@
 				</div> 
 		</div>
 	</div>
-	
-	
+
 	<div class="second-container">
 		<div  class="available-hours"> <!left-->
 			<div class="Days-available">
 				<span id="available-span">Available Hours</span>
 				<p>Select the time during you are available</p>
-			   
+				
 			<div class="table" id="example">
+					<div class="error"></div>
 				<div class="D-avail">
 					<span id="one">DAYS AVAILABLE</span> 
 					<span id="two">START TIME</span>
@@ -78,6 +78,7 @@
 							</select>
 						</span>
 						<button type="button" id="selectAll">Copy to All</button>
+						<div class="error-slot"></div>
 					</div>
 			    </div>
 				<div class="dayId" id="2">
@@ -109,6 +110,7 @@
 									</div>
 							</select>
 						</span>
+						<div class="error-slot"></div>
 					</div>
 				</div>	
 				<div class="dayId" id="3">	
@@ -120,7 +122,6 @@
 									<label for="check-button-wed">WED</label>
 									</div>								
 							</div>
-					
 					</div>
 					<div class="time-section" id="third">
 							<span class="section-one">
@@ -141,6 +142,7 @@
 										</div>
 								</select>
 							</span>
+						<div class="error-slot"></div>
 					</div>
 				</div>
 				<div class="dayId" id="4">	
@@ -152,7 +154,6 @@
 								<label for="check-button-thurs">THURS</label>
 								</div>								
 							</div>
-					
 					</div>
 					<div class="time-section" id="four">
 							<span class="section-one">
@@ -173,6 +174,7 @@
 										</div>
 								</select>
 							</span>
+						<div class="error-slot"></div>	
 					</div>
 				</div>
 				<div class="dayId" id="5">	
@@ -184,7 +186,6 @@
 								<label for="check-button-fri">FRI</label>
 									</div>								
 							</div>
-					
 					</div>
 					<div class="time-section" id="five">
 							<span class="section-one">
@@ -205,6 +206,7 @@
 										</div>
 								</select>
 							</span>
+						<div class="error-slot"></div>	
 					</div>
 				</div>	
 				<div class="dayId" id="6">
@@ -231,12 +233,13 @@
 							<span class="timer">to</span>
 							<span class="section-one">
 									<span id="Checkin">END TIME</span>
-								<select class="select-dropdown End-time end highlighter" >
+								<select class="select-dropdown End-time end highlighter">
 									<div class="dropdown-list">
 										<option value="0" selected>Select</option>
 									</div>
 								</select>
 							</span>
+						<div class="error-slot"></div>	
 					</div>
 				</div>		
 		    </div> 
@@ -279,7 +282,7 @@
 				<p>Determines when this schedule starts to produce starts time</p>
 				<div class="section">
 					<div class="radio-input">
-						<input type="radio" id="radio-button-start" name="gender" class="highlighter">
+						<input type="radio" id="radio-button-start" name="gender" class="highlighter" checked="checked">
 						<label for="radio-button-start">Now:This schedule is valid starting right now</label>
 					</div>
 					<div class="radio-input">
@@ -296,7 +299,7 @@
 				<p>Determines when this schedule stops producing times</p>	
 				<div class="section">
 					<div class="radio-input">
-						<input type="radio" id="radio-button-tillend" name="gender-m" class="highlighter">
+						<input type="radio" id="radio-button-tillend" name="gender-m" class="highlighter" checked="checked">
 						<label for="radio-button-tillend">Never ends:This schedule is valid forever</label>
 					</div>
 					<div class="radio-input">

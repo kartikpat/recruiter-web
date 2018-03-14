@@ -36,6 +36,7 @@
             .input-name{
                 margin-top: 10px;
                 margin-left: 27px;
+                margin-bottom: 20px;
                 .tag{
                    
                     color:  #2b2b2b;
@@ -55,10 +56,17 @@
                     resize: none;
                     outline: none;
                 }
+                .error{
+                    font-family:  $droid-font;
+                    position: absolute;
+                    font-size: 11px;
+                    color: #ec1c2a;
+                }
             }
             .message{
                 margin-top: 10px;
                 margin-left: 27px;
+                margin-bottom: 20px;
                 .tag{
                     font-family:  $droid-font;
                     color:  #2b2b2b;
@@ -78,17 +86,33 @@
                     resize: none;
                     outline: none;
                 }
+                .error-border{
+                    border-color: #ee1620;
+                }
+                .error{
+                    font-family:  $droid-font;
+                    position: absolute;
+                    font-size: 11px;
+                    color: #ec1c2a;
+                }
             }
 
             .telephonic{
                 margin-top: 10px;
                 margin-left: 27px;
+                margin-bottom: 20px;
                 .tag{
                     font-family:  $droid-font;
                     color:  #2b2b2b;
                     font-size: 14px;/* Approximation due to font substitution */
                     font-weight: 400;
                     text-align: left;
+                }
+                .error{
+                    font-family:  $droid-font;
+                    position: absolute;
+                    font-size: 11px;
+                    color: #ec1c2a;
                 }
 
                 #telephonic{
@@ -214,7 +238,7 @@
                 }
 
                 .table{
-                    border-style: solid;
+                   // border-style: solid;
                     border-width: 1px;
                     border-color:  #e4e4e4;
                     box-sizing: border-box;
@@ -223,18 +247,23 @@
                     //height: 462px;
                     display: inline-block;
                     position: relative;
-                     
+                    .error{
+                        font-family:  $droid-font;
+                        position: absolute;
+                        font-size: 14px;
+                        color: #ec1c2a;
+                    }
                     .D-avail{
                         background-color:  #f5f5f5;
                         border-style: solid;
                         border-width: 1px;
                         border-color:  #e4e4e4;
                         box-sizing: border-box;
-                        width: 529px;
-                        height: 41px;
-                        
-                        #one{
-                            
+                        width: 530px;
+                        height: 55px;
+                        height: 40px;
+                        margin-top: 20px;
+                        #one{ 
                             font-family: $droid-font;
                             color:  #2b2b2b;
                             font-size: 14px;/* Approximation due to font substitution */
@@ -243,7 +272,6 @@
                             text-align: left;
                             margin-left: 15px;
                         }
-
                         #two{
                             font-family: $droid-font;
                             color:  #2b2b2b;
@@ -366,6 +394,14 @@
                                     display: none;
                                     outline: none;
                                    
+                                }
+
+                                .error-slot{
+                                    font-family:  $droid-font;
+                                    position: absolute;
+                                    font-size: 12px;
+                                    color: #ec1c2a;
+                                    margin-left: 15px;
                                 }
                            }
                 }
@@ -750,6 +786,9 @@
                 .Days-available{
                     width: 100%!important;
                     margin-top: -100px;
+                    // p{
+                    //     margin-bottom: 20px;
+                    // }
                     .table{
                      width: 90%;
                      border-style: none;
@@ -759,6 +798,7 @@
                     }
                     .day{
                         width: 100%;
+                        margin-top: 20px;
                         .section{
                             width: 100%!important;
                             .check-input{
@@ -788,7 +828,7 @@
                         button{
                             clear: both;
                             margin-left: 30%;
-                            padding-top:10px; 
+                          //  padding-top:10px; 
                         }
                         .section-one{
                             display: block!important;
