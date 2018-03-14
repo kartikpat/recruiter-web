@@ -533,6 +533,9 @@ b {
   padding-right: 20px;
   position: relative;
   z-index: 3; }
+  .header .header-wrapper {
+    max-width: 1440px;
+    margin: 0 auto; }
   .header .search-container {
     transition: all 0.3s ease-in-out;
     padding-left: 10px;
@@ -668,6 +671,12 @@ b {
         .header .profile_actions .profile .profile-menu .profile-body ul li {
           margin: 10px 0;
           font-size: 14px; }
+          .header .profile_actions .profile .profile-menu .profile-body ul li .button {
+            position: relative;
+            top: -5px;
+            border-color: #4b4b4b;
+            border-radius: 6px;
+            padding: 5px 15px; }
           .header .profile_actions .profile .profile-menu .profile-body ul li a {
             color: inherit; }
             .header .profile_actions .profile .profile-menu .profile-body ul li a:hover {
