@@ -373,9 +373,9 @@ $(document).ready(function(){
 
 	function init(){
 		pubsub.publish("pageVisit", 1);
-		fetchDashboardStats(recruiterId);
-		fetchJobs("published", recruiterId, 5,1);
-		fetchFollowUps(recruiterId);
+		// fetchDashboardStats(recruiterId);
+		// fetchJobs("published", recruiterId, 5,1);
+		// fetchFollowUps(recruiterId);
 		fetchInterviews(recruiterId, {pageContent: 6, pageNumber: 1, status: 2});
 	}
 	init()
