@@ -166,7 +166,7 @@
 		}
 	},
 	"premium-posting": {
-		"styles": {
+		"styles": { 
 			"debug" : [
 				"static/css/header.css",
         		"static/css/premium-posting.css",

@@ -50,8 +50,12 @@ function candidateList() {
         onClickMassComment()
 
         onClickCoverLetterLink()
-
+        $(window).click(function(event) {
+    		$(settings.candidateOtherActionsClass).addClass('inactive');
+    	});
 	}
+
+
 
     function onClickCoverLetterLink() {
         settings.rowContainer.on('click', settings.coverLetterLink, function(e){
@@ -147,7 +151,7 @@ function candidateList() {
 
     function createElement(aData) {
 		var item = getElement(aData["userID"]);
-        item.element.find(".openCandidateLink").attr('href',"/recruiter/job/"+config["jobId"]+"/applications/"+aData["id"]+"");
+        item.element.find(".openCandidateLink").attr('href',"/job/"+config["jobId"]+"/applications/"+aData["id"]+"");
         item.element.attr("data-application-id", aData["id"]);
         item.image.attr("src",(aData["img"] || "/static/images/noimage.png"));
         item.name.text(aData["name"] || "NA");
@@ -161,20 +165,23 @@ function candidateList() {
             item.notice.text((aData["notice"] + " months"));
         }
 
-        item.shortlistButton.attr("data-status", "1");
-        item.rejectButton.attr("data-status", "2");
-        item.savedButton.attr("data-status", "3");
+        item.shortlistButton.attr("data-action", 1);
+        item.rejectButton.attr("data-action", 2);
+        item.savedButton.attr("data-action", 3);
         item.downloadResumeButton.attr("data-href", aData["resume"])
         item.downloadResumeButton.attr("download", aData["name"].replace(/ +/g, '_')+'_resume.pdf')
         var status = aData["status"];
+        item.shortlistButton.attr("data-status", status);
+        item.rejectButton.attr("data-status", status);
+        item.savedButton.attr("data-status", status);
         if(status == 1) {
-            item.shortlistButton.text("Shortlisted")
+            item.shortlistButton.text("Shortlisted");
         }
         else if(status == 2) {
-            item.rejectButton.text("Rejected")
+            item.rejectButton.text("Rejected");
         }
         else if(status == 3) {
-            item.savedButton.text("Saved for later")
+            item.savedButton.text("Saved for later");
         }
         // var tagStr = '';
         // $.each(aData["tags"],function(index, aTag) {
@@ -284,7 +291,6 @@ function candidateList() {
 
     function addToList(dataArray, status){
 		var str = '';
-        debugger
         var element = $(".candidateListing[data-status-attribute='"+status+"']");
         hideShells(status);
         if(!dataArray.length) {
@@ -338,7 +344,6 @@ function candidateList() {
     function onClickCandidateOtherActions() {
         settings.rowContainer.on('click', settings.candidateOtherActionsClass,function(event) {
             event.stopPropagation();
-            event.stopPropagation()
             $(this).toggleClass("inactive");
             return false
         })
@@ -376,8 +381,9 @@ function candidateList() {
         settings.rowContainer.on('click', settings.candidateSaveButton, function(event){
             event.stopPropagation();
             var status = $(this).attr("data-status");
+            var action = $(this).attr("data-action");
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            fn(applicationId, status);
+            fn(applicationId, status, action);
             return false
         })
     }
@@ -415,11 +421,11 @@ function candidateList() {
     function onClickShortlistCandidate(fn) {
 
         settings.rowContainer.on('click', settings.candidateShortlistButtonClass, function(event) {
-            console.log("a")
             event.stopPropagation();
             var status = $(this).attr("data-status");
+            var action = $(this).attr("data-action");
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            fn(applicationId, status);
+            fn(applicationId, status, action);
             return false
         })
     }
@@ -428,8 +434,9 @@ function candidateList() {
         settings.rowContainer.on('click', settings.candidateRejectButtonClass, function(event) {
             event.stopPropagation();
             var status = $(this).attr("data-status");
+            var action = $(this).attr("data-action");
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            fn(applicationId, status);
+            fn(applicationId, status, action);
             return false
         })
     }
@@ -643,15 +650,36 @@ function candidateList() {
         $(".candidateListing[data-status-attribute='"+status+"']").find(settings.candidateRowClass).remove();
     }
 
-    function changeButtonText(arr, newStatus) {
+    function changeButtonText(arr, newStatus, dataAction) {
+
         arr.forEach(function(applicationId){
-            $(settings.candidateRowClass).find(".candidateRow[data-application-id="+applicationId+"] button[data-status="+newStatus+"]").text("")
+
+            settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateShortlist").attr("data-status", newStatus)
+            settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateReject").attr("data-status", newStatus)
+            settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateSave").attr("data-status", newStatus)
+            if(newStatus == settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateSave").attr("data-action")) {
+                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateSave").text("Saved For Later")
+            }
+            else {
+                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateSave").text("Save For Later")
+            }
+            if(newStatus == settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateReject").attr("data-action")) {
+                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateReject").text("Rejected")
+            }
+            else {
+                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateReject").text("Reject")
+            }
+            if(newStatus == settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateShortlist").attr("data-action")) {
+                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateShortlist").text("Shortlisted")
+            }
+            else {
+                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateShortlist").text("Shortlist")
+            }
         })
     }
 
     function setInvite() {
         $(settings.sendInterviewInviteF2FClass).attr("data-clickable","1")
-
         $(settings.sendInterviewInviteTelephonicClass).attr("data-clickable","1")
         $(settings.sendInterviewInviteF2FClass).attr("title","You need to set up your calendar before sending an invite. Click to set up calendar")
         $(settings.sendInterviewInviteTelephonicClass).attr("title","You need to set up your calendar before sending an invite. Click to set up calendar")
@@ -659,14 +687,14 @@ function candidateList() {
         settings.rowContainer.find(".tooltip").not(".prototype .tooltip").tooltipster({
 			animation: 'fade',
 			delay: 0,
-			side:['right'],
+			side:['left'],
 			theme: 'tooltipster-borderless'
 		})
 
         settings.candidateDetailsModal.find(".tooltip").tooltipster({
 			animation: 'fade',
 			delay: 0,
-			side:['right'],
+			side:['left'],
 			theme: 'tooltipster-borderless'
 		})
 
@@ -710,6 +738,7 @@ function candidateList() {
         onClickSendInterviewInviteTelephonic: onClickSendInterviewInviteTelephonic,
         onClickSendInterviewInviteF2F: onClickSendInterviewInviteF2F,
         setInvite: setInvite,
-        changeInviteText: changeInviteText
+        changeInviteText: changeInviteText,
+        changeButtonText: changeButtonText
 	}
 }

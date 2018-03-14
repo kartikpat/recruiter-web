@@ -37,6 +37,9 @@ function Job(){
 		onClickJobRefresh();
 		onClickJobCancel();
 		onClickJobMakePremium();
+		$(window).click(function(event) {
+    		settings.jobOtherActions.addClass('inactive');
+    	});
 	}
 
 	function setJobDetails(data){
@@ -161,8 +164,7 @@ function Job(){
 			settings.createCalendar.removeClass("hidden");
 			return
 		}
-		settings.calendarLength =  null
-	//	settings.calendarLength =  array.length
+		settings.calendarLength =  array.length
 		var calendarOptionsStr = '';
 		var item = getCalendarElement();
 		item.element.text("Calendar Link: Select");
@@ -194,6 +196,7 @@ function Job(){
 
 	function onClickJobOtherActions() {
         settings.jobOtherActions.click(function(event) {
+			event.stopPropagation()
             $(this).toggleClass("inactive");
         })
     }

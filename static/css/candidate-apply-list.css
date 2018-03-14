@@ -2705,6 +2705,8 @@ input::-webkit-input-placeholder {
     margin: 0 auto; }
   .page-content .page-header {
     padding: 15px 0; }
+    .page-content .page-header .job-title-container {
+      width: 50%; }
     .page-content .page-header h1 {
       margin: 0 0 5px 0;
       font-size: 18px;
@@ -4024,6 +4026,11 @@ input::-webkit-input-placeholder {
         .view-resume-modal .resume-sidebar .external-links ul li span.icon {
           width: 2em;
           margin-right: 10px; }
+      .view-resume-modal .resume-sidebar .external-links ul .invite:hover {
+        text-decoration: none; }
+      .view-resume-modal .resume-sidebar .external-links ul .invite-links {
+        margin-left: 30px;
+        list-style: initial; }
       .view-resume-modal .resume-sidebar .external-links ul:last-child {
         border-bottom: 0;
         padding-bottom: 0; }

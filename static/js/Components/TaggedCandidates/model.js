@@ -134,7 +134,7 @@ function candidateList() {
            }
            else if(aData["applications"].length == 1) {
                item.jobTitle.text(aData["applications"][0]["title"])
-               item.candidateViewProfileLink.attr("href", "/job/"+aData["applications"][0]["jobID"]+"/applications/"+application["id"]+"")
+               item.candidateViewProfileLink.attr("href", "/job/"+aData["applications"][0]["jobID"]+"/applications/"+aData["applications"][0]["id"]+"")
            }
        }
        if(aData["pro"]) {
