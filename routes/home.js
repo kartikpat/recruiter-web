@@ -569,7 +569,7 @@ module.exports = function(settings){
 		});
 		return
 	});
-	app.get("/recruiter/job/:jobID/applications/:applicationID",isAuthenticated, function(req,res){
+	app.get("/job/:jobID/applications/:applicationID",isAuthenticated, function(req,res){
 		res.render("candidate-profile", {
 			title:"Recruiter Web - Candidate Profile | iimjobs.com",
 			styles:  assetsMapper["candidate-profile"]["styles"][mode],

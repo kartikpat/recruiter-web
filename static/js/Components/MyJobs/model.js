@@ -224,7 +224,7 @@ function Jobs() {
 		if(aData['views']){
 			item.views.text(aData['views']+' Views').removeClass("hidden");
 			if(aData['totalApplications'])
-				item.applications.html('<a class="link-color" href="candidate-apply-list/'+aData["publishedId"]+'">'+aData["totalApplications"]+' Applied</a>').removeClass("hidden");
+				item.applications.html('<a class="link-color" href="job/'+aData["publishedId"]+'/applications">'+aData["totalApplications"]+' Applied</a>').removeClass("hidden");
 			item.element.find(".engagementDefault").addClass("hidden");
 		}
 

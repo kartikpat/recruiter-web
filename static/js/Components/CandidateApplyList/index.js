@@ -10,7 +10,11 @@ var screenName = "candidate-apply-list";
 jQuery(document).ready( function() {
 
     // fetching url parameters
-    var defaultTab = parseInt(getQueryParameter("defaultTab")) || 1;
+    var defaultTab;
+    if(parseInt(getQueryParameter("defaultTab")) === 0)
+        defaultTab = 0
+    else
+        defaultTab = parseInt(getQueryParameter("defaultTab")) || 1
     // creating the instance of models
 	var candidates = candidateList();
     var aCandidate = Candidate();

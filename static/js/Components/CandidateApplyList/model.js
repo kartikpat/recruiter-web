@@ -284,6 +284,7 @@ function candidateList() {
 
     function addToList(dataArray, status){
 		var str = '';
+        debugger
         var element = $(".candidateListing[data-status-attribute='"+status+"']");
         hideShells(status);
         if(!dataArray.length) {
