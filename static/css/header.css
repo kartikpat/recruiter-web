@@ -674,6 +674,12 @@ b {
         .header .profile_actions .profile .profile-menu .profile-body ul li {
           margin: 10px 0;
           font-size: 14px; }
+          .header .profile_actions .profile .profile-menu .profile-body ul li .button {
+            position: relative;
+            top: -5px;
+            border-radius: 6px;
+            padding: 5px 15px;
+            border: 1px solid #4b4b4b; }
           .header .profile_actions .profile .profile-menu .profile-body ul li a {
             color: inherit; }
             .header .profile_actions .profile .profile-menu .profile-body ul li a:hover {

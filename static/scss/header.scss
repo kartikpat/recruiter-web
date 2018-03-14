@@ -240,6 +240,14 @@ b{
                             margin:10px 0;
                             font-size:$base-font-size;
 
+                            .button {
+                                position:relative;
+                                top:-5px;
+                                border-radius:6px;
+                                padding:5px 15px;
+                                border:1px solid #4b4b4b;
+                            }
+
                             a {
                                 color: inherit;
                                 &:hover {

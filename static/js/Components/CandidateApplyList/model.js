@@ -49,7 +49,7 @@ function candidateList() {
         onClickMassComment()
 
         onClickCoverLetterLink()
-        
+
 	}
 
     function onClickCoverLetterLink() {
@@ -163,7 +163,7 @@ function candidateList() {
         item.shortlistButton.attr("data-status", "1");
         item.rejectButton.attr("data-status", "2");
         item.savedButton.attr("data-status", "3");
-        item.downloadResumeButton.attr("href", aData["resume"])
+        item.downloadResumeButton.attr("data-href", aData["resume"])
         item.downloadResumeButton.attr("download", aData["name"].replace(/ +/g, '_')+'_resume.pdf')
         var status = aData["status"];
         if(status == 1) {
@@ -201,7 +201,7 @@ function candidateList() {
         })
         console.log(aData["jobs"].length)
         if(aData["jobs"].length > 3) {
-            profStr+= "<a href='javascript:void(0)' style='color: #155d9a'>"+(aData["jobs"].length - 3)+" more work experience.</a>"
+            profStr+= "<span style='color: #155d9a'>"+(aData["jobs"].length - 3)+" more work experience.</span>"
         }
         item.profList.html(profStr)
         var eduStr = '';
@@ -216,7 +216,7 @@ function candidateList() {
             eduStr+=item.element[0].outerHTML
         })
         if(aData["education"].length > 3) {
-            eduStr+= "<a href='javascript:void(0)' onclick=function(e){e.preventDefault()} style='color: #155d9a'>"+(aData["education"].length - 3)+" more education.</a>"
+            eduStr+= "<span style='color: #155d9a'>"+(aData["education"].length - 3)+" more education.</span>"
         }
 
         item.eduList.html(eduStr)
@@ -364,8 +364,9 @@ function candidateList() {
 
     function onClickDownloadResume(fn) {
         settings.rowContainer.on('click', settings.candidateDownloadResumeButton, function(event){
-            event.stopPropagation();
-            fn()
+            var url = $(this).attr("data-href");
+            window.open(url);
+            return false
         })
     }
 

@@ -47,9 +47,10 @@ jQuery(document).ready( function() {
     filters.addFilterData('language', languageTagsData)
     filters.addFilterData('preferredLocation', prefeLocationTagsData);
     filters.onClickApplyFilterButton(function(name){
-        // if(!filters.checkForError()) {
-        //     return
-        // }
+        if(!filters.checkForError(name)) {
+            return
+        }
+        filters.closeFilterModal()
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
 
@@ -348,7 +349,7 @@ jQuery(document).ready( function() {
      })
 
      $.when(fetchJob(jobId, recruiterId, {idType: 'publish'}), fetchCalendars(jobId, recruiterId)).then(function(a, b){
-            
+
          if(a[0] && b[0] && a[0]["status"] == "success" && b[0]["status"] =="success" && a[0]['data'].length >0 ) {
              var jobRow = a[0]['data'][0];
              console.log(b)
@@ -357,7 +358,7 @@ jQuery(document).ready( function() {
              var data = {
                 jobTitle: getTitleFormat(jobRow["title"],(/\(\d+-\d+ \w+\)$/)),
                 jobLocation: jobRow["location"].toString(),
-                jobExperience: jobRow["exp"]['min']+'-'+ jobRow['exp']['max'] +' yrs',
+                jobExperience: jobRow["exp"]['min']+ ' - ' + jobRow['exp']['max'] +' yrs',
                 jobPublishedId: jobRow['publishedId'],
                 jobId: jobRow['id'],
                 jobStatus: jobRow['status'],
@@ -427,7 +428,7 @@ jQuery(document).ready( function() {
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
         parameters.status = globalParameters.status;
-        
+
         parameters.orderBy = globalParameters.orderBy;
         fetchJobApplications(jobId,parameters,recruiterId);
         theJob.setJobDetails(data);
