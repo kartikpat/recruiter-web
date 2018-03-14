@@ -2967,11 +2967,11 @@ input::-webkit-input-placeholder {
         .page-content .candidate-apply-listing .candidates-area .candidates-area-body .selection-bar .bulk-selection-item {
           display: inline-block;
           font-size: initial;
-          padding: 10px 30px 10px 10px;
-          border-bottom: 2px solid transparent;
-          position: relative;
-          top: 1px;
-          cursor: pointer; }
+          padding: 7px 30px 0 10px;
+          border-bottom: 3px solid transparent;
+          height: 38px;
+          cursor: pointer;
+          line-height: 24px; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-body .selection-bar .bulk-selection-item span {
             font-size: 14px;
             text-transform: uppercase;
@@ -3021,6 +3021,10 @@ input::-webkit-input-placeholder {
             .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-select.selected {
               display: inline-block;
               background-color: transparent; }
+          .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover {
+            background-color: #fafafa; }
+            .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover .separator {
+              border-color: transparent; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .section.sticker-container {
             position: absolute;
             bottom: 0;
@@ -3184,7 +3188,7 @@ input::-webkit-input-placeholder {
             .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:last-child .separator {
               border: 0; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover {
-            box-shadow: 0 0 6px rgba(0, 0, 0, 0.4); }
+            box-shadow: 0px 2px 8px 0px rgba(214, 214, 214, 0.85); }
             .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover .candidate-select {
               display: block; }
 
@@ -4207,7 +4211,8 @@ input::-webkit-input-placeholder {
 
 #jobs-category-tabs {
   border-top: 1px solid #e8e8e8;
-  overflow: auto; }
+  overflow: auto;
+  border-bottom: 1px solid #e8e8e8; }
   #jobs-category-tabs .tabs_scroll_container {
     overflow-x: auto;
     overflow-y: hidden; }

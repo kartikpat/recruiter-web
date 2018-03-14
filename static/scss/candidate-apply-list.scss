@@ -321,11 +321,11 @@ input::-webkit-input-placeholder {
 				    .bulk-selection-item {
 				    	display:inline-block;
 				    	font-size:initial;
-				    	padding:10px 30px 10px 10px;
-				    	border-bottom:2px solid transparent;
-				    	position:relative;
-				    	top:1px;
-				    	cursor:pointer;
+				    	padding:7px 30px 0 10px;
+				    	border-bottom:3px solid transparent;
+				    	height: 38px;
+					    cursor: pointer;
+					    line-height: 24px;
 				    	span {
 				    		font-size:$base-font-size;
 				    		text-transform:uppercase;
@@ -380,6 +380,14 @@ input::-webkit-input-placeholder {
                                         background-color:transparent;
                                     }
                                 }
+
+							    &:hover {
+							    	background-color:#fafafa;
+
+							    	.separator {
+							    		border-color:transparent;
+							    	}
+							    }
 
 							    .section {
 							    	&.sticker-container {
@@ -605,7 +613,7 @@ input::-webkit-input-placeholder {
 								}
 
 								&:hover {
-									box-shadow:0 0 6px rgba(0,0,0,0.4);
+									box-shadow:0px 2px 8px 0px rgba(214, 214, 214, 0.85);
 
 
 										.candidate-select {
@@ -1774,6 +1782,7 @@ input::-webkit-input-placeholder {
 	// border: 0;
 	border-top:1px solid $border-color-base;
     overflow: auto;
+    border-bottom:1px solid $border-color-base;
 
 	.tabs_scroll_container {
 		overflow-x: auto;
