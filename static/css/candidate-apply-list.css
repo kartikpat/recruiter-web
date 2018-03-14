@@ -2969,6 +2969,10 @@ input::-webkit-input-placeholder {
           margin: 0;
           cursor: pointer;
           position: relative; }
+          .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover {
+            background-color: #fafafa; }
+            .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover .separator {
+              border-color: transparent; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .section.sticker-container {
             position: absolute;
             bottom: 0;
@@ -3156,7 +3160,7 @@ input::-webkit-input-placeholder {
             .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:last-child .separator {
               border: 0; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover {
-            box-shadow: 0 0 6px rgba(0, 0, 0, 0.4); }
+            box-shadow: 0px 2px 8px 0px rgba(214, 214, 214, 0.85); }
             .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover .candidate-item-section.image .candidate-select {
               display: block; }
 
