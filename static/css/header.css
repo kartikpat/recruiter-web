@@ -269,6 +269,9 @@
 .icon-clock:before {
   content: '\e83a'; }
 
+.icon-checked_icon:before {
+  content: '\e819'; }
+
 .left {
   float: left; }
 
@@ -709,7 +712,7 @@ b {
         .header .navigation ul .menu-list-item .profile-menu {
           position: absolute;
           width: 200px;
-          top: 110%;
+          top: 100%;
           left: 30%;
           z-index: 10;
           background: #FFF;
@@ -749,7 +752,7 @@ b {
           .header .navigation ul .menu-list-item .profile-menu.active {
             opacity: 1;
             visibility: visible;
-            top: 110%;
+            top: 100%;
             height: auto; }
         .header .navigation ul .menu-list-item.active a {
           color: #1f8f75; }

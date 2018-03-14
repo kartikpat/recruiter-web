@@ -21,6 +21,7 @@ $(document).ready(function(){
 	if(jobId) {
 		fetchJob(jobId);
 	}
+	fetchJobTags(recruiterId)
  	function onSuccessfulSubmitJob(topic, data){
 		if(type=='edit') {
 			localStorage.setItem("jobPostSuccessMessage", "Job updated successfully");
@@ -48,8 +49,21 @@ $(document).ready(function(){
 		console.log(topic)
 		console.log(data);
 	}
+
+	function onSuccessfulFetchJobTags(topic, data) {
+		jobDetails.populateJobTags(data)
+	}
+
+	function onFailedFetchJobTags(topic, data) {
+		console.log(data)
+	}
+
 	var fetchJobSuccessSubscription = pubsub.subscribe("fetchedJob:"+jobId, onSuccessfulFetchJob);
 	var fetchJobFailSubscription = pubsub.subscribe("failedToFetchJob:"+jobId, onFailedFetchJob);
+
+	var fetchJobTagsSuccessSubscription = pubsub.subscribe("fetchedJobTags", onSuccessfulFetchJobTags);
+	var fetchJobTagsFailSubscription = pubsub.subscribe("failToFetchJobTags", onFailedFetchJobTags);
+
 	var jobSubmitSuccessSubscription = pubsub.subscribe('submittedNewJob', onSuccessfulSubmitJob);
 	var jobSubmitFailSubscription = pubsub.subscribe('failedNewJobSubmission', onFailedSubmitJob);
 	var jobEditSuccessSubscription = pubsub.subscribe('jobEdited', onSuccessfulSubmitJob);

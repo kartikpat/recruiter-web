@@ -1,4 +1,4 @@
-
+var jobTagsArray = {}
 
 var errorResponses = {
 	missingTitle: 'Please enter the job title',
@@ -58,17 +58,16 @@ function Job(){
 				settings.minSal.append('<option value="'+(i+1)+'">'+(i+1)+'</option>')
 			}
 
-			if(type=='edit'){
-				settings.editor = new MediumEditor("#job_description", {
-					toolbar: false,
-					placeholder: {
-				        text: 'Describe the role, talk about the role and responsibilities and help potential applicants understand what makes this a great opportunity.'
-				    }
-				})
-				settings.editor.subscribe('editableInput', function(event, editorElement){
-					settings.description.val(settings.editor.getContent());
-				})
-			}
+			settings.editor = new MediumEditor("#job_description", {
+				toolbar: false,
+				placeholder: {
+			        text: 'Describe the role, talk about the role and responsibilities and help potential applicants understand what makes this a great opportunity.'
+			    }
+			})
+			settings.editor.subscribe('editableInput', function(event, editorElement){
+				settings.description.val(settings.editor.getContent());
+			})
+
 	}
 
 
@@ -161,6 +160,7 @@ function Job(){
 		}
 
 		var tagsObj = getPillValues(settings.tags.attr('id'));
+
 		if( tagsObj['label'].length > 0 )
 			ob.tags = tagsObj['label'];
 		if(settings.videoUrl.val() && settings.videoUrl.val() !='')
@@ -235,6 +235,18 @@ function Job(){
 		$(settings.submitButton).click(fn)
 	}
 
+	function populateJobTags(dataArray) {
+		var str = ""
+		dataArray.forEach(function(aTag, index){
+			var item = $(".jobTag.prototype").clone().removeClass("prototype hidden")
+			item.text(aTag["name"])
+			item.attr("data-value",aTag["id"])
+			item.attr("data-name", aTag["name"])
+			str += item[0].outerHTML
+		})
+		$("#jobTagsList").html(str)
+	}
+
 	return {
 		init: init,
 		setConfig : setConfig,
@@ -242,7 +254,8 @@ function Job(){
 		getData: getJobData,
 		submitHandler: submitHandler,
 		setData: setJobData,
-		onChangeJobPremium: onChangeJobPremium
+		onChangeJobPremium: onChangeJobPremium,
+		populateJobTags: populateJobTags
 	}
 }
 
@@ -352,10 +365,16 @@ function getPillValues(elementId){
 		id: [],
 		label: []
 	};
+
+	if(elementId == "jobTags") {
+		el.each(function(index, value){
+			data['label'].push($(value).attr('data-name'));
+		})
+		return data
+	}
 	el.each(function(index, value){
 		$(value).attr('data-id') ? data['id'].push($(value).attr('data-id')) : data['label'].push($(value).attr('data-name'));
 	})
-
 	return data;
 }
 
@@ -378,8 +397,11 @@ function setPillValues(elementId, arr, globalArray){
 			})
 		}
 
-
 		else{
+			if(elementId == "jobTags") {
+				$('#'+elementId+'').find(".pill-listing li[data-name='"+value+"']").addClass("selected")
+				debugger
+			}
 			var label = value
 			var id =""
 			addNewTag(label, id, '#'+elementId+'')

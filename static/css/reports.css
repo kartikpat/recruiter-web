@@ -266,6 +266,9 @@
 .icon-clock:before {
   content: '\e83a'; }
 
+.icon-checked_icon:before {
+  content: '\e819'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -343,7 +346,8 @@ label {
     box-shadow: inset 0 0 3px #4fa995; }
     .course-option input:checked + label span {
       font-size: 14px;
-      color: #4fa995; }
+      color: #4fa995;
+      opacity: 1; }
       .course-option input:checked + label span.course-icon {
         color: #4fa995; }
     .course-option input:checked + label img {
@@ -774,6 +778,9 @@ span.sticker {
 
 .icon-clock:before {
   content: '\e83a'; }
+
+.icon-checked_icon:before {
+  content: '\e819'; }
 
 .left {
   float: left; }
@@ -1253,6 +1260,9 @@ a {
 .icon-clock:before {
   content: '\e83a'; }
 
+.icon-checked_icon:before {
+  content: '\e819'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -1330,7 +1340,8 @@ label {
     box-shadow: inset 0 0 3px #4fa995; }
     .course-option input:checked + label span {
       font-size: 14px;
-      color: #4fa995; }
+      color: #4fa995;
+      opacity: 1; }
       .course-option input:checked + label span.course-icon {
         color: #4fa995; }
     .course-option input:checked + label img {
@@ -1789,6 +1800,9 @@ span.sticker {
 .icon-clock:before {
   content: '\e83a'; }
 
+.icon-checked_icon:before {
+  content: '\e819'; }
+
 /*[Recruiter_Homepage]*/
 /*[/Recruiter_Homepage]*/
 /**** Fontello Font Icons : ****/
@@ -2028,6 +2042,9 @@ span.sticker {
 .icon-clock:before {
   content: '\e83a'; }
 
+.icon-checked_icon:before {
+  content: '\e819'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -2105,7 +2122,8 @@ label {
     box-shadow: inset 0 0 3px #4fa995; }
     .course-option input:checked + label span {
       font-size: 14px;
-      color: #4fa995; }
+      color: #4fa995;
+      opacity: 1; }
       .course-option input:checked + label span.course-icon {
         color: #4fa995; }
     .course-option input:checked + label img {
