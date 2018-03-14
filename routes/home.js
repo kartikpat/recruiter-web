@@ -625,5 +625,13 @@ module.exports = function(settings){
 		return
 	});
 
-
+	app.get("/forgot-password", isAuthenticated, function(req, res) {
+		res.render("forgot-password", {
+			title:"Forgot Password | iimjobs.com",
+			styles:assetsMapper['forgot-password']['styles'][mode],
+			scripts:assetsMapper['forgot-password']['scripts'][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
+		})
+	});
 }
