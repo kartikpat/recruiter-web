@@ -3,6 +3,26 @@ dataModel.revisit = false;
 profile.lastSeen = moment().subtract(1, 'days').format("x");
 var settings = {}
 
+function Notifications(){
+	var settings ={};
+	settings.notificationContainer= $('#notificationContainer');
+	settings.notificationRowClass = ".notificationRow";
+	settings.candidateShortlistButtonClass = '.candidateShortlist';
+	settings.candidateRejectButtonClass = '.candidateReject';
+
+	function onClickShortlistCandidate(fn) {
+	   settings.notificationContainer.on('click', settings.candidateShortlistButtonClass, function(event) {
+	        var status = $(this).attr("data-status");
+	        var applicationId = $(this).closest(settings.notificationRowClass).attr("data-application-id")
+	        return fn(applicationId, status);
+	        
+	    })
+	}
+	return {
+		onClickShortlistCandidate: onClickShortlistCandidate
+	}
+}
+
 function modalInit(){
 	settings.openJobUnpublishModalButton= '.jobUnpublish';
 	settings.openJobRefreshModalButton= '.jobRefresh';
@@ -11,6 +31,8 @@ function modalInit(){
 	settings.jobRefreshModal= $(".refreshModal");
 	settings.jobRefreshButton= $(".jobRefreshButton");
 }
+
+
 $(document).ready(function(){
 	var dashboardStatsContainer = $("#dashboardStatsContainer");
 	var activeJobsChartContainer = $("#new-jobs-chart");
@@ -22,11 +44,16 @@ $(document).ready(function(){
 	var otherRolesContainer = $("#otherRolesContainer");
 	var recentJobsContainer = $("#recentJobsContainer");
 	var postedJobsContainer = $("#postedJobsContainer");
-	var jobOtherActionsClass = ".action-panel"
+	var jobOtherActionsClass = ".action-panel";
+
 
 	modalInit();
 	onClickJobRefresh();
 	onClickJobCancel();
+	var notificationOb = Notifications();
+	notificationOb.onClickShortlistCandidate(function(applicationId, status){
+		console.log("clicked");
+	})
 	$(window).click(function(event) {
 		$(jobOtherActionsClass).addClass('inactive');
 	});
@@ -218,6 +245,7 @@ $(document).ready(function(){
 				return;
 			}
 			var card = notificationCard.clone().removeClass('hidden prototype');
+			card.attr('data-application-id', aRow['id']);
 			if(!isMultiple){
 				card.removeClass('multiple');
 				card.find('.general .designationOrganization').addClass('hidden');
@@ -256,7 +284,6 @@ $(document).ready(function(){
 			card.find('.profile-detail .education .institute').text(aRow['institute']);
 			card.find('.profile-detail .education .batch').text(aRow['batch']);
 			card.find('.profile-detail .education .courseType').text(aRow['courseType']);
-			card.find('.action-buttons .button').attr('href', aRow['resume']).attr('download', aRow['name'].replace(/ +/g, '_').toLowerCase()+'_resume.pdf').attr('target', '_blank');
 			card.find('.profile .jobDetails').text(aRow['title']);
 			card.find('.profile-detail .jobDetails').text(aRow['title']);
 			notificationContainer.find('.detail-card').append(card);
