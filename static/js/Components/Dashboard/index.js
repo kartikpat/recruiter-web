@@ -247,7 +247,7 @@ $(document).ready(function(){
 				exp = exp["year"] +'y '+ exp["month"] + 'm'
 				return location+', ' +exp;
 			})(aRow['exp'], aRow['currentLocation'])
-			card.find('.profile .name').text(aRow['name']).attr('href', '/job/'+aRow['jobId']+'/candidates/'+aRow['userId']);
+			card.find('.profile .name').text(aRow['name']).attr('href', '/job/'+aRow['jobId']+'/applications/'+aRow['id']);
 			card.find('.profile .icon img').attr('src', (aRow['img'])?aRow['img'] : "/static/images/noimage.png"  );
 			card.find('.profile .designationOrganization').text(designationOrganization);
 			card.find('.profile .locationExperience').text(locationExperience);
