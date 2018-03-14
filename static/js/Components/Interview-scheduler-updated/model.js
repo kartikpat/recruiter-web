@@ -78,10 +78,11 @@ function Calendar(){
         if($('#radio-button-end').prop("checked")==true){
            // debugger
           var toDate=$('#end_date').val();
-          console.log(toDate);
-           
-        }       
-
+          console.log(toDate);     
+        }    
+    
+        timetable.fromDate=fromDate;
+        timetable.toDate=toDate;
         $.each(settings.dayId,function(){
             settings.select_menu.find('option').prop('disabled', false); 
             var id=$(this).attr('id');
@@ -274,8 +275,6 @@ function Calendar(){
         })
     }
 
-
-    
     function fullCalendar(){
         settings.fullcalendar.fullCalendar({
             header: {
@@ -339,6 +338,33 @@ function Calendar(){
          });
     }
 
+    function getDetails(){
+        timetable.name= settings.name.val(),
+        timetable.message=  settings.message.val(),
+        timetable.telephone=settings.telephone.val()
+        console.log(timetable);
+        return timetable
+    }
+
+    function submitHandler(fn){
+		$(settings.createCalendar).click(fn)
+    }
+    
+    function validate(){
+		if(!(settings.name.val())){
+            console.log("fail");
+		//	user.email.next('.error').text(errorResponses['missingEmail'])
+			return false
+        }
+        if(!(settings.message.val())){
+
+        }
+        if(!(settings.teleMessage.val())){
+
+        }
+		return true;
+	}
+
     return {
         init:init,
         selectCreater :selectCreater,
@@ -349,7 +375,10 @@ function Calendar(){
         highlighter:highlighter,
         startdate:startdate,
         enddate:enddate,
-        testHighlight: testHighlight
+        testHighlight: testHighlight,
+        submitHandler:submitHandler,
+        getDetails:getDetails,
+        validate:validate,
     }
 };
 

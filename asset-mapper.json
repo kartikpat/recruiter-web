@@ -1258,8 +1258,11 @@
             "debug": [
 				"static/js/vendor/moment.min.js",
 				"static/js/vendor/jquery.min.js",
+				"static/js/Utilities/pubsub.js",
                 "static/js/vendor/jquery-ui.min.js",
 				"static/js/vendor/fullcalendar.js",
+				"static/js/Utilities/request.js",
+				"static/js/Services/submitCalendar.js",
                 "static/js/Components/Interview-scheduler-updated/index.js",
                 "static/js/Components/Interview-scheduler-updated/model.js"
             ],
