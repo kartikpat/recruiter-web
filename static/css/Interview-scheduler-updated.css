@@ -218,7 +218,7 @@
               font-size: 14px;
               /* Approximation due to font substitution */
               font-weight: 400;
-              line-height: 23px;
+              line-height: 35px;
               /* Approximation due to font substitution */
               text-align: left;
               margin-left: 15px; }
@@ -228,22 +228,21 @@
               font-size: 14px;
               /* Approximation due to font substitution */
               font-weight: 400;
-              line-height: 23px;
+              line-height: 35px;
               /* Approximation due to font substitution */
               text-align: left;
-              margin-top: 20px;
-              margin-left: 46px; }
+              margin-left: 30px; }
             .wrap .second-container .available-hours .Days-available .table .D-avail #three {
               font-family: "Droid Sans", sans-serif;
               color: #2b2b2b;
               font-size: 14px;
               /* Approximation due to font substitution */
               font-weight: 400;
-              line-height: 23px;
+              line-height: 35px;
               /* Approximation due to font substitution */
               text-align: left;
               margin-top: 20px;
-              margin-left: 66px; }
+              margin-left: 75px; }
           .wrap .second-container .available-hours .Days-available .table .day .section {
             background-color: #f3fbfb;
             width: 136px;
@@ -324,7 +323,6 @@
               display: none;
               outline: none; }
       .wrap .second-container .available-hours .preview {
-        width: 616px;
         display: inline-block;
         margin-top: 0px;
         margin-right: 35px; }
@@ -334,13 +332,13 @@
           /* Approximation due to font substitution */
           font-weight: 400;
           text-align: left;
-          width: 50%;
+          width: 17%;
           position: absolute;
           margin-top: 5px; }
       .wrap .second-container .available-hours .Breaks-available {
-        float: none;
+        float: left;
         display: block;
-        position: relative;
+        margin-bottom: 100px;
         top: -120px; }
         .wrap .second-container .available-hours .Breaks-available .timer {
           color: #2b2b2b;
@@ -476,14 +474,7 @@
           text-align: left; }
         .wrap .second-container .available-hours .start-date .section .radio-input input:checked + label {
           background-image: url("/static/images/checked_radio.svg"); }
-        .wrap .second-container .available-hours .start-date .section img {
-          float: none;
-          display: inline-block;
-          margin-top: 21px;
-          vertical-align: top;
-          clear: both;
-          margin-left: 20px; }
-        .wrap .second-container .available-hours .start-date .section .input-field {
+        .wrap .second-container .available-hours .start-date .section #startdatepicker {
           border-radius: 3px;
           border-style: solid;
           border-width: 1px;
@@ -492,10 +483,9 @@
           background-color: #ffffff;
           width: 283px;
           height: 48px;
-          margin-top: 21px;
-          resize: none;
-          outline: none;
-          overflow: hidden; }
+          outline: none; }
+        .wrap .second-container .available-hours .start-date .section img {
+          margin-left: 20px; }
       .wrap .second-container .available-hours .end-date {
         clear: both;
         float: left;
@@ -540,14 +530,7 @@
           text-align: left; }
         .wrap .second-container .available-hours .end-date .section .radio-input input:checked + label {
           background-image: url("/static/images/checked_radio.svg"); }
-        .wrap .second-container .available-hours .end-date .section img {
-          float: none;
-          display: inline-block;
-          margin-top: 21px;
-          vertical-align: top;
-          clear: both;
-          margin-left: 20px; }
-        .wrap .second-container .available-hours .end-date .section .input-field {
+        .wrap .second-container .available-hours .end-date .section #enddatepicker {
           border-radius: 3px;
           border-style: solid;
           border-width: 1px;
@@ -556,13 +539,12 @@
           background-color: #ffffff;
           width: 283px;
           height: 48px;
-          margin-top: 21px;
-          resize: none;
-          outline: none;
-          overflow: hidden; }
+          outline: none; }
+        .wrap .second-container .available-hours .end-date .section img {
+          margin-left: 20px; }
   .wrap .bottom-container {
     width: 100%;
-    height: 100px; }
+    height: 135px; }
     .wrap .bottom-container .formgroup button {
       -webkit-appearance: none;
       -moz-appearance: none;
@@ -609,31 +591,33 @@
 
 @media only screen and (max-width: 600px) {
   .wrap .second-container .available-hours .Days-available {
-    width: 100%;
+    width: 100% !important;
     margin-top: -100px; }
     .wrap .second-container .available-hours .Days-available .table {
       width: 90%;
       border-style: none; }
     .wrap .second-container .available-hours .Days-available .D-avail {
       display: none; }
-    .wrap .second-container .available-hours .Days-available .day .section {
-      width: 100% !important; }
-      .wrap .second-container .available-hours .Days-available .day .section .check-input {
-        width: 100%;
-        margin-top: 20px !important;
-        margin-left: 15px !important; }
-        .wrap .second-container .available-hours .Days-available .day .section .check-input #Check-span {
-          display: inline-block !important;
-          color: #2b2b2b;
-          font-size: 14px;
-          /* Approximation due to font substitution */
-          font-weight: 400;
-          line-height: 23px;
-          /* Approximation due to font substitution */
-          text-align: left;
-          transform: scaleX(1.0011);
-          /* width and height properties ommitted due to transform */
-          width: 50%; }
+    .wrap .second-container .available-hours .Days-available .day {
+      width: 100%; }
+      .wrap .second-container .available-hours .Days-available .day .section {
+        width: 100% !important; }
+        .wrap .second-container .available-hours .Days-available .day .section .check-input {
+          width: 100% !important;
+          margin-top: 20px !important;
+          margin-left: 15px !important; }
+          .wrap .second-container .available-hours .Days-available .day .section .check-input #Check-span {
+            display: inline-block !important;
+            color: #2b2b2b;
+            font-size: 14px;
+            /* Approximation due to font substitution */
+            font-weight: 400;
+            line-height: 23px;
+            /* Approximation due to font substitution */
+            text-align: left;
+            transform: scaleX(1.0011);
+            /* width and height properties ommitted due to transform */
+            width: 50%; }
     .wrap .second-container .available-hours .Days-available .time-section {
       width: 100% !important;
       height: 125px !important;
@@ -662,8 +646,28 @@
     display: none !important; }
   .wrap .second-container .available-hours .start-date .section .input-field {
     width: 70%; }
+  .wrap .second-container .available-hours .start-date .section #startdatepicker {
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e4e4e4;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    width: 203px;
+    height: 40px;
+    outline: none; }
   .wrap .second-container .available-hours .end-date .section .input-field {
-    width: 70%; } }
+    width: 70%; }
+  .wrap .second-container .available-hours .end-date .section #enddatepicker {
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e4e4e4;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    width: 203px;
+    height: 40px;
+    outline: none; } }
 
 @media only screen and (max-width: 350px) {
   .wrap .second-container .available-hours .Days-available {
@@ -676,7 +680,9 @@
   .wrap .second-container .available-hours .Breaks-available .table {
     width: 90%; }
     .wrap .second-container .available-hours .Breaks-available .table .D-avail #two {
-      margin-left: 30px; }
+      margin-left: 8px; }
+    .wrap .second-container .available-hours .Breaks-available .table .D-avail #three {
+      margin-left: 65px; }
     .wrap .second-container .available-hours .Breaks-available .table .time-section {
       width: 100%; }
       .wrap .second-container .available-hours .Breaks-available .table .time-section .section-one .select-dropdown {
@@ -688,9 +694,29 @@
     width: 60%; }
   .wrap .second-container .available-hours .start-date .section .radio-input input + label {
     line-height: 20px; }
+  .wrap .second-container .available-hours .start-date .section #startdatepicker {
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e4e4e4;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    width: 183px;
+    height: 40px;
+    outline: none; }
   .wrap .second-container .available-hours .end-date .section .input-field {
     width: 55%; }
   .wrap .second-container .available-hours .end-date .section img {
-    padding-right: 52px; }
+    padding-top: 10px; }
   .wrap .second-container .available-hours .end-date .section .radio-input input + label {
-    line-height: 20px; } }
+    line-height: 20px; }
+  .wrap .second-container .available-hours .end-date .section #enddatepicker {
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e4e4e4;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    width: 183px;
+    height: 40px;
+    outline: none; } }

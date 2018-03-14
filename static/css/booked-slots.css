@@ -2615,7 +2615,8 @@ span.sticker {
         color: #1a5e98; }
 
 .page-content {
-  width: 100%; }
+  width: 100%;
+  min-height: 100%; }
   .page-content .header-slot {
     margin-top: 20px;
     width: 95%;
@@ -2984,7 +2985,6 @@ span.sticker {
               width: 100%; }
           .page-content .booked-slots .slot-date .schedules-container .schedules .action-buttons {
             width: 99%;
-            margin-left: 20px;
             display: inline-block;
             padding-bottom: 30px; }
             .page-content .booked-slots .slot-date .schedules-container .schedules .action-buttons .send-message {
@@ -2993,7 +2993,7 @@ span.sticker {
               display: inline-block; }
             .page-content .booked-slots .slot-date .schedules-container .schedules .action-buttons .section {
               display: inline-block;
-              margin-left: 50px; } }
+              margin-left: 30px; } }
 
 @media only screen and (max-width: 480px) {
   .page-content .header-slot {
