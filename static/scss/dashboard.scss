@@ -189,7 +189,7 @@ $button-border-color: #8f8a8a;
 		}
 		.horizontal-separator{
 			width: 100%;
-			height: 1px;
+			border-bottom: thin solid $horizontal-separator-color;
 			background-color: $horizontal-separator-color;
 			margin-top: 20px;
 		}

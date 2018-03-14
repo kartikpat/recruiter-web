@@ -912,6 +912,7 @@
 				"static/js/Services/fetchInterviews.js",
 				"static/js/Services/submitUnpublishJob.js",
 				"static/js/Services/submitRefreshJob.js",
+				"static/js/Services/setCandidateAction.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Components/Dashboard/index.js",
@@ -923,6 +924,7 @@
 				"static/js/dashboard.js",
 				"static/js/utilities.js",
 				"static/js/utilities/modal.js",
+				"static/js/Utilities/toastNotifier.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js"
 			],
