@@ -163,7 +163,7 @@ function candidateList() {
         item.shortlistButton.attr("data-status", "1");
         item.rejectButton.attr("data-status", "2");
         item.savedButton.attr("data-status", "3");
-        item.downloadResumeButton.attr("href", aData["resume"])
+        item.downloadResumeButton.attr("data-href", aData["resume"])
         item.downloadResumeButton.attr("download", aData["name"].replace(/ +/g, '_')+'_resume.pdf')
         var status = aData["status"];
         if(status == 1) {
@@ -364,8 +364,9 @@ function candidateList() {
 
     function onClickDownloadResume(fn) {
         settings.rowContainer.on('click', settings.candidateDownloadResumeButton, function(event){
-            event.stopPropagation();
-            fn()
+            var url = $(this).attr("data-href");
+            window.open(url);
+            return false
         })
     }
 
