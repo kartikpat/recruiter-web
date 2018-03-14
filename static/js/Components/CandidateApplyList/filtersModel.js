@@ -1,7 +1,8 @@
 var errorResponses = {
-	invalidSal: 'Maximum Salary should be greater than Minimum Salary',
-	invalidBatch: 'Maximum Batch should be greater than Minimum Batch',
-	invalidMinExp: 'Maximum Years of Experience should be greater than Minimum Years of Experience'
+	invalidminSal: 'Maximum Salary should be greater than Minimum Salary',
+	invalidminBatch: 'Maximum Batch should be greater than Minimum Batch',
+	invalidminExp: 'Maximum Years of Experience should be greater than Minimum Years of Experience',
+	invalidminAge: 'Maximum Age should be greater than Minimum Age'
 }
 
 function Filters(){
@@ -176,8 +177,7 @@ function Filters(){
 	function onClickApplyFilterButton(fn){
 		settings.applyFilterButton.click(function(e){
 			settings.clearAllFitersButton.removeClass("hidden")
-			removeBodyFixed();
-            settings.filterModal.addClass("hidden");
+
 			var name = $(settings.activeFilterListingClass).attr('data-label');
 			fn(name);
 		})
@@ -203,14 +203,14 @@ function Filters(){
 
 	function onClickSearchButton(fn){
 		settings.searchButton.click(function(event){
-			settings.clearAllFitersButton.removeClass("hidden")
+			// settings.clearAllFitersButton.removeClass("hidden")
 			var str = filtersTarget["searchString"]["target"].val();
-			if(str == '') {
-				return settings.searchCandidateError.removeClass("hidden")
-			}
-			else {
-				settings.searchCandidateError.addClass("hidden")
-			}
+			// if(str == '') {
+			// 	return settings.searchCandidateError.removeClass("hidden")
+			// }
+			// else {
+			// 	settings.searchCandidateError.addClass("hidden")
+			// }
 			filtersTarget["searchString"]["selection"] = str;
 			fn();
 		})
@@ -539,18 +539,36 @@ function Filters(){
 		settings.appliedFilters.removeClass("hidden");
 	}
 
-	function checkForError() {
+	function checkForError(name) {
+		var type = filtersTarget[name]['type']
 		if(type == "dropdownHalf"){
-			
+			var element = filtersTarget[name]["props"]["min"]['target'];
+			var minValue;
+			var	maxValue;
 			for(var key in filtersTarget[name]["props"]) {
-				var minValue = filtersTarget[name]["props"][key]['target'].val();
-				var maxValue = filtersTarget[name]["props"][key]['target'].val();
+				if(key == "min") {
+					minValue = filtersTarget[name]["props"][key]['target'].val();
+					continue
+				}
+				maxValue = filtersTarget[name]["props"][key]['target'].val();
 			}
+			debugger
 			if(minValue != -1 && maxValue != -1 && maxValue < minValue) {
-
+				element.next(".error-field").text(errorResponses['invalid'+element.attr('id')]).removeClass("hidden");
+				return false
+			}
+			else {
+				element.next(".error-field").addClass("hidden");
+				return true
 			}
 		}
 	}
+
+	function closeFilterModal() {
+		removeBodyFixed();
+		settings.filterModal.addClass("hidden")
+	}
+
     return {
     	init: init,
     	addFilterData: addFilterData,
@@ -565,7 +583,8 @@ function Filters(){
 		showResultsFound: showResultsFound,
 		hideAppliedFilters:hideAppliedFilters,
 		showAppliedFilters:showAppliedFilters,
-		checkForError: checkForError
+		checkForError: checkForError,
+		closeFilterModal: closeFilterModal
     }
 
 

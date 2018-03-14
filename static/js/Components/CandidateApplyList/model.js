@@ -49,7 +49,7 @@ function candidateList() {
         onClickMassComment()
 
         onClickCoverLetterLink()
-        
+
 	}
 
     function onClickCoverLetterLink() {
@@ -201,7 +201,7 @@ function candidateList() {
         })
         console.log(aData["jobs"].length)
         if(aData["jobs"].length > 3) {
-            profStr+= "<a href='javascript:void(0)' style='color: #155d9a'>"+(aData["jobs"].length - 3)+" more work experience.</a>"
+            profStr+= "<span style='color: #155d9a'>"+(aData["jobs"].length - 3)+" more work experience.</span>"
         }
         item.profList.html(profStr)
         var eduStr = '';
@@ -216,7 +216,7 @@ function candidateList() {
             eduStr+=item.element[0].outerHTML
         })
         if(aData["education"].length > 3) {
-            eduStr+= "<a href='javascript:void(0)' onclick=function(e){e.preventDefault()} style='color: #155d9a'>"+(aData["education"].length - 3)+" more education.</a>"
+            eduStr+= "<span style='color: #155d9a'>"+(aData["education"].length - 3)+" more education.</span>"
         }
 
         item.eduList.html(eduStr)
