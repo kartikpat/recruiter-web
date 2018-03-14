@@ -1,3 +1,8 @@
+var errorResponses = {
+	missingName: 'Please enter your name',
+    missingMessage: 'Please enter a Message for F2F Interview',
+    missingTeleMessage: 'Please enter a Message for Telephonic Interview'
+}
 
 function Calendar(){
     var settings ={};

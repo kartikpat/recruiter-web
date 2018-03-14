@@ -54,7 +54,7 @@
   .wrap .container .form .input-name {
     margin-top: 10px;
     margin-left: 27px; }
-    .wrap .container .form .input-name span {
+    .wrap .container .form .input-name .tag {
       color: #2b2b2b;
       font-size: 14px;
       /* Approximation due to font substitution */
@@ -74,7 +74,7 @@
   .wrap .container .form .message {
     margin-top: 10px;
     margin-left: 27px; }
-    .wrap .container .form .message span {
+    .wrap .container .form .message .tag {
       font-family: "Droid Sans", sans-serif;
       color: #2b2b2b;
       font-size: 14px;
@@ -95,7 +95,7 @@
   .wrap .container .form .telephonic {
     margin-top: 10px;
     margin-left: 27px; }
-    .wrap .container .form .telephonic span {
+    .wrap .container .form .telephonic .tag {
       font-family: "Droid Sans", sans-serif;
       color: #2b2b2b;
       font-size: 14px;

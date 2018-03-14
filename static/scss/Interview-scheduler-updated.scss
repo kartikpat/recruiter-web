@@ -36,14 +36,13 @@
             .input-name{
                 margin-top: 10px;
                 margin-left: 27px;
-                span{
+                .tag{
                    
                     color:  #2b2b2b;
                     font-size: 14px;/* Approximation due to font substitution */
                     font-weight: 400;
                     text-align: left;
                     }
-
                 #name{
                     border-radius: 3px;
                     border-style: solid;
@@ -57,18 +56,16 @@
                     outline: none;
                 }
             }
-
             .message{
                 margin-top: 10px;
                 margin-left: 27px;
-                span{
+                .tag{
                     font-family:  $droid-font;
                     color:  #2b2b2b;
                     font-size: 14px;/* Approximation due to font substitution */
                     font-weight: 400;
                     text-align: left;
                     }
-
                 #message{
                     border-radius: 3px;
                     border-style: solid;
@@ -86,13 +83,13 @@
             .telephonic{
                 margin-top: 10px;
                 margin-left: 27px;
-                span{
+                .tag{
                     font-family:  $droid-font;
                     color:  #2b2b2b;
                     font-size: 14px;/* Approximation due to font substitution */
                     font-weight: 400;
                     text-align: left;
-                    }
+                }
 
                 #telephonic{
                     border-radius: 3px;
