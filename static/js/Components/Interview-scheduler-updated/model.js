@@ -274,6 +274,8 @@ function Calendar(){
         })
     }
 
+
+    
     function fullCalendar(){
         settings.fullcalendar.fullCalendar({
             header: {
