@@ -166,7 +166,7 @@
 		}
 	},
 	"premium-posting": {
-		"styles": {
+		"styles": { 
 			"debug" : [
 				"static/css/header.css",
         		"static/css/premium-posting.css",
@@ -1212,6 +1212,31 @@
 			]
 		}
 	},
+	"forgot-password": {
+		"styles": {
+			"debug" : [
+				"static/css/utilities.css",
+				"static/css/footer.css",
+				"static/css/header.css",
+				"static/css/forgot-password.css"
+			],
+			"prod": [
+				"static/build/css/forgot-password.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/Utilities/request.js",
+				"static/js/header.js",
+				"static/js/utilities.js",
+				"static/js/forgot-password.js"
+			],
+			"prod" : [
+				"static/build/js/forgot-password.min.js"
+			]
+		}
+	},
 	"account-created": {
 		"styles": {
 			"debug" : [
@@ -1321,9 +1346,11 @@
             "debug": [
 				"static/js/vendor/moment.min.js",
 				"static/js/vendor/jquery.min.js",
+				"static/js/Utilities/pubsub.js",
                 "static/js/vendor/jquery-ui.min.js",
 				"static/js/vendor/fullcalendar.js",
-				"static/js/Components/Interview-scheduler-updated/custom.js",
+				"static/js/Utilities/request.js",
+				"static/js/Services/submitCalendar.js",
                 "static/js/Components/Interview-scheduler-updated/index.js",
                 "static/js/Components/Interview-scheduler-updated/model.js"
             ],

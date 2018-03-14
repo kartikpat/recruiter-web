@@ -3,6 +3,10 @@
 @import 'chat-sidebar';
 @import 'components/modal';
 
+.border-top {
+    border-top: 1px solid #e8e8e8;
+}
+
 .button-action-list {
     display: inline-block;
     width: 165px;
@@ -56,6 +60,7 @@
 
 .page-content{
     width: 100%;
+    min-height: 100%;
     .header-slot{
         margin-top: 20px;
         width: 95%;
@@ -66,7 +71,7 @@
             font-weight: 400;
             text-align: left;
             width: 25%;
-            display: inline-block;   
+            display: inline-block;
             margin-left: 28px;
         }
         .right-container{
@@ -114,7 +119,7 @@
                 line-height: 28px;
                 display: inline-block;
             }
-          
+
         }
     }
         .action-wrapper{
@@ -126,7 +131,7 @@
             margin-left: 30px;
             .action{
                 display: inline-block;
-                width: 15.5%;
+                width: 15%;
                 color:  #2b2b2b;
                 font-size: 15px;/* Approximation due to font substitution */
                 font-weight: 400;
@@ -136,10 +141,11 @@
             .Interview-Date{
                 margin-left: 30px;
             }
-            
+
         }
 
     .booked-slots{
+        padding: 0 30px;
         .slot-date{
           width: 100%;
           display: inline-block;
@@ -147,7 +153,7 @@
           vertical-align: top;
           padding-top: 20px;
           padding-bottom: 20px;
-          padding-left: 30px;
+
           .date{
                 color:  #2b2b2b;
                 font-size: 14px;/* Approximation due to font substitution */
@@ -159,7 +165,7 @@
                 .action-date{
                     display: none;
                 }
-               
+
             }
             .schedules-container{
                 display: inline-block;
@@ -365,8 +371,8 @@
             .section{
                 margin-top: 50px;
             }
-           
-            
+
+
         }
     }
           .action-wrapper{
@@ -458,7 +464,7 @@
 
                             }
                             .name{
-                               
+
                             }
 
                         }
@@ -482,7 +488,6 @@
                         }
                         .action-buttons{
                             width: 99%;
-                            margin-left: 20px;
                             display: inline-block;
                             padding-bottom: 30px;
                             .send-message{
@@ -493,7 +498,7 @@
                             }
                             .section{
                                 display: inline-block;
-                                margin-left: 50px;
+                                margin-left: 30px;
                             }
                         }
                     }
@@ -530,17 +535,17 @@
                    margin: 0%;
                    padding-right: 20px;
                 }
-               
-                
+
+
             }
-            
+
         }
         .booked-slots .slot-date .schedules-container .schedules .action-buttons .section {
             display: inline-block;
-            margin-left: 10px; 
+            margin-left: 10px;
         }
-       
-        
+
+
     }
 
 }
@@ -559,7 +564,7 @@
                 width: 80%;
                 padding-left: 20px;
                 padding-bottom: 20px;
-                
+
             }
             .right-container{
                 display: block;
@@ -580,16 +585,14 @@
                 margin: 0%;
                 margin-left: 25px;
             }
-                
+
         }
     }
     .action-buttons{
         .section{
-            margin:0%!important; 
+            margin:0%!important;
         }
     }
 }
 
 }
-
-

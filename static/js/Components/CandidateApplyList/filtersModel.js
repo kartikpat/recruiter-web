@@ -11,32 +11,38 @@ function Filters(){
 		industry: {
 			target: $(".jsIndustry") ,
 			type: 'checkbox',
-			selection: []
+			selection: [],
+			count: 0
 		},
 		functionalArea: {
 			target: $(".jsFuncArea"),
 			type: 'checkbox',
-			selection: []
+			selection: [],
+			count: 0
 		},
 		currentLocation:  {
 			target: $(".jsCurLoc") ,
 			type: 'checkbox',
-			selection: []
+			selection: [],
+			count: 0
 		},
 		preferredLocation: {
 			target: $(".jsPrefLoc"),
 			type: 'checkbox',
-			selection: []
+			selection: [],
+			count: 0
 		},
 		institute: {
 			target: $(".jsInstitute"),
 			type: 'checkbox',
-			selection: []
+			selection: [],
+			count: 0
 		},
 		language: {
 			target:  $(".jsLanguage"),
 			type: 'checkbox',
-			selection: []
+			selection: [],
+			count: 0
 		},
 		experience: {
 			type: 'dropdownHalf',
@@ -171,13 +177,35 @@ function Filters(){
 		setOnClickFilters();
 		setOnClickCloseFilters();
 		onInputSearchFilter()
+		onClickFiltersCheckBox()
 
+	}
+
+	function onClickFiltersCheckBox() {
+		settings.filterModal.on('click', '.check-input input', function(){
+			var name = $(settings.activeFilterListingClass).attr('data-label');
+			var type = filtersTarget[name]['type']
+			if(type == "checkbox"){
+				if($(this).is(":checked")) {
+					filtersTarget[name]['count'] += 1;
+				}
+				else {
+
+					filtersTarget[name]['count'] -= 1;
+				}
+				if(filtersTarget[name]['count'])
+					return settings.filterModal.find(".modal_sidebar li[data-name="+name+"] .filterCount").text(filtersTarget[name]['count']).removeClass("hidden")
+				return settings.filterModal.find(".modal_sidebar li[data-name="+name+"] .filterCount").addClass("hidden")
+			}
+		})
+		settings.filterModal.on('click', '.check-input label', function(){
+			event.stopPropagation()
+		})
 	}
 
 	function onClickApplyFilterButton(fn){
 		settings.applyFilterButton.click(function(e){
 			settings.clearAllFitersButton.removeClass("hidden")
-
 			var name = $(settings.activeFilterListingClass).attr('data-label');
 			fn(name);
 		})
@@ -330,7 +358,9 @@ function Filters(){
 			if(filtersTarget[key]["type"] == "checkbox") {
 
 				filtersTarget[key]["selection"] = [];
+				filtersTarget[key]["count"] = 0
 				filtersTarget[key]['target'].find('input').prop('checked', false)
+				settings.filterModal.find(".modal_sidebar li[data-name="+key+"] .filterCount").addClass("hidden")
 			}
 			else if(filtersTarget[key]["type"] == "dropdownHalf") {
 
@@ -360,7 +390,11 @@ function Filters(){
 			var index = filtersTarget[category]['selection'].indexOf(value)
 			if(index > -1){
 				filtersTarget[category]['selection'].splice(index, 1);
+				filtersTarget[category]['count'] -= 1;
 				filtersTarget[category]['target'].find('input[value='+value+']').prop('checked', false)
+				if(filtersTarget[category]['count'])
+					return settings.filterModal.find(".modal_sidebar li[data-name="+category+"] .filterCount").text(filtersTarget[category]['count']).removeClass("hidden")
+				return settings.filterModal.find(".modal_sidebar li[data-name="+category+"] .filterCount").addClass("hidden")
 			}
 		}
 		else if(type == "dropdownHalf"){
@@ -552,7 +586,7 @@ function Filters(){
 				}
 				maxValue = filtersTarget[name]["props"][key]['target'].val();
 			}
-			debugger
+
 			if(minValue != -1 && maxValue != -1 && maxValue < minValue) {
 				element.next(".error-field").text(errorResponses['invalid'+element.attr('id')]).removeClass("hidden");
 				return false
@@ -562,6 +596,7 @@ function Filters(){
 				return true
 			}
 		}
+		return true
 	}
 
 	function closeFilterModal() {

@@ -99,6 +99,9 @@ input::-webkit-input-placeholder {
 
 	.page-header {
 		padding:15px 0;
+        .job-title-container {
+            width: 50%;
+        }
 		h1 {
             &.shell {
                 @include title-shell;
@@ -547,7 +550,7 @@ input::-webkit-input-placeholder {
 											.candidate-options {
 												margin-top:20px;
                                                 .button-action-list {
-                                                    width: 100%;
+                                                    width: 165px;
                                                 }
 											}
 
@@ -1537,7 +1540,17 @@ input::-webkit-input-placeholder {
 							margin-right:10px;
 						}
 					}
+
 				}
+                .invite {
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+                .invite-links {
+                    margin-left: 30px;
+                    list-style: initial;
+                }
 
 				&:last-child {
 					border-bottom:0;

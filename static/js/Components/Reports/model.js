@@ -47,7 +47,7 @@ function reportList() {
    }
 
    function getApplicationLink(defaultTab, jobId) {
-       return "candidate-apply-list/"+jobId+"?defaultTab="+defaultTab+"";
+       return "job/"+jobId+"/applications?defaultTab="+defaultTab+"";
    }
 
    function createElement(aData) {

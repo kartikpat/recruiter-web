@@ -134,7 +134,7 @@ function candidateList() {
                $.each(aData["applications"],function(index, application) {
                    console.log(application)
                    var item =  $(''+settings.candAppliedJobsClass+'.prototype').clone().removeClass("prototype hidden");;
-                   item.html(application["title"] + " (<a href='/recruiter/job/"+application["jobID"]+"/applications/"+aData["id"]+"'>View Profile</a>) ")
+                   item.html(application["title"] + " (<a href='/job/"+application["jobID"]+"/applications/"+application["id"]+"'>View Profile</a>) ")
                    str+=item[0].outerHTML
                })
                item.multipleCandJobListing.append(str);
@@ -143,12 +143,12 @@ function candidateList() {
            else if(aData["applications"].length == 1) {
                console.log(aData["applications"][0])
                item.jobTitle.text(aData["applications"][0]["title"])
-               item.candidateViewProfileLink.attr("href", "/recruiter/job/"+aData["applications"][0]["jobID"]+"/applications/"+aData["id"]+"")
+               item.candidateViewProfileLink.attr("href", "/job/"+aData["applications"][0]["jobID"]+"/applications/"+application["id"]+"")
            }
        }
        else {
             item.jobTitle.text(settings.jobTitle)
-            item.candidateViewProfileLink.attr("href", "/recruiter/job/"+settings.jobId+"/applications/"+aData["id"]+"")
+            item.candidateViewProfileLink.attr("href", "/job/"+settings.jobId+"/applications/"+aData["id"]+"")
        }
        if(aData["pro"]) {
            item.isProMember.removeClass("hidden")

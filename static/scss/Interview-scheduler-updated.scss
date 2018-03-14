@@ -242,7 +242,7 @@
                             color:  #2b2b2b;
                             font-size: 14px;/* Approximation due to font substitution */
                             font-weight: 400;
-                            line-height: 23px;/* Approximation due to font substitution */
+                            line-height: 35px;/* Approximation due to font substitution */
                             text-align: left;
                             margin-left: 15px;
                         }
@@ -252,10 +252,9 @@
                             color:  #2b2b2b;
                             font-size: 14px;/* Approximation due to font substitution */
                             font-weight: 400;
-                            line-height: 23px;/* Approximation due to font substitution */
+                            line-height: 35px;/* Approximation due to font substitution */
                             text-align: left;
-                            margin-top: 20px;
-                            margin-left: 46px;
+                            margin-left: 30px;
 
                         }
                         #three{
@@ -264,10 +263,10 @@
                             color:  #2b2b2b;
                             font-size: 14px;/* Approximation due to font substitution */
                             font-weight: 400;
-                            line-height: 23px;/* Approximation due to font substitution */
+                            line-height: 35px;/* Approximation due to font substitution */
                             text-align: left;
                             margin-top: 20px;
-                            margin-left: 66px;
+                            margin-left: 75px;
                         }
                     }
 
@@ -371,20 +370,14 @@
                                     outline: none;
                                    
                                 }
-                            
-
-                        }
-                    
-                    
-
-                    
+                           }
                 }
 
 
             }
 
             .preview{
-                width: 616px;
+              //  width: 616px;
                 //height: 682px;
                 display: inline-block;
                 margin-top: 0px;
@@ -394,16 +387,17 @@
                     font-size: 14px;/* Approximation due to font substitution */
                     font-weight: 400;
                     text-align: left;
-                    width: 50%;
+                    width: 17%;
                     position: absolute;
                     margin-top: 5px;
                 }
             }
 
             .Breaks-available{
-                float: none;
+                float: left;
                 display: block;
-                position: relative;
+                // position: relative;
+                margin-bottom: 100px;
                 top: -120px;
                 .timer{
                     color:  #2b2b2b;
@@ -472,8 +466,7 @@
                         }
                     }
 
-                    .time-section{
-                           
+                    .time-section{      
                         height: 77px;
                         float: left;
                         width: 100%;
@@ -565,30 +558,19 @@
                             background-image:url('/static/images/checked_radio.svg');
                         }
                     }
-
-
-                    img{
-                        float: none;
-                        display: inline-block;
-                        margin-top: 21px;
-                        vertical-align: top;
-                        clear: both;
-                        margin-left: 20px;
-                    }
-
-                    .input-field{
+                    #startdatepicker{
                         border-radius: 3px;
                         border-style: solid;
                         border-width: 1px;
-                        border-color:  #e4e4e4;
+                        border-color: #e4e4e4;
                         box-sizing: border-box;
-                        background-color:  #ffffff;
+                        background-color: #ffffff;
                         width: 283px;
                         height: 48px;
-                        margin-top: 21px;
-                        resize:none;
                         outline: none;
-                        overflow: hidden;
+                    }
+                    img{
+                        margin-left: 20px;
                     }
                 }
 
@@ -647,28 +629,19 @@
                         }
                     }
 
-                    img{
-                        float: none;
-                        display: inline-block;
-                        margin-top: 21px;
-                        vertical-align: top;
-                        clear: both;
-                        margin-left: 20px;
-                       // padding-right: 15%;
-                    }
-                    .input-field{
+                    #enddatepicker{
                         border-radius: 3px;
                         border-style: solid;
                         border-width: 1px;
-                        border-color:  #e4e4e4;
+                        border-color: #e4e4e4;
                         box-sizing: border-box;
-                        background-color:  #ffffff;
+                        background-color: #ffffff;
                         width: 283px;
                         height: 48px;
-                        margin-top: 21px;
-                        resize:none;
                         outline: none;
-                        overflow: hidden;
+                    }
+                    img{
+                        margin-left: 20px;
                     }
 
                 }
@@ -685,7 +658,7 @@
     .bottom-container{
        
         width: 100%;
-        height: 100px;
+        height: 135px;
              .formgroup button {
                     -webkit-appearance: none;
                     -moz-appearance: none;
@@ -778,7 +751,7 @@
         .second-container{
             .available-hours{   
                 .Days-available{
-                    width: 100%;
+                    width: 100%!important;
                     margin-top: -100px;
                     .table{
                      width: 90%;
@@ -788,10 +761,11 @@
                         display: none;
                     }
                     .day{
+                        width: 100%;
                         .section{
                             width: 100%!important;
                             .check-input{
-                                width: 100%;
+                                 width: 100%!important;
                                 margin-top: 20px!important;
                                 margin-left: 15px!important;
                                 #Check-span{
@@ -850,13 +824,34 @@
                         .input-field{
                          width: 70%;
                         }
-                
+                        #startdatepicker{
+                            border-radius: 3px;
+                            border-style: solid;
+                            border-width: 1px;
+                            border-color: #e4e4e4;
+                            box-sizing: border-box;
+                            background-color: #ffffff;
+                            width: 203px;
+                            height: 40px;
+                            outline: none;
+                        }
                     }
                 }    
                 .end-date{
                     .section{
                         .input-field{
                          width: 70%;
+                        }
+                        #enddatepicker{
+                            border-radius: 3px;
+                            border-style: solid;
+                            border-width: 1px;
+                            border-color: #e4e4e4;
+                            box-sizing: border-box;
+                            background-color: #ffffff;
+                            width: 203px;
+                            height: 40px;
+                            outline: none;
                         }
                 
                     }
@@ -886,7 +881,10 @@
                         width:90%;
                             .D-avail{
                                 #two{
-                                    margin-left: 30px;
+                                    margin-left: 8px;
+                                }
+                                #three{
+                                    margin-left: 65px;
                                 }
                             }
                         .time-section{
@@ -913,6 +911,17 @@
                             input + label {
                                 line-height: 20px;
                             }
+                        }
+                        #startdatepicker{
+                            border-radius: 3px;
+                            border-style: solid;
+                            border-width: 1px;
+                            border-color: #e4e4e4;
+                            box-sizing: border-box;
+                            background-color: #ffffff;
+                            width: 183px;
+                            height: 40px;
+                            outline: none;
                         }   
                     }
                 }    
@@ -922,13 +931,25 @@
                          width: 55%;
                         }
                         img{
-                            padding-right:52px;
+                           // padding-right:52px;
+                           padding-top: 10px;
                         }
                         .radio-input {
                             input + label {
                                 line-height: 20px;
                             }
                         } 
+                        #enddatepicker{
+                            border-radius: 3px;
+                            border-style: solid;
+                            border-width: 1px;
+                            border-color: #e4e4e4;
+                            box-sizing: border-box;
+                            background-color: #ffffff;
+                            width: 183px;
+                            height: 40px;
+                            outline: none;
+                        }
                 
                     }
                 }

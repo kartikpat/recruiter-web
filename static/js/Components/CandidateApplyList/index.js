@@ -10,7 +10,11 @@ var screenName = "candidate-apply-list";
 jQuery(document).ready( function() {
 
     // fetching url parameters
-    var defaultTab = parseInt(getQueryParameter("defaultTab")) || 1;
+    var defaultTab;
+    if(parseInt(getQueryParameter("defaultTab")) === 0)
+        defaultTab = 0
+    else
+        defaultTab = parseInt(getQueryParameter("defaultTab")) || 1
     // creating the instance of models
 	var candidates = candidateList();
     var aCandidate = Candidate();
@@ -48,6 +52,7 @@ jQuery(document).ready( function() {
     filters.addFilterData('preferredLocation', prefeLocationTagsData);
     filters.onClickApplyFilterButton(function(name){
         if(!filters.checkForError(name)) {
+            debugger
             return
         }
         filters.closeFilterModal()
@@ -147,6 +152,26 @@ jQuery(document).ready( function() {
         array.push(candidate);
         cloneStickyChat(array, recruiterId, jobId, applicationId)
     })
+    aCandidate.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
+        var defaultCalendarId = theJob.getDefaultCalendar();
+        if(!defaultCalendarId)
+            return theJob.showCalendarMissingError();
+        var obj = {
+            "type": inviteId,
+            "calendarId": defaultCalendarId
+        }
+        sendInterViewInvite(recruiterId, jobId, applicationId , obj)
+    })
+    aCandidate.onClickSendInterviewInviteTelephonic(function(applicationId, inviteId){
+        var defaultCalendarId = theJob.getDefaultCalendar();
+        if(!defaultCalendarId)
+            return theJob.showCalendarMissingError();
+        var obj = {
+            "type": inviteId,
+            "calendarId": defaultCalendarId
+        }
+        sendInterViewInvite(recruiterId, jobId, applicationId , obj)
+    })
     candidates.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
         var defaultCalendarId = theJob.getDefaultCalendar();
         if(!defaultCalendarId)
@@ -193,26 +218,126 @@ jQuery(document).ready( function() {
     candidates.onClickDownloadResume(function(){
         console.log("you can call track event")
     });
-    candidates.onClickSaveCandidate(function(applicationId, newStatus){
-         var parameters = {};
-         parameters.oldStatus = globalParameters.status
-         parameters.newStatus = newStatus
-         parameters.isModalButton = false
-         setCandidateAction(recruiterId, jobId, "save" , applicationId, {}, parameters);
-     })
-    candidates.onClickShortlistCandidate(function(applicationId, newStatus){
+    candidates.onClickSaveCandidate(function(applicationId, newStatus, dataAction){
+        var action;
+        if(parseInt(dataAction) == parseInt(newStatus)) {
+            action = "unread"
+        }
+        else {
+            action = "save"
+        }
         var parameters = {};
         parameters.oldStatus = globalParameters.status
         parameters.newStatus = newStatus
+        parameters.dataAction = dataAction;
         parameters.isModalButton = false
-        setCandidateAction(recruiterId, jobId, "shortlist" , applicationId, {}, parameters);
+        setCandidateAction(recruiterId, jobId, action , applicationId, {}, parameters);
+     })
+    candidates.onClickShortlistCandidate(function(applicationId, newStatus, dataAction){
+        var action;
+        if(parseInt(dataAction) == parseInt(newStatus)) {
+            action = "unread"
+        }
+        else {
+            action = "shortlist"
+        }
+        var parameters = {};
+        parameters.oldStatus = globalParameters.status
+        parameters.newStatus = newStatus;
+        parameters.dataAction = dataAction;
+        parameters.isModalButton = false
+        setCandidateAction(recruiterId, jobId, action , applicationId, {}, parameters);
     })
-    candidates.onClickRejectCandidate(function(applicationId, newStatus){
-        var parameters= {};
+    function onSuccessfullCandidateAction(topic, res) {
+
+        if(res.action == "tag") {
+            if(res.parameters.type == "add") {
+                var tag = {
+                    "name": res.parameters.tagName,
+                    "id": res.data.id
+                }
+                aCandidate.appendCandidateTag(tag)
+                return toastNotify(1, "Tag Added Successfully")
+            }
+            var tagId = res.parameters.tagId
+            aCandidate.removeTag(tagId)
+            return toastNotify(1, "Tag Deleted Successfully")
+        }
+        if(res.action == "comment") {
+            return toastNotify(1, "Comment Added Successfully")
+        }
+        if(res.action == "unread") {
+            fetchJobApplicationCount(recruiterId, jobId)
+            if(res.parameters.oldStatus != "") {
+                var arr = [];
+                arr.push(res.applicationId)
+                candidates.candidateActionTransition(arr)
+            }
+            var newStatus = 0
+            candidates.changeButtonText(arr, newStatus, res.parameters.dataAction)
+            return toastNotify(1, "Moved to Unread Tab")
+        }
+        if(res.action == "shortlist") {
+            if(res.parameters.isModal) {
+                return toastNotify(1, "Shortlisted Successfully")
+            }
+            fetchJobApplicationCount(recruiterId, jobId)
+            var arr = [];
+            arr.push(res.applicationId)
+            if(res.parameters.oldStatus != "") {
+                candidates.candidateActionTransition(arr)
+                return toastNotify(1, "Moved to Shortlisted Tab")
+            }
+            var newStatus = 1
+            candidates.changeButtonText(arr,newStatus, res.parameters.dataAction)
+            return toastNotify(1, "Shortlisted Successfully")
+        }
+        if(res.action == "reject") {
+
+            if(res.parameters.isModal) {
+                return toastNotify(1, "Rejected Successfully")
+            }
+            fetchJobApplicationCount(recruiterId, jobId)
+            var arr = [];
+            arr.push(res.applicationId)
+            if(res.parameters.oldStatus != "") {
+                candidates.candidateActionTransition(arr)
+                return toastNotify(1, "Moved to Rejected Tab")
+            }
+            var newStatus = 2
+            candidates.changeButtonText(arr,newStatus, res.parameters.dataAction)
+            return toastNotify(1, "Rejected Successfully")
+        }
+        if(res.action == "save") {
+            if(res.parameters.isModal) {
+                return toastNotify(1, "Saved Successfully")
+            }
+            fetchJobApplicationCount(recruiterId, jobId)
+            var arr = [];
+            arr.push(res.applicationId)
+            if(res.parameters.oldStatus != "") {
+                candidates.candidateActionTransition(arr)
+                return toastNotify(1, "Moved to Saved Tab")
+            }
+            var newStatus = 3
+            candidates.changeButtonText(arr,newStatus, res.parameters.dataAction)
+            return toastNotify(1, "Saved Successfully")
+        }
+    }
+    candidates.onClickRejectCandidate(function(applicationId, newStatus, dataAction){
+        var action;
+        if(parseInt(dataAction) == parseInt(newStatus)) {
+            action = "unread"
+        }
+        else {
+            action = "reject"
+        }
+        var parameters = {};
         parameters.oldStatus = globalParameters.status
         parameters.newStatus = newStatus
+        parameters.dataAction = dataAction;
         parameters.isModalButton = false
-        setCandidateAction(recruiterId, jobId, "reject" , applicationId, {}, parameters);
+        setCandidateAction(recruiterId, jobId, action , applicationId, {}, parameters);
     })
 
     candidates.onClickDownloadMassExcel(function(arr){
@@ -439,75 +564,7 @@ jQuery(document).ready( function() {
 		console.log(data)
     }
 
-    function onSuccessfullCandidateAction(topic, res) {
-        if(res.action == "tag") {
-            if(res.parameters.type == "add") {
-                var tag = {
-                    "name": res.parameters.tagName,
-                    "id": res.data.id
-                }
-                aCandidate.appendCandidateTag(tag)
-                return toastNotify(1, "Tag Added Successfully")
-            }
-            var tagId = res.parameters.tagId
-            aCandidate.removeTag(tagId)
-            return toastNotify(1, "Tag Deleted Successfully")
-        }
-        if(res.action == "comment") {
-            return toastNotify(1, "Comment Added Successfully")
-        }
-        if(res.action == "shortlist") {
-            if(res.parameters.isModal) {
-                return toastNotify(1, "Shortlisted Successfully")
-            }
 
-            fetchJobApplicationCount(recruiterId, jobId)
-            var arr = [];
-            arr.push(res.applicationId)
-            if(res.parameters.oldStatus != "") {
-                candidates.candidateActionTransition(arr)
-                if(res.parameters.oldStatus == res.parameters.newStatus) {
-                    return toastNotify(1, "Moved to Reviewed Tab")
-                }
-                return toastNotify(1, "Moved to Shortlisted Tab")
-            }
-            candidates.changeButtonText(arr, newStatus)
-            return toastNotify(1, "Shortlisted Successfully")
-        }
-        if(res.action == "reject") {
-            if(res.parameters.isModal) {
-                return toastNotify(1, "Rejected Successfully")
-            }
-
-            fetchJobApplicationCount(recruiterId, jobId)
-            if(res.parameters.oldStatus != "") {
-                var arr = [];
-                arr.push(res.applicationId)
-                candidates.candidateActionTransition(arr)
-                if(res.parameters.oldStatus == res.parameters.newStatus) {
-                    return toastNotify(1, "Moved to Reviewed Tab")
-                }
-                return toastNotify(1, "Moved to Rejected Tab")
-            }
-            return toastNotify(1, "Rejected Successfully")
-        }
-        if(res.action == "save") {
-            if(res.parameters.isModal) {
-                return toastNotify(1, "Saved Successfully")
-            }
-            fetchJobApplicationCount(recruiterId, jobId)
-            if(res.parameters.oldStatus != "") {
-                var arr = [];
-                arr.push(res.applicationId)
-                candidates.candidateActionTransition(arr)
-                if(res.parameters.oldStatus == res.parameters.newStatus) {
-                    return toastNotify(1, "Moved to Reviewed Tab")
-                }
-                return toastNotify(1, "Moved to Saved Tab")
-            }
-            return toastNotify(1, "Saved Successfully")
-        }
-    }
 
     function onFailCandidateAction(topic,res) {
         errorHandler(res);
@@ -675,7 +732,7 @@ jQuery(document).ready( function() {
     function checkScrollEnd() {
     	if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
     		globalParameters.pageNumber = globalParameters.pageNumber + 1;
-    		if(globalParameters.pageNumber != 1 && globalParameters.candidateListLength > globalParameters.pageContent) {
+    		if(globalParameters.pageNumber != 1 && globalParameters.candidateListLength >= globalParameters.pageContent) {
                 var parameters = filters.getAppliedFilters();
                 console.log("Filter Parameters | ", parameters);
                 parameters.pageNumber = globalParameters.pageNumber;
