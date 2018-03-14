@@ -225,11 +225,11 @@ $(document).ready(function(){
 				card.find('.profile').addClass('highlighted-profile');
 				card.find('.profile .jobDetails').addClass('hidden');
 			}
-			var designationOrganization = aRow['designation'] + ' at '+ aRow['organization'];
-			var currentFromMonth = moment().month(parseInt(aRow['currentExp']['from']['month']) -1).format('MMM');
-			var currentFromYear = aRow['currentExp']['from']['year'] ;
-			var currentToMonth = (aRow['currentExp']['to']['month'])? moment().month(parseInt(aRow['currentExp']['to']['month']) -1).format('MMM') : "";
-			var currentToYear = (aRow['currentExp']['to']['year'])? aRow['currentExp']['to']['year'] : "" ;
+			var designationOrganization = aRow['jobs'][0]['designation'] + ' at '+ aRow['jobs'][0]['organization'];
+				var currentFromMonth = moment().month(parseInt(aRow['jobs'][0]["exp"]['from']['month']) -1).format('MMM');
+			var currentFromYear = aRow['jobs'][0]["exp"]['from']['year'] ;
+			var currentToMonth = (aRow['jobs'][0]["exp"]['to']['month'])? moment().month(parseInt(aRow['jobs'][0]["exp"]['to']['month']) -1).format('MMM') : "";
+			var currentToYear = (aRow['jobs'][0]["exp"]['to']['year'])? aRow['jobs'][0]["exp"]['to']['year'] : "" ;
 			var currentExperienceText= currentToMonth + '-'+ currentToYear ;
 			if(currentToMonth==0 || currentToYear==0)
 				currentExperienceText = "Present"
@@ -246,7 +246,7 @@ $(document).ready(function(){
 			var locationExperience = (function(exp, location){
 				exp = exp["year"] +'y '+ exp["month"] + 'm'
 				return location+', ' +exp;
-			})(aRow['exp'], aRow['location'])
+			})(aRow['exp'], aRow['currentLocation'])
 			card.find('.profile .name').text(aRow['name']).attr('href', '/job/'+aRow['jobId']+'/candidates/'+aRow['userId']);
 			card.find('.profile .icon img').attr('src', (aRow['img'])?aRow['img'] : "/static/images/noimage.png"  );
 			card.find('.profile .designationOrganization').text(designationOrganization);
@@ -257,6 +257,8 @@ $(document).ready(function(){
 			card.find('.profile-detail .education .batch').text(aRow['batch']);
 			card.find('.profile-detail .education .courseType').text(aRow['courseType']);
 			card.find('.action-buttons .button').attr('href', aRow['resume']).attr('download', aRow['name'].replace(/ +/g, '_').toLowerCase()+'_resume.pdf').attr('target', '_blank');
+			card.find('.profile .jobDetails').text(aRow['title']);
+			card.find('.profile-detail .jobDetails').text(aRow['title']);
 			notificationContainer.find('.detail-card').append(card);
 		});
 		if( data.length>4){
