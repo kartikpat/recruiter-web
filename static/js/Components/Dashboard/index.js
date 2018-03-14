@@ -14,12 +14,17 @@ function Notifications(){
 	   settings.notificationContainer.on('click', settings.candidateShortlistButtonClass, function(event) {
 	        var status = $(this).attr("data-status");
 	        var applicationId = $(this).closest(settings.notificationRowClass).attr("data-application-id")
-	        return fn(applicationId, status);
+	        var jobId = $(this).closest(settings.notificationRowClass).attr('data-job-id');
+	        return fn(applicationId, jobId);
 	        
 	    })
 	}
+	function candidateActionTransition(applicationId){
+		 settings.notificationContainer.find(settings.notificationRowClass+'[data-application-id="'+applicationId+'"]').addClass('hidden');
+	}
 	return {
-		onClickShortlistCandidate: onClickShortlistCandidate
+		onClickShortlistCandidate: onClickShortlistCandidate,
+		candidateActionTransition: candidateActionTransition
 	}
 }
 
@@ -51,9 +56,21 @@ $(document).ready(function(){
 	onClickJobRefresh();
 	onClickJobCancel();
 	var notificationOb = Notifications();
-	notificationOb.onClickShortlistCandidate(function(applicationId, status){
-		console.log("clicked");
+	notificationOb.onClickShortlistCandidate(function(applicationId, jobId){
+		console.log(applicationId);
+		console.log(jobId);
+		setCandidateAction(recruiterId, jobId, "shortlist" , applicationId, {});
 	})
+	function onSuccessfullCandidateAction(topic, res) {
+        if(res.action == "shortlist") {
+            return toastNotify(1, "Shortlisted Successfully")
+        }
+        if(res.action == "reject") {
+        	return toastNotify(1, "Rejected Successfully")
+        }
+       notificationOb.candidateActionTransition(res.applicationId);
+    }
+
 	$(window).click(function(event) {
 		$(jobOtherActionsClass).addClass('inactive');
 	});
@@ -246,6 +263,7 @@ $(document).ready(function(){
 			}
 			var card = notificationCard.clone().removeClass('hidden prototype');
 			card.attr('data-application-id', aRow['id']);
+			card.attr('data-job-id', aRow['jobId']);
 			if(!isMultiple){
 				card.removeClass('multiple');
 				card.find('.general .designationOrganization').addClass('hidden');
@@ -344,6 +362,8 @@ $(document).ready(function(){
 
 
 	var fetchInterviewsSubscription = pubsub.subscribe("fetchedInterviews", onFetchInterviews);
+
+	var setCandidateActionSuccessSubscription = pubsub.subscribe("setCandidateActionSuccess", onSuccessfullCandidateAction)
 
 	function init(){
 		pubsub.publish("pageVisit", 1);
