@@ -39,7 +39,8 @@ function candidateList() {
         settings.sendInterviewInviteF2FClass = ".inviteF2f",
         settings.sendInterviewInviteTelephonicClass = ".inviteTelephonic",
         settings.tooltip= $(".tooltip"),
-        settings.coverLetterLink = $(".coverLetterLink")
+        settings.coverLetterLink = $(".coverLetterLink"),
+        settings.candidateDetailsModal= $('.candidateDetailsModal')
 
         onClickMassCheckbox()
         onClickCandidateOtherActions()
@@ -445,31 +446,19 @@ function candidateList() {
 
             if(jQuery(this).is(":checked")){
                 jQuery(this).closest(".candidate-select").addClass("selected");
-
-
                 var el = jQuery(".candidate-select.selected");
-
-                if(el.length >=2) {
-                    settings.bulkActionContainer.removeClass("hidden")
-                }
-                else {
-                    settings.bulkActionContainer.addClass("hidden")
-                }
+                settings.bulkActionContainer.removeClass("hidden")
             } else {
                 jQuery(this).closest(".candidate-select").removeClass("selected");
                 var el = jQuery(".candidate-select.selected");
                 var applicationId =  $(this).closest(settings.candidateRowClass).attr("data-application-id")
-
-
-                if(el.length >=2) {
+                if(el.length >=1) {
                     settings.bulkActionContainer.removeClass("hidden")
                 }
                 else {
                     settings.bulkActionContainer.addClass("hidden")
                 }
             }
-            // var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
-            // return fn(candidateId);
         })
         settings.rowContainer.on('click', settings.candidateCheckboxLabelClass, function(event) {
             event.stopPropagation();
@@ -585,9 +574,9 @@ function candidateList() {
     }
 
     function returnSelectedApplications() {
-        debugger
+
         var el = settings.rowContainer.find(".candidate-select.selected")
-        debugger
+
         var selectedApplicationIds = []
         $.each(el, function(index,anElem){
 
@@ -667,6 +656,13 @@ function candidateList() {
         $(settings.sendInterviewInviteTelephonicClass).attr("title","You need to set up your calendar before sending an invite. Click to set up calendar")
 
         settings.rowContainer.find(".tooltip").not(".prototype .tooltip").tooltipster({
+			animation: 'fade',
+			delay: 0,
+			side:['right'],
+			theme: 'tooltipster-borderless'
+		})
+
+        settings.candidateDetailsModal.find(".tooltip").tooltipster({
 			animation: 'fade',
 			delay: 0,
 			side:['right'],
