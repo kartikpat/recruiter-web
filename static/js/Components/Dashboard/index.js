@@ -20,7 +20,9 @@ function Notifications(){
 	    })
 	}
 	function candidateActionTransition(applicationId){
-		 settings.notificationContainer.find(settings.notificationRowClass+'[data-application-id="'+applicationId+'"]').addClass('hidden');
+		 settings.notificationContainer.find(settings.notificationRowClass+'[data-application-id="'+applicationId+'"]').remove();
+		 if(settings.notificationContainer.find(settings.notificationRowClass).length <1)
+		 	settings.notificationContainer.addClass('hidden');
 	}
 	return {
 		onClickShortlistCandidate: onClickShortlistCandidate,
@@ -63,12 +65,13 @@ $(document).ready(function(){
 	})
 	function onSuccessfullCandidateAction(topic, res) {
         if(res.action == "shortlist") {
+        	notificationOb.candidateActionTransition(res.applicationId);
             return toastNotify(1, "Shortlisted Successfully")
         }
         if(res.action == "reject") {
+        	notificationOb.candidateActionTransition(res.applicationId);
         	return toastNotify(1, "Rejected Successfully")
         }
-       notificationOb.candidateActionTransition(res.applicationId);
     }
 
 	$(window).click(function(event) {
@@ -252,13 +255,14 @@ $(document).ready(function(){
 
 	function onFetchFollowUps(topic, data){
 		var isMultiple = true;
-		// Debugging for single view
-		// data = [data[0]]
+		//Debugging for single view
+		// data = data.concat(data)
+		var totalFollowups = data.length;
 		if(data.length ==1)
 			isMultiple = false
-
+		var showCount = 4
 		data.forEach(function(aRow, index){
-			if(index>4){
+			if(index>showCount){
 				return;
 			}
 			var card = notificationCard.clone().removeClass('hidden prototype');
@@ -269,7 +273,7 @@ $(document).ready(function(){
 				card.find('.general .designationOrganization').addClass('hidden');
 				card.find('.horizontal-separator').addClass('hidden')
 				card.find('.profile').addClass('highlighted-profile');
-				card.find('.profile .jobDetails').addClass('hidden');
+				card.find('.profile .jobDetailsContainer').addClass('hidden');
 			}
 			var designationOrganization = aRow['jobs'][0]['designation'] + ' at '+ aRow['jobs'][0]['organization'];
 				var currentFromMonth = moment().month(parseInt(aRow['jobs'][0]["exp"]['from']['month']) -1).format('MMM');
@@ -304,9 +308,12 @@ $(document).ready(function(){
 			card.find('.profile-detail .education .courseType').text(aRow['courseType']);
 			card.find('.profile .jobDetails').text(aRow['title']);
 			card.find('.profile-detail .jobDetails').text(aRow['title']);
+			if(index==totalFollowups-1 &&  showCount >=index){
+				card.find('.horizontal-separator').addClass('hidden')
+			}
 			notificationContainer.find('.detail-card').append(card);
 		});
-		if( data.length>4){
+		if( data.length-1>showCount){
 			var seeMore= seeMoreSection.clone().removeClass('hidden prototype');
 			seeMore.find(".seeAll a").attr('href', '/followUps')
 			notificationContainer.find('.detail-card').append(seeMore);
@@ -320,7 +327,6 @@ $(document).ready(function(){
 
 	function onFetchInterviews(topic, data){
 		var isMultiple = true;
-		return 
 		if(data.length ==1)
 			isMultiple = false
 		var lastDate =(data[0] && data[0]['slot'] )? data[0]['slot'] : null;
