@@ -164,8 +164,8 @@ function Jobs() {
 
 		switch(aData["status"]) {
 			case "rejected":
-				if(aData["rej_msg"]){
-					obj["message"] = aData["rej_msg"];
+				if(aData["rejectMessage"]){
+					obj["message"] = aData["rejectMessage"];
 				}
 				break;
 			case "pending":
@@ -205,7 +205,7 @@ function Jobs() {
 			item.location.addClass("hidden")
 		}
 
-		var experience = aData["exp"]['min']+'-'+aData['exp']['max'] +' yrs'
+		var experience = aData["exp"]['min']+' - '+aData['exp']['max'] +' yrs'
 		item.experience.text(experience);
 
 		var obj = setJobStatus(aData)
@@ -224,7 +224,7 @@ function Jobs() {
 		if(aData['views']){
 			item.views.text(aData['views']+' Views').removeClass("hidden");
 			if(aData['totalApplications'])
-				item.applications.html('<a class="link-color" href="candidate-apply-list/'+aData["publishedId"]+'">'+aData["totalApplications"]+' Applied</a>').removeClass("hidden");
+				item.applications.html('<a class="link-color" href="job/'+aData["publishedId"]+'/applications">'+aData["totalApplications"]+' Applied</a>').removeClass("hidden");
 			item.element.find(".engagementDefault").addClass("hidden");
 		}
 
@@ -329,7 +329,7 @@ function Jobs() {
 		 $(".tooltip").not(".prototype .tooltip").tooltipster({
 			animation: 'fade',
 			delay: 0,
-			side:['right'],
+			side:['bottom'],
 			theme: 'tooltipster-borderless'
 		})
 	}

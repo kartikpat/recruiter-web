@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .link-color {
-  color: #337ab7; }
+  color: #155d9a; }
 
 .white-bg {
   background-color: #ffffff; }
@@ -28,7 +28,7 @@
 
 /** Mobile Menu **/
 .link-color {
-  color: #337ab7; }
+  color: #155d9a; }
 
 .white-bg {
   background-color: #ffffff; }
@@ -89,20 +89,13 @@
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
-  /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
-  /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
   margin-left: .2em;
-  /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
-  /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
 
 .icon-certification:before {
@@ -298,6 +291,15 @@
   content: '\e831'; }
 
 /* '' */
+.icon-location:before {
+  content: '\e832'; }
+
+.icon-clock:before {
+  content: '\e83a'; }
+
+.icon-checked_icon:before {
+  content: '\e819'; }
+
 .left {
   float: left; }
 
@@ -510,7 +512,7 @@ a {
                 border-radius: 4px; }
 
 .link-color {
-  color: #337ab7; }
+  color: #155d9a; }
 
 .white-bg {
   background-color: #ffffff; }
@@ -568,20 +570,13 @@ a {
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
-  /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
-  /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
   margin-left: .2em;
-  /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
-  /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
 
 .icon-certification:before {
@@ -777,6 +772,15 @@ a {
   content: '\e831'; }
 
 /* '' */
+.icon-location:before {
+  content: '\e832'; }
+
+.icon-clock:before {
+  content: '\e83a'; }
+
+.icon-checked_icon:before {
+  content: '\e819'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -854,7 +858,8 @@ label {
     box-shadow: inset 0 0 3px #4fa995; }
     .course-option input:checked + label span {
       font-size: 14px;
-      color: #4fa995; }
+      color: #4fa995;
+      opacity: 1; }
       .course-option input:checked + label span.course-icon {
         color: #4fa995; }
     .course-option input:checked + label img {
@@ -1033,13 +1038,15 @@ span.sticker {
       font-size: 14px;
       margin-right: 10px; }
   .conversations .conversation-listing-container .conversations-listing {
-    max-height: 700px; }
+    max-height: 600px;
+    overflow-y: auto; }
     .conversations .conversation-listing-container .conversations-listing .conversation-item {
       display: inline-block;
       vertical-align: middle;
       width: 100%;
       padding: 10px 0 0 5px;
-      font-size: 0; }
+      font-size: 0;
+      cursor: pointer; }
       .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item {
         display: inline-block;
         vertical-align: middle; }
@@ -1053,7 +1060,8 @@ span.sticker {
             height: 33px; }
         .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info {
           display: inline-block;
-          vertical-align: middle; }
+          vertical-align: middle;
+          width: calc(100% - 53px); }
           .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info p {
             margin: 0; }
             .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info p.user-name {
@@ -1074,6 +1082,10 @@ span.sticker {
 .premium_highlight {
   background-color: #e97e00;
   color: #fff !important; }
+
+#jobFilters {
+  padding-left: 0px;
+  color: #2b2b2b !important; }
 
 .shell .section {
   margin-bottom: 10px !important; }
@@ -1243,7 +1255,8 @@ span.sticker {
           .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.title {
             width: 33%; }
             .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.title span.job-title {
-              display: block; }
+              display: block;
+              font-weight: bold; }
           .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell .mobile-engagement {
             display: none; }
           .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell .engagement span {
@@ -1283,12 +1296,12 @@ span.sticker {
               .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon.job-edit i {
                 padding-left: 0; }
             .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon i {
-              border: 1px solid #e8e8e8;
               display: inline-block;
               padding: 2px;
               border-radius: 4px;
               text-align: center;
-              color: #757575; }
+              color: #757575;
+              font-size: 16px; }
               .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon i.icon-edit {
                 border: 0;
                 border-radius: 0;
@@ -1307,7 +1320,11 @@ span.sticker {
 
 @media all and (max-width: 1024px) {
   .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon.job-twitter {
-    margin-left: 0; } }
+    margin-left: 0; }
+  .page-content .conversations {
+    display: none; }
+  .page-content .my-jobs {
+    width: 100%; } }
 
 @media all and (max-width: 768px) {
   .page-content {
@@ -1391,9 +1408,7 @@ span.sticker {
             clear: both;
             width: 100%;
             margin: 10px auto;
-            border-bottom: 1px solid #e8e8e8; }
-  .conversations {
-    display: none; } }
+            border-bottom: 1px solid #e8e8e8; } }
 
 .error {
   position: relative !important; }

@@ -128,7 +128,7 @@ function Chat() {
    }
 
    function getMsgSentElement(data) {
-       
+
        var card = $(".message.sent.prototype").clone().removeClass('prototype hidden')
 
        card.find(".useImg").attr("src", (data["entry"]["img"] || "/static/images/noimage.png"))
@@ -172,7 +172,6 @@ function Chat() {
            }
            settings.chatWindow.removeClass("hidden")
            settings.userProfile.removeClass("hidden")
-
    }
 
    function onClickBackButton() {
@@ -187,13 +186,16 @@ function Chat() {
    }
 
    function onSendMessage(fn) {
-       settings.sendMsg.click(function(){
+       settings.sendMsg.click(function() {
            var message =  settings.msgContent.val();
            fn(message, settings.channelName, settings.candidateId)
        })
-       settings.msgContent.keypress(function(event){
-           if(event.which == 13) {
+       settings.msgContent.keypress(function(event) {
+           if(event.which == 13 && !event.shiftKey) {
                var message = $(this).val();
+               if(!message) {
+                   return $(this).val("")
+               }
                fn(message, settings.channelName, settings.candidateId)
            }
        })
@@ -231,12 +233,24 @@ function Chat() {
    }
 
    function scrollToBottom() {
+       console.log(jQuery("#mssgContainer").outerHeight())
        $(".current-chat").scrollTop(jQuery("#mssgContainer").outerHeight());
    }
 
    function setUuid(uuid) {
        settings.uuid = uuid
    }
+
+   function setRecruiterActive() {
+       settings.isOnline.removeClass("not-active")
+       settings.isActive.text("Active Now");
+   }
+
+   function setRecruiterInactive() {
+       settings.isOnline.addClass("not-active")
+       settings.isActive.text("Not Active");
+   }
+
 
    return {
        init: init,
@@ -253,7 +267,9 @@ function Chat() {
        onInputSearchCandidate: onInputSearchCandidate,
        appendSendMessage: appendSendMessage,
        setUuid: setUuid,
-       scrollToBottom: scrollToBottom
+       scrollToBottom: scrollToBottom,
+       setRecruiterActive: setRecruiterActive,
+       setRecruiterInactive: setRecruiterInactive
    }
 
 }

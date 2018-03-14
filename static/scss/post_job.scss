@@ -1,6 +1,25 @@
 @import 'common/spacings';
 @import 'input-elements';
 
+#title {
+    cursor: text;
+}
+
+#courseType, #preferences {
+    margin-bottom: 10px !important;
+}
+
+
+
+.course-selected {
+    font-size: 20px !important;
+    color: #4fa995;
+    font-size: 20px;
+    right: -9px !important;
+    top: -7px !important;
+
+}
+
 .area-heading {
     margin-bottom:20px;
     h3 {
@@ -133,7 +152,8 @@
                         width:100%;
                         max-width:100%;
                         min-height: 150px;
-                        padding: 12px;
+                        height: auto;
+                        padding: 12px 22px;
                         box-sizing: border-box;
                         border: 1px solid $border-color-base;;
                         border-radius: 2px;
@@ -151,6 +171,7 @@
 
                 .industry-tags, .location-tags, .skill-tags {
                     @include tag-container;
+                    padding-left: 0px;
                 }
             }
         }
@@ -167,7 +188,6 @@
     .premium-section-content {
         max-width:1440px;
         margin:0 auto;
-        padding:0 30px;
     }
 
     .contents {
@@ -191,7 +211,7 @@
 .submit-action-buttons {
     padding:0 30px;
     max-width:1440px;
-    margin:30px auto 50px;
+    margin:30px auto;
 
     button {
         @include button($button-color-green);
@@ -201,12 +221,13 @@
             padding:10px 32px;
         }
         &.cancel-form {
-            
+
             color:$link-color;
             box-shadow:none;
             border:0;
             background:none;
             border:0;
+            padding:10px 32px;
         }
     }
 }
@@ -232,11 +253,18 @@
             font-size:$base-font-size;
             margin-bottom:20px;
             color:$page-list-item-color;
+            line-height: 1.5;
+            &:last-child {
+                margin-bottom: 0px;
+            }
         }
     }
 }
 
 @media all and (max-width:768px) {
+    #courseType {
+        margin-bottom: 10px !important;
+    }
     .guidelines-container {
         display:none;
     }
@@ -358,4 +386,7 @@
     color:$select-color;
     font-style: normal;
     white-space: normal;
+}
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    font-size: 120% !important;
 }

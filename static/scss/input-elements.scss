@@ -149,7 +149,7 @@ label {
     	span {
     		font-size:$label-font-size;
 			color:$course-option-active;
-
+            opacity: 1;
 			&.course-icon {
 				color:$course-option-active;
 			}

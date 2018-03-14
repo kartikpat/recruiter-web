@@ -1,7 +1,7 @@
 var globalParameters = {
     pageContent: 10,
     pageNumber: 1,
-    status: "",
+    status: 0,
     orderBy: 1,
     initialLoad: 1,
     candidateListLength: null
@@ -10,8 +10,11 @@ var screenName = "candidate-apply-list";
 jQuery(document).ready( function() {
 
     // fetching url parameters
-    var defaultTab = parseInt(getQueryParameter("defaultTab"));
-
+    var defaultTab;
+    if(parseInt(getQueryParameter("defaultTab")) === 0)
+        defaultTab = 0
+    else
+        defaultTab = parseInt(getQueryParameter("defaultTab")) || 1
     // creating the instance of models
 	var candidates = candidateList();
     var aCandidate = Candidate();
@@ -20,7 +23,7 @@ jQuery(document).ready( function() {
     var filters = Filters();
 
     //initializing the models
-
+    candidates.setConfig("jobId", jobId)
     filters.init();
     candidates.init();
     theJob.init();
@@ -48,8 +51,14 @@ jQuery(document).ready( function() {
     filters.addFilterData('language', languageTagsData)
     filters.addFilterData('preferredLocation', prefeLocationTagsData);
     filters.onClickApplyFilterButton(function(name){
+        if(!filters.checkForError(name)) {
+            debugger
+            return
+        }
+        filters.closeFilterModal()
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
+
         filters.setAppliedFilters(name);
         var parameters = filters.getAppliedFilters();
         globalParameters.pageNumber = 1;
@@ -137,11 +146,31 @@ jQuery(document).ready( function() {
         var status = globalParameters.status
         aCandidate.showCandidateDetails(candidateDetails, "tag", status);
     })
-    candidates.onClickSendMessage(function(candidateId){
+    candidates.onClickSendMessage(function(candidateId,applicationId){
         var candidate = store.getCandidateFromStore(candidateId);
         var array = [];
         array.push(candidate);
-        cloneStickyChat(array, recruiterId)
+        cloneStickyChat(array, recruiterId, jobId, applicationId)
+    })
+    aCandidate.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
+        var defaultCalendarId = theJob.getDefaultCalendar();
+        if(!defaultCalendarId)
+            return theJob.showCalendarMissingError();
+        var obj = {
+            "type": inviteId,
+            "calendarId": defaultCalendarId
+        }
+        sendInterViewInvite(recruiterId, jobId, applicationId , obj)
+    })
+    aCandidate.onClickSendInterviewInviteTelephonic(function(applicationId, inviteId){
+        var defaultCalendarId = theJob.getDefaultCalendar();
+        if(!defaultCalendarId)
+            return theJob.showCalendarMissingError();
+        var obj = {
+            "type": inviteId,
+            "calendarId": defaultCalendarId
+        }
+        sendInterViewInvite(recruiterId, jobId, applicationId , obj)
     })
     candidates.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
         var defaultCalendarId = theJob.getDefaultCalendar();
@@ -345,7 +374,7 @@ jQuery(document).ready( function() {
      })
 
      $.when(fetchJob(jobId, recruiterId, {idType: 'publish'}), fetchCalendars(jobId, recruiterId)).then(function(a, b){
-            debugger
+
          if(a[0] && b[0] && a[0]["status"] == "success" && b[0]["status"] =="success" && a[0]['data'].length >0 ) {
              var jobRow = a[0]['data'][0];
              console.log(b)
@@ -354,7 +383,7 @@ jQuery(document).ready( function() {
              var data = {
                 jobTitle: getTitleFormat(jobRow["title"],(/\(\d+-\d+ \w+\)$/)),
                 jobLocation: jobRow["location"].toString(),
-                jobExperience: jobRow["exp"]['min']+'-'+ jobRow['exp']['max'] +' yrs',
+                jobExperience: jobRow["exp"]['min']+ ' - ' + jobRow['exp']['max'] +' yrs',
                 jobPublishedId: jobRow['publishedId'],
                 jobId: jobRow['id'],
                 jobStatus: jobRow['status'],
@@ -387,10 +416,7 @@ jQuery(document).ready( function() {
             }
         }
         if(globalParameters.initialLoad) {
-            if(data["stats"]) {
-                candidates.setJobStats(data["stats"]);
-            }
-
+            fetchJobApplicationCount(recruiterId, jobId)
             globalParameters.initialLoad = 0;
         }
 
@@ -427,6 +453,7 @@ jQuery(document).ready( function() {
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
         parameters.status = globalParameters.status;
+
         parameters.orderBy = globalParameters.orderBy;
         fetchJobApplications(jobId,parameters,recruiterId);
         theJob.setJobDetails(data);
@@ -673,7 +700,7 @@ jQuery(document).ready( function() {
     function checkScrollEnd() {
     	if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
     		globalParameters.pageNumber = globalParameters.pageNumber + 1;
-    		if(globalParameters.pageNumber != 1 && globalParameters.candidateListLength == globalParameters.pageContent) {
+    		if(globalParameters.pageNumber != 1 && globalParameters.candidateListLength > globalParameters.pageContent) {
                 var parameters = filters.getAppliedFilters();
                 console.log("Filter Parameters | ", parameters);
                 parameters.pageNumber = globalParameters.pageNumber;

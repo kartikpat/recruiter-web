@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>{{title}}</title>
+	<link href="../../static/css/chat-sticky.css" rel="stylesheet">
 	{{#styles.length}}
     	{{#styles}}
     		<link rel="stylesheet" href="/{{.}}">
@@ -10,7 +11,6 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Comfortaa|Droid+Sans:400,700|Noto+Sans" rel="stylesheet">
-	<link href="../../static/css/chat-sticky.css" rel="stylesheet">
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
@@ -49,71 +49,74 @@
 <body>
 
 	<div class="header">
-		<div class="mobile-menu header_item">
-			<img src="/static/images/hamburger.svg">
-		</div>
-		<div class="domain_logo header_item">
-			<a href="/">
-				<h1>{{baseDomain}}</h1><span>.com</span>
-				<p class="logo_tagline">Hire better. Hire Faster.</p>
-			</a>
-		</div>
-		<div class="search-container hidden animated fadeIn">
-			<form action="#">
-				<input class="search-box" type="Text" placeholder="What are you searching for?" autocomplete="off" >
-			</form>
-			<!-- <div class="exit-view">X</div> -->
-		</div>
-		<div class="navigation header_item animated fadeIn">
-			<ul class="menu-listing">
-				<li class="menu-list-item my-jobs">
-					<a >My Jobs</a>
-					<div class="profile-menu">
-						<div class="profile-body">
-							<ul class="profile-item-listing">
-								<li class=""><a href="/my-jobs">My Jobs</a></li>
-								<li class=""><a href="/post-job">Post Job</a></li>
-								<li class=""><a href="/recruiter/tagged-candidates">Tagged Candidates</a></li>
-								<li class="s"><a href="/recruiter/candidates">Shortlisted/Saved Candidates</a></li>
-							</ul>
-						</div>
-					</div>
-				</li>
-				<li class="menu-list-item search-resume"><a href="javscript:void(0);">Search Resume</a></li>
-				<li class="menu-list-item interviews"><a href="javscript:void(0);">Interviews</a></li>
-				<li class="menu-list-item reports"><a href="/reports">Reports</a></li>
-			</ul>
-		</div>
-		<div class="profile_actions right header_item">
-			<div class="search action-icon">
-				<img class="info-icon hidden" src="/static/images/info-close.png">
-				<img class="search-icon" src="/static/images/search_icon.svg">
+		<div class="header-wrapper">
+			<div class="mobile-menu header_item">
+				<img src="/static/images/hamburger.svg">
 			</div>
-			<div class="messages action-icon">
-				<a href="/my-chat">
-					<img src="/static/images/chat_icon.svg">
+			<div class="domain_logo header_item">
+				<a href="/">
+					<h1>{{baseDomain}}</h1><span>.com</span>
+					<p class="logo_tagline">Hire better. Hire Faster.</p>
 				</a>
 			</div>
-			<div class="notifications action-icon">
-				<img src="/static/images/notification_icon.svg">
+			<div class="search-container hidden animated fadeIn">
+				<form action="" id="globalSearch">
+					<input class="search-box" type="Text" placeholder="What are you searching for?" autocomplete="off" >
+				</form>
+				<!-- <div class="exit-view">X</div> -->
 			</div>
-			<div class="profile action-icon">
-				<img class="user_img" src="{{profile.img_link}}">
-				<div class="profile-menu">
-					<div class="profile-header">
-						<p class="user-name user_name" id="">{{profile.name}}</p>
-						<p class="user-email user_email" id="">{{profile.email}}</p>
-					</div>
-					<div class="profile-body">
-						<ul class="profile-item-listing">
-							<li>Basic Account <span class="upgrade">Buy Premium</span></li>
-							<li class="settings"><a href="/settings">Account Settings</a></li>
-							<li class="logout recruiterLogout" ><a href="/logout">Logout</a></li>
-						</ul>
+			<div class="navigation header_item animated fadeIn">
+				<ul class="menu-listing">
+					<li class="menu-list-item my-jobs">
+						<a >My Jobs</a>
+						<div class="profile-menu">
+							<div class="profile-body">
+								<ul class="profile-item-listing">
+									<li class=""><a href="/my-jobs">My Jobs</a></li>
+									<li class=""><a href="/post-job">Post Job</a></li>
+									<li class=""><a href="/recruiter/tagged-candidates">Tagged Candidates</a></li>
+									<li class="s"><a href="/recruiter/candidates">Shortlisted/Saved Candidates</a></li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li class="menu-list-item search-resume"><a href="javscript:void(0);">Search Resume</a></li>
+					<li class="menu-list-item interviews"><a href="javscript:void(0);">Interviews</a></li>
+					<li class="menu-list-item reports"><a href="/reports">Reports</a></li>
+				</ul>
+			</div>
+			<div class="profile_actions right header_item">
+				<div class="search action-icon">
+					<img class="info-icon hidden" src="/static/images/info-close.png">
+					<img class="search-icon" src="/static/images/search_icon.svg">
+				</div>
+				<div class="messages action-icon">
+					<a href="/my-chat">
+						<img src="/static/images/chat_icon.svg">
+					</a>
+				</div>
+				<div class="notifications action-icon">
+					<img src="/static/images/notification_icon.svg">
+				</div>
+				<div class="profile action-icon">
+					<img class="user_img" src="{{profile.img_link}}">
+					<div class="profile-menu">
+						<div class="profile-header">
+							<p class="user-name user_name" id="">{{profile.name}}</p>
+							<p class="user-email user_email" id="">{{profile.email}}</p>
+						</div>
+						<div class="profile-body">
+							<ul class="profile-item-listing">
+								<li>Basic Account <span class="upgrade button right white">Buy Premium</span></li>
+								<li class="settings"><a href="/settings">Account Settings</a></li>
+								<li class="logout recruiterLogout" ><a href="">Logout</a></li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<!-- Header Ends here-->
 	</div>
 
 	<div class="mobile-menu-container hidden">
@@ -156,7 +159,7 @@
 				<ul class="profile-item-listing">
 					<a href="#"><li>Basic Account <span class="upgrade button white">Buy Premium</span></li></a>
 					<a href="/settings"><li class="settings">Account Settings</li></a>
-					<a href="/logout recruiterLogout"><li class="logout">Logout</li></a>
+					<a href=""><li class="recruiterLogout">Logout</li></a>
 				</ul>
 			</div>
 

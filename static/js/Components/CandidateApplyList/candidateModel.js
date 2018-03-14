@@ -26,7 +26,9 @@ function Candidate() {
         settings.candidateChatModal = $("#candidateChatModal"),
         settings.tagListing = $(".recruiterTags"),
         settings.tagMobListing = $("#tagMobListing"),
-        settings.tagInputError = $(".tagInputError")
+        settings.tagInputError = $(".tagInputError"),
+        settings.sendInterviewInviteF2FClass = ".inviteF2f",
+        settings.sendInterviewInviteTelephonicClass = ".inviteTelephonic"
         onClickChatCandidateModal()
         jQuery("#tabbed-content").tabs({});
         // onClickAddPopulatedTags()
@@ -39,6 +41,35 @@ function Candidate() {
     function onClickChatCandidateModal() {
         settings.candidateChatModal.click(function(){
             window.location.href = "/my-chat"
+        })
+    }
+
+    function onClickSendInterviewInviteF2F(fn) {
+        settings.candidateDetailsModal.on('click', settings.sendInterviewInviteF2FClass, function(e){
+            e.preventDefault()
+
+            if(parseInt($(this).attr("data-clickable")) == 1) {
+                window.location = "/booked-slots"
+
+            }
+            var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
+            var inviteId = parseInt($(this).attr("data-invite-id"));
+            fn(applicationId, inviteId);
+            return false
+        })
+    }
+
+    function onClickSendInterviewInviteTelephonic(fn) {
+        settings.candidateDetailsModal.on('click', settings.sendInterviewInviteTelephonicClass, function(e){
+            e.preventDefault()
+            if(parseInt($(this).attr("data-clickable")) == 1) {
+                window.location = "/booked-slots"
+
+            }
+            var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
+            var inviteId =  parseInt($(this).attr("data-invite-id"));
+            fn(applicationId, inviteId);
+            return false
         })
     }
 
@@ -462,7 +493,9 @@ function Candidate() {
         onClickShortlistCandidate: onClickShortlistCandidate,
         onClickRejectCandidate: onClickRejectCandidate,
         onClickSaveCandidate:onClickSaveCandidate,
-        showDropdownTags: showDropdownTags
+        showDropdownTags: showDropdownTags,
+        onClickSendInterviewInviteTelephonic: onClickSendInterviewInviteTelephonic,
+        onClickSendInterviewInviteF2F: onClickSendInterviewInviteF2F
 	}
 
     function focusOnElement(element, container) {

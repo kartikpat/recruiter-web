@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .link-color {
-  color: #337ab7; }
+  color: #155d9a; }
 
 .white-bg {
   background-color: #ffffff; }
@@ -28,7 +28,7 @@
 
 /** Mobile Menu **/
 .link-color {
-  color: #337ab7; }
+  color: #155d9a; }
 
 .white-bg {
   background-color: #ffffff; }
@@ -86,20 +86,13 @@
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
-  /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
-  /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
   margin-left: .2em;
-  /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
-  /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
 
 .icon-certification:before {
@@ -295,6 +288,15 @@
   content: '\e831'; }
 
 /* '' */
+.icon-location:before {
+  content: '\e832'; }
+
+.icon-clock:before {
+  content: '\e83a'; }
+
+.icon-checked_icon:before {
+  content: '\e819'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -372,7 +374,8 @@ label {
     box-shadow: inset 0 0 3px #4fa995; }
     .course-option input:checked + label span {
       font-size: 14px;
-      color: #4fa995; }
+      color: #4fa995;
+      opacity: 1; }
       .course-option input:checked + label span.course-icon {
         color: #4fa995; }
     .course-option input:checked + label img {
@@ -535,7 +538,7 @@ span.sticker {
     max-height: 300px; } }
 
 .link-color {
-  color: #337ab7; }
+  color: #155d9a; }
 
 .white-bg {
   background-color: #ffffff; }
@@ -596,20 +599,13 @@ span.sticker {
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
-  /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
-  /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
   margin-left: .2em;
-  /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
-  /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
 
 .icon-certification:before {
@@ -805,6 +801,15 @@ span.sticker {
   content: '\e831'; }
 
 /* '' */
+.icon-location:before {
+  content: '\e832'; }
+
+.icon-clock:before {
+  content: '\e83a'; }
+
+.icon-checked_icon:before {
+  content: '\e819'; }
+
 .left {
   float: left; }
 
@@ -1017,7 +1022,7 @@ a {
                 border-radius: 4px; }
 
 .link-color {
-  color: #337ab7; }
+  color: #155d9a; }
 
 .white-bg {
   background-color: #ffffff; }
@@ -1075,20 +1080,13 @@ a {
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
-  /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
-  /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
   margin-left: .2em;
-  /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
-  /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
 
 .icon-certification:before {
@@ -1284,6 +1282,15 @@ a {
   content: '\e831'; }
 
 /* '' */
+.icon-location:before {
+  content: '\e832'; }
+
+.icon-clock:before {
+  content: '\e83a'; }
+
+.icon-checked_icon:before {
+  content: '\e819'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -1361,7 +1368,8 @@ label {
     box-shadow: inset 0 0 3px #4fa995; }
     .course-option input:checked + label span {
       font-size: 14px;
-      color: #4fa995; }
+      color: #4fa995;
+      opacity: 1; }
       .course-option input:checked + label span.course-icon {
         color: #4fa995; }
     .course-option input:checked + label img {
@@ -1540,13 +1548,15 @@ span.sticker {
       font-size: 14px;
       margin-right: 10px; }
   .conversations .conversation-listing-container .conversations-listing {
-    max-height: 700px; }
+    max-height: 600px;
+    overflow-y: auto; }
     .conversations .conversation-listing-container .conversations-listing .conversation-item {
       display: inline-block;
       vertical-align: middle;
       width: 100%;
       padding: 10px 0 0 5px;
-      font-size: 0; }
+      font-size: 0;
+      cursor: pointer; }
       .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item {
         display: inline-block;
         vertical-align: middle; }
@@ -1560,7 +1570,8 @@ span.sticker {
             height: 33px; }
         .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info {
           display: inline-block;
-          vertical-align: middle; }
+          vertical-align: middle;
+          width: calc(100% - 53px); }
           .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info p {
             margin: 0; }
             .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info p.user-name {
@@ -1731,72 +1742,75 @@ span.sticker {
       z-index: 2;
       overflow: auto;
       padding: 10px 20px; }
-      .chat-div-candidate .content-footer-container .chat-div-content ul .time-separator {
-        margin: 15px 0;
-        text-align: center; }
-        .chat-div-candidate .content-footer-container .chat-div-content ul .time-separator span {
-          display: inline-block;
-          font-size: 14px;
-          color: #808080;
-          text-transform: capitalize;
-          letter-spacing: 0.5px; }
-      .chat-div-candidate .content-footer-container .chat-div-content ul li.message {
-        margin: 15px 0;
-        clear: both;
-        overflow: auto; }
-        .chat-div-candidate .content-footer-container .chat-div-content ul li.message.received .user-image {
-          float: left;
-          margin: 0 15px 0 0; }
-          .chat-div-candidate .content-footer-container .chat-div-content ul li.message.received .user-image img {
-            border-radius: 50%;
-            height: 43px;
-            width: 43px; }
-        .chat-div-candidate .content-footer-container .chat-div-content ul li.message.received .message-area {
-          max-width: 80%;
-          display: inline-block;
-          float: left; }
-          .chat-div-candidate .content-footer-container .chat-div-content ul li.message.received .message-area p {
-            line-height: 1.5; }
-            .chat-div-candidate .content-footer-container .chat-div-content ul li.message.received .message-area p.message-content {
-              background-color: #FFF;
-              border: 1px solid #e8e8e8;
-              border-radius: 4px;
-              padding: 10px;
-              font-size: 14px;
-              max-width: calc(100vw - 130px);
-              word-break: break-all; }
-            .chat-div-candidate .content-footer-container .chat-div-content ul li.message.received .message-area p.message-timestamp {
-              text-align: left;
-              margin: 5px 0 0 0;
-              font-size: 12px;
-              color: #808080; }
-        .chat-div-candidate .content-footer-container .chat-div-content ul li.message.sent .user-image {
-          float: right;
-          margin: 0 0 0 15px; }
-          .chat-div-candidate .content-footer-container .chat-div-content ul li.message.sent .user-image img {
-            border-radius: 50%;
-            height: 43px;
-            width: 43px; }
-        .chat-div-candidate .content-footer-container .chat-div-content ul li.message.sent .message-area {
-          max-width: 80%;
-          display: inline-block;
-          float: right; }
-          .chat-div-candidate .content-footer-container .chat-div-content ul li.message.sent .message-area p {
-            line-height: 1.5;
-            text-align: right; }
-            .chat-div-candidate .content-footer-container .chat-div-content ul li.message.sent .message-area p.message-content {
-              background-color: #FFF;
-              border: 1px solid #e8e8e8;
-              border-radius: 4px;
-              padding: 10px;
-              font-size: 14px;
-              max-width: calc(100vw - 130px);
-              word-break: break-all; }
-            .chat-div-candidate .content-footer-container .chat-div-content ul li.message.sent .message-area p.message-timestamp {
-              text-align: right;
-              margin: 5px 0 0 0;
-              font-size: 12px;
-              color: #808080; }
+      .chat-div-candidate .content-footer-container .chat-div-content ul {
+        padding: 0;
+        margin-top: 0; }
+        .chat-div-candidate .content-footer-container .chat-div-content ul .time-separator {
+          margin: 15px 0;
+          text-align: center; }
+          .chat-div-candidate .content-footer-container .chat-div-content ul .time-separator span {
+            display: inline-block;
+            font-size: 14px;
+            color: #808080;
+            text-transform: capitalize;
+            letter-spacing: 0.5px; }
+        .chat-div-candidate .content-footer-container .chat-div-content ul li.message {
+          margin: 15px 0;
+          clear: both;
+          overflow: auto; }
+          .chat-div-candidate .content-footer-container .chat-div-content ul li.message.received .user-image {
+            float: left;
+            margin: 0 15px 0 0; }
+            .chat-div-candidate .content-footer-container .chat-div-content ul li.message.received .user-image img {
+              border-radius: 50%;
+              height: 43px;
+              width: 43px; }
+          .chat-div-candidate .content-footer-container .chat-div-content ul li.message.received .message-area {
+            max-width: 80%;
+            display: inline-block;
+            float: left; }
+            .chat-div-candidate .content-footer-container .chat-div-content ul li.message.received .message-area p {
+              line-height: 1.5; }
+              .chat-div-candidate .content-footer-container .chat-div-content ul li.message.received .message-area p.message-content {
+                background-color: #FFF;
+                border: 1px solid #e8e8e8;
+                border-radius: 4px;
+                padding: 10px;
+                font-size: 14px;
+                max-width: calc(100vw - 130px);
+                word-break: break-all; }
+              .chat-div-candidate .content-footer-container .chat-div-content ul li.message.received .message-area p.message-timestamp {
+                text-align: left;
+                margin: 5px 0 0 0;
+                font-size: 12px;
+                color: #808080; }
+          .chat-div-candidate .content-footer-container .chat-div-content ul li.message.sent .user-image {
+            float: right;
+            margin: 0 0 0 15px; }
+            .chat-div-candidate .content-footer-container .chat-div-content ul li.message.sent .user-image img {
+              border-radius: 50%;
+              height: 43px;
+              width: 43px; }
+          .chat-div-candidate .content-footer-container .chat-div-content ul li.message.sent .message-area {
+            max-width: 80%;
+            display: inline-block;
+            float: right; }
+            .chat-div-candidate .content-footer-container .chat-div-content ul li.message.sent .message-area p {
+              line-height: 1.5;
+              text-align: right; }
+              .chat-div-candidate .content-footer-container .chat-div-content ul li.message.sent .message-area p.message-content {
+                background-color: #FFF;
+                border: 1px solid #e8e8e8;
+                border-radius: 4px;
+                padding: 10px;
+                font-size: 14px;
+                max-width: calc(100vw - 130px);
+                word-break: break-all; }
+              .chat-div-candidate .content-footer-container .chat-div-content ul li.message.sent .message-area p.message-timestamp {
+                text-align: right;
+                margin: 5px 0 0 0;
+                font-size: 12px;
+                color: #808080; }
     .chat-div-candidate .content-footer-container.show {
       height: 315px; }
     .chat-div-candidate .content-footer-container .footer {
@@ -1848,7 +1862,8 @@ span.sticker {
 .info-container {
   padding: 10px;
   background: #f7f7f7;
-  position: absolute; }
+  position: absolute;
+  width: calc(100% - 15px); }
   .info-container .img-container {
     padding: 0 5px 0 0px; }
     .info-container .img-container img {

@@ -32,7 +32,8 @@ function Header(){
 			settings.navigationView=$('.exit-view'),
 			settings.exitButton=$('.info-icon'),
 			settings.searchButton=$('.search-icon'),
-			settings.menuBar=$('.mobile-menu');
+			settings.menuBar=$('.mobile-menu'),
+			settings.globalSearch= $("#globalSearch")
 	}
 
 
@@ -43,7 +44,7 @@ function Header(){
         settings.userImg.attr("src",profile["pic"]);
 	}
 
-	
+
     function myJobsView(){
 		settings.myJobs.on('click', function(){
 			settings.menucontainer.addClass("hidden");
@@ -80,7 +81,14 @@ function Header(){
 			settings.searchView.addClass("hidden");
 			settings.searchButton.removeClass("hidden");
 			settings.exitButton.addClass("hidden");
-			
+		});
+	}
+
+	function search() {
+		settings.globalSearch.submit(function(){
+			var str = settings.searchInput.val()
+			window.location = "/recruiter/search?searchQuery=" + encodeURI(str)
+  			return false
 		});
 	}
 
@@ -93,5 +101,6 @@ function Header(){
 		dashboardView:dashboardView,
 		searchView:searchView,
 		navigationView:navigationView,
+		search:search
 	}
 }

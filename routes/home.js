@@ -43,6 +43,7 @@ module.exports = function(settings){
 					req.profile = jsonBody.data;
 					return next();
 				}
+				return res.redirect('/login');
 			})
 			// getRequest(baseUrl+"/recruiter/"+recruiterID+"", {}, function(res){
 			// 	if(res.status && res.status =='success'){
@@ -246,7 +247,8 @@ module.exports = function(settings){
 			styles:  assetsMapper["premium-posting"]["styles"][mode],
 			scripts: assetsMapper["premium-posting"]["scripts"][mode],
 			baseUrl: baseUrl,
-			baseDomain: baseDomain
+			baseDomain: baseDomain,
+			profile: req.profile
 		})
 		return
 	})
@@ -421,6 +423,18 @@ module.exports = function(settings){
 		return
 	});
 
+	app.get("/recruiter/search",isAuthenticated, function(req,res){
+		res.render("global-search", {
+			title:"Recruiter Web - Global Search | iimjobs.com",
+			styles:  assetsMapper["global-search"]["styles"][mode],
+			scripts: assetsMapper["global-search"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			profile: req.profile
+		})
+		return
+	});
+
 	app.get("/recruiter/candidates",isAuthenticated, function(req,res){
 		res.render("shortlisted-candidates", {
 			title:"Recruiter Web - Shortlisted Candidates | iimjobs.com",
@@ -433,7 +447,7 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/candidate-apply-list/:jobID",isAuthenticated, function(req,res){
+	app.get("/job/:jobID/applications",isAuthenticated, function(req,res){
 		// var jobId = req.params.jobId;
 		res.render("candidate-apply-list", {
 			title:"Recruiter Web - Candidate Apply List | iimjobs.com",
@@ -555,7 +569,7 @@ module.exports = function(settings){
 		});
 		return
 	});
-	app.get("/recruiter/job/:jobID/applications/:applicationID",isAuthenticated, function(req,res){
+	app.get("/job/:jobID/applications/:applicationID",isAuthenticated, function(req,res){
 		res.render("candidate-profile", {
 			title:"Recruiter Web - Candidate Profile | iimjobs.com",
 			styles:  assetsMapper["candidate-profile"]["styles"][mode],
@@ -610,6 +624,6 @@ module.exports = function(settings){
 		})
 		return
 	});
-	
+
 
 }

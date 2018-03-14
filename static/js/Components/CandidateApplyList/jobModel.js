@@ -51,7 +51,8 @@ function Job(){
 			settings.jobLocation.addClass("hidden")
 		}
         if(data["jobExperience"]) {
-            settings.jobExperience.text(data["experience"]).removeClass("shell")
+			debugger
+            settings.jobExperience.text(data["jobExperience"]).removeClass("shell")
         }
 		else {
 			settings.jobExperience.addClass("hidden")
@@ -160,8 +161,8 @@ function Job(){
 			settings.createCalendar.removeClass("hidden");
 			return
 		}
-
-		settings.calendarLength = array.length
+		settings.calendarLength =  null
+	//	settings.calendarLength =  array.length
 		var calendarOptionsStr = '';
 		var item = getCalendarElement();
 		item.element.text("Calendar Link: Select");

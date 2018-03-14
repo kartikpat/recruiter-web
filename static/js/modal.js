@@ -24,7 +24,7 @@ jQuery(".modal_overlay").on('click', ".close_modal",function(e) {
 jQuery(".modal_overlay").on("click",".category_listing li",function() {
   jQuery(this).addClass("active");
   jQuery(this).siblings().removeClass("active");
-  var title = jQuery(this).text();
+  var title = jQuery(this).find(".label-name").text();
   var selector = jQuery(this).attr("data-selector");
   if(['industry', 'functional-area', 'cur-loc', 'pref-loc', 'institute', 'language'].indexOf(selector) == -1) {
       $(".filterSearch").addClass("hidden");

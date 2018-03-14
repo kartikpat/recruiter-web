@@ -2,6 +2,10 @@
 @import 'input-elements';
 @import 'chat-sidebar';
 
+.not-active {
+	    background: rgba(255, 0, 0, 0.74) !important;
+}
+
 .back-button {
 	display: inline-block;
 	width: 15px;
@@ -71,6 +75,7 @@
 
 				&.user-status {
 					color:$extra-info-color;
+					font-size: 14px;
 				}
 			}
 		}

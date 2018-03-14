@@ -1,10 +1,21 @@
 var status = "all";
+
 jQuery(document).ready( function() {
+
+
+	if(localStorage.getItem("jobPostSuccessMessage") != null) {
+		toastNotify(1, localStorage.getItem("jobPostSuccessMessage"))
+		localStorage.removeItem("jobPostSuccessMessage");
+	}
+
 	var jobList = Jobs();
 
 	jobList.init();
+
 	jobList.setConfig("availableCredits", profile["availableCredits"]);
+
 	jobList.setConfig("baseUrlJob", baseUrlJob);
+
 	jobList.onChangeJobFilters(function(type){
 		jobList.showShell();
 		status = type;
@@ -18,6 +29,7 @@ jQuery(document).ready( function() {
 		jobList.showLoaderOverlay()
 		return submitUnpublishJob(recruiterId, jobId, {reasonId: reason});
 	});
+
 	jobList.onClickSubmitRefreshJob(function(jobId){
 		jobList.closeModal()
 		jobList.showLoaderOverlay()

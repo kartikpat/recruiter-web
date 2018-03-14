@@ -68,6 +68,12 @@ b{
     padding-left:20px;
     padding-right:20px;
     position:relative;
+    z-index:3;
+
+    .header-wrapper {
+        max-width:1440px;
+        margin:0 auto;
+    }
 
     .search-container{
         transition:all 0.3s ease-in-out;
@@ -97,9 +103,9 @@ b{
                 padding: 20px;
                 font-size: 18px;
                 color:$color-white;
-           } 
+           }
         }
-       
+
     }
 
     .header_item {
@@ -234,6 +240,14 @@ b{
                             margin:10px 0;
                             font-size:$base-font-size;
 
+                            .button {
+                                position:relative;
+                                top:-5px;
+                                border-radius:6px;
+                                padding:5px 15px;
+                                border:1px solid #4b4b4b;
+                            }
+
                             a {
                                 color: inherit;
                                 &:hover {
@@ -279,7 +293,7 @@ b{
                 .profile-menu {
                     position:absolute;
                     width:200px;
-                    top:110%;
+                    top:100%;
                     left:30%;
                     z-index: 10;
                     background:#FFF;
@@ -331,7 +345,7 @@ b{
 
                         opacity:1;
                         visibility:visible;
-                        top:110%;
+                        top:100%;
                         height:auto;
                     }
                 }
@@ -361,9 +375,9 @@ b{
             vertical-align: top;
             text-align: center;
             left:200px;
-    
+
         }
-    
+
     }
 }
 
@@ -376,7 +390,7 @@ b{
             }
         }
         .search-container {
-            width:50%; 
+            width:50%;
             left:230px;
         }
         .navigation {
@@ -392,12 +406,12 @@ b{
         padding-left:10px;
         padding-right:10px;
         min-height:55px;
-        
+
         .search-container {
-            width:60%; 
+            width:60%;
             left:170px;
         }
-       
+
 
         .header_item {
             margin-top:13px;
@@ -414,9 +428,9 @@ b{
                     margin-left:3px;
                     margin-top:2px;
                 }
-               
+
             }
-          
+
 
             &.mobile-menu {
                 height:30px;
@@ -439,8 +453,8 @@ b{
                 }
             }
         }
-       
-       
+
+
     }
 }
 
@@ -455,7 +469,7 @@ b{
         }
 
         .search-container {
-            width:70%; 
+            width:70%;
             left:50px;
         }
 
@@ -493,16 +507,16 @@ b{
         }
 
         .search-container {
-            width:73%; 
+            width:73%;
             left:5px;
             form{
                 .search-box{
                     font-size:14px;
                 }
-                
+
             }
         }
-        
+
     }
 
 }
@@ -510,14 +524,14 @@ b{
 @media all and (max-width:420px){
     .header{
         .search-container {
-            width:63%; 
+            width:63%;
             left:5px;
             form{
                 .search-box{
                     font-size:14px;
                     padding:2px;
                 }
-                
+
             }
         }
 
