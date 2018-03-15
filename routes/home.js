@@ -26,7 +26,9 @@ module.exports = function(settings){
 		//bypassing the auth for development
     // CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     // you can do this however you want with whatever variables you set up
+
     	if (req.cookies["recruiter-access-token"]) {
+
 			console.log(baseUrl)
 			return request.get({
 				url: baseUrl+"/recruiter",
@@ -41,16 +43,21 @@ module.exports = function(settings){
 				const jsonBody = JSON.parse(body)
 				if(jsonBody.status && jsonBody.status =='success'){
 					req.profile = jsonBody.data;
-					return next();
+					return next()
+					if(req.originalUrl == "/welcome") {
+						if(req.profile.isVerified == 1) {
+							return res.redirect('/account-created');
+						}
+						return next()
+					}
+					if(req.profile.isVerified == 1) {
+						return next();
+					}
+					return res.redirect('/welcome');
 				}
 				return res.redirect('/login');
 			})
-			// getRequest(baseUrl+"/recruiter/"+recruiterID+"", {}, function(res){
-			// 	if(res.status && res.status =='success'){
-			// 		profile = res;
-			// 		return next();
-			// 	}
-			// });
+
 		}
 		else{
 			// IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
@@ -499,14 +506,14 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/welcome", function(req,res){
+	app.get("/welcome",isAuthenticated, function(req,res){
 		res.render("welcome", {
 			title:"Recruiter Web - Welcome Page | iimjobs.com",
 			styles:  assetsMapper["welcome"]["styles"][mode],
 			scripts: assetsMapper["welcome"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			welcome:welcome
+			profile: req.profile
 		})
 		return
 	});
@@ -625,7 +632,7 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/forgot-password", isAuthenticated, function(req, res) {
+	app.get("/forgot-password", function(req, res) {
 		res.render("forgot-password", {
 			title:"Forgot Password | iimjobs.com",
 			styles:assetsMapper['forgot-password']['styles'][mode],

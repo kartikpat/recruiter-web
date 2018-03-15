@@ -33,8 +33,15 @@ function isValidPhone(val) {
     return false
 	}
 }
+
+function checkCharacters(val, len) {
+	if(val < len)
+		return false
+	return true
+}
+
 function ifBothMatches(one, two){
-	if(one !== two)
+	if(one != two)
 		return false;
 	return true;
 }

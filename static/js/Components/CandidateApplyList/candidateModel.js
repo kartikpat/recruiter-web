@@ -223,10 +223,13 @@ function Candidate() {
             item.comment.val(aData["comment"]);
             item.mobComment.val(aData["comment"]);
         }
-        item.shortlistButton.attr("data-status", "1");
-        item.rejectButton.attr("data-status", "2");
-        item.savedButton.attr("data-status", "3");
+        item.shortlistButton.attr("data-action", 1);
+        item.rejectButton.attr("data-action", 2);
+        item.savedButton.attr("data-action", 3);
         var status = aData["status"];
+        item.shortlistButton.attr("data-status", status);
+        item.rejectButton.attr("data-status", status);
+        item.savedButton.attr("data-status", status);
         if(status == 1) {
             item.shortlistButton.text("Shortlisted")
         }
@@ -436,28 +439,30 @@ function Candidate() {
 
         settings.candidateShortlistModal.click(function(event) {
             event.stopPropagation();
-            var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
             var status = $(this).attr("data-status");
-
-            fn(applicationId, status);
+            var action = $(this).attr("data-action");
+            var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
+            fn(applicationId, status, action);
         })
     }
 
     function onClickRejectCandidate(fn) {
         settings.candidateRejectModal.click(function(event) {
             event.stopPropagation();
-            var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
             var status = $(this).attr("data-status");
-            fn(applicationId, status);
+            var action = $(this).attr("data-action");
+            var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
+            fn(applicationId, status, action);
         })
     }
 
     function onClickSaveCandidate(fn) {
         settings.candidateSaveModal.click(function(event) {
             event.stopPropagation();
-            var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
             var status = $(this).attr("data-status");
-            fn(applicationId, status);
+            var action = $(this).attr("data-action");
+            var applicationId =$(this).closest(settings.candidateDetailsModal).attr("data-application-id")
+            fn(applicationId, status, action);
         })
     }
 
@@ -480,6 +485,34 @@ function Candidate() {
     //     // })
     // }
 
+    function changeButtonText(arr, newStatus, dataAction) {
+
+        arr.forEach(function(applicationId){
+
+            settings.candidateDetailsModal.find(".candidateShortlistModal").attr("data-status", newStatus)
+            settings.candidateDetailsModal.find(".candidateRejectModal").attr("data-status", newStatus)
+            settings.candidateDetailsModal.find("#candidateSaveModal").attr("data-status", newStatus)
+            if(newStatus == settings.candidateDetailsModal.find("#candidateSaveModal").attr("data-action")) {
+                settings.candidateDetailsModal.find("#candidateSaveModal").html("<span class='icon'><i class='icon-star'></i></span>Saved for Later");
+            }
+            else {
+                settings.candidateDetailsModal.find("#candidateSaveModal").html("<span class='icon'><i class='icon-star'></i></span>Save for Later");
+            }
+            if(newStatus == settings.candidateDetailsModal.find(".candidateRejectModal").attr("data-action")) {
+                settings.candidateDetailsModal.find(".candidateRejectModal").text("Rejected")
+            }
+            else {
+                settings.candidateDetailsModal.find(".candidateRejectModal").text("Reject")
+            }
+            if(newStatus == settings.candidateDetailsModal.find(".candidateShortlistModal").attr("data-action")) {
+                settings.candidateDetailsModal.find(".candidateShortlistModal").text("Shortlisted")
+            }
+            else {
+                settings.candidateDetailsModal.find(".candidateShortlistModal").text("Shortlist")
+            }
+        })
+    }
+
     return {
         init: init,
         showCandidateDetails: showCandidateDetails,
@@ -495,7 +528,8 @@ function Candidate() {
         onClickSaveCandidate:onClickSaveCandidate,
         showDropdownTags: showDropdownTags,
         onClickSendInterviewInviteTelephonic: onClickSendInterviewInviteTelephonic,
-        onClickSendInterviewInviteF2F: onClickSendInterviewInviteF2F
+        onClickSendInterviewInviteF2F: onClickSendInterviewInviteF2F,
+        changeButtonText: changeButtonText
 	}
 
     function focusOnElement(element, container) {
