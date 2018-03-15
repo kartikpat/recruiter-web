@@ -11,7 +11,7 @@
 
 var emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 function userCredentials(){
-	var user= {}
+	var user= {} 
 	function init(){
 		user.email = $("#email");
 		user.password = $("#password");
@@ -59,7 +59,7 @@ function userCredentials(){
 			user.email.next('.error').text(errorResponses['missingEmail'])
 			return false
 		}
-		
+
 		if(!emailRegex.test(user.email.val())){
 			user.email.next('.error').text(errorResponses['invalidEmail'])
 			return false

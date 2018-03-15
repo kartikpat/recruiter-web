@@ -21,13 +21,13 @@ function candidateList() {
         settings.candidateTagsPrototype= $('.candidateTags.prototype'),
         settings.viewCommentButtonClass = '.viewCommentButton',
         settings.viewTagButtonClass = '.viewTagButton',
-        settings.massResumeDownload = $("#downloadResumeMass"),
-        settings.massReject = $("#massReject"),
-        settings.massSave = $("#massSave"),
-        settings.massShortlist = $("#massShortlist"),
-        settings.massComment = $("#massComment"),
-        settings.massTag = $("#massTag"),
-        settings.downloadExcelMass = $("#downloadExcelMass")
+        settings.massResumeDownload = $(".downloadResumeMass"),
+        settings.massReject = $(".massReject"),
+        settings.massSave = $(".massSave"),
+        settings.massShortlist = $(".massShortlist"),
+        settings.massComment = $(".massComment"),
+        settings.massTag = $(".massTag"),
+        settings.downloadExcelMass = $(".downloadExcelMass")
         settings.bulkActionContainer = $("#massActionContainer"),
         settings.massCheckboxInput = $("#massCheckboxInput"),
         settings.massCheckboxLabel = $("#massCheckboxLabel"),
@@ -443,7 +443,9 @@ function candidateList() {
 
     function candidateActionTransition(arr) {
         arr.forEach(function(applicationId){
-            settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"]").remove()
+            settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"]").slideUp("normal", function() {
+                 $(this).remove();
+             })
         })
 
     }

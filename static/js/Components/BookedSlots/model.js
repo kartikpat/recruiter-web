@@ -101,7 +101,7 @@ function BookedSlots() {
 		item.jobName.text(title)
 		item.jobName.attr("href", "/job/"+aData["job"]["id"]+"/applications")
         item.candLocation.text(aData["location"])
-
+		// item.jobExp.text(aData[""])
 		return item;
 	}
 
