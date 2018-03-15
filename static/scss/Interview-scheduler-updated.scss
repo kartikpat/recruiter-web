@@ -2,12 +2,15 @@
 @import 'common/spacings';
 
 .wrap{
-    margin: 0;
-    padding: 0;
-    //height: 2050px;
-    font-family:  $droid-font;
-    display: inline-block;  
-    width: 100%;  
+    // margin: 0;
+    // padding: 0;
+    // //height: 2050px;
+    // font-family:  $droid-font;
+    // display: inline-block;  
+    // width: 100%; 
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1500px; 
         .headings{
             font-family:$droid-font;
             color:  #5d5d5d;
@@ -36,14 +39,14 @@
             .input-name{
                 margin-top: 10px;
                 margin-left: 27px;
-                span{
+                margin-bottom: 20px;
+                .tag{
                    
                     color:  #2b2b2b;
                     font-size: 14px;/* Approximation due to font substitution */
                     font-weight: 400;
                     text-align: left;
                     }
-
                 #name{
                     border-radius: 3px;
                     border-style: solid;
@@ -56,19 +59,25 @@
                     resize: none;
                     outline: none;
                 }
+                .error{
+                    font-family:  $droid-font;
+                    position: absolute;
+                    font-size: 11px;
+                    color: #ec1c2a;
+                }
             }
-
             .message{
                 margin-top: 10px;
                 margin-left: 27px;
-                span{
+                margin-bottom: 20px;
+                .tag{
                     font-family:  $droid-font;
                     color:  #2b2b2b;
                     font-size: 14px;/* Approximation due to font substitution */
                     font-weight: 400;
                     text-align: left;
+                    margin-bottom: 5px;
                     }
-
                 #message{
                     border-radius: 3px;
                     border-style: solid;
@@ -81,18 +90,35 @@
                     resize: none;
                     outline: none;
                 }
+                .error-border{
+                    border-color: #ee1620;
+                }
+                .error{
+                    font-family:  $droid-font;
+                    position: absolute;
+                    font-size: 11px;
+                    color: #ec1c2a;
+                }
             }
 
             .telephonic{
                 margin-top: 10px;
                 margin-left: 27px;
-                span{
+                margin-bottom: 20px;
+                .tag{
                     font-family:  $droid-font;
                     color:  #2b2b2b;
                     font-size: 14px;/* Approximation due to font substitution */
                     font-weight: 400;
                     text-align: left;
-                    }
+                    margin-bottom: 5px;
+                }
+                .error{
+                    font-family:  $droid-font;
+                    position: absolute;
+                    font-size: 11px;
+                    color: #ec1c2a;
+                }
 
                 #telephonic{
                     border-radius: 3px;
@@ -217,7 +243,7 @@
                 }
 
                 .table{
-                    border-style: solid;
+                   // border-style: solid;
                     border-width: 1px;
                     border-color:  #e4e4e4;
                     box-sizing: border-box;
@@ -226,18 +252,23 @@
                     //height: 462px;
                     display: inline-block;
                     position: relative;
-                     
+                    .error{
+                        font-family:  $droid-font;
+                        position: absolute;
+                        font-size: 14px;
+                        color: #ec1c2a;
+                    }
                     .D-avail{
                         background-color:  #f5f5f5;
                         border-style: solid;
                         border-width: 1px;
                         border-color:  #e4e4e4;
                         box-sizing: border-box;
-                        width: 529px;
-                        height: 41px;
-                        
-                        #one{
-                            
+                        width: 530px;
+                        height: 55px;
+                        height: 40px;
+                        margin-top: 20px;
+                        #one{ 
                             font-family: $droid-font;
                             color:  #2b2b2b;
                             font-size: 14px;/* Approximation due to font substitution */
@@ -246,7 +277,6 @@
                             text-align: left;
                             margin-left: 15px;
                         }
-
                         #two{
                             font-family: $droid-font;
                             color:  #2b2b2b;
@@ -306,7 +336,7 @@
                                             display: none;
                                             border-width: 1px;
                                             border-color: #e4e4e4;
-                                            padding-bottom: 40px;
+                                          //  padding-bottom: 40px;
                                             padding-top: 5px;
                                         }
                                        
@@ -370,6 +400,15 @@
                                     outline: none;
                                    
                                 }
+
+                                .error-slot{
+                                    font-family:  $droid-font;
+                                    position: absolute;
+                                    font-size: 12px;
+                                    color: #ec1c2a;
+                                    margin-left: 15px;
+                                    margin-top: 5px;
+                                }
                            }
                 }
 
@@ -387,14 +426,14 @@
                     font-size: 14px;/* Approximation due to font substitution */
                     font-weight: 400;
                     text-align: left;
-                    width: 17%;
+                    width: 25%;
                     position: absolute;
                     margin-top: 5px;
                 }
             }
 
             .Breaks-available{
-                float: left;
+             //   float: left;
                 display: block;
                 // position: relative;
                 margin-bottom: 100px;
@@ -746,13 +785,15 @@
 }
 
 @media only screen and (max-width: 600px){
-  
     .wrap{
         .second-container{
             .available-hours{   
                 .Days-available{
                     width: 100%!important;
                     margin-top: -100px;
+                    // p{
+                    //     margin-bottom: 20px;
+                    // }
                     .table{
                      width: 90%;
                      border-style: none;
@@ -762,12 +803,13 @@
                     }
                     .day{
                         width: 100%;
+                        margin-top: 20px;
                         .section{
                             width: 100%!important;
                             .check-input{
                                  width: 100%!important;
-                                margin-top: 20px!important;
-                                margin-left: 15px!important;
+                                // margin-top: 20px!important;
+                                // margin-left: 15px!important;
                                 #Check-span{
                                     display: inline-block!important;
                                     color:  #2b2b2b;
@@ -783,7 +825,7 @@
                     }
                     .time-section{
                         width: 100%!important;
-                        height: 125px!important;
+                        min-height: 130px;
                         margin-bottom: 30px;
                         span{
                             display: none;
@@ -791,7 +833,7 @@
                         button{
                             clear: both;
                             margin-left: 30%;
-                            padding-top:10px; 
+                          //  padding-top:10px; 
                         }
                         .section-one{
                             display: block!important;

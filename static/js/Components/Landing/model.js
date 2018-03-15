@@ -31,6 +31,7 @@ function userCredentials(){
 	function eraseErrors(){
 		user.errors.text('');
 	}
+
 	function errorHandler(res){
 		var message = '';
 		console.log(res)
@@ -51,6 +52,7 @@ function userCredentials(){
 		user.password.next('.error').text(message)
 		return
 	}
+	
 	function validateLogin(){
 		eraseErrors();
 

@@ -5,9 +5,9 @@ $(document).ready(function(){
 
 	// headerDetails.populateData(profile);
 	headerDetails.myJobsView();
+	headerDetails.myInterviewView();
 	headerDetails.dashboardView();
 	headerDetails.searchView();
 	headerDetails.navigationView();
-
 	headerDetails.search();
 })

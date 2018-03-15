@@ -5,8 +5,8 @@ $(document).ready(function(){
     calendarDetails.init();
     calendarDetails.startdate();
     calendarDetails.enddate();
+    calendarDetails.time_mapper();
     test= calendarDetails.testHighlight;
-
     calendarDetails.submitHandler(function(){
         if(calendarDetails.validate()){
         var data=calendarDetails.getDetails();
@@ -14,13 +14,18 @@ $(document).ready(function(){
         }
     })
 
+    
     var calendarSubmitSuccessSubscription = pubsub.subscribe('submittedCalendar', onSuccessfulSubmitCalendar);
-	var calendarSubmitFailSubscription = pubsub.subscribe('failedCalendarSubmission', onFailedSubmitCalendar);
+    var calendarSubmitFailSubscription = pubsub.subscribe('failedCalendarSubmission', );
+    
+    function onSuccessfulSubmitCalendar(topic, data){onFailedSubmitCalendar
+        console.log('Login successful');
+        window.location='/' //pchangeurl
+    }
 
-    function onSuccessfulSubmitCalendar(){
-        console.log("success");
+	function onFailedSubmitCalendar(topic, data){
+		console.log('Login failed');
+		calendarDetails.errorHandler(data);
     }
-    function onFailedSubmitCalendar(){
-        console.log("fail");
-    }
+    
 })    

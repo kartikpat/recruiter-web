@@ -27,11 +27,9 @@
 
 /** Mobile Menu **/
 .wrap {
-  margin: 0;
-  padding: 0;
-  font-family: "Droid Sans", sans-serif;
-  display: inline-block;
-  width: 100%; }
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1500px; }
   .wrap .headings {
     font-family: "Droid Sans", sans-serif;
     color: #5d5d5d;
@@ -53,8 +51,9 @@
     margin-left: 27px; }
   .wrap .container .form .input-name {
     margin-top: 10px;
-    margin-left: 27px; }
-    .wrap .container .form .input-name span {
+    margin-left: 27px;
+    margin-bottom: 20px; }
+    .wrap .container .form .input-name .tag {
       color: #2b2b2b;
       font-size: 14px;
       /* Approximation due to font substitution */
@@ -71,16 +70,23 @@
       height: 48px;
       resize: none;
       outline: none; }
+    .wrap .container .form .input-name .error {
+      font-family: "Droid Sans", sans-serif;
+      position: absolute;
+      font-size: 11px;
+      color: #ec1c2a; }
   .wrap .container .form .message {
     margin-top: 10px;
-    margin-left: 27px; }
-    .wrap .container .form .message span {
+    margin-left: 27px;
+    margin-bottom: 20px; }
+    .wrap .container .form .message .tag {
       font-family: "Droid Sans", sans-serif;
       color: #2b2b2b;
       font-size: 14px;
       /* Approximation due to font substitution */
       font-weight: 400;
-      text-align: left; }
+      text-align: left;
+      margin-bottom: 5px; }
     .wrap .container .form .message #message {
       border-radius: 3px;
       border-style: solid;
@@ -92,16 +98,30 @@
       height: 98px;
       resize: none;
       outline: none; }
+    .wrap .container .form .message .error-border {
+      border-color: #ee1620; }
+    .wrap .container .form .message .error {
+      font-family: "Droid Sans", sans-serif;
+      position: absolute;
+      font-size: 11px;
+      color: #ec1c2a; }
   .wrap .container .form .telephonic {
     margin-top: 10px;
-    margin-left: 27px; }
-    .wrap .container .form .telephonic span {
+    margin-left: 27px;
+    margin-bottom: 20px; }
+    .wrap .container .form .telephonic .tag {
       font-family: "Droid Sans", sans-serif;
       color: #2b2b2b;
       font-size: 14px;
       /* Approximation due to font substitution */
       font-weight: 400;
-      text-align: left; }
+      text-align: left;
+      margin-bottom: 5px; }
+    .wrap .container .form .telephonic .error {
+      font-family: "Droid Sans", sans-serif;
+      position: absolute;
+      font-size: 11px;
+      color: #ec1c2a; }
     .wrap .container .form .telephonic #telephonic {
       border-radius: 3px;
       border-style: solid;
@@ -196,7 +216,6 @@
           /* Approximation due to font substitution */
           text-align: left; }
         .wrap .second-container .available-hours .Days-available .table {
-          border-style: solid;
           border-width: 1px;
           border-color: #e4e4e4;
           box-sizing: border-box;
@@ -204,14 +223,21 @@
           width: 531px;
           display: inline-block;
           position: relative; }
+          .wrap .second-container .available-hours .Days-available .table .error {
+            font-family: "Droid Sans", sans-serif;
+            position: absolute;
+            font-size: 14px;
+            color: #ec1c2a; }
           .wrap .second-container .available-hours .Days-available .table .D-avail {
             background-color: #f5f5f5;
             border-style: solid;
             border-width: 1px;
             border-color: #e4e4e4;
             box-sizing: border-box;
-            width: 529px;
-            height: 41px; }
+            width: 530px;
+            height: 55px;
+            height: 40px;
+            margin-top: 20px; }
             .wrap .second-container .available-hours .Days-available .table .D-avail #one {
               font-family: "Droid Sans", sans-serif;
               color: #2b2b2b;
@@ -271,7 +297,6 @@
                 display: none;
                 border-width: 1px;
                 border-color: #e4e4e4;
-                padding-bottom: 40px;
                 padding-top: 5px; }
           .wrap .second-container .available-hours .Days-available .table .time-section {
             width: 74.2%;
@@ -322,6 +347,13 @@
               text-align: left;
               display: none;
               outline: none; }
+            .wrap .second-container .available-hours .Days-available .table .time-section .error-slot {
+              font-family: "Droid Sans", sans-serif;
+              position: absolute;
+              font-size: 12px;
+              color: #ec1c2a;
+              margin-left: 15px;
+              margin-top: 5px; }
       .wrap .second-container .available-hours .preview {
         display: inline-block;
         margin-top: 0px;
@@ -332,11 +364,10 @@
           /* Approximation due to font substitution */
           font-weight: 400;
           text-align: left;
-          width: 17%;
+          width: 25%;
           position: absolute;
           margin-top: 5px; }
       .wrap .second-container .available-hours .Breaks-available {
-        float: left;
         display: block;
         margin-bottom: 100px;
         top: -120px; }
@@ -599,13 +630,12 @@
     .wrap .second-container .available-hours .Days-available .D-avail {
       display: none; }
     .wrap .second-container .available-hours .Days-available .day {
-      width: 100%; }
+      width: 100%;
+      margin-top: 20px; }
       .wrap .second-container .available-hours .Days-available .day .section {
         width: 100% !important; }
         .wrap .second-container .available-hours .Days-available .day .section .check-input {
-          width: 100% !important;
-          margin-top: 20px !important;
-          margin-left: 15px !important; }
+          width: 100% !important; }
           .wrap .second-container .available-hours .Days-available .day .section .check-input #Check-span {
             display: inline-block !important;
             color: #2b2b2b;
@@ -620,14 +650,13 @@
             width: 50%; }
     .wrap .second-container .available-hours .Days-available .time-section {
       width: 100% !important;
-      height: 125px !important;
+      min-height: 130px;
       margin-bottom: 30px; }
       .wrap .second-container .available-hours .Days-available .time-section span {
         display: none; }
       .wrap .second-container .available-hours .Days-available .time-section button {
         clear: both;
-        margin-left: 30%;
-        padding-top: 10px; }
+        margin-left: 30%; }
       .wrap .second-container .available-hours .Days-available .time-section .section-one {
         display: block !important;
         margin: 0% !important;
