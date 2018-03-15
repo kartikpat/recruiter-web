@@ -203,6 +203,40 @@
 						</div>
 					</div>
 				</div>
+				<div class="loading" style="text-align: center;margin: 20px auto 5px auto;">
+				    <p>Loading</p>
+				</div>
+				<style>
+					.loading p {
+						display:inline-block;
+						position:relative;
+					}
+
+					.loading p:after {
+						overflow: hidden;
+						position:absolute;
+						left:100%;
+						text-align:left;
+						display: inline-block;
+						vertical-align: bottom;
+						-webkit-animation: ellipsis steps(4,end) 900ms infinite;      
+						animation: ellipsis steps(4,end) 1800ms infinite;
+						content: "\2026"; /* ascii code for the ellipsis character */
+						width: 0px;
+					}
+
+					@keyframes ellipsis {
+					  to {
+					   	width: 1.25em;    
+					  }
+					}
+
+					@-webkit-keyframes ellipsis {
+					  to {
+					    width: 1.25em;    
+					  }
+					}
+				</style>
 			</div>
 			<div class="conversations right">
 				{{>chatSidebar}}
