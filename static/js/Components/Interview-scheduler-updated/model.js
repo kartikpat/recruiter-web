@@ -73,6 +73,7 @@ function Calendar(){
     }
 
     function getslots(){
+
         var slots=[];
         var finalslots=[];   
         var currentDate=moment().format("YYYY-MM-DD");
@@ -104,7 +105,6 @@ function Calendar(){
             var endvalue=$("#"+id+ "").find(settings.end_time).val();
             var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
             if(parseInt(startvalue)>0 && parseInt(endvalue)>0 && checkbox==true){
-          //      debugger
                 var slot={
                     startTime:startvalue,
                     endTime:endvalue,
@@ -157,6 +157,32 @@ function Calendar(){
                 fromDate : fromDate,
                 highlightSlots:highlightSlots
             }
+    }
+
+    function fetchdetails(calendarId,object){
+        settings.name.val(object["name"]);
+        settings.message.val(object["message"]);
+        settings.teleMessage.val(object["teleMessage"]);
+        var previewslots=object.slots;
+        availablehours(slots);
+        var fromDate=object.fromDate; //DD-MM-YYYY
+        fromDate=moment(fromDate).format("DD-MM-YYYY");
+        var toDate=object.toDate;
+        toDate=moment(toDate).format("DD-MM-YYYY");
+        $('#startdatepicker').datepicker().datepicker('setDate', fromDate);
+        $('#enddatepicker').datepicker().datepicker('setDate', toDate);
+        //datepicker set value
+        testHighlight(fromDate,toDate,previewslots);
+    }
+    function availablehours(slots){
+        for(var k=0;k<slots.length;k++){
+            var id=slots[k].id;
+            var startvalue=slots[k].startvalue;
+            var endvalue=slots[k].endvalue;
+            $("#"+id+ "").find(settings.start_time).val(startvalue);
+            $("#"+id+ "").find(settings.end_time).val(endvalue);
+            $("#"+id+ "").find(settings.checkbox).prop("checked",true);
+        }       
     }
 
     function testHighlight(fromDate,toDate,days){

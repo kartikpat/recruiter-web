@@ -144,6 +144,7 @@ function Job(){
 		}
 		return true;
 	}
+
 	function getJobData(){
 		var locationObj = getPillValues(settings.location.attr('id'));
 		var industryObj = getPillValues(settings.industry.attr('id'));
@@ -231,9 +232,11 @@ function Job(){
 		settings.submitButton.text("Update")
 	}
 
+
 	function submitHandler(fn){
 		$(settings.submitButton).click(fn)
 	}
+
 
 	function populateJobTags(dataArray) {
 		var str = ""
@@ -257,6 +260,7 @@ function Job(){
 		onChangeJobPremium: onChangeJobPremium,
 		populateJobTags: populateJobTags
 	}
+
 }
 
 function setAvailableCredits(element, credits) {
