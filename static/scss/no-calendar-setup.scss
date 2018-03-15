@@ -1,11 +1,8 @@
 @import "fonts.scss";
 @import 'common/spacings';
-
     
     .headers{
-       
         .heading{
-            
             font-family: $droid-font;
             color:  #149075;
             font-size: 24px;/* Approximation due to font substitution */
@@ -23,8 +20,6 @@
             text-align: left;
             margin-left:16%;
         }
-
-      
             .lheading{
                 font-family: $droid-font;
                 color:  #212121;
@@ -39,17 +34,13 @@
         }    
 
         .container{
-            .availability{
-                  
+            .availability{      
                 padding-bottom: 42px;
                 border-bottom: 1px solid #e8e8e8;
                 margin-left: 16%;
                 width: 70%;
                 height: 120px;
-                
-                    
-                 img
-                {
+                 img{
                     border-radius: 50%;
                     background-color:  #f3fbfb;
                     float:left;
@@ -145,11 +136,7 @@
 
           }
 
-
-    
-   
     .bottom-container{
-       
         background-color:  #f7f7f7;
         width: 100%;
         padding: 1%;
@@ -256,11 +243,8 @@
 
 
 @media only screen and (max-width: 480px){
-
     .main{
-    
         width: 100%;
-       
        .headers{
             border-style: solid;
             border-width: 1px;
@@ -284,102 +268,99 @@
         }
 
         .container{
-
-            
-            
             .availability{
                  position: relative; 
                 border-bottom: 1px solid #e8e8e8;
                 width: 70%;
                 height: 10%;
-                margin-top: 50px;
-                    
+                margin-top: 50px;     
                  img
                 {  
                     border-radius: 50%;
                     background-color:  #f3fbfb;
-                    margin-left: 38%; 
+                    float: none;  
+                    margin-left: auto;
+                    margin-right: auto;
+                    display: block;
                     margin-bottom: 36px;        
                 }
-
                 .head{
                     clear: both;
-                    vertical-align: bottom;
                     text-align: center;
                     margin-bottom: 15px;
-                    margin-left: 10%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    display: block;
                 }
 
                 .text p{
                     text-align: center;
                     width: 100%;
-                    
+                    left: 0px;
                 }
 
 
             }
 
-            .send-invite{
-                  
+            .send-invite{   
                 border-bottom: 1px solid #e8e8e8;
                 width: 70%;
                 height: 10%;
-                
-                
                  img
                 {
                     border-radius: 50%;
                     background-color:  #f3fbfb;
-                    margin-left: 38%;  
+                    float: none;  
+                    margin-left: auto;
+                    margin-right: auto;
+                    display: block;
                     margin-bottom: 30px;        
                 }
 
                 .head{
                     clear: both;
-                    vertical-align: bottom;
                     text-align: center;
                     margin-bottom: 15px;
-                    margin-left: 10px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    display: block;
                 }
 
                 .text p{
                     text-align: center;
-                    width: 100%;
-                    
-                    
+                    width: 100%;  
+                    left: 0px; 
                 }
-
-
             }
 
             .scheduler{
-                  
                 padding-bottom: 92px;
                 border-bottom: 1px solid #e8e8e8;
                 width: 70%;
-                height: 10%;
-                    
-                 img
-                {
+                height: 10%;    
+                 img{
                     border-radius: 50%;
                     background-color:  #f3fbfb;
-                    margin-left: 38%;  
+                    float: none;    
+                    margin-left: auto;
+                    margin-right: auto;
+                    display: block;
                     margin-bottom: 36px;        
                 }
-
                 .head{
                     clear: both;
-                    vertical-align: bottom;
                     text-align: center;
                     margin-bottom: 15px;
-                    margin-left: 10px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    display: block;
                 }
 
                 .text p{
                    text-align: center; 
                     width: 100%;
-                    margin-top: -5px;
-                    
+                    left: 0px;
+                    margin-top: -5px;  
                 }
 
 
@@ -389,12 +370,15 @@
                 padding: 5%;
                 p{
                     text-align:center;
-                    margin-left: 65px;
-                    margin-right: 65px;
+                    display: block;
+                    margin: 0%;
+                    // margin-left: 65px;
+                    // margin-right: 65px;
                 }
-                #calender{
-                    margin-left: 30%;
-                   
+                #login{
+                    margin-left: auto;
+                    margin-right: auto;
+                    display: block;
                 }
             }
 

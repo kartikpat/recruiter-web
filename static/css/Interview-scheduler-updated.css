@@ -27,11 +27,9 @@
 
 /** Mobile Menu **/
 .wrap {
-  margin: 0;
-  padding: 0;
-  font-family: "Droid Sans", sans-serif;
-  display: inline-block;
-  width: 100%; }
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1500px; }
   .wrap .headings {
     font-family: "Droid Sans", sans-serif;
     color: #5d5d5d;
@@ -87,7 +85,8 @@
       font-size: 14px;
       /* Approximation due to font substitution */
       font-weight: 400;
-      text-align: left; }
+      text-align: left;
+      margin-bottom: 5px; }
     .wrap .container .form .message #message {
       border-radius: 3px;
       border-style: solid;
@@ -116,7 +115,8 @@
       font-size: 14px;
       /* Approximation due to font substitution */
       font-weight: 400;
-      text-align: left; }
+      text-align: left;
+      margin-bottom: 5px; }
     .wrap .container .form .telephonic .error {
       font-family: "Droid Sans", sans-serif;
       position: absolute;
@@ -297,7 +297,6 @@
                 display: none;
                 border-width: 1px;
                 border-color: #e4e4e4;
-                padding-bottom: 40px;
                 padding-top: 5px; }
           .wrap .second-container .available-hours .Days-available .table .time-section {
             width: 74.2%;
@@ -353,7 +352,8 @@
               position: absolute;
               font-size: 12px;
               color: #ec1c2a;
-              margin-left: 15px; }
+              margin-left: 15px;
+              margin-top: 5px; }
       .wrap .second-container .available-hours .preview {
         display: inline-block;
         margin-top: 0px;
@@ -364,11 +364,10 @@
           /* Approximation due to font substitution */
           font-weight: 400;
           text-align: left;
-          width: 17%;
+          width: 25%;
           position: absolute;
           margin-top: 5px; }
       .wrap .second-container .available-hours .Breaks-available {
-        float: left;
         display: block;
         margin-bottom: 100px;
         top: -120px; }
@@ -636,9 +635,7 @@
       .wrap .second-container .available-hours .Days-available .day .section {
         width: 100% !important; }
         .wrap .second-container .available-hours .Days-available .day .section .check-input {
-          width: 100% !important;
-          margin-top: 20px !important;
-          margin-left: 15px !important; }
+          width: 100% !important; }
           .wrap .second-container .available-hours .Days-available .day .section .check-input #Check-span {
             display: inline-block !important;
             color: #2b2b2b;
@@ -653,7 +650,7 @@
             width: 50%; }
     .wrap .second-container .available-hours .Days-available .time-section {
       width: 100% !important;
-      height: 125px !important;
+      min-height: 130px;
       margin-bottom: 30px; }
       .wrap .second-container .available-hours .Days-available .time-section span {
         display: none; }

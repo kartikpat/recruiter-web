@@ -228,17 +228,22 @@
       .main .container .availability img {
         border-radius: 50%;
         background-color: #f3fbfb;
-        margin-left: 38%;
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
         margin-bottom: 36px; }
       .main .container .availability .head {
         clear: both;
-        vertical-align: bottom;
         text-align: center;
         margin-bottom: 15px;
-        margin-left: 10%; }
+        margin-left: auto;
+        margin-right: auto;
+        display: block; }
       .main .container .availability .text p {
         text-align: center;
-        width: 100%; }
+        width: 100%;
+        left: 0px; }
     .main .container .send-invite {
       border-bottom: 1px solid #e8e8e8;
       width: 70%;
@@ -246,17 +251,22 @@
       .main .container .send-invite img {
         border-radius: 50%;
         background-color: #f3fbfb;
-        margin-left: 38%;
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
         margin-bottom: 30px; }
       .main .container .send-invite .head {
         clear: both;
-        vertical-align: bottom;
         text-align: center;
         margin-bottom: 15px;
-        margin-left: 10px; }
+        margin-left: auto;
+        margin-right: auto;
+        display: block; }
       .main .container .send-invite .text p {
         text-align: center;
-        width: 100%; }
+        width: 100%;
+        left: 0px; }
     .main .container .scheduler {
       padding-bottom: 92px;
       border-bottom: 1px solid #e8e8e8;
@@ -265,23 +275,30 @@
       .main .container .scheduler img {
         border-radius: 50%;
         background-color: #f3fbfb;
-        margin-left: 38%;
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
         margin-bottom: 36px; }
       .main .container .scheduler .head {
         clear: both;
-        vertical-align: bottom;
         text-align: center;
         margin-bottom: 15px;
-        margin-left: 10px; }
+        margin-left: auto;
+        margin-right: auto;
+        display: block; }
       .main .container .scheduler .text p {
         text-align: center;
         width: 100%;
+        left: 0px;
         margin-top: -5px; }
     .main .container .bottom-container {
       padding: 5%; }
       .main .container .bottom-container p {
         text-align: center;
-        margin-left: 65px;
-        margin-right: 65px; }
-      .main .container .bottom-container #calender {
-        margin-left: 30%; } }
+        display: block;
+        margin: 0%; }
+      .main .container .bottom-container #login {
+        margin-left: auto;
+        margin-right: auto;
+        display: block; } }

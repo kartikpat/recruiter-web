@@ -2,12 +2,15 @@
 @import 'common/spacings';
 
 .wrap{
-    margin: 0;
-    padding: 0;
-    //height: 2050px;
-    font-family:  $droid-font;
-    display: inline-block;  
-    width: 100%;  
+    // margin: 0;
+    // padding: 0;
+    // //height: 2050px;
+    // font-family:  $droid-font;
+    // display: inline-block;  
+    // width: 100%; 
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1500px; 
         .headings{
             font-family:$droid-font;
             color:  #5d5d5d;
@@ -73,6 +76,7 @@
                     font-size: 14px;/* Approximation due to font substitution */
                     font-weight: 400;
                     text-align: left;
+                    margin-bottom: 5px;
                     }
                 #message{
                     border-radius: 3px;
@@ -107,6 +111,7 @@
                     font-size: 14px;/* Approximation due to font substitution */
                     font-weight: 400;
                     text-align: left;
+                    margin-bottom: 5px;
                 }
                 .error{
                     font-family:  $droid-font;
@@ -331,7 +336,7 @@
                                             display: none;
                                             border-width: 1px;
                                             border-color: #e4e4e4;
-                                            padding-bottom: 40px;
+                                          //  padding-bottom: 40px;
                                             padding-top: 5px;
                                         }
                                        
@@ -402,6 +407,7 @@
                                     font-size: 12px;
                                     color: #ec1c2a;
                                     margin-left: 15px;
+                                    margin-top: 5px;
                                 }
                            }
                 }
@@ -420,14 +426,14 @@
                     font-size: 14px;/* Approximation due to font substitution */
                     font-weight: 400;
                     text-align: left;
-                    width: 17%;
+                    width: 25%;
                     position: absolute;
                     margin-top: 5px;
                 }
             }
 
             .Breaks-available{
-                float: left;
+             //   float: left;
                 display: block;
                 // position: relative;
                 margin-bottom: 100px;
@@ -779,7 +785,6 @@
 }
 
 @media only screen and (max-width: 600px){
-  
     .wrap{
         .second-container{
             .available-hours{   
@@ -803,8 +808,8 @@
                             width: 100%!important;
                             .check-input{
                                  width: 100%!important;
-                                margin-top: 20px!important;
-                                margin-left: 15px!important;
+                                // margin-top: 20px!important;
+                                // margin-left: 15px!important;
                                 #Check-span{
                                     display: inline-block!important;
                                     color:  #2b2b2b;
@@ -820,7 +825,7 @@
                     }
                     .time-section{
                         width: 100%!important;
-                        height: 125px!important;
+                        min-height: 130px;
                         margin-bottom: 30px;
                         span{
                             display: none;
