@@ -76,7 +76,15 @@ function candidateList() {
        item.experience.text((aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m") || "NA");
        item.location.text(aData["currentLocation"] || "NA");
        item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY'))
-       item.notice.text((aData["notice"] + " months"));
+       if(aData["notice"] == 7) {
+           item.notice.text("Immediately Available");
+       }
+       else if(aData["notice"] == 1) {
+           item.notice.text((aData["notice"] + " month"));
+       }
+       else {
+           item.notice.text((aData["notice"] + " months"));
+       }
        item.downloadResumeButton.attr("href", aData["resume"])
        item.downloadResumeButton.attr("download", aData["name"].replace(/ +/g, '_')+'_resume.pdf')
 
