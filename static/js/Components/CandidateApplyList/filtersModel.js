@@ -12,36 +12,42 @@ function Filters(){
 			target: $(".jsIndustry") ,
 			type: 'checkbox',
 			selection: [],
+			label: [],
 			count: 0
 		},
 		functionalArea: {
 			target: $(".jsFuncArea"),
 			type: 'checkbox',
 			selection: [],
+			label: [],
 			count: 0
 		},
 		currentLocation:  {
 			target: $(".jsCurLoc") ,
 			type: 'checkbox',
 			selection: [],
+			label: [],
 			count: 0
 		},
 		preferredLocation: {
 			target: $(".jsPrefLoc"),
 			type: 'checkbox',
 			selection: [],
+			label: [],
 			count: 0
 		},
 		institute: {
 			target: $(".jsInstitute"),
 			type: 'checkbox',
 			selection: [],
+			label: [],
 			count: 0
 		},
 		language: {
 			target:  $(".jsLanguage"),
 			type: 'checkbox',
 			selection: [],
+			label: [],
 			count: 0
 		},
 		experience: {
@@ -49,11 +55,11 @@ function Filters(){
 			props: {
 				min: {
 					target: $("#minExp"),
-					selection: null
+					selection: -1,
 				},
 				max: {
 					target: $("#maxExp"),
-					selection: null
+					selection: -1
 				}
 			}
 		},
@@ -62,11 +68,11 @@ function Filters(){
 			props: {
 				min: {
 					target: $("#minBatch"),
-					selection: null
+					selection: -1
 				},
 				max: {
 					target: $("#maxBatch"),
-					selection: null
+					selection: -1
 				}
 			}
 		},
@@ -75,11 +81,11 @@ function Filters(){
 			props: {
 				min: {
 					target: $("#minSal"),
-					selection: null
+					selection: -1
 				},
 				max: {
 					target: $("#maxSal"),
-					selection: null
+					selection: -1
 				}
 			}
 		},
@@ -88,53 +94,61 @@ function Filters(){
 			props: {
 				min: {
 					target: $("#minAge"),
-					selection: null
+					selection: -1
 				},
 				max: {
 					target: $("#maxAge"),
-					selection: null
+					selection: -1
 				}
 			}
 		},
 		sex : {
 			target: $("#gender"),
 			type: 'dropdown',
-			selection: null
+			selection: -1,
+			label: ""
 		},
 		notice: {
 			target: $("#noticePeriod"),
 			type: 'dropdown',
-			selection: null
+			selection: -1,
+			label: ""
 		},
 		applicationDate : {
 			target: $("#applicationDate"),
 			type: 'dropdown',
-			selection: null
+			selection: -1,
+			label: ""
 		},
 		lastActive: {
 			target: $("#lastSeen"),
 			type: 'dropdown',
-			selection: null
+			selection: -1,
+			label: ""
 		},
 		permit: {
 			target: $("#workPermit"),
 			type: 'dropdown',
-			selection: null
+			selection: -1,
+			label: ""
 		},
 		handleTeam: {
 			target: $("#handleTeam"),
 			type: 'dropdown',
-			selection: null
+			selection: -1,
+			label: ""
 		},
 		relocate: {
 			target: $("#relocate"),
 			type: 'dropdown',
-			selection: null
+			selection: -1,
+			label: ""
 		},
 		differentlyAbled: {
 			target: $("#differentlyAbled"),
 			type: 'dropdown',
-			selection: null
+			selection: -1,
+			label: ""
 		},
 		searchString: {
 			target: $("#searchInput"),
@@ -173,12 +187,34 @@ function Filters(){
 		settings.filterModalOpenButton = $("#filterModalOpenButton");
 		settings.searchCandidateError = $("#searchCandidateError")
 
-
 		setOnClickFilters();
 		setOnClickCloseFilters();
 		onInputSearchFilter()
 		onClickFiltersCheckBox()
 
+		jQuery(".modal_overlay").on("click",".category_listing li",function() {
+
+		  var dataNameBefore = $(this).closest(".category_listing").find("li.active").attr("data-name")
+		  setAppliedFilters(dataNameBefore)
+		  jQuery(this).addClass("active");
+		  jQuery(this).siblings().removeClass("active");
+		  var title = jQuery(this).find(".label-name").text();
+		  var selector = jQuery(this).attr("data-selector");
+		  var dataName = jQuery(this).attr("data-name");
+		  if(['industry', 'functional-area', 'cur-loc', 'pref-loc', 'institute', 'language'].indexOf(selector) == -1) {
+		      $(".filterSearch").addClass("hidden");
+		  }
+		  else {
+		      $(".filterSearch").val('').removeClass("hidden");
+		      jQuery(".modal_overlay").find(".subcategory_listing."+selector+" .check-input").removeClass("hidden")
+		  }
+		  jQuery(".modal_content").find(".modal_body .modal_body_header .title").html(title);
+		  jQuery(".modal_content").find(".mobile-header .title").html(title);
+		  jQuery(".modal_overlay").find(".subcategory_listing").addClass('hidden').removeClass('activeFilterListing');
+		  jQuery(".modal_overlay").find(".subcategory_listing." + selector).removeClass('hidden').addClass('activeFilterListing');
+		  jQuery(".modal_body").scrollTop(0);
+
+		});
 	}
 
 	function onClickFiltersCheckBox() {
@@ -289,9 +325,43 @@ function Filters(){
 
 	function setOnClickFilters() {
         settings.filterModalOpenButton.click(function(event){
-            addBodyFixed()
-            settings.filterModal.removeClass("hidden");
-        })
+				for (var key in filtersTarget) {
+					if(filtersTarget[key]["type"] == "checkbox") {
+						filtersTarget[key]["count"] = 0
+						filtersTarget[key]['target'].find('input').prop('checked', false)
+						filtersTarget[key]["selection"].forEach(function(value){
+							filtersTarget[key]['target'].find('input[value='+value+']').prop('checked', true)
+							filtersTarget[key]["count"] += 1
+						})
+						console.log(filtersTarget[key]['count'])
+						if(filtersTarget[key]['count']) {
+
+							settings.filterModal.find(".modal_sidebar li[data-name="+key+"] .filterCount").text(filtersTarget[key]['count']).removeClass("hidden")
+						}
+						else {
+							settings.filterModal.find(".modal_sidebar li[data-name="+key+"] .filterCount").addClass("hidden")
+						}
+					}
+					else if(filtersTarget[key]["type"] == "dropdownHalf") {
+
+						for (var k in filtersTarget[key]["props"]) {
+
+							filtersTarget[key]["props"][k]['target'].val(filtersTarget[key]["props"][k]["selection"])
+						}
+					}
+					else if(filtersTarget[key]["type"] == "dropdown") {
+
+						if(key == "orderBy") {
+
+							continue
+						}
+						filtersTarget[key]['target'].val(filtersTarget[key]["selection"])
+					}
+				}
+				addBodyFixed()
+	            settings.filterModal.removeClass("hidden");
+			})
+
     }
 
     function setOnClickCloseFilters(){
@@ -358,6 +428,7 @@ function Filters(){
 			if(filtersTarget[key]["type"] == "checkbox") {
 
 				filtersTarget[key]["selection"] = [];
+				filtersTarget[key]["label"] = [];
 				filtersTarget[key]["count"] = 0
 				filtersTarget[key]['target'].find('input').prop('checked', false)
 				settings.filterModal.find(".modal_sidebar li[data-name="+key+"] .filterCount").addClass("hidden")
@@ -365,7 +436,7 @@ function Filters(){
 			else if(filtersTarget[key]["type"] == "dropdownHalf") {
 
 				for (var k in filtersTarget[key]["props"]) {
-					filtersTarget[key]["props"][k]["selection"] = null;
+					filtersTarget[key]["props"][k]["selection"] = -1;
 
 					filtersTarget[key]["props"][k]['target'].val("-1")
 				}
@@ -376,7 +447,8 @@ function Filters(){
 
 					continue
 				}
-				filtersTarget[key]["selection"] = null;
+				filtersTarget[key]["selection"] = -1;
+				filtersTarget[key]["label"] = ""
 				filtersTarget[key]['target'].val("-1")
 			}
 		}
@@ -390,6 +462,7 @@ function Filters(){
 			var index = filtersTarget[category]['selection'].indexOf(value)
 			if(index > -1){
 				filtersTarget[category]['selection'].splice(index, 1);
+				filtersTarget[category]['label'].splice(index, 1);
 				filtersTarget[category]['count'] -= 1;
 				filtersTarget[category]['target'].find('input[value='+value+']').prop('checked', false)
 				if(filtersTarget[category]['count'])
@@ -402,15 +475,16 @@ function Filters(){
 			var key = temp[0];
 			var category = temp[1];
 			var str = filtersTarget[category]["props"][key]['selection'];
-			if(str){
-				filtersTarget[category]["props"][key]['selection'] = null;
+			if(str != -1){
+				filtersTarget[category]["props"][key]['selection'] = -1;
 				filtersTarget[category]["props"][key]['target'].val("-1")
 			}
 		}
 		else if(type == "dropdown"){
 			var str = filtersTarget[category]['selection']
-			if(str){
-				filtersTarget[category]['selection'] = null;
+			if(str != -1){
+				filtersTarget[category]['selection'] = -1;
+				filtersTarget[category]['label'] = ""
 				filtersTarget[category]['target'].val("-1")
 			}
 		}
@@ -419,48 +493,63 @@ function Filters(){
 		}
 	}
 
+	function addFiltersToContainer(){
+
+		for (var key in filtersTarget) {
+
+			if(filtersTarget[key]["type"] == "checkbox") {
+				filtersTarget[key]["selection"].forEach(function(value,index){
+					addFilterToContainer(value, filtersTarget[key]["label"][index], key, "checkbox");
+				})
+			}
+			else if(filtersTarget[key]["type"] == "dropdownHalf") {
+
+				for (var k in filtersTarget[key]["props"]) {
+					if(filtersTarget[key]["props"][k]["selection"] != -1) {
+						addFilterToContainer(filtersTarget[key]["props"][k]["selection"],filtersTarget[key]["props"][k]["selection"] , k +"-"+ key, "dropdownHalf");
+					}
+
+				}
+			}
+			else if(filtersTarget[key]["type"] == "dropdown") {
+
+				if(key == "orderBy") {
+					continue
+				}
+				if(filtersTarget[key]["selection"] != -1)
+					addFilterToContainer(filtersTarget[key]["selection"], filtersTarget[key]["label"], key, "dropdown");
+			}
+		}
+
+	}
+
 	function setAppliedFilters(name){
+
 		var type = filtersTarget[name]['type']
+
 		if(type == "checkbox"){
 			filtersTarget[name]['selection'] = [];
+			filtersTarget[name]['label'] = [];
 			filtersTarget[name]['target'].find('input:checked').each(function(index, el){
-				var value = el.value;
-				var category = name;
-				var label = $(el).attr('data-label');
+				filtersTarget[name]['label'].push($(el).attr('data-label'))
 				filtersTarget[name]['selection'].push(el.value)
-				addFilterToContainer(value, label, category, type);
+
 			})
 		}
 		else if(type == "dropdownHalf"){
 			for(var key in filtersTarget[name]["props"]) {
 				var value = filtersTarget[name]["props"][key]['target'].val();
-				var category = key +"-"+ name;
-				var elem = settings.appliedFiltersContainer.find(".filterPill[data-category="+category+"]")
-				;
-				if(parseInt(value) == -1) {
-					if(!elem.length)
-						return
-					filtersTarget[name]["props"][key]['selection'] = null;
-					elem.remove();
-					return
-				}
+
 				filtersTarget[name]["props"][key]['selection'] = value
-				var label = value;
-				addFilterToContainer(value, label, category, type);
+				// var label = value;
+
 			}
 		}
 		else if(type == "dropdown"){
 			var value = filtersTarget[name]['target'].val();
-			var category = name
-			var elem = settings.appliedFiltersContainer.find(".filterPill[data-category="+category+"]")
-			if(parseInt(value) == -1 && elem.length) {
-				filtersTarget[category]['selection'] = null;
-				elem.remove();
-				return
-			}
+
 			filtersTarget[name]['selection'] = value
-			var label = filtersTarget[name]['target'].find('option:selected').text();
-			addFilterToContainer(value, label, category, type);
+			filtersTarget[name]['label'] = filtersTarget[name]['target'].find('option:selected').text();
 		}
 	}
 
@@ -478,37 +567,37 @@ function Filters(){
 			ob.functionalArea = filtersTarget.functionalArea.selection.join(',');
 		if(filtersTarget.language.selection.length > 0)
 			ob.language = filtersTarget.language.selection.join(',');
-		if(filtersTarget.experience.props.min.selection)
+		if(filtersTarget.experience.props.min.selection != -1)
 			ob.minExp = filtersTarget.experience.props.min.selection
-		if(filtersTarget.experience.props.max.selection)
+		if(filtersTarget.experience.props.max.selection != -1)
 			ob.maxExp = filtersTarget.experience.props.max.selection
-		if(filtersTarget.salary.props.min.selection)
+		if(filtersTarget.salary.props.min.selection != -1)
 			ob.minCtc = filtersTarget.salary.props.min.selection
-		if(filtersTarget.salary.props.max.selection)
+		if(filtersTarget.salary.props.max.selection != -1)
 			ob.maxCtc = filtersTarget.salary.props.max.selection
-		if(filtersTarget.age.props.min.selection)
+		if(filtersTarget.age.props.min.selection != -1)
 			ob.minAge = filtersTarget.age.props.min.selection
-		if(filtersTarget.age.props.max.selection)
+		if(filtersTarget.age.props.max.selection != -1)
 			ob.maxAge = filtersTarget.age.props.max.selection
-		if(filtersTarget.batch.props.min.selection)
+		if(filtersTarget.batch.props.min.selection != -1)
 			ob.minAge = filtersTarget.batch.props.min.selection
-		if(filtersTarget.batch.props.max.selection)
+		if(filtersTarget.batch.props.max.selection != -1)
 			ob.maxAge = filtersTarget.batch.props.max.selection
-		if(filtersTarget.sex.selection)
+		if(filtersTarget.sex.selection != -1)
 			ob.sex = filtersTarget.sex.selection
-		if(filtersTarget.notice.selection)
+		if(filtersTarget.notice.selection != -1)
 			ob.notice = filtersTarget.notice.selection
-		if(filtersTarget.applicationDate.selection)
+		if(filtersTarget.applicationDate.selection != -1)
 			ob.applicationDate = filtersTarget.applicationDate.selection
-		if(filtersTarget.lastActive.selection)
+		if(filtersTarget.lastActive.selection != -1)
 			ob.lastActive = filtersTarget.lastActive.selection
-		if(filtersTarget.permit.selection)
+		if(filtersTarget.permit.selection != -1)
 			ob.permit = filtersTarget.permit.selection
-		if(filtersTarget.handleTeam.selection)
+		if(filtersTarget.handleTeam.selection != -1)
 			ob.handleTeam = filtersTarget.handleTeam.selection
-		if(filtersTarget.relocate.selection)
+		if(filtersTarget.relocate.selection != -1)
 			ob.relocate = filtersTarget.relocate.selection
-		if(filtersTarget.differentlyAbled.selection)
+		if(filtersTarget.differentlyAbled.selection != -1)
 			ob.differentlyAbled = filtersTarget.differentlyAbled.selection
 		if(filtersTarget.searchString.selection)
 			ob.searchString = filtersTarget.searchString.selection
@@ -619,7 +708,8 @@ function Filters(){
 		hideAppliedFilters:hideAppliedFilters,
 		showAppliedFilters:showAppliedFilters,
 		checkForError: checkForError,
-		closeFilterModal: closeFilterModal
+		closeFilterModal: closeFilterModal,
+		addFiltersToContainer: addFiltersToContainer
     }
 
 

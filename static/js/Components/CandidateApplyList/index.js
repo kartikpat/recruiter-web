@@ -52,15 +52,17 @@ jQuery(document).ready( function() {
     filters.addFilterData('preferredLocation', prefeLocationTagsData);
     filters.onClickApplyFilterButton(function(name){
         if(!filters.checkForError(name)) {
-            debugger
             return
         }
+        filters.setAppliedFilters(name);
+        filters.addFiltersToContainer()
         filters.closeFilterModal()
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
 
-        filters.setAppliedFilters(name);
+
         var parameters = filters.getAppliedFilters();
+        console.log(parameters)
         globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
@@ -121,10 +123,13 @@ jQuery(document).ready( function() {
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
 
-    candidates.onClickCandidate(function(candidateId){
+    candidates.onClickCandidate(function(candidateId, status, applicationId){
         var candidateDetails = store.getCandidateFromStore(candidateId);
         var status = globalParameters.status
         aCandidate.showCandidateDetails(candidateDetails,"", status);
+        if(parseInt(status) == 0)
+            setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
+
     });
     candidates.onClickAddTag(function(candidateId) {
         var candidateDetails = store.getCandidateFromStore(candidateId);
@@ -147,6 +152,12 @@ jQuery(document).ready( function() {
         aCandidate.showCandidateDetails(candidateDetails, "tag", status);
     })
     candidates.onClickSendMessage(function(candidateId,applicationId){
+        var candidate = store.getCandidateFromStore(candidateId);
+        var array = [];
+        array.push(candidate);
+        cloneStickyChat(array, recruiterId, jobId, applicationId)
+    })
+    aCandidate.onClickChatCandidateModal(function(candidateId,applicationId){
         var candidate = store.getCandidateFromStore(candidateId);
         var array = [];
         array.push(candidate);
@@ -215,8 +226,9 @@ jQuery(document).ready( function() {
     //     //     return alert('Please provide all values');
     //     // postInterviewInvite()
     // })
-    candidates.onClickDownloadResume(function(){
-        console.log("you can call track event")
+    candidates.onClickDownloadResume(function(applicationId, status){
+        if(parseInt(status) == 0)
+            setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
     });
     candidates.onClickSaveCandidate(function(applicationId, newStatus, dataAction){
         var action;
@@ -249,7 +261,12 @@ jQuery(document).ready( function() {
         setCandidateAction(recruiterId, jobId, action , applicationId, {}, parameters);
     })
     function onSuccessfullCandidateAction(topic, res) {
-
+        var arr = [];
+        arr.push(res.applicationId)
+        fetchJobApplicationCount(recruiterId, jobId)
+        if(res.action == "view") {
+            return
+        }
         if(res.action == "tag") {
             if(res.parameters.type == "add") {
                 var tag = {
@@ -266,9 +283,7 @@ jQuery(document).ready( function() {
         if(res.action == "comment") {
             return toastNotify(1, "Comment Added Successfully")
         }
-        var arr = [];
-        arr.push(res.applicationId)
-        fetchJobApplicationCount(recruiterId, jobId)
+
 
         if(res.action == "unread") {
             var newStatus = 0
@@ -538,6 +553,7 @@ jQuery(document).ready( function() {
 
 
     function onJobsApplicationsFetchSuccess(topic, data) {
+        $(".loaderScroller").addClass("hidden")
         //Call only on initial load
         if(!globalParameters.initialLoad) {
             var result =filters.getAppliedFilters();
@@ -633,7 +649,7 @@ jQuery(document).ready( function() {
         if(res.action == "shortlist") {
             toastNotify(1, res.applicationId.length +" candidates have been shortlisted and moved to the shortlisted tab.")
             setTimeout(function(){
-    			window.location = "/job/"+jobId+"/applications?defaultTab="+3;
+    			window.location = "/job/"+jobId+"/applications";
     		 }, 2000);
 
             // candidates.closeModal()
@@ -650,7 +666,7 @@ jQuery(document).ready( function() {
         if(res.action == "reject") {
             toastNotify(1, res.applicationId.length +" candidates have been rejected and moved to the rejected tab.")
             setTimeout(function(){
-    			window.location = "/job/"+jobId+"/applications?defaultTab="+4;
+    			window.location = "/job/"+jobId+"/applications";
     		 }, 2000);
             // candidates.closeModal()
             // if(res.parameters.oldStatus != "") {
@@ -665,7 +681,7 @@ jQuery(document).ready( function() {
         if(res.action == "save") {
             toastNotify(1, res.applicationId.length +" candidates have been saved and moved to the saved tab.")
             setTimeout(function(){
-    			window.location = "/job/"+jobId+"/applications?defaultTab="+5;
+    			window.location = "/job/"+jobId+"/applications";
     		 }, 2000);
             // candidates.closeModal()
             // if(res.parameters.oldStatus != "") {
@@ -789,6 +805,7 @@ jQuery(document).ready( function() {
                 parameters.pageNumber = globalParameters.pageNumber;
                 parameters.pageContent = globalParameters.pageContent;
                 parameters.status = globalParameters.status;
+                $(".loaderScroller").removeClass("hidden")
     			fetchJobApplications(jobId,parameters,recruiterId)
     		}
     	}

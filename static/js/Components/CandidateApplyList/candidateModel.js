@@ -29,7 +29,7 @@ function Candidate() {
         settings.tagInputError = $(".tagInputError"),
         settings.sendInterviewInviteF2FClass = ".inviteF2f",
         settings.sendInterviewInviteTelephonicClass = ".inviteTelephonic"
-        onClickChatCandidateModal()
+
         jQuery("#tabbed-content").tabs({});
         // onClickAddPopulatedTags()
     }
@@ -38,9 +38,13 @@ function Candidate() {
         return populateCandidateData(details, type, status)
     }
 
-    function onClickChatCandidateModal() {
+
+
+    function onClickChatCandidateModal(fn) {
         settings.candidateChatModal.click(function(){
-            window.location.href = "/my-chat"
+            var candidateId = $(this).closest(settings.candidateDetailsModal).attr("data-candidate-id")
+            var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
+            fn(candidateId, applicationId);
         })
     }
 
@@ -151,7 +155,7 @@ function Candidate() {
         item.location.text(aData["currentLocation"] || "NA");
         var preferredLocationStr = "N.A."
         if(aData["preferredLocation"].length) {
-            preferredLocationStr = aData["preferredLocation"].join(' ');
+            preferredLocationStr = aData["preferredLocation"].join(', ');
         }
         item.preferredLocation.text(preferredLocationStr);
         item.contact.text(aData["phone"] || "NA");
@@ -542,7 +546,8 @@ function Candidate() {
         showDropdownTags: showDropdownTags,
         onClickSendInterviewInviteTelephonic: onClickSendInterviewInviteTelephonic,
         onClickSendInterviewInviteF2F: onClickSendInterviewInviteF2F,
-        changeButtonText: changeButtonText
+        changeButtonText: changeButtonText,
+        onClickChatCandidateModal: onClickChatCandidateModal
 	}
 
     function focusOnElement(element, container) {

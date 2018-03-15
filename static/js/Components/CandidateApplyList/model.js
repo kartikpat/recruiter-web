@@ -186,6 +186,7 @@ function candidateList() {
         else if(status == 3) {
             item.savedButton.text("Saved for later");
         }
+        item.element.attr("data-status", status)
         // var tagStr = '';
         // $.each(aData["tags"],function(index, aTag) {
         //     var tag =  settings.candidateTagsPrototype.clone().text(aTag["name"]).removeClass("prototype hidden");
@@ -329,7 +330,9 @@ function candidateList() {
     function onClickCandidate(fn) {
         settings.rowContainer.on('click', ".candidate-item", function(e){
             var candidateId = $(this).attr('data-candidate-id');
-            return fn(candidateId);
+            var status = $(this).attr("data-status")
+            var applicationId = $(this).attr("data-application-id")
+            return fn(candidateId, status, applicationId);
         })
     }
 
@@ -376,6 +379,9 @@ function candidateList() {
         settings.rowContainer.on('click', settings.candidateDownloadResumeButton, function(event){
             var url = $(this).attr("data-href");
             window.open(url);
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            var status = $(this).closest(settings.candidateRowClass).attr("data-status")
+            fn(applicationId, status)
             return false
         })
     }

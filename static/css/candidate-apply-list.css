@@ -1520,7 +1520,7 @@ span.sticker {
       font-size: 14px;
       margin-right: 10px; }
   .conversations .conversation-listing-container .conversations-listing {
-    max-height: 600px;
+    max-height: 70vh;
     overflow-y: auto; }
     .conversations .conversation-listing-container .conversations-listing .conversation-item {
       display: inline-block;
@@ -2824,7 +2824,8 @@ input::-webkit-input-placeholder {
         position: relative;
         min-width: 50px; }
   .page-content .candidate-apply-listing {
-    width: 80%; }
+    width: 80%;
+    margin-bottom: 100px; }
     .page-content .candidate-apply-listing .candidates-area {
       background-color: #FFF;
       border: 1px solid #e8e8e8;
@@ -2832,7 +2833,8 @@ input::-webkit-input-placeholder {
       padding: 20px;
       margin: 10px;
       margin: 0 0 0 0;
-      padding: 15px; }
+      padding: 15px;
+      padding-bottom: 0px; }
       .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search {
         margin-bottom: 20px; }
         .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .keyword-search {
@@ -2999,9 +3001,7 @@ input::-webkit-input-placeholder {
               color: #1f8f75; }
       .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing {
         background: #FFF;
-        border-radius: 6px;
-        min-height: 30px;
-        margin-top: 2px; }
+        border-radius: 6px; }
         .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item {
           display: block;
           padding: 30px 10px 0px;
@@ -3569,7 +3569,7 @@ input::-webkit-input-placeholder {
       display: block !important; } }
 
 @media all and (max-width: 1024px) {
-  .conversations {
+  .page-content .conversations {
     display: none; }
   .page-content .candidate-apply-listing {
     width: 100%; } }
@@ -3993,6 +3993,10 @@ input::-webkit-input-placeholder {
         display: inline-block;
         vertical-align: top;
         cursor: pointer; }
+        .view-resume-modal .resume-sidebar .action-buttons span.button.candidateShortlistModal {
+          padding: 6px 15px; }
+        .view-resume-modal .resume-sidebar .action-buttons span.button.candidateRejectModal {
+          padding: 6px 15px; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.cand-comment-button {
           margin: 0;
           margin-top: 5px; }
@@ -4232,7 +4236,8 @@ input::-webkit-input-placeholder {
   border-bottom: 1px solid #e8e8e8; }
   #jobs-category-tabs .tabs_scroll_container {
     overflow-x: auto;
-    overflow-y: hidden; }
+    overflow-y: hidden;
+    position: relative; }
   #jobs-category-tabs .ui-tabs-nav {
     border: 0;
     background: #fff;
@@ -4314,3 +4319,11 @@ input::-webkit-input-placeholder {
       .active-filters .filter-tag #clear-all {
         display: block;
         margin-top: 5px; } }
+
+.loader.loader-scroller {
+  position: absolute;
+  top: 101%;
+  height: 45px;
+  width: 45px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db; }
