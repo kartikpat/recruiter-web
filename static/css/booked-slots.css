@@ -2675,6 +2675,28 @@ span.sticker {
         cursor: pointer;
         line-height: 28px;
         display: inline-block; }
+  .page-content .no-schedule-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+    .page-content .no-schedule-container .image-container img {
+      margin-left: auto;
+      margin-right: auto;
+      display: block; }
+    .page-content .no-schedule-container .heading {
+      color: #149075;
+      font-size: 26px;
+      font-weight: 400;
+      text-align: center;
+      padding-top: 20px; }
+    .page-content .no-schedule-container .subheading {
+      color: #737373;
+      font-size: 17px;
+      /* Approximation due to font substitution */
+      font-weight: 400;
+      line-height: 29.992px;
+      /* Approximation due to font substitution */ }
   .page-content .action-wrapper {
     width: 95%;
     background-color: #ebe8e8;

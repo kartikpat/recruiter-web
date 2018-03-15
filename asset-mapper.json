@@ -1367,7 +1367,8 @@
 				"static/css/colors.css",
 				"static/css/utilities.css",
 				"static/css/modal.css",
-                "static/css/header.css",
+				"static/css/header.css",
+				"static/css/chat-sticky.css",
                 "static/css/booked-slots.css",
                 "static/css/footer.css"
 
