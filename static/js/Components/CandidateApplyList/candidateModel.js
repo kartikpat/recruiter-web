@@ -151,12 +151,20 @@ function Candidate() {
         item.location.text(aData["currentLocation"] || "NA");
         var preferredLocationStr = "N.A."
         if(aData["preferredLocation"].length) {
-            preferredLocationStr = aData["preferredLocation"].toString();
+            preferredLocationStr = aData["preferredLocation"].join(' ');
         }
         item.preferredLocation.text(preferredLocationStr);
         item.contact.text(aData["phone"] || "NA");
         item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY') || "NA")
-        item.notice.text(aData["notice"] + " months" || "NA");
+        if(aData["notice"] == 7) {
+            item.notice.text("Immediately Available");
+        }
+        else if(aData["notice"] == 1) {
+            item.notice.text((aData["notice"] + " month"));
+        }
+        else {
+            item.notice.text((aData["notice"] + " months"));
+        }
         if(aData["ctc"] == "confidential")
             item.salary.text("Confidential");
         else
@@ -218,6 +226,11 @@ function Candidate() {
         else {
         	item.resume.html('<iframe src="'+aData["resume"]+'" class="resume-embed" type="application/pdf"></iframe>')
         }
+        if(aData["cover"]) {
+            item.coverLetter.html(aData["cover"])
+            $(".coverLetterTab").removeClass("hidden")
+        }
+
         item.coverLetter.html(aData["cover"] || "<div class='no-data'>No Cover Letter!</div>");
         if(aData["comment"]) {
             item.comment.val(aData["comment"]);

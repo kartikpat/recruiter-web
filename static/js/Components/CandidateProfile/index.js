@@ -89,28 +89,53 @@ jQuery(document).ready( function() {
          fetchRecruiterTags(recruiterId, parameters)
      })
 
-     aCandidate.onClickShortlistCandidate(function(applicationId, newStatus) {
-
-         var parameters = {}
-         parameters.isModal = true
-         setCandidateAction(recruiterId, jobId, "shortlist" , applicationId, {}, parameters);
+     aCandidate.onClickShortlistCandidate(function(applicationId, newStatus, dataAction) {
+         var action;
+         if(parseInt(dataAction) == parseInt(newStatus)) {
+             action = "unread"
+         }
+         else {
+             action = "shortlist"
+         }
+         var parameters = {};
+         parameters.newStatus = newStatus;
+         parameters.dataAction = dataAction;
+         parameters.isModalButton = true
+         setCandidateAction(recruiterId, jobId, action , applicationId, {}, parameters);
      })
 
-     aCandidate.onClickRejectCandidate(function(applicationId, newStatus) {
-
-         var parameters = {}
-         parameters.isModal = true
-         setCandidateAction(recruiterId, jobId, "reject" , applicationId, {}, parameters);
+     aCandidate.onClickRejectCandidate(function(applicationId, newStatus, dataAction) {
+         var action;
+         if(parseInt(dataAction) == parseInt(newStatus)) {
+             action = "unread"
+         }
+         else {
+             action = "reject"
+         }
+         var parameters = {};
+         parameters.newStatus = newStatus;
+         parameters.dataAction = dataAction;
+         parameters.isModalButton = true
+         setCandidateAction(recruiterId, jobId, action , applicationId, {}, parameters);
      })
 
-     aCandidate.onClickSaveCandidate(function(applicationId, newStatus) {
-         var parameters = {}
-         parameters.isModal = true
-         setCandidateAction(recruiterId, jobId, "save" , applicationId, {}, parameters);
+     aCandidate.onClickSaveCandidate(function(applicationId, newStatus, dataAction) {
+         var action;
+         if(parseInt(dataAction) == parseInt(newStatus)) {
+             action = "unread"
+         }
+         else {
+             action = "save"
+         }
+         var parameters = {};
+         parameters.newStatus = newStatus;
+         parameters.dataAction = dataAction;
+         parameters.isModalButton = true
+         setCandidateAction(recruiterId, jobId, action , applicationId, {}, parameters);
      })
 
     function onCandidateProfileFetchSuccess(topic, res) {
-        
+
         aCandidate.populateCandidateData(res.data[0])
     }
 
@@ -136,25 +161,40 @@ jQuery(document).ready( function() {
         if(res.action == "comment") {
             return toastNotify(1, "Comment Added Successfully")
         }
+        var arr = [];
+        arr.push(res.applicationId)
+        if(res.action == "unread") {
+            var newStatus = 0
+            if(res.parameters.isModalButton) {
+
+                aCandidate.changeButtonText(arr, newStatus, res.parameters.dataAction)
+                return toastNotify(1, "Moved to Unread Tab")
+            }
+        }
         if(res.action == "shortlist") {
+            var newStatus = 1
+            if(res.parameters.isModalButton) {
 
-                return toastNotify(1, "Shortlisted Successfully")
-
-
-
+                aCandidate.changeButtonText(arr, newStatus, res.parameters.dataAction)
+                return toastNotify(1, "Moved to Shortlisted Tab")
+            }
         }
         if(res.action == "reject") {
+            var newStatus = 2
+            if(res.parameters.isModalButton) {
 
-                return toastNotify(1, "Rejected Successfully")
-
-
-
+                aCandidate.changeButtonText(arr, newStatus, res.parameters.dataAction)
+                return toastNotify(1, "Moved to Rejected Tab")
+            }
         }
         if(res.action == "save") {
 
-                return toastNotify(1, "Saved Successfully")
+            var newStatus = 3
+            if(res.parameters.isModalButton) {
 
-
+                aCandidate.changeButtonText(arr, newStatus, res.parameters.dataAction)
+                return toastNotify(1, "Moved to Saved Tab")
+            }
         }
     }
 
