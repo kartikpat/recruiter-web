@@ -35,7 +35,7 @@ $(document).ready(function() {
 
 	function onSuccessfulRegister(topic, data){
 		console.log('successful reister');
-		window.location = "/account-created";
+		window.location = "/welcome";
 	}
 	function onFailedRegister(topic, data){
 		console.log('register failed');

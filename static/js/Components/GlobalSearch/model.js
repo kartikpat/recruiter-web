@@ -136,7 +136,7 @@ function candidateList() {
                $.each(aData["applications"],function(index, application) {
                    console.log(application)
                    var item =  $(''+settings.candAppliedJobsClass+'.prototype').clone().removeClass("prototype hidden");;
-                   item.html(application["title"] + " (<a href='/job/"+application["jobID"]+"/applications/"+application["id"]+"'>View Profile</a>) ")
+                   item.html(application["title"] + " -<a href='/job/"+application["jobID"]+"/applications/"+application["id"]+"'>View Profile</a> ")
                    str+=item[0].outerHTML
                })
                item.multipleCandJobListing.append(str);

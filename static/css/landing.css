@@ -766,3 +766,7 @@ body {
       border-right: 0; }
     .page-content .highlight-wrapper .main-container .container ul.category-listing li.category-item.no-bottom-border {
       border-bottom: 0; } }
+
+.forgot-pass {
+  text-align: center;
+  font-size: 14px; }
