@@ -2,8 +2,7 @@
 <div class="loader-overlay hidden" id="loaderOverlay">
     <div class="loader"></div>
 </div>
-
-<div class="page-content">
+<div class="page-content ">
     <div class="header-slot">
         <div class="tagline left">Booked Slots</div>
         <div class="right-container right">
@@ -84,10 +83,7 @@
 
 </div>
 
-
-
 <div id="" class="modal cancelInterviewModal hidden">
-
     <!-- Modal content -->
     <div class="modal_wrapper" >
         <span class="modal_close">&times;</span>
@@ -110,4 +106,28 @@
         </div>
     </div>
 </div>
+
+<div class="page-content hidden">
+    <div class="main-wrapper">
+      <div class="header-slot">
+            <div class="tagline left">Interview scheduler</div>
+                <div class="right-container right">
+                    <div class="manage-Calendar">
+                        Manage Calendar
+                    </div>
+                </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="no-schedule-container">
+            <div class="image-container">
+                <img src="/static/images/calender.png">
+            </div>
+            <div class="heading">No interviews yet</div>
+            <div class="subheading">You'll find a list of interviews here once you schedule invites</div>
+        </div>
+        <div class="conversations right">
+                {{>chatSidebar}}
+        </div>
+     </div>
+    </div>   
 {{> footer }}
