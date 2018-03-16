@@ -101,10 +101,12 @@ function Calendar(){
         $.each(settings.dayId,function(){
             settings.select_menu.find('option').prop('disabled', false); 
             var id=$(this).attr('id');
+            $("#"+id+"").css("opacity","0.5");
             var startvalue=$("#"+id+ "").find(settings.start_time).val();
             var endvalue=$("#"+id+ "").find(settings.end_time).val();
             var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
             if(parseInt(startvalue)>0 && parseInt(endvalue)>0 && checkbox==true){
+                $("#"+id+"").css("opacity","1");
                 var slot={
                     startTime:startvalue,
                     endTime:endvalue,
@@ -159,7 +161,7 @@ function Calendar(){
             }
     }
 
-    function fetchdetails(calendarId,object){
+    function setDetails(calendarId,object){
         settings.name.val(object["name"]);
         settings.message.val(object["message"]);
         settings.teleMessage.val(object["teleMessage"]);
@@ -174,6 +176,7 @@ function Calendar(){
         //datepicker set value
         testHighlight(fromDate,toDate,previewslots);
     }
+
     function availablehours(slots){
         for(var k=0;k<slots.length;k++){
             var id=slots[k].id;
