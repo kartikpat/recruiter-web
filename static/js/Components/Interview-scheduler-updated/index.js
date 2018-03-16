@@ -6,6 +6,7 @@ $(document).ready(function(){
     calendarDetails.startdate();
     calendarDetails.enddate();
     calendarDetails.time_mapper();
+     calendarDetails.prevWeek();
     test= calendarDetails.testHighlight;
     calendarDetails.submitHandler(function(){
         if(calendarDetails.validate()){

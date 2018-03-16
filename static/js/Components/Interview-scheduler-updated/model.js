@@ -59,7 +59,9 @@ function Calendar(){
         settings.end=$('.end'),
         settings.firstDay=$('#1'),
         settings.error=$('.errors'),
-        settings.slots=$('.table')
+        settings.slots=$('.table'),
+        settings.prevButton=$('.prev-button'),
+        settings.nextButton=$('.next-button')
         selectCreater();
         copytoall();
         time_mapper();
@@ -121,11 +123,15 @@ function Calendar(){
             settings.select_menu.find('option').prop('disabled', false); 
             var id=$(this).attr('id');
             $("#"+id+"").css("opacity","0.5");
+            var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
+            if(checkbox==true){
+            $("#"+id+"").css("opacity","1");
+            }
             var startvalue=$("#"+id+ "").find(settings.start_time).val();
             var endvalue=$("#"+id+ "").find(settings.end_time).val();
-            var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
+           
             if(parseInt(startvalue)>0 && parseInt(endvalue)>0 && checkbox==true){
-                $("#"+id+"").css("opacity","1");
+             
                 var slot={
                     startTime:startvalue,
                     endTime:endvalue,
@@ -243,7 +249,7 @@ function Calendar(){
                 continue
             console.log("here");
             for(var j=parseInt(start);j<parseInt(end); j+=1){
-                $('.fc-'+daySchema[id]).find("#hours-" +j+ "").css({"text-decoration":"none" ,"opacity":"1","color":"#149075","font-weight": "bold"});
+                $('.fc-'+daySchema[id]).find("#hours-" +j+ "").css({"text-decoration":"none" ,"opacity":"1","color":"#149075"});
             }
         }       
     }
@@ -509,6 +515,10 @@ function Calendar(){
 		return
     }
 
+    // function prevWeek(){
+    //         console.log("hello");
+    //         $('#calendar').fullCalendar('prev');
+    // }
 
     return {
         init:init,
@@ -524,6 +534,7 @@ function Calendar(){
         submitHandler:submitHandler,
         getDetails:getDetails,
         validate:validate,
+    
     }
 };
 

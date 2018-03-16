@@ -14,16 +14,16 @@
     border-color:  #e4e4e4;
     box-sizing: border-box;
     padding-top: 10px;
-    /* opacity: 0.5; */
+    border-bottom: none;
+    border-right: none;
     text-decoration: line-through;
     padding-bottom: 10px;
     text-align: center;
     color: #a0a0a0;
+    padding-top:25px;
+    padding-bottom: 25px;
 }
-/* .fc-unthemed td.fc-today {
-    opacity: .3;
-    background-color: transparent;
-} */
+
 
 .fc-toolbar button{
     border-style: solid;
@@ -56,7 +56,7 @@
 
 
 .fc-day-grid{
-    height: 940px!important;
+    height: 1645px!important;
     overflow: hidden;
     opacity: 0.8;
 }
@@ -69,11 +69,13 @@
     text-align: center;
 }
 
+
  
 
 #calendar{
     width: 615px;
     height: 782px;
+    margin-top: 18px;
 }
 
 .fc-bg{
@@ -82,7 +84,7 @@
 
 .fc-scroller{
     overflow-x: hidden;
-    height: 681px!important;
+    height: 600px!important;
 }
 
 .fc-toolbar h2 {
@@ -109,8 +111,14 @@
 .fc-icon{
     width: 16px;
     height: 14px;
+   
 }
-/* .TimeLines{
-    padding-bottom: 10px;
-    text-align: center;
-} */
+
+.fc-row.fc-widget-header {
+    border-right-width: 0px !important;
+}
+
+.fc-header-right .fc-button .fc-button-inner:hover {
+    background-color: red;
+    color: #fff;
+  }
