@@ -272,6 +272,9 @@
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
+.navigationHeader, .profileActions {
+  display: none !important; }
+
 .modal-overlay {
   position: absolute;
   top: 0;
@@ -648,10 +651,16 @@ body {
               top: -5px; }
 
 @media all and (max-width: 1280px) {
+  .mobileHeaderNav {
+    display: none !important; }
   .page-content .main-wrapper .main-container .intro-container .intro-wrapper h1 {
     font-size: 50px; }
   .page-content .main-wrapper .main-container .intro-container .intro-wrapper .image-container img {
     width: 100%; } }
+
+@media all and (max-width: 600px) {
+  .header .domain_logo {
+    display: inline-block; } }
 
 @media all and (max-width: 768px) {
   .page-content .main-wrapper .main-container .intro-container .intro-wrapper {

@@ -97,6 +97,7 @@ function Job(){
 
 	function onClickJobCancel(fn){
 		settings.jobUnpublishButton.click(function(e){
+			e.stopPropagation()
 			settings.jobUnpublishModal.find("input:radio[name='unpublishReason']:checked").prop('checked', false);
 			addBodyFixed()
 			settings.jobUnpublishModal.removeClass('hidden');
@@ -116,6 +117,7 @@ function Job(){
 
 	function onClickJobRefresh(fn) {
 		settings.jobRefreshButton.click(function(e) {
+			e.stopPropagation()
 			addBodyFixed()
 			settings.jobRefreshModal.removeClass('hidden');
 		})
@@ -130,6 +132,7 @@ function Job(){
 
 	function onClickJobMakePremium(fn) {
 		settings.jobPremiumButton.click(function(e) {
+			e.stopPropagation()
 			if(config["availableCredits"] > 0) {
 				settings.jobPremiumModal.find(".premiumButton").removeClass("hidden");
 				settings.jobPremiumModal.find(".section.modal_text").text("This job will be highlighted and moved to top of the list for 15 days starting today. You will have "+(parseInt(config["availableCredits"]) - 1)+" credits left.")

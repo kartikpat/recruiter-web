@@ -283,6 +283,7 @@ input::-webkit-input-placeholder {
 							border:1px solid $border-color-base;
 							padding:2px 15px;
 							border-radius:50px;
+                            text-transform: capitalize;
 							div {
 								display:inline-block;
 								vertical-align: middle;

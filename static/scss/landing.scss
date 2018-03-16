@@ -3,6 +3,11 @@
 @import 'components/_type';
 @import 'components/_colors';
 
+.navigationHeader, .profileActions {
+	display: none !important;
+}
+
+
 
 .modal-overlay {
 	position:absolute;
@@ -552,6 +557,9 @@ body {
 }
 
 @media all and (max-width:1280px){
+	.mobileHeaderNav {
+		display: none !important;
+	}
 	.page-content {
 		.main-wrapper {
 			.main-container {
@@ -574,7 +582,18 @@ body {
 	}
 }
 
+@media all and (max-width:600px) {
+    .header {
+
+        .domain_logo {
+            display:inline-block;
+        }
+	}
+}
+
+
 @media all and (max-width:768px) {
+
 	.page-content {
 		.main-wrapper {
 			.main-container {

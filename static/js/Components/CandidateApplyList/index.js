@@ -228,7 +228,7 @@ jQuery(document).ready( function() {
     // })
     candidates.onClickDownloadResume(function(applicationId, status){
         if(parseInt(status) == 0)
-            setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
+            setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
     });
     candidates.onClickSaveCandidate(function(applicationId, newStatus, dataAction){
         var action;
@@ -265,8 +265,14 @@ jQuery(document).ready( function() {
         arr.push(res.applicationId)
         fetchJobApplicationCount(recruiterId, jobId)
         if(res.action == "view") {
-            return
+            var newStatus = 4
+            return candidates.changeStatus(arr, newStatus)
         }
+        if(res.action == "download") {
+            var newStatus = 5
+            return candidates.changeStatus(arr, newStatus)
+        }
+        
         if(res.action == "tag") {
             if(res.parameters.type == "add") {
                 var tag = {
