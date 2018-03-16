@@ -29,7 +29,7 @@ function Candidate() {
         settings.tagInputError = $(".tagInputError"),
         settings.sendInterviewInviteF2FClass = ".inviteF2f",
         settings.sendInterviewInviteTelephonicClass = ".inviteTelephonic"
-        onClickChatCandidateModal()
+
         jQuery("#tabbed-content").tabs({});
         // onClickAddPopulatedTags()
     }
@@ -38,9 +38,13 @@ function Candidate() {
         return populateCandidateData(details, type, status)
     }
 
-    function onClickChatCandidateModal() {
+
+
+    function onClickChatCandidateModal(fn) {
         settings.candidateChatModal.click(function(){
-            window.location.href = "/my-chat"
+            var candidateId = $(this).closest(settings.candidateDetailsModal).attr("data-candidate-id")
+            var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
+            fn(candidateId, applicationId);
         })
     }
 
@@ -151,7 +155,7 @@ function Candidate() {
         item.location.text(aData["currentLocation"] || "NA");
         var preferredLocationStr = "N.A."
         if(aData["preferredLocation"].length) {
-            preferredLocationStr = aData["preferredLocation"].join(' ');
+            preferredLocationStr = aData["preferredLocation"].join(', ');
         }
         item.preferredLocation.text(preferredLocationStr);
         item.contact.text(aData["phone"] || "NA");
@@ -180,33 +184,42 @@ function Candidate() {
             item.name.text(anObj["institute"])
             item.tenure.text(anObj["batch"]["from"] + " - " + anObj["batch"]["to"] )
             item.degree.text(anObj["degree"] + "("+anObj["courseType"]+")")
-            item.seperator.removeClass("hidden")
+            if(index != aData["education"].length - 1)
+                item.seperator.removeClass("hidden")
             eduStr+=item.element[0].outerHTML
         })
         item.eduList.html(eduStr)
         var profStr = '';
-        $.each(aData["jobs"],function(index, anObj) {
+        if(aData["jobs"].length == 0) {
+            profStr = "<div style='line-height:1.5;'><span style='font-weight:bold;'>"+aData["name"]+"</span> does not have any work experience yet</div>"
+        }
+        else {
+            $.each(aData["jobs"],function(index, anObj) {
 
-            var item = getProfessionalElement()
-            item.name.text(anObj["organization"])
-            item.designation.text(anObj["designation"]);
+                var item = getProfessionalElement()
+                item.name.text(anObj["organization"])
+                item.designation.text(anObj["designation"]);
 
-            var fromMon = getMonthName(anObj["exp"]["from"]["month"]);
-            var toMon = getMonthName(anObj["exp"]["to"]["month"]);
-            var fromYear = anObj["exp"]["from"]["year"];
-            var toYear = anObj["exp"]["from"]["year"];
-            var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
-            item.tenure.text(str);
-            item.seperator.removeClass("hidden")
-            profStr+=item.element[0].outerHTML
-        })
+                var fromMon = getMonthName(anObj["exp"]["from"]["month"]);
+                var toMon = getMonthName(anObj["exp"]["to"]["month"]);
+                var fromYear = anObj["exp"]["from"]["year"];
+                var toYear = anObj["exp"]["from"]["year"];
+                var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
+                item.tenure.text(str);
+                if(index != aData["jobs"].length - 1)
+                    item.seperator.removeClass("hidden")
+                profStr+=item.element[0].outerHTML
+            })
+        }
+        item.profList.html(profStr)
+
         var tagStr = '';
         $.each(aData["tags"],function(index, aTag) {
             var tag = getCandidateTag(aTag)
             tagStr+=tag[0].outerHTML
         })
         item.candidateTagList.html(tagStr)
-        item.profList.html(profStr)
+
         item.gender.text(gender[aData["sex"]])
         item.age.text(getAge(aData["dob"]) + " years")
         item.expectedSalary.text(aData["expectedCtc"]+ " LPA")
@@ -542,7 +555,8 @@ function Candidate() {
         showDropdownTags: showDropdownTags,
         onClickSendInterviewInviteTelephonic: onClickSendInterviewInviteTelephonic,
         onClickSendInterviewInviteF2F: onClickSendInterviewInviteF2F,
-        changeButtonText: changeButtonText
+        changeButtonText: changeButtonText,
+        onClickChatCandidateModal: onClickChatCandidateModal
 	}
 
     function focusOnElement(element, container) {

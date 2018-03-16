@@ -2,6 +2,19 @@
 @import 'components/_colors';
 @import 'components/_type';
 
+.navigationHeader {
+	display: none !important;
+}
+
+.profileActions {
+	.searchIcon, .msgAction {
+		display: none !important;
+	}
+}
+
+.basicAccount, .accountSettings {
+	display: none !important;
+}
 
 .page-content {
 	@include page-content;

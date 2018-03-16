@@ -88,8 +88,8 @@
 								<span class="action-buttons sortBy">
 									<span class="section sortBy" id="sortBy">
 										<select class="select-dropdown" id="sortBySelect">
-											<option value="1">SortBy: Magic Sort</option>
-											<option value="2">SortBy: Application Date</option>
+											<option value="1">SortBy : Magic Sort</option>
+											<option value="2">SortBy : Application Date</option>
 										</select>
 									</span>
 								</span>
@@ -117,12 +117,12 @@
 									<ul id="">
 										<li>
 											<div class="bulk-selection-item bulk-select section">
-											<div class="select-all check-input">
-												<input type="checkbox" class="" id="massCheckboxInput">
-												<label for="massCheckboxInput" id="massCheckboxLabel"></label>
+												<div class="select-all check-input">
+													<input type="checkbox" class="" id="massCheckboxInput">
+													<label for="massCheckboxInput" id="massCheckboxLabel"></label>
+												</div>
 											</div>
-										</div>
-									</li>
+										</li>
 					            		<li data-attribute="">
 											<a href="#all-jobs">
 												<div class="bulk-selection-item all active">
@@ -197,10 +197,46 @@
 									{{>candidateApplyListShell}}
 									{{>candidateApplyListShell}}
 								</div>
+								<div class="loader loader-scroller loaderScroller hidden"></div>
 							</div>
+
 						</div>
 					</div>
 				</div>
+				<div class="loading loaderScroller hidden" style="text-align: center;margin: 20px auto 5px auto;">
+				    <p>Loading</p>
+				</div>
+				<style>
+					.loading p {
+						display:inline-block;
+						position:relative;
+					}
+
+					.loading p:after {
+						overflow: hidden;
+						position:absolute;
+						left:100%;
+						text-align:left;
+						display: inline-block;
+						vertical-align: bottom;
+						-webkit-animation: ellipsis steps(4,end) 900ms infinite;
+						animation: ellipsis steps(4,end) 1800ms infinite;
+						content: "\2026"; /* ascii code for the ellipsis character */
+						width: 0px;
+					}
+
+					@keyframes ellipsis {
+					  to {
+					   	width: 1.25em;
+					  }
+					}
+
+					@-webkit-keyframes ellipsis {
+					  to {
+					    width: 1.25em;
+					  }
+					}
+				</style>
 			</div>
 			<div class="conversations right">
 				{{>chatSidebar}}
@@ -832,6 +868,8 @@
 </div>
 
 <p class="fetchTags prototype hidden" data-tag-id="1">Ahmedabad</p>
+
+
 
 <div class="loader-overlay hidden" id="loaderOverlay">
 	<div class="loader"></div>

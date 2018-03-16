@@ -166,7 +166,7 @@
 		}
 	},
 	"premium-posting": {
-		"styles": { 
+		"styles": {
 			"debug" : [
 				"static/css/header.css",
         		"static/css/premium-posting.css",
@@ -1225,7 +1225,12 @@
 				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/utilities.js",
-				"static/js/forgot-password.js"
+				"static/js/forgot-password.js",
+				"static/js/Utilities/pubsub.js",
+				"static/js/Utilities/common.js",
+				"static/js/Services/SubmitForgotPassword.js",
+				"static/js/Components/ForgotPassword/model.js",
+				"static/js/Components/ForgotPassword/index.js"
 			],
 			"prod" : [
 				"static/build/js/forgot-password.min.js"
@@ -1250,7 +1255,12 @@
 				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/utilities.js",
-				"static/js/account-created.js"
+				"static/js/account-created.js",
+				"static/js/Utilities/pubsub.js",
+				"static/js/Utilities/common.js",
+				"static/js/Services/submitLogin.js",
+				"static/js/Components/AccountCreated/model.js",
+				"static/js/Components/AccountCreated/index.js"
 			],
 			"prod" : [
 				"static/build/js/account-created.min.js"

@@ -141,7 +141,8 @@ chatContainer.on('click','.candidate-card', function() {
         chatContainerBox.find(".info-container .secondary-content").text(obj["name"] + " has applied to " + obj["title"] + " Current Status is "+stat[obj["status"]]+"")
 		chatContainerBox.find(".chat-input").attr("data-channel-name", channelName)
 		chatContainerBox.find(".chat-input").attr("data-id",$(this).attr("data-id") )
-
+        chatContainerBox.find(".no-start").removeClass("hidden")
+        chatContainerBox.find(".start").addClass("hidden")
 		var that = $(this)
         console.log(channelName)
         if($(".chat-candidate-boxes").children().length < maxCandidateChats) {
@@ -218,7 +219,8 @@ $("#conversationListing").on('click','.conversationItem', function() {
         chatContainerBox.find(".info-container .secondary-content").text(obj["name"] + " has applied to " + obj["title"] + " Current Status is "+stat[obj["status"]]+"")
 		chatContainerBox.find(".chat-input").attr("data-channel-name", channelName)
 		chatContainerBox.find(".chat-input").attr("data-id",$(this).attr("data-id") )
-
+        chatContainerBox.find(".no-start").removeClass("hidden")
+        chatContainerBox.find(".start").addClass("hidden")
 		var that = $(this)
         console.log(channelName)
         if($(".chat-candidate-boxes").children().length < maxCandidateChats) {
@@ -446,6 +448,8 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
         		chatContainerBox.attr("data-id",array[0]["userID"]);
         		chatContainerBox.find(".chat-input").attr("data-channel-name", channelName)
         		chatContainerBox.find(".chat-input").attr("data-id",array[0]["userID"] )
+                chatContainerBox.find(".no-start").addClass("hidden")
+                chatContainerBox.find(".start").removeClass("hidden")
         		var dataID = chatContainerBox.attr("data-id");
                 if($(".chat-candidate-boxes").children().length < maxCandidateChats) {
                     $(".chat-candidate-boxes").prepend(chatContainerBox);

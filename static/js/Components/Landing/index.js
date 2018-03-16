@@ -13,7 +13,7 @@ $(document).ready(function() {
 		console.log('Login successful');
 
 		localStorage.id = data["id"];
-		debugger
+
 		window.location="/";
 
 	}

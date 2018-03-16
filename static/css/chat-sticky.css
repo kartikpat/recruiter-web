@@ -1548,7 +1548,7 @@ span.sticker {
       font-size: 14px;
       margin-right: 10px; }
   .conversations .conversation-listing-container .conversations-listing {
-    max-height: 600px;
+    max-height: 70vh;
     overflow-y: auto; }
     .conversations .conversation-listing-container .conversations-listing .conversation-item {
       display: inline-block;
@@ -1863,7 +1863,11 @@ span.sticker {
   padding: 10px;
   background: #f7f7f7;
   position: absolute;
-  width: calc(100% - 15px); }
+  width: 100%; }
+  .info-container .start {
+    text-align: center;
+    color: #2b2b2b;
+    font-size: 13px; }
   .info-container .img-container {
     padding: 0 5px 0 0px; }
     .info-container .img-container img {

@@ -111,7 +111,7 @@ function BookedSlots() {
 		var str = '';
 		hideShell()
 		if(!dataArray.length) {
-			return settings.bookedSlots.html("<div class='no-data'>No Jobs Found!</div>")
+			return settings.bookedSlots.html("<div class='no-data'>No Interviews Found!</div>")
 		}
 		dataArray.forEach(function(aData, index){
 			var item = createElement(aData , index);

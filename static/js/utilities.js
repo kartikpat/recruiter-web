@@ -8,11 +8,16 @@ jQuery(document).ready(function(){
 		if(!jQuery(e.target).parents(".header .profile-menu").length && !jQuery(e.target).parents(".header .profile.action-icon").length) {
 			jQuery(".header .profile-menu").removeClass("active");
 		}
+		if(!jQuery(e.target).parents(".modal").length) {
+			$("body").removeClass("posf")
+			$(".modal").addClass("hidden")
+		}
 	});
 
 	jQuery(".header").on("mouseenter", ".my-jobs", function() {
   		jQuery(this).find(".profile-menu").addClass("active")
 	})
+
 	jQuery(".header").on("mouseleave", ".my-jobs", function() {
   		jQuery(this).find(".profile-menu").removeClass("active")
 	})
@@ -31,5 +36,10 @@ jQuery(document).ready(function(){
 		window.location.href = "/login"
 		return false
 	})
+
+	jQuery(".header .upgrade.button").on('click', function(e) {
+		e.stopPropagation();
+		window.location = "/recruiter/recruiter-plan"
+	});
 
 });
