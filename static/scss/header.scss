@@ -288,13 +288,16 @@ b{
                 &.my-jobs {
                     position: relative;
                 }
+
                 &.my-interviews{
                     position: relative;
                 }
+
                 a {
                     font-family:$primary-font;
                     color:$color-white;
                 }
+
                 .profile-menu {
                     position:absolute;
                     width:200px;

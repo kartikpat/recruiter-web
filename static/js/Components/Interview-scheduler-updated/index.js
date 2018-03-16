@@ -17,8 +17,8 @@ $(document).ready(function(){
     
     var calendarSubmitSuccessSubscription = pubsub.subscribe('submittedCalendar', onSuccessfulSubmitCalendar);
     var calendarSubmitFailSubscription = pubsub.subscribe('failedCalendarSubmission',onFailedSubmitCalendar);
-    var fetchCalendarSuccessSubscription = pubsub.subscribe("fetchedJob:"+calendarId, onSuccessfulFetchCalendar);
-	var fetchCalendarFailSubscription = pubsub.subscribe("failedToFetchJob:"+calendarId, onFailedFetchCalendar);
+    var fetchCalendarSuccessSubscription = pubsub.subscribe("fetchedJob:", onSuccessfulFetchCalendar);
+	var fetchCalendarFailSubscription = pubsub.subscribe("failedToFetchJob:", onFailedFetchCalendar);
 
     function onSuccessfulFetchCalendar(topic,data){
         calendarDetails.setDetails(calendarId,data);

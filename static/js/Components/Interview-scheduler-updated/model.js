@@ -6,6 +6,25 @@ var errorResponses = {
     missingslots:'Please select a slot',
 }
 
+var data={
+    name:"geetansh",
+    message:"helo",
+    telephone:"bye",
+    fromDate:"2018-03-10",
+    toDate:"2018-03-25",
+    slots:[
+        {
+            startTime:"6",
+            endTime:"12",
+            id:"6",
+        },
+        {
+            startTime:"12",
+            endTime:"23",
+            id:"5",
+        }
+    ]
+}
 function Calendar(){
     var settings ={};
     var timetable={};
@@ -40,7 +59,7 @@ function Calendar(){
         settings.end=$('.end'),
         settings.firstDay=$('#1'),
         settings.error=$('.errors'),
-        settings.slots=$('.table'),
+        settings.slots=$('.table')
         selectCreater();
         copytoall();
         time_mapper();
@@ -161,18 +180,18 @@ function Calendar(){
             }
     }
 
-    function setDetails(calendarId,object){
+    function setDetails(object){
         settings.name.val(object["name"]);
         settings.message.val(object["message"]);
-        settings.teleMessage.val(object["teleMessage"]);
+        settings.teleMessage.val(object["telephone"]);
         var previewslots=object.slots;
-        availablehours(slots);
+        availablehours(previewslots);
         var fromDate=object.fromDate; //DD-MM-YYYY
-        fromDate=moment(fromDate).format("DD-MM-YYYY");
+        startDate=moment(fromDate).format("DD-MM-YYYY");
         var toDate=object.toDate;
-        toDate=moment(toDate).format("DD-MM-YYYY");
-        $('#startdatepicker').datepicker().datepicker('setDate', fromDate);
-        $('#enddatepicker').datepicker().datepicker('setDate', toDate);
+        endDate=moment(toDate).format("DD-MM-YYYY");
+        $('#startdatepicker').datepicker().datepicker('setDate', startDate);
+        $('#enddatepicker').datepicker().datepicker('setDate', endDate);
         //datepicker set value
         testHighlight(fromDate,toDate,previewslots);
     }
