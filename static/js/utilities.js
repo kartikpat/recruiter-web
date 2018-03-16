@@ -1,5 +1,5 @@
 
-jQuery(document).ready(function() {
+jQuery(document).ready(function(){
 	jQuery(".header .profile.action-icon").on('click', function() {
 		jQuery(this).find(".profile-menu").toggleClass("active");
 	});
@@ -16,6 +16,15 @@ jQuery(document).ready(function() {
 	jQuery(".header").on("mouseleave", ".my-jobs", function() {
   		jQuery(this).find(".profile-menu").removeClass("active")
 	})
+
+	jQuery(".header").on("mouseenter", ".my-interviews", function() {
+		jQuery(this).find(".profile-menu").addClass("active")
+ 	})
+	  
+	  jQuery(".header").on("mouseleave", ".my-interviews", function() {
+		jQuery(this).find(".profile-menu").removeClass("active")
+  	})
+
 
 	$(".recruiterLogout").click(function(){
 		document.cookie = "recruiter-access-token" + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';

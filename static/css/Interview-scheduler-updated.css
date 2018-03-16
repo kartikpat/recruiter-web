@@ -58,7 +58,8 @@
       font-size: 14px;
       /* Approximation due to font substitution */
       font-weight: 400;
-      text-align: left; }
+      text-align: left;
+      margin-bottom: 14px; }
     .wrap .container .form .input-name #name {
       border-radius: 3px;
       border-style: solid;
@@ -86,7 +87,7 @@
       /* Approximation due to font substitution */
       font-weight: 400;
       text-align: left;
-      margin-bottom: 5px; }
+      margin-bottom: 14px; }
     .wrap .container .form .message #message {
       border-radius: 3px;
       border-style: solid;
@@ -116,7 +117,7 @@
       /* Approximation due to font substitution */
       font-weight: 400;
       text-align: left;
-      margin-bottom: 5px; }
+      margin-bottom: 14px; }
     .wrap .container .form .telephonic .error {
       font-family: "Droid Sans", sans-serif;
       position: absolute;
@@ -176,8 +177,8 @@
       margin-bottom: 10px; }
       .wrap .container .Availability .connect img {
         float: left;
-        margin-left: 10px;
-        margin-top: 10px; }
+        margin-left: 13px;
+        margin-top: 8px; }
       .wrap .container .Availability .connect .connecting {
         position: absolute;
         font-family: "Droid Sans", sans-serif;
@@ -185,8 +186,8 @@
         font-size: 14px;
         /* Approximation due to font substitution */
         font-weight: 400;
-        margin-left: 40px;
-        margin-top: 13px;
+        margin-left: 47px;
+        margin-top: 10px;
         z-index: 1; }
   .wrap .second-container {
     width: 100%;
@@ -237,67 +238,77 @@
             width: 530px;
             height: 55px;
             height: 40px;
-            margin-top: 20px; }
+            margin-top: 15px;
+            display: inline-block; }
             .wrap .second-container .available-hours .Days-available .table .D-avail #one {
               font-family: "Droid Sans", sans-serif;
               color: #2b2b2b;
               font-size: 14px;
               /* Approximation due to font substitution */
               font-weight: 400;
-              line-height: 35px;
-              /* Approximation due to font substitution */
+              line-height: 23px;
               text-align: left;
-              margin-left: 15px; }
+              display: inline-block;
+              width: 136px;
+              padding-left: 15px;
+              padding-bottom: 10px;
+              border-right: 1px solid #e4e4e4;
+              padding-top: 9px; }
             .wrap .second-container .available-hours .Days-available .table .D-avail #two {
               font-family: "Droid Sans", sans-serif;
               color: #2b2b2b;
               font-size: 14px;
               /* Approximation due to font substitution */
               font-weight: 400;
-              line-height: 35px;
-              /* Approximation due to font substitution */
+              line-height: 23px;
               text-align: left;
-              margin-left: 30px; }
+              margin-left: 12px;
+              display: inline-block; }
             .wrap .second-container .available-hours .Days-available .table .D-avail #three {
               font-family: "Droid Sans", sans-serif;
               color: #2b2b2b;
               font-size: 14px;
               /* Approximation due to font substitution */
               font-weight: 400;
-              line-height: 35px;
-              /* Approximation due to font substitution */
+              line-height: 23px;
               text-align: left;
-              margin-top: 20px;
-              margin-left: 75px; }
-          .wrap .second-container .available-hours .Days-available .table .day .section {
-            background-color: #f3fbfb;
-            width: 136px;
-            height: 70px;
-            float: left;
-            border-style: solid;
-            border-width: 1px;
-            border-color: #e4e4e4; }
-            .wrap .second-container .available-hours .Days-available .table .day .section .check-input {
-              margin-left: 15px;
-              margin-top: 20px; }
-              .wrap .second-container .available-hours .Days-available .table .day .section .check-input input {
-                display: none; }
-              .wrap .second-container .available-hours .Days-available .table .day .section .check-input label {
-                display: inline-block;
-                cursor: pointer; }
-              .wrap .second-container .available-hours .Days-available .table .day .section .check-input input + label {
-                padding: 4px 0 4px 35px;
-                background-image: url("/static/images/unchecked_checkbox.svg");
-                background-repeat: no-repeat;
-                background-size: 20px;
-                background-position: left 2px center; }
-              .wrap .second-container .available-hours .Days-available .table .day .section .check-input input:checked + label {
-                background-image: url("/static/images/checked_checkbox.svg"); }
-              .wrap .second-container .available-hours .Days-available .table .day .section .check-input #Check-span {
-                display: none;
-                border-width: 1px;
-                border-color: #e4e4e4;
-                padding-top: 5px; }
+              margin-left: 75px;
+              display: inline-block; }
+          .wrap .second-container .available-hours .Days-available .table .dayId {
+            opacity: 0.5; }
+            .wrap .second-container .available-hours .Days-available .table .dayId .section {
+              background-color: #f3fbfb;
+              width: 136px;
+              height: 70px;
+              float: left;
+              border-left: 1px solid #e4e4e4;
+              border-bottom: 1px solid #e4e4e4; }
+              .wrap .second-container .available-hours .Days-available .table .dayId .section .check-input {
+                margin-left: 15px;
+                margin-top: 20px; }
+                .wrap .second-container .available-hours .Days-available .table .dayId .section .check-input input {
+                  display: none; }
+                .wrap .second-container .available-hours .Days-available .table .dayId .section .check-input label {
+                  display: inline-block;
+                  cursor: pointer; }
+                .wrap .second-container .available-hours .Days-available .table .dayId .section .check-input input + label {
+                  padding: 4px 0 4px 35px;
+                  background-image: url("/static/images/unchecked_checkbox.svg");
+                  background-repeat: no-repeat;
+                  background-size: 20px;
+                  background-position: left 2px center;
+                  color: #2b2b2b;
+                  font-size: 19px;
+                  /* Approximation due to font substitution */
+                  font-weight: 400;
+                  text-align: left; }
+                .wrap .second-container .available-hours .Days-available .table .dayId .section .check-input input:checked + label {
+                  background-image: url("/static/images/checked_checkbox.svg"); }
+                .wrap .second-container .available-hours .Days-available .table .dayId .section .check-input #Check-span {
+                  display: none;
+                  border-width: 1px;
+                  border-color: #e4e4e4;
+                  padding-top: 5px; }
           .wrap .second-container .available-hours .Days-available .table .time-section {
             width: 74.2%;
             height: 70px;
@@ -305,7 +316,8 @@
             border-style: solid;
             border-width: 1px;
             border-color: #e4e4e4;
-            box-sizing: border-box; }
+            box-sizing: border-box;
+            border-top: none; }
             .wrap .second-container .available-hours .Days-available .table .time-section .timer {
               color: #2b2b2b;
               font-size: 14px;
@@ -318,11 +330,11 @@
               .wrap .second-container .available-hours .Days-available .table .time-section .section-one span {
                 display: none !important; }
               .wrap .second-container .available-hours .Days-available .table .time-section .section-one .select-dropdown, .wrap .second-container .available-hours .Days-available .table .time-section .section-one .select-dropdown-2 {
-                margin-top: 10px;
+                margin-top: 15px;
                 font-family: inherit;
                 display: inline-block;
                 font-size: 12px;
-                color: #818181;
+                color: #2b2b2b;
                 padding: 10px 22px;
                 border-radius: 3px;
                 background: #FFF;
@@ -335,18 +347,21 @@
                 border-color: #e8e8e8;
                 -webkit-appearance: none;
                 -moz-appearance: none;
-                -o-appearanance: none; }
-            .wrap .second-container .available-hours .Days-available .table .time-section button {
-              border: none;
-              background-color: inherit;
-              font-family: "Droid Sans", sans-serif;
-              color: #155d9a;
-              font-size: 14px;
-              /* Approximation due to font substitution */
-              font-weight: 400;
-              text-align: left;
-              display: none;
-              outline: none; }
+                -o-appearanance: none;
+                outline: none; }
+            .wrap .second-container .available-hours .Days-available .table .time-section .button-container {
+              display: inline-block; }
+              .wrap .second-container .available-hours .Days-available .table .time-section .button-container button {
+                border: none;
+                background-color: inherit;
+                font-family: "Droid Sans", sans-serif;
+                color: #155d9a;
+                font-size: 14px;
+                /* Approximation due to font substitution */
+                font-weight: 400;
+                text-align: left;
+                display: none;
+                outline: none; }
             .wrap .second-container .available-hours .Days-available .table .time-section .error-slot {
               font-family: "Droid Sans", sans-serif;
               position: absolute;
@@ -354,23 +369,10 @@
               color: #ec1c2a;
               margin-left: 15px;
               margin-top: 5px; }
-      .wrap .second-container .available-hours .preview {
-        display: inline-block;
-        margin-top: 0px;
-        margin-right: 35px; }
-        .wrap .second-container .available-hours .preview .heading {
-          color: #2b2b2b;
-          font-size: 14px;
-          /* Approximation due to font substitution */
-          font-weight: 400;
-          text-align: left;
-          width: 25%;
-          position: absolute;
-          margin-top: 5px; }
       .wrap .second-container .available-hours .Breaks-available {
         display: block;
-        margin-bottom: 100px;
-        top: -120px; }
+        margin-top: 50px;
+        margin-bottom: 100px; }
         .wrap .second-container .available-hours .Breaks-available .timer {
           color: #2b2b2b;
           font-size: 14px;
@@ -394,23 +396,19 @@
           line-height: 23px;
           /* Approximation due to font substitution */
           text-align: left; }
-        .wrap .second-container .available-hours .Breaks-available .table {
-          border-style: solid;
-          border-width: 1px;
-          border-color: #e4e4e4;
+        .wrap .second-container .available-hours .Breaks-available .D-table {
+          margin-top: 20px;
           box-sizing: border-box;
-          background-color: #fcfbfb;
-          width: 286px;
-          height: 120px; }
-          .wrap .second-container .available-hours .Breaks-available .table .D-avail {
-            background-color: #f5f5f5;
+          width: 286px; }
+          .wrap .second-container .available-hours .Breaks-available .D-table .D-avail {
             border-style: solid;
             border-width: 1px;
             border-color: #e4e4e4;
+            background-color: #f5f5f5;
             box-sizing: border-box;
-            width: 100%;
-            height: 41px; }
-            .wrap .second-container .available-hours .Breaks-available .table .D-avail #two {
+            margin-top: 0px;
+            width: 285px; }
+            .wrap .second-container .available-hours .Breaks-available .D-table .D-avail #two {
               font-family: "Droid Sans", sans-serif;
               color: #2b2b2b;
               font-size: 14px;
@@ -419,9 +417,8 @@
               line-height: 23px;
               /* Approximation due to font substitution */
               text-align: left;
-              margin-left: 18px;
-              width: 50%; }
-            .wrap .second-container .available-hours .Breaks-available .table .D-avail #three {
+              margin-left: 18px; }
+            .wrap .second-container .available-hours .Breaks-available .D-table .D-avail #three {
               font-family: "Droid Sans", sans-serif;
               color: #2b2b2b;
               font-size: 14px;
@@ -431,24 +428,24 @@
               /* Approximation due to font substitution */
               text-align: left;
               margin-left: 73px; }
-          .wrap .second-container .available-hours .Breaks-available .table .time-section {
-            height: 77px;
-            float: left;
-            width: 100%;
-            display: inline-block;
+          .wrap .second-container .available-hours .Breaks-available .D-table .time-section {
+            height: 80px;
+            width: 285px;
             border-style: solid;
             border-width: 1px;
             border-color: #e4e4e4;
-            box-sizing: border-box; }
-            .wrap .second-container .available-hours .Breaks-available .table .time-section .section-one {
+            display: block;
+            box-sizing: border-box;
+            border-top: none; }
+            .wrap .second-container .available-hours .Breaks-available .D-table .time-section .section-one {
               margin-left: 15px;
               margin-right: 15px; }
-              .wrap .second-container .available-hours .Breaks-available .table .time-section .section-one .select-dropdown {
-                margin-top: 10px;
+              .wrap .second-container .available-hours .Breaks-available .D-table .time-section .section-one .select-dropdown {
+                margin-top: 20px;
                 font-family: inherit;
                 display: inline-block;
                 font-size: 12px;
-                color: #818181;
+                color: #2b2b2b;
                 padding: 10px 22px;
                 border-radius: 3px;
                 background: #FFF;
@@ -461,7 +458,47 @@
                 border-color: #e8e8e8;
                 -webkit-appearance: none;
                 -moz-appearance: none;
-                -o-appearanance: none; }
+                -o-appearanance: none;
+                outline: none; }
+      .wrap .second-container .available-hours .preview {
+        display: inline-block;
+        margin-top: 0px;
+        margin-right: 35px; }
+        .wrap .second-container .available-hours .preview .heading {
+          color: #2b2b2b;
+          font-size: 14px;
+          /* Approximation due to font substitution */
+          font-weight: 400;
+          text-align: left;
+          width: 25%;
+          position: absolute;
+          margin-top: 25px; }
+        .wrap .second-container .available-hours .preview .button-prev {
+          position: absolute;
+          display: inline-block;
+          margin-left: 516px;
+          margin-top: 20px;
+          border-style: solid;
+          border-width: 1px;
+          border-color: #c4c4c4;
+          box-sizing: border-box;
+          background-color: #f5f5f5;
+          width: 23px;
+          height: 22px;
+          text-align: center; }
+        .wrap .second-container .available-hours .preview .button-next {
+          position: absolute;
+          display: inline-block;
+          margin-left: 566px;
+          margin-top: 20px;
+          border-width: 1px;
+          border-style: solid;
+          border-color: #c4c4c4;
+          box-sizing: border-box;
+          background-color: #f5f5f5;
+          width: 23px;
+          height: 22px;
+          text-align: center; }
       .wrap .second-container .available-hours .start-date {
         clear: both;
         float: left;
@@ -514,7 +551,9 @@
           background-color: #ffffff;
           width: 283px;
           height: 48px;
-          outline: none; }
+          outline: none;
+          padding-top: 12px;
+          margin-top: 20px; }
         .wrap .second-container .available-hours .start-date .section img {
           margin-left: 20px; }
       .wrap .second-container .available-hours .end-date {
@@ -570,7 +609,9 @@
           background-color: #ffffff;
           width: 283px;
           height: 48px;
-          outline: none; }
+          outline: none;
+          padding-top: 12px;
+          margin-top: 20px; }
         .wrap .second-container .available-hours .end-date .section img {
           margin-left: 20px; }
   .wrap .bottom-container {
@@ -604,11 +645,11 @@
 @media only screen and (max-width: 1260px) {
   .wrap .second-container .available-hours .preview {
     float: none;
-    margin-top: 30px; }
+    margin-bottom: 100px; }
   .wrap .second-container .available-hours .Breaks-available {
     float: none;
     display: block;
-    margin-top: 150px; } }
+    margin-top: 50px; } }
 
 @media only screen and (max-width: 768px) {
   .wrap .container .form .input-name #name {
@@ -622,22 +663,78 @@
 
 @media only screen and (max-width: 600px) {
   .wrap .second-container .available-hours .Days-available {
-    width: 100% !important;
-    margin-top: -100px; }
+    width: 100% !important; }
     .wrap .second-container .available-hours .Days-available .table {
       width: 90%;
       border-style: none; }
-    .wrap .second-container .available-hours .Days-available .D-avail {
-      display: none; }
-    .wrap .second-container .available-hours .Days-available .day {
-      width: 100%;
-      margin-top: 20px; }
-      .wrap .second-container .available-hours .Days-available .day .section {
-        width: 100% !important; }
-        .wrap .second-container .available-hours .Days-available .day .section .check-input {
+      .wrap .second-container .available-hours .Days-available .table .D-avail {
+        display: none; }
+      .wrap .second-container .available-hours .Days-available .table .day {
+        width: 100%;
+        margin-top: 50px; }
+        .wrap .second-container .available-hours .Days-available .table .day .section {
           width: 100% !important; }
-          .wrap .second-container .available-hours .Days-available .day .section .check-input #Check-span {
+          .wrap .second-container .available-hours .Days-available .table .day .section .check-input {
+            width: 100% !important;
+            margin-left: 0px !important;
+            margin-top: 0px !important; }
+            .wrap .second-container .available-hours .Days-available .table .day .section .check-input #Check-span {
+              display: inline-block !important;
+              color: #2b2b2b;
+              font-size: 14px;
+              /* Approximation due to font substitution */
+              font-weight: 400;
+              line-height: 23px;
+              /* Approximation due to font substitution */
+              text-align: left;
+              transform: scaleX(1.0011);
+              /* width and height properties ommitted due to transform */
+              width: 40%;
+              padding-top: 20px !important;
+              padding-bottom: 25px;
+              background-color: #f5f5f5;
+              padding-left: 14px;
+              border-right: 1px solid #e8e8e8; }
+            .wrap .second-container .available-hours .Days-available .table .day .section .check-input input + label {
+              margin-left: 52px; }
+      .wrap .second-container .available-hours .Days-available .table .time-section {
+        width: 100% !important;
+        min-height: 130px;
+        margin-bottom: 30px; }
+        .wrap .second-container .available-hours .Days-available .table .time-section span {
+          display: none; }
+        .wrap .second-container .available-hours .Days-available .table .time-section .button-container {
+          text-align: center;
+          border: 1px solid #e4e4e4;
+          border-top: 0;
+          border-color: #e4e4e4;
+          box-sizing: border-box;
+          clear: both;
+          padding-left: 32%;
+          padding-right: 67.6%;
+          margin-left: -1px;
+          margin-right: -1px;
+          display: block; }
+          .wrap .second-container .available-hours .Days-available .table .time-section .button-container button {
+            width: 100px;
+            padding-top: 15px;
+            padding-bottom: 15px; }
+        .wrap .second-container .available-hours .Days-available .table .time-section .section-one {
+          display: block !important;
+          margin: 0% !important;
+          padding-left: 0px;
+          border-bottom: 1px solid #e8e8e8; }
+          .wrap .second-container .available-hours .Days-available .table .time-section .section-one .Start-time {
+            margin: 0%;
+            margin-left: 52px; }
+          .wrap .second-container .available-hours .Days-available .table .time-section .section-one .End-time {
+            margin: 0%;
+            margin-left: 52px; }
+          .wrap .second-container .available-hours .Days-available .table .time-section .section-one #Checkin {
             display: inline-block !important;
+            width: 40%;
+            padding: 19px 16px;
+            padding-top: 21px;
             color: #2b2b2b;
             font-size: 14px;
             /* Approximation due to font substitution */
@@ -645,29 +742,7 @@
             line-height: 23px;
             /* Approximation due to font substitution */
             text-align: left;
-            transform: scaleX(1.0011);
-            /* width and height properties ommitted due to transform */
-            width: 50%; }
-    .wrap .second-container .available-hours .Days-available .time-section {
-      width: 100% !important;
-      min-height: 130px;
-      margin-bottom: 30px; }
-      .wrap .second-container .available-hours .Days-available .time-section span {
-        display: none; }
-      .wrap .second-container .available-hours .Days-available .time-section button {
-        clear: both;
-        margin-left: 30%; }
-      .wrap .second-container .available-hours .Days-available .time-section .section-one {
-        display: block !important;
-        margin: 0% !important;
-        padding-left: 15px; }
-        .wrap .second-container .available-hours .Days-available .time-section .section-one .Start-time {
-          margin: 0%; }
-        .wrap .second-container .available-hours .Days-available .time-section .section-one .End-time {
-          margin: 0%; }
-        .wrap .second-container .available-hours .Days-available .time-section .section-one #Checkin {
-          display: inline-block !important;
-          width: 50%; }
+            border-right: 1px solid #e8e8e8; }
   .wrap .second-container .available-hours .Breaks-available {
     top: 10px;
     margin-bottom: 100px; }
@@ -700,21 +775,83 @@
 
 @media only screen and (max-width: 350px) {
   .wrap .second-container .available-hours .Days-available {
-    width: 100%; }
+    width: 100% !important; }
     .wrap .second-container .available-hours .Days-available .table {
       width: 90%;
       border-style: none; }
-    .wrap .second-container .available-hours .Days-available .D-avail {
-      display: none; }
-  .wrap .second-container .available-hours .Breaks-available .table {
+      .wrap .second-container .available-hours .Days-available .table .D-avail {
+        display: none; }
+      .wrap .second-container .available-hours .Days-available .table .day {
+        width: 100%;
+        margin-top: 20px; }
+        .wrap .second-container .available-hours .Days-available .table .day .section {
+          width: 100% !important; }
+          .wrap .second-container .available-hours .Days-available .table .day .section .check-input {
+            width: 100% !important;
+            margin-left: 0px !important;
+            margin-top: 0px !important; }
+            .wrap .second-container .available-hours .Days-available .table .day .section .check-input #Check-span {
+              display: inline-block !important;
+              color: #2b2b2b;
+              font-size: 10px;
+              /* Approximation due to font substitution */
+              font-weight: 400;
+              line-height: 23px;
+              /* Approximation due to font substitution */
+              text-align: left;
+              transform: scaleX(1.0011);
+              /* width and height properties ommitted due to transform */
+              width: 40%;
+              padding-top: 20px !important;
+              padding-bottom: 25px;
+              background-color: #f5f5f5;
+              padding-left: 14px;
+              border-right: 1px solid #e8e8e8; }
+            .wrap .second-container .available-hours .Days-available .table .day .section .check-input input + label {
+              margin-left: 30px;
+              font-size: 15px; }
+      .wrap .second-container .available-hours .Days-available .table .time-section {
+        width: 100% !important;
+        min-height: 130px;
+        margin-bottom: 30px; }
+        .wrap .second-container .available-hours .Days-available .table .time-section span {
+          display: none; }
+        .wrap .second-container .available-hours .Days-available .table .time-section button {
+          clear: both;
+          margin-left: 30%; }
+        .wrap .second-container .available-hours .Days-available .table .time-section .section-one {
+          display: block !important;
+          margin: 0% !important;
+          padding-left: 0px;
+          border-bottom: 1px solid #e8e8e8; }
+          .wrap .second-container .available-hours .Days-available .table .time-section .section-one .Start-time {
+            margin: 0%;
+            margin-left: 30px; }
+          .wrap .second-container .available-hours .Days-available .table .time-section .section-one .End-time {
+            margin: 0%;
+            margin-left: 30px; }
+          .wrap .second-container .available-hours .Days-available .table .time-section .section-one #Checkin {
+            display: inline-block !important;
+            width: 40%;
+            color: #2b2b2b;
+            font-size: 10px;
+            /* Approximation due to font substitution */
+            font-weight: 400;
+            line-height: 23px;
+            /* Approximation due to font substitution */
+            text-align: left;
+            border-right: 1px solid #e8e8e8; }
+  .wrap .second-container .available-hours .Breaks-available .D-table {
     width: 90%; }
-    .wrap .second-container .available-hours .Breaks-available .table .D-avail #two {
-      margin-left: 8px; }
-    .wrap .second-container .available-hours .Breaks-available .table .D-avail #three {
-      margin-left: 65px; }
-    .wrap .second-container .available-hours .Breaks-available .table .time-section {
+    .wrap .second-container .available-hours .Breaks-available .D-table .D-avail {
       width: 100%; }
-      .wrap .second-container .available-hours .Breaks-available .table .time-section .section-one .select-dropdown {
+      .wrap .second-container .available-hours .Breaks-available .D-table .D-avail #two {
+        margin-left: 8px; }
+      .wrap .second-container .available-hours .Breaks-available .D-table .D-avail #three {
+        margin-left: 65px; }
+    .wrap .second-container .available-hours .Breaks-available .D-table .time-section {
+      width: 100%; }
+      .wrap .second-container .available-hours .Breaks-available .D-table .time-section .section-one .select-dropdown {
         width: 38%;
         margin-left: -7px; }
   .wrap .second-container .available-hours .preview {

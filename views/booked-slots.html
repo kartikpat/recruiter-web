@@ -2,7 +2,7 @@
 <div class="loader-overlay hidden" id="loaderOverlay">
     <div class="loader"></div>
 </div>
-<div class="page-content ">
+<div class="page-content hidden ">
     <div class="header-slot">
         <div class="tagline left">Booked Slots</div>
         <div class="right-container right">
@@ -45,7 +45,7 @@
     </div>
 </div>
 
-<option class="prototype calendarOption"></option>
+<option class="prototype calendarOption hidden"></option> 
 
 <div class="slot-date slotDate prototype hidden">
     <div class="date"><div class="action-date">Interview Date</div><span class="interviewDate"></span></div>
@@ -66,7 +66,6 @@
                 <div id="exp-details" class="jobExp"> Delhi 0-5 yrs</div>
             </div>
             <div class="action-buttons">
-
                 <div class="section">
                     <div class="button-action-list candidateOtherActions inactive">
                         <label class="action-list-label">Other Actions</label>
@@ -107,8 +106,10 @@
     </div>
 </div>
 
-<div class="page-content hidden">
-    <div class="main-wrapper">
+
+<div class="page-wrap ">
+    <div class="main-wrappper">
+        <div class="main-conainer">
       <div class="header-slot">
             <div class="tagline left">Interview scheduler</div>
                 <div class="right-container right">
@@ -118,16 +119,19 @@
                 </div>
             <div class="clearfix"></div>
         </div>
+        <div class="content">
         <div class="no-schedule-container">
             <div class="image-container">
-                <img src="/static/images/calender.png">
+                <img src="/static/images/no-calendar.png">
             </div>
             <div class="heading">No interviews yet</div>
             <div class="subheading">You'll find a list of interviews here once you schedule invites</div>
         </div>
-        <div class="conversations right">
-                {{>chatSidebar}}
         </div>
-     </div>
+      </div>
     </div>   
+    <div class="conversations right">
+            {{>chatSidebar}}
+    </div>
+</div>   
 {{> footer }}

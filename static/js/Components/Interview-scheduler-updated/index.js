@@ -14,13 +14,22 @@ $(document).ready(function(){
         }
     })
 
-    
     var calendarSubmitSuccessSubscription = pubsub.subscribe('submittedCalendar', onSuccessfulSubmitCalendar);
-    var calendarSubmitFailSubscription = pubsub.subscribe('failedCalendarSubmission', );
-    
-    function onSuccessfulSubmitCalendar(topic, data){onFailedSubmitCalendar
+    var calendarSubmitFailSubscription = pubsub.subscribe('failedCalendarSubmission',onFailedSubmitCalendar);
+    var fetchCalendarSuccessSubscription = pubsub.subscribe("fetchedJob:", onSuccessfulFetchCalendar);
+	var fetchCalendarFailSubscription = pubsub.subscribe("failedToFetchJob:", onFailedFetchCalendar);
+
+    function onSuccessfulFetchCalendar(topic,data){
+        calendarDetails.setDetails(calendarId,data);
+    }
+
+    function onFailedFetchCalendar(topic,data){
+        alert(res.status);
+    }
+
+    function onSuccessfulSubmitCalendar(topic, data){
         console.log('Login successful');
-        window.location='/' //pchangeurl
+        window.location='/' //changeurl
     }
 
 	function onFailedSubmitCalendar(topic, data){

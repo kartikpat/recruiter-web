@@ -6,6 +6,25 @@ var errorResponses = {
     missingslots:'Please select a slot',
 }
 
+var data={
+    name:"geetansh",
+    message:"helo",
+    telephone:"bye",
+    fromDate:"2018-03-10",
+    toDate:"2018-03-25",
+    slots:[
+        {
+            startTime:"6",
+            endTime:"12",
+            id:"6",
+        },
+        {
+            startTime:"12",
+            endTime:"23",
+            id:"5",
+        }
+    ]
+}
 function Calendar(){
     var settings ={};
     var timetable={};
@@ -41,6 +60,8 @@ function Calendar(){
         settings.firstDay=$('#1'),
         settings.error=$('.errors'),
         settings.slots=$('.table'),
+        settings.prevButton=$('.button-prev'),
+        settings.nextButton=$('.button-next')
         selectCreater();
         copytoall();
         time_mapper();
@@ -73,6 +94,7 @@ function Calendar(){
     }
 
     function getslots(){
+
         var slots=[];
         var finalslots=[];   
         var currentDate=moment().format("YYYY-MM-DD");
@@ -100,11 +122,16 @@ function Calendar(){
         $.each(settings.dayId,function(){
             settings.select_menu.find('option').prop('disabled', false); 
             var id=$(this).attr('id');
+            $("#"+id+"").css("opacity","0.5");
+            var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
+            if(checkbox==true){
+            $("#"+id+"").css("opacity","1");
+            }
             var startvalue=$("#"+id+ "").find(settings.start_time).val();
             var endvalue=$("#"+id+ "").find(settings.end_time).val();
-            var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
+           
             if(parseInt(startvalue)>0 && parseInt(endvalue)>0 && checkbox==true){
-          //      debugger
+             
                 var slot={
                     startTime:startvalue,
                     endTime:endvalue,
@@ -159,6 +186,33 @@ function Calendar(){
             }
     }
 
+    function setDetails(object){
+        settings.name.val(object["name"]);
+        settings.message.val(object["message"]);
+        settings.teleMessage.val(object["telephone"]);
+        var previewslots=object.slots;
+        availablehours(previewslots);
+        var fromDate=object.fromDate; //DD-MM-YYYY
+        startDate=moment(fromDate).format("DD-MM-YYYY");
+        var toDate=object.toDate;
+        endDate=moment(toDate).format("DD-MM-YYYY");
+        $('#startdatepicker').datepicker().datepicker('setDate', startDate);
+        $('#enddatepicker').datepicker().datepicker('setDate', endDate);
+        //datepicker set value
+        testHighlight(fromDate,toDate,previewslots);
+    }
+
+    function availablehours(slots){
+        for(var k=0;k<slots.length;k++){
+            var id=slots[k].id;
+            var startvalue=slots[k].startvalue;
+            var endvalue=slots[k].endvalue;
+            $("#"+id+ "").find(settings.start_time).val(startvalue);
+            $("#"+id+ "").find(settings.end_time).val(endvalue);
+            $("#"+id+ "").find(settings.checkbox).prop("checked",true);
+        }       
+    }
+
     function testHighlight(fromDate,toDate,days){
        console.log(days);
        console.log(fromDate);
@@ -195,7 +249,7 @@ function Calendar(){
                 continue
             console.log("here");
             for(var j=parseInt(start);j<parseInt(end); j+=1){
-                $('.fc-'+daySchema[id]).find("#hours-" +j+ "").css({"text-decoration":"none" ,"opacity":"1","color":"#149075","font-weight": "bold"});
+                $('.fc-'+daySchema[id]).find("#hours-" +j+ "").css({"text-decoration":"none" ,"opacity":"1","color":"#149075"});
             }
         }       
     }
@@ -300,6 +354,16 @@ function Calendar(){
             columnFormat :'ddd \n D/M/Y'
           });
           $(".fc-button").on("click", Timer);
+          settings.prevButton.on("click",function(){
+              console.log("hello");
+            $('#calendar').fullCalendar('prev');
+                Timer();
+          })
+          settings.nextButton.on("click",function(){
+            $('#calendar').fullCalendar('next');
+                Timer();
+          })
+
           Timer();
     }
 
@@ -461,6 +525,10 @@ function Calendar(){
 		return
     }
 
+    // function prevWeek(){
+    //         console.log("hello");
+    //         $('#calendar').fullCalendar('prev');
+    // }
 
     return {
         init:init,
@@ -476,6 +544,7 @@ function Calendar(){
         submitHandler:submitHandler,
         getDetails:getDetails,
         validate:validate,
+    
     }
 };
 

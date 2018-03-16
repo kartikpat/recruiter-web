@@ -43,15 +43,15 @@
 			<div class="table" id="example">
 					<div class="error"></div>
 				<div class="D-avail">
-					<span id="one">DAYS AVAILABLE</span> 
-					<span id="two">START TIME</span>
-					<span id="three">END TIME</span>  
+					<div id="one">DAYS AVAILABLE</div> 
+					<div id="two">START TIME</div>
+					<div id="three">END TIME</div>  
 				</div>
 				<div class="dayId" id="1">
 					<div class="day">
 						<div class="section">
 							<div class="check-input">
-								<span id="Check-span">DAYS AVAILABLE</span>
+								<div id="Check-span">DAYS AVAILABLE</div>
 								<input type="checkbox" id="check-button-mon" class="check-button highlighter">
 								<label for="check-button-mon">MON</label>
 							</div>					 
@@ -77,7 +77,9 @@
 									</div>
 							</select>
 						</span>
-						<button type="button" id="selectAll">Copy to All</button>
+						<div class="button-container">
+							<button type="button" id="selectAll">Copy to All</button>
+						</div>
 						<div class="error-slot"></div>
 					</div>
 			    </div>
@@ -218,7 +220,6 @@
 									<label for="check-button-sat">SAT</label>
 								</div>								
 							</div>
-					
 					</div>
 					<div class="time-section" id="six">
 							<span class="section-one">
@@ -242,41 +243,48 @@
 						<div class="error-slot"></div>	
 					</div>
 				</div>		
-		    </div> 
+			</div> 
+			<div class="Breaks-available">
+					<span>Breaks Hours</span>
+					<p>Select your break hours. This will be marked as unavailable.</p>
+					<div class="D-table">
+						<div class="D-avail">
+								<span id="two">START TIME</span>
+								<span id="three">END TIME</span>  
+						</div>
+						<div class="time-section" id="breaks">
+								<span class="section-one">
+									<select class="select-dropdown Break-start start highlighter" id="select">
+										<div class="dropdown-list">
+										<option value="0"selected>Select</option>
+											
+										</div>
+									</select>
+								</span>
+								<span class="timer">to</span>
+								<span class="section-one" >
+									<select class="select-dropdown Break-end end highlighter" id="select">
+										<div class="dropdown-list">
+											<option  value="0"	  selected>Select</option>
+										</div>
+									</select>
+								</span>
+						</div>
+					</div>
+			</div>
     	</div>
 			<div class="preview">  <!right-->
 				<div class="heading">Preview Of Slots Created</div>
+				<div class="button-prev">
+					<img src="/static/images/leftarrow.png">
+				</div>
+				<div class="button-next">
+					<img src="/static/images/rightarrow.png">
+				</div>
 				<div id='calendar'>	</div>
 			</div>
 
-			<div class="Breaks-available">
-				<span>Breaks Hours</span>
-				<p>Select your break hours. This will be marked as unavailable.</p>
-				<div class="table">
-					<div class="D-avail">
-							<span id="two">START TIME</span>
-							<span id="three">END TIME</span>  
-					</div>
-					<div class="time-section" id="breaks">
-							<span class="section-one">
-								<select class="select-dropdown Break-start start highlighter" id="select">
-									<div class="dropdown-list">
-									<option value="0"selected>Select</option>
-										
-									</div>
-								</select>
-							</span>
-							<span class="timer">to</span>
-							<span class="section-one" >
-								<select class="select-dropdown Break-end end highlighter" id="select">
-									<div class="dropdown-list">
-										<option  value="0"	  selected>Select</option>
-									</div>
-								</select>
-							</span>
-					</div>
-				</div>
-			</div>
+			
 			<div class="start-date">
 				<span>Start date</span>
 				<p>Determines when this schedule starts to produce starts time</p>
