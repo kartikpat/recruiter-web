@@ -473,6 +473,32 @@
           width: 25%;
           position: absolute;
           margin-top: 25px; }
+        .wrap .second-container .available-hours .preview .button-prev {
+          position: absolute;
+          display: inline-block;
+          margin-left: 516px;
+          margin-top: 20px;
+          border-style: solid;
+          border-width: 1px;
+          border-color: #c4c4c4;
+          box-sizing: border-box;
+          background-color: #f5f5f5;
+          width: 23px;
+          height: 22px;
+          text-align: center; }
+        .wrap .second-container .available-hours .preview .button-next {
+          position: absolute;
+          display: inline-block;
+          margin-left: 566px;
+          margin-top: 20px;
+          border-width: 1px;
+          border-style: solid;
+          border-color: #c4c4c4;
+          box-sizing: border-box;
+          background-color: #f5f5f5;
+          width: 23px;
+          height: 22px;
+          text-align: center; }
       .wrap .second-container .available-hours .start-date {
         clear: both;
         float: left;

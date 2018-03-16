@@ -60,8 +60,8 @@ function Calendar(){
         settings.firstDay=$('#1'),
         settings.error=$('.errors'),
         settings.slots=$('.table'),
-        settings.prevButton=$('.prev-button'),
-        settings.nextButton=$('.next-button')
+        settings.prevButton=$('.button-prev'),
+        settings.nextButton=$('.button-next')
         selectCreater();
         copytoall();
         time_mapper();
@@ -354,6 +354,16 @@ function Calendar(){
             columnFormat :'ddd \n D/M/Y'
           });
           $(".fc-button").on("click", Timer);
+          settings.prevButton.on("click",function(){
+              console.log("hello");
+            $('#calendar').fullCalendar('prev');
+                Timer();
+          })
+          settings.nextButton.on("click",function(){
+            $('#calendar').fullCalendar('next');
+                Timer();
+          })
+
           Timer();
     }
 

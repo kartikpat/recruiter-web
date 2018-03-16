@@ -6,7 +6,6 @@ $(document).ready(function(){
     calendarDetails.startdate();
     calendarDetails.enddate();
     calendarDetails.time_mapper();
-     calendarDetails.prevWeek();
     test= calendarDetails.testHighlight;
     calendarDetails.submitHandler(function(){
         if(calendarDetails.validate()){
@@ -15,7 +14,6 @@ $(document).ready(function(){
         }
     })
 
-    
     var calendarSubmitSuccessSubscription = pubsub.subscribe('submittedCalendar', onSuccessfulSubmitCalendar);
     var calendarSubmitFailSubscription = pubsub.subscribe('failedCalendarSubmission',onFailedSubmitCalendar);
     var fetchCalendarSuccessSubscription = pubsub.subscribe("fetchedJob:", onSuccessfulFetchCalendar);

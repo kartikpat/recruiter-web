@@ -38,6 +38,7 @@
 }
 .fc-button{
     outline: none;
+    display: none;
 }
 
 .fc-nonbusiness{
@@ -94,7 +95,7 @@
     font-size: 14px;/* Approximation due to font substitution */
     font-weight: 400;
     text-align: left;
-    padding-right: 20px;
+    padding-right: 120px;
 }
 
 .fc-button{
