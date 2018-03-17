@@ -5,6 +5,7 @@ jQuery(document).ready(function(){
 	});
 
 	$(window).click(function(e) {
+
 		if(!jQuery(e.target).parents(".header .profile-menu").length && !jQuery(e.target).parents(".header .profile.action-icon").length) {
 			jQuery(".header .profile-menu").removeClass("active");
 		}
@@ -25,7 +26,7 @@ jQuery(document).ready(function(){
 	jQuery(".header").on("mouseenter", ".my-interviews", function() {
 		jQuery(this).find(".profile-menu").addClass("active")
  	})
-	  
+
 	  jQuery(".header").on("mouseleave", ".my-interviews", function() {
 		jQuery(this).find(".profile-menu").removeClass("active")
   	})

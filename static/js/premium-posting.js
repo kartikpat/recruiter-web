@@ -20,9 +20,8 @@ $(document).ready(function(){
     //     $("#success-job-posted").removeClass("hidden");
     // }
 
-    var msg = localStorage.getItem("jobPostSuccessMessage")
-	if(msg!= '') {
-		toastNotify(1, msg)
+    if(localStorage.getItem("jobPostSuccessMessage") != null) {
+		toastNotify(1, localStorage.getItem("jobPostSuccessMessage"))
 		localStorage.removeItem("jobPostSuccessMessage");
 	}
 
