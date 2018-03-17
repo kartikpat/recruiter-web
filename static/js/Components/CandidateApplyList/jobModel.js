@@ -45,7 +45,7 @@ function Job(){
 	function setJobDetails(data){
 		console.log(data)
 		settings.jobTitle.text(data["jobTitle"]).removeClass("shell");
-		settings.jobId.text(data["jobPublishedId"]).removeClass("shell");
+		settings.jobId.text("Job Code: " +data["jobPublishedId"]).removeClass("shell");
 		if(data["jobLocation"]) {
 	        settings.jobLocation.text(data["location"]).removeClass("shell")
 	        settings.jobSeparator.removeClass("hidden")

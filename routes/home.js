@@ -43,6 +43,7 @@ module.exports = function(settings){
 				const jsonBody = JSON.parse(body)
 				if(jsonBody.status && jsonBody.status =='success'){
 					req.profile = jsonBody.data;
+
 					if(req.originalUrl == "/welcome") {
 						if(req.profile.verified == 1) {
 							return res.redirect('/account-created');
@@ -83,7 +84,7 @@ module.exports = function(settings){
                 return next()
 			}
 			else {
-				return res.redirect("/login")
+				return next()
 			}
 		})
 	}
@@ -383,16 +384,16 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/recruiter/reset", function(req, res){
-
-		res.render("reset-password", {
-			title: "IIM JOBS | Reset Password",
-			styles:  assetsMapper["reset-password"]["styles"][mode],
-			scripts: assetsMapper["reset-password"]["scripts"][mode],
-			baseUrl: baseUrl
-		})
-		return
-	})
+	// app.get("/recruiter/reset", function(req, res){
+	//
+	// 	res.render("reset-password", {
+	// 		title: "IIM JOBS | Reset Password",
+	// 		styles:  assetsMapper["reset-password"]["styles"][mode],
+	// 		scripts: assetsMapper["reset-password"]["scripts"][mode],
+	// 		baseUrl: baseUrl
+	// 	})
+	// 	return
+	// })
 
 	app.get("/recruiter/pdf", function(req, res){
 
@@ -552,6 +553,21 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			verify:verifyAccount,
 			email: email
+		})
+		return
+	});
+
+	app.get("/reset-password", function(req,res){
+		var email = req.query.email || "";
+		var key = req.query.key || ""
+		res.render("reset-password", {
+			title:"Recruiter Web - Reset Password Page | iimjobs.com",
+			styles:  assetsMapper["reset-password"]["styles"][mode],
+			scripts: assetsMapper["reset-password"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			email: email,
+			key: key
 		})
 		return
 	});

@@ -60,6 +60,7 @@ function candidateList() {
     function onClickCoverLetterLink() {
         settings.rowContainer.on('click', settings.coverLetterLink, function(e){
             e.preventDefault()
+            // settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 2});
             return false
         })
     }

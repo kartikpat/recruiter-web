@@ -74,7 +74,7 @@
 
 				</div>
 
-				<div class="candidates-area" id="candidatesArea">
+				<div class="candidates-area" id="candidatesArea" style="margin-bottom:40px ">
 					<div class="candidates-area-header">
 						<div class="candidates-search">
 							<div class="keyword-search">
@@ -197,17 +197,18 @@
 									{{>candidateApplyListShell}}
 									{{>candidateApplyListShell}}
 								</div>
-								<div class="loader loader-scroller loaderScroller hidden"></div>
+
 							</div>
 
 						</div>
 					</div>
 				</div>
-				<div class="loading loaderScroller hidden" style="text-align: center;margin: 20px auto 5px auto;">
-				    <p>Loading</p>
+
+				<div class="loading loaderScroller hidden" style="margin-top:20px ">
+				    <div class="loader loader-scroller"></div>
 				</div>
 				<style>
-					.loading p {
+					.loading div {
 						display:inline-block;
 						position:relative;
 					}
@@ -258,8 +259,8 @@
                 	<p class="profile-name js_name">Shreya Sharma</p>
 
                 	<div class="social-media-accounts">
-                		<span class="social facebook"><img src="/static/images/facebook-round.svg"></span>
-                		<span class="social twitter"><img src="/static/images/twitter-round.svg"></span>
+                		<span class="social facebook hidden"><img src="/static/images/facebook-round.svg"></span>
+                		<span class="social twitter hidden"><img src="/static/images/twitter-round.svg"></span>
                 	</div>
                 </div>
 

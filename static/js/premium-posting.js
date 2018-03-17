@@ -2,8 +2,14 @@ var isSuccess;
 
 $(document).ready(function(){
     $("#basic-buy").click(basicPosting);
-    $("#signature-buy").click(openSignatureModal);
-    $("#platinum-buy").click(openPlatinumModal);
+    $("#signature-buy").click(function(e){
+        e.stopPropagation()
+        openSignatureModal()
+    });
+    $("#platinum-buy").click(function(e){
+        e.stopPropagation()
+        openPlatinumModal()
+    });
     $(".button.signature-continue").click(signaturePosting);
     $(".button.platinum-continue").click(platinumPosting);
 	$(".close-modal, .close").click(closeModal);

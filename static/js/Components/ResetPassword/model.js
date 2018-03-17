@@ -1,4 +1,4 @@
-var errorResponsesLogin = {
+var errorResponses = {
 	missingEmail: 'Please enter the Email address',
 	invalidEmail: 'That looks like an invalid email address',
 	missingPassword: 'Please enter your password',
@@ -10,19 +10,22 @@ var errorResponsesLogin = {
 }
 
 var emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-function userCredentials(){
+function resetPassword(){
 	var user= {}
 	function init(){
 		user.email = $("#email");
 		user.password = $("#password");
 		user.login = $("#login");
 		user.errors = $('.error');
+        user.key = $("#key");
+        user.resetSuccess = $("#resetSuccess")
 	}
 	function loginHandler(fn){
 		user.login.click(fn);
 	}
 	function getData(){
 		return {
+            key: user.key.val(),
 			email: user.email.val(),
 			password: user.password.val()
 		}
@@ -36,16 +39,16 @@ function userCredentials(){
 		console.log(res)
 		switch(res.status){
 			case 404:
-				message = errorResponsesLogin.userFail;
+				message = errorResponses.userFail;
 				break;
 			case 401:
-				message = errorResponsesLogin.passwordFail;
+				message = errorResponses.passwordFail;
 				break;
 			case 503:
-				message = errorResponsesLogin.serviceError;
+				message = errorResponses.serviceError;
 				break;
 			case 422:
-				message = errorResponsesLogin.missingParameters
+				message = errorResponses.missingParameters
 				break;
 		}
 		user.password.next('.error').text(message)
@@ -74,13 +77,17 @@ function userCredentials(){
 	function test(fn){
 		fn(user);
 	}
+    function successMsg() {
+        user.resetSuccess.html("Password Successfully Reset. You can <a class='link-color' href='login'> Login</a> with new password.")
+    }
 	return {
 		init: init,
 		getData: getData,
 		validateLogin: validateLogin,
 		loginHandler: loginHandler,
 		errorHandler: errorHandler,
-		test: test
+		test: test,
+        successMsg: successMsg
 	}
 
 }

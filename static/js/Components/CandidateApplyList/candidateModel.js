@@ -174,9 +174,10 @@ function Candidate() {
         else
             item.salary.text(aData["ctc"]+ " LPA");
         item.firstName.text(aData["name"])
-        var lastActiveDays = getLastActiveDay(aData["lastActive"])
+        // var lastActiveDays = getLastActiveDay(aData["lastActive"])
 
-        item.lastActive.text(lastActiveDays > 1 ? lastActiveDays + " days ago": lastActiveDays + " day ago");
+        // item.lastActive.text(lastActiveDays > 1 ? lastActiveDays + " days ago": lastActiveDays + " day ago");
+        item.lastActive.text(moment(aData["lastActive"]).format("DD-MM-YYYY"))
         var eduStr = '';
         $.each(aData["education"],function(index, anObj) {
 
@@ -337,7 +338,10 @@ function Candidate() {
     }
 
     jQuery(".body-overlay").on("click", function(e) {
+
     	if(jQuery(e.target).parents(".view-resume-modal").length) {
+
+            e.stopPropagation()
     		e.stopImmediatePropagation();
     	}
         settings.candidateDetailsModal.scrollTop(0)
@@ -361,6 +365,9 @@ function Candidate() {
             event.stopPropagation();
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
             var comment = $(settings.candidateCommentTextareaClass).val();
+            if(comment == "") {
+                return
+            }
             fn(applicationId, comment);
         });
     }

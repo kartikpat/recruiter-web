@@ -852,7 +852,7 @@ body.posf {
   z-index: 1500; }
   .toast-notification-container.show {
     bottom: 15px; }
-  .toast-notification-container.error {
+  .toast-notification-container.toasterror {
     background-color: #b66666; }
   .toast-notification-container.success {
     background-color: #149075; }

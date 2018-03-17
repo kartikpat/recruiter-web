@@ -824,7 +824,7 @@ body.posf {
   z-index: 1500; }
   .toast-notification-container.show {
     bottom: 15px; }
-  .toast-notification-container.error {
+  .toast-notification-container.toasterror {
     background-color: #b66666; }
   .toast-notification-container.success {
     background-color: #149075; }
@@ -3815,12 +3815,11 @@ input::-webkit-input-placeholder {
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments textarea {
                 width: 50%;
                 padding: 5px;
-                border-left: 3px solid #1f8f75;
-                min-height: 50px; }
+                border: 1px solid #e8e8e8;
+                min-height: 100px; }
                 .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments textarea:focus {
                   outline: none;
-                  border: 1px solid #1f8f75;
-                  border-left: 3px solid green; }
+                  border: 1px solid #1f8f75; }
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons {
                 margin-top: 10px; }
                 .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons span.button {
@@ -4291,12 +4290,11 @@ input::-webkit-input-placeholder {
 .sidebar-section.comments textarea {
   width: 100%;
   padding: 5px;
-  border-left: 3px solid #1f8f75;
+  border: 1px solid #e8e8e8;
   min-height: 50px; }
   .sidebar-section.comments textarea:focus {
     outline: none;
-    border: 1px solid #1f8f75;
-    border-left: 3px solid green; }
+    border: 1px solid #1f8f75; }
 
 .sidebar-section.comments .action-buttons {
   margin-bottom: 0; }
@@ -4320,3 +4318,9 @@ input::-webkit-input-placeholder {
       .active-filters .filter-tag #clear-all {
         display: block;
         margin-top: 5px; } }
+
+.loader.loader-scroller {
+  height: 45px;
+  width: 45px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db; }

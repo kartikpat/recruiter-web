@@ -314,7 +314,7 @@ body.posf {
   z-index: 1500; }
   .toast-notification-container.show {
     bottom: 15px; }
-  .toast-notification-container.error {
+  .toast-notification-container.toasterror {
     background-color: #b66666; }
   .toast-notification-container.success {
     background-color: #149075; }
@@ -698,7 +698,8 @@ b {
     .header .navigation ul {
       list-style: none;
       font-family: "Comfortaa", sans-serif;
-      margin: 0; }
+      margin: 0;
+      padding-left: 40px; }
       .header .navigation ul .menu-list-item {
         line-height: 40px;
         font-size: 14px;

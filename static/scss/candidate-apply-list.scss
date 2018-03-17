@@ -1320,12 +1320,13 @@ input::-webkit-input-placeholder {
 									textarea {
 										width: 50%;
 										padding: 5px;
-										border-left: 3px solid $button-color-green;
-										min-height: 50px;
+                                        border: 1px solid #e8e8e8;
+
+										min-height: 100px;
 										&:focus {
 											outline: none;
 											border: 1px solid $button-color-green;
-											border-left: 3px solid green;
+
 										}
 									}
 									.action-buttons {
@@ -1883,12 +1884,12 @@ input::-webkit-input-placeholder {
 	textarea {
 		width: 100%;
 		padding: 5px;
-		border-left: 3px solid $button-color-green;
+		border: 1px solid #e8e8e8;
 		min-height: 50px;
 		&:focus {
 			outline: none;
 			border: 1px solid $button-color-green;
-			border-left: 3px solid green;
+			
 		}
 	}
 	.action-buttons {
@@ -1932,11 +1933,10 @@ input::-webkit-input-placeholder {
     }
 }
 
-// .loader.loader-scroller {
-//     position: absolute;
-//     top: 101%;
-//     height: 45px;
-//     width: 45px;
-//     border: 4px solid #f3f3f3;
-//     border-top: 4px solid #3498db;
-// }
+.loader.loader-scroller {
+
+    height: 45px;
+    width: 45px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+}
