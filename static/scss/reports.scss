@@ -135,6 +135,7 @@
 								text-align:left;
                                 &.job-current-status {
                                     min-width: 100px;
+                                    text-transform: capitalize;
                                 }
                                 &.date {
                                     min-width: 75px;
@@ -150,7 +151,10 @@
 							font-size:initial;
 							font-size:$base-font-size;
 							padding:10px ;
+                            .job-current-status {
 
+                                text-transform: capitalize;
+                            }
 							a {
 								color:$link-color;
 							}

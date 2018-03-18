@@ -27,8 +27,11 @@ function Candidate() {
         settings.tagInputError = $(".tagInputError");
         onClickChatCandidateModal();
         jQuery("#tabbed-content").tabs({});
+    
         // onClickAddPopulatedTags()
     }
+
+
 
 
     function onClickChatCandidateModal() {
@@ -134,9 +137,11 @@ function Candidate() {
         else
             item.salary.text(aData["ctc"]+ " LPA");
         item.firstName.text(aData["name"])
-        var lastActiveDays = getLastActiveDay(aData["lastActive"])
+        // var lastActiveDays = getLastActiveDay(aData["lastActive"])
+        //
+        // item.lastActive.text(lastActiveDays > 1 ? lastActiveDays + " days ago": lastActiveDays + " day ago");
 
-        item.lastActive.text(lastActiveDays > 1 ? lastActiveDays + " days ago": lastActiveDays + " day ago");
+        item.lastActive.text(moment(aData["lastActive"]).format("DD-MM-YYYY"))
         var eduStr = '';
         $.each(aData["education"],function(index, anObj) {
 

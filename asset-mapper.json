@@ -51,7 +51,12 @@
 				"static/js/vendor/jquery.min.js",
 				"static/js/Utilities/request.js",
 				"static/js/header.js",
-				"static/js/reset-password.js"
+				"static/js/reset-password.js",
+				"static/js/Services/SubmitResetPassword.js",
+				"static/js/Components/ResetPassword/model.js",
+				"static/js/Components/ResetPassword/index.js",
+				"static/js/Utilities/pubsub.js"
+
 
 			],
 			"prod" : [
@@ -1333,7 +1338,7 @@
         }
 
 	},
-	
+
     "Interview-scheduler-updated": {
         "styles": {
             "debug" : [
