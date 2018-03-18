@@ -132,10 +132,7 @@ function Candidate() {
         else {
             item.notice.text((aData["notice"] + " months"));
         }
-        if(aData["ctc"] == "confidential")
-            item.salary.text("Confidential");
-        else
-            item.salary.text(aData["ctc"]+ " LPA");
+        item.salary.text(formatSalary(aData["ctc"]));
         item.firstName.text(aData["name"])
         // var lastActiveDays = getLastActiveDay(aData["lastActive"])
         //
@@ -178,7 +175,7 @@ function Candidate() {
         item.profList.html(profStr)
         item.gender.text(gender[aData["sex"]])
         item.age.text(getAge(aData["dob"]) + " years")
-        item.expectedSalary.text(aData["expectedCtc"]+ " LPA")
+        item.expectedSalary.text(formatSalary(aData["expectedCtc"]))
         item.maritalStatus.text(getMaritalStatus(aData["maritalStatus"]));
         item.languages.text((formatLanguages(aData["languages"]) || "N.A."));
         item.workPermit.text((workPermit[aData["permit"]] || "N.A."));
