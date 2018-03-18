@@ -196,7 +196,7 @@ function Candidate() {
            item.resume.html('<iframe src="'+aData["resume"]+'" class="resume-embed" type="application/pdf"></iframe>')
         }
         if(aData["cover"]) {
-            item.coverLetter.html(aData["cover"])
+            item.coverLetter.html(nl2br(aData["cover"]))
             $(".coverLetterTab").removeClass("hidden")
         }
         if(aData["comment"]) {
