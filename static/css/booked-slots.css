@@ -796,7 +796,7 @@ body.posf {
   z-index: 1500; }
   .toast-notification-container.show {
     bottom: 15px; }
-  .toast-notification-container.error {
+  .toast-notification-container.toasterror {
     background-color: #b66666; }
   .toast-notification-container.success {
     background-color: #149075; }
@@ -1492,7 +1492,7 @@ span.sticker {
       font-size: 14px;
       margin-right: 10px; }
   .conversations .conversation-listing-container .conversations-listing {
-    max-height: 600px;
+    max-height: 70vh;
     overflow-y: auto; }
     .conversations .conversation-listing-container .conversations-listing .conversation-item {
       display: inline-block;
@@ -2878,6 +2878,82 @@ span.sticker {
             -moz-appearance: none;
             -o-appearanance: none;
             margin-bottom: 10px; }
+
+.page-wrap {
+  color: #2b2b2b;
+  min-height: 100%;
+  padding: 0;
+  overflow: auto;
+  position: relative;
+  padding: 20px;
+  width: 100%;
+  background-color: #F4F4F4; }
+  .page-wrap .main-wrappper {
+    width: 80%;
+    float: left; }
+    .page-wrap .main-wrappper .main-conainer {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 1200px; }
+      .page-wrap .main-wrappper .main-conainer .header-slot {
+        margin-top: 20px;
+        width: 95%; }
+        .page-wrap .main-wrappper .main-conainer .header-slot .tagline {
+          color: #5d5d5d;
+          font-size: 22px;
+          /* Approximation due to font substitution */
+          font-weight: 400;
+          text-align: left;
+          width: 50%;
+          display: inline-block; }
+        .page-wrap .main-wrappper .main-conainer .header-slot .right-container {
+          float: right; }
+          .page-wrap .main-wrappper .main-conainer .header-slot .right-container .manage-Calendar {
+            border-radius: 4px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #8f8a8a;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            width: 135px;
+            height: 28px;
+            text-align: center;
+            line-height: 28px;
+            font-size: 0.85em;
+            cursor: pointer;
+            line-height: 28px;
+            display: inline-block; }
+      .page-wrap .main-wrappper .main-conainer .no-schedule-container {
+        width: 100%;
+        border-radius: 6px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #e8e8e8;
+        box-sizing: border-box;
+        background-color: #ffffff;
+        box-shadow: 0px 2px 8px 0px rgba(214, 214, 214, 0.3);
+        margin-top: 20px; }
+        .page-wrap .main-wrappper .main-conainer .no-schedule-container .image-container {
+          padding-top: 200px; }
+          .page-wrap .main-wrappper .main-conainer .no-schedule-container .image-container img {
+            margin-left: auto;
+            margin-right: auto;
+            display: block; }
+        .page-wrap .main-wrappper .main-conainer .no-schedule-container .heading {
+          color: #149075;
+          font-size: 26px;
+          font-weight: 400;
+          text-align: center;
+          padding-top: 20px; }
+        .page-wrap .main-wrappper .main-conainer .no-schedule-container .subheading {
+          color: #737373;
+          font-size: 17px;
+          /* Approximation due to font substitution */
+          font-weight: 400;
+          line-height: 29.992px;
+          /* Approximation due to font substitution */
+          text-align: center;
+          padding-bottom: 200px; }
 
 @media only screen and (max-width: 1250px) {
   .page-content .header-slot {

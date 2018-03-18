@@ -43,14 +43,14 @@ module.exports = function(settings){
 				const jsonBody = JSON.parse(body)
 				if(jsonBody.status && jsonBody.status =='success'){
 					req.profile = jsonBody.data;
-					return next()
+
 					if(req.originalUrl == "/welcome") {
-						if(req.profile.isVerified == 1) {
+						if(req.profile.verified == 1) {
 							return res.redirect('/account-created');
 						}
 						return next()
 					}
-					if(req.profile.isVerified == 1) {
+					if(req.profile.verified == 1) {
 						return next();
 					}
 					return res.redirect('/welcome');
@@ -64,6 +64,31 @@ module.exports = function(settings){
 			return res.redirect('/login');
 		}
 	}
+
+	function isVerified(req,res,next) {
+		var key = req.query.key;
+		var email = req.query.email;
+
+		return request.post({
+			url: baseUrl+"/recruiter/activate",
+			body: {
+				key: key,
+				email: email
+			},
+			json: true
+		},function(err, response, body){
+			if(err){
+				return res.redirect("/login")
+			}
+			if(response.statusCode==200){
+                return next()
+			}
+			else {
+				return next()
+			}
+		})
+	}
+
 
 	app.get("/", isAuthenticated,function(req, res){
 		res.render("dashboard", {
@@ -359,16 +384,16 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/recruiter/reset", function(req, res){
-
-		res.render("reset-password", {
-			title: "IIM JOBS | Reset Password",
-			styles:  assetsMapper["reset-password"]["styles"][mode],
-			scripts: assetsMapper["reset-password"]["scripts"][mode],
-			baseUrl: baseUrl
-		})
-		return
-	})
+	// app.get("/recruiter/reset", function(req, res){
+	//
+	// 	res.render("reset-password", {
+	// 		title: "IIM JOBS | Reset Password",
+	// 		styles:  assetsMapper["reset-password"]["styles"][mode],
+	// 		scripts: assetsMapper["reset-password"]["scripts"][mode],
+	// 		baseUrl: baseUrl
+	// 	})
+	// 	return
+	// })
 
 	app.get("/recruiter/pdf", function(req, res){
 
@@ -518,14 +543,31 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/account-created", function(req,res){
+	app.get("/account-created", isVerified, function(req,res){
+		var email = req.query.email || "";
 		res.render("account-created", {
 			title:"Recruiter Web - Account Created Page | iimjobs.com",
 			styles:  assetsMapper["account-created"]["styles"][mode],
 			scripts: assetsMapper["account-created"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			verify:verifyAccount
+			verify:verifyAccount,
+			email: email
+		})
+		return
+	});
+
+	app.get("/reset-password", function(req,res){
+		var email = req.query.email || "";
+		var key = req.query.key || ""
+		res.render("reset-password", {
+			title:"Recruiter Web - Reset Password Page | iimjobs.com",
+			styles:  assetsMapper["reset-password"]["styles"][mode],
+			scripts: assetsMapper["reset-password"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			email: email,
+			key: key
 		})
 		return
 	});

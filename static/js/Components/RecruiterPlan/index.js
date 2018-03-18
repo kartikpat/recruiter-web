@@ -1,6 +1,7 @@
 jQuery(document).ready( function() {
-	var stat = getQueryParameter("jobPostSuccess")
-	if(parseInt(stat) == 1) {
-		toastNotify(1, "Job Posted Successfully!")
+
+	if(localStorage.getItem("jobPostSuccessMessage") != null) {
+		toastNotify(1, localStorage.getItem("jobPostSuccessMessage"))
+		localStorage.removeItem("jobPostSuccessMessage");
 	}
 }

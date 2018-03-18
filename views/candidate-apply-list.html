@@ -74,7 +74,7 @@
 
 				</div>
 
-				<div class="candidates-area" id="candidatesArea">
+				<div class="candidates-area" id="candidatesArea" style="margin-bottom:40px ">
 					<div class="candidates-area-header">
 						<div class="candidates-search">
 							<div class="keyword-search">
@@ -88,8 +88,8 @@
 								<span class="action-buttons sortBy">
 									<span class="section sortBy" id="sortBy">
 										<select class="select-dropdown" id="sortBySelect">
-											<option value="1">SortBy: Magic Sort</option>
-											<option value="2">SortBy: Application Date</option>
+											<option value="1">SortBy : Magic Sort</option>
+											<option value="2">SortBy : Application Date</option>
 										</select>
 									</span>
 								</span>
@@ -117,12 +117,12 @@
 									<ul id="">
 										<li>
 											<div class="bulk-selection-item bulk-select section">
-											<div class="select-all check-input">
-												<input type="checkbox" class="" id="massCheckboxInput">
-												<label for="massCheckboxInput" id="massCheckboxLabel"></label>
+												<div class="select-all check-input">
+													<input type="checkbox" class="" id="massCheckboxInput">
+													<label for="massCheckboxInput" id="massCheckboxLabel"></label>
+												</div>
 											</div>
-										</div>
-									</li>
+										</li>
 					            		<li data-attribute="">
 											<a href="#all-jobs">
 												<div class="bulk-selection-item all active">
@@ -197,10 +197,47 @@
 									{{>candidateApplyListShell}}
 									{{>candidateApplyListShell}}
 								</div>
+
 							</div>
+
 						</div>
 					</div>
 				</div>
+
+				<div class="loading loaderScroller hidden" style="margin-top:20px ">
+				    <div class="loader loader-scroller"></div>
+				</div>
+				<style>
+					.loading div {
+						display:inline-block;
+						position:relative;
+					}
+
+					.loading p:after {
+						overflow: hidden;
+						position:absolute;
+						left:100%;
+						text-align:left;
+						display: inline-block;
+						vertical-align: bottom;
+						-webkit-animation: ellipsis steps(4,end) 900ms infinite;
+						animation: ellipsis steps(4,end) 1800ms infinite;
+						content: "\2026"; /* ascii code for the ellipsis character */
+						width: 0px;
+					}
+
+					@keyframes ellipsis {
+					  to {
+					   	width: 1.25em;
+					  }
+					}
+
+					@-webkit-keyframes ellipsis {
+					  to {
+					    width: 1.25em;
+					  }
+					}
+				</style>
 			</div>
 			<div class="conversations right">
 				{{>chatSidebar}}
@@ -222,8 +259,8 @@
                 	<p class="profile-name js_name">Shreya Sharma</p>
 
                 	<div class="social-media-accounts">
-                		<span class="social facebook"><img src="/static/images/facebook-round.svg"></span>
-                		<span class="social twitter"><img src="/static/images/twitter-round.svg"></span>
+                		<span class="social facebook hidden"><img src="/static/images/facebook-round.svg"></span>
+                		<span class="social twitter hidden"><img src="/static/images/twitter-round.svg"></span>
                 	</div>
                 </div>
 
@@ -264,22 +301,23 @@
 	            	<ul>
 	            		<li><a href="#view-profile-info">Profile</a></li>
 	            		<li><a href="#view-resume">Resume</a></li>
-	            		<li><a href="#view-cover-letter">Cover Letter</a></li>
+	            		<li><a href="#view-cover-letter" class="hidden coverLetterTab">Cover Letter</a></li>
 	            	</ul>
 					<div id="view-profile-info">
-	            		<div class="content-block education">
-	            			<h3 class="content-heading">Educational Qualifications</h3>
-	            			<div class="content js_edu_list">
-
-	            			</div>
-	            		</div>
-
-	            		<div class="content-block organization">
+						<div class="content-block organization">
 	            			<h3 class="content-heading">Professional Details</h3>
 	            			<div class="content js_prof_list">
 
 	            			</div>
 	            		</div>
+	            		<div class="content-block education">
+	            			<h3 class="content-heading">Educational Details</h3>
+	            			<div class="content js_edu_list">
+
+	            			</div>
+	            		</div>
+
+
 
 	            		<div class="content-block more">
 	            			<h3 class="content-heading">More Information</h3>
@@ -287,13 +325,13 @@
 	            				<ul>
 	            					<li>
 	            						<p class="location">
-	            							<span class="key">Location</span>
+	            							<span class="key">Current Location</span>
 	            							<span class="value js_loc">Delhi</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="applied">
-	            							<span class="key">Applied</span>
+	            							<span class="key">Applied Date</span>
 	            							<span class="value js_appliedOn">15-06-2017</span>
 	            						</p>
 	            					</li>
@@ -831,6 +869,8 @@
 </div>
 
 <p class="fetchTags prototype hidden" data-tag-id="1">Ahmedabad</p>
+
+
 
 <div class="loader-overlay hidden" id="loaderOverlay">
 	<div class="loader"></div>

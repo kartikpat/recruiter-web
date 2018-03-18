@@ -22,7 +22,11 @@ function Header(){
 			settings.email = $('.user_email'),
 			settings.userImg = $('.user_img'),
 			settings.myJobsview =$('.MyJobs'),
+			settings.myInterviewView=$('.interview-view'),
+			settings.myReportsView=$('.reports-view'),
 			settings.myJobs=$('.sub-menu'),
+			settings.myInterview=$('.interviews'),
+			settings.myReports=$('.reports')
 			settings.menucontainer=$('.menu-section'),
 			settings.backbutton=$('.my-jobs-menu-back'),
 			settings.searchButton=$('.search'),
@@ -52,10 +56,26 @@ function Header(){
 		});
 	}
 
+	function myInterviewView(){
+		settings.myInterview.on('click', function(){
+			settings.menucontainer.addClass("hidden");
+			settings.myInterviewView.removeClass("hidden");
+		});
+	}
+
+	// function myReportsView(){
+	// 	settings.myReports.on('click', function(){
+	// 		settings.menucontainer.addClass("hidden");
+	// 		settings.myReportsView.removeClass("hidden");
+	// 	});
+	// }
+
+
 	function dashboardView(){
 		settings.backbutton.on('click', function(){
 			settings.menucontainer.removeClass("hidden");
 			settings.myJobsview.addClass("hidden");
+			settings.myInterviewView.addClass("hidden");
 		});
 	}
 
@@ -98,6 +118,7 @@ function Header(){
 		init: init,
 		populateData: setUserProfile,
 		myJobsView :myJobsView,
+		myInterviewView:myInterviewView,
 		dashboardView:dashboardView,
 		searchView:searchView,
 		navigationView:navigationView,

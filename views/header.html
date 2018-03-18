@@ -15,7 +15,7 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	
+
 
 	<script type="text/javascript">
 		var baseUrl = '{{baseUrl}}';
@@ -50,7 +50,7 @@
 
 	<div class="header">
 		<div class="header-wrapper">
-			<div class="mobile-menu header_item">
+			<div class="mobile-menu header_item mobileHeaderNav">
 				<img src="/static/images/hamburger.svg">
 			</div>
 			<div class="domain_logo header_item">
@@ -65,7 +65,7 @@
 				</form>
 				<!-- <div class="exit-view">X</div> -->
 			</div>
-			<div class="navigation header_item animated fadeIn">
+			<div class="navigation header_item animated fadeIn navigationHeader">
 				<ul class="menu-listing">
 					<li class="menu-list-item my-jobs">
 						<a >My Jobs</a>
@@ -80,25 +80,37 @@
 							</div>
 						</div>
 					</li>
+
 					<li class="menu-list-item search-resume"><a href="javscript:void(0);">Search Resume</a></li>
-					<li class="menu-list-item interviews"><a href="javscript:void(0);">Interviews</a></li>
-					<li class="menu-list-item reports"><a href="/reports">Reports</a></li>
+
+					<li class="menu-list-item my-interviews">
+						<a class="link-interview" >Interviews</a>
+						<div class="profile-menu">
+							<div class="profile-body">
+								<ul class="profile-item-listing">
+								 <li class=""><a href="/calendar-manage">Manage Calendar</a></li>
+								 <li class=""><a href="/booked-slots">Booked Slots</a></li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li class="menu-list-item"><a href="/reports">Reports</a></li>
 				</ul>
 			</div>
-			<div class="profile_actions right header_item">
-				<div class="search action-icon">
+			<div class="profile_actions right header_item profileActions">
+				<div class="search action-icon searchIcon">
 					<img class="info-icon hidden" src="/static/images/info-close.png">
 					<img class="search-icon" src="/static/images/search_icon.svg">
 				</div>
-				<div class="messages action-icon">
+				<div class="messages action-icon msgAction">
 					<a href="/my-chat">
 						<img src="/static/images/chat_icon.svg">
 					</a>
 				</div>
-				<div class="notifications action-icon">
+				<div class="notifications action-icon hidden">
 					<img src="/static/images/notification_icon.svg">
 				</div>
-				<div class="profile action-icon">
+				<div class="profile action-icon profileImgAction">
 					<img class="user_img" src="{{profile.img_link}}">
 					<div class="profile-menu">
 						<div class="profile-header">
@@ -107,8 +119,8 @@
 						</div>
 						<div class="profile-body">
 							<ul class="profile-item-listing">
-								<li>Basic Account <span class="upgrade button right white">Buy Premium</span></li>
-								<li class="settings"><a href="/settings">Account Settings</a></li>
+								<li class="basicAccount">Basic Account <span class="upgrade button right white">Buy Premium</span></li>
+								<li class="accountSettings settings"><a href="/settings">Account Settings</a></li>
 								<li class="logout recruiterLogout" ><a href="">Logout</a></li>
 							</ul>
 						</div>
@@ -118,6 +130,7 @@
 		</div>
 		<!-- Header Ends here-->
 	</div>
+
 
 	<div class="mobile-menu-container hidden">
 
@@ -140,7 +153,7 @@
 		    		<a href="/"><li class="menu-list-item my-jobs">Dashboard</li></a>
 		    		<a href="#"><li class="menu-list-item my-jobs sub-menu">My Jobs</li></a>
 					<a href="javscript:void(0);"><li class="menu-list-item search-resume">Search Resume</li></a>
-					<a href="javscript:void(0);"><li class="menu-list-item interviews">Interviews</li></a>
+					<a href="#"><li class="menu-list-item interviews">Interviews</li></a>
 					<a href="/reports"><li class="menu-list-item reports">Reports</li></a>
 		    	</ul>
 			</div>
@@ -172,6 +185,26 @@
 					<a href="/recruiter/candidates"><li class="my-jobs-menu">Shortlisted/Saved Candidates</li></a>
 				</ul>
 			</div>
+
+			<div class="interview-view menu-link-listing mobile-menu-item hidden">
+					<ul>
+						<a href="#"><li class="my-jobs-menu-back">Back</li></a>
+						<a href="/calendar-manage"><li class="my-jobs-menu">Manage Calendar</li></a>
+						<a href="/booked-slots"><li class="my-jobs-menu">Booked Slots</li></a>
+					</ul>
+			</div>
+
+<!--
+			<div class="reports-view menu-link-listing mobile-menu-item hidden">
+					<ul>
+						<a href="#"><li class="my-jobs-menu-back">Back</li></a>
+						<a href="/my-jobs"><li class="my-jobs-menu">My Jobs</li></a>
+						<a href="/post-job"><li class="my-jobs-menu">Post Job</li></a>
+						<a href="/recruiter/tagged-candidates"><li class="my-jobs-menu">Tagged Candidates</li></a>
+						<a href="/recruiter/candidates"><li class="my-jobs-menu">Shortlisted/Saved Candidates</li></a>
+					</ul>
+			</div> -->
+
 		</div>
 	</div>
 	<div class="body-overlay hidden">

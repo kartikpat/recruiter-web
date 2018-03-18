@@ -163,12 +163,12 @@ input::-webkit-input-placeholder {
 
 	.candidate-apply-listing {
 		width:80%;
-
+        margin-bottom: 100px;
 		.candidates-area {
 			@include card-container;
 			margin:0 0 0 0;
 			padding:15px;
-
+            padding-bottom: 0px;
 			.candidates-area-header {
 				.candidates-search {
 
@@ -283,6 +283,7 @@ input::-webkit-input-placeholder {
 							border:1px solid $border-color-base;
 							padding:2px 15px;
 							border-radius:50px;
+                            text-transform: capitalize;
 							div {
 								display:inline-block;
 								vertical-align: middle;
@@ -354,8 +355,8 @@ input::-webkit-input-placeholder {
 						.candidates-listing {
 							background:$color-white;
 							border-radius:6px;
-							min-height:30px;
-							margin-top: 2px;
+							// min-height:30px;
+							// margin-top: 2px;
 							.candidate-item {
                                 display: block;
 								padding: 30px 10px 0px;
@@ -363,6 +364,7 @@ input::-webkit-input-placeholder {
 							    margin: 0;
 							    cursor:pointer;
 							    position:relative;
+
                                 .candidate-select {
                                     display:none;
                                     position:absolute;
@@ -917,11 +919,12 @@ input::-webkit-input-placeholder {
 }
 
 @media all and (max-width:1024px) {
-	.conversations {
-		display:none;
-	}
+
 
 	.page-content {
+        .conversations {
+    		display:none;
+    	}
 		.candidate-apply-listing {
 			width:100%;
 
@@ -1317,12 +1320,13 @@ input::-webkit-input-placeholder {
 									textarea {
 										width: 50%;
 										padding: 5px;
-										border-left: 3px solid $button-color-green;
-										min-height: 50px;
+                                        border: 1px solid #e8e8e8;
+
+										min-height: 100px;
 										&:focus {
 											outline: none;
 											border: 1px solid $button-color-green;
-											border-left: 3px solid green;
+
 										}
 									}
 									.action-buttons {
@@ -1506,6 +1510,12 @@ input::-webkit-input-placeholder {
 			}
     		span {
     			&.button {
+                    &.candidateShortlistModal {
+                        padding: 6px 15px;
+                    }
+                    &.candidateRejectModal {
+                        padding: 6px 15px;
+                    }
 					&.cand-comment-button{
 						margin: 0;
 						margin-top: 5px;
@@ -1800,6 +1810,7 @@ input::-webkit-input-placeholder {
 	.tabs_scroll_container {
 		overflow-x: auto;
 		overflow-y: hidden;
+        position: relative;
 	}
 	.ui-tabs-nav {
 		border: 0;
@@ -1873,12 +1884,12 @@ input::-webkit-input-placeholder {
 	textarea {
 		width: 100%;
 		padding: 5px;
-		border-left: 3px solid $button-color-green;
+		border: 1px solid #e8e8e8;
 		min-height: 50px;
 		&:focus {
 			outline: none;
 			border: 1px solid $button-color-green;
-			border-left: 3px solid green;
+			
 		}
 	}
 	.action-buttons {
@@ -1920,4 +1931,12 @@ input::-webkit-input-placeholder {
             }
         }
     }
+}
+
+.loader.loader-scroller {
+
+    height: 45px;
+    width: 45px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
 }

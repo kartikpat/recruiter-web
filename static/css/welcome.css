@@ -272,6 +272,15 @@
 .icon-checked_icon:before {
   content: '\e819'; }
 
+.navigationHeader {
+  display: none !important; }
+
+.profileActions .searchIcon, .profileActions .msgAction {
+  display: none !important; }
+
+.basicAccount, .accountSettings {
+  display: none !important; }
+
 .page-content {
   min-height: 100%;
   padding: 0;

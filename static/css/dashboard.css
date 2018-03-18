@@ -547,7 +547,7 @@ body.posf {
   z-index: 1500; }
   .toast-notification-container.show {
     bottom: 15px; }
-  .toast-notification-container.error {
+  .toast-notification-container.toasterror {
     background-color: #b66666; }
   .toast-notification-container.success {
     background-color: #149075; }
@@ -1243,7 +1243,7 @@ span.sticker {
       font-size: 14px;
       margin-right: 10px; }
   .conversations .conversation-listing-container .conversations-listing {
-    max-height: 600px;
+    max-height: 70vh;
     overflow-y: auto; }
     .conversations .conversation-listing-container .conversations-listing .conversation-item {
       display: inline-block;

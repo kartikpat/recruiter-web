@@ -1,5 +1,6 @@
 function submitCalendar(data, recruiterId){
 	//console.log(data);
+	
 	postRequest(baseUrl+"/recruiter/"+recruiterId+"/",{
 		"Content-Type": "application/json",
 	}, JSON.stringify(data), function(res){

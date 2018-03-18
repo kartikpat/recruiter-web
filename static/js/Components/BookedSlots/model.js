@@ -90,6 +90,8 @@ function BookedSlots() {
     		item.interviewTime.text(showTime)
         }
 
+		item.calendarName.text(aData["calendar"]["name"]);
+		// item.calendarName.attr("href",aData["calendar"]["name"]);
 		item.candName.text(aData["name"])
 		item.candName.attr("href", "/job/"+aData["job"]["id"]+"/applications/27989797");
         item.candDesignation.text(aData["designation"])
@@ -109,7 +111,7 @@ function BookedSlots() {
 		var str = '';
 		hideShell()
 		if(!dataArray.length) {
-			return settings.bookedSlots.html("<div class='no-data'>No Jobs Found!</div>")
+			return settings.bookedSlots.html("<div class='no-data'>No Interviews Found!</div>")
 		}
 		dataArray.forEach(function(aData, index){
 			var item = createElement(aData , index);

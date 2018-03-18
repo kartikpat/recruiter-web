@@ -60,6 +60,7 @@ function candidateList() {
     function onClickCoverLetterLink() {
         settings.rowContainer.on('click', settings.coverLetterLink, function(e){
             e.preventDefault()
+            // settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 2});
             return false
         })
     }
@@ -158,8 +159,11 @@ function candidateList() {
         item.experience.text((aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m") || "NA");
         item.location.text(aData["currentLocation"] || "NA");
         item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY'))
-        if(aData["notice"] <= 7) {
+        if(aData["notice"] == 7) {
             item.notice.text("Immediately Available");
+        }
+        else if(aData["notice"] == 1) {
+            item.notice.text((aData["notice"] + " month"));
         }
         else {
             item.notice.text((aData["notice"] + " months"));
@@ -183,34 +187,42 @@ function candidateList() {
         else if(status == 3) {
             item.savedButton.text("Saved for later");
         }
+        item.element.attr("data-status", status)
         // var tagStr = '';
         // $.each(aData["tags"],function(index, aTag) {
         //     var tag =  settings.candidateTagsPrototype.clone().text(aTag["name"]).removeClass("prototype hidden");
         //     tagStr+=tag[0].outerHTML
         // })
         // item.jobTagList.html(tagStr)
+
+
         var profStr = '';
-        $.each(aData["jobs"],function(index, anObj) {
-            if(index > 2) {
-                return
-            }
-            var item = getProfessionalElement()
-            item.name.text(anObj["organization"])
-            item.designation.text(anObj["designation"]);
-
-            var fromMon = getMonthName(anObj["exp"]["from"]["month"]);
-            var toMon = getMonthName(anObj["exp"]["to"]["month"]);
-            var fromYear = anObj["exp"]["from"]["year"];
-            var toYear = anObj["exp"]["from"]["year"];
-            var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
-            item.tenure.text(str);
-
-            profStr+=item.element[0].outerHTML
-        })
-        console.log(aData["jobs"].length)
-        if(aData["jobs"].length > 3) {
-            profStr+= "<span style='color: #155d9a'>"+(aData["jobs"].length - 3)+" more work experience.</span>"
+        if(aData["jobs"].length == 0) {
+            profStr = "<div style='line-height:1.5;'><span style='font-weight:bold;'>"+aData["name"]+"</span> does not have any work experience yet</div>"
         }
+        else {
+            $.each(aData["jobs"],function(index, anObj) {
+                if(index > 2) {
+                    return
+                }
+                var item = getProfessionalElement()
+                item.name.text(anObj["organization"])
+                item.designation.text(anObj["designation"]);
+
+                var fromMon = getMonthName(anObj["exp"]["from"]["month"]);
+                var toMon = getMonthName(anObj["exp"]["to"]["month"]);
+                var fromYear = anObj["exp"]["from"]["year"];
+                var toYear = anObj["exp"]["from"]["year"];
+                var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
+                item.tenure.text(str);
+
+                profStr+=item.element[0].outerHTML
+            })
+            if(aData["jobs"].length > 3) {
+                profStr+= "<span style='color: #155d9a'>"+(aData["jobs"].length - 3)+" more work experience.</span>"
+            }
+        }
+
         item.profList.html(profStr)
         var eduStr = '';
         $.each(aData["education"],function(index, anObj) {
@@ -326,7 +338,9 @@ function candidateList() {
     function onClickCandidate(fn) {
         settings.rowContainer.on('click', ".candidate-item", function(e){
             var candidateId = $(this).attr('data-candidate-id');
-            return fn(candidateId);
+            var status = $(this).attr("data-status")
+            var applicationId = $(this).attr("data-application-id")
+            return fn(candidateId, status, applicationId);
         })
     }
 
@@ -373,6 +387,9 @@ function candidateList() {
         settings.rowContainer.on('click', settings.candidateDownloadResumeButton, function(event){
             var url = $(this).attr("data-href");
             window.open(url);
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            var status = $(this).closest(settings.candidateRowClass).attr("data-status")
+            fn(applicationId, status)
             return false
         })
     }
@@ -509,7 +526,8 @@ function candidateList() {
     }
 
     function onClickMassReject(fn) {
-        settings.massReject.click(function(){
+        settings.massReject.click(function(e){
+            e.stopPropagation()
             var arr = returnSelectedApplications();
 			settings.bulkActionModal.find(".modalHeading").text("Are you sure?");
 			settings.bulkActionModal.find(".jsModalText").text("You are about to reject "+arr.length+" candidates.")
@@ -523,7 +541,8 @@ function candidateList() {
     }
 
     function onClickMassShortlist() {
-        settings.massShortlist.click(function(){
+        settings.massShortlist.click(function(e){
+            e.stopPropagation()
             var arr = returnSelectedApplications();
             settings.bulkActionModal.find(".modalHeading").text("Are you sure?");
 			settings.bulkActionModal.find(".jsModalText").text("You are about to shortlist "+arr.length+" candidates.")
@@ -536,7 +555,8 @@ function candidateList() {
     }
 
     function onClickMassSave() {
-        settings.massSave.click(function(){
+        settings.massSave.click(function(e){
+            e.stopPropagation()
             var arr = returnSelectedApplications();
             settings.bulkActionModal.find(".modalHeading").text("Are you sure?");
 			settings.bulkActionModal.find(".jsModalText").text("You are about to save "+arr.length+" candidates.")
@@ -549,7 +569,8 @@ function candidateList() {
     }
 
     function onClickMassComment() {
-        settings.massComment.click(function(){
+        settings.massComment.click(function(e){
+            e.stopPropagation()
             var arr = returnSelectedApplications();
             settings.bulkActionModal.find(".modalHeading").text("Add Comment");
 			settings.bulkActionModal.find(".jsModalText").text("The Comment will be added on "+arr.length+" candidates profiles.")
@@ -562,7 +583,8 @@ function candidateList() {
     }
 
     function onClickMassActionButton(fn) {
-        settings.bulkActionModal.find(".massActionButton").click(function(){
+        settings.bulkActionModal.find(".massActionButton").click(function(e){
+            e.stopPropagation()
             var selectedApplicationIds = returnSelectedApplications()
             var action = $(this).attr("data-action");
             var comment = settings.bulkActionModal.find(".massTextarea").val();
@@ -572,7 +594,7 @@ function candidateList() {
             }
 
             if(!comment) {
-                settings.bulkActionModal.find(".errorField").removeClass("hidden")
+                return settings.bulkActionModal.find(".errorField").removeClass("hidden")
             }
             else {
                 settings.bulkActionModal.find(".errorField").addClass("hidden")
@@ -706,6 +728,12 @@ function candidateList() {
         $(settings.candidateRowClass).find(".candidateRow[data-application-id="+applicationId+"] .interviewinvite").text("Resend Interview Invite")
     }
 
+    function changeStatus(arr, newStatus) {
+        arr.forEach(function(applicationId){
+            settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"']").attr("data-status", newStatus)
+        })
+    }
+
     return {
 		init: init,
 		addToList: addToList,
@@ -741,6 +769,7 @@ function candidateList() {
         onClickSendInterviewInviteF2F: onClickSendInterviewInviteF2F,
         setInvite: setInvite,
         changeInviteText: changeInviteText,
-        changeButtonText: changeButtonText
+        changeButtonText: changeButtonText,
+        changeStatus: changeStatus
 	}
 }

@@ -314,7 +314,7 @@ body.posf {
   z-index: 1500; }
   .toast-notification-container.show {
     bottom: 15px; }
-  .toast-notification-container.error {
+  .toast-notification-container.toasterror {
     background-color: #b66666; }
   .toast-notification-container.success {
     background-color: #149075; }
@@ -554,7 +554,8 @@ b {
     padding: 0;
     right: 200px;
     top: 0;
-    bottom: 0; }
+    bottom: 0;
+    outline: none; }
     .header .search-container form {
       height: 100%; }
       .header .search-container form .search-box {
@@ -565,7 +566,8 @@ b {
         background-color: #454545;
         padding: 20px;
         font-size: 18px;
-        color: #FFF; }
+        color: #FFF;
+        outline: none; }
   .header .header_item {
     height: 40px;
     margin-top: 18px;
@@ -696,7 +698,8 @@ b {
     .header .navigation ul {
       list-style: none;
       font-family: "Comfortaa", sans-serif;
-      margin: 0; }
+      margin: 0;
+      padding-left: 40px; }
       .header .navigation ul .menu-list-item {
         line-height: 40px;
         font-size: 14px;
@@ -705,6 +708,8 @@ b {
         min-width: 120px;
         text-align: center; }
         .header .navigation ul .menu-list-item.my-jobs {
+          position: relative; }
+        .header .navigation ul .menu-list-item.my-interviews {
           position: relative; }
         .header .navigation ul .menu-list-item a {
           font-family: "Droid Sans", sans-serif;
