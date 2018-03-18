@@ -1061,6 +1061,7 @@ span.sticker {
   background-color: #f7f7f7; }
   .page-content .container {
     background-color: #f7f7f7;
+    min-height: 100%;
     width: 80%;
     float: left; }
     .page-content .container .header-slot {

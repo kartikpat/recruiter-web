@@ -11,12 +11,11 @@
     background-color: #f7f7f7;
     .container{
         background-color: #f7f7f7;
-       // height: 900px;
+        min-height: 100%;
         width: 80%;
         float: left;
         .header-slot{
             background-color: #f7f7f7;
-          //  height: 80px;
             width: 100%;
             margin-top: 20px;
             .tagline{
@@ -95,7 +94,6 @@
                 width:100%;
                 display: inline-block;
                 padding: 0%;
-               // height: 700px;
                 background-color: white;
                 .schedule{
                     display: inline-block;

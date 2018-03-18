@@ -57,7 +57,7 @@
 
 
 .fc-day-grid{
-    height: 1645px!important;
+    height: 1640px!important;
     overflow: hidden;
     opacity: 0.8;
 }
@@ -70,13 +70,10 @@
     text-align: center;
 }
 
-
- 
-
 #calendar{
     width: 615px;
     height: 782px;
-    margin-top: 18px;
+    margin-top: 21px;
 }
 
 .fc-bg{
@@ -85,7 +82,7 @@
 
 .fc-scroller{
     overflow-x: hidden;
-    height: 600px!important;
+    height: 580px!important;
 }
 
 .fc-toolbar h2 {

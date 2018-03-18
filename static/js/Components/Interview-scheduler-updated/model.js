@@ -61,7 +61,8 @@ function Calendar(){
         settings.error=$('.errors'),
         settings.slots=$('.table'),
         settings.prevButton=$('.button-prev'),
-        settings.nextButton=$('.button-next')
+        settings.nextButton=$('.button-next'),
+        settings.Calendarbutton=$('.calendar-button'),
         selectCreater();
         copytoall();
         time_mapper();
@@ -81,7 +82,7 @@ function Calendar(){
               var slots=getslots();
               testHighlight(slots.fromDate,slots.toDate,slots.highlightSlots);
           }),
-          $('.fc-button').on("click",function(e){
+          settings.Calendarbutton.on("click",function(e){
             e.preventDefault();
             var slots=getslots();
             testHighlight(slots.fromDate,slots.toDate,slots.highlightSlots);
@@ -200,6 +201,7 @@ function Calendar(){
         $('#enddatepicker').datepicker().datepicker('setDate', endDate);
         //datepicker set value
         testHighlight(fromDate,toDate,previewslots);
+        settings.createCalendar.text("Update Calendar")
     }
 
     function availablehours(slots){
@@ -297,13 +299,15 @@ function Calendar(){
             var start=$("#"+parent+"").find(".start")
             var end=$("#"+parent+"").find(".end");
             var k=start.val();
+            if(k>0){
             var check=$("#"+parent+" .end").find('option:selected').index();
                 end.val(k);
                 var value=$("#"+parent+" .start option:selected").next().val();
                 end.val(value);
-                 $("#"+parent+" .end").find('option').prop('disabled', false);
+                $("#"+parent+" .end").find('option').prop('disabled', false);
                 var index = $("#"+parent+" .start").find('option:selected').index();
                 $("#"+parent+" .end").not("#"+parent+" .start").find('option:lt(' + (index+1) + ')').prop('disabled', true);
+            }
         })
         settings.end.change(function() {
             var parent=$(this).parent().parent().attr('id');
@@ -524,11 +528,6 @@ function Calendar(){
 		}
 		return
     }
-
-    // function prevWeek(){
-    //         console.log("hello");
-    //         $('#calendar').fullCalendar('prev');
-    // }
 
     return {
         init:init,

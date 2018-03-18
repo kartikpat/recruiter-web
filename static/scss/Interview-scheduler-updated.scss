@@ -19,7 +19,6 @@
     .container{
         .form{
             .details{
-             
                     font-family: $droid-font;
                     color:  #149075;
                     font-size: 26px;/* Approximation due to font substitution */
@@ -27,7 +26,15 @@
                     text-align: left;
                     height: 20px;
                     margin-left: 27px;
-            }
+                }
+                .row-separator{
+                    clear: both;
+                    width: 75%;
+                    margin-top: 10px;
+                    margin-left: 30px;
+                    margin-bottom: 20px;
+                    border-bottom: 1px solid #e8e8e8;
+                }
             .input-name{
                 margin-top: 10px;
                 margin-left: 27px;
@@ -300,8 +307,7 @@
                                 width: 136px;
                                 height: 70px;
                                 float: left;
-                                border-left: 1px solid #e4e4e4;
-                                border-bottom:  1px solid #e4e4e4;
+                                border:1px solid #e4e4e4;
                                 .check-input {
 
                                         margin-left: 15px;
@@ -347,6 +353,7 @@
                             border-color:  #e4e4e4;
                             box-sizing: border-box;
                             border-top: none;
+                           
                                 .timer{
                                     color:  #2b2b2b;
                                     font-size: 14px;/* Approximation due to font substitution */
@@ -528,7 +535,7 @@
                 .button-prev{
                     position: absolute;
                     display: inline-block; 
-                    margin-left: 516px; 
+                    margin-left: 532px;
                     margin-top: 20px;
                     border-style: solid;
                     border-width: 1px;
@@ -538,6 +545,9 @@
                     width: 23px;
                     height: 22px;
                     text-align: center;
+                    img{
+                        vertical-align: middle;
+                    }
                 }
                 .button-next{
                     position: absolute;
@@ -552,6 +562,10 @@
                     width: 23px;
                     height: 22px;
                     text-align: center;
+
+                    img{
+                           vertical-align: middle;
+                    }
                 }
             }
 
@@ -840,6 +854,7 @@
                         width: 100%!important;
                         min-height: 130px;
                         margin-bottom: 30px;
+                        border-bottom: none;
                         span{
                             display: none;
                         }
@@ -941,7 +956,7 @@
 
 }
 
-@media only screen and (max-width: 350px){
+@media only screen and (max-width: 375px){
     .wrap{
         .second-container{
             .available-hours{   
