@@ -4,24 +4,30 @@
     overflow-y: scroll;
 }
 
+.fc td, .fc th {
+    border-style: solid;
+    border-width: 1px;
+    padding: 0;
+    vertical-align: top;
+    /* width: 0%; */
+    width: 85px;
+    text-transform: uppercase;
+}
+
 .TimeLines{
     background-color :#ffffff;
     font-size: 15px;/* Approximation due to font substitution */
     font-weight: 500;
     text-align: center;
-    border-style: solid;
-    border-width: 0.6px;
-    border-color:  #e4e4e4;
     box-sizing: border-box;
     padding-top: 10px;
-    border-bottom: none;
-    border-right: none;
     text-decoration: line-through;
     padding-bottom: 10px;
     text-align: center;
     color: #a0a0a0;
     padding-top:25px;
     padding-bottom: 25px;
+    border-bottom: 1px solid  #e4e4e4;
 }
 
 
@@ -45,6 +51,10 @@
     background-color: transparent;
 }    
 
+.fc-toolbar {
+    text-transform: uppercase;
+}
+
 .fc-head-container{
     background-color: #f3fbfb!important;
     width: 500px;
@@ -52,12 +62,12 @@
 }
 
 .fc-widget-header{
-   width: 97.5%;
+   /* width: 97.5%; */
 }
 
 
 .fc-day-grid{
-    height: 1640px!important;
+    height: 1655px!important;
     overflow: hidden;
     opacity: 0.8;
 }
@@ -66,7 +76,7 @@
     color: #2b2b2b;
     font-size: 16.03px;
     font-weight: 400;
-    line-height: 23.122px;
+    line-height: 30px;
     text-align: center;
 }
 

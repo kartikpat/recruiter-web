@@ -240,7 +240,6 @@ function candidateList() {
         }
 
         item.eduList.html(eduStr)
-
         console.log(aData['userID']);
         item.candidateCheckbox.attr("id",aData["userID"]);
         item.candidateCheckboxLabel.attr("for",aData["userID"]);
@@ -256,12 +255,19 @@ function candidateList() {
         if(aData["cover"]) {
             item.coverLetterLink.removeClass("hidden")
         }
+        var flag=0;
         if(aData["comment"]) {
             item.viewCommentLink.removeClass("hidden")
+            flag++;
         }
         if(aData["tags"].length) {
             item.viewTagLink.removeClass("hidden")
+            flag++;
         }
+        if(flag>1){
+              item.viewTagLink.css("border-left","1px solid #e8e8e8");
+        }
+
         return item
     }
 
