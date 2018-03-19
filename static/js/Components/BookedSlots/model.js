@@ -14,6 +14,10 @@ function BookedSlots() {
 		settings.openCancelInterviewModalButton= '.candidateCancelInterviewInvite',
 		settings.cancelInterviewModal= $('.cancelInterviewModal'),
 		settings.cancelInterviewButton= $('.cancelInterviewButton'),
+		settings.bookedSlotsview=$('.page-content'),
+		settings.header=$('.action-wrapper'),
+		settings.headerSlot=$('.header-slot')
+		settings.noInterviewView=$('.page-wrap'),
 		settings.tableRowShell = $(".tableRow.shell");
 		settings.loaderOverlay = $("#loaderOverlay");
         settings.date = ""
@@ -109,10 +113,15 @@ function BookedSlots() {
 
 	function addToList(dataArray){
 		var str = '';
-		hideShell()
+		hideShell();
+		// dataArray.length=0;
 		if(!dataArray.length) {
-			return settings.bookedSlots.html("<div class='no-data'>No Interviews Found!</div>")
+		//	debugger
+			settings.bookedSlotsview.addClass('hidden');
+			settings.noInterviewView.removeClass('hidden');		
 		}
+		settings.header.removeClass('hidden');
+		settings.headerSlot.removeClass('hidden');
 		dataArray.forEach(function(aData, index){
 			var item = createElement(aData , index);
 			str+=item.element[0].outerHTML;

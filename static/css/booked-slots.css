@@ -2675,6 +2675,8 @@ span.sticker {
         cursor: pointer;
         line-height: 28px;
         display: inline-block; }
+        .page-content .header-slot .right-container .manage-Calendar a {
+          color: #2b2b2b; }
   .page-content .action-wrapper {
     width: 95%;
     background-color: #ebe8e8;
@@ -2881,13 +2883,13 @@ span.sticker {
 
 .page-wrap {
   color: #2b2b2b;
-  min-height: 100%;
   padding: 0;
   overflow: auto;
   position: relative;
   padding: 20px;
   width: 100%;
-  background-color: #F4F4F4; }
+  background-color: #F4F4F4;
+  min-height: 100%; }
   .page-wrap .main-wrappper {
     width: 80%;
     float: left; }
@@ -2923,6 +2925,8 @@ span.sticker {
             cursor: pointer;
             line-height: 28px;
             display: inline-block; }
+            .page-wrap .main-wrappper .main-conainer .header-slot .right-container .manage-Calendar a {
+              color: #2b2b2b; }
       .page-wrap .main-wrappper .main-conainer .no-schedule-container {
         width: 100%;
         border-radius: 6px;
@@ -3073,7 +3077,30 @@ span.sticker {
               display: inline-block; }
             .page-content .booked-slots .slot-date .schedules-container .schedules .action-buttons .section {
               display: inline-block;
-              margin-left: 30px; } }
+              margin-left: 18px; } }
+
+@media only screen and (max-width: 1024px) {
+  .page-wrap {
+    color: #2b2b2b;
+    min-height: 0%;
+    padding: 0;
+    overflow: auto;
+    position: relative;
+    padding: 20px;
+    width: 100%;
+    background-color: #F4F4F4; }
+    .page-wrap .main-wrappper {
+      width: 100%;
+      float: left; }
+      .page-wrap .main-wrappper .main-conainer {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1200px; }
+        .page-wrap .main-wrappper .main-conainer .header-slot {
+          margin-top: 20px;
+          width: 100%; }
+    .page-wrap .conversations {
+      display: none; } }
 
 @media only screen and (max-width: 480px) {
   .page-content .header-slot {
@@ -3098,7 +3125,83 @@ span.sticker {
         padding-right: 20px; }
   .page-content .booked-slots .slot-date .schedules-container .schedules .action-buttons .section {
     display: inline-block;
-    margin-left: 10px; } }
+    margin-left: 10px; }
+  .page-wrap {
+    color: #2b2b2b;
+    padding: 0;
+    overflow: auto;
+    position: relative;
+    padding: 20px;
+    width: 100%;
+    background-color: #F4F4F4; }
+    .page-wrap .main-wrappper {
+      width: 100%;
+      float: left; }
+      .page-wrap .main-wrappper .main-conainer {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1200px; }
+        .page-wrap .main-wrappper .main-conainer .header-slot {
+          width: 100%; }
+          .page-wrap .main-wrappper .main-conainer .header-slot .tagline {
+            font-size: 14px;
+            /* Approximation due to font substitution */
+            font-weight: 400;
+            text-align: left;
+            width: 50%;
+            display: inline-block;
+            margin-top: 5px; }
+          .page-wrap .main-wrappper .main-conainer .header-slot .right-container {
+            float: right; }
+            .page-wrap .main-wrappper .main-conainer .header-slot .right-container .manage-Calendar {
+              border-radius: 4px;
+              border-style: solid;
+              border-width: 1px;
+              border-color: #8f8a8a;
+              box-sizing: border-box;
+              background-color: #ffffff;
+              width: 125px;
+              height: 28px;
+              text-align: center;
+              line-height: 28px;
+              font-size: 0.75em;
+              cursor: pointer;
+              line-height: 28px;
+              display: inline-block; }
+        .page-wrap .main-wrappper .main-conainer .no-schedule-container {
+          width: 100%;
+          border-radius: 6px;
+          border-style: solid;
+          border-width: 1px;
+          border-color: #e8e8e8;
+          box-sizing: border-box;
+          background-color: #ffffff;
+          box-shadow: 0px 2px 8px 0px rgba(214, 214, 214, 0.3);
+          margin-top: 40px; }
+          .page-wrap .main-wrappper .main-conainer .no-schedule-container .image-container {
+            padding-top: 100px; }
+            .page-wrap .main-wrappper .main-conainer .no-schedule-container .image-container img {
+              margin-left: auto;
+              margin-right: auto;
+              display: block;
+              width: 30%; }
+          .page-wrap .main-wrappper .main-conainer .no-schedule-container .heading {
+            color: #149075;
+            font-size: 20px;
+            font-weight: 400;
+            text-align: center;
+            padding-top: 20px; }
+          .page-wrap .main-wrappper .main-conainer .no-schedule-container .subheading {
+            color: #737373;
+            font-size: 14px;
+            /* Approximation due to font substitution */
+            font-weight: 400;
+            line-height: 19.992px;
+            /* Approximation due to font substitution */
+            text-align: center;
+            padding-bottom: 130px;
+            margin-left: 10px;
+            margin-right: 10px; } }
 
 @media only screen and (max-width: 380px) {
   .page-content .header-slot {

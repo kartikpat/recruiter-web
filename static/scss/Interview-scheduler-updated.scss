@@ -19,7 +19,6 @@
     .container{
         .form{
             .details{
-             
                     font-family: $droid-font;
                     color:  #149075;
                     font-size: 26px;/* Approximation due to font substitution */
@@ -27,7 +26,15 @@
                     text-align: left;
                     height: 20px;
                     margin-left: 27px;
-            }
+                }
+                .row-separator{
+                    clear: both;
+                    width: 55%;
+                    margin-top: 10px;
+                    margin-left: 30px;
+                    margin-bottom: 20px;
+                    border-bottom: 1px solid #e8e8e8;
+                }
             .input-name{
                 margin-top: 10px;
                 margin-left: 27px;
@@ -294,14 +301,15 @@
                     }
                     
                         .dayId{
-                            opacity: 0.5;
+                         
                           .section{
-                                background-color:  #f3fbfb;
+                                background-color:#f8fbfb;;
                                 width: 136px;
                                 height: 70px;
                                 float: left;
-                                border-left: 1px solid #e4e4e4;
-                                border-bottom:  1px solid #e4e4e4;
+                                border: 1px solid #e4e4e4;
+                                border-top: none;
+                                border-right: none;
                                 .check-input {
 
                                         margin-left: 15px;
@@ -319,7 +327,7 @@
                                             background-repeat:no-repeat;
                                             background-size:20px;
                                             background-position:left 2px center;
-                                            color:  #2b2b2b;
+                                            color:  #a8a8a8;
                                             font-size: 19px;/* Approximation due to font substitution */
                                             font-weight: 400;
                                             text-align: left;
@@ -364,8 +372,8 @@
                                     font-family: inherit;
                                     display: inline-block;
                                     font-size: 12px;
-                                    color:  #2b2b2b;
-                                    padding: 10px 22px;
+                                    color:  #a8a8a8;
+                                    padding: 10px 14px;
                                     border-radius: 3px;
                                     background: #FFF;
                                     width: 100px;
@@ -487,7 +495,7 @@
                                         display: inline-block;
                                         font-size: 12px;
                                         color: #2b2b2b;
-                                        padding: 10px 22px;
+                                        padding: 10px 16px;
                                         border-radius: 3px;
                                         background: #FFF;
                                         width: 100px;
@@ -528,7 +536,7 @@
                 .button-prev{
                     position: absolute;
                     display: inline-block; 
-                    margin-left: 516px; 
+                    margin-left: 562px;
                     margin-top: 20px;
                     border-style: solid;
                     border-width: 1px;
@@ -538,11 +546,14 @@
                     width: 23px;
                     height: 22px;
                     text-align: center;
+                    img{
+                        vertical-align: middle;
+                    }
                 }
                 .button-next{
                     position: absolute;
                     display: inline-block;
-                    margin-left: 566px;
+                    margin-left: 592px;
                     margin-top: 20px;
                     border-width: 1px;
                     border-style: solid;
@@ -552,6 +563,10 @@
                     width: 23px;
                     height: 22px;
                     text-align: center;
+
+                    img{
+                           vertical-align: middle;
+                    }
                 }
             }
 
@@ -730,7 +745,7 @@
                     cursor: pointer;
                     font-size: 16px;
                     font-weight: 400;
-                    margin-left: 2%;
+                    margin-left: 45px;
                     margin-top: 2%;
         }
 
@@ -840,6 +855,7 @@
                         width: 100%!important;
                         min-height: 130px;
                         margin-bottom: 30px;
+                        border-bottom: none;
                         span{
                             display: none;
                         }
@@ -941,7 +957,7 @@
 
 }
 
-@media only screen and (max-width: 350px){
+@media only screen and (max-width: 375px){
     .wrap{
         .second-container{
             .available-hours{   
