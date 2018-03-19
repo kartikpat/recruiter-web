@@ -2675,6 +2675,8 @@ span.sticker {
         cursor: pointer;
         line-height: 28px;
         display: inline-block; }
+        .page-content .header-slot .right-container .manage-Calendar a {
+          color: #2b2b2b; }
   .page-content .action-wrapper {
     width: 95%;
     background-color: #ebe8e8;
@@ -2923,6 +2925,8 @@ span.sticker {
             cursor: pointer;
             line-height: 28px;
             display: inline-block; }
+            .page-wrap .main-wrappper .main-conainer .header-slot .right-container .manage-Calendar a {
+              color: #2b2b2b; }
       .page-wrap .main-wrappper .main-conainer .no-schedule-container {
         width: 100%;
         border-radius: 6px;

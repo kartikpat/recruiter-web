@@ -114,7 +114,7 @@ function BookedSlots() {
 	function addToList(dataArray){
 		var str = '';
 		hideShell();
-		//dataArray.length=0;
+		// dataArray.length=0;
 		if(!dataArray.length) {
 		//	debugger
 			settings.bookedSlotsview.addClass('hidden');

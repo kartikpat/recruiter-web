@@ -1093,6 +1093,8 @@ span.sticker {
         margin-bottom: 17px;
         font-weight: 400;
         float: right; }
+        .page-content .container .header-slot .manage-Calendar a {
+          color: #2b2b2b; }
     .page-content .container .wrapper {
       border-style: solid;
       border-width: 1px;
@@ -1273,6 +1275,8 @@ span.sticker {
           margin-top: 20px;
           margin-bottom: 30px;
           margin-right: 25px; }
+          .page-content .container .header-slot .manage-Calendar a {
+            color: #2b2b2b; }
       .page-content .container .wrapper {
         border-style: solid;
         border-width: 1px;
