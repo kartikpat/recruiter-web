@@ -264,19 +264,19 @@ function Calendar(){
                 var option = document.createElement('option');
                 if(i<12){
                 option.value = i;
-                option.innerHTML = i+"AM";
+                option.innerHTML = i+":00 AM";
                 }
                 else  if(i==12){
                 option.value = i;
-                option.innerHTML = i+"PM"; 
+                option.innerHTML = i+":00 PM"; 
                 }
                 else if(i==24){
                 option.value = i;
-                option.innerHTML = (i-12)+"AM"; 
+                option.innerHTML = (i-12)+":00 AM"; 
                 }
                 else{
                 option.value = i;
-                option.innerHTML = (i-12)+"PM";
+                option.innerHTML = (i-12)+":00 PM";
                 }
                 select.append(option.outerHTML);
             }
