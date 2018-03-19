@@ -78,6 +78,9 @@ function resetPassword(){
 		fn(user);
 	}
     function successMsg() {
+    	user.email.addClass('hidden');
+    	user.password.addClass('hidden');
+    	user.login.addClass('hidden');
         user.resetSuccess.html("Password Successfully Reset. You can <a class='link-color' href='login'> Login</a> with new password.")
     }
 	return {
