@@ -994,7 +994,7 @@
 				"static/js/change-password.js",
 				"static/js/utilities.js",
 				"static/js/my-chat.js",
-				"static/js/chat_pubnub.js",
+				"static/js/Utilities/chatEngine.js",
 				"static/js/vendor/moment.min.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Services/fetchRecruiterChats.js",

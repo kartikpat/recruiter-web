@@ -241,8 +241,6 @@ function Candidate() {
             item.coverLetter.html(nl2br(aData["cover"]))
             $(".coverLetterTab").removeClass("hidden")
         }
-
-        item.coverLetter.html(aData["cover"] || "<div class='no-data'>No Cover Letter!</div>");
         if(aData["comment"]) {
             item.comment.val(aData["comment"]);
             item.mobComment.val(aData["comment"]);
