@@ -169,10 +169,7 @@ function Candidate() {
         else {
             item.notice.text((aData["notice"] + " months"));
         }
-        if(aData["ctc"] == "confidential")
-            item.salary.text("Confidential");
-        else
-            item.salary.text(aData["ctc"]+ " LPA");
+        item.salary.text(formatSalary(aData['ctc']))
         item.firstName.text(aData["name"])
         // var lastActiveDays = getLastActiveDay(aData["lastActive"])
 
@@ -223,7 +220,7 @@ function Candidate() {
 
         item.gender.text(gender[aData["sex"]])
         item.age.text(getAge(aData["dob"]) + " years")
-        item.expectedSalary.text(aData["expectedCtc"]+ " LPA")
+        item.expectedSalary.text(formatSalary(aData["expectedCtc"]))
         item.maritalStatus.text(getMaritalStatus(aData["maritalStatus"]));
         item.languages.text((formatLanguages(aData["languages"]) || "N.A."));
         item.workPermit.text((workPermit[aData["permit"]] || "N.A."));
@@ -241,11 +238,9 @@ function Candidate() {
         	item.resume.html('<iframe src="'+aData["resume"]+'" class="resume-embed" type="application/pdf"></iframe>')
         }
         if(aData["cover"]) {
-            item.coverLetter.html(aData["cover"])
+            item.coverLetter.html(nl2br(aData["cover"]))
             $(".coverLetterTab").removeClass("hidden")
         }
-
-        item.coverLetter.html(aData["cover"] || "<div class='no-data'>No Cover Letter!</div>");
         if(aData["comment"]) {
             item.comment.val(aData["comment"]);
             item.mobComment.val(aData["comment"]);

@@ -9,8 +9,9 @@ globalParameters = {
 
 jQuery(document).ready( function() {
 
-    initializePubNub();
-    addListeners(onNewMessage, onNewPresence, onNewStatus);
+    var chatEngine = ChatEngine(recruiterId, profile.email);
+    chatEngine.initialize();
+    chatEngine.addListeners(onNewMessage, onNewPresence, onNewStatus);
 
     var chat = Chat();
     var store = Store();
@@ -22,7 +23,7 @@ jQuery(document).ready( function() {
         var obj = store.getCandidateFromStore(candidateId)
         globalParameters.channelName = obj.channel;
         globalParameters.clicked = 1;
-        fetchHistory(obj.channel , globalParameters.messageNumber , null, null, onFetchHistory);
+        chatEngine.fetchHistory(obj.channel , globalParameters.messageNumber , null, null, onFetchHistory);
         chat.setCandidateProfile(obj)
     })
 
@@ -30,7 +31,7 @@ jQuery(document).ready( function() {
 
     chat.onSendMessage(function(message, channelName, candidateId){
 
-        publish({
+        chatEngine.publish({
             UUID:uuid || btoa(recruiterId+'--'+profile["email"]),
             deviceID: getCookie("sessID"),
             time: Date.now(),
@@ -60,7 +61,7 @@ jQuery(document).ready( function() {
         chat.addToList(data);
         channelsArray = data;
         store.saveToStore(data);
-        subscribe(getArray(channelsArray));
+        chatEngine.subscribe(getArray(channelsArray));
     }
 
     function onFetchRecruiterChatsFail(topic, data) {
@@ -104,11 +105,12 @@ jQuery(document).ready( function() {
        var service = p.service; // service
        var uuids = p.uuids; // UUIDs of users who are connected with the channel with their state
        var occupancy = p.occupancy; // No. of users connected with the channel
-
-       if(p["action"] == "join" && p["occupancy"] >= 2 && p["uuid"] != (uuid || getUUID())) {
+       console.log('............................................')
+       console.log(p)
+       if(p["action"] == "join" && p["occupancy"] >= 2 && p["uuid"] != (uuid || chatEngine.getUUID())) {
            chat.showStatusIcon(p.channel)
        }
-       else if (p["action"] == "leave" && p["occupancy"] < 2 && p["uuid"] != (uuid || getUUID())) {
+       else if (p["action"] == "leave" && p["occupancy"] < 2 && p["uuid"] != (uuid || chatEngine.getUUID())) {
            chat.hideStatusIcon(p.channel)
        }
    }
@@ -166,10 +168,18 @@ jQuery(document).ready( function() {
            if(globalParameters.startTimeToken == 0) {
                return
            }
-           fetchHistory(globalParameters.channelName , globalParameters.messageNumber ,globalParameters.startTimeToken, null, onFetchHistory);
+           chatEngine.fetchHistory(globalParameters.channelName , globalParameters.messageNumber ,globalParameters.startTimeToken, null, onFetchHistory);
        }
    }
 })
+
+function getArray(array) {
+    var tempArray = [];
+    array.forEach(function(aChannel){
+        tempArray.push(aChannel["channel"]);
+    });
+    return tempArray;
+}
 
 function errorHandler(data) {
     if(!data) {

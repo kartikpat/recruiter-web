@@ -326,21 +326,23 @@ $(document).ready(function(){
 	var followUpsUpdateSubscription = pubsub.subscribe("fetchedFollowups", onFetchFollowUps);
 
 	function onFetchInterviews(topic, data){
-		var isMultiple = true;
-		if(data.length ==1)
-			isMultiple = false
-		var lastDate =(data[0] && data[0]['slot'] )? data[0]['slot'] : null;
+		var totalInterviews = data.length;
+		var showCount = 4;
+		var lastDate =(data[0] && data[0]['slot'] )? moment(data[0]['slot']['date']).format('YYYY-MM-DD') : null;
 		var interviewContainer = $('#interviewContainer');
 		var interviewRowCard = $(".interviewRow.prototype");
+		if(totalInterviews<1){
+			$('.single-interview').removeClass('hidden');
+			interviewContainer.find('.interviewRow').removeClass('hidden')
+		}
 		var interviewCandidateCard = $('.interviewCandidateRow.prototype');
 		var card = interviewRowCard.clone().removeClass('hidden prototype');
 		data.forEach(function(aRow, index){
-			if(index>4)
+			if(index>showCount)
 				return
-			if(lastDate != aRow['slot']['date']){
-				lastDate = aRow['slot']['date'];
-				interviewContainer.find('.detail-card').append(card);
-				interviewContainer.find('.detail-card').append('')
+			if(index>0 && lastDate != moment(aRow['slot']['date']).format('YYYY-MM-DD')){
+				lastDate = moment(aRow['slot']['date']).format('YYYY-MM-DD')
+					interviewContainer.find('.detail-card').append(card);
 				card = interviewRowCard.clone().removeClass('hidden prototype');
 			}
 			var slotDate = moment(aRow['slot']['date']);
@@ -353,16 +355,16 @@ $(document).ready(function(){
 			candidateCard.find('.name').text(aRow['name']);
 			candidateCard.find('.designation').text(aRow['designation']);
 			candidateCard.find('.organization').text(aRow['organization']);
+			if(index==totalInterviews-1 &&  showCount >=index){
+				card.find('.horizontal-separator').addClass('hidden')
+			}
 			card.find('.general').append(candidateCard)
-			// interviewContainer.find('.detail-card').append(card);	
+			interviewContainer.find('.detail-card').append(card);	
 		})
-		if( data.length>4){
+		if( totalInterviews>showCount){
 			var seeMore= seeMoreSection.clone().removeClass('hidden prototype');
-			// seeMore.find(".seeAll a").attr('href', '/interviews')
-			// interviewContainer.find('.detail-card').append(seeMore);
-		}
-		if( data.length>0){
-			interviewContainer.removeClass('hidden');
+			seeMore.find(".seeAll a").attr('href', '/booked-slots')
+			interviewContainer.find('.detail-card').append(seeMore);
 		}
 	}
 
@@ -373,9 +375,9 @@ $(document).ready(function(){
 
 	function init(){
 		pubsub.publish("pageVisit", 1);
-		fetchDashboardStats(recruiterId);
-		fetchJobs("published", recruiterId, 5,1);
-		fetchFollowUps(recruiterId);
+		// fetchDashboardStats(recruiterId);
+		// fetchJobs("published", recruiterId, 5,1);
+		// fetchFollowUps(recruiterId);
 		fetchInterviews(recruiterId, {pageContent: 6, pageNumber: 1, status: 2});
 	}
 	init()

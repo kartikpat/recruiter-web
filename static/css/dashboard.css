@@ -1420,6 +1420,12 @@ span.sticker {
     display: inline-block; }
   .page-content .notification-card {
     margin-bottom: 40px; }
+    .page-content .notification-card .single-interview .action-buttons {
+      text-align: center;
+      margin: 0 auto;
+      padding: 0; }
+      .page-content .notification-card .single-interview .action-buttons .button {
+        margin-right: 0; }
   .page-content .dashboard {
     border-radius: 6px;
     border-style: solid;
@@ -1751,6 +1757,13 @@ span.sticker {
     margin-right: 0px;
     position: relative;
     left: 1px; } }
+
+.explorer .action-buttons {
+  text-align: center !important;
+  margin: 0 !important;
+  padding: 0 !important; }
+  .explorer .action-buttons .button {
+    margin-right: 0px !important; }
 
 .error {
   position: relative !important; }
