@@ -1,5 +1,5 @@
 function submitResetPassword(data){
-	postRequest(baseUrl+"/recruiter/forgot-password", null, data, function(res, status, xhr){
+	postRequest(baseUrl+"/recruiter/reset", null, data, function(res, status, xhr){
 		console.log(xhr)
 		if(res.status && res.status =='success'){
 			return pubsub.publish("successfulResetPassword", res.data);
