@@ -333,7 +333,7 @@ $(document).ready(function(){
 		var interviewRowCard = $(".interviewRow.prototype");
 		if(totalInterviews<1){
 			$('.single-interview').removeClass('hidden');
-			$('.interviewRow').removeClass('hidden')
+			interviewContainer.find('.interviewRow').removeClass('hidden')
 		}
 		var interviewCandidateCard = $('.interviewCandidateRow.prototype');
 		var card = interviewRowCard.clone().removeClass('hidden prototype');
@@ -359,7 +359,7 @@ $(document).ready(function(){
 				card.find('.horizontal-separator').addClass('hidden')
 			}
 			card.find('.general').append(candidateCard)
-			interviewContainer.find('.detail-card').append(card);	
+			//interviewContainer.find('.detail-card').append(card);	
 		})
 		if( totalInterviews>showCount){
 			var seeMore= seeMoreSection.clone().removeClass('hidden prototype');
