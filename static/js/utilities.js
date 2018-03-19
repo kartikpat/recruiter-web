@@ -9,10 +9,10 @@ jQuery(document).ready(function(){
 		if(!jQuery(e.target).parents(".header .profile-menu").length && !jQuery(e.target).parents(".header .profile.action-icon").length) {
 			jQuery(".header .profile-menu").removeClass("active");
 		}
-		if(!jQuery(e.target).parents(".modal").length) {
-			$("body").removeClass("posf")
-			$(".modal").addClass("hidden")
-		}
+		// if(!jQuery(e.target).parents(".modal").length) {
+		// 	$("body").removeClass("posf")
+		// 	$(".modal").addClass("hidden")
+		// }
 	});
 
 	jQuery(".header").on("mouseenter", ".my-jobs", function() {

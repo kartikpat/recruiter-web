@@ -207,6 +207,7 @@ jQuery(document).ready( function() {
         // alert(candidateId)
     })
     candidates.initializeJqueryTabs(defaultTab, function(event, ui) {
+        tickerLock = false;
         var status = candidates.activateStatsTab(event, ui)
         candidates.showShells(status);
         candidates.removeCandidate(globalParameters.status)
@@ -559,6 +560,8 @@ jQuery(document).ready( function() {
 
 
     function onJobsApplicationsFetchSuccess(topic, data) {
+        tickerLock = false;
+        debugger;
         $(".loaderScroller").addClass("hidden")
         //Call only on initial load
         if(!globalParameters.initialLoad) {
@@ -582,7 +585,7 @@ jQuery(document).ready( function() {
 
         globalParameters.candidateListLength = data["data"].length;
 
-        candidates.addToList(data["data"], globalParameters.status);
+        candidates.addToList(data["data"], globalParameters.status, globalParameters.pageNumber, globalParameters.pageContent);
 
         if(!theJob.getCalendarLength()){
             candidates.setInvite(theJob.getCalendarLength())
@@ -796,16 +799,19 @@ jQuery(document).ready( function() {
     var sendInterViewInviteSuccessSubscription = pubsub.subscribe("sendInterViewInviteSuccess", onSendInterViewInviteSuccess)
 	var sendInterViewInviteFailSubscription = pubsub.subscribe("sendInterViewInviteFail", onSendInterViewInviteFail);
 
-    var ticker;
+    var tickerLock=false;
     $(window).scroll(function() {
-     clearTimeout(ticker);
-     ticker = setTimeout(checkScrollEnd,100);
+        console.log(tickerLock)
+        if(!tickerLock){
+            tickerLock = true;
+            setTimeout(checkScrollEnd,100);
+        }
     });
 
     function checkScrollEnd() {
     	if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
     		globalParameters.pageNumber = globalParameters.pageNumber + 1;
-    		if(globalParameters.pageNumber != 1 && globalParameters.candidateListLength >= globalParameters.pageContent) {
+    		if(globalParameters.candidateListLength >= globalParameters.pageContent) {
                 var parameters = filters.getAppliedFilters();
                 console.log("Filter Parameters | ", parameters);
                 parameters.pageNumber = globalParameters.pageNumber;
@@ -814,7 +820,12 @@ jQuery(document).ready( function() {
                 $(".loaderScroller").removeClass("hidden")
     			fetchJobApplications(jobId,parameters,recruiterId)
     		}
+            else
+                tickerLock = false;
     	}
+        else{
+            tickerLock = false
+        }
     }
 })
 

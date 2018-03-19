@@ -366,6 +366,7 @@ function Filters(){
 
     function setOnClickCloseFilters(){
     	settings.filterModalCancelButton.click(function(event){
+    		
     		removeBodyFixed();
             settings.filterModal.addClass("hidden");
     	})
@@ -373,6 +374,7 @@ function Filters(){
 			if($(event.target).parents(".modal_content").length) {
 				return event.stopPropagation();
 			}
+			
 			removeBodyFixed();
             settings.filterModal.addClass("hidden");
 		})

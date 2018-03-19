@@ -224,7 +224,7 @@ function Candidate() {
         item.maritalStatus.text(getMaritalStatus(aData["maritalStatus"]));
         item.languages.text((formatLanguages(aData["languages"]) || "N.A."));
         item.workPermit.text((workPermit[aData["permit"]] || "N.A."));
-        item.teamHandling.text(binary[aData["permit"]])
+        item.teamHandling.text(binary[aData["handleTeam"]])
         item.workSixDays.text("no");
         item.relocate.text(binary[aData["relocate"]] )
         item.startup.text(binary[aData["joinStartup"]])
