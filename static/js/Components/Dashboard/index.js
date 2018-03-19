@@ -363,7 +363,7 @@ $(document).ready(function(){
 		})
 		if( totalInterviews>showCount){
 			var seeMore= seeMoreSection.clone().removeClass('hidden prototype');
-			seeMore.find(".seeAll a").attr('href', '/interviews')
+			seeMore.find(".seeAll a").attr('href', '/booked-slots')
 			interviewContainer.find('.detail-card').append(seeMore);
 		}
 	}
