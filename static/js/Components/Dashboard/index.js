@@ -359,7 +359,7 @@ $(document).ready(function(){
 				card.find('.horizontal-separator').addClass('hidden')
 			}
 			card.find('.general').append(candidateCard)
-			//interviewContainer.find('.detail-card').append(card);	
+			interviewContainer.find('.detail-card').append(card);	
 		})
 		if( totalInterviews>showCount){
 			var seeMore= seeMoreSection.clone().removeClass('hidden prototype');
