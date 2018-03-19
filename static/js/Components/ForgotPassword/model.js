@@ -72,6 +72,10 @@ function userForgotPassword(){
 	}
 
 	function successMsg() {
+		user.email.addClass('hidden');
+		user.login.addClass('hidden');
+		user.errors.addClass('hidden');
+
 		user.recoverySuccess.text("We have sent you a recovery email. Please check your mailbox.")
 	}
 	return {
