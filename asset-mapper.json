@@ -1406,7 +1406,9 @@
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Components/BookedSlots/model.js",
-				"static/js/Components/BookedSlots/index.js"
+				"static/js/Components/BookedSlots/index.js",
+				"static/js/chat-pubnub-sticky.js",
+				"static/js/chat-sticky.js"
 
             ],
             "prod" :[

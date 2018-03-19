@@ -123,10 +123,9 @@ function Calendar(){
         $.each(settings.dayId,function(){
             settings.select_menu.find('option').prop('disabled', false); 
             var id=$(this).attr('id');
-            $("#"+id+"").css("opacity","0.5");
             var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
             if(checkbox==true){
-            $("#"+id+"").css("opacity","1");
+                
             }
             var startvalue=$("#"+id+ "").find(settings.start_time).val();
             var endvalue=$("#"+id+ "").find(settings.end_time).val();
