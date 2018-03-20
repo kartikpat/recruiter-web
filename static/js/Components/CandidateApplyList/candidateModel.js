@@ -233,7 +233,7 @@ function Candidate() {
         item.maritalStatus.text(getMaritalStatus(aData["maritalStatus"]));
         item.languages.text((formatLanguages(aData["languages"]) || "N.A."));
         item.workPermit.text((workPermit[aData["permit"]] || "N.A."));
-        item.teamHandling.text(binary[aData["permit"]])
+        item.teamHandling.text(binary[aData["handleTeam"]])
         item.workSixDays.text("no");
         item.relocate.text(binary[aData["relocate"]] )
         item.startup.text(binary[aData["joinStartup"]])
@@ -253,6 +253,11 @@ function Candidate() {
         if(aData["comment"]) {
             item.comment.val(aData["comment"]);
             item.mobComment.val(aData["comment"]);
+            item.commentTextarea.val(aData["comment"])
+            item.comment.addClass('hidden');
+            item.commentTextarea.removeClass('hidden');
+            item.addButton.addClass('hidden');
+            item.editButton.removeClass('hidden');
         }
         item.shortlistButton.attr("data-action", 1);
         item.rejectButton.attr("data-action", 2);

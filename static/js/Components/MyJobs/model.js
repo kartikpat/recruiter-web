@@ -30,6 +30,7 @@ function Jobs() {
 		onClickJobRefresh();
 		onClickJobCancel();
 		onClickJobMakePremium();
+		setOnClickCloseFilters();
 	}
 
 	function onClickJobCancel(fn){
@@ -269,6 +270,15 @@ function Jobs() {
 
 		settings.rowContainer.html(str);
 		initializeTooltip()
+	}
+
+	function setOnClickCloseFilters(){
+		$(".modal").click(function(event){
+			if($(event.target).parents(".modal_content").length || $(event.target).parents(".modal_header").length) {
+				return event.stopPropagation();
+			}
+			closeModal();
+		})
 	}
 
 	function closeModal() {
