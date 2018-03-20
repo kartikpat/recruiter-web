@@ -2294,9 +2294,10 @@ span.sticker {
   min-width: 15px;
   width: auto;
   text-align: center;
-  background: #2b2b2b;
-  color: #fff;
-  border-radius: 50%; }
+  color: #9d9c9c;
+  font-size: 12px;
+  padding-left: 10px;
+  font-weight: normal !important; }
 
 .modal_overlay {
   position: fixed;
@@ -2315,9 +2316,9 @@ span.sticker {
     left: 0;
     right: 0;
     margin: auto;
-    width: 800px;
-    max-width: 90%;
-    max-height: 365px;
+    width: 90%;
+    max-width: 973px;
+    max-height: 440px;
     background: #FFF;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     z-index: 30; }
@@ -2325,7 +2326,7 @@ span.sticker {
       width: 500px;
       max-height: 200px; }
     .modal_overlay .modal_content .modal_sidebar {
-      width: 30%;
+      width: 22%;
       float: left;
       background: #f5f5f5;
       height: 100%; }
@@ -2336,7 +2337,8 @@ span.sticker {
         padding: 20px 15px 15px; }
       .modal_overlay .modal_content .modal_sidebar ul.category_listing {
         list-style: none;
-        padding: 0; }
+        padding: 0;
+        margin-top: 0; }
         .modal_overlay .modal_content .modal_sidebar ul.category_listing li {
           color: #2b2b2b;
           font-size: 13px;
@@ -2348,12 +2350,16 @@ span.sticker {
           .modal_overlay .modal_content .modal_sidebar ul.category_listing li.active {
             background: #fff;
             border-left: 3px solid #1f8f75; }
+          .modal_overlay .modal_content .modal_sidebar ul.category_listing li span {
+            font-size: 14px;
+            line-height: 30px;
+            font-weight: 600; }
     .modal_overlay .modal_content .modal_body {
-      width: 70%;
-      float: right;
+      width: 78%;
       position: relative;
       overflow: auto;
-      height: 100%; }
+      height: 100%;
+      padding: 0 25px; }
       .modal_overlay .modal_content .modal_body.full-width {
         width: 100%; }
   .modal_overlay .category_listing_container {
@@ -2410,7 +2416,8 @@ span.sticker {
     padding: 15px; }
     .modal_overlay .modal_body_header .title {
       font-size: 16px;
-      margin-bottom: 10px; }
+      margin-bottom: 10px;
+      font-weight: 600; }
   .modal_overlay .modal_content {
     padding: 0; }
   .modal_overlay .filters-search {
@@ -2439,7 +2446,7 @@ span.sticker {
     .modal_overlay .filter-tags-container .check-input {
       display: inline-block;
       width: 50%;
-      min-height: 30px;
+      min-height: 40px;
       vertical-align: top; }
 
 .close_modal {
@@ -2472,7 +2479,7 @@ span.sticker {
   clear: both;
   margin: 0;
   margin-left: 15px;
-  height: 190px; }
+  height: 260px; }
   .modal_overlay .modal_content .modal_body .subcategory_listing.full {
     margin-right: 15px;
     height: 229px; }
@@ -2843,7 +2850,7 @@ input::-webkit-input-placeholder {
           vertical-align: top; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .keyword-search .container {
             position: relative;
-            height: 40px; }
+            height: 30px; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .keyword-search input {
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -2858,12 +2865,14 @@ input::-webkit-input-placeholder {
             line-height: 1.5;
             border-radius: 0;
             padding: 4px 35px;
+            border-color: #d8d5d5;
             line-height: 30px;
             background-image: url("/static/images/search-icon.svg");
             background-repeat: no-repeat;
             background-position: left 10px center;
             background-size: 14px;
-            font-size: 14px; }
+            font-size: 14px;
+            height: 30px; }
             .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .keyword-search input:focus {
               border-color: #4fa995; }
             .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .keyword-search input.error-border {
@@ -2881,6 +2890,8 @@ input::-webkit-input-placeholder {
             font-size: 14px; }
             .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .keyword-search button:focus {
               outline: none; }
+          .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .keyword-search .search-trigger {
+            border-color: #d8d5d5; }
         .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search {
           display: inline-block;
           vertical-align: top; }
@@ -3175,8 +3186,8 @@ input::-webkit-input-placeholder {
                   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .view-links .tags {
                     font-size: 12px;
                     display: inline-block;
-                    margin-left: 5px;
-                    padding-left: 5px; }
+                    margin-left: 12px;
+                    padding-left: 12px; }
               .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .skill-tag-listing .skill-tag {
                 margin: 5px;
                 display: inline-block;
@@ -3303,7 +3314,7 @@ input::-webkit-input-placeholder {
   z-index: 10;
   top: 0;
   padding: 24px 20px;
-  background-color: #f7f7f7;
+  background-color: #f2f2f2;
   box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.5);
   height: 75px;
   /* line-height: 75px; */ }
@@ -3573,7 +3584,7 @@ input::-webkit-input-placeholder {
   .page-content .candidate-apply-listing {
     width: 100%; } }
 
-@media all and (max-width: 1024px) {
+@media all and (max-width: 768px) {
   .shell p {
     width: 50%; }
   .shell span {
