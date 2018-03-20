@@ -568,8 +568,8 @@
     			<li class="save" id="candidateSaveModal"><span class="icon"><i class="icon-star"></i></span>Save for Later</li>
     			<li class="chat" id="candidateChatModal"><span class="icon"><i class="icon-chat_icon"></i></span>Chat with <span id="firstName" class="candidate-first-name">Shreya</span></li>
     			<li class="invite"><span class="icon"><i class="icon-interview"></i></span>Send Interview Invite</li>
-				<li class="invite-links"><span data-invite-id="1" class="inviteF2f tooltip ">Face to Face</span></li>
-				<li class="invite-links"><span data-invite-id="2" class="inviteTelephonic tooltip ">Telephonic</span></li>
+				<li class="invite-links"><span class="icon"><i class="icon-face-to-face"></i></span><span data-invite-id="1" class="inviteF2f tooltip ">Face to Face</span></li>
+				<li class="invite-links"><span class="icon"><i class="icon-telephone"></i></span><span data-invite-id="2" class="inviteTelephonic tooltip ">Telephonic</span></li>
     		</ul>
 <!--
     		<ul>
@@ -588,8 +588,8 @@
 				<textarea id="" placeholder="Add Comment" name="name" class="candidateCommentTextarea"></textarea>
     		</div>
 			<div class="action-buttons">
-				<span class="cand-comment-button button green candidateAddCommentButton">Add</span>
-				<span class="button green candidateAddEditButton hidden">Edit Comment</span> 
+				<span class="cand-comment-button button green candidateAddCommentButton addButton">Add</span>
+				<span class="editbutton candidateAddEditButton hidden">Edit Comment</span> 
 			</div>
     	</div>
 
@@ -602,7 +602,7 @@
 						<div class="error-field hidden tagInputError" id=""><p>Input field can't be empty</p></div>
 					</div>
 					<div class="action-buttons cand-add-tag-action-btn">
-						<span class="button green candidateAddTagButton cand-add-tag-button">Add</span>
+						<span class="button green candidateAddTagButton cand-add-tag-button addButton">Add</span>
 					</div>
 				</div>
 				<div class="skill-tags-area candidateTagList">

@@ -287,7 +287,6 @@
 .icon-user:before {
   content: '\e831'; }
 
-/* '' */
 .icon-location:before {
   content: '\e832'; }
 
@@ -296,6 +295,12 @@
 
 .icon-checked_icon:before {
   content: '\e819'; }
+
+.icon-telephone:before {
+  content: '\E83C'; }
+
+.icon-face-to-face:before {
+  content: '\0xe83d'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -800,7 +805,6 @@ span.sticker {
 .icon-user:before {
   content: '\e831'; }
 
-/* '' */
 .icon-location:before {
   content: '\e832'; }
 
@@ -809,6 +813,12 @@ span.sticker {
 
 .icon-checked_icon:before {
   content: '\e819'; }
+
+.icon-telephone:before {
+  content: '\E83C'; }
+
+.icon-face-to-face:before {
+  content: '\0xe83d'; }
 
 .left {
   float: left; }
@@ -1281,7 +1291,6 @@ a {
 .icon-user:before {
   content: '\e831'; }
 
-/* '' */
 .icon-location:before {
   content: '\e832'; }
 
@@ -1290,6 +1299,12 @@ a {
 
 .icon-checked_icon:before {
   content: '\e819'; }
+
+.icon-telephone:before {
+  content: '\E83C'; }
+
+.icon-face-to-face:before {
+  content: '\0xe83d'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
