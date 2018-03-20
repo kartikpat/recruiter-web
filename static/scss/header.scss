@@ -135,10 +135,12 @@ b{
 
             h1 {
                 font-size: $logoFontSize;
-                font-family:inherit;
-                line-height:20px;
+                font-family: inherit;
+                line-height: 20px;
                 margin: 0;
-                display:inline-block;
+                /* display: inline-block; */
+                text-align: right;
+                width: 144px;
             }
             span {
                 font-family:inherit;
