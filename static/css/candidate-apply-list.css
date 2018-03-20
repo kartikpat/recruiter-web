@@ -272,7 +272,7 @@
   content: '\E83C'; }
 
 .icon-face-to-face:before {
-  content: '\0xe83d'; }
+  content: '\e83d'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -790,7 +790,7 @@ span.sticker {
   content: '\E83C'; }
 
 .icon-face-to-face:before {
-  content: '\0xe83d'; }
+  content: '\e83d'; }
 
 .left {
   float: left; }
@@ -1276,7 +1276,7 @@ a {
   content: '\E83C'; }
 
 .icon-face-to-face:before {
-  content: '\0xe83d'; }
+  content: '\e83d'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -1822,7 +1822,7 @@ span.sticker {
   content: '\E83C'; }
 
 .icon-face-to-face:before {
-  content: '\0xe83d'; }
+  content: '\e83d'; }
 
 /*[Recruiter_Homepage]*/
 /*[/Recruiter_Homepage]*/
@@ -2069,7 +2069,7 @@ span.sticker {
   content: '\E83C'; }
 
 .icon-face-to-face:before {
-  content: '\0xe83d'; }
+  content: '\e83d'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -4086,9 +4086,6 @@ input::-webkit-input-placeholder {
           margin-right: 10px; }
       .view-resume-modal .resume-sidebar .external-links ul .invite:hover {
         text-decoration: none; }
-      .view-resume-modal .resume-sidebar .external-links ul .invite-links {
-        margin-left: 30px;
-        list-style: initial; }
       .view-resume-modal .resume-sidebar .external-links ul:last-child {
         border-bottom: 0;
         padding-bottom: 0; }

@@ -303,7 +303,7 @@
   content: '\E83C'; }
 
 .icon-face-to-face:before {
-  content: '\0xe83d'; }
+  content: '\e83d'; }
 
 .left {
   float: left; }
@@ -789,7 +789,7 @@ a {
   content: '\E83C'; }
 
 .icon-face-to-face:before {
-  content: '\0xe83d'; }
+  content: '\e83d'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
