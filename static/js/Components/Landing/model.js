@@ -54,7 +54,6 @@ function userCredentials(){
 
 	function validateLogin(){
 		eraseErrors();
-
 		if(!( user.email && user.email.val() )){
 			console.log(user.email.next('.error'))
 			user.email.next('.error').text(errorResponses['missingEmail'])

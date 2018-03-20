@@ -77,7 +77,10 @@
       width: 591px;
       height: 48px;
       resize: none;
-      outline: none; }
+      outline: none;
+      padding: 16px 22px;
+      overflow: hidden;
+      font-size: 14px; }
     .wrap .container .form .input-name .error {
       font-family: "Droid Sans", sans-serif;
       position: absolute;
@@ -105,7 +108,10 @@
       width: 591px;
       height: 98px;
       resize: none;
-      outline: none; }
+      outline: none;
+      padding: 16px 22px;
+      overflow: hidden;
+      font-size: 14px; }
     .wrap .container .form .message .error-border {
       border-color: #ee1620; }
     .wrap .container .form .message .error {
@@ -140,10 +146,14 @@
       width: 591px;
       height: 111px;
       resize: none;
-      outline: none; }
+      outline: none;
+      padding: 16px 22px;
+      overflow: hidden;
+      font-size: 14px; }
   .wrap .container .Availability {
     margin-left: 27px;
-    margin-top: 76px; }
+    margin-top: 76px;
+    margin-bottom: 40px; }
     .wrap .container .Availability .heading {
       font-family: "Droid Sans", sans-serif;
       color: #149075;
