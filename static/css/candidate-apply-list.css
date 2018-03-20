@@ -259,7 +259,6 @@
 .icon-user:before {
   content: '\e831'; }
 
-/* '' */
 .icon-location:before {
   content: '\e832'; }
 
@@ -268,6 +267,12 @@
 
 .icon-checked_icon:before {
   content: '\e819'; }
+
+.icon-telephone:before {
+  content: '\E83C'; }
+
+.icon-face-to-face:before {
+  content: '\e83d'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -772,7 +777,6 @@ span.sticker {
 .icon-user:before {
   content: '\e831'; }
 
-/* '' */
 .icon-location:before {
   content: '\e832'; }
 
@@ -781,6 +785,12 @@ span.sticker {
 
 .icon-checked_icon:before {
   content: '\e819'; }
+
+.icon-telephone:before {
+  content: '\E83C'; }
+
+.icon-face-to-face:before {
+  content: '\e83d'; }
 
 .left {
   float: left; }
@@ -1253,7 +1263,6 @@ a {
 .icon-user:before {
   content: '\e831'; }
 
-/* '' */
 .icon-location:before {
   content: '\e832'; }
 
@@ -1262,6 +1271,12 @@ a {
 
 .icon-checked_icon:before {
   content: '\e819'; }
+
+.icon-telephone:before {
+  content: '\E83C'; }
+
+.icon-face-to-face:before {
+  content: '\e83d'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -1794,7 +1809,6 @@ span.sticker {
 .icon-user:before {
   content: '\e831'; }
 
-/* '' */
 .icon-location:before {
   content: '\e832'; }
 
@@ -1803,6 +1817,12 @@ span.sticker {
 
 .icon-checked_icon:before {
   content: '\e819'; }
+
+.icon-telephone:before {
+  content: '\E83C'; }
+
+.icon-face-to-face:before {
+  content: '\e83d'; }
 
 /*[Recruiter_Homepage]*/
 /*[/Recruiter_Homepage]*/
@@ -2036,7 +2056,6 @@ span.sticker {
 .icon-user:before {
   content: '\e831'; }
 
-/* '' */
 .icon-location:before {
   content: '\e832'; }
 
@@ -2045,6 +2064,12 @@ span.sticker {
 
 .icon-checked_icon:before {
   content: '\e819'; }
+
+.icon-telephone:before {
+  content: '\E83C'; }
+
+.icon-face-to-face:before {
+  content: '\e83d'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -3684,9 +3709,10 @@ input::-webkit-input-placeholder {
     .view-resume-modal .main-wrapper .main-container {
       width: 100%;
       border: 1px solid #e8e8e8;
-      background-color: #FFF; }
+      background-color: #FFF;
+      border-radius: 8px; }
       .view-resume-modal .main-wrapper .main-container .container.resume-header {
-        background-image: url("/static/images/view-resume-banner.jpg");
+        background-image: url("/static/images/view-resume-banner.png");
         background-repeat: no-repeat;
         background-position: center top;
         background-size: 100% 95px;
@@ -3710,7 +3736,8 @@ input::-webkit-input-placeholder {
             height: 100%;
             border-radius: 50%;
             border: 5px solid #FFF;
-            box-shadow: 0 0 3px rgba(0, 0, 0, 0.2); }
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+            background-color: #efefef; }
         .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information {
           text-align: center; }
           .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information p.profile-name {
@@ -3733,11 +3760,11 @@ input::-webkit-input-placeholder {
             text-align: left;
             border-right: 1px solid #e8e8e8; }
             .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot .snap .snap-title {
-              color: #333;
+              color: #808080;
               font-size: 13px;
               line-height: 1.5; }
             .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot .snap .snap-value {
-              color: #808080;
+              color: #333;
               font-size: 13px; }
             .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot .snap:last-child {
               border: 0; }
@@ -3762,12 +3789,13 @@ input::-webkit-input-placeholder {
             margin: 5px;
             border-radius: 50px; }
         .view-resume-modal .main-wrapper .main-container .container.resume-header .last-login-container {
-          margin: 20px 0; }
+          margin: 20px 0;
+          font-size: 14px; }
           .view-resume-modal .main-wrapper .main-container .container.resume-header .last-login-container p {
             text-align: right;
             margin-right: 20px;
             font-style: italic;
-            color: #808080; }
+            color: #818181; }
       .view-resume-modal .main-wrapper .main-container .container.resume-body {
         padding: 20px; }
         .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content {
@@ -3787,7 +3815,7 @@ input::-webkit-input-placeholder {
           .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default {
             background: transparent;
             border: none;
-            margin: 0 5px 0 0;
+            margin: 0 48px 0 0;
             position: relative;
             top: 1px; }
             .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default a {
@@ -3809,9 +3837,9 @@ input::-webkit-input-placeholder {
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-active a:focus {
                 outline: 0; }
           .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info {
-            padding: 20px 0; }
+            padding: 10px 0; }
             .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block {
-              margin: 20px 0 0 0;
+              margin: 20px 0 30px 0;
               border: 1px solid #e8e8e8;
               width: 100%;
               padding: 25px; }
@@ -3862,7 +3890,8 @@ input::-webkit-input-placeholder {
                   display: inline-block;
                   vertical-align: top;
                   cursor: pointer;
-                  margin-left: 0px; }
+                  margin-left: 0px;
+                  background-color: #FFF !important; }
                   .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons span.button.green {
                     background-color: #1f8f75; }
                   .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons span.button.red {
@@ -3936,16 +3965,19 @@ input::-webkit-input-placeholder {
                 font-size: 15px; }
                 .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content .datum p.name {
                   font-weight: bold;
-                  color: #333; }
+                  color: #333;
+                  margin-left: 15px; }
                 .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content .datum p.detail {
-                  color: #808080; }
+                  color: #808080;
+                  margin-left: 15px; }
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content .datum .separator {
                 margin: 20px 0;
                 border-bottom: 1px solid #e8e8e8; }
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul {
                 margin: 0;
                 padding: 0;
-                list-style: none; }
+                list-style: none;
+                margin-left: 15px; }
                 .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul li {
                   font-size: 0;
                   margin: 10px 0; }
@@ -3994,7 +4026,7 @@ input::-webkit-input-placeholder {
   .view-resume-modal .resume-sidebar {
     width: 20%; }
     .view-resume-modal .resume-sidebar .action-buttons {
-      margin-bottom: 30px; }
+      margin-bottom: 10px; }
       .view-resume-modal .resume-sidebar .action-buttons.cand-add-tag-action-btn {
         margin: 15px 0; }
       .view-resume-modal .resume-sidebar .action-buttons span.button {
@@ -4054,9 +4086,6 @@ input::-webkit-input-placeholder {
           margin-right: 10px; }
       .view-resume-modal .resume-sidebar .external-links ul .invite:hover {
         text-decoration: none; }
-      .view-resume-modal .resume-sidebar .external-links ul .invite-links {
-        margin-left: 30px;
-        list-style: initial; }
       .view-resume-modal .resume-sidebar .external-links ul:last-child {
         border-bottom: 0;
         padding-bottom: 0; }
@@ -4068,17 +4097,30 @@ input::-webkit-input-placeholder {
         color: #333;
         margin-top: 20px; }
       .view-resume-modal .resume-sidebar .sidebar-section .comment-box .comment-textarea {
-        background-color: white;
+        background-color: #f3fbfb;
         color: #757575;
         font-size: 14px;
         /* Approximation due to font substitution */
         font-weight: 400;
         text-align: left;
-        min-height: 75px;
+        min-height: 40px;
         margin-bottom: 10px;
         border: 1px solid  #e4e4e4;
         border-left: 3px solid  #cfebeb;
         resize: none; }
+      .view-resume-modal .resume-sidebar .sidebar-section .action-buttons .addButton {
+        background: #FFF !important;
+        border: 1px solid #908e8e !important;
+        border-radius: 4px;
+        padding: 6px 25px;
+        font-size: 14px !important;
+        margin: 0 5px;
+        color: #2b2b2b !important;
+        cursor: pointer; }
+      .view-resume-modal .resume-sidebar .sidebar-section .action-buttons .editbutton {
+        color: #155D9A !important;
+        font-size: 13px !important;
+        cursor: pointer; }
       .view-resume-modal .resume-sidebar .sidebar-section .cand-add-tag {
         height: 40px;
         line-height: 40px;
@@ -4107,7 +4149,8 @@ input::-webkit-input-placeholder {
           padding: 2px 15px;
           border-radius: 50px;
           font-size: 13px;
-          background-color: #FFF; }
+          background-color: #FFF;
+          color: #6e6e6e; }
           .view-resume-modal .resume-sidebar .sidebar-section.tags .skill-tag div {
             display: inline-block;
             vertical-align: middle; }
