@@ -386,6 +386,7 @@ function Candidate() {
             fn(applicationId, comment);
         });
 
+        
         settings.candidateEditComment.on('click',function(event){
             $(settings.candidateCommentTextareaClass).removeClass("hidden").focus(); 
             settings.commentBox.addClass("hidden");

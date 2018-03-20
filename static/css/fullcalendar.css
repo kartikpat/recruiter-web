@@ -12,6 +12,9 @@
     /* width: 0%; */
     width: 85px;
     text-transform: uppercase;
+    color: #2b2b2b;
+    font-size: 18px;
+    font-weight: 400;
 }
 
 .TimeLines{

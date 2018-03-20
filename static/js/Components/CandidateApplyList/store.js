@@ -14,12 +14,14 @@ function Store (){
     function getCandidateFromStore(candidateId){
 		return store[candidateId]
 		}
+
 		function updateCandidate(props, candidateId){
 			/* props = {
 				comment: comment,
 				tags: []
 			}
 			*/
+			
 			if(store[candidateId] && props.comment){
 				store[candidateId]["comment"]= props.comment;
 			};
