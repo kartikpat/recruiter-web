@@ -54,7 +54,7 @@ function Job(){
 			settings.jobLocation.addClass("hidden")
 		}
         if(data["jobExperience"]) {
-			debugger
+	//		debugger
             settings.jobExperience.text(data["jobExperience"]).removeClass("shell")
         }
 		else {

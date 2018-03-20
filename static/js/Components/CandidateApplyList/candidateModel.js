@@ -13,6 +13,9 @@ function Candidate() {
         settings.candidateAddCommentButtonClass= '.candidateAddCommentButton',
         settings.candidateAddTagButtonClass= '.candidateAddTagButton',
         settings.candidateCommentTextareaClass= '.candidateCommentTextarea',
+        settings.candidateEditComment=$('.candidateAddEditButton')
+        settings.commentBox=$('.comment-box'),
+        settings.commentTextarea=$('.comment-textarea'),
         settings.candidateTagInputClass = '.candidateTagInput',
         settings.candidateTagRemoveClass = '.tagRemove',
         settings.candidateTagListClass = '.candidateTagList',
@@ -32,6 +35,7 @@ function Candidate() {
 
         jQuery("#tabbed-content").tabs({});
         // onClickAddPopulatedTags()
+     
     }
 
     function showCandidateDetails(details, type, status){
@@ -120,7 +124,12 @@ function Candidate() {
             tabContent: modal.find("#tabbed-content"),
             shortlistButton: modal.find(".candidateShortlistModal"),
             rejectButton: modal.find(".candidateRejectModal"),
-            savedButton : modal.find("#candidateSaveModal")
+            savedButton : modal.find("#candidateSaveModal"),
+            commentTextarea : modal.find('.comment-textarea'),
+            commentBox: modal.find('.commentBox'),
+            editButton: modal.find('.candidateAddEditButton'),
+            addButton: modal.find('.candidateAddCommentButton'),
+            commentAddBox: modal.find('.candidateCommentTextarea'),
         }
     }
 
@@ -317,18 +326,21 @@ function Candidate() {
         item.workPermit.text("");
         item.coverLetter.text("");
         item.tabContent.tabs({active: 0});
-
         item.shortlistButton.text("Shortlist");
-
         item.rejectButton.text("Reject");
         item.savedButton.html("<span class='icon'><i class='icon-star'></i></span>Save for Later");
+        item.commentBox.addClass("hidden");
+        item.commentTextarea.addClass("hidden");
+        item.editButton.addClass("hidden");
+        item.addButton.removeClass("hidden");
+        item.commentAddBox.removeClass("hidden");
+
     }
 
     function openModal() {
 
     	$(".body-overlay").removeClass("hidden").addClass("veiled");
     	$("body").addClass("posf");
-
         settings.candidateDetailsModal.removeClass("hidden");
     }
 
@@ -344,6 +356,10 @@ function Candidate() {
     	settings.candidateDetailsModal.addClass("hidden");
 
     });
+    
+
+       
+    
 
     function onClickAddComment(fn) {
         // settings.candidateDetailsModal.on('keyup', settings.candidateCommentTextareaClass,function(event) {
@@ -355,16 +371,27 @@ function Candidate() {
         //     }
         //
         // });
-
         settings.candidateDetailsModal.on('click', settings.candidateAddCommentButtonClass,function(event) {
             event.stopPropagation();
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
             var comment = $(settings.candidateCommentTextareaClass).val();
+            $(settings.candidateCommentTextareaClass).addClass("hidden");
+            settings.commentBox.removeClass("hidden");
+            settings.commentTextarea.text(comment);
+            $(settings.candidateAddCommentButtonClass).addClass("hidden");
+            settings.candidateEditComment.removeClass("hidden");
             if(comment == "") {
                 return
             }
             fn(applicationId, comment);
         });
+
+        settings.candidateEditComment.on('click',function(event){
+            $(settings.candidateCommentTextareaClass).removeClass("hidden").focus(); 
+            settings.commentBox.addClass("hidden");
+            $(settings.candidateAddCommentButtonClass).removeClass("hidden");
+            settings.candidateEditComment.addClass("hidden");
+        })
     }
 
     function onClickAddCommentMob(fn) {
@@ -558,7 +585,8 @@ function Candidate() {
         onClickSendInterviewInviteTelephonic: onClickSendInterviewInviteTelephonic,
         onClickSendInterviewInviteF2F: onClickSendInterviewInviteF2F,
         changeButtonText: changeButtonText,
-        onClickChatCandidateModal: onClickChatCandidateModal
+        onClickChatCandidateModal: onClickChatCandidateModal,
+     
 	}
 
     function focusOnElement(element, container) {
