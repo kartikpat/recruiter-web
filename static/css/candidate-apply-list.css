@@ -3171,14 +3171,12 @@ input::-webkit-input-placeholder {
                   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .view-links .comments {
                     font-size: 12px;
                     display: inline-block;
-                    width: 50%;
-                    text-align: left;
-                    border-right: 1px solid #e8e8e8; }
+                    text-align: left; }
                   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .view-links .tags {
                     font-size: 12px;
                     display: inline-block;
-                    width: 50%;
-                    text-align: right; }
+                    margin-left: 5px;
+                    padding-left: 5px; }
               .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .skill-tag-listing .skill-tag {
                 margin: 5px;
                 display: inline-block;
@@ -4045,6 +4043,18 @@ input::-webkit-input-placeholder {
         font-size: 16px;
         color: #333;
         margin-top: 20px; }
+      .view-resume-modal .resume-sidebar .sidebar-section .comment-box .comment-textarea {
+        background-color: white;
+        color: #757575;
+        font-size: 14px;
+        /* Approximation due to font substitution */
+        font-weight: 400;
+        text-align: left;
+        min-height: 75px;
+        margin-bottom: 10px;
+        border: 1px solid  #e4e4e4;
+        border-left: 3px solid  #cfebeb;
+        resize: none; }
       .view-resume-modal .resume-sidebar .sidebar-section .cand-add-tag {
         height: 40px;
         line-height: 40px;

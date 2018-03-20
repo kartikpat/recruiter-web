@@ -567,16 +567,16 @@ input::-webkit-input-placeholder {
 												.comments {
 													font-size:$filter-tag-size;
 													display:inline-block;
-													width:50%;
 													text-align:left;
-													border-right:1px solid $border-color-base;
+													
 												}
 
 												.tags {
 													font-size:$filter-tag-size;
 													display:inline-block;
-													width:50%;
-													text-align:right;
+													margin-left: 5px;
+													// border-left:1px solid $border-color-base;
+													padding-left: 5px;
 												}
 											}
 										}
@@ -1576,7 +1576,21 @@ input::-webkit-input-placeholder {
     			font-size:$view-resume-section-title-size;
     			color:$color-black;
     			margin-top:20px;
-    		}
+			}
+			.comment-box{
+				.comment-textarea{
+				background-color: white;
+				color:  #757575;
+				font-size: 14px;/* Approximation due to font substitution */
+				font-weight: 400;
+				text-align: left;	
+				min-height: 75px;
+				margin-bottom:10px;
+				border:1px solid  #e4e4e4;
+				border-left: 3px solid  #cfebeb;
+				resize: none;
+				}
+			}
 
 			.cand-add-tag {
 				height: 40px;
