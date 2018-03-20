@@ -230,7 +230,7 @@ function Filters(){
 					filtersTarget[name]['count'] -= 1;
 				}
 				if(filtersTarget[name]['count'])
-					return settings.filterModal.find(".modal_sidebar li[data-name="+name+"] .filterCount").text(filtersTarget[name]['count']).removeClass("hidden")
+					return settings.filterModal.find(".modal_sidebar li[data-name="+name+"] .filterCount").text('('+filtersTarget[name]['count']+')').removeClass("hidden")
 				return settings.filterModal.find(".modal_sidebar li[data-name="+name+"] .filterCount").addClass("hidden")
 			}
 		})
@@ -336,7 +336,7 @@ function Filters(){
 						console.log(filtersTarget[key]['count'])
 						if(filtersTarget[key]['count']) {
 
-							settings.filterModal.find(".modal_sidebar li[data-name="+key+"] .filterCount").text(filtersTarget[key]['count']).removeClass("hidden")
+							settings.filterModal.find(".modal_sidebar li[data-name="+key+"] .filterCount").text('('+filtersTarget[key]['count']+')').removeClass("hidden")
 						}
 						else {
 							settings.filterModal.find(".modal_sidebar li[data-name="+key+"] .filterCount").addClass("hidden")
@@ -468,7 +468,7 @@ function Filters(){
 				filtersTarget[category]['count'] -= 1;
 				filtersTarget[category]['target'].find('input[value='+value+']').prop('checked', false)
 				if(filtersTarget[category]['count'])
-					return settings.filterModal.find(".modal_sidebar li[data-name="+category+"] .filterCount").text(filtersTarget[category]['count']).removeClass("hidden")
+					return settings.filterModal.find(".modal_sidebar li[data-name="+category+"] .filterCount").text('('+filtersTarget[category]['count']+')').removeClass("hidden")
 				return settings.filterModal.find(".modal_sidebar li[data-name="+category+"] .filterCount").addClass("hidden")
 			}
 		}
