@@ -13,7 +13,9 @@ function Candidate() {
         settings.candidateAddCommentButtonClass= '.candidateAddCommentButton',
         settings.candidateAddTagButtonClass= '.candidateAddTagButton',
         settings.candidateCommentTextareaClass= '.candidateCommentTextarea',
-        settings.candidateEditComment=$('.candidateAddEditButton')
+        settings.candidateEditComment=$('.candidateAddEditButton'),
+        settings.mobCandidateEditComment=$('.mobcandidateAddEditButton')
+        settings.mobCommentBox=$('.mobCommentBox');
         settings.commentBox=$('.comment-box'),
         settings.commentTextarea=$('.comment-textarea'),
         settings.candidateTagInputClass = '.candidateTagInput',
@@ -410,8 +412,20 @@ function Candidate() {
             event.stopPropagation();
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
             var comment = $(settings.mobCandidateCommentTextareaClass).val();
+            $(settings.mobCandidateCommentTextareaClass).addClass("hidden");
+            $(settings.mobCandidateAddCommentButtonClass).addClass("hidden");
+            settings.mobCommentBox.removeClass("hidden");
+            settings.commentTextarea.text(comment);
+            settings.mobCandidateEditComment.removeClass("hidden");
             fn(applicationId, comment);
         });
+
+        settings.mobCandidateEditComment.on('click',function(event){
+            $(settings.mobCandidateCommentTextareaClass).removeClass("hidden").focus(); 
+            settings.mobCommentBox.addClass("hidden");
+            $(settings.mobCandidateAddCommentButtonClass).removeClass("hidden");
+            settings.mobCandidateEditComment.addClass("hidden");
+         })
     }
 
     function onClickAddTag(fn, fn1) {

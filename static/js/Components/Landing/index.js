@@ -5,17 +5,18 @@ $(document).ready(function() {
 	userLogin.loginHandler(function(e){
 		e.preventDefault()
 		console.log('click noted')
-		$('#login').prop('disabled',true);
-		document.getElementById("login").innerHTML='<span class= "inline-spinner"></span>';
 		if(userLogin.validateLogin()){
+			$('#login').prop('disabled',true);
 			submitLogin(userLogin.getData());
-		}
+	    }
 	})
 
 	function onSuccessfulLogin(topic, data){
+		document.getElementById("login").innerHTML='<span class= "inline-spinner"></span>';
+		//debugger
 		console.log('Login successful');
 		localStorage.id = data["id"];
-		window.location="/";
+		window.location="/";	
 		document.getElementById("login").disabled=false;
 	}
 	
@@ -23,7 +24,6 @@ $(document).ready(function() {
 		console.log('Login failed');
 		userLogin.errorHandler(data);
 		document.getElementById("login").disabled=false;
-		document.getElementById("login").innerHTML="";
 	}
 
 	var loginSuccessSubscription = pubsub.subscribe('successfulLogin', onSuccessfulLogin );
