@@ -2801,7 +2801,7 @@ input::-webkit-input-placeholder {
             width: 17px;
             height: 17px; }
         .page-content .page-header .action-buttons span.multi-options {
-          background-color: transparent;
+          background-color: transparent !important;
           padding-left: 0;
           padding-right: 0; }
     .page-content .page-header .job-location {
@@ -4402,5 +4402,5 @@ input::-webkit-input-placeholder {
   border: 4px solid #f3f3f3;
   border-top: 4px solid #3498db; }
 
-.button-action-list {
+.candidate-action-area .button-action-list {
   background: #FFF !important; }

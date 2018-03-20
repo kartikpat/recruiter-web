@@ -131,7 +131,7 @@ input::-webkit-input-placeholder {
 				@include button($color-white);
                 padding: 7px 14px;
 				&.multi-options {
-					background-color:transparent;
+					background-color:transparent !important;
 					padding-left:0;
 					padding-right:0;
 				}
@@ -2004,6 +2004,9 @@ input::-webkit-input-placeholder {
     border-top: 4px solid #3498db;
 }
 
-.button-action-list{
-	background: $color-white !important;
+.candidate-action-area{
+	.button-action-list{
+		background: $color-white !important;
+	}
+
 }
