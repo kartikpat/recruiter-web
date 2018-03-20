@@ -57,6 +57,9 @@
                     height: 48px;
                     resize: none;
                     outline: none;
+                    padding: 16px 22px;
+                    overflow: hidden;
+                    font-size: 14px;
                 }
                 .error{
                     font-family:  $droid-font;
@@ -88,6 +91,9 @@
                     height: 98px;
                     resize: none;
                     outline: none;
+                    padding: 16px 22px;
+                    overflow: hidden;
+                    font-size: 14px;
                 }
                 .error-border{
                     border-color: #ee1620;
@@ -130,16 +136,17 @@
                     height: 111px;
                     resize: none;
                     outline: none;
+                    padding: 16px 22px;
+                    overflow: hidden;
+                    font-size: 14px;
                 }
             }
-
-   
-
         }
 
         .Availability{
             margin-left: 27px;
             margin-top: 76px;
+            margin-bottom: 40px;
             .heading{
                 font-family:  $droid-font;
                 color:  #149075;

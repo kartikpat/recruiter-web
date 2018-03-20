@@ -1312,6 +1312,22 @@ input::-webkit-input-placeholder {
 								border:1px solid $border-color-base;
 								width:100%;
 								padding:25px;
+								.content{
+									.mobCommentBox{
+										.comment-textarea{
+										background-color: white;
+										color:  #757575;
+										font-size: 14px;/* Approximation due to font substitution */
+										font-weight: 400;
+										text-align: left;	
+										min-height: 75px;
+										margin-bottom:10px;
+										border:1px solid  #e4e4e4;
+										border-left: 3px solid  #cfebeb;
+										resize: none;
+										}
+									}
+								}
 								.cand-add-tag {
 									width: 50%;
 									height: 40px;
@@ -1596,6 +1612,7 @@ input::-webkit-input-placeholder {
 				resize: none;
 				}
 			}
+
 
 			.cand-add-tag {
 				height: 40px;
