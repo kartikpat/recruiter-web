@@ -561,7 +561,6 @@ jQuery(document).ready( function() {
 
     function onJobsApplicationsFetchSuccess(topic, data) {
         tickerLock = false;
-        debugger;
         $(".loaderScroller").addClass("hidden")
         //Call only on initial load
         if(!globalParameters.initialLoad) {
