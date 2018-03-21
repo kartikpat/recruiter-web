@@ -13,8 +13,17 @@ function candidateList() {
         settings.candTagItemClass= '.candTagItem',
         settings.tagOptionClass= '.tagOption',
         settings.tagId = -1,
-        settings.candidateItemShell= $(".candidateItem.shell")
+        settings.candidateItemShell= $(".candidateItem.shell"),
+        settings.candAppliedJobsClass= '.candAppliedJobs',
+        settings.multipleJobListingClass= '.multipleJobListing',
+        settings.multipleJobListingTextClass= '.multipleJobListingText'
+        onToggleJobList();
+   }
 
+   function onToggleJobList() {
+       settings.candidateListing.on('click',settings.multipleJobListingTextClass, function(){
+           $(this).next().slideToggle();
+       })
    }
 
    function setConfig(key, value) {

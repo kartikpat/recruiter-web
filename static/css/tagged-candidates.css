@@ -1771,6 +1771,41 @@ span.sticker {
           margin-left: 9%;
           padding-top: 20px;
           font-size: 14px; }
+          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .tagged-on-label .multipleJobListing {
+            display: none; }
+          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .tagged-on-label select {
+            font-family: inherit;
+            display: inline-block;
+            font-size: 14px;
+            color: #818181;
+            padding: 16px 22px;
+            border-radius: 3px;
+            background: #FFF;
+            width: 100%;
+            border: 1px solid #e8e8e8;
+            background-image: url("/static/images/down-caret.svg");
+            background-repeat: no-repeat;
+            background-position: right 18px center;
+            cursor: pointer;
+            border-color: #e8e8e8;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -o-appearanance: none;
+            line-height: 1.5;
+            color: #2b2b2b; }
+            .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .tagged-on-label select[multiple] {
+              background-image: none;
+              height: 120px; }
+            .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .tagged-on-label select.inactive .dropdown-list {
+              display: none; }
+            .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .tagged-on-label select.minimal {
+              display: inline-block;
+              width: auto;
+              border: 0;
+              padding: 10px 40px 10px 10px;
+              background-color: transparent;
+              margin-bottom: 10px;
+              background-image: url("/static/images/minimal_select_dropdown.svg"); }
         .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .separator {
           display: block;
           margin: 20px 0 0 9%;
