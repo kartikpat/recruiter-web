@@ -30,11 +30,13 @@ function Jobs() {
 		onClickJobRefresh();
 		onClickJobCancel();
 		onClickJobMakePremium();
+		setOnClickCloseFilters();
 	}
 
 	function onClickJobCancel(fn){
 		settings.rowContainer.on('click',settings.openJobUnpublishModalButton,function(e){
 			e.preventDefault();
+			e.stopPropagation()
 			var jobId = $(this).attr("data-job-id");
 			settings.jobUnpublishModal.find("input:radio[name='unpublishReason']:checked").prop('checked', false);
 			addBodyFixed()
@@ -64,6 +66,7 @@ function Jobs() {
 	function onClickJobRefresh(fn) {
 		settings.rowContainer.on('click', settings.openJobRefreshModalButton,function(e) {
 			e.preventDefault();
+			e.stopPropagation()
 			if(parseInt($(this).attr("data-job-refreshable"))) {
 				var jobId = $(this).attr("data-job-id");
 				addBodyFixed()
@@ -83,6 +86,7 @@ function Jobs() {
 
 	function onClickJobMakePremium(fn) {
 		settings.rowContainer.on('click', settings.openMakeJobPremiumModalButton,function(event) {
+			e.stopPropagation()
 			if(parseInt($(this).attr("data-job-isPremium"))) {
 				return false;
 			}
@@ -266,6 +270,15 @@ function Jobs() {
 
 		settings.rowContainer.html(str);
 		initializeTooltip()
+	}
+
+	function setOnClickCloseFilters(){
+		$(".modal").click(function(event){
+			if($(event.target).parents(".modal_content").length || $(event.target).parents(".modal_header").length) {
+				return event.stopPropagation();
+			}
+			closeModal();
+		})
 	}
 
 	function closeModal() {

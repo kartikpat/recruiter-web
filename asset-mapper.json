@@ -51,7 +51,12 @@
 				"static/js/vendor/jquery.min.js",
 				"static/js/Utilities/request.js",
 				"static/js/header.js",
-				"static/js/reset-password.js"
+				"static/js/reset-password.js",
+				"static/js/Services/SubmitResetPassword.js",
+				"static/js/Components/ResetPassword/model.js",
+				"static/js/Components/ResetPassword/index.js",
+				"static/js/Utilities/pubsub.js"
+
 
 			],
 			"prod" : [
@@ -718,7 +723,6 @@
         		"static/css/index.css",
 				"static/css/buttons.css",
 				"static/css/footer.css",
-
 				"static/css/chat-sticky.css",
 				"static/css/utilities.css",
 				"static/css/animate.css",
@@ -739,10 +743,6 @@
 				"static/js/Utilities/modal.js",
 				"static/js/vendor/moment.min.js",
 				"static/js/header.js",
-
-
-
-
 				"static/js/Services/fetchJobs.js",
 				"static/js/Services/submitUnpublishJob.js",
 				"static/js/Services/submitPremiumJob.js",
@@ -912,6 +912,7 @@
 				"static/js/Services/fetchInterviews.js",
 				"static/js/Services/submitUnpublishJob.js",
 				"static/js/Services/submitRefreshJob.js",
+				"static/js/Services/setCandidateAction.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Components/Dashboard/index.js",
@@ -923,6 +924,7 @@
 				"static/js/dashboard.js",
 				"static/js/utilities.js",
 				"static/js/utilities/modal.js",
+				"static/js/Utilities/toastNotifier.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js"
 			],
@@ -992,7 +994,7 @@
 				"static/js/change-password.js",
 				"static/js/utilities.js",
 				"static/js/my-chat.js",
-				"static/js/chat_pubnub.js",
+				"static/js/Utilities/chatEngine.js",
 				"static/js/vendor/moment.min.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Services/fetchRecruiterChats.js",
@@ -1210,6 +1212,36 @@
 			]
 		}
 	},
+	"forgot-password": {
+		"styles": {
+			"debug" : [
+				"static/css/utilities.css",
+				"static/css/footer.css",
+				"static/css/header.css",
+				"static/css/forgot-password.css"
+			],
+			"prod": [
+				"static/build/css/forgot-password.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/Utilities/request.js",
+				"static/js/header.js",
+				"static/js/utilities.js",
+				"static/js/forgot-password.js",
+				"static/js/Utilities/pubsub.js",
+				"static/js/Utilities/common.js",
+				"static/js/Services/SubmitForgotPassword.js",
+				"static/js/Components/ForgotPassword/model.js",
+				"static/js/Components/ForgotPassword/index.js"
+			],
+			"prod" : [
+				"static/build/js/forgot-password.min.js"
+			]
+		}
+	},
 	"account-created": {
 		"styles": {
 			"debug" : [
@@ -1228,7 +1260,12 @@
 				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/utilities.js",
-				"static/js/account-created.js"
+				"static/js/account-created.js",
+				"static/js/Utilities/pubsub.js",
+				"static/js/Utilities/common.js",
+				"static/js/Services/submitLogin.js",
+				"static/js/Components/AccountCreated/model.js",
+				"static/js/Components/AccountCreated/index.js"
 			],
 			"prod" : [
 				"static/build/js/account-created.min.js"
@@ -1300,13 +1337,14 @@
             ]
         }
 
-    },
+	},
 
     "Interview-scheduler-updated": {
         "styles": {
             "debug" : [
                 "static/css/footer.css",
-                "static/css/header.css",
+				"static/css/header.css",
+				"static/css/global-search.css",
                 "static/css/fullcalendar.min.css",
                 "static/css/fullcalendar.css",
                 "static/css/Interview-scheduler-updated.css"
@@ -1320,8 +1358,13 @@
 				"static/js/vendor/moment.min.js",
 				"static/js/vendor/jquery.min.js",
 				"static/js/Utilities/pubsub.js",
+				"static/js/Utilities/common.js",
+				"static/js/utilities.js",
+				"static/js/header.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js",
                 "static/js/vendor/jquery-ui.min.js",
-				"static/js/vendor/fullcalendar.js",
+				"static/js/vendor/fullcalendar.min.js",
 				"static/js/Utilities/request.js",
 				"static/js/Services/submitCalendar.js",
                 "static/js/Components/Interview-scheduler-updated/index.js",
@@ -1339,9 +1382,9 @@
 				"static/css/buttons.css",
 				"static/css/colors.css",
 				"static/css/utilities.css",
-
 				"static/css/modal.css",
-                "static/css/header.css",
+				"static/css/header.css",
+				"static/css/chat-sticky.css",
                 "static/css/booked-slots.css",
                 "static/css/footer.css"
 
@@ -1355,6 +1398,7 @@
 				"static/js/vendor/jquery.min.js",
 				"static/js/utilities.js",
 				"static/js/modal.js",
+				"static/js/header.js",
 				"static/js/ui-components.js",
 				"static/js/Utilities/request.js",
 				"static/js/vendor/moment.min.js",
@@ -1362,13 +1406,14 @@
 				"static/js/Utilities/toastNotifier.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/common.js",
-
 				"static/js/Services/fetchRecruiterCalendar.js",
 				"static/js/Services/fetchInterviews.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Components/BookedSlots/model.js",
-				"static/js/Components/BookedSlots/index.js"
+				"static/js/Components/BookedSlots/index.js",
+				"static/js/chat-pubnub-sticky.js",
+				"static/js/chat-sticky.js"
 
             ],
             "prod" :[
@@ -1379,10 +1424,9 @@
 	},
 	"calendar-manage": {
         "styles": {
-            "debug" : [
-
-                "static/css/header.css",
-                "static/css/calendar-manage.css",
+            "debug":[
+				"static/css/header.css",
+				"static/css/calendar-manage.css",
                 "static/css/footer.css"
             ],
             "prod": [
@@ -1391,10 +1435,19 @@
         },
         "scripts": {
             "debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/utilities.js",
+				"static/js/modal.js",
+				"static/js/header.js",
+				"static/js/ui-components.js",
+				"static/js/Utilities/request.js",
 				"static/js/vendor/moment.min.js",
-				"static/js/Utilities/request.js",
-				"static/js/Utilities/request.js",
+				"static/js/Utilities/modal.js",
+				"static/js/Utilities/toastNotifier.js",
 				"static/js/Utilities/pubsub.js",
+				"static/js/Utilities/common.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js",
 				"static/js/Services/fetchRecruiterCalendar.js",
 				"static/js/Components/calendar-manage/model.js",
 				"static/js/Components/calendar-manage/index.js"
@@ -1420,10 +1473,19 @@
         },
         "scripts": {
             "debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/utilities.js",
+				"static/js/modal.js",
+				"static/js/header.js",
+				"static/js/ui-components.js",
+				"static/js/Utilities/request.js",
 				"static/js/vendor/moment.min.js",
-				"static/js/Utilities/request.js",
-				"static/js/Utilities/request.js",
+				"static/js/Utilities/modal.js",
+				"static/js/Utilities/toastNotifier.js",
 				"static/js/Utilities/pubsub.js",
+				"static/js/Utilities/common.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js",
 				"static/js/Services/fetchRecruiterCalendar.js",
 				"static/js/Components/calendar-manage/model.js",
 				"static/js/Components/calendar-manage/index.js"

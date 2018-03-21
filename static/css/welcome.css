@@ -262,7 +262,6 @@
 .icon-user:before {
   content: '\e831'; }
 
-/* '' */
 .icon-location:before {
   content: '\e832'; }
 
@@ -271,6 +270,21 @@
 
 .icon-checked_icon:before {
   content: '\e819'; }
+
+.icon-telephone:before {
+  content: '\E83C'; }
+
+.icon-face-to-face:before {
+  content: '\e83d'; }
+
+.navigationHeader {
+  display: none !important; }
+
+.profileActions .searchIcon, .profileActions .msgAction {
+  display: none !important; }
+
+.basicAccount, .accountSettings {
+  display: none !important; }
 
 .page-content {
   min-height: 100%;

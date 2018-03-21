@@ -6,7 +6,7 @@ var globalParameters = {
 }
 
 jQuery(document).ready( function() {
-
+ 
    var slots = BookedSlots();
 
    slots.init();

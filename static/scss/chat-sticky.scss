@@ -366,7 +366,12 @@
     padding: 10px;
     background: #f7f7f7;
     position: absolute;
-    width: calc(100% - 15px);
+    width: 100%;
+    .start {
+        text-align: center;
+        color: #2b2b2b;
+        font-size: 13px;
+    }
     .img-container {
         padding: 0 5px 0 0px;
         img {

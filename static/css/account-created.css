@@ -262,7 +262,6 @@
 .icon-user:before {
   content: '\e831'; }
 
-/* '' */
 .icon-location:before {
   content: '\e832'; }
 
@@ -271,6 +270,23 @@
 
 .icon-checked_icon:before {
   content: '\e819'; }
+
+.icon-telephone:before {
+  content: '\E83C'; }
+
+.icon-face-to-face:before {
+  content: '\e83d'; }
+
+.navigationHeader, .profileActions {
+  display: none !important; }
+
+@media all and (max-width: 600px) {
+  .header .domain_logo {
+    display: inline-block; } }
+
+@media all and (max-width: 1024px) {
+  .mobileHeaderNav {
+    display: none !important; } }
 
 .page-content {
   min-height: 100%;
@@ -282,7 +298,8 @@
   background-image: url("/static/images/footer-background.png");
   background-size: 100%;
   background-position: center bottom;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  margin-top: 60px; }
   .page-content .main-wrapper {
     width: 100%;
     max-width: 1280px;
@@ -303,10 +320,12 @@
       background-color: #FFF;
       padding: 20px;
       border-radius: 4px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      min-width: 450px; }
       .page-content .main-wrapper form .form-group {
         margin-bottom: 15px;
-        width: 80%; }
+        width: 80%;
+        position: relative; }
         .page-content .main-wrapper form .form-group input {
           background-color: transparent;
           font-size: 14px;

@@ -27,6 +27,7 @@
 			}
 			h3 {
 			    padding: 15px;
+			    padding-left: 0px;
 			    margin: 0;
 			    color: $color-black;
 			    font-size: $page-subtitle-font-size;
@@ -42,7 +43,7 @@
 
 		.conversations-listing {
 
-			max-height:600px;
+			max-height:70vh;
 			overflow-y: auto;
 			.conversation-item {
 			    display: inline-block;
@@ -52,7 +53,7 @@
 			    font-size: 0;
 				cursor: pointer;
 
-				
+
 
 				.user-item {
 				    display: inline-block;

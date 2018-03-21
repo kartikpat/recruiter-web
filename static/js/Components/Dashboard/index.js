@@ -14,12 +14,19 @@ function Notifications(){
 	   settings.notificationContainer.on('click', settings.candidateShortlistButtonClass, function(event) {
 	        var status = $(this).attr("data-status");
 	        var applicationId = $(this).closest(settings.notificationRowClass).attr("data-application-id")
-	        return fn(applicationId, status);
+	        var jobId = $(this).closest(settings.notificationRowClass).attr('data-job-id');
+	        return fn(applicationId, jobId);
 	        
 	    })
 	}
+	function candidateActionTransition(applicationId){
+		 settings.notificationContainer.find(settings.notificationRowClass+'[data-application-id="'+applicationId+'"]').remove();
+		 if(settings.notificationContainer.find(settings.notificationRowClass).length <1)
+		 	settings.notificationContainer.addClass('hidden');
+	}
 	return {
-		onClickShortlistCandidate: onClickShortlistCandidate
+		onClickShortlistCandidate: onClickShortlistCandidate,
+		candidateActionTransition: candidateActionTransition
 	}
 }
 
@@ -51,9 +58,22 @@ $(document).ready(function(){
 	onClickJobRefresh();
 	onClickJobCancel();
 	var notificationOb = Notifications();
-	notificationOb.onClickShortlistCandidate(function(applicationId, status){
-		console.log("clicked");
+	notificationOb.onClickShortlistCandidate(function(applicationId, jobId){
+		console.log(applicationId);
+		console.log(jobId);
+		setCandidateAction(recruiterId, jobId, "shortlist" , applicationId, {});
 	})
+	function onSuccessfullCandidateAction(topic, res) {
+        if(res.action == "shortlist") {
+        	notificationOb.candidateActionTransition(res.applicationId);
+            return toastNotify(1, "Shortlisted Successfully")
+        }
+        if(res.action == "reject") {
+        	notificationOb.candidateActionTransition(res.applicationId);
+        	return toastNotify(1, "Rejected Successfully")
+        }
+    }
+
 	$(window).click(function(event) {
 		$(jobOtherActionsClass).addClass('inactive');
 	});
@@ -235,23 +255,25 @@ $(document).ready(function(){
 
 	function onFetchFollowUps(topic, data){
 		var isMultiple = true;
-		// Debugging for single view
-		// data = [data[0]]
+		//Debugging for single view
+		// data = data.concat(data)
+		var totalFollowups = data.length;
 		if(data.length ==1)
 			isMultiple = false
-
+		var showCount = 4
 		data.forEach(function(aRow, index){
-			if(index>4){
+			if(index>showCount){
 				return;
 			}
 			var card = notificationCard.clone().removeClass('hidden prototype');
 			card.attr('data-application-id', aRow['id']);
+			card.attr('data-job-id', aRow['jobId']);
 			if(!isMultiple){
 				card.removeClass('multiple');
 				card.find('.general .designationOrganization').addClass('hidden');
 				card.find('.horizontal-separator').addClass('hidden')
 				card.find('.profile').addClass('highlighted-profile');
-				card.find('.profile .jobDetails').addClass('hidden');
+				card.find('.profile .jobDetailsContainer').addClass('hidden');
 			}
 			var designationOrganization = aRow['jobs'][0]['designation'] + ' at '+ aRow['jobs'][0]['organization'];
 				var currentFromMonth = moment().month(parseInt(aRow['jobs'][0]["exp"]['from']['month']) -1).format('MMM');
@@ -286,9 +308,12 @@ $(document).ready(function(){
 			card.find('.profile-detail .education .courseType').text(aRow['courseType']);
 			card.find('.profile .jobDetails').text(aRow['title']);
 			card.find('.profile-detail .jobDetails').text(aRow['title']);
+			if(index==totalFollowups-1 &&  showCount >=index){
+				card.find('.horizontal-separator').addClass('hidden')
+			}
 			notificationContainer.find('.detail-card').append(card);
 		});
-		if( data.length>4){
+		if( data.length-1>showCount){
 			var seeMore= seeMoreSection.clone().removeClass('hidden prototype');
 			seeMore.find(".seeAll a").attr('href', '/followUps')
 			notificationContainer.find('.detail-card').append(seeMore);
@@ -301,22 +326,23 @@ $(document).ready(function(){
 	var followUpsUpdateSubscription = pubsub.subscribe("fetchedFollowups", onFetchFollowUps);
 
 	function onFetchInterviews(topic, data){
-		var isMultiple = true;
-		return 
-		if(data.length ==1)
-			isMultiple = false
-		var lastDate =(data[0] && data[0]['slot'] )? data[0]['slot'] : null;
+		var totalInterviews = data.length;
+		var showCount = 4;
+		var lastDate =(data[0] && data[0]['slot'] )? moment(data[0]['slot']['date']).format('YYYY-MM-DD') : null;
 		var interviewContainer = $('#interviewContainer');
 		var interviewRowCard = $(".interviewRow.prototype");
+		if(totalInterviews<1){
+			$('.single-interview').removeClass('hidden');
+			interviewContainer.find('.interviewRow').removeClass('hidden')
+		}
 		var interviewCandidateCard = $('.interviewCandidateRow.prototype');
 		var card = interviewRowCard.clone().removeClass('hidden prototype');
 		data.forEach(function(aRow, index){
-			if(index>4)
+			if(index>showCount)
 				return
-			if(lastDate != aRow['slot']['date']){
-				lastDate = aRow['slot']['date'];
-				interviewContainer.find('.detail-card').append(card);
-				interviewContainer.find('.detail-card').append('')
+			if(index>0 && lastDate != moment(aRow['slot']['date']).format('YYYY-MM-DD')){
+				lastDate = moment(aRow['slot']['date']).format('YYYY-MM-DD')
+					interviewContainer.find('.detail-card').append(card);
 				card = interviewRowCard.clone().removeClass('hidden prototype');
 			}
 			var slotDate = moment(aRow['slot']['date']);
@@ -329,21 +355,23 @@ $(document).ready(function(){
 			candidateCard.find('.name').text(aRow['name']);
 			candidateCard.find('.designation').text(aRow['designation']);
 			candidateCard.find('.organization').text(aRow['organization']);
+			if(index==totalInterviews-1 &&  showCount >=index){
+				card.find('.horizontal-separator').addClass('hidden')
+			}
 			card.find('.general').append(candidateCard)
-			// interviewContainer.find('.detail-card').append(card);	
+			interviewContainer.find('.detail-card').append(card);	
 		})
-		if( data.length>4){
+		if( totalInterviews>showCount){
 			var seeMore= seeMoreSection.clone().removeClass('hidden prototype');
-			// seeMore.find(".seeAll a").attr('href', '/interviews')
-			// interviewContainer.find('.detail-card').append(seeMore);
-		}
-		if( data.length>0){
-			interviewContainer.removeClass('hidden');
+			seeMore.find(".seeAll a").attr('href', '/booked-slots')
+			interviewContainer.find('.detail-card').append(seeMore);
 		}
 	}
 
 
 	var fetchInterviewsSubscription = pubsub.subscribe("fetchedInterviews", onFetchInterviews);
+
+	var setCandidateActionSuccessSubscription = pubsub.subscribe("setCandidateActionSuccess", onSuccessfullCandidateAction)
 
 	function init(){
 		pubsub.publish("pageVisit", 1);

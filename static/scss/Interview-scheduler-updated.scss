@@ -2,12 +2,9 @@
 @import 'common/spacings';
 
 .wrap{
-    margin: 0;
-    padding: 0;
-    //height: 2050px;
-    font-family:  $droid-font;
-    display: inline-block;  
-    width: 100%;  
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1500px; 
         .headings{
             font-family:$droid-font;
             color:  #5d5d5d;
@@ -22,28 +19,33 @@
     .container{
         .form{
             .details{
-             
                     font-family: $droid-font;
                     color:  #149075;
                     font-size: 26px;/* Approximation due to font substitution */
                     font-weight: 400;
                     text-align: left;
                     height: 20px;
-                
-               
                     margin-left: 27px;
-            }
+                }
+                .row-separator{
+                    clear: both;
+                    width: 55%;
+                    margin-top: 10px;
+                    margin-left: 30px;
+                    margin-bottom: 20px;
+                    border-bottom: 1px solid #e8e8e8;
+                }
             .input-name{
                 margin-top: 10px;
                 margin-left: 27px;
-                span{
-                   
+                margin-bottom: 20px;
+                .tag{
                     color:  #2b2b2b;
                     font-size: 14px;/* Approximation due to font substitution */
                     font-weight: 400;
                     text-align: left;
+                    margin-bottom: 14px;
                     }
-
                 #name{
                     border-radius: 3px;
                     border-style: solid;
@@ -55,20 +57,29 @@
                     height: 48px;
                     resize: none;
                     outline: none;
+                    padding: 16px 22px;
+                    overflow: hidden;
+                    font-size: 14px;
+                }
+                .error{
+                    font-family:  $droid-font;
+                    position: absolute;
+                    font-size: 11px;
+                    color: #ec1c2a;
                 }
             }
-
             .message{
                 margin-top: 10px;
                 margin-left: 27px;
-                span{
+                margin-bottom: 20px;
+                .tag{
                     font-family:  $droid-font;
                     color:  #2b2b2b;
                     font-size: 14px;/* Approximation due to font substitution */
                     font-weight: 400;
                     text-align: left;
+                    margin-bottom: 14px;
                     }
-
                 #message{
                     border-radius: 3px;
                     border-style: solid;
@@ -80,19 +91,39 @@
                     height: 98px;
                     resize: none;
                     outline: none;
+                    padding: 16px 22px;
+                    overflow: hidden;
+                    font-size: 14px;
+                }
+                .error-border{
+                    border-color: #ee1620;
+                }
+                .error{
+                    font-family:  $droid-font;
+                    position: absolute;
+                    font-size: 11px;
+                    color: #ec1c2a;
                 }
             }
 
             .telephonic{
                 margin-top: 10px;
                 margin-left: 27px;
-                span{
+                margin-bottom: 20px;
+                .tag{
                     font-family:  $droid-font;
                     color:  #2b2b2b;
                     font-size: 14px;/* Approximation due to font substitution */
                     font-weight: 400;
                     text-align: left;
-                    }
+                    margin-bottom: 14px;
+                }
+                .error{
+                    font-family:  $droid-font;
+                    position: absolute;
+                    font-size: 11px;
+                    color: #ec1c2a;
+                }
 
                 #telephonic{
                     border-radius: 3px;
@@ -105,16 +136,17 @@
                     height: 111px;
                     resize: none;
                     outline: none;
+                    padding: 16px 22px;
+                    overflow: hidden;
+                    font-size: 14px;
                 }
             }
-
-   
-
         }
 
         .Availability{
             margin-left: 27px;
             margin-top: 76px;
+            margin-bottom: 40px;
             .heading{
                 font-family:  $droid-font;
                 color:  #149075;
@@ -161,9 +193,8 @@
                 margin-bottom: 10px;
                 img{
                     float: left;
-                    margin-left: 10px;
-                    margin-top: 10px;
-                   
+                    margin-left: 13px;
+                    margin-top: 8px;
                 }
 
                 .connecting{
@@ -172,8 +203,8 @@
                     color:  #2b2b2b;
                     font-size: 14px;/* Approximation due to font substitution */
                     font-weight: 400;
-                    margin-left: 40px;
-                    margin-top: 13px;
+                    margin-left: 47px;
+                    margin-top: 10px;
                     z-index: 1;
 
                 }
@@ -182,10 +213,7 @@
 
     }
 
-
-
     .second-container{
-
         width: 100%;
      //   height: 1261px;
         background-color:  #fcfbfb;
@@ -194,7 +222,6 @@
             margin-top: 37px;
             margin-left: 35px;
             .Days-available{
-              //  display: inline-block;
                 float:left;
                 margin-right: 5%;
                 #available-span{
@@ -217,69 +244,81 @@
                 }
 
                 .table{
-                    border-style: solid;
                     border-width: 1px;
                     border-color:  #e4e4e4;
                     box-sizing: border-box;
                     background-color:  #fcfbfb;
+                    border-style: solid;
                     width: 531px;
-                    //height: 462px;
                     display: inline-block;
                     position: relative;
-                     
+                    border-bottom: none;
+                    margin-top: 15px;
+                    .error{
+                        font-family:  $droid-font;
+                        position: absolute;
+                        font-size: 14px;
+                        color: #ec1c2a;
+                        margin-top: -17px;
+                    }
                     .D-avail{
                         background-color:  #f5f5f5;
                         border-style: solid;
                         border-width: 1px;
                         border-color:  #e4e4e4;
                         box-sizing: border-box;
-                        width: 529px;
-                        height: 41px;
-                        
-                        #one{
-                            
+                        width: 530px;
+                        height: 55px;
+                        height: 40px;
+                        display: inline-block;
+                        border-top: none;
+                        border-left: none;
+                        #one{ 
                             font-family: $droid-font;
                             color:  #2b2b2b;
                             font-size: 14px;/* Approximation due to font substitution */
                             font-weight: 400;
-                            line-height: 35px;/* Approximation due to font substitution */
+                            line-height: 23px;
                             text-align: left;
-                            margin-left: 15px;
-                        }
+                            width: 137px;
+                            display: inline-block;
+                            padding-left: 15px;
+                            padding-bottom: 10px;
+                            border-right: 1px solid #e4e4e4;
+                            padding-top: 9px;
+                          }
 
                         #two{
                             font-family: $droid-font;
                             color:  #2b2b2b;
                             font-size: 14px;/* Approximation due to font substitution */
                             font-weight: 400;
-                            line-height: 35px;/* Approximation due to font substitution */
+                            line-height: 23px;
                             text-align: left;
-                            margin-left: 30px;
+                            margin-left: 12px;
+                            display: inline-block;
 
                         }
                         #three{
-
                             font-family: $droid-font;
                             color:  #2b2b2b;
                             font-size: 14px;/* Approximation due to font substitution */
                             font-weight: 400;
-                            line-height: 35px;/* Approximation due to font substitution */
+                            line-height: 23px;
                             text-align: left;
-                            margin-top: 20px;
                             margin-left: 75px;
+                            display: inline-block;
                         }
                     }
-
                     
-                        .day{
+                        .dayId{  
+                            opacity: 0.5;  
                           .section{
-                                background-color:  #f3fbfb;
+                            background-color:  #f3fbfb;
                                 width: 136px;
                                 height: 70px;
                                 float: left;
-                                border-style: solid;
-                                border-width: 1px;
-                                border-color:  #e4e4e4;
+                                border-bottom: 1px solid #e4e4e4;
                                 .check-input {
 
                                         margin-left: 15px;
@@ -297,21 +336,26 @@
                                             background-repeat:no-repeat;
                                             background-size:20px;
                                             background-position:left 2px center;
+                                            color:#2b2b2b;
+                                            font-size: 19px;/* Approximation due to font substitution */
+                                            font-weight: 400;
+                                            text-align: left;
                                         }
                                         input:checked+label {
-                                            background-image:url('/static/images/checked_checkbox.svg');
+                                             background-image:url('/static/images/checked_checkbox.svg');
+                                            // font-family: "fontello";
+                                            // font-size: 16px;
+                                            // content: "\e81d";
                                         }  
 
                                         #Check-span{
                                             display: none;
                                             border-width: 1px;
                                             border-color: #e4e4e4;
-                                            padding-bottom: 40px;
+                                          //  padding-bottom: 40px;
                                             padding-top: 5px;
-                                        }
-                                       
+                                        } 
                                 }
-                                    
                             }
                         }   
                         .time-section{
@@ -322,6 +366,8 @@
                             border-width: 1px;
                             border-color:  #e4e4e4;
                             box-sizing: border-box;
+                            border-top: none;
+                            border-right: none;
                                 .timer{
                                     color:  #2b2b2b;
                                     font-size: 14px;/* Approximation due to font substitution */
@@ -333,15 +379,14 @@
                                    margin-right: 15px;
                                     span{
                                         display: none!important;
-                                    }
-                                   
+                                    }       
                                    .select-dropdown ,.select-dropdown-2{
-                                    margin-top: 10px;
+                                    margin-top: 15px;
                                     font-family: inherit;
                                     display: inline-block;
                                     font-size: 12px;
-                                    color: #818181;
-                                    padding: 10px 22px;
+                                    color: #2b2b2b;
+                                    padding: 10px 14px;
                                     border-radius: 3px;
                                     background: #FFF;
                                     width: 100px;
@@ -353,11 +398,13 @@
                                     border-color: #e8e8e8;
                                     -webkit-appearance: none;
                                     -moz-appearance: none;
-                                    -o-appearanance: none; 
+                                    -o-appearanance: none;
+                                    outline: none; 
                                     }
                                    
                                 }
-                               
+                                .button-container{
+                                   display: inline-block;
                                 button{
                                     border: none;
                                     background-color: inherit;
@@ -368,9 +415,117 @@
                                     text-align: left;
                                     display: none;
                                     outline: none;
-                                   
+                                    }
+                                }
+                                .error-slot{
+                                    font-family:  $droid-font;
+                                    position: absolute;
+                                    font-size: 12px;
+                                    color: #ec1c2a;
+                                    margin-left: 15px;
+                                    margin-top: 5px;
                                 }
                            }
+                }
+
+
+            }
+
+            .Breaks-available{
+                display: block;;
+                margin-top: 50px;
+                margin-bottom:100px;
+                .timer{
+                    color:  #2b2b2b;
+                    font-size: 14px;/* Approximation due to font substitution */
+                    font-weight: 400;
+                    text-align: left;
+                }
+                span{
+                    font-family:  $droid-font;
+                    color:  #2b2b2b;
+                    font-size: 14px;/* Approximation due to font substitution */
+                    font-weight: 400;
+                    text-align: left;
+                    font-weight: bold;
+                }
+                p{
+
+                    font-family:  $droid-font;
+                    color:  #2b2b2b;
+                    font-size: 14px;/* Approximation due to font substitution */
+                    font-weight: 400;
+                    line-height: 23px;/* Approximation due to font substitution */
+                    text-align: left;
+                }
+                .D-table{
+                    margin-top: 20px;
+                    box-sizing: border-box;
+                    width: 286px;
+                    .D-avail{
+                        border-style: solid;
+                        border-width: 1px;
+                        border-color:  #e4e4e4;
+                        background-color:  #f5f5f5;
+                        box-sizing: border-box;
+                        margin-top: 0px;
+                        width: 285px;
+                        #two{
+                            font-family: $droid-font;
+                            color:  #2b2b2b;
+                            font-size: 14px;/* Approximation due to font substitution */
+                            font-weight: 400;
+                            line-height: 23px;/* Approximation due to font substitution */
+                            text-align: left;
+                            margin-left: 18px;
+                        }
+                        #three{
+                            font-family: $droid-font;
+                            color:  #2b2b2b;
+                            font-size: 14px;/* Approximation due to font substitution */
+                            font-weight: 400;
+                            line-height: 33px;/* Approximation due to font substitution */
+                            text-align: left;
+                             margin-left: 73px;
+                        }
+                    }
+
+                    .time-section{      
+                        height: 80px;
+                        width: 285px;
+                        border-style: solid;
+                        border-width: 1px;
+                        border-color:  #e4e4e4;
+                        display: block;
+                        box-sizing: border-box;
+                        border-top:none;
+                            .section-one{
+                               margin-left: 15px;
+                               margin-right: 15px;
+                                .select-dropdown{
+                                        margin-top: 20px;
+                                        font-family: inherit;
+                                        display: inline-block;
+                                        font-size: 12px;
+                                        color: #2b2b2b;
+                                        padding: 10px 16px;
+                                        border-radius: 3px;
+                                        background: #FFF;
+                                        width: 100px;
+                                        border: 1px solid #e8e8e8;
+                                        background-image: url("/static/images/black_caret_down.svg");
+                                        background-repeat: no-repeat;
+                                        background-position: right 18px center;
+                                        cursor: pointer;
+                                        border-color: #e8e8e8;
+                                        -webkit-appearance: none;
+                                        -moz-appearance: none;
+                                        -o-appearanance: none; 
+                                        outline: none;
+                                    }
+                    
+                            }
+                    }
                 }
 
 
@@ -387,125 +542,48 @@
                     font-size: 14px;/* Approximation due to font substitution */
                     font-weight: 400;
                     text-align: left;
-                    width: 17%;
+                    width: 25%;
                     position: absolute;
-                    margin-top: 5px;
+                    margin-top: 25px;
                 }
-            }
-
-            .Breaks-available{
-                float: left;
-                display: block;
-                // position: relative;
-                margin-bottom: 100px;
-                top: -120px;
-                .timer{
-                    color:  #2b2b2b;
-                    font-size: 14px;/* Approximation due to font substitution */
-                    font-weight: 400;
-                    text-align: left;
-                }
-                span{
-                    font-family:  $droid-font;
-                    color:  #2b2b2b;
-                    font-size: 14px;/* Approximation due to font substitution */
-                    font-weight: 400;
-                    text-align: left;
-                    font-weight: bold;
-                }
-
-                p{
-
-                    font-family:  $droid-font;
-                    color:  #2b2b2b;
-                    font-size: 14px;/* Approximation due to font substitution */
-                    font-weight: 400;
-                    line-height: 23px;/* Approximation due to font substitution */
-                    text-align: left;
-                }
-
-                .table{
+                .button-prev{
+                    position: absolute;
+                    display: inline-block; 
+                    margin-left: 562px;
+                    margin-top: 20px;
                     border-style: solid;
                     border-width: 1px;
-                    border-color:  #e4e4e4;
+                    border-color:  #c4c4c4;
                     box-sizing: border-box;
-                    background-color:  #fcfbfb;
-                    width: 286px;
-                    height: 120px;
-
-                    .D-avail{
-                        background-color:  #f5f5f5;
-                        border-style: solid;
-                        border-width: 1px;
-                        border-color:  #e4e4e4;
-                        box-sizing: border-box;
-                        width: 100%;
-                        height: 41px;
-                      
-
-                        #two{
-                            font-family: $droid-font;
-                            color:  #2b2b2b;
-                            font-size: 14px;/* Approximation due to font substitution */
-                            font-weight: 400;
-                            line-height: 23px;/* Approximation due to font substitution */
-                            text-align: left;
-                            margin-left: 18px;
-                            width: 50%;
-
-                        }
-                        #three{
-
-                            font-family: $droid-font;
-                            color:  #2b2b2b;
-                            font-size: 14px;/* Approximation due to font substitution */
-                            font-weight: 400;
-                            line-height: 33px;/* Approximation due to font substitution */
-                            text-align: left;
-                             margin-left: 73px;
-                        }
-                    }
-
-                    .time-section{      
-                        height: 77px;
-                        float: left;
-                        width: 100%;
-                        display: inline-block;
-                        border-style: solid;
-                        border-width: 1px;
-                        border-color:  #e4e4e4;
-                        box-sizing: border-box;
-                            .section-one{
-                               margin-left: 15px;
-                               margin-right: 15px;
-                                .select-dropdown{
-                                        margin-top: 10px;
-                                        font-family: inherit;
-                                        display: inline-block;
-                                        font-size: 12px;
-                                        color: #818181;
-                                        padding: 10px 22px;
-                                        border-radius: 3px;
-                                        background: #FFF;
-                                        width: 100px;
-                                        border: 1px solid #e8e8e8;
-                                        background-image: url("/static/images/black_caret_down.svg");
-                                        background-repeat: no-repeat;
-                                        background-position: right 18px center;
-                                        cursor: pointer;
-                                        border-color: #e8e8e8;
-                                        -webkit-appearance: none;
-                                        -moz-appearance: none;
-                                        -o-appearanance: none; 
-                                    }
-                    
-                            }
-
+                    background-color:  #f5f5f5;
+                    width: 23px;
+                    height: 22px;
+                    text-align: center;
+                    img{
+                        vertical-align: middle;
                     }
                 }
+                .button-next{
+                    position: absolute;
+                    display: inline-block;
+                    margin-left: 592px;
+                    margin-top: 20px;
+                    border-width: 1px;
+                    border-style: solid;
+                    border-color:  #c4c4c4;
+                    box-sizing: border-box;
+                    background-color:  #f5f5f5;
+                    width: 23px;
+                    height: 22px;
+                    text-align: center;
 
-
+                    img{
+                           vertical-align: middle;
+                    }
+                }
             }
+
+
             .start-date{
                 clear: both;
                 float: left;
@@ -568,6 +646,8 @@
                         width: 283px;
                         height: 48px;
                         outline: none;
+                        padding-top: 12px;
+                        margin-top: 20px;
                     }
                     img{
                         margin-left: 20px;
@@ -639,6 +719,8 @@
                         width: 283px;
                         height: 48px;
                         outline: none;
+                        padding-top: 12px;
+                        margin-top: 20px;
                     }
                     img{
                         margin-left: 20px;
@@ -649,14 +731,9 @@
             }
         
         }
-
-       
-
-
     }
 
     .bottom-container{
-       
         width: 100%;
         height: 135px;
              .formgroup button {
@@ -681,7 +758,7 @@
                     cursor: pointer;
                     font-size: 16px;
                     font-weight: 400;
-                    margin-left: 2%;
+                    margin-left: 45px;
                     margin-top: 2%;
         }
 
@@ -697,13 +774,12 @@
             .available-hours{
                 .preview{
                     float: none;
-                    margin-top: 30px;
+                    margin-bottom: 100px;
                 }
                 .Breaks-available{
-                  
                     float: none;
                     display: block;
-                    margin-top: 150px;
+                    margin-top: 50px;
                 }
 
             }
@@ -746,28 +822,27 @@
 }
 
 @media only screen and (max-width: 600px){
-  
     .wrap{
         .second-container{
             .available-hours{   
                 .Days-available{
                     width: 100%!important;
-                    margin-top: -100px;
                     .table{
                      width: 90%;
                      border-style: none;
-                    }
-                    .D-avail{
+                     .D-avail{
                         display: none;
-                    }
+                        }
+                   
                     .day{
                         width: 100%;
+                        margin-top: 50px;
                         .section{
                             width: 100%!important;
                             .check-input{
                                  width: 100%!important;
-                                margin-top: 20px!important;
-                                margin-left: 15px!important;
+                                 margin-left: 0px!important;
+                                 margin-top: 0px!important;
                                 #Check-span{
                                     display: inline-block!important;
                                     color:  #2b2b2b;
@@ -776,41 +851,74 @@
                                     line-height: 23px;/* Approximation due to font substitution */
                                     text-align: left;
                                     transform: scaleX(1.0011);/* width and height properties ommitted due to transform */  
-                                    width: 50%;
+                                    width: 40%;
+                                    padding-top: 20px!important;
+                                    padding-bottom: 25px;
+                                    background-color: #f5f5f5;
+                                    padding-left: 14px;
+                                    border-right: 1px solid #e8e8e8;
+                                }
+                                input +label{
+                                    margin-left: 52px;
                                 }
                             }
                         }
                     }
                     .time-section{
                         width: 100%!important;
-                        height: 125px!important;
+                        min-height: 130px;
                         margin-bottom: 30px;
+                        border-bottom: none;
                         span{
                             display: none;
                         }
-                        button{
+                        .button-container{
+                            text-align: center;
+                            border: 1px solid #e4e4e4;
+                            border-top: 0;
+                            border-color: #e4e4e4;
+                            box-sizing: border-box;
                             clear: both;
-                            margin-left: 30%;
-                            padding-top:10px; 
-                        }
+                            padding-left: 32%;
+                            padding-right: 67.6%;
+                            margin-left: -1px;
+                            margin-right: -1px;
+                            display: block;
+                            button{
+                                width: 100px;
+                                padding-top: 15px;
+                                padding-bottom: 15px;
+                            }
+                        }   
                         .section-one{
                             display: block!important;
                             margin: 0%!important;
-                            padding-left: 15px;
+                            padding-left: 0px;
+                            border-bottom: 1px solid #e8e8e8;
                             .Start-time{
                                margin: 0%;
+                               margin-left: 52px;
                             }
                             .End-time{
                                margin: 0%;
+                               margin-left: 52px;
                             }
                             #Checkin{
-                                display: inline-block!important;
-                                width: 50%;
-                                
+                                display: inline-block !important;
+                                width: 40%;
+                                padding: 19px 16px;
+                                padding-top: 21px;
+                                color:  #2b2b2b;
+                                font-size: 14px;/* Approximation due to font substitution */
+                                font-weight: 400;
+                                line-height: 23px;/* Approximation due to font substitution */
+                                text-align: left;
+                                border-right: 1px solid #e8e8e8;
                             }
                         }
                     }
                 }
+            }
                 .Breaks-available{
                     top: 10px;
                     margin-bottom: 100px;
@@ -862,24 +970,94 @@
 
 }
 
-@media only screen and (max-width: 350px){
+@media only screen and (max-width: 375px){
     .wrap{
         .second-container{
             .available-hours{   
                 .Days-available{
-                    width: 100%;
+                    width: 100%!important;
                     .table{
                      width: 90%;
                      border-style: none;
-                    }
-                    .D-avail{
+                     .D-avail{
                         display: none;
-                    }   
+                        }
+                   
+                    .day{
+                        width: 100%;
+                        margin-top: 20px;
+                        .section{
+                            width: 100%!important;
+                            .check-input{
+                                 width: 100%!important;
+                                 margin-left: 0px!important;
+                                 margin-top: 0px!important;
+                                #Check-span{
+                                    display: inline-block!important;
+                                    color:  #2b2b2b;
+                                    font-size: 10px;/* Approximation due to font substitution */
+                                    font-weight: 400;
+                                    line-height: 23px;/* Approximation due to font substitution */
+                                    text-align: left;
+                                    transform: scaleX(1.0011);/* width and height properties ommitted due to transform */  
+                                    width: 40%;
+                                    padding-top: 20px!important;
+                                    padding-bottom: 25px;
+                                    background-color: #f5f5f5;
+                                    padding-left: 14px;
+                                    border-right: 1px solid #e8e8e8;
+                                }
+                                input +label{
+                                    margin-left: 30px;
+                                    font-size: 15px;
+                                }
+                            }
+                        }
+                    }
+                    .time-section{
+                        width: 100%!important;
+                        min-height: 130px;
+                        margin-bottom: 30px;
+                        span{
+                            display: none;
+                        }
+                        button{
+                            clear: both;
+                            margin-left: 30%;
+                          //  padding-top:10px; 
+                        }
+                        .section-one{
+                            display: block!important;
+                            margin: 0%!important;
+                            padding-left: 0px;
+                            border-bottom: 1px solid #e8e8e8;
+                            .Start-time{
+                               margin: 0%;
+                               margin-left: 30px;
+                            }
+                            .End-time{
+                               margin: 0%;
+                               margin-left: 30px;
+                            }
+                            #Checkin{
+                                display: inline-block !important;
+                                width: 40%;
+                                color:  #2b2b2b;
+                                font-size: 10px;/* Approximation due to font substitution */
+                                font-weight: 400;
+                                line-height: 23px;/* Approximation due to font substitution */
+                                text-align: left;
+                                border-right: 1px solid #e8e8e8;
+                            }
+                        }
+                    }
                 }
+            }
                 .Breaks-available{
-                    .table{
+                    .D-table{
                         width:90%;
                             .D-avail{
+                                width: 100%;
                                 #two{
                                     margin-left: 8px;
                                 }

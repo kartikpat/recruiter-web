@@ -84,6 +84,10 @@ function Job(){
 			}
 			if(this.checked) {
 				if(config["availableCredits"]) {
+					if(config["availableCredits"] == 0) {
+						$(this).prop("checked", false)
+						return settings.creditsText.text("You don’t have any premium credits right now! We’ll reach out to you to help you with it!")
+					}
 					settings.creditsText.text("This job will be posted as premium. You will have "+(parseInt(config["availableCredits"])-1)+" credits left.")
 					return
 				}
@@ -144,6 +148,7 @@ function Job(){
 		}
 		return true;
 	}
+
 	function getJobData(){
 		var locationObj = getPillValues(settings.location.attr('id'));
 		var industryObj = getPillValues(settings.industry.attr('id'));
@@ -231,9 +236,11 @@ function Job(){
 		settings.submitButton.text("Update")
 	}
 
+
 	function submitHandler(fn){
 		$(settings.submitButton).click(fn)
 	}
+
 
 	function populateJobTags(dataArray) {
 		var str = ""
@@ -257,12 +264,15 @@ function Job(){
 		onChangeJobPremium: onChangeJobPremium,
 		populateJobTags: populateJobTags
 	}
+
 }
 
 function setAvailableCredits(element, credits) {
 	if(!credits) {
 		return element.html("Reach out to more candidates in less amount of time by making your job premium. <a target='_blank' style='color:#155d9a' href='/recruiter/recruiter-plan'>Learn More.</a>")
-
+	}
+	if(credits == 0) {
+		return element.html("You have used up all your credits. <a target='_blank' style='color:#155d9a' href='/recruiter/recruiter-plan'>Click here</a> to buy more credits.")
 	}
 	element.text("You have "+credits+" credits left.")
 }
@@ -294,8 +304,8 @@ function wordsLimit(element) {
 	return true;
 }
 
-function ifExists(element){
 
+function ifExists(element) {
 	var errorElement = element.next('.error').length ? element.next('.error') : element.siblings('.error');
 	if(!( element && element.val() )){
 		errorElement.text(errorResponses['missing'+element.attr('name')]).removeClass("hidden");

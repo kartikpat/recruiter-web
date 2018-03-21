@@ -5,8 +5,8 @@ $(document).ready(function(){
     calendarDetails.init();
     calendarDetails.startdate();
     calendarDetails.enddate();
+    calendarDetails.time_mapper();
     test= calendarDetails.testHighlight;
-
     calendarDetails.submitHandler(function(){
         if(calendarDetails.validate()){
         var data=calendarDetails.getDetails();
@@ -15,12 +15,26 @@ $(document).ready(function(){
     })
 
     var calendarSubmitSuccessSubscription = pubsub.subscribe('submittedCalendar', onSuccessfulSubmitCalendar);
-	var calendarSubmitFailSubscription = pubsub.subscribe('failedCalendarSubmission', onFailedSubmitCalendar);
+    var calendarSubmitFailSubscription = pubsub.subscribe('failedCalendarSubmission',onFailedSubmitCalendar);
+    var fetchCalendarSuccessSubscription = pubsub.subscribe("fetchedJob:", onSuccessfulFetchCalendar);
+	var fetchCalendarFailSubscription = pubsub.subscribe("failedToFetchJob:", onFailedFetchCalendar);
 
-    function onSuccessfulSubmitCalendar(){
-        console.log("success");
+    function onSuccessfulFetchCalendar(topic,data){
+        calendarDetails.setDetails(calendarId,data);
     }
-    function onFailedSubmitCalendar(){
-        console.log("fail");
+
+    function onFailedFetchCalendar(topic,data){
+        alert(res.status);
     }
+
+    function onSuccessfulSubmitCalendar(topic, data){
+        console.log('Login successful');
+        window.location='/' //changeurl
+    }
+
+	function onFailedSubmitCalendar(topic, data){
+		console.log('Login failed');
+		calendarDetails.errorHandler(data);
+    }
+    
 })    

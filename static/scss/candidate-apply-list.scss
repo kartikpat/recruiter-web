@@ -25,7 +25,7 @@
 
 .interview-invite {
     border-top: 1px solid #e8e8e8;
-    padding-top: 5px !important;
+    padding-top: 15px !important;
     font-size: 13px !important;
 }
 
@@ -99,6 +99,9 @@ input::-webkit-input-placeholder {
 
 	.page-header {
 		padding:15px 0;
+        .job-title-container {
+            width: 50%;
+        }
 		h1 {
             &.shell {
                 @include title-shell;
@@ -160,12 +163,12 @@ input::-webkit-input-placeholder {
 
 	.candidate-apply-listing {
 		width:80%;
-
+        margin-bottom: 100px;
 		.candidates-area {
 			@include card-container;
 			margin:0 0 0 0;
 			padding:15px;
-
+            padding-bottom: 0px;
 			.candidates-area-header {
 				.candidates-search {
 
@@ -174,21 +177,24 @@ input::-webkit-input-placeholder {
 						display:inline-block;
 						width:40%;
 
+
 						vertical-align:top;
                         .container {
                             position: relative;
-                            height: 40px;
+                            height: 30px;
                         }
 						input {
 							@include input-field;
 							border-radius:0;
 							padding:4px 35px;
+							border-color: $border-color-dark;
 							line-height:30px;
 							background-image:url("/static/images/search-icon.svg");
 							background-repeat:no-repeat;
 							background-position:left 10px center;
 							background-size:14px;
 							font-size:$base-font-size;
+							height: 30px;
 
 
 						}
@@ -208,6 +214,9 @@ input::-webkit-input-placeholder {
 								outline:none;
 							}
 
+						}
+						.search-trigger{
+							border-color: $border-color-dark;
 						}
 					}
 
@@ -280,6 +289,7 @@ input::-webkit-input-placeholder {
 							border:1px solid $border-color-base;
 							padding:2px 15px;
 							border-radius:50px;
+                            text-transform: capitalize;
 							div {
 								display:inline-block;
 								vertical-align: middle;
@@ -351,8 +361,8 @@ input::-webkit-input-placeholder {
 						.candidates-listing {
 							background:$color-white;
 							border-radius:6px;
-							min-height:30px;
-							margin-top: 2px;
+							// min-height:30px;
+							// margin-top: 2px;
 							.candidate-item {
                                 display: block;
 								padding: 30px 10px 0px;
@@ -360,6 +370,7 @@ input::-webkit-input-placeholder {
 							    margin: 0;
 							    cursor:pointer;
 							    position:relative;
+
                                 .candidate-select {
                                     display:none;
                                     position:absolute;
@@ -562,16 +573,15 @@ input::-webkit-input-placeholder {
 												.comments {
 													font-size:$filter-tag-size;
 													display:inline-block;
-													width:50%;
 													text-align:left;
-													border-right:1px solid $border-color-base;
+													
 												}
 
 												.tags {
 													font-size:$filter-tag-size;
 													display:inline-block;
-													width:50%;
-													text-align:right;
+												    margin-left: 12px;
+													padding-left: 12px;
 												}
 											}
 										}
@@ -914,11 +924,12 @@ input::-webkit-input-placeholder {
 }
 
 @media all and (max-width:1024px) {
-	.conversations {
-		display:none;
-	}
+
 
 	.page-content {
+        .conversations {
+    		display:none;
+    	}
 		.candidate-apply-listing {
 			width:100%;
 
@@ -937,7 +948,7 @@ input::-webkit-input-placeholder {
 	}
 }
 
-@media all and (max-width:1024px){
+@media all and (max-width:768px){
     .shell {
         p {
             width: 50%;
@@ -1107,11 +1118,12 @@ input::-webkit-input-placeholder {
 			width:100%;
 			border:1px solid $border-color-base;
 			background-color:$color-white;
+			border-radius: 8px;
 
 			.container {
 
 				&.resume-header {
-					background-image:url('/static/images/view-resume-banner.jpg');
+					background-image:url('/static/images/view-resume-banner.png');
 					background-repeat:no-repeat;
 					background-position:center top;
 					background-size:100% 95px;
@@ -1138,6 +1150,7 @@ input::-webkit-input-placeholder {
 							border-radius:50%;
 							border:5px solid $color-white;
 							box-shadow:0 0 3px $shadow-color;
+							background-color: #efefef;
 						}
 					}
 
@@ -1176,13 +1189,13 @@ input::-webkit-input-placeholder {
 							border-right:1px solid $border-color-base;
 
 							.snap-title {
-								color:$color-black;
+								color:$extra-info-color;
 								font-size:$view-resume-byline-font-size;
 								line-height:1.5;
 							}
 
 							.snap-value {
-								color:$extra-info-color;
+								color:$color-black;
 								font-size:$view-resume-byline-font-size;
 							}
 
@@ -1221,12 +1234,13 @@ input::-webkit-input-placeholder {
 
 					.last-login-container {
 						margin:20px 0;
+						font-size:14px;
 
 						p {
 							text-align:right;
 							margin-right:20px;
 							font-style: italic;
-							color:$extra-info-color;
+							color:#818181;
 						}
 					}
 				}
@@ -1255,7 +1269,7 @@ input::-webkit-input-placeholder {
 							.ui-state-default {
 							    background: transparent;
 							    border: none;
-							    margin:0 5px 0 0;
+							    margin:0 48px 0 0;
 							    position:relative;
 							    top:1px;
 
@@ -1295,12 +1309,28 @@ input::-webkit-input-placeholder {
 						}
 
 						#view-profile-info {
-							padding:20px 0;
+							padding:10px 0;
 							.content-block {
-								margin:20px 0 0 0;
+								margin:20px 0 30px 0;
 								border:1px solid $border-color-base;
 								width:100%;
 								padding:25px;
+								.content{
+									.mobCommentBox{
+										.comment-textarea{
+										background-color: white;
+										color:  #757575;
+										font-size: 14px;/* Approximation due to font substitution */
+										font-weight: 400;
+										text-align: left;	
+										min-height: 75px;
+										margin-bottom:10px;
+										border:1px solid  #e4e4e4;
+										border-left: 3px solid  #cfebeb;
+										resize: none;
+										}
+									}
+								}
 								.cand-add-tag {
 									width: 50%;
 									height: 40px;
@@ -1314,12 +1344,13 @@ input::-webkit-input-placeholder {
 									textarea {
 										width: 50%;
 										padding: 5px;
-										border-left: 3px solid $button-color-green;
-										min-height: 50px;
+                                        border: 1px solid #e8e8e8;
+
+										min-height: 100px;
 										&:focus {
 											outline: none;
 											border: 1px solid $button-color-green;
-											border-left: 3px solid green;
+
 										}
 									}
 									.action-buttons {
@@ -1328,6 +1359,7 @@ input::-webkit-input-placeholder {
 
 											@include button($color-green);
 											margin-left: 0px;
+											background-color: $color-white!important;
 										}
 									}
 								}
@@ -1384,10 +1416,12 @@ input::-webkit-input-placeholder {
 											&.name {
 												font-weight:bold;
 												color:$color-black;
+												margin-left: 15px;
 											}
 
 											&.detail {
 												color:$extra-info-color;
+												margin-left: 15px;
 											}
 										}
 
@@ -1402,7 +1436,7 @@ input::-webkit-input-placeholder {
 										margin:0;
 										padding:0;
 										list-style:none;
-
+										margin-left: 15px;
 										li {
 											font-size:0;
 											margin:10px 0;
@@ -1497,12 +1531,18 @@ input::-webkit-input-placeholder {
     	width:20%;
 
     	.action-buttons {
-    		margin-bottom:30px;
+    		margin-bottom:10px;
 			&.cand-add-tag-action-btn {
 				margin: 15px 0;
 			}
     		span {
     			&.button {
+                    &.candidateShortlistModal {
+                        padding: 6px 15px;
+                    }
+                    &.candidateRejectModal {
+                        padding: 6px 15px;
+                    }
 					&.cand-comment-button{
 						margin: 0;
 						margin-top: 5px;
@@ -1537,7 +1577,17 @@ input::-webkit-input-placeholder {
 							margin-right:10px;
 						}
 					}
+
 				}
+                .invite {
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+                .invite-links {
+                    // margin-left: 30px;
+                    // list-style: initial;
+                }
 
 				&:last-child {
 					border-bottom:0;
@@ -1553,8 +1603,43 @@ input::-webkit-input-placeholder {
     			font-size:$view-resume-section-title-size;
     			color:$color-black;
     			margin-top:20px;
-    		}
+			}
+			.comment-box{
+				.comment-textarea{
+				background-color: #f3fbfb;
+				color:  #757575;
+				font-size: 14px;/* Approximation due to font substitution */
+				font-weight: 400;
+				text-align: left;	
+				min-height: 40px;
+				margin-bottom:10px;
+				border:1px solid  #e4e4e4;
+				border-left: 3px solid  #cfebeb;
+				resize: none;
+				}
+			}
 
+			.action-buttons{
+				.addButton{
+					background: #FFF!important;
+					// border-color: #b8b5b5!important;
+					// border-style: solid!important;
+					// border-width: 1px!important;
+					border:1px solid #908e8e!important;
+					border-radius: 4px;
+					padding: 6px 25px;
+					font-size: 14px!important;
+					margin: 0 5px;
+					color: #2b2b2b!important;
+					cursor: pointer;
+				}
+				.editbutton {
+					color:#155D9A!important;
+					font-size: 13px!important;
+					cursor: pointer;
+					
+				}
+			}
 			.cand-add-tag {
 				height: 40px;
 			    line-height: 40px;
@@ -1596,6 +1681,7 @@ input::-webkit-input-placeholder {
 						border-radius:50px;
 						font-size:$view-resume-byline-font-size;
 						background-color:$color-white;
+						color:#6e6e6e;
 
 						div {
 							display:inline-block;
@@ -1787,6 +1873,7 @@ input::-webkit-input-placeholder {
 	.tabs_scroll_container {
 		overflow-x: auto;
 		overflow-y: hidden;
+        position: relative;
 	}
 	.ui-tabs-nav {
 		border: 0;
@@ -1860,12 +1947,12 @@ input::-webkit-input-placeholder {
 	textarea {
 		width: 100%;
 		padding: 5px;
-		border-left: 3px solid $button-color-green;
+		border: 1px solid #e8e8e8;
 		min-height: 50px;
 		&:focus {
 			outline: none;
 			border: 1px solid $button-color-green;
-			border-left: 3px solid green;
+			
 		}
 	}
 	.action-buttons {
@@ -1907,4 +1994,16 @@ input::-webkit-input-placeholder {
             }
         }
     }
+}
+
+.loader.loader-scroller {
+
+    height: 45px;
+    width: 45px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+}
+
+.button-action-list{
+	background: $color-white !important;
 }

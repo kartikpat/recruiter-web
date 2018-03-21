@@ -459,6 +459,15 @@
 						}
 					}
 				}
+                .invite {
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+                .invite-links {
+                    margin-left: 30px;
+                    list-style: initial;
+                }
 
 				&:last-child {
 					border-bottom:0;

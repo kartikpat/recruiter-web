@@ -2,8 +2,14 @@ var isSuccess;
 
 $(document).ready(function(){
     $("#basic-buy").click(basicPosting);
-    $("#signature-buy").click(openSignatureModal);
-    $("#platinum-buy").click(openPlatinumModal);
+    $("#signature-buy").click(function(e){
+        e.stopPropagation()
+        openSignatureModal()
+    });
+    $("#platinum-buy").click(function(e){
+        e.stopPropagation()
+        openPlatinumModal()
+    });
     $(".button.signature-continue").click(signaturePosting);
     $(".button.platinum-continue").click(platinumPosting);
 	$(".close-modal, .close").click(closeModal);
@@ -14,9 +20,8 @@ $(document).ready(function(){
     //     $("#success-job-posted").removeClass("hidden");
     // }
 
-    var msg = localStorage.getItem("jobPostSuccessMessage")
-	if(msg!= '') {
-		toastNotify(1, msg)
+    if(localStorage.getItem("jobPostSuccessMessage") != null) {
+		toastNotify(1, localStorage.getItem("jobPostSuccessMessage"))
 		localStorage.removeItem("jobPostSuccessMessage");
 	}
 

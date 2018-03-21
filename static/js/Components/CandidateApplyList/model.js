@@ -21,13 +21,13 @@ function candidateList() {
         settings.candidateTagsPrototype= $('.candidateTags.prototype'),
         settings.viewCommentButtonClass = '.viewCommentButton',
         settings.viewTagButtonClass = '.viewTagButton',
-        settings.massResumeDownload = $("#downloadResumeMass"),
-        settings.massReject = $("#massReject"),
-        settings.massSave = $("#massSave"),
-        settings.massShortlist = $("#massShortlist"),
-        settings.massComment = $("#massComment"),
-        settings.massTag = $("#massTag"),
-        settings.downloadExcelMass = $("#downloadExcelMass")
+        settings.massResumeDownload = $(".downloadResumeMass"),
+        settings.massReject = $(".massReject"),
+        settings.massSave = $(".massSave"),
+        settings.massShortlist = $(".massShortlist"),
+        settings.massComment = $(".massComment"),
+        settings.massTag = $(".massTag"),
+        settings.downloadExcelMass = $(".downloadExcelMass")
         settings.bulkActionContainer = $("#massActionContainer"),
         settings.massCheckboxInput = $("#massCheckboxInput"),
         settings.massCheckboxLabel = $("#massCheckboxLabel"),
@@ -50,12 +50,17 @@ function candidateList() {
         onClickMassComment()
 
         onClickCoverLetterLink()
-
+        $(window).click(function(event) {
+    		$(settings.candidateOtherActionsClass).addClass('inactive');
+    	});
 	}
+
+
 
     function onClickCoverLetterLink() {
         settings.rowContainer.on('click', settings.coverLetterLink, function(e){
             e.preventDefault()
+            // settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 2});
             return false
         })
     }
@@ -147,63 +152,77 @@ function candidateList() {
 
     function createElement(aData) {
 		var item = getElement(aData["userID"]);
-        item.element.find(".openCandidateLink").attr('href',"/recruiter/job/"+config["jobId"]+"/applications/"+aData["id"]+"");
+        item.element.find(".openCandidateLink").attr('href',"/job/"+config["jobId"]+"/applications/"+aData["id"]+"");
         item.element.attr("data-application-id", aData["id"]);
         item.image.attr("src",(aData["img"] || "/static/images/noimage.png"));
         item.name.text(aData["name"] || "NA");
         item.experience.text((aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m") || "NA");
         item.location.text(aData["currentLocation"] || "NA");
         item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY'))
-        if(aData["notice"] <= 7) {
+        if(aData["notice"] == 7) {
             item.notice.text("Immediately Available");
+        }
+        else if(aData["notice"] == 1) {
+            item.notice.text((aData["notice"] + " month"));
         }
         else {
             item.notice.text((aData["notice"] + " months"));
         }
 
-        item.shortlistButton.attr("data-status", "1");
-        item.rejectButton.attr("data-status", "2");
-        item.savedButton.attr("data-status", "3");
+        item.shortlistButton.attr("data-action", 1);
+        item.rejectButton.attr("data-action", 2);
+        item.savedButton.attr("data-action", 3);
         item.downloadResumeButton.attr("data-href", aData["resume"])
         item.downloadResumeButton.attr("download", aData["name"].replace(/ +/g, '_')+'_resume.pdf')
         var status = aData["status"];
+        item.shortlistButton.attr("data-status", status);
+        item.rejectButton.attr("data-status", status);
+        item.savedButton.attr("data-status", status);
         if(status == 1) {
-            item.shortlistButton.text("Shortlisted")
+            item.shortlistButton.text("Shortlisted");
         }
         else if(status == 2) {
-            item.rejectButton.text("Rejected")
+            item.rejectButton.text("Rejected");
         }
         else if(status == 3) {
-            item.savedButton.text("Saved for later")
+            item.savedButton.text("Saved for later");
         }
+        item.element.attr("data-status", status)
         // var tagStr = '';
         // $.each(aData["tags"],function(index, aTag) {
         //     var tag =  settings.candidateTagsPrototype.clone().text(aTag["name"]).removeClass("prototype hidden");
         //     tagStr+=tag[0].outerHTML
         // })
         // item.jobTagList.html(tagStr)
+
+
         var profStr = '';
-        $.each(aData["jobs"],function(index, anObj) {
-            if(index > 2) {
-                return
-            }
-            var item = getProfessionalElement()
-            item.name.text(anObj["organization"])
-            item.designation.text(anObj["designation"]);
-
-            var fromMon = getMonthName(anObj["exp"]["from"]["month"]);
-            var toMon = getMonthName(anObj["exp"]["to"]["month"]);
-            var fromYear = anObj["exp"]["from"]["year"];
-            var toYear = anObj["exp"]["from"]["year"];
-            var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
-            item.tenure.text(str);
-
-            profStr+=item.element[0].outerHTML
-        })
-        console.log(aData["jobs"].length)
-        if(aData["jobs"].length > 3) {
-            profStr+= "<span style='color: #155d9a'>"+(aData["jobs"].length - 3)+" more work experience.</span>"
+        if(aData["jobs"].length == 0) {
+            profStr = "<div style='line-height:1.5;'><span style='font-weight:bold;'>"+aData["name"]+"</span> does not have any work experience yet</div>"
         }
+        else {
+            $.each(aData["jobs"],function(index, anObj) {
+                if(index > 2) {
+                    return
+                }
+                var item = getProfessionalElement()
+                item.name.text(anObj["organization"])
+                item.designation.text(anObj["designation"]);
+
+                var fromMon = getMonthName(anObj["exp"]["from"]["month"]);
+                var toMon = getMonthName(anObj["exp"]["to"]["month"]);
+                var fromYear = anObj["exp"]["from"]["year"];
+                var toYear = anObj["exp"]["from"]["year"];
+                var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
+                item.tenure.text(str);
+
+                profStr+=item.element[0].outerHTML
+            })
+            if(aData["jobs"].length > 3) {
+                profStr+= "<span style='color: #155d9a'>"+(aData["jobs"].length - 3)+" more work experience.</span>"
+            }
+        }
+
         item.profList.html(profStr)
         var eduStr = '';
         $.each(aData["education"],function(index, anObj) {
@@ -221,7 +240,6 @@ function candidateList() {
         }
 
         item.eduList.html(eduStr)
-
         console.log(aData['userID']);
         item.candidateCheckbox.attr("id",aData["userID"]);
         item.candidateCheckboxLabel.attr("for",aData["userID"]);
@@ -237,12 +255,19 @@ function candidateList() {
         if(aData["cover"]) {
             item.coverLetterLink.removeClass("hidden")
         }
+        var flag=0;
         if(aData["comment"]) {
             item.viewCommentLink.removeClass("hidden")
+            flag++;
         }
         if(aData["tags"].length) {
             item.viewTagLink.removeClass("hidden")
+            flag++;
         }
+        if(flag>1){
+              item.viewTagLink.css("border-left","1px solid #e8e8e8");
+        }
+
         return item
     }
 
@@ -282,16 +307,13 @@ function candidateList() {
         item.element.find("li[data-attribute='"+newStatus+"'] .tabStats").text(parseInt(newCount) + number);
     }
 
-    function addToList(dataArray, status){
+    function addToList(dataArray, status, pageNumber, pageContent){
 		var str = '';
-        debugger
         var element = $(".candidateListing[data-status-attribute='"+status+"']");
         hideShells(status);
-        if(!dataArray.length) {
-			return element.html("<div class='no-data'>No Applications Found!</div>")
-		}else {
-            element.find(".no-data").remove()
-        }
+        if(dataArray.length<1 && pageNumber ==1) {
+			return element.append("<div class='no-data'>No Applications Found!</div>")
+		}
 		dataArray.forEach(function(aData, index){
 			var item = createElement(aData);
 			str+=item.element[0].outerHTML;
@@ -299,6 +321,9 @@ function candidateList() {
 		});
 		element.append(str);
         settings.rowContainer.find(".candidate-select").removeClass("selected");
+        if(dataArray.length< pageContent) {
+            return element.append("<div class='no-data'>No more records!</div>")
+        }
 	}
 
     function onClickViewComment(fn) {
@@ -320,7 +345,9 @@ function candidateList() {
     function onClickCandidate(fn) {
         settings.rowContainer.on('click', ".candidate-item", function(e){
             var candidateId = $(this).attr('data-candidate-id');
-            return fn(candidateId);
+            var status = $(this).attr("data-status")
+            var applicationId = $(this).attr("data-application-id")
+            return fn(candidateId, status, applicationId);
         })
     }
 
@@ -338,7 +365,6 @@ function candidateList() {
     function onClickCandidateOtherActions() {
         settings.rowContainer.on('click', settings.candidateOtherActionsClass,function(event) {
             event.stopPropagation();
-            event.stopPropagation()
             $(this).toggleClass("inactive");
             return false
         })
@@ -368,6 +394,9 @@ function candidateList() {
         settings.rowContainer.on('click', settings.candidateDownloadResumeButton, function(event){
             var url = $(this).attr("data-href");
             window.open(url);
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            var status = $(this).closest(settings.candidateRowClass).attr("data-status")
+            fn(applicationId, status)
             return false
         })
     }
@@ -376,8 +405,9 @@ function candidateList() {
         settings.rowContainer.on('click', settings.candidateSaveButton, function(event){
             event.stopPropagation();
             var status = $(this).attr("data-status");
+            var action = $(this).attr("data-action");
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            fn(applicationId, status);
+            fn(applicationId, status, action);
             return false
         })
     }
@@ -415,11 +445,11 @@ function candidateList() {
     function onClickShortlistCandidate(fn) {
 
         settings.rowContainer.on('click', settings.candidateShortlistButtonClass, function(event) {
-            console.log("a")
             event.stopPropagation();
             var status = $(this).attr("data-status");
+            var action = $(this).attr("data-action");
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            fn(applicationId, status);
+            fn(applicationId, status, action);
             return false
         })
     }
@@ -428,15 +458,18 @@ function candidateList() {
         settings.rowContainer.on('click', settings.candidateRejectButtonClass, function(event) {
             event.stopPropagation();
             var status = $(this).attr("data-status");
+            var action = $(this).attr("data-action");
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            fn(applicationId, status);
+            fn(applicationId, status, action);
             return false
         })
     }
 
     function candidateActionTransition(arr) {
         arr.forEach(function(applicationId){
-            settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"]").remove()
+            settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"]").slideUp("normal", function() {
+                 $(this).remove();
+             })
         })
 
     }
@@ -500,7 +533,8 @@ function candidateList() {
     }
 
     function onClickMassReject(fn) {
-        settings.massReject.click(function(){
+        settings.massReject.click(function(e){
+            e.stopPropagation()
             var arr = returnSelectedApplications();
 			settings.bulkActionModal.find(".modalHeading").text("Are you sure?");
 			settings.bulkActionModal.find(".jsModalText").text("You are about to reject "+arr.length+" candidates.")
@@ -514,7 +548,8 @@ function candidateList() {
     }
 
     function onClickMassShortlist() {
-        settings.massShortlist.click(function(){
+        settings.massShortlist.click(function(e){
+            e.stopPropagation()
             var arr = returnSelectedApplications();
             settings.bulkActionModal.find(".modalHeading").text("Are you sure?");
 			settings.bulkActionModal.find(".jsModalText").text("You are about to shortlist "+arr.length+" candidates.")
@@ -527,7 +562,8 @@ function candidateList() {
     }
 
     function onClickMassSave() {
-        settings.massSave.click(function(){
+        settings.massSave.click(function(e){
+            e.stopPropagation()
             var arr = returnSelectedApplications();
             settings.bulkActionModal.find(".modalHeading").text("Are you sure?");
 			settings.bulkActionModal.find(".jsModalText").text("You are about to save "+arr.length+" candidates.")
@@ -540,7 +576,8 @@ function candidateList() {
     }
 
     function onClickMassComment() {
-        settings.massComment.click(function(){
+        settings.massComment.click(function(e){
+            e.stopPropagation()
             var arr = returnSelectedApplications();
             settings.bulkActionModal.find(".modalHeading").text("Add Comment");
 			settings.bulkActionModal.find(".jsModalText").text("The Comment will be added on "+arr.length+" candidates profiles.")
@@ -553,7 +590,8 @@ function candidateList() {
     }
 
     function onClickMassActionButton(fn) {
-        settings.bulkActionModal.find(".massActionButton").click(function(){
+        settings.bulkActionModal.find(".massActionButton").click(function(e){
+            e.stopPropagation()
             var selectedApplicationIds = returnSelectedApplications()
             var action = $(this).attr("data-action");
             var comment = settings.bulkActionModal.find(".massTextarea").val();
@@ -563,7 +601,7 @@ function candidateList() {
             }
 
             if(!comment) {
-                settings.bulkActionModal.find(".errorField").removeClass("hidden")
+                return settings.bulkActionModal.find(".errorField").removeClass("hidden")
             }
             else {
                 settings.bulkActionModal.find(".errorField").addClass("hidden")
@@ -632,7 +670,8 @@ function candidateList() {
 
 
     function showShells(status) {
-        $(".candidateListing[data-status-attribute='"+status+"']").find(settings.candidateItemShellClass).removeClass("hidden")
+        $(".candidateListing[data-status-attribute='"+status+"']").find(settings.candidateItemShellClass).removeClass("hidden");
+        $(".candidateListing[data-status-attribute='"+status+"']").find('.no-data').remove();
     }
 
     function hideShells(status) {
@@ -643,15 +682,36 @@ function candidateList() {
         $(".candidateListing[data-status-attribute='"+status+"']").find(settings.candidateRowClass).remove();
     }
 
-    function changeButtonText(arr, newStatus) {
+    function changeButtonText(arr, newStatus, dataAction) {
+
         arr.forEach(function(applicationId){
-            $(settings.candidateRowClass).find(".candidateRow[data-application-id="+applicationId+"] button[data-status="+newStatus+"]").text("")
+
+            settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateShortlist").attr("data-status", newStatus)
+            settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateReject").attr("data-status", newStatus)
+            settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateSave").attr("data-status", newStatus)
+            if(newStatus == settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateSave").attr("data-action")) {
+                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateSave").text("Saved For Later")
+            }
+            else {
+                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateSave").text("Save For Later")
+            }
+            if(newStatus == settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateReject").attr("data-action")) {
+                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateReject").text("Rejected")
+            }
+            else {
+                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateReject").text("Reject")
+            }
+            if(newStatus == settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateShortlist").attr("data-action")) {
+                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateShortlist").text("Shortlisted")
+            }
+            else {
+                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateShortlist").text("Shortlist")
+            }
         })
     }
 
     function setInvite() {
         $(settings.sendInterviewInviteF2FClass).attr("data-clickable","1")
-
         $(settings.sendInterviewInviteTelephonicClass).attr("data-clickable","1")
         $(settings.sendInterviewInviteF2FClass).attr("title","You need to set up your calendar before sending an invite. Click to set up calendar")
         $(settings.sendInterviewInviteTelephonicClass).attr("title","You need to set up your calendar before sending an invite. Click to set up calendar")
@@ -659,14 +719,14 @@ function candidateList() {
         settings.rowContainer.find(".tooltip").not(".prototype .tooltip").tooltipster({
 			animation: 'fade',
 			delay: 0,
-			side:['right'],
+			side:['left'],
 			theme: 'tooltipster-borderless'
 		})
 
         settings.candidateDetailsModal.find(".tooltip").tooltipster({
 			animation: 'fade',
 			delay: 0,
-			side:['right'],
+			side:['left'],
 			theme: 'tooltipster-borderless'
 		})
 
@@ -674,6 +734,12 @@ function candidateList() {
 
     function changeInviteText(applicationId) {
         $(settings.candidateRowClass).find(".candidateRow[data-application-id="+applicationId+"] .interviewinvite").text("Resend Interview Invite")
+    }
+
+    function changeStatus(arr, newStatus) {
+        arr.forEach(function(applicationId){
+            settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"']").attr("data-status", newStatus)
+        })
     }
 
     return {
@@ -710,6 +776,8 @@ function candidateList() {
         onClickSendInterviewInviteTelephonic: onClickSendInterviewInviteTelephonic,
         onClickSendInterviewInviteF2F: onClickSendInterviewInviteF2F,
         setInvite: setInvite,
-        changeInviteText: changeInviteText
+        changeInviteText: changeInviteText,
+        changeButtonText: changeButtonText,
+        changeStatus: changeStatus
 	}
 }

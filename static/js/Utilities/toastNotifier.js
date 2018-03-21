@@ -1,7 +1,7 @@
 var flagMapper = {
 	1:"success",
 	2:"warning",
-	3:"error"
+	3:"toasterror"
 };
 
 function toastNotify(messageFlag, messageContent) {

@@ -109,6 +109,16 @@ $button-border-color: #8f8a8a;
 	}
 	.notification-card{
 		margin-bottom: 40px;
+		.single-interview{
+			.action-buttons{
+				text-align: center;
+				margin: 0 auto;
+				padding: 0;
+				.button{
+					margin-right: 0;
+				}
+			}
+		}
 	}
 	.dashboard{
 		border-radius: 6px;
@@ -189,7 +199,7 @@ $button-border-color: #8f8a8a;
 		}
 		.horizontal-separator{
 			width: 100%;
-			height: 1px;
+			border-bottom: thin solid $horizontal-separator-color;
 			background-color: $horizontal-separator-color;
 			margin-top: 20px;
 		}
@@ -560,6 +570,18 @@ $button-border-color: #8f8a8a;
 	}
 
 }
+
+.explorer{
+	.action-buttons{
+		text-align: center !important;
+		margin:0 !important;
+		padding: 0 !important;
+		.button{
+			margin-right: 0px !important;
+		}
+	}
+}
+
 .error{
 	position: relative !important;
 }

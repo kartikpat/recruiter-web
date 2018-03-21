@@ -14,6 +14,10 @@ function BookedSlots() {
 		settings.openCancelInterviewModalButton= '.candidateCancelInterviewInvite',
 		settings.cancelInterviewModal= $('.cancelInterviewModal'),
 		settings.cancelInterviewButton= $('.cancelInterviewButton'),
+		settings.bookedSlotsview=$('.page-content'),
+		settings.header=$('.action-wrapper'),
+		settings.headerSlot=$('.header-slot')
+		settings.noInterviewView=$('.page-wrap'),
 		settings.tableRowShell = $(".tableRow.shell");
 		settings.loaderOverlay = $("#loaderOverlay");
         settings.date = ""
@@ -21,8 +25,6 @@ function BookedSlots() {
         onClickToggle()
 
 	}
-
-
 
 	function onClickInterviewCancel(){
 		settings.bookedSlots.on('click',settings.openCancelInterviewModalButton,function(e){
@@ -59,7 +61,8 @@ function BookedSlots() {
 			candDesignation: card.find('.candDesignation'),
 			candExperience: card.find('.candExperience'),
 			candLocation: card.find('.candLocation'),
-			jobName: card.find('.jobName')
+			jobName: card.find('.jobName'),
+			jobExp: card.find('.jobExp')
 		}
 	}
 
@@ -71,11 +74,9 @@ function BookedSlots() {
 		return title.replace(regex, '');
 	}
 
-
-
-	function createElement(aData) {
+	function createElement(aData, index) {
 		var item = cloneElement();
-		// var title = getTitleFormat(aData["title"], (/\(\d+-\d+ \w+\)$/));
+		var title = getTitleFormat(aData["job"]["title"], (/\(\d+-\d+ \w+\)$/));
         if(aData["slot"]) {
             var date = moment(aData["slot"]["date"]).format('ll');
             console.log(settings.date )
@@ -83,7 +84,8 @@ function BookedSlots() {
             if(settings.date != date) {
                 settings.date = date;
                 item.interviewDate.text(date)
-                item.element.addClass("border-top")
+				if(index > 0)
+                	item.element.addClass("border-top")
             }
 			var time = aData["slot"]["time"];
 			var temp = time.substr(0,2) + ":" + time.substr(2,2);
@@ -92,71 +94,36 @@ function BookedSlots() {
     		item.interviewTime.text(showTime)
         }
 
+		item.calendarName.text(aData["calendar"]["name"]);
+		// item.calendarName.attr("href",aData["calendar"]["name"]);
 		item.candName.text(aData["name"])
+		item.candName.attr("href", "/job/"+aData["job"]["id"]+"/applications/27989797");
         item.candDesignation.text(aData["designation"])
 
         if(aData["exp"]) {
             var experience = aData["exp"]['year']+'y '+aData['exp']['month'] +'m'
             item.candExperience.text(experience)
         }
-
+		item.jobName.text(title)
+		item.jobName.attr("href", "/job/"+aData["job"]["id"]+"/applications")
         item.candLocation.text(aData["location"])
-
-
-
-		// var obj = setJobStatus(aData)
-		// item.status.append(obj["status"]);
-		// if(obj["statusMsg"]) {
-		// 	item.statusMsg.attr({
-		// 		"data-attribute": aData["timestamp"],
-		// 		"title": obj["message"]
-		// 	}).removeClass("hidden")
-		// }
-        //
-		// if(obj["actions"]) {
-		// 	item.element.find(".jobActions").removeClass("hidden");
-		// }
-        //
-		// if(aData['views']){
-		// 	item.views.text(aData['views']+' Views').removeClass("hidden");
-		// 	if(aData['totalApplications'])
-		// 		item.applications.html('<a class="link-color" href="candidate-apply-list/'+aData["publishedId"]+'">'+aData["totalApplications"]+' Applied</a>').removeClass("hidden");
-		// 	item.element.find(".engagementDefault").addClass("hidden");
-		// }
-        //
-		// item.refresh.attr("data-job-refreshable", aData["refreshable"])
-		// if(!aData["refreshable"])
-		// 	item.refresh.attr("title", "You can refresh this job after 7 days")
-        //
-		// item.edit.attr("data-job-isEditable", aData["editable"])
-		// item.edit.attr("href","/job/"+aData["id"]+"/edit")
-		// if(!aData["editable"]) {
-		// 	item.edit.attr("title","This job cannot be edited now. Reach us at hello@iimjobs.com in case of any issue.");
-		// }
-        //
-		// item.premium.attr("data-job-isPremium", aData["premium"]);
-		// if(aData["premium"]) {
-		// 	item.premium.find('.icon-star').addClass("premium_highlight");
-		// }
-        //
-		// if(aData["url"]) {
-		// 	var url = config["baseUrlJob"] + aData["url"];
-		// 	item.facebook.attr("href", getFacebookShareLink(url))
-		// 	item.twitter.attr("href", getTwitterShareLink(url))
-		// 	item.linkedIn.attr("href", getLinkedInShareUrl(url))
-		// }
-
+		// item.jobExp.text(aData[""])
 		return item;
 	}
 
 	function addToList(dataArray){
 		var str = '';
-		hideShell()
+		hideShell();
+		// dataArray.length=0;
 		if(!dataArray.length) {
-			return settings.bookedSlots.html("<div class='no-data'>No Jobs Found!</div>")
+		//	debugger
+			settings.bookedSlotsview.addClass('hidden');
+			settings.noInterviewView.removeClass('hidden');		
 		}
-		dataArray.forEach(function(aData){
-			var item = createElement(aData);
+		settings.header.removeClass('hidden');
+		settings.headerSlot.removeClass('hidden');
+		dataArray.forEach(function(aData, index){
+			var item = createElement(aData , index);
 			str+=item.element[0].outerHTML;
 		});
 

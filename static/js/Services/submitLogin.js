@@ -4,7 +4,7 @@ function submitLogin(data){
 		if(res.status && res.status =='success'){
 			var token = xhr.getResponseHeader('Set-Token');
 			localStorage["recruiter-access-token"] = token;
-			Set_Cookie('recruiter-access-token', token);
+			Set_Cookie('recruiter-access-token', token); 
 			return pubsub.publish("successfulLogin", res.data);
 		}
 	}, function(res){

@@ -290,7 +290,6 @@
 .icon-user:before {
   content: '\e831'; }
 
-/* '' */
 .icon-location:before {
   content: '\e832'; }
 
@@ -299,6 +298,12 @@
 
 .icon-checked_icon:before {
   content: '\e819'; }
+
+.icon-telephone:before {
+  content: '\E83C'; }
+
+.icon-face-to-face:before {
+  content: '\e83d'; }
 
 .left {
   float: left; }
@@ -342,7 +347,7 @@ body.posf {
   z-index: 1500; }
   .toast-notification-container.show {
     bottom: 15px; }
-  .toast-notification-container.error {
+  .toast-notification-container.toasterror {
     background-color: #b66666; }
   .toast-notification-container.success {
     background-color: #149075; }
@@ -771,7 +776,6 @@ a {
 .icon-user:before {
   content: '\e831'; }
 
-/* '' */
 .icon-location:before {
   content: '\e832'; }
 
@@ -780,6 +784,12 @@ a {
 
 .icon-checked_icon:before {
   content: '\e819'; }
+
+.icon-telephone:before {
+  content: '\E83C'; }
+
+.icon-face-to-face:before {
+  content: '\e83d'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -1008,7 +1018,7 @@ span.sticker {
     z-index: 5; }
     .button-action-list .action-list-items li {
       padding: 0 10px;
-      margin: 5px 0; }
+      margin: 13px 0; }
       .button-action-list .action-list-items li a {
         font-size: 13px;
         color: #1a5e98; }
@@ -1030,6 +1040,7 @@ span.sticker {
     background: transparent; }
   .conversations .conversation-listing-container .listing-header h3 {
     padding: 15px;
+    padding-left: 0px;
     margin: 0;
     color: #333;
     font-size: 18px;
@@ -1038,7 +1049,7 @@ span.sticker {
       font-size: 14px;
       margin-right: 10px; }
   .conversations .conversation-listing-container .conversations-listing {
-    max-height: 600px;
+    max-height: 70vh;
     overflow-y: auto; }
     .conversations .conversation-listing-container .conversations-listing .conversation-item {
       display: inline-block;

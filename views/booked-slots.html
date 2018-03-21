@@ -1,10 +1,10 @@
 {{> header }}
-<div class="loader-overlay hidden" id="loaderOverlay"> 
+{{>chatSticky}}
+<div class="loader-overlay hidden" id="loaderOverlay">
     <div class="loader"></div>
 </div>
-
 <div class="page-content">
-    <div class="header-slot">
+    <div class="header-slot hidden">
         <div class="tagline left">Booked Slots</div>
         <div class="right-container right">
             <div class="section">
@@ -15,12 +15,14 @@
                 </select>
             </div>
             <div class="manage-Calendar">
+                <a href="/calendar-manage">
                 Manage Calendar
+            </a>
             </div>
         </div>
         <div class="clearfix"></div>
     </div>
-    <div class="action-wrapper">
+    <div class="action-wrapper hidden">
         <div class="action Interview-Date">
             Interview Date
         </div>
@@ -46,28 +48,27 @@
     </div>
 </div>
 
-<option class="prototype calendarOption"></option>
+<option class="prototype calendarOption hidden"></option> 
 
 <div class="slot-date slotDate prototype hidden">
     <div class="date"><div class="action-date">Interview Date</div><span class="interviewDate"></span></div>
     <div class="schedules-container">
         <div class="schedules">
             <div class="time"><div class="action-time">Time Slots</div><div class="interviewTime">10:00 to 11:00 AM</div></div>
-            <div class="interview-type"><div class="action-name">Calendar Name</div><a href="" class="calendarName">Product Interviews</a></div>
+            <div class="interview-type"><div class="action-name">Calendar Name</div><a href="/Interview-scheduler-updated" target="_blank" class="calendarName">Product Interviews</a></div>
             <div class="details">
                 <div class="action-detail">Candidate Details</div>
-                <div class="name candName">Shally Sharma</div>
+                <div class="name"><a href="" class="name candName" target="_blank">Shally Sharma</a></div>
                 <div class="designation candDesignation">Product Manager at iimjobs</div>
                 <div class="experience ">Experience: <span class="candExperience">2yrs</span></div>
                 <div class="location">Current Location: <span class="candLocation">Delhi</span></div>
             </div>
             <div class="job-details">
                 <div class="action-job">Applied to job</div>
-                <div id="profile" ><a class="jobName" target="_blank">iimjobs.com-Associate Product Manager</a></div>
+                <div id="profile" ><a href="" class="link-color jobName" target="_blank">iimjobs.com-Associate Product Manager</a></div>
                 <div id="exp-details" class="jobExp"> Delhi 0-5 yrs</div>
             </div>
             <div class="action-buttons">
-
                 <div class="section">
                     <div class="button-action-list candidateOtherActions inactive">
                         <label class="action-list-label">Other Actions</label>
@@ -84,10 +85,7 @@
 
 </div>
 
-
-
 <div id="" class="modal cancelInterviewModal hidden">
-
     <!-- Modal content -->
     <div class="modal_wrapper" >
         <span class="modal_close">&times;</span>
@@ -110,4 +108,36 @@
         </div>
     </div>
 </div>
+
+
+<div class="page-wrap hidden">
+    <div class="main-wrappper">
+        <div class="main-conainer">
+            <div class="header-slot">
+                    <div class="tagline left">Interview scheduler</div>
+                        <div class="right-container right">
+                            <div class="manage-Calendar">
+                                <a href="/calendar-manage">
+                                Manage Calendar
+                            </a>
+                            </div>
+                        </div>
+                    <div class="clearfix"></div>
+            </div>
+            <div class="content">
+                <div class="no-schedule-container">
+                    <div class="image-container">
+                        <img src="/static/images/no-calendar.png">
+                    </div>
+                    <div class="heading">No interviews yet</div>
+                    <div class="subheading">You'll find a list of interviews here once you schedule invites</div>
+                </div>
+            </div>
+      </div>
+    </div>   
+    <div class="conversations right">
+            {{> chatSidebar }}
+    </div>
+</div>  
+
 {{> footer }}

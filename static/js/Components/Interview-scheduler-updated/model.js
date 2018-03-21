@@ -1,4 +1,30 @@
+var errorResponses = {
+	missingName: 'Please enter a calendar name',
+    missingMessage: 'Please enter a message for F2F interview',
+    missingTeleMessage: 'Please enter a message for telephonic interview',
+    missingvalues:'Please select your available hours',
+    missingslots:'Please select a slot',
+}
 
+var data={
+    name:"geetansh",
+    message:"helo",
+    telephone:"bye",
+    fromDate:"2018-03-10",
+    toDate:"2018-03-25",
+    slots:[
+        {
+            startTime:"6",
+            endTime:"12",
+            id:"6",
+        },
+        {
+            startTime:"12",
+            endTime:"23",
+            id:"5",
+        }
+    ]
+}
 function Calendar(){
     var settings ={};
     var timetable={};
@@ -6,7 +32,7 @@ function Calendar(){
     function init(){
         settings.name= $('#name'),
         settings.message= $("#message"),
-        settings.telephone= $("#telephonic"),
+        settings.teleMessage= $("#telephonic"),
         settings.select_menu= $(".select-dropdown"),
         settings.button=$("#selectAll"),
         settings.check_button=$("#check-button-mon"),
@@ -31,7 +57,12 @@ function Calendar(){
         settings.endDate=$('#enddatepicker')
         settings.start=$('.start'),
         settings.end=$('.end'),
-        settings.firstDay=$('#1');
+        settings.firstDay=$('#1'),
+        settings.error=$('.errors'),
+        settings.slots=$('.table'),
+        settings.prevButton=$('.button-prev'),
+        settings.nextButton=$('.button-next'),
+        settings.Calendarbutton=$('.calendar-button'),
         selectCreater();
         copytoall();
         time_mapper();
@@ -40,14 +71,18 @@ function Calendar(){
         copyTime();
         highlighter();
     }
+
     function highlighter(){
           settings.createCalendar.on("click", getslots);
           settings.Highlighter.on("change",function(e){
               e.preventDefault();
+              var index=$(this).parent().parent().parent().parent().attr('id');
+              console.log(index);
+              timeSectionError(index);
               var slots=getslots();
               testHighlight(slots.fromDate,slots.toDate,slots.highlightSlots);
           }),
-          $('.fc-button').on("click",function(e){
+          settings.Calendarbutton.on("click",function(e){
             e.preventDefault();
             var slots=getslots();
             testHighlight(slots.fromDate,slots.toDate,slots.highlightSlots);
@@ -58,9 +93,11 @@ function Calendar(){
             testHighlight(slots.fromDate,slots.toDate,slots.highlightSlots);
         })
     }
+
     function getslots(){
+
         var slots=[];
-        var finalslots=[];    
+        var finalslots=[];   
         var currentDate=moment().format("YYYY-MM-DD");
         console.log(currentDate);
           var fromDate=currentDate;
@@ -86,12 +123,16 @@ function Calendar(){
         $.each(settings.dayId,function(){
             settings.select_menu.find('option').prop('disabled', false); 
             var id=$(this).attr('id');
+            $("#"+id+ "").css("opacity","0.5");
+            var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
+            if(checkbox==true){
+                $("#"+id+ "").css("opacity","1");
+            }
             var startvalue=$("#"+id+ "").find(settings.start_time).val();
             var endvalue=$("#"+id+ "").find(settings.end_time).val();
-            var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
-           // debugger
+           
             if(parseInt(startvalue)>0 && parseInt(endvalue)>0 && checkbox==true){
-          //      debugger
+             
                 var slot={
                     startTime:startvalue,
                     endTime:endvalue,
@@ -146,6 +187,34 @@ function Calendar(){
             }
     }
 
+    function setDetails(object){
+        settings.name.val(object["name"]);
+        settings.message.val(object["message"]);
+        settings.teleMessage.val(object["telephone"]);
+        var previewslots=object.slots;
+        availablehours(previewslots);
+        var fromDate=object.fromDate; //DD-MM-YYYY
+        startDate=moment(fromDate).format("DD-MM-YYYY");
+        var toDate=object.toDate;
+        endDate=moment(toDate).format("DD-MM-YYYY");
+        $('#startdatepicker').datepicker().datepicker('setDate', startDate);
+        $('#enddatepicker').datepicker().datepicker('setDate', endDate);
+        //datepicker set value
+        testHighlight(fromDate,toDate,previewslots);
+        settings.createCalendar.text("Update Calendar")
+    }
+
+    function availablehours(slots){
+        for(var k=0;k<slots.length;k++){
+            var id=slots[k].id;
+            var startvalue=slots[k].startvalue;
+            var endvalue=slots[k].endvalue;
+            $("#"+id+ "").find(settings.start_time).val(startvalue);
+            $("#"+id+ "").find(settings.end_time).val(endvalue);
+            $("#"+id+ "").find(settings.checkbox).prop("checked",true);
+        }       
+    }
+
     function testHighlight(fromDate,toDate,days){
        console.log(days);
        console.log(fromDate);
@@ -182,7 +251,7 @@ function Calendar(){
                 continue
             console.log("here");
             for(var j=parseInt(start);j<parseInt(end); j+=1){
-                $('.fc-'+daySchema[id]).find("#hours-" +j+ "").css({"text-decoration":"none" ,"opacity":"1","color":"#149075","font-weight": "bold"});
+                $('.fc-'+daySchema[id]).find("#hours-" +j+ "").css({"text-decoration":"none" ,"opacity":"1","color":"#149075"});
             }
         }       
     }
@@ -195,19 +264,19 @@ function Calendar(){
                 var option = document.createElement('option');
                 if(i<12){
                 option.value = i;
-                option.innerHTML = i+"AM";
+                option.innerHTML = i+":00 AM";
                 }
                 else  if(i==12){
                 option.value = i;
-                option.innerHTML = i+"PM"; 
+                option.innerHTML = i+":00 PM"; 
                 }
                 else if(i==24){
                 option.value = i;
-                option.innerHTML = (i-12)+"AM"; 
+                option.innerHTML = (i-12)+":00 AM"; 
                 }
                 else{
                 option.value = i;
-                option.innerHTML = (i-12)+"PM";
+                option.innerHTML = (i-12)+":00 PM";
                 }
                 select.append(option.outerHTML);
             }
@@ -230,13 +299,15 @@ function Calendar(){
             var start=$("#"+parent+"").find(".start")
             var end=$("#"+parent+"").find(".end");
             var k=start.val();
+            if(k>0){
             var check=$("#"+parent+" .end").find('option:selected').index();
                 end.val(k);
                 var value=$("#"+parent+" .start option:selected").next().val();
                 end.val(value);
-                 $("#"+parent+" .end").find('option').prop('disabled', false);
+                $("#"+parent+" .end").find('option').prop('disabled', false);
                 var index = $("#"+parent+" .start").find('option:selected').index();
                 $("#"+parent+" .end").not("#"+parent+" .start").find('option:lt(' + (index+1) + ')').prop('disabled', true);
+            }
         })
         settings.end.change(function() {
             var parent=$(this).parent().parent().attr('id');
@@ -287,6 +358,16 @@ function Calendar(){
             columnFormat :'ddd \n D/M/Y'
           });
           $(".fc-button").on("click", Timer);
+          settings.prevButton.on("click",function(){
+              console.log("hello");
+            $('#calendar').fullCalendar('prev');
+                Timer();
+          })
+          settings.nextButton.on("click",function(){
+            $('#calendar').fullCalendar('next');
+                Timer();
+          })
+
           Timer();
     }
 
@@ -341,7 +422,7 @@ function Calendar(){
     function getDetails(){
         timetable.name= settings.name.val(),
         timetable.message=  settings.message.val(),
-        timetable.telephone=settings.telephone.val()
+        timetable.telephone=settings.teleMessage.val()
         console.log(timetable);
         return timetable
     }
@@ -349,21 +430,104 @@ function Calendar(){
     function submitHandler(fn){
 		$(settings.createCalendar).click(fn)
     }
+
+    function timeSectionError(element){
+        console.log(element);
+        $("#"+element+ "").find('.error-slot').text('');
+        $("#"+element+ "").find('.error').text('');
+    }
     
+    function eraseErrors(){
+        settings.name.next('.error').text('');
+        settings.message.next('.error').text('');
+        settings.teleMessage.next('.error').text('');
+        settings.name.removeClass('error-border');
+        settings.message.removeClass('error-border');
+        settings.teleMessage.removeClass('error-border');
+    }
+
+    function focusOnElement(element) {
+        element.focus();
+        element.addClass("error-border");
+        $('html, body').animate({
+            scrollTop: (element.closest('.form').offset().top)
+        },200);
+    }
+
     function validate(){
+        eraseErrors();
 		if(!(settings.name.val())){
             console.log("fail");
-		//	user.email.next('.error').text(errorResponses['missingEmail'])
-			return false
+			settings.name.next('.error').text(errorResponses['missingName']);
+            focusOnElement(settings.name);
+            return false
         }
         if(!(settings.message.val())){
-
+            settings.message.next('.error').text(errorResponses['missingMessage']);
+            settings.message.addClass('error-border');
+            focusOnElement(settings.message);
+            return false
         }
         if(!(settings.teleMessage.val())){
-
+            settings.teleMessage.next('.error').text(errorResponses['missingTeleMessage']);
+            settings.teleMessage.addClass('error-border');
+            focusOnElement(settings.teleMessage);
+            return false
         }
+        var status=check();
+        console.log(status);
+        if((status>0)){
+            console.log('false');
+            return false;
+        }
+
+        var status=timetable.slots;
+        console.log(status);
+        if(!(status.length>0)){
+            settings.slots.find('.error').text(errorResponses['missingslots']);
+            $('html, body').animate({
+                scrollTop: (settings.slots.closest('.second-container').offset().top)
+            },200);
+            return false
+        }
+       
 		return true;
 	}
+
+    function check(){
+        var flag=0;
+        $.each(settings.dayId,function(){
+            var id=$(this).attr('id');
+            var startvalue=$("#"+id+ "").find(settings.start_time).val();
+            var endvalue=$("#"+id+ "").find(settings.end_time).val();
+            var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
+            if(parseInt(startvalue)==0 && parseInt(endvalue)==0 && checkbox==true){
+                $("#"+id+ "").find('.error-slot').text(errorResponses['missingvalues']);
+                      $('html, body').animate({
+                scrollTop: (settings.slots.closest('.second-container').offset().top)
+            },200);
+            flag++;    
+            }
+        });
+        return flag
+    }
+
+    function errorHandler(res){
+        var message = '';
+		console.log(res)
+		switch(res.status){
+			case 404:
+				message = "";
+                break;
+            case 401:
+				message = "";
+				break;
+			case 503:
+				message = "";
+				break;
+		}
+		return
+    }
 
     return {
         init:init,
@@ -379,6 +543,7 @@ function Calendar(){
         submitHandler:submitHandler,
         getDetails:getDetails,
         validate:validate,
+    
     }
 };
 

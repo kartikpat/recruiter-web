@@ -4,26 +4,26 @@
 
 	<div class="first-fold fold top mass-action-container hidden" id="massActionContainer">
 		<div class="action-buttons">
-			<span class=" button white" id="downloadResumeMass">Download Resume</span>
-			<a href="" id="downloadExcelMass"><span class=" button white">Download Excel</span></a>
-			<span class=" button white" id="massReject">Reject</span>
-			<span class=" button white" id="massShortlist">Shortlist</span>
-			<span class=" button white" id="massSave">Save for Later</span>
-			<span class=" button white" id="massComment">Add Comment</span>
+			<span class=" button white downloadResumeMass" >Download Resume</span>
+			<a href="" class="downloadExcelMass"><span class=" button white">Download Excel</span></a>
+			<span class=" button white massReject">Reject</span>
+			<span class=" button white massShortlist">Shortlist</span>
+			<span class=" button white massSave">Save for Later</span>
+			<span class=" button white massComment">Add Comment</span>
 			<!-- <span class=" button white" id="massTag">Add Tag</span> -->
 		</div>
 		<div class="action-buttons mobile">
-			<span class=" button white" id="massReject">Reject</span>
-			<span class=" button white" id="massShortlist">Shortlist</span>
+			<span class=" button white massReject">Reject</span>
+			<span class=" button white massShortlist">Shortlist</span>
 			<span class="view-more button white"><i class="icon-down_arrow"></i></span>
 		</div>
 	</div>
 	<div class="second-fold fold hidden mass-action-second">
 		<div class="action-buttons">
-			<span class=" button white" id="massSave">Save for Later</span>
-			<span class=" button white" id="massComment">Add Comment</span>
-			<span class=" button white" id="downloadResumeMass">Download Resume</span>
-			<a href="" id="downloadExcelMass"><span class=" button white">Download Excel</span></a>
+			<span class=" button white massSave">Save for Later</span>
+			<span class=" button white massComment">Add Comment</span>
+			<span class=" button white downloadResumeMass">Download Resume</span>
+			<a href="" class="downloadExcelMass"><span class=" button white">Download Excel</span></a>
 		</div>
 	</div>
 	<div class="toast-notification-container">
@@ -40,7 +40,7 @@
 		<div class="main-wrapper">
 			<div class="candidate-apply-listing left">
 				<div class="page-header" id="jobDetails">
-					<div class="left">
+					<div class="left job-title-container">
 						<h1 class="job-title shell" id="jobTitle">iimjobs.com - Product Manager</h1>
 						<p class="job-meta">
 							<span class="job-location shell" id="jobLocation">Delhi</span>
@@ -74,7 +74,7 @@
 
 				</div>
 
-				<div class="candidates-area" id="candidatesArea">
+				<div class="candidates-area" id="candidatesArea" style="margin-bottom:40px ">
 					<div class="candidates-area-header">
 						<div class="candidates-search">
 							<div class="keyword-search">
@@ -88,8 +88,8 @@
 								<span class="action-buttons sortBy">
 									<span class="section sortBy" id="sortBy">
 										<select class="select-dropdown" id="sortBySelect">
-											<option value="1">SortBy: Magic Sort</option>
-											<option value="2">SortBy: Application Date</option>
+											<option value="1">SortBy : Magic Sort</option>
+											<option value="2">SortBy : Application Date</option>
 										</select>
 									</span>
 								</span>
@@ -117,12 +117,12 @@
 									<ul id="">
 										<li>
 											<div class="bulk-selection-item bulk-select section">
-											<div class="select-all check-input">
-												<input type="checkbox" class="" id="massCheckboxInput">
-												<label for="massCheckboxInput" id="massCheckboxLabel"></label>
+												<div class="select-all check-input">
+													<input type="checkbox" class="" id="massCheckboxInput">
+													<label for="massCheckboxInput" id="massCheckboxLabel"></label>
+												</div>
 											</div>
-										</div>
-									</li>
+										</li>
 					            		<li data-attribute="">
 											<a href="#all-jobs">
 												<div class="bulk-selection-item all active">
@@ -176,6 +176,7 @@
 								<div id="all-jobs" class="candidates-listing candidateListing" data-status-attribute="">
 									{{>candidateApplyListShell}}
 									{{>candidateApplyListShell}}
+									<div class='no-data hidden'>No Applications Found!</div>
 								</div>
 								<div id="unread-jobs" class="candidates-listing candidateListing" data-status-attribute="0">
 									{{>candidateApplyListShell}}
@@ -197,10 +198,47 @@
 									{{>candidateApplyListShell}}
 									{{>candidateApplyListShell}}
 								</div>
+
 							</div>
+
 						</div>
 					</div>
 				</div>
+
+				<div class="loading loaderScroller hidden" style="margin-top:20px ">
+				    <div class="loader loader-scroller"></div>
+				</div>
+				<style>
+					.loading div {
+						display:inline-block;
+						position:relative;
+					}
+
+					.loading p:after {
+						overflow: hidden;
+						position:absolute;
+						left:100%;
+						text-align:left;
+						display: inline-block;
+						vertical-align: bottom;
+						-webkit-animation: ellipsis steps(4,end) 900ms infinite;
+						animation: ellipsis steps(4,end) 1800ms infinite;
+						content: "\2026"; /* ascii code for the ellipsis character */
+						width: 0px;
+					}
+
+					@keyframes ellipsis {
+					  to {
+					   	width: 1.25em;
+					  }
+					}
+
+					@-webkit-keyframes ellipsis {
+					  to {
+					    width: 1.25em;
+					  }
+					}
+				</style>
 			</div>
 			<div class="conversations right">
 				{{>chatSidebar}}
@@ -222,8 +260,8 @@
                 	<p class="profile-name js_name">Shreya Sharma</p>
 
                 	<div class="social-media-accounts">
-                		<span class="social facebook"><img src="/static/images/facebook-round.svg"></span>
-                		<span class="social twitter"><img src="/static/images/twitter-round.svg"></span>
+                		<span class="social facebook hidden"><img src="/static/images/facebook-round.svg"></span>
+                		<span class="social twitter hidden"><img src="/static/images/twitter-round.svg"></span>
                 	</div>
                 </div>
 
@@ -264,22 +302,23 @@
 	            	<ul>
 	            		<li><a href="#view-profile-info">Profile</a></li>
 	            		<li><a href="#view-resume">Resume</a></li>
-	            		<li><a href="#view-cover-letter">Cover Letter</a></li>
+	            		<li><a href="#view-cover-letter" class="hidden coverLetterTab">Cover Letter</a></li>
 	            	</ul>
 					<div id="view-profile-info">
-	            		<div class="content-block education">
-	            			<h3 class="content-heading">Educational Qualifications</h3>
-	            			<div class="content js_edu_list">
-
-	            			</div>
-	            		</div>
-
-	            		<div class="content-block organization">
+						<div class="content-block organization">
 	            			<h3 class="content-heading">Professional Details</h3>
 	            			<div class="content js_prof_list">
 
 	            			</div>
 	            		</div>
+	            		<div class="content-block education">
+	            			<h3 class="content-heading">Educational Details</h3>
+	            			<div class="content js_edu_list">
+
+	            			</div>
+	            		</div>
+
+
 
 	            		<div class="content-block more">
 	            			<h3 class="content-heading">More Information</h3>
@@ -287,13 +326,13 @@
 	            				<ul>
 	            					<li>
 	            						<p class="location">
-	            							<span class="key">Location</span>
+	            							<span class="key">Current Location</span>
 	            							<span class="value js_loc">Delhi</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="applied">
-	            							<span class="key">Applied</span>
+	            							<span class="key">Applied Date</span>
 	            							<span class="value js_appliedOn">15-06-2017</span>
 	            						</p>
 	            					</li>
@@ -434,14 +473,18 @@
 						<div class="content-block comments mob mobCandidateCommentContainer">
 	            			<h3 class="content-heading">Comment</h3>
 	            			<div class="content">
-								<textarea  placeholder="Add Comment" name="name" class="mobCandidateCommentTextarea"></textarea>
+								<div class="mobCommentBox hidden">
+									<textarea id="" class="comment-textarea" readonly></textarea>
+								</div>	
+								<div class="">
+									<textarea  placeholder="Add Comment" name="name" class="mobCandidateCommentTextarea"></textarea>
+								</div>	
 								<div class="action-buttons">
 									<span class="cand-comment-button button green mobCandidateAddCommentButton">Add</span>
+									<span class="button green mobcandidateAddEditButton hidden">Edit Comment</span> 
 								</div>
 	            			</div>
 	            		</div>
-
-
 
 						<div class="content-block tags mob mobCandidateTagContainer">
 	            			<h3 class="content-heading">Tags</h3>
@@ -525,8 +568,8 @@
     			<li class="save" id="candidateSaveModal"><span class="icon"><i class="icon-star"></i></span>Save for Later</li>
     			<li class="chat" id="candidateChatModal"><span class="icon"><i class="icon-chat_icon"></i></span>Chat with <span id="firstName" class="candidate-first-name">Shreya</span></li>
     			<li class="invite"><span class="icon"><i class="icon-interview"></i></span>Send Interview Invite</li>
-				<li><span data-invite-id="1" class="inviteF2f tooltip ">Face to Face</span></li>
-				<li><span data-invite-id="2" class="inviteTelephonic tooltip ">Telephonic</span></li>
+				<li class="invite-links"><span class="icon"><i class="icon-face-to-face"></i></span><span data-invite-id="1" class="inviteF2f tooltip ">Face to Face</span></li>
+				<li class="invite-links"><span class="icon"><i class="icon-telephone"></i></span><span data-invite-id="2" class="inviteTelephonic tooltip ">Telephonic</span></li>
     		</ul>
 <!--
     		<ul>
@@ -536,12 +579,17 @@
     	</div>
 
     	<div class="sidebar-section comments candidateCommentContainer">
-    		<h3>Comment</h3>
-    		<div class="">
+			<h3>Comment</h3>
+			
+    		<div class="comment-box ">
+					<textarea id="" class="comment-textarea" readonly></textarea>
+			</div>	
+			<div class="">
 				<textarea id="" placeholder="Add Comment" name="name" class="candidateCommentTextarea"></textarea>
     		</div>
 			<div class="action-buttons">
-				<span class="cand-comment-button button green candidateAddCommentButton">Add</span>
+				<span class="cand-comment-button button green candidateAddCommentButton addButton">Add</span>
+				<span class="editbutton candidateAddEditButton hidden">Edit Comment</span> 
 			</div>
     	</div>
 
@@ -554,7 +602,7 @@
 						<div class="error-field hidden tagInputError" id=""><p>Input field can't be empty</p></div>
 					</div>
 					<div class="action-buttons cand-add-tag-action-btn">
-						<span class="button green candidateAddTagButton cand-add-tag-button">Add</span>
+						<span class="button green candidateAddTagButton cand-add-tag-button addButton">Add</span>
 					</div>
 				</div>
 				<div class="skill-tags-area candidateTagList">
@@ -831,6 +879,8 @@
 </div>
 
 <p class="fetchTags prototype hidden" data-tag-id="1">Ahmedabad</p>
+
+
 
 <div class="loader-overlay hidden" id="loaderOverlay">
 	<div class="loader"></div>

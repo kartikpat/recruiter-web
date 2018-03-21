@@ -4,26 +4,35 @@
     overflow-y: scroll;
 }
 
+.fc td, .fc th {
+    border-style: solid;
+    border-width: 1px;
+    padding: 0;
+    vertical-align: top;
+    /* width: 0%; */
+    width: 85px;
+    text-transform: uppercase;
+    color: #2b2b2b;
+    font-size: 18px;
+    font-weight: 400;
+}
+
 .TimeLines{
     background-color :#ffffff;
     font-size: 15px;/* Approximation due to font substitution */
     font-weight: 500;
     text-align: center;
-    border-style: solid;
-    border-width: 0.6px;
-    border-color:  #e4e4e4;
     box-sizing: border-box;
     padding-top: 10px;
-    /* opacity: 0.5; */
     text-decoration: line-through;
     padding-bottom: 10px;
     text-align: center;
     color: #a0a0a0;
+    padding-top:25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid  #e4e4e4;
 }
-/* .fc-unthemed td.fc-today {
-    opacity: .3;
-    background-color: transparent;
-} */
+
 
 .fc-toolbar button{
     border-style: solid;
@@ -38,11 +47,16 @@
 }
 .fc-button{
     outline: none;
+    display: none;
 }
 
 .fc-nonbusiness{
     background-color: transparent;
 }    
+
+.fc-toolbar {
+    text-transform: uppercase;
+}
 
 .fc-head-container{
     background-color: #f3fbfb!important;
@@ -51,20 +65,12 @@
 }
 
 .fc-widget-header{
-   width: 97.5%;
+   /* width: 97.5%; */
 }
 
-a{
-    font-family: DroidSans;
-    color:  #2b2b2b;
-    font-size: 15.03px;/* Approximation due to font substitution */
-    font-weight: 400;
-    line-height: 23.122px;/* Approximation due to font substitution */
-    text-align: center; 
-}
 
 .fc-day-grid{
-    height: 940px!important;
+    height: 1655px!important;
     overflow: hidden;
     opacity: 0.8;
 }
@@ -73,15 +79,14 @@ a{
     color: #2b2b2b;
     font-size: 16.03px;
     font-weight: 400;
-    line-height: 23.122px;
+    line-height: 30px;
     text-align: center;
 }
-
- 
 
 #calendar{
     width: 615px;
     height: 782px;
+    margin-top: 21px;
 }
 
 .fc-bg{
@@ -90,7 +95,7 @@ a{
 
 .fc-scroller{
     overflow-x: hidden;
-    height: 681px!important;
+    height: 580px!important;
 }
 
 .fc-toolbar h2 {
@@ -100,7 +105,7 @@ a{
     font-size: 14px;/* Approximation due to font substitution */
     font-weight: 400;
     text-align: left;
-    padding-right: 20px;
+    padding-right: 70px;
 }
 
 .fc-button{
@@ -117,8 +122,14 @@ a{
 .fc-icon{
     width: 16px;
     height: 14px;
+   
 }
-/* .TimeLines{
-    padding-bottom: 10px;
-    text-align: center;
-} */
+
+.fc-row.fc-widget-header {
+    border-right-width: 0px !important;
+}
+
+.fc-header-right .fc-button .fc-button-inner:hover {
+    background-color: red;
+    color: #fff;
+  }
