@@ -116,3 +116,12 @@ function getLinkedInShareUrl(url){
 	// TO create a link with all parameters
 	// "https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=Some%20Title&summary=Some%20Summary&source=YourWebsiteName"
 }
+function nl2br (str, is_xhtml) {   
+    var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';    
+    return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');
+}
+function formatSalary(salary){
+	if(salary =='confidential')
+		return "Confidential";
+	return salary+" LPA"
+}

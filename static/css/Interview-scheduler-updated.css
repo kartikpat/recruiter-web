@@ -49,6 +49,13 @@
     text-align: left;
     height: 20px;
     margin-left: 27px; }
+  .wrap .container .form .row-separator {
+    clear: both;
+    width: 55%;
+    margin-top: 10px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e8e8e8; }
   .wrap .container .form .input-name {
     margin-top: 10px;
     margin-left: 27px;
@@ -70,7 +77,10 @@
       width: 591px;
       height: 48px;
       resize: none;
-      outline: none; }
+      outline: none;
+      padding: 16px 22px;
+      overflow: hidden;
+      font-size: 14px; }
     .wrap .container .form .input-name .error {
       font-family: "Droid Sans", sans-serif;
       position: absolute;
@@ -98,7 +108,10 @@
       width: 591px;
       height: 98px;
       resize: none;
-      outline: none; }
+      outline: none;
+      padding: 16px 22px;
+      overflow: hidden;
+      font-size: 14px; }
     .wrap .container .form .message .error-border {
       border-color: #ee1620; }
     .wrap .container .form .message .error {
@@ -133,10 +146,14 @@
       width: 591px;
       height: 111px;
       resize: none;
-      outline: none; }
+      outline: none;
+      padding: 16px 22px;
+      overflow: hidden;
+      font-size: 14px; }
   .wrap .container .Availability {
     margin-left: 27px;
-    margin-top: 76px; }
+    margin-top: 76px;
+    margin-bottom: 40px; }
     .wrap .container .Availability .heading {
       font-family: "Droid Sans", sans-serif;
       color: #149075;
@@ -221,14 +238,18 @@
           border-color: #e4e4e4;
           box-sizing: border-box;
           background-color: #fcfbfb;
+          border-style: solid;
           width: 531px;
           display: inline-block;
-          position: relative; }
+          position: relative;
+          border-bottom: none;
+          margin-top: 15px; }
           .wrap .second-container .available-hours .Days-available .table .error {
             font-family: "Droid Sans", sans-serif;
             position: absolute;
             font-size: 14px;
-            color: #ec1c2a; }
+            color: #ec1c2a;
+            margin-top: -17px; }
           .wrap .second-container .available-hours .Days-available .table .D-avail {
             background-color: #f5f5f5;
             border-style: solid;
@@ -238,8 +259,9 @@
             width: 530px;
             height: 55px;
             height: 40px;
-            margin-top: 15px;
-            display: inline-block; }
+            display: inline-block;
+            border-top: none;
+            border-left: none; }
             .wrap .second-container .available-hours .Days-available .table .D-avail #one {
               font-family: "Droid Sans", sans-serif;
               color: #2b2b2b;
@@ -248,8 +270,8 @@
               font-weight: 400;
               line-height: 23px;
               text-align: left;
+              width: 137px;
               display: inline-block;
-              width: 136px;
               padding-left: 15px;
               padding-bottom: 10px;
               border-right: 1px solid #e4e4e4;
@@ -281,7 +303,6 @@
               width: 136px;
               height: 70px;
               float: left;
-              border-left: 1px solid #e4e4e4;
               border-bottom: 1px solid #e4e4e4; }
               .wrap .second-container .available-hours .Days-available .table .dayId .section .check-input {
                 margin-left: 15px;
@@ -317,7 +338,8 @@
             border-width: 1px;
             border-color: #e4e4e4;
             box-sizing: border-box;
-            border-top: none; }
+            border-top: none;
+            border-right: none; }
             .wrap .second-container .available-hours .Days-available .table .time-section .timer {
               color: #2b2b2b;
               font-size: 14px;
@@ -335,7 +357,7 @@
                 display: inline-block;
                 font-size: 12px;
                 color: #2b2b2b;
-                padding: 10px 22px;
+                padding: 10px 14px;
                 border-radius: 3px;
                 background: #FFF;
                 width: 100px;
@@ -446,7 +468,7 @@
                 display: inline-block;
                 font-size: 12px;
                 color: #2b2b2b;
-                padding: 10px 22px;
+                padding: 10px 16px;
                 border-radius: 3px;
                 background: #FFF;
                 width: 100px;
@@ -476,7 +498,7 @@
         .wrap .second-container .available-hours .preview .button-prev {
           position: absolute;
           display: inline-block;
-          margin-left: 516px;
+          margin-left: 562px;
           margin-top: 20px;
           border-style: solid;
           border-width: 1px;
@@ -486,10 +508,12 @@
           width: 23px;
           height: 22px;
           text-align: center; }
+          .wrap .second-container .available-hours .preview .button-prev img {
+            vertical-align: middle; }
         .wrap .second-container .available-hours .preview .button-next {
           position: absolute;
           display: inline-block;
-          margin-left: 566px;
+          margin-left: 592px;
           margin-top: 20px;
           border-width: 1px;
           border-style: solid;
@@ -499,6 +523,8 @@
           width: 23px;
           height: 22px;
           text-align: center; }
+          .wrap .second-container .available-hours .preview .button-next img {
+            vertical-align: middle; }
       .wrap .second-container .available-hours .start-date {
         clear: both;
         float: left;
@@ -639,7 +665,7 @@
       cursor: pointer;
       font-size: 16px;
       font-weight: 400;
-      margin-left: 2%;
+      margin-left: 45px;
       margin-top: 2%; }
 
 @media only screen and (max-width: 1260px) {
@@ -700,7 +726,8 @@
       .wrap .second-container .available-hours .Days-available .table .time-section {
         width: 100% !important;
         min-height: 130px;
-        margin-bottom: 30px; }
+        margin-bottom: 30px;
+        border-bottom: none; }
         .wrap .second-container .available-hours .Days-available .table .time-section span {
           display: none; }
         .wrap .second-container .available-hours .Days-available .table .time-section .button-container {
@@ -773,7 +800,7 @@
     height: 40px;
     outline: none; } }
 
-@media only screen and (max-width: 350px) {
+@media only screen and (max-width: 375px) {
   .wrap .second-container .available-hours .Days-available {
     width: 100% !important; }
     .wrap .second-container .available-hours .Days-available .table {

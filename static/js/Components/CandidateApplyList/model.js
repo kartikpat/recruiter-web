@@ -240,7 +240,6 @@ function candidateList() {
         }
 
         item.eduList.html(eduStr)
-
         console.log(aData['userID']);
         item.candidateCheckbox.attr("id",aData["userID"]);
         item.candidateCheckboxLabel.attr("for",aData["userID"]);
@@ -256,12 +255,19 @@ function candidateList() {
         if(aData["cover"]) {
             item.coverLetterLink.removeClass("hidden")
         }
+        var flag=0;
         if(aData["comment"]) {
             item.viewCommentLink.removeClass("hidden")
+            flag++;
         }
         if(aData["tags"].length) {
             item.viewTagLink.removeClass("hidden")
+            flag++;
         }
+        if(flag>1){
+              item.viewTagLink.css("border-left","1px solid #e8e8e8");
+        }
+
         return item
     }
 
@@ -301,15 +307,13 @@ function candidateList() {
         item.element.find("li[data-attribute='"+newStatus+"'] .tabStats").text(parseInt(newCount) + number);
     }
 
-    function addToList(dataArray, status){
+    function addToList(dataArray, status, pageNumber, pageContent){
 		var str = '';
         var element = $(".candidateListing[data-status-attribute='"+status+"']");
         hideShells(status);
-        if(!dataArray.length) {
-			return element.html("<div class='no-data'>No Applications Found!</div>")
-		}else {
-            element.find(".no-data").remove()
-        }
+        if(dataArray.length<1 && pageNumber ==1) {
+			return element.append("<div class='no-data'>No Applications Found!</div>")
+		}
 		dataArray.forEach(function(aData, index){
 			var item = createElement(aData);
 			str+=item.element[0].outerHTML;
@@ -317,6 +321,9 @@ function candidateList() {
 		});
 		element.append(str);
         settings.rowContainer.find(".candidate-select").removeClass("selected");
+        if(dataArray.length< pageContent) {
+            return element.append("<div class='no-data'>No more records!</div>")
+        }
 	}
 
     function onClickViewComment(fn) {
@@ -663,7 +670,8 @@ function candidateList() {
 
 
     function showShells(status) {
-        $(".candidateListing[data-status-attribute='"+status+"']").find(settings.candidateItemShellClass).removeClass("hidden")
+        $(".candidateListing[data-status-attribute='"+status+"']").find(settings.candidateItemShellClass).removeClass("hidden");
+        $(".candidateListing[data-status-attribute='"+status+"']").find('.no-data').remove();
     }
 
     function hideShells(status) {

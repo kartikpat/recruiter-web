@@ -5,9 +5,8 @@ $(document).ready(function() {
 		e.preventDefault()
 		console.log('click noted')
 		if(resetPsword.validateLogin()){
-            
-            return console.log(resetPsword.getData())
-		//	submitLogin(userLogin.getData());
+            var data = resetPsword.getData()
+			submitResetPassword(data);
 		}
 	})
 

@@ -1,6 +1,15 @@
 {
-	"baseUrl_local": "http://192.168.86.233:8000",
+	"baseUrl_local": "http://localhost:8000",
 	"baseUrl": "http://13.126.92.102:8000",
-	"baseDomain":"updazz",
-	"baseUrlJob": "http://qa200.iimjobs.com/j"
+	"baseDomain":"iimjobs",
+	"baseUrlJob": "http://qa200.iimjobs.com/j",
+	"social": {
+		"linkedin": {
+			"clientId": "81wueqxd286szw",
+			"secret": "cIFMKCs8lW66NNvR",
+			"callbackURL" : "/auth/linkedin/callback",
+			"failureRedirect" : "/test",
+			"successRedirect" : "/success"
+		}
+	}
 }

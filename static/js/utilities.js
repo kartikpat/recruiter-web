@@ -9,10 +9,10 @@ jQuery(document).ready(function(){
 		if(!jQuery(e.target).parents(".header .profile-menu").length && !jQuery(e.target).parents(".header .profile.action-icon").length) {
 			jQuery(".header .profile-menu").removeClass("active");
 		}
-		if(!jQuery(e.target).parents(".modal").length) {
-			$("body").removeClass("posf")
-			$(".modal").addClass("hidden")
-		}
+		// if(!jQuery(e.target).parents(".modal").length) {
+		// 	$("body").removeClass("posf")
+		// 	$(".modal").addClass("hidden")
+		// }
 	});
 
 	jQuery(".header").on("mouseenter", ".my-jobs", function() {
@@ -30,7 +30,6 @@ jQuery(document).ready(function(){
 	  jQuery(".header").on("mouseleave", ".my-interviews", function() {
 		jQuery(this).find(".profile-menu").removeClass("active")
   	})
-
 
 	$(".recruiterLogout").click(function(){
 		document.cookie = "recruiter-access-token" + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
