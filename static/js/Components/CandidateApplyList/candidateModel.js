@@ -37,7 +37,7 @@ function Candidate() {
 
         jQuery("#tabbed-content").tabs({});
         // onClickAddPopulatedTags()
-     
+
     }
 
     function showCandidateDetails(details, type, status){
@@ -335,13 +335,14 @@ function Candidate() {
         item.tabContent.tabs({active: 0});
         item.shortlistButton.text("Shortlist");
         item.rejectButton.text("Reject");
+        item.resume.html('')
         item.savedButton.html("<span class='icon'><i class='icon-star'></i></span>Save for Later");
         item.commentBox.addClass("hidden");
         item.commentTextarea.addClass("hidden");
         item.editButton.addClass("hidden");
         item.addButton.removeClass("hidden");
         item.commentAddBox.removeClass("hidden");
-
+        $(".coverLetterTab").addClass("hidden")
     }
 
     function openModal() {
@@ -354,19 +355,19 @@ function Candidate() {
     jQuery(".body-overlay").on("click", function(e) {
 
     	if(jQuery(e.target).parents(".view-resume-modal").length) {
-
             e.stopPropagation()
     		e.stopImmediatePropagation();
     	}
+        
         settings.candidateDetailsModal.scrollTop(0)
         resetCandidateData()
     	settings.candidateDetailsModal.addClass("hidden");
 
     });
-    
 
-       
-    
+
+
+
 
     function onClickAddComment(fn) {
         // settings.candidateDetailsModal.on('keyup', settings.candidateCommentTextareaClass,function(event) {
@@ -393,9 +394,9 @@ function Candidate() {
             fn(applicationId, comment);
         });
 
-        
+
         settings.candidateEditComment.on('click',function(event){
-            $(settings.candidateCommentTextareaClass).removeClass("hidden").focus(); 
+            $(settings.candidateCommentTextareaClass).removeClass("hidden").focus();
             settings.commentBox.addClass("hidden");
             $(settings.candidateAddCommentButtonClass).removeClass("hidden");
             settings.candidateEditComment.addClass("hidden");
@@ -426,7 +427,7 @@ function Candidate() {
         });
 
         settings.mobCandidateEditComment.on('click',function(event){
-            $(settings.mobCandidateCommentTextareaClass).removeClass("hidden").focus(); 
+            $(settings.mobCandidateCommentTextareaClass).removeClass("hidden").focus();
             settings.mobCommentBox.addClass("hidden");
             $(settings.mobCandidateAddCommentButtonClass).removeClass("hidden");
             settings.mobCandidateEditComment.addClass("hidden");
@@ -606,7 +607,7 @@ function Candidate() {
         onClickSendInterviewInviteF2F: onClickSendInterviewInviteF2F,
         changeButtonText: changeButtonText,
         onClickChatCandidateModal: onClickChatCandidateModal,
-     
+
 	}
 
     function focusOnElement(element, container) {

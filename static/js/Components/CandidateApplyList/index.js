@@ -60,7 +60,6 @@ jQuery(document).ready( function() {
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
 
-
         var parameters = filters.getAppliedFilters();
         console.log(parameters)
         globalParameters.pageNumber = 1;
@@ -125,7 +124,6 @@ jQuery(document).ready( function() {
 
     candidates.onClickCandidate(function(candidateId, status, applicationId){
         var candidateDetails = store.getCandidateFromStore(candidateId);
-        var status = globalParameters.status
         aCandidate.showCandidateDetails(candidateDetails,"", status);
         if(parseInt(status) == 0)
             setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
@@ -210,13 +208,16 @@ jQuery(document).ready( function() {
         tickerLock = false;
         var status = candidates.activateStatsTab(event, ui)
         candidates.showShells(status);
+
         candidates.removeCandidate(globalParameters.status)
+        candidates.populateCheckInputDropdown(status)
         var parameters = filters.getAppliedFilters();
         globalParameters.status = status;
         globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
         parameters.status = globalParameters.status;
+        fetchJobApplicationCount(recruiterId, jobId)
         fetchJobApplications(jobId, parameters,recruiterId);
     })
     // candidates.onClickSendInterviewInvite(function(candidateId, applicationId) {
@@ -264,16 +265,17 @@ jQuery(document).ready( function() {
     function onSuccessfullCandidateAction(topic, res) {
         var arr = [];
         arr.push(res.applicationId)
-        fetchJobApplicationCount(recruiterId, jobId)
+
         if(res.action == "view") {
             var newStatus = 4
             return candidates.changeStatus(arr, newStatus)
         }
+
         if(res.action == "download") {
             var newStatus = 5
             return candidates.changeStatus(arr, newStatus)
         }
-        
+        fetchJobApplicationCount(recruiterId, jobId)
         if(res.action == "tag") {
             if(res.parameters.type == "add") {
                 var tag = {
@@ -293,6 +295,7 @@ jQuery(document).ready( function() {
 
 
         if(res.action == "unread") {
+
             var newStatus = 0
             if(res.parameters.isModalButton) {
                 candidates.changeButtonText(arr, newStatus, res.parameters.dataAction)
@@ -750,6 +753,7 @@ jQuery(document).ready( function() {
 
     function onSuccessfulCount(topic, data) {
         candidates.setJobStats(data);
+        candidates.populateCheckInputDropdown(globalParameters.status)
     }
 
     function onFailedCount() {

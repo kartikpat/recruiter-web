@@ -8,10 +8,9 @@ jQuery(".button-action-list").on("click", function() {
 
 
 function resumeCallback(res){
-    console.log(res)
+
     PDFJS.getDocument(res).then(function getPdfHelloWorld(_pdfDoc) {
      var numPages = _pdfDoc.pdfInfo.numPages;
-     console.log(numPages);
 	 	viewProfileModal.html('');
         for(var i = 1; i <= numPages; i++) {
             _pdfDoc.getPage(i).then(function(page) {
@@ -34,7 +33,11 @@ function resumeCallback(res){
                 });
          });
         }
-    });
+    }, function (reason) {
+  		// PDF loading error
+  		console.log(reason);
+		viewProfileModal.html("<div class='no-data'>No Resume Found!</div>")
+	})
 }
 
 jQuery(".first-fold").on('click', ".view-more", function() {

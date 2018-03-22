@@ -3,7 +3,7 @@ var errorResponses = {
 	missingEmail: 'Please enter email id',
 	invalidEmail: 'Please enter a valid email id',
 	missingPhone: 'Please enter phone number',
-	invalidPhone: 'Invalid phone number',
+	invalidPhone: 'Please add a valid 10 digit number.',
 	missingDesignation: 'Please enter the designation',
 	missingOrganization: 'Please enter the organisation',
 	missingPassword: 'Please enter a password',
@@ -15,7 +15,8 @@ var errorResponses = {
 	missingParameters: 'Oops! Our engineers will fix this shortly. Please try again after sometime.',
 	serviceError: 'Oops! Our engineers are working on fixing this, please try again after sometime.',
 	duplicate: 'This email is already registered. Please login.',
-	minLengthPassword: 'Password should be at least 6 characters'
+	minLengthPassword: 'Password should be at least 6 characters',
+	missingRecruiterType: 'Please Select Recruiter Type'
 }
 function registerUser(){
 	var user= {}
@@ -26,9 +27,21 @@ function registerUser(){
 		user.designation = $("#registerDesignation");
 		user.organization = $("#registerOrganization");
 		user.password = $("#registerPassword");
-		user.confirmPassword = $("#registerConfirmPassword")
+		user.confirmPassword = $("#registerConfirmPassword");
 		user.register = $("#register");
 		user.errors = $('.error');
+		user.recruiterType = $('#rectype');
+		user.registerForm = $("#registerForm");
+
+		onChangeInputFields();
+	}
+	function onChangeInputFields() {
+		user.registerForm.find('input').keyup(function(){
+			eraseError($(this))
+		})
+		user.registerForm.find('select').change(function(){
+			eraseError($(this))
+		})
 	}
 	function registerHandler(fn){
 		user.register.click(fn);
@@ -42,12 +55,18 @@ function registerUser(){
 			organisation: user.organization.val(),
 			password: user.password.val(),
 			confirmPassword: user.confirmPassword.val(),
-			type: 1
+			type: user.recruiterType.val()
 		}
 	}
+
+	function eraseError(element) {
+		element.next('.error').text('')
+	}
+
 	function eraseErrors(){
 		user.errors.text('');
 	}
+
 	function errorHandler(res){
 		var message = '';
 		switch(res.status){
@@ -66,30 +85,55 @@ function registerUser(){
 			case 409:
 				message = errorResponses.duplicate
 		}
-		user.confirmPassword.next('.error').text(message)
+		if(res.status == 409) {
+			return user.email.next('.error').text(message)
+		}
+		user.recruiterType.next('.error').text(message)
 		return
 	}
 
 	function validateRegister(){
+		var flag = 1;
 		eraseErrors();
-		if(!(
-				ifExists(user.name)
-				&&	ifExists(user.email)
-				&&	checkEmail(user.email)
-			    &&	ifExists(user.phone)
-				&&	checkPhone(user.phone)
-				&&	ifExists(user.designation)
-				&&	ifExists(user.organization)
-				&&	ifExists(user.password)
-				&&	ifExists(user.confirmPassword)
-				&&  checkMinCharacters(user.password, 6)
-				&&	checkPassword(user.password , user.confirmPassword)
-
-		)){
-			console.log('false')
+		if(!ifExists(user.name)){
+			flag = 0;
+		}
+		if(!ifExists(user.email)){
+			flag = 0;
+		}
+		if(!checkEmail(user.email)){
+			flag = 0;
+		}
+		if(!ifExists(user.phone)){
+			flag = 0;
+		}
+		if(!checkPhone(user.phone)){
+			flag = 0;
+		}
+		if(!ifExists(user.designation)){
+			flag = 0;
+		}
+		if(!ifExists(user.organization)){
+			flag = 0;
+		}
+		if(!ifExists(user.password)){
+			flag = 0;
+		}
+		if(!ifExists(user.confirmPassword)){
+			flag = 0;
+		}
+		if(!checkMinCharacters(user.password, 6)){
+			flag = 0;
+		}
+		if(!checkPassword(user.password , user.confirmPassword)){
+			flag = 0;
+		}
+		if(!ifExists(user.recruiterType)){
+			flag = 0;
+		}
+		if(flag == 0) {
 			return false
 		}
-		console.log('true')
 		return true;
 	}
 	function test(fn){
@@ -106,15 +150,20 @@ function registerUser(){
 }
 
 function checkMinCharacters(ele, len) {
+	if(!ele.val()) {
+		return true
+	}
 	if(!checkCharacters(ele.val().length, len)) {
 		ele.next('.error').text(errorResponses['minLength'+ele.attr('name')])
-		
 		return false
 	}
 	return true
 }
 
 function checkPassword(one, two){
+	if(!(one.val() && two.val())) {
+		return true
+	}
 	if(!ifBothMatches(one.val(), two.val())){
 		two.next('.error').text(errorResponses['passwordMismatch'])
 		return false
@@ -122,6 +171,9 @@ function checkPassword(one, two){
 	return true
 }
 function checkEmail(element){
+	if(!element.val()) {
+		return true
+	}
 	if(!( element && element.val() && isValidEmail(element.val()) )){
 		element.next('.error').text(errorResponses['invalidEmail']);
 		return false;
@@ -129,6 +181,9 @@ function checkEmail(element){
 	return true
 }
 function checkPhone(element){
+	if(!element.val()) {
+		return true
+	}
 	if(!( element && element.val() && isValidPhone(element.val()) )){
 		element.next('.error').text(errorResponses['invalidPhone']);
 		return false;
