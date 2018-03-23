@@ -111,7 +111,8 @@ module.exports = function(settings){
 			scripts: assetsMapper["post-job"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			profile: req.profile
+			profile: req.profile,
+			hiddenLoader:"hidden"
 		})
 		return
 	})
@@ -124,7 +125,8 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			profile: req.profile,
-			jobId: req.params.jobId
+			jobId: req.params.jobId,
+			hiddenClass:"hidden"
 		})
 		return
 	})
@@ -602,7 +604,22 @@ module.exports = function(settings){
 			scripts: assetsMapper["Interview-scheduler-updated"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain:baseDomain,
-			profile: req.profile
+			profile: req.profile,	
+			hiddenLoader: "hidden"
+		});
+		return
+	});
+
+	app.get("/calendar/:calendarId/edit",function(req, res){
+		res.render("Interview-scheduler-updated", {
+			title: "Calender | Dashboard",
+			styles:  assetsMapper["Interview-scheduler-updated"]["styles"][mode],
+			scripts: assetsMapper["Interview-scheduler-updated"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain:baseDomain,
+			profile: req.profile,
+			calendarId: req.params.calendarId,
+			hiddenClass: "hidden"
 		});
 		return
 	});

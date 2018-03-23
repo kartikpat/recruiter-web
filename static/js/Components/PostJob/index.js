@@ -20,6 +20,11 @@ $(document).ready(function(){
 	})
 	if(jobId) {
 		fetchJob(jobId);
+		$('.post_job_form').removeClass("hidden");
+		$('.guidelines-container').removeClass("hidden");
+		$('.premium_job_section').removeClass("hidden");
+		$('.submit-action-buttons').removeClass("hidden");
+		$('.loader-container').addClass("hidden");
 	}
 	fetchJobTags(recruiterId)
  	function onSuccessfulSubmitJob(topic, data){
@@ -44,6 +49,7 @@ $(document).ready(function(){
 	function onSuccessfulFetchJob(topic, data) {
 		jobDetails.setData(jobId,data[0]);
 	}
+	
 	function onFailedFetchJob(topic, data){
 		alert(res.status)
 		console.log(topic)
