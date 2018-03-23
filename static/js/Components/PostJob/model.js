@@ -65,10 +65,15 @@ function Job(){
 			    }
 			})
 			settings.editor.subscribe('editableInput', function(event, editorElement){
-				settings.description.val(settings.editor.getContent());
+				console.log(settings.description.val(settings.editor.getContent()));
 			})
 
+		
+
+			jQuery(".header .menu-list-item.my-jobs").addClass("active");
 	}
+
+
 
 
 	function onChangeJobPremium(fn) {

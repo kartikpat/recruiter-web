@@ -95,7 +95,7 @@
     .category_listing_container {
     	overflow-y: auto;
     	.category_listing {
-    		height: 225px;
+    		height: 310px;
     	}
     }
 
@@ -241,7 +241,7 @@
 
 @media all and (max-width:480px) {
     .modal_overlay .category_listing_container .category_listing {
-    height: 280px;
+    height: 510px;
 }
 
     .modal_overlay {

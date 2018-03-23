@@ -600,7 +600,9 @@ b {
       font-family: inherit;
       line-height: 20px;
       margin: 0;
-      display: inline-block; }
+      /* display: inline-block; */
+      text-align: right;
+      width: 144px; }
     .header .domain_logo a span {
       font-family: inherit;
       font-size: 14px; }
@@ -699,7 +701,7 @@ b {
   .header .navigation {
     display: inline-block;
     vertical-align: middle;
-    width: 65%; }
+    width: 70%; }
     .header .navigation ul {
       list-style: none;
       font-family: "Comfortaa", sans-serif;
@@ -709,7 +711,7 @@ b {
         line-height: 40px;
         font-size: 14px;
         display: inline-block;
-        width: 20%;
+        width: 19%;
         min-width: 120px;
         text-align: center; }
         .header .navigation ul .menu-list-item.my-jobs {

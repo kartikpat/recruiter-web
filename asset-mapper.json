@@ -821,6 +821,7 @@
 				"static/js/change-password.js",
 				"static/js/utilities.js",
 				"static/js/tagged-candidates.js",
+
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/common.js",
 				"static/js/vendor/moment.min.js",
@@ -941,7 +942,11 @@
 				"static/css/utilities.css",
 				"static/css/footer.css",
 				"static/css/header.css",
-				"static/css/shortlisted-candidates.css"
+				"static/css/shortlisted-candidates.css",
+				"static/css/chat-sticky.css",
+				"static/css/utilities.css",
+				"static/css/animate.css",
+				"static/css/jquery-chatbox.css"
 			],
 			"prod": [
 				"static/build/css/shortlisted-candidates.min.css"
@@ -952,7 +957,8 @@
 				"static/js/vendor/jquery.min.js",
 				"static/js/Utilities/request.js",
 				"static/js/header.js",
-
+				"static/js/chat-pubnub-sticky.js",
+				"static/js/chat-sticky.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
 				"static/js/shortlisted-candidates.js",
@@ -1020,6 +1026,7 @@
 				"static/css/header.css",
 				"static/css/modal.css",
 				"static/css/vendor/tooltipster.css",
+				"static/css/vendor/pdf_viewer.css",
 				"static/css/jquery-ui.min.css",
 				"static/css/candidate-apply-list.css",
 				"static/css/chat-sticky.css",
@@ -1040,6 +1047,8 @@
 				"static/js/change-password.js",
 				"static/js/utilities.js",
 				"static/js/vendor/pdf.js",
+				"static/js/vendor/pdf.worker.js",
+	
 				"static/js/tags/industry.js",
 				"static/js/tags/current-location.js",
 				"static/js/tags/preferred-location.js",
@@ -1048,7 +1057,7 @@
 				"static/js/tags/functional-area.js",
 				"static/js/tags/institute.js",
 				"static/js/vendor/moment.min.js",
-				"static/js/vendor/pdf.worker.js",
+
 				"static/js/pdfJs.js",
 				"static/js/candidate-apply-list.js",
 				"static/js/vendor/jquery-ui.min.js",
@@ -1346,7 +1355,8 @@
 				"static/css/header.css",
 				"static/css/global-search.css",
                 "static/css/fullcalendar.min.css",
-                "static/css/fullcalendar.css",
+				"static/css/fullcalendar.css",
+				"static/css/vendor/medium-editor.min.css",
                 "static/css/Interview-scheduler-updated.css"
             ],
             "prod":[
@@ -1356,6 +1366,7 @@
         "scripts": {
             "debug": [
 				"static/js/vendor/moment.min.js",
+				"static/js/vendor/medium-editor.min.js",
 				"static/js/vendor/jquery.min.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/common.js",
@@ -1363,10 +1374,11 @@
 				"static/js/header.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
-                "static/js/vendor/jquery-ui.min.js",
+				"static/js/vendor/jquery-ui.min.js",
 				"static/js/vendor/fullcalendar.min.js",
 				"static/js/Utilities/request.js",
 				"static/js/Services/submitCalendar.js",
+				"static/js/Services/fetchCalendars.js",
                 "static/js/Components/Interview-scheduler-updated/index.js",
                 "static/js/Components/Interview-scheduler-updated/model.js"
             ],

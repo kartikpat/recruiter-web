@@ -24,6 +24,9 @@
 		var baseDomain = '{{baseDomain}}';
 		var baseUrlJob = '{{baseUrlJob}}';
 		var jobId = '{{jobId}}';
+		var calendarId= '{{calendarId}}';
+		var hiddenclass='{{hiddenClass}}';
+		var hiddenLoader='{{hiddenLoader}}';
 		var recruiterId= '{{profile.id}}';
 		var profile  = {
 			name: '{{profile.name}}',
@@ -55,7 +58,7 @@
 			</div>
 			<div class="domain_logo header_item">
 				<a href="/">
-					<h1>{{baseDomain}}</h1><span>.com</span>
+					<h1>{{baseDomain}}</h1><span style="float: right">.com</span>
 					<p class="logo_tagline"></p>
 				</a>
 			</div>
@@ -67,8 +70,9 @@
 			</div>
 			<div class="navigation header_item animated fadeIn navigationHeader">
 				<ul class="menu-listing">
+					<li class="menu-list-item dashboard"><a href="/">Dashboard</a></li>
 					<li class="menu-list-item my-jobs">
-						<a >My Jobs</a>
+						<a >Jobs</a>
 						<div class="profile-menu">
 							<div class="profile-body">
 								<ul class="profile-item-listing">
@@ -94,7 +98,7 @@
 							</div>
 						</div>
 					</li>
-					<li class="menu-list-item"><a href="/reports">Reports</a></li>
+					<li class="menu-list-item reports"><a href="/reports">Reports</a></li>
 				</ul>
 			</div>
 			<div class="profile_actions right header_item profileActions">
@@ -151,7 +155,7 @@
 		    <div class="menu-link-listing mobile-menu-item menu-section">
 		    	<ul>
 		    		<a href="/"><li class="menu-list-item my-jobs">Dashboard</li></a>
-		    		<a href="#"><li class="menu-list-item my-jobs sub-menu">My Jobs</li></a>
+		    		<a href="#"><li class="menu-list-item my-jobs sub-menu">Jobs</li></a>
 					<a href="javscript:void(0);"><li class="menu-list-item search-resume">Search Resume</li></a>
 					<a href="#"><li class="menu-list-item interviews">Interviews</li></a>
 					<a href="/reports"><li class="menu-list-item reports">Reports</li></a>

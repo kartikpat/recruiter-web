@@ -10,11 +10,22 @@ function candidateList() {
         settings.candidateDownloadResumeButtonClass= ".candDownloadResume",
         settings.candidateProfessionalItemClass = '.candProfessionalItem',
         settings.candidateEducationItemClass = '.candEducationItem',
+        settings.candAppliedJobsClass= '.candAppliedJobs',
         settings.candTagItemClass= '.candTagItem',
         settings.tagOptionClass= '.tagOption',
         settings.tagId = -1,
-        settings.candidateItemShell= $(".candidateItem.shell")
+        settings.candidateItemShell= $(".candidateItem.shell"),
+        settings.candAppliedJobsClass= '.candAppliedJobs',
+        settings.multipleJobListingClass= '.multipleJobListing',
+        settings.multipleJobListingTextClass= '.multipleJobListingText'
+        onToggleJobList();
+        jQuery(".header .menu-list-item.my-jobs").addClass("active");
+   }
 
+   function onToggleJobList() {
+       settings.candidateListing.on('click',settings.multipleJobListingTextClass, function(){
+           $(this).next().slideToggle();
+       })
    }
 
    function setConfig(key, value) {
@@ -127,14 +138,15 @@ function candidateList() {
        })
        item.eduList.html(eduStr)
        if(aData["applications"]) {
-           if(aData["applications"].length > 1) {
+           if(aData["applications"].length > 0) {
                item.candJobList.addClass("hidden")
                item.multipleJobListingText.text("Applied to "+aData["applications"].length+" jobs")
                var str = ""
                $.each(aData["applications"],function(index, application) {
                    console.log(application)
-                   var item =  $(''+settings.candAppliedJobsClass+'.prototype').clone().removeClass("prototype hidden");;
-                   item.html(application["title"] + " -<a href='/job/"+application["jobID"]+"/applications/"+application["id"]+"'> View Profile</a> ")
+                   var item =  $(''+settings.candAppliedJobsClass+'.prototype').clone().removeClass("prototype hidden");
+                   item.html(application["title"] + " -<a href='/job/"+application["jobID"]+"/applications/"+application["id"]+"'> View Profile</a> ");
+                   console.log(item)
                    str+=item[0].outerHTML
                })
                item.multipleCandJobListing.append(str);
@@ -154,18 +166,20 @@ function candidateList() {
        return item
    }
 
-   function addToList(dataArray){
-        hideShell()
-       if(!dataArray.length) {
-           return settings.candidateListing.html("<div class='no-data'>No Applications Found!</div>")
+   function addToList(dataArray, pageNumber, pageContent){
+       hideShell()
+       if(dataArray.length<1 && pageNumber ==1) {
+           return settings.candidateListing.append("<div class='no-data'>No Applications Found!</div>")
        }
        var str = '';
        dataArray.forEach(function(aData, index){
            var item = createElement(aData);
            str+=item.element[0].outerHTML;
        });
-
        settings.candidateListing.append(str);
+       if(dataArray.length< pageContent) {
+           return settings.candidateListing.append("<div class='no-data'>No more records!</div>")
+       }
    }
 
    function emptyCandidateList() {

@@ -5,7 +5,7 @@
 			<div class="modal-subsection">
 				<div class="modal-body">
 					<h1 class="heading">New Recruiter Registration</h1>
-					<div class="recruiter-form">
+					<div class="recruiter-form" id="registerForm">
 						<div class="form-group">
 							<input id="registerName" type="text" placeholder="Name" name='Name' autocomplete="off">
 							<div class="error"></div>
@@ -32,13 +32,22 @@
 							<input id="registerPassword" type="password" placeholder="Password" name='Password' autocomplete="off">
 							<div class="error"></div>
 						</div>
-						<div class="form-group">
+						<div class="form-group cnfirmPasswd">
 							<input id="registerConfirmPassword" type="password" placeholder="Confirm Password" name='ConfirmPassword' autocomplete="off">
 							<div class="error"></div>
 						</div>
 						<div class="form-group">
-							<button class="rec-sign-in" id="register" value="Login">Register
-						</button>
+							<select class="select-dropdown inactive" name="RecruiterType" id="rectype">
+								<div class="dropdown-list">
+									<option value="">Select Recruiter Type</option>
+		                            <option value="1">Direct Employer</option>
+		                            <option value="2">Recruitment Firm</option>
+								</div>
+							</select>
+							<div class="error"></div>
+						</div>
+						<div class="form-group">
+							<button class="rec-sign-in" id="register" value="Login">Register</button>
 						</div>
 						<!-- <p>Already have an account? <a href="#" class="trigger-register-sign-in-modal">Sign in</a></p> -->
 					</div>
@@ -82,7 +91,7 @@
 						<div class="login-container">
 							<h3>Post a job for free</h3>
 
-							<form>
+							<form id="loginForm">
 								<div class="formgroup">
 									<input type="text" id="email" autocomplete="off" placeholder="Email">
 									<div class="error"> </div>
@@ -97,7 +106,7 @@
 									<button type="submit" value="Login" id="login">Login</button>
 									<p class="forgot-pass"><a href="/forgot-password" class="forgot-recruiter-password">Forgot Password?</a></p>
 								</div>
-								
+
 								<p class="register-link">
 									Don't have an account? <a href="#" class="trigger-register-registration-modal">Register</a>
 								</p>
@@ -161,7 +170,7 @@
 					<h1 class="center"><span class="center-highlight">Reach out to over a million candidates across top domains</span></h1>
 
 					<ul class="category-listing">
-						<a href="#">
+
 							<li class="category-item border-bottom border-right">
 								<div class="category-icon">
 									<img src="/static/images/finance-job-icon.png">
@@ -170,8 +179,8 @@
 									<h4>Finance Jobs</h4>
 								</div>
 							</li>
-						</a>
-						<a href="#">
+
+
 							<li class="category-item border-bottom border-right">
 								<div class="category-icon">
 									<img src="/static/images/sales-marketing-job-icon.png">
@@ -180,8 +189,8 @@
 									<h4>Sales &amp; Marketing Jobs</h4>
 								</div>
 							</li>
-						</a>
-						<a href="#">
+
+
 							<li class="category-item border-bottom border-right">
 								<div class="category-icon">
 									<img src="/static/images/consulting-job-icon.png">
@@ -190,8 +199,8 @@
 									<h4>Consulting Jobs</h4>
 								</div>
 							</li>
-						</a>
-						<a href="#">
+
+
 							<li class="category-item border-bottom">
 								<div class="category-icon">
 									<img src="/static/images/hr-job-icon.png">
@@ -200,8 +209,8 @@
 									<h4>HR Jobs</h4>
 								</div>
 							</li>
-						</a>
-						<a href="#">
+
+
 							<li class="category-item border-right">
 								<div class="category-icon">
 									<img src="/static/images/it-job-icon.png">
@@ -210,8 +219,8 @@
 									<h4>IT &amp; Systems Jobs</h4>
 								</div>
 							</li>
-						</a>
-						<a href="#">
+
+
 							<li class="category-item border-right">
 								<div class="category-icon">
 									<img src="/static/images/operations-job-icon.png">
@@ -220,8 +229,8 @@
 									<h4>Operations Jobs</h4>
 								</div>
 							</li>
-						</a>
-						<a href="#">
+
+
 							<li class="category-item border-right">
 								<div class="category-icon">
 									<img src="/static/images/legal-job-icon.png">
@@ -230,8 +239,8 @@
 									<h4>Legal Jobs</h4>
 								</div>
 							</li>
-						</a>
-						<a href="#">
+
+
 							<li class="category-item">
 								<div class="category-icon">
 									<img src="/static/images/bpo-job-icon.png">
@@ -240,7 +249,7 @@
 									<h4>BPO Jobs</h4>
 								</div>
 							</li>
-						</a>
+
 						<div class="clearfix"></div>
 					</ul>
 				</div>

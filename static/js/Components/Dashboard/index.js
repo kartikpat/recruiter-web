@@ -1,3 +1,4 @@
+jQuery(".header .menu-list-item.dashboard").addClass("active");
 var dataModel = {};
 dataModel.revisit = false;
 profile.lastSeen = moment().subtract(1, 'days').format("x");
@@ -16,7 +17,7 @@ function Notifications(){
 	        var applicationId = $(this).closest(settings.notificationRowClass).attr("data-application-id")
 	        var jobId = $(this).closest(settings.notificationRowClass).attr('data-job-id');
 	        return fn(applicationId, jobId);
-	        
+
 	    })
 	}
 	function candidateActionTransition(applicationId){
@@ -105,7 +106,7 @@ $(document).ready(function(){
 				var jobId = $(this).attr("data-job-id");
 				settings.jobRefreshModal.removeClass('hidden');
 				settings.jobRefreshButton.attr('data-refresh-job-id', jobId);
-				
+
 			return false;
 		})
 	}
@@ -139,7 +140,7 @@ $(document).ready(function(){
 
     onClickJobOtherActions();
 
-	var candidateApplyUrl = "/candidate-apply-list/:publishedId?type=:status";
+	var candidateApplyUrl = "/job/:publishedId/applications?type=:status";
 	function onStatsUpdate(topic, data){
 		data.forEach(function(aData){
 			dashboardStatsContainer.find(".block."+aData['label']+' .number').text(aData['value']);
@@ -260,7 +261,7 @@ $(document).ready(function(){
 		var totalFollowups = data.length;
 		if(data.length ==1)
 			isMultiple = false
-		var showCount = 4
+		var showCount = 1
 		data.forEach(function(aRow, index){
 			if(index>showCount){
 				return;
@@ -314,9 +315,10 @@ $(document).ready(function(){
 			notificationContainer.find('.detail-card').append(card);
 		});
 		if( data.length-1>showCount){
-			var seeMore= seeMoreSection.clone().removeClass('hidden prototype');
-			seeMore.find(".seeAll a").attr('href', '/followUps')
-			notificationContainer.find('.detail-card').append(seeMore);
+
+			// var seeMore= seeMoreSection.clone().removeClass('hidden prototype');
+			// seeMore.find(".seeAll a").attr('href', '/followUps')
+			// notificationContainer.find('.detail-card').append(seeMore);
 		}
 		if( data.length>0){
 			notificationContainer.removeClass('hidden');
@@ -327,7 +329,7 @@ $(document).ready(function(){
 
 	function onFetchInterviews(topic, data){
 		var totalInterviews = data.length;
-		var showCount = 4;
+		var showCount = 2;
 		var lastDate =(data[0] && data[0]['slot'] )? moment(data[0]['slot']['date']).format('YYYY-MM-DD') : null;
 		var interviewContainer = $('#interviewContainer');
 		var interviewRowCard = $(".interviewRow.prototype");
@@ -359,7 +361,7 @@ $(document).ready(function(){
 				card.find('.horizontal-separator').addClass('hidden')
 			}
 			card.find('.general').append(candidateCard)
-			interviewContainer.find('.detail-card').append(card);	
+			interviewContainer.find('.detail-card').append(card);
 		})
 		if( totalInterviews>showCount){
 			var seeMore= seeMoreSection.clone().removeClass('hidden prototype');

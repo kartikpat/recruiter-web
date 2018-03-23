@@ -15,7 +15,7 @@ jQuery(document).ready(function() {
 		  	if(!jQuery(this).hasClass('show')) {
 		  		if ($(this).isInViewport()) {
 			      $(this).addClass('show');
-			    }	
+			    }
 		  	}
 		  });
 		});
@@ -30,11 +30,20 @@ jQuery(document).ready(function() {
 		jQuery(".highlight-wrapper .category-item").eq(-2).addClass("no-bottom-border");
 	}
 
-	jQuery(".trigger-register-registration-modal").on('click', function() {
+	// jQuery(".trigger-register-registration-modal").on('click', function() {
+	// 	jQuery("body").addClass("fixed");
+	// 	jQuery(".recruiter-sign-in-modal").addClass("hidden");
+	// 	jQuery(".modal-overlay").removeClass("hidden");
+	// 	jQuery(".recruiter-register-modal").removeClass("hidden");
+    //     return false
+	// });
+
+    $("#loginForm").on('click',".trigger-register-registration-modal", function() {
 		jQuery("body").addClass("fixed");
 		jQuery(".recruiter-sign-in-modal").addClass("hidden");
 		jQuery(".modal-overlay").removeClass("hidden");
 		jQuery(".recruiter-register-modal").removeClass("hidden");
+        return false
 	});
 
 	jQuery(".trigger-register-sign-in-modal").on('click', function() {

@@ -4,6 +4,8 @@
 
 	<div class="first-fold fold top mass-action-container hidden" id="massActionContainer">
 		<div class="action-buttons">
+			<span class="icon-back_icon"></span>
+			<span class="applicationsCount">6 candidates selected</span>
 			<span class=" button white downloadResumeMass" >Download Resume</span>
 			<a href="" class="downloadExcelMass"><span class=" button white">Download Excel</span></a>
 			<span class=" button white massReject">Reject</span>
@@ -57,7 +59,9 @@
 							<div class="error-field hidden" id="calendarSelectError"><p>Choose a calendar to send to the applicants for this job!</p></div>
 						</span>
 						<span class="button white hidden" id="createCalendar">Create Calendar</span>
-						<a href="" class="hidden" id="jobEditButton"><span class="edit button white">Edit Job&nbsp;&nbsp;<img src="/static/images/edit-icon.svg"></span></a>
+						<a href="" class="hidden" id="jobEditButton">
+							<span class="edit button white">Edit Job&nbsp;&nbsp;<i class="icon-edit"></i></span>
+							</a>
 						<span class="button white hidden" id="jobPremiumButton">Make Premium</span>
 						<span class="button white unpublish-job hidden" id="jobUnpublishButton">Unpublish</span>
 
@@ -88,8 +92,8 @@
 								<span class="action-buttons sortBy">
 									<span class="section sortBy" id="sortBy">
 										<select class="select-dropdown" id="sortBySelect">
-											<option value="1">SortBy : Magic Sort</option>
-											<option value="2">SortBy : Application Date</option>
+											<option value="1">Sort By : Magic Sort</option>
+											<option value="2">Sort By : Application Date</option>
 										</select>
 									</span>
 								</span>
@@ -100,8 +104,8 @@
 
 							</p>
 							<div class="active-filters hidden">
-
 								<span  class="clear-all-filters ">
+									<span class="appliedFilters"></span>
 									<span id="clear-all" class="hidden">Clear filters</span>
 								</span>
 							</div>
@@ -109,20 +113,27 @@
 					</div>
 
 					<div class="candidates-area-body">
-						<div class="">
+						<div class="candidates-area-wrapper">
+							<div class="bulk-section-container hidden" id="bulkActionsContainer">
+								<div class="bulk-selection-item bulk-select section ">
+									<div class="select-all check-input">
+										<input type="checkbox" id="massCheckboxInput">
+										<label for="massCheckboxInput" id="massCheckboxLabel"></label>
+										<span class="icon-down_arrow" id="bulkDownArrow"></span>
+									</div>
+									<div class="bulk-actions-dropdown hidden" id="bulkActionsDropdown">
+
+									</div>
+								</div>
+							</div>
+
+
 							<div class="selection-bar tabs_scroll_container hidden" id="jobs-tabs">
 
 								<div id="jobs-category-tabs" class="">
 
 									<ul id="">
-										<li>
-											<div class="bulk-selection-item bulk-select section">
-												<div class="select-all check-input">
-													<input type="checkbox" class="" id="massCheckboxInput">
-													<label for="massCheckboxInput" id="massCheckboxLabel"></label>
-												</div>
-											</div>
-										</li>
+
 					            		<li data-attribute="">
 											<a href="#all-jobs">
 												<div class="bulk-selection-item all active">
@@ -247,9 +258,9 @@
 	</div>
 
 <div class="view-resume-modal candidateDetailsModal hidden">
-	<div class="close_modal mobile">
-		<span><img src="/static/images/close-icon.png" alt="Close"></span>
-	</div>
+	<div class="close-resume-modal closeCandidateModal">
+    	<img src="/static/images/close-icon.png">
+    </div>
     <div class="main-wrapper left">
         <div class="main-container">
             <div class="container resume-header">
@@ -475,13 +486,13 @@
 	            			<div class="content">
 								<div class="mobCommentBox hidden">
 									<textarea id="" class="comment-textarea" readonly></textarea>
-								</div>	
+								</div>
 								<div class="">
 									<textarea  placeholder="Add Comment" name="name" class="mobCandidateCommentTextarea"></textarea>
-								</div>	
+								</div>
 								<div class="action-buttons">
 									<span class="cand-comment-button button green mobCandidateAddCommentButton">Add</span>
-									<span class="button green mobcandidateAddEditButton hidden">Edit Comment</span> 
+									<span class="button green mobcandidateAddEditButton hidden">Edit Comment</span>
 								</div>
 	            			</div>
 	            		</div>
@@ -508,33 +519,18 @@
 	            		</div>
 
 	            	</div>
-	            	<div id="view-resume" class="js_resume">
+					<div id="view-resume">
+						<div class="js_resume hidden">
 
-	            	</div>
+		            	</div>
+						<div class="loading loaderScrollerResume hidden" style="margin-top:20px ">
+						    <div class="loader loader-scroller"></div>
+						</div>
+					</div>
+
 
 	            	<div id="view-cover-letter" class="js_cover_letter">
-	            		<p>Dear Sir/Madam,<br><br/>
 
-						I would like to introduce myself as a skilled human resource professional with experience in a wide range of HR functions; I am pleased to present the enclosed resume. You will find my dedication and enthusiastic attitude to be of value to your company as your next HR Gen
-						eralist and Strategic Business Partner.<br><br>
-
-						My expertise lies in successfully coordinating organizational planning and development through strategic HR initiatives and programs. Throughout my career, I have facilitated staff recruitment, benefits administration, compensation planning, staff and management training programs, and employee relations practices. With complementary skills in process improvement, records      management, and team collaboration, I am confident that I can make an immediate and positive contribution to any organization.<br><br>
-
-						The following achievements demonstrate my qualification for this position:<br><br>
-
-						Performed the full range of HR responsibilities?including exempt and non-exempt talent acquisition, payroll and benefits administration, reporting, performance evaluation, coaching, and employee relations.<br>
-						Developed and implemented new strategic HR policies and programs.eenly aware of up-to-date industry best practices and market conditions.
-						Established solid partnerships through exceptional relationship-building skills; utilized solid communication and interpersonal abilities to secure employee and management trust.<br>
-						Implemented effective policies, programs, and initiatives to optimize organizational productivity and boosted employee morale and improved retention.<br>
-						Performed numerous, competing tasks while optimizing workflow and maximizing productivity.<br><br>
-
-						My proven dedication to optimizing organizational success through my expert knowledge of human resources operations and strategies will contribute immensely to the success of any organization. <br><br>
-
-						It will be a pleasure to offer more insight into my qualifications, and I look forward to meeting with you soon. Thank you for your consideration.<br><br>
-
-						Sincerely,<br><br>
-
-						Shreya Sharma</p>
 	            	</div>
             	</div>
 
@@ -580,16 +576,16 @@
 
     	<div class="sidebar-section comments candidateCommentContainer">
 			<h3>Comment</h3>
-			
+
     		<div class="comment-box ">
 					<textarea id="" class="comment-textarea" readonly></textarea>
-			</div>	
+			</div>
 			<div class="">
 				<textarea id="" placeholder="Add Comment" name="name" class="candidateCommentTextarea"></textarea>
     		</div>
 			<div class="action-buttons">
 				<span class="cand-comment-button button green candidateAddCommentButton addButton">Add</span>
-				<span class="editbutton candidateAddEditButton hidden">Edit Comment</span> 
+				<span class="editbutton candidateAddEditButton hidden">Edit Comment</span>
 			</div>
     	</div>
 
@@ -880,7 +876,10 @@
 
 <p class="fetchTags prototype hidden" data-tag-id="1">Ahmedabad</p>
 
-
+<div class="check-input bulkCheckInput prototype hidden">
+	<input type="checkbox" id="">
+	<label for=""></label>
+</div>
 
 <div class="loader-overlay hidden" id="loaderOverlay">
 	<div class="loader"></div>

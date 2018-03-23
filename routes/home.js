@@ -111,7 +111,8 @@ module.exports = function(settings){
 			scripts: assetsMapper["post-job"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			profile: req.profile
+			profile: req.profile,
+			hiddenLoader:"hidden"
 		})
 		return
 	})
@@ -124,7 +125,8 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			profile: req.profile,
-			jobId: req.params.jobId
+			jobId: req.params.jobId,
+			hiddenClass:"hidden"
 		})
 		return
 	})
@@ -531,7 +533,7 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/welcome",isAuthenticated, function(req,res){
+	app.get("/welcome", function(req,res){
 		res.render("welcome", {
 			title:"Recruiter Web - Welcome Page | iimjobs.com",
 			styles:  assetsMapper["welcome"]["styles"][mode],
@@ -602,7 +604,22 @@ module.exports = function(settings){
 			scripts: assetsMapper["Interview-scheduler-updated"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain:baseDomain,
-			profile: req.profile
+			profile: req.profile,	
+			hiddenLoader: "hidden"
+		});
+		return
+	});
+
+	app.get("/calendar/:calendarId/edit",function(req, res){
+		res.render("Interview-scheduler-updated", {
+			title: "Calender | Dashboard",
+			styles:  assetsMapper["Interview-scheduler-updated"]["styles"][mode],
+			scripts: assetsMapper["Interview-scheduler-updated"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain:baseDomain,
+			profile: req.profile,
+			calendarId: req.params.calendarId,
+			hiddenClass: "hidden"
 		});
 		return
 	});
@@ -667,8 +684,6 @@ module.exports = function(settings){
 			scripts: assetsMapper["dashboardview"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			jobId: req.params.jobID,
-			applicationId: req.params.applicationID,
 			profile: req.profile
 		})
 		return

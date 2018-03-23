@@ -40,7 +40,8 @@ jQuery(document).ready( function() {
     })
 
     function onFetchCandidatesByTagsSuccess(topic,res) {
-        candidates.addToList(res.data)
+        $(".loaderScroller").addClass("hidden")
+        candidates.addToList(res.data,  globalParameters.pageNumber, globalParameters.pageContent)
     }
 
     function onFetchCandidatesByTagsFail(topic, res) {
@@ -77,7 +78,7 @@ jQuery(document).ready( function() {
                 parameters.pageNumber = globalParameters.pageNumber;
                 parameters.pageContent = globalParameters.pageContent;
                 parameters.tagId = obj.tagId
-
+                $(".loaderScroller").removeClass("hidden")
     			fetchCandidatesByTags(parameters,recruiterId)
     		}
     	}

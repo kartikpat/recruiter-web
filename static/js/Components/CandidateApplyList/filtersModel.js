@@ -167,7 +167,7 @@ function Filters(){
 		settings.filterButton = "";
 		settings.sortButton = "";
 		settings.appliedFilters = $(".active-filters"),
-		settings.appliedFiltersContainer = $(".active-filters .clear-all-filters");
+		settings.appliedFiltersContainer = $(".active-filters .clear-all-filters .appliedFilters");
 		settings.resultText = "";
 		settings.clearButtton = $(".clear-all-filters");
 		// settings.activeFilters = $(".active-filters .filter-tag");
@@ -191,10 +191,14 @@ function Filters(){
 		setOnClickCloseFilters();
 		onInputSearchFilter()
 		onClickFiltersCheckBox()
+		onChangeFiltersDropdownHalf()
 
 		jQuery(".modal_overlay").on("click",".category_listing li",function() {
 
 		  var dataNameBefore = $(this).closest(".category_listing").find("li.active").attr("data-name")
+		  if(!checkForError(dataNameBefore)) {
+              return
+          }
 		  setAppliedFilters(dataNameBefore)
 		  jQuery(this).addClass("active");
 		  jQuery(this).siblings().removeClass("active");
@@ -215,6 +219,13 @@ function Filters(){
 		  jQuery(".modal_body").scrollTop(0);
 
 		});
+	}
+
+	function onChangeFiltersDropdownHalf() {
+		settings.filterModal.on('change', '.select-dropdown', function(){
+			var name = $(settings.activeFilterListingClass).attr('data-label');
+			checkForError(name)
+		})
 	}
 
 	function onClickFiltersCheckBox() {
@@ -267,7 +278,7 @@ function Filters(){
 
 	function onClickSearchButton(fn){
 		settings.searchButton.click(function(event){
-			// settings.clearAllFitersButton.removeClass("hidden")
+
 			var str = filtersTarget["searchString"]["target"].val();
 			// if(str == '') {
 			// 	return settings.searchCandidateError.removeClass("hidden")
@@ -282,7 +293,6 @@ function Filters(){
 		filtersTarget["searchString"]["target"].keyup(function(event){
 
             if (event.which == 13) {
-				settings.clearAllFitersButton.removeClass("hidden")
 				var str = filtersTarget["searchString"]["target"].val();
 				filtersTarget["searchString"]["selection"] = str;
                 fn();
@@ -366,7 +376,7 @@ function Filters(){
 
     function setOnClickCloseFilters(){
     	settings.filterModalCancelButton.click(function(event){
-    		
+
     		removeBodyFixed();
             settings.filterModal.addClass("hidden");
     	})
@@ -374,7 +384,7 @@ function Filters(){
 			if($(event.target).parents(".modal_content").length) {
 				return event.stopPropagation();
 			}
-			
+
 			removeBodyFixed();
             settings.filterModal.addClass("hidden");
 		})
@@ -395,28 +405,28 @@ function Filters(){
 
 
 	function addFilterToContainer(value, label, category, type){
-		if(["dropdown","dropdownHalf"].indexOf(type) != -1) {
-			var elem = settings.appliedFiltersContainer.find(".filterPill[data-category="+category+"]")
-			if(elem.length) {
-
-				$(elem).attr("data-value", value);
-				$(elem).find('.icon-label').text(category + ": " + label)
-				return
-			}
-		}
-		if(type == "checkbox"){
-			var elArr = settings.appliedFiltersContainer.find(".filterPill[data-category="+category+"]")
-			$.each(elArr, function(index, el){
-				if(filtersTarget[category]["selection"].indexOf($(el).attr("data-value")) == -1){
-					el.remove()
-					return
-				}
-			})
-			var val = settings.appliedFiltersContainer.find(".filterPill[data-category="+category+"][data-value="+value+"]")
-			if(val.length) {
-				return
-			}
-		}
+		// if(["dropdown","dropdownHalf"].indexOf(type) != -1) {
+		// 	var elem = settings.appliedFiltersContainer.find(".filterPill[data-category="+category+"]")
+		// 	if(elem.length) {
+		//
+		// 		$(elem).attr("data-value", value);
+		// 		$(elem).find('.icon-label').text(category + ": " + label)
+		// 		return
+		// 	}
+		// }
+		// if(type == "checkbox"){
+		// 	var elArr = settings.appliedFiltersContainer.find(".filterPill[data-category="+category+"]")
+		// 	$.each(elArr, function(index, el){
+		// 		if(filtersTarget[category]["selection"].indexOf($(el).attr("data-value")) == -1){
+		// 			el.remove()
+		// 			return
+		// 		}
+		// 	})
+		// 	var val = settings.appliedFiltersContainer.find(".filterPill[data-category="+category+"][data-value="+value+"]")
+		// 	if(val.length) {
+		// 		return
+		// 	}
+		// }
 		var aFilter = createPill(value, label, category, type);
 		settings.appliedFiltersContainer.prepend(aFilter);
 	}
@@ -496,7 +506,7 @@ function Filters(){
 	}
 
 	function addFiltersToContainer(){
-
+		settings.appliedFiltersContainer.empty();
 		for (var key in filtersTarget) {
 
 			if(filtersTarget[key]["type"] == "checkbox") {
@@ -672,13 +682,12 @@ function Filters(){
 			var	maxValue;
 			for(var key in filtersTarget[name]["props"]) {
 				if(key == "min") {
-					minValue = filtersTarget[name]["props"][key]['target'].val();
+					minValue = parseInt(filtersTarget[name]["props"][key]['target'].val());
 					continue
 				}
-				maxValue = filtersTarget[name]["props"][key]['target'].val();
+				maxValue = parseInt(filtersTarget[name]["props"][key]['target'].val());
 			}
-
-			if(minValue != -1 && maxValue != -1 && maxValue < minValue) {
+			if(minValue != -1 && maxValue != -1 && maxValue <= minValue) {
 				element.next(".error-field").text(errorResponses['invalid'+element.attr('id')]).removeClass("hidden");
 				return false
 			}
