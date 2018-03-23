@@ -46,6 +46,7 @@ function candidateList() {
         settings.bulkActionsContainer = $("#bulkActionsContainer"),
         settings.applicationsCount = $(".applicationsCount"),
         settings.bulkCheckInputClass = ".bulkCheckInput";
+        settings.bulkBackIcon = $("#bulkBackIcon")
         onClickBulkDownArrow()
         onClickMassCheckbox()
         onClickCandidateOtherActions()
@@ -56,7 +57,9 @@ function candidateList() {
         onChangebulkCheckbox()
         onClickCoverLetterLink()
         onClickActionListItems()
-        
+
+        onClickBulkBackIcon()
+
         $(window).click(function(event) {
     		$(settings.candidateOtherActionsClass).addClass('inactive');
             $(settings.bulkActionsDropdown).addClass("hidden")
@@ -66,6 +69,15 @@ function candidateList() {
             e.stopPropagation()
         })
 	}
+
+    function onClickBulkBackIcon() {
+        settings.bulkBackIcon.click(function(){
+            settings.bulkActionContainer.addClass("hidden")
+            settings.massCheckboxInput.prop("checked",false)
+            settings.rowContainer.find(".candidateCheckbox").prop("checked", false)
+            settings.rowContainer.find(".candidate-select").removeClass("selected")
+        })
+    }
 
     function onClickActionListItems() {
         settings.rowContainer.on('click','.action-list-items',function(e) {
