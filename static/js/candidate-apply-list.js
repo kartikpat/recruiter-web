@@ -1,4 +1,4 @@
-var viewProfileModal = jQuery("#view-resume");
+var viewProfileModal = jQuery(".js_resume");
 
 jQuery(".button-action-list").on("click", function() {
 	jQuery(this).toggleClass("inactive");
@@ -9,9 +9,6 @@ function getId() {
 function resumeCallback(res, id){
 
     PDFJS.getDocument(res).then(function getPdfHelloWorld(_pdfDoc) {
-
-
-
 
      	var numPages = _pdfDoc.pdfInfo.numPages;
 
