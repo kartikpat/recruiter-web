@@ -44,6 +44,7 @@ $(document).ready(function(){
 	function onSuccessfulFetchJob(topic, data) {
 		jobDetails.setData(jobId,data[0]);
 	}
+	
 	function onFailedFetchJob(topic, data){
 		alert(res.status)
 		console.log(topic)

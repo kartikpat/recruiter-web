@@ -14,13 +14,13 @@ var data={
     toDate:"2018-03-25",
     slots:[
         {
-            startTime:"6",
-            endTime:"12",
+            from:"6",
+            to:"12",
             id:"6",
         },
         {
-            startTime:"12",
-            endTime:"23",
+            from:"12",
+            to:"23",
             id:"5",
         }
     ]
@@ -63,6 +63,21 @@ function Calendar(){
         settings.prevButton=$('.button-prev'),
         settings.nextButton=$('.button-next'),
         settings.Calendarbutton=$('.calendar-button'),
+        settings.textBox=$('.field p'),
+        // settings.editorMessage = new MediumEditor("#message", {
+        //     toolbar: false,
+        //     placeholder: false,
+        // })
+
+        // settings.editor = new MediumEditor("#telephonic", {
+        //     toolbar: false,
+        //     placeholder: false,
+        // })
+
+        // settings.editorMessage.subscribe('editableInput', function(event, editorElement){
+        //      settings.message.val(settings.editor.getContent());
+        // })
+
         selectCreater();
         copytoall();
         time_mapper();
@@ -95,9 +110,10 @@ function Calendar(){
     }
 
     function getslots(){
-
+       //    debugger
         var slots=[];
         var finalslots=[];   
+        var date={};
         var currentDate=moment().format("YYYY-MM-DD");
         console.log(currentDate);
           var fromDate=currentDate;
@@ -117,59 +133,74 @@ function Calendar(){
           var toDate=$('#end_date').val();
           console.log(toDate);     
         }    
-    
-        timetable.fromDate=fromDate;
-        timetable.toDate=toDate;
-        $.each(settings.dayId,function(){
-            settings.select_menu.find('option').prop('disabled', false); 
-            var id=$(this).attr('id');
-            $("#"+id+ "").css("opacity","0.5");
-            var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
-            if(checkbox==true){
-                $("#"+id+ "").css("opacity","1");
-            }
-            var startvalue=$("#"+id+ "").find(settings.start_time).val();
-            var endvalue=$("#"+id+ "").find(settings.end_time).val();
-           
-            if(parseInt(startvalue)>0 && parseInt(endvalue)>0 && checkbox==true){
-             
-                var slot={
-                    startTime:startvalue,
-                    endTime:endvalue,
-                    id:id,
-                };
-                slots.push(slot);
-            }
-        });
+        date.from=fromDate;
+        date.to=toDate;
+        timetable.date=date;
+            $.each(settings.dayId,function(){
+                settings.select_menu.find('option').prop('disabled', false); 
+                var id=$(this).attr('id');
+                var unique=$(this).find('.day').attr('id');
+                var slotId=$(this).attr('slotId');
+                console.log(unique);
+                $("#"+id+ "").css("opacity","0.5");
+                var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
+                if(checkbox==true){
+                    $("#"+id+ "").css("opacity","1");
+                }
+
+                var startvalue=$("#"+id+ "").find(settings.start_time).val();
+                var endvalue=$("#"+id+ "").find(settings.end_time).val();
+                if(parseInt(startvalue)>=0 && parseInt(endvalue)>=0 && checkbox==true){
+                    var slot={
+                        day:id, 
+                        // id:unique,
+                        // slotId:slotId,
+                        time:{
+                        from:startvalue,
+                        to:endvalue,
+                        }
+                    };
+                    slots.push(slot);
+                }
+            });
+
             console.log(slots);
             var start=settings.breakStart.val();
             var end=settings.breakEnd.val();
-            if(start>0 && end>0){
+            console.log(start);
+            console.log(end);
+            if(parseInt(start)>=0 && parseInt(end)>=0){
                 slots.forEach(function(aRow){
-                    if(parseInt(start)>parseInt(aRow.startTime) && parseInt(end)>parseInt(aRow.endTime)){
-                        aRow.endTime=start;
+                   //  debugger
+                    if(parseInt(start)>parseInt(aRow.time.from) && parseInt(end)>parseInt(aRow.time.to)){
+                         aRow.time.to=start;
                         finalslots.push(aRow);
                     }
-                    else if(parseInt(start)<parseInt(aRow.startTime) && parseInt(end)>parseInt(aRow.endTime)){
+                    else if(parseInt(start)<parseInt(aRow.time.from) && parseInt(end)>parseInt(aRow.time.to)){
                           console.log("no slot");    
                     }
-                    else if(parseInt(start)<parseInt(aRow.startTime) && parseInt(end)<parseInt(aRow.endTime) && parseInt(end)>parseInt(aRow.startTime)){
-                        aRow.startTime=end;
+                    else if(parseInt(start)<parseInt(aRow.time.from) && parseInt(end)<parseInt(aRow.time.to) && parseInt(end)>parseInt(aRow.time.from)){
+                        aRow.time.from=end;
+                        finalslots.push(aRow);
+                    }
+                    else if(parseInt(start)<parseInt(aRow.time.from) && parseInt(end)<parseInt(aRow.time.to)){
                         finalslots.push(aRow);
                     }
                     else{
-                        var Nextend=aRow.endTime;
-                        aRow.endTime=start;
+                        var Nextend=aRow.time.to;
+                        aRow.time.to=start;
                         var Nextstart=end;
                         finalslots.push(aRow);
                         if(Nextend!=Nextstart){
                             var Nextslot={
+                                day:aRow.day, 
                                 id:aRow.id,
-                                startTime:Nextstart,
-                                endTime:Nextend,
-                                from:aRow.from,
-                                to:aRow.to,
-                            }
+                                slotId:arow.slotId,
+                                time:{
+                                from:Nextstart,
+                                to:Nextend,
+                                }
+                            }   
                             finalslots.push(Nextslot); 
                         }
                     }
@@ -189,30 +220,41 @@ function Calendar(){
 
     function setDetails(object){
         settings.name.val(object["name"]);
-        settings.message.val(object["message"]);
-        settings.teleMessage.val(object["telephone"]);
+            settings.editorMessage.setContent(object["message"])
+            settings.editor.setContent(object["telMessage"])
+            
+        
+        settings.teleMessage.val(object["telMessage"],(/\(\d+-\d+ \w+\)$/));
+        timetable.CalendarId=object["id"];
+        timetable.slots=object.slots;
+        console.log(timetable.slots);
         var previewslots=object.slots;
         availablehours(previewslots);
-        var fromDate=object.fromDate; //DD-MM-YYYY
+        var fromDate=object.date.from; //DD-MM-YYYY
         startDate=moment(fromDate).format("DD-MM-YYYY");
-        var toDate=object.toDate;
+        console.log(startDate);
+        var toDate=object.date.to;
         endDate=moment(toDate).format("DD-MM-YYYY");
         $('#startdatepicker').datepicker().datepicker('setDate', startDate);
         $('#enddatepicker').datepicker().datepicker('setDate', endDate);
         //datepicker set value
         testHighlight(fromDate,toDate,previewslots);
-        settings.createCalendar.text("Update Calendar")
+        settings.createCalendar.find('button').text("UpdateCalendar")
     }
 
     function availablehours(slots){
         for(var k=0;k<slots.length;k++){
-            var id=slots[k].id;
-            var startvalue=slots[k].startvalue;
-            var endvalue=slots[k].endvalue;
+            var id=slots[k].day;
+            var startvalue=parseInt(slots[k].time.from);
+            var endvalue=parseInt(slots[k].time.to);
+            console.log(startvalue);
+            console.log(slots[k].id);
+            console.log(timetable.slots);
+            $("#"+id+ "").css("opacity","1");
             $("#"+id+ "").find(settings.start_time).val(startvalue);
             $("#"+id+ "").find(settings.end_time).val(endvalue);
             $("#"+id+ "").find(settings.checkbox).prop("checked",true);
-        }       
+        }     
     }
 
     function testHighlight(fromDate,toDate,days){
@@ -227,13 +269,12 @@ function Calendar(){
             4: "thu",
             5: "fri",
             6: "sat"
-        }
-        
+        }    
      $('.TimeLines').css({"text-decoration":"line-through", "opacity":"1","color":"#b0b0b0"})   
         for(var k=0;k<days.length;k++){ 
-            var start=days[k].startTime;
-            var end=days[k].endTime;
-            var id=days[k].id;
+            var start=parseInt(days[k].time.from);
+            var end=parseInt(days[k].time.to);
+            var id=days[k].day;
             console.log(start);
             console.log(end);
             console.log(id);
@@ -249,37 +290,65 @@ function Calendar(){
             }
             if(!(fromDateMoment.isBefore(dateToMatch) ||fromDateMoment.isSame(dateToMatch)))
                 continue
-            console.log("here");
-            for(var j=parseInt(start);j<parseInt(end); j+=1){
-                $('.fc-'+daySchema[id]).find("#hours-" +j+ "").css({"text-decoration":"none" ,"opacity":"1","color":"#149075"});
+            for(var j=parseInt(start);j<parseInt(end);j+=30){
+                if(j==30){
+                    $('.fc-'+daySchema[id]).find("#hours-030").css({"text-decoration":"none" ,"opacity":"1","color":"#149075"});
+                }
+                else if(j==0){
+                    $('.fc-'+daySchema[id]).find("#hours-000").css({"text-decoration":"none" ,"opacity":"1","color":"#149075"});
+                }
+                else
+                $('.fc-'+daySchema[id]).find("#hours-"+j+"").css({"text-decoration":"none" ,"opacity":"1","color":"#149075"});
+              
+                if(!(j%100==0)){
+                    j=j+40;
+                }
+                // j=parseInt(j);
             }
         }       
     }
 
     function selectCreater(){
-        var min = 1,
-            max = 24;     
+        // var min = 1,
+        //     max = 24;
+      //  debugger     
         var select= settings.select_menu;
-            for (var i = min; i<=max; i++){
-                var option = document.createElement('option');
-                if(i<12){
-                option.value = i;
-                option.innerHTML = i+":00 AM";
+        var ampm = 'AM';
+        for (var hour=9; hour<=22; hour++) {
+            
+            var hour12 = hour > 12 ? hour - 12 : hour;
+                 hour  = hour < 10 ? '0'+hour :  hour;
+                 hour12= hour12 <10 ? '0'+hour12 : hour12;
+            if (hour > 11) ampm = 'PM';
+                for (var min = 0; min<60; min += 30) {
+                     var min0= min<30 ?  '00': min;
+                    select.append('<option value='+hour+min0+'>' + hour12 + ':' + min0 + ' ' + ampm +  '</option>');
                 }
-                else  if(i==12){
-                option.value = i;
-                option.innerHTML = i+":00 PM"; 
-                }
-                else if(i==24){
-                option.value = i;
-                option.innerHTML = (i-12)+":00 AM"; 
-                }
-                else{
-                option.value = i;
-                option.innerHTML = (i-12)+":00 PM";
-                }
-                select.append(option.outerHTML);
-            }
+        }
+        
+        // for (var i = min; i<=max; i++){
+        //         if(i<12){
+        //         // option.value = i;
+        //         // option.innerHTML = i+":00 AM";
+        //             //  var a = i > 11 ? " " : "0";
+        //             if(i==10 || i==11){
+        //                 select.append('<option value="' + i + '00" >'+ i + ':00 AM  </option>');
+        //                // return
+        //             }
+        //             else
+        //             select.append('<option value="0' + i + '00" >'+ i + ':00 AM  </option>'); 
+        //         }
+        //         else  if(i==12){
+        //             select.append('<option value="'+ i + '00" >'+ i + ':00 PM  </option>'); 
+        //         }
+        //         else if(i==24){
+        //             select.append('<option value="'+ (i) + '00" >'+ (i-12) + ':00 AM  </option>'); 
+        //         }
+        //         else {
+        //             select.append('<option value="'+ (i) + '00" >'+ (i-12) + ':00 PM  </option>'); 
+        //         }
+        //     //   select.append(option.outerHTML);
+        //     }
     }
 
     function copytoall(){
@@ -298,8 +367,9 @@ function Calendar(){
             var parent=$(this).parent().parent().attr('id');
             var start=$("#"+parent+"").find(".start")
             var end=$("#"+parent+"").find(".end");
-            var k=start.val();
-            if(k>0){
+            var k=parseInt(start.val());
+            console.log(k);
+             if(k>=0){
             var check=$("#"+parent+" .end").find('option:selected').index();
                 end.val(k);
                 var value=$("#"+parent+" .start option:selected").next().val();
@@ -307,7 +377,7 @@ function Calendar(){
                 $("#"+parent+" .end").find('option').prop('disabled', false);
                 var index = $("#"+parent+" .start").find('option:selected').index();
                 $("#"+parent+" .end").not("#"+parent+" .start").find('option:lt(' + (index+1) + ')').prop('disabled', true);
-            }
+             }
         })
         settings.end.change(function() {
             var parent=$(this).parent().parent().attr('id');
@@ -329,9 +399,9 @@ function Calendar(){
             if (settings.checkbox.hasClass('allChecked')){
                   $('input[type="checkbox"]', settings.table).prop('checked',false);
                   settings.check_button.prop('checked',true);
-                  settings.select_menu.val(0);
-                  settings.firstDay.find(settings.element1).val(parseInt(startvalue));
-                  settings.firstDay.find(settings.element2).val(parseInt(endvalue));
+               //   settings.select_menu.val(0);
+               //   settings.firstDay.find(settings.element1).val(parseInt(startvalue));
+               //   settings.firstDay.find(settings.element2).val(parseInt(endvalue));
             } 
             else{
                   $('input[type="checkbox"]', settings.table).prop('checked',true);
@@ -371,18 +441,30 @@ function Calendar(){
           Timer();
     }
 
-    function Timer(e){       
-        for(i=0;i<2400;i+=100){   
-            if(i<1200){
-                  $('.fc-day').append('<div id="hours-'+i/100+'" class="TimeLines">'+i/100+':00 AM </div>');
-            }
-            else if(i==1200){
-                  $('.fc-day').append('<div id="hours-'+i/100+'" class="TimeLines">'+i/100+' :00 PM </div>');
-            }
-            else{
-                  $('.fc-day').append('<div id="hours-'+i/100+'" class="TimeLines">'+i/100+' :00 PM </div>');
-              }
-          }
+    function Timer(e){ 
+
+        // for(i=0;i<2400;i+=100){   
+        //     if(i<1200){
+        //           $('.fc-day').append('<div id="hours-'+i/100+'" class="TimeLines">'+i/100+':00 AM </div>');
+        //     }
+        //     else if(i==1200){
+        //           $('.fc-day').append('<div id="hours-'+i/100+'" class="TimeLines">'+i/100+' :00 PM </div>');
+        //     }
+        //     else{
+        //           $('.fc-day').append('<div id="hours-'+i/100+'" class="TimeLines">'+i/100+' :00 PM </div>');
+        //       }
+        //   }
+        var ampm = 'AM';
+        for (var hour=0; hour<24; hour++){
+            var hour12 = hour > 12 ? hour - 12 : hour;
+            if (hour > 11) ampm = 'PM';
+                for (var min = 0; min<60; min += 30) {
+                     var min0= min<30 ?  '00': min;
+                     $('.fc-day').append('<div id="hours-'+hour+min0+'" class="TimeLines"> ' + hour12 + ':' + min0 + ' ' + ampm + ' </div>');
+                }
+
+        }
+
     }
 
     function startdate(){
@@ -391,6 +473,7 @@ function Calendar(){
             buttonImageOnly: true,
             changeMonth: true,
             changeYear: true,
+            dateFormat: 'dd-mm-yy',
             fielddateFormat: 'dd-mm-yy',
             altField:   '#start_date',
             altFormat: "yy-mm-dd",
@@ -408,6 +491,7 @@ function Calendar(){
             buttonImageOnly: true,
             changeMonth: true,
             changeYear: true,
+            dateFormat: 'dd-mm-yy',
             fielddateFormat: 'dd-mm-yy',
             altField:   '#end_date',
             altFormat: "yy-mm-dd",
@@ -420,9 +504,12 @@ function Calendar(){
     }
 
     function getDetails(){
-        timetable.name= settings.name.val(),
-        timetable.message=  settings.message.val(),
-        timetable.telephone=settings.teleMessage.val()
+        timetable.name= settings.name.val();
+         timetable.message=  settings.message.val();
+        //  var data=settings.editorMessage.getContent();
+        //  data1=data.innerText;
+        //  console.log(data1);
+        timetable.telMessage=settings.teleMessage.val();
         console.log(timetable);
         return timetable
     }
@@ -543,6 +630,7 @@ function Calendar(){
         submitHandler:submitHandler,
         getDetails:getDetails,
         validate:validate,
+        setDetails:setDetails,
     
     }
 };

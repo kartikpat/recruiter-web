@@ -1,6 +1,6 @@
 @import "fonts.scss";
 @import 'common/spacings';
-
+@import 'input-elements';
 .wrap{
     margin: 0 auto;
     width: 100%;
@@ -80,21 +80,45 @@
                     text-align: left;
                     margin-bottom: 14px;
                     }
-                #message{
-                    border-radius: 3px;
-                    border-style: solid;
-                    border-width: 1px;
-                    border-color:  #e4e4e4;
-                    box-sizing: border-box;
-                    background-color:  #ffffff;
-                    width: 591px;
-                    height: 98px;
-                    resize: none;
-                    outline: none;
-                    padding: 16px 22px;
-                    overflow: hidden;
-                    font-size: 14px;
-                }
+                .field{    
+                    textarea,.medium-editor-element {
+                        width:100%;
+                        max-width:590px;
+                        min-height: 98px;
+                        height: auto;
+                        padding: 12px 22px;
+                        border-radius: 3px;
+                        border-style: solid;
+                        border-width: 1px;
+                        border-color:  #e4e4e4;
+                        box-sizing: border-box;
+                        font-size: 14px;
+                        border-radius: 2px;
+                        background-color: inherit;
+                        line-height:1.5;
+                        overflow-y:hidden;
+                        // box-sizing:content-box;
+                        &:focus {
+                            outline: none;
+                          //  border-color: $border-color-active;;
+                        }
+                    }
+                }   
+                // #message{
+                //     border-radius: 3px;
+                //     border-style: solid;
+                //     border-width: 1px;
+                //     border-color:  #e4e4e4;
+                //     box-sizing: border-box;
+                //     background-color:  #ffffff;
+                //     width: 591px;
+                //     min-height: 98px;
+                //     max-height: 100%;
+                //     outline: none;
+                //     padding: 16px 22px;
+                //     overflow-y: hidden;
+                //     font-size: 14px;
+                // }
                 .error-border{
                     border-color: #ee1620;
                 }
@@ -118,6 +142,30 @@
                     text-align: left;
                     margin-bottom: 14px;
                 }
+                .field{    
+                    textarea,.medium-editor-element {
+                        width:100%;
+                        max-width:590px;
+                        min-height: 98px;
+                        height: auto;
+                        padding: 12px 22px;
+                        border-radius: 3px;
+                        border-style: solid;
+                        border-width: 1px;
+                        border-color:  #e4e4e4;
+                        box-sizing: border-box;
+                        font-size: 14px;
+                        border-radius: 2px;
+                        background-color: inherit;
+                        line-height:1.5;
+                        overflow-y:hidden;
+                        // box-sizing:content-box;
+                        &:focus {
+                            outline: none;
+                          //  border-color: $border-color-active;;
+                        }
+                    }
+                }
                 .error{
                     font-family:  $droid-font;
                     position: absolute;
@@ -125,21 +173,7 @@
                     color: #ec1c2a;
                 }
 
-                #telephonic{
-                    border-radius: 3px;
-                    border-style: solid;
-                    border-width: 1px;
-                    border-color:  #e4e4e4;
-                    box-sizing: border-box;
-                    background-color:  #ffffff;
-                    width: 591px;
-                    height: 111px;
-                    resize: none;
-                    outline: none;
-                    padding: 16px 22px;
-                    overflow: hidden;
-                    font-size: 14px;
-                }
+               
             }
         }
 
