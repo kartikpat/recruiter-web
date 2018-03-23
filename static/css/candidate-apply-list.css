@@ -2391,7 +2391,7 @@ span.sticker {
   .modal_overlay .category_listing_container {
     overflow-y: auto; }
     .modal_overlay .category_listing_container .category_listing {
-      height: 225px; }
+      height: 310px; }
   .modal_overlay .modal_body_footer {
     position: relative;
     height: 56px; }
@@ -2529,7 +2529,7 @@ span.sticker {
 
 @media all and (max-width: 480px) {
   .modal_overlay .category_listing_container .category_listing {
-    height: 280px; }
+    height: 510px; }
   .modal_overlay .mobile-header {
     display: block; }
   .modal_overlay .filter-tags-container .check-input {
@@ -3501,6 +3501,11 @@ input::-webkit-input-placeholder {
         padding-left: 0; } }
 
 @media all and (max-width: 768px) {
+  .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span.sortBy {
+    width: 191px;
+    margin-right: 0px; }
+  .jsJobActions .calendar-options {
+    margin-left: 0px !important; }
   .page-content .page-header {
     display: block;
     font-size: 12px;
@@ -3510,6 +3515,8 @@ input::-webkit-input-placeholder {
     border-bottom: 0;
     border-top-right-radius: 4px;
     border-top-left-radius: 4px; }
+    .page-content .page-header .job-title-container {
+      width: 100%; }
     .page-content .page-header .action-buttons .select-dropdown {
       padding: 5px 5px 5px 15px; }
     .page-content .page-header h1 {
@@ -3646,6 +3653,8 @@ input::-webkit-input-placeholder {
     width: 100%; } }
 
 @media all and (max-width: 768px) {
+  .bulk-section-container {
+    left: 12px !important; }
   .shell p {
     width: 50%; }
   .shell span {
@@ -3669,7 +3678,7 @@ input::-webkit-input-placeholder {
         border: 1px solid #e8e8e8;
         border-bottom: 0; }
         .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search {
-          margin-bottom: 10px; }
+          margin-bottom: 0px; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .keyword-search {
             display: block;
             width: 100%;
@@ -4048,12 +4057,11 @@ input::-webkit-input-placeholder {
                 .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-body p {
                   line-height: 1.5; }
           .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-resume {
-            margin: 20px 0 0 0;
             background-color: #C0C0C0; }
-            .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-resume canvas {
-              width: 100%;
-              border: 1px solid #e8e8e8;
-              margin: 10px 0 0 0; }
+          .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .js_resume canvas {
+            width: 100%;
+            border: 1px solid #e8e8e8;
+            margin: 10px 0 0 0; }
           .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-cover-letter {
             padding: 20px 0 0 0; }
   .view-resume-modal .mobile-resume-sidebar {

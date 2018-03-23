@@ -804,7 +804,6 @@ jQuery(document).ready( function() {
 
     var tickerLock=false;
     $(window).scroll(function() {
-        console.log(tickerLock)
         if(!tickerLock){
             tickerLock = true;
             setTimeout(checkScrollEnd,100);

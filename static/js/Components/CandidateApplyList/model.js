@@ -39,7 +39,7 @@ function candidateList() {
         settings.sendInterviewInviteF2FClass = ".inviteF2f",
         settings.sendInterviewInviteTelephonicClass = ".inviteTelephonic",
         settings.tooltip= $(".tooltip"),
-        settings.coverLetterLink = $(".coverLetterLink"),
+        settings.coverLetterLinkClass = ".coverLetterLink",
         settings.candidateDetailsModal= $('.candidateDetailsModal'),
         settings.bulkDownArrow= $('#bulkDownArrow'),
         settings.bulkActionsDropdown= $('#bulkActionsDropdown'),
@@ -93,11 +93,10 @@ function candidateList() {
     }
 
     function onClickCoverLetterLink() {
-        settings.rowContainer.on('click', settings.coverLetterLink, function(e){
-            e.preventDefault()
-            e.stopPropagation()
-            // settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 2});
-            return false
+        settings.rowContainer.on('click', settings.coverLetterLinkClass, function(e){
+
+            settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 2});
+            
         })
     }
 
@@ -372,6 +371,7 @@ function candidateList() {
 
     function onClickViewTag(fn) {
         settings.rowContainer.on('click', settings.viewTagButtonClass, function(e){
+
             var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
             fn(candidateId);
             return false
@@ -380,10 +380,12 @@ function candidateList() {
 
     function onClickCandidate(fn) {
         settings.rowContainer.on('click', ".candidate-item", function(e){
+            e.preventDefault()
             var candidateId = $(this).attr('data-candidate-id');
             var status = $(this).attr("data-status")
             var applicationId = $(this).attr("data-application-id")
             return fn(candidateId, status, applicationId);
+            return false
         })
     }
 
