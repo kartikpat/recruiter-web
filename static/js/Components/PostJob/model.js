@@ -67,11 +67,13 @@ function Job(){
 			settings.editor.subscribe('editableInput', function(event, editorElement){
 				settings.description.val(settings.editor.getContent());
 			})
-			onChangeFiltersDropdown()
 
+		
+
+			jQuery(".header .menu-list-item.my-jobs").addClass("active");
 	}
 
-	
+
 
 
 	function onChangeJobPremium(fn) {

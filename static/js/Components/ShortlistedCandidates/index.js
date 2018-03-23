@@ -25,9 +25,12 @@ jQuery(document).ready( function() {
         parameters.status = obj.status
         candidates.emptyCandidateList()
         candidates.showShell()
+
         if(parseInt(obj.jobId) == -1) {
+
             return fetchCandidatesByStatus(parameters, recruiterId)
         }
+
         fetchJobApplications(obj.jobId,parameters,recruiterId)
 
     })
@@ -49,7 +52,7 @@ jQuery(document).ready( function() {
     })
 
     function onFetchCandidatesByStatusSuccess(topic,res) {
-        debugger
+        $(".loaderScroller").addClass("hidden")
         globalParameters.candidateListLength = res.data.length
         if(res.stats) {
             if(res.obj.status == "1,3") {
@@ -65,7 +68,8 @@ jQuery(document).ready( function() {
         else {
             candidates.showCandidateCount(0)
         }
-        candidates.addToList(res.data)
+
+        candidates.addToList(res.data, globalParameters.pageNumber, globalParameters.pageContent)
     }
 
     function onFetchCandidatesByStatusFail(topic, res) {
@@ -105,6 +109,7 @@ jQuery(document).ready( function() {
                 parameters.pageNumber = globalParameters.pageNumber;
                 parameters.pageContent = globalParameters.pageContent;
                 parameters.status = obj.status
+                $(".loaderScroller").removeClass("hidden")
                 if(parseInt(obj.jobId) == -1) {
                     return fetchCandidatesByStatus(parameters, recruiterId)
                 }

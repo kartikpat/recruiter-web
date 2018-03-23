@@ -38,6 +38,29 @@ function Candidate() {
         jQuery("#tabbed-content").tabs({});
         // onClickAddPopulatedTags()
 
+        jQuery(".body-overlay").on("click", function(e) {
+
+        	if(jQuery(e.target).parents(".view-resume-modal").length) {
+                e.stopPropagation()
+        		e.stopImmediatePropagation();
+        	}
+
+            settings.candidateDetailsModal.scrollTop(0)
+            resetCandidateData()
+        	settings.candidateDetailsModal.addClass("hidden");
+
+        });
+
+        jQuery(".closeCandidateModal").on("click", function(e) {
+
+            settings.candidateDetailsModal.scrollTop(0)
+            resetCandidateData()
+            jQuery(".body-overlay").addClass("hidden").removeClass("vieled");
+            $("body").removeClass("posf")
+        	settings.candidateDetailsModal.addClass("hidden");
+
+        });
+
     }
 
     function showCandidateDetails(details, type, status){
@@ -243,7 +266,11 @@ function Candidate() {
         item.percentile.text(aData["catScore"] || "N.A.")
         item.workSixDays.text(binary[aData["sixDays"]])
         if(isCanvasSupported()) {
-        	getBinaryData(aData["resume"],resumeCallback);
+            item.resume.addClass("hidden")
+            $(".loaderScrollerResume").removeClass("hidden")
+        	getBinaryData(aData["resume"],function(res){
+                resumeCallback(res, aData["id"])
+            });
         }
         else {
         	item.resume.html('<iframe src="'+aData["resume"]+'" class="resume-embed" type="application/pdf"></iframe>')
@@ -316,6 +343,7 @@ function Candidate() {
 
     function resetCandidateData() {
         var item = getElement();
+        item.element.attr("data-application-id", "0")
         item.image.attr("src", "")
         item.name.text("");
         item.experience.text("");
@@ -332,17 +360,19 @@ function Candidate() {
         item.languages.text("");
         item.workPermit.text("");
         item.coverLetter.text("");
+        item.preferredLocation.text("");
         item.tabContent.tabs({active: 0});
         item.shortlistButton.text("Shortlist");
         item.rejectButton.text("Reject");
-        item.resume.html('')
+        item.resume.empty()
         item.savedButton.html("<span class='icon'><i class='icon-star'></i></span>Save for Later");
         item.commentBox.addClass("hidden");
         item.commentTextarea.addClass("hidden");
         item.editButton.addClass("hidden");
         item.addButton.removeClass("hidden");
         item.commentAddBox.removeClass("hidden");
-        $(".coverLetterTab").addClass("hidden")
+        $(".coverLetterTab").addClass("hidden");
+
     }
 
     function openModal() {
@@ -352,18 +382,7 @@ function Candidate() {
         settings.candidateDetailsModal.removeClass("hidden");
     }
 
-    jQuery(".body-overlay").on("click", function(e) {
 
-    	if(jQuery(e.target).parents(".view-resume-modal").length) {
-            e.stopPropagation()
-    		e.stopImmediatePropagation();
-    	}
-        
-        settings.candidateDetailsModal.scrollTop(0)
-        resetCandidateData()
-    	settings.candidateDetailsModal.addClass("hidden");
-
-    });
 
 
 

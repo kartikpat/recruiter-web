@@ -22,6 +22,7 @@ function candidateList() {
         settings.jobId= -1,
         settings.jobTitle = ""
         onToggleJobList();
+        jQuery(".header .menu-list-item.my-jobs").addClass("active");
    }
 
    function setConfig(key, value) {
@@ -171,17 +172,22 @@ function candidateList() {
        settings.candidateCount.text(count)
    }
 
-   function addToList(dataArray){
-       var str = '';
+   
+
+   function addToList(dataArray, pageNumber, pageContent){
        hideShell()
-       if(!dataArray.length) {
-           return settings.candidateListing.html("<div class='no-data'>No Applications Found!</div>")
+       if(dataArray.length<1 && pageNumber ==1) {
+           return settings.candidateListing.append("<div class='no-data'>No Applications Found!</div>")
        }
+       var str = '';
        dataArray.forEach(function(aData, index){
            var item = createElement(aData);
            str+=item.element[0].outerHTML;
        });
        settings.candidateListing.append(str);
+       if(dataArray.length< pageContent) {
+           return settings.candidateListing.append("<div class='no-data'>No more records!</div>")
+       }
    }
 
    function emptyCandidateList() {
