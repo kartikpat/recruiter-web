@@ -68,7 +68,12 @@ function Job(){
 				settings.description.val(settings.editor.getContent());
 			})
 
+		
+
+			jQuery(".header .menu-list-item.my-jobs").addClass("active");
 	}
+
+
 
 
 	function onChangeJobPremium(fn) {

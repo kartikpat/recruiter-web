@@ -1,3 +1,4 @@
+jQuery(".header .menu-list-item.dashboard").addClass("active");
 var dataModel = {};
 dataModel.revisit = false;
 profile.lastSeen = moment().subtract(1, 'days').format("x");
@@ -16,7 +17,7 @@ function Notifications(){
 	        var applicationId = $(this).closest(settings.notificationRowClass).attr("data-application-id")
 	        var jobId = $(this).closest(settings.notificationRowClass).attr('data-job-id');
 	        return fn(applicationId, jobId);
-	        
+
 	    })
 	}
 	function candidateActionTransition(applicationId){
@@ -105,7 +106,7 @@ $(document).ready(function(){
 				var jobId = $(this).attr("data-job-id");
 				settings.jobRefreshModal.removeClass('hidden');
 				settings.jobRefreshButton.attr('data-refresh-job-id', jobId);
-				
+
 			return false;
 		})
 	}
@@ -359,7 +360,7 @@ $(document).ready(function(){
 				card.find('.horizontal-separator').addClass('hidden')
 			}
 			card.find('.general').append(candidateCard)
-			interviewContainer.find('.detail-card').append(card);	
+			interviewContainer.find('.detail-card').append(card);
 		})
 		if( totalInterviews>showCount){
 			var seeMore= seeMoreSection.clone().removeClass('hidden prototype');

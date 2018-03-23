@@ -3,8 +3,8 @@ var errorResponsesLogin = {
 	invalidEmail: 'That looks like an invalid email address',
 	missingPassword: 'Please enter your password',
 	invalidPassword: 'Please enter a valid password',
-	userFail: 'Email address does not exist',
-	passwordFail: 'Incorrect password',
+	userFail: 'We could not find an account with that email address.',
+	passwordFail: 'That password did not match. We can help you ',
 	missingParameters: 'Oops! Our engineers will fix this shortly. Please try again after sometime.',
 	serviceError: 'Oops! Our engineers are working on fixing this, please try again after sometime.'
 }
@@ -17,6 +17,19 @@ function userCredentials(){
 		user.password = $("#password");
 		user.login = $("#login");
 		user.errors = $('.error');
+		user.loginForm = $("#loginForm");
+
+		onChangeInputFields()
+	}
+
+	function onChangeInputFields() {
+		user.loginForm.find('input').keyup(function(){
+			eraseError($(this))
+		})
+
+	}
+	function eraseError(element) {
+		element.next('.error').text('')
 	}
 	function loginHandler(fn){
 		user.login.click(fn);
@@ -48,24 +61,33 @@ function userCredentials(){
 				message = errorResponsesLogin.missingParameters
 				break;
 		}
+		if(res.status == 404) {
+			return user.email.next('.error').html(message + "<span class='register-link'>Looking to register? <a href='' style='font-size:13px;' class='link-color trigger-register-registration-modal'>Register</a></span>")
+		}
+		if(res.status == 401) {
+			return user.password.next('.error').html(message + "<span class='forgot-pass'><a href='/forgot-password' style='font-size:13px;' class='link-color forgot-recruiter-password'>recover it.</a></span>")
+		}
 		user.password.next('.error').text(message)
 		return
 	}
 
 	function validateLogin(){
 		eraseErrors();
+		var flag = 1;
 		if(!( user.email && user.email.val() )){
-			console.log(user.email.next('.error'))
 			user.email.next('.error').text(errorResponses['missingEmail'])
-			return false
+			flag = 0;
 		}
 
-		if(!emailRegex.test(user.email.val())){
+		if(user.email && user.email.val() && !emailRegex.test(user.email.val())){
 			user.email.next('.error').text(errorResponses['invalidEmail'])
-			return false
+			flag = 0;
 		}
 		if(!( user.password && user.password.val() )){
 			user.password.next('.error').text(errorResponses['missingPassword']);
+			flag = 0;
+		}
+		if(flag == 0) {
 			return false;
 		}
 		return true;

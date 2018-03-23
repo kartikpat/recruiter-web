@@ -309,7 +309,7 @@
       right: 10px;
       cursor: pointer; }
     .modal-overlay .modal-content.recruiter-register-modal {
-      max-height: 560px; }
+      max-height: 590px; }
     .modal-overlay .modal-content.recruiter-sign-in-modal {
       max-height: 340px; }
     .modal-overlay .modal-content .modal-body h1 {
@@ -330,6 +330,10 @@
       .modal-overlay .modal-content .modal-body .recruiter-form .form-group {
         position: relative;
         margin-bottom: 15px; }
+        .modal-overlay .modal-content .modal-body .recruiter-form .form-group.cnfirmPasswd {
+          margin-bottom: 25px; }
+        .modal-overlay .modal-content .modal-body .recruiter-form .form-group:last-child {
+          margin-bottom: 0px; }
         .modal-overlay .modal-content .modal-body .recruiter-form .form-group input {
           background-color: transparent;
           font-size: 14px;
@@ -373,6 +377,8 @@
             border-top: 4px solid #149075;
             animation: spin 1500ms linear infinite;
             border-radius: 50%; }
+        .modal-overlay .modal-content .modal-body .recruiter-form .form-group select {
+          padding: 12px 22px; }
 
 body {
   position: relative; }

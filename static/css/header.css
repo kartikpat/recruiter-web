@@ -699,7 +699,7 @@ b {
   .header .navigation {
     display: inline-block;
     vertical-align: middle;
-    width: 65%; }
+    width: 70%; }
     .header .navigation ul {
       list-style: none;
       font-family: "Comfortaa", sans-serif;
@@ -709,7 +709,7 @@ b {
         line-height: 40px;
         font-size: 14px;
         display: inline-block;
-        width: 20%;
+        width: 19%;
         min-width: 120px;
         text-align: center; }
         .header .navigation ul .menu-list-item.my-jobs {
