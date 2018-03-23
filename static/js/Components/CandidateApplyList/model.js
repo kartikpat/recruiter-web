@@ -55,6 +55,8 @@ function candidateList() {
         onClickMassComment()
         onChangebulkCheckbox()
         onClickCoverLetterLink()
+        onClickActionListItems()
+        
         $(window).click(function(event) {
     		$(settings.candidateOtherActionsClass).addClass('inactive');
             $(settings.bulkActionsDropdown).addClass("hidden")
@@ -64,6 +66,13 @@ function candidateList() {
             e.stopPropagation()
         })
 	}
+
+    function onClickActionListItems() {
+        settings.rowContainer.on('click','.action-list-items',function(e) {
+            e.stopPropagation()
+            return false
+        })
+    }
 
     function onChangebulkCheckbox() {
         settings.bulkActionsDropdown.on('click', ".bulkCheckInput input", function(e) {
@@ -96,7 +105,7 @@ function candidateList() {
         settings.rowContainer.on('click', settings.coverLetterLinkClass, function(e){
 
             settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 2});
-            
+
         })
     }
 
@@ -409,6 +418,10 @@ function candidateList() {
         settings.rowContainer.on('mouseleave', settings.candidateOtherActionsClass,function(event) {
             event.stopPropagation();
             $(this).addClass("inactive");
+            return false
+        })
+        settings.rowContainer.on('click', settings.candidateOtherActionsClass,function(event) {
+            event.stopPropagation();
             return false
         })
     }
