@@ -6,25 +6,26 @@ var errorResponses = {
     missingslots:'Please select a slot',
 }
 
-var data={
-    name:"geetansh",
-    message:"helo",
-    telephone:"bye",
-    fromDate:"2018-03-10",
-    toDate:"2018-03-25",
-    slots:[
-        {
-            from:"6",
-            to:"12",
-            id:"6",
-        },
-        {
-            from:"12",
-            to:"23",
-            id:"5",
-        }
-    ]
-}
+// var data={
+//     name:"geetansh",
+//     message:"helo",
+//     telephone:"bye",
+//     fromDate:"2018-03-10",
+//     toDate:"2018-03-25",
+//     slots:[
+//         {
+//             from:"6",
+//             to:"12",
+//             id:"6",
+//         },
+//         {
+//             from:"12",
+//             to:"23",
+//             id:"5",
+//         }
+//     ]
+// }
+
 function Calendar(){
     var settings ={};
     var timetable={};
@@ -137,7 +138,7 @@ function Calendar(){
         date.to=toDate;
         timetable.date=date;
             $.each(settings.dayId,function(){
-                settings.select_menu.find('option').prop('disabled', false); 
+                // settings.select_menu.find('option').prop('disabled', false); 
                 var id=$(this).attr('id');
                 var unique=$(this).find('.day').attr('id');
                 var slotId=$(this).attr('slotId');
@@ -153,8 +154,8 @@ function Calendar(){
                 if(parseInt(startvalue)>=0 && parseInt(endvalue)>=0 && checkbox==true){
                     var slot={
                         day:id, 
-                        // id:unique,
-                        // slotId:slotId,
+                        id:unique,
+                        slotId:slotId,
                         time:{
                         from:startvalue,
                         to:endvalue,
@@ -172,11 +173,15 @@ function Calendar(){
             if(parseInt(start)>=0 && parseInt(end)>=0){
                 slots.forEach(function(aRow){
                    //  debugger
-                    if(parseInt(start)>parseInt(aRow.time.from) && parseInt(end)>parseInt(aRow.time.to)){
+                    console.log(aRow.time);
+                    if(parseInt(start)>parseInt(aRow.time.to)){
+                        finalslots.push(aRow);
+                    }
+                    else if(parseInt(start)>parseInt(aRow.time.from) && parseInt(end)>parseInt(aRow.time.to)){
                          aRow.time.to=start;
                         finalslots.push(aRow);
                     }
-                    else if(parseInt(start)<parseInt(aRow.time.from) && parseInt(end)>parseInt(aRow.time.to)){
+                    else if(parseInt(start)<=parseInt(aRow.time.from) && parseInt(end)>=parseInt(aRow.time.to)){
                           console.log("no slot");    
                     }
                     else if(parseInt(start)<parseInt(aRow.time.from) && parseInt(end)<parseInt(aRow.time.to) && parseInt(end)>parseInt(aRow.time.from)){
@@ -187,6 +192,7 @@ function Calendar(){
                         finalslots.push(aRow);
                     }
                     else{
+                        debugger
                         var Nextend=aRow.time.to;
                         aRow.time.to=start;
                         var Nextstart=end;
@@ -195,7 +201,7 @@ function Calendar(){
                             var Nextslot={
                                 day:aRow.day, 
                                 id:aRow.id,
-                                slotId:arow.slotId,
+                                slotId:aRow.slotId,
                                 time:{
                                 from:Nextstart,
                                 to:Nextend,
@@ -220,10 +226,9 @@ function Calendar(){
 
     function setDetails(object){
         settings.name.val(object["name"]);
-            settings.editorMessage.setContent(object["message"])
-            settings.editor.setContent(object["telMessage"])
-            
-        
+        // settings.editorMessage.setContent(object["message"])
+        // settings.editor.setContent(object["telMessage"])
+        settings.message.val(object["message"]);
         settings.teleMessage.val(object["telMessage"],(/\(\d+-\d+ \w+\)$/));
         timetable.CalendarId=object["id"];
         timetable.slots=object.slots;
@@ -323,6 +328,9 @@ function Calendar(){
                 for (var min = 0; min<60; min += 30) {
                      var min0= min<30 ?  '00': min;
                     select.append('<option value='+hour+min0+'>' + hour12 + ':' + min0 + ' ' + ampm +  '</option>');
+                    if(hour==22){
+                        break
+                    }
                 }
         }
         

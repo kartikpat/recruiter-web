@@ -95,7 +95,7 @@ function BookedSlots() {
         }
 
 		item.calendarName.text(aData["calendar"]["name"]);
-		// item.calendarName.attr("href",aData["calendar"]["name"]);
+		item.calendarName.attr("href","/calendar/"+aData["calendar"]["id"]+"/edit");
 		item.candName.text(aData["name"])
 		item.candName.attr("href", "/job/"+aData["job"]["id"]+"/applications/27989797");
         item.candDesignation.text(aData["designation"])

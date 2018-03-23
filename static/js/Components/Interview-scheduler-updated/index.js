@@ -6,11 +6,20 @@ $(document).ready(function(){
     calendarDetails.enddate();
     calendarDetails.time_mapper();
     test= calendarDetails.testHighlight;
-  //  fetchCalendars("159","33765");
+     console.log(calendarId);
+ 
+    if(calendarId){
+        fetchCalendars("159","33765");
+        $('.form-container').removeClass('hidden');
+        $('.Availability').removeClass('hidden');
+        $('.second-container ').removeClass('hidden');
+        $('.bottom-container ').removeClass('hidden');
+        $('.loaderScroller').addClass("hidden");
+    }
     calendarDetails.submitHandler(function(){
         if(calendarDetails.validate()){
         var data=calendarDetails.getDetails();
-        submitCalendar(data,"159","33765");
+        submitCalendar(data,"159",recruiterId);
         }
     })
 

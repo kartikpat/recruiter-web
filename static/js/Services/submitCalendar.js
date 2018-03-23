@@ -3,7 +3,6 @@ function submitCalendar(data,calendarId,recruiterId){
 	postRequest(baseUrl+"/recruiter/"+recruiterId+"/calendar/"+calendarId,{
 		"Content-Type": "application/json",
 	}, JSON.stringify(data), function(res){
-		debugger
 		if(res.status && res.status =='success'){
 			return pubsub.publish("submittedCalendar", res);
 		}

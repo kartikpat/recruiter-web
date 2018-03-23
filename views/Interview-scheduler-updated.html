@@ -1,31 +1,43 @@
 {{> header }}
+
+<div class="loader-container {{hiddenLoader}}">
+	<div class="loader-content">
+
+		<div class="loading loaderScroller" style="margin-top:20px ">
+				<div class="loader loader-scroller"></div>
+		</div>
+	</div>
+</div>
+
 <div class="wrap">
 	<p class="headings"> Create Calender</p>
 	<div class="container">
 			<div class="form">
-				<span class="details">Basic Details</span>
-				<div class="row-separator"></div>
-				<div class="input-name">
-				<div class="tag">Name</div> 
-				<textarea name="FirstName" id="name" ></textarea>
-				<div class="error"></div>
-				</div>
-				<div class="message">
-					<div class="tag">Message for F2F Interview</div> 
-						<div class="field">
-							<textarea type="text" id="message"></textarea>
-						</div>	
-					<div class="error"></div>
-				</div>
-				<div class="telephonic">
-					<div class="tag">Message for Telephonic Interview</div> 
-					<div class="field">
-						<textarea type="text" id="telephonic" ></textarea>
-					</div>
-						<div class="error"></div>
-				</div>
+					<span class="details">Basic Details</span>
+					<div class="form-container {{hiddenClass}} ">
+						<div class="row-separator"></div>
+						<div class="input-name">
+							<div class="tag">Name</div> 
+							<textarea name="FirstName" id="name" ></textarea>
+							<div class="error"></div>
+						</div>
+						<div class="message">
+							<div class="tag">Message for F2F Interview</div> 
+								<div class="field">
+									<textarea type="text" id="message"></textarea>
+								</div>	
+							<div class="error"></div>
+						</div>
+						<div class="telephonic">
+							<div class="tag">Message for Telephonic Interview</div> 
+							<div class="field">
+								<textarea type="text" id="telephonic" ></textarea>
+							</div>
+								<div class="error"></div>
+						</div>
+				    </div>
 			</div>
-		<div class="Availability">
+		<div class="Availability {{hiddenClass}} ">
 			<div class="heading">Availability</div>
 				<div class="sub_heading">
 				<span>Connect With Google</span>
@@ -39,7 +51,7 @@
 		</div>
 	</div>
 
-	<div class="second-container">
+	<div class="second-container {{hiddenClass}} ">
 		<div  class="available-hours"> <!left-->
 			<div class="Days-available">
 				<span id="available-span">Available Hours</span>
@@ -330,7 +342,7 @@
 			
 	</div>
 
-	<div class="bottom-container">
+	<div class="bottom-container {{hiddenClass}}">
 		<div class="formgroup">
 		   <button type="submit">Create Calender</button>
 		</div>

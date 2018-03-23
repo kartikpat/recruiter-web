@@ -517,7 +517,8 @@ span.sticker {
 .wrap {
   margin: 0 auto;
   width: 100%;
-  max-width: 1500px; }
+  max-width: 1500px;
+  min-height: 100%; }
   .wrap .headings {
     font-family: "Droid Sans", sans-serif;
     color: #5d5d5d;
@@ -601,7 +602,8 @@ span.sticker {
       border-radius: 2px;
       background-color: inherit;
       line-height: 1.5;
-      overflow-y: hidden; }
+      overflow-y: hidden;
+      resize: none; }
       .wrap .container .form .message .field textarea:focus, .wrap .container .form .message .field .medium-editor-element:focus {
         outline: none; }
     .wrap .container .form .message .error-border {
@@ -638,7 +640,8 @@ span.sticker {
       border-radius: 2px;
       background-color: inherit;
       line-height: 1.5;
-      overflow-y: hidden; }
+      overflow-y: hidden;
+      resize: none; }
       .wrap .container .form .telephonic .field textarea:focus, .wrap .container .form .telephonic .field .medium-editor-element:focus {
         outline: none; }
     .wrap .container .form .telephonic .error {
