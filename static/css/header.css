@@ -600,7 +600,9 @@ b {
       font-family: inherit;
       line-height: 20px;
       margin: 0;
-      display: inline-block; }
+      /* display: inline-block; */
+      text-align: right;
+      width: 144px; }
     .header .domain_logo a span {
       font-family: inherit;
       font-size: 14px; }
