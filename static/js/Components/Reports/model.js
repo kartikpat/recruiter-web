@@ -14,6 +14,8 @@ function reportList() {
         settings.candidateEducationItemClass = '.candEducationItem',
         settings.candTagItemClass= '.candTagItem',
         settings.reportRowShell = $(".reportRo.shell")
+
+        jQuery(".header .menu-list-item.reports").addClass("active");
    }
 
    function setConfig(key, value) {

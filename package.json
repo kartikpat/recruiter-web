@@ -24,6 +24,7 @@
     "express": "^4.16.2",
     "hogan-express": "^0.5.2",
     "merge-descriptors": "^1.0.1",
+    "pdfjs-dist": "^2.0.451",
     "request": "^2.83.0"
   },
   "devDependencies": {

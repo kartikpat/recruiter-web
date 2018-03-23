@@ -170,7 +170,8 @@ function Job(){
 		var calendarOptionsStr = '';
 		var item = getCalendarElement();
 		item.element.text("Calendar Link: Select");
-		item.element.attr("value","");
+		item.element.attr("value","-1");
+		item.element.attr("disabled","disabled");
 		calendarOptionsStr += item.element[0].outerHTML;
         array.forEach(function(anObj){
 			var item = getCalendarElement()
@@ -211,6 +212,9 @@ function Job(){
 		settings.calendarSelect.on('change', function(e) {
 			console.log("a")
 			var calendarId = $(this).val();
+			if(parseInt(calendarId) == -1) {
+				return
+			}
 			return fn(calendarId)
 		})
 	}

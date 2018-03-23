@@ -14,8 +14,18 @@ function candidateList() {
         settings.candTagItemClass= '.candTagItem',
         settings.tagOptionClass= '.tagOption',
         settings.tagId = -1,
-        settings.candidateItemShell= $(".candidateItem.shell")
+        settings.candidateItemShell= $(".candidateItem.shell"),
+        settings.candAppliedJobsClass= '.candAppliedJobs',
+        settings.multipleJobListingClass= '.multipleJobListing',
+        settings.multipleJobListingTextClass= '.multipleJobListingText'
+        onToggleJobList();
+        jQuery(".header .menu-list-item.my-jobs").addClass("active");
+   }
 
+   function onToggleJobList() {
+       settings.candidateListing.on('click',settings.multipleJobListingTextClass, function(){
+           $(this).next().slideToggle();
+       })
    }
 
    function setConfig(key, value) {
@@ -156,18 +166,20 @@ function candidateList() {
        return item
    }
 
-   function addToList(dataArray){
-        hideShell()
-       if(!dataArray.length) {
-           return settings.candidateListing.html("<div class='no-data'>No Applications Found!</div>")
+   function addToList(dataArray, pageNumber, pageContent){
+       hideShell()
+       if(dataArray.length<1 && pageNumber ==1) {
+           return settings.candidateListing.append("<div class='no-data'>No Applications Found!</div>")
        }
        var str = '';
        dataArray.forEach(function(aData, index){
            var item = createElement(aData);
            str+=item.element[0].outerHTML;
        });
-
        settings.candidateListing.append(str);
+       if(dataArray.length< pageContent) {
+           return settings.candidateListing.append("<div class='no-data'>No more records!</div>")
+       }
    }
 
    function emptyCandidateList() {
