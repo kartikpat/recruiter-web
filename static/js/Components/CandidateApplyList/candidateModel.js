@@ -36,32 +36,26 @@ function Candidate() {
         settings.sendInterviewInviteTelephonicClass = ".inviteTelephonic"
 
         jQuery("#tabbed-content").tabs({});
-        // onClickAddPopulatedTags()
-
-        jQuery(".body-overlay").on("click", function(e) {
-
-        	if(jQuery(e.target).parents(".view-resume-modal").length) {
-                e.stopPropagation()
-        		e.stopImmediatePropagation();
-        	}
-
-            settings.candidateDetailsModal.scrollTop(0)
-            resetCandidateData()
-        	settings.candidateDetailsModal.addClass("hidden");
-
-        });
-
-        jQuery(".closeCandidateModal").on("click", function(e) {
-
-            settings.candidateDetailsModal.scrollTop(0)
-            resetCandidateData()
-            jQuery(".body-overlay").addClass("hidden").removeClass("vieled");
-            $("body").removeClass("posf")
-        	settings.candidateDetailsModal.addClass("hidden");
-
-        });
 
     }
+    function onClickCloseModal(fn){
+        $(".body-overlay, .closeCandidateModal").on('click', function(e){
+            if(jQuery(e.target).parents(".view-resume-modal").length) {
+                e.stopPropagation()
+                e.stopImmediatePropagation();
+            }
+            fn()
+        })
+    }
+
+    function closeModal(){
+        settings.candidateDetailsModal.scrollTop(0)
+        resetCandidateData()
+        jQuery(".body-overlay").addClass("hidden").removeClass("vieled");
+        $("body").removeClass("posf")
+        settings.candidateDetailsModal.addClass("hidden");
+    }
+
 
     function showCandidateDetails(details, type, status){
         return populateCandidateData(details, type, status)
@@ -626,6 +620,8 @@ function Candidate() {
         onClickSendInterviewInviteF2F: onClickSendInterviewInviteF2F,
         changeButtonText: changeButtonText,
         onClickChatCandidateModal: onClickChatCandidateModal,
+        onClickCloseModal: onClickCloseModal,
+        closeModal: closeModal
 
 	}
 
