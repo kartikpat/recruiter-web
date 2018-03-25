@@ -3,7 +3,7 @@ $(document).ready(function() {
 	resetPsword.init();
 	resetPsword.loginHandler(function(e){
 		e.preventDefault()
-		console.log('click noted')
+		
 		if(resetPsword.validateLogin()){
             var data = resetPsword.getData()
 			submitResetPassword(data);

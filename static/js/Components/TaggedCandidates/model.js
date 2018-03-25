@@ -24,7 +24,7 @@ function candidateList() {
 
    function onToggleJobList() {
        settings.candidateListing.on('click',settings.multipleJobListingTextClass, function(){
-           $(this).next().slideToggle();
+           $(this).siblings(".multipleJobListing").slideToggle();
        })
    }
 
@@ -138,14 +138,14 @@ function candidateList() {
        })
        item.eduList.html(eduStr)
        if(aData["applications"]) {
-           if(aData["applications"].length > 0) {
+           if(aData["applications"].length > 1) {
                item.candJobList.addClass("hidden")
                item.multipleJobListingText.text("Applied to "+aData["applications"].length+" jobs")
                var str = ""
                $.each(aData["applications"],function(index, application) {
                    console.log(application)
                    var item =  $(''+settings.candAppliedJobsClass+'.prototype').clone().removeClass("prototype hidden");
-                   item.html(application["title"] + " -<a href='/job/"+application["jobID"]+"/applications/"+application["id"]+"'> View Profile</a> ");
+                   item.html(application["title"] + " -<a class='link-color' href='/job/"+application["jobID"]+"/applications/"+application["id"]+"'> View Profile</a> ");
                    console.log(item)
                    str+=item[0].outerHTML
                })

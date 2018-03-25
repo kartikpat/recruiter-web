@@ -3,7 +3,8 @@ function fetchRecruiterCalendar(recruiterId){
 		if(res.status && res.status =='success') {
 			return pubsub.publish("fetchedCalendars", res);
 		}
-		return pubsub.publish("failedToFetchCalendars", res);
-    });
-}
 
+    }, function(res,status,error) {
+	    return pubsub.publish("failedToFetchCalendars", res);
+	});
+}

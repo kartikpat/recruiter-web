@@ -4,7 +4,7 @@ function setDefaultCalendar(recruiterId, jobId, calendarId, data, parameters){
 			res.parameters = parameters;
 			return pubsub.publish("setDefaultCalendarSuccess", res);
 		}
-	}, function(res){
-		return pubsub.publish("setDefaultCalendarFail", res.responseJSON);
+	}, function(res,status,error) {
+		return pubsub.publish("setDefaultCalendarFail", res);
 	});
 }

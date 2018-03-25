@@ -3,6 +3,8 @@ function fetchJobTags(recruiterId){
 		if(res.status && res.status =='success'){
 			return pubsub.publish("fetchedJobTags", res.data);
 		}
-        return pubsub.publish("failToFetchJobTags", res.responseJSON);
+
+	}, function(res,status,error) {
+	    return pubsub.publish("failToFetchJobTags", res);
 	});
 }

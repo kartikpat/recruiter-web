@@ -180,6 +180,9 @@ function Jobs() {
 				obj["statusMsg"] = false;
 				obj["actions"] = true;
 				break;
+			case "updated-published":
+				obj["statusMsg"] = false;
+				obj["status"] = 'Published </br>(But updated)'
 			default:
 				break;
 		}
@@ -244,7 +247,7 @@ function Jobs() {
 
 		item.premium.attr("data-job-isPremium", aData["premium"]);
 		if(aData["premium"]) {
-			item.premium.find('.icon-star').addClass("premium_highlight");
+			item.premium.find('.icon-star').addClass("premium_highlight").removeClass("hidden");
 		}
 
 		if(aData["url"]) {

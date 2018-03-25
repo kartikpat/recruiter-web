@@ -23,7 +23,7 @@ jQuery(document).ready( function() {
     }
 
     function onFetchCandidatesFail(topic, res) {
-        alert(res)
+        errorHandler(res)
     }
 
     var fetchCandidatesSuccessSubscription = pubsub.subscribe('fetchedSearch', onFetchCandidatesSuccess)
@@ -50,3 +50,11 @@ jQuery(document).ready( function() {
     // }
 
 })
+
+function errorHandler(data) {
+    var res = data.responseJSON
+    if(!res) {
+        return toastNotify(3, "Something went wrong");
+    }
+    return toastNotify(3, res.message);
+}

@@ -5,6 +5,7 @@ function submitEditJob(recruiterId,jobId,data){
 		if(res.status && res.status =='success'){
 			return pubsub.publish("jobEdited", res);
 		}
+	},function(res,status,error) {
 		return pubsub.publish("failedEditJobSubmission", res);
 	});
 }

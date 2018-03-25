@@ -27,7 +27,7 @@ jQuery(document).ready( function() {
     candidates.onFilterByTag(function(){
         var obj = candidates.getAppliedFilters();
         var parameters = {}
-        console.log(obj)
+
         globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
@@ -45,16 +45,15 @@ jQuery(document).ready( function() {
     }
 
     function onFetchCandidatesByTagsFail(topic, res) {
-        alert(res)
+        errorHandler(res)
     }
 
     function onSuccessfullFetchedTag(topic, res){
-
 		candidates.populateTagsDropdown(res.data);
 	}
 
 	function onFailFetchedTag(topic, data){
-
+        errorHandler(data)
 	}
 
     var fetchCandidatesByTagsSuccessSubscription = pubsub.subscribe('fetchCandidatesByTagsSuccess', onFetchCandidatesByTagsSuccess)
@@ -85,3 +84,11 @@ jQuery(document).ready( function() {
     }
 
 })
+
+function errorHandler(data) {
+    var res = data.responseJSON
+    if(!res) {
+        return toastNotify(3, "Something went wrong");
+    }
+    return toastNotify(3, res.message);
+}

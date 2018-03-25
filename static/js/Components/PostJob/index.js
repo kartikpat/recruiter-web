@@ -39,21 +39,17 @@ $(document).ready(function(){
 		if(profile["availableCredits"] > 0)
 			return window.location.href = "/my-jobs";
 		window.location.href = "/recruiter/recruiter-plan"
- 		console.log(topic)
-		console.log(data);
+ 	}
 
-	}
 	function onFailedSubmitJob(topic, data) {
-		alert(res.status)
+		errorHandler(data)
 	}
 	function onSuccessfulFetchJob(topic, data) {
 		jobDetails.setData(jobId,data[0]);
 	}
-	
+
 	function onFailedFetchJob(topic, data){
-		alert(res.status)
-		console.log(topic)
-		console.log(data);
+		errorHandler(data)
 	}
 
 	function onSuccessfulFetchJobTags(topic, data) {
@@ -61,7 +57,7 @@ $(document).ready(function(){
 	}
 
 	function onFailedFetchJobTags(topic, data) {
-		console.log(data)
+		errorHandler(data)
 	}
 
 	var fetchJobSuccessSubscription = pubsub.subscribe("fetchedJob:"+jobId, onSuccessfulFetchJob);
@@ -76,3 +72,11 @@ $(document).ready(function(){
 	var jobEditFailSubscription = pubsub.subscribe('failedEditJobSubmission', onFailedSubmitJob);
 	bindGuidelineModalFunctionality();
 })
+
+function errorHandler(data) {
+    var res = data.responseJSON
+    if(!res) {
+        return toastNotify(3, "Something went wrong");
+    }
+    return toastNotify(3, res.message);
+}

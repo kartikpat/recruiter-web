@@ -6,7 +6,7 @@ function sendInterViewInvite(recruiterId, jobId, applicationId , data){
             res.parameters.inviteId = inviteId;
 			return pubsub.publish("sendInterViewInviteSuccess", res);
 		}
-	}, function(res){
-		return pubsub.publish("sendInterViewInviteFail", res.responseJSON);
+	}, function(res,status,error) {
+		return pubsub.publish("sendInterViewInviteFail", res);
 	});
 }

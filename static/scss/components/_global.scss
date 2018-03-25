@@ -11,6 +11,11 @@
 	overflow:auto;
 }
 
+.page-content .main-wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
 @mixin abolulute-center {
 	position:absolute;
 	top:0;

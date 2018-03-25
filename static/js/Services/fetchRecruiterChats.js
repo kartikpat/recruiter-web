@@ -3,6 +3,8 @@ function fetchRecruiterChats(recruiterId){
 		if(res.status && res.status =='success'){
 			return pubsub.publish("fetchedRecruiterChats", res.data);
 		}
-        pubsub.publish("fetchedRecruiterChatsFail", res.responseJSON);
+
+	}, function(res,status,error) {
+	    pubsub.publish("fetchedRecruiterChatsFail", res);
 	});
 }

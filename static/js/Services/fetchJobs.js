@@ -9,6 +9,8 @@ function fetchJobs(type, recruiterId, pageContent, pageNumber){
 		if(res.status && res.status =='success'){
 			return pubsub.publish("fetchedJobs", res.data);
 		}
-		return pubsub.publish("fetchJobsFail", res);
+
+	}, function(res,status,error) {
+	    return pubsub.publish("fetchJobsFail", res);
 	});
 }

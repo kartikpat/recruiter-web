@@ -56,7 +56,7 @@ function candidateList() {
         onChangebulkCheckbox()
         onClickCoverLetterLink()
         onClickActionListItems()
-        
+
         $(window).click(function(event) {
     		$(settings.candidateOtherActionsClass).addClass('inactive');
             $(settings.bulkActionsDropdown).addClass("hidden")
@@ -284,7 +284,7 @@ function candidateList() {
         }
 
         item.eduList.html(eduStr)
-        console.log(aData['userID']);
+
         item.candidateCheckbox.attr("id",aData["userID"]);
         item.candidateCheckboxLabel.attr("for",aData["userID"]);
         if(aData["pro"]) {
@@ -361,7 +361,7 @@ function candidateList() {
 		dataArray.forEach(function(aData, index){
 			var item = createElement(aData);
 			str+=item.element[0].outerHTML;
-            console.log(index)
+            
 		});
 		element.append(str);
         // settings.rowContainer.find(".candidate-select").removeClass("selected");
@@ -699,7 +699,7 @@ function candidateList() {
     function setHref(str) {
         var href = settings.downloadExcelMass.attr("href");
         href += str;
-        console.log(href)
+        
         settings.downloadExcelMass.attr("href", href);
     }
 

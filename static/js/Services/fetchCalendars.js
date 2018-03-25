@@ -1,12 +1,14 @@
 function fetchCalendars(jobId, recruiterId){
-	console.log(jobId,recruiterId);
-	console.log();
-	return getRequest(baseUrl+"/recruiter/"+recruiterId+"/calendar/"+jobId, {}, function(res){
-		console.log(res);
+
+
+	return getRequest(baseUrl+"/recruiter/"+recruiterId+"/job/"+jobId+"/calendars", {}, function(res){
+
 		if(res.status && res.status =='success'){
-			console.log(res.data);
+
 			return pubsub.publish("fetchedCalendars",res.data);
 		}
+
+	}, function(res,status,error) {
 		return pubsub.publish("failedToFetchCalendars", res);
 	});
 }

@@ -5,6 +5,8 @@ function fetchCandidateProfile(recruiterId, jobId, applicationId){
 			res.obj.applicationId = applicationId;
 			return pubsub.publish("fetchCandidateProfile", res);
 		}
-		return pubsub.publish("fetchCandidateProfileFail", res.responseJSON);
+
+	}, function(res,status,error) {
+		return pubsub.publish("fetchCandidateProfileFail", res);
 	});
 }

@@ -6,6 +6,8 @@ function fetchJobApplications(jobId,parameters, recruiterId){
 			res.obj.status = parameters.status;
 			return pubsub.publish("fetchedJobApplication", res);
 		}
-		return pubsub.publish("failedTofetchJobApplication", res.responseJSON);
+
+	}, function(res,status,error) {
+	    return pubsub.publish("failedTofetchJobApplication", res);
 	});
 }

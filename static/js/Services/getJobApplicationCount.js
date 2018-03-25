@@ -3,6 +3,8 @@ function fetchJobApplicationCount(recruiterId, jobId){
 		if(res.status && res.status =='success'){
 			return pubsub.publish("fetchedApplicationCountSuccess", res.data);
 		}
-        return pubsub.publish("fetchedApplicationCountFail", res.responseJSON);
+
+	}, function(res,status,error) {
+	    return pubsub.publish("fetchedApplicationCountFail", res);
 	});
 }
