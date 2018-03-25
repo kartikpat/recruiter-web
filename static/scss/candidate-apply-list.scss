@@ -1810,7 +1810,7 @@ input::-webkit-input-placeholder {
 
  					bottom: 0;
  					background:$color-white;
-
+                    padding-left: 50px;
 				}
 
 				&.second-fold {
@@ -1823,7 +1823,8 @@ input::-webkit-input-placeholder {
 				}
 				.action-buttons {
 					font-size:0;
-
+                    width: 90%;
+                    margin: 0 auto;
 					span {
 						@include button($color-white);
 						display:inline-block;
@@ -1951,7 +1952,7 @@ input::-webkit-input-placeholder {
 				&.first-fold {
  					bottom: 0;
  					background:$color-white;
-                    padding-left: 30px; 
+                    padding-left: 30px;
 				}
 
 				&.second-fold {
@@ -1964,6 +1965,8 @@ input::-webkit-input-placeholder {
 				}
 				.action-buttons {
 					font-size:0;
+                    width: 90%;
+                    margin: 0 auto;
 					span {
 						@include button($color-white);
 						display:inline-block;
@@ -2113,6 +2116,10 @@ input::-webkit-input-placeholder {
                 margin-top: 5px;
             }
         }
+    }
+
+    .view-resume-modal .mobile-resume-sidebar .fold.first-fold {
+        padding-left: 25px;
     }
 }
 

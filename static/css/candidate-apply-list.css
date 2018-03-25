@@ -4242,12 +4242,15 @@ input::-webkit-input-placeholder {
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
         .view-resume-modal .mobile-resume-sidebar .fold.first-fold {
           bottom: 0;
-          background: #FFF; }
+          background: #FFF;
+          padding-left: 50px; }
         .view-resume-modal .mobile-resume-sidebar .fold.second-fold {
           bottom: 60px;
           background: #808080; }
         .view-resume-modal .mobile-resume-sidebar .fold .action-buttons {
-          font-size: 0; }
+          font-size: 0;
+          width: 90%;
+          margin: 0 auto; }
           .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span {
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -4359,7 +4362,9 @@ input::-webkit-input-placeholder {
           bottom: 60px;
           background: #808080; }
         .view-resume-modal .mobile-resume-sidebar .fold .action-buttons {
-          font-size: 0; }
+          font-size: 0;
+          width: 90%;
+          margin: 0 auto; }
           .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span {
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -4484,7 +4489,9 @@ input::-webkit-input-placeholder {
       padding: 2px 10px; }
       .active-filters .filter-tag #clear-all {
         display: block;
-        margin-top: 5px; } }
+        margin-top: 5px; }
+  .view-resume-modal .mobile-resume-sidebar .fold.first-fold {
+    padding-left: 25px; } }
 
 .loader.loader-scroller {
   height: 45px;

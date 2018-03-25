@@ -46,6 +46,7 @@ function candidateList() {
         settings.bulkActionsContainer = $("#bulkActionsContainer"),
         settings.applicationsCount = $(".applicationsCount"),
         settings.bulkCheckInputClass = ".bulkCheckInput";
+        settings.bulkBackIcon = $("#bulkBackIcon")
         onClickBulkDownArrow()
         onClickMassCheckbox()
         onClickCandidateOtherActions()
@@ -57,6 +58,8 @@ function candidateList() {
         onClickCoverLetterLink()
         onClickActionListItems()
 
+        onClickBulkBackIcon()
+
         $(window).click(function(event) {
     		$(settings.candidateOtherActionsClass).addClass('inactive');
             $(settings.bulkActionsDropdown).addClass("hidden")
@@ -66,6 +69,15 @@ function candidateList() {
             e.stopPropagation()
         })
 	}
+
+    function onClickBulkBackIcon() {
+        settings.bulkBackIcon.click(function(){
+            settings.bulkActionContainer.addClass("hidden")
+            settings.massCheckboxInput.prop("checked",false)
+            settings.rowContainer.find(".candidateCheckbox").prop("checked", false)
+            settings.rowContainer.find(".candidate-select").removeClass("selected")
+        })
+    }
 
     function onClickActionListItems() {
         settings.rowContainer.on('click','.action-list-items',function(e) {
@@ -361,7 +373,7 @@ function candidateList() {
 		dataArray.forEach(function(aData, index){
 			var item = createElement(aData);
 			str+=item.element[0].outerHTML;
-            
+
 		});
 		element.append(str);
         // settings.rowContainer.find(".candidate-select").removeClass("selected");
@@ -699,7 +711,7 @@ function candidateList() {
     function setHref(str) {
         var href = settings.downloadExcelMass.attr("href");
         href += str;
-        
+
         settings.downloadExcelMass.attr("href", href);
     }
 
