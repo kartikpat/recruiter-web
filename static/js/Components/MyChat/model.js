@@ -98,10 +98,10 @@ function Chat() {
 
    function onClickSingleChatItem(fn) {
        settings.conversationItemList.on('click', settings.conversationItemClass, function(){
+           var channelName = $(this).attr("data-channel-name");
            if(settings.channelName == channelName ) {
                return
            }
-           var channelName = $(this).attr("data-channel-name");
            var candidateId = $(this).attr("data-candidate-id");
            settings.msgContent.attr("data-channel-name",channelName)
            settings.candidateId = candidateId
@@ -113,6 +113,12 @@ function Chat() {
            settings.mssgContainer.empty()
            fn(candidateId)
        })
+   }
+
+   function setChat(channelName, candidateId) {
+       settings.msgContent.attr("data-channel-name",channelName)
+       settings.candidateId = candidateId
+       settings.channelName = channelName
    }
 
    function getTimeElement(data) {
@@ -269,7 +275,8 @@ function Chat() {
        setUuid: setUuid,
        scrollToBottom: scrollToBottom,
        setRecruiterActive: setRecruiterActive,
-       setRecruiterInactive: setRecruiterInactive
+       setRecruiterInactive: setRecruiterInactive,
+       setChat: setChat
    }
 
 }

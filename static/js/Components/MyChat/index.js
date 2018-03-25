@@ -27,6 +27,12 @@ jQuery(document).ready( function() {
         chat.setCandidateProfile(obj)
     })
 
+    var candidateId = getQueryParameter("candidateId");
+
+
+
+    function openSingleChatItem(candidateId) {}
+
     chat.setUuid(btoa(recruiterId+'--'+profile["email"]))
 
     chat.onSendMessage(function(message, channelName, candidateId){
@@ -62,6 +68,14 @@ jQuery(document).ready( function() {
         channelsArray = data;
         store.saveToStore(data);
         chatEngine.subscribe(getArray(channelsArray));
+        if(candidateId) {
+            var obj = store.getCandidateFromStore(candidateId)
+            globalParameters.channelName = obj.channel;
+            globalParameters.clicked = 1;
+            chatEngine.fetchHistory(obj.channel , globalParameters.messageNumber , null, null, onFetchHistory);
+            chat.setCandidateProfile(obj)
+            chat.setChat(obj.channel, candidateId)
+        }
     }
 
     function onFetchRecruiterChatsFail(topic, data) {

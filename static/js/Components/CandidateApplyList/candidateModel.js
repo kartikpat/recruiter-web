@@ -306,7 +306,7 @@ function Candidate() {
         }
 
         openModal(item)
-        console.log(type)
+        
         if(!type)
             return
         if(type == "tag") {

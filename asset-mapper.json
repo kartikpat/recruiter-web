@@ -999,6 +999,7 @@
 				"static/js/header.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
+				"static/js/Utilities/common.js",
 				"static/js/my-chat.js",
 				"static/js/Utilities/chatEngine.js",
 				"static/js/vendor/moment.min.js",
@@ -1048,7 +1049,7 @@
 				"static/js/utilities.js",
 				"static/js/vendor/pdf.js",
 				"static/js/vendor/pdf.worker.js",
-	
+
 				"static/js/tags/industry.js",
 				"static/js/tags/current-location.js",
 				"static/js/tags/preferred-location.js",

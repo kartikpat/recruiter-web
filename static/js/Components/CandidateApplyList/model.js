@@ -443,6 +443,7 @@ function candidateList() {
             event.stopPropagation();
             var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            
             fn(candidateId, applicationId);
             return false
         });
