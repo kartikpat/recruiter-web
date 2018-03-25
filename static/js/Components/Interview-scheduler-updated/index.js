@@ -35,7 +35,7 @@ $(document).ready(function(){
 
     function onSuccessfulSubmitCalendar(topic, data){
         console.log('submit successful');
-        // window.location='/' //changeurl
+         window.location='/calendar-manage' //changeurl
     }
 
 	function onFailedSubmitCalendar(topic, data){
@@ -48,8 +48,5 @@ $(document).ready(function(){
   
     var fetchCalendarSuccessSubscription = pubsub.subscribe("fetchedCalendars",onSuccessfulFetchCalendar);
 	var fetchCalendarFailSubscription = pubsub.subscribe("failedToFetchCalendars",onFailedFetchCalendar);
-
-
-
-    
+ 
 })    

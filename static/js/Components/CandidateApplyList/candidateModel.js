@@ -366,11 +366,6 @@ function Candidate() {
         item.rejectButton.text("Reject");
         item.resume.empty()
         item.savedButton.html("<span class='icon'><i class='icon-star'></i></span>Save for Later");
-        item.commentBox.addClass("hidden");
-        item.commentTextarea.addClass("hidden");
-        item.editButton.addClass("hidden");
-        item.addButton.removeClass("hidden");
-        item.commentAddBox.removeClass("hidden");
         $(".coverLetterTab").addClass("hidden");
 
     }

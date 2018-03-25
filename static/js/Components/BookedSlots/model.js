@@ -20,10 +20,10 @@ function BookedSlots() {
 		settings.noInterviewView=$('.page-wrap'),
 		settings.tableRowShell = $(".tableRow.shell");
 		settings.loaderOverlay = $("#loaderOverlay");
-        settings.date = ""
+		settings.date = ""
 		onClickInterviewCancel();
         onClickToggle()
-
+		jQuery(".header .menu-list-item.my-interviews").addClass("active");
 	}
 
 	function onClickInterviewCancel(){

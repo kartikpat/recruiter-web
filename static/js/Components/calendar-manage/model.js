@@ -10,7 +10,9 @@ function Manage() {
         settings.noData='.no-data',
         settings.calendarRowPrototype = $('.calendarRow.prototype'),
         settings.emptyviewPrototype = $('.empty-view.prototype');
+        jQuery(".header .menu-list-item.my-interviews").addClass("active");
     }   
+
 
     function cloneRow(data){
         if(data.length==0){
