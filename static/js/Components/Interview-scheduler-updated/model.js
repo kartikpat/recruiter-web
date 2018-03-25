@@ -6,26 +6,6 @@ var errorResponses = {
     missingslots:'Please select a slot',
 }
 
-// var data={
-//     name:"geetansh",
-//     message:"helo",
-//     telephone:"bye",
-//     fromDate:"2018-03-10",
-//     toDate:"2018-03-25",
-//     slots:[
-//         {
-//             from:"6",
-//             to:"12",
-//             id:"6",
-//         },
-//         {
-//             from:"12",
-//             to:"23",
-//             id:"5",
-//         }
-//     ]
-// }
-
 function Calendar(){
     var settings ={};
     var timetable={};
@@ -313,14 +293,10 @@ function Calendar(){
         }       
     }
 
-    function selectCreater(){
-        // var min = 1,
-        //     max = 24;
-      //  debugger     
+    function selectCreater(){    
         var select= settings.select_menu;
         var ampm = 'AM';
         for (var hour=9; hour<=22; hour++) {
-            
             var hour12 = hour > 12 ? hour - 12 : hour;
                  hour  = hour < 10 ? '0'+hour :  hour;
                  hour12= hour12 <10 ? '0'+hour12 : hour12;
@@ -333,30 +309,7 @@ function Calendar(){
                     }
                 }
         }
-        
-        // for (var i = min; i<=max; i++){
-        //         if(i<12){
-        //         // option.value = i;
-        //         // option.innerHTML = i+":00 AM";
-        //             //  var a = i > 11 ? " " : "0";
-        //             if(i==10 || i==11){
-        //                 select.append('<option value="' + i + '00" >'+ i + ':00 AM  </option>');
-        //                // return
-        //             }
-        //             else
-        //             select.append('<option value="0' + i + '00" >'+ i + ':00 AM  </option>'); 
-        //         }
-        //         else  if(i==12){
-        //             select.append('<option value="'+ i + '00" >'+ i + ':00 PM  </option>'); 
-        //         }
-        //         else if(i==24){
-        //             select.append('<option value="'+ (i) + '00" >'+ (i-12) + ':00 AM  </option>'); 
-        //         }
-        //         else {
-        //             select.append('<option value="'+ (i) + '00" >'+ (i-12) + ':00 PM  </option>'); 
-        //         }
-        //     //   select.append(option.outerHTML);
-        //     }
+      
     }
 
     function copytoall(){
@@ -377,13 +330,15 @@ function Calendar(){
             var end=$("#"+parent+"").find(".end");
             var k=parseInt(start.val());
             console.log(k);
-             if(k>=0){
-            var check=$("#"+parent+" .end").find('option:selected').index();
-                end.val(k);
+            var index = $("#"+parent+" .start").find('option:selected').index();
+            console.log(index);
+             if(k>=0 && index<27){
+                var check=$("#"+parent+" .end").find('option:selected').index();
+                //  end.val(k);
+                // console.log(check);
                 var value=$("#"+parent+" .start option:selected").next().val();
                 end.val(value);
                 $("#"+parent+" .end").find('option').prop('disabled', false);
-                var index = $("#"+parent+" .start").find('option:selected').index();
                 $("#"+parent+" .end").not("#"+parent+" .start").find('option:lt(' + (index+1) + ')').prop('disabled', true);
              }
         })
@@ -450,27 +405,15 @@ function Calendar(){
     }
 
     function Timer(e){ 
-
-        // for(i=0;i<2400;i+=100){   
-        //     if(i<1200){
-        //           $('.fc-day').append('<div id="hours-'+i/100+'" class="TimeLines">'+i/100+':00 AM </div>');
-        //     }
-        //     else if(i==1200){
-        //           $('.fc-day').append('<div id="hours-'+i/100+'" class="TimeLines">'+i/100+' :00 PM </div>');
-        //     }
-        //     else{
-        //           $('.fc-day').append('<div id="hours-'+i/100+'" class="TimeLines">'+i/100+' :00 PM </div>');
-        //       }
-        //   }
         var ampm = 'AM';
         for (var hour=0; hour<24; hour++){
             var hour12 = hour > 12 ? hour - 12 : hour;
+            hour12= hour12 <10 ? '0'+hour12 : hour12;
             if (hour > 11) ampm = 'PM';
                 for (var min = 0; min<60; min += 30) {
                      var min0= min<30 ?  '00': min;
                      $('.fc-day').append('<div id="hours-'+hour+min0+'" class="TimeLines"> ' + hour12 + ':' + min0 + ' ' + ampm + ' </div>');
                 }
-
         }
 
     }
@@ -639,7 +582,6 @@ function Calendar(){
         getDetails:getDetails,
         validate:validate,
         setDetails:setDetails,
-    
     }
 };
 
