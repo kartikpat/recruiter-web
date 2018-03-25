@@ -3,6 +3,8 @@ function globalSearch(recruiterId,params){
 		if(res.status && res.status =='success'){
 			return pubsub.publish("fetchedSearch", res);
 		}
-        return pubsub.publish("fetchedFailSearch", res.data);
+
+	}, function(res,status,error) {
+	    return pubsub.publish("fetchedFailSearch", res);
 	});
 }

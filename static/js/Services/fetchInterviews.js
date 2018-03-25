@@ -4,6 +4,8 @@ function fetchInterviews(recruiterId, parameters){
 		if(res.status && res.status =='success'){
 			pubsub.publish("fetchedInterviews", res.data);
 		}
-        return pubsub.publish("fetchedInterviewsFail", res);
+
+	}, function(res,status,error) {
+	    return pubsub.publish("fetchedInterviewsFail", res);
 	});
 }

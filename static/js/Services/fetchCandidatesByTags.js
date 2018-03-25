@@ -5,6 +5,8 @@ function fetchCandidatesByTags(parameters, recruiterId){
 			res.obj.pageNumber = parameters.pageNumber;
 			return pubsub.publish("fetchCandidatesByTagsSuccess", res);
 		}
-		return pubsub.publish("fetchCandidatesByTagsFail", res.responseJSON);
+
+	}, function(res,status,error) {
+	    return pubsub.publish("fetchCandidatesByTagsFail", res);
 	});
 }

@@ -42,8 +42,8 @@ jQuery(document).ready( function() {
             img: profile["pic"],
             type: 1
         }, channelName, function(status,response){
-            console.log(status);
-            console.log(response)
+
+
             if(status.statusCode == 200) {
                 chat.appendSendMessage(message, profile["pic"])
             }
@@ -105,8 +105,8 @@ jQuery(document).ready( function() {
        var service = p.service; // service
        var uuids = p.uuids; // UUIDs of users who are connected with the channel with their state
        var occupancy = p.occupancy; // No. of users connected with the channel
-       console.log('............................................')
-       console.log(p)
+
+
        if(p["action"] == "join" && p["occupancy"] >= 2 && p["uuid"] != (uuid || chatEngine.getUUID())) {
            chat.showStatusIcon(p.channel)
        }
@@ -116,7 +116,7 @@ jQuery(document).ready( function() {
    }
 
    function onNewStatus(s) {
-       console.log(s)
+
        // handle status
        var category = s.category; // PNConnectedCategory
        var operation = s.operation; // PNSubscribeOperation
@@ -146,9 +146,6 @@ jQuery(document).ready( function() {
     })
 
    function onFetchHistory(data, response) {
-       console.log(data)
-       console.log(response)
-       console.log(globalParameters)
        globalParameters.startTimeToken = parseInt(response.startTimeToken)
        chat.populateMessages(response.messages)
     //    if(globalParameters.clicked == 1) {
@@ -182,8 +179,9 @@ function getArray(array) {
 }
 
 function errorHandler(data) {
-    if(!data) {
+    var res = data.responseJSON
+    if(!res) {
         return toastNotify(3, "Something went wrong");
     }
-    return toastNotify(3, data.message);
+    return toastNotify(3, res.message);
 }

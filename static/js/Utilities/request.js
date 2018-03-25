@@ -10,7 +10,7 @@
  * @param  {boolean} async           set this to true when making synchronous request
  * @param  {object} scopeTest       reference object if any to be accessed in the callback
  */
-var postRequest = function(url,headers,data,successCallback,completeCallback,beforeSendCallback,failCallback,processData,async,scopeTest,contentType){
+var postRequest = function(url,headers,data,successCallback,failCallback,processData,async,scopeTest,contentType){
     return $.ajax({
         method: "POST",
         url: url,
@@ -19,8 +19,7 @@ var postRequest = function(url,headers,data,successCallback,completeCallback,bef
         scopeTest: scopeTest,
         processData:processData,
         success: successCallback,
-        complete: completeCallback,
-        beforeSend: beforeSendCallback,
+        error: failCallback,
         async: async,
         contentType: contentType
     });
@@ -33,7 +32,7 @@ var postRequest = function(url,headers,data,successCallback,completeCallback,bef
  * @param  {Function} callback             function to be invoked on request success
  * @param  {object}   additionalParameters reference object if any to be accessed in the callback
  */
-var getRequest = function(url,parameters,callback1,callback2,callback3, additionalParameters,showError){
+var getRequest = function(url,parameters,successCallback,failCallback, additionalParameters,showError){
     return  $.ajax({
         method: "GET",
         url: url,
@@ -45,10 +44,8 @@ var getRequest = function(url,parameters,callback1,callback2,callback3, addition
             token: null
         },
         additionalParameters: additionalParameters,
-        success: callback1,
-        complete: callback3,
-        beforeSend: callback2
-        //error: showError
+        success: successCallback,
+        error: failCallback
 
     });
 

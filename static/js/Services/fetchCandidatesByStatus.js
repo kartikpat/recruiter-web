@@ -7,6 +7,8 @@ function fetchCandidatesByStatus(parameters, recruiterId){
 			res.obj.status = parameters.status;
 			return pubsub.publish("fetchCandidatesByStatusSuccess", res);
 		}
-		return pubsub.publish("fetchCandidatesByStatusFail", res.responseJSON);
+
+	}, function(res,status,error) {
+	    return pubsub.publish("fetchCandidatesByStatusFail", res);
 	});
 }

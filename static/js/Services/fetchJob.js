@@ -3,6 +3,8 @@ function fetchJob(jobId, recruiterId, parameters){
 		if(res.status && res.status =='success'){
 			return pubsub.publish("fetchedJob:"+jobId, res.data);
 		}
-		return pubsub.publish("failedToFetchJob:"+jobId, res);
+
+	}, function(res,status,error) {
+	    return pubsub.publish("failedToFetchJob:"+jobId, res);
 	});
 }

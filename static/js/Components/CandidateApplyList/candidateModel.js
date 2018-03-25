@@ -366,11 +366,6 @@ function Candidate() {
         item.rejectButton.text("Reject");
         item.resume.empty()
         item.savedButton.html("<span class='icon'><i class='icon-star'></i></span>Save for Later");
-        item.commentBox.addClass("hidden");
-        item.commentTextarea.addClass("hidden");
-        item.editButton.addClass("hidden");
-        item.addButton.removeClass("hidden");
-        item.commentAddBox.removeClass("hidden");
         $(".coverLetterTab").addClass("hidden");
 
     }
@@ -401,13 +396,13 @@ function Candidate() {
         settings.candidateDetailsModal.on('click', settings.candidateAddCommentButtonClass,function(event) {
             event.stopPropagation();
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
-            var comment = $(settings.candidateCommentTextareaClass).val();
+            var comment = ($(settings.candidateCommentTextareaClass).val()).trim();
             $(settings.candidateCommentTextareaClass).addClass("hidden");
             settings.commentBox.removeClass("hidden");
             settings.commentTextarea.text(comment);
             $(settings.candidateAddCommentButtonClass).addClass("hidden");
             settings.candidateEditComment.removeClass("hidden");
-            if(comment == "") {
+            if(!comment) {
                 return
             }
             fn(applicationId, comment);
@@ -436,12 +431,15 @@ function Candidate() {
         settings.candidateDetailsModal.on('click', settings.mobCandidateAddCommentButtonClass,function(event) {
             event.stopPropagation();
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
-            var comment = $(settings.mobCandidateCommentTextareaClass).val();
+            var comment = ($(settings.mobCandidateCommentTextareaClass).val()).trim();
             $(settings.mobCandidateCommentTextareaClass).addClass("hidden");
             $(settings.mobCandidateAddCommentButtonClass).addClass("hidden");
             settings.mobCommentBox.removeClass("hidden");
             settings.commentTextarea.text(comment);
             settings.mobCandidateEditComment.removeClass("hidden");
+            if(!comment) {
+                return
+            }
             fn(applicationId, comment);
         });
 
@@ -464,7 +462,7 @@ function Candidate() {
         });
         settings.candidateDetailsModal.on('click', settings.candidateAddTagButtonClass,function(event) {
             event.stopPropagation();
-            var tagName = $(settings.candidateTagInputClass).val();
+            var tagName = ($(settings.candidateTagInputClass).val()).trim();
             if(!tagName) {
                 $(settings.candidateTagInputClass).addClass("error-border");
                 return settings.tagInputError.removeClass("hidden")
@@ -496,7 +494,7 @@ function Candidate() {
         });
         settings.candidateDetailsModal.on('click', settings.mobCandidateAddTagButtonClass,function(event) {
             event.stopPropagation();
-            var tagName = $(settings.mobCandidateTagInputClass).val();
+            var tagName = ($(settings.mobCandidateTagInputClass).val()).trim();
             if(!tagName) {
                 $(settings.mobCandidateTagInputClass).addClass("error-border");
                 return settings.tagInputError.removeClass("hidden")

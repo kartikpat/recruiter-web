@@ -802,6 +802,10 @@ span.sticker {
   clear: both;
   overflow: auto; }
 
+.page-content .main-wrapper {
+  max-width: 1440px;
+  margin: 0 auto; }
+
 a {
   cursor: pointer; }
 
@@ -1612,6 +1616,9 @@ span.sticker {
   background-size: 800px 104px;
   position: relative; }
 
+#filterByJob {
+  max-width: 250px; }
+
 .loading {
   margin: 20px 0; }
   .loading .loader-scroller {
@@ -1862,6 +1869,10 @@ span.sticker {
           padding-left: 0; } }
 
 @media all and (max-width: 768px) {
+  #filterByJob {
+    max-width: 235px; }
+  #filterByStatus {
+    max-width: 150px; }
   .no-data {
     background-color: #FFF; }
   .shell p {
@@ -1876,7 +1887,7 @@ span.sticker {
       display: block;
       font-size: 14px;
       background: #f3fbfb;
-      padding: 15px 20px 10px;
+      padding: 15px 15px 10px;
       border: 1px solid #e8e8e8;
       border-bottom: 0;
       border-top-right-radius: 4px;
@@ -1909,11 +1920,7 @@ span.sticker {
         -webkit-appearance: none;
         -moz-appearance: none;
         -o-appearanance: none;
-        line-height: 1.5;
-        margin-bottom: 0 !important;
-        padding-top: 5px !important;
-        padding-bottom: 5px !important;
-        padding-left: 0 !important; }
+        line-height: 1.5; }
         .page-content .tagged-candidates .page-header .stats select[multiple] {
           background-image: none;
           height: 120px; }
@@ -1973,6 +1980,12 @@ span.sticker {
           border-top-left-radius: 0; }
         .page-content .tagged-candidates .tagged-candidates-listing .candidate-item:last-child {
           margin: 0; } }
+
+@media all and (max-width: 480px) {
+  #filterByJob {
+    max-width: 200px; }
+  #filterByStatus {
+    max-width: 150px; } }
 
 @media all and (max-width: 360px) {
   .page-content .tagged-candidates {

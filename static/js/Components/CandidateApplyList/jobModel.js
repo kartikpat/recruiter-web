@@ -43,7 +43,7 @@ function Job(){
 	}
 
 	function setJobDetails(data){
-		console.log(data)
+		
 		settings.jobTitle.text(data["jobTitle"]).removeClass("shell");
 		settings.jobId.text("Job Code: " +data["jobPublishedId"]).removeClass("shell");
 		if(data["jobLocation"]) {
@@ -210,7 +210,7 @@ function Job(){
 
 	function onChangeDefaultCalendar(fn) {
 		settings.calendarSelect.on('change', function(e) {
-			console.log("a")
+			
 			var calendarId = $(this).val();
 			if(parseInt(calendarId) == -1) {
 				return

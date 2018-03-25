@@ -279,7 +279,10 @@ function Filters(){
 	function onClickSearchButton(fn){
 		settings.searchButton.click(function(event){
 
-			var str = filtersTarget["searchString"]["target"].val();
+			var str = (filtersTarget["searchString"]["target"].val()).trim();
+			if(!str) {
+				return
+			}
 			// if(str == '') {
 			// 	return settings.searchCandidateError.removeClass("hidden")
 			// }
@@ -293,7 +296,10 @@ function Filters(){
 		filtersTarget["searchString"]["target"].keyup(function(event){
 
             if (event.which == 13) {
-				var str = filtersTarget["searchString"]["target"].val();
+				var str = (filtersTarget["searchString"]["target"].val()).trim();
+				if(!str) {
+					return
+				}
 				filtersTarget["searchString"]["selection"] = str;
                 fn();
             }
@@ -310,7 +316,10 @@ function Filters(){
 
 	function onInputSearchFilter() {
 		settings.filterSearch.on('input', function(){
-			var str = $(this).val();
+			var str = ($(this).val()).trim();
+			if(!str) {
+				return
+			}
 			var dataLabel = $(settings.activeFilterListingClass).attr("data-label");
 			if(dataLabel == "functionalArea") {
 				searchTags(dataLabel, functionalAreaTagsData, str)

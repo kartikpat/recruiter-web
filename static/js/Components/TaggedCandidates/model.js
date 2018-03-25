@@ -10,6 +10,7 @@ function candidateList() {
         settings.candidateDownloadResumeButtonClass= ".candDownloadResume",
         settings.candidateProfessionalItemClass = '.candProfessionalItem',
         settings.candidateEducationItemClass = '.candEducationItem',
+        settings.candAppliedJobsClass= '.candAppliedJobs',
         settings.candTagItemClass= '.candTagItem',
         settings.tagOptionClass= '.tagOption',
         settings.tagId = -1,
@@ -23,7 +24,7 @@ function candidateList() {
 
    function onToggleJobList() {
        settings.candidateListing.on('click',settings.multipleJobListingTextClass, function(){
-           $(this).next().slideToggle();
+           $(this).siblings(".multipleJobListing").slideToggle();
        })
    }
 
@@ -143,8 +144,9 @@ function candidateList() {
                var str = ""
                $.each(aData["applications"],function(index, application) {
                    console.log(application)
-                   var item =  $(''+settings.candAppliedJobsClass+'.prototype').clone().removeClass("prototype hidden");;
-                   item.html(application["title"] + " -<a href='/job/"+application["jobID"]+"/applications/"+application["id"]+"'> View Profile</a> ")
+                   var item =  $(''+settings.candAppliedJobsClass+'.prototype').clone().removeClass("prototype hidden");
+                   item.html(application["title"] + " -<a class='link-color' href='/job/"+application["jobID"]+"/applications/"+application["id"]+"'> View Profile</a> ");
+                   console.log(item)
                    str+=item[0].outerHTML
                })
                item.multipleCandJobListing.append(str);

@@ -6,7 +6,7 @@ function setBulkCandidateActions(recruiterId, jobId, action , data, parameters){
 			res.applicationId = data.applicationId;
 			return pubsub.publish("setCandidateBulkActionSuccess", res);
 		}
-	}, function(res){
-		return pubsub.publish("setCandidateBulkActionFail", res.responseJSON);
+	}, function(res,status,error) {
+		return pubsub.publish("setCandidateBulkActionFail", res);
 	});
 }

@@ -3,39 +3,42 @@
 		{{>chatSticky}}
 
 	<div class="page-content">
-		<div class="tagged-candidates">
-			<div class="page-header">
-				<h3 class="title">Shortlisted &amp; Saved Candidates</h3>
-				<div class="stats">
-					<span class="total-candidates"><span class="candidates-count" id="candidateCount">272</span> candidates</span>
+		<div class="main-wrapper">
+			<div class="tagged-candidates">
+				<div class="page-header">
+					<h3 class="title">Shortlisted &amp; Saved Candidates</h3>
+					<div class="stats">
+						<span class="total-candidates"><span class="candidates-count" id="candidateCount">272</span> candidates</span>
 
-					<select class="minimal" id="filterByStatus">
-						<option value="1,3">All Candidates</option>
-						<option value="1">Shortlisted Candidates</option>
-						<option value="3">Saved Candidates</option>
-					</select>
-					<select class="minimal" id="filterByJob">
-						<option value="-1" class="">All Jobs</option>
-					</select>
-				</div>
-			</div>
-
-			<div class="tagged-candidates-listing">
-				{{>candidateApplyListShell}}
-				{{>candidateApplyListShell}}
-				<div class="" id="candidateList">
-
+						<select class="minimal" id="filterByStatus">
+							<option value="1,3">All Candidates</option>
+							<option value="1">Shortlisted Candidates</option>
+							<option value="3">Saved Candidates</option>
+						</select>
+						<select class="minimal" id="filterByJob">
+							<option value="-1" class="">All Jobs</option>
+						</select>
+					</div>
 				</div>
 
-			</div>
-			<div class="loading loaderScroller hidden">
-				<div class="loader loader-scroller"></div>
-			</div>
+				<div class="tagged-candidates-listing">
+					{{>candidateApplyListShell}}
+					{{>candidateApplyListShell}}
+					<div class="" id="candidateList">
 
+					</div>
+
+				</div>
+				<div class="loading loaderScroller hidden">
+					<div class="loader loader-scroller"></div>
+				</div>
+
+			</div>
+			<div class="conversations">
+				{{>chatSidebar}}
+			</div>
 		</div>
-		<div class="conversations">
-			{{>chatSidebar}}
-		</div>
+
 	</div>
 
 	<div class="candidate-item candidateItem prototype hidden">
@@ -93,6 +96,7 @@
 				</div>
 				<div class="multipleJobListingContainer hidden">
 					<span class="multipleJobListingText"></span>
+					<span class="icon-down_arrow"></span>
 					<div class="multipleJobListing"></div>
 				</div>
 			</div>

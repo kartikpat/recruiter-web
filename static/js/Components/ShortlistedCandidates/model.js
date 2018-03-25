@@ -143,7 +143,7 @@ function candidateList() {
                $.each(aData["applications"],function(index, application) {
                    console.log(application)
                    var item =  $(''+settings.candAppliedJobsClass+'.prototype').clone().removeClass("prototype hidden");;
-                   item.html(application["title"] + " -<a href='/job/"+application["jobID"]+"/applications/"+application["id"]+"'> View Profile</a> ")
+                   item.html(application["title"] + " -<a class='link-color' href='/job/"+application["jobID"]+"/applications/"+application["id"]+"'> View Profile</a> ")
                    str+=item[0].outerHTML
                })
                item.multipleCandJobListing.append(str);
@@ -172,7 +172,7 @@ function candidateList() {
        settings.candidateCount.text(count)
    }
 
-   
+
 
    function addToList(dataArray, pageNumber, pageContent){
        hideShell()
@@ -231,7 +231,7 @@ function candidateList() {
 
    function onToggleJobList() {
        settings.candidateListing.on('click',settings.multipleJobListingTextClass, function(){
-           $(this).next().slideToggle();
+           $(this).siblings(".multipleJobListing").slideToggle();
        })
    }
 

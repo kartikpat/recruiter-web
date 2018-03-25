@@ -16,6 +16,10 @@
     }
 }
 
+#filterByJob {
+    max-width: 250px;
+}
+
 .loading {
     margin: 20px 0;
 
@@ -288,6 +292,12 @@
 }
 
 @media all and (max-width:768px) {
+    #filterByJob {
+        max-width: 235px;
+    }
+    #filterByStatus {
+        max-width: 150px;
+    }
     .no-data {
         background-color: $color-white;
     }
@@ -319,7 +329,7 @@
 				display:block;
 	            font-size:$base-font-size;
                 background:$mobile-highlight-background-color;
-                padding:15px 20px 10px;
+                padding:15px 15px 10px;
                 border:1px solid $border-color-base;
 				border-bottom:0;
 				border-top-right-radius:4px;
@@ -341,10 +351,7 @@
 	            	}
 	            	select {
 	            		@include select-dropdown;
-	            		margin-bottom:0 !important;
-	            		padding-top:5px !important;
-	            		padding-bottom:5px !important;
-	            		padding-left:0 !important;
+
 	            	}
 	            }
 	        }
@@ -432,7 +439,18 @@
 	}
 }
 
+@media all and (max-width:480px) {
+    #filterByJob {
+        max-width: 200px;
+    }
+    #filterByStatus {
+        max-width: 150px;
+
+    }
+}
+
 @media all and (max-width:360px) {
+
 	.page-content {
 
 		.tagged-candidates {

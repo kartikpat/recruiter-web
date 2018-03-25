@@ -3,6 +3,8 @@ function fetchRecruiterReports(recruiterId){
 		if(res.status && res.status =='success'){
 			return pubsub.publish("fetchReportsSuccess", res.data);
 		}
-		return pubsub.publish("fetchReportsFail", res);
+
+	}, function(res,status,error) {
+	    return pubsub.publish("fetchReportsFail", res);
 	});
 }

@@ -6,7 +6,6 @@ var globalParameters = {
 }
 jQuery(document).ready( function() {
     var candidates = candidateList();
-
     candidates.init();
     var parameters = {}
     parameters.status = globalParameters.status;
@@ -30,9 +29,7 @@ jQuery(document).ready( function() {
 
             return fetchCandidatesByStatus(parameters, recruiterId)
         }
-
         fetchJobApplications(obj.jobId,parameters,recruiterId)
-
     })
 
     candidates.onFilterByJob(function(){
@@ -44,7 +41,6 @@ jQuery(document).ready( function() {
         parameters.status = obj.status
         candidates.emptyCandidateList()
         candidates.showShell()
-        console.log(obj.jobId)
         if(parseInt(obj.jobId) == -1) {
             return fetchCandidatesByStatus(parameters, recruiterId)
         }
@@ -73,7 +69,7 @@ jQuery(document).ready( function() {
     }
 
     function onFetchCandidatesByStatusFail(topic, res) {
-        alert(res)
+        errorHandler(data)
     }
 
     function onJobsFetchSuccess(topic, data){
@@ -82,7 +78,7 @@ jQuery(document).ready( function() {
 	}
 
 	function onJobsFetchFail(topic, data){
-
+        errorHandler(data)
 	}
 
     var fetchCandidatesByStatusSuccessSubscription = pubsub.subscribe('fetchCandidatesByStatusSuccess', onFetchCandidatesByStatusSuccess)
@@ -119,3 +115,11 @@ jQuery(document).ready( function() {
     }
 
 })
+
+function errorHandler(data) {
+    var res = data.responseJSON
+    if(!res) {
+        return toastNotify(3, "Something went wrong");
+    }
+    return toastNotify(3, res.message);
+}

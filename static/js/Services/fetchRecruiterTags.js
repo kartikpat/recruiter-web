@@ -3,6 +3,7 @@ function fetchRecruiterTags(recruiterId, parameters){
 		if(res.status && res.status =='success'){
 			return pubsub.publish("fetchedTags", res);
 		}
-        return pubsub.publish("fetchTagsFail", res);
+	}, function(res,status,error) {
+	    return pubsub.publish("fetchTagsFail", res);
 	});
 }

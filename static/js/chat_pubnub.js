@@ -19,7 +19,7 @@ function initializePubNub() {
     heartbeat: 120,
     heartbeatInterval: 30
     }, function(status) {
-        console.log(status);
+        
     });
 }
 
@@ -108,7 +108,7 @@ function onHereNow(status, response) {
 }
 
 function publish(message, channel, onPublish) {
-    console.log(message);
+    
     pubnub.publish({
         message: message,
         channel: channel,

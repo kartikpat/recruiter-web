@@ -632,6 +632,7 @@ jQuery(document).ready( function() {
 
 
     function onFailCandidateAction(topic,res) {
+
         errorHandler(res);
     }
 
@@ -836,8 +837,9 @@ function getTitleFormat(title, regex) {
 }
 
 function errorHandler(data) {
-    if(!data) {
+    var res = data.responseJSON
+    if(!res) {
         return toastNotify(3, "Something went wrong");
     }
-    return toastNotify(3, data.message);
+    return toastNotify(3, res.message);
 }

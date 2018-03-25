@@ -6,11 +6,7 @@ jQuery(document).ready( function() {
     reports.setHref()
     fetchRecruiterReports(recruiterId)
 
-
-
     function onFetchReportsSuccess(topic, data) {
-        console.log(data)
-
         reports.addToList(data);
     }
 
@@ -18,16 +14,15 @@ jQuery(document).ready( function() {
         errorHandler(data)
     }
 
-
-
     var fetchReportsSuccessSubscription = pubsub.subscribe('fetchReportsSuccess', onFetchReportsSuccess)
 	var fetchReportsFailSubscription = pubsub.subscribe('fetchReportsFail', onFetchReportsFail)
 
 })
 
 function errorHandler(data) {
-    if(!data) {
+    var res = data.responseJSON
+    if(!res) {
         return toastNotify(3, "Something went wrong");
     }
-    return toastNotify(3, data.message);
+    return toastNotify(3, res.message);
 }
