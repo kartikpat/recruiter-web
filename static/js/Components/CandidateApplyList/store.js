@@ -3,7 +3,7 @@ function Store (){
 
 	function saveToStore(dataArray){
         dataArray.forEach(function(anObj) {
-            store[anObj["userID"]] = anObj;
+            store[anObj["id"]] = anObj;
         })
     }
 
@@ -25,6 +25,9 @@ function Store (){
 			if(store[candidateId] && props.comment){
 				store[candidateId]["comment"]= props.comment;
 			};
+			if(store[candidateId] && (props.status || props.status ==0)){
+				store[candidateId]['status'] = props.status;
+			}
 		}
 
 	return {

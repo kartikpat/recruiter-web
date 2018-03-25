@@ -44,6 +44,24 @@ jQuery(document).ready( function() {
     theJob.setConfig("baseUrlJob", baseUrlJob);
     $(".downloadExcelMass").attr('href', baseUrl+"/recruiter/"+recruiterId+"/jobs/"+jobId+"/applications/download/excel");
 
+    // mountint routing
+    page.base('/job/'+jobId+'/applications');
+
+    page('/:applicationId', function(context, next){
+        var applicationId = context.params.applicationId;
+        console.log(context)
+        var hash = context.hash || "";
+        var candidateDetails = store.getCandidateFromStore(applicationId);
+        aCandidate.showCandidateDetails(candidateDetails,hash, candidateDetails.status);
+        // if(parseInt(candidateDetails.status) == 0)
+        //     setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
+        
+    });
+    page('/', function(context, next){
+        aCandidate.closeModal();
+    })
+    page();
+
     filters.addFilterData('industry', industryTagsData);
     filters.addFilterData('functionalArea',functionalAreaTagsData)
     filters.addFilterData('institute', instituteTagsData)
@@ -122,32 +140,28 @@ jQuery(document).ready( function() {
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
 
-    candidates.onClickCandidate(function(candidateId, status, applicationId){
-        var candidateDetails = store.getCandidateFromStore(candidateId);
-        aCandidate.showCandidateDetails(candidateDetails,"", status);
-        if(parseInt(status) == 0)
-            setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
+    // candidates.onClickCandidate(function(candidateId, status, applicationId){
+    //     var candidateDetails = store.getCandidateFromStore(candidateId);
+    //     aCandidate.showCandidateDetails(candidateDetails,"", status);
+    //     if(parseInt(status) == 0)
+    //         setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
 
-    });
-    candidates.onClickAddTag(function(candidateId) {
-        var candidateDetails = store.getCandidateFromStore(candidateId);
-        var status = globalParameters.status
-        aCandidate.showCandidateDetails(candidateDetails, "tag" , status);
+    // });
+    candidates.onClickAddTag(function(applicationId) {
+        var candidateDetails = store.getCandidateFromStore(applicationId);
+        page('/'+applicationId+'#tag')
     })
-    candidates.onClickAddComment(function(candidateId) {
-        var candidateDetails = store.getCandidateFromStore(candidateId);
-        var status = globalParameters.status
-        aCandidate.showCandidateDetails(candidateDetails, "comment", status);
+    candidates.onClickAddComment(function(applicationId) {
+        var candidateDetails = store.getCandidateFromStore(applicationId);
+        page('/'+applicationId+'#comment')
     })
-    candidates.onClickViewComment(function(candidateId) {
-        var candidateDetails = store.getCandidateFromStore(candidateId);
-        var status = globalParameters.status
-        aCandidate.showCandidateDetails(candidateDetails, "comment", status);
+    candidates.onClickViewComment(function(applicationId) {
+        var candidateDetails = store.getCandidateFromStore(applicationId);
+        page('/'+applicationId+'#comment')  
     })
     candidates.onClickViewTag(function(candidateId) {
-        var candidateDetails = store.getCandidateFromStore(candidateId);
-        var status = globalParameters.status
-        aCandidate.showCandidateDetails(candidateDetails, "tag", status);
+         var candidateDetails = store.getCandidateFromStore(applicationId);
+        page('/'+applicationId+'#tag')
     })
     candidates.onClickSendMessage(function(candidateId,applicationId){
         var candidate = store.getCandidateFromStore(candidateId);
@@ -534,6 +548,10 @@ jQuery(document).ready( function() {
          parameters.dataAction = dataAction;
          parameters.isModalButton = true
          setCandidateAction(recruiterId, jobId, action , applicationId, {}, parameters);
+     })
+
+     aCandidate.onClickCloseModal(function(){
+        page("/");
      })
 
      $.when(fetchJob(jobId, recruiterId, {idType: 'publish'}), fetchCalendars(jobId, recruiterId)).then(function(a, b){
