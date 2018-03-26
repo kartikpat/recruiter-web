@@ -172,7 +172,7 @@ function Calendar(){
                         finalslots.push(aRow);
                     }
                     else{
-                        debugger
+                        // debugger
                         var Nextend=aRow.time.to;
                         aRow.time.to=start;
                         var Nextstart=end;
@@ -205,6 +205,7 @@ function Calendar(){
     }
 
     function setDetails(object){
+        console.log(object);
         settings.name.val(object["name"]);
         // settings.editorMessage.setContent(object["message"])
         // settings.editor.setContent(object["telMessage"])
@@ -229,12 +230,12 @@ function Calendar(){
 
     function availablehours(slots){
         for(var k=0;k<slots.length;k++){
+            debugger
             var id=slots[k].day;
             var slotId=slots[k].slotId;
             var uniqueid=slots[k].id;
-            console.log(slotId);
-            var startvalue=parseInt(slots[k].time.from);
-            var endvalue=parseInt(slots[k].time.to);
+            var startvalue=slots[k].time.from;
+            var endvalue=slots[k].time.to;
             $("#"+id+ "").css("opacity","1");
             $("#"+id+ "").attr("slotId",slotId);
             $("#"+id+ "").find('.day').attr("id",uniqueid);

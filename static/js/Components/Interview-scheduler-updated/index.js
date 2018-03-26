@@ -35,7 +35,7 @@ $(document).ready(function(){
     function onSuccessfulSubmitCalendar(topic, data){
         console.log('submit successful');
         console.log(data);
-        // window.location='/calendar-manage' //changeurl
+        window.location='/calendar-manage' //changeurl
     }
 
 	function onFailedSubmitCalendar(topic, data){
