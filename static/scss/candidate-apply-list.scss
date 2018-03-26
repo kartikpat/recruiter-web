@@ -187,9 +187,10 @@ input::-webkit-input-placeholder {
 			padding:15px;
             padding-bottom: 0px;
 			.candidates-area-header {
+                padding-bottom: 15px;
 				.candidates-search {
 
-					margin-bottom:20px;
+
 					.keyword-search {
 						display:inline-block;
 						width:40%;
@@ -300,9 +301,10 @@ input::-webkit-input-placeholder {
 
 					.active-filters {
 						padding-bottom:0px;
+                        margin-top: 10px;
 						.filter-tag {
 							display:inline-block;
-							margin:5px;
+							margin:0 10px 10px 0;
 							border:1px solid $border-color-base;
 							padding:2px 15px;
 							border-radius:50px;
@@ -387,7 +389,9 @@ input::-webkit-input-placeholder {
 							    margin: 0;
 							    cursor:pointer;
 							    position:relative;
-
+                                .openCandidateLink {
+                                    display: block;
+                                }
                                 .candidate-select {
                                     display:none;
                                     position:absolute;

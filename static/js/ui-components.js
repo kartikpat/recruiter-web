@@ -120,7 +120,10 @@ jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function
 				break;
 		case 13:
 				if(closestTag.attr("data-enable-custom") && closestTag.attr("data-enable-custom") == "true") {
-					var value = $(this).val() || selectedItem.text()
+					var value = ($(this).val()).trim() || selectedItem.text()
+					if(!value) {
+						return
+					}
 					if(checkMaxTags(listItems.closest(".tag-container"))){
 							addNewTag(value, selectedItem.attr("data-value"),jQuery(this).closest(".tag-container"));
 						}

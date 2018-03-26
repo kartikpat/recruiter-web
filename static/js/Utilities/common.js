@@ -59,17 +59,25 @@ function fetchURL(){
 function getQueryParameter(queryString) {
 
 	var urlObj = fetchURL();
+	console.log(urlObj["search"])
 	var testString = urlObj["search"];
+	var obj = {};
+	if(!testString) {
+		return obj
+	}
     testString= testString.replace("?", "");
     testString= testString.split("&");
-	var obj = {};
+
+
 	for(var i=0; i < testString.length; i++){
         var temp=testString[i].split("=");
 	    obj[temp[0]] = temp[1]
    	}
+
     if(!queryString) {
 	    return obj
     }
+
     if(obj[queryString]) {
         return obj[queryString];
     }
@@ -116,12 +124,21 @@ function getLinkedInShareUrl(url){
 	// TO create a link with all parameters
 	// "https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=Some%20Title&summary=Some%20Summary&source=YourWebsiteName"
 }
-function nl2br (str, is_xhtml) {   
-    var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';    
+function nl2br (str, is_xhtml) {
+    var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
     return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');
 }
 function formatSalary(salary){
 	if(salary =='confidential')
 		return "Confidential";
 	return salary+" LPA"
+}
+
+function isEmpty(obj) {
+    for(var prop in obj) {
+        if(obj.hasOwnProperty(prop))
+            return false;
+    }
+
+    return JSON.stringify(obj) === JSON.stringify({});
 }

@@ -85,7 +85,7 @@ function Jobs() {
 	}
 
 	function onClickJobMakePremium(fn) {
-		settings.rowContainer.on('click', settings.openMakeJobPremiumModalButton,function(event) {
+		settings.rowContainer.on('click', settings.openMakeJobPremiumModalButton,function(e) {
 			e.stopPropagation()
 			if(parseInt($(this).attr("data-job-isPremium"))) {
 				return false;

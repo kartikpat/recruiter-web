@@ -7,7 +7,6 @@ var currentLocationTagsData = [
   {
      "text":"Ahmedabad"
     ,"val":1
-
   },
   {
      "text":"Bengaluru / Bangalore"

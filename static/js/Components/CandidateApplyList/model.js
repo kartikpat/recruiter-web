@@ -384,17 +384,18 @@ function candidateList() {
 
     function onClickViewComment(fn) {
         settings.rowContainer.on('click', settings.viewCommentButtonClass, function(e){
-            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
-            fn(candidateId);
+            e.stopPropagation();
+            var applicationId= $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            fn(applicationId);
             return false
         })
     }
 
     function onClickViewTag(fn) {
         settings.rowContainer.on('click', settings.viewTagButtonClass, function(e){
-
-            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
-            fn(candidateId);
+            e.stopPropagation();
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            fn(applicationId);
             return false
         })
     }
@@ -496,15 +497,16 @@ function candidateList() {
 
     function onClickAddTag(fn) {
         settings.rowContainer.on('click',settings.candidateAddTagButton ,function(event) {
+            event.stopPropagation()
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             fn(applicationId);
             return false
-
         })
     }
 
     function onClickAddComment(fn) {
         settings.rowContainer.on('click',settings.candidateAddCommentButton ,function(event) {
+            event.stopPropagation()
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             fn(applicationId);
             return false
