@@ -9,7 +9,7 @@ $(document).ready(function(){
      console.log(calendarId);
  
     if(calendarId){
-        fetchCalendars("159","33765");
+        fetchCalendars(calendarId,recruiterId);
         $('.form-container').removeClass('hidden');
         $('.Availability').removeClass('hidden');
         $('.second-container ').removeClass('hidden');
@@ -19,12 +19,11 @@ $(document).ready(function(){
     calendarDetails.submitHandler(function(){
         if(calendarDetails.validate()){
         var data=calendarDetails.getDetails();
-        submitCalendar(data,"159",recruiterId);
+        submitCalendar(data,calendarId,recruiterId);
         }
     })
 
     function onSuccessfulFetchCalendar(topic,data){
-        console.log("hie here");
         console.log(data);
         calendarDetails.setDetails(data);
     }
@@ -35,7 +34,8 @@ $(document).ready(function(){
 
     function onSuccessfulSubmitCalendar(topic, data){
         console.log('submit successful');
-         window.location='/calendar-manage' //changeurl
+        console.log(data);
+        // window.location='/calendar-manage' //changeurl
     }
 
 	function onFailedSubmitCalendar(topic, data){

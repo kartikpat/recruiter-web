@@ -10,11 +10,13 @@ function Manage() {
         settings.noData='.no-data',
         settings.calendarRowPrototype = $('.calendarRow.prototype'),
         settings.emptyviewPrototype = $('.empty-view.prototype');
+        settings.editSchedule='.edit-schedule';
         jQuery(".header .menu-list-item.my-interviews").addClass("active");
     }   
 
 
     function cloneRow(data){
+        console.log(data);
         if(data.length==0){
             settings.emptyviewPrototype.removeClass('prototype hidden');
             settings.rowContainer.append(settings.emptyviewPrototype);
@@ -25,6 +27,8 @@ function Manage() {
             calendarRow.find(settings.rowDate).text(moment(aRow.timestamp).format('MMM DD,YYYY'));
             calendarRow.find(settings.rowName).text(aRow.name);
             calendarRow.find(settings.rowSlots).text(aRow.nonBooked);
+            $(settings.rowName).attr("href","/calendar/"+aRow["id"]+"/edit");
+            $(settings.editSchedule).attr("href","/calendar/"+aRow["id"]+"/edit");
             settings.rowContainer.append(calendarRow);
         });
     }  

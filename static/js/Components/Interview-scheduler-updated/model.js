@@ -208,7 +208,7 @@ function Calendar(){
         settings.name.val(object["name"]);
         // settings.editorMessage.setContent(object["message"])
         // settings.editor.setContent(object["telMessage"])
-        settings.message.val(object["message"]);
+        settings.message.val(object["message"],(/\(\d+-\d+ \w+\)$/));
         settings.teleMessage.val(object["telMessage"],(/\(\d+-\d+ \w+\)$/));
         timetable.CalendarId=object["id"];
         timetable.slots=object.slots;
@@ -224,18 +224,20 @@ function Calendar(){
         $('#enddatepicker').datepicker().datepicker('setDate', endDate);
         //datepicker set value
         testHighlight(fromDate,toDate,previewslots);
-        settings.createCalendar.find('button').text("UpdateCalendar")
+        settings.createCalendar.find('button').text("Update Calender")
     }
 
     function availablehours(slots){
         for(var k=0;k<slots.length;k++){
             var id=slots[k].day;
+            var slotId=slots[k].slotId;
+            var uniqueid=slots[k].id;
+            console.log(slotId);
             var startvalue=parseInt(slots[k].time.from);
             var endvalue=parseInt(slots[k].time.to);
-            console.log(startvalue);
-            console.log(slots[k].id);
-            console.log(timetable.slots);
             $("#"+id+ "").css("opacity","1");
+            $("#"+id+ "").attr("slotId",slotId);
+            $("#"+id+ "").find('.day').attr("id",uniqueid);
             $("#"+id+ "").find(settings.start_time).val(startvalue);
             $("#"+id+ "").find(settings.end_time).val(endvalue);
             $("#"+id+ "").find(settings.checkbox).prop("checked",true);
