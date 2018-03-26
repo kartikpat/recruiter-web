@@ -1,12 +1,13 @@
-var test = null;
 $(document).ready(function(){
     var calendarDetails = Calendar();
-    calendarDetails.init();
-    calendarDetails.startdate();
-    calendarDetails.enddate();
-    calendarDetails.time_mapper();
-    test= calendarDetails.testHighlight;
-     console.log(calendarId);
+    console.log(calendarId);
+    if(!calendarId){
+        calendarDetails.init();
+        calendarDetails.startdate();
+        calendarDetails.enddate();
+        calendarDetails.time_mapper();
+        calendarDetails.testHighlight;
+    }
  
     if(calendarId){
         fetchCalendars(calendarId,recruiterId);
@@ -25,7 +26,12 @@ $(document).ready(function(){
 
     function onSuccessfulFetchCalendar(topic,data){
         console.log(data);
+        calendarDetails.init();
         calendarDetails.setDetails(data);
+        calendarDetails.startdate();
+        calendarDetails.enddate();
+        calendarDetails.time_mapper();
+        calendarDetails.testHighlight;
     }
 
     function onFailedFetchCalendar(topic,data){

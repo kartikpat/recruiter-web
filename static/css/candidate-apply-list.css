@@ -3748,6 +3748,28 @@ input::-webkit-input-placeholder {
   padding: 30px; }
   .view-resume-modal .mob.comments {
     display: none; }
+  .view-resume-modal .mobCandidateAddCommentButton {
+    background-color: #FFF !important;
+    border: 1px solid #908e8e !important;
+    border-radius: 4px;
+    padding: 6px 25px;
+    font-size: 14px !important;
+    margin: 0 5px;
+    color: #2b2b2b !important;
+    cursor: pointer; }
+  .view-resume-modal .mobCandidateAddTagButton {
+    background-color: #FFF !important;
+    border: 1px solid #908e8e !important;
+    border-radius: 4px;
+    padding: 6px 25px;
+    font-size: 14px !important;
+    margin: 0 5px;
+    color: #2b2b2b !important;
+    cursor: pointer; }
+  .view-resume-modal .mobcandidateAddEditButton {
+    color: #155D9A !important;
+    font-size: 13px !important;
+    cursor: pointer; }
   .view-resume-modal .mob.tags {
     display: none; }
   .view-resume-modal .main-wrapper {
@@ -4100,9 +4122,25 @@ input::-webkit-input-placeholder {
           padding: 6px 15px; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.cand-comment-button {
           margin: 0;
-          margin-top: 5px; }
+          margin-top: 5px;
+          background-color: #FFF !important;
+          border: 1px solid #908e8e !important;
+          border-radius: 4px;
+          padding: 6px 25px;
+          font-size: 14px !important;
+          margin: 0 5px;
+          color: #2b2b2b !important;
+          cursor: pointer; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.cand-add-tag-button {
-          margin: 0; }
+          margin: 0;
+          background-color: #FFF !important;
+          border: 1px solid #908e8e !important;
+          border-radius: 4px;
+          padding: 6px 25px;
+          font-size: 14px !important;
+          margin: 0 5px;
+          color: #2b2b2b !important;
+          cursor: pointer; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.green {
           background-color: #1f8f75; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.red {
@@ -4157,15 +4195,6 @@ input::-webkit-input-placeholder {
         border: 1px solid  #e4e4e4;
         border-left: 3px solid  #cfebeb;
         resize: none; }
-      .view-resume-modal .resume-sidebar .sidebar-section .action-buttons .addButton {
-        background: #FFF !important;
-        border: 1px solid #908e8e !important;
-        border-radius: 4px;
-        padding: 6px 25px;
-        font-size: 14px !important;
-        margin: 0 5px;
-        color: #2b2b2b !important;
-        cursor: pointer; }
       .view-resume-modal .resume-sidebar .sidebar-section .action-buttons .editbutton {
         color: #155D9A !important;
         font-size: 13px !important;

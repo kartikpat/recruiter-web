@@ -58,10 +58,8 @@ function Calendar(){
         // settings.editorMessage.subscribe('editableInput', function(event, editorElement){
         //      settings.message.val(settings.editor.getContent());
         // })
-
         selectCreater();
         copytoall();
-        time_mapper();
         fullCalendar();
         Timer();
         copyTime();
@@ -393,7 +391,6 @@ function Calendar(){
             defaultView: 'basicWeek',
             columnFormat :'ddd \n D/M/Y'
           });
-          $(".fc-button").on("click", Timer);
           settings.prevButton.on("click",function(){
               console.log("hello");
             $('#calendar').fullCalendar('prev');
@@ -403,8 +400,6 @@ function Calendar(){
             $('#calendar').fullCalendar('next');
                 Timer();
           })
-
-          Timer();
     }
 
     function Timer(e){ 
@@ -415,7 +410,7 @@ function Calendar(){
             if (hour > 11) ampm = 'PM';
                 for (var min = 0; min<60; min += 30) {
                      var min0= min<30 ?  '00': min;
-                     $('.fc-day').append('<div id="hours-'+hour+min0+'" class="TimeLines"> ' + hour12 + ':' + min0 + ' ' + ampm + ' </div>');
+                     $('.fc-day').append('<div id="hours-'+hour+min0+'" class="TimeLines">' + hour12 + ':' + min0 + ' ' + ampm + '</div>');
                 }
         }
 
@@ -585,6 +580,12 @@ function Calendar(){
         getDetails:getDetails,
         validate:validate,
         setDetails:setDetails,
+
+       fullCalendar: fullCalendar,
+        Timer: Timer,
+        copyTime: copyTime,
+        highlighter: highlighter
+        
     }
 };
 

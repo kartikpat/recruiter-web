@@ -23,12 +23,12 @@ function Manage() {
             return
         } 
         data.forEach(function(aRow){
+            console.log(aRow["id"]);
             var calendarRow =  settings.calendarRowPrototype.clone().removeClass('prototype hidden');
             calendarRow.find(settings.rowDate).text(moment(aRow.timestamp).format('MMM DD,YYYY'));
-            calendarRow.find(settings.rowName).text(aRow.name);
+            calendarRow.find(settings.rowName).text(aRow.name).attr("href","/calendar/"+aRow["id"]+"/edit");
             calendarRow.find(settings.rowSlots).text(aRow.nonBooked);
-            $(settings.rowName).attr("href","/calendar/"+aRow["id"]+"/edit");
-            $(settings.editSchedule).attr("href","/calendar/"+aRow["id"]+"/edit");
+            calendarRow.find(settings.editSchedule).attr("href","/calendar/"+aRow["id"]+"/edit");
             settings.rowContainer.append(calendarRow);
         });
     }  
