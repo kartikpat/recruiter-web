@@ -1,7 +1,5 @@
 function Manage() {
     var settings = {};
-
-
     function init() {
         settings.rowContainer=$('.schedule-container'),
         settings.rowDate='.calendar-date',

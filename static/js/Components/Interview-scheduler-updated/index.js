@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var calendarDetails = Calendar();
-    console.log(calendarId);
+    
     if(!calendarId){
         calendarDetails.init();
         calendarDetails.startdate();
@@ -16,7 +16,9 @@ $(document).ready(function(){
         $('.second-container ').removeClass('hidden');
         $('.bottom-container ').removeClass('hidden');
         $('.loaderScroller').addClass("hidden");
+        calendarDetails.init();
     }
+
     calendarDetails.submitHandler(function(){
         if(calendarDetails.validate()){
         var data=calendarDetails.getDetails();
@@ -26,7 +28,6 @@ $(document).ready(function(){
 
     function onSuccessfulFetchCalendar(topic,data){
         console.log(data);
-        calendarDetails.init();
         calendarDetails.setDetails(data);
         calendarDetails.startdate();
         calendarDetails.enddate();
