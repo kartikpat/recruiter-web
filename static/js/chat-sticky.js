@@ -402,14 +402,24 @@ function receiveMessage(m) {
 	elem.entry.msg = msg.msg;
 	elem.entry.time = msg.time;
 	elem.entry.img = msg.img;
-	var item = getMsgReceivedElement(elem)
+
     openChat(m.channel)
-	$(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+m.channel+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
+
 	// scrollToBottom()
 }
 
-function openChat() {
-    var c = $("")
+function openChat(channelName) {
+    if(window.innerWidth < 768) {
+        return
+    }
+    if($(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"]").length){
+        var item = getMsgReceivedElement(elem)
+        $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
+        return
+    }
+    else {
+
+    }
     if(!($(this).hasClass("selected"))) {
 
 		var channelName = $(this).attr("data-channel-name")

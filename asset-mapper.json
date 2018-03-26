@@ -1043,7 +1043,9 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/page.js",
 				"static/js/Utilities/request.js",
+
 				"static/js/header.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",

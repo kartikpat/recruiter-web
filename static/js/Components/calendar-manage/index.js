@@ -10,5 +10,4 @@ jQuery(document).ready( function(){
     function onFetchFail(){
         alert(res.status);
     }
-
 });  

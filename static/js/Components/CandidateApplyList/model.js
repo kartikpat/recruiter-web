@@ -384,24 +384,25 @@ function candidateList() {
 
     function onClickViewComment(fn) {
         settings.rowContainer.on('click', settings.viewCommentButtonClass, function(e){
-            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
-            fn(candidateId);
+            e.stopPropagation();
+            var applicationId= $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            fn(applicationId);
             return false
         })
     }
 
     function onClickViewTag(fn) {
         settings.rowContainer.on('click', settings.viewTagButtonClass, function(e){
-
-            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
-            fn(candidateId);
+            e.stopPropagation();
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            fn(applicationId);
             return false
         })
     }
 
     function onClickCandidate(fn) {
         settings.rowContainer.on('click', ".candidate-item", function(e){
-            e.preventDefault()
+            // e.preventDefault()
             var candidateId = $(this).attr('data-candidate-id');
             var status = $(this).attr("data-status")
             var applicationId = $(this).attr("data-application-id")
@@ -497,16 +498,18 @@ function candidateList() {
 
     function onClickAddTag(fn) {
         settings.rowContainer.on('click',settings.candidateAddTagButton ,function(event) {
-            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
-            fn(candidateId);
+            event.stopPropagation()
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            fn(applicationId);
             return false
         })
     }
 
     function onClickAddComment(fn) {
         settings.rowContainer.on('click',settings.candidateAddCommentButton ,function(event) {
-            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
-            fn(candidateId);
+            event.stopPropagation()
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            fn(applicationId);
             return false
         })
     }

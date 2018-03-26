@@ -7,14 +7,9 @@ var globalParameters = {
     candidateListLength: null
 }
 var screenName = "candidate-apply-list";
+
 jQuery(document).ready( function() {
 
-    // fetching url parameters
-    var defaultTab;
-    if(parseInt(getQueryParameter("defaultTab")) === 0)
-        defaultTab = 0
-    else
-        defaultTab = parseInt(getQueryParameter("defaultTab")) || 1
     // creating the instance of models
 	var candidates = candidateList();
     var aCandidate = Candidate();
@@ -28,6 +23,39 @@ jQuery(document).ready( function() {
     candidates.init();
     theJob.init();
     aCandidate.init();
+
+    var obj = getQueryParameters()
+    if(!isEmpty(obj)) {
+        var filterFlag = 0;
+        for(var key in obj) {
+            if(key == "status") {
+                globalParameters.status = obj[key]
+            }
+            else if (key == "orderBy") {
+                globalParameters.orderBy = obj[key]
+                filters.changeSelectValue(obj[key])
+            }
+            // else if (key == "pageNumber") {
+            //     globalParameters.pageNumber = obj[key]
+            // }
+            // else if (key == "pageContent") {
+            //     globalParameters.pageContent = obj[key]
+            // }
+            if(key && [ 'status', 'pageNumber', 'pageContent'].indexOf(key) != -1) {
+                continue
+            }
+            filters.callClickOnFilters(filtersMapping[key], obj[key], minMaxMapping[key])
+            if(!(key == "orderBy" || key == "pageNumber" || key == "pageContent" || key == "status" || key == "searchString")) {
+              filterFlag+= 1;
+            }
+        }
+        console.log(filters.getFiltersObj())
+        if(filterFlag > 0) {
+            filters.addFiltersToContainer()
+            filters.showAppliedFilters()
+        }
+    }
+
 
     submitPageVisit(recruiterId, screenName, jobId);
     var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitSuccess:"+screenName, onPageVisitUpdateSuccess)
@@ -44,12 +72,34 @@ jQuery(document).ready( function() {
     theJob.setConfig("baseUrlJob", baseUrlJob);
     $(".downloadExcelMass").attr('href', baseUrl+"/recruiter/"+recruiterId+"/jobs/"+jobId+"/applications/download/excel");
 
+    // mountint routing
+    page.base('/job/'+jobId+'/applications');
+
+    page('/:applicationId', function(context, next){
+        // var parameters = filters.getAppliedFilters()
+        // parameters.status = globalParameters.status;
+        // setQueryParameters(parameters)
+        var applicationId = context.params.applicationId;
+        var hash = context.hash || "";
+        var candidateDetails = store.getCandidateFromStore(applicationId);
+        aCandidate.showCandidateDetails(candidateDetails,hash, candidateDetails.status);
+        if(parseInt(candidateDetails.status) == 0)
+            setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
+
+    });
+    page('/', function(context, next){
+        aCandidate.closeModal();
+    })
+
+    page();
+
     filters.addFilterData('industry', industryTagsData);
     filters.addFilterData('functionalArea',functionalAreaTagsData)
     filters.addFilterData('institute', instituteTagsData)
     filters.addFilterData('currentLocation', currentLocationTagsData)
     filters.addFilterData('language', languageTagsData)
     filters.addFilterData('preferredLocation', prefeLocationTagsData);
+
     filters.onClickApplyFilterButton(function(name){
         if(!filters.checkForError(name)) {
             return
@@ -60,12 +110,14 @@ jQuery(document).ready( function() {
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
 
+
         var parameters = filters.getAppliedFilters();
-        console.log(parameters)
+        parameters.status = globalParameters.status;
+        setQueryParameters(parameters)
+
         globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
-        parameters.status = globalParameters.status;
 
         var filterFlag = 0;
         for(var key in parameters) {
@@ -85,69 +137,77 @@ jQuery(document).ready( function() {
         candidates.removeCandidate(globalParameters.status)
         filters.removeFilter(value,category,type);
         var parameters = filters.getAppliedFilters();
+        parameters.status = globalParameters.status;
+        setQueryParameters(parameters);
+
         globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
-        parameters.status = globalParameters.status;
+
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
     filters.onClickSearchButton(function(){
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
         var parameters = filters.getAppliedFilters();
+        parameters.status = globalParameters.status;
+        setQueryParameters(parameters);
+
         globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
-        parameters.status = globalParameters.status;
+
         fetchJobApplications(jobId, parameters, recruiterId);
     })
     filters.onSelectSortByOption(function(){
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
         var parameters = filters.getAppliedFilters();
+        parameters.status = globalParameters.status;
+        setQueryParameters(parameters);
+
         globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
-        parameters.status = globalParameters.status;
+
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
     filters.onClickRemoveAllFilters(function(){
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
         var parameters = filters.getAppliedFilters();
+        parameters.status = globalParameters.status;
+        setQueryParameters(parameters)
+
         globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
-        parameters.status = globalParameters.status;
+
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
 
-    candidates.onClickCandidate(function(candidateId, status, applicationId){
-        var candidateDetails = store.getCandidateFromStore(candidateId);
-        aCandidate.showCandidateDetails(candidateDetails,"", status);
-        if(parseInt(status) == 0)
-            setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
+    // candidates.onClickCandidate(function(candidateId, status, applicationId){
+    //     var candidateDetails = store.getCandidateFromStore(candidateId);
+    //     aCandidate.showCandidateDetails(candidateDetails,"", status);
+    //     if(parseInt(status) == 0)
+    //         setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
 
-    });
-    candidates.onClickAddTag(function(candidateId) {
-        var candidateDetails = store.getCandidateFromStore(candidateId);
-        var status = globalParameters.status
-        aCandidate.showCandidateDetails(candidateDetails, "tag" , status);
+    // });
+    candidates.onClickAddTag(function(applicationId) {
+        var candidateDetails = store.getCandidateFromStore(applicationId);
+        page('/'+applicationId+'#tag')
     })
-    candidates.onClickAddComment(function(candidateId) {
-        var candidateDetails = store.getCandidateFromStore(candidateId);
-        var status = globalParameters.status
-        aCandidate.showCandidateDetails(candidateDetails, "comment", status);
+    candidates.onClickAddComment(function(applicationId) {
+        var candidateDetails = store.getCandidateFromStore(applicationId);
+        page('/'+applicationId+'#comment')
     })
-    candidates.onClickViewComment(function(candidateId) {
-        var candidateDetails = store.getCandidateFromStore(candidateId);
-        var status = globalParameters.status
-        aCandidate.showCandidateDetails(candidateDetails, "comment", status);
+    candidates.onClickViewComment(function(applicationId) {
+        var candidateDetails = store.getCandidateFromStore(applicationId);
+        page('/'+applicationId+'#comment')
     })
-    candidates.onClickViewTag(function(candidateId) {
-        var candidateDetails = store.getCandidateFromStore(candidateId);
-        var status = globalParameters.status
-        aCandidate.showCandidateDetails(candidateDetails, "tag", status);
+    candidates.onClickViewTag(function(applicationId) {
+         var candidateDetails = store.getCandidateFromStore(applicationId);
+         page('/'+applicationId+'#tag')
     })
     candidates.onClickSendMessage(function(candidateId,applicationId){
         var candidate = store.getCandidateFromStore(candidateId);
@@ -204,19 +264,24 @@ jQuery(document).ready( function() {
     candidates.onChangeCandidateCheckbox(function(candidateId){
         // alert(candidateId)
     })
-    candidates.initializeJqueryTabs(defaultTab, function(event, ui) {
+    candidates.initializeJqueryTabs(defaultTabObj[globalParameters.status], function(event, ui) {
         tickerLock = false;
         var status = candidates.activateStatsTab(event, ui)
         candidates.showShells(status);
-
         candidates.removeCandidate(globalParameters.status)
         candidates.populateCheckInputDropdown(status)
+
+
         var parameters = filters.getAppliedFilters();
         globalParameters.status = status;
+        parameters.status = globalParameters.status;
+        setQueryParameters(parameters);
+
         globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
-        parameters.status = globalParameters.status;
+
+
         fetchJobApplicationCount(recruiterId, jobId)
         fetchJobApplications(jobId, parameters,recruiterId);
     })
@@ -394,7 +459,6 @@ jQuery(document).ready( function() {
         downloadMassResume(recruiterId, jobId, parameters)
     })
 
-
     candidates.onClickMassActionButton(function(applicationIds, action, comment, newStatus){
         var data = {}
         data.applicationId = applicationIds
@@ -536,6 +600,12 @@ jQuery(document).ready( function() {
          setCandidateAction(recruiterId, jobId, action , applicationId, {}, parameters);
      })
 
+     aCandidate.onClickCloseModal(function(){
+        var parameters = filters.getAppliedFilters();
+        parameters.status = globalParameters.status;
+        setQueryParameters(parameters);
+     })
+
      $.when(fetchJob(jobId, recruiterId, {idType: 'publish'}), fetchCalendars(jobId, recruiterId)).then(function(a, b){
 
          if(a[0] && b[0] && a[0]["status"] == "success" && b[0]["status"] =="success" && a[0]['data'].length >0 ) {
@@ -566,20 +636,20 @@ jQuery(document).ready( function() {
         tickerLock = false;
         $(".loaderScroller").addClass("hidden")
         //Call only on initial load
-        if(!globalParameters.initialLoad) {
-            var result =filters.getAppliedFilters();
-            var filterFlag = 0;
-             for(var key in result) {
-                  if(!(key == "orderBy" || key == "pageNumber" || key == "pageContent" || key == "status")) {
-                    filterFlag+= 1;
-                  }
-                }
-            if(filterFlag > 0) {
-                filters.showAppliedFilters();
-            } else {
-                filters.hideAppliedFilters();
-            }
-        }
+        // if(!globalParameters.initialLoad) {
+        //     var result =filters.getAppliedFilters();
+        //     var filterFlag = 0;
+        //      for(var key in result) {
+        //           if(!(key == "orderBy" || key == "pageNumber" || key == "pageContent" || key == "status")) {
+        //             filterFlag+= 1;
+        //           }
+        //         }
+        //     if(filterFlag > 0) {
+        //         filters.showAppliedFilters();
+        //     } else {
+        //         filters.hideAppliedFilters();
+        //     }
+        // }
         if(globalParameters.initialLoad) {
             fetchJobApplicationCount(recruiterId, jobId)
             globalParameters.initialLoad = 0;
@@ -602,24 +672,23 @@ jQuery(document).ready( function() {
     }
 
 	function onJobsApplicationsFetchFail(topic, data){
-		console.log(topic)
-		console.log(data)
+		errorHandler(data)
 	}
 
     function onSuccessfulFetchJobDetails(topic, data) {
         globalParameters.jobId = data["jobId"]
-        var tabValue = [0,1,2,3,4,5]
-        if(tabValue.indexOf(defaultTab) != -1) {
-            globalParameters.status = defaultApplicationStatus[defaultTab];
-            candidates.setDefaultTab(globalParameters.status)
-        }
-        var parameters = {}
+        candidates.setDefaultTab(globalParameters.status)
+
+        var parameters = getQueryParameters()
+        parameters.status = globalParameters.status;
+        parameters.orderBy = globalParameters.orderBy;
+        setQueryParameters(parameters)
+
         globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
-        parameters.status = globalParameters.status;
 
-        parameters.orderBy = globalParameters.orderBy;
+
         fetchJobApplications(jobId,parameters,recruiterId);
         theJob.setJobDetails(data);
     }
@@ -632,7 +701,6 @@ jQuery(document).ready( function() {
 
 
     function onFailCandidateAction(topic,res) {
-
         errorHandler(res);
     }
 
@@ -816,7 +884,6 @@ jQuery(document).ready( function() {
     		globalParameters.pageNumber = globalParameters.pageNumber + 1;
     		if(globalParameters.candidateListLength >= globalParameters.pageContent) {
                 var parameters = filters.getAppliedFilters();
-                console.log("Filter Parameters | ", parameters);
                 parameters.pageNumber = globalParameters.pageNumber;
                 parameters.pageContent = globalParameters.pageContent;
                 parameters.status = globalParameters.status;
@@ -842,4 +909,19 @@ function errorHandler(data) {
         return toastNotify(3, "Something went wrong");
     }
     return toastNotify(3, res.message);
+}
+
+function setQueryParameters(parameters) {
+    var array = []
+    var i = 0;
+    for(var key in parameters) {
+        array[i] = (key+'='+parameters[key])
+        i++
+    }
+    page('/?'+array.join("&")+'')
+}
+
+function getQueryParameters() {
+    var obj = getQueryParameter()
+    return obj
 }

@@ -103,7 +103,7 @@ function Profile(){
 	function getProfile() {
 
 		var form = new FormData();
-		
+
 		if(settings.type == "profile") {
 			if(settings.fileUpload[0].files[0] != undefined) {
   		    	form.append("image", settings.fileUpload[0].files[0], settings.fileUpload[0].files[0].name);
@@ -156,7 +156,7 @@ function Profile(){
 
 			form.append("notificationEmail", $("input[name='notification-type']:checked").val())
 		}
-		
+
 		return form;
 	}
 
@@ -214,7 +214,8 @@ function Profile(){
 
 		if(settings.fileUpload[0].files[0] != undefined) {
 			var form = new FormData();
-			form.append("logo", settings.fileUpload[0].files[0], settings.fileUpload[0].files[0].name);
+			form.append("image", settings.fileUpload[0].files[0], settings.fileUpload[0].files[0].name);
+			return form
 		}
 
 	}

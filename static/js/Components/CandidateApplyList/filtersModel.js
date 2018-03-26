@@ -166,7 +166,6 @@ function Filters(){
 		settings.searchButton = $("#searchButton");
 		settings.filterButton = "";
 		settings.sortButton = "";
-		settings.appliedFilters = $(".active-filters"),
 		settings.appliedFiltersContainer = $(".active-filters .clear-all-filters .appliedFilters");
 		settings.resultText = "";
 		settings.clearButtton = $(".clear-all-filters");
@@ -252,7 +251,7 @@ function Filters(){
 
 	function onClickApplyFilterButton(fn){
 		settings.applyFilterButton.click(function(e){
-			settings.clearAllFitersButton.removeClass("hidden")
+
 			var name = $(settings.activeFilterListingClass).attr('data-label');
 			fn(name);
 		})
@@ -280,9 +279,7 @@ function Filters(){
 		settings.searchButton.click(function(event){
 
 			var str = (filtersTarget["searchString"]["target"].val()).trim();
-			if(!str) {
-				return
-			}
+
 			// if(str == '') {
 			// 	return settings.searchCandidateError.removeClass("hidden")
 			// }
@@ -414,38 +411,12 @@ function Filters(){
 
 
 	function addFilterToContainer(value, label, category, type){
-		// if(["dropdown","dropdownHalf"].indexOf(type) != -1) {
-		// 	var elem = settings.appliedFiltersContainer.find(".filterPill[data-category="+category+"]")
-		// 	if(elem.length) {
-		//
-		// 		$(elem).attr("data-value", value);
-		// 		$(elem).find('.icon-label').text(category + ": " + label)
-		// 		return
-		// 	}
-		// }
-		// if(type == "checkbox"){
-		// 	var elArr = settings.appliedFiltersContainer.find(".filterPill[data-category="+category+"]")
-		// 	$.each(elArr, function(index, el){
-		// 		if(filtersTarget[category]["selection"].indexOf($(el).attr("data-value")) == -1){
-		// 			el.remove()
-		// 			return
-		// 		}
-		// 	})
-		// 	var val = settings.appliedFiltersContainer.find(".filterPill[data-category="+category+"][data-value="+value+"]")
-		// 	if(val.length) {
-		// 		return
-		// 	}
-		// }
 		var aFilter = createPill(value, label, category, type);
 		settings.appliedFiltersContainer.prepend(aFilter);
 	}
 
-
-
 	function removeAllFilters(){
-
 		for (var key in filtersTarget) {
-
 			if(filtersTarget[key]["type"] == "checkbox") {
 
 				filtersTarget[key]["selection"] = [];
@@ -455,17 +426,13 @@ function Filters(){
 				settings.filterModal.find(".modal_sidebar li[data-name="+key+"] .filterCount").addClass("hidden")
 			}
 			else if(filtersTarget[key]["type"] == "dropdownHalf") {
-
 				for (var k in filtersTarget[key]["props"]) {
 					filtersTarget[key]["props"][k]["selection"] = -1;
-
 					filtersTarget[key]["props"][k]['target'].val("-1")
 				}
 			}
 			else if(filtersTarget[key]["type"] == "dropdown") {
-
 				if(key == "orderBy") {
-
 					continue
 				}
 				filtersTarget[key]["selection"] = -1;
@@ -475,7 +442,7 @@ function Filters(){
 		}
 
 		settings.activeFiltersContainer.find(".filter-tag").remove();
-		settings.appliedFilters.addClass("hidden")
+		settings.activeFiltersContainer.addClass("hidden")
 	}
 
 	function removeFilter(value,category,type) {
@@ -541,7 +508,6 @@ function Filters(){
 					addFilterToContainer(filtersTarget[key]["selection"], filtersTarget[key]["label"], key, "dropdown");
 			}
 		}
-
 	}
 
 	function setAppliedFilters(name){
@@ -554,7 +520,6 @@ function Filters(){
 			filtersTarget[name]['target'].find('input:checked').each(function(index, el){
 				filtersTarget[name]['label'].push($(el).attr('data-label'))
 				filtersTarget[name]['selection'].push(el.value)
-
 			})
 		}
 		else if(type == "dropdownHalf"){
@@ -601,9 +566,9 @@ function Filters(){
 		if(filtersTarget.age.props.max.selection != -1)
 			ob.maxAge = filtersTarget.age.props.max.selection
 		if(filtersTarget.batch.props.min.selection != -1)
-			ob.minAge = filtersTarget.batch.props.min.selection
+			ob.minBatch = filtersTarget.batch.props.min.selection
 		if(filtersTarget.batch.props.max.selection != -1)
-			ob.maxAge = filtersTarget.batch.props.max.selection
+			ob.maxBatch = filtersTarget.batch.props.max.selection
 		if(filtersTarget.sex.selection != -1)
 			ob.sex = filtersTarget.sex.selection
 		if(filtersTarget.notice.selection != -1)
@@ -675,12 +640,13 @@ function Filters(){
 	}
 
 	function hideAppliedFilters() {
-		settings.appliedFilters.addClass("hidden");
+		settings.activeFiltersContainer.addClass("hidden");
+		settings.clearAllFitersButton.addClass("hidden")
 	}
 
 	function showAppliedFilters() {
-		console.log("re");
-		settings.appliedFilters.removeClass("hidden");
+		settings.activeFiltersContainer.removeClass("hidden");
+		settings.clearAllFitersButton.removeClass("hidden")
 	}
 
 	function checkForError(name) {
@@ -713,6 +679,74 @@ function Filters(){
 		settings.filterModal.addClass("hidden")
 	}
 
+	function getFiltersObj() {
+		return filtersTarget
+	}
+
+	function callClickOnFilters(name,value, prop) {
+		var type = filtersTarget[name]['type']
+		if(type == "checkbox") {
+			var array = value.split(",")
+			filtersTarget[name]['selection'] = array;
+			if(name == "functionalArea") {
+				array.forEach(function(value){
+					var obj = search(value, functionalAreaTagsData)
+					filtersTarget[name]['label'].push(obj.text)
+				})
+			}
+			if(name == "industry") {
+				array.forEach(function(value){
+					var obj = search(value, industryTagsData)
+					filtersTarget[name]['label'].push(obj.text)
+				})
+			}
+			if(name == "currentLocation") {
+				array.forEach(function(value){
+					var obj = search(value, currentLocationTagsData)
+					filtersTarget[name]['label'].push(obj.text)
+				})
+			}
+			if(name == "preferredLocation") {
+				array.forEach(function(value){
+					var obj = search(value, prefeLocationTagsData)
+					filtersTarget[name]['label'].push(obj.text)
+				})
+			}
+			if(name == "institute") {
+				array.forEach(function(value){
+					var obj = search(value, instituteTagsData)
+					filtersTarget[name]['label'].push(obj.text)
+				})
+			}
+			if(name == "language") {
+				array.forEach(function(value){
+					var obj = search(value, languageTagsData)
+					filtersTarget[name]['label'].push(obj.text)
+				})
+			}
+		}
+
+		else if(type == "dropdownHalf"){
+			for(var key in filtersTarget[name]["props"]) {
+				if(prop == key)
+					filtersTarget[name]["props"][key]['selection'] = value
+			}
+		}
+		else if(type == "dropdown"){
+			filtersTarget[name]['selection'] = value
+			if(name == "applicationDate")
+				filtersTarget[name]['label'] = applicationDateObj[value]
+		}
+		else if (type == "input") {
+			filtersTarget[name]['selection'] = value
+			filtersTarget[name]['target'].val(value)
+		}
+	}
+
+	function changeSelectValue(value) {
+		filtersTarget["orderBy"]["target"].val(value);
+	}
+
     return {
     	init: init,
     	addFilterData: addFilterData,
@@ -729,8 +763,17 @@ function Filters(){
 		showAppliedFilters:showAppliedFilters,
 		checkForError: checkForError,
 		closeFilterModal: closeFilterModal,
-		addFiltersToContainer: addFiltersToContainer
+		addFiltersToContainer: addFiltersToContainer,
+		getFiltersObj: getFiltersObj,
+		callClickOnFilters: callClickOnFilters,
+		changeSelectValue: changeSelectValue
     }
+}
 
-
+function search(nameKey, myArray){
+    for (var i=0; i < myArray.length; i++) {
+        if (myArray[i].val == nameKey) {
+            return myArray[i];
+        }
+    }
 }

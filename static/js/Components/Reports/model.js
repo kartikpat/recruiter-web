@@ -48,8 +48,8 @@ function reportList() {
        return title.replace(regex, '');
    }
 
-   function getApplicationLink(defaultTab, jobId) {
-       return "job/"+jobId+"/applications?defaultTab="+defaultTab+"";
+   function getApplicationLink(status, jobId) {
+       return "job/"+jobId+"/applications?status="+status+"";
    }
 
    function createElement(aData) {
@@ -63,12 +63,12 @@ function reportList() {
        // item.experience.text((aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m") || "NA");
        // item.location.text(aData["currentLocation"] || "NA");
        item.postingViews.text(aData["views"]);
-       item.allCandidates.text(aData["total"]).attr("href", getApplicationLink(0, aData["id"]));
-       item.shortlistedCandidates.text(aData["shortlisted"]).attr("href", getApplicationLink(3, aData["id"]));
-       item.rejectedCandidates.text(aData["rejected"]).attr("href", getApplicationLink(4, aData["id"]));
-       item.savedCandidates.text(aData["save"]).attr("href", getApplicationLink(5, aData["id"]));
-       item.resumeViewedCount.text(aData["reviewed"]).attr("href", getApplicationLink(2, aData["id"]));
-       item.resumeDownloadedCount.text(aData["download"] || 0).attr("href", getApplicationLink(2, aData["id"]));
+       item.allCandidates.text(aData["total"]).attr("href", getApplicationLink("", aData["id"]));
+       item.shortlistedCandidates.text(aData["shortlisted"]).attr("href", getApplicationLink("1", aData["id"]));
+       item.rejectedCandidates.text(aData["rejected"]).attr("href", getApplicationLink("2", aData["id"]));
+       item.savedCandidates.text(aData["save"]).attr("href", getApplicationLink("3", aData["id"]));
+       item.resumeViewedCount.text(aData["reviewed"]).attr("href", getApplicationLink("4,5", aData["id"]));
+       item.resumeDownloadedCount.text(aData["download"] || 0).attr("href", getApplicationLink("4,5", aData["id"]));
        item.jobCurrentStatus.text(aData["status"] || "N/A");
        item.isJobPremium.text(binary[aData["premium"]])
        item.excelDownloadedCount.text(binary[aData["excelDownload"] || 0])

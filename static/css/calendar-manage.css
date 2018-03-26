@@ -277,6 +277,23 @@
 .icon-face-to-face:before {
   content: '\e83d'; }
 
+.icon-search:before {
+  content: '\e83f'; }
+
+.icon-filter:before {
+  content: '\e841'; }
+
+.icon-up_arrow:before {
+  content: '\e842'; }
+
+.icon-search:before {
+  position: relative;
+  top: -24px; }
+
+.icon-filter:before {
+  position: relative;
+  top: 6px; }
+
 .left {
   float: left; }
 
@@ -767,6 +784,23 @@ a {
 .icon-face-to-face:before {
   content: '\e83d'; }
 
+.icon-search:before {
+  content: '\e83f'; }
+
+.icon-filter:before {
+  content: '\e841'; }
+
+.icon-up_arrow:before {
+  content: '\e842'; }
+
+.icon-search:before {
+  position: relative;
+  top: -24px; }
+
+.icon-filter:before {
+  position: relative;
+  top: 6px; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -1218,7 +1252,8 @@ span.sticker {
             width: 68px;
             float: right;
             margin-right: 24px;
-            margin-top: 25px; }
+            margin-top: 25px;
+            color: #2b2b2b; }
             .page-content .container .wrapper .schedule-container .schedule .edit-schedule a {
               color: #2b2b2b;
               font-size: 15px;

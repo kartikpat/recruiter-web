@@ -7,7 +7,7 @@ $(document).ready(function(){
 
 	recruiterProfile.submitHandler(function(){
 
-		if(recruiterProfile.validate()){
+		if(recruiterProfile.validate()){ 
 			updateRecruiterProfile(recruiterProfile.getProfile(), recruiterId);
 		}
 	})

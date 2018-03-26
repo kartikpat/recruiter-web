@@ -187,14 +187,13 @@ input::-webkit-input-placeholder {
 			padding:15px;
             padding-bottom: 0px;
 			.candidates-area-header {
+                padding-bottom: 15px;
 				.candidates-search {
 
-					margin-bottom:20px;
+
 					.keyword-search {
 						display:inline-block;
 						width:40%;
-
-
 						vertical-align:top;
                         .container {
                             position: relative;
@@ -205,15 +204,14 @@ input::-webkit-input-placeholder {
 							border-radius:0;
 							padding:4px 35px;
 							border-color: $border-color-dark;
-							line-height:30px;
-							background-image:url("/static/images/search-icon.svg");
+							line-height:40px;
 							background-repeat:no-repeat;
 							background-position:left 10px center;
 							background-size:14px;
 							font-size:$base-font-size;
 							height: 30px;
-
-
+							vertical-align: middle;
+							text-align: left;
 						}
 						button {
 							position:absolute;
@@ -226,7 +224,7 @@ input::-webkit-input-placeholder {
 							border:1px solid $border-color-base;
 							cursor:pointer;
 							font-size:$base-font-size;
-
+							height: 30px;
 							&:focus {
 								outline:none;
 							}
@@ -270,7 +268,6 @@ input::-webkit-input-placeholder {
 							}
 
 							&.filter-button {
-								background-image:url("/static/images/filter-icon.svg");
 								background-position:left 10px center;
 								background-repeat:no-repeat;
 								background-size:16px;
@@ -300,9 +297,10 @@ input::-webkit-input-placeholder {
 
 					.active-filters {
 						padding-bottom:0px;
+                        margin-top: 10px;
 						.filter-tag {
 							display:inline-block;
-							margin:5px;
+							margin:0 10px 10px 0;
 							border:1px solid $border-color-base;
 							padding:2px 15px;
 							border-radius:50px;
@@ -387,7 +385,9 @@ input::-webkit-input-placeholder {
 							    margin: 0;
 							    cursor:pointer;
 							    position:relative;
-
+                                .openCandidateLink {
+                                    display: block;
+                                }
                                 .candidate-select {
                                     display:none;
                                     position:absolute;
@@ -644,8 +644,6 @@ input::-webkit-input-placeholder {
 
 								&:hover {
 									box-shadow:0px 2px 8px 0px rgba(214, 214, 214, 0.85);
-
-
 										.candidate-select {
 											display:block;
 
@@ -680,7 +678,7 @@ input::-webkit-input-placeholder {
     position: fixed;
     width: 100%;
     z-index: 10;
-    top: 0;
+    bottom: 0;
     padding: 15px 30px;
     background-color: $mass-action-bar;
     box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.5);
@@ -720,7 +718,6 @@ input::-webkit-input-placeholder {
 
 @media all and (max-width:1024px) {
     .mass-action-container {
-
     	.action-buttons {
             display: none;
     		span.button {
@@ -736,7 +733,7 @@ input::-webkit-input-placeholder {
     }
     .mass-action-second {
         &.second-fold {
-            top:75px;
+			bottom: 60px;
             background:rgba(128, 128, 128, 0.85);
             position: fixed;
             width: 100%;
@@ -1165,6 +1162,31 @@ input::-webkit-input-placeholder {
 		display: none;
 	}
 
+	.mobCandidateAddCommentButton{
+		background-color: #FFF !important;
+		border: 1px solid #908e8e !important;
+		border-radius: 4px;
+		padding: 6px 25px;
+		font-size: 14px !important;
+		margin: 0 5px;
+		color: #2b2b2b !important;
+		cursor: pointer;
+	}
+	.mobCandidateAddTagButton{
+		background-color: #FFF !important;
+		border: 1px solid #908e8e !important;
+		border-radius: 4px;
+		padding: 6px 25px;
+		font-size: 14px !important;
+		margin: 0 5px;
+		color: #2b2b2b !important;
+		cursor: pointer;
+	}
+	.mobcandidateAddEditButton{
+		color: #155D9A !important;
+		font-size: 13px !important;
+		cursor: pointer;
+	}
 	.mob.tags {
 		display: none;
 	}
@@ -1190,9 +1212,12 @@ input::-webkit-input-placeholder {
 					vertical-align: top;
 				    display: inline-block;
 				    width: 100%;
-				    border-bottom:1px solid $border-color-base;
 				    position:relative;
-				    padding-top:165px;
+					padding-top:165px;
+					
+					.table-row-seprator{
+						border-bottom:1px solid $border-color-base;
+					}
 
 					.profile-image {
 						position:absolute;
@@ -1513,6 +1538,7 @@ input::-webkit-input-placeholder {
 
 												&.value {
 													color:$color-black;
+													padding-left: 20px;
 												}
 											}
 										}
@@ -1609,9 +1635,25 @@ input::-webkit-input-placeholder {
 					&.cand-comment-button{
 						margin: 0;
 						margin-top: 5px;
+						background-color: #FFF !important;
+						border: 1px solid #908e8e !important;
+						border-radius: 4px;
+						padding: 6px 25px;
+						font-size: 14px !important;
+						margin: 0 5px;
+						color: #2b2b2b !important;
+						cursor: pointer;
 					}
 					&.cand-add-tag-button {
 							margin: 0;
+							background-color: #FFF !important;
+							border: 1px solid #908e8e !important;
+							border-radius: 4px;
+							padding: 6px 25px;
+							font-size: 14px !important;
+							margin: 0 5px;
+							color: #2b2b2b !important;
+							cursor: pointer;
 						}
     				@include button($color-white);
     			}
@@ -1686,19 +1728,6 @@ input::-webkit-input-placeholder {
 			}
 
 			.action-buttons{
-				.addButton{
-					background: #FFF!important;
-					// border-color: #b8b5b5!important;
-					// border-style: solid!important;
-					// border-width: 1px!important;
-					border:1px solid #908e8e!important;
-					border-radius: 4px;
-					padding: 6px 25px;
-					font-size: 14px!important;
-					margin: 0 5px;
-					color: #2b2b2b!important;
-					cursor: pointer;
-				}
 				.editbutton {
 					color:#155D9A!important;
 					font-size: 13px!important;
@@ -1914,8 +1943,10 @@ input::-webkit-input-placeholder {
 
 		.main-wrapper {
 			.main-container {
+				border:none;
 				.container {
 					&.resume-header {
+						border-radius: 8px;
 						.profile-snapshot {
 							font-size:0;
 							padding:10px 0;
@@ -1936,7 +1967,7 @@ input::-webkit-input-placeholder {
 			display:block;
 		    background:$color-white;
 		    box-shadow:0 0 10px rgba(0,0,0,0.2);
-
+			border-radius: 8px;
 
 		    .fold {
 		    	position: fixed;
