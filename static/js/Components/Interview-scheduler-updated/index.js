@@ -1,11 +1,11 @@
 $(document).ready(function(){
     var calendarDetails = Calendar();    
-    calendarDetails.init();
-    calendarDetails.startdate();
-    calendarDetails.enddate();
-    calendarDetails.time_mapper();
-    calendarDetails.testHighlight;
-
+     //  calendarDetails.init();
+    // calendarDetails.startdate();
+    // calendarDetails.enddate();
+    // calendarDetails.time_mapper();
+    // calendarDetails.testHighlight;
+    console.log(calendarId);
     if(!calendarId){
         calendarDetails.init();
         calendarDetails.startdate();
@@ -15,7 +15,6 @@ $(document).ready(function(){
     }
  
     if(calendarId){
-        calendarDetails.init();
         fetchCalendars(calendarId,recruiterId);
         $('.form-container').removeClass('hidden');
         $('.Availability').removeClass('hidden');
@@ -23,7 +22,7 @@ $(document).ready(function(){
         $('.bottom-container ').removeClass('hidden');
         $('.loaderScroller').addClass("hidden");
        
-}
+    }
 
     calendarDetails.submitHandler(function(){
         if(calendarDetails.validate()){
@@ -34,6 +33,7 @@ $(document).ready(function(){
 
     function onSuccessfulFetchCalendar(topic,data){
         console.log(data);
+        calendarDetails.init();
         calendarDetails.setDetails(data);
         calendarDetails.startdate();
         calendarDetails.enddate();

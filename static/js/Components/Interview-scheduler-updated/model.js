@@ -58,6 +58,7 @@ function Calendar(){
         // settings.editorMessage.subscribe('editableInput', function(event, editorElement){
         //      settings.message.val(settings.editor.getContent());
         // })
+        time_mapper();
         selectCreater();
         copytoall();
         fullCalendar();
@@ -581,8 +582,7 @@ function Calendar(){
         getDetails:getDetails,
         validate:validate,
         setDetails:setDetails,
-
-       fullCalendar: fullCalendar,
+        fullCalendar: fullCalendar,
         Timer: Timer,
         copyTime: copyTime,
         highlighter: highlighter
