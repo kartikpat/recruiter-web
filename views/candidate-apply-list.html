@@ -17,7 +17,7 @@
 		<div class="action-buttons mobile">
 			<span class=" button white massReject">Reject</span>
 			<span class=" button white massShortlist">Shortlist</span>
-			<span class="view-more button white"><i class="icon-down_arrow"></i></span>
+			<span class="view-more button white"><i class="icon-up_arrow"></i></span>
 		</div>
 	</div>
 	<div class="second-fold fold hidden mass-action-second">
@@ -83,12 +83,14 @@
 						<div class="candidates-search">
 							<div class="keyword-search">
 								<div class="container">
-									<input type="text" placeholder="Search candidate" class="candidate-keyword-filter left " id="searchInput"><button class="right search-trigger " id="searchButton" >Search</button>
+									<input type="text" placeholder="Search candidate" class="candidate-keyword-filter left " id="searchInput">
+									<i class="icon-search"></i> 
+									<button class="right search-trigger " id="searchButton" >Search</button>
 								</div>
 								<span class="error hidden " id="searchCandidateError">Please enter keyword</span>
 							</div>
 							<div class="filter-search">
-								<span class="button white filter-button" id="filterModalOpenButton"><span class="button-label">Filter</span></span>
+								<span class="button white filter-button" id="filterModalOpenButton"><i class="icon-filter"></i> <span class="button-label">Filter</span></span>
 								<span class="action-buttons sortBy">
 									<span class="section sortBy" id="sortBy">
 										<select class="select-dropdown" id="sortBySelect">
@@ -101,7 +103,6 @@
 						</div>
 						<div class="candidates-search-results">
 							<p class="results-count hidden" id="resultFound">
-
 							</p>
 							<div class="active-filters hidden">
 								<span  class="clear-all-filters ">
@@ -138,7 +139,7 @@
 											<a href="#all-jobs">
 												<div class="bulk-selection-item all active">
 													<span class="bulk-action-icon"><i class="icon-box"></i></span>
-													<span class="bulk-action-label">All(<span class="tabStats"  id="allNo">0</span>)</span>
+													<span class="bulk-action-label">All (<span class="tabStats"  id="allNo">0</span>)</span>
 												</div>
 											</a>
 										</li>
@@ -146,7 +147,7 @@
 											<a href="#unread-jobs">
 												<div class="bulk-selection-item unread">
 													<span class="bulk-action-icon"><i class="icon-envelope"></i></span>
-													<span class="bulk-action-label ">Unread(<span class="tabStats" id="unreadNo">0</span>)</span>
+													<span class="bulk-action-label ">Unread (<span class="tabStats" id="unreadNo">0</span>)</span>
 												</div>
 											</a>
 										</li>
@@ -154,7 +155,7 @@
 											<a href="#reviewed-jobs">
 												<div class="bulk-selection-item reviewed">
 													<span class="bulk-action-icon"><i class="icon-document_search_interface_symbol"></i></span>
-													<span class="bulk-action-label ">Reviewed(<span class="tabStats" id="reviewedNo">0</span>)</span>
+													<span class="bulk-action-label ">Reviewed (<span class="tabStats" id="reviewedNo">0</span>)</span>
 												</div>
 											</a>
 										</li>
@@ -162,7 +163,7 @@
 											<a href="#shortlisted-jobs">
 												<div class="bulk-selection-item shortlisted">
 													<span class="bulk-action-icon"><i class="icon-tick"></i></span>
-													<span class="bulk-action-label">Shortlisted(<span class="tabStats" id="shortlistedNo">0</span>)</span>
+													<span class="bulk-action-label">Shortlisted (<span class="tabStats" id="shortlistedNo">0</span>)</span>
 												</div>
 											</a>
 										</li>
@@ -170,7 +171,7 @@
 											<a href="#rejected-jobs">
 												<div class="bulk-selection-item rejected">
 													<span class="bulk-action-icon"><i class="icon-denied"></i></span>
-													<span class="bulk-action-label">Rejected(<span class="tabStats" id="rejectedNo">0</span>)</span>
+													<span class="bulk-action-label">Rejected (<span class="tabStats" id="rejectedNo">0</span>)</span>
 												</div>
 											</a>
 										</li>
@@ -178,7 +179,7 @@
 											<a href="#saved-jobs">
 												<div class="bulk-selection-item saved">
 													<span class="bulk-action-icon"><i class="icon-download_arrow"></i></span>
-													<span class="bulk-action-label">Saved(<span class="tabStats" id="savedNo">0</span>)</span>
+													<span class="bulk-action-label">Saved (<span class="tabStats" id="savedNo">0</span>)</span>
 												</div>
 											</a>
 										</li>
@@ -304,7 +305,9 @@
                 </div>
                 <div class="last-login-container">
                 	<p>Last Login: <span class="last-login js_last_login"> 13 days ago</span></p>
-                </div>
+				</div>
+				<div class="table-row-seprator">
+				</div>
             </div>
 
             <div class="resume-body container">
@@ -337,55 +340,55 @@
 	            				<ul>
 	            					<li>
 	            						<p class="location">
-	            							<span class="key">Current Location</span>
+	            							<span class="key">Current Location:</span>
 	            							<span class="value js_loc">Delhi</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="applied">
-	            							<span class="key">Applied Date</span>
+	            							<span class="key">Applied Date:</span>
 	            							<span class="value js_appliedOn">15-06-2017</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="notice-period">
-	            							<span class="key">Notice Period</span>
+	            							<span class="key">Notice Period:</span>
 	            							<span class="value js_notice">2 months</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="gender">
-	            							<span class="key">Gender</span>
+	            							<span class="key">Gender:</span>
 	            							<span class="value js_gender">Male</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="age">
-	            							<span class="key">Age</span>
+	            							<span class="key">Age:</span>
 	            							<span class="value js_age">28 years</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="experience">
-	            							<span class="key">Experience</span>
+	            							<span class="key">Experience:</span>
 	            							<span class="value js_experience">3y 4m</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="preferred-location">
-	            							<span class="key">Preferred Location</span>
+	            							<span class="key">Preferred Location:</span>
 	            							<span class="value js_pref_loc">Bangalore / Chennai</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="current-salary">
-	            							<span class="key">Current Salary</span>
+	            							<span class="key">Current Salary:</span>
 	            							<span class="value js_sal">18 LPA</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="expected-salary">
-	            							<span class="key">Expected Salary</span>
+	            							<span class="key">Expected Salary:</span>
 	            							<span class="value js_expected_sal">20LPA</span>
 	            						</p>
 	            					</li>
@@ -399,25 +402,25 @@
 	            				<ul>
 	            					<li>
 	            						<p class="marital-status">
-	            							<span class="key">Marital Status</span>
+	            							<span class="key">Marital Status:</span>
 	            							<span class="value js_marital_status">Single</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="languages">
-	            							<span class="key">Languages</span>
+	            							<span class="key">Languages:</span>
 	            							<span class="value js_languages">English, Hindi, Tamil</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="work-usa">
-	            							<span class="key">Work Permit for USA</span>
+	            							<span class="key">Work Permit for USA:</span>
 	            							<span class="value js_work_permit">No</span>
 	            						</p>
 	            					</li>
 	            					<li>
 	            						<p class="cat-percentile">
-	            							<span class="key">CAT Percentile</span>
+	            							<span class="key">CAT Percentile:</span>
 	            							<span class="value js_percentile">N.A</span>
 	            						</p>
 	            					</li>
@@ -435,7 +438,7 @@
 	            					</li>
 	            					<li>
 	            						<p class="willing-relocate">
-	            							<span class="key">Are you willing to relocate</span>
+	            							<span class="key">Are you willing to relocate?</span>
 	            							<span class="value js_relocate">No</span>
 	            						</p>
 	            					</li>
@@ -491,8 +494,8 @@
 									<textarea  placeholder="Add Comment" name="name" class="mobCandidateCommentTextarea"></textarea>
 								</div>
 								<div class="action-buttons">
-									<span class="cand-comment-button  mobCandidateAddCommentButton addButton">Add</span>
-									<span class="button green mobcandidateAddEditButton hidden">Edit Comment</span>
+									<span class="cand-comment-button  mobCandidateAddCommentButton ">Add</span>
+									<span class=" green mobcandidateAddEditButton hidden">Edit Comment</span>
 								</div>
 	            			</div>
 	            		</div>
@@ -577,7 +580,7 @@
     	<div class="sidebar-section comments candidateCommentContainer">
 			<h3>Comment</h3>
 
-    		<div class="comment-box ">
+    		<div class="comment-box hidden">
 					<textarea id="" class="comment-textarea" readonly></textarea>
 			</div>
 			<div class="">

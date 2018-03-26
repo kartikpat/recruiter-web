@@ -77,7 +77,7 @@ function BookedSlots() {
 	function createElement(aData, index) {
 		var item = cloneElement();
 		var title = getTitleFormat(aData["job"]["title"], (/\(\d+-\d+ \w+\)$/));
-        if(aData["slot"]) {
+        if(aData["slot"]){
             var date = moment(aData["slot"]["date"]).format('ll');
             console.log(settings.date )
             console.log(date)
@@ -93,7 +93,6 @@ function BookedSlots() {
 			var showTime = temp + " to " + temp1;
     		item.interviewTime.text(showTime)
         }
-
 		item.calendarName.text(aData["calendar"]["name"]);
 		item.calendarName.attr("href","/calendar/"+aData["calendar"]["id"]+"/edit");
 		item.candName.text(aData["name"])
