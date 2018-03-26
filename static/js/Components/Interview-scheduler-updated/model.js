@@ -117,6 +117,7 @@ function Calendar(){
         timetable.date=date;
             $.each(settings.dayId,function(){
                 // settings.select_menu.find('option').prop('disabled', false); 
+                debugger
                 var id=$(this).attr('id');
                 var unique=$(this).find('.day').attr('id');
                 var slotId=$(this).attr('slotId');
@@ -129,7 +130,7 @@ function Calendar(){
 
                 var startvalue=$("#"+id+ "").find(settings.start_time).val();
                 var endvalue=$("#"+id+ "").find(settings.end_time).val();
-                if(parseInt(startvalue)>=0 && parseInt(endvalue)>=0 && checkbox==true){
+                if(parseInt(startvalue)>0 && parseInt(endvalue)>0 && checkbox==true){
                     var slot={
                         day:id, 
                         id:unique,
@@ -228,7 +229,7 @@ function Calendar(){
 
     function availablehours(slots){
         for(var k=0;k<slots.length;k++){
-            debugger
+            // debugger
             var id=slots[k].day;
             var slotId=slots[k].slotId;
             var uniqueid=slots[k].id;

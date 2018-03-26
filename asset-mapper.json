@@ -1072,7 +1072,7 @@
 				"static/js/Services/sendInterviewInvite.js",
 				"static/js/Services/fetchJobApplications.js",
 				"static/js/Services/fetchJob.js",
-				"static/js/Services/fetchCalendars.js",
+				"static/js/Services/fetchjobCalendars.js",
 				"static/js/Services/setCandidateAction.js",
 				"static/js/Services/fetchRecruiterTags.js",
 				"static/js/Services/setDefaultCalendar.js",
