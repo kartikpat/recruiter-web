@@ -302,6 +302,23 @@
 .icon-face-to-face:before {
   content: '\e83d'; }
 
+.icon-search:before {
+  content: '\e83f'; }
+
+.icon-filter:before {
+  content: '\e841'; }
+
+.icon-up_arrow:before {
+  content: '\e842'; }
+
+.icon-search:before {
+  position: relative;
+  top: -24px; }
+
+.icon-filter:before {
+  position: relative;
+  top: 6px; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -789,6 +806,23 @@ span.sticker {
 .icon-face-to-face:before {
   content: '\e83d'; }
 
+.icon-search:before {
+  content: '\e83f'; }
+
+.icon-filter:before {
+  content: '\e841'; }
+
+.icon-up_arrow:before {
+  content: '\e842'; }
+
+.icon-search:before {
+  position: relative;
+  top: -24px; }
+
+.icon-filter:before {
+  position: relative;
+  top: 6px; }
+
 /*[Recruiter_Homepage]*/
 /*[/Recruiter_Homepage]*/
 /**** Fontello Font Icons : ****/
@@ -1035,6 +1069,23 @@ span.sticker {
 
 .icon-face-to-face:before {
   content: '\e83d'; }
+
+.icon-search:before {
+  content: '\e83f'; }
+
+.icon-filter:before {
+  content: '\e841'; }
+
+.icon-up_arrow:before {
+  content: '\e842'; }
+
+.icon-search:before {
+  position: relative;
+  top: -24px; }
+
+.icon-filter:before {
+  position: relative;
+  top: 6px; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */

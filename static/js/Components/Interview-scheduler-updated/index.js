@@ -1,32 +1,38 @@
-var test = null;
 $(document).ready(function(){
     var calendarDetails = Calendar();
-    calendarDetails.init();
-    calendarDetails.startdate();
-    calendarDetails.enddate();
-    calendarDetails.time_mapper();
-    test= calendarDetails.testHighlight;
-     console.log(calendarId);
+    
+    if(!calendarId){
+        calendarDetails.init();
+        calendarDetails.startdate();
+        calendarDetails.enddate();
+        calendarDetails.time_mapper();
+        calendarDetails.testHighlight;
+    }
  
     if(calendarId){
-        fetchCalendars("159","33765");
+        fetchCalendars(calendarId,recruiterId);
         $('.form-container').removeClass('hidden');
         $('.Availability').removeClass('hidden');
         $('.second-container ').removeClass('hidden');
         $('.bottom-container ').removeClass('hidden');
         $('.loaderScroller').addClass("hidden");
+        calendarDetails.init();
     }
+
     calendarDetails.submitHandler(function(){
         if(calendarDetails.validate()){
         var data=calendarDetails.getDetails();
-        submitCalendar(data,"159",recruiterId);
+        submitCalendar(data,calendarId,recruiterId);
         }
     })
 
     function onSuccessfulFetchCalendar(topic,data){
-        console.log("hie here");
         console.log(data);
         calendarDetails.setDetails(data);
+        calendarDetails.startdate();
+        calendarDetails.enddate();
+        calendarDetails.time_mapper();
+        calendarDetails.testHighlight;
     }
 
     function onFailedFetchCalendar(topic,data){
@@ -35,7 +41,8 @@ $(document).ready(function(){
 
     function onSuccessfulSubmitCalendar(topic, data){
         console.log('submit successful');
-         window.location='/calendar-manage' //changeurl
+        console.log(data);
+        window.location='/calendar-manage' //changeurl
     }
 
 	function onFailedSubmitCalendar(topic, data){

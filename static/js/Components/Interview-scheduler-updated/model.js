@@ -58,10 +58,8 @@ function Calendar(){
         // settings.editorMessage.subscribe('editableInput', function(event, editorElement){
         //      settings.message.val(settings.editor.getContent());
         // })
-
         selectCreater();
         copytoall();
-        time_mapper();
         fullCalendar();
         Timer();
         copyTime();
@@ -172,7 +170,7 @@ function Calendar(){
                         finalslots.push(aRow);
                     }
                     else{
-                        debugger
+                        // debugger
                         var Nextend=aRow.time.to;
                         aRow.time.to=start;
                         var Nextstart=end;
@@ -205,10 +203,11 @@ function Calendar(){
     }
 
     function setDetails(object){
+        console.log(object);
         settings.name.val(object["name"]);
         // settings.editorMessage.setContent(object["message"])
         // settings.editor.setContent(object["telMessage"])
-        settings.message.val(object["message"]);
+        settings.message.val(object["message"],(/\(\d+-\d+ \w+\)$/));
         settings.teleMessage.val(object["telMessage"],(/\(\d+-\d+ \w+\)$/));
         timetable.CalendarId=object["id"];
         timetable.slots=object.slots;
@@ -224,18 +223,20 @@ function Calendar(){
         $('#enddatepicker').datepicker().datepicker('setDate', endDate);
         //datepicker set value
         testHighlight(fromDate,toDate,previewslots);
-        settings.createCalendar.find('button').text("UpdateCalendar")
+        settings.createCalendar.find('button').text("Update Calender")
     }
 
     function availablehours(slots){
         for(var k=0;k<slots.length;k++){
+            debugger
             var id=slots[k].day;
-            var startvalue=parseInt(slots[k].time.from);
-            var endvalue=parseInt(slots[k].time.to);
-            console.log(startvalue);
-            console.log(slots[k].id);
-            console.log(timetable.slots);
+            var slotId=slots[k].slotId;
+            var uniqueid=slots[k].id;
+            var startvalue=slots[k].time.from;
+            var endvalue=slots[k].time.to;
             $("#"+id+ "").css("opacity","1");
+            $("#"+id+ "").attr("slotId",slotId);
+            $("#"+id+ "").find('.day').attr("id",uniqueid);
             $("#"+id+ "").find(settings.start_time).val(startvalue);
             $("#"+id+ "").find(settings.end_time).val(endvalue);
             $("#"+id+ "").find(settings.checkbox).prop("checked",true);
@@ -390,7 +391,6 @@ function Calendar(){
             defaultView: 'basicWeek',
             columnFormat :'ddd \n D/M/Y'
           });
-          $(".fc-button").on("click", Timer);
           settings.prevButton.on("click",function(){
               console.log("hello");
             $('#calendar').fullCalendar('prev');
@@ -400,8 +400,6 @@ function Calendar(){
             $('#calendar').fullCalendar('next');
                 Timer();
           })
-
-          Timer();
     }
 
     function Timer(e){ 
@@ -412,7 +410,7 @@ function Calendar(){
             if (hour > 11) ampm = 'PM';
                 for (var min = 0; min<60; min += 30) {
                      var min0= min<30 ?  '00': min;
-                     $('.fc-day').append('<div id="hours-'+hour+min0+'" class="TimeLines"> ' + hour12 + ':' + min0 + ' ' + ampm + ' </div>');
+                     $('.fc-day').append('<div id="hours-'+hour+min0+'" class="TimeLines">' + hour12 + ':' + min0 + ' ' + ampm + '</div>');
                 }
         }
 
@@ -582,6 +580,12 @@ function Calendar(){
         getDetails:getDetails,
         validate:validate,
         setDetails:setDetails,
+
+       fullCalendar: fullCalendar,
+        Timer: Timer,
+        copyTime: copyTime,
+        highlighter: highlighter
+        
     }
 };
 
