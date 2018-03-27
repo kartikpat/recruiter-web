@@ -195,9 +195,11 @@ input::-webkit-input-placeholder {
 						display:inline-block;
 						width:40%;
 						vertical-align:top;
+						overflow: hidden;
                         .container {
                             position: relative;
-                            height: 30px;
+							height: 30px;
+							overflow: hidden;
                         }
 						input {
 							@include input-field;
@@ -212,6 +214,7 @@ input::-webkit-input-placeholder {
 							height: 30px;
 							vertical-align: middle;
 							text-align: left;
+							overflow: hidden;
 						}
 						button {
 							position:absolute;
@@ -721,7 +724,9 @@ input::-webkit-input-placeholder {
     	.action-buttons {
             display: none;
     		span.button {
-    			@include button($color-white);
+				//@include button($color-white);
+				// margin: 0;
+				padding: 8px 8px;
     		}
             &.mobile {
                 display: block;
@@ -941,7 +946,6 @@ input::-webkit-input-placeholder {
 		.page-header {
 
 		}
-
 		.page-mobile-header {
 			display:block;
             font-size:$base-font-size;
@@ -972,6 +976,21 @@ input::-webkit-input-placeholder {
 	        }
 	    }
 	}
+	.mass-action-container {
+    	.action-buttons {
+            display: none;
+    		span.button {
+				@include button($color-white);
+				margin: 0!important;
+    		}
+            &.mobile {
+                display: block;
+                .view-more.button {
+                    padding: 6px 15px;
+                }
+            }
+    	}
+    }
 }
 
 @media all and (max-width:1024px) {
@@ -1910,11 +1929,12 @@ input::-webkit-input-placeholder {
 
     }
     .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span.filter-button {
-        width: 75px;
-        margin-right: 3px;
+        // width: 75px;
+        margin-bottom: 10px;
     }
     .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span.sortBy {
-        width: 150px;
+		width: 150px;
+		margin-left: 0px;
     }
     .page-content .page-header .action-buttons span {
         font-size: 13px;

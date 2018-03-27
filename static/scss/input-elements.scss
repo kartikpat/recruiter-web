@@ -43,7 +43,6 @@
 	background-position:right 18px center;
 	cursor:pointer;
 	border-color:$border-color-base;
-
 	-webkit-appearance:none;
 	-moz-appearance:none;
 	-o-appearanance:none;
@@ -86,11 +85,9 @@ select.select-dropdown {
 	background-position:right 18px center;
 	cursor:pointer;
 	border-color:$border-color-base;
-
 	-webkit-appearance:none;
 	-moz-appearance:none;
 	-o-appearanance:none;
-
 
 	&[multiple] {
 		background-image:none;
@@ -102,6 +99,10 @@ select.select-dropdown {
 			display:none;
 		}
 	}
+}
+
+select.select-dropdown::-ms-expand {
+    display: none;
 }
 
 @mixin formgroup-label {

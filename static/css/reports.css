@@ -339,6 +339,9 @@ select.select-dropdown {
   select.select-dropdown.inactive .dropdown-list {
     display: none; }
 
+select.select-dropdown::-ms-expand {
+  display: none; }
+
 label {
   font-size: 14px;
   color: #2b2b2b;
@@ -1383,6 +1386,9 @@ select.select-dropdown {
   select.select-dropdown.inactive .dropdown-list {
     display: none; }
 
+select.select-dropdown::-ms-expand {
+  display: none; }
+
 label {
   font-size: 14px;
   color: #2b2b2b;
@@ -2209,6 +2215,9 @@ select.select-dropdown {
     height: 120px; }
   select.select-dropdown.inactive .dropdown-list {
     display: none; }
+
+select.select-dropdown::-ms-expand {
+  display: none; }
 
 label {
   font-size: 14px;

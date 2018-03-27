@@ -138,6 +138,9 @@
                     select {
                         @include select-dropdown;
                     }
+                    select::-ms-expand {
+                        display: none!important;
+                    }
 
                     input[type="checkbox"] {
                         @include check-input;

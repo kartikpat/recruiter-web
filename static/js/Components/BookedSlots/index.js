@@ -2,23 +2,25 @@ var globalParameters = {
     pageContent: 10,
     pageNumber: 1,
     status: "1,3",
-    candidateListLength: null
+    candidateListLength: null,
+    startdate:'03/12/2018',
 }
 
 jQuery(document).ready( function() {
  
    var slots = BookedSlots();
-
    slots.init();
-
+   startdate();
    fetchRecruiterCalendar(recruiterId)
 
    slots.onChangeCalendarFilters(function(calendarId){
        slots.showShell();
        var parameters = {};
        globalParameters.pageNumber = 1;
-       parameters.pageNumber = globalParameters.pageNumber;
-       parameters.pageContent = globalParameters.pageContent;
+       parameters.pageNumber= globalParameters.pageNumber;
+       parameters.pageContent= globalParameters.pageContent;
+    //    parameters.startdate=getStartDate();
+       console.log(parameters.startdate);
        if(calendarId != -1) {
            parameters.calendarId = calendarId;
        }
@@ -30,6 +32,44 @@ jQuery(document).ready( function() {
        slots.showLoaderOverlay()
        return submitUnpublishJob(recruiterId, jobId, {reasonId: reason});
    });
+
+    function onChangeDate(){
+       var parameters = {};
+       parameters.pageNumber= globalParameters.pageNumber;
+       parameters.pageContent= globalParameters.pageContent;
+       parameters.from=getStartDate();
+       if(calendarId != -1) {
+             parameters.calendarId = calendarId;
+       }
+       console.log(parameters);
+       fetchInterviews(recruiterId, parameters);
+    //    location.reload();
+    }
+
+    function getStartDate(){
+        var fromDate=$('#start_date').datepicker().val();
+        fromDate=fromDate+':00:00:00'
+        console.log(fromDate);
+        return fromDate;
+    }
+
+   function startdate(){
+        $("#startdatepicker").datepicker({
+            buttonImage: '/static/images/calender.png',
+            buttonImageOnly: true,
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'dd-mm-yy',
+            fielddateFormat: 'dd-mm-yy',
+            altField:   '#start_date',
+            altFormat: "yy-mm-dd",
+            showOn: 'both', 
+            onSelect: function() {
+               onChangeDate();
+            } 
+
+        });
+    }
 
    var parameters = {}
    parameters.pageNumber = globalParameters.pageNumber;
@@ -53,9 +93,14 @@ jQuery(document).ready( function() {
 
    }
 
+
    function onInterviewsFetchSuccess(topic, data){
-       slots.addToList(data);
-   }
+        tickerLock = false;
+        console.log(data);
+        globalParameters.InterviewListLength = data.length;
+        slots.addToList(data,globalParameters.pageNumber);
+      
+    }
 
    function onInterviewsFetchFail(topic, data){
 
@@ -72,6 +117,34 @@ jQuery(document).ready( function() {
        slots.hideLoaderOverlay()
        slots.openModal("premium")
        errorHandler(data)
+   }
+
+   var tickerLock=false;
+   $(window).scroll(function() {
+       if(!tickerLock){
+           tickerLock = true;
+           setTimeout(checkScrollEnd,100);
+       }
+   });
+
+   function checkScrollEnd() {
+       if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+        //    debugger
+           globalParameters.pageNumber = globalParameters.pageNumber + 1;
+           if(globalParameters.InterviewListLength >= globalParameters.pageContent) {
+            //    var parameters = filters.getAppliedFilters();
+               parameters.pageNumber = globalParameters.pageNumber;
+               parameters.pageContent = globalParameters.pageContent;
+               parameters.status = globalParameters.status;
+               $(".loaderScroller").removeClass("hidden");
+               fetchInterviews(recruiterId,parameters);
+           }
+           else
+               tickerLock = false;
+       }
+       else{
+           tickerLock = false
+       }
    }
 
 });

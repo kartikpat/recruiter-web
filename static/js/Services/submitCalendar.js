@@ -6,6 +6,7 @@ function submitCalendar(data,calendarId,recruiterId){
 		if(res.status && res.status =='success'){
 			return pubsub.publish("submittedCalendar", res);
 		}
-		return pubsub.publish("failedCalendarSubmission", res);
+		},function(res,status,error) {
+			return pubsub.publish("failedCalendarSubmission", res);
 	});
 }

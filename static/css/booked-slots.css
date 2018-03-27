@@ -311,6 +311,9 @@ select.select-dropdown {
   select.select-dropdown.inactive .dropdown-list {
     display: none; }
 
+select.select-dropdown::-ms-expand {
+  display: none; }
+
 label {
   font-size: 14px;
   color: #2b2b2b;
@@ -1355,6 +1358,9 @@ select.select-dropdown {
   select.select-dropdown.inactive .dropdown-list {
     display: none; }
 
+select.select-dropdown::-ms-expand {
+  display: none; }
+
 label {
   font-size: 14px;
   color: #2b2b2b;
@@ -2182,6 +2188,9 @@ select.select-dropdown {
   select.select-dropdown.inactive .dropdown-list {
     display: none; }
 
+select.select-dropdown::-ms-expand {
+  display: none; }
+
 label {
   font-size: 14px;
   color: #2b2b2b;
@@ -2811,6 +2820,18 @@ span.sticker {
         display: inline-block; }
         .page-content .header-slot .right-container .manage-Calendar a {
           color: #2b2b2b; }
+      .page-content .header-slot .right-container .start-date input {
+        font-family: inherit;
+        font-size: 14px;
+        color: #2b2b2b;
+        border-radius: 4px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #8f8a8a;
+        box-sizing: border-box;
+        background-color: #ffffff;
+        width: 135px;
+        height: 28px; }
   .page-content .action-wrapper {
     width: 95%;
     background-color: #ebe8e8;

@@ -394,7 +394,7 @@
                                         } 
                                 }
                             }
-                        }   
+                          
                         .time-section{
                             width: 74.2%;
                             height: 70px;
@@ -416,6 +416,7 @@
                                    margin-right: 15px;
                                     span{
                                         display: none!important;
+                                        // visibility: hidden!important;
                                     }       
                                    .select-dropdown ,.select-dropdown-2{
                                     margin-top: 15px;
@@ -450,10 +451,13 @@
                                     font-size: 14px;/* Approximation due to font substitution */
                                     font-weight: 400;
                                     text-align: left;
-                                    display: none;
-                                    outline: none;
+                                     display: none;
+                                     outline: none;
                                     }
                                 }
+                                .time-section:hover + .button {
+                                    display: inline-block;
+                                  }
                                 .error-slot{
                                     font-family:  $droid-font;
                                     position: absolute;
@@ -462,7 +466,8 @@
                                     margin-left: 15px;
                                     margin-top: 5px;
                                 }
-                           }
+                            }
+                        }
                 }
 
 

@@ -1,5 +1,4 @@
 function BookedSlots() {
-
 	var settings = {};
 	var config = {};
 
@@ -110,24 +109,24 @@ function BookedSlots() {
 		return item;
 	}
 
-	function addToList(dataArray){
+	function addToList(dataArray,pageNumber){
 		var str = '';
 		hideShell();
+		// debugger
 		// dataArray.length=0;
-		if(!dataArray.length) {
-		//	debugger
+		if(dataArray.length<1 && pageNumber ==1) {
+		
 			settings.bookedSlotsview.addClass('hidden');
 			settings.noInterviewView.removeClass('hidden');		
 		}
 		settings.header.removeClass('hidden');
 		settings.headerSlot.removeClass('hidden');
 		dataArray.forEach(function(aData, index){
-			var item = createElement(aData , index);
+			var item = createElement(aData ,index);
 			str+=item.element[0].outerHTML;
 		});
-
-		settings.bookedSlots.html(str);
-
+		// settings.bookedSlots.html(str);
+	    	settings.bookedSlots.append(str);
 	}
 
 	function closeModal() {
@@ -172,9 +171,10 @@ function BookedSlots() {
             item.element.val(aData["id"]);
             str+=item.element[0].outerHTML;
         });
-        settings.calendarDropdown.append(str);
+		settings.calendarDropdown.append(str);
+	}
 
-    }
+	
 
 	return {
 		init: init,
