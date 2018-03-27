@@ -45,8 +45,9 @@ function candidateList() {
         settings.bulkActionsDropdown= $('#bulkActionsDropdown'),
         settings.bulkActionsContainer = $("#bulkActionsContainer"),
         settings.applicationsCount = $(".applicationsCount"),
-        settings.bulkCheckInputClass = ".bulkCheckInput";
-        settings.bulkBackIcon = $("#bulkBackIcon")
+        settings.bulkCheckInputClass = ".bulkCheckInput",
+        settings.bulkBackIcon = $("#bulkBackIcon"),
+        settings.secondMassActionContainer = $("#secondMassActionContainer");
         onClickBulkDownArrow()
         onClickMassCheckbox()
         onClickCandidateOtherActions()
@@ -76,6 +77,7 @@ function candidateList() {
             settings.massCheckboxInput.prop("checked",false)
             settings.rowContainer.find(".candidateCheckbox").prop("checked", false)
             settings.rowContainer.find(".candidate-select").removeClass("selected")
+            $(".second-fold").addClass("hidden")
         })
     }
 
@@ -444,7 +446,7 @@ function candidateList() {
             event.stopPropagation();
             var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            
+
             fn(candidateId, applicationId);
             return false
         });

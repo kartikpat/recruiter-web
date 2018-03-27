@@ -1650,6 +1650,16 @@ span.sticker {
   .modal_overlay .modal_content .modal_body .modal_body_header {
     border-bottom: 0; } }
 
+.topInstitutesContainer {
+  margin: 0 15px; }
+  .topInstitutesContainer .section {
+    padding-top: 0px; }
+  .topInstitutesContainer .check-input {
+    display: inline-block;
+    width: 50%; }
+    .topInstitutesContainer .check-input label {
+      font-weight: 700; }
+
 .main-container {
   padding: 20px;
   min-height: calc(100% - 155px); }

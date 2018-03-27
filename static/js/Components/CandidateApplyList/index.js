@@ -474,10 +474,10 @@ jQuery(document).ready( function() {
 		theJob.showLoaderOverlay()
 		return submitUnpublishJob(recruiterId, globalParameters.jobId, {reasonId: reason});
 	});
-	theJob.onClickSubmitRefreshJob(function(){
+	theJob.onClickSubmitRefreshJob(function(jobId){
         theJob.closeModal()
 		theJob.showLoaderOverlay()
-		return submitRefreshJob(recruiterId, globalParameters.jobId);
+		return submitRefreshJob(recruiterId,jobId);
 	})
     theJob.onClickSubmitPremiumJob(function(){
         theJob.closeModal()

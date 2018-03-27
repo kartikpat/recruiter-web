@@ -986,7 +986,8 @@
 				"static/css/utilities.css",
 				"static/css/footer.css",
 				"static/css/header.css",
-				"static/css/my-chat.css"
+				"static/css/my-chat.css",
+				"static/css/vendor/tooltipster.css"
 			],
 			"prod": [
 				"static/build/css/my-chat.min.css"
@@ -995,6 +996,7 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/tooltipster.main.min.js",
 				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/change-password.js",
