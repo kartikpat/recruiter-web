@@ -16,6 +16,7 @@ function Calendar(){
         settings.teleMessage= $("#telephonic"),
         settings.select_menu= $(".select-dropdown"),
         settings.button=$("#selectAll"),
+        settings.copytoall=$(".copyToAll"),
         settings.check_button=$("#check-button-mon"),
         settings.start_time=$('.Start-time'),
         settings.end_time=$('.End-time'),
@@ -118,7 +119,7 @@ function Calendar(){
         timetable.date=date;
             $.each(settings.dayId,function(){
                 // settings.select_menu.find('option').prop('disabled', false); 
-                debugger
+                // debugger
                 var id=$(this).attr('id');
                 var unique=$(this).find('.day').attr('id');
                 var slotId=$(this).attr('slotId');
@@ -299,7 +300,7 @@ function Calendar(){
     function selectCreater(){    
         var select= settings.select_menu;
         var ampm = 'AM';
-        for (var hour=9; hour<=22; hour++) {
+        for (var hour=8; hour<=22; hour++) {
             var hour12 = hour > 12 ? hour - 12 : hour;
                  hour  = hour < 10 ? '0'+hour :  hour;
                  hour12= hour12 <10 ? '0'+hour12 : hour12;
@@ -311,19 +312,23 @@ function Calendar(){
                         break
                     }
                 }
-        }
-      
+            }
     }
 
     function copytoall(){
-        settings.check_button.change(function(event){
-        if (this.checked){
-            settings.button.css("display","inline-block");
-        }
-         else{
-             $("#selectAll").css("display","none");
-         }
-      });
+    //     settings.checkbox.change(function(event){
+    //     if (this.checked){
+    //         settings.button.css("display","inline-block");
+    //     }
+    //      else{
+    //         //  $("#selectAll").css("display","none");
+    //      }
+    //   });
+        $(document).on('mouseenter', '.dayId', function() {
+            $(this).find(":button").show();
+        }).on('mouseleave', '.dayId', function () {
+            $(this).find(":button").hide();
+        });
     }
 
     function time_mapper(){
@@ -359,24 +364,27 @@ function Calendar(){
     }
 
     function copyTime(){
-        settings.button.on('click', function (){
-            var startvalue=settings.element1.val();
-            var endvalue=settings.element2.val();
-            if (settings.checkbox.hasClass('allChecked')){
-                  $('input[type="checkbox"]', settings.table).prop('checked',false);
-                  settings.check_button.prop('checked',true);
-               //   settings.select_menu.val(0);
-               //   settings.firstDay.find(settings.element1).val(parseInt(startvalue));
-               //   settings.firstDay.find(settings.element2).val(parseInt(endvalue));
-            } 
-            else{
+        settings.copytoall.on('click', function (){
+         //   debugger
+            var id=$(this).parent().parent().parent().attr("id");
+            console.log(id);
+            var startvalue=$("#"+id+ "").find(settings.start_time).val();
+            var endvalue=$("#"+id+ "").find(settings.end_time).val();
+            var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
+            // if (settings.checkbox.hasClass('allChecked')){
+            //       $('input[type="checkbox"]', settings.table).prop('checked',false);
+            //       $("#"+id+ "").find(settings.checkbox).prop('checked',true);
+            //    //   settings.select_menu.val(0);
+            //    //   settings.firstDay.find(settings.element1).val(parseInt(startvalue));
+            //    //   settings.firstDay.find(settings.element2).val(parseInt(endvalue));
+            // } 
+            if(checkbox==true && startvalue>0 && endvalue>0){
                   $('input[type="checkbox"]', settings.table).prop('checked',true);
-                  settings.start_time.val(settings.element1.val());
-                  settings.end_time.val(settings.element2.val());
-                 
+                  settings.start_time.val(startvalue);
+                  settings.end_time.val(endvalue);    
             }
-            settings.checkbox.toggleClass('allChecked');
-            settings.select_menu.find('option').prop('disabled', false);     
+            //settings.checkbox.toggleClass('allChecked');
+            //settings.select_menu.find('option').prop('disabled', false);     
             getslots();
            
         })
@@ -406,13 +414,16 @@ function Calendar(){
 
     function Timer(e){ 
         var ampm = 'AM';
-        for (var hour=0; hour<24; hour++){
+        for (var hour=8; hour<23; hour++){
             var hour12 = hour > 12 ? hour - 12 : hour;
             hour12= hour12 <10 ? '0'+hour12 : hour12;
             if (hour > 11) ampm = 'PM';
                 for (var min = 0; min<60; min += 30) {
                      var min0= min<30 ?  '00': min;
                      $('.fc-day').append('<div id="hours-'+hour+min0+'" class="TimeLines">' + hour12 + ':' + min0 + ' ' + ampm + '</div>');
+                     if(hour==22){
+                        break
+                    }
                 }
         }
 

@@ -444,7 +444,7 @@ jQuery(document).ready( function() {
     })
 
     candidates.onClickDownloadMassExcel(function(arr){
-
+        
         var parameters = filters.getAppliedFilters();
         parameters.applicationId = arr.toString()
         var str = "?"

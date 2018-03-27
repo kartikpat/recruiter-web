@@ -10,7 +10,7 @@ jQuery(document).ready( function() {
    var slots = BookedSlots();
 
    slots.init();
-
+   slots.startdate();
    fetchRecruiterCalendar(recruiterId)
 
    slots.onChangeCalendarFilters(function(calendarId){
@@ -54,8 +54,12 @@ jQuery(document).ready( function() {
    }
 
    function onInterviewsFetchSuccess(topic, data){
-       slots.addToList(data);
-   }
+        tickerLock = false;
+        console.log(data);
+        globalParameters.InterviewListLength = data.length;
+        slots.addToList(data,globalParameters.pageNumber);
+      
+    }
 
    function onInterviewsFetchFail(topic, data){
 
@@ -72,6 +76,34 @@ jQuery(document).ready( function() {
        slots.hideLoaderOverlay()
        slots.openModal("premium")
        errorHandler(data)
+   }
+
+   var tickerLock=false;
+   $(window).scroll(function() {
+       if(!tickerLock){
+           tickerLock = true;
+           setTimeout(checkScrollEnd,100);
+       }
+   });
+
+   function checkScrollEnd() {
+       if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+        //    debugger
+           globalParameters.pageNumber = globalParameters.pageNumber + 1;
+           if(globalParameters.InterviewListLength >= globalParameters.pageContent) {
+            //    var parameters = filters.getAppliedFilters();
+               parameters.pageNumber = globalParameters.pageNumber;
+               parameters.pageContent = globalParameters.pageContent;
+               parameters.status = globalParameters.status;
+               $(".loaderScroller").removeClass("hidden");
+               fetchInterviews(recruiterId,parameters);
+           }
+           else
+               tickerLock = false;
+       }
+       else{
+           tickerLock = false
+       }
    }
 
 });

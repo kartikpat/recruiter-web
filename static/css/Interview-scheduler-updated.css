@@ -339,6 +339,9 @@ select.select-dropdown {
   select.select-dropdown.inactive .dropdown-list {
     display: none; }
 
+select.select-dropdown::-ms-expand {
+  display: none; }
+
 label {
   font-size: 14px;
   color: #2b2b2b;
@@ -846,67 +849,69 @@ span.sticker {
                   border-width: 1px;
                   border-color: #e4e4e4;
                   padding-top: 5px; }
-          .wrap .second-container .available-hours .Days-available .table .time-section {
-            width: 74.2%;
-            height: 70px;
-            display: inline-block;
-            border-style: solid;
-            border-width: 1px;
-            border-color: #e4e4e4;
-            box-sizing: border-box;
-            border-top: none;
-            border-right: none; }
-            .wrap .second-container .available-hours .Days-available .table .time-section .timer {
-              color: #2b2b2b;
-              font-size: 14px;
-              /* Approximation due to font substitution */
-              font-weight: 400;
-              text-align: left; }
-            .wrap .second-container .available-hours .Days-available .table .time-section .section-one {
-              margin-left: 15px;
-              margin-right: 15px; }
-              .wrap .second-container .available-hours .Days-available .table .time-section .section-one span {
-                display: none !important; }
-              .wrap .second-container .available-hours .Days-available .table .time-section .section-one .select-dropdown, .wrap .second-container .available-hours .Days-available .table .time-section .section-one .select-dropdown-2 {
-                margin-top: 15px;
-                font-family: inherit;
-                display: inline-block;
-                font-size: 12px;
+            .wrap .second-container .available-hours .Days-available .table .dayId .time-section {
+              width: 74.2%;
+              height: 70px;
+              display: inline-block;
+              border-style: solid;
+              border-width: 1px;
+              border-color: #e4e4e4;
+              box-sizing: border-box;
+              border-top: none;
+              border-right: none; }
+              .wrap .second-container .available-hours .Days-available .table .dayId .time-section .timer {
                 color: #2b2b2b;
-                padding: 10px 14px;
-                border-radius: 3px;
-                background: #FFF;
-                width: 100px;
-                border: 1px solid #e8e8e8;
-                background-image: url("/static/images/black_caret_down.svg");
-                background-repeat: no-repeat;
-                background-position: right 18px center;
-                cursor: pointer;
-                border-color: #e8e8e8;
-                -webkit-appearance: none;
-                -moz-appearance: none;
-                -o-appearanance: none;
-                outline: none; }
-            .wrap .second-container .available-hours .Days-available .table .time-section .button-container {
-              display: inline-block; }
-              .wrap .second-container .available-hours .Days-available .table .time-section .button-container button {
-                border: none;
-                background-color: inherit;
-                font-family: "Droid Sans", sans-serif;
-                color: #155d9a;
                 font-size: 14px;
                 /* Approximation due to font substitution */
                 font-weight: 400;
-                text-align: left;
-                display: none;
-                outline: none; }
-            .wrap .second-container .available-hours .Days-available .table .time-section .error-slot {
-              font-family: "Droid Sans", sans-serif;
-              position: absolute;
-              font-size: 12px;
-              color: #ec1c2a;
-              margin-left: 15px;
-              margin-top: 5px; }
+                text-align: left; }
+              .wrap .second-container .available-hours .Days-available .table .dayId .time-section .section-one {
+                margin-left: 15px;
+                margin-right: 15px; }
+                .wrap .second-container .available-hours .Days-available .table .dayId .time-section .section-one span {
+                  display: none !important; }
+                .wrap .second-container .available-hours .Days-available .table .dayId .time-section .section-one .select-dropdown, .wrap .second-container .available-hours .Days-available .table .dayId .time-section .section-one .select-dropdown-2 {
+                  margin-top: 15px;
+                  font-family: inherit;
+                  display: inline-block;
+                  font-size: 12px;
+                  color: #2b2b2b;
+                  padding: 10px 14px;
+                  border-radius: 3px;
+                  background: #FFF;
+                  width: 100px;
+                  border: 1px solid #e8e8e8;
+                  background-image: url("/static/images/black_caret_down.svg");
+                  background-repeat: no-repeat;
+                  background-position: right 18px center;
+                  cursor: pointer;
+                  border-color: #e8e8e8;
+                  -webkit-appearance: none;
+                  -moz-appearance: none;
+                  -o-appearanance: none;
+                  outline: none; }
+              .wrap .second-container .available-hours .Days-available .table .dayId .time-section .button-container {
+                display: inline-block; }
+                .wrap .second-container .available-hours .Days-available .table .dayId .time-section .button-container button {
+                  border: none;
+                  background-color: inherit;
+                  font-family: "Droid Sans", sans-serif;
+                  color: #155d9a;
+                  font-size: 14px;
+                  /* Approximation due to font substitution */
+                  font-weight: 400;
+                  text-align: left;
+                  display: none;
+                  outline: none; }
+              .wrap .second-container .available-hours .Days-available .table .dayId .time-section .time-section:hover + .button {
+                display: inline-block; }
+              .wrap .second-container .available-hours .Days-available .table .dayId .time-section .error-slot {
+                font-family: "Droid Sans", sans-serif;
+                position: absolute;
+                font-size: 12px;
+                color: #ec1c2a;
+                margin-left: 15px;
+                margin-top: 5px; }
       .wrap .second-container .available-hours .Breaks-available {
         display: block;
         margin-top: 50px;

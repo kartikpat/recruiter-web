@@ -1410,6 +1410,7 @@
         "scripts": {
             "debug": [
 				"static/js/vendor/jquery.min.js",
+				"static/js/vendor/jquery-ui.min.js",
 				"static/js/utilities.js",
 				"static/js/modal.js",
 				"static/js/header.js",
