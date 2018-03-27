@@ -16,6 +16,10 @@
     margin: 0 auto;
 }
 
+.invisible {
+	visibility: hidden;
+}
+
 @mixin abolulute-center {
 	position:absolute;
 	top:0;
@@ -173,7 +177,7 @@ body {
 	height: 50px;
 	line-height: 50px;
 	text-align: center;
-	min-width: 350px;
+
 	margin: 0 auto;
 	font-size: 20px;
 	color: $header-background-color;

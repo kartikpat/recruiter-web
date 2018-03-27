@@ -94,7 +94,7 @@ jQuery(document).ready( function() {
 		setTimeout(function(){
 			 location.reload()
 		 }, 2000);
-	}
+	} 
 	function onFailedPremiumJob(topic, data){
 		jobList.hideLoaderOverlay()
 		jobList.openModal("premium")

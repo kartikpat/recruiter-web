@@ -336,6 +336,9 @@
   max-width: 1440px;
   margin: 0 auto; }
 
+.invisible {
+  visibility: hidden; }
+
 a {
   cursor: pointer; }
 
@@ -424,7 +427,6 @@ body.posf {
   height: 50px;
   line-height: 50px;
   text-align: center;
-  min-width: 350px;
   margin: 0 auto;
   font-size: 20px;
   color: #2b2b2b;

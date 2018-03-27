@@ -6,7 +6,7 @@ function Jobs() {
 	var config = {};
 
 	function setConfig(key, value) {
-		config[key] = value;
+		config[key] = value; 
 	}
 
 	function init() {

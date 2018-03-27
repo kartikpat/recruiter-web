@@ -185,12 +185,23 @@ function Filters(){
 		settings.resultFoundText = $("#resultFound");
 		settings.filterModalOpenButton = $("#filterModalOpenButton");
 		settings.searchCandidateError = $("#searchCandidateError")
+		settings.topInstitutesContainer = $(".topInstitutesContainer")
+		settings.jsInstitute = $(".jsInstitute")
+		settings.topinstitute = {
+			"topinst": 0,
+			"lawinst": 0
+		};
+
+		settings.topinstInput = $("#topinst");
+		settings.lawinstInput = $("#lawinst");
 
 		setOnClickFilters();
 		setOnClickCloseFilters();
 		onInputSearchFilter()
 		onClickFiltersCheckBox()
 		onChangeFiltersDropdownHalf()
+
+		onClickTopInstituteContainer()
 
 		jQuery(".modal_overlay").on("click",".category_listing li",function() {
 
@@ -211,6 +222,12 @@ function Filters(){
 		      $(".filterSearch").val('').removeClass("hidden");
 		      jQuery(".modal_overlay").find(".subcategory_listing."+selector+" .check-input").removeClass("hidden")
 		  }
+		  if(selector == "institute") {
+			  $(".topInstitutesContainer").removeClass("hidden")
+		  }
+		  else {
+			  $(".topInstitutesContainer").addClass("hidden")
+		  }
 		  jQuery(".modal_content").find(".modal_body .modal_body_header .title").html(title);
 		  jQuery(".modal_content").find(".mobile-header .title").html(title);
 		  jQuery(".modal_overlay").find(".subcategory_listing").addClass('hidden').removeClass('activeFilterListing');
@@ -218,6 +235,30 @@ function Filters(){
 		  jQuery(".modal_body").scrollTop(0);
 
 		});
+	}
+
+	function onClickTopInstituteContainer() {
+		settings.topInstitutesContainer.find("input").click(function(){
+				var label = $(this).attr("id")
+				var name = "institute"
+				if($(this).is(":checked")) {
+					settings.jsInstitute.find("input[data-top="+label+"]").prop("checked", true)
+					filtersTarget[name]["count"] += settings.jsInstitute.find("input[data-top="+label+"]").length
+					settings.topinstitute[label] += settings.jsInstitute.find("input[data-top="+label+"]").length
+				}
+				else {
+					settings.jsInstitute.find("input[data-top="+label+"]").prop("checked", false)
+					filtersTarget[name]["count"] -= settings.jsInstitute.find("input[data-top="+label+"]").length
+					settings.topinstitute[label] -= settings.jsInstitute.find("input[data-top="+label+"]").length
+				}
+				if(filtersTarget[name]['count'])
+					return settings.filterModal.find(".modal_sidebar li[data-name="+name+"] .filterCount").text('('+filtersTarget[name]['count']+')').removeClass("hidden")
+				return settings.filterModal.find(".modal_sidebar li[data-name="+name+"] .filterCount").addClass("hidden")
+
+		})
+		settings.topInstitutesContainer.find("label").click(function(){
+			event.stopPropagation()
+		})
 	}
 
 	function onChangeFiltersDropdownHalf() {
@@ -228,7 +269,7 @@ function Filters(){
 	}
 
 	function onClickFiltersCheckBox() {
-		settings.filterModal.on('click', '.check-input input', function(){
+		settings.filterModal.on('click', '.subcategory_listing .check-input input', function(){
 			var name = $(settings.activeFilterListingClass).attr('data-label');
 			var type = filtersTarget[name]['type']
 			if(type == "checkbox"){
@@ -341,6 +382,20 @@ function Filters(){
 
 	function setOnClickFilters() {
         settings.filterModalOpenButton.click(function(event){
+				if(settings.topinstitute.topinst > 0) {
+					settings.topinstInput.prop("checked", true)
+				}
+				else {
+					settings.topinstInput.prop("checked", false)
+				}
+				debugger
+				if(settings.topinstitute.lawinst > 0) {
+					settings.lawinstInput.prop("checked", true)
+				}
+				else {
+					settings.lawinstInput.prop("checked", false)
+				}
+
 				for (var key in filtersTarget) {
 					if(filtersTarget[key]["type"] == "checkbox") {
 						filtersTarget[key]["count"] = 0
@@ -349,7 +404,7 @@ function Filters(){
 							filtersTarget[key]['target'].find('input[value='+value+']').prop('checked', true)
 							filtersTarget[key]["count"] += 1
 						})
-						console.log(filtersTarget[key]['count'])
+
 						if(filtersTarget[key]['count']) {
 
 							settings.filterModal.find(".modal_sidebar li[data-name="+key+"] .filterCount").text('('+filtersTarget[key]['count']+')').removeClass("hidden")
@@ -605,6 +660,9 @@ function Filters(){
 			    checkbox.find(".lab").text(aRow["text"]);
 			    checkbox.find(".in").attr('data-label', aRow["text"] )
 			    checkbox.find(".lab").attr("for",name+"-"+aRow["val"]);
+				if(aRow["isTop"]){
+					checkbox.find(".in").attr("data-top", aRow["isTop"])
+				}
 			    str+= checkbox[0].outerHTML;
 			})
 			filtersTarget[name].target.html(str).attr('data-label', name);
@@ -626,7 +684,7 @@ function Filters(){
 		filtersTarget[name].target.find(".jsCheckInput").addClass("hidden")
 		var inputElem = filtersTarget[name].target.find("input");
 		resultTags.forEach(function(obj) {
-			console.log("input[value='"+obj["val"]+"']")
+
 			filtersTarget[name].target.find("input[value='"+obj["val"]+"']").closest('.jsCheckInput').removeClass("hidden")
 		})
 	}
@@ -704,6 +762,7 @@ function Filters(){
 				array.forEach(function(value){
 					var obj = search(value, currentLocationTagsData)
 					filtersTarget[name]['label'].push(obj.text)
+
 				})
 			}
 			if(name == "preferredLocation") {
@@ -716,6 +775,12 @@ function Filters(){
 				array.forEach(function(value){
 					var obj = search(value, instituteTagsData)
 					filtersTarget[name]['label'].push(obj.text)
+					if(obj.isTop && obj.isTop == "topinst") {
+						settings.topinstitute.topinst += 1
+					}
+					if(obj.isTop && obj.isTop == "lawinst") {
+						settings.topinstitute.lawinst += 1
+					}
 				})
 			}
 			if(name == "language") {
@@ -736,6 +801,20 @@ function Filters(){
 			filtersTarget[name]['selection'] = value
 			if(name == "applicationDate")
 				filtersTarget[name]['label'] = applicationDateObj[value]
+			if(name == "lastActive")
+				filtersTarget[name]['label'] = lastActive[value]
+			if(name == "permit")
+				filtersTarget[name]['label'] = workPermit[value]
+			if(name == "handleTeam")
+				filtersTarget[name]['label'] = binary[value]
+			if(name == "relocate")
+				filtersTarget[name]['label'] = binary[value]
+			if(name == "differentlyAbled")
+				filtersTarget[name]['label'] = binary[value]
+			if(name == "notice")
+				filtersTarget[name]['label'] = notice[value]
+			if(name == "sex")
+				filtersTarget[name]['label'] = gender[value]
 		}
 		else if (type == "input") {
 			filtersTarget[name]['selection'] = value
@@ -772,6 +851,7 @@ function Filters(){
 
 function search(nameKey, myArray){
     for (var i=0; i < myArray.length; i++) {
+
         if (myArray[i].val == nameKey) {
             return myArray[i];
         }
