@@ -1,5 +1,4 @@
 function BookedSlots() {
-
 	var settings = {};
 	var config = {};
 
@@ -172,23 +171,10 @@ function BookedSlots() {
             item.element.val(aData["id"]);
             str+=item.element[0].outerHTML;
         });
-        settings.calendarDropdown.append(str);
-
+		settings.calendarDropdown.append(str);
 	}
 
-	function startdate(){
-        $("#startdatepicker").datepicker({
-            // buttonImage: '/static/images/calender.png',
-            // buttonImageOnly: true,
-            changeMonth: true,
-            changeYear: true,
-            dateFormat: 'dd-mm-yy',
-            fielddateFormat: 'dd-mm-yy',
-            altField:   '#start_date',
-            altFormat: "yy-mm-dd",
-            showOn: 'both', 
-         });
-    }
+	
 
 	return {
 		init: init,
@@ -202,7 +188,6 @@ function BookedSlots() {
 		showShell: showShell,
 		showLoaderOverlay: showLoaderOverlay,
 		hideLoaderOverlay: hideLoaderOverlay,
-		startdate:startdate,
         populateCalendarDropdown: populateCalendarDropdown
 	}
 

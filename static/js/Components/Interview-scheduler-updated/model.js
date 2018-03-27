@@ -316,14 +316,7 @@ function Calendar(){
     }
 
     function copytoall(){
-    //     settings.checkbox.change(function(event){
-    //     if (this.checked){
-    //         settings.button.css("display","inline-block");
-    //     }
-    //      else{
-    //         //  $("#selectAll").css("display","none");
-    //      }
-    //   });
+   
         $(document).on('mouseenter', '.dayId', function() {
             $(this).find(":button").show();
         }).on('mouseleave', '.dayId', function () {
