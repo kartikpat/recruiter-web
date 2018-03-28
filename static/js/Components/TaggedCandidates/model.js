@@ -210,7 +210,7 @@ function candidateList() {
            str+=item.element[0].outerHTML;
        });
        settings.filterByTagList.append(str);
-
+       console.log(settings.tagId)
        if(settings.tagId) {
            settings.filterByTagList.val(settings.tagId)
        }

@@ -20,10 +20,12 @@ $(document).ready(function(){
     //     $("#success-job-posted").removeClass("hidden");
     // }
 
-    if(localStorage.getItem("jobPostSuccessMessage") != null) {
-		toastNotify(1, localStorage.getItem("jobPostSuccessMessage"))
-		localStorage.removeItem("jobPostSuccessMessage");
-	}
+    var successMsg = getQueryParameter("jobPostMessage");
+    if(!isEmpty(successMsg)) {
+        toastNotify(1, decodeURIComponent(successMsg))
+        var newUrl = removeParam("jobPostMessage", window.location.href)
+        window.history.replaceState("object or string", "Title", newUrl);
+    }
 
     window.mySwipe = $('.mobile-swipe-container').Swipe().data('Swipe');
 });

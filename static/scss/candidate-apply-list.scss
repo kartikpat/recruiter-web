@@ -1236,7 +1236,7 @@ input::-webkit-input-placeholder {
 				    width: 100%;
 				    position:relative;
 					padding-top:165px;
-					
+
 					.table-row-seprator{
 						border-bottom:1px solid $border-color-base;
 					}
@@ -2231,13 +2231,7 @@ input::-webkit-input-placeholder {
     }
 }
 
-.loader.loader-scroller {
 
-    height: 45px;
-    width: 45px;
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #3498db;
-}
 
 .candidate-action-area{
 	.button-action-list{
@@ -2284,7 +2278,14 @@ input::-webkit-input-placeholder {
     }
 }
 
+
 _::-webkit-full-page-media, _:future, :root #sortBySelect {
 	height: 31px;
 	//color: red;
   }
+
+.collapsed {
+    max-height: 70px;
+    overflow: hidden;
+}
+

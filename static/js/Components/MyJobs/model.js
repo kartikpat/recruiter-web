@@ -6,7 +6,7 @@ function Jobs() {
 	var config = {};
 
 	function setConfig(key, value) {
-		config[key] = value; 
+		config[key] = value;
 	}
 
 	function init() {
@@ -260,19 +260,28 @@ function Jobs() {
 		return item;
 	}
 
-	function addToList(dataArray){
+	function addToList(dataArray, pageNumber, pageContent){
 		var str = '';
 		hideShell()
-		if(!dataArray.length) {
-			return settings.rowContainer.html("<div class='no-data'>No Jobs Found!</div>")
+
+		if(dataArray.length<1 && pageNumber ==1) {
+			return settings.rowContainer.append("<div class='no-data'>No Jobs Found!</div>")
 		}
+
 		dataArray.forEach(function(aData){
 			var item = createElement(aData);
 			str+=item.element[0].outerHTML;
 		});
 
-		settings.rowContainer.html(str);
+		settings.rowContainer.append(str);
+		if(dataArray.length< pageContent) {
+            return settings.rowContainer.append("<div class='no-data'>No more records!</div>")
+        }
 		initializeTooltip()
+	}
+
+	function emptyList() {
+		settings.rowContainer.empty()
 	}
 
 	function setOnClickCloseFilters(){
@@ -338,7 +347,8 @@ function Jobs() {
 		hideShell: hideShell,
 		showShell: showShell,
 		showLoaderOverlay: showLoaderOverlay,
-		hideLoaderOverlay: hideLoaderOverlay
+		hideLoaderOverlay: hideLoaderOverlay,
+		emptyList: emptyList
 	}
 
 	function initializeTooltip() {
