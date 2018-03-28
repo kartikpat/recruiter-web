@@ -8,6 +8,9 @@
 	var compression = require("compression"); //compresses the request payload
 	var cookieParser = require("cookie-parser"); //stores the session data on the client within a cookie
 	var request = require("request"); //for making http and https requests
+	const passport = require("passport");
+	const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
+
 	var mode = "prod";
 	var env = "cloud";
 	var staticMiddlewareOptions = {
@@ -39,7 +42,27 @@
 	var port = program.port;
 	var config = require(program.config);
 	var vault = program.vault;
+	passport.use(new LinkedInStrategy({
+		clientID: config['social']['linkedin']['clientId'],
+		clientSecret: config['social']['linkedin']['secret'],
+		callbackURL: config['social']['linkedin']['callbackURL'],
+		scope: ['r_emailaddress', 'r_basicprofile']
+	}, function(accessToken, refreshToken, profile, done){
+		console.log(accessToken)
+		console.log(profile)
+		return done(null, {
+			"token": accessToken,
+			"profile" : profile
+		})
+	}));
 
+	passport.serializeUser(function(user, cb) {
+	  cb(null, user);
+	});
+
+	passport.deserializeUser(function(obj, cb) {
+	  cb(null, obj);
+	});
 
 	var app = express();
 	app.use(cookieParser())
@@ -51,6 +74,8 @@
 	// }));
 	app.use(bodyParser.urlencoded({ extended: true }))
 	app.use(compression()); //compressing payload on every request
+
+	app.use(passport.initialize());
 
 	app.engine('html', require('hogan-express'));
 	app.set('partials',{
@@ -85,8 +110,10 @@
 		mode: mode,
 		env: env,
 		cprint: cprint,
-		request: request
+		request: request,
+		passport: passport
 	}
 
 	require(__dirname+"/routes/home.js")(settings);
+	require(__dirname+"/routes/social-hooks.js")(settings);
 	app.listen(port);
