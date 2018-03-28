@@ -4836,6 +4836,7 @@ input::-webkit-input-placeholder {
 
 _::-webkit-full-page-media, _:future, :root #sortBySelect {
   height: 31px; }
+
 .collapsed {
   max-height: 70px;
   overflow: hidden; }
