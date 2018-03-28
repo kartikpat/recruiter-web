@@ -1265,7 +1265,7 @@ input::-webkit-input-placeholder {
 								font-size:$page-title-size;
 								text-align: center;
 								color:$button-color-green;
-								font-weight:bold;
+								// font-weight:bold;
 							}
 						}
 
@@ -1639,7 +1639,7 @@ input::-webkit-input-placeholder {
     	width:20%;
 
     	.action-buttons {
-    		margin-bottom:10px;
+    		margin-bottom:20px;
 			&.cand-add-tag-action-btn {
 				margin: 15px 0;
 			}
@@ -1653,24 +1653,24 @@ input::-webkit-input-placeholder {
                     }
 					&.cand-comment-button{
 						margin: 0;
-						margin-top: 5px;
+						margin-top: 10px;
 						background-color: #FFF !important;
-						border: 1px solid #908e8e !important;
+						border: 1px solid #d8d5d5!important;
 						border-radius: 4px;
 						padding: 6px 25px;
 						font-size: 14px !important;
-						margin: 0 5px;
+						margin: 0 0px;
 						color: #2b2b2b !important;
 						cursor: pointer;
 					}
 					&.cand-add-tag-button {
 							margin: 0;
 							background-color: #FFF !important;
-							border: 1px solid #908e8e !important;
+							border: 1px solid #d8d5d5 !important;
 							border-radius: 4px;
 							padding: 6px 25px;
 							font-size: 14px !important;
-							margin: 0 5px;
+							margin: 0 0px;
 							color: #2b2b2b !important;
 							cursor: pointer;
 						}
@@ -1688,7 +1688,7 @@ input::-webkit-input-placeholder {
 
 				li {
 					font-size:$view-resume-listing-font-size;
-					color:$color-black;
+					color:#2b2b2b;
 					line-height:1.2;
 					margin:7px 0;
                     cursor: pointer;
@@ -1728,7 +1728,7 @@ input::-webkit-input-placeholder {
 			padding-bottom:20px;
     		h3 {
     			font-size:$view-resume-section-title-size;
-    			color:$color-black;
+    			color:#2b2b2b;
     			margin-top:20px;
 			}
 			.comment-box{
@@ -1757,7 +1757,6 @@ input::-webkit-input-placeholder {
 			.cand-add-tag {
 				height: 40px;
 			    line-height: 40px;
-
 				padding: 10px;
 			}
 
@@ -2102,6 +2101,7 @@ input::-webkit-input-placeholder {
 	textarea {
 		width: 100%;
 		min-height: 50px;
+		
 		&:focus {
 			outline: none;
 			border: 1px solid $border-color-active
@@ -2123,6 +2123,7 @@ input::-webkit-input-placeholder {
 		padding: 5px;
 		border: 1px solid #e8e8e8;
 		min-height: 50px;
+		margin-bottom: 15px;
 		&:focus {
 			outline: none;
 			border: 1px solid $button-color-green;

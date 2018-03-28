@@ -789,10 +789,11 @@ span.sticker {
   clear: both;
   margin: 0;
   padding: 30px;
+  padding-left: 3%;
   width: 100%;
   background: #f3fbfb; }
   .premium_job_section .premium-section-content {
-    max-width: 1440px;
+    max-width: 1400px;
     margin: 0 auto; }
   .premium_job_section .contents input {
     display: none; }
@@ -869,7 +870,8 @@ span.sticker {
   .guidelines-container h4 {
     font-size: 18px;
     color: #149075;
-    margin-top: 0; }
+    margin-top: 0;
+    padding-top: 10px; }
   .guidelines-container ul {
     padding-left: 20px; }
     .guidelines-container ul li {
@@ -878,7 +880,8 @@ span.sticker {
       color: #5d5d5d;
       line-height: 1.5; }
       .guidelines-container ul li:last-child {
-        margin-bottom: 0px; }
+        margin-bottom: 0px;
+        padding-bottom: 10px; }
 
 @media all and (max-width: 768px) {
   #courseType {

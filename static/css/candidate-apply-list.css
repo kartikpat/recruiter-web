@@ -3938,8 +3938,7 @@ input::-webkit-input-placeholder {
           .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information p.profile-name {
             font-size: 22px;
             text-align: center;
-            color: #1f8f75;
-            font-weight: bold; }
+            color: #1f8f75; }
           .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information .social-media-accounts {
             margin: 10px 0 20px; }
             .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information .social-media-accounts span.social {
@@ -4221,7 +4220,7 @@ input::-webkit-input-placeholder {
   .view-resume-modal .resume-sidebar {
     width: 20%; }
     .view-resume-modal .resume-sidebar .action-buttons {
-      margin-bottom: 10px; }
+      margin-bottom: 20px; }
       .view-resume-modal .resume-sidebar .action-buttons.cand-add-tag-action-btn {
         margin: 15px 0; }
       .view-resume-modal .resume-sidebar .action-buttons span.button {
@@ -4248,23 +4247,23 @@ input::-webkit-input-placeholder {
           padding: 6px 15px; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.cand-comment-button {
           margin: 0;
-          margin-top: 5px;
+          margin-top: 10px;
           background-color: #FFF !important;
-          border: 1px solid #908e8e !important;
+          border: 1px solid #d8d5d5 !important;
           border-radius: 4px;
           padding: 6px 25px;
           font-size: 14px !important;
-          margin: 0 5px;
+          margin: 0 0px;
           color: #2b2b2b !important;
           cursor: pointer; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.cand-add-tag-button {
           margin: 0;
           background-color: #FFF !important;
-          border: 1px solid #908e8e !important;
+          border: 1px solid #d8d5d5 !important;
           border-radius: 4px;
           padding: 6px 25px;
           font-size: 14px !important;
-          margin: 0 5px;
+          margin: 0 0px;
           color: #2b2b2b !important;
           cursor: pointer; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.green {
@@ -4286,7 +4285,7 @@ input::-webkit-input-placeholder {
       margin: 0; }
       .view-resume-modal .resume-sidebar .external-links ul li {
         font-size: 15px;
-        color: #333;
+        color: #2b2b2b;
         line-height: 1.2;
         margin: 7px 0;
         cursor: pointer; }
@@ -4307,7 +4306,7 @@ input::-webkit-input-placeholder {
       padding-bottom: 20px; }
       .view-resume-modal .resume-sidebar .sidebar-section h3 {
         font-size: 16px;
-        color: #333;
+        color: #2b2b2b;
         margin-top: 20px; }
       .view-resume-modal .resume-sidebar .sidebar-section .comment-box .comment-textarea {
         background-color: #f3fbfb;
@@ -4619,7 +4618,8 @@ input::-webkit-input-placeholder {
   width: 100%;
   padding: 5px;
   border: 1px solid #e8e8e8;
-  min-height: 50px; }
+  min-height: 50px;
+  margin-bottom: 15px; }
   .sidebar-section.comments textarea:focus {
     outline: none;
     border: 1px solid #1f8f75; }
