@@ -65,16 +65,10 @@ function Job(){
 			    }
 			})
 			settings.editor.subscribe('editableInput', function(event, editorElement){
-				console.log(settings.description.val(settings.editor.getContent()));
+
 			})
-
-		
-
 			jQuery(".header .menu-list-item.my-jobs").addClass("active");
 	}
-
-
-
 
 	function onChangeJobPremium(fn) {
 		settings.isPremium.change(function() {
@@ -109,7 +103,7 @@ function Job(){
 	}
 
 	function validate(){
-		console.log(settings)
+
 		if(!(
 				ifExists(settings.title)
 				&& wordsLimit(settings.title)
@@ -125,28 +119,28 @@ function Job(){
 				&& ifGreater(settings.minSal , settings.maxSal)
 				&& ifGreater(settings.batchFrom, settings.batchTo)
 			)){
-			console.log('returninig false')
+
 			return false;
 		}
 		return true;
 		if(Object.keys(settings).length ===0){
-			console.log('Blank values')
+
 			return false
 		}
 		for(var key in settings){
 			if([ "title", "location", "minExp", "maxExp", "jobDescription",  "category", "functionalArea"].indexOf(key) > -1){
 				if(!(settings.key && settings.key)){
-					console.log("Missing mandatory field "+key);
+
 					return
 				}
 			}
 			if(["location", "industry"].indexOf(key) > -1){
 				if(!(settings.key && settings.key)){
-					console.log("Missing mandatory field "+key);
+
 					return
 				}
 				if(!(settings.key.length <5)){
-					console.log("Cannot have more than 5 values: "+key);
+
 					return
 				}
 			}
@@ -196,7 +190,7 @@ function Job(){
 				min: settings.batchFrom.val(),
 				max: settings.batchTo.val()
 			}
-		console.log(ob)
+
 		return ob;
 	}
 
@@ -214,7 +208,7 @@ function Job(){
 		settings.isPremium.prop("checked", obj["premium"]);
 		settings.category.val(obj["category"]);
 		settings.functionalArea.val(obj["functionalArea"]);
-		console.log(obj)
+
 
 		// setPillValues(settings.location.attr('id'), loca);
 		setPillValues(settings.location.attr('id'), obj["location"], currentLocationTagsData);
@@ -303,16 +297,16 @@ function wordsLimit(element) {
 	}
 	else if (!errorElement.hasClass("hidden")) {
 		eraseError(element)
-		console.log("entering in else if")
+
 	}
-	console.log("returning true")
+
 	return true;
 }
 
 
 function ifExists(element) {
 	var errorElement = element.next('.error').length ? element.next('.error') : element.siblings('.error');
-	if(!( element && element.val() )){
+	if(!( element && (element.val()).trim() )){
 		errorElement.text(errorResponses['missing'+element.attr('name')]).removeClass("hidden");
 		focusOnElement(element)
 
@@ -320,15 +314,15 @@ function ifExists(element) {
 	}
 	else if (!errorElement.hasClass("hidden")) {
 		eraseError(element)
-		console.log("entering in else if")
+
 	}
-	console.log("returning true")
+
 	return true;
 }
 
 function checkPillValues(element) {
 	var obj = getPillValues(element.attr('id'))
-	console.log(element.attr('data-enable-custom'));
+
 	if(element.attr('data-enable-custom') == "true") {
 		if( obj["id"].length < 1 && obj["label"].length < 1 ){
 			element.next('.error').text(errorResponses['missing'+element.attr('name')]).removeClass("hidden");
@@ -430,17 +424,13 @@ function eraseError(element){
 }
 
 function ifGreater(elementA, elementB){
-	console.log(elementB.val())
-	console.log(elementA.val())
-	console.log(typeof(elementA.val()), typeof(elementB.val()))
+
 	var val1 = parseInt(elementB.val());
 	var val2 = parseInt(elementA.val());
 	if(val1 && val2 && !( val1 >= val2)){
 		elementA.siblings('.error').text(errorResponses['invalid'+elementA.attr('name')]).removeClass("hidden");
 		focusOnElement(elementA)
 		elementB.addClass("error-border");
-
-		console.log('returning false')
 		return false;
 	}
 	else if (!elementA.siblings('.error').hasClass("hidden")) {

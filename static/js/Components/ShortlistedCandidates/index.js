@@ -11,8 +11,9 @@ jQuery(document).ready( function() {
     parameters.status = globalParameters.status;
     parameters.pageNumber = globalParameters.pageNumber;
     parameters.pageContent = globalParameters.pageContent;
-
-    fetchJobs("", recruiterId)
+    var jobParameters = {}
+    jobParameters.type = "everPublished";
+    fetchJobs(jobParameters, recruiterId)
     fetchCandidatesByStatus(parameters, recruiterId)
 
     candidates.onFilterByStatus(function(){
@@ -48,7 +49,7 @@ jQuery(document).ready( function() {
     })
 
     function onFetchCandidatesByStatusSuccess(topic,res) {
-        $(".loaderScroller").addClass("hidden")
+        hideLoader()
         globalParameters.candidateListLength = res.data.length
         if(res.stats) {
             if(res.obj.status == "1,3") {
@@ -97,7 +98,7 @@ jQuery(document).ready( function() {
     });
 
     function checkScrollEnd() {
-    	if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+    	if($(window).scrollTop() + $(window).height() > $(document).height() - 600) {
     		globalParameters.pageNumber = globalParameters.pageNumber + 1;
     		if(globalParameters.pageNumber != 1 && globalParameters.candidateListLength == globalParameters.pageContent) {
                 var obj = candidates.getAppliedFilters();
@@ -105,7 +106,7 @@ jQuery(document).ready( function() {
                 parameters.pageNumber = globalParameters.pageNumber;
                 parameters.pageContent = globalParameters.pageContent;
                 parameters.status = obj.status
-                $(".loaderScroller").removeClass("hidden")
+                showLoader()
                 if(parseInt(obj.jobId) == -1) {
                     return fetchCandidatesByStatus(parameters, recruiterId)
                 }

@@ -819,8 +819,35 @@ function candidateList() {
     }
 
     function populateCheckInputDropdown(status) {
+        // if(bulk == 1) {
+        //     settings.bulkDownArrow.removeClass("hidden")
+        // }
         var item = getJobsCategoryTabsElement();
         var count =  item.element.find("li[data-attribute='"+status+"'] .tabStats").text()
+        if(parseInt(status) == 0) {
+            var str = ''
+            var text;
+            var dataLength;
+            if(count >= 100) {
+                text = "Select top 100 applications"
+                dataLength = 100;
+            }
+            else if(count > 0 && count < 100){
+                text = "Select "+count+" applications"
+                dataLength = count
+            }
+            else {
+                str = "No Applications"
+                return settings.bulkActionsDropdown.html(str)
+            }
+            var item = $(".bulkCheckInput.prototype").clone().removeClass("prototype hidden");
+            item.find("input").attr("id", dataLength);
+            item.find("label").attr("for",dataLength).text(text );
+            item.find("input").attr("data-length", dataLength);
+            str += item[0].outerHTML
+            settings.bulkActionsDropdown.html(str)
+            return
+        }
         var slotDifference = 100;
         var divide = Math.floor(count/slotDifference);
         var remainder = count%slotDifference;
