@@ -634,7 +634,7 @@ jQuery(document).ready( function() {
 
     function onJobsApplicationsFetchSuccess(topic, data) {
         tickerLock = false;
-        $(".loaderScroller").addClass("hidden")
+        hideLoader()
         //Call only on initial load
         // if(!globalParameters.initialLoad) {
         //     var result =filters.getAppliedFilters();
@@ -887,7 +887,7 @@ jQuery(document).ready( function() {
                 parameters.pageNumber = globalParameters.pageNumber;
                 parameters.pageContent = globalParameters.pageContent;
                 parameters.status = globalParameters.status;
-                $(".loaderScroller").removeClass("hidden")
+                showLoader()
     			fetchJobApplications(jobId,parameters,recruiterId)
     		}
             else

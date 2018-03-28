@@ -10,7 +10,7 @@ jQuery(document).ready( function() {
     candidates.init();
     var tagId = getQueryParameter("queryTag");
 
-    if(tagId) {
+    if(!isEmpty(tagId)) {
         globalParameters.tagId = tagId
         candidates.setTagId(tagId)
     }
@@ -40,7 +40,8 @@ jQuery(document).ready( function() {
     })
 
     function onFetchCandidatesByTagsSuccess(topic,res) {
-        $(".loaderScroller").addClass("hidden")
+        hideLoader()
+
         candidates.addToList(res.data,  globalParameters.pageNumber, globalParameters.pageContent)
     }
 
@@ -49,7 +50,8 @@ jQuery(document).ready( function() {
     }
 
     function onSuccessfullFetchedTag(topic, res){
-		candidates.populateTagsDropdown(res.data);
+        var arr = sortArrayOfObjectsByKey(res.data)
+		candidates.populateTagsDropdown(arr);
 	}
 
 	function onFailFetchedTag(topic, data){
@@ -69,7 +71,7 @@ jQuery(document).ready( function() {
     });
 
     function checkScrollEnd() {
-    	if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+    	if($(window).scrollTop() + $(window).height() > $(document).height() - 600) {
     		globalParameters.pageNumber = globalParameters.pageNumber + 1;
     		if(globalParameters.pageNumber != 1 && globalParameters.candidateListLength == globalParameters.pageContent) {
                 var obj = candidates.getAppliedFilters();
@@ -77,7 +79,7 @@ jQuery(document).ready( function() {
                 parameters.pageNumber = globalParameters.pageNumber;
                 parameters.pageContent = globalParameters.pageContent;
                 parameters.tagId = obj.tagId
-                $(".loaderScroller").removeClass("hidden")
+                showLoader()
     			fetchCandidatesByTags(parameters,recruiterId)
     		}
     	}

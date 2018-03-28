@@ -1,12 +1,24 @@
-var status = "all";
+var globalParameters = {
+    pageContent: 10,
+    pageNumber: 1,
+    type: "all",
+    jobListLength: null,
+    initialLoad: 1
+}
 
 jQuery(document).ready( function() {
 
+	// if(localStorage.getItem("jobPostSuccessMessage") != null) {
+	// 	toastNotify(1, localStorage.getItem("jobPostSuccessMessage"))
+	// 	localStorage.removeItem("jobPostSuccessMessage");
+	// }
 
-	if(localStorage.getItem("jobPostSuccessMessage") != null) {
-		toastNotify(1, localStorage.getItem("jobPostSuccessMessage"))
-		localStorage.removeItem("jobPostSuccessMessage");
-	}
+    var successMsg = getQueryParameter("jobPostMessage");
+    if(!isEmpty(successMsg)) {
+        toastNotify(1, decodeURIComponent(successMsg))
+        var newUrl = removeParam("jobPostMessage", window.location.href)
+        window.history.replaceState("object or string", "Title", newUrl);
+    }
 
 	var jobList = Jobs();
 
@@ -17,9 +29,18 @@ jQuery(document).ready( function() {
 	jobList.setConfig("baseUrlJob", baseUrlJob);
 
 	jobList.onChangeJobFilters(function(type){
-		jobList.showShell();
-		status = type;
-		fetchJobs(status,recruiterId);
+        if(!globalParameters.initialLoad) {
+    		tickerLock = false;
+    		jobList.emptyList();
+    		jobList.showShell();
+    		var parameters = {}
+    		globalParameters.pageNumber = 1;
+    		parameters.pageNumber = globalParameters.pageNumber;
+    		parameters.pageContent = globalParameters.pageContent;
+    		parameters.type = type;
+    		globalParameters.type = parameters.type;
+    		fetchJobs(parameters,recruiterId);
+        }
 	})
 
 	jobList.onClickJobEdit()
@@ -43,7 +64,11 @@ jQuery(document).ready( function() {
 	})
 
 	//Initial call
-	fetchJobs(status,recruiterId);
+	var parameters = {}
+	parameters.pageNumber = globalParameters.pageNumber;
+	parameters.pageContent = globalParameters.pageContent;
+	parameters.type = globalParameters.type;
+	fetchJobs(parameters,recruiterId);
 
 	var fetchJobSuccessSubscription = pubsub.subscribe('fetchedJobs', onJobsFetchSuccess)
 	var fetchJobFailSubscription = pubsub.subscribe('fetchJobsFail', onJobsFetchFail)
@@ -57,7 +82,11 @@ jQuery(document).ready( function() {
 	var premiumJobFailSubscription = pubsub.subscribe("jobPremiumFail", onFailedPremiumJob);
 
 	function onJobsFetchSuccess(topic, data){
-		jobList.addToList(data);
+		hideLoader()
+		tickerLock = false;
+        globalParameters.initialLoad = 0;
+		globalParameters.jobListLength = data.length;
+		jobList.addToList(data, globalParameters.pageNumber, globalParameters.pageContent);
 	}
 
 	function onJobsFetchFail(topic, data){
@@ -94,12 +123,41 @@ jQuery(document).ready( function() {
 		setTimeout(function(){
 			 location.reload()
 		 }, 2000);
-	} 
+	}
 	function onFailedPremiumJob(topic, data){
 		jobList.hideLoaderOverlay()
 		jobList.openModal("premium")
 		errorHandler(data)
 	}
+
+	var tickerLock=false;
+    $(window).scroll(function() {
+        if(!tickerLock && !globalParameters.initialLoad){
+            tickerLock = true;
+            setTimeout(checkScrollEnd,100);
+        }
+    });
+
+    function checkScrollEnd() {
+
+    	if($(window).scrollTop() + $(window).height() > $(document).height() - 600) {
+    		globalParameters.pageNumber = globalParameters.pageNumber + 1;
+
+    		if(globalParameters.jobListLength >= globalParameters.pageContent) {
+                var parameters = {}
+                parameters.pageNumber = globalParameters.pageNumber;
+                parameters.pageContent = globalParameters.pageContent;
+                parameters.type = globalParameters.type;
+                showLoader()
+    			fetchJobs(parameters,recruiterId);
+    		}
+            else
+                tickerLock = false;
+    	}
+        else{
+            tickerLock = false
+        }
+    }
 
 });
 

@@ -162,7 +162,8 @@
 				"static/js/Services/fetchJobTags.js",
 				"static/js/Services/submitEditJob.js",
 				"static/js/Components/PostJob/model.js",
-				"static/js/Components/PostJob/index.js"
+				"static/js/Components/PostJob/index.js",
+				"static/js/Utilities/toastNotifier.js"
 
 			],
 			"prod" : [
