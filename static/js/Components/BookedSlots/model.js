@@ -1,3 +1,4 @@
+
 function BookedSlots() {
 	var settings = {};
 	var config = {};
@@ -115,7 +116,6 @@ function BookedSlots() {
 		// debugger
 		// dataArray.length=0;
 		if(dataArray.length<1 && pageNumber ==1) {
-		
 			settings.bookedSlotsview.addClass('hidden');
 			settings.noInterviewView.removeClass('hidden');		
 		}
@@ -127,6 +127,10 @@ function BookedSlots() {
 		});
 		// settings.bookedSlots.html(str);
 	    	settings.bookedSlots.append(str);
+	}
+
+	function emptySlots(){
+		settings.bookedSlots.empty()
 	}
 
 	function closeModal() {
@@ -174,6 +178,31 @@ function BookedSlots() {
 		settings.calendarDropdown.append(str);
 	}
 
+
+	function startdate(fn){
+        $("#startdatepicker").datepicker({
+            buttonImage: '/static/images/calender.png',
+            buttonImageOnly: true,
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'dd-mm-yy',
+            fielddateFormat: 'dd-mm-yy',
+            altField:   '#start_date',
+            altFormat: "yy-mm-dd",
+            showOn: 'both', 
+            onSelect: function(){
+				console.log("EDESTADDRREQ");
+				fn();
+			}
+        });
+    }
+
+	function getStartDate(){
+        var fromDate=$('#start_date').datepicker().val();
+        fromDate=fromDate+':00:00:00'
+        console.log(fromDate);
+        return fromDate;
+    }
 	
 
 	return {
@@ -183,7 +212,10 @@ function BookedSlots() {
 		setConfig : setConfig,
 		onChangeCalendarFilters: onChangeCalendarFilters,
 		closeModal: closeModal,
+		startdate:startdate,
+		getStartDate:getStartDate,
 		openModal: openModal,
+		emptySlots:emptySlots,
 		hideShell: hideShell,
 		showShell: showShell,
 		showLoaderOverlay: showLoaderOverlay,
