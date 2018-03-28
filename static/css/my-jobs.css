@@ -178,10 +178,6 @@
   content: '\e813'; }
 
 /* '' */
-.icon-star:before {
-  content: '\e814'; }
-
-/* '' */
 .icon-star2:before {
   content: '\e815'; }
 
@@ -211,7 +207,7 @@
   content: '\e81b'; }
 
 /* '' */
-.icon-document_search_interface_symbol:before {
+.icon-review:before {
   content: '\e81c'; }
 
 /* '' */
@@ -314,6 +310,25 @@
 .icon-up_arrow:before {
   content: '\e842'; }
 
+.icon-star:before {
+  content: '\e829'; }
+
+.icon-review:before {
+  content: '\e81c'; }
+
+.icon-telephone:before {
+  font-size: 25px; }
+
+.icon-face-to-face:before {
+  font-size: 25px; }
+
+.icon-star:before {
+  font-size: 25px; }
+
+.icon-interview:before {
+  font-size: 25px; }
+
+/* '' */
 .icon-search:before {
   position: relative;
   top: -24px; }
@@ -321,6 +336,9 @@
 .icon-filter:before {
   position: relative;
   top: 6px; }
+
+.icon-chat_icon:before {
+  font-size: 25px; }
 
 .left {
   float: left; }
@@ -687,10 +705,6 @@ a {
   content: '\e813'; }
 
 /* '' */
-.icon-star:before {
-  content: '\e814'; }
-
-/* '' */
 .icon-star2:before {
   content: '\e815'; }
 
@@ -720,7 +734,7 @@ a {
   content: '\e81b'; }
 
 /* '' */
-.icon-document_search_interface_symbol:before {
+.icon-review:before {
   content: '\e81c'; }
 
 /* '' */
@@ -823,6 +837,25 @@ a {
 .icon-up_arrow:before {
   content: '\e842'; }
 
+.icon-star:before {
+  content: '\e829'; }
+
+.icon-review:before {
+  content: '\e81c'; }
+
+.icon-telephone:before {
+  font-size: 25px; }
+
+.icon-face-to-face:before {
+  font-size: 25px; }
+
+.icon-star:before {
+  font-size: 25px; }
+
+.icon-interview:before {
+  font-size: 25px; }
+
+/* '' */
 .icon-search:before {
   position: relative;
   top: -24px; }
@@ -830,6 +863,9 @@ a {
 .icon-filter:before {
   position: relative;
   top: 6px; }
+
+.icon-chat_icon:before {
+  font-size: 25px; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -865,7 +901,7 @@ select.select-dropdown {
   background: #FFF;
   width: 100%;
   border: 1px solid #e8e8e8;
-  background-image: url("/static/images/down-caret.svg");
+  background-image: url(/static/images/down_arrow_green.svg);
   background-repeat: no-repeat;
   background-position: right 18px center;
   cursor: pointer;
@@ -1437,8 +1473,6 @@ span.sticker {
                 font-size: 20px;
                 color: #2b2b2b;
                 line-height: 25px; }
-              .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell .job-applied-count {
-                margin-left: -18px; }
               .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell .job-meta-seperator {
                 color: red; }
               .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell .job-title {

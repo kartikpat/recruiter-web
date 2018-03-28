@@ -175,10 +175,6 @@
   content: '\e813'; }
 
 /* '' */
-.icon-star:before {
-  content: '\e814'; }
-
-/* '' */
 .icon-star2:before {
   content: '\e815'; }
 
@@ -208,7 +204,7 @@
   content: '\e81b'; }
 
 /* '' */
-.icon-document_search_interface_symbol:before {
+.icon-review:before {
   content: '\e81c'; }
 
 /* '' */
@@ -311,6 +307,25 @@
 .icon-up_arrow:before {
   content: '\e842'; }
 
+.icon-star:before {
+  content: '\e829'; }
+
+.icon-review:before {
+  content: '\e81c'; }
+
+.icon-telephone:before {
+  font-size: 25px; }
+
+.icon-face-to-face:before {
+  font-size: 25px; }
+
+.icon-star:before {
+  font-size: 25px; }
+
+.icon-interview:before {
+  font-size: 25px; }
+
+/* '' */
 .icon-search:before {
   position: relative;
   top: -24px; }
@@ -318,6 +333,9 @@
 .icon-filter:before {
   position: relative;
   top: 6px; }
+
+.icon-chat_icon:before {
+  font-size: 25px; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -353,7 +371,7 @@ select.select-dropdown {
   background: #FFF;
   width: 100%;
   border: 1px solid #e8e8e8;
-  background-image: url("/static/images/down-caret.svg");
+  background-image: url(/static/images/down_arrow_green.svg);
   background-repeat: no-repeat;
   background-position: right 18px center;
   cursor: pointer;
@@ -682,10 +700,6 @@ span.sticker {
   content: '\e813'; }
 
 /* '' */
-.icon-star:before {
-  content: '\e814'; }
-
-/* '' */
 .icon-star2:before {
   content: '\e815'; }
 
@@ -715,7 +729,7 @@ span.sticker {
   content: '\e81b'; }
 
 /* '' */
-.icon-document_search_interface_symbol:before {
+.icon-review:before {
   content: '\e81c'; }
 
 /* '' */
@@ -818,6 +832,25 @@ span.sticker {
 .icon-up_arrow:before {
   content: '\e842'; }
 
+.icon-star:before {
+  content: '\e829'; }
+
+.icon-review:before {
+  content: '\e81c'; }
+
+.icon-telephone:before {
+  font-size: 25px; }
+
+.icon-face-to-face:before {
+  font-size: 25px; }
+
+.icon-star:before {
+  font-size: 25px; }
+
+.icon-interview:before {
+  font-size: 25px; }
+
+/* '' */
 .icon-search:before {
   position: relative;
   top: -24px; }
@@ -825,6 +858,9 @@ span.sticker {
 .icon-filter:before {
   position: relative;
   top: 6px; }
+
+.icon-chat_icon:before {
+  font-size: 25px; }
 
 /*[Recruiter_Homepage]*/
 /*[/Recruiter_Homepage]*/
@@ -946,10 +982,6 @@ span.sticker {
   content: '\e813'; }
 
 /* '' */
-.icon-star:before {
-  content: '\e814'; }
-
-/* '' */
 .icon-star2:before {
   content: '\e815'; }
 
@@ -979,7 +1011,7 @@ span.sticker {
   content: '\e81b'; }
 
 /* '' */
-.icon-document_search_interface_symbol:before {
+.icon-review:before {
   content: '\e81c'; }
 
 /* '' */
@@ -1082,6 +1114,25 @@ span.sticker {
 .icon-up_arrow:before {
   content: '\e842'; }
 
+.icon-star:before {
+  content: '\e829'; }
+
+.icon-review:before {
+  content: '\e81c'; }
+
+.icon-telephone:before {
+  font-size: 25px; }
+
+.icon-face-to-face:before {
+  font-size: 25px; }
+
+.icon-star:before {
+  font-size: 25px; }
+
+.icon-interview:before {
+  font-size: 25px; }
+
+/* '' */
 .icon-search:before {
   position: relative;
   top: -24px; }
@@ -1089,6 +1140,9 @@ span.sticker {
 .icon-filter:before {
   position: relative;
   top: 6px; }
+
+.icon-chat_icon:before {
+  font-size: 25px; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -1124,7 +1178,7 @@ select.select-dropdown {
   background: #FFF;
   width: 100%;
   border: 1px solid #e8e8e8;
-  background-image: url("/static/images/down-caret.svg");
+  background-image: url(/static/images/down_arrow_green.svg);
   background-repeat: no-repeat;
   background-position: right 18px center;
   cursor: pointer;

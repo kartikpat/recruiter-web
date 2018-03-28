@@ -130,7 +130,7 @@ $modal-content-font-size: 14px;
 .icon-refresh2:before { content: '\e811'; } /* '' */
 .icon-right_arrow:before { content: '\e812'; } /* '' */
 .icon-shield:before { content: '\e813'; } /* '' */
-.icon-star:before { content: '\e814'; } /* '' */
+// .icon-star:before { content: '\e814'; } /* '' */
 .icon-star2:before { content: '\e815'; } /* '' */
 .icon-twitter:before { content: '\e816';color: #1da1f2} /* '' */
 .icon-woman:before { content: '\e817'; } /* '' */
@@ -138,7 +138,7 @@ $modal-content-font-size: 14px;
 .icon-checked_icon:before { content: '\e819'; } /* '' */
 .icon-close_icon:before { content: '\e81a'; } /* '' */
 .icon-group:before { content: '\e81b'; } /* '' */
-.icon-document_search_interface_symbol:before { content: '\e81c'; } /* '' */
+.icon-review:before { content: '\e81c'; } /* '' */
 .icon-down_arrow-1:before { content: '\e81d'; } /* '' */
 .icon-download_arrow:before { content: '\e81e'; } /* '' */
 .icon-email_envelope:before { content: '\e81f'; } /* '' */
@@ -166,7 +166,13 @@ $modal-content-font-size: 14px;
 .icon-search:before {content: '\e83f';}
 .icon-filter:before {content: '\e841';}
 .icon-up_arrow:before {content: '\e842';}
+.icon-star:before {content:'\e829';}
+.icon-review:before {content:'\e81c';}
 
+.icon-telephone:before {font-size: 25px}
+.icon-face-to-face:before { font-size: 25px}
+.icon-star:before {font-size: 25px}
+.icon-interview:before { font-size: 25px } /* '' */
 .icon-search:before {position: relative; top: -24px;}
 .icon-filter:before {position: relative; top: 6px;}
-
+.icon-chat_icon:before { font-size: 25px}

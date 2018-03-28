@@ -150,10 +150,6 @@
   content: '\e813'; }
 
 /* '' */
-.icon-star:before {
-  content: '\e814'; }
-
-/* '' */
 .icon-star2:before {
   content: '\e815'; }
 
@@ -183,7 +179,7 @@
   content: '\e81b'; }
 
 /* '' */
-.icon-document_search_interface_symbol:before {
+.icon-review:before {
   content: '\e81c'; }
 
 /* '' */
@@ -286,6 +282,25 @@
 .icon-up_arrow:before {
   content: '\e842'; }
 
+.icon-star:before {
+  content: '\e829'; }
+
+.icon-review:before {
+  content: '\e81c'; }
+
+.icon-telephone:before {
+  font-size: 25px; }
+
+.icon-face-to-face:before {
+  font-size: 25px; }
+
+.icon-star:before {
+  font-size: 25px; }
+
+.icon-interview:before {
+  font-size: 25px; }
+
+/* '' */
 .icon-search:before {
   position: relative;
   top: -24px; }
@@ -293,6 +308,9 @@
 .icon-filter:before {
   position: relative;
   top: 6px; }
+
+.icon-chat_icon:before {
+  font-size: 25px; }
 
 .left {
   float: left; }

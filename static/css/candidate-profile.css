@@ -147,10 +147,6 @@
   content: '\e813'; }
 
 /* '' */
-.icon-star:before {
-  content: '\e814'; }
-
-/* '' */
 .icon-star2:before {
   content: '\e815'; }
 
@@ -180,7 +176,7 @@
   content: '\e81b'; }
 
 /* '' */
-.icon-document_search_interface_symbol:before {
+.icon-review:before {
   content: '\e81c'; }
 
 /* '' */
@@ -283,6 +279,25 @@
 .icon-up_arrow:before {
   content: '\e842'; }
 
+.icon-star:before {
+  content: '\e829'; }
+
+.icon-review:before {
+  content: '\e81c'; }
+
+.icon-telephone:before {
+  font-size: 25px; }
+
+.icon-face-to-face:before {
+  font-size: 25px; }
+
+.icon-star:before {
+  font-size: 25px; }
+
+.icon-interview:before {
+  font-size: 25px; }
+
+/* '' */
 .icon-search:before {
   position: relative;
   top: -24px; }
@@ -290,6 +305,9 @@
 .icon-filter:before {
   position: relative;
   top: 6px; }
+
+.icon-chat_icon:before {
+  font-size: 25px; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -325,7 +343,7 @@ select.select-dropdown {
   background: #FFF;
   width: 100%;
   border: 1px solid #e8e8e8;
-  background-image: url("/static/images/down-caret.svg");
+  background-image: url(/static/images/down_arrow_green.svg);
   background-repeat: no-repeat;
   background-position: right 18px center;
   cursor: pointer;
@@ -685,10 +703,6 @@ span.sticker {
   content: '\e813'; }
 
 /* '' */
-.icon-star:before {
-  content: '\e814'; }
-
-/* '' */
 .icon-star2:before {
   content: '\e815'; }
 
@@ -718,7 +732,7 @@ span.sticker {
   content: '\e81b'; }
 
 /* '' */
-.icon-document_search_interface_symbol:before {
+.icon-review:before {
   content: '\e81c'; }
 
 /* '' */
@@ -821,6 +835,25 @@ span.sticker {
 .icon-up_arrow:before {
   content: '\e842'; }
 
+.icon-star:before {
+  content: '\e829'; }
+
+.icon-review:before {
+  content: '\e81c'; }
+
+.icon-telephone:before {
+  font-size: 25px; }
+
+.icon-face-to-face:before {
+  font-size: 25px; }
+
+.icon-star:before {
+  font-size: 25px; }
+
+.icon-interview:before {
+  font-size: 25px; }
+
+/* '' */
 .icon-search:before {
   position: relative;
   top: -24px; }
@@ -828,6 +861,9 @@ span.sticker {
 .icon-filter:before {
   position: relative;
   top: 6px; }
+
+.icon-chat_icon:before {
+  font-size: 25px; }
 
 .left {
   float: left; }
@@ -1194,10 +1230,6 @@ a {
   content: '\e813'; }
 
 /* '' */
-.icon-star:before {
-  content: '\e814'; }
-
-/* '' */
 .icon-star2:before {
   content: '\e815'; }
 
@@ -1227,7 +1259,7 @@ a {
   content: '\e81b'; }
 
 /* '' */
-.icon-document_search_interface_symbol:before {
+.icon-review:before {
   content: '\e81c'; }
 
 /* '' */
@@ -1330,6 +1362,25 @@ a {
 .icon-up_arrow:before {
   content: '\e842'; }
 
+.icon-star:before {
+  content: '\e829'; }
+
+.icon-review:before {
+  content: '\e81c'; }
+
+.icon-telephone:before {
+  font-size: 25px; }
+
+.icon-face-to-face:before {
+  font-size: 25px; }
+
+.icon-star:before {
+  font-size: 25px; }
+
+.icon-interview:before {
+  font-size: 25px; }
+
+/* '' */
 .icon-search:before {
   position: relative;
   top: -24px; }
@@ -1337,6 +1388,9 @@ a {
 .icon-filter:before {
   position: relative;
   top: 6px; }
+
+.icon-chat_icon:before {
+  font-size: 25px; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -1372,7 +1426,7 @@ select.select-dropdown {
   background: #FFF;
   width: 100%;
   border: 1px solid #e8e8e8;
-  background-image: url("/static/images/down-caret.svg");
+  background-image: url(/static/images/down_arrow_green.svg);
   background-repeat: no-repeat;
   background-position: right 18px center;
   cursor: pointer;
@@ -1657,9 +1711,10 @@ span.sticker {
     .view-resume-modal .main-wrapper .main-container {
       width: 100%;
       border: 1px solid #e8e8e8;
-      background-color: #FFF; }
+      background-color: #FFF;
+      border-radius: 8px; }
       .view-resume-modal .main-wrapper .main-container .container.resume-header {
-        background-image: url("/static/images/view-resume-banner.jpg");
+        background-image: url("/static/images/view-resume-banner.png");
         background-repeat: no-repeat;
         background-position: center top;
         background-size: 100% 95px;
@@ -1689,8 +1744,7 @@ span.sticker {
           .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information p.profile-name {
             font-size: 22px;
             text-align: center;
-            color: #1f8f75;
-            font-weight: bold; }
+            color: #1f8f75; }
           .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information .social-media-accounts {
             margin: 10px 0 20px; }
             .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information .social-media-accounts span.social {
@@ -1706,11 +1760,11 @@ span.sticker {
             text-align: left;
             border-right: 1px solid #e8e8e8; }
             .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot .snap .snap-title {
-              color: #333;
+              color: #808080;
               font-size: 13px;
               line-height: 1.5; }
             .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot .snap .snap-value {
-              color: #808080;
+              color: #333;
               font-size: 13px; }
             .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot .snap:last-child {
               border: 0; }
@@ -1760,7 +1814,7 @@ span.sticker {
           .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default {
             background: transparent;
             border: none;
-            margin: 0 5px 0 0;
+            margin: 0 48px 0 0;
             position: relative;
             top: 1px; }
             .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default a {
@@ -1898,16 +1952,19 @@ span.sticker {
                 font-size: 15px; }
                 .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content .datum p.name {
                   font-weight: bold;
-                  color: #333; }
+                  color: #333;
+                  margin-left: 15px; }
                 .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content .datum p.detail {
-                  color: #808080; }
+                  color: #808080;
+                  margin-left: 15px; }
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content .datum .separator {
                 margin: 20px 0;
                 border-bottom: 1px solid #e8e8e8; }
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul {
                 margin: 0;
                 padding: 0;
-                list-style: none; }
+                list-style: none;
+                margin-left: 15px; }
                 .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul li {
                   font-size: 0;
                   margin: 10px 0; }
@@ -1979,9 +2036,27 @@ span.sticker {
         cursor: pointer; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.cand-comment-button {
           margin: 0;
-          margin-top: 5px; }
+          margin-top: 5px;
+          margin-top: 10px;
+          background-color: #FFF !important;
+          border: 1px solid #d8d5d5 !important;
+          border-radius: 4px;
+          padding: 6px 25px;
+          font-size: 14px !important;
+          margin: 0 0px;
+          color: #2b2b2b !important;
+          cursor: pointer; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.cand-add-tag-button {
-          margin: 0; }
+          margin: 0;
+          margin-top: 10px;
+          background-color: #FFF !important;
+          border: 1px solid #d8d5d5 !important;
+          border-radius: 4px;
+          padding: 6px 25px;
+          font-size: 14px !important;
+          margin: 0 0px;
+          color: #2b2b2b !important;
+          cursor: pointer; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.green {
           background-color: #1f8f75; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.red {
@@ -2219,7 +2294,8 @@ span.sticker {
   width: 100%;
   padding: 5px;
   border-left: 3px solid #1f8f75;
-  min-height: 50px; }
+  min-height: 50px;
+  margin-bottom: 15px; }
   .sidebar-section.comments textarea:focus {
     outline: none;
     border: 1px solid #1f8f75;
