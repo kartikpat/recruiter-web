@@ -28,11 +28,12 @@
 			width:100%;
 			border:1px solid $border-color-base;
 			background-color:$color-white;
+			border-radius: 8px;
 
 			.container {
 
 				&.resume-header {
-					background-image:url('/static/images/view-resume-banner.jpg');
+					background-image:url('/static/images/view-resume-banner.png');
 					background-repeat:no-repeat;
 					background-position:center top;
 					background-size:100% 95px;
@@ -69,7 +70,7 @@
 								font-size:$page-title-size;
 								text-align: center;
 								color:$button-color-green;
-								font-weight:bold;
+								// font-weight:bold;
 							}
 						}
 
@@ -97,13 +98,14 @@
 							border-right:1px solid $border-color-base;
 
 							.snap-title {
-								color:$color-black;
+								color:$extra-info-color;
 								font-size:$view-resume-byline-font-size;
 								line-height:1.5;
 							}
 
 							.snap-value {
-								color:$extra-info-color;
+							
+								color:$color-black;
 								font-size:$view-resume-byline-font-size;
 							}
 
@@ -176,7 +178,7 @@
 							.ui-state-default {
 							    background: transparent;
 							    border: none;
-							    margin:0 5px 0 0;
+								margin: 0 48px 0 0;
 							    position:relative;
 							    top:1px;
 
@@ -305,10 +307,12 @@
 											&.name {
 												font-weight:bold;
 												color:$color-black;
+												margin-left: 15px;
 											}
 
 											&.detail {
 												color:$extra-info-color;
+												margin-left: 15px;
 											}
 										}
 
@@ -323,6 +327,7 @@
 										margin:0;
 										padding:0;
 										list-style:none;
+										margin-left: 15px;
 
 										li {
 											font-size:0;
@@ -427,9 +432,27 @@
 					&.cand-comment-button{
 						margin: 0;
 						margin-top: 5px;
+						margin-top: 10px;
+						background-color: #FFF !important;
+						border: 1px solid #d8d5d5 !important;
+						border-radius: 4px;
+						padding: 6px 25px;
+						font-size: 14px !important;
+						margin: 0 0px;
+						color: #2b2b2b !important;
+						cursor: pointer;
 					}
 					&.cand-add-tag-button {
 							margin: 0;
+							margin-top: 10px;
+							background-color: #FFF !important;
+							border: 1px solid #d8d5d5 !important;
+							border-radius: 4px;
+							padding: 6px 25px;
+							font-size: 14px !important;
+							margin: 0 0px;
+							color: #2b2b2b !important;
+							cursor: pointer;
 						}
     				@include button($color-white);
     			}
@@ -713,6 +736,7 @@
 		padding: 5px;
 		border-left: 3px solid $button-color-green;
 		min-height: 50px;
+		margin-bottom:15px;
 		&:focus {
 			outline: none;
 			border: 1px solid $button-color-green;

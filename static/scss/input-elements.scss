@@ -80,7 +80,7 @@ select.select-dropdown {
 	background:$color-white;
 	width:100%;
 	border:1px solid $select-border-color;
-	background-image:url($green-caret-down);
+	background-image:url(/static/images/down_arrow_green.svg);
 	background-repeat:no-repeat;
 	background-position:right 18px center;
 	cursor:pointer;

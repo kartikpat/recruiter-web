@@ -3,14 +3,13 @@ var globalParameters = {
     pageNumber: 1,
     status: "1,3",
     candidateListLength: null,
-    startdate:'03/12/2018',
+    startdate:'03/12/2018'
 }
 
 jQuery(document).ready( function() {
- 
    var slots = BookedSlots();
    slots.init();
-   startdate();
+  
    fetchRecruiterCalendar(recruiterId)
 
    slots.onChangeCalendarFilters(function(calendarId){
@@ -37,39 +36,21 @@ jQuery(document).ready( function() {
        var parameters = {};
        parameters.pageNumber= globalParameters.pageNumber;
        parameters.pageContent= globalParameters.pageContent;
-       parameters.from=getStartDate();
+       parameters.from=slots.getStartDate();
        if(calendarId != -1) {
              parameters.calendarId = calendarId;
        }
        console.log(parameters);
+       slots.emptySlots();
        fetchInterviews(recruiterId, parameters);
     //    location.reload();
     }
 
-    function getStartDate(){
-        var fromDate=$('#start_date').datepicker().val();
-        fromDate=fromDate+':00:00:00'
-        console.log(fromDate);
-        return fromDate;
-    }
+    slots.startdate(function(){
+        console.log("fff");
+        onChangeDate()
+    })
 
-   function startdate(){
-        $("#startdatepicker").datepicker({
-            buttonImage: '/static/images/calender.png',
-            buttonImageOnly: true,
-            changeMonth: true,
-            changeYear: true,
-            dateFormat: 'dd-mm-yy',
-            fielddateFormat: 'dd-mm-yy',
-            altField:   '#start_date',
-            altFormat: "yy-mm-dd",
-            showOn: 'both', 
-            onSelect: function() {
-               onChangeDate();
-            } 
-
-        });
-    }
 
    var parameters = {}
    parameters.pageNumber = globalParameters.pageNumber;

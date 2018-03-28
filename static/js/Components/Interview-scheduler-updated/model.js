@@ -337,8 +337,8 @@ function Calendar(){
                 var check=$("#"+parent+" .end").find('option:selected').index();
                 //  end.val(k);
                 // console.log(check);
-                var value=$("#"+parent+" .start option:selected").next().val();
-                end.val(value);
+                // var value=$("#"+parent+" .start option:selected").next().val();
+                // end.val(value);
                 $("#"+parent+" .end").find('option').prop('disabled', false);
                 $("#"+parent+" .end").not("#"+parent+" .start").find('option:lt(' + (index+1) + ')').prop('disabled', true);
              }
