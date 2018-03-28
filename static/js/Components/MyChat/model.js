@@ -32,7 +32,8 @@ function Chat() {
        settings.userProfile = $(".userProfile"),
        settings.conversationList = $(".conversationList"),
        settings.backButtonChat = $(".backButtonChat"),
-       settings.uuid = ""
+       settings.uuid = "",
+       settings.index = -1;
        onClickBackButton()
    }
 
@@ -98,10 +99,10 @@ function Chat() {
 
    function onClickSingleChatItem(fn) {
        settings.conversationItemList.on('click', settings.conversationItemClass, function(){
+           var channelName = $(this).attr("data-channel-name");
            if(settings.channelName == channelName ) {
                return
            }
-           var channelName = $(this).attr("data-channel-name");
            var candidateId = $(this).attr("data-candidate-id");
            settings.msgContent.attr("data-channel-name",channelName)
            settings.candidateId = candidateId
@@ -115,6 +116,12 @@ function Chat() {
        })
    }
 
+   function setChat(channelName, candidateId) {
+       settings.msgContent.attr("data-channel-name",channelName)
+       settings.candidateId = candidateId
+       settings.channelName = channelName
+   }
+
    function getTimeElement(data) {
        var card = $(".timeSeperator.prototype").clone().removeClass('prototype hidden')
 
@@ -122,7 +129,7 @@ function Chat() {
            card.text("Today");
        }
        else {
-           card.text(moment(data["entry"]["time"]).format("DD MM YYYY"))
+           card.text(moment(data["entry"]["time"]).format("DD MMMM YYYY"))
        }
        return card
    }
@@ -131,24 +138,30 @@ function Chat() {
 
        var card = $(".message.sent.prototype").clone().removeClass('prototype hidden')
 
-       card.find(".useImg").attr("src", (data["entry"]["img"] || "/static/images/noimage.png"))
-       card.find(".msgContent").html(data["entry"]["msg"])
-       card.find(".msgTime").text(moment(data["entry"]["time"]).format("hh:mm a"))
+    //    card.find(".useImg").attr("src", (data["entry"]["img"] || "/static/images/noimage.png"))
+       var time;
+       time = moment(data["entry"]["time"]).format("DD MMMM YYYY") + " , ";
+       time += moment(data["entry"]["time"]).format("hh:mm a");
+       card.find(".msgContent").html(data["entry"]["msg"]).attr("title", time);
        return card
    }
 
-   function getMsgReceivedElement(data) {
+   function getMsgReceivedElement(data, flag) {
        var card = $(".message.received.prototype").clone().removeClass('prototype hidden')
-       card.find(".useImg").attr("src", (data["entry"]["img"] || "/static/images/noimage.png"))
-       card.find(".msgContent").html(data["entry"]["msg"])
-       card.find(".msgTime").text(moment(data["entry"]["time"]).format("hh:mm a"))
+       if(flag == 1) {
+           card.find(".useImg").attr("src", (data["entry"]["img"] || "/static/images/noimage.png")).removeClass("invisible")
+       }
+       var time;
+       time = moment(data["entry"]["time"]).format("DD MMMM YYYY") + " , ";
+       time += moment(data["entry"]["time"]).format("hh:mm a");
+       card.find(".msgContent").html(data["entry"]["msg"]).attr("title", time);
        return card
    }
 
    function populateMessages(dataArray) {
 
         var str = ""
-
+        var flag = 1;
         dataArray.forEach(function(elem, index){
 
                if(index == 0 || (index > 0 && (moment(dataArray[index - 1]["entry"]["time"]).format("DD MM YYYY") != moment(elem["entry"]["time"]).format("DD MM YYYY"))) ) {
@@ -158,14 +171,17 @@ function Chat() {
 
                if(elem["entry"]["UUID"] == settings.uuid ){
                     var item = getMsgSentElement(elem)
-                   str+=item[0].outerHTML;
+                    flag = 1;
+                    str+=item[0].outerHTML;
                }
                else {
-                   var item = getMsgReceivedElement(elem)
+                   var item = getMsgReceivedElement(elem, flag)
+                   flag = 0;
                    str+=item[0].outerHTML;
                }
            })
            settings.mssgContainer.prepend(str)
+           initializeTooltip()
            if($(window).outerWidth() < 769 ) {
                settings.backButtonChat.removeClass("hidden")
                settings.conversationList.addClass("hidden")
@@ -269,7 +285,17 @@ function Chat() {
        setUuid: setUuid,
        scrollToBottom: scrollToBottom,
        setRecruiterActive: setRecruiterActive,
-       setRecruiterInactive: setRecruiterInactive
+       setRecruiterInactive: setRecruiterInactive,
+       setChat: setChat
+   }
+
+   function initializeTooltip() {
+        $(".tooltip").not(".prototype .tooltip").tooltipster({
+           animation: 'fade',
+           delay: 0,
+           side:['bottom'],
+           theme: 'tooltipster-borderless'
+       })
    }
 
 }

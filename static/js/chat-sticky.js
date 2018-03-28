@@ -418,7 +418,7 @@ function openChat(channelName) {
         return
     }
     else {
-        
+
     }
     if(!($(this).hasClass("selected"))) {
 

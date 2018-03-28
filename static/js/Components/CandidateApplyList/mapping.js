@@ -21,6 +21,11 @@ var notice = {
     6: "6 months"
 }
 
+var lastActive = {
+    1: "Last 1 Month",
+    3: "Last 3 Months",
+    6: "Last 6 Months"
+}
 
 var applicationDateObj = {
     3: "3 days",

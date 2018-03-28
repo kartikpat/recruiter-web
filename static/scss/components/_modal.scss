@@ -358,3 +358,17 @@
         }
     }
 }
+
+.topInstitutesContainer {
+    margin: 0 15px;
+    .section {
+        padding-top: 0px;
+    }
+    .check-input {
+        display: inline-block;
+        width: 50%;
+        label {
+            font-weight: 700;
+        }
+    }
+}

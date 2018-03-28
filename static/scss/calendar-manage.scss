@@ -48,7 +48,7 @@
                 }
             }
         }
-        
+
         .wrapper{
             border-style: solid;
             border-width: 1px;
@@ -189,7 +189,7 @@
                     height: 50px;
                     line-height: 50px;
                     text-align: center;
-                    min-width: 350px;
+                    
                     margin: 0 auto;
                     font-size: 20px;
                     color: #2b2b2b;
@@ -197,7 +197,7 @@
             }
         }
     }
-} 
+}
 @media only screen and (max-width: 768px){
     .page-content{
         min-height: 100%;
@@ -223,7 +223,7 @@
                 height: 81px;
                 width: 100%;
                 margin-top: 5px;
-                
+
                 .tagline{
                     color:  #5d5d5d;
                     font-size: 22px;/* Approximation due to font substitution */
@@ -255,7 +255,7 @@
                     }
                 }
             }
-            
+
             .wrapper{
                 border-style: solid;
                 border-width: 1px;
@@ -359,14 +359,14 @@
                             line-height: 28px;
                             font-size: 0.85em;
                             cursor: pointer;
-                            line-height: 28px; 
+                            line-height: 28px;
                             text-align: center;
                             display: block;
                             width: 68px;
                             margin-top: 34px;
                             float: none;
                             margin-bottom: 30px;
-                            
+
                         }
                     }
                 }
@@ -375,8 +375,8 @@
         .right{
             display: none;
         }
-    }   
-   
+    }
+
 }
 
 @media only screen and (max-width: 480px){
@@ -390,7 +390,7 @@
                     margin-top: 30px;
                     margin-left:10px;
                     font-size: 17px;
-                   
+
                 }
                 .manage-Calendar{
                     display: inline-block;
@@ -442,13 +442,13 @@
             .table-row-separator{
                 width: 100%!important;
             }
-           
+
         }
         .right{
             display: none;
         }
-    } 
-      
+    }
+
 }
 
 // @media only screen and (max-width: 420px){
@@ -460,7 +460,7 @@
 //                 .tagline{
 //                     margin-top: 25px;
 //                     margin-left:10px;
-//                     font-size: 14px;   
+//                     font-size: 14px;
 //                 }
 //                 .manage-Calendar{
 //                     display: inline-block;
@@ -485,7 +485,7 @@
 //             .table-row-separator{
 //                 width: 100%!important;
 //             }
-           
+
 //         }
 //         .right{
 //             display: none;

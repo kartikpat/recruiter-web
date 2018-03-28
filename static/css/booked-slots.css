@@ -815,6 +815,9 @@ span.sticker {
   max-width: 1440px;
   margin: 0 auto; }
 
+.invisible {
+  visibility: hidden; }
+
 a {
   cursor: pointer; }
 
@@ -903,7 +906,6 @@ body.posf {
   height: 50px;
   line-height: 50px;
   text-align: center;
-  min-width: 350px;
   margin: 0 auto;
   font-size: 20px;
   color: #2b2b2b;
@@ -2703,6 +2705,16 @@ span.sticker {
           height: 17px; }
   .modal_overlay .modal_content .modal_body .modal_body_header {
     border-bottom: 0; } }
+
+.topInstitutesContainer {
+  margin: 0 15px; }
+  .topInstitutesContainer .section {
+    padding-top: 0px; }
+  .topInstitutesContainer .check-input {
+    display: inline-block;
+    width: 50%; }
+    .topInstitutesContainer .check-input label {
+      font-weight: 700; }
 
 .border-top {
   border-top: 1px solid #e8e8e8; }

@@ -18,7 +18,7 @@ function Job(){
 		settings.jobUnpublishButton = $("#jobUnpublishButton");
 		settings.calendarContainer = $("#calendarContainer");
 		settings.calendarSelect = $("#calendarSelect");
-		settings.jobRefreshButton = $("#jobRefreshButton");
+		settings.openJobRefreshButton = $("#jobRefreshButton");
 		settings.jobPostFacebook = $("#jobPostFacebook");
 		settings.jobPostTwitter = $("#jobPostTwitter");
 		settings.jobPostLinkedin = $("#jobPostLinkedin");
@@ -30,7 +30,8 @@ function Job(){
 		settings.jobRefreshModal = $(".refreshModal")
 		settings.jobPremiumModal = $(".premiumModal");
 		settings.loaderOverlay = $("#loaderOverlay");
-		settings.calendarLength = null
+		settings.calendarLength = null;
+		settings.refreshButton= $(".refreshButton")
 
 		onClickCreateCalendar();
 		onClickJobOtherActions()
@@ -43,7 +44,7 @@ function Job(){
 	}
 
 	function setJobDetails(data){
-		
+		console.log(data)
 		settings.jobTitle.text(data["jobTitle"]).removeClass("shell");
 		settings.jobId.text("Job Code: " +data["jobPublishedId"]).removeClass("shell");
 		if(data["jobLocation"]) {
@@ -67,12 +68,16 @@ function Job(){
 		if(statusArr.indexOf(status) != -1) {
 			populateCalendarOptions(data["calendars"])
 		}
+		settings.refreshButton.attr("data-refresh-job-id", data["jobId"]);
 		if(status == "published") {
             settings.jobUnpublishButton.removeClass("hidden")
 			settings.jobOtherActions.removeClass("hidden")
 
-            if(data["isRefreshable"])
-    		    settings.jobRefreshButton.removeClass("hidden")
+            if(data["isRefreshable"]) {
+				 settings.openJobRefreshButton.removeClass("hidden")
+
+			}
+
             if(!data["isPremium"])
                 settings.jobPremiumButton.removeClass("hidden")
 			if(data["jobSocialShareUrl"]) {
@@ -114,16 +119,16 @@ function Job(){
 		});
 	}
 
-	function onClickJobRefresh(fn) {
-		settings.jobRefreshButton.click(function(e) {
+	function onClickJobRefresh() {
+		settings.openJobRefreshButton.click(function(e) {
 			e.stopPropagation()
 			addBodyFixed()
 			settings.jobRefreshModal.removeClass('hidden');
 		})
 	}
 
-	function onClickSubmitRefreshJob(fn){
-		settings.jobRefreshButton.click(function(){
+	function onClickSubmitRefreshJob(fn) {
+		settings.refreshButton.click(function() {
 			var jobId = $(this).attr('data-refresh-job-id');
 			return fn(jobId);
 		});
@@ -210,7 +215,7 @@ function Job(){
 
 	function onChangeDefaultCalendar(fn) {
 		settings.calendarSelect.on('change', function(e) {
-			
+
 			var calendarId = $(this).val();
 			if(parseInt(calendarId) == -1) {
 				return
