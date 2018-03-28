@@ -1,11 +1,7 @@
-function fetchJobs(type, recruiterId, pageContent, pageNumber){
-	if(!type)
-		type='all';
-	return getRequest(baseUrl+"/recruiter/"+recruiterId+"/jobs", {
-		type: type,
-		pageContent: pageContent,
-		pageNumber: pageNumber
-	}, function(res){
+function fetchJobs(parameters, recruiterId){
+	if(!parameters.type)
+		parameters.type='all';
+	return getRequest(baseUrl+"/recruiter/"+recruiterId+"/jobs", parameters, function(res){
 		if(res.status && res.status =='success'){
 			return pubsub.publish("fetchedJobs", res.data);
 		}

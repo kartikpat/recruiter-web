@@ -59,7 +59,6 @@ function fetchURL(){
 function getQueryParameter(queryString) {
 
 	var urlObj = fetchURL();
-	console.log(urlObj["search"])
 	var testString = urlObj["search"];
 	var obj = {};
 	if(!testString) {
@@ -141,4 +140,37 @@ function isEmpty(obj) {
     }
 
     return JSON.stringify(obj) === JSON.stringify({});
+}
+
+function showLoader() {
+	$(".loaderScroller").removeClass("hidden")
+}
+
+function hideLoader() {
+	$(".loaderScroller").addClass("hidden")
+}
+
+function removeParam(key, sourceURL) {
+    var rtn = sourceURL.split("?")[0],
+        param,
+        params_arr = [],
+        queryString = (sourceURL.indexOf("?") !== -1) ? sourceURL.split("?")[1] : "";
+    if (queryString !== "") {
+        params_arr = queryString.split("&");
+        for (var i = params_arr.length - 1; i >= 0; i -= 1) {
+            param = params_arr[i].split("=")[0];
+            if (param === key) {
+                params_arr.splice(i, 1);
+            }
+        }
+        rtn = rtn + "?" + params_arr.join("&");
+    }
+    return rtn;
+}
+
+function sortArrayOfObjectsByKey(arr) {
+	arr.sort(function(a, b){
+		  return a.name.localeCompare(b.name)
+	})
+	return arr;
 }

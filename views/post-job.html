@@ -2,7 +2,7 @@
 
 <div class="loader-container {{hiddenLoader}}">
         <div class="loader-content">
-    
+
             <div class="loading loaderScroller" style="margin-top:20px ">
                     <div class="loader loader-scroller"></div>
             </div>
@@ -364,7 +364,7 @@
 
                         <select class="half right" id="max_experience" name="MaxExp">
                             <option class="extra-info-color" value="">Select Max</option>
-                            <option value="0">0</option>
+                            <!-- <option value="0">0</option> -->
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -810,6 +810,17 @@
                             </label>
                         </div>
 
+                        <div class="course-option preference-work-home">
+                            <input type="checkbox" id="preference-work-home" data-id="workHome">
+                            <label for="preference-work-home">
+                                <div class="course-content">
+                                    <span class="course-icon"><i class="icon-disabillity-symbol"></i></span>
+                                    <span class="course-option-label">Work from Home</span>
+                                </div>
+                                <span class="course-selected"><i class="icon-checked_icon"></i></span>
+                            </label>
+                        </div>
+
                         <!-- <div class="course-option preference-alumni hidden">
                             <input type="checkbox" id="preference-alumni">
                             <label for="preference-alumni">
@@ -866,8 +877,8 @@
     </div>
 
     <div class="submit-action-buttons {{hiddenClass}}">
-        <button class="button submit-form" id="submitForm">Submit</button>
-        <button class="button cancel-form" id="cancelForm">Cancel</button>
+        <button type="button" class="button submit-form" id="submitForm">Submit</button>
+        <button type="button" class="button cancel-form" id="cancelForm">Cancel</button>
     </div>
 
 
