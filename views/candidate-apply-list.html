@@ -65,7 +65,10 @@
 						<span class="button white hidden" id="jobPremiumButton">Make Premium</span>
 						<span class="button white unpublish-job hidden" id="jobUnpublishButton">Unpublish</span>
 
-						<span class="multi-options inactive button-action-list hidden" id="jobOtherActions"><img src="/static/images/multi-options.svg">
+						<span class="multi-options inactive button-action-list hidden" id="jobOtherActions">
+							<i class="icon-more"></i>
+							<!-- <i class="icon-more"></i> -->
+							<!-- <img src="/static/images/multi-options.svg"> -->
 							<ul class="action-list-items">
 								<li><a href="#" class="hidden" id="jobRefreshButton">Refresh</a></li>
 								<li><a href="#" class="" id="jobPostFacebook">Post On Facebook</a></li>
@@ -241,7 +244,6 @@
                 </div>
                 <div class="profile-information">
                 	<p class="profile-name js_name">Shreya Sharma</p>
-
                 	<div class="social-media-accounts">
                 		<span class="social facebook hidden"><img src="/static/images/facebook-round.svg"></span>
                 		<span class="social twitter hidden"><img src="/static/images/twitter-round.svg"></span>
@@ -535,8 +537,8 @@
     	</div>
     	<div class="sidebar-section external-links">
     		<ul>
-    			<li class="save" id="candidateSaveModal"><span class="icon"><i class="icon-star_later"></i></span>Save for Later</li>
-    			<li class="chat" id="candidateChatModal"><span class="icon"><i class="icon-chat_icon"></i></span>Chat with <span id="firstName" class="candidate-first-name">Shreya</span></li>
+    			<li class="save" id="candidateSaveModal"><i class="icon-star_later"></i>Save for Later</li>
+    			<li class="chat" id="candidateChatModal"><span class="icon"><i class="icon-chat"></i></span>Chat with <span id="firstName" class="candidate-first-name">Shreya</span></li>
     			<li class="invite"><span class="icon"><i class="icon-interview"></i></span>Send Interview Invite</li>
 				<li class="invite-links"><span class="icon"><i class="icon-face-to-face"></i></span><span data-invite-id="1" class="inviteF2f tooltip ">Face to Face</span></li>
 				<li class="invite-links"><span class="icon"><i class="icon-telephone"></i></span><span data-invite-id="2" class="inviteTelephonic tooltip ">Telephonic</span></li>
@@ -550,10 +552,16 @@
 
     	<div class="sidebar-section comments candidateCommentContainer">
 			<h3>Comment</h3>
+<<<<<<< HEAD
     		<div class="comment-box">
 				<textarea id="" class="comment-textarea hidden" readonly></textarea>
+=======
+
+    		<div class="comment-box hidden">
+					<textarea id="" class="comment-textarea " readonly></textarea>
+>>>>>>> develop
 			</div>
-			<div class="">
+			<div class="comment-container">
 				<textarea id="" placeholder="Add Comment" name="name" class="candidateCommentTextarea"></textarea>
     		</div>
 			<div class="action-buttons">

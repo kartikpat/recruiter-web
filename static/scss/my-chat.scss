@@ -21,8 +21,8 @@
 
 .page-content {
 	@include page-content;
-
-	min-height:calc(100% - 75px);
+	min-height: 90vh;
+	// min-height:calc(100% - 75px);
 
 	.main-wrapper {
 		position:absolute;

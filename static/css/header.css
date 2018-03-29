@@ -269,82 +269,82 @@
   content: '\e82f'; }
 
 /* '' */
-.icon-work_from_home:before {
+.icon-mail:before {
   content: '\e830'; }
 
 /* '' */
 .icon-user:before {
   content: '\e831'; }
 
-/* '' */
 .icon-location:before {
   content: '\e832'; }
 
-/* '' */
-.icon-chat:before {
-  content: '\e833'; }
-
-/* '' */
-.icon-report:before {
-  content: '\e834'; }
-
-/* '' */
-.icon-small-calendar:before {
-  content: '\e835'; }
-
-/* '' */
-.icon-calendar:before {
-  content: '\e836'; }
-
-/* '' */
-.icon-reviewed:before {
-  content: '\e837'; }
-
-/* '' */
-.icon-shortlist:before {
-  content: '\e838'; }
-
-/* '' */
-.icon-briefcase:before {
-  content: '\e839'; }
-
-/* '' */
 .icon-clock:before {
   content: '\e83a'; }
 
-/* '' */
-.icon-tick_circle:before {
-  content: '\e83b'; }
+.icon-checked_icon:before {
+  content: '\e819'; }
 
-/* '' */
 .icon-telephone:before {
-  content: '\e83c'; }
+  content: '\E83C'; }
 
-/* '' */
 .icon-face-to-face:before {
   content: '\e83d'; }
 
-/* '' */
-.icon-sunset:before {
-  content: '\e83e'; }
-
-/* '' */
 .icon-search:before {
   content: '\e83f'; }
 
-/* '' */
-.icon-afternoon:before {
-  content: '\e840'; }
-
-/* '' */
 .icon-filter:before {
   content: '\e841'; }
 
-/* '' */
 .icon-up_arrow:before {
   content: '\e842'; }
 
-/* '' */
+.icon-star:before {
+  content: '\e829'; }
+
+.icon-review:before {
+  content: '\e81c'; }
+
+.icon-chat:before {
+  content: '\e833'; }
+
+.icon-more:before {
+  content: '\e843'; }
+
+.icon-more:before {
+  font-size: 20px;
+  color: #2b2b2b;
+  margin-left: 0px; }
+
+.icon-chat:before {
+  font-size: 20px; }
+
+.icon-telephone:before {
+  font-size: 20px; }
+
+.icon-face-to-face:before {
+  font-size: 20px; }
+
+.icon-star:before {
+  font-size: 20px; }
+
+.icon-interview:before {
+  font-size: 25px; }
+
+/* '' */
+.icon-search:before {
+  position: relative;
+  top: -24px;
+  left: 5px; }
+
+.icon-filter:before {
+  position: relative;
+  top: 6px; }
+
+.icon-chat_icon:before {
+  font-size: 20px; }
+
 .left {
   float: left; }
 
