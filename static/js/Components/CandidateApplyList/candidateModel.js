@@ -16,7 +16,6 @@ function Candidate() {
         settings.candidateEditComment=$('.candidateAddEditButton'),
         settings.mobCandidateEditComment=$('.mobcandidateAddEditButton')
         settings.mobCommentBox=$('.mobCommentBox');
-        settings.commentBox=$('.comment-box'),
         settings.commentTextarea=$('.comment-textarea'),
         settings.candidateTagInputClass = '.candidateTagInput',
         settings.candidateTagRemoveClass = '.tagRemove',
@@ -60,8 +59,6 @@ function Candidate() {
     function showCandidateDetails(details, type, status){
         return populateCandidateData(details, type, status)
     }
-
-
 
     function onClickChatCandidateModal(fn) {
         settings.candidateChatModal.click(function(){
@@ -135,20 +132,15 @@ function Candidate() {
             travel: modal.find(".js_travel"),
             resume: modal.find(".js_resume"),
             coverLetter: modal.find(".js_cover_letter"),
-            comment: modal.find(".candidateCommentTextarea"),
+
             tag: modal.find(".candidateTagInput"),
             mobTag: modal.find(".mobCandidateTagInput"),
-            mobComment: modal.find(".mobCandidateCommentTextarea"),
+
             firstName: modal.find("#firstName"),
             tabContent: modal.find("#tabbed-content"),
             shortlistButton: modal.find(".candidateShortlistModal"),
             rejectButton: modal.find(".candidateRejectModal"),
-            savedButton : modal.find("#candidateSaveModal"),
-            commentTextarea : modal.find('.comment-textarea'),
-            commentBox: modal.find('.commentBox'),
-            editButton: modal.find('.candidateAddEditButton'),
-            addButton: modal.find('.candidateAddCommentButton'),
-            commentAddBox: modal.find('.candidateCommentTextarea'),
+            savedButton : modal.find("#candidateSaveModal")
         }
     }
 
@@ -202,7 +194,11 @@ function Candidate() {
         // var lastActiveDays = getLastActiveDay(aData["lastActive"])
 
         // item.lastActive.text(lastActiveDays > 1 ? lastActiveDays + " days ago": lastActiveDays + " day ago");
-        item.lastActive.text(moment(aData["lastActive"]).format("DD-MM-YYYY"))
+        var lastActiveDate = moment(aData["lastActive"]).format("DD-MM-YYYY");
+        if(lastActiveDate == "Invalid date") {
+            lastActiveDate = "N.A";
+        }
+        item.lastActive.text(lastActiveDate)
         var eduStr = '';
         $.each(aData["education"],function(index, anObj) {
 
@@ -270,17 +266,20 @@ function Candidate() {
         	item.resume.html('<iframe src="'+aData["resume"]+'" class="resume-embed" type="application/pdf"></iframe>')
         }
         if(aData["cover"]) {
-            item.coverLetter.html(nl2br(aData["cover"]))
-            $(".coverLetterTab").removeClass("hidden")
+            item.coverLetter.html(nl2br(aData["cover"]));
+            $(".coverLetterTab").removeClass("hidden");
         }
         if(aData["comment"]) {
-            item.comment.val(aData["comment"]);
-            item.mobComment.val(aData["comment"]);
-            item.commentTextarea.val(aData["comment"])
-            item.comment.addClass('hidden');
-            item.commentTextarea.removeClass('hidden');
-            item.addButton.addClass('hidden');
-            item.editButton.removeClass('hidden');
+            settings.commentTextarea.val(aData["comment"]).removeClass("hidden");
+            $(settings.candidateCommentTextareaClass).val(aData["comment"]).addClass("hidden");
+            $(settings.candidateAddCommentButtonClass).addClass("hidden")
+            settings.candidateEditComment.removeClass("hidden")
+        }
+        else {
+            settings.commentTextarea.val('').addClass("hidden")
+            $(settings.candidateCommentTextareaClass).val('').removeClass("hidden");
+            $(settings.candidateAddCommentButtonClass).removeClass("hidden")
+            settings.candidateEditComment.addClass("hidden")
         }
         item.shortlistButton.attr("data-action", 1);
         item.rejectButton.attr("data-action", 2);
@@ -300,7 +299,7 @@ function Candidate() {
         }
 
         openModal(item)
-        
+
         if(!type)
             return
         if(type == "tag") {
@@ -365,17 +364,10 @@ function Candidate() {
     }
 
     function openModal() {
-
     	$(".body-overlay").removeClass("hidden").addClass("veiled");
     	$("body").addClass("posf");
         settings.candidateDetailsModal.removeClass("hidden");
     }
-
-
-
-
-
-
 
     function onClickAddComment(fn) {
         // debugger
@@ -397,17 +389,15 @@ function Candidate() {
                 return
             }
             $(settings.candidateCommentTextareaClass).addClass("hidden");
-            settings.commentBox.removeClass("hidden");
-            settings.commentTextarea.text(comment);
+            settings.commentTextarea.val(comment).removeClass("hidden");
             $(settings.candidateAddCommentButtonClass).addClass("hidden");
             settings.candidateEditComment.removeClass("hidden");
             fn(applicationId, comment);
         });
 
-
         settings.candidateEditComment.on('click',function(event){
+            settings.commentTextarea.addClass("hidden");
             $(settings.candidateCommentTextareaClass).removeClass("hidden").focus();
-            settings.commentBox.addClass("hidden");
             $(settings.candidateAddCommentButtonClass).removeClass("hidden");
             settings.candidateEditComment.addClass("hidden");
         })

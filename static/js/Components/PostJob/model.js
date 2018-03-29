@@ -62,7 +62,9 @@ function Job(){
 				toolbar: false,
 				placeholder: {
 			        text: 'Describe the role, talk about the role and responsibilities and help potential applicants understand what makes this a great opportunity.'
-			    }
+			    },
+				disableExtraSpaces: true,
+				hideOnClick: false
 			})
 			settings.editor.subscribe('editableInput', function(event, editorElement){
 

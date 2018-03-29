@@ -7,7 +7,7 @@ $(document).ready(function(){
 
 	recruiterProfile.submitHandler(function(){
 
-		if(recruiterProfile.validate()){ 
+		if(recruiterProfile.validate()){
 			updateRecruiterProfile(recruiterProfile.getProfile(), recruiterId);
 		}
 	})
@@ -17,7 +17,10 @@ $(document).ready(function(){
 	})
 
  	function onSuccessfulUpdateProfile(topic, data){
-		return toastNotify(1, "Profile Updated Success");
+		toastNotify(1, "Profile Updated Success");
+		setTimeout(function(){
+			 location.reload()
+		 }, 2000);
 	}
 	function onFailedUpdateProfile(topic, data){
 		errorHandler(data)
