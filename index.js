@@ -7,9 +7,10 @@
 	var program = require("commander"); //options generator for command line interface
 	var compression = require("compression"); //compresses the request payload
 	var cookieParser = require("cookie-parser"); //stores the session data on the client within a cookie
-	var request = require("request"); //for making http and https requests
 	const passport = require("passport");
 	const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
+
+	const request = require('request');
 
 	var mode = "prod";
 	var env = "cloud";
@@ -42,19 +43,56 @@
 	var port = program.port;
 	var config = require(program.config);
 	var vault = program.vault;
+
+	var baseUrl = config["baseUrl"];
+	if(env=="local")
+		baseUrl= config["baseUrl_local"];
+	else
+		baseUrl = config["baseUrl"];
+
+
 	passport.use(new LinkedInStrategy({
 		clientID: config['social']['linkedin']['clientId'],
 		clientSecret: config['social']['linkedin']['secret'],
 		callbackURL: config['social']['linkedin']['callbackURL'],
-		scope: ['r_emailaddress', 'r_basicprofile']
-	}, function(accessToken, refreshToken, profile, done){
-		console.log(accessToken)
-		console.log(profile)
-		return done(null, {
-			"token": accessToken,
-			"profile" : profile
-		})
+		scope: ['r_emailaddress', 'r_basicprofile'],
+		passReqToCallback: true
+	}, async function(req, accessToken, refreshToken, profile, done){
+		const data = {
+			token: accessToken,
+			refreshToken: refreshToken,
+			profile: profile
+		}
+		try{
+			await addUserSocial('linkedin', data);
+			return done(null, data)
+		}
+		catch(err){
+			done(err);
+		}
 	}));
+
+	function addUserSocial(type,data){
+		return new Promise(function(fulfill, reject){
+			return fulfill(1);
+			request.post({
+				url: baseUrl+"/recruiter/",
+				headers: {
+					Authorization: 'Bearer '
+				},
+				body: data,
+				json: true
+			},function(err, response, body){
+				if(err){
+					return reject(err);		
+				}
+				const jsonBody = JSON.parse(body)
+				if(jsonBody.status && jsonBody.status =='success'){
+					
+				}
+			})
+		})
+	}
 
 	passport.serializeUser(function(user, cb) {
 	  cb(null, user);

@@ -9,7 +9,8 @@
 			"secret": "cIFMKCs8lW66NNvR",
 			"callbackURL" : "/auth/linkedin/callback",
 			"failureRedirect" : "/test",
-			"successRedirect" : "/success"
+			"successRedirect" : "/success",
+			"stateKey": "80ba1410fa2f16b1085f611ca4ff0fed"
 		}
 	}
 }

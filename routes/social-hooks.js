@@ -2,15 +2,23 @@ module.exports = function(settings){
   const	app=settings["app"];
 	const passport = settings["passport"];
 	config = settings["config"];
-
-  app.get('/auth/linkedin', passport.authenticate('linkedin', {state: 'tryingto login'}), function(req, res){
+  app.get('/auth/linkedin', passport.authorize('linkedin', {state: config['social']['linkedin']['stateKey']}), function(req, res){
     // The request will be redirected to LinkedIn for authentication, so this
     // function will not be called.
   })
-  app.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
-    successRedirect: config['social']['linkedin']['successRedirect'],
-    failureRedirect: config['social']['linkedin']['test']
-  }))
+  app.get('/auth/linkedin/callback', function(req, res, next){
+    const state = req.query.state;
+    if(state != config['social']['linkedin']['stateKey'] )
+      return res.redirect(config['social']['linkedin']['failureRedirect']);
+    return next();
+  },passport.authenticate('linkedin', {
+    failureRedirect: config['social']['linkedin']['failureRedirect']
+  }),
+  function(req, res){
+    console.log(req.user.token);
+    console.log(req.cookies['recruiter-access-token']);
+    return res.redirect(config['social']['linkedin']['successRedirect'])
+  })
 // 	app.get('/auth/facebook', passport.authenticate('facebook',{ authType: 'rerequest',scope: configuration["facebook"]["scope"]}));
 
 
