@@ -378,6 +378,7 @@ function Candidate() {
 
 
     function onClickAddComment(fn) {
+        // debugger
         // settings.candidateDetailsModal.on('keyup', settings.candidateCommentTextareaClass,function(event) {
         //     event.stopPropagation();
         //     if (event.which == 13) {
@@ -389,16 +390,17 @@ function Candidate() {
         // });
         settings.candidateDetailsModal.on('click', settings.candidateAddCommentButtonClass,function(event) {
             event.stopPropagation();
+            debugger
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
             var comment = ($(settings.candidateCommentTextareaClass).val()).trim();
+            if(!comment) {
+                return
+            }
             $(settings.candidateCommentTextareaClass).addClass("hidden");
             settings.commentBox.removeClass("hidden");
             settings.commentTextarea.text(comment);
             $(settings.candidateAddCommentButtonClass).addClass("hidden");
             settings.candidateEditComment.removeClass("hidden");
-            if(!comment) {
-                return
-            }
             fn(applicationId, comment);
         });
 
@@ -424,6 +426,7 @@ function Candidate() {
 
         settings.candidateDetailsModal.on('click', settings.mobCandidateAddCommentButtonClass,function(event) {
             event.stopPropagation();
+            
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
             var comment = ($(settings.mobCandidateCommentTextareaClass).val()).trim();
             $(settings.mobCandidateCommentTextareaClass).addClass("hidden");

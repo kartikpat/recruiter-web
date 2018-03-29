@@ -257,14 +257,28 @@
 .icon-review:before {
   content: '\e81c'; }
 
+.icon-chat:before {
+  content: '\e833'; }
+
+.icon-more:before {
+  content: '\e843'; }
+
+.icon-more:before {
+  font-size: 20px;
+  color: #2b2b2b;
+  margin-left: 0px; }
+
+.icon-chat:before {
+  font-size: 20px; }
+
 .icon-telephone:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-face-to-face:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-star:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-interview:before {
   font-size: 25px; }
@@ -272,14 +286,15 @@
 /* '' */
 .icon-search:before {
   position: relative;
-  top: -24px; }
+  top: -24px;
+  left: 5px; }
 
 .icon-filter:before {
   position: relative;
   top: 6px; }
 
 .icon-chat_icon:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -813,14 +828,28 @@ span.sticker {
 .icon-review:before {
   content: '\e81c'; }
 
+.icon-chat:before {
+  content: '\e833'; }
+
+.icon-more:before {
+  content: '\e843'; }
+
+.icon-more:before {
+  font-size: 20px;
+  color: #2b2b2b;
+  margin-left: 0px; }
+
+.icon-chat:before {
+  font-size: 20px; }
+
 .icon-telephone:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-face-to-face:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-star:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-interview:before {
   font-size: 25px; }
@@ -828,14 +857,15 @@ span.sticker {
 /* '' */
 .icon-search:before {
   position: relative;
-  top: -24px; }
+  top: -24px;
+  left: 5px; }
 
 .icon-filter:before {
   position: relative;
   top: 6px; }
 
 .icon-chat_icon:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .left {
   float: left; }
@@ -1353,14 +1383,28 @@ a {
 .icon-review:before {
   content: '\e81c'; }
 
+.icon-chat:before {
+  content: '\e833'; }
+
+.icon-more:before {
+  content: '\e843'; }
+
+.icon-more:before {
+  font-size: 20px;
+  color: #2b2b2b;
+  margin-left: 0px; }
+
+.icon-chat:before {
+  font-size: 20px; }
+
 .icon-telephone:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-face-to-face:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-star:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-interview:before {
   font-size: 25px; }
@@ -1368,14 +1412,15 @@ a {
 /* '' */
 .icon-search:before {
   position: relative;
-  top: -24px; }
+  top: -24px;
+  left: 5px; }
 
 .icon-filter:before {
   position: relative;
   top: 6px; }
 
 .icon-chat_icon:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -1937,14 +1982,28 @@ span.sticker {
 .icon-review:before {
   content: '\e81c'; }
 
+.icon-chat:before {
+  content: '\e833'; }
+
+.icon-more:before {
+  content: '\e843'; }
+
+.icon-more:before {
+  font-size: 20px;
+  color: #2b2b2b;
+  margin-left: 0px; }
+
+.icon-chat:before {
+  font-size: 20px; }
+
 .icon-telephone:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-face-to-face:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-star:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-interview:before {
   font-size: 25px; }
@@ -1952,14 +2011,15 @@ span.sticker {
 /* '' */
 .icon-search:before {
   position: relative;
-  top: -24px; }
+  top: -24px;
+  left: 5px; }
 
 .icon-filter:before {
   position: relative;
   top: 6px; }
 
 .icon-chat_icon:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 /*[Recruiter_Homepage]*/
 /*[/Recruiter_Homepage]*/
@@ -2219,14 +2279,28 @@ span.sticker {
 .icon-review:before {
   content: '\e81c'; }
 
+.icon-chat:before {
+  content: '\e833'; }
+
+.icon-more:before {
+  content: '\e843'; }
+
+.icon-more:before {
+  font-size: 20px;
+  color: #2b2b2b;
+  margin-left: 0px; }
+
+.icon-chat:before {
+  font-size: 20px; }
+
 .icon-telephone:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-face-to-face:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-star:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-interview:before {
   font-size: 25px; }
@@ -2234,14 +2308,15 @@ span.sticker {
 /* '' */
 .icon-search:before {
   position: relative;
-  top: -24px; }
+  top: -24px;
+  left: 5px; }
 
 .icon-filter:before {
   position: relative;
   top: 6px; }
 
 .icon-chat_icon:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -2878,9 +2953,12 @@ span.sticker {
       text-align: left;
       width: 25%;
       display: inline-block;
-      margin-left: 28px; }
+      margin-left: 28px;
+      margin-top: 8px; }
     .page-content .header-slot .right-container {
-      float: right; }
+      float: right;
+      margin-right: 10px;
+      margin-top: 4px; }
       .page-content .header-slot .right-container .section {
         display: inline-block; }
         .page-content .header-slot .right-container .section .select-dropdown {
@@ -2923,18 +3001,8 @@ span.sticker {
         display: inline-block; }
         .page-content .header-slot .right-container .manage-Calendar a {
           color: #2b2b2b; }
-      .page-content .header-slot .right-container .start-date input {
-        font-family: inherit;
-        font-size: 14px;
-        color: #2b2b2b;
-        border-radius: 4px;
-        border-style: solid;
-        border-width: 1px;
-        border-color: #8f8a8a;
-        box-sizing: border-box;
-        background-color: #ffffff;
-        width: 135px;
-        height: 28px; }
+    .page-content .header-slot .start-date {
+      float: right; }
   .page-content .action-wrapper {
     width: 95%;
     background-color: #ebe8e8;
@@ -3221,7 +3289,8 @@ span.sticker {
   .page-content .header-slot {
     background-color: #f3fbfb;
     display: inline-block;
-    height: 116px;
+    min-height: 116px;
+    height: 100%;
     padding: 0%;
     margin: 0%;
     width: 100%; }
@@ -3229,10 +3298,11 @@ span.sticker {
       margin-top: 50px;
       width: 30%;
       padding-left: 20px; }
-    .page-content .header-slot .right-container {
-      margin-right: 20px; }
-      .page-content .header-slot .right-container .section {
-        margin-top: 50px; }
+    .page-content .header-slot .start-date {
+      margin-top: 47px;
+      margin-right: 40px; }
+    .page-content .header-slot .right-container .section {
+      margin-top: 50px; }
   .page-content .action-wrapper {
     display: none; }
   .page-content .booked-slots {
@@ -3373,14 +3443,16 @@ span.sticker {
       width: 80%;
       padding-left: 20px;
       padding-bottom: 20px; }
+    .page-content .header-slot .start-date {
+      margin-top: -4px;
+      margin-left: 1px; }
     .page-content .header-slot .right-container {
       display: block;
       float: none;
       padding: 0%;
-      padding-left: 45px; }
+      margin-left: 50px; }
       .page-content .header-slot .right-container .section {
-        margin: 0%;
-        padding-right: 20px; }
+        margin: 0%; }
   .page-content .booked-slots .slot-date .schedules-container .schedules .action-buttons .section {
     display: inline-block;
     margin-left: 10px; }
@@ -3474,11 +3546,12 @@ span.sticker {
       width: 80%;
       padding-left: 20px;
       padding-bottom: 20px; }
+    .page-content .header-slot .start-date {
+      margin-right: 32px; }
     .page-content .header-slot .right-container {
       display: block;
       float: none;
-      padding: 0%;
-      padding-left: 45px; }
+      padding: 0%; }
       .page-content .header-slot .right-container .section {
         margin: 0%;
         padding-right: 20px;
