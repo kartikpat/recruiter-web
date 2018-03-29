@@ -3,6 +3,12 @@
 @import 'chat-sidebar';
 @import 'components/modal';
 
+.filtersExtraButtons {
+    font-size: 13px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
 .closeCandidateModal {
     position: fixed;
     top: 15px;
@@ -35,9 +41,7 @@
     padding-top: 7px;
     padding-left: 1px;
     background-color: #f7f7f7;
-    p {
-        max-width: 170px;
-    }
+    max-width: 195px;
 }
 
 .interview-invite {
@@ -250,7 +254,8 @@ input::-webkit-input-placeholder {
 								background-size: 15px;
 							    color: #2b2b2b;
 							    background-position:right 10px center;
-								padding-right:30px;	
+								padding-right:30px;
+
 							}
 						}
 
@@ -309,6 +314,8 @@ input::-webkit-input-placeholder {
 							padding:2px 15px;
 							border-radius:50px;
                             text-transform: capitalize;
+                            font-size: 14px;
+                            color: $color-label;
 							div {
 								display:inline-block;
 								vertical-align: middle;
@@ -1451,20 +1458,20 @@ input::-webkit-input-placeholder {
 									vertical-align: middle;
 									line-height: 40px;
 								 }
-								 
+
 								 :-moz-placeholder { /* Firefox 18- */
 									text-align: left;
-									vertical-align: middle; 
+									vertical-align: middle;
 									line-height: 40px;
 								 }
-								 
+
 								 ::-moz-placeholder {  /* Firefox 19+ */
 									text-align: left;
 									vertical-align: middle;
 									line-height: 40px;
 								 }
-								 
-								 :-ms-input-placeholder {  
+
+								 :-ms-input-placeholder {
 									text-align: left;
 									vertical-align: middle;
 									line-height: 40px;
@@ -1795,20 +1802,20 @@ input::-webkit-input-placeholder {
 				vertical-align: middle;
 				line-height: 40px;
 			 }
-			 
+
 			 :-moz-placeholder { /* Firefox 18- */
 				text-align: left;
-				vertical-align: middle; 
+				vertical-align: middle;
 				line-height: 40px;
 			 }
-			 
+
 			 ::-moz-placeholder {  /* Firefox 19+ */
 				text-align: left;
 				vertical-align: middle;
 				line-height: 40px;
 			 }
-			 
-			 :-ms-input-placeholder {  
+
+			 :-ms-input-placeholder {
 				text-align: left;
 				vertical-align: middle;
 				line-height: 40px;
@@ -1987,7 +1994,7 @@ input::-webkit-input-placeholder {
     .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span.sortBy {
 		width: 150px;
 		margin-left: 0px;
-		
+
     }
     .page-content .page-header .action-buttons span {
         font-size: 13px;
@@ -2156,7 +2163,7 @@ input::-webkit-input-placeholder {
 	textarea {
 		width: 100%;
 		min-height: 50px;
-		
+
 		&:focus {
 			outline: none;
 			border: 1px solid $border-color-active
@@ -2167,6 +2174,7 @@ input::-webkit-input-placeholder {
 .action-buttons .select-dropdown {
 	line-height: 1.5;
 	background-size: 15px;
+    max-width: 195px;
 }
 
 .select-all.check-input input + label {
@@ -2191,12 +2199,12 @@ input::-webkit-input-placeholder {
 	}
 }
 
-#clear-all {
-	cursor: pointer;
-    color: #155d9a;
-}
-
 @media all and (max-width:480px) {
+    .bulkActionModal {
+        textarea {
+            width: 100%;
+        }
+    }
     .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments textarea {
         width: 100%;
     }
@@ -2285,7 +2293,6 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
   }
 
 .collapsed {
-    max-height: 70px;
+    max-height: 65px;
     overflow: hidden;
 }
-

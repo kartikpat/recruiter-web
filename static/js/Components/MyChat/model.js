@@ -100,6 +100,7 @@ function Chat() {
    function onClickSingleChatItem(fn) {
        settings.conversationItemList.on('click', settings.conversationItemClass, function(){
            var channelName = $(this).attr("data-channel-name");
+           $(this).find(".newMsgNotify").attr("data-count", "0").addClass("hidden")
            if(settings.channelName == channelName ) {
                return
            }
@@ -238,6 +239,15 @@ function Chat() {
        var item = getMsgReceivedElement(elem)
        settings.mssgContainer.append(item)
        scrollToBottom()
+       addNewMessageNotification(channelName)
+   }
+
+   function addNewMessageNotification(channelName) {
+       var elem = settings.conversationItemList.find(".conversation-item[data-channel-name="+channelName+"] newMsgNotify");
+       var msgCount = elem.attr("data-count");
+       msgCount = parseInt(msgCount) + 1;
+       elem.attr("data-count", msgCount);
+       elem.text(msgCount).removeClass("hidden")
    }
 
    function showStatusIcon(channelName) {

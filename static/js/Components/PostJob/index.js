@@ -8,7 +8,7 @@ $(document).ready(function(){
 	jobDetails.init(type);
 
 	jobDetails.onChangeJobPremium(function(){
-		alert("hi")
+		alert("hi") 
 	})
 	jobDetails.submitHandler(function(){
 		if(jobDetails.validate()){
@@ -27,7 +27,7 @@ $(document).ready(function(){
 		$('.loader-container').addClass("hidden");
 	}
 	fetchJobTags(recruiterId)
- 	function onSuccessfulSubmitJob(topic, data){ 
+ 	function onSuccessfulSubmitJob(topic, data){
 		var jobPostMessage;
 		if(type=='edit') {
 			jobPostMessage = "Job updated successfully";

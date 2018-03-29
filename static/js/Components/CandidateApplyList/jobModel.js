@@ -176,7 +176,10 @@ function Job(){
 		var item = getCalendarElement();
 		item.element.text("Calendar Link: Select");
 		item.element.attr("value","-1");
-		item.element.attr("disabled","disabled");
+		item.element.attr({
+			disabled: "disabled",
+			selected: "selected"
+		});
 		calendarOptionsStr += item.element[0].outerHTML;
         array.forEach(function(anObj){
 			var item = getCalendarElement()

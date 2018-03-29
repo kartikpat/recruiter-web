@@ -4,8 +4,8 @@
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
-  src: url("../fonts/fontello.eot");
-  src: url("../fonts/fontello.eot#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2") format("woff2"), url("../fonts/fontello.woff") format("woff"), url("../fonts/fontello.ttf") format("truetype"), url("../fonts/fontello.svg#fontello") format("svg");
+  src: url("../font/fontello.eot?94606861");
+  src: url("../font/fontello.eot?94606861#iefix") format("embedded-opentype"), url("../font/fontello.woff2?94606861") format("woff2"), url("../font/fontello.woff?94606861") format("woff"), url("../font/fontello.ttf?94606861") format("truetype"), url("../font/fontello.svg?94606861#fontello") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('../font/fontello.svg?75489480#fontello') format('svg');
+    src: url('../font/fontello.svg?94606861#fontello') format('svg');
   }
 }
 */
@@ -30,13 +30,20 @@
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
   margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
 
 .icon-certification:before {
@@ -63,7 +70,7 @@
   content: '\e805'; }
 
 /* '' */
-.icon-edit:before {
+.icon-edit-1:before {
   content: '\e806'; }
 
 /* '' */
@@ -119,13 +126,16 @@
   content: '\e813'; }
 
 /* '' */
+.icon-star:before {
+  content: '\e814'; }
+
+/* '' */
 .icon-star2:before {
   content: '\e815'; }
 
 /* '' */
 .icon-twitter:before {
-  content: '\e816';
-  color: #1da1f2; }
+  content: '\e816'; }
 
 /* '' */
 .icon-woman:before {
@@ -164,7 +174,7 @@
   content: '\e81f'; }
 
 /* '' */
-.icon-envelope:before {
+.icon-mail:before {
   content: '\e820'; }
 
 /* '' */
@@ -200,6 +210,10 @@
   content: '\e828'; }
 
 /* '' */
+.icon-star_later:before {
+  content: '\e829'; }
+
+/* '' */
 .icon-add_icon:before {
   content: '\e82a'; }
 
@@ -216,71 +230,90 @@
   content: '\e82d'; }
 
 /* '' */
+.icon-back_icon-1:before {
+  content: '\e82e'; }
+
+/* '' */
 .icon-interview:before {
   content: '\e82f'; }
 
 /* '' */
-.icon-mail:before {
+.icon-work_from_home:before {
   content: '\e830'; }
 
 /* '' */
 .icon-user:before {
   content: '\e831'; }
 
+/* '' */
 .icon-location:before {
   content: '\e832'; }
 
+/* '' */
+.icon-chat:before {
+  content: '\e833'; }
+
+/* '' */
+.icon-report:before {
+  content: '\e834'; }
+
+/* '' */
+.icon-small-calendar:before {
+  content: '\e835'; }
+
+/* '' */
+.icon-calendar:before {
+  content: '\e836'; }
+
+/* '' */
+.icon-reviewed:before {
+  content: '\e837'; }
+
+/* '' */
+.icon-shortlist:before {
+  content: '\e838'; }
+
+/* '' */
+.icon-briefcase:before {
+  content: '\e839'; }
+
+/* '' */
 .icon-clock:before {
   content: '\e83a'; }
 
-.icon-checked_icon:before {
-  content: '\e819'; }
+/* '' */
+.icon-tick_circle:before {
+  content: '\e83b'; }
 
+/* '' */
 .icon-telephone:before {
-  content: '\E83C'; }
+  content: '\e83c'; }
 
+/* '' */
 .icon-face-to-face:before {
   content: '\e83d'; }
 
+/* '' */
+.icon-sunset:before {
+  content: '\e83e'; }
+
+/* '' */
 .icon-search:before {
   content: '\e83f'; }
 
+/* '' */
+.icon-afternoon:before {
+  content: '\e840'; }
+
+/* '' */
 .icon-filter:before {
   content: '\e841'; }
 
+/* '' */
 .icon-up_arrow:before {
   content: '\e842'; }
 
-.icon-star:before {
-  content: '\e829'; }
-
-.icon-review:before {
-  content: '\e81c'; }
-
-.icon-telephone:before {
-  font-size: 25px; }
-
-.icon-face-to-face:before {
-  font-size: 25px; }
-
-.icon-star:before {
-  font-size: 25px; }
-
-.icon-interview:before {
-  font-size: 25px; }
-
-/* '' */
-.icon-search:before {
-  position: relative;
-  top: -24px; }
-
-.icon-filter:before {
-  position: relative;
-  top: 6px; }
-
-.icon-chat_icon:before {
-  font-size: 25px; }
-
+/* '' */
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -560,8 +593,8 @@ span.sticker {
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
-  src: url("../fonts/fontello.eot");
-  src: url("../fonts/fontello.eot#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2") format("woff2"), url("../fonts/fontello.woff") format("woff"), url("../fonts/fontello.ttf") format("truetype"), url("../fonts/fontello.svg#fontello") format("svg");
+  src: url("../font/fontello.eot?94606861");
+  src: url("../font/fontello.eot?94606861#iefix") format("embedded-opentype"), url("../font/fontello.woff2?94606861") format("woff2"), url("../font/fontello.woff?94606861") format("woff"), url("../font/fontello.ttf?94606861") format("truetype"), url("../font/fontello.svg?94606861#fontello") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -571,7 +604,7 @@ span.sticker {
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('../font/fontello.svg?75489480#fontello') format('svg');
+    src: url('../font/fontello.svg?94606861#fontello') format('svg');
   }
 }
 */
@@ -586,13 +619,20 @@ span.sticker {
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
   margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
 
 .icon-certification:before {
@@ -619,7 +659,7 @@ span.sticker {
   content: '\e805'; }
 
 /* '' */
-.icon-edit:before {
+.icon-edit-1:before {
   content: '\e806'; }
 
 /* '' */
@@ -675,13 +715,16 @@ span.sticker {
   content: '\e813'; }
 
 /* '' */
+.icon-star:before {
+  content: '\e814'; }
+
+/* '' */
 .icon-star2:before {
   content: '\e815'; }
 
 /* '' */
 .icon-twitter:before {
-  content: '\e816';
-  color: #1da1f2; }
+  content: '\e816'; }
 
 /* '' */
 .icon-woman:before {
@@ -720,7 +763,7 @@ span.sticker {
   content: '\e81f'; }
 
 /* '' */
-.icon-envelope:before {
+.icon-mail:before {
   content: '\e820'; }
 
 /* '' */
@@ -756,6 +799,10 @@ span.sticker {
   content: '\e828'; }
 
 /* '' */
+.icon-star_later:before {
+  content: '\e829'; }
+
+/* '' */
 .icon-add_icon:before {
   content: '\e82a'; }
 
@@ -772,71 +819,90 @@ span.sticker {
   content: '\e82d'; }
 
 /* '' */
+.icon-back_icon-1:before {
+  content: '\e82e'; }
+
+/* '' */
 .icon-interview:before {
   content: '\e82f'; }
 
 /* '' */
-.icon-mail:before {
+.icon-work_from_home:before {
   content: '\e830'; }
 
 /* '' */
 .icon-user:before {
   content: '\e831'; }
 
+/* '' */
 .icon-location:before {
   content: '\e832'; }
 
+/* '' */
+.icon-chat:before {
+  content: '\e833'; }
+
+/* '' */
+.icon-report:before {
+  content: '\e834'; }
+
+/* '' */
+.icon-small-calendar:before {
+  content: '\e835'; }
+
+/* '' */
+.icon-calendar:before {
+  content: '\e836'; }
+
+/* '' */
+.icon-reviewed:before {
+  content: '\e837'; }
+
+/* '' */
+.icon-shortlist:before {
+  content: '\e838'; }
+
+/* '' */
+.icon-briefcase:before {
+  content: '\e839'; }
+
+/* '' */
 .icon-clock:before {
   content: '\e83a'; }
 
-.icon-checked_icon:before {
-  content: '\e819'; }
+/* '' */
+.icon-tick_circle:before {
+  content: '\e83b'; }
 
+/* '' */
 .icon-telephone:before {
-  content: '\E83C'; }
+  content: '\e83c'; }
 
+/* '' */
 .icon-face-to-face:before {
   content: '\e83d'; }
 
+/* '' */
+.icon-sunset:before {
+  content: '\e83e'; }
+
+/* '' */
 .icon-search:before {
   content: '\e83f'; }
 
+/* '' */
+.icon-afternoon:before {
+  content: '\e840'; }
+
+/* '' */
 .icon-filter:before {
   content: '\e841'; }
 
+/* '' */
 .icon-up_arrow:before {
   content: '\e842'; }
 
-.icon-star:before {
-  content: '\e829'; }
-
-.icon-review:before {
-  content: '\e81c'; }
-
-.icon-telephone:before {
-  font-size: 25px; }
-
-.icon-face-to-face:before {
-  font-size: 25px; }
-
-.icon-star:before {
-  font-size: 25px; }
-
-.icon-interview:before {
-  font-size: 25px; }
-
-/* '' */
-.icon-search:before {
-  position: relative;
-  top: -24px; }
-
-.icon-filter:before {
-  position: relative;
-  top: 6px; }
-
-.icon-chat_icon:before {
-  font-size: 25px; }
-
+/* '' */
 .left {
   float: left; }
 
@@ -1100,8 +1166,8 @@ a {
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
-  src: url("../fonts/fontello.eot");
-  src: url("../fonts/fontello.eot#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2") format("woff2"), url("../fonts/fontello.woff") format("woff"), url("../fonts/fontello.ttf") format("truetype"), url("../fonts/fontello.svg#fontello") format("svg");
+  src: url("../font/fontello.eot?94606861");
+  src: url("../font/fontello.eot?94606861#iefix") format("embedded-opentype"), url("../font/fontello.woff2?94606861") format("woff2"), url("../font/fontello.woff?94606861") format("woff"), url("../font/fontello.ttf?94606861") format("truetype"), url("../font/fontello.svg?94606861#fontello") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -1111,7 +1177,7 @@ a {
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('../font/fontello.svg?75489480#fontello') format('svg');
+    src: url('../font/fontello.svg?94606861#fontello') format('svg');
   }
 }
 */
@@ -1126,13 +1192,20 @@ a {
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
   margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
 
 .icon-certification:before {
@@ -1159,7 +1232,7 @@ a {
   content: '\e805'; }
 
 /* '' */
-.icon-edit:before {
+.icon-edit-1:before {
   content: '\e806'; }
 
 /* '' */
@@ -1215,13 +1288,16 @@ a {
   content: '\e813'; }
 
 /* '' */
+.icon-star:before {
+  content: '\e814'; }
+
+/* '' */
 .icon-star2:before {
   content: '\e815'; }
 
 /* '' */
 .icon-twitter:before {
-  content: '\e816';
-  color: #1da1f2; }
+  content: '\e816'; }
 
 /* '' */
 .icon-woman:before {
@@ -1260,7 +1336,7 @@ a {
   content: '\e81f'; }
 
 /* '' */
-.icon-envelope:before {
+.icon-mail:before {
   content: '\e820'; }
 
 /* '' */
@@ -1296,6 +1372,10 @@ a {
   content: '\e828'; }
 
 /* '' */
+.icon-star_later:before {
+  content: '\e829'; }
+
+/* '' */
 .icon-add_icon:before {
   content: '\e82a'; }
 
@@ -1312,71 +1392,90 @@ a {
   content: '\e82d'; }
 
 /* '' */
+.icon-back_icon-1:before {
+  content: '\e82e'; }
+
+/* '' */
 .icon-interview:before {
   content: '\e82f'; }
 
 /* '' */
-.icon-mail:before {
+.icon-work_from_home:before {
   content: '\e830'; }
 
 /* '' */
 .icon-user:before {
   content: '\e831'; }
 
+/* '' */
 .icon-location:before {
   content: '\e832'; }
 
+/* '' */
+.icon-chat:before {
+  content: '\e833'; }
+
+/* '' */
+.icon-report:before {
+  content: '\e834'; }
+
+/* '' */
+.icon-small-calendar:before {
+  content: '\e835'; }
+
+/* '' */
+.icon-calendar:before {
+  content: '\e836'; }
+
+/* '' */
+.icon-reviewed:before {
+  content: '\e837'; }
+
+/* '' */
+.icon-shortlist:before {
+  content: '\e838'; }
+
+/* '' */
+.icon-briefcase:before {
+  content: '\e839'; }
+
+/* '' */
 .icon-clock:before {
   content: '\e83a'; }
 
-.icon-checked_icon:before {
-  content: '\e819'; }
+/* '' */
+.icon-tick_circle:before {
+  content: '\e83b'; }
 
+/* '' */
 .icon-telephone:before {
-  content: '\E83C'; }
+  content: '\e83c'; }
 
+/* '' */
 .icon-face-to-face:before {
   content: '\e83d'; }
 
+/* '' */
+.icon-sunset:before {
+  content: '\e83e'; }
+
+/* '' */
 .icon-search:before {
   content: '\e83f'; }
 
+/* '' */
+.icon-afternoon:before {
+  content: '\e840'; }
+
+/* '' */
 .icon-filter:before {
   content: '\e841'; }
 
+/* '' */
 .icon-up_arrow:before {
   content: '\e842'; }
 
-.icon-star:before {
-  content: '\e829'; }
-
-.icon-review:before {
-  content: '\e81c'; }
-
-.icon-telephone:before {
-  font-size: 25px; }
-
-.icon-face-to-face:before {
-  font-size: 25px; }
-
-.icon-star:before {
-  font-size: 25px; }
-
-.icon-interview:before {
-  font-size: 25px; }
-
-/* '' */
-.icon-search:before {
-  position: relative;
-  top: -24px; }
-
-.icon-filter:before {
-  position: relative;
-  top: 6px; }
-
-.icon-chat_icon:before {
-  font-size: 25px; }
-
+/* '' */
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -1684,8 +1783,8 @@ span.sticker {
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
-  src: url("../fonts/fontello.eot");
-  src: url("../fonts/fontello.eot#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2") format("woff2"), url("../fonts/fontello.woff") format("woff"), url("../fonts/fontello.ttf") format("truetype"), url("../fonts/fontello.svg#fontello") format("svg");
+  src: url("../font/fontello.eot?94606861");
+  src: url("../font/fontello.eot?94606861#iefix") format("embedded-opentype"), url("../font/fontello.woff2?94606861") format("woff2"), url("../font/fontello.woff?94606861") format("woff"), url("../font/fontello.ttf?94606861") format("truetype"), url("../font/fontello.svg?94606861#fontello") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -1695,7 +1794,7 @@ span.sticker {
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('../font/fontello.svg?75489480#fontello') format('svg');
+    src: url('../font/fontello.svg?94606861#fontello') format('svg');
   }
 }
 */
@@ -1710,13 +1809,20 @@ span.sticker {
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
   margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
 
 .icon-certification:before {
@@ -1743,7 +1849,7 @@ span.sticker {
   content: '\e805'; }
 
 /* '' */
-.icon-edit:before {
+.icon-edit-1:before {
   content: '\e806'; }
 
 /* '' */
@@ -1799,13 +1905,16 @@ span.sticker {
   content: '\e813'; }
 
 /* '' */
+.icon-star:before {
+  content: '\e814'; }
+
+/* '' */
 .icon-star2:before {
   content: '\e815'; }
 
 /* '' */
 .icon-twitter:before {
-  content: '\e816';
-  color: #1da1f2; }
+  content: '\e816'; }
 
 /* '' */
 .icon-woman:before {
@@ -1844,7 +1953,7 @@ span.sticker {
   content: '\e81f'; }
 
 /* '' */
-.icon-envelope:before {
+.icon-mail:before {
   content: '\e820'; }
 
 /* '' */
@@ -1880,6 +1989,10 @@ span.sticker {
   content: '\e828'; }
 
 /* '' */
+.icon-star_later:before {
+  content: '\e829'; }
+
+/* '' */
 .icon-add_icon:before {
   content: '\e82a'; }
 
@@ -1896,78 +2009,97 @@ span.sticker {
   content: '\e82d'; }
 
 /* '' */
+.icon-back_icon-1:before {
+  content: '\e82e'; }
+
+/* '' */
 .icon-interview:before {
   content: '\e82f'; }
 
 /* '' */
-.icon-mail:before {
+.icon-work_from_home:before {
   content: '\e830'; }
 
 /* '' */
 .icon-user:before {
   content: '\e831'; }
 
+/* '' */
 .icon-location:before {
   content: '\e832'; }
 
+/* '' */
+.icon-chat:before {
+  content: '\e833'; }
+
+/* '' */
+.icon-report:before {
+  content: '\e834'; }
+
+/* '' */
+.icon-small-calendar:before {
+  content: '\e835'; }
+
+/* '' */
+.icon-calendar:before {
+  content: '\e836'; }
+
+/* '' */
+.icon-reviewed:before {
+  content: '\e837'; }
+
+/* '' */
+.icon-shortlist:before {
+  content: '\e838'; }
+
+/* '' */
+.icon-briefcase:before {
+  content: '\e839'; }
+
+/* '' */
 .icon-clock:before {
   content: '\e83a'; }
 
-.icon-checked_icon:before {
-  content: '\e819'; }
+/* '' */
+.icon-tick_circle:before {
+  content: '\e83b'; }
 
+/* '' */
 .icon-telephone:before {
-  content: '\E83C'; }
+  content: '\e83c'; }
 
+/* '' */
 .icon-face-to-face:before {
   content: '\e83d'; }
 
+/* '' */
+.icon-sunset:before {
+  content: '\e83e'; }
+
+/* '' */
 .icon-search:before {
   content: '\e83f'; }
 
+/* '' */
+.icon-afternoon:before {
+  content: '\e840'; }
+
+/* '' */
 .icon-filter:before {
   content: '\e841'; }
 
+/* '' */
 .icon-up_arrow:before {
   content: '\e842'; }
 
-.icon-star:before {
-  content: '\e829'; }
-
-.icon-review:before {
-  content: '\e81c'; }
-
-.icon-telephone:before {
-  font-size: 25px; }
-
-.icon-face-to-face:before {
-  font-size: 25px; }
-
-.icon-star:before {
-  font-size: 25px; }
-
-.icon-interview:before {
-  font-size: 25px; }
-
-/* '' */
-.icon-search:before {
-  position: relative;
-  top: -24px; }
-
-.icon-filter:before {
-  position: relative;
-  top: 6px; }
-
-.icon-chat_icon:before {
-  font-size: 25px; }
-
+/* '' */
 /*[Recruiter_Homepage]*/
 /*[/Recruiter_Homepage]*/
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
-  src: url("../fonts/fontello.eot");
-  src: url("../fonts/fontello.eot#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2") format("woff2"), url("../fonts/fontello.woff") format("woff"), url("../fonts/fontello.ttf") format("truetype"), url("../fonts/fontello.svg#fontello") format("svg");
+  src: url("../font/fontello.eot?94606861");
+  src: url("../font/fontello.eot?94606861#iefix") format("embedded-opentype"), url("../font/fontello.woff2?94606861") format("woff2"), url("../font/fontello.woff?94606861") format("woff"), url("../font/fontello.ttf?94606861") format("truetype"), url("../font/fontello.svg?94606861#fontello") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -1977,7 +2109,7 @@ span.sticker {
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('../font/fontello.svg?75489480#fontello') format('svg');
+    src: url('../font/fontello.svg?94606861#fontello') format('svg');
   }
 }
 */
@@ -1992,13 +2124,20 @@ span.sticker {
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
   margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
 
 .icon-certification:before {
@@ -2025,7 +2164,7 @@ span.sticker {
   content: '\e805'; }
 
 /* '' */
-.icon-edit:before {
+.icon-edit-1:before {
   content: '\e806'; }
 
 /* '' */
@@ -2081,13 +2220,16 @@ span.sticker {
   content: '\e813'; }
 
 /* '' */
+.icon-star:before {
+  content: '\e814'; }
+
+/* '' */
 .icon-star2:before {
   content: '\e815'; }
 
 /* '' */
 .icon-twitter:before {
-  content: '\e816';
-  color: #1da1f2; }
+  content: '\e816'; }
 
 /* '' */
 .icon-woman:before {
@@ -2126,7 +2268,7 @@ span.sticker {
   content: '\e81f'; }
 
 /* '' */
-.icon-envelope:before {
+.icon-mail:before {
   content: '\e820'; }
 
 /* '' */
@@ -2162,6 +2304,10 @@ span.sticker {
   content: '\e828'; }
 
 /* '' */
+.icon-star_later:before {
+  content: '\e829'; }
+
+/* '' */
 .icon-add_icon:before {
   content: '\e82a'; }
 
@@ -2178,71 +2324,90 @@ span.sticker {
   content: '\e82d'; }
 
 /* '' */
+.icon-back_icon-1:before {
+  content: '\e82e'; }
+
+/* '' */
 .icon-interview:before {
   content: '\e82f'; }
 
 /* '' */
-.icon-mail:before {
+.icon-work_from_home:before {
   content: '\e830'; }
 
 /* '' */
 .icon-user:before {
   content: '\e831'; }
 
+/* '' */
 .icon-location:before {
   content: '\e832'; }
 
+/* '' */
+.icon-chat:before {
+  content: '\e833'; }
+
+/* '' */
+.icon-report:before {
+  content: '\e834'; }
+
+/* '' */
+.icon-small-calendar:before {
+  content: '\e835'; }
+
+/* '' */
+.icon-calendar:before {
+  content: '\e836'; }
+
+/* '' */
+.icon-reviewed:before {
+  content: '\e837'; }
+
+/* '' */
+.icon-shortlist:before {
+  content: '\e838'; }
+
+/* '' */
+.icon-briefcase:before {
+  content: '\e839'; }
+
+/* '' */
 .icon-clock:before {
   content: '\e83a'; }
 
-.icon-checked_icon:before {
-  content: '\e819'; }
+/* '' */
+.icon-tick_circle:before {
+  content: '\e83b'; }
 
+/* '' */
 .icon-telephone:before {
-  content: '\E83C'; }
+  content: '\e83c'; }
 
+/* '' */
 .icon-face-to-face:before {
   content: '\e83d'; }
 
+/* '' */
+.icon-sunset:before {
+  content: '\e83e'; }
+
+/* '' */
 .icon-search:before {
   content: '\e83f'; }
 
+/* '' */
+.icon-afternoon:before {
+  content: '\e840'; }
+
+/* '' */
 .icon-filter:before {
   content: '\e841'; }
 
+/* '' */
 .icon-up_arrow:before {
   content: '\e842'; }
 
-.icon-star:before {
-  content: '\e829'; }
-
-.icon-review:before {
-  content: '\e81c'; }
-
-.icon-telephone:before {
-  font-size: 25px; }
-
-.icon-face-to-face:before {
-  font-size: 25px; }
-
-.icon-star:before {
-  font-size: 25px; }
-
-.icon-interview:before {
-  font-size: 25px; }
-
-/* '' */
-.icon-search:before {
-  position: relative;
-  top: -24px; }
-
-.icon-filter:before {
-  position: relative;
-  top: 6px; }
-
-.icon-chat_icon:before {
-  font-size: 25px; }
-
+/* '' */
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */

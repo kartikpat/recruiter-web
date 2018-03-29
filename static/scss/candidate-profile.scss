@@ -70,7 +70,14 @@
 								font-size:$page-title-size;
 								text-align: center;
 								color:$button-color-green;
-								// font-weight:bold;
+                                &.shell {
+                                    @include text-shell;
+                                    max-width: 150px;
+                                    max-height: 7px;
+                                    min-height: 7px;
+                                    margin: 0 auto;
+                                    margin-top: 5px;
+                                }
 							}
 						}
 
@@ -104,9 +111,16 @@
 							}
 
 							.snap-value {
-							
+
 								color:$color-black;
 								font-size:$view-resume-byline-font-size;
+                                &.shell {
+                                    @include text-shell;
+                                    max-width: 100px;
+                                    max-height: 7px;
+                                    margin-top: 5px;
+                                    min-height: 7px;
+                                }
 							}
 
 							&:last-child {
@@ -150,6 +164,14 @@
 							margin-right:20px;
 							font-style: italic;
 							color:$extra-info-color;
+                            span.shell {
+                                display: inline-block;
+                                @include text-shell;
+                                min-width: 100px;
+                                max-height: 7px;
+                                margin-top: 5px;
+                                min-height: 7px;
+                            }
 						}
 					}
 				}
@@ -345,6 +367,13 @@
 
 												&.value {
 													color:$color-black;
+                                                    &.shell {
+                                                        @include text-shell;
+                                                        max-width: 100px;
+                                                        max-height: 7px;
+                                                        margin-top: 5px;
+                                                        min-height: 7px;
+                                                    }
 												}
 											}
 										}

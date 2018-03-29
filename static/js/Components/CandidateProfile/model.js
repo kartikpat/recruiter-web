@@ -26,8 +26,12 @@ function Candidate() {
         settings.tagMobListing = $("#tagMobListing"),
         settings.tagInputError = $(".tagInputError");
         onClickChatCandidateModal();
-        jQuery("#tabbed-content").tabs({});
-    
+        jQuery("#tabbed-content").tabs({
+            create: function(){
+                $(this).removeClass("hidden")
+            }
+        });
+
         // onClickAddPopulatedTags()
     }
 
@@ -113,32 +117,36 @@ function Candidate() {
         var item = getElement(aData["userID"]);
         item.element.attr("data-application-id", aData["id"])
         item.image.attr("src", (aData["img"] || "/static/images/noimage.png"))
-        item.name.text(aData["name"] || "NA");
-        item.experience.text(aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m" || "NA");
-        item.location.text(aData["currentLocation"] || "NA");
+        item.name.text(aData["name"] || "NA").removeClass("shell");
+        item.experience.text(aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m" || "NA").removeClass("shell");
+        item.location.text(aData["currentLocation"] || "NA").removeClass("shell");
         var preferredLocationStr = "N.A."
         if(aData["preferredLocation"].length) {
             preferredLocationStr = aData["preferredLocation"].join(', ');;
         }
-        item.preferredLocation.text(preferredLocationStr);
-        item.contact.text(aData["phone"] || "NA");
-        item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY') || "NA")
+        item.preferredLocation.text(preferredLocationStr).removeClass("shell");
+        item.contact.text(aData["phone"] || "NA").removeClass("shell");
+        item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY') || "NA").removeClass("shell");
         if(aData["notice"] == 7) {
-            item.notice.text("Immediately Available");
+            item.notice.text("Immediately Available").removeClass("shell");
         }
         else if(aData["notice"] == 1) {
-            item.notice.text((aData["notice"] + " month"));
+            item.notice.text((aData["notice"] + " month")).removeClass("shell");
         }
         else {
-            item.notice.text((aData["notice"] + " months"));
+            item.notice.text((aData["notice"] + " months")).removeClass("shell");
         }
-        item.salary.text(formatSalary(aData["ctc"]));
-        item.firstName.text(aData["name"])
+        item.salary.text(formatSalary(aData["ctc"])).removeClass("shell");
+        item.firstName.text(aData["name"]).removeClass("shell");
         // var lastActiveDays = getLastActiveDay(aData["lastActive"])
         //
         // item.lastActive.text(lastActiveDays > 1 ? lastActiveDays + " days ago": lastActiveDays + " day ago");
 
-        item.lastActive.text(moment(aData["lastActive"]).format("DD-MM-YYYY"))
+        var lastActiveDate = moment(aData["lastActive"]).format("DD-MM-YYYY");
+        if(lastActiveDate == "Invalid date") {
+            lastActiveDate = "N.A";
+        }
+        item.lastActive.text(lastActiveDate).removeClass("shell");
         var eduStr = '';
         $.each(aData["education"],function(index, anObj) {
 
@@ -166,26 +174,27 @@ function Candidate() {
             item.seperator.removeClass("hidden")
             profStr+=item.element[0].outerHTML
         })
+        item.profList.html(profStr)
         var tagStr = '';
         $.each(aData["tags"],function(index, aTag) {
             var tag = getCandidateTag(aTag)
             tagStr+=tag[0].outerHTML
         })
         item.candidateTagList.html(tagStr)
-        item.profList.html(profStr)
-        item.gender.text(gender[aData["sex"]])
-        item.age.text(getAge(aData["dob"]) + " years")
-        item.expectedSalary.text(formatSalary(aData["expectedCtc"]))
-        item.maritalStatus.text(getMaritalStatus(aData["maritalStatus"]));
-        item.languages.text((formatLanguages(aData["languages"]) || "N.A."));
-        item.workPermit.text((workPermit[aData["permit"]] || "N.A."));
-        item.teamHandling.text(binary[aData["permit"]])
-        item.workSixDays.text("no");
-        item.relocate.text(binary[aData["relocate"]] )
-        item.startup.text(binary[aData["joinStartup"]])
-        item.travel.text(binary[aData["travel"]])
-        item.percentile.text(aData["catScore"] || "N.A.")
-        item.workSixDays.text(binary[aData["sixDays"]])
+
+        item.gender.text(gender[aData["sex"]]).removeClass("shell")
+        item.age.text(getAge(aData["dob"]) + " years").removeClass("shell")
+        item.expectedSalary.text(formatSalary(aData["expectedCtc"])).removeClass("shell")
+        item.maritalStatus.text(getMaritalStatus(aData["maritalStatus"])).removeClass("shell")
+        item.languages.text((formatLanguages(aData["languages"]) || "N.A.")).removeClass("shell")
+        item.workPermit.text((workPermit[aData["permit"]] || "N.A.")).removeClass("shell")
+        item.teamHandling.text(binary[aData["permit"]]).removeClass("shell")
+        item.workSixDays.text("no").removeClass("shell")
+        item.relocate.text(binary[aData["relocate"]] ).removeClass("shell")
+        item.startup.text(binary[aData["joinStartup"]]).removeClass("shell")
+        item.travel.text(binary[aData["travel"]]).removeClass("shell")
+        item.percentile.text(aData["catScore"] || "N.A.").removeClass("shell")
+        item.workSixDays.text(binary[aData["sixDays"]]).removeClass("shell")
         if(isCanvasSupported()) {
            getBinaryData(aData["resume"],resumeCallback);
         }
@@ -216,7 +225,6 @@ function Candidate() {
         else if(status == 3) {
             item.savedButton.html("<span class='icon'><i class='icon-star'></i></span>Saved for Later")
         }
-        $("#loaderOverlay").addClass("hidden");
     }
 
     function getCandidateTag(aTag) {
