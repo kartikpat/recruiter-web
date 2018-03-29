@@ -285,14 +285,28 @@
 .icon-review:before {
   content: '\e81c'; }
 
+.icon-chat:before {
+  content: '\e833'; }
+
+.icon-more:before {
+  content: '\e843'; }
+
+.icon-more:before {
+  font-size: 20px;
+  color: #2b2b2b;
+  margin-left: 0px; }
+
+.icon-chat:before {
+  font-size: 20px; }
+
 .icon-telephone:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-face-to-face:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-star:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-interview:before {
   font-size: 25px; }
@@ -300,14 +314,15 @@
 /* '' */
 .icon-search:before {
   position: relative;
-  top: -24px; }
+  top: -24px;
+  left: 5px; }
 
 .icon-filter:before {
   position: relative;
   top: 6px; }
 
 .icon-chat_icon:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -841,14 +856,28 @@ span.sticker {
 .icon-review:before {
   content: '\e81c'; }
 
+.icon-chat:before {
+  content: '\e833'; }
+
+.icon-more:before {
+  content: '\e843'; }
+
+.icon-more:before {
+  font-size: 20px;
+  color: #2b2b2b;
+  margin-left: 0px; }
+
+.icon-chat:before {
+  font-size: 20px; }
+
 .icon-telephone:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-face-to-face:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-star:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-interview:before {
   font-size: 25px; }
@@ -856,14 +885,15 @@ span.sticker {
 /* '' */
 .icon-search:before {
   position: relative;
-  top: -24px; }
+  top: -24px;
+  left: 5px; }
 
 .icon-filter:before {
   position: relative;
   top: 6px; }
 
 .icon-chat_icon:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .left {
   float: left; }
@@ -1381,14 +1411,28 @@ a {
 .icon-review:before {
   content: '\e81c'; }
 
+.icon-chat:before {
+  content: '\e833'; }
+
+.icon-more:before {
+  content: '\e843'; }
+
+.icon-more:before {
+  font-size: 20px;
+  color: #2b2b2b;
+  margin-left: 0px; }
+
+.icon-chat:before {
+  font-size: 20px; }
+
 .icon-telephone:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-face-to-face:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-star:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-interview:before {
   font-size: 25px; }
@@ -1396,14 +1440,15 @@ a {
 /* '' */
 .icon-search:before {
   position: relative;
-  top: -24px; }
+  top: -24px;
+  left: 5px; }
 
 .icon-filter:before {
   position: relative;
   top: 6px; }
 
 .icon-chat_icon:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -1787,7 +1832,8 @@ span.sticker {
       -webkit-appearance: none;
       -moz-appearance: none;
       -o-appearanance: none;
-      line-height: 1.5; }
+      line-height: 1.5;
+      margin-top: 10px; }
       .page-content .tagged-candidates .page-header select[multiple] {
         background-image: none;
         height: 120px; }
@@ -1817,12 +1863,14 @@ span.sticker {
           margin-bottom: 3px; }
           .page-content .tagged-candidates .tagged-candidates-listing .candidate-item p a {
             color: #155d9a; }
-        .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .section.sticker-container {
-          position: absolute;
-          bottom: 0;
-          right: 0; }
-          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .section.sticker-container .sticker {
-            margin-right: 0; }
+        .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .section {
+          text-align: center; }
+          .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .section.sticker-container {
+            position: absolute;
+            bottom: 0;
+            right: 0; }
+            .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .section.sticker-container .sticker {
+              margin-right: 0; }
         .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section {
           display: inline-block;
           vertical-align: top;
@@ -1920,12 +1968,15 @@ span.sticker {
                     height: 17px; }
             .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .skill-tag-listing .skill-tag {
               margin: 5px;
+              margin-left: 0px;
               display: inline-block;
               padding: 5px 15px;
               border-radius: 50px;
               background-color: #f1efef;
               color: #6e6e6e;
               font-size: 12px; }
+              .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .skill-tag-listing .skill-tag a {
+                color: #2b2b2b; }
         .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .tagged-on-label {
           margin-left: 9%;
           padding-top: 20px;
@@ -2005,7 +2056,11 @@ span.sticker {
   .page-content .tagged-candidates {
     width: 100%; }
     .page-content .tagged-candidates .page-header {
-      background: #f3fbfb; }
+      background: #f3fbfb;
+      border: 1px solid #e8e8e8;
+      border-bottom: none;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px; }
     .page-content .tagged-candidates .page-mobile-header {
       display: block;
       font-size: 14px;
@@ -2074,6 +2129,9 @@ span.sticker {
           display: none; }
         .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .tagged-on-label {
           margin: 0; }
+        .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .section {
+          text-align: left;
+          margin-left: 18px; }
         .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section {
           padding: 0;
           display: block;
@@ -2106,14 +2164,24 @@ span.sticker {
           border-top-right-radius: 0;
           border-top-left-radius: 0; }
         .page-content .tagged-candidates .tagged-candidates-listing .candidate-item:last-child {
-          margin: 0; } }
+          margin: 0; }
+  .candAppliedJobs {
+    margin-bottom: 7px; } }
 
 span.multipleJobListingText {
-  cursor: pointer; }
+  cursor: pointer;
+  color: #155d9a; }
+
+span.multipleJobListingText:hover {
+  text-decoration: underline; }
 
 .multipleJobListing {
   padding: 10px 0; }
 
 .candAppliedJobs {
   min-height: 25px;
-  line-height: 1.3; }
+  line-height: 1.3;
+  display: list-item;
+  margin-left: 16px; }
+  .candAppliedJobs a:hover {
+    text-decoration: underline; }

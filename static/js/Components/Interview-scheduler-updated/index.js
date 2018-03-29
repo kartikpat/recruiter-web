@@ -1,8 +1,8 @@
 $(document).ready(function(){
     var calendarDetails = Calendar();    
      //  calendarDetails.init();
-    // calendarDetails.startdate();
-    // calendarDetails.enddate();
+    calendarDetails.startdate();
+    calendarDetails.enddate();
     // calendarDetails.time_mapper();
     // calendarDetails.testHighlight;
     console.log(calendarId);
