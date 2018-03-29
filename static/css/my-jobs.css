@@ -316,14 +316,28 @@
 .icon-review:before {
   content: '\e81c'; }
 
+.icon-chat:before {
+  content: '\e833'; }
+
+.icon-more:before {
+  content: '\e843'; }
+
+.icon-more:before {
+  font-size: 20px;
+  color: #2b2b2b;
+  margin-left: 0px; }
+
+.icon-chat:before {
+  font-size: 20px; }
+
 .icon-telephone:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-face-to-face:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-star:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-interview:before {
   font-size: 25px; }
@@ -331,14 +345,15 @@
 /* '' */
 .icon-search:before {
   position: relative;
-  top: -24px; }
+  top: -24px;
+  left: 5px; }
 
 .icon-filter:before {
   position: relative;
   top: 6px; }
 
 .icon-chat_icon:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .left {
   float: left; }
@@ -856,14 +871,28 @@ a {
 .icon-review:before {
   content: '\e81c'; }
 
+.icon-chat:before {
+  content: '\e833'; }
+
+.icon-more:before {
+  content: '\e843'; }
+
+.icon-more:before {
+  font-size: 20px;
+  color: #2b2b2b;
+  margin-left: 0px; }
+
+.icon-chat:before {
+  font-size: 20px; }
+
 .icon-telephone:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-face-to-face:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-star:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-interview:before {
   font-size: 25px; }
@@ -871,14 +900,15 @@ a {
 /* '' */
 .icon-search:before {
   position: relative;
-  top: -24px; }
+  top: -24px;
+  left: 5px; }
 
 .icon-filter:before {
   position: relative;
   top: 6px; }
 
 .icon-chat_icon:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -1284,6 +1314,7 @@ span.sticker {
   .page-content .page-header .action-buttons {
     padding: 5px 0 0 0; }
     .page-content .page-header .action-buttons button {
+      padding: 6px 18px !important;
       -webkit-appearance: none;
       -moz-appearance: none;
       -ms-appearance: none;
@@ -1331,7 +1362,7 @@ span.sticker {
           display: inline-block;
           font-size: 14px;
           vertical-align: top;
-          width: 14%; }
+          width: 13%; }
           .page-content .my-jobs .my-jobs-listing .table-container .table-row .table-cell .mobile-view-heading {
             display: none; }
           .page-content .my-jobs .my-jobs-listing .table-container .table-row .table-cell.heading {
@@ -1345,33 +1376,31 @@ span.sticker {
               font-weight: 600;
               color: #212121; }
             .page-content .my-jobs .my-jobs-listing .table-container .table-row .table-cell.heading.job-title {
-              width: 33%; }
+              width: 32%; }
             .page-content .my-jobs .my-jobs-listing .table-container .table-row .table-cell.heading.actions {
-              width: 25%;
+              width: 29%;
               padding-right: 25px; }
             .page-content .my-jobs .my-jobs-listing .table-container .table-row .table-cell.heading.created {
-              width: 14%;
+              width: 13%;
               padding-left: 25px; }
         .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell {
           vertical-align: top;
           padding: 15px 10px; }
           .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions {
-            width: 25%;
+            width: 29%;
             padding-right: 25px; }
           .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.created {
-            width: 14%;
+            width: 13%;
             padding-left: 25px; }
           .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell span {
             line-height: 1.5; }
           .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.title {
-            width: 33%; }
+            width: 32%; }
             .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.title span.job-title {
               display: block;
               font-weight: bold; }
             .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.title .job-title {
               font-weight: 600; }
-          .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell .job-edit-container {
-            display: block; }
           .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell .mobile-engagement {
             display: none; }
           .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell .engagement span {
@@ -1443,12 +1472,18 @@ span.sticker {
 
 @media all and (max-width: 768px) {
   .page-content {
-    background-color: #fcfcfc;
-    padding: 10px 0; }
+    min-height: 100%;
+    padding: 0;
+    overflow: auto;
+    position: relative;
+    padding: 20px;
+    width: 100%; }
     .page-content .my-jobs {
-      width: 100%; }
+      width: 100%;
+      padding: 20px 15px 20px;
+      background-color: #FFF;
+      border-radius: 5px; }
       .page-content .my-jobs .page-header {
-        padding: 10px 20px;
         border-bottom: thin solid #e8e8e8; }
         .page-content .my-jobs .page-header select {
           margin-bottom: 0;
@@ -1459,7 +1494,7 @@ span.sticker {
           margin-right: 0;
           font-size: 16px; }
       .page-content .my-jobs .my-jobs-listing {
-        padding: 10px 20px; }
+        padding-top: 10px; }
         .page-content .my-jobs .my-jobs-listing .table-container {
           background-color: transparent;
           border-radius: 0;
@@ -1468,8 +1503,8 @@ span.sticker {
           .page-content .my-jobs .my-jobs-listing .table-container .table-row.table-headings {
             display: none; }
           .page-content .my-jobs .my-jobs-listing .table-container .table-row.job {
-            padding: 10px 5px;
-            padding: 10px 0; }
+            padding-top: 5px;
+            padding-bottom: 10px; }
             .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell {
               display: block;
               width: 100%;
@@ -1481,18 +1516,19 @@ span.sticker {
                 display: block;
                 font-size: 14px;
                 color: #858585;
-                font-weight: 600; }
+                font-weight: 600;
+                line-height: 25px; }
               .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell .job-created-on {
-                font-size: 20px;
+                font-size: 16px;
                 color: #2b2b2b;
                 line-height: 25px; }
               .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell .job-meta-seperator {
                 color: red; }
               .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell .job-title {
-                font-size: 20px;
+                font-size: 16px;
                 color: #2b2b2b;
                 font-weight: 600;
-                line-height: 25px; }
+                line-height: 20px; }
               .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell .job-actions-container {
                 margin-right: 20px; }
               .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell span {
@@ -1502,7 +1538,7 @@ span.sticker {
                 padding-left: 0; }
               .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.title {
                 width: 100%;
-                margin: 10px 0 10px; }
+                margin: 15px 0 15px; }
                 .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.title span.job-title {
                   font-weight: bold;
                   line-height: 1.5;
@@ -1527,20 +1563,21 @@ span.sticker {
                   margin-right: 10px; }
                 .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell .mobile-engagement span.applied-link {
                   display: inline-block; }
-              .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon {
-                margin-right: 5%; }
-                .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon i {
-                  border: 0;
-                  font-size: 18px;
-                  position: relative;
-                  left: -5px; }
-                .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon span {
-                  display: inline-block;
-                  margin-left: -5px; }
+              .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions {
+                padding-right: 0px; }
+                .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon {
+                  margin-right: 3%; }
+                  .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon i {
+                    border: 0;
+                    font-size: 18px;
+                    position: relative;
+                    left: -5px; }
+                  .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon span {
+                    display: inline-block;
+                    margin-left: -5px; }
           .page-content .my-jobs .my-jobs-listing .table-container .table-row .table-row-separator {
             clear: both;
             width: 100%;
-            margin: 10px auto;
             border-bottom: 1px solid #e8e8e8; } }
 
 .error {

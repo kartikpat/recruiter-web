@@ -79,7 +79,7 @@ jQuery(document).ready( function() {
         tickerLock = false;
         console.log(data);
         globalParameters.InterviewListLength = data.length;
-        slots.addToList(data,globalParameters.pageNumber);
+        slots.addToList(data,globalParameters.pageNumber,globalParameters.pageContent);
       
     }
 

@@ -313,14 +313,28 @@
 .icon-review:before {
   content: '\e81c'; }
 
+.icon-chat:before {
+  content: '\e833'; }
+
+.icon-more:before {
+  content: '\e843'; }
+
+.icon-more:before {
+  font-size: 20px;
+  color: #2b2b2b;
+  margin-left: 0px; }
+
+.icon-chat:before {
+  font-size: 20px; }
+
 .icon-telephone:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-face-to-face:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-star:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-interview:before {
   font-size: 25px; }
@@ -328,14 +342,15 @@
 /* '' */
 .icon-search:before {
   position: relative;
-  top: -24px; }
+  top: -24px;
+  left: 5px; }
 
 .icon-filter:before {
   position: relative;
   top: 6px; }
 
 .icon-chat_icon:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -869,14 +884,28 @@ span.sticker {
 .icon-review:before {
   content: '\e81c'; }
 
+.icon-chat:before {
+  content: '\e833'; }
+
+.icon-more:before {
+  content: '\e843'; }
+
+.icon-more:before {
+  font-size: 20px;
+  color: #2b2b2b;
+  margin-left: 0px; }
+
+.icon-chat:before {
+  font-size: 20px; }
+
 .icon-telephone:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-face-to-face:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-star:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-interview:before {
   font-size: 25px; }
@@ -884,14 +913,15 @@ span.sticker {
 /* '' */
 .icon-search:before {
   position: relative;
-  top: -24px; }
+  top: -24px;
+  left: 5px; }
 
 .icon-filter:before {
   position: relative;
   top: 6px; }
 
 .icon-chat_icon:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .left {
   float: left; }
@@ -1409,14 +1439,28 @@ a {
 .icon-review:before {
   content: '\e81c'; }
 
+.icon-chat:before {
+  content: '\e833'; }
+
+.icon-more:before {
+  content: '\e843'; }
+
+.icon-more:before {
+  font-size: 20px;
+  color: #2b2b2b;
+  margin-left: 0px; }
+
+.icon-chat:before {
+  font-size: 20px; }
+
 .icon-telephone:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-face-to-face:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-star:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-interview:before {
   font-size: 25px; }
@@ -1424,14 +1468,15 @@ a {
 /* '' */
 .icon-search:before {
   position: relative;
-  top: -24px; }
+  top: -24px;
+  left: 5px; }
 
 .icon-filter:before {
   position: relative;
   top: 6px; }
 
 .icon-chat_icon:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */

@@ -285,14 +285,28 @@
 .icon-review:before {
   content: '\e81c'; }
 
+.icon-chat:before {
+  content: '\e833'; }
+
+.icon-more:before {
+  content: '\e843'; }
+
+.icon-more:before {
+  font-size: 20px;
+  color: #2b2b2b;
+  margin-left: 0px; }
+
+.icon-chat:before {
+  font-size: 20px; }
+
 .icon-telephone:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-face-to-face:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-star:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-interview:before {
   font-size: 25px; }
@@ -300,14 +314,15 @@
 /* '' */
 .icon-search:before {
   position: relative;
-  top: -24px; }
+  top: -24px;
+  left: 5px; }
 
 .icon-filter:before {
   position: relative;
   top: 6px; }
 
 .icon-chat_icon:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -841,14 +856,28 @@ span.sticker {
 .icon-review:before {
   content: '\e81c'; }
 
+.icon-chat:before {
+  content: '\e833'; }
+
+.icon-more:before {
+  content: '\e843'; }
+
+.icon-more:before {
+  font-size: 20px;
+  color: #2b2b2b;
+  margin-left: 0px; }
+
+.icon-chat:before {
+  font-size: 20px; }
+
 .icon-telephone:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-face-to-face:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-star:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-interview:before {
   font-size: 25px; }
@@ -856,14 +885,15 @@ span.sticker {
 /* '' */
 .icon-search:before {
   position: relative;
-  top: -24px; }
+  top: -24px;
+  left: 5px; }
 
 .icon-filter:before {
   position: relative;
   top: 6px; }
 
 .icon-chat_icon:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .left {
   float: left; }
@@ -1381,14 +1411,28 @@ a {
 .icon-review:before {
   content: '\e81c'; }
 
+.icon-chat:before {
+  content: '\e833'; }
+
+.icon-more:before {
+  content: '\e843'; }
+
+.icon-more:before {
+  font-size: 20px;
+  color: #2b2b2b;
+  margin-left: 0px; }
+
+.icon-chat:before {
+  font-size: 20px; }
+
 .icon-telephone:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-face-to-face:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-star:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .icon-interview:before {
   font-size: 25px; }
@@ -1396,14 +1440,15 @@ a {
 /* '' */
 .icon-search:before {
   position: relative;
-  top: -24px; }
+  top: -24px;
+  left: 5px; }
 
 .icon-filter:before {
   position: relative;
   top: 6px; }
 
 .icon-chat_icon:before {
-  font-size: 25px; }
+  font-size: 20px; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -1751,7 +1796,8 @@ span.sticker {
             height: 100%;
             border-radius: 50%;
             border: 5px solid #FFF;
-            box-shadow: 0 0 3px rgba(0, 0, 0, 0.2); }
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+            background-color: #efefef; }
         .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information {
           text-align: center; }
           .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information p.profile-name {
@@ -2020,7 +2066,10 @@ span.sticker {
               border: 1px solid #e8e8e8;
               margin: 10px 0 0 0; }
           .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-cover-letter {
-            padding: 20px 0 0 0; }
+            margin-top: 10px;
+            border: 1px solid #e8e8e8;
+            line-height: 24px;
+            font-size: 14px; }
   .view-resume-modal .mobile-resume-sidebar {
     display: none; }
   .view-resume-modal .resume-sidebar {
@@ -2054,7 +2103,7 @@ span.sticker {
           background-color: #FFF !important;
           border: 1px solid #d8d5d5 !important;
           border-radius: 4px;
-          padding: 6px 25px;
+          padding: 6px 18px;
           font-size: 14px !important;
           margin: 0 0px;
           color: #2b2b2b !important;
@@ -2065,7 +2114,7 @@ span.sticker {
           background-color: #FFF !important;
           border: 1px solid #d8d5d5 !important;
           border-radius: 4px;
-          padding: 6px 25px;
+          padding: 6px 18px;
           font-size: 14px !important;
           margin: 0 0px;
           color: #2b2b2b !important;
@@ -2115,7 +2164,7 @@ span.sticker {
         margin-top: 20px; }
       .view-resume-modal .resume-sidebar .sidebar-section .cand-add-tag {
         height: 40px;
-        line-height: 40px;
+        line-height: 10px;
         padding: 10px; }
       .view-resume-modal .resume-sidebar .sidebar-section .comment-block {
         margin-bottom: 15px; }
@@ -2308,7 +2357,8 @@ span.sticker {
   padding: 5px;
   border-left: 3px solid #1f8f75;
   min-height: 50px;
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  overflow: hidden; }
   .sidebar-section.comments textarea:focus {
     outline: none;
     border: 1px solid #1f8f75;

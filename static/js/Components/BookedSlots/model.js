@@ -110,7 +110,7 @@ function BookedSlots() {
 		return item;
 	}
 
-	function addToList(dataArray,pageNumber){
+	function addToList(dataArray,pageNumber,pageContent){
 		var str = '';
 		hideShell();
 		// debugger
@@ -126,7 +126,10 @@ function BookedSlots() {
 			str+=item.element[0].outerHTML;
 		});
 		// settings.bookedSlots.html(str);
-	    	settings.bookedSlots.append(str);
+			settings.bookedSlots.append(str);
+			if(dataArray.length< pageContent) {
+				return settings.bookedSlots.append("<div class='no-data'>No more records!</div>")
+			}
 	}
 
 	function emptySlots(){
