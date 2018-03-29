@@ -51,34 +51,36 @@
 		baseUrl = config["baseUrl"];
 
 
-	passport.use(new LinkedInStrategy({
+	passport.use('linkedin-auths', new LinkedInStrategy({
 		clientID: config['social']['linkedin']['clientId'],
 		clientSecret: config['social']['linkedin']['secret'],
 		callbackURL: config['social']['linkedin']['callbackURL'],
 		scope: ['r_emailaddress', 'r_basicprofile'],
 		passReqToCallback: true
 	}, async function(req, accessToken, refreshToken, profile, done){
+		const token= req.cookies['recruiter-access-token'];
 		const data = {
 			token: accessToken,
 			refreshToken: refreshToken,
 			profile: profile
 		}
+
 		try{
-			await addUserSocial('linkedin', data);
+			await addUserSocial('linkedin', data, token);
 			return done(null, data)
 		}
 		catch(err){
-			done(err);
+			return done(null, false);
+			
 		}
 	}));
 
-	function addUserSocial(type,data){
+	function addUserSocial(type, data, token){
 		return new Promise(function(fulfill, reject){
-			return fulfill(1);
 			request.post({
-				url: baseUrl+"/recruiter/",
+				url: baseUrl+"/recruiter/connect/"+type,
 				headers: {
-					Authorization: 'Bearer '
+					Authorization: 'Bearer '+token
 				},
 				body: data,
 				json: true
@@ -86,10 +88,12 @@
 				if(err){
 					return reject(err);		
 				}
-				const jsonBody = JSON.parse(body)
+				const jsonBody = body;
 				if(jsonBody.status && jsonBody.status =='success'){
-					
+					return fulfill(1);
 				}
+				else 
+					return reject('Not authorized by application')
 			})
 		})
 	}
