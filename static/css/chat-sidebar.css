@@ -35,8 +35,8 @@
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
-  src: url("../fonts/fontello.eot");
-  src: url("../fonts/fontello.eot#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2") format("woff2"), url("../fonts/fontello.woff") format("woff"), url("../fonts/fontello.ttf") format("truetype"), url("../fonts/fontello.svg#fontello") format("svg");
+  src: url("../fonts/fontello.eot?94606861");
+  src: url("../fonts/fontello.eot?94606861#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2?94606861") format("woff2"), url("../fonts/fontello.woff?94606861") format("woff"), url("../fonts/fontello.ttf?94606861") format("truetype"), url("../fonts/fontello.svg?94606861#fontello") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -311,6 +311,18 @@
 
 .icon-more:before {
   content: '\e843'; }
+
+.icon-minus_icon:before {
+  content: '\e845'; }
+
+.icon-send_button:before {
+  content: '\e846'; }
+
+.icon-cross_icon:before {
+  content: '\e844'; }
+
+.icon-information-1:before {
+  content: '\e847'; }
 
 .left {
   float: left; }
@@ -575,8 +587,8 @@ a {
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
-  src: url("../fonts/fontello.eot");
-  src: url("../fonts/fontello.eot#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2") format("woff2"), url("../fonts/fontello.woff") format("woff"), url("../fonts/fontello.ttf") format("truetype"), url("../fonts/fontello.svg#fontello") format("svg");
+  src: url("../fonts/fontello.eot?94606861");
+  src: url("../fonts/fontello.eot?94606861#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2?94606861") format("woff2"), url("../fonts/fontello.woff?94606861") format("woff"), url("../fonts/fontello.ttf?94606861") format("truetype"), url("../fonts/fontello.svg?94606861#fontello") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -851,6 +863,18 @@ a {
 
 .icon-more:before {
   content: '\e843'; }
+
+.icon-minus_icon:before {
+  content: '\e845'; }
+
+.icon-send_button:before {
+  content: '\e846'; }
+
+.icon-cross_icon:before {
+  content: '\e844'; }
+
+.icon-information-1:before {
+  content: '\e847'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -1130,19 +1154,21 @@ span.sticker {
           vertical-align: middle; }
           .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-image img {
             border-radius: 50%;
-            margin-right: 20px;
             width: 33px;
-            height: 33px; }
+            height: 33px;
+            border: 1px solid #dedcdc;
+            background-color: #f7f7f7; }
         .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info {
           display: inline-block;
           vertical-align: middle;
-          width: calc(100% - 53px); }
+          width: calc(100% - 43px); }
           .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info p {
             margin: 0; }
             .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info p.user-name {
               font-size: 13px;
               line-height: 1.5;
-              display: inline-block; }
+              display: inline-block;
+              color: #2b2b2b; }
             .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info p.user-designation {
               font-size: 12px;
               line-height: 1.5;

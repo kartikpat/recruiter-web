@@ -703,4 +703,11 @@ module.exports = function(settings){
 			baseDomain: baseDomain
 		})
 	});
+	app.get("/connect-success", function(req, res){
+		res.render("connect-success", {
+			title:"Account Connected Successfully | iimjobs.com",
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
+		});
+	})
 }

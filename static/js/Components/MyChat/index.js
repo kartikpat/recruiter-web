@@ -16,7 +16,6 @@ jQuery(document).ready( function() {
     var chat = Chat();
     var store = Store();
     chat.init()
-    chat.setProfile(profile)
     fetchRecruiterChats(recruiterId)
 
     chat.onClickSingleChatItem(function(candidateId){
@@ -48,7 +47,6 @@ jQuery(document).ready( function() {
             img: profile["pic"],
             type: 1
         }, channelName, function(status,response){
-
 
             if(status.statusCode == 200) {
                 chat.appendSendMessage(message, profile["pic"])

@@ -80,7 +80,7 @@ $button-border-color: #8f8a8a;
 				color: $green;
 				font-size: 34px;
 				font-weight: 400;
-				height: 34px;
+				height: 40px;
 			}
 			.legend{
 				font-size: 13px;
@@ -149,7 +149,10 @@ $button-border-color: #8f8a8a;
 	    width: 1px;
 	    background: $separater-grey;
 	    float: right;
-	    margin-top: -119px;
+	    margin-top: -130px;
+	}
+	.positive-left{
+		display: none;
 	}
 	.salutation-icon{
 		margin-right: 18px;
@@ -160,7 +163,7 @@ $button-border-color: #8f8a8a;
 			color: $black;
 		}
 		.heading{
-			width: 70%;
+			width: 90%;
 			display: inline-block;
 			font-size: 16px;
 			font-weight:600;
@@ -281,6 +284,7 @@ $button-border-color: #8f8a8a;
 				width: calc( 100% - 90px);
 				text-align: left;
 				padding-left: 10px;
+				padding-top: 0px;
 				.button{
 					margin-right: 10px;
 				}
@@ -342,7 +346,7 @@ $button-border-color: #8f8a8a;
 			border: thin solid $card-border;
 			border-top: 4px solid $green;
 			text-align: center;
-			padding: 10px;
+			padding: 7px 10px;
 			border-radius: 6px;
 			border-top-left-radius: 0px;
 			border-top-right-radius: 0px;
@@ -429,6 +433,7 @@ $button-border-color: #8f8a8a;
 				}
 				.applications{
 					line-height: 20px;
+					padding-left: 30px;
 				}
 			}
 			.button-action-list{
@@ -548,21 +553,23 @@ $button-border-color: #8f8a8a;
     .separater.positive-bottom{
     	width: 90%;
 	    height: 1px;
-	    margin-top: 18px;
+	    margin-top: 13px;
 	    float: left;
+	    position: relative;
     }
     .separater.positive-top{
-		margin-top: -152px;
+		margin-top: -157px;
 		height: 1px;
 		width: 90%;
     }
     .separater.positive-left{
 		float: left;
 		height: 90%;
-		margin-top: -152px;
+		margin-top: -157px;
+		display: block;
     }
     .separater.positive-right {
-	    margin-top: -134px;
+	    margin-top: -139px;
 	    height: 90%;
 	    margin-right: 0px;
 	    position: relative;
