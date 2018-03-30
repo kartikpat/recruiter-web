@@ -1608,7 +1608,8 @@ span.sticker {
         margin-left: 85px;
         width: calc( 100% - 90px);
         text-align: left;
-        padding-left: 10px; }
+        padding-left: 10px;
+        padding-top: 0px; }
         .page-content .detail-card .notification-row.multiple .action-buttons .button {
           margin-right: 10px; }
     .page-content .detail-card .highlighted-banner {
@@ -1715,7 +1716,8 @@ span.sticker {
       .page-content .feed-row .main-content .stats .value {
         color: #149075; }
       .page-content .feed-row .main-content .stats .applications {
-        line-height: 20px; }
+        line-height: 20px;
+        padding-left: 30px; }
     .page-content .feed-row .main-content .button-action-list {
       display: inline-block;
       cursor: pointer;
