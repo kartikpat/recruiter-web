@@ -269,7 +269,8 @@ module.exports = function(settings){
 			title: "IIM JOBS | myChat",
 			styles:  assetsMapper["chat"]["styles"][mode],
 			scripts: assetsMapper["chat"]["scripts"][mode],
-			baseUrl: baseUrl
+			baseUrl: baseUrl,
+			profile: req.profile	
 		})
 		return
 	})

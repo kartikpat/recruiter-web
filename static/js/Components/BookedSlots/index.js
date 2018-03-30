@@ -18,8 +18,8 @@ jQuery(document).ready( function() {
        globalParameters.pageNumber = 1;
        parameters.pageNumber= globalParameters.pageNumber;
        parameters.pageContent= globalParameters.pageContent;
-    //    parameters.startdate=getStartDate();
-       console.log(parameters.startdate);
+    //    parameters.from=slots.getStartDate();
+       slots.emptySlots();
        if(calendarId != -1) {
            parameters.calendarId = calendarId;
        }
