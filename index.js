@@ -57,8 +57,9 @@
 		callbackURL: config['social']['linkedin']['callbackURL'],
 		scope: ['r_emailaddress', 'r_basicprofile'],
 		passReqToCallback: true
-	}, async function(req, accessToken, refreshToken, profile, done){
+	}, async function(req, accessToken, refreshToken, params, profile, done){
 		const token= req.cookies['recruiter-access-token'];
+		console.log(params)
 		const data = {
 			token: accessToken,
 			refreshToken: refreshToken,
