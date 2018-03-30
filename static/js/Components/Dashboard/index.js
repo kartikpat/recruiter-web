@@ -350,7 +350,7 @@ $(document).ready(function(){
 			var slotDate = moment(aRow['slot']['date']);
 			var slotTime = moment(aRow['slot']['time'], 'hhmm')
 			card.find('.profile .custom-icon .number').text(slotDate.date());
-			card.find('.profile .custom-icon .label').text(slotDate.format('MMM'));
+			card.find('.profile .custom-icon .label').text(slotDate.format('MMM').toUpperCase());
 
 			var candidateCard = interviewCandidateCard.clone().removeClass('hidden prototype');
 			candidateCard.find('.highlighted-meta').text(slotTime.format('hh:mm A') + ' - '+ slotTime.add(30, 'minutes').format('hh:mm A'));
@@ -377,8 +377,8 @@ $(document).ready(function(){
 
 	function init(){
 		pubsub.publish("pageVisit", 1);
-		fetchDashboardStats(recruiterId);
-		// fetchJobs("published", recruiterId, 5,1);
+		//fetchDashboardStats(recruiterId);
+		fetchJobs("published", recruiterId, 5,1);
 		// fetchFollowUps(recruiterId);
 		// fetchInterviews(recruiterId, {pageContent: 6, pageNumber: 1, status: 2});
 	}
