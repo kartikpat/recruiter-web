@@ -2938,7 +2938,8 @@ span.sticker {
     background-color: #FFF;
     box-shadow: 0px 2px 9px 0px rgba(214, 214, 214, 0.3);
     width: 95%;
-    margin: 0 auto; }
+    margin: 0 auto;
+    margin-top: 20px; }
     .page-content .empty-view .no-schedule-container {
       text-align: center;
       padding: 80px; }

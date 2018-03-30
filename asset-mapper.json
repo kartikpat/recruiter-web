@@ -352,7 +352,6 @@
 			"debug" : [
 				"static/css/jquery-ui.min.css",
 				"static/css/header.css",
-
             	"static/css/candidate-list-one.css",
 				"static/css/footer.css",
 				"static/css/buttons.css",
@@ -469,6 +468,7 @@
 		"styles": {
 			"debug" : [
 				"static/css/header.css",
+				"static/css/modal.css",
 				"static/css/jquery.timepicker.min.css",
 				"static/css/jquery-ui.min.css",
 				"static/css/manage-calendar.css",
