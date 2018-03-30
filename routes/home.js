@@ -597,29 +597,33 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/Interview-scheduler-updated",function(req, res){
+	app.get("/Interview-scheduler-updated",isAuthenticated,function(req, res){
 		res.render("Interview-scheduler-updated", {
 			title: "Calender | Dashboard",
 			styles:  assetsMapper["Interview-scheduler-updated"]["styles"][mode],
 			scripts: assetsMapper["Interview-scheduler-updated"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain:baseDomain,
-			profile: req.profile,	
-			hiddenLoader: "hidden"
+			hiddenLoader: "hidden",
+			jobId: req.params.jobID,
+			applicationId: req.params.applicationID,
+			profile: req.profile
 		});
 		return
 	});
 
-	app.get("/calendar/:calendarId/edit",function(req, res){
+	app.get("/calendar/:calendarId/edit",isAuthenticated,function(req, res){
 		res.render("Interview-scheduler-updated", {
 			title: "Calender | Dashboard",
 			styles:  assetsMapper["Interview-scheduler-updated"]["styles"][mode],
 			scripts: assetsMapper["Interview-scheduler-updated"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain:baseDomain,
-			profile: req.profile,
 			calendarId: req.params.calendarId,
-			hiddenClass: "hidden"
+			hiddenClass: "hidden",
+			jobId: req.params.jobID,
+			applicationId: req.params.applicationID,
+			profile: req.profile
 		});
 		return
 	});

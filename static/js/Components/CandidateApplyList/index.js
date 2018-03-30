@@ -176,6 +176,7 @@ jQuery(document).ready( function() {
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
         var parameters = filters.getAppliedFilters();
+        console.log(parameters)
         parameters.status = globalParameters.status;
         setQueryParameters(parameters)
 
@@ -210,7 +211,7 @@ jQuery(document).ready( function() {
          page('/'+applicationId+'#tag')
     })
     candidates.onClickSendMessage(function(candidateId,applicationId){
-        var candidate = store.getCandidateFromStore(candidateId);
+        var candidate = store.getCandidateFromStore(applicationId);
         var array = [];
         array.push(candidate);
         cloneStickyChat(array, recruiterId, jobId, applicationId)
@@ -285,14 +286,7 @@ jQuery(document).ready( function() {
         fetchJobApplicationCount(recruiterId, jobId)
         fetchJobApplications(jobId, parameters,recruiterId);
     })
-    // candidates.onClickSendInterviewInvite(function(candidateId, applicationId) {
-    //     var defaultCalendarId = theJob.getDefaultCalendar();
-    //     if(!defaultCalendarId)
-    //         theJob.showCalendarMissingError();
-    //     // if(!(defaultCalendarId && candidateId && applicationId ))
-    //     //     return alert('Please provide all values');
-    //     // postInterviewInvite()
-    // })
+
     candidates.onClickDownloadResume(function(applicationId, status){
         if(parseInt(status) == 0)
             setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
@@ -358,6 +352,10 @@ jQuery(document).ready( function() {
             return toastNotify(1, "Comment Added Successfully")
         }
 
+        if(res.parameters.oldStatus != "") {
+            candidates.candidateActionTransition(arr)
+            checkApplicationLength()
+        }
 
         if(res.action == "unread") {
 
@@ -369,9 +367,9 @@ jQuery(document).ready( function() {
             }
 
             if(res.parameters.oldStatus != "") {
-                candidates.candidateActionTransition(arr)
                 return toastNotify(1, "Moved to Unread Tab")
             }
+
             aCandidate.changeButtonText(arr, newStatus, res.parameters.dataAction)
             candidates.changeButtonText(arr, newStatus, res.parameters.dataAction)
             return toastNotify(1, "Moved to Unread Tab")
@@ -385,7 +383,6 @@ jQuery(document).ready( function() {
             }
 
             if(res.parameters.oldStatus != "") {
-                candidates.candidateActionTransition(arr)
                 return toastNotify(1, "Moved to Shortlisted Tab")
             }
             aCandidate.changeButtonText(arr, newStatus, res.parameters.dataAction)
@@ -402,7 +399,6 @@ jQuery(document).ready( function() {
             }
 
             if(res.parameters.oldStatus != "") {
-                candidates.candidateActionTransition(arr)
                 return toastNotify(1, "Moved to Rejected Tab")
             }
             aCandidate.changeButtonText(arr, newStatus, res.parameters.dataAction)
@@ -410,7 +406,6 @@ jQuery(document).ready( function() {
             return toastNotify(1, "Moved to Rejected Tab")
         }
         if(res.action == "save") {
-
             var newStatus = 3
             if(res.parameters.isModalButton) {
                 candidates.changeButtonText(arr, newStatus, res.parameters.dataAction)
@@ -419,14 +414,30 @@ jQuery(document).ready( function() {
             }
 
             if(res.parameters.oldStatus != "") {
-                candidates.candidateActionTransition(arr)
                 return toastNotify(1, "Moved to Saved Tab")
             }
             aCandidate.changeButtonText(arr, newStatus, res.parameters.dataAction)
             candidates.changeButtonText(arr,newStatus, res.parameters.dataAction)
             return toastNotify(1, "Moved to Saved Tab")
         }
+
     }
+
+    function checkApplicationLength() {
+
+        var length = candidates.getApplicationsLength()
+        debugger
+        if(length <= 2) {
+            var parameters = filters.getAppliedFilters();
+            parameters.status = globalParameters.status;
+            setQueryParameters(parameters);
+            globalParameters.pageNumber = globalParameters.pageNumber + 1;
+            parameters.pageNumber = globalParameters.pageNumber;
+            parameters.pageContent = globalParameters.pageContent;
+            fetchJobApplications(jobId, parameters,recruiterId);
+        }
+    }
+
     candidates.onClickRejectCandidate(function(applicationId, newStatus, dataAction){
         var action;
         if(parseInt(dataAction) == parseInt(newStatus)) {
@@ -444,7 +455,7 @@ jQuery(document).ready( function() {
     })
 
     candidates.onClickDownloadMassExcel(function(arr){
-        
+
         var parameters = filters.getAppliedFilters();
         parameters.applicationId = arr.toString()
         var str = "?"
@@ -486,7 +497,13 @@ jQuery(document).ready( function() {
 	})
     theJob.onChangeDefaultCalendar(function(calendarId) {
         var defaultCalendarId = theJob.getDefaultCalendar();
-        setDefaultCalendar(recruiterId, jobId, calendarId, {defaultId: defaultCalendarId}, {})
+        var obj = {}
+        if(defaultCalendarId) {
+            obj = {
+                defaultId: defaultCalendarId
+            }
+        }
+        setDefaultCalendar(recruiterId, jobId, calendarId, obj, {})
         //postRequestDefaultCalendar
     })
 
@@ -634,7 +651,8 @@ jQuery(document).ready( function() {
 
     function onJobsApplicationsFetchSuccess(topic, data) {
         tickerLock = false;
-        $(".loaderScroller").addClass("hidden")
+        hideLoader()
+
         //Call only on initial load
         // if(!globalParameters.initialLoad) {
         //     var result =filters.getAppliedFilters();
@@ -880,14 +898,14 @@ jQuery(document).ready( function() {
     });
 
     function checkScrollEnd() {
-    	if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+    	if($(window).scrollTop() + $(window).height() > $(document).height() - 600) {
     		globalParameters.pageNumber = globalParameters.pageNumber + 1;
     		if(globalParameters.candidateListLength >= globalParameters.pageContent) {
                 var parameters = filters.getAppliedFilters();
                 parameters.pageNumber = globalParameters.pageNumber;
                 parameters.pageContent = globalParameters.pageContent;
                 parameters.status = globalParameters.status;
-                $(".loaderScroller").removeClass("hidden")
+                showLoader()
     			fetchJobApplications(jobId,parameters,recruiterId)
     		}
             else

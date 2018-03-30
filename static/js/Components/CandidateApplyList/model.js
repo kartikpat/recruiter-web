@@ -48,6 +48,7 @@ function candidateList() {
         settings.bulkCheckInputClass = ".bulkCheckInput",
         settings.bulkBackIcon = $("#bulkBackIcon"),
         settings.secondMassActionContainer = $("#secondMassActionContainer");
+        settings.totalApplicationsCount = 0;
         onClickBulkDownArrow()
         onClickMassCheckbox()
         onClickCandidateOtherActions()
@@ -95,6 +96,7 @@ function candidateList() {
                 var len = $(this).attr("data-length")
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").attr("disabled", true)
                 $(this).attr("disabled", false)
+                settings.totalApplicationsCount = len
                 settings.applicationsCount.text(len + " candidates selected");
                 settings.bulkActionContainer.removeClass("hidden")
             } else {
@@ -110,16 +112,13 @@ function candidateList() {
     function onClickBulkDownArrow() {
         settings.bulkDownArrow.click(function(e){
             e.stopPropagation()
-
             settings.bulkActionsDropdown.toggleClass("hidden")
         })
     }
 
     function onClickCoverLetterLink() {
         settings.rowContainer.on('click', settings.coverLetterLinkClass, function(e){
-
             settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 2});
-
         })
     }
 
@@ -386,25 +385,22 @@ function candidateList() {
 
     function onClickViewComment(fn) {
         settings.rowContainer.on('click', settings.viewCommentButtonClass, function(e){
-            e.stopPropagation();
+            e.preventDefault();
             var applicationId= $(this).closest(settings.candidateRowClass).attr("data-application-id")
             fn(applicationId);
-            return false
         })
     }
 
     function onClickViewTag(fn) {
         settings.rowContainer.on('click', settings.viewTagButtonClass, function(e){
-            e.stopPropagation();
+            e.preventDefault();
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             fn(applicationId);
-            return false
         })
     }
 
     function onClickCandidate(fn) {
         settings.rowContainer.on('click', ".candidate-item", function(e){
-            // e.preventDefault()
             var candidateId = $(this).attr('data-candidate-id');
             var status = $(this).attr("data-status")
             var applicationId = $(this).attr("data-application-id")
@@ -443,48 +439,34 @@ function candidateList() {
 
     function onClickSendMessage(fn) {
         settings.rowContainer.on('click', settings.candidateSendMessageButton,function(event) {
-            event.stopPropagation();
+            event.preventDefault();
             var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-
             fn(candidateId, applicationId);
-            return false
         });
-    }
-
-    function onClickSendInterviewInvite(fn) {
-        settings.rowContainer.on('click', settings.candidateInviteButton, function(event){
-            event.stopPropagation();
-            var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
-
-            fn(candidateId);
-            return false
-        })
     }
 
     function onClickDownloadResume(fn) {
         settings.rowContainer.on('click', settings.candidateDownloadResumeButton, function(event){
+            event.preventDefault()
             var url = $(this).attr("data-href");
             window.open(url);
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             var status = $(this).closest(settings.candidateRowClass).attr("data-status")
             fn(applicationId, status)
-            return false
+
         })
     }
 
     function onClickSaveCandidate(fn) {
         settings.rowContainer.on('click', settings.candidateSaveButton, function(event){
-            event.stopPropagation();
+            event.preventDefault();
             var status = $(this).attr("data-status");
             var action = $(this).attr("data-action");
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             fn(applicationId, status, action);
-            return false
         })
     }
-
-
 
     // function onClickMassTag(fn) {
     //     var modal = $(".jsAddTagModal");
@@ -500,19 +482,17 @@ function candidateList() {
 
     function onClickAddTag(fn) {
         settings.rowContainer.on('click',settings.candidateAddTagButton ,function(event) {
-            event.stopPropagation()
+            event.preventDefault()
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             fn(applicationId);
-            return false
         })
     }
 
     function onClickAddComment(fn) {
         settings.rowContainer.on('click',settings.candidateAddCommentButton ,function(event) {
-            event.stopPropagation()
+            event.preventDefault()
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             fn(applicationId);
-            return false
         })
     }
 
@@ -557,6 +537,7 @@ function candidateList() {
                 jQuery(this).closest(".candidate-select").addClass("selected");
                 candidateSelect.not(".candidateRow.prototype .candidate-select").addClass("selected");
                 var arr = returnSelectedApplications()
+                settings.totalApplicationsCount = arr.length;
                 settings.applicationsCount.text(arr.length + " candidates selected");
                 settings.bulkActionContainer.removeClass("hidden")
             } else {
@@ -565,6 +546,7 @@ function candidateList() {
                 var applicationId =  $(this).closest(settings.candidateRowClass).attr("data-application-id")
                 if(el.length > 0) {
                     var arr = returnSelectedApplications()
+                    settings.totalApplicationsCount = arr.length;
                     settings.applicationsCount.text(arr.length + " candidates selected");
                     settings.bulkActionContainer.removeClass("hidden")
                 }
@@ -589,6 +571,7 @@ function candidateList() {
                 candidateSelect.find("input").prop("checked",  true);
                 var el = jQuery(".candidate-select.selected");
                 var arr = returnSelectedApplications()
+                settings.totalApplicationsCount = arr.length
                 settings.applicationsCount.text(arr.length + " candidates selected");
                 settings.bulkActionContainer.removeClass("hidden")
             } else {
@@ -607,9 +590,9 @@ function candidateList() {
     function onClickMassReject(fn) {
         settings.massReject.click(function(e){
             e.stopPropagation()
-            var arr = returnSelectedApplications();
+
 			settings.bulkActionModal.find(".modalHeading").text("Are you sure?");
-			settings.bulkActionModal.find(".jsModalText").text("You are about to reject "+arr.length+" candidates.")
+			settings.bulkActionModal.find(".jsModalText").text("You are about to reject "+settings.totalApplicationsCount+" candidates.")
 			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Rejected Tab.").removeClass("hidden");
             settings.bulkActionModal.find(".massActionButton").text("Reject").attr("data-action", "reject").attr("data-status", "2")
             settings.bulkActionModal.find(".massTextarea").val("")
@@ -622,9 +605,9 @@ function candidateList() {
     function onClickMassShortlist() {
         settings.massShortlist.click(function(e){
             e.stopPropagation()
-            var arr = returnSelectedApplications();
+
             settings.bulkActionModal.find(".modalHeading").text("Are you sure?");
-			settings.bulkActionModal.find(".jsModalText").text("You are about to shortlist "+arr.length+" candidates.")
+			settings.bulkActionModal.find(".jsModalText").text("You are about to shortlist "+settings.totalApplicationsCount+" candidates.")
 			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Shortlisted Tab.").removeClass("hidden");
             settings.bulkActionModal.find(".massActionButton").text("Shortlist").attr("data-action", "shortlist").attr("data-status", "1")
             settings.bulkActionModal.find(".massTextarea").val("")
@@ -636,9 +619,9 @@ function candidateList() {
     function onClickMassSave() {
         settings.massSave.click(function(e){
             e.stopPropagation()
-            var arr = returnSelectedApplications();
+
             settings.bulkActionModal.find(".modalHeading").text("Are you sure?");
-			settings.bulkActionModal.find(".jsModalText").text("You are about to save "+arr.length+" candidates.")
+			settings.bulkActionModal.find(".jsModalText").text("You are about to save "+settings.totalApplicationsCount+" candidates.")
 			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Saved Tab.").removeClass("hidden");
             settings.bulkActionModal.find(".massActionButton").text("Save for Later").attr("data-action", "save").attr("data-status", "3")
             settings.bulkActionModal.find(".massTextarea").val("")
@@ -650,9 +633,9 @@ function candidateList() {
     function onClickMassComment() {
         settings.massComment.click(function(e){
             e.stopPropagation()
-            var arr = returnSelectedApplications();
+
             settings.bulkActionModal.find(".modalHeading").text("Add Comment");
-			settings.bulkActionModal.find(".jsModalText").text("The Comment will be added on "+arr.length+" candidates profiles.")
+			settings.bulkActionModal.find(".jsModalText").text("The Comment will be added on "+settings.totalApplicationsCount+" candidates profiles.")
 			settings.bulkActionModal.find(".jsModalTextSecondary").addClass("hidden")
             settings.bulkActionModal.find(".massActionButton").text("Add").attr("data-action", "comment")
             settings.bulkActionModal.find(".massTextarea").val("")
@@ -819,8 +802,35 @@ function candidateList() {
     }
 
     function populateCheckInputDropdown(status) {
+        // if(bulk == 1) {
+        //     settings.bulkDownArrow.removeClass("hidden")
+        // }
         var item = getJobsCategoryTabsElement();
         var count =  item.element.find("li[data-attribute='"+status+"'] .tabStats").text()
+        if(parseInt(status) == 0) {
+            var str = ''
+            var text;
+            var dataLength;
+            if(count >= 100) {
+                text = "Select top 100 applications"
+                dataLength = 100;
+            }
+            else if(count > 0 && count < 100){
+                text = "Select "+count+" applications"
+                dataLength = count
+            }
+            else {
+                str = "No Applications"
+                return settings.bulkActionsDropdown.html(str)
+            }
+            var item = $(".bulkCheckInput.prototype").clone().removeClass("prototype hidden");
+            item.find("input").attr("id", dataLength);
+            item.find("label").attr("for",dataLength).text(text );
+            item.find("input").attr("data-length", dataLength);
+            str += item[0].outerHTML
+            settings.bulkActionsDropdown.html(str)
+            return
+        }
         var slotDifference = 100;
         var divide = Math.floor(count/slotDifference);
         var remainder = count%slotDifference;
@@ -847,6 +857,10 @@ function candidateList() {
         settings.bulkActionsDropdown.html(str)
     }
 
+    function getApplicationsLength() {
+        return settings.rowContainer.find(".candidateRow").length;
+    }
+
     return {
 		init: init,
 		addToList: addToList,
@@ -855,7 +869,6 @@ function candidateList() {
         setJobStats: setJobStats,
         activateStatsTab: activateStatsTab,
         onClickCandidate: onClickCandidate,
-        onClickSendInterviewInvite: onClickSendInterviewInvite,
         onClickAddTag: onClickAddTag,
         onClickAddComment: onClickAddComment,
         onClickSendMessage: onClickSendMessage,
@@ -884,6 +897,7 @@ function candidateList() {
         changeInviteText: changeInviteText,
         changeButtonText: changeButtonText,
         changeStatus: changeStatus,
-        populateCheckInputDropdown: populateCheckInputDropdown
+        populateCheckInputDropdown: populateCheckInputDropdown,
+        getApplicationsLength: getApplicationsLength
 	}
 }

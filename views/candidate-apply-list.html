@@ -65,7 +65,10 @@
 						<span class="button white hidden" id="jobPremiumButton">Make Premium</span>
 						<span class="button white unpublish-job hidden" id="jobUnpublishButton">Unpublish</span>
 
-						<span class="multi-options inactive button-action-list hidden" id="jobOtherActions"><img src="/static/images/multi-options.svg">
+						<span class="multi-options inactive button-action-list hidden" id="jobOtherActions">
+							<i class="icon-more"></i>
+							<!-- <i class="icon-more"></i> -->
+							<!-- <img src="/static/images/multi-options.svg"> -->
 							<ul class="action-list-items">
 								<li><a href="#" class="hidden" id="jobRefreshButton">Refresh</a></li>
 								<li><a href="#" class="" id="jobPostFacebook">Post On Facebook</a></li>
@@ -101,15 +104,16 @@
 								</span>
 							</div>
 						</div>
-						<div class="candidates-search-results">
+						<div class="candidates-search-results" id="candidatesSearchResults">
 							<p class="results-count hidden" id="resultFound">
 							</p>
 							<div class="active-filters hidden">
 								<span  class="clear-all-filters ">
 									<span class="appliedFilters"></span>
-									<span id="clear-all" class="hidden">Clear filters</span>
 								</span>
 							</div>
+							<span class="filtersExtraButtons link-color hidden" id="clear-all" >Clear filters</span>
+							<span class="filtersExtraButtons link-color hidden" id="seeFilters">See more</span>
 						</div>
 					</div>
 
@@ -154,7 +158,7 @@
 					            		<li data-attribute="4,5">
 											<a href="#reviewed-jobs">
 												<div class="bulk-selection-item reviewed">
-													<span class="bulk-action-icon"><i class="icon-document_search_interface_symbol"></i></span>
+													<span class="bulk-action-icon"><i class="icon-review"></i></span>
 													<span class="bulk-action-label ">Reviewed (<span class="tabStats" id="reviewedNo">0</span>)</span>
 												</div>
 											</a>
@@ -217,40 +221,10 @@
 					</div>
 				</div>
 
-				<div class="loading loaderScroller hidden" style="margin-top:20px ">
+				<div class="loading loaderScroller hidden">
 				    <div class="loader loader-scroller"></div>
 				</div>
-				<style>
-					.loading div {
-						display:inline-block;
-						position:relative;
-					}
 
-					.loading p:after {
-						overflow: hidden;
-						position:absolute;
-						left:100%;
-						text-align:left;
-						display: inline-block;
-						vertical-align: bottom;
-						-webkit-animation: ellipsis steps(4,end) 900ms infinite;
-						animation: ellipsis steps(4,end) 1800ms infinite;
-						content: "\2026"; /* ascii code for the ellipsis character */
-						width: 0px;
-					}
-
-					@keyframes ellipsis {
-					  to {
-					   	width: 1.25em;
-					  }
-					}
-
-					@-webkit-keyframes ellipsis {
-					  to {
-					    width: 1.25em;
-					  }
-					}
-				</style>
 			</div>
 			<div class="conversations right">
 				{{>chatSidebar}}
@@ -270,7 +244,6 @@
                 </div>
                 <div class="profile-information">
                 	<p class="profile-name js_name">Shreya Sharma</p>
-
                 	<div class="social-media-accounts">
                 		<span class="social facebook hidden"><img src="/static/images/facebook-round.svg"></span>
                 		<span class="social twitter hidden"><img src="/static/images/twitter-round.svg"></span>
@@ -487,8 +460,8 @@
 						<div class="content-block comments mob mobCandidateCommentContainer">
 	            			<h3 class="content-heading">Comment</h3>
 	            			<div class="content">
-								<div class="mobCommentBox hidden">
-									<textarea id="" class="comment-textarea" readonly></textarea>
+								<div class="mobCommentBox">
+									<textarea id="" class="comment-textarea hidden" readonly></textarea>
 								</div>
 								<div class="">
 									<textarea  placeholder="Add Comment" name="name" class="mobCandidateCommentTextarea"></textarea>
@@ -564,8 +537,8 @@
     	</div>
     	<div class="sidebar-section external-links">
     		<ul>
-    			<li class="save" id="candidateSaveModal"><span class="icon"><i class="icon-star"></i></span>Save for Later</li>
-    			<li class="chat" id="candidateChatModal"><span class="icon"><i class="icon-chat_icon"></i></span>Chat with <span id="firstName" class="candidate-first-name">Shreya</span></li>
+    			<li class="save" id="candidateSaveModal"><i class="icon-star_later"></i>Save for Later</li>
+    			<li class="chat" id="candidateChatModal"><span class="icon"><i class="icon-chat"></i></span>Chat with <span id="firstName" class="candidate-first-name">Shreya</span></li>
     			<li class="invite"><span class="icon"><i class="icon-interview"></i></span>Send Interview Invite</li>
 				<li class="invite-links"><span class="icon"><i class="icon-face-to-face"></i></span><span data-invite-id="1" class="inviteF2f tooltip ">Face to Face</span></li>
 				<li class="invite-links"><span class="icon"><i class="icon-telephone"></i></span><span data-invite-id="2" class="inviteTelephonic tooltip ">Telephonic</span></li>
@@ -579,11 +552,16 @@
 
     	<div class="sidebar-section comments candidateCommentContainer">
 			<h3>Comment</h3>
+<<<<<<< HEAD
+    		<div class="comment-box">
+				<textarea id="" class="comment-textarea hidden" readonly></textarea>
+=======
 
     		<div class="comment-box hidden">
-					<textarea id="" class="comment-textarea" readonly></textarea>
+					<textarea id="" class="comment-textarea " readonly></textarea>
+>>>>>>> develop
 			</div>
-			<div class="">
+			<div class="comment-container">
 				<textarea id="" placeholder="Add Comment" name="name" class="candidateCommentTextarea"></textarea>
     		</div>
 			<div class="action-buttons">

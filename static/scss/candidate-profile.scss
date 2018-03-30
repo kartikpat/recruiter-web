@@ -28,11 +28,12 @@
 			width:100%;
 			border:1px solid $border-color-base;
 			background-color:$color-white;
+			border-radius: 8px;
 
 			.container {
 
 				&.resume-header {
-					background-image:url('/static/images/view-resume-banner.jpg');
+					background-image:url('/static/images/view-resume-banner.png');
 					background-repeat:no-repeat;
 					background-position:center top;
 					background-size:100% 95px;
@@ -59,6 +60,7 @@
 							border-radius:50%;
 							border:5px solid $color-white;
 							box-shadow:0 0 3px $shadow-color;
+							background-color: #efefef;
 						}
 					}
 
@@ -69,7 +71,14 @@
 								font-size:$page-title-size;
 								text-align: center;
 								color:$button-color-green;
-								font-weight:bold;
+                                &.shell {
+                                    @include text-shell;
+                                    max-width: 150px;
+                                    max-height: 7px;
+                                    min-height: 7px;
+                                    margin: 0 auto;
+                                    margin-top: 5px;
+                                }
 							}
 						}
 
@@ -97,14 +106,22 @@
 							border-right:1px solid $border-color-base;
 
 							.snap-title {
-								color:$color-black;
+								color:$extra-info-color;
 								font-size:$view-resume-byline-font-size;
 								line-height:1.5;
 							}
 
 							.snap-value {
-								color:$extra-info-color;
+
+								color:$color-black;
 								font-size:$view-resume-byline-font-size;
+                                &.shell {
+                                    @include text-shell;
+                                    max-width: 100px;
+                                    max-height: 7px;
+                                    margin-top: 5px;
+                                    min-height: 7px;
+                                }
 							}
 
 							&:last-child {
@@ -148,6 +165,14 @@
 							margin-right:20px;
 							font-style: italic;
 							color:$extra-info-color;
+                            span.shell {
+                                display: inline-block;
+                                @include text-shell;
+                                min-width: 100px;
+                                max-height: 7px;
+                                margin-top: 5px;
+                                min-height: 7px;
+                            }
 						}
 					}
 				}
@@ -176,7 +201,7 @@
 							.ui-state-default {
 							    background: transparent;
 							    border: none;
-							    margin:0 5px 0 0;
+								margin: 0 48px 0 0;
 							    position:relative;
 							    top:1px;
 
@@ -305,10 +330,12 @@
 											&.name {
 												font-weight:bold;
 												color:$color-black;
+												margin-left: 15px;
 											}
 
 											&.detail {
 												color:$extra-info-color;
+												margin-left: 15px;
 											}
 										}
 
@@ -323,6 +350,7 @@
 										margin:0;
 										padding:0;
 										list-style:none;
+										margin-left: 15px;
 
 										li {
 											font-size:0;
@@ -340,6 +368,13 @@
 
 												&.value {
 													color:$color-black;
+                                                    &.shell {
+                                                        @include text-shell;
+                                                        max-width: 100px;
+                                                        max-height: 7px;
+                                                        margin-top: 5px;
+                                                        min-height: 7px;
+                                                    }
 												}
 											}
 										}
@@ -401,7 +436,11 @@
 						}
 
 						#view-cover-letter {
-							padding:20px 0 0 0;
+							// padding:20px 0 0 0;
+							margin-top: 10px;
+							border: 1px solid #e8e8e8;
+							line-height: 24px;
+							font-size: 14px;
 						}
 					}
 				}
@@ -427,9 +466,27 @@
 					&.cand-comment-button{
 						margin: 0;
 						margin-top: 5px;
+						margin-top: 10px;
+						background-color: #FFF !important;
+						border: 1px solid #d8d5d5 !important;
+						border-radius: 4px;
+						padding: 6px 18px;
+						font-size: 14px !important;
+						margin: 0 0px;
+						color: #2b2b2b !important;
+						cursor: pointer;
 					}
 					&.cand-add-tag-button {
 							margin: 0;
+							margin-top: 10px;
+							background-color: #FFF !important;
+							border: 1px solid #d8d5d5 !important;
+							border-radius: 4px;
+							padding: 6px 18px;
+							font-size: 14px !important;
+							margin: 0 0px;
+							color: #2b2b2b !important;
+							cursor: pointer;
 						}
     				@include button($color-white);
     			}
@@ -487,8 +544,7 @@
 
 			.cand-add-tag {
 				height: 40px;
-			    line-height: 40px;
-
+			    line-height: 10px;
 				padding: 10px;
 			}
 
@@ -713,6 +769,8 @@
 		padding: 5px;
 		border-left: 3px solid $button-color-green;
 		min-height: 50px;
+		margin-bottom:15px;
+		overflow: hidden;
 		&:focus {
 			outline: none;
 			border: 1px solid $button-color-green;

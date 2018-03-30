@@ -32,8 +32,8 @@
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
-  src: url("../fonts/fontello.eot");
-  src: url("../fonts/fontello.eot#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2") format("woff2"), url("../fonts/fontello.woff") format("woff"), url("../fonts/fontello.ttf") format("truetype"), url("../fonts/fontello.svg#fontello") format("svg");
+  src: url("../font/fontello.eot?94606861");
+  src: url("../font/fontello.eot?94606861#iefix") format("embedded-opentype"), url("../font/fontello.woff2?94606861") format("woff2"), url("../font/fontello.woff?94606861") format("woff"), url("../font/fontello.ttf?94606861") format("truetype"), url("../font/fontello.svg?94606861#fontello") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -43,7 +43,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('../font/fontello.svg?75489480#fontello') format('svg');
+    src: url('../font/fontello.svg?94606861#fontello') format('svg');
   }
 }
 */
@@ -58,13 +58,20 @@
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
   margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
 
 .icon-certification:before {
@@ -91,7 +98,7 @@
   content: '\e805'; }
 
 /* '' */
-.icon-edit:before {
+.icon-edit-1:before {
   content: '\e806'; }
 
 /* '' */
@@ -156,8 +163,7 @@
 
 /* '' */
 .icon-twitter:before {
-  content: '\e816';
-  color: #1da1f2; }
+  content: '\e816'; }
 
 /* '' */
 .icon-woman:before {
@@ -180,7 +186,7 @@
   content: '\e81b'; }
 
 /* '' */
-.icon-document_search_interface_symbol:before {
+.icon-review:before {
   content: '\e81c'; }
 
 /* '' */
@@ -196,7 +202,7 @@
   content: '\e81f'; }
 
 /* '' */
-.icon-envelope:before {
+.icon-mail:before {
   content: '\e820'; }
 
 /* '' */
@@ -232,6 +238,10 @@
   content: '\e828'; }
 
 /* '' */
+.icon-star_later:before {
+  content: '\e829'; }
+
+/* '' */
 .icon-add_icon:before {
   content: '\e82a'; }
 
@@ -248,6 +258,10 @@
   content: '\e82d'; }
 
 /* '' */
+.icon-back_icon-1:before {
+  content: '\e82e'; }
+
+/* '' */
 .icon-interview:before {
   content: '\e82f'; }
 
@@ -283,13 +297,50 @@
 .icon-up_arrow:before {
   content: '\e842'; }
 
+.icon-star:before {
+  content: '\e829'; }
+
+.icon-review:before {
+  content: '\e81c'; }
+
+.icon-chat:before {
+  content: '\e833'; }
+
+.icon-more:before {
+  content: '\e843'; }
+
+.icon-more:before {
+  font-size: 20px;
+  color: #2b2b2b;
+  margin-left: 0px; }
+
+.icon-chat:before {
+  font-size: 20px; }
+
+.icon-telephone:before {
+  font-size: 20px; }
+
+.icon-face-to-face:before {
+  font-size: 20px; }
+
+.icon-star:before {
+  font-size: 20px; }
+
+.icon-interview:before {
+  font-size: 25px; }
+
+/* '' */
 .icon-search:before {
   position: relative;
-  top: -24px; }
+  top: -24px;
+  left: 5px; }
 
 .icon-filter:before {
   position: relative;
   top: 6px; }
+
+.icon-chat_icon:before {
+  font-size: 20px; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -325,7 +376,7 @@ select.select-dropdown {
   background: #FFF;
   width: 100%;
   border: 1px solid #e8e8e8;
-  background-image: url("/static/images/down-caret.svg");
+  background-image: url(/static/images/down_arrow_green.svg);
   background-repeat: no-repeat;
   background-position: right 18px center;
   cursor: pointer;
@@ -570,8 +621,8 @@ span.sticker {
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
-  src: url("../fonts/fontello.eot");
-  src: url("../fonts/fontello.eot#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2") format("woff2"), url("../fonts/fontello.woff") format("woff"), url("../fonts/fontello.ttf") format("truetype"), url("../fonts/fontello.svg#fontello") format("svg");
+  src: url("../font/fontello.eot?94606861");
+  src: url("../font/fontello.eot?94606861#iefix") format("embedded-opentype"), url("../font/fontello.woff2?94606861") format("woff2"), url("../font/fontello.woff?94606861") format("woff"), url("../font/fontello.ttf?94606861") format("truetype"), url("../font/fontello.svg?94606861#fontello") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -581,7 +632,7 @@ span.sticker {
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('../font/fontello.svg?75489480#fontello') format('svg');
+    src: url('../font/fontello.svg?94606861#fontello') format('svg');
   }
 }
 */
@@ -596,13 +647,20 @@ span.sticker {
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
   margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
 
 .icon-certification:before {
@@ -629,7 +687,7 @@ span.sticker {
   content: '\e805'; }
 
 /* '' */
-.icon-edit:before {
+.icon-edit-1:before {
   content: '\e806'; }
 
 /* '' */
@@ -694,8 +752,7 @@ span.sticker {
 
 /* '' */
 .icon-twitter:before {
-  content: '\e816';
-  color: #1da1f2; }
+  content: '\e816'; }
 
 /* '' */
 .icon-woman:before {
@@ -718,7 +775,7 @@ span.sticker {
   content: '\e81b'; }
 
 /* '' */
-.icon-document_search_interface_symbol:before {
+.icon-review:before {
   content: '\e81c'; }
 
 /* '' */
@@ -734,7 +791,7 @@ span.sticker {
   content: '\e81f'; }
 
 /* '' */
-.icon-envelope:before {
+.icon-mail:before {
   content: '\e820'; }
 
 /* '' */
@@ -770,6 +827,10 @@ span.sticker {
   content: '\e828'; }
 
 /* '' */
+.icon-star_later:before {
+  content: '\e829'; }
+
+/* '' */
 .icon-add_icon:before {
   content: '\e82a'; }
 
@@ -786,6 +847,10 @@ span.sticker {
   content: '\e82d'; }
 
 /* '' */
+.icon-back_icon-1:before {
+  content: '\e82e'; }
+
+/* '' */
 .icon-interview:before {
   content: '\e82f'; }
 
@@ -821,13 +886,50 @@ span.sticker {
 .icon-up_arrow:before {
   content: '\e842'; }
 
+.icon-star:before {
+  content: '\e829'; }
+
+.icon-review:before {
+  content: '\e81c'; }
+
+.icon-chat:before {
+  content: '\e833'; }
+
+.icon-more:before {
+  content: '\e843'; }
+
+.icon-more:before {
+  font-size: 20px;
+  color: #2b2b2b;
+  margin-left: 0px; }
+
+.icon-chat:before {
+  font-size: 20px; }
+
+.icon-telephone:before {
+  font-size: 20px; }
+
+.icon-face-to-face:before {
+  font-size: 20px; }
+
+.icon-star:before {
+  font-size: 20px; }
+
+.icon-interview:before {
+  font-size: 25px; }
+
+/* '' */
 .icon-search:before {
   position: relative;
-  top: -24px; }
+  top: -24px;
+  left: 5px; }
 
 .icon-filter:before {
   position: relative;
   top: 6px; }
+
+.icon-chat_icon:before {
+  font-size: 20px; }
 
 .left {
   float: left; }
@@ -938,6 +1040,19 @@ body.posf {
   font-size: 20px;
   color: #2b2b2b;
   background: #fff; }
+
+.loading {
+  margin-top: 20px; }
+
+.loading div {
+  display: inline-block;
+  position: relative; }
+
+.loader.loader-scroller {
+  height: 45px;
+  width: 45px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db; }
 
 a {
   text-decoration: none; }
@@ -1079,8 +1194,8 @@ a {
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
-  src: url("../fonts/fontello.eot");
-  src: url("../fonts/fontello.eot#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2") format("woff2"), url("../fonts/fontello.woff") format("woff"), url("../fonts/fontello.ttf") format("truetype"), url("../fonts/fontello.svg#fontello") format("svg");
+  src: url("../font/fontello.eot?94606861");
+  src: url("../font/fontello.eot?94606861#iefix") format("embedded-opentype"), url("../font/fontello.woff2?94606861") format("woff2"), url("../font/fontello.woff?94606861") format("woff"), url("../font/fontello.ttf?94606861") format("truetype"), url("../font/fontello.svg?94606861#fontello") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -1090,7 +1205,7 @@ a {
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('../font/fontello.svg?75489480#fontello') format('svg');
+    src: url('../font/fontello.svg?94606861#fontello') format('svg');
   }
 }
 */
@@ -1105,13 +1220,20 @@ a {
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
   margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
 
 .icon-certification:before {
@@ -1138,7 +1260,7 @@ a {
   content: '\e805'; }
 
 /* '' */
-.icon-edit:before {
+.icon-edit-1:before {
   content: '\e806'; }
 
 /* '' */
@@ -1203,8 +1325,7 @@ a {
 
 /* '' */
 .icon-twitter:before {
-  content: '\e816';
-  color: #1da1f2; }
+  content: '\e816'; }
 
 /* '' */
 .icon-woman:before {
@@ -1227,7 +1348,7 @@ a {
   content: '\e81b'; }
 
 /* '' */
-.icon-document_search_interface_symbol:before {
+.icon-review:before {
   content: '\e81c'; }
 
 /* '' */
@@ -1243,7 +1364,7 @@ a {
   content: '\e81f'; }
 
 /* '' */
-.icon-envelope:before {
+.icon-mail:before {
   content: '\e820'; }
 
 /* '' */
@@ -1279,6 +1400,10 @@ a {
   content: '\e828'; }
 
 /* '' */
+.icon-star_later:before {
+  content: '\e829'; }
+
+/* '' */
 .icon-add_icon:before {
   content: '\e82a'; }
 
@@ -1295,6 +1420,10 @@ a {
   content: '\e82d'; }
 
 /* '' */
+.icon-back_icon-1:before {
+  content: '\e82e'; }
+
+/* '' */
 .icon-interview:before {
   content: '\e82f'; }
 
@@ -1330,13 +1459,50 @@ a {
 .icon-up_arrow:before {
   content: '\e842'; }
 
+.icon-star:before {
+  content: '\e829'; }
+
+.icon-review:before {
+  content: '\e81c'; }
+
+.icon-chat:before {
+  content: '\e833'; }
+
+.icon-more:before {
+  content: '\e843'; }
+
+.icon-more:before {
+  font-size: 20px;
+  color: #2b2b2b;
+  margin-left: 0px; }
+
+.icon-chat:before {
+  font-size: 20px; }
+
+.icon-telephone:before {
+  font-size: 20px; }
+
+.icon-face-to-face:before {
+  font-size: 20px; }
+
+.icon-star:before {
+  font-size: 20px; }
+
+.icon-interview:before {
+  font-size: 25px; }
+
+/* '' */
 .icon-search:before {
   position: relative;
-  top: -24px; }
+  top: -24px;
+  left: 5px; }
 
 .icon-filter:before {
   position: relative;
   top: 6px; }
+
+.icon-chat_icon:before {
+  font-size: 20px; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -1372,7 +1538,7 @@ select.select-dropdown {
   background: #FFF;
   width: 100%;
   border: 1px solid #e8e8e8;
-  background-image: url("/static/images/down-caret.svg");
+  background-image: url(/static/images/down_arrow_green.svg);
   background-repeat: no-repeat;
   background-position: right 18px center;
   cursor: pointer;
@@ -1657,9 +1823,10 @@ span.sticker {
     .view-resume-modal .main-wrapper .main-container {
       width: 100%;
       border: 1px solid #e8e8e8;
-      background-color: #FFF; }
+      background-color: #FFF;
+      border-radius: 8px; }
       .view-resume-modal .main-wrapper .main-container .container.resume-header {
-        background-image: url("/static/images/view-resume-banner.jpg");
+        background-image: url("/static/images/view-resume-banner.png");
         background-repeat: no-repeat;
         background-position: center top;
         background-size: 100% 95px;
@@ -1683,14 +1850,33 @@ span.sticker {
             height: 100%;
             border-radius: 50%;
             border: 5px solid #FFF;
-            box-shadow: 0 0 3px rgba(0, 0, 0, 0.2); }
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+            background-color: #efefef; }
         .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information {
           text-align: center; }
           .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information p.profile-name {
             font-size: 22px;
             text-align: center;
-            color: #1f8f75;
-            font-weight: bold; }
+            color: #1f8f75; }
+            .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information p.profile-name.shell {
+              font-size: 0;
+              background-color: #d8d5d5;
+              opacity: 0.4;
+              min-height: 10px;
+              animation-duration: 1.5s;
+              animation-fill-mode: forwards;
+              animation-iteration-count: infinite;
+              animation-name: placeHolderShimmer;
+              animation-timing-function: linear;
+              background: #f6f7f8;
+              background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+              background-size: 800px 104px;
+              position: relative;
+              max-width: 150px;
+              max-height: 7px;
+              min-height: 7px;
+              margin: 0 auto;
+              margin-top: 5px; }
           .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information .social-media-accounts {
             margin: 10px 0 20px; }
             .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information .social-media-accounts span.social {
@@ -1706,12 +1892,30 @@ span.sticker {
             text-align: left;
             border-right: 1px solid #e8e8e8; }
             .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot .snap .snap-title {
-              color: #333;
+              color: #808080;
               font-size: 13px;
               line-height: 1.5; }
             .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot .snap .snap-value {
-              color: #808080;
+              color: #333;
               font-size: 13px; }
+              .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot .snap .snap-value.shell {
+                font-size: 0;
+                background-color: #d8d5d5;
+                opacity: 0.4;
+                min-height: 10px;
+                animation-duration: 1.5s;
+                animation-fill-mode: forwards;
+                animation-iteration-count: infinite;
+                animation-name: placeHolderShimmer;
+                animation-timing-function: linear;
+                background: #f6f7f8;
+                background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+                background-size: 800px 104px;
+                position: relative;
+                max-width: 100px;
+                max-height: 7px;
+                margin-top: 5px;
+                min-height: 7px; }
             .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot .snap:last-child {
               border: 0; }
           .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot:before {
@@ -1741,6 +1945,25 @@ span.sticker {
             margin-right: 20px;
             font-style: italic;
             color: #808080; }
+            .view-resume-modal .main-wrapper .main-container .container.resume-header .last-login-container p span.shell {
+              display: inline-block;
+              font-size: 0;
+              background-color: #d8d5d5;
+              opacity: 0.4;
+              min-height: 10px;
+              animation-duration: 1.5s;
+              animation-fill-mode: forwards;
+              animation-iteration-count: infinite;
+              animation-name: placeHolderShimmer;
+              animation-timing-function: linear;
+              background: #f6f7f8;
+              background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+              background-size: 800px 104px;
+              position: relative;
+              min-width: 100px;
+              max-height: 7px;
+              margin-top: 5px;
+              min-height: 7px; }
       .view-resume-modal .main-wrapper .main-container .container.resume-body {
         padding: 20px; }
         .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content {
@@ -1760,7 +1983,7 @@ span.sticker {
           .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default {
             background: transparent;
             border: none;
-            margin: 0 5px 0 0;
+            margin: 0 48px 0 0;
             position: relative;
             top: 1px; }
             .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default a {
@@ -1898,16 +2121,19 @@ span.sticker {
                 font-size: 15px; }
                 .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content .datum p.name {
                   font-weight: bold;
-                  color: #333; }
+                  color: #333;
+                  margin-left: 15px; }
                 .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content .datum p.detail {
-                  color: #808080; }
+                  color: #808080;
+                  margin-left: 15px; }
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content .datum .separator {
                 margin: 20px 0;
                 border-bottom: 1px solid #e8e8e8; }
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul {
                 margin: 0;
                 padding: 0;
-                list-style: none; }
+                list-style: none;
+                margin-left: 15px; }
                 .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul li {
                   font-size: 0;
                   margin: 10px 0; }
@@ -1920,6 +2146,24 @@ span.sticker {
                       color: #808080; }
                     .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul li span.value {
                       color: #333; }
+                      .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul li span.value.shell {
+                        font-size: 0;
+                        background-color: #d8d5d5;
+                        opacity: 0.4;
+                        min-height: 10px;
+                        animation-duration: 1.5s;
+                        animation-fill-mode: forwards;
+                        animation-iteration-count: infinite;
+                        animation-name: placeHolderShimmer;
+                        animation-timing-function: linear;
+                        background: #f6f7f8;
+                        background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+                        background-size: 800px 104px;
+                        position: relative;
+                        max-width: 100px;
+                        max-height: 7px;
+                        margin-top: 5px;
+                        min-height: 7px; }
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-header .user-image {
                 display: inline-block;
                 vertical-align: middle;
@@ -1950,7 +2194,10 @@ span.sticker {
               border: 1px solid #e8e8e8;
               margin: 10px 0 0 0; }
           .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-cover-letter {
-            padding: 20px 0 0 0; }
+            margin-top: 10px;
+            border: 1px solid #e8e8e8;
+            line-height: 24px;
+            font-size: 14px; }
   .view-resume-modal .mobile-resume-sidebar {
     display: none; }
   .view-resume-modal .resume-sidebar {
@@ -1979,9 +2226,27 @@ span.sticker {
         cursor: pointer; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.cand-comment-button {
           margin: 0;
-          margin-top: 5px; }
+          margin-top: 5px;
+          margin-top: 10px;
+          background-color: #FFF !important;
+          border: 1px solid #d8d5d5 !important;
+          border-radius: 4px;
+          padding: 6px 18px;
+          font-size: 14px !important;
+          margin: 0 0px;
+          color: #2b2b2b !important;
+          cursor: pointer; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.cand-add-tag-button {
-          margin: 0; }
+          margin: 0;
+          margin-top: 10px;
+          background-color: #FFF !important;
+          border: 1px solid #d8d5d5 !important;
+          border-radius: 4px;
+          padding: 6px 18px;
+          font-size: 14px !important;
+          margin: 0 0px;
+          color: #2b2b2b !important;
+          cursor: pointer; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.green {
           background-color: #1f8f75; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.red {
@@ -2027,7 +2292,7 @@ span.sticker {
         margin-top: 20px; }
       .view-resume-modal .resume-sidebar .sidebar-section .cand-add-tag {
         height: 40px;
-        line-height: 40px;
+        line-height: 10px;
         padding: 10px; }
       .view-resume-modal .resume-sidebar .sidebar-section .comment-block {
         margin-bottom: 15px; }
@@ -2219,7 +2484,9 @@ span.sticker {
   width: 100%;
   padding: 5px;
   border-left: 3px solid #1f8f75;
-  min-height: 50px; }
+  min-height: 50px;
+  margin-bottom: 15px;
+  overflow: hidden; }
   .sidebar-section.comments textarea:focus {
     outline: none;
     border: 1px solid #1f8f75;

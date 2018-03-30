@@ -191,16 +191,17 @@ function Filters(){
 			"topinst": 0,
 			"lawinst": 0
 		};
-
 		settings.topinstInput = $("#topinst");
 		settings.lawinstInput = $("#lawinst");
-
+		settings.candidatesSearchResults = $("#candidatesSearchResults")
+		settings.seeFilters = $("#seeFilters");
+		settings.maxFilters = 7;
 		setOnClickFilters();
 		setOnClickCloseFilters();
 		onInputSearchFilter()
 		onClickFiltersCheckBox()
 		onChangeFiltersDropdownHalf()
-
+		onClickSeeFilters()
 		onClickTopInstituteContainer()
 
 		jQuery(".modal_overlay").on("click",".category_listing li",function() {
@@ -235,6 +236,16 @@ function Filters(){
 		  jQuery(".modal_body").scrollTop(0);
 
 		});
+	}
+
+	function onClickSeeFilters() {
+		settings.seeFilters.click(function(){
+			settings.activeFiltersContainer.toggleClass("collapsed");
+			if(settings.activeFiltersContainer.hasClass("collapsed")) {
+				return $(this).text("See More").removeClass("hidden");
+			}
+			return $(this).text("See Less").removeClass("hidden");
+		})
 	}
 
 	function onClickTopInstituteContainer() {
@@ -382,13 +393,13 @@ function Filters(){
 
 	function setOnClickFilters() {
         settings.filterModalOpenButton.click(function(event){
+			debugger
 				if(settings.topinstitute.topinst > 0) {
 					settings.topinstInput.prop("checked", true)
 				}
 				else {
 					settings.topinstInput.prop("checked", false)
 				}
-				debugger
 				if(settings.topinstitute.lawinst > 0) {
 					settings.lawinstInput.prop("checked", true)
 				}
@@ -458,16 +469,18 @@ function Filters(){
 		aFilter.attr('data-value', value);
 		aFilter.attr('data-type', type);
 		aFilter.find('.icon-label').text(category + ": " + label)
-		console.log(aFilter)
+
 
 		return aFilter;
 	}
 
-
-
 	function addFilterToContainer(value, label, category, type){
 		var aFilter = createPill(value, label, category, type);
 		settings.appliedFiltersContainer.prepend(aFilter);
+		if(settings.appliedFiltersContainer.children().length >= settings.maxFilters) {
+			settings.activeFiltersContainer.addClass("collapsed");
+			settings.seeFilters.removeClass("hidden");
+		}
 	}
 
 	function removeAllFilters(){
@@ -498,6 +511,10 @@ function Filters(){
 
 		settings.activeFiltersContainer.find(".filter-tag").remove();
 		settings.activeFiltersContainer.addClass("hidden")
+		settings.clearAllFitersButton.addClass("hidden");
+		settings.seeFilters.addClass("hidden")
+		settings.topinstitute.topinst = 0;
+		settings.topinstitute.lawinst = 0;
 	}
 
 	function removeFilter(value,category,type) {
@@ -508,9 +525,12 @@ function Filters(){
 				filtersTarget[category]['label'].splice(index, 1);
 				filtersTarget[category]['count'] -= 1;
 				filtersTarget[category]['target'].find('input[value='+value+']').prop('checked', false)
-				if(filtersTarget[category]['count'])
-					return settings.filterModal.find(".modal_sidebar li[data-name="+category+"] .filterCount").text('('+filtersTarget[category]['count']+')').removeClass("hidden")
-				return settings.filterModal.find(".modal_sidebar li[data-name="+category+"] .filterCount").addClass("hidden")
+				if(filtersTarget[category]['count']){
+					settings.filterModal.find(".modal_sidebar li[data-name="+category+"] .filterCount").text('('+filtersTarget[category]['count']+')').removeClass("hidden")
+				}
+				else {
+					settings.filterModal.find(".modal_sidebar li[data-name="+category+"] .filterCount").addClass("hidden")
+				}
 			}
 		}
 		else if(type == "dropdownHalf"){
@@ -531,9 +551,17 @@ function Filters(){
 				filtersTarget[category]['target'].val("-1")
 			}
 		}
+
 		if(!settings.activeFiltersContainer.find(".filter-tag").length) {
 			settings.clearAllFitersButton.addClass("hidden");
+			settings.activeFiltersContainer.addClass("hidden")
 		}
+
+		else if(settings.activeFiltersContainer.find(".filter-tag").length < settings.maxFilters) {
+			settings.activeFiltersContainer.removeClass("collapsed")
+			settings.seeFilters.addClass("hidden");
+		}
+
 	}
 
 	function addFiltersToContainer(){
@@ -564,6 +592,8 @@ function Filters(){
 			}
 		}
 	}
+
+
 
 	function setAppliedFilters(name){
 
@@ -720,7 +750,7 @@ function Filters(){
 				}
 				maxValue = parseInt(filtersTarget[name]["props"][key]['target'].val());
 			}
-			if(minValue != -1 && maxValue != -1 && maxValue <= minValue) {
+			if(minValue != -1 && maxValue != -1 && maxValue < minValue) {
 				element.next(".error-field").text(errorResponses['invalid'+element.attr('id')]).removeClass("hidden");
 				return false
 			}

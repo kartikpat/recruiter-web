@@ -21,8 +21,8 @@
 
 .page-content {
 	@include page-content;
-
-	min-height:calc(100% - 75px);
+	min-height: 90vh;
+	// min-height:calc(100% - 75px);
 
 	.main-wrapper {
 		position:absolute;
@@ -171,6 +171,7 @@
 					    padding: 5px 0 0 0;
 					    font-size: 0;
 						cursor: pointer;
+						position: relative;
 						.user-item {
 						    display: inline-block;
 						    vertical-align: middle;
@@ -228,6 +229,18 @@
 
 								}
 							}
+						}
+
+						.newMsgNotify {
+							position: absolute;
+						    top: 50%;
+						    right: 5px;
+						    width: 20px;
+						    height: 20px;
+						    transform: translate(0,-50%);
+						    background-color: $newMsgNotifyColor;
+						    border-radius: 50%;
+							color: #fff;
 						}
 
 						.conversation-item-separator {
