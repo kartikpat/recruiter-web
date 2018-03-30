@@ -7,7 +7,11 @@
 	var program = require("commander"); //options generator for command line interface
 	var compression = require("compression"); //compresses the request payload
 	var cookieParser = require("cookie-parser"); //stores the session data on the client within a cookie
-	var request = require("request"); //for making http and https requests
+	const passport = require("passport");
+	const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
+
+	const request = require('request');
+
 	var mode = "prod";
 	var env = "cloud";
 	var staticMiddlewareOptions = {
@@ -40,6 +44,68 @@
 	var config = require(program.config);
 	var vault = program.vault;
 
+	var baseUrl = config["baseUrl"];
+	if(env=="local")
+		baseUrl= config["baseUrl_local"];
+	else
+		baseUrl = config["baseUrl"];
+
+
+	passport.use('linkedin-auths', new LinkedInStrategy({
+		clientID: config['social']['linkedin']['clientId'],
+		clientSecret: config['social']['linkedin']['secret'],
+		callbackURL: config['social']['linkedin']['callbackURL'],
+		scope: ['r_emailaddress', 'r_basicprofile'],
+		passReqToCallback: true
+	}, async function(req, accessToken, refreshToken, params, profile, done){
+		const token= req.cookies['recruiter-access-token'];
+		console.log(params)
+		const data = {
+			token: accessToken,
+			refreshToken: refreshToken,
+			profile: profile
+		}
+
+		try{
+			await addUserSocial('linkedin', data, token);
+			return done(null, data)
+		}
+		catch(err){
+			return done(null, false);
+			
+		}
+	}));
+
+	function addUserSocial(type, data, token){
+		return new Promise(function(fulfill, reject){
+			request.post({
+				url: baseUrl+"/recruiter/connect/"+type,
+				headers: {
+					Authorization: 'Bearer '+token
+				},
+				body: data,
+				json: true
+			},function(err, response, body){
+				if(err){
+					return reject(err);		
+				}
+				const jsonBody = body;
+				if(jsonBody.status && jsonBody.status =='success'){
+					return fulfill(1);
+				}
+				else 
+					return reject('Not authorized by application')
+			})
+		})
+	}
+
+	passport.serializeUser(function(user, cb) {
+	  cb(null, user);
+	});
+
+	passport.deserializeUser(function(obj, cb) {
+	  cb(null, obj);
+	});
 
 	var app = express();
 	app.use(cookieParser())
@@ -51,6 +117,8 @@
 	// }));
 	app.use(bodyParser.urlencoded({ extended: true }))
 	app.use(compression()); //compressing payload on every request
+
+	app.use(passport.initialize());
 
 	app.engine('html', require('hogan-express'));
 	app.set('partials',{
@@ -85,8 +153,10 @@
 		mode: mode,
 		env: env,
 		cprint: cprint,
-		request: request
+		request: request,
+		passport: passport
 	}
 
 	require(__dirname+"/routes/home.js")(settings);
+	require(__dirname+"/routes/social-hooks.js")(settings);
 	app.listen(port);

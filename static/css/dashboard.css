@@ -1570,7 +1570,7 @@ span.sticker {
         color: #149075;
         font-size: 34px;
         font-weight: 400;
-        height: 34px; }
+        height: 40px; }
       .page-content .block .stats .legend {
         font-size: 13px;
         color: #2b2b2b; }
@@ -1619,7 +1619,9 @@ span.sticker {
     width: 1px;
     background: #e4e4e4;
     float: right;
-    margin-top: -119px; }
+    margin-top: -130px; }
+  .page-content .positive-left {
+    display: none; }
   .page-content .salutation-icon {
     margin-right: 18px; }
   .page-content .header-row {
@@ -1627,7 +1629,7 @@ span.sticker {
     .page-content .header-row a {
       color: #2b2b2b; }
     .page-content .header-row .heading {
-      width: 70%;
+      width: 90%;
       display: inline-block;
       font-size: 16px;
       font-weight: 600; }
@@ -1721,7 +1723,8 @@ span.sticker {
         margin-left: 85px;
         width: calc( 100% - 90px);
         text-align: left;
-        padding-left: 10px; }
+        padding-left: 10px;
+        padding-top: 0px; }
         .page-content .detail-card .notification-row.multiple .action-buttons .button {
           margin-right: 10px; }
     .page-content .detail-card .highlighted-banner {
@@ -1768,7 +1771,7 @@ span.sticker {
       border: thin solid #e8e8e8;
       border-top: 4px solid #149075;
       text-align: center;
-      padding: 10px;
+      padding: 7px 10px;
       border-radius: 6px;
       border-top-left-radius: 0px;
       border-top-right-radius: 0px;
@@ -1828,7 +1831,8 @@ span.sticker {
       .page-content .feed-row .main-content .stats .value {
         color: #149075; }
       .page-content .feed-row .main-content .stats .applications {
-        line-height: 20px; }
+        line-height: 20px;
+        padding-left: 30px; }
     .page-content .feed-row .main-content .button-action-list {
       display: inline-block;
       cursor: pointer;
@@ -1910,18 +1914,20 @@ span.sticker {
   .separater.positive-bottom {
     width: 90%;
     height: 1px;
-    margin-top: 18px;
-    float: left; }
+    margin-top: 13px;
+    float: left;
+    position: relative; }
   .separater.positive-top {
-    margin-top: -152px;
+    margin-top: -157px;
     height: 1px;
     width: 90%; }
   .separater.positive-left {
     float: left;
     height: 90%;
-    margin-top: -152px; }
+    margin-top: -157px;
+    display: block; }
   .separater.positive-right {
-    margin-top: -134px;
+    margin-top: -139px;
     height: 90%;
     margin-right: 0px;
     position: relative;
