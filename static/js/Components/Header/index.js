@@ -10,4 +10,6 @@ $(document).ready(function(){
 	headerDetails.searchView();
 	headerDetails.navigationView();
 	headerDetails.search();
+	headerDetails.resumeModal();
+	// headerDetails.CloseresumeModal();
 })

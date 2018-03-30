@@ -14,16 +14,17 @@ function BookedSlots() {
 		settings.openCancelInterviewModalButton= '.candidateCancelInterviewInvite',
 		settings.cancelInterviewModal= $('.cancelInterviewModal'),
 		settings.cancelInterviewButton= $('.cancelInterviewButton'),
-		settings.bookedSlotsview=$('.page-content'),
+		settings.bookedSlotsview=$('.bookedSlots'),
 		settings.header=$('.action-wrapper'),
 		settings.headerSlot=$('.header-slot')
-		settings.noInterviewView=$('.page-wrap'),
+		settings.noInterviewView=$('.empty-view'),
 		settings.tableRowShell = $(".tableRow.shell");
 		settings.loaderOverlay = $("#loaderOverlay");
 		settings.date = ""
 		onClickInterviewCancel();
         onClickToggle()
 		jQuery(".header .menu-list-item.my-interviews").addClass("active");
+		// settings.noInterviewView.removeClass('hidden');
 	}
 
 	function onClickInterviewCancel(){
@@ -80,13 +81,22 @@ function BookedSlots() {
         if(aData["slot"]){
             var date = moment(aData["slot"]["date"]).format('ll');
             console.log(settings.date )
-            console.log(date)
-            if(settings.date != date) {
-                settings.date = date;
+			console.log(date)
+			var width=$(window).width();
+			console.log(width);
+			if(width>800){
+				if(settings.date != date) {
+					settings.date = date;
+					item.interviewDate.text(date)
+					if(index > 0)
+						item.element.addClass("border-top")
+				}
+			}	
+			else{
+				settings.date = date;
                 item.interviewDate.text(date)
-				if(index > 0)
-                	item.element.addClass("border-top")
-            }
+			}
+			
 			var time = aData["slot"]["time"];
 			var temp = time.substr(0,2) + ":" + time.substr(2,2);
 			var temp1 =	moment(temp, 'HH:mm').add(30, 'minutes').format('HH:mm');
@@ -112,24 +122,22 @@ function BookedSlots() {
 
 	function addToList(dataArray,pageNumber,pageContent){
 		var str = '';
-		hideShell();
-		// debugger
-		// dataArray.length=0;
-		if(dataArray.length<1 && pageNumber ==1) {
-			settings.bookedSlotsview.addClass('hidden');
-			settings.noInterviewView.removeClass('hidden');		
-		}
+		settings.noInterviewView.addClass('hidden');
+		settings.bookedSlotsview.removeClass('hidden');
 		settings.header.removeClass('hidden');
-		settings.headerSlot.removeClass('hidden');
+		if(dataArray.length<1 && pageNumber ==1) {
+			settings.noInterviewView.removeClass('hidden');
+			settings.bookedSlotsview.addClass('hidden');
+			settings.header.addClass('hidden');	
+		}
 		dataArray.forEach(function(aData, index){
 			var item = createElement(aData ,index);
 			str+=item.element[0].outerHTML;
 		});
-		// settings.bookedSlots.html(str);
-			settings.bookedSlots.append(str);
-			if(dataArray.length< pageContent) {
-				return settings.bookedSlots.append("<div class='no-data'>No more records!</div>")
-			}
+		settings.bookedSlots.append(str);
+		if(dataArray.length< pageContent) {
+			return settings.bookedSlots.append("<div class='no-data'>No more records!</div>")
+		}
 	}
 
 	function emptySlots(){
@@ -184,7 +192,8 @@ function BookedSlots() {
 
 	function startdate(fn){
         $("#startdatepicker").datepicker({
-            buttonImage: '/static/images/calender.png',
+			showOn: "button",
+            buttonImage: '/static/images/smallcalendar.svg',
             buttonImageOnly: true,
             changeMonth: true,
             changeYear: true,
@@ -194,9 +203,9 @@ function BookedSlots() {
             altFormat: "yy-mm-dd",
             showOn: 'both', 
             onSelect: function(){
-				console.log("EDESTADDRREQ");
 				fn();
 			}
+			
         });
     }
 

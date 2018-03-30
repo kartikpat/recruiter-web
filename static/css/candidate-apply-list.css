@@ -3082,7 +3082,8 @@ input::-webkit-input-placeholder {
         display: inline-block;
         vertical-align: top;
         cursor: pointer;
-        padding: 7px 14px; }
+        padding: 7px 14px;
+        margin-left: 0px; }
         .page-content .page-header .action-buttons span.green {
           background-color: #1f8f75; }
         .page-content .page-header .action-buttons span.red {
@@ -3099,6 +3100,10 @@ input::-webkit-input-placeholder {
           background-color: transparent !important;
           padding-left: 0;
           padding-right: 0; }
+          .page-content .page-header .action-buttons span.multi-options .icon-more:before {
+            font-size: 20px;
+            color: #2b2b2b;
+            margin-left: 0px; }
     .page-content .page-header .job-location {
       display: inline-block; }
       .page-content .page-header .job-location.shell {
@@ -3152,7 +3157,8 @@ input::-webkit-input-placeholder {
         position: relative;
         min-width: 50px; }
   .page-content .candidate-apply-listing {
-    width: 80%; }
+    width: 80%;
+    margin-bottom: 80px; }
     .page-content .candidate-apply-listing .candidates-area {
       background-color: #FFF;
       border: 1px solid #e8e8e8;
@@ -3173,6 +3179,10 @@ input::-webkit-input-placeholder {
             position: relative;
             height: 30px;
             overflow: hidden; }
+            .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .keyword-search .container .icon-search:before {
+              position: relative;
+              top: -24px;
+              left: 5px; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .keyword-search input {
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -3276,6 +3286,9 @@ input::-webkit-input-placeholder {
               background-repeat: no-repeat;
               background-size: 16px;
               padding: 0 15px 0 10px; }
+              .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span.filter-button .icon-filter:before {
+                position: relative;
+                top: 6px; }
               .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span.filter-button span {
                 display: inline-block; }
             .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span.sort-button span {
@@ -4876,6 +4889,10 @@ input::-webkit-input-placeholder {
     width: 100%; }
   .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .cand-add-tag {
     width: 100%; }
+  .page-content .page-header .action-buttons .unpublish-job {
+    margin-top: 5px; }
+  .page-content .page-header .action-buttons .multi-options {
+    margin-top: 5px; }
   .action-buttons .select-dropdown {
     padding: 5px 5px 5px 15px; }
   .active-filters {

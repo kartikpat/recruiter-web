@@ -392,7 +392,7 @@
             background: #0c9175;
             border-color: #8f8a8a;
             border-radius: 4px;
-            padding: 5px 14px;
+            padding: 2px 14px;
             color: #FFF;
             font-size: 15.75px;
             /* Approximation due to font substitution */
@@ -424,6 +424,8 @@
         width: 45%;
         padding-left: 20px;
         padding-bottom: 20px; }
+        .page-content .main-wrapper .container .dashboard .links img {
+          margin-right: 10px; }
       .page-content .main-wrapper .container .dashboard a {
         color: #2b2b2b;
         font-size: 15.75px;
@@ -432,7 +434,6 @@
         line-height: 29.992px;
         /* Approximation due to font substitution */
         text-align: left;
-        padding-left: 10px;
         display: inline-block; }
       .page-content .main-wrapper .container .dashboard span {
         color: #737373;

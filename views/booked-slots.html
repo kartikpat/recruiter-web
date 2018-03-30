@@ -4,13 +4,13 @@
     <div class="loader"></div>
 </div>
 <div class="page-content">
-    <div class="header-slot hidden">
+    <div class="header-slot">
         <div class="tagline left">Booked Slots</div>
-        <span class="start-date">
-                <input type="text" id="startdatepicker"class="hidden">
-                <input type="text" id="start_date"class="hidden">
-        </span>
         <div class="right-container right">
+                <span class="start-date">
+                        <input type="text" id="startdatepicker"class="hidden">
+                        <input type="text" id="start_date"class="hidden">
+                </span>
             <div class="section">
                 <select class="select-dropdown inactive" id="calendarDropdown">
                     <div class="dropdown-list" >
@@ -19,15 +19,21 @@
                 </select>
             </div>
             <div class="manage-Calendar">
-                <a href="/calendar-manage">
-                  Manage Calendar
-            </a>
+                <a href="/calendar-manage">Manage Calendar</a>
             </div>
         </div>
-       
         <div class="clearfix"></div>
     </div>
-    <div class="action-wrapper hidden">
+    <div class="empty-view hidden">
+        <div class="no-schedule-container">
+            <div class="image-container">
+                <img src="/static/images/no-calendar.png">
+            </div>
+            <div class="heading">No interviews yet</div>
+            <div class="subheading">You'll find a list of interviews here once you schedule invites</div>
+        </div>
+    </div>
+    <div class="action-wrapper ">
         <div class="action Interview-Date">
             Interview Date
         </div>
@@ -115,7 +121,7 @@
 </div>
 
 
-<div class="page-wrap hidden">
+<!-- <div class="page-wrap hidden">
     <div class="main-wrappper">
         <div class="main-conainer">
             <div class="header-slot">
@@ -143,6 +149,6 @@
     <div class="conversations right">
             {{> chatSidebar }}
     </div>
-</div>  
+</div>   -->
 
 {{> footer }}

@@ -352,7 +352,6 @@
 			"debug" : [
 				"static/css/jquery-ui.min.css",
 				"static/css/header.css",
-
             	"static/css/candidate-list-one.css",
 				"static/css/footer.css",
 				"static/css/buttons.css",
@@ -469,6 +468,7 @@
 		"styles": {
 			"debug" : [
 				"static/css/header.css",
+				"static/css/modal.css",
 				"static/css/jquery.timepicker.min.css",
 				"static/css/jquery-ui.min.css",
 				"static/css/manage-calendar.css",
@@ -1504,6 +1504,8 @@
 				"static/js/Utilities/common.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
+				"static/js/Components/onBoarding/model.js",
+				"static/js/Components/onBoarding/index.js",
 				"static/js/Services/fetchRecruiterCalendar.js",
 				"static/js/Components/calendar-manage/model.js",
 				"static/js/Components/calendar-manage/index.js"
