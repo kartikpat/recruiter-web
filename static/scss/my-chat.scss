@@ -6,30 +6,35 @@
 	    background: rgba(255, 0, 0, 0.74) !important;
 }
 
+.conversation-item-active {
+	background-color: $resume-profile-snapshot-background;
+}
+
 .back-button {
 	display: inline-block;
-	width: 15px;
-	height: 15px;
-	margin-top: 7px;
-	margin-right: 10px;
-	cursor: pointer;
-	img {
-		width: 100%;
-		height: 100%;
-	}
+    margin-top: 4px;
+    margin-right: 5px;
+    cursor: pointer;
+    color: #737373;
+    font-size: 17px;
+
 }
 
 .page-content {
 	@include page-content;
-	min-height: 90vh;
-	// min-height:calc(100% - 75px);
-
+	height: calc(100% - 75px);
+	min-height: calc(100% - 75px);
+	background-color: $body-background-color;
 	.main-wrapper {
+		height: 100%;
+		position: relative;
+	}
+	.main-wrapper-chat {
 		position:absolute;
-		top:20px;
-		bottom:20px;
-		right:20px;
-		left:20px;
+		top:0;
+		bottom:0;
+		right:0;
+		left:0;
 
 		.main-container {
 			height:100%;
@@ -54,6 +59,7 @@
 				margin:0;
 				display:inline-block;
 				font-size:$page-subtitle-font-size;
+				color: $inline-link-color;
 			}
 
 			span {
@@ -81,13 +87,15 @@
 		}
 
 		.mobile-user-profile {
-			background-color:$settings-highlight-background;
+			background-color:$color-white;
 			padding:10px;
 			font-size:$base-font-size;
 			height:50px;
 			overflow:hidden;
 			display:none;
-
+			border-bottom: 1px solid #e8e8e8;
+			border-top-left-radius: 4px;
+			border-top-right-radius: 4px;
 			.user-details {
 
 				.user-item {
@@ -100,6 +108,7 @@
 							height:30px;
 							width:30px;
 							border-radius:50%;
+							border: 1px solid #eee;
 						}
 					}
 
@@ -128,7 +137,7 @@
 				margin-top: 10px;
                 display: block;
                     white-space: nowrap;
-    overflow: auto;
+    			overflow: auto;
 
                 span.skill-tag {
                 	padding:5px 15px;
@@ -145,22 +154,32 @@
 
 		.chat-body {
 			height:calc(100% - 62px);
+			.conversation-item-list {
+				height: calc(100% - 37px);
+				overflow: auto;
+			}
 			.sidebar {
 				width:20%;
 				height:100%;
 				display:inline-block;
 				vertical-align:top;
-				overflow:auto;
 				&.conversations-list {
 					border-right:1px solid $border-color-base;
 					.search {
+						position: relative;
 						input {
 							width:100%;
 							display:block;
-							padding:10px 10px 10px 30px;
+							padding:10px 10px 10px 45px;
 							font-size:$base-font-size;
 							border:0;
 							border-bottom:1px solid $border-color-base;
+						}
+						i.icon-search {
+							position: absolute;
+						    top: 50%;
+						    transform: translate(0,-51%);
+						    left: 16px;
 						}
 					}
 
@@ -188,6 +207,7 @@
 								    margin-right: 0px;
 								    width: 50px;
 								    height: 50px;
+									border: 1px solid #eee;
 								}
 
 								.candidate-status {
@@ -292,7 +312,8 @@
 					.time-separator {
 						margin:15px 0;
 						text-align: center;
-
+						font-size: 14px;
+						color: #9f9f9f;
 						span {
 							display:inline-block;
 							font-size:$base-font-size;
@@ -367,7 +388,7 @@
 										text-align:right;
 
 										&.message-content {
-											background-color:$color-white;
+											background-color:$resume-profile-snapshot-background;
 											border:1px solid $border-color-base;
 											border-radius:4px;
 											padding:10px;
@@ -408,7 +429,7 @@
 
 						@include input-field;
 						line-height:1.4;
-
+						overflow: hidden;
 						&:focus {
 							outline:none;
 						}
@@ -428,7 +449,7 @@
 				width:20%;
 				height:100%;
 				display:inline-block;
-				padding:50px 0 0 0;
+				padding:20px 0 0 0;
 				border-left:1px solid $border-color-base;
 				vertical-align:top;
 
@@ -438,14 +459,15 @@
 
 					&.user-image {
 						margin:20px auto;
-
+						margin-top: 0;
 						img {
 							width:110px;
 							height:110px;
 							object-fit:cover;
 							border-radius:50%;
-							border:3px solid $color-white;
+							border:4px solid $color-white;
 							box-shadow:0 0 3px rgba(0,0,0,0.3);
+							background-color: #f7f7f7;
 						}
 					}
 
@@ -493,7 +515,7 @@
 		width: 75%;
 	}
 	.page-content {
-		.main-wrapper {
+		.main-wrapper-chat {
 			.main-container {
 				.container {
 					.chat-container {
@@ -530,7 +552,7 @@
 		width: 70%;
 	}
 	.page-content {
-		.main-wrapper {
+		.main-wrapper-chat {
 			.main-container {
 				.container {
 					.chat-container {
@@ -589,9 +611,12 @@
         display: none;
     }
 	.page-content {
-		height:calc(100vh - 55px);
-
+		height:calc(100% - 55px);
+		min-height: calc(100% - 55px);
 		.main-wrapper {
+			overflow: hidden;
+		}
+		.main-wrapper-chat {
 			.main-container {
 				.container {
 					.chat-container {
@@ -634,10 +659,33 @@
 }
 
 @media all and (max-width:480px) {
-	.page-content {
-		height:calc(100vh - 55px);
+	.page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item.user-info p.user-name {
+		font-size: 16px;
+	}
+	.page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item.user-info p.user-designation {
+		font-size: 14px;
+	}
+	.page-content .chat-container .chat-body .sidebar.conversations-list .search  {
+		input {
+			font-size: 16px;
+			padding-left: 35px;
+		}
 
-		.main-wrapper {
+		i.icon-search {
+			left: 5px;
+		}
+	}
+	.page-content .chat-container .mobile-user-profile .user-details .user-item.user-info p.user-name {
+		font-size: 16px;
+	}
+	.page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .user-item.user-info {
+		padding-right: 0;
+	}
+
+	.page-content {
+
+
+		.main-wrapper-chat {
 			.main-container {
 				.container {
 					.chat-container {
@@ -647,6 +695,7 @@
 						}
 						.chat-body {
 							.sidebar {
+
 							}
 
 							.chat-window {
@@ -673,3 +722,8 @@
 		}
 	}
 }
+
+// .tooltipster-sidetip .tooltipster-box {
+// 	background-color: $resume-profile-snapshot-background !important;
+//
+// }

@@ -63,9 +63,9 @@ $(document).ready(function(){
     }
 
 	$('.chat-div .chat-div-header').click(function() {
-		$(this).find(".minus-icon").toggleClass("active")
+		$(this).find(".minusIcon").toggleClass("active")
 		$('.chat-div .chat-div-content').toggleClass("show");
-		//$('.chat-div .minus-icon').toggleClass("show");
+		//$('.chat-div .minusIcon').toggleClass("show");
 	});
 	getRequest(baseUrl+"/recruiter/"+recruiterId+"/chat", {}, function(res){
 		if(res.status && res.status =='success'){
@@ -100,20 +100,39 @@ function getTimeElement(data) {
 
 function getMsgSentElement(data) {
 
-	var card = $(".message.sent.prototype").clone().removeClass('prototype hidden')
-
-	card.find(".useImg").attr("src", (data["entry"]["img"] || "/static/images/noimage.png"))
-	card.find(".msgContent").html(data["entry"]["msg"])
-	card.find(".msgTime").text(moment(data["entry"]["time"]).format("hh:mm a"))
-	return card
+    var card = $(".message.sent.prototype").clone().removeClass('prototype hidden')
+    var time;
+    time = moment(data["entry"]["time"]).format("DD MMMM YYYY") + " , ";
+    time += moment(data["entry"]["time"]).format("hh:mm a");
+    card.find(".msgContent").html(data["entry"]["msg"]).attr("title", time);
+    return card
 }
 
-function getMsgReceivedElement(data) {
-	var card = $(".message.received.prototype").clone().removeClass('prototype hidden')
-	card.find(".useImg").attr("src", (data["entry"]["img"] || "/static/images/noimage.png"))
-	card.find(".msgContent").html(data["entry"]["msg"])
-	card.find(".msgTime").text(moment(data["entry"]["time"]).format("hh:mm a"))
-	return card
+// function getMsgSentElement(data) {
+//
+// 	var card = $(".message.sent.prototype").clone().removeClass('prototype hidden')
+//
+// 	card.find(".msgContent").html(data["entry"]["msg"])
+// 	card.find(".msgTime").text(moment(data["entry"]["time"]).format("hh:mm a"))
+// 	return card
+// }
+
+// function getMsgReceivedElement(data) {
+// 	var card = $(".message.received.prototype").clone().removeClass('prototype hidden')
+// 	card.find(".useImg").attr("src", (data["entry"]["img"] || "/static/images/noimage.png"))
+// 	card.find(".msgContent").html(data["entry"]["msg"])
+// 	card.find(".msgTime").text(moment(data["entry"]["time"]).format("hh:mm a"))
+// 	return card
+// }
+
+function getMsgReceivedElement(data, flag) {
+    var card = $(".message.received.prototype").clone().removeClass('prototype hidden')
+
+    var time;
+    time = moment(data["entry"]["time"]).format("DD MMMM YYYY") + " , ";
+    time += moment(data["entry"]["time"]).format("hh:mm a");
+    card.find(".msgContent").html(data["entry"]["msg"]).attr("title", time);
+    return card
 }
 
 var isShowCollapsedCandidate = 0;
@@ -121,16 +140,16 @@ var count = 0;
 
 chatContainer.on('click','.candidate-card', function() {
 
-	if(!($(this).hasClass("selected"))) {
+	if(!($(this).hasClass("selected-sticky"))) {
 
 		var channelName = $(this).attr("data-channel-name")
 		var chatContainerBox = chatDivBox.clone().removeClass('prototype hidden');
 		chatContainerBox.find(".candidate-name").text($(this).find(".candidate-name").text());
 		// chatContainerBox.find(".last-active-date").text(startTime());
 		chatContainerBox.find(".chat-div-header").attr("data-id",$(this).attr("data-id"));
-		chatContainerBox.find(".info-buttons .info-icon").attr("data-id",$(this).attr("data-id"));
-		chatContainerBox.find(".info-buttons .minus-icon").attr("data-id",$(this).attr("data-id"));
-		chatContainerBox.find(".info-buttons .close-icon").attr("data-id",$(this).attr("data-id"));
+		chatContainerBox.find(".info-buttons .infoIcon").attr("data-id",$(this).attr("data-id"));
+		chatContainerBox.find(".info-buttons .minusIcon").attr("data-id",$(this).attr("data-id"));
+		chatContainerBox.find(".info-buttons .closeIcon").attr("data-id",$(this).attr("data-id"));
 		chatContainerBox.attr("data-id",$(this).attr("data-id"));
         var dataID = chatContainerBox.attr("data-id");
         var obj = getCandidateFromStore(dataID)
@@ -159,7 +178,7 @@ chatContainer.on('click','.candidate-card', function() {
             var hideElement = 1+maxCandidateChats;
             var dataIdLocal = $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").attr("data-id");
             clonedElement.attr("data-id",dataIdLocal);
-            clonedElement.html($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").find(".candidate-name").text()+"<i data-id="+dataIdLocal+" class='fa fa-times' aria-hidden='true'></i>");
+            clonedElement.html($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").find(".candidate-name").text()+"<i data-id="+dataIdLocal+" class='icon-cross_icon' aria-hidden='true'></i>");
             $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").addClass("hidden");
             if($(".chat-collapsed-candidate-container").hasClass("hidden")) {
                 $(".chat-collapsed-candidate-container").removeClass("hidden");
@@ -167,7 +186,7 @@ chatContainer.on('click','.candidate-card', function() {
             $(".chat-collapsed-candidate-container .chat-collapsed-candidate .chat-collapsed-candidate-wrapper").append(clonedElement);
         }
         reposition_chat_windows();
-        that.addClass("selected");
+        that.addClass("selected-sticky");
 		fetchHistory(channelName, 20 , null, null, function(status, response) {
 			var str = ""
 		    response["messages"].forEach(function(elem, index){
@@ -187,7 +206,7 @@ chatContainer.on('click','.candidate-card', function() {
 		    })
 
 			$(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(str)
-
+            initializeTooltip()
 
 		});
 
@@ -203,9 +222,9 @@ $("#conversationListing").on('click','.conversationItem', function() {
 		chatContainerBox.find(".candidate-name").text($(this).find(".user-name").text());
 		// chatContainerBox.find(".last-active-date").text(startTime());
 		chatContainerBox.find(".chat-div-header").attr("data-id",$(this).attr("data-id"));
-		chatContainerBox.find(".info-buttons .info-icon").attr("data-id",$(this).attr("data-id"));
-		chatContainerBox.find(".info-buttons .minus-icon").attr("data-id",$(this).attr("data-id"));
-		chatContainerBox.find(".info-buttons .close-icon").attr("data-id",$(this).attr("data-id"));
+		chatContainerBox.find(".info-buttons .infoIcon").attr("data-id",$(this).attr("data-id"));
+		chatContainerBox.find(".info-buttons .minusIcon").attr("data-id",$(this).attr("data-id"));
+		chatContainerBox.find(".info-buttons .closeIcon").attr("data-id",$(this).attr("data-id"));
 		chatContainerBox.attr("data-id",$(this).attr("data-id"));
         var dataID = $(this).attr("data-id");
 
@@ -237,7 +256,7 @@ $("#conversationListing").on('click','.conversationItem', function() {
             var hideElement = 1+maxCandidateChats;
             var dataIdLocal = $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").attr("data-id");
             clonedElement.attr("data-id",dataIdLocal);
-            clonedElement.html($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").find(".candidate-name").text()+"<i data-id="+dataIdLocal+" class='fa fa-times' aria-hidden='true'></i>");
+            clonedElement.html($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").find(".candidate-name").text()+"<i data-id="+dataIdLocal+" class='icon-cross_icon' aria-hidden='true'></i>");
             $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").addClass("hidden");
             if($(".chat-collapsed-candidate-container").hasClass("hidden")) {
                 $(".chat-collapsed-candidate-container").removeClass("hidden");
@@ -265,7 +284,7 @@ $("#conversationListing").on('click','.conversationItem', function() {
 		    })
 
 			$(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(str)
-
+            initializeTooltip()
 
 		});
 
@@ -280,7 +299,7 @@ $("#chat-collapsed-container").on('click',".chat-collapsed-candidate-container .
 
 	$("#chat-collapsed-container .candidate-collapsed-block[data-id="+dataId+"]").remove();
     $('.chat-div-candidate[data-id='+dataId+']').remove();
-	chatContainer.find(".candidate-card[data-id="+dataId+"]").removeClass("selected");
+	chatContainer.find(".candidate-card[data-id="+dataId+"]").removeClass("selected-sticky");
     $("#conversationListing").find(".conversationItem[data-id="+dataId+"]").removeClass("selected")
 	if($(".chat-collapsed-candidate-container .chat-collapsed-candidate-wrapper").children().length == 0) {
 		$(".chat-collapsed-candidate-container").addClass("hidden");
@@ -297,7 +316,7 @@ $("#chat-collapsed-container").on('click',".chat-collapsed-candidate-container .
 
     var dataIdLocal = $(elem).attr("data-id");
     clonedElement.attr("data-id",dataIdLocal);
-    clonedElement.html($(elem).find(".candidate-name").text()+"<i data-id="+dataIdLocal+" class='fa fa-times' aria-hidden='true'></i>");
+    clonedElement.html($(elem).find(".candidate-name").text()+"<i data-id="+dataIdLocal+" class='icon-cross_icon' aria-hidden='true'></i>");
     //$(this).attr("data-id",$('.chat-candidate-boxes .chat-div-candidate:nth-child('+maxCandidateChats+')').attr("data-id"));
     $('.chat-candidate-boxes .chat-div-candidate[data-id='+dataId+']').removeClass("hidden");
 
@@ -326,10 +345,10 @@ var populateChatView = function(array) {
 $(".chat-candidate-boxes").on('click','.chat-div-candidate .chat-div-header', function() {
 	var dataId = $(this).attr("data-id");
 	$('.chat-div-candidate[data-id='+dataId+'] .content-footer-container').toggleClass("show");
-	$('.chat-div-candidate .chat-div-header[data-id='+dataId+'] .minus-icon').toggleClass("active")
+	$('.chat-div-candidate .chat-div-header[data-id='+dataId+'] .minusIcon').toggleClass("active")
 })
 
-$(".chat-candidate-boxes").on('click','.chat-div-candidate .info-buttons .close-icon', function(event) {
+$(".chat-candidate-boxes").on('click','.chat-div-candidate .info-buttons .closeIcon', function(event) {
 	event.stopPropagation();
 	var dataId = $(this).attr("data-id");
 	hideElement = 1 + maxCandidateChats;
@@ -343,12 +362,12 @@ $(".chat-candidate-boxes").on('click','.chat-div-candidate .info-buttons .close-
 		}
 	}
 	$('.chat-div-candidate[data-id='+dataId+']').remove();
-	chatContainer.find(".candidate-card[data-id="+dataId+"]").removeClass("selected");
+	chatContainer.find(".candidate-card[data-id="+dataId+"]").removeClass("selected-sticky");
     $("#conversationListing").find(".conversationItem[data-id="+dataId+"]").removeClass("selected")
 	reposition_chat_windows();
 })
 
-$(".chat-candidate-boxes").on('click','.chat-div-candidate .info-buttons .info-icon', function(event) {
+$(".chat-candidate-boxes").on('click','.chat-div-candidate .info-buttons .infoIcon', function(event) {
 	var dataId = $(this).attr("data-id");
 	if(!($(".chat-candidate-boxes .chat-div-candidate[data-id="+dataId+"] .content-footer-container").hasClass("show"))) {
 		return
@@ -384,7 +403,8 @@ var displayAMessage = function(event) {
 
 			var item = getMsgSentElement(elem)
 			$(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
-	        that.val('');
+            initializeTooltip()
+            that.val('');
         })
 
     }
@@ -427,9 +447,9 @@ function openChat(channelName) {
 		chatContainerBox.find(".candidate-name").text($(this).find(".candidate-name").text());
 		// chatContainerBox.find(".last-active-date").text(startTime());
 		chatContainerBox.find(".chat-div-header").attr("data-id",$(this).attr("data-id"));
-		chatContainerBox.find(".info-buttons .info-icon").attr("data-id",$(this).attr("data-id"));
-		chatContainerBox.find(".info-buttons .minus-icon").attr("data-id",$(this).attr("data-id"));
-		chatContainerBox.find(".info-buttons .close-icon").attr("data-id",$(this).attr("data-id"));
+		chatContainerBox.find(".info-buttons .infoIcon").attr("data-id",$(this).attr("data-id"));
+		chatContainerBox.find(".info-buttons .minusIcon").attr("data-id",$(this).attr("data-id"));
+		chatContainerBox.find(".info-buttons .closeIcon").attr("data-id",$(this).attr("data-id"));
 		chatContainerBox.attr("data-id",$(this).attr("data-id"));
         var dataID = chatContainerBox.attr("data-id");
         var obj = getCandidateFromStore(dataID)
@@ -458,7 +478,7 @@ function openChat(channelName) {
             var hideElement = 1+maxCandidateChats;
             var dataIdLocal = $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").attr("data-id");
             clonedElement.attr("data-id",dataIdLocal);
-            clonedElement.html($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").find(".candidate-name").text()+"<i data-id="+dataIdLocal+" class='fa fa-times' aria-hidden='true'></i>");
+            clonedElement.html($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").find(".candidate-name").text()+"<i data-id="+dataIdLocal+" class='icon-cross_icon' aria-hidden='true'></i>");
             $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").addClass("hidden");
             if($(".chat-collapsed-candidate-container").hasClass("hidden")) {
                 $(".chat-collapsed-candidate-container").removeClass("hidden");
@@ -486,7 +506,7 @@ function openChat(channelName) {
 		    })
 
 			$(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(str)
-
+            initializeTooltip()
 
 		});
 
@@ -501,9 +521,9 @@ function openChat() {
 		chatContainerBox.find(".candidate-name").text($(this).find(".candidate-name").text());
 		// chatContainerBox.find(".last-active-date").text(startTime());
 		chatContainerBox.find(".chat-div-header").attr("data-id",$(this).attr("data-id"));
-		chatContainerBox.find(".info-buttons .info-icon").attr("data-id",$(this).attr("data-id"));
-		chatContainerBox.find(".info-buttons .minus-icon").attr("data-id",$(this).attr("data-id"));
-		chatContainerBox.find(".info-buttons .close-icon").attr("data-id",$(this).attr("data-id"));
+		chatContainerBox.find(".info-buttons .infoIcon").attr("data-id",$(this).attr("data-id"));
+		chatContainerBox.find(".info-buttons .minusIcon").attr("data-id",$(this).attr("data-id"));
+		chatContainerBox.find(".info-buttons .closeIcon").attr("data-id",$(this).attr("data-id"));
 		chatContainerBox.attr("data-id",$(this).attr("data-id"));
         var dataID = chatContainerBox.attr("data-id");
         var obj = getCandidateFromStore(dataID)
@@ -532,7 +552,7 @@ function openChat() {
             var hideElement = 1+maxCandidateChats;
             var dataIdLocal = $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").attr("data-id");
             clonedElement.attr("data-id",dataIdLocal);
-            clonedElement.html($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").find(".candidate-name").text()+"<i data-id="+dataIdLocal+" class='fa fa-times' aria-hidden='true'></i>");
+            clonedElement.html($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").find(".candidate-name").text()+"<i data-id="+dataIdLocal+" class='icon-cross_icon' aria-hidden='true'></i>");
             $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").addClass("hidden");
             if($(".chat-collapsed-candidate-container").hasClass("hidden")) {
                 $(".chat-collapsed-candidate-container").removeClass("hidden");
@@ -560,6 +580,7 @@ function openChat() {
 		    })
 
 			$(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(str)
+            initializeTooltip()
 		});
 	}
 }
@@ -601,9 +622,9 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
         		chatContainerBox.find(".candidate-name").text(array[0]["name"]);
         		// chatContainerBox.find(".last-active-date").text(startTime());
         		chatContainerBox.find(".chat-div-header").attr("data-id",array[0]["userID"]);
-        		chatContainerBox.find(".info-buttons .info-icon").attr("data-id",array[0]["userID"]);
-        		chatContainerBox.find(".info-buttons .minus-icon").attr("data-id",array[0]["userID"]);
-        		chatContainerBox.find(".info-buttons .close-icon").attr("data-id",array[0]["userID"]);
+        		chatContainerBox.find(".info-buttons .infoIcon").attr("data-id",array[0]["userID"]);
+        		chatContainerBox.find(".info-buttons .minusIcon").attr("data-id",array[0]["userID"]);
+        		chatContainerBox.find(".info-buttons .closeIcon").attr("data-id",array[0]["userID"]);
         		chatContainerBox.attr("data-id",array[0]["userID"]);
         		chatContainerBox.find(".chat-input").attr("data-channel-name", channelName)
         		chatContainerBox.find(".chat-input").attr("data-id",array[0]["userID"] )
@@ -624,7 +645,7 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
                     var hideElement = 1+maxCandidateChats;
                     var dataIdLocal = $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").attr("data-id");
                     clonedElement.attr("data-id",dataIdLocal);
-                    clonedElement.html($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").find(".candidate-name").text()+"<i data-id="+dataIdLocal+" class='fa fa-times' aria-hidden='true'></i>");
+                    clonedElement.html($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").find(".candidate-name").text()+"<i data-id="+dataIdLocal+" class='icon-cross_icon' aria-hidden='true'></i>");
                     $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").addClass("hidden");
                     if($(".chat-collapsed-candidate-container").hasClass("hidden")) {
                         $(".chat-collapsed-candidate-container").removeClass("hidden");
@@ -633,7 +654,7 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
                 }
                 reposition_chat_windows();
 
-                chatContainer.find('.candidate-card[data-id='+array[0]["userID"]+']').addClass("selected");
+                chatContainer.find('.candidate-card[data-id='+array[0]["userID"]+']').addClass("selected-sticky");
     		}
         	}, function(res){
 
@@ -650,9 +671,9 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
         chatContainerBox.find(".candidate-name").text(array[0]["name"]);
         // chatContainerBox.find(".last-active-date").text(startTime());
         chatContainerBox.find(".chat-div-header").attr("data-id",array[0]["userID"]);
-        chatContainerBox.find(".info-buttons .info-icon").attr("data-id",array[0]["userID"]);
-        chatContainerBox.find(".info-buttons .minus-icon").attr("data-id",array[0]["userID"]);
-        chatContainerBox.find(".info-buttons .close-icon").attr("data-id",array[0]["userID"]);
+        chatContainerBox.find(".info-buttons .infoIcon").attr("data-id",array[0]["userID"]);
+        chatContainerBox.find(".info-buttons .minusIcon").attr("data-id",array[0]["userID"]);
+        chatContainerBox.find(".info-buttons .closeIcon").attr("data-id",array[0]["userID"]);
         chatContainerBox.attr("data-id",array[0]["userID"]);
         chatContainerBox.find(".chat-input").attr("data-channel-name", channelName)
         chatContainerBox.find(".chat-input").attr("data-id",array[0]["userID"] )
@@ -676,7 +697,7 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
                 }
             })
         	$(".chat-candidate-boxes .chat-div-candidate[data-id="+array[0]["userID"]+"] .content-footer-container .chat-div-content ul").append(str)
-
+            initializeTooltip()
         });
         if($(".chat-candidate-boxes").children().length < maxCandidateChats) {
             $(".chat-candidate-boxes").prepend(chatContainerBox);
@@ -692,7 +713,7 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
             var hideElement = 1+maxCandidateChats;
             var dataIdLocal = $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").attr("data-id");
             clonedElement.attr("data-id",dataIdLocal);
-            clonedElement.html($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").find(".candidate-name").text()+"<i data-id="+dataIdLocal+" class='fa fa-times' aria-hidden='true'></i>");
+            clonedElement.html($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").find(".candidate-name").text()+"<i data-id="+dataIdLocal+" class='icon-cross_icon' aria-hidden='true'></i>");
             $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").addClass("hidden");
             if($(".chat-collapsed-candidate-container").hasClass("hidden")) {
                 $(".chat-collapsed-candidate-container").removeClass("hidden");
@@ -701,7 +722,7 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
         }
         reposition_chat_windows();
 
-        chatContainer.find('.candidate-card[data-id='+array[0]["userID"]+']').addClass("selected");
+        chatContainer.find('.candidate-card[data-id='+array[0]["userID"]+']').addClass("selected-sticky");
     }
 }
 
@@ -816,4 +837,13 @@ function startTime() {
   m = checkTime(m);
   var time = h + ":" + m;
   return time;
+}
+
+function initializeTooltip() {
+     $(".tooltip").not(".prototype .tooltip").tooltipster({
+        animation: 'fade',
+        delay: 0,
+        side:['bottom'],
+        theme: 'tooltipster-borderless'
+    })
 }

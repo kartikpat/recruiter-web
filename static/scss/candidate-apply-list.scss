@@ -1516,22 +1516,29 @@ input::-webkit-input-placeholder {
 									.skill-tags-area {
 										margin-top: 10px;
 									}
-									.skill-tag {
-											display:inline-block;
-											margin:5px;
-											border:1px solid $border-color-base;
-											padding:2px 15px;
-											border-radius:50px;
-											font-size:$view-resume-byline-font-size;
-											background-color:$color-white;
-
-											div {
-												display:inline-block;
-												vertical-align: middle;
-
-												&.remove-active-skill {
-													cursor:pointer;
-													vertical-align:top;
+                                    .skill-tag {
+                    						display:inline-block;
+                    						margin:5px;
+                    						border:1px solid $border-color-base;
+                    						padding:2px 15px;
+                    						border-radius:25px;
+                    						font-size:$view-resume-byline-font-size;
+                    						background-color:$color-white;
+                    						color:#6e6e6e;
+                                            padding-right: 25px;
+                                            position: relative;
+                    						div {
+                    							display:inline-block;
+                    							vertical-align: middle;
+                                                max-width: 150px;
+                                                word-wrap: break-word;
+                    							&.remove-active-skill {
+                    								cursor:pointer;
+                    								vertical-align:top;
+                                                    position: absolute;
+                                                    top: 50%;
+                                                    transform: translate(0,-50%);
+                                                    right: 5px;
 													span {
 														font-size:$view-resume-clear-tag-font-size;
 														display:inline-block;
@@ -1857,18 +1864,24 @@ input::-webkit-input-placeholder {
 						margin:5px;
 						border:1px solid $border-color-base;
 						padding:2px 15px;
-						border-radius:50px;
+						border-radius:25px;
 						font-size:$view-resume-byline-font-size;
 						background-color:$color-white;
 						color:#6e6e6e;
-
+                        padding-right: 25px;
+                        position: relative;
 						div {
 							display:inline-block;
 							vertical-align: middle;
-
+                            max-width: 150px;
+                            word-wrap: break-word;
 							&.remove-active-skill {
 								cursor:pointer;
 								vertical-align:top;
+                                position: absolute;
+                                top: 50%;
+                                transform: translate(0,-50%);
+                                right: 5px;
 								span {
 									font-size:$view-resume-clear-tag-font-size;
 									display:inline-block;

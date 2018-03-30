@@ -32,8 +32,8 @@
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
-  src: url("../font/fontello.eot?94606861");
-  src: url("../font/fontello.eot?94606861#iefix") format("embedded-opentype"), url("../font/fontello.woff2?94606861") format("woff2"), url("../font/fontello.woff?94606861") format("woff"), url("../font/fontello.ttf?94606861") format("truetype"), url("../font/fontello.svg?94606861#fontello") format("svg");
+  src: url("../fonts/fontello.eot?94606861");
+  src: url("../fonts/fontello.eot?94606861#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2?94606861") format("woff2"), url("../fonts/fontello.woff?94606861") format("woff"), url("../fonts/fontello.ttf?94606861") format("truetype"), url("../fonts/fontello.svg?94606861#fontello") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -98,7 +98,7 @@
   content: '\e805'; }
 
 /* '' */
-.icon-edit-1:before {
+.icon-edit:before {
   content: '\e806'; }
 
 /* '' */
@@ -309,38 +309,17 @@
 .icon-more:before {
   content: '\e843'; }
 
-.icon-more:before {
-  font-size: 20px;
-  color: #2b2b2b;
-  margin-left: 0px; }
+.icon-minus_icon:before {
+  content: '\e845'; }
 
-.icon-chat:before {
-  font-size: 20px; }
+.icon-send_button:before {
+  content: '\e846'; }
 
-.icon-telephone:before {
-  font-size: 20px; }
+.icon-cross_icon:before {
+  content: '\e844'; }
 
-.icon-face-to-face:before {
-  font-size: 20px; }
-
-.icon-star:before {
-  font-size: 20px; }
-
-.icon-interview:before {
-  font-size: 25px; }
-
-/* '' */
-.icon-search:before {
-  position: relative;
-  top: -24px;
-  left: 5px; }
-
-.icon-filter:before {
-  position: relative;
-  top: 6px; }
-
-.icon-chat_icon:before {
-  font-size: 20px; }
+.icon-information-1:before {
+  content: '\e847'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -621,8 +600,8 @@ span.sticker {
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
-  src: url("../font/fontello.eot?94606861");
-  src: url("../font/fontello.eot?94606861#iefix") format("embedded-opentype"), url("../font/fontello.woff2?94606861") format("woff2"), url("../font/fontello.woff?94606861") format("woff"), url("../font/fontello.ttf?94606861") format("truetype"), url("../font/fontello.svg?94606861#fontello") format("svg");
+  src: url("../fonts/fontello.eot?94606861");
+  src: url("../fonts/fontello.eot?94606861#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2?94606861") format("woff2"), url("../fonts/fontello.woff?94606861") format("woff"), url("../fonts/fontello.ttf?94606861") format("truetype"), url("../fonts/fontello.svg?94606861#fontello") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -687,7 +666,7 @@ span.sticker {
   content: '\e805'; }
 
 /* '' */
-.icon-edit-1:before {
+.icon-edit:before {
   content: '\e806'; }
 
 /* '' */
@@ -898,38 +877,17 @@ span.sticker {
 .icon-more:before {
   content: '\e843'; }
 
-.icon-more:before {
-  font-size: 20px;
-  color: #2b2b2b;
-  margin-left: 0px; }
+.icon-minus_icon:before {
+  content: '\e845'; }
 
-.icon-chat:before {
-  font-size: 20px; }
+.icon-send_button:before {
+  content: '\e846'; }
 
-.icon-telephone:before {
-  font-size: 20px; }
+.icon-cross_icon:before {
+  content: '\e844'; }
 
-.icon-face-to-face:before {
-  font-size: 20px; }
-
-.icon-star:before {
-  font-size: 20px; }
-
-.icon-interview:before {
-  font-size: 25px; }
-
-/* '' */
-.icon-search:before {
-  position: relative;
-  top: -24px;
-  left: 5px; }
-
-.icon-filter:before {
-  position: relative;
-  top: 6px; }
-
-.icon-chat_icon:before {
-  font-size: 20px; }
+.icon-information-1:before {
+  content: '\e847'; }
 
 .left {
   float: left; }
@@ -1194,8 +1152,8 @@ a {
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
-  src: url("../font/fontello.eot?94606861");
-  src: url("../font/fontello.eot?94606861#iefix") format("embedded-opentype"), url("../font/fontello.woff2?94606861") format("woff2"), url("../font/fontello.woff?94606861") format("woff"), url("../font/fontello.ttf?94606861") format("truetype"), url("../font/fontello.svg?94606861#fontello") format("svg");
+  src: url("../fonts/fontello.eot?94606861");
+  src: url("../fonts/fontello.eot?94606861#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2?94606861") format("woff2"), url("../fonts/fontello.woff?94606861") format("woff"), url("../fonts/fontello.ttf?94606861") format("truetype"), url("../fonts/fontello.svg?94606861#fontello") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -1260,7 +1218,7 @@ a {
   content: '\e805'; }
 
 /* '' */
-.icon-edit-1:before {
+.icon-edit:before {
   content: '\e806'; }
 
 /* '' */
@@ -1471,38 +1429,17 @@ a {
 .icon-more:before {
   content: '\e843'; }
 
-.icon-more:before {
-  font-size: 20px;
-  color: #2b2b2b;
-  margin-left: 0px; }
+.icon-minus_icon:before {
+  content: '\e845'; }
 
-.icon-chat:before {
-  font-size: 20px; }
+.icon-send_button:before {
+  content: '\e846'; }
 
-.icon-telephone:before {
-  font-size: 20px; }
+.icon-cross_icon:before {
+  content: '\e844'; }
 
-.icon-face-to-face:before {
-  font-size: 20px; }
-
-.icon-star:before {
-  font-size: 20px; }
-
-.icon-interview:before {
-  font-size: 25px; }
-
-/* '' */
-.icon-search:before {
-  position: relative;
-  top: -24px;
-  left: 5px; }
-
-.icon-filter:before {
-  position: relative;
-  top: 6px; }
-
-.icon-chat_icon:before {
-  font-size: 20px; }
+.icon-information-1:before {
+  content: '\e847'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -1782,19 +1719,21 @@ span.sticker {
           vertical-align: middle; }
           .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-image img {
             border-radius: 50%;
-            margin-right: 20px;
             width: 33px;
-            height: 33px; }
+            height: 33px;
+            border: 1px solid #dedcdc;
+            background-color: #f7f7f7; }
         .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info {
           display: inline-block;
           vertical-align: middle;
-          width: calc(100% - 53px); }
+          width: calc(100% - 43px); }
           .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info p {
             margin: 0; }
             .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info p.user-name {
               font-size: 13px;
               line-height: 1.5;
-              display: inline-block; }
+              display: inline-block;
+              color: #2b2b2b; }
             .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info p.user-designation {
               font-size: 12px;
               line-height: 1.5;
@@ -1811,8 +1750,8 @@ span.sticker {
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
-  src: url("../font/fontello.eot?94606861");
-  src: url("../font/fontello.eot?94606861#iefix") format("embedded-opentype"), url("../font/fontello.woff2?94606861") format("woff2"), url("../font/fontello.woff?94606861") format("woff"), url("../font/fontello.ttf?94606861") format("truetype"), url("../font/fontello.svg?94606861#fontello") format("svg");
+  src: url("../fonts/fontello.eot?94606861");
+  src: url("../fonts/fontello.eot?94606861#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2?94606861") format("woff2"), url("../fonts/fontello.woff?94606861") format("woff"), url("../fonts/fontello.ttf?94606861") format("truetype"), url("../fonts/fontello.svg?94606861#fontello") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -1877,7 +1816,7 @@ span.sticker {
   content: '\e805'; }
 
 /* '' */
-.icon-edit-1:before {
+.icon-edit:before {
   content: '\e806'; }
 
 /* '' */
@@ -2088,46 +2027,25 @@ span.sticker {
 .icon-more:before {
   content: '\e843'; }
 
-.icon-more:before {
-  font-size: 20px;
-  color: #2b2b2b;
-  margin-left: 0px; }
+.icon-minus_icon:before {
+  content: '\e845'; }
 
-.icon-chat:before {
-  font-size: 20px; }
+.icon-send_button:before {
+  content: '\e846'; }
 
-.icon-telephone:before {
-  font-size: 20px; }
+.icon-cross_icon:before {
+  content: '\e844'; }
 
-.icon-face-to-face:before {
-  font-size: 20px; }
-
-.icon-star:before {
-  font-size: 20px; }
-
-.icon-interview:before {
-  font-size: 25px; }
-
-/* '' */
-.icon-search:before {
-  position: relative;
-  top: -24px;
-  left: 5px; }
-
-.icon-filter:before {
-  position: relative;
-  top: 6px; }
-
-.icon-chat_icon:before {
-  font-size: 20px; }
+.icon-information-1:before {
+  content: '\e847'; }
 
 /*[Recruiter_Homepage]*/
 /*[/Recruiter_Homepage]*/
 /**** Fontello Font Icons : ****/
 @font-face {
   font-family: 'fontello';
-  src: url("../font/fontello.eot?94606861");
-  src: url("../font/fontello.eot?94606861#iefix") format("embedded-opentype"), url("../font/fontello.woff2?94606861") format("woff2"), url("../font/fontello.woff?94606861") format("woff"), url("../font/fontello.ttf?94606861") format("truetype"), url("../font/fontello.svg?94606861#fontello") format("svg");
+  src: url("../fonts/fontello.eot?94606861");
+  src: url("../fonts/fontello.eot?94606861#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2?94606861") format("woff2"), url("../fonts/fontello.woff?94606861") format("woff"), url("../fonts/fontello.ttf?94606861") format("truetype"), url("../fonts/fontello.svg?94606861#fontello") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -2192,7 +2110,7 @@ span.sticker {
   content: '\e805'; }
 
 /* '' */
-.icon-edit-1:before {
+.icon-edit:before {
   content: '\e806'; }
 
 /* '' */
@@ -2403,38 +2321,17 @@ span.sticker {
 .icon-more:before {
   content: '\e843'; }
 
-.icon-more:before {
-  font-size: 20px;
-  color: #2b2b2b;
-  margin-left: 0px; }
+.icon-minus_icon:before {
+  content: '\e845'; }
 
-.icon-chat:before {
-  font-size: 20px; }
+.icon-send_button:before {
+  content: '\e846'; }
 
-.icon-telephone:before {
-  font-size: 20px; }
+.icon-cross_icon:before {
+  content: '\e844'; }
 
-.icon-face-to-face:before {
-  font-size: 20px; }
-
-.icon-star:before {
-  font-size: 20px; }
-
-.icon-interview:before {
-  font-size: 25px; }
-
-/* '' */
-.icon-search:before {
-  position: relative;
-  top: -24px;
-  left: 5px; }
-
-.icon-filter:before {
-  position: relative;
-  top: 6px; }
-
-.icon-chat_icon:before {
-  font-size: 20px; }
+.icon-information-1:before {
+  content: '\e847'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -4436,15 +4333,24 @@ input::-webkit-input-placeholder {
                 margin: 5px;
                 border: 1px solid #e8e8e8;
                 padding: 2px 15px;
-                border-radius: 50px;
+                border-radius: 25px;
                 font-size: 13px;
-                background-color: #FFF; }
+                background-color: #FFF;
+                color: #6e6e6e;
+                padding-right: 25px;
+                position: relative; }
                 .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .skill-tag div {
                   display: inline-block;
-                  vertical-align: middle; }
+                  vertical-align: middle;
+                  max-width: 150px;
+                  word-wrap: break-word; }
                   .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .skill-tag div.remove-active-skill {
                     cursor: pointer;
-                    vertical-align: top; }
+                    vertical-align: top;
+                    position: absolute;
+                    top: 50%;
+                    transform: translate(0, -50%);
+                    right: 5px; }
                     .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .skill-tag div.remove-active-skill span {
                       font-size: 11px;
                       display: inline-block;
@@ -4672,16 +4578,24 @@ input::-webkit-input-placeholder {
           margin: 5px;
           border: 1px solid #e8e8e8;
           padding: 2px 15px;
-          border-radius: 50px;
+          border-radius: 25px;
           font-size: 13px;
           background-color: #FFF;
-          color: #6e6e6e; }
+          color: #6e6e6e;
+          padding-right: 25px;
+          position: relative; }
           .view-resume-modal .resume-sidebar .sidebar-section.tags .skill-tag div {
             display: inline-block;
-            vertical-align: middle; }
+            vertical-align: middle;
+            max-width: 150px;
+            word-wrap: break-word; }
             .view-resume-modal .resume-sidebar .sidebar-section.tags .skill-tag div.remove-active-skill {
               cursor: pointer;
-              vertical-align: top; }
+              vertical-align: top;
+              position: absolute;
+              top: 50%;
+              transform: translate(0, -50%);
+              right: 5px; }
               .view-resume-modal .resume-sidebar .sidebar-section.tags .skill-tag div.remove-active-skill span {
                 font-size: 11px;
                 display: inline-block;
