@@ -34,6 +34,7 @@ function Chat() {
        settings.backButtonChat = $(".backButtonChat"),
        settings.uuid = "",
        settings.index = -1;
+       settings.candImage = $(".candImage")
        onClickBackButton()
    }
 
@@ -80,10 +81,10 @@ function Chat() {
        settings.conversationItemList.html(str);
    }
 
-   function setProfile(obj) {
-       settings.recruiterName.text(obj["name"]);
-       settings.recruiterFullName = obj["name"]
-   }
+   // function setProfile(obj) {
+   //     settings.recruiterName.text(obj["name"]);
+   //     settings.recruiterFullName = obj["name"]
+   // }
 
    function setCandidateProfile(obj) {
        settings.userImg.attr("src", (obj["img"] || "/static/images/noimage.png"));
@@ -99,6 +100,8 @@ function Chat() {
 
    function onClickSingleChatItem(fn) {
        settings.conversationItemList.on('click', settings.conversationItemClass, function(){
+           $(settings.conversationItemClass).removeClass("conversation-item-active")
+           $(this).addClass("conversation-item-active")
            var channelName = $(this).attr("data-channel-name");
            $(this).find(".newMsgNotify").attr("data-count", "0").addClass("hidden")
            if(settings.channelName == channelName ) {
@@ -182,22 +185,25 @@ function Chat() {
                }
            })
            settings.mssgContainer.prepend(str)
-           initializeTooltip()
+
            if($(window).outerWidth() < 769 ) {
                settings.backButtonChat.removeClass("hidden")
+               settings.candImage.removeClass("hidden")
                settings.conversationList.addClass("hidden")
            }
            settings.chatWindow.removeClass("hidden")
            settings.userProfile.removeClass("hidden")
+           initializeTooltip()
    }
 
    function onClickBackButton() {
        settings.backButtonChat.click(function(){
            settings.channelName = ""
            settings.backButtonChat.addClass("hidden")
+           settings.candImage.addClass("hidden")
            settings.chatWindow.addClass("hidden")
            settings.userImg.attr("src", ("/static/images/noimage.png"));
-           settings.userName.text("Welcome!");
+           settings.userName.text("Your Chats!");
            settings.conversationList.removeClass("hidden")
        })
    }
@@ -226,6 +232,7 @@ function Chat() {
        elem.entry.img = pic
        var item = getMsgSentElement(elem)
        settings.mssgContainer.append(item)
+       initializeTooltip()
        scrollToBottom()
        settings.msgContent.val('');
    }
@@ -238,6 +245,7 @@ function Chat() {
        elem.entry.img = msg.img;
        var item = getMsgReceivedElement(elem)
        settings.mssgContainer.append(item)
+       initializeTooltip()
        scrollToBottom()
        addNewMessageNotification(channelName)
    }
@@ -282,7 +290,6 @@ function Chat() {
        init: init,
        setConfig : setConfig,
        addToList: addToList,
-       setProfile: setProfile,
        onClickSingleChatItem: onClickSingleChatItem,
        setCandidateProfile: setCandidateProfile,
        populateMessages: populateMessages,
@@ -300,7 +307,7 @@ function Chat() {
    }
 
    function initializeTooltip() {
-        $(".tooltip").not(".prototype .tooltip").tooltipster({
+        $(".chat-body").find(".tooltip").not(".prototype .tooltip").tooltipster({
            animation: 'fade',
            delay: 0,
            side:['bottom'],
