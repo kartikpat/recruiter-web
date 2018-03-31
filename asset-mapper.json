@@ -925,7 +925,6 @@
 				"static/js/new-jobs-chart.js",
 				"static/js/dashboard.js",
 				"static/js/utilities.js",
-				"static/js/utilities/modal.js",
 				"static/js/Utilities/toastNotifier.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js"

@@ -1187,7 +1187,9 @@ span.sticker {
   position: relative;
   padding: 20px;
   width: 100%;
-  background-color: #f7f7f7; }
+  background-color: #f7f7f7;
+  max-width: 1500px;
+  margin: 0 auto; }
   .page-content .container {
     background-color: #f7f7f7;
     min-height: 100%;
