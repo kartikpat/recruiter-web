@@ -264,14 +264,8 @@ function Calendar(){
             var start=parseInt(days[k].time.from);
             var end=parseInt(days[k].time.to);
             var id=days[k].day;
-            console.log(start);
-            console.log(end);
-            console.log(id);
-            console.log($('.fc-'+daySchema[id]).attr("data-date"));
             var dateToMatch= moment($('.fc-'+daySchema[id]).attr("data-date")); 
-            console.log(dateToMatch); 
             var fromDateMoment = moment(fromDate);
-            console.log(fromDateMoment);
             var toDateMoment = moment(toDate);
             if(toDate && toDateMoment.isBefore(dateToMatch)){
             //        debugger
@@ -318,9 +312,9 @@ function Calendar(){
     function copytoall(){
    
         $(document).on('mouseenter', '.dayId', function() {
-            $(this).find(":button").show();
+            $(this).find(".button-container").show().css('display','inline-block');
         }).on('mouseleave', '.dayId', function () {
-            $(this).find(":button").hide();
+            $(this).find(".button-container").hide();
         });
     }
 
