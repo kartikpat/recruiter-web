@@ -255,7 +255,7 @@ function candidateList() {
 
         var profStr = '';
         if(aData["jobs"].length == 0) {
-            profStr = "<div style='line-height:1.5;'><span style='font-weight:bold;'>"+aData["name"]+"</span> does not have any work experience yet</div>"
+            profStr = "<div style='line-height:1.5;color:#2b2b2b;'><span style='font-weight:bold;'>"+aData["name"]+"</span> does not have any work experience yet</div>"
         }
         else {
             $.each(aData["jobs"],function(index, anObj) {
