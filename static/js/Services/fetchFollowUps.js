@@ -3,5 +3,7 @@ function fetchFollowUps(recruiterId){
 		if(res.status && res.status =='success'){
 			pubsub.publish("fetchedFollowups", res.data);
 		}
+	}, function(res,status,error) {
+		return pubsub.publish("failedTofetchFollowups", res);
 	});
 }

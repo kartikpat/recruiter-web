@@ -57,7 +57,7 @@
 				display: none!important;
 			}
 			.title {
-				margin-bottom: 0;
+				margin-bottom: 15px;
 			}
 		}
 
@@ -199,14 +199,24 @@
 
 					&.profile-actions {
 						width:20%;
-						// max-width::180px;
+						.action-buttons {
+                            button {
+                                @include button($button-color-green);
+                                margin:0;
+                                padding:7px;
+                                text-align: center;
+                                width:48%;
+                                font-family:$droid-font!important;
+                            }
+                        }
 
 						.resume-download-area {
-							margin-bottom:15px;
+							margin-top:15px;
 							a {
 								@include button($button-color-green);
 								margin:0;
 								padding:7px 24px;
+                                width: 100%;
 							}
 						}
 

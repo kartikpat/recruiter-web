@@ -4,7 +4,7 @@
 
 	<div class="first-fold fold top mass-action-container hidden" id="massActionContainer">
 		<div class="action-buttons">
-			<span class="icon-back_icon" id="bulkBackIcon"></span>
+			<span class="icon-back_icon bulkBackIcon"></span>
 			<span class="applicationsCount">6 candidates selected</span>
 			<span class=" button white downloadResumeMass" >Download Resume</span>
 			<a href="" class="downloadExcelMass"><span class=" button white">Download Excel</span></a>
@@ -15,17 +15,30 @@
 			<!-- <span class=" button white" id="massTag">Add Tag</span> -->
 		</div>
 		<div class="action-buttons mobile">
-			<span class=" button white massReject">Reject</span>
-			<span class=" button white massShortlist">Shortlist</span>
-			<span class="view-more button white"><i class="icon-up_arrow"></i></span>
+			<div class="first-wrap">
+				<span class="icon-back_icon bulkBackIcon"></span>
+				<span class="applicationsCount">6 candidates selected</span>
+			</div>
+			<div class="second-wrap">
+				<span class=" button white massReject">Reject</span>
+				<span class=" button white massShortlist">Shortlist</span>
+				<span class="view-more button white"><i class="icon-up_arrow"></i></span>
+			</div>
+
 		</div>
 	</div>
 	<div class="second-fold fold hidden mass-action-second" id="secondMassActionContainer">
 		<div class="action-buttons">
-			<span class=" button white massSave">Save for Later</span>
-			<span class=" button white massComment">Add Comment</span>
-			<span class=" button white downloadResumeMass">Download Resume</span>
-			<a href="" class="downloadExcelMass"><span class=" button white">Download Excel</span></a>
+
+			<div class="first-wrap left">
+				<span class=" button white massSave">Save for Later</span>
+				<span class=" button white massComment">Add Comment</span>
+			</div>
+			<div class="second-wrap right">
+				<span class=" button white downloadResumeMass">Download Resume</span>
+				<a href="" class="downloadExcelMass"><span class=" button white">Download Excel</span></a>
+			</div>
+
 		</div>
 	</div>
 	<div class="toast-notification-container">
