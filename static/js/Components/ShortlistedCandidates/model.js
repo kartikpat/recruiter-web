@@ -18,6 +18,8 @@ function candidateList() {
         settings.multipleJobListingTextClass= '.multipleJobListingText',
         settings.candAppliedJobsClass= '.candAppliedJobs',
         settings.candidateItemShell= $(".candidateItem.shell"),
+        settings.emptyView=$('.empty-screen'),
+        settings.stats=$('.stats')
         settings.status= "1,3",
         settings.jobId= -1,
         settings.jobTitle = ""
@@ -176,8 +178,23 @@ function candidateList() {
 
    function addToList(dataArray, pageNumber, pageContent){
        hideShell()
-       if(dataArray.length<1 && pageNumber ==1) {
-           return settings.candidateListing.append("<div class='no-data'>No Applications Found!</div>")
+       dataArray.length=0;
+        var statusVal=settings.filterByStatus.val();
+        var JobVal=settings.filterByJob.val();
+       if(dataArray.length<1 && pageNumber ==1 ) {
+        //debugger
+         if(JobVal==-1 && statusVal==='1,3'){
+            settings.emptyView.removeClass('hidden');
+            settings.stats.addClass('hidden');
+            return
+            }
+            else{
+                $('.user-text').text('We couldn’t find any matches for the selected filter.');
+				$('.empty-text').text('Please select a different filter');
+			    $('.image-container img').attr('src','/static/images/tagged.svg');
+                settings.emptyView.removeClass('hidden');
+                return
+            }
        }
        var str = '';
        dataArray.forEach(function(aData, index){
