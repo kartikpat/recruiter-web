@@ -59,6 +59,23 @@
 			border-radius:6px;
 			border:1px solid $border-color-base;
 			min-height:30px;
+			.empty-screen{
+				.image-container{
+					text-align: center;
+					img{
+						width: 25%;
+					}
+				}
+				.user-text{
+					text-align: center;
+					padding-bottom: 20px;
+				}
+				.empty-text{
+					text-align: center;
+					color: #888;
+					padding-bottom: 20px;
+				}
+			}
 			.candidate-item {
 				padding:30px 18px 0px;
 				font-size:0;

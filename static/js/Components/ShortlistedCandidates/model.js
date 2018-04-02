@@ -178,22 +178,20 @@ function candidateList() {
 
    function addToList(dataArray, pageNumber, pageContent){
        hideShell()
-       dataArray.length=0;
         var statusVal=settings.filterByStatus.val();
         var JobVal=settings.filterByJob.val();
        if(dataArray.length<1 && pageNumber ==1 ) {
-        //debugger
-         if(JobVal==-1 && statusVal==='1,3'){
-            settings.emptyView.removeClass('hidden');
-            settings.stats.addClass('hidden');
-            return
+            if(JobVal==-1 && statusVal==='1,3'){
+                settings.emptyView.removeClass('hidden');
+                settings.stats.addClass('hidden');
+                return
             }
             else{
-                $('.user-text').text('We couldn’t find any matches for the selected filter.');
-				$('.empty-text').text('Please select a different filter');
-			    $('.image-container img').attr('src','/static/images/tagged.svg');
-                settings.emptyView.removeClass('hidden');
-                return
+                    $('.user-text').text('We couldn’t find any matches for the selected filter.');
+                    $('.empty-text').text('Please select a different filter');
+                    $('.image-container img').attr('src','/static/images/tagged.svg');
+                    settings.emptyView.removeClass('hidden');
+                    return
             }
        }
        var str = '';
