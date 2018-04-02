@@ -179,10 +179,22 @@
                     width: 45%;
                     padding-left: 20px;
                     padding-bottom: 20px;
-                    // color:   #149075;
-                    // display: list-item;
-                    img{
-                        margin-right: 10px;
+                    .bullet{
+                        padding-right: 5px;
+                        padding-top: 4px;
+                        vertical-align: top;
+                        display: inline-block;
+                    }
+                    .details{
+                        // float: right;
+                        color: $color-light-black;
+                        font-size: 15.75px;/* Approximation due to font substitution */
+                        font-weight: 400;
+                        line-height: 29.992px;/* Approximation due to font substitution */
+                        text-align: left;
+                        transform: scaleY(1.0001);
+                        display: inline-block;
+                        width: calc(100% - 20px);
                     }
                 }
                 a{
@@ -190,18 +202,6 @@
                     font-size: 15.75px;/* Approximation due to font substitution */
                     font-weight: 400;
                     line-height: 29.992px;/* Approximation due to font substitution */
-                    text-align: left;
-                    // padding-left: 10px;
-                    display: inline-block;
-                  
-                }
-                span{
-                    color: $color-light-black;
-                    font-size: 15.75px;/* Approximation due to font substitution */
-                    font-weight: 400;
-                    line-height: 29.992px;/* Approximation due to font substitution */
-                    text-align: left;
-                    transform: scaleY(1.0001);
                 }
 
             }
@@ -426,6 +426,8 @@
 
                     .profile-image{
                         display: inline-block;
+                        vertical-align: top;
+                        padding-top: 15px;
                     }
                     .profile-details{
                         display: inline-block;
@@ -514,7 +516,7 @@
                         img{
                             display:inline-block;
                             padding-top: 80%;
-                            padding-bottom: 80%;
+                            padding-bottom: 83%;
                             width: 110%;      
                         }
                     }
@@ -543,11 +545,12 @@
                 .links{
                     padding-left: 10px;
                     a{
-                        font-size: 12px;
+              
                     }
-                    span{
-                        font-size: 12px;
+                    .bullet{
+                        // padding-top: 10px;
                     }
+                  
                 }
 
                 
