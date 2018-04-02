@@ -59,6 +59,8 @@
 .page-content{
     width: 100%;
     min-height: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
     .header-slot{
         margin-top: 45px;
         width: 95%;
@@ -661,34 +663,9 @@
 
 @media only screen and (max-width:1024px){
 
-    // .page-wrap{
-    //     color: #2b2b2b;
-    //     min-height: 0%;
-    //     padding: 0;
-    //     overflow: auto;
-    //     position: relative;
-    //     padding: 20px;
-    //     width: 100%;
-    //     background-color: #F4F4F4;
-    //     .main-wrappper{
-    //         width: 100%;
-    //         float: left;
-    //         .main-conainer{
-    //             margin: 0 auto;
-    //             width: 100%;
-    //             max-width: 1200px;
-    //             .header-slot{
-    //                 margin-top: 20px;
-    //                 width: 100%; 
-    //             }
-    //         }
-    //     }
-    //   .conversations{
-    //       display: none;
-    //   }
-    
-    // }
-    
+    .page-content .booked-slots .slot-date .schedules-container .schedules .action-buttons{
+        width: 128px;
+    }
 }
 
 @media only screen and (max-width: 480px){

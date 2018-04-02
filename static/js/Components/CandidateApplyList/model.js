@@ -368,8 +368,44 @@ function candidateList() {
 		var str = '';
         var element = $(".candidateListing[data-status-attribute='"+status+"']");
         hideShells(status);
+        // dataArray.length=0
         if(dataArray.length<1 && pageNumber ==1) {
-			return element.append("<div class='no-data'>No Applications Found!</div>")
+			if(status== ""){
+				$('.user-text').text('You have not received any applications yet.');
+				$('.empty-text').text('You’ll a list here once you do');
+				settings.emptyView.removeClass('hidden');
+				return
+			}
+			else if(status== "0"){
+				$('.user-text').text('You don’t have any jobs for the selected filters.');
+				$('.empty-text').text('Please select a different filter');
+        		settings.emptyView.removeClass('hidden');
+				return
+            }
+            else if(status== "4,5"){
+				$('.user-text').text('You have not reviewed any candidates yet.');
+				$('.empty-text').text('Any candidate that is viewed or downloaded will appear here');
+				settings.emptyView.removeClass('hidden');
+				return
+            }
+            else if(status== "1"){
+				$('.user-text').text('You have not shortlisted any candidates yet.');
+				$('.empty-text').text('Click on ‘Shortlist’ button to shortlist a candidate in ‘Unread Tab’');
+			    settings.emptyView.removeClass('hidden');
+				return
+            }
+            else if(status== "2"){
+				$('.user-text').text('You have not rejected any candidates yet');
+				$('.empty-text').text("Click on ‘Reject’ button to reject a candidate in ‘Unread Tab'");
+                settings.emptyView.removeClass('hidden');
+                return
+            }
+            else if(status== "3"){
+				$('.user-text').text('You have not saved any candidates yet.');
+				$('.empty-text').text('Click on ‘Save’ in the other actions to save a candidate in ‘Unread Tab’');
+			    settings.emptyView.removeClass('hidden');
+				return
+			}
 		}
 		dataArray.forEach(function(aData, index){
 			var item = createElement(aData);

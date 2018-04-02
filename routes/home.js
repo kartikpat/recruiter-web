@@ -382,7 +382,9 @@ module.exports = function(settings){
 			title: "IIM JOBS | Mass Resume",
 			styles:  assetsMapper["mass-resume"]["styles"][mode],
 			scripts: assetsMapper["mass-resume"]["scripts"][mode],
-			baseUrl: baseUrl
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			profile: req.profile
 		})
 		return
 	})

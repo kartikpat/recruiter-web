@@ -3004,6 +3004,17 @@ span.sticker {
     margin: 10px;
     padding: 0;
     margin: 0; }
+    .page-content .main-wrapper .main-container .reports-wrapper .empty-screen .image-container {
+      text-align: center; }
+      .page-content .main-wrapper .main-container .reports-wrapper .empty-screen .image-container img {
+        width: 25%; }
+    .page-content .main-wrapper .main-container .reports-wrapper .empty-screen .user-text {
+      text-align: center;
+      padding-bottom: 20px; }
+    .page-content .main-wrapper .main-container .reports-wrapper .empty-screen .empty-text {
+      text-align: center;
+      color: #888;
+      padding-bottom: 20px; }
     .page-content .main-wrapper .main-container .reports-wrapper .reports-header {
       padding: 20px; }
       .page-content .main-wrapper .main-container .reports-wrapper .reports-header .keyword-search {

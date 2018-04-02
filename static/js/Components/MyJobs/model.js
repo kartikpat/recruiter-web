@@ -13,6 +13,7 @@ function Jobs() {
 		settings.rowContainer= $('#jobRowList'),
 		settings.jobFilters= $('#jobFilters'),
 		settings.jobEditButton= '.jobEdit',
+		settings.jobHeading=$('.heading'),
 		settings.openJobUnpublishModalButton= '.unpublishModalButton',
 		settings.openJobRefreshModalButton= '.refreshModalButton',
 		settings.openMakeJobPremiumModalButton= '.makePremiumModalButton',
@@ -25,6 +26,8 @@ function Jobs() {
 		settings.tooltip= $(".tooltip");
 		settings.tableRowShell = $(".tableRow.shell");
 		settings.loaderOverlay = $("#loaderOverlay");
+		settings.emptyView=$('.empty-screen');
+		settings.headings=$('.table-headings');
 		$(".header .menu-list-item.my-jobs").addClass("active");
 
 		onClickJobRefresh();
@@ -260,12 +263,28 @@ function Jobs() {
 		return item;
 	}
 
-	function addToList(dataArray, pageNumber, pageContent){
+	function addToList(dataArray, pageNumber, pageContent,type){
 		var str = '';
 		hideShell()
-
+		// type='abc'
+		// dataArray.length=0;
 		if(dataArray.length<1 && pageNumber ==1) {
-			return settings.rowContainer.append("<div class='no-data'>No Jobs Found!</div>")
+			if(type=='all'){
+				settings.emptyView.removeClass('hidden');
+				settings.headings.addClass('hidden');
+				settings.jobFilters.addClass('hidden');
+				settings.jobHeading.removeClass('hidden');
+				return
+			}
+			else{
+				$('.user-text').text('You don’t have any jobs for the selected filters.');
+				$('.empty-text').text('Please select a different filter');
+			    $('.image-container img').attr('src','/static/images/filterjob.svg');
+				settings.emptyView.removeClass('hidden');
+				settings.headings.addClass('hidden');
+				return
+			}
+			// return settings.rowContainer.append("<div class='no-data'>No Jobs Found!</div>")
 		}
 
 		dataArray.forEach(function(aData){
@@ -274,8 +293,9 @@ function Jobs() {
 		});
 
 		settings.rowContainer.append(str);
+		
 		if(dataArray.length< pageContent) {
-            return settings.rowContainer.append("<div class='no-data'>No more records!</div>")
+		 return settings.rowContainer.append("<div class='no-data'>No more records!</div>")
         }
 		initializeTooltip()
 	}

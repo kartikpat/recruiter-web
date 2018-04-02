@@ -1847,6 +1847,17 @@ span.sticker {
       border-radius: 6px;
       border: 1px solid #e8e8e8;
       min-height: 30px; }
+      .page-content .tagged-candidates .tagged-candidates-listing .empty-screen .image-container {
+        text-align: center; }
+        .page-content .tagged-candidates .tagged-candidates-listing .empty-screen .image-container img {
+          width: 25%; }
+      .page-content .tagged-candidates .tagged-candidates-listing .empty-screen .user-text {
+        text-align: center;
+        padding-bottom: 20px; }
+      .page-content .tagged-candidates .tagged-candidates-listing .empty-screen .empty-text {
+        text-align: center;
+        color: #888;
+        padding-bottom: 20px; }
       .page-content .tagged-candidates .tagged-candidates-listing .candidate-item {
         padding: 30px 18px 0px;
         font-size: 0;
@@ -1964,10 +1975,13 @@ span.sticker {
               margin-left: 0px;
               display: inline-block;
               padding: 5px 15px;
-              border-radius: 50px;
+              border-radius: 20px;
               background-color: #f1efef;
               color: #6e6e6e;
-              font-size: 12px; }
+              font-size: 12px;
+              vertical-align: middle;
+              max-width: 150px;
+              word-wrap: break-word; }
               .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .skill-tag-listing .skill-tag a {
                 color: #2b2b2b; }
         .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .tagged-on-label {
