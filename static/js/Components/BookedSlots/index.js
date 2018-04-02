@@ -9,7 +9,7 @@ var globalParameters = {
 jQuery(document).ready( function() {
    var slots = BookedSlots();
    slots.init();
-  
+
    fetchRecruiterCalendar(recruiterId)
 
    slots.onChangeCalendarFilters(function(calendarId){
@@ -80,7 +80,7 @@ jQuery(document).ready( function() {
         console.log(data);
         globalParameters.InterviewListLength = data.length;
         slots.addToList(data,globalParameters.pageNumber,globalParameters.pageContent);
-      
+
     }
 
    function onInterviewsFetchFail(topic, data){
