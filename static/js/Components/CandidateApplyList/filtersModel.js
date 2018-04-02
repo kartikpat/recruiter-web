@@ -393,7 +393,7 @@ function Filters(){
 
 	function setOnClickFilters() {
         settings.filterModalOpenButton.click(function(event){
-			debugger
+		//	debugger
 				if(settings.topinstitute.topinst > 0) {
 					settings.topinstInput.prop("checked", true)
 				}
@@ -725,6 +725,7 @@ function Filters(){
 			return
 		}
 		settings.resultFoundText.addClass("hidden")
+
 	}
 
 	function hideAppliedFilters() {
