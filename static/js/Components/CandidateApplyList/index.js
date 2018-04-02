@@ -426,7 +426,6 @@ jQuery(document).ready( function() {
     function checkApplicationLength() {
 
         var length = candidates.getApplicationsLength()
-        debugger
         if(length <= 2) {
             var parameters = filters.getAppliedFilters();
             parameters.status = globalParameters.status;
@@ -434,6 +433,7 @@ jQuery(document).ready( function() {
             globalParameters.pageNumber = globalParameters.pageNumber + 1;
             parameters.pageNumber = globalParameters.pageNumber;
             parameters.pageContent = globalParameters.pageContent;
+            showLoader()
             fetchJobApplications(jobId, parameters,recruiterId);
         }
     }
@@ -470,13 +470,16 @@ jQuery(document).ready( function() {
         downloadMassResume(recruiterId, jobId, parameters)
     })
 
-    candidates.onClickMassActionButton(function(applicationIds, action, comment, newStatus){
+    candidates.onClickMassActionButton(function(applicationIds, action, comment, newStatus, typeRequest){
         var data = {}
         data.applicationId = applicationIds
         data.comment = comment;
         var parameters= {};
         parameters.oldStatus = globalParameters.status
         parameters.newStatus = newStatus
+        // if(typeRequest == "bulkRequest") {
+        //     return
+        // }
         setBulkCandidateActions(recruiterId, jobId, action, data, parameters)
     })
 
@@ -715,8 +718,6 @@ jQuery(document).ready( function() {
         console.log(topic)
 		console.log(data)
     }
-
-
 
     function onFailCandidateAction(topic,res) {
         errorHandler(res);

@@ -730,8 +730,8 @@ input::-webkit-input-placeholder {
     position: fixed;
     width: 100%;
     z-index: 10;
-    bottom: 0;
-    padding: 15px 30px;
+    top: 0;
+    padding: 15px 20px;
     background-color: $mass-action-bar;
     box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.5);
     height: auto;
@@ -759,35 +759,47 @@ input::-webkit-input-placeholder {
         }
 	}
     .icon-back_icon {
-        margin: 0 10px;
+        margin-right:10px;
         font-size: 25px;
         position: relative;
         top: 4px;
         cursor: pointer;
         color: #919191;
+        &:before {
+            margin: 0;
+        }
     }
 }
 
 @media all and (max-width:1024px) {
     .mass-action-container {
+        bottom: 0;
+        top: unset;
     	.action-buttons {
             display: none;
     		span.button {
 				//@include button($color-white);
 				// margin: 0;
-				padding: 8px 8px;
+				padding: 8px 15px;
     		}
             &.mobile {
                 display: block;
+                .first-wrap, .second-wrap {
+                    display: inline-block;
+                    vertical-align: top;
+                }
                 .view-more.button {
-                    padding: 6px 15px;
+                    padding: 8px 15px;
+                }
+                .massReject {
+                    margin-left: 10px;
                 }
             }
     	}
     }
     .mass-action-second {
         &.second-fold {
-			bottom: 60px;
+			bottom: 65px;
             background:rgba(128, 128, 128, 0.85);
             position: fixed;
             width: 100%;
@@ -2309,6 +2321,61 @@ input::-webkit-input-placeholder {
     .view-resume-modal .mobile-resume-sidebar .fold.first-fold {
         padding-left: 25px;
     }
+    .mass-action-container {
+        padding: 5px 20px;
+    	.action-buttons {
+
+
+            &.mobile {
+                display: block;
+                .first-wrap, .second-wrap {
+                    display: block;
+                }
+                .first-wrap {
+                    margin-bottom: 15px;
+                }
+
+
+            }
+    	}
+        .icon-back_icon {
+            font-size: 22px;
+
+        }
+        .applicationsCount {
+            height: unset;
+            line-height: 1;
+            padding-right: 0;
+            border: none;
+        }
+    }
+    .mass-action-second {
+        &.second-fold {
+			bottom: 80px;
+            background:rgba(128, 128, 128, 0.85);
+            position: fixed;
+            width: 100%;
+            z-index: 10;
+            padding: 15px 20px;
+            .first-wrap {
+                width: calc(45% - 5px);
+
+            }
+             .second-wrap {
+                 width: calc(55% - 5px)
+             }
+            .massSave, .downloadResumeMass {
+                margin-bottom: 10px !important;
+            }
+            .action-buttons {
+
+        		span.button {
+        			@include button($color-white);
+                    padding: 6px 15px;
+        		}
+            }
+        }
+    }
 }
 
 
@@ -2340,17 +2407,17 @@ input::-webkit-input-placeholder {
     }
     .bulk-actions-dropdown {
         box-shadow: 0px 2px 22.91px 6.09px rgba(214, 214, 214, 0.48);
-		position: absolute;
+
 		z-index: 100;
 		background-color: #fff;
 		border: 1px solid #d8d5d5;
-		width: 225px;
+	    width: auto;
 		height: auto;
 		top: 87%;
 		padding: 14px 7px;
 		line-height: 20px;
 		font-size: 13px;
-		padding: 20;
+
 		color: #2b2b2b;
 		display: inline-block;
     }
@@ -2359,7 +2426,10 @@ input::-webkit-input-placeholder {
         position: relative;
         top: -5px;
         left: -5px;
+        color: #1f8f75;
     }
+
+
 }
 
 

@@ -814,7 +814,8 @@
 				"static/css/chat-sticky.css",
 				"static/css/utilities.css",
 				"static/css/animate.css",
-				"static/css/jquery-chatbox.css"
+				"static/css/jquery-chatbox.css",
+				"static/css/vendor/tooltipster.css"
 			],
 			"prod": [
 				"static/build/css/tagged-candidates.min.css"
@@ -839,7 +840,8 @@
 				"static/js/Components/TaggedCandidates/model.js",
 				"static/js/Components/TaggedCandidates/index.js",
 				"static/js/chat-pubnub-sticky.js",
-				"static/js/chat-sticky.js"
+				"static/js/chat-sticky.js",
+				"static/js/vendor/tooltipster.main.min.js"
 			],
 			"prod" : [
 				"static/build/js/tagged-candidates.min.js"
@@ -952,7 +954,8 @@
 				"static/css/chat-sticky.css",
 				"static/css/utilities.css",
 				"static/css/animate.css",
-				"static/css/jquery-chatbox.css"
+				"static/css/jquery-chatbox.css",
+				"static/css/vendor/tooltipster.css"
 			],
 			"prod": [
 				"static/build/css/shortlisted-candidates.min.css"
@@ -977,10 +980,56 @@
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Components/ShortlistedCandidates/model.js",
-				"static/js/Components/ShortlistedCandidates/index.js"
+				"static/js/Components/ShortlistedCandidates/index.js",
+				"static/js/vendor/tooltipster.main.min.js"
 			],
 			"prod" : [
 				"static/build/js/shortlisted-candidates.min.js"
+			]
+		}
+	},
+	"follow-up": {
+		"styles": {
+			"debug" : [
+				"static/css/buttons.css",
+				"static/css/colors.css",
+				"static/css/utilities.css",
+				"static/css/footer.css",
+				"static/css/header.css",
+				"static/css/follow-up.css",
+				"static/css/chat-sticky.css",
+				"static/css/utilities.css",
+				"static/css/animate.css",
+				"static/css/jquery-chatbox.css",
+				"static/css/vendor/tooltipster.css"
+			],
+			"prod": [
+				"static/build/css/follow-up.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/Utilities/request.js",
+				"static/js/header.js",
+				"static/js/chat-pubnub-sticky.js",
+				"static/js/chat-sticky.js",
+				"static/js/change-password.js",
+				"static/js/utilities.js",
+				"static/js/shortlisted-candidates.js",
+				"static/js/Utilities/pubsub.js",
+				"static/js/Utilities/common.js",
+				"static/js/vendor/moment.min.js",
+				"static/js/Services/setCandidateAction.js",
+				"static/js/Services/fetchFollowUps.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js",
+				"static/js/Components/FollowUps/model.js",
+				"static/js/Components/FollowUps/index.js",
+				"static/js/vendor/tooltipster.main.min.js"
+			],
+			"prod" : [
+				"static/build/js/follow-up.min.js"
 			]
 		}
 	},

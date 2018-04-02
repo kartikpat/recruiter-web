@@ -57,7 +57,7 @@
 				display: none!important;
 			}
 			.title {
-				margin-bottom: 0;
+				margin-bottom: 15px;
 			}
 		}
 
@@ -66,23 +66,6 @@
 			border-radius:6px;
 			border:1px solid $border-color-base;
 			min-height:30px;
-			.empty-screen{
-				.image-container{
-					text-align: center;
-					img{
-						width: 25%;
-					}
-				}
-				.user-text{
-					text-align: center;
-					padding-bottom: 20px;
-				}
-				.empty-text{
-					text-align: center;
-					color: #888;
-					padding-bottom: 20px;
-				}
-			}
 			.candidate-item {
 				padding:30px 18px 0px;
 				font-size:0;
@@ -216,14 +199,24 @@
 
 					&.profile-actions {
 						width:20%;
-						// max-width::180px;
+						.action-buttons {
+                            button {
+                                @include button($button-color-green);
+                                margin:0;
+                                padding:7px;
+                                text-align: center;
+                                width:48%;
+                                font-family:$droid-font!important;
+                            }
+                        }
 
 						.resume-download-area {
-							margin-bottom:15px;
+							margin-top:15px;
 							a {
 								@include button($button-color-green);
 								margin:0;
 								padding:7px 24px;
+                                width: 100%;
 							}
 						}
 

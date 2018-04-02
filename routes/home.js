@@ -484,6 +484,18 @@ module.exports = function(settings){
 		return
 	});
 
+	app.get("/recruiter/candidates/followUps",isAuthenticated, function(req,res){
+		res.render("follow-up", {
+			title:"Recruiter Web - Followed Up Candidates | iimjobs.com",
+			styles:  assetsMapper["follow-up"]["styles"][mode],
+			scripts: assetsMapper["follow-up"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			profile: req.profile
+		})
+		return
+	});
+
 	app.get("/job/:jobID/applications",isAuthenticated, function(req,res){
 		// var jobId = req.params.jobId;
 		res.render("candidate-apply-list", {
