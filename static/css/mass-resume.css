@@ -26,48 +26,72 @@
   animation-duration: 500ms !important; }
 
 /** Mobile Menu **/
-.main-container {
-  padding: 20px;
-  min-height: calc(100% - 155px); }
-  .main-container .page-heading {
-    margin-bottom: 20px; }
-  .main-container .mass-resume-table {
-    width: 100%; }
-    .main-container .mass-resume-table .mass-resume-header {
+.page-content {
+  width: 100%;
+  min-height: 100%;
+  margin: 0 auto; }
+  .page-content .main-container {
+    padding: 20px;
+    min-height: calc(100% - 155px);
+    margin: 0 auto;
+    max-width: 1440px; }
+    .page-content .main-container .page-heading {
       margin: 0;
-      padding: 10px;
-      width: 100%;
-      border: 1px solid #e2e2e2;
-      border-radius: 1px;
-      background: #ececec;
-      font-size: 12px;
-      display: table;
-      font-weight: bold; }
-    .main-container .mass-resume-table .row {
-      display: table;
-      padding: 10px;
-      font-size: 13px;
-      border-bottom: 1px solid #ebebeb; }
-    .main-container .mass-resume-table .column {
-      display: table-cell; }
-      .main-container .mass-resume-table .column.date {
-        width: 12%; }
-      .main-container .mass-resume-table .column.request-id {
-        width: 13%; }
-      .main-container .mass-resume-table .column.status {
-        width: 20%;
-        min-width: 300px; }
-      .main-container .mass-resume-table .column.downloaded {
-        width: 15%; }
-      .main-container .mass-resume-table .column.resumes {
-        width: 13%;
-        text-align: center; }
-      .main-container .mass-resume-table .column.download-link {
-        width: 22%; }
-        .main-container .mass-resume-table .column.download-link .download-link {
-          margin-top: 5px; }
-          .main-container .mass-resume-table .column.download-link .download-link a {
-            text-decoration: none; }
-            .main-container .mass-resume-table .column.download-link .download-link a:hover {
-              color: #23527c;
-              text-decoration: underline; }
+      color: #2b2b2b;
+      font-size: 22px;
+      font-weight: 400;
+      text-align: left;
+      display: inline-block;
+      margin-bottom: 20px; }
+    .page-content .main-container .mass-resume-table {
+      width: 100%; }
+      .page-content .main-container .mass-resume-table .mass-resume-header {
+        margin: 0;
+        padding: 10px;
+        width: 100%;
+        border: 1px solid #e2e2e2;
+        border-radius: 1px;
+        background: #ececec;
+        font-size: 12px;
+        display: table;
+        font-weight: bold; }
+      .page-content .main-container .mass-resume-table .row {
+        display: table;
+        padding: 10px;
+        font-size: 13px;
+        border-bottom: 1px solid #ebebeb; }
+      .page-content .main-container .mass-resume-table .column {
+        display: table-cell;
+        color: #2b2b2b;
+        font-size: 15px;
+        font-weight: 400; }
+        .page-content .main-container .mass-resume-table .column.date {
+          width: 12%;
+          color: #2b2b2b;
+          font-size: 14px; }
+        .page-content .main-container .mass-resume-table .column.request-id {
+          width: 13%;
+          color: #2b2b2b;
+          font-size: 14px; }
+        .page-content .main-container .mass-resume-table .column.status {
+          width: 20%;
+          min-width: 300px;
+          color: #2b2b2b; }
+        .page-content .main-container .mass-resume-table .column.downloaded {
+          width: 15%;
+          color: #2b2b2b;
+          font-size: 14px; }
+        .page-content .main-container .mass-resume-table .column.resumes {
+          width: 13%;
+          color: #2b2b2b;
+          font-size: 14px;
+          text-align: center; }
+        .page-content .main-container .mass-resume-table .column.download-link {
+          width: 22%; }
+          .page-content .main-container .mass-resume-table .column.download-link .download-link {
+            margin-top: 5px; }
+            .page-content .main-container .mass-resume-table .column.download-link .download-link a {
+              text-decoration: none; }
+              .page-content .main-container .mass-resume-table .column.download-link .download-link a:hover {
+                color: #23527c;
+                text-decoration: underline; }

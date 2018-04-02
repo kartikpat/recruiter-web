@@ -68,8 +68,10 @@
 		"styles": {
 			"debug" : [
 				"static/css/header.css",
-        		"static/css/mass-resume.css",
+				"static/css/mass-resume.css",
+				"static/css/global-search.css",
 				"static/css/buttons.css",
+				"static/css/spacings.css",
 				"static/css/footer.css",
 				"static/css/animate.css",
 				"static/css/utilities.css"
@@ -85,7 +87,11 @@
 				"static/js/vendor/jquery.min.js",
 				"static/js/Utilities/request.js",
 				"static/js/header.js",
-				"static/js/mass-resume.js"
+				"static/js/utilities.js",
+				"static/js/mass-resume.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js"
+				
 
 			],
 			"prod" : [
