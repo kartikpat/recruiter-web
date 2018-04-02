@@ -1340,6 +1340,14 @@ span.sticker {
         .page-content .page-header .action-buttons button.edit img {
           width: 17px;
           height: 17px; }
+  .page-content .page-header .heading {
+    display: inline-block;
+    color: #2b2b2b;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 600; }
   .page-content .my-jobs {
     width: 80%; }
     .page-content .my-jobs .my-jobs-listing .table-container {
@@ -1349,6 +1357,17 @@ span.sticker {
       border-radius: 4px;
       border: 1px solid #e8e8e8;
       padding: 0; }
+      .page-content .my-jobs .my-jobs-listing .table-container .empty-screen .image-container {
+        text-align: center; }
+        .page-content .my-jobs .my-jobs-listing .table-container .empty-screen .image-container img {
+          width: 25%; }
+      .page-content .my-jobs .my-jobs-listing .table-container .empty-screen .user-text {
+        text-align: center;
+        padding-bottom: 20px; }
+      .page-content .my-jobs .my-jobs-listing .table-container .empty-screen .empty-text {
+        text-align: center;
+        color: #888;
+        padding-bottom: 20px; }
       .page-content .my-jobs .my-jobs-listing .table-container .table-row {
         display: inline-block;
         width: 100%;

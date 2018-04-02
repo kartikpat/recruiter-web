@@ -86,7 +86,7 @@ jQuery(document).ready( function() {
 		tickerLock = false;
         globalParameters.initialLoad = 0;
 		globalParameters.jobListLength = data.length;
-		jobList.addToList(data, globalParameters.pageNumber, globalParameters.pageContent);
+		jobList.addToList(data, globalParameters.pageNumber, globalParameters.pageContent,globalParameters.type);
 	}
 
 	function onJobsFetchFail(topic, data){

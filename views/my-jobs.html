@@ -14,7 +14,6 @@
 </div>
 
 
-
 	<div class="page-content">
 		<div class="main-wrapper">
 			<div class="my-jobs left">
@@ -29,7 +28,8 @@
 						</div>
 
 					</select>
-
+					<div class="heading hidden">All Jobs</div>	
+					
 					<div class="action-buttons right">
 						<a href="/post-job">
 							<button class="post-job green">Post Job</button>
@@ -39,6 +39,13 @@
 
 				<div class="my-jobs-listing">
 						<div class="table-container ">
+							<div class="empty-screen hidden">
+								<div class="image-container">
+									<img src="/static/images/no_jobs.svg">
+								</div>
+								<div class="user-text">You have not posted any jobs yet</div>
+								<div class="empty-text"></div>
+							</div>
 							<div class="table-row table-headings">
 								<div class="table-cell heading created">
 									<span>Created On</span>
@@ -219,5 +226,8 @@
 	<div class="loader-overlay hidden" id="loaderOverlay">
 		<div class="loader"></div>
 	</div>
+
+
+	
 
 	{{>footer}}
