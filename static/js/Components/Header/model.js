@@ -39,7 +39,8 @@ function Header(){
 			settings.menuBar=$('.mobile-menu'),
 			settings.globalSearch= $("#globalSearch"),
 			settings.searchResume=$('.search-resume'),
-			settings.CloseresumeModal=$('.modal_close')
+			settings.CloseresumeModal=$('.modal_close');
+			settings.searchAccess = 1;
 	}
 
 
@@ -114,8 +115,11 @@ function Header(){
 		});
 	}
 
-	function resumeModal(){
+	function resumeModal(profile){
 		settings.searchResume.on('click',function(){
+			// if(profile.searchAccess && profile.searchAccess == 1) {
+			// 	return window.location.href = '/'
+			// }
 			addBodyFixed()
 			$('.resumeModal').removeClass('hidden');
 			return false

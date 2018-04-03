@@ -1,5 +1,4 @@
 {
-
 	"my-profile": {
 		"styles": {
 			"debug" : [
@@ -23,7 +22,6 @@
 				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/index.js"
-
 			],
 			"prod" : [
 				"static/build/js/index.min.js"
@@ -91,7 +89,7 @@
 				"static/js/mass-resume.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js"
-				
+
 
 			],
 			"prod" : [
@@ -775,7 +773,8 @@
 				"static/css/settings.css",
 				"static/css/utilities.css",
 				"static/css/footer.css",
-				"static/css/header.css"
+				"static/css/header.css",
+				"static/css/modal.css"
 			],
 			"prod": [
 				"static/build/css/settings.min.css"
@@ -787,6 +786,7 @@
 				"static/js/Utilities/request.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/header.js",
+				"static/js/Utilities/modal.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
 				"static/js/settings.js",
@@ -915,6 +915,7 @@
 				"static/js/Utilities/request.js",
 				"static/js/Utilities/common.js",
 				"static/js/vendor/moment.min.js",
+				"static/js/Utilities/modal.js",
 				"static/js/Services/fetchDashboardStats.js",
 				"static/js/Services/fetchActiveJobStats.js",
 				"static/js/Services/fetchJobs.js",
@@ -1537,7 +1538,8 @@
 
                 "static/css/header.css",
                 "static/css/dashboardview.css",
-                "static/css/footer.css"
+                "static/css/footer.css",
+				"static/css/modal.css"
             ],
             "prod": [
                 "static/build/css/booked-slots.min.css"

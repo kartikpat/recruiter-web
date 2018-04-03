@@ -293,7 +293,7 @@ function Jobs() {
 		});
 
 		settings.rowContainer.append(str);
-		
+
 		if(dataArray.length< pageContent) {
 		 return settings.rowContainer.append("<div class='no-data'>No more records!</div>")
         }
@@ -304,19 +304,7 @@ function Jobs() {
 		settings.rowContainer.empty()
 	}
 
-	function setOnClickCloseFilters(){
-		$(".modal").click(function(event){
-			if($(event.target).parents(".modal_content").length || $(event.target).parents(".modal_header").length) {
-				return event.stopPropagation();
-			}
-			closeModal();
-		})
-	}
 
-	function closeModal() {
-		removeBodyFixed()
-		$(".modal").addClass("hidden")
-	}
 
 	function hideShell() {
 		settings.tableRowShell.addClass("hidden")
