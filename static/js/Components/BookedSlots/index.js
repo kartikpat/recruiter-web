@@ -57,8 +57,8 @@ jQuery(document).ready( function() {
    //Initial call
    fetchInterviews(recruiterId, parameters);
 
-   var fetchedInterviewsSuccessSubscription = pubsub.subscribe('fetchedInterviews', onInterviewsFetchSuccess)
-   var fetchedInterviewsFailSubscription = pubsub.subscribe('fetchedInterviewsFail', onInterviewsFetchFail)
+   var fetchedInterviewsSuccessSubscription = pubsub.subscribe('fetchedInterviews',onInterviewsFetchSuccess)
+   var fetchedInterviewsFailSubscription = pubsub.subscribe('fetchedInterviewsFail',onInterviewsFetchFail)
    // var unPublishJobSuccessSubscription = pubsub.subscribe("jobUnpublishSuccess", onSuccessfulUnpublishedJob);
    // var unPublishJobFailSubscription = pubsub.subscribe("jobUnpublishFail", onFailedUnpublishedJob);
 
@@ -82,9 +82,9 @@ jQuery(document).ready( function() {
       
     }
 
-//    function onInterviewsFetchFail(topic, data){
+   function onInterviewsFetchFail(topic, data){
 
-//    }
+   }
 
 //    function onSuccessfulPremiumJob(topic, data){
 //        slots.hideLoaderOverlay()
