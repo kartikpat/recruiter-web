@@ -324,6 +324,9 @@
 .icon-information-1:before {
   content: '\e847'; }
 
+.icon-work_from_home::before {
+  content: '\e830'; }
+
 .footer {
   width: 100%;
   background: #2b2b2b;

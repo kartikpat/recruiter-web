@@ -324,6 +324,9 @@
 .icon-information-1:before {
   content: '\e847'; }
 
+.icon-work_from_home::before {
+  content: '\e830'; }
+
 .left {
   float: left; }
 
@@ -664,11 +667,9 @@ b {
     .header .domain_logo a h1 {
       font-size: 30px;
       font-family: inherit;
-      line-height: 20px;
+      line-height: 30px;
       margin: 0;
-      /* display: inline-block; */
-      text-align: right;
-      width: 144px; }
+      /* display: inline-block; */ }
     .header .domain_logo a span {
       font-family: inherit;
       font-size: 14px; }
@@ -698,6 +699,14 @@ b {
       right: 0;
       left: 0;
       margin: auto; }
+    .header .profile_actions .action-icon .search-icon {
+      text-align: center; }
+      .header .profile_actions .action-icon .search-icon .icon-search:before {
+        margin-left: 0px;
+        margin-right: 0px;
+        font-size: 27px;
+        line-height: 43px;
+        color: #e8e8e8; }
   .header .profile_actions .profile img {
     padding: 0;
     height: 37px;
@@ -777,9 +786,15 @@ b {
         line-height: 40px;
         font-size: 14px;
         display: inline-block;
-        width: 19%;
+        width: 14%;
         min-width: 120px;
         text-align: center; }
+        .header .navigation ul .menu-list-item .icon-down_arrow::before {
+          color: #fff;
+          font-size: 11px;
+          margin-left: 2px; }
+        .header .navigation ul .menu-list-item:hover {
+          text-decoration: underline; }
         .header .navigation ul .menu-list-item.my-jobs {
           position: relative; }
         .header .navigation ul .menu-list-item.my-interviews {
@@ -833,7 +848,7 @@ b {
             top: 100%;
             height: auto; }
         .header .navigation ul .menu-list-item.active a {
-          color: #1f8f75; }
+          color: #5bb8a4; }
 
 @media all and (max-width: 1024px) {
   .header {
@@ -874,7 +889,10 @@ b {
       margin-top: 13px;
       height: 30px; }
       .header .header_item.domain_logo h1 {
-        font-size: 21px; }
+        font-size: 21px;
+        line-height: 20px;
+        margin-top: 0px;
+        padding-left: 12px; }
       .header .header_item.domain_logo span {
         font-size: 11px; }
       .header .header_item.domain_logo p {
@@ -882,8 +900,8 @@ b {
         margin-left: 3px;
         margin-top: 2px; }
       .header .header_item.mobile-menu {
-        height: 30px;
-        width: 30px;
+        height: 28px;
+        width: 28px;
         vertical-align: top;
         cursor: pointer; }
       .header .header_item.profile_actions .action-icon {

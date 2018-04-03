@@ -324,6 +324,9 @@
 .icon-information-1:before {
   content: '\e847'; }
 
+.icon-work_from_home::before {
+  content: '\e830'; }
+
 .navigationHeader, .profileActions {
   display: none !important; }
 
