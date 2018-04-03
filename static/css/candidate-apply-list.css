@@ -4654,6 +4654,7 @@ input::-webkit-input-placeholder {
       padding-right: 0; }
     .view-resume-modal .mobile-resume-sidebar {
       display: block;
+      border-radius: 8px;
       background: #FFF;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
       .view-resume-modal .mobile-resume-sidebar .fold {
@@ -4862,7 +4863,8 @@ input::-webkit-input-placeholder {
   padding: 5px 45px 5px 15px;
   border: 1px solid #8f8a8a;
   color: #000;
-  margin: 0px; }
+  margin: 0px;
+  background-size: 20px; }
 
 .action-buttons span.edit {
   padding: 7px 14px !important; }
