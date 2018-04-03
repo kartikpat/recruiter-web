@@ -35,7 +35,6 @@
         right: 0;
         margin: auto;
         width: 90%;
-
         max-width:973px;
         max-height: 440px;
         background: #FFF;
@@ -218,6 +217,9 @@
             .section {
                 display: inline-block;
                 width: calc(50% - 20px);
+            }
+            .select-dropdown{
+                background-size: 20px;
             }
         }
         li {

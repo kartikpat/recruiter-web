@@ -163,7 +163,6 @@ input::-webkit-input-placeholder {
 						 font-size: 20px; 
 						 color: #2b2b2b ;
 						 margin-left: 0px;
-						//  margin-top:5px;
 					}
 				}
 				
@@ -877,7 +876,8 @@ input::-webkit-input-placeholder {
             .action-buttons {
 
             	.select-dropdown {
-            		padding: 5px 5px 5px 15px;
+					padding: 5px 5px 5px 15px;
+				
 
             	}
 
@@ -916,7 +916,8 @@ input::-webkit-input-placeholder {
             		margin-bottom:0 !important;
             		padding-top:5px !important;
             		padding-bottom:5px !important;
-            		padding-left:0 !important;
+					padding-left:0 !important;
+					
             	}
             }
         }
@@ -1969,7 +1970,7 @@ input::-webkit-input-placeholder {
 		}
 		.mobile-resume-sidebar {
 			display:block;
-
+			border-radius: 8px;
 		    background:$color-white;
 		    box-shadow:0 0 10px rgba(0,0,0,0.2);
 
@@ -2213,6 +2214,7 @@ input::-webkit-input-placeholder {
 		border: 1px solid $button-border-color;
 		color: #000;
 		margin: 0px;
+		background-size: 20px;
 	}
     span.edit {
         padding:7px 14px !important;
@@ -2250,6 +2252,7 @@ input::-webkit-input-placeholder {
 	line-height: 1.5;
 	background-size: 15px;
     max-width: 195px;
+	background-size: 20px;
 }
 
 .select-all.check-input input + label {
@@ -2302,7 +2305,7 @@ input::-webkit-input-placeholder {
 		
     	.select-dropdown {
     		padding: 5px 5px 5px 15px;
-
+			
     	}
 
     }

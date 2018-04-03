@@ -321,6 +321,9 @@
 .icon-information-1:before {
   content: '\e847'; }
 
+.icon-work_from_home::before {
+  content: '\e830'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -889,6 +892,9 @@ span.sticker {
 .icon-information-1:before {
   content: '\e847'; }
 
+.icon-work_from_home::before {
+  content: '\e830'; }
+
 .left {
   float: left; }
 
@@ -1440,6 +1446,9 @@ a {
 
 .icon-information-1:before {
   content: '\e847'; }
+
+.icon-work_from_home::before {
+  content: '\e830'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -2039,6 +2048,9 @@ span.sticker {
 .icon-information-1:before {
   content: '\e847'; }
 
+.icon-work_from_home::before {
+  content: '\e830'; }
+
 /*[Recruiter_Homepage]*/
 /*[/Recruiter_Homepage]*/
 /**** Fontello Font Icons : ****/
@@ -2332,6 +2344,9 @@ span.sticker {
 
 .icon-information-1:before {
   content: '\e847'; }
+
+.icon-work_from_home::before {
+  content: '\e830'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -2780,6 +2795,8 @@ span.sticker {
     .modal_overlay .modal_content .modal_body .subcategory_listing.half .section {
       display: inline-block;
       width: calc(50% - 20px); }
+    .modal_overlay .modal_content .modal_body .subcategory_listing.half .select-dropdown {
+      background-size: 20px; }
   .modal_overlay .modal_content .modal_body .subcategory_listing li {
     padding: 10px;
     width: 50%;
@@ -4654,6 +4671,7 @@ input::-webkit-input-placeholder {
       padding-right: 0; }
     .view-resume-modal .mobile-resume-sidebar {
       display: block;
+      border-radius: 8px;
       background: #FFF;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
       .view-resume-modal .mobile-resume-sidebar .fold {
@@ -4862,7 +4880,8 @@ input::-webkit-input-placeholder {
   padding: 5px 45px 5px 15px;
   border: 1px solid #8f8a8a;
   color: #000;
-  margin: 0px; }
+  margin: 0px;
+  background-size: 20px; }
 
 .action-buttons span.edit {
   padding: 7px 14px !important; }
@@ -4888,7 +4907,8 @@ input::-webkit-input-placeholder {
 .action-buttons .select-dropdown {
   line-height: 1.5;
   background-size: 15px;
-  max-width: 195px; }
+  max-width: 195px;
+  background-size: 20px; }
 
 .select-all.check-input input + label {
   padding: 25px 0 0px 25px; }
