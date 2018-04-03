@@ -92,6 +92,7 @@ function Candidate() {
             }
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
             var inviteId =  parseInt($(this).attr("data-invite-id"));
+
             fn(applicationId, inviteId);
             return false
         })
@@ -416,7 +417,7 @@ function Candidate() {
 
         settings.candidateDetailsModal.on('click', settings.mobCandidateAddCommentButtonClass,function(event) {
             event.stopPropagation();
-            
+
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
             var comment = ($(settings.mobCandidateCommentTextareaClass).val()).trim();
             $(settings.mobCandidateCommentTextareaClass).addClass("hidden");

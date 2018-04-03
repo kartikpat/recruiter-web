@@ -1867,6 +1867,10 @@ span.sticker {
           margin: 0 5px 0 0; }
     .page-content .chat-container .chat-body {
       height: calc(100% - 62px); }
+      .page-content .chat-container .chat-body .loading {
+        width: 75%;
+        height: 100%;
+        margin-top: 0; }
       .page-content .chat-container .chat-body .conversation-item-list {
         height: calc(100% - 37px);
         overflow: auto; }

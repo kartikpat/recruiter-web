@@ -8,7 +8,7 @@ var errorResponsesLogin = {
 	missingParameters: 'Oops! Our engineers will fix this shortly. Please try again after sometime.',
 	serviceError: 'Oops! Our engineers are working on fixing this, please try again after sometime.'
 }
-
+ 
 var emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 function userCredentials(){
 	var user= {}

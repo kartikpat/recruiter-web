@@ -29,7 +29,6 @@ module.exports = function(settings){
 
     	if (req.cookies["recruiter-access-token"]) {
 
-			console.log(baseUrl)
 			return request.get({
 				url: baseUrl+"/recruiter",
 				headers: {
@@ -37,21 +36,31 @@ module.exports = function(settings){
 				}
 			},function(err, response, body){
 				if(err){
-					console.log(err);
 					return res.redirect('/login');
 				}
 				const jsonBody = JSON.parse(body)
 				if(jsonBody.status && jsonBody.status =='success'){
 					req.profile = jsonBody.data;
 
+					if(req.originalUrl == "/verify-email") {
+						if(req.profile.verified && req.profile.verified == 1) {
+							return res.redirect('/account-created')
+						}
+						return next()
+					}
+
 					if(req.originalUrl == "/welcome") {
-						if(req.profile.verified == 1) {
+						if(req.profile.verified && req.profile.verified == 1) {
 							return res.redirect('/account-created');
 						}
 						return next()
 					}
-					if(req.profile.verified == 1) {
-						return next();
+					if(req.profile.verified && req.profile.verified == 1) {
+						// if(req.profile.jobs && req.profile.jobs > 0) {
+						// 	return next()
+						// }
+						// return res.redirect('/dashboardview');
+						return next()
 					}
 					return res.redirect('/welcome');
 				}
@@ -270,7 +279,7 @@ module.exports = function(settings){
 			styles:  assetsMapper["chat"]["styles"][mode],
 			scripts: assetsMapper["chat"]["scripts"][mode],
 			baseUrl: baseUrl,
-			profile: req.profile	
+			profile: req.profile
 		})
 		return
 	})
@@ -548,7 +557,7 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/welcome", function(req,res){
+	app.get("/welcome",isAuthenticated, function(req,res){
 		res.render("welcome", {
 			title:"Recruiter Web - Welcome Page | iimjobs.com",
 			styles:  assetsMapper["welcome"]["styles"][mode],

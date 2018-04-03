@@ -32,7 +32,7 @@ function Job(){
 		settings.loaderOverlay = $("#loaderOverlay");
 		settings.calendarLength = null;
 		settings.refreshButton= $(".refreshButton")
-
+		settings.socialIcon = $(".socialIcon")
 		onClickCreateCalendar();
 		onClickJobOtherActions()
 		onClickJobRefresh();
@@ -71,7 +71,7 @@ function Job(){
 		settings.refreshButton.attr("data-refresh-job-id", data["jobId"]);
 		if(status == "published") {
             settings.jobUnpublishButton.removeClass("hidden")
-			settings.jobOtherActions.removeClass("hidden")
+
 
             if(data["isRefreshable"]) {
 				 settings.openJobRefreshButton.removeClass("hidden")
@@ -86,6 +86,13 @@ function Job(){
 				settings.jobPostTwitter.attr("href", getTwitterShareLink(url))
 				settings.jobPostLinkedin.attr("href", getLinkedInShareUrl(url))
 			}
+			if(data["conf"]) {
+				settings.socialIcon.addClass("hidden")
+			}
+			if(settings.jobOtherActions.find(".action-list-items li a.hidden").length < 4) {
+				settings.jobOtherActions.removeClass("hidden")
+			}
+
         }
 
         if(data["isEditable"]) {
@@ -205,6 +212,10 @@ function Job(){
     	return settings.defaultCalendar;
     }
 
+	function getSelectedCalendarId() {
+		return settings.calendarSelect.val()
+	}
+
 	function onClickJobOtherActions() {
         settings.jobOtherActions.click(function(event) {
 			event.stopPropagation()
@@ -276,6 +287,7 @@ function Job(){
 		openModal: openModal,
 		showLoaderOverlay: showLoaderOverlay,
 		hideLoaderOverlay: hideLoaderOverlay,
-		getCalendarLength: getCalendarLength
+		getCalendarLength: getCalendarLength,
+		getSelectedCalendarId: getSelectedCalendarId
 	}
 }

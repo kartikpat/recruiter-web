@@ -149,7 +149,7 @@ input::-webkit-input-placeholder {
 		}
 		.action-buttons {
 			font-size:0;
-			
+
 			span {
 				@include button($color-white);
 				padding: 7px 14px;
@@ -159,13 +159,15 @@ input::-webkit-input-placeholder {
 					background-color:transparent !important;
 					padding-left:0;
 					padding-right:0;
+                    margin-right: 0;
 					.icon-more:before {
-						 font-size: 20px; 
+						 font-size: 20px;
 						 color: #2b2b2b ;
 						 margin-left: 0px;
+						width: 9px !important;
 					}
 				}
-				
+
 			}
 		}
         .job-location {
@@ -297,7 +299,7 @@ input::-webkit-input-placeholder {
 								background-size:16px;
 								padding:0 15px 0 10px;
 								.icon-filter:before {
-									position: relative; 
+									position: relative;
 									top: 6px;
 								}
 
@@ -1043,7 +1045,7 @@ input::-webkit-input-placeholder {
 	.mass-action-container {
     	.action-buttons {
 			display: none;
-			
+
     		span.button {
 				@include button($color-white);
 				margin: 0!important;
@@ -2302,7 +2304,7 @@ input::-webkit-input-placeholder {
 		}
 	}
     .action-buttons {
-		
+
     	.select-dropdown {
     		padding: 5px 5px 5px 15px;
 			

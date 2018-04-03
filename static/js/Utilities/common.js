@@ -97,13 +97,7 @@ function isCanvasSupported() {
     return !!(elem.getContext && elem.getContext('2d'));
 }
 
-function addBodyFixed() {
-	jQuery("body").addClass("posf");
-}
 
-function removeBodyFixed(){
-	jQuery("body").removeClass("posf");
-}
 
 // Sample link
 // <a href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank">Share</a>
