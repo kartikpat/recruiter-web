@@ -12,87 +12,102 @@
 </div>
 
 <div class="page-content">
-    <div class="main-wrapper left">
-        <div class="main-container">
-            <div class="container">
-                <div class="chat-container">
-                    <div class="chat-header">
-                        <div class="current-conversation">
-                            <h3 class="current-user-name recruiterName">{{profile.name}}</h3>
-                            <span class="user-status-indicator online" id="isOnline"></span>
-                            <span class="user-status activeNow" id="isActive">Active now</span>
-                        </div>
-                    </div>
-                    <div class="mobile-user-profile">
-                        <div class="user-details">
-							<div class="back-button hidden backButtonChat">
-								<img src="/static/images/right-arrow.png" alt="">
+	<div class="main-wrapper">
+	    <div class="main-wrapper-chat left">
+	        <div class="main-container">
+	            <div class="container">
+	                <div class="chat-container">
+	                    <div class="chat-header">
+	                        <div class="current-conversation">
+	                            <h3 class="current-user-name recruiterName">Your Chats!</h3>
+	                            <!-- <span class="user-status-indicator online hidden" id="isOnline" ></span>
+	                            <span class="user-status activeNow " id="isActive">Active now</span> -->
+	                        </div>
+	                    </div>
+	                    <div class="mobile-user-profile">
+	                        <div class="user-details">
+								<div class="back-button hidden backButtonChat">
+									<i class="icon-back_icon"></i>
+								</div>
+	                            <div class="user-image user-item candImage hidden">
+	                                <img class="userImg" src="/static/images/noimage.png">
+	                            </div>
+	                            <div class="user-info user-item">
+	                                <p class="user-name userName">Your Chats!</p>
+	                                <!-- <p class="user-organization userOrg" >Talencia Tech.</p>
+	                                <p class="user-designation userDes" >PHP Developer</p>
+	                                <div class="user-detail">
+	                                    <p class="user-phone userPhone">9654732412</p>
+	                                    <p class="user-meta"><span class="user-location userLoc">Delhi</span> • <span class="exp userExp" >3 y 2m</span></p>
+	                                </div> -->
+	                            </div>
+	                        </div>
+	                        <!-- <div class="user-tags">
+	                            <span class="skill-tag">Product Management</span>
+	                             <span class="skill-tag">Product Management</span>
+	                              <span class="skill-tag">Product Management</span>
+	                               <span class="skill-tag">Product Management</span>
+	                                <span class="skill-tag">Product Management</span>
+
+	                        </div> -->
+	                    </div>
+	                    <div class="chat-body">
+	                        <div class="sidebar left conversations-list conversationList">
+	                            <div class="search">
+	                                <input type="text" placeholder="Search Candidates" id="searchCandidate">
+									<i class="icon-search"></i>
+	                            </div>
+	                            <div class="conversation-item-list" id="conversationItemList">
+
+                            	</div>
 							</div>
-                            <div class="user-image user-item">
-                                <img class="userImg" src="/static/images/noimage.png">
-                            </div>
-                            <div class="user-info user-item">
-                                <p class="user-name userName">Welcome!</p>
-                                <!-- <p class="user-organization userOrg" >Talencia Tech.</p>
-                                <p class="user-designation userDes" >PHP Developer</p>
-                                <div class="user-detail">
-                                    <p class="user-phone userPhone">9654732412</p>
-                                    <p class="user-meta"><span class="user-location userLoc">Delhi</span> • <span class="exp userExp" >3 y 2m</span></p>
-                                </div> -->
-                            </div>
-                        </div>
-                        <!-- <div class="user-tags">
-                            <span class="skill-tag">Product Management</span>
-                             <span class="skill-tag">Product Management</span>
-                              <span class="skill-tag">Product Management</span>
-                               <span class="skill-tag">Product Management</span>
-                                <span class="skill-tag">Product Management</span>
-
-                        </div> -->
-                    </div>
-                    <div class="chat-body">
-                        <div class="sidebar left conversations-list conversationList">
-                            <div class="search">
-                                <input type="text" placeholder="Search Candidates" id="searchCandidate">
-                            </div>
-                            <div class="" id="conversationItemList">
-
-                            </div>
-                        </div>
-                        <div class="welcome-container welcomeContainer right"></div>
-                        <div class="chat-window middle chatWindow hidden">
-                            <div class="current-chat">
-                               <ul id="mssgContainer">
+							<div class="chat-window middle chatWindow hidden">
+	                            <div class="current-chat">
+	                               <ul id="mssgContainer">
 
 
-                                </ul>
-                            </div>
-                            <div class="new-message">
-                                <textarea id="msgContent" placeholder="Write a message to send.."></textarea>
-                                <span class="send-message button green" id="sendMsg">Send</span>
-                            </div>
+	                                </ul>
+	                            </div>
+	                            <div class="new-message">
+	                                <textarea id="msgContent" placeholder="Write a message to send.."></textarea>
+	                                <span class="send-message button green" id="sendMsg">Send</span>
+	                            </div>
+	                        </div>
+	                        <div class="user-profile right userProfile hidden">
+	                            <div class="user-image user-item">
+	                                <img class="userImg" src="/static/images/noimage.png">
+	                            </div>
+	                            <div class="user-info user-item">
+	                                <p class="user-name userName">Shreya Sharma</p>
+	                                <p class="user-organization userOrg">Talencia Tech.</p>
+	                                <p class="user-designation userDes" >PHP Developer</p>
+	                                <div class="user-detail">
+	                                    <p class="user-phone userPhone" >9654732412</p>
+	                                    <p class="user-meta"><span class="user-location userLoc">Delhi</span> &bull; <span class="exp userExp">3 y 2m</span></p>
+	                                </div>
+	                            </div>
+	                        </div>
+							<div class="welcome-container welcomeContainer right">
+								<div class="empty-screen">
+									<div class="image-container">
+										<img src="/static/images/Chat landing page.svg">
+									</div>
+									<div class="user-name">Hi {{profile.name}}</div>
+									<div class="user-text">Select a user from left panel to view chat.</div>
+								</div>
+	                        </div>
+	                        <div class="clearfix"></div>
                         </div>
-                        <div class="user-profile right userProfile hidden">
-                            <div class="user-image user-item">
-                                <img class="userImg" src="/static/images/noimage.png">
-                            </div>
-                            <div class="user-info user-item">
-                                <p class="user-name userName">Shreya Sharma</p>
-                                <p class="user-organization userOrg">Talencia Tech.</p>
-                                <p class="user-designation userDes" >PHP Developer</p>
-                                <div class="user-detail">
-                                    <p class="user-phone userPhone" >9654732412</p>
-                                    <p class="user-meta"><span class="user-location userLoc">Delhi</span> &bull; <span class="exp userExp">3 y 2m</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="clearfix"></div>
+
+
+
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="clearfix"></div>
+	</div>
 </div>
 
 <div class="conversation-item conversationItem prototype hidden">

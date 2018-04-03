@@ -66,6 +66,23 @@
 			border-radius:6px;
 			border:1px solid $border-color-base;
 			min-height:30px;
+			.empty-screen{
+				.image-container{
+					text-align: center;
+					img{
+						width: 25%;
+					}
+				}
+				.user-text{
+					text-align: center;
+					padding-bottom: 20px;
+				}
+				.empty-text{
+					text-align: center;
+					color: #888;
+					padding-bottom: 20px;
+				}
+			}
 			.candidate-item {
 				padding:30px 18px 0px;
 				font-size:0;
@@ -128,7 +145,7 @@
 								object-fit:cover;
 								border:1px solid $border-color-base;
 							}
-							
+
 
 							.candidate-status {
 								width:12px;
@@ -395,7 +412,7 @@
 
 						.section{
 							text-align: left!important;
-							margin-left: 18px!important;	
+							margin-left: 18px!important;
 						}
 
 						&:first-child {
@@ -412,7 +429,7 @@
 							border-bottom:0;
 						}
 
-						
+
 
 						&.personal-details {
 							width:100%;
@@ -538,4 +555,3 @@ span.multipleJobListingText:hover{
 .candAppliedJobs a:hover{
 	text-decoration: underline;
 }
- 

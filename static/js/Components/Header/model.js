@@ -37,7 +37,9 @@ function Header(){
 			settings.exitButton=$('.info-icon'),
 			settings.searchButton=$('.search-icon'),
 			settings.menuBar=$('.mobile-menu'),
-			settings.globalSearch= $("#globalSearch")
+			settings.globalSearch= $("#globalSearch"),
+			settings.searchResume=$('.search-resume'),
+			settings.CloseresumeModal=$('.modal_close')
 	}
 
 
@@ -112,6 +114,14 @@ function Header(){
 		});
 	}
 
+	function resumeModal(){
+		settings.searchResume.on('click',function(){
+			addBodyFixed()
+			$('.resumeModal').removeClass('hidden');
+			return false
+		})
+	}
+
 
 
 	return {
@@ -122,6 +132,7 @@ function Header(){
 		dashboardView:dashboardView,
 		searchView:searchView,
 		navigationView:navigationView,
+		resumeModal:resumeModal,
 		search:search
 	}
 }

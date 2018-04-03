@@ -130,6 +130,8 @@ function nl2br (str, is_xhtml) {
 function formatSalary(salary){
 	if(salary =='confidential')
 		return "Confidential";
+	else if(salary < 3)
+		return "Less than 3";
 	return salary+" LPA"
 }
 

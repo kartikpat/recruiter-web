@@ -14,6 +14,8 @@ function reportList() {
         settings.candidateEducationItemClass = '.candEducationItem',
         settings.candTagItemClass= '.candTagItem',
         settings.reportRowShell = $(".reportRo.shell")
+        settings.emptyView=$('.empty-view'),
+        settings.header=$('.head')
 
         jQuery(".header .menu-list-item.reports").addClass("active");
    }
@@ -77,6 +79,11 @@ function reportList() {
 
    function addToList(dataArray){
        var str = '';
+       if(dataArray.length==0){
+            settings.emptyView.removeClass('hidden');
+            settings.header.addClass('hidden');
+       }
+       
        dataArray.forEach(function(aData, index){
            var item = createElement(aData);
            str+=item.element[0].outerHTML;

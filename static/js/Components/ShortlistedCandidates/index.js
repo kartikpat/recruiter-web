@@ -2,7 +2,8 @@ var globalParameters = {
     pageContent: 10,
     pageNumber: 1,
     status: "1,3",
-    candidateListLength: null
+    candidateListLength: null,
+    jobId: -1
 }
 jQuery(document).ready( function() {
     var candidates = candidateList();

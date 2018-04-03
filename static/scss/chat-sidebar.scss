@@ -65,16 +65,18 @@
 
 						img {
 						    border-radius: 50%;
-						    margin-right: 20px;
+
 						    width: 33px;
 						    height: 33px;
+							border: 1px solid #dedcdc;
+							background-color: #f7f7f7;
 						}
 					}
 
 					&.user-info {
 						display:inline-block;
 						vertical-align:middle;
-						width: calc(100% - 53px);
+						width: calc(100% - 43px);
 						p {
 							margin: 0;
 
@@ -82,6 +84,7 @@
 							    font-size: $chat-sidebar-user-name-font-size;
 							    line-height: 1.5;
 							    display: inline-block;
+								color: $color-darkgrey;
 							}
 
 							&.user-designation {

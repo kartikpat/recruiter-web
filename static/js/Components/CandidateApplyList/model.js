@@ -46,9 +46,10 @@ function candidateList() {
         settings.bulkActionsContainer = $("#bulkActionsContainer"),
         settings.applicationsCount = $(".applicationsCount"),
         settings.bulkCheckInputClass = ".bulkCheckInput",
-        settings.bulkBackIcon = $("#bulkBackIcon"),
+        settings.bulkBackIcon = $(".bulkBackIcon"),
         settings.secondMassActionContainer = $("#secondMassActionContainer");
         settings.totalApplicationsCount = 0;
+        settings.emptyView = $(".empty-screen")
         onClickBulkDownArrow()
         onClickMassCheckbox()
         onClickCandidateOtherActions()
@@ -75,6 +76,7 @@ function candidateList() {
     function onClickBulkBackIcon() {
         settings.bulkBackIcon.click(function(){
             settings.bulkActionContainer.addClass("hidden")
+            settings.secondMassActionContainer.addClass("hidden")
             settings.massCheckboxInput.prop("checked",false)
             settings.rowContainer.find(".candidateCheckbox").prop("checked", false)
             settings.rowContainer.find(".candidate-select").removeClass("selected")
@@ -98,9 +100,14 @@ function candidateList() {
                 $(this).attr("disabled", false)
                 settings.totalApplicationsCount = len
                 settings.applicationsCount.text(len + " candidates selected");
-                settings.bulkActionContainer.removeClass("hidden")
+                settings.massCheckboxInput.prop("checked", false);
+                settings.rowContainer.find(".candidateCheckbox").prop("checked", false);
+                settings.rowContainer.find(".candidate-select").removeClass("selected");
+                $(".second-fold").addClass("hidden");
+                settings.bulkActionContainer.attr("data-type-request", "bulkRequestDropdown").removeClass("hidden");
             } else {
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").attr("disabled", false)
+                settings.secondMassActionContainer.addClass("hidden")
                 settings.bulkActionContainer.addClass("hidden")
             }
         })
@@ -255,7 +262,7 @@ function candidateList() {
 
         var profStr = '';
         if(aData["jobs"].length == 0) {
-            profStr = "<div style='line-height:1.5;'><span style='font-weight:bold;'>"+aData["name"]+"</span> does not have any work experience yet</div>"
+            profStr = "<div style='line-height:1.5;color:#2b2b2b;'><span style='font-weight:bold;'>"+aData["name"]+"</span> does not have any work experience yet</div>"
         }
         else {
             $.each(aData["jobs"],function(index, anObj) {
@@ -368,8 +375,44 @@ function candidateList() {
 		var str = '';
         var element = $(".candidateListing[data-status-attribute='"+status+"']");
         hideShells(status);
+
         if(dataArray.length<1 && pageNumber ==1) {
-			return element.append("<div class='no-data'>No Applications Found!</div>")
+			if(status== ""){
+				$('.user-text').text('You have not received any applications yet.');
+				$('.empty-text').text('You’ll a list here once you do');
+				settings.emptyView.removeClass('hidden');
+				return
+			}
+			else if(status== "0"){
+				$('.user-text').text('You don’t have any jobs for the selected filters.');
+				$('.empty-text').text('Please select a different filter');
+        		settings.emptyView.removeClass('hidden');
+				return
+            }
+            else if(status== "4,5"){
+				$('.user-text').text('You have not reviewed any candidates yet.');
+				$('.empty-text').text('Any candidate that is viewed or downloaded will appear here');
+				settings.emptyView.removeClass('hidden');
+				return
+            }
+            else if(status== "1"){
+				$('.user-text').text('You have not shortlisted any candidates yet.');
+				$('.empty-text').text('Click on ‘Shortlist’ button to shortlist a candidate in ‘Unread Tab’');
+			    settings.emptyView.removeClass('hidden');
+				return
+            }
+            else if(status== "2"){
+				$('.user-text').text('You have not rejected any candidates yet');
+				$('.empty-text').text("Click on ‘Reject’ button to reject a candidate in ‘Unread Tab'");
+                settings.emptyView.removeClass('hidden');
+                return
+            }
+            else if(status== "3"){
+				$('.user-text').text('You have not saved any candidates yet.');
+				$('.empty-text').text('Click on ‘Save’ in the other actions to save a candidate in ‘Unread Tab’');
+			    settings.emptyView.removeClass('hidden');
+				return
+			}
 		}
 		dataArray.forEach(function(aData, index){
 			var item = createElement(aData);
@@ -378,8 +421,10 @@ function candidateList() {
 		});
 		element.append(str);
         // settings.rowContainer.find(".candidate-select").removeClass("selected");
-        if(dataArray.length< pageContent) {
-            return element.append("<div class='no-data'>No more records!</div>")
+        if(dataArray.length < pageContent) {
+            if(element.find(".no-more-records").length == 0) {
+                return element.append("<div class='no-more-records no-data'>No more records!</div>")
+            }
         }
 	}
 
@@ -538,8 +583,10 @@ function candidateList() {
                 candidateSelect.not(".candidateRow.prototype .candidate-select").addClass("selected");
                 var arr = returnSelectedApplications()
                 settings.totalApplicationsCount = arr.length;
+                settings.bulkActionsDropdown.find(".bulkCheckInput input").attr("disabled", false);
+                settings.bulkActionsDropdown.find(".bulkCheckInput input").prop("checked", false);
                 settings.applicationsCount.text(arr.length + " candidates selected");
-                settings.bulkActionContainer.removeClass("hidden")
+                settings.bulkActionContainer.attr("data-type-request", "bulkRequest").removeClass("hidden")
             } else {
                 jQuery(this).closest(".candidate-select").removeClass("selected");
                 var el = settings.rowContainer.find(".candidate-select input:checked")
@@ -551,7 +598,9 @@ function candidateList() {
                     settings.bulkActionContainer.removeClass("hidden")
                 }
                 else {
+                    settings.secondMassActionContainer.addClass("hidden")
                     settings.bulkActionContainer.addClass("hidden")
+
                 }
             }
         })
@@ -570,14 +619,17 @@ function candidateList() {
                 candidateSelect.not(".candidateRow.prototype .candidate-select").addClass("selected");
                 candidateSelect.find("input").prop("checked",  true);
                 var el = jQuery(".candidate-select.selected");
+                settings.bulkActionsDropdown.find(".bulkCheckInput input").attr("disabled", false);
+                settings.bulkActionsDropdown.find(".bulkCheckInput input").prop("checked", false);
                 var arr = returnSelectedApplications()
                 settings.totalApplicationsCount = arr.length
                 settings.applicationsCount.text(arr.length + " candidates selected");
-                settings.bulkActionContainer.removeClass("hidden")
+                settings.bulkActionContainer.attr("data-type-request", "bulkRequest").removeClass("hidden")
             } else {
                 var candidateSelect = jQuery(".candidate-select")
                 candidateSelect.not(".candidate-select.prototype").removeClass("selected");
                 jQuery(".candidate-select input").prop("checked",  false);
+                settings.secondMassActionContainer.addClass("hidden")
                 settings.bulkActionContainer.addClass("hidden")
             }
         })
@@ -590,12 +642,12 @@ function candidateList() {
     function onClickMassReject(fn) {
         settings.massReject.click(function(e){
             e.stopPropagation()
-
 			settings.bulkActionModal.find(".modalHeading").text("Are you sure?");
 			settings.bulkActionModal.find(".jsModalText").text("You are about to reject "+settings.totalApplicationsCount+" candidates.")
 			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Rejected Tab.").removeClass("hidden");
             settings.bulkActionModal.find(".massActionButton").text("Reject").attr("data-action", "reject").attr("data-status", "2")
             settings.bulkActionModal.find(".massTextarea").val("")
+            settings.bulkActionModal.find(".errorField").addClass("hidden")
             addBodyFixed()
             settings.bulkActionModal.removeClass("hidden")
         })
@@ -611,6 +663,7 @@ function candidateList() {
 			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Shortlisted Tab.").removeClass("hidden");
             settings.bulkActionModal.find(".massActionButton").text("Shortlist").attr("data-action", "shortlist").attr("data-status", "1")
             settings.bulkActionModal.find(".massTextarea").val("")
+            settings.bulkActionModal.find(".errorField").addClass("hidden")
             addBodyFixed()
             settings.bulkActionModal.removeClass("hidden")
         })
@@ -625,6 +678,7 @@ function candidateList() {
 			settings.bulkActionModal.find(".jsModalTextSecondary").text("These candidates will be moved to the Saved Tab.").removeClass("hidden");
             settings.bulkActionModal.find(".massActionButton").text("Save for Later").attr("data-action", "save").attr("data-status", "3")
             settings.bulkActionModal.find(".massTextarea").val("")
+            settings.bulkActionModal.find(".errorField").addClass("hidden")
             addBodyFixed()
             settings.bulkActionModal.removeClass("hidden")
         })
@@ -639,6 +693,7 @@ function candidateList() {
 			settings.bulkActionModal.find(".jsModalTextSecondary").addClass("hidden")
             settings.bulkActionModal.find(".massActionButton").text("Add").attr("data-action", "comment")
             settings.bulkActionModal.find(".massTextarea").val("")
+            settings.bulkActionModal.find(".errorField").addClass("hidden")
             addBodyFixed()
             settings.bulkActionModal.removeClass("hidden")
         })
@@ -649,21 +704,23 @@ function candidateList() {
             e.stopPropagation()
             var selectedApplicationIds = returnSelectedApplications()
             var action = $(this).attr("data-action");
-            var comment = settings.bulkActionModal.find(".massTextarea").val();
+            var comment = (settings.bulkActionModal.find(".massTextarea").val()).trim();
             var newStatus;
             if($(this).attr("data-status")) {
                 newStatus =  $(this).attr("data-status");
             }
+            if(action == "comment") {
+                if(!comment) {
+                    return settings.bulkActionModal.find(".errorField").removeClass("hidden")
+                }
+                else {
+                    settings.bulkActionModal.find(".errorField").addClass("hidden")
+                }
+            }
 
-            if(!comment) {
-                return settings.bulkActionModal.find(".errorField").removeClass("hidden")
-            }
-            else {
-                settings.bulkActionModal.find(".errorField").addClass("hidden")
-            }
             settings.bulkActionModal.addClass("hidden")
-
-            fn(selectedApplicationIds, action, comment, newStatus)
+            var requestType = settings.bulkActionContainer.attr("data-type-request")
+            fn(selectedApplicationIds, action, comment, newStatus, requestType)
         })
     }
 
@@ -718,6 +775,7 @@ function candidateList() {
                 settings.bulkActionsContainer.removeClass("hidden")
             },
             activate: function(event, ui){
+                settings.emptyView.addClass("hidden")
                 settings.bulkActionContainer.addClass("hidden")
                 settings.massCheckboxInput.prop("checked", false)
                 fn(event, ui);

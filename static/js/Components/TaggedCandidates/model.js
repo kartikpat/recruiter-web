@@ -18,6 +18,7 @@ function candidateList() {
         settings.candAppliedJobsClass= '.candAppliedJobs',
         settings.multipleJobListingClass= '.multipleJobListing',
         settings.multipleJobListingTextClass= '.multipleJobListingText'
+        settings.emptyView=$('.empty-screen')
         onToggleJobList();
         jQuery(".header .menu-list-item.my-jobs").addClass("active");
    }
@@ -168,8 +169,18 @@ function candidateList() {
 
    function addToList(dataArray, pageNumber, pageContent){
        hideShell()
-       if(dataArray.length<1 && pageNumber ==1) {
-           return settings.candidateListing.append("<div class='no-data'>No Applications Found!</div>")
+       var Tagval=settings.filterByTagList.val();
+       if(dataArray.length<1 && pageNumber ==1){
+           if(Tagval==-1){
+            settings.emptyView.removeClass('hidden');
+            return  
+           }
+           else{
+                $('.user-text').text('No tagged candidates for a particular tag');
+				$('.empty-text').text('There are no candidates for the selected tag');
+				settings.emptyView.removeClass('hidden');
+                return
+            }	
        }
        var str = '';
        dataArray.forEach(function(aData, index){

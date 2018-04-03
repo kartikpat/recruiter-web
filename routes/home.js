@@ -269,7 +269,8 @@ module.exports = function(settings){
 			title: "IIM JOBS | myChat",
 			styles:  assetsMapper["chat"]["styles"][mode],
 			scripts: assetsMapper["chat"]["scripts"][mode],
-			baseUrl: baseUrl
+			baseUrl: baseUrl,
+			profile: req.profile	
 		})
 		return
 	})
@@ -381,7 +382,9 @@ module.exports = function(settings){
 			title: "IIM JOBS | Mass Resume",
 			styles:  assetsMapper["mass-resume"]["styles"][mode],
 			scripts: assetsMapper["mass-resume"]["scripts"][mode],
-			baseUrl: baseUrl
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			profile: req.profile
 		})
 		return
 	})
@@ -481,6 +484,18 @@ module.exports = function(settings){
 		return
 	});
 
+	app.get("/recruiter/candidates/followUps",isAuthenticated, function(req,res){
+		res.render("follow-up", {
+			title:"Recruiter Web - Followed Up Candidates | iimjobs.com",
+			styles:  assetsMapper["follow-up"]["styles"][mode],
+			scripts: assetsMapper["follow-up"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			profile: req.profile
+		})
+		return
+	});
+
 	app.get("/job/:jobID/applications",isAuthenticated, function(req,res){
 		// var jobId = req.params.jobId;
 		res.render("candidate-apply-list", {
@@ -538,6 +553,18 @@ module.exports = function(settings){
 			title:"Recruiter Web - Welcome Page | iimjobs.com",
 			styles:  assetsMapper["welcome"]["styles"][mode],
 			scripts: assetsMapper["welcome"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			profile: req.profile
+		})
+		return
+	});
+
+	app.get("/verify-email",isAuthenticated,function(req, res){
+		res.render("verify-email", {
+			title:"Recruiter Web - Welcome Page | iimjobs.com",
+			styles:  assetsMapper["verify-email"]["styles"][mode],
+			scripts: assetsMapper["verify-email"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			profile: req.profile

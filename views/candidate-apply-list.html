@@ -4,7 +4,7 @@
 
 	<div class="first-fold fold top mass-action-container hidden" id="massActionContainer">
 		<div class="action-buttons">
-			<span class="icon-back_icon" id="bulkBackIcon"></span>
+			<span class="icon-back_icon bulkBackIcon"></span>
 			<span class="applicationsCount">6 candidates selected</span>
 			<span class=" button white downloadResumeMass" >Download Resume</span>
 			<a href="" class="downloadExcelMass"><span class=" button white">Download Excel</span></a>
@@ -15,17 +15,30 @@
 			<!-- <span class=" button white" id="massTag">Add Tag</span> -->
 		</div>
 		<div class="action-buttons mobile">
-			<span class=" button white massReject">Reject</span>
-			<span class=" button white massShortlist">Shortlist</span>
-			<span class="view-more button white"><i class="icon-up_arrow"></i></span>
+			<div class="first-wrap">
+				<span class="icon-back_icon bulkBackIcon"></span>
+				<span class="applicationsCount">6 candidates selected</span>
+			</div>
+			<div class="second-wrap">
+				<span class=" button white massReject">Reject</span>
+				<span class=" button white massShortlist">Shortlist</span>
+				<span class="view-more button white"><i class="icon-up_arrow"></i></span>
+			</div>
+
 		</div>
 	</div>
 	<div class="second-fold fold hidden mass-action-second" id="secondMassActionContainer">
 		<div class="action-buttons">
-			<span class=" button white massSave">Save for Later</span>
-			<span class=" button white massComment">Add Comment</span>
-			<span class=" button white downloadResumeMass">Download Resume</span>
-			<a href="" class="downloadExcelMass"><span class=" button white">Download Excel</span></a>
+
+			<div class="first-wrap left">
+				<span class=" button white massSave">Save for Later</span>
+				<span class=" button white massComment">Add Comment</span>
+			</div>
+			<div class="second-wrap right">
+				<span class=" button white downloadResumeMass">Download Resume</span>
+				<a href="" class="downloadExcelMass"><span class=" button white">Download Excel</span></a>
+			</div>
+
 		</div>
 	</div>
 	<div class="toast-notification-container">
@@ -150,7 +163,7 @@
 					            		<li data-attribute="0">
 											<a href="#unread-jobs">
 												<div class="bulk-selection-item unread">
-													<span class="bulk-action-icon"><i class="icon-envelope"></i></span>
+													<span class="bulk-action-icon"><i class="icon-email_envelope"></i></span>
 													<span class="bulk-action-label ">Unread (<span class="tabStats" id="unreadNo">0</span>)</span>
 												</div>
 											</a>
@@ -205,7 +218,7 @@
 								<div id="shortlisted-jobs" class="candidates-listing candidateListing" data-status-attribute="1">
 									{{>candidateApplyListShell}}
 									{{>candidateApplyListShell}}
-								</div>
+								</div> 
 								<div id="rejected-jobs" class="candidates-listing candidateListing" data-status-attribute="2">
 									{{>candidateApplyListShell}}
 									{{>candidateApplyListShell}}
@@ -213,6 +226,13 @@
 								<div id="saved-jobs" class="candidates-listing candidateListing" data-status-attribute="3">
 									{{>candidateApplyListShell}}
 									{{>candidateApplyListShell}}
+								</div>
+								<div class="empty-screen hidden">
+									<div class="image-container">
+										<img src="/static/images/reports.svg">
+									</div>
+									<div class="user-text">No applications for searched keyword</div>
+									<div class="empty-text">We couldn't find any results for the searched keyword.</div>
 								</div>
 
 							</div>
@@ -552,14 +572,9 @@
 
     	<div class="sidebar-section comments candidateCommentContainer">
 			<h3>Comment</h3>
-<<<<<<< HEAD
+
     		<div class="comment-box">
 				<textarea id="" class="comment-textarea hidden" readonly></textarea>
-=======
-
-    		<div class="comment-box hidden">
-					<textarea id="" class="comment-textarea " readonly></textarea>
->>>>>>> develop
 			</div>
 			<div class="comment-container">
 				<textarea id="" placeholder="Add Comment" name="name" class="candidateCommentTextarea"></textarea>

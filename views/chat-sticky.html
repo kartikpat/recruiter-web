@@ -5,8 +5,8 @@
 			Inbox
 		</div>
 		<div class="right">
-			<span class="minus-icon"></span>
-			<!-- <span class="close-icon"></span> -->
+			<span class=" icon-minus_icon minusIcon"></span>
+
 		</div>
 		<div class="clearfix">
 
@@ -43,17 +43,23 @@
 <div class="chat-div-candidate prototype hidden">
 	<div class="chat-div-header">
 		<div class="candidate-name-container left">
-			<div class="candidate-name">
+			<div class="img-container">
+				<img src="/static/images/noimage.png" alt="">
+			</div>
+			<div class="cand-name-wrapper">
+				<div class="candidate-name">
 
+				</div>
+				<div class="last-active-date">
+					Today
+				</div>
 			</div>
-			<div class="last-active-date">
-				Today
-			</div>
+
 		</div>
 		<div class="info-buttons right">
-			<span class="info-icon"></span>
-			<span class="minus-icon"></span>
-			<span class="close-icon"></span>
+			<span class="icon-information-1 infoIcon"></span>
+			<span class="icon-minus_icon minusIcon"></span>
+			<span class="icon-cross_icon closeIcon"></span>
 		</div>
 	</div>
 	<div class="content-footer-container">
@@ -96,7 +102,6 @@
   <div class="chat-collapsed-candidate-container hidden">
 	  <div class="chat-collapsed-candidate">
 		  <div class="chat-collapsed-candidate-wrapper">
-
 		  </div>
 	  </div>
 
@@ -104,22 +109,14 @@
 </div>
 
 <li class="message sent prototype hidden">
-    <div class="user-image ">
-        <img class="useImg" src="/static/images/noimage.png">
-    </div>
     <div class="message-area">
-        <p class="message-content msgContent">Message Content</p>
-        <p class="message-timestamp msgTime">3 min</p>
+        <p class="message-content msgContent tooltip">Message Content</p>
     </div>
 </li>
 
 <li class="message received prototype hidden">
-    <div class="user-image userImg">
-        <img class="useImg" src="/static/images/noimage.png">
-    </div>
     <div class="message-area">
-        <p class="message-content msgContent">Message Content</p>
-        <p class="message-timestamp msgTime">6 min</p>
+        <p class="message-content msgContent tooltip">Message Content</p>
     </div>
 </li>
 
