@@ -98,35 +98,39 @@ function MassResume(){
     function init(){
         settings.tableRow=$(".row.prototype");
         settings.date=('.date');
-        settings.requestId=('.request-id');
-        settings.Status=('.status');
-        settings.count=('.resumes');
-        settings.downloadLink=('.download-link')
         settings.resumeContent=	$('.mass-resume-content')
-        settings.noOfDownloads=(".downloaded")
-        populateResumeStatus(res);
+        addToList(res);
     }
 
-    function populateResumeStatus(res){
-        res.forEach(function(aResume){
-        var card = settings.tableRow.clone().removeClass('prototype hidden');
-        card.find(settings.date).text(ISODateToD_M_Y(aResume["date"]));
-        card.find(settings.requestId).text(aResume["requestId"]);
-        card.find(settings.Status).text(aResume["status"]);
-              var noOfDownloads;
-              if(aResume["downloads"] == 0) {
-                  noOfDownloads = "No Downloaded";
-              }
-              else {
-                  noOfDownloads = "No. Of Downloads: " +aResume["downloads"];
-              }
-        card.find(settings.noOfDownloads).text(noOfDownloads);
-              card.find(settings.count).text(aResume["count"]);
-        card.find(settings.downloadLink).html("<div>Expires On: "+ISODateToD_M_Y(aResume["expiry"]) + "  " + ISODateToTime(aResume["expiry"])+"</div><div class='download-link'><a href="+aResume["downloadLink"]+" class='link-color  download-resume-link'>Click Here</a> to download</div>");
+    function getElement() {
+      var card = settings.tableRow.clone().removeClass('prototype hidden');
+      return {
+          element: card,
+          requestId:card.find('.request-id'),
+          date:card.find('.date'),
+          Status:card.find('.status'),
+          count:card.find('.resumes'),
+          downloadLink:card.find('.download-link'),
+          noOfDownloads:card.find(".downloaded")  
+      }
+  }
 
-        settings.resumeContent.append(card);
-      })
-
+    function populateResumeStatus(aResume){
+        var item=getElement();
+          item.date.text(ISODateToD_M_Y(aResume["date"]));
+          item.requestId.text(aResume["requestId"]);
+          item.Status.text(aResume["status"]);
+            var noOfDownloads;
+            if(aResume["downloads"] == 0) {
+                noOfDownloads = "No Downloaded";
+            }
+            else {
+                noOfDownloads = "No. Of Downloads: " +aResume["downloads"];
+            }
+          item.noOfDownloads.text(noOfDownloads);
+          item.count.text(aResume["count"]);
+          item.downloadLink.html("<div>Expires On: "+ISODateToD_M_Y(aResume["expiry"]) + "  " + ISODateToTime(aResume["expiry"])+"</div><div class='download-link'><a href="+aResume["downloadLink"]+" class='link-color  download-resume-link'>Click Here</a> to download</div>");
+          return item
     }
 
     function checkTime(i) {
@@ -160,27 +164,30 @@ function MassResume(){
         return str;
     }
 
-    // function addToList(dataArray){
-    //   var str = '';
-    //   if(dataArray.length==0){
-    //        settings.emptyView.removeClass('hidden');
-    //        settings.header.addClass('hidden');
-    //   }
+    function addToList(dataArray){
+      var str = '';
+      // if(dataArray.length==0){
+      //      settings.emptyView.removeClass('hidden');
+      //      settings.header.addClass('hidden');
+      // }
+      dataArray.forEach(function(aData, index){
+          var item = populateResumeStatus(aData);
+          str+=item.element[0].outerHTML;
+      });
+      $('.mass-resume-content').append(str);
       
-    //   dataArray.forEach(function(aData, index){
-    //       var item = createElement(aData);
-    //       str+=item.element[0].outerHTML;
-    //   });
-    //   hideShells();
-    //   settings.reportsTable.append(str);
-    // }
+      if(dataArray.length< pageContent) {
+        return  $('.mass-resume-content').append("<div class='no-data'>No more records!</div>")
+      }
+    }
 
     return{
         init:init,
         checkTime:checkTime,
         ISODateToTime:ISODateToTime,
         ISODateToD_M_Y:ISODateToD_M_Y,
-        populateResumeStatus:populateResumeStatus
+        populateResumeStatus:populateResumeStatus,
+        getElement:getElement
     }
     
 }
