@@ -83,22 +83,22 @@ jQuery(document).ready( function() {
       
     }
 
-   function onInterviewsFetchFail(topic, data){
+//    function onInterviewsFetchFail(topic, data){
 
-   }
+//    }
 
-   function onSuccessfulPremiumJob(topic, data){
-       slots.hideLoaderOverlay()
-       toastNotify(1, "Job Made Premium Successfully")
-       setTimeout(function(){
-            location.reload()
-        }, 2000);
-   }
-   function onFailedPremiumJob(topic, data){
-       slots.hideLoaderOverlay()
-       slots.openModal("premium")
-       errorHandler(data)
-   }
+//    function onSuccessfulPremiumJob(topic, data){
+//        slots.hideLoaderOverlay()
+//        toastNotify(1, "Job Made Premium Successfully")
+//        setTimeout(function(){
+//             location.reload()
+//         }, 2000);
+//    }
+//    function onFailedPremiumJob(topic, data){
+//        slots.hideLoaderOverlay()
+//        slots.openModal("premium")
+//        errorHandler(data)
+//    }
 
    var tickerLock=false;
    $(window).scroll(function() {
