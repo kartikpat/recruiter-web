@@ -352,6 +352,9 @@
 .icon-information-1:before {
   content: '\e847'; }
 
+.icon-work_from_home::before {
+  content: '\e830'; }
+
 .left {
   float: left; }
 
@@ -903,6 +906,9 @@ a {
 
 .icon-information-1:before {
   content: '\e847'; }
+
+.icon-work_from_home::before {
+  content: '\e830'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */

@@ -324,6 +324,9 @@
 .icon-information-1:before {
   content: '\e847'; }
 
+.icon-work_from_home::before {
+  content: '\e830'; }
+
 .left {
   float: left; }
 
@@ -788,7 +791,7 @@ b {
         text-align: center; }
         .header .navigation ul .menu-list-item .icon-down_arrow::before {
           color: #fff;
-          font-size: 15px;
+          font-size: 11px;
           margin-left: 2px; }
         .header .navigation ul .menu-list-item:hover {
           text-decoration: underline; }
