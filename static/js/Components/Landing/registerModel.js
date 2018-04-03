@@ -57,7 +57,7 @@ function registerUser(){
 			confirmPassword: user.confirmPassword.val(),
 			type: user.recruiterType.val()
 		}
-	}
+	} 
 
 	function eraseError(element) {
 		element.next('.error').text('')

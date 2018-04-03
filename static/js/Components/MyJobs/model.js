@@ -28,12 +28,13 @@ function Jobs() {
 		settings.loaderOverlay = $("#loaderOverlay");
 		settings.emptyView=$('.empty-screen');
 		settings.headings=$('.table-headings');
+		settings.socialIcon = $('.socialIcon');
 		$(".header .menu-list-item.my-jobs").addClass("active");
 
 		onClickJobRefresh();
 		onClickJobCancel();
 		onClickJobMakePremium();
-		setOnClickCloseFilters();
+
 	}
 
 	function onClickJobCancel(fn){
@@ -149,7 +150,8 @@ function Jobs() {
 			premium: card.find(settings.openMakeJobPremiumModalButton),
 			facebook: card.find('.jobFacebook'),
 			twitter: card.find('.jobTwitter'),
-			linkedIn: card.find('.jobLinkedin')
+			linkedIn: card.find('.jobLinkedin'),
+			socialIcons : card.find('.socialIcon')
 		}
 	}
 
@@ -186,6 +188,8 @@ function Jobs() {
 			case "updated-published":
 				obj["statusMsg"] = false;
 				obj["status"] = 'Published </br>(But updated)'
+			case "unpublished":
+				obj["message"] = aData["rejectMessage"]
 			default:
 				break;
 		}
@@ -225,6 +229,10 @@ function Jobs() {
 				"data-attribute": aData["timestamp"],
 				"title": obj["message"]
 			}).removeClass("hidden")
+		}
+
+		if(aData["conf"]) {
+			item.socialIcons.addClass("hidden")
 		}
 
 		if(obj["actions"]) {
@@ -364,7 +372,8 @@ function Jobs() {
 			animation: 'fade',
 			delay: 0,
 			side:['bottom'],
-			theme: 'tooltipster-borderless'
+			theme: 'tooltipster-borderless',
+			maxWidth: 500
 		})
 	}
 

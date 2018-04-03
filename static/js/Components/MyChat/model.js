@@ -191,9 +191,11 @@ function Chat() {
                settings.candImage.removeClass("hidden")
                settings.conversationList.addClass("hidden")
            }
+           hideLoader()
            settings.chatWindow.removeClass("hidden")
            settings.userProfile.removeClass("hidden")
            initializeTooltip()
+
    }
 
    function onClickBackButton() {
@@ -267,7 +269,7 @@ function Chat() {
    }
 
    function scrollToBottom() {
-       console.log(jQuery("#mssgContainer").outerHeight())
+
        $(".current-chat").scrollTop(jQuery("#mssgContainer").outerHeight());
    }
 
@@ -285,6 +287,10 @@ function Chat() {
        settings.isActive.text("Not Active");
    }
 
+   function hideCandidateBlocks() {
+       settings.chatWindow.addClass("hidden");
+       settings.userProfile.addClass("hidden");
+   }
 
    return {
        init: init,
@@ -303,7 +309,8 @@ function Chat() {
        scrollToBottom: scrollToBottom,
        setRecruiterActive: setRecruiterActive,
        setRecruiterInactive: setRecruiterInactive,
-       setChat: setChat
+       setChat: setChat,
+       hideCandidateBlocks: hideCandidateBlocks
    }
 
    function initializeTooltip() {

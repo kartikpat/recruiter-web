@@ -29,7 +29,6 @@ module.exports = function(settings){
 
     	if (req.cookies["recruiter-access-token"]) {
 
-			console.log(baseUrl)
 			return request.get({
 				url: baseUrl+"/recruiter",
 				headers: {
@@ -37,15 +36,21 @@ module.exports = function(settings){
 				}
 			},function(err, response, body){
 				if(err){
-					console.log(err);
 					return res.redirect('/login');
 				}
 				const jsonBody = JSON.parse(body)
 				if(jsonBody.status && jsonBody.status =='success'){
 					req.profile = jsonBody.data;
 
+					if(req.originalUrl == "/verify-email") {
+						if(req.profile.verified && req.profile.verified == 1) {
+							return res.redirect('/account-created')
+						}
+						return next()
+					}
+
 					if(req.originalUrl == "/welcome") {
-						if(req.profile.verified == 1) {
+						if(req.profile.verified && req.profile.verified == 1) {
 							return res.redirect('/account-created');
 						}
 						return next()

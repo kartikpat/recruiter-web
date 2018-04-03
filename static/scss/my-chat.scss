@@ -154,6 +154,11 @@
 
 		.chat-body {
 			height:calc(100% - 62px);
+			.loading {
+				width: 75%;
+				height: 100%;
+				margin-top: 0;
+			}
 			.conversation-item-list {
 				height: calc(100% - 37px);
 				overflow: auto;

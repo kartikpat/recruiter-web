@@ -2,9 +2,9 @@ var channelsArray = []
 globalParameters = {
     channelName: "",
     messageNumber: 10,
-    clicked: 1,
     startTimeToken: null,
-    endTimeToken: null
+    endTimeToken: null,
+    clicked: 1
 }
 
 jQuery(document).ready( function() {
@@ -19,18 +19,18 @@ jQuery(document).ready( function() {
     fetchRecruiterChats(recruiterId)
 
     chat.onClickSingleChatItem(function(candidateId){
+        chat.hideCandidateBlocks()
+        showLoader()
         var obj = store.getCandidateFromStore(candidateId)
         globalParameters.channelName = obj.channel;
         globalParameters.clicked = 1;
-        chatEngine.fetchHistory(obj.channel , globalParameters.messageNumber , null, null, onFetchHistory);
-        chat.setCandidateProfile(obj)
+        chatEngine.fetchHistory(obj.channel , globalParameters.messageNumber , null, null, function(data,response){
+            onFetchHistory(data, response, obj)
+        });
+
     })
 
     var candidateId = getQueryParameter("candidateId");
-
-
-
-    function openSingleChatItem(candidateId) {}
 
     chat.setUuid(btoa(recruiterId+'--'+profile["email"]))
 
@@ -66,10 +66,10 @@ jQuery(document).ready( function() {
         channelsArray = data;
         store.saveToStore(data);
         chatEngine.subscribe(getArray(channelsArray));
-        if(candidateId) {
+
+        if(!isEmpty(candidateId)) {
             var obj = store.getCandidateFromStore(candidateId)
             globalParameters.channelName = obj.channel;
-            globalParameters.clicked = 1;
             chatEngine.fetchHistory(obj.channel , globalParameters.messageNumber , null, null, onFetchHistory);
             chat.setCandidateProfile(obj)
             chat.setChat(obj.channel, candidateId)
@@ -88,7 +88,6 @@ jQuery(document).ready( function() {
       var parts = value.split("; " + name + "=");
       if (parts.length == 2) return parts.pop().split(";").shift();
     }
-
 
    function onNewMessage(m) {
 
@@ -157,12 +156,14 @@ jQuery(document).ready( function() {
          chat.addToList(resultTags);
     })
 
-   function onFetchHistory(data, response) {
+   function onFetchHistory(data, response, obj) {
        globalParameters.startTimeToken = parseInt(response.startTimeToken)
        chat.populateMessages(response.messages)
-    //    if(globalParameters.clicked == 1) {
-    //        chat.scrollToBottom()
-    //    }
+       chat.setCandidateProfile(obj)
+       if(globalParameters.clicked == 1) {
+           chat.scrollToBottom()
+           globalParameters.clicked = 0;
+       }
    }
 
    var ticker;
@@ -173,7 +174,7 @@ jQuery(document).ready( function() {
 
    function checkScrollEnd() {
        if($(".current-chat").scrollTop() < 5) {
-        //    globalParameters.clicked = 0;
+
            if(globalParameters.startTimeToken == 0) {
                return
            }

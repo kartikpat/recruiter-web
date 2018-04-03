@@ -207,7 +207,7 @@ chatContainer.on('click','.candidate-card', function() {
 
 			$(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(str)
             initializeTooltip()
-
+            scrollToBottom(channelName)
 		});
 
 	}
@@ -285,7 +285,7 @@ $("#conversationListing").on('click','.conversationItem', function() {
 
 			$(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(str)
             initializeTooltip()
-
+            scrollToBottom(channelName)
 		});
 
 	}
@@ -403,10 +403,11 @@ var displayAMessage = function(event) {
 
 			var item = getMsgSentElement(elem)
 			$(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
+
             initializeTooltip()
             that.val('');
+            scrollToBottom(channelName)
         })
-
     }
 }
 
@@ -425,7 +426,11 @@ function receiveMessage(m) {
 
     openChat(m.channel)
 
-	// scrollToBottom()
+	scrollToBottom(m.channel)
+}
+
+function scrollToBottom(channelName) {
+    $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container .chat-div-content").scrollTop(jQuery(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container .chat-div-content ul").outerHeight());
 }
 
 function openChat(channelName) {
@@ -507,7 +512,7 @@ function openChat(channelName) {
 
 			$(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(str)
             initializeTooltip()
-
+            scrollToBottom(channelName)
 		});
 
 	}
@@ -581,6 +586,7 @@ function openChat() {
 
 			$(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(str)
             initializeTooltip()
+            scrollToBottom(channelName)
 		});
 	}
 }
@@ -698,6 +704,7 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
             })
         	$(".chat-candidate-boxes .chat-div-candidate[data-id="+array[0]["userID"]+"] .content-footer-container .chat-div-content ul").append(str)
             initializeTooltip()
+            scrollToBottom(channelName)
         });
         if($(".chat-candidate-boxes").children().length < maxCandidateChats) {
             $(".chat-candidate-boxes").prepend(chatContainerBox);
@@ -721,7 +728,6 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
             $(".chat-collapsed-candidate-container .chat-collapsed-candidate .chat-collapsed-candidate-wrapper").append(clonedElement);
         }
         reposition_chat_windows();
-
         chatContainer.find('.candidate-card[data-id='+array[0]["userID"]+']').addClass("selected-sticky");
     }
 }
@@ -739,6 +745,24 @@ function reposition_chat_windows() {
 	if(!($(".chat-collapsed-candidate-container").hasClass("hidden"))) {
 		$(".chat-collapsed-candidate-container").css("right", rightOffset );
 	}
+}
+
+var ticker;
+$(".chat-candidate-boxes .chat-div-candidate .content-footer-container .chat-div-content").scroll(function(){
+
+    clearTimeout(ticker);
+    ticker = setTimeout(checkScrollEnd,100);
+})
+
+function checkScrollEnd() {
+
+    if($(".chat-candidate-boxes .chat-div-candidate .content-footer-container .chat-div-content").scrollTop() < 5) {
+        return console.log($(this))
+        if(globalParameters.startTimeToken == 0) {
+            return
+        }
+        chatEngine.fetchHistory(globalParameters.channelName , globalParameters.messageNumber ,globalParameters.startTimeToken, null, onFetchHistory);
+    }
 }
 
 function ISODateToD_M(aDate) {
