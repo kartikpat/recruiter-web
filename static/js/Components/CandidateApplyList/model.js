@@ -49,6 +49,7 @@ function candidateList() {
         settings.bulkBackIcon = $(".bulkBackIcon"),
         settings.secondMassActionContainer = $("#secondMassActionContainer");
         settings.totalApplicationsCount = 0;
+        settings.emptyView = $(".empty-screen")
         onClickBulkDownArrow()
         onClickMassCheckbox()
         onClickCandidateOtherActions()
@@ -374,7 +375,7 @@ function candidateList() {
 		var str = '';
         var element = $(".candidateListing[data-status-attribute='"+status+"']");
         hideShells(status);
-        // dataArray.length=0
+
         if(dataArray.length<1 && pageNumber ==1) {
 			if(status== ""){
 				$('.user-text').text('You have not received any applications yet.');
@@ -774,6 +775,7 @@ function candidateList() {
                 settings.bulkActionsContainer.removeClass("hidden")
             },
             activate: function(event, ui){
+                settings.emptyView.addClass("hidden")
                 settings.bulkActionContainer.addClass("hidden")
                 settings.massCheckboxInput.prop("checked", false)
                 fn(event, ui);

@@ -43,7 +43,6 @@ jQuery(document).ready( function() {
        console.log(parameters);
        slots.emptySlots();
        fetchInterviews(recruiterId, parameters);
-    //    location.reload();
     }
 
     slots.startdate(function(){

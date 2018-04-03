@@ -91,12 +91,12 @@ function BookedSlots() {
 					if(index > 0)
 						item.element.addClass("border-top")
 				}
-			}	
+			}
 			else{
 				settings.date = date;
                 item.interviewDate.text(date)
 			}
-			
+
 			var time = aData["slot"]["time"];
 			var temp = time.substr(0,2) + ":" + time.substr(2,2);
 			var temp1 =	moment(temp, 'HH:mm').add(30, 'minutes').format('HH:mm');
@@ -128,7 +128,7 @@ function BookedSlots() {
 		if(dataArray.length<1 && pageNumber ==1) {
 			settings.noInterviewView.removeClass('hidden');
 			settings.bookedSlotsview.addClass('hidden');
-			settings.header.addClass('hidden');	
+			settings.header.addClass('hidden');
 		}
 		dataArray.forEach(function(aData, index){
 			var item = createElement(aData ,index);
@@ -201,11 +201,11 @@ function BookedSlots() {
             fielddateFormat: 'dd-mm-yy',
             altField:   '#start_date',
             altFormat: "yy-mm-dd",
-            showOn: 'both', 
+            showOn: 'both',
             onSelect: function(){
 				fn();
 			}
-			
+
         });
     }
 
@@ -215,7 +215,7 @@ function BookedSlots() {
         console.log(fromDate);
         return fromDate;
     }
-	
+
 
 	return {
 		init: init,

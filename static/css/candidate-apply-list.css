@@ -3326,9 +3326,10 @@ input::-webkit-input-placeholder {
               color: #155d9a;
               text-transform: uppercase; }
       .page-content .candidate-apply-listing .candidates-area .candidates-area-body .empty-screen .image-container {
-        text-align: center; }
+        text-align: center;
+        padding-top: 20px; }
         .page-content .candidate-apply-listing .candidates-area .candidates-area-body .empty-screen .image-container img {
-          width: 25%; }
+          width: 20%; }
       .page-content .candidate-apply-listing .candidates-area .candidates-area-body .empty-screen .user-text {
         text-align: center;
         padding-bottom: 20px;
