@@ -90,7 +90,6 @@ jQuery(document).ready( function() {
            }
        }
     }
-
 })
 
 function errorHandler(data) {

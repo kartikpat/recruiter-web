@@ -1,0 +1,48 @@
+@import 'common/spacings';
+@import 'components/_colors';
+@import 'components/_type';
+
+.navigationHeader {
+	display: none !important;
+}
+
+.profileActions {
+	.searchIcon, .msgAction {
+		display: none !important;
+	}
+}
+
+.basicAccount, .accountSettings {
+	display: none !important;
+}
+
+.page-content {
+	@include page-content;
+	background-image:url('/static/images/footer-background.png');
+	background-size:100%;
+	background-position:center bottom;
+	background-repeat:no-repeat;
+	.main-wrapper {
+		width:100%;
+		max-width:1280px;
+		margin:0 auto;
+
+		h1 {
+			color:$color-black;
+			margin-top:50px;
+			line-height:1.5;
+		}
+
+		p {
+			font-size:$base-font-size;
+			color:$intro-subtitle-color;
+			margin:15px 0;
+			line-height:1.5;
+
+			a {
+				color:$link-color;
+			}
+		}
+
+	}
+}
