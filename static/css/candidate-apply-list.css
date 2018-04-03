@@ -2780,6 +2780,8 @@ span.sticker {
     .modal_overlay .modal_content .modal_body .subcategory_listing.half .section {
       display: inline-block;
       width: calc(50% - 20px); }
+    .modal_overlay .modal_content .modal_body .subcategory_listing.half .select-dropdown {
+      background-size: 20px; }
   .modal_overlay .modal_content .modal_body .subcategory_listing li {
     padding: 10px;
     width: 50%;
@@ -4890,7 +4892,8 @@ input::-webkit-input-placeholder {
 .action-buttons .select-dropdown {
   line-height: 1.5;
   background-size: 15px;
-  max-width: 195px; }
+  max-width: 195px;
+  background-size: 20px; }
 
 .select-all.check-input input + label {
   padding: 25px 0 0px 25px; }
