@@ -173,8 +173,8 @@ function Jobs() {
 
 		switch(aData["status"]) {
 			case "rejected":
-				if(aData["rejectMessage"]){
-					obj["message"] = aData["rejectMessage"];
+				if(aData["message"]){
+					obj["message"] = aData["message"];
 				}
 				break;
 			case "pending":
@@ -189,7 +189,9 @@ function Jobs() {
 				obj["statusMsg"] = false;
 				obj["status"] = 'Published </br>(But updated)'
 			case "unpublished":
-				obj["message"] = aData["rejectMessage"]
+				if(aData["message"]){
+					obj["message"] = aData["message"];
+				}
 			default:
 				break;
 		}

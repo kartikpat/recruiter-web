@@ -537,8 +537,8 @@ input::-webkit-input-placeholder {
 												border:2px solid $color-white;
 												border-radius:50%;
 												position:absolute;
-												bottom:5px;
-												right:5px;
+												bottom:10px;
+												right:18px;
 												&.offline {
 													background-color:$user-status-offline;
 												}

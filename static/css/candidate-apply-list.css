@@ -3455,8 +3455,8 @@ input::-webkit-input-placeholder {
                   border: 2px solid #FFF;
                   border-radius: 50%;
                   position: absolute;
-                  bottom: 5px;
-                  right: 5px; }
+                  bottom: 10px;
+                  right: 18px; }
                   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-status.offline {
                     background-color: #b6b6b5; }
                   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-status.online {

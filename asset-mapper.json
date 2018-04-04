@@ -905,7 +905,8 @@
 				"static/css/utilities.css",
 				"static/css/animate.css",
 				"static/css/jquery-chatbox.css",
-				"static/css/dashboard.css"
+				"static/css/dashboard.css",
+				"static/css/vendor/tooltipster.css"
 			],
 			"prod": [
 				"static/build/css/dashboard.min.css"
@@ -939,7 +940,8 @@
 				"static/js/utilities.js",
 				"static/js/Utilities/toastNotifier.js",
 				"static/js/chat-pubnub-sticky.js",
-				"static/js/chat-sticky.js"
+				"static/js/chat-sticky.js",
+				"static/js/vendor/tooltipster.main.min.js"
 			],
 			"prod" : [
 				"static/build/js/dashboard.min.js"

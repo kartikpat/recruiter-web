@@ -1928,3 +1928,12 @@ span.sticker {
 .demo-icon.icon-group:before, .demo-icon.icon-mail:before, .demo-icon.icon-interview:before, .demo-icon.icon-politics:before {
   font-size: 47px;
   color: #919191; }
+
+.info-buttons span:before {
+  font-size: 14px; }
+
+.iconSendButton:before {
+  font-size: 25px; }
+
+.candidate-collapsed-block .icon-cross_icon:before {
+  font-size: 14px; }
