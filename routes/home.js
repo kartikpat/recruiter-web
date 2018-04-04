@@ -605,6 +605,18 @@ module.exports = function(settings){
 		return
 	});
 
+	app.get("/terms-condition",isAuthenticated,function(req, res){
+		res.render("terms-condition", {
+			title:"Recruiter Web -terms-condition | iimjobs.com",
+			styles:  assetsMapper["terms-condition"]["styles"][mode],
+			scripts: assetsMapper["terms-condition"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			profile: req.profile
+		})
+		return
+	});
+
 	app.get("/account-created", isVerified, function(req,res){
 		var email = req.query.email || "";
 		res.render("account-created", {
@@ -741,9 +753,9 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/dashboardview",isAuthenticated, function(req,res){
+	app.get("/dashboardview",isAuthenticated,function(req,res){
 		res.render("dashboardview", {
-			title:"Recruiter Web - Candidate Profile | iimjobs.com",
+			title:"Recruiter Web - Newuser| iimjobs.com",
 			styles:  assetsMapper["dashboardview"]["styles"][mode],
 			scripts: assetsMapper["dashboardview"]["scripts"][mode],
 			baseUrl: baseUrl,

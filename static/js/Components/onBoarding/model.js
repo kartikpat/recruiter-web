@@ -10,16 +10,16 @@ function onBoarding(){
     }
 
     function connect(){
-        console.log('ss');
         settings.profile.on('click',function(){
             window.location='/settings'
         })
         settings.facebookConnect.on('click',function(){
-            window.open('/auth/facebook','',' scrollbars=yes,menubar=no,width=500,height=500, resizable=yes,toolbar=no,location=no,status=no')
+            window.open('/auth/facebook/','',' scrollbars=yes,menubar=no,width=500,height=500, resizable=yes,toolbar=no,location=no,status=no')
+            
         })
 
         settings.linkedinConnect.on('click',function(){
-            window.open('/auth/linkedin','',' scrollbars=yes,menubar=no,width=500,height=500, resizable=yes,toolbar=no,location=no,status=no')
+            window.open('/auth/linkedin/','',' scrollbars=yes,menubar=no,width=500,height=500, resizable=yes,toolbar=no,location=no,status=no')
         })
 
         settings.twitterConnect.on('click',function(){
