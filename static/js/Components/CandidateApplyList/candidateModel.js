@@ -132,6 +132,8 @@ function Candidate() {
             startup: modal.find(".js_startup"),
             travel: modal.find(".js_travel"),
             resume: modal.find(".js_resume"),
+            iitScore: modal.find(".js_iit"),
+            gmatScore: modal.find(".js_gmat"),
             coverLetter: modal.find(".js_cover_letter"),
 
             tag: modal.find(".candidateTagInput"),
@@ -250,11 +252,16 @@ function Candidate() {
         item.languages.text((formatLanguages(aData["languages"]) || "N.A."));
         item.workPermit.text((workPermit[aData["permit"]] || "N.A."));
         item.teamHandling.text(binary[aData["handleTeam"]])
-        item.workSixDays.text("no");
+        item.differentlyAbled.text(binary[aData["differentlyAbled"]])
         item.relocate.text(binary[aData["relocate"]] )
         item.startup.text(binary[aData["joinStartup"]])
-        item.travel.text(binary[aData["travel"]])
-        item.percentile.text(aData["catScore"] || "N.A.")
+        item.travel.text(willingTravel[aData["travel"]])
+        if(aData["scores"]) {
+            item.percentile.text(aData["scores"]["cat"] || "N.A.")
+            item.iitScore.text(aData["scores"]["iit"] || "N.A.")
+            item.gmatScore.text(aData["scores"]["gmat"] || "N.A.")
+        }
+
         item.workSixDays.text(binary[aData["sixDays"]])
         if(isCanvasSupported()) {
             item.resume.addClass("hidden")

@@ -151,7 +151,8 @@ function Jobs() {
 			facebook: card.find('.jobFacebook'),
 			twitter: card.find('.jobTwitter'),
 			linkedIn: card.find('.jobLinkedin'),
-			socialIcons : card.find('.socialIcon')
+			socialIcons : card.find('.socialIcon'),
+			extraStatus: card.find('.extraStatus')
 		}
 	}
 
@@ -168,7 +169,9 @@ function Jobs() {
 			"status": aData["status"],
 			"message" : "Nothing to show",
 			"statusMsg": true,
-			"actions": false
+			"actions": false,
+			"extraStatus": false,
+			"extraStatusMsg": 'But Updated'
 		}
 
 		switch(aData["status"]) {
@@ -184,10 +187,19 @@ function Jobs() {
 			case "published":
 				obj["statusMsg"] = false;
 				obj["actions"] = true;
+				if(aData["cnfi"]){
+					obj["extraStatus"] = true;
+					obj["extraStatusMsg"] = "(Confidential)"
+				}
 				break;
 			case "updated-published":
 				obj["statusMsg"] = false;
-				obj["status"] = 'Published </br>(But updated)'
+				obj["status"] = 'Published';
+				obj["actions"] = true;
+				obj["extraStatus"] = true;
+				if(aData["cnfi"]){
+					obj["extraStatusMsg"] = "(Confidential)"
+				}
 			case "unpublished":
 				if(aData["message"]){
 					obj["message"] = aData["message"];
@@ -226,6 +238,10 @@ function Jobs() {
 
 		var obj = setJobStatus(aData)
 		item.status.append(obj["status"]);
+
+		if(obj["extraStatus"]) {
+			item.extraStatus.text(obj["extraStatusMsg"]).removeClass("hidden")
+		}
 		if(obj["statusMsg"]) {
 			item.statusMsg.attr({
 				"data-attribute": aData["timestamp"],
@@ -233,7 +249,7 @@ function Jobs() {
 			}).removeClass("hidden")
 		}
 
-		if(aData["conf"]) {
+		if(aData["cnfi"]) {
 			item.socialIcons.addClass("hidden")
 		}
 

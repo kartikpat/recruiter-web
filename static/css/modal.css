@@ -1003,3 +1003,7 @@ span.sticker {
       padding: 10px;
       cursor: pointer;
       z-index: 100; }
+
+select.select-dropdown {
+  padding-right: 38px;
+  background-size: 17px !important; }

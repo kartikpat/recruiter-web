@@ -28,3 +28,9 @@ var defaultApplicationStatus = {
     4: "2",
     5: "3"
 }
+
+var willingTravel = {
+    1: "Occasional",
+    2: "Extensive",
+    3: "No"
+}
