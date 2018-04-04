@@ -685,7 +685,8 @@ span.sticker {
           -webkit-appearance: none;
           -moz-appearance: none;
           -o-appearanance: none;
-          line-height: 1.5; }
+          line-height: 1.5;
+          padding-right: 38px; }
           .job_posting .post_job .post_job_form .field-container .field select[multiple] {
             background-image: none;
             height: 120px; }
@@ -941,6 +942,7 @@ span.sticker {
       width: 100%; }
       .job_posting .post_job .post_job_form .field-container .field input[type=text], .job_posting .post_job .post_job_form .field-container .field select, .job_posting .post_job .post_job_form .field-container .field textarea {
         padding: 12px 20px;
+        padding-right: 38px;
         font-size: 12px; }
         .job_posting .post_job .post_job_form .field-container .field input[type=text] option, .job_posting .post_job .post_job_form .field-container .field select option, .job_posting .post_job .post_job_form .field-container .field textarea option {
           padding: 5px; }
@@ -985,3 +987,7 @@ span.sticker {
 
 [class^="icon-"]:before, [class*=" icon-"]:before {
   font-size: 120% !important; }
+
+.job_posting .post_job .post_job_form .field-container .location-tags .pill-button .pill-listing ul li.disabled {
+  font-weight: bold;
+  padding: 5px 10px; }
