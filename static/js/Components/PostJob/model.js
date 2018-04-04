@@ -149,6 +149,69 @@ var city={
 		}
 }	
 
+var industry={
+	"24":"Accounting/Finance/Audit",
+	"25":"Advertising / PR MR / Events",
+	"34":"Agriculture / Dairy","36":"Animation",
+	"37":"Architecture / Interior Design",
+	"1":"Auto / Auto Ancillary",
+	"38":"Aviation / Aerospace Firm",
+	"2":"Banking / Financial Services / Broking",
+	"3":"BPO / ITES",
+	"39":"Brewery / Distillery",
+	"42":"Ceramics / Sanitary ware",
+	"26":"Chemicals / Petrochemical / Plastic / Rubber",
+	"5":"Construction / Engineering / Cement / Metals",
+	"4":"Consulting",
+	"40":"Consumer Durables",
+	"41":"Courier / Transportation / Freight",
+	"43":"Defence / Government",
+	"6":"Education / Teaching / Training",
+	"44":"Electricals / Switchgears",
+	"45":"Export / Import",
+	"27":"Facility Management",
+	"46":"Fertilizers / Pesticides",
+	"7":"FMCG / Foods / Beverage",
+	"47":"Food Processing",
+	"48":"Gems & Jewellery",
+	"49":"Glass",
+	"8":"Healthcare / Medical / Hospital",
+	"50":"Heating Ventilation Air Conditioning",
+	"51":"Hotels / Restaurants / Airlines",
+	"11":"Infrastructure / Oil & Gas / Power / Energy",
+	"12":"Insurance",
+	"13":"Internet / Online / eCommerce",
+	"14":"IT",
+	"52":"IT-Software / Software Services",
+	"53":"IT-Hardware & Networking",
+	"15":"KPO / Research / Analytics",
+	"16":"Legal",
+	"35":"Logistics / SCM / Freight / Shipping",
+	"18":"Media / Dotcom / Entertainment",
+	"55":"Medical / Healthcare / Hospital",
+	"20":"NGO / Social Service",
+	"56":"Oil and Gas / Power / Infrastructure / Energy",
+	"57":"Office Equipment / Automation",
+	"58":"Paper",
+	"28":"Pharma / Biotech / Clinical Research",
+	"59":"Printing / Packaging",
+	"60":"Publishing",
+	"29":"Real Estate / Property",
+	"30":"Recruitment / Staffing",
+	"22":"Retail",
+	"61":"Security / Law Enforcement",
+	"31":"Semiconductors / Electronics",
+	"62":"Shipping / Marine",
+	"63":"Steel",
+	"64":"Strategy / Management Consulting Firms",
+	"23":"Telecom / ISP",
+	"32":"Textile / Garments / Accessories / Fashion",
+	"9":"Travel / Hospitality",
+	"65":"Tyres",
+	"66":"Water Treatment / Waste Management",
+	"67":"Wellness / Fitness / Sports",
+	"33":"Other"
+}
 
 
 function Job(){
@@ -181,11 +244,13 @@ function Job(){
 			settings.submitButton = $('.submit-form'),
 			settings.cancelFormButton = $('#cancelForm'),
 			settings.error = $('.error'),
+			settings.listing=$("#listing"),
 			settings.creditsText = $('#creditsText');
 			settings.initialPremium = null
 			setAvailableCredits(settings.creditsText, config["availableCredits"]);
 			onClickCancelForm(settings.cancelFormButton);
 			appendlocation();
+			appendindustry();
 
 			var salaryRange = 100;
 			for(var i=0; i< salaryRange; i++){
@@ -391,21 +456,20 @@ function Job(){
 	}
 
 	function appendlocation(){
-		var ul =$("#listing");	
+		var ul=settings.listing;	
 		for(var key in city) {
-			console.log("------" +key)
 			for(var key1 in city[key]) {
-				 console.log(city[key][key1]);
 				 var loc=city[key][key1];
-				 console.log(key1);
 				 ul.append('<li data-value='+key1+'>'+loc+'</li>');
 			}
+		}	
+	}
+
+	function appendindustry(){
+		var ul=$('#industry-listing');
+		for( var key in industry){
+			ul.append('<li data-value='+key+'>'+industry[key]+'</li>');
 		}
-		return
-	
-        var li = document.createElement("li");
-        li.appendChild();
-        ul.appendChild(li);	
 	}
 
 	return {
@@ -418,6 +482,7 @@ function Job(){
 		onChangeJobPremium: onChangeJobPremium,
 		populateJobTags: populateJobTags,
 		appendlocation:appendlocation,
+		appendindustry:appendindustry
 	}
 
 }

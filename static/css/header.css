@@ -910,6 +910,10 @@ b {
         .header .header_item.profile_actions .action-icon .info-icon {
           width: 50%;
           height: 50%; }
+        .header .header_item.profile_actions .action-icon .search-icon {
+          text-align: center; }
+          .header .header_item.profile_actions .action-icon .search-icon .icon-search:before {
+            line-height: 35px; }
       .header .header_item.profile_actions .profile {
         display: none; } }
 
