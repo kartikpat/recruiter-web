@@ -109,7 +109,7 @@ jQuery(document).ready( function() {
         filters.closeFilterModal()
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
-
+        candidates.hideEmptyScreen()
 
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
@@ -135,6 +135,7 @@ jQuery(document).ready( function() {
     filters.onClickRemoveFilter(function(value,category,type){
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
+        candidates.hideEmptyScreen()
         filters.removeFilter(value,category,type);
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
@@ -149,6 +150,7 @@ jQuery(document).ready( function() {
     filters.onClickSearchButton(function(){
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
+        candidates.hideEmptyScreen()
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
         setQueryParameters(parameters);
@@ -162,6 +164,7 @@ jQuery(document).ready( function() {
     filters.onSelectSortByOption(function(){
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
+        candidates.hideEmptyScreen()
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
         setQueryParameters(parameters);
@@ -175,6 +178,7 @@ jQuery(document).ready( function() {
     filters.onClickRemoveAllFilters(function(){
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
+        candidates.hideEmptyScreen()
         var parameters = filters.getAppliedFilters();
         console.log(parameters)
         parameters.status = globalParameters.status;
@@ -228,7 +232,7 @@ jQuery(document).ready( function() {
             return theJob.showCalendarMissingError();
         var obj = {
             "type": inviteId,
-            "calendarId": defaultCalendarId
+            "calendarId": theJob.getSelectedCalendarId()
         }
         sendInterViewInvite(recruiterId, jobId, applicationId , obj)
     })
@@ -238,7 +242,7 @@ jQuery(document).ready( function() {
             return theJob.showCalendarMissingError();
         var obj = {
             "type": inviteId,
-            "calendarId": defaultCalendarId
+            "calendarId": theJob.getSelectedCalendarId()
         }
         sendInterViewInvite(recruiterId, jobId, applicationId , obj)
     })
@@ -248,7 +252,7 @@ jQuery(document).ready( function() {
             return theJob.showCalendarMissingError();
         var obj = {
             "type": inviteId,
-            "calendarId": defaultCalendarId
+            "calendarId": theJob.getSelectedCalendarId()
         }
         sendInterViewInvite(recruiterId, jobId, applicationId , obj)
     })
@@ -258,7 +262,7 @@ jQuery(document).ready( function() {
             return theJob.showCalendarMissingError();
         var obj = {
             "type": inviteId,
-            "calendarId": defaultCalendarId
+            "calendarId": theJob.getSelectedCalendarId()
         }
         sendInterViewInvite(recruiterId, jobId, applicationId , obj)
     })
@@ -658,18 +662,7 @@ jQuery(document).ready( function() {
 
         //Call only on initial load
         // if(!globalParameters.initialLoad) {
-        //     var result =filters.getAppliedFilters();
-        //     var filterFlag = 0;
-        //      for(var key in result) {
-        //           if(!(key == "orderBy" || key == "pageNumber" || key == "pageContent" || key == "status")) {
-        //             filterFlag+= 1;
-        //           }
-        //         }
-        //     if(filterFlag > 0) {
-        //         filters.showAppliedFilters();
-        //     } else {
-        //         filters.hideAppliedFilters();
-        //     }
+        //
         // }
         if(globalParameters.initialLoad) {
             fetchJobApplicationCount(recruiterId, jobId)
@@ -684,8 +677,19 @@ jQuery(document).ready( function() {
             candidates.setInvite(theJob.getCalendarLength())
         }
 
+        var result = filters.getAppliedFilters();
+        var filterFlag = 0;
+        console.log(result)
+         for(var key in result) {
+            if(!(key == "orderBy" || key == "pageNumber" || key == "pageContent" || key == "status")) {
+                filterFlag+= 1;
+            }
+        }
 
-        filters.showResultsFound(globalParameters.candidateListLength);
+        if(filterFlag > 0) {
+            filters.showResultsFound(globalParameters.candidateListLength);
+        }
+
         if(data["pageNumber"] == 1) {
             store.emptyStore(data["data"]);
         }

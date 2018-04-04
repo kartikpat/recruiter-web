@@ -13,15 +13,14 @@ $(document).ready(function() {
 
 	function onSuccessfulLogin(topic, data){
 		document.getElementById("login").innerHTML='<span class= "inline-spinner"></span>';
-		//debugger
-		console.log('Login successful');
+
 		localStorage.id = data["id"];
 		window.location="/";
 		document.getElementById("login").disabled=false;
 	}
 
 	function onFailedLogin(topic, data){
-		console.log('Login failed');
+
 		userLogin.errorHandler(data);
 		document.getElementById("login").disabled=false;
 	}
@@ -32,7 +31,7 @@ $(document).ready(function() {
 	var userRegister = registerUser();
 	userRegister.init();
 	userRegister.registerHandler(function(e){
-		console.log('Register clicked')
+
 		if(userRegister.validateRegister()){
 			document.getElementById("register").disabled=true;
 			submitRegister(userRegister.getData());
@@ -40,13 +39,13 @@ $(document).ready(function() {
 	});
 
 	function onSuccessfulRegister(topic, data){
-		console.log('successful reister');
+
 		document.getElementById("register").innerHTML = '<span class= "inline-spinner"></span>';
-		window.location = "/welcome";
+		window.location = "/verify-email";
 		document.getElementById("register").disabled=false;
 	}
 	function onFailedRegister(topic, data){
-		console.log('register failed');
+
 		userRegister.errorHandler(data);
 		document.getElementById("register").disabled=false;
 	}

@@ -84,9 +84,9 @@
 							<!-- <img src="/static/images/multi-options.svg"> -->
 							<ul class="action-list-items">
 								<li><a href="#" class="hidden" id="jobRefreshButton">Refresh</a></li>
-								<li><a href="#" class="" id="jobPostFacebook">Post On Facebook</a></li>
-								<li><a href="#" class="" id=jobPostTwitter>Post On Twitter</a></li>
-								<li><a href="#" class="" id="jobPostLinkedin">Post On Linkedin</a></li>
+								<li><a href="#" class="socialIcon" id="jobPostFacebook">Post On Facebook</a></li>
+								<li><a href="#" class="socialIcon" id=jobPostTwitter>Post On Twitter</a></li>
+								<li><a href="#" class="socialIcon" id="jobPostLinkedin">Post On Linkedin</a></li>
 							</ul>
 						</span>
 					</div>
@@ -218,7 +218,7 @@
 								<div id="shortlisted-jobs" class="candidates-listing candidateListing" data-status-attribute="1">
 									{{>candidateApplyListShell}}
 									{{>candidateApplyListShell}}
-								</div> 
+								</div>
 								<div id="rejected-jobs" class="candidates-listing candidateListing" data-status-attribute="2">
 									{{>candidateApplyListShell}}
 									{{>candidateApplyListShell}}
@@ -453,6 +453,18 @@
 	            							<span class="value js_travel">N.A</span>
 	            						</p>
 	            					</li>
+									<li>
+	            						<p class="willing-travel">
+	            							<span class="key">Willingness to travel?</span>
+	            							<span class="value js_travel">N.A</span>
+	            						</p>
+	            					</li>
+									<li>
+	            						<p class="willing-travel">
+	            							<span class="key">Willingness to travel?</span>
+	            							<span class="value js_travel">N.A</span>
+	            						</p>
+	            					</li>
 	            				</ul>
 	            			</div>
 	            		</div>
@@ -480,8 +492,8 @@
 						<div class="content-block comments mob mobCandidateCommentContainer">
 	            			<h3 class="content-heading">Comment</h3>
 	            			<div class="content">
-								<div class="mobCommentBox">
-									<textarea id="" class="comment-textarea hidden" readonly></textarea>
+								<div class="mobCommentBox hidden">
+									<textarea id="" class="comment-textarea" readonly></textarea>
 								</div>
 								<div class="">
 									<textarea  placeholder="Add Comment" name="name" class="mobCandidateCommentTextarea"></textarea>

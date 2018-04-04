@@ -10,6 +10,7 @@ $(document).ready(function(){
 	headerDetails.searchView();
 	headerDetails.navigationView();
 	headerDetails.search();
-	headerDetails.resumeModal();
+	console.log(profile)
+	headerDetails.resumeModal(profile);
 	// headerDetails.CloseresumeModal();
 })

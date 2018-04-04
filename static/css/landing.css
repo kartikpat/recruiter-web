@@ -321,6 +321,9 @@
 .icon-information-1:before {
   content: '\e847'; }
 
+.icon-work_from_home::before {
+  content: '\e830'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -425,7 +428,8 @@
             animation: spin 1500ms linear infinite;
             border-radius: 50%; }
         .modal-overlay .modal-content .modal-body .recruiter-form .form-group select {
-          padding: 12px 22px; }
+          padding: 12px 22px;
+          background-size: 20px; }
 
 body {
   position: relative; }

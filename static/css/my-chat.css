@@ -321,6 +321,9 @@
 .icon-information-1:before {
   content: '\e847'; }
 
+.icon-work_from_home::before {
+  content: '\e830'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -888,6 +891,9 @@ span.sticker {
 
 .icon-information-1:before {
   content: '\e847'; }
+
+.icon-work_from_home::before {
+  content: '\e830'; }
 
 .left {
   float: left; }
@@ -1441,6 +1447,9 @@ a {
 .icon-information-1:before {
   content: '\e847'; }
 
+.icon-work_from_home::before {
+  content: '\e830'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -1858,6 +1867,10 @@ span.sticker {
           margin: 0 5px 0 0; }
     .page-content .chat-container .chat-body {
       height: calc(100% - 62px); }
+      .page-content .chat-container .chat-body .loading {
+        width: 75%;
+        height: 100%;
+        margin-top: 0; }
       .page-content .chat-container .chat-body .conversation-item-list {
         height: calc(100% - 37px);
         overflow: auto; }
@@ -1937,12 +1950,16 @@ span.sticker {
               position: absolute;
               top: 50%;
               right: 5px;
-              width: 20px;
-              height: 20px;
+              width: 22px;
+              height: 22px;
               transform: translate(0, -50%);
               background-color: #47a3f1;
               border-radius: 50%;
-              color: #fff; }
+              color: #fff;
+              font-size: 16px;
+              font-weight: bold;
+              text-align: center;
+              padding-top: 2px; }
             .page-content .chat-container .chat-body .sidebar.conversations-list .conversation-item .conversation-item-separator {
               margin: 5px 0px 0 0;
               border-bottom: 1px solid #e8e8e8; }

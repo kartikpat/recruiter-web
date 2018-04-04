@@ -350,6 +350,13 @@
               font-weight: 400;
               text-align: center;
               transform: scaleY(1.0001); }
+        .page-content .main-wrapper .container .dashboard .complete-profile .connected {
+          background-color: #f3fbfb; }
+        .page-content .main-wrapper .container .dashboard .complete-profile .triangle {
+          width: 0;
+          height: 0;
+          border: solid 30px;
+          border-color: transparent transparent black transparent; }
       .page-content .main-wrapper .container .dashboard .content {
         box-shadow: 0px 2px 8px 0px rgba(214, 214, 214, 0.3);
         width: 100%; }

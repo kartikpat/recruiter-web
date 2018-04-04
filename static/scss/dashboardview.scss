@@ -58,6 +58,9 @@
                         transform: scaleY(1.0004);
                         padding-bottom: 15px;
                     }
+
+                    
+
                     .connect{
                         border-radius: 5px;
                         border-style: solid;
@@ -99,6 +102,15 @@
                                 }
                             }   
                         }
+                    }
+                    .connected{
+                        background-color:  #f3fbfb ;
+                    }
+                    .triangle {
+                        width: 0;
+                        height: 0;
+                        border: solid 30px;
+                        border-color: transparent transparent black transparent;
                     }
                    
                 }

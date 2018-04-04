@@ -39,7 +39,7 @@
     "gulp-debug": "^3.1.0",
     "gulp-mocha": "^4.3.1",
     "gulp-notify": "^3.0.0",
-    "gulp-sass": "^3.1.0",
+    "gulp-sass": "^3.2.1",
     "gulp-uglify": "^3.0.0",
     "gulp-uglifycss": "^1.0.8",
     "karma": "^1.7.0",

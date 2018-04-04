@@ -13,18 +13,18 @@ jQuery(".button-action-list").on("click", function() {
 })
 
 jQuery(".pill-button input").on('focus', function() {
-
-	jQuery(this).parent().toggleClass("inactive");
+	jQuery(this).parent().removeClass('inactive');
+	//jQuery(this).parent().toggleClass("inactive");
 });
 
 jQuery(".pill-button input").on('blur', function() {
-	jQuery(this).parent().addClass("inactive");
+	// jQuery(this).parent().addClass("inactive");
 	jQuery(this).attr("placeholder", jQuery(this).attr("data-placeholder-value"));
 });
 
 jQuery(".pill-button input").on('keyup', function(e) {
 	var searchString = jQuery(this).val();
-	console.log(searchString)
+
 	if(jQuery(this).closest(".tag-container").attr("data-enable-custom") && jQuery(this).closest(".tag-container").attr("data-enable-custom") == "true") {
 		jQuery(this).siblings(".pill-listing").find("li[data-value=custom]").text(searchString);
 	}
@@ -36,7 +36,7 @@ jQuery(".pill-button input").on('keyup', function(e) {
 		}
 	});
 	if(jQuery(".pill-listing li").not(".hidden").length == 0){
-		console.warn("All list items hidden!");
+
 		jQuery(".pill-listing ul").addClass("hidden");
 	} else {
 		jQuery(".pill-listing ul").removeClass("hidden");
@@ -47,18 +47,25 @@ jQuery(".pill-button input").on('keyup', function(e) {
 });
 
 jQuery(".tag-container").on("mouseenter", ".pill-listing li", function() {
+	if($(this).hasClass("disabled")){
+		return
+	}
 	jQuery(this).addClass("selected");
 	jQuery(this).siblings().removeClass("selected");
 	jQuery(this).closest(".pill-listing").siblings("input").attr("placeholder", jQuery(this).text());
 });
 
 jQuery(".tag-container").on("mouseleave", ".pill-listing li", function() {
+
 	jQuery(this).removeClass("selected");
 	jQuery(this).siblings().removeClass("selected");
 });
 
 jQuery(".tag-container").on("mousedown", ".pill-listing li", function() {
 
+	if($(this).hasClass("disabled")){
+		return
+	}
 	var selector = jQuery(this).closest(".tag-container");
 	if(checkMaxTags(selector)) {
 		selector.closest(".field-container").find(".error").removeClass("hidden")
@@ -69,69 +76,65 @@ jQuery(".tag-container").on("mousedown", ".pill-listing li", function() {
 
 });
 
-jQuery(document).ready(function(){
-	jQuery(".tag-container").each(function(i,el) {
-		if(jQuery(el).attr("data-enable-custom")== "true") {
-			jQuery(el).find(".pill-listing ul").prepend("<li data-value='custom' class='hidden'></li>");
-		}
-	});
-});
+
 
 jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function(e) {
 
 	var listItems = jQuery(this).siblings(".pill-listing").find("li");
+
 	var selectedItem =  jQuery(this).siblings(".pill-listing").find("li.selected");
 	var closestTag = jQuery(this).closest(".tag-container");
-	console.log(e.which)
+	var _this = $(this);
+	var visibleItems = _this.siblings(".pill-listing").find("li:visible").not('.disabled')
+	
 	switch(e.which){
 		case 38:
-				if(selectedItem.length == 0 ) {
-					jQuery(this).siblings(".pill-listing").find("li:visible").last(0).addClass("selected");
-				} else {
-					var newSelectedItem = selectedItem.prevAll("li:visible").first();
-					if(newSelectedItem.length) {
-						newSelectedItem.addClass("selected");
-						selectedItem.removeClass("selected");
-					}
-				}
-
-				var selectedOption = jQuery(this).siblings(".pill-listing").find("li.selected");
-				console.log(selectedOption.position().top);
-				jQuery(this).siblings(".pill-listing").find("ul").scrollTop(0)
-				jQuery(this).siblings(".pill-listing").find("ul").scrollTop(selectedOption.position().top);
-
-				break;
+			var previousItem = selectedItem.prevAll("li:visible").not('.disabled').first();
+			if(previousItem.length >0){
+				previousItem.addClass('selected')
+				selectedItem.removeClass('selected');
+				_this.siblings(".pill-listing").find("ul").scrollTop(0)
+				_this.siblings(".pill-listing").find("ul").scrollTop(previousItem.position().top);
+			}
+			else{
+				_this.siblings(".pill-listing").find("ul").scrollTop(0);
+			}
+			break;
 		case 40:
 				if(selectedItem.length == 0 ) {
-					jQuery(this).siblings(".pill-listing").find("li:visible").eq(0).addClass("selected");
+					_this.siblings(".pill-listing").find("li:visible").eq(0).addClass("selected");
 				} else {
 					var newSelectedItem = selectedItem.nextAll("li:visible").first();
-					if(newSelectedItem.length) {
+					if(newSelectedItem.length ) {
+						if(newSelectedItem.hasClass('disabled')){
+							newSelectedItem = newSelectedItem.nextAll("li:visible").first();
+						}
 						newSelectedItem.addClass("selected");
 						selectedItem.removeClass("selected");
 					}
 				}
 
-				var selectedOption = jQuery(this).siblings(".pill-listing").find("li.selected");
-				console.log(selectedOption.position().top);
-				jQuery(this).siblings(".pill-listing").find("ul").scrollTop(0)
-				jQuery(this).siblings(".pill-listing").find("ul").scrollTop(selectedOption.position().top);
+				var selectedOption = _this.siblings(".pill-listing").find("li.selected");
 
+				// console.log(selectedOption.text());
+				// console.log(selectedOption.position())
+				_this.siblings(".pill-listing").find("ul").scrollTop(0);
+				_this.siblings(".pill-listing").find("ul").scrollTop(selectedOption.position().top);
 				break;
 		case 13:
+
 				if(closestTag.attr("data-enable-custom") && closestTag.attr("data-enable-custom") == "true") {
-					var value = ($(this).val()).trim() || selectedItem.text()
+					var value = (_this.val()).trim() || selectedItem.text()
 					if(!value) {
 						return
 					}
 					if(checkMaxTags(listItems.closest(".tag-container"))){
-							addNewTag(value, selectedItem.attr("data-value"),jQuery(this).closest(".tag-container"));
+							addNewTag(value, selectedItem.attr("data-value"),_this.closest(".tag-container"));
 						}
 				} else {
 					if(selectedItem.length) {
 						if(checkMaxTags(listItems.closest(".tag-container"))){
-
-							addNewTag(selectedItem.text(), selectedItem.attr("data-value"),jQuery(this).closest(".tag-container"));
+							addNewTag(selectedItem.text(), selectedItem.attr("data-value"),_this.closest(".tag-container"));
 						}
 					}
 				}

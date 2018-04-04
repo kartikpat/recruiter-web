@@ -17,6 +17,7 @@ var errorResponses = {
 	invalidMinExp: 'Maximum Years of Experience should be greater than Minimum Years of Experience'
 }
 
+
 function Job(){
 	var settings ={};
 	var config = {};
@@ -47,10 +48,13 @@ function Job(){
 			settings.submitButton = $('.submit-form'),
 			settings.cancelFormButton = $('#cancelForm'),
 			settings.error = $('.error'),
+			settings.listing=$("#listing"),
 			settings.creditsText = $('#creditsText');
-			settings.initialPremium = null
+			settings.initialPremium = null;
+			settings.industryListing = $("#industryListing")
 			setAvailableCredits(settings.creditsText, config["availableCredits"]);
 			onClickCancelForm(settings.cancelFormButton);
+
 
 			var salaryRange = 100;
 			for(var i=0; i< salaryRange; i++){
@@ -70,6 +74,8 @@ function Job(){
 
 			})
 			jQuery(".header .menu-list-item.my-jobs").addClass("active");
+			appendlocation();
+			appendindustry();
 	}
 
 	function onChangeJobPremium(fn) {
@@ -244,7 +250,7 @@ function Job(){
 
 
 	function populateJobTags(dataArray) {
-		var str = ""
+		var str = '<li data-value="custom" class="hidden"></li>'
 		dataArray.forEach(function(aTag, index){
 			var item = $(".jobTag.prototype").clone().removeClass("prototype hidden")
 			item.text(aTag["name"])
@@ -255,6 +261,26 @@ function Job(){
 		$("#jobTagsList").html(str)
 	}
 
+	function appendlocation(){
+		var str = '<li data-value="custom" class="hidden"></li>'
+		for(var locCategory in cityList) {
+			str += '<li class="disabled">----'+locCategory+'----</li>'
+			for(var locId in cityList[locCategory]) {
+				 var loc = cityList[locCategory][locId];
+				 str += '<li data-value='+locId+'>'+loc+'</li>'
+			}
+		}
+		settings.listing.html(str);
+	}
+
+	function appendindustry(){
+		var str = ''
+		industryTagsData.forEach(function(anIndustry){
+			str += '<li data-value='+anIndustry["val"]+'>'+anIndustry["text"]+'</li>'
+		})
+		settings.industryListing.html(str);
+	}
+
 	return {
 		init: init,
 		setConfig : setConfig,
@@ -263,7 +289,9 @@ function Job(){
 		submitHandler: submitHandler,
 		setData: setJobData,
 		onChangeJobPremium: onChangeJobPremium,
-		populateJobTags: populateJobTags
+		populateJobTags: populateJobTags,
+		appendlocation:appendlocation,
+		appendindustry:appendindustry
 	}
 
 }

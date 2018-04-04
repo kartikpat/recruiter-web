@@ -196,6 +196,7 @@ function Filters(){
 		settings.candidatesSearchResults = $("#candidatesSearchResults")
 		settings.seeFilters = $("#seeFilters");
 		settings.maxFilters = 7;
+		settings.emptyView = $(".empty-screen");
 		setOnClickFilters();
 		setOnClickCloseFilters();
 		onInputSearchFilter()
@@ -719,13 +720,31 @@ function Filters(){
 		})
 	}
 
-	function showResultsFound(totalFound) {
-		if(filtersTarget["searchString"]["selection"]) {
-			settings.resultFoundText.text(totalFound + " results found for " + filtersTarget["searchString"]["selection"]).removeClass("hidden");
-			return
+	function showResultsFound(totalFound) { 
+		if(totalFound && totalFound > 0) {
+			if(filtersTarget["searchString"]["selection"]) {
+				settings.resultFoundText.text(totalFound + " results found for " + filtersTarget["searchString"]["selection"]).removeClass("hidden");
+				return
+			}
+			else {
+				settings.resultFoundText.text(totalFound + " results found for applied filters").removeClass("hidden");
+				return
+			}
 		}
 		settings.resultFoundText.addClass("hidden")
-
+		if(filtersTarget["searchString"]["selection"]) {
+			$('.user-text').text('No applications for searched keyword');
+			$('.empty-text').text("We couldn't find any results for the searched keyword.");
+			settings.emptyView.removeClass('hidden');
+			return
+		}
+		else {
+			debugger
+			$('.user-text').text('We couldn’t find any matches for the selected filter.');
+			$('.empty-text').text('Please try using a different filter');
+			settings.emptyView.removeClass('hidden');
+			return
+		}
 	}
 
 	function hideAppliedFilters() {
