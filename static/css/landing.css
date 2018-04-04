@@ -431,7 +431,8 @@
             animation: spin 1500ms linear infinite;
             border-radius: 50%; }
         .modal-overlay .modal-content .modal-body .recruiter-form .form-group select {
-          padding: 12px 22px; }
+          padding: 12px 22px;
+          background-size: 20px; }
 
 body {
   position: relative; }

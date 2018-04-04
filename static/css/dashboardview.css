@@ -324,10 +324,12 @@
           display: inline-block;
           width: 20%;
           height: 106px;
-          margin-right: 30px; }
+          margin-right: 30px;
+          vertical-align: top;
+          position: relative; }
           .page-content .main-wrapper .container .dashboard .complete-profile .connect .connect-container {
             text-align: center;
-            padding-top: 17px; }
+            padding-top: 15px; }
             .page-content .main-wrapper .container .dashboard .complete-profile .connect .connect-container .image-box {
               display: inline-block;
               margin-top: 10px; }
@@ -352,6 +354,16 @@
               transform: scaleY(1.0001); }
         .page-content .main-wrapper .container .dashboard .complete-profile .connected {
           background-color: #f3fbfb; }
+        .page-content .main-wrapper .container .dashboard .complete-profile .triangle {
+          position: relative;
+          float: right;
+          height: 0;
+          border-top: 40px solid #fff;
+          border-left: 40px solid transparent;
+          margin: 1px; }
+        .page-content .main-wrapper .container .dashboard .complete-profile .icon-container {
+          position: absolute;
+          left: 221px; }
       .page-content .main-wrapper .container .dashboard .content {
         box-shadow: 0px 2px 8px 0px rgba(214, 214, 214, 0.3);
         width: 100%; }
