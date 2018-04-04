@@ -7,8 +7,10 @@
 	var program = require("commander"); //options generator for command line interface
 	var compression = require("compression"); //compresses the request payload
 	var cookieParser = require("cookie-parser"); //stores the session data on the client within a cookie
+	var session = require('cookie-session')
 	const passport = require("passport");
 	const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
+	const TwitterStrategy = require('passport-twitter').Strategy;
 
 	const request = require('request');
 
@@ -76,6 +78,29 @@
 		}
 	}));
 
+	passport.use('twitter-auths', new TwitterStrategy({
+		consumerKey: config['social']['twitter']['clientId'],
+		consumerSecret: config['social']['twitter']['secret'],
+		callbackURL: config['social']['twitter']['callbackURL'],
+		passReqToCallback: true
+	}, async function(req, accessToken, refreshToken, params, profile, done){
+		const token = req.cookies['recruiter-access-token'];
+		const data = {
+			token: accessToken,
+			refreshToken: refreshToken,
+			profile: profile
+		}
+		console.log(data);
+		try{
+			await addUserSocial('twitter', data, token);
+			return done(null, data)
+		}
+		catch(err){
+			return done(null, false);
+			
+		}
+	}))
+
 	function addUserSocial(type, data, token){
 		return new Promise(function(fulfill, reject){
 			request.post({
@@ -110,11 +135,11 @@
 	var app = express();
 	app.use(cookieParser())
 	// not using cookie-session in this case
-	// app.use(session({
-	// 	name: 'sessID',
-	// 	keys: ['key-1'],
-	// 	httpOnly: false
-	// }));
+	app.use(session({
+		name: 'sessID',
+		keys: ['key-1'],
+		httpOnly: false
+	}));
 	app.use(bodyParser.urlencoded({ extended: true }))
 	app.use(compression()); //compressing payload on every request
 
