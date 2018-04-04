@@ -240,20 +240,24 @@ function Chat() {
    }
 
    function receiveMessage(msg, channelName) {
-       var elem = {}
-       elem.entry = {}
-       elem.entry.msg = msg.msg;
-       elem.entry.time = msg.time;
-       elem.entry.img = msg.img;
-       var item = getMsgReceivedElement(elem)
-       settings.mssgContainer.append(item)
-       initializeTooltip()
-       scrollToBottom()
+       if(settings.channelName == channelName) {
+           var elem = {}
+           elem.entry = {}
+           elem.entry.msg = msg.msg;
+           elem.entry.time = msg.time;
+           elem.entry.img = msg.img;
+           var item = getMsgReceivedElement(elem)
+           settings.mssgContainer.append(item)
+           initializeTooltip()
+           scrollToBottom()
+           return
+       }
        addNewMessageNotification(channelName)
    }
 
    function addNewMessageNotification(channelName) {
-       var elem = settings.conversationItemList.find(".conversation-item[data-channel-name="+channelName+"] newMsgNotify");
+
+       var elem = settings.conversationItemList.find(".conversationItem[data-channel-name="+channelName+"] .newMsgNotify");
        var msgCount = elem.attr("data-count");
        msgCount = parseInt(msgCount) + 1;
        elem.attr("data-count", msgCount);
