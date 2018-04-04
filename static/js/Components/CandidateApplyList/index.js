@@ -109,7 +109,7 @@ jQuery(document).ready( function() {
         filters.closeFilterModal()
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
-
+        candidates.hideEmptyScreen()
 
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
@@ -135,6 +135,7 @@ jQuery(document).ready( function() {
     filters.onClickRemoveFilter(function(value,category,type){
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
+        candidates.hideEmptyScreen()
         filters.removeFilter(value,category,type);
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
@@ -149,6 +150,7 @@ jQuery(document).ready( function() {
     filters.onClickSearchButton(function(){
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
+        candidates.hideEmptyScreen()
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
         setQueryParameters(parameters);
@@ -162,6 +164,7 @@ jQuery(document).ready( function() {
     filters.onSelectSortByOption(function(){
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
+        candidates.hideEmptyScreen()
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
         setQueryParameters(parameters);
@@ -175,6 +178,7 @@ jQuery(document).ready( function() {
     filters.onClickRemoveAllFilters(function(){
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
+        candidates.hideEmptyScreen()
         var parameters = filters.getAppliedFilters();
         console.log(parameters)
         parameters.status = globalParameters.status;
@@ -228,7 +232,7 @@ jQuery(document).ready( function() {
             return theJob.showCalendarMissingError();
         var obj = {
             "type": inviteId,
-            "calendarId": defaultCalendarId
+            "calendarId": theJob.getSelectedCalendarId()
         }
         sendInterViewInvite(recruiterId, jobId, applicationId , obj)
     })
@@ -238,7 +242,7 @@ jQuery(document).ready( function() {
             return theJob.showCalendarMissingError();
         var obj = {
             "type": inviteId,
-            "calendarId": defaultCalendarId
+            "calendarId": theJob.getSelectedCalendarId()
         }
         sendInterViewInvite(recruiterId, jobId, applicationId , obj)
     })
@@ -248,7 +252,7 @@ jQuery(document).ready( function() {
             return theJob.showCalendarMissingError();
         var obj = {
             "type": inviteId,
-            "calendarId": defaultCalendarId
+            "calendarId": theJob.getSelectedCalendarId()
         }
         sendInterViewInvite(recruiterId, jobId, applicationId , obj)
     })
@@ -258,7 +262,7 @@ jQuery(document).ready( function() {
             return theJob.showCalendarMissingError();
         var obj = {
             "type": inviteId,
-            "calendarId": defaultCalendarId
+            "calendarId": theJob.getSelectedCalendarId()
         }
         sendInterViewInvite(recruiterId, jobId, applicationId , obj)
     })

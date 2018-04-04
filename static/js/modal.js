@@ -23,6 +23,9 @@ jQuery(".modal_overlay").on('click', ".close_modal",function(e) {
 
 
 
+
+
+
 jQuery(".modal_overlay").on('click', ".close_modal",function(e) {
     jQuery("body").removeClass("posf");
     jQuery(".modal_overlay").addClass("hidden");

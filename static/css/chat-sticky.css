@@ -2016,7 +2016,8 @@ span.sticker {
     .chat-div-candidate .content-footer-container.show {
       height: 315px; }
     .chat-div-candidate .content-footer-container .footer {
-      padding: 0 !important; }
+      padding: 0 !important;
+      position: relative; }
       .chat-div-candidate .content-footer-container .footer input {
         width: 100%;
         padding: 12px;
@@ -2024,6 +2025,13 @@ span.sticker {
         border-radius: 2px; }
         .chat-div-candidate .content-footer-container .footer input:focus {
           border: 1px solid #149075; }
+      .chat-div-candidate .content-footer-container .footer .iconSendButton {
+        position: absolute;
+        right: 3px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #1f8f75;
+        font-size: 25px; }
 
 .selected {
   background-color: #e6e6e6; }
