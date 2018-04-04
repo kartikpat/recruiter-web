@@ -1,0 +1,33 @@
+
+@import "fonts.scss";
+.page-content {
+	min-height: 600px;
+	padding: 20px;
+	background-image:url('/static/images/footer-background.png');
+	background-size:100%;
+	background-position:center bottom;
+    background-repeat:no-repeat;
+    .container{
+		width:100%;
+		max-width:1440px;
+        margin:0 auto;
+        .leftnav{
+            .pd20{
+                .mt0{
+                    font-size: 30px;
+                    margin-bottom: 10px;
+               
+                }
+                .mt10{
+                    margin-top:10px;
+                    p {
+                        margin: 0 0 15px;
+                        font-size: 14px;
+                        color: #2b2b2b;
+                    }
+                }
+            }
+        
+        }
+    }
+}
