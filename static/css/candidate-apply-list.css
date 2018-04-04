@@ -3663,7 +3663,8 @@ input::-webkit-input-placeholder {
           font-size: 14px;
           background: #FFF;
           border-bottom: 1px solid #e8e8e8;
-          cursor: pointer; }
+          cursor: pointer;
+          word-wrap: break-word; }
           .job-tags .pill-button .pill-listing ul li.selected {
             background-color: #e9f5f2; }
           .job-tags .pill-button .pill-listing ul li.tag-added {
