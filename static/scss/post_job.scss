@@ -312,7 +312,7 @@
 
                         input[type=text], select, textarea {
                             padding:12px 20px;
-                            padding-right: 38px; 
+                            padding-right: 38px;
                             font-size:$mobile-base-font-size;
 
                             option {
@@ -397,4 +397,9 @@
 }
 [class^="icon-"]:before, [class*=" icon-"]:before {
     font-size: 120% !important;
+}
+
+.job_posting .post_job .post_job_form .field-container .location-tags .pill-button .pill-listing ul li.disabled {
+    font-weight: bold;
+    padding: 5px 10px;
 }

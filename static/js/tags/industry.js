@@ -1,7 +1,7 @@
 var industryMetaData = {
     "data-attribute": "menu-industry",
     "name": "industry"
-}
+} 
 
 var industryTagsData =    [
     {

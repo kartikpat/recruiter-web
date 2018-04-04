@@ -250,7 +250,7 @@ function Job(){
 
 
 	function populateJobTags(dataArray) {
-		var str = ""
+		var str = '<li data-value="custom" class="hidden"></li>'
 		dataArray.forEach(function(aTag, index){
 			var item = $(".jobTag.prototype").clone().removeClass("prototype hidden")
 			item.text(aTag["name"])
@@ -262,8 +262,9 @@ function Job(){
 	}
 
 	function appendlocation(){
-		var str = ''
+		var str = '<li data-value="custom" class="hidden"></li>'
 		for(var locCategory in cityList) {
+			str += '<li class="disabled">----'+locCategory+'----</li>'
 			for(var locId in cityList[locCategory]) {
 				 var loc = cityList[locCategory][locId];
 				 str += '<li data-value='+locId+'>'+loc+'</li>'
@@ -273,10 +274,11 @@ function Job(){
 	}
 
 	function appendindustry(){
-		var ul=$('#industry-listing');
-		for( var key in industry){
-			ul.append('<li data-value='+key+'>'+industry[key]+'</li>');
-		}
+		var str = ''
+		industryTagsData.forEach(function(anIndustry){
+			str += '<li data-value='+anIndustry["val"]+'>'+anIndustry["text"]+'</li>'
+		})
+		settings.industryListing.html(str);
 	}
 
 	return {

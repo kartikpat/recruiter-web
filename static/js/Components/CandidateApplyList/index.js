@@ -662,18 +662,7 @@ jQuery(document).ready( function() {
 
         //Call only on initial load
         // if(!globalParameters.initialLoad) {
-        //     var result =filters.getAppliedFilters();
-        //     var filterFlag = 0;
-        //      for(var key in result) {
-        //           if(!(key == "orderBy" || key == "pageNumber" || key == "pageContent" || key == "status")) {
-        //             filterFlag+= 1;
-        //           }
-        //         }
-        //     if(filterFlag > 0) {
-        //         filters.showAppliedFilters();
-        //     } else {
-        //         filters.hideAppliedFilters();
-        //     }
+        //
         // }
         if(globalParameters.initialLoad) {
             fetchJobApplicationCount(recruiterId, jobId)
@@ -688,8 +677,19 @@ jQuery(document).ready( function() {
             candidates.setInvite(theJob.getCalendarLength())
         }
 
+        var result = filters.getAppliedFilters();
+        var filterFlag = 0;
+        console.log(result)
+         for(var key in result) {
+            if(!(key == "orderBy" || key == "pageNumber" || key == "pageContent" || key == "status")) {
+                filterFlag+= 1;
+            }
+        }
 
-        filters.showResultsFound(globalParameters.candidateListLength);
+        if(filterFlag > 0) {
+            filters.showResultsFound(globalParameters.candidateListLength);
+        }
+
         if(data["pageNumber"] == 1) {
             store.emptyStore(data["data"]);
         }

@@ -2,7 +2,7 @@ var currentLocationMetaData = {
     "data-attribute": "menu-current-location",
     "name": "location"
 }
-
+ 
 var currentLocationTagsData = [
     {
        "text": "Ahmedabad",
