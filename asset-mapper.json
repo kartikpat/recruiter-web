@@ -1267,6 +1267,7 @@
 			]
 		}
 	},
+
 	"verify-email": {
 		"styles": {
 			"debug" : [
@@ -1292,6 +1293,54 @@
 			]
 		}
 	},
+
+		
+	"about-us": {
+		"styles": {
+			"debug" : [
+				"static/css/utilities.css",
+				"static/css/header.css",
+				"static/css/about-us.css",				
+				"static/css/footer.css"				
+			],
+			"prod": [
+				"static/build/css/about-us.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/header.js"
+			],
+			"prod" : [
+				"static/build/js/about-us.min.js"
+			]
+		}
+	},
+
+	"privacy": {
+		"styles": {
+			"debug" : [
+				"static/css/utilities.css",
+				"static/css/header.css",
+				"static/css/privacy.css",				
+				"static/css/footer.css"				
+			],
+			"prod": [
+				"static/build/css/privacy.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/header.js"
+			],
+			"prod" : [
+				"static/build/js/about-us.min.js"
+			]
+		}
+	},
+
 	"account-verified": {
 		"styles": {
 			"debug" : [

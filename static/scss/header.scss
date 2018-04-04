@@ -480,6 +480,12 @@ b{
                         width: 50%;
                         height: 50%;
                     }
+                    .search-icon{
+                        text-align: center;
+                        .icon-search:before{
+                            line-height: 35px;
+                        }
+                    }
                    
                 }
 

@@ -211,7 +211,7 @@ var industry={
 	"66":"Water Treatment / Waste Management",
 	"67":"Wellness / Fitness / Sports",
 	"33":"Other"
-	}
+}
 
 
 function Job(){
