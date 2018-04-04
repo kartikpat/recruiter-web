@@ -137,6 +137,7 @@
 
                     select {
                         @include select-dropdown;
+                        padding-right: 38px;
                     }
                     select::-ms-expand {
                         display: none!important;
@@ -311,6 +312,7 @@
 
                         input[type=text], select, textarea {
                             padding:12px 20px;
+                            padding-right: 38px; 
                             font-size:$mobile-base-font-size;
 
                             option {

@@ -155,6 +155,7 @@
 				"static/js/tags/language.js",
 				"static/js/tags/functional-area.js",
 				"static/js/tags/institute.js",
+				"static/js/Components/PostJob/global.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/vendor/medium-editor.min.js",
@@ -1297,14 +1298,14 @@
 		}
 	},
 
-		
+
 	"about-us": {
 		"styles": {
 			"debug" : [
 				"static/css/utilities.css",
 				"static/css/header.css",
-				"static/css/about-us.css",				
-				"static/css/footer.css"				
+				"static/css/about-us.css",
+				"static/css/footer.css"
 			],
 			"prod": [
 				"static/build/css/about-us.min.css"
@@ -1326,8 +1327,8 @@
 			"debug" : [
 				"static/css/utilities.css",
 				"static/css/header.css",
-				"static/css/privacy.css",				
-				"static/css/footer.css"				
+				"static/css/privacy.css",
+				"static/css/footer.css"
 			],
 			"prod": [
 				"static/build/css/privacy.min.css"
