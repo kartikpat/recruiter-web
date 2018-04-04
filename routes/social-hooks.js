@@ -12,12 +12,33 @@ module.exports = function(settings){
       return res.redirect(config['social']['linkedin']['failureRedirect']);
     return next();
   },passport.authorize('linkedin-auths', {
-    failureRedirect: config['social']['linkedin']['failureRedirect'],
-    failureFlash: true
+    failureRedirect: config['social']['linkedin']['failureRedirect']
   }),
   function(req, res){
     return res.redirect(config['social']['linkedin']['successRedirect'])
   })
+
+  app.get('/auth/twitter', passport.authorize('twitter-auths', { state: config['social']['twitter']['stateKey']}), function(req, res){
+    // The request will be redirected to LinkedIn for authentication, so this
+    // function will not be called.
+  })
+
+  app.get('/auth/twitter/callback', function(req, res, next){
+    const state = req.query.state;
+    // console.log(req);
+    // console.log(req.query)
+    // if(state != config['social']['twitter']['stateKey'] ){
+    //   console.log('................................')
+    //   return res.redirect(config['social']['twitter']['failureRedirect']);
+    // }
+    return next();
+  }, passport.authorize('twitter-auths', {
+    failureRedirect: config['social']['twitter']['failureRedirect']
+  }), function(req, res){
+    return res.redirect(config['social']['twitter']['successRedirect'])
+  })
+
+
 // 	app.get('/auth/facebook', passport.authenticate('facebook',{ authType: 'rerequest',scope: configuration["facebook"]["scope"]}));
 
 

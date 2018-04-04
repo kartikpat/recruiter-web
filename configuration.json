@@ -19,6 +19,6 @@
 			"failureRedirect" : "/test",
 			"successRedirect" : "/connect-success",
 			"stateKey": "80ba1410fa2f16b1085f611ca4ff0fed"
-		}	
+		}
 	}
 }
