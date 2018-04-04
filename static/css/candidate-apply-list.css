@@ -3270,7 +3270,7 @@ input::-webkit-input-placeholder {
             font-size: 14px;
             padding: 3px 0px 4px 10px;
             height: 30px;
-            background-size: 15px;
+            background-size: 17px;
             color: #2b2b2b;
             background-position: right 10px center;
             padding-right: 30px; }
@@ -3487,8 +3487,8 @@ input::-webkit-input-placeholder {
                   border: 2px solid #FFF;
                   border-radius: 50%;
                   position: absolute;
-                  bottom: 5px;
-                  right: 5px; }
+                  bottom: 10px;
+                  right: 18px; }
                   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-status.offline {
                     background-color: #b6b6b5; }
                   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.image .candidate-image .candidate-status.online {
@@ -3824,7 +3824,9 @@ input::-webkit-input-placeholder {
 
 @media all and (max-width: 600px) {
   .mass-action-second.second-fold .action-buttons span.button {
-    margin-bottom: 10px; } }
+    margin-bottom: 10px; }
+  .second-fold .first-wrap span, .second-fold .second-wrap span {
+    padding: 5px 11px !important; } }
 
 @media all and (max-width: 992px) {
   .page-content .candidates-listing .candidate-item {
@@ -4021,6 +4023,10 @@ input::-webkit-input-placeholder {
         padding: 6px 15px; } }
 
 @media all and (max-width: 1024px) {
+  .second-fold .first-wrap, .second-fold .second-wrap {
+    float: none;
+    display: inline-block;
+    vertical-align: top; }
   .page-content .conversations {
     display: none; }
   .page-content .candidate-apply-listing {
@@ -4924,9 +4930,8 @@ input::-webkit-input-placeholder {
 
 .action-buttons .select-dropdown {
   line-height: 1.5;
-  background-size: 15px;
   max-width: 195px;
-  background-size: 20px; }
+  background-size: 17px; }
 
 .select-all.check-input input + label {
   padding: 25px 0 0px 25px; }

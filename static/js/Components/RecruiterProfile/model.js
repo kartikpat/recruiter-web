@@ -70,7 +70,7 @@ function Profile(){
 		})
 	}
 
-	function validate(){
+	function validate(){ 
 
 		if(settings.type == "profile") {
 			if(!(

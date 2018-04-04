@@ -4,8 +4,8 @@ var recruiter = {
     "img_url": "http://www.iimjobs.com/resources/img/user_profile_new.png"
 }
 
-console.log(recruiterId)
-var recruiterEmail = profile.email
+
+var recruiterEmail = profile.email;
 
     var pubnub = new PubNub({
     publishKey:"pub-c-78f4982d-59c1-4f7c-99bd-7840539dce3b",// "pub-c-5069ae94-20a5-4328-8281-4e1c630cd6f2",
@@ -33,8 +33,6 @@ function getCookie(name) {
 
 addListeners();
 
-
-
 function getArray(array) {
     var tempArray = [];
     array.forEach(function(aChannel){
@@ -52,7 +50,7 @@ function addListeners(){
 }
 
 function onNewMessage(m) {
-    console.log(m);
+    
     var actualChannel = m.actualChannel;
     var channelName = m.channel; // The channel for which the message belongs
     var msg = m.message; // The Payload
@@ -60,8 +58,7 @@ function onNewMessage(m) {
     var subscribedChannel = m.subscribedChannel;
     var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
     var pubTT = m.timetoken; // Publish timetoken
-    console.log("receieved new message")
-    console.log(msg)
+
     receiveMessage(m);
 }
 

@@ -720,7 +720,7 @@ function Filters(){
 		})
 	}
 
-	function showResultsFound(totalFound) {
+	function showResultsFound(totalFound) { 
 		if(totalFound && totalFound > 0) {
 			if(filtersTarget["searchString"]["selection"]) {
 				settings.resultFoundText.text(totalFound + " results found for " + filtersTarget["searchString"]["selection"]).removeClass("hidden");
@@ -739,6 +739,7 @@ function Filters(){
 			return
 		}
 		else {
+			debugger
 			$('.user-text').text('We couldn’t find any matches for the selected filter.');
 			$('.empty-text').text('Please try using a different filter');
 			settings.emptyView.removeClass('hidden');

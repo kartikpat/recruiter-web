@@ -43,6 +43,12 @@ var workPermit = {
     6: 'Authorized to work in US'
 }
 
+var willingTravel = {
+    1: "Occasional",
+    2: "Extensive",
+    3: "No"
+}
+
 var defaultApplicationStatus = {
     0: "",
     1: "0",
