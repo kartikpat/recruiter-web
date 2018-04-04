@@ -86,7 +86,7 @@ function Job(){
 				settings.jobPostTwitter.attr("href", getTwitterShareLink(url))
 				settings.jobPostLinkedin.attr("href", getLinkedInShareUrl(url))
 			}
-			if(data["conf"]) {
+			if(data["cnfi"]) {
 				settings.socialIcon.addClass("hidden")
 			}
 			if(settings.jobOtherActions.find(".action-list-items li a.hidden").length < 4) {

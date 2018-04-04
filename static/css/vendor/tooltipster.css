@@ -296,6 +296,9 @@
 .icon-work_from_home::before {
   content: '\e830'; }
 
+.icon-star-2::before {
+  content: '\e815'; }
+
 .tooltipster-fall,
 .tooltipster-grow.tooltipster-show {
   -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);

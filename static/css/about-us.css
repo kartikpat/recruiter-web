@@ -7,8 +7,10 @@
   background-repeat: no-repeat; }
   .page-content .main-wrapper {
     width: 100%;
-    max-width: 1280px;
+    max-width: 1440px;
     margin: 0 auto; }
+    .page-content .main-wrapper .main-container .leftnav .pd20 .mt0 {
+      color: #5d5d5d; }
     .page-content .main-wrapper .main-container .leftnav .pd20 .txt15 {
       margin-top: 15px;
       margin-bottom: 15px;
