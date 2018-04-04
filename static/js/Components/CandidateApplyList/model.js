@@ -384,8 +384,8 @@ function candidateList() {
 				return
 			}
 			else if(status== "0"){
-				$('.user-text').text('You don’t have any jobs for the selected filters.');
-				$('.empty-text').text('Please select a different filter');
+				$('.user-text').text('Great job!');
+				$('.empty-text').text('You have sorted all your received applications');
         		settings.emptyView.removeClass('hidden');
 				return
             }

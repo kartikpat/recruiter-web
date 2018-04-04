@@ -250,7 +250,9 @@ function Jobs() {
 
 		item.premium.attr("data-job-isPremium", aData["premium"]);
 		if(aData["premium"]) {
-			item.premium.find('.icon-star').addClass("premium_highlight").removeClass("hidden");
+			item.premium.find('.icon-star').addClass('hidden');
+			item.premium.find('.icon-star-2').removeClass("hidden");
+
 		}
 
 		if(aData["url"]) {

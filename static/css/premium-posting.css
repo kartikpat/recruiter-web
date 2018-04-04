@@ -352,6 +352,9 @@
 .icon-work_from_home::before {
   content: '\e830'; }
 
+.icon-star-2::before {
+  content: '\e815'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -892,6 +895,9 @@ span.sticker {
 .icon-work_from_home::before {
   content: '\e830'; }
 
+.icon-star-2::before {
+  content: '\e815'; }
+
 /*[Recruiter_Homepage]*/
 /*[/Recruiter_Homepage]*/
 /**** Fontello Font Icons : ****/
@@ -1188,6 +1194,9 @@ span.sticker {
 
 .icon-work_from_home::before {
   content: '\e830'; }
+
+.icon-star-2::before {
+  content: '\e815'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */

@@ -11,6 +11,14 @@
 			"failureRedirect" : "/test",
 			"successRedirect" : "/connect-success",
 			"stateKey": "80ba1410fa2f16b1085f611ca4ff0fed"
-		}
+		},
+		"twitter": {
+			"clientId": "39CvaNrnGGYEXTflAZgbbWe5s",
+			"secret": "rrJxOFvkJZN39bVfMMiFqsa8ra8jpXCz2cLSB3HgHsDd7q0DaL",
+			"callbackURL" : "/auth/twitter/callback",
+			"failureRedirect" : "/test",
+			"successRedirect" : "/connect-success",
+			"stateKey": "80ba1410fa2f16b1085f611ca4ff0fed"
+		}	
 	}
 }
