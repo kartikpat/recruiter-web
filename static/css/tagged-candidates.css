@@ -321,6 +321,9 @@
 .icon-information-1:before {
   content: '\e847'; }
 
+.icon-work_from_home::before {
+  content: '\e830'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -888,6 +891,9 @@ span.sticker {
 
 .icon-information-1:before {
   content: '\e847'; }
+
+.icon-work_from_home::before {
+  content: '\e830'; }
 
 .left {
   float: left; }
@@ -1441,6 +1447,9 @@ a {
 .icon-information-1:before {
   content: '\e847'; }
 
+.icon-work_from_home::before {
+  content: '\e830'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -1783,7 +1792,6 @@ span.sticker {
 .loading {
   margin: 20px 0; }
   .loading .loader-scroller {
-    position: static;
     width: 45px;
     height: 45px;
     border: 4px solid #f3f3f3;
@@ -1826,7 +1834,8 @@ span.sticker {
       -moz-appearance: none;
       -o-appearanance: none;
       line-height: 1.5;
-      margin-top: 10px; }
+      margin-top: 10px;
+      max-width: 250px; }
       .page-content .tagged-candidates .page-header select[multiple] {
         background-image: none;
         height: 120px; }

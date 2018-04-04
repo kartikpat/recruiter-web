@@ -581,6 +581,30 @@ module.exports = function(settings){
 		return
 	});
 
+	app.get("/about-us",isAuthenticated,function(req, res){
+		res.render("about-us", {
+			title:"Recruiter Web - about-us | iimjobs.com",
+			styles:  assetsMapper["about-us"]["styles"][mode],
+			scripts: assetsMapper["about-us"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			profile: req.profile
+		})
+		return
+	});
+
+	app.get("/privacy",isAuthenticated,function(req, res){
+		res.render("privacy", {
+			title:"Recruiter Web - privacy | iimjobs.com",
+			styles:  assetsMapper["privacy"]["styles"][mode],
+			scripts: assetsMapper["privacy"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			profile: req.profile
+		})
+		return
+	});
+
 	app.get("/account-created", isVerified, function(req,res){
 		var email = req.query.email || "";
 		res.render("account-created", {

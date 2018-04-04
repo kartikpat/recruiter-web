@@ -17,6 +17,203 @@ var errorResponses = {
 	invalidMinExp: 'Maximum Years of Experience should be greater than Minimum Years of Experience'
 }
 
+var city={
+		"Anywhere": {
+			"0": "Any Location",
+			"87": "Metros",
+			"88": "Anywhere in India/Multiple Locations",
+			"89": "Overseas/International"
+		},
+		"National Locations": {
+			"1": "Delhi NCR",
+			"2": "Mumbai",
+			"3": "Bangalore",
+			"4": "Hyderabad",
+			"5": "Kolkata",
+			"6": "Chennai",
+			"7": "Pune",
+			"8": "Gujarat",
+			"9": "Maharashtra",
+			"10": "MP",
+			"11": "Jaipur",
+			"12": "Guwahati",
+			"13": "Goa",
+			"14": "Chandigarh",
+			"15": "Punjab",
+			"16": "Haryana",
+			"17": "Kerala",
+			"18": "Orrisa",
+			"19": "Bihar",
+			"20": "Jharkhand",
+			"21": "UP",
+			"31": "Karnataka",
+			"32": "Tamil Nadu",
+			"33": "Rajasthan",
+			"34": "Andhra Pradesh",
+			"35": "Telangana",
+			"36": "Delhi",
+			"37": "Gurgaon/Gurugram",
+			"38": "Noida",
+			"39": "Greater Noida",
+			"40": "Faridabad",
+			"41": "Ghaziabad",
+			"42": "Jammu & Kashmir",
+			"43": "Jammu",
+			"44": "Srinagar",
+			"45": "Amritsar",
+			"46": "Jalandhar",
+			"47": "Patiala",
+			"48": "Ludhiana",
+			"49": "Sonipat",
+			"50": "Panipat",
+			"51": "Udaipur",
+			"52": "Jodhpur",
+			"53": "Ahmedabad",
+			"54": "Surat",
+			"55": "Gandhinagar",
+			"56": "Vadodara/Baroda",
+			"57": "Haridwar",
+			"58": "Dehradun",
+			"59": "Uttarakhand",
+			"60": "Lucknow",
+			"61": "Patna",
+			"62": "Ranchi",
+			"63": "Jamshedpur",
+			"64": "Chhattisgarh",
+			"65": "Bhubaneshwar",
+			"66": "Nagpur",
+			"67": "Nasik",
+			"68": "Navi Mumbai",
+			"69": "Thane",
+			"70": "Cochin/Kochi",
+			"71": "Hosur",
+			"72": "Hubli",
+			"73": "Mysore",
+			"74": "Raipur",
+			"75": "Trivandrum/Thiruvananthapuram",
+			"76": "Vijayawada",
+			"77": "Guntur",
+			"78": "Vishakhapatnam/Vizag",
+			"79": "Aurangabad",
+			"80": "Rajkot",
+			"81": "Varanasi/Banaras",
+			"82": "Warangal",
+			"83": "Madurai",
+			"84": "Coimbatore",
+			"85": "Pondicherry",
+			"86": "Cuttack"
+		},
+		"International Locations": {
+			"22": "US",
+			"23": "UK",
+			"24": "Singapore",
+			"25": "Middle East",
+			"26": "Africa",
+			"27": "Malaysia",
+			"28": "EU",
+			"30": "Hong Kong",
+			"90": "Bahrain",
+			"91": "Dubai",
+			"92": "Kabul",
+			"93": "Kuwait",
+			"94": "Nigeria",
+			"95": "London",
+			"96": "Oman",
+			"97": "Muscat",
+			"98": "Doha",
+			"99": "Qatar",
+			"100": "Abu Dhabi",
+			"101": "Saudi Arabia",
+			"102": "Riyadh",
+			"103": "Indonesia",
+			"104": "Nepal",
+			"105": "Bhutan",
+			"106": "Dhaka",
+			"107": "Bangladesh",
+			"108": "China",
+			"109": "Afghanistan",
+			"110": "Pakistan",
+			"111": "Sri Lanka",
+			"112": "Ethiopia",
+			"113": "Egypt",
+			"114": "Kenya",
+			"115": "Nairobi",
+			"116": "Tanzania",
+			"117": "South Africa",
+			"118": "Zimbabwe",
+			"119": "Zambia",
+			"120": "Philippines"
+		},
+		"Others": {
+			"100000": "Others"
+		}
+}	
+
+var industry={
+	"24":"Accounting/Finance/Audit",
+	"25":"Advertising / PR MR / Events",
+	"34":"Agriculture / Dairy","36":"Animation",
+	"37":"Architecture / Interior Design",
+	"1":"Auto / Auto Ancillary",
+	"38":"Aviation / Aerospace Firm",
+	"2":"Banking / Financial Services / Broking",
+	"3":"BPO / ITES",
+	"39":"Brewery / Distillery",
+	"42":"Ceramics / Sanitary ware",
+	"26":"Chemicals / Petrochemical / Plastic / Rubber",
+	"5":"Construction / Engineering / Cement / Metals",
+	"4":"Consulting",
+	"40":"Consumer Durables",
+	"41":"Courier / Transportation / Freight",
+	"43":"Defence / Government",
+	"6":"Education / Teaching / Training",
+	"44":"Electricals / Switchgears",
+	"45":"Export / Import",
+	"27":"Facility Management",
+	"46":"Fertilizers / Pesticides",
+	"7":"FMCG / Foods / Beverage",
+	"47":"Food Processing",
+	"48":"Gems & Jewellery",
+	"49":"Glass",
+	"8":"Healthcare / Medical / Hospital",
+	"50":"Heating Ventilation Air Conditioning",
+	"51":"Hotels / Restaurants / Airlines",
+	"11":"Infrastructure / Oil & Gas / Power / Energy",
+	"12":"Insurance",
+	"13":"Internet / Online / eCommerce",
+	"14":"IT",
+	"52":"IT-Software / Software Services",
+	"53":"IT-Hardware & Networking",
+	"15":"KPO / Research / Analytics",
+	"16":"Legal",
+	"35":"Logistics / SCM / Freight / Shipping",
+	"18":"Media / Dotcom / Entertainment",
+	"55":"Medical / Healthcare / Hospital",
+	"20":"NGO / Social Service",
+	"56":"Oil and Gas / Power / Infrastructure / Energy",
+	"57":"Office Equipment / Automation",
+	"58":"Paper",
+	"28":"Pharma / Biotech / Clinical Research",
+	"59":"Printing / Packaging",
+	"60":"Publishing",
+	"29":"Real Estate / Property",
+	"30":"Recruitment / Staffing",
+	"22":"Retail",
+	"61":"Security / Law Enforcement",
+	"31":"Semiconductors / Electronics",
+	"62":"Shipping / Marine",
+	"63":"Steel",
+	"64":"Strategy / Management Consulting Firms",
+	"23":"Telecom / ISP",
+	"32":"Textile / Garments / Accessories / Fashion",
+	"9":"Travel / Hospitality",
+	"65":"Tyres",
+	"66":"Water Treatment / Waste Management",
+	"67":"Wellness / Fitness / Sports",
+	"33":"Other"
+}
+
+
 function Job(){
 	var settings ={};
 	var config = {};
@@ -47,10 +244,13 @@ function Job(){
 			settings.submitButton = $('.submit-form'),
 			settings.cancelFormButton = $('#cancelForm'),
 			settings.error = $('.error'),
+			settings.listing=$("#listing"),
 			settings.creditsText = $('#creditsText');
 			settings.initialPremium = null
 			setAvailableCredits(settings.creditsText, config["availableCredits"]);
 			onClickCancelForm(settings.cancelFormButton);
+			appendlocation();
+			appendindustry();
 
 			var salaryRange = 100;
 			for(var i=0; i< salaryRange; i++){
@@ -255,6 +455,23 @@ function Job(){
 		$("#jobTagsList").html(str)
 	}
 
+	function appendlocation(){
+		var ul=settings.listing;	
+		for(var key in city) {
+			for(var key1 in city[key]) {
+				 var loc=city[key][key1];
+				 ul.append('<li data-value='+key1+'>'+loc+'</li>');
+			}
+		}	
+	}
+
+	function appendindustry(){
+		var ul=$('#industry-listing');
+		for( var key in industry){
+			ul.append('<li data-value='+key+'>'+industry[key]+'</li>');
+		}
+	}
+
 	return {
 		init: init,
 		setConfig : setConfig,
@@ -263,7 +480,9 @@ function Job(){
 		submitHandler: submitHandler,
 		setData: setJobData,
 		onChangeJobPremium: onChangeJobPremium,
-		populateJobTags: populateJobTags
+		populateJobTags: populateJobTags,
+		appendlocation:appendlocation,
+		appendindustry:appendindustry
 	}
 
 }

@@ -321,6 +321,9 @@
 .icon-information-1:before {
   content: '\e847'; }
 
+.icon-work_from_home::before {
+  content: '\e830'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -799,7 +802,8 @@ span.sticker {
                 font-size: 14px;
                 background: #FFF;
                 border-bottom: 1px solid #e8e8e8;
-                cursor: pointer; }
+                cursor: pointer;
+                word-wrap: break-word; }
                 .job_posting .post_job .post_job_form .field-container .industry-tags .pill-button .pill-listing ul li.selected, .job_posting .post_job .post_job_form .field-container .location-tags .pill-button .pill-listing ul li.selected, .job_posting .post_job .post_job_form .field-container .skill-tags .pill-button .pill-listing ul li.selected {
                   background-color: #e9f5f2; }
                 .job_posting .post_job .post_job_form .field-container .industry-tags .pill-button .pill-listing ul li.tag-added, .job_posting .post_job .post_job_form .field-container .location-tags .pill-button .pill-listing ul li.tag-added, .job_posting .post_job .post_job_form .field-container .skill-tags .pill-button .pill-listing ul li.tag-added {

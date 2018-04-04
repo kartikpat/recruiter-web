@@ -194,6 +194,7 @@ function candidateList() {
                     return
             }
        }
+       settings.emptyView.addClass('hidden');
        var str = '';
        dataArray.forEach(function(aData, index){
            var item = createElement(aData);
