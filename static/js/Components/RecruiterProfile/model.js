@@ -70,7 +70,7 @@ function Profile(){
 		})
 	}
 
-	function validate(){ 
+	function validate(){
 
 		if(settings.type == "profile") {
 			if(!(
@@ -199,10 +199,10 @@ function Profile(){
 		$(settings.submitButton).click(function() {
 
 			var type = $(this).closest(".settings-page").find(".settings-sidebar li.active").attr("data-selector")
-			console.log(type)
+
 			settings.type = type;
-			console.log(settings.type)
-			fn()
+
+			fn(type)
 		})
 	}
 

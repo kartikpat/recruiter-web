@@ -5,9 +5,12 @@ $(document).ready(function(){
 	recruiterProfile.init();
 	recruiterProfile.setProfile(profile)
 
-	recruiterProfile.submitHandler(function(){
+	recruiterProfile.submitHandler(function(type){
 
 		if(recruiterProfile.validate()){
+			// if(type == "change-password") {
+			// 	changePassword()
+			// }
 			updateRecruiterProfile(recruiterProfile.getProfile(), recruiterId);
 		}
 	})
