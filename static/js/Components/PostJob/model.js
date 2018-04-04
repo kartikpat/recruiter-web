@@ -219,7 +219,7 @@ function Job(){
 
 
 		// setPillValues(settings.location.attr('id'), loca);
-		setPillValues(settings.location.attr('id'), obj["location"], currentLocationTagsData);
+		setPillValuesByObject(settings.location.attr('id'), obj["location"], cityList);
 		setPillValues(settings.location.attr('id'), obj["otherLocation"]);
 		setPillValues(settings.industry.attr('id'), obj["industry"], industryTagsData);
 		if(obj["videoUrl"])
@@ -417,6 +417,21 @@ function getPillValues(elementId){
 	return data;
 }
 
+function setPillValuesByObject(elementId, arr, globalObject){
+
+	arr.forEach(function(value, index){
+		$('#'+elementId+'').find(".pill-listing li[data-value='"+value+"']").addClass("selected")
+		for(var locCategory in cityList) {
+			if(cityList[locCategory][value]) {
+				var label = cityList[locCategory][value]
+				var id = value
+				addNewTag(label, id, '#'+elementId+'')
+			}
+		}
+	})
+}
+
+
 /**
  * set multiple values on the pill widget
  * @return {[type]} [description]
@@ -439,7 +454,6 @@ function setPillValues(elementId, arr, globalArray){
 		else{
 			if(elementId == "jobTags") {
 				$('#'+elementId+'').find(".pill-listing li[data-name='"+value+"']").addClass("selected")
-				debugger
 			}
 			var label = value
 			var id =""

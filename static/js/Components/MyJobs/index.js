@@ -5,14 +5,14 @@ var globalParameters = {
     jobListLength: null,
     initialLoad: 1
 }
- 
+
 jQuery(document).ready( function() {
 
 	// if(localStorage.getItem("jobPostSuccessMessage") != null) {
 	// 	toastNotify(1, localStorage.getItem("jobPostSuccessMessage"))
 	// 	localStorage.removeItem("jobPostSuccessMessage");
 	// }
-
+ 
     var successMsg = getQueryParameter("jobPostMessage");
     if(!isEmpty(successMsg)) {
         toastNotify(1, decodeURIComponent(successMsg))
