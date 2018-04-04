@@ -139,6 +139,7 @@ function candidateList() {
             }
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             var inviteId = parseInt($(this).attr("data-invite-id"));
+
             fn(applicationId, inviteId);
             return false
         })
@@ -149,10 +150,10 @@ function candidateList() {
             e.preventDefault()
             if(parseInt($(this).attr("data-clickable")) == 1) {
                 window.location = "/booked-slots"
-
             }
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             var inviteId =  parseInt($(this).attr("data-invite-id"));
+
             fn(applicationId, inviteId);
             return false
         })
@@ -775,7 +776,7 @@ function candidateList() {
                 settings.bulkActionsContainer.removeClass("hidden")
             },
             activate: function(event, ui){
-                settings.emptyView.addClass("hidden")
+                hideEmptyScreen()
                 settings.bulkActionContainer.addClass("hidden")
                 settings.massCheckboxInput.prop("checked", false)
                 fn(event, ui);
@@ -783,8 +784,9 @@ function candidateList() {
         })
     }
 
-
-
+    function hideEmptyScreen() {
+        settings.emptyView.addClass("hidden")
+    }
 
     function showShells(status) {
         $(".candidateListing[data-status-attribute='"+status+"']").find(settings.candidateItemShellClass).removeClass("hidden");
@@ -956,6 +958,7 @@ function candidateList() {
         changeButtonText: changeButtonText,
         changeStatus: changeStatus,
         populateCheckInputDropdown: populateCheckInputDropdown,
-        getApplicationsLength: getApplicationsLength
+        getApplicationsLength: getApplicationsLength,
+        hideEmptyScreen: hideEmptyScreen
 	}
 }

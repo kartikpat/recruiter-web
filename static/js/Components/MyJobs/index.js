@@ -5,7 +5,7 @@ var globalParameters = {
     jobListLength: null,
     initialLoad: 1
 }
-
+ 
 jQuery(document).ready( function() {
 
 	// if(localStorage.getItem("jobPostSuccessMessage") != null) {
