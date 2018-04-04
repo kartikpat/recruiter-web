@@ -46,7 +46,7 @@
 		padding: 20px 0;
         input {
             @include input-field;
-            
+
         }
 	}
 
@@ -125,4 +125,9 @@
 		    z-index: 100;
 	    }
 	}
+}
+
+select.select-dropdown {
+    padding-right: 38px;
+    background-size: 17px !important;
 }

@@ -125,7 +125,7 @@ function Candidate() {
             preferredLocationStr = aData["preferredLocation"].join(', ');;
         }
         item.preferredLocation.text(preferredLocationStr).removeClass("shell");
-        item.contact.text(aData["phone"] || "NA").removeClass("shell");
+        // item.contact.text(aData["phone"] || "NA").removeClass("shell");
         item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY') || "NA").removeClass("shell");
         if(aData["notice"] == 7) {
             item.notice.text("Immediately Available").removeClass("shell");
@@ -154,7 +154,8 @@ function Candidate() {
             item.name.text(anObj["institute"])
             item.tenure.text(anObj["batch"]["from"] + " - " + anObj["batch"]["to"] )
             item.degree.text(anObj["degree"] + "("+anObj["courseType"]+")")
-            item.seperator.removeClass("hidden")
+            if(index != aData["education"].length - 1)
+                item.seperator.removeClass("hidden")
             eduStr+=item.element[0].outerHTML
         })
         item.eduList.html(eduStr)
@@ -171,7 +172,9 @@ function Candidate() {
             var toYear = anObj["exp"]["from"]["year"];
             var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
             item.tenure.text(str);
-            item.seperator.removeClass("hidden")
+
+            if(index != aData["jobs"].length - 1)
+                item.seperator.removeClass("hidden")
             profStr+=item.element[0].outerHTML
         })
         item.profList.html(profStr)
@@ -192,9 +195,14 @@ function Candidate() {
         item.workSixDays.text("no").removeClass("shell")
         item.relocate.text(binary[aData["relocate"]] ).removeClass("shell")
         item.startup.text(binary[aData["joinStartup"]]).removeClass("shell")
-        item.travel.text(binary[aData["travel"]]).removeClass("shell")
-        item.percentile.text(aData["catScore"] || "N.A.").removeClass("shell")
+        item.travel.text(willingTravel[aData["travel"]]).removeClass("shell")
+        item.differentlyAbled.text(binary[aData["differentlyAbled"]]).removeClass("shell")
         item.workSixDays.text(binary[aData["sixDays"]]).removeClass("shell")
+        if(aData["scores"]) {
+            item.percentile.text(aData["scores"]["cat"] || "N.A.").removeClass("shell")
+            item.iitScore.text(aData["scores"]["iit"] || "N.A.").removeClass("shell")
+            item.gmatScore.text(aData["scores"]["gmat"] || "N.A.").removeClass("shell")
+        }
         if(isCanvasSupported()) {
            getBinaryData(aData["resume"],resumeCallback);
         }
