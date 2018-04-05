@@ -137,6 +137,7 @@ function BookedSlots() {
 		settings.bookedSlots.append(str);
 		if(dataArray.length< pageContent) {
 			return settings.bookedSlots.append("<div class='no-data'>No more records!</div>")
+			hideLoaderOverlay();
 		}
 	}
 

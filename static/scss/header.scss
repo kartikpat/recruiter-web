@@ -307,7 +307,7 @@ b{
                 min-width:120px;
                 text-align: center;
                 .icon-down_arrow::before{
-                    color: #fff;
+                    color: #888;
                     font-size: 11px;
                     margin-left: 2px;   
                 }
@@ -483,6 +483,9 @@ b{
                 cursor:pointer;
             }
             &.profile_actions {
+                .search{
+                    margin-right: 5px;
+                }
                 .action-icon {
                     height:30px;
                     width:30px;
@@ -491,15 +494,15 @@ b{
                         height: 50%;
                     }
                     .search-icon{
+                       
                         text-align: center;
                         .icon-search:before{
-                            line-height: 35px;
-                        }
+                            line-height: 32px;
+                            }
                     }
                     .chat-icon{
                         .icon-chat_icon::before{
-                            font-size: 25px;
-                            line-height: 33px;
+                            line-height: 29px;
                         }
                     }
                    
