@@ -713,6 +713,14 @@ b {
         font-size: 27px;
         line-height: 43px;
         color: #e8e8e8; }
+    .header .profile_actions .action-icon .chat-icon {
+      text-align: center; }
+      .header .profile_actions .action-icon .chat-icon .icon-chat_icon::before {
+        margin-left: 0px;
+        margin-right: 0px;
+        font-size: 25px;
+        line-height: 40px;
+        color: #e8e8e8; }
   .header .profile_actions .profile img {
     padding: 0;
     height: 37px;
@@ -920,6 +928,9 @@ b {
           text-align: center; }
           .header .header_item.profile_actions .action-icon .search-icon .icon-search:before {
             line-height: 35px; }
+        .header .header_item.profile_actions .action-icon .chat-icon .icon-chat_icon::before {
+          font-size: 25px;
+          line-height: 33px; }
       .header .header_item.profile_actions .profile {
         display: none; } }
 

@@ -1,6 +1,5 @@
 @import "colors.scss";
 @import "fonts.scss";
-
 @import 'components/_colors.scss';
 @import 'components/_type.scss';
 @import 'components/_global.scss';
@@ -184,6 +183,17 @@ b{
                     margin-right: 0px;
                     font-size: 27px;
                     line-height: 43px;
+                    color: #e8e8e8;
+                }   
+            }
+          
+            .chat-icon{
+                text-align: center;
+                .icon-chat_icon::before{
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    font-size: 25px;
+                    line-height: 40px;
                     color: #e8e8e8;
                 }
             }
@@ -484,6 +494,12 @@ b{
                         text-align: center;
                         .icon-search:before{
                             line-height: 35px;
+                        }
+                    }
+                    .chat-icon{
+                        .icon-chat_icon::before{
+                            font-size: 25px;
+                            line-height: 33px;
                         }
                     }
                    
