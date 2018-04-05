@@ -18,7 +18,7 @@ jQuery(document).ready( function() {
        globalParameters.pageNumber = 1;
        parameters.pageNumber= globalParameters.pageNumber;
        parameters.pageContent= globalParameters.pageContent;
-    //    parameters.from=slots.getStartDate();
+       parameters.fromDate=slots.getStartDate();
        slots.emptySlots();
        if(calendarId != -1) {
            parameters.calendarId = calendarId;
@@ -36,7 +36,7 @@ jQuery(document).ready( function() {
        var parameters = {};
        parameters.pageNumber= globalParameters.pageNumber;
        parameters.pageContent= globalParameters.pageContent;
-       parameters.from=slots.getStartDate();
+       parameters.fromDate=slots.getStartDate();
        if(calendarId != -1) {
              parameters.calendarId = calendarId;
        }
@@ -72,7 +72,6 @@ jQuery(document).ready( function() {
    function onFailFetchedCalendars(topic, data){
 
    }
-
 
    function onInterviewsFetchSuccess(topic, data){
         tickerLock = false;
