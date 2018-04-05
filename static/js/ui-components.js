@@ -13,12 +13,11 @@ jQuery(".button-action-list").on("click", function() {
 })
 
 jQuery(".pill-button input").on('focus', function() {
-
 	jQuery(this).parent().toggleClass("inactive");
 });
 
 jQuery(".pill-button input").on('blur', function() {
-	jQuery(this).parent().addClass("inactive");
+	// jQuery(this).parent().addClass("inactive");
 	jQuery(this).attr("placeholder", jQuery(this).attr("data-placeholder-value"));
 });
 
@@ -83,60 +82,49 @@ jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function
 	var listItems = jQuery(this).siblings(".pill-listing").find("li");
 
 	var selectedItem =  jQuery(this).siblings(".pill-listing").find("li.selected");
+	var _this = $(this);
+	var visibleItems = _this.siblings(".pill-listing").find("li:visible").not('.disabled')
 	var closestTag = jQuery(this).closest(".tag-container");
-
+	
+	
 	switch(e.which){
 		case 38:
-
-				if(selectedItem.length == 0 ) {
-					jQuery(this).siblings(".pill-listing").find("li:visible").last(0).addClass("selected");
-				} else {
-					var newSelectedItem = selectedItem.prevAll("li:visible").first();
-					if(newSelectedItem.length) {
-						newSelectedItem.addClass("selected");
-						selectedItem.removeClass("selected");
-					}
-				}
-
-				var selectedOption = jQuery(this).siblings(".pill-listing").find("li.selected");
-
-				jQuery(this).siblings(".pill-listing").find("ul").scrollTop(0)
-				jQuery(this).siblings(".pill-listing").find("ul").scrollTop(selectedOption.position().top);
-
-				break;
+			var previousItem = selectedItem.prevAll("li:visible").not('.disabled').first();
+			if(previousItem.length >0){
+				previousItem.addClass('selected');
+				selectedItem.removeClass('selected');
+				_this.siblings(".pill-listing").find("ul").scrollTop(0)
+				_this.siblings(".pill-listing").find("ul").scrollTop(previousItem.position().top);
+			}
+			else{
+				_this.siblings(".pill-listing").find("ul").scrollTop(0);
+			}
+			break;
 		case 40:
-				if(listItems.hasClass("disabled")) {
-					$(this).ne
-				}
-				if(selectedItem.length == 0 ) {
-					jQuery(this).siblings(".pill-listing").find("li:visible").eq(0).addClass("selected");
-				} else {
-					var newSelectedItem = selectedItem.nextAll("li:visible").first();
-					if(newSelectedItem.length) {
-						newSelectedItem.addClass("selected");
-						selectedItem.removeClass("selected");
-					}
-				}
-
-				var selectedOption = jQuery(this).siblings(".pill-listing").find("li.selected");
-
-				jQuery(this).siblings(".pill-listing").find("ul").scrollTop(0)
-				jQuery(this).siblings(".pill-listing").find("ul").scrollTop(selectedOption.position().top);
-
-				break;
+			var nextItem = selectedItem.nextAll("li:visible").not('.disabled').first();
+			if(selectedItem.length ==0){
+				nextItem = visibleItems.first();
+			}
+			if(nextItem.length >0){
+				nextItem.addClass('selected');
+				selectedItem.removeClass('selected');
+			}
+			_this.siblings(".pill-listing").find("ul").scrollTop(0)
+			_this.siblings(".pill-listing").find("ul").scrollTop(nextItem.position().top);	
+			break;
 		case 13:
 				if(closestTag.attr("data-enable-custom") && closestTag.attr("data-enable-custom") == "true") {
-					var value = ($(this).val()).trim() || selectedItem.text()
+					var value = (_this.val()).trim() || selectedItem.text()
 					if(!value) {
 						return
 					}
 					if(checkMaxTags(listItems.closest(".tag-container"))){
-							addNewTag(value, selectedItem.attr("data-value"),jQuery(this).closest(".tag-container"));
+							addNewTag(value, selectedItem.attr("data-value"),_this.closest(".tag-container"));
 						}
 				} else {
 					if(selectedItem.length) {
 						if(checkMaxTags(listItems.closest(".tag-container"))){
-							addNewTag(selectedItem.text(), selectedItem.attr("data-value"),jQuery(this).closest(".tag-container"));
+							addNewTag(selectedItem.text(), selectedItem.attr("data-value"),_this.closest(".tag-container"));
 						}
 					}
 				}
