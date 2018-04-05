@@ -8,7 +8,6 @@ function Candidate() {
         settings.mobCandidateTagContainerClass= '.mobCandidateTagContainer',
         settings.mobCandidateCommentContainerClass= '.mobCandidateCommentContainer',
         settings.candidateTagPrototype= $('.candidateTag.prototype'),
-        settings.candidateAddCommentButtonClass= '.candidateAddCommentButton',
         settings.candidateAddTagButtonClass= '.candidateAddTagButton',
         settings.candidateCommentTextareaClass= '.candidateCommentTextarea',
         settings.candidateTagInputClass = '.candidateTagInput',
@@ -25,6 +24,10 @@ function Candidate() {
         settings.tagListing = $(".recruiterTags"),
         settings.tagMobListing = $("#tagMobListing"),
         settings.tagInputError = $(".tagInputError");
+        settings.commentTextarea=$('.comment-textarea'),
+        settings.candidateCommentTextareaClass= '.candidateCommentTextarea',
+        settings.candidateEditComment=$('.candidateAddEditButton'),
+        settings.candidateAddCommentButtonClass= '.candidateAddCommentButton',
         onClickChatCandidateModal();
         jQuery("#tabbed-content").tabs({
             create: function(){
@@ -87,7 +90,9 @@ function Candidate() {
             tabContent: modal.find("#tabbed-content"),
             shortlistButton: modal.find(".candidateShortlistModal"),
             rejectButton: modal.find(".candidateRejectModal"),
-            savedButton : modal.find("#candidateSaveModal")
+            savedButton : modal.find("#candidateSaveModal"),
+            contact:modal.find('.contact'),
+            email:modal.find('.email-address'),
         }
     }
 
@@ -138,6 +143,8 @@ function Candidate() {
         }
         item.salary.text(formatSalary(aData["ctc"])).removeClass("shell");
         item.firstName.text(aData["name"]).removeClass("shell");
+        item.contact.text(aData["phone"] || "NA");
+        item.email.text(aData["email"]||"NA");
         // var lastActiveDays = getLastActiveDay(aData["lastActive"])
         //
         // item.lastActive.text(lastActiveDays > 1 ? lastActiveDays + " days ago": lastActiveDays + " day ago");
@@ -217,6 +224,7 @@ function Candidate() {
             item.comment.val(aData["comment"]);
             item.mobComment.val(aData["comment"]);
         }
+        
         item.shortlistButton.attr("data-action", 1);
         item.rejectButton.attr("data-action", 2);
         item.savedButton.attr("data-action", 3);
@@ -269,8 +277,19 @@ function Candidate() {
             event.stopPropagation();
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
             var comment = $(settings.candidateCommentTextareaClass).val();
+            $(settings.candidateCommentTextareaClass).addClass("hidden");
+            settings.commentTextarea.val(comment).removeClass("hidden");
+            $(settings.candidateAddCommentButtonClass).addClass("hidden");
+            settings.candidateEditComment.removeClass("hidden");
             fn(applicationId, comment);
         });
+
+        settings.candidateEditComment.on('click',function(event){
+            settings.commentTextarea.addClass("hidden");
+            $(settings.candidateCommentTextareaClass).removeClass("hidden").focus();
+            $(settings.candidateAddCommentButtonClass).removeClass("hidden");
+            settings.candidateEditComment.addClass("hidden");
+        })
     }
 
     function onClickAddCommentMob(fn) {

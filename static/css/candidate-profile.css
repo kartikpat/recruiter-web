@@ -2277,10 +2277,29 @@ span.sticker {
         font-size: 16px;
         color: #333;
         margin-top: 20px; }
+      .view-resume-modal .resume-sidebar .sidebar-section .contact {
+        font-size: 14px; }
+      .view-resume-modal .resume-sidebar .sidebar-section .icon-tick_circle {
+        color: green; }
       .view-resume-modal .resume-sidebar .sidebar-section .cand-add-tag {
         height: 40px;
         line-height: 10px;
         padding: 10px; }
+      .view-resume-modal .resume-sidebar .sidebar-section .comment-box .comment-textarea {
+        background-color: #f3fbfb;
+        color: #757575;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: left;
+        min-height: 40px;
+        margin-bottom: 10px;
+        border: 1px solid #e4e4e4;
+        border-left: 3px solid #cfebeb;
+        resize: none; }
+      .view-resume-modal .resume-sidebar .sidebar-section .action-buttons .editbutton {
+        color: #155D9A !important;
+        font-size: 13px !important;
+        cursor: pointer; }
       .view-resume-modal .resume-sidebar .sidebar-section .comment-block {
         margin-bottom: 15px; }
         .view-resume-modal .resume-sidebar .sidebar-section .comment-block .content {
