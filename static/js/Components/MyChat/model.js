@@ -91,7 +91,7 @@ function Chat() {
        settings.userName.text(obj["name"]);
        settings.userPhone.text(obj["phone"]);
        settings.userDes.text(obj["designation"]);
-       settings.userOrg.text(obj["org"]);
+       settings.userOrg.text(obj["organization"]);
        settings.userLoc.text(obj["location"]);
        if(obj["exp"]) {
            settings.userExp.text(obj["exp"]["year"] + "y " + obj["exp"]["month"] + "m")

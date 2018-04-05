@@ -1,7 +1,8 @@
 var globalParameters = {
     pageContent: 10,
     pageNumber: 1,
-    candidateListLength: null
+    candidateListLength: null,
+    fromDate: moment().subtract(2, 'months').format('YYYY-MM-DD')
 }
 
 jQuery(document).ready( function() {
@@ -11,11 +12,28 @@ jQuery(document).ready( function() {
     var parameters = {}
     parameters.pageNumber = globalParameters.pageNumber;
     parameters.pageContent = globalParameters.pageContent;
-
+    parameters.fromDate = globalParameters.fromDate;
     fetchFollowUps(recruiterId, parameters)
+
+    candidates.initializeDatePicker(function(fromDate){
+        candidates.showShell()
+        var parameters = {};
+        globalParameters.pageNumber = 1;
+        parameters.pageNumber = globalParameters.pageNumber;
+        parameters.pageContent = globalParameters.pageContent;
+        parameters.fromDate = fromDate;
+        globalParameters.fromDate = fromDate;
+
+        candidates.emptyCandidateList();
+        fetchFollowUps(recruiterId, parameters);
+    })
 
     candidates.onClickShortlistCandidate(function(applicationId, jobId) {
         setCandidateAction(recruiterId, jobId, "shortlist" , applicationId, {}, {});
+    })
+
+    candidates.onClickRejectCandidate(function(applicationId, jobId){
+        setCandidateAction(recruiterId, jobId, "reject" , applicationId, {}, {});
     })
 
     function onSuccessfullCandidateAction(topic, res) {
@@ -47,12 +65,9 @@ jQuery(document).ready( function() {
         }
     }
 
-    candidates.onClickRejectCandidate(function(applicationId, jobId){
-        setCandidateAction(recruiterId, jobId, "reject" , applicationId, {}, {});
-    })
-
     function onFetchCandidatesSuccess(topic,res) {
         hideLoader()
+        globalParameters.candidateListLength = res.length;
         candidates.addToList(res,  globalParameters.pageNumber, globalParameters.pageContent)
     }
 
@@ -77,14 +92,16 @@ jQuery(document).ready( function() {
     });
 
     function checkScrollEnd() {
+
        if($(window).scrollTop() + $(window).height() > $(document).height() - 600) {
+
            globalParameters.pageNumber = globalParameters.pageNumber + 1;
            if(globalParameters.pageNumber != 1 && globalParameters.candidateListLength == globalParameters.pageContent) {
 
                 var parameters = {}
                 parameters.pageNumber = globalParameters.pageNumber;
                 parameters.pageContent = globalParameters.pageContent;
-                parameters.tagId = obj.tagId
+                parameters.fromDate = globalParameters.fromDate;
                 showLoader()
                 fetchFollowUps(recruiterId,parameters)
            }

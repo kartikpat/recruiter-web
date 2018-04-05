@@ -10,6 +10,7 @@ function Job(){
 		settings.jobId = $("#jobCode");
 		settings.jobTitle = $("#jobTitle");
 		settings.jobLocation = $("#jobLocation");
+		settings.jobMultipleLocation = $("#jobMultipleLocation");
 		settings.jobSeparator = $("#jobSeparator");
 		settings.locSeperator = $("#locSeperator");
 		settings.jobExperience = $("#jobExperience");
@@ -41,19 +42,35 @@ function Job(){
 		$(window).click(function(event) {
     		settings.jobOtherActions.addClass('inactive');
     	});
+
 	}
 
 	function setJobDetails(data){
-		console.log(data)
 		settings.jobTitle.text(data["jobTitle"]).removeClass("shell");
 		settings.jobId.text("Job Code: " +data["jobPublishedId"]).removeClass("shell");
-		if(data["jobLocation"]) {
-	        settings.jobLocation.text(data["location"]).removeClass("shell")
-	        settings.jobSeparator.removeClass("hidden")
-	    }
+		var locText = data["jobLocation"].join(", ")
+		if(data["jobLocation"].length) {
+			settings.jobSeparator.removeClass("hidden")
+			if(data["jobLocation"].length <= 1){
+				settings.jobLocation.text(locText).removeClass("shell")
+			}
+			else{
+				settings.jobLocation.addClass("hidden")
+				settings.jobMultipleLocation.attr("title",locText).removeClass("hidden");
+			}
+		}
 		else {
 			settings.jobLocation.addClass("hidden")
 		}
+
+		$(".tooltip").tooltipster({
+		   animation: 'fade',
+		   delay: 0,
+		   side:['bottom'],
+		   theme: 'tooltipster-borderless',
+		   maxWidth: 500
+	   })
+
         if(data["jobExperience"]) {
             settings.jobExperience.text(data["jobExperience"]).removeClass("shell")
         }
@@ -86,14 +103,15 @@ function Job(){
 				settings.jobPostTwitter.attr("href", getTwitterShareLink(url))
 				settings.jobPostLinkedin.attr("href", getLinkedInShareUrl(url))
 			}
-			if(data["cnfi"]) {
-				settings.socialIcon.addClass("hidden")
-			}
-			if(settings.jobOtherActions.find(".action-list-items li a.hidden").length < 4) {
-				settings.jobOtherActions.removeClass("hidden")
-			}
-
         }
+
+		if(data["cnfi"]) {
+			settings.socialIcon.addClass("hidden")
+		}
+
+		if(settings.jobOtherActions.find(".action-list-items li a.hidden").length < 4) {
+			settings.jobOtherActions.removeClass("hidden")
+		}
 
         if(data["isEditable"]) {
             settings.jobEditButton.attr("href","/job/"+data["jobId"]+"/edit").removeClass("hidden")

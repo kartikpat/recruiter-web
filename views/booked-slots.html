@@ -59,7 +59,7 @@
     </div>
 </div>
 
-<option class="prototype calendarOption hidden"></option> 
+<option class="prototype calendarOption hidden"></option>
 
 <div class="slot-date slotDate prototype hidden">
     <div class="date"><div class="action-date">Interview Date</div><span class="interviewDate"></span></div>
@@ -77,14 +77,20 @@
             <div class="job-details">
                 <div class="action-job">Applied to job</div>
                 <div id="profile" ><a href="" class="link-color jobName" target="_blank">iimjobs.com-Associate Product Manager</a></div>
-                <div id="exp-details" class="jobExp"> Delhi 0-5 yrs</div>
+                <div id="exp-details">
+                    <span class="job-location jobLocation location"></span>
+        			<span class="jobMultipleLocation hidden tooltip" aria-hidden="true" title="">Multiple location</span>
+                    <span class="jobExp"></span>
+                </div>
+
+
             </div>
             <div class="action-buttons">
                 <div class="section">
                     <div class="button-action-list candidateOtherActions inactive">
                         <label class="action-list-label">Other Actions</label>
                         <ul class="action-list-items">
-                            <li><a href="#" class="candidateSendMessage">Chat</a></li>
+                            <!-- <li><a href="#" class="candidateSendMessage">Chat</a></li> -->
                             <li><a href="#" class="candidateCancelInterviewInvite">Cancel Interview</a></li>
                         </ul>
                     </div>
@@ -145,7 +151,7 @@
                 </div>
             </div>
       </div>
-    </div>   
+    </div>
     <div class="conversations right">
             {{> chatSidebar }}
     </div>
