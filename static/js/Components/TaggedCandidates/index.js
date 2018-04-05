@@ -41,7 +41,7 @@ jQuery(document).ready( function() {
 
     function onFetchCandidatesByTagsSuccess(topic,res) {
         hideLoader()
-
+        globalParameters.candidateListLength = res.data.length
         candidates.addToList(res.data,  globalParameters.pageNumber, globalParameters.pageContent)
     }
 

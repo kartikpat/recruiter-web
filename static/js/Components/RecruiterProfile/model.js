@@ -13,7 +13,11 @@ var errorResponses = {
 	invalidWebsite: 'Enter proper Website Url',
 	invalidFacebook: 'Enter proper Facebook Url',
 	invalidTwitter: 'Enter proper Twitter Url',
-	invalidLinkedIn: 'Enter proper LinkedIn Url'
+	invalidLinkedIn: 'Enter proper LinkedIn Url',
+	missingoldPassword: 'Please enter a password',
+	missingnewPassword: 'Please enter a password',
+	missingConfirmPassword:'Please confirm your password',
+	passwordMismatch: 'The passwords you entered do not match'
 }
 
 var emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -70,7 +74,7 @@ function Profile(){
 		})
 	}
 
-	function validate(){ 
+	function validate(){
 
 		if(settings.type == "profile") {
 			if(!(
@@ -93,7 +97,14 @@ function Profile(){
 			return true;
 		}
 		if(settings.type== "change-password") {
-
+			if(!(
+					ifExists(settings.oldPassword)
+					&& ifExists(settings.newPassword)
+					&& ifExists(settings.confirmPassword)
+				)){
+				return false;
+			}
+			return true;
 		}
 		if(settings.type== "notification-settings") {
 			return true
@@ -150,7 +161,14 @@ function Profile(){
 
 		}
 		if(settings.type== "change-password") {
-
+			var obj = {}
+			if(settings.oldPassword.val()) {
+				obj.password = settings.oldPassword.val()
+			}
+			if(settings.newPassword.val()) {
+				obj.newPassword = settings.newPassword.val()
+			}
+			return obj;
 		}
 		if(settings.type== "notification-settings") {
 
@@ -199,10 +217,10 @@ function Profile(){
 		$(settings.submitButton).click(function() {
 
 			var type = $(this).closest(".settings-page").find(".settings-sidebar li.active").attr("data-selector")
-			console.log(type)
+
 			settings.type = type;
-			console.log(settings.type)
-			fn()
+
+			fn(type)
 		})
 	}
 
@@ -230,6 +248,15 @@ function Profile(){
 		getPic: getPic,
 		updatePic: updatePic
 	}
+}
+
+function ifExists(element){
+
+	if(!( element && element.val() )){
+		element.next('.error').text(errorResponses['missing'+element.attr('name')]);
+		return false;
+	}
+	return true;
 }
 
 function checkEmail(element) {

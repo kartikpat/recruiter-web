@@ -1,7 +1,7 @@
 var globalParameters = {
     pageContent: 10,
     pageNumber: 1,
-    status: 0,
+    status: "0",
     orderBy: 1,
     initialLoad: 1,
     candidateListLength: null
@@ -20,7 +20,7 @@ jQuery(document).ready( function() {
     //initializing the models
     candidates.setConfig("jobId", jobId)
     filters.init();
-    candidates.init();
+    candidates.init(profile);
     theJob.init();
     aCandidate.init();
 
@@ -286,8 +286,6 @@ jQuery(document).ready( function() {
         parameters.pageNumber = globalParameters.pageNumber;
         parameters.pageContent = globalParameters.pageContent;
 
-
-        fetchJobApplicationCount(recruiterId, jobId)
         fetchJobApplications(jobId, parameters,recruiterId);
     })
 
@@ -630,16 +628,29 @@ jQuery(document).ready( function() {
         setQueryParameters(parameters);
      })
 
+     function getLocation(arr) {
+         var array = []
+         arr.forEach(function(value, index){
+     		for(var locCategory in cityList) {
+     			if(cityList[locCategory][value]) {
+                    var locName = cityList[locCategory][value];
+     				array.push(locName)
+     			}
+     		}
+     	})
+        return array;
+     }
+
      $.when(fetchJob(jobId, recruiterId, {idType: 'publish'}), fetchjobCalendars(jobId, recruiterId)).then(function(a, b){
 
          if(a[0] && b[0] && a[0]["status"] == "success" && b[0]["status"] =="success" && a[0]['data'].length >0 ) {
              var jobRow = a[0]['data'][0];
-             console.log(b)
+
              var calendarRows = b[0]['data'];
 
              var data = {
                 jobTitle: getTitleFormat(jobRow["title"],(/\(\d+-\d+ \w+\)$/)),
-                jobLocation: jobRow["location"].toString(),
+                jobLocation: getLocation(jobRow["location"]),
                 jobExperience: jobRow["exp"]['min']+ ' - ' + jobRow['exp']['max'] +' yrs',
                 jobPublishedId: jobRow['publishedId'],
                 jobId: jobRow['id'],
@@ -648,6 +659,7 @@ jQuery(document).ready( function() {
                 isEditable: jobRow['editable'],
                 isRefreshable: jobRow["refreshable"],
                 jobSocialShareUrl: jobRow["url"],
+                cnfi: jobRow["cnfi"],
                 calendars: calendarRows
              }
              return pubsub.publish("fetchedJobDetails:"+jobId, data);
@@ -660,10 +672,22 @@ jQuery(document).ready( function() {
         tickerLock = false;
         hideLoader()
 
-        //Call only on initial load
-        // if(!globalParameters.initialLoad) {
-        //
-        // }
+        var parameters = filters.getAppliedFilters();
+        parameters.status = globalParameters.status;
+
+        var filterFlag = 0;
+
+        for(var key in parameters) {
+            if(!(key == "orderBy" || key == "pageNumber" || key == "pageContent" || key == "status" || key == "searchString")) {
+                filterFlag+= 1;
+            }
+        }
+
+        if(filterFlag > 0) {
+            fetchFiltersCount(recruiterId, jobId, parameters)
+        }
+
+
         if(globalParameters.initialLoad) {
             fetchJobApplicationCount(recruiterId, jobId)
             globalParameters.initialLoad = 0;
@@ -677,18 +701,7 @@ jQuery(document).ready( function() {
             candidates.setInvite(theJob.getCalendarLength())
         }
 
-        var result = filters.getAppliedFilters();
-        var filterFlag = 0;
-        console.log(result)
-         for(var key in result) {
-            if(!(key == "orderBy" || key == "pageNumber" || key == "pageContent" || key == "status")) {
-                filterFlag+= 1;
-            }
-        }
 
-        if(filterFlag > 0) {
-            filters.showResultsFound(globalParameters.candidateListLength);
-        }
 
         if(data["pageNumber"] == 1) {
             store.emptyStore(data["data"]);
@@ -843,13 +856,14 @@ jQuery(document).ready( function() {
 		errorHandler(data)
 	}
 
-    function onSuccessfulCount(topic, data) {
-        candidates.setJobStats(data);
+    function onSuccessfulCount(topic, res) {
+        candidates.setJobStats(res.data);
         candidates.populateCheckInputDropdown(globalParameters.status)
+
     }
 
-    function onFailedCount() {
-
+    function onFailedCount(topic, data) {
+        errorHandler(data)
     }
 
     function onSendInterViewInviteSuccess(topic, data) {
@@ -858,10 +872,17 @@ jQuery(document).ready( function() {
             toastNotify(1, "Face to Face Invite Sent Successfully!")
         if(data.parameters.inviteId == 2)
             toastNotify(1, "Telephonic Invite Sent Successfully!")
-
     }
 
     function onSendInterViewInviteFail(topic, data) {
+        errorHandler(data)
+    }
+
+    function onSuccessfulFiltersCount(topic, data) {
+        filters.showResultsFound(data.total);
+    }
+
+    function onFailedFiltersCount(topic, data) {
         errorHandler(data)
     }
 
@@ -890,6 +911,9 @@ jQuery(document).ready( function() {
 
     var fetchedApplicationCountSuccessSubscription = pubsub.subscribe("fetchedApplicationCountSuccess", onSuccessfulCount)
 	var fetchedApplicationCountFailSubscription = pubsub.subscribe("fetchedApplicationCountFail", onFailedCount);
+
+    var fetchedFiltersCountSuccessSubscription = pubsub.subscribe("fetchedFiltersCountSuccess", onSuccessfulFiltersCount)
+	var fetchedFiltersCountFailSubscription = pubsub.subscribe("fetchedFiltersCountFail", onFailedFiltersCount);
 
     var sendInterViewInviteSuccessSubscription = pubsub.subscribe("sendInterViewInviteSuccess", onSendInterViewInviteSuccess)
 	var sendInterViewInviteFailSubscription = pubsub.subscribe("sendInterViewInviteFail", onSendInterViewInviteFail);
