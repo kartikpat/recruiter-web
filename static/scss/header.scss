@@ -312,8 +312,8 @@ b{
                     margin-left: 2px;   
                 }
                 &.active{
-                    a{
-                        // font-weight: 600;
+                    .header-links{
+                         font-weight: 600;
                     }
                 }
                 &:hover{

@@ -807,6 +807,8 @@ b {
           color: #fff;
           font-size: 11px;
           margin-left: 2px; }
+        .header .navigation ul .menu-list-item.active .header-links {
+          font-weight: 600; }
         .header .navigation ul .menu-list-item:hover {
           text-decoration: underline; }
         .header .navigation ul .menu-list-item.my-jobs {
