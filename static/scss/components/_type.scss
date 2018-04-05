@@ -173,7 +173,7 @@ $modal-content-font-size: 14px;
 .icon-box:before { content: '\e82d'; } /* '' */
 .icon-back_icon-1:before { content: '\e82e'; } /* '' */
 .icon-interview:before { content: '\e82f'; } /* '' */
-.icon-mail:before { content: '\e830'; } /* '' */
+.icon-mail:before { content: '\e820'; } /* '' */
 .icon-user:before { content: '\e831'; }
 .icon-location:before { content: '\e832'; }
 .icon-clock:before{ content: '\e83a';}
@@ -193,12 +193,4 @@ $modal-content-font-size: 14px;
 .icon-information-1:before {content: '\e847';}
 .icon-work_from_home::before{content:'\e830'}
 .icon-star-2::before{content:'\e815'}
-// .icon-more:before {font-size: 20px; color: #2b2b2b ; margin-left: 0px}
-// .icon-chat:before {font-size: 20px}
-// .icon-telephone:before {font-size: 20px}
-// .icon-face-to-face:before { font-size: 20px}
-// .icon-star:before {font-size: 20px}
-// .icon-interview:before { font-size: 25px } /* '' */
-// .icon-search:before {position: relative; top: -24px;left :5px}
-// .icon-filter:before {position: relative; top: 6px;}
-// .icon-chat_icon:before { font-size: 20px}
+.icon-tick_circle::before{content:'\e83b'}

@@ -1903,7 +1903,15 @@ input::-webkit-input-placeholder {
 				vertical-align: middle;
 				line-height: 10px;
 			 }
-
+			 .email-address{
+				 font-size: 14px;
+			 }
+			 .contact{
+				 font-size: 14px;
+			 }
+			 .icon-tick_circle{
+				 color: green;
+			 }
     		.comment-block {
 				margin-bottom:15px;
     			.content {
@@ -1992,7 +2000,6 @@ input::-webkit-input-placeholder {
 
 		    .fold {
 		    	position: fixed;
-
 			    right: 0;
 			    width: 85%;
 			    padding:20px;
@@ -2029,7 +2036,13 @@ input::-webkit-input-placeholder {
 							padding-left:0;
 							padding-right:0;
 						}
+						.icon-info:before {
+							content: '\e821';
+							color: black;
+							font-size: 21px;
+						}
 					}
+
 				}
 		    }
 		}
