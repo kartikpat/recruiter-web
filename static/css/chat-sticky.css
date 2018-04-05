@@ -295,7 +295,7 @@
 
 /* '' */
 .icon-mail:before {
-  content: '\e830'; }
+  content: '\e820'; }
 
 /* '' */
 .icon-user:before {
@@ -354,6 +354,9 @@
 
 .icon-star-2::before {
   content: '\e815'; }
+
+.icon-tick_circle::before {
+  content: '\e83b'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -869,7 +872,7 @@ span.sticker {
 
 /* '' */
 .icon-mail:before {
-  content: '\e830'; }
+  content: '\e820'; }
 
 /* '' */
 .icon-user:before {
@@ -928,6 +931,9 @@ span.sticker {
 
 .icon-star-2::before {
   content: '\e815'; }
+
+.icon-tick_circle::before {
+  content: '\e83b'; }
 
 .left {
   float: left; }
@@ -1427,7 +1433,7 @@ a {
 
 /* '' */
 .icon-mail:before {
-  content: '\e830'; }
+  content: '\e820'; }
 
 /* '' */
 .icon-user:before {
@@ -1486,6 +1492,9 @@ a {
 
 .icon-star-2::before {
   content: '\e815'; }
+
+.icon-tick_circle::before {
+  content: '\e83b'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */

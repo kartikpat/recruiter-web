@@ -270,7 +270,7 @@
 
 /* '' */
 .icon-mail:before {
-  content: '\e830'; }
+  content: '\e820'; }
 
 /* '' */
 .icon-user:before {
@@ -329,6 +329,9 @@
 
 .icon-star-2::before {
   content: '\e815'; }
+
+.icon-tick_circle::before {
+  content: '\e83b'; }
 
 .footer {
   width: 100%;
