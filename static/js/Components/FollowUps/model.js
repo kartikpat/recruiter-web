@@ -23,7 +23,23 @@ function candidateList() {
 
    }
 
+   function initializeDatePicker(fn) {
+       $( "#datepicker" ).datepicker({
+           showOn: "button",
+           buttonImage: '/static/images/smallcalendar.svg',
+           buttonImageOnly: true,
+           changeMonth: true,
+           changeYear: true,
+           dateFormat: 'yy-mm-dd',
+           onSelect: function(){
+               
+               var fromDate = $(this).val();
 
+               fn(fromDate);
+           }
+
+       });
+   }
 
    function setConfig(key, value) {
        config[key] = value;
@@ -154,7 +170,6 @@ function candidateList() {
    function addToList(dataArray, pageNumber, pageContent){
 
        hideShell()
-       pageContent = 10;
        if(dataArray.length<1 && pageNumber ==1) {
            return settings.candidateListing.append("<div class='no-data'>No Applications Found!</div>")
        }
@@ -217,7 +232,8 @@ function candidateList() {
        showShell: showShell,
        onClickShortlistCandidate: onClickShortlistCandidate,
        onClickRejectCandidate: onClickRejectCandidate,
-       candidateActionTransition: candidateActionTransition
+       candidateActionTransition: candidateActionTransition,
+       initializeDatePicker: initializeDatePicker
    }
 
 }

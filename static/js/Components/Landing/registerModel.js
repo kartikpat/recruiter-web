@@ -57,7 +57,7 @@ function registerUser(){
 			confirmPassword: user.confirmPassword.val(),
 			type: user.recruiterType.val()
 		}
-	} 
+	}
 
 	function eraseError(element) {
 		element.next('.error').text('')
@@ -192,7 +192,7 @@ function checkPhone(element){
 }
 
 function ifExists(element){
-	console.log(element)
+
 	if(!( element && element.val() )){
 		element.next('.error').text(errorResponses['missing'+element.attr('name')]);
 		return false;

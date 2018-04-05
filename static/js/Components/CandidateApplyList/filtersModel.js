@@ -516,6 +516,7 @@ function Filters(){
 		settings.seeFilters.addClass("hidden")
 		settings.topinstitute.topinst = 0;
 		settings.topinstitute.lawinst = 0;
+		settings.resultFoundText.addClass("hidden");
 	}
 
 	function removeFilter(value,category,type) {
@@ -556,6 +557,7 @@ function Filters(){
 		if(!settings.activeFiltersContainer.find(".filter-tag").length) {
 			settings.clearAllFitersButton.addClass("hidden");
 			settings.activeFiltersContainer.addClass("hidden")
+			settings.resultFoundText.addClass("hidden");
 		}
 
 		else if(settings.activeFiltersContainer.find(".filter-tag").length < settings.maxFilters) {
@@ -720,36 +722,28 @@ function Filters(){
 		})
 	}
 
-	function showResultsFound(totalFound) { 
-		if(totalFound && totalFound > 0) {
-			if(filtersTarget["searchString"]["selection"]) {
-				settings.resultFoundText.text(totalFound + " results found for " + filtersTarget["searchString"]["selection"]).removeClass("hidden");
-				return
-			}
-			else {
-				settings.resultFoundText.text(totalFound + " results found for applied filters").removeClass("hidden");
-				return
-			}
-		}
-		settings.resultFoundText.addClass("hidden")
+	function showResultsFound(totalFound) {
 		if(filtersTarget["searchString"]["selection"]) {
-			$('.user-text').text('No applications for searched keyword');
-			$('.empty-text').text("We couldn't find any results for the searched keyword.");
-			settings.emptyView.removeClass('hidden');
-			return
+			settings.resultFoundText.text(totalFound + " results found for " + filtersTarget["searchString"]["selection"]).removeClass("hidden");
+			if(totalFound && totalFound == 0) {
+				$('.user-text').text('No applications for searched keyword');
+				$('.empty-text').text("We couldn't find any results for the searched keyword.");
+				settings.emptyView.removeClass('hidden');
+				return
+			}
 		}
-		else {
-			debugger
+		settings.resultFoundText.text(totalFound + " results found for applied filters").removeClass("hidden");
+		if(totalFound && totalFound == 0) {
 			$('.user-text').text('We couldn’t find any matches for the selected filter.');
 			$('.empty-text').text('Please try using a different filter');
 			settings.emptyView.removeClass('hidden');
-			return
 		}
 	}
 
 	function hideAppliedFilters() {
 		settings.activeFiltersContainer.addClass("hidden");
-		settings.clearAllFitersButton.addClass("hidden")
+		settings.clearAllFitersButton.addClass("hidden");
+
 	}
 
 	function showAppliedFilters() {
