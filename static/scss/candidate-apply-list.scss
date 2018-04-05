@@ -1997,7 +1997,17 @@ input::-webkit-input-placeholder {
 			border-radius: 8px;
 		    background:$color-white;
 		    box-shadow:0 0 10px rgba(0,0,0,0.2);
-
+			.contact-menu{
+				.contact-info{
+					bottom: 65px;
+					background: rgba(128, 128, 128, 0.85);
+					position: fixed;
+					width: 78%;
+					z-index: 10;
+					padding: 8px 20px;
+					color: #fff;
+				}
+			}
 		    .fold {
 		    	position: fixed;
 			    right: 0;
@@ -2151,6 +2161,7 @@ input::-webkit-input-placeholder {
 		    box-shadow:0 0 10px rgba(0,0,0,0.2);
 			border-radius: 8px;
 
+			
 		    .fold {
 		    	position: fixed;
 
