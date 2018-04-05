@@ -235,13 +235,13 @@ $(document).ready(function(){
 		}
 		var data = {
 			text: text,
-			icon: "/static/images/morning-icon.png"
+			// icon: "/static/images/morning-icon.png"
 		}
 		updateGreetings(data);
 	}
 
 	function updateGreetings(data){
-		var img = '<img class="salutation-icon" src="'+data.icon+'">';
+		var img = '<i class="icon-sunrise"></i>';
 		var text = data.text;
 		greetingsContainer.find(".heading").html(img+text);
 	}

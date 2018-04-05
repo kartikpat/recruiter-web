@@ -1600,6 +1600,10 @@ span.sticker {
         font-size: 20px;
         color: #149075;
         font-weight: 400; }
+        .page-content .dashboard .header-row .heading .icon-sunrise:before {
+          font-size: 40px;
+          line-height: 20px;
+          vertical-align: top; }
       .page-content .dashboard .header-row .sub-heading {
         font-size: 14px;
         margin-top: 14px;
@@ -1615,11 +1619,11 @@ span.sticker {
   .page-content .salutation-icon {
     margin-right: 18px; }
   .page-content .header-row {
-    margin-bottom: 10px; }
+    margin-bottom: 15px; }
     .page-content .header-row a {
       color: #2b2b2b; }
     .page-content .header-row .heading {
-      width: 90%;
+      width: 75%;
       display: inline-block;
       font-size: 16px;
       font-weight: 600; }
@@ -1628,15 +1632,22 @@ span.sticker {
       display: inline-block;
       text-align: right;
       font-size: 13px;
-      margin-right: 5px; }
-      .page-content .header-row .heading-button img {
-        margin-left: 5px; }
+      margin-right: 5px;
+      line-height: 30px; }
+      .page-content .header-row .heading-button .icon-right_arrow:before {
+        content: '\e812';
+        font-size: 12px; }
   .page-content .detail-card {
     box-shadow: 0px 2px 8px 0px rgba(214, 214, 214, 0.3);
     border: 1px solid #e8e8e8;
     background-color: #ffffff;
-    border-radius: 6px;
-    padding: 10px 0; }
+    border-radius: 6px; }
+    .page-content .detail-card .slider-profile {
+      background-color: #f9f7f7;
+      padding-top: 10px;
+      margin-bottom: 15px; }
+      .page-content .detail-card .slider-profile .slider-icon {
+        padding-left: 0px !important; }
     .page-content .detail-card .meta-prop {
       display: inline-block;
       margin-right: 10px;
@@ -1658,29 +1669,34 @@ span.sticker {
       vertical-align: top; }
     .page-content .detail-card .profile .icon {
       width: 80px;
-      padding: 0 10px;
-      padding-right: 0px; }
+      padding-right: 0px;
+      padding-top: 5px;
+      padding-left: 10px; }
       .page-content .detail-card .profile .icon img {
-        width: 70px;
+        width: 75px;
         height: 70px;
-        border-radius: 50%;
         object-fit: cover;
-        border: 1px solid #e8e8e8; }
+        display: table-cell; }
     .page-content .detail-card .profile .general {
       padding: 10px;
       width: calc(100% - 90px);
       display: inline-block; }
       .page-content .detail-card .profile .general .name {
         color: #149075;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 400;
         display: block;
-        margin-bottom: 5px; }
+        margin-bottom: 5px;
+        font-weight: 600; }
         .page-content .detail-card .profile .general .name img {
           width: 17px; }
       .page-content .detail-card .profile .general .meta {
         color: #2b2b2b;
-        font-size: 16px; }
+        font-size: 14px;
+        /* Approximation due to font substitution */
+        font-weight: 400;
+        line-height: 24px;
+        /* Approximation due to font substitution */ }
       .page-content .detail-card .profile .general .highlighted-meta {
         background-color: #f7f8fa;
         font-size: 13px;
@@ -1741,7 +1757,8 @@ span.sticker {
     .page-content .detail-card .action-buttons {
       text-align: left;
       margin-left: 80px;
-      padding: 10px; }
+      padding-bottom: 20px !important;
+      padding-top: 20px !important; }
       .page-content .detail-card .action-buttons .button {
         margin: 0 auto;
         min-width: 50px;
@@ -1846,11 +1863,11 @@ span.sticker {
         z-index: 5; }
     .page-content .feed-row .main-content .action-panel {
       float: right;
+      margin-right: 10px;
       margin-top: 5px; }
-      .page-content .feed-row .main-content .action-panel .img {
-        height: 17px;
-        width: 5px;
-        margin-right: -5px; }
+      .page-content .feed-row .main-content .action-panel .icon-more:before {
+        content: '\e843';
+        color: #737373; }
 
 .slider {
   width: 116px;
