@@ -1,12 +1,25 @@
 {{>header}}
 
 	{{>chatSticky}}
-
+	<div class="toast-notification-container">
+		<div class="toast-notification">
+			<!-- <div class="notification-icon">
+				<img src="/static/images/close-icon.png" />
+			</div> -->
+			<div class="notification-message">
+				<p></p>
+			</div>
+		</div>
+	</div>
 	<div class="page-content">
 		<div class="main-wrapper">
 			<div class="tagged-candidates">
 				<div class="page-header">
 					<h3 class="title">Candidates who have followed up</h3>
+					<span class="date-select right">
+						<input type = "text" id = "datepicker" class="hidden">
+					</span>
+					<div class="clearfix"></div>
 				</div>
 
 				<div class="tagged-candidates-listing">

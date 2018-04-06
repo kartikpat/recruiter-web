@@ -218,7 +218,7 @@ function Jobs() {
 		item.element.find('.action-icon').attr('data-job-id',aData["id"]);
 
 		var loc = aData["location"];
-		var locShow = loc.toString();
+		var locShow = loc.join(", ");
 		if(loc.length) {
 			item.metaSeperator.removeClass("hidden");
 			if(loc.length <= 3){
@@ -278,6 +278,7 @@ function Jobs() {
 		if(aData["premium"]) {
 			item.premium.find('.icon-star').addClass('hidden');
 			item.premium.find('.icon-star-2').removeClass("hidden");
+			item.premium.attr('title','Premium Job');
 
 		}
 
@@ -294,8 +295,7 @@ function Jobs() {
 	function addToList(dataArray, pageNumber, pageContent,type){
 		var str = '';
 		hideShell()
-		// type='abc'
-		// dataArray.length=0;
+
 		if(dataArray.length<1 && pageNumber ==1) {
 			if(type=='all'){
 				settings.emptyView.removeClass('hidden');
@@ -321,11 +321,11 @@ function Jobs() {
 		});
 
 		settings.rowContainer.append(str);
-
+		initializeTooltip()
 		if(dataArray.length< pageContent) {
 		 return settings.rowContainer.append("<div class='no-data'>No more records!</div>")
         }
-		initializeTooltip()
+
 	}
 
 	function emptyList() {

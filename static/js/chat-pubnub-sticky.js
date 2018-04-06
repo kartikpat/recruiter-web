@@ -4,7 +4,6 @@ var recruiter = {
     "img_url": "http://www.iimjobs.com/resources/img/user_profile_new.png"
 }
 
-
 var recruiterEmail = profile.email;
 
     var pubnub = new PubNub({
@@ -50,7 +49,7 @@ function addListeners(){
 }
 
 function onNewMessage(m) {
-    
+
     var actualChannel = m.actualChannel;
     var channelName = m.channel; // The channel for which the message belongs
     var msg = m.message; // The Payload
@@ -114,6 +113,7 @@ function fetchHistory(channel, count,startTimeToken, endTimeToken, onFetchHistor
         end: endTimeToken
     }, onFetchHistory);
 }
+
 
 function hereNow(channel, onHereNow) {
     pubnub.hereNow({

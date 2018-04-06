@@ -547,15 +547,36 @@
     			font-size:$view-resume-section-title-size;
     			color:$color-black;
     			margin-top:20px;
-    		}
-
+			}
+			.contact {
+				font-size: 14px;
+			}
+			.icon-tick_circle {
+				color: green;
+			}
 			.cand-add-tag {
 				height: 40px;
 			    line-height: 10px;
 				padding: 10px;
 			}
 
-
+			.comment-box .comment-textarea {
+				background-color: #f3fbfb;
+				color: #757575;
+				font-size: 14px;
+				font-weight: 400;
+				text-align: left;
+				min-height: 40px;
+				margin-bottom: 10px;
+				border: 1px solid #e4e4e4;
+				border-left: 3px solid #cfebeb;
+				resize: none;
+			}
+			.action-buttons .editbutton {
+				color: #155D9A !important;
+				font-size: 13px !important;
+				cursor: pointer;
+			}
 
     		.comment-block {
 				margin-bottom:15px;

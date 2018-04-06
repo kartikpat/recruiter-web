@@ -13,7 +13,11 @@ var errorResponses = {
 	invalidWebsite: 'Enter proper Website Url',
 	invalidFacebook: 'Enter proper Facebook Url',
 	invalidTwitter: 'Enter proper Twitter Url',
-	invalidLinkedIn: 'Enter proper LinkedIn Url'
+	invalidLinkedIn: 'Enter proper LinkedIn Url',
+	missingoldPassword: 'Please enter a password',
+	missingnewPassword: 'Please enter a password',
+	missingConfirmPassword:'Please confirm your password',
+	passwordMismatch: 'The passwords you entered do not match'
 }
 
 var emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -70,7 +74,7 @@ function Profile(){
 		})
 	}
 
-	function validate(){ 
+	function validate(){
 
 		if(settings.type == "profile") {
 			if(!(
@@ -93,7 +97,16 @@ function Profile(){
 			return true;
 		}
 		if(settings.type== "change-password") {
-
+			if(!(
+					ifExists(settings.oldPassword)
+					&& ifExists(settings.newPassword)
+					&& checkMinCharacters(settings.newPassword, 6)
+					&& ifExists(settings.confirmPassword)
+					&& checkPassword(settings.newPassword, settings.confirmPassword)
+				)){
+				return false;
+			}
+			return true;
 		}
 		if(settings.type== "notification-settings") {
 			return true
@@ -150,7 +163,14 @@ function Profile(){
 
 		}
 		if(settings.type== "change-password") {
-
+			var obj = {}
+			if(settings.oldPassword.val()) {
+				obj.password = settings.oldPassword.val()
+			}
+			if(settings.newPassword.val()) {
+				obj.newPassword = settings.newPassword.val()
+			}
+			return obj;
 		}
 		if(settings.type== "notification-settings") {
 
@@ -181,7 +201,7 @@ function Profile(){
 		settings.twitter.val(obj["turl"]);
 		settings.facebook.val(obj["furl"]);
 		settings.linkedIn.val(obj["lurl"]);
-		console.log(obj["notificationEmail"])
+
 		$("input[name='notification-type'][value='"+obj["notificationEmail"]+"']").attr('checked', true);
 
 		if(obj["availableCredits"]) {
@@ -199,10 +219,10 @@ function Profile(){
 		$(settings.submitButton).click(function() {
 
 			var type = $(this).closest(".settings-page").find(".settings-sidebar li.active").attr("data-selector")
-			console.log(type)
+
 			settings.type = type;
-			console.log(settings.type)
-			fn()
+
+			fn(type)
 		})
 	}
 
@@ -232,6 +252,17 @@ function Profile(){
 	}
 }
 
+function ifExists(element){
+
+	if(!( element && element.val() )){
+		element.next('.error').text(errorResponses['missing'+element.attr('name')]).removeClass("hidden");
+		focusOnElement(element)
+		return false;
+	}
+	eraseError(element)
+	return true;
+}
+
 function checkEmail(element) {
 	if(!element.val()){
 		return true
@@ -245,6 +276,30 @@ function checkEmail(element) {
 		eraseError(element)
 	}
 	return true;
+}
+
+function checkPassword(one, two){
+	if(!(one.val() && two.val())) {
+		return true
+	}
+	if(!ifBothMatches(one.val(), two.val())){
+		two.next('.error').text(errorResponses['passwordMismatch']).removeClass("hidden")
+		return false
+	}
+	eraseError(element)
+	return true
+}
+
+function checkMinCharacters(ele, len) {
+	if(!ele.val()) {
+		return true
+	}
+	if(!checkCharacters(ele.val().length, len)) {
+		ele.next('.error').text(errorResponses['minLength'+ele.attr('name')])
+		return false
+	}
+	eraseError(ele)
+	return true
 }
 
 function checkUrl(element) {

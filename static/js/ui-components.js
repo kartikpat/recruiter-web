@@ -23,7 +23,6 @@ jQuery(".pill-button input").on('blur', function() {
 
 jQuery(".pill-button input").on('keyup', function(e) {
 	var searchString = jQuery(this).val();
-
 	if(jQuery(this).closest(".tag-container").attr("data-enable-custom") && jQuery(this).closest(".tag-container").attr("data-enable-custom") == "true") {
 		jQuery(this).siblings(".pill-listing").find("li[data-value=custom]").text(searchString);
 	}
@@ -40,7 +39,6 @@ jQuery(".pill-button input").on('keyup', function(e) {
 	} else {
 		jQuery(".pill-listing ul").removeClass("hidden");
 	}
-
 
 	jQuery(this).siblings(".pill-listing").find("li[data-value=custom]").addClass("hidden");
 });
@@ -85,8 +83,7 @@ jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function
 	var _this = $(this);
 	var visibleItems = _this.siblings(".pill-listing").find("li:visible").not('.disabled')
 	var closestTag = jQuery(this).closest(".tag-container");
-	
-	
+
 	switch(e.which){
 		case 38:
 			var previousItem = selectedItem.prevAll("li:visible").not('.disabled').first();
@@ -110,16 +107,29 @@ jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function
 				selectedItem.removeClass('selected');
 			}
 			_this.siblings(".pill-listing").find("ul").scrollTop(0)
-			_this.siblings(".pill-listing").find("ul").scrollTop(nextItem.position().top);	
+			_this.siblings(".pill-listing").find("ul").scrollTop(nextItem.position().top);
 			break;
 		case 13:
 				if(closestTag.attr("data-enable-custom") && closestTag.attr("data-enable-custom") == "true") {
-					var value = (_this.val()).trim() || selectedItem.text()
+					var value = (_this.val()).trim();
+					var dataValue = selectedItem.attr("data-value");
+					if(selectedItem.length>0){
+						value = selectedItem.text();
+					}
+					else{
+						visibleItems.each(function(i, el){
+
+							if($(el).text().toLowerCase()==value.toLowerCase()){
+								dataValue = $(el).attr('data-value');
+								return false;
+							}
+						})
+					}
 					if(!value) {
 						return
 					}
 					if(checkMaxTags(listItems.closest(".tag-container"))){
-							addNewTag(value, selectedItem.attr("data-value"),_this.closest(".tag-container"));
+							addNewTag(value, dataValue,_this.closest(".tag-container"));
 						}
 				} else {
 					if(selectedItem.length) {
