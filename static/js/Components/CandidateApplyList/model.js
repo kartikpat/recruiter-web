@@ -3,7 +3,7 @@ function candidateList() {
     var settings = {};
     var config = {};
 
-    function init(profile){
+    function init(profile, baseUrl){
         settings.rowContainer= $('.candidateListing'),
         settings.header= $('#jobDetails'),
         settings.candidateRowClass= ".candidateRow",
@@ -49,7 +49,9 @@ function candidateList() {
         settings.bulkBackIcon = $(".bulkBackIcon"),
         settings.secondMassActionContainer = $("#secondMassActionContainer");
         settings.totalApplicationsCount = 0;
-        settings.emptyView = $(".empty-screen")
+        settings.emptyView = $(".empty-screen");
+        settings.recommendationLinkClass = $(".recommendationsLink");
+        settings.baseUrl = baseUrl;
         onClickBulkDownArrow()
         onClickMassCheckbox()
         onClickCandidateOtherActions()
@@ -59,6 +61,7 @@ function candidateList() {
         onClickMassComment()
         onChangebulkCheckbox()
         onClickCoverLetterLink()
+        onClickRecommendationLink()
         onClickActionListItems()
 
         onClickBulkBackIcon()
@@ -133,8 +136,14 @@ function candidateList() {
     }
 
     function onClickCoverLetterLink() {
-        settings.rowContainer.on('click', settings.coverLetterLinkClass, function(e){
+        settings.rowContainer.on('click', settings.coverLetterLinkClass, function(e) {
             settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 2});
+        })
+    }
+
+    function onClickRecommendationLink() {
+        settings.rowContainer.on('click', settings.recommendationLinkClass, function(e) {
+            // settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 2});
         })
     }
 
@@ -197,6 +206,7 @@ function candidateList() {
             downloadResumeButton: card.find(settings.candidateDownloadResumeButton),
             interviewinvite: card.find(".interviewinvite"),
             coverLetterLink: card.find(".coverLetterLink"),
+            recommendationsLink: card.find(".recommendationsLink"),
             viewCommentLink: card.find(".commentLink"),
             viewTagLink: card.find(".tagLink")
 		}
@@ -246,7 +256,8 @@ function candidateList() {
         item.shortlistButton.attr("data-action", 1);
         item.rejectButton.attr("data-action", 2);
         item.savedButton.attr("data-action", 3);
-        item.downloadResumeButton.attr("data-href", aData["resume"])
+
+        item.downloadResumeButton.attr("data-href", baseUrl + aData["resume"])
         item.downloadResumeButton.attr("download", aData["name"].replace(/ +/g, '_')+'_resume.pdf')
         var status = aData["status"];
         item.shortlistButton.attr("data-status", status);
@@ -328,6 +339,9 @@ function candidateList() {
         // }
         if(aData["cover"]) {
             item.coverLetterLink.removeClass("hidden")
+        }
+        if(aData["recommendation"] && aData["recommendation"].length > 0) {
+            item.recommendationsLink.removeClass("hidden")
         }
         var flag=0;
         if(aData["comment"]) {

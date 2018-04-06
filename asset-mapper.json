@@ -207,7 +207,9 @@
 				"static/js/Utilities/toastNotifier.js",
 				"static/js/Services/buyPlan.js",
 				"static/js/Components/Header/model.js",
-				"static/js/Components/Header/index.js"
+				"static/js/Components/Header/index.js",
+				"static/js/Components/RecruiterPlan/model.js",
+				"static/js/Components/RecruiterPlan/index.js"
 
 			],
 			"prod" : [

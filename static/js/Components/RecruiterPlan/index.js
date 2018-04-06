@@ -1,7 +1,10 @@
 jQuery(document).ready( function() {
 
-	if(localStorage.getItem("jobPostSuccessMessage") != null) {
-		toastNotify(1, localStorage.getItem("jobPostSuccessMessage"))
-		localStorage.removeItem("jobPostSuccessMessage");
-	}
-}
+	var plan = Plans();
+	plan.init()
+	plan.onClickBuyPlan(function(planType){
+		alert(planType)
+		return
+		buyPlan(recruiterId, jobId, "comment" , applicationId, ob);
+	})
+})
