@@ -329,16 +329,17 @@ function Filters(){
 	}
 
 	function onClickSearchButton(fn){
+		var orderBySelect = filtersTarget["orderBy"]["target"]
 		settings.searchButton.click(function(event){
 
 			var str = (filtersTarget["searchString"]["target"].val()).trim();
 
-			// if(str == '') {
-			// 	return settings.searchCandidateError.removeClass("hidden")
-			// }
-			// else {
-			// 	settings.searchCandidateError.addClass("hidden")
-			// }
+			if(str == '') {
+				orderBySelect.removeClass("hidden")
+			}
+			else {
+				orderBySelect.addClass("hidden")
+			}
 			filtersTarget["searchString"]["selection"] = str;
 			fn();
 		})
@@ -347,8 +348,11 @@ function Filters(){
 
             if (event.which == 13) {
 				var str = (filtersTarget["searchString"]["target"].val()).trim();
-				if(!str) {
-					return
+				if(str == '') {
+					orderBySelect.removeClass("hidden")
+				}
+				else {
+					orderBySelect.addClass("hidden")
 				}
 				filtersTarget["searchString"]["selection"] = str;
                 fn();
@@ -725,7 +729,7 @@ function Filters(){
 	function showResultsFound(totalFound) {
 		if(filtersTarget["searchString"]["selection"]) {
 			settings.resultFoundText.text(totalFound + " results found for " + filtersTarget["searchString"]["selection"]).removeClass("hidden");
-			if(totalFound && totalFound == 0) {
+			if(totalFound == 0) {
 				$('.user-text').text('No applications for searched keyword');
 				$('.empty-text').text("We couldn't find any results for the searched keyword.");
 				settings.emptyView.removeClass('hidden');
@@ -733,7 +737,7 @@ function Filters(){
 			}
 		}
 		settings.resultFoundText.text(totalFound + " results found for applied filters").removeClass("hidden");
-		if(totalFound && totalFound == 0) {
+		if(totalFound == 0) {
 			$('.user-text').text('We couldn’t find any matches for the selected filter.');
 			$('.empty-text').text('Please try using a different filter');
 			settings.emptyView.removeClass('hidden');

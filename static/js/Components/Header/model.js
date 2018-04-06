@@ -117,14 +117,14 @@ function Header(){
 
 	function resumeModal(profile){
 		settings.searchResume.on('click',function(){
-			if(profile.search && profile.search == 1) {
+			if(profile.search && parseInt(profile.search) == 1) {
 				return window.location.href = 'https://search.iimjobs.com'
 			}
 			addBodyFixed()
 			$('.resumeModal').removeClass('hidden');
 			return false
 		})
-	} 
+	}
 
 
 
