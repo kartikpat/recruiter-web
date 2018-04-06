@@ -251,16 +251,18 @@
 
 
         						<div class="content-block comments mob mobCandidateCommentContainer">
-        	            			<h3 class="content-heading">Comment</h3>
+									<h3 class="content-heading">Comment</h3>
+									<!-- <div class="comment-box">
+											<textarea id="" class="comment-textarea" readonly=""></textarea>
+									</div> -->
         	            			<div class="content">
         								<textarea  placeholder="Add Comment" name="name" class="mobCandidateCommentTextarea"></textarea>
         								<div class="action-buttons">
-        									<span class="cand-comment-button button green mobCandidateAddCommentButton">Add</span>
+											<span class="cand-comment-button button green mobCandidateAddCommentButton">Add</span>
+											<span class="editbutton candidateAddEditButton">Edit Comment</span>
         								</div>
         	            			</div>
         	            		</div>
-
-
 
         						<div class="content-block tags mob mobCandidateTagContainer">
         	            			<h3 class="content-heading">Tags</h3>
@@ -331,16 +333,30 @@
             			<li class="save"><span class="icon"><i class="icon-star"></i></span>Share Resume</li>
             			<li class="invite"><span class="icon"><i class="icon-interview"></i></span>Report this candidate</li>
             		</ul> -->
-            	</div>
+				</div>
+				<div class="sidebar-section contact-info">
+						<h3>Contact Information</h3>
+						<span class="icon"><i class="icon-telephone"></i></span>
+						<span class="contact"></span>
+						<span class="icon"><i class="icon-tick_circle"></i></span>
+						<br>
+						<span class="icon"><i class="icon-mail"></i></span>
+						<span class="email-address"></span>	
+						<span class="icon"><i class="icon-tick_circle"></i></span>
+					</div>
 
             	<div class="sidebar-section comments candidateCommentContainer">
-            		<h3>Comment</h3>
-            		<div class="">
+					<h3>Comment</h3>
+					<div class="comment-box">
+							<textarea id="" class="comment-textarea hidden" readonly=""></textarea>
+					</div>
+            		<div class="comment-container">
         				<textarea id="" placeholder="Add Comment" name="name" class="candidateCommentTextarea"></textarea>
             		</div>
         			<div class="action-buttons">
         				<span class="cand-comment-button button green candidateAddCommentButton">Add</span>
-        			</div>
+						<span class="editbutton candidateAddEditButton hidden">Edit Comment</span>
+					</div>
             	</div>
 
             	<div class="sidebar-section tags candidateTagContainer">

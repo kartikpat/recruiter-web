@@ -117,7 +117,7 @@ function Candidate() {
             location: modal.find(".js_loc"),
             preferredLocation: modal.find(".js_pref_loc"),
             experience: modal.find(".js_experience"),
-            contact: modal.find(".js_contact"),
+            // contact: modal.find(".js_contact"),
             salary: modal.find(".js_sal"),
             skillsList: modal.find(".js_skills_list"),
             candidateTagList: modal.find(settings.candidateTagListClass),
@@ -144,7 +144,12 @@ function Candidate() {
             iitScore: modal.find(".js_iit"),
             gmatScore: modal.find(".js_gmat"),
             coverLetter: modal.find(".js_cover_letter"),
+
             recommendationList: modal.find('.recommendationList'),
+
+            contact:modal.find('.contact'),
+            email:modal.find('.email-address'),
+
             tag: modal.find(".candidateTagInput"),
             mobTag: modal.find(".mobCandidateTagInput"),
             seeMoreRec: modal.find(".seeMoreRec"),
@@ -225,6 +230,7 @@ function Candidate() {
         }
         item.preferredLocation.text(preferredLocationStr);
         item.contact.text(aData["phone"] || "NA");
+        item.email.text(aData["email"]||"NA");
         item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY') || "NA")
         if(aData["notice"] == 7) {
             item.notice.text("Immediately Available");

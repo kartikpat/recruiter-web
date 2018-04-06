@@ -239,7 +239,7 @@
 
 /* '' */
 .icon-mail:before {
-  content: '\e830'; }
+  content: '\e820'; }
 
 /* '' */
 .icon-user:before {
@@ -298,6 +298,15 @@
 
 .icon-star-2::before {
   content: '\e815'; }
+
+.icon-tick_circle::before {
+  content: '\e83b'; }
+
+.icon-afternoon::before {
+  content: '\e840'; }
+
+.icon-sunset::before {
+  content: '\e83e'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -813,7 +822,7 @@ span.sticker {
 
 /* '' */
 .icon-mail:before {
-  content: '\e830'; }
+  content: '\e820'; }
 
 /* '' */
 .icon-user:before {
@@ -872,6 +881,15 @@ span.sticker {
 
 .icon-star-2::before {
   content: '\e815'; }
+
+.icon-tick_circle::before {
+  content: '\e83b'; }
+
+.icon-afternoon::before {
+  content: '\e840'; }
+
+.icon-sunset::before {
+  content: '\e83e'; }
 
 .left {
   float: left; }
@@ -1007,7 +1025,8 @@ a {
   bottom: 0;
   width: 75%;
   background: #26252a;
-  z-index: 7; }
+  z-index: 7;
+  min-height: 100%; }
   .mobile-menu-container .close-mobile-menu {
     padding: 10px;
     cursor: pointer; }
@@ -1016,8 +1035,7 @@ a {
       font-size: 14px; }
   .mobile-menu-container .mobile-menu-content {
     padding: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
     height: 100%; }
     .mobile-menu-container .mobile-menu-content .domain_logo {
       padding: 15px 25px; }
@@ -1060,6 +1078,16 @@ a {
         .mobile-menu-container .mobile-menu-content .menu-link-listing ul a li {
           padding: 19px 25px;
           border-top: 1px solid #2E2E2E; }
+          .mobile-menu-container .mobile-menu-content .menu-link-listing ul a li .icon-right_arrow:before {
+            content: '\e812';
+            font-size: 12px;
+            color: #888;
+            float: right;
+            line-height: 19px; }
+          .mobile-menu-container .mobile-menu-content .menu-link-listing ul a li .icon-back_icon:before {
+            content: '\e82b';
+            font-size: 12px;
+            color: #888; }
       .mobile-menu-container .mobile-menu-content .menu-link-listing ul .my-jobs-menu {
         padding-left: 40px;
         padding-top: 30px; }
@@ -1072,10 +1100,12 @@ a {
       vertical-align: middle; }
       .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-image {
         display: inline-block;
-        width: 20%; }
+        width: 20%;
+        border-radius: 50px; }
         .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-image img {
           width: 37px;
-          height: 37px; }
+          height: 37px;
+          border-radius: 50px; }
       .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-info {
         display: inline-block;
         width: 80%;
@@ -1371,7 +1401,7 @@ a {
 
 /* '' */
 .icon-mail:before {
-  content: '\e830'; }
+  content: '\e820'; }
 
 /* '' */
 .icon-user:before {
@@ -1430,6 +1460,15 @@ a {
 
 .icon-star-2::before {
   content: '\e815'; }
+
+.icon-tick_circle::before {
+  content: '\e83b'; }
+
+.icon-afternoon::before {
+  content: '\e840'; }
+
+.icon-sunset::before {
+  content: '\e83e'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -1975,7 +2014,7 @@ span.sticker {
 
 /* '' */
 .icon-mail:before {
-  content: '\e830'; }
+  content: '\e820'; }
 
 /* '' */
 .icon-user:before {
@@ -2034,6 +2073,15 @@ span.sticker {
 
 .icon-star-2::before {
   content: '\e815'; }
+
+.icon-tick_circle::before {
+  content: '\e83b'; }
+
+.icon-afternoon::before {
+  content: '\e840'; }
+
+.icon-sunset::before {
+  content: '\e83e'; }
 
 /*[Recruiter_Homepage]*/
 /*[/Recruiter_Homepage]*/
@@ -2275,7 +2323,7 @@ span.sticker {
 
 /* '' */
 .icon-mail:before {
-  content: '\e830'; }
+  content: '\e820'; }
 
 /* '' */
 .icon-user:before {
@@ -2334,6 +2382,15 @@ span.sticker {
 
 .icon-star-2::before {
   content: '\e815'; }
+
+.icon-tick_circle::before {
+  content: '\e83b'; }
+
+.icon-afternoon::before {
+  content: '\e840'; }
+
+.icon-sunset::before {
+  content: '\e83e'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */

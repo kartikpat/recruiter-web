@@ -1,4 +1,5 @@
 function fetchJobs(parameters, recruiterId){
+	console.log(parameters);
 	if(!parameters.type)
 		parameters.type='all';
 	return getRequest(baseUrl+"/recruiter/"+recruiterId+"/jobs", parameters, function(res){

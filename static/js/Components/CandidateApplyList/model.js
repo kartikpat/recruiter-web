@@ -49,9 +49,12 @@ function candidateList() {
         settings.bulkBackIcon = $(".bulkBackIcon"),
         settings.secondMassActionContainer = $("#secondMassActionContainer");
         settings.totalApplicationsCount = 0;
-        settings.emptyView = $(".empty-screen");
         settings.recommendationLinkClass = $(".recommendationsLink");
         settings.baseUrl = baseUrl;
+
+        settings.emptyView = $(".empty-screen"),
+        settings.contactMenu=$('.contact-menu'),
+        settings.contactMenubutton=$('.contactMenubutton');
         onClickBulkDownArrow()
         onClickMassCheckbox()
         onClickCandidateOtherActions()
@@ -63,14 +66,15 @@ function candidateList() {
         onClickCoverLetterLink()
         onClickRecommendationLink()
         onClickActionListItems()
-
+        contactMenu()
         onClickBulkBackIcon()
 
         $(window).click(function(event) {
     		$(settings.candidateOtherActionsClass).addClass('inactive');
             $(settings.bulkActionsDropdown).addClass("hidden")
-    	});
-
+            settings.contactMenu.addClass('hidden')
+        });
+         
         settings.bulkActionsDropdown.click(function(e){
             e.stopPropagation()
         })
@@ -179,7 +183,19 @@ function candidateList() {
 
 	function setConfig(key, value) {
 		config[key] = value;
-	}
+    }
+    
+    function contactMenu(){
+        settings.contactMenubutton.on('click',function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            settings.contactMenu.removeClass('hidden')
+        })
+        settings.contactMenu.click(function(e){
+            e.stopPropagation();
+        });
+      
+    }
 
     function getElement(id) {
 		var card = $(""+settings.candidateRowClass+".prototype").clone().removeClass('prototype hidden')
@@ -993,6 +1009,7 @@ function candidateList() {
         changeStatus: changeStatus,
         populateCheckInputDropdown: populateCheckInputDropdown,
         getApplicationsLength: getApplicationsLength,
-        hideEmptyScreen: hideEmptyScreen
+        hideEmptyScreen: hideEmptyScreen,
+        contactMenu:contactMenu
 	}
 }

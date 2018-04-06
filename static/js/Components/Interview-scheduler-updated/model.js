@@ -372,7 +372,8 @@ function Calendar(){
             }
             //settings.checkbox.toggleClass('allChecked');
             //settings.select_menu.find('option').prop('disabled', false);     
-            getslots();
+            var slots=getslots();
+            testHighlight(slots.fromDate,slots.toDate,slots.highlightSlots);
            
         })
     }

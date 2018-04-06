@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	$('.slider').slick({
-		prevArrow: '<img class="left-arrow" src="/static/images/left-arrow.png">',
-		nextArrow: '<img class="right-arrow" src="/static/images/right-arrow.png">'
+		prevArrow: '<img class="left-arrow" src="/static/images/back.svg">',
+		nextArrow: '<img class="right-arrow" src="/static/images/forward.svg">'
 	});
 })

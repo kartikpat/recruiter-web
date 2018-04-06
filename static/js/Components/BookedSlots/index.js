@@ -18,7 +18,7 @@ jQuery(document).ready( function() {
        globalParameters.pageNumber = 1;
        parameters.pageNumber= globalParameters.pageNumber;
        parameters.pageContent= globalParameters.pageContent;
-    //    parameters.from=slots.getStartDate();
+       parameters.fromDate=slots.getStartDate();
        slots.emptySlots();
        if(calendarId != -1) {
            parameters.calendarId = calendarId;
@@ -26,17 +26,18 @@ jQuery(document).ready( function() {
        fetchInterviews(recruiterId, parameters);
    })
 
-   slots.onClickSubmitCancelInterview(function(jobId, reason){
-       slots.closeModal()
-       slots.showLoaderOverlay()
-       return submitUnpublishJob(recruiterId, jobId, {reasonId: reason});
-   });
+//    slots.onClickSubmitCancelInterview(function(jobId, reason){
+//        slots.closeModal()
+//     //    slots.showLoaderOverlay()
+//        return submitUnpublishJob(recruiterId, jobId, {reasonId: reason});
+//    });
 
     function onChangeDate(){
        var parameters = {};
+       globalParameters.pageNumber = 1;
        parameters.pageNumber= globalParameters.pageNumber;
        parameters.pageContent= globalParameters.pageContent;
-       parameters.from=slots.getStartDate();
+       parameters.fromDate=slots.getStartDate();
        if(calendarId != -1) {
              parameters.calendarId = calendarId;
        }
@@ -73,9 +74,9 @@ jQuery(document).ready( function() {
 
    }
 
-
    function onInterviewsFetchSuccess(topic, data){
         tickerLock = false;
+        slots.hideLoaderOverlay();
         console.log(data);
         globalParameters.InterviewListLength = data.length;
         slots.addToList(data,globalParameters.pageNumber,globalParameters.pageContent);

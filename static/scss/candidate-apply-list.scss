@@ -1911,7 +1911,15 @@ input::-webkit-input-placeholder {
 				vertical-align: middle;
 				line-height: 10px;
 			 }
-
+			 .email-address{
+				 font-size: 14px;
+			 }
+			 .contact{
+				 font-size: 14px;
+			 }
+			 .icon-tick_circle{
+				 color: green;
+			 }
     		.comment-block {
 				margin-bottom:15px;
     			.content {
@@ -1997,10 +2005,19 @@ input::-webkit-input-placeholder {
 			border-radius: 8px;
 		    background:$color-white;
 		    box-shadow:0 0 10px rgba(0,0,0,0.2);
-
+			.contact-menu{
+				.contact-info{
+					bottom: 65px;
+					background: rgba(128, 128, 128, 0.85);
+					position: fixed;
+					width: 78%;
+					z-index: 10;
+					padding: 8px 20px;
+					color: #fff;
+				}
+			}
 		    .fold {
 		    	position: fixed;
-
 			    right: 0;
 			    width: 85%;
 			    padding:20px;
@@ -2037,7 +2054,13 @@ input::-webkit-input-placeholder {
 							padding-left:0;
 							padding-right:0;
 						}
+						.icon-info:before {
+							content: '\e821';
+							color: black;
+							font-size: 21px;
+						}
 					}
+
 				}
 		    }
 		}
@@ -2146,6 +2169,7 @@ input::-webkit-input-placeholder {
 		    box-shadow:0 0 10px rgba(0,0,0,0.2);
 			border-radius: 8px;
 
+			
 		    .fold {
 		    	position: fixed;
 

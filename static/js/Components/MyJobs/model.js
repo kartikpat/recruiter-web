@@ -278,6 +278,7 @@ function Jobs() {
 		if(aData["premium"]) {
 			item.premium.find('.icon-star').addClass('hidden');
 			item.premium.find('.icon-star-2').removeClass("hidden");
+			item.premium.attr('title','Premium Job');
 
 		}
 

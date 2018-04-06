@@ -73,9 +73,9 @@
 			</div>
 			<div class="navigation header_item animated fadeIn navigationHeader">
 				<ul class="menu-listing">
-					<li class="menu-list-item dashboard"><a href="/">Dashboard</a></li>
+					<li class="menu-list-item dashboard"><a class="header-links" href="/">Dashboard</a></li>
 					<li class="menu-list-item my-jobs">
-						<a >Jobs</a>
+						<a class="header-links">Jobs</a>
 						<i class="icon-down_arrow"></i>
 						<div class="profile-menu">
 							<div class="profile-body">
@@ -89,10 +89,10 @@
 						</div>
 					</li>
 
-					<li class="menu-list-item search-resume"><a href="#">Search Resume</a></li>
+					<li class="menu-list-item search-resume"><a class="header-links" href="#">Search Resume</a></li>
 
 					<li class="menu-list-item my-interviews">
-						<a>Interviews</a>
+						<a class="header-links">Interviews</a>
 						<i class="icon-down_arrow"></i>
 						<div class="profile-menu inmenu">
 							<div class="profile-body">
@@ -103,7 +103,7 @@
 							</div>
 						</div>
 					</li>
-					<li class="menu-list-item reports"><a href="/reports">Reports</a></li>
+					<li class="menu-list-item reports"><a class="header-links" href="/reports">Reports</a></li>
 				</ul>
 			</div>
 			<div class="profile_actions right header_item profileActions">
@@ -113,9 +113,9 @@
 				</div>
 				<div class="messages action-icon msgAction">
 					<a href="/my-chat">
-						<!-- <i class="icon-chat_icon"></i> -->
-						<img src="/static/images/chat_icon.svg">
-					</a>
+						<div class="chat-icon"><i class="icon-chat_icon"></i></div>
+					</a>	
+						<!-- <img src="/static/images/chat_icon.svg"> -->
 				</div>
 				<div class="notifications action-icon hidden">
 					<img src="/static/images/notification_icon.svg">
@@ -162,9 +162,9 @@
 		    <div class="menu-link-listing mobile-menu-item menu-section">
 		    	<ul>
 		    		<a href="/"><li class="menu-list-item my-jobs">Dashboard</li></a>
-		    		<a href="#"><li class="menu-list-item my-jobs sub-menu">Jobs</li></a>
+		    		<a href="#"><li class="menu-list-item my-jobs sub-menu">Jobs<i class="icon-right_arrow"></i></li></a>
 					<a href=""><li class="menu-list-item search-resume">Search Resume</li></a>
-					<a href="#"><li class="menu-list-item interviews">Interviews</li></a>
+					<a href="#"><li class="menu-list-item interviews">Interviews<i class="icon-right_arrow"></i></li></a>
 					<a href="/reports"><li class="menu-list-item reports">Reports</li></a>
 		    	</ul>
 			</div>
@@ -181,7 +181,7 @@
 
 			<div class="mobile-profile-actions mobile-menu-item menu-section">
 				<ul class="profile-item-listing">
-					<li>Basic Account <span class="white">Unlimited Posting</span></li></a>
+					<a><li>Basic Account <span class="white">Unlimited Posting</span></li></a>
 					<a href="/settings"><li class="settings">Account Settings</li></a>
 					<a href=""><li class="recruiterLogout">Logout</li></a>
 				</ul>
@@ -189,7 +189,7 @@
 
 			<div class="MyJobs menu-link-listing mobile-menu-item hidden">
 				<ul>
-					<a href="#"><li class="my-jobs-menu-back">Back</li></a>
+					<a href="#"><li class="my-jobs-menu-back"><i class="icon-back_icon"></i>Back</li></a>
 					<a href="/my-jobs"><li class="my-jobs-menu">My Jobs</li></a>
 					<a href="/post-job"><li class="my-jobs-menu">Post Job</li></a>
 					<a href="/recruiter/tagged-candidates"><li class="my-jobs-menu">Tagged Candidates</li></a>
@@ -199,7 +199,7 @@
 
 			<div class="interview-view menu-link-listing mobile-menu-item hidden">
 					<ul>
-						<a href="#"><li class="my-jobs-menu-back">Back</li></a>
+						<a href="#"><li class="my-jobs-menu-back"><i class="icon-back_icon"></i>Back</li></a>
 						<a href="/calendar-manage"><li class="my-jobs-menu">Manage Calendar</li></a>
 						<a href="/booked-slots"><li class="my-jobs-menu">Booked Slots</li></a>
 					</ul>
