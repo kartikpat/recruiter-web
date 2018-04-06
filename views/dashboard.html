@@ -14,6 +14,7 @@
                     <div class="block-container" id="dashboardStatsContainer">
                         <div class="block activeJobs">
                             <div class="stats">
+                                <!-- <div class="loading"></div> -->
                                 <div class="number">0</div>
                                 <div class="legend">Active Jobs</div>
                             </div>
@@ -305,10 +306,11 @@
                 </div>
             </div>
         </div>
+        <div class="conversations right">
+                {{>chatSidebar}}
+            </div>
     </div>
-  <div class="conversations right">
-      {{>chatSidebar}}
-  </div>
+ 
 </div>
 <div class="feed-row prototype hidden jobRow" >
     <div class="main-content">

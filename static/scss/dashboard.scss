@@ -48,10 +48,11 @@ $button-border-color: #8f8a8a;
 	// }
 
 	.main-wrapper{
-		@include main-wrapper;
 	}
 	.main-container{
-		@include main-container;
+	    width: 80%;
+		margin: 0 auto;
+		float: left;
 	}
 	.container{
 		@include container;
@@ -76,6 +77,38 @@ $button-border-color: #8f8a8a;
 			margin-top: 35px;
 			height: 60px;
 			max-width: 150px;
+				 .loading {
+					background: transparent;
+					width: 2em;
+					height: 2em;
+					position: relative;
+					margin: 0 auto;
+				  }
+				   .loading:after {
+					display: block;
+					content: "";
+					border-radius: 50%;
+					height: 2px;
+					width: 2px;
+					position: absolute;
+					margin: auto;
+					left: 0;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					box-shadow: 10px 0 0 2px #333, 7px 7px 0 2px #999, 0 10px 0 2px #999, -7px 7px 0 2px #999, -10px 0 0 2px #999, -7px -7px 0 2px #999, 0 -10px 0 2px #333, 7px -7px 0 2px #111;
+					-webkit-animation: rotate 0.7s steps(8) infinite;
+					-o-animation: rotate 0.7s steps(8) infinite;
+					animation: rotate 0.7s steps(8) infinite;
+				  }
+				  @keyframes rotate {
+					from {
+					  transform: rotate(0deg);
+					}
+					to {
+					  transform: rotate(360deg);
+					}
+				  }
 			.number{
 				color: $green;
 				font-size: 34px;
@@ -151,7 +184,7 @@ $button-border-color: #8f8a8a;
 				font-size: 20px;
 				color: $green;
 				font-weight:400;
-				margin-left: -10px;
+				margin-left: 0px;
 				.icon-sunrise:before {
 					font-size: 40px;
 					line-height: 20px;
@@ -601,9 +634,13 @@ $button-border-color: #8f8a8a;
 		.conversations{
 	    	display: none;
 	    }
-	    .main-wrapper{
-	    	width: 100%;
-	    }
+	    	.main-wrapper{
+	    		width: 100%;
+				.main-container{
+					width: 100%;
+				}	
+			}
+		
 	}
 }
 

@@ -1538,13 +1538,10 @@ span.sticker {
         .page-content .page-header .action-buttons button.edit img {
           width: 17px;
           height: 17px; }
-  .page-content .main-wrapper {
-    width: 80%;
-    float: left; }
   .page-content .main-container {
+    width: 80%;
     margin: 0 auto;
-    width: 100%;
-    max-width: 1200px; }
+    float: left; }
   .page-content .container {
     width: 100%;
     margin-bottom: 40px; }
@@ -1568,6 +1565,34 @@ span.sticker {
       margin-top: 35px;
       height: 60px;
       max-width: 150px; }
+      .page-content .block .stats .loading {
+        background: transparent;
+        width: 2em;
+        height: 2em;
+        position: relative;
+        margin: 0 auto; }
+      .page-content .block .stats .loading:after {
+        display: block;
+        content: "";
+        border-radius: 50%;
+        height: 2px;
+        width: 2px;
+        position: absolute;
+        margin: auto;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        box-shadow: 10px 0 0 2px #333, 7px 7px 0 2px #999, 0 10px 0 2px #999, -7px 7px 0 2px #999, -10px 0 0 2px #999, -7px -7px 0 2px #999, 0 -10px 0 2px #333, 7px -7px 0 2px #111;
+        -webkit-animation: rotate 0.7s steps(8) infinite;
+        -o-animation: rotate 0.7s steps(8) infinite;
+        animation: rotate 0.7s steps(8) infinite; }
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
       .page-content .block .stats .number {
         color: #149075;
         font-size: 34px;
@@ -1623,7 +1648,7 @@ span.sticker {
         font-size: 20px;
         color: #149075;
         font-weight: 400;
-        margin-left: -10px; }
+        margin-left: 0px; }
         .page-content .dashboard .header-row .heading .icon-sunrise:before {
           font-size: 40px;
           line-height: 20px;
@@ -1956,7 +1981,9 @@ span.sticker {
   .page-content .conversations {
     display: none; }
   .page-content .main-wrapper {
-    width: 100%; } }
+    width: 100%; }
+    .page-content .main-wrapper .main-container {
+      width: 100%; } }
 
 @media all and (max-width: 768px) {
   .page-content {
