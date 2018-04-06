@@ -358,6 +358,12 @@
 .icon-tick_circle::before {
   content: '\e83b'; }
 
+.icon-afternoon::before {
+  content: '\e840'; }
+
+.icon-sunset::before {
+  content: '\e83e'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -935,6 +941,12 @@ span.sticker {
 .icon-tick_circle::before {
   content: '\e83b'; }
 
+.icon-afternoon::before {
+  content: '\e840'; }
+
+.icon-sunset::before {
+  content: '\e83e'; }
+
 .left {
   float: left; }
 
@@ -1507,6 +1519,12 @@ a {
 
 .icon-tick_circle::before {
   content: '\e83b'; }
+
+.icon-afternoon::before {
+  content: '\e840'; }
+
+.icon-sunset::before {
+  content: '\e83e'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */

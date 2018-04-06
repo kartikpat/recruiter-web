@@ -1,25 +1,32 @@
 .page-content {
   min-height: 600px;
   padding: 20px;
-  background-image: url("/static/images/footer-background.png");
-  background-size: 100%;
-  background-position: center bottom;
-  background-repeat: no-repeat; }
+  background-color: #f7f7f7; }
   .page-content .main-wrapper {
     width: 100%;
     max-width: 1440px;
     margin: 0 auto; }
-    .page-content .main-wrapper .main-container .leftnav .pd20 .mt0 {
-      color: #5d5d5d; }
-    .page-content .main-wrapper .main-container .leftnav .pd20 .txt15 {
-      margin-top: 15px;
-      margin-bottom: 15px;
-      font-size: 15px; }
-      .page-content .main-wrapper .main-container .leftnav .pd20 .txt15 i {
-        font-weight: bold; }
-    .page-content .main-wrapper .main-container .leftnav p {
-      margin: 0 0 15px;
-      font-size: 14px; }
-    .page-content .main-wrapper .main-container .leftnav .mt20 {
-      margin-top: 20px;
-      margin-bottom: 20px; }
+    .page-content .main-wrapper .main-container {
+      border-radius: 7px;
+      border-style: solid;
+      border-width: 1px;
+      border-color: #e8e8e8;
+      box-sizing: border-box;
+      background-color: #FFF;
+      box-shadow: 0px 2px 9px 0px rgba(214, 214, 214, 0.3);
+      width: 100%;
+      padding: 20px; }
+      .page-content .main-wrapper .main-container .leftnav .pd20 .mt0 {
+        color: #5d5d5d; }
+      .page-content .main-wrapper .main-container .leftnav .pd20 .txt15 {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-size: 15px; }
+        .page-content .main-wrapper .main-container .leftnav .pd20 .txt15 i {
+          font-weight: bold; }
+      .page-content .main-wrapper .main-container .leftnav p {
+        margin: 0 0 15px;
+        font-size: 14px; }
+      .page-content .main-wrapper .main-container .leftnav .mt20 {
+        margin-top: 20px;
+        margin-bottom: 20px; }

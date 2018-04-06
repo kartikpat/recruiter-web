@@ -48,10 +48,11 @@ $button-border-color: #8f8a8a;
 	// }
 
 	.main-wrapper{
-		@include main-wrapper;
 	}
 	.main-container{
-		@include main-container;
+	    width: 80%;
+		margin: 0 auto;
+		float: left;
 	}
 	.container{
 		@include container;
@@ -76,6 +77,38 @@ $button-border-color: #8f8a8a;
 			margin-top: 35px;
 			height: 60px;
 			max-width: 150px;
+				 .loading {
+					background: transparent;
+					width: 2em;
+					height: 2em;
+					position: relative;
+					margin: 0 auto;
+				  }
+				   .loading:after {
+					display: block;
+					content: "";
+					border-radius: 50%;
+					height: 2px;
+					width: 2px;
+					position: absolute;
+					margin: auto;
+					left: 0;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					box-shadow: 10px 0 0 2px #333, 7px 7px 0 2px #999, 0 10px 0 2px #999, -7px 7px 0 2px #999, -10px 0 0 2px #999, -7px -7px 0 2px #999, 0 -10px 0 2px #333, 7px -7px 0 2px #111;
+					-webkit-animation: rotate 0.7s steps(8) infinite;
+					-o-animation: rotate 0.7s steps(8) infinite;
+					animation: rotate 0.7s steps(8) infinite;
+				  }
+				  @keyframes rotate {
+					from {
+					  transform: rotate(0deg);
+					}
+					to {
+					  transform: rotate(360deg);
+					}
+				  }
 			.number{
 				color: $green;
 				font-size: 34px;
@@ -119,6 +152,21 @@ $button-border-color: #8f8a8a;
 				}
 			}
 		}
+		.seeMoreSection{
+			text-align: center;
+			.see-all{
+				a{
+					color: #737373;
+					font-size: 13px;
+					line-height: 18px;
+					margin-bottom: 5px;
+				}
+				icon-right_arrow:before {
+					content: '\e812';
+					font-size: 12px;
+				}
+			}
+		}
 	}
 	.dashboard{
 		border-radius: 6px;
@@ -126,7 +174,8 @@ $button-border-color: #8f8a8a;
 	    border-width: 1px;
 	    border-color: #e8e8e8;
 	    box-sizing: border-box;
-	    background-color: #ffffff;
+		background-color: #ffffff;
+		margin-top: 17px;
 	    box-shadow: 0px 2px 8px 0px rgba(214, 214, 214, 0.3);
 	    .header-row{
 			margin-top: 23px;
@@ -135,7 +184,18 @@ $button-border-color: #8f8a8a;
 				font-size: 20px;
 				color: $green;
 				font-weight:400;
+				margin-left: 0px;
 				.icon-sunrise:before {
+					font-size: 40px;
+					line-height: 20px;
+					vertical-align: top;
+				}
+				.icon-afternoon:before {
+					font-size: 40px;
+					line-height: 20px;
+					vertical-align: top;
+				}
+				.icon-sunset:before {
 					font-size: 40px;
 					line-height: 20px;
 					vertical-align: top;
@@ -186,17 +246,31 @@ $button-border-color: #8f8a8a;
 			}
 		}
 	}
+	.jobs-card{
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+	.roles-card{
+		padding-top: 20px;
+
+	}
 	.detail-card{
 		box-shadow: 0px 2px 8px 0px $shadow;
 		border: 1px solid $card-border;
 		background-color: $white;
 		border-radius: 6px;
+		.graph_holder{
+			svg{
+				border-radius: 6px;
+			}
+		}
 		.slider-profile{
 			background-color: #f9f7f7;
-			padding-top: 10px;
 			margin-bottom: 15px;
+			border-radius: 6px;
 			.slider-icon{
 			padding-left: 0px!important;
+			padding-top: 8px!important;
 			}
 		}
 		.meta-prop{
@@ -218,7 +292,7 @@ $button-border-color: #8f8a8a;
 			width: 100%;
 			border-bottom: thin solid $horizontal-separator-color;
 			background-color: $horizontal-separator-color;
-			margin-top: 20px;
+			margin-top: 10px;
 		}
 		.profile{
 			// background-color: #f9f7f7;
@@ -231,20 +305,26 @@ $button-border-color: #8f8a8a;
 			.icon{
 			    width: 80px;
 				padding-right: 0px;
-				padding-top: 5px;
+				padding-top: 14px;
 				padding-left: 10px;
 				img{
-					width: 75px;
-				    height: 70px;
+					width: 80px;
+				    height: 75px;
 					object-fit: cover;
 					display: table-cell;
+					border-radius: 50%;
 				  //  border: 1px solid $select-border-color;
 				}
+			}
+			.calculus{
+				padding-top: 20px!important;
 			}
 			.general{
 				padding: 10px;
 				width: calc(100% - 90px);
 				display: inline-block;
+				padding-bottom: 0px;
+				padding-left: 20px;
 				.name{
 					color: $green;
 					font-size: 18px;
@@ -272,6 +352,11 @@ $button-border-color: #8f8a8a;
 					margin-left: -10px;
 				}
 			}
+			.multipule-profile{
+				a{
+					font-weight: 400!important;
+				}
+			}
 
 		}
 		
@@ -293,6 +378,10 @@ $button-border-color: #8f8a8a;
 			}
 			.see-all{
 				text-align: center;
+				.icon-right_arrow:before {
+					content: '\e812';
+					font-size: 12px;
+				}
 			}
 			.button{
 				font-size: 13px;
@@ -301,7 +390,7 @@ $button-border-color: #8f8a8a;
 				display: none;
 			}
 			.action-buttons{
-				margin-left: 85px;
+				margin-left: 95px;
 				width: calc( 100% - 90px);
 				text-align: left;
 				padding-left: 10px;
@@ -332,19 +421,23 @@ $button-border-color: #8f8a8a;
     		}
     		.title{
     			font-size: 14px;
-    			color: $black;
+				color: $black;
+			
     		}
     		.label{
     			font-size: 13px;
     			color: $meta-grey;
     		}
 		}
+		.notificatin-buttons{
+			padding-bottom: 7px !important;
+			padding-top: 7px !important;
+		}
 		.action-buttons{
 			// width: 100%;
 			text-align: left;
 			margin-left: 80px;
-			padding-bottom:20px!important;
-			padding-top: 20px!important;
+			padding-bottom: 20px;
 			.button{
 				 margin: 0 auto;
 				 min-width: 50px;
@@ -403,12 +496,13 @@ $button-border-color: #8f8a8a;
 			}
 		}
 	}
+	
 	.feed-row{
 		padding: 10px 25px;
+		
 		.title{
 			color: $meta-grey;
 			font-size: 14px;
-			
 		}
 		.list{
 			.name{
@@ -495,27 +589,43 @@ $button-border-color: #8f8a8a;
 	}
 }
 .slider{
-	width: 116px;
+	width: 280px;
 	margin: 0 auto;
-	padding: 10px 0;
+	.slick-content{
+		.slick-title{
+			color: #737373;
+			font-size: 14px;
+			line-height: 17px;
+			font-weight: 600;
+		}
+		.slick-detail{
+			color: #737373;
+			font-size: 13px;
+			line-height: 17px;
+		}
+	}
 	img{
 		width:116px;
+		padding-top: 20px;
+		padding-bottom: 20px;
 	}
 	.left-arrow{
 		width: 20px;
 	    float: left;
-	    margin-top: 20px;
-	    margin-left: -70px;
+	    margin-top: 75px;
+	    margin-left: -30px;
 	    cursor: pointer;
 	}
 	.right-arrow{
 		width: 20px;
 	    float: right;
-	    margin-top: -70px;
-	    margin-right: -70px;
+	    margin-top: -140px;
+	    margin-right: -30px;
 	    cursor: pointer;
 	}
-
+	.slick-slide{
+		text-align: -webkit-center;
+	}
 
 }
 
@@ -524,9 +634,13 @@ $button-border-color: #8f8a8a;
 		.conversations{
 	    	display: none;
 	    }
-	    .main-wrapper{
-	    	width: 100%;
-	    }
+	    	.main-wrapper{
+	    		width: 100%;
+				.main-container{
+					width: 100%;
+				}	
+			}
+		
 	}
 }
 
@@ -605,9 +719,10 @@ $button-border-color: #8f8a8a;
 	.action-buttons{
 		text-align: center !important;
 		margin:0 !important;
-		padding: 0 !important;
+		// padding: 0 !important;
 		.button{
 			margin-right: 0px !important;
+			font-size: 13px;
 		}
 	}
 }
