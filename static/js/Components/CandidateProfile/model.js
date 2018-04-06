@@ -223,6 +223,10 @@ function Candidate() {
         if(aData["comment"]) {
             item.comment.val(aData["comment"]);
             item.mobComment.val(aData["comment"]);
+            // settings.commentTextarea.val(aData["comment"]).removeClass("hidden");
+            // $(settings.candidateCommentTextareaClass).val(aData["comment"]).addClass("hidden");
+            // $(settings.candidateAddCommentButtonClass).addClass("hidden")
+            // settings.candidateEditComment.removeClass("hidden")
         }
         
         item.shortlistButton.attr("data-action", 1);
@@ -277,6 +281,9 @@ function Candidate() {
             event.stopPropagation();
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
             var comment = $(settings.candidateCommentTextareaClass).val();
+            if(!comment) {
+                return
+            }
             $(settings.candidateCommentTextareaClass).addClass("hidden");
             settings.commentTextarea.val(comment).removeClass("hidden");
             $(settings.candidateAddCommentButtonClass).addClass("hidden");

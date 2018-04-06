@@ -14,6 +14,7 @@
                     <div class="block-container" id="dashboardStatsContainer">
                         <div class="block activeJobs">
                             <div class="stats">
+                                <!-- <div class="loading"></div> -->
                                 <div class="number">0</div>
                                 <div class="legend">Active Jobs</div>
                             </div>
@@ -70,7 +71,8 @@
                             <div class="heading">Recent Jobs</div>
                             <div class="heading-button right"><a href="/my-jobs">See All</a><i class="icon-right_arrow"></i></div>
                         </div>
-                        <div class="detail-card ">
+                        <div class="detail-card jobs-card ">
+                            <!-- <div class="margin"></div> -->
                         </div>
                     </div>
                     <div class="feed-card hidden" id="savedSearchContainer">
@@ -164,8 +166,9 @@
                             <div class="heading">Hiring for other roles</div>
                             <div class="heading-button right hidden">See All <img src="/static/images/right-arrow-icon.png"></div>
                         </div>
-                        <div class="detail-card ">
+                        <div class="detail-card roles-card ">
                             <div class="feed-row">
+                                <!-- <div class="margin"></div> -->
                                 <div class="title">Hiring for roles other than management? Explore our other job portals</div>
                                 <div class="list">
                                     <ul>
@@ -201,7 +204,7 @@
                         <div class="header-row">
                             <div class="heading">Notification</div>
                         </div>
-                        <div class="detail-card ">
+                        <div class="detail-card ">  
                         </div>
                     </div>
                     <div class="notification-card " id="interviewContainer">
@@ -247,7 +250,7 @@
                                 </div>
                             </div>
                             <div class="notification-row multiple hidden">
-                                 <div class="seeAll see-all"><a class="meta" href="">See More</a><img class="anchor-caret" src="/static/images/right-arrow-icon.png"></div>
+                                 <div class="seeAll see-all"><a class="meta" href="">See More</a><i class="icon-right_arrow"></i></div>
                             </div>
                         </div>
                     </div>
@@ -260,18 +263,37 @@
                                 <div class="icon slider-icon">
                                     <img src="/static/images/small_image.svg">
                                 </div>
-                                <div class="general">
+                                <div class="general calculus">
                                     <div class="name">Calculus</div>
                                     <div class="meta">Talent Mapping & Intelligence Tool</div>
                                 </div>
                             </div>
                             <div class="feed-row">
-                                <div class="title center">Make Smart Hiring Decisions</div>
                                 <div class="slider">
-                                    <img src="/static/images/explore-slider-icon.png">
-                                    <img src="/static/images/explore-slider-icon.png">
+                                    <div class="slick-content">
+                                        <div class="slick-title">Make Smart Hiring Decisions</div>
+                                        <img src="/static/images/high_decision.png">
+                                        <div class="slick-detail">Calculus helps you make smarter hiring decisions using real-time data.</div>
+                                    </div>
+                                    <div class="slick-content">
+                                            <div class="slick-title">Deeper Talent Insights</div>
+                                            <img src="/static/images/insight.png">
+                                            <div class="slick-detail">Calculus provides deeper insights around Gender Diversity, Notice Periods, Tenure, Current &amp; Expected Salaries, and Geographical Distribution of talent.</div>
+                                    </div>
+                                    <div class="slick-content">
+                                            <div class="slick-title">Significantly Better than anything else</div>
+                                            <img src="/static/images/what_makes_calculus.png">
+                                            <div class="slick-detail">Flexible user interface to help you define talent segments on a real-time basis.</div>
+                                    </div> 
+                                    <div class="slick-content">
+                                            <div class="slick-title">Trusted and Latest data</div>
+                                            <img src="/static/images/trusted_insights.png">
+                                            <div class="slick-detail">iimjobs innovative recruitment solutions are used by leading brands in India.</div>
+                                    </div>   
+                                
+                                 
                                 </div>
-                                <div class="title center">Calculus helps you make smarter hiring decisions using real-time data.</div>
+                                
                             </div>
                             <div class="action-buttons">
                                 <a href="http://calculus.iimjobs.com/" target="_blank">
@@ -284,10 +306,11 @@
                 </div>
             </div>
         </div>
+        <div class="conversations right">
+                {{>chatSidebar}}
+            </div>
     </div>
-  <div class="conversations right">
-      {{>chatSidebar}}
-  </div>
+ 
 </div>
 <div class="feed-row prototype hidden jobRow" >
     <div class="main-content">
@@ -333,10 +356,11 @@
 
     <div class="horizontal-separator"></div>
 </div>
+
 <div class="notification-row prototype multiple hidden notificationRow">
     <div class="profile">
         <div class="icon"><img src="/static/images/dummy-face-icon.png"></div>
-        <div class="general">
+        <div class="general multipule-profile">
             <a class="name" href="#">Shally Jain</a>
             <div class="meta designationOrganization">Product Manager at Blackbuck</div>
             <div class="meta locationExperience">Delhi, 3y 7m</div>
@@ -360,15 +384,18 @@
             <div class="label jobDetails">Senior Analyst - Investment Research - Financial Services Industry - Big4</div>
         </div>
     </div>
-    <div class="action-buttons">
+    <div class="action-buttons notificatin-buttons">
         <div class="button candidateShortlist" >Shortlist</div>
         <div class="button candidateReject" >Reject</div>
     </div>  
     <div class="horizontal-separator"></div>
+    <!-- <div class="seeAll see-all"><a class="meta" href="/recruiter/candidates/followUps">See More</a><i class="icon-right_arrow"></i></div> -->
 </div>
+
 <div class="notification-row multiple prototype hidden seeMoreSection">
-     <div class="seeAll see-all"><a class="meta" href="">See More</a><img class="anchor-caret" src="/static/images/right-arrow-icon.png"></div>
+     <div class="seeAll see-all"><a class="meta" href="">See More</a><i class="icon-right_arrow"></i></div>
 </div>
+
 <div class="interviewRow notification-row prototype hidden">
     <div class="profile">
         <div class="icon">

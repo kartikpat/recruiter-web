@@ -333,6 +333,12 @@
 .icon-tick_circle::before {
   content: '\e83b'; }
 
+.icon-afternoon::before {
+  content: '\e840'; }
+
+.icon-sunset::before {
+  content: '\e83e'; }
+
 .navigationHeader {
   display: none !important; }
 
