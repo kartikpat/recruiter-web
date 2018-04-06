@@ -220,6 +220,11 @@ jQuery(document).ready( function() {
         array.push(candidate);
         cloneStickyChat(array, recruiterId, jobId, applicationId)
     })
+
+    aCandidate.onClickSeeMoreRec(function() {
+        fetchRecommendations(recruiterId)
+    })
+
     aCandidate.onClickChatCandidateModal(function(candidateId,applicationId){
         var candidate = store.getCandidateFromStore(candidateId);
         var array = [];
@@ -885,6 +890,14 @@ jQuery(document).ready( function() {
         errorHandler(data)
     }
 
+    function onSuccessfulRecommendations(topic, data) {
+        aCandidate.addRecommendations()
+    }
+
+    function onFailedRecommendation(topic, data) {
+
+    }
+
     var fetchJobDetailsSubscription = pubsub.subscribe("fetchedJobDetails:"+jobId, onSuccessfulFetchJobDetails)
 	var fetchJobDetailsFailSubscription = pubsub.subscribe("failedToFetchJobDetails:"+jobId, onFailedFetchJobDetails);
     var fetchJobApplicationsSuccessSubscription = pubsub.subscribe("fetchedJobApplication", onJobsApplicationsFetchSuccess)
@@ -916,6 +929,11 @@ jQuery(document).ready( function() {
 
     var sendInterViewInviteSuccessSubscription = pubsub.subscribe("sendInterViewInviteSuccess", onSendInterViewInviteSuccess)
 	var sendInterViewInviteFailSubscription = pubsub.subscribe("sendInterViewInviteFail", onSendInterViewInviteFail);
+
+    var fetchedRecommendationsSuccessSubscription = pubsub.subscribe("fetchRecommendationsSuccess", onSuccessfulRecommendations)
+	var fetchedRecommendationsFailSubscription = pubsub.subscribe("fetchRecommendationsFail", onFailedRecommendation);
+
+
 
     var tickerLock=false;
     $(window).scroll(function() {
@@ -951,7 +969,9 @@ function getTitleFormat(title, regex) {
 
 function errorHandler(data) {
     var res = data.responseJSON
+    hideLoader()
     if(!res) {
+
         return toastNotify(3, "Something went wrong");
     }
     return toastNotify(3, res.message);
