@@ -31,6 +31,7 @@
         border-radius: 50%;
         border-top: 4px solid #3498db;
         margin: 0 auto;
+        display: block;
     }
 }
 
@@ -58,7 +59,16 @@
 			}
 			.title {
 				margin-bottom: 15px;
+                display: inline-block;
 			}
+            .date-select {
+                margin: 15px 0;
+                cursor: pointer;
+                img {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
 		}
 
 		.tagged-candidates-listing {
@@ -376,6 +386,10 @@
 
 	            	}
 	            }
+
+                .date-select {
+                    margin: 0;
+                }
 	        }
 
 			.tagged-candidates-listing {

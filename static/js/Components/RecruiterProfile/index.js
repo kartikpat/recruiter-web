@@ -5,9 +5,15 @@ $(document).ready(function(){
 	recruiterProfile.init();
 	recruiterProfile.setProfile(profile)
 
-	recruiterProfile.submitHandler(function(){
+	recruiterProfile.submitHandler(function(type){
 
 		if(recruiterProfile.validate()){
+
+			if(type == "change-password") {
+				var obj = recruiterProfile.getProfile();
+				obj.email = profile.email
+				return setPassword(recruiterId,obj )
+			}
 			updateRecruiterProfile(recruiterProfile.getProfile(), recruiterId);
 		}
 	})
@@ -26,8 +32,19 @@ $(document).ready(function(){
 		errorHandler(data)
 	}
 
+	function onSuccessfulSetPassword(topic, data){
+		toastNotify(1, "Password Updated Success");
+
+	}
+	function onFailedPassword(topic, data){
+		errorHandler(data)
+	}
+
 	var updateRecruiterProfileSuccessSubscription = pubsub.subscribe("updateRecruiterProfileSuccess", onSuccessfulUpdateProfile);
 	var updateRecruiterProfileFailSubscription = pubsub.subscribe("updateRecruiterProfileFail", onFailedUpdateProfile);
+
+	var setPasswordSuccessSubscription = pubsub.subscribe("setPasswordSuccess", onSuccessfulSetPassword);
+	var setPasswordFailSubscription = pubsub.subscribe("setPasswordFail", onFailedPassword);
 
 })
 

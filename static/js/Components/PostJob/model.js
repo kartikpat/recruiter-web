@@ -17,7 +17,6 @@ var errorResponses = {
 	invalidMinExp: 'Maximum Years of Experience should be greater than Minimum Years of Experience'
 }
 
-
 function Job(){
 	var settings ={};
 	var config = {};
@@ -163,7 +162,7 @@ function Job(){
 		var ob = {
 			title: settings.title.val(),
 			description: settings.description.val(),
-			premium: settings.isPremium.is(':checked') ? true : false,
+			premium: settings.isPremium.is(':checked') ? 1 : 0,
 			category: settings.category.val(),
 			functionalArea: settings.functionalArea.val(),
 			location: locationObj.id,
@@ -186,7 +185,7 @@ function Job(){
 			ob.sal = {
 				min: settings.minSal.val(),
 				max: settings.maxSal.val(),
-				cnfi: settings.confidential.is(':checked') ? true : false
+				hide: settings.confidential.is(':checked') ? 1 : 0
 			}
 		if(settings.minExp.val() && settings.maxExp.val())
 			ob.exp = {
@@ -218,7 +217,6 @@ function Job(){
 		settings.functionalArea.val(obj["functionalArea"]);
 
 
-		// setPillValues(settings.location.attr('id'), loca);
 		setPillValuesByObject(settings.location.attr('id'), obj["location"], cityList);
 		setPillValues(settings.location.attr('id'), obj["otherLocation"]);
 		setPillValues(settings.industry.attr('id'), obj["industry"], industryTagsData);
@@ -232,7 +230,7 @@ function Job(){
 		if(obj["sal"] && obj["sal"]["min"]!= 0 && obj["sal"]["max"]!=0) {
 			settings.minSal.val(obj["sal"]["min"]);
 			settings.maxSal.val(obj["sal"]["max"]);
-			settings.confidential.prop("checked", obj["sal"]["cnfi"]);
+			settings.confidential.prop("checked", obj["sal"]["hide"]);
 		}
 		settings.minExp.val(obj["exp"]["min"]);
 		settings.maxExp.val(obj["exp"]["max"]);

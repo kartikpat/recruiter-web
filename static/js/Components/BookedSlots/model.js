@@ -25,6 +25,7 @@ function BookedSlots() {
         onClickToggle()
 		jQuery(".header .menu-list-item.my-interviews").addClass("active");
 		// settings.noInterviewView.removeClass('hidden');
+
 	}
 
 	function onClickInterviewCancel(){
@@ -63,7 +64,9 @@ function BookedSlots() {
 			candExperience: card.find('.candExperience'),
 			candLocation: card.find('.candLocation'),
 			jobName: card.find('.jobName'),
-			jobExp: card.find('.jobExp')
+			jobExp: card.find('.jobExp'),
+			jobLocation: card.find('jobLocation'),
+			jobMultipleLocation: card.find('jobMultipleLocation')
 		}
 	}
 
@@ -80,11 +83,10 @@ function BookedSlots() {
 		var title = getTitleFormat(aData["job"]["title"], (/\(\d+-\d+ \w+\)$/));
         if(aData["slot"]){
             var date = moment(aData["slot"]["date"]).format('ll');
-            console.log(settings.date )
-			console.log(date)
+
 			var width=$(window).width();
-			console.log(width);
-			if(width>800){
+
+			if(width>800) {
 				if(settings.date != date) {
 					settings.date = date;
 					item.interviewDate.text(date)
@@ -92,7 +94,7 @@ function BookedSlots() {
 						item.element.addClass("border-top")
 				}
 			}
-			else{
+			else {
 				settings.date = date;
                 item.interviewDate.text(date)
 			}
@@ -115,8 +117,22 @@ function BookedSlots() {
         }
 		item.jobName.text(title)
 		item.jobName.attr("href", "/job/"+aData["job"]["id"]+"/applications")
-        item.candLocation.text(aData["location"])
-		// item.jobExp.text(aData[""])
+
+		// var locText = aData["job"]["location"].join(", ")
+		// if(aData["job"]["location"].length) {
+		// 	if(aData["job"]["location"].length <= 1){
+		// 		item.jobLocation.text(locText)
+		// 	}
+		// 	else{
+		// 		item.jobLocation.addClass("hidden")
+		// 		item.jobMultipleLocation.attr("title",locText).removeClass("hidden");
+		// 	}
+		// }
+		// else {
+		// 	item.jobLocation.addClass("hidden")
+		// }
+		//
+		// item.jobExp.text(aData["job"]["exp"]['min']+ ' - ' + aData["job"]['exp']['max'] +' yrs')
 		return item;
 	}
 
@@ -135,10 +151,13 @@ function BookedSlots() {
 			str+=item.element[0].outerHTML;
 		});
 		settings.bookedSlots.append(str);
+		initializeTooltip()
 		if(dataArray.length< pageContent) {
 			return settings.bookedSlots.append("<div class='no-data'>No more records!</div>")
 			hideLoaderOverlay();
 		}
+
+
 	}
 
 	function emptySlots(){
@@ -216,6 +235,16 @@ function BookedSlots() {
         console.log(fromDate);
         return fromDate;
     }
+
+	function initializeTooltip() {
+		 $(".tooltip").not(".prototype .tooltip").tooltipster({
+			animation: 'fade',
+			delay: 0,
+			side:['bottom'],
+			theme: 'tooltipster-borderless',
+			maxWidth: 500
+		})
+	}
 
 
 	return {

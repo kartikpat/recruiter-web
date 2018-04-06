@@ -3,7 +3,7 @@ function candidateList() {
     var settings = {};
     var config = {};
 
-    function init(){
+    function init(profile){
         settings.rowContainer= $('.candidateListing'),
         settings.header= $('#jobDetails'),
         settings.candidateRowClass= ".candidateRow",
@@ -74,6 +74,10 @@ function candidateList() {
         settings.bulkActionsDropdown.click(function(e){
             e.stopPropagation()
         })
+
+        if(profile.excel) {
+            settings.downloadExcelMass.removeClass("hidden")
+        }
 	}
 
     function onClickBulkBackIcon() {
@@ -392,6 +396,7 @@ function candidateList() {
         var element = $(".candidateListing[data-status-attribute='"+status+"']");
         hideShells(status);
 
+        console.log(status)
         if(dataArray.length<1 && pageNumber ==1) {
 			if(status== ""){
 				$('.user-text').text('You have not received any applications yet.');
@@ -399,7 +404,7 @@ function candidateList() {
 				settings.emptyView.removeClass('hidden');
 				return
 			}
-			else if(status== "0"){
+			else if(status== "0" ){
 				$('.user-text').text('Great job!');
 				$('.empty-text').text('You have sorted all your received applications');
         		settings.emptyView.removeClass('hidden');

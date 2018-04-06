@@ -94,7 +94,7 @@ function getTimeElement(data) {
 		card.text("Today");
 	}
 	else {
-		card.text(moment(data["entry"]["time"]).format("DD MM YYYY"))
+		card.text(moment(data["entry"]["time"]).format("DD MMMM YYYY"))
 	}
 	return card
 }
@@ -140,9 +140,11 @@ chatContainer.on('click','.candidate-card', function() {
         var obj = getCandidateFromStore(dataID)
         chatContainerBox.attr("data-channel-name",channelName);
         chatContainerBox.find(".info-container img").attr("src", (obj["img"] || "/static/images/noimage.png"))
-        chatContainerBox.find(".info-container .primary-content").text(obj["name"] + " works as " + obj["designation"] + " at iimjobs")
+        chatContainerBox.find(".info-container .primary-content").text(obj["name"] + " works as " + obj["designation"] + " at " + obj["organization"])
+        if(obj["title"] && obj["status"]) {
+            chatContainerBox.find(".info-container .secondary-content").text(obj["name"] + " has applied to " + obj["title"] + " Current Status is "+stat[obj["status"]]+"").removeClass("hidden")
+        }
 
-        chatContainerBox.find(".info-container .secondary-content").text(obj["name"] + " has applied to " + obj["title"] + " Current Status is "+stat[obj["status"]]+"")
 		chatContainerBox.find(".chat-input").attr("data-channel-name", channelName)
 		chatContainerBox.find(".chat-input").attr("data-id",$(this).attr("data-id") )
         chatContainerBox.find(".no-start").removeClass("hidden")
@@ -218,9 +220,11 @@ $("#conversationListing").on('click','.conversationItem', function() {
 
         chatContainerBox.attr("data-channel-name",channelName);
         chatContainerBox.find(".info-container img").attr("src", (obj["img"] || "/static/images/noimage.png"))
-        chatContainerBox.find(".info-container .primary-content").text(obj["name"] + " works as " + obj["designation"] + " at iimjobs")
+        chatContainerBox.find(".info-container .primary-content").text(obj["name"] + " works as " + obj["designation"] + " at " + obj["organization"])
 
-        chatContainerBox.find(".info-container .secondary-content").text(obj["name"] + " has applied to " + obj["title"] + " Current Status is "+stat[obj["status"]]+"")
+        if(obj["title"] && obj["status"]) {
+            chatContainerBox.find(".info-container .secondary-content").text(obj["name"] + " has applied to " + obj["title"] + " Current Status is "+stat[obj["status"]]+"").removeClass("hidden")
+        }
 		chatContainerBox.find(".chat-input").attr("data-channel-name", channelName)
 		chatContainerBox.find(".chat-input").attr("data-id",$(this).attr("data-id") )
         chatContainerBox.find(".no-start").removeClass("hidden")
@@ -276,8 +280,6 @@ $("#conversationListing").on('click','.conversationItem', function() {
 	}
 })
 
-
-
 $("#chat-collapsed-container").on('click',".chat-collapsed-candidate-container .candidate-collapsed-block i", function(event) {
 	event.stopPropagation();
 	var dataId = $(this).attr("data-id");
@@ -329,7 +331,7 @@ var populateChatView = function(array) {
 
 $(".chat-candidate-boxes").on('click','.chat-div-candidate .chat-div-header', function() {
 	var dataId = $(this).attr("data-id");
-    $(this).removeClass("newMessageHeader");
+
 	$('.chat-div-candidate[data-id='+dataId+'] .content-footer-container').toggleClass("show");
 	$('.chat-div-candidate .chat-div-header[data-id='+dataId+'] .minusIcon').toggleClass("active")
 })
@@ -396,7 +398,7 @@ var displayAMessageClick = function() {
             that.val('');
             scrollToBottom(channelName)
         })
-    
+
 }
 
 
@@ -468,9 +470,9 @@ function openChat(m) {
     	elem.entry.time = msg.time;
         var item = getMsgReceivedElement(elem)
         $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
-        if(!($(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container").hasClass("show"))) {
-            $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .chat-div-header").addClass("newMessageHeader")
-        }
+
+        $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .chat-div-header").addClass("newMessageHeader")
+
         return
     }
     else {
@@ -487,9 +489,11 @@ function openChat(m) {
         chatContainerBox.find(".candidate-name").text(obj["name"]);
         chatContainerBox.attr("data-channel-name",channelName);
         chatContainerBox.find(".info-container img").attr("src", (obj["img"] || "/static/images/noimage.png"))
-        chatContainerBox.find(".info-container .primary-content").text(obj["name"] + " works as " + obj["designation"] + " at iimjobs")
+        chatContainerBox.find(".info-container .primary-content").text(obj["name"] + " works as " + obj["designation"] + " at " + obj["organization"])
 
-        chatContainerBox.find(".info-container .secondary-content").text(obj["name"] + " has applied to " + obj["title"] + " Current Status is "+stat[obj["status"]]+"")
+        if(obj["title"] && obj["status"]) {
+            chatContainerBox.find(".info-container .secondary-content").text(obj["name"] + " has applied to " + obj["title"] + " Current Status is "+stat[obj["status"]]+"").removeClass("hidden")
+        }
         chatContainerBox.find(".chat-input").attr("data-channel-name", channelName)
 		chatContainerBox.find(".chat-input").attr("data-id",dataID)
         chatContainerBox.find(".no-start").removeClass("hidden")
@@ -543,6 +547,10 @@ function openChat(m) {
 
 $(".chat-candidate-boxes").on('keypress','.chat-input', displayAMessage);
 
+$(".chat-candidate-boxes").on('focus','.chat-input', function(){
+    $(this).closest('.chat-div-candidate').find('.chat-div-header').removeClass('newMessageHeader')
+});
+
 $(".chat-candidate-boxes").on('click','.iconSendButton', displayAMessageClick);
 
 function receivePresence(p) {
@@ -569,7 +577,6 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
 	if(!(chatContainer.find('.candidate-card[data-channel-name="iimjobs--r'+recruiterId+'-j'+array[0]["userID"]+'"]').length)) {
         postRequest(baseUrl+"/recruiter/"+recruiterId+"/job/"+jobId+"/application/"+applicationId+"/action/chat", null, {}, function(res, status, xhr){
     		if(res.status && res.status =='success'){
-                debugger
                 if(window.innerWidth <= 768) {
                     return window.location.href = '/my-chat?candidateId='+array[0]["userID"]+''
                 }
@@ -762,16 +769,6 @@ function ISODateToTime(aDate) {
       var str = hours + ":" + mins;
       return str;
 }
-
-
-
-
-
-
-
-
-
-
 
 function ISODateToD_M_Y(aDate) {
   var date = new Date(aDate),
