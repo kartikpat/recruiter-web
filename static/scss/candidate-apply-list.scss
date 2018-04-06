@@ -141,7 +141,7 @@ input::-webkit-input-placeholder {
 				font-size:$base-font-size;
 				color:$page-title-color;
 				margin: 0 5px 0 0;
-
+                vertical-align: bottom;
 				&#locSeperator {
 					color:$inline-separator-color;
 				}

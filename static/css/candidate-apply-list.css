@@ -3118,7 +3118,8 @@ input::-webkit-input-placeholder {
     .page-content .page-header .job-meta span {
       font-size: 14px;
       color: #5d5d5d;
-      margin: 0 5px 0 0; }
+      margin: 0 5px 0 0;
+      vertical-align: bottom; }
       .page-content .page-header .job-meta span#locSeperator {
         color: #c2c2c2; }
     .page-content .page-header .action-buttons {

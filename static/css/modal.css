@@ -960,6 +960,9 @@ span.sticker {
         border-color: #4fa995; }
       .modal_content .section input.error-border {
         border-color: #ee1620; }
+    .modal_content .section p {
+      line-height: 1.5;
+      font-size: 15px; }
 
 /* The Close Button */
 .modal_close {

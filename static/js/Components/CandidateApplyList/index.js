@@ -672,22 +672,6 @@ jQuery(document).ready( function() {
         tickerLock = false;
         hideLoader()
 
-        var parameters = filters.getAppliedFilters();
-        parameters.status = globalParameters.status;
-
-        var filterFlag = 0;
-
-        for(var key in parameters) {
-            if(!(key == "orderBy" || key == "pageNumber" || key == "pageContent" || key == "status" || key == "searchString")) {
-                filterFlag+= 1;
-            }
-        }
-
-        if(filterFlag > 0) {
-            fetchFiltersCount(recruiterId, jobId, parameters)
-        }
-
-
         if(globalParameters.initialLoad) {
             fetchJobApplicationCount(recruiterId, jobId)
             globalParameters.initialLoad = 0;
@@ -695,7 +679,22 @@ jQuery(document).ready( function() {
 
         globalParameters.candidateListLength = data["data"].length;
 
-        candidates.addToList(data["data"], globalParameters.status, globalParameters.pageNumber, globalParameters.pageContent);
+        var filterFlag = 0;
+        var parameters = filters.getAppliedFilters();
+        parameters.status = globalParameters.status;
+        for(var key in parameters) {
+            if(!(key == "orderBy" || key == "pageNumber" || key == "pageContent" || key == "status" || key == "searchString")) {
+                filterFlag+= 1;
+            }
+        }
+
+        candidates.addToList(data["data"], globalParameters.status, globalParameters.pageNumber, globalParameters.pageContent, filterFlag);
+
+        console.log(filterFlag)
+
+        if(filterFlag > 0) {
+            fetchFiltersCount(recruiterId, jobId, parameters)
+        }
 
         if(!theJob.getCalendarLength()){
             candidates.setInvite(theJob.getCalendarLength())

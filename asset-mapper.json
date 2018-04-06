@@ -197,13 +197,17 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/Utilities/request.js",
+				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/modal.js",
 				"static/js/Utilities/common.js",
 				"static/js/header.js",
 				"static/js/utilities.js",
 				"static/js/vendor/swipe.js",
 				"static/js/premium-posting.js",
-				"static/js/Utilities/toastNotifier.js"
+				"static/js/Utilities/toastNotifier.js",
+				"static/js/Services/buyPlan.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js"
 
 			],
 			"prod" : [

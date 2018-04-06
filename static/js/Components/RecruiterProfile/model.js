@@ -100,7 +100,9 @@ function Profile(){
 			if(!(
 					ifExists(settings.oldPassword)
 					&& ifExists(settings.newPassword)
+					&& checkMinCharacters(settings.newPassword, 6)
 					&& ifExists(settings.confirmPassword)
+					&& checkPassword(settings.newPassword, settings.confirmPassword)
 				)){
 				return false;
 			}
@@ -199,7 +201,7 @@ function Profile(){
 		settings.twitter.val(obj["turl"]);
 		settings.facebook.val(obj["furl"]);
 		settings.linkedIn.val(obj["lurl"]);
-		console.log(obj["notificationEmail"])
+
 		$("input[name='notification-type'][value='"+obj["notificationEmail"]+"']").attr('checked', true);
 
 		if(obj["availableCredits"]) {
@@ -253,9 +255,11 @@ function Profile(){
 function ifExists(element){
 
 	if(!( element && element.val() )){
-		element.next('.error').text(errorResponses['missing'+element.attr('name')]);
+		element.next('.error').text(errorResponses['missing'+element.attr('name')]).removeClass("hidden");
+		focusOnElement(element)
 		return false;
 	}
+	eraseError(element)
 	return true;
 }
 
@@ -272,6 +276,30 @@ function checkEmail(element) {
 		eraseError(element)
 	}
 	return true;
+}
+
+function checkPassword(one, two){
+	if(!(one.val() && two.val())) {
+		return true
+	}
+	if(!ifBothMatches(one.val(), two.val())){
+		two.next('.error').text(errorResponses['passwordMismatch']).removeClass("hidden")
+		return false
+	}
+	eraseError(element)
+	return true
+}
+
+function checkMinCharacters(ele, len) {
+	if(!ele.val()) {
+		return true
+	}
+	if(!checkCharacters(ele.val().length, len)) {
+		ele.next('.error').text(errorResponses['minLength'+ele.attr('name')])
+		return false
+	}
+	eraseError(ele)
+	return true
 }
 
 function checkUrl(element) {
