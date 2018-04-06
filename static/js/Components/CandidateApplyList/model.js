@@ -70,11 +70,7 @@ function candidateList() {
             $(settings.bulkActionsDropdown).addClass("hidden")
             settings.contactMenu.addClass('hidden')
         });
-        
-        // $(document).click(function() {
-        //     settings.contactMenu.hide();
-        // });
-        
+         
         settings.bulkActionsDropdown.click(function(e){
             e.stopPropagation()
         })

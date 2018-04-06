@@ -218,6 +218,7 @@ $(document).ready(function(){
 		var recruiterName = profile.name;
 		var lastSeen = profile.lastSeen;
 		var now = Date.now();
+		var iconClass
 		var text = "Welcome, "+recruiterName; // TODO: get recruitername from the recruiterobject;
 		if(now - lastSeen > 72*60*60*1000){
 			text = "Welcome back, "+recruiterName;
@@ -226,22 +227,29 @@ $(document).ready(function(){
 		}
 		else{
 			var currentHour = moment(now).hour();
-			if( currentHour > 5 && currentHour < 12	)
+			if( currentHour > 5 && currentHour < 12	){
 				text = "Good Morning, "+recruiterName
-			if( currentHour > 11 && currentHour < 17 )
+				iconClass="icon-sunrise";
+			}	
+			if( currentHour > 11 && currentHour < 17 ){
 				text = "Good Afternoon, "+recruiterName
-			if( currentHour > 17 && currentHour < 5 )
+				iconClass="icon-afternoon";
+			}	
+			if( currentHour > 17 && currentHour < 5 ){
 				text = "Good Evening, "+recruiterName
+				iconClass="icon-sunset";
+			}	
 		}
 		var data = {
 			text: text,
+			class:iconClass
 			// icon: "/static/images/morning-icon.png"
 		}
 		updateGreetings(data);
 	}
 
 	function updateGreetings(data){
-		var img = '<i class="icon-sunrise"></i>';
+		var img = '<i class='+data.class+'></i>';
 		var text = data.text;
 		greetingsContainer.find(".heading").html(img+text);
 	}
@@ -315,10 +323,9 @@ $(document).ready(function(){
 			notificationContainer.find('.detail-card').append(card);
 		});
 		if( data.length-1>showCount){
-
-			// var seeMore= seeMoreSection.clone().removeClass('hidden prototype');
-			// seeMore.find(".seeAll a").attr('href', '/followUps')
-			// notificationContainer.find('.detail-card').append(seeMore);
+			var seeMore= seeMoreSection.clone().removeClass('hidden prototype');
+			seeMore.find(".seeAll a").attr('href', '/recruiter/candidates/followUps')
+			notificationContainer.find('.detail-card').append(seeMore);
 		}
 		if( data.length>0){
 			notificationContainer.removeClass('hidden');
@@ -378,9 +385,9 @@ $(document).ready(function(){
 	function init(){
 		pubsub.publish("pageVisit", 1);
 		fetchDashboardStats(recruiterId);
-		fetchJobs("published", recruiterId, 5,1);
+		fetchJobs({pageContent: 5, pageNumber: 1, type: "published"}, recruiterId,);
 		fetchFollowUps(recruiterId);
-		fetchInterviews(recruiterId, {pageContent: 6, pageNumber: 1, status: 2});
+		fetchInterviews(recruiterId,{pageContent: 6, pageNumber: 1, status: 2});
 	}
 	init()
 
