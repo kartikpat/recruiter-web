@@ -96,7 +96,7 @@ function candidateList() {
        else {
            item.notice.text((aData["notice"] + " months"));
        }
-       item.downloadResumeButton.attr("href", aData["resume"])
+       item.downloadResumeButton.attr("href",baseUrl + aData["resume"])
        item.downloadResumeButton.attr("download", aData["name"].replace(/ +/g, '_')+'_resume.pdf')
 
        var tagStr = '';

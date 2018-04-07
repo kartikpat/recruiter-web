@@ -205,16 +205,16 @@ function Candidate() {
         item.travel.text(willingTravel[aData["travel"]]).removeClass("shell")
         item.differentlyAbled.text(binary[aData["differentlyAbled"]]).removeClass("shell")
         item.workSixDays.text(binary[aData["sixDays"]]).removeClass("shell")
-        if(aData["scores"]) {
-            item.percentile.text(aData["scores"]["cat"] || "N.A.").removeClass("shell")
-            item.iitScore.text(aData["scores"]["iit"] || "N.A.").removeClass("shell")
-            item.gmatScore.text(aData["scores"]["gmat"] || "N.A.").removeClass("shell")
+        if(aData["score"]) {
+            item.percentile.text(aData["score"]["cat"] || "N.A.").removeClass("shell")
+            item.iitScore.text(aData["score"]["iit"] || "N.A.").removeClass("shell")
+            item.gmatScore.text(aData["score"]["gmat"] || "N.A.").removeClass("shell")
         }
         if(isCanvasSupported()) {
-           getBinaryData(aData["resume"],resumeCallback);
+           getBinaryData(baseUrl + aData["resume"],resumeCallback);
         }
         else {
-           item.resume.html('<iframe src="'+aData["resume"]+'" class="resume-embed" type="application/pdf"></iframe>')
+           item.resume.html('<iframe src="'+baseUrl + aData["resume"]+'" class="resume-embed" type="application/pdf"></iframe>')
         }
         if(aData["cover"]) {
             item.coverLetter.html(nl2br(aData["cover"]))

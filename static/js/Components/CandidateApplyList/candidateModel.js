@@ -33,10 +33,19 @@ function Candidate() {
         settings.tagInputError = $(".tagInputError"),
         settings.sendInterviewInviteF2FClass = ".inviteF2f",
         settings.sendInterviewInviteTelephonicClass = ".inviteTelephonic"
-
+        settings.seeMoreRec = $(".seeMoreRec");
         jQuery("#tabbed-content").tabs({});
 
+        console.log(baseUrl)
+
     }
+
+    function onClickSeeMoreRec(fn) {
+        settings.seeMoreRec.click(function() {
+            fn()
+        })
+    }
+
     function onClickCloseModal(fn){
         $(".body-overlay, .closeCandidateModal").on('click', function(e){
             if(jQuery(e.target).parents(".view-resume-modal").length) {
@@ -135,11 +144,15 @@ function Candidate() {
             iitScore: modal.find(".js_iit"),
             gmatScore: modal.find(".js_gmat"),
             coverLetter: modal.find(".js_cover_letter"),
+
+            recommendationList: modal.find('.recommendationList'),
+
             contact:modal.find('.contact'),
             email:modal.find('.email-address'),
+
             tag: modal.find(".candidateTagInput"),
             mobTag: modal.find(".mobCandidateTagInput"),
-
+            seeMoreRec: modal.find(".seeMoreRec"),
             firstName: modal.find("#firstName"),
             tabContent: modal.find("#tabbed-content"),
             shortlistButton: modal.find(".candidateShortlistModal"),
@@ -167,6 +180,40 @@ function Candidate() {
 			tenure: card.find('.js_prof_tenure'),
 			designation: card.find('.js_prof_designation'),
             seperator: card.find('.jsSeperator')
+        }
+    }
+
+    function getRecommendationElement() {
+        var card = $('.recommendationWrapper.prototype').clone().removeClass("prototype hidden");
+        return {
+            element: card,
+            name: card.find('.userName'),
+			link: card.find('.userLink'),
+			body: card.find('.userBody'),
+            seperator: card.find('.jsSeperator')
+        }
+    }
+
+    function addRecommendations(data) {
+        if(data["recommendation"].length > 0) {
+            var recStr = '';
+
+            $.each(aData["recommendation"],function(index, anObj) {
+
+                var item = getRecommendationElement()
+                item.name.text(anObj["name"])
+                item.link.attr("href",anObj["url"]);
+                item.link.text(anObj["url"]);
+                item.body.text(anObj["text"])
+                if(index != aData["recommendation"].length - 1)
+                    item.seperator.removeClass("hidden")
+                recStr+=item.element[0].outerHTML
+            })
+            item.recommendationList.html(recStr)
+            if(aData["extraRecom"]) {
+                item.seeMoreRec.removeClass("hidden");
+            }
+            item.recommendationList.closest(".recommendations").removeClass("hidden");
         }
     }
 
@@ -240,6 +287,27 @@ function Candidate() {
         }
         item.profList.html(profStr)
 
+        if(aData["recommendation"].length > 0) {
+            var recStr = '';
+
+            $.each(aData["recommendation"],function(index, anObj) {
+
+                var item = getRecommendationElement()
+                item.name.text(anObj["name"])
+                item.link.attr("href",anObj["url"]);
+                item.link.text(anObj["url"]);
+                item.body.html(anObj["text"])
+                if(index != aData["recommendation"].length - 1)
+                    item.seperator.removeClass("hidden")
+                recStr+=item.element[0].outerHTML
+            })
+            item.recommendationList.html(recStr)
+            if(aData["extraRecom"]) {
+                item.seeMoreRec.removeClass("hidden");
+            }
+            item.recommendationList.closest(".recommendations").removeClass("hidden");
+        }
+
         var tagStr = '';
         $.each(aData["tags"],function(index, aTag) {
             var tag = getCandidateTag(aTag)
@@ -258,17 +326,17 @@ function Candidate() {
         item.relocate.text(binary[aData["relocate"]] )
         item.startup.text(binary[aData["joinStartup"]])
         item.travel.text(willingTravel[aData["travel"]])
-        if(aData["scores"]) {
-            item.percentile.text(aData["scores"]["cat"] || "N.A.")
-            item.iitScore.text(aData["scores"]["iit"] || "N.A.")
-            item.gmatScore.text(aData["scores"]["gmat"] || "N.A.")
+        if(aData["score"]) {
+            item.percentile.text(aData["score"]["cat"] || "N.A.")
+            item.iitScore.text(aData["score"]["iit"] || "N.A.")
+            item.gmatScore.text(aData["score"]["gmat"] || "N.A.")
         }
 
         item.workSixDays.text(binary[aData["sixDays"]])
         if(isCanvasSupported()) {
             item.resume.addClass("hidden")
             $(".loaderScrollerResume").removeClass("hidden")
-        	getBinaryData(aData["resume"],function(res){
+        	getBinaryData(baseUrl + aData["resume"],function(res){
                 resumeCallback(res, aData["id"])
             });
         }
@@ -369,6 +437,7 @@ function Candidate() {
         item.rejectButton.text("Reject");
         item.resume.empty()
         item.savedButton.html("<span class='icon'><i class='icon-star'></i></span>Save for Later");
+        item.recommendationList.closest(".recommendations").addClass("hidden");
         $(".coverLetterTab").addClass("hidden");
 
     }
@@ -622,7 +691,9 @@ function Candidate() {
         changeButtonText: changeButtonText,
         onClickChatCandidateModal: onClickChatCandidateModal,
         onClickCloseModal: onClickCloseModal,
-        closeModal: closeModal
+        closeModal: closeModal,
+        onClickSeeMoreRec: onClickSeeMoreRec,
+        addRecommendations: addRecommendations
 
 	}
 

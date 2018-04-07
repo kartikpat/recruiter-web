@@ -220,6 +220,11 @@ jQuery(document).ready( function() {
         array.push(candidate);
         cloneStickyChat(array, recruiterId, jobId, applicationId)
     })
+
+    aCandidate.onClickSeeMoreRec(function() {
+        fetchRecommendations(recruiterId)
+    })
+
     aCandidate.onClickChatCandidateModal(function(candidateId,applicationId){
         var candidate = store.getCandidateFromStore(candidateId);
         var array = [];
@@ -672,22 +677,6 @@ jQuery(document).ready( function() {
         tickerLock = false;
         hideLoader()
 
-        var parameters = filters.getAppliedFilters();
-        parameters.status = globalParameters.status;
-
-        var filterFlag = 0;
-
-        for(var key in parameters) {
-            if(!(key == "orderBy" || key == "pageNumber" || key == "pageContent" || key == "status" || key == "searchString")) {
-                filterFlag+= 1;
-            }
-        }
-
-        if(filterFlag > 0) {
-            fetchFiltersCount(recruiterId, jobId, parameters)
-        }
-
-
         if(globalParameters.initialLoad) {
             fetchJobApplicationCount(recruiterId, jobId)
             globalParameters.initialLoad = 0;
@@ -695,7 +684,22 @@ jQuery(document).ready( function() {
 
         globalParameters.candidateListLength = data["data"].length;
 
-        candidates.addToList(data["data"], globalParameters.status, globalParameters.pageNumber, globalParameters.pageContent);
+        var filterFlag = 0;
+        var parameters = filters.getAppliedFilters();
+        parameters.status = globalParameters.status;
+        for(var key in parameters) {
+            if(!(key == "orderBy" || key == "pageNumber" || key == "pageContent" || key == "status" || key == "searchString")) {
+                filterFlag+= 1;
+            }
+        }
+
+        candidates.addToList(data["data"], globalParameters.status, globalParameters.pageNumber, globalParameters.pageContent, filterFlag);
+
+        console.log(filterFlag)
+
+        if(filterFlag > 0) {
+            fetchFiltersCount(recruiterId, jobId, parameters)
+        }
 
         if(!theJob.getCalendarLength()){
             candidates.setInvite(theJob.getCalendarLength())
@@ -886,6 +890,14 @@ jQuery(document).ready( function() {
         errorHandler(data)
     }
 
+    function onSuccessfulRecommendations(topic, data) {
+        aCandidate.addRecommendations()
+    }
+
+    function onFailedRecommendation(topic, data) {
+
+    }
+
     var fetchJobDetailsSubscription = pubsub.subscribe("fetchedJobDetails:"+jobId, onSuccessfulFetchJobDetails)
 	var fetchJobDetailsFailSubscription = pubsub.subscribe("failedToFetchJobDetails:"+jobId, onFailedFetchJobDetails);
     var fetchJobApplicationsSuccessSubscription = pubsub.subscribe("fetchedJobApplication", onJobsApplicationsFetchSuccess)
@@ -917,6 +929,11 @@ jQuery(document).ready( function() {
 
     var sendInterViewInviteSuccessSubscription = pubsub.subscribe("sendInterViewInviteSuccess", onSendInterViewInviteSuccess)
 	var sendInterViewInviteFailSubscription = pubsub.subscribe("sendInterViewInviteFail", onSendInterViewInviteFail);
+
+    var fetchedRecommendationsSuccessSubscription = pubsub.subscribe("fetchRecommendationsSuccess", onSuccessfulRecommendations)
+	var fetchedRecommendationsFailSubscription = pubsub.subscribe("fetchRecommendationsFail", onFailedRecommendation);
+
+
 
     var tickerLock=false;
     $(window).scroll(function() {
@@ -952,7 +969,9 @@ function getTitleFormat(title, regex) {
 
 function errorHandler(data) {
     var res = data.responseJSON
+    hideLoader()
     if(!res) {
+
         return toastNotify(3, "Something went wrong");
     }
     return toastNotify(3, res.message);

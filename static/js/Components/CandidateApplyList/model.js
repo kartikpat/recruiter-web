@@ -3,7 +3,7 @@ function candidateList() {
     var settings = {};
     var config = {};
 
-    function init(profile){
+    function init(profile, baseUrl){
         settings.rowContainer= $('.candidateListing'),
         settings.header= $('#jobDetails'),
         settings.candidateRowClass= ".candidateRow",
@@ -49,9 +49,12 @@ function candidateList() {
         settings.bulkBackIcon = $(".bulkBackIcon"),
         settings.secondMassActionContainer = $("#secondMassActionContainer");
         settings.totalApplicationsCount = 0;
+        settings.recommendationLinkClass = $(".recommendationsLink");
+        settings.baseUrl = baseUrl;
+
         settings.emptyView = $(".empty-screen"),
         settings.contactMenu=$('.contact-menu'),
-        settings.contactMenubutton=$('.contactMenubutton'),
+        settings.contactMenubutton=$('.contactMenubutton');
         onClickBulkDownArrow()
         onClickMassCheckbox()
         onClickCandidateOtherActions()
@@ -61,6 +64,7 @@ function candidateList() {
         onClickMassComment()
         onChangebulkCheckbox()
         onClickCoverLetterLink()
+        onClickRecommendationLink()
         onClickActionListItems()
         contactMenu()
         onClickBulkBackIcon()
@@ -75,8 +79,13 @@ function candidateList() {
             e.stopPropagation()
         })
 
-        if(profile.excel) {
+        if(parseInt(profile.excel)) {
             settings.downloadExcelMass.removeClass("hidden")
+            settings.bulkDownArrow.removeClass("hidden")
+        }
+        if(parseInt(profile.bulk)) {
+            settings.massResumeDownload.removeClass("hidden")
+            settings.bulkDownArrow.removeClass("hidden")
         }
 	}
 
@@ -131,8 +140,14 @@ function candidateList() {
     }
 
     function onClickCoverLetterLink() {
-        settings.rowContainer.on('click', settings.coverLetterLinkClass, function(e){
+        settings.rowContainer.on('click', settings.coverLetterLinkClass, function(e) {
             settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 2});
+        })
+    }
+
+    function onClickRecommendationLink() {
+        settings.rowContainer.on('click', settings.recommendationLinkClass, function(e) {
+            // settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 2});
         })
     }
 
@@ -207,6 +222,7 @@ function candidateList() {
             downloadResumeButton: card.find(settings.candidateDownloadResumeButton),
             interviewinvite: card.find(".interviewinvite"),
             coverLetterLink: card.find(".coverLetterLink"),
+            recommendationsLink: card.find(".recommendationsLink"),
             viewCommentLink: card.find(".commentLink"),
             viewTagLink: card.find(".tagLink")
 		}
@@ -256,7 +272,8 @@ function candidateList() {
         item.shortlistButton.attr("data-action", 1);
         item.rejectButton.attr("data-action", 2);
         item.savedButton.attr("data-action", 3);
-        item.downloadResumeButton.attr("data-href", aData["resume"])
+
+        item.downloadResumeButton.attr("data-href", baseUrl + aData["resume"])
         item.downloadResumeButton.attr("download", aData["name"].replace(/ +/g, '_')+'_resume.pdf')
         var status = aData["status"];
         item.shortlistButton.attr("data-status", status);
@@ -339,6 +356,9 @@ function candidateList() {
         if(aData["cover"]) {
             item.coverLetterLink.removeClass("hidden")
         }
+        if(aData["recommendation"] && aData["recommendation"].length > 0) {
+            item.recommendationsLink.removeClass("hidden")
+        }
         var flag=0;
         if(aData["comment"]) {
             item.viewCommentLink.removeClass("hidden")
@@ -391,13 +411,15 @@ function candidateList() {
         item.element.find("li[data-attribute='"+newStatus+"'] .tabStats").text(parseInt(newCount) + number);
     }
 
-    function addToList(dataArray, status, pageNumber, pageContent){
+    function addToList(dataArray, status, pageNumber, pageContent, filterFlag){
 		var str = '';
         var element = $(".candidateListing[data-status-attribute='"+status+"']");
         hideShells(status);
 
-        console.log(status)
         if(dataArray.length<1 && pageNumber ==1) {
+            if(filterFlag > 0) {
+                return
+            }
 			if(status== ""){
 				$('.user-text').text('You have not received any applications yet.');
 				$('.empty-text').text('You’ll a list here once you do');
@@ -600,8 +622,14 @@ function candidateList() {
 
             if(jQuery(this).is(":checked")){
                 var candidateSelect = jQuery(".candidate-select")
+                var el = settings.rowContainer.find(".candidate-select input:checked");
+                if(el.length > 100) {
+                    $(this).prop("checked", false);
+                    toastNotify(3, "You can perform action on only 100 candidates at once.")
+                    return
+                }
                 jQuery(this).closest(".candidate-select").addClass("selected");
-                candidateSelect.not(".candidateRow.prototype .candidate-select").addClass("selected");
+
                 var arr = returnSelectedApplications()
                 settings.totalApplicationsCount = arr.length;
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").attr("disabled", false);
@@ -637,8 +665,13 @@ function candidateList() {
 
             if(jQuery(this).is(":checked")){
                 var candidateSelect = jQuery(".candidate-select")
-                candidateSelect.not(".candidateRow.prototype .candidate-select").addClass("selected");
-                candidateSelect.find("input").prop("checked",  true);
+                var candidateSelectTotal = candidateSelect.not(".candidateRow.prototype .candidate-select");
+                if(candidateSelectTotal.length > 100) {
+                    candidateSelectTotal = candidateSelectTotal.slice(0, 100);
+                    toastNotify(3, "You can perform action on only 100 candidates at once.")
+                }
+                candidateSelectTotal.addClass("selected")
+                candidateSelectTotal.find("input").prop("checked",  true);
                 var el = jQuery(".candidate-select.selected");
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").attr("disabled", false);
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").prop("checked", false);
@@ -751,7 +784,6 @@ function candidateList() {
 
         var selectedApplicationIds = []
         $.each(el, function(index,anElem){
-
             var applicationId = $(anElem).closest(settings.candidateRowClass).attr("data-application-id")
 
             selectedApplicationIds.push(applicationId)
@@ -882,9 +914,7 @@ function candidateList() {
     }
 
     function populateCheckInputDropdown(status) {
-        // if(bulk == 1) {
-        //     settings.bulkDownArrow.removeClass("hidden")
-        // }
+
         var item = getJobsCategoryTabsElement();
         var count =  item.element.find("li[data-attribute='"+status+"'] .tabStats").text()
         if(parseInt(status) == 0) {

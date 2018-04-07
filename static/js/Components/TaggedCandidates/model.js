@@ -97,7 +97,7 @@ function candidateList() {
        else {
            item.notice.text((aData["notice"] + " months"));
        }
-       item.downloadResumeButton.attr("href", aData["resume"])
+       item.downloadResumeButton.attr("href",baseUrl + aData["resume"])
        item.downloadResumeButton.attr("download", aData["name"].replace(/ +/g, '_')+'_resume.pdf')
 
        var tagStr = '';
@@ -173,14 +173,14 @@ function candidateList() {
        if(dataArray.length<1 && pageNumber ==1){
            if(Tagval==-1){
             settings.emptyView.removeClass('hidden');
-            return  
+            return
            }
            else{
                 $('.user-text').text('No tagged candidates for a particular tag');
 				$('.empty-text').text('There are no candidates for the selected tag');
 				settings.emptyView.removeClass('hidden');
                 return
-            }	
+            }
        }
        settings.emptyView.addClass('hidden');
        var str = '';
