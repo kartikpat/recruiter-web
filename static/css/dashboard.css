@@ -1652,15 +1652,18 @@ span.sticker {
         .page-content .dashboard .header-row .heading .icon-sunrise:before {
           font-size: 40px;
           line-height: 20px;
-          vertical-align: top; }
+          vertical-align: top;
+          margin-left: 0px; }
         .page-content .dashboard .header-row .heading .icon-afternoon:before {
           font-size: 40px;
           line-height: 20px;
-          vertical-align: top; }
+          vertical-align: top;
+          margin-left: 0px; }
         .page-content .dashboard .header-row .heading .icon-sunset:before {
           font-size: 40px;
           line-height: 20px;
-          vertical-align: top; }
+          vertical-align: top;
+          margin-left: 0px; }
       .page-content .dashboard .header-row .sub-heading {
         font-size: 14px;
         margin-top: 14px;
@@ -1741,8 +1744,7 @@ span.sticker {
         width: 80px;
         height: 75px;
         object-fit: cover;
-        display: table-cell;
-        border-radius: 50%; }
+        display: table-cell; }
     .page-content .detail-card .profile .calculus {
       padding-top: 20px !important; }
     .page-content .detail-card .profile .general {
@@ -2003,6 +2005,8 @@ span.sticker {
       border-left: thin solid #e4e4e4; }
     .page-content .feed-row .main-content .stats, .page-content .feed-row .main-content .title {
       width: 90%; }
+      .page-content .feed-row .main-content .stats .applications, .page-content .feed-row .main-content .title .applications {
+        padding-left: 5px; }
     .page-content .feed-row .main-content .meta-content {
       margin-top: 20px; }
     .page-content .feed-row .main-content .stats {
