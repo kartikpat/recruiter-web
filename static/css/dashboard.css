@@ -1798,17 +1798,18 @@ span.sticker {
       border-radius: 6px;
       padding-bottom: 10px; }
     .page-content .detail-card .notification-row.multiple {
-      padding: 3px 0; }
+      padding: 4px 0; }
       .page-content .detail-card .notification-row.multiple .meta {
         color: #737373;
         font-size: 13px;
         line-height: 18px;
         margin-bottom: 5px; }
       .page-content .detail-card .notification-row.multiple .see-all {
-        text-align: center; }
+        text-align: center;
+        padding-bottom: 4px; }
         .page-content .detail-card .notification-row.multiple .see-all .icon-right_arrow:before {
           content: '\e812';
-          font-size: 12px; }
+          font-size: 11px; }
       .page-content .detail-card .notification-row.multiple .see-all:hover {
         text-decoration: underline; }
       .page-content .detail-card .notification-row.multiple .button {

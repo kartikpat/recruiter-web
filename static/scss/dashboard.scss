@@ -385,7 +385,7 @@ $button-border-color: #8f8a8a;
 		    padding-bottom: 10px;
 		}
 		.notification-row.multiple{
-			padding: 3px 0;
+			padding: 4px 0;
 			.meta{
 				color: $meta-grey;
 				font-size: 13px;
@@ -394,9 +394,10 @@ $button-border-color: #8f8a8a;
 			}
 			.see-all{
 				text-align: center;
+				padding-bottom: 4px;
 				.icon-right_arrow:before {
 					content: '\e812';
-					font-size: 12px;
+					font-size: 11px;
 				}
 			}
 			.see-all:hover{
