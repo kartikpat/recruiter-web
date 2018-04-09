@@ -8,11 +8,9 @@
     display: inline-block;
 
     cursor: pointer;
-    .icon-down_arrow {
-        font-size: 11px;
-        margin-left: 3px;
-    }
+
 }
+
 
 .filtersExtraButtons {
     font-size: 13px;
@@ -1715,6 +1713,9 @@ input::-webkit-input-placeholder {
 												&.user-link {
 													a {
 														color:$link-color;
+                                                        // &:hover {
+                                                        //     text-decoration: underline;
+                                                        // }
 													}
 												}
 											}
@@ -1734,6 +1735,13 @@ input::-webkit-input-placeholder {
                                     }
                                     .see-more {
                                         font-size: 14px;
+                                    }
+                                    .icon-down_arrow, .icon-up_arrow {
+                                        font-size: 11px;
+                                        margin-left: 3px;
+                                    }
+                                    .recommendationListSecond {
+                                        display: none;
                                     }
 								}
 							}

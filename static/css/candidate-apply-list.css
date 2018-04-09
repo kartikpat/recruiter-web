@@ -2947,9 +2947,6 @@ span.sticker {
 .seeMoreRec {
   display: inline-block;
   cursor: pointer; }
-  .seeMoreRec .icon-down_arrow {
-    font-size: 11px;
-    margin-left: 3px; }
 
 .filtersExtraButtons {
   font-size: 13px;
@@ -4508,6 +4505,11 @@ input::-webkit-input-placeholder {
                 border-bottom: 1px solid #e8e8e8; }
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .see-more {
                 font-size: 14px; }
+              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .icon-down_arrow, .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .icon-up_arrow {
+                font-size: 11px;
+                margin-left: 3px; }
+              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendationListSecond {
+                display: none; }
           .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-resume {
             background-color: #C0C0C0; }
           .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .js_resume canvas {

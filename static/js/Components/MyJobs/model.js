@@ -29,6 +29,7 @@ function Jobs() {
 		settings.emptyView=$('.empty-screen');
 		settings.headings=$('.table-headings');
 		settings.socialIcon = $('.socialIcon');
+		settings.type = 'all';
 		$(".header .menu-list-item.my-jobs").addClass("active");
 
 		onClickJobRefresh();
@@ -125,6 +126,7 @@ function Jobs() {
 	function onChangeJobFilters(fn) {
 		settings.jobFilters.change(function() {
 			var sortById = $(this).val();
+			settings.type = sortById;
 		    return fn(sortById);
 		})
 	}
@@ -292,6 +294,9 @@ function Jobs() {
 	}
 
 	function addToList(dataArray, pageNumber, pageContent,type){
+		if(type != settings.type) {
+			return
+		}
 		var str = '';
 		hideShell()
 
@@ -365,6 +370,10 @@ function Jobs() {
 
 	}
 
+	function hideEmptyView() {
+		settings.emptyView.addClass("hidden")
+	}
+
 	return {
 		init: init,
 		addToList: addToList,
@@ -383,7 +392,8 @@ function Jobs() {
 		showShell: showShell,
 		showLoaderOverlay: showLoaderOverlay,
 		hideLoaderOverlay: hideLoaderOverlay,
-		emptyList: emptyList
+		emptyList: emptyList,
+		hideEmptyView: hideEmptyView
 	}
 
 	function initializeTooltip() {

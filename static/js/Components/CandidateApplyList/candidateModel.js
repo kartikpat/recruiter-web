@@ -34,18 +34,15 @@ function Candidate() {
         settings.sendInterviewInviteF2FClass = ".inviteF2f",
         settings.sendInterviewInviteTelephonicClass = ".inviteTelephonic"
         settings.seeMoreRec = $(".seeMoreRec");
-        settings.recommendationList = $(".recommendationList")
+        settings.recommendationListSecond = $(".recommendationListSecond")
         jQuery("#tabbed-content").tabs({});
-
-        console.log(baseUrl)
 
     }
 
     function onClickSeeMoreRec(fn) {
         settings.seeMoreRec.click(function() {
-            $(this).toggleClass("active");
-            var data = {
-                "recommendation" : [{
+            var data =
+                [{
                             "name": "ankur saini",
                             "url": "https://www.linkedin.com/in/ankur-saini-b60686141",
                             "text": "hello<br/><br/>thanks and regards",
@@ -56,13 +53,20 @@ function Candidate() {
                             "url": "https://www.linkedin.com/in/balaritu",
                             "text": "Testing"
                         }]
-            }
-
-            if($(this).hasClass("active")) {
+            if($(this).attr("data-clicked") == "false") {
                 addRecommendations(data)
-                $(this).text("See Less")
-                // $(this).next.addClass("")
+                $(this).attr("data-clicked", "true")
             }
+            settings.recommendationListSecond.slideToggle()
+            $(this).toggleClass("active");
+            if($(this).hasClass("active") ) {
+                $(this).text("See Less")
+                $(this).next().addClass("icon-up_arrow").removeClass("icon-down_arrow")
+                return
+            }
+            $(this).text("See More")
+            $(this).next().addClass("icon-down_arrow").removeClass("icon-up_arrow")
+            return
             fn()
         })
     }
@@ -220,12 +224,11 @@ function Candidate() {
             item.link.attr("href",anObj["url"]);
             item.link.text(anObj["url"]);
             item.body.text(anObj["text"])
-            if(index != data.length - 1)
-                item.seperator.removeClass("hidden")
-            recStr+=item.element[0].outerHTML
 
+            item.seperator.removeClass("hidden")
+            recStr+=item.element[0].outerHTML
         })
-        settings.recommendationList.append(recStr)
+        settings.recommendationListSecond.html(recStr)
 
     }
 
@@ -328,7 +331,6 @@ function Candidate() {
             })
             item.recommendationList.html(recStr)
             if(aData["extraRecom"]) {
-
                 item.seeMoreRec.removeClass("hidden");
             }
             item.recommendationList.closest(".recommendations").removeClass("hidden");
@@ -464,6 +466,7 @@ function Candidate() {
         item.resume.empty()
         item.savedButton.html("<span class='icon'><i class='icon-star'></i></span>Save for Later");
         item.recommendationList.closest(".recommendations").addClass("hidden");
+        settings.seeMoreRec.attr("data-clicked", "false")
         $(".coverLetterTab").addClass("hidden");
 
     }

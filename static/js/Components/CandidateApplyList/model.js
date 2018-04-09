@@ -273,6 +273,9 @@ function candidateList() {
             item.savedButton.text("Saved for later");
         }
         item.element.attr("data-status", status)
+        if(aData["invite"]) {
+            item.interviewinvite.text("Resend Interview Invite.")
+        }
         // var tagStr = '';
         // $.each(aData["tags"],function(index, aTag) {
         //     var tag =  settings.candidateTagsPrototype.clone().text(aTag["name"]).removeClass("prototype hidden");
@@ -397,6 +400,7 @@ function candidateList() {
 
     function addToList(dataArray, status, pageNumber, pageContent, filterFlag){
 		var str = '';
+
         var element = $(".candidateListing[data-status-attribute='"+status+"']");
         hideShells(status);
 
@@ -888,7 +892,8 @@ function candidateList() {
     }
 
     function changeInviteText(applicationId) {
-        $(settings.candidateRowClass).find(".candidateRow[data-application-id="+applicationId+"] .interviewinvite").text("Resend Interview Invite")
+
+        settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .interviewinvite").text("Resend Interview Invite")
     }
 
     function changeStatus(arr, newStatus) {
