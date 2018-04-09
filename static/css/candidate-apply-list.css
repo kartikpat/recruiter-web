@@ -901,6 +901,9 @@ span.sticker {
 .icon-star-2::before {
   content: '\e815'; }
 
+* {
+  word-break: break-word; }
+
 .left {
   float: left; }
 
@@ -2940,6 +2943,13 @@ span.sticker {
     width: 50%; }
     .topInstitutesContainer .check-input label {
       font-weight: 700; }
+
+.seeMoreRec {
+  display: inline-block;
+  cursor: pointer; }
+  .seeMoreRec .icon-down_arrow {
+    font-size: 11px;
+    margin-left: 3px; }
 
 .filtersExtraButtons {
   font-size: 13px;

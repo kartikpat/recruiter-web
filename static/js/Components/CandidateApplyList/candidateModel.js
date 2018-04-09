@@ -34,6 +34,7 @@ function Candidate() {
         settings.sendInterviewInviteF2FClass = ".inviteF2f",
         settings.sendInterviewInviteTelephonicClass = ".inviteTelephonic"
         settings.seeMoreRec = $(".seeMoreRec");
+        settings.recommendationList = $(".recommendationList")
         jQuery("#tabbed-content").tabs({});
 
         console.log(baseUrl)
@@ -42,6 +43,26 @@ function Candidate() {
 
     function onClickSeeMoreRec(fn) {
         settings.seeMoreRec.click(function() {
+            $(this).toggleClass("active");
+            var data = {
+                "recommendation" : [{
+                            "name": "ankur saini",
+                            "url": "https://www.linkedin.com/in/ankur-saini-b60686141",
+                            "text": "hello<br/><br/>thanks and regards",
+                            "img": null
+                        },
+                        {
+                            "name": "Ritu Bala",
+                            "url": "https://www.linkedin.com/in/balaritu",
+                            "text": "Testing"
+                        }]
+            }
+
+            if($(this).hasClass("active")) {
+                addRecommendations(data)
+                $(this).text("See Less")
+                // $(this).next.addClass("")
+            }
             fn()
         })
     }
@@ -190,26 +211,22 @@ function Candidate() {
     }
 
     function addRecommendations(data) {
-        if(data["recommendation"].length > 0) {
-            var recStr = '';
+        var recStr = '';
 
-            $.each(aData["recommendation"],function(index, anObj) {
+        $.each(data,function(index, anObj) {
 
-                var item = getRecommendationElement()
-                item.name.text(anObj["name"])
-                item.link.attr("href",anObj["url"]);
-                item.link.text(anObj["url"]);
-                item.body.text(anObj["text"])
-                if(index != aData["recommendation"].length - 1)
-                    item.seperator.removeClass("hidden")
-                recStr+=item.element[0].outerHTML
-            })
-            item.recommendationList.html(recStr)
-            if(aData["extraRecom"]) {
-                item.seeMoreRec.removeClass("hidden");
-            }
-            item.recommendationList.closest(".recommendations").removeClass("hidden");
-        }
+            var item = getRecommendationElement()
+            item.name.text(anObj["name"])
+            item.link.attr("href",anObj["url"]);
+            item.link.text(anObj["url"]);
+            item.body.text(anObj["text"])
+            if(index != data.length - 1)
+                item.seperator.removeClass("hidden")
+            recStr+=item.element[0].outerHTML
+
+        })
+        settings.recommendationList.append(recStr)
+
     }
 
     function populateCandidateData(aData, type, status) {
@@ -280,7 +297,18 @@ function Candidate() {
             })
         }
         item.profList.html(profStr)
-
+        aData["recommendation"] = [ {
+                    "name": "ankur saini",
+                    "url": "https://www.linkedin.com/in/ankur-saini-b60686141",
+                    "text": "hello<br/><br/>thanks and regards",
+                    "img": null
+                },
+                {
+                    "name": "Ritu Bala",
+                    "url": "https://www.linkedin.com/in/balaritu",
+                    "text": "Testing"
+                }]
+        aData["extraRecom"] = 1;
         if(aData["recommendation"].length > 0) {
             var recStr = '';
 
@@ -293,10 +321,14 @@ function Candidate() {
                 item.body.html(anObj["text"])
                 if(index != aData["recommendation"].length - 1)
                     item.seperator.removeClass("hidden")
+                if(aData["extraRecom"]) {
+                    item.seperator.removeClass("hidden")
+                }
                 recStr+=item.element[0].outerHTML
             })
             item.recommendationList.html(recStr)
             if(aData["extraRecom"]) {
+
                 item.seeMoreRec.removeClass("hidden");
             }
             item.recommendationList.closest(".recommendations").removeClass("hidden");

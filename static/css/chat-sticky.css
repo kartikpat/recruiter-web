@@ -929,6 +929,9 @@ span.sticker {
 .icon-star-2::before {
   content: '\e815'; }
 
+* {
+  word-break: break-word; }
+
 .left {
   float: left; }
 
