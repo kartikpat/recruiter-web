@@ -13,11 +13,11 @@ jQuery(".button-action-list").on("click", function() {
 })
 
 jQuery(".pill-button input").on('focus', function() {
-	jQuery(this).parent().toggleClass("inactive");
+	jQuery(this).parent().removeClass("inactive");
 });
 
 jQuery(".pill-button input").on('blur', function() {
-	// jQuery(this).parent().addClass("inactive");
+	jQuery(this).parent().addClass("inactive");
 	jQuery(this).attr("placeholder", jQuery(this).attr("data-placeholder-value"));
 });
 
