@@ -308,6 +308,15 @@
 .icon-sunset::before {
   content: '\e83e'; }
 
+.icon-facebook::before {
+  content: '\e84a'; }
+
+.icon-twitter::before {
+  content: '\e849'; }
+
+.icon-linkedin::before {
+  content: '\e84b'; }
+
 .tooltipster-fall,
 .tooltipster-grow.tooltipster-show {
   -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);

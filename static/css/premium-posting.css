@@ -364,6 +364,15 @@
 .icon-sunset::before {
   content: '\e83e'; }
 
+.icon-facebook::before {
+  content: '\e84a'; }
+
+.icon-twitter::before {
+  content: '\e849'; }
+
+.icon-linkedin::before {
+  content: '\e84b'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -916,6 +925,15 @@ span.sticker {
 .icon-sunset::before {
   content: '\e83e'; }
 
+.icon-facebook::before {
+  content: '\e84a'; }
+
+.icon-twitter::before {
+  content: '\e849'; }
+
+.icon-linkedin::before {
+  content: '\e84b'; }
+
 /*[Recruiter_Homepage]*/
 /*[/Recruiter_Homepage]*/
 /**** Fontello Font Icons : ****/
@@ -1224,6 +1242,15 @@ span.sticker {
 
 .icon-sunset::before {
   content: '\e83e'; }
+
+.icon-facebook::before {
+  content: '\e84a'; }
+
+.icon-twitter::before {
+  content: '\e849'; }
+
+.icon-linkedin::before {
+  content: '\e84b'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
