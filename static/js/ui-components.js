@@ -121,9 +121,11 @@ jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function
 
 							if($(el).text().toLowerCase()==value.toLowerCase()){
 								dataValue = $(el).attr('data-value');
+								$(el).addClass('tag-added');
+								console.log(el);
 								return false;
 							}
-						})
+						});
 					}
 					if(!value) {
 						return
