@@ -170,3 +170,17 @@ function sortArrayOfObjectsByKey(arr) {
 	})
 	return arr;
 }
+
+function sortArrayOfObjectsByMultipleKey(arr) {
+	arr.sort(function(a, b) {
+      	if (a.exp.from.year == b.exp.from.year) {
+         	return b.exp.from.month - a.exp.from.month;
+      	}
+      	return b.exp.from.year > a.exp.from.year ? 1 : -1;
+   });
+   return arr
+}
+
+function ifKeyExists(key, obj) {
+	return (key in obj)
+}

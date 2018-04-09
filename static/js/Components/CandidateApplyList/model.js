@@ -74,7 +74,7 @@ function candidateList() {
             $(settings.bulkActionsDropdown).addClass("hidden")
             settings.contactMenu.addClass('hidden')
         });
-         
+
         settings.bulkActionsDropdown.click(function(e){
             e.stopPropagation()
         })
@@ -184,7 +184,7 @@ function candidateList() {
 	function setConfig(key, value) {
 		config[key] = value;
     }
-    
+
     function contactMenu(){
         settings.contactMenubutton.on('click',function(e){
             e.preventDefault();
@@ -194,7 +194,7 @@ function candidateList() {
         settings.contactMenu.click(function(e){
             e.stopPropagation();
         });
-      
+
     }
 
     function getElement(id) {
@@ -305,6 +305,7 @@ function candidateList() {
             profStr = "<div style='line-height:1.5;color:#2b2b2b;'><span style='font-weight:bold;'>"+aData["name"]+"</span> does not have any work experience yet</div>"
         }
         else {
+            aData["jobs"] = sortArrayOfObjectsByMultipleKey(aData["jobs"])
             $.each(aData["jobs"],function(index, anObj) {
                 if(index > 2) {
                     return
@@ -316,7 +317,7 @@ function candidateList() {
                 var fromMon = getMonthName(anObj["exp"]["from"]["month"]);
                 var toMon = getMonthName(anObj["exp"]["to"]["month"]);
                 var fromYear = anObj["exp"]["from"]["year"];
-                var toYear = anObj["exp"]["from"]["year"];
+                var toYear = anObj["exp"]["to"]["year"];
                 var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
                 item.tenure.text(str);
 

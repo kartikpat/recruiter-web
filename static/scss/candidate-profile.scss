@@ -2,6 +2,13 @@
 @import 'input-elements';
 @import 'chat-sidebar';
 
+.seeMoreRec {
+    display: inline-block;
+
+    cursor: pointer;
+
+}
+
 .loader-overlay {
     z-index: 99;
 }
@@ -260,12 +267,12 @@
 									textarea {
 										width: 50%;
 										padding: 5px;
-										border-left: 3px solid $button-color-green;
+
 										min-height: 50px;
 										&:focus {
 											outline: none;
 											border: 1px solid $button-color-green;
-											border-left: 3px solid green;
+
 										}
 									}
 									.action-buttons {
@@ -388,46 +395,66 @@
 									}
 								}
 
-								&.recommendations {
-									.recommendation-header {
-										.user-image {
-											display:inline-block;
-											vertical-align: middle;
-											margin-right:20px;
-											img {
-												border-radius:50%;
-											}
-										}
-										.user-details {
-											display:inline-block;
-											vertical-align:top;
-											padding:9px 0	;
-											p {
-												line-height:1.5;
-												color:$color-black;
+                                &.recommendations {
+                                    .recommendation-header {
+                                        .user-image {
+                                            display:inline-block;
+                                            vertical-align: middle;
+                                            margin-right:20px;
+                                            img {
+                                                border-radius:50%;
+                                            }
+                                        }
+                                        .user-details {
+                                            display:inline-block;
+                                            vertical-align:top;
+                                            padding:9px 0	;
+                                            p {
+                                                line-height:1.5;
+                                                color:$color-black;
 
-												&.user-name {
-													font-weight:bold;
-													font-size:$resume-listing-font-size;
-												}
+                                                &.user-name {
+                                                    font-weight:bold;
+                                                    font-size:$resume-listing-font-size;
+                                                    text-transform: capitalize;
+                                                }
 
-												&.user-link {
-													a {
-														color:$link-color;
-													}
-												}
-											}
-										}
-									}
+                                                &.user-link {
+                                                    a {
+                                                        color:$link-color;
+                                                        // &:hover {
+                                                        //     text-decoration: underline;
+                                                        // }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
 
-									.recommendation-body {
-										margin:20px 0 0 0;
+                                    .recommendation-body {
+                                        margin:0px 0 0 0;
 
-										p {
-											line-height:1.5;
-										}
-									}
-								}
+                                        p {
+                                            line-height:1.5;
+                                            word-wrap: break-word;
+
+                                        }
+                                    }
+                                    .separator {
+                                        margin:20px 0;
+                                        border-bottom:1px solid $border-color-base;
+                                    }
+                                    .see-more {
+                                        font-size: 14px;
+                                    }
+                                    .icon-down_arrow, .icon-up_arrow {
+                                        font-size: 11px;
+                                        margin-left: 3px;
+                                    }
+                                    .recommendationListSecond {
+                                        display: none;
+                                    }
+                                }
 							}
 						}
 
@@ -802,14 +829,14 @@
 	textarea {
 		width: 100%;
 		padding: 5px;
-		border-left: 3px solid $button-color-green;
+
 		min-height: 50px;
 		margin-bottom:15px;
 		overflow: hidden;
 		&:focus {
 			outline: none;
 			border: 1px solid $button-color-green;
-			border-left: 3px solid green;
+
 		}
 	}
 	.action-buttons {
