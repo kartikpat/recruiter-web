@@ -586,13 +586,14 @@
                         box-sizing: border-box;
                         background-color: $color-white;
                         display: block;
-                        width: 80%;
+                        width: 84%;
                         height: 70px;
                         margin-left: 2%;
+                        margin-bottom: 20px;
                         .connect-container{
                              text-align: center;
                              display: inline-block;
-                             padding-top: 14px;
+                             padding-top: 10px;
                              .image-box{
                                 .icon-facebook::before {
                                     margin: 0px;
@@ -605,9 +606,11 @@
                                 }
                             }
                             .tag-box{
-                                vertical-align: top;
+                                // vertical-align: top;
                                 display: inline-block;
                                 margin-left: 0px;
+                                vertical-align: middle;
+                                margin-top: 8px;
                                 a{
                                     display: block;
                                     text-align: center;
@@ -634,7 +637,7 @@
                         display: inline-block;
                         border-color:$page-content-background-color;
                         img{
-                                 
+
                         }
                     }
                     .content-wrapper{
@@ -656,11 +659,14 @@
                 }
 
                 .tagline{
-                    font-size: 14px;
-                    padding-left: 10px;
+                    font-size: 16px;
+                    padding-left: 20px;
+                    padding-right: 5px;
                 }
                 .links{
-                    padding-left: 10px;
+                    padding-left: 20px;
+                    padding-bottom:15px;
+                    padding-right: 10px;
                     a{
               
                     }
@@ -688,7 +694,13 @@
     }
 }
     
-
+@media only screen and (max-width: 375px){
+.page-content .main-wrapper .container .dashboard .content .image-container img {
+    display: inline-block;
+    margin-top: 25px;
+    margin-bottom: 74px;
+}
+}
 
 @media only screen and (max-width: 320px){
 .page-content .main-wrapper .container .dashboard .content .content-wrapper {

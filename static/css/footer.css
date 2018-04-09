@@ -376,6 +376,18 @@
     .footer .footer-social-media .social-media-icon {
       display: inline-block;
       margin: 0 10px; }
+      .footer .footer-social-media .social-media-icon .icon-facebook::before {
+        content: '\e84a';
+        font-size: 45px;
+        color: #c1c1c1; }
+    .footer .footer-social-media .twitter .icon-twitter::before {
+      content: '\e849';
+      font-size: 45px;
+      color: #c1c1c1; }
+    .footer .footer-social-media .linkedin .icon-linkedin::before {
+      content: '\e84b';
+      font-size: 45px;
+      color: #c1c1c1; }
   .footer .footer-copy-text p {
     text-align: center;
     font-size: 14px;

@@ -721,13 +721,14 @@
         box-sizing: border-box;
         background-color: #FFF;
         display: block;
-        width: 80%;
+        width: 84%;
         height: 70px;
-        margin-left: 2%; }
+        margin-left: 2%;
+        margin-bottom: 20px; }
         .page-content .main-wrapper .container .dashboard .complete-profile .connecter .connect .connect-container {
           text-align: center;
           display: inline-block;
-          padding-top: 14px; }
+          padding-top: 10px; }
           .page-content .main-wrapper .container .dashboard .complete-profile .connecter .connect .connect-container .image-box .icon-facebook::before {
             margin: 0px; }
           .page-content .main-wrapper .container .dashboard .complete-profile .connecter .connect .connect-container .image-box .icon-twitter::before {
@@ -735,9 +736,10 @@
           .page-content .main-wrapper .container .dashboard .complete-profile .connecter .connect .connect-container .image-box .icon-linkedin::before {
             margin: 0px; }
           .page-content .main-wrapper .container .dashboard .complete-profile .connecter .connect .connect-container .tag-box {
-            vertical-align: top;
             display: inline-block;
-            margin-left: 0px; }
+            margin-left: 0px;
+            vertical-align: middle;
+            margin-top: 8px; }
             .page-content .main-wrapper .container .dashboard .complete-profile .connecter .connect .connect-container .tag-box a {
               display: block;
               text-align: center;
@@ -773,10 +775,13 @@
           transform: scaleY(1.0001);
           width: 100%; }
     .page-content .main-wrapper .container .dashboard .tagline {
-      font-size: 14px;
-      padding-left: 10px; }
+      font-size: 16px;
+      padding-left: 20px;
+      padding-right: 5px; }
     .page-content .main-wrapper .container .dashboard .links {
-      padding-left: 10px; }
+      padding-left: 20px;
+      padding-bottom: 15px;
+      padding-right: 10px; }
   .page-content .main-wrapper .container .heading {
     margin-left: 0px; }
   .page-content .main-wrapper .container .dashboard .links .details {
@@ -784,6 +789,12 @@
   .page-content .main-wrapper .container .dashboard .complete-profile .connecter .connect .connect-container .image-box img {
     width: 33px;
     height: 35px; } }
+
+@media only screen and (max-width: 375px) {
+  .page-content .main-wrapper .container .dashboard .content .image-container img {
+    display: inline-block;
+    margin-top: 25px;
+    margin-bottom: 74px; } }
 
 @media only screen and (max-width: 320px) {
   .page-content .main-wrapper .container .dashboard .content .content-wrapper {
