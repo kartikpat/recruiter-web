@@ -529,6 +529,8 @@ body {
           margin: 0 auto; }
         .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container .formgroup {
           position: relative;
+          width: 85%;
+          margin: 0 auto;
           margin-bottom: 25px; }
           .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container .formgroup input {
             background-color: transparent;

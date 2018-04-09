@@ -1,5 +1,4 @@
 @import 'common/spacings';
-
 @import 'components/_type';
 @import 'components/_colors';
 
@@ -259,6 +258,8 @@ body {
 
 						.formgroup {
 							position:relative;
+							width: 85%;
+							margin: 0 auto;
 							margin-bottom:25px;
 
 						    input {
