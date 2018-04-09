@@ -283,7 +283,8 @@
       box-sizing: border-box;
       background-color: #FFF;
       box-shadow: 0px 2px 9px 0px rgba(214, 214, 214, 0.3);
-      width: 100%;
+      width: 80%;
+      margin: 0 auto;
       margin-bottom: 20px; }
       .page-content .main-wrapper .container .dashboard .profile-content {
         display: inline;
@@ -329,7 +330,8 @@
           position: relative; }
           .page-content .main-wrapper .container .dashboard .complete-profile .connect .connect-container {
             text-align: center;
-            padding-top: 15px; }
+            padding-top: 15px;
+            cursor: pointer; }
             .page-content .main-wrapper .container .dashboard .complete-profile .connect .connect-container .image-box {
               display: inline-block;
               margin-top: 10px; }
@@ -364,7 +366,7 @@
           margin: 1px; }
         .page-content .main-wrapper .container .dashboard .complete-profile .icon-container {
           position: absolute;
-          left: 221px;
+          left: 87%;
           color: #0c9176; }
       .page-content .main-wrapper .container .dashboard .content {
         box-shadow: 0px 2px 8px 0px rgba(214, 214, 214, 0.3);
@@ -465,7 +467,12 @@
         /* Approximation due to font substitution */ }
     .page-content .main-wrapper .container .heading {
       padding-top: 60px;
-      padding-bottom: 15px; }
+      padding-bottom: 15px;
+      margin: 0 auto;
+      text-align: left;
+      width: 80%;
+      font-size: 16px;
+      font-weight: 600; }
 
 @media only screen and (max-width: 800px) {
   .page-content .main-wrapper .container .dashboard .profile-content {

@@ -22,7 +22,8 @@
             box-sizing: border-box;
             background-color:$color-white;
             box-shadow: 0px 2px 9px 0px rgba(214, 214, 214, 0.3);
-            width: 100%;
+            width: 80%;
+            margin: 0 auto;
             margin-bottom: 20px;
                 .profile-content{
                     display: inline;
@@ -77,6 +78,7 @@
                         .connect-container{
                             text-align: center;
                             padding-top: 15px;
+                            cursor: pointer;
                             .image-box{
                                 display: inline-block;
                                 margin-top: 10px;
@@ -119,7 +121,7 @@
                     }
                     .icon-container{
                         position: absolute;
-                        left: 221px;
+                        left: 87%;
                         color: #0c9176;
                     }
                    
@@ -230,6 +232,11 @@
             .heading{
                 padding-top: 60px;
                 padding-bottom: 15px;
+                margin: 0 auto;
+                text-align: left;
+                width: 80%;
+                font-size: 16px;
+                font-weight: 600;
             }
         }
     }
