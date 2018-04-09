@@ -11,11 +11,8 @@ $(document).ready(function() {
 
 	function onSuccessfulLogin(topic, data){
 		console.log('Login successful');
-
 		localStorage.id = data["id"];
-
 		window.location="/";
-
 	}
 	function onFailedLogin(topic, data){
 		console.log('Login failed');

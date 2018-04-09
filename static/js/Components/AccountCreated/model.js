@@ -21,6 +21,8 @@ function userCredentials(){
 	function loginHandler(fn){
 		user.login.click(fn);
 	}
+
+
 	function getData(){
 		return {
 			email: user.email.val(),
@@ -80,7 +82,7 @@ function userCredentials(){
 		validateLogin: validateLogin,
 		loginHandler: loginHandler,
 		errorHandler: errorHandler,
-		test: test
+		test: test,
 	}
 
 }

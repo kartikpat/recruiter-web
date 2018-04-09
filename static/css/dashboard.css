@@ -1697,6 +1697,8 @@ span.sticker {
       .page-content .header-row .heading-button .icon-right_arrow:before {
         content: '\e812';
         font-size: 12px; }
+    .page-content .header-row .heading-button:hover {
+      text-decoration: underline; }
   .page-content .jobs-card {
     padding-top: 20px;
     padding-bottom: 20px; }
@@ -1715,7 +1717,11 @@ span.sticker {
       border-radius: 6px; }
       .page-content .detail-card .slider-profile .slider-icon {
         padding-left: 0px !important;
-        padding-top: 8px !important; }
+        padding-top: 8px !important;
+        border-radius: 0% !important; }
+        .page-content .detail-card .slider-profile .slider-icon img {
+          border-radius: 0% !important;
+          border: none !important; }
     .page-content .detail-card .meta-prop {
       display: inline-block;
       margin-right: 10px;
@@ -1742,9 +1748,12 @@ span.sticker {
       padding-left: 10px; }
       .page-content .detail-card .profile .icon img {
         width: 80px;
-        height: 75px;
+        height: 80px;
         object-fit: cover;
-        display: table-cell; }
+        display: table-cell;
+        border-radius: 50%;
+        border: 1px solid #dedcdc;
+        background-color: #f7f7f7; }
     .page-content .detail-card .profile .calculus {
       padding-top: 20px !important; }
     .page-content .detail-card .profile .general {
@@ -1762,6 +1771,8 @@ span.sticker {
         font-weight: 600; }
         .page-content .detail-card .profile .general .name img {
           width: 17px; }
+      .page-content .detail-card .profile .general .name:hover {
+        text-decoration: underline; }
       .page-content .detail-card .profile .general .meta {
         color: #2b2b2b;
         font-size: 14px;
@@ -1787,7 +1798,7 @@ span.sticker {
       border-radius: 6px;
       padding-bottom: 10px; }
     .page-content .detail-card .notification-row.multiple {
-      padding: 5px 0; }
+      padding: 3px 0; }
       .page-content .detail-card .notification-row.multiple .meta {
         color: #737373;
         font-size: 13px;
@@ -1798,6 +1809,8 @@ span.sticker {
         .page-content .detail-card .notification-row.multiple .see-all .icon-right_arrow:before {
           content: '\e812';
           font-size: 12px; }
+      .page-content .detail-card .notification-row.multiple .see-all:hover {
+        text-decoration: underline; }
       .page-content .detail-card .notification-row.multiple .button {
         font-size: 13px; }
       .page-content .detail-card .notification-row.multiple .profile-detail {
@@ -1810,6 +1823,12 @@ span.sticker {
         padding-top: 0px; }
         .page-content .detail-card .notification-row.multiple .action-buttons .button {
           margin-right: 10px; }
+        .page-content .detail-card .notification-row.multiple .action-buttons .candidateShortlist:hover {
+          background: #1f8f75;
+          color: #fff; }
+        .page-content .detail-card .notification-row.multiple .action-buttons .candidateReject:hover {
+          background: #af595a;
+          color: #fff; }
     .page-content .detail-card .highlighted-banner {
       background-color: #f3fbfb;
       height: 40px;
@@ -1871,7 +1890,7 @@ span.sticker {
   .page-content .interview .row {
     margin-bottom: 20px; }
   .page-content .interview .profile .general {
-    border-left: thin solid #e4e4e4;
+    border-left: thin solid #e9eef8;
     margin-left: -5px; }
     .page-content .interview .profile .general .name {
       color: #2b2b2b;
@@ -1895,6 +1914,9 @@ span.sticker {
       padding-left: 20px; }
     .page-content .feed-row .list li {
       padding: 5px; }
+      .page-content .feed-row .list li a:hover {
+        text-decoration: underline;
+        text-decoration-color: #2b2b2b; }
     .page-content .feed-row .main-content .meta-content {
       margin-top: 10px; }
     .page-content .feed-row .main-content .title, .page-content .feed-row .main-content .stats {
@@ -1916,6 +1938,8 @@ span.sticker {
         font-size: 14px; }
       .page-content .feed-row .main-content .stats .value {
         color: #149075; }
+      .page-content .feed-row .main-content .stats .value:hover {
+        text-decoration: underline; }
       .page-content .feed-row .main-content .stats .applications {
         line-height: 20px;
         padding-left: 30px; }
@@ -1940,6 +1964,8 @@ span.sticker {
         list-style: none;
         padding: 5px 0;
         z-index: 5; }
+        .page-content .feed-row .main-content .button-action-list .action-list-items li:hover {
+          text-decoration: underline; }
     .page-content .feed-row .main-content .action-panel {
       float: right;
       margin-right: 10px;

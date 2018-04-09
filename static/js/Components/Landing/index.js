@@ -2,6 +2,7 @@ $(document).ready(function() {
 	var userLogin = userCredentials();
 	// user.login = $("#login");
 	userLogin.init();
+	userLogin.onEnter();
 	userLogin.loginHandler(function(e){
 		e.preventDefault()
 		console.log('click noted')

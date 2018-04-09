@@ -4549,7 +4549,8 @@ input::-webkit-input-placeholder {
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-body {
                 margin: 0px 0 0 0; }
                 .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-body p {
-                  line-height: 1.5; }
+                  line-height: 1.5;
+                  word-wrap: break-word; }
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .separator {
                 margin: 20px 0;
                 border-bottom: 1px solid #e8e8e8; }
@@ -4773,7 +4774,6 @@ input::-webkit-input-placeholder {
         background: rgba(128, 128, 128, 0.85);
         position: fixed;
         width: 78%;
-        z-index: 10;
         padding: 8px 20px;
         color: #fff; }
       .view-resume-modal .mobile-resume-sidebar .fold {
@@ -4900,6 +4900,13 @@ input::-webkit-input-placeholder {
       background: #FFF;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
       border-radius: 8px; }
+      .view-resume-modal .mobile-resume-sidebar .contact-menu .contact-info {
+        bottom: 65px;
+        background: rgba(128, 128, 128, 0.85);
+        position: fixed;
+        width: 97.3%;
+        padding: 8px 20px;
+        color: #fff; }
       .view-resume-modal .mobile-resume-sidebar .fold {
         position: fixed;
         right: 0;
@@ -5054,6 +5061,19 @@ input::-webkit-input-placeholder {
         margin-top: 5px; }
   .view-resume-modal .mobile-resume-sidebar .fold.first-fold {
     padding-left: 25px; }
+  .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default {
+    background: transparent;
+    border: none;
+    margin: 0 20px 0 0;
+    position: relative;
+    top: 1px; }
+  .view-resume-modal .mobile-resume-sidebar .contact-menu .contact-info {
+    bottom: 97px;
+    background: rgba(128, 128, 128, 0.85);
+    position: fixed;
+    width: 95%;
+    padding: 8px 20px;
+    color: #fff; }
   .mass-action-container {
     padding: 5px 20px; }
     .mass-action-container .action-buttons.mobile {
