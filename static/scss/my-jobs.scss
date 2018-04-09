@@ -226,6 +226,10 @@
 									margin:2px;
 									vertical-align: middle;
 									cursor:pointer;
+									.icon-star-2::before {
+										content: '\e815';
+										color: #e97e00;
+									}									
 									&.job-cancel {
 										margin-left: 0;
 									}

@@ -1727,6 +1727,8 @@ input::-webkit-input-placeholder {
 
 										p {
 											line-height:1.5;
+											word-wrap: break-word;
+										
 										}
 									}
                                     .separator {
@@ -1929,7 +1931,15 @@ input::-webkit-input-placeholder {
 				vertical-align: middle;
 				line-height: 10px;
 			 }
-
+			 .email-address{
+				 font-size: 14px;
+			 }
+			 .contact{
+				 font-size: 14px;
+			 }
+			 .icon-tick_circle{
+				 color: green;
+			 }
     		.comment-block {
 				margin-bottom:15px;
     			.content {
@@ -2015,10 +2025,18 @@ input::-webkit-input-placeholder {
 			border-radius: 8px;
 		    background:$color-white;
 		    box-shadow:0 0 10px rgba(0,0,0,0.2);
-
+			.contact-menu{
+				.contact-info{
+					bottom: 65px;
+					background: rgba(128, 128, 128, 0.85);
+					position: fixed;
+					width: 78%;
+					padding: 8px 20px;
+					color: #fff;
+				}
+			}
 		    .fold {
 		    	position: fixed;
-
 			    right: 0;
 			    width: 85%;
 			    padding:20px;
@@ -2055,7 +2073,13 @@ input::-webkit-input-placeholder {
 							padding-left:0;
 							padding-right:0;
 						}
+						.icon-info:before {
+							content: '\e821';
+							color: black;
+							font-size: 21px;
+						}
 					}
+
 				}
 		    }
 		}
@@ -2163,7 +2187,17 @@ input::-webkit-input-placeholder {
 		    background:$color-white;
 		    box-shadow:0 0 10px rgba(0,0,0,0.2);
 			border-radius: 8px;
-
+			.contact-menu{
+				.contact-info{
+					bottom: 65px;
+					background: rgba(128, 128, 128, 0.85);
+					position: fixed;
+					width: 97.3%;
+					padding: 8px 20px;
+					color: #fff;
+				}
+			}
+			
 		    .fold {
 		    	position: fixed;
 
@@ -2366,7 +2400,22 @@ input::-webkit-input-placeholder {
 
     .view-resume-modal .mobile-resume-sidebar .fold.first-fold {
         padding-left: 25px;
-    }
+	}
+	.view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default {
+		background: transparent;
+		border: none;
+		margin: 0 20px 0 0;
+		position: relative;
+		top: 1px;
+	}
+	.view-resume-modal .mobile-resume-sidebar .contact-menu .contact-info {
+		bottom: 97px;
+		background: rgba(128, 128, 128, 0.85);
+		position: fixed;
+		width: 95%;
+		padding: 8px 20px; 
+		color: #fff;
+	}
     .mass-action-container {
         padding: 5px 20px;
     	.action-buttons {

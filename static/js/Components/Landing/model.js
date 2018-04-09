@@ -34,6 +34,13 @@ function userCredentials(){
 	function loginHandler(fn){
 		user.login.click(fn);
 	}
+	function onEnter(){
+	$('input').keypress(function(e){
+			if (event.keyCode === 13) {
+				user.login.click();
+			}
+		});
+	}
 	function getData(){
 		return {
 			email: user.email.val(),
@@ -101,7 +108,8 @@ function userCredentials(){
 		validateLogin: validateLogin,
 		loginHandler: loginHandler,
 		errorHandler: errorHandler,
-		test: test
+		test: test,
+		onEnter:onEnter
 	}
 
 }
