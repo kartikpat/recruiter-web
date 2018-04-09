@@ -8,8 +8,13 @@ function Candidate() {
         settings.mobCandidateTagContainerClass= '.mobCandidateTagContainer',
         settings.mobCandidateCommentContainerClass= '.mobCandidateCommentContainer',
         settings.candidateTagPrototype= $('.candidateTag.prototype'),
+        settings.candidateAddCommentButtonClass= '.candidateAddCommentButton',
         settings.candidateAddTagButtonClass= '.candidateAddTagButton',
         settings.candidateCommentTextareaClass= '.candidateCommentTextarea',
+        settings.candidateEditComment=$('.candidateAddEditButton'),
+        settings.mobCandidateEditComment=$('.mobcandidateAddEditButton')
+        settings.mobCommentBox=$('.mobCommentBox');
+        settings.commentTextarea=$('.comment-textarea'),
         settings.candidateTagInputClass = '.candidateTagInput',
         settings.candidateTagRemoveClass = '.tagRemove',
         settings.candidateTagListClass = '.candidateTagList',
@@ -23,11 +28,11 @@ function Candidate() {
         settings.candidateChatModal = $("#candidateChatModal"),
         settings.tagListing = $(".recruiterTags"),
         settings.tagMobListing = $("#tagMobListing"),
-        settings.tagInputError = $(".tagInputError");
-        settings.commentTextarea=$('.comment-textarea'),
-        settings.candidateCommentTextareaClass= '.candidateCommentTextarea',
-        settings.candidateEditComment=$('.candidateAddEditButton'),
-        settings.candidateAddCommentButtonClass= '.candidateAddCommentButton',
+        settings.tagInputError = $(".tagInputError"),
+        settings.sendInterviewInviteF2FClass = ".inviteF2f",
+        settings.sendInterviewInviteTelephonicClass = ".inviteTelephonic"
+        settings.seeMoreRec = $(".seeMoreRec");
+        settings.recommendationListSecond = $(".recommendationListSecond")
         onClickChatCandidateModal();
         jQuery("#tabbed-content").tabs({
             create: function(){
@@ -36,6 +41,39 @@ function Candidate() {
         });
 
         // onClickAddPopulatedTags()
+    }
+
+
+    function onClickSeeMoreRec(fn) {
+        settings.seeMoreRec.click(function() {
+            var data =
+                [{
+                            "name": "ankur saini",
+                            "url": "https://www.linkedin.com/in/ankur-saini-b60686141",
+                            "text": "hello<br/><br/>thanks and regards",
+                            "img": null
+                        },
+                        {
+                            "name": "Ritu Bala",
+                            "url": "https://www.linkedin.com/in/balaritu",
+                            "text": "Testing"
+                        }]
+            if($(this).attr("data-clicked") == "false") {
+                addRecommendations(data)
+                $(this).attr("data-clicked", "true")
+            }
+            settings.recommendationListSecond.slideToggle()
+            $(this).toggleClass("active");
+            if($(this).hasClass("active") ) {
+                $(this).text("See Less")
+                $(this).next().addClass("icon-up_arrow").removeClass("icon-down_arrow")
+                return
+            }
+            $(this).text("See More")
+            $(this).next().addClass("icon-down_arrow").removeClass("icon-up_arrow")
+            return
+            fn()
+        })
     }
 
 
@@ -93,6 +131,7 @@ function Candidate() {
             savedButton : modal.find("#candidateSaveModal"),
             contact:modal.find('.contact'),
             email:modal.find('.email-address'),
+            recommendationList: modal.find('.recommendationList'),
         }
     }
 
@@ -116,6 +155,35 @@ function Candidate() {
            designation: card.find('.js_prof_designation'),
             seperator: card.find('.jsSeperator')
         }
+    }
+
+    function getRecommendationElement() {
+        var card = $('.recommendationWrapper.prototype').clone().removeClass("prototype hidden");
+        return {
+            element: card,
+            name: card.find('.userName'),
+			link: card.find('.userLink'),
+			body: card.find('.userBody'),
+            seperator: card.find('.jsSeperator')
+        }
+    }
+
+    function addRecommendations(data) {
+        var recStr = '';
+
+        $.each(data,function(index, anObj) {
+
+            var item = getRecommendationElement()
+            item.name.text(anObj["name"])
+            item.link.attr("href",anObj["url"]);
+            item.link.text(anObj["url"]);
+            item.body.text(anObj["text"])
+
+            item.seperator.removeClass("hidden")
+            recStr+=item.element[0].outerHTML
+        })
+        settings.recommendationListSecond.html(recStr)
+
     }
 
     function populateCandidateData(aData, type, status) {
@@ -167,6 +235,9 @@ function Candidate() {
         })
         item.eduList.html(eduStr)
         var profStr = '';
+
+        aData["jobs"] = sortArrayOfObjectsByMultipleKey(aData["jobs"])
+
         $.each(aData["jobs"],function(index, anObj) {
 
             var item = getProfessionalElement()
@@ -176,7 +247,7 @@ function Candidate() {
             var fromMon = getMonthName(anObj["exp"]["from"]["month"]);
             var toMon = getMonthName(anObj["exp"]["to"]["month"]);
             var fromYear = anObj["exp"]["from"]["year"];
-            var toYear = anObj["exp"]["from"]["year"];
+            var toYear = anObj["exp"]["to"]["year"];
             var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
             item.tenure.text(str);
 
@@ -210,25 +281,66 @@ function Candidate() {
             item.iitScore.text(aData["score"]["iit"] || "N.A.").removeClass("shell")
             item.gmatScore.text(aData["score"]["gmat"] || "N.A.").removeClass("shell")
         }
-        if(isCanvasSupported()) {
-           getBinaryData(baseUrl + aData["resume"],resumeCallback);
-        }
-        else {
-           item.resume.html('<iframe src="'+baseUrl + aData["resume"]+'" class="resume-embed" type="application/pdf"></iframe>')
-        }
         if(aData["cover"]) {
             item.coverLetter.html(nl2br(aData["cover"]))
             $(".coverLetterTab").removeClass("hidden")
         }
         if(aData["comment"]) {
-            item.comment.val(aData["comment"]);
-            item.mobComment.val(aData["comment"]);
-            // settings.commentTextarea.val(aData["comment"]).removeClass("hidden");
-            // $(settings.candidateCommentTextareaClass).val(aData["comment"]).addClass("hidden");
-            // $(settings.candidateAddCommentButtonClass).addClass("hidden")
-            // settings.candidateEditComment.removeClass("hidden")
+
+            settings.commentTextarea.val(aData["comment"]).removeClass("hidden");
+            $(settings.candidateCommentTextareaClass).val(aData["comment"]).addClass("hidden");
+            $(settings.mobCandidateCommentTextareaClass).val(aData["comment"]).addClass("hidden");
+            $(settings.candidateAddCommentButtonClass).addClass("hidden");
+            $(settings.mobCandidateAddCommentButtonClass).addClass("hidden");
+            settings.candidateEditComment.removeClass("hidden");
+            settings.mobCandidateEditComment.removeClass("hidden");
         }
-        
+        else {
+            settings.commentTextarea.val('').addClass("hidden")
+            $(settings.candidateCommentTextareaClass).val('').removeClass("hidden");
+            $(settings.mobCandidateCommentTextareaClass).val('').addClass("hidden");
+            $(settings.candidateAddCommentButtonClass).removeClass("hidden")
+            $(settings.mobCandidateAddCommentButtonClass).removeClass("hidden");
+            settings.candidateEditComment.addClass("hidden")
+            settings.mobCandidateEditComment.addClass("hidden");
+        }
+
+        aData["recommendation"] = [ {
+                    "name": "ankur saini",
+                    "url": "https://www.linkedin.com/in/ankur-saini-b60686141",
+                    "text": "hello<br/><br/>thanks and regards",
+                    "img": null
+                },
+                {
+                    "name": "Ritu Bala",
+                    "url": "https://www.linkedin.com/in/balaritu",
+                    "text": "Testing"
+                }]
+        aData["extraRecom"] = 1;
+        if(aData["recommendation"].length > 0) {
+            var recStr = '';
+
+            $.each(aData["recommendation"],function(index, anObj) {
+
+                var item = getRecommendationElement()
+                item.name.text(anObj["name"])
+                item.link.attr("href",anObj["url"]);
+                item.link.text(anObj["url"]);
+                item.body.html(anObj["text"])
+                if(index != aData["recommendation"].length - 1)
+                    item.seperator.removeClass("hidden")
+                if(aData["extraRecom"]) {
+                    item.seperator.removeClass("hidden")
+                }
+                recStr+=item.element[0].outerHTML
+            })
+            item.recommendationList.html(recStr)
+            if(aData["extraRecom"]) {
+                settings.seeMoreRec.removeClass("hidden");
+            }
+            item.recommendationList.closest(".recommendations").removeClass("hidden");
+        }
+
         item.shortlistButton.attr("data-action", 1);
         item.rejectButton.attr("data-action", 2);
         item.savedButton.attr("data-action", 3);
@@ -245,6 +357,14 @@ function Candidate() {
         else if(status == 3) {
             item.savedButton.html("<span class='icon'><i class='icon-star'></i></span>Saved for Later")
         }
+        if(isCanvasSupported()) {
+
+           getBinaryData(baseUrl + aData["resume"],resumeCallback);
+        }
+        else {
+           item.resume.html('<iframe src="'+baseUrl + aData["resume"]+'" class="resume-embed" type="application/pdf"></iframe>')
+        }
+
     }
 
     function getCandidateTag(aTag) {
@@ -265,8 +385,8 @@ function Candidate() {
         element.val("")
     }
 
-
     function onClickAddComment(fn) {
+        // debugger
         // settings.candidateDetailsModal.on('keyup', settings.candidateCommentTextareaClass,function(event) {
         //     event.stopPropagation();
         //     if (event.which == 13) {
@@ -276,11 +396,11 @@ function Candidate() {
         //     }
         //
         // });
-
         settings.candidateDetailsModal.on('click', settings.candidateAddCommentButtonClass,function(event) {
             event.stopPropagation();
+            debugger
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
-            var comment = $(settings.candidateCommentTextareaClass).val();
+            var comment = ($(settings.candidateCommentTextareaClass).val()).trim();
             if(!comment) {
                 return
             }
@@ -329,7 +449,7 @@ function Candidate() {
         });
         settings.candidateDetailsModal.on('click', settings.candidateAddTagButtonClass,function(event) {
             event.stopPropagation();
-            var tagName = $(settings.candidateTagInputClass).val();
+            var tagName = ($(settings.candidateTagInputClass).val()).trim();
             if(!tagName) {
                 $(settings.candidateTagInputClass).addClass("error-border");
                 return settings.tagInputError.removeClass("hidden")
@@ -472,7 +592,9 @@ function Candidate() {
         onClickRejectCandidate: onClickRejectCandidate,
         onClickSaveCandidate:onClickSaveCandidate,
         showDropdownTags: showDropdownTags,
-        changeButtonText: changeButtonText
+        changeButtonText: changeButtonText,
+        addRecommendations: addRecommendations,
+        onClickSeeMoreRec: onClickSeeMoreRec
    }
 
     function focusOnElement(element, container) {

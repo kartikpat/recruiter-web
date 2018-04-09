@@ -572,6 +572,9 @@
 .icon-sunset::before {
   content: '\e83e'; }
 
+* {
+  word-break: break-word; }
+
 .left {
   float: left; }
 

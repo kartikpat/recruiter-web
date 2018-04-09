@@ -919,6 +919,9 @@ span.sticker {
 .icon-sunset::before {
   content: '\e83e'; }
 
+* {
+  word-break: break-word; }
+
 .left {
   float: left; }
 
@@ -1802,6 +1805,10 @@ span.sticker {
       .conversations .conversation-listing-container .conversations-listing .conversation-item:last-child .user-item.user-info p.user-designation {
         border-color: transparent; }
 
+.seeMoreRec {
+  display: inline-block;
+  cursor: pointer; }
+
 .loader-overlay {
   z-index: 99; }
 
@@ -2017,12 +2024,10 @@ span.sticker {
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments textarea {
                 width: 50%;
                 padding: 5px;
-                border-left: 3px solid #1f8f75;
                 min-height: 50px; }
                 .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments textarea:focus {
                   outline: none;
-                  border: 1px solid #1f8f75;
-                  border-left: 3px solid green; }
+                  border: 1px solid #1f8f75; }
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons {
                 margin-top: 10px; }
                 .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons span.button {
@@ -2184,13 +2189,25 @@ span.sticker {
                   color: #333; }
                   .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-header .user-details p.user-name {
                     font-weight: bold;
-                    font-size: 15px; }
+                    font-size: 15px;
+                    text-transform: capitalize; }
                   .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-header .user-details p.user-link a {
                     color: #155d9a; }
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-body {
-                margin: 20px 0 0 0; }
+                margin: 0px 0 0 0; }
                 .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-body p {
-                  line-height: 1.5; }
+                  line-height: 1.5;
+                  word-wrap: break-word; }
+              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .separator {
+                margin: 20px 0;
+                border-bottom: 1px solid #e8e8e8; }
+              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .see-more {
+                font-size: 14px; }
+              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .icon-down_arrow, .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .icon-up_arrow {
+                font-size: 11px;
+                margin-left: 3px; }
+              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendationListSecond {
+                display: none; }
           .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-resume {
             margin: 20px 0 0 0;
             background-color: #C0C0C0; }
@@ -2516,14 +2533,12 @@ span.sticker {
 .sidebar-section.comments textarea {
   width: 100%;
   padding: 5px;
-  border-left: 3px solid #1f8f75;
   min-height: 50px;
   margin-bottom: 15px;
   overflow: hidden; }
   .sidebar-section.comments textarea:focus {
     outline: none;
-    border: 1px solid #1f8f75;
-    border-left: 3px solid green; }
+    border: 1px solid #1f8f75; }
 
 .sidebar-section.comments .action-buttons {
   margin-bottom: 0; }

@@ -108,6 +108,7 @@ function candidateList() {
        })
        item.candTagList.html(tagStr)
        var profStr = '';
+       aData["jobs"] = sortArrayOfObjectsByMultipleKey(aData["jobs"])
        $.each(aData["jobs"],function(index, anObj) {
            if(index > 2) {
                return
@@ -119,7 +120,7 @@ function candidateList() {
            var fromMon = getMonthName(anObj["exp"]["from"]["month"]);
            var toMon = getMonthName(anObj["exp"]["to"]["month"]);
            var fromYear = anObj["exp"]["from"]["year"];
-           var toYear = anObj["exp"]["from"]["year"];
+           var toYear = anObj["exp"]["to"]["year"];
            var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
            item.tenure.text(str);
 

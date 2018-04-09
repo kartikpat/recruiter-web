@@ -34,14 +34,40 @@ function Candidate() {
         settings.sendInterviewInviteF2FClass = ".inviteF2f",
         settings.sendInterviewInviteTelephonicClass = ".inviteTelephonic"
         settings.seeMoreRec = $(".seeMoreRec");
-        jQuery("#tabbed-content").tabs({});
+        settings.recommendationListSecond = $(".recommendationListSecond");
 
-        console.log(baseUrl)
+        jQuery("#tabbed-content").tabs({});
 
     }
 
     function onClickSeeMoreRec(fn) {
         settings.seeMoreRec.click(function() {
+            var data =
+                [{
+                            "name": "ankur saini",
+                            "url": "https://www.linkedin.com/in/ankur-saini-b60686141",
+                            "text": "hello<br/><br/>thanks and regards",
+                            "img": null
+                        },
+                        {
+                            "name": "Ritu Bala",
+                            "url": "https://www.linkedin.com/in/balaritu",
+                            "text": "Testing"
+                        }]
+            if($(this).attr("data-clicked") == "false") {
+                addRecommendations(data)
+                $(this).attr("data-clicked", "true")
+            }
+            settings.recommendationListSecond.slideToggle()
+            $(this).toggleClass("active");
+            if($(this).hasClass("active") ) {
+                $(this).text("See Less")
+                $(this).next().addClass("icon-up_arrow").removeClass("icon-down_arrow")
+                return
+            }
+            $(this).text("See More")
+            $(this).next().addClass("icon-down_arrow").removeClass("icon-up_arrow")
+            return
             fn()
         })
     }
@@ -157,7 +183,9 @@ function Candidate() {
             tabContent: modal.find("#tabbed-content"),
             shortlistButton: modal.find(".candidateShortlistModal"),
             rejectButton: modal.find(".candidateRejectModal"),
-            savedButton : modal.find("#candidateSaveModal")
+            savedButton : modal.find("#candidateSaveModal"),
+            iconTelephoneVer : modal.find(".iconTelephoneVer"),
+            iconEmailVer :modal.find(".iconEmailVer")
         }
     }
 
@@ -195,26 +223,21 @@ function Candidate() {
     }
 
     function addRecommendations(data) {
-        if(data["recommendation"].length > 0) {
-            var recStr = '';
+        var recStr = '';
 
-            $.each(aData["recommendation"],function(index, anObj) {
+        $.each(data,function(index, anObj) {
 
-                var item = getRecommendationElement()
-                item.name.text(anObj["name"])
-                item.link.attr("href",anObj["url"]);
-                item.link.text(anObj["url"]);
-                item.body.text(anObj["text"])
-                if(index != aData["recommendation"].length - 1)
-                    item.seperator.removeClass("hidden")
-                recStr+=item.element[0].outerHTML
-            })
-            item.recommendationList.html(recStr)
-            if(aData["extraRecom"]) {
-                item.seeMoreRec.removeClass("hidden");
-            }
-            item.recommendationList.closest(".recommendations").removeClass("hidden");
-        }
+            var item = getRecommendationElement()
+            item.name.text(anObj["name"])
+            item.link.attr("href",anObj["url"]);
+            item.link.text(anObj["url"]);
+            item.body.text(anObj["text"])
+
+            item.seperator.removeClass("hidden")
+            recStr+=item.element[0].outerHTML
+        })
+        settings.recommendationListSecond.html(recStr)
+
     }
 
     function populateCandidateData(aData, type, status) {
@@ -231,6 +254,11 @@ function Candidate() {
         item.preferredLocation.text(preferredLocationStr);
         item.contact.text(aData["phone"] || "NA");
         item.email.text(aData["email"]||"NA");
+        aData["verified"] = 1;
+        if(ifKeyExists("verified", aData) && aData["verified"]) {
+            item.iconTelephoneVer.removeClass("hidden")
+            item.iconEmailVer.removeClass("hidden")
+        }
         item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY') || "NA")
         if(aData["notice"] == 7) {
             item.notice.text("Immediately Available");
@@ -268,6 +296,7 @@ function Candidate() {
             profStr = "<div style='line-height:1.5;'><span style='font-weight:bold;'>"+aData["name"]+"</span> does not have any work experience yet</div>"
         }
         else {
+            aData["jobs"] = sortArrayOfObjectsByMultipleKey(aData["jobs"])
             $.each(aData["jobs"],function(index, anObj) {
 
                 var item = getProfessionalElement()
@@ -277,7 +306,7 @@ function Candidate() {
                 var fromMon = getMonthName(anObj["exp"]["from"]["month"]);
                 var toMon = getMonthName(anObj["exp"]["to"]["month"]);
                 var fromYear = anObj["exp"]["from"]["year"];
-                var toYear = anObj["exp"]["from"]["year"];
+                var toYear = anObj["exp"]["to"]["year"];
                 var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
                 item.tenure.text(str);
                 if(index != aData["jobs"].length - 1)
@@ -286,7 +315,18 @@ function Candidate() {
             })
         }
         item.profList.html(profStr)
-
+        aData["recommendation"] = [ {
+                    "name": "ankur saini",
+                    "url": "https://www.linkedin.com/in/ankur-saini-b60686141",
+                    "text": "hello<br/><br/>thanks and regards",
+                    "img": null
+                },
+                {
+                    "name": "Ritu Bala",
+                    "url": "https://www.linkedin.com/in/balaritu",
+                    "text": "Testing"
+                }]
+        aData["extraRecom"] = 1;
         if(aData["recommendation"].length > 0) {
             var recStr = '';
 
@@ -299,6 +339,9 @@ function Candidate() {
                 item.body.html(anObj["text"])
                 if(index != aData["recommendation"].length - 1)
                     item.seperator.removeClass("hidden")
+                if(aData["extraRecom"]) {
+                    item.seperator.removeClass("hidden")
+                }
                 recStr+=item.element[0].outerHTML
             })
             item.recommendationList.html(recStr)
@@ -348,16 +391,23 @@ function Candidate() {
             $(".coverLetterTab").removeClass("hidden");
         }
         if(aData["comment"]) {
+
             settings.commentTextarea.val(aData["comment"]).removeClass("hidden");
             $(settings.candidateCommentTextareaClass).val(aData["comment"]).addClass("hidden");
-            $(settings.candidateAddCommentButtonClass).addClass("hidden")
-            settings.candidateEditComment.removeClass("hidden")
+            $(settings.mobCandidateCommentTextareaClass).val(aData["comment"]).addClass("hidden");
+            $(settings.candidateAddCommentButtonClass).addClass("hidden");
+            $(settings.mobCandidateAddCommentButtonClass).addClass("hidden");
+            settings.candidateEditComment.removeClass("hidden");
+            settings.mobCandidateEditComment.removeClass("hidden");
         }
         else {
             settings.commentTextarea.val('').addClass("hidden")
             $(settings.candidateCommentTextareaClass).val('').removeClass("hidden");
+            $(settings.mobCandidateCommentTextareaClass).val('').addClass("hidden");
             $(settings.candidateAddCommentButtonClass).removeClass("hidden")
+            $(settings.mobCandidateAddCommentButtonClass).removeClass("hidden");
             settings.candidateEditComment.addClass("hidden")
+            settings.mobCandidateEditComment.addClass("hidden");
         }
         item.shortlistButton.attr("data-action", 1);
         item.rejectButton.attr("data-action", 2);
@@ -438,6 +488,11 @@ function Candidate() {
         item.resume.empty()
         item.savedButton.html("<span class='icon'><i class='icon-star'></i></span>Save for Later");
         item.recommendationList.closest(".recommendations").addClass("hidden");
+        settings.seeMoreRec.attr("data-clicked", "false");
+        item.iconTelephoneVer.removeClass("hidden")
+        item.iconEmailVer.removeClass("hidden")
+        item.contact.text('');
+        item.email.text('');
         $(".coverLetterTab").addClass("hidden");
 
     }
@@ -461,7 +516,7 @@ function Candidate() {
         // });
         settings.candidateDetailsModal.on('click', settings.candidateAddCommentButtonClass,function(event) {
             event.stopPropagation();
-            debugger
+
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
             var comment = ($(settings.candidateCommentTextareaClass).val()).trim();
             if(!comment) {
@@ -493,25 +548,49 @@ function Candidate() {
         //
         // });
 
+        settings.candidateDetailsModal.on('click', settings.candidateAddCommentButtonClass,function(event) {
+            event.stopPropagation();
+
+            var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
+            var comment = ($(settings.candidateCommentTextareaClass).val()).trim();
+            if(!comment) {
+                return
+            }
+            $(settings.candidateCommentTextareaClass).addClass("hidden");
+            settings.commentTextarea.val(comment).removeClass("hidden");
+            $(settings.candidateAddCommentButtonClass).addClass("hidden");
+            settings.candidateEditComment.removeClass("hidden");
+            fn(applicationId, comment);
+        });
+
+        settings.candidateEditComment.on('click',function(event){
+            settings.commentTextarea.addClass("hidden");
+            $(settings.candidateCommentTextareaClass).removeClass("hidden").focus();
+            $(settings.candidateAddCommentButtonClass).removeClass("hidden");
+            settings.candidateEditComment.addClass("hidden");
+        })
+
         settings.candidateDetailsModal.on('click', settings.mobCandidateAddCommentButtonClass,function(event) {
             event.stopPropagation();
 
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
             var comment = ($(settings.mobCandidateCommentTextareaClass).val()).trim();
-            $(settings.mobCandidateCommentTextareaClass).addClass("hidden");
-            $(settings.mobCandidateAddCommentButtonClass).addClass("hidden");
-            settings.mobCommentBox.removeClass("hidden");
-            settings.commentTextarea.text(comment);
-            settings.mobCandidateEditComment.removeClass("hidden");
             if(!comment) {
                 return
             }
+            $(settings.mobCandidateCommentTextareaClass).addClass("hidden");
+            settings.commentTextarea.val(comment).removeClass("hidden");
+            $(settings.mobCandidateAddCommentButtonClass).addClass("hidden");
+
+            settings.mobCandidateEditComment.removeClass("hidden");
+
             fn(applicationId, comment);
         });
 
         settings.mobCandidateEditComment.on('click',function(event){
+            settings.commentTextarea.addClass("hidden");
             $(settings.mobCandidateCommentTextareaClass).removeClass("hidden").focus();
-            settings.mobCommentBox.addClass("hidden");
+
             $(settings.mobCandidateAddCommentButtonClass).removeClass("hidden");
             settings.mobCandidateEditComment.addClass("hidden");
          })

@@ -4,6 +4,8 @@ function fetchJobs(parameters, recruiterId){
 		parameters.type='all';
 	return getRequest(baseUrl+"/recruiter/"+recruiterId+"/jobs", parameters, function(res){
 		if(res.status && res.status =='success'){
+			res.data.obj = {}
+			res.data.obj.type = parameters.type;
 			return pubsub.publish("fetchedJobs", res.data);
 		}
 
