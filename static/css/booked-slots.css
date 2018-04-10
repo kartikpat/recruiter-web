@@ -3131,7 +3131,8 @@ span.sticker {
       float: right;
       margin-left: 5px; }
       .page-content .header-slot .start-date img {
-        height: 25px; }
+        height: 25px;
+        cursor: pointer; }
   .page-content .empty-view {
     border-radius: 7px;
     border-style: solid;

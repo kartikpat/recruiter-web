@@ -1281,7 +1281,7 @@ span.sticker {
         text-align: center;
         line-height: 28px;
         cursor: pointer;
-        margin-bottom: 17px;
+        margin-top: 7px;
         font-weight: 400;
         float: right; }
         .page-content .container .header-slot .manage-Calendar a {
@@ -1347,7 +1347,7 @@ span.sticker {
         display: inline-block;
         padding: 0%;
         background-color: white;
-        border-radius: 8px; }
+        margin-top: -5px; }
         .page-content .container .wrapper .schedule-container .schedule {
           display: inline-block;
           width: 100%; }

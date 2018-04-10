@@ -268,23 +268,41 @@ $button-border-color: #8f8a8a;
 		border-radius: 6px;
 
 		.empty-view{
-			.detail{
-
-			}
-			.subdetail{
-
-			}
-			.action-buttons{
-				.post-job{
-
+			margin: 0 auto;
+			.image-container{
+				float: left;
+				img{
+					width: 60px;
+					height: 60px;
+					display: inline-block;
 				}
 			}
-			.divide{
+			.content-container{
+				.detail{
+					display: inline-block;
+					color: #2b2b2b;
+					font-weight: 600;
+					line-height: 20px;
+					vertical-align: top;
 
-			}
-			.acton{
-				
-			}
+				}
+				.subdetail{
+					color: #737373;
+					display: inline-block;
+					vertical-align: top;
+				}
+				.action-buttons{
+					.post-job{
+
+					}
+				}
+				.divide{
+
+				}
+				.acton{
+					
+				}
+			}	
 		}
 		.interviewRow{
 			padding-top: 15px;
