@@ -732,8 +732,6 @@ module.exports = function(settings){
 			scripts: assetsMapper["booked-slots"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			jobId: req.params.jobID,
-			applicationId: req.params.applicationID,
 			profile: req.profile
 		})
 		return

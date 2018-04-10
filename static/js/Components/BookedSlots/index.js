@@ -28,7 +28,7 @@ jQuery(document).ready( function() {
        fetchInterviews(recruiterId, parameters);
    })
 
-   slots.onClickSubmitCancelInterview(function(inviteId, calendarId, applicationId, reason){
+   slots.onClickSubmitCancelInterview(function(inviteId, calendarId, applicationId, reason, jobId){
        slots.closeModal()
        slots.showLoaderOverlay()
        var data = {

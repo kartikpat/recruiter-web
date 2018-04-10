@@ -24,7 +24,8 @@ function BookedSlots() {
 		settings.inviteId = '';
 		settings.calendarId = '';
 		settings.applicationId = '';
-		settings.candidateOtherActions = $(".candidateOtherActions")
+		settings.candidateOtherActions = $(".candidateOtherActions");
+		settings.jobId = ''
 		onClickInterviewCancel();
         onClickToggle()
 		jQuery(".header .menu-list-item.my-interviews").addClass("active");
@@ -38,20 +39,19 @@ function BookedSlots() {
 	function onClickInterviewCancel(){
 		settings.bookedSlots.on('click',settings.openCancelInterviewModalButton,function(e){
 			e.preventDefault();
-			addBodyFixed()
+			addBodyFixed();
 			settings.inviteId = $(this).closest(".slotDate").attr('data-invite-id');
 			settings.calendarId = $(this).closest(".slotDate").attr('data-calendar-id');
 			settings.applicationId = $(this).closest(".slotDate").attr('data-application-id');
+			settings.jobId = $(this).closest(".slotDate").attr('data-job-id');
 			settings.cancelInterviewModal.removeClass('hidden');
 		});
 	}
 
 	function onClickSubmitCancelInterview(fn){
 		settings.cancelInterviewButton.click(function(){
-
 			var reason = settings.cancelInterviewModal.find("input:radio[name='cancelReason']:checked").attr('id');
-
-			return fn(settings.inviteId, settings.calendarId, settings.applicationId, reason);
+			return fn(settings.inviteId, settings.calendarId, settings.applicationId, reason, settings.jobId);
 		});
 	}
 
@@ -93,6 +93,7 @@ function BookedSlots() {
 		item.element.attr("data-application-id", aData["applicationId"]);
 		item.element.attr("data-invite-id", aData["id"]);
 		item.element.attr("data-calendar-id", aData["calendar"]["id"]);
+		item.element.attr("data-job-id", aData["job"]["id"]);
 		var title = getTitleFormat(aData["job"]["title"], (/\(\d+-\d+ \w+\)$/));
         if(aData["slot"]){
             var date = moment(aData["slot"]["date"]).format('ll');
