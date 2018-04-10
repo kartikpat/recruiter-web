@@ -53,7 +53,7 @@ $(document).ready(function(){
 	var recentJobsContainer = $("#recentJobsContainer");
 	var postedJobsContainer = $("#postedJobsContainer");
 	var jobOtherActionsClass = ".action-panel";
-
+	var recentEmptyContiner=$('.recent-empty');
 
 	modalInit();
 	onClickJobRefresh();
@@ -180,6 +180,9 @@ $(document).ready(function(){
 	var activeJobStatsSubscription = pubsub.subscribe("fetchedActiveJobStats", onActiveJobStatsUpdate)
 
 	function onLoadChartLibrary(topic, data){
+		// if(data==0){
+
+		// }
 		console.log("calling onLoadChartLibrary");
 	    fetchActiveJobStats(recruiterId);
 	}
@@ -187,6 +190,9 @@ $(document).ready(function(){
 	function onFetchJobs(topic, data){
 		console.log(data)
 		var len = data.length;
+		if(data.length==0){
+			recentEmptyContiner.removeClass('hidden');
+		}
 		data.forEach(function(aJob, index){
 			var card = jobRowCard.clone().removeClass('hidden prototype');
 			var experience = aJob['exp']['min']+'-'+aJob['exp']['max']+'yrs'

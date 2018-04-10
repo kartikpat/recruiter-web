@@ -805,4 +805,8 @@
     vertical-align: top;
     width: 44%;
     margin-top: 16px;
-    margin-left: 14px; } }
+    margin-left: 14px; }
+  .page-content .main-wrapper .container .dashboard .content .image-container img {
+    display: inline-block;
+    margin-top: 42px;
+    margin-bottom: 78px; } }

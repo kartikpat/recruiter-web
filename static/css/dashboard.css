@@ -581,9 +581,6 @@
 .icon-linkedin::before {
   content: '\e84b'; }
 
-* {
-  word-break: break-word; }
-
 .left {
   float: left; }
 
@@ -1730,25 +1727,61 @@ span.sticker {
     box-shadow: 0px 2px 8px 0px rgba(214, 214, 214, 0.3);
     border: 1px solid #e8e8e8;
     background-color: #ffffff;
-    border-radius: 6px; }
+    border-radius: 6px;
+    min-height: 100%; }
     .page-content .detail-card .empty-view {
-      margin: 0 auto; }
+      text-align: center;
+      position: relative;
+      min-height: 150px; }
       .page-content .detail-card .empty-view .image-container {
+        margin-left: 20px;
         float: left; }
         .page-content .detail-card .empty-view .image-container img {
-          width: 60px;
-          height: 60px;
-          display: inline-block; }
-      .page-content .detail-card .empty-view .content-container .detail {
+          width: 90px;
+          height: 90px;
+          margin-top: 20px; }
+      .page-content .detail-card .empty-view .content-container {
         display: inline-block;
-        color: #2b2b2b;
-        font-weight: 600;
-        line-height: 20px;
-        vertical-align: top; }
-      .page-content .detail-card .empty-view .content-container .subdetail {
-        color: #737373;
-        display: inline-block;
-        vertical-align: top; }
+        text-align: left;
+        margin-top: 20px; }
+        .page-content .detail-card .empty-view .content-container .detail {
+          color: #2b2b2b;
+          font-weight: 600;
+          line-height: 20px;
+          margin-bottom: 5px; }
+        .page-content .detail-card .empty-view .content-container .subdetail {
+          color: #737373;
+          font-size: 14px;
+          margin-bottom: 5px; }
+        .page-content .detail-card .empty-view .content-container .empty-action-buttons {
+          margin: 10px 0; }
+          .page-content .detail-card .empty-view .content-container .empty-action-buttons .post-job {
+            padding: 6px 18px !important;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            background: #1f8f75;
+            border-color: #8f8a8a;
+            border-radius: 4px;
+            padding: 6px 25px;
+            font-size: 14px;
+            margin: 0 5px;
+            color: #FFF;
+            display: inline-block;
+            vertical-align: top;
+            cursor: pointer; }
+        .page-content .detail-card .empty-view .content-container .divide {
+          color: #737373;
+          font-size: 14px;
+          margin-bottom: 5px; }
+        .page-content .detail-card .empty-view .content-container .action {
+          color: #155d9a;
+          font-size: 14px;
+          margin-bottom: 5px; }
+          .page-content .detail-card .empty-view .content-container .action a {
+            color: #155d9a; }
+        .page-content .detail-card .empty-view .content-container .action:hover {
+          text-decoration: underline; }
     .page-content .detail-card .interviewRow {
       padding-top: 15px; }
     .page-content .detail-card .graph_holder svg {

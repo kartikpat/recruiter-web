@@ -266,41 +266,69 @@ $button-border-color: #8f8a8a;
 		border: 1px solid $card-border;
 		background-color: $white;
 		border-radius: 6px;
-
+		min-height: 100%;
 		.empty-view{
-			margin: 0 auto;
+				text-align: center;
+				position: relative;
+				min-height: 150px;
 			.image-container{
+				margin-left: 20px;
 				float: left;
 				img{
-					width: 60px;
-					height: 60px;
-					display: inline-block;
+					width: 90px;
+					height:90px;
+					margin-top: 20px;
 				}
 			}
 			.content-container{
+				display: inline-block;
+				text-align: left;
+				margin-top: 20px;
 				.detail{
-					display: inline-block;
 					color: #2b2b2b;
 					font-weight: 600;
 					line-height: 20px;
-					vertical-align: top;
-
+					margin-bottom: 5px;
 				}
 				.subdetail{
 					color: #737373;
-					display: inline-block;
-					vertical-align: top;
+					font-size: 14px;
+					margin-bottom: 5px;
 				}
-				.action-buttons{
+				.empty-action-buttons{
+					margin:10px 0;
 					.post-job{
-
+						padding: 6px 18px !important;
+						border: 0;
+						padding: 0;
+						margin: 0;
+						background: #1f8f75;
+						border-color: #8f8a8a;
+						border-radius: 4px;
+						padding: 6px 25px;
+						font-size: 14px;
+						margin: 0 5px;
+						color: #FFF;
+						display: inline-block;
+						vertical-align: top;
+						cursor: pointer;
 					}
 				}
 				.divide{
-
+					color: #737373;
+					font-size: 14px;
+					margin-bottom: 5px;
 				}
-				.acton{
-					
+				.action{
+					color:$link-color;
+					font-size: 14px;
+					margin-bottom: 5px;
+					a{
+						color:$link-color;
+					}
+				}
+				.action:hover{
+					text-decoration: underline;
 				}
 			}	
 		}
