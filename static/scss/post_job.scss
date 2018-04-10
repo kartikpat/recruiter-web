@@ -49,8 +49,9 @@
 
         .post-job-heading {
             margin:10px 0 0 0;
-            font-size:$page-title-size;
-            color:$page-title-color;
+            color: $color-label;
+            font-size: $modal_heading-font-size;
+            font-weight: 600;
             line-height:1;
 
             .title-subtext {

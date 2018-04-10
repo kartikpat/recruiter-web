@@ -1262,7 +1262,6 @@ span.sticker {
       .page-content .container .header-slot .tagline {
         color: #2b2b2b;
         font-size: 18px;
-        /* Approximation due to font substitution */
         font-weight: 600;
         text-align: left;
         display: inline-block;

@@ -7,10 +7,9 @@
     max-width: 1500px; 
     min-height: 100%;
         .headings{
-            font-family:$droid-font;
-            color:  #5d5d5d;
-            font-size: 22px;/* Approximation due to font substitution */
-            font-weight: 400;
+            color: $color-label;
+            font-size: $modal_heading-font-size;
+            font-weight: 600;
             text-align: left;
             margin-top: 33px;
             margin-left: 27px;
