@@ -3090,15 +3090,18 @@ span.sticker {
   width: 100%;
   background-color: #f7f7f7; }
   .page-content .main-wrapper .main-container .heading {
-    margin: 0 0 20px 0; }
+    padding: 15px 0; }
     .page-content .main-wrapper .main-container .heading h1 {
       margin: 0;
-      font-size: 22px;
-      color: #5d5d5d;
+      color: #2b2b2b;
+      font-size: 18px;
+      font-weight: 600;
+      text-align: left;
       line-height: 1;
       font-weight: bold;
       height: 34px;
-      line-height: 34px; }
+      line-height: 34px;
+      margin-left: 10px; }
     .page-content .main-wrapper .main-container .heading .action-buttons span {
       -webkit-appearance: none;
       -moz-appearance: none;
@@ -3205,7 +3208,8 @@ span.sticker {
           transform: translate(-50%, -50%); }
     .page-content .main-wrapper .main-container .reports-wrapper .reports-body {
       overflow-x: auto;
-      font-size: 0; }
+      font-size: 0;
+      border-radius: 4px; }
       .page-content .main-wrapper .main-container .reports-wrapper .reports-body table {
         border-collapse: collapse;
         min-width: 1215px; }
@@ -3220,8 +3224,11 @@ span.sticker {
           .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row.head .report-item {
             padding: 10px;
             border-bottom: 1px solid #e8e8e8;
+            text-align: left;
             font-size: 14px;
-            text-align: left; }
+            font-weight: 600;
+            text-transform: uppercase;
+            line-height: 20px; }
             .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row.head .report-item.job-current-status {
               min-width: 100px;
               text-transform: capitalize; }
