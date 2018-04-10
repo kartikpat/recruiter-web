@@ -3,7 +3,7 @@ function sendInterViewInvite(recruiterId, jobId, applicationId , data){
 		if(res.status && res.status =='success'){
             res.parameters = {}
             res.parameters.applicationId = applicationId;
-            res.parameters.inviteId = inviteId;
+            res.parameters.inviteId = data.type;
 			return pubsub.publish("sendInterViewInviteSuccess", res);
 		}
 	}, function(res,status,error) {

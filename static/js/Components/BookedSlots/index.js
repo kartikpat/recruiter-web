@@ -1,9 +1,8 @@
 var globalParameters = {
     pageContent: 10,
     pageNumber: 1,
-    status: "1,3",
-    candidateListLength: null,
-    startdate:'03/12/2018'
+    InterviewListLength: null,
+    calendarId: -1
 }
 
 jQuery(document).ready( function() {
@@ -13,41 +12,50 @@ jQuery(document).ready( function() {
    fetchRecruiterCalendar(recruiterId)
 
    slots.onChangeCalendarFilters(function(calendarId){
+       slots.emptySlots();
        slots.showShell();
        var parameters = {};
        globalParameters.pageNumber = 1;
        parameters.pageNumber= globalParameters.pageNumber;
        parameters.pageContent= globalParameters.pageContent;
-       parameters.fromDate=slots.getStartDate();
-       slots.emptySlots();
-       if(calendarId != -1) {
-           parameters.calendarId = calendarId;
+       if(slots.getStartDate() != '') {
+           parameters.fromDate = slots.getStartDate();
+       }
+       if(parseInt(calendarId) != -1) {
+           parameters.calendarId = parseInt(calendarId);
+           globalParameters.calendarId = parameters.calendarId;
        }
        fetchInterviews(recruiterId, parameters);
    })
 
-//    slots.onClickSubmitCancelInterview(function(jobId, reason){
-//        slots.closeModal()
-//     //    slots.showLoaderOverlay()
-//        return submitUnpublishJob(recruiterId, jobId, {reasonId: reason});
-//    });
+   slots.onClickSubmitCancelInterview(function(inviteId, calendarId, applicationId, reason){
+       slots.closeModal()
+       slots.showLoaderOverlay()
+       var data = {
+           inviteId: parseInt(inviteId),
+           calendarId: parseInt(calendarId),
+           block: reason
+       }
+       return cancelInterviewInvite(recruiterId, jobId, applicationId, data);
+   });
 
     function onChangeDate(){
+        slots.emptySlots();
+        slots.showShell();
        var parameters = {};
        globalParameters.pageNumber = 1;
        parameters.pageNumber= globalParameters.pageNumber;
        parameters.pageContent= globalParameters.pageContent;
-       parameters.fromDate=slots.getStartDate();
-       if(calendarId != -1) {
-             parameters.calendarId = calendarId;
+       if(slots.getStartDate() != '') {
+           parameters.fromDate = slots.getStartDate();
        }
-       console.log(parameters);
-       slots.emptySlots();
+       if(globalParameters.calendarId != -1) {
+           parameters.calendarId = globalParameters.calendarId;
+       }
        fetchInterviews(recruiterId, parameters);
     }
 
     slots.startdate(function(){
-        console.log("fff");
         onChangeDate()
     })
 
@@ -60,8 +68,9 @@ jQuery(document).ready( function() {
 
    var fetchedInterviewsSuccessSubscription = pubsub.subscribe('fetchedInterviews',onInterviewsFetchSuccess)
    var fetchedInterviewsFailSubscription = pubsub.subscribe('fetchedInterviewsFail',onInterviewsFetchFail)
-   // var unPublishJobSuccessSubscription = pubsub.subscribe("jobUnpublishSuccess", onSuccessfulUnpublishedJob);
-   // var unPublishJobFailSubscription = pubsub.subscribe("jobUnpublishFail", onFailedUnpublishedJob);
+
+   var cancelInviteSuccessSubscription = pubsub.subscribe("cancelInviteSuccess", onSuccessfulCancelInvite);
+   var cancelInviteFailSubscription = pubsub.subscribe("cancelInviteFail", onFailedCancelInvite);
 
    var fetchedCalendarsSuccessSubscription = pubsub.subscribe("fetchedCalendars", onSuccessfullFetchedCalendars)
    var fetchCalendarsFailSubscription = pubsub.subscribe("failedToFetchCalendars", onFailFetchedCalendars)
@@ -76,29 +85,27 @@ jQuery(document).ready( function() {
 
    function onInterviewsFetchSuccess(topic, data){
         tickerLock = false;
-        slots.hideLoaderOverlay();
-        console.log(data);
         globalParameters.InterviewListLength = data.length;
         slots.addToList(data,globalParameters.pageNumber,globalParameters.pageContent);
-
     }
 
    function onInterviewsFetchFail(topic, data){
 
    }
 
-//    function onSuccessfulPremiumJob(topic, data){
-//        slots.hideLoaderOverlay()
-//        toastNotify(1, "Job Made Premium Successfully")
-//        setTimeout(function(){
-//             location.reload()
-//         }, 2000);
-//    }
-//    function onFailedPremiumJob(topic, data){
-//        slots.hideLoaderOverlay()
-//        slots.openModal("premium")
-//        errorHandler(data)
-//    }
+   function onSuccessfulCancelInvite(topic, data){
+       slots.hideLoaderOverlay()
+       toastNotify(1, "Interview Invite Cancelled Successfully")
+       setTimeout(function(){
+            location.reload()
+        }, 2000);
+   }
+
+   function onFailedCancelInvite(topic, data){
+       slots.hideLoaderOverlay()
+       slots.openModal()
+       errorHandler(data)
+   }
 
    var tickerLock=false;
    $(window).scroll(function() {
@@ -110,13 +117,18 @@ jQuery(document).ready( function() {
 
    function checkScrollEnd() {
        if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-        //    debugger
+
            globalParameters.pageNumber = globalParameters.pageNumber + 1;
            if(globalParameters.InterviewListLength >= globalParameters.pageContent) {
-            //    var parameters = filters.getAppliedFilters();
+
                parameters.pageNumber = globalParameters.pageNumber;
                parameters.pageContent = globalParameters.pageContent;
-               parameters.status = globalParameters.status;
+               if(slots.getStartDate() != '') {
+                   parameters.fromDate = slots.getStartDate();
+               }
+               if(globalParameters.calendarId != -1) {
+                   parameters.calendarId = globalParameters.calendarId;
+               }
                $(".loaderScroller").removeClass("hidden");
                fetchInterviews(recruiterId,parameters);
            }
@@ -131,8 +143,11 @@ jQuery(document).ready( function() {
 });
 
 function errorHandler(data) {
-    if(!data) {
+    var res = data.responseJSON
+    hideLoader()
+    if(!res) {
+
         return toastNotify(3, "Something went wrong");
     }
-    return toastNotify(3, data.message);
+    return toastNotify(3, res.message);
 }

@@ -8,11 +8,6 @@ var globalParameters = {
 
 jQuery(document).ready( function() {
 
-	// if(localStorage.getItem("jobPostSuccessMessage") != null) {
-	// 	toastNotify(1, localStorage.getItem("jobPostSuccessMessage"))
-	// 	localStorage.removeItem("jobPostSuccessMessage");
-	// }
- 
     var successMsg = getQueryParameter("jobPostMessage");
     if(!isEmpty(successMsg)) {
         toastNotify(1, decodeURIComponent(successMsg))
@@ -29,18 +24,17 @@ jQuery(document).ready( function() {
 	jobList.setConfig("baseUrlJob", baseUrlJob);
 
 	jobList.onChangeJobFilters(function(type){
-        if(!globalParameters.initialLoad) {
-    		tickerLock = false;
-    		jobList.emptyList();
-    		jobList.showShell();
-    		var parameters = {}
-    		globalParameters.pageNumber = 1;
-    		parameters.pageNumber = globalParameters.pageNumber;
-    		parameters.pageContent = globalParameters.pageContent;
-    		parameters.type = type;
-    		globalParameters.type = parameters.type;
-    		fetchJobs(parameters,recruiterId);
-        }
+		tickerLock = false;
+        jobList.hideEmptyView()
+		jobList.emptyList();
+		jobList.showShell();
+		var parameters = {}
+		globalParameters.pageNumber = 1;
+		parameters.pageNumber = globalParameters.pageNumber;
+		parameters.pageContent = globalParameters.pageContent;
+		parameters.type = type;
+		globalParameters.type = parameters.type;
+		fetchJobs(parameters,recruiterId);
 	})
 
 	jobList.onClickJobEdit()
@@ -86,7 +80,8 @@ jQuery(document).ready( function() {
 		tickerLock = false;
         globalParameters.initialLoad = 0;
 		globalParameters.jobListLength = data.length;
-		jobList.addToList(data, globalParameters.pageNumber, globalParameters.pageContent,globalParameters.type);
+
+		jobList.addToList(data, globalParameters.pageNumber, globalParameters.pageContent,data.obj.type);
 	}
 
 	function onJobsFetchFail(topic, data){

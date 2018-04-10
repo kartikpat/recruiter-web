@@ -581,6 +581,9 @@
 .icon-linkedin::before {
   content: '\e84b'; }
 
+* {
+  word-break: break-word; }
+
 .left {
   float: left; }
 

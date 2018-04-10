@@ -107,6 +107,7 @@ function candidateList() {
        })
        item.candTagList.html(tagStr)
        var profStr = '';
+       aData["jobs"] = sortArrayOfObjectsByMultipleKey(aData["jobs"])
        $.each(aData["jobs"],function(index, anObj) {
            if(index > 2) {
                return
@@ -118,7 +119,7 @@ function candidateList() {
            var fromMon = getMonthName(anObj["exp"]["from"]["month"]);
            var toMon = getMonthName(anObj["exp"]["to"]["month"]);
            var fromYear = anObj["exp"]["from"]["year"];
-           var toYear = anObj["exp"]["from"]["year"];
+           var toYear = anObj["exp"]["to"]["year"];
            var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
            item.tenure.text(str);
 
@@ -174,8 +175,6 @@ function candidateList() {
        settings.candidateCount.text(count)
    }
 
-
-
    function addToList(dataArray, pageNumber, pageContent){
        hideShell()
         var statusVal=settings.filterByStatus.val();
@@ -187,11 +186,11 @@ function candidateList() {
                 return
             }
             else{
-                    $('.user-text').text('We couldn’t find any matches for the selected filter.');
-                    $('.empty-text').text('Please select a different filter');
-                    $('.image-container img').attr('src','/static/images/tagged.svg');
-                    settings.emptyView.removeClass('hidden');
-                    return
+                $('.user-text').text('We couldn’t find any matches for the selected filter.');
+                $('.empty-text').text('Please select a different filter');
+                $('.image-container img').attr('src','/static/images/tagged.svg');
+                settings.emptyView.removeClass('hidden');
+                return
             }
        }
        settings.emptyView.addClass('hidden');
@@ -202,7 +201,10 @@ function candidateList() {
        });
        settings.candidateListing.append(str);
        if(dataArray.length< pageContent) {
-           return settings.candidateListing.append("<div class='no-data'>No more records!</div>")
+           if(settings.candidateListing.find(".no-more-records").length == 0) {
+               return settings.candidateListing.append("<div class='no-more-records no-data'>No more records!</div>")
+           }
+           
        }
    }
 

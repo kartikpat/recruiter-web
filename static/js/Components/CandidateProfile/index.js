@@ -89,6 +89,10 @@ jQuery(document).ready( function() {
          fetchRecruiterTags(recruiterId, parameters)
      })
 
+     aCandidate.onClickSeeMoreRec(function() {
+         // fetchRecommendations(recruiterId)
+     })
+
      aCandidate.onClickShortlistCandidate(function(applicationId, newStatus, dataAction) {
          var action;
          if(parseInt(dataAction) == parseInt(newStatus)) {
@@ -118,7 +122,7 @@ jQuery(document).ready( function() {
          parameters.isModalButton = true
          setCandidateAction(recruiterId, jobId, action , applicationId, {}, parameters);
      })
- 
+
      aCandidate.onClickSaveCandidate(function(applicationId, newStatus, dataAction) {
          var action;
          if(parseInt(dataAction) == parseInt(newStatus)) {

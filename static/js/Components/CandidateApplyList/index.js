@@ -222,7 +222,7 @@ jQuery(document).ready( function() {
     })
 
     aCandidate.onClickSeeMoreRec(function() {
-        fetchRecommendations(recruiterId)
+        // fetchRecommendations(recruiterId)
     })
 
     aCandidate.onClickChatCandidateModal(function(candidateId,applicationId){
@@ -278,7 +278,7 @@ jQuery(document).ready( function() {
         tickerLock = false;
         var status = candidates.activateStatsTab(event, ui)
         candidates.showShells(status);
-        candidates.removeCandidate(globalParameters.status)
+        candidates.removeCandidate(status)
         candidates.populateCheckInputDropdown(status)
 
 
@@ -693,9 +693,9 @@ jQuery(document).ready( function() {
             }
         }
 
-        candidates.addToList(data["data"], globalParameters.status, globalParameters.pageNumber, globalParameters.pageContent, filterFlag);
+        candidates.addToList(data["data"], data.obj.status, globalParameters.pageNumber, globalParameters.pageContent, filterFlag);
 
-        console.log(filterFlag)
+
 
         if(filterFlag > 0) {
             fetchFiltersCount(recruiterId, jobId, parameters)
@@ -872,6 +872,7 @@ jQuery(document).ready( function() {
 
     function onSendInterViewInviteSuccess(topic, data) {
         candidates.changeInviteText(data.parameters.applicationId)
+        
         if(data.parameters.inviteId == 1)
             toastNotify(1, "Face to Face Invite Sent Successfully!")
         if(data.parameters.inviteId == 2)

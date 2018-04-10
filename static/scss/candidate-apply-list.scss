@@ -4,6 +4,14 @@
 @import 'components/modal';
 @import "fonts.scss";
 
+.seeMoreRec {
+    display: inline-block;
+
+    cursor: pointer;
+
+}
+
+
 .filtersExtraButtons {
     font-size: 13px;
     padding-right: 10px;
@@ -1272,6 +1280,7 @@ input::-webkit-input-placeholder {
 		margin: 0 5px;
 		color: #2b2b2b !important;
 		cursor: pointer;
+        margin-left: 0px;
 	}
 	.mobCandidateAddTagButton{
 		background-color: #FFF !important;
@@ -1503,13 +1512,12 @@ input::-webkit-input-placeholder {
 								padding:25px;
 								.content{
 									.mobCommentBox{
-										.comment-textarea{
+										.comment-textarea {
 										background-color: white;
 										color:  #757575;
 										font-size: 14px;/* Approximation due to font substitution */
 										font-weight: 400;
 										text-align: left;
-										min-height: 75px;
 										margin-bottom:10px;
 										border:1px solid  #e4e4e4;
 										border-left: 3px solid  #cfebeb;
@@ -1558,7 +1566,7 @@ input::-webkit-input-placeholder {
 										padding: 5px;
                                         border: 1px solid #e8e8e8;
 
-										min-height: 100px;
+                                        margin-bottom: 15px;
 										&:focus {
 											outline: none;
 											border: 1px solid $button-color-green;
@@ -1566,13 +1574,14 @@ input::-webkit-input-placeholder {
 										}
 									}
 									.action-buttons {
-										margin-top: 10px;
+										margin-top: 0px;
 										span.button {
 
 											@include button($color-green);
 											margin-left: 0px;
 											background-color: $color-white!important;
 										}
+
 									}
 								}
 								&.tags {
@@ -1706,6 +1715,9 @@ input::-webkit-input-placeholder {
 												&.user-link {
 													a {
 														color:$link-color;
+                                                        // &:hover {
+                                                        //     text-decoration: underline;
+                                                        // }
 													}
 												}
 											}
@@ -1718,7 +1730,7 @@ input::-webkit-input-placeholder {
 										p {
 											line-height:1.5;
 											word-wrap: break-word;
-										
+
 										}
 									}
                                     .separator {
@@ -1727,6 +1739,13 @@ input::-webkit-input-placeholder {
                                     }
                                     .see-more {
                                         font-size: 14px;
+                                    }
+                                    .icon-down_arrow, .icon-up_arrow {
+                                        font-size: 11px;
+                                        margin-left: 3px;
+                                    }
+                                    .recommendationListSecond {
+                                        display: none;
                                     }
 								}
 							}
@@ -1921,7 +1940,7 @@ input::-webkit-input-placeholder {
 				 font-size: 14px;
 			 }
 			 .icon-tick_circle{
-				 color: green;
+				 color: $button-color-green;
 			 }
     		.comment-block {
 				margin-bottom:15px;
@@ -2010,11 +2029,12 @@ input::-webkit-input-placeholder {
 		    box-shadow:0 0 10px rgba(0,0,0,0.2);
 			.contact-menu{
 				.contact-info{
-					bottom: 65px;
-					background: rgba(128, 128, 128, 0.85);
-					position: fixed;
-					width: 78%;
-					padding: 8px 20px;
+                    h3 {
+                        margin-top: 0px;
+                    }
+                    .wrap {
+                        margin: 7px 0;
+                    }
 					color: #fff;
 				}
 			}
@@ -2061,6 +2081,9 @@ input::-webkit-input-placeholder {
 							color: black;
 							font-size: 21px;
 						}
+                        &.contactMenubutton {
+
+                        }
 					}
 
 				}
@@ -2172,15 +2195,16 @@ input::-webkit-input-placeholder {
 			border-radius: 8px;
 			.contact-menu{
 				.contact-info{
-					bottom: 65px;
-					background: rgba(128, 128, 128, 0.85);
-					position: fixed;
-					width: 97.3%;
-					padding: 8px 20px;
+				    h3 {
+                        margin-top: 0px;
+                    }
+                    .wrap {
+                        margin: 7px 0;
+                    }
 					color: #fff;
 				}
 			}
-			
+
 		    .fold {
 		    	position: fixed;
 
@@ -2336,6 +2360,14 @@ input::-webkit-input-placeholder {
 	}
 }
 
+.sidebar-section.contact-info {
+    .wrap {
+        margin: 7px 0;
+    color: #2b2b2b;
+    line-height: 1.2;
+    }
+}
+
 
 
 @media all and (max-width:480px) {
@@ -2384,6 +2416,7 @@ input::-webkit-input-placeholder {
     .view-resume-modal .mobile-resume-sidebar .fold.first-fold {
         padding-left: 25px;
 	}
+
 	.view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default {
 		background: transparent;
 		border: none;
@@ -2391,12 +2424,14 @@ input::-webkit-input-placeholder {
 		position: relative;
 		top: 1px;
 	}
+
 	.view-resume-modal .mobile-resume-sidebar .contact-menu .contact-info {
-		bottom: 97px;
-		background: rgba(128, 128, 128, 0.85);
-		position: fixed;
-		width: 95%;
-		padding: 8px 20px; 
+        h3 {
+            margin-top: 0px;
+        }
+        .wrap {
+            margin: 7px 0;
+        }
 		color: #fff;
 	}
     .mass-action-container {

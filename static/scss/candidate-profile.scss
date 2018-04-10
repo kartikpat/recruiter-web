@@ -2,6 +2,22 @@
 @import 'input-elements';
 @import 'chat-sidebar';
 
+.sidebar-section.contact-info {
+    .wrap {
+        margin: 7px 0;
+        color: #2b2b2b;
+        line-height: 1.2;
+        font-size: 14px;
+    }
+}
+
+.seeMoreRec {
+    display: inline-block;
+
+    cursor: pointer;
+
+}
+
 .loader-overlay {
     z-index: 99;
 }
@@ -10,6 +26,17 @@
 
     background-color:$body-background-color;
     padding:30px;
+
+    .mobCandidateAddTagButton{
+		background-color: #FFF !important;
+		border: 1px solid #d8d5d5 !important;
+		border-radius: 4px;
+		padding: 6px 25px;
+		font-size: 14px !important;
+		margin: 0 5px;
+		color: #2b2b2b !important;
+		cursor: pointer;
+	}
 
 	.mob.comments {
 		display: none;
@@ -119,6 +146,7 @@
                                     @include text-shell;
                                     max-width: 100px;
                                     max-height: 7px;
+                                    margin: 0 auto;
                                     margin-top: 5px;
                                     min-height: 7px;
                                 }
@@ -247,6 +275,21 @@
 								border:1px solid $border-color-base;
 								width:100%;
 								padding:25px;
+                                .content{
+									.mobCommentBox{
+										.comment-textarea {
+										background-color: white;
+										color:  #757575;
+										font-size: 14px;/* Approximation due to font substitution */
+										font-weight: 400;
+										text-align: left;
+										margin-bottom:10px;
+										border:1px solid  #e4e4e4;
+										border-left: 3px solid  #cfebeb;
+										resize: none;
+										}
+									}
+								}
 								.cand-add-tag {
 									width: 50%;
 									height: 40px;
@@ -260,12 +303,12 @@
 									textarea {
 										width: 50%;
 										padding: 5px;
-										border-left: 3px solid $button-color-green;
+
 										min-height: 50px;
 										&:focus {
 											outline: none;
 											border: 1px solid $button-color-green;
-											border-left: 3px solid green;
+
 										}
 									}
 									.action-buttons {
@@ -388,46 +431,66 @@
 									}
 								}
 
-								&.recommendations {
-									.recommendation-header {
-										.user-image {
-											display:inline-block;
-											vertical-align: middle;
-											margin-right:20px;
-											img {
-												border-radius:50%;
-											}
-										}
-										.user-details {
-											display:inline-block;
-											vertical-align:top;
-											padding:9px 0	;
-											p {
-												line-height:1.5;
-												color:$color-black;
+                                &.recommendations {
+                                    .recommendation-header {
+                                        .user-image {
+                                            display:inline-block;
+                                            vertical-align: middle;
+                                            margin-right:20px;
+                                            img {
+                                                border-radius:50%;
+                                            }
+                                        }
+                                        .user-details {
+                                            display:inline-block;
+                                            vertical-align:top;
+                                            padding:9px 0	;
+                                            p {
+                                                line-height:1.5;
+                                                color:$color-black;
 
-												&.user-name {
-													font-weight:bold;
-													font-size:$resume-listing-font-size;
-												}
+                                                &.user-name {
+                                                    font-weight:bold;
+                                                    font-size:$resume-listing-font-size;
+                                                    text-transform: capitalize;
+                                                }
 
-												&.user-link {
-													a {
-														color:$link-color;
-													}
-												}
-											}
-										}
-									}
+                                                &.user-link {
+                                                    a {
+                                                        color:$link-color;
+                                                        // &:hover {
+                                                        //     text-decoration: underline;
+                                                        // }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
 
-									.recommendation-body {
-										margin:20px 0 0 0;
+                                    .recommendation-body {
+                                        margin:0px 0 0 0;
 
-										p {
-											line-height:1.5;
-										}
-									}
-								}
+                                        p {
+                                            line-height:1.5;
+                                            word-wrap: break-word;
+
+                                        }
+                                    }
+                                    .separator {
+                                        margin:20px 0;
+                                        border-bottom:1px solid $border-color-base;
+                                    }
+                                    .see-more {
+                                        font-size: 14px;
+                                    }
+                                    .icon-down_arrow, .icon-up_arrow {
+                                        font-size: 11px;
+                                        margin-left: 3px;
+                                    }
+                                    .recommendationListSecond {
+                                        display: none;
+                                    }
+                                }
 							}
 						}
 
@@ -552,7 +615,7 @@
 				font-size: 14px;
 			}
 			.icon-tick_circle {
-				color: green;
+				color: $button-color-green;
 			}
 			.cand-add-tag {
 				height: 40px;
@@ -658,7 +721,17 @@
 		}
 		.mobile-resume-sidebar {
 			display:block;
-
+            .contact-menu{
+				.contact-info{
+                    h3 {
+                        margin-top: 0px;
+                    }
+                    .wrap {
+                        margin: 7px 0;
+                    }
+					color: #fff;
+				}
+			}
 		    background:$color-white;
 		    box-shadow:0 0 10px rgba(0,0,0,0.2);
 
@@ -802,17 +875,41 @@
 	textarea {
 		width: 100%;
 		padding: 5px;
-		border-left: 3px solid $button-color-green;
+
 		min-height: 50px;
 		margin-bottom:15px;
 		overflow: hidden;
 		&:focus {
 			outline: none;
 			border: 1px solid $button-color-green;
-			border-left: 3px solid green;
+
 		}
 	}
 	.action-buttons {
 		margin-bottom: 0;
 	}
+}
+
+.view-resume-modal .mobCandidateAddCommentButton {
+    background-color: #FFF !important;
+    border: 1px solid #d8d5d5 !important;
+    border-radius: 4px;
+    padding: 6px 25px;
+    font-size: 14px !important;
+    margin: 0 5px;
+    color: #2b2b2b !important;
+    cursor: pointer;
+    margin-left: 0px;
+    margin-top: 10px;
+}
+
+.view-resume-modal .mobcandidateAddEditButton {
+    color: #155D9A !important;
+    font-size: 13px !important;
+    cursor: pointer;
+
+}
+
+.view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons {
+    margin-top: 0;
 }

@@ -348,6 +348,9 @@
 .icon-linkedin::before {
   content: '\e84b'; }
 
+* {
+  word-break: break-word; }
+
 .left {
   float: left; }
 
@@ -832,7 +835,7 @@ b {
         text-align: center; }
         .header .navigation ul .menu-list-item .icon-down_arrow::before {
           color: #888;
-          font-size: 11px;
+          font-size: 11px !important;
           margin-left: 2px; }
         .header .navigation ul .menu-list-item.active .header-links {
           font-weight: 600; }

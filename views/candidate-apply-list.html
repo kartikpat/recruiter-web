@@ -475,21 +475,25 @@
 	            			<div class="content recommendationList">
 
 	            			</div>
-							<span class="see-more link-color seeMoreRec hidden">See More</span>
+							<div class="recommendationListSecond">
+
+							</div>
+							<span class="see-more link-color seeMoreRec hidden" data-clicked="false">See More</span><span class="icon-down_arrow"></span>
+
 	            		</div>
 
 
 						<div class="content-block comments mob mobCandidateCommentContainer">
 	            			<h3 class="content-heading">Comment</h3>
 	            			<div class="content">
-								<div class="mobCommentBox hidden">
-									<textarea id="" class="comment-textarea" readonly></textarea>
+								<div class="mobCommentBox">
+									<textarea id="" class="comment-textarea hidden" readonly></textarea>
 								</div>
 								<div class="">
 									<textarea  placeholder="Add Comment" name="name" class="mobCandidateCommentTextarea"></textarea>
 								</div>
 								<div class="action-buttons">
-									<span class="cand-comment-button  mobCandidateAddCommentButton ">Add</span>
+									<span class="cand-comment-button  mobCandidateAddCommentButton">Add</span>
 									<span class=" green mobcandidateAddEditButton hidden">Edit Comment</span>
 								</div>
 	            			</div>
@@ -537,33 +541,33 @@
     </div>
     <div class="mobile-resume-sidebar">
 		<div class="clearfix"></div>
-		<div class="contact-menu hidden">
-			<div class="sidebar-section contact-info">
-					<h3>Contact Information</h3>
-					<span class="icon"><i class="icon-telephone"></i></span>
-					<span class="contact"></span>
-					<span class="icon"><i class="icon-tick_circle"></i></span>
-					<br>
-					<span class="icon"><i class="icon-mail"></i></span>
-					<span class="email-address"></span>	
-					<span class="icon"><i class="icon-tick_circle"></i></span>
-			</div>
-		</div>
+
     	<div class="first-fold fold top">
 			<div class="action-buttons">
 	    		<span class="accept button green candidateShortlistModal">Shortlist</span>
 	    		<span class="reject button red candidateRejectModal">Reject</span>
 				<span class="contactMenubutton">contact-info</span>
-		
+
 				<!-- <span class="view-more button white"><i class="icon-down_arrow"></i></span> -->
 	    	</div>
     	</div>
-    	<!-- <div class="second-fold fold hidden">
-    		<div class="action-buttons">
-    			<span class="comment button white">Comment</span>
-	    		<span class="tag button white">Tag</span>
-    		</div>
-    	</div> -->
+    	<div class="second-fold fold contact-menu hidden">
+			<div class="sidebar-section contact-info">
+					<h3>Contact Information</h3>
+					<div class="">
+						<span class="icon"><i class="icon-telephone"></i></span>
+						<span class="contact"></span>
+						<span class="icon iconTelephoneVer hidden"><i class="icon-tick_circle"></i></span>
+					</div>
+
+					<div class="">
+						<span class="icon"><i class="icon-mail"></i></span>
+						<span class="email-address"></span>
+						<span class="icon iconEmailVer hidden"><i class="icon-tick_circle"></i></span>
+					</div>
+
+			</div>
+    	</div>
     </div>
     <div class="resume-sidebar right">
     	<div class=" action-buttons">
@@ -587,13 +591,17 @@
 
 		<div class="sidebar-section contact-info">
 			<h3>Contact Information</h3>
-			<span class="icon"><i class="icon-telephone"></i></span>
-			<span class="contact"></span>
-			<span class="icon"><i class="icon-tick_circle"></i></span>
-			<br>
-			<span class="icon"><i class="icon-mail"></i></span>
-			<span class="email-address"></span>	
-			<span class="icon"><i class="icon-tick_circle"></i></span>
+			<div class="wrap">
+				<span class="icon"><i class="icon-telephone"></i></span>
+				<span class="contact"></span>
+				<span class="icon iconTelephoneVer hidden"><i class="icon-tick_circle"></i></span>
+			</div>
+
+			<div class="wrap">
+				<span class="icon"><i class="icon-mail"></i></span>
+				<span class="email-address"></span>
+				<span class="icon iconEmailVer hidden"><i class="icon-tick_circle"></i></span>
+			</div>
     	</div>
 
     	<div class="sidebar-section comments candidateCommentContainer">

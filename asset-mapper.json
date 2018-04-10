@@ -1578,9 +1578,9 @@
 				"static/css/utilities.css",
 				"static/css/modal.css",
 				"static/css/header.css",
-				"static/css/chat-sticky.css",
                 "static/css/booked-slots.css",
-                "static/css/footer.css"
+                "static/css/footer.css",
+				"static/css/vendor/tooltipster.css"
 
             ],
             "prod": [
@@ -1591,6 +1591,7 @@
             "debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/vendor/jquery-ui.min.js",
+				"static/js/vendor/tooltipster.main.min.js",
 				"static/js/utilities.js",
 				"static/js/modal.js",
 				"static/js/header.js",
@@ -1603,12 +1604,11 @@
 				"static/js/Utilities/common.js",
 				"static/js/Services/fetchRecruiterCalendar.js",
 				"static/js/Services/fetchInterviews.js",
+				"static/js/Services/cancelInvite.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Components/BookedSlots/model.js",
-				"static/js/Components/BookedSlots/index.js",
-				"static/js/chat-pubnub-sticky.js",
-				"static/js/chat-sticky.js"
+				"static/js/Components/BookedSlots/index.js"
 
             ],
             "prod" :[
