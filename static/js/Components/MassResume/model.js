@@ -111,7 +111,7 @@ function MassResume(){
           Status:card.find('.status'),
           count:card.find('.resumes'),
           downloadLink:card.find('.download-link'),
-          noOfDownloads:card.find(".downloaded")  
+          noOfDownloads:card.find(".downloaded")
       }
   }
 
@@ -147,7 +147,7 @@ function MassResume(){
             var str = hours + ":" + mins;
             return str;
     }
-      
+
     function ISODateToD_M_Y(aDate) {
         var date = new Date(aDate),
           year = date.getFullYear(),
@@ -159,7 +159,7 @@ function MassResume(){
         if (month < 10) {
           month = '0' + month;
         }
-      
+
         var str = dt + "-" + month + "-" + year;
         return str;
     }
@@ -175,9 +175,11 @@ function MassResume(){
           str+=item.element[0].outerHTML;
       });
       $('.mass-resume-content').append(str);
-      
+
       if(dataArray.length< pageContent) {
-        return  $('.mass-resume-content').append("<div class='no-data'>No more records!</div>")
+          if($('.mass-resume-content').find(".no-more-records").length == 0) {
+              return $('.mass-resume-content').append("<div class='no-more-records no-data'>No more records!</div>")
+          }
       }
     }
 
@@ -189,10 +191,5 @@ function MassResume(){
         populateResumeStatus:populateResumeStatus,
         getElement:getElement
     }
-    
+
 }
-
-
-
-
-

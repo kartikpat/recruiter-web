@@ -184,9 +184,9 @@ b{
                     font-size: 27px;
                     line-height: 43px;
                     color: #e8e8e8;
-                }   
+                }
             }
-          
+
             .chat-icon{
                 text-align: center;
                 .icon-chat_icon::before{
@@ -308,8 +308,8 @@ b{
                 text-align: center;
                 .icon-down_arrow::before{
                     color: #888;
-                    font-size: 11px;
-                    margin-left: 2px;   
+                    font-size: 11px !important;
+                    margin-left: 2px;
                 }
                 &.active{
                     .header-links{
@@ -319,7 +319,7 @@ b{
                 &:hover{
                     text-decoration: underline;
                 }
-               
+
                 &.my-jobs {
                     position: relative;
                 }
@@ -494,7 +494,7 @@ b{
                         height: 50%;
                     }
                     .search-icon{
-                       
+
                         text-align: center;
                         .icon-search:before{
                             line-height: 32px;
@@ -505,7 +505,7 @@ b{
                             line-height: 29px;
                         }
                     }
-                   
+
                 }
 
                 .profile {

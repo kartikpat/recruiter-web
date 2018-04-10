@@ -1939,7 +1939,7 @@ input::-webkit-input-placeholder {
 				 font-size: 14px;
 			 }
 			 .icon-tick_circle{
-				 color: green;
+				 color: $button-color-green;
 			 }
     		.comment-block {
 				margin-bottom:15px;
@@ -2080,6 +2080,9 @@ input::-webkit-input-placeholder {
 							color: black;
 							font-size: 21px;
 						}
+                        &.contactMenubutton {
+
+                        }
 					}
 
 				}
