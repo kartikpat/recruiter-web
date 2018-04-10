@@ -1356,6 +1356,30 @@
 		}
 	},
 
+
+	"contact-us": {
+		"styles": {
+			"debug" : [
+				"static/css/utilities.css",
+				"static/css/header.css",
+				"static/css/contact-us.css",
+				"static/css/footer.css"
+			],
+			"prod": [
+				"static/build/css/contact-us.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/header.js"
+			],
+			"prod" : [
+				"static/build/js/contact-us.min.js"
+			]
+		}
+	},
+
 	"privacy": {
 		"styles": {
 			"debug" : [
