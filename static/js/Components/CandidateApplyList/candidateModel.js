@@ -504,16 +504,7 @@ function Candidate() {
     }
 
     function onClickAddComment(fn) {
-        // debugger
-        // settings.candidateDetailsModal.on('keyup', settings.candidateCommentTextareaClass,function(event) {
-        //     event.stopPropagation();
-        //     if (event.which == 13) {
-        //         return alert("k")
-        //         var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
-        //         return fn(candidateId);
-        //     }
-        //
-        // });
+
         settings.candidateDetailsModal.on('click', settings.candidateAddCommentButtonClass,function(event) {
             event.stopPropagation();
 
@@ -538,37 +529,6 @@ function Candidate() {
     }
 
     function onClickAddCommentMob(fn) {
-        // settings.candidateDetailsModal.on('keyup', settings.candidateCommentTextareaClass,function(event) {
-        //     event.stopPropagation();
-        //     if (event.which == 13) {
-        //         return alert("k")
-        //         var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
-        //         return fn(candidateId);
-        //     }
-        //
-        // });
-
-        settings.candidateDetailsModal.on('click', settings.candidateAddCommentButtonClass,function(event) {
-            event.stopPropagation();
-
-            var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
-            var comment = ($(settings.candidateCommentTextareaClass).val()).trim();
-            if(!comment) {
-                return
-            }
-            $(settings.candidateCommentTextareaClass).addClass("hidden");
-            settings.commentTextarea.val(comment).removeClass("hidden");
-            $(settings.candidateAddCommentButtonClass).addClass("hidden");
-            settings.candidateEditComment.removeClass("hidden");
-            fn(applicationId, comment);
-        });
-
-        settings.candidateEditComment.on('click',function(event){
-            settings.commentTextarea.addClass("hidden");
-            $(settings.candidateCommentTextareaClass).removeClass("hidden").focus();
-            $(settings.candidateAddCommentButtonClass).removeClass("hidden");
-            settings.candidateEditComment.addClass("hidden");
-        })
 
         settings.candidateDetailsModal.on('click', settings.mobCandidateAddCommentButtonClass,function(event) {
             event.stopPropagation();

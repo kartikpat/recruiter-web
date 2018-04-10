@@ -21,27 +21,37 @@ function BookedSlots() {
 		settings.tableRowShell = $(".tableRow.shell");
 		settings.loaderOverlay = $("#loaderOverlay");
 		settings.date = ""
+		settings.inviteId = '';
+		settings.calendarId = '';
+		settings.applicationId = '';
+		settings.candidateOtherActions = $(".candidateOtherActions")
 		onClickInterviewCancel();
         onClickToggle()
 		jQuery(".header .menu-list-item.my-interviews").addClass("active");
 		// settings.noInterviewView.removeClass('hidden');
+		$(window).click(function(event) {
+			$(".candidateOtherActions").addClass('inactive');
+    	});
 
 	}
 
 	function onClickInterviewCancel(){
 		settings.bookedSlots.on('click',settings.openCancelInterviewModalButton,function(e){
 			e.preventDefault();
-			var jobId = $(this).attr("data-job-id");
-			settings.cancelInterviewModal.find("input:radio[name='unpublishReason']:checked").prop('checked', false);
 			addBodyFixed()
+			settings.inviteId = $(this).closest(".slotDate").attr('data-invite-id');
+			settings.calendarId = $(this).closest(".slotDate").attr('data-calendar-id');
+			settings.applicationId = $(this).closest(".slotDate").attr('data-application-id');
 			settings.cancelInterviewModal.removeClass('hidden');
 		});
 	}
 
 	function onClickSubmitCancelInterview(fn){
 		settings.cancelInterviewButton.click(function(){
-			var jobId = $(this).attr('data-refresh-job-id');
-			return fn(jobId);
+
+			var reason = settings.cancelInterviewModal.find("input:radio[name='cancelReason']:checked").attr('id');
+
+			return fn(settings.inviteId, settings.calendarId, settings.applicationId, reason);
 		});
 	}
 
@@ -65,8 +75,8 @@ function BookedSlots() {
 			candLocation: card.find('.candLocation'),
 			jobName: card.find('.jobName'),
 			jobExp: card.find('.jobExp'),
-			jobLocation: card.find('jobLocation'),
-			jobMultipleLocation: card.find('jobMultipleLocation')
+			jobLocation: card.find('.jobLocation'),
+			jobMultipleLocation: card.find('.jobMultipleLocation')
 		}
 	}
 
@@ -80,6 +90,9 @@ function BookedSlots() {
 
 	function createElement(aData, index) {
 		var item = cloneElement();
+		item.element.attr("data-application-id", aData["applicationId"]);
+		item.element.attr("data-invite-id", aData["id"]);
+		item.element.attr("data-calendar-id", aData["calendar"]["id"]);
 		var title = getTitleFormat(aData["job"]["title"], (/\(\d+-\d+ \w+\)$/));
         if(aData["slot"]){
             var date = moment(aData["slot"]["date"]).format('ll');
@@ -108,9 +121,9 @@ function BookedSlots() {
 		item.calendarName.text(aData["calendar"]["name"]);
 		item.calendarName.attr("href","/calendar/"+aData["calendar"]["id"]+"/edit");
 		item.candName.text(aData["name"])
-		item.candName.attr("href", "/job/"+aData["job"]["id"]+"/applications/27989797");
+		item.candName.attr("href", "/job/"+aData["job"]["id"]+"/applications/"+aData["applicationId"]+"");
         item.candDesignation.text(aData["designation"])
-
+		item.candLocation.text(aData["location"])
         if(aData["exp"]) {
             var experience = aData["exp"]['year']+'y '+aData['exp']['month'] +'m'
             item.candExperience.text(experience)
@@ -118,21 +131,20 @@ function BookedSlots() {
 		item.jobName.text(title)
 		item.jobName.attr("href", "/job/"+aData["job"]["id"]+"/applications")
 
-		// var locText = aData["job"]["location"].join(", ")
-		// if(aData["job"]["location"].length) {
-		// 	if(aData["job"]["location"].length <= 1){
-		// 		item.jobLocation.text(locText)
-		// 	}
-		// 	else{
-		// 		item.jobLocation.addClass("hidden")
-		// 		item.jobMultipleLocation.attr("title",locText).removeClass("hidden");
-		// 	}
-		// }
-		// else {
-		// 	item.jobLocation.addClass("hidden")
-		// }
-		//
-		// item.jobExp.text(aData["job"]["exp"]['min']+ ' - ' + aData["job"]['exp']['max'] +' yrs')
+		var locText = aData["job"]["location"].join(", ")
+		if(aData["job"]["location"].length) {
+			if(aData["job"]["location"].length <= 1){
+				item.jobLocation.text(locText)
+			}
+			else{
+				item.jobLocation.addClass("hidden")
+				item.jobMultipleLocation.attr("title",locText).removeClass("hidden");
+			}
+		}
+		else {
+			item.jobLocation.addClass("hidden")
+		}
+		item.jobExp.text(aData["job"]["exp"]['min']+ ' - ' + aData["job"]['exp']['max'] +' yrs')
 		return item;
 	}
 
@@ -153,11 +165,10 @@ function BookedSlots() {
 		settings.bookedSlots.append(str);
 		initializeTooltip()
 		if(dataArray.length< pageContent) {
-			return settings.bookedSlots.append("<div class='no-data'>No more records!</div>")
-			hideLoaderOverlay();
+			if(settings.bookedSlots.find(".no-more-records").length == 0) {
+                return settings.bookedSlots.append("<div class='no-more-records no-data'>No more records!</div>")
+            }
 		}
-
-
 	}
 
 	function emptySlots(){
@@ -185,9 +196,9 @@ function BookedSlots() {
 		settings.loaderOverlay.addClass("hidden")
 	}
 
-	function openModal(type) {
+	function openModal() {
 		addBodyFixed()
-		settings.cancelInterview.removeClass("hidden")
+		settings.cancelInterviewModal.removeClass("hidden")
 
 	}
 
@@ -231,8 +242,8 @@ function BookedSlots() {
 
 	function getStartDate(){
         var fromDate=$('#start_date').datepicker().val();
-        fromDate=fromDate+':00:00:00'
-        console.log(fromDate);
+		if(fromDate != '')
+        	fromDate=fromDate+':00:00:00'
         return fromDate;
     }
 
@@ -266,7 +277,9 @@ function BookedSlots() {
 	}
 
     function onClickToggle() {
-        settings.bookedSlots.on('click','.button-action-list', function(){
+        settings.bookedSlots.on('click','.button-action-list', function(event){
+			debugger
+			event.stopPropagation()
             jQuery(this).toggleClass("inactive");
         })
     }

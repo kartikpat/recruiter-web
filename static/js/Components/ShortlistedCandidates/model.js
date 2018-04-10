@@ -175,8 +175,6 @@ function candidateList() {
        settings.candidateCount.text(count)
    }
 
-
-
    function addToList(dataArray, pageNumber, pageContent){
        hideShell()
         var statusVal=settings.filterByStatus.val();
@@ -188,11 +186,11 @@ function candidateList() {
                 return
             }
             else{
-                    $('.user-text').text('We couldn’t find any matches for the selected filter.');
-                    $('.empty-text').text('Please select a different filter');
-                    $('.image-container img').attr('src','/static/images/tagged.svg');
-                    settings.emptyView.removeClass('hidden');
-                    return
+                $('.user-text').text('We couldn’t find any matches for the selected filter.');
+                $('.empty-text').text('Please select a different filter');
+                $('.image-container img').attr('src','/static/images/tagged.svg');
+                settings.emptyView.removeClass('hidden');
+                return
             }
        }
        settings.emptyView.addClass('hidden');
@@ -203,7 +201,10 @@ function candidateList() {
        });
        settings.candidateListing.append(str);
        if(dataArray.length< pageContent) {
-           return settings.candidateListing.append("<div class='no-data'>No more records!</div>")
+           if(settings.candidateListing.find(".no-more-records").length == 0) {
+               return settings.candidateListing.append("<div class='no-more-records no-data'>No more records!</div>")
+           }
+           
        }
    }
 

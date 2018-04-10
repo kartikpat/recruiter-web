@@ -132,6 +132,8 @@ function Candidate() {
             contact:modal.find('.contact'),
             email:modal.find('.email-address'),
             recommendationList: modal.find('.recommendationList'),
+            iitScore: modal.find(".js_iit"),
+            gmatScore: modal.find(".js_gmat")
         }
     }
 
@@ -419,23 +421,33 @@ function Candidate() {
         })
     }
 
+
     function onClickAddCommentMob(fn) {
-        // settings.candidateDetailsModal.on('keyup', settings.candidateCommentTextareaClass,function(event) {
-        //     event.stopPropagation();
-        //     if (event.which == 13) {
-        //         return alert("k")
-        //         var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
-        //         return fn(candidateId);
-        //     }
-        //
-        // });
 
         settings.candidateDetailsModal.on('click', settings.mobCandidateAddCommentButtonClass,function(event) {
             event.stopPropagation();
+
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
-            var comment = $(settings.mobCandidateCommentTextareaClass).val();
+            var comment = ($(settings.mobCandidateCommentTextareaClass).val()).trim();
+            if(!comment) {
+                return
+            }
+            $(settings.mobCandidateCommentTextareaClass).addClass("hidden");
+            settings.commentTextarea.val(comment).removeClass("hidden");
+            $(settings.mobCandidateAddCommentButtonClass).addClass("hidden");
+
+            settings.mobCandidateEditComment.removeClass("hidden");
+
             fn(applicationId, comment);
         });
+
+        settings.mobCandidateEditComment.on('click',function(event){
+            settings.commentTextarea.addClass("hidden");
+            $(settings.mobCandidateCommentTextareaClass).removeClass("hidden").focus();
+
+            $(settings.mobCandidateAddCommentButtonClass).removeClass("hidden");
+            settings.mobCandidateEditComment.addClass("hidden");
+         })
     }
 
     function onClickAddTag(fn, fn1) {
