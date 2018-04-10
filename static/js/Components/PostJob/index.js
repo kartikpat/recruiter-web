@@ -29,6 +29,8 @@ $(document).ready(function(){
 	fetchJobTags(recruiterId)
  	function onSuccessfulSubmitJob(topic, data){
 		var jobPostMessage;
+		$('#submitForm').addClass('hidden')
+		$('.spinner').removeClass('hidden')
 		if(type=='edit') {
 			jobPostMessage = "Job updated successfully";
 		}

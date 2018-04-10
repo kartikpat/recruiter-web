@@ -707,7 +707,7 @@ body.posf {
 .spinner > div {
   width: 18px;
   height: 18px;
-  background-color: #fff;
+  background-color: black;
   border-radius: 100%;
   display: inline-block;
   -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;

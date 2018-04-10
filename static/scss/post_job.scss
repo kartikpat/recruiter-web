@@ -219,24 +219,42 @@
     padding:0 30px;
     max-width:1440px;
     margin:30px auto;
-
-    button {
+    .button-wrapper{
+        display: inline-block;
         @include button($button-color-green);
+        padding:0;
+        width: 95px;
+        height: 30px;
+        margin-top: 2px;
+        text-align: center;
+        .spinner{
+            width: 100px;
+            margin-top: 4px;
+        }
+    button {
         &.submit-form {
             margin:0;
-            background-color:$button-color-green;
             padding:10px 32px;
+            // background-color:$button-color-green;
+            padding: 0%;
+            display: inline-block;
+            width: 95px;
+            height: 30px;
         }
-        &.cancel-form {
-
-            color:$link-color;
-            box-shadow:none;
-            border:0;
-            background:none;
-            border:0;
-            padding:10px 32px;
-        }
-    }
+    } 
+    }   
+        .button{
+            @include button($button-color-green);
+            &.cancel-form {
+                color:$link-color;
+                box-shadow:none;
+                border:0;
+                background:none;
+                border:0;
+                padding:10px 32px;
+            }
+        }    
+    
 }
 
 .guidelines-container {

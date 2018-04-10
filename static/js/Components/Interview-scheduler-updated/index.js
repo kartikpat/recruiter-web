@@ -48,6 +48,8 @@ $(document).ready(function(){
     function onSuccessfulSubmitCalendar(topic, data){
         console.log('submit successful');
         console.log(data);
+        $('#submit').addClass('hidden')
+        $('.spinner').removeClass('hidden');
         window.location='/calendar-manage' //changeurl
     }
 
