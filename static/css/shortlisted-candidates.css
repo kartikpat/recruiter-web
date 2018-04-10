@@ -336,6 +336,15 @@
 .icon-sunset::before {
   content: '\e83e'; }
 
+.icon-facebook::before {
+  content: '\e84a'; }
+
+.icon-twitter::before {
+  content: '\e849'; }
+
+.icon-linkedin::before {
+  content: '\e84b'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -918,6 +927,15 @@ span.sticker {
 
 .icon-sunset::before {
   content: '\e83e'; }
+
+.icon-facebook::before {
+  content: '\e84a'; }
+
+.icon-twitter::before {
+  content: '\e849'; }
+
+.icon-linkedin::before {
+  content: '\e84b'; }
 
 * {
   word-break: break-word; }
@@ -1501,6 +1519,15 @@ a {
 .icon-sunset::before {
   content: '\e83e'; }
 
+.icon-facebook::before {
+  content: '\e84a'; }
+
+.icon-twitter::before {
+  content: '\e849'; }
+
+.icon-linkedin::before {
+  content: '\e84b'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -1902,7 +1929,10 @@ span.sticker {
     .page-content .tagged-candidates .page-header select::-ms-expand {
       display: none !important; }
     .page-content .tagged-candidates .page-header .title {
-      margin-bottom: 0; }
+      margin-bottom: 0;
+      color: #2b2b2b;
+      font-size: 18px;
+      font-weight: 600; }
     .page-content .tagged-candidates .tagged-candidates-listing {
       background: #FFF;
       border-radius: 6px;

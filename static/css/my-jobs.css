@@ -367,6 +367,15 @@
 .icon-sunset::before {
   content: '\e83e'; }
 
+.icon-facebook::before {
+  content: '\e84a'; }
+
+.icon-twitter::before {
+  content: '\e849'; }
+
+.icon-linkedin::before {
+  content: '\e84b'; }
+
 * {
   word-break: break-word; }
 
@@ -949,6 +958,15 @@ a {
 .icon-sunset::before {
   content: '\e83e'; }
 
+.icon-facebook::before {
+  content: '\e84a'; }
+
+.icon-twitter::before {
+  content: '\e849'; }
+
+.icon-linkedin::before {
+  content: '\e84b'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -1347,7 +1365,7 @@ span.sticker {
       background-color: transparent;
       margin-bottom: 10px;
       background-image: url("/static/images/minimal_select_dropdown.svg");
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 600;
       color: #5d5d5d !important; }
   .page-content .page-header select::-ms-expand {
@@ -1395,6 +1413,8 @@ span.sticker {
     font-weight: 600; }
   .page-content .my-jobs {
     width: 80%; }
+    .page-content .my-jobs .my-jobs-listing .table-headings {
+      background-color: #F1FBFB; }
     .page-content .my-jobs .my-jobs-listing .table-container {
       display: inline-block;
       width: 100%;
@@ -1417,7 +1437,8 @@ span.sticker {
         display: inline-block;
         width: 100%;
         vertical-align: middle;
-        font-size: 0; }
+        font-size: 0;
+        border-radius: 4px; }
         .page-content .my-jobs .my-jobs-listing .table-container .table-row .table-cell {
           display: inline-block;
           font-size: 14px;
@@ -1427,7 +1448,8 @@ span.sticker {
             display: none; }
           .page-content .my-jobs .my-jobs-listing .table-container .table-row .table-cell.heading {
             border-bottom: 1px solid #e8e8e8;
-            padding: 28px 10px 10px; }
+            padding: 16px 10px 10px;
+            height: 50px; }
             .page-content .my-jobs .my-jobs-listing .table-container .table-row .table-cell.heading span {
               font-family: "Droid Sans", sans-serif;
               font-size: 15px;
@@ -1543,21 +1565,31 @@ span.sticker {
     width: 100%; }
     .page-content .my-jobs {
       width: 100%;
-      padding: 20px 15px 20px;
-      background-color: #FFF;
       border-radius: 5px; }
       .page-content .my-jobs .page-header {
-        border-bottom: thin solid #e8e8e8; }
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        height: 60px;
+        background-color: #F1FBFB;
+        border: 1px solid #e8e8e8;
+        border-bottom: none; }
         .page-content .my-jobs .page-header select {
           margin-bottom: 0;
-          padding-left: 0;
+          margin-top: 10px;
+          padding-left: 20px;
           font-size: 16px;
           color: #2b2b2b; }
         .page-content .my-jobs .page-header button {
           margin-right: 0;
           font-size: 16px; }
+        .page-content .my-jobs .page-header .action-buttons {
+          padding-top: 15px;
+          padding-right: 20px; }
       .page-content .my-jobs .my-jobs-listing {
-        padding-top: 10px; }
+        padding-top: 10px;
+        padding-left: 20px;
+        background-color: #FFF;
+        border: 1px solid #e8e8e8; }
         .page-content .my-jobs .my-jobs-listing .table-container {
           background-color: transparent;
           border-radius: 0;
@@ -1645,3 +1677,7 @@ span.sticker {
 
 .error {
   position: relative !important; }
+
+@media (max-width: 320px) {
+  .page-content .my-jobs .page-header select {
+    width: 150px; } }

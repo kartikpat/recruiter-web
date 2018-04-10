@@ -42,6 +42,26 @@
         .social-media-icon {
             display:inline-block;
             margin:0 10px;
+            .icon-facebook::before {
+                content: '\e84a';
+                font-size: 45px;
+                color: #c1c1c1;
+            }
+         
+        }
+        .twitter{
+            .icon-twitter::before {
+                content: '\e849';
+                font-size: 45px;
+                color: #c1c1c1;
+            }
+        }
+        .linkedin{
+            .icon-linkedin::before {
+                content: '\e84b';
+                font-size: 45px;
+                color: #c1c1c1;
+            }
         }
     }
 

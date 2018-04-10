@@ -14,7 +14,6 @@
                     <div class="block-container" id="dashboardStatsContainer">
                         <div class="block activeJobs">
                             <div class="stats">
-                                <!-- <div class="loading"></div> -->
                                 <div class="number">0</div>
                                 <div class="legend">Active Jobs</div>
                             </div>
@@ -55,7 +54,18 @@
                         <div class="detail-card ">
                             <div id="new-jobs-chart" class="graph_holder">
                                 <div class="graph_overlay hidden">
-                                    <p>No data available.</p>
+                                   <div class="empty-view graph-empty">
+                                        <div class="image-container"><img src="/static/images/active_job.svg"></div>
+                                       <div class="detail">You don't have any active jobs right now</div>
+                                        <div class="sub-detail">You will see a graph here when you do</div>
+                                        <div class="action-buttons">
+                                            <a href="/post-job">
+                                                <button class="post-job">Post Job</button>
+                                            </a>
+                                        </div>
+                                        <div class="divider">OR</div>
+                                        <div class="action"><a href="#">View previously posted jobs</a></div>
+                                    </div>
                                 </div>
                                 <div class="column_chart_legend">
                                     <div class="clearfix"></div>
@@ -71,7 +81,22 @@
                             <div class="heading">Recent Jobs</div>
                             <div class="heading-button right"><a href="/my-jobs">See All</a><i class="icon-right_arrow"></i></div>
                         </div>
+                        
                         <div class="detail-card jobs-card">
+                            <div class="empty-view recent-empty hidden">
+                                <div class="image-container"><img src="/static/images/published_job.svg"></div>
+                                <div class="content-conatiner"> 
+                                    <div class="detail">You don't have any published jobs right now</div>
+                                    <div class="sub-detail">You will see a list here when you do</div>
+                                    <div class="action-buttons">
+                                        <a href="/post-job">
+                                            <button class="post-job">Post Job</button>
+                                        </a>
+                                    </div>
+                                    <div class="divide">OR</div>
+                                    <div class="action"><a href=#>View previously posted jobs</a></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="feed-card hidden" id="savedSearchContainer">
@@ -80,6 +105,13 @@
                             <div class="heading-button right">See All<i class="icon-right_arrow"></i></div>
                         </div>
                         <div class="detail-card ">
+                            <div class="empty-view search-empty hidden">
+                                    <div class="image-container"><img src="/static/images/saved_search.svg"></div>
+                                <div class="detail">You don't have any saved jobs right now</div>
+                                    <div class="sub-detail">You will see a list here when you do</div>
+                                    <div class="divider">OR</div>
+                                    <div class="action"><a href="#">View recent searches</a></div>
+                            </div>
                             <div class="feed-row">
                                     <div class="main-content">
                                         <div class="title">
@@ -167,7 +199,6 @@
                         </div>
                         <div class="detail-card roles-card ">
                             <div class="feed-row">
-                                <!-- <div class="margin"></div> -->
                                 <div class="title">Hiring for roles other than management? Explore our other job portals</div>
                                 <div class="list">
                                     <ul>
@@ -388,7 +419,6 @@
         <div class="button candidateReject" >Reject</div>
     </div>  
     <div class="horizontal-separator"></div>
-    <!-- <div class="seeAll see-all"><a class="meta" href="/recruiter/candidates/followUps">See More</a><i class="icon-right_arrow"></i></div> -->
 </div>
 
 <div class="notification-row multiple prototype hidden seeMoreSection">

@@ -15,7 +15,11 @@
       background-color: #FFF;
       box-shadow: 0px 2px 9px 0px rgba(214, 214, 214, 0.3);
       width: 100%;
-      padding: 20px; }
+      padding: 20px;
+      background-image: url("/static/images/footer-background.png");
+      background-size: 100%;
+      background-position: center bottom;
+      background-repeat: no-repeat; }
       .page-content .main-wrapper .main-container .leftnav .pd20 .mt0 {
         color: #5d5d5d; }
       .page-content .main-wrapper .main-container .leftnav .pd20 .txt15 {
@@ -30,3 +34,15 @@
       .page-content .main-wrapper .main-container .leftnav .mt20 {
         margin-top: 20px;
         margin-bottom: 20px; }
+        .page-content .main-wrapper .main-container .leftnav .mt20 .leftnav .icon-facebook::before {
+          content: '\e84a';
+          font-size: 36px;
+          color: #385899; }
+        .page-content .main-wrapper .main-container .leftnav .mt20 .leftnav .icon-linkedin::before {
+          content: '\e84b';
+          font-size: 36px;
+          color: #0677a9; }
+        .page-content .main-wrapper .main-container .leftnav .mt20 .leftnav .icon-twitter::before {
+          content: '\e849';
+          font-size: 36px;
+          color: #54adef; }
