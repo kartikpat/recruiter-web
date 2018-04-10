@@ -30,15 +30,18 @@
 	.main-wrapper {
 		.main-container {
 			.heading {
-				margin:0 0 20px 0;
+				padding: 15px 0;
 				h1 {
 					margin:0;
-		            font-size:$page-title-size;
-		            color:$page-title-color;
+					color: #2b2b2b;
+					font-size: 18px;
+					font-weight: 600;
+					text-align: left;
 		            line-height:1;
 		            font-weight:bold;
                     height: 34px;
-                    line-height: 34px;
+					line-height: 34px;
+					margin-left: 10px;
 				}
 
 				.action-buttons {
@@ -125,6 +128,7 @@
 				.reports-body {
 					overflow-x: auto;
 					font-size:0;
+					border-radius: 4px;
 					table {
                         border-collapse: collapse;
 						min-width: 1215px;
@@ -147,8 +151,11 @@
 							.report-item {
 								padding:10px;
 								border-bottom:1px solid $border-color-base;
-								font-size:$base-font-size;
 								text-align:left;
+								font-size: 14px;
+								font-weight: 600;
+								text-transform: uppercase;
+								line-height: 20px;
                                 &.job-current-status {
                                     min-width: 100px;
                                     text-transform: capitalize;

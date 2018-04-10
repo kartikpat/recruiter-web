@@ -336,6 +336,15 @@
 .icon-sunset::before {
   content: '\e83e'; }
 
+.icon-facebook::before {
+  content: '\e84a'; }
+
+.icon-twitter::before {
+  content: '\e849'; }
+
+.icon-linkedin::before {
+  content: '\e84b'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -585,11 +594,9 @@ span.sticker {
   max-width: 1500px;
   min-height: 100%; }
   .wrap .headings {
-    font-family: "Droid Sans", sans-serif;
-    color: #5d5d5d;
-    font-size: 22px;
-    /* Approximation due to font substitution */
-    font-weight: 400;
+    color: #2b2b2b;
+    font-size: 18px;
+    font-weight: 600;
     text-align: left;
     margin-top: 33px;
     margin-left: 27px;

@@ -14,23 +14,23 @@
     .container{
         background-color: #f7f7f7;
         min-height: 100%;
-        width: 80%;
+        width: 100%;
         float: left;
         .header-slot{
             background-color: #f7f7f7;
             width: 100%;
-            margin-top: 20px;
+            padding: 15px 0;
             .tagline{
-                color:  #5d5d5d;
-                font-size: 22px;/* Approximation due to font substitution */
-                font-weight: 400;
+                color: $color-label;
+                font-size: $modal_heading-font-size;
+                font-weight: 600;
                 text-align: left;
                 display: inline-block;
-                margin-left:20px;
+                margin-left:10px;
                 margin-bottom: 10px;
+                margin-top: 7px;
             }
             .manage-Calendar{
-                display: inline-block;
                 border-radius: 4px;
                 border-style: solid;
                 border-width: 1px;
@@ -42,11 +42,12 @@
                 text-align: center;
                 line-height: 28px;
                 cursor: pointer;
-                margin-bottom: 17px;
+                margin-top: 7px;
                 font-weight: 400;
                 float: right;
                 a{
                     color: #2b2b2b;
+                    font-size: 14px;
                 }
             }
         }
@@ -60,39 +61,57 @@
         //    height: 555px;
             float: left;
             width: 100%;
+            border-radius: 4px;
             .action{
                 width: 100%;
-                background-color: #ebe8e8;
+                background-color:#F1FBFB;
                 height: 50px;
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
                 .interview-date{
                     color: #2b2b2b;
                     font-size: 15px;
-                    font-weight: 400;
+                    font-weight: 600;
                     text-align: left;
-                    float: left;
                     margin: 0;
-                    width: 25%;
+                    width: 24%;
                     padding: 15px 0 15px 20px;
+                    text-transform: uppercase;
+                    display: inline-block;
                 }
+               
                 .calendar-name{
                     color: #2b2b2b;
                     font-size: 15px;
-                    font-weight: 400;
+                    font-weight: 600;
                     text-align: left;
                     display: inline-block;
                     margin: 0;
-                    width: 25%;
+                    width: 30%;
                     padding: 15px 0 15px 5px;
+                    text-transform: uppercase;
                 }
                 .time-slot{
                     color: #2b2b2b;
                     font-size: 15px;
-                    font-weight: 400;
+                    font-weight: 600;
                     text-align: left;
                     display: inline-block;
-                    width: 25%;
+                    width: 28%;
                     margin: 0;
                     padding: 15px 0 15px 20px;
+                    text-transform: uppercase;
+                }
+                .edit-name{
+                    color: #2b2b2b;
+                    font-size: 15px;
+                    font-weight: 600;
+                    text-align: left;
+                    margin: 0;
+                    width: 15%;
+                    padding: 15px 0 15px 20px;
+                    text-transform: uppercase;
+                    display: inline-block;
                 }
             }
             .schedule-container{
@@ -100,12 +119,15 @@
                 display: inline-block;
                 padding: 0%;
                 background-color: white;
+                margin-top: -5px;
+                border-bottom-left-radius: 4px;
+                border-bottom-right-radius: 4px;
                 .schedule{
                     display: inline-block;
                     width: 100%;
                     .date{
                         display:inline-block;
-                        width:25%;
+                        width:24.5%;
                         padding-left: 20px;
                         vertical-align: top;
                         padding: 30px 20px;
@@ -122,7 +144,7 @@
                         }
                     }
                     .calendar-detail{
-                        width:25%;
+                        width:30%;
                         display:inline-block;
                         vertical-align: top;
                         padding: 30px 0px;
@@ -131,14 +153,14 @@
                         }
                         .calendar-wrap{
                             color:  #149075;
-                            font-size: 16px;/* Approximation due to font substitution */
+                            font-size: 14px;/* Approximation due to font substitution */
                             font-weight: 700;
                             text-align: left;
                             width: 100%;
                         }
                     }
                     .slots{
-                        width:32%;
+                        width:29%;
                         display:inline-block;
                         vertical-align: top;
                         padding: 30px 17px;
@@ -167,9 +189,8 @@
                         cursor: pointer;
                         text-align: center;
                         display: inline-block;
-                        width: 68px;
-                        float: right;
-                        margin-right: 24px;
+                        width: 50px;
+                      //  margin-right: 84px;
                         margin-top: 25px;
                         color:  #2b2b2b;
                         a{
@@ -222,14 +243,14 @@
                 border-color:  #e8e8e8;
                 box-sizing: border-box;
                 background-color:  #f3fbfb;
-                height: 81px;
+                height: 60px;
                 width: 100%;
                 margin-top: 5px;
 
                 .tagline{
-                    color:  #5d5d5d;
-                    font-size: 22px;/* Approximation due to font substitution */
-                    font-weight: 400;
+                    color:  #2b2b2b;
+                    font-size: 16px;/* Approximation due to font substitution */
+                    font-weight: 600;
                     text-align: left;
                     display: inline-block;
                     margin-left:20px;
@@ -249,7 +270,7 @@
                     line-height: 28px;
                     cursor: pointer;
                     float: right;
-                    margin-top: 20px;
+                    margin-top: 17px;
                     margin-bottom: 30px;
                     margin-right: 25px;
                     a{
@@ -266,6 +287,7 @@
                 background-color:  #ffffff;
               //  height: 555px;
                 width: 100%;
+                margin-top: -17px;
                 .action{
                  display: none;
                 }
@@ -285,14 +307,14 @@
                             width:100%;
                             padding-left: 20px;
                             padding-top: 20px;
-                            padding-bottom: 20px;
+                            padding-bottom: 0px;
                             .date-created{
                                 display: block!important;
                                 width: 100%;
-                                color:  #2b2b2b;
-                                font-size: 17px;/* Approximation due to font substitution */
-                                font-weight: 700;
-                                text-align: left;
+                                font-size: 14px;
+                                color: #858585;
+                                font-weight: 600;
+                                line-height: 25px;
                             }
                             .calendar-date{
                                 color:  #2b2b2b;
@@ -301,22 +323,22 @@
                                 text-align: left;
                                 display:block;
                                 width:100%;
-                                margin-top: 10px;
+                                line-height: 25px;
                             }
                         }
                         .calendar-detail{
                             width:100%;
                             display:block;
                             padding-left: 20px;
-                            padding-top: 20px;
-                            padding-bottom: 20px;
+                            padding-top: 15px;
+                            padding-bottom: 0px;
                             .calendar{
                                 display: block;
                                 width: 100%;
-                                color:  #2b2b2b;
-                                font-size: 17px;/* Approximation due to font substitution */
-                                font-weight: 700;
-                                text-align: left;
+                                font-size: 14px;
+                                color: #858585;
+                                font-weight: 600;
+                                line-height: 25px;
                             }
                             .calendar-wrap{
                                 color:  #149075;
@@ -332,21 +354,21 @@
                             display:block;
                             padding-left: 20px;
                             padding-top: 20px;
-                            padding-bottom: 20px;
+                            padding-bottom: 0px;
                             .remaining-slots{
                                 display: block;
                                 width: 100%;
-                                color:  #2b2b2b;
-                                font-size: 17px;/* Approximation due to font substitution */
-                                font-weight: 700;
-                                text-align: left;
+                                font-size: 14px;
+                                color: #858585;
+                                font-weight: 600;
+                                line-height: 25px;
                             }
                             .total-slots{
                                 color:  #2b2b2b;
                                 font-size: 14px;/* Approximation due to font substitution */
                                 font-weight: 400;
                                 width:100%;
-                                margin:10px 0%;
+                                line-height: 25px;
                             }
                         }
                         .edit-schedule{
@@ -368,6 +390,7 @@
                             margin-top: 34px;
                             float: none;
                             margin-bottom: 30px;
+                           // padding-top: 15px;
 
                         }
                     }
@@ -386,10 +409,10 @@
         .container{
             width: 100%;
             .header-slot{
-                height: 85px;
+                height: 70px;
                 width: 100%;
                 .tagline{
-                    margin-top: 30px;
+                    margin-top: 23px;
                     margin-left:10px;
                     font-size: 17px;
 
@@ -402,14 +425,14 @@
                     border-color:  #8f8a8a;
                     box-sizing: border-box;
                     background-color:  #ffffff;
-                    width: 120px;
+                    width: 140px;
                     height: 28px;
                     text-align: center;
                     line-height: 28px;
                     float: right;
                     cursor: pointer;
                     margin-right: 10px;
-                    margin-top: 25px;
+                    margin-top: 18px;
                     margin-bottom: 30px;
                     font-size: 12px;
                 }
@@ -453,3 +476,16 @@
 
 }
 
+@media only screen and (max-width: 320px){
+    .page-content .container .header-slot .tagline {
+        margin-top: 23px;
+        margin-left: 10px;
+        font-size: 14px;
+    }   
+    .page-content .container .header-slot .manage-Calendar {
+        width: 125px;
+        a{
+            font-size: 12px;
+        }
+    }
+}
