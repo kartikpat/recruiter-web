@@ -1267,7 +1267,8 @@ span.sticker {
         text-align: left;
         display: inline-block;
         margin-left: 10px;
-        margin-bottom: 10px; }
+        margin-bottom: 10px;
+        margin-top: 7px; }
       .page-content .container .header-slot .manage-Calendar {
         border-radius: 4px;
         border-style: solid;
@@ -1593,7 +1594,7 @@ span.sticker {
       height: 70px;
       width: 100%; }
       .page-content .container .header-slot .tagline {
-        margin-top: 30px;
+        margin-top: 23px;
         margin-left: 10px;
         font-size: 17px; }
       .page-content .container .header-slot .manage-Calendar {
@@ -1611,7 +1612,7 @@ span.sticker {
         float: right;
         cursor: pointer;
         margin-right: 10px;
-        margin-top: 25px;
+        margin-top: 18px;
         margin-bottom: 30px;
         font-size: 12px; }
     .page-content .container .wrapper {
@@ -1643,9 +1644,9 @@ span.sticker {
 
 @media only screen and (max-width: 320px) {
   .page-content .container .header-slot .tagline {
-    margin-top: 30px;
+    margin-top: 23px;
     margin-left: 10px;
-    font-size: 13px; }
+    font-size: 14px; }
   .page-content .container .header-slot .manage-Calendar {
     width: 125px; }
     .page-content .container .header-slot .manage-Calendar a {
