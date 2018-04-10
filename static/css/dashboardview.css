@@ -684,7 +684,8 @@
           width: 100%;
           text-align: center; }
   .page-content .main-wrapper .container .dashboard .complete-profile .connecter .connect .icon-container {
-    left: 92%; } }
+    left: 91%;
+    top: 2px; } }
 
 @media only screen and (max-width: 414px) {
   .page-content .main-wrapper .container .dashboard {
@@ -788,7 +789,9 @@
     line-height: 16.992px; }
   .page-content .main-wrapper .container .dashboard .complete-profile .connecter .connect .connect-container .image-box img {
     width: 33px;
-    height: 35px; } }
+    height: 35px; }
+  .connected {
+    background-color: #f3fbfb !important; } }
 
 @media only screen and (max-width: 375px) {
   .page-content .main-wrapper .container .dashboard .content .image-container img {
