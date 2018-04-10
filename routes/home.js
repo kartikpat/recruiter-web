@@ -593,6 +593,18 @@ module.exports = function(settings){
 		return
 	});
 
+	app.get("/refund",isAuthenticated,function(req, res){
+		res.render("refund", {
+			title:"Recruiter Web - refund | iimjobs.com",
+			styles:  assetsMapper["refund"]["styles"][mode],
+			scripts: assetsMapper["refund"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			profile: req.profile
+		})
+		return
+	});
+
 	app.get("/privacy",isAuthenticated,function(req, res){
 		res.render("privacy", {
 			title:"Recruiter Web - privacy | iimjobs.com",

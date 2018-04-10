@@ -1333,6 +1333,29 @@
 		}
 	},
 
+	"refund": {
+		"styles": {
+			"debug" : [
+				"static/css/utilities.css",
+				"static/css/header.css",
+				"static/css/refund.css",
+				"static/css/footer.css"
+			],
+			"prod": [
+				"static/build/css/refund.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/header.js"
+			],
+			"prod" : [
+				"static/build/js/refund.min.js"
+			]
+		}
+	},
+
 	"privacy": {
 		"styles": {
 			"debug" : [
