@@ -112,6 +112,8 @@ module.exports = function(settings){
 		return
 	});
 
+
+
 	app.get("/post-job",isAuthenticated, function(req, res){
 		res.render("post-job",{
 			title: "IIM JOBS | Post job",

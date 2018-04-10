@@ -157,8 +157,8 @@
 		candidateApplyListShell:'shells/candidate-apply-list-shell',
 		myJobsShell:'shells/my-jobs-shell',
 		reportsShell: 'shells/reports-shell.html',
-		chatSticky: 'chat-sticky'
-
+		chatSticky: 'chat-sticky',
+		spinner:'spinner/spinner'
 	});
 	app.set('view engine', 'html');
 	app.set('views', __dirname + '/views');

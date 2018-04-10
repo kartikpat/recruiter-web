@@ -1,6 +1,5 @@
 $(document).ready(function() {
 	var userLogin = userCredentials();
-	// user.login = $("#login");
 	userLogin.init();
 	userLogin.onEnter();
 	userLogin.loginHandler(function(e){
@@ -13,8 +12,8 @@ $(document).ready(function() {
 	})
 
 	function onSuccessfulLogin(topic, data){
-		document.getElementById("login").innerHTML='<span class= "inline-spinner"></span>';
-
+		$('#login').addClass("hidden");
+		$('.spinner').removeClass("hidden");
 		localStorage.id = data["id"];
 		window.location="/";
 		document.getElementById("login").disabled=false;

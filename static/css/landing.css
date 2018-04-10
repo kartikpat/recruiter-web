@@ -550,7 +550,7 @@ body {
             width: 100%; }
             .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container .formgroup input:focus {
               outline: none; }
-          .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container .formgroup button {
+          .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container .formgroup .button-wrapper {
             -webkit-appearance: none;
             -moz-appearance: none;
             -ms-appearance: none;
@@ -569,33 +569,41 @@ body {
             padding: 12px;
             color: #FFF;
             display: inline-block;
-            vertical-align: top;
             cursor: pointer;
             font-size: 18px;
             font-weight: bold;
             height: 45px; }
-            .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container .formgroup button .inline-spinner {
-              height: 20px;
-              width: 20px;
+            .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container .formgroup .button-wrapper button {
+              border: 0;
+              padding: 0;
+              margin: 0;
+              background: #0c9175;
+              border-color: #8f8a8a;
+              border-radius: 4px;
+              font-size: 14px;
+              display: block;
+              width: 100%;
+              color: #FFF;
               display: inline-block;
-              border: 2px solid #f3f3f3;
-              position: relative;
-              top: 1px;
-              border-top: 4px solid #149075;
-              animation: spin 2000ms linear infinite;
-              border-radius: 50%; }
-
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg); }
-  100% {
-    -webkit-transform: rotate(360deg); } }
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg); }
-  100% {
-    transform: rotate(360deg); } }
+              cursor: pointer;
+              font-size: 18px;
+              font-weight: bold; }
+            .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container .formgroup .button-wrapper .spinner {
+              border: 0;
+              padding: 0;
+              margin: 0;
+              background: #0c9175;
+              border-color: #8f8a8a;
+              border-radius: 4px;
+              font-size: 14px;
+              display: block;
+              width: 100%;
+              color: #FFF;
+              display: inline-block;
+              cursor: pointer;
+              font-size: 18px;
+              font-weight: bold;
+              text-align: center; }
         .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container p {
           color: #5b5b5b; }
           .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container p a {
