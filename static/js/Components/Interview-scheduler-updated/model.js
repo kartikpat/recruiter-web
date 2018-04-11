@@ -114,6 +114,7 @@ function Calendar(){
             $('#enddatepicker').datepicker('setDate', null);
         }
         if($('#radio-button-end').prop("checked")==true){
+         
           var toDate=$('#end_date').val();
           console.log(toDate);     
         }    
