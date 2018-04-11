@@ -105,9 +105,13 @@ function Calendar(){
         }
         if($("#radio-button-start").prop("checked") == true){
             fromDate=currentDate;
+            $('#startdatepicker').datepicker('setDate', null);
+            console.log("here");
+
         }
         if($('#radio-button-tillend').prop("checked")==true){
             toDate="";
+            $('#enddatepicker').datepicker('setDate', null);
         }
         if($('#radio-button-end').prop("checked")==true){
           var toDate=$('#end_date').val();
@@ -424,12 +428,12 @@ function Calendar(){
             changeMonth: true,
             changeYear: true,
             dateFormat: 'dd-mm-yy',
-            fielddateFormat: 'dd-mm-yy',
             altField:   '#start_date',
             altFormat: "yy-mm-dd",
             showOn: 'both',
             onSelect: function(dateText, inst) {
                 var slots=getslots();
+                $('#radio-button-startend').prop("checked","true");
                 testHighlight(slots.fromDate,slots.toDate,slots.highlightSlots);
             }   
          });
@@ -442,11 +446,11 @@ function Calendar(){
             changeMonth: true,
             changeYear: true,
             dateFormat: 'dd-mm-yy',
-            fielddateFormat: 'dd-mm-yy',
             altField:   '#end_date',
             altFormat: "yy-mm-dd",
             showOn: 'both',
             onSelect: function(dateText, inst) {
+                $('#radio-button-end').prop("checked","true");
                 var slots=getslots();
                 testHighlight(slots.fromDate,slots.toDate,slots.highlightSlots);
             } 
@@ -566,6 +570,7 @@ function Calendar(){
 		return
     }
 
+
     return {
         init:init,
         selectCreater :selectCreater,
@@ -584,8 +589,7 @@ function Calendar(){
         fullCalendar: fullCalendar,
         Timer: Timer,
         copyTime: copyTime,
-        highlighter: highlighter
-        
+        highlighter: highlighter,
     }
 };
 
