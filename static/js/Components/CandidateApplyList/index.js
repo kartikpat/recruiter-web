@@ -482,16 +482,21 @@ jQuery(document).ready( function() {
         downloadMassResume(recruiterId, jobId, parameters)
     })
 
-    candidates.onClickMassActionButton(function(applicationIds, action, comment, newStatus, typeRequest){
+    candidates.onClickMassActionButton(function(applicationIds, action, comment, newStatus, typeRequest, range){
         var data = {}
         data.applicationId = applicationIds
         data.comment = comment;
         var parameters= {};
         parameters.oldStatus = globalParameters.status
         parameters.newStatus = newStatus
-        // if(typeRequest == "bulkRequest") {
-        //     return
-        // }
+        if(typeRequest == "bulkRequestDropdown") {
+            var data = {}
+            data.range = range;
+            data.status = globalParameters.status;
+            var parameters = {};
+            parameters.status = globalParameters.status;
+            return
+        }
         setBulkCandidateActions(recruiterId, jobId, action, data, parameters)
     })
 
@@ -700,8 +705,6 @@ jQuery(document).ready( function() {
 
         candidates.addToList(data["data"], data.obj.status, globalParameters.pageNumber, globalParameters.pageContent, filterFlag);
 
-
-
         if(filterFlag > 0) {
             fetchFiltersCount(recruiterId, jobId, parameters)
         }
@@ -881,7 +884,7 @@ jQuery(document).ready( function() {
 
     function onSendInterViewInviteSuccess(topic, data) {
         candidates.changeInviteText(data.parameters.applicationId)
-        
+
         if(data.parameters.inviteId == 1)
             toastNotify(1, "Face to Face Invite Sent Successfully!")
         if(data.parameters.inviteId == 2)

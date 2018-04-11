@@ -74,7 +74,7 @@
 		}
 		catch(err){
 			return done(null, false);
-			
+
 		}
 	}));
 
@@ -97,7 +97,7 @@
 		}
 		catch(err){
 			return done(null, false);
-			
+
 		}
 	}))
 
@@ -112,13 +112,13 @@
 				json: true
 			},function(err, response, body){
 				if(err){
-					return reject(err);		
+					return reject(err);
 				}
 				const jsonBody = body;
 				if(jsonBody.status && jsonBody.status =='success'){
 					return fulfill(1);
 				}
-				else 
+				else
 					return reject('Not authorized by application')
 			})
 		})
@@ -159,6 +159,9 @@
 		reportsShell: 'shells/reports-shell.html',
 		chatSticky: 'chat-sticky',
 		spinner:'spinner/spinner'
+		reportsShell: 'shells/reports-shell',
+		bookedSlotsShell: 'shells/booked-slots-shell',
+		chatSticky: 'chat-sticky'
 	});
 	app.set('view engine', 'html');
 	app.set('views', __dirname + '/views');

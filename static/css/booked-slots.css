@@ -3046,6 +3046,41 @@ span.sticker {
     .topInstitutesContainer .check-input label {
       font-weight: 700; }
 
+.shell .section {
+  margin-bottom: 10px !important; }
+
+.shell p {
+  font-size: 0;
+  background-color: #d8d5d5;
+  opacity: 0.4;
+  min-height: 15px;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+  position: relative; }
+
+.shell span {
+  display: inline-block;
+  width: calc(50% - 10px);
+  font-size: 0;
+  background-color: #d8d5d5;
+  opacity: 0.4;
+  min-height: 10px;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+  position: relative; }
+
 .border-top {
   border-top: 1px solid #e8e8e8; }
 
@@ -3247,6 +3282,8 @@ span.sticker {
             display: none; }
           .page-content .wrapper .booked-slots .slot-date .schedules-container .schedules .time .interviewTime {
             width: 100%; }
+            .page-content .wrapper .booked-slots .slot-date .schedules-container .schedules .time .interviewTime.shel {
+              width: 100px; }
         .page-content .wrapper .booked-slots .slot-date .schedules-container .schedules .interview-type {
           color: #149075;
           font-size: 16px;
@@ -3276,6 +3313,10 @@ span.sticker {
           width: 18%;
           padding-bottom: 10px;
           vertical-align: top; }
+          .page-content .wrapper .booked-slots .slot-date .schedules-container .schedules .details .interviewTime {
+            width: 100%; }
+            .page-content .wrapper .booked-slots .slot-date .schedules-container .schedules .details .interviewTime.shel {
+              width: 100px; }
           .page-content .wrapper .booked-slots .slot-date .schedules-container .schedules .details .action-detail {
             display: none; }
           .page-content .wrapper .booked-slots .slot-date .schedules-container .schedules .details .name {
@@ -3419,7 +3460,7 @@ span.sticker {
     .page-content .header-slot .right-container {
       margin-top: 15px; }
   .page-content .wrapper {
-    margin-top: -10px; }
+    border-top: none; }
     .page-content .wrapper .action-wrapper {
       display: none; }
     .page-content .wrapper .booked-slots {

@@ -1815,8 +1815,10 @@ span.sticker {
           text-decoration: underline; }
     .page-content .detail-card .interviewRow {
       padding-top: 15px; }
-    .page-content .detail-card .graph_holder svg {
-      border-radius: 6px; }
+    .page-content .detail-card .graph_holder {
+      padding: 20px 10px; }
+      .page-content .detail-card .graph_holder svg {
+        border-radius: 6px; }
     .page-content .detail-card .slider-profile {
       background-color: #f9f7f7;
       margin-bottom: 15px;

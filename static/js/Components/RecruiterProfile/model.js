@@ -1,15 +1,12 @@
 var errorResponses = {
-	missingTitle: 'Please enter the job title',
-	missingLocation: 'Please choose a location',
-	missingMinExp: 'Please choose years of experience required for the job',
-	missingMaxExp: 'Please choose years of experience required for the job',
-	missingDescription: 'Please fill the job description',
-	invalidVideoUrl: 'enter proper youtubeURL',
-	missingIndustry: 'Please choose an industry from the drop-down',
-	missingCategory: 'Please choose a category from the drop-down',
-	missingFunctionalArea: 'Please choose a functional-area from the drop-down',
-	invalidSal: 'Maximum Salary should be greater than Minimum Salary',
-	invalidEmail: 'Enter proper Email',
+	missingName: 'Please enter your name',
+	missingEmail: 'Please enter email id',
+	invalidEmail: 'Please enter a valid email id',
+	missingPhone: 'Please enter phone number',
+	invalidPhone: 'Please add a valid 10 digit number.',
+	missingDesignation: 'Please enter the designation',
+	missingOrganization: 'Please enter the organisation',
+	missingrecruiterType: 'Please select Recruiter Type',
 	invalidWebsite: 'Enter proper Website Url',
 	invalidFacebook: 'Enter proper Facebook Url',
 	invalidTwitter: 'Enter proper Twitter Url',
@@ -21,7 +18,7 @@ var errorResponses = {
 }
 
 var emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-var urlRegex = /(http|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/;
+var urlRegex = /^([a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+.*)$/;
 
 function Profile(){
 	var settings ={};
@@ -59,8 +56,9 @@ function Profile(){
 			settings.buyMore = $("#buyMore"),
 			settings.premiumDetail = $("#premiumDetail")
 			settings.type = ""
-
+			settings.settingsBody = $(".settingsBody")
 			changeFileName()
+			onChangeInputFields()
 	}
 
 	function changeFileName() {
@@ -74,11 +72,23 @@ function Profile(){
 		})
 	}
 
+	function onChangeInputFields() {
+		settings.settingsBody.find('input').keyup(function(){
+			eraseError($(this))
+		})
+	}
+
 	function validate(){
 
 		if(settings.type == "profile") {
 			if(!(
-					checkEmail(settings.email)
+					ifExists(settings.name)
+					&& ifExists(settings.contact)
+					&& checkPhone(settings.contact)
+					&& ifExists(settings.designation)
+					&& ifExists(settings.organization)
+					&& ifExists(settings.recruiterType, true, true)
+					&& checkEmail(settings.email)
 					&& checkUrl(settings.websiteUrl)
 				)){
 				return false;
@@ -98,10 +108,10 @@ function Profile(){
 		}
 		if(settings.type== "change-password") {
 			if(!(
-					ifExists(settings.oldPassword)
-					&& ifExists(settings.newPassword)
+					ifExists(settings.oldPassword, true)
+					&& ifExists(settings.newPassword, true)
 					&& checkMinCharacters(settings.newPassword, 6)
-					&& ifExists(settings.confirmPassword)
+					&& ifExists(settings.confirmPassword, true)
 					&& checkPassword(settings.newPassword, settings.confirmPassword)
 				)){
 				return false;
@@ -215,19 +225,22 @@ function Profile(){
 	}
 
 	function submitHandler(fn){
-
 		$(settings.submitButton).click(function() {
-
 			var type = $(this).closest(".settings-page").find(".settings-sidebar li.active").attr("data-selector")
-
 			settings.type = type;
-
 			fn(type)
 		})
 	}
 
 	function updatePic(fn) {
 		settings.uploadPic.click(fn)
+	}
+
+	function validatePic() {
+		if(settings.fileUpload[0].files[0] != undefined) {
+			return true
+		}
+		return false
 	}
 
 	function getPic() {
@@ -237,6 +250,7 @@ function Profile(){
 			form.append("image", settings.fileUpload[0].files[0], settings.fileUpload[0].files[0].name);
 			return form
 		}
+
 
 	}
 
@@ -248,18 +262,25 @@ function Profile(){
 		submitHandler: submitHandler,
 		setProfile: setProfile,
 		getPic: getPic,
-		updatePic: updatePic
+		updatePic: updatePic,
+		validatePic: validatePic
 	}
 }
 
-function ifExists(element){
+function ifExists(element, checkWhiteSpace, select) {
 
-	if(!( element && element.val() )){
+	var value = checkWhiteSpace ? element.val() : (element.val()).trim()
+	if(select) {
+		value = parseInt(value)
+	}
+	if(!( element && value)){
 		element.next('.error').text(errorResponses['missing'+element.attr('name')]).removeClass("hidden");
 		focusOnElement(element)
 		return false;
 	}
-	eraseError(element)
+	else if (!element.next('.error').hasClass("hidden")) {
+		eraseError(element)
+	}
 	return true;
 }
 
@@ -286,7 +307,7 @@ function checkPassword(one, two){
 		two.next('.error').text(errorResponses['passwordMismatch']).removeClass("hidden")
 		return false
 	}
-	eraseError(element)
+	eraseError(two)
 	return true
 }
 
@@ -307,7 +328,6 @@ function checkUrl(element) {
 		return true
 	}
 	if(!urlRegex.test(element.val())) {
-		console.log('invalid'+element.attr('name'))
 		element.next('.error').text(errorResponses['invalid'+element.attr('name')]).removeClass("hidden");
 		focusOnElement(element)
 		return false;
@@ -316,6 +336,21 @@ function checkUrl(element) {
 		eraseError(element)
 	}
 	return true;
+}
+
+function checkPhone(element){
+	if(!element.val()) {
+		return true
+	}
+	if(!( element && element.val() && isValidPhone(element.val()) )){
+		element.next('.error').text(errorResponses['invalidPhone']).removeClass("hidden");
+		focusOnElement(element)
+		return false;
+	}
+	else if (!element.next('.error').hasClass("hidden")) {
+		eraseError(element)
+	}
+	return true
 }
 
 function eraseError(element){

@@ -254,9 +254,11 @@ function Candidate() {
         item.contact.text(aData["phone"] || "NA");
         item.email.text(aData["email"]||"NA");
         aData["verified"] = 1;
-        if(ifKeyExists("verified", aData) && aData["verified"]) {
-            item.iconTelephoneVer.removeClass("hidden")
+        if(ifKeyExists("emailVer", aData) && aData["emailVer"]) {
             item.iconEmailVer.removeClass("hidden")
+        }
+        if(ifKeyExists("phoneVer", aData) && aData["phoneVer"]) {
+            item.iconTelephoneVer.removeClass("hidden")
         }
         item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY') || "NA")
         if(aData["notice"] == 7) {
