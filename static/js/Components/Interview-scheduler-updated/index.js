@@ -25,7 +25,9 @@ $(document).ready(function(){
     }
 
     calendarDetails.submitHandler(function(){
+        console.log("click")
         if(calendarDetails.validate()){
+        spinner();
         var data=calendarDetails.getDetails();
         submitCalendar(data,calendarId,recruiterId);
         }
@@ -47,12 +49,12 @@ $(document).ready(function(){
 
     function onSuccessfulSubmitCalendar(topic, data){
         console.log('submit successful');
-        console.log(data);
-        window.location='/calendar-manage' //changeurl
+        spinner();
+        window.location='/calendar-manage' 
     }
 
 	function onFailedSubmitCalendar(topic, data){
-		console.log('Login failed');
+        togglespinner();
 		calendarDetails.errorHandler(data);
     }
 
@@ -61,5 +63,14 @@ $(document).ready(function(){
   
     var fetchCalendarSuccessSubscription = pubsub.subscribe("fetchedCalendars",onSuccessfulFetchCalendar);
 	var fetchCalendarFailSubscription = pubsub.subscribe("failedToFetchCalendars",onFailedFetchCalendar);
- 
+    
+    function spinner(){
+        $('#submit').addClass('hidden')
+        $('.spinner').removeClass('hidden');
+    }
+
+    function togglespinner(){
+        $('#submit').removeClass('hidden')
+        $('.spinner').addClass('hidden');
+    }
 })    

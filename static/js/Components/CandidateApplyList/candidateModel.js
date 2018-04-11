@@ -226,7 +226,6 @@ function Candidate() {
         var recStr = '';
 
         $.each(data,function(index, anObj) {
-
             var item = getRecommendationElement()
             item.name.text(anObj["name"])
             item.link.attr("href",anObj["url"]);
@@ -638,6 +637,8 @@ function Candidate() {
     function onClickShortlistCandidate(fn) {
 
         settings.candidateShortlistModal.click(function(event) {
+            $(this).addClass('hidden');
+            $(this).prev().removeClass('hidden');
             event.stopPropagation();
             var status = $(this).attr("data-status");
             var action = $(this).attr("data-action");
@@ -648,6 +649,8 @@ function Candidate() {
 
     function onClickRejectCandidate(fn) {
         settings.candidateRejectModal.click(function(event) {
+            $(this).addClass('hidden');
+            $(this).prev().removeClass('hidden');
             event.stopPropagation();
             var status = $(this).attr("data-status");
             var action = $(this).attr("data-action");

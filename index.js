@@ -156,10 +156,12 @@
 		modalContent:'modal',
 		candidateApplyListShell:'shells/candidate-apply-list-shell',
 		myJobsShell:'shells/my-jobs-shell',
+		reportsShell: 'shells/reports-shell.html',
+		chatSticky: 'chat-sticky',
+		spinner:'spinner/spinner'
 		reportsShell: 'shells/reports-shell',
 		bookedSlotsShell: 'shells/booked-slots-shell',
 		chatSticky: 'chat-sticky'
-
 	});
 	app.set('view engine', 'html');
 	app.set('views', __dirname + '/views');

@@ -875,7 +875,53 @@ span.sticker {
   padding: 0 30px;
   max-width: 1440px;
   margin: 30px auto; }
-  .submit-action-buttons button {
+  .submit-action-buttons .button-wrapper {
+    display: inline-block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: #1f8f75;
+    border-color: #8f8a8a;
+    border-radius: 4px;
+    padding: 6px 25px;
+    font-size: 14px;
+    margin: 0 5px;
+    color: #FFF;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    padding: 0;
+    width: 95px;
+    height: 30px;
+    margin-top: 2px;
+    text-align: center; }
+    .submit-action-buttons .button-wrapper.green {
+      background-color: #1f8f75; }
+    .submit-action-buttons .button-wrapper.red {
+      background-color: #af595a; }
+    .submit-action-buttons .button-wrapper.white {
+      border: 1px solid #8f8a8a;
+      color: #2b2b2b; }
+    .submit-action-buttons .button-wrapper.edit {
+      padding: 3px 9px; }
+      .submit-action-buttons .button-wrapper.edit img {
+        width: 17px;
+        height: 17px; }
+    .submit-action-buttons .button-wrapper .spinner {
+      width: 100px;
+      margin-top: 4px; }
+    .submit-action-buttons .button-wrapper button.submit-form {
+      margin: 0;
+      padding: 10px 32px;
+      padding: 0%;
+      display: inline-block;
+      width: 95px;
+      height: 30px; }
+  .submit-action-buttons .button {
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
@@ -893,23 +939,19 @@ span.sticker {
     display: inline-block;
     vertical-align: top;
     cursor: pointer; }
-    .submit-action-buttons button.green {
+    .submit-action-buttons .button.green {
       background-color: #1f8f75; }
-    .submit-action-buttons button.red {
+    .submit-action-buttons .button.red {
       background-color: #af595a; }
-    .submit-action-buttons button.white {
+    .submit-action-buttons .button.white {
       border: 1px solid #8f8a8a;
       color: #2b2b2b; }
-    .submit-action-buttons button.edit {
+    .submit-action-buttons .button.edit {
       padding: 3px 9px; }
-      .submit-action-buttons button.edit img {
+      .submit-action-buttons .button.edit img {
         width: 17px;
         height: 17px; }
-    .submit-action-buttons button.submit-form {
-      margin: 0;
-      background-color: #1f8f75;
-      padding: 10px 32px; }
-    .submit-action-buttons button.cancel-form {
+    .submit-action-buttons .button.cancel-form {
       color: #155d9a;
       box-shadow: none;
       border: 0;

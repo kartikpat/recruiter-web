@@ -1,4 +1,7 @@
-@import "colors.scss";
+@import "fonts.scss";
+@import 'input-elements';
+@import 'chat-sidebar';
+@import 'components/modal';
 
 .page-content{
     width: 100%;
@@ -11,9 +14,9 @@
         max-width: 1440px;
         .page-heading {
             margin: 0;
-            color: #2b2b2b;
-            font-size: 22px;
-            font-weight: 400;
+            color: $color-label;
+            font-size: $modal_heading-font-size;
+            font-weight: 600;
             text-align: left;
             display: inline-block;
             margin-bottom: 20px;
@@ -26,10 +29,16 @@
                 width: 100%;
                 border: 1px solid #e2e2e2;
                 border-radius: 1px;
-                background: #ececec;
+                background-color: #F1FBFB;
                 font-size: 12px;
                 display: table;
                 font-weight: bold;
+
+                .column{
+                font-size: 15px;
+                font-weight: 600;
+                text-transform: uppercase;
+                }
             }
             .row {
                 display: table;
@@ -44,8 +53,8 @@
                 font-weight: 400;
                 &.date {
                     width: 12%;
+                    font-size: 15px;
                     color: #2b2b2b;
-                    font-size: 14px;
                 }
                 &.request-id {
                     width: 13%;

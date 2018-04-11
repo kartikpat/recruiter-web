@@ -1,4 +1,5 @@
 {{>header}}
+
 	<div class="modal-overlay hidden">
 		<div class="modal-content recruiter-register-modal hidden">
 			<div class="close-modal"><i class="icon-close_icon"></i></div>
@@ -90,7 +91,6 @@
 					<div class="login-wrapper right">
 						<div class="login-container">
 							<h3>Post a job for free</h3>
-
 							<div id="loginForm">
 								<div class="formgroup">
 									<input type="text" id="email" autocomplete="off" placeholder="Email">
@@ -103,10 +103,13 @@
 								</div>
 
 								<div class="formgroup">
-									<button type="submit" value="Login" id="login">Login</button>
+									<div class="button-wrapper">
+										{{>spinner}}
+										<button type="submit" value="Login" id="login"> Login  </button>
+									</div>
 									<p class="forgot-pass"><a href="/forgot-password" class="forgot-recruiter-password">Forgot Password?</a></p>
 								</div>
-
+							
 								<p class="register-link">
 									Don't have an account? <a href="#" class="trigger-register-registration-modal">Register</a>
 								</p>

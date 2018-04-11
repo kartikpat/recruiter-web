@@ -702,7 +702,38 @@ body.posf {
   height: 45px;
   width: 45px;
   border: 4px solid #f3f3f3;
-  border-top: 4px solid #3498db; }
+  border-top: 4px solid #1f8f75; }
+
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both; }
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s; }
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s; }
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0); }
+  40% {
+    -webkit-transform: scale(1); } }
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0); }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1); } }
 
 a {
   text-decoration: none; }
@@ -1727,25 +1758,61 @@ span.sticker {
     box-shadow: 0px 2px 8px 0px rgba(214, 214, 214, 0.3);
     border: 1px solid #e8e8e8;
     background-color: #ffffff;
-    border-radius: 6px; }
+    border-radius: 6px;
+    min-height: 100%; }
     .page-content .detail-card .empty-view {
-      margin: 0 auto; }
+      text-align: center;
+      position: relative;
+      min-height: 150px; }
       .page-content .detail-card .empty-view .image-container {
+        margin-left: 20px;
         float: left; }
         .page-content .detail-card .empty-view .image-container img {
-          width: 60px;
-          height: 60px;
-          display: inline-block; }
-      .page-content .detail-card .empty-view .content-container .detail {
+          width: 90px;
+          height: 90px;
+          margin-top: 20px; }
+      .page-content .detail-card .empty-view .content-container {
         display: inline-block;
-        color: #2b2b2b;
-        font-weight: 600;
-        line-height: 20px;
-        vertical-align: top; }
-      .page-content .detail-card .empty-view .content-container .subdetail {
-        color: #737373;
-        display: inline-block;
-        vertical-align: top; }
+        text-align: left;
+        margin-top: 20px; }
+        .page-content .detail-card .empty-view .content-container .detail {
+          color: #2b2b2b;
+          font-weight: 600;
+          line-height: 20px;
+          margin-bottom: 5px; }
+        .page-content .detail-card .empty-view .content-container .subdetail {
+          color: #737373;
+          font-size: 14px;
+          margin-bottom: 5px; }
+        .page-content .detail-card .empty-view .content-container .empty-action-buttons {
+          margin: 10px 0; }
+          .page-content .detail-card .empty-view .content-container .empty-action-buttons .post-job {
+            padding: 6px 18px !important;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            background: #1f8f75;
+            border-color: #8f8a8a;
+            border-radius: 4px;
+            padding: 6px 25px;
+            font-size: 14px;
+            margin: 0 5px;
+            color: #FFF;
+            display: inline-block;
+            vertical-align: top;
+            cursor: pointer; }
+        .page-content .detail-card .empty-view .content-container .divide {
+          color: #737373;
+          font-size: 14px;
+          margin-bottom: 5px; }
+        .page-content .detail-card .empty-view .content-container .action {
+          color: #155d9a;
+          font-size: 14px;
+          margin-bottom: 5px; }
+          .page-content .detail-card .empty-view .content-container .action a {
+            color: #155d9a; }
+        .page-content .detail-card .empty-view .content-container .action:hover {
+          text-decoration: underline; }
     .page-content .detail-card .interviewRow {
       padding-top: 15px; }
     .page-content .detail-card .graph_holder {
@@ -1865,14 +1932,44 @@ span.sticker {
         padding-top: 0px; }
         .page-content .detail-card .notification-row.multiple .action-buttons .button {
           margin-right: 10px; }
-        .page-content .detail-card .notification-row.multiple .action-buttons .candidateShortlist:hover {
-          background: #1f8f75;
-          color: #fff;
-          border: 1px solid #1f8f75; }
-        .page-content .detail-card .notification-row.multiple .action-buttons .candidateReject:hover {
-          background: #af595a;
-          color: #fff;
-          border: 1px solid #af595a; }
+        .page-content .detail-card .notification-row.multiple .action-buttons .candidateShortlist-wrapper {
+          width: 78px;
+          height: 28px;
+          padding: 0px; }
+          .page-content .detail-card .notification-row.multiple .action-buttons .candidateShortlist-wrapper .spinner {
+            text-align: center;
+            margin-top: 4px; }
+          .page-content .detail-card .notification-row.multiple .action-buttons .candidateShortlist-wrapper .spinner > div {
+            width: 10px;
+            height: 10px; }
+          .page-content .detail-card .notification-row.multiple .action-buttons .candidateShortlist-wrapper .candidateShortlist {
+            border: none;
+            border-radius: 0px; }
+          .page-content .detail-card .notification-row.multiple .action-buttons .candidateShortlist-wrapper .candidateShortlist:hover {
+            background: #1f8f75;
+            color: #fff;
+            border: 1px solid #1f8f75 !important;
+            width: 100%;
+            height: 100%; }
+        .page-content .detail-card .notification-row.multiple .action-buttons .candidateReject-wrapper {
+          width: 78px;
+          height: 28px;
+          padding: 0px; }
+          .page-content .detail-card .notification-row.multiple .action-buttons .candidateReject-wrapper .spinner {
+            text-align: center;
+            margin-top: 4px; }
+          .page-content .detail-card .notification-row.multiple .action-buttons .candidateReject-wrapper .spinner > div {
+            width: 10px;
+            height: 10px; }
+          .page-content .detail-card .notification-row.multiple .action-buttons .candidateReject-wrapper .candidateReject {
+            border: none;
+            border-radius: 0px; }
+          .page-content .detail-card .notification-row.multiple .action-buttons .candidateReject-wrapper .candidateReject:hover {
+            background: #af595a;
+            color: #fff;
+            border: 1px solid #af595a;
+            width: 100%;
+            height: 100%; }
     .page-content .detail-card .seeMoreSection {
       padding-top: 0px !important; }
     .page-content .detail-card .highlighted-banner {
