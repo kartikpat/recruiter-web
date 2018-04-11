@@ -216,9 +216,15 @@ function Calendar(){
         startDate=moment(fromDate).format("DD-MM-YYYY");
         console.log(startDate);
         var toDate=object.date.to;
+        console.log(toDate)
         endDate=moment(toDate).format("DD-MM-YYYY");
-        $('#startdatepicker').datepicker().datepicker('setDate', startDate);
+        console.log(endDate)
+        if(startDate!="Invalid date"){
+            $('#startdatepicker').datepicker().datepicker('setDate', startDate);
+        }
+        if(endDate!="Invalid date"){
         $('#enddatepicker').datepicker().datepicker('setDate', endDate);
+        }
         testHighlight(fromDate,toDate,previewslots);
         settings.submitButton.text("Update Calendar")
     }
