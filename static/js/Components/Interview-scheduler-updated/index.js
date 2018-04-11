@@ -25,6 +25,7 @@ $(document).ready(function(){
     }
 
     calendarDetails.submitHandler(function(){
+        console.log("click")
         if(calendarDetails.validate()){
         spinner();
         var data=calendarDetails.getDetails();
