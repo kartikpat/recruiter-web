@@ -61,7 +61,8 @@ jQuery(document).ready( function() {
 	var parameters = {}
 	parameters.pageNumber = globalParameters.pageNumber;
 	parameters.pageContent = globalParameters.pageContent;
-	parameters.type = globalParameters.type;
+	var initialType = jobList.getType();
+	parameters.type = initialType || globalParameters.type;
 	fetchJobs(parameters,recruiterId);
 
 	var fetchJobSuccessSubscription = pubsub.subscribe('fetchedJobs', onJobsFetchSuccess)
