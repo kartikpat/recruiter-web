@@ -571,9 +571,15 @@
     </div>
     <div class="resume-sidebar right">
     	<div class=" action-buttons">
-    		<span class="accept button green candidateShortlistModal">Shortlist</span>
-    		<span class="reject button red candidateRejectModal">Reject</span>
-    	</div>
+			<span class="shortlist-wrapper button green">
+				{{>spinner}}
+    			<span class="accept shortlist button green candidateShortlistModal">Shortlist</span>
+			</span>
+			<span class="reject-wrapper button red">
+				{{>spinner}}
+				<span class="reject button red candidateRejectModal">Reject</span>
+			</span>	
+		</div>
     	<div class="sidebar-section external-links">
     		<ul>
     			<li class="save" id="candidateSaveModal"><i class="icon-star_later"></i>Save for Later</li>
@@ -701,8 +707,14 @@
 			<div class="candidate-item-section profile-actions">
 				<div class="candidate-action-area">
 					<div class="jsClickableActions">
-						<button class="button green shortlist left candidateShortlist">Shortlist</button>
-						<button class="button red reject right candidateReject">Reject</button>
+						<div class="shortlist-wrapper">
+								{{>spinner}}
+							<button class="button green shortlist left candidateShortlist">Shortlist</button>
+						</div>	
+						<div class="reject-wrapper">
+								{{>spinner}}
+							<button class="button red reject right candidateReject">Reject</button>
+						</div>	
 						<div class="clearfix"></div>
 					</div>
 

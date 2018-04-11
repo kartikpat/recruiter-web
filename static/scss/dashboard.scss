@@ -488,16 +488,55 @@ $button-border-color: #8f8a8a;
 				.button{
 					margin-right: 10px;
 				}
-				.candidateShortlist:hover{
-					background: #1f8f75;
-					color: #fff;
-					border: 1px solid #1f8f75;
-		
-				}
-				.candidateReject:hover{
-					background: #af595a;
-					color: #fff;
-					border: 1px solid #af595a;
+				.candidateShortlist-wrapper{
+					width: 78px;
+					height: 28px;
+					padding: 0px;
+					
+					.spinner{
+						text-align: center;
+						margin-top: 4px;
+					}
+					.spinner>div{
+						width: 10px;
+						height: 10px;
+					}
+					.candidateShortlist{
+						border: none;
+						border-radius: 0px;
+					}
+					.candidateShortlist:hover{
+						background: #1f8f75;
+						color: #fff;
+						border: 1px solid #1f8f75!important;
+						width: 100%;
+						height: 100%;
+					}
+				}	
+				.candidateReject-wrapper{
+					width: 78px;
+					height: 28px;
+					padding: 0px;
+					
+					.spinner{
+						text-align: center;
+						margin-top: 4px;
+					}
+					.spinner>div{
+						width: 10px;
+						height: 10px;
+					}
+					.candidateReject{
+						border: none;
+						border-radius: 0px;
+					}
+					.candidateReject:hover{
+						background: #af595a;
+						color: #fff;
+						border: 1px solid #af595a;
+						width: 100%;
+						height: 100%;
+					}
 				}
 			}
 		}

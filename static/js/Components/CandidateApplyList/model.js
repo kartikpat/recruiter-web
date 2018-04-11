@@ -590,8 +590,9 @@ function candidateList() {
     }
 
     function onClickShortlistCandidate(fn) {
-
         settings.rowContainer.on('click', settings.candidateShortlistButtonClass, function(event) {
+                $(this).addClass('hidden')
+                $(this).prev().removeClass('hidden')
             event.stopPropagation();
             var status = $(this).attr("data-status");
             var action = $(this).attr("data-action");
@@ -603,6 +604,9 @@ function candidateList() {
 
     function onClickRejectCandidate(fn) {
         settings.rowContainer.on('click', settings.candidateRejectButtonClass, function(event) {
+            var val=$(this).html();
+                $(this).addClass('hidden')
+                $(this).prev().removeClass('hidden')
             event.stopPropagation();
             var status = $(this).attr("data-status");
             var action = $(this).attr("data-action");
@@ -977,6 +981,7 @@ function candidateList() {
         return settings.rowContainer.find(".candidateRow").length;
     }
 
+
     return {
 		init: init,
 		addToList: addToList,
@@ -1016,6 +1021,6 @@ function candidateList() {
         populateCheckInputDropdown: populateCheckInputDropdown,
         getApplicationsLength: getApplicationsLength,
         hideEmptyScreen: hideEmptyScreen,
-        contactMenu:contactMenu
+        contactMenu:contactMenu,
 	}
 }

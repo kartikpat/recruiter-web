@@ -419,8 +419,14 @@
         </div>
     </div>
     <div class="action-buttons notificatin-buttons">
-        <div class="button candidateShortlist" >Shortlist</div>
-        <div class="button candidateReject" >Reject</div>
+        <div class="candidateShortlist-wrapper button">
+            {{>spinner}}
+            <div class="button candidateShortlist" >Shortlist</div>
+        </div>
+        <div class="candidateReject-wrapper button">    
+            {{>spinner}} 
+            <div class="button candidateReject" >Reject</div>
+        </div>     
     </div>  
     <div class="horizontal-separator"></div>
 </div>
