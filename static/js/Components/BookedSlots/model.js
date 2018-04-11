@@ -18,7 +18,7 @@ function BookedSlots() {
 		settings.header=$('.action-wrapper'),
 		settings.headerSlot=$('.header-slot')
 		settings.noInterviewView=$('.empty-view'),
-		settings.tableRowShell = $(".tableRow.shell");
+		settings.tableRowShell = $(".slotDate.shell");
 		settings.loaderOverlay = $("#loaderOverlay");
 		settings.date = ""
 		settings.inviteId = '';
@@ -279,7 +279,7 @@ function BookedSlots() {
 
     function onClickToggle() {
         settings.bookedSlots.on('click','.button-action-list', function(event){
-			debugger
+
 			event.stopPropagation()
             jQuery(this).toggleClass("inactive");
         })

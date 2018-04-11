@@ -3,6 +3,18 @@
 <div class="loader-overlay hidden" id="loaderOverlay">
     <div class="loader"></div>
 </div>
+
+<div class="toast-notification-container">
+    <div class="toast-notification">
+        <!-- <div class="notification-icon">
+            <img src="/static/images/close-icon.png" />
+        </div> -->
+        <div class="notification-message">
+            <p></p>
+        </div>
+    </div>
+</div>
+
 <div class="page-content">
     <div class="header-slot">
         <div class="tagline left">Booked Slots</div>
@@ -34,7 +46,7 @@
         </div>
     </div>
     <div class="wrapper">
-    <div class="action-wrapper ">
+        <div class="action-wrapper ">
         <div class="action Interview-Date">
             Interview Date
         </div>
@@ -54,11 +66,17 @@
            Actions
         </div>
     </div>
-    <div class="booked-slots bookedSlots">
+        <div class="booked-slots">
+            {{>bookedSlotsShell}}
+            {{>bookedSlotsShell}}
+            <div class="bookedSlots">
 
-
+            </div>
+        </div>
     </div>
-</div>
+    <div class="loading loaderScroller hidden">
+        <div class="loader loader-scroller"></div>
+    </div>
 </div>
 
 <option class="prototype calendarOption hidden"></option>

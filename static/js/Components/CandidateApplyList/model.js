@@ -51,7 +51,7 @@ function candidateList() {
         settings.totalApplicationsCount = 0;
         settings.recommendationLinkClass = $(".recommendationsLink");
         settings.baseUrl = baseUrl;
-
+        settings.range = ''
         settings.emptyView = $(".empty-screen"),
         settings.contactMenu=$('.contact-menu'),
         settings.contactMenubutton=$('.contactMenubutton');
@@ -114,7 +114,9 @@ function candidateList() {
                 var len = $(this).attr("data-length")
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").attr("disabled", true)
                 $(this).attr("disabled", false)
-                settings.totalApplicationsCount = len
+                var range = $(this).attr("data-range");
+                settings.range = range;
+                settings.totalApplicationsCount = len;
                 settings.applicationsCount.text(len + " candidates selected");
                 settings.massCheckboxInput.prop("checked", false);
                 settings.rowContainer.find(".candidateCheckbox").prop("checked", false);
@@ -779,7 +781,7 @@ function candidateList() {
 
             settings.bulkActionModal.addClass("hidden")
             var requestType = settings.bulkActionContainer.attr("data-type-request")
-            fn(selectedApplicationIds, action, comment, newStatus, requestType)
+            fn(selectedApplicationIds, action, comment, newStatus, requestType, settings.range)
         })
     }
 
@@ -930,10 +932,12 @@ function candidateList() {
             if(count >= 100) {
                 text = "Select top 100 applications"
                 dataLength = 100;
+                range = "1-100"
             }
             else if(count > 0 && count < 100){
                 text = "Select "+count+" applications"
                 dataLength = count
+                range = "1-"+count+""
             }
             else {
                 str = "No Applications"
@@ -943,6 +947,7 @@ function candidateList() {
             item.find("input").attr("id", dataLength);
             item.find("label").attr("for",dataLength).text(text );
             item.find("input").attr("data-length", dataLength);
+            item.find("input").attr("data-range", range);
             str += item[0].outerHTML
             settings.bulkActionsDropdown.html(str)
             return
@@ -960,6 +965,7 @@ function candidateList() {
             item.find("input").attr("id", i);
             item.find("label").attr("for",i).text(start + " - " + end );
             item.find("input").attr("data-length", end - start + 1);
+            item.find("input").attr("data-range", start + " - " + end );
             str += item[0].outerHTML
             start = end + 1;
             end = end + slotDifference;
@@ -969,6 +975,7 @@ function candidateList() {
         item.find("input").attr("id", i);
         item.find("label").attr("for",i).text(start + " - " + (( (start - 1) == 0 ? 0 : (start - 1)) + remainder) );
         item.find("input").attr("data-length", remainder);
+        item.find("input").attr("data-range", start + " - " + (( (start - 1) == 0 ? 0 : (start - 1)) + remainder));
         str += item[0].outerHTML
         settings.bulkActionsDropdown.html(str)
     }

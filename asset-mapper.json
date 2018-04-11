@@ -796,6 +796,7 @@
 				"static/js/Utilities/pubsub.js",
 				"static/js/header.js",
 				"static/js/Utilities/modal.js",
+				"static/js/Utilities/common.js",
 				"static/js/change-password.js",
 				"static/js/settings.js",
 				"static/js/Services/updateRecruiterProfile.js",

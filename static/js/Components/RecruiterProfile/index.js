@@ -1,14 +1,13 @@
 $(document).ready(function(){
 
 	var recruiterProfile = Profile();
-
+	console.log(profile);
 	recruiterProfile.init();
 	recruiterProfile.setProfile(profile)
 
 	recruiterProfile.submitHandler(function(type){
 
 		if(recruiterProfile.validate()){
-
 			if(type == "change-password") {
 				var obj = recruiterProfile.getProfile();
 				obj.email = profile.email
@@ -19,7 +18,10 @@ $(document).ready(function(){
 	})
 
 	recruiterProfile.updatePic(function(){
-		updateRecruiterProfile(recruiterProfile.getPic(), recruiterId);
+		if(recruiterProfile.validatePic()) {
+			return updateRecruiterProfile(recruiterProfile.getPic(), recruiterId);
+		}
+		return toastNotify(3, "Please Choose A File")
 	})
 
  	function onSuccessfulUpdateProfile(topic, data){
@@ -34,7 +36,9 @@ $(document).ready(function(){
 
 	function onSuccessfulSetPassword(topic, data){
 		toastNotify(1, "Password Updated Success");
-
+		setTimeout(function(){
+			 location.reload()
+		 }, 2000);
 	}
 	function onFailedPassword(topic, data){
 		errorHandler(data)

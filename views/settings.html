@@ -56,7 +56,7 @@
 			</div>
 		</div>
 
-		<div class="settings-body">
+		<div class="settings-body settingsBody">
 			<div class="settings-section profile">
 				<div class="settings-section-header profile">
 					<h3>Profile</h3>
@@ -84,27 +84,29 @@
 
 					<div class="section-form">
 						<div class="formgroup">
-							<div class="label" for="profile-name">Name</div>
-							<input type="text" id="profile-name" placeholder="Name">
-
+							<div class="label" for="profile-name">Name*</div>
+							<input name="Name" type="text" id="profile-name" placeholder="Name">
+                            <div  id="" class="error hidden"></div>
 						</div>
 						<div class="formgroup">
-							<div class="label" for="profile-number">Phone Number</div>
-							<input type="text" id="profile-number" placeholder="Phone Number">
+							<div class="label" for="profile-number">Phone Number*</div>
+							<input name="Phone" type="text" id="profile-number" placeholder="Phone Number">
 							<div id="" class=" error hidden"></div>
 						</div>
 						<div class="formgroup">
-							<div class="label" for="profile-email">Email ID</div>
+							<div class="label" for="profile-email">Email ID*</div>
 							<input name="Email" type="text" id="profile-email" placeholder="Email" disabled>
 							<div id="" class=" error hidden"></div>
 						</div>
 						<div class="formgroup">
-							<div class="label" for="profile-designation">Designation</div>
-							<input type="text" id="profile-designation" placeholder="Designation">
+							<div class="label" for="profile-designation">Designation*</div>
+							<input name="Designation" type="text" id="profile-designation" placeholder="Designation">
+                            <div  id="" class="error hidden"></div>
 						</div>
 						<div class="formgroup">
-							<div class="label" for="profile-organization">Organization</div>
-							<input type="text" id="profile-organization" placeholder="Organization">
+							<div class="label" for="profile-organization">Organization*</div>
+							<input name="Organization" type="text" id="profile-organization" placeholder="Organization">
+                            <div  id="" class="error hidden"></div>
 						</div>
 						<div class="formgroup">
 							<div class="label" for="profile-website">Website</div>
@@ -112,12 +114,13 @@
 							<div  id="" class="error hidden"></div>
 						</div>
 						<div class="formgroup">
-							<div class="label" for="profile-recruiter-type">Recruiter Type</div>
-							<select id="recruiterType">
+							<div class="label" for="profile-recruiter-type">Recruiter Type*</div>
+							<select name="recruiterType"  id="recruiterType">
 								<option value="0">Select</option>
 								<option value="1">Direct Employer</option>
 								<option value="2">Recruitment Firm</option>
 							</select>
+                            <div  id="" class="error hidden"></div>
 						</div>
 						<div class="formgroup">
 							<div class="label" for="profile-location">Location</div>
@@ -1065,9 +1068,9 @@
 								</div>
 							</div>
 						</div>
-						<div class="formgroup">
+						<!-- <div class="formgroup">
 							<span class="button green submit">Save</span>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
