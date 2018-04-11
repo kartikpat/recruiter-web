@@ -116,10 +116,10 @@ function registerUser(){
 		if(!ifExists(user.organization)){
 			flag = 0;
 		}
-		if(!ifExists(user.password)){
+		if(!ifExists(user.password, true)){
 			flag = 0;
 		}
-		if(!ifExists(user.confirmPassword)){
+		if(!ifExists(user.confirmPassword, true)){
 			flag = 0;
 		}
 		if(!checkMinCharacters(user.password, 6)){
@@ -191,9 +191,11 @@ function checkPhone(element){
 	return true
 }
 
-function ifExists(element){
+function ifExists(element, checkWhiteSpace){
 
-	if(!( element && element.val() )){
+	var value = checkWhiteSpace ? element.val() : (element.val()).trim()  
+	if(!( element && value)){
+
 		element.next('.error').text(errorResponses['missing'+element.attr('name')]);
 		return false;
 	}

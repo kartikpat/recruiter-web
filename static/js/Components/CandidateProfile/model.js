@@ -133,7 +133,10 @@ function Candidate() {
             email:modal.find('.email-address'),
             recommendationList: modal.find('.recommendationList'),
             iitScore: modal.find(".js_iit"),
-            gmatScore: modal.find(".js_gmat")
+            gmatScore: modal.find(".js_gmat"),
+            iconTelephoneVer : modal.find(".iconTelephoneVer"),
+            iconEmailVer :modal.find(".iconEmailVer")
+        }
         }
     }
 
@@ -358,6 +361,12 @@ function Candidate() {
         }
         else if(status == 3) {
             item.savedButton.html("<span class='icon'><i class='icon-star'></i></span>Saved for Later")
+        }
+        if(ifKeyExists("emailVer", aData) && aData["emailVer"]) {
+            item.iconEmailVer.removeClass("hidden")
+        }
+        if(ifKeyExists("phoneVer", aData) && aData["phoneVer"]) {
+            item.iconTelephoneVer.removeClass("hidden")
         }
         if(isCanvasSupported()) {
 
