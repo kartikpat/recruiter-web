@@ -15,26 +15,12 @@
     box-shadow: 0px 2px 9px 0px rgba(214, 214, 214, 0.3);
     width: 100%;
     padding: 20px;
-    background-image: url("/static/images/footer-background.png");
-    background-size: 100%;
-    background-position: center bottom;
-    background-repeat: no-repeat;
     min-height: 450px; }
-    .page-content .container .leftnav .pd20 .mt0 {
+    .page-content .container #contactus .text-left .leftnav span {
       color: #2b2b2b;
       font-size: 18px;
-      margin-bottom: 10px;
-      margin-top: 0px;
-      font-weight: 600; }
-    .page-content .container .leftnav .pd20 .txt15 {
-      margin-top: 15px;
-      margin-bottom: 15px;
-      font-size: 15px; }
-      .page-content .container .leftnav .pd20 .txt15 i {
-        font-weight: bold; }
-    .page-content .container .leftnav p {
-      margin: 0 0 15px;
-      font-size: 14px; }
-    .page-content .container .leftnav .mt20 {
-      margin-top: 20px;
-      margin-bottom: 20px; }
+      font-weight: 600;
+      margin-bottom: 20px;
+      margin-top: 10px; }
+    .page-content .container #contactus .text-left .mt10 {
+      margin-top: 20px; }

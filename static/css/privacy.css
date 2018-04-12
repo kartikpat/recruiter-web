@@ -3049,14 +3049,25 @@ span.sticker {
 .page-content {
   min-height: 600px;
   padding: 20px;
-  background-image: url("/static/images/footer-background.png");
   background-size: 100%;
   background-position: center bottom;
   background-repeat: no-repeat; }
   .page-content .container {
     width: 100%;
     max-width: 1440px;
-    margin: 0 auto; }
+    margin: 0 auto;
+    border-radius: 7px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e8e8e8;
+    box-sizing: border-box;
+    background-color: #FFF;
+    box-shadow: 0px 2px 9px 0px rgba(214, 214, 214, 0.3);
+    width: 100%;
+    padding: 20px;
+    background-size: 100%;
+    background-position: center bottom;
+    background-repeat: no-repeat; }
     .page-content .container .leftnav .pd20 .mt0 {
       color: #2b2b2b;
       font-size: 18px;
@@ -3068,4 +3079,4 @@ span.sticker {
         margin: 0 0 15px;
         font-size: 14px;
         color: #2b2b2b;
-        line-height: 20px; }
+        line-height: 25px; }

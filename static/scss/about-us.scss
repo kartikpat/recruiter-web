@@ -21,41 +21,45 @@
 			background-size:100%;
 			background-position:center bottom;
 			background-repeat:no-repeat;
+			min-height: 550px;
 			.leftnav{
 				.pd20{
 					.mt0{
-						color: #5d5d5d;
+						font-size: 18px;
+						font-weight: 600;
+						color: #2b2b2b;
 					}
 					.txt15{
 						margin-top: 15px;
 						margin-bottom: 15px;
 						font-size: 15px;
 						i{
-							font-weight: bold;
+							// font-weight: bold;
 						}
 					}
 				}
 				p{
 					margin: 0 0 15px;
-					font-size: 14px;					
+					font-size: 14px;	
+					line-height: 20px;				
 				}
 				.mt20{
-					margin-top: 20px;
+
 					margin-bottom: 20px;
 					.leftnav{
 						.icon-facebook::before {
 							content: '\e84a';
-							font-size: 36px;
+							font-size: 50px;
 							color: #385899;
 						}
 						.icon-linkedin::before {
 							content: '\e84b';
-							font-size: 36px;
+							font-size: 50px;
 							color: #0677a9;
 						}
 						.icon-twitter::before {
 							content: '\e849';
-							font-size: 36px;
+							font-size: 50px;
 							color: #54adef;
 						}
 					}
