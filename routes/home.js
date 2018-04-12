@@ -27,7 +27,7 @@ module.exports = function(settings){
 		return about.split('\r\n').join('\\n');
 	}
 	function isAuthenticated(req, res, next) {
-		//bypassing the auth for development
+		// bypassing the auth for development
     	// CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     	// you can do this however you want with whatever variables you set up
 
@@ -214,7 +214,7 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/login",isAuthenticated, function(req,res){
+	app.get("/login", function(req,res){
 		res.render("landing", {
 			title:"Recruiter Web - Landing Page | iimjobs.com",
 			styles:  assetsMapper["landing"]["styles"][mode],

@@ -51,7 +51,8 @@ function candidateList() {
         settings.totalApplicationsCount = 0;
         settings.recommendationLinkClass = $(".recommendationsLink");
         settings.baseUrl = baseUrl;
-        settings.range = ''
+        settings.from = ''
+        settings.to = ''
         settings.emptyView = $(".empty-screen"),
         settings.contactMenu=$('.contact-menu'),
         settings.contactMenubutton=$('.contactMenubutton');
@@ -96,6 +97,8 @@ function candidateList() {
             settings.massCheckboxInput.prop("checked",false)
             settings.rowContainer.find(".candidateCheckbox").prop("checked", false)
             settings.rowContainer.find(".candidate-select").removeClass("selected")
+            settings.bulkActionsDropdown.find(".bulkCheckInput input").attr("disabled", false)
+            settings.bulkActionsDropdown.find(".bulkCheckInput input").prop("checked", false)
             $(".second-fold").addClass("hidden")
         })
     }
@@ -114,8 +117,10 @@ function candidateList() {
                 var len = $(this).attr("data-length")
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").attr("disabled", true)
                 $(this).attr("disabled", false)
-                var range = $(this).attr("data-range");
-                settings.range = range;
+                var from = $(this).attr("data-from");
+                var to = $(this).attr("data-to");
+                settings.from = from;
+                settings.to = to;
                 settings.totalApplicationsCount = len;
                 settings.applicationsCount.text(len + " candidates selected");
                 settings.massCheckboxInput.prop("checked", false);
@@ -781,7 +786,7 @@ function candidateList() {
 
             settings.bulkActionModal.addClass("hidden")
             var requestType = settings.bulkActionContainer.attr("data-type-request")
-            fn(selectedApplicationIds, action, comment, newStatus, requestType, settings.range)
+            fn(selectedApplicationIds, action, comment, newStatus, requestType, settings.from, settings.to)
         })
     }
 
@@ -921,36 +926,42 @@ function candidateList() {
         })
     }
 
-    function populateCheckInputDropdown(status) {
+    function populateCheckInputDropdown(count, status) {
 
         var item = getJobsCategoryTabsElement();
-        var count =  item.element.find("li[data-attribute='"+status+"'] .tabStats").text()
+        var str = ''
+        if(count == 0) {
+            str = "No Applications"
+            return settings.bulkActionsDropdown.html(str)
+        }
+
         if(parseInt(status) == 0) {
-            var str = ''
+
             var text;
             var dataLength;
+            var from;
+            var to;
             if(count >= 100) {
                 text = "Select top 100 applications"
                 dataLength = 100;
-                range = "1-100"
+                from = "1";
+                to = "100";
             }
             else if(count > 0 && count < 100){
                 text = "Select "+count+" applications"
                 dataLength = count
-                range = "1-"+count+""
+                from = "1";
+                to = count;
             }
-            else {
-                str = "No Applications"
-                return settings.bulkActionsDropdown.html(str)
-            }
+
             var item = $(".bulkCheckInput.prototype").clone().removeClass("prototype hidden");
             item.find("input").attr("id", dataLength);
             item.find("label").attr("for",dataLength).text(text );
             item.find("input").attr("data-length", dataLength);
-            item.find("input").attr("data-range", range);
+            item.find("input").attr("data-from", from);
+            item.find("input").attr("data-to", to);
             str += item[0].outerHTML
-            settings.bulkActionsDropdown.html(str)
-            return
+            return settings.bulkActionsDropdown.html(str)
         }
         var slotDifference = 100;
         var divide = Math.floor(count/slotDifference);
@@ -960,22 +971,27 @@ function candidateList() {
         var end = 100;
         var str = '';
         var j;
-        for(j = divide; j>0; j--) {
+        for(j = divide; j > 0; j--) {
             var item = $(".bulkCheckInput.prototype").clone().removeClass("prototype hidden");
             item.find("input").attr("id", i);
             item.find("label").attr("for",i).text(start + " - " + end );
             item.find("input").attr("data-length", end - start + 1);
-            item.find("input").attr("data-range", start + " - " + end );
+            item.find("input").attr("data-from", start);
+            item.find("input").attr("data-to", end);
             str += item[0].outerHTML
             start = end + 1;
             end = end + slotDifference;
             i++;
         }
+        if(remainder == 0) {
+            return settings.bulkActionsDropdown.html(str)
+        }
         var item = $(".bulkCheckInput.prototype").clone().removeClass("prototype hidden");
         item.find("input").attr("id", i);
         item.find("label").attr("for",i).text(start + " - " + (( (start - 1) == 0 ? 0 : (start - 1)) + remainder) );
         item.find("input").attr("data-length", remainder);
-        item.find("input").attr("data-range", start + " - " + (( (start - 1) == 0 ? 0 : (start - 1)) + remainder));
+        item.find("input").attr("data-from", start);
+        item.find("input").attr("data-to", (( (start - 1) == 0 ? 0 : (start - 1)) + remainder));
         str += item[0].outerHTML
         settings.bulkActionsDropdown.html(str)
     }

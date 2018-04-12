@@ -243,7 +243,7 @@ function Job(){
 
 
 	function submitHandler(fn){
-		$(settings.submitButton).click(fn)
+		settings.submitButton.click(fn)
 	}
 
 

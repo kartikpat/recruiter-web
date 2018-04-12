@@ -552,6 +552,7 @@ function openChat(m) {
         }
         reposition_chat_windows();
         $("#conversationListing").find(".conversationItem[data-id="+dataID+"]").addClass("selected")
+        chatContainer.find('.candidate-card[data-id='+dataID+']').addClass("selected-sticky");
         fetchHistory(channelName, 20 , null, null, function(status, response) {
 			var str = ""
 		    response["messages"].forEach(function(elem, index){
@@ -657,6 +658,7 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
                 reposition_chat_windows();
 
                 chatContainer.find('.candidate-card[data-id='+array[0]["userID"]+']').addClass("selected-sticky");
+                $("#conversationListing").find(".conversationItem[data-id="+array[0]["userID"]+"]").addClass("selected")
     		}
         	}, function(res){
 
@@ -683,7 +685,9 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
         if(array[0]["lastActive"]) {
             chatContainerBox.find(".lastActiveDate").text(moment(array[0]["lastActive"]).format("DD MM YYYY")).removeClass("hidden")
         }
-        fetchHistory(channelName, 20 , function(status, response) {
+
+        fetchHistory(channelName, 20 ,null, null, function(status, response) {
+
         	var str = ""
             response["messages"].forEach(function(elem, index){
         		if(index == 0 || (index > 0 && (moment(response["messages"][index - 1]["entry"]["time"]).format("DD MM YYYY") != moment(elem["entry"]["time"]).format("DD MM YYYY"))) ) {
@@ -736,6 +740,7 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
         }
         reposition_chat_windows();
         chatContainer.find('.candidate-card[data-id='+array[0]["userID"]+']').addClass("selected-sticky");
+        $("#conversationListing").find(".conversationItem[data-id="+array[0]["userID"]+"]").addClass("selected")
     }
 }
 
