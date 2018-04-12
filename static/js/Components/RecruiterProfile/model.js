@@ -208,6 +208,7 @@ function Profile(){
 
 		settings.location.val(obj["location"]);
 		settings.about.val(obj["about"]);
+		console.log(obj["about"]);
 		settings.twitter.val(obj["turl"]);
 		settings.facebook.val(obj["furl"]);
 		settings.linkedIn.val(obj["lurl"]);

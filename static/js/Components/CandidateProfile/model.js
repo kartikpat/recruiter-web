@@ -137,7 +137,7 @@ function Candidate() {
             iconTelephoneVer : modal.find(".iconTelephoneVer"),
             iconEmailVer :modal.find(".iconEmailVer")
         }
-        }
+        
     }
 
     function getEducationElement() {

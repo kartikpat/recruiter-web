@@ -30,7 +30,6 @@ function Calendar(){
         settings.breakStart=$('.Break-start'),
         settings.breakEnd=$('.Break-end'),
         settings.breakhours=$('.Breaks-available'),
-        // settings.createCalendar=$('.formgroup'),
         settings.fullcalendar=$('#calendar'),
         settings.Calendarhours= $('.fc-day'),
         settings.Highlighter=$('.highlighter')
@@ -236,16 +235,20 @@ function Calendar(){
 
     function availablehours(slots){
         for(var k=0;k<slots.length;k++){
-            // debugger
             var id=slots[k].day;
             var slotId=slots[k].slotId;
             var uniqueid=slots[k].id;
             var startvalue=slots[k].time.from;
             var endvalue=slots[k].time.to;
+            var checkStart=$("#"+id+ "").find(settings.start_time).val();
+            var checkEnd=$("#"+id+ "").find(settings.end_time).val();
             $("#"+id+ "").css("opacity","1");
             $("#"+id+ "").attr("slotId",slotId);
             $("#"+id+ "").find('.day').attr("id",uniqueid);
-            $("#"+id+ "").find(settings.start_time).val(startvalue);
+            if(checkStart==0){
+                $("#"+id+ "").find(settings.start_time).val(startvalue);
+                
+            }
             $("#"+id+ "").find(settings.end_time).val(endvalue);
             $("#"+id+ "").find(settings.checkbox).prop("checked",true);
         }     

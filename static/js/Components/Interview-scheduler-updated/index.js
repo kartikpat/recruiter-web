@@ -1,20 +1,7 @@
 $(document).ready(function(){
     var calendarDetails = Calendar();    
-      calendarDetails.init();
-    calendarDetails.startdate();
-    calendarDetails.enddate();
-    // calendarDetails.time_mapper();
-    // calendarDetails.testHighlight;
-    console.log(calendarId);
-    if(!calendarId){
-        calendarDetails.startdate();
-        calendarDetails.enddate();
-        calendarDetails.time_mapper();
-        calendarDetails.testHighlight;
-    }
- 
+
     if(calendarId){
-        // calendarDetails.init();
         fetchCalendars(calendarId,recruiterId);
         $('.form-container').removeClass('hidden');
         $('.Availability').removeClass('hidden');
@@ -23,6 +10,20 @@ $(document).ready(function(){
         $('.loaderScroller').addClass("hidden");
        
     }
+    calendarDetails.init();
+    calendarDetails.startdate();
+    calendarDetails.enddate();
+    // calendarDetails.time_mapper();
+    // calendarDetails.testHighlight;
+    console.log(calendarId);
+    if(!calendarId){
+        calendarDetails.init();
+        calendarDetails.startdate();
+        calendarDetails.enddate();
+        calendarDetails.time_mapper();
+        calendarDetails.testHighlight;
+    }
+ 
 
     calendarDetails.submitHandler(function(){
         console.log("click")
@@ -55,7 +56,7 @@ $(document).ready(function(){
 
 	function onFailedSubmitCalendar(topic, data){
         togglespinner();
-		console.log("failed")
+		calendarDetails.errorHandler(data);
     }
 
     var calendarSubmitSuccessSubscription = pubsub.subscribe('submittedCalendar',onSuccessfulSubmitCalendar);

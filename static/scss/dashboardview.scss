@@ -32,8 +32,8 @@
                     .profile-image{
                         display: inline-block;
                         img{
-                            width: 47px;
-                            height: 47px;
+                            width: 44px;
+                            height: 44px;
                         }
                     }
                     .profile-details{
@@ -559,13 +559,14 @@
                         display: inline-block;
                         padding-top: 20px;
                         font-size: 11px;
+                        width: 80%;
                         .sub-profile{
                             span{
                                 font-size: 15px;
                             }
                             .sub-details{
-                                font-size: 15px;
-                                width: 250px;
+                                font-size: 14px;
+                                // width: 250px;
                             }
                         }
                     }

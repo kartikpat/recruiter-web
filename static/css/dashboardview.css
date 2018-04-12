@@ -294,8 +294,8 @@
           .page-content .main-wrapper .container .dashboard .profile-content .profile-image {
             display: inline-block; }
             .page-content .main-wrapper .container .dashboard .profile-content .profile-image img {
-              width: 47px;
-              height: 47px; }
+              width: 44px;
+              height: 44px; }
           .page-content .main-wrapper .container .dashboard .profile-content .profile-details {
             display: inline-block;
             padding-top: 20px;
@@ -700,12 +700,12 @@
       .page-content .main-wrapper .container .dashboard .profile-content .profile-details {
         display: inline-block;
         padding-top: 20px;
-        font-size: 11px; }
+        font-size: 11px;
+        width: 80%; }
         .page-content .main-wrapper .container .dashboard .profile-content .profile-details .sub-profile span {
           font-size: 15px; }
         .page-content .main-wrapper .container .dashboard .profile-content .profile-details .sub-profile .sub-details {
-          font-size: 15px;
-          width: 250px; }
+          font-size: 14px; }
     .page-content .main-wrapper .container .dashboard .complete-profile {
       width: 100%; }
       .page-content .main-wrapper .container .dashboard .complete-profile p {

@@ -95,6 +95,9 @@ jQuery(document).ready( function() {
 
      aCandidate.onClickShortlistCandidate(function(applicationId, newStatus, dataAction) {
          var action;
+         $('.candidateShortlistModal').prev().removeClass('hidden');
+         $('.candidateShortlistModal').addClass('hidden');
+
          if(parseInt(dataAction) == parseInt(newStatus)) {
              action = "unread"
          }
@@ -110,6 +113,8 @@ jQuery(document).ready( function() {
 
      aCandidate.onClickRejectCandidate(function(applicationId, newStatus, dataAction) {
          var action;
+         $('.candidateRejectModal').prev().removeClass('hidden');
+         $('.candidateRejectModal').addClass('hidden');
          if(parseInt(dataAction) == parseInt(newStatus)) {
              action = "unread"
          }
@@ -168,6 +173,9 @@ jQuery(document).ready( function() {
         var arr = [];
         arr.push(res.applicationId)
         if(res.action == "unread") {
+            $('.spinner').addClass('hidden');
+            $('.candidateShortlistModal').removeClass('hidden');
+            $('.candidateRejectModal').removeClass('hidden');
             var newStatus = 0
             if(res.parameters.isModalButton) {
 
@@ -176,6 +184,8 @@ jQuery(document).ready( function() {
             }
         }
         if(res.action == "shortlist") {
+            $('.spinner').addClass('hidden');
+            $('.candidateShortlistModal').removeClass('hidden');
             var newStatus = 1
             if(res.parameters.isModalButton) {
 
@@ -184,6 +194,8 @@ jQuery(document).ready( function() {
             }
         }
         if(res.action == "reject") {
+            $('.spinner').addClass('hidden');
+            $('.candidateRejectModal').removeClass('hidden');
             var newStatus = 2
             if(res.parameters.isModalButton) {
 
@@ -204,6 +216,9 @@ jQuery(document).ready( function() {
 
     function onFailCandidateAction(topic,res) {
         errorHandler(res);
+        $('.spinner').addClass('hidden');
+        $('.shortlist').removeClass('hidden');
+        $('.reject').removeClass('hidden');
     }
 
     function onSuccessfullFetchedTag(topic, res) {
