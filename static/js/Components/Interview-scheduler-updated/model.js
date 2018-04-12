@@ -227,7 +227,6 @@ function Calendar(){
             $('#radio-button-startend').prop("checked",true)
         
         if(endDate!="Invalid date"){
-            endDate="";
             $('#enddatepicker').datepicker().datepicker('setDate', endDate);
             $('#radio-button-end').prop("checked",true)
         }
