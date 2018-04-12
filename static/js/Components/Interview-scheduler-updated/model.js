@@ -114,7 +114,6 @@ function Calendar(){
             $('#enddatepicker').datepicker('setDate', null);
         }
         if($('#radio-button-end').prop("checked")==true){
-         
           var toDate=$('#end_date').val();
           console.log(toDate);     
         }    
@@ -433,8 +432,8 @@ function Calendar(){
             altFormat: "yy-mm-dd",
             showOn: 'both',
             onSelect: function(dateText, inst) {
-                var slots=getslots();
                 $('#radio-button-startend').prop("checked","true");
+                var slots=getslots();
                 testHighlight(slots.fromDate,slots.toDate,slots.highlightSlots);
             }   
          });
