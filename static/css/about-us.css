@@ -19,30 +19,31 @@
       background-image: url("/static/images/footer-background.png");
       background-size: 100%;
       background-position: center bottom;
-      background-repeat: no-repeat; }
+      background-repeat: no-repeat;
+      min-height: 550px; }
       .page-content .main-wrapper .main-container .leftnav .pd20 .mt0 {
-        color: #5d5d5d; }
+        font-size: 18px;
+        font-weight: 600;
+        color: #2b2b2b; }
       .page-content .main-wrapper .main-container .leftnav .pd20 .txt15 {
         margin-top: 15px;
         margin-bottom: 15px;
         font-size: 15px; }
-        .page-content .main-wrapper .main-container .leftnav .pd20 .txt15 i {
-          font-weight: bold; }
       .page-content .main-wrapper .main-container .leftnav p {
         margin: 0 0 15px;
-        font-size: 14px; }
+        font-size: 14px;
+        line-height: 20px; }
       .page-content .main-wrapper .main-container .leftnav .mt20 {
-        margin-top: 20px;
         margin-bottom: 20px; }
         .page-content .main-wrapper .main-container .leftnav .mt20 .leftnav .icon-facebook::before {
           content: '\e84a';
-          font-size: 36px;
+          font-size: 50px;
           color: #385899; }
         .page-content .main-wrapper .main-container .leftnav .mt20 .leftnav .icon-linkedin::before {
           content: '\e84b';
-          font-size: 36px;
+          font-size: 50px;
           color: #0677a9; }
         .page-content .main-wrapper .main-container .leftnav .mt20 .leftnav .icon-twitter::before {
           content: '\e849';
-          font-size: 36px;
+          font-size: 50px;
           color: #54adef; }
