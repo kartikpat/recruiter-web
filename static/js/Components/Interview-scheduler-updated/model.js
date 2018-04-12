@@ -30,10 +30,9 @@ function Calendar(){
         settings.breakStart=$('.Break-start'),
         settings.breakEnd=$('.Break-end'),
         settings.breakhours=$('.Breaks-available'),
-        settings.createCalendar=$('.formgroup'),
+        // settings.createCalendar=$('.formgroup'),
         settings.fullcalendar=$('#calendar'),
         settings.Calendarhours= $('.fc-day'),
-        settings.Calendarbutton= $('.fc-button'),
         settings.Highlighter=$('.highlighter')
         settings.startDate=$('#startdatepicker'),
         settings.endDate=$('#enddatepicker')
@@ -70,7 +69,7 @@ function Calendar(){
     }
 
     function highlighter(){
-          settings.createCalendar.on("click", getslots);
+        //   settings.createCalendar.on("click", getslots);
           settings.Highlighter.on("change",function(e){
               e.preventDefault();
               var index=$(this).parent().parent().parent().parent().attr('id');
@@ -92,6 +91,7 @@ function Calendar(){
     }
 
     function getslots(){
+     //   debugger
         var slots=[];
         var finalslots=[];   
         var date={};
@@ -223,11 +223,13 @@ function Calendar(){
         console.log(toDate)
         endDate=moment(toDate).format("DD-MM-YYYY");
         console.log(endDate)
-        if(startDate!="Invalid date"){
             $('#startdatepicker').datepicker().datepicker('setDate', startDate);
-        }
+            $('#radio-button-startend').prop("checked",true)
+        
         if(endDate!="Invalid date"){
-        $('#enddatepicker').datepicker().datepicker('setDate', endDate);
+            endDate="";
+            $('#enddatepicker').datepicker().datepicker('setDate', endDate);
+            $('#radio-button-end').prop("checked",true)
         }
         testHighlight(fromDate,toDate,previewslots);
         settings.submitButton.text("Update Calendar")
@@ -469,7 +471,9 @@ function Calendar(){
     }
 
     function submitHandler(fn){
-		$('#submit').click(fn)
+        settings.submitButton.on("click", getslots);
+        settings.submitButton.click(fn)
+       // getslots();
     }
 
     function timeSectionError(element){

@@ -500,8 +500,8 @@ body.posf {
   border-top: 4px solid #1f8f75; }
 
 .spinner > div {
-  width: 18px;
-  height: 18px;
+  width: 15px;
+  height: 15px;
   background-color: #fff;
   border-radius: 100%;
   display: inline-block;
