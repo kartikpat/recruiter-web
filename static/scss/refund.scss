@@ -1,0 +1,69 @@
+@import "fonts.scss";
+.page-content {
+	min-height: 600px;
+	padding: 20px;
+	background-color: #f7f7f7;
+	width:100%;
+	max-width:1440px;
+	margin:0 auto;
+		.container{
+			border-radius: 7px;
+			border-style: solid;
+			border-width: 1px;
+			border-color: #e8e8e8;
+			box-sizing: border-box;
+			background-color: #FFF;
+			box-shadow: 0px 2px 9px 0px rgba(214, 214, 214, 0.3);
+			width: 100%;
+			padding: 20px;
+			background-image:url('/static/images/footer-background.png');
+			background-size:100%;
+			background-position:center bottom;
+            background-repeat:no-repeat;
+            min-height: 450px;
+			.leftnav{
+				.pd20{
+					.mt0{
+						color: #2b2b2b;
+                        font-size: 18px;
+                        margin-bottom: 10px;
+                        margin-top: 0px;
+                        font-weight: 600;
+                    }
+					.txt15{
+						margin-top: 15px;
+						margin-bottom: 15px;
+						font-size: 15px;
+						i{
+							font-weight: bold;
+						}
+					}
+				}
+				p{
+					margin: 0 0 15px;
+					font-size: 14px;					
+				}
+				.mt20{
+					margin-top: 20px;
+					margin-bottom: 20px;
+					.leftnav{
+						.icon-facebook::before {
+							content: '\e84a';
+							font-size: 36px;
+							color: #385899;
+						}
+						.icon-linkedin::before {
+							content: '\e84b';
+							font-size: 36px;
+							color: #0677a9;
+						}
+						.icon-twitter::before {
+							content: '\e849';
+							font-size: 36px;
+							color: #54adef;
+						}
+					}
+				}
+			}
+		}
+    }

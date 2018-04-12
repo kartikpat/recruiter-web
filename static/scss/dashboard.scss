@@ -266,41 +266,69 @@ $button-border-color: #8f8a8a;
 		border: 1px solid $card-border;
 		background-color: $white;
 		border-radius: 6px;
-
+		min-height: 100%;
 		.empty-view{
-			margin: 0 auto;
+				text-align: center;
+				position: relative;
+				min-height: 150px;
 			.image-container{
+				margin-left: 20px;
 				float: left;
 				img{
-					width: 60px;
-					height: 60px;
-					display: inline-block;
+					width: 90px;
+					height:90px;
+					margin-top: 20px;
 				}
 			}
 			.content-container{
+				display: inline-block;
+				text-align: left;
+				margin-top: 20px;
 				.detail{
-					display: inline-block;
 					color: #2b2b2b;
 					font-weight: 600;
 					line-height: 20px;
-					vertical-align: top;
-
+					margin-bottom: 5px;
 				}
 				.subdetail{
 					color: #737373;
-					display: inline-block;
-					vertical-align: top;
+					font-size: 14px;
+					margin-bottom: 5px;
 				}
-				.action-buttons{
+				.empty-action-buttons{
+					margin:10px 0;
 					.post-job{
-
+						padding: 6px 18px !important;
+						border: 0;
+						padding: 0;
+						margin: 0;
+						background: #1f8f75;
+						border-color: #8f8a8a;
+						border-radius: 4px;
+						padding: 6px 25px;
+						font-size: 14px;
+						margin: 0 5px;
+						color: #FFF;
+						display: inline-block;
+						vertical-align: top;
+						cursor: pointer;
 					}
 				}
 				.divide{
-
+					color: #737373;
+					font-size: 14px;
+					margin-bottom: 5px;
 				}
-				.acton{
-					
+				.action{
+					color:$link-color;
+					font-size: 14px;
+					margin-bottom: 5px;
+					a{
+						color:$link-color;
+					}
+				}
+				.action:hover{
+					text-decoration: underline;
 				}
 			}	
 		}
@@ -308,6 +336,7 @@ $button-border-color: #8f8a8a;
 			padding-top: 15px;
 		}
 		.graph_holder{
+			padding: 20px 10px;
 			svg{
 				border-radius: 6px;
 			}
@@ -460,16 +489,55 @@ $button-border-color: #8f8a8a;
 				.button{
 					margin-right: 10px;
 				}
-				.candidateShortlist:hover{
-					background: #1f8f75;
-					color: #fff;
-					border: 1px solid #1f8f75;
-		
-				}
-				.candidateReject:hover{
-					background: #af595a;
-					color: #fff;
-					border: 1px solid #af595a;
+				.candidateShortlist-wrapper{
+					width: 78px;
+					height: 28px;
+					padding: 0px;
+					
+					.spinner{
+						text-align: center;
+						margin-top: 4px;
+					}
+					.spinner>div{
+						width: 10px;
+						height: 10px;
+					}
+					.candidateShortlist{
+						border: none;
+						border-radius: 0px;
+					}
+					.candidateShortlist:hover{
+						background: #1f8f75;
+						color: #fff;
+						border: 1px solid #1f8f75!important;
+						width: 100%;
+						height: 100%;
+					}
+				}	
+				.candidateReject-wrapper{
+					width: 78px;
+					height: 28px;
+					padding: 0px;
+					
+					.spinner{
+						text-align: center;
+						margin-top: 4px;
+					}
+					.spinner>div{
+						width: 10px;
+						height: 10px;
+					}
+					.candidateReject{
+						border: none;
+						border-radius: 0px;
+					}
+					.candidateReject:hover{
+						background: #af595a;
+						color: #fff;
+						border: 1px solid #af595a;
+						width: 100%;
+						height: 100%;
+					}
 				}
 			}
 		}

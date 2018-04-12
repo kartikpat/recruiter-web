@@ -26,3 +26,4 @@ function addBodyFixed() {
 function removeBodyFixed(){
 	jQuery("body").removeClass("posf");
 }
+

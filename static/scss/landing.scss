@@ -274,8 +274,7 @@ body {
 						            outline:none;
 						        }
 						    }
-
-						    button {
+							.button-wrapper{
 								-webkit-appearance:none;
 								-moz-appearance:none;
 								-ms-appearance:none;
@@ -294,35 +293,42 @@ body {
 								padding:12px;
 								color:$color-white;
 								display:inline-block;
-								vertical-align:top;
 								cursor:pointer;
 								font-size:18px;
 								font-weight:bold;
 								height: 45px;
-								.inline-spinner {
-									height: 20px;
-									width: 20px;
+								button {
+									border:0;
+									padding:0;
+									margin:0;
+									background:$login-button-color;
+									border-color:$button-border-color;
+									border-radius:4px;
+									font-size:$base-font-size;
+									display:block;
+									width:100%;
+									color:$color-white;
 									display:inline-block;
-									border: 2px solid #f3f3f3;
-									position:relative;
-									top:1px;
-									border-top: 4px solid #149075;
-									animation: spin 2000ms linear infinite;
-									border-radius: 50%;
-									@-webkit-keyframes spin {
-										0% {
-										  -webkit-transform: rotate(0deg); }
-										100% {
-										  -webkit-transform: rotate(360deg); }
-									  }
-
-									  @keyframes spin {
-										0% {
-										  transform: rotate(0deg); }
-										100% {
-										  transform: rotate(360deg); }
-									  }
-
+									cursor:pointer;
+									font-size:18px;
+									font-weight:bold;
+								}
+								.spinner{
+									border:0;
+									padding:0;
+									margin:0;
+									background:$login-button-color;
+									border-color:$button-border-color;
+									border-radius:4px;
+									font-size:$base-font-size;
+									display:block;
+									width:100%;
+									color:$color-white;
+									display:inline-block;
+									cursor:pointer;
+									font-size:18px;
+									font-weight:bold;
+									text-align: center;
 								}
 							}
 						}

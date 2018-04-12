@@ -130,6 +130,9 @@ function Jobs() {
 		    return fn(sortById);
 		})
 	}
+	function getType(){
+		return settings.jobFilters.val();
+	}
 
 	function cloneElement(id) {
 		var card = $('.table-row.job.prototype').clone().removeClass('prototype hidden')
@@ -394,7 +397,8 @@ function Jobs() {
 		showLoaderOverlay: showLoaderOverlay,
 		hideLoaderOverlay: hideLoaderOverlay,
 		emptyList: emptyList,
-		hideEmptyView: hideEmptyView
+		hideEmptyView: hideEmptyView,
+		getType: getType
 	}
 
 	function initializeTooltip() {

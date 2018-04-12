@@ -46,6 +46,7 @@ function Calendar(){
         settings.nextButton=$('.button-next'),
         settings.Calendarbutton=$('.calendar-button'),
         settings.textBox=$('.field p'),
+        settings.submitButton=$('#submit')
         // settings.editorMessage = new MediumEditor("#message", {
         //     toolbar: false,
         //     placeholder: false,
@@ -91,7 +92,6 @@ function Calendar(){
     }
 
     function getslots(){
-       //    debugger
         var slots=[];
         var finalslots=[];   
         var date={};
@@ -110,7 +110,6 @@ function Calendar(){
             toDate="";
         }
         if($('#radio-button-end').prop("checked")==true){
-           // debugger
           var toDate=$('#end_date').val();
           console.log(toDate);     
         }    
@@ -118,8 +117,6 @@ function Calendar(){
         date.to=toDate;
         timetable.date=date;
             $.each(settings.dayId,function(){
-                // settings.select_menu.find('option').prop('disabled', false); 
-                // debugger
                 var id=$(this).attr('id');
                 var unique=$(this).find('.day').attr('id');
                 var slotId=$(this).attr('slotId');
@@ -208,8 +205,6 @@ function Calendar(){
     function setDetails(object){
         console.log(object);
         settings.name.val(object["name"]);
-        // settings.editorMessage.setContent(object["message"])
-        // settings.editor.setContent(object["telMessage"])
         settings.message.val(object["message"],(/\(\d+-\d+ \w+\)$/));
         settings.teleMessage.val(object["telMessage"],(/\(\d+-\d+ \w+\)$/));
         timetable.CalendarId=object["id"];
@@ -221,12 +216,17 @@ function Calendar(){
         startDate=moment(fromDate).format("DD-MM-YYYY");
         console.log(startDate);
         var toDate=object.date.to;
+        console.log(toDate)
         endDate=moment(toDate).format("DD-MM-YYYY");
-        $('#startdatepicker').datepicker().datepicker('setDate', startDate);
+        console.log(endDate)
+        if(startDate!="Invalid date"){
+            $('#startdatepicker').datepicker().datepicker('setDate', startDate);
+        }
+        if(endDate!="Invalid date"){
         $('#enddatepicker').datepicker().datepicker('setDate', endDate);
-        //datepicker set value
+        }
         testHighlight(fromDate,toDate,previewslots);
-        settings.createCalendar.find('button').text("Update Calender")
+        settings.submitButton.text("Update Calendar")
     }
 
     function availablehours(slots){
@@ -465,7 +465,7 @@ function Calendar(){
     }
 
     function submitHandler(fn){
-		$(settings.createCalendar).click(fn)
+		$('#submit').click(fn)
     }
 
     function timeSectionError(element){

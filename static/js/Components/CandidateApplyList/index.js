@@ -365,7 +365,9 @@ jQuery(document).ready( function() {
         }
 
         if(res.action == "unread") {
-
+            $('.spinner').addClass('hidden');
+            $('.shortlist').removeClass('hidden');
+            $('.reject').removeClass('hidden');
             var newStatus = 0
             if(res.parameters.isModalButton) {
                 candidates.changeButtonText(arr, newStatus, res.parameters.dataAction)
@@ -382,6 +384,8 @@ jQuery(document).ready( function() {
             return toastNotify(1, "Moved to Unread Tab")
         }
         if(res.action == "shortlist") {
+            $('.spinner').addClass('hidden');
+            $('.shortlist').removeClass('hidden');
             var newStatus = 1
             if(res.parameters.isModalButton) {
                 candidates.changeButtonText(arr, newStatus, res.parameters.dataAction)
@@ -397,7 +401,8 @@ jQuery(document).ready( function() {
             return toastNotify(1, "Moved to Shortlisted Tab")
         }
         if(res.action == "reject") {
-
+            $('.spinner').addClass('hidden');
+            $('.reject').removeClass('hidden');
             var newStatus = 2
             if(res.parameters.isModalButton) {
                 candidates.changeButtonText(arr, newStatus, res.parameters.dataAction)
@@ -774,6 +779,10 @@ jQuery(document).ready( function() {
 
     function onFailCandidateAction(topic,res) {
         errorHandler(res);
+        $('.spinner').addClass('hidden');
+        $('.shortlist').removeClass('hidden');
+        $('.reject').removeClass('hidden');
+
     }
 
     function onSuccessfullFetchedTag(topic, res) {

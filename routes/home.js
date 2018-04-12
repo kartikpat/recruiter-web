@@ -72,7 +72,7 @@ module.exports = function(settings){
 					}
 					return res.redirect('/welcome');
 				}
-
+				res.cookie('recruiter-access-token', '');
 				return res.redirect('/login');
 			})
 
@@ -123,6 +123,8 @@ module.exports = function(settings){
 		});
 		return
 	});
+
+
 
 	app.get("/post-job",isAuthenticated, function(req, res){
 		res.render("post-job",{
@@ -215,6 +217,12 @@ module.exports = function(settings){
 	})
 
 	app.get("/login", function(req,res){
+
+		if(req.cookies['recruiter-access-token']){
+			return isAuthenticated(req, res);
+		}
+		res.cookie('recruiter-access-token', '');
+
 		res.render("landing", {
 			title:"Recruiter Web - Landing Page | iimjobs.com",
 			styles:  assetsMapper["landing"]["styles"][mode],
@@ -598,6 +606,30 @@ module.exports = function(settings){
 			title:"Recruiter Web - about-us | iimjobs.com",
 			styles:  assetsMapper["about-us"]["styles"][mode],
 			scripts: assetsMapper["about-us"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			profile: req.profile
+		})
+		return
+	});
+
+	app.get("/contact-us",isAuthenticated,function(req, res){
+		res.render("contact-us", {
+			title:"Recruiter Web - contact-us| iimjobs.com",
+			styles:  assetsMapper["contact-us"]["styles"][mode],
+			scripts: assetsMapper["contact-us"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			profile: req.profile
+		})
+		return
+	});
+
+	app.get("/refund",isAuthenticated,function(req, res){
+		res.render("refund", {
+			title:"Recruiter Web - refund | iimjobs.com",
+			styles:  assetsMapper["refund"]["styles"][mode],
+			scripts: assetsMapper["refund"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			profile: req.profile

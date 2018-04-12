@@ -29,14 +29,13 @@ $(document).ready(function(){
 	fetchJobTags(recruiterId)
  	function onSuccessfulSubmitJob(topic, data){
 		var jobPostMessage;
+		spinner();
 		if(type=='edit') {
 			jobPostMessage = "Job updated successfully";
 		}
 		else {
 			jobPostMessage = "Job posted successfully";
 		}
-
-		// alert("You have successfully posted your job.Our team is reviewing your job and it usually takes upto 24 hours for a job to get published.")
 		if(profile["availableCredits"] > 0)
 			return window.location.href = "/my-jobs?jobPostMessage="+encodeURIComponent(jobPostMessage)+"";
 		window.location.href = "/recruiter/recruiter-plan?jobPostMessage="+encodeURIComponent(jobPostMessage)+""
@@ -44,6 +43,7 @@ $(document).ready(function(){
 
 	function onFailedSubmitJob(topic, data) {
 		errorHandler(data)
+		togglespinner();
 	}
 	function onSuccessfulFetchJob(topic, data) {
 		jobDetails.setData(jobId,data[0]);
@@ -80,4 +80,14 @@ function errorHandler(data) {
         return toastNotify(3, "Something went wrong");
     }
     return toastNotify(3, res.message);
+}
+
+function spinner(){
+	$('#submitForm').addClass('hidden')
+	$('.spinner').removeClass('hidden')
+}
+
+function togglespinner(){
+	$('#submitForm').removeClass('hidden')
+	$('.spinner').addClass('hidden')
 }

@@ -25,7 +25,8 @@ function Manage() {
             var calendarRow =  settings.calendarRowPrototype.clone().removeClass('prototype hidden');
             calendarRow.find(settings.rowDate).text(moment(aRow.timestamp).format('MMM DD,YYYY'));
             calendarRow.find(settings.rowName).text(aRow.name).attr("href","/calendar/"+aRow["id"]+"/edit");
-            calendarRow.find(settings.rowSlots).text(aRow.nonBooked);
+            var left = (aRow['left'] >100) ? "100+" : aRow['left'];
+            calendarRow.find(settings.rowSlots).text(left);
             calendarRow.find(settings.editSchedule).attr("href","/calendar/"+aRow["id"]+"/edit");
             settings.rowContainer.append(calendarRow);
         });
