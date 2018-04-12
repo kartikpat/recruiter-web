@@ -131,6 +131,7 @@ function Jobs() {
 		})
 	}
 	function getType(){
+		settings.type = settings.jobFilters.val();
 		return settings.jobFilters.val();
 	}
 
