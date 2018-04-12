@@ -56,6 +56,7 @@ function candidateList() {
         settings.emptyView = $(".empty-screen"),
         settings.contactMenu=$('.contact-menu'),
         settings.contactMenubutton=$('.contactMenubutton');
+        settings.status = ''
         onClickBulkDownArrow()
         onClickMassCheckbox()
         onClickCandidateOtherActions()
@@ -423,6 +424,7 @@ function candidateList() {
     }
 
     function addToList(dataArray, status, pageNumber, pageContent, filterFlag){
+        settings.status = status;
 		var str = '';
 
         var element = $(".candidateListing[data-status-attribute='"+status+"']");
@@ -635,10 +637,10 @@ function candidateList() {
     function onChangeCandidateCheckbox(fn) {
         settings.rowContainer.on('click', settings.candidateCheckboxClass, function(event){
             event.stopPropagation();
-
+            debugger
             if(jQuery(this).is(":checked")){
                 var candidateSelect = jQuery(".candidate-select")
-                var el = settings.rowContainer.find(".candidate-select input:checked");
+                var el = $(".candidateListing[data-status-attribute='"+settings.status+"']").find(".candidate-select input:checked")
                 if(el.length > 100) {
                     $(this).prop("checked", false);
                     toastNotify(3, "You can perform action on only 100 candidates at once.")
@@ -654,7 +656,7 @@ function candidateList() {
                 settings.bulkActionContainer.attr("data-type-request", "bulkRequest").removeClass("hidden")
             } else {
                 jQuery(this).closest(".candidate-select").removeClass("selected");
-                var el = settings.rowContainer.find(".candidate-select input:checked")
+                var el = $(".candidateListing[data-status-attribute='"+settings.status+"']").find(".candidate-select input:checked")
                 var applicationId =  $(this).closest(settings.candidateRowClass).attr("data-application-id")
                 if(el.length > 0) {
                     var arr = returnSelectedApplications()
@@ -680,7 +682,8 @@ function candidateList() {
             event.stopPropagation();
 
             if(jQuery(this).is(":checked")){
-                var candidateSelect = jQuery(".candidate-select")
+
+                var candidateSelect = $(".candidateListing[data-status-attribute='"+settings.status+"']").find(".candidate-select")
                 var candidateSelectTotal = candidateSelect.not(".candidateRow.prototype .candidate-select");
                 if(candidateSelectTotal.length > 100) {
                     candidateSelectTotal = candidateSelectTotal.slice(0, 100);
@@ -688,7 +691,6 @@ function candidateList() {
                 }
                 candidateSelectTotal.addClass("selected")
                 candidateSelectTotal.find("input").prop("checked",  true);
-                var el = jQuery(".candidate-select.selected");
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").attr("disabled", false);
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").prop("checked", false);
                 var arr = returnSelectedApplications()
@@ -796,7 +798,7 @@ function candidateList() {
 
     function returnSelectedApplications() {
 
-        var el = settings.rowContainer.find(".candidate-select input:checked")
+        var el = $(".candidateListing[data-status-attribute='"+settings.status+"']").find(".candidate-select input:checked")
 
         var selectedApplicationIds = []
         $.each(el, function(index,anElem){
@@ -843,7 +845,7 @@ function candidateList() {
                 populateCheckInputDropdown()
                 settings.bulkActionsContainer.removeClass("hidden")
             },
-            activate: function(event, ui){
+            activate: function(event, ui) {
                 hideEmptyScreen()
                 settings.bulkActionContainer.addClass("hidden")
                 settings.massCheckboxInput.prop("checked", false)
@@ -920,7 +922,6 @@ function candidateList() {
     }
 
     function changeInviteText(applicationId) {
-
         settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .interviewinvite").text("Resend Interview Invite")
     }
 
@@ -1044,6 +1045,6 @@ function candidateList() {
         populateCheckInputDropdown: populateCheckInputDropdown,
         getApplicationsLength: getApplicationsLength,
         hideEmptyScreen: hideEmptyScreen,
-        contactMenu:contactMenu,
+        contactMenu:contactMenu
 	}
 }

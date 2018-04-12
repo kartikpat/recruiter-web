@@ -589,7 +589,7 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/verify-email",isAuthenticated,function(req, res){
+	app.get("/verify-email",function(req, res){
 		res.render("verify-email", {
 			title:"Recruiter Web - Welcome Page | iimjobs.com",
 			styles:  assetsMapper["verify-email"]["styles"][mode],
