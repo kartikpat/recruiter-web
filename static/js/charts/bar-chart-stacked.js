@@ -11,7 +11,7 @@ var ColumnChartOptions = function() {
         width: "80%",
         height: "80%"
     };
-    this.height= 220;
+    this.height= 300;
     this.width= '100%';
     this.legend= {
         position: "top"
@@ -51,13 +51,22 @@ function drawBarChartGraph(data, elementID) {;
     var chart = new google.visualization.BarChart(document.getElementById(elementID));
     var options = new ColumnChartOptions();
     options.colors = new MasterColorArray()
+    options.hAxis = {
+        title: "Number of Applications" ,
+        titleTextStyle: {
+            italic:false,
+            fontSize:12,
+            fontName:'Droid Sans',
+            color: "#737373"
+        }
+    }
     // options.colors.shift();
     // options.vAxis.title = "No. of Alumni";
     // options.vAxis.titleTextStyle= {
-    //         italic:false,
-    //         fontSize:12,
-    //         color:'#555',
-    //         fontName:'Droid Sans'
+            // italic:false,
+            // fontSize:12,
+            // color:'#555',
+            // fontName:'Droid Sans'
     // };
     chart.draw(chartData, options);
 }

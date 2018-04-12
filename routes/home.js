@@ -22,10 +22,14 @@ module.exports = function(settings){
 		baseUrl= config["baseUrl_local"];
 	else
 		baseUrl = config["baseUrl"];
+
+	function splitAbout(about) {
+		return about.split('\r\n').join('\\n');
+	}
 	function isAuthenticated(req, res, next) {
-		//bypassing the auth for development
-    // CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
-    // you can do this however you want with whatever variables you set up
+		// bypassing the auth for development
+    	// CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
+    	// you can do this however you want with whatever variables you set up
 
     	if (req.cookies["recruiter-access-token"]) {
 
@@ -40,8 +44,9 @@ module.exports = function(settings){
 				}
 				const jsonBody = JSON.parse(body)
 				if(jsonBody.status && jsonBody.status =='success'){
-					req.profile = jsonBody.data;
 
+					req.profile = jsonBody.data;
+					req.profile.about = splitAbout(req.profile.about)
 					if(req.originalUrl == "/verify-email") {
 						if(req.profile.verified && req.profile.verified == 1) {
 							return res.redirect('/account-created')
@@ -60,16 +65,23 @@ module.exports = function(settings){
 						// 	return next()
 						// }
 						// return res.redirect('/dashboardview');
+						if(req.originalUrl == "/login") {
+							return res.redirect('/')
+						}
 						return next()
 					}
 					return res.redirect('/welcome');
 				}
+				res.cookie('recruiter-access-token', '');
 				return res.redirect('/login');
 			})
 
 		}
 		else{
 			// IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
+			if(req.originalUrl == "/login") {
+				return next()
+			}
 			return res.redirect('/login');
 		}
 	}
@@ -205,6 +217,12 @@ module.exports = function(settings){
 	})
 
 	app.get("/login", function(req,res){
+
+		// if(req.cookies['recruiter-access-token']){
+		// 	return isAuthenticated(req, res);
+		// }
+		// res.cookie('recruiter-access-token', '');
+
 		res.render("landing", {
 			title:"Recruiter Web - Landing Page | iimjobs.com",
 			styles:  assetsMapper["landing"]["styles"][mode],
@@ -758,8 +776,6 @@ module.exports = function(settings){
 			scripts: assetsMapper["booked-slots"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			jobId: req.params.jobID,
-			applicationId: req.params.applicationID,
 			profile: req.profile
 		})
 		return

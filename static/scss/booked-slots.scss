@@ -3,6 +3,21 @@
 @import 'chat-sidebar';
 @import 'components/modal';
 
+.shell {
+    .section {
+        margin-bottom: 10px !important;
+    }
+    p {
+        @include title-shell;
+    }
+    span {
+        display: inline-block;
+        width: calc(50% - 10px);
+        @include text-shell;
+
+    }
+}
+
 
 .border-top {
     border-top: 1px solid #e8e8e8;
@@ -128,7 +143,7 @@
                     color: #2b2b2b;
                 }
             }
-          
+
 
         }
         .start-date{
@@ -197,7 +212,7 @@
             }
 
         }
-    
+
 
     .booked-slots{
         .slot-date{
@@ -240,6 +255,9 @@
                         }
                         .interviewTime{
                             width: 100%;
+                            &.shel {
+                                width: 100px;
+                            }
                         }
                     }
                     .interview-type{
@@ -271,6 +289,12 @@
                         width: 18%;
                         padding-bottom: 10px;
                         vertical-align: top;
+                        .interviewTime{
+                            width: 100%;
+                            &.shel {
+                                width: 100px;
+                            }
+                        }
                         .action-detail{
                             display: none;
                         }
@@ -442,7 +466,8 @@
     }
 
     .wrapper{
-        margin-top: -10px;
+        border-top: none;
+
         .action-wrapper{
             display: none;
         }
@@ -528,7 +553,7 @@
                             padding-bottom: 10px;
                             width: 80%;
                             // .designation{
-                            //     color: #858585; 
+                            //     color: #858585;
                             // }
                             .experience{
                                 color: #858585;
@@ -698,7 +723,7 @@
                             display: inline-block;
                             // margin-top: 2px;
                         }
-            
+
                     }
                 }
             .no-schedule-container{
@@ -712,13 +737,13 @@
                 box-shadow: 0px 2px 8px 0px rgba(214, 214, 214, 0.3);
                 margin-top: 40px;
             .image-container{
-              
+
                padding-top: 100px;
                 img{
                     margin-left: auto;
                     margin-right: auto;
                     display: block;
-                    width: 30%;       
+                    width: 30%;
                 }
             }
             .heading{
@@ -806,5 +831,3 @@
     margin-right: 5px;
 }
 }
-
-

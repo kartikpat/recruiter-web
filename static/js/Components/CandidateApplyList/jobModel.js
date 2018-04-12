@@ -1,7 +1,7 @@
 function Job(){
 	var settings = {};
 	var config = {};
-
+ 
 	function setConfig(key, value) {
 		config[key] = value;
 	}

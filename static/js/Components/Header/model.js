@@ -41,6 +41,13 @@ function Header(){
 			settings.searchResume=$('.search-resume'),
 			settings.CloseresumeModal=$('.modal_close');
 			settings.searchAccess = 1;
+
+			$(".recruiterLogout").click(function(){
+				
+				document.cookie = "recruiter-access-token" + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+				window.location.href = "/login"
+				return false
+			})
 	}
 
 

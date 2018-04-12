@@ -28,7 +28,7 @@ jQuery(document).ready( function() {
        fetchInterviews(recruiterId, parameters);
    })
 
-   slots.onClickSubmitCancelInterview(function(inviteId, calendarId, applicationId, reason){
+   slots.onClickSubmitCancelInterview(function(inviteId, calendarId, applicationId, reason, jobId){
        slots.closeModal()
        slots.showLoaderOverlay()
        var data = {
@@ -36,6 +36,7 @@ jQuery(document).ready( function() {
            calendarId: parseInt(calendarId),
            block: reason
        }
+
        return cancelInterviewInvite(recruiterId, jobId, applicationId, data);
    });
 
@@ -84,7 +85,10 @@ jQuery(document).ready( function() {
    }
 
    function onInterviewsFetchSuccess(topic, data){
+
         tickerLock = false;
+        hideLoader()
+        slots.hideShell()
         globalParameters.InterviewListLength = data.length;
         slots.addToList(data,globalParameters.pageNumber,globalParameters.pageContent);
     }
@@ -129,7 +133,8 @@ jQuery(document).ready( function() {
                if(globalParameters.calendarId != -1) {
                    parameters.calendarId = globalParameters.calendarId;
                }
-               $(".loaderScroller").removeClass("hidden");
+               showLoader()
+            
                fetchInterviews(recruiterId,parameters);
            }
            else

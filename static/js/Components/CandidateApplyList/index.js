@@ -218,6 +218,7 @@ jQuery(document).ready( function() {
         var candidate = store.getCandidateFromStore(applicationId);
         var array = [];
         array.push(candidate);
+
         cloneStickyChat(array, recruiterId, jobId, applicationId)
     })
 
@@ -226,7 +227,7 @@ jQuery(document).ready( function() {
     })
 
     aCandidate.onClickChatCandidateModal(function(candidateId,applicationId){
-        var candidate = store.getCandidateFromStore(candidateId);
+        var candidate = store.getCandidateFromStore(applicationId);
         var array = [];
         array.push(candidate);
         cloneStickyChat(array, recruiterId, jobId, applicationId)
@@ -275,12 +276,11 @@ jQuery(document).ready( function() {
         // alert(candidateId)
     })
     candidates.initializeJqueryTabs(defaultTabObj[globalParameters.status], function(event, ui) {
+
         tickerLock = false;
         var status = candidates.activateStatsTab(event, ui)
         candidates.showShells(status);
         candidates.removeCandidate(status)
-        candidates.populateCheckInputDropdown(status)
-
 
         var parameters = filters.getAppliedFilters();
         globalParameters.status = status;
@@ -358,7 +358,7 @@ jQuery(document).ready( function() {
         if(res.action == "comment") {
             return toastNotify(1, "Comment Added Successfully")
         }
-
+        console.log()
         if(res.parameters.oldStatus != "") {
             candidates.candidateActionTransition(arr)
             checkApplicationLength()
@@ -482,16 +482,30 @@ jQuery(document).ready( function() {
         downloadMassResume(recruiterId, jobId, parameters)
     })
 
-    candidates.onClickMassActionButton(function(applicationIds, action, comment, newStatus, typeRequest){
+    candidates.onClickMassActionButton(function(applicationIds, action, comment, newStatus, typeRequest, from, to){
         var data = {}
-        data.applicationId = applicationIds
-        data.comment = comment;
-        var parameters= {};
-        parameters.oldStatus = globalParameters.status
-        parameters.newStatus = newStatus
-        // if(typeRequest == "bulkRequest") {
-        //     return
-        // }
+        var parameters = {};
+
+        if(comment != '') {
+            data.comment = comment;
+        }
+        if(typeRequest == "bulkRequestDropdown") {
+            data = filters.getAppliedFilters();
+            data.from = parseInt(from);
+            data.to = parseInt(to);
+            data.status = globalParameters.status;
+            parameters.status = globalParameters.status;
+            parameters.length = (to - from) + 1;
+            debugger
+            return
+        }
+        else {
+            data.applicationId = applicationIds
+            parameters.oldStatus = globalParameters.status
+            parameters.newStatus = newStatus
+            parameters.length = applicationIds.length
+            debugger
+        }
         setBulkCandidateActions(recruiterId, jobId, action, data, parameters)
     })
 
@@ -596,6 +610,7 @@ jQuery(document).ready( function() {
              action = "shortlist"
          }
          var parameters = {};
+         parameters.oldStatus = globalParameters.status;
          parameters.newStatus = newStatus;
          parameters.dataAction = dataAction;
          parameters.isModalButton = true
@@ -681,12 +696,6 @@ jQuery(document).ready( function() {
     function onJobsApplicationsFetchSuccess(topic, data) {
         tickerLock = false;
         hideLoader()
-
-        if(globalParameters.initialLoad) {
-            fetchJobApplicationCount(recruiterId, jobId)
-            globalParameters.initialLoad = 0;
-        }
-
         globalParameters.candidateListLength = data["data"].length;
 
         var filterFlag = 0;
@@ -698,19 +707,42 @@ jQuery(document).ready( function() {
             }
         }
 
+        
+            $.when(fetchFiltersCount(recruiterId, jobId, parameters), fetchJobApplicationCount(recruiterId, jobId)).then(function(a,b){
+                if(a[0] && b[0] && a[0]["status"] == "success" && b[0]["status"] == "success") {
+                    var filtersCount = a[0]['data'];
+                    var applicantsCount = b[0]['data'];
+                    var data = {
+                        filtersCount: filtersCount,
+                        applicantsCount: applicantsCount,
+                        filterFlag: filterFlag
+                    }
+                    return pubsub.publish("fetchedCount", data);
+                }
+                return pubsub.publish("failedToFetchCount", a[0]["status"]);
+            })
+
+
+        // else {
+        //     $.when(fetchFiltersCount(recruiterId, jobId, parameters), null).then(function(a,b){
+        //         if(a[0] && a[0]["status"] == "success") {
+        //             var filtersCount = a[0]['data'];
+        //             var data = {
+        //                 filtersCount: filtersCount,
+        //                 filterFlag: filterFlag
+        //             }
+        //             return pubsub.publish("fetchedCount", data);
+        //         }
+        //         return pubsub.publish("failedToFetchCount", a[0]["status"]);
+        //     })
+        // }
+
+
         candidates.addToList(data["data"], data.obj.status, globalParameters.pageNumber, globalParameters.pageContent, filterFlag);
-
-
-
-        if(filterFlag > 0) {
-            fetchFiltersCount(recruiterId, jobId, parameters)
-        }
 
         if(!theJob.getCalendarLength()){
             candidates.setInvite(theJob.getCalendarLength())
         }
-
-
 
         if(data["pageNumber"] == 1) {
             store.emptyStore(data["data"]);
@@ -853,10 +885,12 @@ jQuery(document).ready( function() {
              location.reload()
          }, 2000);
 	}
+
 	function onFailedRefreshJob(topic, data){
         theJob.openModal("refresh")
 		errorHandler(data)
 	}
+
 	function onSuccessfulPremiumJob(topic, data){
         theJob.hideLoaderOverlay()
         toastNotify(1, "Job Made Premium Successfully")
@@ -864,15 +898,23 @@ jQuery(document).ready( function() {
              location.reload()
          }, 2000);
 	}
+
 	function onFailedPremiumJob(topic, data){
         theJob.openModal("premium")
 		errorHandler(data)
 	}
 
-    function onSuccessfulCount(topic, res) {
-        candidates.setJobStats(res.data);
-        candidates.populateCheckInputDropdown(globalParameters.status)
-
+    function onSuccessfulCount(topic, data) {
+        console.log(data)
+        if(data.applicantsCount) {
+            candidates.setJobStats(data.applicantsCount);
+        }
+        if(data.filtersCount) {
+            if(data.filterFlag > 0) {
+                filters.showResultsFound(data.filtersCount.total);
+            }
+            candidates.populateCheckInputDropdown(parseInt(data.filtersCount.total), globalParameters.status)
+        }
     }
 
     function onFailedCount(topic, data) {
@@ -881,7 +923,6 @@ jQuery(document).ready( function() {
 
     function onSendInterViewInviteSuccess(topic, data) {
         candidates.changeInviteText(data.parameters.applicationId)
-        
         if(data.parameters.inviteId == 1)
             toastNotify(1, "Face to Face Invite Sent Successfully!")
         if(data.parameters.inviteId == 2)
@@ -889,14 +930,6 @@ jQuery(document).ready( function() {
     }
 
     function onSendInterViewInviteFail(topic, data) {
-        errorHandler(data)
-    }
-
-    function onSuccessfulFiltersCount(topic, data) {
-        filters.showResultsFound(data.total);
-    }
-
-    function onFailedFiltersCount(topic, data) {
         errorHandler(data)
     }
 
@@ -931,11 +964,8 @@ jQuery(document).ready( function() {
 	var premiumJobSuccessSubscription = pubsub.subscribe("jobPremiumSuccess", onSuccessfulPremiumJob)
 	var premiumJobFailSubscription = pubsub.subscribe("jobPremiumFail", onFailedPremiumJob);
 
-    var fetchedApplicationCountSuccessSubscription = pubsub.subscribe("fetchedApplicationCountSuccess", onSuccessfulCount)
-	var fetchedApplicationCountFailSubscription = pubsub.subscribe("fetchedApplicationCountFail", onFailedCount);
-
-    var fetchedFiltersCountSuccessSubscription = pubsub.subscribe("fetchedFiltersCountSuccess", onSuccessfulFiltersCount)
-	var fetchedFiltersCountFailSubscription = pubsub.subscribe("fetchedFiltersCountFail", onFailedFiltersCount);
+    var fetchedCountSuccessSubscription = pubsub.subscribe("fetchedCount", onSuccessfulCount)
+	var fetchedCountFailSubscription = pubsub.subscribe("failedToFetchCount", onFailedCount);
 
     var sendInterViewInviteSuccessSubscription = pubsub.subscribe("sendInterViewInviteSuccess", onSendInterViewInviteSuccess)
 	var sendInterViewInviteFailSubscription = pubsub.subscribe("sendInterViewInviteFail", onSendInterViewInviteFail);
