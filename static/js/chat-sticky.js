@@ -681,6 +681,8 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
         chatContainerBox.attr("data-id",array[0]["userID"]);
         chatContainerBox.find(".chat-input").attr("data-channel-name", channelName)
         chatContainerBox.find(".chat-input").attr("data-id",array[0]["userID"] )
+        chatContainerBox.find(".no-start").removeClass("hidden")
+        chatContainerBox.find(".start").addClass("hidden")
         var dataID = chatContainerBox.attr("data-id");
         if(array[0]["lastActive"]) {
             chatContainerBox.find(".lastActiveDate").text(moment(array[0]["lastActive"]).format("DD MM YYYY")).removeClass("hidden")

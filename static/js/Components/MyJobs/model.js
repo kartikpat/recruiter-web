@@ -122,7 +122,7 @@ function Jobs() {
 			return fn(jobId);
 		})
 	}
-
+ 
 	function onChangeJobFilters(fn) {
 		settings.jobFilters.change(function() {
 			var sortById = $(this).val();
@@ -131,6 +131,7 @@ function Jobs() {
 		})
 	}
 	function getType(){
+		settings.type = settings.jobFilters.val();
 		return settings.jobFilters.val();
 	}
 

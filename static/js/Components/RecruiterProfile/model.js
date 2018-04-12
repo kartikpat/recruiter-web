@@ -202,8 +202,8 @@ function Profile(){
 
 		settings.organization.val(obj["organisation"]);
 		settings.websiteUrl.val(obj["wurl"]);
-		if(obj["type"]) {
-			settings.recruiterType.val(obj["type"]);
+		if(obj["recruiterType"]) {
+			settings.recruiterType.val(obj["recruiterType"]);
 		}
 
 		settings.location.val(obj["location"]);
