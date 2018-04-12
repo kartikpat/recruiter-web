@@ -72,7 +72,7 @@ module.exports = function(settings){
 					}
 					return res.redirect('/welcome');
 				}
-
+				res.cookie('recruiter-access-token', '');
 				return res.redirect('/login');
 			})
 
@@ -216,7 +216,11 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/login",isAuthenticated, function(req,res){
+	app.get("/login", function(req,res){
+		if(req.cookies['recruiter-access-token']){
+			return isAuthenticated(req, res);
+		}
+		res.cookie('recruiter-access-token', '');
 		res.render("landing", {
 			title:"Recruiter Web - Landing Page | iimjobs.com",
 			styles:  assetsMapper["landing"]["styles"][mode],
