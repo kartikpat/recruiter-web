@@ -1579,7 +1579,7 @@ span.sticker {
         font-weight: 400;
         border-radius: 4px; }
       .wrap .bottom-container .formgroup .button-wrapper .spinner {
-        margin-top: 8px; }
+        margin-top: 10px; }
 
 @media only screen and (max-width: 1260px) {
   .wrap .second-container .available-hours .preview {

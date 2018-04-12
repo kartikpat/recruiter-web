@@ -1033,8 +1033,8 @@ body.posf {
   border-top: 4px solid #1f8f75; }
 
 .spinner > div {
-  width: 18px;
-  height: 18px;
+  width: 10px;
+  height: 10px;
   background-color: #fff;
   border-radius: 100%;
   display: inline-block;
@@ -3733,3 +3733,8 @@ span.sticker {
     margin-left: 15px; }
   .page-content .header-slot .start-date {
     margin-right: 5px; } }
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+  border: 1px solid #82c3b5 !important;
+  background: #82c3b5 !important;
+  color: #777620; }
