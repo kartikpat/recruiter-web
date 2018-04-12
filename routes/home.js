@@ -27,7 +27,7 @@ module.exports = function(settings){
 		return about.split('\r\n').join('\\n');
 	}
 	function isAuthenticated(req, res, next) {
-		//bypassing the auth for development
+		// bypassing the auth for development
     	// CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     	// you can do this however you want with whatever variables you set up
 
@@ -217,10 +217,12 @@ module.exports = function(settings){
 	})
 
 	app.get("/login", function(req,res){
+
 		if(req.cookies['recruiter-access-token']){
 			return isAuthenticated(req, res);
 		}
 		res.cookie('recruiter-access-token', '');
+
 		res.render("landing", {
 			title:"Recruiter Web - Landing Page | iimjobs.com",
 			styles:  assetsMapper["landing"]["styles"][mode],

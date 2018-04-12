@@ -3,7 +3,7 @@ function setBulkCandidateActions(recruiterId, jobId, action , data, parameters){
 		if(res.status && res.status =='success'){
 			res.action = action;
 			res.parameters = parameters;
-			res.applicationId = data.applicationId;
+			
 			return pubsub.publish("setCandidateBulkActionSuccess", res);
 		}
 	}, function(res,status,error) {
