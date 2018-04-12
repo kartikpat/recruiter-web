@@ -1,5 +1,4 @@
 @import 'common/spacings';
-
 @import 'input-elements';
 
 .formgroup .error {
@@ -136,13 +135,28 @@
                             }
 
                             .submit {
-                                button {
+                                .upload-container{
                                     @include button($button-color-green);
-                                    color: white;
-                                    border: 0;
-                                    padding: 12px 25px;
-                                    margin: 0;
-                                }
+                                        color: white;
+                                        border: 0;
+                                        padding: 0px 0px;
+                                        margin: 0;
+                                        width: 127px;
+                                        height: 40px;
+                                        text-align: center;
+                                    .spinner{
+                                        margin-top: 10px;
+                                    }
+                                    button {
+                                        @include button($button-color-green);
+                                        width: 127px;
+                                        height: 40px;
+                                        color: white;
+                                        border: 0;
+                                        padding: 0;
+                                        margin: 0 auto;
+                                    }
+                                }    
                             }
                         }
                     }
@@ -189,12 +203,23 @@
                                     outline: 0;
                                 }
                             }
-
-                            .button {
-                                @include button($link-color);
-                                padding: 12px 30px;
-                                margin: 0;
-                                border-radius:3px;
+                            .save-container{
+                                    @include button($button-background-color);
+                                    padding: 0;
+                                    margin: 0;
+                                    border-radius:3px;
+                                    width: 89px;
+                                    height: 40px;
+                                    text-align: center;
+                                    .spinner{
+                                        margin-top: 10px;
+                                    }
+                                .button {
+                                    @include button($link-color);
+                                    padding: 12px 30px;
+                                    margin: 0;
+                                    border-radius:3px;
+                                }
                             }
                         }
                     }

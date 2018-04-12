@@ -496,7 +496,6 @@ jQuery(document).ready( function() {
             data.status = globalParameters.status;
             parameters.status = globalParameters.status;
             parameters.length = (to - from) + 1;
-            debugger
             return
         }
         else {
@@ -504,7 +503,6 @@ jQuery(document).ready( function() {
             parameters.oldStatus = globalParameters.status
             parameters.newStatus = newStatus
             parameters.length = applicationIds.length
-            debugger
         }
         setBulkCandidateActions(recruiterId, jobId, action, data, parameters)
     })

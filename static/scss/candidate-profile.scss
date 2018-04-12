@@ -531,47 +531,79 @@
 			&.cand-add-tag-action-btn {
 				margin: 15px 0;
 			}
-			// .shortlist-wrapper{
-			// 	height: 28px;
-			// 	width: 83px;
-			// 	padding:0!important;
-			// 	border-radius: 4px;
-			// 	background-color: #1f8f75;
-			// 	.spinner{
-			// 		margin-top: 6px;
-			// 	}
-			// 	.spinner>div{
-			// 		width: 10px;
-			// 		height: 10px;
-			// 	}
-			// 	span {
-			// 		&.button {
-			// 			&.candidateShortlistModal {
-			// 				padding: 6px 0px;
-			// 			}
-			// 		}
-			// 	}		
-			// }
-			// .reject-wrapper{
-			// 	height: 28px;
-			// 	width: 83px;
-			// 	padding:0!important;
-			// 	.spinner{
-			// 		margin-top: 6px;
+			.shortlist-wrapper{
+				background-color: #1f8f75!important;
+				height: 28px;
+				width: 103px;
+				padding: 0 !important;
+				border: 0;
+				padding: 0;
+				margin: 0;
+				background: #FFF;
+				border-color: #8f8a8a;
+				border-radius: 4px;
+				padding: 6px 25px;
+				font-size: 14px;
+				margin: 0 5px;
+				color: #FFF;
+				display: inline-block;
+				vertical-align: top;
+				cursor: pointer;
+				text-align: center;
+				.spinner{
+					margin-top: 6px;
+				}
+				.spinner>div{
+					width: 10px;
+					height: 10px;
+				}
+				span {
+					&.button {
+						&.candidateShortlistModal {
+							padding: 6px 0px;
+							width: 100%;
+							margin: 0 auto;
+						}
+					}
+				}		
+			}
+			.reject-wrapper{
+				background-color: #af595a!important;
+				height: 28px;
+				width: 103px;
+				padding: 0 !important;
+				border: 0;
+				padding: 0;
+				margin: 0;
+				background: #FFF;
+				border-color: #8f8a8a;
+				border-radius: 4px;
+				padding: 6px 25px;
+				font-size: 14px;
+				margin: 0 5px;
+				color: #FFF;
+				display: inline-block;
+				vertical-align: top;
+				cursor: pointer;
+				text-align: center;
+				.spinner{
+					margin-top: 6px;
 					
-			// 	}
-			// 	.spinner>div{
-			// 		width: 10px;
-			// 		height: 10px;
-			// 	}
-			// 	span {
-			// 		&.button {
-			// 			&.candidateShortlistModal {
-			// 				padding: 6px -1px;
-			// 			}
-			// 		}
-			// 	}
-			// }
+				}
+				.spinner>div{
+					width: 10px;
+					height: 10px;
+				}
+				span {
+					&.button {
+						margin: 0%;
+						&.candidateShortlistModal {
+							// padding: 6px 6px;
+							width: 100%;
+						}
+					}
+				}
+			}
     		span {
     			&.button {
 					&.cand-comment-button{
@@ -762,6 +794,7 @@
 		}
 		.mobile-resume-sidebar {
 			display:block;
+			border-radius: 8px;
             .contact-menu{
 				.contact-info{
                     h3 {

@@ -7,7 +7,7 @@ function submitRefreshJob(recruiterId, jobId){
 		}
 
 	},function(res,status,error) {
-		debugger
+		// debugger
 		return pubsub.publish("jobRefreshFail", res);
 	});
 }

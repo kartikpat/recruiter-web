@@ -1,12 +1,13 @@
 $(document).ready(function(){
-
 	var recruiterProfile = Profile();
 	console.log(profile);
 	recruiterProfile.init();
 	recruiterProfile.setProfile(profile)
 
 	recruiterProfile.submitHandler(function(type){
-
+		$('.spinner').removeClass('hidden');
+		$('#uploadPic').addClass('hidden');
+		$('#submit').addClass('hidden');
 		if(recruiterProfile.validate()){
 			if(type == "change-password") {
 				var obj = recruiterProfile.getProfile();
@@ -25,6 +26,9 @@ $(document).ready(function(){
 	})
 
  	function onSuccessfulUpdateProfile(topic, data){
+		$('.spinner').removeClass('hidden');
+		$('#uploadPic').addClass('hidden');
+		$('#submit').addClass('hidden');
 		toastNotify(1, "Profile Updated Success");
 		setTimeout(function(){
 			 location.reload()
@@ -32,6 +36,9 @@ $(document).ready(function(){
 	}
 	function onFailedUpdateProfile(topic, data){
 		errorHandler(data)
+		$('.spinner').removeClass('hidden');
+		$('#uploadPic').addClass('hidden');
+		$('#submit').addClass('hidden');
 	}
 
 	function onSuccessfulSetPassword(topic, data){

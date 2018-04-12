@@ -2310,6 +2310,62 @@ span.sticker {
       margin-bottom: 30px; }
       .view-resume-modal .resume-sidebar .action-buttons.cand-add-tag-action-btn {
         margin: 15px 0; }
+      .view-resume-modal .resume-sidebar .action-buttons .shortlist-wrapper {
+        background-color: #1f8f75 !important;
+        height: 28px;
+        width: 103px;
+        padding: 0 !important;
+        border: 0;
+        padding: 0;
+        margin: 0;
+        background: #FFF;
+        border-color: #8f8a8a;
+        border-radius: 4px;
+        padding: 6px 25px;
+        font-size: 14px;
+        margin: 0 5px;
+        color: #FFF;
+        display: inline-block;
+        vertical-align: top;
+        cursor: pointer;
+        text-align: center; }
+        .view-resume-modal .resume-sidebar .action-buttons .shortlist-wrapper .spinner {
+          margin-top: 6px; }
+        .view-resume-modal .resume-sidebar .action-buttons .shortlist-wrapper .spinner > div {
+          width: 10px;
+          height: 10px; }
+        .view-resume-modal .resume-sidebar .action-buttons .shortlist-wrapper span.button.candidateShortlistModal {
+          padding: 6px 0px;
+          width: 100%;
+          margin: 0 auto; }
+      .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper {
+        background-color: #af595a !important;
+        height: 28px;
+        width: 103px;
+        padding: 0 !important;
+        border: 0;
+        padding: 0;
+        margin: 0;
+        background: #FFF;
+        border-color: #8f8a8a;
+        border-radius: 4px;
+        padding: 6px 25px;
+        font-size: 14px;
+        margin: 0 5px;
+        color: #FFF;
+        display: inline-block;
+        vertical-align: top;
+        cursor: pointer;
+        text-align: center; }
+        .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper .spinner {
+          margin-top: 6px; }
+        .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper .spinner > div {
+          width: 10px;
+          height: 10px; }
+        .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper span.button {
+          margin: 0%; }
+          .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper span.button.candidateShortlistModal {
+            width: 100%; }
       .view-resume-modal .resume-sidebar .action-buttons span.button {
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -2477,6 +2533,7 @@ span.sticker {
       padding-right: 0; }
     .view-resume-modal .mobile-resume-sidebar {
       display: block;
+      border-radius: 8px;
       background: #FFF;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
       .view-resume-modal .mobile-resume-sidebar .contact-menu .contact-info {

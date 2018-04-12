@@ -768,7 +768,7 @@ b {
       .header .profile_actions .action-icon .search-icon .icon-search:before {
         margin-left: 0px;
         margin-right: 0px;
-        font-size: 27px;
+        font-size: 27px !important;
         line-height: 43px;
         color: #e8e8e8; }
     .header .profile_actions .action-icon .chat-icon {
@@ -776,7 +776,7 @@ b {
       .header .profile_actions .action-icon .chat-icon .icon-chat_icon::before {
         margin-left: 0px;
         margin-right: 0px;
-        font-size: 25px;
+        font-size: 27px !important;
         line-height: 40px;
         color: #e8e8e8; }
   .header .profile_actions .profile img {

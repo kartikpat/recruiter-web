@@ -688,7 +688,7 @@ span.sticker {
               display: inline-block;
               margin: 10px 0 20px;
               color: #7b7b7b; }
-          .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit button {
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit .upload-container {
             -webkit-appearance: none;
             -moz-appearance: none;
             -ms-appearance: none;
@@ -708,20 +708,61 @@ span.sticker {
             cursor: pointer;
             color: white;
             border: 0;
-            padding: 12px 25px;
-            margin: 0; }
-            .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit button.green {
+            padding: 0px 0px;
+            margin: 0;
+            width: 127px;
+            height: 40px;
+            text-align: center; }
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit .upload-container.green {
               background-color: #1f8f75; }
-            .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit button.red {
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit .upload-container.red {
               background-color: #af595a; }
-            .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit button.white {
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit .upload-container.white {
               border: 1px solid #8f8a8a;
               color: #2b2b2b; }
-            .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit button.edit {
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit .upload-container.edit {
               padding: 3px 9px; }
-              .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit button.edit img {
+              .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit .upload-container.edit img {
                 width: 17px;
                 height: 17px; }
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit .upload-container .spinner {
+              margin-top: 10px; }
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit .upload-container button {
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              -ms-appearance: none;
+              -o-appearance: none;
+              border: 0;
+              padding: 0;
+              margin: 0;
+              background: #1f8f75;
+              border-color: #8f8a8a;
+              border-radius: 4px;
+              padding: 6px 25px;
+              font-size: 14px;
+              margin: 0 5px;
+              color: #FFF;
+              display: inline-block;
+              vertical-align: top;
+              cursor: pointer;
+              width: 127px;
+              height: 40px;
+              color: white;
+              border: 0;
+              padding: 0;
+              margin: 0 auto; }
+              .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit .upload-container button.green {
+                background-color: #1f8f75; }
+              .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit .upload-container button.red {
+                background-color: #af595a; }
+              .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit .upload-container button.white {
+                border: 1px solid #8f8a8a;
+                color: #2b2b2b; }
+              .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit .upload-container button.edit {
+                padding: 3px 9px; }
+                .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit .upload-container button.edit img {
+                  width: 17px;
+                  height: 17px; }
       .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup {
         margin-bottom: 15px; }
         .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .label {
@@ -809,7 +850,7 @@ span.sticker {
             border-color: #ee1620; }
           .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup textarea:focus {
             outline: 0; }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button {
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .save-container {
           -webkit-appearance: none;
           -moz-appearance: none;
           -ms-appearance: none;
@@ -817,7 +858,7 @@ span.sticker {
           border: 0;
           padding: 0;
           margin: 0;
-          background: #155d9a;
+          background: #0c9175;
           border-color: #8f8a8a;
           border-radius: 4px;
           padding: 6px 25px;
@@ -827,21 +868,59 @@ span.sticker {
           display: inline-block;
           vertical-align: top;
           cursor: pointer;
-          padding: 12px 30px;
+          padding: 0;
           margin: 0;
-          border-radius: 3px; }
-          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button.green {
+          border-radius: 3px;
+          width: 89px;
+          height: 40px;
+          text-align: center; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .save-container.green {
             background-color: #1f8f75; }
-          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button.red {
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .save-container.red {
             background-color: #af595a; }
-          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button.white {
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .save-container.white {
             border: 1px solid #8f8a8a;
             color: #2b2b2b; }
-          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button.edit {
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .save-container.edit {
             padding: 3px 9px; }
-            .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .button.edit img {
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .save-container.edit img {
               width: 17px;
               height: 17px; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .save-container .spinner {
+            margin-top: 10px; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .save-container .button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+            -o-appearance: none;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            background: #155d9a;
+            border-color: #8f8a8a;
+            border-radius: 4px;
+            padding: 6px 25px;
+            font-size: 14px;
+            margin: 0 5px;
+            color: #FFF;
+            display: inline-block;
+            vertical-align: top;
+            cursor: pointer;
+            padding: 12px 30px;
+            margin: 0;
+            border-radius: 3px; }
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .save-container .button.green {
+              background-color: #1f8f75; }
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .save-container .button.red {
+              background-color: #af595a; }
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .save-container .button.white {
+              border: 1px solid #8f8a8a;
+              color: #2b2b2b; }
+            .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .save-container .button.edit {
+              padding: 3px 9px; }
+              .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .save-container .button.edit img {
+                width: 17px;
+                height: 17px; }
       .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container {
         background: red;
         padding: 15px 60px 30px 60px;
