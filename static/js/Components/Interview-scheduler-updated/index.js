@@ -50,7 +50,7 @@ $(document).ready(function(){
     function onSuccessfulSubmitCalendar(topic, data){
         console.log('submit successful');
         spinner();
-        window.location='/calendar-manage' 
+        // window.location='/calendar-manage' 
     }
 
 	function onFailedSubmitCalendar(topic, data){

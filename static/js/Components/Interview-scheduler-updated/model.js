@@ -458,12 +458,12 @@ function Calendar(){
     }
 
     function getDetails(){
-        timetable.name= settings.name.val();
-         timetable.message=  settings.message.val();
+        timetable.name= (settings.name.val()).trim();
+         timetable.message=  (settings.message.val()).trim();
         //  var data=settings.editorMessage.getContent();
         //  data1=data.innerText;
         //  console.log(data1);
-        timetable.telMessage=settings.teleMessage.val();
+        timetable.telMessage=(settings.teleMessage.val()).trim();
         console.log(timetable);
         return timetable
     }
@@ -497,19 +497,19 @@ function Calendar(){
 
     function validate(){
         eraseErrors();
-		if(!(settings.name.val())){
+		if(!((settings.name.val()).trim())){
             console.log("fail");
 			settings.name.next('.error').text(errorResponses['missingName']);
             focusOnElement(settings.name);
             return false
         }
-        if(!(settings.message.val())){
+        if(!((settings.message.val()).trim())){
             settings.message.next('.error').text(errorResponses['missingMessage']);
             settings.message.addClass('error-border');
             focusOnElement(settings.message);
             return false
         }
-        if(!(settings.teleMessage.val())){
+        if(!((settings.teleMessage.val()).trim())){
             settings.teleMessage.next('.error').text(errorResponses['missingTeleMessage']);
             settings.teleMessage.addClass('error-border');
             focusOnElement(settings.teleMessage);
