@@ -32,20 +32,35 @@ function registerUser(){
 		user.errors = $('.error');
 		user.recruiterType = $('#rectype');
 		user.registerForm = $("#registerForm");
-
+		onEnter();
 		onChangeInputFields();
 	}
 	function onChangeInputFields() {
-		user.registerForm.find('input').keyup(function(){
+		user.registerForm.find('input').keyup(function(event){
+			if (event.keyCode === 13) {
+				return
+			}
 			eraseError($(this))
 		})
-		user.registerForm.find('select').change(function(){
+		user.registerForm.find('select').change(function(event){
+			if (event.keyCode === 13) {
+				return
+			}
 			eraseError($(this))
 		})
 	}
 	function registerHandler(fn){
 		user.register.click(fn);
 	}
+
+	function onEnter(){
+		user.registerForm.find('input').keypress(function(e){
+			if (e.keyCode === 13) {
+				user.register.click();
+			}
+		});
+	}
+
 	function getData(){
 		return {
 			name: user.name.val(),
@@ -193,7 +208,7 @@ function checkPhone(element){
 
 function ifExists(element, checkWhiteSpace){
 
-	var value = checkWhiteSpace ? element.val() : (element.val()).trim()  
+	var value = checkWhiteSpace ? element.val() : (element.val()).trim()
 	if(!( element && value)){
 
 		element.next('.error').text(errorResponses['missing'+element.attr('name')]);

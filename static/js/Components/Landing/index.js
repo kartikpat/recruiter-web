@@ -1,12 +1,13 @@
 $(document).ready(function() {
 	var userLogin = userCredentials();
 	userLogin.init();
-	userLogin.onEnter();
+
 	userLogin.loginHandler(function(e){
 		e.preventDefault()
-		console.log('click noted')
-		spinner();
+
+
 		if(userLogin.validateLogin()){
+			spinner();
 			$('#login').prop('disabled',true);
 			submitLogin(userLogin.getData());
 	    }
@@ -54,26 +55,6 @@ $(document).ready(function() {
 	var registerSuccessSubscription = pubsub.subscribe('successfulRegister', onSuccessfulRegister );
 	var registerFailSubscription = pubsub.subscribe('failedRegister', onFailedRegister);
 
-	userRegister.test(function completeRegisterFormSuccess(user){
-		user.name.val('Saurabh')
-		user.email.val('shreya@iimjobs.com');
-		user.phone.val('8860268468');
-		user.designation.val('Software engineer')
-		user.organization.val('iimjobs');
-		user.confirmPassword.val(123456);
-		user.password.val(123456)
-	})
-
-	function spinner(){
-		$('#login').addClass("hidden");
-		$('.spinner').removeClass("hidden");
-	}
-	
-	function togglespinner(){
-		$('#login').removeClass("hidden");
-		$('.spinner').addClass("hidden");
-	}
-
 	// userRegister.test(function completeRegisterFormSuccess(user){
 	// 	user.name.val('Saurabh')
 	// 	user.email.val('shreya@iimjobs.com');
@@ -83,5 +64,15 @@ $(document).ready(function() {
 	// 	user.confirmPassword.val(123456);
 	// 	user.password.val(123456)
 	// })
+
+	function spinner(){
+		$('#login').addClass("hidden");
+		$('.spinner').removeClass("hidden");
+	}
+
+	function togglespinner(){
+		$('#login').removeClass("hidden");
+		$('.spinner').addClass("hidden");
+	}
 
 });
