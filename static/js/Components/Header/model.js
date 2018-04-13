@@ -34,7 +34,7 @@ function Header(){
 			settings.searchView=$('.search-container');
 			settings.searchInput=$('.search-box');
 			settings.navigationView=$('.exit-view'),
-			settings.exitButton=$('.info-icon'),
+			settings.exitButton=$('.information-icon'),
 			settings.searchButton=$('.search-icon'),
 			settings.menuBar=$('.mobile-menu'),
 			settings.globalSearch= $("#globalSearch"),

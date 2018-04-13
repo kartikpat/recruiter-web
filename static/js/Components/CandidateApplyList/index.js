@@ -341,7 +341,16 @@ jQuery(document).ready( function() {
             var newStatus = 5
             return candidates.changeStatus(arr, newStatus)
         }
-        fetchJobApplicationCount(recruiterId, jobId)
+        $.when(null, fetchJobApplicationCount(recruiterId, jobId)).then(function(a,b){
+            if( b[0] && b[0]["status"] == "success") {
+                var applicantsCount = b[0]['data'];
+                var data = {
+                    applicantsCount: applicantsCount
+                }
+                return pubsub.publish("fetchedCount", data);
+            }
+            return pubsub.publish("failedToFetchCount", a[0]["status"]);
+        })
         if(res.action == "tag") {
             if(res.parameters.type == "add") {
                 var tag = {
@@ -358,7 +367,7 @@ jQuery(document).ready( function() {
         if(res.action == "comment") {
             return toastNotify(1, "Comment Added Successfully")
         }
-        console.log()
+
         if(res.parameters.oldStatus != "") {
             candidates.candidateActionTransition(arr)
             checkApplicationLength()
@@ -705,7 +714,7 @@ jQuery(document).ready( function() {
             }
         }
 
-        
+
             $.when(fetchFiltersCount(recruiterId, jobId, parameters), fetchJobApplicationCount(recruiterId, jobId)).then(function(a,b){
                 if(a[0] && b[0] && a[0]["status"] == "success" && b[0]["status"] == "success") {
                     var filtersCount = a[0]['data'];

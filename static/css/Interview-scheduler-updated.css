@@ -1472,7 +1472,9 @@ span.sticker {
           padding-top: 12px;
           margin-top: 20px; }
         .wrap .second-container .available-hours .start-date .section img {
-          margin-left: 20px; }
+          margin-left: 20px;
+          width: 30px;
+          height: 30px; }
       .wrap .second-container .available-hours .end-date {
         clear: both;
         float: left;
@@ -1530,7 +1532,9 @@ span.sticker {
           padding-top: 12px;
           margin-top: 20px; }
         .wrap .second-container .available-hours .end-date .section img {
-          margin-left: 20px; }
+          margin-left: 20px;
+          width: 30px;
+          height: 30px; }
   .wrap .bottom-container {
     width: 100%;
     height: 135px; }

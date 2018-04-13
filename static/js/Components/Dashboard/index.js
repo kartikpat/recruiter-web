@@ -58,12 +58,24 @@ $(document).ready(function(){
 	modalInit();
 	onClickJobRefresh();
 	onClickJobCancel();
+	initializeTooltip();
 	var notificationOb = Notifications();
 	notificationOb.onClickShortlistCandidate(function(applicationId, jobId){
 		console.log(applicationId);
 		console.log(jobId);
 		setCandidateAction(recruiterId, jobId, "shortlist" , applicationId, {});
 	})
+
+	function initializeTooltip() {
+		$(".tooltip").tooltipster({
+		   animation: 'fade',
+		   delay: 0,
+		   side:['bottom'],
+		   theme: 'tooltipster-borderless',
+		   maxWidth: 500
+	   })
+   	}
+
 	function onSuccessfullCandidateAction(topic, res) {
         if(res.action == "shortlist") {
         	notificationOb.candidateActionTransition(res.applicationId);
@@ -383,6 +395,7 @@ $(document).ready(function(){
 		}
 	}
 
+	
 
 	var fetchInterviewsSubscription = pubsub.subscribe("fetchedInterviews", onFetchInterviews);
 

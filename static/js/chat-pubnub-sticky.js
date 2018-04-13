@@ -72,7 +72,7 @@ function onNewPresence(p) {
     var service = p.service; // service
     var uuids = p.uuids; // UUIDs of users who are connected with the channel with their state
     var occupancy = p.occupancy; // No. of users connected with the channel
-    console.log(p);
+    
     receivePresence(p)
 }
 
@@ -105,7 +105,7 @@ function unsubscribe(channelsArray) {
 }
 
 function fetchHistory(channel, count,startTimeToken, endTimeToken, onFetchHistory) {
-    
+
     pubnub.history({
         channel: channel, //"my_channel",
         count: count,

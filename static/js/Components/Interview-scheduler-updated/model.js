@@ -94,6 +94,7 @@ function Calendar(){
         var slots=[];
         var finalslots=[];   
         var date={};
+        var breakhours={};
         var currentDate=moment().format("YYYY-MM-DD");
         console.log(currentDate);
           var fromDate=currentDate;
@@ -149,11 +150,13 @@ function Calendar(){
             console.log(slots);
             var start=settings.breakStart.val();
             var end=settings.breakEnd.val();
+            breakhours.from=start;
+            breakhours.to=end;
+            timetable.breakhours=breakhours;
             console.log(start);
             console.log(end);
             if(parseInt(start)>=0 && parseInt(end)>=0){
                 slots.forEach(function(aRow){
-                   //  debugger
                     console.log(aRow.time);
                     if(parseInt(start)>parseInt(aRow.time.to)){
                         finalslots.push(aRow);
@@ -173,7 +176,6 @@ function Calendar(){
                         finalslots.push(aRow);
                     }
                     else{
-                        // debugger
                         var Nextend=aRow.time.to;
                         aRow.time.to=start;
                         var Nextstart=end;
@@ -212,6 +214,8 @@ function Calendar(){
         settings.teleMessage.val(object["telMessage"],(/\(\d+-\d+ \w+\)$/));
         timetable.CalendarId=object["id"];
         timetable.slots=object.slots;
+        settings.breakStart.val(object.breakhours['from']);
+        settings.breakEnd.val(object.breakhours['to']);
         console.log(timetable.slots);
         var previewslots=object.slots;
         availablehours(previewslots);
@@ -427,7 +431,7 @@ function Calendar(){
 
     function startdate(){
         $("#startdatepicker").datepicker({
-            buttonImage: '/static/images/calender.png',
+            buttonImage: "/static/images/smallcalendar.svg",
             buttonImageOnly: true,
             changeMonth: true,
             changeYear: true,
@@ -445,7 +449,7 @@ function Calendar(){
     
     function enddate(){
         $("#enddatepicker").datepicker({
-            buttonImage: '/static/images/calender.png',
+            buttonImage: "/static/images/smallcalendar.svg",
             buttonImageOnly: true,
             changeMonth: true,
             changeYear: true,
