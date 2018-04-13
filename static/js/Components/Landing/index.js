@@ -39,12 +39,15 @@ $(document).ready(function() {
 	});
 
 	function onSuccessfulRegister(topic, data){
-
+		$('.spinner').removeClass('hidden');
+		$('#register').addClass('hidden');
 		document.getElementById("register").innerHTML = '<span class= "inline-spinner"></span>';
 		window.location = "/verify-email";
 		document.getElementById("register").disabled=false;
 	}
 	function onFailedRegister(topic, data){
+		$('.spinner').addClass('hidden');
+		$('#register').removeClass('hidden');
 		userRegister.errorHandler(data);
 		document.getElementById("register").disabled=false;
 	}

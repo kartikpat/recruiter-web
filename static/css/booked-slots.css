@@ -3288,7 +3288,7 @@ span.sticker {
           color: #149075;
           font-size: 16px;
           /* Approximation due to font substitution */
-          font-weight: 700;
+          font-weight: 600;
           text-align: left;
           display: inline-block;
           width: 19%;
@@ -3297,15 +3297,14 @@ span.sticker {
             display: none; }
           .page-content .wrapper .booked-slots .slot-date .schedules-container .schedules .interview-type a {
             color: #149075;
-            font-size: 16px;
-            /* Approximation due to font substitution */
-            font-weight: 700;
+            font-size: 14px;
+            font-weight: 600;
             text-align: left;
             display: inline-block; }
         .page-content .wrapper .booked-slots .slot-date .schedules-container .schedules .details {
           font-size: 14px;
           /* Approximation due to font substitution */
-          font-weight: 700;
+          font-weight: 600;
           line-height: 24px;
           /* Approximation due to font substitution */
           text-align: left;

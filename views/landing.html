@@ -48,7 +48,10 @@
 							<div class="error"></div>
 						</div>
 						<div class="form-group">
-							<button class="rec-sign-in" id="register" value="Login">Register</button>
+							<div class="button-wrapper">
+								{{> spinner}}
+								<button class="rec-sign-in" id="register" value="Login">Register</button>
+							</div>	
 						</div>
 						<!-- <p>Already have an account? <a href="#" class="trigger-register-sign-in-modal">Sign in</a></p> -->
 					</div>
@@ -277,8 +280,8 @@
 
 						<div class="download-section">
 							<p>Download our apps</p>
-							<span class="button white android">Android</span>
-							<span class="button white ios">iPhone</span>
+							<a href="https://play.google.com/store/apps/details?id=com.iimjobs.recruiter "><span class="button white android">Android</span></a>
+							<a href="https://itunes.apple.com/in/app/iimjobs-for-recruiters/id1128755739?mt=8"><span class="button white ios">iPhone</span></a>
 						</div>
 					</div>
 					<div class="clearfix"></div>

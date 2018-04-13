@@ -1018,7 +1018,7 @@ span.sticker {
   .premium_job_section {
     font-size: 12px; }
     .premium_job_section .premium-section-content {
-      padding: 0; }
+      padding: 0 30px; }
     .premium_job_section .section-head h3 {
       font-size: 20px; }
     .premium_job_section label span {
