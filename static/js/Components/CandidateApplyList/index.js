@@ -4,7 +4,9 @@ var globalParameters = {
     status: "0",
     orderBy: 1,
     initialLoad: 1,
-    candidateListLength: null
+    candidateListLength: null,
+    actionPageNumber: 2,
+    actionPageContent: 5
 }
 var screenName = "candidate-apply-list";
 
@@ -447,13 +449,13 @@ jQuery(document).ready( function() {
     function checkApplicationLength() {
 
         var length = candidates.getApplicationsLength()
-        if(length <= 2) {
+
+        if(length <= 5) {
             var parameters = filters.getAppliedFilters();
             parameters.status = globalParameters.status;
             setQueryParameters(parameters);
-            globalParameters.pageNumber = globalParameters.pageNumber + 1;
-            parameters.pageNumber = globalParameters.pageNumber;
-            parameters.pageContent = globalParameters.pageContent;
+            parameters.pageNumber = globalParameters.actionPageNumber;
+            parameters.pageContent = globalParameters.actionPageContent;
             showLoader()
             fetchJobApplications(jobId, parameters,recruiterId);
         }
@@ -768,7 +770,7 @@ jQuery(document).ready( function() {
         var parameters = getQueryParameters()
         parameters.status = globalParameters.status;
         parameters.orderBy = globalParameters.orderBy;
-        setQueryParameters(parameters)
+
 
         globalParameters.pageNumber = 1;
         parameters.pageNumber = globalParameters.pageNumber;

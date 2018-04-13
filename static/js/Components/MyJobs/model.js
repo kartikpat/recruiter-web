@@ -122,7 +122,7 @@ function Jobs() {
 			return fn(jobId);
 		})
 	}
- 
+
 	function onChangeJobFilters(fn) {
 		settings.jobFilters.change(function() {
 			var sortById = $(this).val();
@@ -207,6 +207,7 @@ function Jobs() {
 					obj["extraStatusMsg"] = "(Confidential)"
 				}
 			case "unpublished":
+				
 				if(aData["message"]){
 					obj["message"] = aData["message"];
 				}
