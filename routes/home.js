@@ -218,11 +218,11 @@ module.exports = function(settings){
 
 	app.get("/login", function(req,res){
 
-		// if(req.cookies['recruiter-access-token']){
-		// 	return isAuthenticated(req, res);
-		// }
-		// res.cookie('recruiter-access-token', '');
-
+		if(req.cookies['recruiter-access-token']){
+			console.log(req.cookies['recruiter-access-token'])
+			return isAuthenticated(req, res);
+		}
+		res.cookie('recruiter-access-token', '');
 		res.render("landing", {
 			title:"Recruiter Web - Landing Page | iimjobs.com",
 			styles:  assetsMapper["landing"]["styles"][mode],

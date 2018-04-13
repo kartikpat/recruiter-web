@@ -44,7 +44,7 @@ function Header(){
 
 			$(".recruiterLogout").click(function(){
 				
-				document.cookie = "recruiter-access-token" + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+				document.cookie = "recruiter-access-token" + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;';
 				window.location.href = "/login"
 				return false
 			})
