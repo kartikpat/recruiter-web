@@ -637,7 +637,7 @@ function candidateList() {
     function onChangeCandidateCheckbox(fn) {
         settings.rowContainer.on('click', settings.candidateCheckboxClass, function(event){
             event.stopPropagation();
-            debugger
+
             if(jQuery(this).is(":checked")){
                 var candidateSelect = jQuery(".candidate-select")
                 var el = $(".candidateListing[data-status-attribute='"+settings.status+"']").find(".candidate-select input:checked")
@@ -1002,7 +1002,7 @@ function candidateList() {
     }
 
     function getApplicationsLength() {
-        return settings.rowContainer.find(".candidateRow").length;
+        return $(".candidateListing[data-status-attribute='"+settings.status+"']").find(".candidateRow").length;
     }
 
 
