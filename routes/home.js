@@ -40,6 +40,7 @@ module.exports = function(settings){
 				}
 			},function(err, response, body){
 				if(err){
+					res.cookie('recruiter-access-token', '');
 					return res.redirect('/login');
 				}
 				const jsonBody = JSON.parse(body)
