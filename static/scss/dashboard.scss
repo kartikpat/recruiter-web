@@ -118,6 +118,16 @@ $button-border-color: #8f8a8a;
 			.legend{
 				font-size: 13px;
 				color: $black;
+				display: inline-block;
+			}
+			.info-icon{
+				display: inline-block;
+				cursor: pointer;
+    			color: #757575;
+				.icon-information:before {
+					content: '\e80d';
+					font-size: 15px;
+				}
 			}
 		}
 		.icon{
@@ -935,4 +945,8 @@ $button-border-color: #8f8a8a;
 	.icon-cross_icon:before {
 		font-size: 14px;
 	}
+}
+
+.tooltipster-sidetip .tooltipster-content {
+	font-style: italic;
 }

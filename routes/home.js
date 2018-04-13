@@ -577,7 +577,7 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/welcome",isAuthenticated, function(req,res){
+	app.get("/welcome", function(req,res){
 		res.render("welcome", {
 			title:"Recruiter Web - Welcome Page | iimjobs.com",
 			styles:  assetsMapper["welcome"]["styles"][mode],

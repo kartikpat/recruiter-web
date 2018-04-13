@@ -1649,7 +1649,15 @@ span.sticker {
         height: 40px; }
       .page-content .block .stats .legend {
         font-size: 13px;
-        color: #2b2b2b; }
+        color: #2b2b2b;
+        display: inline-block; }
+      .page-content .block .stats .info-icon {
+        display: inline-block;
+        cursor: pointer;
+        color: #757575; }
+        .page-content .block .stats .info-icon .icon-information:before {
+          content: '\e80d';
+          font-size: 15px; }
     .page-content .block .icon {
       margin-top: 15px; }
       .page-content .block .icon img {
@@ -2254,3 +2262,6 @@ span.sticker {
 
 .candidate-collapsed-block .icon-cross_icon:before {
   font-size: 14px; }
+
+.tooltipster-sidetip .tooltipster-content {
+  font-style: italic; }

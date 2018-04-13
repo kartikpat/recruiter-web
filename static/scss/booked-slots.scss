@@ -242,7 +242,6 @@
                 padding: 0%;
                 vertical-align: top;
                 .schedules{
-                  //  height: 100px;
                     .time{
                         color:  #2b2b2b;
                         font-size: 14px;/* Approximation due to font substitution */
@@ -263,7 +262,7 @@
                     .interview-type{
                         color:  #149075;
                         font-size: 16px;/* Approximation due to font substitution */
-                        font-weight: 700;
+                        font-weight: 600;
                         text-align: left;
                         display: inline-block;
                         width: 19%;
@@ -272,9 +271,9 @@
                             display: none;
                         }
                         a{
-                            color:  #149075;
-                        font-size: 16px;/* Approximation due to font substitution */
-                        font-weight: 700;
+                        color:  #149075;
+                        font-size: 14px;
+                        font-weight: 600;
                         text-align: left;
                         display: inline-block;
 
@@ -282,7 +281,7 @@
                     }
                     .details{
                         font-size: 14px;/* Approximation due to font substitution */
-                        font-weight: 700;
+                        font-weight: 600;
                         line-height: 24px;/* Approximation due to font substitution */
                         text-align: left;
                         display: inline-block;

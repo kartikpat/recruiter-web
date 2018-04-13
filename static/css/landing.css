@@ -414,40 +414,46 @@
           width: 100%; }
           .modal-overlay .modal-content .modal-body .recruiter-form .form-group input:focus {
             outline: none; }
-        .modal-overlay .modal-content .modal-body .recruiter-form .form-group button {
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          -ms-appearance: none;
-          -o-appearance: none;
+        .modal-overlay .modal-content .modal-body .recruiter-form .form-group .button-wrapper {
+          width: 340px;
+          height: 45px;
           border: 0;
-          padding: 0;
-          margin: 0;
           background: #0c9175;
           border-color: #8f8a8a;
           border-radius: 4px;
-          padding: 5px 14px;
           font-size: 14px;
           margin: 10px 0 10px 0;
           display: block;
-          width: 100%;
-          padding: 12px;
           color: #FFF;
           display: inline-block;
-          vertical-align: top;
           cursor: pointer;
           font-size: 18px;
           font-weight: bold;
-          height: 45px; }
-          .modal-overlay .modal-content .modal-body .recruiter-form .form-group button .inline-spinner {
-            height: 20px;
-            width: 20px;
+          text-align: center; }
+          .modal-overlay .modal-content .modal-body .recruiter-form .form-group .button-wrapper .spinner {
+            padding-top: 10px;
+            width: 100%;
+            margin: 0 auto; }
+          .modal-overlay .modal-content .modal-body .recruiter-form .form-group .button-wrapper button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+            -o-appearance: none;
+            border: 0;
+            background: #0c9175;
+            border-color: #8f8a8a;
+            border-radius: 4px;
+            padding: 5px 14px;
+            font-size: 14px;
+            display: block;
+            width: 100%;
+            padding: 12px;
+            color: #FFF;
             display: inline-block;
-            border: 2px solid #f3f3f3;
-            position: relative;
-            top: 1px;
-            border-top: 4px solid #149075;
-            animation: spin 1500ms linear infinite;
-            border-radius: 50%; }
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            height: 45px; }
         .modal-overlay .modal-content .modal-body .recruiter-form .form-group select {
           padding: 12px 22px;
           background-size: 20px; }
@@ -561,18 +567,21 @@ body {
             background: #0c9175;
             border-color: #8f8a8a;
             border-radius: 4px;
-            padding: 5px 14px;
             font-size: 14px;
             margin: 10px 0;
             display: block;
             width: 100%;
-            padding: 12px;
             color: #FFF;
             display: inline-block;
             cursor: pointer;
             font-size: 18px;
             font-weight: bold;
-            height: 45px; }
+            height: 45px;
+            text-align: center; }
+            .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container .formgroup .button-wrapper .spinner {
+              padding-top: 10px;
+              width: 100%;
+              margin: 0 auto; }
             .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container .formgroup .button-wrapper button {
               border: 0;
               padding: 0;
@@ -587,23 +596,9 @@ body {
               display: inline-block;
               cursor: pointer;
               font-size: 18px;
-              font-weight: bold; }
-            .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container .formgroup .button-wrapper .spinner {
-              border: 0;
-              padding: 0;
-              margin: 0;
-              background: #0c9175;
-              border-color: #8f8a8a;
-              border-radius: 4px;
-              font-size: 14px;
-              display: block;
-              width: 100%;
-              color: #FFF;
-              display: inline-block;
-              cursor: pointer;
-              font-size: 18px;
               font-weight: bold;
-              text-align: center; }
+              height: 45px;
+              outline: none; }
         .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container p {
           color: #5b5b5b; }
           .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container p a {
