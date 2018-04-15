@@ -752,7 +752,7 @@ jQuery(document).ready( function() {
 
 
         candidates.addToList(data["data"], data.obj.status, globalParameters.offset, globalParameters.pageContent, filterFlag);
-
+        globalParameters.offset = globalParameters.offset + globalParameters.pageContent;
         if(!theJob.getCalendarLength()){
             candidates.setInvite(theJob.getCalendarLength())
         }
@@ -761,7 +761,7 @@ jQuery(document).ready( function() {
             store.emptyStore(data["data"]);
         }
         store.saveToStore(data["data"]);
-        globalParameters.offset = data["data"].length;
+
     }
 
 	function onJobsApplicationsFetchFail(topic, data){
