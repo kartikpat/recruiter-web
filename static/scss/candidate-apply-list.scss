@@ -1853,6 +1853,8 @@ input::-webkit-input-placeholder {
 					&.button {
 						&.candidateShortlistModal {
 							padding: 6px 0px;
+							width: 100%;
+							margin: 0 auto;
 						}
 					}
 				}		
@@ -1872,7 +1874,9 @@ input::-webkit-input-placeholder {
 				span {
 					&.button {
 						&.candidateShortlistModal {
-							padding: 6px -1px;
+							padding: 6px 0px;
+							width: 100%;
+							margin: 0 auto;
 						}
 					}
 				}

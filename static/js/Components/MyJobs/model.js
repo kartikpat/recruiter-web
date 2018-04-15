@@ -307,7 +307,7 @@ function Jobs() {
 		}
 		var str = '';
 		hideShell()
-
+		hideEmptyView();
 		if(dataArray.length<1 && pageNumber ==1) {
 			if(type=='all'){
 				settings.emptyView.removeClass('hidden');
@@ -380,6 +380,8 @@ function Jobs() {
 
 	function hideEmptyView() {
 		settings.emptyView.addClass("hidden")
+		settings.headings.removeClass('hidden');
+		settings.jobFilters.removeClass('hidden');
 	}
 
 	return {
