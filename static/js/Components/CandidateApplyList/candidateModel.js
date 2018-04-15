@@ -90,7 +90,6 @@ function Candidate() {
         settings.candidateDetailsModal.addClass("hidden");
     }
 
-
     function showCandidateDetails(details, type, status){
         return populateCandidateData(details, type, status)
     }
@@ -254,7 +253,7 @@ function Candidate() {
         item.contact.text(aData["phone"] || "NA");
         item.email.text(aData["email"]||"NA");
         console.log(aData["emailVer"])
-        if(ifKeyExists("emailVer", aData) && aData["emailVer"]) {   
+        if(ifKeyExists("emailVer", aData) && aData["emailVer"]) {
             item.iconEmailVer.removeClass("hidden")
         }
         console.log(aData["phoneVer"])

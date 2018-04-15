@@ -685,8 +685,10 @@ jQuery(document).ready( function() {
              var jobRow = a[0]['data'][0];
 
              var calendarRows = b[0]['data'];
-
-             var data = {
+             if(jobRow["refreshId"]) {
+                 window.location.href = "/job/"+jobRow["refreshId"]+"/applications";
+             }
+              var data = {
                 jobTitle: getTitleFormat(jobRow["title"],(/\(\d+-\d+ \w+\)$/)),
                 jobLocation: getLocation(jobRow["location"]),
                 jobExperience: jobRow["exp"]['min']+ ' - ' + jobRow['exp']['max'] +' yrs',
