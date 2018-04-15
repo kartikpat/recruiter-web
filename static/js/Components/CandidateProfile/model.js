@@ -43,7 +43,6 @@ function Candidate() {
         // onClickAddPopulatedTags()
     }
 
-
     function onClickSeeMoreRec(fn) {
         settings.seeMoreRec.click(function() {
             var data =
@@ -75,9 +74,6 @@ function Candidate() {
             fn()
         })
     }
-
-
-
 
     function onClickChatCandidateModal() {
         settings.candidateChatModal.click(function(){
@@ -310,18 +306,18 @@ function Candidate() {
             settings.mobCandidateEditComment.addClass("hidden");
         }
 
-        aData["recommendation"] = [ {
-                    "name": "ankur saini",
-                    "url": "https://www.linkedin.com/in/ankur-saini-b60686141",
-                    "text": "hello<br/><br/>thanks and regards",
-                    "img": null
-                },
-                {
-                    "name": "Ritu Bala",
-                    "url": "https://www.linkedin.com/in/balaritu",
-                    "text": "Testing"
-                }]
-        aData["extraRecom"] = 1;
+        // aData["recommendation"] = [ {
+        //             "name": "ankur saini",
+        //             "url": "https://www.linkedin.com/in/ankur-saini-b60686141",
+        //             "text": "hello<br/><br/>thanks and regards",
+        //             "img": null
+        //         },
+        //         {
+        //             "name": "Ritu Bala",
+        //             "url": "https://www.linkedin.com/in/balaritu",
+        //             "text": "Testing"
+        //         }]
+        // aData["extraRecom"] = 1;
         if(aData["recommendation"].length > 0) {
             var recStr = '';
 
@@ -429,7 +425,6 @@ function Candidate() {
             settings.candidateEditComment.addClass("hidden");
         })
     }
-
 
     function onClickAddCommentMob(fn) {
 
@@ -616,15 +611,15 @@ function Candidate() {
         changeButtonText: changeButtonText,
         addRecommendations: addRecommendations,
         onClickSeeMoreRec: onClickSeeMoreRec
-   }
+    }
 
     function focusOnElement(element, container) {
-
         element.focus();
         settings.candidateDetailsModal.animate({
            scrollTop: (element.closest(container).position().top)
        },200);
     }
+
 }
 
 function initializeAutoCompleteComponent(selector, availableTags) {

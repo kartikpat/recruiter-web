@@ -122,7 +122,7 @@ function Jobs() {
 			return fn(jobId);
 		})
 	}
- 
+
 	function onChangeJobFilters(fn) {
 		settings.jobFilters.change(function() {
 			var sortById = $(this).val();
@@ -210,6 +210,9 @@ function Jobs() {
 				if(aData["message"]){
 					obj["message"] = aData["message"];
 				}
+			case "updated-unpublished":
+				obj["status"] = 'UnPublished';
+				obj["extraStatus"] = true;
 			default:
 				break;
 		}

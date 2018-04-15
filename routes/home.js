@@ -30,7 +30,7 @@ module.exports = function(settings){
 		// bypassing the auth for development
     	// CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     	// you can do this however you want with whatever variables you set up
-
+    	console.log('..............1...........')
     	if (req.cookies["recruiter-access-token"]) {
 
 			return request.get({
@@ -40,6 +40,7 @@ module.exports = function(settings){
 				}
 			},function(err, response, body){
 				if(err){
+					res.cookie('recruiter-access-token', '');
 					return res.redirect('/login');
 				}
 				const jsonBody = JSON.parse(body)
@@ -217,12 +218,15 @@ module.exports = function(settings){
 	})
 
 	app.get("/login", function(req,res){
-
-		// if(req.cookies['recruiter-access-token']){
-		// 	return isAuthenticated(req, res);
-		// }
-		// res.cookie('recruiter-access-token', '');
-
+		console.log('.................2..................')
+		if(req.cookies['recruiter-access-token']){
+			console.log(req.cookies['recruiter-access-token'])
+			return isAuthenticated(req, res);
+		}
+		res.cookie('recruiter-access-token', '');
+		res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+		res.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+		res.setHeader("Expires", "0"); // Proxies.
 		res.render("landing", {
 			title:"Recruiter Web - Landing Page | iimjobs.com",
 			styles:  assetsMapper["landing"]["styles"][mode],
@@ -577,7 +581,7 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/welcome", function(req,res){
+	app.get("/welcome",isAuthenticated, function(req,res){
 		res.render("welcome", {
 			title:"Recruiter Web - Welcome Page | iimjobs.com",
 			styles:  assetsMapper["welcome"]["styles"][mode],
@@ -589,7 +593,7 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/verify-email",isAuthenticated,function(req, res){
+	app.get("/verify-email",function(req, res){
 		res.render("verify-email", {
 			title:"Recruiter Web - Welcome Page | iimjobs.com",
 			styles:  assetsMapper["verify-email"]["styles"][mode],

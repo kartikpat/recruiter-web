@@ -149,8 +149,7 @@ jQuery(document).ready( function() {
     }
 
    function onCandidateProfileFetchFail(topic, data){
-       console.log(topic)
-       console.log(data)
+       errorHandler(data)
    }
 
     function onSuccessfullCandidateAction(topic, res) {
@@ -239,6 +238,13 @@ jQuery(document).ready( function() {
 })
 
 function errorHandler(data) {
+    // if(data.status == 403) {
+    //     toastNotify(3, "You are not authorized to access this page");
+    //     setTimeout(function(){
+	// 		 window.location.href = "/"
+	// 	 }, 2000);
+    // }
+
     var res = data.responseJSON
     if(!res) {
         return toastNotify(3, "Something went wrong");

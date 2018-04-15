@@ -8,7 +8,7 @@ var errorResponsesLogin = {
 	missingParameters: 'Oops! Our engineers will fix this shortly. Please try again after sometime.',
 	serviceError: 'Oops! Our engineers are working on fixing this, please try again after sometime.'
 }
- 
+
 var emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 function userCredentials(){
 	var user= {}
@@ -18,29 +18,34 @@ function userCredentials(){
 		user.login = $("#login");
 		user.errors = $('.error');
 		user.loginForm = $("#loginForm");
-
+		onEnter();
 		onChangeInputFields()
 	}
 
 	function onChangeInputFields() {
-		user.loginForm.find('input').keyup(function(){
+		user.loginForm.find('input').keyup(function(event){
+			if (event.keyCode === 13) {
+				return
+			}
 			eraseError($(this))
 		})
-
 	}
+
 	function eraseError(element) {
 		element.next('.error').text('')
 	}
 	function loginHandler(fn){
 		user.login.click(fn);
 	}
+
 	function onEnter(){
-	$('input').keypress(function(e){
-			if (event.keyCode === 13) {
+		user.loginForm.find('input').keypress(function(e){
+			if (e.keyCode === 13) {
 				user.login.click();
 			}
 		});
 	}
+
 	function getData(){
 		return {
 			email: user.email.val(),
@@ -53,7 +58,7 @@ function userCredentials(){
 
 	function errorHandler(res){
 		var message = '';
-		console.log(res)
+
 		switch(res.status){
 			case 404:
 				message = errorResponsesLogin.userFail;
@@ -108,8 +113,7 @@ function userCredentials(){
 		validateLogin: validateLogin,
 		loginHandler: loginHandler,
 		errorHandler: errorHandler,
-		test: test,
-		onEnter:onEnter
+		test: test
 	}
 
 }

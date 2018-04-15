@@ -581,6 +581,14 @@ b{
 
 }
 
+@media all and (max-width:360px) {
+    .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a.basicAccount li span.basic {
+        margin-top: 15px;
+        float: none;
+        display: block;
+    }
+}
+
 @media all and (max-width:420px){
     .header{
         .search-container {

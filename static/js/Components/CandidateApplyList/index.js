@@ -1,10 +1,13 @@
 var globalParameters = {
     pageContent: 10,
     pageNumber: 1,
+    offset: 0,
     status: "0",
     orderBy: 1,
     initialLoad: 1,
-    candidateListLength: null
+    candidateListLength: null,
+    actionPageNumber: 2,
+    actionPageContent: 5
 }
 var screenName = "candidate-apply-list";
 
@@ -41,11 +44,11 @@ jQuery(document).ready( function() {
             // else if (key == "pageContent") {
             //     globalParameters.pageContent = obj[key]
             // }
-            if(key && [ 'status', 'pageNumber', 'pageContent'].indexOf(key) != -1) {
+            if(key && [ 'status', 'offset', 'pageContent'].indexOf(key) != -1) {
                 continue
             }
             filters.callClickOnFilters(filtersMapping[key], obj[key], minMaxMapping[key])
-            if(!(key == "orderBy" || key == "pageNumber" || key == "pageContent" || key == "status" || key == "searchString")) {
+            if(!(key == "orderBy" || key == "offset" || key == "pageContent" || key == "status" || key == "searchString")) {
               filterFlag+= 1;
             }
         }
@@ -115,13 +118,13 @@ jQuery(document).ready( function() {
         parameters.status = globalParameters.status;
         setQueryParameters(parameters)
 
-        globalParameters.pageNumber = 1;
-        parameters.pageNumber = globalParameters.pageNumber;
+        globalParameters.offset = 0;
+        parameters.offset = globalParameters.offset;
         parameters.pageContent = globalParameters.pageContent;
 
         var filterFlag = 0;
         for(var key in parameters) {
-          if(!(key == "orderBy" || key == "pageNumber" || key == "pageContent" || key == "status")) {
+          if(!(key == "orderBy" || key == "offset" || key == "pageContent" || key == "status")) {
             filterFlag+= 1;
           }
         }
@@ -141,8 +144,8 @@ jQuery(document).ready( function() {
         parameters.status = globalParameters.status;
         setQueryParameters(parameters);
 
-        globalParameters.pageNumber = 1;
-        parameters.pageNumber = globalParameters.pageNumber;
+        globalParameters.offset = 0;
+        parameters.offset = globalParameters.offset;
         parameters.pageContent = globalParameters.pageContent;
 
         return fetchJobApplications(jobId, parameters, recruiterId);
@@ -155,8 +158,8 @@ jQuery(document).ready( function() {
         parameters.status = globalParameters.status;
         setQueryParameters(parameters);
 
-        globalParameters.pageNumber = 1;
-        parameters.pageNumber = globalParameters.pageNumber;
+        globalParameters.offset = 0;
+        parameters.offset = globalParameters.offset;
         parameters.pageContent = globalParameters.pageContent;
 
         fetchJobApplications(jobId, parameters, recruiterId);
@@ -169,8 +172,8 @@ jQuery(document).ready( function() {
         parameters.status = globalParameters.status;
         setQueryParameters(parameters);
 
-        globalParameters.pageNumber = 1;
-        parameters.pageNumber = globalParameters.pageNumber;
+        globalParameters.offset = 0;
+        parameters.offset = globalParameters.offset;
         parameters.pageContent = globalParameters.pageContent;
 
         return fetchJobApplications(jobId, parameters, recruiterId);
@@ -184,8 +187,8 @@ jQuery(document).ready( function() {
         parameters.status = globalParameters.status;
         setQueryParameters(parameters)
 
-        globalParameters.pageNumber = 1;
-        parameters.pageNumber = globalParameters.pageNumber;
+        globalParameters.offset = 0;
+        parameters.offset = globalParameters.offset;
         parameters.pageContent = globalParameters.pageContent;
 
         return fetchJobApplications(jobId, parameters, recruiterId);
@@ -287,8 +290,8 @@ jQuery(document).ready( function() {
         parameters.status = globalParameters.status;
         setQueryParameters(parameters);
 
-        globalParameters.pageNumber = 1;
-        parameters.pageNumber = globalParameters.pageNumber;
+        globalParameters.offset = 0;
+        parameters.offset = globalParameters.offset;
         parameters.pageContent = globalParameters.pageContent;
 
         fetchJobApplications(jobId, parameters,recruiterId);
@@ -341,7 +344,17 @@ jQuery(document).ready( function() {
             var newStatus = 5
             return candidates.changeStatus(arr, newStatus)
         }
-        fetchJobApplicationCount(recruiterId, jobId)
+        $.when(null, fetchJobApplicationCount(recruiterId, jobId)).then(function(a,b){
+            if( b[0] && b[0]["status"] == "success") {
+                var applicantsCount = b[0]['data'];
+                var data = {
+                    applicantsCount: applicantsCount
+                }
+                return pubsub.publish("fetchedCount", data);
+            }
+            return pubsub.publish("failedToFetchCount", a[0]["status"]);
+        })
+
         if(res.action == "tag") {
             if(res.parameters.type == "add") {
                 var tag = {
@@ -355,12 +368,14 @@ jQuery(document).ready( function() {
             aCandidate.removeTag(tagId)
             return toastNotify(1, "Tag Deleted Successfully")
         }
+
         if(res.action == "comment") {
             return toastNotify(1, "Comment Added Successfully")
         }
-        console.log()
+
         if(res.parameters.oldStatus != "") {
             candidates.candidateActionTransition(arr)
+            globalParameters.offset = globalParameters.offset - 1;
             checkApplicationLength()
         }
 
@@ -438,12 +453,12 @@ jQuery(document).ready( function() {
     function checkApplicationLength() {
 
         var length = candidates.getApplicationsLength()
-        if(length <= 2) {
+
+        if(length <= 5 && globalParameters.candidateListLength == globalParameters.pageContent) {
             var parameters = filters.getAppliedFilters();
             parameters.status = globalParameters.status;
             setQueryParameters(parameters);
-            globalParameters.pageNumber = globalParameters.pageNumber + 1;
-            parameters.pageNumber = globalParameters.pageNumber;
+            parameters.offset = globalParameters.offset;
             parameters.pageContent = globalParameters.pageContent;
             showLoader()
             fetchJobApplications(jobId, parameters,recruiterId);
@@ -700,25 +715,25 @@ jQuery(document).ready( function() {
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
         for(var key in parameters) {
-            if(!(key == "orderBy" || key == "pageNumber" || key == "pageContent" || key == "status" || key == "searchString")) {
+            if(!(key == "orderBy" || key == "offset" || key == "pageContent" || key == "status" || key == "searchString")) {
                 filterFlag+= 1;
             }
         }
 
-        
-            $.when(fetchFiltersCount(recruiterId, jobId, parameters), fetchJobApplicationCount(recruiterId, jobId)).then(function(a,b){
-                if(a[0] && b[0] && a[0]["status"] == "success" && b[0]["status"] == "success") {
-                    var filtersCount = a[0]['data'];
-                    var applicantsCount = b[0]['data'];
-                    var data = {
-                        filtersCount: filtersCount,
-                        applicantsCount: applicantsCount,
-                        filterFlag: filterFlag
-                    }
-                    return pubsub.publish("fetchedCount", data);
+
+        $.when(fetchFiltersCount(recruiterId, jobId, parameters), fetchJobApplicationCount(recruiterId, jobId)).then(function(a,b){
+            if(a[0] && b[0] && a[0]["status"] == "success" && b[0]["status"] == "success") {
+                var filtersCount = a[0]['data'];
+                var applicantsCount = b[0]['data'];
+                var data = {
+                    filtersCount: filtersCount,
+                    applicantsCount: applicantsCount,
+                    filterFlag: filterFlag
                 }
-                return pubsub.publish("failedToFetchCount", a[0]["status"]);
-            })
+                return pubsub.publish("fetchedCount", data);
+            }
+            return pubsub.publish("failedToFetchCount", a[0]["status"]);
+        })
 
 
         // else {
@@ -736,16 +751,17 @@ jQuery(document).ready( function() {
         // }
 
 
-        candidates.addToList(data["data"], data.obj.status, globalParameters.pageNumber, globalParameters.pageContent, filterFlag);
+        candidates.addToList(data["data"], data.obj.status, globalParameters.offset, globalParameters.pageContent, filterFlag);
 
         if(!theJob.getCalendarLength()){
             candidates.setInvite(theJob.getCalendarLength())
         }
 
-        if(data["pageNumber"] == 1) {
+        if(data["offset"] == 0) {
             store.emptyStore(data["data"]);
         }
         store.saveToStore(data["data"]);
+        globalParameters.offset = data["data"].length;
     }
 
 	function onJobsApplicationsFetchFail(topic, data){
@@ -759,10 +775,10 @@ jQuery(document).ready( function() {
         var parameters = getQueryParameters()
         parameters.status = globalParameters.status;
         parameters.orderBy = globalParameters.orderBy;
-        setQueryParameters(parameters)
 
-        globalParameters.pageNumber = 1;
-        parameters.pageNumber = globalParameters.pageNumber;
+
+        globalParameters.offset = 0;
+        parameters.offset = globalParameters.offset;
         parameters.pageContent = globalParameters.pageContent;
 
 
@@ -983,10 +999,9 @@ jQuery(document).ready( function() {
 
     function checkScrollEnd() {
     	if($(window).scrollTop() + $(window).height() > $(document).height() - 600) {
-    		globalParameters.pageNumber = globalParameters.pageNumber + 1;
-    		if(globalParameters.candidateListLength >= globalParameters.pageContent) {
+    		if(globalParameters.candidateListLength == globalParameters.pageContent) {
                 var parameters = filters.getAppliedFilters();
-                parameters.pageNumber = globalParameters.pageNumber;
+                parameters.offset = globalParameters.offset;
                 parameters.pageContent = globalParameters.pageContent;
                 parameters.status = globalParameters.status;
                 showLoader()

@@ -1,7 +1,7 @@
 function Job(){
 	var settings = {};
 	var config = {};
- 
+
 	function setConfig(key, value) {
 		config[key] = value;
 	}
@@ -247,7 +247,7 @@ function Job(){
 
 	function onChangeDefaultCalendar(fn) {
 		settings.calendarSelect.on('change', function(e) {
-
+			settings.calendarSelectError.addClass("hidden")
 			var calendarId = $(this).val();
 			if(parseInt(calendarId) == -1) {
 				return
