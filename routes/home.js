@@ -590,7 +590,8 @@ module.exports = function(settings){
 			scripts: assetsMapper["welcome"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			profile: req.profile
+			profile: req.profile,
+			token: req.cookies["recruiter-access-token"]
 		})
 		return
 	});
@@ -602,7 +603,8 @@ module.exports = function(settings){
 			scripts: assetsMapper["verify-email"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			profile: req.profile
+			profile: req.profile,
+			token: req.cookies["recruiter-access-token"]
 		})
 		return
 	});

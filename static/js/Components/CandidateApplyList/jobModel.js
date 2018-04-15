@@ -42,7 +42,6 @@ function Job(){
 		$(window).click(function(event) {
     		settings.jobOtherActions.addClass('inactive');
     	});
-
 	}
 
 	function setJobDetails(data){

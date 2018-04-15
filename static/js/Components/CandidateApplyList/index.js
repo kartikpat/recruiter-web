@@ -685,8 +685,10 @@ jQuery(document).ready( function() {
              var jobRow = a[0]['data'][0];
 
              var calendarRows = b[0]['data'];
-
-             var data = {
+             if(jobRow["refreshId"]) {
+                 window.location.href = "/job/"+jobRow["refreshId"]+"/applications";
+             }
+              var data = {
                 jobTitle: getTitleFormat(jobRow["title"],(/\(\d+-\d+ \w+\)$/)),
                 jobLocation: getLocation(jobRow["location"]),
                 jobExperience: jobRow["exp"]['min']+ ' - ' + jobRow['exp']['max'] +' yrs',
@@ -752,7 +754,7 @@ jQuery(document).ready( function() {
 
 
         candidates.addToList(data["data"], data.obj.status, globalParameters.offset, globalParameters.pageContent, filterFlag);
-
+        globalParameters.offset = globalParameters.offset + globalParameters.pageContent;
         if(!theJob.getCalendarLength()){
             candidates.setInvite(theJob.getCalendarLength())
         }
@@ -761,7 +763,7 @@ jQuery(document).ready( function() {
             store.emptyStore(data["data"]);
         }
         store.saveToStore(data["data"]);
-        globalParameters.offset = data["data"].length;
+
     }
 
 	function onJobsApplicationsFetchFail(topic, data){

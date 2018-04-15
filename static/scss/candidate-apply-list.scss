@@ -6,9 +6,7 @@
 
 .seeMoreRec {
     display: inline-block;
-
     cursor: pointer;
-
 }
 
 
@@ -658,7 +656,7 @@ input::-webkit-input-placeholder {
 												}
 											}
 											.reject-wrapper{
-												background-color: #af595a;	
+												background-color: #af595a;
 												margin:0;
 												padding: 0px;
 												width:48%;
@@ -1843,7 +1841,7 @@ input::-webkit-input-placeholder {
 				float: left;
 				.spinner{
 					margin-top: 6px;
-					
+
 				}
 				.spinner>div{
 					width: 10px;
@@ -1857,7 +1855,7 @@ input::-webkit-input-placeholder {
 							margin: 0 auto;
 						}
 					}
-				}		
+				}
 			}
 			.reject-wrapper{
 				height: 28px;
@@ -1865,7 +1863,7 @@ input::-webkit-input-placeholder {
 				padding:0!important;
 				.spinner{
 					margin-top: 6px;
-					
+
 				}
 				.spinner>div{
 					width: 10px;
@@ -2383,7 +2381,7 @@ input::-webkit-input-placeholder {
 		padding: 0 !important;
 	}
 	.select-dropdown {
-		padding: 5px 45px 5px 15px;
+		padding: 5px 38px 5px 15px;
 		border: 1px solid $button-border-color;
 		color: #000;
 		margin: 0px;
@@ -2424,7 +2422,7 @@ input::-webkit-input-placeholder {
 .action-buttons .select-dropdown {
 	line-height: 1.5;
 
-    max-width: 195px;
+    max-width: 180px;
 	background-size: 17px;
 }
 
