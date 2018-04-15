@@ -501,9 +501,6 @@ jQuery(document).ready( function() {
         var data = {}
         var parameters = {};
 
-        if(comment != '') {
-            data.comment = comment;
-        }
         if(typeRequest == "bulkRequestDropdown") {
             data = filters.getAppliedFilters();
             data.from = parseInt(from);
@@ -511,13 +508,15 @@ jQuery(document).ready( function() {
             data.status = globalParameters.status;
             parameters.status = globalParameters.status;
             parameters.length = (to - from) + 1;
-            return
         }
         else {
             data.applicationId = applicationIds
             parameters.oldStatus = globalParameters.status
             parameters.newStatus = newStatus
             parameters.length = applicationIds.length
+        }
+        if(comment != '') {
+            data.comment = comment;
         }
         setBulkCandidateActions(recruiterId, jobId, action, data, parameters)
     })
@@ -717,7 +716,7 @@ jQuery(document).ready( function() {
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
         for(var key in parameters) {
-            if(!(key == "orderBy" || key == "offset" || key == "pageContent" || key == "status" || key == "searchString")) {
+            if(!(key == "orderBy" || key == "offset" || key == "pageContent" || key == "status")) {
                 filterFlag+= 1;
             }
         }
@@ -824,7 +823,7 @@ jQuery(document).ready( function() {
         }
 
         if(res.action == "shortlist") {
-            toastNotify(1, res.applicationId.length +" candidates have been shortlisted and moved to the shortlisted tab.")
+            toastNotify(1, res.parameters.length +" candidates have been shortlisted and moved to the shortlisted tab.")
             setTimeout(function(){
     			window.location = "/job/"+jobId+"/applications";
     		 }, 2000);
@@ -841,7 +840,7 @@ jQuery(document).ready( function() {
         }
 
         if(res.action == "reject") {
-            toastNotify(1, res.applicationId.length +" candidates have been rejected and moved to the rejected tab.")
+            toastNotify(1, res.parameters.length +" candidates have been rejected and moved to the rejected tab.")
             setTimeout(function(){
     			window.location = "/job/"+jobId+"/applications";
     		 }, 2000);
@@ -856,7 +855,7 @@ jQuery(document).ready( function() {
         }
 
         if(res.action == "save") {
-            toastNotify(1, res.applicationId.length +" candidates have been saved and moved to the saved tab.")
+            toastNotify(1, res.parameters.length +" candidates have been saved and moved to the saved tab.")
             setTimeout(function(){
     			window.location = "/job/"+jobId+"/applications";
     		 }, 2000);

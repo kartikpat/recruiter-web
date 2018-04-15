@@ -16,7 +16,8 @@ var errorResponses = {
 	serviceError: 'Oops! Our engineers are working on fixing this, please try again after sometime.',
 	duplicate: 'This email is already registered. Please login.',
 	minLengthPassword: 'Password should be at least 6 characters',
-	missingRecruiterType: 'Please Select Recruiter Type'
+	missingRecruiterType: 'Please Select Recruiter Type',
+	noInternet: 'You are offline'
 }
 function registerUser(){
 	var user= {}
@@ -99,6 +100,10 @@ function registerUser(){
 				break;
 			case 409:
 				message = errorResponses.duplicate
+				break;
+			default:
+				message = errorResponses.noInternet
+				break;
 		}
 		if(res.status == 409) {
 			return user.email.next('.error').text(message)
