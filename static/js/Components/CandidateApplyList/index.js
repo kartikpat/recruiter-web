@@ -1,6 +1,7 @@
 var globalParameters = {
     pageContent: 10,
     pageNumber: 1,
+    offset: 0,
     status: "0",
     orderBy: 1,
     initialLoad: 1,

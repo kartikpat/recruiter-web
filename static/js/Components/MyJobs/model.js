@@ -207,10 +207,12 @@ function Jobs() {
 					obj["extraStatusMsg"] = "(Confidential)"
 				}
 			case "unpublished":
-				
 				if(aData["message"]){
 					obj["message"] = aData["message"];
 				}
+			case "updated-unpublished":
+				obj["status"] = 'UnPublished';
+				obj["extraStatus"] = true;
 			default:
 				break;
 		}
