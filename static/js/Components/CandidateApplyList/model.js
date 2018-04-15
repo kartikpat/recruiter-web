@@ -782,7 +782,7 @@ function candidateList() {
                 newStatus =  $(this).attr("data-status");
             }
             if(action == "comment") {
-                if(!comment) {
+                if(comment == '') {
                     return settings.bulkActionModal.find(".errorField").removeClass("hidden")
                 }
                 else {
@@ -790,7 +790,7 @@ function candidateList() {
                 }
             }
 
-            settings.bulkActionModal.addClass("hidden")
+            closeModal()
             var requestType = settings.bulkActionContainer.attr("data-type-request")
             fn(selectedApplicationIds, action, comment, newStatus, requestType, settings.from, settings.to)
         })

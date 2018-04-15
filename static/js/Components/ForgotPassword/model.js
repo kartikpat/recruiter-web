@@ -3,7 +3,8 @@ var errorResponses = {
 	invalidEmail: 'That looks like an invalid email address',
 	userFail: 'Email address does not exist',
 	missingParameters: 'Oops! Our engineers will fix this shortly. Please try again after sometime.',
-	serviceError: 'Oops! Our engineers are working on fixing this, please try again after sometime.'
+	serviceError: 'Oops! Our engineers are working on fixing this, please try again after sometime.',
+	noInternet: 'You are offline'
 }
 
 var emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
@@ -45,6 +46,9 @@ function userForgotPassword(){
 				break;
 			case 422:
 				message = errorResponses.missingParameters
+				break;
+			default:
+				message = errorResponses.noInternet
 				break;
 		}
 		user.email.next(".error").text(message)

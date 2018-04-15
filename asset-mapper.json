@@ -1277,7 +1277,15 @@
 				"static/js/Utilities/request.js",
 				"static/js/header.js",
 				"static/js/utilities.js",
-				"static/js/welcome.js"
+				"static/js/welcome.js",
+				"static/js/Utilities/pubsub.js",
+				"static/js/Utilities/common.js",
+				"static/js/Utilities/toastNotifier.js",
+				"static/js/Services/resendActivationLink.js",
+				"static/js/Components/ResendActivationLink/model.js",
+				"static/js/Components/ResendActivationLink/index.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js"
 			],
 			"prod" : [
 				"static/build/js/welcome.min.js"
@@ -1309,7 +1317,9 @@
 				"static/js/Utilities/toastNotifier.js",
 				"static/js/Services/resendActivationLink.js",
 				"static/js/Components/ResendActivationLink/model.js",
-				"static/js/Components/ResendActivationLink/index.js"
+				"static/js/Components/ResendActivationLink/index.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js"
 			],
 			"prod" : [
 				"static/build/js/welcome.min.js"
