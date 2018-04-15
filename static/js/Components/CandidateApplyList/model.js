@@ -423,14 +423,14 @@ function candidateList() {
         item.element.find("li[data-attribute='"+newStatus+"'] .tabStats").text(parseInt(newCount) + number);
     }
 
-    function addToList(dataArray, status, pageNumber, pageContent, filterFlag){
+    function addToList(dataArray, status, offset, pageContent, filterFlag){
         settings.status = status;
 		var str = '';
 
         var element = $(".candidateListing[data-status-attribute='"+status+"']");
         hideShells(status);
 
-        if(dataArray.length<1 && pageNumber ==1) {
+        if(dataArray.length<1 && offset == 0) {
             if(filterFlag > 0) {
                 return
             }
