@@ -30,7 +30,7 @@ module.exports = function(settings){
 		// bypassing the auth for development
     	// CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     	// you can do this however you want with whatever variables you set up
-
+    	console.log('..............1...........')
     	if (req.cookies["recruiter-access-token"]) {
 
 			return request.get({
@@ -218,12 +218,15 @@ module.exports = function(settings){
 	})
 
 	app.get("/login", function(req,res){
-
+		console.log('.................2..................')
 		if(req.cookies['recruiter-access-token']){
 			console.log(req.cookies['recruiter-access-token'])
 			return isAuthenticated(req, res);
 		}
 		res.cookie('recruiter-access-token', '');
+		res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+		res.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+		res.setHeader("Expires", "0"); // Proxies.
 		res.render("landing", {
 			title:"Recruiter Web - Landing Page | iimjobs.com",
 			styles:  assetsMapper["landing"]["styles"][mode],
