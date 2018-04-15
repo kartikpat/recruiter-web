@@ -14,9 +14,9 @@ function reportList() {
         settings.candidateEducationItemClass = '.candEducationItem',
         settings.candTagItemClass= '.candTagItem',
         settings.reportRowShell = $(".reportRo.shell")
-        settings.emptyView=$('.empty-view'),
+        settings.emptyView=$('.empty-screen'),
         settings.header=$('.head')
-
+        settings.button=$('.white')
         jQuery(".header .menu-list-item.reports").addClass("active");
    }
 
@@ -82,6 +82,7 @@ function reportList() {
        if(dataArray.length==0){
             settings.emptyView.removeClass('hidden');
             settings.header.addClass('hidden');
+            settings.button.addClass('hidden');
        }
        
        dataArray.forEach(function(aData, index){

@@ -152,7 +152,7 @@ function Calendar(){
             var end=settings.breakEnd.val();
             breakhours.from=start;
             breakhours.to=end;
-            timetable.breakhours=breakhours;
+            timetable.break=breakhours;
             console.log(start);
             console.log(end);
             if(parseInt(start)>=0 && parseInt(end)>=0){
@@ -214,8 +214,8 @@ function Calendar(){
         settings.teleMessage.val(object["telMessage"],(/\(\d+-\d+ \w+\)$/));
         timetable.CalendarId=object["id"];
         timetable.slots=object.slots;
-        settings.breakStart.val(object.breakhours['from']);
-        settings.breakEnd.val(object.breakhours['to']);
+        // settings.breakStart.val(object.break['from']);
+        // settings.breakEnd.val(object.break['to']);
         console.log(timetable.slots);
         var previewslots=object.slots;
         availablehours(previewslots);
