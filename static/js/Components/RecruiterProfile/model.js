@@ -55,7 +55,7 @@ function Profile(){
 			settings.seeAllPremium = $("#seeAllPremium"),
 			settings.buyMore = $("#buyMore"),
 			settings.premiumDetail = $("#premiumDetail")
-			settings.type = ""
+			settings.type = "profile"
 			settings.settingsBody = $(".settingsBody")
 			changeFileName()
 			onChangeInputFields()
@@ -97,7 +97,7 @@ function Profile(){
 	}
 
 	function validate(){
-
+		debugger
 		if(settings.type == "profile") {
 
 			if(!(
@@ -248,6 +248,7 @@ function Profile(){
 
 	function submitHandler(fn){
 		$(settings.submitButton).click(function() {
+
 			fn(settings.type)
 		})
 	}

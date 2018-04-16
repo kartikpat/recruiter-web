@@ -4,6 +4,7 @@ $(document).ready(function(){
 	recruiterProfile.setProfile(profile)
 
 	recruiterProfile.submitHandler(function(type){
+		debugger
 		if(recruiterProfile.validate()){
 
 			$('.spinner').removeClass('hidden');
@@ -73,10 +74,10 @@ $(document).ready(function(){
 function errorHandler(data) {
     var res = data.responseJSON
     if(!res) {
-        return toastNotify(3, "No Internet Connection");
+        return toastNotify(3, "Looks like you are not connected to the internet");
     }
 	if(data.status == 401) {
-		return toastNotify(3, "");
+		return toastNotify(3, "The original password you've entered is incorrect");
 	}
     return toastNotify(3, res.message);
 }
