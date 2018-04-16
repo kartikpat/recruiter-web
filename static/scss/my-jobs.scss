@@ -191,6 +191,10 @@
 							.mobile-engagement {
 								display:none;
 							}
+							.job-created-on{
+								line-height: 1.5!important;
+									margin-top: -1px!important;
+							}
 
 							.engagement {
 								span {
@@ -237,7 +241,7 @@
 								}
 								.action-icon {
 									display:inline-block;
-									margin:2px;
+									// margin:2px;
 									vertical-align: middle;
 									cursor:pointer;
 									.icon-star-2::before {
@@ -259,7 +263,7 @@
 									i {
 									    // border: 1px solid #e8e8e8;
 									    display: inline-block;
-									    padding: 2px;
+									    padding: 1px;
 									    border-radius: 4px;
 									    text-align: center;
 									    color: #757575;
@@ -267,12 +271,18 @@
 										&.icon-edit {
 											border: 0;
 											border-radius: 0;
-											font-size: 18px;
+											font-size: 17px;
 											vertical-align: top;
-    										display: inline;
+											margin-left: 0px;
+											display: inline;
 										}
 										&.icon-twitter {
 											border-color: #1da1f2;
+										}
+										.icon-twitter_logo::before {
+											content: '\e816';
+											font-size: 18px;
+											display: table-cell;
 										}
 									}
 									span {
@@ -392,6 +402,7 @@
 									font-size: 16px;
 									color: #2b2b2b;
 									line-height: 25px;
+									
 								}
 								.job-applied-count{
 									// margin-left: -18px;
