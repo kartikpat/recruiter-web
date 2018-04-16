@@ -27,7 +27,7 @@ $(document).ready(function(){
         window.history.replaceState("object or string", "Title", newUrl);
     }
 
-    window.mySwipe = $('.mobile-swipe-container').Swipe().data('Swipe');
+    
 });
 
 var basicPosting = function() {

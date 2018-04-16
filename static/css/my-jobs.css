@@ -328,9 +328,6 @@
 .icon-up_arrow:before {
   content: '\e842'; }
 
-.icon-star:before {
-  content: '\e829'; }
-
 .icon-review:before {
   content: '\e81c'; }
 
@@ -1004,9 +1001,6 @@ a {
 .icon-up_arrow:before {
   content: '\e842'; }
 
-.icon-star:before {
-  content: '\e829'; }
-
 .icon-review:before {
   content: '\e81c'; }
 
@@ -1309,7 +1303,7 @@ span.sticker {
     padding: 15px;
     padding-left: 0px;
     margin: 0;
-    color: #333;
+    color: #2b2b2b;
     font-size: 18px;
     border-bottom: 2px solid #e8e8e8; }
     .conversations .conversation-listing-container .listing-header h3 span {
@@ -1351,7 +1345,7 @@ span.sticker {
             .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info p.user-designation {
               font-size: 12px;
               line-height: 1.5;
-              color: #888; }
+              color: #808080; }
       .conversations .conversation-listing-container .conversations-listing .conversation-item .conversation-item-separator {
         width: 80%;
         margin: 10px 0 0 20%;
@@ -1449,19 +1443,21 @@ span.sticker {
       display: inline-block;
       width: auto;
       border: 0;
-      padding: 10px 40px 10px 10px;
+      padding: 10px 40px 12px 10px;
       background-color: transparent;
       margin-bottom: 10px;
       background-image: url("/static/images/minimal_select_dropdown.svg");
       font-size: 18px;
       font-weight: 600;
-      color: #5d5d5d !important; }
+      color: #5d5d5d !important;
+      background-size: 15px; }
   .page-content .page-header select::-ms-expand {
     display: none !important; }
   .page-content .page-header .action-buttons {
     padding: 5px 0 0 0; }
     .page-content .page-header .action-buttons button {
-      padding: 6px 18px !important;
+      padding: 8px 18px !important;
+      font-size: 16px !important;
       -webkit-appearance: none;
       -moz-appearance: none;
       -ms-appearance: none;
@@ -1526,7 +1522,8 @@ span.sticker {
         width: 100%;
         vertical-align: middle;
         font-size: 0;
-        border-radius: 4px; }
+        border-radius: 4px;
+        color: #2b2b2b; }
         .page-content .my-jobs .my-jobs-listing .table-container .table-row .table-cell {
           display: inline-block;
           font-size: 14px;
@@ -1543,13 +1540,12 @@ span.sticker {
               font-size: 15px;
               color: #2b2b2b;
               text-transform: uppercase;
-              font-weight: 600;
-              color: #212121; }
+              font-weight: 600; }
             .page-content .my-jobs .my-jobs-listing .table-container .table-row .table-cell.heading.job-title {
-              width: 32%; }
+              width: 38%; }
             .page-content .my-jobs .my-jobs-listing .table-container .table-row .table-cell.heading.actions {
-              width: 29%;
-              padding-right: 25px; }
+              width: 23%;
+              padding-left: 15px; }
             .page-content .my-jobs .my-jobs-listing .table-container .table-row .table-cell.heading.created {
               width: 13%;
               padding-left: 25px; }
@@ -1557,7 +1553,7 @@ span.sticker {
           vertical-align: top;
           padding: 15px 10px; }
           .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions {
-            width: 29%;
+            width: 23%;
             padding-right: 25px; }
           .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.created {
             width: 13%;
@@ -1567,7 +1563,7 @@ span.sticker {
           .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell .engagementDefault {
             margin-top: 2.2px; }
           .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.title {
-            width: 32%; }
+            width: 38%; }
             .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.title span.job-title {
               display: block;
               font-weight: bold; }
@@ -1588,7 +1584,7 @@ span.sticker {
               display: none; }
             .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.status i {
               cursor: pointer;
-              color: #757575; }
+              color: #2b2b2b; }
               .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.status i span.tooltip-message {
                 position: absolute;
                 background: #FFF;
@@ -1612,6 +1608,12 @@ span.sticker {
             .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon .icon-star-2::before {
               content: '\e815';
               color: #e97e00; }
+            .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon .icon-twitter_logo::before {
+              content: '\e816';
+              font-size: 18px;
+              margin: 0;
+              margin-top: 4px;
+              line-height: 0; }
             .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon.job-cancel {
               margin-left: 0; }
             .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon.job-linkedin {
@@ -1623,7 +1625,6 @@ span.sticker {
             .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon i {
               display: inline-block;
               padding: 1px;
-              border-radius: 4px;
               text-align: center;
               color: #757575;
               font-size: 16px; }
@@ -1636,10 +1637,6 @@ span.sticker {
                 display: inline; }
               .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon i.icon-twitter {
                 border-color: #1da1f2; }
-              .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon i .icon-twitter_logo::before {
-                content: '\e816';
-                font-size: 18px;
-                display: table-cell; }
             .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon span {
               display: none; }
         .page-content .my-jobs .my-jobs-listing .table-container .table-row .table-row-separator {

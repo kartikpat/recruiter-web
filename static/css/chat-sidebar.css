@@ -300,9 +300,6 @@
 .icon-up_arrow:before {
   content: '\e842'; }
 
-.icon-star:before {
-  content: '\e829'; }
-
 .icon-review:before {
   content: '\e81c'; }
 
@@ -976,9 +973,6 @@ a {
 .icon-up_arrow:before {
   content: '\e842'; }
 
-.icon-star:before {
-  content: '\e829'; }
-
 .icon-review:before {
   content: '\e81c'; }
 
@@ -1281,7 +1275,7 @@ span.sticker {
     padding: 15px;
     padding-left: 0px;
     margin: 0;
-    color: #333;
+    color: #2b2b2b;
     font-size: 18px;
     border-bottom: 2px solid #e8e8e8; }
     .conversations .conversation-listing-container .listing-header h3 span {
@@ -1323,7 +1317,7 @@ span.sticker {
             .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info p.user-designation {
               font-size: 12px;
               line-height: 1.5;
-              color: #888; }
+              color: #808080; }
       .conversations .conversation-listing-container .conversations-listing .conversation-item .conversation-item-separator {
         width: 80%;
         margin: 10px 0 0 20%;
