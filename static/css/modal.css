@@ -317,6 +317,9 @@
 .icon-linkedin::before {
   content: '\e84b'; }
 
+.icon-twitter_logo::before {
+  content: '\e816'; }
+
 /*[Recruiter_Homepage]*/
 /*[/Recruiter_Homepage]*/
 /**** Fontello Font Icons : ****/
@@ -634,6 +637,9 @@
 
 .icon-linkedin::before {
   content: '\e84b'; }
+
+.icon-twitter_logo::before {
+  content: '\e816'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */

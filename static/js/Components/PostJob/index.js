@@ -12,6 +12,7 @@ $(document).ready(function(){
 	})
 	jobDetails.submitHandler(function(){
 		if(jobDetails.validate()){
+			spinner();
 			if(jobId)
 				submitEditJob(recruiterId ,jobId,jobDetails.getData())
 			else
