@@ -4,10 +4,10 @@ $(document).ready(function(){
 	recruiterProfile.setProfile(profile)
 
 	recruiterProfile.submitHandler(function(type){
-		$('.spinner').removeClass('hidden');
-		$('#uploadPic').addClass('hidden');
-		$(".button.submit").addClass('hidden');
 		if(recruiterProfile.validate()){
+			$('.spinner').removeClass('hidden');
+			$('#uploadPic').addClass('hidden');
+			$(".button.submit").addClass('hidden');
 			if(type == "change-password") {
 				var obj = recruiterProfile.getProfile();
 				obj.email = profile.email
