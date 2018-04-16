@@ -373,6 +373,9 @@
 .icon-linkedin::before {
   content: '\e84b'; }
 
+.icon-twitter_logo::before {
+  content: '\e816'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -934,6 +937,9 @@ span.sticker {
 .icon-linkedin::before {
   content: '\e84b'; }
 
+.icon-twitter_logo::before {
+  content: '\e816'; }
+
 /*[Recruiter_Homepage]*/
 /*[/Recruiter_Homepage]*/
 /**** Fontello Font Icons : ****/
@@ -1251,6 +1257,9 @@ span.sticker {
 
 .icon-linkedin::before {
   content: '\e84b'; }
+
+.icon-twitter_logo::before {
+  content: '\e816'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */

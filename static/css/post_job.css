@@ -345,6 +345,9 @@
 .icon-linkedin::before {
   content: '\e84b'; }
 
+.icon-twitter_logo::before {
+  content: '\e816'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -915,14 +918,15 @@ span.sticker {
         height: 17px; }
     .submit-action-buttons .button-wrapper .spinner {
       width: 100px;
-      margin-top: 4px; }
+      margin-top: 6px; }
     .submit-action-buttons .button-wrapper button.submit-form {
       margin: 0;
       padding: 10px 32px;
       padding: 0%;
       display: inline-block;
       width: 95px;
-      height: 30px; }
+      height: 30px;
+      outline: none; }
   .submit-action-buttons .button {
     -webkit-appearance: none;
     -moz-appearance: none;

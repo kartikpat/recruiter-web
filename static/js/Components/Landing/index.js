@@ -5,7 +5,6 @@ $(document).ready(function() {
 	userLogin.loginHandler(function(e){
 		e.preventDefault()
 
-
 		if(userLogin.validateLogin()){
 			spinner();
 			$('#login').prop('disabled',true);
@@ -34,20 +33,22 @@ $(document).ready(function() {
 	userRegister.registerHandler(function(e){
 
 		if(userRegister.validateRegister()){
+			$('#register').prev().removeClass('hidden');
+			$('#register').addClass('hidden');
 			document.getElementById("register").disabled=true;
 			submitRegister(userRegister.getData());
 		}
 	});
 
 	function onSuccessfulRegister(topic, data){
-		$('.spinner').removeClass('hidden');
+		$('#register').prev().removeClass('hidden');
 		$('#register').addClass('hidden');
-		document.getElementById("register").innerHTML = '<span class= "inline-spinner"></span>';
+		//document.getElementById("register").innerHTML = '<span class= "inline-spinner"></span>';
 		window.location = "/verify-email";
 		document.getElementById("register").disabled=false;
 	}
 	function onFailedRegister(topic, data){
-		$('.spinner').addClass('hidden');
+		$('#register').prev().addClass('hidden');
 		$('#register').removeClass('hidden');
 		userRegister.errorHandler(data);
 		document.getElementById("register").disabled=false;

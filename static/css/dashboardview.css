@@ -381,7 +381,7 @@
                   transform: scaleY(1.0001);
                   margin-top: 5px; }
             .page-content .main-wrapper .container .dashboard .complete-profile .connecter .connected {
-              background-color: #f3fbfb; }
+              background-color: #f3fbfb !important; }
             .page-content .main-wrapper .container .dashboard .complete-profile .connecter .triangle {
               position: absolute;
               top: 0;

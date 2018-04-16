@@ -5,10 +5,10 @@ $(document).ready(function(){
 	recruiterProfile.submitHandler(function(type){
 
 		if(recruiterProfile.validate()){
-
-			$('.spinner').removeClass('hidden');
-			$('#uploadPic').addClass('hidden');
-			$(".button.submit").addClass('hidden');
+			console.log(type)
+			$('.'+type+'').find('.spinner').removeClass('hidden');
+			// $('#uploadPic').addClass('hidden');
+			$('.'+type+'').find(".button.submit").addClass('hidden');
 			if(type == "change-password") {
 
 				var obj = recruiterProfile.getProfile();
@@ -22,6 +22,8 @@ $(document).ready(function(){
 
 	recruiterProfile.updatePic(function(){
 		if(recruiterProfile.validatePic()) {
+			$('#uploadPic').prev().removeClass('hidden');
+			$('#uploadPic').addClass('hidden');
 			var extraParameters = {};
 			extraParameters.type = "pic-profile";
 			return updateRecruiterProfile(recruiterProfile.getPic(), recruiterId,extraParameters);
@@ -30,9 +32,9 @@ $(document).ready(function(){
 	})
 
  	function onSuccessfulUpdateProfile(topic, data){
-		$('.spinner').removeClass('hidden');
-		$('#uploadPic').addClass('hidden');
-		$(".button.submit").addClass('hidden');
+		$('.spinner').addClass('hidden');
+		$('#uploadPic').removeClass('hidden');
+		$(".button.submit").removeClass('hidden');
 		if(data.extraParameters && data.extraParameters.type == "pic-profile")
 		{
 			toastNotify(1, "Profile Pic Uploaded Successfully");

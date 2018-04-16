@@ -8,10 +8,10 @@ jQuery(document).ready( function() {
     var candidates = candidateList();
     candidates.init();
     var searchQuery = getQueryParameter("searchQuery");
-
     var parameters = {}
     parameters.pageNumber = globalParameters.pageNumber;
     parameters.pageContent = globalParameters.pageContent;
+
     if(searchQuery != "")
         parameters.searchString = searchQuery;
 
