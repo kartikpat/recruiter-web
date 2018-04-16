@@ -867,6 +867,13 @@ function Filters(){
 		else if (type == "input") {
 			filtersTarget[name]['selection'] = value
 			filtersTarget[name]['target'].val(value)
+			var orderBySelect = filtersTarget["orderBy"]["target"]
+			if(value == '') {
+				orderBySelect.removeClass("hidden")
+			}
+			else {
+				orderBySelect.addClass("hidden")
+			}
 		}
 	}
 

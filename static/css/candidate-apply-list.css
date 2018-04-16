@@ -5250,7 +5250,7 @@ input::-webkit-input-placeholder {
   padding: 0 !important; }
 
 .action-buttons .select-dropdown {
-  padding: 5px 45px 5px 15px;
+  padding: 5px 38px 5px 15px;
   border: 1px solid #8f8a8a;
   color: #000;
   margin: 0px;
@@ -5279,7 +5279,7 @@ input::-webkit-input-placeholder {
 
 .action-buttons .select-dropdown {
   line-height: 1.5;
-  max-width: 195px;
+  max-width: 180px;
   background-size: 17px; }
 
 .select-all.check-input input + label {

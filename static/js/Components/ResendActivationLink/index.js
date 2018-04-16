@@ -1,16 +1,13 @@
 $(document).ready(function() {
-	var userResend = userResend();
-	userResend.init();
-	userResend.submitHandler(function(e) {
+	var userResnd = userResend();
+	userResnd.init();
+	userResnd.submitHandler(function(e) {
 		e.preventDefault()
-        var data = {
-            email: email
-        }
-		resendActivationLink(recruiterId,data);
+		resendActivationLink(token);
 	})
 
 	function onSuccessfulResendInvite(topic, data) {
-		userResend.changeText()
+		userResnd.changeText()
 	}
 
 	function onFailedResendInvite(topic, data){
@@ -20,3 +17,11 @@ $(document).ready(function() {
 	var loginFailSubscription = pubsub.subscribe('resendInviteFail', onFailedResendInvite)
 
 })
+
+function errorHandler(data) {
+    var res = data.responseJSON
+    if(!res) {
+        return toastNotify(3, "Something went wrong");
+    }
+    return toastNotify(3, res.message);
+}

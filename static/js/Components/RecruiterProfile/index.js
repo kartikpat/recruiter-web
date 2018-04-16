@@ -1,6 +1,5 @@
 $(document).ready(function(){
 	var recruiterProfile = Profile();
-	console.log(profile);
 	recruiterProfile.init();
 	recruiterProfile.setProfile(profile)
 
@@ -14,13 +13,16 @@ $(document).ready(function(){
 				obj.email = profile.email
 				return setPassword(recruiterId,obj )
 			}
+
 			updateRecruiterProfile(recruiterProfile.getProfile(), recruiterId);
 		}
 	})
 
 	recruiterProfile.updatePic(function(){
 		if(recruiterProfile.validatePic()) {
-			return updateRecruiterProfile(recruiterProfile.getPic(), recruiterId);
+			var extraParameters = {};
+			extraParameters.type = "pic-profile";
+			return updateRecruiterProfile(recruiterProfile.getPic(), recruiterId,extraParameters);
 		}
 		return toastNotify(3, "Please Choose A File")
 	})
@@ -29,7 +31,14 @@ $(document).ready(function(){
 		$('.spinner').removeClass('hidden');
 		$('#uploadPic').addClass('hidden');
 		$(".button.submit").addClass('hidden');
-		toastNotify(1, "Profile Updated Success");
+		if(data.extraParameters.type == "pic-profile")
+		{
+			toastNotify(1, "Profile Pic Uploaded Successfully");
+		}
+		else {
+			toastNotify(1, "Profile Updated Success");
+		}
+
 		setTimeout(function(){
 			 location.reload()
 		 }, 2000);

@@ -501,9 +501,6 @@ jQuery(document).ready( function() {
         var data = {}
         var parameters = {};
 
-        if(comment != '') {
-            data.comment = comment;
-        }
         if(typeRequest == "bulkRequestDropdown") {
             data = filters.getAppliedFilters();
             data.from = parseInt(from);
@@ -511,13 +508,15 @@ jQuery(document).ready( function() {
             data.status = globalParameters.status;
             parameters.status = globalParameters.status;
             parameters.length = (to - from) + 1;
-            return
         }
         else {
             data.applicationId = applicationIds
             parameters.oldStatus = globalParameters.status
             parameters.newStatus = newStatus
             parameters.length = applicationIds.length
+        }
+        if(comment != '') {
+            data.comment = comment;
         }
         setBulkCandidateActions(recruiterId, jobId, action, data, parameters)
     })
@@ -685,8 +684,10 @@ jQuery(document).ready( function() {
              var jobRow = a[0]['data'][0];
 
              var calendarRows = b[0]['data'];
-
-             var data = {
+             if(jobRow["refreshId"]) {
+                 window.location.href = "/job/"+jobRow["refreshId"]+"/applications";
+             }
+              var data = {
                 jobTitle: getTitleFormat(jobRow["title"],(/\(\d+-\d+ \w+\)$/)),
                 jobLocation: getLocation(jobRow["location"]),
                 jobExperience: jobRow["exp"]['min']+ ' - ' + jobRow['exp']['max'] +' yrs',
@@ -715,7 +716,7 @@ jQuery(document).ready( function() {
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
         for(var key in parameters) {
-            if(!(key == "orderBy" || key == "offset" || key == "pageContent" || key == "status" || key == "searchString")) {
+            if(!(key == "orderBy" || key == "offset" || key == "pageContent" || key == "status")) {
                 filterFlag+= 1;
             }
         }
@@ -752,7 +753,7 @@ jQuery(document).ready( function() {
 
 
         candidates.addToList(data["data"], data.obj.status, globalParameters.offset, globalParameters.pageContent, filterFlag);
-
+        globalParameters.offset = globalParameters.offset + globalParameters.pageContent;
         if(!theJob.getCalendarLength()){
             candidates.setInvite(theJob.getCalendarLength())
         }
@@ -761,7 +762,7 @@ jQuery(document).ready( function() {
             store.emptyStore(data["data"]);
         }
         store.saveToStore(data["data"]);
-        globalParameters.offset = data["data"].length;
+
     }
 
 	function onJobsApplicationsFetchFail(topic, data){
@@ -822,7 +823,7 @@ jQuery(document).ready( function() {
         }
 
         if(res.action == "shortlist") {
-            toastNotify(1, res.applicationId.length +" candidates have been shortlisted and moved to the shortlisted tab.")
+            toastNotify(1, res.parameters.length +" candidates have been shortlisted and moved to the shortlisted tab.")
             setTimeout(function(){
     			window.location = "/job/"+jobId+"/applications";
     		 }, 2000);
@@ -839,7 +840,7 @@ jQuery(document).ready( function() {
         }
 
         if(res.action == "reject") {
-            toastNotify(1, res.applicationId.length +" candidates have been rejected and moved to the rejected tab.")
+            toastNotify(1, res.parameters.length +" candidates have been rejected and moved to the rejected tab.")
             setTimeout(function(){
     			window.location = "/job/"+jobId+"/applications";
     		 }, 2000);
@@ -854,7 +855,7 @@ jQuery(document).ready( function() {
         }
 
         if(res.action == "save") {
-            toastNotify(1, res.applicationId.length +" candidates have been saved and moved to the saved tab.")
+            toastNotify(1, res.parameters.length +" candidates have been saved and moved to the saved tab.")
             setTimeout(function(){
     			window.location = "/job/"+jobId+"/applications";
     		 }, 2000);

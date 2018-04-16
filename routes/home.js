@@ -30,7 +30,7 @@ module.exports = function(settings){
 		// bypassing the auth for development
     	// CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     	// you can do this however you want with whatever variables you set up
-    	console.log('..............1...........')
+    	
     	if (req.cookies["recruiter-access-token"]) {
 
 			return request.get({
@@ -593,7 +593,7 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/verify-email",function(req, res){
+	app.get("/verify-email",isAuthenticated,function(req, res){
 		res.render("verify-email", {
 			title:"Recruiter Web - Welcome Page | iimjobs.com",
 			styles:  assetsMapper["verify-email"]["styles"][mode],

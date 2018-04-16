@@ -179,7 +179,6 @@ function Jobs() {
 			"extraStatus": false,
 			"extraStatusMsg": 'But Updated'
 		}
-
 		switch(aData["status"]) {
 			case "rejected":
 				if(aData["message"]){
@@ -203,16 +202,19 @@ function Jobs() {
 				obj["status"] = 'Published';
 				obj["actions"] = true;
 				obj["extraStatus"] = true;
-				if(aData["cnfi"]){
+				if(aData["cnfi"]) {
 					obj["extraStatusMsg"] = "(Confidential)"
 				}
+				break;
 			case "unpublished":
-				if(aData["message"]){
+				if(aData["message"]) {
 					obj["message"] = aData["message"];
 				}
+				break;
 			case "updated-unpublished":
 				obj["status"] = 'UnPublished';
 				obj["extraStatus"] = true;
+				break;
 			default:
 				break;
 		}
