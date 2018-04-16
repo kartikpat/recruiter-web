@@ -13,7 +13,7 @@ var errorResponses = {
 	invalidLinkedIn: 'Enter proper LinkedIn Url',
 	missingoldPassword: 'Please enter a password',
 	missingnewPassword: 'Please enter a password',
-	missingConfirmPassword:'Please confirm your password',
+	missingconfirmPassword:'Please confirm your password',
 	passwordMismatch: 'The passwords you entered do not match'
 }
 
@@ -68,6 +68,15 @@ function Profile(){
 				disableExtraSpaces: true,
 				hideOnClick: false
 			})
+
+			jQuery(".settings-sidebar, .settings-mobile-nav").on("click", "li", function() {
+				var activeSection = jQuery(this).attr("data-selector");
+				settings.type = activeSection;
+				jQuery(this).addClass("active");
+				jQuery(this).siblings().removeClass("active");
+				jQuery(".settings-section."+activeSection).removeClass("hidden").siblings().addClass("hidden");
+			});
+
 	}
 
 	function changeFileName() {
@@ -90,6 +99,7 @@ function Profile(){
 	function validate(){
 
 		if(settings.type == "profile") {
+
 			if(!(
 					ifExists(settings.name)
 					&& ifExists(settings.contact)
@@ -117,10 +127,10 @@ function Profile(){
 		}
 		if(settings.type== "change-password") {
 			if(!(
-					ifExists(settings.oldPassword, true)
-					&& ifExists(settings.newPassword, true)
+					ifExists(settings.oldPassword)
+					&& ifExists(settings.newPassword)
 					&& checkMinCharacters(settings.newPassword, 6)
-					&& ifExists(settings.confirmPassword, true)
+					&& ifExists(settings.confirmPassword)
 					&& checkPassword(settings.newPassword, settings.confirmPassword)
 				)){
 				return false;
@@ -130,8 +140,8 @@ function Profile(){
 		if(settings.type== "notification-settings") {
 			return true
 		}
-
 	}
+
 	function getProfile() {
 
 		var form = new FormData();
@@ -216,8 +226,11 @@ function Profile(){
 		}
 
 		settings.location.val(obj["location"]);
+		if(settings.editor){
+			settings.editor.setContent(obj["about"])
+		}
+
 		settings.about.val(obj["about"]);
-		console.log(obj["about"]);
 		settings.twitter.val(obj["turl"]);
 		settings.facebook.val(obj["furl"]);
 		settings.linkedIn.val(obj["lurl"]);
@@ -231,14 +244,11 @@ function Profile(){
 		else {
 			settings.seeAllPremium.removeClass("hidden")
 		}
-
 	}
 
 	function submitHandler(fn){
 		$(settings.submitButton).click(function() {
-			var type = $(this).closest(".settings-page").find(".settings-sidebar li.active").attr("data-selector")
-			settings.type = type;
-			fn(type)
+			fn(settings.type)
 		})
 	}
 
@@ -310,7 +320,7 @@ function checkEmail(element) {
 }
 
 function checkPassword(one, two){
-	if(!(one.val() && two.val())) {
+	if(!((one.val()).trim() && (two.val()).trim())) {
 		return true
 	}
 	if(!ifBothMatches(one.val(), two.val())){
@@ -322,7 +332,7 @@ function checkPassword(one, two){
 }
 
 function checkMinCharacters(ele, len) {
-	if(!ele.val()) {
+	if(!(ele.val()).trim()) {
 		return true
 	}
 	if(!checkCharacters(ele.val().length, len)) {
