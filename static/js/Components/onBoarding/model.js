@@ -1,6 +1,6 @@
 
 function onBoarding(){
-
+    
     var settings={}
     function init(){
         settings.profile=$('.upload-profile'),
