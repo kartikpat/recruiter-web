@@ -2161,6 +2161,9 @@ span.sticker {
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments textarea {
                 width: 50%;
                 padding: 5px;
+                resize: none;
+                border: 1px solid #e8e8e8;
+                margin-bottom: 20px;
                 min-height: 50px; }
                 .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments textarea:focus {
                   outline: none;

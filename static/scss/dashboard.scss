@@ -157,6 +157,7 @@ $button-border-color: #8f8a8a;
 				text-align: center;
 				margin: 0 auto;
 				padding: 0;
+				margin-bottom: 10px;
 				.button{
 					margin-right: 0;
 				}
@@ -322,6 +323,8 @@ $button-border-color: #8f8a8a;
 						display: inline-block;
 						vertical-align: top;
 						cursor: pointer;
+						margin-left: 0px;
+						outline: none;
 					}
 				}
 				.divide{
@@ -503,7 +506,7 @@ $button-border-color: #8f8a8a;
 					width: 78px;
 					height: 28px;
 					padding: 0px;
-					
+					text-align: center;
 					.spinner{
 						text-align: center;
 						margin-top: 4px;
@@ -515,11 +518,12 @@ $button-border-color: #8f8a8a;
 					.candidateShortlist{
 						border: none;
 						border-radius: 0px;
+						margin: 0px;
+						width: 100%;
 					}
 					.candidateShortlist:hover{
 						background: #1f8f75;
 						color: #fff;
-						border: 1px solid #1f8f75!important;
 						width: 100%;
 						height: 100%;
 					}
@@ -528,7 +532,7 @@ $button-border-color: #8f8a8a;
 					width: 78px;
 					height: 28px;
 					padding: 0px;
-					
+					text-align: center;
 					.spinner{
 						text-align: center;
 						margin-top: 4px;
@@ -540,11 +544,12 @@ $button-border-color: #8f8a8a;
 					.candidateReject{
 						border: none;
 						border-radius: 0px;
+						margin: 0px;
+						width: 100%;
 					}
 					.candidateReject:hover{
 						background: #af595a;
 						color: #fff;
-						border: 1px solid #af595a;
 						width: 100%;
 						height: 100%;
 					}

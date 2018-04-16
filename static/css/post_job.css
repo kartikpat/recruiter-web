@@ -899,7 +899,8 @@ span.sticker {
     width: 95px;
     height: 30px;
     margin-top: 2px;
-    text-align: center; }
+    text-align: center;
+    outline: none; }
     .submit-action-buttons .button-wrapper.green {
       background-color: #1f8f75; }
     .submit-action-buttons .button-wrapper.red {
