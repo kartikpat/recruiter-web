@@ -54,7 +54,6 @@ function Job(){
 			setAvailableCredits(settings.creditsText, config["availableCredits"]);
 			onClickCancelForm(settings.cancelFormButton);
 
-
 			var salaryRange = 100;
 			for(var i=0; i< salaryRange; i++){
 				settings.maxSal.append('<option value="'+(i+1)+'">'+(i+1)+'</option>')
@@ -69,6 +68,7 @@ function Job(){
 				disableExtraSpaces: true,
 				hideOnClick: false
 			})
+			
 			settings.editor.subscribe('editableInput', function(event, editorElement){
 
 			})

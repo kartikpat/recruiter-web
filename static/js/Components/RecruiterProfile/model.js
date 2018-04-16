@@ -59,6 +59,15 @@ function Profile(){
 			settings.settingsBody = $(".settingsBody")
 			changeFileName()
 			onChangeInputFields()
+
+			settings.editor = new MediumEditor("#profile-about", {
+				toolbar: false,
+				placeholder: {
+			        text: 'About'
+			    },
+				disableExtraSpaces: true,
+				hideOnClick: false
+			})
 	}
 
 	function changeFileName() {
