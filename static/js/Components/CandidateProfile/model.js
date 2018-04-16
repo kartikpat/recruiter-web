@@ -299,7 +299,7 @@ function Candidate() {
         else {
             settings.commentTextarea.val('').addClass("hidden")
             $(settings.candidateCommentTextareaClass).val('').removeClass("hidden");
-            $(settings.mobCandidateCommentTextareaClass).val('').addClass("hidden");
+         //   $(settings.mobCandidateCommentTextareaClass).val('').addClass("hidden");
             $(settings.candidateAddCommentButtonClass).removeClass("hidden")
             $(settings.mobCandidateAddCommentButtonClass).removeClass("hidden");
             settings.candidateEditComment.addClass("hidden")

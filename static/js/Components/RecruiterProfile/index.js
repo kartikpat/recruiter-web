@@ -4,11 +4,14 @@ $(document).ready(function(){
 	recruiterProfile.setProfile(profile)
 
 	recruiterProfile.submitHandler(function(type){
-		$('.spinner').removeClass('hidden');
-		$('#uploadPic').addClass('hidden');
-		$(".button.submit").addClass('hidden');
+		debugger
 		if(recruiterProfile.validate()){
+
+			$('.spinner').removeClass('hidden');
+			$('#uploadPic').addClass('hidden');
+			$(".button.submit").addClass('hidden');
 			if(type == "change-password") {
+
 				var obj = recruiterProfile.getProfile();
 				obj.email = profile.email
 				return setPassword(recruiterId,obj )
@@ -31,7 +34,7 @@ $(document).ready(function(){
 		$('.spinner').removeClass('hidden');
 		$('#uploadPic').addClass('hidden');
 		$(".button.submit").addClass('hidden');
-		if(data.extraParameters.type == "pic-profile")
+		if(data.extraParameters && data.extraParameters.type == "pic-profile")
 		{
 			toastNotify(1, "Profile Pic Uploaded Successfully");
 		}
@@ -71,7 +74,10 @@ $(document).ready(function(){
 function errorHandler(data) {
     var res = data.responseJSON
     if(!res) {
-        return toastNotify(3, "Something went wrong");
+        return toastNotify(3, "Looks like you are not connected to the internet");
     }
+	if(data.status == 401) {
+		return toastNotify(3, "The original password you've entered is incorrect");
+	}
     return toastNotify(3, res.message);
 }

@@ -724,11 +724,11 @@ module.exports = function(settings){
 			title: "Calender | Dashboard",
 			styles:  assetsMapper["Interview-scheduler-updated"]["styles"][mode],
 			scripts: assetsMapper["Interview-scheduler-updated"]["scripts"][mode],
-			baseUrl: baseUrl,
-			baseDomain:baseDomain,
 			hiddenLoader: "hidden",
 			jobId: req.params.jobID,
 			applicationId: req.params.applicationID,
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
 			profile: req.profile
 		});
 		return
@@ -758,7 +758,7 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain:baseDomain,
 			profile: req.profile
-		});
+		})
 		return
 	});
 	app.get("/job/:jobID/applications/:applicationID",isAuthenticated, function(req,res){
