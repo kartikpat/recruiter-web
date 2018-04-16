@@ -612,12 +612,12 @@ span.sticker {
 
 .job_posting {
   padding: 0px;
-  font-size: 0; }
+  font-size: 0;
+  background: #fff; }
   .job_posting .job-form-content {
     padding: 30px 30px 10px 30px;
     max-width: 1440px;
-    margin: 0 auto;
-    background: #fff; }
+    margin: 0 auto; }
   .job_posting .post_job {
     display: inline-block;
     width: 70%;
