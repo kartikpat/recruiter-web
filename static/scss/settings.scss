@@ -5,6 +5,12 @@
     position: static !important;
 }
 
+.medium-editor-placeholder-relative:after, .medium-editor-placeholder:after{
+    color:$select-color;
+    font-style: normal;
+    white-space: normal;
+}
+
 .page-content {
     @include page-content;
     .settings-page {
@@ -158,7 +164,7 @@
                                         margin: 0 auto;
                                         outline: none;
                                     }
-                                }    
+                                }
                             }
                         }
                     }
@@ -198,11 +204,22 @@
                             select {
                                 @include select-dropdown;
                             }
-                            textarea {
-                                @include input-field;
-
+                            textarea,.medium-editor-element {
+                                width:100%;
+                                max-width:100%;
+                                min-height: 150px;
+                                height: auto;
+                                padding: 12px 22px;
+                                box-sizing: border-box;
+                                border: 1px solid $border-color-base;;
+                                border-radius: 2px;
+                                background-color: #fff;
+                                font-size:$base-font-size;
+                                line-height:1.5;
+                                overflow-y:hidden;
                                 &:focus {
-                                    outline: 0;
+                                    outline: none;
+                                    border-color: $border-color-active;;
                                 }
                             }
                             .save-container{

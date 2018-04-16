@@ -4,13 +4,7 @@ jQuery(document).ready(function() {
 	})
 });
 
-jQuery(".settings-sidebar, .settings-mobile-nav").on("click", "li", function() {
-	var activeSection = jQuery(this).attr("data-selector");
-	
-	jQuery(this).addClass("active");
-	jQuery(this).siblings().removeClass("active");
-	jQuery(".settings-section."+activeSection).removeClass("hidden").siblings().addClass("hidden");
-});
+
 
 var textarea = document.querySelector('#profile-about');
 

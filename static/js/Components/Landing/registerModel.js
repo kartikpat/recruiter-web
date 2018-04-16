@@ -17,7 +17,7 @@ var errorResponses = {
 	duplicate: 'This email is already registered. Please login.',
 	minLengthPassword: 'Password should be at least 6 characters',
 	missingRecruiterType: 'Please Select Recruiter Type',
-	noInternet: 'You are offline'
+	noInternet: 'Looks like you are not connected to the internet'
 }
 function registerUser(){
 	var user= {}
@@ -136,10 +136,10 @@ function registerUser(){
 		if(!ifExists(user.organization)){
 			flag = 0;
 		}
-		if(!ifExists(user.password, true)){
+		if(!ifExists(user.password)){
 			flag = 0;
 		}
-		if(!ifExists(user.confirmPassword, true)){
+		if(!ifExists(user.confirmPassword)){
 			flag = 0;
 		}
 		if(!checkMinCharacters(user.password, 6)){
@@ -170,7 +170,7 @@ function registerUser(){
 }
 
 function checkMinCharacters(ele, len) {
-	if(!ele.val()) {
+	if(!(ele.val()).trim()) {
 		return true
 	}
 	if(!checkCharacters(ele.val().length, len)) {
@@ -181,7 +181,7 @@ function checkMinCharacters(ele, len) {
 }
 
 function checkPassword(one, two){
-	if(!(one.val() && two.val())) {
+	if(!((one.val()).trim() && (two.val()).trim())) {
 		return true
 	}
 	if(!ifBothMatches(one.val(), two.val())){

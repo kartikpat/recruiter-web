@@ -591,6 +591,11 @@ span.sticker {
 .formgroup .error {
   position: static !important; }
 
+.medium-editor-placeholder-relative:after, .medium-editor-placeholder:after {
+  color: #818181;
+  font-style: normal;
+  white-space: normal; }
+
 .page-content {
   min-height: 100%;
   padding: 0;
@@ -834,24 +839,22 @@ span.sticker {
             background-color: transparent;
             margin-bottom: 10px;
             background-image: url("/static/images/minimal_select_dropdown.svg"); }
-        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup textarea {
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          -o-appearanance: none;
-          border-radius: 3px;
-          background: #FFF;
+        .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup textarea, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .medium-editor-element {
           width: 100%;
+          max-width: 100%;
+          min-height: 150px;
+          height: auto;
+          padding: 12px 22px;
+          box-sizing: border-box;
           border: 1px solid #e8e8e8;
-          cursor: pointer;
-          padding: 16px 22px;
+          border-radius: 2px;
+          background-color: #fff;
           font-size: 14px;
-          line-height: 1.5; }
-          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup textarea:focus {
+          line-height: 1.5;
+          overflow-y: hidden; }
+          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup textarea:focus, .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .medium-editor-element:focus {
+            outline: none;
             border-color: #4fa995; }
-          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup textarea.error-border {
-            border-color: #ee1620; }
-          .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup textarea:focus {
-            outline: 0; }
         .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .save-container {
           -webkit-appearance: none;
           -moz-appearance: none;
