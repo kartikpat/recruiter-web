@@ -43,7 +43,6 @@ function Header(){
 			settings.searchAccess = 1;
 
 			$(".recruiterLogout").click(function(){	
-				debugger
 				document.cookie = "recruiter-access-token" + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;';
 				window.location.href = "/login"
 				return false

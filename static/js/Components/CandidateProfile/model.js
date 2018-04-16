@@ -405,7 +405,7 @@ function Candidate() {
         // });
         settings.candidateDetailsModal.on('click', settings.candidateAddCommentButtonClass,function(event) {
             event.stopPropagation();
-            debugger
+            // debugger
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
             var comment = ($(settings.candidateCommentTextareaClass).val()).trim();
             if(!comment) {
