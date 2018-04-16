@@ -134,7 +134,7 @@ jQuery(document).ready( function() {
                    parameters.calendarId = globalParameters.calendarId;
                }
                showLoader()
-            
+
                fetchInterviews(recruiterId,parameters);
            }
            else
@@ -151,8 +151,7 @@ function errorHandler(data) {
     var res = data.responseJSON
     hideLoader()
     if(!res) {
-
-        return toastNotify(3, "Something went wrong");
+        return toastNotify(3, "Looks like you are not connected to the internet");
     }
     return toastNotify(3, res.message);
 }

@@ -777,11 +777,9 @@ jQuery(document).ready( function() {
         parameters.status = globalParameters.status;
         parameters.orderBy = globalParameters.orderBy;
 
-
         globalParameters.offset = 0;
         parameters.offset = globalParameters.offset;
         parameters.pageContent = globalParameters.pageContent;
-
 
         fetchJobApplications(jobId,parameters,recruiterId);
         theJob.setJobDetails(data);
@@ -793,11 +791,13 @@ jQuery(document).ready( function() {
     }
 
     function onFailCandidateAction(topic,res) {
+        if(res.action == "view") {
+            return
+        }
         errorHandler(res);
         $('.spinner').addClass('hidden');
         $('.shortlist').removeClass('hidden');
         $('.reject').removeClass('hidden');
-
     }
 
     function onSuccessfullFetchedTag(topic, res) {
@@ -920,13 +920,16 @@ jQuery(document).ready( function() {
 	}
 
     function onSuccessfulCount(topic, data) {
-        console.log(data)
+
         if(data.applicantsCount) {
             candidates.setJobStats(data.applicantsCount);
         }
         if(data.filtersCount) {
             if(data.filterFlag > 0) {
                 filters.showResultsFound(data.filtersCount.total);
+            }
+            else {
+                filters.hideResultsFound()
             }
             candidates.populateCheckInputDropdown(parseInt(data.filtersCount.total), globalParameters.status)
         }
@@ -1025,8 +1028,7 @@ function errorHandler(data) {
     var res = data.responseJSON
     hideLoader()
     if(!res) {
-
-        return toastNotify(3, "Something went wrong");
+        return toastNotify(3, "Looks like you are not connected to the internet");
     }
     return toastNotify(3, res.message);
 }

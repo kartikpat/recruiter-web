@@ -6,7 +6,8 @@ var errorResponses = {
 	userFail: 'Email address does not exist',
 	passwordFail: 'Incorrect password',
 	missingParameters: 'Oops! Our engineers will fix this shortly. Please try again after sometime.',
-	serviceError: 'Oops! Our engineers are working on fixing this, please try again after sometime.'
+	serviceError: 'Oops! Our engineers are working on fixing this, please try again after sometime.',
+	noInternet: 'Looks like you are not connected to the internet'
 }
 
 var emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
@@ -35,7 +36,6 @@ function userCredentials(){
 
 	function errorHandler(res){
 		var message = '';
-		console.log(res)
 		switch(res.status){
 			case 404:
 				message = errorResponses.userFail;
@@ -48,6 +48,9 @@ function userCredentials(){
 				break;
 			case 422:
 				message = errorResponses.missingParameters
+				break;
+			default:
+				message = errorResponses.noInternet
 				break;
 		}
 		user.password.next('.error').text(message)

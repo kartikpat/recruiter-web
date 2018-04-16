@@ -236,7 +236,7 @@ function Profile(){
 		// 	settings.editor.setContent(obj["about"])
 		// }
 
-		settings.about.val(obj["about"]);
+		settings.about.html(obj["about"]);
 		settings.twitter.val(obj["turl"]);
 		settings.facebook.val(obj["furl"]);
 		settings.linkedIn.val(obj["lurl"]);

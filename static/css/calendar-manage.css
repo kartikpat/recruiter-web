@@ -348,6 +348,9 @@
 .icon-linkedin::before {
   content: '\e84b'; }
 
+.icon-twitter_logo::before {
+  content: '\e816'; }
+
 .left {
   float: left; }
 
@@ -1020,6 +1023,9 @@ a {
 
 .icon-linkedin::before {
   content: '\e84b'; }
+
+.icon-twitter_logo::before {
+  content: '\e816'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
