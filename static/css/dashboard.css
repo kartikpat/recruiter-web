@@ -1708,7 +1708,8 @@ span.sticker {
       .page-content .block .stats .info-icon {
         display: inline-block;
         cursor: pointer;
-        color: #757575; }
+        color: #757575;
+        vertical-align: top; }
         .page-content .block .stats .info-icon .icon-information:before {
           content: '\e80d';
           font-size: 15px; }
