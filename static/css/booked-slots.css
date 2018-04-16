@@ -1067,8 +1067,7 @@ body.posf {
   min-height: 100%;
   position: relative;
   padding: 20px;
-  width: 100%;
-  background-color: #f7f7f7; }
+  width: 100%; }
   .page-content .error-container {
     border-radius: 4px;
     border-style: solid;

@@ -303,7 +303,9 @@
 									textarea {
 										width: 50%;
 										padding: 5px;
-
+										resize: none;
+    									border: 1px solid #e8e8e8;
+    									margin-bottom: 20px;
 										min-height: 50px;
 										&:focus {
 											outline: none;

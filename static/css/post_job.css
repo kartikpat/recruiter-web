@@ -612,7 +612,8 @@ span.sticker {
 
 .job_posting {
   padding: 0px;
-  font-size: 0; }
+  font-size: 0;
+  background: #fff; }
   .job_posting .job-form-content {
     padding: 30px 30px 10px 30px;
     max-width: 1440px;
@@ -898,7 +899,8 @@ span.sticker {
     width: 95px;
     height: 30px;
     margin-top: 2px;
-    text-align: center; }
+    text-align: center;
+    outline: none; }
     .submit-action-buttons .button-wrapper.green {
       background-color: #1f8f75; }
     .submit-action-buttons .button-wrapper.red {

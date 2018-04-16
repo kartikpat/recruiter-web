@@ -1623,6 +1623,8 @@
 				"static/js/utilities.js",
 				"static/js/Utilities/modal.js",
 				"static/js/header.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js",
 				"static/js/vendor/jquery-ui.min.js",
 				"static/js/vendor/fullcalendar.min.js",
 				"static/js/Utilities/request.js",

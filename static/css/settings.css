@@ -717,7 +717,8 @@ span.sticker {
             margin: 0;
             width: 127px;
             height: 40px;
-            text-align: center; }
+            text-align: center;
+            outline: none; }
             .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit .upload-container.green {
               background-color: #1f8f75; }
             .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit .upload-container.red {
@@ -755,7 +756,8 @@ span.sticker {
               color: white;
               border: 0;
               padding: 0;
-              margin: 0 auto; }
+              margin: 0 auto;
+              outline: none; }
               .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit .upload-container button.green {
                 background-color: #1f8f75; }
               .page-content .settings-page .settings-body .settings-section .settings-section-content .profile-image-editor .profile-image-info .submit .upload-container button.red {
