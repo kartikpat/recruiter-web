@@ -8,7 +8,7 @@ $(document).ready(function(){
 	jobDetails.init(type);
 
 	jobDetails.onChangeJobPremium(function(){
-		alert("hi") 
+		alert("hi")
 	})
 	jobDetails.submitHandler(function(){
 		if(jobDetails.validate()){
@@ -76,8 +76,8 @@ $(document).ready(function(){
 
 function errorHandler(data) {
     var res = data.responseJSON
-    if(!res) {
-        return toastNotify(3, "Something went wrong");
+	if(!res) {
+        return toastNotify(3, "Looks like you are not connected to the internet");
     }
     return toastNotify(3, res.message);
 }

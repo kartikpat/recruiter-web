@@ -33,8 +33,7 @@ function userForgotPassword(){
 
 	function errorHandler(res){
 		var message = '';
-		console.log(res)
-		switch(res.status){
+		switch(res.status) {
 			case 404:
 				message = errorResponses.userFail;
 				break;
@@ -58,8 +57,7 @@ function userForgotPassword(){
 	function validate(){
 		eraseErrors();
 
-		if(!( user.email && user.email.val() )){
-			console.log(user.email.next('.error'))
+		if(!( user.email && user.email.val())) {
 			user.email.next('.error').text(errorResponses['missingEmail'])
 			return false
 		}
