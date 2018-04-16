@@ -116,6 +116,7 @@ function Header(){
 	function search() {
 		settings.globalSearch.submit(function(){
 			var str = settings.searchInput.val()
+			console.log(str)
 			window.location = "/recruiter/search?searchQuery=" + encodeURI(str)
   			return false
 		});

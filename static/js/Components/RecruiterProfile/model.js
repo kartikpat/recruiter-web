@@ -97,7 +97,6 @@ function Profile(){
 	}
 
 	function validate(){
-		debugger
 		if(settings.type == "profile") {
 
 			if(!(
