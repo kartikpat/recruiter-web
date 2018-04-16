@@ -2,8 +2,8 @@ $(document).ready(function(){
 	var recruiterProfile = Profile();
 	recruiterProfile.init();
 	recruiterProfile.setProfile(profile)
-
 	recruiterProfile.submitHandler(function(type){
+
 		if(recruiterProfile.validate()){
 			console.log(type)
 			$('.'+type+'').find('.spinner').removeClass('hidden');
