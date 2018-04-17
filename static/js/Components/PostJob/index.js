@@ -13,14 +13,15 @@ $(document).ready(function(){
 	jobDetails.submitHandler(function(){
 		if(jobDetails.validate()){
 			spinner();
-			if(jobId) 
+			if(jobId)
+
 				submitEditJob(recruiterId ,jobId,jobDetails.getData())
 			else
 				submitNewJob(jobDetails.getData(), recruiterId);
 		}
 	})
 	if(jobId) {
-		fetchJob(jobId);
+		fetchJob(jobId, recruiterId);
 		$('.post_job_form').removeClass("hidden");
 		$('.guidelines-container').removeClass("hidden");
 		$('.premium_job_section').removeClass("hidden");
