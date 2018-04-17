@@ -2,7 +2,7 @@ var currentLocationMetaData = {
     "data-attribute": "menu-current-location",
     "name": "location"
 }
- 
+
 var currentLocationTagsData = [
     {
        "text": "Ahmedabad",
@@ -325,7 +325,7 @@ var currentLocationTagsData = [
         "val": 144
   },
   {
-       "text": "Jammu &amp; Kashmir - Other",
+       "text": "Jammu and Kashmir - Other",
         "val": 245
   },
   {
@@ -745,7 +745,7 @@ var currentLocationTagsData = [
         "val": 142
   },
   {
-       "text": "Dadra &amp; Nagar Haveli",
+       "text": "Dadra and Nagar Haveli",
         "val": 275
   },
   {
