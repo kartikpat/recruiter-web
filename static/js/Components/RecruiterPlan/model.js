@@ -96,6 +96,7 @@ function Plans() {
 		$(".modal").addClass("hidden")
 	}
 
+
    return {
        init: init,
        onClickBuyPlan: onClickBuyPlan,
@@ -105,5 +106,6 @@ function Plans() {
        showSpinner: showSpinner,
        hideSpinner: hideSpinner,
        closeModal: closeModal
+
    }
 }
