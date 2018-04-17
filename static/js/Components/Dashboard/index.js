@@ -62,7 +62,6 @@ $(document).ready(function(){
 	var postedJobsContainer = $("#postedJobsContainer");
 	var jobOtherActionsClass = ".action-panel";
 	var recentEmptyContiner=$('.recent-empty');
-
 	modalInit();
 	onClickJobRefresh();
 	onClickJobCancel();
@@ -206,7 +205,7 @@ $(document).ready(function(){
 
 		// }
 		console.log("calling onLoadChartLibrary");
-	    fetchActiveJobStats(recruiterId);
+	    fetchActiveJobStats(recruiterId,{pageContent:5});
 	}
 	var chartLibraryLoadSubscription = pubsub.subscribe("loadedChartLibrary", onLoadChartLibrary)
 	function onFetchJobs(topic, data){
@@ -414,9 +413,14 @@ $(document).ready(function(){
 	function init(){
 		pubsub.publish("pageVisit", 1);
 		fetchDashboardStats(recruiterId);
-		fetchJobs({pageContent: 5, pageNumber: 1, type: "published"}, recruiterId);
-		fetchFollowUps(recruiterId);
-		fetchInterviews(recruiterId,{pageContent: 6, pageNumber: 1, status: 2});
+		fetchJobs({pageContent:5, pageNumber: 1, type: "published"}, recruiterId);
+		var currentDate=moment().format("YYYY-MM-DD");
+		var startdate = moment();
+		startdate = startdate.subtract(15, "days");
+		startdate = startdate.format("YYYY-MM-DD");
+		fetchFollowUps(recruiterId,{fromDate:startdate});
+		var currentDate=moment().format("YYYY-MM-DD");
+		fetchInterviews(recruiterId,{pageContent: 6, pageNumber: 1, status: 2,fromDate:currentDate});
 	}
 	init()
 
