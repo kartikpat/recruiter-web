@@ -187,15 +187,25 @@
             line-height: 1.5; }
         .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-content .button-container {
           text-align: center; }
-          .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-content .button-container button {
-            margin: 15px 0;
+          .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-content .button-container .button-wrapper {
+            height: 40px;
+            width: 180px;
+            margin: 15px auto;
             border: 0;
             background: #149075;
             color: #FFF;
-            font-size: 20px;
-            width: 50%;
-            border-radius: 4px;
-            padding: 8px; }
+            border-radius: 4px; }
+            .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-content .button-container .button-wrapper .spinner {
+              padding: 8px; }
+            .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-content .button-container .button-wrapper button {
+              border: 0;
+              background: #149075;
+              color: #FFF;
+              font-size: 20px;
+              height: 40px;
+              width: 180px;
+              border-radius: 4px;
+              padding: 8px; }
     .main-container .recruiter-plans-container .recruiter-plan-platinum {
       position: absolute;
       right: 0;
@@ -266,15 +276,25 @@
             line-height: 1.5; }
         .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-content .button-container {
           text-align: center; }
-          .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-content .button-container button {
-            margin: 15px 0;
-            border: 0px solid #4c4c4c;
+          .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-content .button-container .button-wrapper {
+            height: 40px;
+            width: 180px;
+            margin: 15px auto;
+            border: 0;
             background: #155d9a;
             color: #FFF;
-            font-size: 20px;
-            width: 50%;
-            border-radius: 4px;
-            padding: 8px; }
+            border-radius: 4px; }
+            .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-content .button-container .button-wrapper .spinner {
+              padding: 8px; }
+            .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-content .button-container .button-wrapper button {
+              border: 0px solid #4c4c4c;
+              background: #155d9a;
+              color: #FFF;
+              font-size: 20px;
+              height: 40px;
+              width: 180px;
+              border-radius: 4px;
+              padding: 8px; }
 
 .modal {
   position: fixed;

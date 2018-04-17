@@ -1,7 +1,7 @@
 @import "colors.scss";
 @import "fonts.scss";
 
-@mixin icon-container-styling {
+@mixin icon-container-styling{
     display: inline-block;
     position: absolute;
     top: 66%;
@@ -216,17 +216,28 @@
                 }
                 .button-container {
                     text-align: center;
-
-                    button {
-                        margin: 15px 0;
+                    .button-wrapper{
+                        height: 40px;
+                        width: 180px;
+                        margin: 15px auto;
                         border: 0;
                         background: $inline-link-color;
                         color: $color-white;
-                        font-size: 20px;
-                        width: 50%;
                         border-radius: 4px;
-                        padding: 8px;
-                    }
+                        .spinner{
+                            padding: 8px;
+                        }
+                        button {
+                            border: 0;
+                            background: $inline-link-color;
+                            color: $color-white;
+                            font-size: 20px;
+                            height: 40px;
+                            width: 180px;
+                            border-radius: 4px;
+                            padding: 8px;
+                        }
+                    }    
                 }
             }
         }
@@ -310,17 +321,28 @@
                 }
                 .button-container {
                     text-align: center;
-
-                    button {
-                        margin: 15px 0;
-                        border: 0px solid #4c4c4c;
-                        background: $link-color;
-                        color: $color-white;
-                        font-size: 20px;
-                        width: 50%;
-                        border-radius: 4px;
-                        padding: 8px;
-                    }
+                    .button-wrapper{
+                            height: 40px;
+                            width: 180px;
+                            margin: 15px auto;
+                            border: 0;
+                            background: $link-color;
+                            color: $color-white;
+                            border-radius: 4px;
+                            .spinner{
+                                padding: 8px;
+                            }
+                        button {
+                            border: 0px solid #4c4c4c;
+                            background: $link-color;
+                            color: $color-white;
+                            font-size: 20px;
+                            height: 40px;
+                            width: 180px;
+                            border-radius: 4px;
+                            padding: 8px;
+                        }
+                    }   
                 }
             }
         }
