@@ -43,13 +43,14 @@
 				display:inline-block;
 				width:auto;
 				border:0;
-				padding:10px 40px 10px 10px;
+				padding:10px 40px 12px 10px;
 				background-color:transparent;
 				margin-bottom:10px;
 				background-image:url("/static/images/minimal_select_dropdown.svg");
 				font-size: 18px;
 				font-weight: 600;
 				color: #5d5d5d!important;
+				background-size: 15px;
 			}
 		}
 		select::-ms-expand {
@@ -60,7 +61,8 @@
 			padding:5px 0 0 0;
 
 			button {
-				padding: 6px 18px!important;
+				padding:8px 18px!important;
+				font-size: 16px!important;
 				@include button($button-color-green)
 				
 			}
@@ -113,6 +115,7 @@
 			    	vertical-align: middle;
 					font-size:0;
 					border-radius: 4px;
+					color: #2b2b2b;
 			    	.table-cell {
 						display:inline-block;
 						font-size:14px;
@@ -132,15 +135,16 @@
 								color:$color-label;
 								text-transform:uppercase;
 								font-weight: 600;
-								color: #212121;
+								
 							}
 
 							&.job-title {
-								width:32%;
+								width:38%;
 							}
 							&.actions {
-								width: 29%;
-								padding-right: 25px;
+								width: 23%;
+							//	padding-right: 25px;
+								padding-left: 15px;
 							}
 							&.created {
 								width: 13%;
@@ -154,7 +158,7 @@
 							vertical-align:top;
 							padding:15px 10px;
 							&.actions {
-								width: 29%;
+								width: 23%;
 								padding-right: 25px;
 							}
 							&.created {
@@ -169,7 +173,7 @@
 							}
 
 							&.title {
-								width:32%;
+								width:38%;
 
 								span {
 									&.job-title {
@@ -211,7 +215,7 @@
 								}
 								i {
 									cursor:pointer;
-									 color: #757575;
+									color: #2b2b2b;
 									span.tooltip-message {
 									    position: absolute;
 									    background: $color-white;
@@ -247,7 +251,14 @@
 									.icon-star-2::before {
 										content: '\e815';
 										color: #e97e00;
-									}									
+									}	
+									.icon-twitter_logo::before {
+										content: '\e816';
+										font-size: 18px;
+										margin: 0;
+										margin-top: 4px;
+   										line-height: 0;
+									}								
 									&.job-cancel {
 										margin-left: 0;
 									}
@@ -264,7 +275,7 @@
 									    // border: 1px solid #e8e8e8;
 									    display: inline-block;
 									    padding: 1px;
-									    border-radius: 4px;
+									    // border-radius: 4px;
 									    text-align: center;
 									    color: #757575;
 										font-size: 16px;
@@ -279,11 +290,7 @@
 										&.icon-twitter {
 											border-color: #1da1f2;
 										}
-										.icon-twitter_logo::before {
-											content: '\e816';
-											font-size: 18px;
-											display: table-cell;
-										}
+										
 									}
 									span {
 										display:none;

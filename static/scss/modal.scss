@@ -27,6 +27,17 @@
 		@include button($button-color-green)
 		margin: 0;
 	}
+    .button-wrapper {
+        @include button($button-color-green)
+        margin: 0;
+        width: auto;
+        height: 28px;
+        padding: 0;
+        text-align: center;
+        .spinner {
+            padding: 6px 25px;
+        }
+    }
 }
 
 .modal_header {

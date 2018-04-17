@@ -1,9 +1,25 @@
-function Plans(){
+function Plans() {
 
-   var settings ={};
+   var settings = {};
 
    function init(){
-       settings.planContinue = $(".planContinue")
+       settings.planContinue = $(".planContinue");
+       settings.signatureBuy = $("#signature-buy");
+       settings.platinumBuy = $("#platinum-buy");
+   }
+
+   function onClickSignatureBuy(fn) {
+       settings.signatureBuy.click(function(e){
+           e.stopPropagation()
+           openSignatureModal()
+       });
+   }
+
+   function onClickPlatinumBuy(fn) {
+       settings.platinumBuy.click(function(e){
+           e.stopPropagation()
+           openPlatinumModal()
+       });
    }
 
    function onClickBuyPlan(fn) {
@@ -13,8 +29,26 @@ function Plans(){
        })
    }
 
+   function openModal(type) {
+       if(type == "signature") {
+           addBodyFixed()
+           settings.jobRefreshModal.removeClass("hidden")
+           return
+       }
+       if(type == "platinum") {
+           addBodyFixed()
+           settings.jobUnpublishModal.removeClass("hidden")
+           return
+       }
+       addBodyFixed()
+       settings.jobMakePremiumModal.removeClass("hidden")
+
+   }
+
    return {
        init: init,
-       onClickBuyPlan: onClickBuyPlan
+       onClickBuyPlan: onClickBuyPlan,
+       onClickSignatureBuy: onClickSignatureBuy,
+       onClickPlatinumBuy: onClickPlatinumBuy
    }
 }

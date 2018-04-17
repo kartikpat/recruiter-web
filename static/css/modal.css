@@ -269,9 +269,6 @@
 .icon-up_arrow:before {
   content: '\e842'; }
 
-.icon-star:before {
-  content: '\e829'; }
-
 .icon-review:before {
   content: '\e81c'; }
 
@@ -589,9 +586,6 @@
 
 .icon-up_arrow:before {
   content: '\e842'; }
-
-.icon-star:before {
-  content: '\e829'; }
 
 .icon-review:before {
   content: '\e81c'; }
@@ -966,6 +960,43 @@ span.sticker {
       .modal_wrapper button.edit img {
         width: 17px;
         height: 17px; }
+  .modal_wrapper .button-wrapper {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: #1f8f75;
+    border-color: #8f8a8a;
+    border-radius: 4px;
+    padding: 6px 25px;
+    font-size: 14px;
+    margin: 0 5px;
+    color: #FFF;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    margin: 0;
+    width: auto;
+    height: 28px;
+    padding: 0;
+    text-align: center; }
+    .modal_wrapper .button-wrapper.green {
+      background-color: #1f8f75; }
+    .modal_wrapper .button-wrapper.red {
+      background-color: #af595a; }
+    .modal_wrapper .button-wrapper.white {
+      border: 1px solid #8f8a8a;
+      color: #2b2b2b; }
+    .modal_wrapper .button-wrapper.edit {
+      padding: 3px 9px; }
+      .modal_wrapper .button-wrapper.edit img {
+        width: 17px;
+        height: 17px; }
+    .modal_wrapper .button-wrapper .spinner {
+      padding: 6px 25px; }
 
 .modal_header {
   padding: 20px 40px;

@@ -522,18 +522,15 @@ jQuery(document).ready( function() {
     })
 
     theJob.onClickSubmitUnpublishJob(function(reason){
-        theJob.closeModal()
-		theJob.showLoaderOverlay()
+        theJob.showSpinner("unpublish");
 		return submitUnpublishJob(recruiterId, globalParameters.jobId, {reasonId: reason});
 	});
 	theJob.onClickSubmitRefreshJob(function(jobId){
-        theJob.closeModal()
-		theJob.showLoaderOverlay()
+        theJob.showSpinner("refresh");
 		return submitRefreshJob(recruiterId,jobId);
 	})
     theJob.onClickSubmitPremiumJob(function(){
-        theJob.closeModal()
-		theJob.showLoaderOverlay()
+        theJob.showSpinner("premium");
 		return submitPremiumJob(recruiterId, globalParameters.jobId);
 	})
     theJob.onChangeDefaultCalendar(function(calendarId) {
@@ -545,7 +542,6 @@ jQuery(document).ready( function() {
             }
         }
         setDefaultCalendar(recruiterId, jobId, calendarId, obj, {})
-        //postRequestDefaultCalendar
     })
 
      aCandidate.onClickAddTag(function(applicationId, parameters){
@@ -809,6 +805,7 @@ jQuery(document).ready( function() {
     }
 
     function onSuccessfullSetDefaultCalendar(topic, res) {
+        theJob.setDefaultCalendar(res.data)
         toastNotify(1, "Default Calendar Set.")
     }
 
@@ -882,19 +879,20 @@ jQuery(document).ready( function() {
     }
 
     function onSuccessfulUnpublishedJob(topic, data) {
-        theJob.hideLoaderOverlay()
-		toastNotify(1, "Job Unpublish Successfully")
+        theJob.hideSpinner("unpublish")
+        theJob.closeModal()
+		toastNotify(1, "Job Unpublished Successfully")
 		setTimeout(function(){
 			 location.reload()
 		 }, 2000);
 	}
 
 	function onFailedUnpublishedJob(topic,data) {
-        theJob.openModal("unpublish")
 		errorHandler(data)
 	}
 	function onSuccessfulRefreshJob(topic, data){
-        theJob.hideLoaderOverlay()
+        theJob.hideSpinner("refresh")
+        theJob.closeModal()
         toastNotify(1, "Job Refreshed Successfully")
         setTimeout(function(){
              location.reload()
@@ -902,12 +900,12 @@ jQuery(document).ready( function() {
 	}
 
 	function onFailedRefreshJob(topic, data){
-        theJob.openModal("refresh")
 		errorHandler(data)
 	}
 
 	function onSuccessfulPremiumJob(topic, data){
-        theJob.hideLoaderOverlay()
+        theJob.hideSpinner("premium")
+        theJob.closeModal()
         toastNotify(1, "Job Made Premium Successfully")
         setTimeout(function(){
              location.reload()
@@ -915,7 +913,6 @@ jQuery(document).ready( function() {
 	}
 
 	function onFailedPremiumJob(topic, data){
-        theJob.openModal("premium")
 		errorHandler(data)
 	}
 

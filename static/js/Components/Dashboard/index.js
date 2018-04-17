@@ -13,13 +13,20 @@ function Notifications(){
 
 	function onClickShortlistCandidate(fn) {
 	   settings.notificationContainer.on('click', settings.candidateShortlistButtonClass, function(event) {
-	        var status = $(this).attr("data-status");
 	        var applicationId = $(this).closest(settings.notificationRowClass).attr("data-application-id")
 	        var jobId = $(this).closest(settings.notificationRowClass).attr('data-job-id');
 	        return fn(applicationId, jobId);
-
 	    })
 	}
+
+	function onClickRejectCandidate(fn) {
+	   settings.notificationContainer.on('click', settings.candidateRejectButtonClass, function(event) {
+	        var applicationId = $(this).closest(settings.notificationRowClass).attr("data-application-id")
+	        var jobId = $(this).closest(settings.notificationRowClass).attr('data-job-id');
+	        return fn(applicationId, jobId);
+	    })
+	} 
+
 	function candidateActionTransition(applicationId){
 		 settings.notificationContainer.find(settings.notificationRowClass+'[data-application-id="'+applicationId+'"]').remove();
 		 if(settings.notificationContainer.find(settings.notificationRowClass).length <1)
@@ -27,6 +34,7 @@ function Notifications(){
 	}
 	return {
 		onClickShortlistCandidate: onClickShortlistCandidate,
+		onClickRejectCandidate: onClickRejectCandidate,
 		candidateActionTransition: candidateActionTransition
 	}
 }
@@ -61,9 +69,11 @@ $(document).ready(function(){
 	initializeTooltip();
 	var notificationOb = Notifications();
 	notificationOb.onClickShortlistCandidate(function(applicationId, jobId){
-		console.log(applicationId);
-		console.log(jobId);
 		setCandidateAction(recruiterId, jobId, "shortlist" , applicationId, {});
+	})
+
+	notificationOb.onClickRejectCandidate(function(applicationId, jobId){
+		setCandidateAction(recruiterId, jobId, "reject" , applicationId, {});
 	})
 
 	function initializeTooltip() {
@@ -248,15 +258,15 @@ $(document).ready(function(){
 			if( currentHour > 5 && currentHour < 12	){
 				text = "Good Morning, "+recruiterName
 				iconClass="icon-sunrise";
-			}	
+			}
 			if( currentHour > 11 && currentHour < 17 ){
 				text = "Good Afternoon, "+recruiterName
 				iconClass="icon-afternoon";
-			}	
+			}
 			if( currentHour > 17 && currentHour < 5 ){
 				text = "Good Evening, "+recruiterName
 				iconClass="icon-sunset";
-			}	
+			}
 		}
 		var data = {
 			text: text,
@@ -395,7 +405,7 @@ $(document).ready(function(){
 		}
 	}
 
-	
+
 
 	var fetchInterviewsSubscription = pubsub.subscribe("fetchedInterviews", onFetchInterviews);
 

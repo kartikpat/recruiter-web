@@ -99,7 +99,7 @@ function Jobs() {
 			settings.jobMakePremiumButton.attr('data-premium-job-id', "");
 			if(config["availableCredits"] > 0) {
 				settings.jobMakePremiumButton.attr('data-premium-job-id', jobId);
-				settings.jobMakePremiumButton.removeClass("hidden")
+				settings.jobMakePremiumModal.find(".button-wrapper").removeClass("hidden")
 				settings.jobMakePremiumModal.find(".modalTextSecondary").text("This job will be highlighted and moved to top of the list for 15 days starting today. You will have "+(parseInt(config["availableCredits"]) - 1)+" credits left.")
 				addBodyFixed()
 				settings.jobMakePremiumModal.removeClass('hidden');
@@ -346,8 +346,6 @@ function Jobs() {
 		settings.rowContainer.empty()
 	}
 
-
-
 	function hideShell() {
 		settings.tableRowShell.addClass("hidden")
 	}
@@ -356,28 +354,34 @@ function Jobs() {
 		settings.tableRowShell.removeClass("hidden")
 	}
 
-	function showLoaderOverlay() {
-		settings.loaderOverlay.removeClass("hidden")
-	}
-
-	function hideLoaderOverlay() {
-		settings.loaderOverlay.addClass("hidden")
-	}
-
-	function openModal(type) {
+	function showSpinner(type) {
 		if(type == "refresh") {
-			addBodyFixed()
-			settings.jobRefreshModal.removeClass("hidden")
+			settings.jobRefreshButton.addClass('hidden')
+			settings.jobRefreshModal.find(".spinner").removeClass("hidden")
 			return
 		}
 		if(type == "unpublish") {
-			addBodyFixed()
-			settings.jobUnpublishModal.removeClass("hidden")
+			settings.jobUnpublishButton.addClass('hidden')
+			settings.jobUnpublishModal.find(".spinner").removeClass("hidden")
 			return
 		}
-		addBodyFixed()
-		settings.jobMakePremiumModal.removeClass("hidden")
+		settings.jobMakePremiumButton.addClass('hidden')
+		settings.jobMakePremiumModal.find(".spinner").removeClass('hidden')
+	}
 
+	function hideSpinner(type){
+		if(type == "refresh") {
+			settings.jobRefreshButton.removeClass('hidden')
+			settings.jobRefreshModal.find(".spinner").addClass("hidden")
+			return
+		}
+		if(type == "unpublish") {
+			settings.jobUnpublishButton.removeClass('hidden')
+			settings.jobUnpublishModal.find(".spinner").addClass("hidden")
+			return
+		}
+		settings.jobMakePremiumButton.removeClass('hidden')
+		settings.jobMakePremiumModal.find(".spinner").addClass('hidden')
 	}
 
 	function hideEmptyView() {
@@ -390,8 +394,6 @@ function Jobs() {
 		init: init,
 		addToList: addToList,
 		onClickJobEdit: onClickJobEdit,
-		// onClickJobCancel: onClickJobCancel,
-		// onClickJobRefresh: onClickJobRefresh,
 		onClickSubmitUnpublishJob: onClickSubmitUnpublishJob,
 		onClickSubmitRefreshJob: onClickSubmitRefreshJob,
 		setConfig : setConfig,
@@ -399,14 +401,13 @@ function Jobs() {
 		onClickSubmitPremiumJob: onClickSubmitPremiumJob,
 		onChangeJobFilters: onChangeJobFilters,
 		closeModal: closeModal,
-		openModal: openModal,
 		hideShell: hideShell,
 		showShell: showShell,
-		showLoaderOverlay: showLoaderOverlay,
-		hideLoaderOverlay: hideLoaderOverlay,
 		emptyList: emptyList,
 		hideEmptyView: hideEmptyView,
-		getType: getType
+		getType: getType,
+		showSpinner: showSpinner,
+		hideSpinner: hideSpinner
 	}
 
 	function initializeTooltip() {

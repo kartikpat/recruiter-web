@@ -41,7 +41,6 @@
 			],
 			"prod": [
 				"static/build/css/reset-password.min.css"
-
 			]
 		},
 		"scripts": {
@@ -171,7 +170,6 @@
 				"static/js/Components/PostJob/model.js",
 				"static/js/Components/PostJob/index.js",
 				"static/js/Utilities/toastNotifier.js"
-
 			],
 			"prod" : [
 				"static/build/js/post-job.min.js"
@@ -204,13 +202,14 @@
 				"static/js/utilities.js",
 				"static/js/vendor/swipe.js",
 				"static/js/premium-posting.js",
+				"static/js/vendor/slick.js",
 				"static/js/Utilities/toastNotifier.js",
-				"static/js/Services/buyPlan.js",
+				"static/js/Services/buyPlans.js",
+				"static/js/Services/buyPlanClick.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Components/RecruiterPlan/model.js",
 				"static/js/Components/RecruiterPlan/index.js"
-
 			],
 			"prod" : [
 				"static/build/js/premium-posting.min.js"
