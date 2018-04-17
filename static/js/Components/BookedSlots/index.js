@@ -2,7 +2,8 @@ var globalParameters = {
     pageContent: 10,
     pageNumber: 1,
     InterviewListLength: null,
-    calendarId: -1
+    calendarId: -1,
+    fromDate: (moment().format("YYYY-MM-DD")) + ":00:00:00"
 }
 
 jQuery(document).ready( function() {
@@ -18,12 +19,13 @@ jQuery(document).ready( function() {
        globalParameters.pageNumber = 1;
        parameters.pageNumber= globalParameters.pageNumber;
        parameters.pageContent= globalParameters.pageContent;
+       globalParameters.calendarId = calendarId;
        if(slots.getStartDate() != '') {
-           parameters.fromDate = slots.getStartDate();
+           globalParameters.fromDate = slots.getStartDate();
        }
+       parameters.fromDate = globalParameters.fromDate;
        if(parseInt(calendarId) != -1) {
            parameters.calendarId = parseInt(calendarId);
-           globalParameters.calendarId = parameters.calendarId;
        }
        fetchInterviews(recruiterId, parameters);
    })
@@ -36,20 +38,20 @@ jQuery(document).ready( function() {
            calendarId: parseInt(calendarId),
            block: reason
        }
-
        return cancelInterviewInvite(recruiterId, jobId, applicationId, data);
    });
 
     function onChangeDate(){
-        slots.emptySlots();
-        slots.showShell();
+       slots.emptySlots();
+       slots.showShell();
        var parameters = {};
        globalParameters.pageNumber = 1;
        parameters.pageNumber= globalParameters.pageNumber;
        parameters.pageContent= globalParameters.pageContent;
        if(slots.getStartDate() != '') {
-           parameters.fromDate = slots.getStartDate();
+           globalParameters.fromDate = slots.getStartDate();
        }
+       parameters.fromDate = globalParameters.fromDate;
        if(globalParameters.calendarId != -1) {
            parameters.calendarId = globalParameters.calendarId;
        }
@@ -60,10 +62,11 @@ jQuery(document).ready( function() {
         onChangeDate()
     })
 
-
    var parameters = {}
    parameters.pageNumber = globalParameters.pageNumber;
    parameters.pageContent = globalParameters.pageContent;
+   parameters.fromDate = globalParameters.fromDate;
+
    //Initial call
    fetchInterviews(recruiterId, parameters);
 
@@ -85,7 +88,6 @@ jQuery(document).ready( function() {
    }
 
    function onInterviewsFetchSuccess(topic, data){
-
         tickerLock = false;
         hideLoader()
         slots.hideShell()
@@ -127,9 +129,7 @@ jQuery(document).ready( function() {
 
                parameters.pageNumber = globalParameters.pageNumber;
                parameters.pageContent = globalParameters.pageContent;
-               if(slots.getStartDate() != '') {
-                   parameters.fromDate = slots.getStartDate();
-               }
+               parameters.fromDate = globalParameters.fromDate;
                if(globalParameters.calendarId != -1) {
                    parameters.calendarId = globalParameters.calendarId;
                }

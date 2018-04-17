@@ -133,7 +133,7 @@ function Candidate() {
             iconTelephoneVer : modal.find(".iconTelephoneVer"),
             iconEmailVer :modal.find(".iconEmailVer")
         }
-        
+
     }
 
     function getEducationElement() {
@@ -306,18 +306,6 @@ function Candidate() {
             settings.mobCandidateEditComment.addClass("hidden");
         }
 
-        // aData["recommendation"] = [ {
-        //             "name": "ankur saini",
-        //             "url": "https://www.linkedin.com/in/ankur-saini-b60686141",
-        //             "text": "hello<br/><br/>thanks and regards",
-        //             "img": null
-        //         },
-        //         {
-        //             "name": "Ritu Bala",
-        //             "url": "https://www.linkedin.com/in/balaritu",
-        //             "text": "Testing"
-        //         }]
-        // aData["extraRecom"] = 1;
         if(aData["recommendation"].length > 0) {
             var recStr = '';
 
@@ -338,6 +326,7 @@ function Candidate() {
             item.recommendationList.html(recStr)
             if(aData["extraRecom"]) {
                 settings.seeMoreRec.removeClass("hidden");
+                settings.seeMoreRec.next().removeClass("hidden");
             }
             item.recommendationList.closest(".recommendations").removeClass("hidden");
         }

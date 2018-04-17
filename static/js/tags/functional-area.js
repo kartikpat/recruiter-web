@@ -13,7 +13,7 @@ var functionalAreaTagsData = [
       "val": 7
 },
 {
-     "text": "Analytics &amp; Business Intelligence",
+     "text": "Analytics and Business Intelligence",
       "val": 2
 },
 {
@@ -89,7 +89,7 @@ var functionalAreaTagsData = [
       "val": 14
 },
 {
-     "text": "Pharma / Biotech / Healthcare / Medical / R&amp;D",
+     "text": "Pharma / Biotech / Healthcare / Medical / R&D",
       "val": 16
 },
 {
@@ -101,7 +101,7 @@ var functionalAreaTagsData = [
       "val": 18
 },
 {
-     "text": "Research &amp; Development",
+     "text": "Research and Development",
       "val": 26
 },
 {
@@ -113,7 +113,7 @@ var functionalAreaTagsData = [
       "val": 29
 },
 {
-     "text": "Training &amp; Development",
+     "text": "Training and Development",
       "val": 30
 },
 {

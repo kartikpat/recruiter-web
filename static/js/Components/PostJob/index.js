@@ -28,6 +28,7 @@ $(document).ready(function(){
 		$('.loader-container').addClass("hidden");
 	}
 	fetchJobTags(recruiterId)
+	
  	function onSuccessfulSubmitJob(topic, data){
 		var jobPostMessage;
 		spinner();
@@ -39,7 +40,7 @@ $(document).ready(function(){
 		}
 		if(profile["availableCredits"] > 0)
 			return window.location.href = "/my-jobs?jobPostMessage="+encodeURIComponent(jobPostMessage)+"";
-		window.location.href = "/recruiter/recruiter-plan?jobPostMessage="+encodeURIComponent(jobPostMessage)+""
+		window.location.href = "/recruiter/recruiter-plan?jobPostMessage="+encodeURIComponent(jobPostMessage)+"&jobId="+data["data"]+""
  	}
 
 	function onFailedSubmitJob(topic, data) {

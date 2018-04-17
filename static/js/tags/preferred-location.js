@@ -325,7 +325,7 @@ var prefeLocationTagsData = [
         "val": 144
   },
   {
-       "text": "Jammu &amp; Kashmir - Other",
+       "text": "Jammu and Kashmir - Other",
         "val": 245
   },
   {
@@ -745,7 +745,7 @@ var prefeLocationTagsData = [
         "val": 142
   },
   {
-       "text": "Dadra &amp; Nagar Haveli",
+       "text": "Dadra and Nagar Haveli",
         "val": 275
   },
   {

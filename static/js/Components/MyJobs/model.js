@@ -384,6 +384,11 @@ function Jobs() {
 		settings.jobMakePremiumModal.find(".spinner").addClass('hidden')
 	}
 
+	function closeModal() {
+		removeBodyFixed()
+		$(".modal").addClass("hidden")
+	}
+
 	function hideEmptyView() {
 		settings.emptyView.addClass("hidden")
 		settings.headings.removeClass('hidden');
@@ -400,7 +405,6 @@ function Jobs() {
 		onClickJobMakePremium: onClickJobMakePremium,
 		onClickSubmitPremiumJob: onClickSubmitPremiumJob,
 		onChangeJobFilters: onChangeJobFilters,
-		closeModal: closeModal,
 		hideShell: hideShell,
 		showShell: showShell,
 		emptyList: emptyList,
