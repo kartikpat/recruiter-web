@@ -1043,9 +1043,8 @@ span.sticker {
       font-size: 11px;
       color: #ec1c2a; }
   .wrap .container .Availability {
-    margin-left: 27px;
-    margin-top: 76px;
-    margin-bottom: 40px; }
+    margin-left: 30px;
+    margin-top: 76px; }
     .wrap .container .Availability .heading {
       font-family: "Droid Sans", sans-serif;
       color: #149075;
@@ -1104,7 +1103,7 @@ span.sticker {
     display: inline-block; }
     .wrap .second-container .available-hours {
       margin-top: 37px;
-      margin-left: 35px; }
+      margin-left: 30px; }
       .wrap .second-container .available-hours .Days-available {
         float: left;
         margin-right: 5%; }
@@ -1419,7 +1418,6 @@ span.sticker {
       .wrap .second-container .available-hours .start-date {
         clear: both;
         float: left;
-        margin-left: 10px;
         width: 90%;
         margin-top: -50px; }
         .wrap .second-container .available-hours .start-date span {
@@ -1479,7 +1477,6 @@ span.sticker {
         clear: both;
         float: left;
         margin-top: 46px;
-        margin-left: 10px;
         margin-bottom: 30px;
         width: 90%; }
         .wrap .second-container .available-hours .end-date span {

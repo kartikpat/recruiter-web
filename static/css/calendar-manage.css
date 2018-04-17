@@ -1343,7 +1343,8 @@ span.sticker {
     .page-content .container .header-slot {
       background-color: #f7f7f7;
       width: 100%;
-      padding: 15px 0; }
+      padding: 15px 0;
+      display: inline-block; }
       .page-content .container .header-slot .tagline {
         color: #2b2b2b;
         font-size: 18px;
@@ -1431,7 +1432,6 @@ span.sticker {
         display: inline-block;
         padding: 0%;
         background-color: white;
-        margin-top: -5px;
         border-bottom-left-radius: 4px;
         border-bottom-right-radius: 4px; }
         .page-content .container .wrapper .schedule-container .schedule {
@@ -1532,8 +1532,8 @@ span.sticker {
       width: 100%;
       float: left; }
       .page-content .container .header-slot {
-        border-top-left-radius: 6px;
-        border-top-right-radius: 6px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
         border-style: solid;
         border-width: 1px;
         border-color: #e8e8e8;
@@ -1541,7 +1541,7 @@ span.sticker {
         background-color: #f3fbfb;
         height: 60px;
         width: 100%;
-        margin-top: 5px; }
+        border-bottom: none; }
         .page-content .container .header-slot .tagline {
           color: #2b2b2b;
           font-size: 16px;
@@ -1550,7 +1550,7 @@ span.sticker {
           text-align: left;
           display: inline-block;
           margin-left: 20px;
-          margin-top: 20px; }
+          margin-top: 6px; }
         .page-content .container .header-slot .manage-Calendar {
           display: inline-block;
           border-radius: 4px;
@@ -1565,7 +1565,7 @@ span.sticker {
           line-height: 28px;
           cursor: pointer;
           float: right;
-          margin-top: 17px;
+          margin-top: 0px;
           margin-bottom: 30px;
           margin-right: 25px; }
           .page-content .container .header-slot .manage-Calendar a {
@@ -1576,8 +1576,7 @@ span.sticker {
         border-color: #e8e8e8;
         box-sizing: border-box;
         background-color: #ffffff;
-        width: 100%;
-        margin-top: -17px; }
+        width: 100%; }
         .page-content .container .wrapper .action {
           display: none; }
         .page-content .container .wrapper .schedule-container {
@@ -1680,7 +1679,7 @@ span.sticker {
       height: 70px;
       width: 100%; }
       .page-content .container .header-slot .tagline {
-        margin-top: 23px;
+        margin-top: 13px;
         margin-left: 10px;
         font-size: 17px; }
       .page-content .container .header-slot .manage-Calendar {
@@ -1698,7 +1697,7 @@ span.sticker {
         float: right;
         cursor: pointer;
         margin-right: 10px;
-        margin-top: 18px;
+        margin-top: 10px;
         margin-bottom: 30px;
         font-size: 12px; }
     .page-content .container .wrapper {
@@ -1730,7 +1729,7 @@ span.sticker {
 
 @media only screen and (max-width: 320px) {
   .page-content .container .header-slot .tagline {
-    margin-top: 23px;
+    margin-top: 15px;
     margin-left: 10px;
     font-size: 14px; }
   .page-content .container .header-slot .manage-Calendar {
