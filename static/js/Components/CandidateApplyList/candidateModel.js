@@ -252,11 +252,11 @@ function Candidate() {
         item.preferredLocation.text(preferredLocationStr);
         item.contact.text(aData["phone"] || "NA");
         item.email.text(aData["email"]||"NA");
-        console.log(aData["emailVer"])
+
         if(ifKeyExists("emailVer", aData) && aData["emailVer"]) {
             item.iconEmailVer.removeClass("hidden")
         }
-        console.log(aData["phoneVer"])
+
         if(ifKeyExists("phoneVer", aData) && aData["phoneVer"]) {
             item.iconTelephoneVer.removeClass("hidden")
         }
@@ -316,18 +316,6 @@ function Candidate() {
             })
         }
         item.profList.html(profStr)
-        aData["recommendation"] = [ {
-                    "name": "ankur saini",
-                    "url": "https://www.linkedin.com/in/ankur-saini-b60686141",
-                    "text": "hello<br/><br/>thanks and regards",
-                    "img": null
-                },
-                {
-                    "name": "Ritu Bala",
-                    "url": "https://www.linkedin.com/in/balaritu",
-                    "text": "Testing"
-                }]
-        aData["extraRecom"] = 1;
         if(aData["recommendation"].length > 0) {
             var recStr = '';
 
@@ -348,6 +336,7 @@ function Candidate() {
             item.recommendationList.html(recStr)
             if(aData["extraRecom"]) {
                 item.seeMoreRec.removeClass("hidden");
+                item.seeMoreRec.next().removeClass("hidden");
             }
             item.recommendationList.closest(".recommendations").removeClass("hidden");
         }
@@ -490,6 +479,8 @@ function Candidate() {
         item.savedButton.html("<span class='icon'><i class='icon-star'></i></span>Save for Later");
         item.recommendationList.closest(".recommendations").addClass("hidden");
         settings.seeMoreRec.attr("data-clicked", "false");
+        settings.seeMoreRec.addClass("hidden");
+        settings.seeMoreRec.next().addClass("hidden");
         item.iconTelephoneVer.addClass("hidden")
         item.iconEmailVer.addClass("hidden")
         item.contact.text('');

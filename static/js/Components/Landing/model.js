@@ -78,7 +78,7 @@ function userCredentials(){
 				break;
 		}
 		if(res.status == 404) {
-			return user.email.next('.error').html(message + "<span class='register-link'>Looking to register? <a href='' style='font-size:13px;' class='link-color trigger-register-registration-modal'>Register</a></span>")
+			return user.email.next('.error').html(message + "<span class='register-link'> <a href='' style='font-size:13px;' class='link-color trigger-register-registration-modal'>Looking to register?</a></span>")
 		}
 		if(res.status == 401) {
 			return user.password.next('.error').html(message + "<span class='forgot-pass'><a href='/forgot-password' style='font-size:13px;' class='link-color forgot-recruiter-password'>recover it.</a></span>")

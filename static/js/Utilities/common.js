@@ -164,9 +164,16 @@ function removeParam(key, sourceURL) {
     return rtn;
 }
 
-function sortArrayOfObjectsByKey(arr) {
+function sortArrayOfObjectsByKey(arr, key) {
 	arr.sort(function(a, b){
-		  return a.name.localeCompare(b.name)
+		  return a[key].localeCompare(b[key])
+	})
+	return arr;
+}
+
+function sortArrayOfObjectsByKeyDescending(arr, key) {
+	arr.sort(function(a, b){
+		  return b[key].localeCompare(a[key])
 	})
 	return arr;
 }

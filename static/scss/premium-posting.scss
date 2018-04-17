@@ -1,6 +1,13 @@
 @import "colors.scss";
 @import "fonts.scss";
 
+.error {
+    position: absolute;
+    left: 38px !important;
+    margin: 3px 0 0 3px !important;
+
+}
+
 @mixin icon-container-styling{
     display: inline-block;
     position: absolute;
@@ -159,7 +166,7 @@
                 border-bottom: 1px solid $border-color-base;
                 text-align: center;
                 position: relative;
-               
+
                  h5 {
                     margin:10px 0;
 
@@ -237,7 +244,7 @@
                             border-radius: 4px;
                             padding: 8px;
                         }
-                    }    
+                    }
                 }
             }
         }
@@ -265,7 +272,7 @@
                 border-bottom: 1px solid $border-color-base;
                 text-align: center;
                 position: relative;
-                   
+
                      h5 {
                         margin:10px 0;
 
@@ -342,7 +349,7 @@
                             border-radius: 4px;
                             padding: 8px;
                         }
-                    }   
+                    }
                 }
             }
         }

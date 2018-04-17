@@ -13,7 +13,7 @@ $(document).ready(function(){
 	jobDetails.submitHandler(function(){
 		if(jobDetails.validate()){
 			spinner();
-			if(jobId)
+			if(jobId) 
 				submitEditJob(recruiterId ,jobId,jobDetails.getData())
 			else
 				submitNewJob(jobDetails.getData(), recruiterId);
@@ -28,6 +28,7 @@ $(document).ready(function(){
 		$('.loader-container').addClass("hidden");
 	}
 	fetchJobTags(recruiterId)
+
  	function onSuccessfulSubmitJob(topic, data){
 		var jobPostMessage;
 		spinner();
@@ -39,7 +40,7 @@ $(document).ready(function(){
 		}
 		if(profile["availableCredits"] > 0)
 			return window.location.href = "/my-jobs?jobPostMessage="+encodeURIComponent(jobPostMessage)+"";
-		window.location.href = "/recruiter/recruiter-plan?jobPostMessage="+encodeURIComponent(jobPostMessage)+""
+		window.location.href = "/recruiter/recruiter-plan?jobPostMessage="+encodeURIComponent(jobPostMessage)+"&jobId="+data["data"]+""
  	}
 
 	function onFailedSubmitJob(topic, data) {

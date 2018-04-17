@@ -50,7 +50,7 @@ jQuery(document).ready( function() {
     }
 
     function onSuccessfullFetchedTag(topic, res){
-        var arr = sortArrayOfObjectsByKey(res.data)
+        var arr = sortArrayOfObjectsByKey(res.data, "name")
 		candidates.populateTagsDropdown(arr);
 	}
 

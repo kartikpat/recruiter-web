@@ -62,7 +62,6 @@ $(document).ready(function(){
 	var postedJobsContainer = $("#postedJobsContainer");
 	var jobOtherActionsClass = ".action-panel";
 	var recentEmptyContiner=$('.recent-empty');
-
 	modalInit();
 	onClickJobRefresh();
 	onClickJobCancel();
@@ -162,7 +161,8 @@ $(document).ready(function(){
 
     onClickJobOtherActions();
 
-	var candidateApplyUrl = "/job/:publishedId/applications?type=:status";
+	var candidateApplyUrl = "/job/:publishedId/applications";
+	
 	function onStatsUpdate(topic, data){
 		data.forEach(function(aData){
 			dashboardStatsContainer.find(".block."+aData['label']+' .number').text(aData['value']);
@@ -206,7 +206,7 @@ $(document).ready(function(){
 
 		// }
 		console.log("calling onLoadChartLibrary");
-	    fetchActiveJobStats(recruiterId);
+	    fetchActiveJobStats(recruiterId,{pageContent:5,offset:0});
 	}
 	var chartLibraryLoadSubscription = pubsub.subscribe("loadedChartLibrary", onLoadChartLibrary)
 	function onFetchJobs(topic, data){
@@ -224,8 +224,8 @@ $(document).ready(function(){
 			card.find(".title .meta-content .location .label").text(location).attr('title', locationTitle);
 			card.find(".title .meta-content .experience .label").text(experience)
 			card.find(".title .meta-content .postedOn .label").text(moment(aJob['created']).format('D MMM YYYY'));
-			card.find(".stats .totalApplications .value").text(aJob["totalApplications"]).attr('href', candidateApplyUrl.replace(':publishedId', aJob['publishedId']).replace(':status', 'all'));
-			card.find(".stats .newApplications .value").text(aJob["newApplications"]).attr('href', candidateApplyUrl.replace(':publishedId', aJob['publishedId']).replace(':status', 'all'));
+			card.find(".stats .totalApplications .value").text(aJob["totalApplications"]).attr('href', candidateApplyUrl.replace(':publishedId', aJob['publishedId']).replace(':status', ''));
+			card.find(".stats .newApplications .value").text(aJob["newApplications"]).attr('href', candidateApplyUrl.replace(':publishedId', aJob['publishedId']).replace(':status', '')+"?orderBy=2&status=0");
 			var url = baseUrlJob + aJob["url"];
 
 			card.find('.action-panel .action-list-items .jobRefresh').attr("data-job-id", aJob['id']);
@@ -414,9 +414,14 @@ $(document).ready(function(){
 	function init(){
 		pubsub.publish("pageVisit", 1);
 		fetchDashboardStats(recruiterId);
-		fetchJobs({pageContent: 5, pageNumber: 1, type: "published"}, recruiterId);
-		fetchFollowUps(recruiterId);
-		fetchInterviews(recruiterId,{pageContent: 6, pageNumber: 1, status: 2});
+		fetchJobs({pageContent:5, pageNumber: 1, type: "published"}, recruiterId);
+		var currentDate=moment().format("YYYY-MM-DD");
+		var startdate = moment();
+		startdate = startdate.subtract(15, "days");
+		startdate = startdate.format("YYYY-MM-DD");
+		fetchFollowUps(recruiterId,{fromDate:currentDate});
+		var currentDate=moment().format("YYYY-MM-DD");
+		fetchInterviews(recruiterId,{pageContent: 6, pageNumber: 1, status: 2,fromDate:currentDate});
 	}
 	init()
 
