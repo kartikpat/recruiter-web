@@ -221,7 +221,6 @@ function BookedSlots() {
 		settings.calendarDropdown.append(str);
 	}
 
-
 	function startdate(fn){
         $("#startdatepicker").datepicker({
 			showOn: "button",

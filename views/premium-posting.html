@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="button-container">
-                    <button class="button" id="basic-buy" name="button">CONTINUE</button>
+                    <button class="button basic-buy" id="" name="button">CONTINUE</button>
                 </div>
             </div>
 
@@ -72,8 +72,8 @@
                 <div class="button-container">
                     <div class="button-wrapper">
                         {{>spinner}}
-                        <button id="signature-buy" class="button signatureBuy" name="button">BUY NOW</button>
-                    </div>    
+                        <button id="" data-plantype="signature" class="button signatureBuy" name="button">BUY NOW</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -103,8 +103,8 @@
                 <div class="button-container">
                     <div class="button-wrapper">
                         {{>spinner}}
-                        <button id="platinum-buy" class="button platinumBuy" name="button">BUY NOW</button>
-                    </div> 
+                        <button id="" data-plantype="platinum" class="button platinumBuy" name="button">BUY NOW</button>
+                    </div>
                </div>
             </div>
         </div>
@@ -129,7 +129,7 @@
                         </div>
                     </div>
                     <div class="button-container">
-                        <button class="button" id="basic-buy" name="button">CONTINUE</button>
+                        <button class="button basic-buy" id="" name="button">CONTINUE</button>
                     </div>
                 </div>
             </div>
@@ -167,8 +167,8 @@
                     <div class="button-container">
                         <div class="button-wrapper">
                                 {{>spinner}}
-                                <button id="signature-buy" class="button signatureBuy" name="button">BUY NOW</button>
-                        </div>  
+                                <button data-planType="signature" class="button signatureBuy" name="button">BUY NOW</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -196,8 +196,8 @@
                     <div class="button-container">
                         <div class="button-wrapper">
                                 {{>spinner}}
-                            <button id="platinum-buy" class="button platinumBuy" name="button">BUY NOW</button>
-                        </div>    
+                            <button data-plantype="platinum" class="button platinumBuy" name="button">BUY NOW</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -223,7 +223,7 @@
                 <input id="signature-contact" type="text" value="{{profile.phone}}">
                 <div id="title_label" class="error hidden"></div>
             </div>
-            <div class="action-buttons"><button data-planType="signature" class="signature-continue planContinue">Continue</button></div>
+            <div class="action-buttons"><button data-plantype="signature" class="signature-continue planContinue">Continue</button></div>
         </div>
     </div>
 </div>
@@ -245,7 +245,7 @@
                     <input id="platinum-contact" type="text" value="{{profile.phone}}">
                     <div id="title_label" class="error hidden"></div>
                 </div>
-				<div class="action-buttons"><button data-planType="platinum" class="platinum-continue planContinue">Continue</button></div>
+				<div class="action-buttons"><button data-plantype="platinum" class="platinum-continue planContinue">Continue</button></div>
 			</div>
         </div>
 

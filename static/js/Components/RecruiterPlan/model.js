@@ -4,51 +4,106 @@ function Plans() {
 
    function init(){
        settings.planContinue = $(".planContinue");
-       settings.signatureBuy = $("#signature-buy");
-       settings.platinumBuy = $("#platinum-buy");
+       settings.signatureBuy = $(".signatureBuy");
+       settings.platinumBuy = $(".platinumBuy");
+       settings.planType = '';
+       settings.signatureModal = $("#signature-modal");
+       settings.platinumModal = $("#platinum-modal");
+       settings.basicBuy = $(".basic-buy");
+
+       onClickBasicBuy()
+
+       onChangeInput()
+   }
+
+   function onChangeInput() {
+       $(".modal").find("input").keyup(function(event){
+           if (event.keyCode === 13) {
+               return
+           }
+           $(".modal").find("input").next().addClass("hidden")
+       })
+   }
+
+   function onClickBasicBuy() {
+       settings.basicBuy.click(function() {
+           window.location = "/my-jobs";
+       })
    }
 
    function onClickSignatureBuy(fn) {
        settings.signatureBuy.click(function(e){
-           e.stopPropagation()
-           openSignatureModal()
+           var planType = $(this).attr("data-plantype");
+           fn(planType)
        });
    }
 
    function onClickPlatinumBuy(fn) {
        settings.platinumBuy.click(function(e){
-           e.stopPropagation()
-           openPlatinumModal()
+           var planType = $(this).attr("data-plantype");
+           fn(planType)
        });
    }
 
    function onClickBuyPlan(fn) {
        settings.planContinue.click(function() {
-           var planType = $(this).attr("data-planType");
-           fn(planType)
+           var planType = $(this).attr("data-plantype");
+           var elem = $(this).closest(".modal").find("input");
+           var contact = (elem.val()).trim();
+           if(!contact) {
+               elem.next().text("Input Can't be empty.").removeClass("hidden");
+               return
+           }
+           fn(contact, planType)
        })
    }
 
    function openModal(type) {
        if(type == "signature") {
            addBodyFixed()
-           settings.jobRefreshModal.removeClass("hidden")
-           return
+           settings.signatureModal.removeClass("hidden");
        }
-       if(type == "platinum") {
+       else if(type == "platinum") {
            addBodyFixed()
-           settings.jobUnpublishModal.removeClass("hidden")
-           return
+           settings.platinumModal.removeClass("hidden");
        }
-       addBodyFixed()
-       settings.jobMakePremiumModal.removeClass("hidden")
-
    }
+
+   	function showSpinner(type) {
+   		if(type == "signature") {
+   			settings.signatureBuy.addClass('hidden')
+   			settings.signatureBuy.prev().removeClass("hidden")
+   		}
+   		else if(type == "platinum") {
+   			settings.platinumBuy.addClass('hidden')
+   			settings.platinumBuy.prev().removeClass("hidden")
+   		}
+   	}
+
+   	function hideSpinner(type){
+        if(type == "signature") {
+   			settings.signatureBuy.removeClass('hidden')
+   			settings.signatureBuy.prev().addClass("hidden")
+   		}
+   		else if(type == "platinum") {
+   			settings.platinumBuy.removeClass('hidden')
+   			settings.platinumBuy.prev().addClass("hidden")
+   		}
+   	}
+
+    function closeModal() {
+		removeBodyFixed()
+		$(".modal").addClass("hidden")
+	}
 
    return {
        init: init,
        onClickBuyPlan: onClickBuyPlan,
        onClickSignatureBuy: onClickSignatureBuy,
-       onClickPlatinumBuy: onClickPlatinumBuy
+       onClickPlatinumBuy: onClickPlatinumBuy,
+       openModal: openModal,
+       showSpinner: showSpinner,
+       hideSpinner: hideSpinner,
+       closeModal: closeModal
    }
 }

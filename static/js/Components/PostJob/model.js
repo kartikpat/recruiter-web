@@ -68,7 +68,7 @@ function Job(){
 				disableExtraSpaces: true,
 				hideOnClick: false
 			})
-			
+
 			settings.editor.subscribe('editableInput', function(event, editorElement){
 
 			})
@@ -174,30 +174,44 @@ function Job(){
 
 		if( tagsObj['label'].length > 0 )
 			ob.tags = tagsObj['label'];
+		else
+			ob.tags = [];
 		if(settings.videoUrl.val() && settings.videoUrl.val() !='')
 			ob.videoUrl = settings.videoUrl.val()
+		else
+			ob.videoUrl = ""
 		if( getMultipleCheckboxes(settings.courseType.attr('id')).length >0)
 			ob.courseType = getMultipleCheckboxes(settings.courseType.attr('id'))
+		else
+			ob.courseType = [];
 		if( getMultipleCheckboxes(settings.preferences.attr('id')).length >0)
 			ob.preferences = getMultipleCheckboxes(settings.preferences.attr('id'))
-
-		if(settings.minSal.val() && settings.maxSal.val())
+		else
+			ob.preferences = [];
+		if(settings.minSal.val() && settings.maxSal.val()) {
 			ob.sal = {
 				min: settings.minSal.val(),
 				max: settings.maxSal.val(),
 				hide: settings.confidential.is(':checked') ? 1 : 0
 			}
+		}
+		else {
+			ob.sal = {}
+ 		}
 		if(settings.minExp.val() && settings.maxExp.val())
 			ob.exp = {
 				min: settings.minExp.val(),
 				max: settings.maxExp.val()
 			}
-		if(settings.batchFrom.val() && settings.batchTo.val() )
+		if(settings.batchFrom.val() && settings.batchTo.val() ) {
 			ob.batch = {
 				min: settings.batchFrom.val(),
 				max: settings.batchTo.val()
 			}
-
+		}
+		else {
+			ob.batch = {}
+		}
 		return ob;
 	}
 
@@ -220,13 +234,14 @@ function Job(){
 		setPillValuesByObject(settings.location.attr('id'), obj["location"], cityList);
 		setPillValues(settings.location.attr('id'), obj["otherLocation"]);
 		setPillValues(settings.industry.attr('id'), obj["industry"], industryTagsData);
-		if(obj["videoUrl"])
+		if(obj["videoUrl"] != "")
 			settings.videoUrl.val(obj["videoUrl"]);
-		if(obj["courseType"])
+		if(obj["courseType"].length)
 			setMultipleCheckboxes(settings.courseType.attr('id'), obj["courseType"]);
-		if(obj["preferences"])
+		if(obj["preferences"].length)
 			setMultipleCheckboxes(settings.preferences.attr('id'), obj["preferences"]);
-		setPillValues(settings.tags.attr('id'), obj["tags"]);
+		if(obj["tags"].length)
+			setPillValues(settings.tags.attr('id'), obj["tags"]);
 		if(obj["sal"] && obj["sal"]["min"]!= 0 && obj["sal"]["max"]!=0) {
 			settings.minSal.val(obj["sal"]["min"]);
 			settings.maxSal.val(obj["sal"]["max"]);

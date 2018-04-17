@@ -1,7 +1,7 @@
 var industryMetaData = {
     "data-attribute": "menu-industry",
     "name": "industry"
-} 
+}
 
 var industryTagsData =    [
     {
@@ -101,7 +101,7 @@ var industryTagsData =    [
       "val": 47
 },
 {
-     "text": "Gems &amp; Jewellery",
+     "text": "Gems and Jewellery",
       "val": 48
 },
 {
@@ -125,7 +125,7 @@ var industryTagsData =    [
       "val": 10
 },
 {
-     "text": "Infrastructure / Oil &amp; Gas / Power / Energy",
+     "text": "Infrastructure / Oil and Gas / Power / Energy",
       "val": 11
 },
 {
@@ -145,7 +145,7 @@ var industryTagsData =    [
       "val": 52
 },
 {
-     "text": "IT-Hardware &amp; Networking",
+     "text": "IT-Hardware and Networking",
       "val": 53
 },
 {
