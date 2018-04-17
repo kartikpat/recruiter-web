@@ -744,6 +744,10 @@ function Filters(){
 		}
 	}
 
+	function hideResultsFound() {
+		settings.resultFoundText.addClass("hidden")
+	}
+
 	function hideAppliedFilters() {
 		settings.activeFiltersContainer.addClass("hidden");
 		settings.clearAllFitersButton.addClass("hidden");
@@ -900,7 +904,8 @@ function Filters(){
 		addFiltersToContainer: addFiltersToContainer,
 		getFiltersObj: getFiltersObj,
 		callClickOnFilters: callClickOnFilters,
-		changeSelectValue: changeSelectValue
+		changeSelectValue: changeSelectValue,
+		hideResultsFound: hideResultsFound
     }
 }
 

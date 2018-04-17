@@ -18,8 +18,7 @@ var errorResponses = {
 }
 
 var emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-var urlRegex = /^([a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+.*)$/;
-
+var urlRegex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})/;
 function Profile(){
 	var settings ={};
 	var config = {};
@@ -60,14 +59,14 @@ function Profile(){
 			changeFileName()
 			onChangeInputFields()
 
-			settings.editor = new MediumEditor("#profile-about", {
-				toolbar: false,
-				placeholder: {
-			        text: 'About'
-			    },
-				disableExtraSpaces: true,
-				hideOnClick: false
-			})
+			// settings.editor = new MediumEditor("#profile-about", {
+			// 	toolbar: false,
+			// 	placeholder: {
+			//         text: 'About'
+			//     },
+			// 	disableExtraSpaces: true,
+			// 	hideOnClick: false
+			// })
 
 			jQuery(".settings-sidebar, .settings-mobile-nav").on("click", "li", function() {
 				var activeSection = jQuery(this).attr("data-selector");
@@ -97,6 +96,7 @@ function Profile(){
 	}
 
 	function validate(){
+
 		if(settings.type == "profile") {
 
 			if(!(
@@ -179,16 +179,23 @@ function Profile(){
 
 		}
 		if(settings.type== "social-accounts") {
-			if(settings.facebook.val()) {
-				form.append("facebookUrl", settings.facebook.val())
+			var arr = []
+			if(!settings.facebook.val()) {
+				arr.push("facebookUrl");
 			}
-			if(settings.linkedIn.val()) {
-				form.append("lurl", settings.linkedIn.val())
+			if(!settings.linkedIn.val()) {
+				arr.push("linkedinUrl");
 			}
-			if(settings.twitter.val()) {
-				form.append("twitterUrl", settings.twitter.val())
+			if(!settings.twitter.val()) {
+				arr.push("twitterUrl");
 			}
-
+			form.append("facebookUrl", settings.facebook.val())
+			form.append("linkedinUrl", settings.linkedIn.val())
+			form.append("twitterUrl", settings.twitter.val())
+			if(arr.length) {
+				form.append("storeEmpty", true)
+				form.append("keys", arr)
+			}
 		}
 		if(settings.type== "change-password") {
 			var obj = {}
@@ -225,11 +232,11 @@ function Profile(){
 		}
 
 		settings.location.val(obj["location"]);
-		if(settings.editor){
-			settings.editor.setContent(obj["about"])
-		}
+		// if(settings.editor){
+		// 	settings.editor.setContent(obj["about"])
+		// }
 
-		settings.about.val(obj["about"]);
+		settings.about.html(obj["about"]);
 		settings.twitter.val(obj["turl"]);
 		settings.facebook.val(obj["furl"]);
 		settings.linkedIn.val(obj["lurl"]);
