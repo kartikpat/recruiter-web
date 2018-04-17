@@ -269,7 +269,8 @@ function Calendar(){
             3: "wed",
             4: "thu",
             5: "fri",
-            6: "sat"
+            6: "sat",
+            7: "sun"
         }    
      $('.TimeLines').css({"text-decoration":"line-through", "opacity":"1","color":"#b0b0b0"})   
         for(var k=0;k<days.length;k++){ 
