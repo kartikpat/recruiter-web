@@ -303,13 +303,14 @@ b{
                 line-height:40px;
                 font-size:$logoBylineFontSize;
                 display:inline-block;
-                width:14%;
-                min-width:120px;
+                // width:14%;
+                // min-width:120px
+                padding: 0 3%;    
                 text-align: center;
                 .icon-down_arrow::before{
                     color: #888;
                     font-size: 11px !important;
-                    margin-left: 2px;
+                    // margin-left: 2px;
                 }
                 &.active{
                     .header-links{
