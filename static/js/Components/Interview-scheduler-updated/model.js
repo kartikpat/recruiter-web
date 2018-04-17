@@ -163,37 +163,48 @@ function Calendar(){
                 slots.forEach(function(aRow){
                     console.log(aRow.time);
                     if(parseInt(start)>parseInt(aRow.time.to)){
+                        debugger
                         finalslots.push(aRow);
                     }
                     else if(parseInt(start)>parseInt(aRow.time.from) && parseInt(end)>parseInt(aRow.time.to)){
-                         aRow.time.to=start;
+                        debugger
+                        aRow.time.to=start;
                         finalslots.push(aRow);
                     }
                     else if(parseInt(start)<=parseInt(aRow.time.from) && parseInt(end)>=parseInt(aRow.time.to)){
                           console.log("no slot");    
                     }
                     else if(parseInt(start)<parseInt(aRow.time.from) && parseInt(end)<parseInt(aRow.time.to) && parseInt(end)>parseInt(aRow.time.from)){
+                        debugger
                         aRow.time.from=end;
                         finalslots.push(aRow);
                     }
                     else if(parseInt(start)<parseInt(aRow.time.from) && parseInt(end)<parseInt(aRow.time.to)){
+                        debugger
                         finalslots.push(aRow);
                     }
                     else{
                         var Nextend=aRow.time.to;
                         aRow.time.to=start;
                         var Nextstart=end;
-                        finalslots.push(aRow);
+                        var flag=0;
+                        if(aRow.time.to!=aRow.time.from){
+                            finalslots.push(aRow);
+                            flag++;
+                        }
                         if(Nextend!=Nextstart){
                             var Nextslot={
                                 day:aRow.day, 
-                                id:aRow.id,
+                                // id:aRow.id,
                                 slotId:aRow.slotId,
                                 time:{
                                 from:Nextstart,
                                 to:Nextend,
                                 }
-                            }   
+                            } 
+                            if(flag>1){
+                                Nextslot.id=aRow.id;
+                            }  
                             finalslots.push(Nextslot); 
                         }
                     }
