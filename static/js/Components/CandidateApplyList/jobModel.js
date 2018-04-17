@@ -88,12 +88,9 @@ function Job(){
 		if(status == "published") {
             settings.jobUnpublishButton.removeClass("hidden")
 
-
             if(data["isRefreshable"]) {
 				 settings.openJobRefreshButton.removeClass("hidden")
-
 			}
-
             if(!data["isPremium"])
                 settings.jobPremiumButton.removeClass("hidden")
 			if(data["jobSocialShareUrl"]) {
@@ -153,6 +150,7 @@ function Job(){
 
 	function onClickSubmitRefreshJob(fn) {
 		settings.refreshButton.click(function() {
+			debugger
 			var jobId = $(this).attr('data-refresh-job-id');
 			return fn(jobId);
 		});
@@ -162,7 +160,7 @@ function Job(){
 		settings.jobPremiumButton.click(function(e) {
 			e.stopPropagation()
 			if(config["availableCredits"] > 0) {
-				settings.jobPremiumModal.find(".premiumButton").removeClass("hidden");
+				settings.jobPremiumModal.find(".button-wrapper").removeClass("hidden")
 				settings.jobPremiumModal.find(".section.modal_text").text("This job will be highlighted and moved to top of the list for 15 days starting today. You will have "+(parseInt(config["availableCredits"]) - 1)+" credits left.")
 				addBodyFixed()
 				settings.jobPremiumModal.removeClass('hidden');
@@ -267,27 +265,34 @@ function Job(){
 		$(".modal").addClass("hidden")
 	}
 
-	function showLoaderOverlay() {
-		settings.loaderOverlay.removeClass("hidden")
-	}
-
-	function hideLoaderOverlay() {
-		settings.loaderOverlay.addClass("hidden")
-	}
-
-	function openModal(type) {
+	function showSpinner(type) {
 		if(type == "refresh") {
-			addBodyFixed()
-			settings.jobRefreshModal.removeClass("hidden")
+			settings.refreshButton.addClass('hidden')
+			settings.jobRefreshModal.find(".spinner").removeClass("hidden")
 			return
 		}
 		if(type == "unpublish") {
-			addBodyFixed()
-			settings.jobUnpublishModal.removeClass("hidden")
+			settings.jobUnpublishModal.find(".jobUnpublishButton").addClass('hidden')
+			settings.jobUnpublishModal.find(".spinner").removeClass("hidden")
 			return
 		}
-		addBodyFixed()
-		settings.jobPremiumModal.removeClass("hidden")
+		settings.jobPremiumModal.find(".premiumButton").addClass('hidden')
+		settings.jobMakePremiumModal.find(".spinner").removeClass('hidden')
+	}
+
+	function hideSpinner(type){
+		if(type == "refresh") {
+			settings.refreshButton.removeClass('hidden')
+			settings.jobRefreshModal.find(".spinner").addClass("hidden")
+			return
+		}
+		if(type == "unpublish") {
+			settings.jobUnpublishModal.find(".jobUnpublishButton").removeClass('hidden')
+			settings.jobUnpublishModal.find(".spinner").addClass("hidden")
+			return
+		}
+		settings.jobPremiumModal.find(".premiumButton").removeClass('hidden')
+		settings.jobMakePremiumModal.find(".spinner").addClass('hidden')
 	}
 
 	return {
@@ -301,10 +306,10 @@ function Job(){
 		onChangeDefaultCalendar: onChangeDefaultCalendar,
 		onClickSubmitPremiumJob: onClickSubmitPremiumJob,
 		closeModal: closeModal,
-		openModal: openModal,
-		showLoaderOverlay: showLoaderOverlay,
-		hideLoaderOverlay: hideLoaderOverlay,
+		showSpinner: showSpinner,
+		hideSpinner: hideSpinner,
 		getCalendarLength: getCalendarLength,
-		getSelectedCalendarId: getSelectedCalendarId
+		getSelectedCalendarId: getSelectedCalendarId,
+		setDefaultCalendar: setDefaultCalendar
 	}
 }

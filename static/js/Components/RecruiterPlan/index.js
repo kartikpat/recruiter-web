@@ -10,7 +10,7 @@ jQuery(document).ready( function() {
 		data.email = profile.email;
 		data.phone = profile.phone;
 		data.type = profile.planType;
-		buyPlanClick(recruiterId, "comment" , applicationId, ob);
+		buyPlanClick(recruiterId, data);
 	})
 	plan.onClickPlatinumBuy(function(planType) {
 		$('#platinum-buy').addClass('hidden');
@@ -19,7 +19,7 @@ jQuery(document).ready( function() {
 		data.email = profile.email;
 		data.phone = profile.phone;
 		data.type = profile.planType;
-		buyPlanClick(recruiterId, "comment" , applicationId, ob);
+		buyPlanClick(recruiterId, data);
 	})
 	plan.onClickBuyPlan(function(planType){
 		alert(planType)
