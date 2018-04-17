@@ -367,7 +367,7 @@
   line-height: 1.5; }
 
 .error-border {
-  border-color: #ee1620 !important; }
+  border-color: #ad3030 !important; }
 
 select.select-dropdown {
   font-family: inherit;
@@ -406,7 +406,7 @@ label {
 .error-field {
   margin: 7px 0 0 3px;
   font-size: 11px;
-  color: #ec1c2a; }
+  color: #ad3030; }
 
 .course-option {
   position: relative;
@@ -481,7 +481,7 @@ label {
   .input-field:focus {
     border-color: #4fa995; }
   .input-field.error-border {
-    border-color: #ee1620; }
+    border-color: #ad3030; }
 
 .radio-input input {
   display: none; }
@@ -689,7 +689,7 @@ span.sticker {
           .job_posting .post_job .post_job_form .field-container .field input[type=text]:focus {
             border-color: #4fa995; }
           .job_posting .post_job .post_job_form .field-container .field input[type=text].error-border {
-            border-color: #ee1620; }
+            border-color: #ad3030; }
         .job_posting .post_job .post_job_form .field-container .field select {
           font-family: inherit;
           display: inline-block;
