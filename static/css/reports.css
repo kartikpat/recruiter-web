@@ -3316,7 +3316,7 @@ span.sticker {
             line-height: 20px; }
             .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row.head .report-item.job-current-status {
               min-width: 100px;
-              text-transform: capitalize; }
+              text-transform: uppercase; }
             .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row.head .report-item.date {
               min-width: 75px; }
             .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row.head .report-item.title {

@@ -2,7 +2,6 @@ var isSuccess;
 
 $(document).ready(function(){
     $("#basic-buy").click(basicPosting);
-
     $(".button.signature-continue").click(signaturePosting);
     $(".button.platinum-continue").click(platinumPosting);
 	$(".close-modal, .close").click(closeModal);
