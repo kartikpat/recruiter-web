@@ -24,15 +24,17 @@
 							<div class="tag">Message for F2F Interview</div> 
 								<div class="field">
 									<textarea type="text" id="message"></textarea>
+									<div class="error"></div>
 								</div>	
-							<div class="error"></div>
+							
 						</div>
 						<div class="telephonic">
 							<div class="tag">Message for Telephonic Interview</div> 
 							<div class="field">
 								<textarea type="text" id="telephonic" ></textarea>
-							</div>
 								<div class="error"></div>
+							</div>
+								
 						</div>
 				    </div>
 			</div>
@@ -54,7 +56,7 @@
 		<div  class="available-hours"> <!left-->
 			<div class="Days-available">
 				<span id="available-span">Available Hours</span>
-				<p>Select the time during you are available</p>
+				<p>Select the time during which you are available</p>
 				
 			<div class="table" id="example">
 					<div class="error"></div>
@@ -318,15 +320,15 @@
 			
 			<div class="start-date">
 				<span>Start date</span>
-				<p>Determines when this schedule starts to produce starts time</p>
+				<p>Your available slots will start from this date</p>
 				<div class="section">
 					<div class="radio-input">
 						<input type="radio" id="radio-button-start" name="gender" class="highlighter" checked="checked">
-						<label for="radio-button-start">Now:This schedule is valid starting right now</label>
+						<label for="radio-button-start">Now: This schedule is valid starting right now </label>
 					</div>
 					<div class="radio-input">
 						<input type="radio" id="radio-button-startend" name="gender" class="highlighter">
-						<label for="radio-button-startend">Starts on date:This schedule starts on this date</label>
+						<label for="radio-button-startend">Starts on Date: This schedule starts from this date:</label>
 					</div>
 					 <input type="text" id="startdatepicker">
 					 <input type="text" id="start_date" value="" class="hidden">
@@ -334,15 +336,15 @@
 			</div>
 			<div class="end-date">
 				<span>End date</span>
-				<p>Determines when this schedule stops producing times</p>	
+				<p>Your available slots will end on this date</p>	
 				<div class="section">
 					<div class="radio-input">
 						<input type="radio" id="radio-button-tillend" name="gender-m" class="highlighter" checked="checked">
-						<label for="radio-button-tillend">Never ends:This schedule is valid forever</label>
+						<label for="radio-button-tillend">Never Ends - This schedule is valid forever</label>
 					</div>
 					<div class="radio-input">
 						<input type="radio" id="radio-button-end" name="gender-m" class="highlighter">
-						<label for="radio-button-end">Ends on date:This schedule ends before midnight on this date</label>
+						<label for="radio-button-end">Ends on Date - This schedule ends on this date:</label>
 					</div>
 					
 					<input type="text" id="enddatepicker">
