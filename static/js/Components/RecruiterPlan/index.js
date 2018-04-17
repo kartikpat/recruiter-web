@@ -43,7 +43,7 @@ jQuery(document).ready( function() {
 		buyPlanClick(recruiterId, data);
 	})
 	plan.onClickBuyPlan(function(phone, planType){
-		// plan.showContinueSpinner(planType);
+		plan.showContinueSpinner(planType);
 		var data = {}
 		data.email = profile.email;
 		data.phone = phone;
@@ -76,11 +76,11 @@ jQuery(document).ready( function() {
 
 	function onSuccessfulPlanSuccess(topic, data) {
 		if(data.extraParameters.planName == "signature" ) {
-			// plan.hideContinueSpinner("signature");
+			plan.hideContinueSpinner("signature");
 			plan.closeModal();
 		}
 		if(data.extraParameters.planName == "platinum" ) {
-			// plan.hideContinueSpinner("platinum");
+			plan.hideContinueSpinner("platinum");
 			plan.closeModal();
 		}
 		window.location = "/my-jobs"
@@ -88,10 +88,10 @@ jQuery(document).ready( function() {
 
 	function onFailedPlan(topic, data) {
 		if(data.extraParameters.planName == "signature" ) {
-			// plan.hideContinueSpinner("signature");
+			plan.hideContinueSpinner("signature");
 		}
 		if(data.extraParameters.planName == "platinum" ) {
-			// plan.hideContinueSpinner("platinum");
+			plan.hideContinueSpinner("platinum");
 		}
 		errorHandler(data)
 	}

@@ -978,11 +978,7 @@ span.sticker {
     display: inline-block;
     vertical-align: top;
     cursor: pointer;
-    margin: 0;
-    width: auto;
-    height: 28px;
-    padding: 0;
-    text-align: center; }
+    outline: none; }
     .modal_wrapper .button-wrapper.green {
       background-color: #1f8f75; }
     .modal_wrapper .button-wrapper.red {
