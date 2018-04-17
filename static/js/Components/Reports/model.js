@@ -42,7 +42,8 @@ function reportList() {
            recruiterActions: card.find('.recruiterActions'),
            jobStatus: card.find('.jobStatus'),
            isJobPremium: card.find('.isJobPremium'),
-           jobCurrentStatus: card.find('.jobCurrentStatus')
+           jobCurrentStatus: card.find('.jobCurrentStatus'),
+           recruiterActions: card.find('.recruiterActions')
        }
    }
 
@@ -74,6 +75,7 @@ function reportList() {
        item.jobCurrentStatus.text(aData["status"] || "N/A");
        item.isJobPremium.text(binary[aData["premium"]])
        item.excelDownloadedCount.text(binary[aData["excelDownload"] || 0])
+       item.recruiterActions.text(aData["totalActivity"] || 0)
        return item
    }
 
@@ -84,7 +86,7 @@ function reportList() {
             settings.header.addClass('hidden');
             settings.button.addClass('hidden');
        }
-       
+
        dataArray.forEach(function(aData, index){
            var item = createElement(aData);
            str+=item.element[0].outerHTML;

@@ -2,14 +2,7 @@ var isSuccess;
 
 $(document).ready(function(){
     $("#basic-buy").click(basicPosting);
-    $("#signature-buy").click(function(e){
-        e.stopPropagation()
-        openSignatureModal()
-    });
-    $("#platinum-buy").click(function(e){
-        e.stopPropagation()
-        openPlatinumModal()
-    });
+
     $(".button.signature-continue").click(signaturePosting);
     $(".button.platinum-continue").click(platinumPosting);
 	$(".close-modal, .close").click(closeModal);
@@ -46,17 +39,7 @@ var closeModal = function() {
     $(".modal").addClass('hidden');
 }
 
-var openSignatureModal = function() {
-    addBodyFixed()
-    $("#signature-modal").removeClass("hidden");
 
-}
-
-var openPlatinumModal = function() {
-    addBodyFixed()
-    $("#platinum-modal").removeClass("hidden");
-
-}
 
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
