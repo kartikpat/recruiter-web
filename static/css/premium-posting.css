@@ -392,11 +392,11 @@
       overflow: hidden;
       position: relative; }
       .main-container .recruiter-plans-container.mobile-swipe-container .recruiter-plans-wrapper > div {
-        float: left;
         width: 100%;
         position: relative;
         overflow: hidden;
-        margin: 10px 0; }
+        margin: 10px auto;
+        vertical-align: top; }
         .main-container .recruiter-plans-container.mobile-swipe-container .recruiter-plans-wrapper > div .list {
           padding: 10px 10px 10px 45px !important;
           background-position-y: 10px !important; } }

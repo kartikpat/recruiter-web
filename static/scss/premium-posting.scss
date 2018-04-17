@@ -473,11 +473,12 @@
                     position: relative;
 
                     & > div {
-                        float: left;
+                        //float: left;
                         width: 100%;
                         position: relative;
                         overflow: hidden;
-                        margin:10px 0;
+                        margin:10px auto;
+                        vertical-align: top;
 
                         .list {
                             padding: 10px 10px 10px 45px!important;
