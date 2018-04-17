@@ -253,7 +253,7 @@ function Job(){
 		}
 		settings.minExp.val(obj["exp"]["min"]);
 		settings.maxExp.val(obj["exp"]["max"]);
-		if(obj["batch"] && obj["sal"]["min"]!= 0 && obj["sal"]["max"]!=0) {
+		if(obj["batch"] && obj["batch"]["min"]!= 0 && obj["batch"]["max"]!=0) {
 			settings.batchFrom.val(obj["batch"]["min"]);
 			settings.batchTo.val(obj["batch"]["max"]);
 		}
