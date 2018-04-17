@@ -17,13 +17,13 @@
 						<div class="row-separator"></div>
 						<div class="input-name">
 							<div class="tag">Name</div> 
-							<textarea name="FirstName" id="name" ></textarea>
+							<textarea name="FirstName" id="name" placeholder="Give your calendar a name" ></textarea>
 							<div class="error"></div>
 						</div>
 						<div class="message">
 							<div class="tag">Message for F2F Interview</div> 
 								<div class="field">
-									<textarea type="text" id="message"></textarea>
+									<textarea type="text" id="message"  placeholder="Tell the candidate your address, office location" ></textarea>
 									<div class="error"></div>
 								</div>	
 							
@@ -31,25 +31,25 @@
 						<div class="telephonic">
 							<div class="tag">Message for Telephonic Interview</div> 
 							<div class="field">
-								<textarea type="text" id="telephonic" ></textarea>
+								<textarea type="text" id="telephonic" placeholder="Tell the candidate your phone number" ></textarea>
 								<div class="error"></div>
 							</div>
 								
 						</div>
 				    </div>
 			</div>
-		<!-- <div class="Availability {{hiddenClass}} ">
+		<div class="Availability {{hiddenClass}} ">
 			<div class="heading">Availability</div>
-				<div class="sub_heading">
+				<!-- <div class="sub_heading">
 				<span>Connect With Google</span>
 				<p>Integrate your Google account,to add your booked interviews on your google calender and check availability to avoid double bookings.</p>
 
-				</div> 
-				<div class="connect">
+				</div>  -->
+				<!-- <div class="connect">
 				<img src="/static/images/goggle.png">
 				<div class="connecting">Connect with Google</div>  
-				</div> 
-		</div> -->
+				</div>  -->
+		</div>
 	</div>
 
 	<div class="second-container {{hiddenClass}} ">
@@ -58,96 +58,61 @@
 				<span id="available-span">Available Hours</span>
 				<p>Select the time during which you are available</p>
 				
-			<div class="table" id="example">
-					<div class="error"></div>
-				<div class="D-avail">
-					<div id="one">DAYS AVAILABLE</div> 
-					<div id="two">START TIME</div>
-					<div id="three">END TIME</div>  
-				</div>
-				<div class="dayId" id="1" slotId="">
-					<div class="day" id="">
-						<div class="section">
-							<div class="check-input">
-								<div id="Check-span">DAYS AVAILABLE</div>
-								<input type="checkbox" id="check-button-mon" class="check-button highlighter">
-								<label for="check-button-mon">MON</label>
-							</div>					 
-						</div>			  
+				<div class="table" id="example">
+						<div class="error"></div>
+					<div class="D-avail">
+						<div id="one">DAYS AVAILABLE</div> 
+						<div id="two">START TIME</div>
+						<div id="three">END TIME</div>  
 					</div>
-					<div class="time-section" id="First">
-						<span class="section-one">
-							<span id="Checkin">START TIME</span>
-							<select class="select-dropdown Start-time start highlighter initialstart" id="selectElementId-1" >
-								<div class="dropdown-list">
-									<option value="0" selected>Select</option>
-									
-								</div>
-							</select>
-						</span>
-						<span class="timer">to</span>
-						<span class="section-one">
-							<span id="Checkin">END TIME</span>
-							<select class="select-dropdown End-time end highlighter initialend" id="selectElementId-2" >
-									<div class="dropdown-list">
-										<option value="0" selected>Select</option>
-									
-									</div>
-							</select>
-						</span>
-						<div class="button-container">
-							<button type="button" id="selectAll" class="copyToAll" >Copy to All</button>
+					<div class="dayId" id="1" slotId="">
+						<div class="day" id="">
+							<div class="section">
+								<div class="check-input">
+									<div id="Check-span">DAYS AVAILABLE</div>
+									<input type="checkbox" id="check-button-mon" class="check-button highlighter">
+									<label for="check-button-mon">MON</label>
+								</div>					 
+							</div>			  
 						</div>
-						<div class="error-slot"></div>
-					</div>
-			    </div>
-				<div class="dayId" id="2" slotId="">
-					<div class="day" id="">
-							<div class="section">
-								<div class="check-input">
-									<span id="Check-span">DAYS AVAILABLE</span>
-									<input type="checkbox" id="check-button-tues" class="check-button highlighter">
-									<label for="check-button-tues">TUES</label>
-								</div>								
-							</div>
-					</div>
-					<div class="time-section" id="Second">
-						<span class="section-one" >
+						<div class="time-section" id="First">
+							<span class="section-one">
 								<span id="Checkin">START TIME</span>
-							<select class="select-dropdown  Start-time start highlighter">
-								<div class="dropdown-list">
-									<option value="0" selected>Select</option>
-									
-								</div>
-							</select>
-						</span>
-						<span class="timer">to</span>
-						<span class="section-one">
-								<span id="Checkin">END TIME</span>
-							<select class="select-dropdown End-time end highlighter">
+								<select class="select-dropdown Start-time start highlighter initialstart" id="selectElementId-1" >
 									<div class="dropdown-list">
 										<option value="0" selected>Select</option>
+										
 									</div>
-							</select>
-						</span>
-						<div class="button-container">
-								<button type="button"  class="copyToAll">Copy to All</button>
-							</div>
-						<div class="error-slot"></div>
-					</div>
-				</div>	
-				<div class="dayId" id="3"slotId="">	
-					<div class="day" id="">
-							<div class="section">
-								<div class="check-input">
-									<span id="Check-span">DAYS AVAILABLE</span>
-									<input type="checkbox" id="check-button-wed" class="check-button highlighter">
-									<label for="check-button-wed">WED</label>
-									</div>								
-							</div>
-					</div>
-					<div class="time-section" id="third">
+								</select>
+							</span>
+							<span class="timer">to</span>
 							<span class="section-one">
+								<span id="Checkin">END TIME</span>
+								<select class="select-dropdown End-time end highlighter initialend" id="selectElementId-2" >
+										<div class="dropdown-list">
+											<option value="0" selected>Select</option>
+										
+										</div>
+								</select>
+							</span>
+							<div class="button-container">
+								<button type="button" id="selectAll" class="copyToAll" >Copy to All</button>
+							</div>
+							<div class="error-slot"></div>
+						</div>
+					</div>
+					<div class="dayId" id="2" slotId="">
+						<div class="day" id="">
+								<div class="section">
+									<div class="check-input">
+										<span id="Check-span">DAYS AVAILABLE</span>
+										<input type="checkbox" id="check-button-tues" class="check-button highlighter">
+										<label for="check-button-tues">TUES</label>
+									</div>								
+								</div>
+						</div>
+						<div class="time-section" id="Second">
+							<span class="section-one" >
 									<span id="Checkin">START TIME</span>
 								<select class="select-dropdown  Start-time start highlighter">
 									<div class="dropdown-list">
@@ -157,7 +122,7 @@
 								</select>
 							</span>
 							<span class="timer">to</span>
-							<span class="section-one" >
+							<span class="section-one">
 									<span id="Checkin">END TIME</span>
 								<select class="select-dropdown End-time end highlighter">
 										<div class="dropdown-list">
@@ -167,145 +132,215 @@
 							</span>
 							<div class="button-container">
 									<button type="button"  class="copyToAll">Copy to All</button>
-							</div>
-						<div class="error-slot"></div>
-					</div>
-				</div>
-				<div class="dayId" id="4" slotId="">	
-					<div class="day" id="">
-							<div class="section">
-								<div class="check-input">
-								<span id="Check-span">DAYS AVAILABLE</span>	
-								<input type="checkbox" id="check-button-thurs" class="check-button highlighter">
-								<label for="check-button-thurs">THURS</label>
-								</div>								
-							</div>
-					</div>
-					<div class="time-section" id="four">
-							<span class="section-one">
-									<span id="Checkin">START TIME</span>
-								<select class="select-dropdown Start-time start highlighter">
-									<div class="dropdown-list">
-									<option value="0" selected>Select</option>
-										
-									</div>
-								</select>
-							</span>
-							<span class="timer">to</span>
-							<span class="section-one" >
-									<span id="Checkin">END TIME</span>
-								<select class="select-dropdown End-time end highlighter">
-										<div class="dropdown-list">
-										<option value="0" selected>Select</option>
-										</div>
-								</select>
-							</span>
-							<div class="button-container">
-								<button type="button"  class="copyToAll">Copy to All</button>
-							</div>
-						<div class="error-slot"></div>	
-					</div>
-				</div>
-				<div class="dayId" id="5"slotId="">	
-					<div class="day" id="">
-							<div class="section">
-								<div class="check-input">
-								<span id="Check-span">DAYS AVAILABLE</span>
-								<input type="checkbox" id="check-button-fri" class="check-button highlighter">
-								<label for="check-button-fri">FRI</label>
-									</div>								
-							</div>
-					</div>
-					<div class="time-section" id="five">
-							<span class="section-one">
-									<span id="Checkin">START TIME</span>
-								<select class="select-dropdown  Start-time start highlighter">
-									<div class="dropdown-list">
-										<option value="0" selected>Select</option>
-										
-									</div>
-								</select>
-							</span>
-							<span class="timer">to</span>
-							<span class="section-one" >
-									<span id="Checkin">END TIME </span>
-								<select class="select-dropdown End-time end highlighter">
-										<div class="dropdown-list">
-											<option value="0" selected>Select</option>
-										</div>
-								</select>
-							</span>
-							<div class="button-container">
-								<button type="button" class="copyToAll">Copy to All</button>
-							</div>
-						<div class="error-slot"></div>	
-					</div>
-				</div>	
-				<div class="dayId" id="6" slotId="">
-					<div class="day" id="" >
-							<div class="section">
-								<div class="check-input">
-									<span id="Check-span">DAYS AVAILABLE</span>
-									<input type="checkbox" id="check-button-sat" class="check-button highlighter">
-									<label for="check-button-sat">SAT</label>
-								</div>								
-							</div>
-					</div>
-					<div class="time-section" id="six">
-							<span class="section-one">
-									<span id="Checkin">START TIME</span>
+								</div>
+							<div class="error-slot"></div>
+						</div>
+					</div>	
+					<div class="dayId" id="3"slotId="">	
+						<div class="day" id="">
+								<div class="section">
+									<div class="check-input">
+										<span id="Check-span">DAYS AVAILABLE</span>
+										<input type="checkbox" id="check-button-wed" class="check-button highlighter">
+										<label for="check-button-wed">WED</label>
+										</div>								
+								</div>
+						</div>
+						<div class="time-section" id="third">
+								<span class="section-one">
+										<span id="Checkin">START TIME</span>
 									<select class="select-dropdown  Start-time start highlighter">
 										<div class="dropdown-list">
 											<option value="0" selected>Select</option>
 											
 										</div>
 									</select>
-							</span>
-							<span class="timer">to</span>
-							<span class="section-one">
-									<span id="Checkin">END TIME</span>
-								<select class="select-dropdown End-time end highlighter">
-									<div class="dropdown-list">
-										<option value="0" selected>Select</option>
-									</div>
-								</select>
-							</span>
-							<div class="button-container">
-								<button type="button" class="copyToAll">Copy to All</button>
-							</div>
-						<div class="error-slot"></div>	
-					</div>
-				</div>		
-			</div> 
-			<div class="Breaks-available">
-					<span>Breaks Hours</span>
-					<p>Select your break hours. This will be marked as unavailable.</p>
-					<div class="D-table">
-						<div class="D-avail">
-								<span id="two">START TIME</span>
-								<span id="three">END TIME</span>  
+								</span>
+								<span class="timer">to</span>
+								<span class="section-one" >
+										<span id="Checkin">END TIME</span>
+									<select class="select-dropdown End-time end highlighter">
+											<div class="dropdown-list">
+												<option value="0" selected>Select</option>
+											</div>
+									</select>
+								</span>
+								<div class="button-container">
+										<button type="button"  class="copyToAll">Copy to All</button>
+								</div>
+							<div class="error-slot"></div>
 						</div>
-						<div class="time-section" id="breaks">
+					</div>
+					<div class="dayId" id="4" slotId="">	
+						<div class="day" id="">
+								<div class="section">
+									<div class="check-input">
+									<span id="Check-span">DAYS AVAILABLE</span>	
+									<input type="checkbox" id="check-button-thurs" class="check-button highlighter">
+									<label for="check-button-thurs">THURS</label>
+									</div>								
+								</div>
+						</div>
+						<div class="time-section" id="four">
 								<span class="section-one">
-									<select class="select-dropdown Break-start start highlighter" id="select">
+										<span id="Checkin">START TIME</span>
+									<select class="select-dropdown Start-time start highlighter">
 										<div class="dropdown-list">
-										<option value="0"selected>Select</option>
+										<option value="0" selected>Select</option>
 											
 										</div>
 									</select>
 								</span>
 								<span class="timer">to</span>
 								<span class="section-one" >
-									<select class="select-dropdown Break-end end highlighter" id="select">
+										<span id="Checkin">END TIME</span>
+									<select class="select-dropdown End-time end highlighter">
+											<div class="dropdown-list">
+											<option value="0" selected>Select</option>
+											</div>
+									</select>
+								</span>
+								<div class="button-container">
+									<button type="button"  class="copyToAll">Copy to All</button>
+								</div>
+							<div class="error-slot"></div>	
+						</div>
+					</div>
+					<div class="dayId" id="5"slotId="">	
+						<div class="day" id="">
+								<div class="section">
+									<div class="check-input">
+									<span id="Check-span">DAYS AVAILABLE</span>
+									<input type="checkbox" id="check-button-fri" class="check-button highlighter">
+									<label for="check-button-fri">FRI</label>
+										</div>								
+								</div>
+						</div>
+						<div class="time-section" id="five">
+								<span class="section-one">
+										<span id="Checkin">START TIME</span>
+									<select class="select-dropdown  Start-time start highlighter">
 										<div class="dropdown-list">
-											<option  value="0"	  selected>Select</option>
+											<option value="0" selected>Select</option>
+											
 										</div>
 									</select>
 								</span>
+								<span class="timer">to</span>
+								<span class="section-one" >
+										<span id="Checkin">END TIME </span>
+									<select class="select-dropdown End-time end highlighter">
+											<div class="dropdown-list">
+												<option value="0" selected>Select</option>
+											</div>
+									</select>
+								</span>
+								<div class="button-container">
+									<button type="button" class="copyToAll">Copy to All</button>
+								</div>
+							<div class="error-slot"></div>	
+						</div>
+					</div>	
+					<div class="dayId" id="6" slotId="">
+						<div class="day" id="" >
+								<div class="section">
+									<div class="check-input">
+										<span id="Check-span">DAYS AVAILABLE</span>
+										<input type="checkbox" id="check-button-sat" class="check-button highlighter">
+										<label for="check-button-sat">SAT</label>
+									</div>								
+								</div>
+						</div>
+						<div class="time-section" id="six">
+								<span class="section-one">
+										<span id="Checkin">START TIME</span>
+										<select class="select-dropdown  Start-time start highlighter">
+											<div class="dropdown-list">
+												<option value="0" selected>Select</option>
+												
+											</div>
+										</select>
+								</span>
+								<span class="timer">to</span>
+								<span class="section-one">
+										<span id="Checkin">END TIME</span>
+									<select class="select-dropdown End-time end highlighter">
+										<div class="dropdown-list">
+											<option value="0" selected>Select</option>
+										</div>
+									</select>
+								</span>
+								<div class="button-container">
+									<button type="button" class="copyToAll">Copy to All</button>
+								</div>
+							<div class="error-slot"></div>	
 						</div>
 					</div>
-			</div>
-    	</div>
+					<div class="dayId" id="7" slotId="">
+							<div class="day" id="" >
+									<div class="section">
+										<div class="check-input">
+											<span id="Check-span">DAYS AVAILABLE</span>
+											<input type="checkbox" id="check-button-sun" class="check-button highlighter">
+											<label for="check-button-sun">SUN</label>
+										</div>								
+									</div>
+							</div>
+							<div class="time-section" id="seven">
+									<span class="section-one">
+											<span id="Checkin">START TIME</span>
+											<select class="select-dropdown  Start-time start highlighter">
+												<div class="dropdown-list">
+													<option value="0" selected>Select</option>
+													
+												</div>
+											</select>
+									</span>
+									<span class="timer">to</span>
+									<span class="section-one">
+											<span id="Checkin">END TIME</span>
+										<select class="select-dropdown End-time end highlighter">
+											<div class="dropdown-list">
+												<option value="0" selected>Select</option>
+											</div>
+										</select>
+									</span>
+									<div class="button-container">
+										<button type="button" class="copyToAll">Copy to All</button>
+									</div>
+								<div class="error-slot"></div>	
+							</div>
+						</div>		
+				</div> 
+				<div class="Breaks-available">
+						<span>Breaks Hours</span>
+						<p>Select your break hours. This will be marked as unavailable.</p>
+						<div class="D-table">
+							<div class="D-avail">
+									<span id="two">START TIME</span>
+									<span id="three">END TIME</span>  
+							</div>
+							<div class="time-section" id="breaks">
+									<span class="section-one">
+										<select class="select-dropdown Break-start start highlighter" id="select">
+											<div class="dropdown-list">
+											<option value="0"selected>Select</option>
+												
+											</div>
+										</select>
+									</span>
+									<span class="timer">to</span>
+									<span class="section-one" >
+										<select class="select-dropdown Break-end end highlighter" id="select">
+											<div class="dropdown-list">
+												<option  value="0"	  selected>Select</option>
+											</div>
+										</select>
+									</span>
+							</div>
+						</div>
+				</div>
+    		</div>
 			<div class="preview">  <!right-->
 				<div class="heading">PREVIEW OF SLOTS CREATED</div>
 				<div class="button-prev calendar-button">
@@ -353,7 +388,7 @@
 			</div>	
 
 			
-			</div>
+		</div>
 			
 	</div>
 

@@ -13,14 +13,12 @@ $(document).ready(function(){
     calendarDetails.init();
     calendarDetails.startdate();
     calendarDetails.enddate();
-    // calendarDetails.time_mapper();
-    // calendarDetails.testHighlight;
+    calendarDetails.selectCreater();
     console.log(calendarId);
     if(!calendarId){
-        calendarDetails.init();
+        // calendarDetails.selectCreater();
         calendarDetails.startdate();
         calendarDetails.enddate();
-        calendarDetails.time_mapper();
         calendarDetails.testHighlight;
     }
  
@@ -56,7 +54,7 @@ $(document).ready(function(){
 
 	function onFailedSubmitCalendar(topic, data){
         togglespinner();
-		calendarDetails.errorHandler(data);
+		// calendarDetails.errorHandler(data);
     }
 
     var calendarSubmitSuccessSubscription = pubsub.subscribe('submittedCalendar',onSuccessfulSubmitCalendar);
