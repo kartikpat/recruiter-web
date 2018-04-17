@@ -59,7 +59,7 @@ function Calendar(){
         //      settings.message.val(settings.editor.getContent());
         // })
         time_mapper();
-        selectCreater();
+        // selectCreater();
         copytoall();
         fullCalendar();
         Timer();
@@ -100,7 +100,11 @@ function Calendar(){
           var fromDate=currentDate;
           var toDate=""; 
         if($('#radio-button-startend').prop("checked")==true){
+            
             fromDate=$('#start_date').datepicker().val();
+            if(fromDate==''){
+                fromDate=currentDate;
+            }
             console.log(fromDate);
         }
         if($("#radio-button-start").prop("checked") == true){

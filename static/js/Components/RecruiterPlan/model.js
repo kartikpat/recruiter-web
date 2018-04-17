@@ -45,10 +45,19 @@ function Plans() {
 
    }
 
+//    function spinner(element){
+
+//    }
+
+//    function hideSpinner(element){
+
+//    }
+
    return {
        init: init,
        onClickBuyPlan: onClickBuyPlan,
        onClickSignatureBuy: onClickSignatureBuy,
        onClickPlatinumBuy: onClickPlatinumBuy
+      
    }
 }
