@@ -29,11 +29,7 @@
 	}
     .button-wrapper {
         @include button($button-color-green)
-        margin: 0;
-        width: auto;
-        height: 28px;
-        padding: 0;
-        text-align: center;
+        outline: none;
         .spinner {
             padding: 6px 25px;
         }
