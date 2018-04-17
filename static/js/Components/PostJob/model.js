@@ -247,11 +247,19 @@ function Job(){
 			settings.maxSal.val(obj["sal"]["max"]);
 			settings.confidential.prop("checked", obj["sal"]["hide"]);
 		}
+		else {
+			settings.minSal.val();
+			settings.maxSal.val();
+		}
 		settings.minExp.val(obj["exp"]["min"]);
 		settings.maxExp.val(obj["exp"]["max"]);
 		if(obj["batch"] && obj["sal"]["min"]!= 0 && obj["sal"]["max"]!=0) {
 			settings.batchFrom.val(obj["batch"]["min"]);
 			settings.batchTo.val(obj["batch"]["max"]);
+		}
+		else {
+			settings.batchFrom.val();
+			settings.batchTo.val();
 		}
 		settings.submitButton.text("Update")
 	}
