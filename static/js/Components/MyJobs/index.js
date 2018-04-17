@@ -40,20 +40,17 @@ jQuery(document).ready( function() {
 	jobList.onClickJobEdit()
 
 	jobList.onClickSubmitUnpublishJob(function(jobId, reason){
-		jobList.closeModal()
-		jobList.showLoaderOverlay()
+		jobList.showSpinner("unpublish")
 		return submitUnpublishJob(recruiterId, jobId, {reasonId: reason});
 	});
 
 	jobList.onClickSubmitRefreshJob(function(jobId){
-		jobList.closeModal()
-		jobList.showLoaderOverlay()
+		jobList.showSpinner("refresh")
 		return submitRefreshJob(recruiterId, jobId);
 	})
 
 	jobList.onClickSubmitPremiumJob(function(jobId){
-		jobList.closeModal()
-		jobList.showLoaderOverlay()
+		jobList.showSpinner("premium")
 		return submitPremiumJob(recruiterId, jobId);
 	})
 
@@ -89,7 +86,8 @@ jQuery(document).ready( function() {
 		errorHandler(data)
 	}
 	function onSuccessfulUnpublishedJob(topic, data) {
-		jobList.hideLoaderOverlay()
+		jobList.hideSpinner("unpublish")
+        jobList.closeModal()
 		toastNotify(1, "Job Unpublish Successfully")
 		setTimeout(function(){
 			 location.reload()
@@ -97,32 +95,29 @@ jQuery(document).ready( function() {
 	}
 
 	function onFailedUnpublishedJob(topic,data) {
-		jobList.hideLoaderOverlay()
-		jobList.openModal("unpublish")
 		errorHandler(data)
 	}
 	function onSuccessfulRefreshJob(topic, data){
-		jobList.hideLoaderOverlay()
+        jobList.hideSpinner("refresh")
+        jobList.closeModal()
 		toastNotify(1, "Job Refreshed Successfully")
 		setTimeout(function(){
 			 location.reload()
 		 }, 2000);
 	}
 	function onFailedRefreshJob(topic, data){
-		jobList.hideLoaderOverlay()
-		jobList.openModal("refresh")
 		errorHandler(data)
 	}
 	function onSuccessfulPremiumJob(topic, data){
-		jobList.hideLoaderOverlay()
+        jobList.hideSpinner("premium")
+        jobList.closeModal()
 		toastNotify(1, "Job Made Premium Successfully")
 		setTimeout(function(){
 			 location.reload()
 		 }, 2000);
 	}
+
 	function onFailedPremiumJob(topic, data){
-		jobList.hideLoaderOverlay()
-		jobList.openModal("premium")
 		errorHandler(data)
 	}
 
@@ -154,13 +149,12 @@ jQuery(document).ready( function() {
             tickerLock = false
         }
     }
-
 });
 
 function errorHandler(data) {
     var res = data.responseJSON
     if(!res) {
-        return toastNotify(3, "Something went wrong");
+        return toastNotify(3, "Looks like you are not connected to the internet");
     }
     return toastNotify(3, res.message);
 }
