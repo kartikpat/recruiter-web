@@ -1091,12 +1091,12 @@ body.posf {
     -webkit-transform: scale(1);
     transform: scale(1); } }
 
-.page-content {
+.page-wrap {
   min-height: 100%;
   position: relative;
   padding: 20px;
   width: 100%; }
-  .page-content .error-container {
+  .page-wrap .error-container {
     border-radius: 4px;
     border-style: solid;
     border-width: 1px;
@@ -1105,19 +1105,19 @@ body.posf {
     background-color: #ffffff;
     height: 605px;
     position: relative; }
-    .page-content .error-container .error-wrapper {
+    .page-wrap .error-container .error-wrapper {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%); }
-      .page-content .error-container .error-wrapper .image-container {
+      .page-wrap .error-container .error-wrapper .image-container {
         text-align: center;
         margin-bottom: 50px; }
-        .page-content .error-container .error-wrapper .image-container img {
+        .page-wrap .error-container .error-wrapper .image-container img {
           width: 250px; }
-      .page-content .error-container .error-wrapper .content-container {
+      .page-wrap .error-container .error-wrapper .content-container {
         text-align: center; }
-        .page-content .error-container .error-wrapper .content-container .head {
+        .page-wrap .error-container .error-wrapper .content-container .head {
           color: #000000;
           font-size: 25px;
           /* Approximation due to font substitution */
@@ -1125,7 +1125,7 @@ body.posf {
           line-height: 40px;
           /* Approximation due to font substitution */
           text-align: center; }
-        .page-content .error-container .error-wrapper .content-container .sub-head {
+        .page-wrap .error-container .error-wrapper .content-container .sub-head {
           color: #737373;
           font-size: 20px;
           /* Approximation due to font substitution */
@@ -1133,9 +1133,9 @@ body.posf {
           line-height: 40px;
           /* Approximation due to font substitution */
           text-align: center; }
-        .page-content .error-container .error-wrapper .content-container .link {
+        .page-wrap .error-container .error-wrapper .content-container .link {
           margin-top: 50px; }
-          .page-content .error-container .error-wrapper .content-container .link a {
+          .page-wrap .error-container .error-wrapper .content-container .link a {
             color: #155d9a;
             font-size: 20px;
             /* Approximation due to font substitution */
