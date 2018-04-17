@@ -564,7 +564,7 @@ input::-webkit-input-placeholder {
 											&.profile-name {
 												color:$inline-link-color;
 												font-weight:bold;
-												font-size:$page-subtitle-font-size;
+												font-size:16px;
 											}
 
 											span {
@@ -751,9 +751,7 @@ input::-webkit-input-placeholder {
 								&:hover {
 									box-shadow:0px 2px 8px 0px rgba(214, 214, 214, 0.85);
 										.candidate-select {
-											display:block;
-
-
+											display:block;	
 									}
 								}
 							}
@@ -2359,7 +2357,7 @@ input::-webkit-input-placeholder {
 		overflow-x:auto;
 		white-space:nowrap;
 		overflow-y: hidden;
-        margin-left: 70px
+        margin-left: 85px
 	}
 	.ui-tabs-tab {
 		border: 0;
@@ -2427,7 +2425,8 @@ input::-webkit-input-placeholder {
 }
 
 .select-all.check-input input + label {
-	padding: 25px 0 0px 25px;
+	padding: 25px 0 0px 30px;
+	background-position: left 5px center
 }
 
 .sidebar-section.comments {

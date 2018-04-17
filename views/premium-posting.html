@@ -70,7 +70,10 @@
 
                 </div>
                 <div class="button-container">
-                    <button id="signature-buy" class="button signatureBuy" name="button">BUY NOW</button>
+                    <div class="button-wrapper">
+                        {{>spinner}}
+                        <button id="signature-buy" class="button signatureBuy" name="button">BUY NOW</button>
+                    </div>    
                 </div>
             </div>
         </div>
@@ -98,8 +101,11 @@
 
                 </div>
                 <div class="button-container">
-                    <button id="platinum-buy" class="button platinumBuy" name="button">BUY NOW</button>
-                </div>
+                    <div class="button-wrapper">
+                        {{>spinner}}
+                        <button id="platinum-buy" class="button platinumBuy" name="button">BUY NOW</button>
+                    </div> 
+               </div>
             </div>
         </div>
 
@@ -159,7 +165,10 @@
 
                     </div>
                     <div class="button-container">
-                        <button id="signature-buy" class="button signatureBuy" name="button">BUY NOW</button>
+                        <div class="button-wrapper">
+                                {{>spinner}}
+                                <button id="signature-buy" class="button signatureBuy" name="button">BUY NOW</button>
+                        </div>  
                     </div>
                 </div>
             </div>
@@ -183,11 +192,12 @@
                         <div class="list">
                             <p>Logo/ in the posting.</p>
                         </div>
-
-
                     </div>
                     <div class="button-container">
-                        <button id="platinum-buy" class="button platinumBuy" name="button">BUY NOW</button>
+                        <div class="button-wrapper">
+                                {{>spinner}}
+                            <button id="platinum-buy" class="button platinumBuy" name="button">BUY NOW</button>
+                        </div>    
                     </div>
                 </div>
             </div>

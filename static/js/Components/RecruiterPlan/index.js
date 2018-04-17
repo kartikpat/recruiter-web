@@ -4,7 +4,8 @@ jQuery(document).ready( function() {
 	plan.init()
 	console.log(profile)
 	plan.onClickSignatureBuy(function(planType) {
-		// show loader
+		$('#signature-buy').addClass('hidden');
+		$('#signature-buy').prev().removeClass('hidden');
 		var data = {}
 		data.email = profile.email;
 		data.phone = profile.phone;
@@ -12,7 +13,8 @@ jQuery(document).ready( function() {
 		buyPlanClick(recruiterId, data);
 	})
 	plan.onClickPlatinumBuy(function(planType) {
-		//show loader
+		$('#platinum-buy').addClass('hidden');
+		$('#platinum-buy').prev().removeClass('hidden');
 		var data = {}
 		data.email = profile.email;
 		data.phone = profile.phone;
@@ -26,11 +28,13 @@ jQuery(document).ready( function() {
 	})
 
 	function onSuccessfulPlanClickSuccess(topic, data) {
-		//success loader
+		$('.button').removeClass('hidden');
+		$('.spinner').addClass('hidden');
 	}
 
 	function onFailedPlanClick(topic, data) {
-		// fail loader
+		$('.button').removeClass('hidden');
+		$('.spinner').addClass('hidden');
 		errorHandler(data)
 	}
 

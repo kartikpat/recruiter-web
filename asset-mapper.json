@@ -202,6 +202,7 @@
 				"static/js/utilities.js",
 				"static/js/vendor/swipe.js",
 				"static/js/premium-posting.js",
+				"static/js/vendor/slick.js",
 				"static/js/Utilities/toastNotifier.js",
 				"static/js/Services/buyPlans.js",
 				"static/js/Services/buyPlanClick.js",
