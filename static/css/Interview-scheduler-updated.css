@@ -1000,7 +1000,7 @@ span.sticker {
       .wrap .container .form .message .field textarea:focus, .wrap .container .form .message .field .medium-editor-element:focus {
         outline: none; }
     .wrap .container .form .message .error-border {
-      border-color: #ee1620; }
+      border-color: #ec1c2a; }
     .wrap .container .form .message .error {
       font-family: "Droid Sans", sans-serif;
       position: absolute;
