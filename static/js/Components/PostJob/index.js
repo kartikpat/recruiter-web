@@ -13,7 +13,7 @@ $(document).ready(function(){
 	jobDetails.submitHandler(function(){
 		if(jobDetails.validate()){
 			spinner();
-			if(jobId)
+			if(jobId) 
 				submitEditJob(recruiterId ,jobId,jobDetails.getData())
 			else
 				submitNewJob(jobDetails.getData(), recruiterId);
@@ -28,7 +28,7 @@ $(document).ready(function(){
 		$('.loader-container').addClass("hidden");
 	}
 	fetchJobTags(recruiterId)
-	
+
  	function onSuccessfulSubmitJob(topic, data){
 		var jobPostMessage;
 		spinner();

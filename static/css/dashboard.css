@@ -1276,7 +1276,7 @@ a {
   line-height: 1.5; }
 
 .error-border {
-  border-color: #ee1620 !important; }
+  border-color: #ad3030 !important; }
 
 select.select-dropdown {
   font-family: inherit;
@@ -1315,7 +1315,7 @@ label {
 .error-field {
   margin: 7px 0 0 3px;
   font-size: 11px;
-  color: #ec1c2a; }
+  color: #ad3030; }
 
 .course-option {
   position: relative;
@@ -1390,7 +1390,7 @@ label {
   .input-field:focus {
     border-color: #4fa995; }
   .input-field.error-border {
-    border-color: #ee1620; }
+    border-color: #ad3030; }
 
 .radio-input input {
   display: none; }
