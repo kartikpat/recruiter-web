@@ -5,6 +5,8 @@ function Plans() {
    function init(){
        settings.planContinue = $(".planContinue");
        settings.signatureBuy = $(".signatureBuy");
+       settings.signatureContinue = $(".signature-continue");
+       settings.platinumContinue = $(".platinum-continue");
        settings.platinumBuy = $(".platinumBuy");
        settings.planType = '';
        settings.signatureModal = $("#signature-modal");
@@ -80,6 +82,16 @@ function Plans() {
    		}
    	}
 
+    function showContinueSpinner(type) {
+        if(type == "signature") {
+            settings.signatureContinue.addClass('hidden')
+            settings.signatureContinue.prev().removeClass("hidden")
+        }
+        else if(type == "platinum") {
+            settings.platinumContinue.addClass('hidden')
+            settings.platinumContinue.prev().removeClass("hidden")
+        }
+    }   
    	function hideSpinner(type){
         if(type == "signature") {
    			settings.signatureBuy.removeClass('hidden')
@@ -89,7 +101,20 @@ function Plans() {
    			settings.platinumBuy.removeClass('hidden')
    			settings.platinumBuy.prev().addClass("hidden")
    		}
+    }
+
+    function hideContinueSpinner(type){
+        if(type == "signature") {
+            settings.signatureContinue.removeClass('hidden')
+   			settings.signatureContinue.prev().addClass("hidden")
+   		}
+   		else if(type == "platinum") {
+            settings.platinumContinue.removeClass('hidden')
+            settings.platinumContinue.prev().addClass("hidden")
+   		}
    	}
+       
+
 
     function closeModal() {
 		removeBodyFixed()
@@ -105,6 +130,8 @@ function Plans() {
        openModal: openModal,
        showSpinner: showSpinner,
        hideSpinner: hideSpinner,
+       showContinueSpinner:showContinueSpinner,
+       hideContinueSpinner:hideContinueSpinner,
        closeModal: closeModal
 
    }
