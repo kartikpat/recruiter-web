@@ -419,9 +419,9 @@ $(document).ready(function(){
 		var startdate = moment();
 		startdate = startdate.subtract(15, "days");
 		startdate = startdate.format("YYYY-MM-DD");
-		fetchFollowUps(recruiterId);
+		fetchFollowUps(recruiterId,{fromDate:currentDate});
 		var currentDate=moment().format("YYYY-MM-DD");
-		fetchInterviews(recruiterId,{pageContent: 6, pageNumber: 1, status: 2});
+		fetchInterviews(recruiterId,{pageContent: 6, pageNumber: 1, status: 2,fromDate:currentDate});
 	}
 	init()
 
