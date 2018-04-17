@@ -205,7 +205,7 @@ $(document).ready(function(){
 
 		// }
 		console.log("calling onLoadChartLibrary");
-	    fetchActiveJobStats(recruiterId,{pageContent:5});
+	    fetchActiveJobStats(recruiterId,{offset:5});
 	}
 	var chartLibraryLoadSubscription = pubsub.subscribe("loadedChartLibrary", onLoadChartLibrary)
 	function onFetchJobs(topic, data){
