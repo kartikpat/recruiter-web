@@ -415,8 +415,8 @@ $(document).ready(function(){
 		pubsub.publish("pageVisit", 1);
 		fetchDashboardStats(recruiterId);
 		fetchJobs({pageContent: 5, pageNumber: 1, type: "published"}, recruiterId);
-		fetchFollowUps(recruiterId);
 		fetchInterviews(recruiterId,{pageContent: 6, pageNumber: 1, status: 2});
+		fetchFollowUps(recruiterId);
 	}
 	init()
 

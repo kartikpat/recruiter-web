@@ -172,7 +172,8 @@ function Calendar(){
                         finalslots.push(aRow);
                     }
                     else if(parseInt(start)<=parseInt(aRow.time.from) && parseInt(end)>=parseInt(aRow.time.to)){
-                          console.log("no slot");    
+                          console.log("no slot");   
+                        
                     }
                     else if(parseInt(start)<parseInt(aRow.time.from) && parseInt(end)<parseInt(aRow.time.to) && parseInt(end)>parseInt(aRow.time.from)){
                         debugger
@@ -195,7 +196,6 @@ function Calendar(){
                         if(Nextend!=Nextstart){
                             var Nextslot={
                                 day:aRow.day, 
-                                // id:aRow.id,
                                 slotId:aRow.slotId,
                                 time:{
                                 from:Nextstart,
