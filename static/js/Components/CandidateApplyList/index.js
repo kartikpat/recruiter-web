@@ -23,7 +23,7 @@ jQuery(document).ready( function() {
     //initializing the models
     candidates.setConfig("jobId", jobId)
     filters.init();
-    candidates.init(profile);
+    candidates.init(profile, baseUrl);
     theJob.init();
     aCandidate.init();
 
@@ -73,7 +73,6 @@ jQuery(document).ready( function() {
     //setting config variables
     theJob.setConfig("availableCredits", profile["availableCredits"]);
     theJob.setConfig("baseUrlJob", baseUrlJob);
-    $(".downloadExcelMass").attr('href', baseUrl+"/recruiter/"+recruiterId+"/jobs/"+jobId+"/applications/download/excel");
 
     // mountint routing
     page.base('/job/'+jobId+'/applications');
@@ -481,10 +480,15 @@ jQuery(document).ready( function() {
         setCandidateAction(recruiterId, jobId, action , applicationId, {}, parameters);
     })
 
-    candidates.onClickDownloadMassExcel(function(arr){
-
+    candidates.onClickDownloadMassExcel(function(arr, from, to, requestType) {
         var parameters = filters.getAppliedFilters();
-        parameters.applicationId = arr.toString()
+        if(requestType == "bulkRequestDropdown") {
+            parameters.from = from;
+            parameters.to = to;
+        }
+        else {
+            parameters.applicationId = arr.toString()
+        }
         var str = "?"
         for(var key in parameters) {
             str+= key + "=" + parameters[key] + "&";

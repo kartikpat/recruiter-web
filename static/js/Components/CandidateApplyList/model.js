@@ -57,6 +57,9 @@ function candidateList() {
         settings.contactMenu=$('.contact-menu'),
         settings.contactMenubutton=$('.contactMenubutton');
         settings.status = ''
+        console.log(baseUrl)
+        settings.url = baseUrl+"/recruiter/"+recruiterId+"/jobs/"+jobId+"/applications/download/excel";
+
         onClickBulkDownArrow()
         onClickMassCheckbox()
         onClickCandidateOtherActions()
@@ -89,6 +92,8 @@ function candidateList() {
             settings.massResumeDownload.removeClass("hidden")
             settings.bulkDownArrow.removeClass("hidden")
         }
+
+        $(".downloadExcelMass").attr('href', settings.url);
 	}
 
     function onClickBulkBackIcon() {
@@ -810,10 +815,10 @@ function candidateList() {
     }
 
     function onClickDownloadMassExcel(fn) {
-        settings.downloadExcelMass.click(function(event){
-
+        settings.downloadExcelMass.click(function(event) {
+            var requestType = settings.bulkActionContainer.attr("data-type-request");
             var arr = returnSelectedApplications()
-            fn(arr)
+            fn(arr,settings.from, settings.to,requestType)
             return true;
         })
     }
@@ -826,9 +831,8 @@ function candidateList() {
     }
 
     function setHref(str) {
-        var href = settings.downloadExcelMass.attr("href");
+        var href = settings.url;
         href += str;
-
         settings.downloadExcelMass.attr("href", href);
     }
 
