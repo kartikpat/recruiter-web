@@ -90,7 +90,6 @@ function Calendar(){
     }
 
     function getslots(){
-     //   debugger
         var slots=[];
         var finalslots=[];   
         var date={};
@@ -100,7 +99,6 @@ function Calendar(){
           var fromDate=currentDate;
           var toDate=""; 
         if($('#radio-button-startend').prop("checked")==true){
-            
             fromDate=$('#start_date').datepicker().val();
             if(fromDate==''){
                 fromDate=currentDate;
@@ -111,15 +109,17 @@ function Calendar(){
             fromDate=currentDate;
             $('#startdatepicker').datepicker('setDate', null);
             console.log("here");
-
         }
+        
         if($('#radio-button-tillend').prop("checked")==true){
-            toDate="";
+            toDate="00:00:00";
+            console.log(toDate);
             $('#enddatepicker').datepicker('setDate', null);
         }
+
         if($('#radio-button-end').prop("checked")==true){
-          var toDate=$('#end_date').val();
-          console.log(toDate);     
+            toDate=$('#end_date').val();
+            console.log(toDate);     
         }    
         date.from=fromDate;
         date.to=toDate;
@@ -242,7 +242,7 @@ function Calendar(){
             $('#startdatepicker').datepicker().datepicker('setDate', startDate);
             $('#radio-button-startend').prop("checked",true)
         
-        if(endDate!="Invalid date"){
+        if(endDate!=""){
             $('#enddatepicker').datepicker().datepicker('setDate', endDate);
             $('#radio-button-end').prop("checked",true)
         }
