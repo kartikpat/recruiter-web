@@ -161,6 +161,7 @@
 		error:'error/error.html',
 		reportsShell: 'shells/reports-shell',
 		bookedSlotsShell: 'shells/booked-slots-shell',
+		massResumeShell: 'shells/mass-resume-shell',
 		chatSticky: 'chat-sticky'
 	});
 	app.set('view engine', 'html');

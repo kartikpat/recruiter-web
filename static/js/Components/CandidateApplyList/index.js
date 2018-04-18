@@ -483,8 +483,8 @@ jQuery(document).ready( function() {
     candidates.onClickDownloadMassExcel(function(arr, from, to, requestType) {
         var parameters = filters.getAppliedFilters();
         if(requestType == "bulkRequestDropdown") {
-            parameters.from = from;
-            parameters.to = to;
+            parameters.offset = parseInt(from) - 1;
+            parameters.to = parseInt(to);
         }
         else {
             parameters.applicationId = arr.toString()
@@ -507,7 +507,7 @@ jQuery(document).ready( function() {
 
         if(typeRequest == "bulkRequestDropdown") {
             data = filters.getAppliedFilters();
-            data.from = parseInt(from);
+            data.offset = parseInt(from) - 1;
             data.to = parseInt(to);
             data.status = globalParameters.status;
             parameters.status = globalParameters.status;

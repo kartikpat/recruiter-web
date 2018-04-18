@@ -3,15 +3,44 @@
 @import 'chat-sidebar';
 @import 'components/modal';
 
+.shell {
+    &.row {
+        width: 100%;
+    }
+    .section {
+        margin-bottom: 10px !important;
+    }
+    p {
+        @include title-shell;
+        width: 100%;
+        height: 10px;
+    }
+    span {
+        display: block !important;
+        width: calc(50% - 10px);
+        @include text-shell;
+        height: 10px;
+        &.date {
+            width: 100px !important;
+        }
+        &.status {
+            width: 100px !important;
+        }
+        &.downloaded {
+            width: 100px !important;
+        }
+    }
+}
+
 .page-content{
     width: 100%;
     min-height: 100%;
     margin: 0 auto;
     .main-container {
-        padding: 20px;
-        min-height: calc(100% - 155px);
-        margin:0 auto;
-        max-width: 1440px;
+        .mass-resume-wrapper {
+            overflow-x: auto;
+        }
+
         .page-heading {
             margin: 0;
             color: $color-label;
@@ -20,9 +49,11 @@
             text-align: left;
             display: inline-block;
             margin-bottom: 20px;
+            margin-left: 10px;
         }
         .mass-resume-table {
-            width: 100%;
+            width: 1200px;
+
             .mass-resume-header {
                 margin: 0;
                 padding: 10px;
@@ -40,11 +71,17 @@
                 text-transform: uppercase;
                 }
             }
+            .mass-resume-content {
+                background-color: #fff;
+                border-left: 1px solid #e8e8e8;
+                border-right: 1px solid #e8e8e8;
+            }
             .row {
                 display: table;
                 padding: 10px;
                 font-size: 13px;
                 border-bottom: 1px solid #ebebeb;
+
             }
             .column {
                 display: table-cell;
@@ -75,7 +112,7 @@
                     width: 13%;
                     color: #2b2b2b;
                     font-size: 14px;
-                    text-align: center;
+                    
                 }
                 &.download-link {
                     width: 22%;
