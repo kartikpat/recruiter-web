@@ -1494,7 +1494,8 @@ span.sticker {
     padding-bottom: 10px;
     margin-top: 10px;
     font-size: 16px;
-    font-weight: 600; }
+    font-weight: 600;
+    margin-bottom: 20px; }
   .page-content .my-jobs {
     width: 80%; }
     .page-content .my-jobs .my-jobs-listing .table-headings {
@@ -1685,6 +1686,8 @@ span.sticker {
         .page-content .my-jobs .page-header .action-buttons {
           padding-top: 15px;
           padding-right: 20px; }
+        .page-content .my-jobs .page-header .heading {
+          margin: 20px auto; }
       .page-content .my-jobs .my-jobs-listing {
         padding-top: 10px;
         padding-left: 20px;
