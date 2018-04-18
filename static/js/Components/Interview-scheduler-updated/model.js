@@ -163,11 +163,11 @@ function Calendar(){
                 slots.forEach(function(aRow){
                     console.log(aRow.time);
                     if(parseInt(start)>parseInt(aRow.time.to)){
-                        debugger
+                       
                         finalslots.push(aRow);
                     }
                     else if(parseInt(start)>parseInt(aRow.time.from) && parseInt(end)>parseInt(aRow.time.to)){
-                        debugger
+                    
                         aRow.time.to=start;
                         finalslots.push(aRow);
                     }
@@ -176,12 +176,10 @@ function Calendar(){
                         
                     }
                     else if(parseInt(start)<parseInt(aRow.time.from) && parseInt(end)<parseInt(aRow.time.to) && parseInt(end)>parseInt(aRow.time.from)){
-                        debugger
                         aRow.time.from=end;
                         finalslots.push(aRow);
                     }
-                    else if(parseInt(start)<parseInt(aRow.time.from) && parseInt(end)<parseInt(aRow.time.to)){
-                        debugger
+                    else if(parseInt(start)<parseInt(aRow.time.from) && parseInt(end)<parseInt(aRow.time.to)){    
                         finalslots.push(aRow);
                     }
                     else{
@@ -357,13 +355,10 @@ function Calendar(){
             console.log(index);
              if(k>=0 && index<27){
                 var check=$("#"+parent+" .end").find('option:selected').index();
-                //  end.val(k);
-                // console.log(check);
-                // var value=$("#"+parent+" .start option:selected").next().val();
-                // end.val(value);
                 $("#"+parent+" .end").find('option').prop('disabled', false);
                 $("#"+parent+" .end").not("#"+parent+" .start").find('option:lt(' + (index+1) + ')').prop('disabled', true);
-             }
+                $("#"+parent+" .end").find('option:first-child').prop('disabled',false);
+            }
         })
         settings.end.change(function() {
             var parent=$(this).parent().parent().attr('id');

@@ -1824,61 +1824,58 @@ span.sticker {
     background-color: #ffffff;
     border-radius: 6px;
     min-height: 100%; }
-    .page-content .detail-card .empty-view {
-      text-align: center;
-      position: relative;
-      min-height: 150px; }
-      .page-content .detail-card .empty-view .image-container {
-        margin-left: 20px;
-        float: left; }
-        .page-content .detail-card .empty-view .image-container img {
-          width: 90px;
-          height: 90px;
-          margin-top: 20px; }
-      .page-content .detail-card .empty-view .content-container {
-        display: inline-block;
-        text-align: left;
+    .page-content .detail-card .empty-view .image-container {
+      display: inline-block;
+      vertical-align: top;
+      padding: 0 35px; }
+      .page-content .detail-card .empty-view .image-container img {
+        width: 90px;
+        height: 90px;
         margin-top: 20px; }
-        .page-content .detail-card .empty-view .content-container .detail {
-          color: #2b2b2b;
-          font-weight: 600;
-          line-height: 20px;
-          margin-bottom: 5px; }
-        .page-content .detail-card .empty-view .content-container .subdetail {
-          color: #737373;
+    .page-content .detail-card .empty-view .content-container {
+      display: inline-block;
+      text-align: left;
+      margin-top: 20px; }
+      .page-content .detail-card .empty-view .content-container .detail {
+        color: #2b2b2b;
+        font-weight: 600;
+        line-height: 20px;
+        margin-bottom: 5px; }
+      .page-content .detail-card .empty-view .content-container .subdetail {
+        color: #737373;
+        font-size: 14px;
+        margin-bottom: 5px; }
+      .page-content .detail-card .empty-view .content-container .empty-action-buttons {
+        margin: 10px 0; }
+        .page-content .detail-card .empty-view .content-container .empty-action-buttons .post-job {
+          padding: 6px 18px !important;
+          border: 0;
+          padding: 0;
+          margin: 0;
+          background: #1f8f75;
+          border-color: #8f8a8a;
+          border-radius: 4px;
+          padding: 6px 25px;
           font-size: 14px;
-          margin-bottom: 5px; }
-        .page-content .detail-card .empty-view .content-container .empty-action-buttons {
-          margin: 10px 0; }
-          .page-content .detail-card .empty-view .content-container .empty-action-buttons .post-job {
-            padding: 6px 18px !important;
-            border: 0;
-            padding: 0;
-            margin: 0;
-            background: #1f8f75;
-            border-color: #8f8a8a;
-            border-radius: 4px;
-            padding: 6px 25px;
-            font-size: 14px;
-            margin: 0 5px;
-            color: #FFF;
-            display: inline-block;
-            vertical-align: top;
-            cursor: pointer;
-            margin-left: 0px;
-            outline: none; }
-        .page-content .detail-card .empty-view .content-container .divide {
-          color: #737373;
-          font-size: 14px;
-          margin-bottom: 5px; }
-        .page-content .detail-card .empty-view .content-container .action {
-          color: #155d9a;
-          font-size: 14px;
-          margin-bottom: 5px; }
-          .page-content .detail-card .empty-view .content-container .action a {
-            color: #155d9a; }
-        .page-content .detail-card .empty-view .content-container .action:hover {
-          text-decoration: underline; }
+          margin: 0 5px;
+          color: #FFF;
+          display: inline-block;
+          vertical-align: top;
+          cursor: pointer;
+          margin-left: 0px;
+          outline: none; }
+      .page-content .detail-card .empty-view .content-container .divide {
+        color: #737373;
+        font-size: 14px;
+        margin-bottom: 5px; }
+      .page-content .detail-card .empty-view .content-container .action {
+        color: #155d9a;
+        font-size: 14px;
+        margin-bottom: 5px; }
+        .page-content .detail-card .empty-view .content-container .action a {
+          color: #155d9a; }
+      .page-content .detail-card .empty-view .content-container .action:hover {
+        text-decoration: underline; }
     .page-content .detail-card .interviewRow {
       padding-top: 15px; }
     .page-content .detail-card .graph_holder {
@@ -2189,7 +2186,7 @@ span.sticker {
         color: #737373; }
 
 .slider {
-  width: 280px;
+  width: 90%;
   margin: 0 auto; }
   .slider .slick-content .slick-title {
     color: #737373;
@@ -2213,15 +2210,17 @@ span.sticker {
   .slider .left-arrow {
     width: 28px;
     float: left;
-    margin-top: 75px;
-    margin-left: -30px;
-    cursor: pointer; }
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    transform: translateY(-50%); }
   .slider .right-arrow {
     width: 28px;
     float: right;
-    margin-top: -140px;
-    margin-right: -30px;
-    cursor: pointer; }
+    position: absolute;
+    top: 50%;
+    right: -30px;
+    transform: translateY(-50%); }
   .slider .slick-slide {
     text-align: -webkit-center; }
 
