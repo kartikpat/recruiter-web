@@ -62,6 +62,7 @@ $(document).ready(function(){
 	var postedJobsContainer = $("#postedJobsContainer");
 	var jobOtherActionsClass = ".action-panel";
 	var recentEmptyContiner=$('.recent-empty');
+	var graphOverlay=$('.graph_overlay');
 	modalInit();
 	onClickJobRefresh();
 	onClickJobCancel();
@@ -190,14 +191,17 @@ $(document).ready(function(){
 	            aJob["reject"]
 	            ])
 	    })
-	    dataModel[topic] = temp;
+		dataModel[topic] = temp;
+		postedJobsContainer.removeClass('hidden')
 	    if(temp.length >1){
-	    	postedJobsContainer.removeClass('hidden')
 	    	drawBarChartGraph(temp, activeJobsChartContainer.attr('id'));
 	    	$(window).resize(function(){
 	    		drawBarChartGraph(dataModel[topic], activeJobsChartContainer.attr('id'));
 	    	})
-	    }
+		}
+		else{
+			graphOverlay.removeClass('hidden');
+		}
 	}
 	var activeJobStatsSubscription = pubsub.subscribe("fetchedActiveJobStats", onActiveJobStatsUpdate)
 
