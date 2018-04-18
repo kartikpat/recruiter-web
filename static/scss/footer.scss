@@ -44,22 +44,22 @@
             margin:0 10px;
             .icon-facebook::before {
                 content: '\e84a';
-                font-size: 45px;
+                font-size: 45px !important;
                 color: #c1c1c1;
             }
-         
+
         }
         .twitter{
             .icon-twitter::before {
                 content: '\e849';
-                font-size: 45px;
+                font-size: 45px !important;
                 color: #c1c1c1;
             }
         }
         .linkedin{
             .icon-linkedin::before {
                 content: '\e84b';
-                font-size: 45px;
+                font-size: 45px !important;
                 color: #c1c1c1;
             }
         }
@@ -67,7 +67,7 @@
 
     .footer-copy-text {
 
-        p { 
+        p {
             text-align:center;
             font-size:$base-font-size;
             text-decoration:none;
