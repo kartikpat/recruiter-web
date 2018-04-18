@@ -57,7 +57,6 @@ function candidateList() {
         settings.contactMenu=$('.contact-menu'),
         settings.contactMenubutton=$('.contactMenubutton');
         settings.status = ''
-        console.log(baseUrl)
         settings.url = baseUrl+"/recruiter/"+recruiterId+"/jobs/"+jobId+"/applications/download/excel";
 
         onClickBulkDownArrow()

@@ -98,7 +98,8 @@ function MassResume(){
     function init(){
         settings.tableRow=$(".row.prototype");
         settings.date=('.date');
-        settings.resumeContent=	$('.mass-resume-content')
+        settings.resumeContent=	$('.mass-resume-content');
+        settings.massResumeShell = $(".massResume.shell")
         addToList(res);
     }
 
@@ -133,36 +134,15 @@ function MassResume(){
           return item
     }
 
-    function checkTime(i) {
-        if (i < 10) {
-          i = "0" + i;
-        }
-        return i;
-       }
-    function ISODateToTime(aDate) {
-        var date = new Date(aDate),
-          hours = date.getHours(),
-          mins = date.getMinutes();
-          mins = checkTime(mins);
-            var str = hours + ":" + mins;
-            return str;
+    function showShells() {
+        settings.massResumeShell.removeClass("hidden");
     }
 
-    function ISODateToD_M_Y(aDate) {
-        var date = new Date(aDate),
-          year = date.getFullYear(),
-          month = date.getMonth(),
-          dt = date.getDate();
-          if (dt < 10) {
-          dt = '0' + dt;
-        }
-        if (month < 10) {
-          month = '0' + month;
-        }
-
-        var str = dt + "-" + month + "-" + year;
-        return str;
+    function hideShells() {
+        settings.massResumeShell.addClass("hidden");
     }
+
+
 
     function addToList(dataArray){
       var str = '';
@@ -174,6 +154,7 @@ function MassResume(){
           var item = populateResumeStatus(aData);
           str+=item.element[0].outerHTML;
       });
+      hideShells();
       $('.mass-resume-content').append(str);
 
       if(dataArray.length< pageContent) {
@@ -185,11 +166,41 @@ function MassResume(){
 
     return{
         init:init,
-        checkTime:checkTime,
-        ISODateToTime:ISODateToTime,
-        ISODateToD_M_Y:ISODateToD_M_Y,
         populateResumeStatus:populateResumeStatus,
-        getElement:getElement
+        getElement:getElement,
+        showShells: showShells,
+        hideShells: hideShells
     }
 
+}
+
+function checkTime(i) {
+    if (i < 10) {
+      i = "0" + i;
+    }
+    return i;
+   }
+function ISODateToTime(aDate) {
+    var date = new Date(aDate),
+      hours = date.getHours(),
+      mins = date.getMinutes();
+      mins = checkTime(mins);
+        var str = hours + ":" + mins;
+        return str;
+}
+
+function ISODateToD_M_Y(aDate) {
+    var date = new Date(aDate),
+      year = date.getFullYear(),
+      month = date.getMonth(),
+      dt = date.getDate();
+      if (dt < 10) {
+      dt = '0' + dt;
+    }
+    if (month < 10) {
+      month = '0' + month;
+    }
+
+    var str = dt + "-" + month + "-" + year;
+    return str;
 }
