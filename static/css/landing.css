@@ -470,6 +470,7 @@ body {
   position: relative;
   padding: 20px;
   width: 100%;
+  overflow-x: hidden;
   padding: 0; }
   .page-content .main-wrapper .main-container {
     width: 100%;
