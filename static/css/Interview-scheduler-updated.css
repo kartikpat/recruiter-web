@@ -967,7 +967,7 @@ span.sticker {
       font-family: "Droid Sans", sans-serif;
       position: absolute;
       font-size: 11px;
-      color: #ec1c2a; }
+      color: #ad3030; }
   .wrap .container .form .message {
     margin-top: 10px;
     margin-left: 27px;
@@ -1000,12 +1000,12 @@ span.sticker {
       .wrap .container .form .message .field textarea:focus, .wrap .container .form .message .field .medium-editor-element:focus {
         outline: none; }
     .wrap .container .form .message .error-border {
-      border-color: #ec1c2a; }
+      border-color: #ad3030; }
     .wrap .container .form .message .error {
       font-family: "Droid Sans", sans-serif;
       position: absolute;
       font-size: 11px;
-      color: #ec1c2a; }
+      color: #ad3030; }
   .wrap .container .form .telephonic {
     margin-top: 10px;
     margin-left: 27px;
@@ -1041,7 +1041,7 @@ span.sticker {
       font-family: "Droid Sans", sans-serif;
       position: absolute;
       font-size: 11px;
-      color: #ec1c2a; }
+      color: #ad3030; }
   .wrap .container .Availability {
     margin-left: 30px;
     margin-top: 76px; }
@@ -1139,7 +1139,7 @@ span.sticker {
             font-family: "Droid Sans", sans-serif;
             position: absolute;
             font-size: 14px;
-            color: #ec1c2a;
+            color: #ad3030;
             margin-top: -17px; }
           .wrap .second-container .available-hours .Days-available .table .D-avail {
             background-color: #f5f5f5;
@@ -1278,7 +1278,7 @@ span.sticker {
                 font-family: "Droid Sans", sans-serif;
                 position: absolute;
                 font-size: 12px;
-                color: #ec1c2a;
+                color: #ad3030;
                 margin-left: 15px;
                 margin-top: 5px; }
       .wrap .second-container .available-hours .Breaks-available {

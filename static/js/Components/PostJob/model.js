@@ -196,7 +196,11 @@ function Job(){
 			}
 		}
 		else {
-			ob.sal = {}
+			ob.sal = {
+				min: 0,
+				max: 0,
+				hide: settings.confidential.is(':checked') ? 1 : 0
+			}
  		}
 		if(settings.minExp.val() && settings.maxExp.val())
 			ob.exp = {
@@ -210,7 +214,10 @@ function Job(){
 			}
 		}
 		else {
-			ob.batch = {}
+			ob.batch = {
+				min: "",
+				max: ""
+			}
 		}
 		return ob;
 	}
@@ -253,7 +260,7 @@ function Job(){
 		}
 		settings.minExp.val(obj["exp"]["min"]);
 		settings.maxExp.val(obj["exp"]["max"]);
-		if(obj["batch"] && obj["batch"]["min"]!= 0 && obj["batch"]["max"]!=0) {
+		if(obj["batch"] && obj["batch"]["min"]!= "" && obj["batch"]["max"]!="") {
 			settings.batchFrom.val(obj["batch"]["min"]);
 			settings.batchTo.val(obj["batch"]["max"]);
 		}
