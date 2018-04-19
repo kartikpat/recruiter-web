@@ -33,7 +33,8 @@ function Job(){
 		settings.loaderOverlay = $("#loaderOverlay");
 		settings.calendarLength = null;
 		settings.refreshButton= $(".refreshButton")
-		settings.socialIcon = $(".socialIcon")
+		settings.socialIcon = $(".socialIcon");
+		settings.selectDefaultCalendar = $(".selectDefaultCalendar")
 		onClickCreateCalendar();
 		onClickJobOtherActions()
 		onClickJobRefresh();
@@ -231,6 +232,10 @@ function Job(){
 		return settings.calendarSelect.val()
 	}
 
+	function setSelectedCalendarId(calendarId) {
+		settings.calendarSelect.val(calendarId)
+	}
+
 	function onClickJobOtherActions() {
         settings.jobOtherActions.click(function(event) {
 			event.stopPropagation()
@@ -249,6 +254,7 @@ function Job(){
 			if(parseInt(calendarId) == -1) {
 				return
 			}
+
 			return fn(calendarId)
 		})
 	}
@@ -295,6 +301,15 @@ function Job(){
 		settings.jobPremiumModal.find(".spinner").addClass('hidden')
 	}
 
+	function openSelectDefaultCalendarModal() {
+		addBodyFixed()
+		settings.selectDefaultCalendar.removeClass("hidden")
+	}
+
+	function closeCalendarModal() {
+		settings.selectDefaultCalendar.addClass("hidden")
+	}
+
 	return {
 		init: init,
 		setConfig: setConfig,
@@ -310,6 +325,9 @@ function Job(){
 		hideSpinner: hideSpinner,
 		getCalendarLength: getCalendarLength,
 		getSelectedCalendarId: getSelectedCalendarId,
-		setDefaultCalendar: setDefaultCalendar
+		setDefaultCalendar: setDefaultCalendar,
+		openSelectDefaultCalendarModal: openSelectDefaultCalendarModal,
+		closeCalendarModal: closeCalendarModal,
+		setSelectedCalendarId: setSelectedCalendarId
 	}
 }

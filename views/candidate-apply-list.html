@@ -66,10 +66,10 @@
 						</p>
 					</div>
 					<div class="action-buttons right jsJobActions">
-						<span class="section calendar-options hidden" id="calendarContainer">
-							<select class="select-dropdown" id="calendarSelect">
+						<span class="section calendar-options hidden calendarContainer">
+							<select class="select-dropdown calendarSelect">
 							</select>
-							<div class="error-field hidden" id="calendarSelectError"><p>Choose a calendar to send to the applicants for this job!</p></div>
+							<div class="error-field hidden calendarSelectError"><p>Choose a calendar to send to the applicants for this job!</p></div>
 						</span>
 						<span class="button white hidden" id="createCalendar">Create Calendar</span>
 						<a href="" class="hidden" id="jobEditButton">
@@ -892,19 +892,13 @@
 			<div class="modal_heading">Select Default Calendar</div>
 		</div>
 		<div class="modal_content">
-			<div class="modal_text">Are you sure you want to refresh this job?</div>
+			<div class="modal_text">Please choose a default calendar before sending interview invite</div>
 			<div class="section modal_text">
 				<span class="section calendar-options hidden calendarContainer">
 					<select class="select-dropdown calendarSelect">
 					</select>
 					<div class="error-field hidden calendarSelectError"><p>Choose a calendar to send to the applicants for this job!</p></div>
 				</span>
-			</div>
-			<div class="action-buttons">
-				<div class="button-wrapper">
-					{{>spinner}}
-					<button class="refreshButton">Refresh</button>
-				</div>
 			</div>
 		</div>
 	</div>

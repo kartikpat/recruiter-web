@@ -237,18 +237,18 @@ jQuery(document).ready( function() {
     aCandidate.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
         var defaultCalendarId = theJob.getDefaultCalendar();
         if(!defaultCalendarId)
-            return theJob.showCalendarMissingError();
-        var obj = {
-            "type": inviteId,
-            "calendarId": theJob.getSelectedCalendarId()
-        }
+            return theJob.openSelectDefaultCalendarModal();
+        // var obj = {
+        //     "type": inviteId,
+        //     "calendarId": theJob.getSelectedCalendarId()
+        // }
 
         sendInterViewInvite(recruiterId, jobId, applicationId , obj)
     })
     aCandidate.onClickSendInterviewInviteTelephonic(function(applicationId, inviteId){
         var defaultCalendarId = theJob.getDefaultCalendar();
         if(!defaultCalendarId)
-            return theJob.showCalendarMissingError();
+            return theJob.openSelectDefaultCalendarModal();
         var obj = {
             "type": inviteId,
             "calendarId": theJob.getSelectedCalendarId()
@@ -382,6 +382,8 @@ jQuery(document).ready( function() {
         }
 
         if(res.action == "comment") {
+            var obj = store.getCandidateFromStore(res.applicationId)
+            obj["comment"] = res.comment;
             return toastNotify(1, "Comment Added Successfully")
         }
 
@@ -518,6 +520,7 @@ jQuery(document).ready( function() {
         }
         candidates.setHref(str)
     })
+
     candidates.onClickDownloadMassResume(function(arr,from, to, requestType){
         var data = {}
         if(requestType == "bulkRequestDropdown") {
@@ -584,8 +587,8 @@ jQuery(document).ready( function() {
                 defaultId: defaultCalendarId
             }
         }
-        $('#calendarSelect').prop('disabled', true);
-        setDefaultCalendar(recruiterId, jobId, calendarId, obj, {})
+        $('.calendarSelect').prop('disabled', true);
+        setDefaultCalendar( recruiterId, jobId, calendarId, obj, {})
     })
 
      aCandidate.onClickAddTag(function(applicationId, parameters){
@@ -850,13 +853,16 @@ jQuery(document).ready( function() {
     }
 
     function onSuccessfullSetDefaultCalendar(topic, res) {
-        $('#calendarSelect').prop("disabled",false);
+        $('.calendarSelect').prop("disabled",false);
         theJob.setDefaultCalendar(res.data)
+        theJob.closeCalendarModal()
+        theJob.setSelectedCalendarId(parseInt(res.calendarId))
         toastNotify(1, "Default Calendar Set.")
     }
 
     function onFailSetDefaultCalendar(topic, res) {
-        $('#calendarSelect').prop("disabled",false);
+        $('.calendarSelect').prop("disabled",false);
+        theJob.setSelectedCalendarId(-1)
         errorHandler(res);
     }
 
