@@ -14,8 +14,9 @@ var errorResponses = {
 	missingoldPassword: 'Please enter a password',
 	missingnewPassword: 'Please enter a password',
 	missingconfirmPassword:'Please confirm your password',
-	passwordMismatch: 'The passwords you entered do not match',
-	minLengthnewPassword: 'Password should be at least 6 characters'
+	passwordMismatch: 'The new password and confirm password do not match',
+	minLengthnewPassword: 'Password should be at least 6 characters',
+	passwordMatch: 'The old password and new password should not match'
 }
 
 var emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -129,6 +130,7 @@ function Profile(){
 			if(!(
 					ifExists(settings.oldPassword)
 					&& ifExists(settings.newPassword)
+					&& checkPasswordMatch(settings.oldPassword, settings.newPassword)
 					&& checkMinCharacters(settings.newPassword, 6)
 					&& ifExists(settings.confirmPassword)
 					&& checkPassword(settings.newPassword, settings.confirmPassword)
@@ -333,6 +335,18 @@ function checkPassword(one, two){
 	}
 	if(!ifBothMatches(one.val(), two.val())){
 		two.next('.error').text(errorResponses['passwordMismatch']).removeClass("hidden")
+		return false
+	}
+	eraseError(two)
+	return true
+}
+
+function checkPasswordMatch(one, two){
+	if(!((one.val()).trim() && (two.val()).trim())) {
+		return true
+	}
+	if(ifBothMatches(one.val(), two.val())){
+		two.next('.error').text(errorResponses['passwordMatch']).removeClass("hidden")
 		return false
 	}
 	eraseError(two)

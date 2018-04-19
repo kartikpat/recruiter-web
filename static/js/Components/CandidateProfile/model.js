@@ -75,9 +75,11 @@ function Candidate() {
         })
     }
 
-    function onClickChatCandidateModal() {
+    function onClickChatCandidateModal(fn) {
         settings.candidateChatModal.click(function(){
-            window.location.href = "/my-chat"
+            var candidateId = $(this).closest(settings.candidateDetailsModal).attr("data-candidate-id")
+            var applicationId =  $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
+            fn(candidateId, applicationId);
         })
     }
 
@@ -600,7 +602,7 @@ function Candidate() {
         changeButtonText: changeButtonText,
         addRecommendations: addRecommendations,
         onClickSeeMoreRec: onClickSeeMoreRec,
-        onClickChatCandidateModal : onClickChatCandidateModal       
+        onClickChatCandidateModal : onClickChatCandidateModal
     }
 
     function focusOnElement(element, container) {

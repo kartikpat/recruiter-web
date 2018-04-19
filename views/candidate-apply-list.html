@@ -553,7 +553,7 @@
 						<span class="reject button red candidateRejectModal">Reject</span>
 				</span>
 	    		<span class="contactMenubutton button red">contact-info</span>
-					
+
 				<!-- <span class="view-more button white"><i class="icon-down_arrow"></i></span> -->
 	    	</div>
     	</div>
@@ -761,7 +761,7 @@
 								</li>
 								<li>
 									<div data-invite-id="2" class="inviteTelephonic tooltip link-color invite" state="default">
-										<span class="context">Telephonic</span> 
+										<span class="context">Telephonic</span>
 										{{>loader}}
 										<span class="icon-container hidden"><i class="icon-tick"></i></span>
 									</div>
@@ -872,6 +872,33 @@
 			<div class="modal_text">Are you sure you want to refresh this job?</div>
 			<div class="section modal_text">
 				When you refresh a job, it is moved to the top.
+			</div>
+			<div class="action-buttons">
+				<div class="button-wrapper">
+					{{>spinner}}
+					<button class="refreshButton">Refresh</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="" class="modal selectDefaultCalendar hidden">
+
+	<!-- Modal content -->
+	<div class="modal_wrapper" >
+		<span class="modal_close">&times;</span>
+		<div class="modal_header">
+			<div class="modal_heading">Select Default Calendar</div>
+		</div>
+		<div class="modal_content">
+			<div class="modal_text">Are you sure you want to refresh this job?</div>
+			<div class="section modal_text">
+				<span class="section calendar-options hidden calendarContainer">
+					<select class="select-dropdown calendarSelect">
+					</select>
+					<div class="error-field hidden calendarSelectError"><p>Choose a calendar to send to the applicants for this job!</p></div>
+				</span>
 			</div>
 			<div class="action-buttons">
 				<div class="button-wrapper">

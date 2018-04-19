@@ -523,7 +523,7 @@ jQuery(document).ready( function() {
         if(requestType == "bulkRequestDropdown") {
             data = filters.getAppliedFilters();
             data.offset = parseInt(from) - 1;
-            data.pageContent = parseInt(to);
+            data.pageContent = parseInt(to - from);
             data.status = globalParameters.status;
             // parameters.status = globalParameters.status;
             // parameters.length = (to - from) + 1;
@@ -547,7 +547,7 @@ jQuery(document).ready( function() {
         if(typeRequest == "bulkRequestDropdown") {
             data = filters.getAppliedFilters();
             data.offset = parseInt(from) - 1;
-            data.pageContent = parseInt(to);
+            data.pageContent = parseInt(to - from);
             data.status = globalParameters.status;
             parameters.status = globalParameters.status;
             parameters.length = (to - from) + 1;
