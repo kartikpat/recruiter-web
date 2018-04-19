@@ -2639,6 +2639,37 @@ span.sticker {
           background: #808080; }
         .view-resume-modal .mobile-resume-sidebar .fold .action-buttons {
           font-size: 0; }
+          .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper {
+            background-color: #1f8f75;
+            height: 28px;
+            width: 83px;
+            padding: 0 !important; }
+            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper .spinner {
+              margin-top: 6px;
+              text-align: center; }
+            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper .spinner > div {
+              width: 10px;
+              height: 10px; }
+            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper span.button.candidateShortlistModal {
+              padding: 6px 0px;
+              width: 100%;
+              margin: 0 auto; }
+          .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper {
+            background-color: #af595a;
+            padding: 0px;
+            height: 28px;
+            width: 83px;
+            border-radius: 4px; }
+            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper .spinner {
+              text-align: center;
+              margin-top: 6px; }
+            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper .spinner > div {
+              width: 10px;
+              height: 10px; }
+            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper span.button.candidateRejectModal {
+              padding: 6px 0px;
+              width: 100%;
+              margin: 0 auto; }
           .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span {
             -webkit-appearance: none;
             -moz-appearance: none;

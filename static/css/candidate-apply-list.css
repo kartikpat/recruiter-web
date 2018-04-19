@@ -3598,7 +3598,7 @@ input::-webkit-input-placeholder {
         .page-content .candidate-apply-listing .candidates-area .candidates-area-body .selection-bar .bulk-selection-item {
           display: inline-block;
           font-size: initial;
-          padding: 7px 30px 0 10px;
+          padding: 7px 25px 0 10px;
           border-bottom: 3px solid transparent;
           height: 38px;
           cursor: pointer;
@@ -5086,11 +5086,13 @@ input::-webkit-input-placeholder {
           width: 90%;
           margin: 0 auto; }
           .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper {
+            background-color: #1f8f75;
             height: 28px;
             width: 83px;
             padding: 0 !important; }
             .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper .spinner {
-              margin-top: 6px; }
+              margin-top: 6px;
+              text-align: center; }
             .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper .spinner > div {
               width: 10px;
               height: 10px; }
@@ -5104,48 +5106,16 @@ input::-webkit-input-placeholder {
             height: 28px;
             width: 83px;
             border-radius: 4px; }
-            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper button {
-              -webkit-appearance: none;
-              -moz-appearance: none;
-              -ms-appearance: none;
-              -o-appearance: none;
-              border: 0;
-              padding: 0;
-              margin: 0;
-              background: #1f8f75;
-              border-color: #8f8a8a;
-              border-radius: 4px;
-              padding: 6px 25px;
-              font-size: 14px;
-              margin: 0 5px;
-              color: #FFF;
-              display: inline-block;
-              vertical-align: top;
-              cursor: pointer;
-              margin: 0;
-              padding: 6px 16px;
-              width: 100%;
-              border: none;
-              border-radius: none;
-              font-family: "Droid Sans", sans-serif !important; }
-              .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper button.green {
-                background-color: #1f8f75; }
-              .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper button.red {
-                background-color: #af595a; }
-              .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper button.white {
-                border: 1px solid #8f8a8a;
-                color: #2b2b2b; }
-              .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper button.edit {
-                padding: 3px 9px; }
-                .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper button.edit img {
-                  width: 17px;
-                  height: 17px; }
             .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper .spinner {
               text-align: center;
               margin-top: 6px; }
             .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper .spinner > div {
               width: 10px;
               height: 10px; }
+            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper span.button.candidateRejectModal {
+              padding: 6px 0px;
+              width: 100%;
+              margin: 0 auto; }
           .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span {
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -5180,17 +5150,7 @@ input::-webkit-input-placeholder {
             .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span.multi-options {
               background-color: transparent;
               padding-left: 0;
-
-              padding-right: 0; }
-            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span .icon-info:before {
-              content: '\e821';
-              color: black;
-              font-size: 21px; }
-            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span.contactMenubutton {
-              background-color: #2d8699 !important; } }
-
               padding-right: 0; } }
-
 
 .view-resume-modal .close_modal.mobile {
   display: none; }
