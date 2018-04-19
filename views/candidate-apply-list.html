@@ -544,10 +544,16 @@
 
     	<div class="first-fold fold top">
 			<div class="action-buttons">
-	    		<span class="accept button green candidateShortlistModal">Shortlist</span>
-	    		<span class="reject button red candidateRejectModal">Reject</span>
-				<span class="contactMenubutton button red">contact-info</span>
-
+				<span class="shortlist-wrapper">
+						{{>spinner}}
+						<span class="accept button green candidateShortlistModal">Shortlist</span>
+				</span>
+				<span class="reject-wrapper">
+						{{>spinner}}
+						<span class="reject button red candidateRejectModal">Reject</span>
+				</span>
+	    		<span class="contactMenubutton button red">contact-info</span>
+					
 				<!-- <span class="view-more button white"><i class="icon-down_arrow"></i></span> -->
 	    	</div>
     	</div>
@@ -722,15 +728,44 @@
 						<div class="button-action-list candidateOtherActions inactive">
 							<label class="action-list-label">Other Actions</label>
 							<ul class="action-list-items">
-								<li><div class="candidateSendMessage link-color">Send Message</div></li>
-								<!-- <li><a href="#" class="candidateSendInterviewInvite">Send Interview Invite</a></li> -->
-								<li><div class="candidateDownloadResume link-color">Download Resume</div></li>
-								<li><div class="candidateSave link-color">Save for later</div></li>
+								<li>
+									<div class="candidateSendMessage link-color">
+										<span class="context">Send Message</span>
+										{{>loader}}
+										<!-- <span class="icon-container"><i class="icon-tick"></i></span> -->
+									</div>
+								</li>
+								<li>
+									<div class="candidateDownloadResume link-color">
+										<span>Download Resume</span>
+										{{>loader}}
+										<!-- <span class="icon-container"><i class="icon-tick"></i></span>	 -->
+									</div>
+								</li>
+								<li>
+									<div class="candidateSave link-color">
+										<span>Save for later</span>
+										{{>loader}}
+										<!-- <span class="icon-container"><i class="icon-tick"></i></span> -->
+									</div>
+								</li>
 								<li><div class="candidateAddComment link-color">Add Comment</div></li>
 								<li><div class="candidateAddTag link-color">Add Tag</div></li>
 								<li class="interview-invite interviewinvite">Send Interview Invite</li>
-								<li><div data-invite-id="1" class="inviteF2f tooltip link-color">Face to Face</div></li>
-								<li><div data-invite-id="2" class="inviteTelephonic tooltip link-color">Telephonic</div></li>
+								<li>
+									<div data-invite-id="1" class="inviteF2f tooltip link-color invite" state="default">
+										<span class="context">Face to Face</span>
+										{{>loader}}
+										<span class="icon-container hidden"><i class="icon-tick"></i></span>
+									</div>
+								</li>
+								<li>
+									<div data-invite-id="2" class="inviteTelephonic tooltip link-color invite" state="default">
+										<span class="context">Telephonic</span> 
+										{{>loader}}
+										<span class="icon-container hidden"><i class="icon-tick"></i></span>
+									</div>
+								</li>
 							</ul>
 						</div>
 					</div>

@@ -1117,6 +1117,29 @@ body.posf {
             text-decoration: underline;
             text-align: center; }
 
+.icon-spinner-7:before {
+  content: '\f529'; }
+
+@keyframes anim-rotate {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } }
+
+.loadingScroller {
+  display: inline-block;
+  font-size: 1em;
+  height: 1em;
+  line-height: 1;
+  margin: .1em;
+  animation: anim-rotate 1s infinite linear;
+  color: #c2c2c2;
+  margin-left: 0px;
+  text-shadow: 0 0 0.25em rgba(255, 255, 255, 0.3); }
+
+.loadingScroller:hover {
+  text-decoration: none !important; }
+
 a {
   text-decoration: none; }
 
@@ -3150,7 +3173,8 @@ span.sticker {
 .page-content {
   width: 100%;
   min-height: 100%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding: 20px; }
   .page-content .main-container .mass-resume-wrapper {
     overflow-x: auto; }
   .page-content .main-container .page-heading {
@@ -3160,10 +3184,12 @@ span.sticker {
     font-weight: 600;
     text-align: left;
     display: inline-block;
+    margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 10px; }
+    margin-left: 25px; }
   .page-content .main-container .mass-resume-table {
-    width: 1200px; }
+    width: 1200px;
+    margin: 0px auto; }
     .page-content .main-container .mass-resume-table .mass-resume-header {
       margin: 0;
       padding: 10px;
@@ -3182,6 +3208,21 @@ span.sticker {
       background-color: #fff;
       border-left: 1px solid #e8e8e8;
       border-right: 1px solid #e8e8e8; }
+      .page-content .main-container .mass-resume-table .mass-resume-content .empty-view .image-container {
+        padding-top: 20px;
+        text-align: center; }
+        .page-content .main-container .mass-resume-table .mass-resume-content .empty-view .image-container img {
+          width: 15%; }
+      .page-content .main-container .mass-resume-table .mass-resume-content .empty-view .heading {
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        font-size: 16px; }
+      .page-content .main-container .mass-resume-table .mass-resume-content .empty-view .subheading {
+        text-align: center;
+        color: #888;
+        padding-bottom: 20px;
+        font-size: 16px; }
     .page-content .main-container .mass-resume-table .row {
       display: table;
       padding: 10px;

@@ -100,6 +100,8 @@ function MassResume(){
         settings.date=('.date');
         settings.resumeContent=	$('.mass-resume-content');
         settings.massResumeShell = $(".massResume.shell")
+        settings.emptyView=$('.empty-view'),
+        settings.header=$('.mass-resume-header')      
         addToList(res);
     }
 
@@ -146,10 +148,10 @@ function MassResume(){
 
     function addToList(dataArray){
       var str = '';
-      // if(dataArray.length==0){
-      //      settings.emptyView.removeClass('hidden');
-      //      settings.header.addClass('hidden');
-      // }
+      if(dataArray.length==0){
+           settings.emptyView.removeClass('hidden');
+           settings.header.addClass('hidden');
+      }
       dataArray.forEach(function(aData, index){
           var item = populateResumeStatus(aData);
           str+=item.element[0].outerHTML;

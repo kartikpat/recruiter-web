@@ -556,6 +556,29 @@ body.posf {
             text-decoration: underline;
             text-align: center; }
 
+.icon-spinner-7:before {
+  content: '\f529'; }
+
+@keyframes anim-rotate {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } }
+
+.loadingScroller {
+  display: inline-block;
+  font-size: 1em;
+  height: 1em;
+  line-height: 1;
+  margin: .1em;
+  animation: anim-rotate 1s infinite linear;
+  color: #c2c2c2;
+  margin-left: 0px;
+  text-shadow: 0 0 0.25em rgba(255, 255, 255, 0.3); }
+
+.loadingScroller:hover {
+  text-decoration: none !important; }
+
 a {
   text-decoration: none; }
 
