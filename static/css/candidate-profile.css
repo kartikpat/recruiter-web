@@ -1937,6 +1937,9 @@ span.sticker {
       .conversations .conversation-listing-container .conversations-listing .conversation-item:last-child .user-item.user-info p.user-designation {
         border-color: transparent; }
 
+.chat-div {
+  display: none; }
+
 .sidebar-section.contact-info .wrap {
   margin: 7px 0;
   color: #2b2b2b;
