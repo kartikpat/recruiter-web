@@ -198,8 +198,8 @@ jQuery(document).ready( function() {
     //     aCandidate.showCandidateDetails(candidateDetails,"", status);
     //     if(parseInt(status) == 0)
     //         setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
-
     // });
+
     candidates.onClickAddTag(function(applicationId) {
         var candidateDetails = store.getCandidateFromStore(applicationId);
         page('/'+applicationId+'#tag')
@@ -1022,10 +1022,9 @@ jQuery(document).ready( function() {
     }
 
     function onSendInterViewInviteFail(topic, data) {
-
-
-        if(data.status == 404 && data.responseJSON && data.responseJSON.code == 4001) {
-            window.location.href = "/calendar/"+data.parameters.calendarid+"/edit?insuffSlotsErrMsg=1";
+        
+        if(data.status == 400 && data.responseJSON && data.responseJSON.code == 4001) {
+            window.location.href = "/calendar/"+data.parameters.calendarId+"/edit?insuffSlotsErrMsg=1";
         }
 
         var applicationId=data['parameters']['applicationId'];
