@@ -953,7 +953,8 @@
 				"static/js/Utilities/toastNotifier.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js",
-				"static/js/vendor/tooltipster.main.min.js"
+				"static/js/vendor/tooltipster.main.min.js",
+				"static/js/Services/fetchRecruiterCalendar.js"
 			],
 			"prod" : [
 				"static/build/js/dashboard.min.js"
@@ -1578,6 +1579,7 @@
 				"static/js/Components/CandidateProfile/model.js",
 				"static/js/Components/CandidateProfile/index.js",
 				"static/js/Components/CandidateProfile/mapping.js",
+				"static/js/Components/CandidateProfile/store.js",
 				"static/js/Services/submitPageVisit.js",
 				"static/js/vendor/tooltipster.main.min.js"
 			],

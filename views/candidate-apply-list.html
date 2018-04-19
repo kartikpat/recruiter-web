@@ -252,7 +252,7 @@
 		</div>
 	</div>
 
-<div class="view-resume-modal candidateDetailsModal hidden">
+<div class="view-resume-modal candidateDetailsModal candidateRow hidden">
 	<div class="close-resume-modal closeCandidateModal">
     	<img src="/static/images/close-icon.png">
     </div>
@@ -553,7 +553,7 @@
 						<span class="reject button red candidateRejectModal">Reject</span>
 				</span>
 	    		<span class="contactMenubutton button red">contact-info</span>
-					
+
 				<!-- <span class="view-more button white"><i class="icon-down_arrow"></i></span> -->
 	    	</div>
     	</div>
@@ -591,8 +591,26 @@
     			<li class="save" id="candidateSaveModal"><i class="icon-star_later"></i>Save for Later</li>
     			<li class="chat" id="candidateChatModal"><span class="icon"><i class="icon-chat"></i></span>Chat with <span id="firstName" class="candidate-first-name">Shreya</span></li>
     			<li class="invite"><span class="icon"><i class="icon-interview"></i></span>Send Interview Invite</li>
-				<li class="invite-links"><span class="icon"><i class="icon-face-to-face"></i></span><span data-invite-id="1" class="inviteF2f tooltip ">Face to Face</span></li>
-				<li class="invite-links"><span class="icon"><i class="icon-telephone"></i></span><span data-invite-id="2" class="inviteTelephonic tooltip ">Telephonic</span></li>
+				<li class="invite-links">
+					<span class="icon">
+						<i class="icon-face-to-face"></i>
+					</span>
+					<span data-invite-id="1" class="inviteF2f invite tooltip" state="default">
+						<span class="context">Face to Face</span>
+						{{>loader}}
+						<span class="icon-container hidden"><i class="icon-tick"></i></span>
+					</span>
+				</li>
+				<li class="invite-links">
+					<span class="icon">
+						<i class="icon-telephone"></i>
+					</span>
+					<span data-invite-id="2" class="inviteTelephonic invite tooltip"  state="default">
+						<span class="context">Telephonic</span>
+						{{>loader}}
+						<span class="icon-container hidden"><i class="icon-tick"></i></span>
+					</span>
+				</li>
     		</ul>
 <!--
     		<ul>
@@ -761,7 +779,7 @@
 								</li>
 								<li>
 									<div data-invite-id="2" class="inviteTelephonic tooltip link-color invite" state="default">
-										<span class="context">Telephonic</span> 
+										<span class="context">Telephonic</span>
 										{{>loader}}
 										<span class="icon-container hidden"><i class="icon-tick"></i></span>
 									</div>
@@ -872,6 +890,33 @@
 			<div class="modal_text">Are you sure you want to refresh this job?</div>
 			<div class="section modal_text">
 				When you refresh a job, it is moved to the top.
+			</div>
+			<div class="action-buttons">
+				<div class="button-wrapper">
+					{{>spinner}}
+					<button class="refreshButton">Refresh</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="" class="modal selectDefaultCalendar hidden">
+
+	<!-- Modal content -->
+	<div class="modal_wrapper" >
+		<span class="modal_close">&times;</span>
+		<div class="modal_header">
+			<div class="modal_heading">Select Default Calendar</div>
+		</div>
+		<div class="modal_content">
+			<div class="modal_text">Are you sure you want to refresh this job?</div>
+			<div class="section modal_text">
+				<span class="section calendar-options hidden calendarContainer">
+					<select class="select-dropdown calendarSelect">
+					</select>
+					<div class="error-field hidden calendarSelectError"><p>Choose a calendar to send to the applicants for this job!</p></div>
+				</span>
 			</div>
 			<div class="action-buttons">
 				<div class="button-wrapper">
