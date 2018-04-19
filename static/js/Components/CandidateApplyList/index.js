@@ -257,7 +257,7 @@ jQuery(document).ready( function() {
     candidates.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
         if($(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f').attr('state')=='default'){
                 $(".candidateRow[data-application-id="+applicationId+"]").find('.invite').attr('state','clicked')
-                $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .spinner').removeClass('hidden');
+                $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .loadingScroller').removeClass('hidden');
                 var defaultCalendarId = theJob.getDefaultCalendar();
                 if(!defaultCalendarId)
                     return theJob.showCalendarMissingError();
@@ -271,7 +271,7 @@ jQuery(document).ready( function() {
     candidates.onClickSendInterviewInviteTelephonic(function(applicationId, inviteId){
         if($(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic').attr('state')=='default'){
             $(".candidateRow[data-application-id="+applicationId+"]").find('.invite').attr('state','clicked')
-            $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic .spinner').removeClass('hidden');
+            $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic .loadingScroller').removeClass('hidden');
             var defaultCalendarId = theJob.getDefaultCalendar();
             if(!defaultCalendarId)
                 return theJob.showCalendarMissingError();
@@ -308,6 +308,7 @@ jQuery(document).ready( function() {
             setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
     });
     candidates.onClickSaveCandidate(function(applicationId, newStatus, dataAction){
+        $(".candidateRow[data-application-id="+applicationId+"]").find('.candidateSave .loadingScroller').removeClass('hidden');
         var action;
         if(parseInt(dataAction) == parseInt(newStatus)) {
             action = "unread"
@@ -338,9 +339,9 @@ jQuery(document).ready( function() {
         setCandidateAction(recruiterId, jobId, action , applicationId, {}, parameters);
     })
     function onSuccessfullCandidateAction(topic, res) {
+
         var arr = [];
         arr.push(res.applicationId)
-
         if(res.action == "view") {
             var newStatus = 4
             return candidates.changeStatus(arr, newStatus)
@@ -439,6 +440,7 @@ jQuery(document).ready( function() {
             return toastNotify(1, "Moved to Rejected Tab")
         }
         if(res.action == "save") {
+            $(".candidateRow[data-application-id="+res.applicationId+"]").find('.candidateSave .loadingScroller').addClass('hidden');
             var newStatus = 3
             if(res.parameters.isModalButton) {
                 candidates.changeButtonText(arr, newStatus, res.parameters.dataAction)
@@ -799,13 +801,14 @@ jQuery(document).ready( function() {
     }
 
     function onFailCandidateAction(topic,res) {
+        $(".candidateRow[data-application-id="+res.applicationId+"]").find('.candidateSave .loadingScroller').addClass('hidden');
+        $('.spinner').addClass('hidden');
+        $('.shortlist').removeClass('hidden');
+        $('.reject').removeClass('hidden');    
         if(res.action == "view") {
             return
         }
         errorHandler(res);
-        $('.spinner').addClass('hidden');
-        $('.shortlist').removeClass('hidden');
-        $('.reject').removeClass('hidden');
     }
 
     function onSuccessfullFetchedTag(topic, res) {
@@ -955,19 +958,19 @@ jQuery(document).ready( function() {
         candidates.changeInviteText(data.parameters.applicationId)
         if(data.parameters.inviteId == 1){
             toastNotify(1, "Face to Face Invite Sent Successfully!")
-            $(".candidateRow[data-application-id="+applicationId+"]").find('.invite .icon-container').removeClass('hidden');
-            $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .spinner').addClass('hidden');
+            $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .icon-container').removeClass('hidden');
+            $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .loadingScroller').addClass('hidden');
         }    
         if(data.parameters.inviteId == 2){
             toastNotify(1, "Telephonic Invite Sent Successfully!")
-            $(".candidateRow[data-application-id="+applicationId+"]").find('.invite .icon-container').removeClass('hidden');
-            $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic .spinner').addClass('hidden');
+            $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic  .icon-container').removeClass('hidden');
+            $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic .loadingScroller').addClass('hidden');
         }    
     }
 
     function onSendInterViewInviteFail(topic, data) {
         var applicationId=data['parameters']['applicationId'];
-        $(".candidateRow[data-application-id="+applicationId+"]").find('.spinner').addClass('hidden');
+        $(".candidateRow[data-application-id="+applicationId+"]").find('.invite .loadingScroller').addClass('hidden');
         $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f').attr('state','default');
         $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic').attr('state','default');
         errorHandler(data)

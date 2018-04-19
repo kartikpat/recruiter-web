@@ -2160,7 +2160,54 @@ input::-webkit-input-placeholder {
 				.action-buttons {
 					font-size:0;
                     width: 90%;
-                    margin: 0 auto;
+					margin: 0 auto;
+					.shortlist-wrapper{
+						height: 28px;
+						width: 83px;
+						padding:0!important;
+						.spinner{
+							margin-top: 6px;
+		
+						}
+						.spinner>div{
+							width: 10px;
+							height: 10px;
+						}
+						span {
+							&.button {
+								&.candidateShortlistModal {
+									padding: 6px 0px;
+									width: 100%;
+									margin: 0 auto;
+								}
+							}
+						}
+					}
+					.reject-wrapper{
+						background-color: #af595a;
+						padding: 0px;
+						height: 28px;
+						width: 83px;
+						border-radius: 4px;
+
+						button {
+							@include button($button-color-green);
+							margin:0;
+							padding: 6px 16px;
+							width:100%;
+							border: none;
+							border-radius: none;
+							font-family:$droid-font!important;
+						}
+						.spinner{
+							text-align: center;
+							margin-top: 6px;
+						}
+						.spinner > div {
+							width: 10px;
+							height: 10px;
+						}
+					}
 					span {
 						@include button($color-white);
 						display:inline-block;
@@ -2170,14 +2217,7 @@ input::-webkit-input-placeholder {
 							padding-left:0;
 							padding-right:0;
 						}
-						.icon-info:before {
-							content: '\e821';
-							color: black;
-							font-size: 21px;
-						}
-                        &.contactMenubutton {
-
-                        }
+						
 					}
 
 				}
@@ -2365,7 +2405,7 @@ input::-webkit-input-placeholder {
 		overflow-x:auto;
 		white-space:nowrap;
 		overflow-y: hidden;
-        margin-left: 85px
+        margin-left: 70px
 	}
 	.ui-tabs-tab {
 		border: 0;
