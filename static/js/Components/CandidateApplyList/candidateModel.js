@@ -304,11 +304,13 @@ function Candidate() {
                 item.name.text(anObj["organization"])
                 item.designation.text(anObj["designation"]);
 
-                var fromMon = getMonthName(anObj["exp"]["from"]["month"]);
-                var toMon = getMonthName(anObj["exp"]["to"]["month"]);
-                var fromYear = anObj["exp"]["from"]["year"];
-                var toYear = anObj["exp"]["to"]["year"];
-                var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
+                if(anObj["exp"]["from"]["month"] && anObj["exp"]["to"]["month"] && anObj["exp"]["from"]["year"] && anObj["exp"]["to"]["year"]) {
+                    var fromMon = getMonthName(anObj["exp"]["from"]["month"]);
+                    var toMon = getMonthName(anObj["exp"]["to"]["month"]);
+                    var fromYear = anObj["exp"]["from"]["year"];
+                    var toYear = anObj["exp"]["to"]["year"];
+                    var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
+                }
                 item.tenure.text(str);
                 if(index != aData["jobs"].length - 1)
                     item.seperator.removeClass("hidden")
@@ -393,7 +395,7 @@ function Candidate() {
         else {
             settings.commentTextarea.val('').addClass("hidden")
             $(settings.candidateCommentTextareaClass).val('').removeClass("hidden");
-            $(settings.mobCandidateCommentTextareaClass).val('').addClass("hidden");
+            $(settings.mobCandidateCommentTextareaClass).val('').removeClass("hidden");
             $(settings.candidateAddCommentButtonClass).removeClass("hidden")
             $(settings.mobCandidateAddCommentButtonClass).removeClass("hidden");
             settings.candidateEditComment.addClass("hidden")

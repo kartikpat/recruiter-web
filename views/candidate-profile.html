@@ -297,10 +297,14 @@
             	<div class="clearfix"></div>
             	<div class="first-fold fold top">
         			<div class="action-buttons">
-        	    		<span class="accept button green candidateShortlistModal">Shortlist</span>
-        	    		<span class="reject button red candidateRejectModal">Reject</span>
-
-        	    		<!-- <span class="view-more button white"><i class="icon-down_arrow"></i></span> -->
+						<span class="shortlist-wrapper">
+							{{>spinner}}
+        	    			<span class="shortlist accept button green candidateShortlistModal">Shortlist</span>
+						</span>
+						<span class="reject-wrapper">
+							 {{>spinner}}
+							<span class="reject button red candidateRejectModal">Reject</span>
+						</span>	
         	    	</div>
             	</div>
             	<!-- <div class="second-fold fold hidden">

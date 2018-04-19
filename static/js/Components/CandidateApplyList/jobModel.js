@@ -80,12 +80,12 @@ function Job(){
 			settings.locSeperator.removeClass("hidden")
 		}
 		var status = data["jobStatus"];
-		var statusArr = ["published", "unpublished"];
+		var statusArr = ["published", "unpublished", "updated-published", "updated-unpublished"];
 		if(statusArr.indexOf(status) != -1) {
 			populateCalendarOptions(data["calendars"])
 		}
 		settings.refreshButton.attr("data-refresh-job-id", data["jobId"]);
-		if(status == "published") {
+		if(status == "published" || status == "updated-published") {
             settings.jobUnpublishButton.removeClass("hidden")
 
             if(data["isRefreshable"]) {
@@ -94,17 +94,18 @@ function Job(){
             if(!data["isPremium"])
                 settings.jobPremiumButton.removeClass("hidden")
 			if(data["jobSocialShareUrl"]) {
+				// debugger
 				var url = config["baseUrlJob"] + data["jobSocialShareUrl"];
-				settings.jobPostFacebook.attr("href", getFacebookShareLink(url))
-				settings.jobPostTwitter.attr("href", getTwitterShareLink(url))
-				settings.jobPostLinkedin.attr("href", getLinkedInShareUrl(url))
+				settings.jobPostFacebook.attr("href", getFacebookShareLink(url)).removeClass("hidden")
+				settings.jobPostTwitter.attr("href", getTwitterShareLink(url)).removeClass("hidden")
+				settings.jobPostLinkedin.attr("href", getLinkedInShareUrl(url)).removeClass("hidden")
 			}
         }
 
 		if(data["cnfi"]) {
 			settings.socialIcon.addClass("hidden")
 		}
-
+		console.log(settings.jobOtherActions.find(".action-list-items li a.hidden").length)
 		if(settings.jobOtherActions.find(".action-list-items li a.hidden").length < 4) {
 			settings.jobOtherActions.removeClass("hidden")
 		}
@@ -150,7 +151,6 @@ function Job(){
 
 	function onClickSubmitRefreshJob(fn) {
 		settings.refreshButton.click(function() {
-			debugger
 			var jobId = $(this).attr('data-refresh-job-id');
 			return fn(jobId);
 		});

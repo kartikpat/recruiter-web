@@ -14,7 +14,8 @@ var errorResponses = {
 	missingoldPassword: 'Please enter a password',
 	missingnewPassword: 'Please enter a password',
 	missingconfirmPassword:'Please confirm your password',
-	passwordMismatch: 'The passwords you entered do not match'
+	passwordMismatch: 'The passwords you entered do not match',
+	minLengthnewPassword: 'Password should be at least 6 characters'
 }
 
 var emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -343,7 +344,7 @@ function checkMinCharacters(ele, len) {
 		return true
 	}
 	if(!checkCharacters(ele.val().length, len)) {
-		ele.next('.error').text(errorResponses['minLength'+ele.attr('name')])
+		ele.next('.error').text(errorResponses['minLength'+ele.attr('name')]).removeClass("hidden")
 		return false
 	}
 	eraseError(ele)

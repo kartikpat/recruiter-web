@@ -201,7 +201,7 @@ function candidateList() {
         settings.contactMenubutton.on('click',function(e){
             e.preventDefault();
             e.stopPropagation();
-            settings.contactMenu.removeClass('hidden')
+            settings.contactMenu.toggleClass('hidden')
         })
         settings.contactMenu.click(function(e){
             e.stopPropagation();
@@ -326,11 +326,14 @@ function candidateList() {
                 item.name.text(anObj["organization"])
                 item.designation.text(anObj["designation"]);
 
-                var fromMon = getMonthName(anObj["exp"]["from"]["month"]);
-                var toMon = getMonthName(anObj["exp"]["to"]["month"]);
-                var fromYear = anObj["exp"]["from"]["year"];
-                var toYear = anObj["exp"]["to"]["year"];
-                var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
+                if(anObj["exp"]["from"]["month"] && anObj["exp"]["to"]["month"] && anObj["exp"]["from"]["year"] && anObj["exp"]["to"]["year"]) {
+                    var fromMon = getMonthName(anObj["exp"]["from"]["month"]);
+                    var toMon = getMonthName(anObj["exp"]["to"]["month"]);
+                    var fromYear = anObj["exp"]["from"]["year"];
+                    var toYear = anObj["exp"]["to"]["year"];
+                    var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
+                }
+
                 item.tenure.text(str);
 
                 profStr+=item.element[0].outerHTML
@@ -645,11 +648,11 @@ function candidateList() {
             if(jQuery(this).is(":checked")){
                 var candidateSelect = jQuery(".candidate-select")
                 var el = $(".candidateListing[data-status-attribute='"+settings.status+"']").find(".candidate-select input:checked")
-                if(el.length > 100) {
-                    $(this).prop("checked", false);
-                    toastNotify(3, "You can perform action on only 100 candidates at once.")
-                    return
-                }
+                // if(el.length > 100) {
+                //     $(this).prop("checked", false);
+                //     toastNotify(3, "You can perform action on only 100 candidates at once.")
+                //     return
+                // }
                 jQuery(this).closest(".candidate-select").addClass("selected");
 
                 var arr = returnSelectedApplications()
@@ -689,10 +692,10 @@ function candidateList() {
 
                 var candidateSelect = $(".candidateListing[data-status-attribute='"+settings.status+"']").find(".candidate-select")
                 var candidateSelectTotal = candidateSelect.not(".candidateRow.prototype .candidate-select");
-                if(candidateSelectTotal.length > 100) {
-                    candidateSelectTotal = candidateSelectTotal.slice(0, 100);
-                    toastNotify(3, "You can perform action on only 100 candidates at once.")
-                }
+                // if(candidateSelectTotal.length > 100) {
+                //     candidateSelectTotal = candidateSelectTotal.slice(0, 100);
+                //     toastNotify(3, "You can perform action on only 100 candidates at once.")
+                // }
                 candidateSelectTotal.addClass("selected")
                 candidateSelectTotal.find("input").prop("checked",  true);
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").attr("disabled", false);
@@ -824,8 +827,9 @@ function candidateList() {
 
     function onClickDownloadMassResume(fn) {
         settings.massResumeDownload.click(function(event){
+            var requestType = settings.bulkActionContainer.attr("data-type-request");
             var arr = returnSelectedApplications()
-            fn(arr)
+            fn(arr,settings.from, settings.to, requestType)
         })
     }
 
@@ -851,6 +855,7 @@ function candidateList() {
             activate: function(event, ui) {
                 hideEmptyScreen()
                 settings.bulkActionContainer.addClass("hidden")
+                settings.secondMassActionContainer.addClass("hidden")
                 settings.massCheckboxInput.prop("checked", false)
                 fn(event, ui);
             }

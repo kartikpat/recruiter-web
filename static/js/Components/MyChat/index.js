@@ -53,7 +53,7 @@ jQuery(document).ready( function() {
             }
             else if (status.category == "PNNetworkIssuesCategory") {
                 var data = {}
-                data.message = "Network Issues"
+                data.message = "Looks like you are not connected to the internet"
                 toastNotify(3, data.message)
             }
 
