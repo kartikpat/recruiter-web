@@ -4,9 +4,12 @@ function sendInterViewInvite(recruiterId, jobId, applicationId , data){
             res.parameters = {}
             res.parameters.applicationId = applicationId;
             res.parameters.inviteId = data.type;
+
 			return pubsub.publish("sendInterViewInviteSuccess", res);
 		}
 	}, function(res,status,error) {
+		res.parameters = {}
+		res.parameters.calendarId = data.calendarId;
 		return pubsub.publish("sendInterViewInviteFail", res);
 	});
 }

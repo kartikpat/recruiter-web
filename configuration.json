@@ -1,5 +1,5 @@
 {
-	"baseUrl_local": "http://localhost:8000",
+	"baseUrl_local": "http://192.168.86.32:8000",
 	"baseUrl": "http://13.126.92.102:8000",
 	"baseDomain":"iimjobs",
 	"baseUrlJob": "http://qa200.iimjobs.com/j",

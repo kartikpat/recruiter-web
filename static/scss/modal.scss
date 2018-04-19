@@ -30,6 +30,8 @@
     .button-wrapper {
         @include button($button-color-green)
         outline: none;
+        padding: 0;
+        width: auto;
         .spinner {
             padding: 6px 25px;
         }

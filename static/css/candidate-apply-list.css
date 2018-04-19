@@ -5060,10 +5060,12 @@ input::-webkit-input-placeholder {
       background: #FFF;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
       .view-resume-modal .mobile-resume-sidebar .contact-menu .contact-info {
-        color: #fff; }
+        color: #fff !important; }
         .view-resume-modal .mobile-resume-sidebar .contact-menu .contact-info h3 {
           margin-top: 0px; }
         .view-resume-modal .mobile-resume-sidebar .contact-menu .contact-info .wrap {
+          margin: 7px 0; }
+        .view-resume-modal .mobile-resume-sidebar .contact-menu .contact-info .wrap-mobile {
           margin: 7px 0; }
       .view-resume-modal .mobile-resume-sidebar .fold {
         position: fixed;
@@ -5178,7 +5180,17 @@ input::-webkit-input-placeholder {
             .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span.multi-options {
               background-color: transparent;
               padding-left: 0;
+
+              padding-right: 0; }
+            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span .icon-info:before {
+              content: '\e821';
+              color: black;
+              font-size: 21px; }
+            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span.contactMenubutton {
+              background-color: #2d8699 !important; } }
+
               padding-right: 0; } }
+
 
 .view-resume-modal .close_modal.mobile {
   display: none; }
@@ -5421,7 +5433,8 @@ input::-webkit-input-placeholder {
   .view-resume-modal .mobile-resume-sidebar .contact-menu .contact-info {
     color: #fff; }
     .view-resume-modal .mobile-resume-sidebar .contact-menu .contact-info h3 {
-      margin-top: 0px; }
+      margin-top: 0px;
+      margin-bottom: 5px; }
     .view-resume-modal .mobile-resume-sidebar .contact-menu .contact-info .wrap {
       margin: 7px 0; }
   .mass-action-container {
@@ -5529,3 +5542,9 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
 .collapsed {
   max-height: 65px;
   overflow: hidden; }
+
+@media (max-width: 414px) {
+  .view-resume-modal .mobile-resume-sidebar .fold .action-buttons {
+    width: 95%; }
+  .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span {
+    padding: 6px 12px; } }

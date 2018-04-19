@@ -1,5 +1,16 @@
 {{> header }}
 
+<div class="toast-notification-container">
+	<div class="toast-notification">
+		<!-- <div class="notification-icon">
+			<img src="/static/images/close-icon.png" />
+		</div> -->
+		<div class="notification-message">
+			<p></p>
+		</div>
+	</div>
+</div>
+
 <div class="wrap">
 	<p class="headings"> Create Calendar</p>
 	<div class="container">
@@ -7,7 +18,7 @@
 					<span class="details">Basic Details</span>
 					<div class="loader-container {{hiddenLoader}}">
 							<div class="loader-content">
-						
+
 								<div class="loading loaderScroller" style="margin-top:20px ">
 										<div class="loader loader-scroller"></div>
 								</div>
@@ -16,25 +27,25 @@
 					<div class="form-container {{hiddenClass}} ">
 						<div class="row-separator"></div>
 						<div class="input-name">
-							<div class="tag">Name</div> 
+							<div class="tag">Name</div>
 							<textarea name="FirstName" id="name" placeholder="Give your calendar a name" ></textarea>
 							<div class="error"></div>
 						</div>
 						<div class="message">
-							<div class="tag">Message for F2F Interview</div> 
+							<div class="tag">Message for F2F Interview</div>
 								<div class="field">
 									<textarea type="text" id="message"  placeholder="Tell the candidate your address, office location" ></textarea>
 									<div class="error"></div>
-								</div>	
-							
+								</div>
+
 						</div>
 						<div class="telephonic">
-							<div class="tag">Message for Telephonic Interview</div> 
+							<div class="tag">Message for Telephonic Interview</div>
 							<div class="field">
 								<textarea type="text" id="telephonic" placeholder="Tell the candidate your phone number" ></textarea>
 								<div class="error"></div>
 							</div>
-								
+
 						</div>
 				    </div>
 			</div>
@@ -47,7 +58,7 @@
 				</div>  -->
 				<!-- <div class="connect">
 				<img src="/static/images/goggle.png">
-				<div class="connecting">Connect with Google</div>  
+				<div class="connecting">Connect with Google</div>
 				</div>  -->
 		</div>
 	</div>
@@ -57,13 +68,13 @@
 			<div class="Days-available">
 				<span id="available-span">Available Hours</span>
 				<p>Select the time during which you are available</p>
-				
+
 				<div class="table" id="example">
 						<div class="error"></div>
 					<div class="D-avail">
-						<div id="one">DAYS AVAILABLE</div> 
+						<div id="one">DAYS AVAILABLE</div>
 						<div id="two">START TIME</div>
-						<div id="three">END TIME</div>  
+						<div id="three">END TIME</div>
 					</div>
 					<div class="dayId" id="1" slotId="">
 						<div class="day" id="">
@@ -72,8 +83,8 @@
 									<div id="Check-span">DAYS AVAILABLE</div>
 									<input type="checkbox" id="check-button-mon" class="check-button highlighter">
 									<label for="check-button-mon">MON</label>
-								</div>					 
-							</div>			  
+								</div>
+							</div>
 						</div>
 						<div class="time-section" id="First">
 							<span class="section-one">
@@ -81,7 +92,7 @@
 								<select class="select-dropdown Start-time start highlighter initialstart" id="selectElementId-1" >
 									<div class="dropdown-list">
 										<option value="0" selected>Select</option>
-										
+
 									</div>
 								</select>
 							</span>
@@ -91,7 +102,7 @@
 								<select class="select-dropdown End-time end highlighter initialend" id="selectElementId-2" >
 										<div class="dropdown-list">
 											<option value="0" selected>Select</option>
-										
+
 										</div>
 								</select>
 							</span>
@@ -108,7 +119,7 @@
 										<span id="Check-span">DAYS AVAILABLE</span>
 										<input type="checkbox" id="check-button-tues" class="check-button highlighter">
 										<label for="check-button-tues">TUES</label>
-									</div>								
+									</div>
 								</div>
 						</div>
 						<div class="time-section" id="Second">
@@ -117,7 +128,7 @@
 								<select class="select-dropdown  Start-time start highlighter">
 									<div class="dropdown-list">
 										<option value="0" selected>Select</option>
-										
+
 									</div>
 								</select>
 							</span>
@@ -135,15 +146,15 @@
 								</div>
 							<div class="error-slot"></div>
 						</div>
-					</div>	
-					<div class="dayId" id="3"slotId="">	
+					</div>
+					<div class="dayId" id="3"slotId="">
 						<div class="day" id="">
 								<div class="section">
 									<div class="check-input">
 										<span id="Check-span">DAYS AVAILABLE</span>
 										<input type="checkbox" id="check-button-wed" class="check-button highlighter">
 										<label for="check-button-wed">WED</label>
-										</div>								
+										</div>
 								</div>
 						</div>
 						<div class="time-section" id="third">
@@ -152,7 +163,7 @@
 									<select class="select-dropdown  Start-time start highlighter">
 										<div class="dropdown-list">
 											<option value="0" selected>Select</option>
-											
+
 										</div>
 									</select>
 								</span>
@@ -171,14 +182,14 @@
 							<div class="error-slot"></div>
 						</div>
 					</div>
-					<div class="dayId" id="4" slotId="">	
+					<div class="dayId" id="4" slotId="">
 						<div class="day" id="">
 								<div class="section">
 									<div class="check-input">
-									<span id="Check-span">DAYS AVAILABLE</span>	
+									<span id="Check-span">DAYS AVAILABLE</span>
 									<input type="checkbox" id="check-button-thurs" class="check-button highlighter">
 									<label for="check-button-thurs">THURS</label>
-									</div>								
+									</div>
 								</div>
 						</div>
 						<div class="time-section" id="four">
@@ -187,7 +198,7 @@
 									<select class="select-dropdown Start-time start highlighter">
 										<div class="dropdown-list">
 										<option value="0" selected>Select</option>
-											
+
 										</div>
 									</select>
 								</span>
@@ -203,17 +214,17 @@
 								<div class="button-container">
 									<button type="button"  class="copyToAll">Copy to All</button>
 								</div>
-							<div class="error-slot"></div>	
+							<div class="error-slot"></div>
 						</div>
 					</div>
-					<div class="dayId" id="5"slotId="">	
+					<div class="dayId" id="5"slotId="">
 						<div class="day" id="">
 								<div class="section">
 									<div class="check-input">
 									<span id="Check-span">DAYS AVAILABLE</span>
 									<input type="checkbox" id="check-button-fri" class="check-button highlighter">
 									<label for="check-button-fri">FRI</label>
-										</div>								
+										</div>
 								</div>
 						</div>
 						<div class="time-section" id="five">
@@ -222,7 +233,7 @@
 									<select class="select-dropdown  Start-time start highlighter">
 										<div class="dropdown-list">
 											<option value="0" selected>Select</option>
-											
+
 										</div>
 									</select>
 								</span>
@@ -238,9 +249,9 @@
 								<div class="button-container">
 									<button type="button" class="copyToAll">Copy to All</button>
 								</div>
-							<div class="error-slot"></div>	
+							<div class="error-slot"></div>
 						</div>
-					</div>	
+					</div>
 					<div class="dayId" id="6" slotId="">
 						<div class="day" id="" >
 								<div class="section">
@@ -248,7 +259,7 @@
 										<span id="Check-span">DAYS AVAILABLE</span>
 										<input type="checkbox" id="check-button-sat" class="check-button highlighter">
 										<label for="check-button-sat">SAT</label>
-									</div>								
+									</div>
 								</div>
 						</div>
 						<div class="time-section" id="six">
@@ -257,7 +268,7 @@
 										<select class="select-dropdown  Start-time start highlighter">
 											<div class="dropdown-list">
 												<option value="0" selected>Select</option>
-												
+
 											</div>
 										</select>
 								</span>
@@ -273,7 +284,7 @@
 								<div class="button-container">
 									<button type="button" class="copyToAll">Copy to All</button>
 								</div>
-							<div class="error-slot"></div>	
+							<div class="error-slot"></div>
 						</div>
 					</div>
 					<div class="dayId" id="7" slotId="">
@@ -283,7 +294,7 @@
 											<span id="Check-span">DAYS AVAILABLE</span>
 											<input type="checkbox" id="check-button-sun" class="check-button highlighter">
 											<label for="check-button-sun">SUN</label>
-										</div>								
+										</div>
 									</div>
 							</div>
 							<div class="time-section" id="seven">
@@ -292,7 +303,7 @@
 											<select class="select-dropdown  Start-time start highlighter">
 												<div class="dropdown-list">
 													<option value="0" selected>Select</option>
-													
+
 												</div>
 											</select>
 									</span>
@@ -308,24 +319,24 @@
 									<div class="button-container">
 										<button type="button" class="copyToAll">Copy to All</button>
 									</div>
-								<div class="error-slot"></div>	
+								<div class="error-slot"></div>
 							</div>
-						</div>		
-				</div> 
+						</div>
+				</div>
 				<div class="Breaks-available">
 						<span>Breaks Hours</span>
 						<p>Select your break hours. This will be marked as unavailable.</p>
 						<div class="D-table">
 							<div class="D-avail">
 									<span id="two">START TIME</span>
-									<span id="three">END TIME</span>  
+									<span id="three">END TIME</span>
 							</div>
 							<div class="time-section" id="breaks">
 									<span class="section-one">
 										<select class="select-dropdown Break-start start highlighter" id="select">
 											<div class="dropdown-list">
 											<option value="0"selected>Select</option>
-												
+
 											</div>
 										</select>
 									</span>
@@ -352,7 +363,7 @@
 				<div id='calendar'>	</div>
 			</div>
 
-			
+
 			<div class="start-date">
 				<span>Start date</span>
 				<p>Your available slots will start from this date</p>
@@ -371,7 +382,7 @@
 			</div>
 			<div class="end-date">
 				<span>End date</span>
-				<p>Your available slots will end on this date</p>	
+				<p>Your available slots will end on this date</p>
 				<div class="section">
 					<div class="radio-input">
 						<input type="radio" id="radio-button-tillend" name="gender-m" class="highlighter" checked="checked">
@@ -381,15 +392,15 @@
 						<input type="radio" id="radio-button-end" name="gender-m" class="highlighter">
 						<label for="radio-button-end">Ends on Date - This schedule ends on this date:</label>
 					</div>
-					
+
 					<input type="text" id="enddatepicker">
 					<input type="text" id="end_date" value="" class="hidden">
 				</div>
-			</div>	
+			</div>
 
-			
+
 		</div>
-			
+
 	</div>
 
 	<div class="bottom-container {{hiddenClass}}">
@@ -399,7 +410,7 @@
 		   		<button type="submit" id="submit">Create Calendar</button>
 			</div>
 		</div>
-	</div>  
+	</div>
 
 
 </div>

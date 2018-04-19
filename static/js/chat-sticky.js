@@ -394,7 +394,7 @@ var displayAMessageClick = function() {
 	var message = ($(this).closest(".footer").find(".chat-input").val()).trim()
 	var that = $(this).closest(".footer").find(".chat-input")
     if(message == "") {
-        return
+        return $(this).closest(".footer").find(".chat-input").val('')
     }
 		publish({
             UUID:uuid || btoa(recruiterId+'--'+recruiterEmail),
@@ -406,20 +406,25 @@ var displayAMessageClick = function() {
             msg: message,
             img: profile.img_link,
             type: 1
-        }, channelName, function(m){
+        }, channelName, function(status, response){
+            if(status.statusCode == 200) {
+                var elem = {}
+    			elem.entry = {}
+    	        elem.entry.msg = message;
+    	        elem.entry.time = parseInt(moment().format('x'))
 
-			var elem = {}
-			elem.entry = {}
-	        elem.entry.msg = message;
-	        elem.entry.time = parseInt(moment().format('x'))
-	        elem.entry.img = profile.img_link
+    			var item = getMsgSentElement(elem)
+    			$(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
 
-			var item = getMsgSentElement(elem)
-			$(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
-
-            initializeTooltip()
-            that.val('');
-            scrollToBottom(channelName)
+                initializeTooltip()
+                that.val('');
+                scrollToBottom(channelName)
+            }
+            else if (status.category == "PNNetworkIssuesCategory") {
+                var data = {}
+                data.message = "Looks like you are not connected to the internet"
+                toastNotify(3, data.message)
+            }
         })
 
 }
@@ -429,10 +434,10 @@ var displayAMessage = function(event) {
     var key = event.which;
 	var channelName = $(this).attr("data-channel-name");
 	var dataID = $(this).attr("data-id");
-	var message = $(this).val()
+	var message = ($(this).val()).trim()
 	var that = $(this)
     if(message == "") {
-        return
+        return $(this).val('')
     }
     if(key == 13) {
 		publish({
@@ -445,20 +450,25 @@ var displayAMessage = function(event) {
             msg: message,
             img: profile.img_link,
             type: 1
-        }, channelName, function(m){
+        }, channelName, function(status, response){
+            if(status.statusCode == 200) {
+                var elem = {}
+    			elem.entry = {}
+    	        elem.entry.msg = message;
+    	        elem.entry.time = parseInt(moment().format('x'))
 
-			var elem = {}
-			elem.entry = {}
-	        elem.entry.msg = message;
-	        elem.entry.time = parseInt(moment().format('x'))
-	        elem.entry.img = profile.img_link
+    			var item = getMsgSentElement(elem)
+    			$(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
 
-			var item = getMsgSentElement(elem)
-			$(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
-
-            initializeTooltip()
-            that.val('');
-            scrollToBottom(channelName)
+                initializeTooltip()
+                that.val('');
+                scrollToBottom(channelName)
+            }
+            else if (status.category == "PNNetworkIssuesCategory") {
+                var data = {}
+                data.message = "Looks like you are not connected to the internet"
+                toastNotify(3, data.message)
+            }
         })
     }
 }

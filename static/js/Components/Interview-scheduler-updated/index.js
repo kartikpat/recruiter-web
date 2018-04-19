@@ -1,14 +1,21 @@
 $(document).ready(function(){
-    var calendarDetails = Calendar();    
+    var calendarDetails = Calendar();
 
     if(calendarId){
+        var insuffSlotsErrMsg = getQueryParameter("insuffSlotsErrMsg");
+        if(!isEmpty(insuffSlotsErrMsg)) {
+            toastNotify(3, "All the slots have been booked by the candidates. Please add more slots to send interview invite")
+            var newUrl = removeParam("insuffSlotsErrMsg", window.location.href)
+            window.history.replaceState("object or string", "Title", newUrl);
+        }
+
         fetchCalendars(calendarId,recruiterId);
         $('.form-container').removeClass('hidden');
         $('.Availability').removeClass('hidden');
         $('.second-container ').removeClass('hidden');
         $('.bottom-container ').removeClass('hidden');
         $('.loaderScroller').addClass("hidden");
-       
+
     }
     calendarDetails.init();
     calendarDetails.startdate();
@@ -21,7 +28,7 @@ $(document).ready(function(){
         calendarDetails.enddate();
         calendarDetails.testHighlight;
     }
- 
+
 
     calendarDetails.submitHandler(function(){
         console.log("click")
@@ -49,7 +56,7 @@ $(document).ready(function(){
     function onSuccessfulSubmitCalendar(topic, data){
         console.log('submit successful');
         spinner();
-        window.location='/calendar-manage' 
+        window.location='/calendar-manage'
     }
 
 	function onFailedSubmitCalendar(topic, data){
@@ -59,10 +66,10 @@ $(document).ready(function(){
 
     var calendarSubmitSuccessSubscription = pubsub.subscribe('submittedCalendar',onSuccessfulSubmitCalendar);
     var calendarSubmitFailSubscription = pubsub.subscribe('failedCalendarSubmission',onFailedSubmitCalendar);
-  
+
     var fetchCalendarSuccessSubscription = pubsub.subscribe("fetchedCalendars",onSuccessfulFetchCalendar);
 	var fetchCalendarFailSubscription = pubsub.subscribe("failedToFetchCalendars",onFailedFetchCalendar);
-    
+
     function spinner(){
         $('#submit').addClass('hidden')
         $('.spinner').removeClass('hidden');
@@ -72,4 +79,4 @@ $(document).ready(function(){
         $('#submit').removeClass('hidden')
         $('.spinner').addClass('hidden');
     }
-})    
+})

@@ -413,7 +413,8 @@ function Jobs() {
 		hideEmptyView: hideEmptyView,
 		getType: getType,
 		showSpinner: showSpinner,
-		hideSpinner: hideSpinner
+		hideSpinner: hideSpinner,
+		closeModal: closeModal
 	}
 
 	function initializeTooltip() {

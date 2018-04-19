@@ -71,7 +71,6 @@ function ChatEngine(){
 	}
 
 	function publish(message, channel, onPublish) {
-	    console.log(message);
 	    pubnub.publish({
 	        message: message,
 	        channel: channel,
@@ -89,8 +88,6 @@ function ChatEngine(){
 		subscribe: subscribe,
 		publish: publish,
 		getUUID: getUUID
-			
-
 	}
 
-}	
+}

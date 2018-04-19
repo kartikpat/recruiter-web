@@ -242,6 +242,7 @@ jQuery(document).ready( function() {
             "type": inviteId,
             "calendarId": theJob.getSelectedCalendarId()
         }
+
         sendInterViewInvite(recruiterId, jobId, applicationId , obj)
     })
     aCandidate.onClickSendInterviewInviteTelephonic(function(applicationId, inviteId){
@@ -344,11 +345,15 @@ jQuery(document).ready( function() {
         arr.push(res.applicationId)
         if(res.action == "view") {
             var newStatus = 4
+            var obj = store.getCandidateFromStore(res.applicationId)
+            obj["status"] = newStatus;
             return candidates.changeStatus(arr, newStatus)
         }
 
         if(res.action == "download") {
             var newStatus = 5
+            var obj = store.getCandidateFromStore(res.applicationId)
+            obj["status"] = newStatus;
             return candidates.changeStatus(arr, newStatus)
         }
         $.when(null, fetchJobApplicationCount(recruiterId, jobId)).then(function(a,b){
@@ -380,7 +385,7 @@ jQuery(document).ready( function() {
             return toastNotify(1, "Comment Added Successfully")
         }
 
-        if(res.parameters.oldStatus != "") {
+        if(res.parameters.oldStatus != "" && !res.parameters.isModalButton) {
             candidates.candidateActionTransition(arr)
             globalParameters.offset = globalParameters.offset - 1;
             checkApplicationLength()
@@ -401,7 +406,8 @@ jQuery(document).ready( function() {
                 return toastNotify(1, "Moved to Unread Tab")
             }
 
-            aCandidate.changeButtonText(arr, newStatus, res.parameters.dataAction)
+            var obj = store.getCandidateFromStore(res.applicationId)
+            obj["status"] = newStatus;
             candidates.changeButtonText(arr, newStatus, res.parameters.dataAction)
             return toastNotify(1, "Moved to Unread Tab")
         }
@@ -410,6 +416,8 @@ jQuery(document).ready( function() {
             $('.shortlist').removeClass('hidden');
             var newStatus = 1
             if(res.parameters.isModalButton) {
+                var obj = store.getCandidateFromStore(res.applicationId)
+                obj["status"] = newStatus;
                 candidates.changeButtonText(arr, newStatus, res.parameters.dataAction)
                 aCandidate.changeButtonText(arr, newStatus, res.parameters.dataAction)
                 return toastNotify(1, "Moved to Shortlisted Tab")
@@ -418,7 +426,9 @@ jQuery(document).ready( function() {
             if(res.parameters.oldStatus != "") {
                 return toastNotify(1, "Moved to Shortlisted Tab")
             }
-            aCandidate.changeButtonText(arr, newStatus, res.parameters.dataAction)
+
+            var obj = store.getCandidateFromStore(res.applicationId)
+            obj["status"] = newStatus;
             candidates.changeButtonText(arr,newStatus, res.parameters.dataAction)
             return toastNotify(1, "Moved to Shortlisted Tab")
         }
@@ -435,7 +445,8 @@ jQuery(document).ready( function() {
             if(res.parameters.oldStatus != "") {
                 return toastNotify(1, "Moved to Rejected Tab")
             }
-            aCandidate.changeButtonText(arr, newStatus, res.parameters.dataAction)
+            var obj = store.getCandidateFromStore(res.applicationId)
+            obj["status"] = newStatus;
             candidates.changeButtonText(arr,newStatus, res.parameters.dataAction)
             return toastNotify(1, "Moved to Rejected Tab")
         }
@@ -451,7 +462,8 @@ jQuery(document).ready( function() {
             if(res.parameters.oldStatus != "") {
                 return toastNotify(1, "Moved to Saved Tab")
             }
-            aCandidate.changeButtonText(arr, newStatus, res.parameters.dataAction)
+            var obj = store.getCandidateFromStore(res.applicationId)
+            obj["status"] = newStatus;
             candidates.changeButtonText(arr,newStatus, res.parameters.dataAction)
             return toastNotify(1, "Moved to Saved Tab")
         }
@@ -491,9 +503,11 @@ jQuery(document).ready( function() {
 
     candidates.onClickDownloadMassExcel(function(arr, from, to, requestType) {
         var parameters = filters.getAppliedFilters();
+        parameters.status = globalParameters.status;
         if(requestType == "bulkRequestDropdown") {
             parameters.offset = parseInt(from) - 1;
-            parameters.to = parseInt(to);
+            parameters.pageContent = parseInt(to);
+
         }
         else {
             parameters.applicationId = arr.toString()
@@ -504,10 +518,26 @@ jQuery(document).ready( function() {
         }
         candidates.setHref(str)
     })
-    candidates.onClickDownloadMassResume(function(arr){
-        var parameters = {}
-        parameters.applicationId = arr.toString()
-        downloadMassResume(recruiterId, jobId, parameters)
+    candidates.onClickDownloadMassResume(function(arr,from, to, requestType){
+        var data = {}
+        if(requestType == "bulkRequestDropdown") {
+            data = filters.getAppliedFilters();
+            data.offset = parseInt(from) - 1;
+            data.pageContent = parseInt(to);
+            data.status = globalParameters.status;
+            // parameters.status = globalParameters.status;
+            // parameters.length = (to - from) + 1;
+        }
+        else {
+            if(arr.length > 100) {
+                return toastNotify(3, "You can't download more than 100 resumes at a time.")
+            }
+            data.applicationId = arr.toString()
+            // parameters.oldStatus = globalParameters.status
+            // parameters.newStatus = newStatus
+            // parameters.length = applicationIds.length
+        }
+        downloadMassResume(recruiterId, jobId, data)
     })
 
     candidates.onClickMassActionButton(function(applicationIds, action, comment, newStatus, typeRequest, from, to){
@@ -517,7 +547,7 @@ jQuery(document).ready( function() {
         if(typeRequest == "bulkRequestDropdown") {
             data = filters.getAppliedFilters();
             data.offset = parseInt(from) - 1;
-            data.to = parseInt(to);
+            data.pageContent = parseInt(to);
             data.status = globalParameters.status;
             parameters.status = globalParameters.status;
             parameters.length = (to - from) + 1;
@@ -833,7 +863,10 @@ jQuery(document).ready( function() {
     function onSuccessfullCandidateBulkAction(topic,res) {
         if(res.action == "comment") {
             candidates.closeModal()
-            return toastNotify(1, "Comment Added Successfully")
+            toastNotify(1, "Comment added to " + res.parameters.length +" candidates")
+            setTimeout(function(){
+    			window.location = "/job/"+jobId+"/applications";
+    		 }, 2000);
         }
 
         if(res.action == "shortlist") {
@@ -905,6 +938,7 @@ jQuery(document).ready( function() {
 	}
 
 	function onFailedUnpublishedJob(topic,data) {
+        theJob.hideSpinner("unpublish")
 		errorHandler(data)
 	}
 	function onSuccessfulRefreshJob(topic, data){
@@ -917,6 +951,7 @@ jQuery(document).ready( function() {
 	}
 
 	function onFailedRefreshJob(topic, data){
+        theJob.hideSpinner("refresh")
 		errorHandler(data)
 	}
 
@@ -930,6 +965,7 @@ jQuery(document).ready( function() {
 	}
 
 	function onFailedPremiumJob(topic, data){
+        theJob.hideSpinner("premium")
 		errorHandler(data)
 	}
 
@@ -969,10 +1005,16 @@ jQuery(document).ready( function() {
     }
 
     function onSendInterViewInviteFail(topic, data) {
+
+        if(data.status = 404 && data.code = 4001) {
+            window.location.href = "/calendar/"+data.parameters.calendarid+"/edit?insuffSlotsErrMsg=1";
+        }
+
         var applicationId=data['parameters']['applicationId'];
         $(".candidateRow[data-application-id="+applicationId+"]").find('.invite .loadingScroller').addClass('hidden');
         $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f').attr('state','default');
         $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic').attr('state','default');
+
         errorHandler(data)
     }
 

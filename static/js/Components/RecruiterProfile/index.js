@@ -5,7 +5,7 @@ $(document).ready(function(){
 	recruiterProfile.submitHandler(function(type){
 
 		if(recruiterProfile.validate()){
-			console.log(type)
+
 			$('.'+type+'').find('.spinner').removeClass('hidden');
 			// $('#uploadPic').addClass('hidden');
 			$('.'+type+'').find(".button.submit").addClass('hidden');
@@ -48,19 +48,24 @@ $(document).ready(function(){
 		 }, 2000);
 	}
 	function onFailedUpdateProfile(topic, data){
-		errorHandler(data)
 		$('.spinner').addClass('hidden');
 		$('#uploadPic').removeClass('hidden');
 		$(".button.submit").removeClass('hidden');
+		errorHandler(data)
+
 	}
 
 	function onSuccessfulSetPassword(topic, data){
+		$('.spinner').addClass('hidden');
+		$(".button.submit").removeClass('hidden');
 		toastNotify(1, "Password Updated Success");
 		setTimeout(function(){
 			 location.reload()
 		 }, 2000);
 	}
 	function onFailedPassword(topic, data){
+		$('.spinner').addClass('hidden');
+		$(".button.submit").removeClass('hidden');
 		errorHandler(data)
 	}
 

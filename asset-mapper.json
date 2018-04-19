@@ -1621,6 +1621,7 @@
 				"static/js/Utilities/common.js",
 				"static/js/utilities.js",
 				"static/js/Utilities/modal.js",
+				"static/js/Utilities/toastNotifier.js",
 				"static/js/header.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
