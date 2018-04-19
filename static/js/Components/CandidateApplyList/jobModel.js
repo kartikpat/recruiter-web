@@ -175,7 +175,7 @@ function Job(){
 	}
 
 	function onClickSubmitPremiumJob(fn){
-		settings.jobPremiumModal.find(".premiumButton").click(function(e){
+		settings.jobPremiumModal.find(".jobMakePremiumButton").click(function(e){
 			return fn();
 		})
 	}
@@ -276,8 +276,8 @@ function Job(){
 			settings.jobUnpublishModal.find(".spinner").removeClass("hidden")
 			return
 		}
-		settings.jobPremiumModal.find(".premiumButton").addClass('hidden')
-		settings.jobMakePremiumModal.find(".spinner").removeClass('hidden')
+		settings.jobPremiumModal.find(".jobMakePremiumButton").addClass('hidden')
+		settings.jobPremiumModal.find(".spinner").removeClass('hidden')
 	}
 
 	function hideSpinner(type){
@@ -291,8 +291,8 @@ function Job(){
 			settings.jobUnpublishModal.find(".spinner").addClass("hidden")
 			return
 		}
-		settings.jobPremiumModal.find(".premiumButton").removeClass('hidden')
-		settings.jobMakePremiumModal.find(".spinner").addClass('hidden')
+		settings.jobPremiumModal.find(".jobMakePremiumButton").removeClass('hidden')
+		settings.jobPremiumModal.find(".spinner").addClass('hidden')
 	}
 
 	return {
