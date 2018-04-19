@@ -26,11 +26,6 @@
   animation-duration: 500ms !important; }
 
 /** Mobile Menu **/
-.error {
-  position: absolute;
-  left: 38px !important;
-  margin: 3px 0 0 3px !important; }
-
 .main-container {
   padding: 20px;
   min-height: calc(100% - 155px); }
@@ -192,25 +187,15 @@
             line-height: 1.5; }
         .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-content .button-container {
           text-align: center; }
-          .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-content .button-container .button-wrapper {
-            height: 40px;
-            width: 180px;
-            margin: 15px auto;
+          .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-content .button-container button {
+            margin: 15px 0;
             border: 0;
             background: #149075;
             color: #FFF;
-            border-radius: 4px; }
-            .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-content .button-container .button-wrapper .spinner {
-              padding: 8px; }
-            .main-container .recruiter-plans-container .recruiter-plan-signature .recruiter-plan-signature-content .button-container .button-wrapper button {
-              border: 0;
-              background: #149075;
-              color: #FFF;
-              font-size: 20px;
-              height: 40px;
-              width: 180px;
-              border-radius: 4px;
-              padding: 8px; }
+            font-size: 20px;
+            width: 50%;
+            border-radius: 4px;
+            padding: 8px; }
     .main-container .recruiter-plans-container .recruiter-plan-platinum {
       position: absolute;
       right: 0;
@@ -281,25 +266,15 @@
             line-height: 1.5; }
         .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-content .button-container {
           text-align: center; }
-          .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-content .button-container .button-wrapper {
-            height: 40px;
-            width: 180px;
-            margin: 15px auto;
-            border: 0;
+          .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-content .button-container button {
+            margin: 15px 0;
+            border: 0px solid #4c4c4c;
             background: #155d9a;
             color: #FFF;
-            border-radius: 4px; }
-            .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-content .button-container .button-wrapper .spinner {
-              padding: 8px; }
-            .main-container .recruiter-plans-container .recruiter-plan-platinum .recruiter-plan-platinum-content .button-container .button-wrapper button {
-              border: 0px solid #4c4c4c;
-              background: #155d9a;
-              color: #FFF;
-              font-size: 20px;
-              height: 40px;
-              width: 180px;
-              border-radius: 4px;
-              padding: 8px; }
+            font-size: 20px;
+            width: 50%;
+            border-radius: 4px;
+            padding: 8px; }
 
 .modal {
   position: fixed;
@@ -397,11 +372,11 @@
       overflow: hidden;
       position: relative; }
       .main-container .recruiter-plans-container.mobile-swipe-container .recruiter-plans-wrapper > div {
+        float: left;
         width: 100%;
         position: relative;
         overflow: hidden;
-        margin: 10px auto;
-        vertical-align: top; }
+        margin: 10px 0; }
         .main-container .recruiter-plans-container.mobile-swipe-container .recruiter-plans-wrapper > div .list {
           padding: 10px 10px 10px 45px !important;
           background-position-y: 10px !important; } }

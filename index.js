@@ -158,9 +158,11 @@
 		myJobsShell:'shells/my-jobs-shell',
 		chatSticky: 'chat-sticky',
 		spinner:'spinner/spinner',
+		loader:'spinner/loader',
 		error:'error/error.html',
 		reportsShell: 'shells/reports-shell',
 		bookedSlotsShell: 'shells/booked-slots-shell',
+		massResumeShell: 'shells/mass-resume-shell',
 		chatSticky: 'chat-sticky'
 	});
 	app.set('view engine', 'html');

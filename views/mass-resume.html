@@ -1,33 +1,47 @@
 {{> header}}
 <div class="page-content">
-    <div class="main-container">
-        <div class="page-heading heading-clr">
-            Mass Resume Download
-        </div>
-        <div class="mass-resume-table">
-            <div class="mass-resume-header">
-                <div class="column date">Date</div>
-                <div class="column request-id">Request ID</div>
-                <div class="column status">Status</div>
-                <div class="column downloaded">Downloaded</div>
-                <div class="column resumes">Resumes</div>
-                <div class="column download-link">Download Link</div>
+    <div class="main-wrapper">
+        <div class="main-container">
+            <div class="page-heading heading-clr">
+                Mass Resume Download
             </div>
-            <div class="mass-resume-content">
-
+            <div class="mass-resume-wrapper">
+                <div class="mass-resume-table">
+                    <div class="mass-resume-header">
+                        <div class="column date">Date</div>
+                        <div class="column request-id">Request ID</div>
+                        <div class="column status">Status</div>
+                        <div class="column downloaded">Downloaded</div>
+                        <div class="column resumes">Resumes</div>
+                        <div class="column download-link">Download Link</div>
+                    </div>
+                    <div class="mass-resume-content ">
+                        <div class="empty-view hidden">
+                                <div class="image-container">
+                                    <img src="/static/images/reports.svg">
+                                </div>
+                                <div class="heading">No resumes yet</div>
+                                <div class="subheading">You'll find a list of Resumes here </div>
+                        </div>
+                        {{>massResumeShell}}
+                        {{>massResumeShell}}
+                        {{>massResumeShell}}
+                        {{>massResumeShell}}
+                        {{>massResumeShell}}
+                    </div>
+                   
+                </div>
             </div>
 
         </div>
     </div>
+    <div class="row prototype hidden">
+        <div class="column date">Date</div>
+        <div class="column request-id">Request ID</div>
+        <div class="column status">Status</div>
+        <div class="column downloaded">Downloaded</div>
+        <div class="column resumes">Resumes</div>
+        <div class="column download-link">Download Link</div>
+    </div>
 </div>
-<div class="row prototype hidden">
-    <div class="column date">Date</div>
-    <div class="column request-id">Request ID</div>
-    <div class="column status">Status</div>
-    <div class="column downloaded">Downloaded</div>
-    <div class="column resumes">Resumes</div>
-    <div class="column download-link">Download Link</div>
-</div>
-
-
 {{> footer}}

@@ -337,7 +337,9 @@ function Jobs() {
 		settings.rowContainer.append(str);
 		initializeTooltip()
 		if(dataArray.length< pageContent) {
-		 return settings.rowContainer.append("<div class='no-data'>No more records!</div>")
+			if(settings.rowContainer.find(".no-more-records").length == 0) {
+                return settings.rowContainer.append("<div class='no-more-records no-data'>No more records!</div>")
+            }
         }
 
 	}

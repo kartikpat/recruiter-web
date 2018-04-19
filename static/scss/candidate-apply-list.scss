@@ -684,7 +684,15 @@ input::-webkit-input-placeholder {
 											.candidate-options {
 												margin-top:20px;
                                                 .button-action-list {
-                                                    width: 165px;
+													width: 165px;
+													li{
+														.spinner{
+															display: inline-block;
+														}
+														.spinner>div{
+															background-color: black;
+														}
+													}
                                                 }
 											}
 
@@ -2399,6 +2407,7 @@ input::-webkit-input-placeholder {
 	width: auto;
 	.action-list-items {
 		left: -152px;
+	
 	}
 	.action-list-items li:hover{
 		text-decoration: underline;
