@@ -2236,14 +2236,16 @@ span.sticker {
     position: absolute;
     top: 50%;
     left: -30px;
-    transform: translateY(-50%); }
+    transform: translateY(-50%);
+    cursor: pointer; }
   .slider .right-arrow {
     width: 28px;
     float: right;
     position: absolute;
     top: 50%;
     right: -30px;
-    transform: translateY(-50%); }
+    transform: translateY(-50%);
+    cursor: pointer; }
   .slider .slick-slide {
     text-align: -webkit-center; }
 
