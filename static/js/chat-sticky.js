@@ -613,13 +613,16 @@ function receivePresence(p) {
 }
 
 function cloneStickyChat(array,recruiterId, jobId, applicationId) {
+    if((chatContainer.find('.candidate-card[data-id='+array[0]["userID"]+']').hasClass("selected-sticky"))) {
+        return
+    }
 	array[0]["userId"] = array[0]["userID"]
     array[0]["jobs"].forEach(function(elem){
         if(elem["is_current"] == 1) {
             array[0]["designation"] == elem["designation"]
         }
     })
-	if(!(chatContainer.find('.candidate-card[data-channel-name="iimjobs--r'+recruiterId+'-j'+array[0]["userID"]+'"]').length)) {
+	if(!(chatContainer.find('.candidate-card[data-channel-name="iimjobs--r'+recruiterId+'-j'+array[0]["userID"]+'"]').length) ) {
         postRequest(baseUrl+"/recruiter/"+recruiterId+"/job/"+jobId+"/application/"+applicationId+"/action/chat", null, {}, function(res, status, xhr){
     		if(res.status && res.status =='success'){
                 if(window.innerWidth <= 768) {

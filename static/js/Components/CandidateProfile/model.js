@@ -33,7 +33,7 @@ function Candidate() {
         settings.sendInterviewInviteTelephonicClass = ".inviteTelephonic"
         settings.seeMoreRec = $(".seeMoreRec");
         settings.recommendationListSecond = $(".recommendationListSecond")
-        onClickChatCandidateModal();
+
         jQuery("#tabbed-content").tabs({
             create: function(){
                 $(this).removeClass("hidden")
@@ -287,7 +287,7 @@ function Candidate() {
             $(".coverLetterTab").removeClass("hidden")
         }
         if(aData["comment"]) {
- 
+
             settings.commentTextarea.val(aData["comment"]).removeClass("hidden");
             $(settings.candidateCommentTextareaClass).val(aData["comment"]).addClass("hidden");
             $(settings.mobCandidateCommentTextareaClass).val(aData["comment"]).addClass("hidden");
@@ -599,7 +599,8 @@ function Candidate() {
         showDropdownTags: showDropdownTags,
         changeButtonText: changeButtonText,
         addRecommendations: addRecommendations,
-        onClickSeeMoreRec: onClickSeeMoreRec
+        onClickSeeMoreRec: onClickSeeMoreRec,
+        onClickChatCandidateModal : onClickChatCandidateModal       
     }
 
     function focusOnElement(element, container) {
