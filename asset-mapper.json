@@ -953,7 +953,8 @@
 				"static/js/Utilities/toastNotifier.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js",
-				"static/js/vendor/tooltipster.main.min.js"
+				"static/js/vendor/tooltipster.main.min.js",
+				"static/js/Services/fetchRecruiterCalendar.js"
 			],
 			"prod" : [
 				"static/build/js/dashboard.min.js"

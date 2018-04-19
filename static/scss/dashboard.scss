@@ -793,7 +793,8 @@ $button-border-color: #8f8a8a;
 		position: absolute;
     	top: 50%;
     	left: -30px;
-    	transform: translateY(-50%);
+		transform: translateY(-50%);
+		cursor: pointer;
 	}
 	.right-arrow{
 		width: 28px;
@@ -802,6 +803,7 @@ $button-border-color: #8f8a8a;
     	top: 50%;
     	right: -30px;
     	transform: translateY(-50%);
+		cursor: pointer;
 	}
 	.slick-slide{
 		text-align: -webkit-center;
