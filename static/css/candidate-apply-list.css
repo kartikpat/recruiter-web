@@ -5180,17 +5180,7 @@ input::-webkit-input-placeholder {
             .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span.multi-options {
               background-color: transparent;
               padding-left: 0;
-
-              padding-right: 0; }
-            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span .icon-info:before {
-              content: '\e821';
-              color: black;
-              font-size: 21px; }
-            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span.contactMenubutton {
-              background-color: #2d8699 !important; } }
-
               padding-right: 0; } }
-
 
 .view-resume-modal .close_modal.mobile {
   display: none; }
