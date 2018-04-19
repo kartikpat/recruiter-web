@@ -1017,6 +1017,7 @@ jQuery(document).ready( function() {
 
     function onSendInterViewInviteFail(topic, data) {
 
+
         if(data.status == 404 && data.responseJSON && data.responseJSON.code == 4001) {
             window.location.href = "/calendar/"+data.parameters.calendarid+"/edit?insuffSlotsErrMsg=1";
         }

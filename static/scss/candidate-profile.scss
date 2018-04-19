@@ -839,6 +839,53 @@
 				}
 				.action-buttons {
 					font-size:0;
+					.shortlist-wrapper{
+						background-color: $button-color-green;
+						height: 28px;
+						width: 83px;
+						padding:0!important;
+						.spinner{
+							margin-top: 6px;
+							text-align: center;
+						}
+						.spinner>div{
+							width: 10px;
+							height: 10px;
+						}
+						span {
+							&.button {
+								&.candidateShortlistModal {
+									padding: 6px 0px;
+									width: 100%;
+									margin: 0 auto;
+								}
+							}
+						}
+					}
+					.reject-wrapper{
+						background-color: #af595a;
+						padding: 0px;
+						height: 28px;
+						width: 83px;
+						border-radius: 4px;
+						.spinner{
+							text-align: center;
+							margin-top: 6px;
+						}
+						.spinner > div {
+							width: 10px;
+							height: 10px;
+						}
+						span {
+							&.button {
+								&.candidateRejectModal {
+									padding: 6px 0px;
+									width: 100%;
+									margin: 0 auto;
+								}
+							}
+						}
+					}
 					span {
 						@include button($color-white);
 						display:inline-block;
