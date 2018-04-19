@@ -3,6 +3,7 @@ function downloadMassResume(recruiterId,jobId, parameters){
 		if(res.status && res.status =='success'){
 			return pubsub.publish("downloadedSuccess", res);
 		}
+	},function(res,status,error) {
 		return pubsub.publish("downloadedFail", res);
 	});
 }

@@ -156,7 +156,7 @@ function candidateList() {
                item.multipleCandJobListContainer.removeClass("hidden");
            }
            else if(aData["applications"].length == 1) {
-               console.log(aData["applications"][0])
+
                item.jobTitle.text(aData["applications"][0]["title"])
                item.candidateViewProfileLink.attr("href", "/job/"+aData["applications"][0]["jobID"]+"/applications/"+aData["applications"][0]["id"]+"")
            }

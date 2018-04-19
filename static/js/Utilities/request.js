@@ -11,9 +11,12 @@
  * @param  {object} scopeTest       reference object if any to be accessed in the callback
  */
 var postRequest = function(url,headers,data,successCallback,failCallback,processData,async,scopeTest,contentType){
-    if(!headers)
-        headers = {};
-        headers['Authorization'] = 'Bearer '+getCookie("recruiter-access-token");
+    if(!headers) {
+        headers = {
+            'Authorization': 'Bearer '+getCookie("recruiter-access-token")
+        }
+    }
+
     return $.ajax({
         method: "POST",
         url: url,
@@ -36,16 +39,18 @@ var postRequest = function(url,headers,data,successCallback,failCallback,process
  * @param  {object}   additionalParameters reference object if any to be accessed in the callback
  */
 var getRequest = function(url,parameters,successCallback,failCallback, additionalParameters,showError){
+
+    var headers = {}
+    headers = {
+        'Authorization': 'Bearer '+getCookie("recruiter-access-token")
+    }
+
+
     return  $.ajax({
         method: "GET",
         url: url,
         data: parameters,
-        headers: {
-            appID: null,
-            version: null,
-            empID: null,
-            token: null
-        },
+        headers: headers,
         additionalParameters: additionalParameters,
         success: successCallback,
         error: failCallback

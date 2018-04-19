@@ -16,7 +16,9 @@ function candidateList() {
         settings.candidateItemShell= $(".candidateItem.shell"),
         settings.resultCount = $("#resultCount"),
         settings.queryParam = $("#queryParam"),
-        settings.candAppliedJobsClass = ".candAppliedJobs"
+        settings.candAppliedJobsClass = ".candAppliedJobs",
+        settings.multipleJobListingClass= '.multipleJobListing',
+        settings.multipleJobListingTextClass= '.multipleJobListingText'
         onToggleJobList();
    }
 
@@ -26,7 +28,7 @@ function candidateList() {
 
    function onToggleJobList() {
        settings.candidateListing.on('click',settings.multipleJobListingTextClass, function(){
-           $(this).next().slideToggle();
+           $(this).siblings(".multipleJobListing").slideToggle();
        })
    }
 
@@ -152,7 +154,7 @@ function candidateList() {
            }
            else if(aData["applications"].length == 1) {
                item.jobTitle.text(aData["applications"][0]["title"])
-               item.candidateViewProfileLink.attr("href", "/job/"+aData["applications"][0]["jobID"]+"/applications/"+application["id"]+"")
+               item.candidateViewProfileLink.attr("href", "/job/"+aData["applications"][0]["jobID"]+"/applications/"+aData["applications"][0]["id"]+"")
            }
        }
        if(aData["pro"]) {

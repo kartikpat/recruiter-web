@@ -254,7 +254,7 @@ jQuery(document).ready( function() {
             "calendarId": theJob.getSelectedCalendarId()
         }
         sendInterViewInvite(recruiterId, jobId, applicationId , obj)
-    }) 
+    })
     candidates.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
         if($(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f').attr('state')=='default'){
                 $(".candidateRow[data-application-id="+applicationId+"]").find('.invite').attr('state','clicked')
@@ -281,7 +281,7 @@ jQuery(document).ready( function() {
                 "calendarId": theJob.getSelectedCalendarId()
             }
             sendInterViewInvite(recruiterId, jobId, applicationId , obj)
-        }    
+        }
     })
          candidates.onChangeCandidateCheckbox(function(candidateId){
     })
@@ -834,7 +834,7 @@ jQuery(document).ready( function() {
         $(".candidateRow[data-application-id="+res.applicationId+"]").find('.candidateSave .loadingScroller').addClass('hidden');
         $('.spinner').addClass('hidden');
         $('.shortlist').removeClass('hidden');
-        $('.reject').removeClass('hidden');    
+        $('.reject').removeClass('hidden');
         if(res.action == "view") {
             return
         }
@@ -921,10 +921,21 @@ jQuery(document).ready( function() {
     }
 
     function onDownloadSuccess(topic, res) {
-        return toastNotify(1, "An Email has been sent with the download link!")
+        return toastNotify(1, "You will shortly receive an email with the download link!")
     }
 
     function onDownloadFail(topic, res) {
+
+        if(res.status == 403 && res.responseJSON && res.responseJSON.code == 4032) {
+            var msg = "Your daily limit of bulk resume has expired!"
+            if(res.responseJSON && res.responseJSON.data)
+                msg +=  "Only "+res.responseJSON.data+" left."
+            return toastNotify(3, msg);
+        }
+        if(res.status == 403 && res.responseJSON && res.responseJSON.code == 4031) {
+            var msg = "You don't have access to this plan!"
+            return toastNotify(3, msg);
+        }
         errorHandler(res)
     }
 
@@ -996,17 +1007,18 @@ jQuery(document).ready( function() {
             toastNotify(1, "Face to Face Invite Sent Successfully!")
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .icon-container').removeClass('hidden');
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .loadingScroller').addClass('hidden');
-        }    
+        }
         if(data.parameters.inviteId == 2){
             toastNotify(1, "Telephonic Invite Sent Successfully!")
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic  .icon-container').removeClass('hidden');
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic .loadingScroller').addClass('hidden');
-        }    
+        }
     }
 
     function onSendInterViewInviteFail(topic, data) {
 
-        if(data.status == 404 && data.code == 4001) {
+
+        if(data.status == 404 && data.responseJSON && data.responseJSON.code == 4001) {
             window.location.href = "/calendar/"+data.parameters.calendarid+"/edit?insuffSlotsErrMsg=1";
         }
 

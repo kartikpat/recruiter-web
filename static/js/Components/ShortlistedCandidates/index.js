@@ -74,8 +74,7 @@ jQuery(document).ready( function() {
         errorHandler(data)
     }
 
-    function onJobsFetchSuccess(topic, data){
-
+    function onJobsFetchSuccess(topic, data) {
 		candidates.populateJobsDropdown(data);
 	}
 
