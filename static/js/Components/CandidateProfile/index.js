@@ -11,9 +11,11 @@ jQuery(document).ready( function() {
 
     // creating the instance of models
     var aCandidate = Candidate();
-
+    var store = Store();
     //initializing the models
     aCandidate.init();
+
+
     fetchCandidateProfile(recruiterId, jobId, applicationId)
     submitPageVisit(recruiterId, screenName, jobId);
     var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitSuccess:"+screenName, onPageVisitUpdateSuccess)
@@ -143,7 +145,16 @@ jQuery(document).ready( function() {
          setCandidateAction(recruiterId, jobId, action , applicationId, {}, parameters);
      })
 
+     aCandidate.onClickChatCandidateModal(function(candidateId,applicationId) {
+         var candidate = store.getCandidateFromStore(applicationId);
+         var array = [];
+         array.push(candidate);
+
+         cloneStickyChat(array, recruiterId, jobId, applicationId)
+     })
+
     function onCandidateProfileFetchSuccess(topic, res) {
+        store.saveToStore(res.data)
 
         aCandidate.populateCandidateData(res.data[0])
     }

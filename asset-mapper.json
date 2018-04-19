@@ -1578,6 +1578,7 @@
 				"static/js/Components/CandidateProfile/model.js",
 				"static/js/Components/CandidateProfile/index.js",
 				"static/js/Components/CandidateProfile/mapping.js",
+				"static/js/Components/CandidateProfile/store.js",
 				"static/js/Services/submitPageVisit.js",
 				"static/js/vendor/tooltipster.main.min.js"
 			],
