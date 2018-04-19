@@ -450,6 +450,7 @@ function Calendar(){
             altField:   '#start_date',
             altFormat: "yy-mm-dd",
             showOn: 'both',
+            minDate: 0,
             onSelect: function(dateText, inst) {
                 $('#radio-button-startend').prop("checked","true");
                 var slots=getslots();
@@ -468,6 +469,7 @@ function Calendar(){
             altField:   '#end_date',
             altFormat: "yy-mm-dd",
             showOn: 'both',
+            minDate: 0,
             onSelect: function(dateText, inst) {
                 $('#radio-button-end').prop("checked","true");
                 var slots=getslots();

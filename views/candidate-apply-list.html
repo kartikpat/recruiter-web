@@ -544,10 +544,16 @@
 
     	<div class="first-fold fold top">
 			<div class="action-buttons">
-	    		<span class="accept button green candidateShortlistModal">Shortlist</span>
-	    		<span class="reject button red candidateRejectModal">Reject</span>
-				<span class="contactMenubutton button red">contact-info</span>
-
+				<span class="shortlist-wrapper">
+						{{>spinner}}
+						<span class="accept button green candidateShortlistModal">Shortlist</span>
+				</span>
+				<span class="reject-wrapper">
+						{{>spinner}}
+						<span class="reject button red candidateRejectModal">Reject</span>
+				</span>
+	    		<span class="contactMenubutton button red">contact-info</span>
+					
 				<!-- <span class="view-more button white"><i class="icon-down_arrow"></i></span> -->
 	    	</div>
     	</div>
@@ -725,21 +731,21 @@
 								<li>
 									<div class="candidateSendMessage link-color">
 										<span class="context">Send Message</span>
-										{{>spinner}}
+										{{>loader}}
 										<!-- <span class="icon-container"><i class="icon-tick"></i></span> -->
 									</div>
 								</li>
 								<li>
 									<div class="candidateDownloadResume link-color">
 										<span>Download Resume</span>
-										{{>spinner}}
+										{{>loader}}
 										<!-- <span class="icon-container"><i class="icon-tick"></i></span>	 -->
 									</div>
 								</li>
 								<li>
 									<div class="candidateSave link-color">
 										<span>Save for later</span>
-										{{>spinner}}
+										{{>loader}}
 										<!-- <span class="icon-container"><i class="icon-tick"></i></span> -->
 									</div>
 								</li>
@@ -749,14 +755,14 @@
 								<li>
 									<div data-invite-id="1" class="inviteF2f tooltip link-color invite" state="default">
 										<span class="context">Face to Face</span>
-										{{>spinner}}
+										{{>loader}}
 										<span class="icon-container hidden"><i class="icon-tick"></i></span>
 									</div>
 								</li>
 								<li>
 									<div data-invite-id="2" class="inviteTelephonic tooltip link-color invite" state="default">
 										<span class="context">Telephonic</span> 
-										{{>spinner}}
+										{{>loader}}
 										<span class="icon-container hidden"><i class="icon-tick"></i></span>
 									</div>
 								</li>
