@@ -95,6 +95,7 @@ jQuery(document).ready( function() {
 	}
 
 	function onFailedUnpublishedJob(topic,data) {
+        jobList.hideSpinner("unpublish")
 		errorHandler(data)
 	}
 	function onSuccessfulRefreshJob(topic, data){
@@ -106,6 +107,7 @@ jQuery(document).ready( function() {
 		 }, 2000);
 	}
 	function onFailedRefreshJob(topic, data){
+        jobList.hideSpinner("refresh")
 		errorHandler(data)
 	}
 	function onSuccessfulPremiumJob(topic, data){
@@ -118,6 +120,7 @@ jQuery(document).ready( function() {
 	}
 
 	function onFailedPremiumJob(topic, data){
+        jobList.hideSpinner("premium")
 		errorHandler(data)
 	}
 

@@ -751,7 +751,7 @@ input::-webkit-input-placeholder {
 								&:hover {
 									box-shadow:0px 2px 8px 0px rgba(214, 214, 214, 0.85);
 										.candidate-select {
-											display:block;	
+											display:block;
 									}
 								}
 							}
@@ -2121,7 +2121,10 @@ input::-webkit-input-placeholder {
                     .wrap {
                         margin: 7px 0;
                     }
-					color: #fff;
+                    .wrap-mobile {
+                        margin: 7px 0;
+                    }
+					color: #fff !important;
 				}
 			}
 		    .fold {
@@ -2168,7 +2171,7 @@ input::-webkit-input-placeholder {
 							font-size: 21px;
 						}
                         &.contactMenubutton {
-
+                            background-color: #2d8699 !important;
                         }
 					}
 
@@ -2515,6 +2518,7 @@ input::-webkit-input-placeholder {
 	.view-resume-modal .mobile-resume-sidebar .contact-menu .contact-info {
         h3 {
             margin-top: 0px;
+            margin-bottom: 5px;
         }
         .wrap {
             margin: 7px 0;
@@ -2641,4 +2645,13 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
 .collapsed {
     max-height: 65px;
     overflow: hidden;
+}
+
+@media (max-width: 414px) {
+    .view-resume-modal .mobile-resume-sidebar .fold .action-buttons {
+        width: 95%;
+    }
+    .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span {
+        padding: 6px 12px;
+    }
 }

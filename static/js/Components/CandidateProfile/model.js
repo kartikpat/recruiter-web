@@ -287,7 +287,7 @@ function Candidate() {
             $(".coverLetterTab").removeClass("hidden")
         }
         if(aData["comment"]) {
-
+ 
             settings.commentTextarea.val(aData["comment"]).removeClass("hidden");
             $(settings.candidateCommentTextareaClass).val(aData["comment"]).addClass("hidden");
             $(settings.mobCandidateCommentTextareaClass).val(aData["comment"]).addClass("hidden");

@@ -116,12 +116,15 @@ function candidateList() {
            item.name.text(anObj["organization"])
            item.designation.text(anObj["designation"]);
 
-           var fromMon = getMonthName(anObj["exp"]["from"]["month"]);
-           var toMon = getMonthName(anObj["exp"]["to"]["month"]);
-           var fromYear = anObj["exp"]["from"]["year"];
-           var toYear = anObj["exp"]["to"]["year"];
-           var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
-           item.tenure.text(str);
+           if(parseInt(anObj["exp"]["from"]["month"]) && parseInt(anObj["exp"]["to"]["month"]) && parseInt(anObj["exp"]["from"]["year"]) && parseInt(anObj["exp"]["to"]["year"])) {
+               var fromMon = getMonthName(anObj["exp"]["from"]["month"]);
+               var toMon = getMonthName(anObj["exp"]["to"]["month"]);
+               var fromYear = anObj["exp"]["from"]["year"];
+               var toYear = anObj["exp"]["to"]["year"];
+               var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
+               item.tenure.text(str);
+           }
+
 
            profStr+=item.element[0].outerHTML
        })
@@ -204,7 +207,7 @@ function candidateList() {
            if(settings.candidateListing.find(".no-more-records").length == 0) {
                return settings.candidateListing.append("<div class='no-more-records no-data'>No more records!</div>")
            }
-           
+
        }
    }
 

@@ -212,13 +212,16 @@ function Chat() {
 
    function onSendMessage(fn) {
        settings.sendMsg.click(function() {
-           var message =  settings.msgContent.val();
+           var message =  (settings.msgContent.val()).trim();
+           if(message == '') {
+               return settings.msgContent.val("")
+           }
            fn(message, settings.channelName, settings.candidateId)
        })
        settings.msgContent.keypress(function(event) {
            if(event.which == 13 && !event.shiftKey) {
-               var message = $(this).val();
-               if(!message) {
+               var message = ($(this).val()).trim();
+               if(message == '') {
                    return $(this).val("")
                }
                fn(message, settings.channelName, settings.candidateId)
