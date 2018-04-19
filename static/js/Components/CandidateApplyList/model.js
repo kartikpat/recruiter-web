@@ -855,6 +855,7 @@ function candidateList() {
             activate: function(event, ui) {
                 hideEmptyScreen()
                 settings.bulkActionContainer.addClass("hidden")
+                settings.secondMassActionContainer.addClass("hidden")
                 settings.massCheckboxInput.prop("checked", false)
                 fn(event, ui);
             }
