@@ -58,7 +58,7 @@ function Calendar(){
         // settings.editorMessage.subscribe('editableInput', function(event, editorElement){
         //      settings.message.val(settings.editor.getContent());
         // })
-        time_mapper();
+        // time_mapper();
         // selectCreater();
         copytoall();
         fullCalendar();
@@ -136,7 +136,14 @@ function Calendar(){
                 }
                 
                 var startvalue=$("#"+id+ "").find(settings.start_time).val();
+                if(startvalue>0){
+                    startTimeMapper(id)
+                }
+                
                 var endvalue=$("#"+id+ "").find(settings.end_time).val();
+                if(endvalue>0){
+                    endTimeMapper(id)
+                }
                 if(parseInt(startvalue)>0 && parseInt(endvalue)>0 && checkbox==true){
                     var slot={
                         day:id, 
@@ -155,7 +162,9 @@ function Calendar(){
             var start=settings.breakStart.val();
             var end=settings.breakEnd.val();
             breakhours.from=start;
+            startTimeMapper('breaks');
             breakhours.to=end;
+            endTimeMapper('breaks')
             timetable.breakHours=breakhours;
             console.log(start);
             console.log(end);
@@ -228,7 +237,9 @@ function Calendar(){
         timetable.CalendarId=object["id"];
         timetable.slots=object.slots;
         settings.breakStart.val(object.breakHours['from']);
+        startTimeMapper('breaks');
         settings.breakEnd.val(object.breakHours['to']);
+        endTimeMapper('breaks');
         console.log(timetable.slots);
         var previewslots=object.slots;
         availablehours(previewslots);
@@ -268,7 +279,8 @@ function Calendar(){
             }
             $("#"+id+ "").find(settings.end_time).val(endvalue);
             $("#"+id+ "").find(settings.checkbox).prop("checked",true);
-            time_mapper();
+            startTimeMapper(id);
+            endTimeMapper(id);
         }     
     }
 
@@ -345,9 +357,7 @@ function Calendar(){
         });
     }
 
-    function time_mapper(){
-        settings.start.change(function() {
-            var parent=$(this).parent().parent().attr('id');
+    function startTimeMapper(parent){  
             var start=$("#"+parent+"").find(".start")
             var end=$("#"+parent+"").find(".end");
             var k=parseInt(start.val());
@@ -360,18 +370,15 @@ function Calendar(){
                 $("#"+parent+" .end").not("#"+parent+" .start").find('option:lt(' + (index+1) + ')').prop('disabled', true);
                 $("#"+parent+" .end").find('option:first-child').prop('disabled',false);
             }
-        })
-        settings.end.change(function() {
-            var parent=$(this).parent().parent().attr('id');
-            console.log(parent);
-            var start=$("#"+parent+"").find(".start")
-            var end=$("#"+parent+"").find(".end");
-            var index = $("#"+parent+" .end").find('option:selected').index();
-            console.log(index);
-            $("#"+parent+" .start").find('option').prop('disabled', false);
-            $("#"+parent+" .start").not("#"+parent+" .end").find('option:gt(' + (index-1) + ')').prop('disabled', true);
+    }
+
+    function endTimeMapper(parent){
+        var start=$("#"+parent+"").find(".start")
+        var end=$("#"+parent+"").find(".end");
+        var index = $("#"+parent+" .end").find('option:selected').index();
+        $("#"+parent+" .start").find('option').prop('disabled', false);
+        $("#"+parent+" .start").not("#"+parent+" .end").find('option:gt(' + (index-1) + ')').prop('disabled', true);
             
-        })
     }
 
     function copyTime(){
@@ -600,7 +607,8 @@ function Calendar(){
         selectCreater :selectCreater,
         copytoall:copytoall,
         copyTime:copyTime,
-        time_mapper:time_mapper,
+        startTimeMapper:startTimeMapper,
+        endTimeMapper:endTimeMapper,
         fullCalendar:fullCalendar,
         highlighter:highlighter,
         startdate:startdate,
