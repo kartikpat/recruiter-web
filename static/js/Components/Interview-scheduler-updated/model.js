@@ -134,7 +134,7 @@ function Calendar(){
                 if(checkbox==true){
                     $("#"+id+ "").css("opacity","1");
                 }
-
+                
                 var startvalue=$("#"+id+ "").find(settings.start_time).val();
                 var endvalue=$("#"+id+ "").find(settings.end_time).val();
                 if(parseInt(startvalue)>0 && parseInt(endvalue)>0 && checkbox==true){
@@ -246,6 +246,7 @@ function Calendar(){
             $('#enddatepicker').datepicker().datepicker('setDate', endDate);
             $('#radio-button-end').prop("checked",true)
         }
+        
         testHighlight(fromDate,toDate,previewslots);
         settings.submitButton.text("Update Calendar")
     }
@@ -263,11 +264,11 @@ function Calendar(){
             $("#"+id+ "").attr("slotId",slotId);
             $("#"+id+ "").find('.day').attr("id",uniqueid);
             if(checkStart==0){
-                // debugger
                 $("#"+id+ "").find(settings.start_time).val(startvalue);   
             }
             $("#"+id+ "").find(settings.end_time).val(endvalue);
             $("#"+id+ "").find(settings.checkbox).prop("checked",true);
+            time_mapper();
         }     
     }
 

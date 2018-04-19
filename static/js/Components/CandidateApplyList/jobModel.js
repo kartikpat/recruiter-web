@@ -94,7 +94,7 @@ function Job(){
             if(!data["isPremium"])
                 settings.jobPremiumButton.removeClass("hidden")
 			if(data["jobSocialShareUrl"]) {
-				debugger
+				// debugger
 				var url = config["baseUrlJob"] + data["jobSocialShareUrl"];
 				settings.jobPostFacebook.attr("href", getFacebookShareLink(url)).removeClass("hidden")
 				settings.jobPostTwitter.attr("href", getTwitterShareLink(url)).removeClass("hidden")

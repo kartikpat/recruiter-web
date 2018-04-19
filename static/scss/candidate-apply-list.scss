@@ -405,7 +405,7 @@ input::-webkit-input-placeholder {
 				    .bulk-selection-item {
 				    	display:inline-block;
 				    	font-size:initial;
-				    	padding:7px 30px 0 10px;
+				    	padding:7px 25px 0 10px;
 				    	border-bottom:3px solid transparent;
 				    	height: 38px;
 					    cursor: pointer;
@@ -2165,12 +2165,13 @@ input::-webkit-input-placeholder {
                     width: 90%;
 					margin: 0 auto;
 					.shortlist-wrapper{
+						background-color: $button-color-green;
 						height: 28px;
 						width: 83px;
 						padding:0!important;
 						.spinner{
 							margin-top: 6px;
-		
+							text-align: center;
 						}
 						.spinner>div{
 							width: 10px;
@@ -2192,16 +2193,6 @@ input::-webkit-input-placeholder {
 						height: 28px;
 						width: 83px;
 						border-radius: 4px;
-
-						button {
-							@include button($button-color-green);
-							margin:0;
-							padding: 6px 16px;
-							width:100%;
-							border: none;
-							border-radius: none;
-							font-family:$droid-font!important;
-						}
 						.spinner{
 							text-align: center;
 							margin-top: 6px;
@@ -2209,6 +2200,15 @@ input::-webkit-input-placeholder {
 						.spinner > div {
 							width: 10px;
 							height: 10px;
+						}
+						span {
+							&.button {
+								&.candidateRejectModal {
+									padding: 6px 0px;
+									width: 100%;
+									margin: 0 auto;
+								}
+							}
 						}
 					}
 					span {
