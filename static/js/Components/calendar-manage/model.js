@@ -8,18 +8,21 @@ function Manage() {
         settings.noData='.no-data',
         settings.calendarRowPrototype = $('.calendarRow.prototype'),
         settings.emptyviewPrototype = $('.empty-view.prototype');
+        settings.nocalendarview=$('.no-calendar-view')
         settings.editSchedule='.edit-schedule';
+
         jQuery(".header .menu-list-item.my-interviews").addClass("active");
     }
 
 
     function cloneRow(data){
-
+        // data.length=0;
         if(data.length==0){
-            settings.emptyviewPrototype.removeClass('prototype hidden');
-            settings.rowContainer.append(settings.emptyviewPrototype);
+           
+            settings.nocalendarview.removeClass('hidden');
             return
         }
+        $('.container').removeClass('hidden');
         var data = sortArrayOfObjectsByKeyDescending(data, "timestamp")
         data.forEach(function(aRow){
             var calendarRow =  settings.calendarRowPrototype.clone().removeClass('prototype hidden');
