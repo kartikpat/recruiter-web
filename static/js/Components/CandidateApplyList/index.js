@@ -1011,14 +1011,11 @@ jQuery(document).ready( function() {
 
     function onSendInterViewInviteSuccess(topic, data){
         var applicationId=data['parameters']['applicationId'];
-        // var obj = store.getCandidateFromStore(data['parameters']['applicationId'])
-        // obj["invite"]=1;
         candidates.changeInviteText(data.parameters.applicationId)
         if(data.parameters.inviteId == 1){
             toastNotify(1, "Face to Face Invite Sent Successfully!")
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .icon-container').removeClass('hidden');
-            $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .loadingScroller').addClass('hidden');
-        
+            $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .loadingScroller').addClass('hidden');    
         }
         if(data.parameters.inviteId == 2){
             toastNotify(1, "Telephonic Invite Sent Successfully!")
