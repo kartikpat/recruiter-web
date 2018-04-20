@@ -103,6 +103,7 @@ function candidateList() {
             settings.rowContainer.find(".candidateCheckbox").prop("checked", false)
             settings.rowContainer.find(".candidate-select").removeClass("selected")
             settings.bulkActionsDropdown.find(".bulkCheckInput input").attr("disabled", false)
+            settings.bulkActionsDropdown.find(".bulkCheckInput label").removeClass("not-allowed")
             settings.bulkActionsDropdown.find(".bulkCheckInput input").prop("checked", false)
             $(".second-fold").addClass("hidden")
         })
@@ -121,7 +122,9 @@ function candidateList() {
             if(jQuery(this).is(":checked")) {
                 var len = $(this).attr("data-length")
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").attr("disabled", true)
+                settings.bulkActionsDropdown.find(".bulkCheckInput label").addClass("not-allowed")
                 $(this).attr("disabled", false)
+                $(this).next().removeClass("not-allowed")
                 var from = $(this).attr("data-from");
                 var to = $(this).attr("data-to");
                 settings.from = from;
@@ -135,6 +138,7 @@ function candidateList() {
                 settings.bulkActionContainer.attr("data-type-request", "bulkRequestDropdown").removeClass("hidden");
             } else {
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").attr("disabled", false)
+                settings.bulkActionsDropdown.find(".bulkCheckInput label").removeClass("not-allowed")
                 settings.secondMassActionContainer.addClass("hidden")
                 settings.bulkActionContainer.addClass("hidden")
             }
