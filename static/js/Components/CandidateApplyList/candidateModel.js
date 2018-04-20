@@ -137,6 +137,7 @@ function Candidate() {
         modal.attr("data-candidate-id",userID)
         return {
             element: modal,
+            icontick:modal.find(".invite .icon-container"),
             image: modal.find(".js_img"),
             name: modal.find(".js_name"),
             location: modal.find(".js_loc"),
@@ -246,6 +247,14 @@ function Candidate() {
         item.experience.text(aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m" || "NA");
         item.location.text(aData["currentLocation"] || "NA");
         var preferredLocationStr = "N.A."
+        if(aData['invite']==1){
+            item.element.find('.inviteF2f .icon-container').removeClass('hidden');
+            item.element.find('.inviteF2f .loadingScroller').addClass('hidden');    
+        }
+        if(aData['invite']==2){
+            item.element.find('.inviteTelephonic .icon-container').removeClass('hidden');
+            item.element.find('.inviteTelephonic .loadingScroller').addClass('hidden');    
+        }
         if(aData["preferredLocation"].length) {
             preferredLocationStr = aData["preferredLocation"].join(', ');
         }
@@ -459,6 +468,7 @@ function Candidate() {
         item.element.attr("data-application-id", "0")
         item.image.attr("src", "")
         item.name.text("");
+        item.icontick.addClass('hidden');
         item.experience.text("");
         item.location.text("");
         item.contact.text("");
