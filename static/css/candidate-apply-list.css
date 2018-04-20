@@ -4642,6 +4642,8 @@ input::-webkit-input-placeholder {
               padding: 25px; }
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .wrap-mobile {
                 margin: 10px auto; }
+                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .wrap-mobile .icon-tick_circle {
+                  color: #1f8f75; }
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content .mobCommentBox .comment-textarea {
                 background-color: white;
                 color: #757575;

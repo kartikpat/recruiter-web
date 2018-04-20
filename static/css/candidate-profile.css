@@ -1942,6 +1942,8 @@ span.sticker {
 
 .wrap-mobile {
   padding: 5px 0; }
+  .wrap-mobile .icon-tick_circle {
+    color: #1f8f75 !important; }
 
 .invite-links {
   margin-left: 0 !important;
