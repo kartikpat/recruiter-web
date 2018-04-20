@@ -24,8 +24,8 @@ function Candidate() {
         settings.mobCandidateAddCommentButtonClass = '.mobCandidateAddCommentButton',
         settings.candidateShortlistModal = $(".candidateShortlistModal"),
         settings.candidateRejectModal = $(".candidateRejectModal"),
-        settings.candidateSaveModal = $("#candidateSaveModal"),
-        settings.candidateChatModal = $("#candidateChatModal"),
+        settings.candidateSaveModal = $(".candidateSaveModal"),
+        settings.candidateChatModal = $(".candidateChatModal"),
         settings.tagListing = $(".recruiterTags"),
         settings.tagMobListing = $("#tagMobListing"),
         settings.tagInputError = $(".tagInputError"),
@@ -35,7 +35,7 @@ function Candidate() {
         settings.recommendationListSecond = $(".recommendationListSecond");
         settings.tagArr = [];
         settings.calendarSelect = $(".calendarSelect");
-        settings.candidateDownloadResume = $("#candidateDownloadResume");
+        settings.candidateDownloadResume = $(".candidateDownloadResume");
         settings.selectDefaultCalendar = $(".selectDefaultCalendar")
 
         jQuery("#tabbed-content").tabs({
@@ -130,7 +130,7 @@ function Candidate() {
             tabContent: modal.find("#tabbed-content"),
             shortlistButton: modal.find(".candidateShortlistModal"),
             rejectButton: modal.find(".candidateRejectModal"),
-            savedButton : modal.find("#candidateSaveModal"),
+            savedButton : modal.find(".candidateSaveModal"),
             contact:modal.find('.contact'),
             email:modal.find('.email-address'),
             recommendationList: modal.find('.recommendationList'),
@@ -631,12 +631,12 @@ function Candidate() {
 
             settings.candidateDetailsModal.find(".candidateShortlistModal").attr("data-status", newStatus)
             settings.candidateDetailsModal.find(".candidateRejectModal").attr("data-status", newStatus)
-            settings.candidateDetailsModal.find("#candidateSaveModal").attr("data-status", newStatus)
-            if(newStatus == settings.candidateDetailsModal.find("#candidateSaveModal").attr("data-action")) {
-                settings.candidateDetailsModal.find("#candidateSaveModal").html("<span class='icon'><i class='icon-star'></i></span>Saved for Later");
+            settings.candidateDetailsModal.find(".candidateSaveModal").attr("data-status", newStatus)
+            if(newStatus == settings.candidateDetailsModal.find(".candidateSaveModal").attr("data-action")) {
+                settings.candidateDetailsModal.find(".candidateSaveModal").html("<span class='icon'><i class='icon-star'></i></span>Saved for Later");
             }
             else {
-                settings.candidateDetailsModal.find("#candidateSaveModal").html("<span class='icon'><i class='icon-star'></i></span>Save for Later");
+                settings.candidateDetailsModal.find(".candidateSaveModal").html("<span class='icon'><i class='icon-star'></i></span>Save for Later");
             }
             if(newStatus == settings.candidateDetailsModal.find(".candidateRejectModal").attr("data-action")) {
                 settings.candidateDetailsModal.find(".candidateRejectModal").text("Rejected")

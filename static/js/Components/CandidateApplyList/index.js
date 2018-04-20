@@ -262,7 +262,7 @@ jQuery(document).ready( function() {
             $(".candidateRow[data-application-id="+applicationId+"]").find('.invite').attr('state','clicked')
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic .loadingScroller').removeClass('hidden');
             sendInterViewInvite(recruiterId, jobId, applicationId , obj)
-        }   
+        }
     })
 
     candidates.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
@@ -319,6 +319,12 @@ jQuery(document).ready( function() {
         if(parseInt(status) == 0)
             setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
     });
+    
+    aCandidate.onClickDownloadResume(function(applicationId, status){
+        if(parseInt(status) == 0)
+            setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
+    });
+
     candidates.onClickSaveCandidate(function(applicationId, newStatus, dataAction){
         $(".candidateRow[data-application-id="+applicationId+"]").find('.candidateSave .loadingScroller').removeClass('hidden');
         var action;
@@ -1044,12 +1050,10 @@ jQuery(document).ready( function() {
             return window.location.href = "/calendar/"+data.parameters.calendarId+"/edit?insuffSlotsErrMsg=1";
         }
 
-        }
         var applicationId=data['parameters']['applicationId'];
         $(".candidateRow[data-application-id="+applicationId+"]").find('.invite .loadingScroller').addClass('hidden');
         $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f').attr('state','default');
         $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic').attr('state','default');
-
         errorHandler(data)
     }
 
@@ -1092,8 +1096,6 @@ jQuery(document).ready( function() {
 
     var fetchedRecommendationsSuccessSubscription = pubsub.subscribe("fetchRecommendationsSuccess", onSuccessfulRecommendations)
 	var fetchedRecommendationsFailSubscription = pubsub.subscribe("fetchRecommendationsFail", onFailedRecommendation);
-
-
 
     var tickerLock=false;
     $(window).scroll(function() {
