@@ -3183,7 +3183,7 @@ span.sticker {
   position: static !important;
   margin: 0; }
 
-#calendarSelectError {
+.calendarSelectError {
   margin: 0 !important;
   padding-top: 7px;
   padding-left: 1px;

@@ -613,13 +613,16 @@ function receivePresence(p) {
 }
 
 function cloneStickyChat(array,recruiterId, jobId, applicationId) {
+    if((chatContainer.find('.candidate-card[data-id='+array[0]["userID"]+']').hasClass("selected-sticky"))) {
+        return
+    }
 	array[0]["userId"] = array[0]["userID"]
     array[0]["jobs"].forEach(function(elem){
         if(elem["is_current"] == 1) {
             array[0]["designation"] == elem["designation"]
         }
     })
-	if(!(chatContainer.find('.candidate-card[data-channel-name="iimjobs--r'+recruiterId+'-j'+array[0]["userID"]+'"]').length)) {
+	if(!(chatContainer.find('.candidate-card[data-channel-name="iimjobs--r'+recruiterId+'-j'+array[0]["userID"]+'"]').length) ) {
         postRequest(baseUrl+"/recruiter/"+recruiterId+"/job/"+jobId+"/application/"+applicationId+"/action/chat", null, {}, function(res, status, xhr){
     		if(res.status && res.status =='success'){
                 if(window.innerWidth <= 768) {
@@ -640,6 +643,7 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
         		chatContainerBox.find(".chat-input").attr("data-id",array[0]["userID"] )
                 chatContainerBox.find(".no-start").addClass("hidden")
                 chatContainerBox.find(".start").removeClass("hidden")
+                chatContainerBox.attr("data-channel-name",channelName);
                 if(array[0]["lastActive"]) {
                     chatContainerBox.find(".lastActiveDate").text(moment(array[0]["lastActive"]).format("DD MM YYYY")).removeClass("hidden")
                 }
@@ -693,6 +697,7 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
         chatContainerBox.find(".chat-input").attr("data-id",array[0]["userID"] )
         chatContainerBox.find(".no-start").removeClass("hidden")
         chatContainerBox.find(".start").addClass("hidden")
+        chatContainerBox.attr("data-channel-name",channelName);
         var dataID = chatContainerBox.attr("data-id");
         if(array[0]["lastActive"]) {
             chatContainerBox.find(".lastActiveDate").text(moment(array[0]["lastActive"]).format("DD MM YYYY")).removeClass("hidden")
@@ -723,6 +728,8 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
             initializeTooltip()
             scrollToBottom(channelName)
         });
+
+
         if($(".chat-candidate-boxes").children().length < maxCandidateChats) {
             $(".chat-candidate-boxes").prepend(chatContainerBox);
             chatContainerBox.find(".content-footer-container").addClass("show")
@@ -781,6 +788,7 @@ function checkScrollEnd(elem) {
         if(startTimeToken == 0) {
             return
         }
+
         fetchHistory(channelName , messageNumber , startTimeToken, null, function(status, response) {
 
 			var str = ""

@@ -2,6 +2,15 @@
 @import 'input-elements';
 @import 'chat-sidebar';
 
+.invite-links {
+    margin-left: 0 !important;
+    list-style: none !important;
+}
+
+.chat-div {
+    display: none;
+}
+
 .sidebar-section.contact-info {
     .wrap {
         margin: 7px 0;
@@ -570,7 +579,7 @@
 							margin: 0 auto;
 						}
 					}
-				}		
+				}
 			}
 			.reject-wrapper{
 				background-color: #af595a!important;
@@ -593,7 +602,7 @@
 				text-align: center;
 				.spinner{
 					margin-top: 6px;
-					
+
 				}
 				.spinner>div{
 					width: 10px;
