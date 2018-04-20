@@ -409,10 +409,16 @@ $(document).ready(function(){
 		}
 	}
 
+	function onFetchCalendars(topic,data){
+		var dataLength=data.data.length;
+		if(dataLength>1){
+			$('.schedulebutton').addClass('hidden');
+		}
+	}
 
 
 	var fetchInterviewsSubscription = pubsub.subscribe("fetchedInterviews", onFetchInterviews);
-
+	var fetchRecruiterCalendarSubscription=pubsub.subscribe('fetchedCalendars',onFetchCalendars);
 	var setCandidateActionSuccessSubscription = pubsub.subscribe("setCandidateActionSuccess", onSuccessfullCandidateAction)
 
 	function init(){
@@ -425,7 +431,9 @@ $(document).ready(function(){
 		startdate = startdate.format("YYYY-MM-DD");
 		fetchFollowUps(recruiterId,{fromDate:currentDate});
 		var currentDate=moment().format("YYYY-MM-DD");
+		fetchRecruiterCalendar(recruiterId);
 		fetchInterviews(recruiterId,{pageContent: 6, pageNumber: 1, status: 2,fromDate:currentDate});
+		
 	}
 	init()
 

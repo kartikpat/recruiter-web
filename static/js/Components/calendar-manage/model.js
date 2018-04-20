@@ -22,7 +22,6 @@ function Manage() {
         }
         var data = sortArrayOfObjectsByKeyDescending(data, "timestamp")
         data.forEach(function(aRow){
-
             var calendarRow =  settings.calendarRowPrototype.clone().removeClass('prototype hidden');
             calendarRow.find(settings.rowDate).text(moment(aRow.timestamp).format('MMM DD,YYYY'));
             calendarRow.find(settings.rowName).text(aRow.name).attr("href","/calendar/"+aRow["id"]+"/edit");

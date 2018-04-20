@@ -252,7 +252,7 @@
 		</div>
 	</div>
 
-<div class="view-resume-modal candidateDetailsModal hidden">
+<div class="view-resume-modal candidateDetailsModal candidateRow hidden">
 	<div class="close-resume-modal closeCandidateModal">
     	<img src="/static/images/close-icon.png">
     </div>
@@ -592,8 +592,26 @@
     			<li class="save" id="candidateSaveModal"><i class="icon-star_later"></i>Save for Later</li>
     			<li class="chat" id="candidateChatModal"><span class="icon"><i class="icon-chat"></i></span>Chat with <span id="firstName" class="candidate-first-name">Shreya</span></li>
     			<li class="invite"><span class="icon"><i class="icon-interview"></i></span>Send Interview Invite</li>
-				<li class="invite-links"><span class="icon"><i class="icon-face-to-face"></i></span><span data-invite-id="1" class="inviteF2f tooltip ">Face to Face</span></li>
-				<li class="invite-links"><span class="icon"><i class="icon-telephone"></i></span><span data-invite-id="2" class="inviteTelephonic tooltip ">Telephonic</span></li>
+				<li class="invite-links">
+					<span class="icon">
+						<i class="icon-face-to-face"></i>
+					</span>
+					<span data-invite-id="1" class="inviteF2f invite tooltip" state="default">
+						<span class="context">Face to Face</span>
+						{{>loader}}
+						<span class="icon-container hidden"><i class="icon-tick"></i></span>
+					</span>
+				</li>
+				<li class="invite-links">
+					<span class="icon">
+						<i class="icon-telephone"></i>
+					</span>
+					<span data-invite-id="2" class="inviteTelephonic invite tooltip"  state="default">
+						<span class="context">Telephonic</span>
+						{{>loader}}
+						<span class="icon-container hidden"><i class="icon-tick"></i></span>
+					</span>
+				</li>
     		</ul>
 			<!--
     		<ul>
