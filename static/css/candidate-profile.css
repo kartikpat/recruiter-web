@@ -1940,6 +1940,9 @@ span.sticker {
 .sendInvite {
   visibility: hidden; }
 
+.wrap-mobile {
+  padding: 5px 0; }
+
 .invite-links {
   margin-left: 0 !important;
   list-style: none !important; }
