@@ -1574,6 +1574,8 @@
 				"static/js/Services/setCandidateAction.js",
 				"static/js/Services/fetchCandidateProfile.js",
 				"static/js/Services/fetchRecruiterTags.js",
+				"static/js/Services/fetchjobCalendars.js",
+				"static/js/Services/sendInterviewInvite.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Components/CandidateProfile/model.js",

@@ -513,7 +513,7 @@ jQuery(document).ready( function() {
         parameters.status = globalParameters.status;
         if(requestType == "bulkRequestDropdown") {
             parameters.offset = parseInt(from) - 1;
-            parameters.pageContent = parseInt(to);
+            parameters.pageContent = parseInt(to - (from - 1));
 
         }
         else {
@@ -531,7 +531,7 @@ jQuery(document).ready( function() {
         if(requestType == "bulkRequestDropdown") {
             data = filters.getAppliedFilters();
             data.offset = parseInt(from) - 1;
-            data.pageContent = parseInt(to - from);
+            data.pageContent = parseInt(to - (from - 1));
             data.status = globalParameters.status;
             // parameters.status = globalParameters.status;
             // parameters.length = (to - from) + 1;
@@ -555,7 +555,7 @@ jQuery(document).ready( function() {
         if(typeRequest == "bulkRequestDropdown") {
             data = filters.getAppliedFilters();
             data.offset = parseInt(from) - 1;
-            data.pageContent = parseInt(to - from);
+            data.pageContent = parseInt(to - (from - 1));
             data.status = globalParameters.status;
             parameters.status = globalParameters.status;
             parameters.length = (to - from) + 1;
@@ -834,8 +834,7 @@ jQuery(document).ready( function() {
     }
 
     function onFailedFetchJobDetails(topic, data) {
-        console.log(topic)
-		console.log(data)
+        errorHandler(data)
     }
 
     function onFailCandidateAction(topic,res) {
@@ -1027,7 +1026,7 @@ jQuery(document).ready( function() {
     }
 
     function onSendInterViewInviteFail(topic, data) {
-        
+
         if(data.status == 400 && data.responseJSON && data.responseJSON.code == 4001) {
             window.location.href = "/calendar/"+data.parameters.calendarId+"/edit?insuffSlotsErrMsg=1";
         }

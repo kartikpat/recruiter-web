@@ -2,6 +2,11 @@
 @import 'input-elements';
 @import 'chat-sidebar';
 
+.invite-links {
+    margin-left: 0 !important;
+    list-style: none !important;
+}
+
 .chat-div {
     display: none;
 }
