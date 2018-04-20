@@ -43,7 +43,7 @@
     margin: 0;
 }
 
-#calendarSelectError {
+.calendarSelectError {
     margin: 0 !important;
     padding-top: 7px;
     padding-left: 1px;
@@ -2450,7 +2450,7 @@ input::-webkit-input-placeholder {
 	width: auto;
 	.action-list-items {
 		left: -152px;
-	
+
 	}
 	.action-list-items li:hover{
 		text-decoration: underline;
