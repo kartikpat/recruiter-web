@@ -6,6 +6,10 @@
     visibility: hidden;
 }
 
+.wrap-mobile {
+    padding: 5px 0;
+}
+
 .invite-links {
     margin-left: 0 !important;
     list-style: none !important;
@@ -810,7 +814,7 @@
 		.main-wrapper {
 			width:100%;
 			padding-right:0;
-			
+
 		}
 		.contact-info{
 			display: block!important;
@@ -831,7 +835,7 @@
 			}
 		    background:$color-white;
 		    box-shadow:0 0 10px rgba(0,0,0,0.2);
-			
+
 			.second-fold {
 				bottom: 70px;
 				background: #808080;
@@ -839,12 +843,12 @@
 					.link{
 						width: 100%;
 						color: #fff;
-						margin:5px auto; 
+						margin:5px auto;
 						.icon-star{
 							margin-right: 6px!important;
 						}
 					}
-					
+
 				}
 				.action-links{
 					margin: 10px auto;
@@ -852,9 +856,9 @@
 						display: block;
 						width: 100%;
 						color: #fff;
-						margin:5px auto; 
+						margin:5px auto;
 					}
-				
+
 				}
 			}
 
