@@ -662,6 +662,7 @@ function candidateList() {
                 var arr = returnSelectedApplications()
                 settings.totalApplicationsCount = arr.length;
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").attr("disabled", false);
+                settings.bulkActionsDropdown.find(".bulkCheckInput label").removeClass("not-allowed")
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").prop("checked", false);
                 settings.applicationsCount.text(arr.length + " candidates selected");
                 settings.bulkActionContainer.attr("data-type-request", "bulkRequest").removeClass("hidden")
@@ -703,6 +704,7 @@ function candidateList() {
                 candidateSelectTotal.addClass("selected")
                 candidateSelectTotal.find("input").prop("checked",  true);
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").attr("disabled", false);
+                settings.bulkActionsDropdown.find(".bulkCheckInput label").removeClass("not-allowed")
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").prop("checked", false);
                 var arr = returnSelectedApplications()
                 settings.totalApplicationsCount = arr.length

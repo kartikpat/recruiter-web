@@ -54,6 +54,11 @@ jQuery(".first-fold").on('click', ".view-more", function() {
   $(".second-fold").toggleClass("hidden	")
 });
 
+
+jQuery(".detail").on('click', function() {
+    $(".action-fold").toggleClass("hidden	")
+  });
+
 // function hello() {
 //
 // 	// PDFJS.destroy()
