@@ -4116,16 +4116,22 @@ input::-webkit-input-placeholder {
       width: 100%;
       color: #fff;
       vertical-align: top;
-      margin: 5px auto; }
+      margin: 5px auto;
+      cursor: pointer; }
       .mass-action-second.second-fold .sidebar-section .action .link .icon-star {
         margin-right: 6px !important; }
+    .mass-action-second.second-fold .sidebar-section .action .link:hover {
+      text-decoration: underline; }
     .mass-action-second.second-fold .sidebar-section .action-links {
       margin: 10px auto; }
       .mass-action-second.second-fold .sidebar-section .action-links .invite-links {
         width: 100%;
         color: #fff;
         vertical-align: top;
-        margin: 5px auto; }
+        margin: 5px auto;
+        cursor: pointer; }
+      .mass-action-second.second-fold .sidebar-section .action-links .invite-links:hover {
+        text-decoration: underline; }
     .mass-action-second.second-fold .action-buttons span.button {
       -webkit-appearance: none;
       -moz-appearance: none;
