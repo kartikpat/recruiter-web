@@ -388,7 +388,21 @@
 	            				</ul>
 	            			</div>
 	            		</div>
+						<div class="sidebar-section contact-info content-block">
+								<h3 class="content-heading">Contact Information</h3>
+								<div class="wrap-mobile">
+									<span class="icon"><i class="icon-telephone"></i></span>
+									<span class="contact">9871277522</span>
+									<span class="icon iconTelephoneVer"><i class="icon-tick_circle"></i></span>
+								</div>
 
+								<div class="wrap-mobile">
+									<span class="icon"><i class="icon-mail"></i></span>
+									<span class="email-address">anshulg691@gmail.com</span>
+									<span class="icon iconEmailVer"><i class="icon-tick_circle"></i></span>
+								</div>
+
+						</div>
 	            		<div class="content-block additional">
 	            			<h3 class="content-heading">Additional Information</h3>
 	            			<div class="content">
@@ -552,28 +566,54 @@
 						{{>spinner}}
 						<span class="reject button red candidateRejectModal">Reject</span>
 				</span>
-	    		<span class="contactMenubutton button red">contact-info</span>
 
-				<!-- <span class="view-more button white"><i class="icon-down_arrow"></i></span> -->
+
+				<span class="detail button white"><i class="icon-up_arrow"></i></span>
+
 	    	</div>
     	</div>
-    	<div class="second-fold fold contact-menu hidden">
-			<div class="sidebar-section contact-info">
-					<h3>Contact Information</h3>
-					<div class="wrap-mobile">
-						<span class="icon"><i class="icon-telephone"></i></span>
-						<span class="contact"></span>
-						<span class="icon iconTelephoneVer hidden"><i class="icon-tick_circle"></i></span>
+		<div class="second-fold action-fold fold mass-action-second hidden">
+				<div class="sidebar-section external-links">
+						<div class="action">
+							<div class="save link candidateSaveModal">
+								<span class="icon save-icon">
+									<i class="icon-star"></i>
+								</span>
+								<span>Save for later</span>
+							</div>
+							<div class="chat link candidateChatModal">
+								<span class="icon"><i class="icon-chat"></i></span>
+								Chat with
+								<span class="firstName candidate-first-name"></span>
+							</div>
+							<div class="candidateDownloadResume link">
+									<span class="icon">
+											<i class="icon-download_arrow"></i>
+										</span>
+								<span>Download Resume</span>
+							</div>
+						</div>
+						<div class="action-links">
+							<div class="invite invite-links"><span class="icon"></span>Send Interview Invite:</div>
+							<div class="invite-links face-invite">
+								<span class="icon">
+									<i class="icon-face-to-face"></i>
+								</span>
+								<span data-invite-id="1" class="inviteF2f invite tooltip tooltipstered" state="default">
+									<span class="context">Face to Face</span>
+									<span class="icon-container hidden"><i class="icon-tick"></i></span>
+								</span>
+							</div>
+							<div class="invite-links tele-invite">
+								<span class="icon"><i class="icon-telephone"></i></span>
+								<span data-invite-id="2" class="inviteTelephonic invite tooltip tooltipstered" state="default">
+									<span class="context">Telephonic</span>
+									<span class="icon-container hidden"><i class="icon-tick"></i></span>
+								</span>
+							</div>
+						</div>
 					</div>
-
-					<div class="wrap-mobile">
-						<span class="icon"><i class="icon-mail"></i></span>
-						<span class="email-address"></span>
-						<span class="icon iconEmailVer hidden"><i class="icon-tick_circle"></i></span>
-					</div>
-
 			</div>
-    	</div>
     </div>
     <div class="resume-sidebar right">
     	<div class=" action-buttons">
@@ -588,35 +628,35 @@
 		</div>
     	<div class="sidebar-section external-links">
     		<ul>
-    			<li class="save" id="candidateSaveModal"><i class="icon-star_later"></i>Save for Later</li>
-    			<li class="chat" id="candidateChatModal"><span class="icon"><i class="icon-chat"></i></span>Chat with <span id="firstName" class="candidate-first-name">Shreya</span></li>
-    			<li class="invite"><span class="icon"><i class="icon-interview"></i></span>Send Interview Invite</li>
+    			<li class="save candidateSaveModal"><i class="icon-star_later"></i>Save for Later</li>
+    			<li class="chat candidateChatModal"><span class="icon"><i class="icon-chat"></i></span>Chat with <span class="firstName candidate-first-name">Shreya</span></li>
+				<li class="download candidateDownloadResume"><span class="icon"><i class="icon-download_arrow"></i></span>Download Resume</li>
+				<li class="invite"><span class="icon sendInvite"><i class="icon-interview"></i></span>Send Interview Invite</li>
 				<li class="invite-links">
-					<span class="icon">
-						<i class="icon-face-to-face"></i>
-					</span>
-					<span data-invite-id="1" class="inviteF2f invite tooltip" state="default">
+					<span class="icon"><i class="icon-face-to-face"></i></span>
+					<span data-invite-id="1" class="inviteF2f invite tooltip underline" state="default">
 						<span class="context">Face to Face</span>
 						{{>loader}}
 						<span class="icon-container hidden"><i class="icon-tick"></i></span>
 					</span>
 				</li>
 				<li class="invite-links">
-					<span class="icon">
-						<i class="icon-telephone"></i>
-					</span>
-					<span data-invite-id="2" class="inviteTelephonic invite tooltip"  state="default">
+					<span class="icon"><i class="icon-telephone"></i></span>
+					<span data-invite-id="2" class="inviteTelephonic invite tooltip underline"  state="default">
 						<span class="context">Telephonic</span>
-						{{>loader}}
+							{{>loader}}
 						<span class="icon-container hidden"><i class="icon-tick"></i></span>
 					</span>
 				</li>
     		</ul>
-<!--
+
+
+			<!--
     		<ul>
     			<li class="save"><span class="icon"><i class="icon-star"></i></span>Share Resume</li>
     			<li class="invite"><span class="icon"><i class="icon-interview"></i></span>Report this candidate</li>
     		</ul> -->
+
     	</div>
 
 		<div class="sidebar-section contact-info">

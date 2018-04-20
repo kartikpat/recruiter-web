@@ -9,6 +9,13 @@
     cursor: pointer;
 }
 
+.sendInvite {
+    visibility: hidden;
+}
+
+.not-allowed {
+    cursor: not-allowed !important;
+}
 
 .filtersExtraButtons {
     font-size: 13px;
@@ -864,7 +871,37 @@ input::-webkit-input-placeholder {
             position: fixed;
             width: 100%;
             z-index: 10;
-            padding: 15px 20px;
+			padding: 15px 20px;
+			.sidebar-section{
+				.action{
+					.link{
+						width: 100%;
+						color: #fff;
+						vertical-align: top;
+						margin: 5px auto;
+						cursor: pointer;
+						.icon-star{
+							margin-right: 6px!important;
+						}
+					}
+					.link:hover{
+						text-decoration: underline;
+					}
+				}
+				.action-links{
+					margin: 10px auto;
+					.invite-links{
+						width: 100%;
+						color: #fff;
+						vertical-align: top;
+						margin: 5px auto;
+						cursor: pointer;
+					}
+					.invite-links:hover{
+						text-decoration: underline;
+					}
+				}
+			}
             .action-buttons {
 
         		span.button {
@@ -878,7 +915,9 @@ input::-webkit-input-placeholder {
 @media all and (max-width:600px) {
     .mass-action-second {
         &.second-fold {
-
+			padding-left: 10px!important;
+			padding-right: 5px!important;
+			
             .action-buttons {
 
         		span.button {
@@ -1554,11 +1593,18 @@ input::-webkit-input-placeholder {
 
 						#view-profile-info {
 							padding:10px 0;
+							.contact-info{
+								display: none;
+							}
 							.content-block {
 								margin:20px 0 30px 0;
 								border:1px solid $border-color-base;
 								width:100%;
 								padding:25px;
+								.wrap-mobile{
+									margin: 10px auto;
+								}
+								
 								.content{
 									.mobCommentBox{
 										.comment-textarea {
@@ -1935,7 +1981,7 @@ input::-webkit-input-placeholder {
 					margin:7px 0;
 					text-align: -webkit-match-parent;
                     cursor: pointer;
-                    &:hover {
+                    .underline:hover {
                         text-decoration: underline;
                     }
 					span {
@@ -2116,6 +2162,9 @@ input::-webkit-input-placeholder {
 			width:100%;
 			padding-right:0;
 		}
+		.contact-info{
+			display: inline-block!important;
+		}
 		.mobile-resume-sidebar {
 			display:block;
 			border-radius: 8px;
@@ -2189,10 +2238,9 @@ input::-webkit-input-placeholder {
 					}
 					.reject-wrapper{
 						background-color: #af595a;
-						padding: 0px;
 						height: 28px;
 						width: 83px;
-						border-radius: 4px;
+						padding:0!important;
 						.spinner{
 							text-align: center;
 							margin-top: 6px;
@@ -2609,7 +2657,32 @@ input::-webkit-input-placeholder {
             position: fixed;
             width: 100%;
             z-index: 10;
-            padding: 15px 20px;
+			padding: 15px 20px;
+			.sidebar-section{
+				.action{
+					.link{
+						width: 100%;
+						color: #fff;
+						margin:5px auto; 
+						// cursor: pointer;
+						.icon-star{
+							margin-right: 6px!important;
+						}
+					}
+					
+				}
+				.action-links{
+					margin: 10px auto;
+					.invite-links{
+						display: block;
+						width: 100%;
+						color: #fff;
+						margin:5px auto; 
+						// cursor: pointer;
+					}
+				
+				}
+			}
             .first-wrap {
                 width: calc(45% - 5px);
 
@@ -2653,7 +2726,7 @@ input::-webkit-input-placeholder {
 .bulk-section-container {
     position: absolute;
     top: 7px;
-    left: -5px;
+    left: -8px;
     .bulk-selection-item {
         position: relative;
         z-index: 1;

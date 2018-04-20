@@ -24,15 +24,19 @@ function Candidate() {
         settings.mobCandidateAddCommentButtonClass = '.mobCandidateAddCommentButton',
         settings.candidateShortlistModal = $(".candidateShortlistModal"),
         settings.candidateRejectModal = $(".candidateRejectModal"),
-        settings.candidateSaveModal = $("#candidateSaveModal"),
-        settings.candidateChatModal = $("#candidateChatModal"),
+        settings.candidateSaveModal = $(".candidateSaveModal"),
+        settings.candidateChatModal = $(".candidateChatModal"),
         settings.tagListing = $(".recruiterTags"),
         settings.tagMobListing = $("#tagMobListing"),
         settings.tagInputError = $(".tagInputError"),
         settings.sendInterviewInviteF2FClass = ".inviteF2f",
         settings.sendInterviewInviteTelephonicClass = ".inviteTelephonic"
         settings.seeMoreRec = $(".seeMoreRec");
-        settings.recommendationListSecond = $(".recommendationListSecond")
+        settings.recommendationListSecond = $(".recommendationListSecond");
+        settings.tagArr = [];
+        settings.calendarSelect = $(".calendarSelect");
+        settings.candidateDownloadResume = $(".candidateDownloadResume");
+        settings.selectDefaultCalendar = $(".selectDefaultCalendar")
 
         jQuery("#tabbed-content").tabs({
             create: function(){
@@ -126,7 +130,7 @@ function Candidate() {
             tabContent: modal.find("#tabbed-content"),
             shortlistButton: modal.find(".candidateShortlistModal"),
             rejectButton: modal.find(".candidateRejectModal"),
-            savedButton : modal.find("#candidateSaveModal"),
+            savedButton : modal.find(".candidateSaveModal"),
             contact:modal.find('.contact'),
             email:modal.find('.email-address'),
             recommendationList: modal.find('.recommendationList'),
@@ -241,23 +245,31 @@ function Candidate() {
 
         aData["jobs"] = sortArrayOfObjectsByMultipleKey(aData["jobs"])
 
-        $.each(aData["jobs"],function(index, anObj) {
+        if(aData["jobs"].length == 0) {
+            profStr = "<div style='line-height:1.5;'><span style='font-weight:bold;'>"+aData["name"]+"</span> does not have any work experience yet</div>"
+        }
+        else {
+            aData["jobs"] = sortArrayOfObjectsByMultipleKey(aData["jobs"])
+            $.each(aData["jobs"],function(index, anObj) {
 
-            var item = getProfessionalElement()
-            item.name.text(anObj["organization"])
-            item.designation.text(anObj["designation"]);
+                var item = getProfessionalElement()
+                item.name.text(anObj["organization"])
+                item.designation.text(anObj["designation"]);
 
-            var fromMon = getMonthName(anObj["exp"]["from"]["month"]);
-            var toMon = getMonthName(anObj["exp"]["to"]["month"]);
-            var fromYear = anObj["exp"]["from"]["year"];
-            var toYear = anObj["exp"]["to"]["year"];
-            var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
-            item.tenure.text(str);
+                if(anObj["exp"]["from"]["month"] && anObj["exp"]["to"]["month"] && anObj["exp"]["from"]["year"] && anObj["exp"]["to"]["year"]) {
+                    var fromMon = getMonthName(anObj["exp"]["from"]["month"]);
+                    var toMon = getMonthName(anObj["exp"]["to"]["month"]);
+                    var fromYear = anObj["exp"]["from"]["year"];
+                    var toYear = anObj["exp"]["to"]["year"];
+                    var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
+                }
+                item.tenure.text(str);
+                if(index != aData["jobs"].length - 1)
+                    item.seperator.removeClass("hidden")
+                profStr+=item.element[0].outerHTML
+            })
+        }
 
-            if(index != aData["jobs"].length - 1)
-                item.seperator.removeClass("hidden")
-            profStr+=item.element[0].outerHTML
-        })
         item.profList.html(profStr)
         var tagStr = '';
         $.each(aData["tags"],function(index, aTag) {
@@ -332,6 +344,7 @@ function Candidate() {
             }
             item.recommendationList.closest(".recommendations").removeClass("hidden");
         }
+        settings.candidateDownloadResume.attr("data-href", baseUrl + aData["resume"])
 
         item.shortlistButton.attr("data-action", 1);
         item.rejectButton.attr("data-action", 2);
@@ -340,6 +353,7 @@ function Candidate() {
         item.shortlistButton.attr("data-status", status);
         item.rejectButton.attr("data-status", status);
         item.savedButton.attr("data-status", status);
+        settings.candidateDownloadResume.attr("data-status", status);
         if(status == 1) {
             item.shortlistButton.text("Shortlisted")
         }
@@ -465,7 +479,11 @@ function Candidate() {
                 $(settings.candidateTagInputClass).removeClass("error-border");
                 settings.tagInputError.addClass("hidden")
             }
-            var tagId = $(settings.candidateTagInputClass).attr("tag-id")
+            var obj = searchObjByKey(settings.tagArr, tagName, "name")
+            var tagId = $(settings.mobCandidateTagInputClass).attr("tag-id");
+            if(obj) {
+                tagId = obj["id"]
+            }
             $(this).removeAttr("tag-id")
             var parameters = {}
             if(tagId) {
@@ -488,7 +506,8 @@ function Candidate() {
         });
         settings.candidateDetailsModal.on('click', settings.mobCandidateAddTagButtonClass,function(event) {
             event.stopPropagation();
-            var tagName = $(settings.mobCandidateTagInputClass).val();
+            var tagName = ($(settings.mobCandidateTagInputClass).val()).trim();
+
             if(!tagName) {
                 $(settings.mobCandidateTagInputClass).addClass("error-border");
                 return settings.tagInputError.removeClass("hidden")
@@ -497,7 +516,11 @@ function Candidate() {
                 $(settings.mobCandidateTagInputClass).removeClass("error-border");
                 settings.tagInputError.addClass("hidden")
             }
-            var tagId = $(settings.mobCandidateTagInputClass).attr("tag-id")
+            var obj = searchObjByKey(settings.tagArr, tagName, "name")
+            var tagId = $(settings.mobCandidateTagInputClass).attr("tag-id");
+            if(obj) {
+                tagId = obj["id"]
+            }
             $(this).removeAttr("tag-id")
             var parameters = {}
             if(tagId) {
@@ -508,6 +531,7 @@ function Candidate() {
             return fn(applicationId, parameters);
         });
     }
+
 
     function onClickDeleteTag(fn) {
         settings.candidateDetailsModal.on('click', settings.candidateTagRemoveClass,function(event) {
@@ -553,7 +577,51 @@ function Candidate() {
         })
     }
 
+    function onClickSendInterviewInviteF2F(fn) {
+        settings.candidateDetailsModal.on('click', settings.sendInterviewInviteF2FClass, function(e){
+            e.preventDefault()
+
+            if(parseInt($(this).attr("data-clickable")) == 1) {
+                window.location = "/Interview-scheduler-updated"
+            }
+            var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
+            var inviteId = parseInt($(this).attr("data-invite-id"));
+            fn(applicationId, inviteId);
+            return false
+        })
+    }
+
+    function onClickSendInterviewInviteTelephonic(fn) {
+        settings.candidateDetailsModal.on('click', settings.sendInterviewInviteTelephonicClass, function(e){
+            e.preventDefault()
+            if(parseInt($(this).attr("data-clickable")) == 1) {
+                window.location = "/Interview-scheduler-updated"
+            }
+            var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
+            var inviteId =  parseInt($(this).attr("data-invite-id"));
+
+            fn(applicationId, inviteId);
+            return false
+        })
+    }
+
+    function setInvite() {
+        $(settings.sendInterviewInviteF2FClass).attr("data-clickable","1")
+        $(settings.sendInterviewInviteTelephonicClass).attr("data-clickable","1")
+        $(settings.sendInterviewInviteF2FClass).attr("title","You need to set up your calendar before sending an invite. Click to set up calendar")
+        $(settings.sendInterviewInviteTelephonicClass).attr("title","You need to set up your calendar before sending an invite. Click to set up calendar")
+
+        settings.candidateDetailsModal.find(".tooltip").tooltipster({
+			animation: 'fade',
+			delay: 0,
+			side:['bottom'],
+			theme: 'tooltipster-borderless'
+		})
+
+    }
+
     function showDropdownTags(data) {
+        settings.tagArr = data;
         initializeAutoCompleteComponent(settings.tagListing, data)
     }
 
@@ -563,12 +631,12 @@ function Candidate() {
 
             settings.candidateDetailsModal.find(".candidateShortlistModal").attr("data-status", newStatus)
             settings.candidateDetailsModal.find(".candidateRejectModal").attr("data-status", newStatus)
-            settings.candidateDetailsModal.find("#candidateSaveModal").attr("data-status", newStatus)
-            if(newStatus == settings.candidateDetailsModal.find("#candidateSaveModal").attr("data-action")) {
-                settings.candidateDetailsModal.find("#candidateSaveModal").html("<span class='icon'><i class='icon-star'></i></span>Saved for Later");
+            settings.candidateDetailsModal.find(".candidateSaveModal").attr("data-status", newStatus)
+            if(newStatus == settings.candidateDetailsModal.find(".candidateSaveModal").attr("data-action")) {
+                settings.candidateDetailsModal.find(".candidateSaveModal").html("<span class='icon'><i class='icon-star'></i></span>Saved for Later");
             }
             else {
-                settings.candidateDetailsModal.find("#candidateSaveModal").html("<span class='icon'><i class='icon-star'></i></span>Save for Later");
+                settings.candidateDetailsModal.find(".candidateSaveModal").html("<span class='icon'><i class='icon-star'></i></span>Save for Later");
             }
             if(newStatus == settings.candidateDetailsModal.find(".candidateRejectModal").attr("data-action")) {
                 settings.candidateDetailsModal.find(".candidateRejectModal").text("Rejected")
@@ -583,6 +651,43 @@ function Candidate() {
                 settings.candidateDetailsModal.find(".candidateShortlistModal").text("Shortlist")
             }
         })
+    }
+
+    function openSelectDefaultCalendarModal() {
+		addBodyFixed()
+		settings.selectDefaultCalendar.removeClass("hidden")
+	}
+
+    function closeModal() {
+        removeBodyFixed()
+		$(".modal").addClass("hidden")
+    }
+
+    function onChangeDefaultCalendar(fn) {
+		settings.calendarSelect.on('change', function(e) {
+			var calendarId = $(this).val();
+			if(parseInt(calendarId) == -1) {
+				return
+			}
+			return fn(calendarId)
+		})
+	}
+
+    function onClickDownloadResume(fn) {
+        settings.candidateDownloadResume.click(function(event) {
+            debugger
+            event.preventDefault()
+            var status = $(this).attr("data-status");
+            var url = $(this).attr("data-href");
+            window.open(url);
+            var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
+            debugger
+            fn(applicationId, status)
+        })
+    }
+
+    function changeStatus(status) {
+        settings.candidateDownloadResume.attr("data-status", status);
     }
 
     return {
@@ -602,7 +707,15 @@ function Candidate() {
         changeButtonText: changeButtonText,
         addRecommendations: addRecommendations,
         onClickSeeMoreRec: onClickSeeMoreRec,
-        onClickChatCandidateModal : onClickChatCandidateModal
+        onClickChatCandidateModal : onClickChatCandidateModal,
+        onClickSendInterviewInviteTelephonic: onClickSendInterviewInviteTelephonic,
+        onClickSendInterviewInviteF2F: onClickSendInterviewInviteF2F,
+        setInvite: setInvite,
+        openSelectDefaultCalendarModal: openSelectDefaultCalendarModal,
+        closeModal: closeModal,
+        onChangeDefaultCalendar: onChangeDefaultCalendar,
+        onClickDownloadResume: onClickDownloadResume,
+        changeStatus: changeStatus
     }
 
     function focusOnElement(element, container) {

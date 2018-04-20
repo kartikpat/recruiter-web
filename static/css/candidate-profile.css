@@ -1937,6 +1937,13 @@ span.sticker {
       .conversations .conversation-listing-container .conversations-listing .conversation-item:last-child .user-item.user-info p.user-designation {
         border-color: transparent; }
 
+.sendInvite {
+  visibility: hidden; }
+
+.invite-links {
+  margin-left: 0 !important;
+  list-style: none !important; }
+
 .chat-div {
   display: none; }
 
@@ -2160,6 +2167,8 @@ span.sticker {
                 outline: 0; }
           .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info {
             padding: 20px 0; }
+            .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .contact-info {
+              display: none; }
             .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block {
               margin: 20px 0 0 0;
               border: 1px solid #e8e8e8;
@@ -2614,6 +2623,8 @@ span.sticker {
     .view-resume-modal .main-wrapper {
       width: 100%;
       padding-right: 0; }
+    .view-resume-modal .contact-info {
+      display: block !important; }
     .view-resume-modal .mobile-resume-sidebar {
       display: block;
       border-radius: 8px;
@@ -2625,11 +2636,25 @@ span.sticker {
           margin-top: 0px; }
         .view-resume-modal .mobile-resume-sidebar .contact-menu .contact-info .wrap {
           margin: 7px 0; }
+      .view-resume-modal .mobile-resume-sidebar .second-fold {
+        bottom: 70px;
+        background: #808080; }
+        .view-resume-modal .mobile-resume-sidebar .second-fold .action .link {
+          width: 100%;
+          color: #fff;
+          margin: 5px auto; }
+          .view-resume-modal .mobile-resume-sidebar .second-fold .action .link .icon-star {
+            margin-right: 6px !important; }
+        .view-resume-modal .mobile-resume-sidebar .second-fold .action-links {
+          margin: 10px auto; }
+          .view-resume-modal .mobile-resume-sidebar .second-fold .action-links .invite-links {
+            display: block;
+            width: 100%;
+            color: #fff;
+            margin: 5px auto; }
       .view-resume-modal .mobile-resume-sidebar .fold {
         position: fixed;
-        height: 60px;
-        right: 0;
-        width: 85%;
+        width: 100%;
         padding: 20px; }
         .view-resume-modal .mobile-resume-sidebar .fold.top {
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
@@ -2637,9 +2662,6 @@ span.sticker {
           bottom: 0;
           width: 100%;
           background: #FFF; }
-        .view-resume-modal .mobile-resume-sidebar .fold.second-fold {
-          bottom: 60px;
-          background: #808080; }
         .view-resume-modal .mobile-resume-sidebar .fold .action-buttons {
           font-size: 0; }
           .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper {
@@ -2731,8 +2753,6 @@ span.sticker {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
       .view-resume-modal .mobile-resume-sidebar .fold {
         position: fixed;
-        height: 60px;
-        right: 0;
         width: 100%;
         padding: 20px; }
         .view-resume-modal .mobile-resume-sidebar .fold.top {
@@ -2740,9 +2760,6 @@ span.sticker {
         .view-resume-modal .mobile-resume-sidebar .fold.first-fold {
           bottom: 0;
           background: #FFF; }
-        .view-resume-modal .mobile-resume-sidebar .fold.second-fold {
-          bottom: 60px;
-          background: #808080; }
         .view-resume-modal .mobile-resume-sidebar .fold .action-buttons {
           font-size: 0; }
           .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span {

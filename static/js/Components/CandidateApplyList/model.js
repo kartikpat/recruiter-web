@@ -103,6 +103,7 @@ function candidateList() {
             settings.rowContainer.find(".candidateCheckbox").prop("checked", false)
             settings.rowContainer.find(".candidate-select").removeClass("selected")
             settings.bulkActionsDropdown.find(".bulkCheckInput input").attr("disabled", false)
+            settings.bulkActionsDropdown.find(".bulkCheckInput label").removeClass("not-allowed")
             settings.bulkActionsDropdown.find(".bulkCheckInput input").prop("checked", false)
             $(".second-fold").addClass("hidden")
         })
@@ -121,7 +122,9 @@ function candidateList() {
             if(jQuery(this).is(":checked")) {
                 var len = $(this).attr("data-length")
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").attr("disabled", true)
+                settings.bulkActionsDropdown.find(".bulkCheckInput label").addClass("not-allowed")
                 $(this).attr("disabled", false)
+                $(this).next().removeClass("not-allowed")
                 var from = $(this).attr("data-from");
                 var to = $(this).attr("data-to");
                 settings.from = from;
@@ -135,6 +138,7 @@ function candidateList() {
                 settings.bulkActionContainer.attr("data-type-request", "bulkRequestDropdown").removeClass("hidden");
             } else {
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").attr("disabled", false)
+                settings.bulkActionsDropdown.find(".bulkCheckInput label").removeClass("not-allowed")
                 settings.secondMassActionContainer.addClass("hidden")
                 settings.bulkActionContainer.addClass("hidden")
             }
@@ -168,7 +172,7 @@ function candidateList() {
             e.preventDefault()
 
             if(parseInt($(this).attr("data-clickable")) == 1) {
-                window.location = "/booked-slots"
+                window.location = "/Interview-scheduler-updated"
 
             }
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
@@ -183,7 +187,7 @@ function candidateList() {
         settings.rowContainer.on('click', settings.sendInterviewInviteTelephonicClass, function(e){
             e.preventDefault()
             if(parseInt($(this).attr("data-clickable")) == 1) {
-                window.location = "/booked-slots"
+                window.location = "/Interview-scheduler-updated"
             }
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             var inviteId =  parseInt($(this).attr("data-invite-id"));
@@ -658,6 +662,7 @@ function candidateList() {
                 var arr = returnSelectedApplications()
                 settings.totalApplicationsCount = arr.length;
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").attr("disabled", false);
+                settings.bulkActionsDropdown.find(".bulkCheckInput label").removeClass("not-allowed")
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").prop("checked", false);
                 settings.applicationsCount.text(arr.length + " candidates selected");
                 settings.bulkActionContainer.attr("data-type-request", "bulkRequest").removeClass("hidden")
@@ -699,6 +704,7 @@ function candidateList() {
                 candidateSelectTotal.addClass("selected")
                 candidateSelectTotal.find("input").prop("checked",  true);
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").attr("disabled", false);
+                settings.bulkActionsDropdown.find(".bulkCheckInput label").removeClass("not-allowed")
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").prop("checked", false);
                 var arr = returnSelectedApplications()
                 settings.totalApplicationsCount = arr.length
@@ -926,11 +932,10 @@ function candidateList() {
 			side:['left'],
 			theme: 'tooltipster-borderless'
 		})
-
     }
 
     function changeInviteText(applicationId) {
-        settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .interviewinvite").text("Resend Interview Invite")
+        settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .interviewinvite").text("Interview Invite Sent!")
     }
 
     function changeStatus(arr, newStatus) {

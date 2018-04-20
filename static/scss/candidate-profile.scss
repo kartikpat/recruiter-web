@@ -2,6 +2,15 @@
 @import 'input-elements';
 @import 'chat-sidebar';
 
+.sendInvite {
+    visibility: hidden;
+}
+
+.invite-links {
+    margin-left: 0 !important;
+    list-style: none !important;
+}
+
 .chat-div {
     display: none;
 }
@@ -274,6 +283,9 @@
 
 						#view-profile-info {
 							padding:20px 0;
+							.contact-info{
+								display: none;
+							}
 							.content-block {
 								margin:20px 0 0 0;
 								border:1px solid $border-color-base;
@@ -797,6 +809,10 @@
 		.main-wrapper {
 			width:100%;
 			padding-right:0;
+			
+		}
+		.contact-info{
+			display: block!important;
 		}
 		.mobile-resume-sidebar {
 			display:block;
@@ -814,12 +830,36 @@
 			}
 		    background:$color-white;
 		    box-shadow:0 0 10px rgba(0,0,0,0.2);
+			
+			.second-fold {
+				bottom: 70px;
+				background: #808080;
+				.action{
+					.link{
+						width: 100%;
+						color: #fff;
+						margin:5px auto; 
+						.icon-star{
+							margin-right: 6px!important;
+						}
+					}
+					
+				}
+				.action-links{
+					margin: 10px auto;
+					.invite-links{
+						display: block;
+						width: 100%;
+						color: #fff;
+						margin:5px auto; 
+					}
+				
+				}
+			}
 
 		    .fold {
 		    	position: fixed;
-			    height: 60px;
-			    right: 0;
-			    width: 85%;
+			    width: 100%;
 			    padding:20px;
 
 				&.top {
@@ -833,14 +873,6 @@
 
 				}
 
-				&.second-fold {
-					bottom:60px;
-					background:$extra-info-color;
-
-					&.hidden {
-
-					}
-				}
 				.action-buttons {
 					font-size:0;
 					.shortlist-wrapper{
@@ -945,29 +977,16 @@
 
 		    .fold {
 		    	position: fixed;
-			    height: 60px;
-			    right: 0;
 			    width: 100%;
 			    padding:20px;
-
 				&.top {
 					box-shadow:0 0 10px rgba(0,0,0,0.2);
 				}
-
 				&.first-fold {
  					bottom: 0;
  					background:$color-white;
-
 				}
 
-				&.second-fold {
-					bottom:60px;
-					background:$extra-info-color;
-
-					&.hidden {
-
-					}
-				}
 				.action-buttons {
 					font-size:0;
 					span {

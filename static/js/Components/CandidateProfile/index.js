@@ -157,6 +157,7 @@ jQuery(document).ready( function() {
         store.saveToStore(res.data)
 
         aCandidate.populateCandidateData(res.data[0])
+        fetchjobCalendars(jobId, recruiterId)
     }
 
    function onCandidateProfileFetchFail(topic, data){
@@ -164,6 +165,10 @@ jQuery(document).ready( function() {
    }
 
     function onSuccessfullCandidateAction(topic, res) {
+        if(res.action == "download") {
+            var newStatus = 5
+            return aCandidate.changeStatus( newStatus)
+        }
         if(res.action == "tag") {
             if(res.parameters.type == "add") {
                 var tag = {
@@ -214,7 +219,6 @@ jQuery(document).ready( function() {
             }
         }
         if(res.action == "save") {
-
             var newStatus = 3
             if(res.parameters.isModalButton) {
 
@@ -239,22 +243,125 @@ jQuery(document).ready( function() {
         errorHandler(res);
     }
 
+    function onSuccessfullFetchedCalendars(topic, res) {
+
+        if(!res.length){
+            return aCandidate.setInvite()
+        }
+        store.saveCalendarsToStore(res)
+    }
+
+    function onFailFetchedCalendars(topic,res) {
+        errorHandler(res);
+    }
+
+    aCandidate.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
+        var defaultCalendarId = store.getDefaultId();
+        debugger
+        if(!defaultCalendarId)
+            return aCandidate.openSelectDefaultCalendarModal();
+        var obj = {
+            "type": inviteId,
+            "calendarId": store.getCalendarId()
+        }
+        sendInterViewInvite(recruiterId, jobId, applicationId , obj)
+    })
+
+    aCandidate.onClickSendInterviewInviteTelephonic(function(applicationId, inviteId){
+        var defaultCalendarId = store.getDefaultId();
+        if(!defaultCalendarId)
+            return aCandidate.openSelectDefaultCalendarModal();
+        var obj = {
+            "type": inviteId,
+            "calendarId": store.getCalendarId()
+        }
+        sendInterViewInvite(recruiterId, jobId, applicationId , obj)
+    })
+
+    function onSendInterViewInviteSuccess(topic, data){
+        // var applicationId=data['parameters']['applicationId'];
+        // candidates.changeInviteText(data.parameters.applicationId)
+        if(data.parameters.inviteId == 1){
+            toastNotify(1, "Face to Face Invite Sent Successfully!")
+            // $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .icon-container').removeClass('hidden');
+            // $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .loadingScroller').addClass('hidden');
+        }
+        if(data.parameters.inviteId == 2){
+            toastNotify(1, "Telephonic Invite Sent Successfully!")
+            // $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic  .icon-container').removeClass('hidden');
+            // $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic .loadingScroller').addClass('hidden');
+        }
+    }
+
+    function onSendInterViewInviteFail(topic, data) {
+
+        if(data.status == 400 && data.responseJSON && data.responseJSON.code == 4001) {
+            return window.location.href = "/calendar/"+data.parameters.calendarId+"/edit?insuffSlotsErrMsg=1";
+        }
+
+        // var applicationId=data['parameters']['applicationId'];
+        // $(".candidateRow[data-application-id="+applicationId+"]").find('.invite .loadingScroller').addClass('hidden');
+        // $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f').attr('state','default');
+        // $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic').attr('state','default');
+
+        errorHandler(data)
+    }
+
+    aCandidate.onChangeDefaultCalendar(function(calendarId) {
+        var defaultCalendarId = store.getDefaultId();
+        var obj = {}
+        if(defaultCalendarId) {
+            obj = {
+                defaultId: defaultCalendarId
+            }
+        }
+        $('.calendarSelect').prop('disabled', true);
+        setDefaultCalendar( recruiterId, jobId, calendarId, obj, {})
+    })
+
+    aCandidate.onClickDownloadResume(function(applicationId, status){
+
+        if(parseInt(status) == 0)
+            setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
+    });
+
+    function onSuccessfullSetDefaultCalendar(topic, res) {
+        $('.calendarSelect').prop("disabled",false);
+        store.setId(res.data, parseInt(res.calendarId))
+        aCandidate.closeModal()
+        toastNotify(1, "Default Calendar Set.")
+    }
+
+    function onFailSetDefaultCalendar(topic, res) {
+        $('.calendarSelect').prop("disabled",false);
+        $('.calendarSelect').val(-1)
+        errorHandler(res);
+    }
+
     var fetchJobApplicationsSuccessSubscription = pubsub.subscribe("fetchCandidateProfile", onCandidateProfileFetchSuccess)
     var fetchJobApplicationsFailSubscription = pubsub.subscribe("fetchCandidateProfileFail", onCandidateProfileFetchFail)
     var setCandidateActionSuccessSubscription = pubsub.subscribe("setCandidateActionSuccess", onSuccessfullCandidateAction)
     var setCandidateActionFailSubscription = pubsub.subscribe("setCandidateActionFail", onFailCandidateAction)
     var fetchedTagsSuccessSubscription = pubsub.subscribe("fetchedTags", onSuccessfullFetchedTag)
     var fetchTagsFailSubscription = pubsub.subscribe("fetchTagsFail", onFailFetchedTag)
+    var fetchedCalendarsSuccessSubscription = pubsub.subscribe("fetchedCalendars", onSuccessfullFetchedCalendars)
+    var fetchCalendarsFailSubscription = pubsub.subscribe("failedToFetchCalendars", onFailFetchedCalendars)
+
+    var sendInterViewInviteSuccessSubscription = pubsub.subscribe("sendInterViewInviteSuccess", onSendInterViewInviteSuccess)
+	var sendInterViewInviteFailSubscription = pubsub.subscribe("sendInterViewInviteFail", onSendInterViewInviteFail);
+
+    var setDefaultCalendarSuccessSubscription = pubsub.subscribe("setDefaultCalendarSuccess", onSuccessfullSetDefaultCalendar)
+    var setDefaultCalendarFailSubscription = pubsub.subscribe("setDefaultCalendarFail", onFailSetDefaultCalendar)
 
 })
 
 function errorHandler(data) {
-    // if(data.status == 403) {
-    //     toastNotify(3, "You are not authorized to access this page");
-    //     setTimeout(function(){
-	// 		 window.location.href = "/"
-	// 	 }, 2000);
-    // }
+    if(data.status == 403) {
+        toastNotify(3, "You are not authorized to access this page");
+        setTimeout(function(){
+			 window.location.href = "/"
+		 }, 2000);
+    }
 
     var res = data.responseJSON
     if(!res) {

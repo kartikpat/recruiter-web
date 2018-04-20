@@ -26,8 +26,8 @@ function Candidate() {
         settings.mobCandidateAddCommentButtonClass = '.mobCandidateAddCommentButton',
         settings.candidateShortlistModal = $(".candidateShortlistModal"),
         settings.candidateRejectModal = $(".candidateRejectModal"),
-        settings.candidateSaveModal = $("#candidateSaveModal"),
-        settings.candidateChatModal = $("#candidateChatModal"),
+        settings.candidateSaveModal = $(".candidateSaveModal"),
+        settings.candidateChatModal = $(".candidateChatModal"),
         settings.tagListing = $(".recruiterTags"),
         settings.tagMobListing = $("#tagMobListing"),
         settings.tagInputError = $(".tagInputError"),
@@ -35,7 +35,8 @@ function Candidate() {
         settings.sendInterviewInviteTelephonicClass = ".inviteTelephonic"
         settings.seeMoreRec = $(".seeMoreRec");
         settings.recommendationListSecond = $(".recommendationListSecond");
-        settings.tagArr = []
+        settings.tagArr = [],
+        settings.candidateDownloadResume = $(".candidateDownloadResume");
         jQuery("#tabbed-content").tabs({});
 
     }
@@ -107,7 +108,7 @@ function Candidate() {
             e.preventDefault()
 
             if(parseInt($(this).attr("data-clickable")) == 1) {
-                window.location = "/booked-slots"
+                window.location = "/Interview-scheduler-updated"
 
             }
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
@@ -121,7 +122,7 @@ function Candidate() {
         settings.candidateDetailsModal.on('click', settings.sendInterviewInviteTelephonicClass, function(e){
             e.preventDefault()
             if(parseInt($(this).attr("data-clickable")) == 1) {
-                window.location = "/booked-slots"
+                window.location = "/Interview-scheduler-updated"
 
             }
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
@@ -137,6 +138,7 @@ function Candidate() {
         modal.attr("data-candidate-id",userID)
         return {
             element: modal,
+            icontick:modal.find(".invite .icon-container"),
             image: modal.find(".js_img"),
             name: modal.find(".js_name"),
             location: modal.find(".js_loc"),
@@ -178,11 +180,11 @@ function Candidate() {
             tag: modal.find(".candidateTagInput"),
             mobTag: modal.find(".mobCandidateTagInput"),
             seeMoreRec: modal.find(".seeMoreRec"),
-            firstName: modal.find("#firstName"),
+            firstName: modal.find(".firstName"),
             tabContent: modal.find("#tabbed-content"),
             shortlistButton: modal.find(".candidateShortlistModal"),
             rejectButton: modal.find(".candidateRejectModal"),
-            savedButton : modal.find("#candidateSaveModal"),
+            savedButton : modal.find(".candidateSaveModal"),
             iconTelephoneVer : modal.find(".iconTelephoneVer"),
             iconEmailVer :modal.find(".iconEmailVer")
         }
@@ -242,10 +244,18 @@ function Candidate() {
         var item = getElement(aData["userID"]);
         item.element.attr("data-application-id", aData["id"])
         item.image.attr("src", (aData["img"] || "/static/images/noimage.png"))
-        item.name.text(aData["name"] || "NA");
+        item.firstName.text(aData["name"] || "NA");
         item.experience.text(aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m" || "NA");
         item.location.text(aData["currentLocation"] || "NA");
         var preferredLocationStr = "N.A."
+        if(aData['isSent']==1){
+            item.element.find('.inviteF2f .icon-container').removeClass('hidden');
+            item.element.find('.inviteF2f .loadingScroller').addClass('hidden');
+        }
+        if(aData['isSent']==2){
+            item.element.find('.inviteTelephonic .icon-container').removeClass('hidden');
+            item.element.find('.inviteTelephonic .loadingScroller').addClass('hidden');
+        }
         if(aData["preferredLocation"].length) {
             preferredLocationStr = aData["preferredLocation"].join(', ');
         }
@@ -418,6 +428,8 @@ function Candidate() {
             item.savedButton.html("<span class='icon'><i class='icon-star'></i></span>Saved for Later")
         }
 
+        settings.candidateDownloadResume.attr("data-href", baseUrl + aData["resume"])
+        settings.candidateDownloadResume.attr("data-status", status);
         openModal(item)
 
         if(!type)
@@ -454,11 +466,27 @@ function Candidate() {
         element.val("")
     }
 
+    function onClickDownloadResume(fn) {
+        settings.candidateDownloadResume.click(function(event) {
+            event.preventDefault()
+            var status = $(this).attr("data-status");
+            var url = $(this).attr("data-href");
+            window.open(url);
+            var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
+            fn(applicationId, status)
+        })
+    }
+
+    function changeStatus(status) {
+        settings.candidateDownloadResume.attr("data-status", status);
+    }
+
     function resetCandidateData() {
         var item = getElement();
         item.element.attr("data-application-id", "0")
         item.image.attr("src", "")
         item.name.text("");
+        item.icontick.addClass('hidden');
         item.experience.text("");
         item.location.text("");
         item.contact.text("");
@@ -697,12 +725,12 @@ function Candidate() {
 
             settings.candidateDetailsModal.find(".candidateShortlistModal").attr("data-status", newStatus)
             settings.candidateDetailsModal.find(".candidateRejectModal").attr("data-status", newStatus)
-            settings.candidateDetailsModal.find("#candidateSaveModal").attr("data-status", newStatus)
-            if(newStatus == settings.candidateDetailsModal.find("#candidateSaveModal").attr("data-action")) {
-                settings.candidateDetailsModal.find("#candidateSaveModal").html("<span class='icon'><i class='icon-star'></i></span>Saved for Later");
+            settings.candidateDetailsModal.find(".candidateSaveModal").attr("data-status", newStatus)
+            if(newStatus == settings.candidateDetailsModal.find(".candidateSaveModal").attr("data-action")) {
+                settings.candidateDetailsModal.find(".candidateSaveModal").html("<span class='icon'><i class='icon-star'></i></span>Saved for Later");
             }
             else {
-                settings.candidateDetailsModal.find("#candidateSaveModal").html("<span class='icon'><i class='icon-star'></i></span>Save for Later");
+                settings.candidateDetailsModal.find(".candidateSaveModal").html("<span class='icon'><i class='icon-star'></i></span>Save for Later");
             }
             if(newStatus == settings.candidateDetailsModal.find(".candidateRejectModal").attr("data-action")) {
                 settings.candidateDetailsModal.find(".candidateRejectModal").text("Rejected")
@@ -740,7 +768,8 @@ function Candidate() {
         onClickCloseModal: onClickCloseModal,
         closeModal: closeModal,
         onClickSeeMoreRec: onClickSeeMoreRec,
-        addRecommendations: addRecommendations
+        addRecommendations: addRecommendations,
+        onClickDownloadResume: onClickDownloadResume
 
 	}
 
