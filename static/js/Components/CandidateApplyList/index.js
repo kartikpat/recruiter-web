@@ -454,7 +454,6 @@ jQuery(document).ready( function() {
                 aCandidate.changeButtonText(arr, newStatus, res.parameters.dataAction)
                 return toastNotify(1, "Moved to Rejected Tab")
             }
-
             if(res.parameters.oldStatus != "") {
                 return toastNotify(1, "Moved to Rejected Tab")
             }
@@ -1019,20 +1018,22 @@ jQuery(document).ready( function() {
     function onSendInterViewInviteSuccess(topic, data){
         var applicationId=data['parameters']['applicationId'];
         candidates.changeInviteText(data.parameters.applicationId)
+        var obj = store.getCandidateFromStore(data.parameters.applicationId)
         if(data.parameters.inviteId == 1){
             toastNotify(1, "Face to Face Invite Sent Successfully!")
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .icon-container').removeClass('hidden');
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .loadingScroller').addClass('hidden');    
+            obj["invite"] =1;
         }
         if(data.parameters.inviteId == 2){
             toastNotify(1, "Telephonic Invite Sent Successfully!")
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic  .icon-container').removeClass('hidden');
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic .loadingScroller').addClass('hidden');
+            obj["invite"] =2;
         }
     }
 
     function onSendInterViewInviteFail(topic, data){
-
         if(data.status == 400 && data.responseJSON && data.responseJSON.code == 4001) {
             window.location.href = "/calendar/"+data.parameters.calendarId+"/edit?insuffSlotsErrMsg=1";
 
@@ -1041,7 +1042,6 @@ jQuery(document).ready( function() {
         $(".candidateRow[data-application-id="+applicationId+"]").find('.invite .loadingScroller').addClass('hidden');
         $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f').attr('state','default');
         $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic').attr('state','default');
-
         errorHandler(data)
     }
 

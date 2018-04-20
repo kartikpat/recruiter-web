@@ -872,9 +872,13 @@ input::-webkit-input-placeholder {
 						color: #fff;
 						vertical-align: top;
 						margin: 5px auto;
+						cursor: pointer;
 						.icon-star{
 							margin-right: 6px!important;
 						}
+					}
+					.link:hover{
+						text-decoration: underline;
 					}
 				}
 				.action-links{
@@ -884,6 +888,10 @@ input::-webkit-input-placeholder {
 						color: #fff;
 						vertical-align: top;
 						margin: 5px auto;
+						cursor: pointer;
+					}
+					.invite-links:hover{
+						text-decoration: underline;
 					}
 				}
 			}
@@ -2649,6 +2657,7 @@ input::-webkit-input-placeholder {
 						width: 100%;
 						color: #fff;
 						margin:5px auto; 
+						// cursor: pointer;
 						.icon-star{
 							margin-right: 6px!important;
 						}
@@ -2662,6 +2671,7 @@ input::-webkit-input-placeholder {
 						width: 100%;
 						color: #fff;
 						margin:5px auto; 
+						// cursor: pointer;
 					}
 				
 				}

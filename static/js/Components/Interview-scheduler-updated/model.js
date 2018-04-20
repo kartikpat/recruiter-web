@@ -112,7 +112,7 @@ function Calendar(){
         }
         
         if($('#radio-button-tillend').prop("checked")==true){
-            toDate="00:00:00";
+            toDate="0000-00-00";
             console.log(toDate);
             $('#enddatepicker').datepicker('setDate', null);
         }
