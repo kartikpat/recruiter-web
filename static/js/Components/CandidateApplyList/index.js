@@ -235,7 +235,9 @@ jQuery(document).ready( function() {
         cloneStickyChat(array, recruiterId, jobId, applicationId)
     })
     aCandidate.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
-        // if($(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f').attr('state')=='default'){
+        // console.log('here')
+        if($(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f').attr('state')=='default'){
+            debugger
             var defaultCalendarId = theJob.getDefaultCalendar();
             if(!defaultCalendarId)
                 return theJob.showCalendarMissingError();
@@ -243,13 +245,13 @@ jQuery(document).ready( function() {
                 "type": inviteId,
                 "calendarId": theJob.getSelectedCalendarId()
             }
-            // $(".candidateRow[data-application-id="+applicationId+"]").find('.invite').attr('state','clicked')
-            // $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .loadingScroller').removeClass('hidden');
+            $(".candidateRow[data-application-id="+applicationId+"]").find('.invite').attr('state','clicked')
+            $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .loadingScroller').removeClass('hidden');
             sendInterViewInvite(recruiterId, jobId, applicationId , obj)
-        // }    
+        }    
     })
     aCandidate.onClickSendInterviewInviteTelephonic(function(applicationId, inviteId){
-        // if($(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic').attr('state')=='default'){
+        if($(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic').attr('state')=='default'){
             var defaultCalendarId = theJob.getDefaultCalendar();
             if(!defaultCalendarId)
                 return theJob.showCalendarMissingError();
@@ -257,10 +259,10 @@ jQuery(document).ready( function() {
                 "type": inviteId,
                 "calendarId": theJob.getSelectedCalendarId()
             }
-            // $(".candidateRow[data-application-id="+applicationId+"]").find('.invite').attr('state','clicked')
-            // $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic .loadingScroller').removeClass('hidden');
+            $(".candidateRow[data-application-id="+applicationId+"]").find('.invite').attr('state','clicked')
+            $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic .loadingScroller').removeClass('hidden');
             sendInterViewInvite(recruiterId, jobId, applicationId , obj)
-        // }   
+        }   
     })
     candidates.onClickSendInterviewInviteF2F(function(applicationId, inviteId){ 
         if($(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f').attr('state')=='default'){
@@ -348,7 +350,6 @@ jQuery(document).ready( function() {
         setCandidateAction(recruiterId, jobId, action , applicationId, {}, parameters);
     })
     function onSuccessfullCandidateAction(topic, res) {
-
         var arr = [];
         arr.push(res.applicationId)
         if(res.action == "view") {
@@ -1010,11 +1011,14 @@ jQuery(document).ready( function() {
 
     function onSendInterViewInviteSuccess(topic, data){
         var applicationId=data['parameters']['applicationId'];
+        // var obj = store.getCandidateFromStore(data['parameters']['applicationId'])
+        // obj["invite"]=1;
         candidates.changeInviteText(data.parameters.applicationId)
         if(data.parameters.inviteId == 1){
             toastNotify(1, "Face to Face Invite Sent Successfully!")
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .icon-container').removeClass('hidden');
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .loadingScroller').addClass('hidden');
+        
         }
         if(data.parameters.inviteId == 2){
             toastNotify(1, "Telephonic Invite Sent Successfully!")
@@ -1024,12 +1028,9 @@ jQuery(document).ready( function() {
     }
 
     function onSendInterViewInviteFail(topic, data) {
-
-
         if(data.status == 404 && data.responseJSON && data.responseJSON.code == 4001) {
             window.location.href = "/calendar/"+data.parameters.calendarid+"/edit?insuffSlotsErrMsg=1";
         }
-
         var applicationId=data['parameters']['applicationId'];
         $(".candidateRow[data-application-id="+applicationId+"]").find('.invite .loadingScroller').addClass('hidden');
         $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f').attr('state','default');
