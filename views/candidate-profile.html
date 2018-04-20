@@ -1,19 +1,17 @@
 {{>header}}
 
-<!-- <div class="loader-overlay" id="loaderOverlay">
-    <div class="loader"></div>
-</div> -->
+    {{>chatSticky}}
 
-<div class="toast-notification-container">
-    <div class="toast-notification">
-        <!-- <div class="notification-icon">
-            <img src="/static/images/close-icon.png" />
-        </div> -->
-        <div class="notification-message">
-            <p></p>
+    <div class="toast-notification-container">
+        <div class="toast-notification">
+            <!-- <div class="notification-icon">
+                <img src="/static/images/close-icon.png" />
+            </div> -->
+            <div class="notification-message">
+                <p></p>
+            </div>
         </div>
     </div>
-</div>
 
     <div class="page-content">
         <div class="view-resume-modal candidateDetailsModal">
@@ -318,8 +316,12 @@
 						<span class="reject-wrapper">
 							 {{>spinner}}
 							<span class="reject button red candidateRejectModal">Reject</span>
+
 						</span>	
 						<span class="view-more button white"><i class="icon-up_arrow"></i></span>
+
+						</span>
+
         	    	</div>
             	</div>
 				<div class="second-fold fold mass-action-second hidden">
@@ -373,11 +375,12 @@
 				</div>
             	<div class="sidebar-section external-links">
             		<ul>
+                        <li class="download" id="candidateDownloadResume"><span class="icon"><i class="icon-star"></i></span>Download Resume</li>
             			<li class="save" id="candidateSaveModal"><span class="icon"><i class="icon-star"></i></span>Save for Later</li>
             			<li class="chat" id="candidateChatModal"><span class="icon"><i class="icon-chat_icon"></i></span>Chat with <span id="firstName" class="candidate-first-name">Shreya</span></li>
-                        <!-- <li class="invite"><span class="icon"><i class="icon-interview"></i></span>Send Interview Invite</li>
-        				<li class="invite-links"><span data-invite-id="1" class="inviteF2f tooltip ">Face to Face</span></li>
-        				<li class="invite-links"><span data-invite-id="2" class="inviteTelephonic tooltip ">Telephonic</span></li> -->
+                        <li class="invite"><span class="icon"><i class="icon-interview"></i></span>Send Interview Invite</li>
+        				<li class="invite-links"><span class="icon"><i class="icon-face-to-face"></i></span><span data-invite-id="1" class="inviteF2f tooltip ">Face to Face</span></li>
+        				<li class="invite-links"><span class="icon"><i class="icon-telephone"></i></span><span data-invite-id="2" class="inviteTelephonic tooltip ">Telephonic</span></li>
             		</ul>
 
             		<!-- <ul>
@@ -474,5 +477,32 @@
     </div>
 
     <p class="fetchTags prototype hidden" data-tag-id="1">Ahmedabad</p>
+
+    <div class="conversations hidden">
+        {{>chatSidebar}}
+    </div>
+
+    <div id="" class="modal selectDefaultCalendar hidden">
+
+    	<!-- Modal content -->
+    	<div class="modal_wrapper" >
+    		<span class="modal_close">&times;</span>
+    		<div class="modal_header">
+    			<div class="modal_heading">Select Default Calendar</div>
+    		</div>
+    		<div class="modal_content">
+    			<div class="modal_text">Please choose a default calendar before sending interview invite</div>
+    			<div class="section modal_text">
+    				<span class="section calendar-options calendarContainer">
+    					<select class="select-dropdown calendarSelect">
+    					</select>
+    					<div class="error-field hidden calendarSelectError"><p>Choose a calendar to send to the applicants for this job!</p></div>
+    				</span>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+    <option class="calendarOptions prototype hidden" value="">Option 1</option>
 
 {{>footer}}

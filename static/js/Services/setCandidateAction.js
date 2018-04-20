@@ -4,6 +4,7 @@ function setCandidateAction(recruiterId, jobId, action, applicationId , data, pa
 			res["action"] = action;
 			res["parameters"] = parameters;
 			res["applicationId"] = applicationId;
+			res.comment = data.comment
 			return pubsub.publish("setCandidateActionSuccess", res);
 		}
 	}, function(res,status,error) {

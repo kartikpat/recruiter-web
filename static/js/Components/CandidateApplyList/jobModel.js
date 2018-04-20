@@ -17,15 +17,15 @@ function Job(){
 		settings.jobEditButton = $("#jobEditButton");
 		settings.jobPremiumButton = $("#jobPremiumButton");
 		settings.jobUnpublishButton = $("#jobUnpublishButton");
-		settings.calendarContainer = $("#calendarContainer");
-		settings.calendarSelect = $("#calendarSelect");
+		settings.calendarContainer = $(".calendarContainer");
+		settings.calendarSelect = $(".calendarSelect");
 		settings.openJobRefreshButton = $("#jobRefreshButton");
 		settings.jobPostFacebook = $("#jobPostFacebook");
 		settings.jobPostTwitter = $("#jobPostTwitter");
 		settings.jobPostLinkedin = $("#jobPostLinkedin");
 		settings.defaultCalendar = null;
 		settings.jobOtherActions = $("#jobOtherActions");
-		settings.calendarSelectError = $("#calendarSelectError");
+		settings.calendarSelectError = $(".calendarSelectError");
 		settings.createCalendar = $("#createCalendar");
 		settings.jobUnpublishModal = $(".unpublishModal")
 		settings.jobRefreshModal = $(".refreshModal")
@@ -33,7 +33,8 @@ function Job(){
 		settings.loaderOverlay = $("#loaderOverlay");
 		settings.calendarLength = null;
 		settings.refreshButton= $(".refreshButton")
-		settings.socialIcon = $(".socialIcon")
+		settings.socialIcon = $(".socialIcon");
+		settings.selectDefaultCalendar = $(".selectDefaultCalendar")
 		onClickCreateCalendar();
 		onClickJobOtherActions()
 		onClickJobRefresh();
@@ -175,7 +176,7 @@ function Job(){
 	}
 
 	function onClickSubmitPremiumJob(fn){
-		settings.jobPremiumModal.find(".premiumButton").click(function(e){
+		settings.jobPremiumModal.find(".jobMakePremiumButton").click(function(e){
 			return fn();
 		})
 	}
@@ -231,6 +232,10 @@ function Job(){
 		return settings.calendarSelect.val()
 	}
 
+	function setSelectedCalendarId(calendarId) {
+		settings.calendarSelect.val(calendarId)
+	}
+
 	function onClickJobOtherActions() {
         settings.jobOtherActions.click(function(event) {
 			event.stopPropagation()
@@ -249,6 +254,7 @@ function Job(){
 			if(parseInt(calendarId) == -1) {
 				return
 			}
+
 			return fn(calendarId)
 		})
 	}
@@ -276,8 +282,8 @@ function Job(){
 			settings.jobUnpublishModal.find(".spinner").removeClass("hidden")
 			return
 		}
-		settings.jobPremiumModal.find(".premiumButton").addClass('hidden')
-		settings.jobMakePremiumModal.find(".spinner").removeClass('hidden')
+		settings.jobPremiumModal.find(".jobMakePremiumButton").addClass('hidden')
+		settings.jobPremiumModal.find(".spinner").removeClass('hidden')
 	}
 
 	function hideSpinner(type){
@@ -291,8 +297,17 @@ function Job(){
 			settings.jobUnpublishModal.find(".spinner").addClass("hidden")
 			return
 		}
-		settings.jobPremiumModal.find(".premiumButton").removeClass('hidden')
-		settings.jobMakePremiumModal.find(".spinner").addClass('hidden')
+		settings.jobPremiumModal.find(".jobMakePremiumButton").removeClass('hidden')
+		settings.jobPremiumModal.find(".spinner").addClass('hidden')
+	}
+
+	function openSelectDefaultCalendarModal() {
+		addBodyFixed()
+		settings.selectDefaultCalendar.removeClass("hidden")
+	}
+
+	function closeCalendarModal() {
+		settings.selectDefaultCalendar.addClass("hidden")
 	}
 
 	return {
@@ -310,6 +325,9 @@ function Job(){
 		hideSpinner: hideSpinner,
 		getCalendarLength: getCalendarLength,
 		getSelectedCalendarId: getSelectedCalendarId,
-		setDefaultCalendar: setDefaultCalendar
+		setDefaultCalendar: setDefaultCalendar,
+		openSelectDefaultCalendarModal: openSelectDefaultCalendarModal,
+		closeCalendarModal: closeCalendarModal,
+		setSelectedCalendarId: setSelectedCalendarId
 	}
 }

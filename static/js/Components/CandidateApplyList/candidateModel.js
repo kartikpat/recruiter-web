@@ -35,7 +35,7 @@ function Candidate() {
         settings.sendInterviewInviteTelephonicClass = ".inviteTelephonic"
         settings.seeMoreRec = $(".seeMoreRec");
         settings.recommendationListSecond = $(".recommendationListSecond");
-
+        settings.tagArr = []
         jQuery("#tabbed-content").tabs({});
 
     }
@@ -570,7 +570,11 @@ function Candidate() {
                 $(settings.candidateTagInputClass).removeClass("error-border");
                 settings.tagInputError.addClass("hidden")
             }
-            var tagId = $(settings.candidateTagInputClass).attr("tag-id")
+            var obj = searchObjByKey(settings.tagArr, tagName, "name")
+            var tagId = $(settings.mobCandidateTagInputClass).attr("tag-id");
+            if(obj) {
+                tagId = obj["id"]
+            }
             $(this).removeAttr("tag-id")
             var parameters = {}
             if(tagId) {
@@ -594,6 +598,7 @@ function Candidate() {
         settings.candidateDetailsModal.on('click', settings.mobCandidateAddTagButtonClass,function(event) {
             event.stopPropagation();
             var tagName = ($(settings.mobCandidateTagInputClass).val()).trim();
+
             if(!tagName) {
                 $(settings.mobCandidateTagInputClass).addClass("error-border");
                 return settings.tagInputError.removeClass("hidden")
@@ -602,7 +607,11 @@ function Candidate() {
                 $(settings.mobCandidateTagInputClass).removeClass("error-border");
                 settings.tagInputError.addClass("hidden")
             }
-            var tagId = $(settings.mobCandidateTagInputClass).attr("tag-id")
+            var obj = searchObjByKey(settings.tagArr, tagName, "name")
+            var tagId = $(settings.mobCandidateTagInputClass).attr("tag-id");
+            if(obj) {
+                tagId = obj["id"]
+            }
             $(this).removeAttr("tag-id")
             var parameters = {}
             if(tagId) {
@@ -663,6 +672,7 @@ function Candidate() {
     }
 
     function showDropdownTags(data) {
+        settings.tagArr = data;
         initializeAutoCompleteComponent(settings.tagListing, data)
     }
 

@@ -1540,7 +1540,12 @@
 				"static/css/utilities.css",
 				"static/css/footer.css",
 				"static/css/header.css",
-				"static/css/candidate-profile.css"
+				"static/css/candidate-profile.css",
+				"static/css/chat-sticky.css",
+				"static/css/utilities.css",
+				"static/css/animate.css",
+				"static/css/jquery-chatbox.css",
+				"static/css/vendor/tooltipster.css"
 			],
 			"prod": [
 				"static/build/css/candidate-profile.min.css"
@@ -1562,17 +1567,23 @@
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Utilities/toastNotifier.js",
+				"static/js/chat-pubnub-sticky.js",
+				"static/js/chat-sticky.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/common.js",
 				"static/js/Services/setCandidateAction.js",
 				"static/js/Services/fetchCandidateProfile.js",
 				"static/js/Services/fetchRecruiterTags.js",
+				"static/js/Services/fetchjobCalendars.js",
+				"static/js/Services/sendInterviewInvite.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Components/CandidateProfile/model.js",
 				"static/js/Components/CandidateProfile/index.js",
 				"static/js/Components/CandidateProfile/mapping.js",
-				"static/js/Services/submitPageVisit.js"
+				"static/js/Components/CandidateProfile/store.js",
+				"static/js/Services/submitPageVisit.js",
+				"static/js/vendor/tooltipster.main.min.js"
 			],
 			"prod" : [
 				"static/build/js/candidate-profile.min.js"

@@ -198,8 +198,8 @@ jQuery(document).ready( function() {
     //     aCandidate.showCandidateDetails(candidateDetails,"", status);
     //     if(parseInt(status) == 0)
     //         setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
-
     // });
+
     candidates.onClickAddTag(function(applicationId) {
         var candidateDetails = store.getCandidateFromStore(applicationId);
         page('/'+applicationId+'#tag')
@@ -240,7 +240,7 @@ jQuery(document).ready( function() {
             debugger
             var defaultCalendarId = theJob.getDefaultCalendar();
             if(!defaultCalendarId)
-                return theJob.showCalendarMissingError();
+                return theJob.openSelectDefaultCalendarModal();
             var obj = {
                 "type": inviteId,
                 "calendarId": theJob.getSelectedCalendarId()
@@ -254,7 +254,7 @@ jQuery(document).ready( function() {
         if($(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic').attr('state')=='default'){
             var defaultCalendarId = theJob.getDefaultCalendar();
             if(!defaultCalendarId)
-                return theJob.showCalendarMissingError();
+                return theJob.openSelectDefaultCalendarModal();
             var obj = {
                 "type": inviteId,
                 "calendarId": theJob.getSelectedCalendarId()
@@ -263,7 +263,9 @@ jQuery(document).ready( function() {
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic .loadingScroller').removeClass('hidden');
             sendInterViewInvite(recruiterId, jobId, applicationId , obj)
         }   
+
     })
+    
     candidates.onClickSendInterviewInviteF2F(function(applicationId, inviteId){ 
         if($(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f').attr('state')=='default'){
                 console.log('here');
@@ -391,6 +393,8 @@ jQuery(document).ready( function() {
         }
 
         if(res.action == "comment") {
+            var obj = store.getCandidateFromStore(res.applicationId)
+            obj["comment"] = res.comment;
             return toastNotify(1, "Comment Added Successfully")
         }
 
@@ -515,7 +519,7 @@ jQuery(document).ready( function() {
         parameters.status = globalParameters.status;
         if(requestType == "bulkRequestDropdown") {
             parameters.offset = parseInt(from) - 1;
-            parameters.pageContent = parseInt(to);
+            parameters.pageContent = parseInt(to - (from - 1));
 
         }
         else {
@@ -527,12 +531,13 @@ jQuery(document).ready( function() {
         }
         candidates.setHref(str)
     })
+
     candidates.onClickDownloadMassResume(function(arr,from, to, requestType){
         var data = {}
         if(requestType == "bulkRequestDropdown") {
             data = filters.getAppliedFilters();
             data.offset = parseInt(from) - 1;
-            data.pageContent = parseInt(to);
+            data.pageContent = parseInt(to - (from - 1));
             data.status = globalParameters.status;
             // parameters.status = globalParameters.status;
             // parameters.length = (to - from) + 1;
@@ -556,7 +561,7 @@ jQuery(document).ready( function() {
         if(typeRequest == "bulkRequestDropdown") {
             data = filters.getAppliedFilters();
             data.offset = parseInt(from) - 1;
-            data.pageContent = parseInt(to);
+            data.pageContent = parseInt(to - (from - 1));
             data.status = globalParameters.status;
             parameters.status = globalParameters.status;
             parameters.length = (to - from) + 1;
@@ -593,8 +598,8 @@ jQuery(document).ready( function() {
                 defaultId: defaultCalendarId
             }
         }
-        $('#calendarSelect').prop('disabled', true);
-        setDefaultCalendar(recruiterId, jobId, calendarId, obj, {})
+        $('.calendarSelect').prop('disabled', true);
+        setDefaultCalendar( recruiterId, jobId, calendarId, obj, {})
     })
 
      aCandidate.onClickAddTag(function(applicationId, parameters){
@@ -835,8 +840,7 @@ jQuery(document).ready( function() {
     }
 
     function onFailedFetchJobDetails(topic, data) {
-        console.log(topic)
-		console.log(data)
+        errorHandler(data)
     }
 
     function onFailCandidateAction(topic,res) {
@@ -859,13 +863,16 @@ jQuery(document).ready( function() {
     }
 
     function onSuccessfullSetDefaultCalendar(topic, res) {
-        $('#calendarSelect').prop("disabled",false);
+        $('.calendarSelect').prop("disabled",false);
         theJob.setDefaultCalendar(res.data)
+        theJob.closeCalendarModal()
+        theJob.setSelectedCalendarId(parseInt(res.calendarId))
         toastNotify(1, "Default Calendar Set.")
     }
 
     function onFailSetDefaultCalendar(topic, res) {
-        $('#calendarSelect').prop("disabled",false);
+        $('.calendarSelect').prop("disabled",false);
+        theJob.setSelectedCalendarId(-1)
         errorHandler(res);
     }
 
@@ -1024,9 +1031,11 @@ jQuery(document).ready( function() {
         }
     }
 
-    function onSendInterViewInviteFail(topic, data) {
-        if(data.status == 404 && data.responseJSON && data.responseJSON.code == 4001) {
-            window.location.href = "/calendar/"+data.parameters.calendarid+"/edit?insuffSlotsErrMsg=1";
+    function onSendInterViewInviteFail(topic, data){
+
+        if(data.status == 400 && data.responseJSON && data.responseJSON.code == 4001) {
+            window.location.href = "/calendar/"+data.parameters.calendarId+"/edit?insuffSlotsErrMsg=1";
+
         }
         var applicationId=data['parameters']['applicationId'];
         $(".candidateRow[data-application-id="+applicationId+"]").find('.invite .loadingScroller').addClass('hidden');

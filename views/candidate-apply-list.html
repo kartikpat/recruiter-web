@@ -66,10 +66,10 @@
 						</p>
 					</div>
 					<div class="action-buttons right jsJobActions">
-						<span class="section calendar-options hidden" id="calendarContainer">
-							<select class="select-dropdown" id="calendarSelect">
+						<span class="section calendar-options hidden calendarContainer">
+							<select class="select-dropdown calendarSelect">
 							</select>
-							<div class="error-field hidden" id="calendarSelectError"><p>Choose a calendar to send to the applicants for this job!</p></div>
+							<div class="error-field hidden calendarSelectError"><p>Choose a calendar to send to the applicants for this job!</p></div>
 						</span>
 						<span class="button white hidden" id="createCalendar">Create Calendar</span>
 						<a href="" class="hidden" id="jobEditButton">
@@ -566,8 +566,10 @@
 						{{>spinner}}
 						<span class="reject button red candidateRejectModal">Reject</span>
 				</span>
+
 					
 				<span class="detail button white"><i class="icon-up_arrow"></i></span>
+
 	    	</div>
     	</div>
 		<div class="second-fold action-fold fold mass-action-second hidden">
@@ -626,8 +628,10 @@
 		</div>
     	<div class="sidebar-section external-links">
     		<ul>
+
     			<li class="save" id="candidateSaveModal"><span class="icon"><i class="icon-star_later"></i></span><span class="underline">Save for Later</span></li>
     			<li class="chat" id="candidateChatModal"><span class="icon"><i class="icon-chat"></i></span><span class="underline">Chat with <span id="firstName" class="candidate-first-name">Shreya</span></span></li>
+
     			<li class="invite"><span class="icon"><i class="icon-interview"></i></span>Send Interview Invite</li>
 				<li class="invite-links">
 					<span class="icon"><i class="icon-face-to-face"></i></span>
@@ -646,6 +650,14 @@
 					</span>
 				</li>
     		</ul>
+
+
+			<!--
+    		<ul>
+    			<li class="save"><span class="icon"><i class="icon-star"></i></span>Share Resume</li>
+    			<li class="invite"><span class="icon"><i class="icon-interview"></i></span>Report this candidate</li>
+    		</ul> -->
+
     	</div>
 
 		<div class="sidebar-section contact-info">
@@ -808,7 +820,7 @@
 								</li>
 								<li>
 									<div data-invite-id="2" class="inviteTelephonic tooltip link-color invite" state="default">
-										<span class="context">Telephonic</span> 
+										<span class="context">Telephonic</span>
 										{{>loader}}
 										<span class="icon-container hidden"><i class="icon-tick"></i></span>
 									</div>
@@ -925,6 +937,27 @@
 					{{>spinner}}
 					<button class="refreshButton">Refresh</button>
 				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="" class="modal selectDefaultCalendar hidden">
+
+	<!-- Modal content -->
+	<div class="modal_wrapper" >
+		<span class="modal_close">&times;</span>
+		<div class="modal_header">
+			<div class="modal_heading">Select Default Calendar</div>
+		</div>
+		<div class="modal_content">
+			<div class="modal_text">Please choose a default calendar before sending interview invite</div>
+			<div class="section modal_text">
+				<span class="section calendar-options hidden calendarContainer">
+					<select class="select-dropdown calendarSelect">
+					</select>
+					<div class="error-field hidden calendarSelectError"><p>Choose a calendar to send to the applicants for this job!</p></div>
+				</span>
 			</div>
 		</div>
 	</div>
