@@ -111,7 +111,6 @@ module.exports = function(settings){
 		})
 	}
 
-
 	app.get("/", isAuthenticated,function(req, res){
 		res.render("dashboard", {
 			title: "IIM JOBS | Dashboard",
