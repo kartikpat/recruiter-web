@@ -145,7 +145,6 @@ function Candidate() {
             preferredLocation: modal.find(".js_pref_loc"),
             experience: modal.find(".js_experience"),
             secondfold:modal.find('.second-fold'),
-            // contact: modal.find(".js_contact"),
             salary: modal.find(".js_sal"),
             skillsList: modal.find(".js_skills_list"),
             candidateTagList: modal.find(settings.candidateTagListClass),
