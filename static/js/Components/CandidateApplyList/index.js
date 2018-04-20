@@ -248,7 +248,7 @@ jQuery(document).ready( function() {
             $(".candidateRow[data-application-id="+applicationId+"]").find('.invite').attr('state','clicked')
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .loadingScroller').removeClass('hidden');
             sendInterViewInvite(recruiterId, jobId, applicationId , obj)
-        }    
+        }
     })
     aCandidate.onClickSendInterviewInviteTelephonic(function(applicationId, inviteId){
         if($(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic').attr('state')=='default'){
@@ -262,11 +262,10 @@ jQuery(document).ready( function() {
             $(".candidateRow[data-application-id="+applicationId+"]").find('.invite').attr('state','clicked')
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic .loadingScroller').removeClass('hidden');
             sendInterViewInvite(recruiterId, jobId, applicationId , obj)
-        }   
-
+        }
     })
-    
-    candidates.onClickSendInterviewInviteF2F(function(applicationId, inviteId){ 
+
+    candidates.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
         if($(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f').attr('state')=='default'){
                 console.log('here');
                 var defaultCalendarId = theJob.getDefaultCalendar();
@@ -320,6 +319,12 @@ jQuery(document).ready( function() {
         if(parseInt(status) == 0)
             setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
     });
+
+    aCandidate.onClickDownloadResume(function(applicationId, status){
+        if(parseInt(status) == 0)
+            setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
+    });
+
     candidates.onClickSaveCandidate(function(applicationId, newStatus, dataAction){
         $(".candidateRow[data-application-id="+applicationId+"]").find('.candidateSave .loadingScroller').removeClass('hidden');
         var action;
@@ -807,7 +812,8 @@ jQuery(document).ready( function() {
 
         candidates.addToList(data["data"], data.obj.status, globalParameters.offset, globalParameters.pageContent, filterFlag);
         globalParameters.offset = globalParameters.offset + globalParameters.pageContent;
-        if(!theJob.getCalendarLength()){
+        var calLength = theJob.getCalendarLength()
+        if(!calLength){
             candidates.setInvite(theJob.getCalendarLength())
         }
 
@@ -951,6 +957,10 @@ jQuery(document).ready( function() {
             var msg = "You don't have access to this plan!"
             return toastNotify(3, msg);
         }
+        if(res.status == 409) {
+            var msg = "You have already requested a download for these resumes. You request is in process!"
+            return toastNotify(3, msg);
+        }
         errorHandler(res)
     }
 
@@ -1022,22 +1032,22 @@ jQuery(document).ready( function() {
         if(data.parameters.inviteId == 1){
             toastNotify(1, "Face to Face Invite Sent Successfully!")
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .icon-container').removeClass('hidden');
-            $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .loadingScroller').addClass('hidden');    
-            obj["invite"] =1;
+            $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .loadingScroller').addClass('hidden');
+            obj["isSent"] =1;
         }
         if(data.parameters.inviteId == 2){
             toastNotify(1, "Telephonic Invite Sent Successfully!")
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic  .icon-container').removeClass('hidden');
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic .loadingScroller').addClass('hidden');
-            obj["invite"] =2;
+            obj["isSent"] =2;
         }
     }
 
     function onSendInterViewInviteFail(topic, data){
         if(data.status == 400 && data.responseJSON && data.responseJSON.code == 4001) {
-            window.location.href = "/calendar/"+data.parameters.calendarId+"/edit?insuffSlotsErrMsg=1";
-
+            return window.location.href = "/calendar/"+data.parameters.calendarId+"/edit?insuffSlotsErrMsg=1";
         }
+
         var applicationId=data['parameters']['applicationId'];
         $(".candidateRow[data-application-id="+applicationId+"]").find('.invite .loadingScroller').addClass('hidden');
         $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f').attr('state','default');
@@ -1084,8 +1094,6 @@ jQuery(document).ready( function() {
 
     var fetchedRecommendationsSuccessSubscription = pubsub.subscribe("fetchRecommendationsSuccess", onSuccessfulRecommendations)
 	var fetchedRecommendationsFailSubscription = pubsub.subscribe("fetchRecommendationsFail", onFailedRecommendation);
-
-
 
     var tickerLock=false;
     $(window).scroll(function() {

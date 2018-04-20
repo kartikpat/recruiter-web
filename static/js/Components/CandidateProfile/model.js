@@ -24,8 +24,8 @@ function Candidate() {
         settings.mobCandidateAddCommentButtonClass = '.mobCandidateAddCommentButton',
         settings.candidateShortlistModal = $(".candidateShortlistModal"),
         settings.candidateRejectModal = $(".candidateRejectModal"),
-        settings.candidateSaveModal = $("#candidateSaveModal"),
-        settings.candidateChatModal = $("#candidateChatModal"),
+        settings.candidateSaveModal = $(".candidateSaveModal"),
+        settings.candidateChatModal = $(".candidateChatModal"),
         settings.tagListing = $(".recruiterTags"),
         settings.tagMobListing = $("#tagMobListing"),
         settings.tagInputError = $(".tagInputError"),
@@ -35,7 +35,8 @@ function Candidate() {
         settings.recommendationListSecond = $(".recommendationListSecond");
         settings.tagArr = [];
         settings.calendarSelect = $(".calendarSelect");
-        settings.candidateDownloadResume = $("#candidateDownloadResume");
+        settings.candidateDownloadResume = $(".candidateDownloadResume");
+        settings.selectDefaultCalendar = $(".selectDefaultCalendar")
 
         jQuery("#tabbed-content").tabs({
             create: function(){
@@ -129,7 +130,7 @@ function Candidate() {
             tabContent: modal.find("#tabbed-content"),
             shortlistButton: modal.find(".candidateShortlistModal"),
             rejectButton: modal.find(".candidateRejectModal"),
-            savedButton : modal.find("#candidateSaveModal"),
+            savedButton : modal.find(".candidateSaveModal"),
             contact:modal.find('.contact'),
             email:modal.find('.email-address'),
             recommendationList: modal.find('.recommendationList'),
@@ -581,7 +582,7 @@ function Candidate() {
             e.preventDefault()
 
             if(parseInt($(this).attr("data-clickable")) == 1) {
-                window.location = "/booked-slots"
+                window.location = "/Interview-scheduler-updated"
             }
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
             var inviteId = parseInt($(this).attr("data-invite-id"));
@@ -594,7 +595,7 @@ function Candidate() {
         settings.candidateDetailsModal.on('click', settings.sendInterviewInviteTelephonicClass, function(e){
             e.preventDefault()
             if(parseInt($(this).attr("data-clickable")) == 1) {
-                window.location = "/booked-slots"
+                window.location = "/Interview-scheduler-updated"
             }
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
             var inviteId =  parseInt($(this).attr("data-invite-id"));
@@ -610,17 +611,10 @@ function Candidate() {
         $(settings.sendInterviewInviteF2FClass).attr("title","You need to set up your calendar before sending an invite. Click to set up calendar")
         $(settings.sendInterviewInviteTelephonicClass).attr("title","You need to set up your calendar before sending an invite. Click to set up calendar")
 
-        settings.rowContainer.find(".tooltip").not(".prototype .tooltip").tooltipster({
-			animation: 'fade',
-			delay: 0,
-			side:['left'],
-			theme: 'tooltipster-borderless'
-		})
-
         settings.candidateDetailsModal.find(".tooltip").tooltipster({
 			animation: 'fade',
 			delay: 0,
-			side:['left'],
+			side:['bottom'],
 			theme: 'tooltipster-borderless'
 		})
 
@@ -637,12 +631,12 @@ function Candidate() {
 
             settings.candidateDetailsModal.find(".candidateShortlistModal").attr("data-status", newStatus)
             settings.candidateDetailsModal.find(".candidateRejectModal").attr("data-status", newStatus)
-            settings.candidateDetailsModal.find("#candidateSaveModal").attr("data-status", newStatus)
-            if(newStatus == settings.candidateDetailsModal.find("#candidateSaveModal").attr("data-action")) {
-                settings.candidateDetailsModal.find("#candidateSaveModal").html("<span class='icon'><i class='icon-star'></i></span>Saved for Later");
+            settings.candidateDetailsModal.find(".candidateSaveModal").attr("data-status", newStatus)
+            if(newStatus == settings.candidateDetailsModal.find(".candidateSaveModal").attr("data-action")) {
+                settings.candidateDetailsModal.find(".candidateSaveModal").html("<span class='icon'><i class='icon-star'></i></span>Saved for Later");
             }
             else {
-                settings.candidateDetailsModal.find("#candidateSaveModal").html("<span class='icon'><i class='icon-star'></i></span>Save for Later");
+                settings.candidateDetailsModal.find(".candidateSaveModal").html("<span class='icon'><i class='icon-star'></i></span>Save for Later");
             }
             if(newStatus == settings.candidateDetailsModal.find(".candidateRejectModal").attr("data-action")) {
                 settings.candidateDetailsModal.find(".candidateRejectModal").text("Rejected")

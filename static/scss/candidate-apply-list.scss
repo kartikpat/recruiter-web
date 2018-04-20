@@ -9,6 +9,13 @@
     cursor: pointer;
 }
 
+.sendInvite {
+    visibility: hidden;
+}
+
+.not-allowed {
+    cursor: not-allowed !important;
+}
 
 .filtersExtraButtons {
     font-size: 13px;

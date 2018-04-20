@@ -52,6 +52,7 @@ function Store(){
 			disabled: "disabled",
 			selected: "selected"
 		});
+		calendarOptionsStr += item.element[0].outerHTML;
         array.forEach(function(anObj){
 			var item = getCalendarElement()
 			calendarList[anObj["id"]] = anObj;
@@ -67,12 +68,14 @@ function Store(){
     }
 
 	function getDefaultId() {
+		debugger
 		return defaultId;
 	}
 
-	function setId(defaultId, calendarId) {
-		defaultId = defaultId;
-		calendarId = calendarId;
+	function setId(id, calId) {
+		debugger
+		defaultId = id;
+		calendarId = calId;
 	}
 
 	function getCalendarId() {
