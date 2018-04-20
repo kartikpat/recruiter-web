@@ -2,6 +2,10 @@
 @import 'input-elements';
 @import 'chat-sidebar';
 
+.sendInvite {
+    visibility: hidden;
+}
+
 .invite-links {
     margin-left: 0 !important;
     list-style: none !important;

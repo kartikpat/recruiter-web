@@ -107,7 +107,7 @@ function Candidate() {
             e.preventDefault()
 
             if(parseInt($(this).attr("data-clickable")) == 1) {
-                window.location = "/booked-slots"
+                window.location = "/Interview-scheduler-updated"
 
             }
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
@@ -121,7 +121,7 @@ function Candidate() {
         settings.candidateDetailsModal.on('click', settings.sendInterviewInviteTelephonicClass, function(e){
             e.preventDefault()
             if(parseInt($(this).attr("data-clickable")) == 1) {
-                window.location = "/booked-slots"
+                window.location = "/Interview-scheduler-updated"
 
             }
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");

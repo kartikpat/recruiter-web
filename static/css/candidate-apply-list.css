@@ -3155,6 +3155,9 @@ span.sticker {
   display: inline-block;
   cursor: pointer; }
 
+.sendInvite {
+  visibility: hidden; }
+
 .filtersExtraButtons {
   font-size: 13px;
   padding-right: 10px;

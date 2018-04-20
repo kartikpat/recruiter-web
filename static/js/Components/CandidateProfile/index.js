@@ -244,6 +244,7 @@ jQuery(document).ready( function() {
     }
 
     function onSuccessfullFetchedCalendars(topic, res) {
+
         if(!res.length){
             return aCandidate.setInvite()
         }
@@ -256,6 +257,7 @@ jQuery(document).ready( function() {
 
     aCandidate.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
         var defaultCalendarId = store.getDefaultId();
+        debugger
         if(!defaultCalendarId)
             return aCandidate.openSelectDefaultCalendarModal();
         var obj = {
@@ -318,14 +320,14 @@ jQuery(document).ready( function() {
     })
 
     aCandidate.onClickDownloadResume(function(applicationId, status){
-        debugger
+
         if(parseInt(status) == 0)
             setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
     });
 
     function onSuccessfullSetDefaultCalendar(topic, res) {
         $('.calendarSelect').prop("disabled",false);
-        store.setDefaultCalendar(res.data, parseInt(res.calendarId))
+        store.setId(res.data, parseInt(res.calendarId))
         aCandidate.closeModal()
         toastNotify(1, "Default Calendar Set.")
     }

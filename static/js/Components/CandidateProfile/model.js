@@ -36,6 +36,7 @@ function Candidate() {
         settings.tagArr = [];
         settings.calendarSelect = $(".calendarSelect");
         settings.candidateDownloadResume = $("#candidateDownloadResume");
+        settings.selectDefaultCalendar = $(".selectDefaultCalendar")
 
         jQuery("#tabbed-content").tabs({
             create: function(){
@@ -581,7 +582,7 @@ function Candidate() {
             e.preventDefault()
 
             if(parseInt($(this).attr("data-clickable")) == 1) {
-                window.location = "/booked-slots"
+                window.location = "/Interview-scheduler-updated"
             }
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
             var inviteId = parseInt($(this).attr("data-invite-id"));
@@ -594,7 +595,7 @@ function Candidate() {
         settings.candidateDetailsModal.on('click', settings.sendInterviewInviteTelephonicClass, function(e){
             e.preventDefault()
             if(parseInt($(this).attr("data-clickable")) == 1) {
-                window.location = "/booked-slots"
+                window.location = "/Interview-scheduler-updated"
             }
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
             var inviteId =  parseInt($(this).attr("data-invite-id"));
@@ -610,17 +611,10 @@ function Candidate() {
         $(settings.sendInterviewInviteF2FClass).attr("title","You need to set up your calendar before sending an invite. Click to set up calendar")
         $(settings.sendInterviewInviteTelephonicClass).attr("title","You need to set up your calendar before sending an invite. Click to set up calendar")
 
-        settings.rowContainer.find(".tooltip").not(".prototype .tooltip").tooltipster({
-			animation: 'fade',
-			delay: 0,
-			side:['left'],
-			theme: 'tooltipster-borderless'
-		})
-
         settings.candidateDetailsModal.find(".tooltip").tooltipster({
 			animation: 'fade',
 			delay: 0,
-			side:['left'],
+			side:['bottom'],
 			theme: 'tooltipster-borderless'
 		})
 

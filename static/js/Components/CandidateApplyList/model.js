@@ -168,7 +168,7 @@ function candidateList() {
             e.preventDefault()
 
             if(parseInt($(this).attr("data-clickable")) == 1) {
-                window.location = "/booked-slots"
+                window.location = "/Interview-scheduler-updated"
 
             }
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
@@ -183,7 +183,7 @@ function candidateList() {
         settings.rowContainer.on('click', settings.sendInterviewInviteTelephonicClass, function(e){
             e.preventDefault()
             if(parseInt($(this).attr("data-clickable")) == 1) {
-                window.location = "/booked-slots"
+                window.location = "/Interview-scheduler-updated"
             }
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             var inviteId =  parseInt($(this).attr("data-invite-id"));
@@ -926,11 +926,10 @@ function candidateList() {
 			side:['left'],
 			theme: 'tooltipster-borderless'
 		})
-
     }
 
     function changeInviteText(applicationId) {
-        settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .interviewinvite").text("Resend Interview Invite")
+        settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .interviewinvite").text("Interview Invite Sent!")
     }
 
     function changeStatus(arr, newStatus) {
