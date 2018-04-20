@@ -3,6 +3,7 @@ node_modules
 
 # excluding deployment script
 deploy.sh
+*-deploy.sh
 
 # excluding configuration.json
 configuration.json
