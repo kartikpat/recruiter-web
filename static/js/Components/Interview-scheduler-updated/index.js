@@ -26,7 +26,7 @@ $(document).ready(function(){
         // calendarDetails.selectCreater();
         calendarDetails.startdate();
         calendarDetails.enddate();
-        calendarDetails.testHighlight;
+        // calendarDetails.testHighlight();
     }
 
 

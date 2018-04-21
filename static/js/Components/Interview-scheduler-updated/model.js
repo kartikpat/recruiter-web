@@ -4,7 +4,9 @@ var errorResponses = {
     missingTeleMessage: 'Please enter a message for telephonic interview',
     missingvalues:'Please select your available hours',
     missingslots:'Please select a slot',
-    missingDate:"Please select a end Date"
+    missingDate:"Please select a end Date",
+    missingStart:"Please select Start Time",
+    missingEnd:"Please select End Time"
 }
 
 function Calendar(){
@@ -259,7 +261,7 @@ function Calendar(){
             $('#enddatepicker').datepicker().datepicker('setDate', endDate);
             $('#radio-button-end').prop("checked",true)
         }
-        
+        // debugger
         testHighlight(fromDate,toDate,previewslots);
         settings.submitButton.text("Update Calendar")
     }
@@ -424,11 +426,11 @@ function Calendar(){
           });
           settings.prevButton.on("click",function(){
               console.log("hello");
-            $('#calendar').fullCalendar('prev');
+              settings.fullcalendar.fullCalendar('prev');
                 Timer();
           })
           settings.nextButton.on("click",function(){
-            $('#calendar').fullCalendar('next');
+            settings.fullcalendar.fullCalendar('next');
                 Timer();
           })
     }
@@ -552,6 +554,23 @@ function Calendar(){
             settings.radioInput.next('.error').text(errorResponses['missingDate']);
             return false;
         }
+        
+        if(settings.breakStart.val()==0 && settings.breakEnd.val()>0){
+            settings.breakhours.find('.error').text(errorResponses["missingStart"]);  
+            $('html, body').animate({
+                scrollTop: (settings.breakhours.offset().top)
+            },200);
+            return false
+        }
+        if(settings.breakEnd.val()==0 && settings.breakStart.val()>0){
+            settings.breakhours.find('.error').text(errorResponses["missingEnd"]); 
+            $('html, body').animate({
+                scrollTop: (settings.breakhours.offset().top)
+            },200);
+            return false
+        }
+        var start=settings.breakStart.val();
+        var end=settings.breakEnd.val();
         var status=check();
         console.log(status);
         if((status>0)){
@@ -624,7 +643,6 @@ function Calendar(){
         getDetails:getDetails,
         validate:validate,
         setDetails:setDetails,
-        fullCalendar: fullCalendar,
         Timer: Timer,
         copyTime: copyTime,
         highlighter: highlighter,

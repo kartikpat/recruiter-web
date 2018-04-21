@@ -2407,7 +2407,7 @@ input::-webkit-input-placeholder {
 				&.first-fold {
  					bottom: 0;
  					background:$color-white;
-                    padding-left: 30px;
+                    padding-left: 20px;
 				}
 
 				&.second-fold {
@@ -2421,7 +2421,8 @@ input::-webkit-input-placeholder {
 				.action-buttons {
 					font-size:0;
                     width: 90%;
-                    margin: 0 auto;
+					margin: 0 auto;
+					margin-left: 0px;
 					span {
 						@include button($color-white);
 						display:inline-block;

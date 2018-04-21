@@ -5271,14 +5271,15 @@ input::-webkit-input-placeholder {
         .view-resume-modal .mobile-resume-sidebar .fold.first-fold {
           bottom: 0;
           background: #FFF;
-          padding-left: 30px; }
+          padding-left: 20px; }
         .view-resume-modal .mobile-resume-sidebar .fold.second-fold {
           bottom: 60px;
           background: #808080; }
         .view-resume-modal .mobile-resume-sidebar .fold .action-buttons {
           font-size: 0;
           width: 90%;
-          margin: 0 auto; }
+          margin: 0 auto;
+          margin-left: 0px; }
           .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span {
             -webkit-appearance: none;
             -moz-appearance: none;

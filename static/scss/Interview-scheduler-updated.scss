@@ -498,6 +498,12 @@
                     line-height: 23px;/* Approximation due to font substitution */
                     text-align: left;
                 }
+                .error{
+                    font-family:  $droid-font;
+                    position: absolute;
+                    font-size: 12px;
+                    color: $error-message-color;
+                }
                 .D-table{
                     margin-top: 20px;
                     box-sizing: border-box;
