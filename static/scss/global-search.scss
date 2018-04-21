@@ -60,6 +60,7 @@
 					}
 				}
                 .section {
+					text-align: center;
                     &.sticker-container {
                         position:absolute;
                         bottom:0;
@@ -466,14 +467,22 @@
 // }
 
 span.multipleJobListingText {
-    cursor: pointer;
+	cursor: pointer;
+	color: #155d9a;
 }
-
+.multipleJobListingbox{
+	cursor: pointer;
+	
+}
 .multipleJobListing {
-    padding: 10px 0;
+	padding: 10px 0;
+	
 }
 
 .candAppliedJobs {
     min-height: 25px;
-    line-height: 1.3;
+	line-height: 1.3;
+	a{
+		color: #155d9a;
+	}
 }

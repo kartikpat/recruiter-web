@@ -1308,6 +1308,11 @@ span.sticker {
           line-height: 23px;
           /* Approximation due to font substitution */
           text-align: left; }
+        .wrap .second-container .available-hours .Breaks-available .error {
+          font-family: "Droid Sans", sans-serif;
+          position: absolute;
+          font-size: 12px;
+          color: #ad3030; }
         .wrap .second-container .available-hours .Breaks-available .D-table {
           margin-top: 20px;
           box-sizing: border-box;
@@ -1496,6 +1501,11 @@ span.sticker {
           line-height: 23px;
           /* Approximation due to font substitution */
           text-align: left; }
+        .wrap .second-container .available-hours .end-date .section .error {
+          font-family: "Droid Sans", sans-serif;
+          position: absolute;
+          font-size: 12px;
+          color: #ad3030; }
         .wrap .second-container .available-hours .end-date .section .radio-input input {
           display: none; }
         .wrap .second-container .available-hours .end-date .section .radio-input label {

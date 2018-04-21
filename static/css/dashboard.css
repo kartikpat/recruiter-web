@@ -2305,6 +2305,10 @@ span.sticker {
     position: relative;
     left: 1px; } }
 
+@media all and (max-width: 480px) {
+  .page-content .detail-card .empty-view .content-container {
+    padding-left: 35px; } }
+
 .explorer .action-buttons {
   text-align: center !important;
   margin: 0 !important; }
