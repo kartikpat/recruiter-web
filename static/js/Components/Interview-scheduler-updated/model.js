@@ -4,6 +4,7 @@ var errorResponses = {
     missingTeleMessage: 'Please enter a message for telephonic interview',
     missingvalues:'Please select your available hours',
     missingslots:'Please select a slot',
+    missingDate:"Please select a end Date"
 }
 
 function Calendar(){
@@ -44,7 +45,8 @@ function Calendar(){
         settings.nextButton=$('.button-next'),
         settings.Calendarbutton=$('.calendar-button'),
         settings.textBox=$('.field p'),
-        settings.submitButton=$('#submit')
+        settings.submitButton=$('#submit'),
+        settings.radioInput=$('.radio-input'),
         // settings.editorMessage = new MediumEditor("#message", {
         //     toolbar: false,
         //     placeholder: false,
@@ -253,7 +255,7 @@ function Calendar(){
             $('#startdatepicker').datepicker().datepicker('setDate', startDate);
             $('#radio-button-startend').prop("checked",true)
         
-        if(endDate!=""){
+        if(endDate!="Invalid date"){
             $('#enddatepicker').datepicker().datepicker('setDate', endDate);
             $('#radio-button-end').prop("checked",true)
         }
@@ -545,6 +547,10 @@ function Calendar(){
             settings.teleMessage.addClass('error-border');
             focusOnElement(settings.teleMessage);
             return false
+        }
+        if($('#radio-button-end').prop("checked")==true && $('#end_date').val()==""){
+            settings.radioInput.next('.error').text(errorResponses['missingDate']);
+            return false;
         }
         var status=check();
         console.log(status);

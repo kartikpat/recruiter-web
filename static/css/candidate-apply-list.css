@@ -4526,7 +4526,8 @@ input::-webkit-input-placeholder {
           left: 0;
           right: 0;
           width: 125px;
-          height: 125px; }
+          height: 125px;
+          object-fit: cover; }
           .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-image img {
             width: 100%;
             height: 100%;

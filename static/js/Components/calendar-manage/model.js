@@ -16,9 +16,7 @@ function Manage() {
 
 
     function cloneRow(data){
-        // data.length=0;
-        if(data.length==0){
-           
+        if(data.length==0){     
             settings.nocalendarview.removeClass('hidden');
             return
         }

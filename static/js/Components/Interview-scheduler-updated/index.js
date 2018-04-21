@@ -45,7 +45,7 @@ $(document).ready(function(){
         calendarDetails.setDetails(data);
         calendarDetails.startdate();
         calendarDetails.enddate();
-        calendarDetails.time_mapper();
+        // calendarDetails.time_mapper();
         calendarDetails.testHighlight;
     }
 
