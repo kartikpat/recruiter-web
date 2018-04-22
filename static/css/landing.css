@@ -478,7 +478,6 @@ body {
   width: 100%;
   overflow-x: hidden;
   padding: 0; }
-
   .page-content .main-wrapper {
     max-width: 2000px; }
     .page-content .main-wrapper .main-container {
@@ -489,198 +488,6 @@ body {
         margin: 75px auto;
         width: 80%; }
         .page-content .main-wrapper .main-container .container h1 {
-
-  .page-content .main-wrapper .main-container {
-    width: 100%;
-    max-width: 2000px;
-    margin: 0 auto; }
-    .page-content .main-wrapper .main-container .container {
-      margin: 75px auto;
-      width: 80%; }
-      .page-content .main-wrapper .main-container .container h1 {
-        color: #333;
-        font-size: 30px;
-        line-height: 1.5;
-        font-weight: bold; }
-        .page-content .main-wrapper .main-container .container h1.center-highlight {
-          position: relative;
-          text-align: center;
-          margin: 30px 0; }
-          .page-content .main-wrapper .main-container .container h1.center-highlight span {
-            z-index: 5;
-            position: relative;
-            background: #FFF;
-            padding: 10px 30px;
-            font-weight: bold; }
-          .page-content .main-wrapper .main-container .container h1.center-highlight:before {
-            content: '';
-            width: 100%;
-            display: block;
-            border-bottom: 2px solid #e8e8e8;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2; }
-    .page-content .main-wrapper .main-container .intro-container .intro-wrapper {
-      display: inline-block;
-      width: 45%; }
-      .page-content .main-wrapper .main-container .intro-container .intro-wrapper h1 {
-        margin: 0;
-        font-size: 66px;
-        line-height: 1.1;
-        margin-left: -5px;
-        color: #333; }
-      .page-content .main-wrapper .main-container .intro-container .intro-wrapper span {
-        font-size: 16px;
-        color: #5b5b5b;
-        margin: 25px 0;
-        display: block;
-        width: 100%;
-        line-height: 1.4; }
-      .page-content .main-wrapper .main-container .intro-container .intro-wrapper .image-container img {
-        width: 90%;
-        display: block;
-        height: auto; }
-    .page-content .main-wrapper .main-container .intro-container .login-wrapper {
-      width: 45%; }
-      .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container {
-        padding: 40px;
-        background-color: #fafafa;
-        border: 1px solid #e8e8e8;
-        border-radius: 4px; }
-        .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container h3 {
-          margin: 0;
-          font-size: 24px;
-          font-weight: bold;
-          color: #333;
-          margin-bottom: 30px;
-          width: 85%;
-          margin-left: auto;
-          margin-right: auto; }
-        .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container form {
-          width: 85%;
-          margin: 0 auto; }
-        .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container .formgroup {
-          position: relative;
-          width: 85%;
-          margin: 0 auto;
-          margin-bottom: 25px; }
-          .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container .formgroup input {
-            background-color: transparent;
-            font-size: 16px;
-            border: 0;
-            border-bottom: 2px solid #e8e8e8;
-            padding: 10px 10px 6px 0;
-            width: 100%; }
-            .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container .formgroup input:focus {
-              outline: none; }
-          .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container .formgroup .button-wrapper {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            -ms-appearance: none;
-            -o-appearance: none;
-            border: 0;
-            padding: 0;
-            margin: 0;
-            background: #0c9175;
-            border-color: #8f8a8a;
-            border-radius: 4px;
-            font-size: 14px;
-            margin: 10px 0;
-            display: block;
-            width: 100%;
-            color: #FFF;
-            display: inline-block;
-            cursor: pointer;
-            font-size: 18px;
-            font-weight: bold;
-            height: 45px;
-            text-align: center; }
-            .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container .formgroup .button-wrapper .spinner {
-              padding-top: 10px;
-              width: 100%;
-              margin: 0 auto; }
-            .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container .formgroup .button-wrapper button {
-              border: 0;
-              padding: 0;
-              margin: 0;
-              background: #0c9175;
-              border-color: #8f8a8a;
-              border-radius: 4px;
-              font-size: 14px;
-              display: block;
-              width: 100%;
-              color: #FFF;
-              display: inline-block;
-              cursor: pointer;
-              font-size: 18px;
-              font-weight: bold;
-              height: 45px;
-              outline: none; }
-        .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container p {
-          color: #5b5b5b; }
-          .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container p a {
-            color: #155d9a; }
-          .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container p.register-link {
-            text-align: center; }
-    .page-content .main-wrapper .main-container .features-container .hero-container {
-      padding: 50px 0;
-      position: relative; }
-      .page-content .main-wrapper .main-container .features-container .hero-container .hero-content {
-        width: 40%;
-        display: inline-block;
-        vertical-align: middle; }
-        .page-content .main-wrapper .main-container .features-container .hero-container .hero-content.text-container {
-          height: 120px;
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          margin: auto; }
-          .page-content .main-wrapper .main-container .features-container .hero-container .hero-content.text-container.left {
-            left: 0; }
-          .page-content .main-wrapper .main-container .features-container .hero-container .hero-content.text-container.right {
-            right: 0; }
-        .page-content .main-wrapper .main-container .features-container .hero-container .hero-content.image-container {
-          width: 60%;
-          position: relative;
-          transition: all 0.5s ease-in-out; }
-          .page-content .main-wrapper .main-container .features-container .hero-container .hero-content.image-container.left {
-            right: 200px;
-            opacity: 0; }
-            .page-content .main-wrapper .main-container .features-container .hero-container .hero-content.image-container.left.show {
-              right: 0;
-              opacity: 1; }
-          .page-content .main-wrapper .main-container .features-container .hero-container .hero-content.image-container.right {
-            left: 200px;
-            opacity: 0; }
-            .page-content .main-wrapper .main-container .features-container .hero-container .hero-content.image-container.right.show {
-              left: 0;
-              opacity: 1; }
-          .page-content .main-wrapper .main-container .features-container .hero-container .hero-content.image-container img {
-            width: 80%; }
-          .page-content .main-wrapper .main-container .features-container .hero-container .hero-content.image-container.right img {
-            float: right; }
-        .page-content .main-wrapper .main-container .features-container .hero-container .hero-content h3 {
-          color: #0c9176;
-          font-size: 24px;
-          font-weight: bold;
-          margin: 10px 0 10px; }
-        .page-content .main-wrapper .main-container .features-container .hero-container .hero-content p {
-          color: #333;
-          line-height: 1.5; }
-    .page-content .main-wrapper .main-container .recruit-container {
-      padding-bottom: 40px;
-      margin-bottom: 0; }
-      .page-content .main-wrapper .main-container .recruit-container .hero-image-container {
-        width: 40%;
-        overflow: auto; }
-        .page-content .main-wrapper .main-container .recruit-container .hero-image-container img {
-          width: 330px;
-          float: right; }
-      .page-content .main-wrapper .main-container .recruit-container .hero-content-container {
-        width: 55%; }
-        .page-content .main-wrapper .main-container .recruit-container .hero-content-container h3 {
           color: #333;
           font-size: 30px;
           line-height: 1.5;
@@ -707,7 +514,7 @@ body {
               z-index: 2; }
       .page-content .main-wrapper .main-container .intro-container .intro-wrapper {
         display: inline-block;
-        width: 35%; }
+        width: 45%; }
         .page-content .main-wrapper .main-container .intro-container .intro-wrapper h1 {
           margin: 0;
           font-size: 66px;
