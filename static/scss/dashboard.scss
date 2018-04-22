@@ -14,6 +14,16 @@ $horizontal-separator-color: #e9eef8;
 $white-highlight-color:  #f7f8fa;
 $button-border-color: #8f8a8a;
 
+.tooltipster-sidetip .tooltipster-box {
+	color: $resume-profile-snapshot-background !important;
+	font-size: 12px !important;
+}
+.tooltipster-sidetip .tooltipster-content {
+
+	color: #2b2b2b !important;
+	font-size: 11px !important;
+	line-height: 1.3 !important;
+}
 .page-content {
 	.anchor-caret{
 		margin-left: 5px;
@@ -354,7 +364,7 @@ $button-border-color: #8f8a8a;
 				.action:hover{
 					text-decoration: underline;
 				}
-			}	
+			}
 		}
 		.interviewRow{
 			padding-top: 15px;
@@ -377,7 +387,7 @@ $button-border-color: #8f8a8a;
 					border-radius: 0%!important;
 					border: none!important;
 			}
-			
+
 			}
 		}
 		.meta-prop{
@@ -470,7 +480,7 @@ $button-border-color: #8f8a8a;
 			}
 
 		}
-		
+
 		.highlighted-profile{
 			position: relative;
 		    top: -10px;
@@ -538,7 +548,7 @@ $button-border-color: #8f8a8a;
 						width: 100%;
 						height: 100%;
 					}
-				}	
+				}
 				.candidateReject-wrapper{
 					width: 78px;
 					height: 28px;
@@ -592,7 +602,7 @@ $button-border-color: #8f8a8a;
     		.title{
     			font-size: 14px;
 				color: $black;
-			
+
     		}
     		.label{
     			font-size: 13px;
@@ -670,9 +680,10 @@ $button-border-color: #8f8a8a;
 			}
 		}
 	}
-	
+
 	.feed-row{
 		padding: 10px 25px;
+
 		
 		.interview-title{
 
@@ -694,6 +705,7 @@ $button-border-color: #8f8a8a;
 			
 		
 		}
+
 		.title{
 			color: $meta-grey;
 			font-size: 14px;
@@ -727,10 +739,10 @@ $button-border-color: #8f8a8a;
 		}
 		.main-content{
 			.meta-content{
-				margin-top: 10px;
+				margin-top: 0px;
 			}
 			.jobDetail{
-				margin-left: -8px;
+				margin-left: 0px;
 			}
 			.title, .stats{
 				display: inline-block;
@@ -762,6 +774,10 @@ $button-border-color: #8f8a8a;
 				.applications{
 					line-height: 20px;
 					padding-left: 30px;
+					&.newApplications {
+						margin-top: 0px;
+						line-height: 25px;
+					}
 				}
 			}
 			.button-action-list{
@@ -788,7 +804,7 @@ $button-border-color: #8f8a8a;
 					li:hover{
 						text-decoration: underline;
 
-					}	
+					}
 				}
 			}
 			.action-panel{
@@ -863,9 +879,9 @@ $button-border-color: #8f8a8a;
 	    		width: 100%;
 				.main-container{
 					width: 100%;
-				}	
+				}
 			}
-		
+
 	}
 }
 
@@ -1002,6 +1018,14 @@ $button-border-color: #8f8a8a;
 	color: #919191;
 }
 
+.meta-content.jobDetail {
+	.demo-icon:before {
+		font-size: 15px;
+		margin-left: 0;
+	}
+}
+
+
 .info-buttons {
 	span:before {
 		font-size: 14px;
@@ -1017,5 +1041,4 @@ $button-border-color: #8f8a8a;
 		font-size: 14px;
 	}
 }
-
 

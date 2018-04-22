@@ -936,7 +936,11 @@ function candidateList() {
     }
 
     function changeInviteText(applicationId) {
+
         settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .interviewinvite").text("Interview Invite Sent!")
+        settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .inviteText").removeClass("underline").addClass("non-underline")
+        $(".candidateRow[data-application-id="+applicationId+"] .interviewinvite").text("Interview Invite Sent!")
+        $(".candidateRow[data-application-id="+applicationId+"] .inviteText").removeClass("underline").addClass("non-underline")
     }
 
     function changeStatus(arr, newStatus) {

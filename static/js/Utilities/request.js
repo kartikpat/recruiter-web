@@ -10,11 +10,12 @@
  * @param  {boolean} async           set this to true when making synchronous request
  * @param  {object} scopeTest       reference object if any to be accessed in the callback
  */
-var postRequest = function(url,headers,data,successCallback,failCallback,processData,async,scopeTest,contentType){
-    if(!headers) {
-        headers = {
-            'Authorization': 'Bearer '+getCookie("recruiter-access-token")
-        }
+var postRequest = function(url,headers,data,successCallback,failCallback,processData,async,scopeTest,contentType) {
+    if(!headers)
+        headers = {};
+
+    if(!headers["Authorization"]) {
+        headers['Authorization'] = 'Bearer '+getCookie("recruiter-access-token")
     }
 
     return $.ajax({

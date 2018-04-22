@@ -65,7 +65,7 @@
 				padding:8px 18px!important;
 				font-size: 16px!important;
 				@include button($button-color-green)
-				
+
 			}
 		}
 		.heading{
@@ -137,7 +137,7 @@
 								color:$color-label;
 								text-transform:uppercase;
 								font-weight: 600;
-								
+
 							}
 
 							&.job-title {
@@ -211,7 +211,7 @@
 
 							&.status {
 								position:relative;
-								text-transform:capitalize;
+			
 
 								.mobile-status {
 									display:none;
@@ -244,7 +244,7 @@
 								}
 								.job-edit-container{
 									line-height: 0;
-												
+
 								}
 								.action-icon {
 									display:inline-block;
@@ -254,14 +254,14 @@
 									.icon-star-2::before {
 										content: '\e815';
 										color: #e97e00;
-									}	
+									}
 									.icon-twitter_logo::before {
 										content: '\e816';
 										font-size: 18px;
 										margin: 0;
 										margin-top: 4px;
    										line-height: 0;
-									}								
+									}
 									&.job-cancel {
 										margin-left: 0;
 									}
@@ -293,7 +293,7 @@
 										&.icon-twitter {
 											border-color: #1da1f2;
 										}
-										
+
 									}
 									span {
 										display:none;
@@ -368,12 +368,12 @@
 				.action-buttons{
 					padding-top: 15px;
 					padding-right: 20px;
-					
+
 				}
 				.heading{
 					margin: 20px auto;
 				}
-				
+
 			}
 
 			.my-jobs-listing {
@@ -415,7 +415,7 @@
 									font-size: 16px;
 									color: #2b2b2b;
 									line-height: 25px;
-									
+
 								}
 								.job-applied-count{
 									// margin-left: -18px;

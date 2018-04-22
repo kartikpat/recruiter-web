@@ -186,7 +186,9 @@ function Candidate() {
             rejectButton: modal.find(".candidateRejectModal"),
             savedButton : modal.find(".candidateSaveModal"),
             iconTelephoneVer : modal.find(".iconTelephoneVer"),
-            iconEmailVer :modal.find(".iconEmailVer")
+            iconEmailVer :modal.find(".iconEmailVer"),
+            socialFb: modal.find(".social.facebook"),
+            socialTw: modal.find(".social.twitter")
         }
     }
 
@@ -249,10 +251,14 @@ function Candidate() {
         item.location.text(aData["currentLocation"] || "NA");
         var preferredLocationStr = "N.A."
         if(aData['isSent']==1){
+            item.element.find('.interviewinvite').text("Interview Invite Sent!")
+            item.element.find('.inviteText').removeClass("underline").addClass("non-underline")
             item.element.find('.inviteF2f .icon-container').removeClass('hidden');
             item.element.find('.inviteF2f .loadingScroller').addClass('hidden');
         }
         if(aData['isSent']==2){
+            item.element.find('.interviewinvite').text("Interview Invite Sent!")
+            item.element.find('.inviteText').removeClass("underline").addClass("non-underline")
             item.element.find('.inviteTelephonic .icon-container').removeClass('hidden');
             item.element.find('.inviteTelephonic .loadingScroller').addClass('hidden');
         }
@@ -430,6 +436,17 @@ function Candidate() {
 
         settings.candidateDownloadResume.attr("data-href", baseUrl + aData["resume"])
         settings.candidateDownloadResume.attr("data-status", status);
+
+        if(aData["social"]) {
+
+            if(aData["social"]["f"]) {
+
+                item.socialFb.attr("href", aData["social"]["f"]).removeClass("hidden");
+            }
+            if(aData["social"]["t"]) {
+                item.socialTw.attr("href", aData["social"]["t"]).removeClass("hidden");
+            }
+        }
         openModal(item)
 
         if(!type)
@@ -445,7 +462,6 @@ function Candidate() {
                 return focusOnElement(item.mobComment, settings.mobCandidateCommentContainerClass)
             return focusOnElement(item.comment, settings.candidateCommentContainerClass)
         }
-
     }
 
     function getCandidateTag(aTag) {

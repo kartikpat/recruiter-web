@@ -1609,8 +1609,7 @@ span.sticker {
           .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell .engagement span {
             display: block; }
           .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.status {
-            position: relative;
-            text-transform: capitalize; }
+            position: relative; }
             .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.status .mobile-status {
               display: none; }
             .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.status i {
