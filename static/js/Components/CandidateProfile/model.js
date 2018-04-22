@@ -137,7 +137,9 @@ function Candidate() {
             iitScore: modal.find(".js_iit"),
             gmatScore: modal.find(".js_gmat"),
             iconTelephoneVer : modal.find(".iconTelephoneVer"),
-            iconEmailVer :modal.find(".iconEmailVer")
+            iconEmailVer :modal.find(".iconEmailVer"),
+            socialFb: modal.find(".social.facebook"),
+            socialTw: modal.find(".social.twitter")
         }
 
     }
@@ -375,6 +377,15 @@ function Candidate() {
         }
         else {
            item.resume.html('<iframe src="'+baseUrl + aData["resume"]+'" class="resume-embed" type="application/pdf"></iframe>')
+        }
+
+        if(aData["social"]) {
+            if(aData["social"]["f"]) {
+                item.socialFb.attr("href", aData["social"]["t"]).removeClass("hidden");
+            }
+            if(aData["social"]["t"]) {
+                item.socialTw.attr("href", aData["social"]["t"]).removeClass("hidden");
+            }
         }
 
     }
