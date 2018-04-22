@@ -75,7 +75,7 @@
 				<!-- <div class="exit-view">X</div> -->
 			</div>
 			<div class="navigation header_item animated fadeIn navigationHeader">
-				<ul class="menu-listing">
+				<ul class="menu-listing {{hiddenActions}}">
 					<li class="menu-list-item dashboard"><a class="header-links" href="/">Dashboard</a></li>
 					<li class="menu-list-item my-jobs">
 						<a href="/my-jobs" class="header-links">Jobs</a>
@@ -109,7 +109,7 @@
 					<li class="menu-list-item reports"><a class="header-links" href="/reports">Reports</a></li>
 				</ul>
 			</div>
-			<div class="profile_actions right header_item profileActions">
+			<div class="profile_actions right header_item profileActions {{hiddenActions}}">
 				<div class="search action-icon searchIcon">
 					<img class="information-icon hidden" src="/static/images/info-close.png">
 					<div class="search-icon"><i class="icon-search"></i></div>
@@ -162,7 +162,7 @@
 			</div>
 			<div class="clearfix"></div>
 
-		    <div class="menu-link-listing mobile-menu-item menu-section navigationHeader">
+		    <div class="menu-link-listing mobile-menu-item menu-section navigationHeader {{hiddenActions}}">
 		    	<ul>
 		    		<a href="/"><li class="menu-list-item my-jobs">Dashboard</li></a>
 		    		<a href="#"><li class="menu-list-item my-jobs sub-menu">Jobs<i class="icon-right_arrow"></i></li></a>
@@ -172,7 +172,7 @@
 		    	</ul>
 			</div>
 
-			<div class="mobile-profile-section mobile-menu-item menu-section">
+			<div class="mobile-profile-section mobile-menu-item menu-section {{hiddenActions}}">
 				<div class="profile-image left">
 					<img class="user_img" src="{{profile.img_link}}">
 				</div>
@@ -182,7 +182,7 @@
 				</div>
 			</div>
 
-			<div class="mobile-profile-actions mobile-menu-item menu-section">
+			<div class="mobile-profile-actions mobile-menu-item menu-section {{hiddenActions}}">
 				<ul class="profile-item-listing">
 					<a class="basicAccount"><li>Basic Account <span class="right white basic">Unlimited Posting</span></li></a>
 					<a class="basicAccount"><li>Premium Posting <span class="right basic"><span style="font-weight:bold;">{{profile.availableCredits}}</span> Credits Available</span></li></a>

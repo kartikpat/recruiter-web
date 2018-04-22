@@ -161,7 +161,7 @@ function MassResume(){
 
       if(dataArray.length< pageContent) {
           if($('.mass-resume-content').find(".no-more-records").length == 0) {
-              return $('.mass-resume-content').append("<div class='no-more-records no-data'>No more records!</div>")
+              return $('.mass-resume-content').append("<div class='no-more-records no-data'>You have reached the end of the list</div>")
           }
       }
     }

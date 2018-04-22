@@ -8,7 +8,6 @@ $(document).ready(function(){
             var newUrl = removeParam("insuffSlotsErrMsg", window.location.href)
             window.history.replaceState("object or string", "Title", newUrl);
         }
-
         fetchCalendars(calendarId,recruiterId);
         $('.form-container').removeClass('hidden');
         $('.Availability').removeClass('hidden');
@@ -18,16 +17,13 @@ $(document).ready(function(){
 
     }
     calendarDetails.init();
-    calendarDetails.startdate();
-    calendarDetails.enddate();
-    calendarDetails.selectCreater();
-    console.log(calendarId);
-    if(!calendarId){
-        // calendarDetails.selectCreater();
-        calendarDetails.startdate();
-        calendarDetails.enddate();
-        // calendarDetails.testHighlight();
-    }
+
+    // if(!calendarId){
+    //     // calendarDetails.selectCreater();
+    //     // calendarDetails.startdate();
+    //     // calendarDetails.enddate();
+    //     // calendarDetails.testHighlight();
+    // }
 
 
     calendarDetails.submitHandler(function(){
@@ -40,13 +36,7 @@ $(document).ready(function(){
     })
 
     function onSuccessfulFetchCalendar(topic,data){
-        console.log(data);
-        calendarDetails.init();
         calendarDetails.setDetails(data);
-        calendarDetails.startdate();
-        calendarDetails.enddate();
-        // calendarDetails.time_mapper();
-        calendarDetails.testHighlight;
     }
 
     function onFailedFetchCalendar(topic,data){

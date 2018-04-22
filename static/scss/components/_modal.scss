@@ -99,8 +99,10 @@
     }
 
     .modal_body_footer {
-        position: relative;
+        position: absolute;
+        bottom: 10px;
         height: 56px;
+        width: calc(100% - 50px);
         button {
             @include button($button-color-green)
             margin: 0;
@@ -206,7 +208,7 @@
         clear: both;
         margin: 0;
         margin-left: 15px;
-        height: 260px;
+        height: 280px;
         &.full {
             margin-right: 15px;
             height: 229px;

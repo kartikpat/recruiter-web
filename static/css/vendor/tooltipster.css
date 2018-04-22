@@ -317,6 +317,9 @@
 .icon-twitter_logo::before {
   content: '\e816'; }
 
+.icon-light-bulb::before {
+  content: '\e84c'; }
+
 .tooltipster-fall,
 .tooltipster-grow.tooltipster-show {
   -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);

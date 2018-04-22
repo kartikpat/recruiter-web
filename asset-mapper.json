@@ -1438,7 +1438,9 @@
 				"static/js/utilities.js",
 				"static/js/Utilities/modal.js",
 				"static/js/Components/Header/model.js",
-				"static/js/Components/Header/index.js"
+				"static/js/Components/Header/index.js",
+				"static/js/Utilities/hideHeader.js"
+
 			],
 			"prod" : [
 				"static/build/js/about-us.min.js"

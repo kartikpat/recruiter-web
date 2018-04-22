@@ -923,13 +923,14 @@ function candidateList() {
 			animation: 'fade',
 			delay: 0,
 			side:['left'],
-			theme: 'tooltipster-borderless'
+            theme: 'tooltipster-borderless',
+
 		})
 
         settings.candidateDetailsModal.find(".tooltip").tooltipster({
 			animation: 'fade',
 			delay: 0,
-			side:['left'],
+            side:['left'],
 			theme: 'tooltipster-borderless'
 		})
     }
@@ -940,6 +941,10 @@ function candidateList() {
         settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .inviteText").removeClass("underline").addClass("non-underline")
         $(".candidateRow[data-application-id="+applicationId+"] .interviewinvite").text("Interview Invite Sent!")
         $(".candidateRow[data-application-id="+applicationId+"] .inviteText").removeClass("underline").addClass("non-underline")
+    }
+
+    function showComment(applicationId) {
+        settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .commentLink").removeClass("hidden")
     }
 
     function changeStatus(arr, newStatus) {
@@ -1062,6 +1067,7 @@ function candidateList() {
         populateCheckInputDropdown: populateCheckInputDropdown,
         getApplicationsLength: getApplicationsLength,
         hideEmptyScreen: hideEmptyScreen,
-        contactMenu:contactMenu
+        contactMenu:contactMenu,
+        showComment: showComment
 	}
 }
