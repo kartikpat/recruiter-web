@@ -442,7 +442,7 @@ $(document).ready(function(){
 	function onFetchCalendars(topic,data){
 		var dataLength=data.data.length;
 		if(dataLength>1){
-			$('.schedulebutton .links').text('Create Calendar').setAttribute("href", "//Interview-scheduler-updated");
+			$('.schedulebutton .links').text('Create Calendar').setAttribute("href", "/Interview-scheduler-updated");
 		}
 	}
 
