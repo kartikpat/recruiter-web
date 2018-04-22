@@ -563,6 +563,7 @@ function candidateList() {
         settings.rowContainer.on('click', settings.candidateDownloadResumeButton, function(event){
             event.preventDefault()
             var url = $(this).attr("data-href");
+            url += "?type=download"
             window.open(url);
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             var status = $(this).closest(settings.candidateRowClass).attr("data-status")

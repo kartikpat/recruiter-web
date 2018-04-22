@@ -371,9 +371,11 @@ function Candidate() {
         if(ifKeyExists("phoneVer", aData) && aData["phoneVer"]) {
             item.iconTelephoneVer.removeClass("hidden")
         }
-        if(isCanvasSupported()) {
 
-           getBinaryData(baseUrl + aData["resume"],resumeCallback);
+        if(isCanvasSupported()) {
+           getBinaryData(baseUrl + aData["resume"],function(res){
+               resumeCallback(res, aData["id"])
+           });
         }
         else {
            item.resume.html('<iframe src="'+baseUrl + aData["resume"]+'" class="resume-embed" type="application/pdf"></iframe>')
@@ -627,7 +629,7 @@ function Candidate() {
 			delay: 0,
 			side:['bottom'],
             theme: 'tooltipster-borderless',
-        
+
 		})
 
     }
