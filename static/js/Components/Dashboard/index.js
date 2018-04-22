@@ -490,7 +490,7 @@ $(document).ready(function(){
 	function init(){
 		pubsub.publish("pageVisit", 1);
 		fetchDashboardStats(recruiterId);
-		fetchJobs({pageContent:5, pageNumber: 1, type: "published"}, recruiterId);
+		fetchJobs({pageContent:5, pageNumber: 1, type: "published"}, recruiterId); //recent-jobs
 		var currentDate=moment().format("YYYY-MM-DD");
 		var startdate = moment();
 		startdate = startdate.subtract(100, "days");
