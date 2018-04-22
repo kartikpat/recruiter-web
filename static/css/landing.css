@@ -345,6 +345,9 @@
 .icon-twitter_logo::before {
   content: '\e816'; }
 
+.icon-light-bulb::before {
+  content: '\e84c'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -478,7 +481,7 @@ body {
     margin: 0 auto; }
     .page-content .main-wrapper .main-container .container {
       margin: 75px auto;
-      width: 90%; }
+      width: 80%; }
       .page-content .main-wrapper .main-container .container h1 {
         color: #333;
         font-size: 30px;
@@ -658,7 +661,7 @@ body {
         width: 40%;
         overflow: auto; }
         .page-content .main-wrapper .main-container .recruit-container .hero-image-container img {
-          width: 100%;
+          width: 330px;
           float: right; }
       .page-content .main-wrapper .main-container .recruit-container .hero-content-container {
         width: 55%; }
@@ -757,7 +760,7 @@ body {
               top: 0;
               transition: all 0.1s ease-in-out; }
               .page-content .highlight-wrapper .main-container .container ul.category-listing li.category-item .category-icon img {
-                height: 50px;
+                height: 40px;
                 display: block;
                 margin: 0 auto; }
             .page-content .highlight-wrapper .main-container .container ul.category-listing li.category-item .category-title {

@@ -317,6 +317,9 @@
 .icon-twitter_logo::before {
   content: '\e816'; }
 
+.icon-light-bulb::before {
+  content: '\e84c'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -905,6 +908,9 @@ span.sticker {
 
 .icon-twitter_logo::before {
   content: '\e816'; }
+
+.icon-light-bulb::before {
+  content: '\e84c'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -1567,7 +1573,7 @@ span.sticker {
       cursor: pointer;
       font-size: 16px;
       font-weight: 400;
-      margin-left: 45px;
+      margin-left: 30px;
       margin-top: 2%; }
       .wrap .bottom-container .formgroup .button-wrapper button {
         -webkit-appearance: none;

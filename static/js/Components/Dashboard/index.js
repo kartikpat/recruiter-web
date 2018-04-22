@@ -77,13 +77,27 @@ $(document).ready(function(){
 	})
 
 	function initializeTooltip() {
-		$(".tooltip").tooltipster({
-		   animation: 'fade',
-		   delay: 0,
-		   side:['bottom'],
-		   theme: 'tooltipster-borderless',
-		   maxWidth: 150
-	   })
+
+		if(window.innerWidth<=768){
+			$(".tooltip").tooltipster({
+				animation: 'fade',
+				delay: 0,
+				side:['bottom'],
+				theme: 'tooltipster-borderless',
+				maxWidth: 500,	
+				trigger:'click'	
+			})	   
+		}
+		else{
+			$(".tooltip").tooltipster({
+			animation: 'fade',
+			delay: 0,
+			side:['bottom'],
+			theme: 'tooltipster-borderless',
+			maxWidth: 500,	
+			})
+		}
+
    	}
 
 	function onSuccessfullCandidateAction(topic, res) {
@@ -428,7 +442,7 @@ $(document).ready(function(){
 	function onFetchCalendars(topic,data){
 		var dataLength=data.data.length;
 		if(dataLength>1){
-			$('.schedulebutton').addClass('hidden');
+			$('.schedulebutton .links').text('Create Calendar').attr("href","/Interview-scheduler-updated");
 		}
 	}
 
@@ -478,9 +492,9 @@ $(document).ready(function(){
 		fetchJobs({pageContent:5, pageNumber: 1, type: "published"}, recruiterId);
 		var currentDate=moment().format("YYYY-MM-DD");
 		var startdate = moment();
-		startdate = startdate.subtract(15, "days");
-		startdate = startdate.format("YYYY-MM-DD");
-		fetchFollowUps(recruiterId,{fromDate:currentDate});
+		startdate = startdate.subtract(100, "days");
+		startdate = startdate.format("YYYY-MM-DD");	
+		fetchFollowUps(recruiterId,{fromDate:startdate});
 		var currentDate=moment().format("YYYY-MM-DD");
 		fetchRecruiterCalendar(recruiterId);
 		fetchInterviews(recruiterId,{pageContent: 6, pageNumber: 1, status: 2,fromDate:currentDate});

@@ -1432,6 +1432,7 @@ input::-webkit-input-placeholder {
 							border:5px solid $color-white;
 							box-shadow:0 0 3px $shadow-color;
 							background-color: #efefef;
+							object-fit: cover;
 						}
 					}
 
@@ -1989,14 +1990,12 @@ input::-webkit-input-placeholder {
 						&.icon {
 							width:2em;
 							margin-right:5px;
-                            i {
-                              //  font-size: 20px;
-                            }
 						}
 					}
 
 				}
                 .invite {
+					margin-left: 4px;
                     &:hover {
                         text-decoration: none;
                     }

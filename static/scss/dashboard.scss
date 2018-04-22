@@ -48,6 +48,7 @@ $button-border-color: #8f8a8a;
 			padding:5px 0 0 0;
 			button {
 				@include button($button-color-green)
+				
 			}
 		}
 	}
@@ -168,9 +169,20 @@ $button-border-color: #8f8a8a;
 				text-align: center;
 				margin: 0 auto;
 				padding: 0;
-				margin-bottom: 10px;
+				margin-bottom: 20px;
 				.button{
-					margin-right: 0;
+					margin: 0 auto;
+					min-width: 50px;
+					display: inline-block;
+					padding: 4px 15px;
+					border: thin solid #8f8a8a;
+					border-radius: 4px;
+					cursor: pointer;
+					color: #2b2b2b;
+					a{
+						color: #2b2b2b;
+						font-size: 13px;
+					}
 				}
 			}
 		}
@@ -656,6 +668,10 @@ $button-border-color: #8f8a8a;
 					color: $black;
 					font-size: 14px;
 					font-weight: 700;
+					.icon-edit:before {
+						content: '\e806';
+						color: #737373;
+					}
 				}
 				.meta{
 					font-size: 13px;
@@ -668,9 +684,36 @@ $button-border-color: #8f8a8a;
 	.feed-row{
 		padding: 10px 25px;
 
+		
+		.interview-title{
+
+		}
+		.interview-list{
+			color: #2b2b2b!important;
+			ul{
+				padding-left: 25px!important;
+				font-size: 13px!important;
+				color: #149075;
+				li {
+					p{
+					color: #2b2b2b;
+					}
+				}
+								
+			}
+			
+			
+		
+		}
+
 		.title{
 			color: $meta-grey;
 			font-size: 14px;
+			.icon-light-bulb::before {
+				content: '\e84c';
+				font-size: 25px;
+				margin: 0px;
+			}
 		}
 		.list{
 			.name{
@@ -686,11 +729,13 @@ $button-border-color: #8f8a8a;
 			}
 			li{
 				padding: 5px;
+			
 				a:hover{
 					text-decoration: underline;
 					text-decoration-color: #2b2b2b;
 				}
 			}
+			
 		}
 		.main-content{
 			.meta-content{
@@ -871,7 +916,7 @@ $button-border-color: #8f8a8a;
 				.stats, .title{
 					width: 90%;
 					.applications{
-						padding-left: 5px;
+						padding-left: 0px;
 					}
 				}
 				.meta-content{
@@ -881,7 +926,7 @@ $button-border-color: #8f8a8a;
 					margin-top: 20px;
 				}
 				.action-panel{
-					margin-top: -68px;
+					// margin-top: -68px;
 				}
 	    	}
     	}
@@ -918,8 +963,19 @@ $button-border-color: #8f8a8a;
 	.page-content .detail-card .empty-view .content-container {
 		padding-left: 35px;
 	}
+	
+	
 }
 
+@media all and (max-width:375px){
+	.page-content .dashboard .header-row .heading {
+		display: flex;
+		vertical-align: top;
+		i{
+			margin-top: 3px;	// vertical-align: middle;
+		}
+	}
+}
 .explorer{
 	.action-buttons{
 		text-align: center !important;
