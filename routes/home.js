@@ -113,7 +113,7 @@ module.exports = function(settings){
 
 	app.get("/", isAuthenticated,function(req, res){
 		res.render("dashboard", {
-			title: "IIM JOBS | Dashboard",
+			title: "IIM JOBS | iimjobs.com",
 			styles:  assetsMapper["dashboard"]["styles"][mode],
 			scripts: assetsMapper["dashboard"]["scripts"][mode],
 			baseUrl: baseUrl,
@@ -128,7 +128,7 @@ module.exports = function(settings){
 
 	app.get("/post-job",isAuthenticated, function(req, res){
 		res.render("post-job",{
-			title: "IIM JOBS | Post job",
+			title: "IIM JOBS | iimjobs.com",
 			action: "Post Job",
 			styles:  assetsMapper["post-job"]["styles"][mode],
 			scripts: assetsMapper["post-job"]["scripts"][mode],
@@ -227,7 +227,7 @@ module.exports = function(settings){
 		res.setHeader("Pragma", "no-cache"); // HTTP 1.0.
 		res.setHeader("Expires", "0"); // Proxies.
 		res.render("landing", {
-			title:"Recruiter Web - Landing Page | iimjobs.com",
+			title:"We love recruiting | iimjobs.com",
 			styles:  assetsMapper["landing"]["styles"][mode],
 			scripts: assetsMapper["landing"]["scripts"][mode],
 			baseUrl: baseUrl,
