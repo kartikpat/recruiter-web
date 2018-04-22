@@ -2134,6 +2134,9 @@ span.sticker {
       color: #2b2b2b;
       font-size: 14px;
       font-weight: 700; }
+      .page-content .interview .profile .general .name .icon-edit:before {
+        content: '\e806';
+        color: #737373; }
     .page-content .interview .profile .general .meta {
       font-size: 13px;
       color: #737373; }
@@ -2144,7 +2147,8 @@ span.sticker {
       font-size: 14px; }
       .page-content .feed-row .title .icon-light-bulb::before {
         content: '\e84c';
-        font-size: 25px; }
+        font-size: 25px;
+        margin: 0px; }
     .page-content .feed-row .list .name {
       color: #2b2b2b;
       font-size: 14px; }

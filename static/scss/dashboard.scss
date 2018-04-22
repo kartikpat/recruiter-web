@@ -646,6 +646,10 @@ $button-border-color: #8f8a8a;
 					color: $black;
 					font-size: 14px;
 					font-weight: 700;
+					.icon-edit:before {
+						content: '\e806';
+						color: #737373;
+					}
 				}
 				.meta{
 					font-size: 13px;
@@ -664,6 +668,7 @@ $button-border-color: #8f8a8a;
 			.icon-light-bulb::before {
 				content: '\e84c';
 				font-size: 25px;
+				margin: 0px;
 			}
 		}
 		.list{
@@ -680,11 +685,13 @@ $button-border-color: #8f8a8a;
 			}
 			li{
 				padding: 5px;
+			
 				a:hover{
 					text-decoration: underline;
 					text-decoration-color: #2b2b2b;
 				}
 			}
+			
 		}
 		.main-content{
 			.meta-content{
