@@ -494,7 +494,6 @@ $(document).ready(function(){
 		var startdate = moment();
 		startdate = startdate.subtract(100, "days");
 		startdate = startdate.format("YYYY-MM-DD");	
-		console.log(startdate);
 		fetchFollowUps(recruiterId,{fromDate:startdate});
 		var currentDate=moment().format("YYYY-MM-DD");
 		fetchRecruiterCalendar(recruiterId);
