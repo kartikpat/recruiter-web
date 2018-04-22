@@ -399,6 +399,8 @@ jQuery(document).ready( function() {
         if(res.action == "comment") {
             var obj = store.getCandidateFromStore(res.applicationId)
             obj["comment"] = res.comment;
+            aCandidate.addComment(res.comment);
+            candidates.showComment(res.applicationId);
             return toastNotify(1, "Comment Added Successfully")
         }
 
