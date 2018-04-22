@@ -1132,6 +1132,13 @@ function errorHandler(data) {
     if(data.status == 401) {
         return window.location = "/"
     }
+    if(data.status == 404) {
+        toastNotify(3, "Page not found");
+        setTimeout(function(){
+			 window.location.href = "/"
+		 }, 2000);
+         return
+    }
     var res = data.responseJSON
     hideLoader()
     if(!res) {
