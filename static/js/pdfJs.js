@@ -1,7 +1,7 @@
-function getBinaryData (url,callback) {
+function getBinaryData (url,callback, failCallback) {
     // body...
     var xhr = new XMLHttpRequest();
-    
+
     xhr.open('GET', url, true);
     xhr.responseType = 'arraybuffer';
     xhr.onload = function(e) {
@@ -11,7 +11,7 @@ function getBinaryData (url,callback) {
 
     xhr.onerror = function  () {
         // body...
-        alert("xhr error");
+        failCallback()
     }
 
     xhr.send();

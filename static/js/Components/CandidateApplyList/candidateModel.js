@@ -246,7 +246,7 @@ function Candidate() {
         var item = getElement(aData["userID"]);
         item.element.attr("data-application-id", aData["id"])
         item.image.attr("src", (aData["img"] || "/static/images/noimage.png"))
-        item.firstName.text(aData["name"] || "NA");
+        item.name.text(aData["name"] || "NA");
         item.experience.text(aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m" || "NA");
         item.location.text(aData["currentLocation"] || "NA");
         var preferredLocationStr = "N.A."
@@ -389,7 +389,7 @@ function Candidate() {
             $(".loaderScrollerResume").removeClass("hidden")
         	getBinaryData(baseUrl + aData["resume"],function(res){
                 resumeCallback(res, aData["id"])
-            });
+            }, failCallback);
         }
         else {
         	item.resume.html('<iframe src="'+aData["resume"]+'" class="resume-embed" type="application/pdf"></iframe>')
@@ -462,6 +462,11 @@ function Candidate() {
                 return focusOnElement(item.mobComment, settings.mobCandidateCommentContainerClass)
             return focusOnElement(item.comment, settings.candidateCommentContainerClass)
         }
+    }
+
+    function failCallback() {
+        $(".loaderScrollerResume").addClass("hidden")
+        settings.candidateDetailsModal.find(".js_resume").html("<div class='no-data'>No Resume Found!</div>").removeClass("hidden");
     }
 
     function getCandidateTag(aTag) {
