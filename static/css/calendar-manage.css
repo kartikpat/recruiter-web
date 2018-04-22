@@ -1759,3 +1759,280 @@ span.sticker {
     width: 125px; }
     .page-content .container .header-slot .manage-Calendar a {
       font-size: 12px; } }
+
+.headers .heading {
+  font-family: "Droid Sans", sans-serif;
+  color: #149075;
+  font-size: 24px;
+  /* Approximation due to font substitution */
+  font-weight: 400;
+  line-height: 54px;
+  /* Approximation due to font substitution */
+  margin-left: 16%;
+  margin-top: 32px; }
+
+.headers .subheading {
+  font-family: "Droid Sans", sans-serif;
+  color: #212121;
+  font-size: 14px;
+  /* Approximation due to font substitution */
+  font-weight: 400;
+  line-height: 25px;
+  /* Approximation due to font substitution */
+  text-align: left;
+  margin-left: 16%; }
+
+.headers .lheading {
+  font-family: "Droid Sans", sans-serif;
+  color: #212121;
+  font-size: 18px;
+  /* Approximation due to font substitution */
+  font-weight: 400;
+  line-height: 25px;
+  /* Approximation due to font substitution */
+  text-align: left;
+  margin-left: 16%;
+  padding-top: 43px;
+  padding-bottom: 43px; }
+
+.container .availability {
+  padding-bottom: 42px;
+  border-bottom: 1px solid #e8e8e8;
+  margin-left: 16%;
+  width: 70%;
+  height: 120px; }
+  .container .availability img {
+    border-radius: 50%;
+    background-color: #f3fbfb;
+    float: left; }
+  .container .availability .head {
+    font-family: "Droid Sans", sans-serif;
+    color: #212121;
+    font-size: 16px;
+    /* Approximation due to font substitution */
+    font-weight: 700;
+    line-height: 25px;
+    /* Approximation due to font substitution */
+    margin-left: 125px; }
+  .container .availability .text p {
+    position: relative;
+    width: 100%;
+    left: 30px; }
+
+.container .send-invite {
+  padding-bottom: 42px;
+  padding-top: 42px;
+  margin-left: 16%;
+  border-bottom: 1px solid #e8e8e8;
+  width: 70%;
+  height: 150px; }
+  .container .send-invite img {
+    border-radius: 50%;
+    background-color: #f3fbfb;
+    float: left; }
+  .container .send-invite .head {
+    font-family: "Droid Sans", sans-serif;
+    color: #212121;
+    font-size: 16px;
+    /* Approximation due to font substitution */
+    font-weight: 700;
+    line-height: 25px;
+    /* Approximation due to font substitution */
+    margin-left: 125px; }
+  .container .send-invite .text p {
+    position: relative;
+    width: 100%;
+    left: 30px; }
+
+.container .scheduler {
+  padding-bottom: 92px;
+  padding-top: 42px;
+  margin-left: 16%;
+  border-bottom: 1px solid #e8e8e8;
+  width: 70%;
+  height: 150px; }
+  .container .scheduler img {
+    border-radius: 50%;
+    background-color: #f3fbfb;
+    float: left; }
+  .container .scheduler .head {
+    font-family: "Droid Sans", sans-serif;
+    color: #212121;
+    font-size: 16px;
+    /* Approximation due to font substitution */
+    font-weight: 700;
+    line-height: 25px;
+    /* Approximation due to font substitution */
+    margin-left: 125px; }
+  .container .scheduler .text p {
+    position: relative;
+    width: 100%;
+    left: 30px; }
+
+.bottom-container {
+  background-color: #f7f7f7;
+  width: 100%;
+  padding: 1%; }
+  .bottom-container p {
+    font-family: "Droid Sans", sans-serif;
+    color: #212121;
+    font-size: 14px;
+    /* Approximation due to font substitution */
+    font-weight: 400;
+    line-height: 25px;
+    /* Approximation due to font substitution */
+    text-align: left;
+    margin-left: 16%;
+    padding-top: 26px; }
+  .bottom-container .formgroup button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    margin-left: 30%;
+    background: #0c9175;
+    border-radius: 4px;
+    padding: 1px 4px;
+    font-size: 14px;
+    margin-top: 15px;
+    display: block;
+    width: 162px;
+    height: 41px;
+    padding: 12px;
+    color: #FFF;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400; }
+
+@media only screen and (max-width: 768px) {
+  .headers .heading {
+    margin-left: 50px; }
+  .headers .subheading {
+    margin-left: 50px; }
+  .headers .lheading {
+    margin-left: 50px; }
+  .container .availability {
+    padding-bottom: 62px;
+    margin-left: 52px; }
+    .container .availability .text p {
+      position: relative;
+      width: 100%; }
+  .container .send-invite {
+    padding-bottom: 62px;
+    margin-left: 52px; }
+    .container .send-invite .text p {
+      position: relative;
+      width: 90%; }
+  .container .scheduler {
+    padding-bottom: 42px;
+    margin-left: 52px; }
+    .container .scheduler .text p {
+      position: relative;
+      width: 90%; } }
+
+@media only screen and (max-width: 480px) {
+  .no-calendar-view {
+    width: 100%; }
+    .no-calendar-view .headers {
+      border-style: solid;
+      border-width: 1px;
+      border-color: #e8e8e8;
+      box-sizing: border-box;
+      background-color: #f3fbfb;
+      width: 100%;
+      height: 150px; }
+      .no-calendar-view .headers .heading {
+        margin-left: 20px;
+        margin-top: 5px; }
+      .no-calendar-view .headers .subheading {
+        margin-left: 20px; }
+      .no-calendar-view .headers .lheading {
+        margin-left: 20px;
+        margin-top: -25px; }
+    .no-calendar-view .container .availability {
+      position: relative;
+      border-bottom: 1px solid #e8e8e8;
+      width: 70%;
+      height: 10%;
+      margin-top: 50px; }
+      .no-calendar-view .container .availability img {
+        border-radius: 50%;
+        background-color: #f3fbfb;
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        margin-bottom: 36px; }
+      .no-calendar-view .container .availability .head {
+        clear: both;
+        text-align: center;
+        margin-bottom: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block; }
+      .no-calendar-view .container .availability .text p {
+        text-align: center;
+        width: 100%;
+        left: 0px; }
+    .no-calendar-view .container .send-invite {
+      border-bottom: 1px solid #e8e8e8;
+      width: 70%;
+      height: 10%; }
+      .no-calendar-view .container .send-invite img {
+        border-radius: 50%;
+        background-color: #f3fbfb;
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        margin-bottom: 30px; }
+      .no-calendar-view .container .send-invite .head {
+        clear: both;
+        text-align: center;
+        margin-bottom: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block; }
+      .no-calendar-view .container .send-invite .text p {
+        text-align: center;
+        width: 100%;
+        left: 0px; }
+    .no-calendar-view .container .scheduler {
+      padding-bottom: 92px;
+      border-bottom: 1px solid #e8e8e8;
+      width: 70%;
+      height: 10%; }
+      .no-calendar-view .container .scheduler img {
+        border-radius: 50%;
+        background-color: #f3fbfb;
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        margin-bottom: 36px; }
+      .no-calendar-view .container .scheduler .head {
+        clear: both;
+        text-align: center;
+        margin-bottom: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block; }
+      .no-calendar-view .container .scheduler .text p {
+        text-align: center;
+        width: 100%;
+        left: 0px;
+        margin-top: -5px; }
+    .no-calendar-view .container .bottom-container {
+      padding: 5%; }
+      .no-calendar-view .container .bottom-container p {
+        text-align: center;
+        display: block;
+        margin: 0%; }
+      .no-calendar-view .container .bottom-container #login {
+        margin-left: auto;
+        margin-right: auto;
+        display: block; } }

@@ -1426,7 +1426,7 @@ input::-webkit-input-placeholder {
 						right:0;
 						width:125px;
 						height: 125px;
-
+						object-fit: cover;
 						img {
 							width: 100%;
 							height: 100%;
@@ -1603,6 +1603,9 @@ input::-webkit-input-placeholder {
 								padding:25px;
 								.wrap-mobile{
 									margin: 10px auto;
+									.icon-tick_circle {
+										color: #1f8f75;
+									}
 								}
 								
 								.content{
@@ -2404,7 +2407,7 @@ input::-webkit-input-placeholder {
 				&.first-fold {
  					bottom: 0;
  					background:$color-white;
-                    padding-left: 30px;
+                    padding-left: 20px;
 				}
 
 				&.second-fold {
@@ -2418,7 +2421,8 @@ input::-webkit-input-placeholder {
 				.action-buttons {
 					font-size:0;
                     width: 90%;
-                    margin: 0 auto;
+					margin: 0 auto;
+					margin-left: 0px;
 					span {
 						@include button($color-white);
 						display:inline-block;

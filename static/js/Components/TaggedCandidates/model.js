@@ -17,7 +17,7 @@ function candidateList() {
         settings.candidateItemShell= $(".candidateItem.shell"),
         settings.candAppliedJobsClass= '.candAppliedJobs',
         settings.multipleJobListingClass= '.multipleJobListing',
-        settings.multipleJobListingTextClass= '.multipleJobListingText'
+        settings.multipleJobListingTextClass= '.multipleJobListingbox'
         settings.emptyView=$('.empty-screen')
         onToggleJobList();
         jQuery(".header .menu-list-item.my-jobs").addClass("active");

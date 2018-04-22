@@ -498,6 +498,12 @@
                     line-height: 23px;/* Approximation due to font substitution */
                     text-align: left;
                 }
+                .error{
+                    font-family:  $droid-font;
+                    position: absolute;
+                    font-size: 12px;
+                    color: $error-message-color;
+                }
                 .D-table{
                     margin-top: 20px;
                     box-sizing: border-box;
@@ -726,6 +732,12 @@
                 }
 
                 .section{
+                    .error{
+                        font-family:  $droid-font;
+                        position: absolute;
+                        font-size: 12px;
+                        color: $error-message-color;
+                    }
                     .radio-input {
                         input {
                             display:none;
@@ -749,7 +761,11 @@
                         input:checked+label {
                             background-image:url('/static/images/checked_radio.svg');
                         }
+                        
+                       
+                        
                     }
+
 
                     #enddatepicker{
                         border-radius: 3px;
@@ -763,6 +779,7 @@
                         outline: none;
                         padding-top: 12px;
                         margin-top: 20px;
+                       
                     }
                     img{
                         margin-left: 20px;
@@ -1033,9 +1050,11 @@
                             width: 203px;
                             height: 40px;
                             outline: none;
+                           
                         }
-                
+                       
                     }
+                    
                 }
             }
         }
