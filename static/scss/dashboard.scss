@@ -38,6 +38,7 @@ $button-border-color: #8f8a8a;
 			padding:5px 0 0 0;
 			button {
 				@include button($button-color-green)
+				
 			}
 		}
 	}
@@ -158,9 +159,20 @@ $button-border-color: #8f8a8a;
 				text-align: center;
 				margin: 0 auto;
 				padding: 0;
-				margin-bottom: 10px;
+				margin-bottom: 20px;
 				.button{
-					margin-right: 0;
+					margin: 0 auto;
+					min-width: 50px;
+					display: inline-block;
+					padding: 4px 15px;
+					border: thin solid #8f8a8a;
+					border-radius: 4px;
+					cursor: pointer;
+					color: #2b2b2b;
+					a{
+						color: #2b2b2b;
+						font-size: 13px;
+					}
 				}
 			}
 		}
@@ -662,6 +674,26 @@ $button-border-color: #8f8a8a;
 	.feed-row{
 		padding: 10px 25px;
 		
+		.interview-title{
+
+		}
+		.interview-list{
+			color: #2b2b2b!important;
+			ul{
+				padding-left: 25px!important;
+				font-size: 13px!important;
+				color: #149075;
+				li {
+					p{
+					color: #2b2b2b;
+					}
+				}
+								
+			}
+			
+			
+		
+		}
 		.title{
 			color: $meta-grey;
 			font-size: 14px;
@@ -868,7 +900,7 @@ $button-border-color: #8f8a8a;
 				.stats, .title{
 					width: 90%;
 					.applications{
-						padding-left: 5px;
+						padding-left: 0px;
 					}
 				}
 				.meta-content{

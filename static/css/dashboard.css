@@ -1761,9 +1761,19 @@ span.sticker {
       text-align: center;
       margin: 0 auto;
       padding: 0;
-      margin-bottom: 10px; }
+      margin-bottom: 20px; }
       .page-content .notification-card .single-interview .action-buttons .button {
-        margin-right: 0; }
+        margin: 0 auto;
+        min-width: 50px;
+        display: inline-block;
+        padding: 4px 15px;
+        border: thin solid #8f8a8a;
+        border-radius: 4px;
+        cursor: pointer;
+        color: #2b2b2b; }
+        .page-content .notification-card .single-interview .action-buttons .button a {
+          color: #2b2b2b;
+          font-size: 13px; }
     .page-content .notification-card .seeMoreSection {
       text-align: center; }
       .page-content .notification-card .seeMoreSection .see-all a {
@@ -2142,6 +2152,14 @@ span.sticker {
       color: #737373; }
   .page-content .feed-row {
     padding: 10px 25px; }
+    .page-content .feed-row .interview-list {
+      color: #2b2b2b !important; }
+      .page-content .feed-row .interview-list ul {
+        padding-left: 25px !important;
+        font-size: 13px !important;
+        color: #149075; }
+        .page-content .feed-row .interview-list ul li p {
+          color: #2b2b2b; }
     .page-content .feed-row .title {
       color: #737373;
       font-size: 14px; }
@@ -2289,7 +2307,7 @@ span.sticker {
     .page-content .feed-row .main-content .stats, .page-content .feed-row .main-content .title {
       width: 90%; }
       .page-content .feed-row .main-content .stats .applications, .page-content .feed-row .main-content .title .applications {
-        padding-left: 5px; }
+        padding-left: 0px; }
     .page-content .feed-row .main-content .meta-content {
       margin-top: 20px; }
     .page-content .feed-row .main-content .stats {

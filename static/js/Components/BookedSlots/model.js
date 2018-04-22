@@ -167,7 +167,7 @@ function BookedSlots() {
 		initializeTooltip()
 		if(dataArray.length< pageContent) {
 			if(settings.bookedSlots.find(".no-more-records").length == 0) {
-                return settings.bookedSlots.append("<div class='no-more-records no-data'>No more records!</div>")
+                return settings.bookedSlots.append("<div class='no-more-records no-data'>You have reached the end of the list</div>")
             }
 		}
 	}
