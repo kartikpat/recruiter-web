@@ -1127,6 +1127,9 @@ function getTitleFormat(title, regex) {
 }
 
 function errorHandler(data) {
+    if(data.status == 401) {
+        return window.location = "/"
+    }
     var res = data.responseJSON
     hideLoader()
     if(!res) {
