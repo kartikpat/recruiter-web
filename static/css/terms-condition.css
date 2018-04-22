@@ -2885,8 +2885,10 @@ span.sticker {
     .modal_overlay .category_listing_container .category_listing {
       height: 310px; }
   .modal_overlay .modal_body_footer {
-    position: relative;
-    height: 56px; }
+    position: absolute;
+    bottom: 10px;
+    height: 56px;
+    width: calc(100% - 50px); }
     .modal_overlay .modal_body_footer button {
       -webkit-appearance: none;
       -moz-appearance: none;
@@ -2997,7 +2999,7 @@ span.sticker {
   clear: both;
   margin: 0;
   margin-left: 15px;
-  height: 260px; }
+  height: 280px; }
   .modal_overlay .modal_content .modal_body .subcategory_listing.full {
     margin-right: 15px;
     height: 229px; }
