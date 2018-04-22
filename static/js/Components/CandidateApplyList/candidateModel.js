@@ -144,7 +144,7 @@ function Candidate() {
             location: modal.find(".js_loc"),
             preferredLocation: modal.find(".js_pref_loc"),
             experience: modal.find(".js_experience"),
-            // contact: modal.find(".js_contact"),
+            secondfold:modal.find('.second-fold'),
             salary: modal.find(".js_sal"),
             skillsList: modal.find(".js_skills_list"),
             candidateTagList: modal.find(settings.candidateTagListClass),
@@ -491,6 +491,7 @@ function Candidate() {
         item.image.attr("src", "")
         item.name.text("");
         item.icontick.addClass('hidden');
+        item.secondfold.addClass('hidden');
         item.experience.text("");
         item.location.text("");
         item.contact.text("");

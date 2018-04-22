@@ -604,7 +604,7 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/about-us",isAuthenticated,function(req, res){
+	app.get("/about-us",function(req, res){
 		res.render("about-us", {
 			title:"Recruiter Web - about-us | iimjobs.com",
 			styles:  assetsMapper["about-us"]["styles"][mode],
@@ -616,7 +616,7 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/contact-us",isAuthenticated,function(req, res){
+	app.get("/contact-us",function(req, res){
 		res.render("contact-us", {
 			title:"Recruiter Web - contact-us| iimjobs.com",
 			styles:  assetsMapper["contact-us"]["styles"][mode],
@@ -628,7 +628,7 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/refund",isAuthenticated,function(req, res){
+	app.get("/refund",function(req, res){
 		res.render("refund", {
 			title:"Recruiter Web - refund | iimjobs.com",
 			styles:  assetsMapper["refund"]["styles"][mode],
@@ -640,7 +640,7 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/privacy",isAuthenticated,function(req, res){
+	app.get("/privacy",function(req, res){
 		res.render("privacy", {
 			title:"Recruiter Web - privacy | iimjobs.com",
 			styles:  assetsMapper["privacy"]["styles"][mode],
@@ -652,7 +652,7 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/terms-condition",isAuthenticated,function(req, res){
+	app.get("/terms-condition",function(req, res){
 		res.render("terms-condition", {
 			title:"Recruiter Web -terms-condition | iimjobs.com",
 			styles:  assetsMapper["terms-condition"]["styles"][mode],
