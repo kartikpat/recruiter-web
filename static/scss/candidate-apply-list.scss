@@ -1432,6 +1432,7 @@ input::-webkit-input-placeholder {
 							border:5px solid $color-white;
 							box-shadow:0 0 3px $shadow-color;
 							background-color: #efefef;
+							object-fit: cover;
 						}
 					}
 
