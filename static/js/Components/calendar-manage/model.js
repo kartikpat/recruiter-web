@@ -14,7 +14,6 @@ function Manage() {
         jQuery(".header .menu-list-item.my-interviews").addClass("active");
     }
 
-
     function cloneRow(data){
         if(data.length==0){
             settings.nocalendarview.removeClass('hidden');
