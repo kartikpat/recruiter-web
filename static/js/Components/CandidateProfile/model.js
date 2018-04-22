@@ -284,7 +284,7 @@ function Candidate() {
         item.maritalStatus.text(getMaritalStatus(aData["maritalStatus"])).removeClass("shell")
         item.languages.text((formatLanguages(aData["languages"]) || "N.A.")).removeClass("shell")
         item.workPermit.text((workPermit[aData["permit"]] || "N.A.")).removeClass("shell")
-        item.teamHandling.text(binary[aData["permit"]]).removeClass("shell")
+        item.teamHandling.text(binary[aData["handleTeam"]]).removeClass("shell")
         item.workSixDays.text("no").removeClass("shell")
         item.relocate.text(binary[aData["relocate"]] ).removeClass("shell")
         item.startup.text(binary[aData["joinStartup"]]).removeClass("shell")
