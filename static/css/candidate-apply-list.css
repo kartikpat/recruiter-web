@@ -4549,7 +4549,8 @@ input::-webkit-input-placeholder {
             border-radius: 50%;
             border: 5px solid #FFF;
             box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-            background-color: #efefef; }
+            background-color: #efefef;
+            object-fit: cover; }
         .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information {
           text-align: center; }
           .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information p.profile-name {

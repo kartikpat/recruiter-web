@@ -1133,6 +1133,8 @@ function errorHandler(data) {
     var res = data.responseJSON
     hideLoader()
     if(!res) {
+        $('.loadingScroller').addClass('hidden');
+        $('.invite').attr('state','default');
         return toastNotify(3, "Looks like you are not connected to the internet");
     }
     return toastNotify(3, res.message);
