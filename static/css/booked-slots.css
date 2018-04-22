@@ -2999,7 +2999,9 @@ span.sticker {
   clear: both;
   margin: 0;
   margin-left: 15px;
-  height: 280px; }
+  height: 295px; }
+  .modal_overlay .modal_content .modal_body .subcategory_listing.institute {
+    height: 251px; }
   .modal_overlay .modal_content .modal_body .subcategory_listing.full {
     margin-right: 15px;
     height: 229px; }
