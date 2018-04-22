@@ -357,11 +357,12 @@ jQuery(document).ready( function() {
 })
 
 function errorHandler(data) {
-    if(data.status == 403) {
-        toastNotify(3, "You are not authorized to access this page");
+    if(data.status == 404) {
+        toastNotify(3, "Page not found");
         setTimeout(function(){
 			 window.location.href = "/"
 		 }, 2000);
+         return
     }
 
     var res = data.responseJSON
