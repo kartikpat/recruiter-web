@@ -701,6 +701,13 @@ function Candidate() {
         settings.candidateDownloadResume.attr("data-status", status);
     }
 
+    function addComment(comment) {
+        $(settings.candidateCommentTextareaClass).addClass("hidden");
+        $(settings.candidateAddCommentButtonClass).addClass("hidden");
+        settings.commentTextarea.val(comment).removeClass("hidden");
+        settings.candidateEditComment.removeClass("hidden");
+    }
+
     return {
         init: init,
         populateCandidateData: populateCandidateData,
@@ -726,7 +733,8 @@ function Candidate() {
         closeModal: closeModal,
         onChangeDefaultCalendar: onChangeDefaultCalendar,
         onClickDownloadResume: onClickDownloadResume,
-        changeStatus: changeStatus
+        changeStatus: changeStatus,
+        addComment: addComment
     }
 
     function focusOnElement(element, container) {

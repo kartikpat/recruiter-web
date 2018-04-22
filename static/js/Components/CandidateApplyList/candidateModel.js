@@ -552,10 +552,8 @@ function Candidate() {
             if(!comment) {
                 return
             }
-            $(settings.candidateCommentTextareaClass).addClass("hidden");
-            settings.commentTextarea.val(comment).removeClass("hidden");
-            $(settings.candidateAddCommentButtonClass).addClass("hidden");
-            settings.candidateEditComment.removeClass("hidden");
+
+
             fn(applicationId, comment);
         });
 
@@ -565,6 +563,13 @@ function Candidate() {
             $(settings.candidateAddCommentButtonClass).removeClass("hidden");
             settings.candidateEditComment.addClass("hidden");
         })
+    }
+
+    function addComment(comment) {
+        $(settings.candidateCommentTextareaClass).addClass("hidden");
+        $(settings.candidateAddCommentButtonClass).addClass("hidden");
+        settings.commentTextarea.val(comment).removeClass("hidden");
+        settings.candidateEditComment.removeClass("hidden");
     }
 
     function onClickAddCommentMob(fn) {
@@ -786,7 +791,8 @@ function Candidate() {
         closeModal: closeModal,
         onClickSeeMoreRec: onClickSeeMoreRec,
         addRecommendations: addRecommendations,
-        onClickDownloadResume: onClickDownloadResume
+        onClickDownloadResume: onClickDownloadResume,
+        addComment: addComment
 
 	}
 

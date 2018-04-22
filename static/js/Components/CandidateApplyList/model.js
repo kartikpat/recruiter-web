@@ -942,6 +942,10 @@ function candidateList() {
         $(".candidateRow[data-application-id="+applicationId+"] .inviteText").removeClass("underline").addClass("non-underline")
     }
 
+    function showComment(applicationId) {
+        settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .commentLink").removeClass("hidden")
+    }
+
     function changeStatus(arr, newStatus) {
         arr.forEach(function(applicationId){
             settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"']").attr("data-status", newStatus)
@@ -1062,6 +1066,7 @@ function candidateList() {
         populateCheckInputDropdown: populateCheckInputDropdown,
         getApplicationsLength: getApplicationsLength,
         hideEmptyScreen: hideEmptyScreen,
-        contactMenu:contactMenu
+        contactMenu:contactMenu,
+        showComment: showComment
 	}
 }
