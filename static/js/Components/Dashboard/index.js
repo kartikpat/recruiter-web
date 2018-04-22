@@ -77,13 +77,25 @@ $(document).ready(function(){
 	})
 
 	function initializeTooltip() {
-		$(".tooltip").tooltipster({
-		   animation: 'fade',
-		   delay: 0,
-		   side:['bottom'],
-		   theme: 'tooltipster-borderless',
-		   maxWidth: 500
-	   })
+		if(window.innerWidth<=768){
+			$(".tooltip").tooltipster({
+				animation: 'fade',
+				delay: 0,
+				side:['bottom'],
+				theme: 'tooltipster-borderless',
+				maxWidth: 500,	
+				trigger:'click'	
+			})	   
+		}
+		else{
+			$(".tooltip").tooltipster({
+			animation: 'fade',
+			delay: 0,
+			side:['bottom'],
+			theme: 'tooltipster-borderless',
+			maxWidth: 500,	
+			})
+		}
    	}
 
 	function onSuccessfullCandidateAction(topic, res) {

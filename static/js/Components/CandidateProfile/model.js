@@ -615,7 +615,8 @@ function Candidate() {
 			animation: 'fade',
 			delay: 0,
 			side:['bottom'],
-			theme: 'tooltipster-borderless'
+            theme: 'tooltipster-borderless',
+        
 		})
 
     }

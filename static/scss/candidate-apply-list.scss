@@ -1991,14 +1991,12 @@ input::-webkit-input-placeholder {
 						&.icon {
 							width:2em;
 							margin-right:5px;
-                            i {
-                              //  font-size: 20px;
-                            }
 						}
 					}
 
 				}
                 .invite {
+					margin-left: 4px;
                     &:hover {
                         text-decoration: none;
                     }

@@ -345,6 +345,9 @@
 .icon-twitter_logo::before {
   content: '\e816'; }
 
+.icon-light-bulb::before {
+  content: '\e84c'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -936,6 +939,9 @@ span.sticker {
 
 .icon-twitter_logo::before {
   content: '\e816'; }
+
+.icon-light-bulb::before {
+  content: '\e84c'; }
 
 .left {
   float: left; }
@@ -1633,6 +1639,9 @@ a {
 .icon-twitter_logo::before {
   content: '\e816'; }
 
+.icon-light-bulb::before {
+  content: '\e84c'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -2255,6 +2264,9 @@ span.sticker {
 .icon-twitter_logo::before {
   content: '\e816'; }
 
+.icon-light-bulb::before {
+  content: '\e84c'; }
+
 /*[Recruiter_Homepage]*/
 /*[/Recruiter_Homepage]*/
 /**** Fontello Font Icons : ****/
@@ -2572,6 +2584,9 @@ span.sticker {
 
 .icon-twitter_logo::before {
   content: '\e816'; }
+
+.icon-light-bulb::before {
+  content: '\e84c'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */

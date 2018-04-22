@@ -581,6 +581,9 @@
 .icon-twitter_logo::before {
   content: '\e816'; }
 
+.icon-light-bulb::before {
+  content: '\e84c'; }
+
 .left {
   float: left; }
 
@@ -1276,6 +1279,9 @@ a {
 
 .icon-twitter_logo::before {
   content: '\e816'; }
+
+.icon-light-bulb::before {
+  content: '\e84c'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -2136,6 +2142,9 @@ span.sticker {
     .page-content .feed-row .title {
       color: #737373;
       font-size: 14px; }
+      .page-content .feed-row .title .icon-light-bulb::before {
+        content: '\e84c';
+        font-size: 25px; }
     .page-content .feed-row .list .name {
       color: #2b2b2b;
       font-size: 14px; }
@@ -2281,8 +2290,6 @@ span.sticker {
       margin-top: 20px; }
     .page-content .feed-row .main-content .stats {
       margin-top: 20px; }
-    .page-content .feed-row .main-content .action-panel {
-      margin-top: -68px; }
   .separater.positive-bottom {
     width: 90%;
     height: 1px;
@@ -2308,6 +2315,13 @@ span.sticker {
 @media all and (max-width: 480px) {
   .page-content .detail-card .empty-view .content-container {
     padding-left: 35px; } }
+
+@media all and (max-width: 375px) {
+  .page-content .dashboard .header-row .heading {
+    display: flex;
+    vertical-align: top; }
+    .page-content .dashboard .header-row .heading i {
+      margin-top: 3px; } }
 
 .explorer .action-buttons {
   text-align: center !important;

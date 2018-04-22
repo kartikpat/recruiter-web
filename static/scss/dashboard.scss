@@ -661,6 +661,10 @@ $button-border-color: #8f8a8a;
 		.title{
 			color: $meta-grey;
 			font-size: 14px;
+			.icon-light-bulb::before {
+				content: '\e84c';
+				font-size: 25px;
+			}
 		}
 		.list{
 			.name{
@@ -867,7 +871,7 @@ $button-border-color: #8f8a8a;
 					margin-top: 20px;
 				}
 				.action-panel{
-					margin-top: -68px;
+					// margin-top: -68px;
 				}
 	    	}
     	}
@@ -904,8 +908,19 @@ $button-border-color: #8f8a8a;
 	.page-content .detail-card .empty-view .content-container {
 		padding-left: 35px;
 	}
+	
+	
 }
 
+@media all and (max-width:375px){
+	.page-content .dashboard .header-row .heading {
+		display: flex;
+		vertical-align: top;
+		i{
+			margin-top: 3px;	// vertical-align: middle;
+		}
+	}
+}
 .explorer{
 	.action-buttons{
 		text-align: center !important;

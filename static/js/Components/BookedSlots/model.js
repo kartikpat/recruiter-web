@@ -248,13 +248,25 @@ function BookedSlots() {
     }
 
 	function initializeTooltip() {
-		 $(".tooltip").not(".prototype .tooltip").tooltipster({
-			animation: 'fade',
-			delay: 0,
-			side:['bottom'],
-			theme: 'tooltipster-borderless',
-			maxWidth: 500
-		})
+		if(window.innerWidth<=768){
+			$(".tooltip").not(".prototype .tooltip").tooltipster({
+				animation: 'fade',
+				delay: 0,
+				side:['bottom'],
+				theme: 'tooltipster-borderless',
+				maxWidth: 500,	
+				trigger:'click'
+			})	   
+		}
+		else{
+			$(".tooltip").not(".prototype .tooltip").tooltipster({
+				animation: 'fade',
+				delay: 0,
+				side:['bottom'],
+				theme: 'tooltipster-borderless',
+				maxWidth: 500,	
+			})
+		}	
 	}
 
 
