@@ -1581,6 +1581,15 @@ span.sticker {
       .conversations .conversation-listing-container .conversations-listing .conversation-item:last-child .user-item.user-info p.user-designation {
         border-color: transparent; }
 
+.tooltipster-sidetip .tooltipster-box {
+  color: #f9f9f9 !important;
+  font-size: 12px !important; }
+
+.tooltipster-sidetip .tooltipster-content {
+  color: #2b2b2b !important;
+  font-size: 11px !important;
+  line-height: 1.3 !important; }
+
 .page-content {
   color: #2b2b2b;
   min-height: 100%;
@@ -2150,9 +2159,9 @@ span.sticker {
         text-decoration: underline;
         text-decoration-color: #2b2b2b; }
     .page-content .feed-row .main-content .meta-content {
-      margin-top: 10px; }
+      margin-top: 0px; }
     .page-content .feed-row .main-content .jobDetail {
-      margin-left: -8px; }
+      margin-left: 0px; }
     .page-content .feed-row .main-content .title, .page-content .feed-row .main-content .stats {
       display: inline-block;
       vertical-align: top; }
@@ -2177,6 +2186,9 @@ span.sticker {
       .page-content .feed-row .main-content .stats .applications {
         line-height: 20px;
         padding-left: 30px; }
+        .page-content .feed-row .main-content .stats .applications.newApplications {
+          margin-top: 0px;
+          line-height: 25px; }
     .page-content .feed-row .main-content .button-action-list {
       display: inline-block;
       cursor: pointer;
@@ -2344,6 +2356,10 @@ span.sticker {
 .demo-icon.icon-group:before, .demo-icon.icon-mail:before, .demo-icon.icon-interview:before, .demo-icon.icon-politics:before {
   font-size: 47px;
   color: #919191; }
+
+.meta-content.jobDetail .demo-icon:before {
+  font-size: 15px;
+  margin-left: 0; }
 
 .info-buttons span:before {
   font-size: 14px; }

@@ -177,19 +177,21 @@ function Jobs() {
 			"statusMsg": true,
 			"actions": false,
 			"extraStatus": false,
-			"extraStatusMsg": 'But Updated'
+			"extraStatusMsg": 'But updated'
 		}
 		switch(aData["status"]) {
 			case "rejected":
+				obj["status"] = 'Rejected'
 				if(aData["message"]){
 					obj["message"] = aData["message"];
 				}
 				break;
 			case "pending":
-				obj["status"] = 'Under Review'
+				obj["status"] = 'Under review'
 				obj["message"] = 'We are reviewing this job. This usually takes upto 24 hours.'
 				break;
 			case "published":
+				obj["status"] = 'Published'
 				obj["statusMsg"] = false;
 				obj["actions"] = true;
 				if(aData["cnfi"]){
@@ -207,12 +209,13 @@ function Jobs() {
 				}
 				break;
 			case "unpublished":
+				obj["status"] = 'Unpublished'
 				if(aData["message"]) {
 					obj["message"] = aData["message"];
 				}
 				break;
 			case "updated-unpublished":
-				obj["status"] = 'UnPublished';
+				obj["status"] = 'Unpublished';
 				obj["extraStatus"] = true;
 				break;
 			default:

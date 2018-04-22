@@ -898,7 +898,8 @@
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Components/GlobalSearch/model.js",
-				"static/js/Components/GlobalSearch/index.js"
+				"static/js/Components/GlobalSearch/index.js",
+				"static/js/vendor/tooltipster.main.min.js"
 			],
 			"prod" : [
 				"static/build/js/global-search.min.js"

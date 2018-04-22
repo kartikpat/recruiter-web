@@ -21,7 +21,7 @@ jQuery(document).ready( function() {
         hideLoader()
         globalParameters.candidateListLength = res.data.length;
         candidates.addToList(res.data)
-        candidates.setHeader(res.data.length, searchQuery)
+        candidates.setHeader(res.stats.total, searchQuery)
     }
 
     function onFetchCandidatesFail(topic, res) {
@@ -48,7 +48,7 @@ jQuery(document).ready( function() {
 
                 if(searchQuery != "")
                     parameters.searchString = searchQuery;
-                    
+
                 showLoader()
                 globalSearch(recruiterId, parameters)
     		}
