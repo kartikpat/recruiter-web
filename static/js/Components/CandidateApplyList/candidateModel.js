@@ -186,7 +186,9 @@ function Candidate() {
             rejectButton: modal.find(".candidateRejectModal"),
             savedButton : modal.find(".candidateSaveModal"),
             iconTelephoneVer : modal.find(".iconTelephoneVer"),
-            iconEmailVer :modal.find(".iconEmailVer")
+            iconEmailVer :modal.find(".iconEmailVer"),
+            socialFb: modal.find(".social.facebook"),
+            socialTw: modal.find(".social.twitter")
         }
     }
 
@@ -434,6 +436,17 @@ function Candidate() {
 
         settings.candidateDownloadResume.attr("data-href", baseUrl + aData["resume"])
         settings.candidateDownloadResume.attr("data-status", status);
+
+        if(aData["social"]) {
+
+            if(aData["social"]["f"]) {
+
+                item.socialFb.attr("href", aData["social"]["f"]).removeClass("hidden");
+            }
+            if(aData["social"]["t"]) {
+                item.socialTw.attr("href", aData["social"]["t"]).removeClass("hidden");
+            }
+        }
         openModal(item)
 
         if(!type)
@@ -449,7 +462,6 @@ function Candidate() {
                 return focusOnElement(item.mobComment, settings.mobCandidateCommentContainerClass)
             return focusOnElement(item.comment, settings.candidateCommentContainerClass)
         }
-
     }
 
     function getCandidateTag(aTag) {
