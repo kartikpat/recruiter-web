@@ -1760,120 +1760,19 @@ span.sticker {
     .page-content .container .header-slot .manage-Calendar a {
       font-size: 12px; } }
 
-.headers .heading {
-  font-family: "Droid Sans", sans-serif;
-  color: #149075;
-  font-size: 24px;
-  /* Approximation due to font substitution */
-  font-weight: 400;
-  line-height: 54px;
-  /* Approximation due to font substitution */
-  margin-left: 16%;
-  margin-top: 32px; }
-
-.headers .subheading {
-  font-family: "Droid Sans", sans-serif;
-  color: #212121;
-  font-size: 14px;
-  /* Approximation due to font substitution */
-  font-weight: 400;
-  line-height: 25px;
-  /* Approximation due to font substitution */
-  text-align: left;
-  margin-left: 16%; }
-
-.headers .lheading {
-  font-family: "Droid Sans", sans-serif;
-  color: #212121;
-  font-size: 18px;
-  /* Approximation due to font substitution */
-  font-weight: 400;
-  line-height: 25px;
-  /* Approximation due to font substitution */
-  text-align: left;
-  margin-left: 16%;
-  padding-top: 43px;
-  padding-bottom: 43px; }
-
-.container .availability {
-  padding-bottom: 42px;
-  border-bottom: 1px solid #e8e8e8;
-  margin-left: 16%;
-  width: 70%;
-  height: 120px; }
-  .container .availability img {
-    border-radius: 50%;
-    background-color: #f3fbfb;
-    float: left; }
-  .container .availability .head {
+.wrapper {
+  min-height: 100%; }
+  .wrapper .headers .heading {
     font-family: "Droid Sans", sans-serif;
-    color: #212121;
-    font-size: 16px;
+    color: #149075;
+    font-size: 24px;
     /* Approximation due to font substitution */
-    font-weight: 700;
-    line-height: 25px;
+    font-weight: 400;
+    line-height: 54px;
     /* Approximation due to font substitution */
-    margin-left: 125px; }
-  .container .availability .text p {
-    position: relative;
-    width: 100%;
-    left: 30px; }
-
-.container .send-invite {
-  padding-bottom: 42px;
-  padding-top: 42px;
-  margin-left: 16%;
-  border-bottom: 1px solid #e8e8e8;
-  width: 70%;
-  height: 150px; }
-  .container .send-invite img {
-    border-radius: 50%;
-    background-color: #f3fbfb;
-    float: left; }
-  .container .send-invite .head {
-    font-family: "Droid Sans", sans-serif;
-    color: #212121;
-    font-size: 16px;
-    /* Approximation due to font substitution */
-    font-weight: 700;
-    line-height: 25px;
-    /* Approximation due to font substitution */
-    margin-left: 125px; }
-  .container .send-invite .text p {
-    position: relative;
-    width: 100%;
-    left: 30px; }
-
-.container .scheduler {
-  padding-bottom: 92px;
-  padding-top: 42px;
-  margin-left: 16%;
-  border-bottom: 1px solid #e8e8e8;
-  width: 70%;
-  height: 150px; }
-  .container .scheduler img {
-    border-radius: 50%;
-    background-color: #f3fbfb;
-    float: left; }
-  .container .scheduler .head {
-    font-family: "Droid Sans", sans-serif;
-    color: #212121;
-    font-size: 16px;
-    /* Approximation due to font substitution */
-    font-weight: 700;
-    line-height: 25px;
-    /* Approximation due to font substitution */
-    margin-left: 125px; }
-  .container .scheduler .text p {
-    position: relative;
-    width: 100%;
-    left: 30px; }
-
-.bottom-container {
-  background-color: #f7f7f7;
-  width: 100%;
-  padding: 1%; }
-  .bottom-container p {
+    margin-left: 16%;
+    margin-top: 32px; }
+  .wrapper .headers .subheading {
     font-family: "Droid Sans", sans-serif;
     color: #212121;
     font-size: 14px;
@@ -1882,31 +1781,128 @@ span.sticker {
     line-height: 25px;
     /* Approximation due to font substitution */
     text-align: left;
+    margin-left: 16%; }
+  .wrapper .headers .lheading {
+    font-family: "Droid Sans", sans-serif;
+    color: #212121;
+    font-size: 18px;
+    /* Approximation due to font substitution */
+    font-weight: 400;
+    line-height: 25px;
+    /* Approximation due to font substitution */
+    text-align: left;
     margin-left: 16%;
-    padding-top: 26px; }
-  .bottom-container .formgroup button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    -o-appearance: none;
-    border: 0;
-    padding: 0;
-    margin: 0;
-    margin-left: 30%;
-    background: #0c9175;
-    border-radius: 4px;
-    padding: 1px 4px;
-    font-size: 14px;
-    margin-top: 15px;
-    display: block;
-    width: 162px;
-    height: 41px;
-    padding: 12px;
-    color: #FFF;
-    display: inline-block;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 400; }
+    padding-top: 43px;
+    padding-bottom: 43px; }
+  .wrapper .container .availability {
+    padding-bottom: 42px;
+    border-bottom: 1px solid #e8e8e8;
+    margin-left: 16%;
+    width: 70%;
+    height: 120px; }
+    .wrapper .container .availability img {
+      border-radius: 50%;
+      background-color: #f3fbfb;
+      float: left; }
+    .wrapper .container .availability .head {
+      font-family: "Droid Sans", sans-serif;
+      color: #212121;
+      font-size: 16px;
+      /* Approximation due to font substitution */
+      font-weight: 700;
+      line-height: 25px;
+      /* Approximation due to font substitution */
+      margin-left: 125px; }
+    .wrapper .container .availability .text p {
+      position: relative;
+      width: 100%;
+      left: 30px; }
+  .wrapper .container .send-invite {
+    padding-bottom: 42px;
+    padding-top: 42px;
+    margin-left: 16%;
+    border-bottom: 1px solid #e8e8e8;
+    width: 70%;
+    height: 150px; }
+    .wrapper .container .send-invite img {
+      border-radius: 50%;
+      background-color: #f3fbfb;
+      float: left; }
+    .wrapper .container .send-invite .head {
+      font-family: "Droid Sans", sans-serif;
+      color: #212121;
+      font-size: 16px;
+      /* Approximation due to font substitution */
+      font-weight: 700;
+      line-height: 25px;
+      /* Approximation due to font substitution */
+      margin-left: 125px; }
+    .wrapper .container .send-invite .text p {
+      position: relative;
+      width: 100%;
+      left: 30px; }
+  .wrapper .container .scheduler {
+    padding-bottom: 92px;
+    padding-top: 42px;
+    margin-left: 16%;
+    border-bottom: 1px solid #e8e8e8;
+    width: 70%;
+    height: 150px; }
+    .wrapper .container .scheduler img {
+      border-radius: 50%;
+      background-color: #f3fbfb;
+      float: left; }
+    .wrapper .container .scheduler .head {
+      font-family: "Droid Sans", sans-serif;
+      color: #212121;
+      font-size: 16px;
+      /* Approximation due to font substitution */
+      font-weight: 700;
+      line-height: 25px;
+      /* Approximation due to font substitution */
+      margin-left: 125px; }
+    .wrapper .container .scheduler .text p {
+      position: relative;
+      width: 100%;
+      left: 30px; }
+  .wrapper .bottom-container {
+    background-color: #f7f7f7;
+    width: 100%;
+    padding: 1%; }
+    .wrapper .bottom-container p {
+      font-family: "Droid Sans", sans-serif;
+      color: #212121;
+      font-size: 14px;
+      /* Approximation due to font substitution */
+      font-weight: 400;
+      line-height: 25px;
+      /* Approximation due to font substitution */
+      text-align: left;
+      margin-left: 16%;
+      padding-top: 26px; }
+    .wrapper .bottom-container .formgroup button {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      -o-appearance: none;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      margin-left: 30%;
+      background: #0c9175;
+      border-radius: 4px;
+      padding: 1px 4px;
+      font-size: 14px;
+      margin-top: 15px;
+      display: block;
+      width: 162px;
+      height: 41px;
+      padding: 12px;
+      color: #FFF;
+      display: inline-block;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 400; }
 
 @media only screen and (max-width: 768px) {
   .headers .heading {
