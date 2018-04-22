@@ -15,6 +15,9 @@ var stat = {
     5: "Reviewed"
 };
 
+
+
+
 var chatStore= {}
 function saveToStore(dataArray){
     dataArray.forEach(function(anObj) {
@@ -142,7 +145,7 @@ chatContainer.on('click','.candidate-card', function() {
         chatContainerBox.attr("data-channel-name",channelName);
         chatContainerBox.find(".info-container img").attr("src", (obj["img"] || "/static/images/noimage.png"))
         if(obj["lastActive"]) {
-            chatContainerBox.find(".lastActiveDate").text(moment(obj["lastActive"]).format("DD MM YYYY")).removeClass("hidden")
+            chatContainerBox.find(".lastActiveDate").text(moment(obj["lastActive"]).format("DD-MM-YYYY")).removeClass("hidden")
         }
         chatContainerBox.find(".info-container .primary-content").text(obj["name"] + " works as " + obj["designation"] + " at " + obj["organization"])
         if(obj["title"] && obj["status"]) {
@@ -151,6 +154,24 @@ chatContainer.on('click','.candidate-card', function() {
 
 		chatContainerBox.find(".chat-input").attr("data-channel-name", channelName)
 		chatContainerBox.find(".chat-input").attr("data-id",$(this).attr("data-id") )
+
+        chatContainerBox.find(".chat-input").on('keydown',function(){
+
+            var limitH = $(this).attr('data-limit');
+            var innerH = chatContainerBox.find(".chat-input")[0].scrollHeight;
+
+            if(innerH <= parseInt(limitH)){
+
+               chatContainerBox.find(".chat-input").height(innerH);
+               chatContainerBox.find(".chat-div-content").height(274 - innerH)
+            }
+            else{
+
+              chatContainerBox.find(".chat-input").height(limitH);
+              chatContainerBox.find(".chat-div-content").height(274 - limitH)
+            }
+        })
+
         chatContainerBox.find(".no-start").removeClass("hidden")
         chatContainerBox.find(".start").addClass("hidden")
 		var that = $(this)
@@ -241,6 +262,20 @@ $("#conversationListing").on('click','.conversationItem', function() {
         }
 		chatContainerBox.find(".chat-input").attr("data-channel-name", channelName)
 		chatContainerBox.find(".chat-input").attr("data-id",$(this).attr("data-id") )
+        chatContainerBox.find(".chat-input").on('keydown',function(){
+            var limitH = $(this).attr('data-limit');
+            var innerH = chatContainerBox.find(".chat-input")[0].scrollHeight;
+            if(innerH <= parseInt(limitH)){
+
+               chatContainerBox.find(".chat-input").height(innerH);
+               chatContainerBox.find(".chat-div-content").height(274 - innerH)
+            }
+            else{
+
+              chatContainerBox.find(".chat-input").height(limitH);
+              chatContainerBox.find(".chat-div-content").height(274 - limitH)
+            }
+        })
         chatContainerBox.find(".no-start").removeClass("hidden")
         chatContainerBox.find(".start").addClass("hidden")
 		var that = $(this)
@@ -440,6 +475,8 @@ var displayAMessage = function(event) {
         return $(this).val('')
     }
     if(key == 13) {
+
+
 		publish({
             UUID:uuid || btoa(recruiterId+'--'+recruiterEmail),
             deviceID: getCookie("sessID"),
@@ -462,6 +499,8 @@ var displayAMessage = function(event) {
 
                 initializeTooltip()
                 that.val('');
+                that.height(17);
+                that.closest(".content-footer-container").find(".chat-div-content").height(254)
                 scrollToBottom(channelName)
             }
             else if (status.category == "PNNetworkIssuesCategory") {
@@ -531,6 +570,21 @@ function openChat(m) {
         }
         chatContainerBox.find(".chat-input").attr("data-channel-name", channelName)
 		chatContainerBox.find(".chat-input").attr("data-id",dataID)
+        chatContainerBox.find(".chat-input").on('keydown',function(){
+            var limitH = $(this).attr('data-limit');
+            var innerH = chatContainerBox.find(".chat-input")[0].scrollHeight;
+
+            if(innerH <= parseInt(limitH)){
+
+               chatContainerBox.find(".chat-input").height(innerH);
+               chatContainerBox.find(".chat-div-content").height(274 - innerH)
+            }
+            else{
+
+              chatContainerBox.find(".chat-input").height(limitH);
+              chatContainerBox.find(".chat-div-content").height(274 - limitH)
+            }
+        })
         chatContainerBox.find(".no-start").removeClass("hidden")
         chatContainerBox.find(".start").addClass("hidden")
 
@@ -641,6 +695,20 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
         		chatContainerBox.attr("data-id",array[0]["userID"]);
         		chatContainerBox.find(".chat-input").attr("data-channel-name", channelName)
         		chatContainerBox.find(".chat-input").attr("data-id",array[0]["userID"] )
+                chatContainerBox.find(".chat-input").on('keydown',function(){
+                    var limitH = $(this).attr('data-limit');
+                    var innerH = chatContainerBox.find(".chat-input")[0].scrollHeight;
+                    if(innerH <= parseInt(limitH)){
+
+                       chatContainerBox.find(".chat-input").height(innerH);
+                       chatContainerBox.find(".chat-div-content").height(274 - innerH)
+                    }
+                    else{
+
+                      chatContainerBox.find(".chat-input").height(limitH);
+                      chatContainerBox.find(".chat-div-content").height(274 - limitH)
+                    }
+                })
                 chatContainerBox.find(".no-start").addClass("hidden")
                 chatContainerBox.find(".start").removeClass("hidden")
                 chatContainerBox.attr("data-channel-name",channelName);
@@ -695,6 +763,20 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
         chatContainerBox.attr("data-id",array[0]["userID"]);
         chatContainerBox.find(".chat-input").attr("data-channel-name", channelName)
         chatContainerBox.find(".chat-input").attr("data-id",array[0]["userID"] )
+        chatContainerBox.find(".chat-input").on('keydown',function(){
+            var limitH = $(this).attr('data-limit');
+            var innerH = chatContainerBox.find(".chat-input")[0].scrollHeight;
+            if(innerH <= parseInt(limitH)){
+
+               chatContainerBox.find(".chat-input").height(innerH);
+               chatContainerBox.find(".chat-div-content").height(274 - innerH)
+            }
+            else{
+
+              chatContainerBox.find(".chat-input").height(limitH);
+              chatContainerBox.find(".chat-div-content").height(274 - limitH)
+            }
+        })
         chatContainerBox.find(".no-start").removeClass("hidden")
         chatContainerBox.find(".start").addClass("hidden")
         chatContainerBox.attr("data-channel-name",channelName);

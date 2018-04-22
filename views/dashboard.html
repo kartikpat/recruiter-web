@@ -23,7 +23,7 @@
                             <div class="stats">
                                 <div class="number">0</div>
                                 <div class="legend">New Applications <div class="info-icon"><i class="icon-information tooltip" aria-hidden="true" title="Number of candidates on the active jobs that have not yet been seen by you"></i></div></div>
-                               
+
                             </div>
                             <div class="icon"><i class="demo-icon icon-mail"></i></div>
                             <div class="separater positive-bottom"></div>
@@ -31,7 +31,7 @@
                             <div class="stats">
                                 <div class="number">0</div>
                                 <div class="legend">Candidates to be reviewed<div class="info-icon"><i class="icon-information tooltip" aria-hidden="true" title="Number of candidates on the active jobs on which no action has been taken yet"></i></div></div>
-                                
+
                             </div>
                             <div class="icon"><i class="demo-icon icon-interview"></i></div>
                             <div class="separater positive-top"></div>
@@ -39,27 +39,27 @@
                             <div class="stats">
                                 <div class="number">0</div>
                                 <div class="legend">Shortlisted candidates to be interviewed  <div class="info-icon"><i class="icon-information tooltip" aria-hidden="true" title="Number of shortlisted candidates on the active jobs yet to be interviewed"></i></div></div>
-                              
+
                             </div>
                             <div class="icon"><i class="demo-icon icon-politics"></i></div>
                             <div class="separater positive-left "></div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
             <div class="container">
                 <div class="feed-column">
                     <div class="feed-card hidden" id="postedJobsContainer">
                         <div class="header-row">
                             <div class="heading">Overview of Active Jobs</div>
-                            <div class="heading-button right"><a href="/my-jobs">See All</a><i class="icon-right_arrow"></i></div>
+                            <!-- <div class="heading-button right"><a href="/my-jobs">See All</a><i class="icon-right_arrow"></i></div> -->
                         </div>
                         <div class="detail-card ">
                             <div id="new-jobs-chart" class="graph_holder">
                                 <div class="graph_overlay hidden">
                                     <div class="empty-view active-empty">
                                         <div class="image-container"><img src="/static/images/active_job.svg"></div>
-                                        <div class="content-container"> 
+                                        <div class="content-container">
                                              <div class="detail">You don't have any active jobs right now</div>
                                             <div class="sub-detail">You will see a graph here when you do</div>
                                             <div class="empty-action-buttons">
@@ -86,11 +86,11 @@
                             <div class="heading">Recent Jobs</div>
                             <div class="heading-button right"><a href="/my-jobs">See All</a><i class="icon-right_arrow"></i></div>
                         </div>
-                        
+
                         <div class="detail-card jobs-card">
                             <div class="empty-view recent-empty hidden">
                                 <div class="image-container"><img src="/static/images/published_job.svg"></div>
-                                <div class="content-container"> 
+                                <div class="content-container">
                                     <div class="detail">You don't have any published jobs right now</div>
                                     <div class="sub-detail">You will see a list here when you do</div>
                                     <div class="empty-action-buttons">
@@ -117,7 +117,7 @@
                                         <div class="sub-detail">You will see a list here when you do</div>
                                         <div class="divide">OR</div>
                                         <div class="action"><a href="#">View recent searches</a></div>
-                                     </div>   
+                                     </div>
                             </div>
                             <div class="feed-row">
                                     <div class="main-content">
@@ -216,18 +216,18 @@
                                         </li>
                                         <li>
                                             <a href="https://www.updazz.com/recruiter/login.php">
-                                                <span class="name">updazz.com</span><span class="description">- For Sales & Marketing Jobs</span>        
+                                                <span class="name">updazz.com</span><span class="description">- For Sales & Marketing Jobs</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="https://www.engineeristic.com/recruiter/login.php">
                                                 <span class="name">engineeristics.com</span><span class="description">- For Manufacturing, Operation and Engineering Jobs</span>
                                             </a>
-                                           
+
                                         </li>
                                         <li>
                                             <a href='https://www.biojoby.com/recruiter/login.php'>
-                                                <span class="name">biojoby.com</span><span class="description">- For Medical, Pharma & Healthcare Jobs</span>    
+                                                <span class="name">biojoby.com</span><span class="description">- For Medical, Pharma & Healthcare Jobs</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -241,7 +241,7 @@
                         <div class="header-row">
                             <div class="heading">Notification</div>
                         </div>
-                        <div class="detail-card ">  
+                        <div class="detail-card ">
                         </div>
                     </div>
                     <div class="notification-card " id="interviewContainer">
@@ -321,16 +321,16 @@
                                             <div class="slick-title">Significantly Better than anything else</div>
                                             <img src="/static/images/what_makes_calculus.png">
                                             <div class="slick-detail">Flexible user interface to help you define talent segments on a real-time basis.</div>
-                                    </div> 
+                                    </div>
                                     <div class="slick-content">
                                             <div class="slick-title">Trusted and Latest data</div>
                                             <img src="/static/images/trusted_insights.png">
                                             <div class="slick-detail">iimjobs innovative recruitment solutions are used by leading brands in India.</div>
-                                    </div>   
-                                
-                                 
+                                    </div>
+
+
                                 </div>
-                                
+
                             </div>
                             <div class="action-buttons">
                                 <a href="http://calculus.iimjobs.com/" target="_blank">
@@ -347,7 +347,7 @@
                 {{>chatSidebar}}
             </div>
     </div>
- 
+
 </div>
 <div class="feed-row prototype hidden jobRow" >
     <div class="main-content">
@@ -426,11 +426,11 @@
             {{>spinner}}
             <div class="button candidateShortlist" >Shortlist</div>
         </div>
-        <div class="candidateReject-wrapper button">    
-            {{>spinner}} 
+        <div class="candidateReject-wrapper button">
+            {{>spinner}}
             <div class="button candidateReject" >Reject</div>
-        </div>     
-    </div>  
+        </div>
+    </div>
     <div class="horizontal-separator"></div>
 </div>
 
