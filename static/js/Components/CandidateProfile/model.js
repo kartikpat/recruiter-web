@@ -137,7 +137,9 @@ function Candidate() {
             iitScore: modal.find(".js_iit"),
             gmatScore: modal.find(".js_gmat"),
             iconTelephoneVer : modal.find(".iconTelephoneVer"),
-            iconEmailVer :modal.find(".iconEmailVer")
+            iconEmailVer :modal.find(".iconEmailVer"),
+            socialFb: modal.find(".social.facebook"),
+            socialTw: modal.find(".social.twitter")
         }
 
     }
@@ -284,7 +286,7 @@ function Candidate() {
         item.maritalStatus.text(getMaritalStatus(aData["maritalStatus"])).removeClass("shell")
         item.languages.text((formatLanguages(aData["languages"]) || "N.A.")).removeClass("shell")
         item.workPermit.text((workPermit[aData["permit"]] || "N.A.")).removeClass("shell")
-        item.teamHandling.text(binary[aData["permit"]]).removeClass("shell")
+        item.teamHandling.text(binary[aData["handleTeam"]]).removeClass("shell")
         item.workSixDays.text("no").removeClass("shell")
         item.relocate.text(binary[aData["relocate"]] ).removeClass("shell")
         item.startup.text(binary[aData["joinStartup"]]).removeClass("shell")
@@ -375,6 +377,15 @@ function Candidate() {
         }
         else {
            item.resume.html('<iframe src="'+baseUrl + aData["resume"]+'" class="resume-embed" type="application/pdf"></iframe>')
+        }
+
+        if(aData["social"]) {
+            if(aData["social"]["f"]) {
+                item.socialFb.attr("href", aData["social"]["t"]).removeClass("hidden");
+            }
+            if(aData["social"]["t"]) {
+                item.socialTw.attr("href", aData["social"]["t"]).removeClass("hidden");
+            }
         }
 
     }

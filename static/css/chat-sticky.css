@@ -1981,8 +1981,8 @@ span.sticker {
   border: 2px solid #FFF;
   border-radius: 50%;
   position: absolute;
-  bottom: 10px;
-  right: 20px; }
+  bottom: -1px;
+  right: 0px; }
   .candidate-status.offline {
     background-color: #b6b6b5; }
   .candidate-status.online {
@@ -2093,15 +2093,18 @@ span.sticker {
           border: 1px solid #eee;
           border-radius: 50%; }
       .chat-div-candidate .chat-div-header .candidate-name-container .cand-name-wrapper {
-        display: inline-block; }
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 3px;
+        margin-left: 5px; }
       .chat-div-candidate .chat-div-header .candidate-name-container .candidate-name {
-        margin-bottom: 3px;
+        margin-bottom: 0px;
         font-size: 14px;
         overflow: hidden;
         white-space: nowrap;
         max-width: 115px; }
       .chat-div-candidate .chat-div-header .candidate-name-container .last-active-date {
-        font-size: 11px; }
+        font-size: 9px; }
     .chat-div-candidate .chat-div-header .info-buttons {
       display: inline-block;
       padding-top: 7px;
@@ -2137,14 +2140,15 @@ span.sticker {
       background-color: #fff;
       z-index: 2;
       overflow: auto;
-      padding: 10px 20px; }
+      padding: 10px 20px;
+      box-sizing: border-box; }
       .chat-div-candidate .content-footer-container .chat-div-content ul {
         padding: 0;
         margin-top: 0; }
         .chat-div-candidate .content-footer-container .chat-div-content ul .time-separator {
           margin: 10px 0;
           text-align: center;
-          font-size: 14px;
+          font-size: 10px;
           color: #9f9f9f; }
           .chat-div-candidate .content-footer-container .chat-div-content ul .time-separator span {
             display: inline-block;
@@ -2214,13 +2218,17 @@ span.sticker {
     .chat-div-candidate .content-footer-container .footer {
       padding: 0 !important;
       position: relative; }
-      .chat-div-candidate .content-footer-container .footer input {
+      .chat-div-candidate .content-footer-container .footer textarea {
         width: 100%;
-        padding: 12px;
+        padding: 11px;
         border: 1px solid #ccc;
-        border-radius: 2px; }
-        .chat-div-candidate .content-footer-container .footer input:focus {
-          border: 1px solid #149075; }
+        border-radius: 0px;
+        height: 41px;
+        line-height: 1.3;
+        box-sizing: border-box; }
+        .chat-div-candidate .content-footer-container .footer textarea:focus {
+          border: 1px solid #149075;
+          outline: none; }
       .chat-div-candidate .content-footer-container .footer .iconSendButton {
         position: absolute;
         right: 3px;

@@ -25,7 +25,7 @@ function Notifications(){
 	        var jobId = $(this).closest(settings.notificationRowClass).attr('data-job-id');
 	        return fn(applicationId, jobId);
 	    })
-	} 
+	}
 
 	function candidateActionTransition(applicationId){
 		 settings.notificationContainer.find(settings.notificationRowClass+'[data-application-id="'+applicationId+'"]').remove();
@@ -77,6 +77,7 @@ $(document).ready(function(){
 	})
 
 	function initializeTooltip() {
+
 		if(window.innerWidth<=768){
 			$(".tooltip").tooltipster({
 				animation: 'fade',
@@ -96,6 +97,7 @@ $(document).ready(function(){
 			maxWidth: 500,	
 			})
 		}
+
    	}
 
 	function onSuccessfullCandidateAction(topic, res) {
@@ -163,11 +165,13 @@ $(document).ready(function(){
 			settings.jobUnpublishModal.find('.error').removeClass('hidden');
 			return
 		}
+		showSpinner("unpublish")
 		submitUnpublishJob(recruiterId, jobId, {reasonId: reason});
 
 	})
 	settings.jobRefreshButton.click(function(e) {
 		var jobId = $(this).attr('data-refresh-job-id');
+		showSpinner("refresh")
 		submitRefreshJob(recruiterId, jobId);
 	});
 
@@ -175,7 +179,7 @@ $(document).ready(function(){
     onClickJobOtherActions();
 
 	var candidateApplyUrl = "/job/:publishedId/applications";
-	
+
 	function onStatsUpdate(topic, data){
 		data.forEach(function(aData){
 			dashboardStatsContainer.find(".block."+aData['label']+' .number').text(aData['value']);
@@ -224,6 +228,11 @@ $(document).ready(function(){
 		console.log("calling onLoadChartLibrary");
 	    fetchActiveJobStats(recruiterId,{pageContent:5,offset:0});
 	}
+
+	function getTitleFormat(title, regex) {
+		return title.replace(regex, '');
+	}
+
 	var chartLibraryLoadSubscription = pubsub.subscribe("loadedChartLibrary", onLoadChartLibrary)
 	function onFetchJobs(topic, data){
 		console.log(data)
@@ -234,7 +243,7 @@ $(document).ready(function(){
 		data.forEach(function(aJob, index){
 			var card = jobRowCard.clone().removeClass('hidden prototype');
 			var experience = aJob['exp']['min']+'-'+aJob['exp']['max']+'yrs'
-			card.find(".title .text").text(aJob['title']).attr('href', '/job/'+aJob['id']);
+			card.find(".title .text").text(getTitleFormat(aJob['title'], (/\(\d+-\d+ \w+\)$/))).attr('href', '/job/'+aJob['id']);
 			var locationTitle = (aJob["location"] && aJob["location"].length >3) ? aJob["location"].join(','): null;
 			var location = (aJob["location"] && aJob["location"].length >3) ? "Multiple" : aJob["location"].join(',');
 			card.find(".title .meta-content .location .label").text(location).attr('title', locationTitle);
@@ -242,13 +251,22 @@ $(document).ready(function(){
 			card.find(".title .meta-content .postedOn .label").text(moment(aJob['created']).format('D MMM YYYY'));
 			card.find(".stats .totalApplications .value").text(aJob["totalApplications"]).attr('href', candidateApplyUrl.replace(':publishedId', aJob['publishedId']).replace(':status', ''));
 			card.find(".stats .newApplications .value").text(aJob["newApplications"]).attr('href', candidateApplyUrl.replace(':publishedId', aJob['publishedId']).replace(':status', '')+"?orderBy=2&status=0");
-			var url = baseUrlJob + aJob["url"];
+			if(aJob["url"]) {
+				var url = baseUrlJob + aJob["url"];
+				card.find('.action-panel .action-list-items .jobFacebook').attr("href", getFacebookShareLink(url))
+				card.find('.action-panel .action-list-items .jobTwitter').attr("href", getTwitterShareLink(url))
+				card.find('.action-panel .action-list-items .jobLinkedin').attr("href", getLinkedInShareUrl(url))
+			}
+			if(aJob["cnfi"]) {
+				card.find(".action-panel .action-list-items .socialIcons").addClass("hidden")
+			}
 
-			card.find('.action-panel .action-list-items .jobRefresh').attr("data-job-id", aJob['id']);
+			if(aJob["refreshable"]) {
+				card.find('.action-panel .action-list-items .jobRefresh').attr("data-job-id", aJob['id']).removeClass("hidden");
+			}
+
 			card.find('.action-panel .action-list-items .jobUnpublish').attr("data-job-id", aJob['id']);
-			card.find('.action-panel .action-list-items .jobFacebook').attr("href", getFacebookShareLink(url))
-			card.find('.action-panel .action-list-items .jobTwitter').attr("href", getTwitterShareLink(url))
-			card.find('.action-panel .action-list-items .jobLinkedin').attr("href", getLinkedInShareUrl(url))
+
 			if(len-1 == index)
 				card.find('.horizontal-separator').addClass('hidden');
 			recentJobsContainer.find('.detail-card').append(card);
@@ -428,10 +446,45 @@ $(document).ready(function(){
 		}
 	}
 
+	function onSuccessfulRefreshJob(topic, data){
+        hideSpinner("refresh")
+        closeModal()
+		toastNotify(1, "Job Refreshed Successfully")
+		setTimeout(function(){
+			 location.reload()
+		 }, 2000);
+	}
+	function onFailedRefreshJob(topic, data){
+        hideSpinner("refresh")
+		errorHandler(data)
+	}
+
+	function closeModal() {
+		removeBodyFixed()
+		$(".modal").addClass("hidden")
+	}
+
+	function onSuccessfulUnpublishedJob(topic, data) {
+		hideSpinner("unpublish")
+        closeModal()
+		toastNotify(1, "Job Unpublished Successfully")
+		setTimeout(function(){
+			 location.reload()
+		 }, 2000);
+	}
+
+	function onFailedUnpublishedJob(topic,data) {
+        hideSpinner("unpublish")
+		errorHandler(data)
+	}
 
 	var fetchInterviewsSubscription = pubsub.subscribe("fetchedInterviews", onFetchInterviews);
 	var fetchRecruiterCalendarSubscription=pubsub.subscribe('fetchedCalendars',onFetchCalendars);
 	var setCandidateActionSuccessSubscription = pubsub.subscribe("setCandidateActionSuccess", onSuccessfullCandidateAction)
+	var refreshJobSuccessSubscription = pubsub.subscribe("jobRefreshSuccess", onSuccessfulRefreshJob)
+	var refreshJobFailSubscription = pubsub.subscribe("jobRefreshFail", onFailedRefreshJob)
+	var unPublishJobSuccessSubscription = pubsub.subscribe("jobUnpublishSuccess", onSuccessfulUnpublishedJob);
+	var unPublishJobFailSubscription = pubsub.subscribe("jobUnpublishFail", onFailedUnpublishedJob);
 
 	function init(){
 		pubsub.publish("pageVisit", 1);
@@ -445,8 +498,44 @@ $(document).ready(function(){
 		var currentDate=moment().format("YYYY-MM-DD");
 		fetchRecruiterCalendar(recruiterId);
 		fetchInterviews(recruiterId,{pageContent: 6, pageNumber: 1, status: 2,fromDate:currentDate});
-		
+
 	}
 	init()
 
+	function showSpinner(type) {
+		if(type == "refresh") {
+			settings.jobRefreshButton.addClass('hidden')
+			settings.jobRefreshModal.find(".spinner").removeClass("hidden")
+			return
+		}
+		if(type == "unpublish") {
+			settings.jobUnpublishButton.addClass('hidden')
+			settings.jobUnpublishModal.find(".spinner").removeClass("hidden")
+			return
+		}
+
+	}
+
+	function hideSpinner(type){
+		if(type == "refresh") {
+			settings.jobRefreshButton.removeClass('hidden')
+			settings.jobRefreshModal.find(".spinner").addClass("hidden")
+			return
+		}
+		if(type == "unpublish") {
+			settings.jobUnpublishButton.removeClass('hidden')
+			settings.jobUnpublishModal.find(".spinner").addClass("hidden")
+			return
+		}
+
+	}
+
 })
+
+function errorHandler(data) {
+    var res = data.responseJSON
+    if(!res) {
+        return toastNotify(3, "Looks like you are not connected to the internet");
+    }
+    return toastNotify(3, res.message);
+}

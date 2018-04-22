@@ -52,7 +52,6 @@ jQuery(document).ready( function() {
               filterFlag+= 1;
             }
         }
-        console.log(filters.getFiltersObj())
         if(filterFlag > 0) {
             filters.addFiltersToContainer()
             filters.showAppliedFilters()
@@ -498,6 +497,7 @@ jQuery(document).ready( function() {
             parameters.offset = globalParameters.offset;
             parameters.pageContent = globalParameters.pageContent;
             showLoader()
+            debugger
             fetchJobApplications(jobId, parameters,recruiterId);
         }
     }
@@ -1127,6 +1127,9 @@ function getTitleFormat(title, regex) {
 }
 
 function errorHandler(data) {
+    if(data.status == 401) {
+        return window.location = "/"
+    }
     var res = data.responseJSON
     hideLoader()
     if(!res) {

@@ -116,7 +116,6 @@ function Header(){
 	function search() {
 		settings.globalSearch.submit(function(){
 			var str = settings.searchInput.val()
-			console.log(str)
 			window.location = "/recruiter/search?searchQuery=" + encodeURI(str)
   			return false
 		});
@@ -124,9 +123,12 @@ function Header(){
 
 	function resumeModal(profile){
 		settings.searchResume.on('click',function(){
-			console.log(profile.search)
+
 			if(profile.search && parseInt(profile.search) == 1) {
 				return window.location.href = 'https://search.iimjobs.com'
+			}
+			else if(profile.search && parseInt(profile.search) == 2) {
+				settings.searchResume.addClass("hidden");
 			}
 			addBodyFixed()
 			$('.resumeModal').removeClass('hidden');

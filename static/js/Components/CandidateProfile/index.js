@@ -15,7 +15,7 @@ jQuery(document).ready( function() {
     //initializing the models
     aCandidate.init();
 
-
+ 
     fetchCandidateProfile(recruiterId, jobId, applicationId)
     submitPageVisit(recruiterId, screenName, jobId);
     var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitSuccess:"+screenName, onPageVisitUpdateSuccess)
