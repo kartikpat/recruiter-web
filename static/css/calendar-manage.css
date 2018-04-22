@@ -1766,9 +1766,9 @@ span.sticker {
     .page-content .container .header-slot .manage-Calendar a {
       font-size: 12px; } }
 
-.wrapper {
+.wrapper-container {
   min-height: 100%; }
-  .wrapper .headers .heading {
+  .wrapper-container .headers .heading {
     font-family: "Droid Sans", sans-serif;
     color: #149075;
     font-size: 24px;
@@ -1778,7 +1778,7 @@ span.sticker {
     /* Approximation due to font substitution */
     margin-left: 16%;
     margin-top: 32px; }
-  .wrapper .headers .subheading {
+  .wrapper-container .headers .subheading {
     font-family: "Droid Sans", sans-serif;
     color: #212121;
     font-size: 14px;
@@ -1788,7 +1788,7 @@ span.sticker {
     /* Approximation due to font substitution */
     text-align: left;
     margin-left: 16%; }
-  .wrapper .headers .lheading {
+  .wrapper-container .headers .lheading {
     font-family: "Droid Sans", sans-serif;
     color: #212121;
     font-size: 18px;
@@ -1800,17 +1800,17 @@ span.sticker {
     margin-left: 16%;
     padding-top: 43px;
     padding-bottom: 43px; }
-  .wrapper .container .availability {
+  .wrapper-container .container .availability {
     padding-bottom: 42px;
     border-bottom: 1px solid #e8e8e8;
     margin-left: 16%;
     width: 70%;
     height: 120px; }
-    .wrapper .container .availability img {
+    .wrapper-container .container .availability img {
       border-radius: 50%;
       background-color: #f3fbfb;
       float: left; }
-    .wrapper .container .availability .head {
+    .wrapper-container .container .availability .head {
       font-family: "Droid Sans", sans-serif;
       color: #212121;
       font-size: 16px;
@@ -1819,22 +1819,22 @@ span.sticker {
       line-height: 25px;
       /* Approximation due to font substitution */
       margin-left: 125px; }
-    .wrapper .container .availability .text p {
+    .wrapper-container .container .availability .text p {
       position: relative;
       width: 100%;
       left: 30px; }
-  .wrapper .container .send-invite {
+  .wrapper-container .container .send-invite {
     padding-bottom: 42px;
     padding-top: 42px;
     margin-left: 16%;
     border-bottom: 1px solid #e8e8e8;
     width: 70%;
     height: 150px; }
-    .wrapper .container .send-invite img {
+    .wrapper-container .container .send-invite img {
       border-radius: 50%;
       background-color: #f3fbfb;
       float: left; }
-    .wrapper .container .send-invite .head {
+    .wrapper-container .container .send-invite .head {
       font-family: "Droid Sans", sans-serif;
       color: #212121;
       font-size: 16px;
@@ -1843,22 +1843,22 @@ span.sticker {
       line-height: 25px;
       /* Approximation due to font substitution */
       margin-left: 125px; }
-    .wrapper .container .send-invite .text p {
+    .wrapper-container .container .send-invite .text p {
       position: relative;
       width: 100%;
       left: 30px; }
-  .wrapper .container .scheduler {
+  .wrapper-container .container .scheduler {
     padding-bottom: 92px;
     padding-top: 42px;
     margin-left: 16%;
     border-bottom: 1px solid #e8e8e8;
     width: 70%;
     height: 150px; }
-    .wrapper .container .scheduler img {
+    .wrapper-container .container .scheduler img {
       border-radius: 50%;
       background-color: #f3fbfb;
       float: left; }
-    .wrapper .container .scheduler .head {
+    .wrapper-container .container .scheduler .head {
       font-family: "Droid Sans", sans-serif;
       color: #212121;
       font-size: 16px;
@@ -1867,15 +1867,15 @@ span.sticker {
       line-height: 25px;
       /* Approximation due to font substitution */
       margin-left: 125px; }
-    .wrapper .container .scheduler .text p {
+    .wrapper-container .container .scheduler .text p {
       position: relative;
       width: 100%;
       left: 30px; }
-  .wrapper .bottom-container {
+  .wrapper-container .bottom-container {
     background-color: #f7f7f7;
     width: 100%;
     padding: 1%; }
-    .wrapper .bottom-container p {
+    .wrapper-container .bottom-container p {
       font-family: "Droid Sans", sans-serif;
       color: #212121;
       font-size: 14px;
@@ -1886,7 +1886,7 @@ span.sticker {
       text-align: left;
       margin-left: 16%;
       padding-top: 26px; }
-    .wrapper .bottom-container .formgroup button {
+    .wrapper-container .bottom-container .formgroup button {
       -webkit-appearance: none;
       -moz-appearance: none;
       -ms-appearance: none;

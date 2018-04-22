@@ -148,6 +148,11 @@ body {
 	}
 }
 
+.header{
+	.header-wrapper{
+		max-width: 2000px;
+	}
+}
 
 .page-content {
 	@include page-content;
@@ -155,6 +160,7 @@ body {
 	padding:0;
 
 	.main-wrapper {
+		max-width:2000px;
 		.main-container {
 			width:100%;
 			max-width:2000px;
