@@ -898,7 +898,8 @@
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Components/GlobalSearch/model.js",
-				"static/js/Components/GlobalSearch/index.js"
+				"static/js/Components/GlobalSearch/index.js",
+				"static/js/vendor/tooltipster.main.min.js"
 			],
 			"prod" : [
 				"static/build/js/global-search.min.js"
@@ -1335,6 +1336,7 @@
 			"debug" : [
 				"static/css/utilities.css",
 				"static/css/header.css",
+				"static/css/modal.css",
 				"static/css/about-us.css",
 				"static/css/footer.css"
 			],
@@ -1345,7 +1347,12 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/header.js"
+				"static/js/header.js",
+				"static/js/utilities.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Utilities/modal.js",
+				"static/js/Components/Header/index.js"
+				
 			],
 			"prod" : [
 				"static/build/js/about-us.min.js"
@@ -1358,6 +1365,7 @@
 			"debug" : [
 				"static/css/utilities.css",
 				"static/css/header.css",
+				"static/css/modal.css",
 				"static/css/refund.css",
 				"static/css/footer.css"
 			],
@@ -1368,7 +1376,12 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/header.js"
+				"static/js/header.js",
+				"static/js/utilities.js",
+				"static/js/Utilities/modal.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js"
+
 			],
 			"prod" : [
 				"static/build/js/refund.min.js"
@@ -1382,6 +1395,7 @@
 			"debug" : [
 				"static/css/utilities.css",
 				"static/css/header.css",
+				"static/css/modal.css",
 				"static/css/contact-us.css",
 				"static/css/footer.css"
 			],
@@ -1392,7 +1406,11 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/header.js"
+				"static/js/header.js",
+				"static/js/utilities.js",
+				"static/js/Utilities/modal.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js"
 			],
 			"prod" : [
 				"static/build/js/contact-us.min.js"
@@ -1405,6 +1423,7 @@
 			"debug" : [
 				"static/css/utilities.css",
 				"static/css/header.css",
+				"static/css/modal.css",
 				"static/css/privacy.css",
 				"static/css/footer.css"
 			],
@@ -1415,7 +1434,11 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/header.js"
+				"static/js/header.js",
+				"static/js/utilities.js",
+				"static/js/Utilities/modal.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js"
 			],
 			"prod" : [
 				"static/build/js/about-us.min.js"
@@ -1428,6 +1451,7 @@
 			"debug" : [
 				"static/css/utilities.css",
 				"static/css/header.css",
+				"static/css/modal.css",
 				"static/css/terms-condition.css",
 				"static/css/footer.css"
 			],
@@ -1438,7 +1462,11 @@
 		"scripts": {
 			"debug": [
 				"static/js/vendor/jquery.min.js",
-				"static/js/header.js"
+				"static/js/header.js",
+				"static/js/utilities.js",
+				"static/js/Utilities/modal.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js"
 			],
 			"prod" : [
 				"static/build/js/about-us.min.js"

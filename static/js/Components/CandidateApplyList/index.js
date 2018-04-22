@@ -52,7 +52,6 @@ jQuery(document).ready( function() {
               filterFlag+= 1;
             }
         }
-        console.log(filters.getFiltersObj())
         if(filterFlag > 0) {
             filters.addFiltersToContainer()
             filters.showAppliedFilters()
@@ -498,6 +497,7 @@ jQuery(document).ready( function() {
             parameters.offset = globalParameters.offset;
             parameters.pageContent = globalParameters.pageContent;
             showLoader()
+            debugger
             fetchJobApplications(jobId, parameters,recruiterId);
         }
     }

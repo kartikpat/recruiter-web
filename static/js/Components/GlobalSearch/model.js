@@ -18,7 +18,7 @@ function candidateList() {
         settings.queryParam = $("#queryParam"),
         settings.candAppliedJobsClass = ".candAppliedJobs",
         settings.multipleJobListingClass= '.multipleJobListing',
-        settings.multipleJobListingTextClass= '.multipleJobListingText'
+        settings.multipleJobListingTextClass= '.multipleJobListingbox'
         onToggleJobList();
    }
 

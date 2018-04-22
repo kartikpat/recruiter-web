@@ -553,7 +553,7 @@ body {
             font-size: 16px;
             border: 0;
             border-bottom: 2px solid #e8e8e8;
-            padding: 10px 10px 10px 0;
+            padding: 10px 10px 6px 0;
             width: 100%; }
             .page-content .main-wrapper .main-container .intro-container .login-wrapper .login-container .formgroup input:focus {
               outline: none; }
