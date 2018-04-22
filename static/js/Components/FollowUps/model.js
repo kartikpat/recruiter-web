@@ -180,7 +180,7 @@ function candidateList() {
        });
        settings.candidateListing.append(str);
        if(dataArray.length< pageContent) {
-           return settings.candidateListing.append("<div class='no-data'>No more records!</div>")
+           return settings.candidateListing.append("<div class='no-data'>You have reached the end of the list</div>")
        }
    }
 

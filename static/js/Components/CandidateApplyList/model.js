@@ -923,13 +923,14 @@ function candidateList() {
 			animation: 'fade',
 			delay: 0,
 			side:['left'],
-			theme: 'tooltipster-borderless'
+            theme: 'tooltipster-borderless',
+
 		})
 
         settings.candidateDetailsModal.find(".tooltip").tooltipster({
 			animation: 'fade',
 			delay: 0,
-			side:['left'],
+            side:['left'],
 			theme: 'tooltipster-borderless'
 		})
     }

@@ -345,6 +345,9 @@
 .icon-twitter_logo::before {
   content: '\e816'; }
 
+.icon-light-bulb::before {
+  content: '\e84c'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -936,6 +939,9 @@ span.sticker {
 
 .icon-twitter_logo::before {
   content: '\e816'; }
+
+.icon-light-bulb::before {
+  content: '\e84c'; }
 
 .left {
   float: left; }
@@ -1633,6 +1639,9 @@ a {
 .icon-twitter_logo::before {
   content: '\e816'; }
 
+.icon-light-bulb::before {
+  content: '\e84c'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -2255,6 +2264,9 @@ span.sticker {
 .icon-twitter_logo::before {
   content: '\e816'; }
 
+.icon-light-bulb::before {
+  content: '\e84c'; }
+
 /*[Recruiter_Homepage]*/
 /*[/Recruiter_Homepage]*/
 /**** Fontello Font Icons : ****/
@@ -2572,6 +2584,9 @@ span.sticker {
 
 .icon-twitter_logo::before {
   content: '\e816'; }
+
+.icon-light-bulb::before {
+  content: '\e84c'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -2898,8 +2913,10 @@ span.sticker {
     .modal_overlay .category_listing_container .category_listing {
       height: 310px; }
   .modal_overlay .modal_body_footer {
-    position: relative;
-    height: 56px; }
+    position: absolute;
+    bottom: 10px;
+    height: 56px;
+    width: calc(100% - 50px); }
     .modal_overlay .modal_body_footer button {
       -webkit-appearance: none;
       -moz-appearance: none;
@@ -3010,7 +3027,7 @@ span.sticker {
   clear: both;
   margin: 0;
   margin-left: 15px;
-  height: 260px; }
+  height: 280px; }
   .modal_overlay .modal_content .modal_body .subcategory_listing.full {
     margin-right: 15px;
     height: 229px; }
@@ -4971,8 +4988,10 @@ input::-webkit-input-placeholder {
         .view-resume-modal .resume-sidebar .external-links ul li span.icon {
           width: 2em;
           margin-right: 5px; }
-      .view-resume-modal .resume-sidebar .external-links ul .invite:hover {
-        text-decoration: none; }
+      .view-resume-modal .resume-sidebar .external-links ul .invite {
+        margin-left: 4px; }
+        .view-resume-modal .resume-sidebar .external-links ul .invite:hover {
+          text-decoration: none; }
       .view-resume-modal .resume-sidebar .external-links ul:last-child {
         border-bottom: 0;
         padding-bottom: 0; }

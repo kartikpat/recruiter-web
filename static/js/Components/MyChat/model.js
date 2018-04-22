@@ -321,12 +321,23 @@ function Chat() {
    }
 
    function initializeTooltip() {
-        $(".chat-body").find(".tooltip").not(".prototype .tooltip").tooltipster({
-           animation: 'fade',
-           delay: 0,
-           side:['bottom'],
-           theme: 'tooltipster-borderless'
-       })
-   }
+        if(window.innerWidth<=768){
+            $(".chat-body").find(".tooltip").not(".prototype .tooltip").tooltipster({
+            animation: 'fade',
+            delay: 0,
+            side:['bottom'],
+            theme: 'tooltipster-borderless',
+            trigger:'click'
+            })
+        }
+        else{
+            $(".chat-body").find(".tooltip").not(".prototype .tooltip").tooltipster({
+                animation: 'fade',
+                delay: 0,
+                side:['bottom'],
+                theme: 'tooltipster-borderless'
+            })
+        } 
+    }
 
 }

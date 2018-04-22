@@ -77,13 +77,27 @@ $(document).ready(function(){
 	})
 
 	function initializeTooltip() {
-		$(".tooltip").tooltipster({
-		   animation: 'fade',
-		   delay: 0,
-		   side:['bottom'],
-		   theme: 'tooltipster-borderless',
-		   maxWidth: 150
-	   })
+
+		if(window.innerWidth<=768){
+			$(".tooltip").tooltipster({
+				animation: 'fade',
+				delay: 0,
+				side:['bottom'],
+				theme: 'tooltipster-borderless',
+				maxWidth: 500,	
+				trigger:'click'	
+			})	   
+		}
+		else{
+			$(".tooltip").tooltipster({
+			animation: 'fade',
+			delay: 0,
+			side:['bottom'],
+			theme: 'tooltipster-borderless',
+			maxWidth: 500,	
+			})
+		}
+
    	}
 
 	function onSuccessfullCandidateAction(topic, res) {
@@ -428,7 +442,7 @@ $(document).ready(function(){
 	function onFetchCalendars(topic,data){
 		var dataLength=data.data.length;
 		if(dataLength>1){
-			$('.schedulebutton').addClass('hidden');
+			$('.schedulebutton .links').text('Create Calendar').setAttribute("href", "//Interview-scheduler-updated");;
 		}
 	}
 

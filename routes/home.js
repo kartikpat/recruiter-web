@@ -611,6 +611,7 @@ module.exports = function(settings){
 			scripts: assetsMapper["about-us"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
+			hiddenActions: "hidden",
 			profile: req.profile
 		})
 		return
@@ -623,6 +624,7 @@ module.exports = function(settings){
 			scripts: assetsMapper["contact-us"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
+			hiddenActions: "hidden",
 			profile: req.profile
 		})
 		return
@@ -635,6 +637,7 @@ module.exports = function(settings){
 			scripts: assetsMapper["refund"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
+			hiddenActions: "hidden",
 			profile: req.profile
 		})
 		return
@@ -647,6 +650,7 @@ module.exports = function(settings){
 			scripts: assetsMapper["privacy"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
+			hiddenActions: "hidden",
 			profile: req.profile
 		})
 		return
@@ -659,6 +663,7 @@ module.exports = function(settings){
 			scripts: assetsMapper["terms-condition"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
+			hiddenActions: "hidden",
 			profile: req.profile
 		})
 		return

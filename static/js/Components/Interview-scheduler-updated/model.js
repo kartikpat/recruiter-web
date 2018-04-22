@@ -69,6 +69,9 @@ function Calendar(){
         Timer();
         copyTime();
         highlighter();
+        selectCreater();
+        startdate();
+        enddate();
     }
 
     function highlighter(){
@@ -234,7 +237,7 @@ function Calendar(){
     }
 
     function setDetails(object){
-        console.log(object);
+        console.log(object)
         settings.name.val(object["name"]);
         settings.message.val(object["message"],(/\(\d+-\d+ \w+\)$/));
         settings.teleMessage.val(object["telMessage"],(/\(\d+-\d+ \w+\)$/));
@@ -244,7 +247,6 @@ function Calendar(){
         startTimeMapper('breaks');
         settings.breakEnd.val(object.breakHours['to']);
         endTimeMapper('breaks');
-        console.log(timetable.slots);
         var previewslots=object.slots;
         availablehours(previewslots);
         var fromDate=object.date.from; //DD-MM-YYYY
@@ -261,7 +263,6 @@ function Calendar(){
             $('#enddatepicker').datepicker().datepicker('setDate', endDate);
             $('#radio-button-end').prop("checked",true)
         }
-        // debugger
         testHighlight(fromDate,toDate,previewslots);
         settings.submitButton.text("Update Calendar")
     }
@@ -291,6 +292,7 @@ function Calendar(){
     function testHighlight(fromDate,toDate,days){
        console.log(days);
        console.log(fromDate);
+       fromDate=moment(fromDate).format("YYYY-MM-DD");
        console.log(toDate);
        console.log(days.length); 
         var daySchema ={
@@ -311,12 +313,15 @@ function Calendar(){
             var fromDateMoment = moment(fromDate);
             var toDateMoment = moment(toDate);
             if(toDate && toDateMoment.isBefore(dateToMatch)){
-            //        debugger
-                    break;
+                break;
             }
-            if(!(fromDateMoment.isBefore(dateToMatch) ||fromDateMoment.isSame(dateToMatch)))
-                continue
+            console.log(fromDateMoment)
+            console.log(dateToMatch)
+            console.log(!(fromDateMoment.isBefore(dateToMatch) ||fromDateMoment.isSame(dateToMatch)))
+            if(!(fromDateMoment.isBefore(dateToMatch) ||fromDateMoment.isSame(dateToMatch))) 
+            continue
             for(var j=parseInt(start);j<parseInt(end);j+=30){
+                // debugger
                 if(j==30){
                     $('.fc-'+daySchema[id]).find("#hours-030").css({"text-decoration":"none" ,"opacity":"1","color":"#149075"});
                 }
@@ -353,7 +358,6 @@ function Calendar(){
     }
 
     function copytoall(){
-   
         $(document).on('mouseenter', '.dayId', function() {
             $(this).find(".button-container").show().css('display','inline-block');
         }).on('mouseleave', '.dayId', function () {
@@ -425,7 +429,6 @@ function Calendar(){
             columnFormat :'ddd \n D/M/Y'
           });
           settings.prevButton.on("click",function(){
-              console.log("hello");
               settings.fullcalendar.fullCalendar('prev');
                 Timer();
           })
