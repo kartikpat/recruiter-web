@@ -1830,6 +1830,8 @@ span.sticker {
         font-size: 14px;
         margin-top: 14px;
         margin-bottom: 22px; }
+        .page-content .dashboard .header-row .sub-heading .link-color {
+          color: #155d9a; }
   .page-content .separater {
     height: 124px;
     width: 1px;

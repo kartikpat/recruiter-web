@@ -119,8 +119,8 @@ $(document).ready(function(){
 		"morning": ""
 	}
 	dataModel.greetingSubText = {
-		"noActiveJob": "It’s quite silent around here. Get started - Post Jobs/Discover Candidates/Build your Brand",
-		"busy": "It looks busy around here! Good luck for your day ahead! ",
+		"noActiveJob": "It’s quite silent around here. Get started by <a href='/my-jobs' class='link-color'>posting a job.</a>",
+		"busy": "It looks busy around here! Good luck for your day ahead!",
 		"revisit": "We missed you while you were away! To keep you up-to-date, here is a quick glance of what has changed - ",
 		default: ""
 	}
@@ -279,9 +279,10 @@ $(document).ready(function(){
 	function onVisit(){
 		var recruiterName = profile.name;
 		var lastSeen = profile.lastSeen;
+		console.log(lastSeen)
 		var now = Date.now();
 		var iconClass
-		var text = "Welcome, "+recruiterName; // TODO: get recruitername from the recruiterobject;
+		var text = "Welcome, "+recruiterName+"!"; // TODO: get recruitername from the recruiterobject;
 		if(now - lastSeen > 72*60*60*1000){
 			text = "Welcome back, "+recruiterName;
 			dataModel.revisit = true;
@@ -297,7 +298,7 @@ $(document).ready(function(){
 				text = "Good Afternoon, "+recruiterName
 				iconClass="icon-afternoon";
 			}
-			if( currentHour > 17 && currentHour < 5 ){
+			if( currentHour > 17  || currentHour < 5 ){
 				text = "Good Evening, "+recruiterName
 				iconClass="icon-sunset";
 			}
