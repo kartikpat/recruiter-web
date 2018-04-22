@@ -14,14 +14,12 @@ function Manage() {
         jQuery(".header .menu-list-item.my-interviews").addClass("active");
     }
 
-
     function cloneRow(data){
-        // data.length=0;
-        if(data.length==0){     
+        if(data.length==0){
             settings.nocalendarview.removeClass('hidden');
             return
         }
-        $('.container').removeClass('hidden');
+        $('.page-content').removeClass('hidden');
         var data = sortArrayOfObjectsByKeyDescending(data, "timestamp")
         data.forEach(function(aRow){
             var calendarRow =  settings.calendarRowPrototype.clone().removeClass('prototype hidden');

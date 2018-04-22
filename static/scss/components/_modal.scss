@@ -208,7 +208,10 @@
         clear: both;
         margin: 0;
         margin-left: 15px;
-        height: 280px;
+        height: 295px;
+        &.institute {
+            height: 251px;
+        }
         &.full {
             margin-right: 15px;
             height: 229px;
