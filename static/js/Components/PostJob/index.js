@@ -78,6 +78,9 @@ $(document).ready(function(){
 })
 
 function errorHandler(data) {
+	if(data.status == 401) {
+        return window.location = "/"
+    }
     var res = data.responseJSON
 	if(!res) {
         return toastNotify(3, "Looks like you are not connected to the internet");

@@ -1,5 +1,5 @@
 function buyPlan(recruiterId, data){
-	postRequest(baseUrl+"/recruiter/"+recruiterId+"/buy-continue", null , data, function(res){
+	postRequest(baseUrl+"/recruiter/"+recruiterId+"/buy-continue", {} , data, function(res){
 		if(res.status && res.status =='success'){
 			res.extraParameters = {}
 			res.extraParameters = data;

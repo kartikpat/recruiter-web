@@ -4120,8 +4120,6 @@ input::-webkit-input-placeholder {
       cursor: pointer; }
       .mass-action-second.second-fold .sidebar-section .action .link .icon-star {
         margin-right: 6px !important; }
-    .mass-action-second.second-fold .sidebar-section .action .link:hover {
-      text-decoration: underline; }
     .mass-action-second.second-fold .sidebar-section .action-links {
       margin: 10px auto; }
       .mass-action-second.second-fold .sidebar-section .action-links .invite-links {
@@ -5466,6 +5464,8 @@ input::-webkit-input-placeholder {
         width: 100%;
         color: #fff;
         margin: 5px auto; }
+        .mass-action-second.second-fold .sidebar-section .action-links .invite-links .underline:hover {
+          text-decoration: underline; }
     .mass-action-second.second-fold .first-wrap {
       width: calc(45% - 5px); }
     .mass-action-second.second-fold .second-wrap {
@@ -5506,9 +5506,16 @@ input::-webkit-input-placeholder {
 
 .candidate-action-area .button-action-list {
   background: #FFF !important; }
+  .candidate-action-area .button-action-list .icon-tick {
+    color: #1f8f75; }
 
-.candidate-action-area .button-action-list li :hover {
+.candidate-action-area .underline:hover {
   text-decoration: underline; }
+
+.non-underline {
+  color: #2b2b2b; }
+  .non-underline:hover {
+    text-decoration: none; }
 
 .button-action-list.candidateOtherActions {
   background: #FFF; }
@@ -5555,3 +5562,6 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
     width: 95%; }
   .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span {
     padding: 6px 12px; } }
+
+.icon-tick {
+  color: #1f8f75 !important; }

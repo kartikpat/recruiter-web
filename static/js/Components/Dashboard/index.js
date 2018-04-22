@@ -80,7 +80,7 @@ $(document).ready(function(){
 		$(".tooltip").tooltipster({
 		   animation: 'fade',
 		   delay: 0,
-		   side:['right'],
+		   side:['bottom'],
 		   theme: 'tooltipster-borderless',
 		   maxWidth: 150
 	   })
@@ -151,11 +151,13 @@ $(document).ready(function(){
 			settings.jobUnpublishModal.find('.error').removeClass('hidden');
 			return
 		}
+		showSpinner("unpublish")
 		submitUnpublishJob(recruiterId, jobId, {reasonId: reason});
 
 	})
 	settings.jobRefreshButton.click(function(e) {
 		var jobId = $(this).attr('data-refresh-job-id');
+		showSpinner("refresh")
 		submitRefreshJob(recruiterId, jobId);
 	});
 
@@ -235,13 +237,22 @@ $(document).ready(function(){
 			card.find(".title .meta-content .postedOn .label").text(moment(aJob['created']).format('D MMM YYYY'));
 			card.find(".stats .totalApplications .value").text(aJob["totalApplications"]).attr('href', candidateApplyUrl.replace(':publishedId', aJob['publishedId']).replace(':status', ''));
 			card.find(".stats .newApplications .value").text(aJob["newApplications"]).attr('href', candidateApplyUrl.replace(':publishedId', aJob['publishedId']).replace(':status', '')+"?orderBy=2&status=0");
-			var url = baseUrlJob + aJob["url"];
+			if(aJob["url"]) {
+				var url = baseUrlJob + aJob["url"];
+				card.find('.action-panel .action-list-items .jobFacebook').attr("href", getFacebookShareLink(url))
+				card.find('.action-panel .action-list-items .jobTwitter').attr("href", getTwitterShareLink(url))
+				card.find('.action-panel .action-list-items .jobLinkedin').attr("href", getLinkedInShareUrl(url))
+			}
+			if(aJob["cnfi"]) {
+				card.find(".action-panel .action-list-items .socialIcons").addClass("hidden")
+			}
 
-			card.find('.action-panel .action-list-items .jobRefresh').attr("data-job-id", aJob['id']);
+			if(aJob["refreshable"]) {
+				card.find('.action-panel .action-list-items .jobRefresh').attr("data-job-id", aJob['id']).removeClass("hidden");
+			}
+
 			card.find('.action-panel .action-list-items .jobUnpublish').attr("data-job-id", aJob['id']);
-			card.find('.action-panel .action-list-items .jobFacebook').attr("href", getFacebookShareLink(url))
-			card.find('.action-panel .action-list-items .jobTwitter').attr("href", getTwitterShareLink(url))
-			card.find('.action-panel .action-list-items .jobLinkedin').attr("href", getLinkedInShareUrl(url))
+
 			if(len-1 == index)
 				card.find('.horizontal-separator').addClass('hidden');
 			recentJobsContainer.find('.detail-card').append(card);
@@ -422,7 +433,7 @@ $(document).ready(function(){
 	}
 
 	function onSuccessfulRefreshJob(topic, data){
-        // jobList.hideSpinner("refresh")
+        hideSpinner("refresh")
         closeModal()
 		toastNotify(1, "Job Refreshed Successfully")
 		setTimeout(function(){
@@ -430,7 +441,7 @@ $(document).ready(function(){
 		 }, 2000);
 	}
 	function onFailedRefreshJob(topic, data){
-        // jobList.hideSpinner("refresh")
+        hideSpinner("refresh")
 		errorHandler(data)
 	}
 
@@ -440,16 +451,16 @@ $(document).ready(function(){
 	}
 
 	function onSuccessfulUnpublishedJob(topic, data) {
-		// jobList.hideSpinner("unpublish")
+		hideSpinner("unpublish")
         closeModal()
-		toastNotify(1, "Job Unpublish Successfully")
+		toastNotify(1, "Job Unpublished Successfully")
 		setTimeout(function(){
 			 location.reload()
 		 }, 2000);
 	}
 
 	function onFailedUnpublishedJob(topic,data) {
-        // jobList.hideSpinner("unpublish")
+        hideSpinner("unpublish")
 		errorHandler(data)
 	}
 
@@ -476,6 +487,34 @@ $(document).ready(function(){
 
 	}
 	init()
+
+	function showSpinner(type) {
+		if(type == "refresh") {
+			settings.jobRefreshButton.addClass('hidden')
+			settings.jobRefreshModal.find(".spinner").removeClass("hidden")
+			return
+		}
+		if(type == "unpublish") {
+			settings.jobUnpublishButton.addClass('hidden')
+			settings.jobUnpublishModal.find(".spinner").removeClass("hidden")
+			return
+		}
+
+	}
+
+	function hideSpinner(type){
+		if(type == "refresh") {
+			settings.jobRefreshButton.removeClass('hidden')
+			settings.jobRefreshModal.find(".spinner").addClass("hidden")
+			return
+		}
+		if(type == "unpublish") {
+			settings.jobUnpublishButton.removeClass('hidden')
+			settings.jobUnpublishModal.find(".spinner").addClass("hidden")
+			return
+		}
+
+	}
 
 })
 

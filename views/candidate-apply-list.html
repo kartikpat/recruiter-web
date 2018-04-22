@@ -579,9 +579,9 @@
 								<span class="icon save-icon">
 									<i class="icon-star"></i>
 								</span>
-								<span>Save for later</span>
+								<span class="underline">Save for later</span>
 							</div>
-							<div class="chat link candidateChatModal">
+							<div class="chat link candidateChatModal underline">
 								<span class="icon"><i class="icon-chat"></i></span>
 								Chat with
 								<span class="firstName candidate-first-name"></span>
@@ -590,24 +590,24 @@
 									<span class="icon">
 											<i class="icon-download_arrow"></i>
 										</span>
-								<span>Download Resume</span>
+								<span class="underline">Download Resume</span>
 							</div>
 						</div>
 						<div class="action-links">
-							<div class="invite invite-links"><span class="icon sendInvite"></span>Send Interview Invite:</div>
+							<div class="invite invite-links"><span class="icon sendInvite"></span><span class="interviewinvite">Send Interview Invite:</span></div>
 							<div class="invite-links face-invite">
 								<span class="icon">
 									<i class="icon-face-to-face"></i>
 								</span>
 								<span data-invite-id="1" class="inviteF2f invite tooltip tooltipstered" state="default">
-									<span class="context">Face to Face</span>
+									<span class="context  underline">Face to Face</span>
 									<span class="icon-container hidden"><i class="icon-tick"></i></span>
 								</span>
 							</div>
 							<div class="invite-links tele-invite">
 								<span class="icon"><i class="icon-telephone"></i></span>
 								<span data-invite-id="2" class="inviteTelephonic invite tooltip tooltipstered" state="default">
-									<span class="context">Telephonic</span>
+									<span class="context  underline">Telephonic</span>
 									<span class="icon-container hidden"><i class="icon-tick"></i></span>
 								</span>
 							</div>
@@ -628,22 +628,22 @@
 		</div>
     	<div class="sidebar-section external-links">
     		<ul>
-    			<li class="save candidateSaveModal"><i class="icon-star_later"></i>Save for Later</li>
-    			<li class="chat candidateChatModal"><span class="icon"><i class="icon-chat"></i></span>Chat with <span class="firstName candidate-first-name">Shreya</span></li>
-				<li class="download candidateDownloadResume"><span class="icon"><i class="icon-download_arrow"></i></span>Download Resume</li>
-				<li class="invite"><span class="icon sendInvite"><i class="icon-interview"></i></span>Send Interview Invite</li>
+    			<li class="save candidateSaveModal"><span class="icon"><i class="icon-star_later"></i></span><span class="underline">Save for Later</span></li>
+    			<li class="chat candidateChatModal"><span class="icon"><i class="icon-chat"></i></span><span class="underline">Chat with <span class="firstName candidate-first-name">Shreya</span></span></li>
+				<li class="download candidateDownloadResume"><span class="icon"><i class="icon-download_arrow"></i></span><span class="underline">Download Resume</span></li>
+				<li class="invite"><span class="icon sendInvite"><i class="icon-interview"></i></span><span class="interviewinvite">Send Interview Invite</span></li>
 				<li class="invite-links">
 					<span class="icon"><i class="icon-face-to-face"></i></span>
-					<span data-invite-id="1" class="inviteF2f invite tooltip underline" state="default">
-						<span class="context">Face to Face</span>
+					<span data-invite-id="1" class="inviteF2f invite tooltip" state="default">
+						<span class="context underline inviteText">Face to Face</span>
 						{{>loader}}
 						<span class="icon-container hidden"><i class="icon-tick"></i></span>
 					</span>
 				</li>
 				<li class="invite-links">
 					<span class="icon"><i class="icon-telephone"></i></span>
-					<span data-invite-id="2" class="inviteTelephonic invite tooltip underline"  state="default">
-						<span class="context">Telephonic</span>
+					<span data-invite-id="2" class="inviteTelephonic invite tooltip"  state="default">
+						<span class="context underline inviteText">Telephonic</span>
 							{{>loader}}
 						<span class="icon-container hidden"><i class="icon-tick"></i></span>
 					</span>
@@ -787,39 +787,39 @@
 							<label class="action-list-label">Other Actions</label>
 							<ul class="action-list-items">
 								<li>
-									<div class="candidateSendMessage link-color">
+									<div class="candidateSendMessage link-color underline">
 										<span class="context">Send Message</span>
 										{{>loader}}
 										<!-- <span class="icon-container"><i class="icon-tick"></i></span> -->
 									</div>
 								</li>
 								<li>
-									<div class="candidateDownloadResume link-color">
+									<div class="candidateDownloadResume link-color underline">
 										<span>Download Resume</span>
 										{{>loader}}
 										<!-- <span class="icon-container"><i class="icon-tick"></i></span>	 -->
 									</div>
 								</li>
 								<li>
-									<div class="candidateSave link-color">
+									<div class="candidateSave link-color underline">
 										<span>Save for later</span>
 										{{>loader}}
 										<!-- <span class="icon-container"><i class="icon-tick"></i></span> -->
 									</div>
 								</li>
-								<li><div class="candidateAddComment link-color">Add Comment</div></li>
-								<li><div class="candidateAddTag link-color">Add Tag</div></li>
+								<li><div class="candidateAddComment link-color underline">Add Comment</div></li>
+								<li><div class="candidateAddTag link-color underline">Add Tag</div></li>
 								<li class="interview-invite interviewinvite">Send Interview Invite</li>
 								<li>
 									<div data-invite-id="1" class="inviteF2f tooltip link-color invite" state="default">
-										<span class="context">Face to Face</span>
+										<span class="context inviteText underline">Face to Face</span>
 										{{>loader}}
 										<span class="icon-container hidden"><i class="icon-tick"></i></span>
 									</div>
 								</li>
 								<li>
 									<div data-invite-id="2" class="inviteTelephonic tooltip link-color invite" state="default">
-										<span class="context">Telephonic</span>
+										<span class="context inviteText underline">Telephonic</span>
 										{{>loader}}
 										<span class="icon-container hidden"><i class="icon-tick"></i></span>
 									</div>
