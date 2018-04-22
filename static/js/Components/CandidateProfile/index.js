@@ -15,7 +15,7 @@ jQuery(document).ready( function() {
     //initializing the models
     aCandidate.init();
 
- 
+
     fetchCandidateProfile(recruiterId, jobId, applicationId)
     submitPageVisit(recruiterId, screenName, jobId);
     var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitSuccess:"+screenName, onPageVisitUpdateSuccess)
@@ -183,6 +183,7 @@ jQuery(document).ready( function() {
             return toastNotify(1, "Tag Deleted Successfully")
         }
         if(res.action == "comment") {
+            aCandidate.addComment(res.comment)
             return toastNotify(1, "Comment Added Successfully")
         }
         var arr = [];
