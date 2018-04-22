@@ -92,7 +92,7 @@ function candidateList() {
             settings.bulkDownArrow.removeClass("hidden")
         }
 
-        $(".downloadExcelMass").attr('href', settings.url);
+        $(".downloadExcelMass").attr('href', settings.url + "?token="+getCookie("recruiter-access-token")+"");
 	}
 
     function onClickBulkBackIcon() {
@@ -842,6 +842,7 @@ function candidateList() {
 
     function setHref(str) {
         var href = settings.url;
+        str += "token="+getCookie("recruiter-access-token")+""
         href += str;
         settings.downloadExcelMass.attr("href", href);
     }
