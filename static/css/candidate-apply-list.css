@@ -4995,6 +4995,10 @@ input::-webkit-input-placeholder {
         margin-left: 4px; }
         .view-resume-modal .resume-sidebar .external-links ul .invite:hover {
           text-decoration: none; }
+      .view-resume-modal .resume-sidebar .external-links ul .inviteF2f {
+        margin-left: -3px; }
+      .view-resume-modal .resume-sidebar .external-links ul .inviteTelephonic {
+        margin-left: -3px; }
       .view-resume-modal .resume-sidebar .external-links ul:last-child {
         border-bottom: 0;
         padding-bottom: 0; }

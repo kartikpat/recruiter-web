@@ -1999,11 +1999,14 @@ input::-webkit-input-placeholder {
                     &:hover {
                         text-decoration: none;
                     }
-                }
-                .invite-links {
-                    // margin-left: 30px;
-                    // list-style: initial;
-                }
+				}
+				
+				.inviteF2f{
+					margin-left: -3px;
+				}
+				.inviteTelephonic{
+					margin-left: -3px;
+				}
 
 				&:last-child {
 					border-bottom:0;
