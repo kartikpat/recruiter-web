@@ -256,20 +256,30 @@ $("#conversationListing").on('click','.conversationItem', function() {
             chatContainerBox.find(".info-container .secondary-content").text(obj["name"] + " has applied to " + obj["title"] + " Current Status is "+stat[obj["status"]]+"").removeClass("hidden")
         }
 		chatContainerBox.find(".chat-input").attr("data-channel-name", channelName)
-		chatContainerBox.find(".chat-input").attr("data-id",$(this).attr("data-id") )
-        chatContainerBox.find(".chat-input").on('keydown',function(){
+        chatContainerBox.find(".chat-input").attr("data-id",$(this).attr("data-id") );
+        
+        var scrollLockChat = false;
+        chatContainerBox.find(".chat-input").scroll(function(){
             var limitH = $(this).attr('data-limit');
-            var innerH = chatContainerBox.find(".chat-input")[0].scrollHeight;
-            if(innerH <= parseInt(limitH)){
+            if(scrollLockChat)
+                return;
+            setTimeout(function(){
+                scrollLockChat = true;
+                var innerH = chatContainerBox.find(".chat-input")[0].scrollHeight;
+                console.log(limitH)
+                console.log(innerH)
+                if(innerH <= parseInt(limitH)){
 
-               chatContainerBox.find(".chat-input").height(innerH);
-               chatContainerBox.find(".chat-div-content").height(274 - innerH)
-            }
-            else{
+                chatContainerBox.find(".chat-input").height(innerH);
+                chatContainerBox.find(".chat-div-content").height(274 - innerH)
+                }
+                else{
 
-              chatContainerBox.find(".chat-input").height(limitH);
-              chatContainerBox.find(".chat-div-content").height(274 - limitH)
-            }
+                chatContainerBox.find(".chat-input").height(limitH);
+                chatContainerBox.find(".chat-div-content").height(274 - limitH)
+                }
+                scrollLockChat = false;
+            }, 250)
         })
         chatContainerBox.find(".no-start").removeClass("hidden")
         chatContainerBox.find(".start").addClass("hidden")
