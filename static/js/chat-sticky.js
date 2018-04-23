@@ -15,9 +15,6 @@ var stat = {
     5: "Reviewed"
 };
 
-
-
-
 var chatStore= {}
 function saveToStore(dataArray){
     dataArray.forEach(function(anObj) {
@@ -51,8 +48,6 @@ function populateSideChatView(array) {
 }
 
 $(document).ready(function(){
-
-
 
     if ($(document).width() < 1000) {
         maxCandidateChats = 1
@@ -162,8 +157,8 @@ chatContainer.on('click','.candidate-card', function() {
 
             if(innerH <= parseInt(limitH)){
 
-               chatContainerBox.find(".chat-input").height(innerH);
-               chatContainerBox.find(".chat-div-content").height(274 - innerH)
+               chatContainerBox.find(".chat-input").height(innerH - 22);
+               chatContainerBox.find(".chat-div-content").height(274 - innerH + 22)
             }
             else{
 
