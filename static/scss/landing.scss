@@ -879,3 +879,9 @@ body {
 	text-align: center;
 	font-size: 14px;
 }
+@media all and (max-width:480px) {
+	.page-content .main-wrapper .main-container .recruit-container .hero-image-container img {
+		width: 260px;
+		float: right;
+	}
+}
