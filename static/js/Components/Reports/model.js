@@ -106,7 +106,7 @@ function reportList() {
 
 
    function setHref() {
-       settings.downloadExcelButton.attr("href", "http://13.126.92.102:8000/recruiter/"+config["recruiterId"]+"/reports-download");
+       settings.downloadExcelButton.attr("href", baseUrl + "/recruiter/"+config["recruiterId"]+"/reports-download?token="+getCookie("recruiter-access-token")+"");
    }
 
    return {

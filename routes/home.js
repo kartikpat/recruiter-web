@@ -113,7 +113,7 @@ module.exports = function(settings){
 
 	app.get("/", isAuthenticated,function(req, res){
 		res.render("dashboard", {
-			title: "IIM JOBS | iimjobs.com",
+			title: "Recruiter Dashboard | iimjobs.com",
 			styles:  assetsMapper["dashboard"]["styles"][mode],
 			scripts: assetsMapper["dashboard"]["scripts"][mode],
 			baseUrl: baseUrl,
@@ -128,7 +128,7 @@ module.exports = function(settings){
 
 	app.get("/post-job",isAuthenticated, function(req, res){
 		res.render("post-job",{
-			title: "IIM JOBS | iimjobs.com",
+			title: "Recruiter Web - Post Job | iimjobs.com",
 			action: "Post Job",
 			styles:  assetsMapper["post-job"]["styles"][mode],
 			scripts: assetsMapper["post-job"]["scripts"][mode],
@@ -141,7 +141,7 @@ module.exports = function(settings){
 	})
 	app.get("/job/:jobId/edit", isAuthenticated, function(req, res){
 		res.render("post-job",{
-			title: "IIM JOBS | Edit job",
+			title: "Recruiter Web - Post Job | iimjobs.com",
 			action: "Edit Job",
 			styles:  assetsMapper["post-job"]["styles"][mode],
 			scripts: assetsMapper["post-job"]["scripts"][mode],
@@ -779,7 +779,7 @@ module.exports = function(settings){
 
 	app.get("/booked-slots",isAuthenticated, function(req,res){
 		res.render("booked-slots", {
-			title:"Recruiter Web - Candidate Profile | iimjobs.com",
+			title:"Recruiter Web - Booked Slots | iimjobs.com",
 			styles:  assetsMapper["booked-slots"]["styles"][mode],
 			scripts: assetsMapper["booked-slots"]["scripts"][mode],
 			baseUrl: baseUrl,
@@ -791,7 +791,7 @@ module.exports = function(settings){
 
 	app.get("/calendar-manage",isAuthenticated, function(req,res){
 		res.render("calendar-manage", {
-			title:"Recruiter Web - Candidate Profile | iimjobs.com",
+			title:"Recruiter Web - Manage Calendar | iimjobs.com",
 			styles:  assetsMapper["calendar-manage"]["styles"][mode],
 			scripts: assetsMapper["calendar-manage"]["scripts"][mode],
 			baseUrl: baseUrl,

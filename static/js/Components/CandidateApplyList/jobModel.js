@@ -118,7 +118,7 @@ function Job(){
 
 	function onClickCreateCalendar() {
 		settings.createCalendar.click(function(e){
-			alert("clicked")
+			window.location = "/interview-scheduler-updated"
 		})
 	}
 

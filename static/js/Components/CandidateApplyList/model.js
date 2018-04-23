@@ -92,7 +92,7 @@ function candidateList() {
             settings.bulkDownArrow.removeClass("hidden")
         }
 
-        $(".downloadExcelMass").attr('href', settings.url);
+        $(".downloadExcelMass").attr('href', settings.url + "?token="+getCookie("recruiter-access-token")+"");
 	}
 
     function onClickBulkBackIcon() {
@@ -563,6 +563,7 @@ function candidateList() {
         settings.rowContainer.on('click', settings.candidateDownloadResumeButton, function(event){
             event.preventDefault()
             var url = $(this).attr("data-href");
+            url += "?type=download"
             window.open(url);
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             var status = $(this).closest(settings.candidateRowClass).attr("data-status")
@@ -841,6 +842,7 @@ function candidateList() {
 
     function setHref(str) {
         var href = settings.url;
+        str += "token="+getCookie("recruiter-access-token")+""
         href += str;
         settings.downloadExcelMass.attr("href", href);
     }
