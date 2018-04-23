@@ -836,14 +836,50 @@
 						<span class="tags tagLink hidden"><span class="viewTagButton link-color">View Tags</span></span>
 					</div>
 				</div>
+				<div class="comment-tooltip action-tooltip">
+					<div class="sidebar-section comments candidateCommentContainer">
+						<h3>Comment</h3>
+			
+						<div class="comment-box">
+							<textarea id="" class="comment-textarea hidden" readonly=""></textarea>
+						</div>
+						<div class="comment-container">
+							<textarea id="" placeholder="Add Comment" name="name" class="candidateCommentTextarea"></textarea>
+						</div>
+						<div class="action-buttons">
+							<span class="cand-comment-button button green candidateAddCommentButton addButton">Add</span>
+							<span class="editbutton candidateAddEditButton hidden">Edit Comment</span>
+						</div>
+					</div>
+				</div>
+				<div class="tag-tooltip action-tooltip hidden">
+					<div class="sidebar-section tags candidateTagContainer">
+						<h3>Tags</h3>
+						<div class="">
+							<div class="pill-listingg-container">
+								<div class="ui-widget">
+									<input placeholder="Add Tag" class="recruiterTags cand-add-tag input-field candidateTagInput" type="text" name="" value="">
+									<div class="error-field hidden tagInputError" id=""><p>Input field can't be empty</p></div>
+								</div>
+								<div class="action-buttons cand-add-tag-action-btn">
+									<span class="button green candidateAddTagButton cand-add-tag-button addButton">Add</span>
+								</div>
+							</div>
+							<div class="skill-tags-area candidateTagList"></div>
+						</div>
+					</div>
+				</div>	
+
+				</div>
 			</div>
 			<div class="section sticker-container">
 				<span class="sticker followed-up hidden isFollowedUp">Followed up</span>
 			</div>
+
 			<div class="separator"></div>
 
 	</a>
-
+	
 </div>
 
 
@@ -1070,6 +1106,7 @@
 	<input type="checkbox" id="">
 	<label for=""></label>
 </div>
+
 
 {{>modalContent}}
 {{>footer}}
