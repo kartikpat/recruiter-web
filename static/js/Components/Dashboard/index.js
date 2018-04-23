@@ -119,7 +119,7 @@ $(document).ready(function(){
 		"morning": ""
 	}
 	dataModel.greetingSubText = {
-		"noActiveJob": "It’s quite silent around here. Get started by <a href='/my-jobs' class='link-color'>posting a job.</a>",
+		"noActiveJob": "It’s quite silent around here. Get started by <a href='/post-job' class='link-color'>posting a job.</a>",
 		"busy": "It looks busy around here! Good luck for your day ahead!",
 		"revisit": "We missed you while you were away! To keep you up-to-date, here is a quick glance of what has changed - ",
 		default: ""
@@ -318,7 +318,7 @@ $(document).ready(function(){
 	}
 
 	function updateSubGreetings(data){
-		greetingsContainer.find(".sub-heading").html(data);
+		greetingsContainer.find(".sub-heading").html(data.text);
 	}
 
 
