@@ -1994,6 +1994,10 @@ input::-webkit-input-placeholder {
 					}
 
 				}
+				.table-row-separator{
+					border-bottom: 1px solid #e8e8e8!important;
+					margin-top: 20px;
+				}
                 .invite {
 					margin-left: 4px;
                     &:hover {

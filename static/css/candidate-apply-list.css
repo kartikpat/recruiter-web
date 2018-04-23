@@ -4991,6 +4991,9 @@ input::-webkit-input-placeholder {
         .view-resume-modal .resume-sidebar .external-links ul li span.icon {
           width: 2em;
           margin-right: 5px; }
+      .view-resume-modal .resume-sidebar .external-links ul .table-row-separator {
+        border-bottom: 1px solid #e8e8e8 !important;
+        margin-top: 20px; }
       .view-resume-modal .resume-sidebar .external-links ul .invite {
         margin-left: 4px; }
         .view-resume-modal .resume-sidebar .external-links ul .invite:hover {

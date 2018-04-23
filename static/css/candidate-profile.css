@@ -2018,14 +2018,16 @@ span.sticker {
           left: 0;
           right: 0;
           width: 125px;
-          height: 125px; }
+          height: 125px;
+          object-fit: cover; }
           .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-image img {
             width: 100%;
             height: 100%;
             border-radius: 50%;
             border: 5px solid #FFF;
             box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-            background-color: #efefef; }
+            background-color: #efefef;
+            object-fit: cover; }
         .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information {
           text-align: center; }
           .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information p.profile-name {
@@ -2541,6 +2543,9 @@ span.sticker {
         .view-resume-modal .resume-sidebar .external-links ul li span.icon {
           width: 2em;
           margin-right: 10px; }
+      .view-resume-modal .resume-sidebar .external-links ul .table-row-separator {
+        border-bottom: 1px solid #e8e8e8 !important;
+        margin-top: 20px; }
       .view-resume-modal .resume-sidebar .external-links ul .invite:hover {
         text-decoration: none; }
       .view-resume-modal .resume-sidebar .external-links ul .invite-links {
