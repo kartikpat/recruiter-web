@@ -15,6 +15,8 @@ function Manage() {
     }
 
     function cloneRow(data){
+
+
         // data.length=0;
         if(data.length==0){
             $('.page-content').addClass('hidden');
@@ -22,6 +24,7 @@ function Manage() {
             return
         }
         $('.wrapper-container').addClass('hidden');
+
         var data = sortArrayOfObjectsByKeyDescending(data, "timestamp")
         data.forEach(function(aRow){
             var calendarRow =  settings.calendarRowPrototype.clone().removeClass('prototype hidden');
