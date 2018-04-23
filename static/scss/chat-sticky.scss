@@ -240,11 +240,12 @@
                             .user-image {
                                 float:left;
                                 margin:0 15px 0 0;
-
+                                // object-fit: cover!important;
                                 img {
                                     border-radius:50%;
                                     height:43px;
                                     width:43px;
+                                    // object-fit: cover!important;
                                 }
                             }
                             .message-area {
