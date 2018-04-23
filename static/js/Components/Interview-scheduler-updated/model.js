@@ -572,6 +572,13 @@ function Calendar(){
             },200);
             return false
         }
+        if($('#start_date').datepicker().val()>$('#end_date').val()){
+            settings.radioInput.next('.error').text("Start Date should not be greater than end date"); 
+            $('html, body').animate({
+                scrollTop: (settings.radioInput.offset().top)
+            },200);
+            return false
+        }
         var start=settings.breakStart.val();
         var end=settings.breakEnd.val();
         var status=check();
