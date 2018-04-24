@@ -671,6 +671,19 @@ module.exports = function(settings){
 		return
 	});
 
+	app.get("/error",function(req, res){
+		res.render("error404", {
+			title:"Recruiter Web -Error | iimjobs.com",
+			styles:  assetsMapper["error404"]["styles"][mode],
+			scripts: assetsMapper["error404"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			hiddenActions: "hidden",
+			profile: req.profile
+		})
+		return
+	});
+
 	app.get("/account-created", isVerified, function(req,res){
 		var email = req.query.email || "";
 		res.render("account-created", {

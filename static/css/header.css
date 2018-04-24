@@ -1076,8 +1076,6 @@ b {
 @media all and (max-width: 600px) {
   .header .mobile-menu {
     display: none; }
-  .header .domain_logo {
-    display: none; }
   .header .search-container {
     width: 70%;
     left: 50px; } }
@@ -1099,8 +1097,6 @@ b {
 @media all and (max-width: 480px) {
   .header .mobile-menu {
     display: none; }
-  .header .domain_logo {
-    display: none; }
   .header .search-container {
     width: 73%;
     left: 5px; }
@@ -1120,3 +1116,8 @@ b {
     .header .search-container form .search-box {
       font-size: 14px;
       padding: 2px; } }
+
+.mobile-menu-container .mobile-menu-content .domain_logo a span {
+  font-size: 11px;
+  display: block;
+  text-align: right; }

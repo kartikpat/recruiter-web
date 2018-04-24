@@ -140,6 +140,7 @@ b{
             span {
                 font-family:inherit;
                 font-size: $logoBylineFontSize;
+                
             }
             p {
                 font-family: inherit;
@@ -524,7 +525,7 @@ b{
             display:none
         }
         .domain_logo {
-            display:none;
+            // display:none;
         }
 
         .search-container {
@@ -562,7 +563,7 @@ b{
             display:none
         }
         .domain_logo {
-            display:none;
+            // display:none;
         }
 
         .search-container {
@@ -604,4 +605,10 @@ b{
 
     }
 
+}
+
+.mobile-menu-container .mobile-menu-content .domain_logo a span {
+    font-size: 11px;
+    display: block;
+    text-align: right;
 }
