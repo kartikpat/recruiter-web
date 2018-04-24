@@ -398,7 +398,7 @@ function Candidate() {
             item.coverLetter.html(nl2br(aData["cover"]));
             $(".coverLetterTab").removeClass("hidden");
         }
-        if(aData["comment"]) {
+        if(aData["comment"]){
 
             settings.commentTextarea.val(aData["comment"]).removeClass("hidden");
             $(settings.candidateCommentTextareaClass).val(aData["comment"]).addClass("hidden");
@@ -454,13 +454,13 @@ function Candidate() {
         if(type == "tag") {
             if(window.innerWidth <= 1024)
                 return focusOnElement(item.mobTag, settings.mobCandidateTagContainerClass)
-            return focusOnElement(item.tag, settings.candidateTagContainerClass)
+                return focusOnElement(item.tag, settings.candidateTagContainerClass)
         }
 
         if(type == "comment") {
             if(window.innerWidth <= 1024)
                 return focusOnElement(item.mobComment, settings.mobCandidateCommentContainerClass)
-            return focusOnElement(item.comment, settings.candidateCommentContainerClass)
+                return focusOnElement(item.comment, settings.candidateCommentContainerClass)
         }
     }
 
@@ -555,12 +555,11 @@ function Candidate() {
 
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
             var comment = ($(settings.candidateCommentTextareaClass).val()).trim();
+            console.log(comment);
             if(!comment) {
                 return
             }
-
-
-            fn(applicationId, comment);
+            fn(applicationId,comment);
         });
 
         settings.candidateEditComment.on('click',function(event){

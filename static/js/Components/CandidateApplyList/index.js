@@ -201,20 +201,21 @@ jQuery(document).ready( function() {
 
     candidates.onClickAddTag(function(applicationId) {
         var candidateDetails = store.getCandidateFromStore(applicationId);
-        page('/'+applicationId+'#tag')
+        // page('/'+applicationId+'#tag')
     })
     candidates.onClickAddComment(function(applicationId) {
         var candidateDetails = store.getCandidateFromStore(applicationId);
-        page('/'+applicationId+'#comment')
+        // page('/'+applicationId+'#comment')
     })
     candidates.onClickViewComment(function(applicationId) {
         var candidateDetails = store.getCandidateFromStore(applicationId);
-        page('/'+applicationId+'#comment')
+        // page('/'+applicationId+'#comment')
     })
     candidates.onClickViewTag(function(applicationId) {
          var candidateDetails = store.getCandidateFromStore(applicationId);
-         page('/'+applicationId+'#tag')
+        //  page('/'+applicationId+'#tag')
     })
+    
     candidates.onClickSendMessage(function(candidateId,applicationId){
         var candidate = store.getCandidateFromStore(applicationId);
         var array = [];
@@ -236,7 +237,6 @@ jQuery(document).ready( function() {
     aCandidate.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
         // console.log('here')
         if($(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f').attr('state')=='default'){
-            debugger
             var defaultCalendarId = theJob.getDefaultCalendar();
             if(!defaultCalendarId)
                 return theJob.openSelectDefaultCalendarModal();
@@ -400,6 +400,7 @@ jQuery(document).ready( function() {
             var obj = store.getCandidateFromStore(res.applicationId)
             obj["comment"] = res.comment;
             aCandidate.addComment(res.comment);
+            candidates.addComment(res.comment,res.applicationId);
             candidates.showComment(res.applicationId);
             return toastNotify(1, "Comment Added Successfully")
         }
@@ -643,6 +644,14 @@ jQuery(document).ready( function() {
          var ob = {
              "comment": comment
          }
+         setCandidateAction(recruiterId, jobId, "comment" ,applicationId,ob );
+     })
+
+     candidates.onClickComment(function(applicationId,comment){
+        var parameters = {}
+        var ob = {
+            "comment": comment
+        }
          setCandidateAction(recruiterId, jobId, "comment" , applicationId, ob);
      })
 

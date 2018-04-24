@@ -5,6 +5,7 @@ function candidateList() {
 
     function init(profile, baseUrl){
         settings.rowContainer= $('.candidateListing'),
+        settings.rowContainerClass='.candidateListing'
         settings.header= $('#jobDetails'),
         settings.candidateRowClass= ".candidateRow",
         settings.candidateInviteButton= ".candidateSendInterviewInvite",
@@ -55,6 +56,11 @@ function candidateList() {
         settings.to = ''
         settings.emptyView = $(".empty-screen"),
         settings.contactMenu=$('.contact-menu'),
+        settings.candidateAddCommentButtonClass= '.candidateAddComment',
+        settings.candidateCommentTextareaClass= '.candidateCommentText',
+        settings.commentTextarea=('.comment-text'),
+        settings.candidateEditComment=('.candidateAddEdit'),
+        settings.candidateEditCommentButton=$('.candidateAddEdit'),
         settings.contactMenubutton=$('.contactMenubutton');
         settings.status = ''
         settings.url = baseUrl+"/recruiter/"+recruiterId+"/jobs/"+jobId+"/applications/download/excel";
@@ -72,6 +78,8 @@ function candidateList() {
         onClickActionListItems()
         contactMenu()
         onClickBulkBackIcon()
+        onClickModal()
+        closetooltipModal()
 
         $(window).click(function(event) {
     		$(settings.candidateOtherActionsClass).addClass('inactive');
@@ -218,7 +226,11 @@ function candidateList() {
 		card.attr('data-candidate-id', id);
 
 		return {
-			element: card,
+            element: card,
+            Textarea:card.find('.comment-text'),
+            // Commentarea: card.find('.comment-tooltip .candidateCommentText'),
+            // AddCommentButton:card.find('.comment-tooltip .candidateAddComment'),
+            // EditComment:card.find('.comment-tooltip .candidateAddEdit'),
             image: card.find('.js_img'),
 			name: card.find('.js_name'),
 			experience: card.find('.js_exp'),
@@ -383,7 +395,8 @@ function candidateList() {
             item.recommendationsLink.removeClass("hidden")
         }
         var flag=0;
-        if(aData["comment"]) {
+        if(aData["comment"]){
+            console.log(aData["comment"])
             item.viewCommentLink.removeClass("hidden")
             flag++;
         }
@@ -391,6 +404,7 @@ function candidateList() {
             item.viewTagLink.removeClass("hidden")
             flag++;
         }
+        
         if(flag>1){
               item.viewTagLink.css("border-left","1px solid #e8e8e8");
         }
@@ -500,6 +514,7 @@ function candidateList() {
         settings.rowContainer.on('click', settings.viewCommentButtonClass, function(e){
             e.preventDefault();
             var applicationId= $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            $(this).closest(settings.candidateRowClass).find('.comment-tooltip').removeClass('hidden');
             fn(applicationId);
         })
     }
@@ -596,19 +611,70 @@ function candidateList() {
 
     function onClickAddTag(fn) {
         settings.rowContainer.on('click',settings.candidateAddTagButton ,function(event) {
-            event.preventDefault()
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            fn(applicationId);
+            settings.rowContainer.find('.tag-tooltip').addClass('hidden');
+            settings.rowContainer.find('.comment-tooltip').addClass('hidden');
+            $(".candidateRow[data-application-id="+applicationId+"]").find('.tag-tooltip').removeClass('hidden');
+            
         })
     }
 
-    function onClickAddComment(fn) {
+    function onClickAddComment(fn){
         settings.rowContainer.on('click',settings.candidateAddCommentButton ,function(event) {
-            event.preventDefault()
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            fn(applicationId);
+            settings.rowContainer.find('.comment-tooltip').addClass('hidden');
+            settings.rowContainer.find('.tag-tooltip').addClass('hidden');
+            $(".candidateRow[data-application-id="+applicationId+"]").find('.comment-tooltip').removeClass('hidden');
+        
         })
     }
+    
+    function onClickComment(fn) {
+        settings.rowContainer.on('click', settings.candidateAddCommentButtonClass,function(event) {
+            event.stopPropagation();
+            event.preventDefault();
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            
+            var comment = ($(this).closest(settings.candidateRowClass).find(settings.candidateCommentTextareaClass).val()).trim();
+            if(!comment) {
+                return
+            }
+            fn(applicationId, comment);
+        });
+
+        settings.rowContainer.on('click',settings.candidateEditComment,function(event){
+            event.stopPropagation();
+            event.preventDefault();
+            $(this).closest(settings.candidateRowClass).find(settings.commentTextarea).addClass("hidden");
+            $(this).closest(settings.candidateRowClass).find(settings.candidateCommentTextareaClass).removeClass("hidden");
+            $(this).closest(settings.candidateRowClass).find(settings.candidateAddCommentButtonClass).removeClass("hidden");
+            $(this).closest(settings.candidateRowClass).find(settings.candidateEditComment).addClass("hidden");
+        });
+    }
+
+    function addComment(comment,applicationId){
+        console.log(comment);
+        console.log(applicationId);
+        $(".candidateRow[data-application-id="+applicationId+"]").find(settings.candidateCommentTextareaClass).addClass("hidden");
+        $(".candidateRow[data-application-id="+applicationId+"]").find(settings.candidateAddCommentButtonClass).addClass("hidden");
+        $(".candidateRow[data-application-id="+applicationId+"]").find(settings.commentTextarea).val(comment);
+        $(".candidateRow[data-application-id="+applicationId+"]").find(settings.commentTextarea).removeClass("hidden");
+        $(".candidateRow[data-application-id="+applicationId+"]").find(settings.candidateEditComment).removeClass("hidden");
+    }
+
+    function onClickModal(){
+        settings.rowContainer.on('click','.action-tooltip',function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+        })
+    }
+
+    function closetooltipModal(){
+        settings.rowContainer.on('click','.close-modal',function(event) {
+            $('.action-tooltip').addClass('hidden');
+        })
+    }
+
 
     function onClickShortlistCandidate(fn) {
         settings.rowContainer.on('click', settings.candidateShortlistButtonClass, function(event) {
@@ -1040,6 +1106,9 @@ function candidateList() {
         onClickCandidate: onClickCandidate,
         onClickAddTag: onClickAddTag,
         onClickAddComment: onClickAddComment,
+        onClickComment:onClickComment,
+        onClickModal:onClickModal,
+        closetooltipModal:closetooltipModal,
         onClickSendMessage: onClickSendMessage,
         onClickSaveCandidate: onClickSaveCandidate,
         onClickDownloadResume: onClickDownloadResume,
@@ -1049,6 +1118,7 @@ function candidateList() {
         candidateActionTransition: candidateActionTransition,
         onClickViewComment: onClickViewComment,
         onClickViewTag: onClickViewTag,
+        addComment:addComment,
         onClickDownloadMassExcel: onClickDownloadMassExcel,
         updateJobStats: updateJobStats,
         onClickMassComment: onClickMassComment,

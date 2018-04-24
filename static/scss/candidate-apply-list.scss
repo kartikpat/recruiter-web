@@ -742,25 +742,75 @@ input::-webkit-input-placeholder {
 									}
 
 									.action-tooltip{
-										position: absolute;
+									    position: absolute;
 										top: 15%;
 										right: 0;
-										width: 200px;
-										left: 55%;
+										width: 335px;
+										left: 45%;
 										margin: 0px;
 										background: #FFF;
 										box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 										border: 1px solid #e8e8e8;
 										list-style: none;
 										padding: 5px 0;
+										text-align: left;
+										background-color: #fff;
+										background-clip: padding-box;
+										border: 2px solid #fff;
+										border-radius: 6px;
+										-webkit-box-shadow: 0 1px 8px rgba(57,73,76,0.35);
+										box-shadow: 0 1px 8px rgba(57,73,76,0.35);
+										white-space: normal;
 										z-index: 5;
+										.candidate-image{
+											display: inline-block;
+											img{
+												width: 30px;
+												height: 30px;
+												border-radius: 50%;
+												margin-left: 10px;
+												object-fit: cover;
+    											color: #E0E0E0;
+											}
+										}
+										.personal-details{
+											display: inline-block;
+											width: 70%;
+											margin:5px;
+										}
+										.sidebar-section{
+											.label{
+												margin-bottom: 10px;
+												color: #222;
+												font-weight: 700;
+												font-size: 13px;
+												margin-left: 10px;
+											}
+										}
+										.icon-container{
+											vertical-align: top;
+											margin-top: 4px;
+											float: right;
+											color: #149075;
+										}
 										.comment-container{
 											padding: 0 10px;
+											.candidateCommentTextarea{
+												resize: none;
+											}
 										}
 										.action-buttons{
 											padding: 10px;
 										}
-									}
+										.pill-listingg-container {
+											position: relative;
+											width: 95%;
+											margin: 0 auto;
+										}
+
+										.candidateAddEditButton{
+											color: $link-color;
+										}									}
 
 								}
 
