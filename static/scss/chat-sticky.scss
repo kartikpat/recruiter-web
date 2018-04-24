@@ -209,7 +209,7 @@
         height: 0;
         transition: 0.2s height ease-in-out;
         .chat-div-content {
-            height: 274px;
+            height: 278px;
             background-color: #fff;
             z-index: 2;
             overflow: auto;
@@ -264,7 +264,8 @@
                                         padding:10px;
                                         font-size:$base-font-size;
                                         max-width: calc(100vw - 130px);
-                                        word-break: break-all;
+                                        word-break: break-word;
+                                        text-align: left;
                                     }
 
                                     &.message-timestamp {
@@ -303,7 +304,8 @@
                                         padding:10px;
                                         font-size:$base-font-size;
                                         max-width: calc(100vw - 130px);
-                                        word-break: break-all;
+                                        word-break: break-word;
+                                        text-align: left;
                                     }
 
                                     &.message-timestamp {
@@ -329,13 +331,15 @@
             position: relative;
             textarea {
                 width: 100%;
-                padding: 11px;
+                padding: 8px;
                 border: 1px solid #ccc;
                 border-radius: 0px;
-                height: 41px;
+                height: 37px;
+                max-height: 75px;
                 line-height: 1.3;
-
+                font-size: 14px;
                 box-sizing: border-box;
+                overflow-y: auto;
                 &:focus {
                     border: 1px solid #149075;
                     outline: none;

@@ -121,6 +121,17 @@ function getMsgReceivedElement(data) {
 var isShowCollapsedCandidate = 0;
 var count = 0;
 
+function textAreaAdjust(o) {
+
+    if(o.scrollHeight == 35 || o.scrollHeight > 75) {
+        return
+    }
+
+    o.style.height = (o.scrollHeight + 2) + "px";
+
+    $(o).closest(".content-footer-container").find(".chat-div-content").height(293 - (o.scrollHeight));
+}
+
 chatContainer.on('click','.candidate-card', function() {
 
 	if(!($(this).hasClass("selected-sticky"))) {
@@ -150,22 +161,21 @@ chatContainer.on('click','.candidate-card', function() {
 		chatContainerBox.find(".chat-input").attr("data-channel-name", channelName)
 		chatContainerBox.find(".chat-input").attr("data-id",$(this).attr("data-id") )
 
-        chatContainerBox.find(".chat-input").on('keydown',function(){
 
-            var limitH = $(this).attr('data-limit');
-            var innerH = chatContainerBox.find(".chat-input")[0].scrollHeight;
+        chatContainerBox.find(".chat-input").on("keydown", function(e) {
 
-            if(innerH <= parseInt(limitH)){
-
-               chatContainerBox.find(".chat-input").height(innerH - 22);
-               chatContainerBox.find(".chat-div-content").height(274 - innerH + 22)
+            if (e.which == 13) {
+                e.preventDefault();
+                displayAMessage(this)
+            } else if (e.which == 13 && !e.shiftKey) {
+                displayAMessage(this)
+            } else if (e.which == 13 && e.shiftKey) {
+                textAreaAdjust(this);
+            } else {
+                textAreaAdjust(this);
             }
-            else{
 
-              chatContainerBox.find(".chat-input").height(limitH);
-              chatContainerBox.find(".chat-div-content").height(274 - limitH)
-            }
-        })
+        });
 
         chatContainerBox.find(".no-start").removeClass("hidden")
         chatContainerBox.find(".start").addClass("hidden")
@@ -257,30 +267,21 @@ $("#conversationListing").on('click','.conversationItem', function() {
         }
 		chatContainerBox.find(".chat-input").attr("data-channel-name", channelName)
         chatContainerBox.find(".chat-input").attr("data-id",$(this).attr("data-id") );
-        
-        var scrollLockChat = false;
-        chatContainerBox.find(".chat-input").scroll(function(){
-            var limitH = $(this).attr('data-limit');
-            if(scrollLockChat)
-                return;
-            setTimeout(function(){
-                scrollLockChat = true;
-                var innerH = chatContainerBox.find(".chat-input")[0].scrollHeight;
-                console.log(limitH)
-                console.log(innerH)
-                if(innerH <= parseInt(limitH)){
 
-                chatContainerBox.find(".chat-input").height(innerH);
-                chatContainerBox.find(".chat-div-content").height(274 - innerH)
-                }
-                else{
+        chatContainerBox.find(".chat-input").on("keydown", function(e) {
 
-                chatContainerBox.find(".chat-input").height(limitH);
-                chatContainerBox.find(".chat-div-content").height(274 - limitH)
-                }
-                scrollLockChat = false;
-            }, 250)
-        })
+            if (e.which == 13) {
+                e.preventDefault();
+                displayAMessage(this)
+            } else if (e.which == 13 && !e.shiftKey) {
+                displayAMessage(this)
+            } else if (e.which == 13 && e.shiftKey) {
+                textAreaAdjust(this);
+            } else {
+                textAreaAdjust(this);
+            }
+
+        });
         chatContainerBox.find(".no-start").removeClass("hidden")
         chatContainerBox.find(".start").addClass("hidden")
 		var that = $(this)
@@ -427,60 +428,15 @@ $(".chat-candidate-boxes").on('click','.chat-div-candidate .info-buttons .infoIc
     $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataId+"] .content-footer-container .info-container").toggleClass("hidden")
 })
 
-var displayAMessageClick = function() {
 
-	var channelName = $(this).closest(".footer").find(".chat-input").attr("data-channel-name");
-	var dataID = $(this).closest(".footer").find(".chat-input").attr("data-id");
-	var message = ($(this).closest(".footer").find(".chat-input").val()).trim()
-	var that = $(this).closest(".footer").find(".chat-input")
+var displayAMessage = function(element) {
+	var channelName = $(element).attr("data-channel-name");
+	var dataID = $(element).attr("data-id");
+	var message = ($(element).val()).trim()
+	var that = $(element)
     if(message == "") {
-        return $(this).closest(".footer").find(".chat-input").val('')
+        return $(element).val('')
     }
-		publish({
-            UUID:uuid || btoa(recruiterId+'--'+recruiterEmail),
-            deviceID: getCookie("sessID"),
-            time: Date.now(),
-            usr: recruiterId,
-            name: profile["name"],
-            tt:1,
-            msg: message,
-            img: profile.img_link,
-            type: 1
-        }, channelName, function(status, response){
-            if(status.statusCode == 200) {
-                var elem = {}
-    			elem.entry = {}
-    	        elem.entry.msg = message;
-    	        elem.entry.time = parseInt(moment().format('x'))
-
-    			var item = getMsgSentElement(elem)
-    			$(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
-
-                initializeTooltip()
-                that.val('');
-                scrollToBottom(channelName)
-            }
-            else if (status.category == "PNNetworkIssuesCategory") {
-                var data = {}
-                data.message = "Looks like you are not connected to the internet"
-                toastNotify(3, data.message)
-            }
-        })
-
-}
-
-
-var displayAMessage = function(event) {
-    var key = event.which;
-	var channelName = $(this).attr("data-channel-name");
-	var dataID = $(this).attr("data-id");
-	var message = ($(this).val()).trim()
-	var that = $(this)
-    if(message == "") {
-        return $(this).val('')
-    }
-    if(key == 13) {
-
 
 		publish({
             UUID:uuid || btoa(recruiterId+'--'+recruiterEmail),
@@ -504,8 +460,9 @@ var displayAMessage = function(event) {
 
                 initializeTooltip()
                 that.val('');
-                that.height(17);
-                that.closest(".content-footer-container").find(".chat-div-content").height(254)
+                that.outerHeight(37);
+                that.closest(".content-footer-container").find(".chat-div-content").outerHeight(278);
+
                 scrollToBottom(channelName)
             }
             else if (status.category == "PNNetworkIssuesCategory") {
@@ -514,7 +471,7 @@ var displayAMessage = function(event) {
                 toastNotify(3, data.message)
             }
         })
-    }
+
 }
 
 function receiveMessage(m) {
@@ -575,21 +532,20 @@ function openChat(m) {
         }
         chatContainerBox.find(".chat-input").attr("data-channel-name", channelName)
 		chatContainerBox.find(".chat-input").attr("data-id",dataID)
-        chatContainerBox.find(".chat-input").on('keydown',function(){
-            var limitH = $(this).attr('data-limit');
-            var innerH = chatContainerBox.find(".chat-input")[0].scrollHeight;
+        chatContainerBox.find(".chat-input").on("keydown", function(e) {
 
-            if(innerH <= parseInt(limitH)){
-
-               chatContainerBox.find(".chat-input").height(innerH);
-               chatContainerBox.find(".chat-div-content").height(274 - innerH)
+            if (e.which == 13) {
+                e.preventDefault();
+                displayAMessage(this)
+            } else if (e.which == 13 && !e.shiftKey) {
+                displayAMessage(this)
+            } else if (e.which == 13 && e.shiftKey) {
+                textAreaAdjust(this);
+            } else {
+                textAreaAdjust(this);
             }
-            else{
 
-              chatContainerBox.find(".chat-input").height(limitH);
-              chatContainerBox.find(".chat-div-content").height(274 - limitH)
-            }
-        })
+        });
         chatContainerBox.find(".no-start").removeClass("hidden")
         chatContainerBox.find(".start").addClass("hidden")
 
@@ -649,13 +605,13 @@ function openChat(m) {
     }
 }
 
-$(".chat-candidate-boxes").on('keypress','.chat-input', displayAMessage);
+// $(".chat-candidate-boxes").on('keypress','.chat-input', displayAMessage);
 
 $(".chat-candidate-boxes").on('focus','.chat-input', function(){
     $(this).closest('.chat-div-candidate').find('.chat-div-header').removeClass('newMessageHeader')
 });
 
-$(".chat-candidate-boxes").on('click','.iconSendButton', displayAMessageClick);
+// $(".chat-candidate-boxes").on('click','.iconSendButton', displayAMessageClick);
 
 function receivePresence(p) {
 
@@ -700,20 +656,20 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
         		chatContainerBox.attr("data-id",array[0]["userID"]);
         		chatContainerBox.find(".chat-input").attr("data-channel-name", channelName)
         		chatContainerBox.find(".chat-input").attr("data-id",array[0]["userID"] )
-                chatContainerBox.find(".chat-input").on('keydown',function(){
-                    var limitH = $(this).attr('data-limit');
-                    var innerH = chatContainerBox.find(".chat-input")[0].scrollHeight;
-                    if(innerH <= parseInt(limitH)){
+                chatContainerBox.find(".chat-input").on("keydown", function(e) {
 
-                       chatContainerBox.find(".chat-input").height(innerH);
-                       chatContainerBox.find(".chat-div-content").height(274 - innerH)
+                    if (e.which == 13) {
+                        e.preventDefault();
+                        displayAMessage(this)
+                    } else if (e.which == 13 && !e.shiftKey) {
+                        displayAMessage(this)
+                    } else if (e.which == 13 && e.shiftKey) {
+                        textAreaAdjust(this);
+                    } else {
+                        textAreaAdjust(this);
                     }
-                    else{
 
-                      chatContainerBox.find(".chat-input").height(limitH);
-                      chatContainerBox.find(".chat-div-content").height(274 - limitH)
-                    }
-                })
+                });
                 chatContainerBox.find(".no-start").addClass("hidden")
                 chatContainerBox.find(".start").removeClass("hidden")
                 chatContainerBox.attr("data-channel-name",channelName);
@@ -768,20 +724,20 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
         chatContainerBox.attr("data-id",array[0]["userID"]);
         chatContainerBox.find(".chat-input").attr("data-channel-name", channelName)
         chatContainerBox.find(".chat-input").attr("data-id",array[0]["userID"] )
-        chatContainerBox.find(".chat-input").on('keydown',function(){
-            var limitH = $(this).attr('data-limit');
-            var innerH = chatContainerBox.find(".chat-input")[0].scrollHeight;
-            if(innerH <= parseInt(limitH)){
+        chatContainerBox.find(".chat-input").on("keydown", function(e) {
 
-               chatContainerBox.find(".chat-input").height(innerH);
-               chatContainerBox.find(".chat-div-content").height(274 - innerH)
+            if (e.which == 13) {
+                e.preventDefault();
+                displayAMessage(this)
+            } else if (e.which == 13 && !e.shiftKey) {
+                displayAMessage(this)
+            } else if (e.which == 13 && e.shiftKey) {
+                textAreaAdjust(this);
+            } else {
+                textAreaAdjust(this);
             }
-            else{
 
-              chatContainerBox.find(".chat-input").height(limitH);
-              chatContainerBox.find(".chat-div-content").height(274 - limitH)
-            }
-        })
+        });
         chatContainerBox.find(".no-start").removeClass("hidden")
         chatContainerBox.find(".start").addClass("hidden")
         chatContainerBox.attr("data-channel-name",channelName);
