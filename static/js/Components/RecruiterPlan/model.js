@@ -53,7 +53,7 @@ function Plans() {
            var elem = $(this).closest(".modal").find("input");
            var contact = (elem.val()).trim();
            if(!contact) {
-               elem.next().text("Input Can't be empty.").removeClass("hidden");
+               elem.next().text("Please enter your contact number").removeClass("hidden");
                return
            }
            fn(contact, planType)

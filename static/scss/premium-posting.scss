@@ -216,18 +216,29 @@
                 }
                 .button-container {
                     text-align: center;
-
-                    button {
-                        margin: 15px 0;
-                        border: 0;
-                        background: $inline-link-color;
-                        color: $color-white;
-                        font-size: 20px;
-                        width: 50%;
-                        border-radius: 4px;
-                        padding: 8px;
+                    .spinner{
+                        padding-top: 10px;
                     }
-                }
+                    .button-wrapper-signature{
+                        margin: 15px auto;
+                        width: 185px;
+                        height: 40px;
+                        border: 0;
+                        background: #149075;
+                        color: #FFF;
+                        border-radius: 4px;
+                        button {
+                            border: 0;
+                            background: $inline-link-color;
+                            color: $color-white;
+                            font-size: 20px;
+                            width: 185px;
+                            height: 40px;
+                            border-radius: 4px;
+                            padding: 8px;
+                        }
+                       
+                }   }
             }
         }
         .recruiter-plan-platinum {
@@ -310,16 +321,27 @@
                 }
                 .button-container {
                     text-align: center;
-
-                    button {
-                        margin: 15px 0;
-                        border: 0px solid #4c4c4c;
+                    .spinner{
+                        padding-top: 10px;
+                    }
+                    .button-wrapper-platinum{
+                        margin: 15px auto;
+                        width: 185px;
+                        height: 40px;
+                        border: 0;
                         background: $link-color;
-                        color: $color-white;
-                        font-size: 20px;
-                        width: 50%;
+                        color: #FFF;
                         border-radius: 4px;
-                        padding: 8px;
+                        button {
+                            border: 0px solid #4c4c4c;
+                            background: $link-color;
+                            color: $color-white;
+                            font-size: 20px;
+                            width: 185px;
+                            height: 40px;
+                            border-radius: 4px;
+                            
+                        }
                     }
                 }
             }
@@ -467,4 +489,8 @@
             }
         }
     }
+}
+
+.error-slot {
+    margin: 4px 0 0 40px!important;
 }
