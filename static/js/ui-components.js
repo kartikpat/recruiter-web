@@ -3,25 +3,26 @@
 //   jQuery(this).toggleClass('inactive');
 // })
 
-jQuery(".course-option").on('click', function() {
+jQuery("body").on('click',".course-option", function() {
 	jQuery(this).toggleClass("active");
 	jQuery(this).siblings().removeClass("active");
 })
 
-jQuery(".button-action-list").on("click", function() {
+jQuery("body").on("click",".button-action-list", function() {
 	jQuery(this).toggleClass("inactive");
 })
 
-jQuery(".pill-button input").on('focus', function() {
+jQuery("body").on('focus',".pill-button input", function() {
+	console.log("ss")
 	jQuery(this).parent().removeClass("inactive");
 });
 
-jQuery(".pill-button input").on('blur', function() {
+jQuery("body").on('blur',".pill-button input", function() {
 	jQuery(this).parent().addClass("inactive");
 	jQuery(this).attr("placeholder", jQuery(this).attr("data-placeholder-value"));
 });
 
-jQuery(".pill-button input").on('keyup', function(e) {
+jQuery("body").on('keyup',".pill-button input", function(e) {
 	var searchString = jQuery(this).val();
 	if(jQuery(this).closest(".tag-container").attr("data-enable-custom") && jQuery(this).closest(".tag-container").attr("data-enable-custom") == "true") {
 		jQuery(this).siblings(".pill-listing").find("li[data-value=custom]").text(searchString);
@@ -32,7 +33,7 @@ jQuery(".pill-button input").on('keyup', function(e) {
 		} else {
 			jQuery(el).addClass("hidden");
 		}
-	});
+	});	
 	if(jQuery(".pill-listing li").not(".hidden").length == 0){
 
 		jQuery(".pill-listing ul").addClass("hidden");
@@ -43,7 +44,7 @@ jQuery(".pill-button input").on('keyup', function(e) {
 	jQuery(this).siblings(".pill-listing").find("li[data-value=custom]").addClass("hidden");
 });
 
-jQuery(".tag-container").on("mouseenter", ".pill-listing li", function() {
+jQuery(".tag-container").on("mouseenter",".tag-container",".pill-listing li", function() {
 	if($(this).hasClass("disabled")){
 		return
 	}

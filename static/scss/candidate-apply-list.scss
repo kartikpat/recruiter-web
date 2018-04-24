@@ -867,21 +867,22 @@ input::-webkit-input-placeholder {
 	}
 }
 
-.job-tags {
+.candidateTagContainer {
 
-    @include tag-container;
-    border: 0;
-    padding: 0;
-    .pill-button input[type=text] {
-    padding: 7px 17px;
-    margin: 3px;
-    border-radius: 0;
-    border: 1px solid #e8e8e8;
-    width: 100%;
-    cursor: pointer;
-    /* transition: all 0.2s ease-in-out; */
-}
-}
+	.tag-container {
+		@include tag-container;
+	}
+		// border: 0;
+		// padding: 0;
+		// .pill-button input[type=text] {
+		// padding: 7px 17px;
+		// margin: 3px;
+		// border-radius: 0;
+		// border: 1px solid #e8e8e8;
+		// width: 100%;
+		// cursor: pointer;
+		/* transition: all 0.2s ease-in-out; */
+	}
 
 .mass-action-container {
     position: fixed;

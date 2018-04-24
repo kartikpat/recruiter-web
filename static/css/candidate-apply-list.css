@@ -4023,100 +4023,92 @@ input::-webkit-input-placeholder {
             .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover .candidate-select {
               display: block; }
 
-.job-tags {
-  border: 1px solid #e8e8e8;
-  display: block;
-  padding: 7px 20px;
-  position: relative;
-  font-size: 0;
-  border: 0;
-  padding: 0; }
-  .job-tags .input-tag {
-    display: inline-block;
-    background: #4fa995;
-    margin: 3px;
-    padding: 0px 10px;
-    border-radius: 20px; }
-    .job-tags .input-tag .tag-icons {
-      display: inline-block;
-      font-size: 14px;
-      cursor: pointer; }
-    .job-tags .input-tag .tag-name {
-      display: inline-block; }
-    .job-tags .input-tag span {
-      color: #FFF;
-      font-size: 14px;
-      padding: 8px 5px;
-      display: inline-block; }
-  .job-tags .pill-button {
-    position: relative;
-    display: inline-block; }
-    .job-tags .pill-button input[type=text] {
-      padding: 7px 17px;
-      margin: 3px;
-      border-radius: 50px;
-      border: 1px solid #e8e8e8;
-      color: #2b2b2b;
-      font-size: 14px;
-      border: 1px solid transparent;
-      background: #FFF;
-      z-index: 10;
-      width: 200px;
-      cursor: pointer;
-      transition: all 0.2s ease-in-out; }
-      .job-tags .pill-button input[type=text]:focus {
-        border-color: #4fa995; }
-    .job-tags .pill-button .pill-listing {
-      display: inline-block;
-      width: 100%;
-      position: absolute;
-      top: 0;
-      transform: translateY(38px);
-      opacity: 1;
-      left: 0;
-      z-index: 3;
-      transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; }
-      .job-tags .pill-button .pill-listing ul {
-        margin: 0;
-        list-style: none;
-        padding: 0;
-        max-height: 150px;
-        position: relative;
-        overflow: auto;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-        border: 1px solid #e8e8e8;
-        -webkit-overflow-scrolling: touch; }
-        .job-tags .pill-button .pill-listing ul li {
-          padding: 5px 20px;
-          display: block;
-          width: 100%;
-          font-size: 14px;
-          background: #FFF;
-          border-bottom: 1px solid #e8e8e8;
-          cursor: pointer;
-          word-wrap: break-word; }
-          .job-tags .pill-button .pill-listing ul li.selected {
-            background-color: #e9f5f2; }
-          .job-tags .pill-button .pill-listing ul li.tag-added {
-            display: none !important; }
-          .job-tags .pill-button .pill-listing ul li:last-child {
-            border: 0; }
-    .job-tags .pill-button.inactive .pill-listing {
-      transform: translateY(25px);
-      opacity: 1; }
-      .job-tags .pill-button.inactive .pill-listing ul {
-        height: 0;
-        overflow: auto;
-        box-shadow: none;
-        border: 0; }
-  .job-tags .pill-button input[type=text] {
-    padding: 7px 17px;
-    margin: 3px;
-    border-radius: 0;
+.candidateTagContainer {
+  /* transition: all 0.2s ease-in-out; */ }
+  .candidateTagContainer .tag-container {
     border: 1px solid #e8e8e8;
-    width: 100%;
-    cursor: pointer;
-    /* transition: all 0.2s ease-in-out; */ }
+    display: block;
+    padding: 7px 20px;
+    position: relative;
+    font-size: 0; }
+    .candidateTagContainer .tag-container .input-tag {
+      display: inline-block;
+      background: #4fa995;
+      margin: 3px;
+      padding: 0px 10px;
+      border-radius: 20px; }
+      .candidateTagContainer .tag-container .input-tag .tag-icons {
+        display: inline-block;
+        font-size: 14px;
+        cursor: pointer; }
+      .candidateTagContainer .tag-container .input-tag .tag-name {
+        display: inline-block; }
+      .candidateTagContainer .tag-container .input-tag span {
+        color: #FFF;
+        font-size: 14px;
+        padding: 8px 5px;
+        display: inline-block; }
+    .candidateTagContainer .tag-container .pill-button {
+      position: relative;
+      display: inline-block; }
+      .candidateTagContainer .tag-container .pill-button input[type=text] {
+        padding: 7px 17px;
+        margin: 3px;
+        border-radius: 50px;
+        border: 1px solid #e8e8e8;
+        color: #2b2b2b;
+        font-size: 14px;
+        border: 1px solid transparent;
+        background: #FFF;
+        z-index: 10;
+        width: 200px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out; }
+        .candidateTagContainer .tag-container .pill-button input[type=text]:focus {
+          border-color: #4fa995; }
+      .candidateTagContainer .tag-container .pill-button .pill-listing {
+        display: inline-block;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        transform: translateY(38px);
+        opacity: 1;
+        left: 0;
+        z-index: 3;
+        transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; }
+        .candidateTagContainer .tag-container .pill-button .pill-listing ul {
+          margin: 0;
+          list-style: none;
+          padding: 0;
+          max-height: 150px;
+          position: relative;
+          overflow: auto;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+          border: 1px solid #e8e8e8;
+          -webkit-overflow-scrolling: touch; }
+          .candidateTagContainer .tag-container .pill-button .pill-listing ul li {
+            padding: 5px 20px;
+            display: block;
+            width: 100%;
+            font-size: 14px;
+            background: #FFF;
+            border-bottom: 1px solid #e8e8e8;
+            cursor: pointer;
+            word-wrap: break-word; }
+            .candidateTagContainer .tag-container .pill-button .pill-listing ul li.selected {
+              background-color: #e9f5f2; }
+            .candidateTagContainer .tag-container .pill-button .pill-listing ul li.tag-added {
+              display: none !important; }
+            .candidateTagContainer .tag-container .pill-button .pill-listing ul li:last-child {
+              border: 0; }
+      .candidateTagContainer .tag-container .pill-button.inactive .pill-listing {
+        transform: translateY(25px);
+        opacity: 1; }
+        .candidateTagContainer .tag-container .pill-button.inactive .pill-listing ul {
+          height: 0;
+          overflow: auto;
+          box-shadow: none;
+          border: 0; }
 
 .mass-action-container {
   position: fixed;
