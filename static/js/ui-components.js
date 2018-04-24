@@ -3,26 +3,25 @@
 //   jQuery(this).toggleClass('inactive');
 // })
 
-jQuery("body").on('click',".course-option", function() {
+jQuery(".course-option").on('click', function() {
 	jQuery(this).toggleClass("active");
 	jQuery(this).siblings().removeClass("active");
 })
 
-jQuery("body").on("click",".button-action-list", function() {
+jQuery(".button-action-list").on("click", function() {
 	jQuery(this).toggleClass("inactive");
 })
 
-jQuery("body").on('focus',".pill-button input", function() {
-	console.log("ss")
+jQuery(".pill-button input").on('focus', function() {
 	jQuery(this).parent().removeClass("inactive");
 });
 
-jQuery("body").on('blur',".pill-button input" function() {
+jQuery(".pill-button input").on('blur', function(){
 	jQuery(this).parent().addClass("inactive");
 	jQuery(this).attr("placeholder", jQuery(this).attr("data-placeholder-value"));
 });
 
-jQuery(".pill-button input").on('keyup', function(e) {
+jQuery(".pill-button input").on('keyup', function(e){
 	var searchString = jQuery(this).val();
 	if(jQuery(this).closest(".tag-container").attr("data-enable-custom") && jQuery(this).closest(".tag-container").attr("data-enable-custom") == "true") {
 		jQuery(this).siblings(".pill-listing").find("li[data-value=custom]").text(searchString);
@@ -33,7 +32,7 @@ jQuery(".pill-button input").on('keyup', function(e) {
 		} else {
 			jQuery(el).addClass("hidden");
 		}
-	});	
+	});
 	if(jQuery(".pill-listing li").not(".hidden").length == 0){
 
 		jQuery(".pill-listing ul").addClass("hidden");
@@ -44,7 +43,7 @@ jQuery(".pill-button input").on('keyup', function(e) {
 	jQuery(this).siblings(".pill-listing").find("li[data-value=custom]").addClass("hidden");
 });
 
-jQuery(".tag-container").on("mouseenter", ".pill-listing li", function() {
+jQuery(".tag-container").on("mouseenter", ".pill-listing li", function(){
 	if($(this).hasClass("disabled")){
 		return
 	}
@@ -54,13 +53,11 @@ jQuery(".tag-container").on("mouseenter", ".pill-listing li", function() {
 });
 
 jQuery(".tag-container").on("mouseleave", ".pill-listing li", function() {
-
 	jQuery(this).removeClass("selected");
 	jQuery(this).siblings().removeClass("selected");
 });
 
 jQuery(".tag-container").on("mousedown", ".pill-listing li", function() {
-
 	if($(this).hasClass("disabled")){
 		return
 	}
@@ -71,7 +68,6 @@ jQuery(".tag-container").on("mousedown", ".pill-listing li", function() {
 
 		addNewTag(selectedValue,  jQuery(this).attr("data-value"), jQuery(this).closest(".tag-container"));
 	}
-
 });
 
 

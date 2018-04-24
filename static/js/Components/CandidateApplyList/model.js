@@ -227,7 +227,7 @@ function candidateList() {
 
 		return {
             element: card,
-            Textarea:card.find('.comment-text'),
+            textarea:card.find('.commentdisabled'),
             // Commentarea: card.find('.comment-tooltip .candidateCommentText'),
             // AddCommentButton:card.find('.comment-tooltip .candidateAddComment'),
             // EditComment:card.find('.comment-tooltip .candidateAddEdit'),
@@ -397,6 +397,7 @@ function candidateList() {
         var flag=0;
         if(aData["comment"]){
             console.log(aData["comment"])
+            item.textarea.removeClass('hidden').html(aData["comment"]);
             item.viewCommentLink.removeClass("hidden")
             flag++;
         }

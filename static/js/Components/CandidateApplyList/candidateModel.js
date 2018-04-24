@@ -539,7 +539,6 @@ function Candidate() {
         item.contact.text('');
         item.email.text('');
         $(".coverLetterTab").addClass("hidden");
-
     }
 
     function openModal() {
