@@ -526,7 +526,7 @@ function candidateList() {
         // settings.rowContainer.find(".candidate-select").removeClass("selected");
         if(dataArray.length < pageContent) {
             if(element.find(".no-more-records").length == 0) {
-                return element.append("<div class='no-more-records no-data'>No more records!</div>")
+                return element.append("<div class='no-more-records no-data'>You have reached the end of the list</div>")
             }
         }
 	}
@@ -537,6 +537,9 @@ function candidateList() {
             var applicationId= $(this).closest(settings.candidateRowClass).attr("data-application-id")
             $('.comment-tooltip').addClass('hidden');
             $(this).closest(settings.candidateRowClass).find('.comment-tooltip').removeClass('hidden');
+            if(window.innerWidth<768){
+                addBodyFixed();
+            }
             fn(applicationId);
         })
     }
@@ -547,6 +550,9 @@ function candidateList() {
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             $('.tag-tooltip').addClass('hidden');
             $(this).closest(settings.candidateRowClass).find('.tag-tooltip').removeClass('hidden');
+            if(window.innerWidth<768){
+                addBodyFixed();
+            }    
             fn(applicationId);
         })
     }
@@ -725,6 +731,7 @@ function candidateList() {
     function appendCandidateTag(aTag,applicationId){
         var tag = getCandidateTag(aTag);
         $(".candidateRow[data-application-id="+applicationId+"]").find(settings.candidateTagListClass).append(tag);
+        // $(".candidateRow[data-application-id="+applicationId+"]").find(settings.viewCommentButtonClass).removeClass('hidden');
         emptyInputElement($(settings.candidateTagInputClass));
     }
 
@@ -791,6 +798,7 @@ function candidateList() {
         settings.rowContainer.on('click','.close-modal',function(event) {
             $('.action-tooltip').addClass('hidden');
         })
+        removeBodyFixed();
     }
 
 
