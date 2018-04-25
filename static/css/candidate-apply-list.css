@@ -3987,7 +3987,7 @@ input::-webkit-input-placeholder {
                 position: relative;
                 width: 95%;
                 margin: 0 auto; }
-              .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .candidateAddEditButton {
+              .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .candidateAddEdit {
                 color: #155d9a; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .tagged-on-label {
             margin-left: 9%;
@@ -5663,3 +5663,13 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
 
 .icon-tick {
   color: #1f8f75 !important; }
+
+@media all and (max-width: 768px) {
+  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip {
+    position: absolute;
+    top: 14%;
+    right: 0;
+    width: 95%;
+    left: 0%;
+    height: 50%;
+    margin: 0px auto; } }

@@ -605,6 +605,7 @@ function Candidate() {
     }
 
     function onClickAddTag(fn, fn1) {
+        
         settings.candidateDetailsModal.on('keyup', settings.candidateTagInputClass ,function(event) {
             event.stopPropagation();
             var tagName = $(this).val();
@@ -615,6 +616,7 @@ function Candidate() {
         });
         settings.candidateDetailsModal.on('click', settings.candidateAddTagButtonClass,function(event) {
             event.stopPropagation();
+            console.log($('.candidateTagInput').val());
             var tagName = ($(settings.candidateTagInputClass).val()).trim();
             if(!tagName) {
                 $(settings.candidateTagInputClass).addClass("error-border");

@@ -808,7 +808,7 @@ input::-webkit-input-placeholder {
 											margin: 0 auto;
 										}
 
-										.candidateAddEditButton{
+										.candidateAddEdit{
 											color: $link-color;
 										}									}
 
@@ -2896,3 +2896,16 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
     color: #1f8f75 !important;
 }
 
+
+@media all and (max-width:768px){
+	.page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip {
+		position: absolute;
+		top: 14%;
+		right: 0;
+		width: 95%;
+		left: 0%;
+		height: 50%;
+		margin: 0px auto;
+		
+	}
+}

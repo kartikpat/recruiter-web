@@ -8,8 +8,9 @@ function candidateList() {
         settings.rowContainerClass='.candidateListing'
         settings.header= $('#jobDetails'),
         settings.candidateRowClass= ".candidateRow",
+        settings.candidateRow=$('.candidateRow'),
         settings.candidateInviteButton= ".candidateSendInterviewInvite",
-        settings.candidateAddTagButton= ".candidateAddTag",
+        settings.candidateAddTagButton= ".candidateAddTagModal",
         settings.candidateAddCommentButton= ".candidateAddComment",
         settings.candidateSaveButton= ".candidateSave",
         settings.candidateDownloadResumeButton= ".candidateDownloadResume",
@@ -62,6 +63,13 @@ function candidateList() {
         settings.candidateEditComment=('.candidateAddEdit'),
         settings.candidateEditCommentButton=$('.candidateAddEdit'),
         settings.contactMenubutton=$('.contactMenubutton');
+        settings.candidateAddTagButtonClass= '.candidateAddTag',
+        settings.candidateTagInputClass = '.candidateTagInputContainer',
+        settings.candidateTagListClass = '.candidateTagListContainer',
+        settings.candidateTagPrototype= $('.candidateTag.prototype'),
+        settings.tagListing = $(".recruiterTags"),
+        settings.candidateTagRemoveClass = '.tagRemove',
+        settings.tagArr = [],
         settings.status = ''
         settings.url = baseUrl+"/recruiter/"+recruiterId+"/jobs/"+jobId+"/applications/download/excel";
 
@@ -228,9 +236,10 @@ function candidateList() {
 		return {
             element: card,
             textarea:card.find('.commentdisabled'),
-            // Commentarea: card.find('.comment-tooltip .candidateCommentText'),
-            // AddCommentButton:card.find('.comment-tooltip .candidateAddComment'),
-            // EditComment:card.find('.comment-tooltip .candidateAddEdit'),
+            Commentarea: card.find('.comment-tooltip .candidateCommentText'),
+            AddCommentButton:card.find('.comment-tooltip .candidateAddComment'),
+            EditComment:card.find('.comment-tooltip .candidateAddEdit'),
+            candidateTagList: card.find(settings.candidateTagListClass),
             image: card.find('.js_img'),
 			name: card.find('.js_name'),
 			experience: card.find('.js_exp'),
@@ -307,6 +316,14 @@ function candidateList() {
         item.shortlistButton.attr("data-status", status);
         item.rejectButton.attr("data-status", status);
         item.savedButton.attr("data-status", status);
+        
+        var tagStr = '';
+        $.each(aData["tags"],function(index, aTag) {
+            var tag = getCandidateTag(aTag)
+            tagStr+=tag[0].outerHTML
+        })
+        item.candidateTagList.html(tagStr)
+        
         if(status == 1) {
             item.shortlistButton.text("Shortlisted");
         }
@@ -397,7 +414,10 @@ function candidateList() {
         var flag=0;
         if(aData["comment"]){
             console.log(aData["comment"])
+            item.Commentarea.addClass('hidden').html(aData["comment"]);
             item.textarea.removeClass('hidden').html(aData["comment"]);
+            item.AddCommentButton.addClass('hidden');
+            item.EditComment.removeClass('hidden');
             item.viewCommentLink.removeClass("hidden")
             flag++;
         }
@@ -515,6 +535,7 @@ function candidateList() {
         settings.rowContainer.on('click', settings.viewCommentButtonClass, function(e){
             e.preventDefault();
             var applicationId= $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            $('.comment-tooltip').addClass('hidden');
             $(this).closest(settings.candidateRowClass).find('.comment-tooltip').removeClass('hidden');
             fn(applicationId);
         })
@@ -524,6 +545,8 @@ function candidateList() {
         settings.rowContainer.on('click', settings.viewTagButtonClass, function(e){
             e.preventDefault();
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            $('.tag-tooltip').addClass('hidden');
+            $(this).closest(settings.candidateRowClass).find('.tag-tooltip').removeClass('hidden');
             fn(applicationId);
         })
     }
@@ -653,6 +676,100 @@ function candidateList() {
         });
     }
 
+    function onClickTag(fn,fn1){
+        settings.rowContainer.on('keyup', settings.candidateTagInputClass ,function(event) {
+            event.stopPropagation();
+            event.preventDefault();
+            var tagName = $(this).val();
+            if (event.which != 13) {
+                 $(this).removeAttr("tag-id")
+            }
+            return fn1(tagName)
+        });
+        settings.rowContainer.on('click', settings.candidateAddTagButtonClass,function(event) {
+            event.stopPropagation();
+            event.preventDefault();
+            var tagName = ($(settings.candidateTagInputClass).val()).trim();
+            // if(!tagName) {
+            //     $(settings.candidateTagInputClass).addClass("error-border");
+            //     return settings.tagInputError.removeClass("hidden")
+            // }
+            // else {
+            //     $(settings.candidateTagInputClass).removeClass("error-border");
+            //     settings.tagInputError.addClass("hidden")
+            // }
+            var obj = searchObjByKey(settings.tagArr, tagName, "name")
+            var tagId = $(settings.CandidateTagInputClass).attr("tag-id");
+            if(obj) {
+                tagId = obj["id"]
+            }
+            $(this).removeAttr("tag-id")
+            var parameters = {}
+            if(tagId) {
+                parameters.tagId = tagId;
+            }
+            parameters.tagName = tagName;
+            debugger
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            return fn(applicationId, parameters);
+        });
+    }
+    
+    function getCandidateTag(aTag) {
+        var tag =  settings.candidateTagPrototype.clone().removeClass("prototype hidden");
+        tag.find(".tagLabel").text(aTag["name"]);
+        tag.find(".tagRemove").attr("data-tag-id", aTag["id"]);
+        return tag
+    }
+
+    function appendCandidateTag(aTag,applicationId){
+        var tag = getCandidateTag(aTag);
+        $(".candidateRow[data-application-id="+applicationId+"]").find(settings.candidateTagListClass).append(tag);
+        emptyInputElement($(settings.candidateTagInputClass));
+    }
+
+    function emptyInputElement(element) {
+        element.val("")
+    }
+
+    function onClickDeleteTag(fn) {
+        settings.rowContainer.on('click', settings.candidateTagRemoveClass,function(event) {
+            event.stopPropagation();
+            event.preventDefault();
+            var tagId = $(this).attr("data-tag-id");
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            return fn(applicationId, tagId);
+        });
+    }
+
+    function removeTag(tagId) {
+        $(settings.candidateTagListClass).find(".tagRemove[data-tag-id="+tagId+"]").closest(".candidateTag").remove()
+    }
+    
+    function showDropdownTags(data) {
+        settings.tagArr = data;
+        initializeAutoCompleteComponent(settings.tagListing, data)
+    }
+    
+    function initializeAutoCompleteComponent(selector, availableTags) {
+        var suggestedTagsArray = [];
+        availableTags.forEach(function(aTag) {
+            suggestedTagsArray.push({
+                "label": aTag["name"],
+                "value": aTag["name"],
+                "id": aTag["id"]
+            });
+        })
+        selector.autocomplete({
+              source: suggestedTagsArray,
+            select: function( event, ui ) {
+                selector.attr("tag-id", ui.item.id);
+                selector.val( ui.item.value);
+                return false;
+            }
+        });
+    }
+    
     function addComment(comment,applicationId){
         console.log(comment);
         console.log(applicationId);
@@ -1141,6 +1258,11 @@ function candidateList() {
         getApplicationsLength: getApplicationsLength,
         hideEmptyScreen: hideEmptyScreen,
         contactMenu:contactMenu,
-        showComment: showComment
-	}
+        showComment: showComment,
+        onClickTag:onClickTag,
+        showDropdownTags: showDropdownTags,
+        onClickDeleteTag: onClickDeleteTag,
+        removeTag: removeTag,
+        appendCandidateTag: appendCandidateTag
+    }
 }

@@ -92,7 +92,6 @@ function Candidate() {
         modal.attr("data-candidate-id",userID)
         return {
             element: modal,
-            textarea:modal.find('.commentdisabled'),
             image: modal.find(".js_img"),
             name: modal.find(".js_name"),
             location: modal.find(".js_loc"),
@@ -304,11 +303,24 @@ function Candidate() {
             item.coverLetter.html(nl2br(aData["cover"]))
             $(".coverLetterTab").removeClass("hidden")
         }
-        if(aData["comment"]){
-            debugger
-            console.log("here");
-            item.textarea.removeClass('hidden').val("ddd");
-            // settings.commentTextarea.val(aData["comment"]).removeClass("hidden");
+        if(aData["comment"]) {
+
+            settings.commentTextarea.val(aData["comment"]).removeClass("hidden");
+            $(settings.candidateCommentTextareaClass).val(aData["comment"]).addClass("hidden");
+            $(settings.mobCandidateCommentTextareaClass).val(aData["comment"]).addClass("hidden");
+            $(settings.candidateAddCommentButtonClass).addClass("hidden");
+            $(settings.mobCandidateAddCommentButtonClass).addClass("hidden");
+            settings.candidateEditComment.removeClass("hidden");
+            settings.mobCandidateEditComment.removeClass("hidden");
+        }
+        else {
+            settings.commentTextarea.val('').addClass("hidden")
+            $(settings.candidateCommentTextareaClass).val('').removeClass("hidden");
+         //   $(settings.mobCandidateCommentTextareaClass).val('').addClass("hidden");
+            $(settings.candidateAddCommentButtonClass).removeClass("hidden")
+            $(settings.mobCandidateAddCommentButtonClass).removeClass("hidden");
+            settings.candidateEditComment.addClass("hidden")
+            settings.mobCandidateEditComment.addClass("hidden");
         }
 
         if(aData["recommendation"].length > 0) {

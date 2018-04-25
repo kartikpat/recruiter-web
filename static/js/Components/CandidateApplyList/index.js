@@ -389,10 +389,12 @@ jQuery(document).ready( function() {
                     "id": res.data.id
                 }
                 aCandidate.appendCandidateTag(tag)
+                candidates.appendCandidateTag(tag,res.applicationId);
                 return toastNotify(1, "Tag Added Successfully")
             }
             var tagId = res.parameters.tagId
             aCandidate.removeTag(tagId)
+            candidates.removeTag(tagId)
             return toastNotify(1, "Tag Deleted Successfully")
         }
 
@@ -628,6 +630,26 @@ jQuery(document).ready( function() {
          fetchRecruiterTags(recruiterId, parameters)
      })
 
+     candidates.onClickTag(function(applicationId, parameters){
+         debugger
+        var ob = {}
+        if(parameters.tagId) {
+            ob.tagId = parameters.tagId;
+        }
+        else {
+            ob.name = parameters.tagName;
+        }
+
+        ob.type= "add";
+        parameters.type = "add";
+        setCandidateAction(recruiterId, jobId, "tag" , applicationId, ob, parameters);
+    }, function(tagName){
+        var parameters = {}
+         parameters.pageNumber = 1;
+         parameters.str = tagName
+        fetchRecruiterTags(recruiterId, parameters)
+    })
+
      aCandidate.onClickDeleteTag(function(applicationId, tagId){
          var parameters = {}
          var ob = {
@@ -638,6 +660,17 @@ jQuery(document).ready( function() {
          parameters.tagId = tagId
          setCandidateAction(recruiterId, jobId, "tag" , applicationId, ob, parameters);
      })
+
+     candidates.onClickDeleteTag(function(applicationId, tagId){
+        var parameters = {}
+        var ob = {
+            "tagId": tagId,
+            "type": "delete"
+        }
+        parameters.type = "delete"
+        parameters.tagId = tagId
+        setCandidateAction(recruiterId, jobId, "tag" , applicationId, ob, parameters);
+    })
 
      aCandidate.onClickAddComment(function(applicationId, comment){
          var parameters = {}
@@ -872,6 +905,7 @@ jQuery(document).ready( function() {
 
     function onSuccessfullFetchedTag(topic, res) {
         aCandidate.showDropdownTags(res["data"]);
+        candidates.showDropdownTags(res["data"]);
     }
 
     function onFailFetchedTag(topic, res) {

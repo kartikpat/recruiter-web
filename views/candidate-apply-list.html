@@ -529,7 +529,7 @@
 									<div class="skill-tags-area candidateTagList">
 
 									</div>
-								</div>
+							</div>
 
 	            			</div>
 	            		</div>
@@ -811,7 +811,7 @@
 									</div>
 								</li>
 								<li><div class="candidateAddComment link-color underline">Add Comment</div></li>
-								<li><div class="candidateAddTag link-color underline">Add Tag</div></li>
+								<li><div class="candidateAddTagModal link-color underline">Add Tag</div></li>
 								<li class="interview-invite interviewinvite">Send Interview Invite</li>
 								<li>
 									<div data-invite-id="1" class="inviteF2f tooltip link-color invite" state="default">
@@ -836,7 +836,7 @@
 						<span class="tags tagLink hidden"><span class="viewTagButton link-color">View Tags</span></span>
 					</div>
 				</div>
-				<div class="comment-tooltip action-tooltip ">
+				<div class="comment-tooltip action-tooltip hidden">
 					<div class="candidate-image">
 						<img class="js_img" src="">
 					</div>
@@ -849,7 +849,7 @@
 					<div class="sidebar-section comments candidateCommentContainer">
 						<h3 class="label">Comment</h3>
 						<div class="comment-box">
-							<textarea class="comment-text commentdisabled " ></textarea>
+							<textarea class="comment-text commentdisabled" readonly="""" ></textarea>
 						</div>
 						<div class="comment-container">
 							<textarea id="" placeholder="Add Comment" name="name" class="candidateCommentText"></textarea>
@@ -861,7 +861,7 @@
 					</div>
 				</div>
 				
-				<!-- <div class="tag-tooltip action-tooltip hidden">
+				<div class="tag-tooltip action-tooltip hidden">
 					<div class="candidate-image">
 							<img class="js_img" src="">
 					</div>
@@ -872,28 +872,21 @@
 							<i class=" icon-close_icon"></i>
 					</span>
 					<div class="sidebar-section tags candidateTagContainer">
-						<h3 class="label">Tags</h3>
-						<div class="tag-container" data-enable-custom="true" name="">
-							<div class="pill-button inactive">
-								<input type="text" id="" data-placeholder-value="+ Add New" placeholder="+ Add New">
-								<div class="pill-listing">
-					
+							<h3>Tags</h3>
+							<div class="">
+								<div class="pill-listingg-container">
+									<div class="ui-widget">
+										<input placeholder="Add Tag" class="recruiterTags cand-add-tag input-field candidateTagInputContainer ui-autocomplete-input" type="text" name="" value="" autocomplete="off">
+										<div class="error-field hidden tagInputError" id=""><p>Input field can't be empty</p></div>
+									</div>
+									<div class="action-buttons cand-add-tag-action-btn">
+										<span class="button green candidateAddTag cand-add-tag-button addButton">Add</span>
+									</div>
 								</div>
+								<div class="skill-tags-area candidateTagListContainer"></div>
 							</div>
-						</div>
-						
-							<!-- <div class="pill-listingg-container">
-								<div class="ui-widget">
-									<input placeholder="Add Tag" class="recruiterTags cand-add-tag input-field candidateTagInput" type="text" name="" value="">
-									<div class="error-field hidden tagInputError" id=""><p>Input field can't be empty</p></div>
-								</div>
-								<div class="action-buttons cand-add-tag-action-btn">
-									<span class="button green candidateAddTagButton cand-add-tag-button addButton">Add</span>
-								</div>
-							</div> -->
-							<!-- <div class="skill-tags-area candidateTagList"></div> -->
 					</div>
-				<!-- </div>	 --> -->
+				</div>	
 
 				</div>
 			</div>

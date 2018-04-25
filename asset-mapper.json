@@ -1128,13 +1128,11 @@
 				"static/js/vendor/jquery.min.js",
 				"static/js/vendor/page.js",
 				"static/js/Utilities/request.js",
-
 				"static/js/header.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
 				"static/js/vendor/pdf.js",
 				"static/js/vendor/pdf.worker.js",
-
 				"static/js/tags/industry.js",
 				"static/js/tags/current-location.js",
 				"static/js/tags/preferred-location.js",
@@ -1143,14 +1141,12 @@
 				"static/js/tags/functional-area.js",
 				"static/js/tags/institute.js",
 				"static/js/vendor/moment.min.js",
-
 				"static/js/pdfJs.js",
 				"static/js/candidate-apply-list.js",
 				"static/js/vendor/jquery-ui.min.js",
 				"static/js/modal.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js",
-				"static/js/ui-components.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Services/sendInterviewInvite.js",
