@@ -552,7 +552,7 @@ function candidateList() {
             $(this).closest(settings.candidateRowClass).find('.tag-tooltip').removeClass('hidden');
             if(window.innerWidth<768){
                 addBodyFixed();
-            }    
+            }   
             fn(applicationId);
         })
     }
@@ -645,7 +645,9 @@ function candidateList() {
             settings.rowContainer.find('.tag-tooltip').addClass('hidden');
             settings.rowContainer.find('.comment-tooltip').addClass('hidden');
             $(".candidateRow[data-application-id="+applicationId+"]").find('.tag-tooltip').removeClass('hidden');
-            
+            if(window.innerWidth<768){
+                addBodyFixed();
+            } 
         })
     }
 
@@ -655,7 +657,9 @@ function candidateList() {
             settings.rowContainer.find('.comment-tooltip').addClass('hidden');
             settings.rowContainer.find('.tag-tooltip').addClass('hidden');
             $(".candidateRow[data-application-id="+applicationId+"]").find('.comment-tooltip').removeClass('hidden');
-        
+            if(window.innerWidth<768){
+                addBodyFixed();
+            } 
         })
     }
     
@@ -695,15 +699,8 @@ function candidateList() {
         settings.rowContainer.on('click', settings.candidateAddTagButtonClass,function(event) {
             event.stopPropagation();
             event.preventDefault();
-            var tagName = ($(settings.candidateTagInputClass).val()).trim();
-            // if(!tagName) {
-            //     $(settings.candidateTagInputClass).addClass("error-border");
-            //     return settings.tagInputError.removeClass("hidden")
-            // }
-            // else {
-            //     $(settings.candidateTagInputClass).removeClass("error-border");
-            //     settings.tagInputError.addClass("hidden")
-            // }
+            
+            var tagName = ($(this).closest(settings.candidateRowClass).find(settings.candidateTagInputClass).val()).trim();
             var obj = searchObjByKey(settings.tagArr, tagName, "name")
             var tagId = $(settings.CandidateTagInputClass).attr("tag-id");
             if(obj) {
@@ -797,8 +794,9 @@ function candidateList() {
     function closetooltipModal(){
         settings.rowContainer.on('click','.close-modal',function(event) {
             $('.action-tooltip').addClass('hidden');
+            removeBodyFixed();
         })
-        removeBodyFixed();
+        
     }
 
 
