@@ -200,8 +200,8 @@ jQuery(document).ready( function() {
     // });
 
     candidates.onClickAddTag(function(applicationId) {
-        var candidateDetails = store.getCandidateFromStore(applicationId);
-        page('/'+applicationId+'#tag')
+        // var candidateDetails = store.getCandidateFromStore(applicationId);
+        // page('/'+applicationId+'#tag')
     })
     candidates.onClickAddComment(function(applicationId) {
         var candidateDetails = store.getCandidateFromStore(applicationId);

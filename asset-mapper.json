@@ -28,6 +28,42 @@
 			]
 		}
 	},
+	"job-details": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+        		"static/css/index.css",
+				"static/css/buttons.css",
+				"static/css/footer.css",
+				"static/css/animate.css",
+				"static/css/utilities.css",
+				"static/css/job-details.css"
+			],
+			"prod": [
+				"static/build/css/job-details.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/Utilities/request.js",
+				"static/js/Utilities/common.js",
+
+				"static/js/header.js",
+				"static/js/Utilities/pubsub.js",
+				"static/js/Services/fetchJob.js",
+				"static/js/Services/fetchJobTags.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js",
+				"static/js/Components/JobDetails/model.js",
+				"static/js/Components/JobDetails/mapping.js",
+				"static/js/Components/JobDetails/index.js"
+			],
+			"prod" : [
+				"static/build/js/job-details.min.js"
+			]
+		}
+	},
 	"reset-password": {
 		"styles": {
 			"debug" : [
@@ -1352,7 +1388,7 @@
 				"static/js/Components/Header/model.js",
 				"static/js/Utilities/modal.js",
 				"static/js/Components/Header/index.js"
-				
+
 			],
 			"prod" : [
 				"static/build/js/about-us.min.js"
@@ -1502,7 +1538,7 @@
 			]
 		}
 	},
-	
+
 	"account-verified": {
 		"styles": {
 			"debug" : [

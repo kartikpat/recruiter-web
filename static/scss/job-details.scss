@@ -1,0 +1,47 @@
+
+@import 'common/spacings';
+@import 'input-elements';
+@import 'chat-sidebar';
+
+.main-info-wrapper {
+    width: 80%;
+    .title-wrapper {
+        margin-bottom: 20px;
+        .title {
+            font-family: DroidSans;
+            color:  $color-darkgrey;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .tags {
+            font-family: DroidSans;
+            color:  $course-option-base;
+            font-size: 14px;
+        }
+    }
+    .about-wrapper {
+        border: 1px solid $border-color-base;
+        box-sizing: border-box;
+        background-color:  #ffffff;
+        border-radius: 6px;
+    }
+}
+
+.extra-info-wrapper {
+    margin-right: 20px;
+    width: 20%;
+    .content-block {
+        border-bottom: 1px solid $border-color-base;
+        .main-content {
+            color:  $color-darkgrey;
+            font-size: 14px;
+            text-align: left;
+            font-weight: bold;
+        }
+        .extra-content {
+            color:  $color-darkgrey;
+            font-size: 14px;
+        }
+    }
+}
