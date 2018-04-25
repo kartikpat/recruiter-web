@@ -87,8 +87,8 @@ module.exports = function(settings){
 	}
 
 	function isVerified(req,res,next) {
-		var key = req.query.key;
-		var email = req.query.email;
+		var key = req.query.k;
+		var email = req.query.e;
 
 		return request.post({
 			url: baseUrl+"/recruiter/activate",
@@ -396,6 +396,8 @@ module.exports = function(settings){
 		return
 	})
 
+
+	// TODO: Verify existence
 	app.get("/recruiter/landing", function(req, res){
 
 		res.render("account-activation", {
