@@ -537,7 +537,7 @@ function candidateList() {
         settings.rowContainer.on('click', settings.viewCommentButtonClass, function(e){
             e.preventDefault();
             var applicationId= $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            $('.comment-tooltip').addClass('hidden');
+            $('.action-tooltip').addClass('hidden');
             $(this).closest(settings.candidateRowClass).find('.comment-tooltip').removeClass('hidden');
             if(window.innerWidth<768){
                 addBodyFixed();
@@ -550,7 +550,7 @@ function candidateList() {
         settings.rowContainer.on('click', settings.viewTagButtonClass, function(e){
             e.preventDefault();
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            $('.tag-tooltip').addClass('hidden');
+            $('.action-tooltip').addClass('hidden');
             $(this).closest(settings.candidateRowClass).find('.tag-tooltip').removeClass('hidden');
             if(window.innerWidth<768){
                 addBodyFixed();
