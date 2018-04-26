@@ -58,6 +58,7 @@ function Profile(){
 			settings.premiumDetail = $("#premiumDetail")
 			settings.type = "profile"
 			settings.settingsBody = $(".settingsBody")
+
 			changeFileName()
 			onChangeInputFields()
 
@@ -78,6 +79,86 @@ function Profile(){
 				jQuery(".settings-section."+activeSection).removeClass("hidden").siblings().addClass("hidden");
 			});
 
+	}
+
+	function getMembersElement() {
+
+        var card = $('.creditsContentsRow.prototype').clone().removeClass("prototype hidden");
+        return {
+            element: card,
+            memImg: card.find('.memImg'),
+            memName: card.find('.memName'),
+            memDes: card.find('.memDes'),
+            memOrg: card.find('.memOrg'),
+			totalCredits: card.find('.totalCredits'),
+			remainingCredits: card.find('.remainingCredits'),
+			usedCredits: card.find('.usedCredits'),
+			cancelTeamMember: card.find('.cancelTeamMember'),
+			addCredits: card.find('.addCredits')
+        }
+
+	}
+
+	function addToList(dataArray, status, offset, pageContent, filterFlag){
+        settings.status = status;
+		var str = '';
+
+        var element = $(".candidateListing[data-status-attribute='"+status+"']");
+        hideShells(status);
+
+        if(dataArray.length<1 && offset == 0) {
+            if(filterFlag > 0) {
+                return
+            }
+			if(status== ""){
+				$('.user-text').text('You have not received any applications yet.');
+				$('.empty-text').text('You’ll a list here once you do');
+				settings.emptyView.removeClass('hidden');
+				return
+			}
+			else if(status== "0" ){
+				$('.user-text').text('Great job!');
+				$('.empty-text').text('You have sorted all your received applications');
+        		settings.emptyView.removeClass('hidden');
+				return
+            }
+            else if(status== "4,5"){
+				$('.user-text').text('You have not reviewed any candidates yet.');
+				$('.empty-text').text('Any candidate that is viewed or downloaded will appear here');
+				settings.emptyView.removeClass('hidden');
+				return
+            }
+            else if(status== "1"){
+				$('.user-text').text('You have not shortlisted any candidates yet.');
+				$('.empty-text').text('Click on ‘Shortlist’ button to shortlist a candidate in ‘Unread Tab’');
+			    settings.emptyView.removeClass('hidden');
+				return
+            }
+            else if(status== "2"){
+				$('.user-text').text('You have not rejected any candidates yet');
+				$('.empty-text').text("Click on ‘Reject’ button to reject a candidate in ‘Unread Tab'");
+                settings.emptyView.removeClass('hidden');
+                return
+            }
+            else if(status== "3"){
+				$('.user-text').text('You have not saved any candidates yet.');
+				$('.empty-text').text('Click on ‘Save’ in the other actions to save a candidate in ‘Unread Tab’');
+			    settings.emptyView.removeClass('hidden');
+				return
+			}
+		}
+		dataArray.forEach(function(aData, index){
+			var item = createElement(aData);
+			str+=item.element[0].outerHTML;
+
+		});
+		element.append(str);
+        // settings.rowContainer.find(".candidate-select").removeClass("selected");
+        if(dataArray.length < pageContent) {
+            if(element.find(".no-more-records").length == 0) {
+                return element.append("<div class='no-more-records no-data'>No more records!</div>")
+            }
+        }
 	}
 
 	function changeFileName() {
