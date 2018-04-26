@@ -1,0 +1,115 @@
+.link-color {
+  color: #155d9a; }
+
+.white-bg {
+  background-color: #ffffff; }
+
+.heading-clr {
+  color: #708732; }
+
+.light-grey-bg {
+  background-color: #f5f6f7; }
+
+.text-clr {
+  color: #4b4b4b; }
+
+.extra-info-color {
+  color: #808080; }
+
+.important-info-color {
+  color: #333; }
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.animated {
+  animation-duration: 500ms !important; }
+
+/** Mobile Menu **/
+.page-content {
+  min-height: 100%;
+  overflow: auto;
+  position: relative;
+  padding: 20px;
+  width: 100%;
+  background-color: #f7f7f7; }
+
+.shell.lg {
+  font-size: 0;
+  background-color: #d8d5d5;
+  opacity: 0.4;
+  min-height: 10px;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+  position: relative;
+  max-width: 250px;
+  height: 10px; }
+
+.shell.sm {
+  font-size: 0;
+  background-color: #d8d5d5;
+  opacity: 0.4;
+  min-height: 10px;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+  position: relative;
+  max-width: 150px; }
+
+.main-info-wrapper {
+  width: 80%;
+  vertical-align: top; }
+  .main-info-wrapper .title-wrapper {
+    margin-bottom: 20px; }
+    .main-info-wrapper .title-wrapper .title {
+      color: #2b2b2b;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      line-height: 17px; }
+    .main-info-wrapper .title-wrapper .tags {
+      color: #818181;
+      font-size: 14px;
+      line-height: 20px; }
+  .main-info-wrapper .about-wrapper {
+    border: 1px solid #e8e8e8;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border-radius: 6px;
+    min-height: 450px;
+    padding: 20px 30px; }
+
+.extra-info-wrapper {
+  padding-left: 20px;
+  width: 20%;
+  vertical-align: top; }
+  .extra-info-wrapper .content-block {
+    border-bottom: 1px solid #e8e8e8;
+    padding: 15px 0; }
+    .extra-info-wrapper .content-block .main-content {
+      color: #2b2b2b;
+      font-size: 14px;
+      text-align: left;
+      font-weight: bold;
+      min-height: 25px; }
+    .extra-info-wrapper .content-block .extra-content {
+      color: #2b2b2b;
+      font-size: 14px;
+      line-height: 17px; }
+
+@media all and (max-width: 768px) {
+  .extra-info-wrapper {
+    display: none; }
+  .main-info-wrapper {
+    width: 100%; } }

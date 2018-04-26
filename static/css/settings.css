@@ -1052,3 +1052,61 @@ span.sticker {
             padding-top: 10px; }
         .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container.plan-container {
           padding: 15px; } }
+
+.credits-container {
+  padding: 0 !important; }
+  .credits-container .credits-header {
+    border-bottom: 1px solid green;
+    padding: 20px; }
+  .credits-container .credits-content {
+    padding: 20px;
+    font-size: 0; }
+  .credits-container .content-header {
+    min-height: 30px; }
+  .credits-container .column {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 14px; }
+    .credits-container .column.team-mem {
+      width: 26%; }
+    .credits-container .column.ttl-cre {
+      width: 17%; }
+    .credits-container .column.rem-cre {
+      width: 22%; }
+    .credits-container .column.use-cre {
+      width: 17%; }
+    .credits-container .column.add-cre {
+      width: 18%; }
+      .credits-container .column.add-cre input {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -o-appearanance: none;
+        border-radius: 3px;
+        background: #FFF;
+        width: 100%;
+        border: 1px solid #e8e8e8;
+        cursor: pointer;
+        padding: 16px 22px;
+        font-size: 14px;
+        line-height: 1.5;
+        width: 30%;
+        padding: 2px 6px;
+        cursor: initial; }
+        .credits-container .column.add-cre input:focus {
+          border-color: #4fa995; }
+        .credits-container .column.add-cre input.error-border {
+          border-color: #ad3030; }
+  .credits-container .mem-img {
+    width: 25px;
+    height: 25px;
+    vertical-align: top; }
+    .credits-container .mem-img img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%; }
+  .credits-container .mem-info {
+    width: calc(100% - 35px);
+    vertical-align: top; }
+
+.distribute-credits.button {
+  width: 175px; }

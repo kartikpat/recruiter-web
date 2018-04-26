@@ -217,6 +217,9 @@ function Jobs() {
 			case "updated-unpublished":
 				obj["status"] = 'Unpublished';
 				obj["extraStatus"] = true;
+				if(aData["message"]) {
+					obj["message"] = aData["message"];
+				}
 				break;
 			default:
 				break;
@@ -228,7 +231,7 @@ function Jobs() {
 		var item = cloneElement(aData["id"]);
 		var title = getTitleFormat(aData["title"], (/\(\d+-\d+ \w+\)$/));
 		item.createdOn.text(getDateFormat(aData["created"]))
-		item.title.text(title)
+		item.title.text(title).attr("href", "/job/"+aData["id"]+"/details")
 		item.element.find('.action-icon').attr('data-job-id',aData["id"]);
 
 		var loc = aData["location"];

@@ -17,7 +17,6 @@ module.exports = function(settings){
 	var baseUrlJob = config["baseUrlJob"];
 	var welcome = config["welcome"];
 	var verifyAccount = config["verify"];
-	var recruiterID = 45058;
 	if(env=="local")
 		baseUrl= config["baseUrl_local"];
 	else
@@ -30,7 +29,7 @@ module.exports = function(settings){
 		// bypassing the auth for development
     	// CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     	// you can do this however you want with whatever variables you set up
-    	
+
     	if (req.cookies["recruiter-access-token"]) {
 
 			return request.get({
@@ -844,6 +843,17 @@ module.exports = function(settings){
 			title:"Account Connected Successfully | iimjobs.com",
 			baseUrl: baseUrl,
 			baseDomain: baseDomain
+		});
+	})
+	app.get("/job/:jobID/details",isAuthenticated, function(req, res){
+		res.render("job-details", {
+			title:"Job Details | iimjobs.com",
+			styles:assetsMapper['job-details']['styles'][mode],
+			scripts:assetsMapper['job-details']['scripts'][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			jobId: req.params.jobID,
+			profile: req.profile
 		});
 	})
 }

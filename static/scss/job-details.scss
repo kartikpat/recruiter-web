@@ -1,0 +1,97 @@
+@import "colors.scss";
+
+@mixin shell-block {
+    font-size:0;
+    background-color:$border-color-dark;
+    opacity:0.4;
+    min-height: 10px;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: #f6f7f8;
+    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+    background-size: 800px 104px;
+    position: relative;
+}
+
+.page-content {
+    min-height:100%;
+	overflow:auto;
+	position:relative;
+	padding:20px;
+	width: 100%;
+    background-color: #f7f7f7;
+}
+
+.shell {
+    &.lg {
+        @include shell-block;
+        max-width: 250px;
+        height: 10px;
+    }
+    &.sm {
+        @include shell-block;
+        max-width: 150px;
+    }
+ }
+
+.main-info-wrapper {
+    width: 80%;
+    vertical-align: top;
+    .title-wrapper {
+        margin-bottom: 20px;
+        .title {
+            color:  $color-darkgrey;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            line-height: 17px;
+        }
+        .tags {
+            color:  $course-option-base;
+            font-size: 14px;
+            line-height: 20px;
+        }
+    }
+    .about-wrapper {
+        border: 1px solid $border-color-base;
+        box-sizing: border-box;
+        background-color:  #ffffff;
+        border-radius: 6px;
+        min-height: 450px;
+        padding: 20px 30px;
+    }
+}
+
+.extra-info-wrapper {
+    padding-left: 20px;
+    width: 20%;
+    vertical-align: top;
+    .content-block {
+        border-bottom: 1px solid $border-color-base;
+        padding: 15px 0;
+        .main-content {
+            color:  $color-darkgrey;
+            font-size: 14px;
+            text-align: left;
+            font-weight: bold;
+            min-height: 25px;
+        }
+        .extra-content {
+            color:  $color-darkgrey;
+            font-size: 14px;
+            line-height: 17px;
+        }
+    }
+}
+
+@media all and (max-width:768px) {
+    .extra-info-wrapper {
+        display: none;
+    }
+    .main-info-wrapper {
+        width: 100%;
+    }
+}
