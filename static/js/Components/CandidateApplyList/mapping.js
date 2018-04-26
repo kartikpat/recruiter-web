@@ -13,12 +13,12 @@ var binary = {
 
 var notice = {
     7: "Immediately Available",
-    1: "1 month",
-    2: "2 months",
-    3: "3 months",
-    4: "4 months",
-    5: "5 months",
-    6: "6 months"
+    1: "less than 1 month",
+    2: "less than 2 months",
+    3: "less than 3 months",
+    4: "less than 4 months",
+    5: "less than 5 months",
+    6: "less than 6 months"
 }
 
 var lastActive = {

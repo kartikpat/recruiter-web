@@ -45,6 +45,7 @@ function Jobs() {
 			var jobId = $(this).attr("data-job-id");
 			settings.jobUnpublishModal.find("input:radio[name='unpublishReason']:checked").prop('checked', false);
 			addBodyFixed()
+			settings.jobUnpublishModal.find('.error').addClass('hidden');
 			settings.jobUnpublishModal.removeClass('hidden');
 			settings.jobUnpublishButton.attr('data-unpublish-job-id', jobId);
 		});
@@ -395,6 +396,7 @@ function Jobs() {
 	function closeModal() {
 		removeBodyFixed()
 		$(".modal").addClass("hidden")
+		
 	}
 
 	function hideEmptyView() {

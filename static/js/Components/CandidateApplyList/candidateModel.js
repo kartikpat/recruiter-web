@@ -34,6 +34,7 @@ function Candidate() {
         settings.sendInterviewInviteF2FClass = ".inviteF2f",
         settings.sendInterviewInviteTelephonicClass = ".inviteTelephonic"
         settings.seeMoreRec = $(".seeMoreRec");
+        settings.topbutton=$('#topbutton');
         settings.recommendationListSecond = $(".recommendationListSecond");
         settings.tagArr = [],
         settings.candidateDownloadResume = $(".candidateDownloadResume");
@@ -554,6 +555,7 @@ function Candidate() {
     	$(".body-overlay").removeClass("hidden").addClass("veiled");
     	$("body").addClass("posf");
         settings.candidateDetailsModal.removeClass("hidden");
+        settings.topbutton.removeClass('show');
     }
 
     function onClickAddComment(fn) {

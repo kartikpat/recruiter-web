@@ -8,7 +8,7 @@ var errorResponses = {
 	missingMinExp: 'Please choose years of experience required for the job',
 	missingMaxExp: 'Please choose years of experience required for the job',
 	missingDescription: 'Please fill the job description',
-	invalidVideoUrl: 'enter proper youtubeURL',
+	invalidVideoUrl: 'Please enter a youtube URL here',
 	missingIndustry: 'Please choose an industry from the drop-down',
 	missingCategory: 'Please choose a category from the drop-down',
 	missingFunctionalArea: 'Please choose a functional-area from the drop-down',
@@ -53,6 +53,7 @@ function Job(){
 			settings.industryListing = $("#industryListing")
 			setAvailableCredits(settings.creditsText, config["availableCredits"]);
 			onClickCancelForm(settings.cancelFormButton);
+		
 
 			var salaryRange = 101;
 			for(var i=0; i< salaryRange; i++){
@@ -315,6 +316,8 @@ function Job(){
 		})
 		settings.industryListing.html(str);
 	}
+
+	
 
 	return {
 		init: init,
@@ -581,6 +584,7 @@ function bindGuidelineModalFunctionality() {
 
 	$modalOverlay.on('click', ".close-modal",function(e) {
 	    $body.removeClass("posf");
-	    $modalOverlay.addClass("hidden");
+		$modalOverlay.addClass("hidden");
+		
 	});
 }
