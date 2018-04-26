@@ -123,9 +123,11 @@ function Header(){
 
 	function resumeModal(profile){
 		settings.searchResume.on('click',function(){
-
 			if(profile.search && parseInt(profile.search) == 1) {
-				return window.location.href = 'https://search.iimjobs.com'
+				return window.open(
+				  'https://search.iimjobs.com',
+				  '_blank'
+				);
 			}
 			else if(profile.search && parseInt(profile.search) == 2) {
 				settings.searchResume.addClass("hidden");

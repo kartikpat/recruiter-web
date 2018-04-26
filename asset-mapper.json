@@ -48,8 +48,9 @@
 				"static/js/vendor/jquery.min.js",
 				"static/js/Utilities/request.js",
 				"static/js/Utilities/common.js",
-
+				"static/js/vendor/moment.min.js",
 				"static/js/header.js",
+				"static/js/utilities.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Services/fetchJob.js",
 				"static/js/Services/fetchJobTags.js",
@@ -84,6 +85,8 @@
 				"static/js/vendor/jquery.min.js",
 				"static/js/Utilities/request.js",
 				"static/js/header.js",
+				"static/js/Utilities/common.js",
+				"static/js/utilities.js",
 				"static/js/reset-password.js",
 				"static/js/Services/SubmitResetPassword.js",
 				"static/js/Components/ResetPassword/model.js",
@@ -120,6 +123,7 @@
 				"static/js/vendor/jquery.min.js",
 				"static/js/Utilities/request.js",
 				"static/js/header.js",
+				"static/js/Utilities/common.js",
 				"static/js/utilities.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Components/Header/model.js",
@@ -1384,6 +1388,7 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/header.js",
+				"static/js/Utilities/common.js",
 				"static/js/utilities.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Utilities/modal.js",
@@ -1413,6 +1418,7 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/header.js",
+				"static/js/Utilities/common.js",
 				"static/js/utilities.js",
 				"static/js/Utilities/modal.js",
 				"static/js/Components/Header/model.js",
@@ -1443,6 +1449,7 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/header.js",
+				"static/js/Utilities/common.js",
 				"static/js/utilities.js",
 				"static/js/Utilities/modal.js",
 				"static/js/Components/Header/model.js",
@@ -1471,6 +1478,7 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/header.js",
+				"static/js/Utilities/common.js",
 				"static/js/utilities.js",
 				"static/js/Utilities/modal.js",
 				"static/js/Components/Header/model.js",
@@ -1501,6 +1509,7 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/header.js",
+				"static/js/Utilities/common.js",
 				"static/js/utilities.js",
 				"static/js/Utilities/modal.js",
 				"static/js/Components/Header/model.js",
@@ -1528,6 +1537,7 @@
 			"debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/header.js",
+				"static/js/Utilities/common.js",
 				"static/js/utilities.js",
 				"static/js/Utilities/modal.js",
 				"static/js/Components/Header/model.js",
@@ -1556,6 +1566,7 @@
 				"static/js/vendor/jquery.min.js",
 				"static/js/Utilities/request.js",
 				"static/js/header.js",
+				"static/js/Utilities/common.js",
 				"static/js/utilities.js",
 				"static/js/account-verified.js"
 			],

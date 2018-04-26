@@ -388,6 +388,8 @@ jQuery(document).ready( function() {
                     "name": res.parameters.tagName,
                     "id": res.data.id
                 }
+                var obj = store.getCandidateFromStore(res.applicationId)
+                obj["tags"].push(tag)
                 aCandidate.appendCandidateTag(tag)
                 return toastNotify(1, "Tag Added Successfully")
             }

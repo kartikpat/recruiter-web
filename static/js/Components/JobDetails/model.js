@@ -12,77 +12,63 @@ function Job(){
 			settings.jobTags= $("#jobTags"),
 			settings.jobDescription = $("#jobDescription"),
 			settings.postedBy= $("#postedBy"),
-			settings.maxExp= $("#postedByInfo"),
-			settings.description= $("#jobCategory"),
-			settings.videoUrl= $("#jobCode"),
-			settings.industry= $("#jobLocation"),
-			settings.category= $("#jobPostedOn"),
-			settings.functionalArea= $("#jobViews"),
-			settings.minSal= $("#jobApplications")
-
-			// settings.editor = new MediumEditor("#job_description", {
-			// 	toolbar: false,
-			// 	placeholder: {
-			//         text: 'Describe the role, talk about the role and responsibilities and help potential applicants understand what makes this a great opportunity.'
-			//     },
-			// 	disableExtraSpaces: true,
-			// 	hideOnClick: false
-			// })
-            //
-			// settings.editor.subscribe('editableInput', function(event, editorElement){
-            //
-			// })
+			settings.postedByInfo= $("#postedByInfo"),
+			settings.jobCategory= $("#jobCategory"),
+			settings.jobCode= $("#jobCode"),
+			settings.jobLocation= $("#jobLocation"),
+			settings.jobPostedOn= $("#jobPostedOn"),
+			settings.jobViews= $("#jobViews"),
+			settings.jobApplications= $("#jobApplications")
 
 	}
 
+	function getTitleFormat(title, regex) {
+        return title.replace(regex, '');
+    }
 
-	function setJobData(data) {
-        debugger
-		settings.title.val(getTitleFormat(obj["title"],(/\(\d+-\d+ \w+\)$/)));
-		if(settings.editor){
-			settings.editor.setContent(obj["description"])
-		}
-		settings.description.val(obj["description"]);
-		settings.initialPremium = obj["premium"]
-		settings.isPremium.prop("checked", obj["premium"]);
-		settings.category.val(obj["category"]);
-		settings.functionalArea.val(obj["functionalArea"]);
+    function getLocation(arr) {
+        var array = []
+        arr.forEach(function(value, index){
+           for(var locCategory in cityList) {
+               if(cityList[locCategory][value]) {
+                   var locName = cityList[locCategory][value];
+                   array.push(locName)
+               }
+           }
+       })
+       return array;
+    }
 
-
-		setPillValuesByObject(settings.location.attr('id'), obj["location"], cityList);
-		setPillValues(settings.location.attr('id'), obj["otherLocation"]);
-		setPillValues(settings.industry.attr('id'), obj["industry"], industryTagsData);
-		if(obj["videoUrl"] != "")
-			settings.videoUrl.val(obj["videoUrl"]);
-		if(obj["courseType"].length)
-			setMultipleCheckboxes(settings.courseType.attr('id'), obj["courseType"]);
-		if(obj["preferences"].length)
-			setMultipleCheckboxes(settings.preferences.attr('id'), obj["preferences"]);
-		if(obj["tags"].length)
-			setPillValues(settings.tags.attr('id'), obj["tags"]);
-		if(obj["sal"] && obj["sal"]["min"]!= 0 && obj["sal"]["max"]!=0) {
-			settings.minSal.val(obj["sal"]["min"]);
-			settings.maxSal.val(obj["sal"]["max"]);
-			settings.confidential.prop("checked", obj["sal"]["hide"]);
-		}
-		else {
-			settings.minSal.val();
-			settings.maxSal.val();
-		}
-		settings.minExp.val(obj["exp"]["min"]);
-		settings.maxExp.val(obj["exp"]["max"]);
-		if(obj["batch"] && obj["batch"]["min"]!= "" && obj["batch"]["max"]!="") {
-			settings.batchFrom.val(obj["batch"]["min"]);
-			settings.batchTo.val(obj["batch"]["max"]);
-		}
-		else {
-			settings.batchFrom.val();
-			settings.batchTo.val();
-		}
-		settings.submitButton.text("Update")
+	function setTags(arr) {
+		var str = ""
+		arr.forEach(function(aTag, index){
+			str += "#" + aTag + " "
+		})
+		return str;
 	}
 
+	function setJobData(jobId,obj) {
+		settings.jobTitle.text(getTitleFormat(obj["title"],(/\(\d+-\d+ \w+\)$/))).removeClass("shell");
+		settings.jobDescription.html(obj["description"] || "No Description Available").removeClass("shell");
+		settings.jobCategory.text(categoryObj[obj["category"]]).removeClass("shell");
 
+		var locStr = (getLocation(obj["location"])).join(", ");
+		settings.jobLocation.text(locStr).removeClass("shell")
+
+		if(obj["tags"] && obj["tags"].length) {
+			var tagStr = setTags(obj["tags"])
+			settings.jobTags.html(tagStr).removeClass("shell");
+		}
+		else {
+			settings.jobTags.addClass("hidden").removeClass("shell");
+		}
+		settings.postedBy.text(profile["name"]).removeClass("shell");
+		settings.postedByInfo.text(profile["designation"] + " at " + profile["organisation"]);
+		settings.jobCode.text(obj["publishedId"]).removeClass("shell");
+		settings.jobPostedOn.text(moment(obj["created"]).format("DD MMMM YYYY")).removeClass("shell")
+		settings.jobViews.text(obj["views"] || "N.A").removeClass("shell")
+		settings.jobApplications.text(obj["totalApplications"] || "N.A").removeClass("shell");
+	}
 
 	return {
 		init: init,

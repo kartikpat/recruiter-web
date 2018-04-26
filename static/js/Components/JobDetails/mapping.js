@@ -129,3 +129,14 @@ var cityList={
            "100000": "Others"
        }
 }
+
+var categoryObj = {
+    13 : "Finance",
+    14 : "Sales & Marketing",
+    16 : "Consulting",
+    17 : "HR",
+    15 : "IT & Systems",
+    19 : "Operations",
+    21 : "Legal",
+    22 : "BPO"
+}

@@ -446,3 +446,67 @@
         }
     }
 }
+
+
+
+.credits-container {
+    padding: 0 !important;
+    .credits-header {
+        border-bottom: 1px solid green;
+        padding: 20px;
+    }
+    .credits-content {
+        padding: 20px;
+        font-size: 0;
+    }
+    .content-header {
+        min-height: 30px;
+    }
+    .content-row {
+
+    }
+    .column {
+        display: inline-block;
+        vertical-align: top;
+        font-size: 14px;
+        &.team-mem {
+            width: 26%;
+        }
+        &.ttl-cre {
+            width: 17%;
+        }
+        &.rem-cre {
+            width: 22%;
+        }
+        &.use-cre {
+            width: 17%;
+        }
+        &.add-cre {
+            width: 18%;
+            input {
+                @include input-field;
+                width: 30%;
+                padding: 2px 6px;
+                cursor: initial;
+            }
+        }
+    }
+    .mem-img {
+        width: 25px;
+        height: 25px;
+        vertical-align: top;
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+    }
+    .mem-info {
+        width: calc(100% - 35px);
+        vertical-align: top;
+    }
+
+}
+.distribute-credits.button {
+    width: 175px;
+}
