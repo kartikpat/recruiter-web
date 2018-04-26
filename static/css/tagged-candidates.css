@@ -2046,22 +2046,34 @@ span.sticker {
         background-image: url("/static/images/minimal_select_dropdown.svg"); }
     .page-content .tagged-candidates .page-header select::-ms-expand {
       display: none !important; }
+    .page-content .tagged-candidates .page-header .heading {
+      display: inline-block;
+      font-size: 14px;
+      color: #818181;
+      width: 100%;
+      margin: 20px 0;
+      max-width: 250px;
+      color: #2b2b2b;
+      font-size: 18px;
+      font-weight: 600; }
     .page-content .tagged-candidates .tagged-candidates-listing {
       background: #FFF;
       border-radius: 6px;
       border: 1px solid #e8e8e8;
       min-height: 30px; }
-      .page-content .tagged-candidates .tagged-candidates-listing .empty-screen .image-container {
-        text-align: center; }
-        .page-content .tagged-candidates .tagged-candidates-listing .empty-screen .image-container img {
-          width: 18%; }
-      .page-content .tagged-candidates .tagged-candidates-listing .empty-screen .user-text {
-        text-align: center;
-        padding-bottom: 20px; }
-      .page-content .tagged-candidates .tagged-candidates-listing .empty-screen .empty-text {
-        text-align: center;
-        color: #888;
-        padding-bottom: 20px; }
+      .page-content .tagged-candidates .tagged-candidates-listing .empty-screen {
+        padding: 15% 0px; }
+        .page-content .tagged-candidates .tagged-candidates-listing .empty-screen .image-container {
+          text-align: center; }
+          .page-content .tagged-candidates .tagged-candidates-listing .empty-screen .image-container img {
+            width: 18%; }
+        .page-content .tagged-candidates .tagged-candidates-listing .empty-screen .user-text {
+          text-align: center;
+          padding-bottom: 20px; }
+        .page-content .tagged-candidates .tagged-candidates-listing .empty-screen .empty-text {
+          text-align: center;
+          color: #888;
+          padding-bottom: 20px; }
       .page-content .tagged-candidates .tagged-candidates-listing .candidate-item {
         padding: 30px 18px 0px;
         font-size: 0;
@@ -2090,7 +2102,7 @@ span.sticker {
               color: #2b2b2b;
               font-weight: bold; }
             .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section .datum p.detail {
-              color: #808080; }
+              color: #2b2b2b; }
           .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.image {
             width: 9%; }
             .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.image .candidate-image {

@@ -19,6 +19,7 @@ function candidateList() {
         settings.multipleJobListingClass= '.multipleJobListing',
         settings.multipleJobListingTextClass= '.multipleJobListingbox'
         settings.emptyView=$('.empty-screen')
+        settings.heading=$('.heading')
         onToggleJobList();
         jQuery(".header .menu-list-item.my-jobs").addClass("active");
    }
@@ -121,7 +122,7 @@ function candidateList() {
            var toMon = getMonthName(anObj["exp"]["to"]["month"]);
            var fromYear = anObj["exp"]["from"]["year"];
            var toYear = anObj["exp"]["to"]["year"];
-           var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
+           var str = (anObj["is_current"]) ? fromMon + " , " + fromYear + " to Present": fromMon + " , " + fromYear + " to " + toMon + " , " + toYear;
            item.tenure.text(str);
 
            profStr+=item.element[0].outerHTML
@@ -135,7 +136,7 @@ function candidateList() {
            var item = getEducationElement()
            item.name.text(anObj["institute"])
            item.batch.text(anObj["batch"]["from"] + " - " + anObj["batch"]["to"] )
-           item.degree.text(anObj["degree"] + "("+anObj["courseType"]+")")
+           item.degree.text(anObj["degree"] +" "+ "("+anObj["courseType"]+")")
            eduStr+=item.element[0].outerHTML
        })
        item.eduList.html(eduStr)
@@ -173,7 +174,9 @@ function candidateList() {
        var Tagval=settings.filterByTagList.val();
        if(dataArray.length<1 && pageNumber ==1){
            if(Tagval==-1){
+            settings.filterByTagList.addClass('hidden');
             settings.emptyView.removeClass('hidden');
+            settings.heading.removeClass('hidden');
             return
            }
            else{

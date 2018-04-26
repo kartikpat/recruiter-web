@@ -366,7 +366,7 @@ function candidateList() {
                     var toMon = getMonthName(anObj["exp"]["to"]["month"]);
                     var fromYear = anObj["exp"]["from"]["year"];
                     var toYear = anObj["exp"]["to"]["year"];
-                    var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
+                    var str = (anObj["is_current"]) ? fromMon + " , " + fromYear + " to Present": fromMon + " , " + fromYear + " to " + toMon + " , " + toYear;
                 }
 
                 item.tenure.text(str);
@@ -386,8 +386,8 @@ function candidateList() {
             }
             var item = getEducationElement()
             item.name.text(anObj["institute"])
-            item.tenure.text(anObj["batch"]["from"] + " - " + anObj["batch"]["to"] )
-            item.degree.text(anObj["degree"] + "("+anObj["courseType"]+")")
+            item.tenure.text(anObj["batch"]["from"] + " to " + anObj["batch"]["to"] )
+            item.degree.text(anObj["degree"] +" " + "("+anObj["courseType"]+")")
             eduStr+=item.element[0].outerHTML
         })
         if(aData["education"].length > 3) {

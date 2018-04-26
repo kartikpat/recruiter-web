@@ -17,7 +17,6 @@
 
 .loading {
     margin: 20px 0;
-
     .loader-scroller {
         // position: static;
         width: 45px;
@@ -56,6 +55,17 @@
 			select::-ms-expand {
 				display: none!important;
 			}
+			.heading{
+				display: inline-block;
+				font-size: 14px;
+				color: #818181;
+				width: 100%;
+				margin: 20px 0;
+				max-width: 250px;
+				color: #2b2b2b;
+				font-size: 18px;
+				font-weight: 600;
+			}
 		}
 
 		.tagged-candidates-listing {
@@ -64,6 +74,7 @@
 			border:1px solid $border-color-base;
 			min-height:30px;
 			.empty-screen{
+				padding: 15% 0px;
 				.image-container{
 					text-align: center;
 					img{
@@ -122,7 +133,7 @@
 							}
 
 							&.detail {
-								color:$extra-info-color;
+								color:$color-darkgrey;
 							}
 						}
 					}
@@ -235,7 +246,7 @@
 								max-width: 150px;
 								word-wrap: break-word;
 								a{
-									color:#2b2b2b;
+									color:$color-darkgrey;
 								}
 							}
 						}
@@ -252,7 +263,7 @@
 					}
 					select {
 						@include select-dropdown;
-						color: #2b2b2b;
+						color:$color-darkgrey;
 					}
 				}
 
@@ -519,7 +530,7 @@
 
 span.multipleJobListingText {
 	cursor: pointer;
-	color: #155d9a;
+	color: $link-color;
 }
 .multipleJobListingbox{
 	cursor: pointer;

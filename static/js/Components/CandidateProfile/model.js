@@ -237,8 +237,8 @@ function Candidate() {
 
             var item = getEducationElement()
             item.name.text(anObj["institute"])
-            item.tenure.text(anObj["batch"]["from"] + " - " + anObj["batch"]["to"] )
-            item.degree.text(anObj["degree"] + "("+anObj["courseType"]+")")
+            item.tenure.text(anObj["batch"]["from"] + " to " + anObj["batch"]["to"] )
+            item.degree.text(anObj["degree"] +" "+ "("+anObj["courseType"]+")")
             if(index != aData["education"].length - 1)
                 item.seperator.removeClass("hidden")
             eduStr+=item.element[0].outerHTML
