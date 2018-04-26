@@ -52,10 +52,16 @@ function Plans() {
            var planType = $(this).attr("data-plantype");
            var elem = $(this).closest(".modal").find("input");
            var contact = (elem.val()).trim();
+           
            if(!contact) {
                elem.next().text("Please enter your contact number").removeClass("hidden");
                return
            }
+           
+           if(!( contact && elem.val() && isValidPhone(elem.val()) )){
+                 elem.next().text("Please enter a valid number").removeClass("hidden");
+                return;
+            }
            fn(contact, planType)
        })
    }

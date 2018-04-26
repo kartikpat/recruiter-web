@@ -10,6 +10,7 @@ jQuery(".course-option").on('click', function() {
 
 jQuery(".button-action-list").on("click", function() {
 	jQuery(this).toggleClass("inactive");
+	// jQuery(".button-action-list").scrollTop(0,0);
 })
 
 jQuery(".pill-button input").on('focus', function() {

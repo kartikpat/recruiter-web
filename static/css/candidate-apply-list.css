@@ -3582,7 +3582,7 @@ input::-webkit-input-placeholder {
             display: inline-block;
             margin: 0 10px 10px 0;
             border: 1px solid #e8e8e8;
-            padding: 2px 15px;
+            padding: 3px 15px;
             border-radius: 50px;
             text-transform: capitalize;
             font-size: 14px;
