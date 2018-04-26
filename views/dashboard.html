@@ -14,14 +14,18 @@
                     <div class="block-container" id="dashboardStatsContainer">
                         <div class="block activeJobs">
                             <div class="stats">
-                                <div class="number">0</div>
+                                <div class="number">
+                                     0   {{>spinner}}
+                                </div>
                                 <div class="legend">Active Jobs<div class="info-icon"><i class="icon-information tooltip" aria-hidden="true" title="Jobs on which there has been any activity in the last 15 days"></i></div></div>
                             </div>
                             <div class="icon"><i class="demo-icon icon-group"></i></div>
                             <div class="separater positive-right"></div>
                         </div><div class="block newApplications">
                             <div class="stats">
-                                <div class="number">0</div>
+                                <div class="number">
+                                  0  {{>loader}}
+                                </div>
                                 <div class="legend">New Applications <div class="info-icon"><i class="icon-information tooltip" aria-hidden="true" title="Number of candidates on the active jobs that have not yet been seen by you"></i></div></div>
 
                             </div>
@@ -29,7 +33,9 @@
                             <div class="separater positive-bottom"></div>
                         </div><div class="block awaitedApplications">
                             <div class="stats">
-                                <div class="number">0</div>
+                                <div class="number">
+                                   0 {{loader}}
+                                </div>
                                 <div class="legend">Candidates to be reviewed<div class="info-icon"><i class="icon-information tooltip" aria-hidden="true" title="Number of candidates on the active jobs on which no action has been taken yet"></i></div></div>
 
                             </div>
@@ -37,7 +43,9 @@
                             <div class="separater positive-top"></div>
                         </div><div class="block  shortlistedApplications">
                             <div class="stats">
-                                <div class="number">0</div>
+                                <div class="number">
+                                   0 {{>loader}}
+                                </div>
                                 <div class="legend">Shortlisted candidates to be interviewed  <div class="info-icon"><i class="icon-information tooltip" aria-hidden="true" title="Number of shortlisted candidates on the active jobs yet to be interviewed"></i></div></div>
 
                             </div>
@@ -508,7 +516,7 @@
                         <input type="radio" id="3" name="unpublishReason">
                         <label for="3">I have received enough responses for this position.</label>
                     </div>
-                    <div class="error hidden">please select a reason</div>
+                    <div class="error hidden">Please select a reason</div>
                 </div>
 
                 <div class="action-buttons">

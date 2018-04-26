@@ -215,7 +215,8 @@ body {
   .spinner > div {
 	width: 10px;
 	height: 10px;
-	background-color: #fff;
+	// color: #149075;
+	background-color:#fff;
 	border-radius: 100%;
 	display: inline-block;
 	-webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
@@ -305,13 +306,6 @@ body {
 	}
 }
 
-
-
-
-
-
-
-
 .icon-spinner-7:before {
 	content:'\f529'
 }
@@ -328,7 +322,7 @@ body {
 	display: inline-block;
 	font-size:1em;
 	height: 1em;
-	line-height: 1;
+	line-height: .7;
 	margin: .1em;
 	animation: anim-rotate 1s infinite linear;
 	color: #c2c2c2;

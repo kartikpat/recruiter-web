@@ -5,10 +5,12 @@ function candidateList() {
 
     function init(profile, baseUrl){
         settings.rowContainer= $('.candidateListing'),
+        settings.rowContainerClass='.candidateListing'
         settings.header= $('#jobDetails'),
         settings.candidateRowClass= ".candidateRow",
+        settings.candidateRow=$('.candidateRow'),
         settings.candidateInviteButton= ".candidateSendInterviewInvite",
-        settings.candidateAddTagButton= ".candidateAddTag",
+        settings.candidateAddTagButton= ".candidateAddTagModal",
         settings.candidateAddCommentButton= ".candidateAddComment",
         settings.candidateSaveButton= ".candidateSave",
         settings.candidateDownloadResumeButton= ".candidateDownloadResume",
@@ -55,7 +57,20 @@ function candidateList() {
         settings.to = ''
         settings.emptyView = $(".empty-screen"),
         settings.contactMenu=$('.contact-menu'),
+        settings.candidateAddCommentButtonClass= '.candidateAddComment',
+        settings.candidateCommentTextareaClass= '.candidateCommentText',
+        settings.commentTextarea=('.comment-text'),
+        settings.candidateEditComment=('.candidateAddEdit'),
+        settings.candidateEditCommentButton=$('.candidateAddEdit'),
         settings.contactMenubutton=$('.contactMenubutton');
+        settings.candidateAddTagButtonClass= '.candidateAddTag',
+        settings.candidateTagInputClass = '.candidateTagInputContainer',
+        settings.candidateTagListClass = '.candidateTagListContainer',
+        settings.candidateTagPrototype= $('.candidateTag.prototype'),
+        settings.tagListing = $(".recruiterTags"),
+        settings.candidateTagRemoveClass = '.tagRemove',
+        settings.topbutton=$('#topbutton')
+        settings.tagArr = [],
         settings.status = ''
         settings.url = baseUrl+"/recruiter/"+recruiterId+"/jobs/"+jobId+"/applications/download/excel";
 
@@ -72,6 +87,9 @@ function candidateList() {
         onClickActionListItems()
         contactMenu()
         onClickBulkBackIcon()
+        onClickModal()
+        closetooltipModal()
+        backToTop()
 
         $(window).click(function(event) {
     		$(settings.candidateOtherActionsClass).addClass('inactive');
@@ -218,7 +236,12 @@ function candidateList() {
 		card.attr('data-candidate-id', id);
 
 		return {
-			element: card,
+            element: card,
+            textarea:card.find('.commentdisabled'),
+            Commentarea: card.find('.comment-tooltip .candidateCommentText'),
+            AddCommentButton:card.find('.comment-tooltip .candidateAddComment'),
+            EditComment:card.find('.comment-tooltip .candidateAddEdit'),
+            candidateTagList: card.find(settings.candidateTagListClass),
             image: card.find('.js_img'),
 			name: card.find('.js_name'),
 			experience: card.find('.js_exp'),
@@ -295,6 +318,14 @@ function candidateList() {
         item.shortlistButton.attr("data-status", status);
         item.rejectButton.attr("data-status", status);
         item.savedButton.attr("data-status", status);
+        
+        var tagStr = '';
+        $.each(aData["tags"],function(index, aTag) {
+            var tag = getCandidateTag(aTag)
+            tagStr+=tag[0].outerHTML
+        })
+        item.candidateTagList.html(tagStr)
+        
         if(status == 1) {
             item.shortlistButton.text("Shortlisted");
         }
@@ -383,7 +414,12 @@ function candidateList() {
             item.recommendationsLink.removeClass("hidden")
         }
         var flag=0;
-        if(aData["comment"]) {
+        if(aData["comment"]){
+            console.log(aData["comment"])
+            item.Commentarea.addClass('hidden').html(aData["comment"]);
+            item.textarea.removeClass('hidden').html(aData["comment"]);
+            item.AddCommentButton.addClass('hidden');
+            item.EditComment.removeClass('hidden');
             item.viewCommentLink.removeClass("hidden")
             flag++;
         }
@@ -391,6 +427,7 @@ function candidateList() {
             item.viewTagLink.removeClass("hidden")
             flag++;
         }
+        
         if(flag>1){
               item.viewTagLink.css("border-left","1px solid #e8e8e8");
         }
@@ -491,7 +528,7 @@ function candidateList() {
         // settings.rowContainer.find(".candidate-select").removeClass("selected");
         if(dataArray.length < pageContent) {
             if(element.find(".no-more-records").length == 0) {
-                return element.append("<div class='no-more-records no-data'>No more records!</div>")
+                return element.append("<div class='no-more-records no-data'>You have reached the end of the list</div>")
             }
         }
 	}
@@ -500,6 +537,11 @@ function candidateList() {
         settings.rowContainer.on('click', settings.viewCommentButtonClass, function(e){
             e.preventDefault();
             var applicationId= $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            $('.action-tooltip').addClass('hidden');
+            $(this).closest(settings.candidateRowClass).find('.comment-tooltip').removeClass('hidden');
+            if(window.innerWidth<768){
+                addBodyFixed();
+            }
             fn(applicationId);
         })
     }
@@ -508,6 +550,11 @@ function candidateList() {
         settings.rowContainer.on('click', settings.viewTagButtonClass, function(e){
             e.preventDefault();
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            $('.action-tooltip').addClass('hidden');
+            $(this).closest(settings.candidateRowClass).find('.tag-tooltip').removeClass('hidden');
+            if(window.innerWidth<768){
+                addBodyFixed();
+            }   
             fn(applicationId);
         })
     }
@@ -596,19 +643,163 @@ function candidateList() {
 
     function onClickAddTag(fn) {
         settings.rowContainer.on('click',settings.candidateAddTagButton ,function(event) {
-            event.preventDefault()
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            fn(applicationId);
+            settings.rowContainer.find('.tag-tooltip').addClass('hidden');
+            settings.rowContainer.find('.comment-tooltip').addClass('hidden');
+            $(".candidateRow[data-application-id="+applicationId+"]").find('.tag-tooltip').removeClass('hidden');
+            if(window.innerWidth<768){
+                addBodyFixed();
+            } 
         })
     }
 
-    function onClickAddComment(fn) {
+    function onClickAddComment(fn){
         settings.rowContainer.on('click',settings.candidateAddCommentButton ,function(event) {
-            event.preventDefault()
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            fn(applicationId);
+            settings.rowContainer.find('.comment-tooltip').addClass('hidden');
+            settings.rowContainer.find('.tag-tooltip').addClass('hidden');
+            $(".candidateRow[data-application-id="+applicationId+"]").find('.comment-tooltip').removeClass('hidden');
+            if(window.innerWidth<768){
+                addBodyFixed();
+            } 
         })
     }
+    
+    function onClickComment(fn) {
+        settings.rowContainer.on('click', settings.candidateAddCommentButtonClass,function(event) {
+            event.stopPropagation();
+            event.preventDefault();
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            
+            var comment = ($(this).closest(settings.candidateRowClass).find(settings.candidateCommentTextareaClass).val()).trim();
+            if(!comment) {
+                return
+            }
+            fn(applicationId, comment);
+        });
+
+        settings.rowContainer.on('click',settings.candidateEditComment,function(event){
+            event.stopPropagation();
+            event.preventDefault();
+            $(this).closest(settings.candidateRowClass).find(settings.commentTextarea).addClass("hidden");
+            $(this).closest(settings.candidateRowClass).find(settings.candidateCommentTextareaClass).removeClass("hidden");
+            $(this).closest(settings.candidateRowClass).find(settings.candidateAddCommentButtonClass).removeClass("hidden");
+            $(this).closest(settings.candidateRowClass).find(settings.candidateEditComment).addClass("hidden");
+        });
+    }
+
+    function onClickTag(fn,fn1){
+        settings.rowContainer.on('keyup', settings.candidateTagInputClass ,function(event) {
+            event.stopPropagation();
+            event.preventDefault();
+            var tagName = $(this).val();
+            if (event.which != 13) {
+                 $(this).removeAttr("tag-id")
+            }
+            return fn1(tagName)
+        });
+        settings.rowContainer.on('click', settings.candidateAddTagButtonClass,function(event) {
+            event.stopPropagation();
+            event.preventDefault();
+            
+            var tagName = ($(this).closest(settings.candidateRowClass).find(settings.candidateTagInputClass).val()).trim();
+            var obj = searchObjByKey(settings.tagArr, tagName, "name")
+            var tagId = $(settings.CandidateTagInputClass).attr("tag-id");
+            if(obj) {
+                tagId = obj["id"]
+            }
+            $(this).removeAttr("tag-id")
+            var parameters = {}
+            if(tagId) {
+                parameters.tagId = tagId;
+            }
+            parameters.tagName = tagName;
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            return fn(applicationId, parameters);
+        });
+    }
+    
+    function getCandidateTag(aTag) {
+        var tag =  settings.candidateTagPrototype.clone().removeClass("prototype hidden");
+        tag.find(".tagLabel").text(aTag["name"]);
+        tag.find(".tagRemove").attr("data-tag-id", aTag["id"]);
+        return tag
+    }
+
+    function appendCandidateTag(aTag,applicationId){
+        var tag = getCandidateTag(aTag);
+        $(".candidateRow[data-application-id="+applicationId+"]").find(settings.candidateTagListClass).append(tag);
+        // $(".candidateRow[data-application-id="+applicationId+"]").find(settings.viewCommentButtonClass).removeClass('hidden');
+        emptyInputElement($(settings.candidateTagInputClass));
+    }
+
+    function emptyInputElement(element) {
+        element.val("")
+    }
+
+    function onClickDeleteTag(fn) {
+        settings.rowContainer.on('click', settings.candidateTagRemoveClass,function(event) {
+            event.stopPropagation();
+            event.preventDefault();
+            var tagId = $(this).attr("data-tag-id");
+            var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+            return fn(applicationId, tagId);
+        });
+    }
+
+    function removeTag(tagId) {
+        $(settings.candidateTagListClass).find(".tagRemove[data-tag-id="+tagId+"]").closest(".candidateTag").remove()
+    }
+    
+    function showDropdownTags(data) {
+        settings.tagArr = data;
+        initializeAutoCompleteComponent(settings.tagListing, data)
+    }
+    
+    function initializeAutoCompleteComponent(selector, availableTags) {
+        var suggestedTagsArray = [];
+        availableTags.forEach(function(aTag) {
+            suggestedTagsArray.push({
+                "label": aTag["name"],
+                "value": aTag["name"],
+                "id": aTag["id"]
+            });
+        })
+        selector.autocomplete({
+              source: suggestedTagsArray,
+            select: function( event, ui ) {
+                selector.attr("tag-id", ui.item.id);
+                selector.val( ui.item.value);
+                return false;
+            }
+        });
+    }
+
+    function addComment(comment,applicationId){
+        console.log(comment);
+        console.log(applicationId);
+        $(".candidateRow[data-application-id="+applicationId+"]").find(settings.candidateCommentTextareaClass).addClass("hidden");
+        $(".candidateRow[data-application-id="+applicationId+"]").find(settings.candidateAddCommentButtonClass).addClass("hidden");
+        $(".candidateRow[data-application-id="+applicationId+"]").find(settings.commentTextarea).val(comment);
+        $(".candidateRow[data-application-id="+applicationId+"]").find(settings.commentTextarea).removeClass("hidden");
+        $(".candidateRow[data-application-id="+applicationId+"]").find(settings.candidateEditComment).removeClass("hidden");
+    }
+
+    function onClickModal(){
+        settings.rowContainer.on('click','.action-tooltip',function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+        })
+    }
+
+    function closetooltipModal(){
+        settings.rowContainer.on('click','.close-modal',function(event) {
+            $('.action-tooltip').addClass('hidden');
+            removeBodyFixed();
+        })
+        
+    }
+
 
     function onClickShortlistCandidate(fn) {
         settings.rowContainer.on('click', settings.candidateShortlistButtonClass, function(event) {
@@ -1029,6 +1220,20 @@ function candidateList() {
         return $(".candidateListing[data-status-attribute='"+settings.status+"']").find(".candidateRow").length;
     }
 
+    function backToTop(){
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > 500) {
+              settings.topbutton.addClass('show');
+            } else {
+                settings.topbutton.removeClass('show');
+            }
+          });
+          
+          settings.topbutton.on('click', function(e) {
+            e.preventDefault();
+            $('html, body').animate({scrollTop:0}, '300');
+          });     
+    }
 
     return {
 		init: init,
@@ -1040,6 +1245,9 @@ function candidateList() {
         onClickCandidate: onClickCandidate,
         onClickAddTag: onClickAddTag,
         onClickAddComment: onClickAddComment,
+        onClickComment:onClickComment,
+        onClickModal:onClickModal,
+        closetooltipModal:closetooltipModal,
         onClickSendMessage: onClickSendMessage,
         onClickSaveCandidate: onClickSaveCandidate,
         onClickDownloadResume: onClickDownloadResume,
@@ -1049,6 +1257,7 @@ function candidateList() {
         candidateActionTransition: candidateActionTransition,
         onClickViewComment: onClickViewComment,
         onClickViewTag: onClickViewTag,
+        addComment:addComment,
         onClickDownloadMassExcel: onClickDownloadMassExcel,
         updateJobStats: updateJobStats,
         onClickMassComment: onClickMassComment,
@@ -1070,6 +1279,11 @@ function candidateList() {
         getApplicationsLength: getApplicationsLength,
         hideEmptyScreen: hideEmptyScreen,
         contactMenu:contactMenu,
-        showComment: showComment
-	}
+        showComment: showComment,
+        onClickTag:onClickTag,
+        showDropdownTags: showDropdownTags,
+        onClickDeleteTag: onClickDeleteTag,
+        removeTag: removeTag,
+        appendCandidateTag: appendCandidateTag
+    }
 }

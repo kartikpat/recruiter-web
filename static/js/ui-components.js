@@ -10,18 +10,19 @@ jQuery(".course-option").on('click', function() {
 
 jQuery(".button-action-list").on("click", function() {
 	jQuery(this).toggleClass("inactive");
+	// jQuery(".button-action-list").scrollTop(0,0);
 })
 
 jQuery(".pill-button input").on('focus', function() {
 	jQuery(this).parent().removeClass("inactive");
 });
 
-jQuery(".pill-button input").on('blur', function() {
+jQuery(".pill-button input").on('blur', function(){
 	jQuery(this).parent().addClass("inactive");
 	jQuery(this).attr("placeholder", jQuery(this).attr("data-placeholder-value"));
 });
 
-jQuery(".pill-button input").on('keyup', function(e) {
+jQuery(".pill-button input").on('keyup', function(e){
 	var searchString = jQuery(this).val();
 	if(jQuery(this).closest(".tag-container").attr("data-enable-custom") && jQuery(this).closest(".tag-container").attr("data-enable-custom") == "true") {
 		jQuery(this).siblings(".pill-listing").find("li[data-value=custom]").text(searchString);
@@ -43,7 +44,7 @@ jQuery(".pill-button input").on('keyup', function(e) {
 	jQuery(this).siblings(".pill-listing").find("li[data-value=custom]").addClass("hidden");
 });
 
-jQuery(".tag-container").on("mouseenter", ".pill-listing li", function() {
+jQuery(".tag-container").on("mouseenter", ".pill-listing li", function(){
 	if($(this).hasClass("disabled")){
 		return
 	}
@@ -53,13 +54,11 @@ jQuery(".tag-container").on("mouseenter", ".pill-listing li", function() {
 });
 
 jQuery(".tag-container").on("mouseleave", ".pill-listing li", function() {
-
 	jQuery(this).removeClass("selected");
 	jQuery(this).siblings().removeClass("selected");
 });
 
 jQuery(".tag-container").on("mousedown", ".pill-listing li", function() {
-
 	if($(this).hasClass("disabled")){
 		return
 	}
@@ -70,7 +69,6 @@ jQuery(".tag-container").on("mousedown", ".pill-listing li", function() {
 
 		addNewTag(selectedValue,  jQuery(this).attr("data-value"), jQuery(this).closest(".tag-container"));
 	}
-
 });
 
 

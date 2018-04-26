@@ -205,7 +205,7 @@ function candidateList() {
        settings.candidateListing.append(str);
        if(dataArray.length< pageContent) {
            if(settings.candidateListing.find(".no-more-records").length == 0) {
-               return settings.candidateListing.append("<div class='no-more-records no-data'>No more records!</div>")
+               return settings.candidateListing.append("<div class='no-more-records no-data'>You have reached the end of the list</div>")
            }
 
        }

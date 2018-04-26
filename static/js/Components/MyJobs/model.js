@@ -45,6 +45,7 @@ function Jobs() {
 			var jobId = $(this).attr("data-job-id");
 			settings.jobUnpublishModal.find("input:radio[name='unpublishReason']:checked").prop('checked', false);
 			addBodyFixed()
+			settings.jobUnpublishModal.find('.error').addClass('hidden');
 			settings.jobUnpublishModal.removeClass('hidden');
 			settings.jobUnpublishButton.attr('data-unpublish-job-id', jobId);
 		});
@@ -344,7 +345,7 @@ function Jobs() {
 		initializeTooltip()
 		if(dataArray.length< pageContent) {
 			if(settings.rowContainer.find(".no-more-records").length == 0) {
-                return settings.rowContainer.append("<div class='no-more-records no-data'>No more records!</div>")
+                return settings.rowContainer.append("<div class='no-more-records no-data'>You have reached the end of the list</div>")
             }
         }
 
@@ -395,6 +396,7 @@ function Jobs() {
 	function closeModal() {
 		removeBodyFixed()
 		$(".modal").addClass("hidden")
+		
 	}
 
 	function hideEmptyView() {

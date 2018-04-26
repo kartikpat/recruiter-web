@@ -6,11 +6,11 @@
 		<div class="action-buttons">
 			<span class="icon-back_icon bulkBackIcon"></span>
 			<span class="applicationsCount">6 candidates selected</span>
+			<span class=" button white massShortlist">Shortlist</span>
+			<span class=" button white massReject">Reject</span>
+			<span class=" button white massSave">Save for Later</span>
 			<span class=" button white downloadResumeMass hidden" >Download Resume</span>
 			<a href="" class="downloadExcelMass hidden" target="_blank"><span class=" button white">Download Excel</span></a>
-			<span class=" button white massReject">Reject</span>
-			<span class=" button white massShortlist">Shortlist</span>
-			<span class=" button white massSave">Save for Later</span>
 			<span class=" button white massComment">Add Comment</span>
 			<!-- <span class=" button white" id="massTag">Add Tag</span> -->
 		</div>
@@ -118,14 +118,14 @@
 							</div>
 						</div>
 						<div class="candidates-search-results" id="candidatesSearchResults">
-							<p class="results-count hidden" id="resultFound">
-							</p>
+							<p class="results-count hidden" id="resultFound"></p>
+							<span class="filtersExtraButtons link-color hidden" id="clear-all" >Clear filters</span>
+						
 							<div class="active-filters hidden">
 								<span  class="clear-all-filters ">
 									<span class="appliedFilters"></span>
 								</span>
 							</div>
-							<span class="filtersExtraButtons link-color hidden" id="clear-all" >Clear filters</span>
 							<span class="filtersExtraButtons link-color hidden" id="seeFilters">See more</span>
 						</div>
 					</div>
@@ -239,6 +239,7 @@
 
 						</div>
 					</div>
+					
 				</div>
 
 				<div class="loading loaderScroller hidden">
@@ -248,7 +249,14 @@
 			</div>
 			<div class="conversations right">
 				{{>chatSidebar}}
+				<!-- <a id="topbutton" class="icon-up_arrow"></a>	 -->
+				<div id="topbutton">
+					<i class="icon-up_arrow"></i>
+					<br>
+					<span>Back to Top</span>
+				</div>
 			</div>
+			
 		</div>
 	</div>
 
@@ -527,7 +535,6 @@
 										</div>
 									</div>
 									<div class="skill-tags-area candidateTagList">
-
 									</div>
 								</div>
 
@@ -631,9 +638,10 @@
     			<li class="save candidateSaveModal"><span class="icon"><i class="icon-star_later"></i></span><span class="underline">Save for Later</span></li>
     			<li class="chat candidateChatModal"><span class="icon"><i class="icon-chat"></i></span><span class="underline">Chat with <span class="firstName candidate-first-name">Shreya</span></span></li>
 				<li class="download candidateDownloadResume"><span class="icon"><i class="icon-download_arrow"></i></span><span class="underline">Download Resume</span></li>
+				<li class="table-row-separator"></li>
 				<li class="invite interview">
 					<!-- <span class="icon sendInvite"><i class="icon-interview"></i></span> -->
-					<span class="interviewinvite">Send Interview Invite</span></li>
+					<span class="interviewinvite"><h3>Send Interview Invite</h3></span></li>
 				<li class="invite-links">
 					<span class="icon"><i class="icon-face-to-face"></i></span>
 					<span data-invite-id="1" class="inviteF2f invite tooltip" state="default">
@@ -810,7 +818,7 @@
 									</div>
 								</li>
 								<li><div class="candidateAddComment link-color underline">Add Comment</div></li>
-								<li><div class="candidateAddTag link-color underline">Add Tag</div></li>
+								<li><div class="candidateAddTagModal link-color underline">Add Tag</div></li>
 								<li class="interview-invite interviewinvite">Send Interview Invite</li>
 								<li>
 									<div data-invite-id="1" class="inviteF2f tooltip link-color invite" state="default">
@@ -835,14 +843,111 @@
 						<span class="tags tagLink hidden"><span class="viewTagButton link-color">View Tags</span></span>
 					</div>
 				</div>
+				<div class="comment-tooltip action-tooltip hidden">
+					<span class="icon-container close-modal">
+							<i class=" icon-close_icon"></i>
+					</span>
+					<div class="candidate-image">
+						<img class="js_img" src="">
+					</div>
+					<div class="candidate-item-section personal-details">
+							<p class="profile-name js_name"></p>
+							<!-- <p class="experience-label data-label">
+								<span class="bold">Experience: </span>
+								<span class="experience value js_exp">0y 0m</span>
+							</p>
+							<p class="location-label data-label">
+								<span class="bold">Location: </span>
+								<span class="location value js_loc">Delhi</span>
+							</p>
+							<p class="applied-label data-label">
+								<span class="bold">Applied: </span>
+								<span class="applied value js_appliedOn">24-02-2018</span>
+							</p>
+							<p class="notice-period-label data-label">
+								<span class="bold">Notice Period: </span>
+								<span class="notice-period value js_notice">Immediately Available</span>
+							</p>
+			
+							<p><span class="cover-letter link-color info-link coverLetterLink hidden">Cover letter</span></p>
+							<p><span class="recommendationsLink link-color info-link hidden">Recommendations</span></p> -->
+			
+					</div>
+					
+					<div class="sidebar-section comments candidateCommentContainer">
+						<h3 class="label">Comment</h3>
+						<div class="comment-box">
+							<textarea class="comment-text commentdisabled hidden" readonly="""" ></textarea>
+						</div>
+						<div class="comment-container">
+							<textarea id="" placeholder="Add your comment" name="name" class="candidateCommentText"></textarea>
+						</div>
+						<div class="action-buttons">
+							<span class="cand-comment-button button green candidateAddComment addButton">Add</span>
+							<span class="editbutton candidateAddEdit hidden">Edit Comment</span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="tag-tooltip action-tooltip hidden">
+						<span class="icon-container close-modal">
+								<i class=" icon-close_icon"></i>
+						</span>
+					<div class="candidate-image">
+							<img class="js_img" src="">
+					</div>
+					<div class="candidate-item-section personal-details">
+							<p class="profile-name js_name"></p>
+							<!-- <p class="experience-label data-label">
+								<span class="bold">Experience: </span>
+								<span class="experience value js_exp">0y 0m</span>
+							</p>
+							<p class="location-label data-label">
+								<span class="bold">Location: </span>
+								<span class="location value js_loc">Delhi</span>
+							</p>
+							<p class="applied-label data-label">
+								<span class="bold">Applied: </span>
+								<span class="applied value js_appliedOn">24-02-2018</span>
+							</p>
+							<p class="notice-period-label data-label">
+								<span class="bold">Notice Period: </span>
+								<span class="notice-period value js_notice">Immediately Available</span>
+							</p>
+			
+							<p><span class="cover-letter link-color info-link coverLetterLink hidden">Cover letter</span></p>
+							<p><span class="recommendationsLink link-color info-link hidden">Recommendations</span></p> -->
+			
+					</div>
+					
+					<div class="sidebar-section tags candidateTagContainer">
+							<h3 class="label">Tags</h3>
+							<div class="">
+								<div class="pill-listingg-container">
+									<div class="ui-widget">
+										<input placeholder="Add Tag" class="recruiterTags cand-add-tag input-field candidateTagInputContainer ui-autocomplete-input" type="text" name="" value="" autocomplete="off">
+										<div class="error-field hidden tagInputError" id=""><p>Input field can't be empty</p></div>
+									</div>
+									
+								</div>
+								<div class="skill-tags-area candidateTagListContainer"></div>
+								<div class="action-buttons cand-add-tag-action-btn">
+										<span class="button green candidateAddTag cand-add-tag-button addButton">Add</span>
+								</div>
+							</div>
+					</div>
+				</div>	
+
+				</div>
 			</div>
 			<div class="section sticker-container">
 				<span class="sticker followed-up hidden isFollowedUp">Followed up</span>
 			</div>
+
 			<div class="separator"></div>
 
 	</a>
-
+	
 </div>
 
 
@@ -906,7 +1011,7 @@
 					<input type="radio" id="3" name="unpublishReason">
 					<label for="3">I have received enough responses for this position.</label>
 				</div>
-				<div class="hidden error">please select a reason</div>
+				<div class="hidden error">Please select a reason</div>
 			</div>
 
 			<div class="action-buttons">
@@ -1070,7 +1175,8 @@
 	<label for=""></label>
 </div>
 
-<a id="back-to-top-button"></a>
+<!-- <a id="back-to-top-button"></a> -->
+
 
 {{>modalContent}}
 {{>footer}}

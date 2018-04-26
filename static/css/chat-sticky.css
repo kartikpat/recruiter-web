@@ -1192,7 +1192,7 @@ body.posf {
   display: inline-block;
   font-size: 1em;
   height: 1em;
-  line-height: 1;
+  line-height: .7;
   margin: .1em;
   animation: anim-rotate 1s infinite linear;
   color: #c2c2c2;

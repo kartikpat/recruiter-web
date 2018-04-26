@@ -805,7 +805,7 @@ body.posf {
   display: inline-block;
   font-size: 1em;
   height: 1em;
-  line-height: 1;
+  line-height: .7;
   margin: .1em;
   animation: anim-rotate 1s infinite linear;
   color: #c2c2c2;
@@ -2240,7 +2240,6 @@ span.sticker {
         background: #FFF;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
         border: 1px solid #e8e8e8;
-        list-style: none;
         padding: 5px 0;
         z-index: 5; }
         .page-content .feed-row .main-content .button-action-list .action-list-items li:hover {

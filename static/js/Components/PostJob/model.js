@@ -8,7 +8,7 @@ var errorResponses = {
 	missingMinExp: 'Please choose years of experience required for the job',
 	missingMaxExp: 'Please choose years of experience required for the job',
 	missingDescription: 'Please fill the job description',
-	invalidVideoUrl: 'enter proper youtubeURL',
+	invalidVideoUrl: 'Please enter a youtube URL here',
 	missingIndustry: 'Please choose an industry from the drop-down',
 	missingCategory: 'Please choose a category from the drop-down',
 	missingFunctionalArea: 'Please choose a functional-area from the drop-down',
@@ -53,11 +53,18 @@ function Job(){
 			settings.industryListing = $("#industryListing")
 			setAvailableCredits(settings.creditsText, config["availableCredits"]);
 			onClickCancelForm(settings.cancelFormButton);
+		
 
-			var salaryRange = 100;
+			var salaryRange = 101;
 			for(var i=0; i< salaryRange; i++){
+				if(i>=100){
+					settings.maxSal.append('<option value="'+(i+1)+'">'+(i)+"+"+'</option>')
+					settings.minSal.append('<option value="'+(i+1)+'">'+(i)+"+"+'</option>')			
+				}
+				else{
 				settings.maxSal.append('<option value="'+(i+1)+'">'+(i+1)+'</option>')
 				settings.minSal.append('<option value="'+(i+1)+'">'+(i+1)+'</option>')
+				}
 			}
 
 			settings.editor = new MediumEditor("#job_description", {
@@ -287,6 +294,7 @@ function Job(){
 			str += item[0].outerHTML
 		})
 		$("#jobTagsList").html(str)
+
 	}
 
 	function appendlocation(){
@@ -308,6 +316,8 @@ function Job(){
 		})
 		settings.industryListing.html(str);
 	}
+
+	
 
 	return {
 		init: init,
@@ -432,7 +442,6 @@ function getPillValues(elementId){
 		id: [],
 		label: []
 	};
-
 	if(elementId == "jobTags") {
 		el.each(function(index, value){
 			data['label'].push($(value).attr('data-name'));
@@ -575,6 +584,7 @@ function bindGuidelineModalFunctionality() {
 
 	$modalOverlay.on('click', ".close-modal",function(e) {
 	    $body.removeClass("posf");
-	    $modalOverlay.addClass("hidden");
+		$modalOverlay.addClass("hidden");
+		
 	});
 }

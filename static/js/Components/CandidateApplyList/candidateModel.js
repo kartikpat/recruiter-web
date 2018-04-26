@@ -34,6 +34,7 @@ function Candidate() {
         settings.sendInterviewInviteF2FClass = ".inviteF2f",
         settings.sendInterviewInviteTelephonicClass = ".inviteTelephonic"
         settings.seeMoreRec = $(".seeMoreRec");
+        settings.topbutton=$('#topbutton');
         settings.recommendationListSecond = $(".recommendationListSecond");
         settings.tagArr = [],
         settings.candidateDownloadResume = $(".candidateDownloadResume");
@@ -81,6 +82,7 @@ function Candidate() {
             }
             fn()
         })
+
     }
 
     function closeModal(){
@@ -89,6 +91,13 @@ function Candidate() {
         jQuery(".body-overlay").addClass("hidden").removeClass("vieled");
         $("body").removeClass("posf")
         settings.candidateDetailsModal.addClass("hidden");
+        document.addEventListener('keyup', function(e) {
+            if (e.keyCode == 27) {
+                jQuery(".body-overlay").addClass("hidden").removeClass("vieled");
+                $("body").removeClass("posf")
+                settings.candidateDetailsModal.addClass("hidden");
+            }
+        });
     }
 
     function showCandidateDetails(details, type, status){
@@ -398,7 +407,7 @@ function Candidate() {
             item.coverLetter.html(nl2br(aData["cover"]));
             $(".coverLetterTab").removeClass("hidden");
         }
-        if(aData["comment"]) {
+        if(aData["comment"]){
 
             settings.commentTextarea.val(aData["comment"]).removeClass("hidden");
             $(settings.candidateCommentTextareaClass).val(aData["comment"]).addClass("hidden");
@@ -454,13 +463,13 @@ function Candidate() {
         if(type == "tag") {
             if(window.innerWidth <= 1024)
                 return focusOnElement(item.mobTag, settings.mobCandidateTagContainerClass)
-            return focusOnElement(item.tag, settings.candidateTagContainerClass)
+                return focusOnElement(item.tag, settings.candidateTagContainerClass)
         }
 
         if(type == "comment") {
             if(window.innerWidth <= 1024)
                 return focusOnElement(item.mobComment, settings.mobCandidateCommentContainerClass)
-            return focusOnElement(item.comment, settings.candidateCommentContainerClass)
+                return focusOnElement(item.comment, settings.candidateCommentContainerClass)
         }
     }
 
@@ -477,6 +486,7 @@ function Candidate() {
     }
 
     function appendCandidateTag(aTag){
+        debugger
         var tag = getCandidateTag(aTag);
         settings.candidateDetailsModal.find(settings.candidateTagListClass).append(tag)
         emptyInputElement($(settings.candidateTagInputClass));
@@ -539,13 +549,13 @@ function Candidate() {
         item.contact.text('');
         item.email.text('');
         $(".coverLetterTab").addClass("hidden");
-
     }
 
     function openModal() {
     	$(".body-overlay").removeClass("hidden").addClass("veiled");
     	$("body").addClass("posf");
         settings.candidateDetailsModal.removeClass("hidden");
+        settings.topbutton.removeClass('show');
     }
 
     function onClickAddComment(fn) {
@@ -555,12 +565,11 @@ function Candidate() {
 
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
             var comment = ($(settings.candidateCommentTextareaClass).val()).trim();
+            console.log(comment);
             if(!comment) {
                 return
             }
-
-
-            fn(applicationId, comment);
+            fn(applicationId,comment);
         });
 
         settings.candidateEditComment.on('click',function(event){
@@ -607,6 +616,7 @@ function Candidate() {
     }
 
     function onClickAddTag(fn, fn1) {
+        
         settings.candidateDetailsModal.on('keyup', settings.candidateTagInputClass ,function(event) {
             event.stopPropagation();
             var tagName = $(this).val();
@@ -617,6 +627,7 @@ function Candidate() {
         });
         settings.candidateDetailsModal.on('click', settings.candidateAddTagButtonClass,function(event) {
             event.stopPropagation();
+            console.log($('.candidateTagInput').val());
             var tagName = ($(settings.candidateTagInputClass).val()).trim();
             if(!tagName) {
                 $(settings.candidateTagInputClass).addClass("error-border");

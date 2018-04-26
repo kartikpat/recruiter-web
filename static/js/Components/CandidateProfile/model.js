@@ -196,6 +196,7 @@ function Candidate() {
     }
 
     function populateCandidateData(aData, type, status) {
+        
         var item = getElement(aData["userID"]);
         item.element.attr("data-application-id", aData["id"])
         item.image.attr("src", (aData["img"] || "/static/images/noimage.png"))
