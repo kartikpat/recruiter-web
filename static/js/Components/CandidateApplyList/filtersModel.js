@@ -481,8 +481,8 @@ function Filters(){
 
 	function addFilterToContainer(value, label, category, type){
 		var aFilter = createPill(value, label, category, type);
-		settings.appliedFiltersContainer.prepend(aFilter);
-		if(settings.appliedFiltersContainer.children().length >= settings.maxFilters) {
+		settings.appliedFiltersContainer.append(aFilter);
+		if(settings.appliedFiltersContainer.children().length >= settings.maxFilters) {			
 			settings.activeFiltersContainer.addClass("collapsed");
 			settings.seeFilters.removeClass("hidden");
 		}

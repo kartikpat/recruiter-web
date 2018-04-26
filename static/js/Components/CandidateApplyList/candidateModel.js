@@ -81,6 +81,7 @@ function Candidate() {
             }
             fn()
         })
+
     }
 
     function closeModal(){
@@ -89,6 +90,13 @@ function Candidate() {
         jQuery(".body-overlay").addClass("hidden").removeClass("vieled");
         $("body").removeClass("posf")
         settings.candidateDetailsModal.addClass("hidden");
+        document.addEventListener('keyup', function(e) {
+            if (e.keyCode == 27) {
+                jQuery(".body-overlay").addClass("hidden").removeClass("vieled");
+                $("body").removeClass("posf")
+                settings.candidateDetailsModal.addClass("hidden");
+            }
+        });
     }
 
     function showCandidateDetails(details, type, status){
@@ -477,6 +485,7 @@ function Candidate() {
     }
 
     function appendCandidateTag(aTag){
+        debugger
         var tag = getCandidateTag(aTag);
         settings.candidateDetailsModal.find(settings.candidateTagListClass).append(tag)
         emptyInputElement($(settings.candidateTagInputClass));

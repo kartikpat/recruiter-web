@@ -69,6 +69,7 @@ function candidateList() {
         settings.candidateTagPrototype= $('.candidateTag.prototype'),
         settings.tagListing = $(".recruiterTags"),
         settings.candidateTagRemoveClass = '.tagRemove',
+        settings.topbutton=$('#topbutton')
         settings.tagArr = [],
         settings.status = ''
         settings.url = baseUrl+"/recruiter/"+recruiterId+"/jobs/"+jobId+"/applications/download/excel";
@@ -88,6 +89,7 @@ function candidateList() {
         onClickBulkBackIcon()
         onClickModal()
         closetooltipModal()
+        backToTop()
 
         $(window).click(function(event) {
     		$(settings.candidateOtherActionsClass).addClass('inactive');
@@ -712,7 +714,6 @@ function candidateList() {
                 parameters.tagId = tagId;
             }
             parameters.tagName = tagName;
-            debugger
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             return fn(applicationId, parameters);
         });
@@ -773,7 +774,7 @@ function candidateList() {
             }
         });
     }
-    
+
     function addComment(comment,applicationId){
         console.log(comment);
         console.log(applicationId);
@@ -1219,6 +1220,20 @@ function candidateList() {
         return $(".candidateListing[data-status-attribute='"+settings.status+"']").find(".candidateRow").length;
     }
 
+    function backToTop(){
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > 500) {
+              settings.topbutton.addClass('show');
+            } else {
+                settings.topbutton.removeClass('show');
+            }
+          });
+          
+          settings.topbutton.on('click', function(e) {
+            e.preventDefault();
+            $('html, body').animate({scrollTop:0}, '300');
+          });     
+    }
 
     return {
 		init: init,

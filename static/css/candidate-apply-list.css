@@ -3570,7 +3570,11 @@ input::-webkit-input-placeholder {
               padding-left: 0; }
         .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search-results p {
           margin: 10px 0 0px 0;
-          display: inline-block; }
+          display: inline-block;
+          font-size: 14px; }
+        .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search-results #clear-all {
+          border-left: 1px solid;
+          padding-left: 8px; }
         .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search-results .active-filters {
           padding-bottom: 0px;
           margin-top: 10px; }
@@ -5706,13 +5710,15 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
 @media all and (max-width: 768px) {
   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip {
     position: fixed;
-    top: 5px;
-    bottom: 5px;
-    height: auto;
+    top: 2px;
+    bottom: 0;
+    height: 103%;
     left: 0px;
     border-radius: 0;
     width: 90%;
-    margin: 0 auto; }
+    margin: 0 auto;
+    overflow-y: auto;
+    overflow-x: hidden; }
   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .candidate-image img {
     width: 50px;
     height: 50px;
@@ -5720,7 +5726,6 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
     border-radius: 50%;
     margin-right: 10px; }
   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .personal-details {
-    border-bottom: none;
     margin-top: 0px;
     display: inline-block; }
   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .sidebar-section .label {
@@ -5768,3 +5773,29 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
     margin: 30px 0; }
   .action-tooltip .candidateAddEdit {
     font-size: 17px !important; } }
+
+#topbutton {
+  display: inline-block;
+  background-color: #44c5c5;
+  width: 40px;
+  height: 30px;
+  text-align: center;
+  border-radius: 4px;
+  position: fixed;
+  bottom: 160px;
+  top: 450px;
+  transition: background-color .3s,  opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000; }
+
+#topbutton:hover {
+  cursor: pointer;
+  background-color: #2b2b2b; }
+
+#topbutton:active {
+  background-color: #2b2b2b; }
+
+#topbutton.show {
+  opacity: 1;
+  visibility: visible; }

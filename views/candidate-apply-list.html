@@ -6,11 +6,11 @@
 		<div class="action-buttons">
 			<span class="icon-back_icon bulkBackIcon"></span>
 			<span class="applicationsCount">6 candidates selected</span>
+			<span class=" button white massShortlist">Shortlist</span>
+			<span class=" button white massReject">Reject</span>
+			<span class=" button white massSave">Save for Later</span>
 			<span class=" button white downloadResumeMass hidden" >Download Resume</span>
 			<a href="" class="downloadExcelMass hidden" target="_blank"><span class=" button white">Download Excel</span></a>
-			<span class=" button white massReject">Reject</span>
-			<span class=" button white massShortlist">Shortlist</span>
-			<span class=" button white massSave">Save for Later</span>
 			<span class=" button white massComment">Add Comment</span>
 			<!-- <span class=" button white" id="massTag">Add Tag</span> -->
 		</div>
@@ -118,14 +118,14 @@
 							</div>
 						</div>
 						<div class="candidates-search-results" id="candidatesSearchResults">
-							<p class="results-count hidden" id="resultFound">
-							</p>
+							<p class="results-count hidden" id="resultFound"></p>
+							<span class="filtersExtraButtons link-color hidden" id="clear-all" >Clear filters</span>
+						
 							<div class="active-filters hidden">
 								<span  class="clear-all-filters ">
 									<span class="appliedFilters"></span>
 								</span>
 							</div>
-							<span class="filtersExtraButtons link-color hidden" id="clear-all" >Clear filters</span>
 							<span class="filtersExtraButtons link-color hidden" id="seeFilters">See more</span>
 						</div>
 					</div>
@@ -239,6 +239,7 @@
 
 						</div>
 					</div>
+					
 				</div>
 
 				<div class="loading loaderScroller hidden">
@@ -248,7 +249,9 @@
 			</div>
 			<div class="conversations right">
 				{{>chatSidebar}}
+				<a id="topbutton" class="icon-up_arrow"></a>	
 			</div>
+			
 		</div>
 	</div>
 
