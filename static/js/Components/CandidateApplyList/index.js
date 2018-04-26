@@ -395,6 +395,8 @@ jQuery(document).ready( function() {
                 return toastNotify(1, "Tag Added Successfully")
             }
             var tagId = res.parameters.tagId
+            var obj = store.getCandidateFromStore(res.applicationId)
+            obj["tags"].pop(tag)
             aCandidate.removeTag(tagId)
             candidates.removeTag(tagId)
             return toastNotify(1, "Tag Deleted Successfully")

@@ -2053,17 +2053,19 @@ span.sticker {
       border: 1px solid #e8e8e8;
       min-height: 30px;
       margin-top: 10px; }
-      .page-content .tagged-candidates .tagged-candidates-listing .empty-screen .image-container {
-        text-align: center; }
-        .page-content .tagged-candidates .tagged-candidates-listing .empty-screen .image-container img {
-          width: 18%; }
-      .page-content .tagged-candidates .tagged-candidates-listing .empty-screen .user-text {
-        text-align: center;
-        padding-bottom: 20px; }
-      .page-content .tagged-candidates .tagged-candidates-listing .empty-screen .empty-text {
-        text-align: center;
-        color: #888;
-        padding-bottom: 20px; }
+      .page-content .tagged-candidates .tagged-candidates-listing .empty-screen {
+        padding: 15% 0px; }
+        .page-content .tagged-candidates .tagged-candidates-listing .empty-screen .image-container {
+          text-align: center; }
+          .page-content .tagged-candidates .tagged-candidates-listing .empty-screen .image-container img {
+            width: 18%; }
+        .page-content .tagged-candidates .tagged-candidates-listing .empty-screen .user-text {
+          text-align: center;
+          padding-bottom: 20px; }
+        .page-content .tagged-candidates .tagged-candidates-listing .empty-screen .empty-text {
+          text-align: center;
+          color: #888;
+          padding-bottom: 20px; }
       .page-content .tagged-candidates .tagged-candidates-listing .candidate-item {
         padding: 30px 18px 0px;
         font-size: 0;
