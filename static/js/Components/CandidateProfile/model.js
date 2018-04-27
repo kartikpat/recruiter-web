@@ -37,7 +37,7 @@ function Candidate() {
         settings.calendarSelect = $(".calendarSelect");
         settings.candidateDownloadResume = $(".candidateDownloadResume");
         settings.selectDefaultCalendar = $(".selectDefaultCalendar")
-
+        initializeTooltip();
         jQuery("#tabbed-content").tabs({
             create: function(){
                 $(this).removeClass("hidden")
@@ -713,6 +713,30 @@ function Candidate() {
         settings.candidateEditComment.removeClass("hidden");
     }
 
+	function initializeTooltip() {
+        debugger
+		if(window.innerWidth<=768){
+			$(".tooltip").tooltipster({
+				animation: 'fade',
+				delay: 0,
+				side:['bottom'],
+				theme: 'tooltipster-borderless',
+				maxWidth: 500,	
+				trigger:'click'	
+			})	   
+		}
+		else{
+			$(".tooltip").tooltipster({
+			animation: 'fade',
+			delay: 0,
+			side:['bottom'],
+			theme: 'tooltipster-borderless',
+			maxWidth: 500,	
+			})
+		}
+
+   	}
+
     return {
         init: init,
         populateCandidateData: populateCandidateData,
@@ -739,7 +763,8 @@ function Candidate() {
         onChangeDefaultCalendar: onChangeDefaultCalendar,
         onClickDownloadResume: onClickDownloadResume,
         changeStatus: changeStatus,
-        addComment: addComment
+        addComment: addComment,
+        initializeTooltip:initializeTooltip
     }
 
     function focusOnElement(element, container) {
