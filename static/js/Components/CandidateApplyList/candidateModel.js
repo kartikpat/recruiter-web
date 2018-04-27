@@ -39,6 +39,7 @@ function Candidate() {
         settings.tagArr = [],
         settings.candidateDownloadResume = $(".candidateDownloadResume");
         jQuery("#tabbed-content").tabs({});
+        initializeTooltip();
 
     }
 
@@ -786,6 +787,32 @@ function Candidate() {
         })
     }
 
+
+
+	function initializeTooltip() {
+        debugger
+		if(window.innerWidth<=768){
+			$(".tooltip").tooltipster({
+				animation: 'fade',
+				delay: 0,
+				side:['bottom'],
+				theme: 'tooltipster-borderless',
+				maxWidth: 500,	
+				trigger:'click'	
+			})	   
+		}
+		else{
+			$(".tooltip").tooltipster({
+			animation: 'fade',
+			delay: 0,
+			side:['bottom'],
+			theme: 'tooltipster-borderless',
+			maxWidth: 500,	
+			})
+		}
+
+   	}
+
     return {
         init: init,
         showCandidateDetails: showCandidateDetails,
@@ -809,7 +836,8 @@ function Candidate() {
         onClickSeeMoreRec: onClickSeeMoreRec,
         addRecommendations: addRecommendations,
         onClickDownloadResume: onClickDownloadResume,
-        addComment: addComment
+        addComment: addComment,
+        initializeTooltip:initializeTooltip
 
 	}
 
