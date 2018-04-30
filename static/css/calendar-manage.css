@@ -602,7 +602,7 @@ body.posf {
   width: 2px;
   height: 8px;
   border-radius: 20%;
-  background: #149075; }
+  background: #737373; }
 
 .lds-spinner div:nth-child(1) {
   transform: rotate(0deg);
@@ -1465,7 +1465,7 @@ span.sticker {
         border-width: 1px;
         border-color: #8f8a8a;
         box-sizing: border-box;
-        background-color: #ffffff;
+        background-color: #FFF;
         width: 170px;
         height: 28px;
         text-align: center;
@@ -1482,7 +1482,7 @@ span.sticker {
       border-width: 1px;
       border-color: #e8e8e8;
       box-sizing: border-box;
-      background-color: #ffffff;
+      background-color: #FFF;
       float: left;
       width: 100%;
       border-radius: 4px; }
@@ -1593,7 +1593,7 @@ span.sticker {
             border-width: 1px;
             border-color: #8f8a8a;
             box-sizing: border-box;
-            background-color: #ffffff;
+            background-color: #FFF;
             height: 28px;
             line-height: 28px;
             font-size: 0.85em;
@@ -1663,7 +1663,7 @@ span.sticker {
           border-width: 1px;
           border-color: #8f8a8a;
           box-sizing: border-box;
-          background-color: #ffffff;
+          background-color: #FFF;
           width: 170px;
           height: 28px;
           text-align: center;
@@ -1680,7 +1680,7 @@ span.sticker {
         border-width: 1px;
         border-color: #e8e8e8;
         box-sizing: border-box;
-        background-color: #ffffff;
+        background-color: #FFF;
         width: 100%; }
         .page-content .container .wrapper .action {
           display: none; }
@@ -1762,7 +1762,7 @@ span.sticker {
               border-width: 1px;
               border-color: #8f8a8a;
               box-sizing: border-box;
-              background-color: #ffffff;
+              background-color: #FFF;
               height: 28px;
               line-height: 28px;
               font-size: 0.85em;
@@ -1794,7 +1794,7 @@ span.sticker {
         border-width: 1px;
         border-color: #8f8a8a;
         box-sizing: border-box;
-        background-color: #ffffff;
+        background-color: #FFF;
         width: 140px;
         height: 28px;
         text-align: center;
@@ -1810,7 +1810,7 @@ span.sticker {
       border-width: 1px;
       border-color: #e8e8e8;
       box-sizing: border-box;
-      background-color: #ffffff;
+      background-color: #FFF;
       width: 100%; }
       .page-content .container .wrapper .action {
         display: none; }
@@ -1876,17 +1876,17 @@ span.sticker {
     margin-left: 16%;
     padding-top: 43px;
     padding-bottom: 43px; }
-  .wrapper-container .container .availability {
+  .wrapper-container .container-wrap .availability {
     padding-bottom: 42px;
     border-bottom: 1px solid #e8e8e8;
     margin-left: 16%;
     width: 70%;
     height: 120px; }
-    .wrapper-container .container .availability img {
+    .wrapper-container .container-wrap .availability img {
       border-radius: 50%;
       background-color: #f3fbfb;
       float: left; }
-    .wrapper-container .container .availability .head {
+    .wrapper-container .container-wrap .availability .head {
       font-family: "Droid Sans", sans-serif;
       color: #212121;
       font-size: 16px;
@@ -1895,22 +1895,22 @@ span.sticker {
       line-height: 25px;
       /* Approximation due to font substitution */
       margin-left: 125px; }
-    .wrapper-container .container .availability .text p {
+    .wrapper-container .container-wrap .availability .text p {
       position: relative;
       width: 100%;
       left: 30px; }
-  .wrapper-container .container .send-invite {
+  .wrapper-container .container-wrap .send-invite {
     padding-bottom: 42px;
     padding-top: 32px;
     margin-left: 16%;
     border-bottom: 1px solid #e8e8e8;
     width: 70%;
     height: 150px; }
-    .wrapper-container .container .send-invite img {
+    .wrapper-container .container-wrap .send-invite img {
       border-radius: 50%;
       background-color: #f3fbfb;
       float: left; }
-    .wrapper-container .container .send-invite .head {
+    .wrapper-container .container-wrap .send-invite .head {
       font-family: "Droid Sans", sans-serif;
       color: #212121;
       font-size: 16px;
@@ -1919,22 +1919,22 @@ span.sticker {
       line-height: 25px;
       /* Approximation due to font substitution */
       margin-left: 125px; }
-    .wrapper-container .container .send-invite .text p {
+    .wrapper-container .container-wrap .send-invite .text p {
       position: relative;
       width: 100%;
       left: 30px; }
-  .wrapper-container .container .scheduler {
+  .wrapper-container .container-wrap .scheduler {
     padding-bottom: 92px;
     padding-top: 42px;
     margin-left: 16%;
     margin-bottom: 30px;
     width: 70%;
     height: 150px; }
-    .wrapper-container .container .scheduler img {
+    .wrapper-container .container-wrap .scheduler img {
       border-radius: 50%;
       background-color: #f3fbfb;
       float: left; }
-    .wrapper-container .container .scheduler .head {
+    .wrapper-container .container-wrap .scheduler .head {
       font-family: "Droid Sans", sans-serif;
       color: #212121;
       font-size: 16px;
@@ -1943,7 +1943,7 @@ span.sticker {
       line-height: 25px;
       /* Approximation due to font substitution */
       margin-left: 125px; }
-    .wrapper-container .container .scheduler .text p {
+    .wrapper-container .container-wrap .scheduler .text p {
       position: relative;
       width: 100%;
       left: 30px; }
@@ -1994,22 +1994,22 @@ span.sticker {
     margin-left: 50px; }
   .headers .lheading {
     margin-left: 50px; }
-  .container .availability {
+  .container-wrap .availability {
     padding-bottom: 62px;
     margin-left: 52px; }
-    .container .availability .text p {
+    .container-wrap .availability .text p {
       position: relative;
       width: 100%; }
-  .container .send-invite {
+  .container-wrap .send-invite {
     padding-bottom: 62px;
     margin-left: 52px; }
-    .container .send-invite .text p {
+    .container-wrap .send-invite .text p {
       position: relative;
       width: 90%; }
-  .container .scheduler {
+  .container-wrap .scheduler {
     padding-bottom: 42px;
     margin-left: 52px; }
-    .container .scheduler .text p {
+    .container-wrap .scheduler .text p {
       position: relative;
       width: 90%; } }
 
@@ -2032,13 +2032,13 @@ span.sticker {
       .no-calendar-view .headers .lheading {
         margin-left: 20px;
         margin-top: -25px; }
-    .no-calendar-view .container .availability {
+    .no-calendar-view .container-wrap .availability {
       position: relative;
       border-bottom: 1px solid #e8e8e8;
       width: 70%;
       height: 10%;
       margin-top: 50px; }
-      .no-calendar-view .container .availability img {
+      .no-calendar-view .container-wrap .availability img {
         border-radius: 50%;
         background-color: #f3fbfb;
         float: none;
@@ -2046,22 +2046,22 @@ span.sticker {
         margin-right: auto;
         display: block;
         margin-bottom: 36px; }
-      .no-calendar-view .container .availability .head {
+      .no-calendar-view .container-wrap .availability .head {
         clear: both;
         text-align: center;
         margin-bottom: 15px;
         margin-left: auto;
         margin-right: auto;
         display: block; }
-      .no-calendar-view .container .availability .text p {
+      .no-calendar-view .container-wrap .availability .text p {
         text-align: center;
         width: 100%;
         left: 0px; }
-    .no-calendar-view .container .send-invite {
+    .no-calendar-view .container-wrap .send-invite {
       border-bottom: 1px solid #e8e8e8;
       width: 70%;
       height: 10%; }
-      .no-calendar-view .container .send-invite img {
+      .no-calendar-view .container-wrap .send-invite img {
         border-radius: 50%;
         background-color: #f3fbfb;
         float: none;
@@ -2069,23 +2069,23 @@ span.sticker {
         margin-right: auto;
         display: block;
         margin-bottom: 30px; }
-      .no-calendar-view .container .send-invite .head {
+      .no-calendar-view .container-wrap .send-invite .head {
         clear: both;
         text-align: center;
         margin-bottom: 15px;
         margin-left: auto;
         margin-right: auto;
         display: block; }
-      .no-calendar-view .container .send-invite .text p {
+      .no-calendar-view .container-wrap .send-invite .text p {
         text-align: center;
         width: 100%;
         left: 0px; }
-    .no-calendar-view .container .scheduler {
+    .no-calendar-view .container-wrap .scheduler {
       padding-bottom: 92px;
       border-bottom: 1px solid #e8e8e8;
       width: 70%;
       height: 10%; }
-      .no-calendar-view .container .scheduler img {
+      .no-calendar-view .container-wrap .scheduler img {
         border-radius: 50%;
         background-color: #f3fbfb;
         float: none;
@@ -2093,25 +2093,28 @@ span.sticker {
         margin-right: auto;
         display: block;
         margin-bottom: 36px; }
-      .no-calendar-view .container .scheduler .head {
+      .no-calendar-view .container-wrap .scheduler .head {
         clear: both;
         text-align: center;
         margin-bottom: 15px;
         margin-left: auto;
         margin-right: auto;
         display: block; }
-      .no-calendar-view .container .scheduler .text p {
+      .no-calendar-view .container-wrap .scheduler .text p {
         text-align: center;
         width: 100%;
         left: 0px;
         margin-top: -5px; }
-    .no-calendar-view .container .bottom-container {
+    .no-calendar-view .container-wrap .bottom-container {
       padding: 5%; }
-      .no-calendar-view .container .bottom-container p {
+      .no-calendar-view .container-wrap .bottom-container p {
         text-align: center;
         display: block;
         margin: 0%; }
-      .no-calendar-view .container .bottom-container #login {
+      .no-calendar-view .container-wrap .bottom-container #login {
         margin-left: auto;
         margin-right: auto;
         display: block; } }
+
+.changecolor {
+  background-color: #fff; }

@@ -196,8 +196,11 @@
 								border-radius:50px;
 								background-color:$candidate-skill-background-color;
 								color:$candidate-skill-text-color;
-
 								font-size:$candidate-skill-font-size;
+								a{
+									color:$candidate-skill-text-color;
+									
+								}
 							}
 						}
 					}
@@ -229,6 +232,27 @@
 					.separator {
 						border:0;
 					}
+				}
+			}
+			.empty-screen{
+				padding: 15% 0px;
+				.image-container{
+					text-align: center;
+					padding-top: 20px;
+					img{
+						width: 20%;
+					}
+				}
+				.user-text{
+					text-align: center;
+					padding-bottom: 20px;
+					font-size: 16px;
+				}
+				.empty-text{
+					text-align: center;
+					color: #888;
+					padding-bottom: 20px;
+					font-size: 16px;
 				}
 			}
 		}

@@ -10,20 +10,18 @@ function Manage() {
         settings.emptyviewPrototype = $('.empty-view.prototype');
         settings.nocalendarview=$('.no-calendar-view')
         settings.editSchedule='.edit-schedule';
-
+        settings.wrapperConatiner=$('.wrapper-container')
         jQuery(".header .menu-list-item.my-interviews").addClass("active");
     }
 
     function cloneRow(data){
-
-
-        // data.length=0;
+        data.length=0;
         if(data.length==0){
-            $('.page-content').addClass('hidden');
-            settings.nocalendarview.removeClass('hidden');
+            settings.wrapperConatiner.removeClass('hidden');
+            $('.container').addClass('hidden');
+            $('.page-content').css({"background-color":'#fff','padding':'0%'});
             return
         }
-        $('.wrapper-container').addClass('hidden');
 
         var data = sortArrayOfObjectsByKeyDescending(data, "timestamp")
         data.forEach(function(aRow){
