@@ -19,6 +19,7 @@ function candidateList() {
         settings.candAppliedJobsClass = ".candAppliedJobs",
         settings.multipleJobListingClass= '.multipleJobListing',
         settings.multipleJobListingTextClass= '.multipleJobListingbox'
+        settings.emptyScreen=$('.empty-screen'),
         onToggleJobList();
    }
 
@@ -169,7 +170,8 @@ function candidateList() {
    function addToList(dataArray){
         hideShell()
        if(!dataArray.length) {
-           return settings.candidateListing.html("<div class='no-data'>No Results Found!</div>")
+        settings.emptyScreen.removeClass('hidden');
+            return
        }
        var str = '';
        dataArray.forEach(function(aData, index){

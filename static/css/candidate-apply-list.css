@@ -3680,20 +3680,22 @@ input::-webkit-input-placeholder {
               font-size: 14px;
               color: #155d9a;
               text-transform: uppercase; }
-      .page-content .candidate-apply-listing .candidates-area .candidates-area-body .empty-screen .image-container {
-        text-align: center;
-        padding-top: 20px; }
-        .page-content .candidate-apply-listing .candidates-area .candidates-area-body .empty-screen .image-container img {
-          width: 20%; }
-      .page-content .candidate-apply-listing .candidates-area .candidates-area-body .empty-screen .user-text {
-        text-align: center;
-        padding-bottom: 20px;
-        font-size: 16px; }
-      .page-content .candidate-apply-listing .candidates-area .candidates-area-body .empty-screen .empty-text {
-        text-align: center;
-        color: #888;
-        padding-bottom: 20px;
-        font-size: 16px; }
+      .page-content .candidate-apply-listing .candidates-area .candidates-area-body .empty-screen {
+        padding: 15% 0px; }
+        .page-content .candidate-apply-listing .candidates-area .candidates-area-body .empty-screen .image-container {
+          text-align: center;
+          padding-top: 20px; }
+          .page-content .candidate-apply-listing .candidates-area .candidates-area-body .empty-screen .image-container img {
+            width: 20%; }
+        .page-content .candidate-apply-listing .candidates-area .candidates-area-body .empty-screen .user-text {
+          text-align: center;
+          padding-bottom: 20px;
+          font-size: 16px; }
+        .page-content .candidate-apply-listing .candidates-area .candidates-area-body .empty-screen .empty-text {
+          text-align: center;
+          color: #888;
+          padding-bottom: 20px;
+          font-size: 16px; }
       .page-content .candidate-apply-listing .candidates-area .candidates-area-body .selection-bar {
         margin: 0 -15px;
         padding: 0;
