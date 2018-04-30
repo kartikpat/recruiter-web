@@ -235,6 +235,7 @@ function Candidate() {
         }
     }
 
+
     function addRecommendations(data) {
         var recStr = '';
 
@@ -244,7 +245,6 @@ function Candidate() {
             item.link.attr("href",anObj["url"]);
             item.link.text(anObj["url"]);
             item.body.text(anObj["text"])
-
             item.seperator.removeClass("hidden")
             recStr+=item.element[0].outerHTML
         })
