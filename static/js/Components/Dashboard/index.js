@@ -122,7 +122,7 @@ $(document).ready(function(){
 		"noActiveJob": "It’s quite silent around here. Get started by <a href='/post-job' class='link-color'>posting a job.</a>",
 		"busy": "It looks busy around here! Good luck for your day ahead!",
 		"revisit": "We missed you while you were away! To keep you up-to-date, here is a quick glance of what has changed - ",
-		default: ""
+		 default: ""
 	}
 
 	function onClickJobOtherActions() {
@@ -185,6 +185,7 @@ $(document).ready(function(){
 		data.forEach(function(aData){
 			dashboardStatsContainer.find(".block."+aData['label']+' .number').text(aData['value']);
 			if(aData['label']=='activeJobs' && !dataModel.revisit ){
+				console.log(aData['value']);
 				if(aData['value'] < 1)
 					return updateSubGreetings(dataModel.greetingSubText['noActiveJob'])
 				if(aData['value'] > 10)

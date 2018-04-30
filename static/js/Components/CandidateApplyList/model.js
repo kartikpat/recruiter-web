@@ -67,7 +67,7 @@ function candidateList() {
         settings.candidateTagInputClass = '.candidateTagInputContainer',
         settings.candidateTagListClass = '.candidateTagListContainer',
         settings.candidateTagPrototype= $('.candidateTag.prototype'),
-        settings.tagListing = $(".recruiterTags"),
+        settings.tagListing = ".recruiterTagsContainer",
         settings.candidateTagRemoveClass = '.tagRemove',
         settings.topbutton=$('#topbutton')
         settings.tagArr = [],
@@ -765,11 +765,11 @@ function candidateList() {
                 "id": aTag["id"]
             });
         })
-        selector.autocomplete({
+        settings.rowContainer.find(settings.tagListing).autocomplete({
               source: suggestedTagsArray,
             select: function( event, ui ) {
-                selector.attr("tag-id", ui.item.id);
-                selector.val( ui.item.value);
+                settings.rowContainer.find(settings.tagListing).attr("tag-id", ui.item.id);
+                settings.rowContainer.find(settings.tagListing).val( ui.item.value);
                 return false;
             }
         });
