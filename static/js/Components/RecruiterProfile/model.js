@@ -58,7 +58,7 @@ function Profile(){
 			settings.premiumDetail = $("#premiumDetail")
 			settings.type = "profile"
 			settings.settingsBody = $(".settingsBody")
-
+			settings.distributeCreditsButton=$('.distribute-credits')
 			changeFileName()
 			onChangeInputFields()
 
@@ -486,4 +486,11 @@ function focusOnElement(element) {
 	$('html, body').animate({
 		scrollTop: (element.closest('.formgroup').offset().top)
 	},200);
+}
+
+
+function distributeCredits(){
+	settings.distributeCreditsButton.on('click',function(){
+		
+	})
 }

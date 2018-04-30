@@ -8,16 +8,16 @@
     position: relative;
     padding: 20px;
     width: 100%;
-    background-color: #f7f7f7;
+    background-color: $body-background-color;
     max-width: 1500px;
     margin: 0 auto;
     .container{
-        background-color: #f7f7f7;
+        background-color: $body-background-color;
         min-height: 100%;
         width: 100%;
         float: left;
         .header-slot{
-            background-color: #f7f7f7;
+            background-color: $body-background-color;
             width: 100%;
             padding: 15px 0;
             display: inline-block;
@@ -35,9 +35,9 @@
                 border-radius: 4px;
                 border-style: solid;
                 border-width: 1px;
-                border-color:  #8f8a8a;
+                border-color:  $button-border-color;
                 box-sizing: border-box;
-                background-color:  #ffffff;
+                background-color:  $color-white;
                 width: 170px;
                 height: 28px;
                 text-align: center;
@@ -47,7 +47,7 @@
                 font-weight: 400;
                 float: right;
                 a{
-                    color: #2b2b2b;
+                    color: $header-background-color;
                     font-size: 14px;
                 }
             }
@@ -56,9 +56,9 @@
         .wrapper{
             border-style: solid;
             border-width: 1px;
-            border-color:  #e8e8e8;
+            border-color:  $page-content-background-color;
             box-sizing: border-box;
-            background-color:  #ffffff;
+            background-color:  $color-white;
         //    height: 555px;
             float: left;
             width: 100%;
@@ -70,7 +70,7 @@
                 border-top-left-radius: 4px;
                 border-top-right-radius: 4px;
                 .interview-date{
-                    color: #2b2b2b;
+                    color: $header-background-color;
                     font-size: 15px;
                     font-weight: 600;
                     text-align: left;
@@ -82,7 +82,7 @@
                 }
 
                 .calendar-name{
-                    color: #2b2b2b;
+                    color: $header-background-color;
                     font-size: 15px;
                     font-weight: 600;
                     text-align: left;
@@ -93,7 +93,7 @@
                     text-transform: uppercase;
                 }
                 .time-slot{
-                    color: #2b2b2b;
+                    color: $header-background-color;
                     font-size: 15px;
                     font-weight: 600;
                     text-align: left;
@@ -104,7 +104,7 @@
                     text-transform: uppercase;
                 }
                 .edit-name{
-                    color: #2b2b2b;
+                    color: $header-background-color;
                     font-size: 15px;
                     font-weight: 600;
                     text-align: left;
@@ -136,7 +136,7 @@
                             display: none!important;
                         }
                         .calendar-date{
-                            color:  #2b2b2b;
+                            color:  $header-background-color;
                             font-size: 14px;/* Approximation due to font substitution */
                             font-weight: 400;
                             text-align: left;
@@ -153,7 +153,7 @@
                             display: none;
                         }
                         .calendar-wrap{
-                            color:  #149075;
+                            color:  $page-section-title-color;
                             font-size: 14px;/* Approximation due to font substitution */
                             font-weight: 700;
                             text-align: left;
@@ -169,7 +169,7 @@
                             display: none;
                         }
                         .total-slots{
-                            color:  #2b2b2b;
+                            color:  $header-background-color;
                             font-size: 14px;/* Approximation due to font substitution */
                             font-weight: 400;
                             text-align: left;
@@ -181,9 +181,9 @@
                         border-radius: 4px;
                         border-style: solid;
                         border-width: 1px;
-                        border-color:  #8f8a8a;
+                        border-color:  $button-border-color;
                         box-sizing: border-box;
-                        background-color:  #ffffff;
+                        background-color:  $color-white;
                         height: 28px;
                         line-height: 28px;
                         font-size: 0.85em;
@@ -193,9 +193,9 @@
                         width: 50px;
                       //  margin-right: 84px;
                         margin-top: 25px;
-                        color:  #2b2b2b;
+                        color:  $header-background-color;
                         a{
-                            color:  #2b2b2b;
+                            color:  $header-background-color;
                             font-size: 15px;/* Approximation due to font substitution */
                             font-weight: 400;
                             text-align: left;
@@ -206,7 +206,7 @@
                         clear: both;
                         width: 95%;
                         margin: 0 auto;
-                        border-bottom: 1px solid #e8e8e8;
+                        border-bottom: 1px solid $page-content-background-color;
                     }
                 }
                 .no-data{
@@ -216,7 +216,7 @@
 
                     margin: 0 auto;
                     font-size: 20px;
-                    color: #2b2b2b;
+                    color: $header-background-color;
                 }
             }
         }
@@ -230,9 +230,9 @@
         position: relative;
         padding: 20px;
         width: 100%;
-        background-color: #f7f7f7;
+        background-color: $body-background-color;
         .container{
-            background-color: #f7f7f7;
+            background-color: $body-background-color;
           //  height: 900px;
             width: 100%;
             float: left;
@@ -241,14 +241,14 @@
                 border-top-right-radius: 4px;
                 border-style: solid;
                 border-width: 1px;
-                border-color:  #e8e8e8;
+                border-color:  $page-content-background-color;
                 box-sizing: border-box;
-                background-color:  #f3fbfb;
+                background-color:  $premium-section-background;
                 height: 60px;
                 width: 100%;
                 border-bottom: none;
                 .tagline{
-                    color:  #2b2b2b;
+                    color:  $header-background-color;
                     font-size: 16px;/* Approximation due to font substitution */
                     font-weight: 600;
                     text-align: left;
@@ -261,9 +261,9 @@
                     border-radius: 4px;
                     border-style: solid;
                     border-width: 1px;
-                    border-color:  #8f8a8a;
+                    border-color:  $button-border-color;
                     box-sizing: border-box;
-                    background-color:  #ffffff;
+                    background-color:  $color-white;
                     width: 170px;
                     height: 28px;
                     text-align: center;
@@ -274,7 +274,7 @@
                     margin-bottom: 30px;
                     margin-right: 25px;
                     a{
-                        color: #2b2b2b;
+                        color: $header-background-color;
                     }
                 }
             }
@@ -282,9 +282,9 @@
             .wrapper{
                 border-style: solid;
                 border-width: 1px;
-                border-color:  #e8e8e8;
+                border-color:  $page-content-background-color;
                 box-sizing: border-box;
-                background-color:  #ffffff;
+                background-color:  $color-white;
               //  height: 555px;
                 width: 100%;
                 // margin-top: -17px;
@@ -299,7 +299,7 @@
                     background-color: white;
                     .schedule{
                       //  height: 350px;
-                       // border-bottom: 1px solid #e8e8e8;
+                       // border-bottom: 1px solid $page-content-background-color;
                         display: block;
                         width: 100%;
                         .date{
@@ -317,7 +317,7 @@
                                 line-height: 25px;
                             }
                             .calendar-date{
-                                color:  #2b2b2b;
+                                color:  $header-background-color;
                                 font-size: 14px;/* Approximation due to font substitution */
                                 font-weight: 400;
                                 text-align: left;
@@ -341,7 +341,7 @@
                                 line-height: 25px;
                             }
                             .calendar-wrap{
-                                color:  #149075;
+                                color:  $page-section-title-color;
                                 font-size: 16px;/* Approximation due to font substitution */
                                 font-weight: 700;
                                 text-align: left;
@@ -364,7 +364,7 @@
                                 line-height: 25px;
                             }
                             .total-slots{
-                                color:  #2b2b2b;
+                                color:  $header-background-color;
                                 font-size: 14px;/* Approximation due to font substitution */
                                 font-weight: 400;
                                 width:100%;
@@ -376,9 +376,9 @@
                             border-radius: 4px;
                             border-style: solid;
                             border-width: 1px;
-                            border-color:  #8f8a8a;
+                            border-color:  $button-border-color;
                             box-sizing: border-box;
-                            background-color:  #ffffff;
+                            background-color:  $color-white;
                             height: 28px;
                             line-height: 28px;
                             font-size: 0.85em;
@@ -422,9 +422,9 @@
                     border-radius: 4px;
                     border-style: solid;
                     border-width: 1px;
-                    border-color:  #8f8a8a;
+                    border-color:  $button-border-color;
                     box-sizing: border-box;
-                    background-color:  #ffffff;
+                    background-color:  $color-white;
                     width: 140px;
                     height: 28px;
                     text-align: center;
@@ -440,9 +440,9 @@
             .wrapper{
                 border-style: solid;
                 border-width: 1px;
-                border-color:  #e8e8e8;
+                border-color:  $page-content-background-color;
                 box-sizing: border-box;
-                background-color:  #ffffff;
+                background-color:  $color-white;
                 width: 100%;
                 .action{
                  display: none;
@@ -459,7 +459,7 @@
                         min-width: 100%;
                         margin: 0 auto;
                         font-size: 18px;
-                        color: #2b2b2b;
+                        color: $header-background-color;
                     }
                 }
             }
@@ -497,7 +497,7 @@
 .headers{
     .heading{
         font-family: $droid-font;
-        color:  #149075;
+        color:  $page-section-title-color;
         font-size: 24px;/* Approximation due to font substitution */
         font-weight: 400;
         line-height: 54px;/* Approximation due to font substitution */
@@ -506,7 +506,7 @@
     }
     .subheading{
         font-family: $droid-font;
-        color:  #212121;
+        color:  $heading-color;
         font-size: 14px;/* Approximation due to font substitution */
         font-weight: 400;
         line-height: 25px;/* Approximation due to font substitution */
@@ -515,7 +515,7 @@
     }
         .lheading{
             font-family: $droid-font;
-            color:  #212121;
+            color:  $heading-color;
             font-size: 18px;/* Approximation due to font substitution */
             font-weight: 400;
             line-height: 25px;/* Approximation due to font substitution */
@@ -526,23 +526,23 @@
         }
     }
 
-    .container{
+    .container-wrap{
         .availability{
             padding-bottom: 42px;
-            border-bottom: 1px solid #e8e8e8;
+            border-bottom: 1px solid $page-content-background-color;
             margin-left: 16%;
             width: 70%;
             height: 120px;
              img{
                 border-radius: 50%;
-                background-color:  #f3fbfb;
+                background-color:  $premium-section-background;
                 float:left;
 
             }
 
             .head{
                 font-family: $droid-font;
-                color:  #212121;
+                color:  $heading-color;
                 font-size: 16px;/* Approximation due to font substitution */
                 font-weight: 700;
                 line-height: 25px;/* Approximation due to font substitution */
@@ -562,20 +562,20 @@
             padding-bottom: 42px;
             padding-top: 32px;
             margin-left: 16%;
-            border-bottom: 1px solid #e8e8e8;
+            border-bottom: 1px solid $page-content-background-color;
             width: 70%;
             height: 150px;
              img
             {
                 border-radius: 50%;
-                background-color:  #f3fbfb;
+                background-color:  $premium-section-background;
                 float: left;
 
              }
 
             .head{
                 font-family: $droid-font;
-                color:  #212121;
+                color:  $heading-color;
                 font-size: 16px;/* Approximation due to font substitution */
                 font-weight: 700;
                 line-height: 25px;/* Approximation due to font substitution */
@@ -601,7 +601,7 @@
              img
             {
                 border-radius: 50%;
-                background-color:  #f3fbfb;
+                background-color:  $premium-section-background;
                 float: left;
 
 
@@ -609,7 +609,7 @@
 
             .head{
                 font-family: $droid-font;
-                color:  #212121;
+                color:  $heading-color;
                 font-size: 16px;/* Approximation due to font substitution */
                 font-weight: 700;
                 line-height: 25px;/* Approximation due to font substitution */
@@ -628,13 +628,13 @@
       }
 
 .bottom-container{
-    background-color:  #f7f7f7;
+    background-color:  $body-background-color;
     width: 100%;
     padding: 1%;
 
     p{
         font-family: $droid-font;
-        color:  #212121;
+        color:  $heading-color;
         font-size: 14px;/* Approximation due to font substitution */
         font-weight: 400;
         line-height: 25px;/* Approximation due to font substitution */
@@ -654,7 +654,7 @@
             border: 0;
             padding: 0;
             margin: 0;
-            background: #0c9175;
+            background: $button-background-color;
             border-radius: 4px;
             padding: 1px 4px;
             font-size: 14px;
@@ -663,7 +663,7 @@
             width: 162px;
             height: 41px;
             padding: 12px;
-            color: #FFF;
+            color: $color-white;
             display: inline-block;
             cursor: pointer;
             font-size: 16px;
@@ -692,7 +692,7 @@
 
         }
 
-    .container{
+    .container-wrap{
 
         .availability{
 
@@ -741,9 +741,9 @@
    .headers{
         border-style: solid;
         border-width: 1px;
-        border-color:  #e8e8e8;
+        border-color:  $page-content-background-color;
         box-sizing: border-box;
-        background-color:  #f3fbfb;
+        background-color:  $premium-section-background;
         width: 100%;
         height: 150px;
 
@@ -760,17 +760,17 @@
         }
     }
 
-    .container{
+    .container-wrap{
         .availability{
              position: relative;
-            border-bottom: 1px solid #e8e8e8;
+            border-bottom: 1px solid $page-content-background-color;
             width: 70%;
             height: 10%;
             margin-top: 50px;
              img
             {
                 border-radius: 50%;
-                background-color:  #f3fbfb;
+                background-color:  $premium-section-background;
                 float: none;
                 margin-left: auto;
                 margin-right: auto;
@@ -796,13 +796,13 @@
         }
 
         .send-invite{
-            border-bottom: 1px solid #e8e8e8;
+            border-bottom: 1px solid $page-content-background-color;
             width: 70%;
             height: 10%;
              img
             {
                 border-radius: 50%;
-                background-color:  #f3fbfb;
+                background-color:  $premium-section-background;
                 float: none;
                 margin-left: auto;
                 margin-right: auto;
@@ -828,12 +828,12 @@
 
         .scheduler{
             padding-bottom: 92px;
-            border-bottom: 1px solid #e8e8e8;
+            border-bottom: 1px solid $page-content-background-color;
             width: 70%;
             height: 10%;
              img{
                 border-radius: 50%;
-                background-color:  #f3fbfb;
+                background-color:  $premium-section-background;
                 float: none;
                 margin-left: auto;
                 margin-right: auto;
@@ -880,4 +880,8 @@
 
 }
 
+}
+
+.changecolor{
+    background-color: #fff;
 }

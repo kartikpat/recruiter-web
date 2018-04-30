@@ -1,8 +1,11 @@
 @import "fonts.scss";
+@import 'common/spacings';
+@import 'input-elements';
+
 .page-content {
 	min-height: 600px;
 	padding: 20px;
-	background-color: #f7f7f7;
+	background-color: $body-background-color;
 	.main-wrapper {
 		width:100%;
 		max-width:1440px;
@@ -11,9 +14,9 @@
 			border-radius: 7px;
 			border-style: solid;
 			border-width: 1px;
-			border-color: #e8e8e8;
+			border-color: $select-border-color;
 			box-sizing: border-box;
-			background-color: #FFF;
+			background-color: $color-white ;
 			box-shadow: 0px 2px 9px 0px rgba(214, 214, 214, 0.3);
 			width: 100%;
 			padding: 20px;
@@ -27,7 +30,7 @@
 					.mt0{
 						font-size: 18px;
 						font-weight: 600;
-						color: #2b2b2b;
+						color: $color-darkgrey;
 					}
 					.txt15{
 						margin-top: 15px;
@@ -50,17 +53,17 @@
 						.icon-facebook::before {
 							content: '\e84a';
 							font-size: 50px;
-							color: #385899;
+							color:$icon-facebook-color;
 						}
 						.icon-linkedin::before {
 							content: '\e84b';
 							font-size: 50px;
-							color: #0677a9;
+							color:$icon-linkedin-color;
 						}
 						.icon-twitter::before {
 							content: '\e849';
 							font-size: 50px;
-							color: #54adef;
+							color:$icon-twitter-color;
 						}
 					}
 				}
