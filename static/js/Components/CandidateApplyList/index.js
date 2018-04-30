@@ -506,7 +506,6 @@ jQuery(document).ready( function() {
             parameters.offset = globalParameters.offset;
             parameters.pageContent = globalParameters.pageContent;
             showLoader()
-            debugger
             fetchJobApplications(jobId, parameters,recruiterId);
         }
     }
@@ -635,7 +634,6 @@ jQuery(document).ready( function() {
      })
 
      candidates.onClickTag(function(applicationId, parameters){
-         debugger
         var ob = {}
         if(parameters.tagId) {
             ob.tagId = parameters.tagId;

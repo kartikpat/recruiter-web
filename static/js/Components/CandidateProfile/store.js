@@ -68,12 +68,10 @@ function Store(){
     }
 
 	function getDefaultId() {
-		debugger
 		return defaultId;
 	}
 
 	function setId(id, calId) {
-		debugger
 		defaultId = id;
 		calendarId = calId;
 	}

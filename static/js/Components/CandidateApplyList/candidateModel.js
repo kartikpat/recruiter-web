@@ -487,7 +487,6 @@ function Candidate() {
     }
 
     function appendCandidateTag(aTag){
-        debugger
         var tag = getCandidateTag(aTag);
         settings.candidateDetailsModal.find(settings.candidateTagListClass).append(tag)
         emptyInputElement($(settings.candidateTagInputClass));
@@ -790,7 +789,6 @@ function Candidate() {
 
 
 	function initializeTooltip() {
-        debugger
 		if(window.innerWidth<=768){
 			$(".tooltip").tooltipster({
 				animation: 'fade',
