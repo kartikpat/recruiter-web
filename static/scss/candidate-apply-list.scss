@@ -2138,6 +2138,9 @@ input::-webkit-input-placeholder {
 							margin-right:5px;
 						}
 					}
+					.icon-tick {
+						color: #1f8f75 !important;
+					}
 
 				}
 				.table-row-separator{
@@ -2947,9 +2950,7 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
     }
 }
 
-.icon-tick {
-    color: #1f8f75 !important;
-}
+
 
 
 @media all and (max-width:768px){

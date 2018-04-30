@@ -15,7 +15,6 @@ function Manage() {
     }
 
     function cloneRow(data){
-        data.length=0;
         if(data.length==0){
             settings.wrapperConatiner.removeClass('hidden');
             $('.container').addClass('hidden');
