@@ -690,14 +690,12 @@ function Candidate() {
 
     function onClickDownloadResume(fn) {
         settings.candidateDownloadResume.click(function(event) {
-            debugger
             event.preventDefault()
             var status = $(this).attr("data-status");
             var url = $(this).attr("data-href");
             url += "?type=download"
             window.open(url);
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
-            debugger
             fn(applicationId, status)
         })
     }

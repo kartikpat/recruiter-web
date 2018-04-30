@@ -159,6 +159,7 @@
 		chatSticky: 'chat-sticky',
 		spinner:'spinner/spinner',
 		loader:'spinner/loader',
+		loader2:'spinner/loader2',
 		error:'error/error.html',
 		reportsShell: 'shells/reports-shell',
 		bookedSlotsShell: 'shells/booked-slots-shell',
