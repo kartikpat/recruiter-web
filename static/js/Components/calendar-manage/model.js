@@ -21,8 +21,7 @@ function Manage() {
             $('.page-content').css({"background-color":'#fff','padding':'0%'});
             return
         }
-
-        var data = sortArrayOfObjectsByKeyDescending(data, "timestamp")
+        var data = sortArrayOfObjectsByKeyDescending(data, "timestamp");
         data.forEach(function(aRow){
             var calendarRow =  settings.calendarRowPrototype.clone().removeClass('prototype hidden');
             calendarRow.find(settings.rowDate).text(moment(aRow.timestamp).format('MMM DD,YYYY'));

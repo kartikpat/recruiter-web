@@ -25,6 +25,7 @@
     "cookie-session": "^2.0.0-beta.2",
     "express": "^4.16.2",
     "hogan-express": "^0.5.2",
+    "jshint": "^2.9.5",
     "merge-descriptors": "^1.0.1",
     "passport": "^0.4.0",
     "passport-linkedin-oauth2": "^1.5.0",

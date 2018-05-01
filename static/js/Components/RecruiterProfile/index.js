@@ -1,11 +1,13 @@
+
+
 $(document).ready(function(){
 	var recruiterProfile = Profile();
 	recruiterProfile.init();
 	recruiterProfile.setProfile(profile)
+	
 	recruiterProfile.submitHandler(function(type){
 
 		if(recruiterProfile.validate()){
-
 			$('.'+type+'').find('.spinner').removeClass('hidden');
 			// $('#uploadPic').addClass('hidden');
 			$('.'+type+'').find(".button.submit").addClass('hidden');
@@ -20,6 +22,26 @@ $(document).ready(function(){
 		}
 	})
 
+	recruiterProfile.submitCredit(function(){
+		if(recruiterProfile.creditsValidate()){
+			$('.spinner').removeClass('hidden');
+			$('#credits-distribute').addClass('hidden');
+			var data=recruiterProfile.getAddCredits();
+			submitCredits(data,recruiterId);
+		}	
+		
+	})
+
+	recruiterProfile.onClickcredits(function(){
+		recruiterProfile.emptyCredits();
+		recruiterProfile.spinner();
+		fetchRecruiterCredits(recruiterId);
+	})
+
+	recruiterProfile.onClickDeleteCredits(function(data){
+		reclaimCredits(data,recruiterId);
+	})
+
 	recruiterProfile.updatePic(function(){
 		if(recruiterProfile.validatePic()) {
 			$('#uploadPic').prev().removeClass('hidden');
@@ -30,6 +52,7 @@ $(document).ready(function(){
 		}
 		return toastNotify(3, "Please Choose A File")
 	})
+
 
  	function onSuccessfulUpdateProfile(topic, data){
 		$('.spinner').addClass('hidden');
@@ -47,12 +70,12 @@ $(document).ready(function(){
 			 location.reload()
 		 }, 2000);
 	}
+
 	function onFailedUpdateProfile(topic, data){
 		$('.spinner').addClass('hidden');
 		$('#uploadPic').removeClass('hidden');
 		$(".button.submit").removeClass('hidden');
 		errorHandler(data)
-
 	}
 
 	function onSuccessfulSetPassword(topic, data){
@@ -63,17 +86,56 @@ $(document).ready(function(){
 			 location.reload()
 		 }, 2000);
 	}
+
 	function onFailedPassword(topic, data){
 		$('.spinner').addClass('hidden');
 		$(".button.submit").removeClass('hidden');
 		errorHandler(data)
 	}
 
+	function onFetchSuccess(topic,data){
+		recruiterProfile.togglespinner();
+		recruiterProfile.credits(data);
+	}
+
+	function onFetchFail(topic){
+		recruiterProfile.spinner();
+	}
+
+	function onSuccessfulSubmitCredit(){
+		$('.spinner').addClass('hidden');
+		$('#credits-distribute').removeClass('hidden');
+		console.log("success");
+		setTimeout(function(){
+			location.reload()
+		}, 2000);
+	}
+
+	function onFailedSubmitCredit(){
+		$('.spinner').addClass('hidden');
+		$('#credits-distribute').removeClass('hidden');
+	}
+
+	function onSuccessfulReclaimCredit(){
+		
+	}
+
+
 	var updateRecruiterProfileSuccessSubscription = pubsub.subscribe("updateRecruiterProfileSuccess", onSuccessfulUpdateProfile);
 	var updateRecruiterProfileFailSubscription = pubsub.subscribe("updateRecruiterProfileFail", onFailedUpdateProfile);
 
 	var setPasswordSuccessSubscription = pubsub.subscribe("setPasswordSuccess", onSuccessfulSetPassword);
 	var setPasswordFailSubscription = pubsub.subscribe("setPasswordFail", onFailedPassword);
+	
+	var fetchCreditSuccessSubscription=pubsub.subscribe('fetchedCredits', onFetchSuccess)
+	var fetchCreditFailSubscription=pubsub.subscribe('failedToFetchCredits', onFetchFail)
+
+	var creditSubmitSuccessSubscription = pubsub.subscribe('submittedCredits',onSuccessfulSubmitCredit);
+    var creditSubmitFailSubscription = pubsub.subscribe('failedCreditSubmission',onFailedSubmitCredit);
+
+	var creditReclaimSuccessSubscription = pubsub.subscribe('reclaimCreditsSuccess',onSuccessfulReclaimCredit);
+    var creditReclaimFailSubscription = pubsub.subscribe('reclaimCreditsfail',onFailedReclaimCredit);
+
 
 })
 

@@ -879,7 +879,7 @@ span.sticker {
           padding: 0;
           margin: 0;
           border-radius: 3px;
-          width: 89px;
+          width: 175px;
           height: 40px;
           text-align: center; }
           .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .save-container.green {
@@ -1056,13 +1056,15 @@ span.sticker {
 .credits-container {
   padding: 0 !important; }
   .credits-container .credits-header {
-    border-bottom: 1px solid green;
+    border-bottom: 1px solid #e8e8e8;
     padding: 20px; }
   .credits-container .credits-content {
     padding: 20px;
     font-size: 0; }
   .credits-container .content-header {
     min-height: 30px; }
+  .credits-container .content-row {
+    margin-bottom: 20px; }
   .credits-container .column {
     display: inline-block;
     vertical-align: top;
@@ -1089,7 +1091,7 @@ span.sticker {
         padding: 16px 22px;
         font-size: 14px;
         line-height: 1.5;
-        width: 30%;
+        width: 40%;
         padding: 2px 6px;
         cursor: initial; }
         .credits-container .column.add-cre input:focus {
@@ -1110,3 +1112,10 @@ span.sticker {
 
 .distribute-credits.button {
   width: 175px; }
+
+.error-slot {
+  position: relative;
+  /* left: 0; */
+  margin: 3px 0 0 0px;
+  font-size: 11px;
+  color: #ad3030; }

@@ -19,12 +19,16 @@ var errorResponses = {
 	passwordMatch: 'The old password and new password should not match'
 }
 
+var availableCredits=profile.availableCredits;
+console.log(availableCredits);
 var emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 var urlRegex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})/;
+
 function Profile(){
 	var settings ={};
 	var config = {};
-
+	var object={}
+	var data=[];
 	function setConfig(key, value) {
 		config[key] = value;
 	}
@@ -58,19 +62,26 @@ function Profile(){
 			settings.premiumDetail = $("#premiumDetail")
 			settings.type = "profile"
 			settings.settingsBody = $(".settingsBody")
-			settings.distributeCreditsButton=$('.distribute-credits')
+			settings.distributeCreditsButton=$('#credits-distribute')
+			settings.creditRowPrototype=$('.creditsContentsRow')
+			settings.memberName='.memName'
+			settings.memberDes='.memDes'
+			settings.memberOrg='.memOrg'
+			settings.totalCredits='.totalCredits'
+			settings.remainingCredits='.remainingCredits'
+			settings.usedCredits='.usedCredits'
+			settings.addCredits=$('.add-cre')
+			settings.memberImage='.mem-img'
+			settings.rowContainer=$('.credits-container')
+			settings.creditRow=$('.content-row')
+			settings.creditRowClass='.content-row'
+			settings.distributeCredits=$('#credits')
+			settings.wrapperContainer=$('.wrapper-container')
+			settings.loader=$('.loader-container ')
+			settings.contentrowContainer='.content-row-container'
+			settings.cancelCredit='.cancelTeamMember'
 			changeFileName()
 			onChangeInputFields()
-
-			// settings.editor = new MediumEditor("#profile-about", {
-			// 	toolbar: false,
-			// 	placeholder: {
-			//         text: 'About'
-			//     },
-			// 	disableExtraSpaces: true,
-			// 	hideOnClick: false
-			// })
-
 			jQuery(".settings-sidebar, .settings-mobile-nav").on("click", "li", function() {
 				var activeSection = jQuery(this).attr("data-selector");
 				settings.type = activeSection;
@@ -78,24 +89,6 @@ function Profile(){
 				jQuery(this).siblings().removeClass("active");
 				jQuery(".settings-section."+activeSection).removeClass("hidden").siblings().addClass("hidden");
 			});
-
-	}
-
-	function getMembersElement() {
-
-        var card = $('.creditsContentsRow.prototype').clone().removeClass("prototype hidden");
-        return {
-            element: card,
-            memImg: card.find('.memImg'),
-            memName: card.find('.memName'),
-            memDes: card.find('.memDes'),
-            memOrg: card.find('.memOrg'),
-			totalCredits: card.find('.totalCredits'),
-			remainingCredits: card.find('.remainingCredits'),
-			usedCredits: card.find('.usedCredits'),
-			cancelTeamMember: card.find('.cancelTeamMember'),
-			addCredits: card.find('.addCredits')
-        }
 
 	}
 
@@ -361,8 +354,92 @@ function Profile(){
 			form.append("image", settings.fileUpload[0].files[0], settings.fileUpload[0].files[0].name);
 			return form
 		}
+	}
 
+	function credits(data){
+		console.log(data)
+		var data=data.data;
+		data.forEach(function(aRow){
+			var creditRow =  settings.creditRowPrototype.clone().removeClass('prototype hidden');
+			creditRow.attr('id',aRow['id']);
+			creditRow.find(settings.memberImage).find('img').attr("src",(aRow["img"] || "/static/images/noimage.png"));
+			creditRow.find(settings.memberName).text(aRow["name"]);
+			creditRow.find(settings.memberDes).text(aRow["designation"]);
+			creditRow.find(settings.memberOrg).text(aRow["organization"]);
+			creditRow.find(settings.totalCredits).text(aRow["total"]);
+			creditRow.find(settings.remainingCredits).text(aRow["remaining"]);
+			creditRow.find(settings.usedCredits).text(aRow["used"]);
+			$(settings.contentrowContainer).append(creditRow);	
+		});
+	
+	}
+	
+	function getAddCredits(){
+			var id=$(settings.contentrowContainer).find(settings.creditRowClass).attr('id');
+			var element=$(settings.contentrowContainer).find('.content-row .addCredit');
+			for(var i=0;i<element.length;i++){
+				var id=$(element[i]).closest(settings.creditRowClass).attr('id');
+				var val=$(element[i]).val();
+				if(val>0){
+					var set={}
+					set.id=id;
+					set.value=val;
+					data.push(set);
+				}
+			}
+			object.data=data;
+			return object;
+	}
 
+	
+
+	function submitCredit(fn){
+		settings.distributeCreditsButton.click(fn);
+	}
+
+	function creditsValidate(){
+		var element=$(settings.contentrowContainer).find('.content-row .addCredit');
+		var count=0;
+		for(var i=0;i<element.length;i++){
+			var val=$(element[i]).val();
+			count=count+parseInt(val);
+		}
+		if(count>availableCredits){
+			$(".error-slot").text("Add credits should be less than available credits");
+			return false
+		}
+		if(count==0){
+			return false	
+		}
+		else
+		return true
+	}	
+
+	function onClickcredits(fn){
+		settings.distributeCredits.click(fn);	
+	}
+
+	function onClickDeleteCredits(fn){
+		$(settings.contentrowContainer).on('click',settings.cancelCredit,function(){
+			var id=$(this).closest(settings.creditRowClass).attr('id');
+			var data={};
+			data.id=id;
+			fn(data)	
+		});
+	}
+
+	function emptyCredits(){
+		$(settings.contentrowContainer).html('');
+	}
+
+	function spinner(){
+		settings.loader.removeClass('hidden');
+		settings.wrapperContainer.addClass('hidden');
+	}
+
+	function togglespinner(){
+		settings.loader.addClass('hidden');
+		settings.wrapperContainer.removeClass('hidden');
 	}
 
 	return {
@@ -374,7 +451,16 @@ function Profile(){
 		setProfile: setProfile,
 		getPic: getPic,
 		updatePic: updatePic,
-		validatePic: validatePic
+		validatePic: validatePic,
+		credits:credits,
+		getAddCredits:getAddCredits,
+		submitCredit:submitCredit,
+		creditsValidate:creditsValidate,
+		onClickcredits:onClickcredits,
+		emptyCredits:emptyCredits,
+		spinner:spinner,
+		togglespinner:togglespinner,
+		onClickDeleteCredits:onClickDeleteCredits
 	}
 }
 
@@ -488,9 +574,3 @@ function focusOnElement(element) {
 	},200);
 }
 
-
-function distributeCredits(){
-	settings.distributeCreditsButton.on('click',function(){
-		
-	})
-}

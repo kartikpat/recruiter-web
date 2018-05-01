@@ -30,7 +30,7 @@
 				<li class="plans-subscriptions" data-selector="plans-subscriptions">
 					<p>Plans &amp; Subscriptions<span class="arrow right"><i class="icon-right_arrow"></i></span></p>
 				</li>
-                <li class="distribute-credits" data-selector="distribute-credits">
+                <li class="distribute-credits" id="credits" data-selector="distribute-credits" state="default">
 					<p>Distribute Credits<span class="arrow right"><i class="icon-right_arrow"></i></span></p>
 				</li>
 			</ul>
@@ -1102,43 +1102,41 @@
 				</div>
 				<div class="settings-section-content">
 					<div class="section-form">
-						<div class="credits-container group-container">
-							<div class="credits-header">
-								Available Credits: {{profile.availableCredits}}
-							</div>
-							<div class="credits-content">
-                                <div class="content-header">
-                                    <div class="column team-mem">Team Member</div>
-                                    <div class="column ttl-cre">Total Credits</div>
-                                    <div class="column rem-cre">Remaining Credits</div>
-                                    <div class="column use-cre">Used Credits</div>
-                                    <div class="column add-cre">Add</div>
-                                </div>
-                                <div class="content-row creditsContentsRow prototype">
-                                    <div class="column team-mem">
-                                        <div class="mem-img left">
-                                            <img class="memImg" src="https://www.placehold.it/100x100/f5f5f5?text=+" alt="">
-                                        </div>
-                                        <div class="mem-info right">
-                                            <div class="memName">Shreya</div>
-                                            <div class="memDes">Manager</div>
-                                            <div class="memOrg">IImjobs.com</div>
-                                        </div>
-                                    </div>
-                                    <div class="column ttl-cre  totalCredits">5</div>
-                                    <div class="column rem-cre remainingCredits">5</div>
-                                    <div class="column use-cre usedCredits">5</div>
-                                    <div class="column add-cre">
-                                        <input type="number" class="addCredits"  >
-                                        <i class="cancelTeamMember icon-cross_icon"></i>
-                                    </div>
-                                </div>
-							</div>
+						<div class="loader-container hidden">
+								<div class="loader-content">
+		
+									<div class="loading loaderScroller" style="margin-top:20px ">
+											<div class="loader loader-scroller"></div>
+									</div>
+								</div>
 						</div>
-						<div class="formgroup">
-                            <div class="save-container">
-								{{> spinner}}
-								<span class="button green submit distribute-credits">Distribute Credits</span>
+						
+						<div class="wrapper-container">
+							<div class="credits-container group-container">
+								<div class="credits-header">
+									Available Credits: {{profile.availableCredits}}
+									<div class="error-slot"></div>
+								</div>
+								
+								<div class="credits-content">
+									<div class="content-header">
+										<div class="column team-mem">Team Member</div>
+										<div class="column ttl-cre">Total Credits</div>
+										<div class="column rem-cre">Remaining Credits</div>
+										<div class="column use-cre">Used Credits</div>
+										<div class="column add-cre">Add</div>
+									</div>
+									<div class="content-row-container">
+										
+									</div>
+
+								</div>
+							</div>
+							<div class="formgroup">
+								<div class="save-container">
+									{{> spinner}}
+									<span class="button green submit distribute-credits" id="credits-distribute">Distribute Credits</span>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -1148,4 +1146,29 @@
 	</div>
 </div>
 
+
+
 {{>footer}}
+<div class="content-row creditsContentsRow prototype hidden" id="">
+	<div class="column team-mem">
+		<div class="mem-img left">
+			<img class="memImg" src="https://www.placehold.it/100x100/f5f5f5?text=+" alt="">
+		</div>
+		<div class="mem-info right">
+			<div class="memName">Shreya</div>
+			<div class="memDes">Manager</div>
+			<div class="memOrg">IImjobs.com</div>
+		</div>
+	</div>
+	<div class="column ttl-cre  totalCredits">5</div>
+	<div class="column rem-cre remainingCredits">5</div>
+	<div class="column use-cre usedCredits">5</div>
+	<div class="column add-cre">
+		<input type="number" class="addCredit" min="0" value="0" >
+		<span class="cancelTeamMember">
+			<i class="icon-cross_icon">
+				click
+			</i>
+		</span>
+	</div>
+</div>
