@@ -1152,7 +1152,6 @@
 				"static/css/modal.css",
 				"static/css/vendor/tooltipster.css",
 				"static/css/vendor/pdf_viewer.css",
-				"static/css/jquery-ui.min.css",
 				"static/css/candidate-apply-list.css",
 				"static/css/chat-sticky.css",
 				"static/css/utilities.css",

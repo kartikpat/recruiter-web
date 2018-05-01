@@ -4058,14 +4058,25 @@ input::-webkit-input-placeholder {
                 vertical-align: top;
                 margin-top: 4px;
                 float: right;
-                color: #149075; }
+                color: #6e6e6e; }
               .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .comment-container {
                 padding: 0 10px; }
                 .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .comment-container .candidateCommentTextarea {
                   resize: none; }
               .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .action-buttons {
                 padding: 10px;
-                padding-top: 5px; }
+                padding-top: 10px;
+                padding-bottom: 15px; }
+                .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .action-buttons .candidateAddTag {
+                  border-radius: 4px !important;
+                  background-color: #149075;
+                  color: #fff;
+                  border: none; }
+                .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .action-buttons .candidateAddComment {
+                  border-radius: 4px !important;
+                  background-color: #149075;
+                  color: #fff;
+                  border: none; }
               .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .pill-listingg-container {
                 position: relative;
                 width: 95%;
@@ -4091,23 +4102,25 @@ input::-webkit-input-placeholder {
                 padding: 10px 22px; }
               .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .candidateTagListContainer {
                 overflow: auto;
-                max-height: 60px;
-                margin-left: 8px; }
+                max-height: 66px;
+                margin-left: 8px;
+                width: 95%; }
                 .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .candidateTagListContainer .candidateTag {
                   display: inline-block;
                   margin: 5px;
                   border: 1px solid #e8e8e8;
                   border-radius: 15px;
                   font-size: 13px;
-                  background-color: #FFF;
+                  background-color: #f3fbfb;
                   color: #6e6e6e;
                   padding-right: 23px;
                   position: relative;
                   text-align: center;
                   margin: 3px;
                   overflow: auto;
-                  padding: 2px 15px;
-                  border-radius: 20px; }
+                  padding: 5px 15px;
+                  border-radius: 20px;
+                  margin-left: 0px; }
                   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .candidateTagListContainer .candidateTag .tagLabel {
                     display: inline-block;
                     word-break: break-word; }
@@ -5790,28 +5803,33 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
 @media all and (max-width: 768px) {
   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip {
     position: fixed;
-    top: 2px;
+    top: 0px;
     bottom: 0;
-    height: 103%;
+    min-height: 100%;
     left: 0px;
     border-radius: 0;
     width: 90%;
-    margin: 0 auto;
-    overflow-y: auto;
-    overflow-x: hidden; }
+    margin: 0 auto; }
   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .candidate-image img {
     width: 50px;
     height: 50px;
     margin-top: 10px;
     border-radius: 50%;
-    margin-right: 10px; }
+    margin-right: 10px;
+    margin-left: 0px;
+    border: 1px solid;
+    object-fit: cover; }
   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .personal-details {
     margin-top: 0px;
-    display: inline-block; }
+    display: inline-block;
+    border: none;
+    width: 50%;
+    margin: 8px;
+    vertical-align: text-bottom; }
   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .sidebar-section .label {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     font-size: 16px;
-    margin-left: 10px;
+    margin-left: 3px;
     margin-top: 10px; }
   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .commentdisabled {
     width: 100%;
@@ -5824,7 +5842,7 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
     background-image: none;
     font-size: 13px;
     line-height: 18px;
-    margin: 0px; }
+    margin: 0 auto; }
   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .candidateCommentText {
     width: 100%;
     height: 160px;
@@ -5836,7 +5854,8 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
     background-image: none;
     font-size: 13px;
     line-height: 18px;
-    margin: 0px; }
+    margin: 0 auto;
+    margin-left: -6px; }
   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .candidateAddComment {
     background-color: #fff;
     border: 1px solid #e7e7e7;
@@ -5846,6 +5865,8 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
     margin: 0 auto;
     width: 100%;
     display: inline-block; }
+  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .candidateTagListContainer {
+    max-height: 300px; }
   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .candidateAddTag {
     background-color: #fff;
     border: 1px solid #e7e7e7;
@@ -5856,7 +5877,7 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
     width: 100%;
     display: inline-block; }
   .action-tooltip .action-buttons {
-    margin: 30px 0; }
+    padding-left: 0px !important; }
   .action-tooltip .candidateAddEdit {
     font-size: 17px !important; } }
 
@@ -5889,5 +5910,5 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
 
 .ui-menu {
   overflow: auto;
-  max-height: 100px;
+  max-height: 80px;
   max-width: 280px; }
