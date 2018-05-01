@@ -19,12 +19,16 @@ var errorResponses = {
 	passwordMatch: 'The old password and new password should not match'
 }
 
+var availableCredits=profile.availableCredits;
+console.log(availableCredits);
 var emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 var urlRegex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})/;
+
 function Profile(){
 	var settings ={};
 	var config = {};
-
+	var object={}
+	var data=[];
 	function setConfig(key, value) {
 		config[key] = value;
 	}
@@ -72,10 +76,12 @@ function Profile(){
 			settings.creditRow=$('.content-row')
 			settings.creditRowClass='.content-row'
 			settings.distributeCredits=$('#credits')
+			settings.wrapperContainer=$('.wrapper-container')
+			settings.loader=$('.loader-container ')
 			settings.contentrowContainer='.content-row-container'
+			settings.cancelCredit='.cancelTeamMember'
 			changeFileName()
 			onChangeInputFields()
-			
 			jQuery(".settings-sidebar, .settings-mobile-nav").on("click", "li", function() {
 				var activeSection = jQuery(this).attr("data-selector");
 				settings.type = activeSection;
@@ -85,8 +91,6 @@ function Profile(){
 			});
 
 	}
-
-
 
 	function addToList(dataArray, status, offset, pageContent, filterFlag){
         settings.status = status;
@@ -353,6 +357,7 @@ function Profile(){
 	}
 
 	function credits(data){
+		console.log(data)
 		var data=data.data;
 		data.forEach(function(aRow){
 			var creditRow =  settings.creditRowPrototype.clone().removeClass('prototype hidden');
@@ -370,7 +375,6 @@ function Profile(){
 	}
 	
 	function getAddCredits(){
-			var data=[];
 			var id=$(settings.contentrowContainer).find(settings.creditRowClass).attr('id');
 			var element=$(settings.contentrowContainer).find('.content-row .addCredit');
 			for(var i=0;i<element.length;i++){
@@ -380,11 +384,11 @@ function Profile(){
 					var set={}
 					set.id=id;
 					set.value=val;
+					data.push(set);
 				}
-				data.push(set);
 			}
-			console.log(data);
-			return data;
+			object.data=data;
+			return object;
 	}
 
 	
@@ -394,11 +398,46 @@ function Profile(){
 	}
 
 	function creditsValidate(){
-		return
+		var element=$(settings.contentrowContainer).find('.content-row .addCredit');
+		var count=0;
+		for(var i=0;i<element.length;i++){
+			var val=$(element[i]).val();
+			count=count+parseInt(val);
+		}
+		if(count>availableCredits){
+			$(".error-slot").text("Add credits should be less than available credits");
+			return false
+		}
+		if(count==0){
+			return false	
+		}
+		else
+		return true
 	}	
 
 	function onClickcredits(fn){
-		settings.distributeCredits.click(fn);
+		settings.distributeCredits.click(fn);	
+	}
+
+	function onClickDeleteCredits(fn){
+		$(settings.contentrowContainer).on('click',settings.cancelCredit,function(){
+			var id=$(this).closest(settings.creditRowClass).attr('id');
+			fn(id)	
+		});
+	}
+
+	function emptyCredits(){
+		$(settings.contentrowContainer).html('');
+	}
+
+	function spinner(){
+		settings.loader.removeClass('hidden');
+		settings.wrapperContainer.addClass('hidden');
+	}
+
+	function togglespinner(){
+		settings.loader.addClass('hidden');
+		settings.wrapperContainer.removeClass('hidden');
 	}
 
 	return {
@@ -416,6 +455,10 @@ function Profile(){
 		submitCredit:submitCredit,
 		creditsValidate:creditsValidate,
 		onClickcredits:onClickcredits,
+		emptyCredits:emptyCredits,
+		spinner:spinner,
+		togglespinner:togglespinner,
+		onClickDeleteCredits:onClickDeleteCredits
 	}
 }
 

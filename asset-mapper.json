@@ -843,6 +843,7 @@
 				"static/js/Services/updateRecruiterProfile.js",
 				"static/js/Services/setPassword.js",
 				"static/js/Services/fetchRecruiterCredits.js",
+				"static/js/Services/submitCredits.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Utilities/modal.js",

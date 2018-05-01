@@ -1056,13 +1056,15 @@ span.sticker {
 .credits-container {
   padding: 0 !important; }
   .credits-container .credits-header {
-    border-bottom: 1px solid green;
+    border-bottom: 1px solid #e8e8e8;
     padding: 20px; }
   .credits-container .credits-content {
     padding: 20px;
     font-size: 0; }
   .credits-container .content-header {
     min-height: 30px; }
+  .credits-container .content-row {
+    margin-bottom: 20px; }
   .credits-container .column {
     display: inline-block;
     vertical-align: top;
@@ -1110,3 +1112,10 @@ span.sticker {
 
 .distribute-credits.button {
   width: 175px; }
+
+.error-slot {
+  position: relative;
+  /* left: 0; */
+  margin: 3px 0 0 0px;
+  font-size: 11px;
+  color: #ad3030; }

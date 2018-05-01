@@ -30,7 +30,7 @@
 				<li class="plans-subscriptions" data-selector="plans-subscriptions">
 					<p>Plans &amp; Subscriptions<span class="arrow right"><i class="icon-right_arrow"></i></span></p>
 				</li>
-                <li class="distribute-credits" id="credits" data-selector="distribute-credits">
+                <li class="distribute-credits" id="credits" data-selector="distribute-credits" state="default">
 					<p>Distribute Credits<span class="arrow right"><i class="icon-right_arrow"></i></span></p>
 				</li>
 			</ul>
@@ -1115,7 +1115,9 @@
 							<div class="credits-container group-container">
 								<div class="credits-header">
 									Available Credits: {{profile.availableCredits}}
+									<div class="error-slot"></div>
 								</div>
+								
 								<div class="credits-content">
 									<div class="content-header">
 										<div class="column team-mem">Team Member</div>
@@ -1163,6 +1165,10 @@
 	<div class="column use-cre usedCredits">5</div>
 	<div class="column add-cre">
 		<input type="number" class="addCredit" min="0" value="0" >
-		<i class="cancelTeamMember icon-cross_icon"></i>
+		<span class="cancelTeamMember">
+			<i class="icon-cross_icon">
+				click
+			</i>
+		</span>
 	</div>
 </div>

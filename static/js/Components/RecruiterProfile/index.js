@@ -1,3 +1,5 @@
+
+
 $(document).ready(function(){
 	var recruiterProfile = Profile();
 	recruiterProfile.init();
@@ -6,7 +8,6 @@ $(document).ready(function(){
 	recruiterProfile.submitHandler(function(){
 
 		if(recruiterProfile.validate()){
-
 			$('.'+type+'').find('.spinner').removeClass('hidden');
 			// $('#uploadPic').addClass('hidden');
 			$('.'+type+'').find(".button.submit").addClass('hidden');
@@ -22,13 +23,24 @@ $(document).ready(function(){
 	})
 
 	recruiterProfile.submitCredit(function(){
+		if(recruiterProfile.creditsValidate()){
+			$('.spinner').removeClass('hidden');
+			$('#credits-distribute').addClass('hidden');
 			var data=recruiterProfile.getAddCredits();
-			// submitCredits(data,recruiterId);
+			console.log("i am here")
+			submitCredits(data,recruiterId);
+		}	
 		
 	})
 
 	recruiterProfile.onClickcredits(function(){
+		recruiterProfile.emptyCredits();
+		recruiterProfile.spinner();
 		fetchRecruiterCredits(recruiterId);
+	})
+
+	recruiterProfile.onClickDeleteCredits(function(id){
+		console.log(id);
 	})
 
 	recruiterProfile.updatePic(function(){
@@ -64,7 +76,6 @@ $(document).ready(function(){
 		$('#uploadPic').removeClass('hidden');
 		$(".button.submit").removeClass('hidden');
 		errorHandler(data)
-
 	}
 
 	function onSuccessfulSetPassword(topic, data){
@@ -82,19 +93,26 @@ $(document).ready(function(){
 	}
 
 	function onFetchSuccess(topic,data){
+		recruiterProfile.togglespinner();
 		recruiterProfile.credits(data);
 	}
 
 	function onFetchFail(topic){
-		console.log("here");
+		recruiterProfile.spinner();
 	}
 
 	function onSuccessfulSubmitCredit(){
-		
+		$('.spinner').addClass('hidden');
+		$('#credits-distribute').removeClass('hidden');
+		console.log("success");
+		setTimeout(function(){
+			location.reload()
+		}, 2000);
 	}
 
 	function onFailedSubmitCredit(){
-		
+		$('.spinner').addClass('hidden');
+		$('#credits-distribute').removeClass('hidden');
 	}
 
 	var updateRecruiterProfileSuccessSubscription = pubsub.subscribe("updateRecruiterProfileSuccess", onSuccessfulUpdateProfile);

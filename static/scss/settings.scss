@@ -452,7 +452,7 @@
 .credits-container {
     padding: 0 !important;
     .credits-header {
-        border-bottom: 1px solid green;
+        border-bottom: 1px solid #e8e8e8;
         padding: 20px;
     }
     .credits-content {
@@ -461,9 +461,11 @@
     }
     .content-header {
         min-height: 30px;
+        
     }
     .content-row {
-
+        // border-bottom: 1px solid #e8e8e8;
+        margin-bottom: 20px;
     }
     .column {
         display: inline-block;
@@ -509,4 +511,11 @@
 }
 .distribute-credits.button {
     width: 175px;
+}
+.error-slot {
+    position: relative;
+    /* left: 0; */
+    margin: 3px 0 0 0px;
+    font-size: 11px;
+    color: #ad3030;
 }
