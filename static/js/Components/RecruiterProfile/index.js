@@ -5,7 +5,7 @@ $(document).ready(function(){
 	recruiterProfile.init();
 	recruiterProfile.setProfile(profile)
 	
-	recruiterProfile.submitHandler(function(){
+	recruiterProfile.submitHandler(function(type){
 
 		if(recruiterProfile.validate()){
 			$('.'+type+'').find('.spinner').removeClass('hidden');
@@ -27,7 +27,6 @@ $(document).ready(function(){
 			$('.spinner').removeClass('hidden');
 			$('#credits-distribute').addClass('hidden');
 			var data=recruiterProfile.getAddCredits();
-			console.log("i am here")
 			submitCredits(data,recruiterId);
 		}	
 		
@@ -39,8 +38,8 @@ $(document).ready(function(){
 		fetchRecruiterCredits(recruiterId);
 	})
 
-	recruiterProfile.onClickDeleteCredits(function(id){
-		console.log(id);
+	recruiterProfile.onClickDeleteCredits(function(data){
+		reclaimCredits(data,recruiterId);
 	})
 
 	recruiterProfile.updatePic(function(){
@@ -71,6 +70,7 @@ $(document).ready(function(){
 			 location.reload()
 		 }, 2000);
 	}
+
 	function onFailedUpdateProfile(topic, data){
 		$('.spinner').addClass('hidden');
 		$('#uploadPic').removeClass('hidden');
@@ -86,6 +86,7 @@ $(document).ready(function(){
 			 location.reload()
 		 }, 2000);
 	}
+
 	function onFailedPassword(topic, data){
 		$('.spinner').addClass('hidden');
 		$(".button.submit").removeClass('hidden');
@@ -115,6 +116,11 @@ $(document).ready(function(){
 		$('#credits-distribute').removeClass('hidden');
 	}
 
+	function onSuccessfulReclaimCredit(){
+		
+	}
+
+
 	var updateRecruiterProfileSuccessSubscription = pubsub.subscribe("updateRecruiterProfileSuccess", onSuccessfulUpdateProfile);
 	var updateRecruiterProfileFailSubscription = pubsub.subscribe("updateRecruiterProfileFail", onFailedUpdateProfile);
 
@@ -126,6 +132,9 @@ $(document).ready(function(){
 
 	var creditSubmitSuccessSubscription = pubsub.subscribe('submittedCredits',onSuccessfulSubmitCredit);
     var creditSubmitFailSubscription = pubsub.subscribe('failedCreditSubmission',onFailedSubmitCredit);
+
+	var creditReclaimSuccessSubscription = pubsub.subscribe('reclaimCreditsSuccess',onSuccessfulReclaimCredit);
+    var creditReclaimFailSubscription = pubsub.subscribe('reclaimCreditsfail',onFailedReclaimCredit);
 
 
 })

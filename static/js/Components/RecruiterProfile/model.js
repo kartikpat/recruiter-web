@@ -422,7 +422,9 @@ function Profile(){
 	function onClickDeleteCredits(fn){
 		$(settings.contentrowContainer).on('click',settings.cancelCredit,function(){
 			var id=$(this).closest(settings.creditRowClass).attr('id');
-			fn(id)	
+			var data={};
+			data.id=id;
+			fn(data)	
 		});
 	}
 
