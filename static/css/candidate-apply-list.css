@@ -1981,6 +1981,21 @@ span.sticker {
   .conversations .conversation-listing-container .conversations-listing {
     max-height: 70vh;
     overflow-y: auto; }
+    .conversations .conversation-listing-container .conversations-listing .empty-screen {
+      padding: 15% 0px; }
+      .conversations .conversation-listing-container .conversations-listing .empty-screen .image-container {
+        text-align: center; }
+        .conversations .conversation-listing-container .conversations-listing .empty-screen .image-container img {
+          width: 50%; }
+      .conversations .conversation-listing-container .conversations-listing .empty-screen .user-text {
+        text-align: center;
+        padding-bottom: 20px;
+        font-size: 14px; }
+      .conversations .conversation-listing-container .conversations-listing .empty-screen .empty-text {
+        text-align: center;
+        color: #888;
+        padding-bottom: 20px;
+        font-size: 14px; }
     .conversations .conversation-listing-container .conversations-listing .conversation-item {
       display: inline-block;
       vertical-align: middle;
@@ -3834,7 +3849,7 @@ input::-webkit-input-placeholder {
                 display: inline-block;
                 padding: 5px 15px;
                 border-radius: 50px;
-                background-color: #f1efef;
+                background-color: #f3fbfb;
                 color: #6e6e6e;
                 margin-left: 0;
                 font-size: 12px; }
@@ -4011,7 +4026,7 @@ input::-webkit-input-placeholder {
                 display: inline-block;
                 padding: 5px 15px;
                 border-radius: 50px;
-                background-color: #f1efef;
+                background-color: #f3fbfb;
                 color: #6e6e6e;
                 font-size: 12px; }
             .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip {
@@ -4985,7 +5000,7 @@ input::-webkit-input-placeholder {
                 padding: 2px 15px;
                 border-radius: 25px;
                 font-size: 13px;
-                background-color: #FFF;
+                background-color: #f3fbfb;
                 color: #6e6e6e;
                 padding-right: 25px;
                 position: relative; }
@@ -5283,10 +5298,10 @@ input::-webkit-input-placeholder {
           display: inline-block;
           margin: 5px;
           border: 1px solid #e8e8e8;
-          padding: 2px 15px;
+          padding: 5px 15px;
           border-radius: 25px;
           font-size: 13px;
-          background-color: #FFF;
+          background-color: #f3fbfb;
           color: #6e6e6e;
           padding-right: 25px;
           position: relative; }
@@ -5854,8 +5869,7 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
     background-image: none;
     font-size: 13px;
     line-height: 18px;
-    margin: 0 auto;
-    margin-left: -6px; }
+    margin: 0 auto; }
   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .candidateAddComment {
     background-color: #fff;
     border: 1px solid #e7e7e7;
@@ -5876,8 +5890,6 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
     margin: 0 auto;
     width: 100%;
     display: inline-block; }
-  .action-tooltip .action-buttons {
-    padding-left: 0px !important; }
   .action-tooltip .candidateAddEdit {
     font-size: 17px !important; } }
 

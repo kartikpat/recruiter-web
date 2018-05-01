@@ -42,9 +42,28 @@
 		}
 
 		.conversations-listing {
-
 			max-height:70vh;
 			overflow-y: auto;
+			.empty-screen{
+				padding: 15% 0px;
+				.image-container{
+					text-align: center;
+					img{
+						width: 50%;
+					}
+				}
+				.user-text{
+					text-align: center;
+					padding-bottom: 20px;
+					font-size: 14px;
+				}
+				.empty-text{
+					text-align: center;
+					color: #888;
+					padding-bottom: 20px;
+					font-size: 14px;
+				}
+			}
 			.conversation-item {
 			    display: inline-block;
 			    vertical-align: middle;

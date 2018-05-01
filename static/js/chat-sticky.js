@@ -377,20 +377,23 @@ $("#chat-collapsed-container").on('click',".chat-collapsed-candidate-container .
 })
 
 var populateChatView = function(array) {
+    if(array.length==0){
+        $('.empty-screen').removeClass('hidden')
+    }
+    else{
+        array.forEach(function(aCandidate) {
+            var card = candidatesWrapper.clone().removeClass('prototype hidden');
+            card.find(".candidate-image img").attr("src",(aCandidate["img"] || "/static/images/noimage.png"));
+            card.attr("data-id",aCandidate["userId"]);
+            card.find(".candidate-name").text(aCandidate["name"]);
+            card.find(".candidate-designation").text(aCandidate["designation"]);
 
-	array.forEach(function(aCandidate) {
+            card.attr("data-channel-name" , aCandidate["channel"])
 
-		var card = candidatesWrapper.clone().removeClass('prototype hidden');
-		card.find(".candidate-image img").attr("src",(aCandidate["img"] || "/static/images/noimage.png"));
-        card.attr("data-id",aCandidate["userId"]);
-        card.find(".candidate-name").text(aCandidate["name"]);
-        card.find(".candidate-designation").text(aCandidate["designation"]);
-
-		card.attr("data-channel-name" , aCandidate["channel"])
-
-		$(".chat-div .chat-div-content").append(card);
-		$(".chat-div .chat-div-content").append("<hr class='divider divider-full'>");
-	})
+            $(".chat-div .chat-div-content").append(card);
+            $(".chat-div .chat-div-content").append("<hr class='divider divider-full'>");
+        })
+    }
 }
 
 $(".chat-candidate-boxes").on('click','.chat-div-candidate .chat-div-header', function() {

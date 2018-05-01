@@ -603,8 +603,8 @@ input::-webkit-input-placeholder {
 												display:inline-block;
 												padding: 5px 15px;
 												border-radius:50px;
-												background-color:$candidate-skill-background-color;
-												color:$candidate-skill-text-color;
+												background-color: #f3fbfb;
+    											color: #6e6e6e;
 												margin-left:0;
 												font-size:$candidate-skill-font-size;
 											}
@@ -740,9 +740,8 @@ input::-webkit-input-placeholder {
 												display:inline-block;
 												padding: 5px 15px;
 												border-radius:50px;
-												background-color:$candidate-skill-background-color;
-												color:$candidate-skill-text-color;
-
+												background-color: #f3fbfb;
+    											color: #6e6e6e;
 												font-size:$candidate-skill-font-size;
 											}
 										}
@@ -864,7 +863,7 @@ input::-webkit-input-placeholder {
 											border-radius: 15px;
 											font-size: 13px;
 											background-color: #f3fbfb;
-											color: #6e6e6e;
+    										color: #6e6e6e;
 											padding-right: 23px;
 											position: relative;
 											text-align: center;
@@ -1864,8 +1863,8 @@ input::-webkit-input-placeholder {
                     						padding:2px 15px;
                     						border-radius:25px;
                     						font-size:$view-resume-byline-font-size;
-                    						background-color:$color-white;
-                    						color:#6e6e6e;
+                    						background-color: #f3fbfb;
+    										color: #6e6e6e;
                                             padding-right: 25px;
                                             position: relative;
                     						div {
@@ -2285,11 +2284,11 @@ input::-webkit-input-placeholder {
 						display:inline-block;
 						margin:5px;
 						border:1px solid $border-color-base;
-						padding:2px 15px;
+						padding:5px 15px;
 						border-radius:25px;
 						font-size:$view-resume-byline-font-size;
-						background-color:$color-white;
-						color:#6e6e6e;
+						background-color: #f3fbfb;
+    					color: #6e6e6e;
                         padding-right: 25px;
                         position: relative;
 						div {
@@ -3034,7 +3033,6 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
     	font-size: 13px;
 		line-height: 18px;
 		margin: 0 auto;
-		margin-left: -6px;
 	}
 	.page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .candidateAddComment{
 		background-color: #fff;
@@ -3062,7 +3060,7 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
 
 	.action-tooltip{
 		.action-buttons{
-			padding-left: 0px!important;
+			// padding-left: 0px!important;
 		}
 	}
 	.action-tooltip{
@@ -3077,7 +3075,6 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
 	text-align: center;
 	border-radius: 4px;
 	position: fixed;
-	// top:450px;
 	cursor: pointer;
 	transition: background-color .3s, 
 	opacity .5s, visibility .5s;
