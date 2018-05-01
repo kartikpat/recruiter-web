@@ -4016,13 +4016,11 @@ input::-webkit-input-placeholder {
                 font-size: 12px; }
             .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip {
               position: absolute;
-              top: 15%;
+              top: 0%;
               right: 0;
               width: 335px;
               left: 45%;
               margin: 0px;
-              background: #FFF;
-              box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
               border: 1px solid #e8e8e8;
               list-style: none;
               padding: 5px 0;
@@ -4035,7 +4033,8 @@ input::-webkit-input-placeholder {
               box-shadow: 0 1px 8px rgba(57, 73, 76, 0.35);
               white-space: normal;
               z-index: 5;
-              padding: 15px; }
+              padding: 15px;
+              max-height: 300px; }
               .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .candidate-image {
                 display: inline-block; }
                 .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .candidate-image img {
@@ -4087,9 +4086,13 @@ input::-webkit-input-placeholder {
                 margin-left: 0px;
                 height: 60px;
                 resize: none;
-                margin-bottom: 0px; }
+                margin-bottom: 5px; }
+              .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .recruiterTagsContainer {
+                padding: 10px 22px; }
               .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .candidateTagListContainer {
-                overflow: auto; }
+                overflow: auto;
+                max-height: 60px;
+                margin-left: 8px; }
                 .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .candidateTagListContainer .candidateTag {
                   display: inline-block;
                   margin: 5px;
@@ -4102,7 +4105,7 @@ input::-webkit-input-placeholder {
                   position: relative;
                   text-align: center;
                   margin: 3px;
-                  margin-top: 15px;
+                  overflow: auto;
                   padding: 2px 15px;
                   border-radius: 20px; }
                   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip .candidateTagListContainer .candidateTag .tagLabel {
@@ -5883,3 +5886,8 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
 #topbutton.show {
   opacity: 1;
   visibility: visible; }
+
+.ui-menu {
+  overflow: auto;
+  max-height: 100px;
+  max-width: 280px; }

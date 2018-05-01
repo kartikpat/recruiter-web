@@ -2,7 +2,8 @@ $(document).ready(function(){
 	var recruiterProfile = Profile();
 	recruiterProfile.init();
 	recruiterProfile.setProfile(profile)
-	recruiterProfile.submitHandler(function(type){
+	
+	recruiterProfile.submitHandler(function(){
 
 		if(recruiterProfile.validate()){
 
@@ -20,6 +21,16 @@ $(document).ready(function(){
 		}
 	})
 
+	recruiterProfile.submitCredit(function(){
+			var data=recruiterProfile.getAddCredits();
+			// submitCredits(data,recruiterId);
+		
+	})
+
+	recruiterProfile.onClickcredits(function(){
+		fetchRecruiterCredits(recruiterId);
+	})
+
 	recruiterProfile.updatePic(function(){
 		if(recruiterProfile.validatePic()) {
 			$('#uploadPic').prev().removeClass('hidden');
@@ -30,6 +41,7 @@ $(document).ready(function(){
 		}
 		return toastNotify(3, "Please Choose A File")
 	})
+
 
  	function onSuccessfulUpdateProfile(topic, data){
 		$('.spinner').addClass('hidden');
@@ -69,11 +81,34 @@ $(document).ready(function(){
 		errorHandler(data)
 	}
 
+	function onFetchSuccess(topic,data){
+		recruiterProfile.credits(data);
+	}
+
+	function onFetchFail(topic){
+		console.log("here");
+	}
+
+	function onSuccessfulSubmitCredit(){
+		
+	}
+
+	function onFailedSubmitCredit(){
+		
+	}
+
 	var updateRecruiterProfileSuccessSubscription = pubsub.subscribe("updateRecruiterProfileSuccess", onSuccessfulUpdateProfile);
 	var updateRecruiterProfileFailSubscription = pubsub.subscribe("updateRecruiterProfileFail", onFailedUpdateProfile);
 
 	var setPasswordSuccessSubscription = pubsub.subscribe("setPasswordSuccess", onSuccessfulSetPassword);
 	var setPasswordFailSubscription = pubsub.subscribe("setPasswordFail", onFailedPassword);
+	
+	var fetchCreditSuccessSubscription=pubsub.subscribe('fetchedCredits', onFetchSuccess)
+	var fetchCreditFailSubscription=pubsub.subscribe('failedToFetchCredits', onFetchFail)
+
+	var creditSubmitSuccessSubscription = pubsub.subscribe('submittedCredits',onSuccessfulSubmitCredit);
+    var creditSubmitFailSubscription = pubsub.subscribe('failedCreditSubmission',onFailedSubmitCredit);
+
 
 })
 

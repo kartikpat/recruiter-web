@@ -58,19 +58,24 @@ function Profile(){
 			settings.premiumDetail = $("#premiumDetail")
 			settings.type = "profile"
 			settings.settingsBody = $(".settingsBody")
-			settings.distributeCreditsButton=$('.distribute-credits')
+			settings.distributeCreditsButton=$('#credits-distribute')
+			settings.creditRowPrototype=$('.creditsContentsRow')
+			settings.memberName='.memName'
+			settings.memberDes='.memDes'
+			settings.memberOrg='.memOrg'
+			settings.totalCredits='.totalCredits'
+			settings.remainingCredits='.remainingCredits'
+			settings.usedCredits='.usedCredits'
+			settings.addCredits=$('.add-cre')
+			settings.memberImage='.mem-img'
+			settings.rowContainer=$('.credits-container')
+			settings.creditRow=$('.content-row')
+			settings.creditRowClass='.content-row'
+			settings.distributeCredits=$('#credits')
+			settings.contentrowContainer='.content-row-container'
 			changeFileName()
 			onChangeInputFields()
-
-			// settings.editor = new MediumEditor("#profile-about", {
-			// 	toolbar: false,
-			// 	placeholder: {
-			//         text: 'About'
-			//     },
-			// 	disableExtraSpaces: true,
-			// 	hideOnClick: false
-			// })
-
+			
 			jQuery(".settings-sidebar, .settings-mobile-nav").on("click", "li", function() {
 				var activeSection = jQuery(this).attr("data-selector");
 				settings.type = activeSection;
@@ -81,23 +86,7 @@ function Profile(){
 
 	}
 
-	function getMembersElement() {
 
-        var card = $('.creditsContentsRow.prototype').clone().removeClass("prototype hidden");
-        return {
-            element: card,
-            memImg: card.find('.memImg'),
-            memName: card.find('.memName'),
-            memDes: card.find('.memDes'),
-            memOrg: card.find('.memOrg'),
-			totalCredits: card.find('.totalCredits'),
-			remainingCredits: card.find('.remainingCredits'),
-			usedCredits: card.find('.usedCredits'),
-			cancelTeamMember: card.find('.cancelTeamMember'),
-			addCredits: card.find('.addCredits')
-        }
-
-	}
 
 	function addToList(dataArray, status, offset, pageContent, filterFlag){
         settings.status = status;
@@ -361,8 +350,55 @@ function Profile(){
 			form.append("image", settings.fileUpload[0].files[0], settings.fileUpload[0].files[0].name);
 			return form
 		}
+	}
 
+	function credits(data){
+		var data=data.data;
+		data.forEach(function(aRow){
+			var creditRow =  settings.creditRowPrototype.clone().removeClass('prototype hidden');
+			creditRow.attr('id',aRow['id']);
+			creditRow.find(settings.memberImage).find('img').attr("src",(aRow["img"] || "/static/images/noimage.png"));
+			creditRow.find(settings.memberName).text(aRow["name"]);
+			creditRow.find(settings.memberDes).text(aRow["designation"]);
+			creditRow.find(settings.memberOrg).text(aRow["organization"]);
+			creditRow.find(settings.totalCredits).text(aRow["total"]);
+			creditRow.find(settings.remainingCredits).text(aRow["remaining"]);
+			creditRow.find(settings.usedCredits).text(aRow["used"]);
+			$(settings.contentrowContainer).append(creditRow);	
+		});
+	
+	}
+	
+	function getAddCredits(){
+			var data=[];
+			var id=$(settings.contentrowContainer).find(settings.creditRowClass).attr('id');
+			var element=$(settings.contentrowContainer).find('.content-row .addCredit');
+			for(var i=0;i<element.length;i++){
+				var id=$(element[i]).closest(settings.creditRowClass).attr('id');
+				var val=$(element[i]).val();
+				if(val>0){
+					var set={}
+					set.id=id;
+					set.value=val;
+				}
+				data.push(set);
+			}
+			console.log(data);
+			return data;
+	}
 
+	
+
+	function submitCredit(fn){
+		settings.distributeCreditsButton.click(fn);
+	}
+
+	function creditsValidate(){
+		return
+	}	
+
+	function onClickcredits(fn){
+		settings.distributeCredits.click(fn);
 	}
 
 	return {
@@ -374,7 +410,12 @@ function Profile(){
 		setProfile: setProfile,
 		getPic: getPic,
 		updatePic: updatePic,
-		validatePic: validatePic
+		validatePic: validatePic,
+		credits:credits,
+		getAddCredits:getAddCredits,
+		submitCredit:submitCredit,
+		creditsValidate:creditsValidate,
+		onClickcredits:onClickcredits,
 	}
 }
 
@@ -488,9 +529,3 @@ function focusOnElement(element) {
 	},200);
 }
 
-
-function distributeCredits(){
-	settings.distributeCreditsButton.on('click',function(){
-		
-	})
-}

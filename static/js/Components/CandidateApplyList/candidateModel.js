@@ -1,7 +1,7 @@
 
 
 function Candidate() {
-    var settings = {}
+    var settings = {};
 
     function init() {
         settings.candidateDetailsModal= $('.candidateDetailsModal')

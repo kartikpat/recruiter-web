@@ -842,6 +842,7 @@
 				"static/js/vendor/medium-editor.min.js",
 				"static/js/Services/updateRecruiterProfile.js",
 				"static/js/Services/setPassword.js",
+				"static/js/Services/fetchRecruiterCredits.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Utilities/modal.js",
