@@ -495,14 +495,14 @@ $(document).ready(function(){
 		fetchJobs({pageContent:5, pageNumber: 1, type: "published"}, recruiterId); //recent-jobs
 		var currentDate=moment().format("YYYY-MM-DD");
 		var startdate = moment();
-		startdate = startdate.subtract(100, "days");
+		startdate = startdate.subtract(15,"days");
 		startdate = startdate.format("YYYY-MM-DD");	
 		fetchFollowUps(recruiterId,{fromDate:startdate});
 		var currentDate=moment().format("YYYY-MM-DD");
 		fetchRecruiterCalendar(recruiterId);
 		fetchInterviews(recruiterId,{pageContent: 6, pageNumber: 1, status: 2,fromDate:currentDate});
-
 	}
+	
 	init()
 
 	function showSpinner(type) {
