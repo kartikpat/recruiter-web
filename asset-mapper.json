@@ -976,6 +976,7 @@
 				"static/js/Utilities/common.js",
 				"static/js/vendor/moment.min.js",
 				"static/js/Utilities/modal.js",
+				"static/js/Tracker/tracker.js",
 				"static/js/Services/fetchDashboardStats.js",
 				"static/js/Services/fetchActiveJobStats.js",
 				"static/js/Services/fetchJobs.js",
