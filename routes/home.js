@@ -855,5 +855,43 @@ module.exports = function(settings){
 			jobId: req.params.jobID,
 			profile: req.profile
 		});
+	});
+
+	app.get("/job/:jobId/applications/:applicationId/action/:action",isAuthenticated, function(req, res){
+		const jobId = req.params.jobId,
+			applicationId = req.params.applicationId,
+			action = req.params.action;
+		const accessToken = req.cookies["recruiter-access-token"];
+		const recruiterId = req.profile.id;
+		var redirectURL = '';
+		if([ 'shortlist', 'reject', 'save', 'view', 'download' ].indexOf(action) <0)
+			return res.redirect("/error");
+		if(action=='download')
+			redirectURL = req.query.redirectURL;
+		// return res.send(req.profile);
+		var options = { method: 'POST',
+		  url: baseUrl+ '/recruiter/'+recruiterId+'/job/'+jobId+'/application/'+applicationId+'/action/'+action,
+		  headers: { 
+		  	'Authorization': 'Bearer '+ accessToken,
+		    'Content-Type': 'application/json' 
+			},
+		  json: true 
+		};
+		request(options, function (error, response, body) {
+			if (error){
+				console.log(error);
+				return res.redirect('/test');
+			}
+		  	const jsonBody = body;
+			if(jsonBody.status && jsonBody.status =='success'){
+				if(redirectURL)
+					return res.redirect(baseUrl+redirectURL);
+				return res.redirect('/job/'+jobId+'/applications/'+applicationId);
+			}
+			else {
+				return res.redirect("/error");
+			}
+			return res.send('notok')
+		});
 	})
 }
