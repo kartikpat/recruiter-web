@@ -3308,6 +3308,8 @@ span.sticker {
   padding: 20px;
   width: 100%;
   background-color: #f7f7f7; }
+  .page-content a:hover {
+    text-decoration: underline; }
   .page-content .main-wrapper .main-container .heading {
     padding: 15px 0; }
     .page-content .main-wrapper .main-container .heading h1 {
@@ -3486,6 +3488,3 @@ span.sticker {
 @media all and (max-width: 480px) {
   .page-content .main-wrapper .main-container .reports-wrapper .reports-header .keyword-search {
     width: 100%; } }
-
-a:hover {
-  text-decoration: underline; }

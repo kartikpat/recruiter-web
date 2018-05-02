@@ -162,6 +162,8 @@
                 overflow: hidden;
                 white-space: nowrap;
                 max-width: 115px;
+                text-overflow: ellipsis;
+                line-height: 18px;
             }
             .last-active-date {
                 font-size: 9px;
