@@ -340,7 +340,8 @@ body {
 	position: relative;
 	width: 64px;
 	height: 64px;
-  }
+	bottom: 10px;	
+}
   .lds-spinner div {
 	transform-origin: 32px 32px;
 	animation: lds-spinner 1.2s linear infinite;
@@ -349,10 +350,10 @@ body {
 		content: " ";
     display: block;
     position: absolute;
-    top: 23px;
+    top: 21px;
     left: 31px;
     width: 2px;
-    height: 8px;
+    height: 6px;
     border-radius: 20%;
     background: #737373;
   }

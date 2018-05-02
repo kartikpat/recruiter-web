@@ -229,6 +229,7 @@ function Jobs() {
 	}
 
 	function createElement(aData) {
+		console.log(aData)
 		var item = cloneElement(aData["id"]);
 		var title = getTitleFormat(aData["title"], (/\(\d+-\d+ \w+\)$/));
 		item.createdOn.text(getDateFormat(aData["created"]))
@@ -283,9 +284,12 @@ function Jobs() {
 		}
 
 		item.refresh.attr("data-job-refreshable", aData["refreshable"])
-		if(!aData["refreshable"])
-			item.refresh.attr("title", "You can refresh this job after 7 days")
-
+		if(!aData["refreshable"]){
+			// var publishedDate=aData[""];
+			// var currentDate						
+			var diff="7"	
+			item.refresh.attr("title", 'You can refresh this job after '+diff+' days')
+		}	
 		item.edit.attr("data-job-isEditable", aData["editable"])
 		item.edit.attr("href","/job/"+aData["id"]+"/edit")
 		if(!aData["editable"]) {

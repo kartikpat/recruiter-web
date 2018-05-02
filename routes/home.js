@@ -845,6 +845,17 @@ module.exports = function(settings){
 			baseDomain: baseDomain
 		});
 	})
+	
+	app.get("/transition",function(req, res){
+		res.render("transition", {
+			title:"iimjobs.com",
+			styles:  assetsMapper["transition"]["styles"][mode],
+			scripts: assetsMapper["transition"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
+		});
+	})
+	
 	app.get("/job/:jobID/details",isAuthenticated, function(req, res){
 		res.render("job-details", {
 			title:"Job Details | iimjobs.com",

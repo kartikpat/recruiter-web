@@ -92,6 +92,7 @@ function Candidate() {
         jQuery(".body-overlay").addClass("hidden").removeClass("vieled");
         $("body").removeClass("posf")
         settings.candidateDetailsModal.addClass("hidden");
+        settings.topbutton.removeClass('hidden');
         document.addEventListener('keyup', function(e) {
             if (e.keyCode == 27) {
                 jQuery(".body-overlay").addClass("hidden").removeClass("vieled");
@@ -551,11 +552,11 @@ function Candidate() {
         $(".coverLetterTab").addClass("hidden");
     }
 
-    function openModal() {
-    	$(".body-overlay").removeClass("hidden").addClass("veiled");
+    function openModal(){
+        $(".body-overlay").removeClass("hidden").addClass("veiled");
     	$("body").addClass("posf");
         settings.candidateDetailsModal.removeClass("hidden");
-        settings.topbutton.removeClass('show');
+        settings.topbutton.addClass('hidden');
     }
 
     function onClickAddComment(fn) {

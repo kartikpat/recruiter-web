@@ -1879,5 +1879,30 @@
             ]
         }
 
+	},
+	"transition": {
+        "styles": {
+            "debug" : [
+                "static/css/header.css",
+                "static/css/footer.css",
+				"static/css/transition.css",
+				"static/css/animate.css"
+            ],
+            "prod": [
+                "static/build/css/transition.min.css"
+            ]
+        },
+        "scripts": {
+            "debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js",
+				"static/js/Components/Transition/model.js"
+            ],
+            "prod" :[
+                "static/build/js/calendar.min.js"
+            ]
+        }
+
     }
 }
