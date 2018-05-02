@@ -391,8 +391,6 @@ function Profile(){
 			return object;
 	}
 
-	
-
 	function submitCredit(fn){
 		settings.distributeCreditsButton.click(fn);
 	}
@@ -421,6 +419,7 @@ function Profile(){
 
 	function onClickDeleteCredits(fn){
 		$(settings.contentrowContainer).on('click',settings.cancelCredit,function(){
+			$(this).addClass('hidden');
 			var id=$(this).closest(settings.creditRowClass).attr('id');
 			var data={};
 			data.id=id;

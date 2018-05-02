@@ -1,5 +1,3 @@
-
-
 $(document).ready(function(){
 	var recruiterProfile = Profile();
 	recruiterProfile.init();
@@ -96,6 +94,7 @@ $(document).ready(function(){
 	function onFetchSuccess(topic,data){
 		recruiterProfile.togglespinner();
 		recruiterProfile.credits(data);
+
 	}
 
 	function onFetchFail(topic){
@@ -105,7 +104,6 @@ $(document).ready(function(){
 	function onSuccessfulSubmitCredit(){
 		$('.spinner').addClass('hidden');
 		$('#credits-distribute').removeClass('hidden');
-		console.log("success");
 		setTimeout(function(){
 			location.reload()
 		}, 2000);
@@ -118,6 +116,10 @@ $(document).ready(function(){
 
 	function onSuccessfulReclaimCredit(){
 		
+	}
+
+	function onFailedReclaimCredit(){
+		$('.cancelTeamMember').removeClass('hidden');
 	}
 
 

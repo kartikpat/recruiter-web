@@ -247,7 +247,7 @@ $(document).ready(function(){
 			var experience = aJob['exp']['min']+'-'+aJob['exp']['max']+'yrs'
 			card.find(".title .text").text(getTitleFormat(aJob['title'], (/\(\d+-\d+ \w+\)$/))).attr('href', '/job/'+aJob['id']);
 			var locationTitle = (aJob["location"] && aJob["location"].length >3) ? aJob["location"].join(','): null;
-			var location = (aJob["location"] && aJob["location"].length >3) ? "Multiple" : aJob["location"].join(',');
+			var location = (aJob["location"] && aJob["location"].length >3) ? "Multiple Locations" : aJob["location"].join(',');
 			card.find(".title .meta-content .location .label").text(location).attr('title', locationTitle);
 			card.find(".title .meta-content .experience .label").text(experience)
 			card.find(".title .meta-content .postedOn .label").text(moment(aJob['created']).format('D MMM YYYY'));

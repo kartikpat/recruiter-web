@@ -44,8 +44,8 @@
 		.conversations-listing {
 			max-height:70vh;
 			overflow-y: auto;
-			.empty-screen{
-				padding: 15% 0px;
+			.empty-screen-chat{
+				padding: 50% 0px;
 				.image-container{
 					text-align: center;
 					img{
@@ -54,8 +54,8 @@
 				}
 				.user-text{
 					text-align: center;
-					padding-bottom: 20px;
-					font-size: 14px;
+					padding-bottom: 10px;
+					font-size: 13px;
 				}
 				.empty-text{
 					text-align: center;

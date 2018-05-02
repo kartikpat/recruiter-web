@@ -1895,7 +1895,8 @@
             "debug": [
 				"static/js/vendor/jquery.min.js",
 				"static/js/Components/Header/model.js",
-				"static/js/Components/Header/index.js"
+				"static/js/Components/Header/index.js",
+				"static/js/Components/Transition/model.js"
             ],
             "prod" :[
                 "static/build/js/calendar.min.js"

@@ -712,7 +712,6 @@ function Candidate() {
     }
 
 	function initializeTooltip() {
-        debugger
 		if(window.innerWidth<=768){
 			$(".tooltip").tooltipster({
 				animation: 'fade',

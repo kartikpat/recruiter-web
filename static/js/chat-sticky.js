@@ -378,7 +378,7 @@ $("#chat-collapsed-container").on('click',".chat-collapsed-candidate-container .
 
 var populateChatView = function(array) {
     if(array.length==0){
-        $('.empty-screen').removeClass('hidden')
+        $('.empty-screen-chat').removeClass('hidden')
     }
     else{
         array.forEach(function(aCandidate) {

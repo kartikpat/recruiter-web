@@ -258,7 +258,6 @@ jQuery(document).ready( function() {
 
     aCandidate.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
         var defaultCalendarId = store.getDefaultId();
-        debugger
         if(!defaultCalendarId)
             return aCandidate.openSelectDefaultCalendarModal();
         var obj = {
