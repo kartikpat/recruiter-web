@@ -154,6 +154,7 @@ function Candidate() {
             name: modal.find(".js_name"),
             location: modal.find(".js_loc"),
             preferredLocation: modal.find(".js_pref_loc"),
+            preferredLocationDetail:modal.find(".pref_loc"),
             experience: modal.find(".js_experience"),
             secondfold:modal.find('.second-fold'),
             salary: modal.find(".js_sal"),
@@ -274,9 +275,12 @@ function Candidate() {
             item.element.find('.inviteTelephonic .loadingScroller').addClass('hidden');
         }
         if(aData["preferredLocation"].length) {
-            preferredLocationStr = aData["preferredLocation"].join(', ');
+            var locationTitle = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? aData["preferredLocation"].join(','): null;
+            var preferredLocationStr = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? "Multiple Locations" : aData["preferredLocation"].join(',');
         }
         item.preferredLocation.text(preferredLocationStr);
+        item.preferredLocationDetail.text(aData["preferredLocation"]);
+        item.preferredLocation.attr("title",locationTitle);
         item.contact.text(aData["phone"] || "NA");
         item.email.text(aData["email"]||"NA");
 

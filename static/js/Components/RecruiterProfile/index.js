@@ -4,7 +4,6 @@ $(document).ready(function(){
 	recruiterProfile.setProfile(profile)
 	
 	recruiterProfile.submitHandler(function(type){
-
 		if(recruiterProfile.validate()){
 			$('.'+type+'').find('.spinner').removeClass('hidden');
 			// $('#uploadPic').addClass('hidden');

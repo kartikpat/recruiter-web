@@ -245,7 +245,7 @@ $(document).ready(function(){
 		data.forEach(function(aJob, index){
 			var card = jobRowCard.clone().removeClass('hidden prototype');
 			var experience = aJob['exp']['min']+'-'+aJob['exp']['max']+'yrs'
-			card.find(".title .text").text(getTitleFormat(aJob['title'], (/\(\d+-\d+ \w+\)$/))).attr('href', '/job/'+aJob['id']);
+			card.find(".title .text").text(getTitleFormat(aJob['title'], (/\(\d+-\d+ \w+\)$/))).attr('href', '/job/'+aJob['id']+'/details/');
 			var locationTitle = (aJob["location"] && aJob["location"].length >3) ? aJob["location"].join(','): null;
 			var location = (aJob["location"] && aJob["location"].length >3) ? "Multiple Locations" : aJob["location"].join(',');
 			card.find(".title .meta-content .location .label").text(location).attr('title', locationTitle);

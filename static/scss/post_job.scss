@@ -79,7 +79,15 @@
                 position:relative;
                 overflow:visible;
                 width:70%;
-
+                .check-input{
+                    margin-top: -20px;
+                }
+                .check-input input + label {
+                    padding: 4px 0 4px 30px;
+                    background-repeat: no-repeat;
+                    background-size: 17px;
+                    background-position: left 2px center;
+                }
                 &.tile-section {
                     width:100%;
                 }
@@ -88,7 +96,7 @@
                     font-size: $base-font-size;;
                     color: $color-black-text;
                     cursor: pointer;
-                    margin-bottom:14px;
+                    margin-bottom:10px;
                 }
 
 
@@ -106,14 +114,10 @@
 
                     .add-tags-content {
                         width: 70%;
-
-                        // line-height: 34px;
                         border: 1px solid $select-border;
-
                         padding: 12px;
                         .selected-tags-content {
                             display: inline-block;
-
                         }
                         .tag-input {
                             color: #676666;
@@ -136,11 +140,16 @@
 
                     input[type=text] {
                         @include input-field;
+                        border-radius: 0px;
+                        padding: 16px 15px;
                     }
 
                     select {
                         @include select-dropdown;
                         padding-right: 38px;
+                        border-radius: 0px;
+                        // color: #2b2b2b;
+                        padding: 16px 15px;
                     }
                     select::-ms-expand {
                         display: none!important;
@@ -148,6 +157,7 @@
 
                     input[type="checkbox"] {
                         @include check-input;
+                       
                     }
 
                     select.half {
@@ -160,10 +170,10 @@
                         max-width:100%;
                         min-height: 150px;
                         height: auto;
-                        padding: 12px 22px;
+                        padding: 12px 15px;
                         box-sizing: border-box;
                         border: 1px solid $border-color-base;;
-                        border-radius: 2px;
+                        border-radius: 0px;
                         background-color: inherit;
                         font-size:$base-font-size;
                         line-height:1.5;
@@ -211,8 +221,9 @@
         }
     }
     p {
-        margin-top:15px;
+        margin-top:5px;
         font-size:$page-section-font-size;
+        margin-left: 36px;
     }
 }
 

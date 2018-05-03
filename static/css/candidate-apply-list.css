@@ -3277,6 +3277,9 @@ span.sticker {
   padding-right: 10px;
   cursor: pointer; }
 
+.link-color:hover {
+  text-decoration: underline; }
+
 .closeCandidateModal {
   position: fixed;
   top: 15px;
@@ -3666,15 +3669,15 @@ input::-webkit-input-placeholder {
           font-size: 14px; }
         .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search-results #clear-all {
           border-left: 1px solid;
-          padding-left: 8px; }
+          padding-left: 5px; }
         .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search-results .active-filters {
           padding-bottom: 0px;
           margin-top: 10px; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search-results .active-filters .filter-tag {
             display: inline-block;
-            margin: 0 10px 10px 0;
+            margin: 0 5px 5px 0;
             border: 1px solid #e8e8e8;
-            padding: 3px 15px;
+            padding: 5px 13px;
             border-radius: 50px;
             text-transform: capitalize;
             font-size: 14px;
@@ -3690,6 +3693,9 @@ input::-webkit-input-placeholder {
                   display: inline-block;
                   vertical-align: middle;
                   color: #808080; }
+                  .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search-results .active-filters .filter-tag div.remove-active-filter span .icon-close_icon:before {
+                    content: '\e81a';
+                    font-size: 10px; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search-results .active-filters span.clear-all-filters {
             display: inline-block; }
             .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search-results .active-filters span.clear-all-filters a {
@@ -3735,8 +3741,7 @@ input::-webkit-input-placeholder {
               line-height: 1; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-body .selection-bar .bulk-selection-item.active {
             border-color: #1f8f75;
-            position: relative;
-            top: 1px; }
+            position: relative; }
             .page-content .candidate-apply-listing .candidates-area .candidates-area-body .selection-bar .bulk-selection-item.active span {
               color: #1f8f75; }
       .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing {
@@ -4205,7 +4210,7 @@ input::-webkit-input-placeholder {
       position: relative;
       display: inline-block; }
       .candidateTagContainer .tag-container .pill-button input[type=text] {
-        padding: 7px 17px;
+        padding: 7px 10px;
         margin: 3px;
         border-radius: 50px;
         border: 1px solid #e8e8e8;
@@ -4298,7 +4303,8 @@ input::-webkit-input-placeholder {
     color: #FFF;
     display: inline-block;
     vertical-align: top;
-    cursor: pointer; }
+    cursor: pointer;
+    margin-left: 0px; }
     .mass-action-container .action-buttons span.button.green {
       background-color: #1f8f75; }
     .mass-action-container .action-buttons span.button.red {
@@ -4649,8 +4655,7 @@ input::-webkit-input-placeholder {
         .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search-results .active-filters .filter-tag {
           margin-left: 0; }
         .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search-results .active-filters span.clear-all-filters {
-          display: block;
-          margin-top: 10px; }
+          display: block; }
       .page-content .candidate-apply-listing .candidates-area .candidates-area-body .selection-bar {
         margin: 0;
         padding: 0;
@@ -5187,8 +5192,7 @@ input::-webkit-input-placeholder {
             width: 17px;
             height: 17px; }
     .view-resume-modal .resume-sidebar .external-links ul {
-      padding: 20px 0;
-      border-top: 1px solid #e8e8e8;
+      padding: 0px 0;
       list-style: none;
       margin: 0; }
       .view-resume-modal .resume-sidebar .external-links ul li {
@@ -5247,7 +5251,8 @@ input::-webkit-input-placeholder {
         line-height: 40px;
         padding: 10px;
         text-align: left;
-        vertical-align: middle; }
+        vertical-align: middle;
+        border-radius: 0px; }
       .view-resume-modal .resume-sidebar .sidebar-section ::-webkit-input-placeholder {
         text-align: left;
         vertical-align: middle;

@@ -359,18 +359,23 @@ function Profile(){
 	function credits(data){
 		console.log(data)
 		var data=data.data;
-		data.forEach(function(aRow){
-			var creditRow =  settings.creditRowPrototype.clone().removeClass('prototype hidden');
-			creditRow.attr('id',aRow['id']);
-			creditRow.find(settings.memberImage).find('img').attr("src",(aRow["img"] || "/static/images/noimage.png"));
-			creditRow.find(settings.memberName).text(aRow["name"]);
-			creditRow.find(settings.memberDes).text(aRow["designation"]);
-			creditRow.find(settings.memberOrg).text(aRow["organization"]);
-			creditRow.find(settings.totalCredits).text(aRow["total"]);
-			creditRow.find(settings.remainingCredits).text(aRow["remaining"]);
-			creditRow.find(settings.usedCredits).text(aRow["used"]);
-			$(settings.contentrowContainer).append(creditRow);	
-		});
+		if(data.length==0){
+			console.log("hide");
+		}
+		else{
+			data.forEach(function(aRow){
+				var creditRow =  settings.creditRowPrototype.clone().removeClass('prototype hidden');
+				creditRow.attr('id',aRow['id']);
+				creditRow.find(settings.memberImage).find('img').attr("src",(aRow["img"] || "/static/images/noimage.png"));
+				creditRow.find(settings.memberName).text(aRow["name"]);
+				creditRow.find(settings.memberDes).text(aRow["designation"]);
+				creditRow.find(settings.memberOrg).text(aRow["organization"]);
+				creditRow.find(settings.totalCredits).text(aRow["total"]);
+				creditRow.find(settings.remainingCredits).text(aRow["remaining"]);
+				creditRow.find(settings.usedCredits).text(aRow["used"]);
+				$(settings.contentrowContainer).append(creditRow);	
+			});
+		}
 	
 	}
 	

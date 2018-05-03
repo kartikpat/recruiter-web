@@ -300,7 +300,7 @@ function Job(){
 	function appendlocation(){
 		var str = '<li data-value="custom" class="hidden"></li>'
 		for(var locCategory in cityList) {
-			str += '<li class="disabled">----'+locCategory+'----</li>'
+			str += '<li class="disabled">--'+locCategory+'--</li>'
 			for(var locId in cityList[locCategory]) {
 				 var loc = cityList[locCategory][locId];
 				 str += '<li data-value='+locId+'>'+loc+'</li>'

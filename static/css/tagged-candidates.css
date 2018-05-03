@@ -2289,7 +2289,8 @@ span.sticker {
               font-size: 12px;
               vertical-align: middle;
               max-width: 150px;
-              word-wrap: break-word; }
+              word-wrap: break-word;
+              border: 1px solid #e8e8e8; }
               .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .skill-tag-listing .skill-tag a {
                 color: #2b2b2b; }
         .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .tagged-on-label {
