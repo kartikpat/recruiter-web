@@ -2092,6 +2092,10 @@ span.sticker {
   width: 100%;
   background: #f7f7f7;
   font-size: 0; }
+  .page-content a:hover {
+    text-decoration: underline; }
+  .page-content .resume-download-area a:hover {
+    text-decoration: none; }
   .page-content .tagged-candidates {
     width: 80%;
     display: inline-block;
@@ -2122,7 +2126,8 @@ span.sticker {
       max-width: 250px;
       color: #2b2b2b;
       font-size: 18px;
-      font-weight: 600; }
+      font-weight: 600;
+      padding: 10px 40px 10px 4px !important; }
       .page-content .tagged-candidates .page-header select[multiple] {
         background-image: none;
         height: 120px; }

@@ -46,7 +46,7 @@
                     font-size: 14px;/* Approximation due to font substitution */
                     font-weight: 400;
                     text-align: left;
-                    margin-bottom: 14px;
+                    margin-bottom: 10px;
                     }
                 #name{
                     border-radius: 3px;
@@ -59,7 +59,7 @@
                     height: 48px;
                     resize: none;
                     outline: none;
-                    padding: 16px 22px;
+                    padding: 16px 10px;
                     overflow: hidden;
                     font-size: 14px;
                 }
@@ -80,7 +80,7 @@
                     font-size: 14px;/* Approximation due to font substitution */
                     font-weight: 400;
                     text-align: left;
-                    margin-bottom: 14px;
+                    margin-bottom: 10px;
                     }
                 .field{    
                     textarea,.medium-editor-element {
@@ -107,21 +107,21 @@
                         }
                     }
                 }   
-                // #message{
-                //     border-radius: 3px;
-                //     border-style: solid;
-                //     border-width: 1px;
-                //     border-color:  $calendar-border-color;
-                //     box-sizing: border-box;
-                //     background-color:  $color-white;
-                //     width: 591px;
-                //     min-height: 98px;
-                //     max-height: 100%;
-                //     outline: none;
-                //     padding: 16px 22px;
-                //     overflow-y: hidden;
-                //     font-size: 14px;
-                // }
+                #message{
+                    border-radius: 3px;
+                    border-style: solid;
+                    border-width: 1px;
+                    border-color:  $calendar-border-color;
+                    box-sizing: border-box;
+                    background-color:  $color-white;
+                    width: 591px;
+                    min-height: 98px;
+                    max-height: 100%;
+                    outline: none;
+                    padding: 16px 10px;
+                    overflow-y: hidden;
+                    font-size: 14px;
+                }
                 .error-border{
                     border-color: $error-message-color;
                 }
@@ -143,7 +143,7 @@
                     font-size: 14px;/* Approximation due to font substitution */
                     font-weight: 400;
                     text-align: left;
-                    margin-bottom: 14px;
+                    margin-bottom: 10px;
                 }
                 .field{    
                     textarea,.medium-editor-element {
@@ -151,7 +151,7 @@
                         max-width:590px;
                         min-height: 98px;
                         height: auto;
-                        padding: 12px 22px;
+                        padding: 12px 10px;
                         border-radius: 3px;
                         border-style: solid;
                         border-width: 1px;
@@ -694,6 +694,8 @@
                         outline: none;
                         padding-top: 12px;
                         margin-top: 20px;
+                        font-size: 14px;
+                        padding-left: 10px;
                     }
                     img{
                         margin-left: 20px;
@@ -779,6 +781,8 @@
                         outline: none;
                         padding-top: 12px;
                         margin-top: 20px;
+                        font-size: 14px;
+                        padding-left: 10px;
                        
                     }
                     img{

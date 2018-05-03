@@ -667,6 +667,8 @@ input::-webkit-input-placeholder {
 													border: none;
 													border-radius: none;
 													text-align: center;
+													font-family: $droid-font;
+													
 												}
 												.spinner{
 													text-align: center;
@@ -692,7 +694,7 @@ input::-webkit-input-placeholder {
 													width:100%;
 													border: none;
 													border-radius: none;
-													font-family:$droid-font!important;
+													font-family: $droid-font;
 												}
 												.spinner{
 													text-align: center;
@@ -819,15 +821,15 @@ input::-webkit-input-placeholder {
 											padding-bottom: 15px;
 											.candidateAddTag{
 												border-radius: 4px!important;
-												background-color: #149075;
-												color: #fff;
-												border: none;
+												background-color: #fff;
+												color: #2b2b2b;
+												border: 1px solid #d8d5d5 !important;
 											}
 											.candidateAddComment{
 												border-radius: 4px!important;
-												background-color: #149075;
-												color: #fff;
-												border: none;
+												background-color: #fff;
+												color: #2b2b2b;
+												border: 1px solid #d8d5d5 !important;
 											}
 										}
 										.pill-listingg-container {
@@ -2118,8 +2120,10 @@ input::-webkit-input-placeholder {
 						border-radius: 4px;
 						padding: 6px 14px;
 						font-size: 14px !important;
-						margin: 0 0px;
 						cursor: pointer;
+						background-color: #fff!important;
+						color: #2b2b2b!important;
+						border: 1px solid #d8d5d5 !important;
 					}
 					&.cand-add-tag-button {
 							margin: 0;
@@ -2128,6 +2132,9 @@ input::-webkit-input-placeholder {
 							font-size: 14px !important;
 							margin: 0 0px;
 							cursor: pointer;
+							background-color: #fff!important;
+							color: #2b2b2b!important;
+							border: 1px solid #d8d5d5 !important;
 						}
     				@include button($color-white);
     			}
@@ -2202,7 +2209,7 @@ input::-webkit-input-placeholder {
 				font-size: 14px;/* Approximation due to font substitution */
 				font-weight: 400;
 				text-align: left;
-				min-height: 40px;
+				min-height: 50px;
 				margin-bottom:10px;
 				border:1px solid  #e4e4e4;
 				border-left: 3px solid  #cfebeb;
@@ -2712,7 +2719,6 @@ input::-webkit-input-placeholder {
 		padding: 5px;
 		border: 1px solid #e8e8e8;
 		min-height: 50px;
-		margin-bottom: 15px;
 		resize: none;
 		&:focus {
 			outline: none;

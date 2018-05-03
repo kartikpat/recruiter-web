@@ -1564,7 +1564,7 @@ span.sticker {
       display: inline-block;
       width: auto;
       border: 0;
-      padding: 10px 40px 12px 10px;
+      padding: 10px 40px 12px 4px;
       background-color: transparent;
       margin-bottom: 10px;
       background-image: url("/static/images/minimal_select_dropdown.svg");

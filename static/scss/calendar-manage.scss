@@ -11,6 +11,9 @@
     background-color: $body-background-color;
     max-width: 1500px;
     margin: 0 auto;
+    a:hover{
+        text-decoration: underline;
+    }
     .container{
         background-color: $body-background-color;
         min-height: 100%;
@@ -27,7 +30,7 @@
                 font-weight: 600;
                 text-align: left;
                 display: inline-block;
-                margin-left:10px;
+                margin-left:4px;
                 margin-bottom: 10px;
                 margin-top: 7px;
             }

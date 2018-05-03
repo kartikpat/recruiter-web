@@ -954,7 +954,7 @@ span.sticker {
       /* Approximation due to font substitution */
       font-weight: 400;
       text-align: left;
-      margin-bottom: 14px; }
+      margin-bottom: 10px; }
     .wrap .container .form .input-name #name {
       border-radius: 3px;
       border-style: solid;
@@ -966,7 +966,7 @@ span.sticker {
       height: 48px;
       resize: none;
       outline: none;
-      padding: 16px 22px;
+      padding: 16px 10px;
       overflow: hidden;
       font-size: 14px; }
     .wrap .container .form .input-name .error {
@@ -985,7 +985,7 @@ span.sticker {
       /* Approximation due to font substitution */
       font-weight: 400;
       text-align: left;
-      margin-bottom: 14px; }
+      margin-bottom: 10px; }
     .wrap .container .form .message .field textarea, .wrap .container .form .message .field .medium-editor-element {
       width: 100%;
       max-width: 590px;
@@ -1005,6 +1005,20 @@ span.sticker {
       resize: none; }
       .wrap .container .form .message .field textarea:focus, .wrap .container .form .message .field .medium-editor-element:focus {
         outline: none; }
+    .wrap .container .form .message #message {
+      border-radius: 3px;
+      border-style: solid;
+      border-width: 1px;
+      border-color: #e4e4e4;
+      box-sizing: border-box;
+      background-color: #FFF;
+      width: 591px;
+      min-height: 98px;
+      max-height: 100%;
+      outline: none;
+      padding: 16px 10px;
+      overflow-y: hidden;
+      font-size: 14px; }
     .wrap .container .form .message .error-border {
       border-color: #ad3030; }
     .wrap .container .form .message .error {
@@ -1023,13 +1037,13 @@ span.sticker {
       /* Approximation due to font substitution */
       font-weight: 400;
       text-align: left;
-      margin-bottom: 14px; }
+      margin-bottom: 10px; }
     .wrap .container .form .telephonic .field textarea, .wrap .container .form .telephonic .field .medium-editor-element {
       width: 100%;
       max-width: 590px;
       min-height: 98px;
       height: auto;
-      padding: 12px 22px;
+      padding: 12px 10px;
       border-radius: 3px;
       border-style: solid;
       border-width: 1px;
@@ -1479,7 +1493,9 @@ span.sticker {
           height: 48px;
           outline: none;
           padding-top: 12px;
-          margin-top: 20px; }
+          margin-top: 20px;
+          font-size: 14px;
+          padding-left: 10px; }
         .wrap .second-container .available-hours .start-date .section img {
           margin-left: 20px;
           width: 30px;
@@ -1543,7 +1559,9 @@ span.sticker {
           height: 48px;
           outline: none;
           padding-top: 12px;
-          margin-top: 20px; }
+          margin-top: 20px;
+          font-size: 14px;
+          padding-left: 10px; }
         .wrap .second-container .available-hours .end-date .section img {
           margin-left: 20px;
           width: 30px;
