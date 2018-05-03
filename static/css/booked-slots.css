@@ -3323,6 +3323,8 @@ span.sticker {
   background-color: #f7f7f7;
   max-width: 1500px;
   margin: 0 auto; }
+  .page-content a:hover {
+    text-decoration: underline; }
   .page-content .header-slot {
     width: 100%;
     padding: 15px 0; }
@@ -3333,7 +3335,7 @@ span.sticker {
       text-align: left;
       width: 25%;
       display: inline-block;
-      margin-left: 10px;
+      margin-left: 4px;
       vertical-align: middle;
       line-height: 25px; }
     .page-content .header-slot .right-container {
