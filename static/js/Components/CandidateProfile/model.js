@@ -96,6 +96,7 @@ function Candidate() {
             name: modal.find(".js_name"),
             location: modal.find(".js_loc"),
             preferredLocation: modal.find(".js_pref_loc"),
+            preferredLocationDetail:modal.find(".pref_loc"),
             experience: modal.find(".js_experience"),
             contact: modal.find(".js_contact"),
             salary: modal.find(".js_sal"),
@@ -205,9 +206,13 @@ function Candidate() {
         item.location.text(aData["currentLocation"] || "NA").removeClass("shell");
         var preferredLocationStr = "N.A."
         if(aData["preferredLocation"].length) {
-            preferredLocationStr = aData["preferredLocation"].join(', ');;
+            var locationTitle = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? aData["preferredLocation"].join(','): null;
+            var preferredLocationStr = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? "Multiple Locations" : aData["preferredLocation"].join(',');
         }
         item.preferredLocation.text(preferredLocationStr).removeClass("shell");
+        item.preferredLocation.attr("title",locationTitle).addClass('tooltip');
+        initializeTooltip();
+        item.preferredLocationDetail.text(aData["preferredLocation"]).removeClass("shell");
         // item.contact.text(aData["phone"] || "NA").removeClass("shell");
         item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY') || "NA").removeClass("shell");
         if(aData["notice"] == 7) {

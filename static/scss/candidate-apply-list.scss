@@ -732,7 +732,7 @@ input::-webkit-input-placeholder {
 													font-size:$filter-tag-size;
 													display:inline-block;
 													text-align:left;
-
+													resize: none;
 												}
 
 												.tags {
@@ -1652,6 +1652,8 @@ input::-webkit-input-placeholder {
 							.snap-value {
 								color:$color-black;
 								font-size:$view-resume-byline-font-size;
+								word-wrap: break-word;
+						
 							}
 
 							&:last-child {
@@ -1833,9 +1835,10 @@ input::-webkit-input-placeholder {
 								&.comments {
 									textarea {
 										width: 50%;
+										resize: none;
+										overflow: hidden;
 										padding: 5px;
                                         border: 1px solid #e8e8e8;
-
                                         margin-bottom: 15px;
 										&:focus {
 											outline: none;
@@ -1952,6 +1955,7 @@ input::-webkit-input-placeholder {
 												&.value {
 													color:$color-black;
 													padding-left: 20px;
+													word-wrap: break-word;
 												}
 											}
 										}

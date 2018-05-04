@@ -195,6 +195,7 @@ function candidateList() {
    }
 
    function setHeader(count, str) {
+       console.log(count)
        settings.resultCount.text(count)
        settings.queryParam.text(decodeURI(str))
    }
