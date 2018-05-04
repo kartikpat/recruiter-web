@@ -1157,8 +1157,7 @@
 				"static/css/chat-sticky.css",
 				"static/css/utilities.css",
 				"static/css/animate.css",
-				"static/css/jquery-chatbox.css",
-				"static/css/vendor/tooltipster.css"
+				"static/css/jquery-chatbox.css"
 
 			],
 			"prod": [

@@ -2592,7 +2592,10 @@ span.sticker {
           padding: 6px 18px;
           font-size: 14px !important;
           margin: 0 0px;
-          cursor: pointer; }
+          cursor: pointer;
+          color: #2b2b2b;
+          border: 1px solid #d8d5d5 !important;
+          background-color: #fff !important; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.cand-add-tag-button {
           margin: 0;
           margin-top: 10px;
@@ -2600,7 +2603,10 @@ span.sticker {
           padding: 6px 18px;
           font-size: 14px !important;
           margin: 0 0px;
-          cursor: pointer; }
+          cursor: pointer;
+          color: #2b2b2b;
+          border: 1px solid #d8d5d5 !important;
+          background-color: #fff !important; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.green {
           background-color: #1f8f75; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.red {
