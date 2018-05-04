@@ -615,7 +615,8 @@ body.posf {
   display: inline-block;
   position: relative;
   width: 64px;
-  height: 64px; }
+  height: 64px;
+  bottom: 10px; }
 
 .lds-spinner div {
   transform-origin: 32px 32px;
@@ -625,10 +626,10 @@ body.posf {
   content: " ";
   display: block;
   position: absolute;
-  top: 23px;
+  top: 21px;
   left: 31px;
   width: 2px;
-  height: 8px;
+  height: 6px;
   border-radius: 20%;
   background: #737373; }
 
@@ -1417,17 +1418,17 @@ span.sticker {
   .conversations .conversation-listing-container .conversations-listing {
     max-height: 70vh;
     overflow-y: auto; }
-    .conversations .conversation-listing-container .conversations-listing .empty-screen {
-      padding: 15% 0px; }
-      .conversations .conversation-listing-container .conversations-listing .empty-screen .image-container {
+    .conversations .conversation-listing-container .conversations-listing .empty-screen-chat {
+      padding: 50% 0px; }
+      .conversations .conversation-listing-container .conversations-listing .empty-screen-chat .image-container {
         text-align: center; }
-        .conversations .conversation-listing-container .conversations-listing .empty-screen .image-container img {
+        .conversations .conversation-listing-container .conversations-listing .empty-screen-chat .image-container img {
           width: 50%; }
-      .conversations .conversation-listing-container .conversations-listing .empty-screen .user-text {
+      .conversations .conversation-listing-container .conversations-listing .empty-screen-chat .user-text {
         text-align: center;
-        padding-bottom: 20px;
-        font-size: 14px; }
-      .conversations .conversation-listing-container .conversations-listing .empty-screen .empty-text {
+        padding-bottom: 10px;
+        font-size: 13px; }
+      .conversations .conversation-listing-container .conversations-listing .empty-screen-chat .empty-text {
         text-align: center;
         color: #888;
         padding-bottom: 20px;
@@ -1563,7 +1564,7 @@ span.sticker {
       display: inline-block;
       width: auto;
       border: 0;
-      padding: 10px 40px 12px 10px;
+      padding: 10px 40px 12px 4px;
       background-color: transparent;
       margin-bottom: 10px;
       background-image: url("/static/images/minimal_select_dropdown.svg");

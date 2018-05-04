@@ -362,11 +362,11 @@
                     						display:inline-block;
                     						margin:5px;
                     						border:1px solid $border-color-base;
-                    						padding:2px 15px;
+                    						padding:5px 15px;
                     						border-radius:25px;
                     						font-size:$view-resume-byline-font-size;
-                    						background-color:$color-white;
-                    						color:#6e6e6e;
+											background-color: #f3fbfb;
+											color: #6e6e6e;
                                             padding-right: 25px;
                                             position: relative;
                     						div {
@@ -638,25 +638,19 @@
 						margin: 0;
 						margin-top: 5px;
 						margin-top: 10px;
-						background-color: #FFF !important;
-						border: 1px solid #d8d5d5 !important;
 						border-radius: 4px;
 						padding: 6px 18px;
 						font-size: 14px !important;
 						margin: 0 0px;
-						color: #2b2b2b !important;
 						cursor: pointer;
 					}
 					&.cand-add-tag-button {
 							margin: 0;
 							margin-top: 10px;
-							background-color: #FFF !important;
-							border: 1px solid #d8d5d5 !important;
 							border-radius: 4px;
 							padding: 6px 18px;
 							font-size: 14px !important;
 							margin: 0 0px;
-							color: #2b2b2b !important;
 							cursor: pointer;
 						}
     				@include button($color-white);
@@ -729,6 +723,7 @@
 				height: 40px;
 			    line-height: 10px;
 				padding: 10px;
+				font-size: 14px;
 			}
 
 			.comment-box .comment-textarea {
@@ -777,11 +772,11 @@
 						display:inline-block;
 						margin:5px;
 						border:1px solid $border-color-base;
-						padding:2px 15px;
+						padding:5px 15px;
 						border-radius:25px;
 						font-size:$view-resume-byline-font-size;
-						background-color:$color-white;
-						color:#6e6e6e;
+						background-color: #f3fbfb;
+						color: #6e6e6e;
                         padding-right: 25px;
                         position: relative;
 						div {
@@ -1038,7 +1033,7 @@
 	textarea {
 		width: 100%;
 		padding: 5px;
-
+		resize: none;
 		min-height: 50px;
 		margin-bottom:15px;
 		overflow: hidden;

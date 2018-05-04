@@ -245,9 +245,9 @@ $(document).ready(function(){
 		data.forEach(function(aJob, index){
 			var card = jobRowCard.clone().removeClass('hidden prototype');
 			var experience = aJob['exp']['min']+'-'+aJob['exp']['max']+'yrs'
-			card.find(".title .text").text(getTitleFormat(aJob['title'], (/\(\d+-\d+ \w+\)$/))).attr('href', '/job/'+aJob['id']);
+			card.find(".title .text").text(getTitleFormat(aJob['title'], (/\(\d+-\d+ \w+\)$/))).attr('href', '/job/'+aJob['id']+'/details/');
 			var locationTitle = (aJob["location"] && aJob["location"].length >3) ? aJob["location"].join(','): null;
-			var location = (aJob["location"] && aJob["location"].length >3) ? "Multiple" : aJob["location"].join(',');
+			var location = (aJob["location"] && aJob["location"].length >3) ? "Multiple Locations" : aJob["location"].join(',');
 			card.find(".title .meta-content .location .label").text(location).attr('title', locationTitle);
 			card.find(".title .meta-content .experience .label").text(experience)
 			card.find(".title .meta-content .postedOn .label").text(moment(aJob['created']).format('D MMM YYYY'));
@@ -284,6 +284,11 @@ $(document).ready(function(){
 		console.log(lastSeen)
 		var now = Date.now();
 		var iconClass
+		var index = recruiterName.indexOf(' ');
+		if(index>2){
+			recruiterName=recruiterName.split(" ")[0];
+		}
+		console.log(index);
 		var text = "Welcome, "+recruiterName+"!"; // TODO: get recruitername from the recruiterobject;
 		if(now - lastSeen > 72*60*60*1000){
 			text = "Welcome back, "+recruiterName;
@@ -293,15 +298,15 @@ $(document).ready(function(){
 		else{
 			var currentHour = moment(now).hour();
 			if( currentHour > 5 && currentHour < 12	){
-				text = "Good Morning, "+recruiterName
+				text = "Good Morning, "+recruiterName;
 				iconClass="icon-sunrise";
 			}
 			if( currentHour > 11 && currentHour < 17 ){
-				text = "Good Afternoon, "+recruiterName
+				text = "Good Afternoon, "+recruiterName;
 				iconClass="icon-afternoon";
 			}
 			if( currentHour > 17  || currentHour < 5 ){
-				text = "Good Evening, "+recruiterName
+				text = "Good Evening, "+recruiterName;
 				iconClass="icon-sunset";
 			}
 		}
@@ -495,14 +500,14 @@ $(document).ready(function(){
 		fetchJobs({pageContent:5, pageNumber: 1, type: "published"}, recruiterId); //recent-jobs
 		var currentDate=moment().format("YYYY-MM-DD");
 		var startdate = moment();
-		startdate = startdate.subtract(100, "days");
+		startdate = startdate.subtract(15,"days");
 		startdate = startdate.format("YYYY-MM-DD");	
 		fetchFollowUps(recruiterId,{fromDate:startdate});
 		var currentDate=moment().format("YYYY-MM-DD");
 		fetchRecruiterCalendar(recruiterId);
 		fetchInterviews(recruiterId,{pageContent: 6, pageNumber: 1, status: 2,fromDate:currentDate});
-
 	}
+	
 	init()
 
 	function showSpinner(type) {

@@ -820,7 +820,8 @@ body.posf {
   display: inline-block;
   position: relative;
   width: 64px;
-  height: 64px; }
+  height: 64px;
+  bottom: 10px; }
 
 .lds-spinner div {
   transform-origin: 32px 32px;
@@ -830,10 +831,10 @@ body.posf {
   content: " ";
   display: block;
   position: absolute;
-  top: 23px;
+  top: 21px;
   left: 31px;
   width: 2px;
-  height: 8px;
+  height: 6px;
   border-radius: 20%;
   background: #737373; }
 
@@ -1622,17 +1623,17 @@ span.sticker {
   .conversations .conversation-listing-container .conversations-listing {
     max-height: 70vh;
     overflow-y: auto; }
-    .conversations .conversation-listing-container .conversations-listing .empty-screen {
-      padding: 15% 0px; }
-      .conversations .conversation-listing-container .conversations-listing .empty-screen .image-container {
+    .conversations .conversation-listing-container .conversations-listing .empty-screen-chat {
+      padding: 50% 0px; }
+      .conversations .conversation-listing-container .conversations-listing .empty-screen-chat .image-container {
         text-align: center; }
-        .conversations .conversation-listing-container .conversations-listing .empty-screen .image-container img {
+        .conversations .conversation-listing-container .conversations-listing .empty-screen-chat .image-container img {
           width: 50%; }
-      .conversations .conversation-listing-container .conversations-listing .empty-screen .user-text {
+      .conversations .conversation-listing-container .conversations-listing .empty-screen-chat .user-text {
         text-align: center;
-        padding-bottom: 20px;
-        font-size: 14px; }
-      .conversations .conversation-listing-container .conversations-listing .empty-screen .empty-text {
+        padding-bottom: 10px;
+        font-size: 13px; }
+      .conversations .conversation-listing-container .conversations-listing .empty-screen-chat .empty-text {
         text-align: center;
         color: #888;
         padding-bottom: 20px;
@@ -1979,13 +1980,13 @@ span.sticker {
       margin-top: 20px; }
       .page-content .detail-card .empty-view .content-container .detail {
         color: #2b2b2b;
-        font-weight: 600;
         line-height: 20px;
-        margin-bottom: 5px; }
-      .page-content .detail-card .empty-view .content-container .subdetail {
-        color: #737373;
-        font-size: 14px;
-        margin-bottom: 5px; }
+        margin-bottom: 5px;
+        font-size: 16px; }
+      .page-content .detail-card .empty-view .content-container .sub-detail {
+        color: #888888;
+        font-size: 16px;
+        margin-bottom: 10px; }
       .page-content .detail-card .empty-view .content-container .empty-action-buttons {
         margin: 10px 0; }
         .page-content .detail-card .empty-view .content-container .empty-action-buttons .post-job {
@@ -2020,7 +2021,7 @@ span.sticker {
     .page-content .detail-card .interviewRow {
       padding-top: 15px; }
     .page-content .detail-card .graph_holder {
-      padding: 20px 10px; }
+      padding: 20px 25px; }
       .page-content .detail-card .graph_holder svg {
         border-radius: 6px; }
     .page-content .detail-card .slider-profile {
@@ -2037,7 +2038,7 @@ span.sticker {
     .page-content .detail-card .meta-prop {
       display: inline-block;
       margin-right: 10px;
-      line-height: 25px; }
+      line-height: 20px; }
       .page-content .detail-card .meta-prop .icon, .page-content .detail-card .meta-prop .label {
         display: inline-block; }
         .page-content .detail-card .meta-prop .icon img, .page-content .detail-card .meta-prop .label img {
@@ -2290,7 +2291,7 @@ span.sticker {
       display: inline-block;
       vertical-align: top; }
     .page-content .feed-row .main-content .title {
-      width: 60%;
+      width: 64%;
       font-size: 14px;
       font-weight: 700; }
       .page-content .feed-row .main-content .title .text {
@@ -2299,7 +2300,7 @@ span.sticker {
         font-weight: 600;
         line-height: 20px; }
     .page-content .feed-row .main-content .stats {
-      width: 35%; }
+      width: 30%; }
       .page-content .feed-row .main-content .stats .value, .page-content .feed-row .main-content .stats .label {
         display: inline-block;
         font-size: 14px; }
@@ -2487,7 +2488,8 @@ span.sticker {
 
 .meta-content.jobDetail .demo-icon:before {
   font-size: 15px;
-  margin-left: 0; }
+  margin-left: 0;
+  margin-right: 0; }
 
 .info-buttons span:before {
   font-size: 14px; }
