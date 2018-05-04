@@ -71,14 +71,20 @@ function Chat() {
 
    function addToList(dataArray){
        var str = '';
+       $('.loading.loaderScroller.first').addClass("hidden")
+
        if(!dataArray.length) {
-           return settings.conversationItemList.html("<div class='no-data'>No Candidate Found!</div>")
+           return $(".empty-screen.no-list").removeClass("hidden")
        }
        dataArray.forEach(function(aData, index){
            var item = createElement(aData);
+
            str+=item.element[0].outerHTML;
+           str+= '<div class="conversation-item-separator"></div>'
        });
        settings.conversationItemList.html(str);
+        settings.conversationItemList.closest(".conversations-list").removeClass("hidden")
+        settings.welcomeContainer.removeClass("hidden")
    }
 
    // function setProfile(obj) {
@@ -191,7 +197,7 @@ function Chat() {
                settings.candImage.removeClass("hidden")
                settings.conversationList.addClass("hidden")
            }
-           hideLoader()
+           $('.loading.loaderScroller.second').addClass("hidden")
            settings.chatWindow.removeClass("hidden")
            settings.userProfile.removeClass("hidden")
            initializeTooltip()
@@ -337,7 +343,7 @@ function Chat() {
                 side:['bottom'],
                 theme: 'tooltipster-borderless'
             })
-        } 
+        }
     }
 
 }

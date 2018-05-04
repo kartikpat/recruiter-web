@@ -20,7 +20,7 @@ jQuery(document).ready( function() {
 
     chat.onClickSingleChatItem(function(candidateId){
         chat.hideCandidateBlocks()
-        showLoader()
+        $('.loading.loaderScroller.second').removeClass("hidden")
         var obj = store.getCandidateFromStore(candidateId)
         globalParameters.channelName = obj.channel;
         globalParameters.clicked = 1;

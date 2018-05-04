@@ -11,10 +11,13 @@ $(document).ready(function(){
 		alert("hi")
 	})
 	jobDetails.submitHandler(function(){
+		// var eventObj = {
+		//
+		// }
+		// sendEvent('rtPostJob')
 		if(jobDetails.validate()){
 			spinner();
 			if(jobId)
-
 				submitEditJob(recruiterId ,jobId,jobDetails.getData())
 			else
 				submitNewJob(jobDetails.getData(), recruiterId);

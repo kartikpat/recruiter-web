@@ -72,7 +72,7 @@
         }
         .candidate-card {
 
-            padding: 4px 10px;
+            padding: 10px;
             position: relative;
             &:hover {
                 background-color: #f9f9f9;
@@ -85,7 +85,7 @@
                 border-radius: 50%;
                 margin-right: 5px;
                 vertical-align: top;
-                margin-top: 5px;
+
                 position: relative;
                 img {
                     width: 100%;
@@ -97,16 +97,15 @@
             .candidate-info {
                 display: inline-block;
                 width: calc(100% - 40px);
-                margin-top: 5px;
-                line-height: 1.3;
+                line-height: 1.5;
                 .candidate-name {
-                    font-size: 14px;
+                    font-size: 13px;
                     color: #2b2b2b;
-
                 }
                 .candidate-designation {
-                    font-size: 12px;
+                    font-size: 11px;
                     color: #737373;
+                    line-height: 1.1;
                 }
             }
             .remove-candidate {
@@ -155,6 +154,7 @@
                 vertical-align: top;
                 margin-top: 3px;
                 margin-left: 5px;
+                line-height: 1.3;
             }
             .candidate-name {
                 margin-bottom: 0px;
@@ -233,7 +233,7 @@
                 }
                 li {
                     &.message {
-                        margin:10px 0;
+                        margin:3px 0;
                         clear:both;
                         overflow:auto;
                         &.received {
@@ -261,11 +261,14 @@
                                         background-color:$color-white;
                                         border:1px solid $border-color-base;
                                         border-radius:4px;
-                                        padding:10px;
+                                        padding: 5px 10px;
+                                        font-size: 13px;
                                         font-size:$base-font-size;
                                         max-width: calc(100vw - 130px);
                                         word-break: break-word;
                                         text-align: left;
+                                        line-height: 1.4;
+                                        color: #2b2b2b;
                                     }
 
                                     &.message-timestamp {
@@ -298,14 +301,16 @@
                                     text-align:right;
 
                                     &.message-content {
-                                        background-color:$color-white;
-                                        border:1px solid $border-color-base;
-                                        border-radius:4px;
-                                        padding:10px;
-                                        font-size:$base-font-size;
+                                        background-color: #f9f9f9;
+                                        border: 1px solid #e8e8e8;
+                                        border-radius: 4px;
+                                        padding: 5px 10px;
+                                        font-size: 13px;
                                         max-width: calc(100vw - 130px);
                                         word-break: break-word;
                                         text-align: left;
+                                        line-height: 1.4;
+                                        color: #2b2b2b;
                                     }
 
                                     &.message-timestamp {
@@ -340,6 +345,7 @@
                 font-size: 14px;
                 box-sizing: border-box;
                 overflow-y: auto;
+                resize: none;
                 &:focus {
                     border: 1px solid #149075;
                     outline: none;
@@ -449,4 +455,7 @@
 .newMessageHeader {
     background-color: #149075 !important;
     color: #fff !important;
+    img {
+            background-color: #f7f7f7 !important;
+    }
 }
