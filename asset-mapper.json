@@ -1894,8 +1894,12 @@
         "scripts": {
             "debug": [
 				"static/js/vendor/jquery.min.js",
+				"static/js/Utilities/pubsub.js",
+				"static/js/Utilities/request.js",
+				"static/js/Utilities/common.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
+				"static/js/Services/verifyLogin.js",
 				"static/js/Components/Transition/model.js"
             ],
             "prod" :[

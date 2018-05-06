@@ -1,5 +1,3 @@
-
-var recruiterId = localStorage.id;
 var userProfile = $(".user_profile_side");
 var navBar = $(".navbar");
 var maxCandidateChats;
