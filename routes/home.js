@@ -502,6 +502,19 @@ module.exports = function(settings){
 		return
 	});
 
+	app.get("/admin", function(req,res){
+		var email = req.query.email || "";
+		var key = req.query.key || ""
+		res.render("admin", {
+			title:"Recruiter Web - Admin | iimjobs.com",
+			styles:  assetsMapper["reset-password"]["styles"][mode],
+			scripts: assetsMapper["admin"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
+		})
+		return
+	});
+
 	app.get("/account-verified", function(req,res){
 		res.render("account-verified", {
 			title:"Recruiter Web - Account Verified Page | iimjobs.com",

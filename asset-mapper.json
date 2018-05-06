@@ -100,6 +100,38 @@
 			]
 		}
 	},
+	"admin": {
+		"styles": {
+			"debug" : [
+				"static/css/header.css",
+        		"static/css/reset-password.css",
+				"static/css/buttons.css",
+				"static/css/footer.css",
+				"static/css/animate.css",
+				"static/css/utilities.css"
+
+			],
+			"prod": [
+				"static/build/css/reset-password.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/Utilities/request.js",
+				"static/js/header.js",
+				"static/js/Utilities/common.js",
+				"static/js/utilities.js",
+				"static/js/Utilities/pubsub.js",
+				"static/js/Services/submitAdminLogin.js",
+				"static/js/Components/Admin/model.js",
+				"static/js/Components/Admin/index.js"
+			],
+			"prod" : [
+				"static/build/js/admin.min.js"
+			]
+		}
+	},
 	"mass-resume": {
 		"styles": {
 			"debug" : [
