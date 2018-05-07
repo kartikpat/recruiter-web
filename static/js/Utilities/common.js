@@ -1,4 +1,4 @@
-function Set_Cookie( name, value, expires, path, domain, secure ){
+function Set_Cookie( name, value, expires, path, domain, secure, old ){
 	// set time, it's in milliseconds
 	var today = new Date();
 	today.setTime( today.getTime() );
@@ -14,8 +14,9 @@ function Set_Cookie( name, value, expires, path, domain, secure ){
 	expires = expires * 1000 * 60 * 60 * 24;
 	}
 	var expires_date = new Date( today.getTime() + (expires) );
-
-	document.cookie = name + "=" +escape( value ) +
+  if(!old)
+    value = escape( value )
+	document.cookie = name + "=" + value +
 	( ( expires ) ? ";expires=" + expires_date.toGMTString() : "" ) +
 	( ( path ) ? ";path=" + path : "" ) +
 	( ( domain ) ? ";domain=" + domain : "" ) +

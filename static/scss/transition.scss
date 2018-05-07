@@ -2,6 +2,9 @@
 @import 'input-elements';
 @import "fonts.scss";
 
+body{
+    background-color: $page-background-color;
+}
 .header{
     .navigationHeader{
         display: none;
@@ -14,25 +17,25 @@
     @include page-content;
     .center{
         position: absolute;
-        top: 50%;
+        top: calc(50% - 75px);
         left: 50%;
         transform: translate(-50%,-50%);
         .pulse{
             line-height: 100px;
-            animation: animate 4s linear infinite;
+            animation: animate 4s cubic-bezier(0.55, 0.06, 0.68, 0.19) infinite;
             position: relative;
             text-align: center;
             height: 80px;
             width: 80px;
             border-radius: 50%;
             text-align: center;
-            background: #149075;
-            // color: #149075;
+            /* background: #149075; */
             display: inline-block;
             cursor: pointer;
             color: #5d46e8;
-            box-shadow: 0px 2px 9px 0px rgba(214, 214, 214, 0);
-            transition: all .4s ease;  
+            box-shadow: 2px 2px 9px 4px #aaa;
+            /* transition: all .4s ease; */
+            background: white; 
             img{
                 width: 50%;
             }

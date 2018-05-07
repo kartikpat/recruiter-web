@@ -15,6 +15,7 @@ $(document).ready(function() {
 	function onSuccessfulLogin(topic, data){
 		spinner();
 		localStorage.id = data["id"];
+		debugger
 		window.location="/";
 		document.getElementById("login").disabled=false;
 	}

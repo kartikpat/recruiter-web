@@ -96,18 +96,12 @@ function Job(){
 		var locText = data["jobLocation"].join(", ")
 		if(data["jobLocation"].length) {
 			settings.jobSeparator.removeClass("hidden")
-			if(data["jobLocation"].length <= 1){
-				settings.jobLocation.text(locText).removeClass("shell")
-			}
-			else{
-				settings.jobLocation.addClass("hidden")
-				settings.jobMultipleLocation.attr("title",locText).removeClass("hidden");
-			}
+			var jobLocationTitle = (data["jobLocation"] && data["jobLocation"].length >3) ? data["jobLocation"].join(','): null;
+			var jobLocationStr = (data["jobLocation"] && data["jobLocation"].length >3) ? "Multiple Locations" : data["jobLocation"].join(',');
+			settings.jobLocation.text(jobLocationStr).removeClass("shell");
+			settings.jobLocation.attr("title",jobLocationTitle).addClass("tooltip");
+		
 		}
-		else {
-			settings.jobLocation.addClass("hidden")
-		}
-
 		$(".tooltip").tooltipster({
 		   animation: 'fade',
 		   delay: 0,
@@ -158,7 +152,8 @@ function Job(){
 
         if(data["isEditable"]) {
             settings.jobEditButton.attr("href","/job/"+data["jobId"]+"/edit").removeClass("hidden")
-        }
+		}
+		
 	}
 
 	function onClickJobEdit() {

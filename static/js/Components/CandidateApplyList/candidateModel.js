@@ -304,7 +304,8 @@ function Candidate() {
         }
         item.preferredLocation.text(preferredLocationStr);
         item.preferredLocationDetail.text(aData["preferredLocation"]);
-        item.preferredLocation.attr("title",locationTitle);
+        item.preferredLocation.attr("title",locationTitle).addClass('tooltip');
+         initializeTooltip();
         item.contact.text(aData["phone"] || "NA");
         item.email.text(aData["email"]||"NA");
 
