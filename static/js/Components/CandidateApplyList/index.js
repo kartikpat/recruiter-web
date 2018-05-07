@@ -968,7 +968,9 @@ jQuery(document).ready( function() {
              }
              return pubsub.publish("fetchedJobDetails:"+jobId, data);
          }
-         return pubsub.publish("failedToFetchJobDetails:"+jobId, data);
+
+     },function(res,status, error) {
+         return pubsub.publish("failedToFetchJobDetails:"+jobId, res);
      });
 
 
