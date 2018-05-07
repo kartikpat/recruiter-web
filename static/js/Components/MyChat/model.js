@@ -106,7 +106,7 @@ function Chat() {
 
    function onClickSingleChatItem(fn) {
        settings.conversationItemList.on('click', settings.conversationItemClass, function(){
-           
+
            $(settings.conversationItemClass).removeClass("conversation-item-active")
            $(this).addClass("conversation-item-active")
            var channelName = $(this).attr("data-channel-name");
@@ -219,6 +219,11 @@ function Chat() {
 
    function onSendMessage(fn) {
        settings.sendMsg.click(function() {
+           var eventObj = {
+               event_category: eventMap["sendMsg"]["cat"],
+               event_label: 'origin=MyChats,recId='+recruiterId+''
+           }
+           sendEvent(eventMap["sendMsg"]["event"], eventObj)
            var message =  (settings.msgContent.val()).trim();
            if(message == '') {
                return settings.msgContent.val("")
@@ -226,6 +231,11 @@ function Chat() {
            fn(message, settings.channelName, settings.candidateId)
        })
        settings.msgContent.keypress(function(event) {
+           var eventObj = {
+               event_category: eventMap["sendMsg"]["cat"],
+               event_label: 'origin=MyChats,recId='+recruiterId+''
+           }
+           sendEvent(eventMap["sendMsg"]["event"], eventObj)
            if(event.which == 13 && !event.shiftKey) {
                var message = ($(this).val()).trim();
                if(message == '') {

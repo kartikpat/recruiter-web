@@ -431,6 +431,11 @@ $(".chat-candidate-boxes").on('click','.chat-div-candidate .info-buttons .closeI
 })
 
 $(".chat-candidate-boxes").on('click','.chat-div-candidate .info-buttons .infoIcon', function(event) {
+    var eventObj = {
+        event_category: eventMap["viewInfo"]["cat"],
+        event_label: 'origin='+origin+',recId='+recruiterId+''
+    }
+    sendEvent(eventMap["viewInfo"]["event"], eventObj)
 	var dataId = $(this).attr("data-id");
 	if(!($(".chat-candidate-boxes .chat-div-candidate[data-id="+dataId+"] .content-footer-container").hasClass("show"))) {
 		return
@@ -441,6 +446,11 @@ $(".chat-candidate-boxes").on('click','.chat-div-candidate .info-buttons .infoIc
 
 
 var displayAMessage = function(element) {
+    var eventObj = {
+        event_category: eventMap["sendMsg"]["cat"],
+        event_label: 'origin='+origin+',recId='+recruiterId+''
+    }
+    sendEvent(eventMap["sendMsg"]["event"], eventObj)
 	var channelName = $(element).attr("data-channel-name");
 	var dataID = $(element).attr("data-id");
 	var message = ($(element).val()).trim()

@@ -159,8 +159,8 @@ var eventMap = {
         "event": "rtClickFilterSlots",
         "cat": "calendar"
     },
-    "mainChatClick": {
-        "event": "rtClickOpenChat",
+    "viewInfo": {
+        "event": "rtViewCandidateInfo",
         "cat": "chat"
     },
     "sendMsg": {
