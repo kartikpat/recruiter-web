@@ -41,6 +41,29 @@ function Candidate() {
         jQuery("#tabbed-content").tabs({
             create: function(){
                 $(this).removeClass("hidden")
+            },
+            activate: function(event, ui) {
+                if(ui.newTab[0]["innerText"] == "COVER LETTER") {
+                    var eventObj = {
+            			event_category: 'navigation',
+            			event_label: 'origin=Profile,recId='+recruiterId+''
+            		}
+            		sendEvent('rtViewCandidateCoverLetter', eventObj)
+                }
+                else if(ui.newTab[0]["innerText"] == "PROFILE") {
+                    var eventObj = {
+            			event_category: 'navigation',
+            			event_label: 'origin=Profile,recId='+recruiterId+''
+            		}
+            		sendEvent('rtViewCandidateDetails', eventObj)
+                }
+                else if(ui.newTab[0]["innerText"] == "RESUME") {
+                    var eventObj = {
+            			event_category: 'navigation',
+            			event_label: 'origin=Profile,recId='+recruiterId+''
+            		}
+            		sendEvent('rtViewCandidateResume', eventObj)
+                }
             }
         });
 
@@ -197,7 +220,7 @@ function Candidate() {
     }
 
     function populateCandidateData(aData, type, status) {
-        
+
         var item = getElement(aData["userID"]);
         item.element.attr("data-application-id", aData["id"])
         item.image.attr("src", (aData["img"] || "/static/images/noimage.png"))
@@ -723,9 +746,9 @@ function Candidate() {
 				delay: 0,
 				side:['bottom'],
 				theme: 'tooltipster-borderless',
-				maxWidth: 500,	
-				trigger:'click'	
-			})	   
+				maxWidth: 500,
+				trigger:'click'
+			})
 		}
 		else{
 			$(".tooltip").tooltipster({
@@ -733,7 +756,7 @@ function Candidate() {
 			delay: 0,
 			side:['bottom'],
 			theme: 'tooltipster-borderless',
-			maxWidth: 500,	
+			maxWidth: 500,
 			})
 		}
 

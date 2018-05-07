@@ -96,6 +96,11 @@ jQuery(document).ready( function() {
      })
 
      aCandidate.onClickShortlistCandidate(function(applicationId, newStatus, dataAction) {
+         var eventObj = {
+           event_category: eventMap["shortlistCand"]["cat"],
+           event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
+         }
+         sendEvent(eventMap["shortlistCand"]["event"], eventObj)
          var action;
          $('.candidateShortlistModal').prev().removeClass('hidden');
          $('.candidateShortlistModal').addClass('hidden');
@@ -114,6 +119,11 @@ jQuery(document).ready( function() {
      })
 
      aCandidate.onClickRejectCandidate(function(applicationId, newStatus, dataAction) {
+         var eventObj = {
+           event_category: eventMap["rejectCand"]["cat"],
+           event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
+         }
+         sendEvent(eventMap["rejectCand"]["event"], eventObj)
          var action;
          $('.candidateRejectModal').prev().removeClass('hidden');
          $('.candidateRejectModal').addClass('hidden');
@@ -131,6 +141,11 @@ jQuery(document).ready( function() {
      })
 
      aCandidate.onClickSaveCandidate(function(applicationId, newStatus, dataAction) {
+         var eventObj = {
+           event_category: eventMap["saveCand"]["cat"],
+           event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
+         }
+         sendEvent(eventMap["saveCand"]["event"], eventObj)
          var action;
          if(parseInt(dataAction) == parseInt(newStatus)) {
              action = "unread"
@@ -257,6 +272,11 @@ jQuery(document).ready( function() {
     }
 
     aCandidate.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
+        var eventObj = {
+           event_category: eventMap["sendInvite"]["cat"],
+           event_label: 'origin=Profile,type=F2F,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["sendInvite"]["event"], eventObj)
         var defaultCalendarId = store.getDefaultId();
         if(!defaultCalendarId)
             return aCandidate.openSelectDefaultCalendarModal();
@@ -268,6 +288,11 @@ jQuery(document).ready( function() {
     })
 
     aCandidate.onClickSendInterviewInviteTelephonic(function(applicationId, inviteId){
+        var eventObj = {
+           event_category: eventMap["sendInvite"]["cat"],
+           event_label: 'origin=Profile,type=Telephonic,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["sendInvite"]["event"], eventObj)
         var defaultCalendarId = store.getDefaultId();
         if(!defaultCalendarId)
             return aCandidate.openSelectDefaultCalendarModal();
@@ -320,7 +345,11 @@ jQuery(document).ready( function() {
     })
 
     aCandidate.onClickDownloadResume(function(applicationId, status){
-
+        var eventObj = {
+           event_category: eventMap["downloadResume"]["cat"],
+           event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["downloadResume"]["event"], eventObj)
         if(parseInt(status) == 0)
             setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
     });

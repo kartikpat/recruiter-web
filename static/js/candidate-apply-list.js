@@ -1,8 +1,8 @@
 var viewProfileModal = jQuery(".js_resume");
 
-jQuery(".button-action-list").on("click", function() {
-	jQuery(this).toggleClass("inactive");
-})
+// jQuery(".button-action-list").on("click", function() {
+// 	jQuery(this).toggleClass("inactive");
+// })
 function getId() {
 	return viewProfileModal.closest(".candidateDetailsModal").attr("data-application-id");
 }

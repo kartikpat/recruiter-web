@@ -19,7 +19,7 @@
 	                <div class="chat-container">
 	                    <div class="chat-header">
 	                        <div class="current-conversation">
-	                            <h3 class="current-user-name recruiterName">Your Chats!</h3>
+	                            <h3 class="current-user-name recruiterName">Your Chats</h3>
 	                            <!-- <span class="user-status-indicator online hidden" id="isOnline" ></span>
 	                            <span class="user-status activeNow " id="isActive">Active now</span> -->
 	                        </div>
@@ -33,7 +33,7 @@
 	                                <img class="userImg" src="/static/images/noimage.png">
 	                            </div>
 	                            <div class="user-info user-item">
-	                                <p class="user-name userName">Your Chats!</p>
+	                                <p class="user-name userName">Your Chats</p>
 	                                <!-- <p class="user-organization userOrg" >Talencia Tech.</p>
 	                                <p class="user-designation userDes" >PHP Developer</p>
 	                                <div class="user-detail">
@@ -52,14 +52,17 @@
 	                        </div> -->
 	                    </div>
 	                    <div class="chat-body">
-							<div class="empty-screen hidden">
+							<div class="loading loaderScroller first">
+								<div class="loader loader-scroller"></div>
+							</div>
+							<div class="empty-screen no-list hidden">
 								<div class="image-container">
 									<img src="/static/images/tagged.svg">
 								</div>
 								<div class="user-text">You have not started any conversations yet</div>
 								<div class="empty-text">You’ll find a list here when you do</div>
 							</div>
-	                        <div class="sidebar left conversations-list conversationList">
+	                        <div class="sidebar left conversations-list conversationList hidden">
 	                            <div class="search">
 	                                <input type="text" placeholder="Search Candidates" id="searchCandidate">
 									<i class="icon-search"></i>
@@ -94,7 +97,7 @@
 	                                </div>
 	                            </div>
 	                        </div>
-							<div class="welcome-container welcomeContainer right">
+							<div class="welcome-container welcomeContainer right hidden">
 								<div class="empty-screen">
 									<div class="image-container">
 										<img src="/static/images/Chat landing page.svg">
@@ -103,7 +106,7 @@
 									<div class="user-text">Select a user from left panel to view chat.</div>
 								</div>
 	                        </div>
-							<div class="loading loaderScroller right hidden">
+							<div class="loading loaderScroller second right hidden">
 								<div class="loader loader-scroller"></div>
 							</div>
 	                        <div class="clearfix"></div>
@@ -130,7 +133,7 @@
         <p class="user-designation userDesignation">PHP Developer</p>
     </div>
 	<div class="newMsgNotify hidden" data-count="0"></div>
-    <div class="conversation-item-separator"></div>
+
 </div>
 
 <li class="message sent prototype hidden">

@@ -11,10 +11,14 @@ $(document).ready(function(){
 		alert("hi")
 	})
 	jobDetails.submitHandler(function(){
+		var eventObj = {
+			event_category: eventMap["postJobClick"]["cat"],
+			event_label: 'origin=PostJobForm,recId='+recruiterId+''
+		}
+		sendEvent( eventMap["postJobClick"]["event"], eventObj)
 		if(jobDetails.validate()){
 			spinner();
 			if(jobId)
-
 				submitEditJob(recruiterId ,jobId,jobDetails.getData())
 			else
 				submitNewJob(jobDetails.getData(), recruiterId);
