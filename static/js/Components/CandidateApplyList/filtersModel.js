@@ -397,6 +397,11 @@ function Filters(){
 	}
 
 	function setOnClickFilters() {
+		var eventObj = {
+           event_category: eventMap["openFilter"]["cat"],
+           event_label: 'origin=CandidateApplyList,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["openFilter"]["event"], eventObj)
         settings.filterModalOpenButton.click(function(event){
 		//	debugger
 				if(settings.topinstitute.topinst > 0) {
@@ -482,7 +487,7 @@ function Filters(){
 	function addFilterToContainer(value, label, category, type){
 		var aFilter = createPill(value, label, category, type);
 		settings.appliedFiltersContainer.append(aFilter);
-		if(settings.appliedFiltersContainer.children().length >= settings.maxFilters) {			
+		if(settings.appliedFiltersContainer.children().length >= settings.maxFilters) {
 			settings.activeFiltersContainer.addClass("collapsed");
 			settings.seeFilters.removeClass("hidden");
 		}

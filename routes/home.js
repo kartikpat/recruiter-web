@@ -118,7 +118,8 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain:baseDomain,
 			profile: req.profile,
-			baseUrlJob: baseUrlJob
+			baseUrlJob: baseUrlJob,
+			origin: "dashboard"
 		});
 		return
 	});
@@ -159,7 +160,8 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			baseUrlJob: baseUrlJob,
-			profile: req.profile
+			profile: req.profile,
+			origin: "MyJobs"
 		})
 		return
 	});
@@ -280,7 +282,8 @@ module.exports = function(settings){
 			scripts: assetsMapper["tagged-candidates"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			profile: req.profile
+			profile: req.profile,
+			origin: "TaggedCandidates"
 		})
 		return
 	});
@@ -304,7 +307,8 @@ module.exports = function(settings){
 			scripts: assetsMapper["shortlisted-candidates"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			profile: req.profile
+			profile: req.profile,
+			origin: "Saved/ShorlistedCandidates"
 		})
 		return
 	});
@@ -331,7 +335,8 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			baseUrlJob: baseUrlJob,
 			jobId: req.params.jobID,
-			profile: req.profile
+			profile: req.profile,
+			origin: "CandidateApplyList"
 		})
 		return
 	});
@@ -585,8 +590,8 @@ module.exports = function(settings){
 		})
 		return
 	});
-	
-	// TODO: replace with a more semantic url	
+
+	// TODO: replace with a more semantic url
 	app.get("/dashboardview",isAuthenticated,function(req,res){
 		res.render("dashboardview", {
 			title:"Recruiter Web - Newuser| iimjobs.com",
@@ -615,7 +620,7 @@ module.exports = function(settings){
 			baseDomain: baseDomain
 		});
 	})
-	
+
 	app.get("/transition",function(req, res){
 		res.render("transition", {
 			title:"iimjobs.com",
@@ -625,7 +630,7 @@ module.exports = function(settings){
 			baseDomain: baseDomain
 		});
 	})
-	
+
 	app.get("/job/:jobID/details",isAuthenticated, function(req, res){
 		res.render("job-details", {
 			title:"Job Details | iimjobs.com",
@@ -652,11 +657,11 @@ module.exports = function(settings){
 		// return res.send(req.profile);
 		var options = { method: 'POST',
 		  url: baseUrl+ '/recruiter/'+recruiterId+'/job/'+jobId+'/application/'+applicationId+'/action/'+action,
-		  headers: { 
+		  headers: {
 		  	'Authorization': 'Bearer '+ accessToken,
-		    'Content-Type': 'application/json' 
+		    'Content-Type': 'application/json'
 			},
-		  json: true 
+		  json: true
 		};
 		request(options, function (error, response, body) {
 			if (error){

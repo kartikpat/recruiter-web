@@ -11,10 +11,11 @@ $(document).ready(function(){
 		alert("hi")
 	})
 	jobDetails.submitHandler(function(){
-		// var eventObj = {
-		//
-		// }
-		// sendEvent('rtPostJob')
+		var eventObj = {
+			event_category: eventMap["postJobClick"]["cat"],
+			event_label: 'origin=PostJobForm,recId='+recruiterId+''
+		}
+		sendEvent( eventMap["postJobClick"]["event"], eventObj)
 		if(jobDetails.validate()){
 			spinner();
 			if(jobId)

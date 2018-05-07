@@ -18,6 +18,11 @@ jQuery(document).ready( function() {
     fetchCandidatesByStatus(parameters, recruiterId)
 
     candidates.onFilterByStatus(function(){
+        var eventObj = {
+            event_category: eventMap["filterShortlisted"]["cat"],
+            event_label: 'origin=SavedShorlistedList,Type=CandidateStatus,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["filterShortlisted"]["event"], eventObj)
         var obj = candidates.getAppliedFilters();
         var parameters = {}
         globalParameters.pageNumber = 1;
@@ -35,6 +40,11 @@ jQuery(document).ready( function() {
     })
 
     candidates.onFilterByJob(function(){
+        var eventObj = {
+            event_category: eventMap["filterShortlisted"]["cat"],
+            event_label: 'origin=SavedShorlistedList,Type=Job,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["filterShortlisted"]["event"], eventObj)
         var obj = candidates.getAppliedFilters();
         var parameters = {}
         globalParameters.pageNumber = 1;

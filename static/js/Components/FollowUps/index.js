@@ -29,10 +29,20 @@ jQuery(document).ready( function() {
     })
 
     candidates.onClickShortlistCandidate(function(applicationId, jobId) {
+        var eventObj = {
+            event_category: eventMap["shortlistCand"]["cat"],
+            event_label: 'origin=FollowUpNotif,type=Single,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["shortlistCand"]["event"], eventObj)
         setCandidateAction(recruiterId, jobId, "shortlist" , applicationId, {}, {});
     })
 
     candidates.onClickRejectCandidate(function(applicationId, jobId){
+        var eventObj = {
+            event_category: eventMap["rejectCand"]["cat"],
+            event_label: 'origin=FollowUpNotif,type=Single,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["rejectCand"]["event"], eventObj)
         setCandidateAction(recruiterId, jobId, "reject" , applicationId, {}, {});
     })
 

@@ -80,6 +80,11 @@ jQuery(document).ready( function() {
         // var parameters = filters.getAppliedFilters()
         // parameters.status = globalParameters.status;
         // setQueryParameters(parameters)
+        var eventObj = {
+            event_category: eventMap["viewCandidProfile"]["cat"],
+            event_label: 'origin=CandidateApplyList,type=SavedShorlistedList,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
         var applicationId = context.params.applicationId;
         var hash = context.hash || "";
         var candidateDetails = store.getCandidateFromStore(applicationId);
@@ -102,6 +107,11 @@ jQuery(document).ready( function() {
     filters.addFilterData('preferredLocation', prefeLocationTagsData);
 
     filters.onClickApplyFilterButton(function(name){
+        var eventObj = {
+           event_category: eventMap["applyFilter"]["cat"],
+           event_label: 'origin=CandidateApplyList,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["applyFilter"]["event"], eventObj)
         if(!filters.checkForError(name)) {
             return
         }
@@ -134,6 +144,11 @@ jQuery(document).ready( function() {
         return fetchJobApplications(jobId, parameters, recruiterId)
     });
     filters.onClickRemoveFilter(function(value,category,type){
+        var eventObj = {
+           event_category: eventMap["crossFilter"]["cat"],
+           event_label: 'origin=CandidateApplyList,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["crossFilter"]["event"], eventObj)
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
         candidates.hideEmptyScreen()
@@ -149,6 +164,11 @@ jQuery(document).ready( function() {
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
     filters.onClickSearchButton(function(){
+        var eventObj = {
+           event_category: eventMap["searchFilter"]["cat"],
+           event_label: 'origin=CandidateApplyList,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["searchFilter"]["event"], eventObj)
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
         candidates.hideEmptyScreen()
@@ -177,6 +197,11 @@ jQuery(document).ready( function() {
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
     filters.onClickRemoveAllFilters(function(){
+        var eventObj = {
+           event_category: eventMap["clearFilter"]["cat"],
+           event_label: 'origin=CandidateApplyList,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["clearFilter"]["event"], eventObj)
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
         candidates.hideEmptyScreen()
@@ -215,8 +240,13 @@ jQuery(document).ready( function() {
          var candidateDetails = store.getCandidateFromStore(applicationId);
         //  page('/'+applicationId+'#tag')
     })
-    
+
     candidates.onClickSendMessage(function(candidateId,applicationId){
+        var eventObj = {
+           event_category: eventMap["initiateConver"]["cat"],
+           event_label: 'origin=CandidateApplyList,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["initiateConver"]["event"], eventObj)
         var candidate = store.getCandidateFromStore(applicationId);
         var array = [];
         array.push(candidate);
@@ -229,12 +259,23 @@ jQuery(document).ready( function() {
     })
 
     aCandidate.onClickChatCandidateModal(function(candidateId,applicationId){
+        var eventObj = {
+           event_category: eventMap["initiateConver"]["cat"],
+           event_label: 'origin=Profile,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["initiateConver"]["event"], eventObj)
         var candidate = store.getCandidateFromStore(applicationId);
         var array = [];
         array.push(candidate);
         cloneStickyChat(array, recruiterId, jobId, applicationId)
     })
+
     aCandidate.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
+        var eventObj = {
+           event_category: eventMap["sendInvite"]["cat"],
+           event_label: 'origin=Profile,type=F2F,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["sendInvite"]["event"], eventObj)
         // console.log('here')
         if($(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f').attr('state')=='default'){
             var defaultCalendarId = theJob.getDefaultCalendar();
@@ -250,6 +291,11 @@ jQuery(document).ready( function() {
         }
     })
     aCandidate.onClickSendInterviewInviteTelephonic(function(applicationId, inviteId){
+        var eventObj = {
+           event_category: eventMap["sendInvite"]["cat"],
+           event_label: 'origin=Profile,type=Telephonic,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["sendInvite"]["event"], eventObj)
         if($(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic').attr('state')=='default'){
             var defaultCalendarId = theJob.getDefaultCalendar();
             if(!defaultCalendarId)
@@ -265,8 +311,12 @@ jQuery(document).ready( function() {
     })
 
     candidates.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
-        if($(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f').attr('state')=='default'){
-                console.log('here');
+        var eventObj = {
+           event_category: eventMap["sendInvite"]["cat"],
+           event_label: 'origin=CandidateApplyList,type=F2F,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["sendInvite"]["event"], eventObj)
+        if($(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f').attr('state')=='default') {
                 var defaultCalendarId = theJob.getDefaultCalendar();
                 if(!defaultCalendarId)
                     return theJob.showCalendarMissingError();
@@ -280,6 +330,11 @@ jQuery(document).ready( function() {
         }
     })
     candidates.onClickSendInterviewInviteTelephonic(function(applicationId, inviteId){
+        var eventObj = {
+           event_category: eventMap["sendInvite"]["cat"],
+           event_label: 'origin=CandidateApplyList,type=Telephonic,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["sendInvite"]["event"], eventObj)
         if($(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic').attr('state')=='default'){
             var defaultCalendarId = theJob.getDefaultCalendar();
             if(!defaultCalendarId)
@@ -315,16 +370,31 @@ jQuery(document).ready( function() {
     })
 
     candidates.onClickDownloadResume(function(applicationId, status){
+        var eventObj = {
+           event_category: eventMap["downloadResume"]["cat"],
+           event_label: 'origin=CandidateApplyList,type=Single,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["downloadResume"]["event"], eventObj)
         if(parseInt(status) == 0)
             setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
     });
 
     aCandidate.onClickDownloadResume(function(applicationId, status){
+        var eventObj = {
+           event_category: eventMap["downloadResume"]["cat"],
+           event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["downloadResume"]["event"], eventObj)
         if(parseInt(status) == 0)
             setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
     });
 
     candidates.onClickSaveCandidate(function(applicationId, newStatus, dataAction){
+        var eventObj = {
+           event_category: eventMap["saveCand"]["cat"],
+           event_label: 'origin=CandidateApplyList,type=Single,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["saveCand"]["event"], eventObj)
         $(".candidateRow[data-application-id="+applicationId+"]").find('.candidateSave .loadingScroller').removeClass('hidden');
         var action;
         if(parseInt(dataAction) == parseInt(newStatus)) {
@@ -341,6 +411,11 @@ jQuery(document).ready( function() {
         setCandidateAction(recruiterId, jobId, action , applicationId, {}, parameters);
      })
     candidates.onClickShortlistCandidate(function(applicationId, newStatus, dataAction){
+        var eventObj = {
+           event_category: eventMap["shortlistCand"]["cat"],
+           event_label: 'origin=CandidateApplyList,type=Single,recId='+recruiterId+''
+       }
+       sendEvent(eventMap["shortlistCand"]["event"], eventObj)
         var action;
         if(parseInt(dataAction) == parseInt(newStatus)) {
             action = "unread"
@@ -511,6 +586,11 @@ jQuery(document).ready( function() {
     }
 
     candidates.onClickRejectCandidate(function(applicationId, newStatus, dataAction){
+        var eventObj = {
+           event_category: eventMap["rejectCand"]["cat"],
+           event_label: 'origin=CandidateApplyList,type=Single,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["rejectCand"]["event"], eventObj)
         var action;
         if(parseInt(dataAction) == parseInt(newStatus)) {
             action = "unread"
@@ -545,6 +625,11 @@ jQuery(document).ready( function() {
     })
 
     candidates.onClickDownloadMassResume(function(arr,from, to, requestType){
+        var eventObj = {
+           event_category: eventMap["downloadResume"]["cat"],
+           event_label: 'origin=CandidateApplyList,type=Bulk,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["downloadResume"]["event"], eventObj)
         var data = {}
         if(requestType == "bulkRequestDropdown") {
             data = filters.getAppliedFilters();
@@ -567,6 +652,28 @@ jQuery(document).ready( function() {
     })
 
     candidates.onClickMassActionButton(function(applicationIds, action, comment, newStatus, typeRequest, from, to){
+        if(action == "shortlist") {
+            var eventObj = {
+    			event_category: eventMap["shortlistCand"]["cat"],
+    			event_label: 'origin=CandidateApplyList,type=Bulk,recId='+recruiterId+''
+    		}
+    		sendEvent(eventMap["shortlistCand"]["event"], eventObj)
+        }
+        else if (action == "reject") {
+            var eventObj = {
+    			event_category: eventMap["rejectCand"]["cat"],
+    			event_label: 'origin=CandidateApplyList,type=Bulk,recId='+recruiterId+''
+    		}
+    		sendEvent(eventMap["rejectCand"]["event"], eventObj)
+        }
+        else if (action == "save") {
+            var eventObj = {
+    			event_category: eventMap["saveCand"]["cat"],
+    			event_label: 'origin=CandidateApplyList,type=Bulk,recId='+recruiterId+''
+    		}
+    		sendEvent(eventMap["saveCand"]["event"], eventObj)
+        }
+
         var data = {}
         var parameters = {};
 
@@ -591,10 +698,20 @@ jQuery(document).ready( function() {
     })
 
     theJob.onClickSubmitUnpublishJob(function(reason){
+        var eventObj = {
+			event_category: eventMap["jobUnpublishClick"]["cat"],
+			event_label: 'origin=CandidateApplyList,recId='+recruiterId+''
+		}
+		sendEvent(eventMap["jobUnpublishClick"]["event"], eventObj)
         theJob.showSpinner("unpublish");
 		return submitUnpublishJob(recruiterId, globalParameters.jobId, {reasonId: reason});
 	});
 	theJob.onClickSubmitRefreshJob(function(jobId){
+        var eventObj = {
+			event_category: eventMap["jobRefreshClick"]["cat"],
+			event_label: 'origin=CandidateApplyList,recId='+recruiterId+''
+		}
+		sendEvent(eventMap["jobRefreshClick"]["event"], eventObj)
         theJob.showSpinner("refresh");
 		return submitRefreshJob(recruiterId,jobId);
 	})
@@ -615,6 +732,11 @@ jQuery(document).ready( function() {
     })
 
      aCandidate.onClickAddTag(function(applicationId, parameters){
+         var eventObj = {
+            event_category: eventMap["tagAdd"]["cat"],
+            event_label: 'origin=Profile,method=ButtonClick,recId='+recruiterId+''
+         }
+         sendEvent(eventMap["tagAdd"]["event"], eventObj)
          var ob = {}
          if(parameters.tagId) {
              ob.tagId = parameters.tagId;
@@ -622,7 +744,6 @@ jQuery(document).ready( function() {
          else {
              ob.name = parameters.tagName;
          }
-
          ob.type= "add";
          parameters.type = "add";
          setCandidateAction(recruiterId, jobId, "tag" , applicationId, ob, parameters);
@@ -634,6 +755,11 @@ jQuery(document).ready( function() {
      })
 
      candidates.onClickTag(function(applicationId, parameters){
+         var eventObj = {
+            event_category: eventMap["tagAdd"]["cat"],
+            event_label: 'origin=CandidateApplyList,method=ButtonClick,recId='+recruiterId+''
+         }
+         sendEvent(eventMap["tagAdd"]["event"], eventObj)
         var ob = {}
         if(parameters.tagId) {
             ob.tagId = parameters.tagId;
@@ -675,6 +801,11 @@ jQuery(document).ready( function() {
     })
 
      aCandidate.onClickAddComment(function(applicationId, comment){
+         var eventObj = {
+            event_category: eventMap["commentAdd"]["cat"],
+            event_label: 'origin=Profile,method=ButtonClick,recId='+recruiterId+''
+         }
+         sendEvent(eventMap["commentAdd"]["event"], eventObj)
          var parameters = {}
          var ob = {
              "comment": comment
@@ -683,6 +814,11 @@ jQuery(document).ready( function() {
      })
 
      candidates.onClickComment(function(applicationId,comment){
+         var eventObj = {
+            event_category: eventMap["commentAdd"]["cat"],
+            event_label: 'origin=CandidateApplyList,method=ButtonClick,recId='+recruiterId+''
+         }
+         sendEvent(eventMap["commentAdd"]["event"], eventObj)
         var parameters = {}
         var ob = {
             "comment": comment
@@ -691,6 +827,11 @@ jQuery(document).ready( function() {
      })
 
      aCandidate.onClickAddCommentMob(function(applicationId, comment){
+         var eventObj = {
+            event_category: eventMap["commentAdd"]["cat"],
+            event_label: 'origin=Profile,method=ButtonClick,recId='+recruiterId+''
+         }
+         sendEvent(eventMap["commentAdd"]["event"], eventObj)
          var parameters = {}
          var ob = {
              "comment": comment
@@ -699,6 +840,11 @@ jQuery(document).ready( function() {
      })
 
      aCandidate.onClickAddTagMob(function(applicationId, parameters){
+         var eventObj = {
+            event_category: eventMap["tagAdd"]["cat"],
+            event_label: 'origin=Profile,method=ButtonClick,recId='+recruiterId+''
+         }
+         sendEvent(eventMap["tagAdd"]["event"], eventObj)
          var ob = {}
          if(parameters.tagId) {
              ob.tagId = parameters.tagId;
@@ -718,6 +864,11 @@ jQuery(document).ready( function() {
      })
 
      aCandidate.onClickShortlistCandidate(function(applicationId, newStatus, dataAction) {
+         var eventObj = {
+ 			event_category: eventMap["shortlistCand"]["cat"],
+ 			event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
+ 		}
+ 		sendEvent(eventMap["shortlistCand"]["event"], eventObj)
          var action;
          if(parseInt(dataAction) == parseInt(newStatus)) {
              action = "unread"
@@ -734,6 +885,11 @@ jQuery(document).ready( function() {
      })
 
      aCandidate.onClickRejectCandidate(function(applicationId, newStatus, dataAction) {
+         var eventObj = {
+ 			event_category: eventMap["rejectCand"]["cat"],
+ 			event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
+ 		}
+ 		sendEvent(eventMap["rejectCand"]["event"], eventObj)
          var action;
          if(parseInt(dataAction) == parseInt(newStatus)) {
              action = "unread"
@@ -749,6 +905,11 @@ jQuery(document).ready( function() {
      })
 
      aCandidate.onClickSaveCandidate(function(applicationId, newStatus, dataAction) {
+         var eventObj = {
+             event_category: eventMap["saveCand"]["cat"],
+             event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
+         }
+         sendEvent(eventMap["saveCand"]["event"], eventObj)
          var action;
          if(parseInt(dataAction) == parseInt(newStatus)) {
              action = "unread"

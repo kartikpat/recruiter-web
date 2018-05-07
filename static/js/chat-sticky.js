@@ -133,7 +133,11 @@ function textAreaAdjust(o) {
 }
 
 chatContainer.on('click','.candidate-card', function() {
-
+    var eventObj = {
+        event_category: eventMap["viewChatCardClick"]["cat"],
+        event_label: 'origin='+origin+',recId='+recruiterId+''
+    }
+    sendEvent(eventMap["viewChatCardClick"]["event"], eventObj)
 	if(!($(this).hasClass("selected-sticky"))) {
 
 		var channelName = $(this).attr("data-channel-name")
@@ -240,7 +244,11 @@ chatContainer.on('click','.candidate-card', function() {
 var ticker;
 
 $("#conversationListing").on('click','.conversationItem', function() {
-
+    var eventObj = {
+        event_category: eventMap["viewChatCardClick"]["cat"],
+        event_label: 'origin='+origin+',recId='+recruiterId+''
+    }
+    sendEvent(eventMap["viewChatCardClick"]["event"], eventObj)
 	if(!($(this).hasClass("selected"))) {
 
 		var channelName = $(this).attr("data-channel-name")

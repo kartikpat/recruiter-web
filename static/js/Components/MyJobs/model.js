@@ -35,7 +35,64 @@ function Jobs() {
 		onClickJobRefresh();
 		onClickJobCancel();
 		onClickJobMakePremium();
+		onClickShareOnFB();
+		onClickShareOnTwitter();
+		onClickShareOnLinkedIn()
 
+		$(".postJobLink").click(function(){
+			var eventObj = {
+				event_category: eventMap["postJobViewClick"]["cat"],
+				event_label: 'origin=MyJobs,recId='+recruiterId+''
+			}
+			sendEvent(eventMap["postJobViewClick"]["event"], eventObj)
+			return true
+		})
+
+		settings.rowContainer.on('click','.jobApplicationsLink',function(e){
+			var eventObj = {
+				event_category: eventMap["viewCandidates"]["cat"],
+				event_label: 'origin=MyJobs,recId='+recruiterId+''
+			}
+			sendEvent(eventMap["viewCandidates"]["event"], eventObj)
+			return true
+		})
+
+	}
+
+	function onClickShareOnFB(fn){
+		settings.rowContainer.on('click','.jobFb',function(e){
+			var jobId = $(this).attr("data-job-id")
+			var eventObj = {
+				event_category: eventMap["socialIconsClick"]["cat"],
+				event_label: 'origin=MyJobs,type=FB,recId='+recruiterId+',JobId='+jobId+''
+			}
+			sendEvent(eventMap["socialIconsClick"]["event"], eventObj)
+			return true;
+		});
+	}
+
+	function onClickShareOnTwitter(fn){
+		settings.rowContainer.on('click','.jobTwitter',function(e){
+			var jobId = $(this).attr("data-job-id")
+			var eventObj = {
+				event_category: eventMap["socialIconsClick"]["cat"],
+				event_label: 'origin=MyJobs,type=Twitter,recId='+recruiterId+',JobId='+jobId+''
+			}
+			sendEvent(eventMap["socialIconsClick"]["event"], eventObj)
+			return true;
+		});
+	}
+
+	function onClickShareOnLinkedIn(fn){
+		settings.rowContainer.on('click','.jobLinkedIn',function(e){
+			var jobId = $(this).attr("data-job-id")
+			var eventObj = {
+				event_category: eventMap["socialIconsClick"]["cat"],
+				event_label: 'origin=MyJobs,type=Linkedin,recId='+recruiterId+',JobId='+jobId+''
+			}
+			sendEvent(eventMap["socialIconsClick"]["event"], eventObj)
+			return true;
+		});
 	}
 
 	function onClickJobCancel(fn){
@@ -65,6 +122,11 @@ function Jobs() {
 
 	function onClickJobEdit() {
 		settings.rowContainer.on('click', settings.jobEditButton ,function(e) {
+			var eventObj = {
+				event_category: eventMap["editJobClick"]["cat"],
+				event_label: 'origin=MyJobs,JobStatus='+settings.type+',recId='+recruiterId+''
+			}
+			sendEvent(eventMap["editJobClick"]["event"], eventObj)
 			return parseInt($(this).attr('data-job-isEditable')) ? true : false;
 		})
 	}
@@ -272,6 +334,8 @@ function Jobs() {
 			item.socialIcons.addClass("hidden")
 		}
 
+		item.socialIcons.attr("data-job-id", aData["id"])
+
 		if(obj["actions"]) {
 			item.element.find(".jobActions").removeClass("hidden");
 		}
@@ -279,17 +343,17 @@ function Jobs() {
 		if(aData['views']){
 			item.views.text(aData['views']+' Views').removeClass("hidden");
 			if(aData['totalApplications'])
-				item.applications.html('<a class="link-color" href="job/'+aData["publishedId"]+'/applications">'+aData["totalApplications"]+' Applied</a>').removeClass("hidden");
+				item.applications.html('<a class="link-color jobApplicationsLink" href="job/'+aData["publishedId"]+'/applications">'+aData["totalApplications"]+' Applied</a>').removeClass("hidden");
 			item.element.find(".engagementDefault").addClass("hidden");
 		}
 
 		item.refresh.attr("data-job-refreshable", aData["refreshable"])
 		if(!aData["refreshable"]){
 			// var publishedDate=aData[""];
-			// var currentDate						
-			var diff="7"	
+			// var currentDate
+			var diff="7"
 			item.refresh.attr("title", 'You can refresh this job after '+diff+' days')
-		}	
+		}
 		item.edit.attr("data-job-isEditable", aData["editable"])
 		item.edit.attr("href","/job/"+aData["id"]+"/edit")
 		if(!aData["editable"]) {
@@ -400,7 +464,7 @@ function Jobs() {
 	function closeModal() {
 		removeBodyFixed()
 		$(".modal").addClass("hidden")
-		
+
 	}
 
 	function hideEmptyView() {

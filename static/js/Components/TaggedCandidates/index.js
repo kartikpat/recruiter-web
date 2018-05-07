@@ -25,6 +25,11 @@ jQuery(document).ready( function() {
     fetchCandidatesByTags(parameters, recruiterId)
 
     candidates.onFilterByTag(function(){
+        var eventObj = {
+            event_category: eventMap["filterTagged"]["cat"],
+            event_label: 'origin=TaggedList,recId='+recruiterId+''
+        }
+        sendEvent(eventMap["filterTagged"]["event"], eventObj)
         var obj = candidates.getAppliedFilters();
         var parameters = {}
 

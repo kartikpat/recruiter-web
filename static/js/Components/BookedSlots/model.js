@@ -34,6 +34,23 @@ function BookedSlots() {
 			$(".candidateOtherActions").addClass('inactive');
     	});
 
+		$(".manageCalendarLink").click(function(){
+			var eventObj = {
+				event_category: 'navigation',
+				event_label: 'origin=BookedSlots,recId='+recruiterId+''
+			}
+			sendEvent('rtViewManageCalendar', eventObj)
+			return true
+		})
+
+		settings.bookedSlots.on('click','.jobName', function(){
+            var eventObj = {
+                event_category: eventMap["viewCandidProfile"]["cat"],
+                event_label: 'origin=TaggedList,type=BookedSlots,recId='+recruiterId+''
+            }
+            sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
+        })
+
 	}
 
 	function onClickInterviewCancel(){
@@ -57,6 +74,11 @@ function BookedSlots() {
 
 	function onChangeCalendarFilters(fn) {
 		settings.calendarDropdown.change(function() {
+			var eventObj = {
+				event_category: eventMap["filterSlots"]["cat"],
+				event_label: 'origin=BookedSlots,Type=Calendar,recId='+recruiterId+''
+			}
+			sendEvent(eventMap["filterSlots"]["event"], eventObj)
 			var calendarId = $(this).val();
 		    return fn(calendarId);
 		})
@@ -234,6 +256,11 @@ function BookedSlots() {
             altFormat: "yy-mm-dd",
             showOn: 'both',
             onSelect: function(){
+				var eventObj = {
+	                event_category: eventMap["filterSlots"]["cat"],
+	                event_label: 'origin=BookedSlots,Type=Date,recId='+recruiterId+''
+	            }
+	            sendEvent(eventMap["filterSlots"]["event"], eventObj)
 				fn();
 			}
 
@@ -254,9 +281,9 @@ function BookedSlots() {
 				delay: 0,
 				side:['bottom'],
 				theme: 'tooltipster-borderless',
-				maxWidth: 500,	
+				maxWidth: 500,
 				trigger:'click'
-			})	   
+			})
 		}
 		else{
 			$(".tooltip").not(".prototype .tooltip").tooltipster({
@@ -264,9 +291,9 @@ function BookedSlots() {
 				delay: 0,
 				side:['bottom'],
 				theme: 'tooltipster-borderless',
-				maxWidth: 500,	
+				maxWidth: 500,
 			})
-		}	
+		}
 	}
 
 

@@ -53,13 +53,13 @@ function Job(){
 			settings.industryListing = $("#industryListing")
 			setAvailableCredits(settings.creditsText, config["availableCredits"]);
 			onClickCancelForm(settings.cancelFormButton);
-		
+
 
 			var salaryRange = 101;
 			for(var i=0; i< salaryRange; i++){
 				if(i>=100){
 					settings.maxSal.append('<option value="'+(i+1)+'">'+(i)+"+"+'</option>')
-					settings.minSal.append('<option value="'+(i+1)+'">'+(i)+"+"+'</option>')			
+					settings.minSal.append('<option value="'+(i+1)+'">'+(i)+"+"+'</option>')
 				}
 				else{
 				settings.maxSal.append('<option value="'+(i+1)+'">'+(i+1)+'</option>')
@@ -317,7 +317,7 @@ function Job(){
 		settings.industryListing.html(str);
 	}
 
-	
+
 
 	return {
 		init: init,
@@ -347,6 +347,11 @@ function setAvailableCredits(element, credits) {
 
 function onClickCancelForm(element) {
 	element.click(function() {
+		var eventObj = {
+			event_category: eventMap["cancelJobClick"]["cat"],
+			event_label: 'origin=PostJobForm,recId='+recruiterId+''
+		}
+		sendEvent(eventMap["cancelJobClick"]["event"], eventObj)
 		window.location.href = "/my-jobs"
 	})
 }
@@ -585,6 +590,6 @@ function bindGuidelineModalFunctionality() {
 	$modalOverlay.on('click', ".close-modal",function(e) {
 	    $body.removeClass("posf");
 		$modalOverlay.addClass("hidden");
-		
+
 	});
 }

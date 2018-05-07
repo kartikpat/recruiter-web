@@ -26,8 +26,22 @@ $(document).ready(function(){
     // }
 
 
-    calendarDetails.submitHandler(function(){
-        console.log("click")
+    calendarDetails.submitHandler(function(action){
+        if(action == "update") {
+            var eventObj = {
+              event_category: eventMap["calendarEdit"]["cat"],
+              event_label: 'origin=ManageCalendar,source=CalendarForm,recId='+recruiterId+''
+            }
+            sendEvent(eventMap["calendarEdit"]["event"], eventObj)
+        }
+        else {
+            var eventObj = {
+              event_category: eventMap["createCalendar"]["cat"],
+              event_label: 'origin=ManageCalendar,source=CalendarForm,recId='+recruiterId+''
+            }
+            sendEvent(eventMap["createCalendar"]["event"], eventObj)
+        }
+
         if(calendarDetails.validate()){
         spinner();
         var data=calendarDetails.getDetails();

@@ -21,10 +21,16 @@ jQuery(document).ready( function() {
        parameters.pageContent= globalParameters.pageContent;
        globalParameters.calendarId = calendarId;
        if(slots.getStartDate() != '') {
+           
            globalParameters.fromDate = slots.getStartDate();
        }
        parameters.fromDate = globalParameters.fromDate;
        if(parseInt(calendarId) != -1) {
+           var eventObj = {
+               event_category: eventMap["filterSlots"]["cat"],
+               event_label: 'origin=BookedSlots,Type=Date,recId='+recruiterId+''
+           }
+           sendEvent(eventMap["filterSlots"]["event"], eventObj)
            parameters.calendarId = parseInt(calendarId);
        }
        fetchInterviews(recruiterId, parameters);

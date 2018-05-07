@@ -38,7 +38,31 @@ function Candidate() {
         settings.recommendationListSecond = $(".recommendationListSecond");
         settings.tagArr = [],
         settings.candidateDownloadResume = $(".candidateDownloadResume");
-        jQuery("#tabbed-content").tabs({});
+        jQuery("#tabbed-content").tabs({
+            activate: function(event, ui) {
+                if(ui.newTab[0]["innerText"] == "COVER LETTER") {
+                    var eventObj = {
+            			event_category: eventMap["viewCoverLetter"]["cat"],
+            			event_label: 'origin=Profile,recId='+recruiterId+''
+            		}
+            		sendEvent(eventMap["viewCoverLetter"]["event"], eventObj)
+                }
+                else if(ui.newTab[0]["innerText"] == "PROFILE") {
+                    var eventObj = {
+            			event_category: eventMap["viewCandidateProfile"]["cat"],
+            			event_label: 'origin=Profile,recId='+recruiterId+''
+            		}
+            		sendEvent(eventMap["viewCandidateProfile"]["event"], eventObj)
+                }
+                else if(ui.newTab[0]["innerText"] == "RESUME") {
+                    var eventObj = {
+            			event_category: eventMap["viewResume"]["cat"],
+            			event_label: 'origin=Profile,recId='+recruiterId+''
+            		}
+            		sendEvent(eventMap["viewResume"]["event"], eventObj)
+                }
+            }
+        });
         initializeTooltip();
 
     }
@@ -621,7 +645,7 @@ function Candidate() {
     }
 
     function onClickAddTag(fn, fn1) {
-        
+
         settings.candidateDetailsModal.on('keyup', settings.candidateTagInputClass ,function(event) {
             event.stopPropagation();
             var tagName = $(this).val();
@@ -800,9 +824,9 @@ function Candidate() {
 				delay: 0,
 				side:['bottom'],
 				theme: 'tooltipster-borderless',
-				maxWidth: 500,	
-				trigger:'click'	
-			})	   
+				maxWidth: 500,
+				trigger:'click'
+			})
 		}
 		else{
 			$(".tooltip").tooltipster({
@@ -810,7 +834,7 @@ function Candidate() {
 			delay: 0,
 			side:['bottom'],
 			theme: 'tooltipster-borderless',
-			maxWidth: 500,	
+			maxWidth: 500,
 			})
 		}
 
