@@ -2012,7 +2012,7 @@
 				"static/js/Components/Transition/model.js",
 				"static/js/Tracker/tracker.js",
 				"static/js/eventMapping.js",
-				"static/js/Services/verifyLogin.js",
+				"static/js/Services/verifyLogin.js"
             ],
             "prod" :[
                 "static/build/js/calendar.min.js"
