@@ -13,6 +13,11 @@ function Notifications(){
 
 	function onClickShortlistCandidate(fn) {
 	   settings.notificationContainer.on('click', settings.candidateShortlistButtonClass, function(event) {
+		   var eventObj = {
+               event_category: eventMap["shortlistCand"]["cat"],
+               event_label: 'origin=FollowUpNotif,type=Single,recId='+recruiterId+''
+           }
+           sendEvent(eventMap["shortlistCand"]["event"], eventObj)
 	        var applicationId = $(this).closest(settings.notificationRowClass).attr("data-application-id")
 	        var jobId = $(this).closest(settings.notificationRowClass).attr('data-job-id');
 	        return fn(applicationId, jobId);
@@ -21,6 +26,11 @@ function Notifications(){
 
 	function onClickRejectCandidate(fn) {
 	   settings.notificationContainer.on('click', settings.candidateRejectButtonClass, function(event) {
+		   var eventObj = {
+               event_category: eventMap["rejectCand"]["cat"],
+               event_label: 'origin=FollowUpNotif,type=Single,recId='+recruiterId+''
+           }
+           sendEvent(eventMap["rejectCand"]["event"], eventObj)
 	        var applicationId = $(this).closest(settings.notificationRowClass).attr("data-application-id")
 	        var jobId = $(this).closest(settings.notificationRowClass).attr('data-job-id');
 	        return fn(applicationId, jobId);
@@ -67,6 +77,9 @@ $(document).ready(function(){
 	onClickJobRefresh();
 	onClickJobCancel();
 	initializeTooltip();
+	onClickShareOnFB();
+	onClickShareOnTwitter();
+	onClickShareOnLinkedIn()
 	var notificationOb = Notifications();
 	notificationOb.onClickShortlistCandidate(function(applicationId, jobId){
 		setCandidateAction(recruiterId, jobId, "shortlist" , applicationId, {});
@@ -74,6 +87,72 @@ $(document).ready(function(){
 
 	notificationOb.onClickRejectCandidate(function(applicationId, jobId){
 		setCandidateAction(recruiterId, jobId, "reject" , applicationId, {});
+	})
+
+	$(".knowMore").click(function(){
+		var eventObj = {
+			event_category: eventMap["exploreClick"]["cat"],
+			event_label: 'origin=Dashboard,Type=Calculus,recId='+recruiterId+''
+		}
+		sendEvent(eventMap["exploreClick"]["event"], eventObj)
+		return true
+	})
+
+	$(".otherProductLinks").click(function(){
+		var type = $(this).attr("data-attr")
+		var eventObj = {
+			event_category: eventMap["viewPortalsClick"]["cat"],
+			event_label: 'origin=Dashboard,Type='+type+',recId='+recruiterId+''
+		}
+		sendEvent(eventMap["viewPortalsClick"]["event"], eventObj)
+		return true
+	})
+
+	$(".viewPreviousJobs").click(function(){
+
+		var eventObj = {
+			event_category: eventMap["myJobsClick"]["cat"],
+			event_label: 'origin=DashboardrecentJobs,recId='+recruiterId+''
+		}
+		sendEvent(eventMap["myJobsClick"]["event"], eventObj)
+		return true
+	})
+
+	$(".viewPreviousJobsEmpty").click(function(){
+
+		var eventObj = {
+			event_category: eventMap["myJobsClick"]["cat"],
+			event_label: 'origin=DashboardEmptyState,recId='+recruiterId+''
+		}
+		sendEvent(eventMap["myJobsClick"]["event"], eventObj)
+		return true
+	})
+
+	$(".postJobLink").click(function(){
+		var eventObj = {
+			event_category: eventMap["postJobViewClick"]["cat"],
+			event_label: 'origin=DashboardEmptyState,recId='+recruiterId+''
+		}
+		sendEvent(eventMap["postJobViewClick"]["event"], eventObj)
+		return true
+	})
+
+	recentJobsContainer.on('click', '.applyPageLink',function(){
+		var eventObj = {
+			event_category: eventMap["viewCandidates"]["cat"],
+			event_label: 'origin=DashboardrecentJobs,recId='+recruiterId+''
+		}
+		sendEvent(eventMap["viewCandidates"]["event"], eventObj)
+		return true
+	})
+
+	recentJobsContainer.on('click', '.applyPageNewLink',function(){
+		var eventObj = {
+			event_category: eventMap["viewNewCandidates"]["cat"],
+			event_label: 'origin=DashboardrecentJobs,recId='+recruiterId+''
+		}
+		sendEvent(eventMap["viewNewCandidates"]["event"], eventObj)
+		return true
 	})
 
 	function initializeTooltip() {
@@ -84,9 +163,9 @@ $(document).ready(function(){
 				delay: 0,
 				side:['bottom'],
 				theme: 'tooltipster-borderless',
-				maxWidth: 500,	
-				trigger:'click'	
-			})	   
+				maxWidth: 500,
+				trigger:'click'
+			})
 		}
 		else{
 			$(".tooltip").tooltipster({
@@ -94,7 +173,7 @@ $(document).ready(function(){
 			delay: 0,
 			side:['bottom'],
 			theme: 'tooltipster-borderless',
-			maxWidth: 500,	
+			maxWidth: 500,
 			})
 		}
 
@@ -124,6 +203,43 @@ $(document).ready(function(){
 		"revisit": "We missed you while you were away! To keep you up-to-date, here is a quick glance of what has changed - ",
 		 default: ""
 	}
+
+
+function onClickShareOnFB(fn){
+	recentJobsContainer.on('click','.jobFacebook',function(e){
+		var jobId = $(this).attr("data-job-id")
+		var eventObj = {
+			event_category: eventMap["socialIconsClick"]["cat"],
+			event_label: 'origin=Dashboard,type=FB,recId='+recruiterId+',JobId='+jobId+''
+		}
+		sendEvent(eventMap["socialIconsClick"]["event"], eventObj)
+		return true;
+	});
+}
+
+function onClickShareOnTwitter(fn){
+	recentJobsContainer.on('click','.jobTwitter',function(e){
+		var jobId = $(this).attr("data-job-id")
+		var eventObj = {
+			event_category: eventMap["socialIconsClick"]["cat"],
+			event_label: 'origin=Dashboard,type=Twitter,recId='+recruiterId+',JobId='+jobId+''
+		}
+		sendEvent(eventMap["socialIconsClick"]["event"], eventObj)
+		return true;
+	});
+}
+
+function onClickShareOnLinkedIn(fn){
+	recentJobsContainer.on('click','.jobLinkedin',function(e){
+		var jobId = $(this).attr("data-job-id")
+		var eventObj = {
+			event_category: eventMap["socialIconsClick"]["cat"],
+			event_label: 'origin=Dashboard,type=Linkedin,recId='+recruiterId+',JobId='+jobId+''
+		}
+		sendEvent(eventMap["socialIconsClick"]["event"], eventObj)
+		return true;
+	});
+}
 
 	function onClickJobOtherActions() {
 		recentJobsContainer.on('click', jobOtherActionsClass, function(e){
@@ -159,6 +275,11 @@ $(document).ready(function(){
 	}
 
 	settings.jobUnpublishButton.click(function(e){
+		var eventObj = {
+			event_category: eventMap["jobUnpublishClick"]["cat"],
+			event_label: 'origin=DashboardRecentJobs,recId='+recruiterId+''
+		}
+		sendEvent(eventMap["jobUnpublishClick"]["event"], eventObj)
 		var jobId= $(this).attr('data-unpublish-job-id');
 		var reason = settings.jobUnpublishModal.find("input:radio[name='unpublishReason']:checked").attr('id');
 		if(!reason){
@@ -170,6 +291,11 @@ $(document).ready(function(){
 
 	})
 	settings.jobRefreshButton.click(function(e) {
+		var eventObj = {
+			event_category: eventMap["jobRefreshClick"]["cat"],
+			event_label: 'origin=DashboardRecentJobs,recId='+recruiterId+''
+		}
+		sendEvent(eventMap["jobRefreshClick"]["event"], eventObj)
 		var jobId = $(this).attr('data-refresh-job-id');
 		showSpinner("refresh")
 		submitRefreshJob(recruiterId, jobId);
@@ -262,6 +388,7 @@ $(document).ready(function(){
 			if(aJob["cnfi"]) {
 				card.find(".action-panel .action-list-items .socialIcons").addClass("hidden")
 			}
+			card.find(".action-panel .action-list-items .socialIcons").attr("data-job-id", aJob["id"])
 
 			if(aJob["refreshable"]) {
 				card.find('.action-panel .action-list-items .jobRefresh').attr("data-job-id", aJob['id']).removeClass("hidden");
@@ -450,7 +577,7 @@ $(document).ready(function(){
 	function onFetchCalendars(topic,data){
 		var dataLength=data.data.length;
 		if(dataLength>1){
-			$('.schedulebutton .links').text('Create Calendar').attr("href","/Interview-scheduler-updated");
+			$('.schedulebutton .links').text('Create Calendar').attr("href","/Interview-scheduler-updated").addClass("createCalendar");
 		}
 	}
 
@@ -501,13 +628,22 @@ $(document).ready(function(){
 		var currentDate=moment().format("YYYY-MM-DD");
 		var startdate = moment();
 		startdate = startdate.subtract(15,"days");
-		startdate = startdate.format("YYYY-MM-DD");	
+		startdate = startdate.format("YYYY-MM-DD");
 		fetchFollowUps(recruiterId,{fromDate:startdate});
 		var currentDate=moment().format("YYYY-MM-DD");
 		fetchRecruiterCalendar(recruiterId);
 		fetchInterviews(recruiterId,{pageContent: 6, pageNumber: 1, status: 2,fromDate:currentDate});
+
+		$(".createCalendar").click(function(){
+            var eventObj = {
+              event_category: eventMap["calendarSetup"]["cat"],
+              event_label: 'origin=DashboardEmptyState,recId='+recruiterId+''
+            }
+            sendEvent(eventMap["calendarSetup"]["event"], eventObj)
+            return true
+        })
 	}
-	
+
 	init()
 
 	function showSpinner(type) {

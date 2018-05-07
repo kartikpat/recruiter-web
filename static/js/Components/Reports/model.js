@@ -18,6 +18,15 @@ function reportList() {
         settings.header=$('.head')
         settings.button=$('.white')
         jQuery(".header .menu-list-item.reports").addClass("active");
+
+        settings.downloadExcelButton.click(function(){
+            var eventObj = {
+                event_category: eventMap["downloadReportsClick"]["cat"],
+                event_label: 'origin=report,recId='+recruiterId+''
+            }
+            sendEvent(eventMap["downloadReportsClick"]["event"], eventObj)
+            return true
+        })
    }
 
    function setConfig(key, value) {
@@ -102,8 +111,6 @@ function reportList() {
    function hideShells() {
        settings.reportRowShell.addClass("hidden");
    }
-
-
 
    function setHref() {
        settings.downloadExcelButton.attr("href", baseUrl + "/recruiter/"+config["recruiterId"]+"/reports-download?token="+getCookie("recruiter-access-token")+"");

@@ -71,14 +71,20 @@ function Chat() {
 
    function addToList(dataArray){
        var str = '';
+       $('.loading.loaderScroller.first').addClass("hidden")
+
        if(!dataArray.length) {
-           return settings.conversationItemList.html("<div class='no-data'>No Candidate Found!</div>")
+           return $(".empty-screen.no-list").removeClass("hidden")
        }
        dataArray.forEach(function(aData, index){
            var item = createElement(aData);
+
            str+=item.element[0].outerHTML;
+           str+= '<div class="conversation-item-separator"></div>'
        });
        settings.conversationItemList.html(str);
+        settings.conversationItemList.closest(".conversations-list").removeClass("hidden")
+        settings.welcomeContainer.removeClass("hidden")
    }
 
    // function setProfile(obj) {
@@ -100,6 +106,7 @@ function Chat() {
 
    function onClickSingleChatItem(fn) {
        settings.conversationItemList.on('click', settings.conversationItemClass, function(){
+
            $(settings.conversationItemClass).removeClass("conversation-item-active")
            $(this).addClass("conversation-item-active")
            var channelName = $(this).attr("data-channel-name");
@@ -191,7 +198,7 @@ function Chat() {
                settings.candImage.removeClass("hidden")
                settings.conversationList.addClass("hidden")
            }
-           hideLoader()
+           $('.loading.loaderScroller.second').addClass("hidden")
            settings.chatWindow.removeClass("hidden")
            settings.userProfile.removeClass("hidden")
            initializeTooltip()
@@ -212,6 +219,11 @@ function Chat() {
 
    function onSendMessage(fn) {
        settings.sendMsg.click(function() {
+           var eventObj = {
+               event_category: eventMap["sendMsg"]["cat"],
+               event_label: 'origin=MyChats,recId='+recruiterId+''
+           }
+           sendEvent(eventMap["sendMsg"]["event"], eventObj)
            var message =  (settings.msgContent.val()).trim();
            if(message == '') {
                return settings.msgContent.val("")
@@ -219,6 +231,11 @@ function Chat() {
            fn(message, settings.channelName, settings.candidateId)
        })
        settings.msgContent.keypress(function(event) {
+           var eventObj = {
+               event_category: eventMap["sendMsg"]["cat"],
+               event_label: 'origin=MyChats,recId='+recruiterId+''
+           }
+           sendEvent(eventMap["sendMsg"]["event"], eventObj)
            if(event.which == 13 && !event.shiftKey) {
                var message = ($(this).val()).trim();
                if(message == '') {
@@ -337,7 +354,7 @@ function Chat() {
                 side:['bottom'],
                 theme: 'tooltipster-borderless'
             })
-        } 
+        }
     }
 
 }

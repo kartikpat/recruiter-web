@@ -12,6 +12,24 @@ function Manage() {
         settings.editSchedule='.edit-schedule';
         settings.wrapperConatiner=$('.wrapper-container')
         jQuery(".header .menu-list-item.my-interviews").addClass("active");
+
+        $(".createCalendar").click(function(){
+            var eventObj = {
+              event_category: eventMap["calendarSetup"]["cat"],
+              event_label: 'origin=CalendarEmptyState,recId='+recruiterId+''
+            }
+            sendEvent(eventMap["calendarSetup"]["event"], eventObj)
+            return true
+        })
+
+        $(".createCalendarNew").click(function(){
+            var eventObj = {
+              event_category: eventMap["calendarSetup"]["cat"],
+              event_label: 'origin=ManageCalendar,recId='+recruiterId+''
+            }
+            sendEvent(eventMap["calendarSetup"]["event"], eventObj)
+            return true
+        })
     }
 
     function cloneRow(data){

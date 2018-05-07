@@ -91,6 +91,22 @@ function candidateList() {
         closetooltipModal()
         backToTop()
 
+        settings.rowContainer.on('click', '.moreEducationLink', function(){
+            var eventObj = {
+                event_category: eventMap["viewCandidProfile"]["cat"],
+                event_label: 'origin=CandidateApplyList,type=MoreEducation,recId='+recruiterId+''
+            }
+            sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
+        })
+
+        settings.rowContainer.on('click', '.moreExperience', function(){
+            var eventObj = {
+                event_category: eventMap["viewCandidProfile"]["cat"],
+                event_label: 'origin=CandidateApplyList,type=MoreExperience,recId='+recruiterId+''
+            }
+            sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
+        })
+
         $(window).click(function(event) {
     		$(settings.candidateOtherActionsClass).addClass('inactive');
             $(settings.bulkActionsDropdown).addClass("hidden")
@@ -175,12 +191,22 @@ function candidateList() {
 
     function onClickCoverLetterLink() {
         settings.rowContainer.on('click', settings.coverLetterLinkClass, function(e) {
+            var eventObj = {
+                event_category: eventMap["viewCandidProfile"]["cat"],
+                event_label: 'origin=CandidateApplyList,type=CoverLetter,recId='+recruiterId+''
+            }
+            sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
             settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 2});
         })
     }
 
     function onClickRecommendationLink() {
         settings.rowContainer.on('click', settings.recommendationLinkClass, function(e) {
+            var eventObj = {
+                event_category: eventMap["viewCandidProfile"]["cat"],
+                event_label: 'origin=CandidateApplyList,type=recommendations,recId='+recruiterId+''
+            }
+            sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
             // settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 2});
         })
     }
@@ -318,14 +344,14 @@ function candidateList() {
         item.shortlistButton.attr("data-status", status);
         item.rejectButton.attr("data-status", status);
         item.savedButton.attr("data-status", status);
-        
+
         var tagStr = '';
         $.each(aData["tags"],function(index, aTag) {
             var tag = getCandidateTag(aTag)
             tagStr+=tag[0].outerHTML
         })
         item.candidateTagList.html(tagStr)
-        
+
         if(status == 1) {
             item.shortlistButton.text("Shortlisted");
         }
@@ -374,7 +400,7 @@ function candidateList() {
                 profStr+=item.element[0].outerHTML
             })
             if(aData["jobs"].length > 3) {
-                profStr+= "<span style='color: #155d9a;font-size:13px'>"+(aData["jobs"].length - 3)+" more work experience</span><span class='icon-right_arrow link-color'></span>"
+                profStr+= "<span style='color: #155d9a;font-size:13px' class='moreExperience'>"+(aData["jobs"].length - 3)+" more work experience</span><span class='icon-right_arrow link-color'></span>"
             }
         }
 
@@ -390,8 +416,9 @@ function candidateList() {
             item.degree.text(anObj["degree"] +" " + "("+anObj["courseType"]+")")
             eduStr+=item.element[0].outerHTML
         })
+
         if(aData["education"].length > 3) {
-            eduStr+= "<span style='color: #155d9a;font-size:13px'>"+(aData["education"].length - 3)+" more education</span><span class='icon-right_arrow link-color'></span>"
+            eduStr+= "<span style='color: #155d9a;font-size:13px' class='moreEducationLink'>"+(aData["education"].length - 3)+" more education</span><span class='icon-right_arrow link-color'></span>"
         }
 
         item.eduList.html(eduStr)
@@ -427,13 +454,15 @@ function candidateList() {
             item.viewTagLink.removeClass("hidden")
             flag++;
         }
-        
+
         if(flag>1){
               item.viewTagLink.css("border-left","1px solid #e8e8e8");
         }
 
         return item
     }
+
+
 
     function getJobsCategoryTabsElement() {
         var card = $("#jobs-category-tabs");
@@ -554,7 +583,7 @@ function candidateList() {
             $(this).closest(settings.candidateRowClass).find('.tag-tooltip').removeClass('hidden');
             if(window.innerWidth<768){
                 addBodyFixed();
-            }   
+            }
             fn(applicationId);
         })
     }
@@ -643,13 +672,14 @@ function candidateList() {
 
     function onClickAddTag(fn) {
         settings.rowContainer.on('click',settings.candidateAddTagButton ,function(event) {
+
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             settings.rowContainer.find('.tag-tooltip').addClass('hidden');
             settings.rowContainer.find('.comment-tooltip').addClass('hidden');
             $(".candidateRow[data-application-id="+applicationId+"]").find('.tag-tooltip').removeClass('hidden');
             if(window.innerWidth<768){
                 addBodyFixed();
-            } 
+            }
         })
     }
 
@@ -661,16 +691,16 @@ function candidateList() {
             $(".candidateRow[data-application-id="+applicationId+"]").find('.comment-tooltip').removeClass('hidden');
             if(window.innerWidth<768){
                 addBodyFixed();
-            } 
+            }
         })
     }
-    
+
     function onClickComment(fn) {
         settings.rowContainer.on('click', settings.candidateAddCommentButtonClass,function(event) {
             event.stopPropagation();
             event.preventDefault();
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            
+
             var comment = ($(this).closest(settings.candidateRowClass).find(settings.candidateCommentTextareaClass).val()).trim();
             if(!comment) {
                 return
@@ -701,7 +731,7 @@ function candidateList() {
         settings.rowContainer.on('click', settings.candidateAddTagButtonClass,function(event) {
             event.stopPropagation();
             event.preventDefault();
-            
+
             var tagName = ($(this).closest(settings.candidateRowClass).find(settings.candidateTagInputClass).val()).trim();
             var obj = searchObjByKey(settings.tagArr, tagName, "name")
             var tagId = $(settings.CandidateTagInputClass).attr("tag-id");
@@ -718,7 +748,7 @@ function candidateList() {
             return fn(applicationId, parameters);
         });
     }
-    
+
     function getCandidateTag(aTag) {
         var tag =  settings.candidateTagPrototype.clone().removeClass("prototype hidden");
         tag.find(".tagLabel").text(aTag["name"]);
@@ -750,12 +780,12 @@ function candidateList() {
     function removeTag(tagId) {
         $(settings.candidateTagListClass).find(".tagRemove[data-tag-id="+tagId+"]").closest(".candidateTag").remove()
     }
-    
+
     function showDropdownTags(data) {
         settings.tagArr = data;
         initializeAutoCompleteComponent(settings.tagListing, data)
     }
-    
+
     function initializeAutoCompleteComponent(selector, availableTags) {
         var suggestedTagsArray = [];
         availableTags.forEach(function(aTag) {
@@ -797,7 +827,7 @@ function candidateList() {
             $('.action-tooltip').addClass('hidden');
             removeBodyFixed();
         })
-        
+
     }
 
 
@@ -1228,11 +1258,11 @@ function candidateList() {
                 settings.topbutton.removeClass('show');
             }
           });
-          
+
           settings.topbutton.on('click', function(e) {
             e.preventDefault();
             $('html, body').animate({scrollTop:0}, '300');
-          });     
+          });
     }
 
     return {

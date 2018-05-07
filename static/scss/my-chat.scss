@@ -192,7 +192,7 @@
 					    display: inline-block;
 					    vertical-align: middle;
 					    width: 100%;
-					    padding: 5px 0 0 0;
+					    padding: 10px 0;
 					    font-size: 0;
 						cursor: pointer;
 						position: relative;
@@ -236,7 +236,8 @@
 							&.user-info {
 								display:inline-block;
 								vertical-align:middle;
-								padding-left:0;
+								padding:0;
+
 								p {
 									margin: 0;
 
@@ -272,10 +273,7 @@
 						    padding-top: 2px;
 						}
 
-						.conversation-item-separator {
-							margin:5px 0px 0 0;
-							border-bottom:1px solid $border-color-base;
-						}
+
 
 						&:last-child {
 
@@ -524,6 +522,7 @@
 		transform: translate(-50%, -50%);
 		.user-name{
 			text-align: center;
+			color: #2b2b2b;
 		}
 		.user-text{
 			color: #888;
@@ -549,7 +548,8 @@
 								width:25%;
 								.conversation-item {
 									.user-image {
-										padding:10px;
+										padding:0 10px;
+										vertical-align: top;
 									}
 								}
 							}
@@ -744,7 +744,39 @@
 	}
 }
 
-// .tooltipster-sidetip .tooltipster-box {
-// 	background-color: $resume-profile-snapshot-background !important;
-//
-// }
+.conversation-item-separator {
+
+	border-bottom:1px solid $border-color-base;
+}
+
+.empty-screen.no-list {
+	text-align: center;
+    color: #2b2b2b;
+    line-height: 1.5;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	.image-container {
+		width: 52%;
+		height: 100%;
+		margin: 0 auto;
+	}
+	.empty-text {
+		color: #888;
+	}
+}
+
+.loading.loaderScroller.first {
+	width: 100% !important;
+	.loader-scroller {
+		width: 60px;
+		height: 60px;
+	}
+}
+
+@media (min-width: 769px) and (max-width:1024px) {
+	.page-content .chat-container .chat-body .loading {
+		width: 70%;
+	}
+}

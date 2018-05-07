@@ -71,12 +71,12 @@
                                              <div class="detail">You don't have any active jobs right now</div>
                                             <div class="sub-detail">You will see a graph here when you do</div>
                                             <div class="empty-action-buttons">
-                                                <a href="/post-job">
+                                                <a class="postJobLink" href="/post-job">
                                                     <button class="post-job">Post Job</button>
                                                 </a>
                                             </div>
                                             <div class="divide">OR</div>
-                                            <div class="action"><a href="#">View previously posted jobs</a></div>
+                                            <div class="action"><a class="" href="/my-jobs">View previously posted jobs</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -92,7 +92,7 @@
                     <div class="feed-card" id="recentJobsContainer">
                         <div class="header-row">
                             <div class="heading">Recent Jobs</div>
-                            <div class="heading-button right"><a href="/my-jobs">See All</a><i class="icon-right_arrow"></i></div>
+                            <div class="heading-button right"><a href="/my-jobs" class="viewPreviousJobs">See All</a><i class="icon-right_arrow"></i></div>
                         </div>
 
                         <div class="detail-card jobs-card">
@@ -102,12 +102,12 @@
                                     <div class="detail">You don't have any published jobs right now</div>
                                     <div class="sub-detail">You will see a list here when you do</div>
                                     <div class="empty-action-buttons">
-                                        <a href="/post-job">
+                                        <a class="postJobLink" href="/post-job">
                                             <button class="post-job">Post Job</button>
                                         </a>
                                     </div>
                                     <div class="divide">OR</div>
-                                    <div class="action"><a href="/my-jobs">View previously posted jobs</a></div>
+                                    <div class="action"><a class="viewPreviousJobsEmpty" href="/my-jobs">View previously posted jobs</a></div>
                                 </div>
                             </div>
                         </div>
@@ -218,23 +218,23 @@
                                 <div class="list">
                                     <ul>
                                         <li>
-                                            <a href="https://www.hirist.com/recruiter/login.php" target="_blank">
+                                            <a class="otherProductLinks" href="https://www.hirist.com/recruiter/login.php" data-attr="hirist" target="_blank">
                                                 <span class="name">hirist.com</span><span class="description"> - For Tech Jobs</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://www.updazz.com/recruiter/login.php">
+                                            <a class="otherProductLinks" href="https://www.updazz.com/recruiter/login.php" data-attr="updazz" target="_blank">
                                                 <span class="name">updazz.com</span><span class="description"> - For Sales &amp; Marketing Jobs</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://www.engineeristic.com/recruiter/login.php">
+                                            <a class="otherProductLinks" href="https://www.engineeristic.com/recruiter/login.php" data-attr="biojoby" target="_blank">
                                                 <span class="name">engineeristics.com</span><span class="description"> - For Manufacturing, Operation and Engineering Jobs</span>
                                             </a>
 
                                         </li>
                                         <li>
-                                            <a href='https://www.biojoby.com/recruiter/login.php'>
+                                            <a class="otherProductLinks" href='https://www.biojoby.com/recruiter/login.php' data-attr="engineeristic" target="_blank">
                                                 <span class="name">biojoby.com</span><span class="description"> - For Medical, Pharma &amp; Healthcare Jobs</span>
                                             </a>
                                         </li>
@@ -352,7 +352,7 @@
 
                             </div>
                             <div class="action-buttons">
-                                <a href="http://calculus.iimjobs.com/" target="_blank">
+                                <a class="knowMore" href="http://calculus.iimjobs.com/" target="_blank">
                                         <div class="button">Know More</div>
                                 </a>
                             </div>
@@ -374,11 +374,11 @@
                     <!-- <img src="/static/images/settings-icon.png"> -->
                     <i class="icon-more"></i>
                      <ul class="action-list-items">
-                        <li><a href="#" class="jobRefresh blockRequest">Refresh</a></li>
-                        <li><a href="#" class="jobUnpublish blockRequest">Unpublish</a></li>
-                        <li><a href="#" class="jobFacebook">Post On Facebook</a></li>
-                        <li><a href="#" class="jobTwitter">Post On Twitter</a></li>
-                        <li><a href="#" class="jobLinkedin">Post On Linkedin</a></li>
+                        <li><a href="" class="jobRefresh blockRequest hidden">Refresh</a></li>
+                        <li><a href="" class="jobUnpublish blockRequest">Unpublish</a></li>
+                        <li><a href="" class="jobFacebook socialIcons" target="_blank">Post On Facebook</a></li>
+                        <li><a href="" class="jobTwitter socialIcons" target="_blank">Post On Twitter</a></li>
+                        <li><a href="" class="jobLinkedin socialIcons" target="_blank">Post On Linkedin</a></li>
                     </ul>
                 </div>
         <div class="title">
@@ -401,11 +401,11 @@
         </div>
         <div class="stats">
             <div class="applications totalApplications">
-                <a href = "#" class="value"></a>
+                <a href = "#" class="value applyPageLink"></a>
                 <div class="label">Applications</div>
             </div>
             <div class="applications newApplications">
-                <a href="#" class="value"></a>
+                <a href="#" class="value applyPageNewLink"></a>
                 <div class="label">New</div>
             </div>
         </div>

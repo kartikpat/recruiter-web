@@ -25,6 +25,14 @@ function candidateList() {
         settings.jobTitle = ""
         onToggleJobList();
         jQuery(".header .menu-list-item.my-jobs").addClass("active");
+
+        settings.candidateListing.on('click','.candApplyPage', function(){
+            var eventObj = {
+                event_category: eventMap["viewCandidProfile"]["cat"],
+                event_label: 'origin=TaggedList,type=CardClick,recId='+recruiterId+''
+            }
+            sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
+        })
    }
 
    function setConfig(key, value) {
@@ -149,7 +157,7 @@ function candidateList() {
                $.each(aData["applications"],function(index, application) {
                    console.log(application)
                    var item =  $(''+settings.candAppliedJobsClass+'.prototype').clone().removeClass("prototype hidden");;
-                   item.html(application["title"] + " -<a class='link-color' href='/job/"+application["jobID"]+"/applications/"+application["id"]+"'> View Profile</a> ")
+                   item.html(application["title"] + " -<a class='link-color candApplyPage' href='/job/"+application["jobID"]+"/applications/"+application["id"]+"'> View Profile</a> ")
                    str+=item[0].outerHTML
                })
                item.multipleCandJobListing.append(str);

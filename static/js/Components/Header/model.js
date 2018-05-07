@@ -47,6 +47,60 @@ function Header(){
 				window.location.href = "/login"
 				return false
 			})
+
+			$(".logoLink").click(function(){
+				var eventObj = {
+					event_category: 'navigation',
+					event_label: 'origin=Logo,recId='+recruiterId+''
+				}
+				sendEvent('rtViewDashboard', eventObj)
+				return true
+			})
+
+			$(".dashboardHeaderLink").click(function(){
+				var eventObj = {
+					event_category: 'navigation',
+					event_label: 'origin=Dashboard,recId='+recruiterId+''
+				}
+				sendEvent('rtViewDashboard', eventObj)
+				return true
+			})
+
+			$(".homeLink").click(function(){
+				var eventObj = {
+					event_category: 'navigation',
+					event_label: 'origin=Home,recId='+recruiterId+''
+				}
+				sendEvent('rtViewDashboard', eventObj)
+				return true
+			})
+
+			$(".myJobsLink").click(function(){
+				var eventObj = {
+					event_category: 'navigation',
+					event_label: 'origin=NavBar,recId='+recruiterId+''
+				}
+				sendEvent('rtViewMyJobs', eventObj)
+				return true
+			})
+
+			$(".postJobLink").click(function(){
+				var eventObj = {
+					event_category: 'navigation',
+					event_label: 'origin=NavBar,recId='+recruiterId+''
+				}
+				sendEvent('rtViewPostJob', eventObj)
+				return true
+			})
+
+			$(".manageCalendarLink").click(function(){
+				var eventObj = {
+					event_category: 'navigation',
+					event_label: 'origin=NavBar,recId='+recruiterId+''
+				}
+				sendEvent('rtViewManageCalendar', eventObj)
+				return true
+			})
 	}
 
 

@@ -24,6 +24,11 @@ jQuery(document).ready( function() {
 	jobList.setConfig("baseUrlJob", baseUrlJob);
 
 	jobList.onChangeJobFilters(function(type){
+        var eventObj = {
+			event_category: eventMap["jobsFilterChange"]["cat"],
+			event_label: 'origin=MyJobs,status='+type+',recId='+recruiterId+''
+		}
+		sendEvent(eventMap["jobsFilterChange"]["event"], eventObj)
 		tickerLock = false;
         jobList.hideEmptyView()
 		jobList.emptyList();
@@ -40,16 +45,27 @@ jQuery(document).ready( function() {
 	jobList.onClickJobEdit()
 
 	jobList.onClickSubmitUnpublishJob(function(jobId, reason){
+        var eventObj = {
+			event_category: eventMap["jobUnpublishClick"]["cat"],
+			event_label: 'origin=MyJobs,recId='+recruiterId+''
+		}
+		sendEvent(eventMap["jobUnpublishClick"]["event"], eventObj)
 		jobList.showSpinner("unpublish")
 		return submitUnpublishJob(recruiterId, jobId, {reasonId: reason});
 	});
 
 	jobList.onClickSubmitRefreshJob(function(jobId){
+        var eventObj = {
+			event_category: eventMap["jobRefreshClick"]["cat"],
+			event_label: 'origin=MyJobs,recId='+recruiterId+''
+		}
+		sendEvent(eventMap["jobRefreshClick"]["event"], eventObj)
 		jobList.showSpinner("refresh")
 		return submitRefreshJob(recruiterId, jobId);
 	})
 
 	jobList.onClickSubmitPremiumJob(function(jobId){
+
 		jobList.showSpinner("premium")
 		return submitPremiumJob(recruiterId, jobId);
 	})

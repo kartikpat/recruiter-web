@@ -35,14 +35,59 @@ function Job(){
 		settings.refreshButton= $(".refreshButton")
 		settings.socialIcon = $(".socialIcon");
 		settings.selectDefaultCalendar = $(".selectDefaultCalendar")
+		settings.jobStatus = ''
 		onClickCreateCalendar();
 		onClickJobOtherActions()
 		onClickJobRefresh();
 		onClickJobCancel();
 		onClickJobMakePremium();
+		onClickJobEdit()
+		onClickShareOnFB();
+		onClickShareOnTwitter();
+		onClickShareOnLinkedIn();
 		$(window).click(function(event) {
     		settings.jobOtherActions.addClass('inactive');
     	});
+	}
+
+	function onClickShareOnFB(fn){
+		settings.jobPostFacebook.click(function(e){
+
+			e.stopPropagation()
+
+			var eventObj = {
+				event_category: eventMap["socialIconsClick"]["cat"],
+				event_label: 'origin=CandidateApplyList,type=FB,recId='+recruiterId+',JobId='+jobId+''
+			}
+			sendEvent(eventMap["socialIconsClick"]["event"], eventObj)
+			return true;
+		});
+	}
+
+	function onClickShareOnTwitter(fn){
+		settings.jobPostTwitter.click(function(e){
+			e.stopPropagation()
+
+			var eventObj = {
+				event_category: eventMap["socialIconsClick"]["cat"],
+				event_label: 'origin=CandidateApplyList,type=Twitter,recId='+recruiterId+',JobId='+jobId+''
+			}
+			sendEvent(eventMap["socialIconsClick"]["event"], eventObj)
+			return true;
+		});
+	}
+
+	function onClickShareOnLinkedIn(fn){
+		settings.jobPostLinkedin.click(function(e){
+			e.stopPropagation()
+
+			var eventObj = {
+				event_category: eventMap["socialIconsClick"]["cat"],
+				event_label: 'origin=CandidateApplyList,type=Linkedin,recId='+recruiterId+',JobId='+jobId+''
+			}
+			sendEvent(eventMap["socialIconsClick"]["event"], eventObj)
+			return true;
+		});
 	}
 
 	function setJobDetails(data){
@@ -75,6 +120,7 @@ function Job(){
 			settings.locSeperator.removeClass("hidden")
 		}
 		var status = data["jobStatus"];
+		settings.status = data["jobStatus"];
 		var statusArr = ["published", "unpublished", "updated-published", "updated-unpublished"];
 		if(statusArr.indexOf(status) != -1) {
 			populateCalendarOptions(data["calendars"])
@@ -100,7 +146,6 @@ function Job(){
 		if(data["cnfi"]) {
 			settings.socialIcon.addClass("hidden")
 		}
-		console.log(settings.jobOtherActions.find(".action-list-items li a.hidden").length)
 		if(settings.jobOtherActions.find(".action-list-items li a.hidden").length < 4) {
 			settings.jobOtherActions.removeClass("hidden")
 		}
@@ -109,6 +154,17 @@ function Job(){
             settings.jobEditButton.attr("href","/job/"+data["jobId"]+"/edit").removeClass("hidden")
 		}
 		
+	}
+
+	function onClickJobEdit() {
+		settings.jobEditButton.click(function(e) {
+			var eventObj = {
+				event_category: eventMap["editJobClick"]["cat"],
+				event_label: 'origin=CandidateApplyList,JobStatus='+settings.status+',recId='+recruiterId+''
+			}
+			sendEvent(eventMap["editJobClick"]["event"], eventObj)
+			return true
+		})
 	}
 
 	function onClickCreateCalendar() {
