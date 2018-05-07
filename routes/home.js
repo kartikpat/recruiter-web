@@ -39,7 +39,7 @@ module.exports = function(settings){
 				}
 			},function(err, response, body){
 				if(err){
-					res.cookie('recruiter-access-token', '');
+					res.cookie('recruiter-access-token', '',{ domain: ".iimjobs.com",  maxAge: 60000, "path": "/"});
 					return res.redirect('/login');
 				}
 				const jsonBody = JSON.parse(body)
@@ -72,12 +72,15 @@ module.exports = function(settings){
 					}
 					return res.redirect('/welcome');
 				}
-				res.cookie('recruiter-access-token', '');
+				res.cookie('recruiter-access-token', '',{ domain: ".iimjobs.com",  maxAge: 60000, "path": "/", httpOnly: false});
 				return res.redirect('/login');
 			})
 
 		}
 		else{
+			if(req.cookies['IIMJOBS_CK1']){
+				return	res.redirect('/transition');
+			}
 			// IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
 			if(req.originalUrl == "/login") {
 				return next()
@@ -109,6 +112,13 @@ module.exports = function(settings){
 			}
 		})
 	}
+
+	// app.post("/test-post", function(req, res){
+	// 	res.cookie('recruiter-access-token', 'testklnkl',{ domain: ".iimjobs.com",  maxAge: 60000, "path": "/", httpOnly: false});
+	// 	return res.json({
+	// 		status: "success"
+	// 	});
+	// })
 
 	app.get("/", isAuthenticated,function(req, res){
 		res.render("dashboard", {
@@ -169,10 +179,11 @@ module.exports = function(settings){
 			console.log(req.cookies['recruiter-access-token'])
 			return isAuthenticated(req, res);
 		}
-		res.cookie('recruiter-access-token', '');
+		// res.cookie('recruiter-access-token', '');
 		res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 		res.setHeader("Pragma", "no-cache"); // HTTP 1.0.
 		res.setHeader("Expires", "0"); // Proxies.
+		// res.cookie('recruiter-access-token-test', "tesmlkrnrv", { domain: ".iimjobs.com",  maxAge: 60000, "path": "/"});
 		res.render("landing", {
 			title:"We love recruiting | iimjobs.com",
 			styles:  assetsMapper["landing"]["styles"][mode],
@@ -491,6 +502,19 @@ module.exports = function(settings){
 		return
 	});
 
+	app.get("/admin", function(req,res){
+		var email = req.query.email || "";
+		var key = req.query.key || ""
+		res.render("admin", {
+			title:"Recruiter Web - Admin | iimjobs.com",
+			styles:  assetsMapper["reset-password"]["styles"][mode],
+			scripts: assetsMapper["admin"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain
+		})
+		return
+	});
+
 	app.get("/account-verified", function(req,res){
 		res.render("account-verified", {
 			title:"Recruiter Web - Account Verified Page | iimjobs.com",
@@ -617,12 +641,14 @@ module.exports = function(settings){
 	})
 	
 	app.get("/transition",function(req, res){
+		var oldCookie = req.cookies['IIMJOBS_CK1'];
 		res.render("transition", {
 			title:"iimjobs.com",
 			styles:  assetsMapper["transition"]["styles"][mode],
 			scripts: assetsMapper["transition"]["scripts"][mode],
 			baseUrl: baseUrl,
-			baseDomain: baseDomain
+			baseDomain: baseDomain,
+			oldCookie: oldCookie
 		});
 	})
 	
