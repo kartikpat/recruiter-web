@@ -348,6 +348,12 @@
 .icon-light-bulb::before {
   content: '\e84c'; }
 
+.icon-download_icon::before {
+  content: '\e84f'; }
+
+.icon-face_to_face_icon::before {
+  content: '\e850'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -942,6 +948,12 @@ span.sticker {
 
 .icon-light-bulb::before {
   content: '\e84c'; }
+
+.icon-download_icon::before {
+  content: '\e84f'; }
+
+.icon-face_to_face_icon::before {
+  content: '\e850'; }
 
 .left {
   float: left; }
@@ -1719,6 +1731,12 @@ a {
 .icon-light-bulb::before {
   content: '\e84c'; }
 
+.icon-download_icon::before {
+  content: '\e84f'; }
+
+.icon-face_to_face_icon::before {
+  content: '\e850'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -2316,6 +2334,18 @@ span.sticker {
   .page-content .conversations {
     width: 20%;
     padding-left: 30px; }
+
+.loading {
+  text-align: center; }
+  .loading .lds-spinner div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 12px;
+    left: 31px;
+    width: 3px;
+    height: 12px;
+    border-radius: 20%; }
 
 @media all and (max-width: 1024px) {
   .conversations {
