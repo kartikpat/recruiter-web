@@ -43,9 +43,10 @@ function Header(){
 			settings.searchAccess = 1;
 
 			$(".recruiterLogout").click(function(){
+
 				document.cookie = "recruiter-access-token" + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;';
-				window.location.href = "/login"
-				return false
+
+				window.location.href = staticEndPoints.landing;
 			})
 
 			$(".logoLink").click(function(){
@@ -170,7 +171,7 @@ function Header(){
 	function search() {
 		settings.globalSearch.submit(function(){
 			var str = settings.searchInput.val()
-			window.location = "/recruiter/search?searchQuery=" + encodeURI(str)
+			window.location = "/search?searchQuery=" + encodeURI(str)
   			return false
 		});
 	}

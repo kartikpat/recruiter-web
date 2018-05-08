@@ -141,9 +141,10 @@ function Candidate() {
     function onClickSendInterviewInviteF2F(fn) {
         settings.candidateDetailsModal.on('click', settings.sendInterviewInviteF2FClass, function(e){
             e.preventDefault()
+            return                 window.location = staticEndPoints.createCalendar
 
             if(parseInt($(this).attr("data-clickable")) == 1) {
-                window.location = "/Interview-scheduler-updated"
+                window.location = staticEndPoints.createCalendar
 
             }
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
@@ -157,7 +158,7 @@ function Candidate() {
         settings.candidateDetailsModal.on('click', settings.sendInterviewInviteTelephonicClass, function(e){
             e.preventDefault()
             if(parseInt($(this).attr("data-clickable")) == 1) {
-                window.location = "/Interview-scheduler-updated"
+                window.location = staticEndPoints.createCalendar
 
             }
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");

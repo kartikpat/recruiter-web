@@ -216,7 +216,7 @@ function candidateList() {
             e.preventDefault()
 
             if(parseInt($(this).attr("data-clickable")) == 1) {
-                window.location = "/Interview-scheduler-updated"
+                window.location = staticEndPoints.createCalendar
 
             }
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
@@ -231,7 +231,7 @@ function candidateList() {
         settings.rowContainer.on('click', settings.sendInterviewInviteTelephonicClass, function(e){
             e.preventDefault()
             if(parseInt($(this).attr("data-clickable")) == 1) {
-                window.location = "/Interview-scheduler-updated"
+                window.location = staticEndPoints.createCalendar
             }
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             var inviteId =  parseInt($(this).attr("data-invite-id"));

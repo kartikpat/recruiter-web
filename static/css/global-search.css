@@ -2091,6 +2091,10 @@ span.sticker {
   background-size: 800px 104px;
   position: relative; }
 
+@media all and (max-width: 1024px) {
+  .page-content .conversations {
+    display: none; } }
+
 .page-header {
   padding: 20px 0; }
 

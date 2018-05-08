@@ -71,12 +71,12 @@
                                              <div class="detail">You don't have any active jobs right now</div>
                                             <div class="sub-detail">You will see a graph here when you do</div>
                                             <div class="empty-action-buttons">
-                                                <a class="postJobLink" href="/post-job">
+                                                <a class="postJobLink" href="{{staticEndPoints.postJob}}">
                                                     <button class="post-job">Post Job</button>
                                                 </a>
                                             </div>
                                             <div class="divide">OR</div>
-                                            <div class="action"><a class="" href="/my-jobs">View previously posted jobs</a></div>
+                                            <div class="action"><a class="" href="{{staticEndPoints.myJobs}}">View previously posted jobs</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -92,7 +92,7 @@
                     <div class="feed-card" id="recentJobsContainer">
                         <div class="header-row">
                             <div class="heading">Recent Jobs</div>
-                            <div class="heading-button right"><a href="/my-jobs" class="viewPreviousJobs">See All</a><i class="icon-right_arrow"></i></div>
+                            <div class="heading-button right"><a href="{{staticEndPoints.myJobs}}" class="viewPreviousJobs">See All</a><i class="icon-right_arrow"></i></div>
                         </div>
 
                         <div class="detail-card jobs-card">
@@ -102,12 +102,12 @@
                                     <div class="detail">You don't have any published jobs right now</div>
                                     <div class="sub-detail">You will see a list here when you do</div>
                                     <div class="empty-action-buttons">
-                                        <a class="postJobLink" href="/post-job">
+                                        <a class="postJobLink" href="{{staticEndPoints.postJob}}">
                                             <button class="post-job">Post Job</button>
                                         </a>
                                     </div>
                                     <div class="divide">OR</div>
-                                    <div class="action"><a class="viewPreviousJobsEmpty" href="/my-jobs">View previously posted jobs</a></div>
+                                    <div class="action"><a class="viewPreviousJobsEmpty" href="{{staticEndPoints.myJobs}}">View previously posted jobs</a></div>
                                 </div>
                             </div>
                         </div>
@@ -297,12 +297,12 @@
                                         <ul>
                                             <li><p>It helps to avoid a slow interviewing process</p></li>
                                             <li><p>Helps in allocating ample amounts of time to every candidate</p></li>
-                                            <li><p>Enhances the interaction between candidates & recruiters by promoting fast and easy scheduling</p></li>
+                                            <li><p>Enhances the interaction between candidates &amp; recruiters by promoting fast and easy scheduling</p></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="action-buttons">
-                                    <div class="button schedulebutton"><a class="links" href="/my-jobs">Start Scheduling Interviews</a></div>
+                                    <div class="button schedulebutton"><a class="links" href="{{staticEndPoints.myJobs}}">Start Scheduling Interviews</a></div>
                                 </div>
                             </div>
                             <div class="notification-row multiple hidden">

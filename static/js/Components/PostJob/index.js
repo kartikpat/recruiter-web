@@ -44,8 +44,8 @@ $(document).ready(function(){
 			jobPostMessage = "Job posted successfully";
 		}
 		if(profile["availableCredits"] > 0)
-			return window.location.href = "/my-jobs?jobPostMessage="+encodeURIComponent(jobPostMessage)+"";
-		window.location.href = "/recruiter/recruiter-plan?jobPostMessage="+encodeURIComponent(jobPostMessage)+"&jobId="+data["data"]+""
+			return window.location.href = staticEndPoints.myJobs + "?jobPostMessage="+encodeURIComponent(jobPostMessage)+"";
+		window.location.href = staticEndPoints.plans + "?jobPostMessage="+encodeURIComponent(jobPostMessage)+"&jobId="+data["data"]+""
  	}
 
 	function onFailedSubmitJob(topic, data) {
@@ -83,7 +83,7 @@ $(document).ready(function(){
 
 function errorHandler(data) {
 	if(data.status == 401) {
-        return window.location = "/"
+        return window.location = staticEndPoints.dashboard;
     }
     var res = data.responseJSON
 	if(!res) {
