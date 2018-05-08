@@ -501,7 +501,8 @@ $button-border-color: #8f8a8a;
 				color: $meta-grey;
 				font-size: 13px;
 				line-height: 18px;
-    			margin-bottom: 5px;
+				margin-bottom: 5px;
+				word-wrap: break-word;
 			}
 			.see-all{
 				text-align: center;

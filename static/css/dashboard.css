@@ -2118,7 +2118,8 @@ span.sticker {
         color: #737373;
         font-size: 13px;
         line-height: 18px;
-        margin-bottom: 5px; }
+        margin-bottom: 5px;
+        word-wrap: break-word; }
       .page-content .detail-card .notification-row.multiple .see-all {
         text-align: center;
         padding: 5px 0; }
