@@ -304,6 +304,9 @@ $button-border-color: #8f8a8a;
 		background-color: $white;
 		border-radius: 4px;
 		min-height: 100%;
+		.recent-empty{
+			padding: 0 25px;
+		}
 		.empty-view{
 			.image-container{
 				display: inline-block;
@@ -498,7 +501,8 @@ $button-border-color: #8f8a8a;
 				color: $meta-grey;
 				font-size: 13px;
 				line-height: 18px;
-    			margin-bottom: 5px;
+				margin-bottom: 5px;
+				word-wrap: break-word;
 			}
 			.see-all{
 				text-align: center;

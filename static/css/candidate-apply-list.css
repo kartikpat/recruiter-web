@@ -348,6 +348,12 @@
 .icon-light-bulb::before {
   content: '\e84c'; }
 
+.icon-download_icon::before {
+  content: '\e84f'; }
+
+.icon-face_to_face_icon::before {
+  content: '\e850'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -942,6 +948,12 @@ span.sticker {
 
 .icon-light-bulb::before {
   content: '\e84c'; }
+
+.icon-download_icon::before {
+  content: '\e84f'; }
+
+.icon-face_to_face_icon::before {
+  content: '\e850'; }
 
 .left {
   float: left; }
@@ -1719,6 +1731,12 @@ a {
 .icon-light-bulb::before {
   content: '\e84c'; }
 
+.icon-download_icon::before {
+  content: '\e84f'; }
+
+.icon-face_to_face_icon::before {
+  content: '\e850'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -2359,6 +2377,12 @@ span.sticker {
 .icon-light-bulb::before {
   content: '\e84c'; }
 
+.icon-download_icon::before {
+  content: '\e84f'; }
+
+.icon-face_to_face_icon::before {
+  content: '\e850'; }
+
 /*[Recruiter_Homepage]*/
 /*[/Recruiter_Homepage]*/
 /**** Fontello Font Icons : ****/
@@ -2679,6 +2703,12 @@ span.sticker {
 
 .icon-light-bulb::before {
   content: '\e84c'; }
+
+.icon-download_icon::before {
+  content: '\e84f'; }
+
+.icon-face_to_face_icon::before {
+  content: '\e850'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -5334,6 +5364,18 @@ input::-webkit-input-placeholder {
                 vertical-align: middle;
                 color: #808080; }
 
+.loading {
+  text-align: center; }
+  .loading .lds-spinner div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 12px;
+    left: 31px;
+    width: 3px;
+    height: 12px;
+    border-radius: 20%; }
+
 /** [/Modal] **/
 @media all and (max-width: 1024px) {
   .view-resume-modal {
@@ -5588,7 +5630,7 @@ input::-webkit-input-placeholder {
     overflow-x: auto;
     white-space: nowrap;
     overflow-y: hidden;
-    margin-left: 70px; }
+    margin-left: 60px; }
   #jobs-category-tabs .ui-tabs-tab {
     border: 0;
     background: #fff;

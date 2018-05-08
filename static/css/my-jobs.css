@@ -379,6 +379,12 @@
 .icon-light-bulb::before {
   content: '\e84c'; }
 
+.icon-download_icon::before {
+  content: '\e84f'; }
+
+.icon-face_to_face_icon::before {
+  content: '\e850'; }
+
 .left {
   float: left; }
 
@@ -1155,6 +1161,12 @@ a {
 .icon-light-bulb::before {
   content: '\e84c'; }
 
+.icon-download_icon::before {
+  content: '\e84f'; }
+
+.icon-face_to_face_icon::before {
+  content: '\e850'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -1775,6 +1787,19 @@ span.sticker {
           border-bottom: 1px solid #e8e8e8; }
         .page-content .my-jobs .my-jobs-listing .table-container .table-row:last-child .table-row-separator {
           border: 0; }
+
+.loading {
+  text-align: center; }
+  .loading .lds-spinner div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 11px;
+    left: 31px;
+    width: 4px;
+    height: 12px;
+    border-radius: 20%;
+    background: #737373; }
 
 @media all and (max-width: 1024px) {
   .page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon.job-twitter {

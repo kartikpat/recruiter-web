@@ -2,14 +2,13 @@ $(document).ready(function(){
 	var recruiterProfile = Profile();
 	recruiterProfile.init();
 	recruiterProfile.setProfile(profile)
-	
+	fetchRecruiterCredits(recruiterId);	
 	recruiterProfile.submitHandler(function(type){
 		if(recruiterProfile.validate()){
 			$('.'+type+'').find('.spinner').removeClass('hidden');
 			// $('#uploadPic').addClass('hidden');
 			$('.'+type+'').find(".button.submit").addClass('hidden');
 			if(type == "change-password") {
-
 				var obj = recruiterProfile.getProfile();
 				obj.email = profile.email
 				return setPassword(recruiterId,obj )
@@ -30,9 +29,10 @@ $(document).ready(function(){
 	})
 
 	recruiterProfile.onClickcredits(function(){
-		recruiterProfile.emptyCredits();
-		recruiterProfile.spinner();
-		fetchRecruiterCredits(recruiterId);
+		// debugger
+		// recruiterProfile.emptyCredits();
+		// recruiterProfile.spinner();
+		
 	})
 
 	recruiterProfile.onClickDeleteCredits(function(data){
@@ -91,13 +91,14 @@ $(document).ready(function(){
 	}
 
 	function onFetchSuccess(topic,data){
+		console.log("here");
 		recruiterProfile.togglespinner();
-		recruiterProfile.credits(data);
-
+		recruiterProfile.credits(data);	
 	}
 
 	function onFetchFail(topic){
 		recruiterProfile.spinner();
+		console.log("here")
 	}
 
 	function onSuccessfulSubmitCredit(){

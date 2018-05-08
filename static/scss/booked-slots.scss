@@ -173,7 +173,10 @@
         padding: 15% 0px;
         .no-schedule-container{
            text-align: center;
-           padding: 80px;
+        //    padding: 80px;
+            img{
+                width: 10%;
+            }
             .heading{
                 text-align: center;
                 padding-top: 5px;
@@ -622,6 +625,19 @@
     }
 }
 
+.loading{
+	text-align: center;
+	.lds-spinner div:after {
+		content: " ";
+		display: block;
+		position: absolute;
+		top: 12px;
+		left: 31px;
+		width: 3px;
+		height: 12px;
+		border-radius: 20%;
+	}
+}
 
 @media only screen and (max-width:1024px){
 

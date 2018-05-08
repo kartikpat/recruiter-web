@@ -351,6 +351,12 @@
 .icon-light-bulb::before {
   content: '\e84c'; }
 
+.icon-download_icon::before {
+  content: '\e84f'; }
+
+.icon-face_to_face_icon::before {
+  content: '\e850'; }
+
 .footer {
   width: 100%;
   background: #2b2b2b;

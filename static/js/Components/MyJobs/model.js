@@ -349,8 +349,10 @@ function Jobs() {
 
 		item.refresh.attr("data-job-refreshable", aData["refreshable"])
 		if(!aData["refreshable"]){
-			// var publishedDate=aData[""];
-			// var currentDate
+			// var publishedDate=aData["publishDate"];
+			// publishedDate=publishedDate.format("YYYY-MM-DD");
+			// var currentDate=moment().format("YYYY-MM-DD");
+			// publishedDate.diff(currentDate, 'days')
 			var diff="7"
 			item.refresh.attr("title", 'You can refresh this job after '+diff+' days')
 		}

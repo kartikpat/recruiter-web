@@ -320,6 +320,12 @@
 .icon-light-bulb::before {
   content: '\e84c'; }
 
+.icon-download_icon::before {
+  content: '\e84f'; }
+
+.icon-face_to_face_icon::before {
+  content: '\e850'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -914,6 +920,12 @@ span.sticker {
 
 .icon-light-bulb::before {
   content: '\e84c'; }
+
+.icon-download_icon::before {
+  content: '\e84f'; }
+
+.icon-face_to_face_icon::before {
+  content: '\e850'; }
 
 .left {
   float: left; }
@@ -1691,6 +1703,12 @@ a {
 .icon-light-bulb::before {
   content: '\e84c'; }
 
+.icon-download_icon::before {
+  content: '\e84f'; }
+
+.icon-face_to_face_icon::before {
+  content: '\e850'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -2331,6 +2349,12 @@ span.sticker {
 .icon-light-bulb::before {
   content: '\e84c'; }
 
+.icon-download_icon::before {
+  content: '\e84f'; }
+
+.icon-face_to_face_icon::before {
+  content: '\e850'; }
+
 /*[Recruiter_Homepage]*/
 /*[/Recruiter_Homepage]*/
 /**** Fontello Font Icons : ****/
@@ -2651,6 +2675,12 @@ span.sticker {
 
 .icon-light-bulb::before {
   content: '\e84c'; }
+
+.icon-download_icon::before {
+  content: '\e84f'; }
+
+.icon-face_to_face_icon::before {
+  content: '\e850'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -3401,8 +3431,9 @@ span.sticker {
     margin: 0 auto;
     padding: 15% 0px; }
     .page-content .empty-view .no-schedule-container {
-      text-align: center;
-      padding: 80px; }
+      text-align: center; }
+      .page-content .empty-view .no-schedule-container img {
+        width: 10%; }
       .page-content .empty-view .no-schedule-container .heading {
         text-align: center;
         padding-top: 5px;
@@ -3765,6 +3796,18 @@ span.sticker {
                 display: inline-block; }
               .page-content .wrapper .booked-slots .slot-date .schedules-container .schedules .action-buttons .section {
                 display: inline-block; } }
+
+.loading {
+  text-align: center; }
+  .loading .lds-spinner div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 12px;
+    left: 31px;
+    width: 3px;
+    height: 12px;
+    border-radius: 20%; }
 
 @media only screen and (max-width: 1024px) {
   .page-content .booked-slots .slot-date .schedules-container .schedules .action-buttons {

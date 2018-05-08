@@ -2330,6 +2330,20 @@ input::-webkit-input-placeholder {
     }
 }
 
+.loading{
+	text-align: center;
+	.lds-spinner div:after {
+		content: " ";
+		display: block;
+		position: absolute;
+		top: 12px;
+		left: 31px;
+		width: 3px;
+		height: 12px;
+		border-radius: 20%;
+	}
+}
+
 /** [/Modal] **/
 
 @media all and (max-width:1024px) {
@@ -2644,7 +2658,7 @@ input::-webkit-input-placeholder {
 		overflow-x:auto;
 		white-space:nowrap;
 		overflow-y: hidden;
-        margin-left: 70px
+        margin-left: 60px
 	}
 	.ui-tabs-tab {
 		border: 0;

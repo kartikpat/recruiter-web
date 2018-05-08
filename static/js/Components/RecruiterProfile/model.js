@@ -357,8 +357,8 @@ function Profile(){
 	}
 
 	function credits(data){
-		console.log(data)
 		var data=data.data;
+		console.log(data);
 		if(data.length==0){
 			console.log("hide");
 		}

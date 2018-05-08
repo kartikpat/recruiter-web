@@ -351,6 +351,12 @@
 .icon-light-bulb::before {
   content: '\e84c'; }
 
+.icon-download_icon::before {
+  content: '\e84f'; }
+
+.icon-face_to_face_icon::before {
+  content: '\e850'; }
+
 .left {
   float: left; }
 
@@ -1126,6 +1132,12 @@ a {
 
 .icon-light-bulb::before {
   content: '\e84c'; }
+
+.icon-download_icon::before {
+  content: '\e84f'; }
+
+.icon-face_to_face_icon::before {
+  content: '\e850'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
