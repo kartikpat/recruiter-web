@@ -224,7 +224,7 @@ module.exports = function(settings){
 		return
 	})
 
-	app.get("/recruiter/mass-resume-status",isAuthenticated, function(req, res){
+	app.get("/bulk-resume-status",isAuthenticated, function(req, res){
 
 		res.render("mass-resume", {
 			title: "IIM JOBS | Mass Resume",
