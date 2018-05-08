@@ -521,7 +521,7 @@ function onClickShareOnLinkedIn(fn){
 		});
 		if( data.length-1>showCount){
 			var seeMore= seeMoreSection.clone().removeClass('hidden prototype');
-			seeMore.find(".seeAll a").attr('href', '/recruiter/candidates/followUps')
+			seeMore.find(".seeAll a").attr('href', staticEndPoints.followedUpCand)
 			notificationContainer.find('.detail-card').append(seeMore);
 		}
 		if( data.length>0){
@@ -569,7 +569,7 @@ function onClickShareOnLinkedIn(fn){
 		})
 		if( totalInterviews>showCount){
 			var seeMore= seeMoreSection.clone().removeClass('hidden prototype');
-			seeMore.find(".seeAll a").attr('href', '/booked-slots')
+			seeMore.find(".seeAll a").attr('href', staticEndPoints.bookedSlots)
 			interviewContainer.find('.detail-card').append(seeMore);
 		}
 	}

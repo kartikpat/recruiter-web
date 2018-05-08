@@ -327,7 +327,7 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/candidates/followed-up",isAuthenticated, function(req,res){
+	app.get("/follow-up",isAuthenticated, function(req,res){
 		res.render("follow-up", {
 			title:"Recruiter Web - Followed Up Candidates | iimjobs.com",
 			styles:  assetsMapper["follow-up"]["styles"][mode],
@@ -526,7 +526,7 @@ module.exports = function(settings){
 
 	app.get("/admin", function(req,res){
 		var email = req.query.email || "";
-		var key = req.query.key || ""
+		var key = req.query.key || "";
 		res.render("admin", {
 			title:"Recruiter Web - Admin | iimjobs.com",
 			styles:  assetsMapper["reset-password"]["styles"][mode],

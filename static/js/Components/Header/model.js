@@ -46,7 +46,7 @@ function Header(){
 
 				document.cookie = "recruiter-access-token" + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;';
 
-				return false
+				window.location.href = staticEndPoints.landing;
 			})
 
 			$(".logoLink").click(function(){
