@@ -336,10 +336,10 @@ function Job(){
 
 function setAvailableCredits(element, credits) {
 	if(!credits) {
-		return element.html("Reach out to more candidates in less amount of time by making your job premium. <a target='_blank' style='color:#155d9a' href='/recruiter/recruiter-plan'>Learn More.</a>")
+		return element.html("Reach out to more candidates in less amount of time by making your job premium. <a target='_blank' style='color:#155d9a' href='/plans'>Learn More.</a>")
 	}
 	if(credits == 0) {
-		return element.html("You have used up all your credits. <a target='_blank' style='color:#155d9a' href='/recruiter/recruiter-plan'>Click here</a> to buy more credits.")
+		return element.html("You have used up all your credits. <a target='_blank' style='color:#155d9a' href='/plans'>Click here</a> to buy more credits.")
 	}
 	element.text("You have "+credits+" credits left.")
 }

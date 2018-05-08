@@ -1,6 +1,6 @@
 
 function onBoarding(){
-    
+
     var settings={}
     function init(){
         settings.profile=$('.upload-profile'),
@@ -11,11 +11,11 @@ function onBoarding(){
 
     function connect(){
         settings.profile.on('click',function(){
-            window.location='/settings'
+            window.location=settings.recruiterProfile
         })
         settings.facebookConnect.on('click',function(){
             window.open('/auth/facebook/','',' scrollbars=yes,menubar=no,width=500,height=500, resizable=yes,toolbar=no,location=no,status=no')
-            
+
         })
 
         settings.linkedinConnect.on('click',function(){

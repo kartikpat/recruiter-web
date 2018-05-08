@@ -358,6 +358,7 @@ $("#conversationListing").on('click','.conversationItem', function() {
 
 $("#chat-collapsed-container").on('click',".chat-collapsed-candidate-container .candidate-collapsed-block i", function(event) {
 	event.stopPropagation();
+    event.preventDefault();
 	var dataId = $(this).attr("data-id");
 
 	$("#chat-collapsed-container .candidate-collapsed-block[data-id="+dataId+"]").remove();
@@ -370,7 +371,8 @@ $("#chat-collapsed-container").on('click',".chat-collapsed-candidate-container .
 })
 
 $("#chat-collapsed-container").on('click',".chat-collapsed-candidate-container .candidate-collapsed-block", function(event) {
-
+    event.stopPropagation()
+    event.preventDefault()
 	var dataId = $(this).attr("data-id");
     $(this).remove();
     var clonedElement = $(".candidate-collapsed-block.prototype").clone().removeClass('prototype hidden');
