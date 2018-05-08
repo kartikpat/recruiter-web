@@ -360,7 +360,7 @@ function Profile(){
 		var data=data.data;
 		console.log(data);
 		if(data.length==0){
-			console.log("hide");
+			// console.log("hide");
 		}
 		else{
 			data.forEach(function(aRow){

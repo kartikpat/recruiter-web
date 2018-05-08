@@ -91,7 +91,7 @@ $(document).ready(function(){
 	}
 
 	function onFetchSuccess(topic,data){
-		console.log("here");
+		$('.distribute-credits').removeClass('hidden');
 		recruiterProfile.togglespinner();
 		recruiterProfile.credits(data);	
 	}

@@ -611,6 +611,21 @@ module.exports = function(settings){
 		return
 	});
 
+	app.get("/candidate/applications/:applicationID",isAuthenticated, function(req,res){
+		res.render("candidate", {
+			title:"Recruiter Web - Candidate Profile | iimjobs.com",
+			styles:  assetsMapper["candidate"]["styles"][mode],
+			scripts: assetsMapper["candidate"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			jobId: req.params.jobID,
+			applicationId: req.params.applicationID,
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
+		})
+		return
+	});
+
 	app.get("/interviews",isAuthenticated, function(req,res){
 		res.render("booked-slots", {
 			title:"Recruiter Web - Booked Slots | iimjobs.com",
