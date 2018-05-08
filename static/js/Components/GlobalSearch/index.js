@@ -20,7 +20,6 @@ jQuery(document).ready( function() {
     function onFetchCandidatesSuccess(topic,res) {
         hideLoader()
         globalParameters.candidateListLength = res.data.length;
-        console.log(res);
         candidates.addToList(res.data)
         candidates.setHeader(res.stats.total, searchQuery)
     }

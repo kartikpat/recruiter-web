@@ -112,7 +112,7 @@ function candidateList() {
        var tagStr = '';
        $.each(aData["tags"],function(index, aTag) {
            var tag =  $(""+settings.candTagItemClass+".prototype").clone().removeClass("prototype hidden");
-           tag.find("a").text(aTag["name"]).attr("href","/recruiter/tagged-candidates?queryTag="+aTag["id"]+"");
+           tag.find("a").text(aTag["name"]).attr("href","/candidates/tagged?queryTag="+aTag["id"]+"");
            tagStr+=tag[0].outerHTML
        })
        item.candTagList.html(tagStr)

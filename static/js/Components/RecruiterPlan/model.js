@@ -29,7 +29,7 @@ function Plans() {
 
    function onClickBasicBuy() {
        settings.basicBuy.click(function() {
-           window.location = "/my-jobs";
+           window.location = staticEndPoints.myJobs;
        })
    }
 
@@ -52,12 +52,12 @@ function Plans() {
            var planType = $(this).attr("data-plantype");
            var elem = $(this).closest(".modal").find("input");
            var contact = (elem.val()).trim();
-           
+
            if(!contact) {
                elem.next().text("Please enter your contact number").removeClass("hidden");
                return
            }
-           
+
            if(!( contact && elem.val() && isValidPhone(elem.val()) )){
                  elem.next().text("Please enter a valid number").removeClass("hidden");
                 return;
@@ -97,7 +97,7 @@ function Plans() {
             settings.platinumContinue.addClass('hidden')
             settings.platinumContinue.prev().removeClass("hidden")
         }
-    }   
+    }
    	function hideSpinner(type){
         if(type == "signature") {
    			settings.signatureBuy.removeClass('hidden')
@@ -119,7 +119,7 @@ function Plans() {
             settings.platinumContinue.prev().addClass("hidden")
    		}
    	}
-       
+
 
 
     function closeModal() {

@@ -83,7 +83,7 @@ jQuery(document).ready( function() {
 			plan.hideContinueSpinner("platinum");
 			plan.closeModal();
 		}
-		window.location = "/my-jobs"
+		window.location = staticEndPoints.myJobs;
 	}
 
 	function onFailedPlan(topic, data) {

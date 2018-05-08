@@ -352,7 +352,7 @@ function onClickCancelForm(element) {
 			event_label: 'origin=PostJobForm,recId='+recruiterId+''
 		}
 		sendEvent(eventMap["cancelJobClick"]["event"], eventObj)
-		window.location.href = "/my-jobs"
+		window.location.href = staticEndPoints.myJobs
 	})
 }
 

@@ -1338,12 +1338,12 @@ function getTitleFormat(title, regex) {
 
 function errorHandler(data) {
     if(data.status == 401) {
-        return window.location = "/"
+        return window.location = staticEndPoints.dashboard
     }
     if(data.status == 404) {
         toastNotify(3, "Page not found");
         setTimeout(function(){
-			 window.location.href = "/"
+			 window.location.href = staticEndPoints.dashboard
 		 }, 2000);
          return
     }

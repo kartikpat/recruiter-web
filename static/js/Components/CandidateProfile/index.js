@@ -388,7 +388,7 @@ function errorHandler(data) {
     if(data.status == 404) {
         toastNotify(3, "Page not found");
         setTimeout(function(){
-			 window.location.href = "/"
+			 window.location.href = staticEndPoints.dashboard
 		 }, 2000);
          return
     }

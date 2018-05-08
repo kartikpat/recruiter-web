@@ -2,6 +2,9 @@ $(document).ready(function() {
 	var userLogin = userCredentials();
 	userLogin.init();
 
+	var callbackUrl = getQueryParameter("callbackUrl");
+
+
 	userLogin.loginHandler(function(e){
 		e.preventDefault()
 
@@ -15,8 +18,13 @@ $(document).ready(function() {
 	function onSuccessfulLogin(topic, data){
 		spinner();
 		localStorage.id = data["id"];
-		debugger
-		window.location="/";
+		if(!isEmpty(callbackUrl)) {
+	        var newUrl = removeParam("callbackUrl", window.location.href)
+	        window.history.replaceState("object or string", "Title", newUrl);
+			document.getElementById("login").disabled=false;
+			return window.location = callbackUrl
+	    }
+		window.location = staticEndPoints.dashboard;
 		document.getElementById("login").disabled=false;
 	}
 

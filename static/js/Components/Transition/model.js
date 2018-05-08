@@ -15,11 +15,11 @@ $(document).ready(function(){
       },2000);
 
     function onSuccessVerifyLogin(topic, data){
-    	window.location.href = "/";
+    	window.location.href = staticEndPoints.dashboard;
     }
 
     function onFailVerifyLogin(topic, data){
-    	window.location.href = "/login";
+    	window.location.href = staticEndPoints.landing;
     }
 
     var verifyLoginSubscription = pubsub.subscribe("loginVerifySuccess", onSuccessVerifyLogin)
@@ -27,5 +27,5 @@ $(document).ready(function(){
 
 
     verifyLogin(oldCookie);
-   
+
 });

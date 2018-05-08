@@ -577,7 +577,7 @@ function onClickShareOnLinkedIn(fn){
 	function onFetchCalendars(topic,data){
 		var dataLength=data.data.length;
 		if(dataLength>1){
-			$('.schedulebutton .links').text('Create Calendar').attr("href","/Interview-scheduler-updated").addClass("createCalendar");
+			$('.schedulebutton .links').text('Create Calendar').attr("href", staticEndPoints.createCalendar).addClass("createCalendar");
 		}
 	}
 

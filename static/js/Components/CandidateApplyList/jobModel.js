@@ -100,7 +100,7 @@ function Job(){
 			var jobLocationStr = (data["jobLocation"] && data["jobLocation"].length >3) ? "Multiple Locations" : data["jobLocation"].join(',');
 			settings.jobLocation.text(jobLocationStr).removeClass("shell");
 			settings.jobLocation.attr("title",jobLocationTitle).addClass("tooltip");
-		
+
 		}
 		$(".tooltip").tooltipster({
 		   animation: 'fade',
@@ -153,7 +153,7 @@ function Job(){
         if(data["isEditable"]) {
             settings.jobEditButton.attr("href","/job/"+data["jobId"]+"/edit").removeClass("hidden")
 		}
-		
+
 	}
 
 	function onClickJobEdit() {
@@ -169,7 +169,7 @@ function Job(){
 
 	function onClickCreateCalendar() {
 		settings.createCalendar.click(function(e){
-			window.location = "/interview-scheduler-updated"
+			window.location = staticEndPoints.createCalendar;
 		})
 	}
 

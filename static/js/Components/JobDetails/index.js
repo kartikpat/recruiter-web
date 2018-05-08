@@ -23,7 +23,7 @@ $(document).ready(function(){
 
 function errorHandler(data) {
 	if(data.status == 401) {
-        return window.location = "/"
+        return window.location = staticEndPoints.dashboard
     }
     var res = data.responseJSON
 	if(!res) {
