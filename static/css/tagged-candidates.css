@@ -2348,6 +2348,19 @@ span.sticker {
     width: 20%;
     padding-left: 30px; }
 
+.loading {
+  text-align: center; }
+  .loading .lds-spinner div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 11px;
+    left: 31px;
+    width: 4px;
+    height: 12px;
+    border-radius: 20%;
+    background: #737373; }
+
 @media all and (max-width: 1024px) {
   .page-content .conversations {
     display: none; }

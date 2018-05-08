@@ -1966,6 +1966,8 @@ span.sticker {
     background-color: #ffffff;
     border-radius: 4px;
     min-height: 100%; }
+    .page-content .detail-card .recent-empty {
+      padding: 0 25px; }
     .page-content .detail-card .empty-view .image-container {
       display: inline-block;
       vertical-align: top;

@@ -1,5 +1,4 @@
 function fetchRecruiterCredits(recruiterId){
-	console.log(recruiterId)
 	return getRequest(baseUrl+"/recruiter/"+recruiterId+"/recruiters", {}, function(res){
 		if(res.status && res.status =='success') {
 			return pubsub.publish("fetchedCredits", res);

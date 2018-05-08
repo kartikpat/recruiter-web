@@ -11,7 +11,7 @@ function candidateList() {
         settings.candidateRow=$('.candidateRow'),
         settings.candidateInviteButton= ".candidateSendInterviewInvite",
         settings.candidateAddTagButton= ".candidateAddTagModal",
-        settings.candidateAddCommentButton= ".candidateAddComment",
+        settings.candidateAddCommentButton= ".candidateAddCommentTip",
         settings.candidateSaveButton= ".candidateSave",
         settings.candidateDownloadResumeButton= ".candidateDownloadResume",
         settings.candidateSendMessageButton= ".candidateSendMessage",

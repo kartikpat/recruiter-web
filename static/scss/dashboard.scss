@@ -304,6 +304,9 @@ $button-border-color: #8f8a8a;
 		background-color: $white;
 		border-radius: 4px;
 		min-height: 100%;
+		.recent-empty{
+			padding: 0 25px;
+		}
 		.empty-view{
 			.image-container{
 				display: inline-block;

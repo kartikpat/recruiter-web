@@ -5334,6 +5334,19 @@ input::-webkit-input-placeholder {
                 vertical-align: middle;
                 color: #808080; }
 
+.loading {
+  text-align: center; }
+  .loading .lds-spinner div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 11px;
+    left: 31px;
+    width: 4px;
+    height: 12px;
+    border-radius: 20%;
+    background: #737373; }
+
 /** [/Modal] **/
 @media all and (max-width: 1024px) {
   .view-resume-modal {

@@ -328,6 +328,21 @@
 	}
 }
 
+.loading{
+	text-align: center;
+	.lds-spinner div:after {
+		content: " ";
+		display: block;
+		position: absolute;
+		top: 11px;
+		left: 31px;
+		width: 4px;
+		height: 12px;
+		border-radius: 20%;
+		background: #737373;
+	}
+} 
+
 @media all and (max-width:1024px) {
 	.page-content .my-jobs .my-jobs-listing .table-container .table-row.job .table-cell.actions .action-icon.job-twitter {
 		margin-left: 0;
