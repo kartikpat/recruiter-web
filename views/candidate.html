@@ -1,0 +1,400 @@
+{{>header}}
+
+    {{>chatSticky}}
+
+    <div class="toast-notification-container">
+        <div class="toast-notification">
+            <!-- <div class="notification-icon">
+                <img src="/static/images/close-icon.png" />
+            </div> -->
+            <div class="notification-message">
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-content">
+        <div class="view-resume-modal candidateDetailsModal">
+            <div class="main-wrapper left">
+                <div class="main-container">
+                    <div class="container resume-header">
+                        <div class="profile-image">
+                        	<img class="js_img" src="https://www.placehold.it/100x100/f5f5f5?text=+">
+                        </div>
+                        <div class="profile-information">
+                        	<p class="profile-name js_name shell"></p>
+                        	<div class="social-media-accounts">
+                        		<a class="social facebook hidden" target="_blank" style="margin-right:7px;"><img src="/static/images/facebook-round.svg"></a>
+                        		<a class="social twitter hidden" target="_blank"><img src="/static/images/twitter-round.svg"></a>
+                        	</div>
+                        </div>
+
+                        <div class="profile-snapshot">
+                        	<div class="snap current-location">
+                        		<p class="snap-title">Current Location</p>
+                        		<p class="snap-value js_loc shell"></p>
+                        	</div>
+                        	<div class="snap preferred-location">
+                        		<p class="snap-title">Preferred Location</p>
+                        		<p class="snap-value js_pref_loc shell"></p>
+                        	</div>
+                        	<div class="snap experience">
+                        		<p class="snap-title">Experience</p>
+                        		<p class="snap-value js_experience shell"></p>
+                        	</div>
+                        	<!-- <div class="snap location">
+                        		<p class="snap-title">Mobile</p>
+                        		<p class="snap-value js_contact shell"></p>
+                        	</div> -->
+                        	<div class="snap location">
+                        		<p class="snap-title">Current Salary</p>
+                        		<p class="snap-value js_sal shell"></p>
+                        	</div>
+                        </div>
+
+                        <div class="skills-area js_skills_list">
+
+                        </div>
+
+                        <div class="last-login-container">
+                        	<p>Last Login: <span class="last-login js_last_login shell"></span></p>
+                        </div>
+                    </div>
+
+                    <div class="resume-body container">
+
+                    	<div id="tabbed-content" class="hidden">
+        	            	<ul>
+        	            		<li><a href="#view-profile-info">Profile</a></li>
+        	            		<li><a href="#view-resume">Resume</a></li>
+        	            		<li><a href="#view-cover-letter" class="hidden coverLetterTab">Cover Letter</a></li>
+        	            	</ul>
+        					<div id="view-profile-info">
+                                <div class="content-block organization">
+        	            			<h3 class="content-heading">Professional Details</h3>
+        	            			<div class="content js_prof_list">
+
+        	            			</div>
+        	            		</div>
+
+        	            		<div class="content-block education">
+        	            			<h3 class="content-heading">Educational Details</h3>
+        	            			<div class="content js_edu_list">
+
+        	            			</div>
+        	            		</div>
+
+
+
+        	            		<div class="content-block more">
+        	            			<h3 class="content-heading">More Information</h3>
+        	            			<div class="content">
+        	            				<ul>
+        	            					<li>
+        	            						<p class="location">
+        	            							<span class="key">Current Location</span>
+        	            							<span class="value js_loc shell"></span>
+        	            						</p>
+        	            					</li>
+        	            					<li>
+        	            						<p class="applied">
+        	            							<span class="key">Applied Date</span>
+        	            							<span class="value js_appliedOn shell"></span>
+        	            						</p>
+        	            					</li>
+        	            					<li>
+        	            						<p class="notice-period">
+        	            							<span class="key">Notice Period</span>
+        	            							<span class="value js_notice shell"></span>
+        	            						</p>
+        	            					</li>
+        	            					<li>
+        	            						<p class="gender">
+        	            							<span class="key">Gender</span>
+        	            							<span class="value js_gender shell"></span>
+        	            						</p>
+        	            					</li>
+        	            					<li>
+        	            						<p class="age">
+        	            							<span class="key">Age</span>
+        	            							<span class="value js_age shell"></span>
+        	            						</p>
+        	            					</li>
+        	            					<li>
+        	            						<p class="experience">
+        	            							<span class="key">Experience</span>
+        	            							<span class="value js_experience shell"></span>
+        	            						</p>
+        	            					</li>
+        	            					<li>
+        	            						<p class="preferred-location">
+        	            							<span class="key">Preferred Location</span>
+        	            							<span class="value pref_loc shell"></span>
+        	            						</p>
+        	            					</li>
+        	            					<li>
+        	            						<p class="current-salary">
+        	            							<span class="key">Current Salary</span>
+        	            							<span class="value js_sal shell"></span>
+        	            						</p>
+        	            					</li>
+        	            					<li>
+        	            						<p class="expected-salary">
+        	            							<span class="key">Expected Salary</span>
+        	            							<span class="value js_expected_sal shell"></span>
+        	            						</p>
+        	            					</li>
+        	            				</ul>
+        	            			</div>
+        	            		</div>
+								<div class="sidebar-section contact-info content-block">
+										<h3 class="content-heading">Contact Information</h3>
+										<div class="wrap-mobile">
+											<span class="icon"><i class="icon-telephone"></i></span>
+											<span class="contact">9637725688</span>
+											<span class="icon iconTelephoneVer"><i class="icon-tick_circle tooltip" aria-hidden="true" title="Verified Phone Number"></i></span>
+										</div>
+
+										<div class="wrap-mobile">
+											<span class="icon"><i class="icon-mail"></i></span>
+											<span class="email-address">bareeabdul512@gmail.com</span>
+											<span class="icon iconEmailVer"><i class="icon-tick_circle tooltip" aria-hidden="true" title="Verified Email"></i></span>
+										</div>
+
+								</div>
+        	            		<div class="content-block additional">
+        	            			<h3 class="content-heading">Additional Information</h3>
+        	            			<div class="content">
+        	            				<ul>
+        	            					<li>
+        	            						<p class="marital-status">
+        	            							<span class="key">Marital Status</span>
+        	            							<span class="value js_marital_status shell"></span>
+        	            						</p>
+        	            					</li>
+        	            					<li>
+        	            						<p class="languages">
+        	            							<span class="key">Languages</span>
+        	            							<span class="value js_languages shell"></span>
+        	            						</p>
+        	            					</li>
+        	            					<li>
+        	            						<p class="work-usa">
+        	            							<span class="key">Work Permit for USA</span>
+        	            							<span class="value js_work_permit shell"></span>
+        	            						</p>
+        	            					</li>
+                                            <li>
+        	            						<p class="cat-percentile">
+        	            							<span class="key">CAT Percentile:</span>
+        	            							<span class="value js_percentile shell">N.A</span>
+        	            						</p>
+        	            					</li>
+        									<li>
+        										<p class="iit-score">
+        											<span class="key">IIT-JEE All India Rank (AIR):</span>
+        											<span class="value js_iit shell">N.A</span>
+        										</p>
+        									</li>
+        									<li>
+        										<p class="gmat-score">
+        											<span class="key">GMAT Score:</span>
+        											<span class="value js_gmat shell">N.A</span>
+        										</p>
+        									</li>
+        	            					<li>
+        	            						<p class="handled-team">
+        	            							<span class="key">Have you handled a team?</span>
+        	            							<span class="value js_handled_team shell"></span>
+        	            						</p>
+        	            					</li>
+        	            					<li>
+        	            						<p class="willing-six-days">
+        	            							<span class="key">Are you willing to work 6 days?</span>
+        	            							<span class="value js_six_days shell"></span>
+        	            						</p>
+        	            					</li>
+        	            					<li>
+        	            						<p class="willing-relocate">
+        	            							<span class="key">Are you willing to relocate</span>
+        	            							<span class="value js_relocate shell"></span>
+        	            						</p>
+        	            					</li>
+        	            					<li>
+        	            						<p class="differently-abled">
+        	            							<span class="key">Differently Abled?</span>
+        	            							<span class="value js_different_abled shell"></span>
+        	            						</p>
+        	            					</li>
+        	            					<li>
+        	            						<p class="willing-startup">
+        	            							<span class="key">Are you willing to join an early-stage startup?</span>
+        	            							<span class="value js_startup shell"></span>
+        	            						</p>
+        	            					</li>
+        	            					<li>
+        	            						<p class="willing-travel">
+        	            							<span class="key">Willingness to travel?</span>
+        	            							<span class="value js_travel shell"></span>
+        	            						</p>
+        	            					</li>
+        	            				</ul>
+        	            			</div>
+        	            		</div>
+
+                                <div class="content-block recommendations hidden">
+        	            			<h3 class="content-heading">Recommendations</h3>
+        	            			<div class="content recommendationList">
+
+        	            			</div>
+        							<div class="recommendationListSecond">
+
+        							</div>
+        							<span class="see-more link-color seeMoreRec hidden" data-clicked="false">See More</span><span class="icon-down_icon hidden"></span>
+
+        	            		</div>
+
+        	            	</div>
+        	            	<div id="view-resume" class="js_resume">
+
+        	            	</div>
+
+        	            	<div id="view-cover-letter" class="js_cover_letter">
+
+        	            	</div>
+                    	</div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-resume-sidebar">
+            	<div class="clearfix"></div>
+            	<div class="first-fold fold top">
+        			
+            	</div>
+				<div class="second-fold fold mass-action-second hidden">
+						<div class="sidebar-section external-links">
+								<div class="action">
+									<div class="save link candidateSaveModal" data-action="3" data-status="0"><span class="icon"><i class="icon-star"></i></span>Save for Later</div>
+									<div class="chat link candidateChatModal">
+										<span class="icon"><i class="icon-chat"></i></span>
+										Chat with
+										<span id="firstName" class="candidate-first-name">Abdul Baree</span>
+									</div>
+									<div class="candidateDownloadResume link">
+											<span class="icon">
+													<i class="icon-download_icon"></i>
+												</span>
+										<span>Download Resume</span>
+									</div>
+								</div>
+								<div class="action-links">
+									<div class="invite invite-links"><span class="icon"></span>Send Interview Invite:</div>
+									<div class="invite-links face-invite">
+										<span class="icon">
+											<i class="icon-face_to_face_icon"></i>
+										</span>
+										<span data-invite-id="1" class="inviteF2f invite tooltip tooltipstered" state="default">
+											<span class="context">Face to Face</span>
+											<span class="icon-container hidden"><i class="icon-tick"></i></span>
+										</span>
+									</div>
+									<div class="invite-links tele-invite">
+										<span class="icon"><i class="icon-telephone"></i></span>
+										<span data-invite-id="2" class="inviteTelephonic invite tooltip tooltipstered" state="default">
+											<span class="context">Telephonic</span>
+											<span class="icon-container hidden"><i class="icon-tick"></i></span>
+										</span>
+									</div>
+								</div>
+							</div>
+					</div>
+            </div>
+            <div class="resume-sidebar right">
+            
+                <div class="sidebar-section contact-info">
+        			<h3>Contact Information</h3>
+        			<div class="wrap">
+        				<span class="icon"><i class="icon-telephone"></i></span>
+        				<span class="contact"></span>
+        				<span class="icon iconTelephoneVer hidden"><i class="icon-tick_circle tooltip" aria-hidden="true" title="Verified Phone Number"></i></span>
+        			</div>
+
+        			<div class="wrap">
+        				<span class="icon"><i class="icon-mail"></i></span>
+        				<span class="email-address"></span>
+        				<span class="icon iconEmailVer hidden"><i class="icon-tick_circle tooltip" aria-hidden="true" title="Verified Email"></i></span>
+        			</div>
+            	</div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="recommendationWrapper prototype hidden">
+    	<div class="recommendation-header">
+    		<!-- <div class="user-image userImage left">
+    			<img src="http://placehold.it/60x60/f5f5f5?text=+">
+    		</div> -->
+    		<div class="user-details">
+    			<p class="user-name userName">Shally Sharma</p>
+    			<p class="user-link "><a target="_blank" class="userLink" href="http://www.linkedin.com/in/shally-sharma">http://www.linkedin.com/in/shally-sharma</a></p>
+    		</div>
+    		<div class="clearfix"></div>
+    	</div>
+    	<div class="recommendation-body">
+    		<p class="userBody">Akshay for one and half years while building tiksha.com, Akshay for one and half years while building tiksha.com Akshay for one and half years while building tiksha.com Akshay for one and half years while building tiksha.com</p>
+    	</div>
+    	<div class="separator jsSeperator hidden"></div>
+    </div>
+
+    <div class="skill-tag candidateTag prototype hidden">
+    	<div class="active-skill-label tagLabel"><span class="icon-label">UI/UX</span></div>
+    	<div class="remove-active-skill tagRemove"><span class="close-icon"><i class="icon-close_icon"></i></span></div>
+    </div>
+
+    <div class="datum js_prof prototype hidden">
+    	<p class="data name js_prof_name">iimjobs.com</p>
+    	<p class="detail designation js_prof_designation">Full Stack Engineer</p>
+    	<p class="detail tenure js_prof_tenure">2008-2012</p>
+    	<div class="separator jsSeperator hidden"></div>
+    </div>
+
+    <div class="datum js_edu prototype hidden">
+    	<p class="data name js_edu_name">Indian Institute of Management, Indore (IIMI)</p>
+    	<p class="detail tenure js_edu_tenure">2008-2012</p>
+    	<p class="detail degree js_edu_degree">B Tech / BE (Full Time)</p>
+    	<div class="separator jsSeperator hidden"></div>
+    </div>
+
+    <p class="fetchTags prototype hidden" data-tag-id="1">Ahmedabad</p>
+
+    <div class="conversations hidden">
+        {{>chatSidebar}}
+    </div>
+
+    <div id="" class="modal selectDefaultCalendar hidden">
+
+    	<!-- Modal content -->
+    	<div class="modal_wrapper" >
+    		<span class="modal_close">&times;</span>
+    		<div class="modal_header">
+    			<div class="modal_heading">Select Default Calendar</div>
+    		</div>
+    		<div class="modal_content">
+    			<div class="modal_text">Please choose a default calendar before sending interview invite</div>
+    			<div class="section modal_text">
+    				<span class="section calendar-options calendarContainer">
+    					<select class="select-dropdown calendarSelect">
+    					</select>
+    					<div class="error-field hidden calendarSelectError"><p>Choose a calendar to send to the applicants for this job!</p></div>
+    				</span>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+    <option class="calendarOptions prototype hidden" value="">Option 1</option>
+
+{{>footer}}
