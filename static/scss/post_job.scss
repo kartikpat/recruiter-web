@@ -302,6 +302,21 @@
     }
 }
 
+
+.loading{
+	text-align: center;
+	.lds-spinner div:after {
+		content: " ";
+		display: block;
+		position: absolute;
+		top: 12px;
+		left: 31px;
+		width: 3px;
+		height: 12px;
+		border-radius: 20%;
+	}
+}
+
 @media all and (max-width:768px) {
     #courseType {
         margin-bottom: 10px !important;
