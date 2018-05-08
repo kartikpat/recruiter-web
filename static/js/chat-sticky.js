@@ -49,6 +49,10 @@ function populateSideChatView(array) {
 
 $(document).ready(function(){
 
+    $(".chat-collapsed-candidate-container .chat-collapsed-candidate").click(function(){
+        $(this).find(".chat-collapsed-candidate-wrapper").toggleClass("hidden")
+    })
+
     if ($(document).width() < 1000) {
         maxCandidateChats = 1
     } else {

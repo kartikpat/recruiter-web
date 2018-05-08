@@ -3,7 +3,7 @@ $(document).ready(function() {
 	admin.init();
 	admin.loginHandler(function(e){
 		e.preventDefault()
-		
+
 		if(admin.validateLogin()){
             var data = admin.getData()
 			submitAdminLogin(data);
@@ -11,7 +11,7 @@ $(document).ready(function() {
 	})
 
 	function onSuccessfulReset(topic, data){
-		window.location.href= "/";
+		window.location.href= staticEndPoints.dashboard;
 
 	}
 	function onFailedReset(topic, data){

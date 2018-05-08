@@ -17,6 +17,8 @@ module.exports = function(settings){
 	var baseUrlJob = config["baseUrlJob"];
 	var welcome = config["welcome"];
 	var verifyAccount = config["verify"];
+	const url = require('url'); // built-in utility
+
 	if(env=="local")
 		baseUrl= config["baseUrl_local"];
 	else
@@ -31,7 +33,6 @@ module.exports = function(settings){
     	// you can do this however you want with whatever variables you set up
 
     	if (req.cookies["recruiter-access-token"]) {
-
 			return request.get({
 				url: baseUrl+"/recruiter",
 				headers: {
@@ -39,12 +40,12 @@ module.exports = function(settings){
 				}
 			},function(err, response, body){
 				if(err){
-					res.cookie('recruiter-access-token', '',{ domain: ".iimjobs.com",  maxAge: 60000, "path": "/"});
+					res.cookie('recruiter-access-token', '',{ "path": "/"});
 					return res.redirect('/login');
 				}
 				const jsonBody = JSON.parse(body)
+				console.log(jsonBody)
 				if(jsonBody.status && jsonBody.status =='success'){
-
 					req.profile = jsonBody.data;
 					req.profile.about = splitAbout(req.profile.about)
 					if(req.originalUrl == "/verify-email") {
@@ -65,14 +66,16 @@ module.exports = function(settings){
 						// 	return next()
 						// }
 						// return res.redirect('/dashboardview');
-						if(req.originalUrl == "/login") {
+
+						if(url.parse(req.url).pathname == "/login") {
 							return res.redirect('/')
 						}
 						return next()
 					}
 					return res.redirect('/welcome');
 				}
-				res.cookie('recruiter-access-token', '',{ domain: ".iimjobs.com",  maxAge: 60000, "path": "/", httpOnly: false});
+				res.cookie('recruiter-access-token', '',{ "path": "/"});
+				console.log(req.cookies["recruiter-access-token"])
 				return res.redirect('/login');
 			})
 
@@ -83,9 +86,10 @@ module.exports = function(settings){
 			}
 			// IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
 			if(req.originalUrl == "/login") {
+				console.log("here")
 				return next()
 			}
-			return res.redirect('/login');
+			return res.redirect('/login?callbackUrl='+req.originalUrl+'');
 		}
 	}
 
@@ -129,7 +133,8 @@ module.exports = function(settings){
 			baseDomain:baseDomain,
 			profile: req.profile,
 			baseUrlJob: baseUrlJob,
-			origin: "dashboard"
+			origin: "dashboard",
+			staticEndPoints: config["staticEndPoints"]
 		});
 		return
 	});
@@ -143,7 +148,8 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			profile: req.profile,
-			hiddenLoader:"hidden"
+			hiddenLoader:"hidden",
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	})
@@ -157,12 +163,13 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			profile: req.profile,
 			jobId: req.params.jobId,
-			hiddenClass:"hidden"
+			hiddenClass:"hidden",
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	})
 
-	app.get("/my-jobs",isAuthenticated, function(req,res){
+	app.get("/jobs",isAuthenticated, function(req,res){
 		res.render("my-jobs", {
 			title:"Recruiter Web - My Jobs | iimjobs.com",
 			styles:  assetsMapper["my-jobs"]["styles"][mode],
@@ -171,17 +178,17 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			baseUrlJob: baseUrlJob,
 			profile: req.profile,
-			origin: "MyJobs"
+			origin: "MyJobs",
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
 
-	app.get("/login", function(req,res){
+	app.get("/login",  function(req,res){
 		if(req.cookies['recruiter-access-token']){
-			console.log(req.cookies['recruiter-access-token'])
+
 			return isAuthenticated(req, res);
 		}
-		// res.cookie('recruiter-access-token', '');
 		res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 		res.setHeader("Pragma", "no-cache"); // HTTP 1.0.
 		res.setHeader("Expires", "0"); // Proxies.
@@ -203,17 +210,7 @@ module.exports = function(settings){
 	//
 	// });
 
-	app.get("/recruiter/view-booked-slots",isAuthenticated, function(req, res){
-
-		res.render("view-booked-slots",{
-			title: "IIM JOBS | View Booked Slots",
-			styles:  assetsMapper["view-booked-slots"]["styles"][mode],
-			scripts: assetsMapper["view-booked-slots"]["scripts"][mode],
-			baseUrl: baseUrl
-		})
-		return
-	})
-	app.get("/recruiter/recruiter-plan",isAuthenticated, function(req, res){
+	app.get("/plans",isAuthenticated, function(req, res){
 
 		res.render("premium-posting", {
 			title: "IIM JOBS | Premium Posting",
@@ -221,11 +218,11 @@ module.exports = function(settings){
 			scripts: assetsMapper["premium-posting"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			profile: req.profile
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	})
-
 
 	app.get("/recruiter/mass-resume-status",isAuthenticated, function(req, res){
 
@@ -235,7 +232,8 @@ module.exports = function(settings){
 			scripts: assetsMapper["mass-resume"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			profile: req.profile
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	})
@@ -269,24 +267,26 @@ module.exports = function(settings){
 			styles:  assetsMapper["ui-components"]["styles"][mode],
 			scripts: assetsMapper["ui-components"]["scripts"][mode],
 			baseUrl: baseUrl,
-			baseDomain: baseDomain
+			baseDomain: baseDomain,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	})
 
-	app.get("/settings",isAuthenticated, function(req,res){
+	app.get("/account-settings",isAuthenticated, function(req,res){
 		res.render("settings", {
 			title:"Recruiter Web - Settings | iimjobs.com",
 			styles:  assetsMapper["settings"]["styles"][mode],
 			scripts: assetsMapper["settings"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			profile: req.profile
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
 
-	app.get("/recruiter/tagged-candidates",isAuthenticated, function(req,res){
+	app.get("/candidates/tagged",isAuthenticated, function(req,res){
 		res.render("tagged-candidates", {
 			title:"Recruiter Web - Tagged Candidates | iimjobs.com",
 			styles:  assetsMapper["tagged-candidates"]["styles"][mode],
@@ -294,24 +294,26 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			profile: req.profile,
-			origin: "TaggedCandidates"
+			origin: "TaggedCandidates",
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
 
-	app.get("/recruiter/search",isAuthenticated, function(req,res){
+	app.get("/search",isAuthenticated, function(req,res){
 		res.render("global-search", {
 			title:"Recruiter Web - Global Search | iimjobs.com",
 			styles:  assetsMapper["global-search"]["styles"][mode],
 			scripts: assetsMapper["global-search"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			profile: req.profile
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
 
-	app.get("/recruiter/candidates",isAuthenticated, function(req,res){
+	app.get("/candidates",isAuthenticated, function(req,res){
 		res.render("shortlisted-candidates", {
 			title:"Recruiter Web - Shortlisted Candidates | iimjobs.com",
 			styles:  assetsMapper["shortlisted-candidates"]["styles"][mode],
@@ -319,19 +321,21 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			profile: req.profile,
-			origin: "Saved/ShorlistedCandidates"
+			origin: "Saved/ShorlistedCandidates",
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
 
-	app.get("/recruiter/candidates/followUps",isAuthenticated, function(req,res){
+	app.get("/candidates/followed-up",isAuthenticated, function(req,res){
 		res.render("follow-up", {
 			title:"Recruiter Web - Followed Up Candidates | iimjobs.com",
 			styles:  assetsMapper["follow-up"]["styles"][mode],
 			scripts: assetsMapper["follow-up"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			profile: req.profile
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
@@ -347,19 +351,21 @@ module.exports = function(settings){
 			baseUrlJob: baseUrlJob,
 			jobId: req.params.jobID,
 			profile: req.profile,
-			origin: "CandidateApplyList"
+			origin: "CandidateApplyList",
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
 
-	app.get("/my-chat",isAuthenticated, function(req,res){
+	app.get("/chats",isAuthenticated, function(req,res){
 		res.render("my-chat", {
 			title:"Recruiter Web - My Chat | iimjobs.com",
 			styles:  assetsMapper["my-chat"]["styles"][mode],
 			scripts: assetsMapper["my-chat"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			profile: req.profile
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
@@ -371,7 +377,8 @@ module.exports = function(settings){
 			scripts: assetsMapper["reports"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			profile: req.profile
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
@@ -383,7 +390,8 @@ module.exports = function(settings){
 			scripts: assetsMapper["welcome"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			profile: req.profile
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
@@ -395,7 +403,8 @@ module.exports = function(settings){
 			scripts: assetsMapper["verify-email"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			profile: req.profile
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
@@ -408,7 +417,8 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			hiddenActions: "hidden",
-			profile: req.profile
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
@@ -421,7 +431,8 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			hiddenActions: "hidden",
-			profile: req.profile
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
@@ -434,7 +445,8 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			hiddenActions: "hidden",
-			profile: req.profile
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
@@ -447,7 +459,8 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			hiddenActions: "hidden",
-			profile: req.profile
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
@@ -460,7 +473,8 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			hiddenActions: "hidden",
-			profile: req.profile
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
@@ -473,7 +487,8 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			hiddenActions: "hidden",
-			profile: req.profile
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
@@ -487,7 +502,8 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			verify:verifyAccount,
-			email: email
+			email: email,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
@@ -502,7 +518,8 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			email: email,
-			key: key
+			key: key,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
@@ -515,7 +532,8 @@ module.exports = function(settings){
 			styles:  assetsMapper["reset-password"]["styles"][mode],
 			scripts: assetsMapper["admin"]["scripts"][mode],
 			baseUrl: baseUrl,
-			baseDomain: baseDomain
+			baseDomain: baseDomain,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
@@ -526,7 +544,8 @@ module.exports = function(settings){
 			styles:  assetsMapper["account-verified"]["styles"][mode],
 			scripts: assetsMapper["account-verified"]["scripts"][mode],
 			baseUrl: baseUrl,
-			baseDomain: baseDomain
+			baseDomain: baseDomain,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
@@ -544,7 +563,7 @@ module.exports = function(settings){
 	// });
 
 	// TODO: replace with a more semantic url
-	app.get("/Interview-scheduler-updated",isAuthenticated,function(req, res){
+	app.get("/calendar/create",isAuthenticated,function(req, res){
 		res.render("Interview-scheduler-updated", {
 			title: "Calender | Dashboard",
 			styles:  assetsMapper["Interview-scheduler-updated"]["styles"][mode],
@@ -554,7 +573,8 @@ module.exports = function(settings){
 			applicationId: req.params.applicationID,
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			profile: req.profile
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
 		});
 		return
 	});
@@ -570,7 +590,8 @@ module.exports = function(settings){
 			hiddenClass: "hidden",
 			jobId: req.params.jobID,
 			applicationId: req.params.applicationID,
-			profile: req.profile
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
 		});
 		return
 	});
@@ -584,24 +605,26 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			jobId: req.params.jobID,
 			applicationId: req.params.applicationID,
-			profile: req.profile
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
 
-	app.get("/booked-slots",isAuthenticated, function(req,res){
+	app.get("/interviews",isAuthenticated, function(req,res){
 		res.render("booked-slots", {
 			title:"Recruiter Web - Booked Slots | iimjobs.com",
 			styles:  assetsMapper["booked-slots"]["styles"][mode],
 			scripts: assetsMapper["booked-slots"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			profile: req.profile
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
 
-	app.get("/calendar-manage",isAuthenticated, function(req,res){
+	app.get("/calendars",isAuthenticated, function(req,res){
 		res.render("calendar-manage", {
 			title:"Recruiter Web - Manage Calendar | iimjobs.com",
 			styles:  assetsMapper["calendar-manage"]["styles"][mode],
@@ -610,7 +633,8 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			jobId: req.params.jobID,
 			applicationId: req.params.applicationID,
-			profile: req.profile
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
@@ -623,7 +647,8 @@ module.exports = function(settings){
 			scripts: assetsMapper["dashboardview"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			profile: req.profile
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
@@ -634,14 +659,16 @@ module.exports = function(settings){
 			styles:assetsMapper['forgot-password']['styles'][mode],
 			scripts:assetsMapper['forgot-password']['scripts'][mode],
 			baseUrl: baseUrl,
-			baseDomain: baseDomain
+			baseDomain: baseDomain,
+			staticEndPoints: config["staticEndPoints"]
 		})
 	});
 	app.get("/connect-success", function(req, res){
 		res.render("connect-success", {
 			title:"Account Connected Successfully | iimjobs.com",
 			baseUrl: baseUrl,
-			baseDomain: baseDomain
+			baseDomain: baseDomain,
+			staticEndPoints: config["staticEndPoints"]
 		});
 	})
 
@@ -653,7 +680,8 @@ module.exports = function(settings){
 			scripts: assetsMapper["transition"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			oldCookie: oldCookie
+			oldCookie: oldCookie,
+			staticEndPoints: config["staticEndPoints"]
 		});
 	})
 
@@ -665,7 +693,8 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			jobId: req.params.jobID,
-			profile: req.profile
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
 		});
 	});
 
@@ -691,7 +720,6 @@ module.exports = function(settings){
 		};
 		request(options, function (error, response, body) {
 			if (error){
-				console.log(error);
 				return res.redirect('/test');
 			}
 		  	const jsonBody = body;

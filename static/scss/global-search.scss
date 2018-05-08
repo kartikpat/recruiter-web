@@ -16,6 +16,14 @@
     }
 }
 
+@media all and (max-width:1024px) {
+    .page-content {
+        .conversations {
+    		display:none;
+    	}
+    }
+}
+
 .page-header {
     padding: 20px 0;
 }
@@ -199,7 +207,7 @@
 								font-size:$candidate-skill-font-size;
 								a{
 									color:$candidate-skill-text-color;
-									
+
 								}
 							}
 						}
@@ -496,11 +504,11 @@ span.multipleJobListingText {
 }
 .multipleJobListingbox{
 	cursor: pointer;
-	
+
 }
 .multipleJobListing {
 	padding: 10px 0;
-	
+
 }
 
 .candAppliedJobs {
