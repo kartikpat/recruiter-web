@@ -3,10 +3,19 @@ $(document).ready(function(){
 	recruiterProfile.init();
 	recruiterProfile.setProfile(profile)
 	fetchRecruiterCredits(recruiterId);
-	console.log(window.location);
-	// if(window.location='/account-settings-distribute-credits'){
-		
-	// }
+
+	var successMsg = getQueryParameter("credit");
+	console.log(successMsg);	
+    if(!isEmpty(successMsg)) {
+        var newUrl = removeParam("credit", window.location.href)
+        window.history.replaceState("object or string", "Title", newUrl);
+		$('.settings-setion').addClass('hidden')
+		$('.distribute-credits').removeClass('hidden');
+		$('.listing li').removeClass('active');
+		$('#credits').addClass('active');
+		$('.settings-section.profile').addClass('hidden');
+	}
+	
 	recruiterProfile.submitHandler(function(type){
 		if(recruiterProfile.validate()){
 			$('.'+type+'').find('.spinner').removeClass('hidden');
@@ -95,7 +104,6 @@ $(document).ready(function(){
 	}
 
 	function onFetchSuccess(topic,data){
-		$('.distribute-credits').removeClass('hidden');
 		recruiterProfile.togglespinner();
 		recruiterProfile.credits(data);	
 	}
@@ -108,9 +116,7 @@ $(document).ready(function(){
 	function onSuccessfulSubmitCredit(){
 		$('.spinner').addClass('hidden');
 		$('#credits-distribute').removeClass('hidden');
-		setTimeout(function(){
-			location.href=location+"-distributeCredits"
-		}, 2);
+		window.location.href = location+"?credit=1";
 	}
 
 	function onFailedSubmitCredit(){
@@ -119,7 +125,7 @@ $(document).ready(function(){
 	}
 
 	function onSuccessfulReclaimCredit(){
-		
+		window.location.href = location+"?credit=1";
 	}
 
 	function onFailedReclaimCredit(){
