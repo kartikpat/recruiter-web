@@ -822,6 +822,7 @@ body.posf {
   text-decoration: none !important; }
 
 .lds-spinner {
+  text-align: center;
   color: black;
   display: inline-block;
   position: relative;
@@ -1525,7 +1526,7 @@ label {
   background-position: left center; }
 
 .radio-input input:checked + label {
-  background-image: url("/static/images/checked_radio.svg"); }
+  background-image: url("/static/images/checkbox.png"); }
 
 .check-input input {
   display: none; }
@@ -1542,7 +1543,7 @@ label {
   background-position: left 2px center; }
 
 .check-input input:checked + label {
-  background-image: url("/static/images/checked_checkbox.svg"); }
+  background-image: url("/static/images/checkbox.png"); }
 
 span.sticker {
   display: inline-block;
@@ -1969,7 +1970,27 @@ span.sticker {
       text-decoration: underline; }
   .page-content .jobs-card {
     padding-top: 20px;
-    padding-bottom: 20px; }
+    padding-bottom: 20px;
+    min-height: 100px; }
+    .page-content .jobs-card .loadingloader {
+      text-align: center; }
+      .page-content .jobs-card .loadingloader .lds-spinner {
+        text-align: center;
+        color: black;
+        display: inline-block;
+        position: relative;
+        width: 64px;
+        height: 64px;
+        bottom: 10px; }
+      .page-content .jobs-card .loadingloader .lds-spinner div:after {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 12px;
+        left: 31px;
+        width: 3px;
+        height: 12px;
+        border-radius: 20%; }
   .page-content .roles-card {
     padding-top: 20px; }
   .page-content .detail-card {
@@ -1977,7 +1998,7 @@ span.sticker {
     border: 1px solid #e8e8e8;
     background-color: #ffffff;
     border-radius: 4px;
-    min-height: 100%; }
+    min-height: 100px; }
     .page-content .detail-card .recent-empty {
       padding: 0 20px; }
     .page-content .detail-card .empty-view .image-container {

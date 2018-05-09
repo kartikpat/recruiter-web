@@ -293,6 +293,29 @@ $button-border-color: #8f8a8a;
 	.jobs-card{
 		padding-top: 20px;
 		padding-bottom: 20px;
+		min-height: 100px;
+		.loadingloader{
+			text-align: center;
+			.lds-spinner {
+				text-align: center;
+				color: black;
+				display: inline-block;
+				position: relative;
+				width: 64px;
+				height: 64px;
+				bottom: 10px;	
+			}
+			.lds-spinner div:after {
+				content: " ";
+				display: block;
+				position: absolute;
+				top: 12px;
+				left: 31px;
+				width: 3px;
+				height: 12px;
+				border-radius: 20%;
+			}
+		}
 	}
 	.roles-card{
 		padding-top: 20px;
@@ -303,7 +326,7 @@ $button-border-color: #8f8a8a;
 		border: 1px solid $card-border;
 		background-color: $white;
 		border-radius: 4px;
-		min-height: 100%;
+		min-height: 100px;
 		.recent-empty{
 			padding: 0 20px;
 		}
@@ -377,6 +400,8 @@ $button-border-color: #8f8a8a;
 		}
 		.graph_holder{
 			padding: 20px 20px;
+			// min-height: 100%;
+			// height: 100px;
 			svg{
 				border-radius: 6px;
 			}
@@ -878,6 +903,9 @@ $button-border-color: #8f8a8a;
 	}
 
 }
+
+
+
 
 @media all and (max-width: 992px) {
 	.page-content{
