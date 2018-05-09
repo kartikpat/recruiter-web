@@ -14,6 +14,23 @@ $horizontal-separator-color: #e9eef8;
 $white-highlight-color:  #f7f8fa;
 $button-border-color: #8f8a8a;
 
+
+.shell {
+    .section {
+        margin-bottom: 10px !important;
+    }
+    p {
+        @include title-shell;
+		width: 75%;
+    }
+	.meta-content{
+		.meta
+		display: inline-block;
+		width: 40%;
+		@include text-shell;
+	}
+}
+
 .tooltipster-sidetip .tooltipster-box {
 	color: $resume-profile-snapshot-background !important;
 	font-size: 12px !important;
@@ -294,28 +311,7 @@ $button-border-color: #8f8a8a;
 		padding-top: 20px;
 		padding-bottom: 20px;
 		min-height: 100px;
-		.loadingloader{
-			text-align: center;
-			.lds-spinner {
-				text-align: center;
-				color: black;
-				display: inline-block;
-				position: relative;
-				width: 64px;
-				height: 64px;
-				bottom: 10px;	
-			}
-			.lds-spinner div:after {
-				content: " ";
-				display: block;
-				position: absolute;
-				top: 12px;
-				left: 31px;
-				width: 3px;
-				height: 12px;
-				border-radius: 20%;
-			}
-		}
+	
 	}
 	.roles-card{
 		padding-top: 20px;

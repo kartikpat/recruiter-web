@@ -164,8 +164,10 @@
 		reportsShell: 'shells/reports-shell',
 		bookedSlotsShell: 'shells/booked-slots-shell',
 		massResumeShell: 'shells/mass-resume-shell',
+		dashboardShell: 'shells/dashboard-shell',
 		chatSticky: 'chat-sticky'
 	});
+	
 	app.set('view engine', 'html');
 	app.set('views', __dirname + '/views');
 	app.use("/static",express.static(__dirname+"/static"))

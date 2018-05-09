@@ -1692,6 +1692,42 @@ span.sticker {
       .conversations .conversation-listing-container .conversations-listing .conversation-item:last-child .user-item.user-info p.user-designation {
         border-color: transparent; }
 
+.shell .section {
+  margin-bottom: 10px !important; }
+
+.shell p {
+  font-size: 0;
+  background-color: #d8d5d5;
+  opacity: 0.4;
+  min-height: 15px;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+  position: relative;
+  width: 75%; }
+
+.shell .meta-prop {
+  display: inline-block;
+  width: 40%;
+  font-size: 0;
+  background-color: #d8d5d5;
+  opacity: 0.4;
+  min-height: 10px;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+  position: relative; }
+
 .tooltipster-sidetip .tooltipster-box {
   color: #f9f9f9 !important;
   font-size: 12px !important; }
@@ -1972,25 +2008,6 @@ span.sticker {
     padding-top: 20px;
     padding-bottom: 20px;
     min-height: 100px; }
-    .page-content .jobs-card .loadingloader {
-      text-align: center; }
-      .page-content .jobs-card .loadingloader .lds-spinner {
-        text-align: center;
-        color: black;
-        display: inline-block;
-        position: relative;
-        width: 64px;
-        height: 64px;
-        bottom: 10px; }
-      .page-content .jobs-card .loadingloader .lds-spinner div:after {
-        content: " ";
-        display: block;
-        position: absolute;
-        top: 12px;
-        left: 31px;
-        width: 3px;
-        height: 12px;
-        border-radius: 20%; }
   .page-content .roles-card {
     padding-top: 20px; }
   .page-content .detail-card {
