@@ -368,6 +368,7 @@ function onClickShareOnLinkedIn(fn){
 		if(data.length==0){
 			recentEmptyContiner.removeClass('hidden');
 		}
+		$('.shell').addClass('hidden');
 		data.forEach(function(aJob, index){
 			var card = jobRowCard.clone().removeClass('hidden prototype');
 			var experience = aJob['exp']['min']+'-'+aJob['exp']['max']+'yrs'

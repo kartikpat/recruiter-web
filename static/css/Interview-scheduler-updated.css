@@ -479,7 +479,7 @@ label {
   background-position: left center; }
 
 .radio-input input:checked + label {
-  background-image: url("/static/images/checked_radio.svg"); }
+  background-image: url("/static/images/checkbox.png"); }
 
 .check-input input {
   display: none; }
@@ -496,7 +496,7 @@ label {
   background-position: left 2px center; }
 
 .check-input input:checked + label {
-  background-image: url("/static/images/checked_checkbox.svg"); }
+  background-image: url("/static/images/checkbox.png"); }
 
 span.sticker {
   display: inline-block;
@@ -1247,7 +1247,7 @@ span.sticker {
                   font-weight: 400;
                   text-align: left; }
                 .wrap .second-container .available-hours .Days-available .table .dayId .section .check-input input:checked + label {
-                  background-image: url("/static/images/checked_checkbox.svg"); }
+                  background-image: url("/static/images/checkbox.png"); }
                 .wrap .second-container .available-hours .Days-available .table .dayId .section .check-input #Check-span {
                   display: none;
                   border-width: 1px;

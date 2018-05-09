@@ -4,7 +4,7 @@
 <!--[if IE 8]>    <html class="lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html> <!--<![endif]-->
 <head>
-	<title>{{title}}</title>
+	<title class="title">{{title}}</title>
 	<link href="../../static/css/chat-sticky.css" rel="stylesheet">
 	<script src="/static/js/Tracker/googleTrackerSnippet.js"></script>
 	{{#styles.length}}
@@ -163,8 +163,8 @@
 						<div class="profile-body">
 							<ul class="profile-item-listing">
 
-								<li class="basicAccount">Basic Posting <span class="right">Unlimited Posting</span></li>
-								<li class="basicAccount">Premium Posting <span class="right"><span style="font-weight:bold;">{{profile.availableCredits}}</span> Credits Available</span></li>
+								<li class="basicAccount">Basic Posting <span class="right-side" style="margin-left: 36px;">Unlimited Posting</span></li>
+								<li class="basicAccount">Premium Posting <span class="right-side"><span style="font-weight:bold;color: #149075 ; margin-left:10px">{{profile.availableCredits}}</span> Credits Available</span></li>
 								<li class="accountSettings settings"><a href="{{staticEndPoints.recruiterProfile}}">Account Settings</a></li>
 
 								<li class="logout recruiterLogout" ><a href="">Logout</a></li>

@@ -507,7 +507,7 @@ label {
   background-position: left center; }
 
 .radio-input input:checked + label {
-  background-image: url("/static/images/checked_radio.svg"); }
+  background-image: url("/static/images/checkbox.png"); }
 
 .check-input input {
   display: none; }
@@ -524,7 +524,7 @@ label {
   background-position: left 2px center; }
 
 .check-input input:checked + label {
-  background-image: url("/static/images/checked_checkbox.svg"); }
+  background-image: url("/static/images/checkbox.png"); }
 
 span.sticker {
   display: inline-block;
@@ -757,7 +757,7 @@ span.sticker {
           background-size: 20px;
           background-position: left 2px center; }
         .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] input:checked + label {
-          background-image: url("/static/images/checked_checkbox.svg"); }
+          background-image: url("/static/images/checkbox.png"); }
         .job_posting .post_job .post_job_form .field-container .field select.half {
           width: 49%;
           display: inline-block; }
@@ -885,7 +885,7 @@ span.sticker {
     background-size: 20px;
     background-position: left 2px center; }
   .premium_job_section .contents input:checked + label {
-    background-image: url("/static/images/checked_checkbox.svg"); }
+    background-image: url("/static/images/checkbox.png"); }
   .premium_job_section label span {
     font-size: 14px; }
   .premium_job_section p {

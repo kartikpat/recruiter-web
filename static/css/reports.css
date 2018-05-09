@@ -507,7 +507,7 @@ label {
   background-position: left center; }
 
 .radio-input input:checked + label {
-  background-image: url("/static/images/checked_radio.svg"); }
+  background-image: url("/static/images/checkbox.png"); }
 
 .check-input input {
   display: none; }
@@ -524,7 +524,7 @@ label {
   background-position: left 2px center; }
 
 .check-input input:checked + label {
-  background-image: url("/static/images/checked_checkbox.svg"); }
+  background-image: url("/static/images/checkbox.png"); }
 
 span.sticker {
   display: inline-block;
@@ -1187,6 +1187,7 @@ body.posf {
   text-decoration: none !important; }
 
 .lds-spinner {
+  text-align: center;
   color: black;
   display: inline-block;
   position: relative;
@@ -1890,7 +1891,7 @@ label {
   background-position: left center; }
 
 .radio-input input:checked + label {
-  background-image: url("/static/images/checked_radio.svg"); }
+  background-image: url("/static/images/checkbox.png"); }
 
 .check-input input {
   display: none; }
@@ -1907,7 +1908,7 @@ label {
   background-position: left 2px center; }
 
 .check-input input:checked + label {
-  background-image: url("/static/images/checked_checkbox.svg"); }
+  background-image: url("/static/images/checkbox.png"); }
 
 span.sticker {
   display: inline-block;
@@ -2863,7 +2864,7 @@ label {
   background-position: left center; }
 
 .radio-input input:checked + label {
-  background-image: url("/static/images/checked_radio.svg"); }
+  background-image: url("/static/images/checkbox.png"); }
 
 .check-input input {
   display: none; }
@@ -2880,7 +2881,7 @@ label {
   background-position: left 2px center; }
 
 .check-input input:checked + label {
-  background-image: url("/static/images/checked_checkbox.svg"); }
+  background-image: url("/static/images/checkbox.png"); }
 
 span.sticker {
   display: inline-block;
