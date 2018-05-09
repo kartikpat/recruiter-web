@@ -467,6 +467,7 @@ jQuery(document).ready( function() {
                 obj["tags"].push(tag)
                 aCandidate.appendCandidateTag(tag)
                 candidates.appendCandidateTag(tag,res.applicationId);
+                candidates.showTag(res.applicationId);
                 return toastNotify(1, "Tag Added Successfully")
             }
             var tagId = res.parameters.tagId

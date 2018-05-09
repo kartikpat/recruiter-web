@@ -1170,6 +1170,10 @@ function candidateList() {
         settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .commentLink").removeClass("hidden")
     }
 
+    function showTag(applicationId) {
+        settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .tagLink").removeClass("hidden")
+    }
+
     function changeStatus(arr, newStatus) {
         arr.forEach(function(applicationId){
             settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"']").attr("data-status", newStatus)
@@ -1310,6 +1314,7 @@ function candidateList() {
         hideEmptyScreen: hideEmptyScreen,
         contactMenu:contactMenu,
         showComment: showComment,
+        showTag:showTag,
         onClickTag:onClickTag,
         showDropdownTags: showDropdownTags,
         onClickDeleteTag: onClickDeleteTag,

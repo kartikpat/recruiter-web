@@ -225,7 +225,7 @@ function Candidate() {
         var item = getElement(aData["userID"]);
         item.element.attr("data-application-id", aData["id"])
         item.image.attr("src", (aData["img"] || "/static/images/noimage.png"))
-        settings.pageTitle.text("Profile-"+aData["name"]+"| iimjobs.com");
+        settings.pageTitle.text("Profile-"+aData["name"]+" | iimjobs.com");
         item.name.text(aData["name"] || "NA").removeClass("shell");
         item.experience.text(aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m" || "NA").removeClass("shell");
         item.location.text(aData["currentLocation"] || "NA").removeClass("shell");
