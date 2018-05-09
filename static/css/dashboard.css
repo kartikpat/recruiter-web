@@ -2174,6 +2174,56 @@ span.sticker {
       background: #f7f8fa;
       border-radius: 4px;
       padding-bottom: 10px; }
+    .page-content .detail-card .notification-row .action-buttons {
+      width: calc( 100% - 90px);
+      text-align: left;
+      padding-left: 10px;
+      padding-top: 0px; }
+      .page-content .detail-card .notification-row .action-buttons .button {
+        margin-right: 10px; }
+      .page-content .detail-card .notification-row .action-buttons .candidateShortlist-wrapper {
+        height: 28px;
+        padding: 0px;
+        text-align: center; }
+        .page-content .detail-card .notification-row .action-buttons .candidateShortlist-wrapper .spinner {
+          text-align: center;
+          margin-top: 4px; }
+        .page-content .detail-card .notification-row .action-buttons .candidateShortlist-wrapper .spinner > div {
+          width: 10px;
+          height: 10px; }
+        .page-content .detail-card .notification-row .action-buttons .candidateShortlist-wrapper .candidateShortlist {
+          border: none;
+          border-radius: 0px;
+          margin: 0px;
+          width: 100%;
+          font-size: 13px; }
+        .page-content .detail-card .notification-row .action-buttons .candidateShortlist-wrapper .candidateShortlist:hover {
+          background: #1f8f75;
+          color: #fff;
+          width: 100%;
+          height: 100%; }
+      .page-content .detail-card .notification-row .action-buttons .candidateReject-wrapper {
+        width: 78px;
+        height: 28px;
+        padding: 0px;
+        text-align: center; }
+        .page-content .detail-card .notification-row .action-buttons .candidateReject-wrapper .spinner {
+          text-align: center;
+          margin-top: 4px; }
+        .page-content .detail-card .notification-row .action-buttons .candidateReject-wrapper .spinner > div {
+          width: 10px;
+          height: 10px; }
+        .page-content .detail-card .notification-row .action-buttons .candidateReject-wrapper .candidateReject {
+          border: none;
+          border-radius: 0px;
+          margin: 0px;
+          width: 100%;
+          font-size: 13px; }
+        .page-content .detail-card .notification-row .action-buttons .candidateReject-wrapper .candidateReject:hover {
+          background: #af595a;
+          color: #fff;
+          width: 100%;
+          height: 100%; }
     .page-content .detail-card .notification-row.multiple {
       padding-top: 15px; }
       .page-content .detail-card .notification-row.multiple .meta {

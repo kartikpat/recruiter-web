@@ -2,7 +2,11 @@ $(document).ready(function(){
 	var recruiterProfile = Profile();
 	recruiterProfile.init();
 	recruiterProfile.setProfile(profile)
-	fetchRecruiterCredits(recruiterId);	
+	fetchRecruiterCredits(recruiterId);
+	console.log(window.location);
+	// if(window.location='/account-settings-distribute-credits'){
+		
+	// }
 	recruiterProfile.submitHandler(function(type){
 		if(recruiterProfile.validate()){
 			$('.'+type+'').find('.spinner').removeClass('hidden');
@@ -105,8 +109,8 @@ $(document).ready(function(){
 		$('.spinner').addClass('hidden');
 		$('#credits-distribute').removeClass('hidden');
 		setTimeout(function(){
-			location.reload()
-		}, 2000);
+			location.href=location+"-distributeCredits"
+		}, 2);
 	}
 
 	function onFailedSubmitCredit(){

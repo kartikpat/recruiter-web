@@ -286,6 +286,19 @@ module.exports = function(settings){
 		return
 	});
 
+	app.get("/account-settings-distribute-credits",isAuthenticated, function(req,res){
+		res.render("settings", {
+			title:"Recruiter Web - Settings | iimjobs.com",
+			styles:  assetsMapper["settings"]["styles"][mode],
+			scripts: assetsMapper["settings"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
+		})
+		return
+	});
+	
 	app.get("/candidates/tagged",isAuthenticated, function(req,res){
 		res.render("tagged-candidates", {
 			title:"Tagged Candidates | iimjobs.com",
