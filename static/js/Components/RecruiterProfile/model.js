@@ -89,7 +89,6 @@ function Profile(){
 				jQuery(this).siblings().removeClass("active");
 				jQuery(".settings-section."+activeSection).removeClass("hidden").siblings().addClass("hidden");
 			});
-
 	}
 
 	function addToList(dataArray, status, offset, pageContent, filterFlag){
@@ -358,9 +357,8 @@ function Profile(){
 
 	function credits(data){
 		var data=data.data;
-		console.log(data);
 		if(data.length==0){
-			// console.log("hide");
+			
 		}
 		else{
 			data.forEach(function(aRow){

@@ -589,6 +589,7 @@ body.posf {
   text-decoration: none !important; }
 
 .lds-spinner {
+  text-align: center;
   color: black;
   display: inline-block;
   position: relative;
