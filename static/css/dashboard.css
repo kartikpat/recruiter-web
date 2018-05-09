@@ -1692,10 +1692,39 @@ span.sticker {
       .conversations .conversation-listing-container .conversations-listing .conversation-item:last-child .user-item.user-info p.user-designation {
         border-color: transparent; }
 
-.shell .section {
-  margin-bottom: 10px !important; }
+.shell .title {
+  display: inline-block;
+  width: 90%;
+  font-size: 0;
+  background-color: #d8d5d5;
+  opacity: 0.4;
+  min-height: 15px;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+  position: relative; }
+  .shell .title .meta-content .meta-prop {
+    display: inline-block;
+    font-size: 0;
+    background-color: #d8d5d5;
+    opacity: 0.4;
+    min-height: 15px;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: #f6f7f8;
+    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+    background-size: 800px 104px;
+    position: relative; }
 
-.shell p {
+.shell .stats .applications .label {
   font-size: 0;
   background-color: #d8d5d5;
   opacity: 0.4;
@@ -1709,24 +1738,7 @@ span.sticker {
   background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
   background-size: 800px 104px;
   position: relative;
-  width: 75%; }
-
-.shell .meta-prop {
-  display: inline-block;
-  width: 40%;
-  font-size: 0;
-  background-color: #d8d5d5;
-  opacity: 0.4;
-  min-height: 10px;
-  animation-duration: 1.5s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-  animation-name: placeHolderShimmer;
-  animation-timing-function: linear;
-  background: #f6f7f8;
-  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
-  background-size: 800px 104px;
-  position: relative; }
+  width: 80%; }
 
 .tooltipster-sidetip .tooltipster-box {
   color: #f9f9f9 !important;

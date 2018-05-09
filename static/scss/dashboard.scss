@@ -16,18 +16,24 @@ $button-border-color: #8f8a8a;
 
 
 .shell {
-    .section {
-        margin-bottom: 10px !important;
-    }
-    p {
-        @include title-shell;
-		width: 75%;
-    }
-	.meta-content{
-		.meta
+	.title{
 		display: inline-block;
-		width: 40%;
-		@include text-shell;
+		width: 90%;
+		@include title-shell;
+		.meta-content{
+			.meta-prop{
+				display: inline-block;
+				@include title-shell;
+			}	
+		}
+	}
+	.stats{
+		.applications{
+			.label{
+				@include title-shell;
+				width: 80%;
+			}
+		}
 	}
 }
 
