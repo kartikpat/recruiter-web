@@ -2942,7 +2942,8 @@ span.sticker {
   resize: none;
   min-height: 50px;
   margin-bottom: 15px;
-  overflow: hidden; }
+  overflow: hidden;
+  border: 1px solid #e8e8e8; }
   .sidebar-section.comments textarea:focus {
     outline: none;
     border: 1px solid #1f8f75; }
