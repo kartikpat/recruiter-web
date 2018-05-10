@@ -40,6 +40,7 @@ function Header(){
 			settings.globalSearch= $("#globalSearch"),
 			settings.searchResume=$('.search-resume'),
 			settings.CloseresumeModal=$('.modal_close');
+			settings.legacyRecruiter=$('.legacyRecruiter');
 			settings.searchAccess = 1;
 
 			$(".recruiterLogout").click(function(){
@@ -102,7 +103,11 @@ function Header(){
 				sendEvent('rtViewManageCalendar', eventObj)
 				return true
 			})
-	}
+			
+			// settings.legacyRecruiter.click(function(){
+			// 	//callfunction
+			// })
+		}
 
 
     function setUserProfile(profile){
