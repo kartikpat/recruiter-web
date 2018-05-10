@@ -956,7 +956,6 @@ jQuery(document).ready( function() {
              $('.title').text("Applications-" +jobRow["title"]+"| iimjobs.com");
               var data = {
                 jobTitle: getTitleFormat(jobRow["title"],(/\(\d+-\d+ \w+\)$/)),
-                
                 jobLocation: getLocation(jobRow["location"]),
                 jobExperience: jobRow["exp"]['min']+ ' - ' + jobRow['exp']['max'] +' yrs',
                 jobPublishedId: jobRow['publishedId'],

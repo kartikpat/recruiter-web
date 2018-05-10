@@ -1,96 +1,96 @@
 
-var res = [
-  {
-     "date":"2012-07-14T01:00:00+01:00"
-    ,"requestId": "WVadlg==",
-    "status": "Request completed Download link sent on mail.",
-    "downloads": 2,
-    "count": 1,
-    "expiry": "2012-07-14T01:00:00+01:00",
-    "downloadLink": "https://www.iimjobs.com/masscount/WVadlg==/WlqbmrE="
-  },
-  {
-     "date":"2012-07-14T01:00:00+01:00"
-    ,"requestId": "WVadlg==",
-    "status": "Request completed Download link sent on mail.",
-    "downloads": 2,
-    "count": 1,
-    "expiry": "2012-07-14T01:00:00+01:00",
-    "downloadLink": "https://www.iimjobs.com/masscount/WVadlg==/WlqbmrE="
-  },
-  {
-     "date":"2012-07-14T01:00:00+01:00"
-    ,"requestId": "WVadlg==",
-    "status": "Request completed Download link sent on mail.",
-    "downloads": 2,
-    "count": 1,
-    "expiry": "2012-07-14T01:00:00+01:00",
-    "downloadLink": "https://www.iimjobs.com/masscount/WVadlg==/WlqbmrE="
-  },
-  {
-     "date":"2012-07-14T01:00:00+01:00"
-    ,"requestId": "WVadlg==",
-    "status": "Request completed Download link sent on mail.",
-    "downloads": 1,
-    "count": 1,
-    "expiry": "2012-07-14T01:00:00+01:00",
-    "downloadLink": "https://www.iimjobs.com/masscount/WVadlg==/WlqbmrE="
-  },
-  {
-     "date":"2012-07-14T01:00:00+01:00"
-    ,"requestId": "WVadlg==",
-    "status": "Request completed Download link sent on mail.",
-    "downloads": 10,
-    "count": 1,
-    "expiry": "2012-07-14T01:00:00+01:00",
-    "downloadLink": "https://www.iimjobs.com/masscount/WVadlg==/WlqbmrE="
-  },
-  {
-     "date":"2012-07-14T01:00:00+01:00"
-    ,"requestId": "WVadlg==",
-    "status": "Request completed Download link sent on mail.",
-    "downloads": 2,
-    "count": 1,
-    "expiry": "2012-07-14T01:00:00+01:00",
-    "downloadLink": "https://www.iimjobs.com/masscount/WVadlg==/WlqbmrE="
-  },
-  {
-     "date":"2012-07-14T01:00:00+01:00"
-    ,"requestId": "WVadlg==",
-    "status": "Request completed Download link sent on mail.",
-    "downloads": 2,
-    "count": 1,
-    "expiry": "2012-07-14T01:00:00+01:00",
-    "downloadLink": "https://www.iimjobs.com/masscount/WVadlg==/WlqbmrE="
-  },
-  {
-     "date":"2012-07-14T01:00:00+01:00"
-    ,"requestId": "WVadlg==",
-    "status": "Request completed Download link sent on mail.",
-    "downloads": 2,
-    "count": 1,
-    "expiry": "2012-07-14T01:00:00+01:00",
-    "downloadLink": "https://www.iimjobs.com/masscount/WVadlg==/WlqbmrE="
-  },
-  {
-     "date":"2012-07-14T01:00:00+01:00"
-    ,"requestId": "WVadlg==",
-    "status": "Request completed Download link sent on mail.",
-    "downloads": 2,
-    "count": 1,
-    "expiry": "2012-07-14T01:00:00+01:00",
-    "downloadLink": "https://www.iimjobs.com/masscount/WVadlg==/WlqbmrE="
-  },
-  {
-     "date":"2012-07-14T01:00:00+01:00"
-    ,"requestId": "WVadlg==",
-    "status": "Request completed Download link sent on mail.",
-    "downloads": 0,
-    "count": 1,
-    "expiry": "2012-07-14T01:00:00+01:00",
-    "downloadLink": "https://www.iimjobs.com/masscount/WVadlg==/WlqbmrE="
-  }
-]
+// var res = [
+//   {
+//      "date":"2012-07-14T01:00:00+01:00"
+//     ,"requestId": "WVadlg==",
+//     "status": "Request completed Download link sent on mail.",
+//     "downloads": 2,
+//     "count": 1,
+//     "expiry": "2012-07-14T01:00:00+01:00",
+//     "downloadLink": "https://www.iimjobs.com/masscount/WVadlg==/WlqbmrE="
+//   },
+//   {
+//      "date":"2012-07-14T01:00:00+01:00"
+//     ,"requestId": "WVadlg==",
+//     "status": "Request completed Download link sent on mail.",
+//     "downloads": 2,
+//     "count": 1,
+//     "expiry": "2012-07-14T01:00:00+01:00",
+//     "downloadLink": "https://www.iimjobs.com/masscount/WVadlg==/WlqbmrE="
+//   },
+//   {
+//      "date":"2012-07-14T01:00:00+01:00"
+//     ,"requestId": "WVadlg==",
+//     "status": "Request completed Download link sent on mail.",
+//     "downloads": 2,
+//     "count": 1,
+//     "expiry": "2012-07-14T01:00:00+01:00",
+//     "downloadLink": "https://www.iimjobs.com/masscount/WVadlg==/WlqbmrE="
+//   },
+//   {
+//      "date":"2012-07-14T01:00:00+01:00"
+//     ,"requestId": "WVadlg==",
+//     "status": "Request completed Download link sent on mail.",
+//     "downloads": 1,
+//     "count": 1,
+//     "expiry": "2012-07-14T01:00:00+01:00",
+//     "downloadLink": "https://www.iimjobs.com/masscount/WVadlg==/WlqbmrE="
+//   },
+//   {
+//      "date":"2012-07-14T01:00:00+01:00"
+//     ,"requestId": "WVadlg==",
+//     "status": "Request completed Download link sent on mail.",
+//     "downloads": 10,
+//     "count": 1,
+//     "expiry": "2012-07-14T01:00:00+01:00",
+//     "downloadLink": "https://www.iimjobs.com/masscount/WVadlg==/WlqbmrE="
+//   },
+//   {
+//      "date":"2012-07-14T01:00:00+01:00"
+//     ,"requestId": "WVadlg==",
+//     "status": "Request completed Download link sent on mail.",
+//     "downloads": 2,
+//     "count": 1,
+//     "expiry": "2012-07-14T01:00:00+01:00",
+//     "downloadLink": "https://www.iimjobs.com/masscount/WVadlg==/WlqbmrE="
+//   },
+//   {
+//      "date":"2012-07-14T01:00:00+01:00"
+//     ,"requestId": "WVadlg==",
+//     "status": "Request completed Download link sent on mail.",
+//     "downloads": 2,
+//     "count": 1,
+//     "expiry": "2012-07-14T01:00:00+01:00",
+//     "downloadLink": "https://www.iimjobs.com/masscount/WVadlg==/WlqbmrE="
+//   },
+//   {
+//      "date":"2012-07-14T01:00:00+01:00"
+//     ,"requestId": "WVadlg==",
+//     "status": "Request completed Download link sent on mail.",
+//     "downloads": 2,
+//     "count": 1,
+//     "expiry": "2012-07-14T01:00:00+01:00",
+//     "downloadLink": "https://www.iimjobs.com/masscount/WVadlg==/WlqbmrE="
+//   },
+//   {
+//      "date":"2012-07-14T01:00:00+01:00"
+//     ,"requestId": "WVadlg==",
+//     "status": "Request completed Download link sent on mail.",
+//     "downloads": 2,
+//     "count": 1,
+//     "expiry": "2012-07-14T01:00:00+01:00",
+//     "downloadLink": "https://www.iimjobs.com/masscount/WVadlg==/WlqbmrE="
+//   },
+//   {
+//      "date":"2012-07-14T01:00:00+01:00"
+//     ,"requestId": "WVadlg==",
+//     "status": "Request completed Download link sent on mail.",
+//     "downloads": 0,
+//     "count": 1,
+//     "expiry": "2012-07-14T01:00:00+01:00",
+//     "downloadLink": "https://www.iimjobs.com/masscount/WVadlg==/WlqbmrE="
+//   }
+// ]
 
 
 function MassResume(){
@@ -102,7 +102,7 @@ function MassResume(){
         settings.massResumeShell = $(".massResume.shell")
         settings.emptyView=$('.empty-view'),
         settings.header=$('.mass-resume-header')      
-        addToList(res);
+        // addToList(res);
     }
 
     function getElement() {
@@ -121,18 +121,18 @@ function MassResume(){
     function populateResumeStatus(aResume){
         var item=getElement();
           item.date.text(ISODateToD_M_Y(aResume["date"]));
-          item.requestId.text(aResume["requestId"]);
+          item.requestId.text(aResume["id"]);
           item.Status.text(aResume["status"]);
             var noOfDownloads;
-            if(aResume["downloads"] == 0) {
+            if(aResume["downloadCount"] == 0) {
                 noOfDownloads = "No Downloaded";
             }
             else {
-                noOfDownloads = "No. Of Downloads: " +aResume["downloads"];
+                noOfDownloads = "No. Of Downloads: " +aResume["downloadCount"];
             }
           item.noOfDownloads.text(noOfDownloads);
-          item.count.text(aResume["count"]);
-          item.downloadLink.html("<div>Expires On: "+ISODateToD_M_Y(aResume["expiry"]) + "  " + ISODateToTime(aResume["expiry"])+"</div><div class='download-link'><a href="+aResume["downloadLink"]+" class='link-color  download-resume-link'>Click Here</a> to download</div>");
+          item.count.text(aResume["resumeCount"]);
+          item.downloadLink.html("<div>Expires On: "+ISODateToD_M_Y(aResume["expiry"]) + "  " + ISODateToTime(aResume["expiry"])+"</div><div class='download-link'><a href="+aResume["path"]+" class='link-color  download-resume-link'>Click Here</a> to download</div>");
           return item
     }
 
@@ -147,12 +147,13 @@ function MassResume(){
 
 
     function addToList(dataArray){
+        console.log(dataArray)
       var str = '';
       if(dataArray.length==0){
            settings.emptyView.removeClass('hidden');
            settings.header.addClass('hidden');
       }
-      dataArray.forEach(function(aData, index){
+      dataArray.data.forEach(function(aData){
           var item = populateResumeStatus(aData);
           str+=item.element[0].outerHTML;
       });
@@ -171,7 +172,8 @@ function MassResume(){
         populateResumeStatus:populateResumeStatus,
         getElement:getElement,
         showShells: showShells,
-        hideShells: hideShells
+        hideShells: hideShells,
+        addToList:addToList
     }
 
 }

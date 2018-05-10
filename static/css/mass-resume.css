@@ -3080,7 +3080,7 @@ span.sticker {
     line-height: 1.5;
     border-radius: 0;
     padding: 8px 35px 8px;
-    background-image: url("/static/images/search-icon.svg");
+    background-image: url("/static/images/magnifying-glass.svg");
     background-repeat: no-repeat;
     background-position: left 10px center;
     background-size: 14px;
@@ -3328,10 +3328,11 @@ span.sticker {
     font-size: 18px;
     font-weight: 600;
     text-align: left;
-    display: inline-block;
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 25px; }
+    width: 1200px;
+    margin: 0px auto;
+    padding: 15px 0; }
   .page-content .main-container .mass-resume-table {
     width: 1200px;
     margin: 0px auto; }

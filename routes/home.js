@@ -125,6 +125,18 @@ module.exports = function(settings){
 	// })
 
 	app.get("/", isAuthenticated,function(req, res){
+		if(req.profile.onBoarding==0){
+			res.render("dashboardview", {
+				title:"Recruiter Web - Newuser| iimjobs.com",
+				styles:  assetsMapper["dashboardview"]["styles"][mode],
+				scripts: assetsMapper["dashboardview"]["scripts"][mode],
+				baseUrl: baseUrl,
+				baseDomain: baseDomain,
+				profile: req.profile,
+				staticEndPoints: config["staticEndPoints"]
+			})
+			return
+		}
 		res.render("dashboard", {
 			title: "Recruiter Dashboard | iimjobs.com",
 			styles:  assetsMapper["dashboard"]["styles"][mode],
