@@ -125,7 +125,7 @@ module.exports = function(settings){
 	// })
 
 	app.get("/", isAuthenticated,function(req, res){
-		if(req.profile.onBoarding==0){
+		if(req.profile.onboarding==1){
 			res.render("dashboardview", {
 				title:"Recruiter Web - Newuser| iimjobs.com",
 				styles:  assetsMapper["dashboardview"]["styles"][mode],

@@ -132,7 +132,9 @@ function MassResume(){
             }
           item.noOfDownloads.text(noOfDownloads);
           item.count.text(aResume["resumeCount"]);
-          item.downloadLink.html("<div>Expires On: "+ISODateToD_M_Y(aResume["expiry"]) + "  " + ISODateToTime(aResume["expiry"])+"</div><div class='download-link'><a href="+aResume["path"]+" class='link-color  download-resume-link'>Click Here</a> to download</div>");
+          var str=encodeURI(aResume['id']);
+          var aResumeLink=baseUrl+"/bulk/"+str+"/"+aResume["path"];
+          item.downloadLink.html("<div>Expires On: "+ISODateToD_M_Y(aResume["expiry"]) + "  " + ISODateToTime(aResume["expiry"])+"</div><div class='download-link'><a href="+aResumeLink+">Click Here</a> to download</div>");
           return item
     }
 
@@ -143,8 +145,6 @@ function MassResume(){
     function hideShells() {
         settings.massResumeShell.addClass("hidden");
     }
-
-
 
     function addToList(dataArray){
         console.log(dataArray)
