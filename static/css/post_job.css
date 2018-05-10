@@ -610,6 +610,9 @@ span.sticker {
   right: -9px !important;
   top: -7px !important; }
 
+a:hover {
+  text-decoration: underline; }
+
 .area-heading, .job_posting .post_job .section-heading, .premium_job_section .section-head {
   margin-bottom: 20px; }
   .area-heading h3, .job_posting .post_job .section-heading h3, .premium_job_section .section-head h3 {

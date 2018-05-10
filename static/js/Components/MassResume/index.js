@@ -1,27 +1,24 @@
+
 var globalParameters = {
     pageContent: 10,
     pageNumber: 1,
  }
 
-
 $(document).ready(function(){
     var resume=MassResume();
     resume.init();
-
-    //initial call
     var parameters = {}
 	parameters.pageNumber = globalParameters.pageNumber;
 	parameters.pageContent = globalParameters.pageContent;
     fetchRecruiterResume(recruiterId);   
     
-    
-
-    function onFetchResumeSuccess(topic, data) {
-        resume.addToList(data,parameters);
+    function onFetchResumeSuccess(topic,data) {
+        console.log(data);
+        resume.addToList(data);
     }
 
-    function onFetchResumeFail(topic, data) {
-        errorHandler(data)
+    function onFetchResumeFail(data) {
+        console.log(data);
     }
 
     function checkScrollEnd() {
@@ -34,7 +31,7 @@ $(document).ready(function(){
                 parameters.pageContent = globalParameters.pageContent;
                 parameters.type = globalParameters.type;
                 showLoader()
-    			fetchRecruiterResume(recruiterId); 
+    			fetchRecruiterResume(recruiterId,parameters); 
     		}
             else
                 tickerLock = false;

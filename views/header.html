@@ -161,12 +161,13 @@
 							<p class="user-email user_email" id="">{{profile.email}}</p>
 						</div>
 						<div class="profile-body">
+							<div class="content-container">
+									<div class="basicAccount">Basic Account: <span class="right-side">Unlimited</span></div>
+									<div class="basicAccount">Premium Posting: <span class="right-side"><span style="font-weight:bold;color: #149075">{{profile.availableCredits}}</span> Credits</span></div>
+							</div>
 							<ul class="profile-item-listing">
-
-								<li class="basicAccount">Basic Posting <span class="right-side" style="margin-left: 36px;">Unlimited Posting</span></li>
-								<li class="basicAccount">Premium Posting <span class="right-side"><span style="font-weight:bold;color: #149075 ; margin-left:10px">{{profile.availableCredits}}</span> Credits Available</span></li>
+								<li class="legacyRecruiter"><a href="{{staticEndPoints.legacyRecruiterUrl}}">Go back to old Recruiter</a></li>
 								<li class="accountSettings settings"><a href="{{staticEndPoints.recruiterProfile}}">Account Settings</a></li>
-								<li class="legacyRecruiter"><a href="{{staticEndPoints.legacyRecruiterUrl}}">Legacy Recruiter</a></li>
 								<li class="logout recruiterLogout" ><a href="">Logout</a></li>
 							</ul>
 						</div>
@@ -216,10 +217,12 @@
 
 			<div class="mobile-profile-actions mobile-menu-item menu-section {{hiddenActions}}">
 				<ul class="profile-item-listing">
-					<a class="basicAccount"><li>Basic Account <span class="right white basic">Unlimited Posting</span></li></a>
-					<a class="basicAccount"><li>Premium Posting <span class="right basic"><span style="font-weight:bold;">{{profile.availableCredits}}</span> Credits Available</span></li></a>
+					<div class="content-container-mob">
+						<a class="basicAccount"><li>Basic Account: <span class="white basic">Unlimited</span></li></a>
+						<a class="basicAccount"><li>Premium Posting: <span class="basic"><span style="font-weight:bold;">{{profile.availableCredits}}</span> Credits</span></li></a>
+					</div>
+					<a href={{staticEndPoints.legacyRecruiterUrl}}><li class="legacyRecruiter">Get back to old Recruiter</li></a>
 					<a class="accountSettings" href="{{staticEndPoints.recruiterProfile}}"><li class="settings">Account Settings</li></a>
-					<a href={{staticEndPoints.legacyRecruiterUrl}}><li class="legacyRecruiter">Legacy Recruiter</li></a>
 					<a href=""><li class="recruiterLogout">Logout</li></a>
 				</ul>
 			</div>

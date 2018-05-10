@@ -568,6 +568,11 @@ function candidateList() {
             var applicationId= $(this).closest(settings.candidateRowClass).attr("data-application-id")
             $('.action-tooltip').addClass('hidden');
             $(this).closest(settings.candidateRowClass).find('.comment-tooltip').removeClass('hidden');
+            $(this).closest(settings.candidateRowClass).find(settings.commentTextarea).removeClass("hidden");
+            $(this).closest(settings.candidateRowClass).find(settings.candidateCommentTextareaClass).addClass("hidden");
+            $(this).closest(settings.candidateRowClass).find(settings.candidateAddCommentButtonClass).addClass("hidden");
+            $(this).closest(settings.candidateRowClass).find(settings.candidateEditComment).removeClass("hidden");
+    
             if(window.innerWidth<768){
                 addBodyFixed();
             }

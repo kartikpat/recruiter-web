@@ -14,7 +14,7 @@
             font-size: $modal_heading-font-size;
             font-weight: 600;
             text-align: left;
-            margin-top: 33px;
+            margin-top: 35px;
             margin-left: 27px;
             padding-bottom: 35px;
         }
@@ -59,7 +59,7 @@
                     height: 48px;
                     resize: none;
                     outline: none;
-                    padding: 16px 10px;
+                    padding: 14px 10px;
                     overflow: hidden;
                     font-size: 14px;
                 }
@@ -258,7 +258,7 @@
         display: inline-block;    
         .available-hours{
             margin-top: 37px;
-            margin-left: 30px;
+            margin-left: 28px;
             .Days-available{
                 float:left;
                 margin-right: 5%;
@@ -561,7 +561,7 @@
                                         border: 1px solid $page-content-background-color;
                                         background-image: url("/static/images/black_caret_down.svg");
                                         background-repeat: no-repeat;
-                                        background-position: right 18px center;
+                                        background-position: right 10px center;
                                         cursor: pointer;
                                         border-color: $page-content-background-color;
                                         -webkit-appearance: none;
@@ -692,7 +692,7 @@
                         width: 283px;
                         height: 48px;
                         outline: none;
-                        padding-top: 12px;
+                        padding-top: 5px;
                         margin-top: 20px;
                         font-size: 14px;
                         padding-left: 10px;
@@ -779,7 +779,7 @@
                         width: 283px;
                         height: 48px;
                         outline: none;
-                        padding-top: 12px;
+                        padding-top: 5px;
                         margin-top: 20px;
                         font-size: 14px;
                         padding-left: 10px;
@@ -1206,7 +1206,7 @@
                         }
                         img{
                            // padding-right:52px;
-                           padding-top: 10px;
+                        //    padding-top: 10px;
                         }
                         .radio-input {
                             input + label {
