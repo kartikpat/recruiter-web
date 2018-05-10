@@ -446,6 +446,8 @@
 
 												&.value {
 													color:$color-black;
+													word-wrap: break-word;
+    												max-width: 370px;
                                                     &.shell {
                                                         @include text-shell;
                                                         max-width: 100px;
