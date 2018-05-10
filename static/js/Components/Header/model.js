@@ -42,7 +42,7 @@ function Header(){
 			settings.CloseresumeModal=$('.modal_close');
 			settings.legacyRecruiter=$('.legacyRecruiter');
 			settings.searchAccess = 1;
-			settings.legacyRecruiter = $('.legacyRecruiter');
+			settings.legacyRecruiter = $('.legacyRecruiter a');
 
 			$(".recruiterLogout").click(function(){
 
@@ -53,8 +53,7 @@ function Header(){
 			});
 
 			settings.legacyRecruiter.click(function(event){
-				event.preventDefault();
-				Set_Cookie('old_recruiter', "1",null,"/", baseDomain+'.com' );
+				// Set_Cookie('old_recruiter', "1",null,"/", baseDomain+'.com' );
 				return true;
 			})
 
