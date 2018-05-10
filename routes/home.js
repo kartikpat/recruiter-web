@@ -44,7 +44,6 @@ module.exports = function(settings){
 					return res.redirect('/login');
 				}
 				const jsonBody = JSON.parse(body)
-				console.log(jsonBody)
 				if(jsonBody.status && jsonBody.status =='success'){
 					req.profile = jsonBody.data;
 					req.profile.about = splitAbout(req.profile.about)

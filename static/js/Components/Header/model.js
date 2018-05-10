@@ -54,7 +54,7 @@ function Header(){
 
 			settings.legacyRecruiter.click(function(event){
 				event.preventDefault();
-				Set_Cookie('old_recruiter', "1",null,"/", domain );
+				Set_Cookie('old_recruiter', "1",null,"/", baseDomain+'.com' );
 				return true;
 			})
 
