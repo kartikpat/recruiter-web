@@ -34,7 +34,7 @@ module.exports = function(settings){
     	if(!req.cookies['IIMJOBS_CK1'])
     		return res.redirect("/login");
     	if(req.cookies['IIMJOBS_CK1'] != req.cookies['IIMJOBS_CK1_COPY'])
-    		return res.redirect("/login");
+    		return	res.redirect('/transition');
 
     	if (req.cookies["recruiter-access-token"]) {
 			return request.get({
@@ -83,9 +83,9 @@ module.exports = function(settings){
 			})
 
 		}
-		if(req.cookies['IIMJOBS_CK1']){
-			return	res.redirect('/transition');
-		}
+		// if(req.cookies['IIMJOBS_CK1']){
+		// 	return	res.redirect('/transition');
+		// }
 		// IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
 		if(req.originalUrl == "/login") {
 			console.log("here")

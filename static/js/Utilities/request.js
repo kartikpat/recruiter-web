@@ -51,10 +51,10 @@ var getRequest = function(url,parameters,successCallback,failCallback, additiona
         'Authorization': 'Bearer '+getCookie("recruiter-access-token")
     }
 
-    if([baseUrl+"/recruiter/login/verify", baseUrl+"/recruiter/login", baseUrl+"/recruiter/register", baseUrl+"/recruiter/resend", baseUrl+"/recruiter/forgot-password",baseUrl+"/recruiter/reset"  ].indexOf(url) <0 && getCookie('IIMJOBS_CK1')!=getCookie('IIMJOBS_CK1_COPY')){
-        debugger      
-        return window.location.reload();
-    }
+    // if([baseUrl+"/recruiter/login/verify", baseUrl+"/recruiter/login", baseUrl+"/recruiter/register", baseUrl+"/recruiter/resend", baseUrl+"/recruiter/forgot-password",baseUrl+"/recruiter/reset"  ].indexOf(url) <0 && getCookie('IIMJOBS_CK1')!=getCookie('IIMJOBS_CK1_COPY')){
+    //     debugger      
+    //     return window.location.reload();
+    // }
 
     return  $.ajax({
         method: "GET",
