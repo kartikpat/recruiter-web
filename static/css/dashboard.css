@@ -899,6 +899,9 @@ body.posf {
   100% {
     opacity: 0; } }
 
+img {
+  object-fit: cover; }
+
 a {
   text-decoration: none; }
 
@@ -2121,7 +2124,7 @@ span.sticker {
     .page-content .detail-card .profile .icon {
       width: 80px;
       padding-right: 0px;
-      padding-top: 14px;
+      padding-top: 5px;
       padding-left: 10px; }
       .page-content .detail-card .profile .icon img {
         width: 80px;
@@ -2137,7 +2140,7 @@ span.sticker {
       padding: 10px;
       width: calc(100% - 90px);
       display: inline-block;
-      padding-bottom: 0px;
+      padding-top: 25px;
       padding-left: 20px; }
       .page-content .detail-card .profile .general .name {
         color: #149075;
@@ -2169,12 +2172,12 @@ span.sticker {
       font-weight: 400 !important; }
     .page-content .detail-card .highlighted-profile {
       position: relative;
-      top: -10px;
       padding-top: 10px;
       background: #f7f8fa;
       border-radius: 4px;
       padding-bottom: 10px; }
     .page-content .detail-card .notification-row .action-buttons {
+      margin-bottom: 20px;
       width: calc( 100% - 90px);
       text-align: left;
       padding-left: 10px;

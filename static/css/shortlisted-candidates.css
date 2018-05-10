@@ -1264,6 +1264,9 @@ body.posf {
   100% {
     opacity: 0; } }
 
+img {
+  object-fit: cover; }
+
 a {
   text-decoration: none; }
 

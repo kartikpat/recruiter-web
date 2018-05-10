@@ -992,7 +992,7 @@ input::-webkit-input-placeholder {
 			margin-left: 0px;
 		}
         .downloadResumeMass {
-            margin-left: 15px !important;
+            // margin-left: 15px !important;
         }
         &.mobile {
             display: none;
@@ -1622,7 +1622,17 @@ input::-webkit-input-placeholder {
 
 						.social-media-accounts {
 							margin:10px 0 20px;
-
+							a{
+								.icon-facebook::before {
+									content: '\e84a';
+									font-size: 30px;
+								}
+								.icon-twitter::before {
+									content: '\e849';
+									font-size: 30px;
+									color: #54adef;
+								}
+							}
 							span {
 								&.social {
 									margin:0 5px;
