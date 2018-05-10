@@ -321,7 +321,6 @@ function Calendar(){
             if(!(fromDateMoment.isBefore(dateToMatch) ||fromDateMoment.isSame(dateToMatch)))
             continue
             for(var j=parseInt(start);j<parseInt(end);j+=30){
-                // debugger
                 if(j==30){
                     $('.fc-'+daySchema[id]).find("#hours-030").css({"text-decoration":"none" ,"opacity":"1","color":"#149075"});
                 }
@@ -575,7 +574,11 @@ function Calendar(){
             },200);
             return false
         }
-        if($('#start_date').datepicker().val()>$('#end_date').val()){
+        var start_date=$('#start_date').datepicker().val();
+        var end_date=$('#end_date').datepicker().val();
+        var start_date=moment(start_date);
+        var end_date=moment(end_date);
+        if(end_date.isBefore(start_date)){
             settings.radioInput.next('.error').text("Start Date should not be greater than end date");
             $('html, body').animate({
                 scrollTop: (settings.radioInput.offset().top)

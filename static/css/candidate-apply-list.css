@@ -3738,8 +3738,7 @@ input::-webkit-input-placeholder {
               text-transform: uppercase; }
       .page-content .candidate-apply-listing .candidates-area .candidates-area-body .empty-screen {
         padding: 15% 0px;
-        background-color: #FFF;
-        border: 1px solid #e8e8e8; }
+        background-color: #FFF; }
         .page-content .candidate-apply-listing .candidates-area .candidates-area-body .empty-screen .image-container {
           text-align: center;
           padding-top: 20px; }
@@ -5880,6 +5879,11 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
     padding: 6px 12px; } }
 
 @media all and (max-width: 768px) {
+  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .empty-screen {
+    padding: 15% 0px;
+    background-color: #FFF;
+    border: 1px solid #e8e8e8;
+    border-top: none; }
   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .action-tooltip {
     position: fixed;
     top: 0px;

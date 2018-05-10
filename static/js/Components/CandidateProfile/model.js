@@ -37,7 +37,7 @@ function Candidate() {
         settings.calendarSelect = $(".calendarSelect");
         settings.candidateDownloadResume = $(".candidateDownloadResume");
         settings.selectDefaultCalendar = $(".selectDefaultCalendar")
-        settings.pageTitle=$('.title');
+        settings.pageTitle=$('.titlePage');
         initializeTooltip();
         jQuery("#tabbed-content").tabs({
             create: function(){
