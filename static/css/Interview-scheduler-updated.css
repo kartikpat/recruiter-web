@@ -937,7 +937,7 @@ span.sticker {
     font-size: 18px;
     font-weight: 600;
     text-align: left;
-    margin-top: 33px;
+    margin-top: 35px;
     margin-left: 27px;
     padding-bottom: 35px; }
   .wrap .container .form .details {
@@ -978,7 +978,7 @@ span.sticker {
       height: 48px;
       resize: none;
       outline: none;
-      padding: 16px 10px;
+      padding: 14px 10px;
       overflow: hidden;
       font-size: 14px; }
     .wrap .container .form .input-name .error {
@@ -1135,7 +1135,7 @@ span.sticker {
     display: inline-block; }
     .wrap .second-container .available-hours {
       margin-top: 37px;
-      margin-left: 30px; }
+      margin-left: 28px; }
       .wrap .second-container .available-hours .Days-available {
         float: left;
         margin-right: 5%; }
@@ -1402,7 +1402,7 @@ span.sticker {
                 border: 1px solid #e8e8e8;
                 background-image: url("/static/images/black_caret_down.svg");
                 background-repeat: no-repeat;
-                background-position: right 18px center;
+                background-position: right 10px center;
                 cursor: pointer;
                 border-color: #e8e8e8;
                 -webkit-appearance: none;
@@ -1504,7 +1504,7 @@ span.sticker {
           width: 283px;
           height: 48px;
           outline: none;
-          padding-top: 12px;
+          padding-top: 5px;
           margin-top: 20px;
           font-size: 14px;
           padding-left: 10px; }
@@ -1570,7 +1570,7 @@ span.sticker {
           width: 283px;
           height: 48px;
           outline: none;
-          padding-top: 12px;
+          padding-top: 5px;
           margin-top: 20px;
           font-size: 14px;
           padding-left: 10px; }
@@ -1859,8 +1859,6 @@ span.sticker {
     outline: none; }
   .wrap .second-container .available-hours .end-date .section .input-field {
     width: 55%; }
-  .wrap .second-container .available-hours .end-date .section img {
-    padding-top: 10px; }
   .wrap .second-container .available-hours .end-date .section .radio-input input + label {
     line-height: 20px; }
   .wrap .second-container .available-hours .end-date .section #enddatepicker {

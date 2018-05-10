@@ -208,12 +208,9 @@ function Candidate() {
             iitScore: modal.find(".js_iit"),
             gmatScore: modal.find(".js_gmat"),
             coverLetter: modal.find(".js_cover_letter"),
-
             recommendationList: modal.find('.recommendationList'),
-
             contact:modal.find('.contact'),
             email:modal.find('.email-address'),
-
             tag: modal.find(".candidateTagInput"),
             mobTag: modal.find(".mobCandidateTagInput"),
             seeMoreRec: modal.find(".seeMoreRec"),
@@ -339,14 +336,13 @@ function Candidate() {
         item.lastActive.text(lastActiveDate)
         var eduStr = '';
         $.each(aData["education"],function(index, anObj) {
-
             var item = getEducationElement()
             item.name.text(anObj["institute"])
-            item.tenure.text(anObj["batch"]["from"] + " to " + anObj["batch"]["to"] )
+            item.tenure.text(anObj["batch"]["from"] + "to" + anObj["batch"]["to"] )
             item.degree.text(anObj["degree"] +" "+ "("+anObj["courseType"]+")")
             if(index != aData["education"].length - 1)
                 item.seperator.removeClass("hidden")
-            eduStr+=item.element[0].outerHTML
+                eduStr+=item.element[0].outerHTML
         })
         item.eduList.html(eduStr)
         var profStr = '';

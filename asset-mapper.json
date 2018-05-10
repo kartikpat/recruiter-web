@@ -164,14 +164,13 @@
 				"static/js/Utilities/common.js",
 				"static/js/utilities.js",
 				"static/js/Utilities/pubsub.js",
+				"static/js/Services/fetchRecruiterResume.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Components/MassResume/model.js",
 				"static/js/Components/MassResume/index.js",
 				"static/js/Tracker/tracker.js",
 				"static/js/eventMapping.js"
-
-
 			],
 			"prod" : [
 				"static/build/js/mass-resume.min.js"
