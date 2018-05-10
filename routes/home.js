@@ -31,6 +31,10 @@ module.exports = function(settings){
 		// bypassing the auth for development
     	// CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     	// you can do this however you want with whatever variables you set up
+    	if(!req.cookies['IIMJOBS_CK1'])
+    		return res.redirect("/login");
+    	if(req.cookies['IIMJOBS_CK1'] != req.cookies['IIMJOBS_CK1_COPY'])
+    		return res.redirect("/login");
 
     	if (req.cookies["recruiter-access-token"]) {
 			return request.get({
@@ -79,17 +83,16 @@ module.exports = function(settings){
 			})
 
 		}
-		else{
-			if(req.cookies['IIMJOBS_CK1']){
-				return	res.redirect('/transition');
-			}
-			// IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
-			if(req.originalUrl == "/login") {
-				console.log("here")
-				return next()
-			}
-			return res.redirect('/login?callbackUrl='+req.originalUrl+'');
+		if(req.cookies['IIMJOBS_CK1']){
+			return	res.redirect('/transition');
 		}
+		// IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
+		if(req.originalUrl == "/login") {
+			console.log("here")
+			return next()
+		}
+		return res.redirect('/login?callbackUrl='+req.originalUrl+'');
+		
 	}
 
 	function isVerified(req,res,next) {
@@ -184,8 +187,7 @@ module.exports = function(settings){
 	});
 
 	app.get("/login",  function(req,res){
-		if(req.cookies['recruiter-access-token']){
-
+		if(req.cookies['recruiter-access-token'] && req.cookies['IIMJOBS_CK1']){
 			return isAuthenticated(req, res);
 		}
 		res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.

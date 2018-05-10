@@ -5,6 +5,7 @@ function verifyLogin(oldCookie){
 			var token = xhr.getResponseHeader('Set-Token');
 			localStorage["recruiter-access-token"] = token;
 			Set_Cookie('recruiter-access-token', token);
+			Set_Cookie('IIMJOBS_CK1_COPY', oldCookie, 1, "/", "iimjobs.com", null, true );
 			return pubsub.publish("loginVerifySuccess", res);
 		}
 		},function(res,status,error) {

@@ -7,6 +7,7 @@ function submitLogin(data){
 			localStorage["recruiter-access-token"] = token;
 			Set_Cookie('recruiter-access-token', token);
 			Set_Cookie('IIMJOBS_CK1', universalToken, 1, "/", "iimjobs.com", null, true );
+			Set_Cookie('IIMJOBS_CK1_COPY', universalToken, 1, "/", "iimjobs.com", null, true );
 			return pubsub.publish("successfulLogin", res.data);
 		}
 	}, function(res,status,error) {
