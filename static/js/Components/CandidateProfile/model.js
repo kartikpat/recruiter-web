@@ -221,7 +221,7 @@ function Candidate() {
     }
 
     function populateCandidateData(aData, type, status) {
-
+        console.log(aData);
         var item = getElement(aData["userID"]);
         item.element.attr("data-application-id", aData["id"])
         item.image.attr("src", (aData["img"] || "/static/images/noimage.png"))
@@ -250,7 +250,7 @@ function Candidate() {
             item.notice.text((aData["notice"] + " months")).removeClass("shell");
         }
         item.salary.text(formatSalary(aData["ctc"])).removeClass("shell");
-        item.firstName.text(aData["name"]).removeClass("shell");
+        item.firstName.text(aData["name"]);
         item.contact.text(aData["phone"] || "NA");
         item.email.text(aData["email"]||"NA");
         // var lastActiveDays = getLastActiveDay(aData["lastActive"])
