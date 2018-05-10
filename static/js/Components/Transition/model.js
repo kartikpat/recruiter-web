@@ -24,7 +24,7 @@ $(document).ready(function(){
 
     var verifyLoginSubscription = pubsub.subscribe("loginVerifySuccess", onSuccessVerifyLogin)
     var verifyLoginSubscription = pubsub.subscribe("loginVerifyFail", onFailVerifyLogin)
-
+    
     verifyLogin(oldCookie);
 
 });
