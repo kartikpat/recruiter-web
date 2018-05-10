@@ -41,6 +41,7 @@ function Header(){
 			settings.searchResume=$('.search-resume'),
 			settings.CloseresumeModal=$('.modal_close');
 			settings.searchAccess = 1;
+			settings.legacyRecruiter = $('.legacyRecruiter');
 
 			$(".recruiterLogout").click(function(){
 
@@ -48,6 +49,12 @@ function Header(){
 				document.cookie = "IIMJOBS_CK1" + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC;domain=.'+baseDomain+'.com;path=/;';
 
 				window.location.href = staticEndPoints.landing;
+			});
+
+			settings.legacyRecruiter.click(function(event){
+				event.preventDefault();
+				Set_Cookie('old_recruiter', "1",null,"/", domain );
+				return true;
 			})
 
 			$(".logoLink").click(function(){
