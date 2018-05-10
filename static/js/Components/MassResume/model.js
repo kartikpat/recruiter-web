@@ -149,7 +149,7 @@ function MassResume(){
     function addToList(dataArray){
         console.log(dataArray)
       var str = '';
-      if(dataArray.length==0){
+      if(dataArray.data.length==0){
            settings.emptyView.removeClass('hidden');
            settings.header.addClass('hidden');
       }
