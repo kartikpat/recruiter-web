@@ -4058,12 +4058,21 @@ input::-webkit-input-placeholder {
                     font-size: 12px;
                     display: inline-block;
                     text-align: left;
-                    resize: none; }
+                    resize: none;
+                    width: 60%; }
+                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .view-links .comments:after {
+                    content: "";
+                    background-color: #808080;
+                    width: 1px;
+                    height: 12px;
+                    display: inline-block;
+                    position: relative;
+                    margin-left: 10px;
+                    top: 2px; }
                   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .view-links .tags {
                     font-size: 12px;
                     display: inline-block;
-                    margin-left: 12px;
-                    padding-left: 12px; }
+                    width: 40%; }
               .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .skill-tag-listing .skill-tag {
                 margin: 5px;
                 display: inline-block;

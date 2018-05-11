@@ -734,13 +734,23 @@ input::-webkit-input-placeholder {
 													display:inline-block;
 													text-align:left;
 													resize: none;
+													width: 60%;
 												}
-
+												.comments:after {
+													content: "";
+													background-color: #808080;
+													width: 1px;
+													height: 12px;
+													display: inline-block;
+													position: relative;
+													margin-left: 10px;
+													top: 2px;
+												}
+												
 												.tags {
 													font-size:$filter-tag-size;
 													display:inline-block;
-												    margin-left: 12px;
-													padding-left: 12px;
+												    width: 40%;
 												}
 											}
 										}
