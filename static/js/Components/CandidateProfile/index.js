@@ -170,7 +170,8 @@ jQuery(document).ready( function() {
 
     function onCandidateProfileFetchSuccess(topic, res) {
         store.saveToStore(res.data)
-
+        if(parseInt(res.data[0].status) == 0)
+        setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
         aCandidate.populateCandidateData(res.data[0])
         fetchjobCalendars(jobId, recruiterId)
     }
@@ -180,6 +181,15 @@ jQuery(document).ready( function() {
    }
 
     function onSuccessfullCandidateAction(topic, res) {
+        
+        if(res.action == "view") {
+            var newStatus = 4
+            var obj = store.getCandidateFromStore(res.applicationId)
+            console.log(obj);
+            obj["status"] = newStatus;
+            return aCandidates.changeStatus(arr, newStatus)
+        }
+
         if(res.action == "download") {
             var newStatus = 5
             return aCandidate.changeStatus( newStatus)

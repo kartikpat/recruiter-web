@@ -3777,7 +3777,8 @@ input::-webkit-input-placeholder {
               line-height: 1; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-body .selection-bar .bulk-selection-item.active {
             border-color: #1f8f75;
-            position: relative; }
+            position: relative;
+            top: 1px; }
             .page-content .candidate-apply-listing .candidates-area .candidates-area-body .selection-bar .bulk-selection-item.active span {
               color: #1f8f75; }
       .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing {
