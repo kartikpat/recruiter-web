@@ -141,7 +141,6 @@ function Candidate() {
     function onClickSendInterviewInviteF2F(fn) {
         settings.candidateDetailsModal.on('click', settings.sendInterviewInviteF2FClass, function(e){
             e.preventDefault()
-            
             if(parseInt($(this).attr("data-clickable")) == 1) {
                 window.location = staticEndPoints.createCalendar
 
@@ -642,8 +641,7 @@ function Candidate() {
     }
 
     function onClickAddTag(fn, fn1) {
-
-        settings.candidateDetailsModal.on('keyup', settings.candidateTagInputClass ,function(event) {
+      settings.candidateDetailsModal.on('keyup', settings.candidateTagInputClass ,function(event) {
             event.stopPropagation();
             var tagName = $(this).val();
             if (event.which != 13) {

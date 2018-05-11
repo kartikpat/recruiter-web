@@ -69,7 +69,8 @@ function candidateList() {
         settings.candidateTagPrototype= $('.candidateTag.prototype'),
         settings.tagListing = ".recruiterTagsContainer",
         settings.candidateTagRemoveClass = '.tagRemove',
-        settings.topbutton=$('#topbutton')
+        settings.topbutton=$('#topbutton'),
+        settings.tagInputError = $(".tagInputError"),
         settings.tagArr = [],
         settings.status = ''
         settings.url = baseUrl+"/recruiter/"+recruiterId+"/jobs/"+jobId+"/applications/download/excel";
@@ -733,6 +734,11 @@ function candidateList() {
             event.preventDefault();
 
             var tagName = ($(this).closest(settings.candidateRowClass).find(settings.candidateTagInputClass).val()).trim();
+            if(!tagName) {
+                $(this).closest(settings.candidateRowClass).find(settings.candidateTagInputClass).addClass("error-border");
+                $(this).closest(settings.candidateRowClass).find(settings.candidateTagInputClass).next().removeClass("hidden")
+                return
+            }
             var obj = searchObjByKey(settings.tagArr, tagName, "name")
             var tagId = $(settings.CandidateTagInputClass).attr("tag-id");
             if(obj) {
@@ -825,6 +831,7 @@ function candidateList() {
     function closetooltipModal(){
         settings.rowContainer.on('click','.close-modal',function(event) {
             $('.action-tooltip').addClass('hidden');
+            settings.rowContainer.find(settings.tagInputError).addClass('hidden');
             removeBodyFixed();
         })
 

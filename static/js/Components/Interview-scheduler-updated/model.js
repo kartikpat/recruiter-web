@@ -6,7 +6,8 @@ var errorResponses = {
     missingslots:'Please select a slot',
     missingDate:"Please select a end Date",
     missingStart:"Please select Start Time",
-    missingEnd:"Please select End Time"
+    missingEnd:"Please select End Time",
+    missingDateSlot:"Please select a slot between startdate and endate"
 }
 
 function Calendar(){
@@ -125,11 +126,12 @@ function Calendar(){
         }
 
         if($('#radio-button-end').prop("checked")==true){
-            toDate=$('#end_date').val();
+            toDate=$('#end_date').datepicker().val();
             console.log(toDate);
         }
         date.from=fromDate;
         date.to=toDate;
+        
         timetable.date=date;
             $.each(settings.dayId,function(){
                 var id=$(this).attr('id');
@@ -210,7 +212,7 @@ function Calendar(){
                         if(Nextend!=Nextstart){
                             var Nextslot={
                                 day:aRow.day,
-                                slotId:aRow.slotId,
+                                // slotId:aRow.slotI,d,
                                 time:{
                                 from:Nextstart,
                                 to:Nextend,
@@ -290,11 +292,7 @@ function Calendar(){
     }
 
     function testHighlight(fromDate,toDate,days){
-       console.log(days);
-       console.log(fromDate);
        fromDate=moment(fromDate).format("YYYY-MM-DD");
-       console.log(toDate);
-       console.log(days.length);
         var daySchema ={
             1: "mon",
             2: "tue",
@@ -390,26 +388,17 @@ function Calendar(){
 
     function copyTime(){
         settings.copytoall.on('click', function (){
-         //   debugger
             var id=$(this).parent().parent().parent().attr("id");
             console.log(id);
             var startvalue=$("#"+id+ "").find(settings.start_time).val();
             var endvalue=$("#"+id+ "").find(settings.end_time).val();
             var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
-            // if (settings.checkbox.hasClass('allChecked')){
-            //       $('input[type="checkbox"]', settings.table).prop('checked',false);
-            //       $("#"+id+ "").find(settings.checkbox).prop('checked',true);
-            //    //   settings.select_menu.val(0);
-            //    //   settings.firstDay.find(settings.element1).val(parseInt(startvalue));
-            //    //   settings.firstDay.find(settings.element2).val(parseInt(endvalue));
-            // }
+            
             if(checkbox==true && startvalue>0 && endvalue>0){
                   $('input[type="checkbox"]', settings.table).prop('checked',true);
                   settings.start_time.val(startvalue);
                   settings.end_time.val(endvalue);
             }
-            //settings.checkbox.toggleClass('allChecked');
-            //settings.select_menu.find('option').prop('disabled', false);
             var slots=getslots();
             testHighlight(slots.fromDate,slots.toDate,slots.highlightSlots);
 
@@ -536,7 +525,6 @@ function Calendar(){
     }
 
     function validate(){
-        eraseErrors();
 		if(!((settings.name.val()).trim())){
             console.log("fail");
 			settings.name.next('.error').text(errorResponses['missingName']);
@@ -604,6 +592,9 @@ function Calendar(){
             return false
         }
 
+        if(slotsCheck()){
+            return false
+        }
 		return true;
 	}
 
@@ -642,6 +633,31 @@ function Calendar(){
 		return
     }
 
+    function slotsCheck(){
+        var fromDate = moment(timetable.date.from);
+        var dowFrom = fromDate.day();
+        var toDate=moment(timetable.date.to)
+        var dowTo   =toDate.day();
+        var flag=0;
+        if(dowTo==0){
+            dowTo=7;
+        }
+        if(!(timetable.date.to=="0000-00-00")){
+            for(var k=0;k<timetable.slots.length;k++){
+                if(timetable.slots[k].day<dowFrom || timetable.slots[k].day>dowTo){
+                    flag++;
+                }
+            }
+            if(flag==timetable.slots.length){
+                settings.slots.find('.error').text(errorResponses['missingDateSlot']);
+                $('html, body').animate({
+                    scrollTop: (settings.slots.closest('.second-container').offset().top)
+                },200);
+                return true;
+            }
+        }
+    }
+        
 
     return {
         init:init,
@@ -662,5 +678,6 @@ function Calendar(){
         Timer: Timer,
         copyTime: copyTime,
         highlighter: highlighter,
+        slotsCheck:slotsCheck,
     }
 };
