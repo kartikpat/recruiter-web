@@ -3406,7 +3406,8 @@ span.sticker {
         .page-content .main-container .mass-resume-table .column.download-link .download-link {
           margin-top: 5px; }
           .page-content .main-container .mass-resume-table .column.download-link .download-link a {
-            text-decoration: none; }
+            text-decoration: none;
+            color: #23527c; }
             .page-content .main-container .mass-resume-table .column.download-link .download-link a:hover {
               color: #23527c;
               text-decoration: underline; }

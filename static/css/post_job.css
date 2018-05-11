@@ -748,6 +748,8 @@ a:hover {
             background-image: url("/static/images/minimal_select_dropdown.svg"); }
         .job_posting .post_job .post_job_form .field-container .field select::-ms-expand {
           display: none !important; }
+        .job_posting .post_job .post_job_form .field-container .field select:focus {
+          border: 1px solid #149075; }
         .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] input {
           display: none; }
         .job_posting .post_job .post_job_form .field-container .field input[type="checkbox"] label {
@@ -1051,6 +1053,10 @@ a:hover {
           padding: 5px; }
       .job_posting .post_job .post_job_form .field-container .field select.half {
         width: 48%; }
+      .job_posting .post_job .post_job_form .field-container .field select:focus {
+        outline: none;
+        border: 1px solid;
+        border-color: #4fa995; }
       .job_posting .post_job .post_job_form .field-container.tile-section {
         white-space: nowrap;
         overflow: auto; }

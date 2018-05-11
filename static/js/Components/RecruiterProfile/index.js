@@ -104,6 +104,7 @@ $(document).ready(function(){
 	}
 
 	function onFetchSuccess(topic,data){
+		$("#credits").removeClass('hidden');		
 		recruiterProfile.togglespinner();
 		recruiterProfile.credits(data);	
 	}
