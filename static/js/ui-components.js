@@ -108,7 +108,8 @@ jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function
 			_this.siblings(".pill-listing").find("ul").scrollTop(nextItem.position().top);
 			break;
 		case 13:
-				if(closestTag.attr("data-enable-custom") && closestTag.attr("data-enable-custom") == "true") {
+		case 9:{
+			if(closestTag.attr("data-enable-custom") && closestTag.attr("data-enable-custom") == "true") {
 					var value = (_this.val()).trim();
 					var dataValue = selectedItem.attr("data-value");
 					if(selectedItem.length>0){
@@ -125,6 +126,7 @@ jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function
 							}
 						});
 					}
+
 					if(!value) {
 						return
 					}
@@ -137,8 +139,12 @@ jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function
 							addNewTag(selectedItem.text(), selectedItem.attr("data-value"),_this.closest(".tag-container"));
 						}
 					}
+					else{
+						e.preventDefault();
+					}
 				}
 				break;
+		}
 		default:
 				break;
 	};
@@ -171,7 +177,6 @@ jQuery(".tag-container").on("mouseleave",".tag-icons", function() {
 
 
 function addNewTag(labelName, labelValue, selector) {
-
 	var maxOptions = jQuery(selector).attr("data-max-options");
 
 	var tag = jQuery(".input-tag.prototype.hidden").clone().removeClass("prototype hidden");
@@ -179,14 +184,12 @@ function addNewTag(labelName, labelValue, selector) {
 	tag.attr("data-name", labelName);
 	tag.find(".tag-name span").html(labelName);
 	jQuery(selector).find(".pill-button").before(tag);
-
+	
 	jQuery(selector).find("input[type=text]").val('');
-	jQuery(selector).find(".pill-listing ul li").removeClass("hidden");
-
+	jQuery(selector).find('.pill-listing ul li[data-value!="custom"]').removeClass("hidden");
 	jQuery(selector).find(".pill-listing li.selected").addClass("tag-added").removeClass("selected");
-
 	if(jQuery(selector).attr("data-enable-custom") && jQuery(selector).attr("data-enable-custom") == "true") {
-		tag.find(".pill-listing ul").prepend("<li data-value='custom' class='hidden'></li>")
+		tag.find(".pill-listing ul").prepend("<li data-value='custom' class='hidden'></li>");
 		jQuery(selector).find(".pill-listing li[data-value=custom]").removeClass("tag-added");
 	}
 
