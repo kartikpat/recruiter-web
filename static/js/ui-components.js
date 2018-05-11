@@ -140,6 +140,7 @@ jQuery(".tag-container").on("keydown", ".pill-button input[type=text]", function
 						}
 					}
 					else{
+						// TODO just added this in order to fix the tab behaviour
 						e.preventDefault();
 					}
 				}
