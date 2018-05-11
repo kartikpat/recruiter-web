@@ -159,6 +159,10 @@ a:hover{
                         display: none!important;
                     }
 
+                    select:focus{
+                        border: 1px solid #149075;;
+                    }
+
                     input[type="checkbox"] {
                         @include check-input;
                        
@@ -185,7 +189,7 @@ a:hover{
                         // box-sizing:content-box;
                         &:focus {
                             outline: none;
-                            border-color: $border-color-active;;
+                            border-color: $border-color-active;
                         }
                     }
                 }
@@ -378,6 +382,12 @@ a:hover{
                             &.half {
                                 width:48%;
                             }
+                            
+                        }
+                        select:focus{
+                            outline: none;
+                            border: 1px solid;
+                            border-color: $border-color-active;    
                         }
                     }
 

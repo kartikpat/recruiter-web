@@ -442,21 +442,16 @@ function candidateList() {
         }
         var flag=0;
         if(aData["comment"]){
-            console.log(aData["comment"])
             item.Commentarea.addClass('hidden').html(aData["comment"]);
             item.textarea.removeClass('hidden').html(aData["comment"]);
             item.AddCommentButton.addClass('hidden');
             item.EditComment.removeClass('hidden');
             item.viewCommentLink.removeClass("hidden")
-            flag++;
+         
         }
         if(aData["tags"].length) {
             item.viewTagLink.removeClass("hidden")
-            flag++;
-        }
-
-        if(flag>1){
-              item.viewTagLink.css("border-left","1px solid #e8e8e8");
+         
         }
 
         return item
