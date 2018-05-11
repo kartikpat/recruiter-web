@@ -212,7 +212,7 @@ function Calendar(){
                         if(Nextend!=Nextstart){
                             var Nextslot={
                                 day:aRow.day,
-                                slotId:aRow.slotId,
+                                // slotId:aRow.slotI,d,
                                 time:{
                                 from:Nextstart,
                                 to:Nextend,
