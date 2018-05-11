@@ -447,16 +447,11 @@ function candidateList() {
             item.AddCommentButton.addClass('hidden');
             item.EditComment.removeClass('hidden');
             item.viewCommentLink.removeClass("hidden")
-            flag++;
+         
         }
         if(aData["tags"].length) {
             item.viewTagLink.removeClass("hidden")
-            flag++;
-        }
-        if(flag>1){
-            //   item.viewTagLink.css("border-left","1px solid #e8e8e8");
-            //   item.viewTagLink.css("margin-left","6px");  
-            //   item.viewTagLink.css("padding-left","6px");
+         
         }
 
         return item
