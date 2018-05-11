@@ -1866,6 +1866,15 @@ input::-webkit-input-placeholder {
 											border: 1px solid $button-color-green;
 
 										}
+										::-moz-placeholder { /* Mozilla Firefox 19+ */
+											line-height:600px;
+										}
+										::-webkit-input-placeholder { /* Webkit */
+											line-height:600px;
+										}
+										:-ms-input-placeholder { /* IE */
+											padding-top: 18px;
+										}
 									}
 									.action-buttons {
 										margin-top: 0px;
@@ -2251,12 +2260,19 @@ input::-webkit-input-placeholder {
 				}
 			}
 			.cand-add-tag {
-				height: 40px;
-			    line-height: 40px;
-				padding: 10px;
+				min-height: 40px;
+				padding: 0 10px;
+				padding-top: 0px!important;
 				text-align: left;
 				vertical-align: middle;
 				border-radius: 0px;
+				:-ms-input-placeholder {
+					text-align: left;
+					vertical-align: middle;
+					padding-top: 12px!important;
+					font-size: 14px;
+				 }
+	
 			}
 			::-webkit-input-placeholder {
 				text-align: left;
@@ -2279,8 +2295,10 @@ input::-webkit-input-placeholder {
 			 :-ms-input-placeholder {
 				text-align: left;
 				vertical-align: middle;
-				line-height: 10px;
+				padding-top: 18px;
+				font-size: 14px;
 			 }
+
 			 .email-address{
 				 font-size: 14px;
 			 }
