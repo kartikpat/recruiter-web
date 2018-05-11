@@ -120,8 +120,11 @@ function MassResume(){
 
     function populateResumeStatus(aResume){
         var item=getElement();
+        var string = aResume['id'];
+        var encodedString = btoa(string);
+    
           item.date.text(ISODateToD_M_Y(aResume["date"]));
-          item.requestId.text(aResume["id"]);
+          item.requestId.text(encodedString);
           item.Status.text(aResume["status"]);
             var noOfDownloads;
             if(aResume["downloadCount"] == 0) {
@@ -132,8 +135,7 @@ function MassResume(){
             }
           item.noOfDownloads.text(noOfDownloads);
           item.count.text(aResume["resumeCount"]);
-          var str=encodeURI(aResume['id']);
-          var aResumeLink=baseUrl+"/bulk/"+str+"/"+aResume["path"];
+          var aResumeLink=baseUrl+"/bulk/"+string+"/"+aResume["path"];
           item.downloadLink.html("<div>Expires On: "+ISODateToD_M_Y(aResume["expiry"]) + "  " + ISODateToTime(aResume["expiry"])+"</div><div class='download-link'><a href="+aResumeLink+">Click Here</a> to download</div>");
           return item
     }
@@ -149,7 +151,7 @@ function MassResume(){
     function addToList(dataArray){
         console.log(dataArray)
       var str = '';
-      if(dataArray.length==0){
+      if(dataArray.data.length==0){
            settings.emptyView.removeClass('hidden');
            settings.header.addClass('hidden');
       }
@@ -160,11 +162,11 @@ function MassResume(){
       hideShells();
       $('.mass-resume-content').append(str);
 
-      if(dataArray.length< pageContent) {
-          if($('.mass-resume-content').find(".no-more-records").length == 0) {
-              return $('.mass-resume-content').append("<div class='no-more-records no-data'>You have reached the end of the list</div>")
-          }
-      }
+    //   if(dataArray.length< pageContent) {
+    //       if($('.mass-resume-content').find(".no-more-records").length == 0) {
+    //           return $('.mass-resume-content').append("<div class='no-more-records no-data'>You have reached the end of the list</div>")
+    //       }
+    //   }
     }
 
     return{

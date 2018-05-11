@@ -3354,21 +3354,23 @@ span.sticker {
       background-color: #fff;
       border-left: 1px solid #e8e8e8;
       border-right: 1px solid #e8e8e8; }
-      .page-content .main-container .mass-resume-table .mass-resume-content .empty-view .image-container {
-        padding-top: 20px;
-        text-align: center; }
-        .page-content .main-container .mass-resume-table .mass-resume-content .empty-view .image-container img {
-          width: 15%; }
-      .page-content .main-container .mass-resume-table .mass-resume-content .empty-view .heading {
-        text-align: center;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        font-size: 16px; }
-      .page-content .main-container .mass-resume-table .mass-resume-content .empty-view .subheading {
-        text-align: center;
-        color: #888;
-        padding-bottom: 20px;
-        font-size: 16px; }
+      .page-content .main-container .mass-resume-table .mass-resume-content .empty-view {
+        padding: 15% 0px; }
+        .page-content .main-container .mass-resume-table .mass-resume-content .empty-view .image-container {
+          padding-top: 20px;
+          text-align: center; }
+          .page-content .main-container .mass-resume-table .mass-resume-content .empty-view .image-container img {
+            width: 15%; }
+        .page-content .main-container .mass-resume-table .mass-resume-content .empty-view .heading {
+          text-align: center;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          font-size: 16px; }
+        .page-content .main-container .mass-resume-table .mass-resume-content .empty-view .subheading {
+          text-align: center;
+          color: #888;
+          padding-bottom: 20px;
+          font-size: 16px; }
     .page-content .main-container .mass-resume-table .row {
       display: table;
       padding: 10px;

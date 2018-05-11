@@ -953,7 +953,7 @@ jQuery(document).ready( function() {
              if(jobRow["refreshId"]) {
                  window.location.href = "/job/"+jobRow["refreshId"]+"/applications";
              }
-             $('.title').text("Applications-" +jobRow["title"]+"| iimjobs.com");
+             $('.titlePage').text("Applications-" +jobRow["title"]+"| iimjobs.com");
               var data = {
                 jobTitle: getTitleFormat(jobRow["title"],(/\(\d+-\d+ \w+\)$/)),
                 jobLocation: getLocation(jobRow["location"]),
