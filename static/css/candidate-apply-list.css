@@ -4988,6 +4988,15 @@ input::-webkit-input-placeholder {
                 .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments textarea:focus {
                   outline: none;
                   border: 1px solid #1f8f75; }
+                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments textarea ::-moz-placeholder {
+                  /* Mozilla Firefox 19+ */
+                  line-height: 600px; }
+                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments textarea ::-webkit-input-placeholder {
+                  /* Webkit */
+                  line-height: 600px; }
+                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments textarea :-ms-input-placeholder {
+                  /* IE */
+                  padding-top: 18px; }
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons {
                 margin-top: 0px; }
                 .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons span.button {
@@ -5309,12 +5318,17 @@ input::-webkit-input-placeholder {
         font-size: 13px !important;
         cursor: pointer; }
       .view-resume-modal .resume-sidebar .sidebar-section .cand-add-tag {
-        height: 40px;
-        line-height: 40px;
-        padding: 10px;
+        min-height: 40px;
+        padding: 0 10px;
+        padding-top: 0px !important;
         text-align: left;
         vertical-align: middle;
         border-radius: 0px; }
+        .view-resume-modal .resume-sidebar .sidebar-section .cand-add-tag :-ms-input-placeholder {
+          text-align: left;
+          vertical-align: middle;
+          padding-top: 12px !important;
+          font-size: 14px; }
       .view-resume-modal .resume-sidebar .sidebar-section ::-webkit-input-placeholder {
         text-align: left;
         vertical-align: middle;
@@ -5332,7 +5346,8 @@ input::-webkit-input-placeholder {
       .view-resume-modal .resume-sidebar .sidebar-section :-ms-input-placeholder {
         text-align: left;
         vertical-align: middle;
-        line-height: 10px; }
+        padding-top: 18px;
+        font-size: 14px; }
       .view-resume-modal .resume-sidebar .sidebar-section .email-address {
         font-size: 14px; }
       .view-resume-modal .resume-sidebar .sidebar-section .contact {
