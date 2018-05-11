@@ -70,8 +70,8 @@ function reportList() {
        item.publishedOn.text(moment(aData["createdAt"]).format('ll'));
        var str = aData["by"];
        var res = str.split(" ");
-       item.jobTitle.text(aData["title"]).attr("href", "https://www.iimjobs.com/j"+aData["url"]+"");
-       item.postedBy.text(aData["by"]).attr("href", "https://www.iimjobs.com/r/"+config["recruiterId"]+"-"+res[0]+"-"+res[1]+"");
+       item.jobTitle.text(aData["title"]).attr("href", "http://qa200.iimjobs.com/j"+aData["url"]+"");
+       item.postedBy.text(aData["by"]).attr("href", "http://qa200.iimjobs.com/r/"+config["recruiterId"]+"-"+res[0]+"-"+res[1]+"");
        // item.experience.text((aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m") || "NA");
        // item.location.text(aData["currentLocation"] || "NA");
        item.postingViews.text(aData["views"]);

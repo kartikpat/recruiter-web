@@ -2976,3 +2976,6 @@ span.sticker {
 
 .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons {
   margin-top: 0; }
+
+.view-resume-modal .resume-sidebar .external-links ul li .icon-tick {
+  color: #1f8f75 !important; }

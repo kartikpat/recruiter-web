@@ -141,7 +141,6 @@ function Candidate() {
     function onClickSendInterviewInviteF2F(fn) {
         settings.candidateDetailsModal.on('click', settings.sendInterviewInviteF2FClass, function(e){
             e.preventDefault()
-            
             if(parseInt($(this).attr("data-clickable")) == 1) {
                 window.location = staticEndPoints.createCalendar
 

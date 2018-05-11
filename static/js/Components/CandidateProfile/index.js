@@ -277,14 +277,24 @@ jQuery(document).ready( function() {
            event_label: 'origin=Profile,type=F2F,recId='+recruiterId+''
         }
         sendEvent(eventMap["sendInvite"]["event"], eventObj)
-        var defaultCalendarId = store.getDefaultId();
-        if(!defaultCalendarId)
-            return aCandidate.openSelectDefaultCalendarModal();
-        var obj = {
-            "type": inviteId,
-            "calendarId": store.getCalendarId()
+        // if(!defaultCalendarId)
+            // return aCandidate.openSelectDefaultCalendarModal();
+        // var obj = {
+        //     "type": inviteId,
+        //     "calendarId": store.getCalendarId()
+        // }
+        if($(".candidateDetailsModal[data-application-id="+applicationId+"]").find('.inviteF2f').attr('state')=='default'){
+            var defaultCalendarId = store.getDefaultId();
+            if(!defaultCalendarId)
+                return aCandidate.openSelectDefaultCalendarModal();
+            var obj = {
+                "type": inviteId,
+                "calendarId": store.getCalendarId()
+            }
+            $(".candidateDetailsModal[data-application-id="+applicationId+"]").find('.invite').attr('state','clicked')
+            $(".candidateDetailsModal[data-application-id="+applicationId+"]").find('.inviteF2f .loadingScroller').removeClass('hidden');
+            sendInterViewInvite(recruiterId, jobId, applicationId , obj)
         }
-        sendInterViewInvite(recruiterId, jobId, applicationId , obj)
     })
 
     aCandidate.onClickSendInterviewInviteTelephonic(function(applicationId, inviteId){
@@ -293,28 +303,40 @@ jQuery(document).ready( function() {
            event_label: 'origin=Profile,type=Telephonic,recId='+recruiterId+''
         }
         sendEvent(eventMap["sendInvite"]["event"], eventObj)
-        var defaultCalendarId = store.getDefaultId();
-        if(!defaultCalendarId)
+        
+        // if(!defaultCalendarId)
+        //     return aCandidate.openSelectDefaultCalendarModal();
+        // var obj = {
+        //     "type": inviteId,
+        //     "calendarId": store.getCalendarId()
+        // }
+        if($(".candidateDetailsModal[data-application-id="+applicationId+"]").find('.inviteTelephonic').attr('state')=='default'){
+            var defaultCalendarId = store.getDefaultId();
+            if(!defaultCalendarId)
             return aCandidate.openSelectDefaultCalendarModal();
-        var obj = {
-            "type": inviteId,
-            "calendarId": store.getCalendarId()
+            var obj = {
+                "type": inviteId,
+                "calendarId": store.getCalendarId()
+            }
+            $(".candidateDetailsModal[data-application-id="+applicationId+"]").find('.invite').attr('state','clicked')
+            $(".candidateDetailsModal[data-application-id="+applicationId+"]").find('.inviteTelephonic .loadingScroller').removeClass('hidden');
+            sendInterViewInvite(recruiterId, jobId, applicationId , obj)
         }
-        sendInterViewInvite(recruiterId, jobId, applicationId , obj)
+        // sendInterViewInvite(recruiterId, jobId, applicationId , obj)
     })
 
     function onSendInterViewInviteSuccess(topic, data){
-        // var applicationId=data['parameters']['applicationId'];
-        // candidates.changeInviteText(data.parameters.applicationId)
+        var applicationId=data['parameters']['applicationId'];
+        aCandidate.changeInviteText(data.parameters.applicationId)
         if(data.parameters.inviteId == 1){
             toastNotify(1, "Face to Face Invite Sent Successfully!")
-            // $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .icon-container').removeClass('hidden');
-            // $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .loadingScroller').addClass('hidden');
+            $(".candidateDetailsModal[data-application-id="+applicationId+"]").find('.inviteF2f .icon-container').removeClass('hidden');
+            $(".candidateDetailsModal[data-application-id="+applicationId+"]").find('.inviteF2f .loadingScroller').addClass('hidden');
         }
         if(data.parameters.inviteId == 2){
             toastNotify(1, "Telephonic Invite Sent Successfully!")
-            // $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic  .icon-container').removeClass('hidden');
-            // $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic .loadingScroller').addClass('hidden');
+            $(".candidateDetailsModal[data-application-id="+applicationId+"]").find('.inviteTelephonic  .icon-container').removeClass('hidden');
+            $(".candidateDetailsModal[data-application-id="+applicationId+"]").find('.inviteTelephonic .loadingScroller').addClass('hidden');
         }
     }
 
@@ -323,12 +345,10 @@ jQuery(document).ready( function() {
         if(data.status == 400 && data.responseJSON && data.responseJSON.code == 4001) {
             return window.location.href = "/calendar/"+data.parameters.calendarId+"/edit?insuffSlotsErrMsg=1";
         }
-
-        // var applicationId=data['parameters']['applicationId'];
-        // $(".candidateRow[data-application-id="+applicationId+"]").find('.invite .loadingScroller').addClass('hidden');
-        // $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f').attr('state','default');
-        // $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic').attr('state','default');
-
+        var applicationId=data['parameters']['applicationId'];
+        $(".candidateDetailsModal[data-application-id="+applicationId+"]").find('.invite .loadingScroller').addClass('hidden');
+        $(".candidateDetailsModal[data-application-id="+applicationId+"]").find('.inviteF2f').attr('state','default');
+        $(".candidateDetailsModal[data-application-id="+applicationId+"]").find('.inviteTelephonic').attr('state','default');
         errorHandler(data)
     }
 
