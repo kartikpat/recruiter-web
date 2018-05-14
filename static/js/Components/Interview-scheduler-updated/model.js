@@ -15,6 +15,8 @@ function Calendar(){
     var timetable={};
 
     function init(){
+        var x = navigator.userAgent;
+        console.log(x);
         settings.name= $('#name'),
         settings.message= $("#message"),
         settings.teleMessage= $("#telephonic"),
