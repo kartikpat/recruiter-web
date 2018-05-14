@@ -89,7 +89,6 @@ module.exports = function(settings){
 		// }
 		// IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
 		if(req.originalUrl == "/login") {
-			console.log("here")
 			return next()
 		}
 		return res.redirect('/login?callbackUrl='+req.originalUrl+'');
@@ -213,7 +212,6 @@ module.exports = function(settings){
 
 	app.get("/login",  function(req,res){
 		if(req.cookies[config['cookie']] && req.cookies[config['oldCookie']]){
-			console.log('here')
 			return isAuthenticated(req, res);
 		}
 		res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
