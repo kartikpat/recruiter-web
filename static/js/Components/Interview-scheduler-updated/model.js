@@ -260,11 +260,14 @@ function Calendar(){
         console.log(toDate)
         endDate=moment(toDate).format("DD-MM-YYYY");
         console.log(endDate)
-            $('#startdatepicker').datepicker().datepicker('setDate', startDate);
-            $('#radio-button-startend').prop("checked",true)
+        // $('#startdatepicker').datepicker().datepicker('setDate', startDate);
+        $("#startdatepicker").val(startDate);
+        $('#radio-button-startend').prop("checked",true)
 
         if(endDate!="Invalid date"){
-            $('#enddatepicker').datepicker().datepicker('setDate', endDate);
+
+            // $('#enddatepicker').datepicker().datepicker('setDate', endDate);
+            $('#enddatepicker').val(endDate);
             $('#radio-button-end').prop("checked",true)
         }
         testHighlight(fromDate,toDate,previewslots);
