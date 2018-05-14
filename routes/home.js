@@ -37,6 +37,8 @@ module.exports = function(settings){
     	// if(req.cookies['IIMJOBS_CK1'] != req.cookies['IIMJOBS_CK1_COPY'])
     	// 	return	res.redirect('/transition');
 
+    	res.cookie('OLDRECRUITER', '',{ "path": "/", domain: baseDomain+".com"});
+
     	if (req.cookies[config["cookie"]]) {
 			return request.get({
 				url: baseUrl+"/recruiter",
