@@ -37,7 +37,7 @@ module.exports = function(settings){
     	// if(req.cookies['IIMJOBS_CK1'] != req.cookies['IIMJOBS_CK1_COPY'])
     	// 	return	res.redirect('/transition');
 
-    	res.cookie('OLDRECRUITER', '',{ "path": "/", domain: baseDomain+".com", maxAge:Date.now()});
+    	res.cookie('OLDRECRUITER', '',{ "path": "/", domain: baseDomain+".com", maxAge:0});
 
     	if (req.cookies[config["cookie"]]) {
 			return request.get({
@@ -47,7 +47,7 @@ module.exports = function(settings){
 				}
 			},function(err, response, body){
 				if(err){
-					res.cookie('recruiter-access-token', '',{ "path": "/", domain: baseDomain+".com"});
+					res.cookie(config['cookie'], '',{ "path": "/", domain: baseDomain+".com"});
 					return res.redirect('/login');
 				}
 				const jsonBody = JSON.parse(body)
