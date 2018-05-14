@@ -797,7 +797,6 @@ module.exports = function(settings){
 			scripts: assetsMapper["transition"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			oldCookie: oldCookie,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
