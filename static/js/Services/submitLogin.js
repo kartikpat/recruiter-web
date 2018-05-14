@@ -3,10 +3,10 @@ function submitLogin(data){
 		if(res.status && res.status =='success'){
 			var token = xhr.getResponseHeader('Set-Token');
 			var universalToken = xhr.getResponseHeader('Set-Universal-Token');
-			console.log(universalToken);
-			localStorage["recruiter-access-token"] = token;
-			Set_Cookie('recruiter-access-token', token,1, "/", "iimjobs.com");
-			Set_Cookie('IIMJOBS_CK1', universalToken, 1, "/", "iimjobs.com", null, true );
+			
+			localStorage[cookieName] = token;
+			Set_Cookie(cookieName, token,1, "/", "iimjobs.com");
+			Set_Cookie(oldCookieName, universalToken, 1, "/", "iimjobs.com", null, true );
 			return pubsub.publish("successfulLogin", res.data);
 		}
 	}, function(res,status,error) {
