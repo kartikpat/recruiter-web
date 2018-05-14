@@ -790,7 +790,7 @@ module.exports = function(settings){
 	})
 
 	app.get("/transition",function(req, res){
-		var oldCookie = req.cookies[config['oldCookie']];
+		var oldCookieValue = req.cookies[config['oldCookie']];
 		res.render("transition", {
 			title:"iimjobs.com",
 			styles:  assetsMapper["transition"]["styles"][mode],
@@ -800,7 +800,8 @@ module.exports = function(settings){
 			oldCookie: oldCookie,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+			oldCookieValue: oldCookieValue
 		});
 	})
 
