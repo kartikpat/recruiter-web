@@ -62,9 +62,14 @@
 	</nav> -->
 
 </div>
+
 </body>
 <script src="https://use.fontawesome.com/6eabda8944.js"></script>
+
+{{^pubnub}}
 <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.20.2.js"></script>
+{{/pubnub}}
+
 {{#scripts.length}}
 	{{#scripts}}
 		<script type="text/javascript" src="/{{.}}"></script>
