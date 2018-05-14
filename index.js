@@ -149,6 +149,7 @@
 	app.set('partials',{
 		header: 'header',
 		footer: 'footer',
+		headerOld:'old-header',
 		minifooter:'mini-footer',
 		chatSidebar: 'chat-sidebar',
 		welcome:'welcome-section',

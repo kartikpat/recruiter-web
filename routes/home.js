@@ -578,12 +578,22 @@ module.exports = function(settings){
 	app.get("/calendar/create",isAuthenticated,function(req, res){
 		var parser = require('ua-parser-js');
 		var ua = parser(req.headers['user-agent']);
-		if(ua.browser.name=='IE' && (ua.browser.version=="8.0"|| ua.browser.version=="9.0")){
-			
+		if((ua.browser.name=='IE' && (ua.browser.version=="8.0"|| ua.browser.version=="9.0"))){
+			res.render("calendarIe", {
+				title: "Create Calendar | iimjobs.com",
+				styles:  assetsMapper["calendarIe"]["styles"][mode],
+				scripts: assetsMapper["calendarIe"]["scripts"][mode],
+				hiddenLoader: "hidden",
+				jobId: req.params.jobID,
+				applicationId: req.params.applicationID,
+				baseUrl: baseUrl,
+				baseDomain: baseDomain,
+				profile: req.profile,
+				pubnub:"disable",
+				staticEndPoints: config["staticEndPoints"]
+			});	
 			return
 		}
-		// res.end(JSON.stringify(ua, null, '  '));
-		
 		res.render("Interview-scheduler-updated", {
 			title: "Create Calendar | iimjobs.com",
 			styles:  assetsMapper["Interview-scheduler-updated"]["styles"][mode],
@@ -725,6 +735,20 @@ module.exports = function(settings){
 			title:"Job Details | iimjobs.com",
 			styles:assetsMapper['job-details']['styles'][mode],
 			scripts:assetsMapper['job-details']['scripts'][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			jobId: req.params.jobID,
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"]
+		});
+	});
+
+
+	app.get("/oldHeader",isAuthenticated, function(req, res){
+		res.render("old-header", {
+			title:"Job Details | iimjobs.com",
+			styles:assetsMapper['old-header']['styles'][mode],
+			scripts:assetsMapper['old-header']['scripts'][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			jobId: req.params.jobID,

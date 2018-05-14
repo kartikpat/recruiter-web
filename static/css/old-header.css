@@ -1,0 +1,177 @@
+.header {
+  display: none; }
+
+.whitebg {
+  background: #ffffff; }
+
+.myconfield {
+  width: 100%; }
+
+.hdr {
+  margin: 0px;
+  padding: 15px 0px 8px 0px; }
+  .hdr .myconfield {
+    width: 100%; }
+  .hdr .container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto; }
+  .hdr .logo {
+    float: left;
+    text-align: right; }
+    .hdr .logo h3 {
+      margin: 0;
+      font-family: 'Comfortaa',cursive;
+      font-size: 30px;
+      line-height: 20px;
+      color: black; }
+    .hdr .logo span {
+      color: black; }
+  .hdr .righthdr {
+    float: right; }
+    .hdr .righthdr .newrtoption {
+      float: left;
+      margin: 0px;
+      padding: 0px 0px 0px 0px;
+      list-style: none; }
+      .hdr .righthdr .newrtoption .newposrel {
+        position: relative;
+        z-index: 15;
+        color: #2b2b2b; }
+        .hdr .righthdr .newrtoption .newposrel span {
+          color: #2b2b2b; }
+        .hdr .righthdr .newrtoption .newposrel a {
+          font-size: 12px;
+          color: #666; }
+      .hdr .righthdr .newrtoption .newposrel:hover .mobmenu-pop {
+        display: block; }
+      .hdr .righthdr .newrtoption .newrtoption li {
+        position: relative;
+        z-index: 20;
+        float: left;
+        margin: 0px;
+        padding: 0px 6px 0px 0px; }
+      .hdr .righthdr .newrtoption .newpositionb {
+        position: absolute;
+        top: 22px;
+        right: 0px;
+        min-width: 220px;
+        z-index: 100;
+        display: none; }
+        .hdr .righthdr .newrtoption .newpositionb .newrtopul {
+          padding: 0px 0px 0px 0px;
+          list-style: none;
+          float: left;
+          width: 210px;
+          box-shadow: 0px 0px 5px #999;
+          background: #fff;
+          margin-top: 15px;
+          border-radius: 5px; }
+          .hdr .righthdr .newrtoption .newpositionb .newrtopul li {
+            position: relative;
+            z-index: 20;
+            margin: 0px;
+            width: 100%;
+            float: left;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 12px; }
+        .hdr .righthdr .newrtoption .newpositionb .newrtoption li .newrtopul li {
+          float: left;
+          width: 100%;
+          border-bottom: 1px solid #ddd;
+          padding: 10px 12px; }
+        .hdr .righthdr .newrtoption .newpositionb .newrtoption li {
+          position: relative;
+          z-index: 20;
+          float: left;
+          margin: 0px;
+          padding: 0px 6px 0px 0px; }
+
+.mynavbr {
+  background: #1c1c1c;
+  border-radius: 0px;
+  margin-bottom: 10px;
+  display: inline-block;
+  width: 100%; }
+  .mynavbr .container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto; }
+    .mynavbr .container-fluid .newmynavbar-navres {
+      width: auto; }
+    .mynavbr .container-fluid .newmynavbar-nav {
+      float: left;
+      padding-left: 0px; }
+      .mynavbr .container-fluid .newmynavbar-nav li {
+        display: inline-block; }
+        .mynavbr .container-fluid .newmynavbar-nav li a {
+          font-size: 13px;
+          text-shadow: none;
+          color: #fff;
+          padding: 12px 10px 10px 10px;
+          border-bottom: 2px solid transparent; }
+        .mynavbr .container-fluid .newmynavbar-nav li .navbarnewhovm {
+          position: absolute;
+          z-index: 5;
+          padding-top: 11px; }
+          .mynavbr .container-fluid .newmynavbar-nav li .navbarnewhovm .navbarnewhovmul {
+            margin: 5px 0px;
+            padding: 0px;
+            float: left;
+            width: 100%;
+            list-style: none;
+            min-width: 220px;
+            background: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 3px 3px 10px -3px #C7C7C7;
+            display: none; }
+            .mynavbr .container-fluid .newmynavbar-nav li .navbarnewhovm .navbarnewhovmul li {
+              padding: 2px 10px;
+              width: 100%; }
+              .mynavbr .container-fluid .newmynavbar-nav li .navbarnewhovm .navbarnewhovmul li a {
+                font-size: 11px;
+                color: #000; }
+      .mynavbr .container-fluid .newmynavbar-nav li:hover .navbarnewhovmul {
+        display: block; }
+    .mynavbr .container-fluid .sidebsmallrec {
+      float: right;
+      width: auto;
+      list-style: none;
+      margin: 0px;
+      padding: 0px; }
+      .mynavbr .container-fluid .sidebsmallrec .pull-right {
+        float: right; }
+      .mynavbr .container-fluid .sidebsmallrec .posrel {
+        position: relative; }
+      .mynavbr .container-fluid .sidebsmallrec .searchboxrecruit {
+        margin-right: 17px;
+        width: 300px; }
+      .mynavbr .container-fluid .sidebsmallrec .pdleftright0 {
+        padding-left: 0px;
+        padding-right: 0px; }
+      .mynavbr .container-fluid .sidebsmallrec .mbtm0 {
+        margin-top: 10px; }
+      .mynavbr .container-fluid .sidebsmallrec .postjobs {
+        margin-top: 10px; }
+      .mynavbr .container-fluid .sidebsmallrec .form-control {
+        display: block;
+        width: 100%;
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; }
+
+.footer {
+  display: none; }
