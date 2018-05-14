@@ -638,6 +638,14 @@ module.exports = function(settings){
 
 	// TODO: replace with a more semantic url
 	app.get("/calendar/create",isAuthenticated,function(req, res){
+		var parser = require('ua-parser-js');
+		var ua = parser(req.headers['user-agent']);
+		if(ua.browser.name=='IE' && (ua.browser.version=="8.0"|| ua.browser.version=="9.0")){
+			
+			return
+		}
+		// res.end(JSON.stringify(ua, null, '  '));
+		
 		res.render("Interview-scheduler-updated", {
 			title: "Create Calendar | iimjobs.com",
 			styles:  assetsMapper["Interview-scheduler-updated"]["styles"][mode],
