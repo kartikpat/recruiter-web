@@ -33,9 +33,6 @@ module.exports = function(settings){
     	// you can do this however you want with whatever variables you set up
     	if(!req.cookies[config['oldCookie']])
     		return res.redirect("/login");
-    	// Not using cookie matching
-    	// if(req.cookies['IIMJOBS_CK1'] != req.cookies['IIMJOBS_CK1_COPY'])
-    	// 	return	res.redirect('/transition');
 
     	res.cookie('OLDRECRUITER', '',{ "path": "/", domain: baseDomain+".com", maxAge:0});
 
@@ -86,9 +83,9 @@ module.exports = function(settings){
 			})
 
 		}
-		// if(req.cookies['IIMJOBS_CK1']){
-		// 	return	res.redirect('/transition');
-		// }
+		if(req.cookies[config['oldCookie']]){
+			return res.redirect('/transition');
+		}
 		// IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
 		if(req.originalUrl == "/login") {
 			return next()
@@ -213,7 +210,7 @@ module.exports = function(settings){
 	});
 
 	app.get("/login",  function(req,res){
-		if(req.cookies[config['cookie']] && req.cookies[config['oldCookie']]){
+		if(req.cookies[config['oldCookie']]){
 			return isAuthenticated(req, res);
 		}
 		res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
