@@ -221,7 +221,6 @@ function Candidate() {
     }
 
     function populateCandidateData(aData, type, status) {
-        console.log(aData);
         var item = getElement(aData["userID"]);
         item.element.attr("data-application-id", aData["id"])
         item.image.attr("src", (aData["img"] || "/static/images/noimage.png"))
@@ -741,6 +740,13 @@ function Candidate() {
         settings.candidateEditComment.removeClass("hidden");
     }
 
+    function changeInviteText(applicationId) {
+        $(".candidateDetailsModal[data-application-id="+applicationId+"] .interviewinvite").text("Interview Invite Sent!")
+        $(".candidateDetailsModal[data-application-id="+applicationId+"] .inviteText").removeClass("underline").addClass("non-underline")
+        $(".candidateDetailsModal[data-application-id="+applicationId+"] .interviewinvite").text("Interview Invite Sent!")
+        $(".candidateDetailsModal[data-application-id="+applicationId+"] .inviteText").removeClass("underline").addClass("non-underline")
+    }
+
 	function initializeTooltip() {
 		if(window.innerWidth<=768){
 			$(".tooltip").tooltipster({
@@ -791,7 +797,8 @@ function Candidate() {
         onClickDownloadResume: onClickDownloadResume,
         changeStatus: changeStatus,
         addComment: addComment,
-        initializeTooltip:initializeTooltip
+        initializeTooltip:initializeTooltip,
+        changeInviteText:changeInviteText
     }
 
     function focusOnElement(element, container) {

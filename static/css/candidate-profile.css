@@ -2531,7 +2531,7 @@ span.sticker {
   .view-resume-modal .resume-sidebar {
     width: 20%; }
     .view-resume-modal .resume-sidebar .action-buttons {
-      margin-bottom: 30px; }
+      margin-bottom: 20px; }
       .view-resume-modal .resume-sidebar .action-buttons.cand-add-tag-action-btn {
         margin: 15px 0; }
       .view-resume-modal .resume-sidebar .action-buttons .shortlist-wrapper {
@@ -2685,7 +2685,7 @@ span.sticker {
         height: 40px;
         line-height: 10px;
         padding: 10px;
-        font-size: 14px; }
+        font-size: 13px; }
       .view-resume-modal .resume-sidebar .sidebar-section .comment-box .comment-textarea {
         background-color: #f3fbfb;
         color: #757575;
@@ -2721,6 +2721,7 @@ span.sticker {
         .view-resume-modal .resume-sidebar .sidebar-section.tags .skill-tag {
           display: inline-block;
           margin: 5px;
+          margin-left: 0px;
           border: 1px solid #e8e8e8;
           padding: 5px 15px;
           border-radius: 25px;
@@ -2949,7 +2950,8 @@ span.sticker {
   min-height: 50px;
   margin-bottom: 15px;
   overflow: hidden;
-  border: 1px solid #e8e8e8; }
+  border: 1px solid #e8e8e8;
+  padding-top: 15px; }
   .sidebar-section.comments textarea:focus {
     outline: none;
     border: 1px solid #1f8f75; }
@@ -2976,3 +2978,6 @@ span.sticker {
 
 .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons {
   margin-top: 0; }
+
+.view-resume-modal .resume-sidebar .external-links ul li .icon-tick {
+  color: #1f8f75 !important; }
