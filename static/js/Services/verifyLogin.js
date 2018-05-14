@@ -3,9 +3,8 @@ function verifyLogin(oldCookie){
 		console.log(baseUrl)
 		if(res.status && res.status =='success'){
 			var token = xhr.getResponseHeader('Set-Token');
-			localStorage["recruiter-access-token"] = token;
-			Set_Cookie('recruiter-access-token', token);
-			Set_Cookie('IIMJOBS_CK1_COPY', encodeURIComponent(oldCookie), 1, "/", "iimjobs.com", null, true );
+			localStorage[cookieName] = token;
+			Set_Cookie(cookieName, token,1, "/", "iimjobs.com");
 			return pubsub.publish("loginVerifySuccess", res);
 		}
 		},function(res,status,error) {

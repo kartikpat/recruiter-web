@@ -15,7 +15,7 @@ var postRequest = function(url,headers,data,successCallback,failCallback,process
         headers = {};
 
     if(!headers["Authorization"]) {
-        headers['Authorization'] = 'Bearer '+getCookie("recruiter-access-token");
+        headers['Authorization'] = 'Bearer '+getCookie(cookieName);
     }
     // debugger
     // if([baseUrl+"/recruiter/login/verify", baseUrl+"/recruiter/login", baseUrl+"/recruiter/register", baseUrl+"/recruiter/resend", baseUrl+"/recruiter/forgot-password",baseUrl+"/recruiter/reset"  ].indexOf(url) <0 && getCookie('IIMJOBS_CK1')!=getCookie('IIMJOBS_CK1_COPY')){
@@ -48,7 +48,7 @@ var getRequest = function(url,parameters,successCallback,failCallback, additiona
 
     var headers = {}
     headers = {
-        'Authorization': 'Bearer '+getCookie("recruiter-access-token")
+        'Authorization': 'Bearer '+getCookie(cookieName)
     }
 
     // if([baseUrl+"/recruiter/login/verify", baseUrl+"/recruiter/login", baseUrl+"/recruiter/register", baseUrl+"/recruiter/resend", baseUrl+"/recruiter/forgot-password",baseUrl+"/recruiter/reset"  ].indexOf(url) <0 && getCookie('IIMJOBS_CK1')!=getCookie('IIMJOBS_CK1_COPY')){
