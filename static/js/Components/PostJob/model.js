@@ -562,7 +562,7 @@ function setMultipleCheckboxes(elementId, arr){
 }
 function check_youtube_embed(url) {
     var id = url.split("?v=")[1];
-    var embedlink = "http://www.youtube.com/embed/" + id;
+    var embedlink = "https://www.youtube.com/embed/" + id;
     if(url.indexOf('youtube.com/') !== -1) {
         jQuery(".youtube-preview").removeClass("hidden").find("iframe").attr("src", embedlink);
     } else {

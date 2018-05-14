@@ -31,16 +31,21 @@ module.exports = function(settings){
 		// bypassing the auth for development
     	// CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     	// you can do this however you want with whatever variables you set up
+    	if(!req.cookies[config['oldCookie']])
+    		return res.redirect("/login");
+    	// Not using cookie matching
+    	// if(req.cookies['IIMJOBS_CK1'] != req.cookies['IIMJOBS_CK1_COPY'])
+    	// 	return	res.redirect('/transition');
 
-    	if (req.cookies["recruiter-access-token"]) {
+    	if (req.cookies[config["cookie"]]) {
 			return request.get({
 				url: baseUrl+"/recruiter",
 				headers: {
-					Authorization: 'Bearer '+req.cookies["recruiter-access-token"]
+					Authorization: 'Bearer '+req.cookies[config["cookie"]]
 				}
 			},function(err, response, body){
 				if(err){
-					res.cookie('recruiter-access-token', '',{ "path": "/"});
+					res.cookie('recruiter-access-token', '',{ "path": "/", domain: baseDomain+".com"});
 					return res.redirect('/login');
 				}
 				const jsonBody = JSON.parse(body)
@@ -73,23 +78,21 @@ module.exports = function(settings){
 					}
 					return res.redirect('/welcome');
 				}
-				res.cookie('recruiter-access-token', '',{ "path": "/"});
-				console.log(req.cookies["recruiter-access-token"])
+				res.cookie('recruiter-access-token', '',{ "path": "/", domain: baseDomain+".com"});
+				console.log(req.cookies[config["cookie"]])
 				return res.redirect('/login');
 			})
 
 		}
-		else{
-			if(req.cookies['IIMJOBS_CK1']){
-				return	res.redirect('/transition');
-			}
-			// IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
-			if(req.originalUrl == "/login") {
-				console.log("here")
-				return next()
-			}
-			return res.redirect('/login?callbackUrl='+req.originalUrl+'');
+		// if(req.cookies['IIMJOBS_CK1']){
+		// 	return	res.redirect('/transition');
+		// }
+		// IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
+		if(req.originalUrl == "/login") {
+			return next()
 		}
+		return res.redirect('/login?callbackUrl='+req.originalUrl+'');
+		
 	}
 
 	function isVerified(req,res,next) {
@@ -132,6 +135,8 @@ module.exports = function(settings){
 				baseUrl: baseUrl,
 				baseDomain: baseDomain,
 				profile: req.profile,
+				oldCookie: config['oldCookie'],
+				cookie: config['cookie'],
 				staticEndPoints: config["staticEndPoints"]
 			})
 			return
@@ -145,7 +150,11 @@ module.exports = function(settings){
 			profile: req.profile,
 			baseUrlJob: baseUrlJob,
 			origin: "dashboard",
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie'],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		});
 		return
 	});
@@ -160,7 +169,9 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			profile: req.profile,
 			hiddenLoader:"hidden",
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	})
@@ -175,7 +186,9 @@ module.exports = function(settings){
 			profile: req.profile,
 			jobId: req.params.jobId,
 			hiddenClass:"hidden",
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	})
@@ -190,14 +203,15 @@ module.exports = function(settings){
 			baseUrlJob: baseUrlJob,
 			profile: req.profile,
 			origin: "MyJobs",
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
 
 	app.get("/login",  function(req,res){
-		if(req.cookies['recruiter-access-token']){
-
+		if(req.cookies[config['cookie']] && req.cookies[config['oldCookie']]){
 			return isAuthenticated(req, res);
 		}
 		res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
@@ -209,7 +223,9 @@ module.exports = function(settings){
 			styles:  assetsMapper["landing"]["styles"][mode],
 			scripts: assetsMapper["landing"]["scripts"][mode],
 			baseUrl: baseUrl,
-			baseDomain: baseDomain
+			baseDomain: baseDomain,
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -230,7 +246,11 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie'],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	})
@@ -244,7 +264,9 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	})
@@ -279,7 +301,9 @@ module.exports = function(settings){
 			scripts: assetsMapper["ui-components"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	})
@@ -292,7 +316,9 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -307,7 +333,9 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			profile: req.profile,
 			origin: "TaggedCandidates",
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -320,7 +348,9 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -334,7 +364,9 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			profile: req.profile,
 			origin: "Saved/ShorlistedCandidates",
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -347,7 +379,9 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -364,7 +398,9 @@ module.exports = function(settings){
 			jobId: req.params.jobID,
 			profile: req.profile,
 			origin: "CandidateApplyList",
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -390,7 +426,9 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -403,7 +441,9 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -416,7 +456,9 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -430,7 +472,9 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			hiddenActions: "hidden",
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -444,7 +488,9 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			hiddenActions: "hidden",
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -458,7 +504,9 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			hiddenActions: "hidden",
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -472,7 +520,9 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			hiddenActions: "hidden",
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -486,7 +536,9 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			hiddenActions: "hidden",
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -500,7 +552,9 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			hiddenActions: "hidden",
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -515,7 +569,9 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			verify:verifyAccount,
 			email: email,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -531,7 +587,9 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			email: email,
 			key: key,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -545,7 +603,9 @@ module.exports = function(settings){
 			scripts: assetsMapper["admin"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -557,7 +617,9 @@ module.exports = function(settings){
 			scripts: assetsMapper["account-verified"]["scripts"][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -586,7 +648,9 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		});
 		return
 	});
@@ -603,7 +667,9 @@ module.exports = function(settings){
 			jobId: req.params.jobID,
 			applicationId: req.params.applicationID,
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		});
 		return
 	});
@@ -618,7 +684,9 @@ module.exports = function(settings){
 			jobId: req.params.jobID,
 			applicationId: req.params.applicationID,
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -633,7 +701,9 @@ module.exports = function(settings){
 			jobId: req.params.jobID,
 			applicationId: req.params.applicationID,
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -646,7 +716,9 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -661,7 +733,9 @@ module.exports = function(settings){
 			jobId: req.params.jobID,
 			applicationId: req.params.applicationID,
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -675,7 +749,9 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 		return
 	});
@@ -687,7 +763,9 @@ module.exports = function(settings){
 			scripts:assetsMapper['forgot-password']['scripts'][mode],
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		})
 	});
 	app.get("/connect-success", function(req, res){
@@ -695,12 +773,14 @@ module.exports = function(settings){
 			title:"Account Connected Successfully | iimjobs.com",
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		});
 	})
 
 	app.get("/transition",function(req, res){
-		var oldCookie = req.cookies['IIMJOBS_CK1'];
+		var oldCookie = req.cookies[config['oldCookie']];
 		res.render("transition", {
 			title:"iimjobs.com",
 			styles:  assetsMapper["transition"]["styles"][mode],
@@ -708,7 +788,9 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			oldCookie: oldCookie,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		});
 	})
 
@@ -721,7 +803,9 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			jobId: req.params.jobID,
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
 		});
 	});
 
@@ -729,7 +813,7 @@ module.exports = function(settings){
 		const jobId = req.params.jobId,
 			applicationId = req.params.applicationId,
 			action = req.params.action;
-		const accessToken = req.cookies["recruiter-access-token"];
+		const accessToken = req.cookies[config["cookie"]];
 		const recruiterId = req.profile.id;
 		var redirectURL = '';
 		if([ 'shortlist', 'reject', 'save', 'view', 'download' ].indexOf(action) <0)
