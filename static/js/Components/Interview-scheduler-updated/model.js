@@ -642,6 +642,9 @@ function Calendar(){
         if(dowTo==0){
             dowTo=7;
         }
+        if(dowFrom==0){
+            dowFrom=7;
+        }
         if(!(timetable.date.to=="0000-00-00")){
             for(var k=0;k<timetable.slots.length;k++){
                 if(timetable.slots[k].day<dowFrom || timetable.slots[k].day>dowTo){
