@@ -1927,7 +1927,7 @@
         }
 
 	},
-	
+
     "calendarIe": {
         "styles": {
             "debug" : [
@@ -1958,19 +1958,18 @@
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Utilities/request.js",
-				"static/js/Services/submitCalendar.js",
-				"static/js/Services/fetchCalendars.js",
+				"static/js/Services/submitCalendarIe.js",
+				"static/js/Services/fetchCalendarsIe.js",
 				"static/js/Tracker/tracker.js",
                 "static/js/Components/calendarIe/index.js",
                 "static/js/Components/calendarIe/model.js",
-				
+
 				"static/js/eventMapping.js"
             ],
             "prod" : [
                 "static/build/js/Interview-scheduler-updated.min.js"
             ]
         }
-
     },
     "booked-slots": {
         "styles": {
@@ -2143,7 +2142,7 @@
         },
         "scripts": {
             "debug": [
-			
+
 			],
             "prod" :[
 				"static/js/header.js",

@@ -1,6 +1,3 @@
-
-
-
 var errorResponses = {
 	missingName: 'Please enter a calendar name',
     missingMessage: 'Please enter a message for F2F interview',
@@ -12,9 +9,6 @@ var errorResponses = {
     missingEnd:"Please select End Time",
     missingDateSlot:"Please select a slot between startdate and endate"
 }
-
-
- 
 
   function Calendar(){
     var settings ={};
@@ -139,9 +133,9 @@ var errorResponses = {
         }
         date.from=fromDate;
         date.to=toDate;
-        
+
         timetable.date=date;
-       
+
             settings.dayId.each(function(index,el){
                 var id=$(this).attr('id');
                 var unique=$(this).find('.day').attr('id');
@@ -151,7 +145,7 @@ var errorResponses = {
                 if(checkbox==true){
                     $("#"+id+ "").css("opacity","1");
                 }
-                
+
                 var startvalue=$("#"+id+ "").find(settings.start_timeClass).val();
                 console.log($(el).find('.Start-time').val());
                 if(startvalue>0){
@@ -187,7 +181,7 @@ var errorResponses = {
                     slots.push(slot);
                 }
             });
-                            
+
             console.log("sfdsf")
             console.log(slots);
             var start=settings.breakStart.val();
@@ -263,25 +257,27 @@ var errorResponses = {
     }
 
     function setDetails(object){
-        console.log(object)
+
         settings.name.val(object["name"]);
         settings.message.val(object["message"],(/\(\d+-\d+ \w+\)$/));
         settings.teleMessage.val(object["telMessage"],(/\(\d+-\d+ \w+\)$/));
         timetable.CalendarId=object["id"];
         timetable.slots=object.slots;
-        settings.breakStart.val(object.breakHours['from']);
+		if(object.breakHours['from'])
+        	settings.breakStart.val(object.breakHours['from']);
         startTimeMapper('breaks');
-        settings.breakEnd.val(object.breakHours['to']);
+		if(object.breakHours['to'])
+        	settings.breakEnd.val(object.breakHours['to']);
         endTimeMapper('breaks');
         var previewslots=object.slots;
         availablehours(previewslots);
         var fromDate=object.date.from; //DD-MM-YYYY
         startDate=moment(fromDate).format("DD-MM-YYYY");
-        console.log(startDate);
+
         var toDate=object.date.to;
-        console.log(toDate)
+
         endDate=moment(toDate).format("DD-MM-YYYY");
-        console.log(endDate)
+
             $('#startdatepicker').datepicker().datepicker('setDate', startDate);
             $('#radio-button-startend').is(":checked",true)
 
@@ -309,7 +305,7 @@ var errorResponses = {
                 $("#"+id+ "").find(settings.start_time).val(startvalue);
             }
             $("#"+id+ "").find(settings.end_time).val(endvalue);
-            $("#"+id+ "").find(settings.checkbox).is(":checked",true);
+            $("#"+id+ "").find(settings.checkbox).prop("checked","checked");
             startTimeMapper(id);
             endTimeMapper(id);
         }
@@ -387,18 +383,16 @@ var errorResponses = {
     }
 
     function startTimeMapper(parent){
-            var start=$("#"+parent+"").find(".start")
-            var end=$("#"+parent+"").find(".end");
-            var k=parseInt(start.val(),10);
-            console.log(k);
-            var index = $("#"+parent+" .start").find('option:selected').index();
-            console.log(index);
-             if(k>=0 && index<27){
-                var check=$("#"+parent+" .end").find('option:selected').index();
-                $("#"+parent+" .end").find('option').is('disabled', false);
-                $("#"+parent+" .end").not("#"+parent+" .start").find('option:lt(' + (index+1) + ')').prop('disabled', true);
-                $("#"+parent+" .end").find('option:first-child').is('disabled',false);
-            }
+        var start=$("#"+parent+"").find(".start")
+        var end=$("#"+parent+"").find(".end");
+        var k=parseInt(start.val(),10);
+        var index = $("#"+parent+" .start").find('option:selected').index();
+        if(k>=0 && index<27){
+            var check=$("#"+parent+" .end").find('option:selected').index();
+            $("#"+parent+" .end").find('option').is('disabled', false);
+            $("#"+parent+" .end").not("#"+parent+" .start").find('option:lt(' + (index+1) + ')').prop('disabled', true);
+            $("#"+parent+" .end").find('option:first-child').is('disabled',false);
+        }
     }
 
     function endTimeMapper(parent){
@@ -417,7 +411,7 @@ var errorResponses = {
             var startvalue=$("#"+id+ "").find(settings.start_time).val();
             var endvalue=$("#"+id+ "").find(settings.end_time).val();
             var checkbox=$("#"+id+ "").find(settings.checkbox).is("checked");
-            
+
             if(checkbox==true && startvalue>0 && endvalue>0){
                   $('input[type="checkbox"]', settings.table).is('checked',true);
                   settings.start_time.val(startvalue);
@@ -572,7 +566,7 @@ var errorResponses = {
             settings.radioInput.next('.error').text(errorResponses['missingDate']);
             return false;
         }
-    
+
 
         if(settings.breakStart.val()==0 && settings.breakEnd.val()>0){
             settings.breakhours.find('.error').text(errorResponses["missingStart"]);
@@ -592,7 +586,7 @@ var errorResponses = {
         var end_date=$('#end_date').datepicker().val();
         var start_date=moment(start_date);
         var end_date=moment(end_date);
-    
+
         if(end_date.isBefore(start_date)){
             settings.radioInput.next('.error').text("Start Date should not be greater than end date");
             $('html, body').animate({
@@ -687,7 +681,7 @@ var errorResponses = {
             }
         }
     }
-        
+
 
     return {
         init:init,

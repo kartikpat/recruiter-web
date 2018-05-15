@@ -91,7 +91,7 @@ module.exports = function(settings){
 			return next()
 		}
 		return res.redirect('/login?callbackUrl='+req.originalUrl+'');
-		
+
 	}
 
 	function isVerified(req,res,next) {
@@ -322,7 +322,7 @@ module.exports = function(settings){
 		return
 	});
 
-	
+
 	app.get("/candidates/tagged",isAuthenticated, function(req,res){
 		res.render("tagged-candidates", {
 			title:"Tagged Candidates | iimjobs.com",
@@ -639,7 +639,7 @@ module.exports = function(settings){
 	app.get("/calendar/create",isAuthenticated,function(req, res){
 		var parser = require('ua-parser-js');
 		var ua = parser(req.headers['user-agent']);
-		if((ua.browser.name=='IE' && (ua.browser.version=="8.0"|| ua.browser.version=="9.0"))){
+		// if((ua.browser.name=='IE' && (ua.browser.version=="8.0"|| ua.browser.version=="9.0"))){
 			res.render("calendarIe", {
 				title: "Create Calendar | iimjobs.com",
 				styles:  assetsMapper["calendarIe"]["styles"][mode],
@@ -652,43 +652,140 @@ module.exports = function(settings){
 				profile: req.profile,
 				pubnub:"disable",
 				staticEndPoints: config["staticEndPoints"]
-			});	
+			});
 			return
-		}
-		res.render("Interview-scheduler-updated", {
-			title: "Create Calendar | iimjobs.com",
-			styles:  assetsMapper["Interview-scheduler-updated"]["styles"][mode],
-			scripts: assetsMapper["Interview-scheduler-updated"]["scripts"][mode],
-			hiddenLoader: "hidden",
-			jobId: req.params.jobID,
-			applicationId: req.params.applicationID,
-			baseUrl: baseUrl,
-			baseDomain: baseDomain,
-			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"],
-			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
-		});
-		return
+		// }
+		// res.render("Interview-scheduler-updated", {
+		// 	title: "Create Calendar | iimjobs.com",
+		// 	styles:  assetsMapper["Interview-scheduler-updated"]["styles"][mode],
+		// 	scripts: assetsMapper["Interview-scheduler-updated"]["scripts"][mode],
+		// 	hiddenLoader: "hidden",
+		// 	jobId: req.params.jobID,
+		// 	applicationId: req.params.applicationID,
+		// 	baseUrl: baseUrl,
+		// 	baseDomain: baseDomain,
+		// 	profile: req.profile,
+		// 	staticEndPoints: config["staticEndPoints"],
+		// 	oldCookie: config['oldCookie'],
+		// 	cookie: config['cookie']
+		// });
+		// return
 	});
 
-	app.get("/calendar/:calendarId/edit",isAuthenticated,function(req, res){
-		res.render("Interview-scheduler-updated", {
-			title: "Edit Calendar | iimjobs.com",
-			styles:  assetsMapper["Interview-scheduler-updated"]["styles"][mode],
-			scripts: assetsMapper["Interview-scheduler-updated"]["scripts"][mode],
-			baseUrl: baseUrl,
-			baseDomain:baseDomain,
-			calendarId: req.params.calendarId,
-			hiddenClass: "hidden",
-			jobId: req.params.jobID,
-			applicationId: req.params.applicationID,
-			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"],
-			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+	app.post("/recruiter/:recruiterId/calendar/:calendarId", function(req, res){
+		const recruiterId = req.params.recruiterId,
+			  calendarId = req.params.calendarId
+
+		const accessToken = req.cookies[config["cookie"]];
+
+		var resObj = {
+			"status": "",
+			"message": ""
+		}
+
+		if(!calendarId && !recruiterId) {
+			resObj.status = "fail"
+			resObj.message = "missing parameters"
+			return res.send(JSON.stringify(resObj));
+		}
+
+		var options = { method: 'POST',
+		  url: baseUrl+ '/recruiter/'+recruiterId+'/calendar/'+calendarId+'',
+		  headers: {
+			'Authorization': 'Bearer '+ accessToken,
+			'Content-Type': 'application/json'
+			},
+		  json: true
+		};
+		request(options, function (error, response, body) {
+			if (error){
+				return res.send(response);
+			}
+			const jsonBody = body;
+			if(jsonBody.status && jsonBody.status =='success'){
+				return res.send(body);
+			}
+			else {
+				return res.send(response);
+			}
+			return res.send(response);
 		});
-		return
+	})
+
+	app.get("/recruiter/:recruiterId/calendar/:calendarId", function(req, res){
+		const recruiterId = req.params.recruiterId,
+			  calendarId = req.params.calendarId
+
+		const accessToken = req.cookies[config["cookie"]];
+
+		var resObj = {
+			"status": "",
+			"message": ""
+		}
+
+		if(!calendarId && !recruiterId) {
+			resObj.status = "fail"
+			resObj.message = "missing parameters"
+			return res.send(JSON.stringify(resObj));
+		}
+
+		var options = { method: 'GET',
+		  url: baseUrl+ '/recruiter/'+recruiterId+'/calendar/'+calendarId+'',
+		  headers: {
+			'Authorization': 'Bearer '+ accessToken,
+			'Content-Type': 'application/json'
+			},
+		  json: true
+		};
+		request(options, function (error, response, body) {
+			if (error){
+				return res.send(response);
+			}
+			const jsonBody = body;
+			if(jsonBody.status && jsonBody.status =='success'){
+				return res.send(body);
+			}
+			else {
+				return res.send(response);
+			}
+			return res.send(response);
+		});
+	})
+
+	app.get("/calendar/:calendarId/edit",isAuthenticated,function(req, res){
+		var parser = require('ua-parser-js');
+		var ua = parser(req.headers['user-agent']);
+		// if((ua.browser.name=='IE' && (ua.browser.version=="8.0"|| ua.browser.version=="9.0"))){
+			res.render("calendarIe", {
+				title: "Edit Calendar | iimjobs.com",
+				styles:  assetsMapper["calendarIe"]["styles"][mode],
+				scripts: assetsMapper["calendarIe"]["scripts"][mode],
+				hiddenClass: "hidden",
+				calendarId: req.params.calendarId,
+				baseUrl: baseUrl,
+				baseDomain: baseDomain,
+				profile: req.profile,
+				pubnub:"disable",
+				staticEndPoints: config["staticEndPoints"],
+				oldCookie: config['oldCookie'],
+				cookie: config['cookie']
+			});
+			return
+		// }
+		// res.render("Interview-scheduler-updated", {
+		// 	title: "Edit Calendar | iimjobs.com",
+		// 	styles:  assetsMapper["Interview-scheduler-updated"]["styles"][mode],
+		// 	scripts: assetsMapper["Interview-scheduler-updated"]["scripts"][mode],
+		// 	baseUrl: baseUrl,
+		// 	baseDomain:baseDomain,
+		// 	calendarId: req.params.calendarId,
+		// 	hiddenClass: "hidden",
+		// 	profile: req.profile,
+		// 	staticEndPoints: config["staticEndPoints"],
+		// 	oldCookie: config['oldCookie'],
+		// 	cookie: config['cookie']
+		// });
+		// return
 	});
 
 	app.get("/job/:jobID/applications/:applicationID",isAuthenticated, function(req,res){

@@ -1,6 +1,7 @@
 $(document).ready(function(){
     var calendarDetails = Calendar();
     $.support.cors = true;
+
     if(calendarId){
         var insuffSlotsErrMsg = getQueryParameter("insuffSlotsErrMsg");
         if(!isEmpty(insuffSlotsErrMsg)) {
@@ -8,7 +9,7 @@ $(document).ready(function(){
             var newUrl = removeParam("insuffSlotsErrMsg", window.location.href)
             window.history.replaceState("object or string", "Title", newUrl);
         }
-        fetchCalendars(calendarId,recruiterId);
+        fetchCalendarsIe(calendarId,recruiterId);
         $('.form-container').removeClass('hidden');
         $('.Availability').removeClass('hidden');
         $('.second-container ').removeClass('hidden');
@@ -45,7 +46,7 @@ $(document).ready(function(){
         if(calendarDetails.validate()){
         spinner();
         var data=calendarDetails.getDetails();
-        submitCalendar(data,calendarId,recruiterId);
+        submitCalendarIe(data,calendarId,recruiterId);
         }
     })
 
@@ -58,7 +59,7 @@ $(document).ready(function(){
     }
 
     function onSuccessfulSubmitCalendar(topic, data){
-        console.log('submit successful');
+
         spinner();
         window.location=staticEndPoints.manageCalendar
     }
@@ -68,11 +69,11 @@ $(document).ready(function(){
 		// calendarDetails.errorHandler(data);
     }
 
-    var calendarSubmitSuccessSubscription = pubsub.subscribe('submittedCalendar',onSuccessfulSubmitCalendar);
-    var calendarSubmitFailSubscription = pubsub.subscribe('failedCalendarSubmission',onFailedSubmitCalendar);
+    var calendarSubmitSuccessSubscription = pubsub.subscribe('submittedCalendarIe',onSuccessfulSubmitCalendar);
+    var calendarSubmitFailSubscription = pubsub.subscribe('failedCalendarSubmissionIe',onFailedSubmitCalendar);
 
-    var fetchCalendarSuccessSubscription = pubsub.subscribe("fetchedCalendars",onSuccessfulFetchCalendar);
-	var fetchCalendarFailSubscription = pubsub.subscribe("failedToFetchCalendars",onFailedFetchCalendar);
+    var fetchCalendarSuccessSubscription = pubsub.subscribe("fetchedCalendarsIe",onSuccessfulFetchCalendar);
+	var fetchCalendarFailSubscription = pubsub.subscribe("failedToFetchCalendarsIe",onFailedFetchCalendar);
 
     function spinner(){
         $('#submit').addClass('hidden')
