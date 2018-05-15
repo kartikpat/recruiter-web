@@ -67,7 +67,7 @@ var errorResponses = {
         // })
         // time_mapper();
         // selectCreater();
-        console.log(timetable)
+
         copytoall();
         Timer();
         copyTime();
@@ -105,7 +105,7 @@ var errorResponses = {
         var date={};
         var breakhours={};
         var currentDate=moment().format("YYYY-MM-DD");
-        console.log(currentDate);
+
           var fromDate=currentDate;
           var toDate="";
         if($('#radio-button-startend').is("checked")==true){
@@ -113,23 +113,23 @@ var errorResponses = {
             if(fromDate==''){
                 fromDate=currentDate;
             }
-            console.log(fromDate);
+
         }
         if($("#radio-button-start").is("checked") == true){
             fromDate=currentDate;
             $('#startdatepicker').datepicker('setDate', null);
-            console.log("here");
+
         }
 
         if($('#radio-button-tillend').is("checked")==true){
             toDate="0000-00-00";
-            console.log(toDate);
+
             $('#enddatepicker').datepicker('setDate', null);
         }
 
         if($('#radio-button-end').is("checked")==true){
             toDate=$('#end_date').datepicker().val();
-            console.log(toDate);
+
         }
         date.from=fromDate;
         date.to=toDate;
@@ -147,7 +147,7 @@ var errorResponses = {
                 }
 
                 var startvalue=$("#"+id+ "").find(settings.start_timeClass).val();
-                console.log($(el).find('.Start-time').val());
+
                 if(startvalue>0){
                     startTimeMapper(id)
                 }
@@ -156,17 +156,8 @@ var errorResponses = {
                 if(endvalue>0){
                     endTimeMapper(id)
                 }
-                console.log('start value'+startvalue)
-                console.log('end value'+endvalue)
-                console.log('checkbox value'+checkbox)
-                console.log('checkbox type'+typeof(checkbox))
-                console.log(parseInt(startvalue))
-                console.log(parseInt(endvalue))
-                console.log(parseInt(startvalue)>0);
-                console.log(parseInt(endvalue)>0)
-                console.log("here")
+
                 if(parseInt(startvalue,10)>0 && parseInt(endvalue,10)>0 && checkbox==true){
-                    console.log('inside slot creation')
                     var slot={
                         day:id,
                         id:unique,
@@ -176,28 +167,24 @@ var errorResponses = {
                         to:endvalue,
                         }
                     };
-                    console.log('printing slot: '+id);
-                    console.log(slot)
                     slots.push(slot);
                 }
             });
 
-            console.log("sfdsf")
-            console.log(slots);
             var start=settings.breakStart.val();
             var end=settings.breakEnd.val();
+			if(!end) {
+				end = "0"
+			}
             breakhours.from=start;
             startTimeMapper('breaks');
             breakhours.to=end;
             endTimeMapper('breaks')
             timetable.breakHours=breakhours;
-            console.log("break hours hhhh")
-            console.log(start);
-            console.log(end);
 
             if(parseInt(start,10)>0 && parseInt(end,10)>0){
                 slots.forEach(function(aRow){
-                    console.log(aRow.time);
+
                     if(parseInt(start,10)>parseInt(aRow.time.to,10)){
 
                         finalslots.push(aRow);
@@ -208,7 +195,6 @@ var errorResponses = {
                         finalslots.push(aRow);
                     }
                     else if(parseInt(start,10)<=parseInt(aRow.time.from,10) && parseInt(end,10)>=parseInt(aRow.time.to)){
-                          console.log("no slot");
 
                     }
                     else if(parseInt(start,10)<parseInt(aRow.time.from,10) && parseInt(end,10)<parseInt(aRow.time.to,10) && parseInt(end)>parseInt(aRow.time.from,10)){
@@ -273,9 +259,7 @@ var errorResponses = {
         availablehours(previewslots);
         var fromDate=object.date.from; //DD-MM-YYYY
         startDate=moment(fromDate).format("DD-MM-YYYY");
-
         var toDate=object.date.to;
-
         endDate=moment(toDate).format("DD-MM-YYYY");
 
             $('#startdatepicker').datepicker().datepicker('setDate', startDate);
@@ -401,7 +385,7 @@ var errorResponses = {
         var index = $("#"+parent+" .end").find('option:selected').index();
         $("#"+parent+" .start").find('option').is('disabled', false);
         $("#"+parent+" .start").not("#"+parent+" .end").find('option:gt(' + (index-1) + ')').is('disabled', true);
-
+		$("#"+parent+" .end").find('option:first-child').is('disabled',false);
     }
 
     function copyTime(){
@@ -502,11 +486,9 @@ var errorResponses = {
     function getDetails(){
         timetable.name= (settings.name.val()).trim();
          timetable.message=  (settings.message.val()).trim();
-        //  var data=settings.editorMessage.getContent();
-        //  data1=data.innerText;
-        //  console.log(data1);
+
         timetable.telMessage=(settings.teleMessage.val()).trim();
-        console.log(timetable);
+
         return timetable
     }
 
@@ -543,6 +525,7 @@ var errorResponses = {
     }
 
     function validate(){
+
     	if(!((settings.name.val()).trim())){
             console.log("fail");
 			settings.name.next('.error').text(errorResponses['missingName']);
@@ -567,15 +550,14 @@ var errorResponses = {
             return false;
         }
 
-
-        if(settings.breakStart.val()==0 && settings.breakEnd.val()>0){
+        if(parseInt(settings.breakStart.val(),10)==0 && parseInt(settings.breakEnd.val(),10)>0){
             settings.breakhours.find('.error').text(errorResponses["missingStart"]);
             $('html, body').animate({
                 scrollTop: (settings.breakhours.offset().top)
             },200);
             return false
         }
-        if(settings.breakEnd.val()==0 && settings.breakStart.val()>0){
+        if(parseInt(settings.breakEnd.val(),10)==0 && parseInt(settings.breakStart.val(),10)>0){
             settings.breakhours.find('.error').text(errorResponses["missingEnd"]);
             $('html, body').animate({
                 scrollTop: (settings.breakhours.offset().top)
@@ -596,15 +578,19 @@ var errorResponses = {
         }
         var start=settings.breakStart.val();
         var end=settings.breakEnd.val();
+
+		if(!end) {
+			end = "0"
+		}
         var status=check();
-        console.log(status);
+
         if((status>0)){
             console.log('false');
             return false;
         }
-        console.log(timetable)
+
         var status=timetable.slots;
-        console.log(status);
+
         if(!(status.length>0)){
             settings.slots.find('.error').text(errorResponses['missingslots']);
             $('html, body').animate({

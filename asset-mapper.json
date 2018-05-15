@@ -1925,9 +1925,7 @@
                 "static/build/js/Interview-scheduler-updated.min.js"
             ]
         }
-
 	},
-
     "calendarIe": {
         "styles": {
             "debug" : [
@@ -1963,7 +1961,6 @@
 				"static/js/Tracker/tracker.js",
                 "static/js/Components/calendarIe/index.js",
                 "static/js/Components/calendarIe/model.js",
-
 				"static/js/eventMapping.js"
             ],
             "prod" : [

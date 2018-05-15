@@ -5,8 +5,8 @@ function submitLogin(data){
 			var universalToken = xhr.getResponseHeader('Set-Universal-Token');
 			
 			localStorage[cookieName] = token;
-			Set_Cookie(cookieName, token,1, "/", "iimjobs.com");
-			Set_Cookie(oldCookieName, universalToken, 1, "/", "iimjobs.com", null, true );
+			Set_Cookie(cookieName, token,1, "/", baseDomainName);
+			Set_Cookie(oldCookieName, universalToken, 1, "/", baseDomainName, null, true );
 			return pubsub.publish("successfulLogin", res.data);
 		}
 	}, function(res,status,error) {

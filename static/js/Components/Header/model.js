@@ -45,15 +45,17 @@ function Header(){
 			settings.legacyRecruiter = $('.legacyRecruiter a');
 
 			$(".recruiterLogout").click(function(){
-
-				document.cookie = "recruiter-access-token" + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;';
-				document.cookie = "IIMJOBS_CK1" + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC;domain=.'+baseDomain+'.com;path=/;';
+				var domainToBeCleared = baseDomainName;
+				if(domainToBeCleared)
+					domainToBeCleared = '.'+domainToBeCleared
+				document.cookie = cookieName + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC;domain='+domainToBeCleared+';path=/;';
+				document.cookie = oldCookieName + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC;domain='+domainToBeCleared+';path=/;';
 
 				window.location.href = staticEndPoints.landing;
 			});
 
 			settings.legacyRecruiter.click(function(event){
-				Set_Cookie('OLDRECRUITER', "1",null,"/", baseDomain+'.com' );
+				Set_Cookie('OLDRECRUITER', "1",null,"/", baseDomainName );
 				return true;
 			})
 
