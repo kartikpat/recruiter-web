@@ -15,7 +15,6 @@ jQuery(document).ready( function() {
     //initializing the models
     aCandidate.init();
 
-
     fetchCandidateProfile(recruiterId, jobId, applicationId)
     submitPageVisit(recruiterId, screenName, jobId);
     var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitSuccess:"+screenName, onPageVisitUpdateSuccess)
@@ -171,7 +170,8 @@ jQuery(document).ready( function() {
     function onCandidateProfileFetchSuccess(topic, res) {
         store.saveToStore(res.data)
         if(parseInt(res.data[0].status) == 0)
-        setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
+            setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
+            
         aCandidate.populateCandidateData(res.data[0])
         fetchjobCalendars(jobId, recruiterId)
     }
@@ -181,7 +181,7 @@ jQuery(document).ready( function() {
    }
 
     function onSuccessfullCandidateAction(topic, res) {
-        
+
         if(res.action == "view") {
             var newStatus = 4
             var obj = store.getCandidateFromStore(res.applicationId)
@@ -313,7 +313,7 @@ jQuery(document).ready( function() {
            event_label: 'origin=Profile,type=Telephonic,recId='+recruiterId+''
         }
         sendEvent(eventMap["sendInvite"]["event"], eventObj)
-        
+
         // if(!defaultCalendarId)
         //     return aCandidate.openSelectDefaultCalendarModal();
         // var obj = {

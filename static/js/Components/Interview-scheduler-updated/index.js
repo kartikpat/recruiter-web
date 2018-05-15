@@ -25,7 +25,6 @@ $(document).ready(function(){
     //     // calendarDetails.testHighlight();
     // }
 
-
     calendarDetails.submitHandler(function(action){
         if(action == "update") {
             var eventObj = {

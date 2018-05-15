@@ -1936,7 +1936,8 @@
 				"static/css/fullcalendar.css",
 				"static/css/old-header.css",
 				"static/css/vendor/medium-editor.min.css",
-                "static/css/Interview-scheduler-updated.css"
+                "static/css/Interview-scheduler-updated.css",
+				"static/css/interview-scheduler-updated-ie.css"
             ],
             "prod":[
                 "static/build/css/Interview-scheduler-updated.min.css"
@@ -1944,6 +1945,7 @@
         },
         "scripts": {
             "debug": [
+				"static/js/Utilities/ie-polyfill.js",
 				"static/js/vendor/moment.min.js",
 				"static/js/vendor/jquery-1.9.1.min.js",
 				"static/js/vendor/jquery-ui.min.js",
@@ -2009,7 +2011,6 @@
 				"static/js/Components/BookedSlots/index.js",
 				"static/js/Tracker/tracker.js",
 				"static/js/eventMapping.js"
-
             ],
             "prod" :[
                 "static/build/js/ui-Calendar.min.js"
@@ -2060,7 +2061,6 @@
 	"dashboardview": {
         "styles": {
             "debug" : [
-
                 "static/css/header.css",
                 "static/css/dashboardview.css",
                 "static/css/footer.css",

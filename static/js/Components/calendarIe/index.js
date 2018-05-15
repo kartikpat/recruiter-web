@@ -42,7 +42,7 @@ $(document).ready(function(){
             }
             sendEvent(eventMap["createCalendar"]["event"], eventObj)
         }
-
+        
         if(calendarDetails.validate()){
         spinner();
         var data=calendarDetails.getDetails();

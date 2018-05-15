@@ -103,7 +103,6 @@ function Calendar(){
         var date={};
         var breakhours={};
         var currentDate=moment().format("YYYY-MM-DD");
-        console.log(currentDate);
           var fromDate=currentDate;
           var toDate="";
         if($('#radio-button-startend').prop("checked")==true){
@@ -111,44 +110,35 @@ function Calendar(){
             if(fromDate==''){
                 fromDate=currentDate;
             }
-            console.log(fromDate);
         }
         if($("#radio-button-start").prop("checked") == true){
             fromDate=currentDate;
             $('#startdatepicker').datepicker('setDate', null);
-            console.log("here");
         }
-
         if($('#radio-button-tillend').prop("checked")==true){
             toDate="0000-00-00";
-            console.log(toDate);
             $('#enddatepicker').datepicker('setDate', null);
         }
-
         if($('#radio-button-end').prop("checked")==true){
             toDate=$('#end_date').datepicker().val();
-            console.log(toDate);
         }
         date.from=fromDate;
         date.to=toDate;
-        
+
         timetable.date=date;
             $.each(settings.dayId,function(){
                 var id=$(this).attr('id');
                 var unique=$(this).find('.day').attr('id');
                 var slotId=$(this).attr('slotId');
-                console.log(unique);
                 $("#"+id+ "").css("opacity","0.5");
                 var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
                 if(checkbox==true){
                     $("#"+id+ "").css("opacity","1");
                 }
-
                 var startvalue=$("#"+id+ "").find(settings.start_time).val();
                 if(startvalue>0){
                     startTimeMapper(id)
                 }
-
                 var endvalue=$("#"+id+ "").find(settings.end_time).val();
                 if(endvalue>0){
                     endTimeMapper(id)
@@ -166,8 +156,6 @@ function Calendar(){
                     slots.push(slot);
                 }
             });
-
-            console.log(slots);
             var start=settings.breakStart.val();
             var end=settings.breakEnd.val();
             breakhours.from=start;
@@ -190,7 +178,6 @@ function Calendar(){
                         finalslots.push(aRow);
                     }
                     else if(parseInt(start)<=parseInt(aRow.time.from) && parseInt(end)>=parseInt(aRow.time.to)){
-                          console.log("no slot");
 
                     }
                     else if(parseInt(start)<parseInt(aRow.time.from) && parseInt(end)<parseInt(aRow.time.to) && parseInt(end)>parseInt(aRow.time.from)){
@@ -396,7 +383,7 @@ function Calendar(){
             var startvalue=$("#"+id+ "").find(settings.start_time).val();
             var endvalue=$("#"+id+ "").find(settings.end_time).val();
             var checkbox=$("#"+id+ "").find(settings.checkbox).prop("checked");
-            
+
             if(checkbox==true && startvalue>0 && endvalue>0){
                   $('input[type="checkbox"]', settings.table).prop('checked',true);
                   settings.start_time.val(startvalue);
@@ -649,6 +636,7 @@ function Calendar(){
             dowFrom=7;
         }
         if(!(timetable.date.to=="0000-00-00")){
+
             for(var k=0;k<timetable.slots.length;k++){
                 if(timetable.slots[k].day<dowFrom || timetable.slots[k].day>dowTo){
                     flag++;
@@ -663,7 +651,7 @@ function Calendar(){
             }
         }
     }
-        
+
 
     return {
         init:init,

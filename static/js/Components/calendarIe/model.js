@@ -108,26 +108,25 @@ var errorResponses = {
 
           var fromDate=currentDate;
           var toDate="";
-        if($('#radio-button-startend').is("checked")==true){
+        if($('#radio-button-startend').is(":checked")==true){
             fromDate=$('#start_date').datepicker().val();
             if(fromDate==''){
                 fromDate=currentDate;
             }
-
         }
-        if($("#radio-button-start").is("checked") == true){
+        if($("#radio-button-start").is(":checked") == true){
             fromDate=currentDate;
             $('#startdatepicker').datepicker('setDate', null);
 
         }
 
-        if($('#radio-button-tillend').is("checked")==true){
+        if($('#radio-button-tillend').is(":checked")==true){
             toDate="0000-00-00";
 
             $('#enddatepicker').datepicker('setDate', null);
         }
 
-        if($('#radio-button-end').is("checked")==true){
+        if($('#radio-button-end').is(":checked")==true){
             toDate=$('#end_date').datepicker().val();
 
         }
@@ -173,9 +172,7 @@ var errorResponses = {
 
             var start=settings.breakStart.val();
             var end=settings.breakEnd.val();
-			if(!end) {
-				end = "0"
-			}
+
             breakhours.from=start;
             startTimeMapper('breaks');
             breakhours.to=end;
@@ -263,13 +260,13 @@ var errorResponses = {
         endDate=moment(toDate).format("DD-MM-YYYY");
 
             $('#startdatepicker').datepicker().datepicker('setDate', startDate);
-            $('#radio-button-startend').is(":checked",true)
+            $('#radio-button-startend').prop("checked",true)
 
         if(endDate!="Invalid date"){
             $('#enddatepicker').datepicker().datepicker('setDate', endDate);
-            $('#radio-button-end').is(":checked",true)
+            $('#radio-button-end').prop("checked",true)
         }
-        testHighlight(fromDate,toDate,previewslots);
+        // testHighlight(fromDate,toDate,previewslots);
         settings.submitButton.text("Update Calendar").attr("data-action", "update");
     }
 
@@ -373,9 +370,9 @@ var errorResponses = {
         var index = $("#"+parent+" .start").find('option:selected').index();
         if(k>=0 && index<27){
             var check=$("#"+parent+" .end").find('option:selected').index();
-            $("#"+parent+" .end").find('option').is('disabled', false);
+            $("#"+parent+" .end").find('option').prop('disabled', false);
             $("#"+parent+" .end").not("#"+parent+" .start").find('option:lt(' + (index+1) + ')').prop('disabled', true);
-            $("#"+parent+" .end").find('option:first-child').is('disabled',false);
+            $("#"+parent+" .end").find('option:first-child').prop('disabled',false);
         }
     }
 
@@ -383,9 +380,9 @@ var errorResponses = {
         var start=$("#"+parent+"").find(".start")
         var end=$("#"+parent+"").find(".end");
         var index = $("#"+parent+" .end").find('option:selected').index();
-        $("#"+parent+" .start").find('option').is('disabled', false);
-        $("#"+parent+" .start").not("#"+parent+" .end").find('option:gt(' + (index-1) + ')').is('disabled', true);
-		$("#"+parent+" .end").find('option:first-child').is('disabled',false);
+        $("#"+parent+" .start").find('option').prop('disabled', false);
+        $("#"+parent+" .start").not("#"+parent+" .end").find('option:gt(' + (index-1) + ')').prop('disabled', true);
+
     }
 
     function copyTime(){
@@ -394,10 +391,10 @@ var errorResponses = {
             console.log(id);
             var startvalue=$("#"+id+ "").find(settings.start_time).val();
             var endvalue=$("#"+id+ "").find(settings.end_time).val();
-            var checkbox=$("#"+id+ "").find(settings.checkbox).is("checked");
+            var checkbox=$("#"+id+ "").find(settings.checkbox).is(":checked");
 
             if(checkbox==true && startvalue>0 && endvalue>0){
-                  $('input[type="checkbox"]', settings.table).is('checked',true);
+                  $('input[type="checkbox"]', settings.table).prop('checked',true);
                   settings.start_time.val(startvalue);
                   settings.end_time.val(endvalue);
             }
@@ -457,7 +454,7 @@ var errorResponses = {
             showOn: 'both',
             minDate: 0,
             onSelect: function(dateText, inst) {
-                $('#radio-button-startend').is("checked","true");
+                $('#radio-button-startend').prop("checked","true");
                 var slots=getslots();
                 // testHighlight(slots.fromDate,slots.toDate,slots.highlightSlots);
             }
@@ -476,7 +473,7 @@ var errorResponses = {
             showOn: 'both',
             minDate: 0,
             onSelect: function(dateText, inst) {
-                $('#radio-button-end').is("checked","true");
+                $('#radio-button-end').prop("checked","true");
                 var slots=getslots();
                 // testHighlight(slots.fromDate,slots.toDate,slots.highlightSlots);
             }
@@ -545,7 +542,7 @@ var errorResponses = {
             return false
         }
 
-        if($('#radio-button-end').is("checked")==true && $('#end_date').val()==""){
+        if($('#radio-button-end').is(":checked")==true && $('#end_date').val()==""){
             settings.radioInput.next('.error').text(errorResponses['missingDate']);
             return false;
         }
@@ -611,7 +608,7 @@ var errorResponses = {
             var id=$(this).attr('id');
             var startvalue=$("#"+id+ "").find(settings.start_time).val();
             var endvalue=$("#"+id+ "").find(settings.end_time).val();
-            var checkbox=$("#"+id+ "").find(settings.checkbox).is("checked");
+            var checkbox=$("#"+id+ "").find(settings.checkbox).is(":checked");
             if(parseInt(startvalue,10)==0 && parseInt(endvalue,10)==0 && checkbox==true){
                 $("#"+id+ "").find('.error-slot').text(errorResponses['missingvalues']);
                       $('html, body').animate({
