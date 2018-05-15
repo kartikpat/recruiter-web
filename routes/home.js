@@ -31,7 +31,7 @@ module.exports = function(settings){
 		// bypassing the auth for development
     	// CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     	// you can do this however you want with whatever variables you set up
-    	if(!req.cookies[config['oldCookie']])
+    	if(!(req.cookies[config['oldCookie']] && req.cookies[config['oldCookie']]!='undefined'))
     		return res.redirect("/login");
 
     	res.cookie('OLDRECRUITER', '',{ "path": "/", domain: baseDomain+".com", maxAge:0});
@@ -210,7 +210,7 @@ module.exports = function(settings){
 	});
 
 	app.get("/login",  function(req,res){
-		if(req.cookies[config['oldCookie']]){
+		if(req.cookies[config['oldCookie']] && req.cookies[config['oldCookie']]!='undefined'){
 			return isAuthenticated(req, res);
 		}
 		res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
