@@ -77,7 +77,7 @@ module.exports = function(settings){
 					}
 					return res.redirect('/welcome');
 				}
-				res.cookie('recruiter-access-token', '',{ "path": "/", domain: baseDomain+".com"});
+				res.cookie(config['cookie'], '',{ "path": "/", domain: baseDomain+".com"});
 				console.log(req.cookies[config["cookie"]])
 				return res.redirect('/login');
 			})
