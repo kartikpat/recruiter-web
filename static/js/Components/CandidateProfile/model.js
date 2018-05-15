@@ -411,9 +411,10 @@ function Candidate() {
            item.resume.html('<iframe src="'+baseUrl + aData["resume"]+'" class="resume-embed" type="application/pdf"></iframe>')
         }
 
-        if(aData["social"]) {
+        if(aData["social"]){
+            console.log(aData["social"])
             if(aData["social"]["f"]) {
-                item.socialFb.attr("href", aData["social"]["t"]).removeClass("hidden");
+                item.socialFb.attr("href", aData["social"]["f"]).removeClass("hidden");
             }
             if(aData["social"]["t"]) {
                 item.socialTw.attr("href", aData["social"]["t"]).removeClass("hidden");
