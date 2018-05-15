@@ -14,6 +14,7 @@ module.exports = function(settings){
 	var baseUrl = config["baseUrl"];
 	var request = settings["request"];
 	var baseDomain = config["baseDomain"];
+	var baseDomainName = config['baseDomainName']
 	var baseUrlJob = config["baseUrlJob"];
 	var welcome = config["welcome"];
 	var verifyAccount = config["verify"];
@@ -136,6 +137,7 @@ module.exports = function(settings){
 				profile: req.profile,
 				oldCookie: config['oldCookie'],
 				cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName,
 				staticEndPoints: config["staticEndPoints"]
 			})
 			return
@@ -152,8 +154,10 @@ module.exports = function(settings){
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName,
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		});
 		return
 	});
@@ -170,7 +174,8 @@ module.exports = function(settings){
 			hiddenLoader:"hidden",
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	})
@@ -187,7 +192,8 @@ module.exports = function(settings){
 			hiddenClass:"hidden",
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	})
@@ -204,7 +210,8 @@ module.exports = function(settings){
 			origin: "MyJobs",
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -224,7 +231,8 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -248,8 +256,10 @@ module.exports = function(settings){
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName,
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	})
@@ -265,7 +275,8 @@ module.exports = function(settings){
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	})
@@ -302,7 +313,8 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	})
@@ -317,7 +329,8 @@ module.exports = function(settings){
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -334,7 +347,8 @@ module.exports = function(settings){
 			origin: "TaggedCandidates",
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -349,7 +363,8 @@ module.exports = function(settings){
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -365,7 +380,8 @@ module.exports = function(settings){
 			origin: "Saved/ShorlistedCandidates",
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -380,7 +396,8 @@ module.exports = function(settings){
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -399,7 +416,8 @@ module.exports = function(settings){
 			origin: "CandidateApplyList",
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -427,7 +445,8 @@ module.exports = function(settings){
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -442,7 +461,8 @@ module.exports = function(settings){
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -457,7 +477,8 @@ module.exports = function(settings){
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -473,7 +494,8 @@ module.exports = function(settings){
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -489,7 +511,8 @@ module.exports = function(settings){
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -505,7 +528,8 @@ module.exports = function(settings){
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -521,7 +545,8 @@ module.exports = function(settings){
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -537,7 +562,8 @@ module.exports = function(settings){
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -553,7 +579,8 @@ module.exports = function(settings){
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -570,7 +597,8 @@ module.exports = function(settings){
 			email: email,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -588,7 +616,8 @@ module.exports = function(settings){
 			key: key,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -604,7 +633,8 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -618,7 +648,8 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -667,7 +698,8 @@ module.exports = function(settings){
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		});
 		return
 	});
@@ -686,7 +718,8 @@ module.exports = function(settings){
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		});
 		return
 	});
@@ -703,7 +736,8 @@ module.exports = function(settings){
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -720,7 +754,8 @@ module.exports = function(settings){
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -735,7 +770,8 @@ module.exports = function(settings){
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -752,7 +788,8 @@ module.exports = function(settings){
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -768,7 +805,8 @@ module.exports = function(settings){
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -782,7 +820,8 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		})
 	});
 	app.get("/connect-success", function(req, res){
@@ -792,7 +831,8 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		});
 	})
 
@@ -807,6 +847,7 @@ module.exports = function(settings){
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName,
 			oldCookieValue: oldCookieValue
 		});
 	})
@@ -822,7 +863,8 @@ module.exports = function(settings){
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+ 		 baseDomainName: baseDomainName
 		});
 	});
 

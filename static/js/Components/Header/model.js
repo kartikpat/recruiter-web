@@ -53,7 +53,7 @@ function Header(){
 			});
 
 			settings.legacyRecruiter.click(function(event){
-				Set_Cookie('OLDRECRUITER', "1",null,"/", baseDomain+'.com' );
+				Set_Cookie('OLDRECRUITER', "1",null,"/", baseDomainName );
 				return true;
 			})
 

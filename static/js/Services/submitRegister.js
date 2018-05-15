@@ -3,7 +3,7 @@ function submitRegister(data){
 		if(res.status && res.status =='success'){
 			var token = xhr.getResponseHeader('Set-Token');
 			localStorage[cookieName] = token;
-			Set_Cookie(cookieName, token,1, "/", "iimjobs.com");
+			Set_Cookie(cookieName, token,1, "/", baseDomainName);
 			return pubsub.publish("successfulRegister", res.data);
 		}
 	}, function(res,status,error) {
