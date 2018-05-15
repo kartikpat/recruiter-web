@@ -1,5 +1,5 @@
 function submitCalendarIe(data,calendarId,recruiterId){
-	postRequest(baseUrl+"/recruiter/"+recruiterId+"/calendar/"+calendarId,{
+	postRequest("/recruiter/"+recruiterId+"/calendar/"+calendarId,{
 		"Content-Type": "application/json",
 	}, JSON.stringify(data), function(res){
 		if(res.status && res.status =='success'){

@@ -430,7 +430,10 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie'],
+ 		 	baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -682,7 +685,10 @@ module.exports = function(settings){
 				baseDomain: baseDomain,
 				profile: req.profile,
 				pubnub:"disable",
-				staticEndPoints: config["staticEndPoints"]
+				staticEndPoints: config["staticEndPoints"],
+				oldCookie: config['oldCookie'],
+				cookie: config['cookie'],
+ 		 		baseDomainName: baseDomainName
 			});
 			return
 		// }
@@ -717,7 +723,7 @@ module.exports = function(settings){
 		if(!calendarId && !recruiterId) {
 			resObj.status = "fail"
 			resObj.message = "missing parameters"
-			return res.send(JSON.stringify(resObj));
+			return res.json(JSON.stringify(resObj));
 		}
 
 		var options = { method: 'POST',
@@ -730,16 +736,16 @@ module.exports = function(settings){
 		};
 		request(options, function (error, response, body) {
 			if (error){
-				return res.send(response);
+				return res.json(response);
 			}
 			const jsonBody = body;
 			if(jsonBody.status && jsonBody.status =='success'){
-				return res.send(body);
+				return res.json(body);
 			}
 			else {
-				return res.send(response);
+				return res.json(response);
 			}
-			return res.send(response);
+			return res.json(response);
 		});
 	})
 
@@ -973,7 +979,10 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			jobId: req.params.jobID,
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie'],
+ 		 	baseDomainName: baseDomainName
 		});
 	});
 

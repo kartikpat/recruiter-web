@@ -19,6 +19,7 @@ $(document).ready(function(){
     }
 
     function onFailVerifyLogin(topic, data){
+        Set_Cookie(oldCookieName, '',1, "/", baseDomainName);
     	window.location.href = staticEndPoints.landing;
     }
 
