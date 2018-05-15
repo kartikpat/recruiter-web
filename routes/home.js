@@ -430,7 +430,10 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie'],
+ 		 	baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -682,7 +685,10 @@ module.exports = function(settings){
 				baseDomain: baseDomain,
 				profile: req.profile,
 				pubnub:"disable",
-				staticEndPoints: config["staticEndPoints"]
+				staticEndPoints: config["staticEndPoints"],
+				oldCookie: config['oldCookie'],
+				cookie: config['cookie'],
+ 		 		baseDomainName: baseDomainName
 			});	
 			return
 		}
@@ -878,7 +884,10 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			jobId: req.params.jobID,
 			profile: req.profile,
-			staticEndPoints: config["staticEndPoints"]
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie'],
+ 		 	baseDomainName: baseDomainName
 		});
 	});
 
