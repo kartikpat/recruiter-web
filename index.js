@@ -88,7 +88,7 @@
 		const data = {
 			token: accessToken,
 			refreshToken: refreshToken,
-			profile: profile
+			profile: profile["_json"]
 		}
 		console.log(data);
 		try{
