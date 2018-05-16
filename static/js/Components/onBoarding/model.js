@@ -11,7 +11,7 @@ function onBoarding(){
 
     function connect(){
         settings.profile.on('click',function(){
-            window.location=settings.recruiterProfile
+            window.location=staticEndPoints.recruiterProfile;
         })
         settings.facebookConnect.on('click',function(){
             window.open('/auth/facebook/','',' scrollbars=yes,menubar=no,width=500,height=500, resizable=yes,toolbar=no,location=no,status=no')
