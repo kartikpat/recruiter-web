@@ -1812,7 +1812,7 @@
 				"static/css/vendor/tooltipster.css"
 			],
 			"prod": [
-				"static/build/css/candidate-profile.min.css"
+				"static/build/css/candidate.min.css"
 			]
 		},
 		"scripts": {
@@ -1848,7 +1848,7 @@
 				"static/js/eventMapping.js"
 			],
 			"prod" : [
-				"static/build/js/candidate-profile.min.js"
+				"static/build/js/candidate.min.js"
 			]
 		}
 	},
