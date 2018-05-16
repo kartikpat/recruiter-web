@@ -1231,7 +1231,7 @@ span.sticker {
                 margin-left: 15px;
                 margin-top: 20px; }
                 .wrap .second-container .available-hours .Days-available .table .dayId .section .check-input input {
-                  display: block; }
+                  display: none; }
                 .wrap .second-container .available-hours .Days-available .table .dayId .section .check-input label {
                   display: inline-block;
                   cursor: pointer; }

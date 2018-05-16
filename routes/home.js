@@ -32,8 +32,9 @@ module.exports = function(settings){
 		// bypassing the auth for development
     	// CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     	// you can do this however you want with whatever variables you set up
-    	if(!(req.cookies[config['oldCookie']] && req.cookies[config['oldCookie']]!='undefined'))
-    		return res.redirect("/login");
+    	if(!(req.cookies[config['oldCookie']] && req.cookies[config['oldCookie']]!='undefined')){
+			return res.redirect("/login");
+		}
 
     	res.cookie('OLDRECRUITER', '',{ "path": "/", domain: baseDomain+".com", maxAge:0});
 
@@ -46,6 +47,7 @@ module.exports = function(settings){
 			},function(err, response, body){
 				if(err){
 					res.cookie(config['cookie'], '',{ "path": "/", domain: baseDomain+".com"});
+					console.log(',,,,,,,,,,,,,,,,,1,,,,,,,,,,,,,,,,,,')
 					return res.redirect('/login');
 				}
 				const jsonBody = JSON.parse(body)
@@ -78,8 +80,7 @@ module.exports = function(settings){
 					}
 					return res.redirect('/welcome');
 				}
-				res.cookie(config['cookie'], '',{ "path": "/", domain: baseDomain+".com"});
-				console.log(req.cookies[config["cookie"]])
+				res.cookie(config['cookie'], '',{ "path": "/", domain: baseDomainName});
 				return res.redirect('/login');
 			})
 
@@ -748,7 +749,7 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/candidate/applications/:applicationID",isAuthenticated, function(req,res){
+	app.get("/candidate/:jobseekerId/profile",isAuthenticated, function(req,res){
 		res.render("candidate", {
 			title:"Recruiter Web - Candidate Profile | iimjobs.com",
 			styles:  assetsMapper["candidate"]["styles"][mode],
@@ -756,7 +757,7 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			jobId: req.params.jobID,
-			applicationId: req.params.applicationID,
+			applicationId: req.params.jobseekerId,
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],

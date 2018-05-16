@@ -4832,7 +4832,8 @@ input::-webkit-input-placeholder {
             margin: 10px 0 20px; }
             .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information .social-media-accounts a .icon-facebook::before {
               content: '\e84a';
-              font-size: 30px; }
+              font-size: 30px;
+              color: #385899; }
             .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information .social-media-accounts a .icon-twitter::before {
               content: '\e849';
               font-size: 30px;

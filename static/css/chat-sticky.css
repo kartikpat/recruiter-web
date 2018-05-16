@@ -2218,7 +2218,8 @@ span.sticker {
         white-space: nowrap;
         max-width: 115px;
         text-overflow: ellipsis;
-        line-height: 18px; }
+        line-height: 18px;
+        color: #2b2b2b; }
       .chat-div-candidate .chat-div-header .candidate-name-container .last-active-date {
         font-size: 9px; }
     .chat-div-candidate .chat-div-header .info-buttons {

@@ -14,18 +14,9 @@ jQuery(document).ready( function() {
     var store = Store();
     //initializing the models
     aCandidate.init();
-
-
-    fetchCandidateProfile(recruiterId, jobId, applicationId)
-    submitPageVisit(recruiterId, screenName, jobId);
-    var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitSuccess:"+screenName, onPageVisitUpdateSuccess)
-    var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitFail:"+screenName, onPageVisitUpdateFail)
-    function onPageVisitUpdateSuccess(topic, data){
-        console.log('page visit done');
-    }
-    function onPageVisitUpdateFail(topic, data){
-        console.log('page visit error');
-    }
+    
+    fetchCandidateChatProfile(recruiterId,applicationId);
+   
 
      aCandidate.onClickAddTag(function(applicationId, parameters){
          var ob = {}
@@ -172,7 +163,7 @@ jQuery(document).ready( function() {
         store.saveToStore(res.data)
 
         aCandidate.populateCandidateData(res.data[0])
-        fetchjobCalendars(jobId, recruiterId)
+        // fetchjobCalendars(jobId, recruiterId)
     }
 
    function onCandidateProfileFetchFail(topic, data){
