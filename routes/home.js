@@ -749,7 +749,7 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/candidate/applications/:applicationID",isAuthenticated, function(req,res){
+	app.get("/candidate/:jobseekerId/profile",isAuthenticated, function(req,res){
 		res.render("candidate", {
 			title:"Recruiter Web - Candidate Profile | iimjobs.com",
 			styles:  assetsMapper["candidate"]["styles"][mode],
@@ -757,7 +757,7 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			jobId: req.params.jobID,
-			applicationId: req.params.applicationID,
+			applicationId: req.params.jobseekerId,
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],

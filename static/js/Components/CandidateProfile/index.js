@@ -14,6 +14,10 @@ jQuery(document).ready( function() {
     var store = Store();
     //initializing the models
     aCandidate.init();
+    // var successMsg = getQueryParameter("type");
+    // if(!isEmpty(successMsg)){
+    //     var check=1;
+    // }
 
 
     fetchCandidateProfile(recruiterId, jobId, applicationId)
@@ -170,7 +174,6 @@ jQuery(document).ready( function() {
 
     function onCandidateProfileFetchSuccess(topic, res) {
         store.saveToStore(res.data)
-        if(parseInt(res.data[0].status) == 0)
         setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
         aCandidate.populateCandidateData(res.data[0])
         fetchjobCalendars(jobId, recruiterId)
@@ -380,7 +383,6 @@ jQuery(document).ready( function() {
            event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
         }
         sendEvent(eventMap["downloadResume"]["event"], eventObj)
-        if(parseInt(status) == 0)
             setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
     });
 
