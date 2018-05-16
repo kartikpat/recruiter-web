@@ -931,6 +931,10 @@ module.exports = function(settings){
 		});
 	})
 
+	app.get('/404', function(req, res, next){	
+		next();
+	});
+	
 	app.use(function(req, res, next){
 		res.status(404);
 		res.format({
