@@ -469,7 +469,7 @@ var errorResponses = {
 
     function startdate(){
         $("#startdatepicker").datepicker({
-            buttonImage: "/static/images/smallcalendar.svg",
+            buttonImage: "/static/images/calenderIe.png",
             buttonImageOnly: true,
             changeMonth: true,
             changeYear: true,
@@ -488,7 +488,7 @@ var errorResponses = {
 
     function enddate(){
         $("#enddatepicker").datepicker({
-            buttonImage: "/static/images/smallcalendar.svg",
+            buttonImage: "/static/images/calenderIe.png",
             buttonImageOnly: true,
             changeMonth: true,
             changeYear: true,
