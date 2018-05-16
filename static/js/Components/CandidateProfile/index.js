@@ -6,17 +6,16 @@ var globalParameters = {
     initialLoad: 1,
     candidateListLength: null
 }
+
 var screenName = "candidate-profile";
 jQuery(document).ready( function() {
-
     // creating the instance of models
     var aCandidate = Candidate();
     var store = Store();
     //initializing the models
     aCandidate.init();
     var successMsg = getQueryParameter("type");
-    var successRef= getQueryParameter("ref")
-    
+    var successRef= getQueryParameter("ref");
     fetchCandidateProfile(recruiterId, jobId, applicationId)
     submitPageVisit(recruiterId, screenName, jobId);
     var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitSuccess:"+screenName, onPageVisitUpdateSuccess)
@@ -105,6 +104,7 @@ jQuery(document).ready( function() {
          if(successRef=="Email"){
             eventObj.event_label='origin=Email,type=Single,recId='+recruiterId+''
          }
+
          sendEvent(eventMap["shortlistCand"]["event"], eventObj)
          var action;
          $('.candidateShortlistModal').prev().removeClass('hidden');
@@ -182,11 +182,13 @@ jQuery(document).ready( function() {
     function onCandidateProfileFetchSuccess(topic, res) {
         store.saveToStore(res.data)
         aCandidate.populateCandidateData(res.data[0])
-        console.log(successMsg)
         if(successMsg!="download"){
-            console.log("here")
             setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
         }
+        if(successMsg=="download"){
+            aCandidate.triggerDownload();
+        }
+        
     }
 
    function onCandidateProfileFetchFail(topic, data){
@@ -198,7 +200,6 @@ jQuery(document).ready( function() {
         if(res.action == "view") {
             var newStatus = 4
             var obj = store.getCandidateFromStore(res.applicationId)
-            console.log(obj);
             obj["status"] = newStatus;
         }
 
@@ -387,6 +388,7 @@ jQuery(document).ready( function() {
     })
 
     aCandidate.onClickDownloadResume(function(applicationId, status){
+        // debugger
         var eventObj = {
            event_category: eventMap["downloadResume"]["cat"],
            event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
@@ -395,7 +397,7 @@ jQuery(document).ready( function() {
             eventObj.event_label='origin=Email,type=Single,recId='+recruiterId+''
          }
         sendEvent(eventMap["downloadResume"]["event"], eventObj)
-            setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
+        setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
     });
 
     function onSuccessfullSetDefaultCalendar(topic, res) {

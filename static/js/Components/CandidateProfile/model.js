@@ -36,9 +36,11 @@ function Candidate() {
         settings.tagArr = [];
         settings.calendarSelect = $(".calendarSelect");
         settings.candidateDownloadResume = $(".candidateDownloadResume");
-        settings.selectDefaultCalendar = $(".selectDefaultCalendar")
+        settings.selectDefaultCalendar = $(".selectDefaultCalendar");
+        settings.onClickDownloadResumeButton=$('.candidateDownloadResume.link')
         settings.pageTitle=$('.titlePage');
         initializeTooltip();
+        var successMsg = getQueryParameter("type");
         jQuery("#tabbed-content").tabs({
             create: function(){
                 $(this).removeClass("hidden")
@@ -109,6 +111,9 @@ function Candidate() {
             var applicationId =  $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
             fn(candidateId, applicationId);
         })
+    }
+    function triggerDownload(){
+        settings.onClickDownloadResumeButton.click();
     }
 
     function getElement(userID) {
@@ -719,13 +724,14 @@ function Candidate() {
 	}
 
     function onClickDownloadResume(fn) {
-        settings.candidateDownloadResume.click(function(event) {
+        settings.candidateDownloadResume.click(function(event){
             event.preventDefault()
             var status = $(this).attr("data-status");
             var url = $(this).attr("data-href");
             url += "?type=download"
             window.open(url);
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
+            
             fn(applicationId, status)
         })
     }
@@ -799,7 +805,8 @@ function Candidate() {
         changeStatus: changeStatus,
         addComment: addComment,
         initializeTooltip:initializeTooltip,
-        changeInviteText:changeInviteText
+        changeInviteText:changeInviteText,
+        triggerDownload: triggerDownload
     }
 
     function focusOnElement(element, container) {
