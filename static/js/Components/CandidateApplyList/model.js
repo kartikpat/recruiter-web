@@ -1054,8 +1054,9 @@ function candidateList() {
         settings.downloadExcelMass.click(function(event) {
             var requestType = settings.bulkActionContainer.attr("data-type-request");
             var arr = returnSelectedApplications()
-            fn(arr,settings.from, settings.to,requestType)
-            return true;
+            if(fn(arr,settings.from, settings.to,requestType))
+                return true
+            return false
         })
     }
 

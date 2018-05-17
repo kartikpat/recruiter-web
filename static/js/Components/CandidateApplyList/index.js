@@ -615,13 +615,18 @@ jQuery(document).ready( function() {
 
         }
         else {
-            parameters.applicationId = arr.toString()
+            if(arr.length<1){
+                toastNotify(3, "Please select candidates for this action");
+                return false;
+            }
+            parameters.applicationId = arr.toString();
         }
         var str = "?"
         for(var key in parameters) {
             str+= key + "=" + parameters[key] + "&";
         }
         candidates.setHref(str)
+        return true;
     })
 
     candidates.onClickDownloadMassResume(function(arr,from, to, requestType){
