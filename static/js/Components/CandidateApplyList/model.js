@@ -1069,7 +1069,7 @@ function candidateList() {
 
     function setHref(str) {
         var href = settings.url;
-        str += "token="+getCookie("recruiter-access-token")+""
+        str += "token="+getCookie(cookieName)+""
         href += str;
         settings.downloadExcelMass.attr("href", href);
     }
