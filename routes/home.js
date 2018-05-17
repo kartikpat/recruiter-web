@@ -47,7 +47,6 @@ module.exports = function(settings){
 			},function(err, response, body){
 				if(err){
 					res.cookie(config['cookie'], '',{ "path": "/", domain: baseDomain+".com"});
-					console.log(',,,,,,,,,,,,,,,,,1,,,,,,,,,,,,,,,,,,')
 					return res.redirect('/login');
 				}
 				const jsonBody = JSON.parse(body)

@@ -188,7 +188,7 @@ jQuery(document).ready( function() {
         if(successMsg=="download"){
             aCandidate.triggerDownload();
         }
-        
+        fetchjobCalendars(jobId, recruiterId)
     }
 
    function onCandidateProfileFetchFail(topic, data){
@@ -283,7 +283,6 @@ jQuery(document).ready( function() {
     }
 
     function onSuccessfullFetchedCalendars(topic, res) {
-
         if(!res.length){
             return aCandidate.setInvite()
         }
