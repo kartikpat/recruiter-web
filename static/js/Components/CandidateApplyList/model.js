@@ -1064,7 +1064,7 @@ function candidateList() {
         settings.massResumeDownload.click(function(event){
             var requestType = settings.bulkActionContainer.attr("data-type-request");
             var arr = returnSelectedApplications()
-            fn(arr,settings.from, settings.to, requestType)
+            fn(arr,settings.from, settings.to, requestType);
         })
     }
 
