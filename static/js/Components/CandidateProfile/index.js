@@ -6,20 +6,16 @@ var globalParameters = {
     initialLoad: 1,
     candidateListLength: null
 }
+
 var screenName = "candidate-profile";
 jQuery(document).ready( function() {
-
     // creating the instance of models
     var aCandidate = Candidate();
     var store = Store();
     //initializing the models
     aCandidate.init();
-    // var successMsg = getQueryParameter("type");
-    // if(!isEmpty(successMsg)){
-    //     var check=1;
-    // }
-
-
+    var successMsg = getQueryParameter("type");
+    var successRef= getQueryParameter("ref");
     fetchCandidateProfile(recruiterId, jobId, applicationId)
     submitPageVisit(recruiterId, screenName, jobId);
     var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitSuccess:"+screenName, onPageVisitUpdateSuccess)
@@ -104,6 +100,11 @@ jQuery(document).ready( function() {
            event_category: eventMap["shortlistCand"]["cat"],
            event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
          }
+       
+         if(successRef=="Email"){
+            eventObj.event_label='origin=Email,type=Single,recId='+recruiterId+''
+         }
+
          sendEvent(eventMap["shortlistCand"]["event"], eventObj)
          var action;
          $('.candidateShortlistModal').prev().removeClass('hidden');
@@ -127,6 +128,9 @@ jQuery(document).ready( function() {
            event_category: eventMap["rejectCand"]["cat"],
            event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
          }
+         if(successRef=="Email"){
+            eventObj.event_label='origin=Email,type=Single,recId='+recruiterId+''
+         }
          sendEvent(eventMap["rejectCand"]["event"], eventObj)
          var action;
          $('.candidateRejectModal').prev().removeClass('hidden');
@@ -148,6 +152,9 @@ jQuery(document).ready( function() {
          var eventObj = {
            event_category: eventMap["saveCand"]["cat"],
            event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
+         }
+         if(successRef=="Email"){
+            eventObj.event_label='origin=Email,type=Single,recId='+recruiterId+''
          }
          sendEvent(eventMap["saveCand"]["event"], eventObj)
          var action;
@@ -174,9 +181,14 @@ jQuery(document).ready( function() {
 
     function onCandidateProfileFetchSuccess(topic, res) {
         store.saveToStore(res.data)
-        setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
         aCandidate.populateCandidateData(res.data[0])
-        fetchjobCalendars(jobId, recruiterId)
+        if(successMsg!="download"){
+            setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
+        }
+        if(successMsg=="download"){
+            aCandidate.triggerDownload();
+        }
+        
     }
 
    function onCandidateProfileFetchFail(topic, data){
@@ -188,9 +200,7 @@ jQuery(document).ready( function() {
         if(res.action == "view") {
             var newStatus = 4
             var obj = store.getCandidateFromStore(res.applicationId)
-            console.log(obj);
             obj["status"] = newStatus;
-            return aCandidates.changeStatus(arr, newStatus)
         }
 
         if(res.action == "download") {
@@ -378,12 +388,16 @@ jQuery(document).ready( function() {
     })
 
     aCandidate.onClickDownloadResume(function(applicationId, status){
+        // debugger
         var eventObj = {
            event_category: eventMap["downloadResume"]["cat"],
            event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
         }
+        if(successRef=="Email"){
+            eventObj.event_label='origin=Email,type=Single,recId='+recruiterId+''
+         }
         sendEvent(eventMap["downloadResume"]["event"], eventObj)
-            setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
+        setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
     });
 
     function onSuccessfullSetDefaultCalendar(topic, res) {

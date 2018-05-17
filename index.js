@@ -31,6 +31,7 @@
 		.option('-v, --vault [src]', 'specify credentials location')
 		.parse(process.argv);
 
+		
 	if((!program.port) || program.port==""){
 		console.log("Please provide the port number")
 		console.log("Syntax: node --port <port number>")
@@ -133,6 +134,7 @@
 	});
 
 	var app = express();
+	
 	app.use(cookieParser())
 	// not using cookie-session in this case
 	app.use(session({
