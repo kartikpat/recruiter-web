@@ -590,7 +590,7 @@ module.exports = function(settings){
 
 	app.get("/error503",function(req, res){
 		res.render("error503", {
-			title:"Recruiter Web -Error | iimjobs.com",
+			title:"Recruiter Web -Error503 | iimjobs.com",
 			styles:  assetsMapper["error503"]["styles"][mode],
 			scripts: assetsMapper["error503"]["scripts"][mode],
 			baseUrl: baseUrl,

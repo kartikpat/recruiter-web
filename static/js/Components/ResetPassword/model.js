@@ -33,6 +33,7 @@ function resetPassword(){
 		}
 	}
 	function checkPasswordMatch(one, two){
+		eraseErrors();
 		if(!((one.val()).trim() && (two.val()).trim())) {
 			return true
 		}

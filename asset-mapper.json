@@ -1637,7 +1637,7 @@
 			]
 		}
 	},
-	"error503": {
+	"error503":{
 		"styles": {
 			"debug" : [
 				"static/css/utilities.css",
