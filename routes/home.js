@@ -929,37 +929,4 @@ module.exports = function(settings){
 			return res.send('notok')
 		});
 	})
-
-	app.get('/404', function(req, res, next){	
-		next();
-	});
-	
-	app.use(function(req, res, next){
-		res.status(404);
-		res.format({
-		  html: function () {
-			res.render("error404", {
-				title:"Recruiter Web -Error | iimjobs.com",
-				styles:  assetsMapper["error404"]["styles"][mode],
-				scripts: assetsMapper["error404"]["scripts"][mode],
-				baseUrl: baseUrl,
-				baseDomain: baseDomain,
-				hiddenActions: "hidden",
-				profile: req.profile,
-				staticEndPoints: config["staticEndPoints"],
-				oldCookie: config['oldCookie'],
-				cookie: config['cookie'],
-				  baseDomainName: baseDomainName
-			})
-		  },
-		  json: function () {
-			res.json({ error: 'Not found' })
-		  },
-		  default: function () {
-			res.type('txt').send('Not found')
-		  }
-		})
-	});
-
-
 }

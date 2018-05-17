@@ -68,7 +68,6 @@
 			refreshToken: refreshToken,
 			profile: profile["_json"]
 		}
-		console.log(data)
 		try{
 			await addUserSocial('linkedin', data, token);
 			return done(null, data)
@@ -91,7 +90,6 @@
 			refreshToken: refreshToken,
 			profile: profile["_json"]
 		}
-		console.log(data)
 		try{
 			await addUserSocial('twitter', data, token);
 			return done(null, data)
@@ -195,4 +193,5 @@
 
 	require(__dirname+"/routes/home.js")(settings);
 	require(__dirname+"/routes/social-hooks.js")(settings);
+	require(__dirname+"/routes/error.js")(settings);
 	app.listen(port);
