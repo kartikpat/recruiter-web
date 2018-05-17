@@ -15,11 +15,20 @@ $(document).ready(function(){
       },2000);
 
     function onSuccessVerifyLogin(topic, data){
+         Set_Cookie(jobseekerCookieName, '',1, "/", baseDomainName);
     	window.location.href = staticEndPoints.dashboard;
     }
 
     function onFailVerifyLogin(topic, data){
         Set_Cookie(oldCookieName, '',1, "/", baseDomainName);
+        window.location.href = staticEndPoints.landing;
+        return
+        if(data && data['responseJSON'] && data['responseJSON']['expiredToken']==3){
+            Set_Cookie(jobseekerCookieName, '1',1, "/", baseDomainName);
+        }
+        else{
+            Set_Cookie(oldCookieName, '',1, "/", baseDomainName);
+        }
     	window.location.href = staticEndPoints.landing;
     }
 

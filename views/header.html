@@ -37,6 +37,7 @@
 		var cookieName = '{{cookie}}';
 		var oldCookieName = '{{oldCookie}}';
 		var oldCookieValue = '{{oldCookieValue}}';
+		var jobseekerCookieName = '{{jobseekerCookie}}';
 		var baseDomainName = '{{baseDomainName}}';
 		var profile  = {
 			name: '{{profile.name}}',
@@ -126,8 +127,10 @@
 							</div>
 						</div>
 					</li>
-
-					<li class="menu-list-item search-resume"><a class="header-links">Search Resume</a></li>
+					
+					{{#profile.showSearch}}
+						<li class="menu-list-item search-resume"><a class="header-links">Search Resume</a></li>
+					{{/profile.showSearch}}
 
 					<li class="menu-list-item my-interviews">
 						<a href="{{staticEndPoints.bookedSlots}}" class="header-links">Interviews</a>

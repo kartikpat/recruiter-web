@@ -52,7 +52,8 @@ module.exports = function(settings){
 				const jsonBody = JSON.parse(body)
 				if(jsonBody.status && jsonBody.status =='success'){
 					req.profile = jsonBody.data;
-					req.profile.about = splitAbout(req.profile.about)
+					req.profile.about = splitAbout(req.profile.about);
+					req.profile.showSearch = (req.profile.search ==2) ? null : 1
 					if(req.originalUrl == "/verify-email") {
 						if(req.profile.verified && req.profile.verified == 1) {
 							return res.redirect('/account-created')
@@ -854,7 +855,9 @@ module.exports = function(settings){
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
  		 baseDomainName: baseDomainName,
-			oldCookieValue: oldCookieValue
+			oldCookieValue: oldCookieValue,
+			jobseekerCookie: config['jobseekerCookie']
+
 		});
 	})
 
