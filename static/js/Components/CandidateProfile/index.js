@@ -180,6 +180,7 @@ jQuery(document).ready( function() {
      })
 
     function onCandidateProfileFetchSuccess(topic, res) {
+        console.log(res.data)
         store.saveToStore(res.data)
         aCandidate.populateCandidateData(res.data[0])
         if(successMsg!="download"){
@@ -188,7 +189,7 @@ jQuery(document).ready( function() {
         if(successMsg=="download"){
             aCandidate.triggerDownload();
         }
-        
+        fetchjobCalendars(jobId, recruiterId)
     }
 
    function onCandidateProfileFetchFail(topic, data){
@@ -283,7 +284,6 @@ jQuery(document).ready( function() {
     }
 
     function onSuccessfullFetchedCalendars(topic, res) {
-
         if(!res.length){
             return aCandidate.setInvite()
         }

@@ -38,6 +38,7 @@ function Candidate() {
         settings.recommendationListSecond = $(".recommendationListSecond");
         settings.tagArr = [],
         settings.candidateDownloadResume = $(".candidateDownloadResume");
+        settings.interviewInvite=$('.interviewinvite')
         jQuery("#tabbed-content").tabs({
             activate: function(event, ui) {
                 if(ui.newTab[0]["innerText"] == "COVER LETTER") {
@@ -482,6 +483,12 @@ function Candidate() {
                 item.socialTw.attr("href", aData["social"]["t"]).removeClass("hidden");
             }
         }
+
+        if(aData["invite"]==1){
+            debugger
+            settings.interviewInvite.text("Interview Invite already Sent!");
+        }
+        
         openModal(item)
 
         if(!type)
@@ -497,6 +504,8 @@ function Candidate() {
                 return focusOnElement(item.mobComment, settings.mobCandidateCommentContainerClass)
                 return focusOnElement(item.comment, settings.candidateCommentContainerClass)
         }
+
+     
     }
 
     function failCallback() {

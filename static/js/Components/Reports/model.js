@@ -1,3 +1,5 @@
+
+
 function reportList() {
 
     var settings = {};
@@ -113,7 +115,8 @@ function reportList() {
    }
 
    function setHref() {
-       settings.downloadExcelButton.attr("href", baseUrl + "/recruiter/"+config["recruiterId"]+"/reports-download?token="+getCookie("recruiter-access-token")+"");
+       console.log(cookieName)
+       settings.downloadExcelButton.attr("href", baseUrl + "/recruiter/"+config["recruiterId"]+"/reports-download?token="+getCookie(cookieName)+"");
    }
 
    return {

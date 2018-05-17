@@ -9,7 +9,9 @@ $(document).ready(function(){
     }
 
 	function onSuccessfulFetchJobDetails(topic, data) {
+		console.log(data[0])	
 		jobDetails.setData(jobId,data[0]);
+
 	}
 
 	function onFailedFetchJobDetails(topic, data){
