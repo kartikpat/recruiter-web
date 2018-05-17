@@ -4,9 +4,9 @@ function onBoarding(){
     var settings={}
     function init(){
         settings.profile=$('.upload-profile'),
-        settings.facebookConnect=$('.facebook'),
-        settings.linkedinConnect=$('.linkedin'),
-        settings.twitterConnect=$('.twitter')
+        settings.facebookConnect=$('.facebookContainer'),
+        settings.linkedinConnect=$('.linkedinContainer'),
+        settings.twitterConnect=$('.twitterContainer')
     }
 
     function connect(){
