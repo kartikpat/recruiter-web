@@ -115,7 +115,6 @@ function reportList() {
    }
 
    function setHref() {
-       console.log(cookieName)
        settings.downloadExcelButton.attr("href", baseUrl + "/recruiter/"+config["recruiterId"]+"/reports-download?token="+getCookie(cookieName)+"");
    }
 
