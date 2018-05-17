@@ -7,15 +7,16 @@ var errorResponses = {
 	passwordFail: 'Incorrect password',
 	missingParameters: 'Oops! Our engineers will fix this shortly. Please try again after sometime.',
 	serviceError: 'Oops! Our engineers are working on fixing this, please try again after sometime.',
-	noInternet: 'Looks like you are not connected to the internet'
+	noInternet: 'Looks like you are not connected to the internet',
+	passwordMatch:"The new password and confirm password do not match"
 }
-
 var emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 function resetPassword(){
 	var user= {}
 	function init(){
-		user.email = $("#email");
+		user.email=$('.userEmail');
 		user.password = $("#password");
+		user.confirmPassword=$("#passwordConfirm");
 		user.login = $("#login");
 		user.errors = $('.error');
         user.key = $("#key");
@@ -27,10 +28,22 @@ function resetPassword(){
 	function getData(){
 		return {
             key: user.key.val(),
-			email: user.email.val(),
+			email: user.email.text(),
 			password: user.password.val()
 		}
 	}
+	function checkPasswordMatch(one, two){
+		eraseErrors();
+		if(!((one.val()).trim() && (two.val()).trim())) {
+			return true
+		}
+		if(ifBothMatches(one.val(), two.val())){
+			return false
+		}
+		$('.confirmError').text(errorResponses["passwordMatch"]);
+		return true
+	}
+
 	function eraseErrors(){
 		user.errors.text('');
 	}
@@ -60,20 +73,22 @@ function resetPassword(){
 
 	function validateLogin(){
 		eraseErrors();
+		// if(!( user.email && user.email.val() )){
+		// 	console.log(user.email.next('.error'))
+		// 	user.email.next('.error').text(errorResponses['missingEmail'])
+		// 	return false
+		// }
 
-		if(!( user.email && user.email.val() )){
-			console.log(user.email.next('.error'))
-			user.email.next('.error').text(errorResponses['missingEmail'])
-			return false
-		}
-
-		if(!emailRegex.test(user.email.val())){
-			user.email.next('.error').text(errorResponses['invalidEmail'])
-			return false
-		}
+		// if(!emailRegex.test(user.email.val())){
+		// 	user.email.next('.error').text(errorResponses['invalidEmail'])
+		// 	return false
+		// }
 		if(!( user.password && user.password.val() )){
 			user.password.next('.error').text(errorResponses['missingPassword']);
 			return false;
+		}
+		if((checkPasswordMatch(user.password,user.confirmPassword))){
+			return false
 		}
 		return true;
 	}
@@ -82,7 +97,8 @@ function resetPassword(){
 	}
     function successMsg() {
     	user.email.addClass('hidden');
-    	user.password.addClass('hidden');
+		user.password.addClass('hidden');
+		user.confirmPassword.addClass('hidden')
     	user.login.addClass('hidden');
         user.resetSuccess.html("Password Successfully Reset. You can <a class='link-color' href='login'> Login</a> with new password.")
     }
@@ -93,7 +109,8 @@ function resetPassword(){
 		loginHandler: loginHandler,
 		errorHandler: errorHandler,
 		test: test,
-        successMsg: successMsg
+		successMsg: successMsg,
+		checkPasswordMatch:checkPasswordMatch
 	}
 
 }

@@ -456,7 +456,6 @@ jQuery(document).ready( function() {
             }
             return pubsub.publish("failedToFetchCount", a[0]["status"]);
         })
-
         if(res.action == "tag") {
             if(res.parameters.type == "add") {
                 var tag = {

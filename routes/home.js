@@ -450,7 +450,7 @@ module.exports = function(settings){
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
- 		 baseDomainName: baseDomainName
+ 		 	baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -466,7 +466,7 @@ module.exports = function(settings){
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
- 		 baseDomainName: baseDomainName
+ 		 	baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -589,6 +589,23 @@ module.exports = function(settings){
 		return
 	});
 
+	app.get("/error503",function(req, res){
+		res.render("error503", {
+			title:"Recruiter Web -Error503 | iimjobs.com",
+			styles:  assetsMapper["error503"]["styles"][mode],
+			scripts: assetsMapper["error503"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			hiddenActions: "hidden",
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie'],
+ 		 	baseDomainName: baseDomainName
+		})
+		return
+	});
+	
 	app.get("/account-created", isVerified, function(req,res){
 		var email = req.query.email || "";
 		res.render("account-created", {

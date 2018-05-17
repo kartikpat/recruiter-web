@@ -53,6 +53,7 @@ $(document).ready(function() {
 		$('#register').prev().removeClass('hidden');
 		$('#register').addClass('hidden');
 		//document.getElementById("register").innerHTML = '<span class= "inline-spinner"></span>';
+		
 		window.location = "/verify-email";
 		document.getElementById("register").disabled=false;
 	}

@@ -1644,7 +1644,7 @@ span.sticker {
       .conversations .conversation-listing-container .conversations-listing .empty-screen-chat .image-container {
         text-align: center; }
         .conversations .conversation-listing-container .conversations-listing .empty-screen-chat .image-container img {
-          width: 50%; }
+          width: 70%; }
       .conversations .conversation-listing-container .conversations-listing .empty-screen-chat .user-text {
         text-align: center;
         padding-bottom: 10px;
@@ -2039,7 +2039,7 @@ span.sticker {
       padding: 0 35px; }
       .page-content .detail-card .empty-view .image-container img {
         width: 90px;
-        height: 90px;
+        height: 95px;
         margin-top: 20px; }
     .page-content .detail-card .empty-view .content-container {
       display: inline-block;

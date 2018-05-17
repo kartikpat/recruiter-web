@@ -441,7 +441,6 @@ function candidateList() {
         if(aData["recommendation"] && aData["recommendation"].length > 0) {
             item.recommendationsLink.removeClass("hidden")
         }
-        var flag=0;
         if(aData["comment"]){
             item.Commentarea.addClass('hidden').html(aData["comment"]);
             item.textarea.removeClass('hidden').html(aData["comment"]);
@@ -452,7 +451,7 @@ function candidateList() {
         }
         if(aData["tags"].length) {
             item.viewTagLink.removeClass("hidden")
-         
+            
         }
 
         return item
@@ -1070,7 +1069,7 @@ function candidateList() {
 
     function setHref(str) {
         var href = settings.url;
-        str += "token="+getCookie("recruiter-access-token")+""
+        str += "token="+getCookie(cookieName)+""
         href += str;
         settings.downloadExcelMass.attr("href", href);
     }
@@ -1116,9 +1115,7 @@ function candidateList() {
     }
 
     function changeButtonText(arr, newStatus, dataAction) {
-
         arr.forEach(function(applicationId){
-
             settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateShortlist").attr("data-status", newStatus)
             settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateReject").attr("data-status", newStatus)
             settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateSave").attr("data-status", newStatus)
@@ -1173,11 +1170,11 @@ function candidateList() {
         $(".candidateRow[data-application-id="+applicationId+"] .inviteText").removeClass("underline").addClass("non-underline")
     }
 
-    function showComment(applicationId) {
+    function showComment(applicationId){
         settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .commentLink").removeClass("hidden")
     }
 
-    function showTag(applicationId) {
+    function showTag(applicationId){
         settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .tagLink").removeClass("hidden")
     }
 
