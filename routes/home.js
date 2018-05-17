@@ -12,6 +12,7 @@ module.exports = function(settings){
 	var config = settings.config;
 	var env = settings.env;
 	var baseUrl = config["baseUrl"];
+	var baseUrl_local=config["baseUrl_local"];
 	var request = settings["request"];
 	var baseDomain = config["baseDomain"];
 	var baseDomainName = config['baseDomainName']
@@ -417,7 +418,8 @@ module.exports = function(settings){
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
- 		 baseDomainName: baseDomainName
+			baseUrl_local:baseUrl_local,
+ 		 	baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -549,7 +551,7 @@ module.exports = function(settings){
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
- 		 baseDomainName: baseDomainName
+ 		 	baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -760,7 +762,8 @@ module.exports = function(settings){
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
- 		 baseDomainName: baseDomainName
+			baseUrl_local:baseUrl_local,
+ 		 	baseDomainName: baseDomainName
 		})
 		return
 	});

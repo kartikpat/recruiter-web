@@ -1298,7 +1298,7 @@ span.sticker {
                 display: none; }
                 .wrap .second-container .available-hours .Days-available .table .dayId .time-section .button-container button {
                   border: none;
-                  background-color: inherit;
+                  background-color: transparent;
                   font-family: "Droid Sans", sans-serif;
                   color: #155d9a;
                   font-size: 14px;
