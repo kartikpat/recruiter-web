@@ -28,21 +28,25 @@ function onBoarding(){
     }
 
     function connected(){
+        
+        console.log(profile['twitter'])
         if(profile['linkedin']==1){
             settings.linkedinConnect.css('background',' #f3fbfb ');
             settings.linkedinConnect.find('.triangle').removeClass('hidden');
             settings.linkedinConnect.find('.icon-container').removeClass('hidden');
         }
-        else if(profile['facebook']==1){
-            settings.facebookConnect.css('background',' #f3fbfb ');
-            settings.facebookConnect.find('.triangle').removeClass('hidden');
-            settings.facebookConnect.find('.icon-container').removeClass('hidden');
-        }
-        else if(profile['twitter']==1){
+        if(profile['twitter']==1){
             settings.twitterConnect.css('background',' #f3fbfb ');
             settings.twitterConnect.find('.triangle').removeClass('hidden');
             settings.twitterConnect.find('.icon-container').removeClass('hidden');
         }
+
+        if(profile['facebook']==1){
+            settings.facebookConnect.css('background',' #f3fbfb ');
+            settings.facebookConnect.find('.triangle').removeClass('hidden');
+            settings.facebookConnect.find('.icon-container').removeClass('hidden');
+        }
+        
     }
 
 
