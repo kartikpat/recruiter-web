@@ -449,7 +449,7 @@ module.exports = function(settings){
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
- 		 baseDomainName: baseDomainName
+ 		 	baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -465,7 +465,7 @@ module.exports = function(settings){
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
- 		 baseDomainName: baseDomainName
+ 		 	baseDomainName: baseDomainName
 		})
 		return
 	});
