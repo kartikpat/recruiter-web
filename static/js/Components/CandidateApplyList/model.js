@@ -1115,9 +1115,7 @@ function candidateList() {
     }
 
     function changeButtonText(arr, newStatus, dataAction) {
-
         arr.forEach(function(applicationId){
-
             settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateShortlist").attr("data-status", newStatus)
             settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateReject").attr("data-status", newStatus)
             settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateSave").attr("data-status", newStatus)
