@@ -39,6 +39,7 @@ function Candidate() {
         settings.selectDefaultCalendar = $(".selectDefaultCalendar");
         settings.onClickDownloadResumeButton=$('.candidateDownloadResume.link')
         settings.pageTitle=$('.titlePage');
+        settings.interviewInvite=$('.interviewinvite')
         initializeTooltip();
         var successMsg = getQueryParameter("type");
         jQuery("#tabbed-content").tabs({
@@ -424,6 +425,9 @@ function Candidate() {
             if(aData["social"]["t"]) {
                 item.socialTw.attr("href", aData["social"]["t"]).removeClass("hidden");
             }
+        }
+        if(aData["invite"]==1){
+            settings.interviewInvite.text("Interview Invite already Sent!");
         }
 
     }

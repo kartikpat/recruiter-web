@@ -180,6 +180,7 @@ jQuery(document).ready( function() {
      })
 
     function onCandidateProfileFetchSuccess(topic, res) {
+        console.log(res.data)
         store.saveToStore(res.data)
         aCandidate.populateCandidateData(res.data[0])
         if(successMsg!="download"){
