@@ -91,7 +91,6 @@ function Job(){
 	}
 
 	function setJobDetails(data){
-		console.log("here.......")
 		console.log(data)
 		settings.jobTitle.text(data["jobTitle"]).removeClass("shell");
 		settings.jobId.text("Job Code: " +data["jobPublishedId"]).removeClass("shell");
