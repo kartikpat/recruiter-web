@@ -57,8 +57,14 @@ jQuery(document).ready( function() {
                 toastNotify(3, data.message)
             }
 
-        })
-
+        });
+        submitChatMessage({
+          channel: channelName,
+          senderName: profile['name'],
+          senderOrganization: profile["organisation"],
+          timestamp: Date.now(),
+          text: message
+      })
     })
 
     function onFetchRecruiterChats(topic, data) {

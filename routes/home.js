@@ -914,6 +914,9 @@ module.exports = function(settings){
 		});
 	});
 
+	app.get("/file-not-found", function(req, res){
+		return res.send('The file you requested is not present');
+	})
 	
 
 	app.get("/job/:jobId/applications/:applicationId/action/:action",isAuthenticated, function(req, res){

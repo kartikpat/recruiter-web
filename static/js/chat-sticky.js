@@ -501,7 +501,14 @@ var displayAMessage = function(element) {
                 data.message = "Looks like you are not connected to the internet"
                 toastNotify(3, data.message)
             }
-        })
+        });
+    submitChatMessage({
+        channel: channelName,
+        senderName: profile['name'],
+        senderOrganization: profile["organisation"],
+        timestamp: Date.now(),
+        text: message
+    })
 
 }
 
