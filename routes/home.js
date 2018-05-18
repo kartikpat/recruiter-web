@@ -957,7 +957,7 @@ module.exports = function(settings){
 			if(jsonBody.status && jsonBody.status =='success'){
 				if(redirectURL)
 					return res.redirect(baseUrl+redirectURL);
-				return res.redirect('/job/'+jobId+'/applications/'+applicationId);
+				return res.redirect('/job/'+jobId+'/applications/'+applicationId+"?ref=email");
 			}
 			else {
 				return res.redirect("/error");
