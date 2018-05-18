@@ -954,5 +954,20 @@ module.exports = function(settings){
 			}
 			return res.send('notok')
 		});
+	});
+	app.get("/redirectForIE", function(req, res){
+		res.render("redirectForIE",{
+			title:"Recruiter Web | iimjobs.com",
+			styles:  assetsMapper["redirectForIE"]["styles"][mode],
+			scripts: assetsMapper["redirectForIE"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			hiddenActions: "hidden",
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie'],
+ 		 	baseDomainName: baseDomainName
+		})
 	})
 }
