@@ -1667,7 +1667,36 @@
 			]
 		}
 	},
-
+	"ieScreen":{
+		"styles": {
+			"debug" : [
+				"static/css/utilities.css",
+				"static/css/header.css",
+				"static/css/modal.css",
+				"static/css/footer.css",
+				"static/css/ieScreen.css"
+			],
+			"prod": [
+				"static/build/css/terms-condition.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/header.js",
+				"static/js/Utilities/common.js",
+				"static/js/utilities.js",
+				"static/js/Utilities/modal.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js",
+				"static/js/Tracker/tracker.js",
+				"static/js/eventMapping.js"
+			],
+			"prod" : [
+				"static/build/js/about-us.min.js"
+			]
+		}
+	},
 	"account-verified": {
 		"styles": {
 			"debug" : [
