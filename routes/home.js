@@ -607,6 +607,23 @@ module.exports = function(settings){
 		})
 		return
 	});
+
+	app.get("/iescreen",function(req, res){
+		res.render("ieScreen", {
+			title:"Recruiter Web -ieScreen | iimjobs.com",
+			styles:  assetsMapper["ieScreen"]["styles"][mode],
+			scripts: assetsMapper["ieScreen"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			hiddenActions: "hidden",
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie'],
+ 		 	baseDomainName: baseDomainName
+		})
+		return
+	});
 	
 	app.get("/account-created", isVerified, function(req,res){
 		var email = req.query.email || "";

@@ -21,36 +21,35 @@
 				text-align: center;
 				margin-bottom: 50px;
 				img{
-					width: 250px;
+					width: 342px;
+                    height: 158px;
 				}
 			}
 			.content-container{
 				text-align: center;
-				.head{
-				color:  #000000;
-				font-size: 25px;/* Approximation due to font substitution */
-				font-weight: 700;
-				line-height: 40px;/* Approximation due to font substitution */
-				text-align: center;
+				.head{			
+                color:  #2b2b2b;
+                font-size: 22px;/* Approximation due to font substitution */
+                font-weight: 400;
+                text-align: center;
 				}
 				.sub-head{
-				color:  #737373;
-				font-size: 20px;/* Approximation due to font substitution */
-				font-weight: 400;
-				line-height: 40px;/* Approximation due to font substitution */
-				text-align: center;
+                    color:  #2b2b2b;
+                    font-size: 16px;/* Approximation due to font substitution */
+                    font-weight: 400;
+                    line-height: 24px;/* Approximation due to font substitution */
+                    text-align: center;
 				}
 				.link{
 					margin-top: 50px;
 					a{
 					color:  #155d9a;
-					font-size: 20px;/* Approximation due to font substitution */
+					font-size: 16px;/* Approximation due to font substitution */
 					font-weight: 400;
 					line-height: 40px;/* Approximation due to font substitution */
-				
 					text-align: center;
-					}
-					a:hover{
+                    }
+                    a:hover{
                         text-decoration: underline;
                     }
 				}
