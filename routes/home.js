@@ -53,7 +53,8 @@ module.exports = function(settings){
 				const jsonBody = JSON.parse(body)
 				if(jsonBody.status && jsonBody.status =='success'){
 					req.profile = jsonBody.data;
-					req.profile.about = splitAbout(req.profile.about)
+					req.profile.about = splitAbout(req.profile.about);
+					req.profile.showSearch = (req.profile.search ==2) ? null : 1
 					if(req.originalUrl == "/verify-email") {
 						if(req.profile.verified && req.profile.verified == 1) {
 							return res.redirect('/account-created')
@@ -874,7 +875,9 @@ module.exports = function(settings){
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
  		 baseDomainName: baseDomainName,
-			oldCookieValue: oldCookieValue
+			oldCookieValue: oldCookieValue,
+			jobseekerCookie: config['jobseekerCookie']
+
 		});
 	})
 
@@ -949,37 +952,4 @@ module.exports = function(settings){
 			return res.send('notok')
 		});
 	})
-
-	app.get('/404', function(req, res, next){	
-		next();
-	});
-	
-	app.use(function(req, res, next){
-		res.status(404);
-		res.format({
-		  html: function () {
-			res.render("error404", {
-				title:"Recruiter Web -Error | iimjobs.com",
-				styles:  assetsMapper["error404"]["styles"][mode],
-				scripts: assetsMapper["error404"]["scripts"][mode],
-				baseUrl: baseUrl,
-				baseDomain: baseDomain,
-				hiddenActions: "hidden",
-				profile: req.profile,
-				staticEndPoints: config["staticEndPoints"],
-				oldCookie: config['oldCookie'],
-				cookie: config['cookie'],
-				  baseDomainName: baseDomainName
-			})
-		  },
-		  json: function () {
-			res.json({ error: 'Not found' })
-		  },
-		  default: function () {
-			res.type('txt').send('Not found')
-		  }
-		})
-	});
-
-
 }

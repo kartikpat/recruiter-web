@@ -61,14 +61,13 @@
 		scope: ['r_emailaddress', 'r_basicprofile'],
 		passReqToCallback: true
 	}, async function(req, accessToken, refreshToken, params, profile, done){
-		const token= req.cookies['recruiter-access-token'];
-		console.log(params)
+		const token= req.cookies[config['cookie']];
+		
 		const data = {
 			token: accessToken,
 			refreshToken: refreshToken,
-			profile: profile
+			profile: profile["_json"]
 		}
-
 		try{
 			await addUserSocial('linkedin', data, token);
 			return done(null, data)
@@ -85,13 +84,12 @@
 		callbackURL: config['social']['twitter']['callbackURL'],
 		passReqToCallback: true
 	}, async function(req, accessToken, refreshToken, params, profile, done){
-		const token = req.cookies['recruiter-access-token'];
+		const token = req.cookies[config['cookie']];
 		const data = {
 			token: accessToken,
 			refreshToken: refreshToken,
-			profile: profile
+			profile: profile["_json"]
 		}
-		console.log(data);
 		try{
 			await addUserSocial('twitter', data, token);
 			return done(null, data)
@@ -195,4 +193,5 @@
 
 	require(__dirname+"/routes/home.js")(settings);
 	require(__dirname+"/routes/social-hooks.js")(settings);
+	require(__dirname+"/routes/error.js")(settings);
 	app.listen(port);

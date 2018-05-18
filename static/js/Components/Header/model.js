@@ -198,9 +198,6 @@ function Header(){
 				  '_blank'
 				);
 			}
-			else if(profile.search && parseInt(profile.search) == 2) {
-				settings.searchResume.addClass("hidden");
-			}
 			addBodyFixed()
 			$('.resumeModal').removeClass('hidden');
 			return false

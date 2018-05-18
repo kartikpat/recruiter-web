@@ -615,13 +615,18 @@ jQuery(document).ready( function() {
 
         }
         else {
-            parameters.applicationId = arr.toString()
+            if(arr.length<1){
+                toastNotify(3, "Please select candidates for this action");
+                return false;
+            }
+            parameters.applicationId = arr.toString();
         }
         var str = "?"
         for(var key in parameters) {
             str+= key + "=" + parameters[key] + "&";
         }
         candidates.setHref(str)
+        return true;
     })
 
     candidates.onClickDownloadMassResume(function(arr,from, to, requestType){
@@ -643,12 +648,16 @@ jQuery(document).ready( function() {
             if(arr.length > 100) {
                 return toastNotify(3, "You can't download more than 100 resumes at a time.")
             }
+            if(arr.length<1){
+                return toastNotify(3, "Please select candidates for this action");
+            }
             data.applicationId = arr.toString()
             // parameters.oldStatus = globalParameters.status
             // parameters.newStatus = newStatus
             // parameters.length = applicationIds.length
         }
         downloadMassResume(recruiterId, jobId, data)
+        return true;
     })
 
     candidates.onClickMassActionButton(function(applicationIds, action, comment, newStatus, typeRequest, from, to){
@@ -686,6 +695,9 @@ jQuery(document).ready( function() {
             parameters.length = (to - from) + 1;
         }
         else {
+            if(applicationIds.length<1){
+                return toastNotify(3, "Please select candidates for this action");
+            }
             data.applicationId = applicationIds
             parameters.oldStatus = globalParameters.status
             parameters.newStatus = newStatus
