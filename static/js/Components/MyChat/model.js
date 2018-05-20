@@ -246,11 +246,11 @@ function Chat() {
        })
    }
 
-   function appendSendMessage(message, pic) {
+   function appendSendMessage(message, pic,t) {
        var elem = {}
        elem.entry = {}
        elem.entry.msg = message;
-       elem.entry.time = parseInt(moment().format('x'))
+       elem.entry.time = t ? t: Date.now();
        elem.entry.img = pic
        var item = getMsgSentElement(elem)
        settings.mssgContainer.append(item)
@@ -266,7 +266,7 @@ function Chat() {
            elem.entry.msg = msg.msg;
            elem.entry.time = msg.time;
            elem.entry.img = msg.img;
-           var item = getMsgReceivedElement(elem)
+           var item = getMsgReceivedElement(elem);
            settings.mssgContainer.append(item)
            initializeTooltip()
            scrollToBottom()

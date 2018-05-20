@@ -540,7 +540,7 @@ function openChat(m) {
     	elem.entry = {}
     	elem.entry.msg = msg.msg;
     	elem.entry.time = msg.time;
-        var item = getMsgReceivedElement(elem)
+        var item = (m.publisher == getUUID()) ? getMsgSentElement(elem):  getMsgReceivedElement(elem);
         $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
 
         $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .chat-div-header").addClass("newMessageHeader")
