@@ -4,6 +4,12 @@
 @import 'components/modal';
 @import "fonts.scss";
 
+.no-after {
+    &:after {
+        display: none !important;
+    }
+}
+
 .seeMoreRec {
     display: inline-block;
     cursor: pointer;
@@ -342,7 +348,7 @@ input::-webkit-input-placeholder {
 						margin:10px 0 0px 0;
 						display:inline-block;
 						font-size: 14px;
-    					
+
 					}
 					#clear-all{
 						border-left: 1px solid;
@@ -669,7 +675,7 @@ input::-webkit-input-placeholder {
 													border-radius: none;
 													text-align: center;
 													font-family: $droid-font;
-													
+
 												}
 												.spinner{
 													text-align: center;
@@ -746,7 +752,7 @@ input::-webkit-input-placeholder {
 													margin-left: 10px;
 													top: 2px;
 												}
-												
+
 												.tags {
 													font-size:$filter-tag-size;
 													display:inline-block;
@@ -853,14 +859,14 @@ input::-webkit-input-placeholder {
 										.candidateAddEdit{
 											color: $link-color;
 											font-size: 13px;
-										}						
+										}
 										.commentdisabled{
 											width:93.5%;
 											margin-left: 10px;
 											height: 60px;
 											resize: none;
 											margin-bottom: 0px;
-										}	
+										}
 										.candidateCommentText{
 											resize: none;
 											width:100%;
@@ -872,9 +878,9 @@ input::-webkit-input-placeholder {
 										.recruiterTagsContainer{
 											padding: 10px 10px;
 										}
-										.candidateTagListContainer{	
+										.candidateTagListContainer{
 											overflow: auto;
-											max-height: 66px;	
+											max-height: 66px;
 											margin-left: 8px;
 											width: 95%;
 										.candidateTag{
@@ -893,7 +899,7 @@ input::-webkit-input-placeholder {
 											padding: 5px 15px;
 											border-radius: 20px;
 											margin-left: 0px;
-											
+
 											.tagLabel{
 												display: inline-block;
 												word-break: break-word;
@@ -901,7 +907,7 @@ input::-webkit-input-placeholder {
 											.tagRemove{
 												display: inline-block;
 											}
-											
+
 										}
 										}
 									}
@@ -1675,7 +1681,7 @@ input::-webkit-input-placeholder {
 								color:$color-black;
 								font-size:$view-resume-byline-font-size;
 								word-wrap: break-word;
-						
+
 							}
 
 							&:last-child {
@@ -2151,7 +2157,7 @@ input::-webkit-input-placeholder {
                     }
 					&.cand-comment-button{
 						margin: 0;
-						margin-top: 10px;	
+						margin-top: 10px;
 						border-radius: 4px;
 						padding: 6px 14px;
 						font-size: 14px !important;
@@ -2214,7 +2220,7 @@ input::-webkit-input-placeholder {
                         text-decoration: none;
                     }
 				}
-				
+
 				.inviteF2f{
 					margin-left: -3px;
 				}
@@ -2273,7 +2279,7 @@ input::-webkit-input-placeholder {
 					padding-top: 12px!important;
 					font-size: 14px;
 				 }
-	
+
 			}
 			::-webkit-input-placeholder {
 				text-align: left;
@@ -3151,7 +3157,7 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
 	border-radius: 4px;
 	position: fixed;
 	cursor: pointer;
-	transition: background-color .3s, 
+	transition: background-color .3s,
 	opacity .5s, visibility .5s;
 	opacity: 0;
 	visibility: hidden;
@@ -3170,7 +3176,7 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
 		span{
 			text-decoration: underline;
 		}
-	}	
+	}
   #topbutton.show {
 	opacity: 1;
 	visibility: visible;

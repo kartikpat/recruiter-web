@@ -678,6 +678,10 @@ function onClickShareOnLinkedIn(fn){
 })
 
 function errorHandler(data) {
+	if(data.status == 503) {
+        toastNotify(3, "Oops...something went wrong. Our engineers are fixing the issue");
+         return
+    }
     var res = data.responseJSON
     if(!res) {
         return toastNotify(3, "Looks like you are not connected to the internet");

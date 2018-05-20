@@ -14,9 +14,9 @@ jQuery(document).ready( function() {
     var store = Store();
     //initializing the models
     aCandidate.init();
-    
+
     fetchCandidateChatProfile(recruiterId,applicationId);
-   
+
 
      aCandidate.onClickAddTag(function(applicationId, parameters){
          var ob = {}
@@ -381,6 +381,10 @@ function errorHandler(data) {
         setTimeout(function(){
 			 window.location.href = staticEndPoints.dashboard
 		 }, 2000);
+         return
+    }
+    if(data.status == 503) {
+        toastNotify(3, "Oops...something went wrong. Our engineers are fixing the issue");
          return
     }
 

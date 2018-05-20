@@ -9,7 +9,7 @@ $(document).ready(function(){
     }
 
 	function onSuccessfulFetchJobDetails(topic, data) {
-		console.log(data[0])	
+		console.log(data[0])
 		jobDetails.setData(jobId,data[0]);
 
 	}
@@ -30,6 +30,10 @@ function errorHandler(data) {
     var res = data.responseJSON
 	if(!res) {
         return toastNotify(3, "Looks like you are not connected to the internet");
+    }
+	if(data.status == 503) {
+        toastNotify(3, "Oops...something went wrong. Our engineers are fixing the issue");
+         return
     }
     return toastNotify(3, res.message);
 }
