@@ -4,6 +4,7 @@ var errorResponses = {
     missingTeleMessage: 'Please enter a message for telephonic interview',
     missingvalues:'Please select your available hours',
     missingslots:'Please select a slot',
+    missingStartDate:"Please select a start Date",
     missingDate:"Please select a end Date",
     missingStart:"Please select Start Time",
     missingEnd:"Please select End Time",
@@ -50,6 +51,7 @@ function Calendar(){
         settings.textBox=$('.field p'),
         settings.submitButton=$('#submit'),
         settings.radioInput=$('.radio-input'),
+        settings.errorInputStart=$('.error-startDate'),
         // settings.editorMessage = new MediumEditor("#message", {
         //     toolbar: false,
         //     placeholder: false,
@@ -107,11 +109,10 @@ function Calendar(){
           var fromDate=currentDate;
           var toDate="";
         if($('#radio-button-startend').prop("checked")==true){
-            fromDate=$('#start_date').datepicker().val();
+            fromDate=$('#start_date').val();
             if(fromDate==''){
                 fromDate=currentDate;
             }
-            console.log(fromDate);
         }
         if($("#radio-button-start").prop("checked") == true){
             fromDate=currentDate;
@@ -126,12 +127,11 @@ function Calendar(){
         }
 
         if($('#radio-button-end').prop("checked")==true){
-            toDate=$('#end_date').datepicker().val();
-            console.log(toDate);
+            toDate=$('#end_date').val();
         }
+
         date.from=fromDate;
         date.to=toDate;
-        
         timetable.date=date;
             $.each(settings.dayId,function(){
                 var id=$(this).attr('id');
@@ -258,13 +258,11 @@ function Calendar(){
         console.log(toDate)
         endDate=moment(toDate).format("DD-MM-YYYY");
         console.log(endDate)
-        // $('#startdatepicker').datepicker().datepicker('setDate', startDate);
+        $('#startdatepicker').datepicker().datepicker('setDate', startDate);
         $("#startdatepicker").val(startDate);
         $('#radio-button-startend').prop("checked",true)
-
         if(endDate!="Invalid date"){
-
-            // $('#enddatepicker').datepicker().datepicker('setDate', endDate);
+            $('#enddatepicker').datepicker().datepicker('setDate', endDate);
             $('#enddatepicker').val(endDate);
             $('#radio-button-end').prop("checked",true)
         }
@@ -546,7 +544,13 @@ function Calendar(){
             focusOnElement(settings.teleMessage);
             return false
         }
-        if($('#radio-button-end').prop("checked")==true && $('#end_date').val()==""){
+        
+        if($('#radio-button-startend').prop("checked")==true && $('#startdatepicker').val()==""){
+            settings.errorInputStart.text(errorResponses['missingStartDate']);
+            return false;
+        } 
+
+        if($('#radio-button-end').prop("checked")==true && $('#enddatepicker').val()==""){
             settings.radioInput.next('.error').text(errorResponses['missingDate']);
             return false;
         }
@@ -645,9 +649,6 @@ function Calendar(){
         if(dowTo==0){
             dowTo=7;
         }
-        if(dowFrom==0){
-            dowFrom=7;
-        }
         if(!(timetable.date.to=="0000-00-00")){
             for(var k=0;k<timetable.slots.length;k++){
                 if(timetable.slots[k].day<dowFrom || timetable.slots[k].day>dowTo){
@@ -673,7 +674,7 @@ function Calendar(){
         startTimeMapper:startTimeMapper,
         endTimeMapper:endTimeMapper,
         fullCalendar:fullCalendar,
-        highlighter:highlighter,
+        highlighter:highlighter, 
         startdate:startdate,
         enddate:enddate,
         testHighlight: testHighlight,

@@ -1873,3 +1873,9 @@ span.sticker {
     width: 183px;
     height: 40px;
     outline: none; } }
+
+.error-startDate {
+  font-family: "Droid Sans", sans-serif;
+  position: absolute;
+  font-size: 12px;
+  color: #ad3030; }
