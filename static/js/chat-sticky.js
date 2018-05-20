@@ -22,6 +22,16 @@ function saveToStore(dataArray){
     })
 }
 
+function getDeviceId() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i < 20; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return "web"+text+Date.now();
+}
+var deviceId = getDeviceId();
 // function emptyStore(){
 //     chatStore = {};
 // }
@@ -471,7 +481,7 @@ var displayAMessage = function(element) {
 
 		publish({
             UUID:uuid || btoa(recruiterId+'--'+recruiterEmail),
-            deviceID: getCookie("sessID"),
+            deviceId: deviceId,
             time: Date.now(),
             usr: recruiterId,
             name: profile["name"],
@@ -513,11 +523,11 @@ var displayAMessage = function(element) {
 }
 
 function receiveMessage(m) {
-    var msg = m.message
-	if( msg["deviceID"] == getCookie("sessID") && msg["UUID"] == (btoa(recruiterId+'--'+recruiterEmail)) ){
-		return
-	}
-
+    var msg = m.message;
+    if(deviceId == msg['deviceId']){
+        debugger
+        return
+    }
     openChat(m)
 
 	scrollToBottom(m.channel)
@@ -540,7 +550,7 @@ function openChat(m) {
     	elem.entry = {}
     	elem.entry.msg = msg.msg;
     	elem.entry.time = msg.time;
-        var item = (m.publisher == getUUID()) ? getMsgSentElement(elem):  getMsgReceivedElement(elem);
+        var item = (msg.UUID == btoa(recruiterId+"--"+profile["email"])) ? getMsgSentElement(elem):  getMsgReceivedElement(elem);
         $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
 
         $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .chat-div-header").addClass("newMessageHeader")
