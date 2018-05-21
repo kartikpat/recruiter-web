@@ -321,7 +321,7 @@ function Profile(){
 
 		if(obj["availableCredits"]) {
 			settings.buyMore.removeClass("hidden")
-			settings.premiumDetail.text(obj["availableCredits"] + " credits left.")
+			settings.premiumDetail.text(obj["availableCredits"] + " credits left")
 		}
 		else {
 			settings.seeAllPremium.removeClass("hidden")
