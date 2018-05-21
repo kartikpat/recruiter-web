@@ -8,6 +8,7 @@ $(document).ready(function(){
             var newUrl = removeParam("insuffSlotsErrMsg", window.location.href)
             window.history.replaceState("object or string", "Title", newUrl);
         }
+        
         fetchCalendars(calendarId,recruiterId);
         $('.form-container').removeClass('hidden');
         $('.Availability').removeClass('hidden');

@@ -939,17 +939,18 @@ input::-webkit-input-placeholder {
 										height: 40px;
 									}
 								}
-								.separator {
+								.separator{
 									display:block;
 									margin:20px 0 0 9%;
 									border-bottom:1px solid $border-color-base;
 									width:91%;
 								}
+			
 
-								&:last-child {
-									padding-bottom:1px;
+								.candidate-listing:last-child {
+									padding-top:100px;
 									.separator {
-										border:0;
+										border:none;
 									}
 								}
 
@@ -1607,7 +1608,7 @@ input::-webkit-input-placeholder {
 					.table-row-seprator{
 						border-bottom:1px solid $border-color-base;
 					}
-
+					
 					.profile-image {
 						position:absolute;
 						top:35px;

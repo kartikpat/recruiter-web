@@ -60,7 +60,7 @@ $(document).ready(function(){
 			extraParameters.type = "pic-profile";
 			return updateRecruiterProfile(recruiterProfile.getPic(), recruiterId,extraParameters);
 		}
-		return toastNotify(3, "Please Choose A File")
+		return toastNotify(3, "Please choose a file")
 	})
 
 
@@ -73,7 +73,7 @@ $(document).ready(function(){
 			toastNotify(1, "Profile Pic Uploaded Successfully");
 		}
 		else {
-			toastNotify(1, "Profile Updated Success");
+			toastNotify(1, "Profile updated successfully");
 		}
 
 		setTimeout(function(){

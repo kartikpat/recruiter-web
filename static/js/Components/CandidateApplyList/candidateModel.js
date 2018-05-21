@@ -184,6 +184,7 @@ function Candidate() {
             salary: modal.find(".js_sal"),
             skillsList: modal.find(".js_skills_list"),
             candidateTagList: modal.find(settings.candidateTagListClass),
+            inviteText:modal.find(".interviewinvite"),
             lastActive: modal.find(".js_last_login"),
             eduList: modal.find(".js_edu_list"),
             profList: modal.find(".js_prof_list"),
@@ -284,13 +285,13 @@ function Candidate() {
         item.location.text(aData["currentLocation"] || "NA");
         var preferredLocationStr = "N.A."
         if(aData['isSent']==1){
-            item.element.find('.interviewinvite').text("Interview Invite Sent!")
+            item.element.find('.interviewinvite').text("Interview Invite Sent")
             item.element.find('.inviteText').removeClass("underline").addClass("non-underline")
             item.element.find('.inviteF2f .icon-container').removeClass('hidden');
             item.element.find('.inviteF2f .loadingScroller').addClass('hidden');
         }
         if(aData['isSent']==2){
-            item.element.find('.interviewinvite').text("Interview Invite Sent!")
+            item.element.find('.interviewinvite').text("Interview Invite Sent")
             item.element.find('.inviteText').removeClass("underline").addClass("non-underline")
             item.element.find('.inviteTelephonic .icon-container').removeClass('hidden');
             item.element.find('.inviteTelephonic .loadingScroller').addClass('hidden');
@@ -361,7 +362,7 @@ function Candidate() {
                     var toMon = getMonthName(anObj["exp"]["to"]["month"]);
                     var fromYear = anObj["exp"]["from"]["year"];
                     var toYear = anObj["exp"]["to"]["year"];
-                    var str = (anObj["is_current"]) ? fromMon + " , " + fromYear + " to Present": fromMon + " , " + fromYear + " to " + toMon + " , " + toYear;
+                    var str = (anObj["is_current"]) ? fromMon + ", " + fromYear + " to Present": fromMon + ", " + fromYear + " to " + toMon + ", " + toYear;
                 }
                 item.tenure.text(str);
                 if(index != aData["jobs"].length - 1)
@@ -582,6 +583,7 @@ function Candidate() {
         item.iconEmailVer.addClass("hidden")
         item.contact.text('');
         item.email.text('');
+        item.inviteText.text("Send Interview Invite")
         $(".coverLetterTab").addClass("hidden");
     }
 

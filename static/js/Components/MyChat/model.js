@@ -73,9 +73,10 @@ function Chat() {
        var str = '';
        $('.loading.loaderScroller.first').addClass("hidden")
 
-       if(!dataArray.length) {
-           return $(".empty-screen.no-list").removeClass("hidden")
-       }
+    //    if(!dataArray.length) {
+    //     return $(".empty-screen.no-list").removeClass("hidden")
+    //    }
+
        dataArray.forEach(function(aData, index){
            var item = createElement(aData);
 

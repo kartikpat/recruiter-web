@@ -507,7 +507,7 @@ label {
   background-position: left center; }
 
 .radio-input input:checked + label {
-  background-image: url("/static/images/checkbox.png"); }
+  background-image: url("/static/images/checked_radio.svg"); }
 
 .check-input input {
   display: none; }
@@ -524,7 +524,7 @@ label {
   background-position: left 2px center; }
 
 .check-input input:checked + label {
-  background-image: url("/static/images/checkbox.png"); }
+  background-image: url("/static/images/checked_radio.svg"); }
 
 span.sticker {
   display: inline-block;
@@ -979,8 +979,7 @@ p {
   margin: 0; }
 
 body.posf {
-  overflow: hidden;
-  position: fixed !important; }
+  overflow: hidden; }
 
 @media all and (max-width: 700px) {
   .hidden-mobile {
@@ -1896,7 +1895,7 @@ label {
   background-position: left center; }
 
 .radio-input input:checked + label {
-  background-image: url("/static/images/checkbox.png"); }
+  background-image: url("/static/images/checked_radio.svg"); }
 
 .check-input input {
   display: none; }
@@ -1913,7 +1912,7 @@ label {
   background-position: left 2px center; }
 
 .check-input input:checked + label {
-  background-image: url("/static/images/checkbox.png"); }
+  background-image: url("/static/images/checked_radio.svg"); }
 
 span.sticker {
   display: inline-block;
@@ -2869,7 +2868,7 @@ label {
   background-position: left center; }
 
 .radio-input input:checked + label {
-  background-image: url("/static/images/checkbox.png"); }
+  background-image: url("/static/images/checked_radio.svg"); }
 
 .check-input input {
   display: none; }
@@ -2886,7 +2885,7 @@ label {
   background-position: left 2px center; }
 
 .check-input input:checked + label {
-  background-image: url("/static/images/checkbox.png"); }
+  background-image: url("/static/images/checked_radio.svg"); }
 
 span.sticker {
   display: inline-block;
@@ -4225,10 +4224,10 @@ input::-webkit-input-placeholder {
             margin: 20px 0 0 9%;
             border-bottom: 1px solid #e8e8e8;
             width: 91%; }
-          .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:last-child {
-            padding-bottom: 1px; }
-            .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:last-child .separator {
-              border: 0; }
+          .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-listing:last-child {
+            padding-top: 100px; }
+            .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-listing:last-child .separator {
+              border: none; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover {
             box-shadow: 0px 2px 8px 0px rgba(214, 214, 214, 0.85); }
             .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover .candidate-select {
