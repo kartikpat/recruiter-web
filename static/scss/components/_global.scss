@@ -40,7 +40,8 @@ p {
 }
 body {
 	&.posf {
-		overflow:hidden;
+		overflow: hidden;
+		position: fixed!important;
 	}
 }
 

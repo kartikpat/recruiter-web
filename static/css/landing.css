@@ -470,7 +470,8 @@
 body {
   position: relative; }
   body.fixed {
-    overflow: hidden; }
+    overflow: hidden;
+    position: fixed; }
 
 .header .header-wrapper {
   max-width: 2000px; }

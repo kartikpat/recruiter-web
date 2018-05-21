@@ -1007,7 +1007,8 @@ p {
   margin: 0; }
 
 body.posf {
-  overflow: hidden; }
+  overflow: hidden;
+  position: fixed !important; }
 
 @media all and (max-width: 700px) {
   .hidden-mobile {
@@ -2442,3 +2443,5 @@ span.sticker {
   color: #fff !important; }
   .newMessageHeader img {
     background-color: #f7f7f7 !important; }
+  .newMessageHeader .cand-name-wrapper a {
+    color: #fff !important; }

@@ -352,6 +352,7 @@
 				"static/js/login.js",
 				"static/js/header.js",
 				"static/js/Tracker/tracker.js",
+				"static/js/Utilities/common.js",
 				"static/js/eventMapping.js"
 			],
 			"prod" : [
