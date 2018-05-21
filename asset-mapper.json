@@ -1824,6 +1824,7 @@
 				"static/js/vendor/jquery-ui.min.js",
 				"static/js/Utilities/request.js",
 				"static/js/vendor/moment.min.js",
+				"static/js/vendor/page.js",
 				"static/js/vendor/pdf.js",
 				"static/js/vendor/pdf.worker.js",
 				"static/js/pdfJs.js",

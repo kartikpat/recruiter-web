@@ -8,7 +8,8 @@ var errorResponses = {
 	missingParameters: 'Oops! Our engineers will fix this shortly. Please try again after sometime.',
 	serviceError: 'Oops! Our engineers are working on fixing this, please try again after sometime.',
 	noInternet: 'Looks like you are not connected to the internet',
-	passwordMatch:"The new password and confirm password do not match"
+	passwordMatch:"The new password and confirm password do not match",
+	passwordConflict: "The new password cannot be same as the old password"
 }
 var emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 function resetPassword(){
@@ -57,6 +58,9 @@ function resetPassword(){
 			case 401:
 				message = errorResponses.passwordFail;
 				break;
+			case 409:
+				message = errorResponses.passwordConflict;
+				break
 			case 503:
 				message = errorResponses.serviceError;
 				break;
@@ -67,7 +71,7 @@ function resetPassword(){
 				message = errorResponses.noInternet
 				break;
 		}
-		user.password.next('.error').text(message)
+		user.confirmPassword.next('.error').text(message)
 		return
 	}
 

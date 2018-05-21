@@ -14,6 +14,13 @@ jQuery(document).ready( function() {
     var store = Store();
     //initializing the models
     aCandidate.init();
+
+    page('/job/'+jobId+'/applications', function(context, next){
+        debugger;
+        window.location.href='/job/'+jobId+'/applications?'+context.querystring;
+        return
+    })
+    page();
     var successMsg = getQueryParameter("type");
     var successRef= getQueryParameter("ref");
     fetchCandidateProfile(recruiterId, jobId, applicationId)
