@@ -259,16 +259,17 @@
                             }
 
                             p.describer {
-                                margin-top: 10px;
+                                margin-top: 15px;
                                 margin-left: 35px;
                                 color: $extra-info-color;
                                 font-size: $base-font-size;
                                 border-bottom: 1px solid $border-color-base;
                                 padding-bottom: 30px;
-
+                                display: inline-block;
+                                vertical-align: middle;
                                 &.no-border {
                                     border: 0;
-                                    padding-bottom: 5px;
+                                    // padding-bottom: 5px;
                                 }
                             }
                         }
@@ -518,4 +519,15 @@
     margin: 3px 0 0 0px;
     font-size: 11px;
     color: #ad3030;
+}
+
+.radio-input{
+    display: inline-block;
+}
+.radio-input input {
+    display: inline-block!important;
+}
+input[type=radio] {
+	height: 20px;
+	width: 20px;
 }

@@ -59,7 +59,7 @@ function Plans() {
            }
 
            if(!( contact && elem.val() && isValidPhone(elem.val()) )){
-                 elem.next().text("Please enter a valid number").removeClass("hidden");
+                 elem.next().text("Please enter a valid 10 digit number").removeClass("hidden");
                 return;
             }
            fn(contact, planType)

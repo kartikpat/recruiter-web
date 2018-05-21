@@ -310,7 +310,6 @@ jQuery(document).ready( function() {
     }
 
     function onSendInterViewInviteFail(topic, data) {
-
         if(data.status == 400 && data.responseJSON && data.responseJSON.code == 4001) {
             return window.location.href = "/calendar/"+data.parameters.calendarId+"/edit?insuffSlotsErrMsg=1";
         }

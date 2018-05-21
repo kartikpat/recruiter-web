@@ -414,7 +414,7 @@ var populateChatView = function(array) {
     }
 }
 
-$(".chat-candidate-boxes").on('click','.chat-div-candidate .chat-div-header', function() {
+$(".chat-candidate-boxes").on('click','.chat-div-candidate .icon-minus_icon', function() {
 	var dataId = $(this).attr("data-id");
 
 	$('.chat-div-candidate[data-id='+dataId+'] .content-footer-container').toggleClass("show");

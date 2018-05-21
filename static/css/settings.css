@@ -947,15 +947,16 @@ span.sticker {
           .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container .radio-option label {
             font-size: 16px; }
           .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container .radio-option p.describer {
-            margin-top: 10px;
+            margin-top: 15px;
             margin-left: 35px;
             color: #808080;
             font-size: 14px;
             border-bottom: 1px solid #e8e8e8;
-            padding-bottom: 30px; }
+            padding-bottom: 30px;
+            display: inline-block;
+            vertical-align: middle; }
             .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container .radio-option p.describer.no-border {
-              border: 0;
-              padding-bottom: 5px; }
+              border: 0; }
         .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container.plan-container .plan-section h3 {
           clear: both;
           font-size: 16px;
@@ -1125,3 +1126,13 @@ span.sticker {
   margin: 3px 0 0 0px;
   font-size: 11px;
   color: #ad3030; }
+
+.radio-input {
+  display: inline-block; }
+
+.radio-input input {
+  display: inline-block !important; }
+
+input[type=radio] {
+  height: 20px;
+  width: 20px; }

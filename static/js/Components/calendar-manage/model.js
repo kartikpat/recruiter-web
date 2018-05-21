@@ -33,6 +33,7 @@ function Manage() {
     }
 
     function cloneRow(data){
+        console.log(data)
         if(data.length==0){
             settings.wrapperConatiner.removeClass('hidden');
             $('.container').addClass('hidden');
