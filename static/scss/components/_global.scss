@@ -40,7 +40,8 @@ p {
 }
 body {
 	&.posf {
-		overflow:hidden;
+		overflow: hidden;
+		position: fixed!important;
 	}
 }
 
@@ -297,9 +298,11 @@ body {
 					font-size: 20px;/* Approximation due to font substitution */
 					font-weight: 400;
 					line-height: 40px;/* Approximation due to font substitution */
-					text-decoration: underline;
 					text-align: center;
 					}
+					a:hover{
+						text-decoration: underline;
+				}
 				}
 			}
 		}

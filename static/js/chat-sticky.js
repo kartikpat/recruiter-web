@@ -761,7 +761,7 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
 
         if(window.innerWidth <= 768) {
            
-            return window.location.href = "staticEndPoints['chat']"+'?candidateId='+array[0]["userID"]+''
+         window.location.href = staticEndPoints['chat']+'?candidateId='+array[0]["userID"]+''
         }
         var channelName = "iimjobs--r"+recruiterId+"-j"+array[0]["userID"]+"";
         var chatContainerBox = chatDivBox.clone().removeClass('prototype hidden');

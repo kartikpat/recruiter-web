@@ -107,7 +107,7 @@ jQuery(document).ready( function() {
            event_category: eventMap["shortlistCand"]["cat"],
            event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
          }
-       
+
          if(successRef=="Email"){
             eventObj.event_label='origin=Email,type=Single,recId='+recruiterId+''
          }
@@ -204,7 +204,7 @@ jQuery(document).ready( function() {
    }
 
     function onSuccessfullCandidateAction(topic, res) {
-        
+
         if(res.action == "view") {
             var newStatus = 4
             var obj = store.getCandidateFromStore(res.applicationId)
@@ -333,7 +333,7 @@ jQuery(document).ready( function() {
            event_label: 'origin=Profile,type=Telephonic,recId='+recruiterId+''
         }
         sendEvent(eventMap["sendInvite"]["event"], eventObj)
-        
+
         // if(!defaultCalendarId)
         //     return aCandidate.openSelectDefaultCalendarModal();
         // var obj = {
@@ -445,7 +445,10 @@ function errorHandler(data) {
 		 }, 2000);
          return
     }
-
+    if(data.status == 503) {
+        toastNotify(3, "Oops...something went wrong. Our engineers are fixing the issue");
+         return
+    }
     var res = data.responseJSON
     if(!res) {
         return toastNotify(3, "Looks like you are not connected to the internet");

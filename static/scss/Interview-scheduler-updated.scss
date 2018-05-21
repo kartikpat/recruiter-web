@@ -1235,4 +1235,9 @@
 
 }
 
-
+.error-startDate{
+    font-family:  $droid-font;
+    position: absolute;
+    font-size: 12px;
+    color: $error-message-color;
+}

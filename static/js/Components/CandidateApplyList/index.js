@@ -469,7 +469,8 @@ jQuery(document).ready( function() {
                 obj["tags"].push(tag)
                 aCandidate.appendCandidateTag(tag)
                 candidates.appendCandidateTag(tag,res.applicationId);
-                candidates.showTag(res.applicationId);
+
+                candidates.showTag(res.applicationId, obj["comment"]);
                 return toastNotify(1, "Tag Added Successfully")
             }
             var tagId = res.parameters.tagId
@@ -485,7 +486,8 @@ jQuery(document).ready( function() {
             obj["comment"] = res.comment;
             aCandidate.addComment(res.comment);
             candidates.addComment(res.comment,res.applicationId);
-            candidates.showComment(res.applicationId);
+            var tagLen = obj["tags"].length;
+            candidates.showComment(res.applicationId, tagLen);
             return toastNotify(1, "Comment Added Successfully")
         }
 
@@ -1362,6 +1364,10 @@ function errorHandler(data) {
         setTimeout(function(){
 			 window.location.href = staticEndPoints.dashboard
 		 }, 2000);
+         return
+    }
+    if(data.status == 503) {
+        toastNotify(3, "Oops...something went wrong. Our engineers are fixing the issue");
          return
     }
     var res = data.responseJSON

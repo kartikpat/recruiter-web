@@ -5,7 +5,7 @@ $(document).ready(function(){
 	fetchRecruiterCredits(recruiterId);
 
 	var successMsg = getQueryParameter("credit");
-	console.log(successMsg);	
+	console.log(successMsg);
     if(!isEmpty(successMsg)) {
         var newUrl = removeParam("credit", window.location.href)
         window.history.replaceState("object or string", "Title", newUrl);
@@ -15,7 +15,7 @@ $(document).ready(function(){
 		$('#credits').addClass('active');
 		$('.settings-section.profile').addClass('hidden');
 	}
-	
+
 	recruiterProfile.submitHandler(function(type){
 		if(recruiterProfile.validate()){
 			$('.'+type+'').find('.spinner').removeClass('hidden');
@@ -37,15 +37,15 @@ $(document).ready(function(){
 			$('#credits-distribute').addClass('hidden');
 			var data=recruiterProfile.getAddCredits();
 			submitCredits(data,recruiterId);
-		}	
-		
+		}
+
 	})
 
 	recruiterProfile.onClickcredits(function(){
 		// debugger
 		// recruiterProfile.emptyCredits();
 		// recruiterProfile.spinner();
-		
+
 	})
 
 	recruiterProfile.onClickDeleteCredits(function(data){
@@ -104,9 +104,9 @@ $(document).ready(function(){
 	}
 
 	function onFetchSuccess(topic,data){
-		$("#credits").removeClass('hidden');		
+		$(".credits").removeClass('hidden');		
 		recruiterProfile.togglespinner();
-		recruiterProfile.credits(data);	
+		recruiterProfile.credits(data);
 	}
 
 	function onFetchFail(topic){
@@ -139,7 +139,7 @@ $(document).ready(function(){
 
 	var setPasswordSuccessSubscription = pubsub.subscribe("setPasswordSuccess", onSuccessfulSetPassword);
 	var setPasswordFailSubscription = pubsub.subscribe("setPasswordFail", onFailedPassword);
-	
+
 	var fetchCreditSuccessSubscription=pubsub.subscribe('fetchedCredits', onFetchSuccess)
 	var fetchCreditFailSubscription=pubsub.subscribe('failedToFetchCredits', onFetchFail)
 
@@ -160,5 +160,9 @@ function errorHandler(data) {
 	if(data.status == 401) {
 		return toastNotify(3, "The original password you've entered is incorrect");
 	}
+	if(data.status == 503) {
+        toastNotify(3, "Oops...something went wrong. Our engineers are fixing the issue");
+         return
+    }
     return toastNotify(3, res.message);
 }

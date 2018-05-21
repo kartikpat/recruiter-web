@@ -614,7 +614,8 @@ p {
   margin: 0; }
 
 body.posf {
-  overflow: hidden; }
+  overflow: hidden;
+  position: fixed !important; }
 
 @media all and (max-width: 700px) {
   .hidden-mobile {
@@ -795,8 +796,9 @@ body.posf {
             font-weight: 400;
             line-height: 40px;
             /* Approximation due to font substitution */
-            text-decoration: underline;
             text-align: center; }
+          .page-wrap .error-container .error-wrapper .content-container .link a:hover {
+            text-decoration: underline; }
 
 .icon-spinner-7:before {
   content: '\f529'; }

@@ -366,7 +366,7 @@
                     width:100%;
 
                     .field {
-
+                        overflow: auto;
                         input[type=text], select, textarea {
                             padding:12px 20px;
                             padding-right: 38px;
@@ -393,7 +393,7 @@
 
                     &.tile-section {
                         white-space:nowrap;
-                        overflow:auto;
+                        // overflow:auto;
                     }
                 }
             }
