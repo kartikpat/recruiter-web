@@ -1530,7 +1530,7 @@ label {
   background-position: left center; }
 
 .radio-input input:checked + label {
-  background-image: url("/static/images/checkbox.png"); }
+  background-image: url("/static/images/checked_radio.svg"); }
 
 .check-input input {
   display: none; }
@@ -1547,7 +1547,7 @@ label {
   background-position: left 2px center; }
 
 .check-input input:checked + label {
-  background-image: url("/static/images/checkbox.png"); }
+  background-image: url("/static/images/checked_radio.svg"); }
 
 span.sticker {
   display: inline-block;

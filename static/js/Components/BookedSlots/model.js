@@ -118,7 +118,7 @@ function BookedSlots() {
 		item.element.attr("data-job-id", aData["job"]["id"]);
 		var title = getTitleFormat(aData["job"]["title"], (/\(\d+-\d+ \w+\)$/));
         if(aData["slot"]){
-            var date = moment(aData["slot"]["date"]).format('ll');
+            var date = moment(aData["slot"]["date"]).format('MM DD, YYYY');
 
 			var width=$(window).width();
 

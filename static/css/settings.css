@@ -507,7 +507,7 @@ label {
   background-position: left center; }
 
 .radio-input input:checked + label {
-  background-image: url("/static/images/checkbox.png"); }
+  background-image: url("/static/images/checked_radio.svg"); }
 
 .check-input input {
   display: none; }
@@ -524,7 +524,7 @@ label {
   background-position: left 2px center; }
 
 .check-input input:checked + label {
-  background-image: url("/static/images/checkbox.png"); }
+  background-image: url("/static/images/checked_radio.svg"); }
 
 span.sticker {
   display: inline-block;
@@ -1126,13 +1126,3 @@ span.sticker {
   margin: 3px 0 0 0px;
   font-size: 11px;
   color: #ad3030; }
-
-.radio-input {
-  display: inline-block; }
-
-.radio-input input {
-  display: inline-block !important; }
-
-input[type=radio] {
-  height: 20px;
-  width: 20px; }
