@@ -441,18 +441,23 @@ function candidateList() {
         if(aData["recommendation"] && aData["recommendation"].length > 0) {
             item.recommendationsLink.removeClass("hidden")
         }
+        if(aData["tags"].length == 0) {
+            item.viewCommentLink.addClass("no-after")
+        }
+
         if(aData["comment"]){
             item.Commentarea.addClass('hidden').html(aData["comment"]);
             item.textarea.removeClass('hidden').html(aData["comment"]);
             item.AddCommentButton.addClass('hidden');
             item.EditComment.removeClass('hidden');
             item.viewCommentLink.removeClass("hidden")
-         
+
         }
         if(aData["tags"].length) {
             item.viewTagLink.removeClass("hidden")
-            
+
         }
+
 
         return item
     }
@@ -567,7 +572,7 @@ function candidateList() {
             $(this).closest(settings.candidateRowClass).find(settings.candidateCommentTextareaClass).addClass("hidden");
             $(this).closest(settings.candidateRowClass).find(settings.candidateAddCommentButtonClass).addClass("hidden");
             $(this).closest(settings.candidateRowClass).find(settings.candidateEditComment).removeClass("hidden");
-    
+
             if(window.innerWidth<768){
                 addBodyFixed();
             }
@@ -1171,11 +1176,20 @@ function candidateList() {
         $(".candidateRow[data-application-id="+applicationId+"] .inviteText").removeClass("underline").addClass("non-underline")
     }
 
-    function showComment(applicationId){
+    function showComment(applicationId,len){
+        if(len == 0) {
+            settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .commentLink").addClass("no-after");
+        }
+        else {
+            settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .commentLink").removeClass("no-after");
+        }
         settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .commentLink").removeClass("hidden")
     }
 
-    function showTag(applicationId){
+    function showTag(applicationId, comment){
+        if(comment != '') {
+            settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .commentLink").removeClass("no-after");
+        }
         settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .tagLink").removeClass("hidden")
     }
 
