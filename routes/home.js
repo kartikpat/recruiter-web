@@ -33,6 +33,7 @@ module.exports = function(settings){
 		// bypassing the auth for development
     	// CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     	// you can do this however you want with whatever variables you set up
+		
     	if(!(req.cookies[config['oldCookie']] && req.cookies[config['oldCookie']]!='undefined')){
 			return res.redirect("/login");
 		}
@@ -94,7 +95,7 @@ module.exports = function(settings){
 			return next()
 		}
 		return res.redirect('/login?callbackUrl='+req.originalUrl+'');
-		
+
 	}
 
 	function isVerified(req,res,next) {
@@ -139,7 +140,7 @@ module.exports = function(settings){
 				profile: req.profile,
 				oldCookie: config['oldCookie'],
 				cookie: config['cookie'],
- 		 baseDomainName: baseDomainName,
+ 		 		baseDomainName: baseDomainName,
 				staticEndPoints: config["staticEndPoints"]
 			})
 			return
@@ -234,7 +235,8 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
- 		 baseDomainName: baseDomainName
+ 		 baseDomainName: baseDomainName,
+		 staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
@@ -337,7 +339,7 @@ module.exports = function(settings){
 		return
 	});
 
-	
+
 	app.get("/candidates/tagged",isAuthenticated, function(req,res){
 		res.render("tagged-candidates", {
 			title:"Tagged Candidates | iimjobs.com",
@@ -624,7 +626,7 @@ module.exports = function(settings){
 		})
 		return
 	});
-	
+
 	app.get("/account-created", isVerified, function(req,res){
 		var email = req.query.email || "";
 		res.render("account-created", {
@@ -726,7 +728,7 @@ module.exports = function(settings){
 				oldCookie: config['oldCookie'],
 				cookie: config['cookie'],
  		 		baseDomainName: baseDomainName
-			});	
+			});
 			return
 		}
 		res.render("Interview-scheduler-updated", {
@@ -931,7 +933,7 @@ module.exports = function(settings){
 		});
 	});
 
-	
+
 
 	app.get("/job/:jobId/applications/:applicationId/action/:action",isAuthenticated, function(req, res){
 		const jobId = req.params.jobId,
