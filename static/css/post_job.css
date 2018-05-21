@@ -1042,21 +1042,22 @@ span.sticker {
       font-size: 20px; }
     .job_posting .post_job .post_job_form .field-container {
       width: 100%; }
-      .job_posting .post_job .post_job_form .field-container .field input[type=text], .job_posting .post_job .post_job_form .field-container .field select, .job_posting .post_job .post_job_form .field-container .field textarea {
-        padding: 12px 20px;
-        padding-right: 38px;
-        font-size: 12px; }
-        .job_posting .post_job .post_job_form .field-container .field input[type=text] option, .job_posting .post_job .post_job_form .field-container .field select option, .job_posting .post_job .post_job_form .field-container .field textarea option {
-          padding: 5px; }
-      .job_posting .post_job .post_job_form .field-container .field select.half {
-        width: 48%; }
-      .job_posting .post_job .post_job_form .field-container .field select:focus {
-        outline: none;
-        border: 1px solid;
-        border-color: #4fa995; }
-      .job_posting .post_job .post_job_form .field-container.tile-section {
-        white-space: nowrap;
+      .job_posting .post_job .post_job_form .field-container .field {
         overflow: auto; }
+        .job_posting .post_job .post_job_form .field-container .field input[type=text], .job_posting .post_job .post_job_form .field-container .field select, .job_posting .post_job .post_job_form .field-container .field textarea {
+          padding: 12px 20px;
+          padding-right: 38px;
+          font-size: 12px; }
+          .job_posting .post_job .post_job_form .field-container .field input[type=text] option, .job_posting .post_job .post_job_form .field-container .field select option, .job_posting .post_job .post_job_form .field-container .field textarea option {
+            padding: 5px; }
+        .job_posting .post_job .post_job_form .field-container .field select.half {
+          width: 48%; }
+        .job_posting .post_job .post_job_form .field-container .field select:focus {
+          outline: none;
+          border: 1px solid;
+          border-color: #4fa995; }
+      .job_posting .post_job .post_job_form .field-container.tile-section {
+        white-space: nowrap; }
   .premium_job_section {
     font-size: 12px; }
     .premium_job_section .premium-section-content {
