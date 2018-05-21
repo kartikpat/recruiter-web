@@ -2,6 +2,7 @@ var errorResponses = {
 	missingEmail: 'Please enter the Email address',
 	invalidEmail: 'That looks like an invalid email address',
 	missingPassword: 'Please enter your password',
+	missingConfirmPassword: 'Please enter confirm password',
 	invalidPassword: 'Please enter a valid password',
 	userFail: 'Email address does not exist',
 	passwordFail: 'Incorrect password',
@@ -83,8 +84,12 @@ function resetPassword(){
 		// 	user.email.next('.error').text(errorResponses['invalidEmail'])
 		// 	return false
 		// }
-		if(!( user.password && user.password.val() )){
+		if(!( user.password && (user.password.val()).trim() )){
 			user.password.next('.error').text(errorResponses['missingPassword']);
+			return false;
+		}
+		if(!( user.confirmPassword && (user.confirmPassword.val()).trim() )){
+			user.confirmPassword.next('.error').text(errorResponses['missingConfirmPassword']);
 			return false;
 		}
 		if((checkPasswordMatch(user.password,user.confirmPassword))){

@@ -21,7 +21,7 @@ jQuery(document).ready( function() {
        parameters.pageContent= globalParameters.pageContent;
        globalParameters.calendarId = calendarId;
        if(slots.getStartDate() != '') {
-           
+
            globalParameters.fromDate = slots.getStartDate();
        }
        parameters.fromDate = globalParameters.fromDate;
@@ -156,8 +156,13 @@ jQuery(document).ready( function() {
 function errorHandler(data) {
     var res = data.responseJSON
     hideLoader()
+
     if(!res) {
         return toastNotify(3, "Looks like you are not connected to the internet");
+    }
+    if(data.status == 503) {
+        toastNotify(3, "Oops...something went wrong. Our engineers are fixing the issue");
+         return
     }
     return toastNotify(3, res.message);
 }

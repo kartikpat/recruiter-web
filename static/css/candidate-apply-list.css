@@ -3298,6 +3298,9 @@ span.sticker {
     .topInstitutesContainer .check-input label {
       font-weight: 700; }
 
+.no-after:after {
+  display: none !important; }
+
 .seeMoreRec {
   display: inline-block;
   cursor: pointer; }
@@ -5993,7 +5996,7 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
   border-radius: 4px;
   position: fixed;
   cursor: pointer;
-  transition: background-color .3s,  opacity .5s, visibility .5s;
+  transition: background-color .3s, opacity .5s, visibility .5s;
   opacity: 0;
   visibility: hidden;
   z-index: 1000; }
