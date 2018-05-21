@@ -89,7 +89,8 @@ jQuery(document).ready( function() {
         var hash = context.hash || "";
         var candidateDetails = store.getCandidateFromStore(applicationId);
         aCandidate.showCandidateDetails(candidateDetails,hash, candidateDetails.status);
-        if(parseInt(candidateDetails.status) == 0)
+        // sending event on every view
+        // if(parseInt(candidateDetails.status) == 0)
             setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
 
     });
@@ -375,7 +376,8 @@ jQuery(document).ready( function() {
            event_label: 'origin=CandidateApplyList,type=Single,recId='+recruiterId+''
         }
         sendEvent(eventMap["downloadResume"]["event"], eventObj)
-        if(parseInt(status) == 0)
+        // sending event on every download
+        // if(parseInt(status) == 0)
             setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
     });
 
@@ -385,7 +387,8 @@ jQuery(document).ready( function() {
            event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
         }
         sendEvent(eventMap["downloadResume"]["event"], eventObj)
-        if(parseInt(status) == 0)
+        // if(parseInt(status) == 0)
+        // sending event on every download
             setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
     });
 
