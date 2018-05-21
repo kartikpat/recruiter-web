@@ -979,7 +979,8 @@ p {
   margin: 0; }
 
 body.posf {
-  overflow: hidden; }
+  overflow: hidden;
+  position: fixed !important; }
 
 @media all and (max-width: 700px) {
   .hidden-mobile {
@@ -2180,7 +2181,8 @@ span.sticker {
         margin-top: 0; }
       .page-content .chat-container .chat-body .conversation-item-list {
         height: calc(100% - 37px);
-        overflow: auto; }
+        overflow: auto;
+        -webkit-overflow-scrolling: touch; }
       .page-content .chat-container .chat-body .sidebar {
         width: 20%;
         height: 100%;

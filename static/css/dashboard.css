@@ -614,7 +614,8 @@ p {
   margin: 0; }
 
 body.posf {
-  overflow: hidden; }
+  overflow: hidden;
+  position: fixed !important; }
 
 @media all and (max-width: 700px) {
   .hidden-mobile {

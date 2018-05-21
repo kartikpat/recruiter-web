@@ -162,6 +162,7 @@
 			.conversation-item-list {
 				height: calc(100% - 37px);
 				overflow: auto;
+				-webkit-overflow-scrolling: touch
 			}
 			.sidebar {
 				width:20%;

@@ -979,7 +979,8 @@ p {
   margin: 0; }
 
 body.posf {
-  overflow: hidden; }
+  overflow: hidden;
+  position: fixed !important; }
 
 @media all and (max-width: 700px) {
   .hidden-mobile {
@@ -4751,7 +4752,7 @@ input::-webkit-input-placeholder {
   bottom: 0;
   right: 0;
   height: 100%;
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
   box-shadow: 0 1px 20px rgba(0, 0, 0, 0.8);
   background-color: #f7f7f7;
@@ -5798,7 +5799,7 @@ input::-webkit-input-placeholder {
       .mass-action-second.second-fold .sidebar-section .action .link .icon-star {
         margin-right: 6px !important; }
     .mass-action-second.second-fold .sidebar-section .action-links {
-      margin: 10px auto; }
+      margin: 15px auto; }
       .mass-action-second.second-fold .sidebar-section .action-links .invite-links {
         display: block;
         width: 100%;
