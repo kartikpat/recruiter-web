@@ -50,7 +50,10 @@ function Job(){
 		settings.jobTitle.text(getTitleFormat(obj["title"],(/\(\d+-\d+ \w+\)$/))).removeClass("shell");
 		settings.jobDescription.html(obj["description"] || "No Description Available").removeClass("shell");
 		settings.jobCategory.text(categoryObj[obj["category"]]).removeClass("shell");
-		var locStr = (getLocation(obj["location"])).join(", ");
+		var locationTextArray = getLocation(obj["location"]);
+		if(obj['otherLocation'])
+			locationTextArray.push(obj['otherLocation']);
+		var locStr = (locationTextArray).join(", ");
 		settings.jobLocation.text(locStr).removeClass("shell")
 		if(obj["tags"] && obj["tags"].length) {
 			var tagStr = setTags(obj["tags"])

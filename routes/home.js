@@ -19,6 +19,7 @@ module.exports = function(settings){
 	var baseUrlJob = config["baseUrlJob"];
 	var welcome = config["welcome"];
 	var verifyAccount = config["verify"];
+	var parser = require('ua-parser-js');
 	const url = require('url'); // built-in utility
 
 	if(env=="local")
@@ -30,6 +31,11 @@ module.exports = function(settings){
 		return about.split('\r\n').join('\\n');
 	}
 	function isAuthenticated(req, res, next) {
+		var ua = parser(req.headers['user-agent']);
+		var initialUrl = url.parse(req.url).pathname;
+		if((ua.browser.name=='IE' && (ua.browser.version=="8.0"|| ua.browser.version=="9.0") && ( initialUrl.indexOf("/calendar") <0 ))){
+			return res.redirect('/not-supported')
+		}
 		// bypassing the auth for development
     	// CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     	// you can do this however you want with whatever variables you set up
@@ -220,6 +226,11 @@ module.exports = function(settings){
 	});
 
 	app.get("/login",  function(req,res){
+		var ua = parser(req.headers['user-agent']);
+		var initialUrl = url.parse(req.url).pathname;
+		if((ua.browser.name=='IE' && (ua.browser.version=="8.0"|| ua.browser.version=="9.0") && ( initialUrl.indexOf("/calendar") <0 ))){
+			return res.redirect('/not-supported')
+		}
 		if(req.cookies[config['oldCookie']] && req.cookies[config['oldCookie']]!='undefined'){
 			return isAuthenticated(req, res);
 		}
@@ -710,7 +721,6 @@ module.exports = function(settings){
 
 	// TODO: replace with a more semantic url
 	app.get("/calendar/create",isAuthenticated,function(req, res){
-		var parser = require('ua-parser-js');
 		var ua = parser(req.headers['user-agent']);
 		if((ua.browser.name=='IE' && (ua.browser.version=="8.0"|| ua.browser.version=="9.0"))){
 			res.render("calendarIe", {
@@ -933,7 +943,9 @@ module.exports = function(settings){
 		});
 	});
 
-
+	app.get("/file-not-found", function(req, res){
+		return res.send('The file you requested is not present');
+	})
 
 	app.get("/job/:jobId/applications/:applicationId/action/:action",isAuthenticated, function(req, res){
 		const jobId = req.params.jobId,
@@ -963,12 +975,27 @@ module.exports = function(settings){
 			if(jsonBody.status && jsonBody.status =='success'){
 				if(redirectURL)
 					return res.redirect(baseUrl+redirectURL);
-				return res.redirect('/job/'+jobId+'/applications/'+applicationId);
+				return res.redirect('/job/'+jobId+'/applications/'+applicationId+"?ref=email");
 			}
 			else {
 				return res.redirect("/error");
 			}
 			return res.send('notok')
 		});
+	});
+	app.get("/not-supported", function(req, res){
+		res.render("redirectForIE",{
+			title:"Recruiter Web | iimjobs.com",
+			styles:  assetsMapper["redirectForIE"]["styles"][mode],
+			scripts: assetsMapper["redirectForIE"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			hiddenActions: "hidden",
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie'],
+ 		 	baseDomainName: baseDomainName
+		})
 	})
 }

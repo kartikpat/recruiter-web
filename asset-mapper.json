@@ -863,6 +863,7 @@
 				"static/js/Utilities/toastNotifier.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js",
+ "static/js/Services/submitChatMessage.js",
 				"static/js/Tracker/tracker.js",
 				"static/js/eventMapping.js"
 			],
@@ -957,6 +958,7 @@
 				"static/js/Components/TaggedCandidates/index.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js",
+ "static/js/Services/submitChatMessage.js",
 				"static/js/vendor/tooltipster.main.min.js",
 				"static/js/Tracker/tracker.js",
 				"static/js/eventMapping.js"
@@ -996,6 +998,7 @@
 				"static/js/Utilities/common.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js",
+ "static/js/Services/submitChatMessage.js",
 				"static/js/vendor/moment.min.js",
 				"static/js/Services/globalSearch.js",
 				"static/js/Components/Header/model.js",
@@ -1060,6 +1063,7 @@
 				"static/js/Utilities/toastNotifier.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js",
+ "static/js/Services/submitChatMessage.js",
 				"static/js/vendor/tooltipster.main.min.js",
 				"static/js/Services/fetchRecruiterCalendar.js",
 				"static/js/Tracker/tracker.js",
@@ -1098,6 +1102,7 @@
 				"static/js/header.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js",
+ "static/js/Services/submitChatMessage.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
 				"static/js/Utilities/modal.js",
@@ -1148,6 +1153,7 @@
 				"static/js/header.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js",
+ "static/js/Services/submitChatMessage.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
 				"static/js/shortlisted-candidates.js",
@@ -1195,6 +1201,7 @@
 				"static/js/utilities.js",
 				"static/js/Utilities/common.js",
 				"static/js/my-chat.js",
+				"static/js/Services/submitChatMessage.js",
 				"static/js/Utilities/modal.js",
 				"static/js/Utilities/chatEngine.js",
 				"static/js/vendor/moment.min.js",
@@ -1260,6 +1267,7 @@
 				"static/js/modal.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js",
+ "static/js/Services/submitChatMessage.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Services/sendInterviewInvite.js",
@@ -1638,6 +1646,35 @@
 			]
 		}
 	},
+	"redirectForIE": {
+		"styles": {
+			"debug" : [
+				"static/css/utilities.css",
+				"static/css/header.css",
+				"static/css/modal.css",
+				"static/css/footer.css"
+			],
+			"prod": [
+				"static/build/css/terms-condition.min.css"
+			]
+		},
+		"scripts": {
+			"debug": [
+				"static/js/vendor/jquery.min.js",
+				"static/js/header.js",
+				"static/js/Utilities/common.js",
+				"static/js/utilities.js",
+				"static/js/Utilities/modal.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js",
+				"static/js/Tracker/tracker.js",
+				"static/js/eventMapping.js"
+			],
+			"prod" : [
+				"static/build/js/about-us.min.js"
+			]
+		}
+	},
 	"error503":{
 		"styles": {
 			"debug" : [
@@ -1817,6 +1854,7 @@
 				"static/js/vendor/jquery-ui.min.js",
 				"static/js/Utilities/request.js",
 				"static/js/vendor/moment.min.js",
+				"static/js/vendor/page.js",
 				"static/js/vendor/pdf.js",
 				"static/js/vendor/pdf.worker.js",
 				"static/js/pdfJs.js",
@@ -1829,6 +1867,7 @@
 				"static/js/Utilities/toastNotifier.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js",
+ 	"static/js/Services/submitChatMessage.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/common.js",
 				"static/js/Services/setCandidateAction.js",
@@ -1893,6 +1932,7 @@
 				"static/js/Utilities/toastNotifier.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js",
+ "static/js/Services/submitChatMessage.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/common.js",
 				"static/js/Services/setCandidateAction.js",

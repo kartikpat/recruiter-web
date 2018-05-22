@@ -6,8 +6,18 @@ globalParameters = {
     endTimeToken: null,
     clicked: 1
 }
+function getDeviceId() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i < 20; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return "web"+text+Date.now();
+}
 
 jQuery(document).ready( function() {
+  var deviceId= getDeviceId();
 
     var chatEngine = ChatEngine(recruiterId, profile.email);
     chatEngine.initialize();
@@ -35,11 +45,12 @@ jQuery(document).ready( function() {
     chat.setUuid(btoa(recruiterId+'--'+profile["email"]))
 
     chat.onSendMessage(function(message, channelName, candidateId){
+      var t = Date.now();
 
         chatEngine.publish({
             UUID:uuid || btoa(recruiterId+'--'+profile["email"]),
-            deviceID: getCookie("sessID"),
-            time: Date.now(),
+            deviceId: deviceId,
+            time: t,
             usr: recruiterId,
             name: profile["name"],
             tt:1,
@@ -49,7 +60,7 @@ jQuery(document).ready( function() {
         }, channelName, function(status,response){
 
             if(status.statusCode == 200) {
-                chat.appendSendMessage(message, profile["pic"])
+                chat.appendSendMessage(message, profile["pic"], t)
             }
             else if (status.category == "PNNetworkIssuesCategory") {
                 var data = {}
@@ -57,8 +68,14 @@ jQuery(document).ready( function() {
                 toastNotify(3, data.message)
             }
 
-        })
-
+        });
+        submitChatMessage({
+          channel: channelName,
+          senderName: profile['name'],
+          senderOrganization: profile["organisation"],
+          timestamp: Date.now(),
+          text: message
+      })
     })
 
     function onFetchRecruiterChats(topic, data) {
@@ -98,11 +115,15 @@ jQuery(document).ready( function() {
        var subscribedChannel = m.subscribedChannel;
        var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
        var pubTT = m.timetoken; // Publish timetoken
-
-       if( msg["deviceID"] == getCookie("sessID") && msg["UUID"] == btoa(recruiterId+'--'+profile["email"])){
-           return
+       if(msg["deviceId"] == deviceId){
+          return
        }
-       chat.receiveMessage(msg,channelName);
+       if( msg["UUID"] == btoa(recruiterId+"--"+profile["email"])){
+           chat.appendSendMessage( msg.msg, msg.img, msg.t);
+       }
+       else{
+          chat.receiveMessage(msg,channelName);
+       }
    }
 
    function onNewPresence(p) {

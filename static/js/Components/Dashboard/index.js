@@ -332,7 +332,7 @@ function onClickShareOnLinkedIn(fn){
 	            aJob["shortlist"] || 0,
 	            (aJob["view"] || 0)+ (aJob["download"] || 0),
 	            aJob["save"] || 0,
-	            aJob["reject"]
+	            aJob["reject"] ||0
 	            ])
 	    })
 		dataModel[topic] = temp;
