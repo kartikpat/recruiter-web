@@ -231,9 +231,9 @@ function Candidate() {
         item.element.attr("data-application-id", aData["id"])
         item.image.attr("src", (aData["img"] || "/static/images/noimage.png"))
         settings.pageTitle.text("Profile-"+aData["name"]+" | iimjobs.com");
-        item.name.text(aData["name"] || "NA").removeClass("shell");
-        item.experience.text(aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m" || "NA").removeClass("shell");
-        item.location.text(aData["currentLocation"] || "NA").removeClass("shell");
+        item.name.text(aData["name"] || "N/A").removeClass("shell");
+        item.experience.text(aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m" || "N/A").removeClass("shell");
+        item.location.text(aData["currentLocation"] || "N/A").removeClass("shell");
         var preferredLocationStr = "N.A."
         if(aData["preferredLocation"].length) {
             var locationTitle = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? aData["preferredLocation"].join(','): null;
@@ -243,8 +243,8 @@ function Candidate() {
         item.preferredLocation.attr("title",locationTitle).addClass('tooltip');
         initializeTooltip();
         item.preferredLocationDetail.text(aData["preferredLocation"]).removeClass("shell");
-        // item.contact.text(aData["phone"] || "NA").removeClass("shell");
-        item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY') || "NA").removeClass("shell");
+        // item.contact.text(aData["phone"] || "N/A").removeClass("shell");
+        item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY') || "N/A").removeClass("shell");
         if(aData["notice"] == 7) {
             item.notice.text("Immediately Available").removeClass("shell");
         }
@@ -256,8 +256,8 @@ function Candidate() {
         }
         item.salary.text(formatSalary(aData["ctc"])).removeClass("shell");
         item.firstName.text(aData["name"]);
-        item.contact.text(aData["phone"] || "NA");
-        item.email.text(aData["email"]||"NA");
+        item.contact.text(aData["phone"] || "N/A");
+        item.email.text(aData["email"]||"N/A");
         // var lastActiveDays = getLastActiveDay(aData["lastActive"])
         //
         // item.lastActive.text(lastActiveDays > 1 ? lastActiveDays + " days ago": lastActiveDays + " day ago");
@@ -451,16 +451,22 @@ function Candidate() {
     }
 
     function onClickAddComment(fn) {
-        // debugger
-        // settings.candidateDetailsModal.on('keyup', settings.candidateCommentTextareaClass,function(event) {
-        //     event.stopPropagation();
-        //     if (event.which == 13) {
-        //         return alert("k")
-        //         var candidateId = $(this).closest(settings.candidateRow).attr("data-candidate-id")
-        //         return fn(candidateId);
-        //     }
-        //
-        // });
+        settings.candidateDetailsModal.on('keyup', settings.candidateCommentTextareaClass,function(event) {
+            event.stopPropagation();
+            if (event.which == 13) {
+                var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
+                var comment = ($(settings.candidateCommentTextareaClass).val()).trim();
+                if(!comment) {
+                    return
+                }
+                $(settings.candidateCommentTextareaClass).addClass("hidden");
+                settings.commentTextarea.val(comment).removeClass("hidden");
+                $(settings.candidateAddCommentButtonClass).addClass("hidden");
+                settings.candidateEditComment.removeClass("hidden");
+                fn(applicationId, comment);
+            }
+        
+        });
         settings.candidateDetailsModal.on('click', settings.candidateAddCommentButtonClass,function(event) {
             event.stopPropagation();
             // debugger
@@ -485,7 +491,8 @@ function Candidate() {
     }
 
     function onClickAddCommentMob(fn) {
-
+        
+     
         settings.candidateDetailsModal.on('click', settings.mobCandidateAddCommentButtonClass,function(event) {
             event.stopPropagation();
 
@@ -518,6 +525,30 @@ function Candidate() {
             var tagName = $(this).val();
             if (event.which != 13) {
                  $(this).removeAttr("tag-id")
+            }
+            if(event.which==13){
+                var tagName = ($(settings.candidateTagInputClass).val()).trim();
+                if(!tagName) {
+                    $(settings.candidateTagInputClass).addClass("error-border");
+                    return settings.tagInputError.removeClass("hidden")
+                }
+                else {
+                    $(settings.candidateTagInputClass).removeClass("error-border");
+                    settings.tagInputError.addClass("hidden")
+                }
+                var obj = searchObjByKey(settings.tagArr, tagName, "name")
+                var tagId = $(settings.mobCandidateTagInputClass).attr("tag-id");
+                if(obj) {
+                    tagId = obj["id"]
+                }
+                $(this).removeAttr("tag-id")
+                var parameters = {}
+                if(tagId) {
+                    parameters.tagId = tagId;
+                }
+                parameters.tagName = tagName;
+                var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
+                return fn(applicationId, parameters);    
             }
             return fn1(tagName)
         });

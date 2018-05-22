@@ -8,6 +8,8 @@
 	var compression = require("compression"); //compresses the request payload
 	var cookieParser = require("cookie-parser"); //stores the session data on the client within a cookie
 	var session = require('cookie-session')
+	var favicon = require('serve-favicon');
+	var path = require('path')
 	const passport = require("passport");
 	const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 	const TwitterStrategy = require('passport-twitter').Strategy;
@@ -132,6 +134,8 @@
 	});
 
 	var app = express();
+	
+	app.use(favicon(path.join(__dirname+'/static/images/favicon.ico')))
 	
 	app.use(cookieParser())
 	// not using cookie-session in this case

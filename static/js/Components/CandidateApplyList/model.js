@@ -91,7 +91,7 @@ function candidateList() {
         onClickModal()
         closetooltipModal()
         backToTop()
-
+        // onEnter()
         settings.rowContainer.on('click', '.moreEducationLink', function(){
             var eventObj = {
                 event_category: eventMap["viewCandidProfile"]["cat"],
@@ -322,9 +322,9 @@ function candidateList() {
         item.element.find(".openCandidateLink").attr('href',"/job/"+config["jobId"]+"/applications/"+aData["id"]+"");
         item.element.attr("data-application-id", aData["id"]);
         item.image.attr("src",(aData["img"] || "/static/images/noimage.png"));
-        item.name.text(aData["name"] || "NA");
-        item.experience.text((aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m") || "NA");
-        item.location.text(aData["currentLocation"] || "NA");
+        item.name.text(aData["name"] || "N/A");
+        item.experience.text((aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m") || "N/A");
+        item.location.text(aData["currentLocation"] || "N/A");
         item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY'))
         if(aData["notice"] == 7) {
             item.notice.text("Immediately Available");
@@ -691,6 +691,7 @@ function candidateList() {
         })
     }
 
+
     function onClickAddComment(fn){
         settings.rowContainer.on('click',settings.candidateAddCommentButton ,function(event) {
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
@@ -704,6 +705,20 @@ function candidateList() {
     }
 
     function onClickComment(fn) {
+        settings.rowContainer.on('keyup',settings.candidateCommentTextareaClass,function(event) {
+            if(event.which==13){
+                event.stopPropagation();
+                event.preventDefault();
+                var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+
+                var comment = ($(this).closest(settings.candidateRowClass).find(settings.candidateCommentTextareaClass).val()).trim();
+                if(!comment) {
+                    return
+                }
+                fn(applicationId, comment);
+            }
+        });
+      
         settings.rowContainer.on('click', settings.candidateAddCommentButtonClass,function(event) {
             event.stopPropagation();
             event.preventDefault();
@@ -733,6 +748,27 @@ function candidateList() {
             var tagName = $(this).val();
             if (event.which != 13) {
                  $(this).removeAttr("tag-id")
+            }
+            if(event.which==13){
+                var tagName = ($(this).closest(settings.candidateRowClass).find(settings.candidateTagInputClass).val()).trim();
+                if(!tagName) {
+                    $(this).closest(settings.candidateRowClass).find(settings.candidateTagInputClass).addClass("error-border");
+                    $(this).closest(settings.candidateRowClass).find(settings.candidateTagInputClass).next().removeClass("hidden")
+                    return
+                }
+                var obj = searchObjByKey(settings.tagArr, tagName, "name")
+                var tagId = $(settings.CandidateTagInputClass).attr("tag-id");
+                if(obj) {
+                    tagId = obj["id"]
+                }
+                $(this).removeAttr("tag-id")
+                var parameters = {}
+                if(tagId) {
+                    parameters.tagId = tagId;
+                }
+                parameters.tagName = tagName;
+                var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+                return fn(applicationId, parameters);
             }
             return fn1(tagName)
         });
