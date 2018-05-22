@@ -667,9 +667,6 @@ body.posf {
   100% {
     opacity: 0; } }
 
-img {
-  object-fit: cover; }
-
 a {
   text-decoration: none; }
 
@@ -1437,6 +1434,7 @@ span.sticker {
           vertical-align: middle; }
           .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-image img {
             border-radius: 50%;
+            object-fit: cover;
             width: 33px;
             height: 33px;
             border: 1px solid #dedcdc;
@@ -2153,3 +2151,11 @@ span.sticker {
 
 .changecolor {
   background-color: #fff; }
+
+.no-data-list {
+  line-height: 50px;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 14px;
+  color: #2b2b2b;
+  background: #fff; }

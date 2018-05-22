@@ -525,7 +525,7 @@ var displayAMessage = function(element) {
 function receiveMessage(m) {
     var msg = m.message;
     if(deviceId == msg['deviceId']){
-        debugger
+        // debugger
         return
     }
     openChat(m)

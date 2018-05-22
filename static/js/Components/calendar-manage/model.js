@@ -33,7 +33,6 @@ function Manage() {
     }
 
     function cloneRow(data){
-        console.log(data)
         if(data.length==0){
             settings.wrapperConatiner.removeClass('hidden');
             $('.container').addClass('hidden');
@@ -41,7 +40,9 @@ function Manage() {
             return
         }
         var data = sortArrayOfObjectsByKeyDescending(data, "timestamp");
+        var count=0;
         data.forEach(function(aRow){
+            count++;
             var calendarRow =  settings.calendarRowPrototype.clone().removeClass('prototype hidden');
             calendarRow.find(settings.rowDate).text(moment(aRow.timestamp).format('MMM DD, YYYY'));
             calendarRow.find(settings.rowName).text(aRow.name).attr("href","/calendar/"+aRow["id"]+"/edit");
@@ -50,6 +51,10 @@ function Manage() {
             calendarRow.find(settings.editSchedule).attr("href","/calendar/"+aRow["id"]+"/edit");
             settings.rowContainer.append(calendarRow);
         });
+        if(count==data.length){
+            settings.rowContainer.append("<div class='no-data-list'>You have reached the end of the list</div>")
+        }
+
     }
 
     return{

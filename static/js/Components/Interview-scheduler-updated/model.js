@@ -4,11 +4,12 @@ var errorResponses = {
     missingTeleMessage: 'Please enter a message for telephonic interview',
     missingvalues:'Please select your available hours',
     missingslots:'Please select a slot',
-    missingStartDate:"Please select a start Date",
-    missingDate:"Please select a end Date",
+    missingStartDate:"Please select an start date",
+    missingDate:"Please select an end date",
     missingStart:"Please select Start Time",
     missingEnd:"Please select End Time",
-    missingDateSlot:"Please select a slot between startdate and endate"
+    missingDateSlot:"Please select a day that lies between start date and end date"
+    
 }
 
 function Calendar(){

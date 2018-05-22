@@ -108,8 +108,9 @@ function Candidate() {
             }
             fn()
         })
-
+       
     }
+
 
     function closeModal(){
         settings.candidateDetailsModal.scrollTop(0)
@@ -298,7 +299,7 @@ function Candidate() {
         }
         if(aData["preferredLocation"].length) {
             var locationTitle = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? aData["preferredLocation"].join(','): null;
-            var preferredLocationStr = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? "Multiple Locations" : aData["preferredLocation"].join(',');
+            var preferredLocationStr = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? "Multiple Locations" : aData["preferredLocation"].join(' ,');
         }
         item.preferredLocation.text(preferredLocationStr);
         item.preferredLocationDetail.text(aData["preferredLocation"]);

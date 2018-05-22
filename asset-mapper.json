@@ -1267,7 +1267,7 @@
 				"static/js/modal.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js",
- "static/js/Services/submitChatMessage.js",
+ 				"static/js/Services/submitChatMessage.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Services/sendInterviewInvite.js",

@@ -208,7 +208,8 @@ function candidateList() {
                 event_label: 'origin=CandidateApplyList,type=recommendations,recId='+recruiterId+''
             }
             sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
-            // settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 2});
+            // settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
+           
         })
     }
 
@@ -614,6 +615,8 @@ function candidateList() {
         $("li[data-attribute='"+status+"'] .bulk-selection-item").addClass("active")
     }
 
+    
+
     function onClickCandidateOtherActions() {
         settings.rowContainer.on('mouseenter', settings.candidateOtherActionsClass,function(event) {
             event.stopPropagation();
@@ -881,17 +884,18 @@ function candidateList() {
     function onChangeCandidateCheckbox(fn) {
         settings.rowContainer.on('click', settings.candidateCheckboxClass, function(event){
             event.stopPropagation();
-
+            // debugger
             if(jQuery(this).is(":checked")){
                 var candidateSelect = jQuery(".candidate-select")
                 var el = $(".candidateListing[data-status-attribute='"+settings.status+"']").find(".candidate-select input:checked")
+                // debugger
                 // if(el.length > 100) {
                 //     $(this).prop("checked", false);
                 //     toastNotify(3, "You can perform action on only 100 candidates at once.")
                 //     return
                 // }
-                jQuery(this).closest(".candidate-select").addClass("selected");
-
+                jQuery(this).closest(".candidate-select").addClass("selected"); 
+                candidateSelect.addClass("selector");
                 var arr = returnSelectedApplications()
                 settings.totalApplicationsCount = arr.length;
                 settings.bulkActionsDropdown.find(".bulkCheckInput input").attr("disabled", false);
@@ -900,6 +904,7 @@ function candidateList() {
                 settings.applicationsCount.text(arr.length + " candidates selected");
                 settings.bulkActionContainer.attr("data-type-request", "bulkRequest").removeClass("hidden")
             } else {
+                var candidateSelect = jQuery(".candidate-select")
                 jQuery(this).closest(".candidate-select").removeClass("selected");
                 var el = $(".candidateListing[data-status-attribute='"+settings.status+"']").find(".candidate-select input:checked")
                 var applicationId =  $(this).closest(settings.candidateRowClass).attr("data-application-id")
@@ -912,8 +917,9 @@ function candidateList() {
                 else {
                     settings.secondMassActionContainer.addClass("hidden")
                     settings.bulkActionContainer.addClass("hidden")
-
+                    candidateSelect.removeClass('selector')
                 }
+              
             }
         })
         settings.rowContainer.on('click', settings.candidateCheckboxLabelClass, function(event) {
@@ -1338,6 +1344,7 @@ function candidateList() {
         showDropdownTags: showDropdownTags,
         onClickDeleteTag: onClickDeleteTag,
         removeTag: removeTag,
+       
         appendCandidateTag: appendCandidateTag
     }
 }

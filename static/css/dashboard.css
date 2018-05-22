@@ -900,9 +900,6 @@ body.posf {
   100% {
     opacity: 0; } }
 
-img {
-  object-fit: cover; }
-
 a {
   text-decoration: none; }
 
@@ -1670,6 +1667,7 @@ span.sticker {
           vertical-align: middle; }
           .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-image img {
             border-radius: 50%;
+            object-fit: cover;
             width: 33px;
             height: 33px;
             border: 1px solid #dedcdc;
