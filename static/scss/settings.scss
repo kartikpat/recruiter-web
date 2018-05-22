@@ -259,16 +259,17 @@
                             }
 
                             p.describer {
-                                margin-top: 10px;
+                                margin-top: 15px;
                                 margin-left: 35px;
                                 color: $extra-info-color;
                                 font-size: $base-font-size;
                                 border-bottom: 1px solid $border-color-base;
                                 padding-bottom: 30px;
-
+                                display: inline-block;
+                                vertical-align: middle;
                                 &.no-border {
                                     border: 0;
-                                    padding-bottom: 5px;
+                                    // padding-bottom: 5px;
                                 }
                             }
                         }
@@ -519,3 +520,4 @@
     font-size: 11px;
     color: #ad3030;
 }
+

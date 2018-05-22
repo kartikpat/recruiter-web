@@ -507,7 +507,7 @@ label {
   background-position: left center; }
 
 .radio-input input:checked + label {
-  background-image: url("/static/images/checkbox.png"); }
+  background-image: url("/static/images/checked_radio.svg"); }
 
 .check-input input {
   display: none; }
@@ -524,7 +524,7 @@ label {
   background-position: left 2px center; }
 
 .check-input input:checked + label {
-  background-image: url("/static/images/checkbox.png"); }
+  background-image: url("/static/images/checked_radio.svg"); }
 
 span.sticker {
   display: inline-block;
@@ -869,7 +869,6 @@ span.sticker {
   clear: both;
   margin: 0;
   padding: 30px;
-  padding-left: 3%;
   width: 100%;
   background: #f3fbfb; }
   .premium_job_section .premium-section-content {

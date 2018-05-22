@@ -304,6 +304,7 @@
 					max-height:calc(100% - 150px);
 					overflow:auto;
 					height: 100%;
+					-webkit-overflow-scrolling-webkit- : touch; /* Lets it scroll lazy */
 				}
 
 				#mssgContainer {

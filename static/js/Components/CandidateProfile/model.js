@@ -299,7 +299,7 @@ function Candidate() {
                     var toMon = getMonthName(anObj["exp"]["to"]["month"]);
                     var fromYear = anObj["exp"]["from"]["year"];
                     var toYear = anObj["exp"]["to"]["year"];
-                    var str = (anObj["is_current"]) ? fromMon + " - " + fromYear + " to Present": fromMon + " - " + fromYear + " to " + toMon + " - " + toYear;
+                    var str = (anObj["is_current"]) ? fromMon + ", " + fromYear + " to Present": fromMon + ", " + fromYear + " to " + toMon + ", " + toYear;
                 }
                 item.tenure.text(str);
                 if(index != aData["jobs"].length - 1)
@@ -752,9 +752,9 @@ function Candidate() {
     }
 
     function changeInviteText(applicationId) {
-        $(".candidateDetailsModal[data-application-id="+applicationId+"] .interviewinvite").text("Interview Invite Sent!")
+        $(".candidateDetailsModal[data-application-id="+applicationId+"] .interviewinvite").text("Interview Invite Sent")
         $(".candidateDetailsModal[data-application-id="+applicationId+"] .inviteText").removeClass("underline").addClass("non-underline")
-        $(".candidateDetailsModal[data-application-id="+applicationId+"] .interviewinvite").text("Interview Invite Sent!")
+        $(".candidateDetailsModal[data-application-id="+applicationId+"] .interviewinvite").text("Interview Invite Sent")
         $(".candidateDetailsModal[data-application-id="+applicationId+"] .inviteText").removeClass("underline").addClass("non-underline")
     }
 

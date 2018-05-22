@@ -364,7 +364,7 @@ function candidateList() {
         }
         item.element.attr("data-status", status)
         if(aData["invite"]) {
-            item.interviewinvite.text("Resend Interview Invite.")
+            item.interviewinvite.text("Resend Interview Invite")
         }
         // var tagStr = '';
         // $.each(aData["tags"],function(index, aTag) {
@@ -393,7 +393,7 @@ function candidateList() {
                     var toMon = getMonthName(anObj["exp"]["to"]["month"]);
                     var fromYear = anObj["exp"]["from"]["year"];
                     var toYear = anObj["exp"]["to"]["year"];
-                    var str = (anObj["is_current"]) ? fromMon + " , " + fromYear + " to Present": fromMon + " , " + fromYear + " to " + toMon + " , " + toYear;
+                    var str = (anObj["is_current"]) ? fromMon + ", " + fromYear + " to Present": fromMon + ", " + fromYear + " to " + toMon + ", " + toYear;
                 }
 
                 item.tenure.text(str);
@@ -1170,9 +1170,9 @@ function candidateList() {
 
     function changeInviteText(applicationId) {
 
-        settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .interviewinvite").text("Interview Invite Sent!")
+        settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .interviewinvite").text("Interview Invite Sent")
         settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .inviteText").removeClass("underline").addClass("non-underline")
-        $(".candidateRow[data-application-id="+applicationId+"] .interviewinvite").text("Interview Invite Sent!")
+        $(".candidateRow[data-application-id="+applicationId+"] .interviewinvite").text("Interview Invite Sent")
         $(".candidateRow[data-application-id="+applicationId+"] .inviteText").removeClass("underline").addClass("non-underline")
     }
 

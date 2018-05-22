@@ -507,7 +507,7 @@ label {
   background-position: left center; }
 
 .radio-input input:checked + label {
-  background-image: url("/static/images/checkbox.png"); }
+  background-image: url("/static/images/checked_radio.svg"); }
 
 .check-input input {
   display: none; }
@@ -524,7 +524,7 @@ label {
   background-position: left 2px center; }
 
 .check-input input:checked + label {
-  background-image: url("/static/images/checkbox.png"); }
+  background-image: url("/static/images/checked_radio.svg"); }
 
 span.sticker {
   display: inline-block;
@@ -947,15 +947,16 @@ span.sticker {
           .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container .radio-option label {
             font-size: 16px; }
           .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container .radio-option p.describer {
-            margin-top: 10px;
+            margin-top: 15px;
             margin-left: 35px;
             color: #808080;
             font-size: 14px;
             border-bottom: 1px solid #e8e8e8;
-            padding-bottom: 30px; }
+            padding-bottom: 30px;
+            display: inline-block;
+            vertical-align: middle; }
             .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container .radio-option p.describer.no-border {
-              border: 0;
-              padding-bottom: 5px; }
+              border: 0; }
         .page-content .settings-page .settings-body .settings-section .settings-section-content .group-container.plan-container .plan-section h3 {
           clear: both;
           font-size: 16px;

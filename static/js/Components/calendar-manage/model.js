@@ -33,6 +33,7 @@ function Manage() {
     }
 
     function cloneRow(data){
+        console.log(data)
         if(data.length==0){
             settings.wrapperConatiner.removeClass('hidden');
             $('.container').addClass('hidden');
@@ -42,7 +43,7 @@ function Manage() {
         var data = sortArrayOfObjectsByKeyDescending(data, "timestamp");
         data.forEach(function(aRow){
             var calendarRow =  settings.calendarRowPrototype.clone().removeClass('prototype hidden');
-            calendarRow.find(settings.rowDate).text(moment(aRow.timestamp).format('MMM DD,YYYY'));
+            calendarRow.find(settings.rowDate).text(moment(aRow.timestamp).format('MMM DD, YYYY'));
             calendarRow.find(settings.rowName).text(aRow.name).attr("href","/calendar/"+aRow["id"]+"/edit");
             var left = (aRow['left'] >100) ? "100+" : aRow['left'];
             calendarRow.find(settings.rowSlots).text(left);
