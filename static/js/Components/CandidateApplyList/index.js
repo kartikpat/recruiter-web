@@ -621,7 +621,7 @@ jQuery(document).ready( function() {
         }
         else {
             if(arr.length<1){
-                toastNotify(3, "Please select candidates for this action");
+                toastNotify(3, "Please select at least 1 candidate");
                 return false;
             }
             parameters.applicationId = arr.toString();
@@ -654,7 +654,7 @@ jQuery(document).ready( function() {
                 return toastNotify(3, "You can't download more than 100 resumes at a time.")
             }
             if(arr.length<1){
-                return toastNotify(3, "Please select candidates for this action");
+                return toastNotify(3, "Please select at least 1 candidate");
             }
             data.applicationId = arr.toString()
             // parameters.oldStatus = globalParameters.status
@@ -701,7 +701,7 @@ jQuery(document).ready( function() {
         }
         else {
             if(applicationIds.length<1){
-                return toastNotify(3, "Please select candidates for this action");
+                return toastNotify(3, "Please select at least 1 candidate");
             }
             data.applicationId = applicationIds
             parameters.oldStatus = globalParameters.status

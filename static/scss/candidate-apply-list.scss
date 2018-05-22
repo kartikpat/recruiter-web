@@ -495,7 +495,11 @@ input::-webkit-input-placeholder {
                                     &.selected {
                                         display:inline-block;
                                         background-color:transparent;
-                                    }
+									}
+									&.selector{
+										display:inline-block;
+                                        background-color:transparent;
+									}
                                 }
 
 							    &:hover {

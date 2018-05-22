@@ -496,7 +496,7 @@ label {
   background-position: left 2px center; }
 
 .check-input input:checked + label {
-  background-image: url("/static/images/checked_radio.svg"); }
+  background-image: url("/static/images/checkbox.png"); }
 
 span.sticker {
   display: inline-block;
@@ -1029,7 +1029,7 @@ span.sticker {
       max-height: 100%;
       outline: none;
       padding: 16px 10px;
-      overflow-y: hidden;
+      overflow-y: auto;
       font-size: 14px; }
     .wrap .container .form .message .error-border {
       border-color: #ad3030; }

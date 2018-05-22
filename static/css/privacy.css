@@ -496,7 +496,7 @@ label {
   background-position: left 2px center; }
 
 .check-input input:checked + label {
-  background-image: url("/static/images/checked_radio.svg"); }
+  background-image: url("/static/images/checkbox.png"); }
 
 span.sticker {
   display: inline-block;
@@ -1237,9 +1237,6 @@ body.posf {
   100% {
     opacity: 0; } }
 
-img {
-  object-fit: cover; }
-
 a {
   text-decoration: none; }
 
@@ -1884,7 +1881,7 @@ label {
   background-position: left 2px center; }
 
 .check-input input:checked + label {
-  background-image: url("/static/images/checked_radio.svg"); }
+  background-image: url("/static/images/checkbox.png"); }
 
 span.sticker {
   display: inline-block;
@@ -2007,6 +2004,7 @@ span.sticker {
           vertical-align: middle; }
           .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-image img {
             border-radius: 50%;
+            object-fit: cover;
             width: 33px;
             height: 33px;
             border: 1px solid #dedcdc;
@@ -2857,7 +2855,7 @@ label {
   background-position: left 2px center; }
 
 .check-input input:checked + label {
-  background-image: url("/static/images/checked_radio.svg"); }
+  background-image: url("/static/images/checkbox.png"); }
 
 span.sticker {
   display: inline-block;

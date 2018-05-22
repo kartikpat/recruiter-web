@@ -24,7 +24,7 @@ $(document).ready(function() {
 			document.getElementById("login").disabled=false;
 			return window.location = callbackUrl
 	    }
-		debugger
+		// debugger
 		window.location = staticEndPoints.dashboard;
 		document.getElementById("login").disabled=false;
 	}
