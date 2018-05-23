@@ -60,7 +60,7 @@ $(document).ready(function(){
 			extraParameters.type = "pic-profile";
 			return updateRecruiterProfile(recruiterProfile.getPic(), recruiterId,extraParameters);
 		}
-		return toastNotify(3, "Please choose a file")
+		return toastNotify(3, "Please choose a file of Max size of 800K")
 	})
 
 

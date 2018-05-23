@@ -20,6 +20,7 @@ function BookedSlots() {
 		settings.noInterviewView=$('.empty-view'),
 		settings.tableRowShell = $(".slotDate.shell");
 		settings.loaderOverlay = $("#loaderOverlay");
+		settings.candidateSendMessageButton='.candidateSendMessage',
 		settings.date = ""
 		settings.inviteId = '';
 		settings.calendarId = '';
@@ -111,6 +112,8 @@ function BookedSlots() {
 	}
 
 	function createElement(aData, index) {
+		console.log("..........................")
+		console.log(aData)
 		var item = cloneElement();
 		item.element.attr("data-application-id", aData["applicationId"]);
 		item.element.attr("data-invite-id", aData["id"]);
@@ -295,6 +298,14 @@ function BookedSlots() {
 			})
 		}
 	}
+
+	// function onClickSendMessage(fn) {
+    //     settings.bookedSlots.on('click', settings.candidateSendMessageButton,function(event) {
+    //         var candidateId = $(this).closest(settings.candidateRowClass).attr("data-candidate-id")
+    //         var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
+    //         fn(candidateId, applicationId);
+    //     });
+    // }
 
 
 	return {

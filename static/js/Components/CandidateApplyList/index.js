@@ -251,7 +251,6 @@ jQuery(document).ready( function() {
         var candidate = store.getCandidateFromStore(applicationId);
         var array = [];
         array.push(candidate);
-
         cloneStickyChat(array, recruiterId, jobId, applicationId)
     })
 
