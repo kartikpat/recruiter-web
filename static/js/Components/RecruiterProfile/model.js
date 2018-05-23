@@ -339,9 +339,11 @@ function Profile(){
 		settings.uploadPic.click(fn)
 	}
 
-	function validatePic() {
+	function validatePic(){
 		if(settings.fileUpload[0].files[0] != undefined) {
-			return true
+			if(settings.fileUpload[0].files[0].size<80000){
+				return true
+			}
 		}
 		return false
 	}

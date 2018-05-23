@@ -1,7 +1,7 @@
 // Toggle Select field to be active/inactive
-// jQuery(".select-dropdown").on('click', function() {
-//   jQuery(this).toggleClass('inactive');
-// })
+jQuery(".select-dropdown").on('click', function() {
+  jQuery(this).toggleClass('inactive');
+})
 
 jQuery(".course-option").on('click', function() {
 	jQuery(this).toggleClass("active");
@@ -17,7 +17,7 @@ jQuery(".pill-button input").on('focus', function() {
 });
 
 jQuery(".pill-button input").on('blur', function(){
-	// jQuery(this).val("");
+	jQuery(this).val("");
 	jQuery(this).parent().addClass("inactive");
 	jQuery(this).attr("placeholder", jQuery(this).attr("data-placeholder-value"));
 });
