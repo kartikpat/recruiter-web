@@ -1132,11 +1132,17 @@
 
 								</div>
 							</div>
-							<div class="formgroup">
+							<div class="formgroup credits-container-distribute">
 								<div class="save-container">
 									{{> spinner}}
-									<span class="button green submit distribute-credits" id="credits-distribute">Distribute Credits</span>
+									<span class="button green submit distribute-credits " id="credits-distribute">Distribute Credits</span>
 								</div>
+							</div>
+							<div class="first-fold fold top ">
+								<div class="save-container">
+										{{> spinner}}
+										<span class="button green submit distribute-credits" id="credits-distribute">Distribute Credits</span>
+								</div>		
 							</div>
 						</div>
 					</div>
@@ -1150,19 +1156,25 @@
 
 {{>footer}}
 <div class="content-row creditsContentsRow prototype hidden" id="">
+	<div class="columnmob team-mem">Team Member:</div>
 	<div class="column team-mem">
 		<div class="mem-img left">
 			<img class="memImg" src="https://www.placehold.it/100x100/f5f5f5?text=+" alt="">
 		</div>
+	
 		<div class="mem-info right">
 			<div class="memName">Shreya</div>
 			<div class="memDes">Manager</div>
 			<div class="memOrg">IImjobs.com</div>
 		</div>
 	</div>
+	<div class="columnmob ttl-cre">Total Credits:</div>
 	<div class="column ttl-cre  totalCredits">5</div>
+	<div class="columnmob rem-cre">Remaining Credits:</div>
 	<div class="column rem-cre remainingCredits">5</div>
+	<div class="columnmob use-cre">Used Credits:</div>								
 	<div class="column use-cre usedCredits">5</div>
+	<div class="columnmob add-cre">Add Credits:</div>
 	<div class="column add-cre">
 		<input type="number" class="addCredit" min="0" value="0" >
 		<span class="cancelTeamMember">
