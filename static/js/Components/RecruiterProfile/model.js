@@ -62,7 +62,7 @@ function Profile(){
 			settings.premiumDetail = $("#premiumDetail")
 			settings.type = "profile"
 			settings.settingsBody = $(".settingsBody")
-			settings.distributeCreditsButton=$('#credits-distribute')
+			settings.distributeCreditsButton=$('.distribute-credits')
 			settings.creditRowPrototype=$('.creditsContentsRow')
 			settings.memberName='.memName'
 			settings.memberDes='.memDes'
