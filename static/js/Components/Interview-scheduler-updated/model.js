@@ -524,6 +524,7 @@ function Calendar(){
     }
 
     function validate(){
+        debugger
 		if(!((settings.name.val()).trim())){
             console.log("fail");
 			settings.name.next('.error').text(errorResponses['missingName']);
@@ -660,7 +661,7 @@ function Calendar(){
             console.log(toDayOfWeek)
 
             if(numberOfWeeks>0)
-                return true;
+                return false;
             for(var k=0;k<timetable.slots.length;k++){
                 var dayOfWeek = timetable.slots[k].day;
                 dayOfWeek = parseInt(dayOfWeek);
@@ -689,6 +690,7 @@ function Calendar(){
                 },200);
                 return true;
             }
+            
         }
     }
 

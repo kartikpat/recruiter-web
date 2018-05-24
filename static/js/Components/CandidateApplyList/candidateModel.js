@@ -696,7 +696,6 @@ function Candidate() {
         });
         settings.candidateDetailsModal.on('click', settings.candidateAddTagButtonClass,function(event) {
             event.stopPropagation();
-            debugger
             var tagName = ($(settings.candidateTagInputClass).val()).trim();
             if(!tagName) {
                 $(settings.candidateTagInputClass).addClass("error-border");
