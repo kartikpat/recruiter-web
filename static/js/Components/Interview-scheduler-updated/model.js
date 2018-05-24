@@ -124,6 +124,7 @@ function Calendar(){
         }
         if($('#radio-button-end').prop("checked")==true){
 
+
             toDate=$('#end_date').datepicker().val();
             toDate=$('#end_date').val();
         }
@@ -141,9 +142,7 @@ function Calendar(){
                     $("#"+id+ "").css("opacity","1");
                 }
                 var startvalue=$("#"+id+ "").find(settings.start_time).val();
-
                 startTimeMapper(id)
-                
                 var endvalue=$("#"+id+ "").find(settings.end_time).val();
                 endTimeMapper(id)
                 
@@ -644,21 +643,46 @@ function Calendar(){
         var dowFrom = fromDate.day();
         var toDate=moment(timetable.date.to)
         var dowTo   =toDate.day();
+        var fromDayOfWeek = fromDate.day();
+        var toDayOfWeek = toDate.day();
+        if(fromDayOfWeek==0)
+            fromDayOfWeek =7;
+        if(toDayOfWeek ==0)
+            toDayOfWeek =7;
         var flag=0;
         if(dowTo==0){
             dowTo=7;
         }
         if(!(timetable.date.to=="0000-00-00")){
+            
+            var numberOfWeeks = toDate.diff(fromDate, 'weeks');
+            console.log(fromDayOfWeek)
+            console.log(toDayOfWeek)
 
+            if(numberOfWeeks>0)
+                return true;
             for(var k=0;k<timetable.slots.length;k++){
-                if((timetable.slots[k].day<dowFrom)){
-                   if((timetable.slots[k].day<=dowTo) && dowTo<dowFrom)
-                    flag++
+                var dayOfWeek = timetable.slots[k].day;
+                dayOfWeek = parseInt(dayOfWeek);
+                if(fromDayOfWeek > toDayOfWeek && (dayOfWeek>= fromDayOfWeek || dayOfWeek <= toDayOfWeek ) ){
+                    flag++;
                 }
-                if((timetable.slots[k].day>=dowFrom)){
-                    flag++
+                else if(fromDayOfWeek <= toDayOfWeek && (dayOfWeek >= fromDayOfWeek && dayOfWeek <= toDayOfWeek )){
+                    flag++;
                 }
+                
+                // if((timetable.slots[k].day<dowFrom)){
+                //    if((timetable.slots[k].day<=dowTo) && dowTo<dowFrom){
+                //    debugger 
+                //    flag++
+                //    }
+                // }
+                // if((timetable.slots[k].day>=dowFrom && timetable.slots[k])){
+                //     debugger
+                //     flag++
+                // }
             }
+            console
             if(flag==0){
                 settings.slots.find('.error').text(errorResponses['missingDateSlot']);
                 $('html, body').animate({
