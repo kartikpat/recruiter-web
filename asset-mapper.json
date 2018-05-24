@@ -2020,9 +2020,7 @@
                 "static/build/js/Interview-scheduler-updated.min.js"
             ]
         }
-
 	},
-	
     "calendarIe": {
         "styles": {
             "debug" : [
@@ -2033,7 +2031,12 @@
 				"static/css/fullcalendar.css",
 				"static/css/old-header.css",
 				"static/css/vendor/medium-editor.min.css",
+<<<<<<< HEAD
                 "static/css/calendarIe.css"
+=======
+                "static/css/Interview-scheduler-updated.css",
+				"static/css/interview-scheduler-updated-ie.css"
+>>>>>>> feature/calendar-ie
             ],
             "prod":[
                 "static/build/css/Interview-scheduler-updated.min.css"
@@ -2041,6 +2044,7 @@
         },
         "scripts": {
             "debug": [
+				"static/js/Utilities/ie-polyfill.js",
 				"static/js/vendor/moment.min.js",
 				"static/js/vendor/jquery-1.9.1.min.js",
 				"static/js/vendor/jquery-ui.min.js",
@@ -2053,19 +2057,17 @@
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Utilities/request.js",
-				"static/js/Services/submitCalendar.js",
-				"static/js/Services/fetchCalendars.js",
+				"static/js/Services/submitCalendarIe.js",
+				"static/js/Services/fetchCalendarsIe.js",
 				"static/js/Tracker/tracker.js",
                 "static/js/Components/calendarIe/index.js",
                 "static/js/Components/calendarIe/model.js",
-				
 				"static/js/eventMapping.js"
             ],
             "prod" : [
                 "static/build/js/Interview-scheduler-updated.min.js"
             ]
         }
-
     },
     "booked-slots": {
         "styles": {
@@ -2108,7 +2110,6 @@
 				"static/js/Components/BookedSlots/index.js",
 				"static/js/Tracker/tracker.js",
 				"static/js/eventMapping.js"
-
             ],
             "prod" :[
                 "static/build/js/ui-Calendar.min.js"
@@ -2159,7 +2160,6 @@
 	"dashboardview": {
         "styles": {
             "debug" : [
-
                 "static/css/header.css",
                 "static/css/dashboardview.css",
                 "static/css/footer.css",
@@ -2238,7 +2238,7 @@
         },
         "scripts": {
             "debug": [
-			
+
 			],
             "prod" :[
 				"static/js/header.js",
