@@ -903,7 +903,7 @@ module.exports = function(settings){
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
- 		 baseDomainName: baseDomainName,
+ 		    baseDomainName: baseDomainName,
 			oldCookieValue: oldCookieValue,
 			jobseekerCookie: config['jobseekerCookie']
 

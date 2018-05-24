@@ -93,6 +93,7 @@ function candidateList() {
         backToTop()
         // onEnter()
         settings.rowContainer.on('click', '.moreEducationLink', function(){
+            $('div').animate({scrollTop: 1000});
             var eventObj = {
                 event_category: eventMap["viewCandidProfile"]["cat"],
                 event_label: 'origin=CandidateApplyList,type=MoreEducation,recId='+recruiterId+''
@@ -101,11 +102,15 @@ function candidateList() {
         })
 
         settings.rowContainer.on('click', '.moreExperience', function(){
+            $('div').animate({scrollTop: 500});
             var eventObj = {
                 event_category: eventMap["viewCandidProfile"]["cat"],
                 event_label: 'origin=CandidateApplyList,type=MoreExperience,recId='+recruiterId+''
             }
+           
             sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
+            
+           
         })
 
         $(window).click(function(event) {

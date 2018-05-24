@@ -594,7 +594,7 @@ var errorResponses = {
         var end_date=moment(end_date);
     
         if(end_date.isBefore(start_date)){
-            settings.radioInput.next('.error').text("Start Date should not be greater than end date");
+            settings.radioInput.next('.error').text("End date can not be less than the current date");
             $('html, body').animate({
                 scrollTop: (settings.radioInput.offset().top)
             },200);
