@@ -7,6 +7,7 @@ $(document).ready(function() {
 	})
 
 	function onSuccessfulResendInvite(topic, data) {
+		// debugger
 		userResnd.changeText()
 	}
 
