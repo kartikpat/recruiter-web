@@ -1,4 +1,6 @@
 function submitCalendarIe(data,calendarId,recruiterId){
+	console.log("herere")
+	console.log(data)
 	postRequest("/recruiter/"+recruiterId+"/calendar/"+calendarId,{
 		"Content-Type": "application/json",
 	}, JSON.stringify(data), function(res){

@@ -41,6 +41,8 @@
         color: #2b2b2b; }
         .hdr .righthdr .newrtoption .newposrel span {
           color: #2b2b2b; }
+          .hdr .righthdr .newrtoption .newposrel span img {
+            width: 10%; }
         .hdr .righthdr .newrtoption .newposrel a {
           font-size: 12px;
           color: #666; }

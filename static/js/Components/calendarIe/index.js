@@ -57,16 +57,17 @@ $(document).ready(function(){
     }
 
     function onFailedFetchCalendar(topic,data){
+      
         alert(res.status);
     }
 
     function onSuccessfulSubmitCalendar(topic, data){
-
         spinner();
         window.location=staticEndPoints.manageCalendar
     }
 
 	function onFailedSubmitCalendar(topic, data){
+        console.log("failedSuccess");
         togglespinner();
 		// calendarDetails.errorHandler(data);
     }
