@@ -652,11 +652,20 @@ function Calendar(){
         }
         if(!(timetable.date.to=="0000-00-00")){
             for(var k=0;k<timetable.slots.length;k++){
-                if(timetable.slots[k].day<dowFrom || timetable.slots[k].day>dowTo){
-                    flag++;
+                console.log(dowFrom)
+                console.log(dowTo)
+                console.log(timetable.slots[k].day)
+                console.log("......................................")
+                console.log(flag)
+                if((timetable.slots[k].day<dowFrom)){
+                   if((timetable.slots[k].day<=dowTo) && dowTo<dowFrom)
+                    flag++
+                }
+                if((timetable.slots[k].day>=dowFrom)){
+                    flag++
                 }
             }
-            if(flag==timetable.slots.length){
+            if(flag==0){
                 settings.slots.find('.error').text(errorResponses['missingDateSlot']);
                 $('html, body').animate({
                     scrollTop: (settings.slots.closest('.second-container').offset().top)
