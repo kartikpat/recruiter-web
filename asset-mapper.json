@@ -2235,6 +2235,7 @@
         },
         "scripts": {
             "debug": [
+				"static/js/Utilities/ie-polyfill.js",
 				"static/js/vendor/moment.min.js",
 				"static/js/vendor/jquery-1.9.1.min.js",
 				"static/js/vendor/jquery-ui.min.js",
@@ -2244,12 +2245,13 @@
 				"static/js/Utilities/modal.js",
 				"static/js/Utilities/toastNotifier.js",
 				"static/js/header.js",
+				"static/js/Utilities/request.js",
+				"static/js/Services/verifyLoginIe.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/header.js",
-				"static/js/Components/TransitionIe/model.js",
-				"static/js/Services/verifyLogin.js"
-            ],
+				"static/js/Components/TransitionIe/model.js"
+			],
             "prod" :[
                 "static/build/js/calendar.min.js"
             ]

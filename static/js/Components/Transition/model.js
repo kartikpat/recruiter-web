@@ -15,11 +15,13 @@ $(document).ready(function(){
       },2000);
 
     function onSuccessVerifyLogin(topic, data){
+        console.log("success")
          Set_Cookie(jobseekerCookieName, '',1, "/", baseDomainName);
     	window.location.href = staticEndPoints.dashboard;
     }
 
     function onFailVerifyLogin(topic, data){
+        console.log("fail")
         Set_Cookie(oldCookieName, '',1, "/", baseDomainName);
         window.location.href = staticEndPoints.landing;
         return
@@ -34,7 +36,7 @@ $(document).ready(function(){
 
     var verifyLoginSubscription = pubsub.subscribe("loginVerifySuccess", onSuccessVerifyLogin)
     var verifyLoginSubscription = pubsub.subscribe("loginVerifyFail", onFailVerifyLogin)
-    
+
     verifyLogin(oldCookieValue);
 
 });

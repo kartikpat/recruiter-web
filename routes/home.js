@@ -39,7 +39,7 @@ module.exports = function(settings){
 		// bypassing the auth for development
     	// CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     	// you can do this however you want with whatever variables you set up
-		
+
     	if(!(req.cookies[config['oldCookie']] && req.cookies[config['oldCookie']]!='undefined')){
 			return res.redirect("/login");
 		}
@@ -94,13 +94,13 @@ module.exports = function(settings){
 
 		}
 		if(req.cookies[config['oldCookie']]){
-			return res.redirect('/transition');
+			return res.redirect('/transition?callbackUrl='+req.originalUrl);
 		}
 		// IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
 		if(req.originalUrl == "/login") {
 			return next()
 		}
-		return res.redirect('/login?callbackUrl='+req.originalUrl+'');
+		return res.redirect('/login?callbackUrl='+req.originalUrl);
 
 	}
 
@@ -758,14 +758,17 @@ module.exports = function(settings){
 		return
 	});
 
-	app.post("/transition", function(req, res){
-		const oldCookie=req.cookies[config['oldCookie']];
-		
+	app.post("/recruiter/login/verify", function(req, res){
+		const oldCookie=req.cookies[config['oldCookie']]
+		const accessToken = req.cookies[config["cookie"]];
 		var options = { method: 'POST',
 		  url: baseUrl+"/recruiter/login/verify",
 		  headers: {
 			'Authorization': 'Bearer '+ accessToken,
 			'Content-Type': 'application/json'
+			},
+			body: {
+				'oldCookie': oldCookie
 			},
 		  json: true
 		};
@@ -778,9 +781,9 @@ module.exports = function(settings){
 				return res.json(body);
 			}
 			else {
-				return res.json(response);
+				return res.json(jsonBody);
 			}
-			return res.json(response);
+			return res.json(jsonBody);
 		});
 	});
 
@@ -818,14 +821,14 @@ module.exports = function(settings){
 				return res.json(body);
 			}
 			else {
-				return res.json(response);
+				return res.json(jsonBody);
 			}
-			return res.json(response);
+			return res.json(jsonBody);
 		});
 	});
 
 	app.post("/recruiter/:recruiterId/calendar/:calendarId", function(req, res){
-	
+
 		const recruiterId = req.params.recruiterId,
 			  calendarId = req.params.calendarId
 
@@ -859,9 +862,9 @@ module.exports = function(settings){
 				return res.json(body);
 			}
 			else {
-				return res.json(response);
+				return res.json(jsonBody);
 			}
-			return res.json(response);
+			return res.json(jsonBody);
 		});
 	})
 
@@ -1072,10 +1075,10 @@ module.exports = function(settings){
 				pubnub:"disable",
 				baseDomainName: baseDomainName,
 				oldCookieValue: oldCookieValue,
-				jobseekerCookie: config['jobseekerCookie']
-	
+				jobseekerCookie: config['jobseekerCookie'],
+				headerRequired: true
 			});
-			return	
+			return
 		}
 		res.render("transition", {
 			title:"iimjobs.com",

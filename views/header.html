@@ -7,7 +7,9 @@
 	<title class="titlePage">{{title}}</title>
 
 	<link href="../../static/css/chat-sticky.css" rel="stylesheet">
-	<!-- <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script> -->
+	{{#headerRequired}}
+		<script src="../../static/js/Utilities/ie-polyfill.js"></script> 
+	{{/headerRequired}}
 	<script src="/static/js/Tracker/googleTrackerSnippet.js"></script>
 	{{#styles.length}}
     	{{#styles}}
@@ -128,7 +130,7 @@
 							</div>
 						</div>
 					</li>
-					
+
 					{{#profile.showSearch}}
 						<li class="menu-list-item search-resume"><a class="header-links">Search Resume</a></li>
 					{{/profile.showSearch}}
