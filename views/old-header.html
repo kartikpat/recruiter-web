@@ -1,5 +1,96 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html> <!--<![endif]-->
+<head>
+	<title class="titlePage">{{title}}</title>
 
-{{>header}}
+	<link href="../../static/css/chat-sticky.css" rel="stylesheet">
+
+	<script src="/static/js/Tracker/googleTrackerSnippet.js"></script>
+	{{#styles.length}}
+    	{{#styles}}
+    		<link rel="stylesheet" href="/{{.}}">
+    	{{/styles}}
+	{{/styles.length}}
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa|Droid+Sans:400,700|Noto+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="/static/css/animate.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="../../static/js/Utilities/ie-polyfill.js"></script> 
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118561725-1"></script>
+
+	<script type="text/javascript">
+		var baseUrl = '{{baseUrl}}';
+		var baseUrl_local='{{baseUrl_local}}'
+		var userID = '{{userID}}';
+		var jobID = '{{jobID}}';
+		var baseDomain = '{{baseDomain}}';
+		var baseUrlJob = '{{baseUrlJob}}';
+		var jobId = '{{jobId}}';
+		var calendarId= '{{calendarId}}';
+		var hiddenclass='{{hiddenClass}}';
+		var hiddenLoader='{{hiddenLoader}}';
+		var recruiterId= '{{profile.id}}';
+		var cookieName = '{{cookie}}';
+		var oldCookieName = '{{oldCookie}}';
+		var oldCookieValue = '{{oldCookieValue}}';
+		var baseDomainName = '{{baseDomainName}}';
+		var profile  = {
+			name: '{{profile.name}}',
+			email: '{{profile.email}}',
+			availableCredits: '{{profile.availableCredits}}',
+			organisation: '{{profile.organisation}}',
+			phone: '{{profile.phone}}',
+			about: '{{profile.about}}',
+			wurl: '{{profile.wurl}}',
+			turl: '{{profile.turl}}',
+			furl: '{{profile.furl}}',
+			lurl: '{{profile.lurl}}',
+			designation: '{{profile.designation}}',
+			rurl: '{{profile.rurl}}',
+			img_link: '{{profile.img_link}}',
+			location: '{{profile.location}}',
+			notificationEmail: '{{profile.notificationEmail}}',
+			search: '{{profile.search}}',
+			bulk: '{{profile.bulk}}',
+			excel: '{{profile.excel}}',
+			recruiterType: '{{profile.type}}',
+			linkedin:'{{profile.type}}'
+		}
+		var applicationId= '{{applicationId}}'
+		var uuid = '{{uuid}}'
+		var token = '{{token}}'
+		var origin = '{{origin}}'
+		var oldCookie = '{{oldCookie}}'
+		var staticEndPoints = {
+			myJobs: '{{staticEndPoints.myJobs}}',
+			landing: '{{staticEndPoints.landing}}',
+			dashboard: '{{staticEndPoints.dashboard}}',
+			recruiterProfile: '{{staticEndPoints.recruiterProfile}}',
+			about: '{{staticEndPoints.about}}',
+			contact: '{{staticEndPoints.contact}}',
+			privacy: '{{staticEndPoints.privacy}}',
+			refund: '{{staticEndPoints.refund}}',
+			terms: '{{staticEndPoints.terms}}',
+			postJob: '{{staticEndPoints.postJob}}',
+			viewJob: '{{staticEndPoints.viewJob}}',
+			plans: '{{staticEndPoints.plans}}',
+			savedshortlisted: '{{staticEndPoints.savedshortlisted}}',
+			bookedSlots: '{{staticEndPoints.bookedSlots}}',
+			manageCalendar: '{{staticEndPoints.manageCalendar}}',
+			createCalendar: '{{staticEndPoints.createCalendar}}',
+			globalSearch: '{{staticEndPoints.globalSearch}}',
+			chat: '{{staticEndPoints.chat}}',
+			taggedCand: '{{staticEndPoints.taggedCand}}',
+			reports: '{{staticEndPoints.reports}}',
+			followedUpCand: '{{staticEndPoints.followedUpCand}}'
+		}
+	</script>
+</head>
+<body>
 
 <div class="hdr whitebg">
     <div class="container-fluid myconfield">
@@ -24,7 +115,7 @@
                             <a href="http://qa200.iimjobs.com/recruiter/myprofile.php">
                                 <span class="usim"><img src={{profile.img_link}}></span>
                                 <span class="pdleft5">
-                                 {{profile.email}} 
+                                 {{profile.email}}
                                 </span>
                             </a>
                             <span class="caret"></span>
@@ -34,14 +125,14 @@
                             <ul class="newrtopul">
                                 <li><a href="http://qa200.iimjobs.com/recruiter/myprofile.php">My Profile</a></li>
                                 <li><a href="http://qa200.iimjobs.com/mychat/">My Chat</a></li>
-                                <li><a href="http://qa200.iimjobs.com/recruiter/editprofile.php">Settings / Edit Profile</a></li>  
+                                <li><a href="http://qa200.iimjobs.com/recruiter/editprofile.php">Settings / Edit Profile</a></li>
                                 <li><a href="javascript:void(0);">Basic Posting (Unlimited)</a></li>
                                 <li><a href="javascript:void(0);">Premium Posting ({{profile.availableCredits}})</a></li>
                                 <li><a href="http://qa200.iimjobs.com/recruiter/changepassword.php">Change Password</a></li>
                                 <li><a href="http://qa200.iimjobs.com/recruiter/controller.php?flowtype=5">Logout</a></li>
                             </ul>
                         </div>
-                    </li>    
+                    </li>
                     <li class="posrel visible-xs" style="visibility:hidden;"><span class="filterhor"><span class="glyphicon glyphicon-filter fltr"></span></span></li>
                     <li class="posrel visible-xs"><span class="pophor"><span class="glyphicon glyphicon-user usr"></span></span> </li>
             </ul>
@@ -65,7 +156,7 @@
                         </ul>
                     </div>
                  </li>
-            <li><a href="#">Search Resume Database</a></li>     
+            <li><a href="#">Search Resume Database</a></li>
             <li><a href="javascript:void(0);">More</a>
             <div class="navbarnewhovm">
                 <ul class="navbarnewhovmul">
@@ -79,10 +170,10 @@
                 <li class="postjobs pull-right">
                     <a target="_blank" href="http://qa200.iimjobs.com/recruiter/jobpost.php">
                         <img class="hidden-xs mtop4" src="http://qa200.iimjobs.com/recruiter/resources/images/post-job-btn.png" width="145">
-                        <span class="glyphicon glyphicon-send hidden-lg hidden-md hidden-sm visible-xs">&nbsp; </span> 
+                        <span class="glyphicon glyphicon-send hidden-lg hidden-md hidden-sm visible-xs">&nbsp; </span>
                         <!-- <span class="hidden-lg hidden-md hidden-sm visible-xs">Post Jobs here (Free)</span> -->
                     </a>
-                </li> 
+                </li>
                 <li class="pull-right">
                         <div class="searchboxrecruit mtop5  pdleftright0 posrel">
                             <span class="glyphicon glyphicon-search sercuserserchicon"></span>
@@ -97,4 +188,3 @@
         </div>
     </div>
 </div>
-

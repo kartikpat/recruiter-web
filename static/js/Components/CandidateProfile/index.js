@@ -23,6 +23,7 @@ jQuery(document).ready( function() {
     page();
     var successMsg = getQueryParameter("type");
     var successRef= getQueryParameter("ref");
+
     fetchCandidateProfile(recruiterId, jobId, applicationId)
     submitPageVisit(recruiterId, screenName, jobId);
     var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitSuccess:"+screenName, onPageVisitUpdateSuccess)

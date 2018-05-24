@@ -7,7 +7,7 @@
 .wrap{
     margin: 0 auto;
     width: 100%;
-    max-width: 1500px; 
+    max-width: 1500px;
     min-height: 100%;
         .headings{
             color: $color-label;
@@ -82,7 +82,7 @@
                     text-align: left;
                     margin-bottom: 10px;
                     }
-                .field{    
+                .field{
                     textarea,.medium-editor-element {
                         width:100%;
                         max-width:590px;
@@ -106,7 +106,7 @@
                           //  border-color: $border-color-active;;
                         }
                     }
-                }   
+                }
                 #message{
                     border-radius: 3px;
                     border-style: solid;
@@ -145,7 +145,7 @@
                     text-align: left;
                     margin-bottom: 10px;
                 }
-                .field{    
+                .field{
                     textarea,.medium-editor-element {
                         width:100%;
                         max-width:590px;
@@ -177,7 +177,7 @@
                     color: $error-message-color;
                 }
 
-               
+
             }
         }
 
@@ -192,7 +192,7 @@
                 font-weight: 400;
                 text-align: left;
                 padding-bottom: 10px;
-               
+
             }
 
             .sub_heading{
@@ -203,7 +203,7 @@
                 font-weight: 500;
                 text-align: left;
                 font-weight: bold;
-                
+
                 }
                 p{
                     /* Inline Style */
@@ -255,7 +255,7 @@
         width: 100%;
      //   height: 1261px;
         background-color:  #fcfbfb;
-        display: inline-block;    
+        display: inline-block;
         .available-hours{
             margin-top: 37px;
             margin-left: 28px;
@@ -311,7 +311,7 @@
                         display: inline-block;
                         border-top: none;
                         border-left: none;
-                        #one{ 
+                        #one{
                             font-family: $droid-font;
                             color:  $header-background-color;
                             font-size: 14px;/* Approximation due to font substitution */
@@ -348,9 +348,9 @@
                             display: inline-block;
                         }
                     }
-                    
-                        .dayId{  
-                            opacity: 0.5;  
+
+                        .dayId{
+                            opacity: 0.5;
                           .section{
                             background-color:  #f3fbfb;
                                 width: 136px;
@@ -384,7 +384,7 @@
                                             // font-family: "fontello";
                                             // font-size: 16px;
                                             // content: "\e81d";
-                                        }  
+                                        }
 
                                         #Check-span{
                                             display: none;
@@ -392,10 +392,10 @@
                                             border-color: $calendar-border-color;
                                           //  padding-bottom: 40px;
                                             padding-top: 5px;
-                                        } 
+                                        }
                                 }
                             }
-                          
+
                         .time-section{
                             width: 74.2%;
                             height: 70px;
@@ -418,7 +418,7 @@
                                     span{
                                         display: none!important;
                                         // visibility: hidden!important;
-                                    }       
+                                    }
                                    .select-dropdown ,.select-dropdown-2{
                                     margin-top: 15px;
                                     font-family: inherit;
@@ -438,9 +438,9 @@
                                     -webkit-appearance: none;
                                     -moz-appearance: none;
                                     -o-appearanance: none;
-                                    outline: none; 
+                                    outline: none;
                                     }
-                                   
+
                                 }
                                 .button-container{
                                    display: none;
@@ -536,7 +536,7 @@
                         }
                     }
 
-                    .time-section{      
+                    .time-section{
                         height: 80px;
                         width: 285px;
                         border-style: solid;
@@ -566,10 +566,10 @@
                                         border-color: $page-content-background-color;
                                         -webkit-appearance: none;
                                         -moz-appearance: none;
-                                        -o-appearanance: none; 
+                                        -o-appearanance: none;
                                         outline: none;
                                     }
-                    
+
                             }
                     }
                 }
@@ -594,7 +594,7 @@
                 }
                 .button-prev{
                     position: absolute;
-                    display: inline-block; 
+                    display: inline-block;
                     margin-left: 562px;
                     margin-top: 20px;
                     border-style: solid;
@@ -637,7 +637,7 @@
                 // margin-left: 10px;
                 width: 90%;
                 margin-top: -50px;
-               
+
                 span{
                     font-family:  $droid-font;
                     color:  $header-background-color;
@@ -714,7 +714,7 @@
                 // margin-left: 10px;
                 margin-bottom: 30px;
                 width: 90%;
-               
+
                 span{
                     font-family:  $droid-font;
                     color:  $header-background-color;
@@ -764,9 +764,9 @@
                         input:checked+label {
                             background-image:url('/static/images/checked_radio.svg');
                         }
-                        
-                       
-                        
+
+
+
                     }
 
 
@@ -784,7 +784,7 @@
                         margin-top: 20px;
                         font-size: 14px;
                         padding-left: 10px;
-                       
+
                     }
                     img{
                         margin-left: 20px;
@@ -796,7 +796,7 @@
                 }
 
             }
-        
+
         }
     }
 
@@ -804,7 +804,7 @@
         width: 100%;
         height: 135px;
              .formgroup {
-                .button-wrapper{ 
+                .button-wrapper{
                     border-radius: 4px;
                     text-align: center;
                     -webkit-appearance: none;
@@ -813,7 +813,7 @@
                             -o-appearance: none;
                             border: 0;
                             padding: 0;
-                            margin: 0;  
+                            margin: 0;
                             background: $button-background-color;
                             border-radius: 4px;
                             // padding: 1px 4px;
@@ -837,7 +837,7 @@
                                 -o-appearance: none;
                                 border: 0;
                                 padding: 0;
-                                margin: 0;  
+                                margin: 0;
                                 background: $button-background-color;
                                 font-size: 14px;
                                 display: block;
@@ -848,7 +848,7 @@
                                 display: inline-block;
                                 cursor: pointer;
                                 font-size: 16px;
-                                font-weight: 400;      
+                                font-weight: 400;
                                 border-radius: 4px;
                             }
                             .spinner{
@@ -876,7 +876,7 @@
                 }
 
             }
-        }    
+        }
     }
 }
 
@@ -884,16 +884,16 @@
 
 
 @media only screen and (max-width: 768px){
- .wrap{   
+ .wrap{
        .container{
-                .form{ 
+                .form{
                     .input-name{
                         #name{
                             width: 90%;
                             height: 48px;
                         }
                     }
-                  
+
                     .message{
                         #message{
                              width: 90%;
@@ -907,8 +907,8 @@
 
                         }
                     }
-                    
-                }    
+
+                }
         }
     }
 
@@ -917,7 +917,7 @@
 @media only screen and (max-width: 600px){
     .wrap{
         .second-container{
-            .available-hours{   
+            .available-hours{
                 .Days-available{
                     width: 100%!important;
                     .table{
@@ -926,7 +926,7 @@
                      .D-avail{
                         display: none;
                         }
-                   
+
                     .day{
                         width: 100%;
                         margin-top: 50px;
@@ -944,7 +944,7 @@
                                     font-weight: 400;
                                     line-height: 23px;/* Approximation due to font substitution */
                                     text-align: left;
-                                    transform: scaleX(1.0011);/* width and height properties ommitted due to transform */  
+                                    transform: scaleX(1.0011);/* width and height properties ommitted due to transform */
                                     width: 40%;
                                     padding-top: 20px!important;
                                     padding-bottom: 25px;
@@ -955,6 +955,7 @@
                                 input +label{
                                     margin-left: 52px;
                                 }
+
                             }
                         }
                     }
@@ -984,7 +985,7 @@
                                 padding-top: 15px;
                                 padding-bottom: 15px;
                             }
-                        }   
+                        }
                         .section-one{
                             display: block!important;
                             margin: 0%!important;
@@ -1040,7 +1041,7 @@
                             outline: none;
                         }
                     }
-                }    
+                }
                 .end-date{
                     .section{
                         .input-field{
@@ -1056,11 +1057,11 @@
                             width: 203px;
                             height: 40px;
                             outline: none;
-                           
+
                         }
-                       
+
                     }
-                    
+
                 }
             }
         }
@@ -1071,7 +1072,7 @@
 @media only screen and (max-width: 375px){
     .wrap{
         .second-container{
-            .available-hours{   
+            .available-hours{
                 .Days-available{
                     width: 100%!important;
                     .table{
@@ -1080,7 +1081,7 @@
                      .D-avail{
                         display: none;
                         }
-                   
+
                     .day{
                         width: 100%;
                         margin-top: 20px;
@@ -1097,7 +1098,7 @@
                                     font-weight: 400;
                                     line-height: 23px;/* Approximation due to font substitution */
                                     text-align: left;
-                                    transform: scaleX(1.0011);/* width and height properties ommitted due to transform */  
+                                    transform: scaleX(1.0011);/* width and height properties ommitted due to transform */
                                     width: 40%;
                                     padding-top: 20px!important;
                                     padding-bottom: 25px;
@@ -1122,7 +1123,7 @@
                         button{
                             clear: both;
                             margin-left: 30%;
-                          //  padding-top:10px; 
+                          //  padding-top:10px;
                         }
                         .section-one{
                             display: block!important;
@@ -1179,7 +1180,7 @@
                 }
                 .start-date{
                     .section{
-                       
+
                         .input-field{
                          width: 60%;
                         }
@@ -1198,9 +1199,9 @@
                             width: 183px;
                             height: 40px;
                             outline: none;
-                        }   
+                        }
                     }
-                }    
+                }
                 .end-date{
                     .section{
                         .input-field{
@@ -1214,7 +1215,7 @@
                             input + label {
                                 line-height: 20px;
                             }
-                        } 
+                        }
                         #enddatepicker{
                             border-radius: 3px;
                             border-style: solid;
@@ -1226,7 +1227,6 @@
                             height: 40px;
                             outline: none;
                         }
-                
                     }
                 }
             }
@@ -1241,3 +1241,4 @@
     font-size: 12px;
     color: $error-message-color;
 }
+
