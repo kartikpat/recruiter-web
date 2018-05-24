@@ -11,7 +11,9 @@ function userResend(){
 	}
 
     function changeText() {
-        user.secText.text("We've again sent you an email on")
+		// debugger
+		$('.user-email-sent').removeClass("hidden");
+        user.secText.text("We've again sent you an email on");
         user.thirdText.text("If you still did not receive any email, check your spam folder or write to us at hello@iimjobs.com")
     }
 

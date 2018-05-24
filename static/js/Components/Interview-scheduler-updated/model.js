@@ -146,14 +146,12 @@ function Calendar(){
                 }
 
                 var startvalue=$("#"+id+ "").find(settings.start_time).val();
-                if(startvalue>0){
-                    startTimeMapper(id)
-                }
+                startTimeMapper(id)
+                
 
                 var endvalue=$("#"+id+ "").find(settings.end_time).val();
-                if(endvalue>0){
-                    endTimeMapper(id)
-                }
+                endTimeMapper(id)
+                
                 if(parseInt(startvalue)>0 && parseInt(endvalue)>0 && checkbox==true){
                     var slot={
                         day:id,
@@ -172,8 +170,10 @@ function Calendar(){
             var start=settings.breakStart.val();
             var end=settings.breakEnd.val();
             breakhours.from=start;
+            if(start>0)
             startTimeMapper('breaks');
             breakhours.to=end;
+            if(end>0)
             endTimeMapper('breaks')
             timetable.breakHours=breakhours;
             console.log(start);
@@ -370,12 +370,16 @@ function Calendar(){
             var k=parseInt(start.val());
             console.log(k);
             var index = $("#"+parent+" .start").find('option:selected').index();
-            console.log(index);
-             if(k>=0 && index<27){
+            console.log(index)
+            console.log("start Index")
+            if(k>=0 && index<27){
                 var check=$("#"+parent+" .end").find('option:selected').index();
                 $("#"+parent+" .end").find('option').prop('disabled', false);
                 $("#"+parent+" .end").not("#"+parent+" .start").find('option:lt(' + (index+1) + ')').prop('disabled', true);
                 $("#"+parent+" .end").find('option:first-child').prop('disabled',false);
+            }
+            if(index==0){
+                $("#"+parent+" .end").find('option').prop('disabled', false); 
             }
     }
 
@@ -385,7 +389,9 @@ function Calendar(){
         var index = $("#"+parent+" .end").find('option:selected').index();
         $("#"+parent+" .start").find('option').prop('disabled', false);
         $("#"+parent+" .start").not("#"+parent+" .end").find('option:gt(' + (index-1) + ')').prop('disabled', true);
-
+        if(index==0){
+            $("#"+parent+" .start").find('option').prop('disabled', false);
+        }
     }
 
     function copyTime(){
@@ -652,11 +658,15 @@ function Calendar(){
         }
         if(!(timetable.date.to=="0000-00-00")){
             for(var k=0;k<timetable.slots.length;k++){
-                if(timetable.slots[k].day<dowFrom || timetable.slots[k].day>dowTo){
-                    flag++;
+                if((timetable.slots[k].day<dowFrom)){
+                   if((timetable.slots[k].day<=dowTo) && dowTo<dowFrom)
+                    flag++
+                }
+                if((timetable.slots[k].day>=dowFrom)){
+                    flag++
                 }
             }
-            if(flag==timetable.slots.length){
+            if(flag==0){
                 settings.slots.find('.error').text(errorResponses['missingDateSlot']);
                 $('html, body').animate({
                     scrollTop: (settings.slots.closest('.second-container').offset().top)
