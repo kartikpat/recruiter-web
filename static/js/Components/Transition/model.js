@@ -15,9 +15,8 @@ $(document).ready(function(){
       },2000);
 
     function onSuccessVerifyLogin(topic, data){
-        console.log("success")
          Set_Cookie(jobseekerCookieName, '',1, "/", baseDomainName);
-    	window.location.href = staticEndPoints.dashboard;
+         window.location.href = staticEndPoints.dashboard;
     }
 
     function onFailVerifyLogin(topic, data){

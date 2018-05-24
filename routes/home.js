@@ -758,7 +758,12 @@ module.exports = function(settings){
 		return
 	});
 
+
+
+
 	app.post("/recruiter/login/verify", function(req, res){
+		console.log(req)
+		console.log(res)
 		const oldCookie=req.cookies[config['oldCookie']]
 		const accessToken = req.cookies[config["cookie"]];
 		var options = { method: 'POST',
@@ -772,8 +777,9 @@ module.exports = function(settings){
 			},
 		  json: true
 		};
-		request(options, function (error, response, body) {
+		req(options, function (error, response, body) {
 			if (error){
+				console.log(error)
 				return res.json(response);
 			}
 			const jsonBody = body;
@@ -1058,10 +1064,10 @@ module.exports = function(settings){
 	})
 
 	app.get("/transition",function(req, res){
-
 		var ua = parser(req.headers['user-agent']);
 		var initialUrl = url.parse(req.url).pathname;
 		var oldCookieValue = req.cookies[config['oldCookie']];
+		console.log(oldCookieValue)
 		if((ua.browser.name=='IE' && (ua.browser.version=="8.0"|| ua.browser.version=="9.0"))){
 			res.render("transitionIe", {
 				title:"iimjobs.com",
