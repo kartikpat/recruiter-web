@@ -60,7 +60,7 @@ $(document).ready(function(){
     function onSuccessfulSubmitCalendar(topic, data){
         console.log('submit successful');
         spinner();
-        window.location=staticEndPoints.manageCalendar
+        // window.location=staticEndPoints.manageCalendar
     }
 
 	function onFailedSubmitCalendar(topic, data){

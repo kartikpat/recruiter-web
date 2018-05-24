@@ -722,7 +722,7 @@ module.exports = function(settings){
 	// TODO: replace with a more semantic url
 	app.get("/calendar/create",isAuthenticated,function(req, res){
 		var ua = parser(req.headers['user-agent']);
-		// if((ua.browser.name=='IE' && (ua.browser.version=="8.0"|| ua.browser.version=="9.0"))){
+		if((ua.browser.name=='IE' && (ua.browser.version=="8.0"|| ua.browser.version=="9.0"))){
 			res.render("calendarIe", {
 				title: "Create Calendar | iimjobs.com",
 				styles:  assetsMapper["calendarIe"]["styles"][mode],
@@ -740,22 +740,22 @@ module.exports = function(settings){
  		 		baseDomainName: baseDomainName
 			});
 			return
-		// }
-		// res.render("Interview-scheduler-updated", {
-		// 	title: "Create Calendar | iimjobs.com",
-		// 	styles:  assetsMapper["Interview-scheduler-updated"]["styles"][mode],
-		// 	scripts: assetsMapper["Interview-scheduler-updated"]["scripts"][mode],
-		// 	hiddenLoader: "hidden",
-		// 	jobId: req.params.jobID,
-		// 	applicationId: req.params.applicationID,
-		// 	baseUrl: baseUrl,
-		// 	baseDomain: baseDomain,
-		// 	profile: req.profile,
-		// 	staticEndPoints: config["staticEndPoints"],
-		// 	oldCookie: config['oldCookie'],
-		// 	cookie: config['cookie']
-		// });
-		// return
+		}
+		res.render("Interview-scheduler-updated", {
+			title: "Create Calendar | iimjobs.com",
+			styles:  assetsMapper["Interview-scheduler-updated"]["styles"][mode],
+			scripts: assetsMapper["Interview-scheduler-updated"]["scripts"][mode],
+			hiddenLoader: "hidden",
+			jobId: req.params.jobID,
+			applicationId: req.params.applicationID,
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
+		});
+		return
 	});
 
 	app.post("/recruiter/:recruiterId/calendar/:calendarId", function(req, res){
@@ -841,7 +841,7 @@ module.exports = function(settings){
 	app.get("/calendar/:calendarId/edit",isAuthenticated,function(req, res){
 		var parser = require('ua-parser-js');
 		var ua = parser(req.headers['user-agent']);
-		// if((ua.browser.name=='IE' && (ua.browser.version=="8.0"|| ua.browser.version=="9.0"))){
+		if((ua.browser.name=='IE' && (ua.browser.version=="8.0"|| ua.browser.version=="9.0"))){
 			res.render("calendarIe", {
 				title: "Edit Calendar | iimjobs.com",
 				styles:  assetsMapper["calendarIe"]["styles"][mode],
@@ -857,21 +857,21 @@ module.exports = function(settings){
 				cookie: config['cookie']
 			});
 			return
-		// }
-		// res.render("Interview-scheduler-updated", {
-		// 	title: "Edit Calendar | iimjobs.com",
-		// 	styles:  assetsMapper["Interview-scheduler-updated"]["styles"][mode],
-		// 	scripts: assetsMapper["Interview-scheduler-updated"]["scripts"][mode],
-		// 	baseUrl: baseUrl,
-		// 	baseDomain:baseDomain,
-		// 	calendarId: req.params.calendarId,
-		// 	hiddenClass: "hidden",
-		// 	profile: req.profile,
-		// 	staticEndPoints: config["staticEndPoints"],
-		// 	oldCookie: config['oldCookie'],
-		// 	cookie: config['cookie']
-		// });
-		// return
+		}
+		res.render("Interview-scheduler-updated", {
+			title: "Edit Calendar | iimjobs.com",
+			styles:  assetsMapper["Interview-scheduler-updated"]["styles"][mode],
+			scripts: assetsMapper["Interview-scheduler-updated"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain:baseDomain,
+			calendarId: req.params.calendarId,
+			hiddenClass: "hidden",
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie']
+		});
+		return
 	});
 
 	app.get("/job/:jobID/applications/:applicationID",isAuthenticated, function(req,res){
