@@ -758,6 +758,32 @@ module.exports = function(settings){
 		return
 	});
 
+	app.post("/transition", function(req, res){
+		const oldCookie=req.cookies[config['oldCookie']];
+		
+		var options = { method: 'POST',
+		  url: baseUrl+"/recruiter/login/verify",
+		  headers: {
+			'Authorization': 'Bearer '+ accessToken,
+			'Content-Type': 'application/json'
+			},
+		  json: true
+		};
+		request(options, function (error, response, body) {
+			if (error){
+				return res.json(response);
+			}
+			const jsonBody = body;
+			if(jsonBody.status && jsonBody.status =='success'){
+				return res.json(body);
+			}
+			else {
+				return res.json(response);
+			}
+			return res.json(response);
+		});
+	});
+
 	app.post("/recruiter/:recruiterId/calendar", function(req, res){
 		const recruiterId = req.params.recruiterId,
 			  calendarId = req.params.calendarId
@@ -1029,7 +1055,28 @@ module.exports = function(settings){
 	})
 
 	app.get("/transition",function(req, res){
+
+		var ua = parser(req.headers['user-agent']);
+		var initialUrl = url.parse(req.url).pathname;
 		var oldCookieValue = req.cookies[config['oldCookie']];
+		if((ua.browser.name=='IE' && (ua.browser.version=="8.0"|| ua.browser.version=="9.0"))){
+			res.render("transitionIe", {
+				title:"iimjobs.com",
+				styles:  assetsMapper["transitionIe"]["styles"][mode],
+				scripts: assetsMapper["transitionIe"]["scripts"][mode],
+				baseUrl: baseUrl,
+				baseDomain: baseDomain,
+				staticEndPoints: config["staticEndPoints"],
+				oldCookie: config['oldCookie'],
+				cookie: config['cookie'],
+				pubnub:"disable",
+				baseDomainName: baseDomainName,
+				oldCookieValue: oldCookieValue,
+				jobseekerCookie: config['jobseekerCookie']
+	
+			});
+			return	
+		}
 		res.render("transition", {
 			title:"iimjobs.com",
 			styles:  assetsMapper["transition"]["styles"][mode],
