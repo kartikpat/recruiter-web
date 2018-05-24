@@ -758,7 +758,48 @@ module.exports = function(settings){
 		return
 	});
 
+	app.post("/recruiter/:recruiterId/calendar", function(req, res){
+		const recruiterId = req.params.recruiterId,
+			  calendarId = req.params.calendarId
+
+		const accessToken = req.cookies[config["cookie"]];
+
+		var resObj = {
+			"status": "",
+			"message": ""
+		}
+
+		if(!recruiterId) {
+			resObj.status = "fail"
+			resObj.message = "missing parameters"
+			return res.json(JSON.stringify(resObj));
+		}
+
+		var options = { method: 'POST',
+		  url: baseUrl+ '/recruiter/'+recruiterId+'/calendar/'+calendarId+'',
+		  headers: {
+			'Authorization': 'Bearer '+ accessToken,
+			'Content-Type': 'application/json'
+			},
+		  json: true
+		};
+		request(options, function (error, response, body) {
+			if (error){
+				return res.json(response);
+			}
+			const jsonBody = body;
+			if(jsonBody.status && jsonBody.status =='success'){
+				return res.json(body);
+			}
+			else {
+				return res.json(response);
+			}
+			return res.json(response);
+		});
+	});
+
 	app.post("/recruiter/:recruiterId/calendar/:calendarId", function(req, res){
+	
 		const recruiterId = req.params.recruiterId,
 			  calendarId = req.params.calendarId
 

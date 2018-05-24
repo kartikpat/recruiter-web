@@ -682,7 +682,6 @@ function Calendar(){
                 //     flag++
                 // }
             }
-            console
             if(flag==0){
                 settings.slots.find('.error').text(errorResponses['missingDateSlot']);
                 $('html, body').animate({
