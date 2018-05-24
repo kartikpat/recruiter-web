@@ -8,6 +8,8 @@
 	var compression = require("compression"); //compresses the request payload
 	var cookieParser = require("cookie-parser"); //stores the session data on the client within a cookie
 	var session = require('cookie-session')
+	var favicon = require('serve-favicon');
+	var path = require('path')
 	const passport = require("passport");
 	const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 	const TwitterStrategy = require('passport-twitter').Strategy;
@@ -31,6 +33,7 @@
 		.option('-v, --vault [src]', 'specify credentials location')
 		.parse(process.argv);
 
+		
 	if((!program.port) || program.port==""){
 		console.log("Please provide the port number")
 		console.log("Syntax: node --port <port number>")
@@ -60,14 +63,13 @@
 		scope: ['r_emailaddress', 'r_basicprofile'],
 		passReqToCallback: true
 	}, async function(req, accessToken, refreshToken, params, profile, done){
-		const token= req.cookies['recruiter-access-token'];
-		console.log(params)
+		const token= req.cookies[config['cookie']];
+		
 		const data = {
 			token: accessToken,
 			refreshToken: refreshToken,
-			profile: profile
+			profile: profile["_json"]
 		}
-
 		try{
 			await addUserSocial('linkedin', data, token);
 			return done(null, data)
@@ -84,13 +86,12 @@
 		callbackURL: config['social']['twitter']['callbackURL'],
 		passReqToCallback: true
 	}, async function(req, accessToken, refreshToken, params, profile, done){
-		const token = req.cookies['recruiter-access-token'];
+		const token = req.cookies[config['cookie']];
 		const data = {
 			token: accessToken,
 			refreshToken: refreshToken,
-			profile: profile
+			profile: profile["_json"]
 		}
-		console.log(data);
 		try{
 			await addUserSocial('twitter', data, token);
 			return done(null, data)
@@ -133,6 +134,9 @@
 	});
 
 	var app = express();
+	
+	app.use(favicon(path.join(__dirname+'/static/images/favicon.ico')))
+	
 	app.use(cookieParser())
 	// not using cookie-session in this case
 	app.use(session({
@@ -193,4 +197,5 @@
 
 	require(__dirname+"/routes/home.js")(settings);
 	require(__dirname+"/routes/social-hooks.js")(settings);
+	require(__dirname+"/routes/error.js")(settings);
 	app.listen(port);

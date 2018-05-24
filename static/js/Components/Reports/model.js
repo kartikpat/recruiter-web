@@ -1,3 +1,5 @@
+
+
 function reportList() {
 
     var settings = {};
@@ -79,8 +81,8 @@ function reportList() {
        item.shortlistedCandidates.text(aData["shortlisted"]).attr("href", getApplicationLink("1", aData["id"]));
        item.rejectedCandidates.text(aData["rejected"]).attr("href", getApplicationLink("2", aData["id"]));
        item.savedCandidates.text(aData["save"]).attr("href", getApplicationLink("3", aData["id"]));
-       item.resumeViewedCount.text(aData["reviewed"]).attr("href", getApplicationLink("4,5", aData["id"]));
-       item.resumeDownloadedCount.text(aData["download"] || 0).attr("href", getApplicationLink("4,5", aData["id"]));
+       item.resumeViewedCount.text(aData["reviewed"]);
+       item.resumeDownloadedCount.text(aData["download"] || 0);
        item.jobCurrentStatus.text(aData["status"] || "N/A");
        item.isJobPremium.text(binary[aData["premium"]])
        item.excelDownloadedCount.text(binary[aData["excelDownload"] || 0])
@@ -113,7 +115,7 @@ function reportList() {
    }
 
    function setHref() {
-       settings.downloadExcelButton.attr("href", baseUrl + "/recruiter/"+config["recruiterId"]+"/reports-download?token="+getCookie("recruiter-access-token")+"");
+       settings.downloadExcelButton.attr("href", baseUrl + "/recruiter/"+config["recruiterId"]+"/reports-download?token="+getCookie(cookieName)+"");
    }
 
    return {

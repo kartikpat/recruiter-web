@@ -444,7 +444,7 @@ var errorResponses = {
 
     function startdate(){
         $("#startdatepicker").datepicker({
-            buttonImage: "/static/images/smallcalendar.svg",
+            buttonImage: "/static/images/calenderIe.png",
             buttonImageOnly: true,
             changeMonth: true,
             changeYear: true,
@@ -463,7 +463,7 @@ var errorResponses = {
 
     function enddate(){
         $("#enddatepicker").datepicker({
-            buttonImage: "/static/images/smallcalendar.svg",
+            buttonImage: "/static/images/calenderIe.png",
             buttonImageOnly: true,
             changeMonth: true,
             changeYear: true,
@@ -567,7 +567,7 @@ var errorResponses = {
         var end_date=moment(end_date);
 
         if(end_date.isBefore(start_date)){
-            settings.radioInput.next('.error').text("Start Date should not be greater than end date");
+            settings.radioInput.next('.error').text("End date can not be less than the current date");
             $('html, body').animate({
                 scrollTop: (settings.radioInput.offset().top)
             },200);

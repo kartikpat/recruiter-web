@@ -89,7 +89,8 @@ jQuery(document).ready( function() {
         var hash = context.hash || "";
         var candidateDetails = store.getCandidateFromStore(applicationId);
         aCandidate.showCandidateDetails(candidateDetails,hash, candidateDetails.status);
-        if(parseInt(candidateDetails.status) == 0)
+        // sending event on every view
+        // if(parseInt(candidateDetails.status) == 0)
             setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
 
     });
@@ -250,7 +251,6 @@ jQuery(document).ready( function() {
         var candidate = store.getCandidateFromStore(applicationId);
         var array = [];
         array.push(candidate);
-
         cloneStickyChat(array, recruiterId, jobId, applicationId)
     })
 
@@ -375,7 +375,8 @@ jQuery(document).ready( function() {
            event_label: 'origin=CandidateApplyList,type=Single,recId='+recruiterId+''
         }
         sendEvent(eventMap["downloadResume"]["event"], eventObj)
-        if(parseInt(status) == 0)
+        // sending event on every download
+        // if(parseInt(status) == 0)
             setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
     });
 
@@ -385,7 +386,8 @@ jQuery(document).ready( function() {
            event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
         }
         sendEvent(eventMap["downloadResume"]["event"], eventObj)
-        if(parseInt(status) == 0)
+        // if(parseInt(status) == 0)
+        // sending event on every download
             setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
     });
 
@@ -456,7 +458,6 @@ jQuery(document).ready( function() {
             }
             return pubsub.publish("failedToFetchCount", a[0]["status"]);
         })
-
         if(res.action == "tag") {
             if(res.parameters.type == "add") {
                 var tag = {
@@ -467,7 +468,8 @@ jQuery(document).ready( function() {
                 obj["tags"].push(tag)
                 aCandidate.appendCandidateTag(tag)
                 candidates.appendCandidateTag(tag,res.applicationId);
-                candidates.showTag(res.applicationId);
+
+                candidates.showTag(res.applicationId, obj["comment"]);
                 return toastNotify(1, "Tag Added Successfully")
             }
             var tagId = res.parameters.tagId
@@ -483,7 +485,8 @@ jQuery(document).ready( function() {
             obj["comment"] = res.comment;
             aCandidate.addComment(res.comment);
             candidates.addComment(res.comment,res.applicationId);
-            candidates.showComment(res.applicationId);
+            var tagLen = obj["tags"].length;
+            candidates.showComment(res.applicationId, tagLen);
             return toastNotify(1, "Comment Added Successfully")
         }
 
@@ -616,13 +619,18 @@ jQuery(document).ready( function() {
 
         }
         else {
-            parameters.applicationId = arr.toString()
+            if(arr.length<1){
+                toastNotify(3, "Please select at least 1 candidate");
+                return false;
+            }
+            parameters.applicationId = arr.toString();
         }
         var str = "?"
         for(var key in parameters) {
             str+= key + "=" + parameters[key] + "&";
         }
         candidates.setHref(str)
+        return true;
     })
 
     candidates.onClickDownloadMassResume(function(arr,from, to, requestType){
@@ -644,12 +652,16 @@ jQuery(document).ready( function() {
             if(arr.length > 100) {
                 return toastNotify(3, "You can't download more than 100 resumes at a time.")
             }
+            if(arr.length<1){
+                return toastNotify(3, "Please select at least 1 candidate");
+            }
             data.applicationId = arr.toString()
             // parameters.oldStatus = globalParameters.status
             // parameters.newStatus = newStatus
             // parameters.length = applicationIds.length
         }
         downloadMassResume(recruiterId, jobId, data)
+        return true;
     })
 
     candidates.onClickMassActionButton(function(applicationIds, action, comment, newStatus, typeRequest, from, to){
@@ -687,6 +699,9 @@ jQuery(document).ready( function() {
             parameters.length = (to - from) + 1;
         }
         else {
+            if(applicationIds.length<1){
+                return toastNotify(3, "Please select at least 1 candidate");
+            }
             data.applicationId = applicationIds
             parameters.oldStatus = globalParameters.status
             parameters.newStatus = newStatus
@@ -957,6 +972,7 @@ jQuery(document).ready( function() {
               var data = {
                 jobTitle: getTitleFormat(jobRow["title"],(/\(\d+-\d+ \w+\)$/)),
                 jobLocation: getLocation(jobRow["location"]),
+                jobOtherLocation:jobRow["otherLocation"],
                 jobExperience: jobRow["exp"]['min']+ ' - ' + jobRow['exp']['max'] +' yrs',
                 jobPublishedId: jobRow['publishedId'],
                 jobId: jobRow['id'],
@@ -1347,6 +1363,10 @@ function errorHandler(data) {
         setTimeout(function(){
 			 window.location.href = staticEndPoints.dashboard
 		 }, 2000);
+         return
+    }
+    if(data.status == 503) {
+        toastNotify(3, "Oops...something went wrong. Our engineers are fixing the issue");
          return
     }
     var res = data.responseJSON

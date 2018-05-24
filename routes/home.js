@@ -12,12 +12,14 @@ module.exports = function(settings){
 	var config = settings.config;
 	var env = settings.env;
 	var baseUrl = config["baseUrl"];
+	var baseUrl_local=config["baseUrl_local"];
 	var request = settings["request"];
 	var baseDomain = config["baseDomain"];
 	var baseDomainName = config['baseDomainName']
 	var baseUrlJob = config["baseUrlJob"];
 	var welcome = config["welcome"];
 	var verifyAccount = config["verify"];
+	var parser = require('ua-parser-js');
 	const url = require('url'); // built-in utility
 
 	if(env=="local")
@@ -29,11 +31,18 @@ module.exports = function(settings){
 		return about.split('\r\n').join('\\n');
 	}
 	function isAuthenticated(req, res, next) {
+		var ua = parser(req.headers['user-agent']);
+		var initialUrl = url.parse(req.url).pathname;
+		if((ua.browser.name=='IE' && (ua.browser.version=="8.0"|| ua.browser.version=="9.0") && ( initialUrl.indexOf("/calendar") <0 ))){
+			return res.redirect('/not-supported')
+		}
 		// bypassing the auth for development
     	// CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     	// you can do this however you want with whatever variables you set up
-    	if(!(req.cookies[config['oldCookie']] && req.cookies[config['oldCookie']]!='undefined'))
-    		return res.redirect("/login");
+		
+    	if(!(req.cookies[config['oldCookie']] && req.cookies[config['oldCookie']]!='undefined')){
+			return res.redirect("/login");
+		}
 
     	res.cookie('OLDRECRUITER', '',{ "path": "/", domain: baseDomain+".com", maxAge:0});
 
@@ -51,7 +60,8 @@ module.exports = function(settings){
 				const jsonBody = JSON.parse(body)
 				if(jsonBody.status && jsonBody.status =='success'){
 					req.profile = jsonBody.data;
-					req.profile.about = splitAbout(req.profile.about)
+					req.profile.about = splitAbout(req.profile.about);
+					req.profile.showSearch = (req.profile.search ==2) ? null : 1
 					if(req.originalUrl == "/verify-email") {
 						if(req.profile.verified && req.profile.verified == 1) {
 							return res.redirect('/account-created')
@@ -78,8 +88,7 @@ module.exports = function(settings){
 					}
 					return res.redirect('/welcome');
 				}
-				res.cookie(config['cookie'], '',{ "path": "/", domain: baseDomain+".com"});
-				console.log(req.cookies[config["cookie"]])
+				res.cookie(config['cookie'], '',{ "path": "/", domain: baseDomainName});
 				return res.redirect('/login');
 			})
 
@@ -124,7 +133,7 @@ module.exports = function(settings){
 	// 	return res.json({
 	// 		status: "success"
 	// 	});
-	// })
+	// }))
 
 	app.get("/", isAuthenticated,function(req, res){
 		if(req.profile.onboarding==1){
@@ -137,7 +146,7 @@ module.exports = function(settings){
 				profile: req.profile,
 				oldCookie: config['oldCookie'],
 				cookie: config['cookie'],
- 		 baseDomainName: baseDomainName,
+ 		 		baseDomainName: baseDomainName,
 				staticEndPoints: config["staticEndPoints"]
 			})
 			return
@@ -217,6 +226,11 @@ module.exports = function(settings){
 	});
 
 	app.get("/login",  function(req,res){
+		var ua = parser(req.headers['user-agent']);
+		var initialUrl = url.parse(req.url).pathname;
+		if((ua.browser.name=='IE' && (ua.browser.version=="8.0"|| ua.browser.version=="9.0") && ( initialUrl.indexOf("/calendar") <0 ))){
+			return res.redirect('/not-supported')
+		}
 		if(req.cookies[config['oldCookie']] && req.cookies[config['oldCookie']]!='undefined'){
 			return isAuthenticated(req, res);
 		}
@@ -232,7 +246,8 @@ module.exports = function(settings){
 			baseDomain: baseDomain,
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
- 		 baseDomainName: baseDomainName
+ 		 baseDomainName: baseDomainName,
+		 staticEndPoints: config["staticEndPoints"]
 		})
 		return
 	});
@@ -417,7 +432,8 @@ module.exports = function(settings){
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
- 		 baseDomainName: baseDomainName
+			baseUrl_local:baseUrl_local,
+ 		 	baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -449,7 +465,7 @@ module.exports = function(settings){
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
- 		 baseDomainName: baseDomainName
+ 		 	baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -465,7 +481,7 @@ module.exports = function(settings){
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
- 		 baseDomainName: baseDomainName
+ 		 	baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -549,7 +565,7 @@ module.exports = function(settings){
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
- 		 baseDomainName: baseDomainName
+ 		 	baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -583,7 +599,41 @@ module.exports = function(settings){
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
- 		 baseDomainName: baseDomainName
+ 		 	baseDomainName: baseDomainName
+		})
+		return
+	});
+
+	app.get("/error503",function(req, res){
+		res.render("error503", {
+			title:"Recruiter Web -Error503 | iimjobs.com",
+			styles:  assetsMapper["error503"]["styles"][mode],
+			scripts: assetsMapper["error503"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			hiddenActions: "hidden",
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie'],
+ 		 	baseDomainName: baseDomainName
+		})
+		return
+	});
+
+	app.get("/iescreen",function(req, res){
+		res.render("ieScreen", {
+			title:"Recruiter Web -ieScreen | iimjobs.com",
+			styles:  assetsMapper["ieScreen"]["styles"][mode],
+			scripts: assetsMapper["ieScreen"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			hiddenActions: "hidden",
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie'],
+ 		 	baseDomainName: baseDomainName
 		})
 		return
 	});
@@ -671,7 +721,6 @@ module.exports = function(settings){
 
 	// TODO: replace with a more semantic url
 	app.get("/calendar/create",isAuthenticated,function(req, res){
-		var parser = require('ua-parser-js');
 		var ua = parser(req.headers['user-agent']);
 		// if((ua.browser.name=='IE' && (ua.browser.version=="8.0"|| ua.browser.version=="9.0"))){
 			res.render("calendarIe", {
@@ -838,12 +887,13 @@ module.exports = function(settings){
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
- 		 baseDomainName: baseDomainName
+			baseUrl_local:baseUrl_local,
+ 		 	baseDomainName: baseDomainName
 		})
 		return
 	});
 
-	app.get("/candidate/applications/:applicationID",isAuthenticated, function(req,res){
+	app.get("/candidate/:jobseekerId/profile",isAuthenticated, function(req,res){
 		res.render("candidate", {
 			title:"Recruiter Web - Candidate Profile | iimjobs.com",
 			styles:  assetsMapper["candidate"]["styles"][mode],
@@ -851,7 +901,7 @@ module.exports = function(settings){
 			baseUrl: baseUrl,
 			baseDomain: baseDomain,
 			jobId: req.params.jobID,
-			applicationId: req.params.applicationID,
+			applicationId: req.params.jobseekerId,
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
@@ -948,8 +998,10 @@ module.exports = function(settings){
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
- 		 baseDomainName: baseDomainName,
-			oldCookieValue: oldCookieValue
+ 		    baseDomainName: baseDomainName,
+			oldCookieValue: oldCookieValue,
+			jobseekerCookie: config['jobseekerCookie']
+
 		});
 	})
 
@@ -986,6 +1038,10 @@ module.exports = function(settings){
 		});
 	});
 
+	app.get("/file-not-found", function(req, res){
+		return res.send('The file you requested is not present');
+	})
+
 	app.get("/job/:jobId/applications/:applicationId/action/:action",isAuthenticated, function(req, res){
 		const jobId = req.params.jobId,
 			applicationId = req.params.applicationId,
@@ -1014,12 +1070,27 @@ module.exports = function(settings){
 			if(jsonBody.status && jsonBody.status =='success'){
 				if(redirectURL)
 					return res.redirect(baseUrl+redirectURL);
-				return res.redirect('/job/'+jobId+'/applications/'+applicationId);
+				return res.redirect('/job/'+jobId+'/applications/'+applicationId+"?ref=email");
 			}
 			else {
 				return res.redirect("/error");
 			}
 			return res.send('notok')
 		});
+	});
+	app.get("/not-supported", function(req, res){
+		res.render("redirectForIE",{
+			title:"Recruiter Web | iimjobs.com",
+			styles:  assetsMapper["redirectForIE"]["styles"][mode],
+			scripts: assetsMapper["redirectForIE"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			hiddenActions: "hidden",
+			profile: req.profile,
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie'],
+ 		 	baseDomainName: baseDomainName
+		})
 	})
 }

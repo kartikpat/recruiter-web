@@ -62,7 +62,7 @@ function Profile(){
 			settings.premiumDetail = $("#premiumDetail")
 			settings.type = "profile"
 			settings.settingsBody = $(".settingsBody")
-			settings.distributeCreditsButton=$('#credits-distribute')
+			settings.distributeCreditsButton=$('.distribute-credits')
 			settings.creditRowPrototype=$('.creditsContentsRow')
 			settings.memberName='.memName'
 			settings.memberDes='.memDes'
@@ -321,7 +321,7 @@ function Profile(){
 
 		if(obj["availableCredits"]) {
 			settings.buyMore.removeClass("hidden")
-			settings.premiumDetail.text(obj["availableCredits"] + " credits left.")
+			settings.premiumDetail.text(obj["availableCredits"] + " credits left")
 		}
 		else {
 			settings.seeAllPremium.removeClass("hidden")
@@ -339,9 +339,11 @@ function Profile(){
 		settings.uploadPic.click(fn)
 	}
 
-	function validatePic() {
+	function validatePic(){
 		if(settings.fileUpload[0].files[0] != undefined) {
-			return true
+			if(settings.fileUpload[0].files[0].size<80000){
+				return true
+			}
 		}
 		return false
 	}

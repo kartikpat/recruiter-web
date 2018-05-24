@@ -392,3 +392,6 @@
       line-height: 1.5; }
       .page-content .main-wrapper p a {
         color: #155d9a; }
+    .page-content .main-wrapper .user-email-sent {
+      font-size: 14px;
+      color: #5b5b5b; }

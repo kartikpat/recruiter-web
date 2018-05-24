@@ -91,17 +91,19 @@ function Job(){
 	}
 
 	function setJobDetails(data){
+		console.log(data)
 		settings.jobTitle.text(data["jobTitle"]).removeClass("shell");
 		settings.jobId.text("Job Code: " +data["jobPublishedId"]).removeClass("shell");
 		var locText = data["jobLocation"].join(", ")
+		data["jobLocation"].push(data["jobOtherLocation"])
 		if(data["jobLocation"].length) {
 			settings.jobSeparator.removeClass("hidden")
 			var jobLocationTitle = (data["jobLocation"] && data["jobLocation"].length >3) ? data["jobLocation"].join(','): null;
 			var jobLocationStr = (data["jobLocation"] && data["jobLocation"].length >3) ? "Multiple Locations" : data["jobLocation"].join(',');
 			settings.jobLocation.text(jobLocationStr).removeClass("shell");
 			settings.jobLocation.attr("title",jobLocationTitle).addClass("tooltip");
-
 		}
+		
 		$(".tooltip").tooltipster({
 		   animation: 'fade',
 		   delay: 0,

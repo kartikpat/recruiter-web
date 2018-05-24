@@ -1,0 +1,54 @@
+.page-wrap {
+  min-height: 100%;
+  position: relative;
+  padding: 20px;
+  width: 100%; }
+  .page-wrap .error-container {
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e8e8e8;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    height: 605px;
+    position: relative; }
+    .page-wrap .error-container .error-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); }
+      .page-wrap .error-container .error-wrapper .image-container {
+        text-align: center;
+        margin-bottom: 50px; }
+        .page-wrap .error-container .error-wrapper .image-container img {
+          width: 250px; }
+      .page-wrap .error-container .error-wrapper .content-container {
+        text-align: center; }
+        .page-wrap .error-container .error-wrapper .content-container .head {
+          color: #000000;
+          font-size: 25px;
+          /* Approximation due to font substitution */
+          font-weight: 700;
+          line-height: 40px;
+          /* Approximation due to font substitution */
+          text-align: center; }
+        .page-wrap .error-container .error-wrapper .content-container .sub-head {
+          color: #737373;
+          font-size: 20px;
+          /* Approximation due to font substitution */
+          font-weight: 400;
+          line-height: 40px;
+          /* Approximation due to font substitution */
+          text-align: center; }
+        .page-wrap .error-container .error-wrapper .content-container .link {
+          margin-top: 50px; }
+          .page-wrap .error-container .error-wrapper .content-container .link a {
+            color: #155d9a;
+            font-size: 20px;
+            /* Approximation due to font substitution */
+            font-weight: 400;
+            line-height: 40px;
+            /* Approximation due to font substitution */
+            text-align: center; }
+          .page-wrap .error-container .error-wrapper .content-container .link a:hover {
+            text-decoration: underline; }

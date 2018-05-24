@@ -7,6 +7,7 @@ $(document).ready(function() {
 	})
 
 	function onSuccessfulResendInvite(topic, data) {
+		// debugger
 		userResnd.changeText()
 	}
 
@@ -22,6 +23,10 @@ function errorHandler(data) {
     var res = data.responseJSON
 	if(!res) {
         return toastNotify(3, "Looks like you are not connected to the internet");
+    }
+	if(data.status == 503) {
+        toastNotify(3, "Oops...something went wrong. Our engineers are fixing the issue");
+         return
     }
     return toastNotify(3, res.message);
 }

@@ -1,7 +1,7 @@
 var errorResponses = {
-	missingEmail: 'Please enter the Email address',
+	missingEmail: 'Please enter the email address',
 	invalidEmail: 'That looks like an invalid email address',
-	userFail: 'Email address does not exist',
+	userFail: 'We could not find an account with that email address.Please register.',
 	missingParameters: 'Oops! Our engineers will fix this shortly. Please try again after sometime.',
 	serviceError: 'Oops! Our engineers are working on fixing this, please try again after sometime.',
 	noInternet: 'Looks like you are not connected to the internet'

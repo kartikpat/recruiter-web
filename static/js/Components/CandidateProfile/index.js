@@ -6,14 +6,23 @@ var globalParameters = {
     initialLoad: 1,
     candidateListLength: null
 }
+
 var screenName = "candidate-profile";
 jQuery(document).ready( function() {
-
     // creating the instance of models
     var aCandidate = Candidate();
     var store = Store();
     //initializing the models
     aCandidate.init();
+
+    page('/job/'+jobId+'/applications', function(context, next){
+        debugger;
+        window.location.href='/job/'+jobId+'/applications?'+context.querystring;
+        return
+    })
+    page();
+    var successMsg = getQueryParameter("type");
+    var successRef= getQueryParameter("ref");
 
     fetchCandidateProfile(recruiterId, jobId, applicationId)
     submitPageVisit(recruiterId, screenName, jobId);
@@ -99,6 +108,11 @@ jQuery(document).ready( function() {
            event_category: eventMap["shortlistCand"]["cat"],
            event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
          }
+
+         if(successRef=="Email"){
+            eventObj.event_label='origin=Email,type=Single,recId='+recruiterId+''
+         }
+
          sendEvent(eventMap["shortlistCand"]["event"], eventObj)
          var action;
          $('.candidateShortlistModal').prev().removeClass('hidden');
@@ -122,6 +136,9 @@ jQuery(document).ready( function() {
            event_category: eventMap["rejectCand"]["cat"],
            event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
          }
+         if(successRef=="Email"){
+            eventObj.event_label='origin=Email,type=Single,recId='+recruiterId+''
+         }
          sendEvent(eventMap["rejectCand"]["event"], eventObj)
          var action;
          $('.candidateRejectModal').prev().removeClass('hidden');
@@ -143,6 +160,9 @@ jQuery(document).ready( function() {
          var eventObj = {
            event_category: eventMap["saveCand"]["cat"],
            event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
+         }
+         if(successRef=="Email"){
+            eventObj.event_label='origin=Email,type=Single,recId='+recruiterId+''
          }
          sendEvent(eventMap["saveCand"]["event"], eventObj)
          var action;
@@ -168,11 +188,15 @@ jQuery(document).ready( function() {
      })
 
     function onCandidateProfileFetchSuccess(topic, res) {
+        console.log(res.data)
         store.saveToStore(res.data)
-        if(parseInt(res.data[0].status) == 0)
-            setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
-            
         aCandidate.populateCandidateData(res.data[0])
+        if(successMsg!="download"){
+            setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
+        }
+        if(successMsg=="download"){
+            aCandidate.triggerDownload();
+        }
         fetchjobCalendars(jobId, recruiterId)
     }
 
@@ -185,9 +209,7 @@ jQuery(document).ready( function() {
         if(res.action == "view") {
             var newStatus = 4
             var obj = store.getCandidateFromStore(res.applicationId)
-            console.log(obj);
             obj["status"] = newStatus;
-            return aCandidates.changeStatus(arr, newStatus)
         }
 
         if(res.action == "download") {
@@ -270,7 +292,6 @@ jQuery(document).ready( function() {
     }
 
     function onSuccessfullFetchedCalendars(topic, res) {
-
         if(!res.length){
             return aCandidate.setInvite()
         }
@@ -375,13 +396,16 @@ jQuery(document).ready( function() {
     })
 
     aCandidate.onClickDownloadResume(function(applicationId, status){
+        // debugger
         var eventObj = {
            event_category: eventMap["downloadResume"]["cat"],
            event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
         }
+        if(successRef=="Email"){
+            eventObj.event_label='origin=Email,type=Single,recId='+recruiterId+''
+         }
         sendEvent(eventMap["downloadResume"]["event"], eventObj)
-        if(parseInt(status) == 0)
-            setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
+        setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
     });
 
     function onSuccessfullSetDefaultCalendar(topic, res) {
@@ -422,7 +446,10 @@ function errorHandler(data) {
 		 }, 2000);
          return
     }
-
+    if(data.status == 503) {
+        toastNotify(3, "Oops...something went wrong. Our engineers are fixing the issue");
+         return
+    }
     var res = data.responseJSON
     if(!res) {
         return toastNotify(3, "Looks like you are not connected to the internet");

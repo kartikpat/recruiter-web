@@ -15,17 +15,8 @@ jQuery(document).ready( function() {
     //initializing the models
     aCandidate.init();
 
+    fetchCandidateChatProfile(recruiterId,applicationId);
 
-    fetchCandidateProfile(recruiterId, jobId, applicationId)
-    submitPageVisit(recruiterId, screenName, jobId);
-    var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitSuccess:"+screenName, onPageVisitUpdateSuccess)
-    var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitFail:"+screenName, onPageVisitUpdateFail)
-    function onPageVisitUpdateSuccess(topic, data){
-        console.log('page visit done');
-    }
-    function onPageVisitUpdateFail(topic, data){
-        console.log('page visit error');
-    }
 
      aCandidate.onClickAddTag(function(applicationId, parameters){
          var ob = {}
@@ -172,7 +163,7 @@ jQuery(document).ready( function() {
         store.saveToStore(res.data)
 
         aCandidate.populateCandidateData(res.data[0])
-        fetchjobCalendars(jobId, recruiterId)
+        // fetchjobCalendars(jobId, recruiterId)
     }
 
    function onCandidateProfileFetchFail(topic, data){
@@ -319,7 +310,6 @@ jQuery(document).ready( function() {
     }
 
     function onSendInterViewInviteFail(topic, data) {
-
         if(data.status == 400 && data.responseJSON && data.responseJSON.code == 4001) {
             return window.location.href = "/calendar/"+data.parameters.calendarId+"/edit?insuffSlotsErrMsg=1";
         }
@@ -390,6 +380,10 @@ function errorHandler(data) {
         setTimeout(function(){
 			 window.location.href = staticEndPoints.dashboard
 		 }, 2000);
+         return
+    }
+    if(data.status == 503) {
+        toastNotify(3, "Oops...something went wrong. Our engineers are fixing the issue");
          return
     }
 

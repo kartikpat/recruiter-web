@@ -332,7 +332,7 @@
               box-sizing: border-box;
               background-color: #FFF;
               display: inline-block;
-              width: 21%;
+              width: 28%;
               height: 102px;
               margin-right: 3.6%;
               vertical-align: top;
@@ -392,7 +392,7 @@
               margin: 1px; }
             .page-content .main-wrapper .container .dashboard .complete-profile .connecter .icon-container {
               position: absolute;
-              left: 88%;
+              left: 90%;
               color: #0c9176; }
         .page-content .main-wrapper .container .dashboard .content {
           box-shadow: 0px 2px 8px 0px rgba(214, 214, 214, 0.3);
@@ -408,7 +408,7 @@
             .page-content .main-wrapper .container .dashboard .content .image-container img {
               display: inline-block;
               height: 90px;
-              width: 78px;
+              width: 90px;
               margin-top: 25px;
               margin-bottom: 25px;
               margin-left: 20px; }

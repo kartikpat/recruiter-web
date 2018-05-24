@@ -4,10 +4,11 @@ $(document).ready(function(){
     if(calendarId){
         var insuffSlotsErrMsg = getQueryParameter("insuffSlotsErrMsg");
         if(!isEmpty(insuffSlotsErrMsg)) {
-            toastNotify(3, "All the slots have been booked by the candidates. Please add more slots to send interview invite")
+            toastNotify(3, "There are no remaining slots for this calendar. Please add more slots.")
             var newUrl = removeParam("insuffSlotsErrMsg", window.location.href)
             window.history.replaceState("object or string", "Title", newUrl);
         }
+        
         fetchCalendars(calendarId,recruiterId);
         $('.form-container').removeClass('hidden');
         $('.Availability').removeClass('hidden');

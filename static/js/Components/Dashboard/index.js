@@ -332,7 +332,7 @@ function onClickShareOnLinkedIn(fn){
 	            aJob["shortlist"] || 0,
 	            (aJob["view"] || 0)+ (aJob["download"] || 0),
 	            aJob["save"] || 0,
-	            aJob["reject"]
+	            aJob["reject"] ||0
 	            ])
 	    })
 		dataModel[topic] = temp;
@@ -426,15 +426,15 @@ function onClickShareOnLinkedIn(fn){
 		else{
 			var currentHour = moment(now).hour();
 			if( currentHour > 5 && currentHour < 12	){
-				text = "Good Morning, "+recruiterName;
+				text = "Good Morning, "+recruiterName+"!";
 				iconClass="icon-sunrise";
 			}
 			if( currentHour > 11 && currentHour < 17 ){
-				text = "Good Afternoon, "+recruiterName;
+				text = "Good Afternoon, "+recruiterName+"!";
 				iconClass="icon-afternoon";
 			}
 			if( currentHour > 17  || currentHour < 5 ){
-				text = "Good Evening, "+recruiterName;
+				text = "Good Evening, "+recruiterName+"!";
 				iconClass="icon-sunset";
 			}
 		}
@@ -678,6 +678,10 @@ function onClickShareOnLinkedIn(fn){
 })
 
 function errorHandler(data) {
+	if(data.status == 503) {
+        toastNotify(3, "Oops...something went wrong. Our engineers are fixing the issue");
+         return
+    }
     var res = data.responseJSON
     if(!res) {
         return toastNotify(3, "Looks like you are not connected to the internet");

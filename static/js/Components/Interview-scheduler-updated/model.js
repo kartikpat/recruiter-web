@@ -4,10 +4,12 @@ var errorResponses = {
     missingTeleMessage: 'Please enter a message for telephonic interview',
     missingvalues:'Please select your available hours',
     missingslots:'Please select a slot',
-    missingDate:"Please select a end Date",
+    missingStartDate:"Please select an start date",
+    missingDate:"Please select an end date",
     missingStart:"Please select Start Time",
     missingEnd:"Please select End Time",
-    missingDateSlot:"Please select a slot between startdate and endate"
+    missingDateSlot:"Please select a day that lies between start date and end date"
+    
 }
 
 function Calendar(){
@@ -50,6 +52,7 @@ function Calendar(){
         settings.textBox=$('.field p'),
         settings.submitButton=$('#submit'),
         settings.radioInput=$('.radio-input'),
+        settings.errorInputStart=$('.error-startDate'),
         // settings.editorMessage = new MediumEditor("#message", {
         //     toolbar: false,
         //     placeholder: false,
@@ -106,7 +109,7 @@ function Calendar(){
           var fromDate=currentDate;
           var toDate="";
         if($('#radio-button-startend').prop("checked")==true){
-            fromDate=$('#start_date').datepicker().val();
+            fromDate=$('#start_date').val();
             if(fromDate==''){
                 fromDate=currentDate;
             }
@@ -120,11 +123,13 @@ function Calendar(){
             $('#enddatepicker').datepicker('setDate', null);
         }
         if($('#radio-button-end').prop("checked")==true){
+
             toDate=$('#end_date').datepicker().val();
+            toDate=$('#end_date').val();
         }
+
         date.from=fromDate;
         date.to=toDate;
-
         timetable.date=date;
             $.each(settings.dayId,function(){
                 var id=$(this).attr('id');
@@ -136,13 +141,12 @@ function Calendar(){
                     $("#"+id+ "").css("opacity","1");
                 }
                 var startvalue=$("#"+id+ "").find(settings.start_time).val();
-                if(startvalue>0){
-                    startTimeMapper(id)
-                }
+
+                startTimeMapper(id)
+                
                 var endvalue=$("#"+id+ "").find(settings.end_time).val();
-                if(endvalue>0){
-                    endTimeMapper(id)
-                }
+                endTimeMapper(id)
+                
                 if(parseInt(startvalue)>0 && parseInt(endvalue)>0 && checkbox==true){
                     var slot={
                         day:id,
@@ -159,8 +163,10 @@ function Calendar(){
             var start=settings.breakStart.val();
             var end=settings.breakEnd.val();
             breakhours.from=start;
+            if(start>0)
             startTimeMapper('breaks');
             breakhours.to=end;
+            if(end>0)
             endTimeMapper('breaks')
             timetable.breakHours=breakhours;
             console.log(start);
@@ -245,13 +251,11 @@ function Calendar(){
         console.log(toDate)
         endDate=moment(toDate).format("DD-MM-YYYY");
         console.log(endDate)
-        // $('#startdatepicker').datepicker().datepicker('setDate', startDate);
+        $('#startdatepicker').datepicker().datepicker('setDate', startDate);
         $("#startdatepicker").val(startDate);
         $('#radio-button-startend').prop("checked",true)
-
         if(endDate!="Invalid date"){
-
-            // $('#enddatepicker').datepicker().datepicker('setDate', endDate);
+            $('#enddatepicker').datepicker().datepicker('setDate', endDate);
             $('#enddatepicker').val(endDate);
             $('#radio-button-end').prop("checked",true)
         }
@@ -358,12 +362,16 @@ function Calendar(){
             var k=parseInt(start.val());
             console.log(k);
             var index = $("#"+parent+" .start").find('option:selected').index();
-            console.log(index);
-             if(k>=0 && index<27){
+            console.log(index)
+            console.log("start Index")
+            if(k>=0 && index<27){
                 var check=$("#"+parent+" .end").find('option:selected').index();
                 $("#"+parent+" .end").find('option').prop('disabled', false);
                 $("#"+parent+" .end").not("#"+parent+" .start").find('option:lt(' + (index+1) + ')').prop('disabled', true);
                 $("#"+parent+" .end").find('option:first-child').prop('disabled',false);
+            }
+            if(index==0){
+                $("#"+parent+" .end").find('option').prop('disabled', false); 
             }
     }
 
@@ -373,7 +381,9 @@ function Calendar(){
         var index = $("#"+parent+" .end").find('option:selected').index();
         $("#"+parent+" .start").find('option').prop('disabled', false);
         $("#"+parent+" .start").not("#"+parent+" .end").find('option:gt(' + (index-1) + ')').prop('disabled', true);
-
+        if(index==0){
+            $("#"+parent+" .start").find('option').prop('disabled', false);
+        }
     }
 
     function copyTime(){
@@ -533,7 +543,13 @@ function Calendar(){
             focusOnElement(settings.teleMessage);
             return false
         }
-        if($('#radio-button-end').prop("checked")==true && $('#end_date').val()==""){
+        
+        if($('#radio-button-startend').prop("checked")==true && $('#startdatepicker').val()==""){
+            settings.errorInputStart.text(errorResponses['missingStartDate']);
+            return false;
+        } 
+
+        if($('#radio-button-end').prop("checked")==true && $('#enddatepicker').val()==""){
             settings.radioInput.next('.error').text(errorResponses['missingDate']);
             return false;
         }
@@ -632,17 +648,18 @@ function Calendar(){
         if(dowTo==0){
             dowTo=7;
         }
-        if(dowFrom==0){
-            dowFrom=7;
-        }
         if(!(timetable.date.to=="0000-00-00")){
 
             for(var k=0;k<timetable.slots.length;k++){
-                if(timetable.slots[k].day<dowFrom || timetable.slots[k].day>dowTo){
-                    flag++;
+                if((timetable.slots[k].day<dowFrom)){
+                   if((timetable.slots[k].day<=dowTo) && dowTo<dowFrom)
+                    flag++
+                }
+                if((timetable.slots[k].day>=dowFrom)){
+                    flag++
                 }
             }
-            if(flag==timetable.slots.length){
+            if(flag==0){
                 settings.slots.find('.error').text(errorResponses['missingDateSlot']);
                 $('html, body').animate({
                     scrollTop: (settings.slots.closest('.second-container').offset().top)
@@ -661,7 +678,7 @@ function Calendar(){
         startTimeMapper:startTimeMapper,
         endTimeMapper:endTimeMapper,
         fullCalendar:fullCalendar,
-        highlighter:highlighter,
+        highlighter:highlighter, 
         startdate:startdate,
         enddate:enddate,
         testHighlight: testHighlight,

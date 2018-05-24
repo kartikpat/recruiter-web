@@ -507,7 +507,7 @@ label {
   background-position: left center; }
 
 .radio-input input:checked + label {
-  background-image: url("/static/images/checkbox.png"); }
+  background-image: url("/static/images/checked_radio.svg"); }
 
 .check-input input {
   display: none; }
@@ -1160,8 +1160,9 @@ body.posf {
             font-weight: 400;
             line-height: 40px;
             /* Approximation due to font substitution */
-            text-decoration: underline;
             text-align: center; }
+          .page-wrap .error-container .error-wrapper .content-container .link a:hover {
+            text-decoration: underline; }
 
 .icon-spinner-7:before {
   content: '\f529'; }
@@ -1263,9 +1264,6 @@ body.posf {
     opacity: 1; }
   100% {
     opacity: 0; } }
-
-img {
-  object-fit: cover; }
 
 a {
   text-decoration: none; }
@@ -1894,7 +1892,7 @@ label {
   background-position: left center; }
 
 .radio-input input:checked + label {
-  background-image: url("/static/images/checkbox.png"); }
+  background-image: url("/static/images/checked_radio.svg"); }
 
 .check-input input {
   display: none; }
@@ -2009,7 +2007,7 @@ span.sticker {
       .conversations .conversation-listing-container .conversations-listing .empty-screen-chat .image-container {
         text-align: center; }
         .conversations .conversation-listing-container .conversations-listing .empty-screen-chat .image-container img {
-          width: 50%; }
+          width: 70%; }
       .conversations .conversation-listing-container .conversations-listing .empty-screen-chat .user-text {
         text-align: center;
         padding-bottom: 10px;
@@ -2034,6 +2032,7 @@ span.sticker {
           vertical-align: middle; }
           .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-image img {
             border-radius: 50%;
+            object-fit: cover;
             width: 33px;
             height: 33px;
             border: 1px solid #dedcdc;
@@ -2867,7 +2866,7 @@ label {
   background-position: left center; }
 
 .radio-input input:checked + label {
-  background-image: url("/static/images/checkbox.png"); }
+  background-image: url("/static/images/checked_radio.svg"); }
 
 .check-input input {
   display: none; }
@@ -3513,7 +3512,7 @@ span.sticker {
               display: block;
               margin-bottom: 10px; }
             .page-content .main-wrapper .main-container .reports-wrapper .reports-body .report-row .report-item.title .report-author-link {
-              margin-right: 20px; }
+              margin-right: 15px; }
 
 @media all and (max-width: 768px) {
   .page-content .main-wrapper .main-container .reports-wrapper .reports-header .keyword-search {

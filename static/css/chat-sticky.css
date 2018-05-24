@@ -535,7 +535,7 @@ label {
   background-position: left center; }
 
 .radio-input input:checked + label {
-  background-image: url("/static/images/checkbox.png"); }
+  background-image: url("/static/images/checked_radio.svg"); }
 
 .check-input input {
   display: none; }
@@ -1188,8 +1188,9 @@ body.posf {
             font-weight: 400;
             line-height: 40px;
             /* Approximation due to font substitution */
-            text-decoration: underline;
             text-align: center; }
+          .page-wrap .error-container .error-wrapper .content-container .link a:hover {
+            text-decoration: underline; }
 
 .icon-spinner-7:before {
   content: '\f529'; }
@@ -1291,9 +1292,6 @@ body.posf {
     opacity: 1; }
   100% {
     opacity: 0; } }
-
-img {
-  object-fit: cover; }
 
 a {
   text-decoration: none; }
@@ -1922,7 +1920,7 @@ label {
   background-position: left center; }
 
 .radio-input input:checked + label {
-  background-image: url("/static/images/checkbox.png"); }
+  background-image: url("/static/images/checked_radio.svg"); }
 
 .check-input input {
   display: none; }
@@ -2037,7 +2035,7 @@ span.sticker {
       .conversations .conversation-listing-container .conversations-listing .empty-screen-chat .image-container {
         text-align: center; }
         .conversations .conversation-listing-container .conversations-listing .empty-screen-chat .image-container img {
-          width: 50%; }
+          width: 70%; }
       .conversations .conversation-listing-container .conversations-listing .empty-screen-chat .user-text {
         text-align: center;
         padding-bottom: 10px;
@@ -2062,6 +2060,7 @@ span.sticker {
           vertical-align: middle; }
           .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-image img {
             border-radius: 50%;
+            object-fit: cover;
             width: 33px;
             height: 33px;
             border: 1px solid #dedcdc;
@@ -2211,6 +2210,8 @@ span.sticker {
         margin-top: 3px;
         margin-left: 5px;
         line-height: 1.3; }
+        .chat-div-candidate .chat-div-header .candidate-name-container .cand-name-wrapper a:hover {
+          text-decoration: underline; }
       .chat-div-candidate .chat-div-header .candidate-name-container .candidate-name {
         margin-bottom: 0px;
         font-size: 14px;
@@ -2218,7 +2219,8 @@ span.sticker {
         white-space: nowrap;
         max-width: 115px;
         text-overflow: ellipsis;
-        line-height: 18px; }
+        line-height: 18px;
+        color: #2b2b2b; }
       .chat-div-candidate .chat-div-header .candidate-name-container .last-active-date {
         font-size: 9px; }
     .chat-div-candidate .chat-div-header .info-buttons {
@@ -2440,3 +2442,5 @@ span.sticker {
   color: #fff !important; }
   .newMessageHeader img {
     background-color: #f7f7f7 !important; }
+  .newMessageHeader .cand-name-wrapper a {
+    color: #fff !important; }

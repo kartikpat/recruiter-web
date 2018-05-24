@@ -38,6 +38,7 @@ function Candidate() {
         settings.recommendationListSecond = $(".recommendationListSecond");
         settings.tagArr = [],
         settings.candidateDownloadResume = $(".candidateDownloadResume");
+        settings.interviewInvite=$('.interviewinvite')
         jQuery("#tabbed-content").tabs({
             activate: function(event, ui) {
                 if(ui.newTab[0]["innerText"] == "COVER LETTER") {
@@ -107,8 +108,9 @@ function Candidate() {
             }
             fn()
         })
-
+       
     }
+
 
     function closeModal(){
         settings.candidateDetailsModal.scrollTop(0)
@@ -183,6 +185,7 @@ function Candidate() {
             salary: modal.find(".js_sal"),
             skillsList: modal.find(".js_skills_list"),
             candidateTagList: modal.find(settings.candidateTagListClass),
+            inviteText:modal.find(".interviewinvite"),
             lastActive: modal.find(".js_last_login"),
             eduList: modal.find(".js_edu_list"),
             profList: modal.find(".js_prof_list"),
@@ -278,32 +281,32 @@ function Candidate() {
         var item = getElement(aData["userID"]);
         item.element.attr("data-application-id", aData["id"])
         item.image.attr("src", (aData["img"] || "/static/images/noimage.png"))
-        item.name.text(aData["name"] || "NA");
-        item.experience.text(aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m" || "NA");
-        item.location.text(aData["currentLocation"] || "NA");
+        item.name.text(aData["name"] || "N/A");
+        item.experience.text(aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m" || "N/A");
+        item.location.text(aData["currentLocation"] || "N/A");
         var preferredLocationStr = "N.A."
         if(aData['isSent']==1){
-            item.element.find('.interviewinvite').text("Interview Invite Sent!")
+            item.element.find('.interviewinvite').text("Interview Invite Sent")
             item.element.find('.inviteText').removeClass("underline").addClass("non-underline")
             item.element.find('.inviteF2f .icon-container').removeClass('hidden');
             item.element.find('.inviteF2f .loadingScroller').addClass('hidden');
         }
         if(aData['isSent']==2){
-            item.element.find('.interviewinvite').text("Interview Invite Sent!")
+            item.element.find('.interviewinvite').text("Interview Invite Sent")
             item.element.find('.inviteText').removeClass("underline").addClass("non-underline")
             item.element.find('.inviteTelephonic .icon-container').removeClass('hidden');
             item.element.find('.inviteTelephonic .loadingScroller').addClass('hidden');
         }
         if(aData["preferredLocation"].length) {
             var locationTitle = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? aData["preferredLocation"].join(','): null;
-            var preferredLocationStr = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? "Multiple Locations" : aData["preferredLocation"].join(',');
+            var preferredLocationStr = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? "Multiple Locations" : aData["preferredLocation"].join(' ,');
         }
         item.preferredLocation.text(preferredLocationStr);
         item.preferredLocationDetail.text(aData["preferredLocation"]);
         item.preferredLocation.attr("title",locationTitle).addClass('tooltip');
          initializeTooltip();
-        item.contact.text(aData["phone"] || "NA");
-        item.email.text(aData["email"]||"NA");
+        item.contact.text(aData["phone"] || "N/A");
+        item.email.text(aData["email"]||"N/A");
 
         if(ifKeyExists("emailVer", aData) && aData["emailVer"]) {
             item.iconEmailVer.removeClass("hidden")
@@ -312,7 +315,7 @@ function Candidate() {
         if(ifKeyExists("phoneVer", aData) && aData["phoneVer"]) {
             item.iconTelephoneVer.removeClass("hidden")
         }
-        item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY') || "NA")
+        item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY') || "N/A")
         if(aData["notice"] == 7) {
             item.notice.text("Immediately Available");
         }
@@ -360,7 +363,7 @@ function Candidate() {
                     var toMon = getMonthName(anObj["exp"]["to"]["month"]);
                     var fromYear = anObj["exp"]["from"]["year"];
                     var toYear = anObj["exp"]["to"]["year"];
-                    var str = (anObj["is_current"]) ? fromMon + " , " + fromYear + " to Present": fromMon + " , " + fromYear + " to " + toMon + " , " + toYear;
+                    var str = (anObj["is_current"]) ? fromMon + ", " + fromYear + " to Present": fromMon + ", " + fromYear + " to " + toMon + ", " + toYear;
                 }
                 item.tenure.text(str);
                 if(index != aData["jobs"].length - 1)
@@ -482,6 +485,11 @@ function Candidate() {
                 item.socialTw.attr("href", aData["social"]["t"]).removeClass("hidden");
             }
         }
+
+        if(aData["invite"]==1){
+            settings.interviewInvite.text("Interview Invite already Sent!");
+        }
+        
         openModal(item)
 
         if(!type)
@@ -497,6 +505,8 @@ function Candidate() {
                 return focusOnElement(item.mobComment, settings.mobCandidateCommentContainerClass)
                 return focusOnElement(item.comment, settings.candidateCommentContainerClass)
         }
+
+     
     }
 
     function failCallback() {
@@ -573,6 +583,7 @@ function Candidate() {
         item.iconEmailVer.addClass("hidden")
         item.contact.text('');
         item.email.text('');
+        item.inviteText.text("Send Interview Invite")
         $(".coverLetterTab").addClass("hidden");
     }
 
@@ -584,7 +595,17 @@ function Candidate() {
     }
 
     function onClickAddComment(fn) {
-
+        settings.candidateDetailsModal.on('keyup', settings.candidateCommentTextareaClass,function(event) {
+            if(event.which==13){
+                var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
+                var comment = ($(settings.candidateCommentTextareaClass).val()).trim();
+                if(!comment) {
+                    return
+                }
+                fn(applicationId,comment);
+            }   
+        });
+        
         settings.candidateDetailsModal.on('click', settings.candidateAddCommentButtonClass,function(event) {
             event.stopPropagation();
 
@@ -647,11 +668,35 @@ function Candidate() {
             if (event.which != 13) {
                  $(this).removeAttr("tag-id")
             }
+            if(event.which==13){
+                var tagName = ($(settings.candidateTagInputClass).val()).trim();
+                if(!tagName) {
+                    $(settings.candidateTagInputClass).addClass("error-border");
+                    return settings.tagInputError.removeClass("hidden")
+                }
+                else {
+                    $(settings.candidateTagInputClass).removeClass("error-border");
+                    settings.tagInputError.addClass("hidden")
+                }
+                var obj = searchObjByKey(settings.tagArr, tagName, "name")
+                var tagId = $(settings.mobCandidateTagInputClass).attr("tag-id");
+                if(obj) {
+                    tagId = obj["id"]
+                }
+                $(this).removeAttr("tag-id")
+                var parameters = {}
+                if(tagId) {
+                    parameters.tagId = tagId;
+                }
+                parameters.tagName = tagName;
+                var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
+                return fn(applicationId, parameters);
+            }
             return fn1(tagName)
         });
         settings.candidateDetailsModal.on('click', settings.candidateAddTagButtonClass,function(event) {
             event.stopPropagation();
-            console.log($('.candidateTagInput').val());
+            debugger
             var tagName = ($(settings.candidateTagInputClass).val()).trim();
             if(!tagName) {
                 $(settings.candidateTagInputClass).addClass("error-border");

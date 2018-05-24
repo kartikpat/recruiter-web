@@ -24,6 +24,7 @@ $(document).ready(function() {
 			document.getElementById("login").disabled=false;
 			return window.location = callbackUrl
 	    }
+		// debugger
 		window.location = staticEndPoints.dashboard;
 		document.getElementById("login").disabled=false;
 	}
@@ -53,6 +54,7 @@ $(document).ready(function() {
 		$('#register').prev().removeClass('hidden');
 		$('#register').addClass('hidden');
 		//document.getElementById("register").innerHTML = '<span class= "inline-spinner"></span>';
+
 		window.location = "/verify-email";
 		document.getElementById("register").disabled=false;
 	}

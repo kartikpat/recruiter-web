@@ -40,15 +40,21 @@ function Manage() {
             return
         }
         var data = sortArrayOfObjectsByKeyDescending(data, "timestamp");
+        var count=0;
         data.forEach(function(aRow){
+            count++;
             var calendarRow =  settings.calendarRowPrototype.clone().removeClass('prototype hidden');
-            calendarRow.find(settings.rowDate).text(moment(aRow.timestamp).format('MMM DD,YYYY'));
+            calendarRow.find(settings.rowDate).text(moment(aRow.timestamp).format('MMM DD, YYYY'));
             calendarRow.find(settings.rowName).text(aRow.name).attr("href","/calendar/"+aRow["id"]+"/edit");
             var left = (aRow['left'] >100) ? "100+" : aRow['left'];
             calendarRow.find(settings.rowSlots).text(left);
             calendarRow.find(settings.editSchedule).attr("href","/calendar/"+aRow["id"]+"/edit");
             settings.rowContainer.append(calendarRow);
         });
+        if(count==data.length){
+            settings.rowContainer.append("<div class='no-data-list'>You have reached the end of the list</div>")
+        }
+
     }
 
     return{

@@ -3,7 +3,7 @@ var errorResponses = {
 	missingEmail: 'Please enter email id',
 	invalidEmail: 'Please enter a valid email id',
 	missingPhone: 'Please enter phone number',
-	invalidPhone: 'Please add a valid 10 digit number.',
+	invalidPhone: 'Please add a valid 10 digit number',
 	missingDesignation: 'Please enter the designation',
 	missingOrganization: 'Please enter the organisation',
 	missingPassword: 'Please enter a password',
@@ -16,7 +16,7 @@ var errorResponses = {
 	serviceError: 'Oops! Our engineers are working on fixing this, please try again after sometime.',
 	duplicate: 'This email is already registered. Please login.',
 	minLengthPassword: 'Password should be at least 6 characters',
-	missingRecruiterType: 'Please Select Recruiter Type',
+	missingRecruiterType: 'Please select recruiter type',
 	noInternet: 'Looks like you are not connected to the internet'
 }
 function registerUser(){

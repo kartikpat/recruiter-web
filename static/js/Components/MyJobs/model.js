@@ -251,7 +251,7 @@ function Jobs() {
 				break;
 			case "pending":
 				obj["status"] = 'Under review'
-				obj["message"] = 'We are reviewing this job. This usually takes upto 24 hours.'
+				obj["message"] = 'We are reviewing this job. This usually takes up to 4 hours if posted between 9am-5pm on a working weekday.'
 				break;
 			case "published":
 				obj["status"] = 'Published'
@@ -295,7 +295,12 @@ function Jobs() {
 		var item = cloneElement(aData["id"]);
 		var title = getTitleFormat(aData["title"], (/\(\d+-\d+ \w+\)$/));
 		item.createdOn.text(getDateFormat(aData["created"]))
-		item.title.text(title).attr("href", "/job/"+aData["id"]+"/details")
+		item.title.text(title);
+		if(aData["status"]=="published")
+		item.title.attr("href", "/job/"+aData["id"]+"/details")
+		else
+		item.title.attr("href", "#")
+		
 		item.element.find('.action-icon').attr('data-job-id',aData["id"]);
 
 		var loc = aData["location"];
