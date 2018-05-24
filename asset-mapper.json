@@ -2031,12 +2031,8 @@
 				"static/css/fullcalendar.css",
 				"static/css/old-header.css",
 				"static/css/vendor/medium-editor.min.css",
-<<<<<<< HEAD
-                "static/css/calendarIe.css"
-=======
-                "static/css/Interview-scheduler-updated.css",
-				"static/css/interview-scheduler-updated-ie.css"
->>>>>>> feature/calendar-ie
+		        "static/css/calendarIe.css"
+
             ],
             "prod":[
                 "static/build/css/Interview-scheduler-updated.min.css"

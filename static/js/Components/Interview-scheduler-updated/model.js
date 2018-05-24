@@ -123,19 +123,14 @@ function Calendar(){
             $('#enddatepicker').datepicker('setDate', null);
         }
         if($('#radio-button-end').prop("checked")==true){
-<<<<<<< HEAD
-            toDate=$('#end_date').val();
-=======
+
+
             toDate=$('#end_date').datepicker().val();
->>>>>>> feature/calendar-ie
+            toDate=$('#end_date').val();
         }
 
         date.from=fromDate;
         date.to=toDate;
-<<<<<<< HEAD
-=======
-
->>>>>>> feature/calendar-ie
         timetable.date=date;
             $.each(settings.dayId,function(){
                 var id=$(this).attr('id');
@@ -147,15 +142,7 @@ function Calendar(){
                     $("#"+id+ "").css("opacity","1");
                 }
                 var startvalue=$("#"+id+ "").find(settings.start_time).val();
-<<<<<<< HEAD
                 startTimeMapper(id)
-                
-
-=======
-                if(startvalue>0){
-                    startTimeMapper(id)
-                }
->>>>>>> feature/calendar-ie
                 var endvalue=$("#"+id+ "").find(settings.end_time).val();
                 endTimeMapper(id)
                 

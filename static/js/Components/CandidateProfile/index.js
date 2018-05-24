@@ -15,7 +15,6 @@ jQuery(document).ready( function() {
     //initializing the models
     aCandidate.init();
 
-<<<<<<< HEAD
     page('/job/'+jobId+'/applications', function(context, next){
         debugger;
         window.location.href='/job/'+jobId+'/applications?'+context.querystring;
@@ -24,8 +23,7 @@ jQuery(document).ready( function() {
     page();
     var successMsg = getQueryParameter("type");
     var successRef= getQueryParameter("ref");
-=======
->>>>>>> feature/calendar-ie
+
     fetchCandidateProfile(recruiterId, jobId, applicationId)
     submitPageVisit(recruiterId, screenName, jobId);
     var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitSuccess:"+screenName, onPageVisitUpdateSuccess)
@@ -192,12 +190,7 @@ jQuery(document).ready( function() {
     function onCandidateProfileFetchSuccess(topic, res) {
         console.log(res.data)
         store.saveToStore(res.data)
-<<<<<<< HEAD
-=======
-        if(parseInt(res.data[0].status) == 0)
-            setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
-            
->>>>>>> feature/calendar-ie
+
         aCandidate.populateCandidateData(res.data[0])
         if(successMsg!="download"){
             setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
