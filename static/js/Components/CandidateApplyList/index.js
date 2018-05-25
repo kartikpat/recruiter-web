@@ -11,8 +11,21 @@ var globalParameters = {
 }
 var screenName = "candidate-apply-list";
 
+
 jQuery(document).ready( function() {
 
+
+    if (sessionStorage.scrollTop != "undefined") {
+        console.log(sessionStorage.scrollTop)
+        $(window).scrollTop(4389);
+    }
+    
+    $(window).scroll(function() {
+        sessionStorage.scrollTop = $(this).scrollTop();
+        console.log("here..here..")
+        console.log(sessionStorage.scrollTop)
+    });
+    
     // creating the instance of models
 	var candidates = candidateList();
     var aCandidate = Candidate();

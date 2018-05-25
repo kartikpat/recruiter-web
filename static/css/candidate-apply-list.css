@@ -4991,7 +4991,7 @@ input::-webkit-input-placeholder {
                 vertical-align: middle;
                 line-height: 40px; }
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .cand-add-tag-action-btn {
-                margin-top: 10px; }
+                margin-top: 5px; }
               .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments textarea {
                 width: 50%;
                 resize: none;
@@ -5246,7 +5246,7 @@ input::-webkit-input-placeholder {
           padding: 6px 15px; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.cand-comment-button {
           margin: 0;
-          margin-top: 10px;
+          margin-top: 5px;
           border-radius: 4px;
           padding: 6px 14px;
           font-size: 14px !important;
@@ -5296,11 +5296,12 @@ input::-webkit-input-placeholder {
           color: #1f8f75 !important; }
       .view-resume-modal .resume-sidebar .external-links ul .table-row-separator {
         border-bottom: 1px solid #e8e8e8 !important;
-        margin-top: 20px; }
-      .view-resume-modal .resume-sidebar .external-links ul .invite {
-        margin-left: 4px; }
-        .view-resume-modal .resume-sidebar .external-links ul .invite:hover {
-          text-decoration: none; }
+        margin-top: 20px;
+        margin-bottom: 20px; }
+      .view-resume-modal .resume-sidebar .external-links ul .invite .interviewinvite {
+        font-size: 16px; }
+      .view-resume-modal .resume-sidebar .external-links ul .invite:hover {
+        text-decoration: none; }
       .view-resume-modal .resume-sidebar .external-links ul .inviteF2f {
         margin-left: -3px; }
       .view-resume-modal .resume-sidebar .external-links ul .inviteTelephonic {
@@ -5333,7 +5334,7 @@ input::-webkit-input-placeholder {
         cursor: pointer; }
       .view-resume-modal .resume-sidebar .sidebar-section .cand-add-tag {
         min-height: 40px;
-        padding: 0 10px;
+        padding: 0 5px;
         padding-top: 0px !important;
         text-align: left;
         vertical-align: middle;
