@@ -4,6 +4,25 @@ dataModel.revisit = false;
 profile.lastSeen = moment().subtract(1, 'days').format("x");
 var settings = {}
 
+
+
+$('.continueButton').click(function(){
+	$('.dashboardModal').fadeOut();
+	var object = {value: "view", timestamp: new Date().getTime()}
+	localStorage.setItem("dashboardModal", JSON.stringify(object));
+	
+})
+
+var object = JSON.parse(localStorage.getItem("dashboardModal"))
+
+if(object==null){
+	$('.dashboardModal').removeClass("hidden");
+}
+
+var date=new Date();
+
+console.log(date)
+	
 function Notifications(){
 	var settings ={};
 	settings.notificationContainer= $('#notificationContainer');

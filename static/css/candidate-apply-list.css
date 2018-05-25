@@ -3391,16 +3391,24 @@ input::-webkit-input-placeholder {
   font-size: 13px; }
 
 .bulkActionModal .modal_text {
-  padding: 10px 0; }
+  padding: 2px 0;
+  font-size: 15px; }
 
 .bulkActionModal .jsModalTextSecondary {
-  color: #808080; }
+  color: #808080;
+  font-size: 14px; }
+
+.bulkActionModal .section {
+  padding-top: 10px !important;
+  padding-bottom: 25px !important; }
 
 .bulkActionModal textarea {
-  width: 50%;
-  min-height: 50px;
+  width: 100%;
+  resize: none;
+  min-height: 65px;
   border: 1px solid #e8e8e8;
-  padding: 10px 20px; }
+  padding: 10px 20px;
+  font-size: 14px; }
   .bulkActionModal textarea:focus {
     outline: none;
     border: 1px solid #4fa995; }
