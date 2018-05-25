@@ -16,7 +16,6 @@ jQuery(document).ready( function() {
     aCandidate.init();
 
     page('/job/'+jobId+'/applications', function(context, next){
-        
         window.location.href='/job/'+jobId+'/applications?'+context.querystring;
         return
     })
