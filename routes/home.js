@@ -795,8 +795,6 @@ module.exports = function(settings){
 	app.use(bodyParser.urlencoded({ extended: true }));
 	
 	app.post("/recruiter/:recruiterId/calendar", function(req, res){
-		console.log(req.body)	
-		console.log("//////////////////////")
 		const recruiterId = req.params.recruiterId,
 			  calendarId = req.params.calendarId
 
@@ -822,9 +820,7 @@ module.exports = function(settings){
 			body:req.body,
 		  json: true
 		};
-		console.log(options)
 		request(options, function (error, response, body) {
-			console.log(body)
 			if (error){
 				return res.json(response);
 			}

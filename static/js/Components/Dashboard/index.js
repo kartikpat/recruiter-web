@@ -577,7 +577,7 @@ function onClickShareOnLinkedIn(fn){
 
 	function onFetchCalendars(topic,data){
 		var dataLength=data.data.length;
-		if(dataLength>1){
+		if(dataLength==0){
 			$('.schedulebutton .links').text('Create Calendar').attr("href", staticEndPoints.createCalendar).addClass("createCalendar");
 		}
 	}
