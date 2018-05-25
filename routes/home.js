@@ -762,8 +762,6 @@ module.exports = function(settings){
 
 
 	app.post("/recruiter/login/verify", function(req, res){
-		console.log(req)
-		console.log(res)
 		const oldCookie=req.cookies[config['oldCookie']]
 		const accessToken = req.cookies[config["cookie"]];
 		var options = { method: 'POST',
@@ -777,14 +775,13 @@ module.exports = function(settings){
 			},
 		  json: true
 		};
-		req(options, function (error, response, body) {
+		request(options, function (error, response, body) {
 			if (error){
-				console.log(error)
 				return res.json(response);
 			}
 			const jsonBody = body;
 			if(jsonBody.status && jsonBody.status =='success'){
-				return res.json(body);
+				return res.json(jsonBody);
 			}
 			else {
 				return res.json(jsonBody);
@@ -793,7 +790,13 @@ module.exports = function(settings){
 		});
 	});
 
+	var bodyParser = require('body-parser');
+	app.use(bodyParser.json()); // support json encoded bodies
+	app.use(bodyParser.urlencoded({ extended: true }));
+	
 	app.post("/recruiter/:recruiterId/calendar", function(req, res){
+		console.log(req.body)	
+		console.log("//////////////////////")
 		const recruiterId = req.params.recruiterId,
 			  calendarId = req.params.calendarId
 
@@ -816,9 +819,12 @@ module.exports = function(settings){
 			'Authorization': 'Bearer '+ accessToken,
 			'Content-Type': 'application/json'
 			},
+			body:req.body,
 		  json: true
 		};
+		console.log(options)
 		request(options, function (error, response, body) {
+			console.log(body)
 			if (error){
 				return res.json(response);
 			}
@@ -834,7 +840,7 @@ module.exports = function(settings){
 	});
 
 	app.post("/recruiter/:recruiterId/calendar/:calendarId", function(req, res){
-
+		console.log("i am here tooo")
 		const recruiterId = req.params.recruiterId,
 			  calendarId = req.params.calendarId
 
@@ -857,6 +863,7 @@ module.exports = function(settings){
 			'Authorization': 'Bearer '+ accessToken,
 			'Content-Type': 'application/json'
 			},
+			body:req.body,
 		  json: true
 		};
 		request(options, function (error, response, body) {
