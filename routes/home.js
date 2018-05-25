@@ -135,6 +135,9 @@ module.exports = function(settings){
 	// 	});
 	// }))
 
+	app.get("/health-check", function(req, res){
+		return res.status(200).send('');
+	})
 	app.get("/", isAuthenticated,function(req, res){
 		if(req.profile.onboarding==1){
 			res.render("dashboardview", {
