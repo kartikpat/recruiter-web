@@ -2,8 +2,8 @@ function ChatEngine(){
 
 	function initialize(recruiterId, email) {
 	    pubnub = new PubNub({
-		    publishKey:"pub-c-78f4982d-59c1-4f7c-99bd-7840539dce3b",// "pub-c-5069ae94-20a5-4328-8281-4e1c630cd6f2",
-	    	subscribeKey: "sub-c-cac4b854-8dc1-11e5-a04a-0619f8945a4f",//"sub-c-13938756-ada8-11e7-85f8-821de3cbacaa",
+		    publishKey:pubKey,// "pub-c-5069ae94-20a5-4328-8281-4e1c630cd6f2",
+	    	subscribeKey: subKey,//"sub-c-13938756-ada8-11e7-85f8-821de3cbacaa",
 		    uuid: setUUID(recruiterId+'--'+email),
 		    heartbeat: 120,
 		    heartbeatInterval: 30
