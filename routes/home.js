@@ -756,7 +756,8 @@ module.exports = function(settings){
 			profile: req.profile,
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
-			cookie: config['cookie']
+			cookie: config['cookie'],
+			baseDomainName: baseDomainName
 		});
 		return
 	});
