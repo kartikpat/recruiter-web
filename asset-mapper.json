@@ -1,35 +1,4 @@
 {
-	"my-profile": {
-		"styles": {
-			"debug" : [
-				"static/css/header.css",
-        		"static/css/index.css",
-				"static/css/buttons.css",
-				"static/css/footer.css",
-				"static/css/animate.css",
-				"static/css/utilities.css"
-
-			],
-			"prod": [
-				"static/build/css/index.min.css"
-
-			]
-		},
-		"scripts": {
-			"debug": [
-				"static/js/vendor/jquery.min.js",
-				"static/js/vendor/hello.min.js",
-				"static/js/Utilities/request.js",
-				"static/js/header.js",
-				"static/js/index.js",
-				"static/js/Tracker/tracker.js",
-				"static/js/eventMapping.js"
-			],
-			"prod" : [
-				"static/build/js/index.min.js"
-			]
-		}
-	},
 	"job-details": {
 		"styles": {
 			"debug" : [
@@ -412,84 +381,6 @@
 			]
 		}
 	},
-	"candidate-list": {
-		"styles": {
-			"debug" : [
-				"static/css/jquery-ui.min.css",
-				"static/css/header.css",
-
-            	"static/css/candidate-list.css",
-
-
-				"static/css/footer.css",
-				"static/css/buttons.css",
-				"static/css/colors.css",
-				"static/css/animate.css",
-				"static/css/utilities.css"
-			],
-			"prod": [
-				"static/build/css/candidate-list.min.css"
-
-			]
-		},
-		"scripts": {
-			"debug": [
-				"static/js/vendor/jquery.min.js",
-				"static/js/vendor/jquery-ui.min.js",
-				"static/js/vendor/pdf.js",
-				"static/js/vendor/pdf.worker.js",
-				"static/js/pdfJs.js",
-				"static/js/Utilities/request.js",
-				"static/js/header.js",
-				"static/js/candidate-list.js",
-				"static/js/tags/industry.js",
-				"static/js/tags/current-location.js",
-				"static/js/tags/preferred-location.js",
-				"static/js/tags/language.js",
-				"static/js/tags/functional-area.js",
-				"static/js/tags/institute.js"
-			],
-			"prod" : [
-				"static/build/js/candidate-list.min.js"
-			]
-		}
-	},
-	"candidate-list-one": {
-		"styles": {
-			"debug" : [
-				"static/css/jquery-ui.min.css",
-				"static/css/header.css",
-            	"static/css/candidate-list-one.css",
-				"static/css/footer.css",
-				"static/css/buttons.css",
-				"static/css/colors.css",
-				"static/css/animate.css",
-				"static/css/utilities.css"
-			],
-			"prod": [
-				"static/build/css/candidate-list-one.min.css"
-
-			]
-		},
-		"scripts": {
-			"debug": [
-				"static/js/vendor/jquery.min.js",
-				"static/js/vendor/jquery-ui.min.js",
-				"static/js/Utilities/request.js",
-				"static/js/header.js",
-				"static/js/candidate-list-one.js",
-				"static/js/tags/industry.js",
-				"static/js/tags/current-location.js",
-				"static/js/tags/preferred-location.js",
-				"static/js/tags/language.js",
-				"static/js/tags/functional-area.js",
-				"static/js/tags/institute.js"
-			],
-			"prod" : [
-				"static/build/js/candidate-list-one.min.js"
-			]
-		}
-	},
 	"view-resume": {
 		"styles": {
 			"debug" : [
@@ -545,94 +436,6 @@
 			]
 		}
 	},
-	"calendar-events": {
-		"styles": {
-			"debug" : [
-				"static/css/header.css",
-				"static/css/calendar-events.css",
-				"static/css/buttons.css",
-				"static/css/colors.css",
-				"static/css/utilities.css",
-				"static/css/footer.css"
-			],
-			"prod": [
-				"static/build/css/calendar-events.min.css"
-			]
-		},
-		"scripts": {
-			"debug": [
-				"static/js/vendor/jquery.min.js",
-				"static/js/Utilities/request.js",
-				"static/js/header.js",
-				"static/js/calendar-events.js"
-			],
-			"prod" : [
-				"static/build/js/calendar-events.min.js"
-			]
-		}
-	},
-	"manage-calendar": {
-		"styles": {
-			"debug" : [
-				"static/css/header.css",
-				"static/css/modal.css",
-				"static/css/jquery.timepicker.min.css",
-				"static/css/jquery-ui.min.css",
-				"static/css/manage-calendar.css",
-				"static/css/buttons.css",
-				"static/css/colors.css",
-				"static/css/utilities.css",
-				"static/css/footer.css"
-			],
-			"prod": [
-				"static/build/css/manage-calendar.min.css"
-			]
-		},
-		"scripts": {
-			"debug": [
-				"static/js/vendor/jquery.min.js",
-				"static/js/Utilities/request.js",
-				"static/js/vendor/jquery-ui.min.js",
-				"static/js/vendor/jquery.timepicker.min.js",
-				"static/js/header.js",
-				"static/js/manage-calendar.js"
-			],
-			"prod" : [
-				"static/build/js/manage-calendar.min.js"
-			]
-		}
-	},
-	"view-booked-slots": {
-		"styles": {
-			"debug" : [
-				"static/css/header.css",
-				"static/css/fullcalendar.min.css",
-				"static/css/calendar.css",
-				"static/css/view-booked-slots.css",
-				"static/css/buttons.css",
-				"static/css/colors.css",
-				"static/css/utilities.css",
-				"static/css/footer.css"
-			],
-			"prod": [
-				"static/build/css/view-booked-slots.min.css"
-			]
-		},
-		"scripts": {
-			"debug": [
-				"static/js/vendor/jquery.min.js",
-				"static/js/vendor/moment.min.js",
-        		"static/js/vendor/fullcalendar.js",
-				"static/js/vendor/gcal.min.js",
-				"static/js/Utilities/request.js",
-				"static/js/header.js",
-				"static/js/view-booked-slots.js"
-			],
-			"prod" : [
-				"static/build/js/view-booked-slots.min.js"
-			]
-		}
-	},
 	"chat": {
 		"styles": {
 			"debug" : [
@@ -658,33 +461,6 @@
 			],
 			"prod" : [
 				"static/build/js/chat.min.js"
-			]
-		}
-	},
-	"export-profile": {
-		"styles": {
-			"debug" : [
-				"static/css/header.css",
-				"static/css/buttons.css",
-				"static/css/colors.css",
-				"static/css/export-profile.css",
-				"static/css/utilities.css",
-				"static/css/footer.css"
-			],
-			"prod": [
-				"static/build/css/export-profile.min.css"
-			]
-		},
-		"scripts": {
-			"debug": [
-				"static/js/vendor/jquery.min.js",
-				"static/js/vendor/hello.min.js",
-				"static/js/Utilities/request.js",
-				"static/js/header.js",
-				"static/js/export-profile.js"
-			],
-			"prod" : [
-				"static/build/js/export-profile.min.js"
 			]
 		}
 	},

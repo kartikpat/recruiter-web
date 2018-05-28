@@ -10,7 +10,7 @@ $(document).ready(function() {
 	})
 
 	function onSuccessfulLogin(topic, data){
-		localStorage.id = data["id"];
+		// localStorage.id = data["id"];
 		window.location=staticEndPoints.dashboard;
 	}
 	function onFailedLogin(topic, data){
