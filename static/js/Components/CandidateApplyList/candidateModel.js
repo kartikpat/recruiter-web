@@ -108,7 +108,7 @@ function Candidate() {
             }
             fn()
         })
-       
+
     }
 
 
@@ -298,11 +298,11 @@ function Candidate() {
             item.element.find('.inviteTelephonic .loadingScroller').addClass('hidden');
         }
         if(aData["preferredLocation"].length) {
-            var locationTitle = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? aData["preferredLocation"].join(','): null;
-            var preferredLocationStr = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? "Multiple Locations" : aData["preferredLocation"].join(' ,');
+            var locationTitle = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? aData["preferredLocation"].join(', '): null;
+            var preferredLocationStr = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? "Multiple Locations" : aData["preferredLocation"].join(', ');
         }
         item.preferredLocation.text(preferredLocationStr);
-        item.preferredLocationDetail.text(aData["preferredLocation"]);
+        item.preferredLocationDetail.text(aData["preferredLocation"].join(', '));
         item.preferredLocation.attr("title",locationTitle).addClass('tooltip');
          initializeTooltip();
         item.contact.text(aData["phone"] || "N/A");
@@ -489,7 +489,7 @@ function Candidate() {
         if(aData["invite"]==1){
             settings.interviewInvite.text("Interview Invite already Sent!");
         }
-        
+
         openModal(item)
 
         if(!type)
@@ -506,7 +506,7 @@ function Candidate() {
                 return focusOnElement(item.comment, settings.candidateCommentContainerClass)
         }
 
-     
+
     }
 
     function failCallback() {
@@ -603,9 +603,9 @@ function Candidate() {
                     return
                 }
                 fn(applicationId,comment);
-            }   
+            }
         });
-        
+
         settings.candidateDetailsModal.on('click', settings.candidateAddCommentButtonClass,function(event) {
             event.stopPropagation();
 

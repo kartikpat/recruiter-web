@@ -2291,14 +2291,14 @@ span.sticker {
             display: inline-block;
             float: left; }
             .chat-div-candidate .content-footer-container .chat-div-content ul li.message.received .message-area p {
-              line-height: 1.5; }
+              line-height: 1.5;
+              text-align: right; }
               .chat-div-candidate .content-footer-container .chat-div-content ul li.message.received .message-area p.message-content {
-                background-color: #FFF;
+                background-color: #f9f9f9;
                 border: 1px solid #e8e8e8;
                 border-radius: 4px;
                 padding: 5px 10px;
                 font-size: 13px;
-                font-size: 14px;
                 max-width: calc(100vw - 130px);
                 word-break: break-word;
                 text-align: left;

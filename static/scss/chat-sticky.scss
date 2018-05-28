@@ -263,14 +263,13 @@
 
                                 p {
                                     line-height:1.5;
-
+                                    text-align: right;
                                     &.message-content {
-                                        background-color:$color-white;
-                                        border:1px solid $border-color-base;
-                                        border-radius:4px;
+                                        background-color: #f9f9f9;
+                                        border: 1px solid #e8e8e8;
+                                        border-radius: 4px;
                                         padding: 5px 10px;
                                         font-size: 13px;
-                                        font-size:$base-font-size;
                                         max-width: calc(100vw - 130px);
                                         word-break: break-word;
                                         text-align: left;
