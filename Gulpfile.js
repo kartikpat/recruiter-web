@@ -93,7 +93,7 @@ gulp.task('watch', ['clean','build-sass', 'build-css'], function(){
 	gulp.watch('static/scss/**/*.scss', ['build-sass']);
 });
 
-gulp.task('build', ['clean', 'build-sass', 'build-css']);
+gulp.task('build', ['clean', 'build-sass', 'build-css', 'build-js']);
 
 
 gulp.task('default', ['watch']);
