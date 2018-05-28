@@ -67,8 +67,6 @@
 				"static/js/Utilities/pubsub.js",
 				"static/js/Tracker/tracker.js",
 				"static/js/eventMapping.js"
-
-
 			],
 			"prod" : [
 				"static/build/js/reset-password.min.js"
@@ -312,7 +310,7 @@
 				"static/js/Utilities/toastNotifier.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js",
- "static/js/Services/submitChatMessage.js",
+ 				"static/js/Services/submitChatMessage.js",
 				"static/js/Tracker/tracker.js",
 				"static/js/eventMapping.js"
 			],
@@ -407,7 +405,7 @@
 				"static/js/Components/TaggedCandidates/index.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js",
- "static/js/Services/submitChatMessage.js",
+ 				"static/js/Services/submitChatMessage.js",
 				"static/js/vendor/tooltipster.main.min.js",
 				"static/js/Tracker/tracker.js",
 				"static/js/eventMapping.js"
@@ -447,7 +445,7 @@
 				"static/js/Utilities/common.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js",
- "static/js/Services/submitChatMessage.js",
+ 				"static/js/Services/submitChatMessage.js",
 				"static/js/vendor/moment.min.js",
 				"static/js/Services/globalSearch.js",
 				"static/js/Components/Header/model.js",
@@ -512,7 +510,7 @@
 				"static/js/Utilities/toastNotifier.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js",
- "static/js/Services/submitChatMessage.js",
+ 				"static/js/Services/submitChatMessage.js",
 				"static/js/vendor/tooltipster.main.min.js",
 				"static/js/Services/fetchRecruiterCalendar.js",
 				"static/js/Tracker/tracker.js",
@@ -551,7 +549,7 @@
 				"static/js/header.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js",
- "static/js/Services/submitChatMessage.js",
+ 				"static/js/Services/submitChatMessage.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
 				"static/js/Utilities/modal.js",
@@ -878,7 +876,7 @@
 				"static/css/verify-email.css"
 			],
 			"prod": [
-				"static/build/css/welcome.min.css"
+				"static/build/css/verify-email.css"
 			]
 		},
 		"scripts": {
@@ -900,7 +898,7 @@
 				"static/js/eventMapping.js"
 			],
 			"prod" : [
-				"static/build/js/welcome.min.js"
+				"static/build/js/verify-email.min.js"
 			]
 		}
 	},
@@ -1030,7 +1028,7 @@
 
 			],
 			"prod" : [
-				"static/build/js/about-us.min.js"
+				"static/build/js/privacy.min.js"
 			]
 		}
 	},
@@ -1061,7 +1059,7 @@
 				"static/js/eventMapping.js"
 			],
 			"prod" : [
-				"static/build/js/about-us.min.js"
+				"static/build/js/terms-condition.min.js"
 			]
 		}
 	},
@@ -1075,7 +1073,7 @@
 				"static/css/footer.css"
 			],
 			"prod": [
-				"static/build/css/terms-condition.min.css"
+				"static/build/css/error404.min.css"
 			]
 		},
 		"scripts": {
@@ -1091,7 +1089,7 @@
 				"static/js/eventMapping.js"
 			],
 			"prod" : [
-				"static/build/js/about-us.min.js"
+				"static/build/js/error404.min.js"
 			]
 		}
 	},
@@ -1104,7 +1102,7 @@
 				"static/css/footer.css"
 			],
 			"prod": [
-				"static/build/css/terms-condition.min.css"
+				"static/build/css/redirectForIE.min.css"
 			]
 		},
 		"scripts": {
@@ -1120,7 +1118,7 @@
 				"static/js/eventMapping.js"
 			],
 			"prod" : [
-				"static/build/js/about-us.min.js"
+				"static/build/js/redirectForIE.min.js"
 			]
 		}
 	},
@@ -1134,7 +1132,7 @@
 				"static/css/error503.css"
 			],
 			"prod": [
-				"static/build/css/terms-condition.min.css"
+				"static/build/css/error503.min.css"
 			]
 		},
 		"scripts": {
@@ -1150,7 +1148,7 @@
 				"static/js/eventMapping.js"
 			],
 			"prod" : [
-				"static/build/js/about-us.min.js"
+				"static/build/js/error503.min.js"
 			]
 		}
 	},
@@ -1164,7 +1162,7 @@
 				"static/css/ieScreen.css"
 			],
 			"prod": [
-				"static/build/css/terms-condition.min.css"
+				"static/build/css/ieScreen.min.css"
 			]
 		},
 		"scripts": {
@@ -1180,7 +1178,7 @@
 				"static/js/eventMapping.js"
 			],
 			"prod" : [
-				"static/build/js/about-us.min.js"
+				"static/build/js/ieScreen.min.js"
 			]
 		}
 	},
@@ -1316,7 +1314,7 @@
 				"static/js/Utilities/toastNotifier.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js",
- 	"static/js/Services/submitChatMessage.js",
+ 				"static/js/Services/submitChatMessage.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/common.js",
 				"static/js/Services/setCandidateAction.js",
@@ -1381,7 +1379,7 @@
 				"static/js/Utilities/toastNotifier.js",
 				"static/js/chat-pubnub-sticky.js",
 				"static/js/chat-sticky.js",
- "static/js/Services/submitChatMessage.js",
+ 				"static/js/Services/submitChatMessage.js",
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/common.js",
 				"static/js/Services/setCandidateAction.js",
@@ -1418,13 +1416,11 @@
 				"static/js/header.js",
 				"static/js/Tracker/tracker.js",
 				"static/js/eventMapping.js"
-
             ],
             "prod" : [
-                "static/build/js/no-calendar.min.js"
+                "static/build/js/no-calendar-setup.min.js"
             ]
         }
-
 	},
 
     "Interview-scheduler-updated": {
@@ -1484,7 +1480,7 @@
 
             ],
             "prod":[
-                "static/build/css/Interview-scheduler-updated.min.css"
+                "static/build/css/calendarIe.min.css"
             ]
         },
         "scripts": {
@@ -1510,7 +1506,7 @@
 				"static/js/eventMapping.js"
             ],
             "prod" : [
-                "static/build/js/Interview-scheduler-updated.min.js"
+                "static/build/js/calendarIe.min.js"
             ]
         }
     },
@@ -1557,7 +1553,7 @@
 				"static/js/eventMapping.js"
             ],
             "prod" :[
-                "static/build/js/ui-Calendar.min.js"
+                "static/build/js/booked-slots.min.js"
             ]
         }
 
@@ -1571,7 +1567,7 @@
                 "static/css/footer.css"
             ],
             "prod": [
-                "static/build/css/booked-slots.min.css"
+                "static/build/css/calendar-manage.min.css"
             ]
         },
         "scripts": {
@@ -1597,7 +1593,7 @@
 
             ],
             "prod" :[
-                "static/build/js/calendar.min.js"
+                "static/build/js/calendar-manage.min.js"
             ]
         }
 
@@ -1611,7 +1607,7 @@
 				"static/css/modal.css"
             ],
             "prod": [
-                "static/build/css/booked-slots.min.css"
+                "static/build/css/dashboardview.min.css"
             ]
         },
         "scripts": {
@@ -1633,7 +1629,7 @@
 				"static/js/eventMapping.js"
             ],
             "prod" :[
-                "static/build/js/calendar.min.js"
+                "static/build/js/dashboardview.min.js"
             ]
         }
 
@@ -1665,7 +1661,7 @@
 				"static/js/Services/verifyLogin.js"
             ],
             "prod" :[
-                "static/build/js/calendar.min.js"
+                "static/build/js/transition.min.js"
             ]
         }
 
@@ -1679,7 +1675,7 @@
 				"static/css/animate.css"
             ],
             "prod": [
-                "static/build/css/transition.min.css"
+                "static/build/css/transitionIe.min.css"
             ]
         },
         "scripts": {
@@ -1702,7 +1698,7 @@
 				"static/js/Components/TransitionIe/model.js"
 			],
             "prod" :[
-                "static/build/js/calendar.min.js"
+                "static/build/js/transitionIe.min.js"
             ]
         }
 
@@ -1720,11 +1716,10 @@
         },
         "scripts": {
             "debug": [
-
+				"static/js/header.js"
 			],
             "prod" :[
-				"static/js/header.js",
-                "static/build/js/calendar.min.js"
+                "static/build/js/old-header.min.js"
             ]
         }
 
