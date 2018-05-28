@@ -299,28 +299,6 @@ module.exports = function(settings){
 		return
 	})
 
-	// app.get("/recruiter/pdf", function(req, res){
-
-	// 	res.render("pdfTest", {
-	// 		title: "IIM JOBS | Reset Password",
-	// 		styles:  assetsMapper["pdfTest"]["styles"][mode],
-	// 		scripts: assetsMapper["pdfTest"]["scripts"][mode],
-	// 		baseUrl: baseUrl
-	// 	})
-	// 	return
-	// })
-
-	// app.get("/recruiter/pdfIframe", function(req, res){
-
-	// 	res.render("pdfIframe", {
-	// 		title: "IIM JOBS | Reset Password",
-	// 		styles:  assetsMapper["pdfIframe"]["styles"][mode],
-	// 		scripts: assetsMapper["pdfIframe"]["scripts"][mode],
-	// 		baseUrl: baseUrl
-	// 	})
-	// 	return
-	// })
-
 	app.get("/ui_components", function(req, res){
 
 		res.render("ui_components", {
