@@ -112,8 +112,7 @@ function BookedSlots() {
 	}
 
 	function createElement(aData, index) {
-		console.log("..........................")
-		console.log(aData)
+
 		var item = cloneElement();
 		item.element.attr("data-application-id", aData["applicationId"]);
 		item.element.attr("data-invite-id", aData["id"]);
@@ -121,7 +120,7 @@ function BookedSlots() {
 		item.element.attr("data-job-id", aData["job"]["id"]);
 		var title = getTitleFormat(aData["job"]["title"], (/\(\d+-\d+ \w+\)$/));
         if(aData["slot"]){
-            var date = moment(aData["slot"]["date"]).format('MM DD, YYYY');
+            var date = moment(aData["slot"]["date"]).format('MMM DD, YYYY');
 
 			var width=$(window).width();
 
@@ -139,8 +138,11 @@ function BookedSlots() {
 			}
 
 			var time = aData["slot"]["time"];
+			console.log(time)
 			var temp = time.substr(0,2) + ":" + time.substr(2,2);
-			var temp1 =	moment(temp, 'HH:mm').add(30, 'minutes').format('HH:mm');
+
+			var temp1 =	moment(temp, 'hh:mm').add(30, 'minutes').format('hh:mm A');
+			temp = moment(temp, 'hh:mm').format('hh:mm A');
 			var showTime = temp + " to " + temp1;
     		item.interviewTime.text(showTime)
         }

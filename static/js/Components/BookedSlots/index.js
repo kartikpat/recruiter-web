@@ -21,7 +21,6 @@ jQuery(document).ready( function() {
        parameters.pageContent= globalParameters.pageContent;
        globalParameters.calendarId = calendarId;
        if(slots.getStartDate() != '') {
-
            globalParameters.fromDate = slots.getStartDate();
        }
        parameters.fromDate = globalParameters.fromDate;
