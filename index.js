@@ -55,7 +55,7 @@
 	else
 		baseUrl = config["baseUrl"];
 
-	const assetsVersion = 'v9.0.9/'
+	const assetsVersion = config['assetsVersion'];
 
 
 	passport.use('linkedin-auths', new LinkedInStrategy({
