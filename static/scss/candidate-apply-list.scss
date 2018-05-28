@@ -95,16 +95,25 @@ input::-webkit-input-placeholder {
 
 .bulkActionModal {
     .modal_text {
-        padding: 10px 0;
-    }
+        padding: 2px 0;
+		font-size:15px;
+	}
     .jsModalTextSecondary {
-        color: $extra-info-color
-    }
+		color: $extra-info-color;
+		font-size:14px;
+	}
+	
+	.section{
+			padding-top: 10px!important;
+    		padding-bottom: 25px!important;
+	}
     textarea {
-		width: 50%;
-		min-height: 50px;
+		width: 100%;
+		resize: none;
+		min-height: 65px;
         border: 1px solid $border-color-base;
         padding: 10px 20px;
+		font-size: 14px;
 		&:focus {
 			outline: none;
 			border: 1px solid $border-color-active
@@ -1866,7 +1875,7 @@ input::-webkit-input-placeholder {
 								}
 
                                 .cand-add-tag-action-btn {
-                                    margin-top: 10px;
+                                    margin-top: 5px;
                                 }
 								&.comments {
 									textarea {
@@ -2165,7 +2174,7 @@ input::-webkit-input-placeholder {
                     }
 					&.cand-comment-button{
 						margin: 0;
-						margin-top: 10px;
+						margin-top: 5px;
 						border-radius: 4px;
 						padding: 6px 14px;
 						font-size: 14px !important;
@@ -2221,9 +2230,13 @@ input::-webkit-input-placeholder {
 				.table-row-separator{
 					border-bottom: 1px solid #e8e8e8!important;
 					margin-top: 20px;
+					margin-bottom: 20px;
 				}
                 .invite {
-					margin-left: 4px;
+					// margin-left: 4px;
+					.interviewinvite{
+						font-size: 16px;
+					}
                     &:hover {
                         text-decoration: none;
                     }
@@ -2276,7 +2289,7 @@ input::-webkit-input-placeholder {
 			}
 			.cand-add-tag {
 				min-height: 40px;
-				padding: 0 10px;
+				padding: 0 5px;
 				padding-top: 0px!important;
 				text-align: left;
 				vertical-align: middle;

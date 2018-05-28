@@ -2616,3 +2616,52 @@ span.sticker {
 
 .candidate-collapsed-block .icon-cross_icon:before {
   font-size: 14px; }
+
+.dashboardModal .modal_image {
+  text-align: center;
+  padding-top: 30px;
+  margin-left: 32px; }
+  .dashboardModal .modal_image img {
+    width: 45%; }
+
+.dashboardModal .dashboardModal_content {
+  text-align: center !important; }
+  .dashboardModal .dashboardModal_content .modal_text {
+    color: #2b2b2b;
+    font-size: 22px;
+    /* Approximation due to font substitution */
+    font-weight: 700;
+    line-height: 0px;
+    /* Approximation due to font substitution */
+    text-align: center;
+    line-height: 22px; }
+  .dashboardModal .dashboardModal_content .modal_sub_text {
+    color: #2b2b2b;
+    font-size: 17px;
+    font-weight: 400;
+    padding-top: 5px;
+    line-height: 22px;
+    text-align: center;
+    padding-bottom: 34px; }
+  .dashboardModal .dashboardModal_content .continueButton {
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #149075;
+    box-sizing: border-box;
+    background-color: #149075;
+    outline: none;
+    font-size: 15px; }
+
+.dashboardModal .bottom-heading {
+  padding-top: 45px; }
+  .dashboardModal .bottom-heading .bottom-heading-text {
+    font-size: 15px;
+    /* Approximation due to font substitution */
+    font-weight: 400;
+    line-height: 22px;
+    /* Approximation due to font substitution */
+    text-align: center;
+    color: #888888; }
+    .dashboardModal .bottom-heading .bottom-heading-text a {
+      color: #155d9a; }

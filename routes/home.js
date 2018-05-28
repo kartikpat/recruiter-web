@@ -39,7 +39,7 @@ module.exports = function(settings){
 		// bypassing the auth for development
     	// CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     	// you can do this however you want with whatever variables you set up
-		
+
     	if(!(req.cookies[config['oldCookie']] && req.cookies[config['oldCookie']]!='undefined')){
 			return res.redirect("/login");
 		}
@@ -94,13 +94,13 @@ module.exports = function(settings){
 
 		}
 		if(req.cookies[config['oldCookie']]){
-			return res.redirect('/transition');
+			return res.redirect('/transition?callbackUrl='+req.originalUrl);
 		}
 		// IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
 		if(req.originalUrl == "/login") {
 			return next()
 		}
-		return res.redirect('/login?callbackUrl='+req.originalUrl+'');
+		return res.redirect('/login?callbackUrl='+req.originalUrl);
 
 	}
 
@@ -762,6 +762,42 @@ module.exports = function(settings){
 		return
 	});
 
+
+
+
+	app.post("/recruiter/login/verify", function(req, res){
+		const oldCookie=req.cookies[config['oldCookie']]
+		const accessToken = req.cookies[config["cookie"]];
+		var options = { method: 'POST',
+		  url: baseUrl+"/recruiter/login/verify",
+		  headers: {
+			'Authorization': 'Bearer '+ accessToken,
+			'Content-Type': 'application/json'
+			},
+			body: {
+				'oldCookie': oldCookie
+			},
+		  json: true
+		};
+		request(options, function (error, response, body) {
+			if (error){
+				return res.json(response);
+			}
+			const jsonBody = body;
+			if(jsonBody.status && jsonBody.status =='success'){
+				return res.json(jsonBody);
+			}
+			else {
+				return res.json(jsonBody);
+			}
+			return res.json(jsonBody);
+		});
+	});
+
+	var bodyParser = require('body-parser');
+	app.use(bodyParser.json()); // support json encoded bodies
+	app.use(bodyParser.urlencoded({ extended: true }));
+	
 	app.post("/recruiter/:recruiterId/calendar", function(req, res){
 		const recruiterId = req.params.recruiterId,
 			  calendarId = req.params.calendarId
@@ -785,6 +821,7 @@ module.exports = function(settings){
 			'Authorization': 'Bearer '+ accessToken,
 			'Content-Type': 'application/json'
 			},
+			body:req.body,
 		  json: true
 		};
 		request(options, function (error, response, body) {
@@ -796,14 +833,14 @@ module.exports = function(settings){
 				return res.json(body);
 			}
 			else {
-				return res.json(response);
+				return res.json(jsonBody);
 			}
-			return res.json(response);
+			return res.json(jsonBody);
 		});
 	});
 
 	app.post("/recruiter/:recruiterId/calendar/:calendarId", function(req, res){
-	
+		console.log("i am here tooo")
 		const recruiterId = req.params.recruiterId,
 			  calendarId = req.params.calendarId
 
@@ -826,6 +863,7 @@ module.exports = function(settings){
 			'Authorization': 'Bearer '+ accessToken,
 			'Content-Type': 'application/json'
 			},
+			body:req.body,
 		  json: true
 		};
 		request(options, function (error, response, body) {
@@ -837,9 +875,9 @@ module.exports = function(settings){
 				return res.json(body);
 			}
 			else {
-				return res.json(response);
+				return res.json(jsonBody);
 			}
-			return res.json(response);
+			return res.json(jsonBody);
 		});
 	})
 
@@ -1035,7 +1073,28 @@ module.exports = function(settings){
 	})
 
 	app.get("/transition",function(req, res){
+		var ua = parser(req.headers['user-agent']);
+		var initialUrl = url.parse(req.url).pathname;
 		var oldCookieValue = req.cookies[config['oldCookie']];
+		console.log(oldCookieValue)
+		if((ua.browser.name=='IE' && (ua.browser.version=="8.0"|| ua.browser.version=="9.0"))){
+			res.render("transitionIe", {
+				title:"iimjobs.com",
+				styles:  assetsMapper["transitionIe"]["styles"][mode],
+				scripts: assetsMapper["transitionIe"]["scripts"][mode],
+				baseUrl: baseUrl,
+				baseDomain: baseDomain,
+				staticEndPoints: config["staticEndPoints"],
+				oldCookie: config['oldCookie'],
+				cookie: config['cookie'],
+				pubnub:"disable",
+				baseDomainName: baseDomainName,
+				oldCookieValue: oldCookieValue,
+				jobseekerCookie: config['jobseekerCookie'],
+				headerRequired: true
+			});
+			return
+		}
 		res.render("transition", {
 			title:"iimjobs.com",
 			styles:  assetsMapper["transition"]["styles"][mode],

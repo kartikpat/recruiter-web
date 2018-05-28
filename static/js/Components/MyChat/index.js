@@ -168,6 +168,7 @@ jQuery(document).ready( function() {
 
    chat.onInputSearchCandidate(function(str){
        var resultTags = []
+       resultTags.index=1;
        var array = channelsArray;
          for (var i=0; i < array.length; i++) {
              if (array[i]["name"] && array[i]["name"].toLowerCase().indexOf(str)>-1) {

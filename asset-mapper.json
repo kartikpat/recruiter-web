@@ -2221,6 +2221,43 @@
         }
 
 	},
+	"transitionIe": {
+        "styles": {
+            "debug" : [
+                "static/css/header.css",
+                "static/css/footer.css",
+				"static/css/transition.css",
+				"static/css/animate.css"
+            ],
+            "prod": [
+                "static/build/css/transition.min.css"
+            ]
+        },
+        "scripts": {
+            "debug": [
+				"static/js/Utilities/ie-polyfill.js",
+				"static/js/vendor/moment.min.js",
+				"static/js/vendor/jquery-1.9.1.min.js",
+				"static/js/vendor/jquery-ui.min.js",
+				"static/js/Utilities/pubsub.js",
+				"static/js/Utilities/common.js",
+				"static/js/utilities.js",
+				"static/js/Utilities/modal.js",
+				"static/js/Utilities/toastNotifier.js",
+				"static/js/header.js",
+				"static/js/Utilities/request.js",
+				"static/js/Services/verifyLoginIe.js",
+				"static/js/Components/Header/model.js",
+				"static/js/Components/Header/index.js",
+				"static/js/header.js",
+				"static/js/Components/TransitionIe/model.js"
+			],
+            "prod" :[
+                "static/build/js/calendar.min.js"
+            ]
+        }
+
+	},
 	"old-header":{
         "styles": {
             "debug" : [

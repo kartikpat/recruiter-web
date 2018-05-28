@@ -15,12 +15,11 @@ $(document).ready(function(){
       },2000);
 
     function onSuccessVerifyLogin(topic, data){
-         Set_Cookie(jobseekerCookieName, '',1, "/", baseDomainName);
-         window.location.href = staticEndPoints.dashboard;
+        Set_Cookie(jobseekerCookieName, '',1, "/", baseDomainName);
+    	window.location.href = staticEndPoints.dashboard;
     }
 
     function onFailVerifyLogin(topic, data){
-        console.log("fail")
         Set_Cookie(oldCookieName, '',1, "/", baseDomainName);
         window.location.href = staticEndPoints.landing;
         return
@@ -33,9 +32,9 @@ $(document).ready(function(){
     	window.location.href = staticEndPoints.landing;
     }
 
-    var verifyLoginSubscription = pubsub.subscribe("loginVerifySuccess", onSuccessVerifyLogin)
-    var verifyLoginSubscription = pubsub.subscribe("loginVerifyFail", onFailVerifyLogin)
-
-    verifyLogin(oldCookieValue);
+    var verifyLoginSubscription = pubsub.subscribe("loginVerifySuccessIe", onSuccessVerifyLogin)
+    var verifyLoginSubscription = pubsub.subscribe("loginVerifyFailIe", onFailVerifyLogin)
+    console.log(oldCookieValue)
+    verifyLoginIe(oldCookieValue);
 
 });
