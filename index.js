@@ -55,6 +55,8 @@
 	else
 		baseUrl = config["baseUrl"];
 
+	const assetsVersion = config['assetsVersion']+"/";
+
 
 	passport.use('linkedin-auths', new LinkedInStrategy({
 		clientID: config['social']['linkedin']['clientId'],
@@ -175,8 +177,9 @@
 	
 	app.set('view engine', 'html');
 	app.set('views', __dirname + '/views');
-	app.use("/static",express.static(__dirname+"/static"))
-	app.use("/",express.static(__dirname+"/"))
+	app.use("/"+assetsVersion+"static",express.static(__dirname+"/static"))
+	app.use("/static",express.static(__dirname+"/static"));
+	app.locals['assetsVersion']= assetsVersion;
 
 	function cprint(text, level){
 		if(mode=="debug")

@@ -3,7 +3,7 @@ function verifyLoginIe(oldCookie){
 		if(res.status && res.status =='success'){
 			console.log("here") 
 			var token = xhr.getResponseHeader('Set-Token');
-			localStorage[cookieName] = token;
+			// localStorage[cookieName] = token;
 			Set_Cookie(cookieName, token,1, "/", baseDomainName);
 			return pubsub.publish("loginVerifySuccessIe", res);
 		}

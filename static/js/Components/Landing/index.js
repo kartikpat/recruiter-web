@@ -17,7 +17,7 @@ $(document).ready(function() {
 
 	function onSuccessfulLogin(topic, data){
 		spinner();
-		localStorage.id = data["id"];
+		// localStorage.id = data["id"];
 		if(!isEmpty(callbackUrl)) {
 	        var newUrl = removeParam("callbackUrl", window.location.href)
 	        window.history.replaceState("object or string", "Title", newUrl);
