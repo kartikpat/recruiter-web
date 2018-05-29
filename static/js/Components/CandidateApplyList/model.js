@@ -107,10 +107,10 @@ function candidateList() {
                 event_category: eventMap["viewCandidProfile"]["cat"],
                 event_label: 'origin=CandidateApplyList,type=MoreExperience,recId='+recruiterId+''
             }
-           
+
             sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
-            
-           
+
+
         })
 
         $(window).click(function(event) {
@@ -214,7 +214,7 @@ function candidateList() {
             }
             sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
             // settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
-           
+
         })
     }
 
@@ -620,7 +620,7 @@ function candidateList() {
         $("li[data-attribute='"+status+"'] .bulk-selection-item").addClass("active")
     }
 
-    
+
 
     function onClickCandidateOtherActions() {
         settings.rowContainer.on('mouseenter', settings.candidateOtherActionsClass,function(event) {
@@ -723,7 +723,7 @@ function candidateList() {
                 fn(applicationId, comment);
             }
         });
-      
+
         settings.rowContainer.on('click', settings.candidateAddCommentButtonClass,function(event) {
             event.stopPropagation();
             event.preventDefault();
@@ -935,7 +935,7 @@ function candidateList() {
                 //     toastNotify(3, "You can perform action on only 100 candidates at once.")
                 //     return
                 // }
-                jQuery(this).closest(".candidate-select").addClass("selected"); 
+                jQuery(this).closest(".candidate-select").addClass("selected");
                 candidateSelect.addClass("selector");
                 var arr = returnSelectedApplications()
                 settings.totalApplicationsCount = arr.length;
@@ -960,7 +960,7 @@ function candidateList() {
                     settings.bulkActionContainer.addClass("hidden")
                     candidateSelect.removeClass('selector')
                 }
-              
+
             }
         })
         settings.rowContainer.on('click', settings.candidateCheckboxLabelClass, function(event) {
@@ -1179,16 +1179,20 @@ function candidateList() {
                 settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateSave").text("Save For Later")
             }
             if(newStatus == settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateReject").attr("data-action")) {
-                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateReject").text("Rejected")
+                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateReject").addClass('act-rej').text("Rejected")
+                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateShortlist").prev().removeClass('hidden')
             }
             else {
-                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateReject").text("Reject")
+                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateReject").removeClass('act-short').text("Reject")
+                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateShortlist").prev().removeClass('hidden')
             }
             if(newStatus == settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateShortlist").attr("data-action")) {
-                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateShortlist").text("Shortlisted")
+                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateShortlist").addClass('act-short').text("Shortlisted")
+                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateShortlist").prev().removeClass('hidden')
             }
             else {
-                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateShortlist").text("Shortlist")
+                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateShortlist").removeClass('act-short').text("Shortlist")
+                settings.rowContainer.find(".candidateRow[data-application-id='"+applicationId+"'] .candidateShortlist").prev().addClass('hidden')
             }
         })
     }
@@ -1385,7 +1389,7 @@ function candidateList() {
         showDropdownTags: showDropdownTags,
         onClickDeleteTag: onClickDeleteTag,
         removeTag: removeTag,
-       
+
         appendCandidateTag: appendCandidateTag
     }
 }

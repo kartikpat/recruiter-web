@@ -3295,6 +3295,14 @@ span.sticker {
     .topInstitutesContainer .check-input label {
       font-weight: 700; }
 
+.act-short {
+  background-color: #1f8f75 !important;
+  color: #fff !important; }
+
+.act-rej {
+  background-color: #af595a !important;
+  color: #fff !important; }
+
 .no-after:after {
   display: none !important; }
 
@@ -3925,6 +3933,7 @@ input::-webkit-input-placeholder {
               .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area {
                 margin-bottom: 15px; }
                 .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper {
+                  position: relative;
                   -webkit-appearance: none;
                   -moz-appearance: none;
                   -ms-appearance: none;
@@ -3986,7 +3995,12 @@ input::-webkit-input-placeholder {
                     border: none;
                     border-radius: none;
                     text-align: center;
-                    font-family: "Droid Sans", sans-serif; }
+                    font-family: "Droid Sans", sans-serif;
+                    border: 1px solid #1f8f75 !important;
+                    color: #1f8f75;
+                    padding: 7px 16px !important;
+                    font-size: 11px !important;
+                    background-color: #fff; }
                     .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper button.green {
                       background-color: #1f8f75; }
                     .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper button.red {
@@ -3999,6 +4013,9 @@ input::-webkit-input-placeholder {
                       .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper button.edit img {
                         width: 17px;
                         height: 17px; }
+                    .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper button:hover {
+                      background-color: #1f8f75 !important;
+                      color: #fff !important; }
                   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper .spinner {
                     text-align: center;
                     margin-top: 6px; }
@@ -4006,6 +4023,7 @@ input::-webkit-input-placeholder {
                     width: 10px;
                     height: 10px; }
                 .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .reject-wrapper {
+                  position: relative;
                   background-color: #af595a;
                   margin: 0;
                   padding: 0px;
@@ -4036,7 +4054,12 @@ input::-webkit-input-placeholder {
                     width: 100%;
                     border: none;
                     border-radius: none;
-                    font-family: "Droid Sans", sans-serif; }
+                    font-family: "Droid Sans", sans-serif;
+                    border: 1px solid #af595a !important;
+                    color: #af595a;
+                    background-color: #fff;
+                    padding: 7px 16px !important;
+                    font-size: 11px !important; }
                     .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .reject-wrapper button.green {
                       background-color: #1f8f75; }
                     .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .reject-wrapper button.red {
@@ -4049,6 +4072,9 @@ input::-webkit-input-placeholder {
                       .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .reject-wrapper button.edit img {
                         width: 17px;
                         height: 17px; }
+                    .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .reject-wrapper button:hover {
+                      background-color: #af595a !important;
+                      color: #fff !important; }
                   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .reject-wrapper .spinner {
                     text-align: center;
                     margin-top: 6px; }
@@ -6030,3 +6056,10 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
   overflow: auto;
   max-height: 80px;
   max-width: 280px; }
+
+.iconTick {
+  font-size: 11px;
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  transform: translate(0, -50%); }
