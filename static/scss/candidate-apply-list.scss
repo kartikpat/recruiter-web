@@ -11,7 +11,7 @@
     &:before {
         content: '\e828';
         font-family: 'fontello';
-        font-size: 13px;
+        font-size: 14px;
         padding-right: 3px;
     }
 }
@@ -23,7 +23,7 @@
     &:before {
         content: '\e801';
         font-family: 'fontello';
-        font-size: 11px;
+        font-size: 14px;
         padding-right: 5px;
     }
 }
@@ -716,9 +716,8 @@ input::-webkit-input-placeholder {
                                                     border: 1px solid #1f8f75 !important;
                                                     color: #1f8f75;
                                                     padding: 7px 16px;
-                                                    font-size: 13px;
+                                                    font-size: 14px;
                                                     background-color: #fff;
-                                                    font-weight: bold;
 
                                                     &:hover {
                                                         background-color: #1f8f75 !important;
@@ -754,8 +753,8 @@ input::-webkit-input-placeholder {
                                                     color: #af595a;
                                                     background-color: #fff;
                                                     padding: 7px 16px;
-                                                    font-size: 13px;
-                                                    font-weight: bold;
+                                                    font-size: 14px;
+                                                    
 
                                                     &:hover {
                                                         background-color: #af595a !important;
