@@ -3296,8 +3296,6 @@ span.sticker {
       font-weight: 700; }
 
 .act-short {
-  background-color: #1f8f75 !important;
-  color: #fff !important;
   padding-left: 7px !important; }
   .act-short:before {
     content: '\e828';
@@ -3306,8 +3304,6 @@ span.sticker {
     padding-right: 3px; }
 
 .act-rej {
-  background-color: #af595a !important;
-  color: #fff !important;
   padding-left: 11px !important; }
   .act-rej:before {
     content: '\e801';
@@ -4007,12 +4003,8 @@ input::-webkit-input-placeholder {
                     border-radius: none;
                     text-align: center;
                     font-family: "Droid Sans", sans-serif;
-                    border: 1px solid #1f8f75 !important;
-                    color: #1f8f75;
-                    padding: 7px 16px;
-                    font-size: 13px;
-                    background-color: #fff;
-                    font-weight: bold; }
+                    padding: 8px 16px;
+                    font-size: 13px; }
                     .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper button.green {
                       background-color: #1f8f75; }
                     .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper button.red {
@@ -4025,9 +4017,6 @@ input::-webkit-input-placeholder {
                       .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper button.edit img {
                         width: 17px;
                         height: 17px; }
-                    .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper button:hover {
-                      background-color: #1f8f75 !important;
-                      color: #fff !important; }
                   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper .spinner {
                     text-align: center;
                     margin-top: 7px; }
@@ -4066,12 +4055,10 @@ input::-webkit-input-placeholder {
                     border: none;
                     border-radius: none;
                     font-family: "Droid Sans", sans-serif;
-                    border: 1px solid #af595a !important;
-                    color: #af595a;
                     background-color: #fff;
-                    padding: 7px 16px;
+                    padding: 8px 16px;
                     font-size: 13px;
-                    font-weight: bold; }
+                    position: relative; }
                     .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .reject-wrapper button.green {
                       background-color: #1f8f75; }
                     .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .reject-wrapper button.red {
@@ -4084,9 +4071,6 @@ input::-webkit-input-placeholder {
                       .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .reject-wrapper button.edit img {
                         width: 17px;
                         height: 17px; }
-                    .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .reject-wrapper button:hover {
-                      background-color: #af595a !important;
-                      color: #fff !important; }
                   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .reject-wrapper .spinner {
                     text-align: center;
                     margin-top: 7px; }
