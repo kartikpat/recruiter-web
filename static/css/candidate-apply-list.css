@@ -5243,10 +5243,27 @@ input::-webkit-input-placeholder {
         .view-resume-modal .resume-sidebar .action-buttons .shortlist-wrapper .spinner > div {
           width: 10px;
           height: 10px; }
-        .view-resume-modal .resume-sidebar .action-buttons .shortlist-wrapper span.button.candidateShortlistModal {
-          padding: 6px 0px;
-          width: 100%;
-          margin: 0 auto; }
+        .view-resume-modal .resume-sidebar .action-buttons .shortlist-wrapper span.button {
+          border: 1px solid #1f8f75 !important;
+          background-color: #FFF !important;
+          color: #1f8f75 !important;
+          width: 100%; }
+          .view-resume-modal .resume-sidebar .action-buttons .shortlist-wrapper span.button.candidateShortlistModal {
+            padding: 6px 0px;
+            width: 100%;
+            margin: 0 auto; }
+          .view-resume-modal .resume-sidebar .action-buttons .shortlist-wrapper span.button:hover {
+            background-color: #1f8f75 !important;
+            color: #FFF !important; }
+          .view-resume-modal .resume-sidebar .action-buttons .shortlist-wrapper span.button.act-short {
+            background-color: #1f8f75 !important;
+            color: #fff !important;
+            padding-left: 7px !important; }
+            .view-resume-modal .resume-sidebar .action-buttons .shortlist-wrapper span.button.act-short:before {
+              content: '\e828';
+              font-family: 'fontello';
+              font-size: 13px;
+              padding-right: 3px; }
       .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper {
         height: 28px;
         width: 83px;
@@ -5256,10 +5273,28 @@ input::-webkit-input-placeholder {
         .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper .spinner > div {
           width: 10px;
           height: 10px; }
-        .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper span.button.candidateShortlistModal {
-          padding: 6px 0px;
-          width: 100%;
-          margin: 0 auto; }
+        .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper span.button {
+          border: 1px solid #af595a !important;
+          background-color: #FFF !important;
+          color: #af595a !important;
+          margin: 0%;
+          width: 100%; }
+          .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper span.button.candidateShortlistModal {
+            padding: 6px 0px;
+            width: 100%;
+            margin: 0 auto; }
+          .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper span.button:hover {
+            background-color: #af595a !important;
+            color: #FFF !important; }
+          .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper span.button.act-rej {
+            background-color: #af595a !important;
+            color: #fff !important;
+            padding-left: 11px !important; }
+            .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper span.button.act-rej:before {
+              content: '\e801';
+              font-family: 'fontello';
+              font-size: 11px;
+              padding-right: 5px; }
       .view-resume-modal .resume-sidebar .action-buttons span.button {
         -webkit-appearance: none;
         -moz-appearance: none;

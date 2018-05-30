@@ -592,16 +592,20 @@
 				}
 				span {
 					&.button {
+						@include shortlistActionButton;
 						&.candidateShortlistModal {
 							padding: 6px 0px;
 							width: 100%;
 							margin: 0 auto;
 						}
+						&.act-short{
+							@include shortlistState;
+						}
 					}
 				}
 			}
 			.reject-wrapper{
-				background-color: #af595a!important;
+				// background-color: #af595a!important;
 				height: 28px;
 				width: 103px;
 				padding: 0 !important;
@@ -614,7 +618,7 @@
 				padding: 6px 25px;
 				font-size: 14px;
 				margin: 0 5px;
-				color: #FFF;
+				// color: #FFF;
 				display: inline-block;
 				vertical-align: top;
 				cursor: pointer;
@@ -633,6 +637,10 @@
 						&.candidateShortlistModal {
 							// padding: 6px 6px;
 							width: 100%;
+						}
+						@include rejectActionButton;
+						&.act-rej{
+							@include rejectState;
 						}
 					}
 				}
@@ -900,7 +908,7 @@
 				.action-buttons {
 					font-size:0;
 					.shortlist-wrapper{
-						background-color: $button-color-green;
+						// background-color: $button-color-green;
 						height: 28px;
 						width: 83px;
 						padding:0!important;
@@ -914,6 +922,10 @@
 						}
 						span {
 							&.button {
+								@include shortlistActionButton;
+								&.act-short{
+									@include shortlistState
+								}
 								&.candidateShortlistModal {
 									padding: 6px 0px;
 									width: 100%;
@@ -923,7 +935,7 @@
 						}
 					}
 					.reject-wrapper{
-						background-color: #af595a;
+						// background-color: #af595a;
 						padding: 0px;
 						height: 28px;
 						width: 83px;
@@ -938,10 +950,14 @@
 						}
 						span {
 							&.button {
+								@include rejectActionButton;
 								&.candidateRejectModal {
 									padding: 6px 0px;
 									width: 100%;
 									margin: 0 auto;
+								}
+								&.rejectState{
+									@include rejectState;
 								}
 							}
 						}
