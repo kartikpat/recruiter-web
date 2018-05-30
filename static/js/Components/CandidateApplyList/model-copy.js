@@ -73,7 +73,7 @@ function candidateList() {
         settings.tagInputError = $(".tagInputError"),
         settings.tagArr = [],
         settings.status = ''
-        settings.url = baseUrl+"/recruiter/"+recruiterId+"/jobs/"+jobId+"/applications/download/excel";
+        settings.url = baseUrl+"/recruiter/"+recruiterId+"/jobs/"+jobId+"/applications-copy/download/excel";
 
         onClickBulkDownArrow()
         onClickMassCheckbox()
@@ -324,7 +324,7 @@ function candidateList() {
 
     function createElement(aData) {
 		var item = getElement(aData["userID"]);
-        item.element.find(".openCandidateLink").attr('href',"/job/"+config["jobId"]+"/applications/"+aData["id"]+"");
+        item.element.find(".openCandidateLink").attr('href',"/job/"+config["jobId"]+"/applications-copy/"+aData["id"]+"");
         item.element.attr("data-application-id", aData["id"]);
         item.image.attr("src",(aData["img"] || "/static/images/noimage.png"));
         item.name.text(aData["name"] || "N/A");

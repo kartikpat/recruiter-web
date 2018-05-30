@@ -2115,6 +2115,14 @@ span.sticker {
   font-size: 0; }
   .page-content a:hover {
     text-decoration: underline; }
+  .page-content .resume-download-area a {
+    border: 1px solid #1f8f75 !important;
+    background-color: #FFF !important;
+    color: #1f8f75 !important;
+    width: 100%; }
+    .page-content .resume-download-area a:hover {
+      background-color: #1f8f75 !important;
+      color: #FFF !important; }
   .page-content .resume-download-area a:hover {
     text-decoration: none; }
   .page-content .tagged-candidates {

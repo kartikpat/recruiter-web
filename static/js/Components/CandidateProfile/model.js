@@ -393,10 +393,10 @@ function Candidate() {
         item.savedButton.attr("data-status", status);
         settings.candidateDownloadResume.attr("data-status", status);
         if(status == 1) {
-            item.shortlistButton.text("Shortlisted")
+            item.shortlistButton.text("Shortlisted").addClass('act-short');
         }
         else if(status == 2) {
-            item.rejectButton.text("Rejected")
+            item.rejectButton.text("Rejected").addClass('act-rej');
         }
         else if(status == 3) {
             item.savedButton.html("<span class='icon'><i class='icon-star'></i></span>Saved for Later")
@@ -724,16 +724,16 @@ function Candidate() {
                 settings.candidateDetailsModal.find(".candidateSaveModal").html("<span class='icon'><i class='icon-star_later'></i></span>Save for Later");
             }
             if(newStatus == settings.candidateDetailsModal.find(".candidateRejectModal").attr("data-action")) {
-                settings.candidateDetailsModal.find(".candidateRejectModal").text("Rejected")
+                settings.candidateDetailsModal.find(".candidateRejectModal").text("Rejected").addClass('act-rej')
             }
             else {
-                settings.candidateDetailsModal.find(".candidateRejectModal").text("Reject")
+                settings.candidateDetailsModal.find(".candidateRejectModal").text("Reject").removeClass('act-rej')
             }
             if(newStatus == settings.candidateDetailsModal.find(".candidateShortlistModal").attr("data-action")) {
-                settings.candidateDetailsModal.find(".candidateShortlistModal").text("Shortlisted")
+                settings.candidateDetailsModal.find(".candidateShortlistModal").text("Shortlisted").addClass('act-short');
             }
             else {
-                settings.candidateDetailsModal.find(".candidateShortlistModal").text("Shortlist")
+                settings.candidateDetailsModal.find(".candidateShortlistModal").text("Shortlist").removeClass('act-short')
             }
         })
     }

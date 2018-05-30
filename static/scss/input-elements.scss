@@ -354,6 +354,51 @@ label {
 		}
 	}
 }
+@mixin shortlistActionButton{
+	border: 1px solid $button-color-green !important;
+	background-color: $color-white !important;
+	color: $button-color-green !important;
+	width: 100%;
+	&:hover{
+		background-color:  $button-color-green !important;
+		color:  $color-white !important;
+	}
+}
+@mixin rejectActionButton{
+	border: 1px solid $button-color-red !important;
+	background-color: $color-white !important;
+	color: $button-color-red !important;
+	margin: 0%;
+	width: 100%;
+	&:hover{
+		background-color:  $button-color-red !important;
+		color:  $color-white !important;
+	}
+}
+
+@mixin shortlistState{
+	background-color: #1f8f75 !important;
+    color: #fff !important;
+    padding-left: 7px !important;
+    &:before {
+        content: '\e828';
+        font-family: 'fontello';
+        font-size: 13px;
+        padding-right: 3px;
+    }	
+}
+
+@mixin rejectState{
+	background-color: #af595a !important;
+    color: #fff !important;
+    padding-left: 11px !important;
+    &:before {
+        content: '\e801';
+        font-family: 'fontello';
+        font-size: 11px;
+        padding-right: 5px;
+    }
+}
 
 span {
 	&.sticker {

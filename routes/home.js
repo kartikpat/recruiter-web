@@ -419,6 +419,27 @@ module.exports = function(settings){
 		return
 	});
 
+	app.get("/job/:jobID/applications-copy",isAuthenticated, function(req,res){
+		// var jobId = req.params.jobId;
+		res.render("candidate-apply-list-copy", {
+			title:"Application | iimjobs.com",
+			styles:  assetsMapper["candidate-apply-list-copy"]["styles"][mode],
+			scripts: assetsMapper["candidate-apply-list-copy"]["scripts"][mode],
+			baseUrl: baseUrl,
+			baseDomain: baseDomain,
+			baseUrlJob: baseUrlJob,
+			jobId: req.params.jobID,
+			profile: req.profile,
+			origin: "CandidateApplyList",
+			staticEndPoints: config["staticEndPoints"],
+			oldCookie: config['oldCookie'],
+			cookie: config['cookie'],
+			baseUrl_local:baseUrl_local,
+ 		 	baseDomainName: baseDomainName
+		})
+		return
+	});
+
 	app.get("/chats",isAuthenticated, function(req,res){
 		res.render("my-chat", {
 			title:"My Chat | iimjobs.com",
@@ -775,7 +796,7 @@ module.exports = function(settings){
 	var bodyParser = require('body-parser');
 	app.use(bodyParser.json()); // support json encoded bodies
 	app.use(bodyParser.urlencoded({ extended: true }));
-	
+
 	app.post("/recruiter/:recruiterId/calendar", function(req, res){
 		const recruiterId = req.params.recruiterId,
 			  calendarId = req.params.calendarId

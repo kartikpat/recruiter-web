@@ -212,6 +212,14 @@
 						.action-buttons {
                             button {
                                 @include button($button-color-green);
+                                &.green{
+                                	@include shortlistActionButton;
+                                	width: 48%;
+                                }
+                                &.red{
+                                	@include rejectActionButton;	
+                                	width: 48%;
+                                }
                                 margin:0;
                                 padding:7px;
                                 text-align: center;
@@ -224,6 +232,7 @@
 							margin-top:15px;
 							a {
 								@include button($button-color-green);
+								@include shortlistActionButton;
 								margin:0;
 								padding:7px 24px;
                                 width: 100%;

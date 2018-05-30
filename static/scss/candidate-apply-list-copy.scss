@@ -5,8 +5,7 @@
 @import "fonts.scss";
 
 .act-short {
-    background-color: #1f8f75 !important;
-    color: #fff !important;
+
     padding-left: 7px !important;
     &:before {
         content: '\e828';
@@ -17,8 +16,6 @@
 }
 
 .act-rej {
-    background-color: #af595a !important;
-    color: #fff !important;
     padding-left: 11px !important;
     &:before {
         content: '\e801';
@@ -713,17 +710,8 @@ input::-webkit-input-placeholder {
 													border-radius: none;
 													text-align: center;
 													font-family: $droid-font;
-                                                    border: 1px solid #1f8f75 !important;
-                                                    color: #1f8f75;
-                                                    padding: 7px 16px;
+                                                    padding: 8px 16px;
                                                     font-size: 13px;
-                                                    background-color: #fff;
-                                                    font-weight: bold;
-
-                                                    &:hover {
-                                                        background-color: #1f8f75 !important;
-                                                        color: #fff !important;
-                                                    }
 												}
 												.spinner{
 													text-align: center;
@@ -750,17 +738,11 @@ input::-webkit-input-placeholder {
 													border: none;
 													border-radius: none;
 													font-family: $droid-font;
-                                                    border: 1px solid #af595a !important;
-                                                    color: #af595a;
                                                     background-color: #fff;
-                                                    padding: 7px 16px;
+                                                    padding: 8px 16px;
                                                     font-size: 13px;
-                                                    font-weight: bold;
 
-                                                    &:hover {
-                                                        background-color: #af595a !important;
-                                                        color: #fff !important;
-                                                    }
+                                                    position: relative;
 												}
 												.spinner{
 													text-align: center;
@@ -2185,10 +2167,6 @@ input::-webkit-input-placeholder {
 							width: 100%;
 							margin: 0 auto;
 						}
-						@include shortlistActionButton;
-						&.act-short{
-							@include shortlistState;
-						}
 					}
 				}
 			}
@@ -2210,10 +2188,6 @@ input::-webkit-input-placeholder {
 							padding: 6px 0px;
 							width: 100%;
 							margin: 0 auto;
-						}
-						@include rejectActionButton;
-						&.act-rej{
-							@include rejectState;
 						}
 					}
 				}
