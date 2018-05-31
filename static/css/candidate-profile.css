@@ -2887,11 +2887,11 @@ span.sticker {
                 padding: 6px 0px;
                 width: 100%;
                 margin: 0 auto; }
-              .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper span.button.rejectState {
+              .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper span.button.act-rej {
                 background-color: #af595a !important;
                 color: #fff !important;
                 padding-left: 11px !important; }
-                .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper span.button.rejectState:before {
+                .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper span.button.act-rej:before {
                   content: '\e801';
                   font-family: 'fontello';
                   font-size: 11px;

@@ -4426,6 +4426,18 @@ input::-webkit-input-placeholder {
     .mass-action-container .icon-back_icon:before {
       margin: 0; }
 
+@media all and (max-width: 1280px) {
+  .action-buttons .shortlist-wrapper {
+    width: 51% !important;
+    background-color: transparent !important;
+    max-width: 120px; }
+  .action-buttons .reject-wrapper {
+    width: 45% !important;
+    background-color: transparent !important;
+    max-width: 120px; }
+  .view-resume-modal .resume-sidebar .action-buttons span.button {
+    margin: 0 2px !important; } }
+
 @media all and (max-width: 1024px) {
   .mass-action-container {
     bottom: 0;
@@ -4804,7 +4816,7 @@ input::-webkit-input-placeholder {
   box-shadow: 0 1px 20px rgba(0, 0, 0, 0.8);
   background-color: #f7f7f7;
   z-index: 20;
-  padding: 30px; }
+  padding: 20px; }
   .view-resume-modal .mob.comments {
     display: none; }
   .view-resume-modal .mobCandidateAddCommentButton {
@@ -5232,8 +5244,9 @@ input::-webkit-input-placeholder {
       .view-resume-modal .resume-sidebar .action-buttons.cand-add-tag-action-btn {
         margin: 15px 0; }
       .view-resume-modal .resume-sidebar .action-buttons .shortlist-wrapper {
+        margin: 0 3px !important;
         height: 28px;
-        width: 83px;
+        width: 48%;
         padding: 0 !important;
         float: left; }
         .view-resume-modal .resume-sidebar .action-buttons .shortlist-wrapper .spinner {
@@ -5264,7 +5277,8 @@ input::-webkit-input-placeholder {
               padding-right: 3px; }
       .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper {
         height: 28px;
-        width: 83px;
+        width: 45%;
+        margin: 0 3px !important;
         padding: 0 !important; }
         .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper .spinner {
           margin-top: 6px; }
@@ -5536,7 +5550,7 @@ input::-webkit-input-placeholder {
         .view-resume-modal .mobile-resume-sidebar .fold.first-fold {
           bottom: 0;
           background: #FFF;
-          padding-left: 50px; }
+          padding-left: 40px; }
         .view-resume-modal .mobile-resume-sidebar .fold.second-fold {
           bottom: 60px;
           background: #808080; }
@@ -5548,6 +5562,7 @@ input::-webkit-input-placeholder {
             background-color: #1f8f75;
             height: 28px;
             width: 83px;
+            max-width: 120px;
             padding: 0 !important; }
             .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper .spinner {
               margin-top: 6px;
@@ -5555,14 +5570,32 @@ input::-webkit-input-placeholder {
             .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper .spinner > div {
               width: 10px;
               height: 10px; }
-            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper span.button.candidateShortlistModal {
-              padding: 6px 0px;
-              width: 100%;
-              margin: 0 auto; }
+            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper span {
+              border: 1px solid #1f8f75 !important;
+              background-color: #FFF !important;
+              color: #1f8f75 !important;
+              width: 100%; }
+              .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper span:hover {
+                background-color: #1f8f75 !important;
+                color: #FFF !important; }
+              .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper span.act-short {
+                background-color: #1f8f75 !important;
+                color: #fff !important;
+                padding-left: 7px !important; }
+                .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper span.act-short:before {
+                  content: '\e828';
+                  font-family: 'fontello';
+                  font-size: 13px;
+                  padding-right: 3px; }
+              .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper span.button.candidateShortlistModal {
+                padding: 6px 0px;
+                width: 100%;
+                margin: 0 auto; }
           .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper {
             background-color: #af595a;
             height: 28px;
             width: 83px;
+            max-width: 120px;
             padding: 0 !important; }
             .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper .spinner {
               text-align: center;
@@ -5570,10 +5603,28 @@ input::-webkit-input-placeholder {
             .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper .spinner > div {
               width: 10px;
               height: 10px; }
-            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper span.button.candidateRejectModal {
-              padding: 6px 0px;
-              width: 100%;
-              margin: 0 auto; }
+            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper span {
+              border: 1px solid #af595a !important;
+              background-color: #FFF !important;
+              color: #af595a !important;
+              margin: 0%;
+              width: 100%; }
+              .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper span:hover {
+                background-color: #af595a !important;
+                color: #FFF !important; }
+              .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper span.act-rej {
+                background-color: #af595a !important;
+                color: #fff !important;
+                padding-left: 11px !important; }
+                .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper span.act-rej:before {
+                  content: '\e801';
+                  font-family: 'fontello';
+                  font-size: 11px;
+                  padding-right: 5px; }
+              .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper span.button.candidateRejectModal {
+                padding: 6px 0px;
+                width: 100%;
+                margin: 0 auto; }
           .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span {
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -5822,6 +5873,8 @@ input::-webkit-input-placeholder {
   line-height: 1.2; }
 
 @media all and (max-width: 480px) {
+  .fold {
+    padding: 20px 10px !important; }
   .bulkActionModal textarea {
     width: 100%; }
   .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments textarea {
@@ -5840,6 +5893,10 @@ input::-webkit-input-placeholder {
         margin-top: 5px; }
   .view-resume-modal .mobile-resume-sidebar .fold.first-fold {
     padding-left: 25px; }
+    .view-resume-modal .mobile-resume-sidebar .fold.first-fold .shortlist-wrapper {
+      max-width: 110px !important; }
+    .view-resume-modal .mobile-resume-sidebar .fold.first-fold .reject-wrapper {
+      max-width: 110px !important; }
   .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default {
     background: transparent;
     border: none;
@@ -5983,7 +6040,7 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
 
 @media (max-width: 414px) {
   .view-resume-modal .mobile-resume-sidebar .fold .action-buttons {
-    width: 95%; }
+    width: 100%; }
   .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span {
     padding: 6px 12px; } }
 
