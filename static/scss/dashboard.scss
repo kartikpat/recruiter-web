@@ -533,9 +533,10 @@ $button-border-color: #8f8a8a;
 					margin-right: 10px;
 				}
 				.candidateShortlist-wrapper{
-					height: 28px;
-					padding: 0px;
+					@include shortlist-wrapper;
 					text-align: center;
+					width: 78px;
+					height: 28px;
 					.spinner{
 						text-align: center;
 						margin-top: 4px;
@@ -545,24 +546,17 @@ $button-border-color: #8f8a8a;
 						height: 10px;
 					}
 					.candidateShortlist{
-						border: none;
-						border-radius: 0px;
-						margin: 0px;
-						width: 100%;
-						font-size: 13px;
+						@include shortlistActionButton;
+						border-radius: 4px!important;
+						height: 28px;
 					}
-					.candidateShortlist:hover{
-						background: #1f8f75;
-						color: #fff;
-						width: 100%;
-						height: 100%;
-					}
+					
 				}
 				.candidateReject-wrapper{
+					@include reject-wrapper;
+					text-align: center;
 					width: 78px;
 					height: 28px;
-					padding: 0px;
-					text-align: center;
 					.spinner{
 						text-align: center;
 						margin-top: 4px;
@@ -572,18 +566,11 @@ $button-border-color: #8f8a8a;
 						height: 10px;
 					}
 					.candidateReject{
-						border: none;
-						border-radius: 0px;
-						margin: 0px;
-						width: 100%;
-						font-size: 13px;
+						@include rejectActionButton;
+						border-radius: 4px!important;
+						height: 28px;
 					}
-					.candidateReject:hover{
-						background: #af595a;
-						color: #fff;
-						width: 100%;
-						height: 100%;
-					}
+					
 				}
 			}
 		}
@@ -623,58 +610,58 @@ $button-border-color: #8f8a8a;
 				.button{
 					margin-right: 10px;
 				}
-				.candidateShortlist-wrapper{
-					width: 78px;
-					height: 28px;
-					padding: 0px;
-					text-align: center;
-					.spinner{
-						text-align: center;
-						margin-top: 4px;
-					}
-					.spinner>div{
-						width: 10px;
-						height: 10px;
-					}
-					.candidateShortlist{
-						border: none;
-						border-radius: 0px;
-						margin: 0px;
-						width: 100%;
-					}
-					.candidateShortlist:hover{
-						background: #1f8f75;
-						color: #fff;
-						width: 100%;
-						height: 100%;
-					}
-				}
-				.candidateReject-wrapper{
-					width: 78px;
-					height: 28px;
-					padding: 0px;
-					text-align: center;
-					.spinner{
-						text-align: center;
-						margin-top: 4px;
-					}
-					.spinner>div{
-						width: 10px;
-						height: 10px;
-					}
-					.candidateReject{
-						border: none;
-						border-radius: 0px;
-						margin: 0px;
-						width: 100%;
-					}
-					.candidateReject:hover{
-						background: #af595a;
-						color: #fff;
-						width: 100%;
-						height: 100%;
-					}
-				}
+				// .candidateShortlist-wrapper{
+				// 	width: 78px;
+				// 	height: 28px;
+				// 	padding: 0px;
+				// 	text-align: center;
+				// 	.spinner{
+				// 		text-align: center;
+				// 		margin-top: 4px;
+				// 	}
+				// 	.spinner>div{
+				// 		width: 10px;
+				// 		height: 10px;
+				// 	}
+				// 	.candidateShortlist{
+				// 		border: none;
+				// 		border-radius: 0px;
+				// 		margin: 0px;
+				// 		width: 100%;
+				// 	}
+				// 	.candidateShortlist:hover{
+				// 		background: #1f8f75;
+				// 		color: #fff;
+				// 		width: 100%;
+				// 		height: 100%;
+				// 	}
+				// }
+				// .candidateReject-wrapper{
+				// 	width: 78px;
+				// 	height: 28px;
+				// 	padding: 0px;
+				// 	text-align: center;
+				// 	.spinner{
+				// 		text-align: center;
+				// 		margin-top: 4px;
+				// 	}
+				// 	.spinner>div{
+				// 		width: 10px;
+				// 		height: 10px;
+				// 	}
+				// 	.candidateReject{
+				// 		border: none;
+				// 		border-radius: 0px;
+				// 		margin: 0px;
+				// 		width: 100%;
+				// 	}
+				// 	.candidateReject:hover{
+				// 		background: #af595a;
+				// 		color: #fff;
+				// 		width: 100%;
+				// 		height: 100%;
+				// 	}
+				// }
 			}
 		}
 		.seeMoreSection{
