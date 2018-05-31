@@ -2288,6 +2288,7 @@ span.sticker {
                 border: 1px solid #1f8f75 !important;
                 background-color: #FFF !important;
                 color: #1f8f75 !important;
+                margin: 0% !important;
                 width: 100%;
                 width: 48%; }
                 .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .action-buttons button.green:hover {
@@ -2297,7 +2298,7 @@ span.sticker {
                 border: 1px solid #af595a !important;
                 background-color: #FFF !important;
                 color: #af595a !important;
-                margin: 0%;
+                margin: 0% !important;
                 width: 100%;
                 width: 48%; }
                 .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .action-buttons button.red:hover {
@@ -2326,6 +2327,7 @@ span.sticker {
                 border: 1px solid #1f8f75 !important;
                 background-color: #FFF !important;
                 color: #1f8f75 !important;
+                margin: 0% !important;
                 width: 100%;
                 margin: 0;
                 padding: 7px 24px;

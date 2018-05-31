@@ -560,52 +560,7 @@
 			&.cand-add-tag-action-btn {
 				margin: 15px 0;
 			}
-			.shortlist-wrapper{
-				@include shortlist-wrapper;
-				.spinner{
-					margin-top: 6px;
-				}
-				.spinner>div{
-					width: 10px;
-					height: 10px;
-				}
-				span {
-					&.button {
-						@include shortlistActionButton;
-						&.candidateShortlistModal {
-							padding: 6px 0px;
-							width: 100%;
-							margin: 0 auto;
-						}
-						&.act-short{
-							@include shortlistState;
-						}
-					}
-				}
-			}
-			.reject-wrapper{
-				@include reject-wrappper;
-				.spinner{
-					margin-top: 6px;
-
-				}
-				.spinner>div{
-					width: 10px;
-					height: 10px;
-				}
-				span {
-					&.button {
-						margin: 0%;
-						&.candidateShortlistModal {
-							width: 100%;
-						}
-						@include rejectActionButton;
-						&.act-rej{
-							@include rejectState;
-						}
-					}
-				}
-			}
+			
     		span {
     			&.button {
 					&.cand-comment-button{
@@ -785,6 +740,53 @@
     	}
     }
 }
+
+
+.shortlist-wrapper{
+	@include shortlist-wrapper;
+	.spinner{
+		margin-top: 6px;
+	}
+	.spinner>div{
+		width: 10px;
+		height: 10px;
+	}
+	span {
+		&.button {
+			@include shortlistActionButton;			
+			&.candidateShortlistModal {
+				padding: 6px 0px;
+				width: 100%;
+				margin: 0 auto;
+			}
+			&.act-short{
+				@include shortlistState;
+			}
+		}
+	}
+}
+
+
+.reject-wrapper{
+	@include reject-wrappper;
+	.spinner{
+		margin-top: 6px;
+
+	}
+	.spinner>div{
+		width: 10px;
+		height: 10px;
+	}
+	span {
+		&.button {
+			@include rejectActionButton;	
+			&.act-rej{
+				@include rejectState;
+			}
+		}
+	}
+}
+
 
 @media all and (max-width:1024px) {
 	.view-resume-modal {

@@ -690,7 +690,6 @@ input::-webkit-input-placeholder {
 									&.profile-actions {
 										width:23%;
 										// max-width::180px;
-
 										.candidate-action-area {
 											margin-bottom:15px;
 											.shortlist-wrapper{
@@ -704,26 +703,14 @@ input::-webkit-input-placeholder {
 												text-align: center;
 												border-radius: 4px;
 												button{
-													@include button($button-color-green);
-													margin: 0;
-													width: 100%;
-
-													border-radius: 4px;
-													border: none;
-													border-radius: none;
-													text-align: center;
-													font-family: $droid-font;
-                                                    border: 1px solid #1f8f75 !important;
-                                                    color: #1f8f75;
-                                                    padding: 7px 16px;
-                                                    font-size: 13px;
-                                                    background-color: #fff;
-                                                    font-weight: bold;
-
-                                                    &:hover {
-                                                        background-color: #1f8f75 !important;
-                                                        color: #fff !important;
-                                                    }
+												@include shortlistActionButton;
+												margin: 0;
+												width: 100%;
+												border-radius: 4px;
+												font-family: $droid-font;
+												padding: 7px 16px;
+												font-size: 13px;
+												font-weight: bold;
 												}
 												.spinner{
 													text-align: center;
@@ -732,6 +719,9 @@ input::-webkit-input-placeholder {
 												.spinner > div {
 													width: 10px;
 													height: 10px;
+												}
+												.act-short{
+													@include shortlistState;
 												}
 											}
 											.reject-wrapper{
@@ -744,23 +734,15 @@ input::-webkit-input-placeholder {
 												float: right;
 												border-radius: 4px;
 												button {
-													@include button($button-color-green);
+													@include rejectActionButton;
+													border-radius: 4px;
 													margin:0;
 													width:100%;
-													border: none;
-													border-radius: none;
 													font-family: $droid-font;
-                                                    border: 1px solid #af595a !important;
-                                                    color: #af595a;
-                                                    background-color: #fff;
                                                     padding: 7px 16px;
                                                     font-size: 13px;
                                                     font-weight: bold;
-
-                                                    &:hover {
-                                                        background-color: #af595a !important;
-                                                        color: #fff !important;
-                                                    }
+                                                   
 												}
 												.spinner{
 													text-align: center;
@@ -769,6 +751,9 @@ input::-webkit-input-placeholder {
 												.spinner > div {
 													width: 10px;
 													height: 10px;
+												}
+												.act-rej{
+													@include rejectState;
 												}
 											}
 											.candidate-options {
@@ -1032,17 +1017,7 @@ input::-webkit-input-placeholder {
 	.tag-container {
 		@include tag-container;
 	}
-		// border: 0;
-		// padding: 0;
-		// .pill-button input[type=text] {
-		// padding: 7px 17px;
-		// margin: 3px;
-		// border-radius: 0;
-		// border: 1px solid #e8e8e8;
-		// width: 100%;
-		// cursor: pointer;
-		/* transition: all 0.2s ease-in-out; */
-	}
+}
 
 .mass-action-container {
     position: fixed;
@@ -1068,9 +1043,7 @@ input::-webkit-input-placeholder {
 			@include button($color-white);
 			margin-left: 0px;
 		}
-        .downloadResumeMass {
-            // margin-left: 15px !important;
-        }
+       
         &.mobile {
             display: none;
 
@@ -1096,8 +1069,6 @@ input::-webkit-input-placeholder {
     	.action-buttons {
             display: none;
     		span.button {
-				//@include button($color-white);
-				// margin: 0;
 				padding: 8px 15px;
     		}
             &.mobile {
@@ -2161,15 +2132,16 @@ input::-webkit-input-placeholder {
     	width:20%;
 
     	.action-buttons {
-    		margin-bottom:20px;
+    		margin-bottom:50px;
 			&.cand-add-tag-action-btn {
 				margin: 15px 0;
 			}
 			.shortlist-wrapper{
-				height: 28px;
-				width: 83px;
+				height: 30px;
+				width: 100px;
 				padding:0!important;
 				float: left;
+				margin: 0%!important;
 				.spinner{
 					margin-top: 6px;
 
@@ -2180,6 +2152,7 @@ input::-webkit-input-placeholder {
 				}
 				span {
 					&.button {
+						margin: 0%!important;
 						&.candidateShortlistModal {
 							padding: 6px 0px;
 							width: 100%;
@@ -2193,9 +2166,11 @@ input::-webkit-input-placeholder {
 				}
 			}
 			.reject-wrapper{
-				height: 28px;
-				width: 83px;
+				height: 30px;
+				width: 100px;
 				padding:0!important;
+				margin: 0%!important;
+				float: right;
 				.spinner{
 					margin-top: 6px;
 
@@ -2538,7 +2513,7 @@ input::-webkit-input-placeholder {
 					.shortlist-wrapper{
 						background-color: $button-color-green;
 						height: 28px;
-						width: 83px;
+						width: 100px;
 						padding:0!important;
 						.spinner{
 							margin-top: 6px;
@@ -2561,7 +2536,7 @@ input::-webkit-input-placeholder {
 					.reject-wrapper{
 						background-color: #af595a;
 						height: 28px;
-						width: 83px;
+						width: 100px;
 						padding:0!important;
 						.spinner{
 							text-align: center;
@@ -2584,7 +2559,6 @@ input::-webkit-input-placeholder {
 					span {
 						@include button($color-white);
 						display:inline-block;
-
 						&.multi-options {
 							background-color:transparent;
 							padding-left:0;
@@ -2745,7 +2719,7 @@ input::-webkit-input-placeholder {
 					span {
 						@include button($color-white);
 						display:inline-block;
-
+						margin: 0 4px;
 						&.multi-options {
 							background-color:transparent;
 							padding-left:0;
@@ -2925,7 +2899,7 @@ input::-webkit-input-placeholder {
     }
 
     .view-resume-modal .mobile-resume-sidebar .fold.first-fold {
-        padding-left: 25px;
+        padding-left: 10px;
 	}
 
 	.view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default {

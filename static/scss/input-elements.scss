@@ -356,11 +356,11 @@ label {
 }
 
 @mixin shortlist-wrapper{
-	height: 28px;
+	height: 30px;
 	width: 103px;
 	padding: 0%;
 	border: 0;
-	background: #FFF;
+	background: #1f8f75;
 	border-radius: 4px;
 	font-size: 14px;
 	margin: 0 5px;
@@ -372,13 +372,13 @@ label {
 }
 
 @mixin reject-wrappper{
-	height: 28px;
+	height: 30px;
 	width: 103px;
 	padding: 0%;
 	border: 0;
 	padding: 0;
 	margin: 0;
-	background: #FFF;
+	background: #af595a;
 	border-radius: 4px;
 	font-size: 14px;
 	margin: 0 5px;
@@ -392,6 +392,7 @@ label {
 	border: 1px solid $button-color-green !important;
 	background-color: $color-white !important;
 	color: $button-color-green !important;
+	margin: 0%!important;
 	width: 100%;
 	&:hover{
 		background-color:  $button-color-green !important;
@@ -402,7 +403,7 @@ label {
 	border: 1px solid $button-color-red !important;
 	background-color: $color-white !important;
 	color: $button-color-red !important;
-	margin: 0%;
+	margin: 0%!important;
 	width: 100%;
 	&:hover{
 		background-color:  $button-color-red !important;
