@@ -453,7 +453,9 @@ function Candidate() {
     function onClickAddComment(fn) {
         settings.candidateDetailsModal.on('keyup', settings.candidateCommentTextareaClass,function(event) {
             event.stopPropagation();
-            if (event.which == 13) {
+            if (event.which==13) 
+            if (!event.shiftKey)
+            {
                 var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
                 var comment = ($(settings.candidateCommentTextareaClass).val()).trim();
                 if(!comment) {

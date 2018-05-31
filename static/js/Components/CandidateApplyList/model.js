@@ -714,7 +714,9 @@ function candidateList() {
 
     function onClickComment(fn) {
         settings.rowContainer.on('keyup',settings.candidateCommentTextareaClass,function(event) {
-            if(event.which==13){
+            if(event.which==13)
+            if (!event.shiftKey)
+            {
                 event.stopPropagation();
                 event.preventDefault();
                 var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
@@ -757,7 +759,8 @@ function candidateList() {
             if (event.which != 13) {
                  $(this).removeAttr("tag-id")
             }
-            if(event.which==13){
+            if(event.which==13)
+            {
                 var tagName = ($(this).closest(settings.candidateRowClass).find(settings.candidateTagInputClass).val()).trim();
                 if(!tagName) {
                     $(this).closest(settings.candidateRowClass).find(settings.candidateTagInputClass).addClass("error-border");

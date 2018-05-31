@@ -175,19 +175,28 @@ function candidateList() {
        return item
    }
 
-   function addToList(dataArray){
+   function addToList(dataArray,offset,pageContent){
         hideShell()
-       if(!dataArray.length) {
-        settings.emptyScreen.removeClass('hidden');
+        console.log(pageContent)
+        console.log(offset)
+        console.log("..............................")
+        if(!dataArray.length) {
+            settings.emptyScreen.removeClass('hidden');
             return
        }
        var str = '';
+       var count=0;
        dataArray.forEach(function(aData, index){
            var item = createElement(aData);
            str+=item.element[0].outerHTML;
-       });
-
+            count++;
+        });
        settings.candidateListing.append(str);
+        if(dataArray.length< pageContent) {
+            if(settings.candidateListing.find(".no-more-records").length == 0) {
+                return settings.candidateListing.append("<div class='no-more-records no-data'>You have reached the end of the list</div>")
+            }
+        }
    }
 
    function emptyCandidateList() {
