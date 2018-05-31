@@ -755,7 +755,7 @@
 		&.button {
 			@include shortlistActionButton;			
 			&.candidateShortlistModal {
-				padding: 6px 0px;
+				padding: 7px 0px;
 				width: 100%;
 				margin: 0 auto;
 			}
@@ -768,10 +768,9 @@
 
 
 .reject-wrapper{
-	@include reject-wrappper;
+	@include reject-wrapper;
 	.spinner{
 		margin-top: 6px;
-
 	}
 	.spinner>div{
 		width: 10px;
@@ -780,6 +779,11 @@
 	span {
 		&.button {
 			@include rejectActionButton;	
+			&.candidateRejectModal {
+				padding: 7px 0px;
+				width: 100%;
+				margin: 0 auto;
+			}
 			&.act-rej{
 				@include rejectState;
 			}
@@ -870,66 +874,9 @@
 
 				.action-buttons {
 					font-size:0;
-					.shortlist-wrapper{
-						// background-color: $button-color-green;
-						height: 28px;
-						width: 100px;
-						padding:0!important;
-						.spinner{
-							margin-top: 6px;
-							text-align: center;
-						}
-						.spinner>div{
-							width: 10px;
-							height: 10px;
-						}
-						span {
-							&.button {
-								@include shortlistActionButton;
-								&.act-short{
-									@include shortlistState
-								}
-								&.candidateShortlistModal {
-									padding: 6px 0px;
-									width: 100px;
-									margin: 0 auto;
-								}
-							}
-						}
-					}
-					.reject-wrapper{
-						// background-color: #af595a;
-						padding: 0px;
-						height: 28px;
-						width: 100px;
-						border-radius: 4px;
-						.spinner{
-							text-align: center;
-							margin-top: 6px;
-						}
-						.spinner > div {
-							width: 10px;
-							height: 10px;
-						}
-						span {
-							&.button {
-								@include rejectActionButton;
-								&.candidateRejectModal {
-									padding: 6px 0px;
-									width: 100%;
-									margin: 0 auto;
-								}
-								&.act-rej{
-									@include rejectState;
-								}
-								
-							}
-						}
-					}
 					span {
-						@include button($color-white);
+						border-radius: 4px;
 						display:inline-block;
-
 						&.multi-options {
 							background-color:transparent;
 							padding-left:0;
@@ -941,6 +888,7 @@
 		}
 	}
 }
+
 
 @media all and (max-width:768px) {
     .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul li span.value {
