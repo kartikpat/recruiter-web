@@ -11,7 +11,7 @@
     &:before {
         content: '\e828';
         font-family: 'fontello';
-        font-size: 13px;
+        font-size: 14px;
         padding-right: 3px;
     }
 }
@@ -23,7 +23,7 @@
     &:before {
         content: '\e801';
         font-family: 'fontello';
-        font-size: 11px;
+        font-size: 14px;
         padding-right: 5px;
     }
 }
@@ -703,14 +703,25 @@ input::-webkit-input-placeholder {
 												text-align: center;
 												border-radius: 4px;
 												button{
-												@include shortlistActionButton;
-												margin: 0;
-												width: 100%;
-												border-radius: 4px;
-												font-family: $droid-font;
-												padding: 7px 16px;
-												font-size: 13px;
-												font-weight: bold;
+													@include button($button-color-green);
+													margin: 0;
+													width: 100%;
+
+													border-radius: 4px;
+													border: none;
+													border-radius: none;
+													text-align: center;
+													font-family: $droid-font;
+                                                    border: 1px solid #1f8f75 !important;
+                                                    color: #1f8f75;
+                                                    padding: 7px 16px;
+                                                    font-size: 14px;
+                                                    background-color: #fff;
+
+                                                    &:hover {
+                                                        background-color: #1f8f75 !important;
+                                                        color: #fff !important;
+                                                    }
 												}
 												.spinner{
 													text-align: center;
@@ -740,9 +751,13 @@ input::-webkit-input-placeholder {
 													width:100%;
 													font-family: $droid-font;
                                                     padding: 7px 16px;
-                                                    font-size: 13px;
-                                                    font-weight: bold;
-                                                   
+                                                    font-size: 14px;
+                                                    
+
+                                                    &:hover {
+                                                        background-color: #af595a !important;
+                                                        color: #fff !important;
+                                                    }
 												}
 												.spinner{
 													text-align: center;
@@ -1060,6 +1075,24 @@ input::-webkit-input-placeholder {
             margin: 0;
         }
     }
+}
+
+@media all and (max-width: 1280px){
+	.action-buttons{
+		.shortlist-wrapper{
+			width: 51% !important;
+			background-color: transparent !important;
+			max-width: 120px;
+		}
+		.reject-wrapper{
+			width: 45% !important;
+			background-color: transparent !important;
+			max-width: 120px;
+		}
+	}
+	.view-resume-modal .resume-sidebar .action-buttons span.button{
+		margin: 0 2px !important;
+	}
 }
 
 @media all and (max-width:1024px) {
@@ -1572,7 +1605,7 @@ input::-webkit-input-placeholder {
     box-shadow: 0 1px 20px rgba(0,0,0,0.8);
     background-color:$body-background-color;
     z-index:20;
-	padding:30px;
+	padding:20px;
 	// -webkit-overflow-scrolling: touch; /* Stops scrolling immediately */
 	// -webkit-backface-visibility: hidden;
 	// -webkit-transform: translate3d(0,0,0);
@@ -2137,8 +2170,9 @@ input::-webkit-input-placeholder {
 				margin: 15px 0;
 			}
 			.shortlist-wrapper{
-				height: 30px;
-				width: 100px;
+				margin: 0 3px !important;
+				height: 28px;
+				width: 48%;
 				padding:0!important;
 				float: left;
 				margin: 0%!important;
@@ -2166,8 +2200,9 @@ input::-webkit-input-placeholder {
 				}
 			}
 			.reject-wrapper{
-				height: 30px;
-				width: 100px;
+				height: 28px;
+				width: 45%;
+				margin: 0 3px !important;
 				padding:0!important;
 				margin: 0%!important;
 				float: right;
@@ -2495,7 +2530,7 @@ input::-webkit-input-placeholder {
 
  					bottom: 0;
  					background:$color-white;
-                    padding-left: 50px;
+                    padding-left: 40px;
 				}
 
 				&.second-fold {
@@ -2513,7 +2548,8 @@ input::-webkit-input-placeholder {
 					.shortlist-wrapper{
 						background-color: $button-color-green;
 						height: 28px;
-						width: 100px;
+						width: 83px;
+						max-width: 120px;
 						padding:0!important;
 						.spinner{
 							margin-top: 6px;
@@ -2524,6 +2560,10 @@ input::-webkit-input-placeholder {
 							height: 10px;
 						}
 						span {
+							@include shortlistActionButton;
+							&.act-short{
+								@include shortlistState;
+							}
 							&.button {
 								&.candidateShortlistModal {
 									padding: 6px 0px;
@@ -2536,7 +2576,8 @@ input::-webkit-input-placeholder {
 					.reject-wrapper{
 						background-color: #af595a;
 						height: 28px;
-						width: 100px;
+						width: 83px;
+						max-width: 120px;
 						padding:0!important;
 						.spinner{
 							text-align: center;
@@ -2547,6 +2588,10 @@ input::-webkit-input-placeholder {
 							height: 10px;
 						}
 						span {
+							@include rejectActionButton;
+							&.act-rej{
+								@include rejectState;
+							}
 							&.button {
 								&.candidateRejectModal {
 									padding: 6px 0px;
@@ -2856,6 +2901,9 @@ input::-webkit-input-placeholder {
 
 
 @media all and (max-width:480px) {
+	.fold{
+		padding: 20px 10px !important;
+	}
     .bulkActionModal {
         textarea {
             width: 100%;
@@ -2899,7 +2947,13 @@ input::-webkit-input-placeholder {
     }
 
     .view-resume-modal .mobile-resume-sidebar .fold.first-fold {
-        padding-left: 10px;
+        padding-left: 25px;
+        .shortlist-wrapper{
+			max-width: 110px !important;
+		}
+		.reject-wrapper{
+			max-width: 110px !important;;
+		}
 	}
 
 	.view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default {
@@ -3084,7 +3138,7 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
 
 @media (max-width: 414px) {
     .view-resume-modal .mobile-resume-sidebar .fold .action-buttons {
-        width: 95%;
+        width: 100%;
     }
     .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span {
         padding: 6px 12px;
