@@ -2551,29 +2551,6 @@ span.sticker {
         display: inline-block;
         vertical-align: top;
         cursor: pointer; }
-        .view-resume-modal .resume-sidebar .action-buttons span.button.cand-comment-button {
-          margin: 0;
-          margin-top: 5px;
-          margin-top: 10px;
-          border-radius: 4px;
-          padding: 6px 18px;
-          font-size: 14px !important;
-          margin: 0 0px;
-          cursor: pointer;
-          color: #2b2b2b;
-          border: 1px solid #d8d5d5 !important;
-          background-color: #fff !important; }
-        .view-resume-modal .resume-sidebar .action-buttons span.button.cand-add-tag-button {
-          margin: 0;
-          margin-top: 10px;
-          border-radius: 4px;
-          padding: 6px 18px;
-          font-size: 14px !important;
-          margin: 0 0px;
-          cursor: pointer;
-          color: #2b2b2b;
-          border: 1px solid #d8d5d5 !important;
-          background-color: #fff !important; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.green {
           background-color: #1f8f75; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.red {
@@ -2586,6 +2563,22 @@ span.sticker {
           .view-resume-modal .resume-sidebar .action-buttons span.button.edit img {
             width: 17px;
             height: 17px; }
+        .view-resume-modal .resume-sidebar .action-buttons span.button.cand-comment-button {
+          border-radius: 4px;
+          padding: 6px 18px;
+          font-size: 14px;
+          cursor: pointer;
+          color: #2b2b2b;
+          border: 1px solid #d8d5d5;
+          background-color: #fff; }
+        .view-resume-modal .resume-sidebar .action-buttons span.button.cand-add-tag-button {
+          border-radius: 4px;
+          padding: 6px 18px;
+          font-size: 14px;
+          cursor: pointer;
+          color: #2b2b2b;
+          border: 1px solid #d8d5d5;
+          background-color: #fff; }
     .view-resume-modal .resume-sidebar .external-links ul {
       padding: 20px 0;
       border-top: 1px solid #e8e8e8;
@@ -2633,16 +2626,16 @@ span.sticker {
         background-color: #f3fbfb;
         color: #757575;
         font-size: 14px;
-        font-weight: 400;
         text-align: left;
         min-height: 40px;
         margin-bottom: 10px;
-        border: 1px solid #e4e4e4;
         border-left: 3px solid #cfebeb;
+        line-height: 10px;
+        padding: 10px;
         resize: none; }
       .view-resume-modal .resume-sidebar .sidebar-section .action-buttons .editbutton {
-        color: #155D9A !important;
-        font-size: 13px !important;
+        color: #155D9A;
+        font-size: 13px;
         cursor: pointer; }
       .view-resume-modal .resume-sidebar .sidebar-section .comment-block {
         margin-bottom: 15px; }
@@ -2778,6 +2771,22 @@ span.sticker {
         font-size: 11px;
         padding-right: 5px; }
 
+.sidebar-section.comments textarea {
+  width: 100%;
+  padding: 5px;
+  resize: none;
+  min-height: 50px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  border: 1px solid #e8e8e8;
+  padding-top: 15px; }
+  .sidebar-section.comments textarea:focus {
+    outline: none;
+    border: 1px solid #1f8f75; }
+
+.sidebar-section.comments .action-buttons {
+  margin-bottom: 0; }
+
 @media all and (max-width: 1024px) {
   .view-resume-modal {
     padding-bottom: 60px; }
@@ -2884,22 +2893,6 @@ span.sticker {
     width: 100%; }
   .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .cand-add-tag {
     width: 100%; } }
-
-.sidebar-section.comments textarea {
-  width: 100%;
-  padding: 5px;
-  resize: none;
-  min-height: 50px;
-  margin-bottom: 15px;
-  overflow: hidden;
-  border: 1px solid #e8e8e8;
-  padding-top: 15px; }
-  .sidebar-section.comments textarea:focus {
-    outline: none;
-    border: 1px solid #1f8f75; }
-
-.sidebar-section.comments .action-buttons {
-  margin-bottom: 0; }
 
 .view-resume-modal .mobCandidateAddCommentButton {
   background-color: #FFF !important;
