@@ -2119,9 +2119,12 @@ span.sticker {
     border: 1px solid #1f8f75 !important;
     background-color: #FFF !important;
     color: #1f8f75 !important;
-    width: 100%; }
+    margin: 0% !important;
+    padding: 7px 0px !important;
+    width: 100%;
+    height: 31px; }
     .page-content .resume-download-area a:hover {
-      background-color: #1f8f75 !important;
+      background: #1f8f75 !important;
       color: #FFF !important; }
   .page-content .resume-download-area a:hover {
     text-decoration: none; }

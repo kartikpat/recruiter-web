@@ -491,9 +491,6 @@
                                                 &.user-link {
                                                     a {
                                                         color:$link-color;
-                                                        // &:hover {
-                                                        //     text-decoration: underline;
-                                                        // }
                                                     }
                                                 }
                                             }
@@ -539,7 +536,6 @@
 						}
 
 						#view-cover-letter {
-							// padding:20px 0 0 0;
 							margin-top: 10px;
 							border: 1px solid #e8e8e8;
 							line-height: 24px;
@@ -564,87 +560,7 @@
 			&.cand-add-tag-action-btn {
 				margin: 15px 0;
 			}
-			.shortlist-wrapper{
-				background-color: #1f8f75!important;
-				height: 28px;
-				width: 103px;
-				padding: 0 !important;
-				border: 0;
-				padding: 0;
-				margin: 0;
-				background: #FFF;
-				border-color: #8f8a8a;
-				border-radius: 4px;
-				padding: 6px 25px;
-				font-size: 14px;
-				margin: 0 5px;
-				color: #FFF;
-				display: inline-block;
-				vertical-align: top;
-				cursor: pointer;
-				text-align: center;
-				.spinner{
-					margin-top: 6px;
-				}
-				.spinner>div{
-					width: 10px;
-					height: 10px;
-				}
-				span {
-					&.button {
-						@include shortlistActionButton;
-						&.candidateShortlistModal {
-							padding: 6px 0px;
-							width: 100%;
-							margin: 0 auto;
-						}
-						&.act-short{
-							@include shortlistState;
-						}
-					}
-				}
-			}
-			.reject-wrapper{
-				// background-color: #af595a!important;
-				height: 28px;
-				width: 103px;
-				padding: 0 !important;
-				border: 0;
-				padding: 0;
-				margin: 0;
-				background: #FFF;
-				border-color: #8f8a8a;
-				border-radius: 4px;
-				padding: 6px 25px;
-				font-size: 14px;
-				margin: 0 5px;
-				// color: #FFF;
-				display: inline-block;
-				vertical-align: top;
-				cursor: pointer;
-				text-align: center;
-				.spinner{
-					margin-top: 6px;
-
-				}
-				.spinner>div{
-					width: 10px;
-					height: 10px;
-				}
-				span {
-					&.button {
-						margin: 0%;
-						&.candidateShortlistModal {
-							// padding: 6px 6px;
-							width: 100%;
-						}
-						@include rejectActionButton;
-						&.act-rej{
-							@include rejectState;
-						}
-					}
-				}
-			}
+			
     		span {
     			&.button {
 					&.cand-comment-button{
@@ -825,6 +741,57 @@
     }
 }
 
+
+.shortlist-wrapper{
+	@include shortlist-wrapper;
+	.spinner{
+		margin-top: 6px;
+	}
+	.spinner>div{
+		width: 10px;
+		height: 10px;
+	}
+	span {
+		&.button {
+			@include shortlistActionButton;			
+			&.candidateShortlistModal {
+				padding: 7px 0px;
+				width: 100%;
+				margin: 0 auto;
+			}
+			&.act-short{
+				@include shortlistState;
+			}
+		}
+	}
+}
+
+
+.reject-wrapper{
+	@include reject-wrapper;
+	.spinner{
+		margin-top: 6px;
+	}
+	.spinner>div{
+		width: 10px;
+		height: 10px;
+	}
+	span {
+		&.button {
+			@include rejectActionButton;	
+			&.candidateRejectModal {
+				padding: 7px 0px;
+				width: 100%;
+				margin: 0 auto;
+			}
+			&.act-rej{
+				@include rejectState;
+			}
+		}
+	}
+}
+
+
 @media all and (max-width:1024px) {
 	.view-resume-modal {
 		padding-bottom:60px;
@@ -907,65 +874,9 @@
 
 				.action-buttons {
 					font-size:0;
-					.shortlist-wrapper{
-						// background-color: $button-color-green;
-						height: 28px;
-						width: 83px;
-						padding:0!important;
-						.spinner{
-							margin-top: 6px;
-							text-align: center;
-						}
-						.spinner>div{
-							width: 10px;
-							height: 10px;
-						}
-						span {
-							&.button {
-								@include shortlistActionButton;
-								&.act-short{
-									@include shortlistState
-								}
-								&.candidateShortlistModal {
-									padding: 6px 0px;
-									width: 100%;
-									margin: 0 auto;
-								}
-							}
-						}
-					}
-					.reject-wrapper{
-						// background-color: #af595a;
-						padding: 0px;
-						height: 28px;
-						width: 83px;
-						border-radius: 4px;
-						.spinner{
-							text-align: center;
-							margin-top: 6px;
-						}
-						.spinner > div {
-							width: 10px;
-							height: 10px;
-						}
-						span {
-							&.button {
-								@include rejectActionButton;
-								&.candidateRejectModal {
-									padding: 6px 0px;
-									width: 100%;
-									margin: 0 auto;
-								}
-								&.act-rej{
-									@include rejectState;
-								}
-							}
-						}
-					}
 					span {
-						@include button($color-white);
+						border-radius: 4px;
 						display:inline-block;
-
 						&.multi-options {
 							background-color:transparent;
 							padding-left:0;
@@ -977,6 +888,7 @@
 		}
 	}
 }
+
 
 @media all and (max-width:768px) {
     .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul li span.value {
@@ -1030,7 +942,7 @@
 				.action-buttons {
 					font-size:0;
 					span {
-						@include button($color-white);
+						// @include button($color-white);
 						display:inline-block;
 
 						&.multi-options {

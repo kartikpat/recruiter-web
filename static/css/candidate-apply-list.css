@@ -3870,8 +3870,7 @@ input::-webkit-input-placeholder {
           .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section {
             display: inline-block;
             vertical-align: top;
-            font-size: 14px;
-            padding-right: 20px; }
+            font-size: 14px; }
             .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .datum {
               margin-bottom: 15px; }
               .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section .datum p.data {
@@ -3944,153 +3943,6 @@ input::-webkit-input-placeholder {
               width: 23%; }
               .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area {
                 margin-bottom: 15px; }
-                .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper {
-                  position: relative;
-                  -webkit-appearance: none;
-                  -moz-appearance: none;
-                  -ms-appearance: none;
-                  -o-appearance: none;
-                  border: 0;
-                  padding: 0;
-                  margin: 0;
-                  background: #1f8f75;
-                  border-color: #8f8a8a;
-                  border-radius: 4px;
-                  padding: 6px 25px;
-                  font-size: 14px;
-                  margin: 0 5px;
-                  color: #FFF;
-                  display: inline-block;
-                  vertical-align: top;
-                  cursor: pointer;
-                  margin: 0;
-                  padding: 0px;
-                  width: 48%;
-                  height: 31px;
-                  float: left;
-                  text-align: center;
-                  border-radius: 4px; }
-                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper.green {
-                    background-color: #1f8f75; }
-                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper.red {
-                    background-color: #af595a; }
-                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper.white {
-                    border: 1px solid #8f8a8a;
-                    color: #2b2b2b; }
-                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper.edit {
-                    padding: 3px 9px; }
-                    .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper.edit img {
-                      width: 17px;
-                      height: 17px; }
-                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper button {
-                    -webkit-appearance: none;
-                    -moz-appearance: none;
-                    -ms-appearance: none;
-                    -o-appearance: none;
-                    border: 0;
-                    padding: 0;
-                    margin: 0;
-                    background: #1f8f75;
-                    border-color: #8f8a8a;
-                    border-radius: 4px;
-                    padding: 6px 25px;
-                    font-size: 14px;
-                    margin: 0 5px;
-                    color: #FFF;
-                    display: inline-block;
-                    vertical-align: top;
-                    cursor: pointer;
-                    margin: 0;
-                    width: 100%;
-                    border-radius: 4px;
-                    border: none;
-                    border-radius: none;
-                    text-align: center;
-                    font-family: "Droid Sans", sans-serif;
-                    border: 1px solid #1f8f75 !important;
-                    color: #1f8f75;
-                    padding: 7px 16px;
-                    font-size: 14px;
-                    background-color: #fff; }
-                    .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper button.green {
-                      background-color: #1f8f75; }
-                    .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper button.red {
-                      background-color: #af595a; }
-                    .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper button.white {
-                      border: 1px solid #8f8a8a;
-                      color: #2b2b2b; }
-                    .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper button.edit {
-                      padding: 3px 9px; }
-                      .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper button.edit img {
-                        width: 17px;
-                        height: 17px; }
-                    .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper button:hover {
-                      background-color: #1f8f75 !important;
-                      color: #fff !important; }
-                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper .spinner {
-                    text-align: center;
-                    margin-top: 7px; }
-                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .shortlist-wrapper .spinner > div {
-                    width: 10px;
-                    height: 10px; }
-                .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .reject-wrapper {
-                  position: relative;
-                  background-color: #af595a;
-                  margin: 0;
-                  padding: 0px;
-                  width: 48%;
-                  height: 31px;
-                  float: right;
-                  border-radius: 4px; }
-                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .reject-wrapper button {
-                    -webkit-appearance: none;
-                    -moz-appearance: none;
-                    -ms-appearance: none;
-                    -o-appearance: none;
-                    border: 0;
-                    padding: 0;
-                    margin: 0;
-                    background: #1f8f75;
-                    border-color: #8f8a8a;
-                    border-radius: 4px;
-                    padding: 6px 25px;
-                    font-size: 14px;
-                    margin: 0 5px;
-                    color: #FFF;
-                    display: inline-block;
-                    vertical-align: top;
-                    cursor: pointer;
-                    margin: 0;
-                    width: 100%;
-                    border: none;
-                    border-radius: none;
-                    font-family: "Droid Sans", sans-serif;
-                    border: 1px solid #af595a !important;
-                    color: #af595a;
-                    background-color: #fff;
-                    padding: 7px 16px;
-                    font-size: 14px; }
-                    .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .reject-wrapper button.green {
-                      background-color: #1f8f75; }
-                    .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .reject-wrapper button.red {
-                      background-color: #af595a; }
-                    .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .reject-wrapper button.white {
-                      border: 1px solid #8f8a8a;
-                      color: #2b2b2b; }
-                    .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .reject-wrapper button.edit {
-                      padding: 3px 9px; }
-                      .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .reject-wrapper button.edit img {
-                        width: 17px;
-                        height: 17px; }
-                    .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .reject-wrapper button:hover {
-                      background-color: #af595a !important;
-                      color: #fff !important; }
-                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .reject-wrapper .spinner {
-                    text-align: center;
-                    margin-top: 7px; }
-                  .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .reject-wrapper .spinner > div {
-                    width: 10px;
-                    height: 10px; }
                 .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .candidate-options {
                   margin-top: 20px; }
                   .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .candidate-options .button-action-list {
@@ -4278,92 +4130,90 @@ input::-webkit-input-placeholder {
             .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item:hover .candidate-select {
               display: block; }
 
-.candidateTagContainer {
-  /* transition: all 0.2s ease-in-out; */ }
-  .candidateTagContainer .tag-container {
-    border: 1px solid #e8e8e8;
-    display: block;
-    padding: 7px 20px;
-    position: relative;
-    font-size: 0; }
-    .candidateTagContainer .tag-container .input-tag {
+.candidateTagContainer .tag-container {
+  border: 1px solid #e8e8e8;
+  display: block;
+  padding: 7px 20px;
+  position: relative;
+  font-size: 0; }
+  .candidateTagContainer .tag-container .input-tag {
+    display: inline-block;
+    background: #4fa995;
+    margin: 3px;
+    padding: 0px 10px;
+    border-radius: 20px; }
+    .candidateTagContainer .tag-container .input-tag .tag-icons {
       display: inline-block;
-      background: #4fa995;
-      margin: 3px;
-      padding: 0px 10px;
-      border-radius: 20px; }
-      .candidateTagContainer .tag-container .input-tag .tag-icons {
-        display: inline-block;
-        font-size: 14px;
-        cursor: pointer; }
-      .candidateTagContainer .tag-container .input-tag .tag-name {
-        display: inline-block; }
-      .candidateTagContainer .tag-container .input-tag span {
-        color: #FFF;
-        font-size: 14px;
-        padding: 8px 5px;
-        display: inline-block; }
-    .candidateTagContainer .tag-container .pill-button {
-      position: relative;
+      font-size: 14px;
+      cursor: pointer; }
+    .candidateTagContainer .tag-container .input-tag .tag-name {
       display: inline-block; }
-      .candidateTagContainer .tag-container .pill-button input[type=text] {
-        padding: 7px 10px;
-        margin: 3px;
-        border-radius: 50px;
+    .candidateTagContainer .tag-container .input-tag span {
+      color: #FFF;
+      font-size: 14px;
+      padding: 8px 5px;
+      display: inline-block; }
+  .candidateTagContainer .tag-container .pill-button {
+    position: relative;
+    display: inline-block; }
+    .candidateTagContainer .tag-container .pill-button input[type=text] {
+      padding: 7px 10px;
+      margin: 3px;
+      border-radius: 50px;
+      border: 1px solid #e8e8e8;
+      color: #2b2b2b;
+      font-size: 14px;
+      border: 1px solid transparent;
+      background: #FFF;
+      z-index: 10;
+      width: 200px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out; }
+      .candidateTagContainer .tag-container .pill-button input[type=text]:focus {
+        border-color: #4fa995; }
+    .candidateTagContainer .tag-container .pill-button .pill-listing {
+      display: inline-block;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      transform: translateY(38px);
+      opacity: 1;
+      left: 0;
+      z-index: 3;
+      transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; }
+      .candidateTagContainer .tag-container .pill-button .pill-listing ul {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+        max-height: 150px;
+        position: relative;
+        overflow: auto;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         border: 1px solid #e8e8e8;
-        color: #2b2b2b;
-        font-size: 14px;
-        border: 1px solid transparent;
-        background: #FFF;
-        z-index: 10;
-        width: 200px;
-        cursor: pointer;
-        transition: all 0.2s ease-in-out; }
-        .candidateTagContainer .tag-container .pill-button input[type=text]:focus {
-          border-color: #4fa995; }
-      .candidateTagContainer .tag-container .pill-button .pill-listing {
-        display: inline-block;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        transform: translateY(38px);
-        opacity: 1;
-        left: 0;
-        z-index: 3;
-        transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; }
-        .candidateTagContainer .tag-container .pill-button .pill-listing ul {
-          margin: 0;
-          list-style: none;
-          padding: 0;
-          max-height: 150px;
-          position: relative;
-          overflow: auto;
-          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-          border: 1px solid #e8e8e8;
-          -webkit-overflow-scrolling: touch; }
-          .candidateTagContainer .tag-container .pill-button .pill-listing ul li {
-            padding: 5px 20px;
-            display: block;
-            width: 100%;
-            font-size: 14px;
-            background: #FFF;
-            border-bottom: 1px solid #e8e8e8;
-            cursor: pointer;
-            word-wrap: break-word; }
-            .candidateTagContainer .tag-container .pill-button .pill-listing ul li.selected {
-              background-color: #e9f5f2; }
-            .candidateTagContainer .tag-container .pill-button .pill-listing ul li.tag-added {
-              display: none !important; }
-            .candidateTagContainer .tag-container .pill-button .pill-listing ul li:last-child {
-              border: 0; }
-      .candidateTagContainer .tag-container .pill-button.inactive .pill-listing {
-        transform: translateY(25px);
-        opacity: 1; }
-        .candidateTagContainer .tag-container .pill-button.inactive .pill-listing ul {
-          height: 0;
-          overflow: auto;
-          box-shadow: none;
-          border: 0; }
+        -webkit-overflow-scrolling: touch; }
+        .candidateTagContainer .tag-container .pill-button .pill-listing ul li {
+          padding: 5px 20px;
+          display: block;
+          width: 100%;
+          font-size: 14px;
+          background: #FFF;
+          border-bottom: 1px solid #e8e8e8;
+          cursor: pointer;
+          word-wrap: break-word; }
+          .candidateTagContainer .tag-container .pill-button .pill-listing ul li.selected {
+            background-color: #e9f5f2; }
+          .candidateTagContainer .tag-container .pill-button .pill-listing ul li.tag-added {
+            display: none !important; }
+          .candidateTagContainer .tag-container .pill-button .pill-listing ul li:last-child {
+            border: 0; }
+    .candidateTagContainer .tag-container .pill-button.inactive .pill-listing {
+      transform: translateY(25px);
+      opacity: 1; }
+      .candidateTagContainer .tag-container .pill-button.inactive .pill-listing ul {
+        height: 0;
+        overflow: auto;
+        box-shadow: none;
+        border: 0; }
 
 .mass-action-container {
   position: fixed;
@@ -4426,17 +4276,185 @@ input::-webkit-input-placeholder {
     .mass-action-container .icon-back_icon:before {
       margin: 0; }
 
-@media all and (max-width: 1280px) {
-  .action-buttons .shortlist-wrapper {
-    width: 51% !important;
-    background-color: transparent !important;
-    max-width: 120px; }
-  .action-buttons .reject-wrapper {
-    width: 45% !important;
-    background-color: transparent !important;
-    max-width: 120px; }
-  .view-resume-modal .resume-sidebar .action-buttons span.button {
-    margin: 0 2px !important; } }
+.shortlist-wrapper {
+  height: 30px;
+  width: 103px;
+  padding: 0%;
+  border: 0;
+  background: #1f8f75;
+  border-radius: 4px;
+  font-size: 14px;
+  margin: 0 5px;
+  color: #FFF;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+  text-align: center;
+  margin: 0%; }
+  .shortlist-wrapper button {
+    border: 1px solid #1f8f75 !important;
+    background-color: #FFF !important;
+    color: #1f8f75 !important;
+    margin: 0% !important;
+    padding: 7px 0px !important;
+    width: 100%;
+    height: 31px;
+    border-radius: 4px; }
+    .shortlist-wrapper button:hover {
+      background: #1f8f75 !important;
+      color: #FFF !important; }
+  .shortlist-wrapper .spinner {
+    text-align: center;
+    margin-top: 7px; }
+  .shortlist-wrapper .spinner > div {
+    width: 10px;
+    height: 10px; }
+  .shortlist-wrapper .act-short {
+    background-color: #1f8f75 !important;
+    color: #fff !important; }
+    .shortlist-wrapper .act-short:before {
+      content: '\e828';
+      font-family: 'fontello';
+      font-size: 13px;
+      padding-right: 3px; }
+
+.reject-wrapper {
+  height: 30px;
+  width: 103px;
+  padding: 0%;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: #af595a;
+  border-radius: 4px;
+  font-size: 14px;
+  margin: 0 5px;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+  text-align: center; }
+  .reject-wrapper button {
+    border: 1px solid #af595a !important;
+    background-color: #FFF !important;
+    color: #af595a !important;
+    margin: 0% !important;
+    padding: 7px 0px !important;
+    width: 100%;
+    height: 31px;
+    border-radius: 4px;
+    float: right; }
+    .reject-wrapper button:hover {
+      background: #af595a !important;
+      color: #FFF !important; }
+  .reject-wrapper .spinner {
+    text-align: center;
+    margin-top: 7px; }
+  .reject-wrapper .spinner > div {
+    width: 10px;
+    height: 10px; }
+  .reject-wrapper .act-rej {
+    background-color: #af595a !important;
+    color: #fff !important; }
+    .reject-wrapper .act-rej:before {
+      content: '\e801';
+      font-family: 'fontello';
+      font-size: 11px;
+      padding-right: 5px; }
+
+.resume-sidebar .shortlist-wrapper {
+  height: 30px;
+  width: 103px;
+  padding: 0%;
+  border: 0;
+  background: #1f8f75;
+  border-radius: 4px;
+  font-size: 14px;
+  margin: 0 5px;
+  color: #FFF;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+  text-align: center;
+  width: 48%;
+  padding: 0 !important;
+  margin: 0% !important;
+  float: left; }
+  .resume-sidebar .shortlist-wrapper .spinner {
+    margin-top: 6px; }
+  .resume-sidebar .shortlist-wrapper .spinner > div {
+    width: 10px;
+    height: 10px; }
+  .resume-sidebar .shortlist-wrapper span.button {
+    margin: 0% !important;
+    border: 1px solid #1f8f75 !important;
+    background-color: #FFF !important;
+    color: #1f8f75 !important;
+    margin: 0% !important;
+    padding: 7px 0px !important;
+    width: 100%;
+    height: 31px; }
+    .resume-sidebar .shortlist-wrapper span.button.candidateShortlistModal {
+      padding: 7px 0px;
+      width: 100%;
+      margin: 0 auto; }
+    .resume-sidebar .shortlist-wrapper span.button:hover {
+      background: #1f8f75 !important;
+      color: #FFF !important; }
+    .resume-sidebar .shortlist-wrapper span.button.act-short {
+      background-color: #1f8f75 !important;
+      color: #fff !important; }
+      .resume-sidebar .shortlist-wrapper span.button.act-short:before {
+        content: '\e828';
+        font-family: 'fontello';
+        font-size: 13px;
+        padding-right: 3px; }
+
+.resume-sidebar .reject-wrapper {
+  height: 30px;
+  width: 103px;
+  padding: 0%;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: #af595a;
+  border-radius: 4px;
+  font-size: 14px;
+  margin: 0 5px;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+  text-align: center;
+  padding: 0 !important;
+  margin: 0% !important;
+  float: right; }
+  .resume-sidebar .reject-wrapper .spinner {
+    margin-top: 6px; }
+  .resume-sidebar .reject-wrapper .spinner > div {
+    width: 10px;
+    height: 10px; }
+  .resume-sidebar .reject-wrapper span.button {
+    border: 1px solid #af595a !important;
+    background-color: #FFF !important;
+    color: #af595a !important;
+    margin: 0% !important;
+    padding: 7px 0px !important;
+    width: 100%;
+    height: 31px; }
+    .resume-sidebar .reject-wrapper span.button.candidateShortlistModal {
+      padding: 7px 0px;
+      width: 100%;
+      margin: 0 auto; }
+    .resume-sidebar .reject-wrapper span.button:hover {
+      background: #af595a !important;
+      color: #FFF !important; }
+    .resume-sidebar .reject-wrapper span.button.act-rej {
+      background-color: #af595a !important;
+      color: #fff !important; }
+      .resume-sidebar .reject-wrapper span.button.act-rej:before {
+        content: '\e801';
+        font-family: 'fontello';
+        font-size: 11px;
+        padding-right: 5px; }
 
 @media all and (max-width: 1024px) {
   .mass-action-container {
@@ -4529,7 +4547,7 @@ input::-webkit-input-placeholder {
       .page-content .candidates-listing .candidate-item .candidate-item-section.image {
         padding-left: 0; } }
 
-@media all and (max-width: 768px) {
+@media all and (max-width: 800px) {
   .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span.sortBy {
     width: 191px;
     margin-right: 0px;
@@ -5240,73 +5258,9 @@ input::-webkit-input-placeholder {
   .view-resume-modal .resume-sidebar {
     width: 20%; }
     .view-resume-modal .resume-sidebar .action-buttons {
-      margin-bottom: 20px; }
+      margin-bottom: 50px; }
       .view-resume-modal .resume-sidebar .action-buttons.cand-add-tag-action-btn {
         margin: 15px 0; }
-      .view-resume-modal .resume-sidebar .action-buttons .shortlist-wrapper {
-        margin: 0 3px !important;
-        height: 28px;
-        width: 48%;
-        padding: 0 !important;
-        float: left; }
-        .view-resume-modal .resume-sidebar .action-buttons .shortlist-wrapper .spinner {
-          margin-top: 6px; }
-        .view-resume-modal .resume-sidebar .action-buttons .shortlist-wrapper .spinner > div {
-          width: 10px;
-          height: 10px; }
-        .view-resume-modal .resume-sidebar .action-buttons .shortlist-wrapper span.button {
-          border: 1px solid #1f8f75 !important;
-          background-color: #FFF !important;
-          color: #1f8f75 !important;
-          width: 100%; }
-          .view-resume-modal .resume-sidebar .action-buttons .shortlist-wrapper span.button.candidateShortlistModal {
-            padding: 6px 0px;
-            width: 100%;
-            margin: 0 auto; }
-          .view-resume-modal .resume-sidebar .action-buttons .shortlist-wrapper span.button:hover {
-            background-color: #1f8f75 !important;
-            color: #FFF !important; }
-          .view-resume-modal .resume-sidebar .action-buttons .shortlist-wrapper span.button.act-short {
-            background-color: #1f8f75 !important;
-            color: #fff !important;
-            padding-left: 7px !important; }
-            .view-resume-modal .resume-sidebar .action-buttons .shortlist-wrapper span.button.act-short:before {
-              content: '\e828';
-              font-family: 'fontello';
-              font-size: 13px;
-              padding-right: 3px; }
-      .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper {
-        height: 28px;
-        width: 45%;
-        margin: 0 3px !important;
-        padding: 0 !important; }
-        .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper .spinner {
-          margin-top: 6px; }
-        .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper .spinner > div {
-          width: 10px;
-          height: 10px; }
-        .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper span.button {
-          border: 1px solid #af595a !important;
-          background-color: #FFF !important;
-          color: #af595a !important;
-          margin: 0%;
-          width: 100%; }
-          .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper span.button.candidateShortlistModal {
-            padding: 6px 0px;
-            width: 100%;
-            margin: 0 auto; }
-          .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper span.button:hover {
-            background-color: #af595a !important;
-            color: #FFF !important; }
-          .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper span.button.act-rej {
-            background-color: #af595a !important;
-            color: #fff !important;
-            padding-left: 11px !important; }
-            .view-resume-modal .resume-sidebar .action-buttons .reject-wrapper span.button.act-rej:before {
-              content: '\e801';
-              font-family: 'fontello';
-              font-size: 11px;
-              padding-right: 5px; }
       .view-resume-modal .resume-sidebar .action-buttons span.button {
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -5326,9 +5280,9 @@ input::-webkit-input-placeholder {
         vertical-align: top;
         cursor: pointer; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.candidateShortlistModal {
-          padding: 6px 15px; }
+          padding: 7px 15px; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.candidateRejectModal {
-          padding: 6px 15px; }
+          padding: 7px 15px; }
         .view-resume-modal .resume-sidebar .action-buttons span.button.cand-comment-button {
           margin: 0;
           margin-top: 5px;
@@ -5559,10 +5513,19 @@ input::-webkit-input-placeholder {
           width: 90%;
           margin: 0 auto; }
           .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper {
-            background-color: #1f8f75;
-            height: 28px;
-            width: 83px;
-            max-width: 120px;
+            height: 30px;
+            width: 103px;
+            padding: 0%;
+            border: 0;
+            background: #1f8f75;
+            border-radius: 4px;
+            font-size: 14px;
+            margin: 0 5px;
+            color: #FFF;
+            display: inline-block;
+            vertical-align: top;
+            cursor: pointer;
+            text-align: center;
             padding: 0 !important; }
             .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper .spinner {
               margin-top: 6px;
@@ -5570,31 +5533,44 @@ input::-webkit-input-placeholder {
             .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper .spinner > div {
               width: 10px;
               height: 10px; }
-            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper span {
+            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper span.button {
               border: 1px solid #1f8f75 !important;
               background-color: #FFF !important;
               color: #1f8f75 !important;
-              width: 100%; }
-              .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper span:hover {
-                background-color: #1f8f75 !important;
+              margin: 0% !important;
+              padding: 7px 0px !important;
+              width: 100%;
+              height: 31px; }
+              .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper span.button:hover {
+                background: #1f8f75 !important;
                 color: #FFF !important; }
-              .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper span.act-short {
+              .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper span.button.candidateShortlistModal {
+                padding: 7px 0px;
+                width: 100%;
+                margin: 0 auto; }
+              .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper span.button.act-short {
                 background-color: #1f8f75 !important;
-                color: #fff !important;
-                padding-left: 7px !important; }
-                .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper span.act-short:before {
+                color: #fff !important; }
+                .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper span.button.act-short:before {
                   content: '\e828';
                   font-family: 'fontello';
                   font-size: 13px;
                   padding-right: 3px; }
-              .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .shortlist-wrapper span.button.candidateShortlistModal {
-                padding: 6px 0px;
-                width: 100%;
-                margin: 0 auto; }
           .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper {
-            background-color: #af595a;
-            height: 28px;
-            width: 83px;
+            height: 30px;
+            width: 103px;
+            padding: 0%;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            background: #af595a;
+            border-radius: 4px;
+            font-size: 14px;
+            margin: 0 5px;
+            display: inline-block;
+            vertical-align: top;
+            cursor: pointer;
+            text-align: center;
             max-width: 120px;
             padding: 0 !important; }
             .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper .spinner {
@@ -5603,26 +5579,27 @@ input::-webkit-input-placeholder {
             .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper .spinner > div {
               width: 10px;
               height: 10px; }
-            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper span {
+            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper span.button {
               border: 1px solid #af595a !important;
               background-color: #FFF !important;
               color: #af595a !important;
-              margin: 0%;
-              width: 100%; }
-              .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper span:hover {
-                background-color: #af595a !important;
+              margin: 0% !important;
+              padding: 7px 0px !important;
+              width: 100%;
+              height: 31px; }
+              .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper span.button:hover {
+                background: #af595a !important;
                 color: #FFF !important; }
-              .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper span.act-rej {
+              .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper span.button.act-rej {
                 background-color: #af595a !important;
-                color: #fff !important;
-                padding-left: 11px !important; }
-                .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper span.act-rej:before {
+                color: #fff !important; }
+                .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper span.button.act-rej:before {
                   content: '\e801';
                   font-family: 'fontello';
                   font-size: 11px;
                   padding-right: 5px; }
               .view-resume-modal .mobile-resume-sidebar .fold .action-buttons .reject-wrapper span.button.candidateRejectModal {
-                padding: 6px 0px;
+                padding: 7px 0px;
                 width: 100%;
                 margin: 0 auto; }
           .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span {
@@ -5770,7 +5747,8 @@ input::-webkit-input-placeholder {
             display: inline-block;
             vertical-align: top;
             cursor: pointer;
-            display: inline-block; }
+            display: inline-block;
+            margin: 0 4px; }
             .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span.green {
               background-color: #1f8f75; }
             .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span.red {
@@ -5893,10 +5871,6 @@ input::-webkit-input-placeholder {
         margin-top: 5px; }
   .view-resume-modal .mobile-resume-sidebar .fold.first-fold {
     padding-left: 25px; }
-    .view-resume-modal .mobile-resume-sidebar .fold.first-fold .shortlist-wrapper {
-      max-width: 110px !important; }
-    .view-resume-modal .mobile-resume-sidebar .fold.first-fold .reject-wrapper {
-      max-width: 110px !important; }
   .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default {
     background: transparent;
     border: none;
