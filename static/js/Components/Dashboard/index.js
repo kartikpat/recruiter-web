@@ -578,7 +578,7 @@ function onClickShareOnLinkedIn(fn){
 
 			var candidateCard = interviewCandidateCard.clone().removeClass('hidden prototype');
 			candidateCard.find('.highlighted-meta').text(slotTime.format('hh:mm A') + ' - '+ slotTime.add(30, 'minutes').format('hh:mm A'));
-			candidateCard.find('.name').text(aRow['name']);
+			candidateCard.find('.name').text(aRow['name']).attr('href', '/job/'+aRow['job']['id']+'/applications/'+aRow['applicationId']);;
 			candidateCard.find('.designation').text(aRow['designation']);
 			candidateCard.find('.organization').text(aRow['organization']);
 			if(index==totalInterviews-1 &&  showCount >=index){
