@@ -2062,42 +2062,31 @@ span.sticker {
 .sendInvite {
   visibility: hidden; }
 
-.wrap-mobile {
-  padding: 5px 0; }
-  .wrap-mobile .icon-tick_circle {
-    color: #1f8f75 !important; }
-
-.invite-links {
-  margin-left: 0 !important;
-  list-style: none !important; }
-
 .chat-div {
   display: none; }
-
-.sidebar-section.contact-info .wrap {
-  margin: 7px 0;
-  color: #2b2b2b;
-  line-height: 1.2;
-  font-size: 14px; }
-
-.seeMoreRec {
-  display: inline-block;
-  cursor: pointer; }
-
-.loader-overlay {
-  z-index: 99; }
 
 .view-resume-modal {
   background-color: #f7f7f7;
   padding: 30px; }
   .view-resume-modal .mobCandidateAddTagButton {
-    background-color: #FFF !important;
-    border: 1px solid #d8d5d5 !important;
     border-radius: 4px;
-    padding: 6px 25px;
-    font-size: 14px !important;
-    margin: 0 5px;
-    color: #2b2b2b !important;
+    padding: 6px 18px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #2b2b2b;
+    border: 1px solid #d8d5d5;
+    background-color: #fff; }
+  .view-resume-modal .mobCandidateAddCommentButton {
+    border-radius: 4px;
+    padding: 6px 18px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #2b2b2b;
+    border: 1px solid #d8d5d5;
+    background-color: #fff; }
+  .view-resume-modal .mobcandidateAddEditButton {
+    color: #155d9a;
+    font-size: 13px;
     cursor: pointer; }
   .view-resume-modal .mob.comments {
     display: none; }
@@ -2112,577 +2101,66 @@ span.sticker {
       border: 1px solid #e8e8e8;
       background-color: #FFF;
       border-radius: 8px; }
-      .view-resume-modal .main-wrapper .main-container .container.resume-header {
-        background-image: url("/static/images/view-resume-banner.png");
-        background-repeat: no-repeat;
-        background-position: center top;
-        background-size: 100% 95px;
-        vertical-align: top;
-        display: inline-block;
-        width: 100%;
-        border-bottom: 1px solid #e8e8e8;
-        position: relative;
-        padding-top: 165px; }
-        .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-image {
-          position: absolute;
-          top: 35px;
-          display: block;
-          margin: auto;
-          left: 0;
-          right: 0;
-          width: 125px;
-          height: 125px;
-          object-fit: cover; }
-          .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-image img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 5px solid #FFF;
-            box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-            background-color: #efefef;
-            object-fit: cover; }
-        .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information {
-          text-align: center; }
-          .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information p.profile-name {
-            font-size: 22px;
-            text-align: center;
-            color: #1f8f75; }
-            .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information p.profile-name.shell {
-              font-size: 0;
-              background-color: #d8d5d5;
-              opacity: 0.4;
-              min-height: 10px;
-              animation-duration: 1.5s;
-              animation-fill-mode: forwards;
-              animation-iteration-count: infinite;
-              animation-name: placeHolderShimmer;
-              animation-timing-function: linear;
-              background: #f6f7f8;
-              background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
-              background-size: 800px 104px;
-              position: relative;
-              max-width: 150px;
-              max-height: 7px;
-              min-height: 7px;
-              margin: 0 auto;
-              margin-top: 5px; }
-          .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information .social-media-accounts {
-            margin: 10px 0 20px; }
-            .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information .social-media-accounts span.social {
-              margin: 0 5px; }
-        .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot {
-          text-align: center;
-          background-color: #f9f9f9;
-          padding: 10px 0;
-          position: relative; }
-          .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot .snap {
-            display: inline-block;
-            padding: 0 20px;
-            text-align: left;
-            border-right: 1px solid #e8e8e8; }
-            .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot .snap .snap-title {
-              color: #808080;
-              font-size: 13px;
-              line-height: 1.5; }
-            .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot .snap .snap-value {
-              color: #333;
-              font-size: 13px; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot .snap .snap-value.shell {
-                font-size: 0;
-                background-color: #d8d5d5;
-                opacity: 0.4;
-                min-height: 10px;
-                animation-duration: 1.5s;
-                animation-fill-mode: forwards;
-                animation-iteration-count: infinite;
-                animation-name: placeHolderShimmer;
-                animation-timing-function: linear;
-                background: #f6f7f8;
-                background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
-                background-size: 800px 104px;
-                position: relative;
-                max-width: 100px;
-                max-height: 7px;
-                margin: 0 auto;
-                margin-top: 5px;
-                min-height: 7px; }
-            .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot .snap:last-child {
-              border: 0; }
-          .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot:before {
-            content: '';
-            border-bottom: 10px solid #f9f9f9;
-            border-right: 10px solid transparent;
-            border-left: 10px solid transparent;
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            -webkit-transform: translateX(-50%);
-            -moz-transform: translateX(-50%); }
-        .view-resume-modal .main-wrapper .main-container .container.resume-header .skills-area {
-          text-align: center;
-          margin: 20px 0; }
-          .view-resume-modal .main-wrapper .main-container .container.resume-header .skills-area .tag {
-            display: inline-block;
-            padding: 8px 20px;
-            border: 1px solid #e8e8e8;
-            margin: 5px;
-            border-radius: 50px; }
-        .view-resume-modal .main-wrapper .main-container .container.resume-header .last-login-container {
-          margin: 20px 0; }
-          .view-resume-modal .main-wrapper .main-container .container.resume-header .last-login-container p {
-            text-align: right;
-            margin-right: 20px;
-            font-style: italic;
-            color: #808080; }
-            .view-resume-modal .main-wrapper .main-container .container.resume-header .last-login-container p span.shell {
-              display: inline-block;
-              font-size: 0;
-              background-color: #d8d5d5;
-              opacity: 0.4;
-              min-height: 10px;
-              animation-duration: 1.5s;
-              animation-fill-mode: forwards;
-              animation-iteration-count: infinite;
-              animation-name: placeHolderShimmer;
-              animation-timing-function: linear;
-              background: #f6f7f8;
-              background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
-              background-size: 800px 104px;
-              position: relative;
-              min-width: 100px;
-              max-height: 7px;
-              margin-top: 5px;
-              min-height: 7px; }
-      .view-resume-modal .main-wrapper .main-container .container.resume-body {
-        padding: 20px; }
-        .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content {
-          background: transparent;
-          border: none;
-          padding: 0;
-          width: 90%;
-          margin: 0 auto; }
-          .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-widget-header {
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid #e8e8e8;
-            -moz-border-radius: 0px;
-            -webkit-border-radius: 0px;
-            border-radius: 0px;
-            padding: 0; }
-          .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default {
-            background: transparent;
-            border: none;
-            margin: 0 48px 0 0;
-            position: relative;
-            top: 1px; }
-            .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default a {
-              padding: 10px 5px;
-              text-transform: uppercase;
-              color: #808080;
-              border-bottom: 3px solid transparent; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default a:focus {
-                outline: 0; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default a.ui-tabs-anchor:focus {
-                outline: 0; }
-          .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-active {
-            background: transparent url(img/uiTabsArrow.png) no-repeat bottom center;
-            border: none; }
-            .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-active a {
-              text-transform: uppercase;
-              color: #149075;
-              border-color: #149075; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-active a:focus {
-                outline: 0; }
-          .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info {
-            padding: 20px 0; }
-            .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .contact-info {
-              display: none; }
-            .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block {
-              margin: 20px 0 0 0;
-              border: 1px solid #e8e8e8;
-              width: 100%;
-              padding: 25px; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content .mobCommentBox .comment-textarea {
-                background-color: white;
-                color: #757575;
-                font-size: 14px;
-                /* Approximation due to font substitution */
-                font-weight: 400;
-                text-align: left;
-                margin-bottom: 10px;
-                border: 1px solid  #e4e4e4;
-                border-left: 3px solid  #cfebeb;
-                resize: none; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .cand-add-tag {
-                width: 50%;
-                height: 40px;
-                line-height: 40px;
-                margin-bottom: 5px; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .cand-add-tag-action-btn {
-                margin-top: 10px; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments textarea {
-                width: 50%;
-                padding: 5px;
-                resize: none;
-                border: 1px solid #e8e8e8;
-                margin-bottom: 20px;
-                min-height: 50px; }
-                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments textarea:focus {
-                  outline: none;
-                  border: 1px solid #1f8f75; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons {
-                margin-top: 10px; }
-                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons span.button {
-                  -webkit-appearance: none;
-                  -moz-appearance: none;
-                  -ms-appearance: none;
-                  -o-appearance: none;
-                  border: 0;
-                  padding: 0;
-                  margin: 0;
-                  background: #708732;
-                  border-color: #8f8a8a;
-                  border-radius: 4px;
-                  padding: 6px 25px;
-                  font-size: 14px;
-                  margin: 0 5px;
-                  color: #FFF;
-                  display: inline-block;
-                  vertical-align: top;
-                  cursor: pointer;
-                  margin-left: 0px; }
-                  .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons span.button.green {
-                    background-color: #1f8f75; }
-                  .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons span.button.red {
-                    background-color: #af595a; }
-                  .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons span.button.white {
-                    border: 1px solid #8f8a8a;
-                    color: #2b2b2b; }
-                  .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons span.button.edit {
-                    padding: 3px 9px; }
-                    .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons span.button.edit img {
-                      width: 17px;
-                      height: 17px; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .action-buttons span.button {
-                -webkit-appearance: none;
-                -moz-appearance: none;
-                -ms-appearance: none;
-                -o-appearance: none;
-                border: 0;
-                padding: 0;
-                margin: 0;
-                background: #708732;
-                border-color: #8f8a8a;
-                border-radius: 4px;
-                padding: 6px 25px;
-                font-size: 14px;
-                margin: 0 5px;
-                color: #FFF;
-                display: inline-block;
-                vertical-align: top;
-                cursor: pointer;
-                margin-left: 0px; }
-                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .action-buttons span.button.green {
-                  background-color: #1f8f75; }
-                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .action-buttons span.button.red {
-                  background-color: #af595a; }
-                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .action-buttons span.button.white {
-                  border: 1px solid #8f8a8a;
-                  color: #2b2b2b; }
-                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .action-buttons span.button.edit {
-                  padding: 3px 9px; }
-                  .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .action-buttons span.button.edit img {
-                    width: 17px;
-                    height: 17px; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .skill-tags-area {
-                margin-top: 10px; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .skill-tag {
-                display: inline-block;
-                margin: 5px;
-                border: 1px solid #e8e8e8;
-                padding: 5px 15px;
-                border-radius: 25px;
-                font-size: 13px;
-                background-color: #f3fbfb;
-                color: #6e6e6e;
-                padding-right: 25px;
-                position: relative; }
-                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .skill-tag div {
-                  display: inline-block;
-                  vertical-align: middle;
-                  max-width: 150px;
-                  word-wrap: break-word; }
-                  .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .skill-tag div.remove-active-skill {
-                    cursor: pointer;
-                    vertical-align: top;
-                    position: absolute;
-                    top: 50%;
-                    transform: translate(0, -50%);
-                    right: 5px; }
-                    .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.tags .skill-tag div.remove-active-skill span {
-                      font-size: 11px;
-                      display: inline-block;
-                      vertical-align: middle;
-                      color: #808080; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content-heading {
-                margin-top: 0;
-                font-weight: bold;
-                font-size: 22px; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content .datum p {
-                line-height: 1.5;
-                font-size: 15px; }
-                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content .datum p.name {
-                  font-weight: bold;
-                  color: #333;
-                  margin-left: 15px; }
-                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content .datum p.detail {
-                  color: #808080;
-                  margin-left: 15px; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content .datum .separator {
-                margin: 20px 0;
-                border-bottom: 1px solid #e8e8e8; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul {
-                margin: 0;
-                padding: 0;
-                list-style: none;
-                margin-left: 15px; }
-                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul li {
-                  font-size: 0;
-                  margin: 10px 0; }
-                  .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul li span {
-                    display: inline-block;
-                    vertical-align: top;
-                    width: 50%;
-                    font-size: 15px; }
-                    .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul li span.key {
-                      color: #808080; }
-                    .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul li span.value {
-                      color: #333;
-                      word-wrap: break-word;
-                      max-width: 370px; }
-                      .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul li span.value.shell {
-                        font-size: 0;
-                        background-color: #d8d5d5;
-                        opacity: 0.4;
-                        min-height: 10px;
-                        animation-duration: 1.5s;
-                        animation-fill-mode: forwards;
-                        animation-iteration-count: infinite;
-                        animation-name: placeHolderShimmer;
-                        animation-timing-function: linear;
-                        background: #f6f7f8;
-                        background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
-                        background-size: 800px 104px;
-                        position: relative;
-                        max-width: 100px;
-                        max-height: 7px;
-                        margin-top: 5px;
-                        min-height: 7px; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-header .user-image {
-                display: inline-block;
-                vertical-align: middle;
-                margin-right: 20px; }
-                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-header .user-image img {
-                  border-radius: 50%; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-header .user-details {
-                display: inline-block;
-                vertical-align: top;
-                padding: 9px 0; }
-                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-header .user-details p {
-                  line-height: 1.5;
-                  color: #333; }
-                  .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-header .user-details p.user-name {
-                    font-weight: bold;
-                    font-size: 15px;
-                    text-transform: capitalize; }
-                  .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-header .user-details p.user-link a {
-                    color: #155d9a; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-body {
-                margin: 0px 0 0 0; }
-                .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendation-body p {
-                  line-height: 1.5;
-                  word-wrap: break-word; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .separator {
-                margin: 20px 0;
-                border-bottom: 1px solid #e8e8e8; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .see-more {
-                font-size: 14px; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .icon-down_arrow, .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .icon-up_arrow {
-                font-size: 11px;
-                margin-left: 3px; }
-              .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.recommendations .recommendationListSecond {
-                display: none; }
-          .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-resume {
-            margin: 20px 0 0 0;
-            background-color: #C0C0C0; }
-            .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-resume canvas {
-              width: 100%;
-              border: 1px solid #e8e8e8;
-              margin: 10px 0 0 0; }
-          .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-cover-letter {
-            margin-top: 10px;
-            border: 1px solid #e8e8e8;
-            line-height: 24px;
-            font-size: 14px; }
   .view-resume-modal .mobile-resume-sidebar {
     display: none; }
-  .view-resume-modal .resume-sidebar {
-    width: 20%; }
-    .view-resume-modal .resume-sidebar .action-buttons {
-      margin-bottom: 20px; }
-      .view-resume-modal .resume-sidebar .action-buttons.cand-add-tag-action-btn {
-        margin: 15px 0; }
-      .view-resume-modal .resume-sidebar .action-buttons span.button {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        -ms-appearance: none;
-        -o-appearance: none;
-        border: 0;
-        padding: 0;
-        margin: 0;
-        background: #FFF;
-        border-color: #8f8a8a;
-        border-radius: 4px;
-        padding: 6px 25px;
-        font-size: 14px;
-        margin: 0 5px;
-        color: #FFF;
-        display: inline-block;
-        vertical-align: top;
-        cursor: pointer; }
-        .view-resume-modal .resume-sidebar .action-buttons span.button.green {
-          background-color: #1f8f75; }
-        .view-resume-modal .resume-sidebar .action-buttons span.button.red {
-          background-color: #af595a; }
-        .view-resume-modal .resume-sidebar .action-buttons span.button.white {
-          border: 1px solid #8f8a8a;
-          color: #2b2b2b; }
-        .view-resume-modal .resume-sidebar .action-buttons span.button.edit {
-          padding: 3px 9px; }
-          .view-resume-modal .resume-sidebar .action-buttons span.button.edit img {
-            width: 17px;
-            height: 17px; }
-        .view-resume-modal .resume-sidebar .action-buttons span.button.cand-comment-button {
-          border-radius: 4px;
-          padding: 6px 18px;
-          font-size: 14px;
-          cursor: pointer;
-          color: #2b2b2b;
-          border: 1px solid #d8d5d5;
-          background-color: #fff; }
-        .view-resume-modal .resume-sidebar .action-buttons span.button.cand-add-tag-button {
-          border-radius: 4px;
-          padding: 6px 18px;
-          font-size: 14px;
-          cursor: pointer;
-          color: #2b2b2b;
-          border: 1px solid #d8d5d5;
-          background-color: #fff; }
-    .view-resume-modal .resume-sidebar .external-links ul {
-      padding: 20px 0;
-      border-top: 1px solid #e8e8e8;
-      list-style: none;
-      margin: 0; }
-      .view-resume-modal .resume-sidebar .external-links ul li {
-        font-size: 15px;
+  .view-resume-modal .seeMoreRec {
+    display: inline-block;
+    cursor: pointer; }
+  .view-resume-modal .loader-overlay {
+    z-index: 99; }
+
+.content .datum p {
+  line-height: 1.5;
+  font-size: 15px; }
+  .content .datum p.name {
+    font-weight: bold;
+    color: #333;
+    margin-left: 15px; }
+  .content .datum p.detail {
+    color: #808080;
+    margin-left: 15px; }
+
+.content .datum .separator {
+  margin: 20px 0;
+  border-bottom: 1px solid #e8e8e8; }
+
+.content ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin-left: 15px; }
+  .content ul li {
+    font-size: 0;
+    margin: 10px 0; }
+    .content ul li span {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+      font-size: 15px; }
+      .content ul li span.key {
+        color: #808080; }
+      .content ul li span.value {
         color: #333;
-        line-height: 1.3;
-        margin: 7px 0;
-        cursor: pointer; }
-        .view-resume-modal .resume-sidebar .external-links ul li:hover {
-          text-decoration: underline; }
-        .view-resume-modal .resume-sidebar .external-links ul li span.icon {
-          width: 2em;
-          margin-right: 10px; }
-      .view-resume-modal .resume-sidebar .external-links ul .table-row-separator {
-        border-bottom: 1px solid #e8e8e8 !important;
-        margin-top: 20px; }
-      .view-resume-modal .resume-sidebar .external-links ul .invite:hover {
-        text-decoration: none; }
-      .view-resume-modal .resume-sidebar .external-links ul .invite-links {
-        margin-left: 30px;
-        list-style: initial; }
-      .view-resume-modal .resume-sidebar .external-links ul:last-child {
-        border-bottom: 0;
-        padding-bottom: 0; }
-    .view-resume-modal .resume-sidebar .sidebar-section {
-      border-bottom: 1px solid #e8e8e8;
-      padding-bottom: 20px; }
-      .view-resume-modal .resume-sidebar .sidebar-section h3 {
-        font-size: 16px;
-        color: #333;
-        margin-top: 20px; }
-      .view-resume-modal .resume-sidebar .sidebar-section .contact {
-        font-size: 14px; }
-      .view-resume-modal .resume-sidebar .sidebar-section .icon-tick_circle {
-        color: #1f8f75; }
-      .view-resume-modal .resume-sidebar .sidebar-section .cand-add-tag {
-        height: 40px;
-        line-height: 10px;
-        padding: 10px;
-        font-size: 13px; }
-      .view-resume-modal .resume-sidebar .sidebar-section .comment-box .comment-textarea {
-        background-color: #f3fbfb;
-        color: #757575;
-        font-size: 14px;
-        text-align: left;
-        min-height: 40px;
-        margin-bottom: 10px;
-        border-left: 3px solid #cfebeb;
-        line-height: 10px;
-        padding: 10px;
-        resize: none; }
-      .view-resume-modal .resume-sidebar .sidebar-section .action-buttons .editbutton {
-        color: #155D9A;
-        font-size: 13px;
-        cursor: pointer; }
-      .view-resume-modal .resume-sidebar .sidebar-section .comment-block {
-        margin-bottom: 15px; }
-        .view-resume-modal .resume-sidebar .sidebar-section .comment-block .content {
-          padding: 15px;
-          border: 1px solid #e8e8e8;
-          border-left: 3px solid #cfebeb;
-          background-color: #FFF; }
-          .view-resume-modal .resume-sidebar .sidebar-section .comment-block .content p {
-            font-size: 14px;
-            color: #808080; }
-        .view-resume-modal .resume-sidebar .sidebar-section .comment-block .comment-timestamp {
-          font-size: 13px;
-          line-height: 1.3;
-          margin-top: 10px;
-          color: #808080; }
-      .view-resume-modal .resume-sidebar .sidebar-section.tags {
-        border-bottom: 0; }
-        .view-resume-modal .resume-sidebar .sidebar-section.tags .skill-tag {
-          display: inline-block;
-          margin: 5px;
-          margin-left: 0px;
-          border: 1px solid #e8e8e8;
-          padding: 5px 15px;
-          border-radius: 25px;
-          font-size: 13px;
-          background-color: #f3fbfb;
-          color: #6e6e6e;
-          padding-right: 25px;
-          position: relative; }
-          .view-resume-modal .resume-sidebar .sidebar-section.tags .skill-tag div {
-            display: inline-block;
-            vertical-align: middle;
-            max-width: 150px;
-            word-wrap: break-word; }
-            .view-resume-modal .resume-sidebar .sidebar-section.tags .skill-tag div.remove-active-skill {
-              cursor: pointer;
-              vertical-align: top;
-              position: absolute;
-              top: 50%;
-              transform: translate(0, -50%);
-              right: 5px; }
-              .view-resume-modal .resume-sidebar .sidebar-section.tags .skill-tag div.remove-active-skill span {
-                font-size: 11px;
-                display: inline-block;
-                vertical-align: middle;
-                color: #808080; }
+        word-wrap: break-word;
+        max-width: 370px; }
+        .content ul li span.value.shell {
+          font-size: 0;
+          background-color: #d8d5d5;
+          opacity: 0.4;
+          min-height: 10px;
+          animation-duration: 1.5s;
+          animation-fill-mode: forwards;
+          animation-iteration-count: infinite;
+          animation-name: placeHolderShimmer;
+          animation-timing-function: linear;
+          background: #f6f7f8;
+          background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+          background-size: 800px 104px;
+          position: relative;
+          max-width: 100px;
+          max-height: 7px;
+          margin-top: 5px;
+          min-height: 7px; }
 
 .shortlist-wrapper {
   height: 30px;
@@ -2771,6 +2249,119 @@ span.sticker {
         font-size: 11px;
         padding-right: 5px; }
 
+.resume-sidebar {
+  width: 20%; }
+  .resume-sidebar .action-buttons {
+    margin-bottom: 20px; }
+    .resume-sidebar .action-buttons.cand-add-tag-action-btn {
+      margin: 15px 0; }
+    .resume-sidebar .action-buttons span.button {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      -o-appearance: none;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      background: #FFF;
+      border-color: #8f8a8a;
+      border-radius: 4px;
+      padding: 6px 25px;
+      font-size: 14px;
+      margin: 0 5px;
+      color: #FFF;
+      display: inline-block;
+      vertical-align: top;
+      cursor: pointer; }
+      .resume-sidebar .action-buttons span.button.green {
+        background-color: #1f8f75; }
+      .resume-sidebar .action-buttons span.button.red {
+        background-color: #af595a; }
+      .resume-sidebar .action-buttons span.button.white {
+        border: 1px solid #8f8a8a;
+        color: #2b2b2b; }
+      .resume-sidebar .action-buttons span.button.edit {
+        padding: 3px 9px; }
+        .resume-sidebar .action-buttons span.button.edit img {
+          width: 17px;
+          height: 17px; }
+      .resume-sidebar .action-buttons span.button.cand-comment-button {
+        border-radius: 4px;
+        padding: 6px 18px;
+        font-size: 14px;
+        cursor: pointer;
+        color: #2b2b2b;
+        border: 1px solid #d8d5d5;
+        background-color: #fff; }
+      .resume-sidebar .action-buttons span.button.cand-add-tag-button {
+        border-radius: 4px;
+        padding: 6px 18px;
+        font-size: 14px;
+        cursor: pointer;
+        color: #2b2b2b;
+        border: 1px solid #d8d5d5;
+        background-color: #fff; }
+
+.sidebar-section {
+  border-bottom: 1px solid #e8e8e8;
+  padding-bottom: 20px; }
+  .sidebar-section .wrap {
+    margin: 7px 0;
+    color: #2b2b2b;
+    line-height: 1.2;
+    font-size: 14px; }
+  .sidebar-section h3 {
+    font-size: 16px;
+    color: #333;
+    margin-top: 20px; }
+  .sidebar-section .icon-tick_circle {
+    color: #1f8f75; }
+  .sidebar-section .cand-add-tag {
+    height: 40px;
+    padding: 10px;
+    font-size: 13px; }
+  .sidebar-section .comment-box .comment-textarea {
+    background-color: #f3fbfb;
+    color: #757575;
+    font-size: 14px;
+    text-align: left;
+    min-height: 40px;
+    margin-bottom: 10px;
+    border-left: 3px solid #cfebeb;
+    line-height: 10px;
+    padding: 10px;
+    resize: none; }
+  .sidebar-section .action-buttons .editbutton {
+    color: #155d9a;
+    font-size: 13px;
+    cursor: pointer; }
+  .sidebar-section.tags {
+    border-bottom: 0; }
+    .sidebar-section.tags .skill-tag {
+      display: inline-block;
+      margin: 5px;
+      margin-left: 0px;
+      border: 1px solid #e8e8e8;
+      padding: 5px 15px;
+      border-radius: 25px;
+      font-size: 13px;
+      background-color: #f3fbfb;
+      color: #6e6e6e;
+      padding-right: 25px;
+      position: relative; }
+      .sidebar-section.tags .skill-tag div {
+        display: inline-block;
+        vertical-align: middle;
+        max-width: 150px;
+        word-wrap: break-word; }
+        .sidebar-section.tags .skill-tag div.remove-active-skill {
+          cursor: pointer;
+          vertical-align: top;
+          position: absolute;
+          top: 50%;
+          transform: translate(0, -50%);
+          right: 5px; }
+
 .sidebar-section.comments textarea {
   width: 100%;
   padding: 5px;
@@ -2787,9 +2378,341 @@ span.sticker {
 .sidebar-section.comments .action-buttons {
   margin-bottom: 0; }
 
+.external-links ul {
+  padding: 20px 0;
+  border-top: 1px solid #e8e8e8;
+  list-style: none;
+  margin: 0; }
+  .external-links ul li {
+    font-size: 15px;
+    color: #333;
+    line-height: 1.3;
+    margin: 7px 0;
+    cursor: pointer; }
+    .external-links ul li:hover {
+      text-decoration: underline; }
+    .external-links ul li span.icon {
+      width: 2em;
+      margin-right: 10px; }
+  .external-links ul .table-row-separator {
+    border-bottom: 1px solid #e8e8e8 !important;
+    margin-top: 20px; }
+  .external-links ul .invite:hover {
+    text-decoration: none; }
+  .external-links ul .invite-links {
+    margin-left: 0px;
+    list-style: none; }
+  .external-links ul:last-child {
+    border-bottom: 0;
+    padding-bottom: 0; }
+
+#view-profile-info {
+  padding: 20px 0; }
+  #view-profile-info .contact-info {
+    display: none; }
+  #view-profile-info .content-heading {
+    margin-top: 0;
+    font-weight: bold;
+    font-size: 22px; }
+    #view-profile-info .content-heading .wrap-mobile {
+      word-wrap: break-word; }
+  #view-profile-info .content-block {
+    margin: 20px 0 0 0;
+    border: 1px solid #e8e8e8;
+    width: 100%;
+    padding: 25px; }
+    #view-profile-info .content-block .content .mobCommentBox .comment-textarea {
+      background-color: white;
+      color: #757575;
+      font-size: 14px;
+      /* Approximation due to font substitution */
+      font-weight: 400;
+      text-align: left;
+      margin-bottom: 10px;
+      border: 1px solid  #e4e4e4;
+      border-left: 3px solid  #cfebeb;
+      resize: none; }
+    #view-profile-info .content-block .candidateTagList {
+      margin-top: 10px; }
+      #view-profile-info .content-block .candidateTagList .candidateTag {
+        display: inline-block;
+        margin: 5px;
+        margin-left: 0px;
+        border: 1px solid #e8e8e8;
+        padding: 5px 15px;
+        border-radius: 25px;
+        font-size: 13px;
+        background-color: #f3fbfb;
+        color: #6e6e6e;
+        padding-right: 25px;
+        position: relative; }
+        #view-profile-info .content-block .candidateTagList .candidateTag div {
+          display: inline-block;
+          vertical-align: middle;
+          max-width: 150px;
+          word-wrap: break-word; }
+          #view-profile-info .content-block .candidateTagList .candidateTag div.remove-active-skill {
+            cursor: pointer;
+            vertical-align: top;
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+            right: 5px; }
+    #view-profile-info .content-block .cand-add-tag-action-btn {
+      margin-top: 15px;
+      margin-left: 0px; }
+    #view-profile-info .content-block.comments textarea {
+      width: 100%;
+      padding: 5px;
+      resize: none;
+      min-height: 50px;
+      margin-bottom: 15px;
+      overflow: hidden;
+      border: 1px solid #e8e8e8;
+      padding-top: 15px; }
+      #view-profile-info .content-block.comments textarea:focus {
+        outline: none;
+        border: 1px solid #1f8f75; }
+    #view-profile-info .content-block.recommendations .recommendation-header .user-image {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 20px; }
+      #view-profile-info .content-block.recommendations .recommendation-header .user-image img {
+        border-radius: 50%; }
+    #view-profile-info .content-block.recommendations .recommendation-header .user-details {
+      display: inline-block;
+      vertical-align: top;
+      padding: 9px 0; }
+      #view-profile-info .content-block.recommendations .recommendation-header .user-details p {
+        line-height: 1.5;
+        color: #333; }
+        #view-profile-info .content-block.recommendations .recommendation-header .user-details p.user-name {
+          font-weight: bold;
+          font-size: 15px;
+          text-transform: capitalize; }
+        #view-profile-info .content-block.recommendations .recommendation-header .user-details p.user-link a {
+          color: #155d9a; }
+    #view-profile-info .content-block.recommendations .recommendation-body {
+      margin: 0px 0 0 0; }
+      #view-profile-info .content-block.recommendations .recommendation-body p {
+        line-height: 1.5;
+        word-wrap: break-word; }
+    #view-profile-info .content-block.recommendations .separator {
+      margin: 20px 0;
+      border-bottom: 1px solid #e8e8e8; }
+    #view-profile-info .content-block.recommendations .see-more {
+      font-size: 14px; }
+    #view-profile-info .content-block.recommendations .icon-down_arrow, #view-profile-info .content-block.recommendations .icon-up_arrow {
+      font-size: 11px;
+      margin-left: 3px; }
+    #view-profile-info .content-block.recommendations .recommendationListSecond {
+      display: none; }
+
+#view-resume {
+  margin: 20px 0 0 0;
+  background-color: #C0C0C0; }
+  #view-resume canvas {
+    width: 100%;
+    border: 1px solid #e8e8e8;
+    margin: 10px 0 0 0; }
+
+#view-cover-letter {
+  margin-top: 10px;
+  border: 1px solid #e8e8e8;
+  line-height: 24px;
+  font-size: 14px; }
+
+.resume-body {
+  padding: 20px; }
+  .resume-body #tabbed-content {
+    background: transparent;
+    border: none;
+    padding: 0;
+    width: 90%;
+    margin: 0 auto; }
+    .resume-body #tabbed-content .ui-widget-header {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #e8e8e8;
+      -moz-border-radius: 0px;
+      -webkit-border-radius: 0px;
+      border-radius: 0px;
+      padding: 0; }
+    .resume-body #tabbed-content .ui-tabs-nav .ui-state-default {
+      background: transparent;
+      border: none;
+      margin: 0 48px 0 0;
+      position: relative;
+      top: 1px; }
+      .resume-body #tabbed-content .ui-tabs-nav .ui-state-default a {
+        padding: 10px 5px;
+        text-transform: uppercase;
+        color: #808080;
+        border-bottom: 3px solid transparent; }
+        .resume-body #tabbed-content .ui-tabs-nav .ui-state-default a:focus {
+          outline: 0; }
+        .resume-body #tabbed-content .ui-tabs-nav .ui-state-default a.ui-tabs-anchor:focus {
+          outline: 0; }
+    .resume-body #tabbed-content .ui-tabs-nav .ui-state-active {
+      background: transparent url(img/uiTabsArrow.png) no-repeat bottom center;
+      border: none; }
+      .resume-body #tabbed-content .ui-tabs-nav .ui-state-active a {
+        text-transform: uppercase;
+        color: #149075;
+        border-color: #149075; }
+        .resume-body #tabbed-content .ui-tabs-nav .ui-state-active a:focus {
+          outline: 0; }
+
+.resume-header {
+  background-image: url("/static/images/view-resume-banner.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100% 95px;
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  border-bottom: 1px solid #e8e8e8;
+  position: relative;
+  padding-top: 165px; }
+  .resume-header .profile-image {
+    position: absolute;
+    top: 35px;
+    display: block;
+    margin: auto;
+    left: 0;
+    right: 0;
+    width: 125px;
+    height: 125px;
+    object-fit: cover; }
+    .resume-header .profile-image img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 5px solid #FFF;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+      background-color: #efefef;
+      object-fit: cover; }
+  .resume-header .profile-information {
+    text-align: center; }
+    .resume-header .profile-information p.profile-name {
+      font-size: 22px;
+      text-align: center;
+      color: #1f8f75; }
+      .resume-header .profile-information p.profile-name.shell {
+        font-size: 0;
+        background-color: #d8d5d5;
+        opacity: 0.4;
+        min-height: 10px;
+        animation-duration: 1.5s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
+        animation-name: placeHolderShimmer;
+        animation-timing-function: linear;
+        background: #f6f7f8;
+        background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+        background-size: 800px 104px;
+        position: relative;
+        max-width: 150px;
+        max-height: 7px;
+        min-height: 7px;
+        margin: 0 auto;
+        margin-top: 5px; }
+    .resume-header .profile-information .social-media-accounts {
+      margin: 10px 0 20px; }
+      .resume-header .profile-information .social-media-accounts span.social {
+        margin: 0 5px; }
+  .resume-header .profile-snapshot {
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 10px 0;
+    position: relative; }
+    .resume-header .profile-snapshot .snap {
+      display: inline-block;
+      padding: 0 20px;
+      text-align: left;
+      border-right: 1px solid #e8e8e8; }
+      .resume-header .profile-snapshot .snap .snap-title {
+        color: #808080;
+        font-size: 13px;
+        line-height: 1.5; }
+      .resume-header .profile-snapshot .snap .snap-value {
+        color: #333;
+        font-size: 13px; }
+        .resume-header .profile-snapshot .snap .snap-value.shell {
+          font-size: 0;
+          background-color: #d8d5d5;
+          opacity: 0.4;
+          min-height: 10px;
+          animation-duration: 1.5s;
+          animation-fill-mode: forwards;
+          animation-iteration-count: infinite;
+          animation-name: placeHolderShimmer;
+          animation-timing-function: linear;
+          background: #f6f7f8;
+          background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+          background-size: 800px 104px;
+          position: relative;
+          max-width: 100px;
+          max-height: 7px;
+          margin: 0 auto;
+          margin-top: 5px;
+          min-height: 7px; }
+      .resume-header .profile-snapshot .snap:last-child {
+        border: 0; }
+    .resume-header .profile-snapshot:before {
+      content: '';
+      border-bottom: 10px solid #f9f9f9;
+      border-right: 10px solid transparent;
+      border-left: 10px solid transparent;
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%); }
+  .resume-header .skills-area {
+    text-align: center;
+    margin: 20px 0; }
+    .resume-header .skills-area .tag {
+      display: inline-block;
+      padding: 8px 20px;
+      border: 1px solid #e8e8e8;
+      margin: 5px;
+      border-radius: 50px; }
+  .resume-header .last-login-container {
+    margin: 20px 0; }
+    .resume-header .last-login-container p {
+      text-align: right;
+      margin-right: 20px;
+      font-style: italic;
+      color: #808080; }
+      .resume-header .last-login-container p span.shell {
+        display: inline-block;
+        font-size: 0;
+        background-color: #d8d5d5;
+        opacity: 0.4;
+        min-height: 10px;
+        animation-duration: 1.5s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
+        animation-name: placeHolderShimmer;
+        animation-timing-function: linear;
+        background: #f6f7f8;
+        background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+        background-size: 800px 104px;
+        position: relative;
+        min-width: 100px;
+        max-height: 7px;
+        margin-top: 5px;
+        min-height: 7px; }
+
 @media all and (max-width: 1024px) {
+  #view-profile-info .contact-info {
+    display: block; }
   .view-resume-modal {
     padding-bottom: 60px; }
+    .view-resume-modal .sidebar-section {
+      border: none; }
     .view-resume-modal .mob.comments {
       display: block; }
     .view-resume-modal .mob.tags {
@@ -2799,19 +2722,9 @@ span.sticker {
     .view-resume-modal .main-wrapper {
       width: 100%;
       padding-right: 0; }
-    .view-resume-modal .contact-info {
-      display: block !important; }
     .view-resume-modal .mobile-resume-sidebar {
       display: block;
-      border-radius: 8px;
-      background: #FFF;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
-      .view-resume-modal .mobile-resume-sidebar .contact-menu .contact-info {
-        color: #fff; }
-        .view-resume-modal .mobile-resume-sidebar .contact-menu .contact-info h3 {
-          margin-top: 0px; }
-        .view-resume-modal .mobile-resume-sidebar .contact-menu .contact-info .wrap {
-          margin: 7px 0; }
+      border-radius: 8px; }
       .view-resume-modal .mobile-resume-sidebar .second-fold {
         bottom: 70px;
         background: #808080; }
@@ -2819,8 +2732,6 @@ span.sticker {
           width: 100%;
           color: #fff;
           margin: 15px auto; }
-          .view-resume-modal .mobile-resume-sidebar .second-fold .action .link .icon-star {
-            margin-right: 6px !important; }
         .view-resume-modal .mobile-resume-sidebar .second-fold .action-links {
           margin: 10px auto; }
           .view-resume-modal .mobile-resume-sidebar .second-fold .action-links .invite-links {
@@ -2842,77 +2753,23 @@ span.sticker {
           font-size: 0; }
           .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span {
             border-radius: 4px;
-            display: inline-block; }
-            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span.multi-options {
-              background-color: transparent;
-              padding-left: 0;
-              padding-right: 0; } }
+            display: inline-block; } }
 
 @media all and (max-width: 768px) {
-  .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul li span.value {
-    padding-left: 25px; }
   .view-resume-modal {
     width: 100%;
     padding: 20px 10px;
     box-shadow: 0;
     padding-bottom: 70px; }
-    .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot {
+    .view-resume-modal .profile-snapshot {
       font-size: 0;
       padding: 10px 0; }
-      .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-snapshot .snap {
+      .view-resume-modal .profile-snapshot .snap {
         width: 33.3333%;
         text-align: center;
         padding: 0;
-        margin: 10px 0; }
-    .view-resume-modal .mobile-resume-sidebar {
-      display: block;
-      background: #FFF;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
-      .view-resume-modal .mobile-resume-sidebar .fold {
-        position: fixed;
-        width: 100%;
-        padding: 20px; }
-        .view-resume-modal .mobile-resume-sidebar .fold.top {
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
-        .view-resume-modal .mobile-resume-sidebar .fold.first-fold {
-          bottom: 0;
-          background: #FFF; }
-        .view-resume-modal .mobile-resume-sidebar .fold .action-buttons {
-          font-size: 0; }
-          .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span {
-            display: inline-block; }
-            .view-resume-modal .mobile-resume-sidebar .fold .action-buttons span.multi-options {
-              background-color: transparent;
-              padding-left: 0;
-              padding-right: 0; } }
+        margin: 10px 0; } }
 
-@media all and (max-width: 479px) {
+@media all and (max-width: 480px) {
   .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .content ul li span.value {
-    padding-left: 25px; }
-  .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments textarea {
-    width: 100%; }
-  .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block .cand-add-tag {
-    width: 100%; } }
-
-.view-resume-modal .mobCandidateAddCommentButton {
-  background-color: #FFF !important;
-  border: 1px solid #d8d5d5 !important;
-  border-radius: 4px;
-  padding: 6px 25px;
-  font-size: 14px !important;
-  margin: 0 5px;
-  color: #2b2b2b !important;
-  cursor: pointer;
-  margin-left: 0px;
-  margin-top: 10px; }
-
-.view-resume-modal .mobcandidateAddEditButton {
-  color: #155D9A !important;
-  font-size: 13px !important;
-  cursor: pointer; }
-
-.view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content #view-profile-info .content-block.comments .action-buttons {
-  margin-top: 0; }
-
-.view-resume-modal .resume-sidebar .external-links ul li .icon-tick {
-  color: #1f8f75 !important; }
+    padding-left: 25px; } }

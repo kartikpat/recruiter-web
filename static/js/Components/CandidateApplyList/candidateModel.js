@@ -339,7 +339,7 @@ function Candidate() {
         $.each(aData["education"],function(index, anObj) {
             var item = getEducationElement()
             item.name.text(anObj["institute"])
-            item.tenure.text(anObj["batch"]["from"] + "to" + anObj["batch"]["to"] )
+            item.tenure.text(anObj["batch"]["from"] + " to " + anObj["batch"]["to"] )
             item.degree.text(anObj["degree"] +" "+ "("+anObj["courseType"]+")")
             if(index != aData["education"].length - 1)
                 item.seperator.removeClass("hidden")

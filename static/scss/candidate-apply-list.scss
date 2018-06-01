@@ -4,29 +4,6 @@
 @import 'components/modal';
 @import "fonts.scss";
 
-.act-short {
-    background-color: #1f8f75 !important;
-    color: #fff !important;
-    padding-left: 7px !important;
-    &:before {
-        content: '\e828';
-        font-family: 'fontello';
-        font-size: 14px;
-        padding-right: 3px;
-    }
-}
-
-.act-rej {
-    background-color: #af595a !important;
-    color: #fff !important;
-    padding-left: 11px !important;
-    &:before {
-        content: '\e801';
-        font-family: 'fontello';
-        font-size: 14px;
-        padding-right: 5px;
-    }
-}
 
 .no-after {
     &:after {
@@ -949,13 +926,11 @@ input::-webkit-input-placeholder {
 	}
 }
 
-.candidateTagContainer {
 
-	.tag-container {
-		@include tag-container;
-	}
-}
 
+
+
+//bulk action container
 .mass-action-container {
     position: fixed;
     width: 100%;
@@ -980,7 +955,6 @@ input::-webkit-input-placeholder {
 			@include button($color-white);
 			margin-left: 0px;
 		}
-       
         &.mobile {
             display: none;
 
@@ -999,7 +973,7 @@ input::-webkit-input-placeholder {
     }
 }
 
-
+//action buttons
 
 .shortlist-wrapper{
 	@include shortlist-wrapper;
@@ -1020,6 +994,7 @@ input::-webkit-input-placeholder {
 		@include shortlistState;
 	}
 }
+
 .reject-wrapper{
 	@include reject-wrapper;
 	button {
@@ -1039,6 +1014,8 @@ input::-webkit-input-placeholder {
 		@include rejectState;
 	}
 }
+
+// resume-sidebar
 
 .resume-sidebar{
 	.shortlist-wrapper{
@@ -2182,6 +2159,7 @@ input::-webkit-input-placeholder {
 			
     		span {
     			&.button {
+					@include button($color-white);
                     &.candidateShortlistModal {
                         padding: 7px 15px;
                     }
@@ -2189,28 +2167,11 @@ input::-webkit-input-placeholder {
                         padding: 7px 15px;
                     }
 					&.cand-comment-button{
-						margin: 0;
-						margin-top: 5px;
-						border-radius: 4px;
-						padding: 6px 14px;
-						font-size: 14px !important;
-						cursor: pointer;
-						background-color: #fff!important;
-						color: #2b2b2b!important;
-						border: 1px solid #d8d5d5 !important;
+						@include candidateCommentButton;
 					}
 					&.cand-add-tag-button {
-							margin: 0;
-							border-radius: 4px;
-							padding: 6px 14px;
-							font-size: 14px !important;
-							margin: 0 0px;
-							cursor: pointer;
-							background-color: #fff!important;
-							color: #2b2b2b!important;
-							border: 1px solid #d8d5d5 !important;
-						}
-    				@include button($color-white);
+						@include candidateTagButton;
+					}
     			}
     		}
     	}
@@ -2817,16 +2778,7 @@ input::-webkit-input-placeholder {
 
 .sidebar-section.comments {
 	textarea {
-		width: 100%;
-		padding: 5px;
-		border: 1px solid #e8e8e8;
-		min-height: 50px;
-		resize: none;
-		&:focus {
-			outline: none;
-			border: 1px solid $button-color-green;
-
-		}
+		@include candidateCommentTextarea;
 	}
 	.action-buttons {
 		margin-bottom: 0;
@@ -2835,9 +2787,9 @@ input::-webkit-input-placeholder {
 
 .sidebar-section.contact-info {
     .wrap {
-        margin: 7px 0;
-    color: #2b2b2b;
-    line-height: 1.2;
+    	margin: 7px 0;
+    	color: #2b2b2b;
+    	line-height: 1.2;
     }
 }
 

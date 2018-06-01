@@ -355,13 +355,15 @@ label {
 	}
 }
 
+//candidate profile mixins...................
 
 
 @mixin candidateEditComment{
-	color: #155D9A ;
+	color: $link-color ;
 	font-size: 13px;
 	cursor: pointer;
 }
+
 @mixin skillTag{
 	display:inline-block;
 	margin:5px;
@@ -378,7 +380,6 @@ label {
 
 @mixin candidateTagInput{
 	height: 40px;
-    line-height: 10px;
     padding: 10px;
     font-size: 13px;
 }
@@ -420,6 +421,7 @@ label {
 	border: 1px solid #d8d5d5;
 	background-color: #fff;
 }
+
 
 @mixin candidateTagButton{
 	border-radius: 4px;
@@ -513,6 +515,8 @@ label {
         padding-right: 5px;
     }
 }
+
+//candidate profile mixin ends..........................
 
 span {
 	&.sticker {
