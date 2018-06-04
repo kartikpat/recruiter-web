@@ -106,6 +106,7 @@ function Candidate() {
                 e.stopPropagation()
                 e.stopImmediatePropagation();
             }
+           
             fn()
         })
 
@@ -348,7 +349,7 @@ function Candidate() {
         item.eduList.html(eduStr)
         var profStr = '';
         if(aData["jobs"].length == 0) {
-            // profStr = "<div style='line-height:1.5;'><span style='font-weight:bold;'>"+aData["name"]+"</span> does not have any work experience yet</div>"
+            profStr = "<div style='line-height:1.5;'><span style='font-weight:bold;'>"+aData["name"]+"</span> does not have any work experience yet</div>"
         }
         else {
             aData["jobs"] = sortArrayOfObjectsByMultipleKey(aData["jobs"])
