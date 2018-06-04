@@ -348,7 +348,7 @@ function Candidate() {
         item.eduList.html(eduStr)
         var profStr = '';
         if(aData["jobs"].length == 0) {
-            profStr = "<div style='line-height:1.5;'><span style='font-weight:bold;'>"+aData["name"]+"</span> does not have any work experience yet</div>"
+            // profStr = "<div style='line-height:1.5;'><span style='font-weight:bold;'>"+aData["name"]+"</span> does not have any work experience yet</div>"
         }
         else {
             aData["jobs"] = sortArrayOfObjectsByMultipleKey(aData["jobs"])
@@ -487,7 +487,7 @@ function Candidate() {
         }
 
         if(aData["invite"]==1){
-            settings.interviewInvite.text("Interview Invite already Sent!");
+            settings.interviewInvite.text("Resend Interview Invite");
         }
 
         openModal(item)
