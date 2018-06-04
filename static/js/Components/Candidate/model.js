@@ -36,7 +36,8 @@ function Candidate() {
         settings.tagArr = [];
         settings.calendarSelect = $(".calendarSelect");
         settings.candidateDownloadResume = $(".candidateDownloadResume");
-        settings.selectDefaultCalendar = $(".selectDefaultCalendar")
+        settings.selectDefaultCalendar = $(".selectDefaultCalendar");
+        settings.pageTitle=$('.titlePage');
         initializeTooltip();
         jQuery("#tabbed-content").tabs({
             create: function(){
@@ -225,6 +226,8 @@ function Candidate() {
         item.element.attr("data-application-id", aData["id"])
         item.image.attr("src", (aData["img"] || "/static/images/noimage.png"))
         item.name.text(aData["name"] || "NA").removeClass("shell");
+        settings.pageTitle.text("Profile - "+aData["name"]+" | iimjobs.com");
+     
         item.experience.text(aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m" || "NA").removeClass("shell");
         item.location.text(aData["currentLocation"] || "NA").removeClass("shell");
         var preferredLocationStr = "N.A."

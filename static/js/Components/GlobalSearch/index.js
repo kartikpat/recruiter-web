@@ -1,6 +1,7 @@
 var globalParameters = {
     pageContent: 10,
     pageNumber: 1,
+    offset:0,
     candidateListLength: null
 }
 
@@ -20,7 +21,7 @@ jQuery(document).ready( function() {
     function onFetchCandidatesSuccess(topic,res) {
         hideLoader()
         globalParameters.candidateListLength = res.data.length;
-        candidates.addToList(res.data)
+        candidates.addToList(res.data,globalParameters.offset,globalParameters.pageContent)
         candidates.setHeader(res.stats.total, searchQuery)
     }
 

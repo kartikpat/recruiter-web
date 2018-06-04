@@ -173,7 +173,7 @@ body {
 				width:80%;
 
 				h1 {
-					color:$color-black;
+					color:$header-background-color;
 					font-size:30px;
 					line-height:1.5;
 					font-weight:bold;
@@ -215,12 +215,12 @@ body {
 						font-size:66px;
 						line-height:1.1;
 						margin-left:-5px;
-						color:$color-black;
+						color:$header-background-color;
 					}
 
 					span {
 						font-size:$landing-subtitle-font-size;
-						color:$intro-subtitle-color;
+						color:$header-background-color;
 						margin:25px 0;
 						display:block;
 						width:100%;
@@ -248,7 +248,7 @@ body {
 							margin:0;
 							font-size:$login-title-font-size;
 							font-weight:bold;
-							color:$color-black;
+							color:$header-background-color;
 							margin-bottom:30px;
 							width:85%;
 							margin-left:auto;
@@ -416,14 +416,14 @@ body {
 						}
 
 						h3 {
-							color:$landing-title-color;
+							color:#149075;
 							font-size:$landing-title-font-size;
 							font-weight:bold;
 							margin:10px 0 10px;
 						}
 
 						p {
-							color:$color-black;
+							color:$header-background-color;
 							line-height:1.5;
 						}
 					}
@@ -446,7 +446,7 @@ body {
 					width:55%;
 
 					h3 {
-						color:$color-black;
+						color:$header-background-color;
 						font-size:30px;
 						line-height:1.5;
 						margin-top:10px;
@@ -488,7 +488,7 @@ body {
 							background-repeat:no-repeat;
 							background-position:left center;
 							background-size:7px;
-							color:$color-black;
+							color:$header-background-color;
 							margin-bottom:20px;
 						}
 					}
@@ -545,7 +545,7 @@ body {
 				margin:0 auto;
 				padding:50px 0;
 				h1 {
-					color:$color-black;
+					color:$header-background-color;
 					font-size:30px;
 					line-height:1.5;
 					margin-bottom:50px;
@@ -561,7 +561,7 @@ body {
 					clear:both;
 
 					a {
-						color:$color-black;
+						color:$header-background-color;
 					}
 
 					li.category-item {

@@ -230,7 +230,7 @@ function Candidate() {
         var item = getElement(aData["userID"]);
         item.element.attr("data-application-id", aData["id"])
         item.image.attr("src", (aData["img"] || "/static/images/noimage.png"))
-        settings.pageTitle.text("Profile-"+aData["name"]+" | iimjobs.com");
+        settings.pageTitle.text("Profile - "+aData["name"]+" | iimjobs.com");
         item.name.text(aData["name"] || "N/A").removeClass("shell");
         item.experience.text(aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m" || "N/A").removeClass("shell");
         item.location.text(aData["currentLocation"] || "N/A").removeClass("shell");
@@ -427,7 +427,7 @@ function Candidate() {
             }
         }
         if(aData["invite"]==1){
-            settings.interviewInvite.text("Interview Invite already Sent!");
+            settings.interviewInvite.text("Resend Interview Invite");
         }
 
     }
@@ -453,7 +453,9 @@ function Candidate() {
     function onClickAddComment(fn) {
         settings.candidateDetailsModal.on('keyup', settings.candidateCommentTextareaClass,function(event) {
             event.stopPropagation();
-            if (event.which == 13) {
+            if (event.which==13) 
+            if (!event.shiftKey)
+            {
                 var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
                 var comment = ($(settings.candidateCommentTextareaClass).val()).trim();
                 if(!comment) {

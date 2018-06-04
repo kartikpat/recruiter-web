@@ -312,7 +312,8 @@
 				"static/js/chat-sticky.js",
  				"static/js/Services/submitChatMessage.js",
 				"static/js/Tracker/tracker.js",
-				"static/js/eventMapping.js"
+				"static/js/eventMapping.js",
+				"static/js/Tracker/tracker.js"
 			],
 			"prod" : [
 				"static/build/js/my-jobs.min.js"
@@ -679,6 +680,7 @@
 				"static/css/modal.css",
 				"static/css/vendor/tooltipster.css",
 				"static/css/vendor/pdf_viewer.css",
+				"static/css/candidateMixin.css",
 				"static/css/candidate-apply-list.css",
 				"static/css/chat-sticky.css",
 				"static/css/utilities.css",

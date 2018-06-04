@@ -77,7 +77,7 @@ $(document).ready(function(){
 	$('.chat-div .chat-div-header').click(function() {
 		$(this).find(".minusIcon").toggleClass("active")
 		$('.chat-div .chat-div-content').toggleClass("show");
-		//$('.chat-div .minusIcon').toggleClass("show");
+		// $('.chat-div .minusIcon').toggleClass("show");
 	});
 	getRequest(baseUrl+"/recruiter/"+recruiterId+"/chat", {}, function(res){
 		if(res.status && res.status =='success'){
@@ -285,7 +285,7 @@ $("#conversationListing").on('click','.conversationItem', function() {
         chatContainerBox.find(".info-container img").attr("src", (obj["img"] || "/static/images/noimage.png"))
         chatContainerBox.find(".info-container .primary-content").text(obj["name"] + " works as " + obj["designation"] + " at " + obj["organization"])
         if(obj["lastActive"]) {
-            chatContainerBox.find(".lastActiveDate").text(moment(obj["lastActive"]).format("DD MM YYYY")).removeClass("hidden")
+            chatContainerBox.find(".lastActiveDate").text(moment(obj["lastActive"]).format("DD-MM-YYYY")).removeClass("hidden")
         }
         if(obj["title"] && obj["status"]) {
             chatContainerBox.find(".info-container .secondary-content").text(obj["name"] + " has applied to " + obj["title"] + " Current Status is "+stat[obj["status"]]+"").removeClass("hidden")
@@ -341,8 +341,8 @@ $("#conversationListing").on('click','.conversationItem', function() {
         reposition_chat_windows();
         that.addClass("selected");
 		fetchHistory(channelName, messageNumber , null, null, function(status, response) {
-
-			var str = ""
+            console.log(response)
+        	var str = ""
 		    response["messages"].forEach(function(elem, index){
 				if(index == 0 || (index > 0 && (moment(response["messages"][index - 1]["entry"]["time"]).format("DD MM YYYY") != moment(elem["entry"]["time"]).format("DD MM YYYY"))) ) {
                     var item = getTimeElement(elem)
@@ -424,9 +424,13 @@ var populateChatView = function(array) {
     }
 }
 
-$(".chat-candidate-boxes").on('click','.chat-div-candidate .icon-minus_icon', function() {
-	var dataId = $(this).attr("data-id");
+$('.chat-candidate-boxes').on('click','.candidate-name-container',function(event){
+    event.stopPropagation();
+    return true
+})
 
+$(".chat-candidate-boxes").on('click','.chat-div-candidate .chat-div-header', function() {
+    var dataId = $(this).attr("data-id");
 	$('.chat-div-candidate[data-id='+dataId+'] .content-footer-container').toggleClass("show");
 	$('.chat-div-candidate .chat-div-header[data-id='+dataId+'] .minusIcon').toggleClass("active")
 })
@@ -574,7 +578,7 @@ function openChat(m) {
         chatContainerBox.find(".info-container img").attr("src", (obj["img"] || "/static/images/noimage.png"))
         chatContainerBox.find(".info-container .primary-content").text(obj["name"] + " works as " + obj["designation"] + " at " + obj["organization"])
         if(obj["lastActive"]) {
-            chatContainerBox.find(".lastActiveDate").text(moment(obj["lastActive"]).format("DD MM YYYY")).removeClass("hidden")
+            chatContainerBox.find(".lastActiveDate").text(moment(obj["lastActive"]).format("DD-MM-YYYY")).removeClass("hidden")
         }
         if(obj["title"] && obj["status"]) {
             chatContainerBox.find(".info-container .secondary-content").text(obj["name"] + " has applied to " + obj["title"] + " Current Status is "+stat[obj["status"]]+"").removeClass("hidden")
@@ -628,7 +632,8 @@ function openChat(m) {
         $("#conversationListing").find(".conversationItem[data-id="+dataID+"]").addClass("selected")
         chatContainer.find('.candidate-card[data-id='+dataID+']').addClass("selected-sticky");
         fetchHistory(channelName, 20 , null, null, function(status, response) {
-			var str = ""
+          
+            var str = ""
 		    response["messages"].forEach(function(elem, index){
 				if(index == 0 || (index > 0 && (moment(response["messages"][index - 1]["entry"]["time"]).format("DD MM YYYY") != moment(elem["entry"]["time"]).format("DD MM YYYY"))) ) {
                     var item = getTimeElement(elem)
@@ -723,7 +728,7 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
                 chatContainerBox.find(".start").removeClass("hidden")
                 chatContainerBox.attr("data-channel-name",channelName);
                 if(array[0]["lastActive"]) {
-                    chatContainerBox.find(".lastActiveDate").text(moment(array[0]["lastActive"]).format("DD MM YYYY")).removeClass("hidden")
+                    chatContainerBox.find(".lastActiveDate").text(moment(array[0]["lastActive"]).format("DD-MM-YYYY")).removeClass("hidden")
                 }
         		var dataID = chatContainerBox.attr("data-id");
                 if($(".chat-candidate-boxes").children().length < maxCandidateChats) {
@@ -794,7 +799,7 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
         chatContainerBox.attr("data-channel-name",channelName);
         var dataID = chatContainerBox.attr("data-id");
         if(array[0]["lastActive"]) {
-            chatContainerBox.find(".lastActiveDate").text(moment(array[0]["lastActive"]).format("DD MM YYYY")).removeClass("hidden")
+            chatContainerBox.find(".lastActiveDate").text(moment(array[0]["lastActive"]).format("DD-MM-YYYY")).removeClass("hidden")
         }
 
         fetchHistory(channelName, 20 ,null, null, function(status, response) {

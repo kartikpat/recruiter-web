@@ -955,7 +955,7 @@ span.sticker {
     border: 0;
     padding: 0;
     margin: 0;
-    background: #1f8f75;
+    background: #149075;
     border-color: #8f8a8a;
     border-radius: 4px;
     padding: 6px 25px;
@@ -967,7 +967,7 @@ span.sticker {
     cursor: pointer;
     margin: 0; }
     .modal_wrapper button.green {
-      background-color: #1f8f75; }
+      background-color: #149075; }
     .modal_wrapper button.red {
       background-color: #af595a; }
     .modal_wrapper button.white {
@@ -986,7 +986,7 @@ span.sticker {
     border: 0;
     padding: 0;
     margin: 0;
-    background: #1f8f75;
+    background: #149075;
     border-color: #8f8a8a;
     border-radius: 4px;
     padding: 6px 25px;
@@ -1000,7 +1000,7 @@ span.sticker {
     padding: 0;
     width: auto; }
     .modal_wrapper .button-wrapper.green {
-      background-color: #1f8f75; }
+      background-color: #149075; }
     .modal_wrapper .button-wrapper.red {
       background-color: #af595a; }
     .modal_wrapper .button-wrapper.white {
