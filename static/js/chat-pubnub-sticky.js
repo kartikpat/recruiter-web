@@ -105,7 +105,6 @@ function unsubscribe(channelsArray) {
 }
 
 function fetchHistory(channel, count,startTimeToken, endTimeToken, onFetchHistory) {
-
     pubnub.history({
         channel: channel, //"my_channel",
         count: count,

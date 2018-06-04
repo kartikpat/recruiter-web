@@ -341,8 +341,8 @@ $("#conversationListing").on('click','.conversationItem', function() {
         reposition_chat_windows();
         that.addClass("selected");
 		fetchHistory(channelName, messageNumber , null, null, function(status, response) {
-
-			var str = ""
+            console.log(response)
+        	var str = ""
 		    response["messages"].forEach(function(elem, index){
 				if(index == 0 || (index > 0 && (moment(response["messages"][index - 1]["entry"]["time"]).format("DD MM YYYY") != moment(elem["entry"]["time"]).format("DD MM YYYY"))) ) {
                     var item = getTimeElement(elem)
@@ -632,7 +632,8 @@ function openChat(m) {
         $("#conversationListing").find(".conversationItem[data-id="+dataID+"]").addClass("selected")
         chatContainer.find('.candidate-card[data-id='+dataID+']').addClass("selected-sticky");
         fetchHistory(channelName, 20 , null, null, function(status, response) {
-			var str = ""
+          
+            var str = ""
 		    response["messages"].forEach(function(elem, index){
 				if(index == 0 || (index > 0 && (moment(response["messages"][index - 1]["entry"]["time"]).format("DD MM YYYY") != moment(elem["entry"]["time"]).format("DD MM YYYY"))) ) {
                     var item = getTimeElement(elem)

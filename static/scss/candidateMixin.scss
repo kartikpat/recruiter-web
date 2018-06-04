@@ -544,6 +544,7 @@
 
 	.profile-information {
 		text-align:center;
+		margin-bottom: 20px;
 		p {
 			&.profile-name {
 				font-size:$page-title-size;
@@ -567,6 +568,14 @@
 				&.social {
 					margin:0 5px;
 				}
+			}
+			a{ 
+				.icon-facebook::before {
+				content: '\e84a';
+				font-size: 30px;
+				color: #385899;
+				}
+
 			}
 		}
 	}

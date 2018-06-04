@@ -2587,7 +2587,8 @@ span.sticker {
       background-color: #efefef;
       object-fit: cover; }
   .resume-header .profile-information {
-    text-align: center; }
+    text-align: center;
+    margin-bottom: 20px; }
     .resume-header .profile-information p.profile-name {
       font-size: 22px;
       text-align: center;
@@ -2615,6 +2616,10 @@ span.sticker {
       margin: 10px 0 20px; }
       .resume-header .profile-information .social-media-accounts span.social {
         margin: 0 5px; }
+      .resume-header .profile-information .social-media-accounts a .icon-facebook::before {
+        content: '\e84a';
+        font-size: 30px;
+        color: #385899; }
   .resume-header .profile-snapshot {
     text-align: center;
     background-color: #f9f9f9;
