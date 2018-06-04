@@ -834,7 +834,7 @@
 				"static/js/eventMapping.js"
 			],
 			"prod" : [
-				"static/build/js/candidate-apply-list.min.js"
+				"static/build/js/candidate-apply-list-copy.min.js"
 			]
 		}
 	},
