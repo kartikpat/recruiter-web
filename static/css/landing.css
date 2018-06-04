@@ -495,7 +495,7 @@ body {
         margin: 75px auto;
         width: 80%; }
         .page-content .main-wrapper .main-container .container h1 {
-          color: #333;
+          color: #2b2b2b;
           font-size: 30px;
           line-height: 1.5;
           font-weight: bold; }
@@ -527,10 +527,10 @@ body {
           font-size: 66px;
           line-height: 1.1;
           margin-left: -5px;
-          color: #333; }
+          color: #2b2b2b; }
         .page-content .main-wrapper .main-container .intro-container .intro-wrapper span {
           font-size: 16px;
-          color: #5b5b5b;
+          color: #2b2b2b;
           margin: 25px 0;
           display: block;
           width: 100%;
@@ -550,7 +550,7 @@ body {
             margin: 0;
             font-size: 24px;
             font-weight: bold;
-            color: #333;
+            color: #2b2b2b;
             margin-bottom: 30px;
             width: 85%;
             margin-left: auto;
@@ -659,12 +659,12 @@ body {
             .page-content .main-wrapper .main-container .features-container .hero-container .hero-content.image-container.right img {
               float: right; }
           .page-content .main-wrapper .main-container .features-container .hero-container .hero-content h3 {
-            color: #0c9176;
+            color: #149075;
             font-size: 24px;
             font-weight: bold;
             margin: 10px 0 10px; }
           .page-content .main-wrapper .main-container .features-container .hero-container .hero-content p {
-            color: #333;
+            color: #2b2b2b;
             line-height: 1.5; }
       .page-content .main-wrapper .main-container .recruit-container {
         padding-bottom: 40px;
@@ -678,7 +678,7 @@ body {
         .page-content .main-wrapper .main-container .recruit-container .hero-content-container {
           width: 55%; }
           .page-content .main-wrapper .main-container .recruit-container .hero-content-container h3 {
-            color: #333;
+            color: #2b2b2b;
             font-size: 30px;
             line-height: 1.5;
             margin-top: 10px;
@@ -712,7 +712,7 @@ body {
               background-repeat: no-repeat;
               background-position: left center;
               background-size: 7px;
-              color: #333;
+              color: #2b2b2b;
               margin-bottom: 20px; }
           .page-content .main-wrapper .main-container .recruit-container .hero-content-container .download-section p {
             margin: 20px 0; }
@@ -748,7 +748,7 @@ body {
         margin: 0 auto;
         padding: 50px 0; }
         .page-content .highlight-wrapper .main-container .container h1 {
-          color: #333;
+          color: #2b2b2b;
           font-size: 30px;
           line-height: 1.5;
           margin-bottom: 50px; }
@@ -760,7 +760,7 @@ body {
           margin: 20px 0;
           clear: both; }
           .page-content .highlight-wrapper .main-container .container ul.category-listing a {
-            color: #333; }
+            color: #2b2b2b; }
           .page-content .highlight-wrapper .main-container .container ul.category-listing li.category-item {
             float: left;
             width: 25%;

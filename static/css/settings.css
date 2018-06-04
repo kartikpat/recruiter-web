@@ -651,7 +651,8 @@ span.sticker {
               border-color: #4fa995;
               color: #1f8f75; }
               .page-content .settings-page .settings-sidebar ul li.active p span.arrow {
-                opacity: 1; }
+                opacity: 1;
+                margin-top: 2px; }
     .page-content .settings-page .settings-body {
       font-size: initial;
       width: 75%;

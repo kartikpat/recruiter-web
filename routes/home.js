@@ -193,7 +193,7 @@ module.exports = function(settings){
 	})
 	app.get("/job/:jobId/edit", isAuthenticated, function(req, res){
 		res.render("post-job",{
-			title: " EditJob | iimjobs.com",
+			title: " Edit Job | iimjobs.com",
 			action: "Edit Job",
 			styles:  assetsMapper["post-job"]["styles"][mode],
 			scripts: assetsMapper["post-job"]["scripts"][mode],
@@ -255,13 +255,6 @@ module.exports = function(settings){
 		return
 	});
 
-	// app.get("/logout", function(req,res){
-	// 	req.session = null;
-	//
-	// 	res.redirect("/");
-	//
-	// });
-
 	app.get("/plans",isAuthenticated, function(req, res){
 
 		res.render("premium-posting", {
@@ -317,7 +310,7 @@ module.exports = function(settings){
 
 	app.get("/account-settings",isAuthenticated, function(req,res){
 		res.render("settings", {
-			title:"Recruiter Web - Settings | iimjobs.com",
+			title:"Account Settings | iimjobs.com",
 			styles:  assetsMapper["settings"]["styles"][mode],
 			scripts: assetsMapper["settings"]["scripts"][mode],
 			baseUrl: baseUrl,
@@ -401,7 +394,7 @@ module.exports = function(settings){
 	app.get("/job/:jobID/applications",isAuthenticated, function(req,res){
 		// var jobId = req.params.jobId;
 		res.render("candidate-apply-list", {
-			title:"Application | iimjobs.com",
+			title:"Application",
 			styles:  assetsMapper["candidate-apply-list"]["styles"][mode],
 			scripts: assetsMapper["candidate-apply-list"]["scripts"][mode],
 			baseUrl: baseUrl,
@@ -979,7 +972,7 @@ module.exports = function(settings){
 
 	app.get("/candidate/:jobseekerId/profile",isAuthenticated, function(req,res){
 		res.render("candidate", {
-			title:"Recruiter Web - Candidate Profile | iimjobs.com",
+			title:"Profile -  | iimjobs.com",
 			styles:  assetsMapper["candidate"]["styles"][mode],
 			scripts: assetsMapper["candidate"]["scripts"][mode],
 			baseUrl: baseUrl,

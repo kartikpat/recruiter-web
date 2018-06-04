@@ -359,7 +359,7 @@ function Jobs() {
 			// var currentDate=moment().format("YYYY-MM-DD");
 			// publishedDate.diff(currentDate, 'days')
 			var diff="7"
-			item.refresh.attr("title", 'You can refresh this job after '+diff+' days')
+			item.refresh.attr("title", 'You can refresh this job after '+diff+' days of the posted date')
 		}
 		item.edit.attr("data-job-isEditable", aData["editable"])
 		item.edit.attr("href","/job/"+aData["id"]+"/edit")

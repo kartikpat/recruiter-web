@@ -2193,6 +2193,9 @@ span.sticker {
     cursor: pointer;
     position: relative;
     border-bottom: 1px solid #e4e4e4; }
+    .chat-div-candidate .chat-div-header .collapse {
+      display: inline-block;
+      width: 30px; }
     .chat-div-candidate .chat-div-header .candidate-name-container {
       display: inline-block; }
       .chat-div-candidate .chat-div-header .candidate-name-container .img-container {

@@ -91,7 +91,7 @@ $(document).ready(function(){
 	function onSuccessfulSetPassword(topic, data){
 		$('.spinner').addClass('hidden');
 		$(".button.submit").removeClass('hidden');
-		toastNotify(1, "Password Updated Success");
+		toastNotify(1, "Password Updated Successfully");
 		setTimeout(function(){
 			 location.reload()
 		 }, 2000);

@@ -23,10 +23,10 @@
                         </div>
                         <div class="profile-information">
                         	<p class="profile-name js_name shell"></p>
-                        	<div class="social-media-accounts">
+                        	<!-- <div class="social-media-accounts">
                         		<a class="social facebook hidden" target="_blank" style="margin-right:7px;"><img src="/static/images/facebook-round.svg"></a>
                         		<a class="social twitter hidden" target="_blank"><img src="/static/images/twitter-round.svg"></a>
-                        	</div>
+                        	</div> -->
                         </div>
 
                         <div class="profile-snapshot">
@@ -89,23 +89,35 @@
         	            		<div class="content-block more">
         	            			<h3 class="content-heading">More Information</h3>
         	            			<div class="content">
-        	            				<ul>
+										<ul>
         	            					<li>
         	            						<p class="location">
         	            							<span class="key">Current Location</span>
         	            							<span class="value js_loc shell"></span>
         	            						</p>
-        	            					</li>
-        	            					<li>
-        	            						<p class="applied">
-        	            							<span class="key">Applied Date</span>
-        	            							<span class="value js_appliedOn shell"></span>
+											</li>
+											<li>
+        	            						<p class="preferred-location">
+        	            							<span class="key">Preferred Location</span>
+        	            							<span class="value pref_loc shell"></span>
+        	            						</p>
+											</li>
+											<li>
+        	            						<p class="current-salary">
+        	            							<span class="key">Current Salary</span>
+        	            							<span class="value js_sal shell"></span>
         	            						</p>
         	            					</li>
         	            					<li>
-        	            						<p class="notice-period">
-        	            							<span class="key">Notice Period</span>
-        	            							<span class="value js_notice shell"></span>
+        	            						<p class="expected-salary">
+        	            							<span class="key">Expected Salary</span>
+        	            							<span class="value js_expected_sal shell"></span>
+        	            						</p>
+											</li>
+											<li>
+        	            						<p class="experience">
+        	            							<span class="key">Experience</span>
+        	            							<span class="value js_experience shell"></span>
         	            						</p>
         	            					</li>
         	            					<li>
@@ -120,30 +132,19 @@
         	            							<span class="value js_age shell"></span>
         	            						</p>
         	            					</li>
-        	            					<li>
-        	            						<p class="experience">
-        	            							<span class="key">Experience</span>
-        	            							<span class="value js_experience shell"></span>
+											<li>
+        	            						<p class="notice-period">
+        	            							<span class="key">Notice Period</span>
+        	            							<span class="value js_notice shell"></span>
+        	            						</p>
+											</li>
+											<li>
+        	            						<p class="applied">
+        	            							<span class="key">Applied Date</span>
+        	            							<span class="value js_appliedOn shell"></span>
         	            						</p>
         	            					</li>
-        	            					<li>
-        	            						<p class="preferred-location">
-        	            							<span class="key">Preferred Location</span>
-        	            							<span class="value pref_loc shell"></span>
-        	            						</p>
-        	            					</li>
-        	            					<li>
-        	            						<p class="current-salary">
-        	            							<span class="key">Current Salary</span>
-        	            							<span class="value js_sal shell"></span>
-        	            						</p>
-        	            					</li>
-        	            					<li>
-        	            						<p class="expected-salary">
-        	            							<span class="key">Expected Salary</span>
-        	            							<span class="value js_expected_sal shell"></span>
-        	            						</p>
-        	            					</li>
+        	            					
         	            				</ul>
         	            			</div>
         	            		</div>
@@ -274,7 +275,7 @@
         						<div class="content-block tags mob mobCandidateTagContainer">
         	            			<h3 class="content-heading">Tags</h3>
         	            			<div class="content">
-        								<div class="">
+        								<div>
         									<div>
         										<div class="ui-widget">
         											<input  placeholder="Add Tag" class="recruiterTags cand-add-tag input-field mobCandidateTagInput" type="text" name="" value="">
@@ -327,10 +328,10 @@
 				<div class="second-fold fold mass-action-second hidden">
 						<div class="sidebar-section external-links">
 								<div class="action">
-									<div class="save link candidateSaveModal" data-action="3" data-status="0"><span class="icon"><i class="icon-star"></i></span>Save for Later</div>
+									<div class="save link candidateSaveModal" data-action="3" data-status="0"><span class="icon"><i class="icon-star_later"></i></span> Save for Later</div>
 									<div class="chat link candidateChatModal">
 										<span class="icon"><i class="icon-chat"></i></span>
-										Chat with
+										 Chat with
 										<span id="firstName" class="candidate-first-name">Abdul Baree</span>
 									</div>
 									<div class="candidateDownloadResume link">
@@ -375,7 +376,7 @@
 				</div>
             	<div class="sidebar-section external-links">
             		<ul>
-                      	<li class="save candidateSaveModal"><span class="icon"><i class="icon-star"></i></span>Save for Later</li>
+                      	<li class="save candidateSaveModal"><span class="icon"><i class="icon-star_later"></i></span>Save for Later</li>
             			<li class="chat candidateChatModal"><span class="icon"><i class="icon-chat_icon"></i></span>Chat with <span id="firstName" class="candidate-first-name js_name"></span></li>
 						<li class="download candidateDownloadResume"><span class="icon"><i class="icon-download_icon"></i></span>Download Resume</li>
             			<li class="table-row-separator"></li>
@@ -387,7 +388,7 @@
 									<span data-invite-id="1" class="inviteF2f invite tooltip tooltipstered" state="default">
 										<span class="context underline inviteText">Face to Face</span>
 										<div class="loadingScroller icon-spinner-7 hidden" aria-hidden="true"></div>
-																 <span class="icon-container hidden"><i class="icon-tick"></i></span>
+										 <span class="icon-container hidden"><i class="icon-tick"></i></span>
 									</span>
 							</li>
 							<li class="invite-links">

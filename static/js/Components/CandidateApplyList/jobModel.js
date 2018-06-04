@@ -94,15 +94,28 @@ function Job(){
 		console.log(data)
 		settings.jobTitle.text(data["jobTitle"]).removeClass("shell");
 		settings.jobId.text("Job Code: " +data["jobPublishedId"]).removeClass("shell");
-		var locText = data["jobLocation"].join(", ")
-		data["jobLocation"].push(data["jobOtherLocation"])
-		if(data["jobLocation"].length) {
+		console.log(data["jobOtherLocation"].length)
+		
+	
+		if(data["jobOtherLocation"].length>0){
+			data["jobLocation"].push(data["jobOtherLocation"])
+		}
+		
+		if(data["jobLocation"].length>2) {
 			settings.jobSeparator.removeClass("hidden")
 			var jobLocationTitle = (data["jobLocation"] && data["jobLocation"].length >3) ? data["jobLocation"].join(','): null;
 			var jobLocationStr = (data["jobLocation"] && data["jobLocation"].length >3) ? "Multiple Locations" : data["jobLocation"].join(',');
 			settings.jobLocation.text(jobLocationStr).removeClass("shell");
+			console.log(jobLocationStr)
 			settings.jobLocation.attr("title",jobLocationTitle).addClass("tooltip");
 		}
+		else{
+			settings.jobSeparator.removeClass("hidden")
+			settings.jobLocation.text(data["jobLocation"]).removeClass("shell");
+			settings.jobLocation.attr("title",jobLocationTitle).addClass("tooltip");		
+		}
+		
+		
 		
 		$(".tooltip").tooltipster({
 		   animation: 'fade',

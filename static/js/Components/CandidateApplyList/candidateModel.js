@@ -65,6 +65,7 @@ function Candidate() {
             }
         });
         initializeTooltip();
+        onClickEscapeModal(closeModal);
 
     }
 
@@ -106,10 +107,22 @@ function Candidate() {
                 e.stopPropagation()
                 e.stopImmediatePropagation();
             }
+           
             fn()
         })
 
     }
+
+    function onClickEscapeModal(fn){
+        document.addEventListener('keyup', function(e){
+            if (e.keyCode== 27) {
+                e.stopPropagation()
+                e.stopImmediatePropagation();                
+                fn()
+            } 
+        })    
+    }
+    
 
 
     function closeModal(){
@@ -119,13 +132,7 @@ function Candidate() {
         $("body").removeClass("posf")
         settings.candidateDetailsModal.addClass("hidden");
         settings.topbutton.removeClass('hidden');
-        document.addEventListener('keyup', function(e) {
-            if (e.keyCode == 27) {
-                jQuery(".body-overlay").addClass("hidden").removeClass("vieled");
-                $("body").removeClass("posf")
-                settings.candidateDetailsModal.addClass("hidden");
-            }
-        });
+        
     }
 
     function showCandidateDetails(details, type, status){
@@ -339,7 +346,7 @@ function Candidate() {
         $.each(aData["education"],function(index, anObj) {
             var item = getEducationElement()
             item.name.text(anObj["institute"])
-            item.tenure.text(anObj["batch"]["from"] + "to" + anObj["batch"]["to"] )
+            item.tenure.text(anObj["batch"]["from"] + " to " + anObj["batch"]["to"] )
             item.degree.text(anObj["degree"] +" "+ "("+anObj["courseType"]+")")
             if(index != aData["education"].length - 1)
                 item.seperator.removeClass("hidden")
@@ -487,7 +494,7 @@ function Candidate() {
         }
 
         if(aData["invite"]==1){
-            settings.interviewInvite.text("Interview Invite already Sent!");
+            settings.interviewInvite.text("Resend Interview Invite");
         }
 
         openModal(item)
@@ -596,7 +603,9 @@ function Candidate() {
 
     function onClickAddComment(fn) {
         settings.candidateDetailsModal.on('keyup', settings.candidateCommentTextareaClass,function(event) {
-            if(event.which==13){
+            if(event.which==13)
+            if (!event.shiftKey)
+            {
                 var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id");
                 var comment = ($(settings.candidateCommentTextareaClass).val()).trim();
                 if(!comment) {
@@ -899,6 +908,7 @@ function Candidate() {
         onClickChatCandidateModal: onClickChatCandidateModal,
         onClickCloseModal: onClickCloseModal,
         closeModal: closeModal,
+        onClickEscapeModal:onClickEscapeModal,
         onClickSeeMoreRec: onClickSeeMoreRec,
         addRecommendations: addRecommendations,
         onClickDownloadResume: onClickDownloadResume,

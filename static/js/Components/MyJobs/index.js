@@ -28,6 +28,7 @@ jQuery(document).ready( function() {
 			event_category: eventMap["jobsFilterChange"]["cat"],
 			event_label: 'origin=MyJobs,status='+type+',recId='+recruiterId+''
 		}
+		
 		sendEvent(eventMap["jobsFilterChange"]["event"], eventObj)
 		tickerLock = false;
         jobList.hideEmptyView()

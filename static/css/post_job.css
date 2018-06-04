@@ -729,7 +729,8 @@ span.sticker {
           line-height: 1.5;
           padding-right: 38px;
           border-radius: 0px;
-          padding: 16px 15px; }
+          padding: 16px 15px;
+          padding-right: 40px; }
           .job_posting .post_job .post_job_form .field-container .field select[multiple] {
             background-image: none;
             height: 120px; }
