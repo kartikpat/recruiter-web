@@ -708,6 +708,7 @@ input::-webkit-input-placeholder {
 				}
 				.sidebar-section{
 					border: none;
+					padding-bottom: 0px!important;
 					.label{
 						margin-bottom: 5px;
 						color: #222;
@@ -1056,12 +1057,6 @@ input::-webkit-input-placeholder {
 
 
 
-@media all and (max-width: 1280px){
-	// .view-resume-modal .resume-sidebar .action-buttons span.button{
-	// 	margin: 0 -10px !important;
-	// }
-}
-
 @media all and (max-width:1024px) {
     .mass-action-container {
         bottom: 0;
@@ -1155,23 +1150,23 @@ input::-webkit-input-placeholder {
     }
 }
 
-@media all and (max-width:992px) {
-	.page-content {
-		.candidates-listing {
-			.candidate-item {
-				padding: 30px 10px 0;
-				.candidate-item-section {
-					padding-right:5px;
-					padding-left:5px;
+// @media all and (max-width:992px) {
+// 	.page-content {
+// 		.candidates-listing {
+// 			.candidate-item {
+// 				padding: 30px 10px 0;
+// 				.candidate-item-section {
+// 					padding-right:5px;
+// 					padding-left:5px;
 
-					&.image {
-						padding-left:0;
-					}
-				}
-			}
-		}
-	}
-}
+// 					&.image {
+// 						padding-left:0;
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// }
 
 @media all and (max-width:800px) {
     .page-content .candidate-apply-listing .candidates-area .candidates-area-header .candidates-search .filter-search span.sortBy {
@@ -1287,6 +1282,8 @@ input::-webkit-input-placeholder {
 						width:100%;
 						padding-bottom:0;
 						border-bottom:0;
+						text-align: left;
+						margin-left: 10px;
 					}
 
 					&.personal-details {
@@ -1576,6 +1573,7 @@ input::-webkit-input-placeholder {
     background-color:$body-background-color;
     z-index:20;
 	padding:20px;
+	
 }	
 
 .view-resume-modal {
@@ -1648,6 +1646,9 @@ input::-webkit-input-placeholder {
 			    width: 85%;
 			    padding:20px;
 
+				.sidebar-section{
+					border: none;
+				}
 				&.top {
 					box-shadow:0 0 10px rgba(0,0,0,0.2);
 				}
@@ -2075,7 +2076,7 @@ input::-webkit-input-placeholder {
     }
     .mass-action-second {
         &.second-fold {
-			bottom: 80px;
+			bottom: 110px;
             background:rgba(128, 128, 128, 0.85);
             position: fixed;
             width: 100%;

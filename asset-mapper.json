@@ -1371,7 +1371,6 @@
 				"static/css/header.css",
 				"static/css/modal.css",
 				"static/css/candidate-profile.css",
-				"static/css/candidateMixin.css",
 				"static/css/chat-sticky.css",
 				"static/css/utilities.css",
 				"static/css/animate.css",

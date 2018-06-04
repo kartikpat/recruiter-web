@@ -24,6 +24,677 @@
 	display: none;
 }
 
+@import 'common/spacings';
+@import 'input-elements';
+@import 'chat-sidebar';
+
+
+.view-resume-modal {
+    background-color:$body-background-color;
+    padding:30px;
+    .mobCandidateAddTagButton{
+		@include candidateTagButton;
+	}
+	.mobCandidateAddCommentButton {
+		@include candidateCommentButton;
+	}
+	
+	 .mobcandidateAddEditButton {
+		@include candidateEditComment;
+	}
+
+	.mob.comments {
+		display: none;
+	}
+
+	.mob.tags {
+		display: none;
+	}
+
+    .main-wrapper {
+    	width:80%;
+    	padding-right:20px;
+    	border-radius:4px;
+		.main-container {
+			width:100%;
+			border:1px solid $border-color-base;
+			background-color:$color-white;
+			border-radius: 8px;
+		}
+    }
+    .mobile-resume-sidebar {
+    	display:none;
+	}
+	
+
+	.seeMoreRec {
+		display: inline-block;
+		cursor: pointer;
+	}
+
+	.loader-overlay {
+		z-index: 99;
+	}
+
+}
+
+
+//content on profile page
+.content {
+	.datum {
+			p{
+				line-height:1.5;
+				font-size:$resume-listing-font-size;
+				&.name {
+					font-weight:bold;
+					color:$color-black;
+					margin-left: 15px;
+				}
+				&.detail {
+					color:$extra-info-color;
+					margin-left: 15px;
+				}
+			}
+			.separator {
+				margin:20px 0;
+				border-bottom:1px solid $border-color-base;
+			}
+	}
+	ul {
+		margin:0;
+		padding:0;
+		list-style:none;
+		margin-left: 15px;
+		li {
+			font-size:0;
+			margin:10px 0;
+			span {
+				display:inline-block;
+				vertical-align:top;
+				width:50%;
+				font-size:$resume-listing-font-size;
+				&.key{
+					color:$extra-info-color;
+				}
+				&.value {
+					color:$color-black;
+					word-wrap: break-word;
+					max-width: 370px;
+					&.shell {
+						@include text-shell;
+						max-width: 100px;
+						max-height: 7px;
+						margin-top: 5px;
+						min-height: 7px;
+					}
+				}
+			}
+		}
+	}
+}
+
+//action buttons
+.shortlist-wrapper{
+	@include shortlist-wrapper;
+	.spinner{
+		margin-top: 6px;
+	}
+	.spinner>div{
+		width: 10px;
+		height: 10px;
+	}
+	span {
+		&.button {
+			@include shortlistActionButton;			
+			&.candidateShortlistModal {
+				padding: 7px 0px;
+				width: 100%;
+				margin: 0 auto;
+			}
+			&.act-short{
+				@include shortlistState;
+			}
+		}
+	}
+}
+
+
+//reject-action-button
+.reject-wrapper{
+	@include reject-wrapper;
+	.spinner{
+		margin-top: 6px;
+	}
+	.spinner>div{
+		width: 10px;
+		height: 10px;
+	}
+	span {
+		&.button {
+			@include rejectActionButton;	
+			&.candidateRejectModal {
+				padding: 7px 0px;
+				width: 100%;
+				margin: 0 auto;
+			}
+			&.act-rej{
+				@include rejectState;
+			}
+		}
+	}
+}
+
+//resume-sidebar
+
+
+.resume-sidebar {
+	width:20%;
+	.action-buttons {
+		margin-bottom:20px;
+		&.cand-add-tag-action-btn {
+			margin: 15px 0;
+		}
+		span {
+			&.button {
+				@include button($color-white);
+				&.cand-comment-button{
+					@include candidateCommentButton;
+				}
+				&.cand-add-tag-button {
+					@include candidateTagButton;
+				}
+			}
+		}
+	}
+
+}
+
+
+// resume-sidebar-section
+
+
+.sidebar-section {
+	border-bottom:1px solid $border-color-base;
+	padding-bottom:20px;
+	
+	.wrap {
+		margin: 7px 0;
+		color: #2b2b2b;
+		line-height: 1.2;
+		font-size: 14px;
+	}
+	
+
+	h3 {
+		font-size:$view-resume-section-title-size;
+		color:$color-black;
+		margin-top:20px;
+	}	
+	.icon-tick_circle {
+		color: $button-color-green;
+	}
+	.cand-add-tag {
+		@include candidateTagInput;
+	}
+	.comment-box .comment-textarea {
+		@include candidateCommentInput;
+	}
+	.action-buttons .editbutton {
+		@include candidateEditComment;
+	}
+	&.tags {
+		border-bottom:0;
+		.skill-tag {
+			@include skillTag;
+			div {
+				display:inline-block;
+				vertical-align: middle;
+				max-width: 150px;
+				word-wrap: break-word;
+				&.remove-active-skill {
+					cursor:pointer;
+					vertical-align:top;
+					position: absolute;
+					top: 50%;
+					transform: translate(0,-50%);
+					right: 5px;
+				}
+			}
+		}
+	}
+}
+
+.sidebar-section.comments {
+	textarea {
+		@include candidateCommentTextarea;
+	}
+	.action-buttons {
+		margin-bottom: 0;
+	}
+}
+
+
+//external links 
+
+.external-links {
+	ul {
+		padding:20px 0 ;
+		border-top:1px solid $border-color-base;
+		list-style:none;
+		margin:0;	
+		li {
+			font-size:$view-resume-listing-font-size;
+			color:$color-black;
+			line-height:1.3;
+			margin:7px 0;
+			cursor: pointer;
+			&:hover {
+				text-decoration: underline;
+			}
+			span {
+				&.icon {
+					width:2em;
+					margin-right:10px;
+				}
+			}
+		}
+		.table-row-separator{
+			border-bottom: 1px solid #e8e8e8!important;
+			margin-top: 20px;
+		}
+		
+		.invite {
+			&:hover {
+				text-decoration: none;
+			}
+		}
+		.invite-links {
+			margin-left: 0px;
+			list-style: none;
+
+		}
+		&:last-child {
+			border-bottom:0;
+			padding-bottom:0;
+		}
+	}
+}
+
+
+//profile info 
+
+#view-profile-info {
+	padding:20px 0;
+	.contact-info{
+		display: none;
+	}
+	.content-heading {
+		margin-top:0;
+		font-weight:bold;
+		font-size:$page-title-size;
+		.wrap-mobile{
+			word-wrap: break-word;
+		}
+	}
+
+	.content-block {
+		margin:20px 0 0 0;
+		border:1px solid $border-color-base;
+		width:100%;
+		padding:25px;
+		.content{
+			.mobCommentBox{
+				.comment-textarea {
+				background-color: white;
+				color:  #757575;
+				font-size: 14px;/* Approximation due to font substitution */
+				font-weight: 400;
+				text-align: left;
+				margin-bottom:10px;
+				border:1px solid  #e4e4e4;
+				border-left: 3px solid  #cfebeb;
+				resize: none;
+				}
+			}
+		}
+		
+		.candidateTagList{
+			margin-top: 10px;
+			.candidateTag{
+				@include skillTag;		
+				div {
+					display:inline-block;
+					vertical-align: middle;
+					max-width: 150px;
+					word-wrap: break-word;
+					&.remove-active-skill {
+						cursor:pointer;
+						vertical-align:top;
+						position: absolute;
+						top: 50%;
+						transform: translate(0,-50%);
+						right: 5px;
+					}
+				}		
+			}
+
+		}
+		.cand-add-tag-action-btn {
+			margin-top: 15px;
+			margin-left: 0px;
+		}
+		&.comments {
+			textarea {
+				@include candidateCommentTextarea;
+			}
+			
+		}
+
+		&.recommendations {
+			.recommendation-header {
+				.user-image {
+					display:inline-block;
+					vertical-align: middle;
+					margin-right:20px;
+					img {
+						border-radius:50%;
+					}
+				}
+				.user-details {
+					display:inline-block;
+					vertical-align:top;
+					padding:9px 0	;
+					p {
+						line-height:1.5;
+						color:$color-black;
+
+						&.user-name {
+							font-weight:bold;
+							font-size:$resume-listing-font-size;
+							text-transform: capitalize;
+						}
+						&.user-link {
+							a {
+								color:$link-color;
+							}
+						}
+					}
+				}
+			}
+
+			.recommendation-body {
+				margin:0px 0 0 0;
+				p {
+					line-height:1.5;
+					word-wrap: break-word;
+
+				}
+			}
+			.separator {
+				margin:20px 0;
+				border-bottom:1px solid $border-color-base;
+			}
+			.see-more {
+				font-size: 14px;
+			}
+			.icon-down_arrow, .icon-up_arrow {
+				font-size: 11px;
+				margin-left: 3px;
+			}
+			.recommendationListSecond {
+				display: none;
+			}
+		}
+	}
+}
+
+
+//resume view
+#view-resume {
+	margin:20px 0 0 0;
+	background-color:$resume-background-color;
+	canvas {
+		width:100%;
+		border:1px solid $border-color-base;
+		margin:10px 0 0 0;
+	}
+}
+
+//cover-letter view
+
+#view-cover-letter {
+	margin-top: 10px;
+	border: 1px solid #e8e8e8;
+	line-height: 24px;
+	font-size: 14px;
+}
+
+//tabbed content
+
+.resume-body {
+	padding:20px;
+	#tabbed-content {
+		background: transparent;
+		border: none;
+		padding:0;
+		width:90%;
+		margin:0 auto;
+
+		.ui-widget-header {
+			background: transparent;
+			border: none;
+			border-bottom: 1px solid $border-color-base;
+			-moz-border-radius: 0px;
+			-webkit-border-radius: 0px;
+			border-radius: 0px;
+			padding:0;
+		}
+
+		.ui-tabs-nav {
+			.ui-state-default {
+				background: transparent;
+				border: none;
+				margin: 0 48px 0 0;
+				position:relative;
+				top:1px;
+
+				a {
+					padding:10px 5px;
+					text-transform:uppercase;
+					color: $extra-info-color;
+					border-bottom:3px solid transparent;
+
+					&:focus {
+						outline:0;
+					}
+
+					&.ui-tabs-anchor {
+						&:focus {
+							outline:0;
+						}
+					}
+				}
+			}
+
+			.ui-state-active {
+				background: transparent url(img/uiTabsArrow.png) no-repeat bottom center;
+				border: none;
+
+				a {
+					text-transform:uppercase;
+					color:$inline-link-color;
+					border-color:$inline-link-color;
+
+					&:focus {
+						outline:0;
+					}
+				}
+			}
+		}
+
+	}
+}
+
+//view-resume-header
+.resume-header {
+	background-image:url('/static/images/view-resume-banner.png');
+	background-repeat:no-repeat;
+	background-position:center top;
+	background-size:100% 95px;
+	vertical-align: top;
+	display: inline-block;
+	width: 100%;
+	border-bottom:1px solid $border-color-base;
+	position:relative;
+	padding-top:165px;
+	.profile-image {
+		position:absolute;
+		top:35px;
+		display:block;
+		margin:auto;
+		left:0;
+		right:0;
+		width:125px;
+		height: 125px;
+		object-fit: cover;
+		img {
+			width: 100%;
+			height: 100%;
+			border-radius:50%;
+			border:5px solid $color-white;
+			box-shadow:0 0 3px $shadow-color;
+			background-color: #efefef;
+			object-fit: cover;
+		}
+	}
+
+	.profile-information {
+		text-align:center;
+		margin-bottom: 20px;
+		p {
+			&.profile-name {
+				font-size:$page-title-size;
+				text-align: center;
+				color:$button-color-green;
+				&.shell {
+					@include text-shell;
+					max-width: 150px;
+					max-height: 7px;
+					min-height: 7px;
+					margin: 0 auto;
+					margin-top: 5px;
+				}
+			}
+		}
+
+		.social-media-accounts {
+			margin:10px 0 20px;
+
+			span {
+				&.social {
+					margin:0 5px;
+				}
+			}
+			a{ 
+				.icon-facebook::before {
+				content: '\e84a';
+				font-size: 30px;
+				color: #385899;
+				}
+
+			}
+		}
+	}
+
+	.profile-snapshot {
+		text-align: center;
+		background-color:$resume-profile-snapshot-background;
+		padding:10px 0;
+		position:relative;
+
+		.snap {
+			display:inline-block;
+			padding:0 20px;
+			text-align: left;
+			border-right:1px solid $border-color-base;
+
+			.snap-title {
+				color:$extra-info-color;
+				font-size:$view-resume-byline-font-size;
+				line-height:1.5;
+			}
+
+			.snap-value {
+
+				color:$color-black;
+				font-size:$view-resume-byline-font-size;
+				&.shell {
+					@include text-shell;
+					max-width: 100px;
+					max-height: 7px;
+					margin: 0 auto;
+					margin-top: 5px;
+					min-height: 7px;
+				}
+			}
+
+			&:last-child {
+				border:0;
+			}
+		}
+
+		&:before {
+			content:'';
+			border-bottom:10px solid $resume-profile-snapshot-background;
+			border-right:10px solid transparent;
+			border-left:10px solid transparent;
+			position:absolute;
+			top:-10px;
+			left:50%;
+			transform:translateX(-50%);
+			-webkit-transform:translateX(-50%);
+			-moz-transform:translateX(-50%);
+
+		}
+	}
+
+	.skills-area {
+		text-align:center;
+		margin:20px 0;
+
+		.tag {
+			display:inline-block;
+			padding:8px 20px;
+			border:1px solid $border-color-base;
+			margin:5px;
+			border-radius:50px;
+		}
+	}
+
+	.last-login-container {
+		margin:20px 0;
+
+		p {
+			text-align:right;
+			margin-right:20px;
+			font-style: italic;
+			color:$extra-info-color;
+			span.shell {
+				display: inline-block;
+				@include text-shell;
+				min-width: 100px;
+				max-height: 7px;
+				margin-top: 5px;
+				min-height: 7px;
+			}
+		}
+	}
+}
+
+
+
+
+
 
 
 
@@ -41,6 +712,7 @@
 
 		.sidebar-section{
 			border: none;
+			padding-bottom: 0px;
 		}
 		.mob.comments {
 			display: block;

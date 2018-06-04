@@ -65,6 +65,7 @@ function Candidate() {
             }
         });
         initializeTooltip();
+        onClickEscapeModal(closeModal);
 
     }
 
@@ -112,6 +113,17 @@ function Candidate() {
 
     }
 
+    function onClickEscapeModal(fn){
+        document.addEventListener('keyup', function(e){
+            if (e.keyCode== 27) {
+                e.stopPropagation()
+                e.stopImmediatePropagation();                
+                fn()
+            } 
+        })    
+    }
+    
+
 
     function closeModal(){
         settings.candidateDetailsModal.scrollTop(0)
@@ -120,13 +132,7 @@ function Candidate() {
         $("body").removeClass("posf")
         settings.candidateDetailsModal.addClass("hidden");
         settings.topbutton.removeClass('hidden');
-        document.addEventListener('keyup', function(e) {
-            if (e.keyCode == 27) {
-                jQuery(".body-overlay").addClass("hidden").removeClass("vieled");
-                $("body").removeClass("posf")
-                settings.candidateDetailsModal.addClass("hidden");
-            }
-        });
+        
     }
 
     function showCandidateDetails(details, type, status){
@@ -902,6 +908,7 @@ function Candidate() {
         onClickChatCandidateModal: onClickChatCandidateModal,
         onClickCloseModal: onClickCloseModal,
         closeModal: closeModal,
+        onClickEscapeModal:onClickEscapeModal,
         onClickSeeMoreRec: onClickSeeMoreRec,
         addRecommendations: addRecommendations,
         onClickDownloadResume: onClickDownloadResume,
