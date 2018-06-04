@@ -230,7 +230,7 @@ function Candidate() {
         var item = getElement(aData["userID"]);
         item.element.attr("data-application-id", aData["id"])
         item.image.attr("src", (aData["img"] || "/static/images/noimage.png"))
-        settings.pageTitle.text("Profile-"+aData["name"]+" | iimjobs.com");
+        settings.pageTitle.text("Profile - "+aData["name"]+" | iimjobs.com");
         item.name.text(aData["name"] || "N/A").removeClass("shell");
         item.experience.text(aData["exp"]["year"] + "y" + " " + aData["exp"]["month"] + "m" || "N/A").removeClass("shell");
         item.location.text(aData["currentLocation"] || "N/A").removeClass("shell");
