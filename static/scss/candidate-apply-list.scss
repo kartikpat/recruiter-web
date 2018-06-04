@@ -3,6 +3,7 @@
 @import 'chat-sidebar';
 @import 'components/modal';
 @import "fonts.scss";
+@import "candidateMixin";
 
 
 .no-after {
@@ -1614,570 +1615,572 @@ input::-webkit-input-placeholder {
     background-color:$body-background-color;
     z-index:20;
 	padding:20px;
-	.mob.comments {
-		display: none;
-	}
-	.mobCandidateAddCommentButton{
-		@include candidateCommentButton;
-	}
-	.mobCandidateAddTagButton{
-		@include candidateTagButton;
-	}
-	.mobcandidateAddEditButton{
-		@include candidateEditComment;
-	}
-	.mob.tags {
-		display: none;
-	}
+}	
 
-    .main-wrapper {
-    	width:80%;
-    	padding-right:20px;
-    	border-radius:4px;
+// 	.mob.comments {
+// 		display: none;
+// 	}
+// 	.mobCandidateAddCommentButton{
+// 		@include candidateCommentButton;
+// 	}
+// 	.mobCandidateAddTagButton{
+// 		@include candidateTagButton;
+// 	}
+// 	.mobcandidateAddEditButton{
+// 		@include candidateEditComment;
+// 	}
+// 	.mob.tags {
+// 		display: none;
+// 	}
 
-		.main-container {
-			width:100%;
-			border:1px solid $border-color-base;
-			background-color:$color-white;
-			border-radius: 8px;
+//     .main-wrapper {
+//     	width:80%;
+//     	padding-right:20px;
+//     	border-radius:4px;
 
-		}
-    }
+// 		.main-container {
+// 			width:100%;
+// 			border:1px solid $border-color-base;
+// 			background-color:$color-white;
+// 			border-radius: 8px;
 
-    .mobile-resume-sidebar {
-    	display:none;
-    }
+// 		}
+//     }
 
-}
+//     .mobile-resume-sidebar {
+//     	display:none;
+//     }
 
-//tabbed content
+// }
 
-.resume-body {
-	padding:20px;
-	#tabbed-content {
-		background: transparent;
-		border: none;
-		padding:0;
-		width:90%;
-		margin:0 auto;
+// //tabbed content
 
-		.ui-widget-header {
-			background: transparent;
-			border: none;
-			border-bottom: 1px solid $border-color-base;
-			-moz-border-radius: 0px;
-			-webkit-border-radius: 0px;
-			border-radius: 0px;
-			padding:0;
-		}
+// .resume-body {
+// 	padding:20px;
+// 	#tabbed-content {
+// 		background: transparent;
+// 		border: none;
+// 		padding:0;
+// 		width:90%;
+// 		margin:0 auto;
 
-		.ui-tabs-nav {
-			.ui-state-default {
-				background: transparent;
-				border: none;
-				margin: 0 48px 0 0;
-				position:relative;
-				top:1px;
+// 		.ui-widget-header {
+// 			background: transparent;
+// 			border: none;
+// 			border-bottom: 1px solid $border-color-base;
+// 			-moz-border-radius: 0px;
+// 			-webkit-border-radius: 0px;
+// 			border-radius: 0px;
+// 			padding:0;
+// 		}
 
-				a {
-					padding:10px 5px;
-					text-transform:uppercase;
-					color: $extra-info-color;
-					border-bottom:3px solid transparent;
+// 		.ui-tabs-nav {
+// 			.ui-state-default {
+// 				background: transparent;
+// 				border: none;
+// 				margin: 0 48px 0 0;
+// 				position:relative;
+// 				top:1px;
 
-					&:focus {
-						outline:0;
-					}
+// 				a {
+// 					padding:10px 5px;
+// 					text-transform:uppercase;
+// 					color: $extra-info-color;
+// 					border-bottom:3px solid transparent;
 
-					&.ui-tabs-anchor {
-						&:focus {
-							outline:0;
-						}
-					}
-				}
-			}
+// 					&:focus {
+// 						outline:0;
+// 					}
 
-			.ui-state-active {
-				background: transparent url(img/uiTabsArrow.png) no-repeat bottom center;
-				border: none;
+// 					&.ui-tabs-anchor {
+// 						&:focus {
+// 							outline:0;
+// 						}
+// 					}
+// 				}
+// 			}
 
-				a {
-					text-transform:uppercase;
-					color:$inline-link-color;
-					border-color:$inline-link-color;
+// 			.ui-state-active {
+// 				background: transparent url(img/uiTabsArrow.png) no-repeat bottom center;
+// 				border: none;
 
-					&:focus {
-						outline:0;
-					}
-				}
-			}
-		}
+// 				a {
+// 					text-transform:uppercase;
+// 					color:$inline-link-color;
+// 					border-color:$inline-link-color;
 
-	}
-}
+// 					&:focus {
+// 						outline:0;
+// 					}
+// 				}
+// 			}
+// 		}
 
-//content on profile page
-.content {
-	.datum {
+// 	}
+// }
 
-		p {
-			line-height:1.5;
-			font-size:$resume-listing-font-size;
+// //content on profile page
+// .content {
+// 	.datum {
 
-			&.name {
-				font-weight:bold;
-				color:$color-black;
-				margin-left: 15px;
-			}
+// 		p {
+// 			line-height:1.5;
+// 			font-size:$resume-listing-font-size;
 
-			&.detail {
-				color:$extra-info-color;
-				margin-left: 15px;
-			}
-		}
+// 			&.name {
+// 				font-weight:bold;
+// 				color:$color-black;
+// 				margin-left: 15px;
+// 			}
 
-		.separator {
-			margin:20px 0;
-			border-bottom:1px solid $border-color-base;
-		}
+// 			&.detail {
+// 				color:$extra-info-color;
+// 				margin-left: 15px;
+// 			}
+// 		}
 
-	}
+// 		.separator {
+// 			margin:20px 0;
+// 			border-bottom:1px solid $border-color-base;
+// 		}
 
-	ul {
-		margin:0;
-		padding:0;
-		list-style:none;
-		margin-left: 15px;
-		li {
-			font-size:0;
-			margin:10px 0;
+// 	}
 
-			span {
-				display:inline-block;
-				vertical-align:top;
-				width:50%;
-				font-size:$resume-listing-font-size;
+// 	ul {
+// 		margin:0;
+// 		padding:0;
+// 		list-style:none;
+// 		margin-left: 15px;
+// 		li {
+// 			font-size:0;
+// 			margin:10px 0;
 
-				&.key{
-					color:$extra-info-color;
-				}
+// 			span {
+// 				display:inline-block;
+// 				vertical-align:top;
+// 				width:50%;
+// 				font-size:$resume-listing-font-size;
 
-				&.value {
-					color:$color-black;
-					padding-left: 20px;
-					word-wrap: break-word;
-				}
-			}
-		}
-	}
-}
+// 				&.key{
+// 					color:$extra-info-color;
+// 				}
+
+// 				&.value {
+// 					color:$color-black;
+// 					padding-left: 20px;
+// 					word-wrap: break-word;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
 
 
-//profile info 
+// //profile info 
 
-#view-profile-info {
-	padding:20px 0;
-	.contact-info{
-		display: none;
-	}
-	.content-heading {
-		margin-top:0;
-		font-weight:bold;
-		font-size:$page-title-size;
-		.wrap-mobile{
-			word-wrap: break-word;
-		}
-	}
+// #view-profile-info {
+// 	padding:20px 0;
+// 	.contact-info{
+// 		display: none;
+// 	}
+// 	.content-heading {
+// 		margin-top:0;
+// 		font-weight:bold;
+// 		font-size:$page-title-size;
+// 		.wrap-mobile{
+// 			word-wrap: break-word;
+// 		}
+// 	}
 
-	.content-block {
-		margin:20px 0 0 0;
-		border:1px solid $border-color-base;
-		width:100%;
-		padding:25px;
-		.content{
-			.mobCommentBox{
-				.comment-textarea {
-				background-color: white;
-				color:  #757575;
-				font-size: 14px;/* Approximation due to font substitution */
-				font-weight: 400;
-				text-align: left;
-				margin-bottom:10px;
-				border:1px solid  #e4e4e4;
-				border-left: 3px solid  #cfebeb;
-				resize: none;
-				}
-			}
-		}
+// 	.content-block {
+// 		margin:20px 0 0 0;
+// 		border:1px solid $border-color-base;
+// 		width:100%;
+// 		padding:25px;
+// 		.content{
+// 			.mobCommentBox{
+// 				.comment-textarea {
+// 				background-color: white;
+// 				color:  #757575;
+// 				font-size: 14px;/* Approximation due to font substitution */
+// 				font-weight: 400;
+// 				text-align: left;
+// 				margin-bottom:10px;
+// 				border:1px solid  #e4e4e4;
+// 				border-left: 3px solid  #cfebeb;
+// 				resize: none;
+// 				}
+// 			}
+// 		}
 		
-		.candidateTagList{
-			margin-top: 10px;
-			.candidateTag{
-				@include skillTag;		
-				div {
-					display:inline-block;
-					vertical-align: middle;
-					max-width: 150px;
-					word-wrap: break-word;
-					&.remove-active-skill {
-						cursor:pointer;
-						vertical-align:top;
-						position: absolute;
-						top: 50%;
-						transform: translate(0,-50%);
-						right: 5px;
-					}
-				}		
-			}
+// 		.candidateTagList{
+// 			margin-top: 10px;
+// 			.candidateTag{
+// 				@include skillTag;		
+// 				div {
+// 					display:inline-block;
+// 					vertical-align: middle;
+// 					max-width: 150px;
+// 					word-wrap: break-word;
+// 					&.remove-active-skill {
+// 						cursor:pointer;
+// 						vertical-align:top;
+// 						position: absolute;
+// 						top: 50%;
+// 						transform: translate(0,-50%);
+// 						right: 5px;
+// 					}
+// 				}		
+// 			}
 
-		}
-		.cand-add-tag-action-btn {
-			margin-top: 15px;
-			margin-left: 0px;
-		}
-		&.comments {
-			textarea {
-				@include candidateCommentTextarea;
-			}
+// 		}
+// 		.cand-add-tag-action-btn {
+// 			margin-top: 15px;
+// 			margin-left: 0px;
+// 		}
+// 		&.comments {
+// 			textarea {
+// 				@include candidateCommentTextarea;
+// 			}
 			
-		}
+// 		}
 
-		&.recommendations {
-			.recommendation-header {
-				.user-image {
-					display:inline-block;
-					vertical-align: middle;
-					margin-right:20px;
-					img {
-						border-radius:50%;
-					}
-				}
-				.user-details {
-					display:inline-block;
-					vertical-align:top;
-					padding:9px 0	;
-					p {
-						line-height:1.5;
-						color:$color-black;
+// 		&.recommendations {
+// 			.recommendation-header {
+// 				.user-image {
+// 					display:inline-block;
+// 					vertical-align: middle;
+// 					margin-right:20px;
+// 					img {
+// 						border-radius:50%;
+// 					}
+// 				}
+// 				.user-details {
+// 					display:inline-block;
+// 					vertical-align:top;
+// 					padding:9px 0	;
+// 					p {
+// 						line-height:1.5;
+// 						color:$color-black;
 
-						&.user-name {
-							font-weight:bold;
-							font-size:$resume-listing-font-size;
-							text-transform: capitalize;
-						}
-						&.user-link {
-							a {
-								color:$link-color;
-							}
-						}
-					}
-				}
-			}
+// 						&.user-name {
+// 							font-weight:bold;
+// 							font-size:$resume-listing-font-size;
+// 							text-transform: capitalize;
+// 						}
+// 						&.user-link {
+// 							a {
+// 								color:$link-color;
+// 							}
+// 						}
+// 					}
+// 				}
+// 			}
 
-			.recommendation-body {
-				margin:0px 0 0 0;
-				p {
-					line-height:1.5;
-					word-wrap: break-word;
+// 			.recommendation-body {
+// 				margin:0px 0 0 0;
+// 				p {
+// 					line-height:1.5;
+// 					word-wrap: break-word;
 
-				}
-			}
-			.separator {
-				margin:20px 0;
-				border-bottom:1px solid $border-color-base;
-			}
-			.see-more {
-				font-size: 14px;
-			}
-			.icon-down_arrow, .icon-up_arrow {
-				font-size: 11px;
-				margin-left: 3px;
-			}
-			.recommendationListSecond {
-				display: none;
-			}
-		}
-	}
-}
+// 				}
+// 			}
+// 			.separator {
+// 				margin:20px 0;
+// 				border-bottom:1px solid $border-color-base;
+// 			}
+// 			.see-more {
+// 				font-size: 14px;
+// 			}
+// 			.icon-down_arrow, .icon-up_arrow {
+// 				font-size: 11px;
+// 				margin-left: 3px;
+// 			}
+// 			.recommendationListSecond {
+// 				display: none;
+// 			}
+// 		}
+// 	}
+// }
 
-//cover-letter view
-#view-cover-letter {
-	margin-top: 10px;
-	border: 1px solid #e8e8e8;
-	line-height: 24px;
-	font-size: 14px;
-}
+// //cover-letter view
+// #view-cover-letter {
+// 	margin-top: 10px;
+// 	border: 1px solid #e8e8e8;
+// 	line-height: 24px;
+// 	font-size: 14px;
+// }
 
-//resume view
-#view-resume {
-	margin:20px 0 0 0;
-	background-color:$resume-background-color;
-	canvas {
-		width:100%;
-		border:1px solid $border-color-base;
-		margin:10px 0 0 0;
-	}
-}
+// //resume view
+// #view-resume {
+// 	margin:20px 0 0 0;
+// 	background-color:$resume-background-color;
+// 	canvas {
+// 		width:100%;
+// 		border:1px solid $border-color-base;
+// 		margin:10px 0 0 0;
+// 	}
+// }
 
 
-//resume sidebar section
-.sidebar-section {
-	border-bottom:1px solid $border-color-base;
-	padding-bottom:20px;
-	.wrap {
-		margin: 7px 0;
-		color: #2b2b2b;
-		line-height: 1.2;
-		font-size: 14px;
-	}
-	h3 {
-		font-size:$view-resume-section-title-size;
-		color:$color-black;
-		margin-top:20px;
-	}	
-	.icon-tick_circle {
-		color: $button-color-green;
-	}
-	.cand-add-tag {
-		@include candidateTagInput;
-	}
-	.comment-box .comment-textarea {
-		@include candidateCommentInput;
-	}
-	.action-buttons .editbutton {
-		@include candidateEditComment;
-	}
-	&.tags {
-		border-bottom:0;
-		.skill-tag {
-			@include skillTag;
-			div {
-				display:inline-block;
-				vertical-align: middle;
-				max-width: 150px;
-				word-wrap: break-word;
-				&.remove-active-skill {
-					cursor:pointer;
-					vertical-align:top;
-					position: absolute;
-					top: 50%;
-					transform: translate(0,-50%);
-					right: 5px;
-				}
-			}
-		}
-	}
-}
+// //resume sidebar section
+// .sidebar-section {
+// 	border-bottom:1px solid $border-color-base;
+// 	padding-bottom:20px;
+// 	.wrap {
+// 		margin: 7px 0;
+// 		color: #2b2b2b;
+// 		line-height: 1.2;
+// 		font-size: 14px;
+// 	}
+// 	h3 {
+// 		font-size:$view-resume-section-title-size;
+// 		color:$color-black;
+// 		margin-top:20px;
+// 	}	
+// 	.icon-tick_circle {
+// 		color: $button-color-green;
+// 	}
+// 	.cand-add-tag {
+// 		@include candidateTagInput;
+// 	}
+// 	.comment-box .comment-textarea {
+// 		@include candidateCommentInput;
+// 	}
+// 	.action-buttons .editbutton {
+// 		@include candidateEditComment;
+// 	}
+// 	&.tags {
+// 		border-bottom:0;
+// 		.skill-tag {
+// 			@include skillTag;
+// 			div {
+// 				display:inline-block;
+// 				vertical-align: middle;
+// 				max-width: 150px;
+// 				word-wrap: break-word;
+// 				&.remove-active-skill {
+// 					cursor:pointer;
+// 					vertical-align:top;
+// 					position: absolute;
+// 					top: 50%;
+// 					transform: translate(0,-50%);
+// 					right: 5px;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
 
-//external links 
-.external-links {
-	ul {
-		padding:20px 0 ;
-		border-top:1px solid $border-color-base;
-		list-style:none;
-		margin:0;	
-		li {
-			font-size:$view-resume-listing-font-size;
-			color:$color-black;
-			line-height:1.3;
-			margin:7px 0;
-			cursor: pointer;
-			&:hover {
-				text-decoration: underline;
-			}
-			span {
-				&.icon {
-					width:2em;
-					margin-right:10px;
-				}
-			}
-		}
-		.table-row-separator{
-			border-bottom: 1px solid #e8e8e8!important;
-			margin-top: 20px;
-		}
+// //external links 
+// .external-links {
+// 	ul {
+// 		padding:20px 0 ;
+// 		border-top:1px solid $border-color-base;
+// 		list-style:none;
+// 		margin:0;	
+// 		li {
+// 			font-size:$view-resume-listing-font-size;
+// 			color:$color-black;
+// 			line-height:1.3;
+// 			margin:7px 0;
+// 			cursor: pointer;
+// 			&:hover {
+// 				text-decoration: underline;
+// 			}
+// 			span {
+// 				&.icon {
+// 					width:2em;
+// 					margin-right:10px;
+// 				}
+// 			}
+// 		}
+// 		.table-row-separator{
+// 			border-bottom: 1px solid #e8e8e8!important;
+// 			margin-top: 20px;
+// 		}
 		
-		.invite {
-			&:hover {
-				text-decoration: none;
-			}
-		}
-		.invite-links {
-			margin-left: 0px;
-			list-style: none;
+// 		.invite {
+// 			&:hover {
+// 				text-decoration: none;
+// 			}
+// 		}
+// 		.invite-links {
+// 			margin-left: 0px;
+// 			list-style: none;
 
-		}
-		&:last-child {
-			border-bottom:0;
-			padding-bottom:0;
-		}
-	}
-}
+// 		}
+// 		&:last-child {
+// 			border-bottom:0;
+// 			padding-bottom:0;
+// 		}
+// 	}
+// }
 
-//resume-sidebar
-.resume-sidebar {
-	width:20%;
-	.action-buttons {
-		margin-bottom:20px;
-		&.cand-add-tag-action-btn {
-			margin: 15px 0;
-		}
-		span {
-			&.button {
-				@include button($color-white);
-				&.cand-comment-button{
-					@include candidateCommentButton;
-				}
-				&.cand-add-tag-button {
-					@include candidateTagButton;
-				}
-			}
-		}
-	}
+// //resume-sidebar
+// .resume-sidebar {
+// 	width:20%;
+// 	.action-buttons {
+// 		margin-bottom:20px;
+// 		&.cand-add-tag-action-btn {
+// 			margin: 15px 0;
+// 		}
+// 		span {
+// 			&.button {
+// 				@include button($color-white);
+// 				&.cand-comment-button{
+// 					@include candidateCommentButton;
+// 				}
+// 				&.cand-add-tag-button {
+// 					@include candidateTagButton;
+// 				}
+// 			}
+// 		}
+// 	}
 
-}
+// }
 
 
-//resume-header
-.resume-header {
-	background-image:url('/static/images/view-resume-banner.png');
-	background-repeat:no-repeat;
-	background-position:center top;
-	background-size:100% 95px;
-	vertical-align: top;
-	display: inline-block;
-	width: 100%;
-	position:relative;
-	padding-top:165px;
+// //resume-header
+// .resume-header {
+// 	background-image:url('/static/images/view-resume-banner.png');
+// 	background-repeat:no-repeat;
+// 	background-position:center top;
+// 	background-size:100% 95px;
+// 	vertical-align: top;
+// 	display: inline-block;
+// 	width: 100%;
+// 	position:relative;
+// 	padding-top:165px;
 
-	.table-row-seprator{
-		border-bottom:1px solid $border-color-base;
-	}
+// 	.table-row-seprator{
+// 		border-bottom:1px solid $border-color-base;
+// 	}
 
-	.profile-image {
-		position:absolute;
-		top:35px;
-		display:block;
-		margin:auto;
-		left:0;
-		right:0;
-		width:125px;
-		height: 125px;
-		object-fit: cover;
-		img {
-			width: 100%;
-			height: 100%;
-			border-radius:50%;
-			border:5px solid $color-white;
-			box-shadow:0 0 3px $shadow-color;
-			background-color: #efefef;
-			object-fit: cover;
-		}
-	}
+// 	.profile-image {
+// 		position:absolute;
+// 		top:35px;
+// 		display:block;
+// 		margin:auto;
+// 		left:0;
+// 		right:0;
+// 		width:125px;
+// 		height: 125px;
+// 		object-fit: cover;
+// 		img {
+// 			width: 100%;
+// 			height: 100%;
+// 			border-radius:50%;
+// 			border:5px solid $color-white;
+// 			box-shadow:0 0 3px $shadow-color;
+// 			background-color: #efefef;
+// 			object-fit: cover;
+// 		}
+// 	}
 
-	.profile-information {
-		text-align:center;
-		p {
-			&.profile-name {
-				font-size:$page-title-size;
-				text-align: center;
-				color:$button-color-green;
-				// font-weight:bold;
-			}
-		}
+// 	.profile-information {
+// 		text-align:center;
+// 		p {
+// 			&.profile-name {
+// 				font-size:$page-title-size;
+// 				text-align: center;
+// 				color:$button-color-green;
+// 				// font-weight:bold;
+// 			}
+// 		}
 
-		.social-media-accounts {
-			margin:10px 0 20px;
-			a{
-				.icon-facebook::before {
-					content: '\e84a';
-					font-size: 30px;
-					color: #385899;
-				}
-				.icon-twitter::before {
-					content: '\e849';
-					font-size: 30px;
-					color: #54adef;
-				}
-			}
-			span {
-				&.social {
-					margin:0 5px;
-				}
-			}
-		}
-	}
+// 		.social-media-accounts {
+// 			margin:10px 0 20px;
+// 			a{
+// 				.icon-facebook::before {
+// 					content: '\e84a';
+// 					font-size: 30px;
+// 					color: #385899;
+// 				}
+// 				.icon-twitter::before {
+// 					content: '\e849';
+// 					font-size: 30px;
+// 					color: #54adef;
+// 				}
+// 			}
+// 			span {
+// 				&.social {
+// 					margin:0 5px;
+// 				}
+// 			}
+// 		}
+// 	}
 
-	.profile-snapshot {
-		text-align: center;
-		background-color:$resume-profile-snapshot-background;
-		padding:10px 0;
-		position:relative;
+// 	.profile-snapshot {
+// 		text-align: center;
+// 		background-color:$resume-profile-snapshot-background;
+// 		padding:10px 0;
+// 		position:relative;
 
-		.snap {
-			display:inline-block;
-			padding:0 20px;
-			text-align: left;
-			border-right:1px solid $border-color-base;
+// 		.snap {
+// 			display:inline-block;
+// 			padding:0 20px;
+// 			text-align: left;
+// 			border-right:1px solid $border-color-base;
 
-			.snap-title {
-				color:$extra-info-color;
-				font-size:$view-resume-byline-font-size;
-				line-height:1.5;
-			}
+// 			.snap-title {
+// 				color:$extra-info-color;
+// 				font-size:$view-resume-byline-font-size;
+// 				line-height:1.5;
+// 			}
 
-			.snap-value {
-				color:$color-black;
-				font-size:$view-resume-byline-font-size;
-				word-wrap: break-word;
+// 			.snap-value {
+// 				color:$color-black;
+// 				font-size:$view-resume-byline-font-size;
+// 				word-wrap: break-word;
 
-			}
+// 			}
 
-			&:last-child {
-				border:0;
-			}
-		}
+// 			&:last-child {
+// 				border:0;
+// 			}
+// 		}
 
-		&:before {
-			content:'';
-			border-bottom:10px solid $resume-profile-snapshot-background;
-			border-right:10px solid transparent;
-			border-left:10px solid transparent;
-			position:absolute;
-			top:-10px;
-			left:50%;
-			transform:translateX(-50%);
-			-webkit-transform:translateX(-50%);
-			-moz-transform:translateX(-50%);
+// 		&:before {
+// 			content:'';
+// 			border-bottom:10px solid $resume-profile-snapshot-background;
+// 			border-right:10px solid transparent;
+// 			border-left:10px solid transparent;
+// 			position:absolute;
+// 			top:-10px;
+// 			left:50%;
+// 			transform:translateX(-50%);
+// 			-webkit-transform:translateX(-50%);
+// 			-moz-transform:translateX(-50%);
 
-		}
-	}
+// 		}
+// 	}
 
-	.skills-area {
-		text-align:center;
-		margin:20px 0;
+// 	.skills-area {
+// 		text-align:center;
+// 		margin:20px 0;
 
-		.tag {
-			display:inline-block;
-			padding:8px 20px;
-			border:1px solid $border-color-base;
-			margin:5px;
-			border-radius:50px;
-		}
-	}
+// 		.tag {
+// 			display:inline-block;
+// 			padding:8px 20px;
+// 			border:1px solid $border-color-base;
+// 			margin:5px;
+// 			border-radius:50px;
+// 		}
+// 	}
 
-	.last-login-container {
-		margin:20px 0;
-		font-size:14px;
+// 	.last-login-container {
+// 		margin:20px 0;
+// 		font-size:14px;
 
-		p {
-			text-align:right;
-			margin-right:20px;
-			font-style: italic;
-			color:#818181;
-		}
-	}
-}
+// 		p {
+// 			text-align:right;
+// 			margin-right:20px;
+// 			font-style: italic;
+// 			color:#818181;
+// 		}
+// 	}
+// }
 
 
 //.....resume modal ends........
