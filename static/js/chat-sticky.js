@@ -424,8 +424,13 @@ var populateChatView = function(array) {
     }
 }
 
-$(".chat-candidate-boxes").on('click','.chat-div-candidate .icon-minus_icon', function() {
-	var dataId = $(this).attr("data-id");
+$('.chat-candidate-boxes').on('click','.candidate-name-container',function(event){
+    event.stopPropagation();
+    return true
+})
+
+$(".chat-candidate-boxes").on('click','.chat-div-candidate .chat-div-header', function() {
+    var dataId = $(this).attr("data-id");
 	$('.chat-div-candidate[data-id='+dataId+'] .content-footer-container').toggleClass("show");
 	$('.chat-div-candidate .chat-div-header[data-id='+dataId+'] .minusIcon').toggleClass("active")
 })
