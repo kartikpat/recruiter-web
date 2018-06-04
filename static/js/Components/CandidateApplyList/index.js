@@ -447,19 +447,20 @@ jQuery(document).ready( function() {
     })
     function onSuccessfullCandidateAction(topic, res) {
         var arr = [];
+        // TODO
         arr.push(res.applicationId)
         if(res.action == "view") {
             var newStatus = 4
             var obj = store.getCandidateFromStore(res.applicationId)
-            obj["status"] = newStatus;
-            return candidates.changeStatus(arr, newStatus)
+            obj["status"] = (obj["status"]==1 || obj["status"]==2 || obj["status"]==3) ? obj["status"] : newStatus;
+            return candidates.changeStatus(arr, obj["status"])
         }
 
         if(res.action == "download") {
             var newStatus = 5
             var obj = store.getCandidateFromStore(res.applicationId)
-            obj["status"] = newStatus;
-            return candidates.changeStatus(arr, newStatus)
+            obj["status"] = (obj["status"]==1 || obj["status"]==2 || obj["status"]==3) ? obj["status"] : newStatus;
+            return candidates.changeStatus(arr, obj["status"])
         }
         $.when(null, fetchJobApplicationCount(recruiterId, jobId)).then(function(a,b){
             if( b[0] && b[0]["status"] == "success") {
@@ -515,14 +516,14 @@ jQuery(document).ready( function() {
             $('.reject').removeClass('hidden');
             var newStatus = 0
             if(res.parameters.isModalButton) {
-                candidates.changeButtonText(arr, newStatus, res.parameters.dataAction)
+                // candidates.changeButtonText(arr, newStatus, res.parameters.dataAction)
                 aCandidate.changeButtonText(arr, newStatus, res.parameters.dataAction)
-                return toastNotify(1, "Moved to Unread Tab")
+                // return toastNotify(1, "Moved to Unread Tab")
             }
 
-            if(res.parameters.oldStatus != "") {
-                return toastNotify(1, "Moved to Unread Tab")
-            }
+            // if(res.parameters.oldStatus != "") {
+            //     return toastNotify(1, "Moved to Unread Tab")
+            // }
 
             var obj = store.getCandidateFromStore(res.applicationId)
             obj["status"] = newStatus;
@@ -534,16 +535,15 @@ jQuery(document).ready( function() {
             $('.shortlist').removeClass('hidden');
             var newStatus = 1
             if(res.parameters.isModalButton) {
-                var obj = store.getCandidateFromStore(res.applicationId)
-                obj["status"] = newStatus;
-                candidates.changeButtonText(arr, newStatus, res.parameters.dataAction)
+                // var obj = store.getCandidateFromStore(res.applicationId)
+                // obj["status"] = newStatus;
                 aCandidate.changeButtonText(arr, newStatus, res.parameters.dataAction)
-                return toastNotify(1, "Moved to Shortlisted Tab")
+                // return toastNotify(1, "Moved to Shortlisted Tab")
             }
 
-            if(res.parameters.oldStatus != "") {
-                return toastNotify(1, "Moved to Shortlisted Tab")
-            }
+            // if(res.parameters.oldStatus != "") {
+            //     return toastNotify(1, "Moved to Shortlisted Tab")
+            // }
 
             var obj = store.getCandidateFromStore(res.applicationId)
             obj["status"] = newStatus;
@@ -555,30 +555,29 @@ jQuery(document).ready( function() {
             $('.reject').removeClass('hidden');
             var newStatus = 2
             if(res.parameters.isModalButton) {
-                candidates.changeButtonText(arr, newStatus, res.parameters.dataAction)
                 aCandidate.changeButtonText(arr, newStatus, res.parameters.dataAction)
-                return toastNotify(1, "Moved to Rejected Tab")
+                // return toastNotify(1, "Moved to Rejected Tab")
             }
-            if(res.parameters.oldStatus != "") {
-                return toastNotify(1, "Moved to Rejected Tab")
-            }
+            // if(res.parameters.oldStatus != "") {
+            //     // return toastNotify(1, "Moved to Rejected Tab")
+            // }
             var obj = store.getCandidateFromStore(res.applicationId)
             obj["status"] = newStatus;
-            candidates.changeButtonText(arr,newStatus, res.parameters.dataAction)
+            candidates.changeButtonText(arr, newStatus, res.parameters.dataAction)
             return toastNotify(1, "Moved to Rejected Tab")
         }
         if(res.action == "save") {
             $(".candidateRow[data-application-id="+res.applicationId+"]").find('.candidateSave .loadingScroller').addClass('hidden');
             var newStatus = 3
             if(res.parameters.isModalButton) {
-                candidates.changeButtonText(arr, newStatus, res.parameters.dataAction)
+                // candidates.changeButtonText(arr, newStatus, res.parameters.dataAction)
                 aCandidate.changeButtonText(arr, newStatus, res.parameters.dataAction)
-                return toastNotify(1, "Moved to Saved Tab")
+                // return toastNotify(1, "Moved to Saved Tab")
             }
 
-            if(res.parameters.oldStatus != "") {
-                return toastNotify(1, "Moved to Saved Tab")
-            }
+            // if(res.parameters.oldStatus != "") {
+            //     return toastNotify(1, "Moved to Saved Tab")
+            // }
             var obj = store.getCandidateFromStore(res.applicationId)
             obj["status"] = newStatus;
             candidates.changeButtonText(arr,newStatus, res.parameters.dataAction)
