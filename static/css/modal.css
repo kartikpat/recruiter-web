@@ -326,6 +326,9 @@
 .icon-face_to_face_icon::before {
   content: '\e850'; }
 
+.icon-history-button::before {
+  content: '\e864'; }
+
 /*[Recruiter_Homepage]*/
 /*[/Recruiter_Homepage]*/
 /**** Fontello Font Icons : ****/
@@ -652,6 +655,9 @@
 
 .icon-face_to_face_icon::before {
   content: '\e850'; }
+
+.icon-history-button::before {
+  content: '\e864'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */

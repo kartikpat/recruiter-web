@@ -63,7 +63,7 @@ jQuery(document).ready( function() {
                 chat.appendSendMessage(message, profile["pic"], t)
             }
             else if (status.category == "PNNetworkIssuesCategory") {
-                var data = {}
+                var data = {}     
                 data.message = "Looks like you are not connected to the internet"
                 toastNotify(3, data.message)
             }
@@ -216,6 +216,7 @@ function getArray(array) {
 function errorHandler(data) {
     var res = data.responseJSON
     if(!res) {
+                
         return toastNotify(3, "Looks like you are not connected to the internet");
     }
     if(data.status == 503) {

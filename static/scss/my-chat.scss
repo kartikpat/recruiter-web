@@ -392,13 +392,13 @@
 								}
 								.message-area {
 									max-width:80%;
-									display:inline-block;
-									float:right;
+									// display:inline-block;
+									float: right;;
 									// background-color:$color-white;
 									// border:1px solid $border-color-base;
 									// border-radius:4px;
 								
-									span {
+									p {
 										line-height:1.5;
 										text-align:left;
 
@@ -409,7 +409,8 @@
 											padding:10px;
 											font-size:$base-font-size;
 											max-width: calc(100vw - 130px);
-										    word-break: break-all;
+											word-break: break-all;
+											float: right;
 										}
 
 										&.message-timestamp {
@@ -418,12 +419,29 @@
 											font-size:$chat-timestamp-font-size;
 											color:$extra-info-color;
 										}
+
+										.icon-tick:before {
+											content: '\e828';
+											float: right;
+											font-size: 12px;
+											color: #149075;
+										}
+
+										.icon-history-button::before {
+											content: '\e864';
+											font-size: 12px;
+											vertical-align: middle;
+											margin-left: 10px;
+											color: #888888;
+										}
 										
 									}
 									
 									.error-container{
 										font-size: 12px;
 										color: $error-color;
+										padding: 10px 0;
+										clear: both;
 									}
 								}
 							}

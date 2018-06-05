@@ -117,6 +117,7 @@ function getMsgSentElement(data) {
     time = moment(data["entry"]["time"]).format("DD MMMM YYYY") + " , ";
     time += moment(data["entry"]["time"]).format("hh:mm a");
     card.find(".msgContent").html(data["entry"]["msg"]).attr("title", time);
+    // card.find('.msgContent').append("<span class='icon-container'><i class='icon-history-button'></i></span>")
     return card
 }
 
