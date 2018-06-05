@@ -288,6 +288,7 @@
                                         font-size:$chat-timestamp-font-size;
                                         color:$extra-info-color;
                                     }
+
                                 }
                             }
                         }
@@ -303,8 +304,7 @@
                                 }
                             }
                             .message-area {
-                                max-width:80%;
-                                display:inline-block;
+                                max-width:100%;
                                 float:right;
 
                                 p {
@@ -322,6 +322,7 @@
                                         text-align: left;
                                         line-height: 1.4;
                                         color: #2b2b2b;
+                                        float: right;
                                     }
 
                                     &.message-timestamp {
@@ -330,6 +331,26 @@
                                         font-size:$chat-timestamp-font-size;
                                         color:$extra-info-color;
                                     }
+                                    .icon-tick:before {
+                                        content: '\e828';
+                                        float: right;
+                                        font-size: 12px;
+                                        color: #149075;
+                                    }
+                                    .icon-history-button::before {
+                                        content: '\e864';
+                                        font-size: 11px;
+                                        vertical-align: middle;
+                                        margin-left: 10px;
+                                        color: #888888;
+                                    }
+                                }
+                                .error-container{
+                                    font-size: 12px;
+                                    color: $error-color;
+                                    padding: 5px 0;
+                                    clear: both;
+                                    text-align: right;    
                                 }
                             }
                         }

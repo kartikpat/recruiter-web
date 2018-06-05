@@ -357,6 +357,9 @@
 .icon-face_to_face_icon::before {
   content: '\e850'; }
 
+.icon-history-button::before {
+  content: '\e864'; }
+
 .navigationHeader {
   display: none !important; }
 

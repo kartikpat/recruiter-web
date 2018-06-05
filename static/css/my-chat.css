@@ -354,6 +354,9 @@
 .icon-face_to_face_icon::before {
   content: '\e850'; }
 
+.icon-history-button::before {
+  content: '\e864'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -954,6 +957,9 @@ span.sticker {
 
 .icon-face_to_face_icon::before {
   content: '\e850'; }
+
+.icon-history-button::before {
+  content: '\e864'; }
 
 .left {
   float: left; }
@@ -1739,6 +1745,9 @@ a {
 .icon-face_to_face_icon::before {
   content: '\e850'; }
 
+.icon-history-button::before {
+  content: '\e864'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -2300,24 +2309,25 @@ span.sticker {
               color: #808080;
               text-transform: capitalize;
               letter-spacing: 0.5px; }
-          .page-content .chat-container .chat-body .chat-window ul li.message {
+          .page-content .chat-container .chat-body .chat-window ul div.message {
             margin: 15px 0;
             clear: both;
-            overflow: auto; }
-            .page-content .chat-container .chat-body .chat-window ul li.message.received .user-image {
+            overflow: auto;
+            padding: 15px 0; }
+            .page-content .chat-container .chat-body .chat-window ul div.message.received .user-image {
               float: left;
               margin: 0 15px 0 0; }
-              .page-content .chat-container .chat-body .chat-window ul li.message.received .user-image img {
+              .page-content .chat-container .chat-body .chat-window ul div.message.received .user-image img {
                 border-radius: 50%;
                 height: 43px;
                 width: 43px; }
-            .page-content .chat-container .chat-body .chat-window ul li.message.received .message-area {
+            .page-content .chat-container .chat-body .chat-window ul div.message.received .message-area {
               max-width: 80%;
               display: inline-block;
               float: left; }
-              .page-content .chat-container .chat-body .chat-window ul li.message.received .message-area p {
+              .page-content .chat-container .chat-body .chat-window ul div.message.received .message-area p {
                 line-height: 1.5; }
-                .page-content .chat-container .chat-body .chat-window ul li.message.received .message-area p.message-content {
+                .page-content .chat-container .chat-body .chat-window ul div.message.received .message-area p.message-content {
                   background-color: #FFF;
                   border: 1px solid #e8e8e8;
                   border-radius: 4px;
@@ -2325,38 +2335,54 @@ span.sticker {
                   font-size: 14px;
                   max-width: calc(100vw - 130px);
                   word-break: break-all; }
-                .page-content .chat-container .chat-body .chat-window ul li.message.received .message-area p.message-timestamp {
+                .page-content .chat-container .chat-body .chat-window ul div.message.received .message-area p.message-timestamp {
                   text-align: left;
                   margin: 5px 0 0 0;
                   font-size: 12px;
                   color: #808080; }
-            .page-content .chat-container .chat-body .chat-window ul li.message.sent .user-image {
+            .page-content .chat-container .chat-body .chat-window ul div.message.sent .user-image {
               float: right;
               margin: 0 0 0 15px; }
-              .page-content .chat-container .chat-body .chat-window ul li.message.sent .user-image img {
+              .page-content .chat-container .chat-body .chat-window ul div.message.sent .user-image img {
                 border-radius: 50%;
                 height: 43px;
                 width: 43px; }
-            .page-content .chat-container .chat-body .chat-window ul li.message.sent .message-area {
+            .page-content .chat-container .chat-body .chat-window ul div.message.sent .message-area {
               max-width: 80%;
-              display: inline-block;
               float: right; }
-              .page-content .chat-container .chat-body .chat-window ul li.message.sent .message-area p {
+              .page-content .chat-container .chat-body .chat-window ul div.message.sent .message-area p {
                 line-height: 1.5;
-                text-align: right; }
-                .page-content .chat-container .chat-body .chat-window ul li.message.sent .message-area p.message-content {
+                text-align: left; }
+                .page-content .chat-container .chat-body .chat-window ul div.message.sent .message-area p.message-content {
                   background-color: #f9f9f9;
                   border: 1px solid #e8e8e8;
                   border-radius: 4px;
                   padding: 10px;
                   font-size: 14px;
                   max-width: calc(100vw - 130px);
-                  word-break: break-all; }
-                .page-content .chat-container .chat-body .chat-window ul li.message.sent .message-area p.message-timestamp {
+                  word-break: break-all;
+                  float: right; }
+                .page-content .chat-container .chat-body .chat-window ul div.message.sent .message-area p.message-timestamp {
                   text-align: right;
                   margin: 5px 0 0 0;
                   font-size: 12px;
                   color: #808080; }
+                .page-content .chat-container .chat-body .chat-window ul div.message.sent .message-area p .icon-tick:before {
+                  content: '\e828';
+                  float: right;
+                  font-size: 12px;
+                  color: #149075; }
+                .page-content .chat-container .chat-body .chat-window ul div.message.sent .message-area p .icon-history-button::before {
+                  content: '\e864';
+                  font-size: 12px;
+                  vertical-align: middle;
+                  margin-left: 10px;
+                  color: #888888; }
+              .page-content .chat-container .chat-body .chat-window ul div.message.sent .message-area .error-container {
+                font-size: 12px;
+                color: #d00a42;
+                padding: 10px 0;
+                clear: both; }
         .page-content .chat-container .chat-body .chat-window .new-message {
           border-top: 1px solid #e8e8e8;
           position: absolute;
