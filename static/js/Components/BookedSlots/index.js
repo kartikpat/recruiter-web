@@ -32,6 +32,7 @@ jQuery(document).ready( function() {
            sendEvent(eventMap["filterSlots"]["event"], eventObj)
            parameters.calendarId = parseInt(calendarId);
        }
+       console.log(parameters)
        fetchInterviews(recruiterId, parameters);
    })
 
@@ -71,7 +72,7 @@ jQuery(document).ready( function() {
    parameters.pageNumber = globalParameters.pageNumber;
    parameters.pageContent = globalParameters.pageContent;
    parameters.fromDate = globalParameters.fromDate;
-
+    
    //Initial call
    fetchInterviews(recruiterId, parameters);
 

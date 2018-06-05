@@ -2547,7 +2547,8 @@ span.multipleJobListingText {
   color: #155d9a; }
 
 .multipleJobListingbox {
-  cursor: pointer; }
+  cursor: pointer;
+  color: #155d9a; }
 
 span.multipleJobListingText:hover {
   text-decoration: underline; }

@@ -897,6 +897,8 @@ span.sticker {
     margin-top: 5px;
     font-size: 13px;
     margin-left: 36px; }
+    .premium_job_section p a:hover {
+      text-decoration: underline; }
 
 .submit-action-buttons {
   padding: 0 30px;

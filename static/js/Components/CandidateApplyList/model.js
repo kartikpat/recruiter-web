@@ -1203,6 +1203,7 @@ function candidateList() {
         $(settings.sendInterviewInviteF2FClass).attr("data-clickable","1")
         $(settings.sendInterviewInviteTelephonicClass).attr("data-clickable","1")
         $(settings.sendInterviewInviteF2FClass).attr("title","You need to set up your calendar before sending an invite. Click to set up calendar")
+        
         $(settings.sendInterviewInviteTelephonicClass).attr("title","You need to set up your calendar before sending an invite. Click to set up calendar")
 
         settings.rowContainer.find(".tooltip").not(".prototype .tooltip").tooltipster({

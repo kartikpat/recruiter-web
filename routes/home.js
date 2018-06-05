@@ -141,7 +141,7 @@ module.exports = function(settings){
 	app.get("/", isAuthenticated,function(req, res){
 		if(req.profile.onboarding==1){
 			res.render("dashboardview", {
-				title:"Recruiter Web - Newuser| iimjobs.com",
+				title:"Recruiter Dashboard | iimjobs.com",
 				styles:  assetsMapper["dashboardview"]["styles"][mode],
 				scripts: assetsMapper["dashboardview"]["scripts"][mode],
 				baseUrl: baseUrl,

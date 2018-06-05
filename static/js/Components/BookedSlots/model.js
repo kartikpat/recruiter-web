@@ -151,7 +151,7 @@ function BookedSlots() {
 		item.candName.text(aData["name"])
 		item.candName.attr("href", "/job/"+aData["job"]["id"]+"/applications/"+aData["applicationId"]+"");
         item.candDesignation.text(aData["designation"])
-		item.candLocation.text(aData["location"])
+		item.candLocation.text(aData["currentLocation"])
         if(aData["exp"]) {
             var experience = aData["exp"]['year']+'y '+aData['exp']['month'] +'m'
             item.candExperience.text(experience)
@@ -177,6 +177,7 @@ function BookedSlots() {
 	}
 
 	function addToList(dataArray,pageNumber,pageContent){
+		console.log(dataArray)
 		var str = '';
 		settings.noInterviewView.addClass('hidden');
 		settings.bookedSlotsview.removeClass('hidden');
@@ -275,7 +276,7 @@ function BookedSlots() {
 	function getStartDate(){
         var fromDate=$('#start_date').datepicker().val();
 		if(fromDate != '')
-        	fromDate=fromDate+':00:00:00'
+        	fromDate=fromDate+' 00:00:00'
         return fromDate;
     }
 

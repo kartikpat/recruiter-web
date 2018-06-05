@@ -49,8 +49,9 @@ function userCredentials(){
 
 	function getData(){
 		return {
-			email: user.email.val(),
-			password: user.password.val()
+			email: user.email.val().trim(),
+			password: user.password.val().trim()
+			
 		}
 	}
 	function eraseErrors(){
@@ -90,12 +91,12 @@ function userCredentials(){
 	function validateLogin(){
 		eraseErrors();
 		var flag = 1;
-		if(!( user.email && user.email.val() )){
+		if(!( user.email && user.email.val().trim() )){
 			user.email.next('.error').text(errorResponses['missingEmail'])
 			flag = 0;
 		}
 
-		if(user.email && user.email.val() && !emailRegex.test(user.email.val())){
+		if(user.email && user.email.val().trim() && !emailRegex.test(user.email.val().trim())){
 			user.email.next('.error').text(errorResponses['invalidEmail'])
 			flag = 0;
 		}
