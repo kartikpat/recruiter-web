@@ -154,7 +154,7 @@ function Chat() {
        var time;
        time = moment(data["entry"]["time"]).format("DD MMMM YYYY") + " , ";
        time += moment(data["entry"]["time"]).format("hh:mm a");
-       card.find(".msgContent").html(data["entry"]["msg"]).attr("title", time);
+       card.find(".msgContent").html(data["entry"]["msg"]).attr("title", time).attr('id', data['entry']['id']);
        return card
    }
 
@@ -247,12 +247,13 @@ function Chat() {
        })
    }
 
-   function appendSendMessage(message, pic,t) {
+   function appendSendMessage(message, pic,t, id) {
        var elem = {}
        elem.entry = {}
        elem.entry.msg = message;
        elem.entry.time = t ? t: Date.now();
-       elem.entry.img = pic
+       elem.entry.img = pic;
+       elem.entry.id=id;
        var item = getMsgSentElement(elem)
        settings.mssgContainer.append(item)
        initializeTooltip()

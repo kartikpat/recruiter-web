@@ -6,11 +6,13 @@ globalParameters = {
     endTimeToken: null,
     clicked: 1
 }
-function getDeviceId() {
+function getDeviceId(n) {
+    if(!n)
+      n=20;
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    for (var i = 0; i < 20; i++)
+    for (var i = 0; i < n; i++)
       text += possible.charAt(Math.floor(Math.random() * possible.length));
 
     return "web"+text+Date.now();
@@ -46,7 +48,8 @@ jQuery(document).ready( function() {
 
     chat.onSendMessage(function(message, channelName, candidateId){
       var t = Date.now();
-
+        var id= getDeviceId(10);
+        chat.appendSendMessage(message, profile["pic"], t,id)
         chatEngine.publish({
             UUID:uuid || btoa(recruiterId+'--'+profile["email"]),
             deviceId: deviceId,
@@ -56,14 +59,16 @@ jQuery(document).ready( function() {
             tt:1,
             msg: message,
             img: profile["pic"],
-            type: 1
+            type: 1,
+            messageId: id
         }, channelName, function(status,response){
 
             if(status.statusCode == 200) {
-                chat.appendSendMessage(message, profile["pic"], t)
             }
             else if (status.category == "PNNetworkIssuesCategory") {
                 var data = {}
+                console.log(id);
+                debugger
                 data.message = "Looks like you are not connected to the internet"
                 toastNotify(3, data.message)
             }
@@ -116,6 +121,8 @@ jQuery(document).ready( function() {
        var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
        var pubTT = m.timetoken; // Publish timetoken
        if(msg["deviceId"] == deviceId){
+          console.log(msg);
+          debugger
           return
        }
        if( msg["UUID"] == btoa(recruiterId+"--"+profile["email"])){
