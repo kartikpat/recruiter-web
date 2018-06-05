@@ -46,7 +46,7 @@ jQuery(document).ready( function() {
 
     chat.onSendMessage(function(message, channelName, candidateId){
       var t = Date.now();
-
+        
         chatEngine.publish({
             UUID:uuid || btoa(recruiterId+'--'+profile["email"]),
             deviceId: deviceId,
@@ -56,7 +56,8 @@ jQuery(document).ready( function() {
             tt:1,
             msg: message,
             img: profile["pic"],
-            type: 1
+            type: 1,
+
         }, channelName, function(status,response){
 
             if(status.statusCode == 200) {
