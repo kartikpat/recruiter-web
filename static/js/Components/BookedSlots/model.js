@@ -276,7 +276,7 @@ function BookedSlots() {
 	function getStartDate(){
         var fromDate=$('#start_date').datepicker().val();
 		if(fromDate != '')
-        	fromDate=fromDate+':00:00:00'
+        	fromDate=fromDate+' 00:00:00'
         return fromDate;
     }
 
