@@ -512,6 +512,9 @@ var displayAMessage = function(element) {
             }
             else if (status.category == "PNNetworkIssuesCategory") {
                 var data = {}
+    			var item = getMsgSentElement(elem)
+    			$(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
+
                 data.message = "Looks like you are not connected to the internet"
                 toastNotify(3, data.message)
             }

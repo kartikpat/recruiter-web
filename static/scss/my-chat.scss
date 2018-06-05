@@ -333,11 +333,12 @@
 						}
 					}
 
-					li {
+					div {
 						&.message {
 							margin:15px 0;
 							clear:both;
 							overflow:auto;
+							padding: 15px 0;
 							&.received {
 								.user-image {
 									float:left;
@@ -353,9 +354,10 @@
 
 									max-width:80%;
 									display:inline-block;
+								
 									float:left;
 
-									p {
+									p{
 										line-height:1.5;
 
 										&.message-content {
@@ -392,10 +394,13 @@
 									max-width:80%;
 									display:inline-block;
 									float:right;
-
-									p {
+									// background-color:$color-white;
+									// border:1px solid $border-color-base;
+									// border-radius:4px;
+								
+									span {
 										line-height:1.5;
-										text-align:right;
+										text-align:left;
 
 										&.message-content {
 											background-color:$resume-profile-snapshot-background;
@@ -413,6 +418,12 @@
 											font-size:$chat-timestamp-font-size;
 											color:$extra-info-color;
 										}
+										
+									}
+									
+									.error-container{
+										font-size: 12px;
+										color: $error-color;
 									}
 								}
 							}
