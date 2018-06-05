@@ -777,7 +777,7 @@ function Filters(){
 				}
 				maxValue = parseInt(filtersTarget[name]["props"][key]['target'].val());
 			}
-			if(minValue != -1 && maxValue != -1 && maxValue < minValue) {
+			if(minValue != -1 && maxValue != -1 && maxValue <= minValue) {
 				element.next(".error-field").text(errorResponses['invalid'+element.attr('id')]).removeClass("hidden");
 				return false
 			}
