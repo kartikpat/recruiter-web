@@ -35,7 +35,7 @@ function Chat() {
        settings.uuid = "",
        settings.index = -1;
        settings.candImage = $(".candImage");
-       settings.statePendingClass = ".icon-chatContainer";
+       settings.statePendingClass = ".icon-chatContainer i";
        settings.stateErrorClass = ".error-container";
        onClickBackButton()
    }
@@ -325,7 +325,7 @@ function Chat() {
    function setDeliveredState(id){
     if(!id)
       return
-      $('#'+id).find(settings.statePendingClass).addClass('hidden');
+      $('#'+id).find(settings.statePendingClass).removeClass('icon-history-button').addClass('icon-tick');
    }
 
    function setFailedState(id){
