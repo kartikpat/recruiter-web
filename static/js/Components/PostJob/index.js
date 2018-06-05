@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+	
 	var jobDetails = Job();
 	jobDetails.setConfig("availableCredits", profile["availableCredits"]);
 	var type = 'post'

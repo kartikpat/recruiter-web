@@ -72,11 +72,17 @@ function Job(){
 				placeholder: {
 			        text: 'Describe the role, talk about the role and responsibilities and help potential applicants understand what makes this a great opportunity.'
 			    },
+			    paste: {
+			    	 cleanTags: ['meta', 'span', 'style', 'scripts'],
+			    	 unwrapTags: ['span']
+			    },
 				disableExtraSpaces: true,
 				hideOnClick: false
-			})
+			});
 
 			settings.editor.subscribe('editableInput', function(event, editorElement){
+				 $(editorElement).find("span[style]").contents().unwrap();
+				 settings.description.val(settings.editor.getContent());
 
 			})
 			jQuery(".header .menu-list-item.my-jobs").addClass("active");
@@ -235,10 +241,10 @@ function Job(){
 
 	function setJobData(jobId, obj) {
 		settings.title.val(getTitleFormat(obj["title"],(/\(\d+-\d+ \w+\)$/)));
+		settings.description.val(obj["description"]);
 		if(settings.editor){
 			settings.editor.setContent(obj["description"])
 		}
-		settings.description.val(obj["description"]);
 		settings.initialPremium = obj["premium"]
 		settings.isPremium.prop("checked", obj["premium"]);
 		settings.category.val(obj["category"]);
