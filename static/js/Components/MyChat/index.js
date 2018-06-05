@@ -49,7 +49,7 @@ jQuery(document).ready( function() {
     chat.onSendMessage(function(message, channelName, candidateId){
       var t = Date.now();
         var id= getDeviceId(10);
-        chat.appendSendMessage(message, profile["pic"], t,id)
+        chat.appendSendMessage(message, profile["pic"], t,id, 1)
         chatEngine.publish({
             UUID:uuid || btoa(recruiterId+'--'+profile["email"]),
             deviceId: deviceId,
@@ -68,7 +68,7 @@ jQuery(document).ready( function() {
             else if (status.category == "PNNetworkIssuesCategory") {
                 var data = {}
                 console.log(id);
-                debugger
+                chat.setFailedState(id);
                 data.message = "Looks like you are not connected to the internet"
                 toastNotify(3, data.message)
             }
@@ -121,8 +121,7 @@ jQuery(document).ready( function() {
        var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
        var pubTT = m.timetoken; // Publish timetoken
        if(msg["deviceId"] == deviceId){
-          console.log(msg);
-          debugger
+          chat.setDeliveredState(msg.messageId);
           return
        }
        if( msg["UUID"] == btoa(recruiterId+"--"+profile["email"])){

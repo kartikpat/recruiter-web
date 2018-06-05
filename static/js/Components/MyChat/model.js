@@ -34,7 +34,9 @@ function Chat() {
        settings.backButtonChat = $(".backButtonChat"),
        settings.uuid = "",
        settings.index = -1;
-       settings.candImage = $(".candImage")
+       settings.candImage = $(".candImage");
+       settings.statePendingClass = ".icon-chatContainer";
+       settings.stateErrorClass = ".error-container";
        onClickBackButton()
    }
 
@@ -146,14 +148,18 @@ function Chat() {
        return card
    }
 
+
    function getMsgSentElement(data,status) {
-       var card = $(".message.sent.prototype").clone().removeClass('prototype hidden')
+      // status ->1 for new message to show the clock icon
+       var card = $(".message.sent.prototype").clone().removeClass('prototype hidden').attr('id', data['entry']['id']);
     //    card.find(".useImg").attr("src", (data["entry"]["img"] || "/static/images/noimage.png"))
        var time;
        time = moment(data["entry"]["time"]).format("DD MMMM YYYY") + " , ";
        time += moment(data["entry"]["time"]).format("hh:mm a");
-       card.find(".msgContent").html(data["entry"]["msg"]).attr("title", time).attr('id', data['entry']['id']);
-    //    card.find(".msgContent").append("<span class='icon-chatContainer'><i class='icon-history-button'></i></span>") 
+       card.find(".msgContent").html(data["entry"]["msg"]).attr("title", time)
+       if(status==1){
+          card.find(".msgContent").append("<span class='icon-chatContainer'><i class='icon-history-button'></i></span>")
+       }
        return card
    }
 
@@ -246,14 +252,14 @@ function Chat() {
        })
    }
 
-   function appendSendMessage(message, pic,t, id) {
+   function appendSendMessage(message, pic,t, id, status) {
        var elem = {}
        elem.entry = {}
        elem.entry.msg = message;
        elem.entry.time = t ? t: Date.now();
        elem.entry.img = pic;
        elem.entry.id=id;
-       var item = getMsgSentElement(elem)
+       var item = getMsgSentElement(elem, status)
        settings.mssgContainer.append(item)
        initializeTooltip()
        scrollToBottom()
@@ -316,6 +322,17 @@ function Chat() {
        settings.chatWindow.addClass("hidden");
        settings.userProfile.addClass("hidden");
    }
+   function setDeliveredState(id){
+    if(!id)
+      return
+      $('#'+id).find(settings.statePendingClass).addClass('hidden');
+   }
+
+   function setFailedState(id){
+    if(!id)
+      return
+      $('#'+id).find(settings.stateErrorClass).removeClass('hidden');
+   }
 
    return {
        init: init,
@@ -335,7 +352,9 @@ function Chat() {
        setRecruiterActive: setRecruiterActive,
        setRecruiterInactive: setRecruiterInactive,
        setChat: setChat,
-       hideCandidateBlocks: hideCandidateBlocks
+       hideCandidateBlocks: hideCandidateBlocks,
+       setDeliveredState: setDeliveredState,
+       setFailedState: setFailedState
    }
 
    function initializeTooltip() {
