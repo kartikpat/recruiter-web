@@ -2370,6 +2370,8 @@ span.sticker {
                 .page-content .chat-container .chat-body .chat-window ul div.message.sent .message-area p .icon-tick:before {
                   content: '\e828';
                   float: right;
+                  margin-left: 5px;
+                  margin-top: 8px;
                   font-size: 12px;
                   color: #149075; }
                 .page-content .chat-container .chat-body .chat-window ul div.message.sent .message-area p .icon-history-button::before {
