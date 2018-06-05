@@ -371,7 +371,7 @@ function Jobs() {
 		if(aData["premium"]) {
 			item.premium.find('.icon-star').addClass('hidden');
 			item.premium.find('.icon-star-2').removeClass("hidden");
-			item.premium.attr('title','Premium Job');
+			item.premium.attr('title','This is a premium job and hence cannot be refreshed. For more information, please drop a mail to info@iimjobs.com');
 			item.refresh.addClass('hidden');
 
 		}

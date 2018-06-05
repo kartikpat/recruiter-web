@@ -2,7 +2,7 @@ var jobTagsArray = {}
 
 var errorResponses = {
 	missingTitle: 'Please enter the job title',
-	maxLimitTitle: 'Cannot exceed 120 letters',
+	maxLimitTitle: 'You can add a max of 120 characters',
 	minLimitTitle: 'Atleast 3 letters',
 	missingLocation: 'Please choose a location',
 	missingMinExp: 'Please choose years of experience required for the job',
@@ -335,11 +335,11 @@ function Job(){
 }
 
 function setAvailableCredits(element, credits) {
-	if(!credits) {
-		return element.html("Reach out to more candidates in less amount of time by making your job premium. <a target='_blank' style='color:#155d9a' href='/plans'>Learn More.</a>")
-	}
+	// if(!credits) {
+	// 	return element.html("Reach out to more candidates in less amount of time by making your job premium. <a target='_blank' style='color:#155d9a' href='/plans'>Learn More.</a>")
+	// }
 	if(credits == 0) {
-		return element.html("You have used up all your credits. <a target='_blank' style='color:#155d9a' href='/plans'>Click here</a> to buy more credits.")
+		return element.html("Reach out to more candidates in less amount of time by making your job premium. <a target='_blank' style='color:#155d9a' href='/plans'>Learn More.</a>")	
 	}
 	element.text("You have "+credits+" credits left.")
 }

@@ -130,7 +130,7 @@ function candidateList() {
            var toMon = getMonthName(anObj["exp"]["to"]["month"]);
            var fromYear = anObj["exp"]["from"]["year"];
            var toYear = anObj["exp"]["to"]["year"];
-           var str = (anObj["is_current"]) ? fromMon + " , " + fromYear + " to Present": fromMon + " , " + fromYear + " to " + toMon + " , " + toYear;
+           var str = (anObj["is_current"]) ? fromMon + ", " + fromYear + " to Present": fromMon + ", " + fromYear + " to " + toMon + " , " + toYear;
            item.tenure.text(str);
 
            profStr+=item.element[0].outerHTML

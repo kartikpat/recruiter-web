@@ -328,8 +328,9 @@ function Job(){
 	function showCalendarMissingError() {
 		settings.calendarSelectError.text("Choose a calendar to send to the applicants for this job!").removeClass("hidden");
 		$('html, body').animate({
-			scrollTop: ($("#calendarSelectError").closest('.calendar-options').offset().top - 20)
+			scrollTop: 0
 		},200);
+		console.log("here.....")
 	}
 
 	function closeModal() {
