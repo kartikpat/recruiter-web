@@ -354,6 +354,9 @@
 .icon-face_to_face_icon::before {
   content: '\e850'; }
 
+.icon-history-button::before {
+  content: '\e864'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -894,6 +897,8 @@ span.sticker {
     margin-top: 5px;
     font-size: 13px;
     margin-left: 36px; }
+    .premium_job_section p a:hover {
+      text-decoration: underline; }
 
 .submit-action-buttons {
   padding: 0 30px;

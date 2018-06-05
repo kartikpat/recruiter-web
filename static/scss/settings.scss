@@ -513,6 +513,12 @@
     .mem-info {
         width: calc(100% - 35px);
         vertical-align: top;
+        .memDes{
+            color: #808080;
+        }
+        .memOrg{
+            color: #808080;
+        }
     }
 
 }
@@ -633,6 +639,7 @@
         .mem-info {
             width: calc(100% - 35px);
             vertical-align: top;
+            
         }
         
     }

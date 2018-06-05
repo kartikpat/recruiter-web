@@ -590,6 +590,9 @@
 .icon-face_to_face_icon::before {
   content: '\e850'; }
 
+.icon-history-button::before {
+  content: '\e864'; }
+
 .left {
   float: left; }
 
@@ -1373,6 +1376,9 @@ a {
 
 .icon-face_to_face_icon::before {
   content: '\e850'; }
+
+.icon-history-button::before {
+  content: '\e864'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */

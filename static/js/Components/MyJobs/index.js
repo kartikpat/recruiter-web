@@ -68,6 +68,7 @@ jQuery(document).ready( function() {
 	jobList.onClickSubmitPremiumJob(function(jobId){
 
 		jobList.showSpinner("premium")
+
 		return submitPremiumJob(recruiterId, jobId);
 	})
 
@@ -129,7 +130,8 @@ jQuery(document).ready( function() {
 	}
 	function onSuccessfulPremiumJob(topic, data){
         jobList.hideSpinner("premium")
-        jobList.closeModal()
+		jobList.closeModal()
+		$(".table-row[data-job-id="+data["data"]+"]").find('.job-actions-container .jobRefresh').addClass('hidden');	
 		toastNotify(1, "Job Made Premium Successfully")
 		setTimeout(function(){
 			 location.reload()
@@ -137,7 +139,8 @@ jQuery(document).ready( function() {
 	}
 
 	function onFailedPremiumJob(topic, data){
-        jobList.hideSpinner("premium")
+		jobList.hideSpinner("premium")
+		console.log(data)
 		errorHandler(data)
 	}
 

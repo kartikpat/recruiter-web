@@ -354,6 +354,9 @@
 .icon-face_to_face_icon::before {
   content: '\e850'; }
 
+.icon-history-button::before {
+  content: '\e864'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -1122,6 +1125,10 @@ span.sticker {
   .credits-container .mem-info {
     width: calc(100% - 35px);
     vertical-align: top; }
+    .credits-container .mem-info .memDes {
+      color: #808080; }
+    .credits-container .mem-info .memOrg {
+      color: #808080; }
 
 .distribute-credits.button {
   width: 175px; }

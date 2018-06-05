@@ -46,7 +46,7 @@ jQuery(document).ready( function() {
 
     chat.onSendMessage(function(message, channelName, candidateId){
       var t = Date.now();
-
+        
         chatEngine.publish({
             UUID:uuid || btoa(recruiterId+'--'+profile["email"]),
             deviceId: deviceId,
@@ -56,14 +56,15 @@ jQuery(document).ready( function() {
             tt:1,
             msg: message,
             img: profile["pic"],
-            type: 1
+            type: 1,
+
         }, channelName, function(status,response){
 
             if(status.statusCode == 200) {
                 chat.appendSendMessage(message, profile["pic"], t)
             }
             else if (status.category == "PNNetworkIssuesCategory") {
-                var data = {}
+                var data = {}     
                 data.message = "Looks like you are not connected to the internet"
                 toastNotify(3, data.message)
             }
@@ -216,6 +217,7 @@ function getArray(array) {
 function errorHandler(data) {
     var res = data.responseJSON
     if(!res) {
+                
         return toastNotify(3, "Looks like you are not connected to the internet");
     }
     if(data.status == 503) {

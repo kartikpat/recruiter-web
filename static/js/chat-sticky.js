@@ -117,6 +117,7 @@ function getMsgSentElement(data) {
     time = moment(data["entry"]["time"]).format("DD MMMM YYYY") + " , ";
     time += moment(data["entry"]["time"]).format("hh:mm a");
     card.find(".msgContent").html(data["entry"]["msg"]).attr("title", time);
+    // card.find('.msgContent').append("<span class='icon-container'><i class='icon-history-button'></i></span>")
     return card
 }
 
@@ -512,6 +513,9 @@ var displayAMessage = function(element) {
             }
             else if (status.category == "PNNetworkIssuesCategory") {
                 var data = {}
+    			var item = getMsgSentElement(elem)
+    			$(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
+
                 data.message = "Looks like you are not connected to the internet"
                 toastNotify(3, data.message)
             }

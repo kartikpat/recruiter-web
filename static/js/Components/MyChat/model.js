@@ -146,15 +146,15 @@ function Chat() {
        return card
    }
 
-   function getMsgSentElement(data) {
-
+   function getMsgSentElement(data,status) {
        var card = $(".message.sent.prototype").clone().removeClass('prototype hidden')
-
     //    card.find(".useImg").attr("src", (data["entry"]["img"] || "/static/images/noimage.png"))
        var time;
        time = moment(data["entry"]["time"]).format("DD MMMM YYYY") + " , ";
        time += moment(data["entry"]["time"]).format("hh:mm a");
        card.find(".msgContent").html(data["entry"]["msg"]).attr("title", time);
+    //    card.find(".msgContent").append("<span class='icon-chatContainer'><i class='icon-history-button'></i></span>") 
+     
        return card
    }
 
