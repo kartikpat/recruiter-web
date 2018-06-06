@@ -5,6 +5,7 @@ function Candidate() {
 
     function init() {
         settings.candidateDetailsModal= $('.candidateDetailsModal')
+        settings.closeCandidateModal=$('.closeCandidateModal'),
         settings.candidateCommentContainerClass= '.candidateCommentContainer',
         settings.candidateTagContainerClass= '.candidateTagContainer',
         settings.mobCandidateTagContainerClass= '.mobCandidateTagContainer',
@@ -132,7 +133,7 @@ function Candidate() {
         $("body").removeClass("posf")
         settings.candidateDetailsModal.addClass("hidden");
         settings.topbutton.removeClass('hidden');
-        
+        settings.closeCandidateModal.addClass('hidden');
     }
 
     function showCandidateDetails(details, type, status){
@@ -599,6 +600,7 @@ function Candidate() {
     	$("body").addClass("posf");
         settings.candidateDetailsModal.removeClass("hidden");
         settings.topbutton.addClass('hidden');
+        settings.closeCandidateModal.removeClass('hidden');
     }
 
     function onClickAddComment(fn) {
