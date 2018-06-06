@@ -6029,12 +6029,7 @@ span.sticker {
   display: none !important; }
 
 .error {
-  position: absolute;
-  left: 0px;
-  margin: 3px 0 0 0px;
-  font-size: 11px;
-  color: #ad3030;
-  margin-left: 45px; }
+  margin-left: 45px !important; }
 
 .seeMoreRec {
   display: inline-block;

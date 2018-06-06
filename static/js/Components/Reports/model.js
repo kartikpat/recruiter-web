@@ -67,6 +67,7 @@ function reportList() {
    }
 
    function createElement(aData) {
+       console.log(aData);
        var item = getElement();
        item.element.attr("data-application-id", aData["id"]);
        item.publishedOn.text(moment(aData["createdAt"]).format('ll'));
