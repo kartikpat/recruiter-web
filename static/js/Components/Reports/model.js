@@ -81,7 +81,7 @@ function reportList() {
        item.shortlistedCandidates.text(aData["shortlisted"]).attr("href", getApplicationLink("1", aData["id"]));
        item.rejectedCandidates.text(aData["rejected"]).attr("href", getApplicationLink("2", aData["id"]));
        item.savedCandidates.text(aData["save"]).attr("href", getApplicationLink("3", aData["id"]));
-       item.resumeViewedCount.text(aData["reviewed"]);
+       item.resumeViewedCount.text(aData["resumeViewed"]);
        item.resumeDownloadedCount.text(aData["download"] || 0);
        item.jobCurrentStatus.text(aData["status"] || "N/A");
        item.isJobPremium.text(binary[aData["premium"]])
