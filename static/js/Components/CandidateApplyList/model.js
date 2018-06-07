@@ -2,6 +2,7 @@ function candidateList() {
 
     var settings = {};
     var config = {};
+    
 
     function init(profile, baseUrl){
         settings.rowContainer= $('.candidateListing'),
@@ -74,7 +75,7 @@ function candidateList() {
         settings.tagArr = [],
         settings.status = ''
         settings.url = baseUrl+"/recruiter/"+recruiterId+"/jobs/"+jobId+"/applications/download/excel";
-        settings.NewPost=$('.newPost');
+        settings.newPost=$('.newPost');
         onClickBulkDownArrow()
         onClickMassCheckbox()
         onClickCandidateOtherActions()
@@ -91,7 +92,7 @@ function candidateList() {
         onClickModal()
         closetooltipModal()
         backToTop()
-        onClickNewPost()
+       
         // onEnter()
         settings.rowContainer.on('click', '.moreEducationLink', function(){
             $('div').animate({scrollTop: 1000});
@@ -132,24 +133,24 @@ function candidateList() {
             settings.massResumeDownload.removeClass("hidden")
             settings.bulkDownArrow.removeClass("hidden")
         }
-
+        
         $(".downloadExcelMass").attr('href', settings.url + "?token="+getCookie("recruiter-access-token")+"");
 	}
 
-    function onClickNewPost(){
-        $(window).scroll(function() {
-            if ($(window).scrollTop() > 500) {
-                settings.NewPost.addClass('slideInDown');
-                settings.NewPost.removeClass('hidden');
-            } else {
-                settings.NewPost.addClass('hidden');
-            }
-        });
-        settings.NewPost.click(function(){
-            window.location.reload();
+    function onClickNewPost(fn){
+        settings.newPost.click(function(){
+            fn()
         })    
     }
 
+    function showNewPost(){
+        settings.newPost.addClass('slideInDown');
+        settings.newPost.removeClass('hidden');
+    }
+
+    function hideNewPost(){
+        settings.newPost.addClass('hidden');
+    }
 
     function onClickBulkBackIcon() {
         settings.bulkBackIcon.click(function(){
@@ -576,7 +577,6 @@ function candidateList() {
 		dataArray.forEach(function(aData, index){
 			var item = createElement(aData);
 			str+=item.element[0].outerHTML;
-
 		});
 		element.append(str);
         // settings.rowContainer.find(".candidate-select").removeClass("selected");
@@ -1152,7 +1152,7 @@ function candidateList() {
     function closeModal() {
 		removeBodyFixed()
 		settings.bulkActionModal.addClass("hidden")
-	}
+    }
 
     function initializeJqueryTabs(defaultTab, fn) {
         settings.jobTabs.tabs({
@@ -1358,6 +1358,8 @@ function candidateList() {
           });
     }
 
+    
+
     return {
 		init: init,
 		addToList: addToList,
@@ -1408,7 +1410,9 @@ function candidateList() {
         showDropdownTags: showDropdownTags,
         onClickDeleteTag: onClickDeleteTag,
         removeTag: removeTag,
-
-        appendCandidateTag: appendCandidateTag
+        onClickNewPost:onClickNewPost,
+        appendCandidateTag: appendCandidateTag,
+        showNewPost:showNewPost,
+        hideNewPost:hideNewPost
     }
 }

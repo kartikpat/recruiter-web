@@ -7,10 +7,11 @@ var globalParameters = {
     initialLoad: 1,
     candidateListLength: null,
     actionPageNumber: 2,
-    actionPageContent: 5
+    actionPageContent: 5,
+    newApplication: 0 
 }
 var screenName = "candidate-apply-list";
-
+var newApplication=[];
 
 jQuery(document).ready( function() {
 
@@ -25,7 +26,7 @@ jQuery(document).ready( function() {
     //     console.log("here..here..")
     //     console.log(sessionStorage.scrollTop)
     // });
-    
+        
     // creating the instance of models
 	var candidates = candidateList();
     var aCandidate = Candidate();
@@ -39,6 +40,17 @@ jQuery(document).ready( function() {
     candidates.init(profile, baseUrl);
     theJob.init();
     aCandidate.init();
+
+    $(window).scroll(function() {  
+        if ($(window).scrollTop() > 500 && globalParameters.newApplication==1) {
+            candidates.showNewPost();
+        } 
+        else {
+            candidates.hideNewPost();
+        }
+           
+    });
+
 
     var obj = getQueryParameters()
     if(!isEmpty(obj)) {
@@ -364,8 +376,6 @@ jQuery(document).ready( function() {
          candidates.onChangeCandidateCheckbox(function(candidateId){
     })
     candidates.initializeJqueryTabs(defaultTabObj[globalParameters.status], function(event, ui) {
-
-        tickerLock = false;
         var status = candidates.activateStatsTab(event, ui)
         candidates.showShells(status);
         candidates.removeCandidate(status)
@@ -380,6 +390,21 @@ jQuery(document).ready( function() {
         parameters.pageContent = globalParameters.pageContent;
 
         fetchJobApplications(jobId, parameters,recruiterId);
+    });
+
+    candidates.onClickNewPost(function(){
+        var status = globalParameters.status;
+        candidates.showShells(status);
+        candidates.removeCandidate(status)
+        var parameters = filters.getAppliedFilters();
+        parameters.status = globalParameters.status;
+        setQueryParameters(parameters);
+        globalParameters.offset = 0;
+        parameters.offset = globalParameters.offset;
+        parameters.pageContent = globalParameters.pageContent;
+        $(window).scrollTop(0)
+        fetchJobApplications(jobId, parameters,recruiterId);
+        
     })
 
     candidates.onClickDownloadResume(function(applicationId, status){
@@ -1017,8 +1042,6 @@ jQuery(document).ready( function() {
                 filterFlag+= 1;
             }
         }
-
-
         $.when(fetchFiltersCount(recruiterId, jobId, parameters), fetchJobApplicationCount(recruiterId, jobId)).then(function(a,b){
             if(a[0] && b[0] && a[0]["status"] == "success" && b[0]["status"] == "success") {
                 var filtersCount = a[0]['data'];
@@ -1048,18 +1071,28 @@ jQuery(document).ready( function() {
         //     })
         // }
 
-
-        candidates.addToList(data["data"], data.obj.status, globalParameters.offset, globalParameters.pageContent, filterFlag);
+        var dataArray=(data["data"]);
+        dataArray.forEach(function(aData){
+            var applicationId=aData["id"];
+            if(!(store.getCandidateFromStore(applicationId))){
+                newApplication.push(aData);  
+            }
+            else{
+                globalParameters.newApplication=1;
+            }
+        });
+        if(data["offset"] == 0) {
+            store.emptyStore(data["data"]);
+        }
+        store.saveToStore(newApplication);        
+        candidates.addToList(newApplication,data.obj.status, globalParameters.offset, globalParameters.pageContent, filterFlag);
         globalParameters.offset = globalParameters.offset + globalParameters.pageContent;
         var calLength = theJob.getCalendarLength()
         if(!calLength){
             candidates.setInvite(theJob.getCalendarLength())
         }
 
-        if(data["offset"] == 0) {
-            store.emptyStore(data["data"]);
-        }
-        store.saveToStore(data["data"]);
+      
 
     }
 
