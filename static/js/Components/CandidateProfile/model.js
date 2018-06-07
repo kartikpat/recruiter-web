@@ -433,7 +433,7 @@ function Candidate() {
     }
 
     function failCallback() {
-        $(".loaderScrollerResume").addClass("hidden")
+        $(".candidateItem shell").addClass("hidden")
         settings.candidateDetailsModal.find(".js_resume").html("<div class='no-data'>No Resume Found!</div>").removeClass("hidden");
     }
     
