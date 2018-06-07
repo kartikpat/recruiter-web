@@ -433,8 +433,7 @@ function Candidate() {
         item.workSixDays.text(binary[aData["sixDays"]])
         if(isCanvasSupported()) {
             item.resume.addClass("hidden")
-            $(".loaderScrollerResume").removeClass("hidden")
-        	getBinaryData(baseUrl + aData["resume"],function(res){
+           getBinaryData(baseUrl + aData["resume"],function(res){
                 resumeCallback(res, aData["id"])
             }, failCallback);
         }
@@ -519,7 +518,7 @@ function Candidate() {
     }
 
     function failCallback() {
-        $(".loaderScrollerResume").addClass("hidden")
+        $(".candidateResumeShell").addClass("hidden")
         settings.candidateDetailsModal.find(".js_resume").html("<div class='no-data'>No Resume Found!</div>").removeClass("hidden");
     }
 
