@@ -40,7 +40,7 @@ function Candidate() {
         settings.tagArr = [],
         settings.candidateDownloadResume = $(".candidateDownloadResume");
         settings.interviewInvite=$('.interviewinvite')
-        jQuery("#tabbed-content").tabs({
+        jQuery("#tabbed-content0").tabs({
             activate: function(event, ui) {
                 if(ui.newTab[0]["innerText"] == "COVER LETTER") {
                     var eventObj = {
@@ -65,6 +65,7 @@ function Candidate() {
                 }
             }
         });
+        
         initializeTooltip();
         onClickEscapeModal(closeModal);
 
