@@ -681,6 +681,7 @@
 				"static/css/vendor/tooltipster.css",
 				"static/css/vendor/pdf_viewer.css",
 				"static/css/candidateMixin.css",
+				"static/css/animate.css",
 				"static/css/candidate-apply-list.css",
 				"static/css/chat-sticky.css",
 				"static/css/utilities.css",

@@ -74,7 +74,7 @@ function candidateList() {
         settings.tagArr = [],
         settings.status = ''
         settings.url = baseUrl+"/recruiter/"+recruiterId+"/jobs/"+jobId+"/applications/download/excel";
-
+        settings.NewPost=$('.newPost');
         onClickBulkDownArrow()
         onClickMassCheckbox()
         onClickCandidateOtherActions()
@@ -91,6 +91,7 @@ function candidateList() {
         onClickModal()
         closetooltipModal()
         backToTop()
+        onClickNewPost()
         // onEnter()
         settings.rowContainer.on('click', '.moreEducationLink', function(){
             $('div').animate({scrollTop: 1000});
@@ -134,6 +135,21 @@ function candidateList() {
 
         $(".downloadExcelMass").attr('href', settings.url + "?token="+getCookie("recruiter-access-token")+"");
 	}
+
+    function onClickNewPost(){
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > 500) {
+                settings.NewPost.addClass('slideInDown');
+                settings.NewPost.removeClass('hidden');
+            } else {
+                settings.NewPost.addClass('hidden');
+            }
+        });
+        settings.NewPost.click(function(){
+            window.location.reload();
+        })    
+    }
+
 
     function onClickBulkBackIcon() {
         settings.bulkBackIcon.click(function(){

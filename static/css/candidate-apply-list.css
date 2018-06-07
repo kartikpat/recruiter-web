@@ -6041,6 +6041,20 @@ span.sticker {
 .not-allowed {
   cursor: not-allowed !important; }
 
+.newPost {
+  font-size: 15px;
+  position: fixed;
+  z-index: 10;
+  left: 35%;
+  background: #4fa995;
+  margin: 3px;
+  padding: 7px 15px;
+  border-radius: 20px;
+  color: #fff;
+  top: 15px;
+  cursor: pointer;
+  box-shadow: 0px 3px 10px 0px #c3bdbde0; }
+
 .filtersExtraButtons {
   font-size: 13px;
   padding-right: 10px;
