@@ -2151,7 +2151,8 @@ span.sticker {
             background-color: #efefef;
             object-fit: cover; }
         .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information {
-          text-align: center; }
+          text-align: center;
+          padding-bottom: 15px; }
           .view-resume-modal .main-wrapper .main-container .container.resume-header .profile-information p.profile-name {
             font-size: 22px;
             text-align: center;

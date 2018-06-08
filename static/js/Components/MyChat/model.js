@@ -96,6 +96,7 @@ function Chat() {
    function setCandidateProfile(obj) {
        settings.userImg.attr("src", (obj["img"] || "/static/images/noimage.png"));
        settings.userName.text(obj["name"]);
+       settings.userName.attr("href","/candidate/"+obj["userId"]+"/profile");
        settings.userPhone.text(obj["phone"]);
        settings.userDes.text(obj["designation"]);
        settings.userOrg.text(obj["organization"]);

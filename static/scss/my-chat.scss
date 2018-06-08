@@ -102,6 +102,7 @@
 					display:inline-block;
 					vertical-align:top;
 
+					
 					&.user-image {
 						padding-right:10px;
 						img {
@@ -524,7 +525,12 @@
 								color:$color-black;
 							}
 						}
-
+						a{
+							color: #149075
+						}
+						a:hover{
+							text-decoration: underline;
+						}
 						.user-detail {
 							margin:10px 0 0 0;
 
