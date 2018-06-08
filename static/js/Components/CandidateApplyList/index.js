@@ -1066,18 +1066,18 @@ jQuery(document).ready( function() {
         // }
 
         var dataArray=(data["data"]);
+        var newApplication=[];
         dataArray.forEach(function(aData){ 
             var applicationId=aData["id"];
             if(!(store.getCandidateFromStore(applicationId))){
-               return  
+                newApplication.push(aData);
             }
             else{
                 globalParameters.newApplication=1;
             }
         });
-
-        store.saveToStore(dataArray);        
-        candidates.addToList(dataArray,data.obj.status, globalParameters.offset, globalParameters.pageContent, filterFlag);
+        store.saveToStore(newApplication);        
+        candidates.addToList(newApplication,data.obj.status, globalParameters.offset, globalParameters.pageContent, filterFlag);
         globalParameters.offset = globalParameters.offset + globalParameters.pageContent;
         var calLength = theJob.getCalendarLength()
         if(!calLength){
