@@ -2387,6 +2387,7 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
 
 
   .timeline-wrapper{
+	  padding-top: 10px;
     .timeline-item {
         background: #fff;
         border: 1px solid;
@@ -2394,7 +2395,7 @@ _::-webkit-full-page-media, _:future, :root #sortBySelect {
         border-radius: 3px;
         padding: 12px;
         margin: 0 auto;
-        min-height: 200px;
+        min-height: 150px;
     }
 
     @keyframes placeHolderShimmer{

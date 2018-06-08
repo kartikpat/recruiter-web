@@ -2983,6 +2983,7 @@ span.sticker {
   margin-top: 0; }
 
 .timeline-wrapper {
+  padding-top: 10px;
   /* Every thing below this is just positioning */ }
   .timeline-wrapper .timeline-item {
     background: #fff;
@@ -2991,7 +2992,7 @@ span.sticker {
     border-radius: 3px;
     padding: 12px;
     margin: 0 auto;
-    min-height: 200px; }
+    min-height: 150px; }
 
 @keyframes placeHolderShimmer {
   0% {

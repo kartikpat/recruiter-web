@@ -409,6 +409,7 @@ function Candidate() {
         }
 
         if(isCanvasSupported()) {
+            $('.candidateResumeShell').removeClass("hidden"); 
            getBinaryData(baseUrl + aData["resume"],function(res){
                resumeCallback(res, aData["id"])
            }, failCallback);
