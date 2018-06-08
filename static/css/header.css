@@ -861,7 +861,9 @@ b {
     right: 200px;
     top: 0;
     bottom: 0;
-    outline: none; }
+    outline: none;
+    max-width: 1150px;
+    margin: 0 auto; }
     .header .search-container form {
       height: 100%; }
       .header .search-container form .search-box {
