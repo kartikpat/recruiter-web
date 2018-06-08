@@ -529,10 +529,8 @@ function candidateList() {
     function addToList(dataArray, status, offset, pageContent, filterFlag){
         settings.status = status;
 		var str = '';
-
         var element = $(".candidateListing[data-status-attribute='"+status+"']");
         hideShells(status);
-
         if(dataArray.length<1 && offset == 0) {
             if(filterFlag > 0) {
                 return
@@ -1187,6 +1185,7 @@ function candidateList() {
 
     function removeCandidate(status) {
         $(".candidateListing[data-status-attribute='"+status+"']").find(settings.candidateRowClass).remove();
+        // store.emptyStore();
     }
 
     function changeButtonText(arr, newStatus, dataAction) {
