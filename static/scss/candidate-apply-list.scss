@@ -1023,7 +1023,6 @@ input::-webkit-input-placeholder {
 .resume-sidebar{
 	.shortlist-wrapper{
 		@include shortlist-wrapper;
-		width: 48%;
 		padding:0!important;
 		margin: 0%!important;
 		float: left;
@@ -1054,7 +1053,7 @@ input::-webkit-input-placeholder {
 		@include reject-wrapper;
 		padding:0!important;
 		margin: 0%!important;
-		float: right;
+		margin-left: 6px!important;
 		.spinner{
 			margin-top: 6px;
 		}

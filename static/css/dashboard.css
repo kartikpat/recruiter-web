@@ -2191,7 +2191,7 @@ span.sticker {
         margin-right: 10px; }
       .page-content .detail-card .notification-row .action-buttons .candidateShortlist-wrapper {
         height: 30px;
-        width: 103px;
+        width: 100px;
         padding: 0%;
         border: 0;
         background: #149075;
@@ -2227,7 +2227,7 @@ span.sticker {
             color: #FFF !important; }
       .page-content .detail-card .notification-row .action-buttons .candidateReject-wrapper {
         height: 30px;
-        width: 103px;
+        width: 100px;
         padding: 0%;
         border: 0;
         padding: 0;
