@@ -220,14 +220,11 @@ jQuery(document).ready( function() {
         candidates.removeCandidate(globalParameters.status)
         candidates.hideEmptyScreen()
         var parameters = filters.getAppliedFilters();
-        console.log(parameters)
         parameters.status = globalParameters.status;
         setQueryParameters(parameters)
-
         globalParameters.offset = 0;
         parameters.offset = globalParameters.offset;
         parameters.pageContent = globalParameters.pageContent;
-
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
 

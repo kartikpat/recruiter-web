@@ -222,6 +222,7 @@ jQuery(document).ready( function() {
 
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
+  
     filters.onClickRemoveAllFilters(function(){
         var eventObj = {
            event_category: eventMap["clearFilter"]["cat"],
@@ -239,10 +240,10 @@ jQuery(document).ready( function() {
         globalParameters.offset = 0;
         parameters.offset = globalParameters.offset;
         parameters.pageContent = globalParameters.pageContent;
-
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
 
+    
     // candidates.onClickCandidate(function(candidateId, status, applicationId){
     //     var candidateDetails = store.getCandidateFromStore(candidateId);
     //     aCandidate.showCandidateDetails(candidateDetails,"", status);
@@ -399,12 +400,12 @@ jQuery(document).ready( function() {
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
         setQueryParameters(parameters);
+        globalParameters.newApplication=0;
         globalParameters.offset = 0;
         parameters.offset = globalParameters.offset;
         parameters.pageContent = globalParameters.pageContent;
         $(window).scrollTop(0)
-        fetchJobApplications(jobId, parameters,recruiterId);
-        
+        fetchJobApplications(jobId, parameters,recruiterId);     
     })
 
     candidates.onClickDownloadResume(function(applicationId, status){
@@ -1078,6 +1079,7 @@ jQuery(document).ready( function() {
                 newApplication.push(aData);  
             }
             else{
+                console.log(applicationId)
                 globalParameters.newApplication=1;
             }
         });
