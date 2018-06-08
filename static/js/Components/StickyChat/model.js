@@ -5,7 +5,7 @@ function ChatSticky() {
 
    function setConfig(key, value) {
        config[key] = value;
-   }
+    }
 
    function init() {
        settings.isActive= $('#isActive'),
@@ -101,7 +101,6 @@ function ChatSticky() {
 
    function getTimeElement(data) {
        var card = $(".timeSeperator.prototype").clone().removeClass('prototype hidden')
-
        if(moment(data["entry"]["time"]).format("YYYY MM DD") == moment().format("YYYY MM DD")) {
            card.text("Today");
        }
@@ -197,6 +196,7 @@ function ChatSticky() {
    //     settings.mssgContainer.scrollTop(settings.mssgContainer[0].scrollHeight);
    // }
 
+   
    return {
        init: init,
        setConfig : setConfig,

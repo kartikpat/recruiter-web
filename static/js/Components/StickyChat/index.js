@@ -1,5 +1,4 @@
 jQuery(document).ready( function() {
-
     initializePubNub();
     addListeners(onNewMessage, onNewPresence, onNewStatus);
     subscribe(getArray(channelsArray));
@@ -8,8 +7,8 @@ jQuery(document).ready( function() {
     chatSticky.init()
     chatSticky.setProfile(profile)
     chatSticky.addToList(channelsArray);
-
     store.saveToStore(channelsArray);
+    
     chatSticky.onClickSingleChatItem(function(candidateId){
 
         var obj = store.getCandidateFromStore(candidateId)

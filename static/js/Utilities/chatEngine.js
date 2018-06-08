@@ -1,5 +1,4 @@
 function ChatEngine(){
-
 	function initialize(recruiterId, email) {
 	    pubnub = new PubNub({
 		    publishKey:pubKey,// "pub-c-5069ae94-20a5-4328-8281-4e1c630cd6f2",
@@ -26,6 +25,7 @@ function ChatEngine(){
 	        status: onNewStatus
 	    });
 	}
+
 	function subscribe(channelsArray) {
 	    pubnub.subscribe({
 	        channels: channelsArray,
@@ -35,11 +35,13 @@ function ChatEngine(){
 	        reconnect : function() {alert("And we're Back!")}
 	    });
 	}
+
 	function unsubscribe(channelsArray) {
 	    pubnub.unsubscribe({
 	        channels:  getArray(channelsArray)
 	    });
 	}
+
 	function fetchHistory(channel, count, startTimeToken, endTimeToken, onFetchHistory) {
 	    pubnub.history({
 	        channel: channel, //"my_channel",
@@ -50,6 +52,7 @@ function ChatEngine(){
 
 	    }, onFetchHistory);
 	}
+
 	function hereNow(channels) {
 	    pubnub.hereNow({
 	        channels: channels,

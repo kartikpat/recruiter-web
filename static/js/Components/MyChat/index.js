@@ -18,7 +18,6 @@ function getDeviceId() {
 
 jQuery(document).ready( function() {
   var deviceId= getDeviceId();
-
     var chatEngine = ChatEngine(recruiterId, profile.email);
     chatEngine.initialize();
     chatEngine.addListeners(onNewMessage, onNewPresence, onNewStatus);
