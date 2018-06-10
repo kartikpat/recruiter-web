@@ -39,7 +39,8 @@ function Candidate() {
         settings.recommendationListSecond = $(".recommendationListSecond");
         settings.tagArr = [],
         settings.candidateDownloadResume = $(".candidateDownloadResume");
-        settings.interviewInvite=$('.interviewinvite')
+        settings.interviewInvite=$('.interviewinvite');
+        settings.candidateResumeShell=$(".candidateItem shell");
         jQuery("#tabbed-content0").tabs({
             activate: function(event, ui) {
                 if(ui.newTab[0]["innerText"] == "COVER LETTER") {
@@ -519,7 +520,7 @@ function Candidate() {
     }
 
     function failCallback() {
-        $(".candidateResumeShell").addClass("hidden")
+        settings.candidateResumeShell.addClass("hidden")
         settings.candidateDetailsModal.find(".js_resume").html("<div class='no-data'>No Resume Found!</div>").removeClass("hidden");
     }
 

@@ -40,6 +40,7 @@ function Candidate() {
         settings.onClickDownloadResumeButton=$('.candidateDownloadResume.link')
         settings.pageTitle=$('.titlePage');
         settings.interviewInvite=$('.interviewinvite')
+        settings.candidateResumeShell=$(".candidateItem shell");
         initializeTooltip();
         var successMsg = getQueryParameter("type");
         jQuery("#tabbed-content").tabs({
@@ -434,7 +435,7 @@ function Candidate() {
     }
 
     function failCallback() {
-        $(".candidateItem shell").addClass("hidden")
+        settings.candidateResumeShell.addClass("hidden")
         settings.candidateDetailsModal.find(".js_resume").html("<div class='no-data'>No Resume Found!</div>").removeClass("hidden");
     }
     
