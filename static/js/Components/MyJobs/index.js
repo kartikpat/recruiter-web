@@ -131,7 +131,8 @@ jQuery(document).ready( function() {
 	function onSuccessfulPremiumJob(topic, data){
         jobList.hideSpinner("premium")
 		jobList.closeModal()
-		$(".table-row[data-job-id="+data["data"]+"]").find('.job-actions-container .jobRefresh').attr('state','disabled');	
+		jobList.disableRefresh(data["data"]);
+		// $(".table-row[data-job-id="+data["data"]+"]").find('.job-actions-container .jobRefresh').attr('state','disabled');	
 		toastNotify(1, "Job Made Premium Successfully")
 		setTimeout(function(){
 			 location.reload()
