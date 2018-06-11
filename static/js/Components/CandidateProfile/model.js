@@ -411,7 +411,7 @@ function Candidate() {
         if(isCanvasSupported()) {
            getBinaryData(baseUrl + aData["resume"],function(res){
                resumeCallback(res, aData["id"])
-           });
+           }, failCallback);
         }
         else {
            item.resume.html('<iframe src="'+baseUrl + aData["resume"]+'" class="resume-embed" type="application/pdf"></iframe>')
@@ -432,6 +432,11 @@ function Candidate() {
 
     }
 
+    function failCallback() {
+        $(".loaderScrollerResume").addClass("hidden")
+        settings.candidateDetailsModal.find(".js_resume").html("<div class='no-data'>No Resume Found!</div>").removeClass("hidden");
+    }
+    
     function getCandidateTag(aTag) {
         var tag =  settings.candidateTagPrototype.clone().removeClass("prototype hidden");
         tag.find(".tagLabel").text(aTag["name"]);

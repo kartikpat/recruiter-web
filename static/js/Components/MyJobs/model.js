@@ -134,7 +134,10 @@ function Jobs() {
 	function onClickJobRefresh(fn) {
 		settings.rowContainer.on('click', settings.openJobRefreshModalButton,function(e) {
 			e.preventDefault();
-			e.stopPropagation()
+			e.stopPropagation();
+			if($(this).attr("state")=="disabled"){
+				return
+			}
 			if(parseInt($(this).attr("data-job-refreshable"))) {
 				var jobId = $(this).attr("data-job-id");
 				addBodyFixed()
@@ -196,6 +199,10 @@ function Jobs() {
 	function getType(){
 		settings.type = settings.jobFilters.val();
 		return settings.jobFilters.val();
+	}
+
+	function disableRefresh(attr){
+		$(".table-row[data-job-id="+attr+"]").find('.job-actions-container .jobRefresh').attr('state','disabled');	
 	}
 
 	function cloneElement(id) {
@@ -291,7 +298,6 @@ function Jobs() {
 	}
 
 	function createElement(aData) {
-		console.log(aData)
 		var item = cloneElement(aData["id"]);
 		var title = getTitleFormat(aData["title"], (/\(\d+-\d+ \w+\)$/));
 		item.createdOn.text(getDateFormat(aData["created"]))
@@ -300,9 +306,7 @@ function Jobs() {
 		item.title.attr("href", "/job/"+aData["id"]+"/details").addClass("title-link")
 		else
 		item.title.attr("href", "#")
-
 		item.element.find('.action-icon').attr('data-job-id',aData["id"]);
-
 		var loc = aData["location"];
 		var locShow = loc.join(", ");
 		if(loc.length) {
@@ -371,11 +375,12 @@ function Jobs() {
 		if(aData["premium"]) {
 			item.premium.find('.icon-star').addClass('hidden');
 			item.premium.find('.icon-star-2').removeClass("hidden");
-			item.premium.attr('title','This is a premium job and hence cannot be refreshed. For more information, please drop a mail to info@iimjobs.com');
-			item.refresh.addClass('hidden');
-
+			item.premium.attr('title','This is a premium job.');
+			item.refresh.attr({
+				'state':'disabled',
+				'title': "This is a premium job and hence cannot be refreshed. For more information, please drop a mail to info@iimjobs.com"
+			 });
 		}
-
 		if(aData["url"]) {
 			var url = config["baseUrlJob"] + aData["url"];
 			item.facebook.attr("href", getFacebookShareLink(url))
@@ -498,7 +503,8 @@ function Jobs() {
 		getType: getType,
 		showSpinner: showSpinner,
 		hideSpinner: hideSpinner,
-		closeModal: closeModal
+		closeModal: closeModal,
+		disableRefresh:disableRefresh
 	}
 
 	function initializeTooltip() {

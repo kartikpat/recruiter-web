@@ -12,6 +12,10 @@
     }
 }
 
+.error {
+    margin-left: 45px!important;
+}
+
 .seeMoreRec {
     display: inline-block;
     cursor: pointer;
@@ -507,6 +511,7 @@ input::-webkit-input-placeholder {
 
 			.datum {
 				margin-bottom:15px;
+				padding-right: 10px;
 				p {
 					&.data {
 						color:$color-darkgrey;

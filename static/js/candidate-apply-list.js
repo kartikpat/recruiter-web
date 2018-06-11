@@ -7,7 +7,6 @@ function getId() {
 	return viewProfileModal.closest(".candidateDetailsModal").attr("data-application-id");
 }
 function resumeCallback(res, id){
-
     PDFJS.getDocument(res).then(function getPdfHelloWorld(_pdfDoc) {
 
      	var numPages = _pdfDoc.pdfInfo.numPages;

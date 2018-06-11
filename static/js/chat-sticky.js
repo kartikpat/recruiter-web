@@ -147,6 +147,7 @@ function textAreaAdjust(o) {
 }
 
 chatContainer.on('click','.candidate-card', function() {
+    
     var eventObj = {
         event_category: eventMap["viewChatCardClick"]["cat"],
         event_label: 'origin='+origin+',recId='+recruiterId+''
@@ -157,7 +158,8 @@ chatContainer.on('click','.candidate-card', function() {
 		var channelName = $(this).attr("data-channel-name")
 		var chatContainerBox = chatDivBox.clone().removeClass('prototype hidden');
 		chatContainerBox.find(".candidate-name").text($(this).find(".candidate-name").text());
-		// chatContainerBox.find(".last-active-date").text(startTime());
+        chatContainerBox.find(".candidate-name").attr("href","/candidate/"+$(this).attr("data-id")+"/profile");
+        // chatContainerBox.find(".last-active-date").text(startTime());
         chatContainerBox.find(".chat-div-header").attr("data-id",$(this).attr("data-id"));
         
         chatContainerBox.find(".info-buttons .infoIcon").attr("data-id",$(this).attr("data-id"));
@@ -414,6 +416,8 @@ var populateChatView = function(array) {
             card.find(".candidate-image img").attr("src",(aCandidate["img"] || "/static/images/noimage.png"));
             card.attr("data-id",aCandidate["userId"]);
             card.find(".candidate-name").text(aCandidate["name"]);
+            // card.find(".candidate-name").attr("href","/candidate/"+aCandidate.Id+"/profile");
+          
             // card.find(".profileLink").attr("href","link")
             card.find(".candidate-designation").text(aCandidate["designation"]);
 
@@ -576,7 +580,6 @@ function openChat(m) {
 		chatContainerBox.find(".info-buttons .closeIcon").attr("data-id",dataID);
 		chatContainerBox.attr("data-id",dataID);
         var obj = getCandidateFromStore(dataID)
-        chatContainerBox.find(".candidate-name").attr("href","link");
         chatContainerBox.find(".candidate-name").text(obj["name"]);
         chatContainerBox.attr("data-channel-name",channelName);
         chatContainerBox.find(".info-container img").attr("src", (obj["img"] || "/static/images/noimage.png"))
@@ -686,6 +689,7 @@ function receivePresence(p) {
 }
 
 function cloneStickyChat(array,recruiterId, jobId, applicationId) {
+    
     if((chatContainer.find('.candidate-card[data-id='+array[0]["userID"]+']').hasClass("selected-sticky"))) {
         return
     }
@@ -751,6 +755,7 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
                     clonedElement.attr("data-id",dataIdLocal);
                     clonedElement.html($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").find(".candidate-name").text()+"<i data-id="+dataIdLocal+" class='icon-cross_icon' aria-hidden='true'></i>");
                     $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").addClass("hidden");
+                  
                     if($(".chat-collapsed-candidate-container").hasClass("hidden")) {
                         $(".chat-collapsed-candidate-container").removeClass("hidden");
                     }
@@ -775,7 +780,8 @@ function cloneStickyChat(array,recruiterId, jobId, applicationId) {
         var channelName = "iimjobs--r"+recruiterId+"-j"+array[0]["userID"]+"";
         var chatContainerBox = chatDivBox.clone().removeClass('prototype hidden');
         chatContainerBox.find(".candidate-name").text(array[0]["name"]);
-        chatContainerBox.find(".candidate-name").attr("href","link");
+        
+        // chatContainerBox.find(".candidate-name").attr("href","/candidate/"+aCandidate.Id+"/profile");    
         // chatContainerBox.find(".last-active-date").text(startTime());
         chatContainerBox.find(".chat-div-header").attr("data-id",array[0]["userID"]);
         chatContainerBox.find(".info-buttons .infoIcon").attr("data-id",array[0]["userID"]);

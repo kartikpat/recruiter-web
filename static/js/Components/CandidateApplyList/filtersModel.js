@@ -777,13 +777,25 @@ function Filters(){
 				}
 				maxValue = parseInt(filtersTarget[name]["props"][key]['target'].val());
 			}
-			if(minValue != -1 && maxValue != -1 && maxValue < minValue) {
-				element.next(".error-field").text(errorResponses['invalid'+element.attr('id')]).removeClass("hidden");
-				return false
+			if(name=="experience"){
+				if(minValue != -1 && maxValue != -1 && maxValue < minValue) {
+					element.next(".error-field").text(errorResponses['invalid'+element.attr('id')]).removeClass("hidden");
+					return false
+				}
+				else {
+					element.next(".error-field").addClass("hidden");
+					return true
+				}
 			}
-			else {
-				element.next(".error-field").addClass("hidden");
-				return true
+			else{
+				if(minValue != -1 && maxValue != -1 && maxValue <= minValue) {
+					element.next(".error-field").text(errorResponses['invalid'+element.attr('id')]).removeClass("hidden");
+					return false
+				}
+				else {
+					element.next(".error-field").addClass("hidden");
+					return true
+				}
 			}
 		}
 		return true
