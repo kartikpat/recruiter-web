@@ -36,7 +36,6 @@ jQuery(document).ready( function() {
         chatEngine.fetchHistory(obj.channel , globalParameters.messageNumber , null, null, function(data,response){
             onFetchHistory(data, response, obj)
         });
-
     })
 
     var candidateId = getQueryParameter("candidateId");
@@ -148,7 +147,6 @@ jQuery(document).ready( function() {
    }
 
    function onNewStatus(s) {
-
        // handle status
        var category = s.category; // PNConnectedCategory
        var operation = s.operation; // PNSubscribeOperation
@@ -187,7 +185,7 @@ jQuery(document).ready( function() {
            globalParameters.clicked = 0;
        }
    }
-
+   
    var ticker;
    $(".current-chat").scroll(function(){
        clearTimeout(ticker);

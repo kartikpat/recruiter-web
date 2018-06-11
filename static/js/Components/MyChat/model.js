@@ -106,7 +106,7 @@ function Chat() {
        }
    }
 
-   function onClickSingleChatItem(fn) {
+   function onClickSingleChatItem(fn){
        settings.conversationItemList.on('click', settings.conversationItemClass, function(){
 
            $(settings.conversationItemClass).removeClass("conversation-item-active")
@@ -172,7 +172,6 @@ function Chat() {
    }
 
    function populateMessages(dataArray) {
-
         var str = ""
         var flag = 1;
         dataArray.forEach(function(elem, index){

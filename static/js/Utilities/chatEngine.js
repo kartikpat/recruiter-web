@@ -84,6 +84,7 @@ function ChatEngine(){
 	        } // publish extra meta with the request
 	    }, onPublish)
 	}
+	
 	return {
 		initialize: initialize,
 		addListeners: addListeners,

@@ -1,4 +1,4 @@
-function Store (){
+function StoreModule (){
 	var store = {}
 
 	function saveToStore(dataArray){
