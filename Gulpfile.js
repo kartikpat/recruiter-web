@@ -14,6 +14,8 @@ var uglifycss = require("gulp-uglifycss");
 var concat = require('gulp-concat');
 var staticMapper = require("./asset-mapper.json");
 var uglify = require('gulp-uglify');
+const pump = require('pump');
+
 var gulpDebug = require('gulp-debug');
 const config = require("./configuration.json");
 
@@ -46,7 +48,6 @@ gulp.task('build-css', async function(done){
 	}
 	try{
 		await Promise.all(promiseArray);
-		console.log('done')
 		done();
 	}catch(err){
 		console.log(err);
@@ -61,19 +62,32 @@ gulp.task('build-js', async function(done){
 	var count =0;
 	for(var key in staticMapper){
 		promiseArray.push(buildSingleJs(key,count));
-		console.log(cached.caches);
 		count++;
 	}
 	try{
 		await Promise.all(promiseArray);
 		done();
 	}catch(err){
-		console.log(err);
+		log.error(err);
 	};
 });
 
 
 function buildSingleJs(staticMapperElement, i){
+	return new Promise(function(resolve, reject){
+		return pump([ 
+			gulp.src(getAssetsArray(staticMapper[staticMapperElement]["scripts"]["debug"])),
+			uglify(),
+			concat(staticMapper[staticMapperElement]["scripts"]["prod"][0]),
+			gulp.dest('testingBuild')
+		], function(err){
+			if(err)
+				return reject(err);
+			return resolve();
+		});
+	})
+	/** ignore. the logic to build js without pump */
+	/*
 	return new Promise(function(resolve, reject){
 		return gulp.src(getAssetsArray(staticMapper[staticMapperElement]["scripts"]["debug"]))
 		// .pipe(gulpDebug({title: "set-"+i+"-step-1"}))
@@ -89,11 +103,9 @@ function buildSingleJs(staticMapperElement, i){
 		.on('error', notify.onError("Error: <%= error.message %>"))
 		.pipe(gulp.dest('testingBuild'))
 		.on('end', function(){
-			console.log('hey')
 			resolve();
 		})
-
-	})
+	})*/
 }
 
 gulp.task('test-hi', async function(){
