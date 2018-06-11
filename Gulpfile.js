@@ -76,16 +76,16 @@ function buildSingleJs(staticMapperElement){
 	console.log(getAssetsArray(staticMapper[staticMapperElement]["scripts"]["debug"]))
 	return new Promise(function(resolve, reject){
 		return gulp.src(getAssetsArray(staticMapper[staticMapperElement]["scripts"]["debug"]))
-		// .pipe(gulpDebug())
-		// .pipe(cached('scripts'))
+		.pipe(gulpDebug())
+		.pipe(cached('scripts'))
 		.on('error', notify.onError("Error: <%= error.message %>"))
-		// .pipe(remember('scripts'))
+		.pipe(remember('scripts'))
 		.on('error', notify.onError("Error: <%= error.message %>"))
 		.pipe(concat(staticMapper[staticMapperElement]["scripts"]["prod"][0]))
 		.on('error', notify.onError("Error: <%= error.message %>"))
 		.pipe(gulp.dest('testingBuild'))
 		.on('end', function(){
-			notify('Concatenated scripts for ' + staticMapper[staticMapperElement]["scripts"]["prod"][0] + ' (' + moment().format('MMM Do h:mm:ss A') + ')');
+			console.log('hey')
 			resolve();
 		})
 
