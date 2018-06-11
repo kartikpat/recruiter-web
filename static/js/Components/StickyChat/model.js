@@ -25,10 +25,8 @@ function stickyChatModule(){
     function getDeviceId() {
         var text = "";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    
         for (var i = 0; i < 20; i++)
             text += possible.charAt(Math.floor(Math.random() * possible.length));
-    
         return "web"+text+Date.now();
     }
 
@@ -69,6 +67,7 @@ function stickyChatModule(){
                 maxCandidateChats = 3
             }
         }
+
         closeCollapsedSidebarChat();
         closeCollapsedStickyChat();
         onClickCandNameStopEvent();
@@ -76,6 +75,7 @@ function stickyChatModule(){
         onClickCloseSidebarChat();
         onClickInfoIcon();
         onFocusChatMessage();
+        onClickStickyChat();
         
         $(settings.chatDivHeader).click(function() {
             $(this).find(".minusIcon").toggleClass("active")
@@ -92,7 +92,7 @@ function stickyChatModule(){
         }
 
         if(window.innerWidth > 768 && window.innerWidth <= 1024 ){
-            $(".chat-div").removeClass("hidden")
+            $(settings.chatDiv).removeClass("hidden")
         }
     }    
 
@@ -245,7 +245,30 @@ function stickyChatModule(){
                 }
                 reposition_chat_windows();
                 that.addClass("selected-sticky");
-                fn(channelName,messageNumber);
+                fetchHistory(channelName, messageNumber , null, null, function(status, response) {
+                    var str = ""
+                    response["messages"].forEach(function(elem, index){
+                        if(index == 0 || (index > 0 && (moment(response["messages"][index - 1]["entry"]["time"]).format("DD MM YYYY") != moment(elem["entry"]["time"]).format("DD MM YYYY"))) ) {
+                            var item = getTimeElement(elem)
+                            str+=item[0].outerHTML;
+                        }
+                        if(elem["entry"]["UUID"] == btoa(recruiterId+'--'+recruiterEmail) ) {
+    
+                            var item = getMsgSentElement(elem)
+                            str+=item[0].outerHTML;
+                        }
+                        else {
+                            var item = getMsgReceivedElement(elem)
+                            str+=item[0].outerHTML;
+                        }
+                    })
+    
+                    $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").prepend(str)
+                    $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content").attr("data-startTime", response.startTimeToken )
+                    $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content").attr("data-endTime", response.endTimeToken)
+                    initializeTooltip()
+                    scrollToBottom(channelName)
+                });
             }
         })
     }
@@ -1016,6 +1039,16 @@ function stickyChatModule(){
             } // publish extra meta with the request
         }, onPublish)
     }
+
+    function fetchHistory(channel, count,startTimeToken, endTimeToken, onFetchHistory) {
+        pubnub.history({
+            channel: channel, //"my_channel",
+            count: count,
+            stringifiedTimeToken: true,
+            start: startTimeToken,
+            end: endTimeToken
+        }, onFetchHistory);
+    }
     
     return{
         init:init,
@@ -1025,7 +1058,6 @@ function stickyChatModule(){
         receiveMessage:receiveMessage,
         receivePresence:receivePresence,
         onClickSidebarChat:onClickSidebarChat,
-        onClickStickyChat:onClickStickyChat,
         populateMessages:populateMessages,
         getCandidateFromStore:getCandidateFromStore
     }

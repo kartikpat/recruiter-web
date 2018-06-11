@@ -8,12 +8,6 @@ $(document).ready(function(){
     stickyChat.init();   
     fetchRecruiterChats(recruiterId)
 
-    stickyChat.onClickStickyChat(function(channelName,messageNumber,dataID){
-        var obj = stickyChat.getCandidateFromStore(dataID)
-        chatEngine.fetchHistory(channelName,messageNumber, null, null, function(data,response){
-            onFetchHistory(data, response,obj,channelName)
-        });
-    })
 
     stickyChat.onClickSidebarChat(function(channelName,messageNumber,dataID){
         var obj = stickyChat.getCandidateFromStore(dataID)
