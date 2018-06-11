@@ -7,6 +7,7 @@ function getId() {
 	return viewProfileModal.closest(".candidateDetailsModal").attr("data-application-id");
 }
 function resumeCallback(res, id){
+    
     PDFJS.getDocument(res).then(function getPdfHelloWorld(_pdfDoc) {
 
      	var numPages = _pdfDoc.pdfInfo.numPages;
@@ -34,8 +35,7 @@ function resumeCallback(res, id){
                 };
                 var renderTask = page.render(renderContext);
                 renderTask.then(function () {
-                  console.log('Page rendered');
-				  $(".loaderScrollerResume").addClass("hidden")
+                $(".candidateResumeShell").addClass("hidden")
 				  viewProfileModal.removeClass("hidden");
                 });
          });
@@ -44,7 +44,6 @@ function resumeCallback(res, id){
   		// PDF loading error
   		console.log(reason);
 		viewProfileModal.html("<div class='no-data'>No Resume Found!</div>")
-		$(".loaderScrollerResume").addClass("hidden")
 		viewProfileModal.removeClass("hidden");
 	})
 }

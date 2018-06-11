@@ -179,11 +179,6 @@ function candidateList() {
         hideShell()
         console.log(pageContent)
         console.log(offset)
-        console.log("..............................")
-        if(!dataArray.length) {
-            settings.emptyScreen.removeClass('hidden');
-            return
-       }
        var str = '';
        var count=0;
        dataArray.forEach(function(aData, index){
@@ -212,10 +207,11 @@ function candidateList() {
    }
 
    function setHeader(count, str) {
-       console.log(count)
        settings.resultCount.text(count)
        settings.queryParam.text(decodeURI(str))
-   }
+       if(count==0)
+        settings.emptyScreen.removeClass('hidden'); 
+    }
 
 
    return {

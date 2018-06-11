@@ -172,7 +172,8 @@
 		bookedSlotsShell: 'shells/booked-slots-shell',
 		massResumeShell: 'shells/mass-resume-shell',
 		dashboardShell: 'shells/dashboard-shell',
-		chatSticky: 'chat-sticky'
+		chatSticky: 'chat-sticky',
+		candidateResumeShell:'shells/candidate-resume-shell'
 	});
 	
 	app.set('view engine', 'html');

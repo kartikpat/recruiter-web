@@ -40,6 +40,7 @@ function Candidate() {
         settings.onClickDownloadResumeButton=$('.candidateDownloadResume.link')
         settings.pageTitle=$('.titlePage');
         settings.interviewInvite=$('.interviewinvite')
+        settings.candidateResumeShell=$(".candidateItem shell");
         initializeTooltip();
         var successMsg = getQueryParameter("type");
         jQuery("#tabbed-content").tabs({
@@ -409,6 +410,7 @@ function Candidate() {
         }
 
         if(isCanvasSupported()) {
+            $('.candidateResumeShell').removeClass("hidden"); 
            getBinaryData(baseUrl + aData["resume"],function(res){
                resumeCallback(res, aData["id"])
            }, failCallback);
@@ -433,7 +435,7 @@ function Candidate() {
     }
 
     function failCallback() {
-        $(".loaderScrollerResume").addClass("hidden")
+        settings.candidateResumeShell.addClass("hidden")
         settings.candidateDetailsModal.find(".js_resume").html("<div class='no-data'>No Resume Found!</div>").removeClass("hidden");
     }
     

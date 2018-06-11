@@ -2483,6 +2483,10 @@ span.sticker {
               color: #149075; }
             .page-content .chat-container .chat-body .user-profile .user-item.user-info p.user-organization {
               color: #333; }
+          .page-content .chat-container .chat-body .user-profile .user-item.user-info a {
+            color: #149075; }
+          .page-content .chat-container .chat-body .user-profile .user-item.user-info a:hover {
+            text-decoration: underline; }
           .page-content .chat-container .chat-body .user-profile .user-item.user-info .user-detail {
             margin: 10px 0 0 0; }
             .page-content .chat-container .chat-body .user-profile .user-item.user-info .user-detail p {
