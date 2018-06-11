@@ -69,8 +69,6 @@ function stickyChatModule(){
                 maxCandidateChats = 3
             }
         }
-        onClickStickyChat();
-        onClickSidebarChat();
         closeCollapsedSidebarChat();
         closeCollapsedStickyChat();
         onClickCandNameStopEvent();
@@ -104,8 +102,6 @@ function stickyChatModule(){
         })
     }
 
-    console.log(chatStore);
-    // console.log("///////////////////")
     function getCandidateFromStore(candidateId){
         return chatStore[candidateId]
     }
@@ -249,34 +245,35 @@ function stickyChatModule(){
                 }
                 reposition_chat_windows();
                 that.addClass("selected-sticky");
-                fetchHistory(channelName, messageNumber , null, null, function(status, response) {
-                    var str = ""
-                    response["messages"].forEach(function(elem, index){
-                        if(index == 0 || (index > 0 && (moment(response["messages"][index - 1]["entry"]["time"]).format("DD MM YYYY") != moment(elem["entry"]["time"]).format("DD MM YYYY"))) ) {
-                            var item = getTimeElement(elem)
-                            str+=item[0].outerHTML;
-                        }
-                        if(elem["entry"]["UUID"] == btoa(recruiterId+'--'+recruiterEmail) ) {
-    
-                            var item = getMsgSentElement(elem)
-                            str+=item[0].outerHTML;
-                        }
-                        else {
-                            var item = getMsgReceivedElement(elem)
-                            str+=item[0].outerHTML;
-                        }
-                    })
-                    $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").prepend(str)
-                    $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content").attr("data-startTime", response.startTimeToken )
-                    $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content").attr("data-endTime", response.endTimeToken)
-                    initializeTooltip()
-                    scrollToBottom(channelName)
-                });
-    
+                fn(channelName,messageNumber);
             }
         })
     }
     
+    function populateMessages(response,obj,channelName){
+        var dataArray=response.messages;
+        var str = ""
+        dataArray.forEach(function(elem, index){
+            if(index == 0 || (index > 0 && (moment(dataArray[index - 1]["entry"]["time"]).format("DD MM YYYY") != moment(elem["entry"]["time"]).format("DD MM YYYY"))) ) {
+                var item = getTimeElement(elem)
+                str+=item[0].outerHTML;
+            }
+            if(elem["entry"]["UUID"] == btoa(recruiterId+'--'+recruiterEmail) ) {
+
+                var item = getMsgSentElement(elem)
+                str+=item[0].outerHTML;
+            }
+            else {
+                var item = getMsgReceivedElement(elem)
+                str+=item[0].outerHTML;
+            }
+        })
+        $(".chat-candidate-boxes .chat-div-candidate[data-id="+obj+"] .content-footer-container .chat-div-content ul").prepend(str)
+        $(".chat-candidate-boxes .chat-div-candidate[data-id="+obj+"] .content-footer-container .chat-div-content").attr("data-startTime", response.startTimeToken )
+        $(".chat-candidate-boxes .chat-div-candidate[data-id="+obj+"] .content-footer-container .chat-div-content").attr("data-endTime", response.endTimeToken)
+        initializeTooltip()
+        scrollToBottom(channelName)
+    }
 
 
     function onClickSidebarChat(fn){
@@ -355,30 +352,7 @@ function stickyChatModule(){
                 }
                 reposition_chat_windows();
                 that.addClass("selected");
-                fetchHistory(channelName, messageNumber , null, null, function(status, response) {
-                    var str = ""
-                    response["messages"].forEach(function(elem, index){
-                        if(index == 0 || (index > 0 && (moment(response["messages"][index - 1]["entry"]["time"]).format("DD MM YYYY") != moment(elem["entry"]["time"]).format("DD MM YYYY"))) ) {
-                            var item = getTimeElement(elem)
-                            str+=item[0].outerHTML;
-                        }
-                        if(elem["entry"]["UUID"] == btoa(recruiterId+'--'+recruiterEmail) ) {
-    
-                            var item = getMsgSentElement(elem)
-                            str+=item[0].outerHTML;
-                        }
-                        else {
-                            var item = getMsgReceivedElement(elem)
-                            str+=item[0].outerHTML;
-                        }
-                    })
-                    $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").prepend(str)
-                    $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content").attr("data-startTime", response.startTimeToken )
-                    $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content").attr("data-endTime", response.endTimeToken)
-                    initializeTooltip()
-                    scrollToBottom(channelName)
-                });
-    
+                fn(channelName,messageNumber,dataID);
             }
         })
     }
@@ -552,7 +526,6 @@ function stickyChatModule(){
     function receiveMessage(m) {
         var msg = m.message;
         if(deviceId == msg['deviceId']){
-            // debugger
             return
         }
         openChat(m)
@@ -649,6 +622,8 @@ function stickyChatModule(){
             reposition_chat_windows();
             $(settings.conversationListing).find(".conversationItem[data-id="+dataID+"]").addClass("selected")
             chatContainer.find('.candidate-card[data-id='+dataID+']').addClass("selected-sticky");
+           
+           
             fetchHistory(channelName, 20 , null, null, function(status, response) {
             
                 var str = ""
@@ -684,6 +659,10 @@ function stickyChatModule(){
     }
 
 
+    function getUUID() {
+        return pubnub.getUUID();
+    }
+
     function receivePresence(p) {
         if(p["action"] == "join" && p["occupancy"] >= 2 && p["uuid"] != getUUID()) {
             $(".chat-div .chat-div-content .candidate-card[data-channel-name="+p.channel+"] .candidate-status").removeClass("hidden")
@@ -695,8 +674,7 @@ function stickyChatModule(){
         }
     }
     
-    function cloneStickyChat(array,recruiterId, jobId, applicationId) {
-        
+    function cloneStickyChat(array,recruiterId, jobId, applicationId) { 
         if((chatContainer.find('.candidate-card[data-id='+array[0]["userID"]+']').hasClass("selected-sticky"))) {
             return
         }
@@ -1026,19 +1004,8 @@ function stickyChatModule(){
             theme: 'tooltipster-borderless'
         })
     }
-
-    function fetchHistory(channel, count,startTimeToken, endTimeToken, onFetchHistory) {
-        pubnub.history({
-            channel: channel, //"my_channel",
-            count: count,
-            stringifiedTimeToken: true,
-            start: startTimeToken,
-            end: endTimeToken
-        }, onFetchHistory);
-    }
     
     function publish(message, channel, onPublish) {
-        console.log(message);
         pubnub.publish({
             message: message,
             channel: channel,
@@ -1054,11 +1021,13 @@ function stickyChatModule(){
         init:init,
         populateChatView:populateChatView,
         populateSideChatView:populateSideChatView,
-        onClickSidebarChat:onClickSidebarChat,
         saveToStore:saveToStore,
         receiveMessage:receiveMessage,
-        receivePresence:receivePresence
-
+        receivePresence:receivePresence,
+        onClickSidebarChat:onClickSidebarChat,
+        onClickStickyChat:onClickStickyChat,
+        populateMessages:populateMessages,
+        getCandidateFromStore:getCandidateFromStore
     }
 
 }

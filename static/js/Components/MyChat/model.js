@@ -172,6 +172,7 @@ function Chat() {
    }
 
    function populateMessages(dataArray) {
+
         var str = ""
         var flag = 1;
         dataArray.forEach(function(elem, index){
