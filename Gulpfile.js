@@ -58,9 +58,11 @@ gulp.task('build-css', async function(done){
 gulp.task('build-js', async function(done){
 	log('building minified js')
 	var promiseArray = [];
+	var count =0;
 	for(var key in staticMapper){
-		promiseArray.push(buildSingleJs(key));
+		promiseArray.push(buildSingleJs(key,count));
 		console.log(cached.caches);
+		count++;
 	}
 	try{
 		await Promise.all(promiseArray);
@@ -71,15 +73,17 @@ gulp.task('build-js', async function(done){
 });
 
 
-function buildSingleJs(staticMapperElement){
-	console.log(staticMapperElement);
-	console.log(getAssetsArray(staticMapper[staticMapperElement]["scripts"]["debug"]))
+function buildSingleJs(staticMapperElement, i){
 	return new Promise(function(resolve, reject){
 		return gulp.src(getAssetsArray(staticMapper[staticMapperElement]["scripts"]["debug"]))
-		.pipe(gulpDebug())
-		.pipe(cached('scripts'))
+		// .pipe(gulpDebug({title: "set-"+i+"-step-1"}))
+		// .pipe(cached('scripts'))
 		.on('error', notify.onError("Error: <%= error.message %>"))
-		.pipe(remember('scripts'))
+		// .pipe(gulpDebug({title: "set-"+i+"-step-2-passed-through cached"}))
+		// .pipe(remember(staticMapperElement))
+		// .pipe(gulpDebug({title: "set-"+i+"-step-3-passed-through-remember"}))
+		.on('error', notify.onError("Error: <%= error.message %>"))
+		.pipe(uglify())
 		.on('error', notify.onError("Error: <%= error.message %>"))
 		.pipe(concat(staticMapper[staticMapperElement]["scripts"]["prod"][0]))
 		.on('error', notify.onError("Error: <%= error.message %>"))
@@ -95,7 +99,7 @@ function buildSingleJs(staticMapperElement){
 gulp.task('test-hi', async function(){
 	// await buildSingleJs("job-details");
 	// await buildSingleJs("reset-password");
-	await Promise.all([buildSingleJs("job-details"),buildSingleJs("reset-password")])
+	await Promise.all([buildSingleJs("job-details",1),buildSingleJs("reset-password", 2)])
 
 	return
 })
