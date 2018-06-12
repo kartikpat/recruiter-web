@@ -4,19 +4,75 @@ $(document).ready(function(){
     var chatEngine = ChatEngine(recruiterId, profile.email);
     chatEngine.initialize();
     chatEngine.addListeners(onNewMessage, onNewPresence, onNewStatus);
-    var stickyChat=stickyChatModule();
+    var stickyChat=stickyChatModel();
     stickyChat.init();   
     fetchRecruiterChats(recruiterId)
 
-
     stickyChat.onClickSidebarChat(function(channelName,messageNumber,dataID){
+        var eventObj = {
+            event_category: eventMap["viewChatCardClick"]["cat"],
+            event_label: 'origin='+origin+',recId='+recruiterId+''
+        }
+        sendEvent(eventMap["viewChatCardClick"]["event"], eventObj)
         var obj = stickyChat.getCandidateFromStore(dataID)
         chatEngine.fetchHistory(channelName,messageNumber, null, null, function(data,response){
             onFetchHistory(data, response,dataID,obj,channelName)
         });
     })
 
+    stickyChat.onClickStickyChat(function(channelName,messageNumber,dataID){
+        var eventObj = {
+            event_category: eventMap["viewChatCardClick"]["cat"],
+            event_label: 'origin='+origin+',recId='+recruiterId+''
+        }
+        sendEvent(eventMap["viewChatCardClick"]["event"], eventObj);
+        var obj = stickyChat.getCandidateFromStore(dataID)
+        chatEngine.fetchHistory(channelName,messageNumber, null, null, function(data,response){
+            onFetchHistory(data, response,dataID,obj,channelName)
+        });
+    })
+
+    stickyChat.displayAMessage(function(){
+        var t = Date.now();
+        
+        chatEngine.publish({
+            UUID:uuid || btoa(recruiterId+'--'+profile["email"]),
+            deviceId: deviceId,
+            time: t,
+            usr: recruiterId,
+            name: profile["name"],
+            tt:1,
+            msg: message,
+            img: profile["pic"],
+            type: 1,
+
+        }, channelName, function(status,response){
+
+            if(status.statusCode == 200) {
+                chat.appendSendMessage(message, profile["pic"], t)
+            }
+            else if (status.category == "PNNetworkIssuesCategory") {
+                var data = {}     
+                data.message = "Looks like you are not connected to the internet"
+                toastNotify(3, data.message)
+            }
+
+        });
+        submitChatMessage({
+          channel: channelName,
+          senderName: profile['name'],
+          senderOrganization: profile["organisation"],
+          timestamp: Date.now(),
+          text: message
+      })
+    })
+
     function onFetchHistory(data, response,obj,channelName) {
+        console.log(channelName)
+        console.log(data)
+        console.log(response)
+        console.log(obj)
+        console.log("i am here")
         stickyChat.populateMessages(response,obj,channelName.channel)
     }
 
