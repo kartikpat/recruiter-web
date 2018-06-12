@@ -18,29 +18,34 @@ $(document).ready(function(){
     var stickyChat=stickyChatModel();
     stickyChat.init();   
     fetchRecruiterChats(recruiterId)
-    
     stickyChat.onClickSidebarChat(function(channelName,messageNumber,dataID,startTime){
         var eventObj = {
             event_category: eventMap["viewChatCardClick"]["cat"],
             event_label: 'origin='+origin+',recId='+recruiterId+''
         }
         sendEvent(eventMap["viewChatCardClick"]["event"], eventObj)
+        if(!startTime){
+            var scroll=0;
+        }
         var obj = stickyChat.getCandidateFromStore(dataID)
         chatEngine.fetchHistory(channelName,messageNumber,startTime, null, function(data,response){
-            onFetchHistory(response,obj,channelName)
+            onFetchHistory(response,obj,channelName,scroll)
         });
     })
 
 
-    stickyChat.onClickStickyChat(function(channelName,messageNumber,dataID){
+    stickyChat.onClickStickyChat(function(channelName,messageNumber,dataID,startTime){
         var eventObj = {
             event_category: eventMap["viewChatCardClick"]["cat"],
             event_label: 'origin='+origin+',recId='+recruiterId+''
         }
         sendEvent(eventMap["viewChatCardClick"]["event"], eventObj);
+        if(!startTime){
+            var scroll=0;
+        }
         var obj = stickyChat.getCandidateFromStore(dataID)
-        chatEngine.fetchHistory(channelName,messageNumber, null, null, function(data,response){
-            onFetchHistory(response,obj,channelName)
+        chatEngine.fetchHistory(channelName,messageNumber,startTime, null, function(data,response){
+            onFetchHistory(response,obj,channelName,scroll)
         });
     })
 
@@ -83,8 +88,8 @@ $(document).ready(function(){
             })        
     })
 
-    function onFetchHistory(response,obj,channelName) {
-        stickyChat.populateMessages(response,obj,channelName)
+    function onFetchHistory(response,obj,channelName,scroll) {
+        stickyChat.populateMessages(response,obj,channelName,scroll)
     }
 
     function onFetchRecruiterChats(topic, data) {

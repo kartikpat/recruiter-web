@@ -250,7 +250,7 @@ function stickyChatModel(){
         });
     }
     
-    function populateMessages(response,obj,channelName){
+    function populateMessages(response,obj,channelName,scroll){
         var dataArray=response.messages;
         var dataId=obj.userId;
         var str = ""
@@ -273,6 +273,9 @@ function stickyChatModel(){
         $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataId+"] .content-footer-container .chat-div-content").attr("data-startTime", response.startTimeToken )
         $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataId+"] .content-footer-container .chat-div-content").attr("data-endTime", response.endTimeToken)
         initializeTooltip()
+        console.log(scroll)
+        console.log(",,,.,,.,")
+        if(scroll==0)
         scrollToBottom(channelName)
     }
 
