@@ -107,7 +107,6 @@ jQuery(document).ready( function() {
     }
 
    function onNewMessage(m) {
-
        var actualChannel = m.actualChannel;
        var channelName = m.channel; // The channel for which the message belongs
        var msg = m.message; // The Payload
