@@ -25,7 +25,6 @@ function stickyChatModel(){
         return "web"+text+Date.now();
     }
 
-
     function init(){
         settings.chatCollapsedContainer=$(".chat-collapsed-candidate-container");
         settings.conversationListingContainer=$('#conversationListingContainer');
@@ -167,12 +166,11 @@ function stickyChatModel(){
     }
     
     function textAreaAdjust(o) {
+        
         if(o.scrollHeight == 35 || o.scrollHeight > 75) {
             return
         }
-
         o.style.height = (o.scrollHeight + 2) + "px";
-
         $(o).closest(settings.footerContainer).find(settings.chatDivContnet).height(293 - (o.scrollHeight));
     }
 
@@ -240,22 +238,19 @@ function stickyChatModel(){
 
 
     function onEnterSendMessage(fn){
-        $('.chat-candidate-boxes').on("keydown",'.chat-div-candidate',function(e){
+        $('.chat-candidate-boxes').on("keydown",'.chat-div-candidate .chat-input',function(e){
             var dataID=$(this).attr("data-id");
             var channelName=$(this).attr("data-channel-name");
-            var elem=($(this).find(".chat-input"));
             if (e.which == 13) {
                 e.preventDefault();
-                var value=$(this).find(".chat-input").val();
+                var value=$(".chat-input").val();
                 fn(dataID,channelName,value)
             }else if (e.which == 13 && !e.shiftKey) {
                 fn(dataID,channelName,value)
             }else if (e.which == 13 && e.shiftKey) {
-                textAreaAdjust(elem);
-                console.log("here")
+                textAreaAdjust(this);
             } else {
-                textAreaAdjust(elem);
-                console.log("here too")
+                textAreaAdjust(this);
             }
         });
     }
@@ -301,7 +296,6 @@ function stickyChatModel(){
                 chatContainerBox.attr("data-id",$(this).attr("data-id"));
                 var dataID = $(this).attr("data-id");
                 var obj = getCandidateFromStore(dataID)
-
                 chatContainerBox.find('.candidate-name').attr("href","/candidate/"+obj.userId+"/profile");
                 chatContainerBox.attr("data-channel-name",channelName);
                 chatContainerBox.find(settings.infoImg).attr("src", (obj["img"] || "/static/images/noimage.png"))
@@ -314,19 +308,6 @@ function stickyChatModel(){
                 }
                 chatContainerBox.find(settings.chatInput).attr("data-channel-name", channelName)
                 chatContainerBox.find(settings.chatInput).attr("data-id",$(this).attr("data-id") );
-                // chatContainerBox.find(settings.chatInput).on("keydown", function(e) {
-                //     if (e.which == 13) {
-                //         e.preventDefault();
-                //         sendMessage(this)
-                //     } else if (e.which == 13 && !e.shiftKey) {
-                //         sendMessage(this)
-                //     } else if (e.which == 13 && e.shiftKey) {
-                //         textAreaAdjust(this);
-                //     } else {
-                //         textAreaAdjust(this);
-                //     }
-    
-                // });
                 chatContainerBox.find(".no-start").removeClass("hidden")
                 chatContainerBox.find(".start").addClass("hidden")
                 var that = $(this)
@@ -471,15 +452,6 @@ function stickyChatModel(){
         })    
     }
 
-    // function receiveMessage(m) {
-    //     var msg = m.message;
-    //     if(deviceId == msg['deviceId']){
-    //         return
-    //     }
-    //     // openChat(m)
-    //     // scrollToBottom(m.channel)
-    // }
-
     function scrollToBottom(channelName) {
         $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container .chat-div-content").scrollTop(jQuery(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container .chat-div-content ul").outerHeight());
     }
@@ -491,6 +463,7 @@ function stickyChatModel(){
         if(window.innerWidth < 768) {
             return
         }
+        //if box is already open
         if($(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"]").length){
             var elem = {}
             elem.entry = {}
@@ -501,6 +474,7 @@ function stickyChatModel(){
             $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .chat-div-header").addClass("newMessageHeader")
             return
         }
+        //clone the box and fetch history
         else {
             var elem = settings.conversationListing.find(".conversationItem[data-channel-name="+channelName+"]");
             var dataID = elem.attr("data-id")
@@ -523,20 +497,6 @@ function stickyChatModel(){
             }
             chatContainerBox.find(settings.chatInput).attr("data-channel-name", channelName)
             chatContainerBox.find(settings.chatInput).attr("data-id",dataID)
-            // chatContainerBox.find(settings.chatInput).on("keydown", function(e) {
-
-            //     if (e.which == 13) {
-            //         e.preventDefault();
-            //         sendMessage(this)
-            //     } else if (e.which == 13 && !e.shiftKey) {
-            //         sendMessage(this)
-            //     } else if (e.which == 13 && e.shiftKey) {
-            //         textAreaAdjust(this);
-            //     } else {
-            //         textAreaAdjust(this);
-            //     }
-
-            // });
             chatContainerBox.find(".no-start").removeClass("hidden")
             chatContainerBox.find(".start").addClass("hidden")
             if(settings.chatCandidateboxes.children().length < maxCandidateChats) {
@@ -646,21 +606,7 @@ function stickyChatModel(){
                     chatContainerBox.find(settings.closeIcon).attr("data-id",array[0]["userID"]);
                     chatContainerBox.attr("data-id",array[0]["userID"]);
                     chatContainerBox.find(settings.chatInput).attr("data-channel-name", channelName)
-                    chatContainerBox.find(settings.chatInput).attr("data-id",array[0]["userID"] )
-                    // chatContainerBox.find(settings.chatInput).on("keydown", function(e) {
-
-                    //     if (e.which == 13) {
-                    //         e.preventDefault();
-                    //         sendMessage(this)
-                    //     } else if (e.which == 13 && !e.shiftKey) {
-                    //         sendMessage(this)
-                    //     } else if (e.which == 13 && e.shiftKey) {
-                    //         textAreaAdjust(this);
-                    //     } else {
-                    //         textAreaAdjust(this);
-                    //     }
-
-                    // });
+                    chatContainerBox.find(settings.chatInput).attr("data-id",array[0]["userID"] );
                     chatContainerBox.find(".no-start").addClass("hidden")
                     chatContainerBox.find(".start").removeClass("hidden")
                     chatContainerBox.attr("data-channel-name",channelName);
@@ -716,20 +662,6 @@ function stickyChatModel(){
             chatContainerBox.attr("data-id",array[0]["userID"]);
             chatContainerBox.find(settings.chatInput).attr("data-channel-name", channelName)
             chatContainerBox.find(settings.chatInput).attr("data-id",array[0]["userID"] )
-            // chatContainerBox.find(settings.chatInput).on("keydown", function(e) {
-
-            //     if (e.which == 13) {
-            //         e.preventDefault();
-            //         sendMessage(this)
-            //     } else if (e.which == 13 && !e.shiftKey) {
-            //         sendMessage(this)
-            //     } else if (e.which == 13 && e.shiftKey) {
-            //         textAreaAdjust(this);
-            //     } else {
-            //         textAreaAdjust(this);
-            //     }
-
-            // });
             chatContainerBox.find(".no-start").removeClass("hidden")
             chatContainerBox.find(".start").addClass("hidden")
             chatContainerBox.attr("data-channel-name",channelName);
@@ -739,7 +671,6 @@ function stickyChatModel(){
             }
 
             fetchHistory(channelName, 20 ,null, null, function(status, response) {
-
                 var str = ""
                 response["messages"].forEach(function(elem, index){
                     if(index == 0 || (index > 0 && (moment(response["messages"][index - 1]["entry"]["time"]).format("DD MM YYYY") != moment(elem["entry"]["time"]).format("DD MM YYYY"))) ) {
@@ -806,7 +737,6 @@ function stickyChatModel(){
                 rightOffset = rightOffset + 280
             }
         });
-
         if(!(settings.chatCollapsedContainer.hasClass("hidden"))) {
             settings.chatCollapsedContainer.css("right", rightOffset );
         }
@@ -819,96 +749,11 @@ function stickyChatModel(){
             var endTimeToken = parseInt($(elem).attr("data-endTime"));
             var dataID = $(elem).closest(".chat-div-candidate").attr("data-id");
             if(startTimeToken == 0) {
-                return false
+                return ;
             }
             return true;
         }
         return false;
-    }
-
-    function ISODateToD_M(aDate) {
-        var date = new Date(aDate),
-            month = date.getMonth(),
-            dt = date.getDate();
-            if (dt < 10) {
-                dt = '0' + dt;
-            }
-            if (month < 10) {
-                month = '0' + month;
-            }
-            var str = dt + "/" + month;
-            return str;
-    }
-
-    function ISODateToD_M_Y(aDate) {
-        var monthNames = ["Jan", "Feb", "March", "April", "May", "June",
-                            "July", "Aug", "Sep", "Oct", "Nov", "Dec"
-                        ];
-        var date = new Date(aDate),
-            month = monthNames[date.getMonth()],
-            year = date.getFullYear(),
-            dt = date.getDate();
-
-        if (dt < 10) {
-            dt = '0' + dt;
-        }
-        if (month < 10) {
-            month = '0' + month;
-        }
-
-        var str = dt + " " + month + " " + year;
-        return str;
-    }
-
-    function ISODateToTime(aDate) {
-        var date = new Date(aDate),
-            hours = date.getHours(),
-            mins = date.getMinutes();
-            mins = checkTime(mins);
-            var str = hours + ":" + mins;
-            return str;
-    }
-
-    function ISODateToD_M_Y(aDate) {
-        var date = new Date(aDate),
-            year = date.getFullYear(),
-            month = date.getMonth(),
-            dt = date.getDate();
-
-        if (dt < 10) {
-            dt = '0' + dt;
-        }
-        if (month < 10) {
-            month = '0' + month;
-        }
-
-        var str = dt + "-" + month + "-" + year;
-        return str;
-    }
-
-    function compare(a,b) {
-        if (a.created < b.created)
-            return 1;
-        if (a.created > b.created)
-            return -1;
-        return 0;
-    }
-
-    function checkTime(i) {
-        if (i < 10) {
-        i = "0" + i;
-        }
-        return i;
-    }
-
-    function startTime() {
-        var today = new Date();
-        var h = today.getHours();
-        var m = today.getMinutes();
-        // add a zero in front of numbers<10
-        m = checkTime(m);
-        var time = h + ":" + m;
-        return time;
     }
 
     function initializeTooltip() {
