@@ -120,6 +120,9 @@ $(document).ready(function(){
         if(deviceId == msg['deviceId']){
             return
         }
+        if(stickyChat.isChatBoxOpen()){
+            stickyChat.appendRecievedMessage(m)
+        }
         stickyChat.openChat(m);
         stickyChat.scrollToBottom(m.channel);
     }
