@@ -1,6 +1,17 @@
 var channelsArray = []
-    
+
+function getDeviceId() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i < 20; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return "web"+text+Date.now();
+}
+
 $(document).ready(function(){
+    var deviceId= getDeviceId();
     var chatEngine = ChatEngine(recruiterId, profile.email);
     chatEngine.initialize();
     chatEngine.addListeners(onNewMessage, onNewPresence, onNewStatus);
@@ -32,47 +43,46 @@ $(document).ready(function(){
         });
     })
 
-    stickyChat.displayAMessage(function(){
-        var t = Date.now();
-        
+    stickyChat.onEnterSendMessage(function(dataID,channelName,message){
+        var eventObj = {
+            event_category: eventMap["sendMsg"]["cat"],
+            event_label: 'origin='+origin+',recId='+recruiterId+''
+        }
+        sendEvent(eventMap["sendMsg"]["event"], eventObj)
+        if(message == "") {
+            return ;
+        }
+        stickyChat.appendSendMessage(channelName,message,dataID);                
         chatEngine.publish({
-            UUID:uuid || btoa(recruiterId+'--'+profile["email"]),
-            deviceId: deviceId,
-            time: t,
-            usr: recruiterId,
-            name: profile["name"],
-            tt:1,
-            msg: message,
-            img: profile["pic"],
-            type: 1,
-
-        }, channelName, function(status,response){
-
-            if(status.statusCode == 200) {
-                chat.appendSendMessage(message, profile["pic"], t)
-            }
-            else if (status.category == "PNNetworkIssuesCategory") {
-                var data = {}     
-                data.message = "Looks like you are not connected to the internet"
-                toastNotify(3, data.message)
-            }
-
-        });
-        submitChatMessage({
-          channel: channelName,
-          senderName: profile['name'],
-          senderOrganization: profile["organisation"],
-          timestamp: Date.now(),
-          text: message
-      })
+                UUID:uuid || btoa(recruiterId+'--'+profile["email"]),
+                deviceId: deviceId,
+                time: Date.now(),
+                usr: recruiterId,
+                name: profile["name"],
+                tt:1,
+                msg: message,
+                dataID:dataID,
+                img: profile.img_link,
+                type: 1
+            }, channelName, function(status, response){
+                if(status.statusCode == 200) {
+                }
+                else if (status.category == "PNNetworkIssuesCategory") {
+                    var data = {}
+                    data.message = "Looks like you are not connected to the internet"
+                    toastNotify(3, data.message)
+                }
+            });
+            submitChatMessage({
+                channel: channelName,
+                senderName: profile['name'],
+                senderOrganization: profile["organisation"],
+                timestamp: Date.now(),
+                text: message
+            })        
     })
 
     function onFetchHistory(data, response,obj,channelName) {
-        console.log(channelName)
-        console.log(data)
-        console.log(response)
-        console.log(obj)
-        console.log("i am here")
         stickyChat.populateMessages(response,obj,channelName.channel)
     }
 
@@ -107,7 +117,11 @@ $(document).ready(function(){
         var subscribedChannel = m.subscribedChannel;
         var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
         var pubTT = m.timetoken; // Publish timetoken
-        stickyChat.receiveMessage(m);
+        if(deviceId == msg['deviceId']){
+            return
+        }
+        stickyChat.openChat(m);
+        stickyChat.scrollToBottom(m.channel);
     }
 
     function onNewStatus(s) {

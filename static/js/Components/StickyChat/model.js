@@ -155,11 +155,22 @@ function stickyChatModel(){
         return card
     }
 
-
+    function appendSendMessage(channelName,message,dataID) {
+        var elem = {}
+        elem.entry = {}
+        elem.entry.msg = message;
+        var item = getMsgSentElement(elem)
+        $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
+        initializeTooltip()
+        scrollToBottom(channelName)
+        $(".chat-input").val("");
+    }
+    
     function textAreaAdjust(o) {
         if(o.scrollHeight == 35 || o.scrollHeight > 75) {
             return
         }
+
         o.style.height = (o.scrollHeight + 2) + "px";
 
         $(o).closest(settings.footerContainer).find(settings.chatDivContnet).height(293 - (o.scrollHeight));
@@ -190,20 +201,6 @@ function stickyChatModel(){
                 }
                 chatContainerBox.find(settings.chatInput).attr("data-channel-name", channelName)
                 chatContainerBox.find(settings.chatInput).attr("data-id",$(this).attr("data-id") )
-                chatContainerBox.find(settings.chatInput).on("keydown", function(e) {
-                    if (e.which == 13) {
-                        e.preventDefault();
-                        displayAMessage(this)
-                    } else if (e.which == 13 && !e.shiftKey) {
-                        displayAMessage(this)
-                    } else if (e.which == 13 && e.shiftKey) {
-                        textAreaAdjust(this);
-                    } else {
-                        textAreaAdjust(this);
-                    }
-    
-                });
-    
                 chatContainerBox.find(".no-start").removeClass("hidden")
                 chatContainerBox.find(".start").addClass("hidden")
                 var that = $(this)
@@ -240,6 +237,30 @@ function stickyChatModel(){
             }
         })
     }
+
+
+    function onEnterSendMessage(fn){
+        $('.chat-candidate-boxes').on("keydown",'.chat-div-candidate',function(e){
+            var dataID=$(this).attr("data-id");
+            var channelName=$(this).attr("data-channel-name");
+            var elem=($(this).find(".chat-input"));
+            if (e.which == 13) {
+                e.preventDefault();
+                var value=$(this).find(".chat-input").val();
+                fn(dataID,channelName,value)
+            }else if (e.which == 13 && !e.shiftKey) {
+                fn(dataID,channelName,value)
+            }else if (e.which == 13 && e.shiftKey) {
+                textAreaAdjust(elem);
+                console.log("here")
+            } else {
+                textAreaAdjust(elem);
+                console.log("here too")
+            }
+        });
+    }
+
+    
     
     function populateMessages(response,obj,channelName){
         var dataArray=response.messages;
@@ -293,19 +314,19 @@ function stickyChatModel(){
                 }
                 chatContainerBox.find(settings.chatInput).attr("data-channel-name", channelName)
                 chatContainerBox.find(settings.chatInput).attr("data-id",$(this).attr("data-id") );
-                chatContainerBox.find(settings.chatInput).on("keydown", function(e) {
-                    if (e.which == 13) {
-                        e.preventDefault();
-                        displayAMessage(this)
-                    } else if (e.which == 13 && !e.shiftKey) {
-                        displayAMessage(this)
-                    } else if (e.which == 13 && e.shiftKey) {
-                        textAreaAdjust(this);
-                    } else {
-                        textAreaAdjust(this);
-                    }
+                // chatContainerBox.find(settings.chatInput).on("keydown", function(e) {
+                //     if (e.which == 13) {
+                //         e.preventDefault();
+                //         sendMessage(this)
+                //     } else if (e.which == 13 && !e.shiftKey) {
+                //         sendMessage(this)
+                //     } else if (e.which == 13 && e.shiftKey) {
+                //         textAreaAdjust(this);
+                //     } else {
+                //         textAreaAdjust(this);
+                //     }
     
-                });
+                // });
                 chatContainerBox.find(".no-start").removeClass("hidden")
                 chatContainerBox.find(".start").addClass("hidden")
                 var that = $(this)
@@ -450,79 +471,20 @@ function stickyChatModel(){
         })    
     }
 
-        function displayAMessage(element) {
-            var eventObj = {
-                event_category: eventMap["sendMsg"]["cat"],
-                event_label: 'origin='+origin+',recId='+recruiterId+''
-            }
-            sendEvent(eventMap["sendMsg"]["event"], eventObj)
-            var channelName = $(element).attr("data-channel-name");
-            var dataID = $(element).attr("data-id");
-            var message = ($(element).val()).trim()
-            var that = $(element)
-            if(message == "") {
-                return $(element).val('')
-            }
-
-            publish({
-                    UUID:uuid || btoa(recruiterId+'--'+recruiterEmail),
-                    deviceId: deviceId,
-                    time: Date.now(),
-                    usr: recruiterId,
-                    name: profile["name"],
-                    tt:1,
-                    msg: message,
-                    img: profile.img_link,
-                    type: 1
-                }, channelName, function(status, response){
-                    if(status.statusCode == 200) {
-                        var elem = {}
-                        elem.entry = {}
-                        elem.entry.msg = message;
-                        elem.entry.time = parseInt(moment().format('x'))
-
-                        var item = getMsgSentElement(elem)
-                        $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
-
-                        initializeTooltip()
-                        that.val('');
-                        that.outerHeight(37);
-                        that.closest(settings.footerContainer).find(settings.chatDivContnet).outerHeight(278);
-
-                        scrollToBottom(channelName)
-                    }
-                    else if (status.category == "PNNetworkIssuesCategory") {
-                        var data = {}
-                        var item = getMsgSentElement(elem)
-                        $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
-
-                        data.message = "Looks like you are not connected to the internet"
-                        toastNotify(3, data.message)
-                    }
-                });
-                submitChatMessage({
-                    channel: channelName,
-                    senderName: profile['name'],
-                    senderOrganization: profile["organisation"],
-                    timestamp: Date.now(),
-                    text: message
-                })
-    }
-
-    function receiveMessage(m) {
-        var msg = m.message;
-        if(deviceId == msg['deviceId']){
-            return
-        }
-        openChat(m)
-        scrollToBottom(m.channel)
-    }
+    // function receiveMessage(m) {
+    //     var msg = m.message;
+    //     if(deviceId == msg['deviceId']){
+    //         return
+    //     }
+    //     // openChat(m)
+    //     // scrollToBottom(m.channel)
+    // }
 
     function scrollToBottom(channelName) {
         $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container .chat-div-content").scrollTop(jQuery(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container .chat-div-content ul").outerHeight());
     }
 
-    
+
     function openChat(m) {
         var channelName = m.channel;
         var msg = m.message;
@@ -534,9 +496,8 @@ function stickyChatModel(){
             elem.entry = {}
             elem.entry.msg = msg.msg;
             elem.entry.time = msg.time;
-            var item = (msg.UUID == btoa(recruiterId+"--"+profile["email"])) ? getMsgSentElement(elem):  getMsgReceivedElement(elem);
+            var item = (msg.UUID == btoa(recruiterId+"--"+profile["email"])) ? getMsgSentElement(elem):  getMsgReceivedElement(elem);    
             $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
-
             $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .chat-div-header").addClass("newMessageHeader")
             return
         }
@@ -562,20 +523,20 @@ function stickyChatModel(){
             }
             chatContainerBox.find(settings.chatInput).attr("data-channel-name", channelName)
             chatContainerBox.find(settings.chatInput).attr("data-id",dataID)
-            chatContainerBox.find(settings.chatInput).on("keydown", function(e) {
+            // chatContainerBox.find(settings.chatInput).on("keydown", function(e) {
 
-                if (e.which == 13) {
-                    e.preventDefault();
-                    displayAMessage(this)
-                } else if (e.which == 13 && !e.shiftKey) {
-                    displayAMessage(this)
-                } else if (e.which == 13 && e.shiftKey) {
-                    textAreaAdjust(this);
-                } else {
-                    textAreaAdjust(this);
-                }
+            //     if (e.which == 13) {
+            //         e.preventDefault();
+            //         sendMessage(this)
+            //     } else if (e.which == 13 && !e.shiftKey) {
+            //         sendMessage(this)
+            //     } else if (e.which == 13 && e.shiftKey) {
+            //         textAreaAdjust(this);
+            //     } else {
+            //         textAreaAdjust(this);
+            //     }
 
-            });
+            // });
             chatContainerBox.find(".no-start").removeClass("hidden")
             chatContainerBox.find(".start").addClass("hidden")
             if(settings.chatCandidateboxes.children().length < maxCandidateChats) {
@@ -686,20 +647,20 @@ function stickyChatModel(){
                     chatContainerBox.attr("data-id",array[0]["userID"]);
                     chatContainerBox.find(settings.chatInput).attr("data-channel-name", channelName)
                     chatContainerBox.find(settings.chatInput).attr("data-id",array[0]["userID"] )
-                    chatContainerBox.find(settings.chatInput).on("keydown", function(e) {
+                    // chatContainerBox.find(settings.chatInput).on("keydown", function(e) {
 
-                        if (e.which == 13) {
-                            e.preventDefault();
-                            displayAMessage(this)
-                        } else if (e.which == 13 && !e.shiftKey) {
-                            displayAMessage(this)
-                        } else if (e.which == 13 && e.shiftKey) {
-                            textAreaAdjust(this);
-                        } else {
-                            textAreaAdjust(this);
-                        }
+                    //     if (e.which == 13) {
+                    //         e.preventDefault();
+                    //         sendMessage(this)
+                    //     } else if (e.which == 13 && !e.shiftKey) {
+                    //         sendMessage(this)
+                    //     } else if (e.which == 13 && e.shiftKey) {
+                    //         textAreaAdjust(this);
+                    //     } else {
+                    //         textAreaAdjust(this);
+                    //     }
 
-                    });
+                    // });
                     chatContainerBox.find(".no-start").addClass("hidden")
                     chatContainerBox.find(".start").removeClass("hidden")
                     chatContainerBox.attr("data-channel-name",channelName);
@@ -755,20 +716,20 @@ function stickyChatModel(){
             chatContainerBox.attr("data-id",array[0]["userID"]);
             chatContainerBox.find(settings.chatInput).attr("data-channel-name", channelName)
             chatContainerBox.find(settings.chatInput).attr("data-id",array[0]["userID"] )
-            chatContainerBox.find(settings.chatInput).on("keydown", function(e) {
+            // chatContainerBox.find(settings.chatInput).on("keydown", function(e) {
 
-                if (e.which == 13) {
-                    e.preventDefault();
-                    displayAMessage(this)
-                } else if (e.which == 13 && !e.shiftKey) {
-                    displayAMessage(this)
-                } else if (e.which == 13 && e.shiftKey) {
-                    textAreaAdjust(this);
-                } else {
-                    textAreaAdjust(this);
-                }
+            //     if (e.which == 13) {
+            //         e.preventDefault();
+            //         sendMessage(this)
+            //     } else if (e.which == 13 && !e.shiftKey) {
+            //         sendMessage(this)
+            //     } else if (e.which == 13 && e.shiftKey) {
+            //         textAreaAdjust(this);
+            //     } else {
+            //         textAreaAdjust(this);
+            //     }
 
-            });
+            // });
             chatContainerBox.find(".no-start").removeClass("hidden")
             chatContainerBox.find(".start").addClass("hidden")
             chatContainerBox.attr("data-channel-name",channelName);
@@ -959,19 +920,6 @@ function stickyChatModel(){
         })
     }
     
-    function publish(message, channel, onPublish) {
-        pubnub.publish({
-            message: message,
-            channel: channel,
-            sendByPost: true, // true to send via post
-            storeInHistory: true, //override default storage options
-            meta: {
-                "cool": "meta"
-            } // publish extra meta with the request
-        }, onPublish)
-    }
-
-    
     function fetchHistory(channel, count,startTimeToken, endTimeToken, onFetchHistory) {
         pubnub.history({
             channel: channel, //"my_channel",
@@ -987,13 +935,15 @@ function stickyChatModel(){
         populateChatView:populateChatView,
         populateSideChatView:populateSideChatView,
         saveToStore:saveToStore,
-        receiveMessage:receiveMessage,
         receivePresence:receivePresence,
         onClickSidebarChat:onClickSidebarChat,
         populateMessages:populateMessages,
         onClickStickyChat:onClickStickyChat,
         getCandidateFromStore:getCandidateFromStore,
-        displayAMessage:displayAMessage
+        onEnterSendMessage:onEnterSendMessage,
+        appendSendMessage:appendSendMessage,
+        openChat:openChat,
+        scrollToBottom:scrollToBottom
     }
 
 }
