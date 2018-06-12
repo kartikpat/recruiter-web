@@ -18,18 +18,19 @@ $(document).ready(function(){
     var stickyChat=stickyChatModel();
     stickyChat.init();   
     fetchRecruiterChats(recruiterId)
-
-    stickyChat.onClickSidebarChat(function(channelName,messageNumber,dataID){
+    
+    stickyChat.onClickSidebarChat(function(channelName,messageNumber,dataID,startTime){
         var eventObj = {
             event_category: eventMap["viewChatCardClick"]["cat"],
             event_label: 'origin='+origin+',recId='+recruiterId+''
         }
         sendEvent(eventMap["viewChatCardClick"]["event"], eventObj)
         var obj = stickyChat.getCandidateFromStore(dataID)
-        chatEngine.fetchHistory(channelName,messageNumber, null, null, function(data,response){
+        chatEngine.fetchHistory(channelName,messageNumber,startTime, null, function(data,response){
             onFetchHistory(response,obj,channelName)
         });
     })
+
 
     stickyChat.onClickStickyChat(function(channelName,messageNumber,dataID){
         var eventObj = {

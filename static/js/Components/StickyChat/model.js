@@ -201,10 +201,11 @@ function stickyChatModel(){
                     chatContainerBox.find(settings.footerContainer).addClass("show")
                     chatContainerBox.find(settings.chatDivContnet).scroll(function(){
                         var _that = this;
+                        var startTimeToken=parseInt(chatContainerBox.find(settings.chatDivContnet).attr("data-startTime"));     
                         clearTimeout(ticker);
                         ticker = setTimeout(function(){
                             if(checkScrollEnd(_that))
-                            fn(channelName,messageNumber,dataID);
+                            fn(channelName,messageNumber,dataID,startTimeToken);
                         },100);
                     })
     
@@ -271,13 +272,9 @@ function stickyChatModel(){
         $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataId+"] .content-footer-container .chat-div-content ul").prepend(str)
         $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataId+"] .content-footer-container .chat-div-content").attr("data-startTime", response.startTimeToken )
         $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataId+"] .content-footer-container .chat-div-content").attr("data-endTime", response.endTimeToken)
-       
         initializeTooltip()
-        console.log(channelName)
-        debugger
         scrollToBottom(channelName)
     }
-
 
     function onClickSidebarChat(fn){
         settings.conversationListing.on('click','.conversationItem', function() {
@@ -312,10 +309,11 @@ function stickyChatModel(){
                     chatContainerBox.find(settings.footerContainer).addClass("show")
                     chatContainerBox.find(settings.chatDivContnet).scroll(function(){
                         var _that = this;
+                        var startTimeToken=parseInt(chatContainerBox.find(settings.chatDivContnet).attr("data-startTime"));     
                         clearTimeout(ticker);
                         ticker = setTimeout(function(){
                             if(checkScrollEnd(_that))
-                            fn(channelName,messageNumber,dataID);
+                            fn(channelName,messageNumber,dataID,startTimeToken);
                         },100);
                     })
     
@@ -449,9 +447,6 @@ function stickyChatModel(){
     }
 
     function scrollToBottom(channelName) {
-        debugger
-        console.log(channelName);
-        console.log("............................")
         $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container .chat-div-content").scrollTop(jQuery(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container .chat-div-content ul").outerHeight());
     }
 
@@ -498,10 +493,11 @@ function stickyChatModel(){
             settings.chatCandidateboxes.prepend(chatContainerBox);
             chatContainerBox.find(settings.chatDivContnet).scroll(function(){
                 var _that = this;
+                var startTimeToken=parseInt(chatContainerBox.find(settings.chatDivContnet).attr("data-startTime"));     
                 clearTimeout(ticker);
                 ticker = setTimeout(function(){
                     if(checkScrollEnd(_that))
-                        fn(channelName,messageNumber,dataID);
+                        fn(channelName,messageNumber,dataID,startTimeToken);
                 },100);
             })
             chatContainerBox.find(settings.footerContainer).addClass("show")
@@ -550,28 +546,6 @@ function stickyChatModel(){
         //     scrollToBottom(channelName)
         // });
     }
-
-
-    // function openChat(m) {
-    //     var channelName = m.channel;
-    //     var msg = m.message;
-    //     if(window.innerWidth < 768) {
-    //         return
-    //     }
-    //     //if box is already open
-    //     if($(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"]").length){
-    //         var elem = {}
-    //         elem.entry = {}
-    //         elem.entry.msg = msg.msg;
-    //         elem.entry.time = msg.time;
-    //         var item = (msg.UUID == btoa(recruiterId+"--"+profile["email"])) ? getMsgSentElement(elem):  getMsgReceivedElement(elem);    
-    //         $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
-    //         $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .chat-div-header").addClass("newMessageHeader")
-    //         return
-    //     }
-    //     //clone the box and fetch history
-    //     else 
-    // }
 
     function onFocusChatMessage(){
         settings.chatCandidateboxes.on('focus','.chat-input', function(){
@@ -711,16 +685,16 @@ function stickyChatModel(){
                 scrollToBottom(channelName)
             });
 
-
             if(settings.chatCandidateboxes.children().length < maxCandidateChats) {
                 settings.chatCandidateboxes.prepend(chatContainerBox);
                 chatContainerBox.find(settings.footerContainer).addClass("show")
                 chatContainerBox.find(settings.chatDivContnet).scroll(function(){
                     var _that = this;
+                    var startTimeToken=parseInt(chatContainerBox.find(settings.chatDivContnet).attr("data-startTime"));     
                     clearTimeout(ticker);
                     ticker = setTimeout(function(){
                         if(checkScrollEnd(_that))
-                            fn(channelName,messageNumber,dataID);
+                            fn(channelName,messageNumber,dataID,startTimeToken);
                     },100);
                 })
 
@@ -744,6 +718,7 @@ function stickyChatModel(){
             settings.conversationListing.find(".conversationItem[data-id="+array[0]["userID"]+"]").addClass("selected")
         }
     }
+
 
     function reposition_chat_windows() {
         var rightOffset = 290;
