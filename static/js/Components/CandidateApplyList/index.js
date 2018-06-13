@@ -269,9 +269,10 @@ jQuery(document).ready( function() {
         array.push(candidate);
         var channelName="iimjobs--r"+recruiterId+'-j'+array[0]['userID'];
         var obj=storeChat.getCandidateFromStoreViaChannel(channelName);
-        
         if(!storeChat.getCandidateFromStoreViaChannel(channelName)){
-            submitChatProfile(recruiterId,jobId);  
+            submitChatProfile(recruiterId,jobId,applicationId,array);
+            console.log(array);
+            stickyChat.openChatBox(channelName,array);    
             return
         }
         var scrollToBottom=0;
@@ -287,8 +288,9 @@ jQuery(document).ready( function() {
         });
     })
 
-    function onSuccessfulSubmitChat(res){
-        console.log(res);
+    function onSuccessfulSubmitChat(topic,data){
+        data.array[0]["channel"] = data.data
+        stickyChat.populateChatView(data.array);
     }
     function onFetchHistory(response,obj,channelName,scroll) {
         stickyChat.populateMessages(response,obj,channelName,scroll)
@@ -1372,8 +1374,8 @@ jQuery(document).ready( function() {
     var fetchedRecommendationsSuccessSubscription = pubsub.subscribe("fetchRecommendationsSuccess", onSuccessfulRecommendations)
 	var fetchedRecommendationsFailSubscription = pubsub.subscribe("fetchRecommendationsFail", onFailedRecommendation);
 
-    var submitChatSuccessSubscription = pubsub.subscribe("submitChatProfileSuccess", onSuccessfulSubmitChat)
-	var failChatSubscription = pubsub.subscribe("submitChatProfileFail", onFailedSubmitChat)
+    var submitChatSuccessSubscription = pubsub.subscribe("submitChatProfileSuccess",onSuccessfulSubmitChat)
+	// var failChatSubscription = pubsub.subscribe("submitChatProfileFail", onFailedSubmitChat)
 
 
     var tickerLock=false;

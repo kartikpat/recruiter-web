@@ -758,7 +758,6 @@ $(document).ready(function(){
                     chatContainerBox.find(settings.chatInput).attr("data-channel-name", channelName)
                     chatContainerBox.find(settings.chatInput).attr("data-id",array[0]["userID"] )
                     chatContainerBox.find(settings.chatInput).on("keydown", function(e) {
-
                         if (e.which == 13) {
                             e.preventDefault();
                             displayAMessage(this)

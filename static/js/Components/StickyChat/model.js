@@ -412,6 +412,11 @@ function stickyChatModel(){
         var elem = settings.conversationListing.find(".conversationItem[data-channel-name="+channelName+"]");
         var dataID = elem.attr("data-id")
         var elem=$(this);
+        if(!dataID){
+            debugger
+            dataID=obj[0].userID;
+            obj=obj[0];
+        }
         console.log(dataID)
         if(!(elem.hasClass('selected'))){
             populateChatBox(channelName,dataID,obj);
