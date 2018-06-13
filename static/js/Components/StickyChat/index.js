@@ -17,6 +17,7 @@ $(document).ready(function(){
     chatEngine.initialize();
     chatEngine.addListeners(onNewMessage, onNewPresence, onNewStatus);
     var stickyChat=stickyChatModel();
+    var store=chatStoreModel();
     stickyChat.init();   
     fetchRecruiterChats(recruiterId);
   
@@ -26,12 +27,14 @@ $(document).ready(function(){
             event_category: eventMap["viewChatCardClick"]["cat"],
             event_label: 'origin='+origin+',recId='+recruiterId+''
         }
+        var obj=store.getCandidateFromStore(dataID);
+        stickyChat.populateChatBox(channelName,dataID,obj);
         sendEvent(eventMap["viewChatCardClick"]["event"], eventObj)
-        var obj = stickyChat.getCandidateFromStore(dataID)
+        var obj = store.getCandidateFromStore(dataID)
         chatEngine.fetchHistory(channelName,messageNumber,startTime, null, function(data,response){
             onFetchHistory(response,obj,channelName,scrollToBottom)
         });
-        stickyChat.scrollEvent(channelName,function(channelName,startTime){
+        stickyChat.scrollEvent(channelName,obj,function(channelName,startTime){
             scrollToBottom=1;
             chatEngine.fetchHistory(channelName,20,startTime, null, function(data,response){
                 onFetchHistory(response,obj,channelName,scrollToBottom)
@@ -51,7 +54,7 @@ $(document).ready(function(){
         chatEngine.fetchHistory(channelName,messageNumber,startTime, null, function(data,response){
             onFetchHistory(response,obj,channelName,scrollToBottom)
         });
-        stickyChat.scrollEvent(channelName,function(channelName,startTime){
+        stickyChat.scrollEvent(channelName,obj,function(channelName,startTime){
             scrollToBottom=1;
             chatEngine.fetchHistory(channelName,20,startTime, null, function(data,response){
                 onFetchHistory(response,obj,channelName,scrollToBottom)
@@ -99,6 +102,19 @@ $(document).ready(function(){
             })        
     })
 
+    // stickyChat.openChatBox(channelName,function(){
+    //     var obj = stickyChat.getCandidateFromStoreViaChannel(channelName)
+    //     chatEngine.fetchHistory(channelName,20, null, null, function(data,response){
+    //         onFetchHistory(response,obj,channelName,scrollToBottom)
+    //     });
+    //     stickyChat.scrollEvent(channelName,function(channelName,startTime){
+    //         scrollToBottom=1;
+    //         chatEngine.fetchHistory(channelName,20,startTime, null, function(data,response){
+    //             onFetchHistory(response,obj,channelName,scrollToBottom)
+    //         });
+    //     });
+    // })
+
 
     function onFetchHistory(response,obj,channelName,scroll) {
         stickyChat.populateMessages(response,obj,channelName,scroll)
@@ -107,7 +123,7 @@ $(document).ready(function(){
     function onFetchRecruiterChats(topic, data) {
         stickyChat.populateChatView(data);
         stickyChat.populateSideChatView(data);
-        stickyChat.saveToStore(data);
+        store.saveToStore(data);
         channelsArray = data;
         chatEngine.subscribe(getArray(channelsArray));
     }
@@ -144,12 +160,12 @@ $(document).ready(function(){
             stickyChat.scrollToBottom(m.channel);
         }
         else{
-            stickyChat.openChatBox(channelName);
-            var obj = stickyChat.getCandidateFromStoreViaChannel(channelName)
+            var obj = store.getCandidateFromStoreViaChannel(channelName)
+            stickyChat.openChatBox(channelName,obj);
             chatEngine.fetchHistory(channelName,20, null, null, function(data,response){
                 onFetchHistory(response,obj,channelName,scrollToBottom)
             });
-            stickyChat.scrollEvent(channelName,function(channelName,startTime){
+            stickyChat.scrollEvent(channelName,obj,function(channelName,startTime){
                 scrollToBottom=1;
                 chatEngine.fetchHistory(channelName,20,startTime, null, function(data,response){
                     onFetchHistory(response,obj,channelName,scrollToBottom)

@@ -1,23 +1,23 @@
-function StoreModule (){
-	var store = {}
 
-	function saveToStore(dataArray){
+function chatStoreModel(){
+    var chatStore={};
+    function saveToStore(dataArray){
         dataArray.forEach(function(anObj) {
-            store[anObj["id"]] = anObj;
+            chatStore[anObj["userId"]] = anObj;
+            chatStore[anObj["channel"]]=anObj;
         })
     }
 
-    function emptyStore(){
-		store = {};
-    }
-
     function getCandidateFromStore(candidateId){
-		return store[candidateId]
+        return chatStore[candidateId]
     }
 
-	return {
+    function getCandidateFromStoreViaChannel(channelName){
+        return chatStore[channelName];
+    }
+    return {
 		saveToStore: saveToStore,
-		emptyStore: emptyStore,
-		getCandidateFromStore: getCandidateFromStore
+		getCandidateFromStore: getCandidateFromStore,
+		getCandidateFromStoreViaChannel:getCandidateFromStoreViaChannel
 	}
-}
+}    

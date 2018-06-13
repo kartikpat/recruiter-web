@@ -1,4 +1,3 @@
-var chatStore= {}
 
 function stickyChatModel(){
     var ticker;
@@ -16,7 +15,6 @@ function stickyChatModel(){
         4: "Reviewed",
         5: "Reviewed"
     };
-
 
     function init(){
         settings.chatCollapsedContainer=$(".chat-collapsed-candidate-container");
@@ -83,20 +81,20 @@ function stickyChatModel(){
 
 //store
 
-    function saveToStore(dataArray){
-        dataArray.forEach(function(anObj) {
-            chatStore[anObj["userId"]] = anObj;
-            chatStore[anObj["channel"]]=anObj;
-        })
-    }
+    // function saveToStore(dataArray){
+    //     dataArray.forEach(function(anObj) {
+    //         chatStore[anObj["userId"]] = anObj;
+    //         chatStore[anObj["channel"]]=anObj;
+    //     })
+    // }
 
-    function getCandidateFromStore(candidateId){
-        return chatStore[candidateId]
-    }
+    // function getCandidateFromStore(candidateId){
+    //     return chatStore[candidateId]
+    // }
 
-    function getCandidateFromStoreViaChannel(channelName){
-        return chatStore[channelName];
-    }
+    // function getCandidateFromStoreViaChannel(channelName){
+    //     return chatStore[channelName];
+    // }
     
     function toggleMinimiseIcon(){
         $(settings.chatDivHeader).click(function() {
@@ -174,10 +172,9 @@ function stickyChatModel(){
             var dataID = $(this).attr("data-id");
             var elem=$(this);
             if(!(elem.hasClass('selected'))){
-                populateChatBox(channelName,dataID);
+                fn(channelName,messageNumber,dataID);
                 elem.addClass('selected');
             }
-            fn(channelName,messageNumber,dataID); 
         })
     }
 
@@ -188,16 +185,16 @@ function stickyChatModel(){
             var dataID = $(this).attr("data-id");
             var elem=$(this);
             if(!(elem.hasClass('selected'))){
-                populateChatBox(channelName,dataID);
+                fn(channelName,messageNumber,dataID);
                 elem.addClass('selected');
             }
-            fn(channelName,messageNumber,dataID);
+            
         })
     }
 
+    
 
-    function populateChatBox(channelName,dataID){
-            var obj = getCandidateFromStore(dataID)
+    function populateChatBox(channelName,dataID,obj){
             var chatContainerBox = settings.chatDivBox.clone().removeClass('prototype hidden');
             chatContainerBox.find(settings.candidateName).text(obj.name);  
             chatContainerBox.find(settings.chatDivHeader).attr("data-id",dataID);
@@ -411,20 +408,19 @@ function stickyChatModel(){
         $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .chat-div-header").addClass("newMessageHeader")
     }
 
-    function openChatBox(channelName){
-        
+    function openChatBox(channelName,obj){
         var elem = settings.conversationListing.find(".conversationItem[data-channel-name="+channelName+"]");
         var dataID = elem.attr("data-id")
         var elem=$(this);
+        console.log(dataID)
         if(!(elem.hasClass('selected'))){
-            populateChatBox(channelName,dataID);
+            populateChatBox(channelName,dataID,obj);
             elem.addClass('selected');
         }
     }
 
-    function scrollEvent(channelName,fn){
+    function scrollEvent(channelName,obj,fn){
         $('.chat-div-candidate').find(settings.chatDivContnet).scroll(function(){
-            var obj=getCandidateFromStoreViaChannel(channelName);
             var dataId=obj.userId;
             var scrollTop=$('.chat-div-candidate[data-id='+dataId+']').find(".chat-div-content").scrollTop();
             var startTimeToken=$('.chat-div-candidate[data-id='+dataId+']').find(".chat-div-content").attr("data-starttime");
@@ -484,20 +480,18 @@ function stickyChatModel(){
         init:init,
         populateChatView:populateChatView,
         populateSideChatView:populateSideChatView,
-        saveToStore:saveToStore,
         receivePresence:receivePresence,
         onClickSidebarChat:onClickSidebarChat,
         populateMessages:populateMessages,
         onClickStickyChat:onClickStickyChat,
-        getCandidateFromStore:getCandidateFromStore,
         onEnterSendMessage:onEnterSendMessage,
         appendSendMessage:appendSendMessage,
         scrollToBottom:scrollToBottom,
         isChatBoxOpen:isChatBoxOpen,
         appendRecievedMessage:appendRecievedMessage,
         openChatBox:openChatBox,
-        getCandidateFromStoreViaChannel:getCandidateFromStoreViaChannel,
-        scrollEvent:scrollEvent
+        scrollEvent:scrollEvent,
+        populateChatBox:populateChatBox
     }
 
 }

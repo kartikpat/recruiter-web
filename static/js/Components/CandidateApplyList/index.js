@@ -17,6 +17,7 @@ jQuery(document).ready( function() {
 	var candidates = candidateList();
     var aCandidate = Candidate();
     var stickyChat=stickyChatModel();   
+    var store=chatStoreModel();
     var theJob = Job();
     var store = Store();
     var filters = Filters();
@@ -28,6 +29,7 @@ jQuery(document).ready( function() {
     theJob.init();
     aCandidate.init();
     stickyChat.init();
+
 
     $(window).scroll(function() {  
         if ($(window).scrollTop() > 500 && globalParameters.newApplication==1) {

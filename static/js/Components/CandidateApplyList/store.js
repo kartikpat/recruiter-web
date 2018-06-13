@@ -16,12 +16,6 @@ function Store (){
 		}
 
 		function updateCandidate(props, candidateId){
-			/* props = {
-				comment: comment,
-				tags: []
-			}
-			*/
-			
 			if(store[candidateId] && props.comment){
 				store[candidateId]["comment"]= props.comment;
 			};
