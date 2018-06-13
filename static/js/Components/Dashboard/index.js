@@ -481,8 +481,6 @@ function onClickShareOnLinkedIn(fn){
 
 	function onFetchFollowUps(topic, data){
 		var isMultiple = true;
-		//Debugging for single view
-		// data = data.concat(data)
 		var totalFollowups = data.length;
 		if(data.length ==1)
 			isMultiple = false
@@ -523,14 +521,15 @@ function onClickShareOnLinkedIn(fn){
 				exp = exp["year"] +'y '+ exp["month"] + 'm'
 				return location+', ' +exp;
 			})(aRow['exp'], aRow['currentLocation'])
+			console.log(aRow["education"][0])
 			card.find('.profile .name').text(aRow['name']).attr('href', '/job/'+aRow['jobId']+'/applications/'+aRow['id']);
 			card.find('.profile .icon img').attr('src', (aRow['img'])?aRow['img'] : "/static/images/noimage.png"  );
 			card.find('.profile .designationOrganization').text(designationOrganization);
 			card.find('.profile .locationExperience').text(locationExperience);
 			card.find('.profile-detail .profession .designationOrganization').text(designationOrganization)
 			card.find('.profile-detail .profession .designationExperience').text(designationExperience);
-			card.find('.profile-detail .education .institute').text(aRow['institute']);
-			card.find('.profile-detail .education .batch').text(aRow['batch']);
+			card.find('.profile-detail .education .institute').text(aRow['education']['institute']);
+			card.find('.profile-detail .education .batch').text(aRow['education']['batch']);
 			card.find('.profile-detail .education .courseType').text(aRow['courseType']);
 			card.find('.profile .jobDetails').text(aRow['title']);
 			card.find('.profile-detail .jobDetails').text(aRow['title']);

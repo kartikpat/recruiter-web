@@ -43,7 +43,8 @@ function ChatEngine(){
 	}
 
 	function fetchHistory(channel, count, startTimeToken, endTimeToken, onFetchHistory) {
-	    pubnub.history({
+		debugger
+		pubnub.history({
 	        channel: channel, //"my_channel",
 	        count: count,
 	        stringifiedTimeToken: false,

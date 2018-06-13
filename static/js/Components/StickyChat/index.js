@@ -126,19 +126,20 @@ $(document).ready(function(){
         if(deviceId == msg['deviceId']){
             return
         }
-        if(stickyChat.isChatBoxOpen()){
+        if(stickyChat.isChatBoxOpen(channelName)){
             stickyChat.appendRecievedMessage(channelName,msg);
             stickyChat.scrollToBottom(m.channel);
         }
         else{
-            stickyChat.openChatBox(channelName);
+            stickyChat.openChatBox(channelName,chatEngine.fetchHistory);
             var obj = stickyChat.getCandidateFromStoreViaChannel(channelName)
             chatEngine.fetchHistory(channelName,20, null, null, function(data,response){
                 onFetchHistory(response,obj,channelName)
             });
-            // stickyChat.scrollToBottom(channelName);
         }   
     }
+
+    
 
     function onNewStatus(s) {
         // handle status

@@ -73,13 +73,11 @@ function stickyChatModel(){
         onClickInfoIcon();
         onFocusChatMessage();
         toggleMinimiseIcon();        
-
         $(".chat-collapsed-candidate-container .chat-collapsed-candidate").click(function(){
             $(this).find(".chat-collapsed-candidate-wrapper").toggleClass("hidden")
         })
 
     }    
-
 
     function saveToStore(dataArray){
         dataArray.forEach(function(anObj) {
@@ -312,6 +310,7 @@ function stickyChatModel(){
                     chatContainerBox.find(settings.footerContainer).addClass("show")
                     chatContainerBox.find(settings.chatDivContnet).scroll(function(){
                         var _that = this;
+                        console.log(this)
                         var startTimeToken=parseInt(chatContainerBox.find(settings.chatDivContnet).attr("data-startTime"));     
                         clearTimeout(ticker);
                         ticker = setTimeout(function(){
@@ -462,13 +461,16 @@ function stickyChatModel(){
     function appendRecievedMessage(channelName,message) {
         var elem = {}
         elem.entry = {}
-        elem.entry.msg = message;
-        var item = (msg.UUID == btoa(recruiterId+"--"+profile["email"])) ? getMsgSentElement(elem):  getMsgReceivedElement(elem);    
+        elem.entry.msg = message.msg;
+        console.log(message);
+        var item =getMsgReceivedElement(elem);    
+        console.log(item[0].outerHTML)
         $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
         $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .chat-div-header").addClass("newMessageHeader")
     }
 
-    function openChatBox(channelName){
+    function openChatBox(channelName,fn){
+        console.log(fn)
         var elem = settings.conversationListing.find(".conversationItem[data-channel-name="+channelName+"]");
         var dataID = elem.attr("data-id")
         var chatContainerBox = settings.chatDivBox.clone().removeClass('prototype hidden');
@@ -492,18 +494,19 @@ function stickyChatModel(){
         chatContainerBox.find(settings.chatInput).attr("data-id",dataID)
         chatContainerBox.find(".no-start").removeClass("hidden")
         chatContainerBox.find(".start").addClass("hidden")
+        console.log(settings.chatCandidateboxes.children().length);
         if(settings.chatCandidateboxes.children().length < maxCandidateChats) {
             settings.chatCandidateboxes.prepend(chatContainerBox);
+            chatContainerBox.find(settings.footerContainer).addClass("show")
             chatContainerBox.find(settings.chatDivContnet).scroll(function(){
                 var _that = this;
                 var startTimeToken=parseInt(chatContainerBox.find(settings.chatDivContnet).attr("data-startTime"));     
                 clearTimeout(ticker);
                 ticker = setTimeout(function(){
                     if(checkScrollEnd(_that))
-                        fn(channelName,messageNumber,dataID,startTimeToken);
+                    fn(channelName,messageNumber,dataID,startTimeToken);
                 },100);
             })
-            chatContainerBox.find(settings.footerContainer).addClass("show")
         }
         else {
             var clonedElement = $(".candidate-collapsed-block.prototype").clone().removeClass('prototype hidden');
@@ -523,32 +526,24 @@ function stickyChatModel(){
         reposition_chat_windows();
         settings.conversationListing.find(".conversationItem[data-id="+dataID+"]").addClass("selected")
         settings.chatDiv.find('.candidate-card[data-id='+dataID+']').addClass("selected-sticky");
-        // fetchHistory(channelName, 20 , null, null, function(status, response) {
-        
-        //     var str = ""
-        //     response["messages"].forEach(function(elem, index){
-        //         if(index == 0 || (index > 0 && (moment(response["messages"][index - 1]["entry"]["time"]).format("DD MM YYYY") != moment(elem["entry"]["time"]).format("DD MM YYYY"))) ) {
-        //             var item = getTimeElement(elem)
-        //             str+=item[0].outerHTML;
-        //         }
-        //         if(elem["entry"]["UUID"] == btoa(recruiterId+'--'+recruiterEmail) ) {
-
-        //             var item = getMsgSentElement(elem)
-        //             str+=item[0].outerHTML;
-        //         }
-        //         else {
-        //             var item = getMsgReceivedElement(elem)
-        //             str+=item[0].outerHTML;
-        //         }
-        //     })
-
-        //     $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").prepend(str)
-        //     $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content").attr("data-startTime", response.startTimeToken )
-        //     $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content").attr("data-endTime", response.endTimeToken)
-        //     initializeTooltip()
-        //     scrollToBottom(channelName)
-        // });
     }
+
+    // function scrollEvent(){
+    //     $('.chat-div-candidate').find(settings.chatDivContnet).scroll(function(){
+    //         var obj=getCandidateFromStoreViaChannel(channelName);
+    //         var dataId=obj.userId;
+    //         var scrollTop=$('.chat-div-candidate[data-id='+dataId+']').find(".chat-div-content").scrollTop();
+    //         console.log(scrollTop)
+    //         clearTimeout(ticker);
+    //         ticker = setTimeout(function(){
+    //             if(scrollTop<5){
+    //                 console.log("i am here");
+    //                  return true;
+    //             }
+    //         },100);
+    //     })
+    //     return true;
+    // }
 
     function onFocusChatMessage(){
         settings.chatCandidateboxes.on('focus','.chat-input', function(){
@@ -786,6 +781,7 @@ function stickyChatModel(){
         appendRecievedMessage:appendRecievedMessage,
         openChatBox:openChatBox,
         getCandidateFromStoreViaChannel:getCandidateFromStoreViaChannel
+        // scrollEvent:scrollEvent
     }
 
 }
