@@ -18,6 +18,7 @@ $(document).ready(function(){
     var stickyChat=stickyChatModel();
     stickyChat.init();   
     fetchRecruiterChats(recruiterId)
+  
     stickyChat.onClickSidebarChat(function(channelName,messageNumber,dataID,startTime){
         var eventObj = {
             event_category: eventMap["viewChatCardClick"]["cat"],
@@ -31,6 +32,13 @@ $(document).ready(function(){
         chatEngine.fetchHistory(channelName,messageNumber,startTime, null, function(data,response){
             onFetchHistory(response,obj,channelName,scroll)
         });
+        stickyChat.scrollEvent(channelName,function(channelName,startTime){
+            scroll=1;
+            chatEngine.fetchHistory(channelName,20,startTime, null, function(data,response){
+                onFetchHistory(response,obj,channelName,scroll)
+            });
+        });
+        
     })
 
 
@@ -46,6 +54,12 @@ $(document).ready(function(){
         var obj = stickyChat.getCandidateFromStore(dataID)
         chatEngine.fetchHistory(channelName,messageNumber,startTime, null, function(data,response){
             onFetchHistory(response,obj,channelName,scroll)
+        });
+        stickyChat.scrollEvent(channelName,function(channelName,startTime){
+            scroll=1;
+            chatEngine.fetchHistory(channelName,20,startTime, null, function(data,response){
+                onFetchHistory(response,obj,channelName,scroll)
+            });
         });
     })
 
@@ -135,6 +149,11 @@ $(document).ready(function(){
             var obj = stickyChat.getCandidateFromStoreViaChannel(channelName)
             chatEngine.fetchHistory(channelName,20, null, null, function(data,response){
                 onFetchHistory(response,obj,channelName)
+            });
+            stickyChat.scrollEvent(channelName,function(channelName,startTime){
+                chatEngine.fetchHistory(channelName,20,startTime, null, function(data,response){
+                    onFetchHistory(response,obj,channelName,scroll)
+                });
             });
         }   
     }

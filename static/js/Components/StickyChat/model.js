@@ -73,11 +73,14 @@ function stickyChatModel(){
         onClickInfoIcon();
         onFocusChatMessage();
         toggleMinimiseIcon();        
+      
         $(".chat-collapsed-candidate-container .chat-collapsed-candidate").click(function(){
             $(this).find(".chat-collapsed-candidate-wrapper").toggleClass("hidden")
         })
 
     }    
+
+//store
 
     function saveToStore(dataArray){
         dataArray.forEach(function(anObj) {
@@ -89,6 +92,7 @@ function stickyChatModel(){
     function getCandidateFromStore(candidateId){
         return chatStore[candidateId]
     }
+
     function getCandidateFromStoreViaChannel(channelName){
         return chatStore[channelName];
     }
@@ -100,6 +104,7 @@ function stickyChatModel(){
         });
     }
 
+    
     
     function populateSideChatView(array) {
         var str = ""
@@ -115,7 +120,6 @@ function stickyChatModel(){
         settings.conversationListing.append(str)
     }
     
-
     function getTimeElement(data) {
         var card = $(".timeSeperator.prototype").clone().removeClass('prototype hidden')
         if(moment(data["entry"]["time"]).format("DD MM YYYY") == moment().format("DD MM YYYY")) {
@@ -136,7 +140,6 @@ function stickyChatModel(){
         // card.find('.msgContent').append("<span class='icon-container'><i class='icon-history-button'></i></span>")
         return card
     }
-
 
     function getMsgReceivedElement(data) {
         var card =settings.messageRecievedPrototype.clone().removeClass('prototype hidden')
@@ -197,15 +200,15 @@ function stickyChatModel(){
                 if(settings.chatCandidateboxes.children().length < maxCandidateChats){
                     settings.chatCandidateboxes.prepend(chatContainerBox);
                     chatContainerBox.find(settings.footerContainer).addClass("show")
-                    chatContainerBox.find(settings.chatDivContnet).scroll(function(){
-                        var _that = this;
-                        var startTimeToken=parseInt(chatContainerBox.find(settings.chatDivContnet).attr("data-startTime"));     
-                        clearTimeout(ticker);
-                        ticker = setTimeout(function(){
-                            if(checkScrollEnd(_that))
-                            fn(channelName,messageNumber,dataID,startTimeToken);
-                        },100);
-                    })
+                    // chatContainerBox.find(settings.chatDivContnet).scroll(function(){
+                    //     var _that = this;
+                    //     var startTimeToken=parseInt(chatContainerBox.find(settings.chatDivContnet).attr("data-startTime"));     
+                    //     clearTimeout(ticker);
+                    //     ticker = setTimeout(function(){
+                    //         if(checkScrollEnd(_that))
+                    //         fn(channelName,messageNumber,dataID,startTimeToken);
+                    //     },100);
+                    // })
     
                 }
                 else {
@@ -308,17 +311,6 @@ function stickyChatModel(){
                 if(settings.chatCandidateboxes.children().length < maxCandidateChats) {
                     settings.chatCandidateboxes.prepend(chatContainerBox);
                     chatContainerBox.find(settings.footerContainer).addClass("show")
-                    chatContainerBox.find(settings.chatDivContnet).scroll(function(){
-                        var _that = this;
-                        console.log(this)
-                        var startTimeToken=parseInt(chatContainerBox.find(settings.chatDivContnet).attr("data-startTime"));     
-                        clearTimeout(ticker);
-                        ticker = setTimeout(function(){
-                            if(checkScrollEnd(_that))
-                            fn(channelName,messageNumber,dataID,startTimeToken);
-                        },100);
-                    })
-    
                 }
                 else {
                     var clonedElement = $(".candidate-collapsed-block.prototype").clone().removeClass('prototype hidden');
@@ -497,16 +489,7 @@ function stickyChatModel(){
         console.log(settings.chatCandidateboxes.children().length);
         if(settings.chatCandidateboxes.children().length < maxCandidateChats) {
             settings.chatCandidateboxes.prepend(chatContainerBox);
-            chatContainerBox.find(settings.footerContainer).addClass("show")
-            chatContainerBox.find(settings.chatDivContnet).scroll(function(){
-                var _that = this;
-                var startTimeToken=parseInt(chatContainerBox.find(settings.chatDivContnet).attr("data-startTime"));     
-                clearTimeout(ticker);
-                ticker = setTimeout(function(){
-                    if(checkScrollEnd(_that))
-                    fn(channelName,messageNumber,dataID,startTimeToken);
-                },100);
-            })
+            chatContainerBox.find(settings.footerContainer).addClass("show");
         }
         else {
             var clonedElement = $(".candidate-collapsed-block.prototype").clone().removeClass('prototype hidden');
@@ -528,22 +511,23 @@ function stickyChatModel(){
         settings.chatDiv.find('.candidate-card[data-id='+dataID+']').addClass("selected-sticky");
     }
 
-    // function scrollEvent(){
-    //     $('.chat-div-candidate').find(settings.chatDivContnet).scroll(function(){
-    //         var obj=getCandidateFromStoreViaChannel(channelName);
-    //         var dataId=obj.userId;
-    //         var scrollTop=$('.chat-div-candidate[data-id='+dataId+']').find(".chat-div-content").scrollTop();
-    //         console.log(scrollTop)
-    //         clearTimeout(ticker);
-    //         ticker = setTimeout(function(){
-    //             if(scrollTop<5){
-    //                 console.log("i am here");
-    //                  return true;
-    //             }
-    //         },100);
-    //     })
-    //     return true;
-    // }
+    function scrollEvent(channelName,fn){
+        $('.chat-div-candidate').find(settings.chatDivContnet).scroll(function(){
+            var obj=getCandidateFromStoreViaChannel(channelName);
+            var dataId=obj.userId;
+            console.log(obj);
+            var scrollTop=$('.chat-div-candidate[data-id='+dataId+']').find(".chat-div-content").scrollTop();
+            var startTimeToken=$('.chat-div-candidate[data-id='+dataId+']').find(".chat-div-content").attr("data-starttime");
+            console.log(startTimeToken)
+            console.log(scrollTop)
+            clearTimeout(ticker);
+            ticker = setTimeout(function(){
+                if(scrollTop<5){
+                    fn(channelName,startTimeToken);
+                }
+            },100);
+        })
+    }
 
     function onFocusChatMessage(){
         settings.chatCandidateboxes.on('focus','.chat-input', function(){
@@ -780,8 +764,8 @@ function stickyChatModel(){
         isChatBoxOpen:isChatBoxOpen,
         appendRecievedMessage:appendRecievedMessage,
         openChatBox:openChatBox,
-        getCandidateFromStoreViaChannel:getCandidateFromStoreViaChannel
-        // scrollEvent:scrollEvent
+        getCandidateFromStoreViaChannel:getCandidateFromStoreViaChannel,
+        scrollEvent:scrollEvent
     }
 
 }
