@@ -142,7 +142,7 @@ $(document).ready(function(){
             stickyChat.scrollToBottom(m.channel);
         }
         else{
-            stickyChat.openChatBox(channelName,chatEngine.fetchHistory);
+            stickyChat.openChatBox(channelName);
             var obj = stickyChat.getCandidateFromStoreViaChannel(channelName)
             chatEngine.fetchHistory(channelName,20, null, null, function(data,response){
                 onFetchHistory(response,obj,channelName,scrollToBottom)
@@ -156,8 +156,6 @@ $(document).ready(function(){
         }   
     }
 
-    
-
     function onNewStatus(s) {
         // handle status
         var category = s.category; // PNConnectedCategory
@@ -168,7 +166,6 @@ $(document).ready(function(){
         var lastTimetoken = s.lastTimetoken; // The last timetoken used in the subscribe request, of type long.
         var currentTimetoken = s.currentTimetoken; // The current timetoken fetched in the subscribe response, which is going to be used in the next request, of type long.
     }
-
 
     function onNewPresence(p) {
         // handle presence

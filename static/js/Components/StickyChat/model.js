@@ -104,8 +104,6 @@ function stickyChatModel(){
         });
     }
 
-    
-    
     function populateSideChatView(array) {
         var str = ""
         array.forEach(function(aCandidate) {
@@ -171,65 +169,70 @@ function stickyChatModel(){
 
     function onClickStickyChat(fn){
         settings.chatDiv.on('click','.candidate-card', function() {
-            if(!($(this).hasClass("selected-sticky"))) {
-                var channelName = $(this).attr("data-channel-name")
-                var chatContainerBox = settings.chatDivBox.clone().removeClass('prototype hidden');
-                chatContainerBox.find(settings.candidateName).text($(this).find(settings.candidateName).text());
-                chatContainerBox.find(settings.candidateName).attr("href","/candidate/"+$(this).attr("data-id")+"/profile");
-                chatContainerBox.find(settings.chatDivHeader).attr("data-id",$(this).attr("data-id"));
-                chatContainerBox.find(settings.infoIcon).attr("data-id",$(this).attr("data-id"));
-                chatContainerBox.find(settings.minusIcon).attr("data-id",$(this).attr("data-id"));
-                chatContainerBox.find(settings.closeIcon).attr("data-id",$(this).attr("data-id"));
-                chatContainerBox.attr("data-id",$(this).attr("data-id"));
-                var dataID = chatContainerBox.attr("data-id");
-                var obj = getCandidateFromStore(dataID)
-                chatContainerBox.attr("data-channel-name",channelName);
-                chatContainerBox.find(settings.infoImg).attr("src", (obj["img"] || "/static/images/noimage.png"))
-                if(obj["lastActive"]) {
-                    chatContainerBox.find(settings.lastActive).text(moment(obj["lastActive"]).format("DD-MM-YYYY")).removeClass("hidden")
-                }
-                chatContainerBox.find(".info-container .primary-content").text(obj["name"] + " works as " + obj["designation"] + " at " + obj["organization"])
-                if(obj["title"] && obj["status"]) {
-                    chatContainerBox.find(".info-container .secondary-content").text(obj["name"] + " has applied to " + obj["title"] + " Current Status is "+stat[obj["status"]]+"").removeClass("hidden")
-                }
-                chatContainerBox.find(settings.chatInput).attr("data-channel-name", channelName)
-                chatContainerBox.find(settings.chatInput).attr("data-id",$(this).attr("data-id") )
-                chatContainerBox.find(".no-start").removeClass("hidden")
-                chatContainerBox.find(".start").addClass("hidden")
-                var that = $(this)
-                if(settings.chatCandidateboxes.children().length < maxCandidateChats){
-                    settings.chatCandidateboxes.prepend(chatContainerBox);
-                    chatContainerBox.find(settings.footerContainer).addClass("show")
-                    // chatContainerBox.find(settings.chatDivContnet).scroll(function(){
-                    //     var _that = this;
-                    //     var startTimeToken=parseInt(chatContainerBox.find(settings.chatDivContnet).attr("data-startTime"));     
-                    //     clearTimeout(ticker);
-                    //     ticker = setTimeout(function(){
-                    //         if(checkScrollEnd(_that))
-                    //         fn(channelName,messageNumber,dataID,startTimeToken);
-                    //     },100);
-                    // })
-    
-                }
-                else {
-                    var clonedElement = $(".candidate-collapsed-block.prototype").clone().removeClass('prototype hidden');
-                    settings.chatCandidateboxes.prepend(chatContainerBox);
-                    chatContainerBox.find(settings.footerContainer).addClass("show")
-                    var hideElement = 1+maxCandidateChats;
-                    var dataIdLocal = $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").attr("data-id");
-                    clonedElement.attr("data-id",dataIdLocal);
-                    clonedElement.html($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").find(settings.candidateName).text()+"<i data-id="+dataIdLocal+" class='icon-cross_icon' aria-hidden='true'></i>");
-                    $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").addClass("hidden");
-                    if(settings.chatCollapsedContainer.hasClass("hidden")) {
-                        settings.chatCollapsedContainer.removeClass("hidden");
-                    }
-                    $(".chat-collapsed-candidate-container .chat-collapsed-candidate .chat-collapsed-candidate-wrapper").append(clonedElement);
-                }
-                reposition_chat_windows();
-                that.addClass("selected-sticky");
-                fn(channelName,messageNumber,dataID);
-            }
+            var channelName = $(this).attr("data-channel-name")
+            var dataID = $(this).attr("data-id");
+            populateChatBox($(this),channelName,dataID)
+            fn(channelName,messageNumber,dataID); 
         })
+    }
+
+
+    function onClickSidebarChat(fn){
+        settings.conversationListing.on('click','.conversationItem', function() {
+            var channelName = $(this).attr("data-channel-name")
+            var dataID = $(this).attr("data-id");
+            populateChatBox($(this),channelName,dataID)
+            fn(channelName,messageNumber,dataID);
+        })
+    }
+
+
+    function populateChatBox(elem,channelName,dataID){
+        if(!(elem.hasClass("selected"))) {
+            var obj = getCandidateFromStore(dataID)
+            var chatContainerBox = settings.chatDivBox.clone().removeClass('prototype hidden');
+            chatContainerBox.find(settings.candidateName).text(obj.name);  
+            chatContainerBox.find(settings.chatDivHeader).attr("data-id",elem.attr("data-id"));
+            chatContainerBox.find(settings.infoIcon).attr("data-id",elem.attr("data-id"));
+            chatContainerBox.find(settings.minusIcon).attr("data-id",elem.attr("data-id"));
+            chatContainerBox.find(settings.closeIcon).attr("data-id",elem.attr("data-id"));
+            chatContainerBox.attr("data-id",elem.attr("data-id"));
+            chatContainerBox.find('.candidate-name').attr("href","/candidate/"+obj.userId+"/profile");
+            chatContainerBox.attr("data-channel-name",channelName);
+            chatContainerBox.find(settings.infoImg).attr("src", (obj["img"] || "/static/images/noimage.png"))
+            chatContainerBox.find(".info-container .primary-content").text(obj["name"] + " works as " + obj["designation"] + " at " + obj["organization"])
+            if(obj["lastActive"]) {
+                chatContainerBox.find(settings.lastActive).text(moment(obj["lastActive"]).format("DD-MM-YYYY")).removeClass("hidden")
+            }
+            if(obj["title"] && obj["status"]) {
+                chatContainerBox.find(".info-container .secondary-content").text(obj["name"] + " has applied to " + obj["title"] + " Current Status is "+stat[obj["status"]]+"").removeClass("hidden")
+            }
+            chatContainerBox.find(settings.chatInput).attr("data-channel-name", channelName)
+            chatContainerBox.find(settings.chatInput).attr("data-id",elem.attr("data-id") );
+            chatContainerBox.find(".no-start").removeClass("hidden")
+            chatContainerBox.find(".start").addClass("hidden")
+            var that = elem
+            if(settings.chatCandidateboxes.children().length < maxCandidateChats) {
+                settings.chatCandidateboxes.prepend(chatContainerBox);
+                chatContainerBox.find(settings.footerContainer).addClass("show")
+            }
+            else {
+                var clonedElement = $(".candidate-collapsed-block.prototype").clone().removeClass('prototype hidden');
+                settings.chatCandidateboxes.prepend(chatContainerBox);
+                chatContainerBox.find(settings.footerContainer).addClass("show");
+                var hideElement = 1+maxCandidateChats;
+                var dataIdLocal = $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").attr("data-id");
+                clonedElement.attr("data-id",dataIdLocal);
+                clonedElement.html($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").find(settings.candidateName).text()+"<i data-id="+dataIdLocal+" class='icon-cross_icon' aria-hidden='true'></i>");
+                $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").addClass("hidden");
+                if(settings.chatCollapsedContainer.hasClass("hidden")) {
+                    settings.chatCollapsedContainer.removeClass("hidden");
+                }
+                $(".chat-collapsed-candidate-container .chat-collapsed-candidate .chat-collapsed-candidate-wrapper").append(clonedElement);
+            }
+            reposition_chat_windows();
+            that.addClass("selected");  
+        }
     }
 
 
@@ -278,59 +281,6 @@ function stickyChatModel(){
         console.log(",,,.,,.,")
         if(scroll==0)
         scrollToBottom(channelName)
-    }
-
-    function onClickSidebarChat(fn){
-        settings.conversationListing.on('click','.conversationItem', function() {
-            if(!($(this).hasClass("selected"))) {
-                var channelName = $(this).attr("data-channel-name")
-                var chatContainerBox = settings.chatDivBox.clone().removeClass('prototype hidden');
-                chatContainerBox.find(settings.candidateName).text($(this).find(settings.userName).text());
-                chatContainerBox.find(settings.chatDivHeader).attr("data-id",$(this).attr("data-id"));
-                chatContainerBox.find(settings.infoIcon).attr("data-id",$(this).attr("data-id"));
-                chatContainerBox.find(settings.minusIcon).attr("data-id",$(this).attr("data-id"));
-                chatContainerBox.find(settings.closeIcon).attr("data-id",$(this).attr("data-id"));
-                chatContainerBox.attr("data-id",$(this).attr("data-id"));
-                var dataID = $(this).attr("data-id");
-                var obj = getCandidateFromStore(dataID)
-                chatContainerBox.find('.candidate-name').attr("href","/candidate/"+obj.userId+"/profile");
-                chatContainerBox.attr("data-channel-name",channelName);
-                chatContainerBox.find(settings.infoImg).attr("src", (obj["img"] || "/static/images/noimage.png"))
-                chatContainerBox.find(".info-container .primary-content").text(obj["name"] + " works as " + obj["designation"] + " at " + obj["organization"])
-                if(obj["lastActive"]) {
-                    chatContainerBox.find(settings.lastActive).text(moment(obj["lastActive"]).format("DD-MM-YYYY")).removeClass("hidden")
-                }
-                if(obj["title"] && obj["status"]) {
-                    chatContainerBox.find(".info-container .secondary-content").text(obj["name"] + " has applied to " + obj["title"] + " Current Status is "+stat[obj["status"]]+"").removeClass("hidden")
-                }
-                chatContainerBox.find(settings.chatInput).attr("data-channel-name", channelName)
-                chatContainerBox.find(settings.chatInput).attr("data-id",$(this).attr("data-id") );
-                chatContainerBox.find(".no-start").removeClass("hidden")
-                chatContainerBox.find(".start").addClass("hidden")
-                var that = $(this)
-                if(settings.chatCandidateboxes.children().length < maxCandidateChats) {
-                    settings.chatCandidateboxes.prepend(chatContainerBox);
-                    chatContainerBox.find(settings.footerContainer).addClass("show")
-                }
-                else {
-                    var clonedElement = $(".candidate-collapsed-block.prototype").clone().removeClass('prototype hidden');
-                    settings.chatCandidateboxes.prepend(chatContainerBox);
-                    chatContainerBox.find(settings.footerContainer).addClass("show");
-                    var hideElement = 1+maxCandidateChats;
-                    var dataIdLocal = $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").attr("data-id");
-                    clonedElement.attr("data-id",dataIdLocal);
-                    clonedElement.html($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").find(settings.candidateName).text()+"<i data-id="+dataIdLocal+" class='icon-cross_icon' aria-hidden='true'></i>");
-                    $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").addClass("hidden");
-                    if(settings.chatCollapsedContainer.hasClass("hidden")) {
-                        settings.chatCollapsedContainer.removeClass("hidden");
-                    }
-                    $(".chat-collapsed-candidate-container .chat-collapsed-candidate .chat-collapsed-candidate-wrapper").append(clonedElement);
-                }
-                reposition_chat_windows();
-                that.addClass("selected");
-                fn(channelName,messageNumber,dataID);
-            }
-        })
     }
 
     function closeCollapsedStickyChat(){
@@ -461,54 +411,55 @@ function stickyChatModel(){
         $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .chat-div-header").addClass("newMessageHeader")
     }
 
-    function openChatBox(channelName,fn){
-        console.log(fn)
+
+    function openChatBox(channelName){
         var elem = settings.conversationListing.find(".conversationItem[data-channel-name="+channelName+"]");
         var dataID = elem.attr("data-id")
-        var chatContainerBox = settings.chatDivBox.clone().removeClass('prototype hidden');
-        chatContainerBox.find(settings.chatDivHeader).attr("data-id",dataID);
-        chatContainerBox.find(settings.infoIcon).attr("data-id",dataID);
-        chatContainerBox.find(settings.minusIcon).attr("data-id",dataID);
-        chatContainerBox.find(settings.closeIcon).attr("data-id",dataID);
-        chatContainerBox.attr("data-id",dataID);
-        var obj = getCandidateFromStore(dataID)
-        chatContainerBox.find(settings.candidateName).text(obj["name"]);
-        chatContainerBox.attr("data-channel-name",channelName);
-        chatContainerBox.find(settings.infoImg).attr("src", (obj["img"] || "/static/images/noimage.png"))
-        chatContainerBox.find(".info-container .primary-content").text(obj["name"] + " works as " + obj["designation"] + " at " + obj["organization"])
-        if(obj["lastActive"]) {
-            chatContainerBox.find(settings.lastActive).text(moment(obj["lastActive"]).format("DD-MM-YYYY")).removeClass("hidden")
-        }
-        if(obj["title"] && obj["status"]) {
-            chatContainerBox.find(".info-container .secondary-content").text(obj["name"] + " has applied to " + obj["title"] + " Current Status is "+stat[obj["status"]]+"").removeClass("hidden")
-        }
-        chatContainerBox.find(settings.chatInput).attr("data-channel-name", channelName)
-        chatContainerBox.find(settings.chatInput).attr("data-id",dataID)
-        chatContainerBox.find(".no-start").removeClass("hidden")
-        chatContainerBox.find(".start").addClass("hidden")
-        console.log(settings.chatCandidateboxes.children().length);
-        if(settings.chatCandidateboxes.children().length < maxCandidateChats) {
-            settings.chatCandidateboxes.prepend(chatContainerBox);
-            chatContainerBox.find(settings.footerContainer).addClass("show");
-        }
-        else {
-            var clonedElement = $(".candidate-collapsed-block.prototype").clone().removeClass('prototype hidden');
-            settings.chatCandidateboxes.prepend(chatContainerBox);
-            chatContainerBox.find(settings.footerContainer).addClass("show")
+        populateChatBox(elem,channelName,dataID);
+        // var chatContainerBox = settings.chatDivBox.clone().removeClass('prototype hidden');
+        // chatContainerBox.find(settings.chatDivHeader).attr("data-id",dataID);
+        // chatContainerBox.find(settings.infoIcon).attr("data-id",dataID);
+        // chatContainerBox.find(settings.minusIcon).attr("data-id",dataID);
+        // chatContainerBox.find(settings.closeIcon).attr("data-id",dataID);
+        // chatContainerBox.attr("data-id",dataID);
+        // var obj = getCandidateFromStore(dataID)
+        // chatContainerBox.find(settings.candidateName).text(obj["name"]);
+        // chatContainerBox.attr("data-channel-name",channelName);
+        // chatContainerBox.find(settings.infoImg).attr("src", (obj["img"] || "/static/images/noimage.png"))
+        // chatContainerBox.find(".info-container .primary-content").text(obj["name"] + " works as " + obj["designation"] + " at " + obj["organization"])
+        // if(obj["lastActive"]) {
+        //     chatContainerBox.find(settings.lastActive).text(moment(obj["lastActive"]).format("DD-MM-YYYY")).removeClass("hidden")
+        // }
+        // if(obj["title"] && obj["status"]) {
+        //     chatContainerBox.find(".info-container .secondary-content").text(obj["name"] + " has applied to " + obj["title"] + " Current Status is "+stat[obj["status"]]+"").removeClass("hidden")
+        // }
+        // chatContainerBox.find(settings.chatInput).attr("data-channel-name", channelName)
+        // chatContainerBox.find(settings.chatInput).attr("data-id",dataID)
+        // chatContainerBox.find(".no-start").removeClass("hidden")
+        // chatContainerBox.find(".start").addClass("hidden")
+        // console.log(settings.chatCandidateboxes.children().length);
+        // if(settings.chatCandidateboxes.children().length < maxCandidateChats) {
+        //     settings.chatCandidateboxes.prepend(chatContainerBox);
+        //     chatContainerBox.find(settings.footerContainer).addClass("show");
+        // }
+        // else {
+        //     var clonedElement = $(".candidate-collapsed-block.prototype").clone().removeClass('prototype hidden');
+        //     settings.chatCandidateboxes.prepend(chatContainerBox);
+        //     chatContainerBox.find(settings.footerContainer).addClass("show")
 
-            var hideElement = 1+maxCandidateChats;
-            var dataIdLocal = $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").attr("data-id");
-            clonedElement.attr("data-id",dataIdLocal);
-            clonedElement.html($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").find(settings.candidateName).text()+"<i data-id="+dataIdLocal+" class='icon-cross_icon' aria-hidden='true'></i>");
-            $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").addClass("hidden");
-            if(settings.chatCollapsedContainer.hasClass("hidden")) {
-                settings.chatCollapsedContainer.removeClass("hidden");
-            }
-            $(".chat-collapsed-candidate-container .chat-collapsed-candidate .chat-collapsed-candidate-wrapper").append(clonedElement);
-        }
-        reposition_chat_windows();
-        settings.conversationListing.find(".conversationItem[data-id="+dataID+"]").addClass("selected")
-        settings.chatDiv.find('.candidate-card[data-id='+dataID+']').addClass("selected-sticky");
+        //     var hideElement = 1+maxCandidateChats;
+        //     var dataIdLocal = $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").attr("data-id");
+        //     clonedElement.attr("data-id",dataIdLocal);
+        //     clonedElement.html($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").find(settings.candidateName).text()+"<i data-id="+dataIdLocal+" class='icon-cross_icon' aria-hidden='true'></i>");
+        //     $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").addClass("hidden");
+        //     if(settings.chatCollapsedContainer.hasClass("hidden")) {
+        //         settings.chatCollapsedContainer.removeClass("hidden");
+        //     }
+        //     $(".chat-collapsed-candidate-container .chat-collapsed-candidate .chat-collapsed-candidate-wrapper").append(clonedElement);
+        // }
+        // reposition_chat_windows();
+        // settings.conversationListing.find(".conversationItem[data-id="+dataID+"]").addClass("selected")
+        // settings.chatDiv.find('.candidate-card[data-id='+dataID+']').addClass("selected-sticky");
     }
 
     function scrollEvent(channelName,fn){
@@ -700,7 +651,6 @@ function stickyChatModel(){
             settings.conversationListing.find(".conversationItem[data-id="+array[0]["userID"]+"]").addClass("selected")
         }
     }
-
 
     function reposition_chat_windows() {
         var rightOffset = 290;
