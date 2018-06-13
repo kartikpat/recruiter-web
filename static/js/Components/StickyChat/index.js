@@ -18,7 +18,7 @@ $(document).ready(function(){
     chatEngine.addListeners(onNewMessage, onNewPresence, onNewStatus);
     var stickyChat=stickyChatModel();
     stickyChat.init();   
-    fetchRecruiterChats(recruiterId)
+    fetchRecruiterChats(recruiterId);
   
     stickyChat.onClickSidebarChat(function(channelName,messageNumber,dataID,startTime){
         var scrollToBottom=0;
@@ -59,6 +59,7 @@ $(document).ready(function(){
         });
     })
 
+
     stickyChat.onEnterSendMessage(function(dataID,channelName,message){
         var eventObj = {
             event_category: eventMap["sendMsg"]["cat"],
@@ -97,6 +98,7 @@ $(document).ready(function(){
                 text: message
             })        
     })
+
 
     function onFetchHistory(response,obj,channelName,scroll) {
         stickyChat.populateMessages(response,obj,channelName,scroll)

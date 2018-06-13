@@ -12,24 +12,11 @@ var globalParameters = {
 }
 var screenName = "candidate-apply-list";
 
-
 jQuery(document).ready( function() {
-
-
-    // if (sessionStorage.scrollTop != "undefined") {
-    //     console.log(sessionStorage.scrollTop)
-    //     $(window).scrollTop(4389);
-    // }
-    
-    // $(window).scroll(function() {
-    //     sessionStorage.scrollTop = $(this).scrollTop();
-    //     console.log("here..here..")
-    //     console.log(sessionStorage.scrollTop)
-    // });
-        
     // creating the instance of models
 	var candidates = candidateList();
     var aCandidate = Candidate();
+    var stickyChat=stickyChatModel();   
     var theJob = Job();
     var store = Store();
     var filters = Filters();
@@ -40,6 +27,7 @@ jQuery(document).ready( function() {
     candidates.init(profile, baseUrl);
     theJob.init();
     aCandidate.init();
+    stickyChat.init();
 
     $(window).scroll(function() {  
         if ($(window).scrollTop() > 500 && globalParameters.newApplication==1) {
@@ -275,7 +263,8 @@ jQuery(document).ready( function() {
         var candidate = store.getCandidateFromStore(applicationId);
         var array = [];
         array.push(candidate);
-        cloneStickyChat(array, recruiterId, jobId, applicationId)
+        var channelName="iimjobs--r"+recruiterId+'-j'+array[0]['userID'];
+        stickyChat.openChatBox(channelName);
     })
 
     aCandidate.onClickSeeMoreRec(function() {
@@ -291,7 +280,8 @@ jQuery(document).ready( function() {
         var candidate = store.getCandidateFromStore(applicationId);
         var array = [];
         array.push(candidate);
-        cloneStickyChat(array, recruiterId, jobId, applicationId)
+        var channelName="iimjobs--r"+recruiterId+'-j'+array[0]['userID'];
+        stickyChat.openChatBox(channelName);
     })
 
     aCandidate.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
