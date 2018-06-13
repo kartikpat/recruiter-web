@@ -1,5 +1,6 @@
 var channelsArray = []
 
+
 function getDeviceId() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -20,45 +21,40 @@ $(document).ready(function(){
     fetchRecruiterChats(recruiterId)
   
     stickyChat.onClickSidebarChat(function(channelName,messageNumber,dataID,startTime){
+        var scrollToBottom=0;
         var eventObj = {
             event_category: eventMap["viewChatCardClick"]["cat"],
             event_label: 'origin='+origin+',recId='+recruiterId+''
         }
         sendEvent(eventMap["viewChatCardClick"]["event"], eventObj)
-        if(!startTime){
-            var scroll=0;
-        }
         var obj = stickyChat.getCandidateFromStore(dataID)
         chatEngine.fetchHistory(channelName,messageNumber,startTime, null, function(data,response){
-            onFetchHistory(response,obj,channelName,scroll)
+            onFetchHistory(response,obj,channelName,scrollToBottom)
         });
         stickyChat.scrollEvent(channelName,function(channelName,startTime){
-            scroll=1;
+            scrollToBottom=1;
             chatEngine.fetchHistory(channelName,20,startTime, null, function(data,response){
-                onFetchHistory(response,obj,channelName,scroll)
+                onFetchHistory(response,obj,channelName,scrollToBottom)
             });
         });
-        
     })
 
 
     stickyChat.onClickStickyChat(function(channelName,messageNumber,dataID,startTime){
+        var scrollToBottom=0;
         var eventObj = {
             event_category: eventMap["viewChatCardClick"]["cat"],
             event_label: 'origin='+origin+',recId='+recruiterId+''
         }
         sendEvent(eventMap["viewChatCardClick"]["event"], eventObj);
-        if(!startTime){
-            var scroll=0;
-        }
         var obj = stickyChat.getCandidateFromStore(dataID)
         chatEngine.fetchHistory(channelName,messageNumber,startTime, null, function(data,response){
-            onFetchHistory(response,obj,channelName,scroll)
+            onFetchHistory(response,obj,channelName,scrollToBottom)
         });
         stickyChat.scrollEvent(channelName,function(channelName,startTime){
-            scroll=1;
+            scrollToBottom=1;
             chatEngine.fetchHistory(channelName,20,startTime, null, function(data,response){
-                onFetchHistory(response,obj,channelName,scroll)
+                onFetchHistory(response,obj,channelName,scrollToBottom)
             });
         });
     })
@@ -137,6 +133,7 @@ $(document).ready(function(){
         var subscribedChannel = m.subscribedChannel;
         var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
         var pubTT = m.timetoken; // Publish timetoken
+        var scrollToBottom=0;
         if(deviceId == msg['deviceId']){
             return
         }
@@ -148,11 +145,12 @@ $(document).ready(function(){
             stickyChat.openChatBox(channelName,chatEngine.fetchHistory);
             var obj = stickyChat.getCandidateFromStoreViaChannel(channelName)
             chatEngine.fetchHistory(channelName,20, null, null, function(data,response){
-                onFetchHistory(response,obj,channelName)
+                onFetchHistory(response,obj,channelName,scrollToBottom)
             });
             stickyChat.scrollEvent(channelName,function(channelName,startTime){
+                scrollToBottom=1;
                 chatEngine.fetchHistory(channelName,20,startTime, null, function(data,response){
-                    onFetchHistory(response,obj,channelName,scroll)
+                    onFetchHistory(response,obj,channelName,scrollToBottom)
                 });
             });
         }   
