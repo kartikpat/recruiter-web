@@ -104,25 +104,12 @@ $(document).ready(function(){
             })        
     })
 
-    // stickyChat.openChatBox(function(channelName){
-    //     var obj = stickyChat.getCandidateFromStoreViaChannel(channelName)
-    //     stickyChat.populateChatBox(channelName,dataID,obj);
-    //     chatEngine.fetchHistory(channelName,20, null, null, function(data,response){
-    //         onFetchHistory(response,obj,channelName,scrollToBottom)
-    //     });
-    //     stickyChat.scrollEvent(channelName,function(channelName,startTime){
-    //         scrollToBottom=1;
-    //         chatEngine.fetchHistory(channelName,20,startTime, null, function(data,response){
-    //             onFetchHistory(response,obj,channelName,scrollToBottom)
-    //         });
-    //     });
-    // })
-
 
     function onFetchHistory(response,obj,channelName,scroll) {
         stickyChat.populateMessages(response,obj,channelName,scroll)
     }
 
+    
     function onFetchRecruiterChats(topic, data) {
         stickyChat.populateChatView(data);
         stickyChat.populateSideChatView(data);
