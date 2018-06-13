@@ -423,6 +423,7 @@ function onClickShareOnLinkedIn(fn){
 		if(data.length >0 )
 			recentJobsContainer.removeClass('hidden')
 	}
+
 	var fetchJobsSubscription = pubsub.subscribe("fetchedJobs", onFetchJobs);
 
 	function onVisit(){
@@ -519,6 +520,8 @@ function onClickShareOnLinkedIn(fn){
 			// 	return fromExp + ' to ' + toExp;
 
 			// })(aRow["currentExperience"]['fromExp'],aRow['toExp'])
+			console.log(aRow['education'][0]['batch'])
+
 			var locationExperience = (function(exp, location){
 				exp = exp["year"] +'y '+ exp["month"] + 'm'
 				return location+', ' +exp;
@@ -530,7 +533,7 @@ function onClickShareOnLinkedIn(fn){
 			card.find('.profile-detail .profession .designationOrganization').text(designationOrganization)
 			card.find('.profile-detail .profession .designationExperience').text(designationExperience);
 			card.find('.profile-detail .education .institute').text(aRow['education'][0]['institute']);
-			card.find('.profile-detail .education .batch').text(aRow['education'][0]['batch']);
+			card.find('.profile-detail .education .batch').text(aRow['education'][0]['batch']['from']+" to "+aRow['education'][0]['batch']['from']);
 			card.find('.profile-detail .education .courseType').text(aRow['education'][0]['courseType']);
 			card.find('.profile .jobDetails').text(aRow['title']);
 			card.find('.profile-detail .jobDetails').text(aRow['title']);
@@ -649,7 +652,7 @@ function onClickShareOnLinkedIn(fn){
 		var startdate = moment();
 		startdate = startdate.subtract(15,"days");
 		startdate = startdate.format("YYYY-MM-DD");
-		fetchFollowUps(recruiterId,{pageContent: 5, pageNumber: 1});
+		fetchFollowUps(recruiterId,{pageContent: 3, pageNumber: 1});
 		var currentDate=moment().format("YYYY-MM-DD");
 		fetchRecruiterCalendar(recruiterId);
 		fetchInterviews(recruiterId,{pageContent: 6, pageNumber: 1, status: 2,fromDate:currentDate});
