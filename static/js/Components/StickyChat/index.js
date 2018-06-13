@@ -51,6 +51,7 @@ $(document).ready(function(){
         }
         sendEvent(eventMap["viewChatCardClick"]["event"], eventObj);
         var obj = stickyChat.getCandidateFromStore(dataID)
+        stickyChat.populateChatBox(channelName,dataID,obj);
         chatEngine.fetchHistory(channelName,messageNumber,startTime, null, function(data,response){
             onFetchHistory(response,obj,channelName,scrollToBottom)
         });
@@ -62,6 +63,7 @@ $(document).ready(function(){
         });
     })
 
+        
 
     stickyChat.onEnterSendMessage(function(dataID,channelName,message){
         var eventObj = {
@@ -102,8 +104,9 @@ $(document).ready(function(){
             })        
     })
 
-    // stickyChat.openChatBox(channelName,function(){
+    // stickyChat.openChatBox(function(channelName){
     //     var obj = stickyChat.getCandidateFromStoreViaChannel(channelName)
+    //     stickyChat.populateChatBox(channelName,dataID,obj);
     //     chatEngine.fetchHistory(channelName,20, null, null, function(data,response){
     //         onFetchHistory(response,obj,channelName,scrollToBottom)
     //     });

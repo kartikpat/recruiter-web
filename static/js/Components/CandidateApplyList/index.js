@@ -17,7 +17,7 @@ jQuery(document).ready( function() {
 	var candidates = candidateList();
     var aCandidate = Candidate();
     var stickyChat=stickyChatModel();   
-    var store=chatStoreModel();
+    var storeChat=chatStoreModel();
     var theJob = Job();
     var store = Store();
     var filters = Filters();
@@ -30,6 +30,7 @@ jQuery(document).ready( function() {
     aCandidate.init();
     stickyChat.init();
 
+    console.log(storeChat.getStore())
 
     $(window).scroll(function() {  
         if ($(window).scrollTop() > 500 && globalParameters.newApplication==1) {
@@ -266,7 +267,10 @@ jQuery(document).ready( function() {
         var array = [];
         array.push(candidate);
         var channelName="iimjobs--r"+recruiterId+'-j'+array[0]['userID'];
-        stickyChat.openChatBox(channelName);
+        console.log(storeChat.getStore());
+        var obj=storeChat.getCandidateFromStoreViaChannel(channelName);
+        console.log(obj);
+        stickyChat.openChatBox(channelName,obj);
     })
 
     aCandidate.onClickSeeMoreRec(function() {

@@ -1,6 +1,9 @@
 
+
+var chatStore={};
+
 function chatStoreModel(){
-    var chatStore={};
+    
     function saveToStore(dataArray){
         dataArray.forEach(function(anObj) {
             chatStore[anObj["userId"]] = anObj;
@@ -15,9 +18,16 @@ function chatStoreModel(){
     function getCandidateFromStoreViaChannel(channelName){
         return chatStore[channelName];
     }
+    
+    function getStore(){
+        return chatStore;
+    }
+
     return {
 		saveToStore: saveToStore,
 		getCandidateFromStore: getCandidateFromStore,
-		getCandidateFromStoreViaChannel:getCandidateFromStoreViaChannel
-	}
+		getCandidateFromStoreViaChannel:getCandidateFromStoreViaChannel,
+        getStore:getStore
+    }
 }    
+

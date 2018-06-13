@@ -737,6 +737,7 @@ $(document).ready(function(){
                 array[0]["designation"] == elem["designation"]
             }
         })
+        
         if(!(chatContainer.find('.candidate-card[data-channel-name="iimjobs--r'+recruiterId+'-j'+array[0]["userID"]+'"]').length) ) {
             postRequest(baseUrl+"/recruiter/"+recruiterId+"/job/"+jobId+"/application/"+applicationId+"/action/chat", null, {}, function(res, status, xhr){
                 if(res.status && res.status =='success'){
