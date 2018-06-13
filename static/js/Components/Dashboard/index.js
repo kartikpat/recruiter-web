@@ -529,9 +529,9 @@ function onClickShareOnLinkedIn(fn){
 			card.find('.profile .locationExperience').text(locationExperience);
 			card.find('.profile-detail .profession .designationOrganization').text(designationOrganization)
 			card.find('.profile-detail .profession .designationExperience').text(designationExperience);
-			card.find('.profile-detail .education .institute').text(aRow['institute']);
-			card.find('.profile-detail .education .batch').text(aRow['batch']);
-			card.find('.profile-detail .education .courseType').text(aRow['courseType']);
+			card.find('.profile-detail .education .institute').text(aRow['education'][0]['institute']);
+			card.find('.profile-detail .education .batch').text(aRow['education'][0]['batch']);
+			card.find('.profile-detail .education .courseType').text(aRow['education'][0]['courseType']);
 			card.find('.profile .jobDetails').text(aRow['title']);
 			card.find('.profile-detail .jobDetails').text(aRow['title']);
 			if(index==totalFollowups-1 &&  showCount >=index){
@@ -649,11 +649,10 @@ function onClickShareOnLinkedIn(fn){
 		var startdate = moment();
 		startdate = startdate.subtract(15,"days");
 		startdate = startdate.format("YYYY-MM-DD");
-		fetchFollowUps(recruiterId);
+		fetchFollowUps(recruiterId,{pageContent: 5, pageNumber: 1});
 		var currentDate=moment().format("YYYY-MM-DD");
 		fetchRecruiterCalendar(recruiterId);
 		fetchInterviews(recruiterId,{pageContent: 6, pageNumber: 1, status: 2,fromDate:currentDate});
-
 		$(".createCalendar").click(function(){
             var eventObj = {
               event_category: eventMap["calendarSetup"]["cat"],
