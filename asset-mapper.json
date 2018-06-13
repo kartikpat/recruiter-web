@@ -729,6 +729,7 @@
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
 				"static/js/Services/sendInterviewInvite.js",
+				"static/js/Services/submitChatProfile.js",
 				"static/js/Services/fetchJobApplications.js",
 				"static/js/Services/fetchJob.js",
 				"static/js/Services/fetchjobCalendars.js",

@@ -63,8 +63,6 @@ $(document).ready(function(){
         });
     })
 
-        
-
     stickyChat.onEnterSendMessage(function(dataID,channelName,message){
         var eventObj = {
             event_category: eventMap["sendMsg"]["cat"],
@@ -104,12 +102,10 @@ $(document).ready(function(){
             })        
     })
 
-
     function onFetchHistory(response,obj,channelName,scroll) {
         stickyChat.populateMessages(response,obj,channelName,scroll)
     }
 
-    
     function onFetchRecruiterChats(topic, data) {
         stickyChat.populateChatView(data);
         stickyChat.populateSideChatView(data);
@@ -122,8 +118,10 @@ $(document).ready(function(){
         errorHandler(data)
     }
 
+
     var fetchedRecruiterChatsSuccessSubscription = pubsub.subscribe('fetchedRecruiterChats', onFetchRecruiterChats)
 	var fetchedRecruiterChatsFailSubscription = pubsub.subscribe('fetchedRecruiterChatsFail', onFetchRecruiterChatsFail)
+
 
     function getArray(array) {
         var tempArray = [];
@@ -133,6 +131,7 @@ $(document).ready(function(){
             return tempArray;
     }
 
+    
     function onNewMessage(m) {
         var actualChannel = m.actualChannel;
         var channelName = m.channel; // The channel for which the message belongs
