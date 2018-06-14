@@ -360,6 +360,9 @@
 .icon-history-button::before {
   content: '\e864'; }
 
+.icon-clock-1::before {
+  content: '\e852'; }
+
 .footer {
   width: 100%;
   background: #2b2b2b;

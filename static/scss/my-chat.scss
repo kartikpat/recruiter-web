@@ -339,7 +339,7 @@
 							margin:15px 0;
 							clear:both;
 							overflow:auto;
-							padding: 15px 0;
+							// padding: 15px 0;
 							&.received {
 								.user-image {
 									float:left;
@@ -433,6 +433,13 @@
 										.icon-history-button::before {
 											content: '\e864';
 											font-size: 12px;
+											vertical-align: middle;
+											margin-left: 10px;
+											color: #888888;
+										}
+										.icon-clock-1::before{
+											content: '\e852';
+											font-size: 11px;
 											vertical-align: middle;
 											margin-left: 10px;
 											color: #888888;

@@ -74,10 +74,12 @@ function Chat() {
    function addToList(dataArray){
        var str = '';
        $('.loading.loaderScroller.first').addClass("hidden")
-
+       debugger
        if(!dataArray.length && dataArray.index!=1) {
-        return $(".empty-screen.no-list").removeClass("hidden")
-       }
+            settings.welcomeContainer.addClass("hidden")
+            $(".empty-screen.no-list").removeClass("hidden")
+            return
+        }
 
        dataArray.forEach(function(aData, index){
            var item = createElement(aData);
@@ -87,7 +89,7 @@ function Chat() {
        });
        settings.conversationItemList.html(str);
         settings.conversationItemList.closest(".conversations-list").removeClass("hidden")
-        settings.welcomeContainer.removeClass("hidden")
+        // settings.welcomeContainer.removeClass("hidden")
    }
 
    // function setProfile(obj) {
@@ -110,7 +112,6 @@ function Chat() {
 
    function onClickSingleChatItem(fn) {
        settings.conversationItemList.on('click', settings.conversationItemClass, function(){
-
            $(settings.conversationItemClass).removeClass("conversation-item-active")
            $(this).addClass("conversation-item-active")
            var channelName = $(this).attr("data-channel-name");
@@ -159,7 +160,7 @@ function Chat() {
        time += moment(data["entry"]["time"]).format("hh:mm a");
        card.find(".msgContent").html(data["entry"]["msg"]).attr("title", time)
        if(status==1){
-          card.find(".msgContent").append("<span class='icon-chatContainer'><i class='icon-history-button'></i></span>")
+          card.find(".msgContent").append("<span class='icon-chatContainer'><i class='icon-clock-1'></i></span>")
        }
        return card
    }
@@ -326,7 +327,7 @@ function Chat() {
    function setDeliveredState(id){
     if(!id)
       return
-      $('#'+id).find(settings.statePendingClass).removeClass('icon-history-button').addClass('icon-tick');
+      $('#'+id).find(settings.statePendingClass).removeClass('icon-clock-1').addClass('icon-tick');
    }
 
    function setFailedState(id){
