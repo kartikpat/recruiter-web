@@ -42,6 +42,7 @@ $(document).ready(function(){
         });
     })
 
+    console.log(store.getStore())
 
     stickyChat.onClickStickyChat(function(channelName,messageNumber,dataID,startTime){
         var scrollToBottom=0;
