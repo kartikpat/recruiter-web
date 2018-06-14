@@ -241,6 +241,8 @@ function Candidate() {
         initializeTooltip();
         item.preferredLocationDetail.text(aData["preferredLocation"]).removeClass("shell");
         // item.contact.text(aData["phone"] || "NA").removeClass("shell");
+        console.log(aData);
+        console.log("here");
         item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY') || "NA").removeClass("shell");
         if(aData["notice"] == 7) {
             item.notice.text("Immediately Available").removeClass("shell");
