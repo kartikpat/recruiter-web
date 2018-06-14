@@ -38,7 +38,7 @@ function Candidate() {
         settings.candidateDownloadResume = $(".candidateDownloadResume");
         settings.selectDefaultCalendar = $(".selectDefaultCalendar");
         settings.pageTitle=$('.titlePage');
-        settings.candidateResumeShell=$(".candidateItem shell");
+        settings.candidateResumeShell=$(".candidateResumeShell");
         initializeTooltip();
         jQuery("#tabbed-content").tabs({
             create: function(){
@@ -239,11 +239,9 @@ function Candidate() {
         item.preferredLocation.text(preferredLocationStr).removeClass("shell");
         item.preferredLocation.attr("title",locationTitle).addClass('tooltip');
         initializeTooltip();
-        // item.preferredLocationDetail.text(aData["preferredLocation"]).removeClass("shell");
+        item.preferredLocationDetail.text(aData["preferredLocation"]).removeClass("shell");
         // item.contact.text(aData["phone"] || "NA").removeClass("shell");
-        console.log(aData);
-        console.log("here");
-        item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY') || "NA").removeClass("shell");
+        // item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY') || "NA").removeClass("shell");
         if(aData["notice"] == 7) {
             item.notice.text("Immediately Available").removeClass("shell");
         }
