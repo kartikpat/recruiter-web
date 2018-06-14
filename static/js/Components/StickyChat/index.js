@@ -51,7 +51,7 @@ $(document).ready(function(){
             event_label: 'origin='+origin+',recId='+recruiterId+''
         }
         sendEvent(eventMap["viewChatCardClick"]["event"], eventObj);
-        var obj = stickyChat.getCandidateFromStore(dataID)
+        var obj = store.getCandidateFromStore(dataID)
         stickyChat.populateChatBox(channelName,dataID,obj);
         chatEngine.fetchHistory(channelName,messageNumber,startTime, null, function(data,response){
             onFetchHistory(response,obj,channelName,scrollToBottom)

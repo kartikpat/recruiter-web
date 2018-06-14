@@ -60,21 +60,22 @@ function stickyChatModel(){
             settings.chatDiv.removeClass("hidden")
         }
 
-        $(".chat-collapsed-candidate-container .chat-collapsed-candidate").click(function(){
-            $(this).find(".chat-collapsed-candidate-wrapper").toggleClass("hidden")
-        })
-
+        
         if(flag==1)
         return
-        
+
+        $(".chat-collapsed-candidate-container .chat-collapsed-candidate").click(function(){
+            $(this).find(".chat-collapsed-candidate-wrapper").toggleClass("hidden")
+        }) 
+
+        minimizeSideBarChat();
         closeCollapsedSidebarChat();
         closeCollapsedStickyChat();
         onClickCandNameStopEvent();
-        minimizeSideBarChat();
         onClickCloseSidebarChat();
         onClickInfoIcon();
         onFocusChatMessage();
-        toggleMinimiseIcon();        
+        toggleMinimiseIcon();       
     }    
 
     function toggleMinimiseIcon(){
