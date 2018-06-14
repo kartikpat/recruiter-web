@@ -29,9 +29,8 @@ jQuery(document).ready( function() {
     candidates.init(profile, baseUrl);
     theJob.init();
     aCandidate.init();
-    stickyChat.init();
+    stickyChat.init(1);
 
-    console.log(storeChat.getStore())
 
     $(window).scroll(function() {  
         if ($(window).scrollTop() > 500 && globalParameters.newApplication==1) {
@@ -42,7 +41,6 @@ jQuery(document).ready( function() {
         }
            
     });
-
 
     var obj = getQueryParameters()
     if(!isEmpty(obj)) {

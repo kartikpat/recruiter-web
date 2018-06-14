@@ -16,7 +16,7 @@ function stickyChatModel(){
         5: "Reviewed"
     };
 
-    function init(){
+    function init(flag){
         settings.chatCollapsedContainer=$(".chat-collapsed-candidate-container");
         settings.conversationListingContainer=$('#conversationListingContainer');
         settings.chatDiv=$('.chat-div');
@@ -63,6 +63,13 @@ function stickyChatModel(){
             settings.chatDiv.removeClass("hidden")
         }
 
+        $(".chat-collapsed-candidate-container .chat-collapsed-candidate").click(function(){
+            $(this).find(".chat-collapsed-candidate-wrapper").toggleClass("hidden")
+        })
+
+        if(flag==1)
+        return
+        
         closeCollapsedSidebarChat();
         closeCollapsedStickyChat();
         onClickCandNameStopEvent();
@@ -72,30 +79,12 @@ function stickyChatModel(){
         onFocusChatMessage();
         toggleMinimiseIcon();        
         
+
         //????
-        $(".chat-collapsed-candidate-container .chat-collapsed-candidate").click(function(){
-            $(this).find(".chat-collapsed-candidate-wrapper").toggleClass("hidden")
-        })
+        
 
     }    
 
-//store
-
-    // function saveToStore(dataArray){
-    //     dataArray.forEach(function(anObj) {
-    //         chatStore[anObj["userId"]] = anObj;
-    //         chatStore[anObj["channel"]]=anObj;
-    //     })
-    // }
-
-    // function getCandidateFromStore(candidateId){
-    //     return chatStore[candidateId]
-    // }
-
-    // function getCandidateFromStoreViaChannel(channelName){
-    //     return chatStore[channelName];
-    // }
-    
     function toggleMinimiseIcon(){
         $(settings.chatDivHeader).click(function() {
             $(this).find(".minusIcon").toggleClass("active")
@@ -389,6 +378,8 @@ function stickyChatModel(){
         })    
     }
 
+
+
     function scrollToBottom(channelName) {
         $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container .chat-div-content").scrollTop(jQuery(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container .chat-div-content ul").outerHeight());
     }
@@ -411,13 +402,10 @@ function stickyChatModel(){
     function openChatBox(channelName,obj){
         var elem = settings.conversationListing.find(".conversationItem[data-channel-name="+channelName+"]");
         var dataID = elem.attr("data-id")
-        var elem=$(this);
         if(!dataID){
-            debugger
             dataID=obj[0].userID;
             obj=obj[0];
-        }
-        console.log(dataID)
+        }   
         if(!(elem.hasClass('selected'))){
             populateChatBox(channelName,dataID,obj);
             elem.addClass('selected');
