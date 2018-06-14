@@ -177,14 +177,11 @@ function Chat() {
        return card
    }
 
-   function populateMessages(dataArray) {
-
+   function populateMessages(dataArray,conversation) {
         var str = ""
         var flag = 1;
         console.log(dataArray);
-        if(dataArray.length==0){
-            settings.noMessages.removeClass('hidden');
-        }
+        
         dataArray.forEach(function(elem, index){
                if(index == 0 || (index > 0 && (moment(dataArray[index - 1]["entry"]["time"]).format("DD MM YYYY") != moment(elem["entry"]["time"]).format("DD MM YYYY"))) ) {
                    var item = getTimeElement(elem)
@@ -211,7 +208,11 @@ function Chat() {
            $('.loading.loaderScroller.second').addClass("hidden")
            settings.chatWindow.removeClass("hidden")
            settings.userProfile.removeClass("hidden")
-           initializeTooltip()
+           settings.noMessages.find('.user-text').text("");     
+            if(dataArray.length==0 && conversation==1){
+                settings.noMessages.find('.user-text').text("You have not started any conversations yet");
+            }
+            initializeTooltip()
 
    }
 
@@ -268,7 +269,7 @@ function Chat() {
        initializeTooltip()
        scrollToBottom()
        settings.msgContent.val('');
-       settings.noMessages.addClass("hidden");
+       settings.noMessages.find('.user-text').text("");     
    }
 
    function receiveMessage(msg, channelName) {
