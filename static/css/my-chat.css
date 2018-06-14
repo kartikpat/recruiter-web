@@ -2640,6 +2640,21 @@ span.sticker {
   .empty-screen.no-list .empty-text {
     color: #888; }
 
+.empty-screen.noMessages {
+  text-align: center;
+  color: #2b2b2b;
+  line-height: 1.5;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+  .empty-screen.noMessages .image-container {
+    width: 52%;
+    height: 100%;
+    margin: 0 auto; }
+  .empty-screen.noMessages .empty-text {
+    color: #888; }
+
 .loading.loaderScroller.first {
   width: 100% !important; }
   .loading.loaderScroller.first .loader-scroller {

@@ -37,6 +37,7 @@ function Chat() {
        settings.candImage = $(".candImage");
        settings.statePendingClass = ".icon-chatContainer i";
        settings.stateErrorClass = ".error-container";
+       settings.noMessages=$(".noMessages") 
        onClickBackButton()
    }
 
@@ -74,7 +75,6 @@ function Chat() {
    function addToList(dataArray){
        var str = '';
        $('.loading.loaderScroller.first').addClass("hidden")
-       debugger
        if(!dataArray.length && dataArray.index!=1) {
             settings.welcomeContainer.addClass("hidden")
             $(".empty-screen.no-list").removeClass("hidden")
@@ -181,8 +181,11 @@ function Chat() {
 
         var str = ""
         var flag = 1;
+        console.log(dataArray);
+        if(dataArray.length==0){
+            settings.noMessages.removeClass('hidden');
+        }
         dataArray.forEach(function(elem, index){
-
                if(index == 0 || (index > 0 && (moment(dataArray[index - 1]["entry"]["time"]).format("DD MM YYYY") != moment(elem["entry"]["time"]).format("DD MM YYYY"))) ) {
                    var item = getTimeElement(elem)
                    str+=item[0].outerHTML;
@@ -200,7 +203,6 @@ function Chat() {
                }
            })
            settings.mssgContainer.prepend(str)
-
            if($(window).outerWidth() < 769 ) {
                settings.backButtonChat.removeClass("hidden")
                settings.candImage.removeClass("hidden")
@@ -266,6 +268,7 @@ function Chat() {
        initializeTooltip()
        scrollToBottom()
        settings.msgContent.val('');
+       settings.noMessages.addClass("hidden");
    }
 
    function receiveMessage(msg, channelName) {
