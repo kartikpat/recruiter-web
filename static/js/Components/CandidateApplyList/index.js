@@ -16,20 +16,16 @@ jQuery(document).ready( function() {
     // creating the instance of models
 	var candidates = candidateList();
     var aCandidate = Candidate();
-    var stickyChat=stickyChatModel();   
-    var storeChat=chatStoreModel();
+    var chatModule=chatModelIndex();
     var theJob = Job();
     var store = Store();
     var filters = Filters();
-    var chatEngine = ChatEngine(recruiterId, profile.email);
-    chatEngine.initialize();
     //initializing the models
     candidates.setConfig("jobId", jobId)
     filters.init();
     candidates.init(profile, baseUrl);
     theJob.init();
     aCandidate.init();
-    stickyChat.init(1);
 
 
     $(window).scroll(function() {  
@@ -265,38 +261,9 @@ jQuery(document).ready( function() {
         var candidate = store.getCandidateFromStore(applicationId);
         var array = [];
         array.push(candidate);
-        var channelName="iimjobs--r"+recruiterId+'-j'+array[0]['userID'];
-        var obj=storeChat.getCandidateFromStoreViaChannel(channelName);
-        if(!storeChat.getCandidateFromStoreViaChannel(channelName)){
-            submitChatProfile(recruiterId,jobId,applicationId,array);
-            console.log(array);
-            stickyChat.openChatBox(channelName,array);    
-            return
-        }
-        var scrollToBottom=0;
-        stickyChat.openChatBox(channelName,obj);
-        chatEngine.fetchHistory(channelName,20, null, null, function(data,response){
-            onFetchHistory(response,obj,channelName,scrollToBottom)
-        });
-        stickyChat.scrollEvent(channelName,obj,function(channelName,startTime){
-            scrollToBottom=1;
-            chatEngine.fetchHistory(channelName,20,startTime, null, function(data,response){
-                onFetchHistory(response,obj,channelName,scrollToBottom)
-            });
-        });
+        chatModule.createNewChannel(recruiterId,jobId,applicationId,array);
     })
 
-    function onSuccessfulSubmitChat(topic,data){
-        data.array[0]["channel"] = data.data
-        stickyChat.populateChatView(data.array);
-    }
-    function onFetchHistory(response,obj,channelName,scroll) {
-        stickyChat.populateMessages(response,obj,channelName,scroll)
-    }
-
-    aCandidate.onClickSeeMoreRec(function() {
-        // fetchRecommendations(recruiterId)
-    })
 
     aCandidate.onClickChatCandidateModal(function(candidateId,applicationId){
         var eventObj = {
@@ -307,8 +274,12 @@ jQuery(document).ready( function() {
         var candidate = store.getCandidateFromStore(applicationId);
         var array = [];
         array.push(candidate);
-        var channelName="iimjobs--r"+recruiterId+'-j'+array[0]['userID'];
-        stickyChat.openChatBox(channelName);
+        chatModule.createNewChannel(recruiterId,jobId,applicationId,array);
+    })
+
+
+    aCandidate.onClickSeeMoreRec(function() {
+        // fetchRecommendations(recruiterId)
     })
 
     aCandidate.onClickSendInterviewInviteF2F(function(applicationId, inviteId){
@@ -1372,9 +1343,7 @@ jQuery(document).ready( function() {
     var fetchedRecommendationsSuccessSubscription = pubsub.subscribe("fetchRecommendationsSuccess", onSuccessfulRecommendations)
 	var fetchedRecommendationsFailSubscription = pubsub.subscribe("fetchRecommendationsFail", onFailedRecommendation);
 
-    var submitChatSuccessSubscription = pubsub.subscribe("submitChatProfileSuccess",onSuccessfulSubmitChat)
-	// var failChatSubscription = pubsub.subscribe("submitChatProfileFail", onFailedSubmitChat)
-
+   
 
     var tickerLock=false;
     $(window).scroll(function() {

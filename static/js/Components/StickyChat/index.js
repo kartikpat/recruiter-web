@@ -11,7 +11,9 @@ function getDeviceId() {
     return "web"+text+Date.now();
 }
 
-$(document).ready(function(){
+chatModelIndex();
+
+function chatModelIndex(){
     var deviceId= getDeviceId();
     var chatEngine = ChatEngine(recruiterId, profile.email);
     chatEngine.initialize();
@@ -131,8 +133,7 @@ $(document).ready(function(){
         });
             return tempArray;
     }
-
-    
+  
     function onNewMessage(m) {
         var actualChannel = m.actualChannel;
         var channelName = m.channel; // The channel for which the message belongs
@@ -190,4 +191,20 @@ $(document).ready(function(){
     }
 
 
-})
+    function createNewChannel(recruiterId,jobId,applicationId,obj){
+        var userId=obj[0].userID;
+        var channelName=baseDomain+"--r"+recruiterId+'-j'+userId;
+        
+        submitChatProfile(recruiterId,jobId,applicationId,array)
+    }
+
+    var submitChatSuccessSubscription = pubsub.subscribe("submitChatProfileSuccess",onSuccessfulSubmitChat)
+	var failChatSubscription = pubsub.subscribe("submitChatProfileFail", onFailedSubmitChat)
+
+
+
+
+    return{
+        createNewChannel:createNewChannel
+    }
+}
