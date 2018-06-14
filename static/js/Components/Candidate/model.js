@@ -239,7 +239,7 @@ function Candidate() {
         item.preferredLocation.text(preferredLocationStr).removeClass("shell");
         item.preferredLocation.attr("title",locationTitle).addClass('tooltip');
         initializeTooltip();
-        item.preferredLocationDetail.text(aData["preferredLocation"]).removeClass("shell");
+        // item.preferredLocationDetail.text(aData["preferredLocation"]).removeClass("shell");
         // item.contact.text(aData["phone"] || "NA").removeClass("shell");
         console.log(aData);
         console.log("here");

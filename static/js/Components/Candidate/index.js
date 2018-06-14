@@ -161,7 +161,6 @@ jQuery(document).ready( function() {
 
     function onCandidateProfileFetchSuccess(topic, res) {
         store.saveToStore(res.data)
-
         aCandidate.populateCandidateData(res.data[0])
         // fetchjobCalendars(jobId, recruiterId)
     }
