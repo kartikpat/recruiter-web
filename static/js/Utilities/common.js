@@ -59,7 +59,6 @@ function fetchURL(){
 }
 
 function getQueryParameter(queryString) {
-
 	var urlObj = fetchURL();
 	var testString = urlObj["search"];
 	var obj = {};
@@ -68,7 +67,6 @@ function getQueryParameter(queryString) {
 	}
     testString= testString.replace("?", "");
     testString= testString.split("&");
-
 
 	for(var i=0; i < testString.length; i++){
         var temp=testString[i].split("=");

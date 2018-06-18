@@ -24,7 +24,7 @@
 		</div>
 	</div>
 	<div class="chat-div-content" id="conversationItemList">
-
+		
 	</div>
 </div>
 
@@ -100,9 +100,15 @@
 
 		</div>
 		<div class="chat-div-content">
+			<div class="chat-spinner hidden">
+				{{>loader2}}
+			</div>
 			<ul>
 
 			</ul>
+			<div class="newChannel hidden">
+				Please wait while me make a connection
+			</div>
 		</div>
 		<div class="footer">
 			<textarea class="chat-input" type="text" placeholder="Write a message" data-limit="75" data-height="35"></textarea>

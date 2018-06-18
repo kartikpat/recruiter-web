@@ -524,7 +524,6 @@ function Calendar(){
     }
 
     function validate(){
-        debugger
 		if(!((settings.name.val()).trim())){
             console.log("fail");
 			settings.name.next('.error').text(errorResponses['missingName']);

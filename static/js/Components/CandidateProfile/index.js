@@ -12,9 +12,10 @@ jQuery(document).ready( function() {
     // creating the instance of models
     var aCandidate = Candidate();
     var store = Store();
+    var chatModule=chatModelIndex();
+    chatModule.init();
     //initializing the models
     aCandidate.init();
-
     page('/job/'+jobId+'/applications', function(context, next){
         window.location.href='/job/'+jobId+'/applications?'+context.querystring;
         return
@@ -182,8 +183,7 @@ jQuery(document).ready( function() {
          var candidate = store.getCandidateFromStore(applicationId);
          var array = [];
          array.push(candidate);
-
-         cloneStickyChat(array, recruiterId, jobId, applicationId)
+         chatModule.createNewChannel(recruiterId,jobId,applicationId,array);
      })
 
     function onCandidateProfileFetchSuccess(topic, res) {
