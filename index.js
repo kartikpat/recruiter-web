@@ -152,6 +152,7 @@
 	app.use(passport.initialize());
 
 	app.engine('html', require('hogan-express'));
+	
 	app.set('partials',{
 		header: 'header',
 		footer: 'footer',

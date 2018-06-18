@@ -143,7 +143,6 @@ function publish(message, channel, onPublish) {
 }
 
 function onPublish(status, response) {
-    console.log("hi")
     console.log(status)
     console.log(response)
 }

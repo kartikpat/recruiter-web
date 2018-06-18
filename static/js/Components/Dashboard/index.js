@@ -326,7 +326,7 @@ function onClickShareOnLinkedIn(fn){
 	var candidateApplyUrl = "/job/:publishedId/applications";
 
 	function onStatsUpdate(topic, data){
-		$('.lds-spinner').addClass('hidden');
+		$('.number .lds-spinner').addClass('hidden');
 		data.forEach(function(aData){
 			dashboardStatsContainer.find(".block."+aData['label']+' .number').text(aData['value']);
 			if(aData['label']=='activeJobs' && !dataModel.revisit ){
@@ -482,8 +482,6 @@ function onClickShareOnLinkedIn(fn){
 
 	function onFetchFollowUps(topic, data){
 		var isMultiple = true;
-		//Debugging for single view
-		// data = data.concat(data)
 		var totalFollowups = data.length;
 		if(data.length ==1)
 			isMultiple = false
@@ -526,6 +524,7 @@ function onClickShareOnLinkedIn(fn){
 				exp = exp["year"] +'y '+ exp["month"] + 'm'
 				return location+', ' +exp;
 			})(aRow['exp'], aRow['currentLocation'])
+			console.log(aRow["education"][0])
 			card.find('.profile .name').text(aRow['name']).attr('href', '/job/'+aRow['jobId']+'/applications/'+aRow['id']);
 			card.find('.profile .icon img').attr('src', (aRow['img'])?aRow['img'] : "/static/images/noimage.png"  );
 			card.find('.profile .designationOrganization').text(designationOrganization);

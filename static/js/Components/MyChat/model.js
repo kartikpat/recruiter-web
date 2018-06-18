@@ -108,7 +108,7 @@ function Chat() {
        }
    }
 
-   function onClickSingleChatItem(fn) {
+   function onClickSingleChatItem(fn){
        settings.conversationItemList.on('click', settings.conversationItemClass, function(){
 
            $(settings.conversationItemClass).removeClass("conversation-item-active")
