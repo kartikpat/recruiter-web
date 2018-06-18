@@ -12,10 +12,10 @@ jQuery(document).ready( function() {
     // creating the instance of models
     var aCandidate = Candidate();
     var store = Store();
-    var stickyChat=stickyChatModel();
+    var chatModule=chatModelIndex();
+    chatModule.init();
     //initializing the models
     aCandidate.init();
-    stickyChat.init();
     page('/job/'+jobId+'/applications', function(context, next){
         window.location.href='/job/'+jobId+'/applications?'+context.querystring;
         return
@@ -183,8 +183,7 @@ jQuery(document).ready( function() {
          var candidate = store.getCandidateFromStore(applicationId);
          var array = [];
          array.push(candidate);
-         var channelName="iimjobs--r"+recruiterId+'-j'+array[0]['userID'];
-         stickyChat.openChatBox(channelName);
+         chatModule.createNewChannel(recruiterId,jobId,applicationId,array);
      })
 
     function onCandidateProfileFetchSuccess(topic, res) {

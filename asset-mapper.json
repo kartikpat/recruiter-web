@@ -1428,7 +1428,12 @@
 				"static/js/Services/submitPageVisit.js",
 				"static/js/vendor/tooltipster.main.min.js",
 				"static/js/Tracker/tracker.js",
-				"static/js/eventMapping.js"
+				"static/js/Utilities/chatEngine.js",
+				"static/js/Services/fetchRecruiterChats.js",
+				"static/js/eventMapping.js",
+				"static/js/Components/StickyChat/store.js",
+				"static/js/Components/StickyChat/model.js",
+				"static/js/Components/StickyChat/index.js"
 			],
 			"prod" : [
 				"static/build/js/candidate-profile.min.js"
@@ -1482,10 +1487,15 @@
 				"static/js/Services/fetchCandidateChatProfile.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
+				"static/js/Components/StickyChat/store.js",
+				"static/js/Components/StickyChat/model.js",
+				"static/js/Components/StickyChat/index.js",
+				"static/js/Utilities/chatEngine.js",
 				"static/js/Components/Candidate/model.js",
 				"static/js/Components/Candidate/index.js",
 				"static/js/Components/Candidate/mapping.js",
 				"static/js/Components/Candidate/store.js",
+				"static/js/Services/fetchRecruiterChats.js",
 				"static/js/vendor/tooltipster.main.min.js",
 				"static/js/Tracker/tracker.js",
 				"static/js/eventMapping.js"

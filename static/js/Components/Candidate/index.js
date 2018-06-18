@@ -12,10 +12,10 @@ jQuery(document).ready( function() {
     // creating the instance of models
     var aCandidate = Candidate();
     var store = Store();
-    var stickyChat=stickyChatModel();
+    var chatModule=chatModelIndex();
+    chatModule.init();
     //initializing the models
     aCandidate.init();
-    stickyChat.init();
 
     fetchCandidateChatProfile(recruiterId,applicationId);
 
@@ -157,14 +157,10 @@ jQuery(document).ready( function() {
          var candidate = store.getCandidateFromStore(applicationId);
          var array = [];
          array.push(candidate);
-         var channelName="iimjobs--r"+recruiterId+'-j'+array[0]['userID'];
-         stickyChat.openChatBox(channelName);   
-        //  cloneStickyChat(array, recruiterId, jobId, applicationId)
      })
 
     function onCandidateProfileFetchSuccess(topic, res) {
         store.saveToStore(res.data)
-
         aCandidate.populateCandidateData(res.data[0])
         // fetchjobCalendars(jobId, recruiterId)
     }
