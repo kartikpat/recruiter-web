@@ -404,7 +404,6 @@ function stickyChatModel(){
         }
     }
 
-
     function scrollEvent(channelName,obj,fn){
         $('.chat-div-candidate').find(settings.chatDivContnet).scroll(function(){
             var dataId=obj.userId;
@@ -416,12 +415,12 @@ function stickyChatModel(){
                     fn(channelName,startTimeToken);
                 }
             },100);
-           $('.chat-spinner').removeClass("hidden");
+            $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"]").find('.chat-spinner').removeClass("hidden");
         })
     }
 
-    function hideSpinner(){
-        $('.chat-spinner').addClass('hidden');
+    function hideSpinner(channelName){
+        $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"]").find('.chat-spinner').addClass("hidden");
     }
 
     function onFocusChatMessage(){

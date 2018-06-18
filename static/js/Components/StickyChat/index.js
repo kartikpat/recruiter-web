@@ -109,7 +109,7 @@ function chatModelIndex(){
     })
 
     function onFetchHistory(response,obj,channelName,scroll) {
-        stickyChat.hideSpinner();
+        stickyChat.hideSpinner(channelName);
         stickyChat.populateMessages(response,obj,channelName,scroll)
     }
 
@@ -145,23 +145,25 @@ function chatModelIndex(){
         if(deviceId == msg['deviceId']){
             return
         }
-        if(stickyChat.isChatBoxOpen(channelName)){
-            stickyChat.appendRecievedMessage(channelName,msg);
-            stickyChat.scrollToBottom(m.channel);
-        }
-        else{
-            var obj = store.getCandidateFromStoreViaChannel(channelName)
-            stickyChat.openChatBox(channelName,obj);
-            chatEngine.fetchHistory(channelName,20, null, null, function(data,response){
-                onFetchHistory(response,obj,channelName,scrollToBottom)
-            });
-            stickyChat.scrollEvent(channelName,obj,function(channelName,startTime){
-                scrollToBottom=1;
-                chatEngine.fetchHistory(channelName,20,startTime, null, function(data,response){
+        if(!(msg["UUID"] == btoa(recruiterId+"--"+profile["email"]))){
+            if(stickyChat.isChatBoxOpen(channelName)){
+                stickyChat.appendRecievedMessage(channelName,msg);
+                stickyChat.scrollToBottom(m.channel);
+            }
+            else{
+                var obj = store.getCandidateFromStoreViaChannel(channelName)
+                stickyChat.openChatBox(channelName,obj);
+                chatEngine.fetchHistory(channelName,20, null, null, function(data,response){
                     onFetchHistory(response,obj,channelName,scrollToBottom)
                 });
-            });
-        }   
+                stickyChat.scrollEvent(channelName,obj,function(channelName,startTime){
+                    scrollToBottom=1;
+                    chatEngine.fetchHistory(channelName,20,startTime, null, function(data,response){
+                        onFetchHistory(response,obj,channelName,scrollToBottom)
+                    });
+                });
+            }   
+        }    
     }
 
     function onNewStatus(s) {
@@ -190,33 +192,45 @@ function chatModelIndex(){
     }
 
     function createNewChannel(recruiterId,jobId,applicationId,obj){
-        if(window.innerWidth <= 768) {
-            return window.location.href = '/my-chat?candidateId='+obj[0].userID+''
-        }
-        var userId=obj[0].userID;
-        var channelName=baseDomain+"--r"+recruiterId+'-j'+userId;
-        if(!store.getCandidateFromStoreViaChannel(channelName)){
-            //disable input box & please wait while connecting
-            stickyChat.openChatBox(channelName,obj); 
-            stickyChat.disableChat(channelName);
-            submitChatProfile(recruiterId,jobId,applicationId,obj);
-            return    
-        }
-        var obj=store.getCandidateFromStoreViaChannel(channelName);
-        var scrollToBottom=0;
-        stickyChat.openChatBox(channelName,obj);
-        chatEngine.fetchHistory(channelName,20, null, null, function(data,response){
-            onFetchHistory(response,obj,channelName,scrollToBottom)
-        });
-        stickyChat.scrollEvent(channelName,obj,function(channelName,startTime){
-            scrollToBottom=1;
-            chatEngine.fetchHistory(channelName,20,startTime, null, function(data,response){
+            var userId=obj[0].userID;
+            var channelName=baseDomain+"--r"+recruiterId+'-j'+userId;
+            if(!store.getCandidateFromStoreViaChannel(channelName)){
+                if(window.innerWidth>768){
+                    stickyChat.openChatBox(channelName,obj); 
+                    stickyChat.disableChat(channelName);
+                }
+                submitChatProfile(recruiterId,jobId,applicationId,obj);
+                if(window.innerWidth <= 768) {
+                    window.location.href = staticEndPoints['chat']+'?candidateId='+obj[0].userID+''
+                    return
+                }
+                return    
+            }
+            if(window.innerWidth <= 768) {
+                window.location.href = staticEndPoints['chat']+'?candidateId='+obj[0].userID+''
+                return
+            }
+            var obj=store.getCandidateFromStoreViaChannel(channelName);
+            var scrollToBottom=0;
+            if(window.innerWidth>768){
+                stickyChat.openChatBox(channelName,obj);
+            }
+            chatEngine.fetchHistory(channelName,20, null, null, function(data,response){
                 onFetchHistory(response,obj,channelName,scrollToBottom)
             });
-        });
+            stickyChat.scrollEvent(channelName,obj,function(channelName,startTime){
+                scrollToBottom=1;
+                chatEngine.fetchHistory(channelName,20,startTime, null, function(data,response){
+                    onFetchHistory(response,obj,channelName,scrollToBottom)
+                });
+            });
+        
     }
 
     function onSuccessfulSubmitChat(topic,data){
+        // if(window.innerWidth <= 768) {
+        //     window.location.href = staticEndPoints['chat']+'?candidateId='+data.array[0]["userID"]+''
+        // }
         stickyChat.enableChat(data.data);
         data.array[0]["channel"] = data.data
         stickyChat.populateChatView(data.array);   
