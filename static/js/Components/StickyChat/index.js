@@ -200,10 +200,6 @@ function chatModelIndex(){
                     stickyChat.disableChat(channelName);
                 }
                 submitChatProfile(recruiterId,jobId,applicationId,obj);
-                if(window.innerWidth <= 768) {
-                    window.location.href = staticEndPoints['chat']+'?candidateId='+obj[0].userID+''
-                    return
-                }
                 return    
             }
             if(window.innerWidth <= 768) {
@@ -228,9 +224,10 @@ function chatModelIndex(){
     }
 
     function onSuccessfulSubmitChat(topic,data){
-        // if(window.innerWidth <= 768) {
-        //     window.location.href = staticEndPoints['chat']+'?candidateId='+data.array[0]["userID"]+''
-        // }
+        debugger
+        if(window.innerWidth <= 768) {
+            window.location.href = staticEndPoints['chat']+'?candidateId='+data.array[0]["userID"]+''
+        }
         stickyChat.enableChat(data.data);
         data.array[0]["channel"] = data.data
         stickyChat.populateChatView(data.array);   
