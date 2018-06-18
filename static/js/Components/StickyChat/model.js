@@ -38,6 +38,8 @@ function stickyChatModel(){
         settings.userName=".user-name";
         settings.userImage=".user-image img";
         settings.userDesignation=".user-designation";
+        settings.newChannel=$('.newChannel');
+        settings.spinner=$('.chat-spinner');
         var width=window.innerWidth;
 
         if (width< 1000) {
@@ -414,7 +416,12 @@ function stickyChatModel(){
                     fn(channelName,startTimeToken);
                 }
             },100);
+            settings.spinner.removeClass("hidden");
         })
+    }
+
+    function hideSpinner(){
+        settings.spinner.addClass('hidden');
     }
 
     function onFocusChatMessage(){
@@ -459,6 +466,23 @@ function stickyChatModel(){
             theme: 'tooltipster-borderless'
         })
     }
+
+    function disableChat(channelName){
+        settings.newChannel.removeClass('hidden');
+        $('.chat-div-candidate[data-channel-name='+channelName+']').find('.chat-input').attr('readonly',true);
+        return
+    }
+
+    function enableChat(channelName){
+        settings.newChannel.addClass('hidden');
+        $('.chat-div-candidate[data-channel-name='+channelName+']').find('.chat-input').attr('readonly',false);
+        return
+    }
+
+    function disableToConnect(channelName){
+        $('.chat-div-candidate[data-channel-name='+channelName+']').find('.newChannel').text("Unable to connect.Please try again");
+        return
+    }
     
     return{
         init:init,
@@ -475,7 +499,12 @@ function stickyChatModel(){
         appendRecievedMessage:appendRecievedMessage,
         openChatBox:openChatBox,
         scrollEvent:scrollEvent,
-        populateChatBox:populateChatBox
+        populateChatBox:populateChatBox,
+        disableChat:disableChat,
+        enableChat,enableChat,
+        disableToConnect:disableToConnect,
+        hideSpinner:hideSpinner
+    
     }
 
 

@@ -21,6 +21,7 @@ jQuery(document).ready( function() {
     var store = Store();
     var filters = Filters();
     //initializing the models
+
     candidates.setConfig("jobId", jobId)
     filters.init();
     candidates.init(profile, baseUrl);
@@ -261,6 +262,7 @@ jQuery(document).ready( function() {
         var candidate = store.getCandidateFromStore(applicationId);
         var array = [];
         array.push(candidate);
+        chatModule.init();
         chatModule.createNewChannel(recruiterId,jobId,applicationId,array);
     })
 
@@ -274,6 +276,7 @@ jQuery(document).ready( function() {
         var candidate = store.getCandidateFromStore(applicationId);
         var array = [];
         array.push(candidate);
+        chatModule.init();
         chatModule.createNewChannel(recruiterId,jobId,applicationId,array);
     })
 
@@ -302,6 +305,7 @@ jQuery(document).ready( function() {
             sendInterViewInvite(recruiterId, jobId, applicationId , obj)
         }
     })
+
     aCandidate.onClickSendInterviewInviteTelephonic(function(applicationId, inviteId){
         var eventObj = {
            event_category: eventMap["sendInvite"]["cat"],
@@ -341,6 +345,7 @@ jQuery(document).ready( function() {
                 sendInterViewInvite(recruiterId,jobId,applicationId,obj)
         }
     })
+
     candidates.onClickSendInterviewInviteTelephonic(function(applicationId, inviteId){
         var eventObj = {
            event_category: eventMap["sendInvite"]["cat"],

@@ -1,17 +1,15 @@
 var channelsArray = []
 
-
 function getDeviceId() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
     for (var i = 0; i < 20; i++)
       text += possible.charAt(Math.floor(Math.random() * possible.length));
-
     return "web"+text+Date.now();
 }
 
-chatModelIndex();
+var chat=chatModelIndex();
+
 
 function chatModelIndex(){
     var deviceId= getDeviceId();
@@ -21,8 +19,13 @@ function chatModelIndex(){
     var stickyChat=stickyChatModel();
     var store=chatStoreModel();
     stickyChat.init();   
+
+    function init(){
+   
+    }    
+    
     fetchRecruiterChats(recruiterId);
-  
+    
     stickyChat.onClickSidebarChat(function(channelName,messageNumber,dataID,startTime){
         var scrollToBottom=0;
         var eventObj = {
@@ -43,8 +46,6 @@ function chatModelIndex(){
             });
         });
     })
-
-    console.log(store.getStore())
 
     stickyChat.onClickStickyChat(function(channelName,messageNumber,dataID,startTime){
         var scrollToBottom=0;
@@ -106,6 +107,8 @@ function chatModelIndex(){
     })
 
     function onFetchHistory(response,obj,channelName,scroll) {
+        // $('.chat-spinner').addClass("hidden");
+        stickyChat.hideSpinner();
         stickyChat.populateMessages(response,obj,channelName,scroll)
     }
 
@@ -120,11 +123,6 @@ function chatModelIndex(){
     function onFetchRecruiterChatsFail(topic, data) {
         errorHandler(data)
     }
-
-
-    var fetchedRecruiterChatsSuccessSubscription = pubsub.subscribe('fetchedRecruiterChats', onFetchRecruiterChats)
-	var fetchedRecruiterChatsFailSubscription = pubsub.subscribe('fetchedRecruiterChatsFail', onFetchRecruiterChatsFail)
-
 
     function getArray(array) {
         var tempArray = [];
@@ -190,21 +188,51 @@ function chatModelIndex(){
         stickyChat.receivePresence(p)
     }
 
-
     function createNewChannel(recruiterId,jobId,applicationId,obj){
+        if(window.innerWidth <= 768) {
+            return window.location.href = '/my-chat?candidateId='+obj[0].userID+''
+        }
         var userId=obj[0].userID;
         var channelName=baseDomain+"--r"+recruiterId+'-j'+userId;
-        
-        submitChatProfile(recruiterId,jobId,applicationId,array)
+        if(!store.getCandidateFromStoreViaChannel(channelName)){
+            //disable input box & please wait while connecting
+            stickyChat.openChatBox(channelName,obj); 
+            stickyChat.disableChat(channelName);
+            submitChatProfile(recruiterId,jobId,applicationId,obj);
+            return    
+        }
+        var obj=store.getCandidateFromStoreViaChannel(channelName);
+        var scrollToBottom=0;
+        stickyChat.openChatBox(channelName,obj);
+        chatEngine.fetchHistory(channelName,20, null, null, function(data,response){
+            onFetchHistory(response,obj,channelName,scrollToBottom)
+        });
+        stickyChat.scrollEvent(channelName,obj,function(channelName,startTime){
+            scrollToBottom=1;
+            chatEngine.fetchHistory(channelName,20,startTime, null, function(data,response){
+                onFetchHistory(response,obj,channelName,scrollToBottom)
+            });
+        });
+    }
+
+    function onSuccessfulSubmitChat(topic,data){
+        stickyChat.enableChat(data.data);
+        data.array[0]["channel"] = data.data
+        stickyChat.populateChatView(data.array);   
+    }
+
+    function onFailedSubmitChat(error,data){
+        stickyChat.disableToConnect(data.data);
     }
 
     var submitChatSuccessSubscription = pubsub.subscribe("submitChatProfileSuccess",onSuccessfulSubmitChat)
-	var failChatSubscription = pubsub.subscribe("submitChatProfileFail", onFailedSubmitChat)
-
-
+    var failChatSubscription = pubsub.subscribe("submitChatProfileFail",onFailedSubmitChat)
+    var fetchedRecruiterChatsSuccessSubscription = pubsub.subscribe('fetchedRecruiterChats', onFetchRecruiterChats)
+    var fetchedRecruiterChatsFailSubscription = pubsub.subscribe('fetchedRecruiterChatsFail', onFetchRecruiterChatsFail)        
 
 
     return{
-        createNewChannel:createNewChannel
+        createNewChannel:createNewChannel,
+        init:init
     }
 }

@@ -5,6 +5,7 @@ require("../static/js/request.js");
 var facebookUserProfileUrl;
 var linkedInUserProfileUrl;
 var url = {}
+
 module.exports = function(settings) {
 
     var passport = settings.passport;
