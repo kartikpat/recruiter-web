@@ -1,9 +1,13 @@
+var chatModule=chatModelIndex();
+
+
 jQuery(".header .menu-list-item.dashboard").addClass("active");
 var dataModel = {};
 dataModel.revisit = false;
 profile.lastSeen = moment().subtract(1, 'days').format("x");
 var settings = {}
 
+// var chat=chatModelIndex();
 
 
 $('.continueButton').click(function(){
