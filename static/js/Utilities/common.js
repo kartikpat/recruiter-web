@@ -59,7 +59,7 @@ function fetchURL(){
 }
 
 function getQueryParameter(queryString) {
-
+	debugger
 	var urlObj = fetchURL();
 	var testString = urlObj["search"];
 	var obj = {};
@@ -74,7 +74,9 @@ function getQueryParameter(queryString) {
         var temp=testString[i].split("=");
 	    obj[temp[0]] = temp[1]
    	}
-
+	
+	obj["searchString"]=decodeURI(obj["searchString"]);
+	
     if(!queryString) {
 	    return obj
     }
