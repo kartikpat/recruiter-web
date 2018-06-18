@@ -12,6 +12,7 @@ jQuery(document).ready( function() {
     parameters.status = globalParameters.status;
     parameters.pageNumber = globalParameters.pageNumber;
     parameters.pageContent = globalParameters.pageContent;
+    var chatModule=chatModelIndex();
     var jobParameters = {}
     jobParameters.type = "everPublished";
     fetchJobs(jobParameters, recruiterId)

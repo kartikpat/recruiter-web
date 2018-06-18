@@ -8,6 +8,7 @@ var globalParameters = {
 jQuery(document).ready( function() {
     var candidates = candidateList();
     candidates.init();
+    var chatModule=chatModelIndex();
     var searchQuery = getQueryParameter("searchQuery");
     var parameters = {}
     parameters.pageNumber = globalParameters.pageNumber;

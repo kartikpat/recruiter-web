@@ -8,7 +8,7 @@ var globalParameters = {
 jQuery(document).ready( function() {
     var candidates = candidateList();
     candidates.init();
-
+    var chatModule=chatModelIndex();
     var parameters = {}
     parameters.pageNumber = globalParameters.pageNumber;
     parameters.pageContent = globalParameters.pageContent;

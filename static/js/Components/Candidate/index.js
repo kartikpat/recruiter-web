@@ -13,7 +13,6 @@ jQuery(document).ready( function() {
     var aCandidate = Candidate();
     var store = Store();
     var chatModule=chatModelIndex();
-    chatModule.init();
     //initializing the models
     aCandidate.init();
 

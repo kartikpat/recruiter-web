@@ -8,7 +8,7 @@ function getDeviceId() {
     return "web"+text+Date.now();
 }
 
-var chat=chatModelIndex();
+// var chat=chatModelIndex();
 
 
 function chatModelIndex(){
@@ -223,8 +223,13 @@ function chatModelIndex(){
         
     }
 
+    var submitChatSuccessSubscription = pubsub.subscribe("submitChatProfileSuccess",onSuccessfulSubmitChat)
+    var failChatSubscription = pubsub.subscribe("submitChatProfileFail",onFailedSubmitChat)
+    var fetchedRecruiterChatsSuccessSubscription = pubsub.subscribe('fetchedRecruiterChats', onFetchRecruiterChats)
+    var fetchedRecruiterChatsFailSubscription = pubsub.subscribe('fetchedRecruiterChatsFail', onFetchRecruiterChatsFail)        
+
+
     function onSuccessfulSubmitChat(topic,data){
-        debugger
         if(window.innerWidth <= 768) {
             window.location.href = staticEndPoints['chat']+'?candidateId='+data.array[0]["userID"]+''
         }
@@ -237,11 +242,7 @@ function chatModelIndex(){
         stickyChat.disableToConnect(data.data);
     }
 
-    var submitChatSuccessSubscription = pubsub.subscribe("submitChatProfileSuccess",onSuccessfulSubmitChat)
-    var failChatSubscription = pubsub.subscribe("submitChatProfileFail",onFailedSubmitChat)
-    var fetchedRecruiterChatsSuccessSubscription = pubsub.subscribe('fetchedRecruiterChats', onFetchRecruiterChats)
-    var fetchedRecruiterChatsFailSubscription = pubsub.subscribe('fetchedRecruiterChatsFail', onFetchRecruiterChatsFail)        
-
+    
 
     return{
         createNewChannel:createNewChannel,

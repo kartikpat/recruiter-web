@@ -9,6 +9,7 @@ jQuery(document).ready( function() {
     var candidates = candidateList();
     candidates.init();
     var tagId = getQueryParameter("queryTag");
+    var chatModule=chatModelIndex();
 
     if(!isEmpty(tagId)) {
         globalParameters.tagId = tagId

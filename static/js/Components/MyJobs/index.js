@@ -14,6 +14,7 @@ jQuery(document).ready( function() {
         var newUrl = removeParam("jobPostMessage", window.location.href)
         window.history.replaceState("object or string", "Title", newUrl);
     }
+	var chatModule=chatModelIndex();
 
 	var jobList = Jobs();
 
