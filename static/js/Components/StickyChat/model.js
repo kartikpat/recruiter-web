@@ -135,7 +135,7 @@ function stickyChatModel(){
         var elem = {}
         elem.entry = {}
         elem.entry.msg = message;
-        var item = getMsgSentElement(elem)
+        var item = getMsgSentElement(elem);
         $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
         initializeTooltip()
         scrollToBottom(channelName)
@@ -176,8 +176,6 @@ function stickyChatModel(){
     }
 
     function populateChatBox(channelName,dataID,obj){
-            console.log(obj);
-            console.log("here");
             var chatContainerBox = settings.chatDivBox.clone().removeClass('prototype hidden');
             chatContainerBox.find(settings.candidateName).text(obj.name);  
             chatContainerBox.find(settings.chatDivHeader).attr("data-id",dataID);
@@ -500,10 +498,9 @@ function stickyChatModel(){
         scrollEvent:scrollEvent,
         populateChatBox:populateChatBox,
         disableChat:disableChat,
-        enableChat,enableChat,
+        enableChat:enableChat,
         disableToConnect:disableToConnect,
         hideSpinner:hideSpinner
-    
     }
 
 
