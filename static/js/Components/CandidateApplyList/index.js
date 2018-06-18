@@ -17,6 +17,7 @@ jQuery(document).ready( function() {
 	var candidates = candidateList();
     var aCandidate = Candidate();
     var chatModule=chatModelIndex();
+    chatModule.init();
     var theJob = Job();
     var store = Store();
     var filters = Filters();
@@ -262,7 +263,6 @@ jQuery(document).ready( function() {
         var candidate = store.getCandidateFromStore(applicationId);
         var array = [];
         array.push(candidate);
-        chatModule.init();
         chatModule.createNewChannel(recruiterId,jobId,applicationId,array);
     })
 
@@ -276,7 +276,6 @@ jQuery(document).ready( function() {
         var candidate = store.getCandidateFromStore(applicationId);
         var array = [];
         array.push(candidate);
-        chatModule.init();
         chatModule.createNewChannel(recruiterId,jobId,applicationId,array);
     })
 

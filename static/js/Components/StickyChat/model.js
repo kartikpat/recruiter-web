@@ -13,7 +13,7 @@ function stickyChatModel(){
         5: "Reviewed"
     };
 
-    function init(flag){
+    function init(){
         settings.chatCollapsedContainer=$(".chat-collapsed-candidate-container");
         settings.conversationListingContainer=$('#conversationListingContainer');
         settings.chatDiv=$('.chat-div');
@@ -62,14 +62,7 @@ function stickyChatModel(){
             settings.chatDiv.removeClass("hidden")
         }
 
-        
-        if(flag==1)
-        return
-
-        $(".chat-collapsed-candidate-container .chat-collapsed-candidate").click(function(){
-            $(this).find(".chat-collapsed-candidate-wrapper").toggleClass("hidden")
-        }) 
-
+        minimizeChatBox();
         minimizeSideBarChat();
         closeCollapsedSidebarChat();
         closeCollapsedStickyChat();
@@ -79,6 +72,13 @@ function stickyChatModel(){
         onFocusChatMessage();
         toggleMinimiseIcon();       
     }    
+
+
+    function minimizeChatBox(){
+        $(".chat-collapsed-candidate-container .chat-collapsed-candidate").click(function(){
+            $(this).find(".chat-collapsed-candidate-wrapper").toggleClass("hidden")
+        })
+    }
 
     function toggleMinimiseIcon(){
         $(settings.chatDivHeader).click(function() {

@@ -20,10 +20,12 @@ function chatModelIndex(){
     var store=chatStoreModel();
     stickyChat.init();   
 
+
     function init(){
-   
+        stickyChat.init(); 
     }    
     
+
     fetchRecruiterChats(recruiterId);
     
     stickyChat.onClickSidebarChat(function(channelName,messageNumber,dataID,startTime){
