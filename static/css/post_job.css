@@ -357,6 +357,9 @@
 .icon-history-button::before {
   content: '\e864'; }
 
+.icon-clock-1::before {
+  content: '\e852'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */

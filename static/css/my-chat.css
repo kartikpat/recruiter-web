@@ -357,6 +357,9 @@
 .icon-history-button::before {
   content: '\e864'; }
 
+.icon-clock-1::before {
+  content: '\e852'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -960,6 +963,9 @@ span.sticker {
 
 .icon-history-button::before {
   content: '\e864'; }
+
+.icon-clock-1::before {
+  content: '\e852'; }
 
 .left {
   float: left; }
@@ -1748,6 +1754,9 @@ a {
 .icon-history-button::before {
   content: '\e864'; }
 
+.icon-clock-1::before {
+  content: '\e852'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -2046,6 +2055,15 @@ span.sticker {
             height: 33px;
             border: 1px solid #dedcdc;
             background-color: #f7f7f7; }
+          .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-image .candidate-status {
+            width: 12px;
+            height: 12px;
+            position: relative;
+            display: block;
+            border: 2px solid #FFF;
+            border-radius: 50%;
+            margin-left: 25px;
+            top: -10px; }
         .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info {
           display: inline-block;
           vertical-align: middle;
@@ -2295,7 +2313,7 @@ span.sticker {
           margin: 0;
           padding: 15px; }
           .page-content .chat-container .chat-body .chat-window #mssgContainer li {
-            margin: 0 0 15px; }
+            margin: 5px 0; }
         .page-content .chat-container .chat-body .chat-window ul {
           padding: 20px; }
           .page-content .chat-container .chat-body .chat-window ul .time-separator {
@@ -2312,15 +2330,14 @@ span.sticker {
           .page-content .chat-container .chat-body .chat-window ul li.message {
             margin: 15px 0;
             clear: both;
-            overflow: auto;
-            padding: 15px 0; }
+            overflow: auto; }
             .page-content .chat-container .chat-body .chat-window ul li.message.received .user-image {
               float: left;
-              margin: 0 15px 0 0; }
+              margin: 0 10px 0 0; }
               .page-content .chat-container .chat-body .chat-window ul li.message.received .user-image img {
                 border-radius: 50%;
-                height: 43px;
-                width: 43px; }
+                height: 33px;
+                width: 33px; }
             .page-content .chat-container .chat-body .chat-window ul li.message.received .message-area {
               max-width: 80%;
               display: inline-block;
@@ -2331,7 +2348,7 @@ span.sticker {
                   background-color: #FFF;
                   border: 1px solid #e8e8e8;
                   border-radius: 4px;
-                  padding: 10px;
+                  padding: 5px 10px;
                   font-size: 14px;
                   max-width: calc(100vw - 130px);
                   word-break: break-all; }
@@ -2357,7 +2374,7 @@ span.sticker {
                   background-color: #f9f9f9;
                   border: 1px solid #e8e8e8;
                   border-radius: 4px;
-                  padding: 10px;
+                  padding: 5px 10px;
                   font-size: 14px;
                   max-width: calc(100vw - 130px);
                   word-break: break-all;
@@ -2377,6 +2394,13 @@ span.sticker {
                 .page-content .chat-container .chat-body .chat-window ul li.message.sent .message-area p .icon-history-button::before {
                   content: '\e864';
                   font-size: 12px;
+                  vertical-align: middle;
+                  margin-left: 10px;
+                  color: #888888; }
+                .page-content .chat-container .chat-body .chat-window ul li.message.sent .message-area p .icon-clock-1::before {
+                  content: '\e852';
+                  font-size: 11px;
+                  font-weight: 600;
                   vertical-align: middle;
                   margin-left: 10px;
                   color: #888888; }
@@ -2615,6 +2639,21 @@ span.sticker {
     height: 100%;
     margin: 0 auto; }
   .empty-screen.no-list .empty-text {
+    color: #888; }
+
+.empty-screen.noMessages {
+  text-align: center;
+  color: #2b2b2b;
+  line-height: 1.5;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+  .empty-screen.noMessages .image-container {
+    width: 52%;
+    height: 100%;
+    margin: 0 auto; }
+  .empty-screen.noMessages .empty-text {
     color: #888; }
 
 .loading.loaderScroller.first {

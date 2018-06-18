@@ -72,7 +72,10 @@
                             	</div>
 							</div>
 							<div class="chat-window middle chatWindow hidden">
-	                            <div class="current-chat">
+								<div class="empty-screen noMessages">
+									<div class="user-text"></div>
+								</div>
+								<div class="current-chat">
 	                               <ul id="mssgContainer">
 
 
@@ -97,7 +100,7 @@
 	                                </div>
 	                            </div>
 	                        </div>
-							<div class="welcome-container welcomeContainer right hidden">
+							<div class="welcome-container welcomeContainer right">
 								<div class="empty-screen">
 									<div class="image-container">
 										<img src="/static/images/Chat landing page.svg">
@@ -143,15 +146,11 @@
     <div class="message-area">
         <p class="message-content msgContent tooltip" title="">Message Content
 
-		
 		</p>
-	
-		<!-- <p class="message-timestamp msgTime">3 min</p> -->
 		<div class="error-container hidden">
-			Failed to send message Please check your internet connection
+			Failed to send message.Please check your internet connection
 		</div>
-	</div>
-	
+	</div>	
 </li>
 
 <li class="message received prototype hidden">
@@ -165,5 +164,4 @@
 </li>
 
 <div class="time-separator timeSeperator prototype hidden"><span>Today</span></div>
-
 {{>footer}}

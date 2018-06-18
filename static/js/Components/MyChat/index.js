@@ -4,7 +4,8 @@ globalParameters = {
     messageNumber: 10,
     startTimeToken: null,
     endTimeToken: null,
-    clicked: 1
+    clicked: 1,
+    startChatConversation:1
 }
 function getDeviceId(n) {
     if(!n)
@@ -184,13 +185,14 @@ jQuery(document).ready( function() {
 
    function onFetchHistory(data, response, obj) {
        globalParameters.startTimeToken = parseInt(response.startTimeToken)
-       chat.populateMessages(response.messages)
+       chat.populateMessages(response.messages,globalParameters.startChatConversation)
        chat.setCandidateProfile(obj)
        if(globalParameters.clicked == 1) {
            chat.scrollToBottom()
            globalParameters.clicked = 0;
        }
    }
+
 
    var ticker;
    $(".current-chat").scroll(function(){
@@ -204,6 +206,7 @@ jQuery(document).ready( function() {
            if(globalParameters.startTimeToken == 0) {
                return
            }
+           globalParameters.startChatConversation=0;
            chatEngine.fetchHistory(globalParameters.channelName , globalParameters.messageNumber ,globalParameters.startTimeToken, null, onFetchHistory);
        }
    }

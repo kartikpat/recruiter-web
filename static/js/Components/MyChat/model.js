@@ -37,6 +37,7 @@ function Chat() {
        settings.candImage = $(".candImage");
        settings.statePendingClass = ".icon-chatContainer i";
        settings.stateErrorClass = ".error-container";
+       settings.noMessages=$(".noMessages") 
        onClickBackButton()
    }
 
@@ -74,10 +75,11 @@ function Chat() {
    function addToList(dataArray){
        var str = '';
        $('.loading.loaderScroller.first').addClass("hidden")
-
        if(!dataArray.length && dataArray.index!=1) {
-        return $(".empty-screen.no-list").removeClass("hidden")
-       }
+            settings.welcomeContainer.addClass("hidden")
+            $(".empty-screen.no-list").removeClass("hidden")
+            return
+        }
 
        dataArray.forEach(function(aData, index){
            var item = createElement(aData);
@@ -87,7 +89,7 @@ function Chat() {
        });
        settings.conversationItemList.html(str);
         settings.conversationItemList.closest(".conversations-list").removeClass("hidden")
-        settings.welcomeContainer.removeClass("hidden")
+        // settings.welcomeContainer.removeClass("hidden")
    }
 
    // function setProfile(obj) {
@@ -110,7 +112,6 @@ function Chat() {
 
    function onClickSingleChatItem(fn){
        settings.conversationItemList.on('click', settings.conversationItemClass, function(){
-
            $(settings.conversationItemClass).removeClass("conversation-item-active")
            $(this).addClass("conversation-item-active")
            var channelName = $(this).attr("data-channel-name");
@@ -159,7 +160,7 @@ function Chat() {
        time += moment(data["entry"]["time"]).format("hh:mm a");
        card.find(".msgContent").html(data["entry"]["msg"]).attr("title", time)
        if(status==1){
-          card.find(".msgContent").append("<span class='icon-chatContainer'><i class='icon-history-button'></i></span>")
+          card.find(".msgContent").append("<span class='icon-chatContainer'><i class='icon-clock-1'></i></span>")
        }
        return card
    }
@@ -176,12 +177,12 @@ function Chat() {
        return card
    }
 
-   function populateMessages(dataArray) {
-
+   function populateMessages(dataArray,conversation) {
         var str = ""
         var flag = 1;
+        console.log(dataArray);
+        
         dataArray.forEach(function(elem, index){
-
                if(index == 0 || (index > 0 && (moment(dataArray[index - 1]["entry"]["time"]).format("DD MM YYYY") != moment(elem["entry"]["time"]).format("DD MM YYYY"))) ) {
                    var item = getTimeElement(elem)
                    str+=item[0].outerHTML;
@@ -199,7 +200,6 @@ function Chat() {
                }
            })
            settings.mssgContainer.prepend(str)
-
            if($(window).outerWidth() < 769 ) {
                settings.backButtonChat.removeClass("hidden")
                settings.candImage.removeClass("hidden")
@@ -208,7 +208,11 @@ function Chat() {
            $('.loading.loaderScroller.second').addClass("hidden")
            settings.chatWindow.removeClass("hidden")
            settings.userProfile.removeClass("hidden")
-           initializeTooltip()
+        //    settings.noMessages.find('.user-text').text("");     
+        //     if(dataArray.length==0 && conversation==1){
+        //         settings.noMessages.find('.user-text').text("You have not started any conversations yet");
+        //     }
+            initializeTooltip()
 
    }
 
@@ -265,6 +269,7 @@ function Chat() {
        initializeTooltip()
        scrollToBottom()
        settings.msgContent.val('');
+    //    settings.noMessages.find('.user-text').text("");     
    }
 
    function receiveMessage(msg, channelName) {
@@ -326,7 +331,7 @@ function Chat() {
    function setDeliveredState(id){
     if(!id)
       return
-      $('#'+id).find(settings.statePendingClass).removeClass('icon-history-button').addClass('icon-tick');
+      $('#'+id).find(settings.statePendingClass).removeClass('icon-clock-1').addClass('icon-tick');
    }
 
    function setFailedState(id){
