@@ -314,7 +314,7 @@
 					padding:15px;
 
 					li {
-						margin:0 0 15px;
+						margin: 5px 0;
 					}
 				}
 
@@ -343,12 +343,12 @@
 							&.received {
 								.user-image {
 									float:left;
-									margin:0 15px 0 0;
+									margin:0 10px 0 0;
 
 									img {
 										border-radius:50%;
-										height:43px;
-										width:43px;
+										height:33px;
+										width:33px;
 									}
 								}
 								.message-area {
@@ -365,7 +365,7 @@
 											background-color:$color-white;
 											border:1px solid $border-color-base;
 											border-radius:4px;
-											padding:10px;
+											padding: 5px 10px;
 											font-size:$base-font-size;
 											max-width: calc(100vw - 130px);
 										    word-break: break-all;
@@ -407,7 +407,7 @@
 											background-color:$resume-profile-snapshot-background;
 											border:1px solid $border-color-base;
 											border-radius:4px;
-											padding:10px;
+											padding: 5px 10px;
 											font-size:$base-font-size;
 											max-width: calc(100vw - 130px);
 											word-break: break-all;
@@ -440,6 +440,7 @@
 										.icon-clock-1::before{
 											content: '\e852';
 											font-size: 11px;
+											font-weight: 600;
 											vertical-align: middle;
 											margin-left: 10px;
 											color: #888888;

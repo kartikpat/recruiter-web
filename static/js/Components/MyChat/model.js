@@ -208,10 +208,10 @@ function Chat() {
            $('.loading.loaderScroller.second').addClass("hidden")
            settings.chatWindow.removeClass("hidden")
            settings.userProfile.removeClass("hidden")
-           settings.noMessages.find('.user-text').text("");     
-            if(dataArray.length==0 && conversation==1){
-                settings.noMessages.find('.user-text').text("You have not started any conversations yet");
-            }
+        //    settings.noMessages.find('.user-text').text("");     
+        //     if(dataArray.length==0 && conversation==1){
+        //         settings.noMessages.find('.user-text').text("You have not started any conversations yet");
+        //     }
             initializeTooltip()
 
    }
@@ -269,7 +269,7 @@ function Chat() {
        initializeTooltip()
        scrollToBottom()
        settings.msgContent.val('');
-       settings.noMessages.find('.user-text').text("");     
+    //    settings.noMessages.find('.user-text').text("");     
    }
 
    function receiveMessage(msg, channelName) {
