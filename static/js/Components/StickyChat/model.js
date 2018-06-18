@@ -416,12 +416,12 @@ function stickyChatModel(){
                     fn(channelName,startTimeToken);
                 }
             },100);
-            settings.spinner.removeClass("hidden");
+           $('.chat-spinner').removeClass("hidden");
         })
     }
 
     function hideSpinner(){
-        settings.spinner.addClass('hidden');
+        $('.chat-spinner').addClass('hidden');
     }
 
     function onFocusChatMessage(){

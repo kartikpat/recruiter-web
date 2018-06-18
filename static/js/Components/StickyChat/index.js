@@ -107,7 +107,6 @@ function chatModelIndex(){
     })
 
     function onFetchHistory(response,obj,channelName,scroll) {
-        // $('.chat-spinner').addClass("hidden");
         stickyChat.hideSpinner();
         stickyChat.populateMessages(response,obj,channelName,scroll)
     }

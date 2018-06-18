@@ -326,7 +326,7 @@ function onClickShareOnLinkedIn(fn){
 	var candidateApplyUrl = "/job/:publishedId/applications";
 
 	function onStatsUpdate(topic, data){
-		$('.lds-spinner').addClass('hidden');
+		$('.number .lds-spinner').addClass('hidden');
 		data.forEach(function(aData){
 			dashboardStatsContainer.find(".block."+aData['label']+' .number').text(aData['value']);
 			if(aData['label']=='activeJobs' && !dataModel.revisit ){
