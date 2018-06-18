@@ -17,7 +17,6 @@ jQuery(document).ready( function() {
 	var candidates = candidateList();
     var aCandidate = Candidate();
     var chatModule=chatModelIndex();
-    chatModule.init();
     var theJob = Job();
     var store = Store();
     var filters = Filters();
