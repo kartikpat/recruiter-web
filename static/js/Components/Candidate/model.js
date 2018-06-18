@@ -38,7 +38,7 @@ function Candidate() {
         settings.candidateDownloadResume = $(".candidateDownloadResume");
         settings.selectDefaultCalendar = $(".selectDefaultCalendar");
         settings.pageTitle=$('.titlePage');
-        settings.candidateResumeShell=$(".candidateItem shell");
+        settings.candidateResumeShell=$(".candidateResumeShell");
         initializeTooltip();
         jQuery("#tabbed-content").tabs({
             create: function(){
@@ -233,15 +233,15 @@ function Candidate() {
         item.location.text(aData["currentLocation"] || "NA").removeClass("shell");
         var preferredLocationStr = "N.A."
         if(aData["preferredLocation"].length) {
-            var locationTitle = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? aData["preferredLocation"].join(','): null;
-            var preferredLocationStr = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? "Multiple Locations" : aData["preferredLocation"].join(',');
+            var locationTitle = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? aData["preferredLocation"].join(', '): null;
+            var preferredLocationStr = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? "Multiple Locations" : aData["preferredLocation"].join(', ');
         }
         item.preferredLocation.text(preferredLocationStr).removeClass("shell");
         item.preferredLocation.attr("title",locationTitle).addClass('tooltip');
         initializeTooltip();
         item.preferredLocationDetail.text(aData["preferredLocation"]).removeClass("shell");
         // item.contact.text(aData["phone"] || "NA").removeClass("shell");
-        item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY') || "NA").removeClass("shell");
+        // item.appliedOn.text(moment(aData["timestamp"], "x").format('DD-MM-YYYY') || "NA").removeClass("shell");
         if(aData["notice"] == 7) {
             item.notice.text("Immediately Available").removeClass("shell");
         }
