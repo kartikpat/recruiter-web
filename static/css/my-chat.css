@@ -2393,7 +2393,7 @@ span.sticker {
                   color: #888888; }
                 .page-content .chat-container .chat-body .chat-window ul li.message.sent .message-area p .icon-clock-1::before {
                   content: '\e852';
-                  font-size: 11px;
+                  font-size: 14px;
                   vertical-align: middle;
                   margin-left: 10px;
                   color: #888888; }
