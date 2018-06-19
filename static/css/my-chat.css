@@ -2388,9 +2388,9 @@ span.sticker {
                   content: '\e828';
                   float: right;
                   margin-left: 5px;
-                  margin-top: 8px;
+                  margin-top: 5px;
                   font-size: 12px;
-                  color: #149075; }
+                  color: #888888; }
                 .page-content .chat-container .chat-body .chat-window ul li.message.sent .message-area p .icon-history-button::before {
                   content: '\e864';
                   font-size: 12px;
