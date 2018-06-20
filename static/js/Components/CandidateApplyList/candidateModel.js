@@ -41,7 +41,7 @@ function Candidate() {
         settings.candidateDownloadResume = $(".candidateDownloadResume");
         settings.interviewInvite=$('.interviewinvite');
         settings.candidateResumeShell=$(".candidateResumeShell");
-
+        settings.additionalInfo=$('.additional')
         jQuery("#tabbed-content0").tabs({
             activate: function(event, ui) {
                 if(ui.newTab[0]["innerText"] == "COVER LETTER") {
@@ -205,6 +205,7 @@ function Candidate() {
             gender: modal.find(".js_gender"),
             age: modal.find(".js_age"),
             salary: modal.find(".js_sal"),
+            addinfoModal:modal.find('.addInfo'),
             expectedSalary: modal.find(".js_expected_sal"),
             maritalStatus: modal.find(".js_marital_status"),
             languages: modal.find(".js_languages"),
@@ -414,25 +415,42 @@ function Candidate() {
             tagStr+=tag[0].outerHTML
         })
         item.candidateTagList.html(tagStr)
-
         item.gender.text(gender[aData["sex"]])
         item.age.text(getAge(aData["dob"]) + " years")
         item.expectedSalary.text(formatSalary(aData["expectedCtc"]))
-        item.maritalStatus.text(getMaritalStatus(aData["maritalStatus"]));
-        item.languages.text((formatLanguages(aData["languages"]) || "N.A."));
-        item.workPermit.text((workPermit[aData["permit"]] || "N.A."));
-        item.teamHandling.text(binary[aData["handleTeam"]])
-        item.differentlyAbled.text(binary[aData["differentlyAbled"]])
-        item.relocate.text(binary[aData["relocate"]] )
-        item.startup.text(binary[aData["joinStartup"]])
-        item.travel.text(willingTravel[aData["travel"]])
+        
+        var flag=0;
+       
+        if(aData["maritalStatus"])
+            item.maritalStatus.text(getMaritalStatus(aData["maritalStatus"])) && item.maritalStatus.closest('.addInfo').removeClass('hidden') && flag++;
+        if(aData["languages"])
+            item.languages.text((formatLanguages(aData["languages"]))) && item.languages.closest('.addInfo').removeClass('hidden') && flag++;
+        if(aData["permit"])
+            item.workPermit.text((workPermit[aData["permit"]])) && item.workPermit.closest('.addInfo').removeClass('hidden') && flag++;
         if(aData["score"]) {
-            item.percentile.text(aData["score"]["cat"] || "N.A.")
-            item.iitScore.text(aData["score"]["iit"] || "N.A.")
-            item.gmatScore.text(aData["score"]["gmat"] || "N.A.")
+            if(aData["score"]["cat"])
+                item.percentile.text(aData["score"]["cat"]) && item.percentile.closest('.addInfo').removeClass('hidden')&& flag++;
+            if(aData["score"]["iit"])
+                item.iitScore.text(aData["score"]["iit"]) && item.iitScore.closest('.addInfo').removeClass('hidden')&& flag++;
+            if(aData["score"]["gmat"])
+                item.gmatScore.text(aData["score"]["gmat"]) && item.gmatScore.closest('.addInfo').removeClass('hidden')&& flag++;
         }
+        if(aData["handleTeam"])
+            item.teamHandling.text(binary[aData["handleTeam"]]) && item.teamHandling.closest('.addInfo').removeClass('hidden')&& flag++;
+        if(aData["sixDays"])
+            item.workSixDays.text(binary[aData["sixDays"]]) && item.workSixDays.closest('.addInfo').removeClass('hidden')&& flag++;
+        if(aData["differentlyAbled"])    
+            item.differentlyAbled.text(binary[aData["differentlyAbled"]]) && item.differentlyAbled.closest('.addInfo').removeClass('hidden')&& flag++;
+        if(aData["relocate"])
+            item.relocate.text(binary[aData["relocate"]]) && item.relocate.closest('.addInfo').removeClass('hidden')&& flag++;
+        if(aData["joinStartup"])
+            item.startup.text(binary[aData["joinStartup"]]) && item.startup.closest('.addInfo').removeClass('hidden')&& flag++;
+        if(aData["travel"])    
+            item.travel.text(willingTravel[aData["travel"]]) && item.travel.closest('.addInfo').removeClass('hidden')&& flag++;
 
-        item.workSixDays.text(binary[aData["sixDays"]])
+        if(flag>0)
+        settings.additionalInfo.removeClass('hidden');
+
         if(isCanvasSupported()) {
             item.resume.addClass("hidden")
            $('.candidateResumeShell').removeClass("hidden"); 
@@ -596,6 +614,8 @@ function Candidate() {
         item.email.text('');
         item.inviteText.text("Send Interview Invite")
         $(".coverLetterTab").addClass("hidden");
+        item.addinfoModal.addClass('hidden');
+        $('.additional').addClass('hidden');
     }
 
     function openModal(){
@@ -952,7 +972,6 @@ function initializeAutoCompleteComponent(selector, availableTags) {
 
 
 function getMaritalStatus(status) {
-
     switch (status) {
       case 1:
         maritalStatus = "Single";
