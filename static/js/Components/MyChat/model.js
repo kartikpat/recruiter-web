@@ -253,7 +253,8 @@ function Chat() {
                    return $(this).val("")
                }
                fn(message, settings.channelName, settings.candidateId)
-           }
+               return event.which !== 13;
+            }
        })
    }
 

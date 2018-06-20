@@ -444,6 +444,7 @@ function stickyChatModel(){
 
     function reposition_chat_windows() {
         var rightOffset = 290;
+      
         if(window.innerWidth>1400)
         rightOffset=370;
 
@@ -454,7 +455,7 @@ function stickyChatModel(){
             }
         });
         if(!(settings.chatCollapsedContainer.hasClass("hidden"))) {
-            settings.chatCollapsedContainer.css("right", (rightOffset/100));
+            settings.chatCollapsedContainer.css("right", (rightOffset));
         }
     }
 

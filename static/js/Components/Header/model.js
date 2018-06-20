@@ -122,7 +122,8 @@ function Header(){
     function setUserProfile(profile){
         settings.name.text(profile["name"]);
         settings.email.text(profile["email"]);
-		settings.userImg.attr('src',(profile["pic"])?profile["pic"]:"/static/images/noimage.png");
+		// settings.userImg.attr('src',(profile["pic"])?profile["pic"]:"/static/images/noimage.png");
+		settings.userImg.attr("src",profile["pic"]);
 	}
 
 
