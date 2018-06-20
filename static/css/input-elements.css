@@ -332,6 +332,9 @@
 .icon-clock-1::before {
   content: '\e852'; }
 
+.icon-chat_bubble::before {
+  content: '\e853'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
