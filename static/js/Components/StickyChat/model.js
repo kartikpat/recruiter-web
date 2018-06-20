@@ -444,6 +444,9 @@ function stickyChatModel(){
 
     function reposition_chat_windows() {
         var rightOffset = 290;
+        if(window.innerWidth>1400)
+        rightOffset=370;
+
         jQuery(".chat-candidate-boxes .chat-div-candidate").each(function(i, el) {
             if(!($(this).hasClass("hidden"))) {
                 jQuery(this).css("right", rightOffset);
@@ -451,7 +454,7 @@ function stickyChatModel(){
             }
         });
         if(!(settings.chatCollapsedContainer.hasClass("hidden"))) {
-            settings.chatCollapsedContainer.css("right", rightOffset );
+            settings.chatCollapsedContainer.css("right", (rightOffset/100));
         }
     }
 
