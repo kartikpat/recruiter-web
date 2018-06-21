@@ -36,8 +36,9 @@ function Jobs() {
 		onClickJobCancel();
 		onClickJobMakePremium();
 		onClickShareOnFB();
-		onClickShareOnTwitter();
-		onClickShareOnLinkedIn()
+	
+		// onClickShareOnTwitter();
+		// onClickShareOnLinkedIn()
 
 		$(".postJobLink").click(function(){
 			var eventObj = {
@@ -73,6 +74,8 @@ function Jobs() {
 
 	function onClickShareOnTwitter(fn){
 		settings.rowContainer.on('click','.jobTwitter',function(e){
+			fn();
+			debugger
 			var jobId = $(this).attr("data-job-id")
 			var eventObj = {
 				event_category: eventMap["socialIconsClick"]["cat"],
@@ -504,7 +507,9 @@ function Jobs() {
 		showSpinner: showSpinner,
 		hideSpinner: hideSpinner,
 		closeModal: closeModal,
-		disableRefresh:disableRefresh
+		disableRefresh:disableRefresh,
+		onClickShareOnTwitter:onClickShareOnTwitter,
+		onClickShareOnLinkedIn:onClickShareOnLinkedIn
 	}
 
 	function initializeTooltip() {

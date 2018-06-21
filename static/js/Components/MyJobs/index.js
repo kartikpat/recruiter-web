@@ -73,6 +73,18 @@ jQuery(document).ready( function() {
 		return submitPremiumJob(recruiterId, jobId);
 	})
 
+	jobList.onClickShareOnTwitter(function(){
+		if(profile.twitter==0){
+			window.location=staticEndPoints.recruiterProfile;
+		}
+	})
+	
+	jobList.onClickShareOnLinkedIn(function(){
+		if(profile.linkedin==0){
+			window.location=staticEndPoints.recruiterProfile;
+		}
+	})
+
 	//Initial call
 	var parameters = {}
 	parameters.pageNumber = globalParameters.pageNumber;
