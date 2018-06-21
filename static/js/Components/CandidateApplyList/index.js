@@ -246,8 +246,10 @@ jQuery(document).ready( function() {
 
     
     candidates.onClickCandidate(function(){
-         if(recruiter.getViewsLimit()==0)
-         return true
+         if(recruiter.getViewsLimit()==0){
+            toastNotify(3,"You have exceeded your daily view limit.");
+            return true
+         }
     });
 
     candidates.onClickAddTag(function(applicationId) {

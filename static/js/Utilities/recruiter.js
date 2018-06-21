@@ -6,9 +6,6 @@ function recruiterLimit(){
     function saveToStore(aData){
         downloads=aData.data.download;
         views=aData.data.view;
-        console.log(downloads);
-        console.log(views);
-        console.log("her i am");
     }    
     
 
@@ -17,7 +14,6 @@ function recruiterLimit(){
     }
     
     function getViewsLimit(){
-        console.log(views)
         return 0;
     }
     
