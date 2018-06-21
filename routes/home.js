@@ -60,6 +60,7 @@ module.exports = function(settings){
 				const jsonBody = JSON.parse(body)
 				if(jsonBody.status && jsonBody.status =='success'){
 					req.profile = jsonBody.data;
+					console.log(req.profile)
 					req.profile.about = splitAbout(req.profile.about);
 					req.profile.showSearch = (req.profile.search ==2) ? null : 1
 					if(req.originalUrl == "/verify-email") {

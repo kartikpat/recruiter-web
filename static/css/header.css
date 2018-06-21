@@ -1004,9 +1004,9 @@ b {
       background-color: #117962;
       color: #FFF;
       font-size: 13px;
-      padding: 5px 15px; }
+      padding: 5px 5px; }
       .header .profile_actions .profile .profile-menu .user_profile_info .profile-hits {
-        width: 40%;
+        width: 45%;
         display: inline-block; }
     .header .profile_actions .profile .profile-menu .profile-body {
       background: #FFF;
