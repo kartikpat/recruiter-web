@@ -9,8 +9,6 @@ var globalParameters = {
     actionPageNumber: 2,
     actionPageContent: 5,
     newApplication: 0 ,
-    views:0,
-    downloads:0,
 }
 
 var screenName = "candidate-apply-list";
@@ -23,14 +21,12 @@ jQuery(document).ready( function() {
     var theJob = Job();
     var store = Store();
     var filters = Filters();
-    //initializing the models
-
+    var recruiter=recruiterLimit();
     candidates.setConfig("jobId", jobId)
     filters.init();
     candidates.init(profile, baseUrl);
     theJob.init();
     aCandidate.init();
-
 
     $(window).scroll(function() {  
         if ($(window).scrollTop() > 500 && globalParameters.newApplication==1) {
@@ -78,10 +74,9 @@ jQuery(document).ready( function() {
     var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitFail:"+screenName, onPageVisitUpdateFail)
     var fetchLimitSubscriptionSuccess= pubsub.subscribe("fetchLimitSuccess",onFetchLimitSuccess);
     var fetchLimitSubscriptionFail= pubsub.subscribe("fetchLimitFail",onFetchLimitFail);
-    
+
     function onFetchLimitSuccess(topic,res){
-       globalParameters.views=res.data.views;
-       globalParameters.downloads=res.data.downloads;
+        recruiter.saveToStore(res);
     }    
 
     function onFetchLimitFail(topic,error){
@@ -107,6 +102,11 @@ jQuery(document).ready( function() {
         // var parameters = filters.getAppliedFilters()
         // parameters.status = globalParameters.status;
         // setQueryParameters(parameters)
+        if(recruiter.getViewsLimit()==0){
+            toastNotify(3, "Your limit exceeded")
+            return
+        }
+
         var eventObj = {
             event_category: eventMap["viewCandidProfile"]["cat"],
             event_label: 'origin=CandidateApplyList,type=SavedShorlistedList,recId='+recruiterId+''
@@ -245,12 +245,10 @@ jQuery(document).ready( function() {
     })
 
     
-    // candidates.onClickCandidate(function(candidateId, status, applicationId){
-    //     var candidateDetails = store.getCandidateFromStore(candidateId);
-    //     aCandidate.showCandidateDetails(candidateDetails,"", status);
-    //     if(parseInt(status) == 0)
-    //         setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
-    // });
+    candidates.onClickCandidate(function(){
+         if(recruiter.getViewsLimit()==0)
+         return true
+    });
 
     candidates.onClickAddTag(function(applicationId) {
         var candidateDetails = store.getCandidateFromStore(applicationId);
@@ -412,25 +410,31 @@ jQuery(document).ready( function() {
     })
 
     candidates.onClickDownloadResume(function(applicationId, status){
+        if(recruiter.getDownloadLimit()==0){
+            toastNotify(3,"Download Limit Exceeded")
+            return false;
+        }
         var eventObj = {
            event_category: eventMap["downloadResume"]["cat"],
            event_label: 'origin=CandidateApplyList,type=Single,recId='+recruiterId+''
         }
         sendEvent(eventMap["downloadResume"]["event"], eventObj)
-        // sending event on every download
-        // if(parseInt(status) == 0)
-            setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
+        setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
+        return true;
     });
 
     aCandidate.onClickDownloadResume(function(applicationId, status){
+        if(recruiter.getDownloadLimit()==0){
+            toastNotify(3,"Download Limit Exceeded")
+            return false;
+        }
         var eventObj = {
            event_category: eventMap["downloadResume"]["cat"],
            event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
         }
         sendEvent(eventMap["downloadResume"]["event"], eventObj)
-        // if(parseInt(status) == 0)
-        // sending event on every download
-            setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
+        setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
+        return true;
     });
 
     candidates.onClickSaveCandidate(function(applicationId, newStatus, dataAction){
@@ -478,7 +482,6 @@ jQuery(document).ready( function() {
 
     function onSuccessfullCandidateAction(topic, res) {
         var arr = [];
-        // TODO
         arr.push(res.applicationId)
         if(res.action == "view") {
             var newStatus = 4

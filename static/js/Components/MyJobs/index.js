@@ -5,7 +5,6 @@ var globalParameters = {
     jobListLength: null,
     initialLoad: 1
 }
-
 jQuery(document).ready( function() {
 
     var successMsg = getQueryParameter("jobPostMessage");

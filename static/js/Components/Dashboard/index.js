@@ -26,7 +26,8 @@ if(object==null){
 var date=new Date();
 
 console.log(date)
-	
+
+    
 function Notifications(){
 	var settings ={};
 	settings.notificationContainer= $('#notificationContainer');

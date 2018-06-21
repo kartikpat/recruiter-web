@@ -173,7 +173,11 @@ function Candidate() {
             socialFb: modal.find(".social.facebook"),
             socialTw: modal.find(".social.twitter")
         }
+    }
 
+
+    function noview(){
+        $('.noviewLimit').removeClass('hidden');
     }
 
     function getEducationElement() {
@@ -771,12 +775,12 @@ function Candidate() {
         settings.candidateDownloadResume.click(function(event){
             event.preventDefault()
             var status = $(this).attr("data-status");
-            var url = $(this).attr("data-href");
-            url += "?type=download"
-            window.open(url);
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
-            
-            fn(applicationId, status)
+            if(fn(applicationId, status)){
+                var url = $(this).attr("data-href");
+                url += "?type=download"
+                window.open(url);
+            }
         })
     }
 
@@ -790,6 +794,7 @@ function Candidate() {
         settings.commentTextarea.val(comment).removeClass("hidden");
         settings.candidateEditComment.removeClass("hidden");
     }
+
 
     function changeInviteText(applicationId) {
         $(".candidateDetailsModal[data-application-id="+applicationId+"] .interviewinvite").text("Interview Invite Sent")
@@ -850,7 +855,8 @@ function Candidate() {
         addComment: addComment,
         initializeTooltip:initializeTooltip,
         changeInviteText:changeInviteText,
-        triggerDownload: triggerDownload
+        triggerDownload: triggerDownload,
+        noview:noview
     }
 
     function focusOnElement(element, container) {
