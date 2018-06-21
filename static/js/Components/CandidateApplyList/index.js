@@ -8,8 +8,11 @@ var globalParameters = {
     candidateListLength: null,
     actionPageNumber: 2,
     actionPageContent: 5,
-    newApplication: 0 
+    newApplication: 0 ,
+    views:0,
+    downloads:0,
 }
+
 var screenName = "candidate-apply-list";
 
 jQuery(document).ready( function() {
@@ -69,11 +72,23 @@ jQuery(document).ready( function() {
             filters.showAppliedFilters()
         }
     }
-
-
+    fetchLimit(recruiterId);
     submitPageVisit(recruiterId, screenName, jobId);
     var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitSuccess:"+screenName, onPageVisitUpdateSuccess)
     var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitFail:"+screenName, onPageVisitUpdateFail)
+    var fetchLimitSubscriptionSuccess= pubsub.subscribe("fetchLimitSuccess",onFetchLimitSuccess);
+    var fetchLimitSubscriptionFail= pubsub.subscribe("fetchLimitFail",onFetchLimitFail);
+    
+    function onFetchLimitSuccess(topic,res){
+       globalParameters.views=res.data.views;
+       globalParameters.downloads=res.data.downloads;
+    }    
+
+    function onFetchLimitFail(topic,error){
+        console.log('error');
+    }
+
+
     function onPageVisitUpdateSuccess(topic, data){
         console.log('page visit done');
     }
@@ -103,9 +118,10 @@ jQuery(document).ready( function() {
         aCandidate.showCandidateDetails(candidateDetails,hash, candidateDetails.status);
         // sending event on every view
         // if(parseInt(candidateDetails.status) == 0)
-            setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
+        setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
 
     });
+
     page('/', function(context, next){
         aCandidate.closeModal();
     })
