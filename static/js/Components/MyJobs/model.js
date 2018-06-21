@@ -384,6 +384,7 @@ function Jobs() {
 				'title': "This is a premium job and hence cannot be refreshed. For more information, please drop a mail to info@iimjobs.com"
 			 });
 		}
+		
 		if(aData["url"]) {
 			var url = config["baseUrlJob"] + aData["url"];
 			item.facebook.attr("href", getFacebookShareLink(url))

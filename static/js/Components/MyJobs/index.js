@@ -3,7 +3,9 @@ var globalParameters = {
     pageNumber: 1,
     type: "all",
     jobListLength: null,
-    initialLoad: 1
+	initialLoad: 1,
+	linkedIn:0,
+	twitter:0
 }
 
 jQuery(document).ready( function() {
@@ -78,7 +80,7 @@ jQuery(document).ready( function() {
 			window.location=staticEndPoints.recruiterProfile;
 		}
 	})
-	
+
 	jobList.onClickShareOnLinkedIn(function(){
 		if(profile.linkedin==0){
 			window.location=staticEndPoints.recruiterProfile;
@@ -109,8 +111,22 @@ jQuery(document).ready( function() {
 		tickerLock = false;
         globalParameters.initialLoad = 0;
 		globalParameters.jobListLength = data.length;
+		//check profile connected to linkedin-twitter or not//////////
+		checkLinkedIn();
+		checkTwitter();
+		jobList.addToList(data, globalParameters.pageNumber, globalParameters.pageContent,data.obj.type,globalParameters.linkedIn,globalParameters.twitter);
+	}
 
-		jobList.addToList(data, globalParameters.pageNumber, globalParameters.pageContent,data.obj.type);
+	function checkLinkedIn(){
+		if(profile.linkedin==1){
+			globalParameters.linkedIn==1;
+		}
+	}
+	
+	function checkTwitter(){
+		if(profile.twitter==1){
+			globalParameters.twitter==1;
+		}
 	}
 
 	function onJobsFetchFail(topic, data){
