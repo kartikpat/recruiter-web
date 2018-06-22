@@ -39,6 +39,7 @@ function Candidate() {
         settings.selectDefaultCalendar = $(".selectDefaultCalendar");
         settings.pageTitle=$('.titlePage');
         settings.candidateResumeShell=$(".candidateResumeShell");
+        settings.noViewLimit=$('.noviewLimit')
         initializeTooltip();
         jQuery("#tabbed-content").tabs({
             create: function(){
@@ -110,6 +111,10 @@ function Candidate() {
             var applicationId =  $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
             fn(candidateId, applicationId);
         })
+    }
+
+    function noview(){
+        settings.noViewLimit.removeClass('hidden');
     }
 
     function getElement(userID) {
@@ -729,11 +734,12 @@ function Candidate() {
         settings.candidateDownloadResume.click(function(event) {
             event.preventDefault()
             var status = $(this).attr("data-status");
-            var url = $(this).attr("data-href");
-            url += "?type=download"
-            window.open(url);
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
-            fn(applicationId, status)
+            if(fn(applicationId, status)){
+                var url = $(this).attr("data-href");
+                url += "?type=download"
+                window.open(url);
+            }    
         })
     }
 
@@ -798,7 +804,8 @@ function Candidate() {
         onClickDownloadResume: onClickDownloadResume,
         changeStatus: changeStatus,
         addComment: addComment,
-        initializeTooltip:initializeTooltip
+        initializeTooltip:initializeTooltip,
+        noview:noview
     }
 
     function focusOnElement(element, container) {

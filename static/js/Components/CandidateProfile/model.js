@@ -41,6 +41,7 @@ function Candidate() {
         settings.pageTitle=$('.titlePage');
         settings.interviewInvite=$('.interviewinvite')
         settings.candidateResumeShell=$(".candidateItem shell");
+        settings.noViewLimit=$('.noviewLimit')
         initializeTooltip();
         var successMsg = getQueryParameter("type");
         jQuery("#tabbed-content").tabs({
@@ -177,7 +178,7 @@ function Candidate() {
 
 
     function noview(){
-        $('.noviewLimit').removeClass('hidden');
+        settings.noViewLimit.removeClass('hidden');
     }
 
     function getEducationElement() {
