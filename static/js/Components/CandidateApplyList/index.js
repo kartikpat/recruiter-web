@@ -92,10 +92,9 @@ jQuery(document).ready( function() {
         // parameters.status = globalParameters.status;
         // setQueryParameters(parameters)
         if(recruiter.getViewsLimit()==0){
-            toastNotify(3, "Your limit exceeded")
+            toastNotify(3, "Your daily view limit exceeded")
             return
         }
-
         var eventObj = {
             event_category: eventMap["viewCandidProfile"]["cat"],
             event_label: 'origin=CandidateApplyList,type=SavedShorlistedList,recId='+recruiterId+''
@@ -108,7 +107,6 @@ jQuery(document).ready( function() {
         // sending event on every view
         // if(parseInt(candidateDetails.status) == 0)
         setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
-
     });
 
     page('/', function(context, next){
