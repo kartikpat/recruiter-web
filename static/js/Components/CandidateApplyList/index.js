@@ -478,6 +478,7 @@ jQuery(document).ready( function() {
             var newStatus = 4
             var obj = store.getCandidateFromStore(res.applicationId)
             obj["status"] = (obj["status"]==1 || obj["status"]==2 || obj["status"]==3) ? obj["status"] : newStatus;
+            // recruiter.updateViewCount()
             return candidates.changeStatus(arr, obj["status"])
         }
 
@@ -485,6 +486,7 @@ jQuery(document).ready( function() {
             var newStatus = 5
             var obj = store.getCandidateFromStore(res.applicationId)
             obj["status"] = (obj["status"]==1 || obj["status"]==2 || obj["status"]==3) ? obj["status"] : newStatus;
+            // recruiter.updateDownloadCount();
             return candidates.changeStatus(arr, obj["status"])
         }
     

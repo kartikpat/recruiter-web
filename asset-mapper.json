@@ -507,6 +507,7 @@
 				"static/js/Services/fetchJobs.js",
 				"static/js/Services/fetchFollowUps.js",
 				"static/js/Services/fetchInterviews.js",
+				"static/js/Services/fetchLimit.js",
 				"static/js/Services/submitUnpublishJob.js",
 				"static/js/Services/submitRefreshJob.js",
 				"static/js/Services/setCandidateAction.js",

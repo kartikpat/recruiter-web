@@ -173,6 +173,7 @@ jQuery(document).ready( function() {
     function onSuccessfullCandidateAction(topic, res) {
         if(res.action == "download") {
             var newStatus = 5
+            // recruiter.updateViewCount()
             return aCandidate.changeStatus( newStatus)
         }
         if(res.action == "tag") {

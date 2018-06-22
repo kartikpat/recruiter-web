@@ -215,10 +215,12 @@ jQuery(document).ready( function() {
             var newStatus = 4
             var obj = store.getCandidateFromStore(res.applicationId)
             obj["status"] = newStatus;
+            // recruiter.updateViewCount();
         }
 
         if(res.action == "download") {
             var newStatus = 5
+            // recruiter.updateDownloadCount()
             return aCandidate.changeStatus( newStatus)
         }
         if(res.action == "tag") {

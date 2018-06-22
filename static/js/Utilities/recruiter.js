@@ -14,7 +14,7 @@ function recruiterLimit(){
     }
     
     function getViewsLimit(){
-        return 0;
+        return views;
     }
     
     function updateViewCount(count){
