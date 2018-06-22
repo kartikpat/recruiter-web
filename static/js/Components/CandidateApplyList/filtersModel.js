@@ -164,6 +164,8 @@ function Filters(){
 
 	function init(){
 		settings.searchButton = $("#searchButton");
+		settings.clearSearch  = $("#clear-Search");
+		settings.searchInput=	$("#searchInput");
 		settings.filterButton = "";
 		settings.sortButton = "";
 		settings.appliedFiltersContainer = $(".active-filters .clear-all-filters .appliedFilters");
@@ -204,6 +206,7 @@ function Filters(){
 		onChangeFiltersDropdownHalf()
 		onClickSeeFilters()
 		onClickTopInstituteContainer()
+		onClickRemoveSearchFilter()
 
 		jQuery(".modal_overlay").on("click",".category_listing li",function() {
 
@@ -321,6 +324,14 @@ function Filters(){
 		})
 	}
 
+	function onClickRemoveSearchFilter(){
+		settings.clearSearch.click(function(){
+			settings.searchInput.val('');
+			settings.clearAllFitersButton.addClass('hidden');
+			settings.searchButton.click();
+		})	
+	}
+
 	function onClickRemoveAllFilters(fn) {
 		settings.clearAllFitersButton.click(function(){
 			removeAllFilters()
@@ -331,21 +342,26 @@ function Filters(){
 	function onClickSearchButton(fn){
 		var orderBySelect = filtersTarget["orderBy"]["target"]
 		settings.searchButton.click(function(event){
-
 			var str = (filtersTarget["searchString"]["target"].val()).trim();
-
 			if(str == '') {
 				orderBySelect.removeClass("hidden")
 			}
 			else {
 				orderBySelect.addClass("hidden")
+				if(settings.clearAllFitersButton.attr("data-search")=="all"){
+					settings.clearAllFitersButton.text("Clear All");	
+				}
+				else{
+					settings.clearAllFitersButton.text("Clear Search");
+				}
+				settings.clearAllFitersButton.attr("data-search","all");
+				settings.clearAllFitersButton.removeClass("hidden");
 			}
 			filtersTarget["searchString"]["selection"] = str;
 			fn();
 		})
 
 		filtersTarget["searchString"]["target"].keyup(function(event){
-
             if (event.which == 13) {
 				var str = (filtersTarget["searchString"]["target"].val()).trim();
 				if(str == '') {
@@ -353,9 +369,17 @@ function Filters(){
 				}
 				else {
 					orderBySelect.addClass("hidden")
+					if(settings.clearAllFitersButton.attr("data-search")=="all"){
+						settings.clearAllFitersButton.text("Clear All");	
+					}
+					else{
+						settings.clearAllFitersButton.text("Clear Search");
+					}
+					settings.clearAllFitersButton.attr("data-search","all");
+					settings.clearAllFitersButton.removeClass("hidden");
 				}
 				filtersTarget["searchString"]["selection"] = str;
-                fn();
+				fn();
             }
         });
 	}
@@ -517,6 +541,10 @@ function Filters(){
 				filtersTarget[key]["label"] = ""
 				filtersTarget[key]['target'].val("-1")
 			}
+			else if(filtersTarget[key]["type"]=="input"){
+				filtersTarget[key]["target"].val("");
+				filtersTarget[key]["selection"]=null;
+			}
 		}
 
 		settings.activeFiltersContainer.find(".filter-tag").remove();
@@ -525,6 +553,7 @@ function Filters(){
 		settings.seeFilters.addClass("hidden")
 		settings.topinstitute.topinst = 0;
 		settings.topinstitute.lawinst = 0;
+		settings.clearAllFitersButton.attr("data-search","");
 		settings.resultFoundText.addClass("hidden");
 	}
 
@@ -761,6 +790,13 @@ function Filters(){
 
 	function showAppliedFilters() {
 		settings.activeFiltersContainer.removeClass("hidden");
+		if(settings.clearAllFitersButton.attr("data-search")=="all"){
+			settings.clearAllFitersButton.text("Clear all");
+			settings.clearAllFitersButton.removeClass("hidden")
+			return
+		}
+		settings.clearAllFitersButton.text("Clear Filters");
+		settings.clearAllFitersButton.attr("data-search","all");
 		settings.clearAllFitersButton.removeClass("hidden")
 	}
 
@@ -922,7 +958,8 @@ function Filters(){
 		getFiltersObj: getFiltersObj,
 		callClickOnFilters: callClickOnFilters,
 		changeSelectValue: changeSelectValue,
-		hideResultsFound: hideResultsFound
+		hideResultsFound: hideResultsFound,
+	
     }
 }
 
