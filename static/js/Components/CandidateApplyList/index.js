@@ -68,21 +68,10 @@ jQuery(document).ready( function() {
             filters.showAppliedFilters()
         }
     }
-    fetchLimit(recruiterId);
     submitPageVisit(recruiterId, screenName, jobId);
     var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitSuccess:"+screenName, onPageVisitUpdateSuccess)
     var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitFail:"+screenName, onPageVisitUpdateFail)
-    var fetchLimitSubscriptionSuccess= pubsub.subscribe("fetchLimitSuccess",onFetchLimitSuccess);
-    var fetchLimitSubscriptionFail= pubsub.subscribe("fetchLimitFail",onFetchLimitFail);
-
-    function onFetchLimitSuccess(topic,res){
-        recruiter.saveToStore(res);
-    }    
-
-    function onFetchLimitFail(topic,error){
-        console.log('error');
-    }
-
+  
 
     function onPageVisitUpdateSuccess(topic, data){
         console.log('page visit done');

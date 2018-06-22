@@ -1,5 +1,6 @@
 var chatModule=chatModelIndex();
-
+var recruiter=recruiterLimit();
+  
 
 jQuery(".header .menu-list-item.dashboard").addClass("active");
 var dataModel = {};
@@ -640,6 +641,15 @@ function onClickShareOnLinkedIn(fn){
 		errorHandler(data)
 	}
 
+	function onFetchLimitSuccess(topic,res){
+        recruiter.saveToStore(res);
+    }    
+
+    function onFetchLimitFail(topic,error){
+        console.log('error');
+    }
+
+
 	var fetchInterviewsSubscription = pubsub.subscribe("fetchedInterviews", onFetchInterviews);
 	var fetchRecruiterCalendarSubscription=pubsub.subscribe('fetchedCalendars',onFetchCalendars);
 	var setCandidateActionSuccessSubscription = pubsub.subscribe("setCandidateActionSuccess", onSuccessfullCandidateAction)
@@ -647,9 +657,13 @@ function onClickShareOnLinkedIn(fn){
 	var refreshJobFailSubscription = pubsub.subscribe("jobRefreshFail", onFailedRefreshJob)
 	var unPublishJobSuccessSubscription = pubsub.subscribe("jobUnpublishSuccess", onSuccessfulUnpublishedJob);
 	var unPublishJobFailSubscription = pubsub.subscribe("jobUnpublishFail", onFailedUnpublishedJob);
+	var fetchLimitSubscriptionSuccess= pubsub.subscribe("fetchLimitSuccess",onFetchLimitSuccess);
+    var fetchLimitSubscriptionFail= pubsub.subscribe("fetchLimitFail",onFetchLimitFail);
+
 
 	function init(){
 		pubsub.publish("pageVisit", 1);
+		fetchLimit(recruiterId);
 		fetchDashboardStats(recruiterId);
 		fetchJobs({pageContent:5, pageNumber: 1, type: "published"}, recruiterId); //recent-jobs
 		var currentDate=moment().format("YYYY-MM-DD");
