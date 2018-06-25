@@ -15,7 +15,6 @@ function onBoarding(){
         })
         settings.facebookConnect.on('click',function(){
             window.open('/auth/facebook/','',' scrollbars=yes,menubar=no,width=500,height=500, resizable=yes,toolbar=no,location=no,status=no')
-
         })
 
         settings.linkedinConnect.on('click',function(){
@@ -28,8 +27,6 @@ function onBoarding(){
     }
 
     function connected(){
-        
-        console.log(profile['twitter'])
         if(profile['linkedin']==1){
             settings.linkedinConnect.css('background',' #f3fbfb ');
             settings.linkedinConnect.find('.triangle').removeClass('hidden');

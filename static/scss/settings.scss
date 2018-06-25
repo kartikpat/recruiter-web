@@ -211,6 +211,7 @@
                                 border:1px solid #0677a9;
                                 border-radius: 4px;
                                 text-align: center;
+                                cursor: pointer;
                             }
                             .connectTwitter{
                                 margin-top: 10px;
@@ -221,6 +222,7 @@
                                 border:1px solid  #54adef;;
                                 border-radius: 4px;
                                 text-align: center;
+                                cursor: pointer;
                             }
                             select {
                                 @include select-dropdown;

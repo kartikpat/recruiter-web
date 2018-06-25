@@ -36,9 +36,7 @@ function Jobs() {
 		onClickJobCancel();
 		onClickJobMakePremium();
 		onClickShareOnFB();
-	
-		// onClickShareOnTwitter();
-		// onClickShareOnLinkedIn()
+
 
 		$(".postJobLink").click(function(){
 			var eventObj = {
@@ -74,8 +72,10 @@ function Jobs() {
 
 	function onClickShareOnTwitter(fn){
 		settings.rowContainer.on('click','.jobTwitter',function(e){
-			fn();
-			debugger
+			if(fn()){
+				event.stopPropagation();
+				event.preventDefault();
+			}
 			var jobId = $(this).attr("data-job-id")
 			var eventObj = {
 				event_category: eventMap["socialIconsClick"]["cat"],
@@ -88,6 +88,10 @@ function Jobs() {
 
 	function onClickShareOnLinkedIn(fn){
 		settings.rowContainer.on('click','.jobLinkedIn',function(e){
+			if(fn()){
+				event.stopPropagation();
+				event.preventDefault();
+			}
 			var jobId = $(this).attr("data-job-id")
 			var eventObj = {
 				event_category: eventMap["socialIconsClick"]["cat"],

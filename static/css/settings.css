@@ -831,7 +831,8 @@ span.sticker {
           color: #0677a9;
           border: 1px solid #0677a9;
           border-radius: 4px;
-          text-align: center; }
+          text-align: center;
+          cursor: pointer; }
         .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .connectTwitter {
           margin-top: 10px;
           padding: 8px;
@@ -840,7 +841,8 @@ span.sticker {
           color: #54adef;
           border: 1px solid  #54adef;
           border-radius: 4px;
-          text-align: center; }
+          text-align: center;
+          cursor: pointer; }
         .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup select {
           font-family: inherit;
           display: inline-block;
