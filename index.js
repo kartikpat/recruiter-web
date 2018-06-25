@@ -66,7 +66,6 @@
 		passReqToCallback: true
 	}, async function(req, accessToken, refreshToken, params, profile, done){
 		const token= req.cookies[config['cookie']];
-		
 		const data = {
 			token: accessToken,
 			refreshToken: refreshToken,
@@ -74,10 +73,10 @@
 		}
 		try{
 			await addUserSocial('linkedin', data, token);
-			return done(null, data)
+			return done(req)
 		}
 		catch(err){
-			return done(null, false);
+			return done(req);
 
 		}
 	}));
@@ -103,6 +102,7 @@
 
 		}
 	}))
+
 
 	function addUserSocial(type, data, token){
 		return new Promise(function(fulfill, reject){

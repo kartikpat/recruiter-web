@@ -1,22 +1,48 @@
 module.exports = function(settings){
   const	app=settings["app"];
 	const passport = settings["passport"];
-	config = settings["config"];
-  app.get('/auth/linkedin', passport.authorize('linkedin-auths', {state: config['social']['linkedin']['stateKey']}), function(req, res){
-    // The request will be redirected to LinkedIn for authentication, so this
-    // function will not be called.
-  })
+  config = settings["config"];
+  
+  app.get('/auth/linkedin',function(req,res){
+    var param=req.query;
+    console.log(param)
+    var cbUrl= config['social']['linkedin']["callbackURL"] +"?queryParams="+req.query["page"]+"&jobId="+req.query["jobId"]+"";
+    passport.authorize('linkedin-auths',{
+      state: config['social']['linkedin']['stateKey'],
+      callbackURL:cbUrl 
+    })(req, res);
+  });
+
+
+
   app.get('/auth/linkedin/callback', function(req, res, next){
-    const state = req.query.state;
-    if(state != config['social']['linkedin']['stateKey'] )
+    const state = req.query.state;   
+    // var failureRedirectUrl="/jobs";
+     // var successRedirectUrl;
+    
+    // if(req.query.queryParams){
+    //   successRedirectUrl="/"+req.query.queryParams+"?jobId="+req.query.jobId;
+    // }
+    // else{
+    //   successRedirectUrl="/"+req.query.queryParams+"?error="+req.query.error_description;
+    // }
+
+    console.log('................................')
+
+    if(state != config['social']['linkedin']['stateKey'] ){
       return res.redirect(config['social']['linkedin']['failureRedirect']);
+    }
     return next();
-  },passport.authorize('linkedin-auths', {
+  }, passport.authorize('linkedin-auths', {
     failureRedirect: config['social']['linkedin']['failureRedirect']
-  }),
-  function(req, res){
+  }), function(req, res){
+    console.log(res)
+    console.log(req)
     return res.redirect(config['social']['linkedin']['successRedirect'])
   })
+
+
+
 
   app.get('/auth/twitter', passport.authorize('twitter-auths', { state: config['social']['twitter']['stateKey']}), function(req, res){
     // The request will be redirected to LinkedIn for authentication, so this
@@ -27,10 +53,10 @@ module.exports = function(settings){
     const state = req.query.state;
     // console.log(req);
     // console.log(req.query)
-    // if(state != config['social']['twitter']['stateKey'] ){
-    //   console.log('................................')
-    //   return res.redirect(config['social']['twitter']['failureRedirect']);
-    // }
+    if(state != config['social']['twitter']['stateKey'] ){
+      console.log('................................')
+      return res.redirect(config['social']['twitter']['failureRedirect']);
+    }
     return next();
   }, passport.authorize('twitter-auths', {
     failureRedirect: config['social']['twitter']['failureRedirect']

@@ -10,14 +10,23 @@ var globalParameters = {
 
 jQuery(document).ready( function() {
 
-    var successMsg = getQueryParameter("jobPostMessage");
+	var successMsg = getQueryParameter("jobPostMessage");
+	var errorMessage=getQueryParameter("error");
+	console.log(decodeURIComponent(errorMessage))
+
+	if(errorMessage){
+		toastNotify(3,decodeURIComponent(errorMessage));
+		var newUrl = removeParam("error", window.location.href)
+        window.history.replaceState("object or string", "Title", newUrl);
+	}
+
     if(!isEmpty(successMsg)) {
         toastNotify(1, decodeURIComponent(successMsg))
         var newUrl = removeParam("jobPostMessage", window.location.href)
         window.history.replaceState("object or string", "Title", newUrl);
     }
 	var chatModule=chatModelIndex();
-
+	var connect=connectSocial();
 	var jobList = Jobs();
 
 	jobList.init();
@@ -77,19 +86,21 @@ jQuery(document).ready( function() {
 
 	jobList.onClickShareOnTwitter(function(){
 		if(profile.twitter==0){
-			window.location=staticEndPoints.recruiterProfileSocial;
+			connect.twitterConnect("_self","jobs");
 			return true;			
 		}
 		return false;
 	})
 
-	jobList.onClickShareOnLinkedIn(function(){
-		if(profile.linkedin==0){
-			window.location=staticEndPoints.recruiterProfileSocial;
+	jobList.onClickShareOnLinkedIn(function(jobId){
+		if(profile.linkedin!=1){
+			connect.linkedinConnect("_self","jobs",jobId);
 			return true;
 		}
 		return false;
 	})
+
+	
 
 	//Initial call
 	var parameters = {}

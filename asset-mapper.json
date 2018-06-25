@@ -299,6 +299,7 @@
 				"static/js/Utilities/modal.js",
 				"static/js/vendor/moment.min.js",
 				"static/js/header.js",
+				"static/js/Utilities/connect.js",
 				"static/js/Services/fetchJobs.js",
 				"static/js/Services/submitUnpublishJob.js",
 				"static/js/Services/submitPremiumJob.js",

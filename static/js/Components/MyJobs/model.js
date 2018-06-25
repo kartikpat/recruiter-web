@@ -88,11 +88,11 @@ function Jobs() {
 
 	function onClickShareOnLinkedIn(fn){
 		settings.rowContainer.on('click','.jobLinkedIn',function(e){
-			if(fn()){
+			var jobId = $(this).attr("data-job-id")
+			if(fn(jobId)){
 				event.stopPropagation();
 				event.preventDefault();
 			}
-			var jobId = $(this).attr("data-job-id")
 			var eventObj = {
 				event_category: eventMap["socialIconsClick"]["cat"],
 				event_label: 'origin=MyJobs,type=Linkedin,recId='+recruiterId+',JobId='+jobId+''

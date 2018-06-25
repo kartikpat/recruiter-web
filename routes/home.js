@@ -1052,6 +1052,7 @@ module.exports = function(settings){
  		 baseDomainName: baseDomainName
 		})
 	});
+	
 	app.get("/connect-success", function(req, res){
 		res.render("connect-success", {
 			title:"Account Connected Successfully | iimjobs.com",

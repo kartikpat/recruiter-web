@@ -5,14 +5,14 @@ $(document).ready(function(){
 	fetchRecruiterCredits(recruiterId);
 
 	var successMsg = getQueryParameter("credit");
-	console.log(successMsg)
-	var queryParam = getQueryParameter("social")
+	// console.log(successMsg)
+	// var queryParam = getQueryParameter("social")
 
-	if((queryParam)) {
-        var newUrl = removeParam("credit", window.location.href)
-        window.history.replaceState("object or string", "Title", newUrl);
-		recruiterProfile.setSocialView();
-	}
+	// if((queryParam)) {
+    //     var newUrl = removeParam("credit", window.location.href)
+    //     window.history.replaceState("object or string", "Title", newUrl);
+	// 	recruiterProfile.setSocialView();
+	// }
 
     if((successMsg)) {
         var newUrl = removeParam("credit", window.location.href)
