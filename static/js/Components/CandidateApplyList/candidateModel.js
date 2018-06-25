@@ -433,10 +433,10 @@ function Candidate() {
         }
 
         item.workSixDays.text(binary[aData["sixDays"]])
-        if(isCanvasSupported()) {
+        if(isCanvasSupported()){
             item.resume.addClass("hidden")
            $('.candidateResumeShell').removeClass("hidden"); 
-           getBinaryData(baseUrl + aData["resume"],function(res){
+            getBinaryData(baseUrl + aData["resume"],function(res){
                 resumeCallback(res, aData["id"])
             }, failCallback);
         }
