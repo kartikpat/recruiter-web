@@ -360,6 +360,9 @@
 .icon-clock-1::before {
   content: '\e852'; }
 
+.icon-chat_bubble::before {
+  content: '\e853'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -966,6 +969,9 @@ span.sticker {
 
 .icon-clock-1::before {
   content: '\e852'; }
+
+.icon-chat_bubble::before {
+  content: '\e853'; }
 
 .left {
   float: left; }
@@ -1756,6 +1762,9 @@ a {
 
 .icon-clock-1::before {
   content: '\e852'; }
+
+.icon-chat_bubble::before {
+  content: '\e853'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -2447,6 +2456,9 @@ span.sticker {
 .icon-clock-1::before {
   content: '\e852'; }
 
+.icon-chat_bubble::before {
+  content: '\e853'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -3053,6 +3065,9 @@ span.sticker {
 
 .icon-clock-1::before {
   content: '\e852'; }
+
+.icon-chat_bubble::before {
+  content: '\e853'; }
 
 .left {
   float: left; }
@@ -3843,6 +3858,9 @@ a {
 
 .icon-clock-1::before {
   content: '\e852'; }
+
+.icon-chat_bubble::before {
+  content: '\e853'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -4475,6 +4493,7 @@ span.sticker {
   padding: 5px;
   resize: none;
   min-height: 50px;
+  font-size: 13px;
   margin-bottom: 15px;
   overflow: hidden;
   border: 1px solid #e8e8e8;
@@ -4574,6 +4593,7 @@ span.sticker {
       padding: 5px;
       resize: none;
       min-height: 50px;
+      font-size: 13px;
       margin-bottom: 15px;
       overflow: hidden;
       border: 1px solid #e8e8e8;
@@ -5186,6 +5206,9 @@ span.sticker {
 .icon-clock-1::before {
   content: '\e852'; }
 
+.icon-chat_bubble::before {
+  content: '\e853'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -5792,6 +5815,9 @@ span.sticker {
 
 .icon-clock-1::before {
   content: '\e852'; }
+
+.icon-chat_bubble::before {
+  content: '\e853'; }
 
 .left {
   float: left; }
@@ -6583,6 +6609,9 @@ a {
 .icon-clock-1::before {
   content: '\e852'; }
 
+.icon-chat_bubble::before {
+  content: '\e853'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -7214,6 +7243,7 @@ span.sticker {
   padding: 5px;
   resize: none;
   min-height: 50px;
+  font-size: 13px;
   margin-bottom: 15px;
   overflow: hidden;
   border: 1px solid #e8e8e8;
@@ -7313,6 +7343,7 @@ span.sticker {
       padding: 5px;
       resize: none;
       min-height: 50px;
+      font-size: 13px;
       margin-bottom: 15px;
       overflow: hidden;
       border: 1px solid #e8e8e8;
