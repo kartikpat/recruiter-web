@@ -348,7 +348,7 @@ function stickyChatModel(){
                 }
             }
             $('.chat-div-candidate[data-id='+dataId+']').remove();
-            settings.chatDiv.find(".candidate-card[data-id="+dataId+"]").removeClass("selected-sticky");
+            settings.chatDiv.find(".candidate-card[data-id="+dataId+"]").removeClass("selected");
             settings.conversationListing.find(".conversationItem[data-id="+dataId+"]").removeClass("selected")
             reposition_chat_windows();
         })

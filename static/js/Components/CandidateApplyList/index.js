@@ -231,6 +231,10 @@ jQuery(document).ready( function() {
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
 
+    // filters.onClickRemoveSearchFilter(function(){
+        
+    // })
+
     
     // candidates.onClickCandidate(function(candidateId, status, applicationId){
     //     var candidateDetails = store.getCandidateFromStore(candidateId);
