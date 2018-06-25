@@ -184,6 +184,7 @@ jQuery(document).ready( function() {
     })
 
    function onFetchHistory(data, response, obj) {
+       chat.hideSpinner();
        globalParameters.startTimeToken = parseInt(response.startTimeToken)
        chat.populateMessages(response.messages,globalParameters.startChatConversation)
        chat.setCandidateProfile(obj)
@@ -202,10 +203,10 @@ jQuery(document).ready( function() {
 
    function checkScrollEnd() {
        if($(".current-chat").scrollTop() < 5) {
-
            if(globalParameters.startTimeToken == 0) {
                return
            }
+           chat.showSpinner();
            globalParameters.startChatConversation=0;
            chatEngine.fetchHistory(globalParameters.channelName , globalParameters.messageNumber ,globalParameters.startTimeToken, null, onFetchHistory);
        }

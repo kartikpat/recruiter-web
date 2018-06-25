@@ -2092,6 +2092,9 @@ span.sticker {
 .conversation-item-active {
   background-color: #f9f9f9; }
 
+.chat-spinner {
+  margin-left: 45%; }
+
 .back-button {
   display: inline-block;
   margin-top: 4px;
