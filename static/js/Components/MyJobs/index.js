@@ -20,7 +20,7 @@ jQuery(document).ready( function() {
         window.history.replaceState("object or string", "Title", newUrl);
 	}
 
-    if(!isEmpty(successMsg)) {
+    if((successMsg)) {
         toastNotify(1, decodeURIComponent(successMsg))
         var newUrl = removeParam("jobPostMessage", window.location.href)
         window.history.replaceState("object or string", "Title", newUrl);
@@ -93,7 +93,7 @@ jQuery(document).ready( function() {
 	})
 
 	jobList.onClickShareOnLinkedIn(function(jobId){
-		if(profile.linkedin!=1){
+		if(profile.linkedin==0){
 			connect.linkedinConnect("_self","jobs",jobId);
 			return true;
 		}

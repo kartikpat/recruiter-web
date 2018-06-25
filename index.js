@@ -72,12 +72,13 @@
 			profile: profile["_json"]
 		}
 		try{
+			
 			await addUserSocial('linkedin', data, token);
-			return done(req)
+			return done(null,data);
 		}
 		catch(err){
-			return done(req);
-
+			
+			return done(null,data);
 		}
 	}));
 
