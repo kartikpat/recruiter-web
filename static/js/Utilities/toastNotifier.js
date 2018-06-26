@@ -5,10 +5,10 @@ var flagMapper = {
 };
 
 function toastNotify(messageFlag, messageContent,param) {
-
-	if(param)
-	toastNotif.find('notifyLoader').removeClass('hidden');
-
+	
+	if(param){
+		$(".toast-notification .notifyLoader").removeClass('hidden');
+	}
 	var messageType = flagMapper[messageFlag];
 	var toastNotif = jQuery(".toast-notification-container");
 	toastNotif.addClass(messageType).find(".notification-icon").addClass(messageType);
@@ -21,5 +21,6 @@ function toastNotify(messageFlag, messageContent,param) {
 function closeToastNotification() {
 	var toastNotif = jQuery(".toast-notification-container");
 	toastNotif.attr("class", "toast-notification-container");
-	toastNotif.find('notifyLoader').addClass('hidden');
+	$(".toast-notification .notifyLoader").addClass('hidden');
+
 }

@@ -10,8 +10,9 @@ function connectSocial() {
         toastNotify(1,"SuccessFully Posted Job");
     }
 
-    function onSharefail(res){
-        toastNotify(3,"error");
+    function onSharefail(topic,res){
+        console.log(res)
+        toastNotify(3,res['message']);
     }
 
 
