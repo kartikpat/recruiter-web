@@ -149,12 +149,12 @@ function BookedSlots() {
 
 		//bookedSlotsInvite
 
-		// if(aData['invite']==1){
-		// 	item.interviewType.find('.inviteF2f').removeClass('hidden');
-		// }
-		// if(aData['invite']==2){
-		// 	item.interviewType.find('.inviteTelephonic').removeClass('hidden');
-		// }	
+		if(aData['invite']==1){
+			item.interviewType.find('.inviteF2f').removeClass('hidden');
+		}
+		if(aData['invite']==2){
+			item.interviewType.find('.inviteTelephonic').removeClass('hidden');
+		}	
 		item.calendarName.text(aData["calendar"]["name"]);
 		item.calendarName.attr("href","/calendar/"+aData["calendar"]["id"]+"/edit");
 		item.candName.text(aData["name"])
