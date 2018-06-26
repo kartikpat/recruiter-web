@@ -9,7 +9,8 @@ module.exports = function(settings){
     var stateParam=config['social']['linkedin']['stateKey']+"?Page="+req.query["page"]+"&jobId="+req.query["jobId"]+"";
     stateParam=Buffer.from(stateParam).toString('base64') 
     passport.authorize('linkedin-auths',{
-      state: stateParam 
+      state: stateParam ,
+	    scope: ['r_emailaddress','r_basicprofile','w_share']
     })(req, res);
   });
 
