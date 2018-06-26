@@ -754,51 +754,41 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/recruiter/:recruiterId/social?platform/:platform", function(req, res){
-		const recruiterId = req.params.recruiterId,
-				platform  = req.params.platform,		
-		        accessToken = req.cookies[config["cookie"]];
 
-		console.log(platform);
-		console.log("i am here")		
-		var resObj = {
-			"status": "",
-			"message": ""
-		}
+	function getSocialToken(recruiterId,platform,accessToken){			
+		return new Promise(function(fulfill, reject){
+			request.get({
+				url: baseUrl+ '/recruiter/'+recruiterId+'/social?platform='+platform+'',
+				headers: {
+				  'Authorization': 'Bearer '+ accessToken,
+				  'Content-Type': 'application/json'
+				  },
+				json: true
+			},function(err,res,body){
+				if(err){
+					return reject(err);
+				}
+				const jsonBody = body;
+				if(jsonBody.status && jsonBody.status =='success'){
+					return fulfill(jsonBody.data);
+				}
+				else
+					return reject('Not authorized by application')
+			})
+		})
+	}
 
-		if(!recruiterId) {
-			resObj.status = "fail"
-			resObj.message = "missing parameters"
-			return res.send(JSON.stringify(resObj));
-		}
-
-		var options = { method: 'GET',
-		  url: baseUrl+ '/recruiter/'+recruiterId+'/social?platform'+platform+'',
-		  headers: {
-			'Authorization': 'Bearer '+ accessToken,
-			'Content-Type': 'application/json'
-			},
-		  json: true
-		};
-		request(options, function (error, response, body) {
-			if (error){
-				return res.send(response);
-			}
-			const jsonBody = body;
-			if(jsonBody.status && jsonBody.status =='success'){
-				return res.send(body);
-			}
-			else {
-				return res.send(response);
-			}
-			return res.send(response);
-		});
-	})
-
-	app.post("/recruiter/:recruiterId/job/:jobId/share", function(req, res){
+	app.post("/recruiter/:recruiterId/job/:jobId/share", async function(req, res){
 		const accessToken = req.cookies[config["cookie"]];
 		const recruiterId = req.params.recruiterId,
-			  jobId = req.params.jobId
+			  jobId = req.params.jobId,
+			  platform=req.body.platform
+		
+		token = await getSocialToken(recruiterId,platform,accessToken);
+		req.body.token=token[platform].accessToken;
+
+		console.log(token[platform].accessToken);
+
 		var options = { method: 'POST',
 		  url: baseUrl+ '/recruiter/'+recruiterId+'/job/'+jobId+'/share',
 		  headers: {
@@ -810,6 +800,7 @@ module.exports = function(settings){
 		};
 		request(options, function (error, response, body) {
 			if (error){
+				console.log(error)
 				return res.json(response);
 			}
 			const jsonBody = body;
@@ -820,7 +811,6 @@ module.exports = function(settings){
 			else {
 				return res.json(jsonBody);
 			}
-			return res.json(jsonBody);
 		});
 	});
 
