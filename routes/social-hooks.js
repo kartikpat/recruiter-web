@@ -2,7 +2,7 @@ module.exports = function(settings){
   const	app=settings["app"];
 	const passport = settings["passport"];
 	config = settings["config"];
-  app.get('/auth/linkedin', passport.authorize('linkedin-auths', {state: config['social']['linkedin']['stateKey']}), function(req, res){
+  app.get('/auth/linkedin', passport.authorize('linkedin-auths', { scope: ['r_emailaddress','r_basicprofile','w_share'], state: config['social']['linkedin']['stateKey']}), function(req, res){
     // The request will be redirected to LinkedIn for authentication, so this
     // function will not be called.
   })
