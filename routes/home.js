@@ -754,7 +754,34 @@ module.exports = function(settings){
 		return
 	});
 
-
+	app.post("/recruiter/:recruiterId/job/:jobId/share", function(req, res){
+		const accessToken = req.cookies[config["cookie"]];
+		const recruiterId = req.params.recruiterId,
+			  jobId = req.params.jobId
+		var options = { method: 'POST',
+		  url: baseUrl+ '/recruiter/'+recruiterId+'/job/'+jobId+'/share',
+		  headers: {
+			'Authorization': 'Bearer '+ accessToken,
+			'Content-Type': 'application/json'
+			},
+			body:req.body,
+		  json: true
+		};
+		request(options, function (error, response, body) {
+			if (error){
+				return res.json(response);
+			}
+			const jsonBody = body;
+			console.log(jsonBody)
+			if(jsonBody.status && jsonBody.status =='success'){
+				return res.json(jsonBody);
+			}
+			else {
+				return res.json(jsonBody);
+			}
+			return res.json(jsonBody);
+		});
+	});
 
 
 	app.post("/recruiter/login/verify", function(req, res){
@@ -832,7 +859,6 @@ module.exports = function(settings){
 	});
 
 	app.post("/recruiter/:recruiterId/calendar/:calendarId", function(req, res){
-		console.log("i am here tooo")
 		const recruiterId = req.params.recruiterId,
 			  calendarId = req.params.calendarId
 

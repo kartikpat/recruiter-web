@@ -85,7 +85,7 @@ jQuery(document).ready( function() {
 	})
 
 	jobList.onClickShareOnTwitter(function(){
-		if(profile.twitter==0){
+		if(profile.twitter==1){
 			connect.twitterConnect("_self","jobs");
 			return true;			
 		}
@@ -93,7 +93,7 @@ jQuery(document).ready( function() {
 	})
 
 	jobList.onClickShareOnLinkedIn(function(jobId){
-		if(profile.linkedin==0){
+		if(profile.linkedin==1){
 			connect.linkedinConnect("_self","jobs",jobId);
 			return true;
 		}

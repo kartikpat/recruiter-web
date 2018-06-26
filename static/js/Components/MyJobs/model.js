@@ -391,9 +391,9 @@ function Jobs() {
 		
 		if(aData["url"]) {
 			var url = config["baseUrlJob"] + aData["url"];
-			item.facebook.attr("href", getFacebookShareLink(url))
-			item.twitter.attr("href", getTwitterShareLink(url))
-			item.linkedIn.attr("href", getLinkedInShareUrl(url))
+			// item.facebook.attr("href", getFacebookShareLink(url))
+			// item.twitter.attr("href", getTwitterShareLink(url))
+			// item.linkedIn.attr("href", getLinkedInShareUrl(url))
 		}
 
 		return item;

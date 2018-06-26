@@ -86,7 +86,8 @@
 		consumerKey: config['social']['twitter']['clientId'],
 		consumerSecret: config['social']['twitter']['secret'],
 		callbackURL: config['social']['twitter']['callbackURL'],
-		passReqToCallback: true
+		passReqToCallback: true,
+		state:true
 	}, async function(req, accessToken, refreshToken, params, profile, done){
 		const token = req.cookies[config['cookie']];
 		const data = {

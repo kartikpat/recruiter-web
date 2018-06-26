@@ -301,6 +301,7 @@
 				"static/js/header.js",
 				"static/js/Utilities/connect.js",
 				"static/js/Services/fetchJobs.js",
+				"static/js/Services/jobShareSocial.js",
 				"static/js/Services/submitUnpublishJob.js",
 				"static/js/Services/submitPremiumJob.js",
 				"static/js/Services/submitRefreshJob.js",
