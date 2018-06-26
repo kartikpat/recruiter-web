@@ -42,6 +42,9 @@ jQuery(document).ready( function() {
     var obj = getQueryParameters()
     if(!isEmpty(obj)) {
         var filterFlag = 0;
+        if(obj.searchString){
+            obj.searchString=decodeURI(obj.searchString);
+        }
         for(var key in obj) {
             if(key == "status") {
                 globalParameters.status = obj[key]
@@ -227,6 +230,10 @@ jQuery(document).ready( function() {
         parameters.pageContent = globalParameters.pageContent;
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
+
+    // filters.onClickRemoveSearchFilter(function(){
+        
+    // })
 
     
     // candidates.onClickCandidate(function(candidateId, status, applicationId){

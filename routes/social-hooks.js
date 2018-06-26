@@ -2,6 +2,7 @@ module.exports = function(settings){
   const	app=settings["app"];
   const querystring = require('querystring');
 	const passport = settings["passport"];
+
   config = settings["config"];
   
   app.get('/auth/linkedin',function(req,res){

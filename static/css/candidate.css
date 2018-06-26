@@ -360,6 +360,9 @@
 .icon-clock-1::before {
   content: '\e852'; }
 
+.icon-chat_bubble::before {
+  content: '\e853'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -966,6 +969,9 @@ span.sticker {
 
 .icon-clock-1::before {
   content: '\e852'; }
+
+.icon-chat_bubble::before {
+  content: '\e853'; }
 
 .left {
   float: left; }
@@ -1756,6 +1762,9 @@ a {
 
 .icon-clock-1::before {
   content: '\e852'; }
+
+.icon-chat_bubble::before {
+  content: '\e853'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -3008,10 +3017,9 @@ span.sticker {
     background: #fff;
     border: 1px solid;
     border-color: #e5e6e9 #dfe0e4 #d0d1d5;
-    border-radius: 3px;
     padding: 12px;
     margin: 0 auto;
-    min-height: 150px; }
+    min-height: 200px; }
 
 @keyframes placeHolderShimmer {
   0% {
@@ -3095,3 +3103,13 @@ span.sticker {
   .timeline-wrapper .background-masker.content-third-end {
     left: 300px;
     top: 88px; }
+  .timeline-wrapper .background-masker.second-header-bottom {
+    top: 10px;
+    width: 100%;
+    left: 0px;
+    height: 6px; }
+  .timeline-wrapper .background-masker.second-subheader-left {
+    top: 24px;
+    height: 6px;
+    width: 100%;
+    left: 0px; }
