@@ -4,13 +4,12 @@ var globalParameters = {
     type: "all",
     jobListLength: null,
 	initialLoad: 1,
-	linkedIn:0,
-	twitter:0
 }
 
 jQuery(document).ready( function() {
 
 	var successMsg = getQueryParameter("jobPostMessage");
+	var errorMessage=getQueryParameter("error");
 	
 	if(!isEmpty(errorMessage)){
 		toastNotify(3,decodeURIComponent(errorMessage));
@@ -18,7 +17,6 @@ jQuery(document).ready( function() {
         window.history.replaceState("object or string", "Title", newUrl);
 	}
 
-	var errorMessage=getQueryParameter("error");
 	
     if(!isEmpty(successMsg)) {
         toastNotify(1, decodeURIComponent(successMsg))

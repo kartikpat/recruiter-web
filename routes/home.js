@@ -805,7 +805,7 @@ module.exports = function(settings){
 		console.log(req.body)
 
 		var options = { method: 'POST',
-		  url: baseUrl+ '/recruiter/'+recruiterId+'/job/'+jobId+'share',
+		  url: baseUrl+ '/recruiter/'+recruiterId+'/job/'+jobId+'/share',
 		  headers: {
 			'Authorization': 'Bearer '+ accessToken,
 			'Content-Type': 'application/json'

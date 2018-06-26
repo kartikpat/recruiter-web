@@ -76,6 +76,10 @@ body {
 				vertical-align: middle;
 				margin-top: -30px;
 				height: 10px;
+
+			}
+			.lds-spinner div:after {
+				background: #fff!important;
 			}
 		}
 

@@ -652,6 +652,8 @@ body.posf {
       vertical-align: middle;
       margin-top: -30px;
       height: 10px; }
+    .toast-notification-container .notifyLoader .lds-spinner div:after {
+      background: #fff !important; }
   .toast-notification-container.show {
     bottom: 15px; }
   .toast-notification-container.toasterror {

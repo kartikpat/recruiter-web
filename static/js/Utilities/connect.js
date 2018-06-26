@@ -21,7 +21,7 @@ function connectSocial() {
         }
         var data={};    
         data.platform="linkedin";
-        toastNotify(1,"Posting...... Job","loader");
+        toastNotify(1,"Posting Job","loader");
         jobShareSocial(recruiterId,jobId,data);
     }
 
@@ -31,7 +31,7 @@ function connectSocial() {
         }
         var data={};    
         data.platform="twitter";
-        toastNotify(1,"Posting...... Job","loader");
+        toastNotify(1,"Posting Job","loader");
         jobShareSocial(recruiterId,jobId,data);
     }
 
