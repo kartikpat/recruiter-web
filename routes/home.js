@@ -783,10 +783,14 @@ module.exports = function(settings){
 
 	app.post("/recruiter/:recruiterId/job/:jobId/share", async function(req, res){
 		const accessToken = req.cookies[config["cookie"]];
+		const twitterClient=config['social']['twitter']['clientId'];
+
+		console.log(twitterClient)
+		
 		const recruiterId = req.params.recruiterId,
 			  jobId = req.params.jobId,
 			  platform=req.body.platform
-		
+
 		token = await getSocialToken(recruiterId,platform,accessToken);
 		req.body.token=token[platform].accessToken;
 

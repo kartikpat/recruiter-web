@@ -1,7 +1,6 @@
 
 function connectSocial() {
     
-    var accessToken;
     var socialShareFail=pubsub.subscribe('socialSharefail',onSharefail);
     var socailShareSuccess=pubsub.subscribe('socialShareSuccess', onShareSuccess);
 
@@ -28,7 +27,7 @@ function connectSocial() {
 
     function twitterConnect(param,queryParam){
         if(profile.twitter!=1){
-            window.open('/auth/twitter/?page='+queryParam+'&jobId='+jobId+'',param,' scrollbars=yes,menubar=no,width=500,height=500, resizable=yes,toolbar=no,location=no,status=no')
+            window.open('/auth/twitter?page='+queryParam+'&jobId='+jobId+'',param,' scrollbars=yes,menubar=no,width=500,height=500, resizable=yes,toolbar=no,location=no,status=no')
         }
         var data={};    
         data.platform="twitter";
