@@ -202,6 +202,28 @@
                                     }
                                 }
                             }
+                            .connectLinkedIn{
+                                margin-top: 10px;
+                                padding: 8px;
+                                width: 170px;
+                                background-color: #FFF;
+                                color: #0677a9;
+                                border:1px solid #0677a9;
+                                border-radius: 4px;
+                                text-align: center;
+                                cursor: pointer;
+                            }
+                            .connectTwitter{
+                                margin-top: 10px;
+                                padding: 8px;
+                                width: 170px;
+                                background-color: #FFF;
+                                color: #54adef;
+                                border:1px solid  #54adef;;
+                                border-radius: 4px;
+                                text-align: center;
+                                cursor: pointer;
+                            }
                             select {
                                 @include select-dropdown;
                             }

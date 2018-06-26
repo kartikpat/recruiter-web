@@ -3,19 +3,30 @@ var globalParameters = {
     pageNumber: 1,
     type: "all",
     jobListLength: null,
-    initialLoad: 1
+	initialLoad: 1,
+	linkedIn:0,
+	twitter:0
 }
 
 jQuery(document).ready( function() {
 
-    var successMsg = getQueryParameter("jobPostMessage");
-    if(!isEmpty(successMsg)) {
+	var successMsg = getQueryParameter("jobPostMessage");
+	var errorMessage=getQueryParameter("error");
+	console.log(decodeURIComponent(errorMessage))
+
+	if(errorMessage){
+		toastNotify(3,decodeURIComponent(errorMessage));
+		var newUrl = removeParam("error", window.location.href)
+        window.history.replaceState("object or string", "Title", newUrl);
+	}
+
+    if((successMsg)) {
         toastNotify(1, decodeURIComponent(successMsg))
         var newUrl = removeParam("jobPostMessage", window.location.href)
         window.history.replaceState("object or string", "Title", newUrl);
     }
 	var chatModule=chatModelIndex();
-
+	var connect=connectSocial();
 	var jobList = Jobs();
 
 	jobList.init();
@@ -73,6 +84,24 @@ jQuery(document).ready( function() {
 		return submitPremiumJob(recruiterId, jobId);
 	})
 
+	jobList.onClickShareOnTwitter(function(){
+		if(profile.twitter!=1){
+			connect.twitterConnect("_self","jobs");
+			return true;			
+		}
+		return false;
+	})
+
+	jobList.onClickShareOnLinkedIn(function(jobId){
+		if(profile.linkedin==1){
+			connect.linkedinConnect("_self","jobs",jobId);
+			return true;
+		}
+		return false;
+	})
+
+	
+
 	//Initial call
 	var parameters = {}
 	parameters.pageNumber = globalParameters.pageNumber;
@@ -97,9 +126,11 @@ jQuery(document).ready( function() {
 		tickerLock = false;
         globalParameters.initialLoad = 0;
 		globalParameters.jobListLength = data.length;
-
-		jobList.addToList(data, globalParameters.pageNumber, globalParameters.pageContent,data.obj.type);
+		//check profile connected to linkedin-twitter or not//////////
+	
+		jobList.addToList(data, globalParameters.pageNumber, globalParameters.pageContent,data.obj.type,globalParameters.linkedIn,globalParameters.twitter);
 	}
+
 
 	function onJobsFetchFail(topic, data){
 		errorHandler(data)

@@ -80,8 +80,18 @@ function Profile(){
 			settings.loader=$('.loader-container ')
 			settings.contentrowContainer='.content-row-container'
 			settings.cancelCredit='.cancelTeamMember'
+			settings.linkedinConnect=$('.linkedinContainer'),
+			settings.twitterConnect=$('.twitterContainer'),
+			settings.listingList=$('.listing li'),
+			settings.profileBody=$('.settingsBody .profile'),
+			settings.section=$('.settings-setion'),
+			settings.listingSocial=$('.listing .social-accounts'),
+			settings.socialBody=$('.settingsBody .social-accounts');
+			
 			changeFileName()
 			onChangeInputFields()
+			connectButton();
+			connect();
 			jQuery(".settings-sidebar, .settings-mobile-nav").on("click", "li", function() {
 				var activeSection = jQuery(this).attr("data-selector");
 				settings.type = activeSection;
@@ -291,6 +301,26 @@ function Profile(){
 		return form;
 	}
 
+	function connectButton(){
+		if(profile.linkedin!=1){
+			settings.linkedinConnect.removeClass('hidden');	
+		}
+		if(profile.twitter!=1){
+			settings.twitterConnect.removeClass('hidden');	
+		}
+	}
+
+	function connect(){
+        settings.linkedinConnect.on('click',function(){
+            window.open('/auth/linkedin/','',' scrollbars=yes,menubar=no,width=500,height=500, resizable=yes,toolbar=no,location=no,status=no')
+        })
+
+        settings.twitterConnect.on('click',function(){
+            window.open('/auth/twitter','',' scrollbars=yes,menubar=no,width=500,height=500, resizable=yes,toolbar=no,location=no,status=no')
+        })
+    }
+
+
 	function setProfile(obj) {
 		settings.profileImg.attr("src", (obj["img_link"] || "/static/images/noimage.png"));
 		settings.name.val(obj["name"]);
@@ -446,6 +476,21 @@ function Profile(){
 		settings.wrapperContainer.removeClass('hidden');
 	}
 
+	function setSocialView(){
+		settings.listingList.removeClass('active');
+		settings.listingSocial.addClass('active');	
+		settings.profileBody.addClass('hidden');
+		settings.socialBody.removeClass('hidden');
+	}
+
+	function setCreditsView(){
+		settings.section.addClass('hidden')
+		settings.distributeCreditsButton.removeClass('hidden');
+		settings.listingList.removeClass('active');
+		settings.distributeCredits.addClass('active');
+		settings.profileBody.addClass('hidden');
+	}
+
 	return {
 		init: init,
 		setConfig : setConfig,
@@ -464,7 +509,9 @@ function Profile(){
 		emptyCredits:emptyCredits,
 		spinner:spinner,
 		togglespinner:togglespinner,
-		onClickDeleteCredits:onClickDeleteCredits
+		onClickDeleteCredits:onClickDeleteCredits,
+		setCreditsView:setCreditsView,
+		setSocialView:setSocialView
 	}
 }
 

@@ -36,8 +36,7 @@ function Jobs() {
 		onClickJobCancel();
 		onClickJobMakePremium();
 		onClickShareOnFB();
-		onClickShareOnTwitter();
-		onClickShareOnLinkedIn()
+
 
 		$(".postJobLink").click(function(){
 			var eventObj = {
@@ -73,6 +72,10 @@ function Jobs() {
 
 	function onClickShareOnTwitter(fn){
 		settings.rowContainer.on('click','.jobTwitter',function(e){
+			if(fn()){
+				event.stopPropagation();
+				event.preventDefault();
+			}
 			var jobId = $(this).attr("data-job-id")
 			var eventObj = {
 				event_category: eventMap["socialIconsClick"]["cat"],
@@ -86,6 +89,10 @@ function Jobs() {
 	function onClickShareOnLinkedIn(fn){
 		settings.rowContainer.on('click','.jobLinkedIn',function(e){
 			var jobId = $(this).attr("data-job-id")
+			if(fn(jobId)){
+				event.stopPropagation();
+				event.preventDefault();
+			}
 			var eventObj = {
 				event_category: eventMap["socialIconsClick"]["cat"],
 				event_label: 'origin=MyJobs,type=Linkedin,recId='+recruiterId+',JobId='+jobId+''
@@ -381,11 +388,12 @@ function Jobs() {
 				'title': "This is a premium job and hence cannot be refreshed. For more information, please drop a mail to info@iimjobs.com"
 			 });
 		}
+		
 		if(aData["url"]) {
 			var url = config["baseUrlJob"] + aData["url"];
-			item.facebook.attr("href", getFacebookShareLink(url))
-			item.twitter.attr("href", getTwitterShareLink(url))
-			item.linkedIn.attr("href", getLinkedInShareUrl(url))
+			// item.facebook.attr("href", getFacebookShareLink(url))
+			// item.twitter.attr("href", getTwitterShareLink(url))
+			// item.linkedIn.attr("href", getLinkedInShareUrl(url))
 		}
 
 		return item;
@@ -504,7 +512,9 @@ function Jobs() {
 		showSpinner: showSpinner,
 		hideSpinner: hideSpinner,
 		closeModal: closeModal,
-		disableRefresh:disableRefresh
+		disableRefresh:disableRefresh,
+		onClickShareOnTwitter:onClickShareOnTwitter,
+		onClickShareOnLinkedIn:onClickShareOnLinkedIn
 	}
 
 	function initializeTooltip() {

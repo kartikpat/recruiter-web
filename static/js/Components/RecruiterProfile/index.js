@@ -5,15 +5,19 @@ $(document).ready(function(){
 	fetchRecruiterCredits(recruiterId);
 
 	var successMsg = getQueryParameter("credit");
-	console.log(successMsg);
-    if(!isEmpty(successMsg)) {
+	// console.log(successMsg)
+	// var queryParam = getQueryParameter("social")
+
+	// if((queryParam)) {
+    //     var newUrl = removeParam("credit", window.location.href)
+    //     window.history.replaceState("object or string", "Title", newUrl);
+	// 	recruiterProfile.setSocialView();
+	// }
+
+    if((successMsg)) {
         var newUrl = removeParam("credit", window.location.href)
         window.history.replaceState("object or string", "Title", newUrl);
-		$('.settings-setion').addClass('hidden')
-		$('.distribute-credits').removeClass('hidden');
-		$('.listing li').removeClass('active');
-		$('#credits').addClass('active');
-		$('.settings-section.profile').addClass('hidden');
+		recruiterProfile.setCreditsView();
 	}
 
 	recruiterProfile.submitHandler(function(type){
@@ -111,7 +115,6 @@ $(document).ready(function(){
 
 	function onFetchFail(topic){
 		recruiterProfile.spinner();
-		console.log("here")
 	}
 
 	function onSuccessfulSubmitCredit(){
