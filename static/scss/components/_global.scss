@@ -68,7 +68,16 @@ body {
     transition:all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     -webkit-transition:all 0.5s cubic-bezier(0.68,-0.55,0.265,1.55);
     -moz-transition:all 0.5s cubic-bezier(0.68,-0.55,0.265,1.55);
-    z-index:1500;
+		z-index:1500;
+
+		.notifyLoader{
+			display: inline-block;
+			.lds-spinner{
+				vertical-align: middle;
+				margin-top: -30px;
+				height: 10px;
+			}
+		}
 
     &.show {
     	bottom:15px;
@@ -98,6 +107,7 @@ body {
 		padding:10px;
 	}
 	.notification-message  {
+		display: inline-block;
 		p {
 			color:$color-white;
 			font-family:$primary-font;

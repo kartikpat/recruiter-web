@@ -11,20 +11,21 @@ var globalParameters = {
 jQuery(document).ready( function() {
 
 	var successMsg = getQueryParameter("jobPostMessage");
-	var errorMessage=getQueryParameter("error");
-	console.log(decodeURIComponent(errorMessage))
-
-	if(errorMessage){
+	
+	if(!isEmpty(errorMessage)){
 		toastNotify(3,decodeURIComponent(errorMessage));
 		var newUrl = removeParam("error", window.location.href)
         window.history.replaceState("object or string", "Title", newUrl);
 	}
 
-    if((successMsg)) {
+	var errorMessage=getQueryParameter("error");
+	
+    if(!isEmpty(successMsg)) {
         toastNotify(1, decodeURIComponent(successMsg))
         var newUrl = removeParam("jobPostMessage", window.location.href)
         window.history.replaceState("object or string", "Title", newUrl);
-    }
+	}
+	
 	var chatModule=chatModelIndex();
 	var connect=connectSocial();
 	var jobList = Jobs();
@@ -40,7 +41,6 @@ jQuery(document).ready( function() {
 			event_category: eventMap["jobsFilterChange"]["cat"],
 			event_label: 'origin=MyJobs,status='+type+',recId='+recruiterId+''
 		}
-		
 		sendEvent(eventMap["jobsFilterChange"]["event"], eventObj)
 		tickerLock = false;
         jobList.hideEmptyView()
@@ -85,19 +85,13 @@ jQuery(document).ready( function() {
 	})
 
 	jobList.onClickShareOnTwitter(function(){
-		if(profile.twitter!=1){
 			connect.twitterConnect("_self","jobs");
 			return true;			
-		}
-		return false;
 	})
-
+	
 	jobList.onClickShareOnLinkedIn(function(jobId){
-		if(profile.linkedin==1){
 			connect.linkedinConnect("_self","jobs",jobId);
 			return true;
-		}
-		return false;
 	})
 
 	
