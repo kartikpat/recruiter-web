@@ -84,8 +84,8 @@ jQuery(document).ready( function() {
 		return submitPremiumJob(recruiterId, jobId);
 	})
 
-	jobList.onClickShareOnTwitter(function(){
-			connect.twitterConnect("_self","jobs");
+	jobList.onClickShareOnTwitter(function(jobId){
+			connect.twitterConnect("_self","jobs",jobId);
 			return true;			
 	})
 	

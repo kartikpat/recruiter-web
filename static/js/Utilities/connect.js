@@ -25,13 +25,13 @@ function connectSocial() {
         jobShareSocial(recruiterId,jobId,data);
     }
 
-    function twitterConnect(param,queryParam){
+    function twitterConnect(param,queryParam,jobId){
         if(profile.twitter!=1){
             window.open('/auth/twitter?page='+queryParam+'&jobId='+jobId+'',param,' scrollbars=yes,menubar=no,width=500,height=500, resizable=yes,toolbar=no,location=no,status=no')
         }
         var data={};    
         data.platform="twitter";
-        toastNotify(1,"Posting...... Job");
+        toastNotify(1,"Posting...... Job","loader");
         jobShareSocial(recruiterId,jobId,data);
     }
 
