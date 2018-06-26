@@ -754,6 +754,47 @@ module.exports = function(settings){
 		return
 	});
 
+	app.get("/recruiter/:recruiterId/social?platform/:platform", function(req, res){
+		const recruiterId = req.params.recruiterId,
+				platform  = req.params.platform,		
+		        accessToken = req.cookies[config["cookie"]];
+
+		console.log(platform);
+		console.log("i am here")		
+		var resObj = {
+			"status": "",
+			"message": ""
+		}
+
+		if(!recruiterId) {
+			resObj.status = "fail"
+			resObj.message = "missing parameters"
+			return res.send(JSON.stringify(resObj));
+		}
+
+		var options = { method: 'GET',
+		  url: baseUrl+ '/recruiter/'+recruiterId+'/social?platform'+platform+'',
+		  headers: {
+			'Authorization': 'Bearer '+ accessToken,
+			'Content-Type': 'application/json'
+			},
+		  json: true
+		};
+		request(options, function (error, response, body) {
+			if (error){
+				return res.send(response);
+			}
+			const jsonBody = body;
+			if(jsonBody.status && jsonBody.status =='success'){
+				return res.send(body);
+			}
+			else {
+				return res.send(response);
+			}
+			return res.send(response);
+		});
+	})
+
 	app.post("/recruiter/:recruiterId/job/:jobId/share", function(req, res){
 		const accessToken = req.cookies[config["cookie"]];
 		const recruiterId = req.params.recruiterId,

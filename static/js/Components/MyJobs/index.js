@@ -85,7 +85,7 @@ jQuery(document).ready( function() {
 	})
 
 	jobList.onClickShareOnTwitter(function(){
-		if(profile.twitter==1){
+		if(profile.twitter!=1){
 			connect.twitterConnect("_self","jobs");
 			return true;			
 		}
