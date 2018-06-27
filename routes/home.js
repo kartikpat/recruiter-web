@@ -783,14 +783,26 @@ module.exports = function(settings){
 
 	app.post("/recruiter/:recruiterId/job/:jobId/share", async function(req, res){
 		const accessToken = req.cookies[config["cookie"]];
+		// const twitterClient=config['social']['twitter']['clientId'];
+		// const secret=config['social']['twitter']['secret'];
+
+		// console.log(twitterClient)
+		// console.log(secret)
+		
 		const recruiterId = req.params.recruiterId,
 			  jobId = req.params.jobId,
 			  platform=req.body.platform
-		
+
+			  
 		token = await getSocialToken(recruiterId,platform,accessToken);
 		req.body.token=token[platform].accessToken;
-
-		console.log(token[platform].accessToken);
+	
+		if(platform=="twitter"){
+			req.body.refreshToken=token[platform].refreshToken;
+			req.body.consumerKey=config['social']['twitter']['clientId'];
+			req.body.consumerSecret=config['social']['twitter']['secret'];
+		}
+		console.log(req.body)
 
 		var options = { method: 'POST',
 		  url: baseUrl+ '/recruiter/'+recruiterId+'/job/'+jobId+'/share',
