@@ -6,7 +6,11 @@ module.exports = function(settings){
   config = settings["config"];
   
   app.get('/auth/linkedin',function(req,res){
+
+    console.log(req.query['page']);
+    console.log("i am here"); 
     var stateParam=config['social']['linkedin']['stateKey']+"?Page="+req.query["page"]+"&jobId="+req.query["jobId"]+"";
+    
     stateParam=Buffer.from(stateParam).toString('base64') 
     passport.authorize('linkedin-auths',{
       state: stateParam ,
@@ -23,13 +27,21 @@ module.exports = function(settings){
     text= text.substring(text.indexOf("?")+1);
     var param=querystring.parse(text);
     //authorisation error
-    if(!(err)){
-      config['social']['linkedin']['successRedirect']="/"+param['Page']+"?jobId="+param['jobId'];
-    }  
-    else{
-      res.redirect(config['social']['linkedin']['successRedirect']="/"+param['Page']+"?error="+err);
-    }
     
+    
+    if(param['Page']=="jobs"){
+      if(!(err)){
+        config['social']['linkedin']['successRedirect']="/"+param['Page']+"?jobId="+param['jobId'];
+      }  
+      else{
+        res.redirect(config['social']['linkedin']['successRedirect']="/"+param['Page']+"?error="+err);
+      }
+    }
+
+    if(err){
+      res.send('<script>window.close()</script>');
+    }
+
     if(token!= config['social']['linkedin']['stateKey'] ){
       return res.redirect(config['social']['linkedin']['failureRedirect']);
     }
@@ -44,15 +56,12 @@ module.exports = function(settings){
     var stateParam=config['social']['linkedin']['stateKey'];
     stateParam=Buffer.from(stateParam).toString('base64') 
     var cbURL=config['social']['twitter']['callbackURL']+"?state="+stateParam+""+"?Page="+req.query["page"]+"&jobId="+req.query["jobId"]+"";  
-    // console.log("......................................");
-    // stateParam=Buffer.from(stateParam).toString('base64') 
     passport.authorize('twitter-auths',{ 
       callbackURL:cbURL
     })(req, res, next);
   });
 
   app.get('/auth/twitter/callback', function(req, res, next){
-    console.log(req)
     var path=req.url;
     path= path.substring(path.indexOf("?")+1);
     var param=querystring.parse(path);
@@ -62,13 +71,19 @@ module.exports = function(settings){
     var page=param['state'].substring(param['state'].lastIndexOf("=")+1);
     var jobID=param['jobId'];
     
-    config['social']['twitter']['successRedirect']="/"+page+"?jobId="+jobID+"";
+    if(page=='jobs'){
+      config['social']['twitter']['successRedirect']="/"+page+"?jobId="+jobID+"";
 
-    if(req.query.denied){  
-      config['social']['twitter']['successRedirect']="/"+page+"";
-      return res.redirect(config['social']['twitter']['successRedirect'])
+      if(req.query.denied){  
+        config['social']['twitter']['successRedirect']="/"+page+"";
+        return res.redirect(config['social']['twitter']['successRedirect'])
+      }
     }
 
+    if(req.query.denied){
+      res.send('<script>window.close()</script>');
+    }
+    
     if(tokenState!= config['social']['twitter']['stateKey'] ){
       return res.redirect(config['social']['twitter']['failureRedirect']);
     }
