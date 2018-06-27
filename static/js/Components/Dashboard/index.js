@@ -451,15 +451,15 @@ function onClickShareOnLinkedIn(fn){
 		}
 		else{
 			var currentHour = moment(now).hour();
-			if( currentHour > 5 && currentHour < 12	){
+			if( currentHour >=5 && currentHour < 12	){
 				text = "Good Morning, "+recruiterName+"!";
 				iconClass="icon-sunrise";
 			}
-			if( currentHour > 11 && currentHour < 17 ){
+			if( currentHour >=12 && currentHour < 17 ){
 				text = "Good Afternoon, "+recruiterName+"!";
 				iconClass="icon-afternoon";
 			}
-			if( currentHour > 17  || currentHour < 5 ){
+			if( currentHour >= 17  || currentHour < 5 ){
 				text = "Good Evening, "+recruiterName+"!";
 				iconClass="icon-sunset";
 			}

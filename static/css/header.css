@@ -363,6 +363,9 @@
 .icon-clock-1::before {
   content: '\e852'; }
 
+.icon-chat_bubble::before {
+  content: '\e853'; }
+
 .left {
   float: left; }
 
@@ -410,6 +413,14 @@ body.posf {
   -webkit-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   -moz-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   z-index: 1500; }
+  .toast-notification-container .notifyLoader {
+    display: inline-block; }
+    .toast-notification-container .notifyLoader .lds-spinner {
+      vertical-align: middle;
+      margin-top: -30px;
+      height: 10px; }
+    .toast-notification-container .notifyLoader .lds-spinner div:after {
+      background: #fff !important; }
   .toast-notification-container.show {
     bottom: 15px; }
   .toast-notification-container.toasterror {
@@ -425,10 +436,12 @@ body.posf {
     display: table-cell;
     vertical-align: middle;
     padding: 10px; }
-  .toast-notification-container .notification-message p {
-    color: #FFF;
-    font-family: "Droid Sans", sans-serif;
-    font-size: 14px; }
+  .toast-notification-container .notification-message {
+    display: inline-block; }
+    .toast-notification-container .notification-message p {
+      color: #FFF;
+      font-family: "Droid Sans", sans-serif;
+      font-size: 14px; }
 
 .loader-overlay {
   position: fixed;
@@ -950,6 +963,14 @@ b {
         margin-left: 0px;
         margin-right: 0px;
         font-size: 27px !important;
+        line-height: 40px;
+        color: #e8e8e8; }
+      .header .profile_actions .action-icon .chat-icon .icon-chat_bubble::before {
+        content: '\e853';
+        margin-left: 0px;
+        margin-right: 6px;
+        margin-top: 1px;
+        font-size: 26px !important;
         line-height: 40px;
         color: #e8e8e8; }
   .header .profile_actions .profile img {

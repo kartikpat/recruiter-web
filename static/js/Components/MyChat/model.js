@@ -38,6 +38,7 @@ function Chat() {
        settings.statePendingClass = ".icon-chatContainer i";
        settings.stateErrorClass = ".error-container";
        settings.noMessages=$(".noMessages") 
+       settings.spinner=$('.chat-spinner')
        onClickBackButton()
    }
 
@@ -253,7 +254,8 @@ function Chat() {
                    return $(this).val("")
                }
                fn(message, settings.channelName, settings.candidateId)
-           }
+               return event.which !== 13;
+            }
        })
    }
 
@@ -340,6 +342,14 @@ function Chat() {
       $('#'+id).find(settings.stateErrorClass).removeClass('hidden');
    }
 
+   function showSpinner(){
+        settings.spinner.removeClass('hidden');
+   }
+
+   function hideSpinner(){
+        settings.spinner.addClass('hidden');
+   }
+
    return {
        init: init,
        setConfig : setConfig,
@@ -360,7 +370,9 @@ function Chat() {
        setChat: setChat,
        hideCandidateBlocks: hideCandidateBlocks,
        setDeliveredState: setDeliveredState,
-       setFailedState: setFailedState
+       setFailedState: setFailedState,
+       hideSpinner:hideSpinner,
+       showSpinner:showSpinner
    }
 
    function initializeTooltip() {

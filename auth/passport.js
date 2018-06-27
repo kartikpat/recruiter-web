@@ -12,9 +12,8 @@ module.exports = function(settings) {
     var config = settings.config;
     var request = settings.request;
     var fs = settings.fs;
-
+    
     passport.use(new FacebookStrategy({
-
 	       // pull in our app id and secret from our auth.js file
 	       clientID        : config.facebookAuth.clientID,
 	       clientSecret    : config.facebookAuth.clientSecret,

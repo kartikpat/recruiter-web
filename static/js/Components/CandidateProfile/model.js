@@ -42,6 +42,8 @@ function Candidate() {
         settings.interviewInvite=$('.interviewinvite')
         settings.candidateResumeShell=$(".candidateItem shell");
         settings.noViewLimit=$('.noviewLimit')
+        settings.additionalInfo=$(".additional")
+
         initializeTooltip();
         var successMsg = getQueryParameter("type");
         jQuery("#tabbed-content").tabs({
@@ -325,21 +327,39 @@ function Candidate() {
         item.gender.text(gender[aData["sex"]]).removeClass("shell")
         item.age.text(getAge(aData["dob"]) + " years").removeClass("shell")
         item.expectedSalary.text(formatSalary(aData["expectedCtc"])).removeClass("shell")
-        item.maritalStatus.text(getMaritalStatus(aData["maritalStatus"])).removeClass("shell")
-        item.languages.text((formatLanguages(aData["languages"]) || "N.A.")).removeClass("shell")
-        item.workPermit.text((workPermit[aData["permit"]] || "N.A.")).removeClass("shell")
-        item.teamHandling.text(binary[aData["handleTeam"]]).removeClass("shell")
         item.workSixDays.text("no").removeClass("shell")
-        item.relocate.text(binary[aData["relocate"]] ).removeClass("shell")
-        item.startup.text(binary[aData["joinStartup"]]).removeClass("shell")
-        item.travel.text(willingTravel[aData["travel"]]).removeClass("shell")
-        item.differentlyAbled.text(binary[aData["differentlyAbled"]]).removeClass("shell")
-        item.workSixDays.text(binary[aData["sixDays"]]).removeClass("shell")
+        var flag=0;
+       
+        if(aData["maritalStatus"])
+            item.maritalStatus.text(getMaritalStatus(aData["maritalStatus"])).removeClass("shell") && item.maritalStatus.closest('.addInfo').removeClass('hidden') && flag++;
+        if(aData["languages"])
+            item.languages.text((formatLanguages(aData["languages"]))).removeClass("shell") && item.languages.closest('.addInfo').removeClass('hidden') && flag++;
+        if(aData["permit"])
+            item.workPermit.text((workPermit[aData["permit"]])).removeClass("shell") && item.workPermit.closest('.addInfo').removeClass('hidden') && flag++;
         if(aData["score"]) {
-            item.percentile.text(aData["score"]["cat"] || "N.A.").removeClass("shell")
-            item.iitScore.text(aData["score"]["iit"] || "N.A.").removeClass("shell")
-            item.gmatScore.text(aData["score"]["gmat"] || "N.A.").removeClass("shell")
+            if(aData["score"]["cat"])
+                item.percentile.text(aData["score"]["cat"]).removeClass("shell") && item.percentile.closest('.addInfo').removeClass('hidden')&& flag++;
+            if(aData["score"]["iit"])
+                item.iitScore.text(aData["score"]["iit"]).removeClass("shell") && item.iitScore.closest('.addInfo').removeClass('hidden')&& flag++;
+            if(aData["score"]["gmat"])
+                item.gmatScore.text(aData["score"]["gmat"]).removeClass("shell") && item.gmatScore.closest('.addInfo').removeClass('hidden')&& flag++;
         }
+        if(aData["handleTeam"])
+            item.teamHandling.text(binary[aData["handleTeam"]]).removeClass("shell") && item.teamHandling.closest('.addInfo').removeClass('hidden')&& flag++;
+        if(aData["sixDays"])
+            item.workSixDays.text(binary[aData["sixDays"]]).removeClass("shell") && item.workSixDays.closest('.addInfo').removeClass('hidden')&& flag++;
+        if(aData["differentlyAbled"])    
+            item.differentlyAbled.text(binary[aData["differentlyAbled"]]).removeClass("shell") && item.differentlyAbled.closest('.addInfo').removeClass('hidden')&& flag++;
+        if(aData["relocate"])
+            item.relocate.text(binary[aData["relocate"]]).removeClass("shell") && item.relocate.closest('.addInfo').removeClass('hidden')&& flag++;
+        if(aData["joinStartup"])
+            item.startup.text(binary[aData["joinStartup"]]).removeClass("shell") && item.startup.closest('.addInfo').removeClass('hidden')&& flag++;
+        if(aData["travel"])    
+            item.travel.text(willingTravel[aData["travel"]]).removeClass("shell") && item.travel.closest('.addInfo').removeClass('hidden')&& flag++;
+
+        if(flag>0)
+        settings.additionalInfo.removeClass('hidden');
+
         if(aData["cover"]) {
             item.coverLetter.html(nl2br(aData["cover"]))
             $(".coverLetterTab").removeClass("hidden")
