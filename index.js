@@ -66,19 +66,19 @@
 		passReqToCallback: true
 	}, async function(req, accessToken, refreshToken, params, profile, done){
 		const token= req.cookies[config['cookie']];
-		
 		const data = {
 			token: accessToken,
 			refreshToken: refreshToken,
 			profile: profile["_json"]
 		}
 		try{
+			
 			await addUserSocial('linkedin', data, token);
-			return done(null, data)
+			return done(null,data);
 		}
 		catch(err){
-			return done(null, false);
-
+			
+			return done(null,data);
 		}
 	}));
 
@@ -86,7 +86,8 @@
 		consumerKey: config['social']['twitter']['clientId'],
 		consumerSecret: config['social']['twitter']['secret'],
 		callbackURL: config['social']['twitter']['callbackURL'],
-		passReqToCallback: true
+		passReqToCallback: true,
+		state:true
 	}, async function(req, accessToken, refreshToken, params, profile, done){
 		const token = req.cookies[config['cookie']];
 		const data = {
@@ -103,6 +104,7 @@
 
 		}
 	}))
+
 
 	function addUserSocial(type, data, token){
 		return new Promise(function(fulfill, reject){

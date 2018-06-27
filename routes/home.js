@@ -59,8 +59,11 @@ module.exports = function(settings){
 				}
 				const jsonBody = JSON.parse(body)
 				if(jsonBody.status && jsonBody.status =='success'){
-					req.profile = jsonBody.data;
-					console.log(req.profile)
+
+					req.profile = jsonBody.data;			
+					if(!(req.profile.img_link)){
+						req.profile.img_link='/static/images/noimage.png';
+					}
 					req.profile.about = splitAbout(req.profile.about);
 					req.profile.showSearch = (req.profile.search ==2) ? null : 1
 					if(req.originalUrl == "/verify-email") {
@@ -756,6 +759,76 @@ module.exports = function(settings){
 	});
 
 
+	function getSocialToken(recruiterId,platform,accessToken){			
+		return new Promise(function(fulfill, reject){
+			request.get({
+				url: baseUrl+ '/recruiter/'+recruiterId+'/social?platform='+platform+'',
+				headers: {
+				  'Authorization': 'Bearer '+ accessToken,
+				  'Content-Type': 'application/json'
+				  },
+				json: true
+			},function(err,res,body){
+				if(err){
+					return reject(err);
+				}
+				const jsonBody = body;
+				if(jsonBody.status && jsonBody.status =='success'){
+					return fulfill(jsonBody.data);
+				}
+				else
+					return reject('Not authorized by application')
+			})
+		})
+	}
+
+	app.post("/recruiter/:recruiterId/job/:jobId/share", async function(req, res){
+		const accessToken = req.cookies[config["cookie"]];
+		// const twitterClient=config['social']['twitter']['clientId'];
+		// const secret=config['social']['twitter']['secret'];
+
+		// console.log(twitterClient)
+		// console.log(secret)
+		
+		const recruiterId = req.params.recruiterId,
+			  jobId = req.params.jobId,
+			  platform=req.body.platform
+
+			  
+		token = await getSocialToken(recruiterId,platform,accessToken);
+		req.body.token=token[platform].accessToken;
+	
+		if(platform=="twitter"){
+			req.body.refreshToken=token[platform].refreshToken;
+			req.body.consumerKey=config['social']['twitter']['clientId'];
+			req.body.consumerSecret=config['social']['twitter']['secret'];
+		}
+		console.log(req.body)
+
+		var options = { method: 'POST',
+		  url: baseUrl+ '/recruiter/'+recruiterId+'/job/'+jobId+'/share',
+		  headers: {
+			'Authorization': 'Bearer '+ accessToken,
+			'Content-Type': 'application/json'
+			},
+			body:req.body,
+		  json: true
+		};
+		request(options, function (error, response, body) {
+			if (error){
+				console.log(error)
+				return res.json(response);
+			}
+			const jsonBody = body;
+			console.log(jsonBody)
+			if(jsonBody.status && jsonBody.status =='success'){
+				return res.json(jsonBody);
+			}
+			else {
+				return res.json(jsonBody);
+			}
+		});
+	});
 
 
 	app.post("/recruiter/login/verify", function(req, res){
@@ -833,7 +906,6 @@ module.exports = function(settings){
 	});
 
 	app.post("/recruiter/:recruiterId/calendar/:calendarId", function(req, res){
-		console.log("i am here tooo")
 		const recruiterId = req.params.recruiterId,
 			  calendarId = req.params.calendarId
 
@@ -1053,6 +1125,7 @@ module.exports = function(settings){
  		 baseDomainName: baseDomainName
 		})
 	});
+	
 	app.get("/connect-success", function(req, res){
 		res.render("connect-success", {
 			title:"Account Connected Successfully | iimjobs.com",

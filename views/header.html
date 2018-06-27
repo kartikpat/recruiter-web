@@ -63,6 +63,7 @@
 			twitter:'{{profile.twitter}}',
 			hits:"{{profile.hits}}"
 		}
+
 		var applicationId= '{{applicationId}}'
 		var uuid = '{{uuid}}'
 		var token = '{{token}}'
@@ -73,6 +74,7 @@
 			landing: '{{staticEndPoints.landing}}',
 			dashboard: '{{staticEndPoints.dashboard}}',
 			recruiterProfile: '{{staticEndPoints.recruiterProfile}}',
+			recruiterProfileSocial:'{{staticEndPoints.recruiterProfileSocial}}',
 			about: '{{staticEndPoints.about}}',
 			contact: '{{staticEndPoints.contact}}',
 			privacy: '{{staticEndPoints.privacy}}',
@@ -158,7 +160,8 @@
 				</div>
 				<div class="messages action-icon msgAction">
 					<a href="{{staticEndPoints.chat}}">
-						<div class="chat-icon"><i class="icon-chat_icon"></i></div>
+						<div class="chat-icon">
+							<i class="icon-chat_bubble"></i></div>
 					</a>
 						<!-- <img src="/static/images/chat_icon.svg"> -->
 				</div>
@@ -166,6 +169,7 @@
 					<img src="/static/images/notification_icon.svg">
 				</div>
 				<div class="profile action-icon profileImgAction">
+
 					<img class="user_img" src="{{profile.img_link}}">
 					<div class="profile-menu">
 						<a href="/account-settings">
@@ -195,7 +199,7 @@
 									<div class="basicAccount">Premium Postings: <span class="right-side"><span style="font-weight:bold;color: #149075">{{profile.availableCredits}}</span> Credits</span></div>
 							</div>
 							<ul class="profile-item-listing">
-								<li class="legacyRecruiter"><a href="{{staticEndPoints.legacyRecruiterUrl}}">Go back to old Recruiter</a></li>
+								<li class="legacyRecruiter"><a href="{{staticEndPoints.legacyRecruiterUrl}}">Go back to the earlier version</a></li>
 								<li class="accountSettings settings"><a href="{{staticEndPoints.recruiterProfile}}">Account Settings</a></li>
 								<li class="logout recruiterLogout" ><a href="">Logout</a></li>
 							</ul>
@@ -261,7 +265,7 @@
 						<a class="basicAccount"><li>Basic Postings: <span class="white basic">Unlimited</span></li></a>
 						<a class="basicAccount"><li>Premium Postings: <span class="basic"><span style="font-weight:bold;">{{profile.availableCredits}}</span> Credits</span></li></a>
 					</div>
-					<a href={{staticEndPoints.legacyRecruiterUrl}}><li class="legacyRecruiter">Get back to old Recruiter</li></a>
+					<a href={{staticEndPoints.legacyRecruiterUrl}}><li class="legacyRecruiter">Go back to the earlier version</li></a>
 					<a class="accountSettings" href="{{staticEndPoints.recruiterProfile}}"><li class="settings">Account Settings</li></a>
 					<a href=""><li class="recruiterLogout">Logout</li></a>
 				</ul>

@@ -332,6 +332,9 @@
 .icon-clock-1::before {
   content: '\e852'; }
 
+.icon-chat_bubble::before {
+  content: '\e853'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -939,6 +942,9 @@ span.sticker {
 .icon-clock-1::before {
   content: '\e852'; }
 
+.icon-chat_bubble::before {
+  content: '\e853'; }
+
 .left {
   float: left; }
 
@@ -986,6 +992,14 @@ body.posf {
   -webkit-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   -moz-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   z-index: 1500; }
+  .toast-notification-container .notifyLoader {
+    display: inline-block; }
+    .toast-notification-container .notifyLoader .lds-spinner {
+      vertical-align: middle;
+      margin-top: -30px;
+      height: 10px; }
+    .toast-notification-container .notifyLoader .lds-spinner div:after {
+      background: #fff !important; }
   .toast-notification-container.show {
     bottom: 15px; }
   .toast-notification-container.toasterror {
@@ -1001,10 +1015,12 @@ body.posf {
     display: table-cell;
     vertical-align: middle;
     padding: 10px; }
-  .toast-notification-container .notification-message p {
-    color: #FFF;
-    font-family: "Droid Sans", sans-serif;
-    font-size: 14px; }
+  .toast-notification-container .notification-message {
+    display: inline-block; }
+    .toast-notification-container .notification-message p {
+      color: #FFF;
+      font-family: "Droid Sans", sans-serif;
+      font-size: 14px; }
 
 .loader-overlay {
   position: fixed;
@@ -1729,6 +1745,9 @@ a {
 .icon-clock-1::before {
   content: '\e852'; }
 
+.icon-chat_bubble::before {
+  content: '\e853'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -2391,6 +2410,9 @@ span.sticker {
 .icon-clock-1::before {
   content: '\e852'; }
 
+.icon-chat_bubble::before {
+  content: '\e853'; }
+
 /*[Recruiter_Homepage]*/
 /*[/Recruiter_Homepage]*/
 /**** Fontello Font Icons : ****/
@@ -2723,6 +2745,9 @@ span.sticker {
 
 .icon-clock-1::before {
   content: '\e852'; }
+
+.icon-chat_bubble::before {
+  content: '\e853'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -3548,6 +3573,8 @@ span.sticker {
             width: 100%; }
             .page-content .wrapper .booked-slots .slot-date .schedules-container .schedules .time .interviewTime.shel {
               width: 100px; }
+          .page-content .wrapper .booked-slots .slot-date .schedules-container .schedules .time .interviewType {
+            margin-top: 10px; }
         .page-content .wrapper .booked-slots .slot-date .schedules-container .schedules .interview-type {
           color: #149075;
           font-size: 16px;
