@@ -10,15 +10,22 @@ jQuery(document).ready( function() {
 
 	var successMsg = getQueryParameter("jobPostMessage");
 	var errorMessage=getQueryParameter("error");
+	var jobPosted=getQueryParameter("jobId");
+
+	if(!isEmpty(jobPosted) && (jobPosted)){
+		toastNotify(1,"SuccessFully Posted Job");
+		var newUrl = removeParam("jobId", window.location.href)
+        window.history.replaceState("object or string", "Title", newUrl);
+	}
 	
-	if(!isEmpty(errorMessage)){
+	if(!isEmpty(errorMessage) && (errorMessage) ){
 		toastNotify(3,decodeURIComponent(errorMessage));
 		var newUrl = removeParam("error", window.location.href)
         window.history.replaceState("object or string", "Title", newUrl);
 	}
 
 	
-    if(!isEmpty(successMsg)) {
+    if(!isEmpty(successMsg) && (successMsg)) {
         toastNotify(1, decodeURIComponent(successMsg))
         var newUrl = removeParam("jobPostMessage", window.location.href)
         window.history.replaceState("object or string", "Title", newUrl);

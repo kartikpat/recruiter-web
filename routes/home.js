@@ -783,11 +783,6 @@ module.exports = function(settings){
 
 	app.post("/recruiter/:recruiterId/job/:jobId/share", async function(req, res){
 		const accessToken = req.cookies[config["cookie"]];
-		// const twitterClient=config['social']['twitter']['clientId'];
-		// const secret=config['social']['twitter']['secret'];
-
-		// console.log(twitterClient)
-		// console.log(secret)
 		
 		const recruiterId = req.params.recruiterId,
 			  jobId = req.params.jobId,
@@ -802,7 +797,6 @@ module.exports = function(settings){
 			req.body.consumerKey=config['social']['twitter']['clientId'];
 			req.body.consumerSecret=config['social']['twitter']['secret'];
 		}
-		console.log(req.body)
 
 		var options = { method: 'POST',
 		  url: baseUrl+ '/recruiter/'+recruiterId+'/job/'+jobId+'/share',
@@ -819,7 +813,6 @@ module.exports = function(settings){
 				return res.json(response);
 			}
 			const jsonBody = body;
-			console.log(jsonBody)
 			if(jsonBody.status && jsonBody.status =='success'){
 				return res.json(jsonBody);
 			}
@@ -1141,7 +1134,6 @@ module.exports = function(settings){
 		var ua = parser(req.headers['user-agent']);
 		var initialUrl = url.parse(req.url).pathname;
 		var oldCookieValue = req.cookies[config['oldCookie']];
-		console.log(oldCookieValue)
 		if((ua.browser.name=='IE' && (ua.browser.version=="8.0"|| ua.browser.version=="9.0"))){
 			res.render("transitionIe", {
 				title:"iimjobs.com",
