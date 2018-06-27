@@ -61,7 +61,8 @@
 			recruiterType: '{{profile.type}}',
 			linkedin:'{{profile.linkedin}}',
 			twitter:'{{profile.twitter}}',
-			hits:"{{profile.hits}}"
+			hits:"{{profile.hits}}",
+			lastLogin:"{{profile.lastLogin}}"
 		}
 		var applicationId= '{{applicationId}}'
 		var uuid = '{{uuid}}'
@@ -183,7 +184,7 @@
 							</span>
 							<span class="profile-login">	
 								<span class="lastLogin">Last Login:</span>
-								 12 Mar 2018
+								 	{{profile.lastLogin}}
 							</span>
 						</div>
 						<div class="">
