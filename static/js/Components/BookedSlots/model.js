@@ -91,6 +91,7 @@ function BookedSlots() {
 			element: card,
 			interviewDate: card.find('.interviewDate'),
 			interviewTime: card.find('.interviewTime'),
+			interviewType:card.find('.interviewType'),
 			calendarName: card.find('.calendarName'),
 			candName: card.find('.candName'),
 			candDesignation: card.find('.candDesignation'),
@@ -112,7 +113,6 @@ function BookedSlots() {
 	}
 
 	function createElement(aData, index) {
-
 		var item = cloneElement();
 		item.element.attr("data-application-id", aData["applicationId"]);
 		item.element.attr("data-invite-id", aData["id"]);
@@ -145,7 +145,16 @@ function BookedSlots() {
 			temp = moment(temp, 'hh:mm').format('hh:mm A');
 			var showTime = temp + " to " + temp1;
     		item.interviewTime.text(showTime)
-        }
+		}
+
+		//bookedSlotsInvite
+
+		if(aData['invite']==1){
+			item.interviewType.find('.inviteF2f').removeClass('hidden');
+		}
+		if(aData['invite']==2){
+			item.interviewType.find('.inviteTelephonic').removeClass('hidden');
+		}	
 		item.calendarName.text(aData["calendar"]["name"]);
 		item.calendarName.attr("href","/calendar/"+aData["calendar"]["id"]+"/edit");
 		item.candName.text(aData["name"])
