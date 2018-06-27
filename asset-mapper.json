@@ -1,3 +1,4 @@
+
 {
 	"job-details": {
 		"styles": {
@@ -1142,7 +1143,7 @@
 				"static/js/Utilities/modal.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
-				"static/js/Utilities/hideHeader.js",
+				
 				"static/js/Tracker/tracker.js",
 				"static/js/eventMapping.js"
 
