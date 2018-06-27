@@ -5,6 +5,7 @@
   "main": "Gulpfile.js",
   "scripts": {
     "start": "nodemon index.js --port=8080 --vault=./vault/ --config=./configuration.json --debug",
+    "local": "nodemon index.js --port=8080 --vault=./vault/ --config=./configuration.json --debug --local",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
