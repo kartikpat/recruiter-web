@@ -5475,7 +5475,8 @@ span.sticker {
     cursor: pointer;
     color: #2b2b2b;
     border: 1px solid #d8d5d5;
-    background-color: #fff; }
+    background-color: #fff;
+    margin: 0px; }
   .view-resume-modal .mobCandidateAddCommentButton {
     border-radius: 4px;
     padding: 6px 18px;
@@ -5483,7 +5484,8 @@ span.sticker {
     cursor: pointer;
     color: #2b2b2b;
     border: 1px solid #d8d5d5;
-    background-color: #fff; }
+    background-color: #fff;
+    margin: 0px; }
   .view-resume-modal .mobcandidateAddEditButton {
     color: #155d9a;
     font-size: 13px;
@@ -5692,7 +5694,8 @@ span.sticker {
         cursor: pointer;
         color: #2b2b2b;
         border: 1px solid #d8d5d5;
-        background-color: #fff; }
+        background-color: #fff;
+        margin: 0px; }
       .resume-sidebar .action-buttons span.button.cand-add-tag-button {
         border-radius: 4px;
         padding: 6px 18px;
@@ -5700,7 +5703,8 @@ span.sticker {
         cursor: pointer;
         color: #2b2b2b;
         border: 1px solid #d8d5d5;
-        background-color: #fff; }
+        background-color: #fff;
+        margin: 0px; }
 
 .sidebar-section {
   border-bottom: 1px solid #e8e8e8;
@@ -5797,7 +5801,8 @@ span.sticker {
       margin-right: 10px; }
   .external-links ul .table-row-separator {
     border-bottom: 1px solid #e8e8e8 !important;
-    margin-top: 20px; }
+    margin-top: 20px;
+    margin-bottom: 20px; }
   .external-links ul .invite:hover {
     text-decoration: none; }
   .external-links ul .invite-links {
@@ -6733,8 +6738,7 @@ input::-webkit-input-placeholder {
               font-size: 12px;
               display: inline-block;
               text-align: left;
-              resize: none;
-              width: 46%; }
+              resize: none; }
             .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .view-links .comments:after {
               content: "";
               background-color: #808080;
@@ -6747,7 +6751,7 @@ input::-webkit-input-placeholder {
             .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .view-links .tags {
               font-size: 12px;
               display: inline-block;
-              width: 40%; }
+              margin-left: 10px; }
       .candidates-listing .candidate-item .candidate-item-section .action-tooltip {
         position: absolute;
         top: 0%;
@@ -6809,7 +6813,8 @@ input::-webkit-input-placeholder {
             cursor: pointer;
             color: #2b2b2b;
             border: 1px solid #d8d5d5;
-            background-color: #fff; }
+            background-color: #fff;
+            margin: 0px; }
           .candidates-listing .candidate-item .candidate-item-section .action-tooltip .action-buttons .candidateAddComment {
             border-radius: 4px;
             padding: 6px 18px;
@@ -6817,7 +6822,8 @@ input::-webkit-input-placeholder {
             cursor: pointer;
             color: #2b2b2b;
             border: 1px solid #d8d5d5;
-            background-color: #fff; }
+            background-color: #fff;
+            margin: 0px; }
         .candidates-listing .candidate-item .candidate-item-section .action-tooltip .pill-listingg-container {
           position: relative;
           width: 95%;
@@ -6962,6 +6968,8 @@ input::-webkit-input-placeholder {
     border-right: 1px solid #ccc;
     padding-right: 20px;
     line-height: 34px; }
+  .mass-action-container .massShortlist {
+    margin-left: 20px !important; }
   .mass-action-container .action-buttons span.button {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -7750,7 +7758,15 @@ input::-webkit-input-placeholder {
   .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default:not(:last-child) {
     margin-right: 14px; }
   .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default:last-child {
-    margin-right: 0; } }
+    margin-right: 0; }
+  .bulk-selection-item {
+    padding: 7px 0px 0 10px !important; }
+  .bulk-select {
+    padding-top: 0px !important; }
+  .candidates-listing .candidate-item .candidate-select .checkbox input + label {
+    background-position: left 16px center; }
+  .candidates-listing .candidate-item .candidate-item-section.image .candidate-image img {
+    margin-left: 8px; } }
 
 @media all and (max-width: 360px) {
   .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default:not(:last-child) {
@@ -7931,6 +7947,10 @@ input::-webkit-input-placeholder {
   background-position: left 5px center; }
 
 @media all and (max-width: 480px) {
+  .modal_overlay .modal_content .modal_sidebar ul.category_listing li span {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600; }
   .fold {
     padding: 20px 10px !important; }
   .bulkActionModal textarea {

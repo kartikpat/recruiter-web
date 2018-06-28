@@ -4221,7 +4221,8 @@ span.sticker {
     cursor: pointer;
     color: #2b2b2b;
     border: 1px solid #d8d5d5;
-    background-color: #fff; }
+    background-color: #fff;
+    margin: 0px; }
   .view-resume-modal .mobCandidateAddCommentButton {
     border-radius: 4px;
     padding: 6px 18px;
@@ -4229,7 +4230,8 @@ span.sticker {
     cursor: pointer;
     color: #2b2b2b;
     border: 1px solid #d8d5d5;
-    background-color: #fff; }
+    background-color: #fff;
+    margin: 0px; }
   .view-resume-modal .mobcandidateAddEditButton {
     color: #155d9a;
     font-size: 13px;
@@ -4438,7 +4440,8 @@ span.sticker {
         cursor: pointer;
         color: #2b2b2b;
         border: 1px solid #d8d5d5;
-        background-color: #fff; }
+        background-color: #fff;
+        margin: 0px; }
       .resume-sidebar .action-buttons span.button.cand-add-tag-button {
         border-radius: 4px;
         padding: 6px 18px;
@@ -4446,7 +4449,8 @@ span.sticker {
         cursor: pointer;
         color: #2b2b2b;
         border: 1px solid #d8d5d5;
-        background-color: #fff; }
+        background-color: #fff;
+        margin: 0px; }
 
 .sidebar-section {
   border-bottom: 1px solid #e8e8e8;
@@ -4543,7 +4547,8 @@ span.sticker {
       margin-right: 10px; }
   .external-links ul .table-row-separator {
     border-bottom: 1px solid #e8e8e8 !important;
-    margin-top: 20px; }
+    margin-top: 20px;
+    margin-bottom: 20px; }
   .external-links ul .invite:hover {
     text-decoration: none; }
   .external-links ul .invite-links {
@@ -6981,7 +6986,8 @@ span.sticker {
     cursor: pointer;
     color: #2b2b2b;
     border: 1px solid #d8d5d5;
-    background-color: #fff; }
+    background-color: #fff;
+    margin: 0px; }
   .view-resume-modal .mobCandidateAddCommentButton {
     border-radius: 4px;
     padding: 6px 18px;
@@ -6989,7 +6995,8 @@ span.sticker {
     cursor: pointer;
     color: #2b2b2b;
     border: 1px solid #d8d5d5;
-    background-color: #fff; }
+    background-color: #fff;
+    margin: 0px; }
   .view-resume-modal .mobcandidateAddEditButton {
     color: #155d9a;
     font-size: 13px;
@@ -7198,7 +7205,8 @@ span.sticker {
         cursor: pointer;
         color: #2b2b2b;
         border: 1px solid #d8d5d5;
-        background-color: #fff; }
+        background-color: #fff;
+        margin: 0px; }
       .resume-sidebar .action-buttons span.button.cand-add-tag-button {
         border-radius: 4px;
         padding: 6px 18px;
@@ -7206,7 +7214,8 @@ span.sticker {
         cursor: pointer;
         color: #2b2b2b;
         border: 1px solid #d8d5d5;
-        background-color: #fff; }
+        background-color: #fff;
+        margin: 0px; }
 
 .sidebar-section {
   border-bottom: 1px solid #e8e8e8;

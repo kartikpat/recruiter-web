@@ -664,7 +664,7 @@ input::-webkit-input-placeholder {
 							display:inline-block;
 							text-align:left;
 							resize: none;
-							width: 46%;
+							// width: 46%;
 						}
 						.comments:after {
 							content: "";
@@ -680,7 +680,8 @@ input::-webkit-input-placeholder {
 						.tags {
 							font-size:$filter-tag-size;
 							display:inline-block;
-							width: 40%;
+							// width: 40%;
+							margin-left:10px; 
 						}
 					}
 				}
@@ -952,7 +953,10 @@ input::-webkit-input-placeholder {
         border-right: 1px solid #ccc;
         padding-right: 20px;
         line-height: 34px;
-    }
+	}
+	.massShortlist{
+		margin-left: 20px!important;
+	}
 	.action-buttons {
 		span.button {
 			@include button($color-white);
@@ -1764,7 +1768,20 @@ input::-webkit-input-placeholder {
     }
     .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default:last-child {
         margin-right: 0;
-    }
+	}
+	
+	.bulk-selection-item {
+		padding: 7px 0px 0 10px!important;
+	}
+	.bulk-select {
+		padding-top: 0px!important;
+	}
+	.candidates-listing .candidate-item .candidate-select .checkbox input + label {
+		background-position: left 16px center;
+	}
+	.candidates-listing .candidate-item .candidate-item-section.image .candidate-image img{
+		margin-left: 8px;
+	}
 }
 @media all and (max-width:360px) {
     .view-resume-modal .main-wrapper .main-container .container.resume-body #tabbed-content .ui-tabs-nav .ui-state-default:not(:last-child) {
@@ -2009,6 +2026,11 @@ input::-webkit-input-placeholder {
 
 
 @media all and (max-width:480px) {
+	.modal_overlay .modal_content .modal_sidebar ul.category_listing li span {
+		font-size: 14px;
+		line-height: 20px;
+		font-weight: 600;
+	}
 	.fold{
 		padding: 20px 10px !important;
 	}
@@ -2203,7 +2225,6 @@ input::-webkit-input-placeholder {
 		padding: 14px 7px;
 		line-height: 20px;
 		font-size: 13px;
-
 		color: #2b2b2b;
 		display: inline-block;
     }
