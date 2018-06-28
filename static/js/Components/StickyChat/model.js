@@ -259,8 +259,11 @@ function stickyChatModel(){
         $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataId+"] .content-footer-container .chat-div-content").attr("data-startTime", response.startTimeToken )
         $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataId+"] .content-footer-container .chat-div-content").attr("data-endTime", response.endTimeToken)
         initializeTooltip()
+        // debugger
         if(scroll==0)
         scrollToBottom(channelName)
+        else
+        scrollToMiddle(channelName)
     }
 
     function closeCollapsedStickyChat(){
@@ -374,6 +377,10 @@ function stickyChatModel(){
         $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container .chat-div-content").scrollTop(jQuery(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container .chat-div-content ul").outerHeight());
     }
 
+    function scrollToMiddle(channelName) {
+        $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container .chat-div-content").scrollTop((jQuery(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container .chat-div-content ul").outerHeight())/3);
+    }
+
     function isChatBoxOpen(channelName){
         if($(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"]").length){
             return true
@@ -409,7 +416,7 @@ function stickyChatModel(){
             var startTimeToken=$('.chat-div-candidate[data-id='+dataId+']').find(".chat-div-content").attr("data-starttime");
             clearTimeout(ticker);
             ticker = setTimeout(function(){
-                if(scrollTop<5){
+                if(scrollTop<10){
                     fn(channelName,startTimeToken);
                 }
             },100);
