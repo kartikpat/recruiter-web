@@ -12,6 +12,7 @@ function getDeviceId() {
 
 
 function chatModelIndex(){
+    
     var deviceId= getDeviceId();
     var chatEngine = ChatEngine(recruiterId, profile.email);
     chatEngine.initialize();
@@ -145,6 +146,7 @@ function chatModelIndex(){
         if(deviceId == msg['deviceId']){
             return
         }
+        stickyChat.playSound();
         if(!(msg["UUID"] == btoa(recruiterId+"--"+profile["email"]))){
             if(stickyChat.isChatBoxOpen(channelName)){
                 stickyChat.appendRecievedMessage(channelName,msg);
@@ -189,6 +191,8 @@ function chatModelIndex(){
         var uuids = p.uuids; // UUIDs of users who are connected with the channel with their state
         var occupancy = p.occupancy; // No. of users connected with the channel
         stickyChat.receivePresence(p)
+
+
     }
 
     function createNewChannel(recruiterId,jobId,applicationId,obj){

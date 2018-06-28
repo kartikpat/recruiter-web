@@ -123,6 +123,7 @@ jQuery(document).ready( function() {
           chat.setDeliveredState(msg.messageId);
           return
        }
+       chat.playSound();    
        if( msg["UUID"] == btoa(recruiterId+"--"+profile["email"])){
            chat.appendSendMessage( msg.msg, msg.img, msg.t);
        }

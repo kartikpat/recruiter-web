@@ -442,6 +442,11 @@ function stickyChatModel(){
         }
     }
 
+    function playSound(){
+        $('#chatAudio')[0].play();
+    }
+
+
     function reposition_chat_windows() {
         var rightOffset = 290;
       
@@ -504,7 +509,8 @@ function stickyChatModel(){
         disableChat:disableChat,
         enableChat:enableChat,
         disableToConnect:disableToConnect,
-        hideSpinner:hideSpinner
+        hideSpinner:hideSpinner,
+        playSound:playSound
     }
 
 

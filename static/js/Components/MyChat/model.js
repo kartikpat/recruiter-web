@@ -299,6 +299,11 @@ function Chat() {
        elem.text(msgCount).removeClass("hidden")
    }
 
+   function playSound(){
+         $('#chatAudio')[0].play();
+    }
+
+
    function showStatusIcon(channelName) {
        $(".conversationItem[data-channel-name="+channelName+"]").find(".candStatus").removeClass("hidden")
    }
@@ -372,7 +377,8 @@ function Chat() {
        setDeliveredState: setDeliveredState,
        setFailedState: setFailedState,
        hideSpinner:hideSpinner,
-       showSpinner:showSpinner
+       showSpinner:showSpinner,
+       playSound:playSound
    }
 
    function initializeTooltip() {
