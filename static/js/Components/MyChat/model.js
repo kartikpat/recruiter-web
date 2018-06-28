@@ -157,7 +157,7 @@ function Chat() {
        var card = $(".message.sent.prototype").clone().removeClass('prototype hidden').attr('id', data['entry']['id']);
     //    card.find(".useImg").attr("src", (data["entry"]["img"] || "/static/images/noimage.png"))
        var time;
-       time = moment(data["entry"]["time"]).format("DD MMMM YYYY") + " , ";
+       time = moment(data["entry"]["time"]).format("DD MMMM YYYY") + " ";
        time += moment(data["entry"]["time"]).format("hh:mm a");
        card.find(".msgContent").html(data["entry"]["msg"]).attr("title", time)
        if(status==1){
@@ -172,7 +172,7 @@ function Chat() {
            card.find(".useImg").attr("src", (data["entry"]["img"] || "/static/images/noimage.png")).removeClass("invisible")
        }
        var time;
-       time = moment(data["entry"]["time"]).format("DD MMMM YYYY") + " , ";
+       time = moment(data["entry"]["time"]).format("DD MMMM YYYY") + " ";
        time += moment(data["entry"]["time"]).format("hh:mm a");
        card.find(".msgContent").html(data["entry"]["msg"]).attr("title", time);
        return card
@@ -201,6 +201,7 @@ function Chat() {
                }
            })
            settings.mssgContainer.prepend(str)
+           scrollToMiddle();
            if($(window).outerWidth() < 769 ) {
                settings.backButtonChat.removeClass("hidden")
                settings.candImage.removeClass("hidden")
@@ -315,6 +316,10 @@ function Chat() {
    function scrollToBottom() {
 
        $(".current-chat").scrollTop(jQuery("#mssgContainer").outerHeight());
+   }
+
+   function scrollToMiddle(){
+        $(".current-chat").scrollTop((jQuery("#mssgContainer").outerHeight())/3);
    }
 
    function setUuid(uuid) {
