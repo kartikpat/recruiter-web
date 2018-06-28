@@ -1024,8 +1024,8 @@ b {
     .header .profile_actions .profile .profile-menu .user_profile_info {
       background-color: #117962;
       color: #FFF;
-      font-size: 13px;
-      padding: 5px 5px; }
+      font-size: 12px;
+      padding: 5px 15px; }
       .header .profile_actions .profile .profile-menu .user_profile_info .profile-hits {
         width: 45%;
         display: inline-block; }
