@@ -1290,12 +1290,14 @@ jQuery(document).ready( function() {
         if(data.parameters.inviteId == 1){
             toastNotify(1, "Face to Face Invite Sent Successfully!")
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .icon-container').removeClass('hidden');
+            $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .inviteText').addClass('color-changed');
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .loadingScroller').addClass('hidden');
             obj["isSent"] =1;
         }
         if(data.parameters.inviteId == 2){
             toastNotify(1, "Telephonic Invite Sent Successfully!")
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic  .icon-container').removeClass('hidden');
+            $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic .inviteText').addClass('color-changed');
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic .loadingScroller').addClass('hidden');
             obj["isSent"] =2;
         }

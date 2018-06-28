@@ -6134,6 +6134,9 @@ span.sticker {
 .not-allowed {
   cursor: not-allowed !important; }
 
+.color-changed {
+  color: #2b2b2b !important; }
+
 .newPost {
   font-size: 15px;
   position: fixed;
@@ -6152,9 +6155,6 @@ span.sticker {
   font-size: 13px;
   padding-right: 10px;
   cursor: pointer; }
-
-.link-color:hover {
-  text-decoration: underline; }
 
 .closeCandidateModal {
   position: fixed;
@@ -8068,9 +8068,8 @@ input::-webkit-input-placeholder {
   text-decoration: underline; }
 
 .non-underline {
-  color: #2b2b2b; }
-  .non-underline:hover {
-    text-decoration: none; }
+  color: #808080;
+  cursor: default; }
 
 .button-action-list.candidateOtherActions {
   background: #FFF; }

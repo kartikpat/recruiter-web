@@ -29,7 +29,9 @@
     cursor: not-allowed !important;
 }
 
-
+.color-changed{
+	color: #2b2b2b!important;
+}
 .newPost{
 	font-size: 15px;
     position: fixed;
@@ -51,9 +53,6 @@
     cursor: pointer;
 }
 
-.link-color:hover{
-	text-decoration: underline;
-}
 
 .closeCandidateModal {
     position: fixed;
@@ -2192,11 +2191,11 @@ input::-webkit-input-placeholder {
 }
 
 .non-underline {
-    &:hover {
-        text-decoration: none;
-    }
-    color: #2b2b2b;
+    color: #808080;
+	cursor: default;
 }
+
+
 
 .button-action-list.candidateOtherActions{
 	background: $color-white ;
