@@ -95,6 +95,7 @@ function candidateList() {
        
         // onEnter()
         settings.rowContainer.on('click', '.moreEducationLink', function(){
+            settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
             $('div').animate({scrollTop: 1000});
             var eventObj = {
                 event_category: eventMap["viewCandidProfile"]["cat"],
@@ -104,6 +105,7 @@ function candidateList() {
         })
 
         settings.rowContainer.on('click', '.moreExperience', function(){
+            settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
             $('div').animate({scrollTop: 500});
             var eventObj = {
                 event_category: eventMap["viewCandidProfile"]["cat"],
@@ -880,8 +882,6 @@ function candidateList() {
     }
 
     function addComment(comment,applicationId){
-        console.log(comment);
-        console.log(applicationId);
         $(".candidateRow[data-application-id="+applicationId+"]").find(settings.candidateCommentTextareaClass).addClass("hidden");
         $(".candidateRow[data-application-id="+applicationId+"]").find(settings.candidateAddCommentButtonClass).addClass("hidden");
         $(".candidateRow[data-application-id="+applicationId+"]").find(settings.commentTextarea).val(comment);
