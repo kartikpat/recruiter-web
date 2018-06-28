@@ -115,7 +115,7 @@ function stickyChatModel(){
     function getMsgSentElement(data) {
         var card =settings.messageSentPrototype.clone().removeClass('prototype hidden')
         var time;
-        time = moment(data["entry"]["time"]).format("DD MMMM YYYY") + " , ";
+        time = moment(data["entry"]["time"]).format("DD MMMM YYYY")+ " ";
         time += moment(data["entry"]["time"]).format("hh:mm a");
         card.find(settings.messageContent).html(data["entry"]["msg"]).attr("title", time);
         // card.find('.msgContent').append("<span class='icon-container'><i class='icon-history-button'></i></span>")
@@ -125,7 +125,7 @@ function stickyChatModel(){
     function getMsgReceivedElement(data) {
         var card =settings.messageRecievedPrototype.clone().removeClass('prototype hidden')
         var time;
-        time = moment(data["entry"]["time"]).format("DD MMMM YYYY") + " , ";
+        time = moment(data["entry"]["time"]).format("DD MMMM YYYY") + " ";
         time += moment(data["entry"]["time"]).format("hh:mm a");
         card.find(settings.messageContent).html(data["entry"]["msg"]).attr("title", time);
         return card
@@ -187,6 +187,7 @@ function stickyChatModel(){
             chatContainerBox.attr("data-channel-name",channelName);
             chatContainerBox.find(settings.infoImg).attr("src",(obj["img"] || "/static/images/noimage.png"))
             chatContainerBox.find(".info-container .primary-content").text(obj["name"] + " works as " + obj["designation"] + " at " + obj["organization"])
+            console.log(obj)
             if(obj["lastActive"]) {
                 chatContainerBox.find(settings.lastActive).text(moment(obj["lastActive"]).format("DD-MM-YYYY")).removeClass("hidden")
             }

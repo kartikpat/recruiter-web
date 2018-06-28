@@ -180,6 +180,8 @@ function chatModelIndex(){
     }
 
     function onNewPresence(p) {
+        debugger
+        console.log(p)
         // handle presence
         var action = p.action; // Can be join, leave, state-change or timeout
         var channelName = p.channel; // The channel for which the message belongs
