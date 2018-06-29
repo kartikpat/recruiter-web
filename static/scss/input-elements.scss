@@ -645,6 +645,7 @@ span {
 			width:200px;
 			cursor:pointer;
 			transition:all 0.2s ease-in-out;
+			line-height: 20px;
 
 			&:focus {
 				border-color:$border-color-active;
