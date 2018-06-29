@@ -71,7 +71,19 @@ function stickyChatModel(){
         onClickInfoIcon();
         onFocusChatMessage();
         toggleMinimiseIcon();       
+       
     }    
+
+
+    // document.addEventListener('keydown',function(){
+    //     var el = this;
+    //     setTimeout(function(){
+    //       el.style.cssText = 'height:auto; padding:0';
+    //       el.style.cssText = 'height:' + el.scrollHeight + 'px';
+    //     },0); 
+    // })
+
+
 
 
     function minimizeChatBox(){
@@ -323,7 +335,7 @@ function stickyChatModel(){
     }
 
     function onClickCandNameStopEvent(){   
-        $('.chat-candidate-boxes').on('click','.candidate-name-container',function(event){
+        $('.chat-candidate-boxes').on('click','.candidate-name',function(event){
             event.stopPropagation();
             return true
         }) 
