@@ -40,6 +40,7 @@ function stickyChatModel(){
         settings.userDesignation=".user-designation";
         settings.newChannel=$('.newChannel');
         settings.spinner=$('.chat-spinner');
+        settings.statePendingClass = ".icon-chatContainer i";
         var width=window.innerWidth;
 
         if (width< 1000) {
@@ -74,17 +75,28 @@ function stickyChatModel(){
        
     }    
 
+    function setDeliveredState(channelName ){
+        if(!channelName)
+        return
+        // $('#'+id).find(settings.statePendingClass).removeClass('icon-clock-1').addClass('icon-tick');
+        $('.chat-div-candidate[data-channel-name='+channelName+']').find('.msgContent span i').removeClass('icon-clock-1').addClass('icon-tick');
+    }
+    
+    function setFailedState(id){
+        if(!id)
+        return
+        $('#'+id).find('.error-container').removeClass('hidden');
+        // $('.chat-div-candidate[data-channel-name='+channelName+']').find('.error-container').removeClass('hidden');
+    }
 
-    // document.addEventListener('keydown',function(){
-    //     var el = this;
-    //     setTimeout(function(){
-    //       el.style.cssText = 'height:auto; padding:0';
-    //       el.style.cssText = 'height:' + el.scrollHeight + 'px';
-    //     },0); 
-    // })
 
+    function setRecruiterInactive(id){
+        return
+    }
 
-
+    function setRecruiterActive(id){
+        return
+    }
 
     function minimizeChatBox(){
         $(".chat-collapsed-candidate-container .chat-collapsed-candidate").click(function(){
@@ -124,13 +136,16 @@ function stickyChatModel(){
         return card
     }
 
-    function getMsgSentElement(data) {
-        var card =settings.messageSentPrototype.clone().removeClass('prototype hidden')
+    function getMsgSentElement(data,status) {
+        console.log(data)
+        var card =settings.messageSentPrototype.clone().removeClass('prototype hidden').attr('id', data['entry']['id'])
         var time;
         time = moment(data["entry"]["time"]).format("DD MMMM YYYY")+ " ";
         time += moment(data["entry"]["time"]).format("hh:mm a");
         card.find(settings.messageContent).html(data["entry"]["msg"]).attr("title", time);
-        // card.find('.msgContent').append("<span class='icon-container'><i class='icon-history-button'></i></span>")
+        if(status==1){
+            card.find('.msgContent').append("<span class='.icon-chatContainer'><i class='icon-clock-1'></i></span>")
+        }
         return card
     }
 
@@ -143,11 +158,12 @@ function stickyChatModel(){
         return card
     }
 
-    function appendSendMessage(channelName,message,dataID) {
+    function appendSendMessage(channelName,message,dataID,status,id) {
         var elem = {}
         elem.entry = {}
         elem.entry.msg = message;
-        var item = getMsgSentElement(elem);
+        elem.entry.id=id;
+        var item = getMsgSentElement(elem,status);
         $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
         initializeTooltip()
         scrollToBottom(channelName)
@@ -543,7 +559,11 @@ function stickyChatModel(){
         enableChat:enableChat,
         disableToConnect:disableToConnect,
         hideSpinner:hideSpinner,
-        playSound:playSound
+        playSound:playSound,
+        setDeliveredState:setDeliveredState,
+        setFailedState:setFailedState,
+        setRecruiterInactive:setRecruiterInactive,
+        setRecruiterActive:setRecruiterActive
     }
 
 

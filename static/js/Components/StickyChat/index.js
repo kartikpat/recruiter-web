@@ -75,11 +75,13 @@ function chatModelIndex(){
             event_category: eventMap["sendMsg"]["cat"],
             event_label: 'origin='+origin+',recId='+recruiterId+''
         }
+        var id= getDeviceId(10);
+      
         sendEvent(eventMap["sendMsg"]["event"], eventObj)
         if(message == "") {
             return ;
         }
-        stickyChat.appendSendMessage(channelName,message,dataID);                
+        stickyChat.appendSendMessage(channelName,message,dataID,1,id);                
         chatEngine.publish({
                 UUID:uuid || btoa(recruiterId+'--'+profile["email"]),
                 deviceId: deviceId,
@@ -95,9 +97,10 @@ function chatModelIndex(){
                 if(status.statusCode == 200) {
                 }
                 else if (status.category == "PNNetworkIssuesCategory") {
-                    var data = {}
-                    data.message = "Looks like you are not connected to the internet"
-                    toastNotify(3, data.message)
+                    // var data = {}
+                    // data.message = "Looks like you are not connected to the internet"
+                    // toastNotify(3, data.message)
+                    stickyChat.setFailedState(id);
                 }
             });
             submitChatMessage({
@@ -143,7 +146,9 @@ function chatModelIndex(){
         var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
         var pubTT = m.timetoken; // Publish timetoken
         var scrollToBottom=0;
+
         if(deviceId == msg['deviceId']){
+            stickyChat.setDeliveredState(channelName);
             return
         }
         stickyChat.playSound();
@@ -188,18 +193,20 @@ function chatModelIndex(){
             return chatEngine.hereNow(s.subscribedChannels,handleState);
         }
     }
-function handleState(response){
-    var channels = getArray(channelsArray);
-    console.log(response);
-    channels.forEach(function(channel, index) {
-        if(response.channels[channel].occupancy >= 2) {
-            stickyChat.showStatusIcon(channel);
-        }
-        else {
-            stickyChat.hideStatusIcon(channel)
-        }
-    });
-}
+
+
+    function handleState(response){
+        var channels = getArray(channelsArray);
+        console.log(response);
+        channels.forEach(function(channel, index) {
+            if(response.channels[channel].occupancy >= 2) {
+                stickyChat.showStatusIcon(channel);
+            }
+            else {
+                stickyChat.hideStatusIcon(channel)
+            }
+        });
+    }
 
     function onNewPresence(p) {
         // handle presence
@@ -218,8 +225,7 @@ function handleState(response){
        else if (p["action"] == "leave" && p["occupancy"] < 2 && p["uuid"] != (uuid || chatEngine.getUUID())) {
            stickyChat.hideStatusIcon(p.channel)
        }
-       debugger
-
+       
 
     }
 

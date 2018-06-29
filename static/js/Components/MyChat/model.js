@@ -340,6 +340,7 @@ function Chat() {
        settings.chatWindow.addClass("hidden");
        settings.userProfile.addClass("hidden");
    }
+   
    function setDeliveredState(id){
     if(!id)
       return
