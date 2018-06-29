@@ -439,15 +439,26 @@ function stickyChatModel(){
         return pubnub.getUUID();
     }
 
-    function receivePresence(p) {
-        if(p["action"] == "join" && p["occupancy"] >= 2 && p["uuid"] != getUUID()) {
-            $(".chat-div .chat-div-content .candidate-card[data-channel-name="+p.channel+"] .candidate-status").removeClass("hidden")
-            $(".chat-candidate-boxes .chat-div-content[data-channel-name="+p.channel+"] .last-active-date").text("Active Now")
-        }
-        else if (p["action"] == "leave" && p["occupancy"] < 2 && p["uuid"] != getUUID()) {
-            $(".chat-div .chat-div-content .candidate-card[data-channel-name="+p.channel+"] .candidate-status").addClass("hidden")
-            $(".chat-candidate-boxes .chat-div-content[data-channel-name="+p.channel+"] .last-active-date").text("Today")
-        }
+    // function receivePresence(p) {
+    //     if(p["action"] == "join" && p["occupancy"] >= 2 && p["uuid"] != getUUID()) {
+    //         $(".chat-div .chat-div-content .candidate-card[data-channel-name="+p.channel+"] .candidate-status").removeClass("hidden")
+    //         $(".chat-candidate-boxes .chat-div-content[data-channel-name="+p.channel+"] .last-active-date").text("Active Now")
+    //     }
+    //     else if (p["action"] == "leave" && p["occupancy"] < 2 && p["uuid"] != getUUID()) {
+    //         $(".chat-div .chat-div-content .candidate-card[data-channel-name="+p.channel+"] .candidate-status").addClass("hidden")
+    //         $(".chat-candidate-boxes .chat-div-content[data-channel-name="+p.channel+"] .last-active-date").text("Today")
+    //     }
+    // }
+
+
+
+    function showStatusIcon(channel){
+        $(".conversations-listing .conversationItem[data-channel-name="+channel+"] .candidate-status").removeClass("hidden")
+        $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channel+"] .last-active-date").text("Active Now")
+    }
+    function hideStatusIcon(channel){
+        $(".conversations-listing .conversationItem[data-channel-name="+channel+"] .candidate-status").addClass("hidden")
+        $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channel+"] .last-active-date").text("Today")
     }
 
     function playSound(){
@@ -502,7 +513,9 @@ function stickyChatModel(){
         init:init,
         populateChatView:populateChatView,
         populateSideChatView:populateSideChatView,
-        receivePresence:receivePresence,
+        showStatusIcon: showStatusIcon,
+        hideStatusIcon: hideStatusIcon,
+        // receivePresence:receivePresence,
         onClickSidebarChat:onClickSidebarChat,
         populateMessages:populateMessages,
         onClickStickyChat:onClickStickyChat,

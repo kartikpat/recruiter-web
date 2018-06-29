@@ -177,11 +177,31 @@ function chatModelIndex(){
         var affectedChannelGroups = s.affectedChannelGroups; // The channel groups affected in the operation, of type array.
         var lastTimetoken = s.lastTimetoken; // The last timetoken used in the subscribe request, of type long.
         var currentTimetoken = s.currentTimetoken; // The current timetoken fetched in the subscribe response, which is going to be used in the next request, of type long.
+
+        if(s.category == "PNNetworkDownCategory") {
+           return stickyChat.setRecruiterInactive(s)
+        }
+        if(s.category == "PNNetworkUpCategory") {
+            return stickyChat.setRecruiterActive(s)
+        }
+        if(s.operation=="PNSubscribeOperation"){
+            return chatEngine.hereNow(s.subscribedChannels,handleState);
+        }
     }
+function handleState(response){
+    var channels = getArray(channelsArray);
+    console.log(response);
+    channels.forEach(function(channel, index) {
+        if(response.channels[channel].occupancy >= 2) {
+            stickyChat.showStatusIcon(channel);
+        }
+        else {
+            stickyChat.hideStatusIcon(channel)
+        }
+    });
+}
 
     function onNewPresence(p) {
-        debugger
-        console.log(p)
         // handle presence
         var action = p.action; // Can be join, leave, state-change or timeout
         var channelName = p.channel; // The channel for which the message belongs
@@ -192,7 +212,13 @@ function chatModelIndex(){
         var service = p.service; // service
         var uuids = p.uuids; // UUIDs of users who are connected with the channel with their state
         var occupancy = p.occupancy; // No. of users connected with the channel
-        stickyChat.receivePresence(p)
+        if(p["action"] == "join" && p["occupancy"] >= 2 && p["uuid"] != (uuid || chatEngine.getUUID())) {
+           stickyChat.showStatusIcon(p.channel)
+       }
+       else if (p["action"] == "leave" && p["occupancy"] < 2 && p["uuid"] != (uuid || chatEngine.getUUID())) {
+           stickyChat.hideStatusIcon(p.channel)
+       }
+       debugger
 
 
     }

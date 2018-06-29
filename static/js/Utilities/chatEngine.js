@@ -1,6 +1,5 @@
 function ChatEngine(){
 	function initialize(recruiterId, email) {
-		debugger
 	    pubnub = new PubNub({
 		    publishKey:pubKey,// "pub-c-5069ae94-20a5-4328-8281-4e1c630cd6f2",
 	    	subscribeKey: subKey,//"sub-c-13938756-ada8-11e7-85f8-821de3cbacaa",

@@ -185,7 +185,6 @@ jQuery(document).ready( function() {
             chat.hideStatusIcon(channel)
         }
     });
-    debugger
    }
 
    chat.onInputSearchCandidate(function(str){
