@@ -5,7 +5,8 @@ globalParameters = {
     startTimeToken: null,
     endTimeToken: null,
     clicked: 1,
-    startChatConversation:1
+    startChatConversation:1,
+    candidateId:""
 }
 function getDeviceId(n) {
     if(!n)
@@ -35,11 +36,11 @@ jQuery(document).ready( function() {
         $('.loading.loaderScroller.second').removeClass("hidden")
         var obj = store.getCandidateFromStore(candidateId)
         globalParameters.channelName = obj.channel;
+        globalParameters.candidateId=candidateId;
         globalParameters.clicked = 1;
         chatEngine.fetchHistory(obj.channel , globalParameters.messageNumber , null, null, function(data,response){
             onFetchHistory(data, response, obj)
         });
-
     })
 
     var candidateId = getQueryParameter("candidateId");
@@ -202,7 +203,7 @@ jQuery(document).ready( function() {
    function onFetchHistory(data, response, obj) {
        chat.hideSpinner();
        globalParameters.startTimeToken = parseInt(response.startTimeToken)
-       chat.populateMessages(response.messages,globalParameters.startChatConversation)
+       chat.populateMessages(response.messages,globalParameters.startChatConversation,obj)
        chat.setCandidateProfile(obj)
        if(globalParameters.clicked == 1) {
            chat.scrollToBottom()
@@ -218,14 +219,20 @@ jQuery(document).ready( function() {
    })
 
    function checkScrollEnd() {
-       if($(".current-chat").scrollTop() < 5) {
+       if($(".current-chat").scrollTop() < 10) {
            if(globalParameters.startTimeToken == 0) {
                return
            }
            chat.showSpinner();
            globalParameters.startChatConversation=0;
-           chatEngine.fetchHistory(globalParameters.channelName , globalParameters.messageNumber ,globalParameters.startTimeToken, null, onFetchHistory);
-       }
+           console.log(globalParameters.candidateId)
+           var obj = store.getCandidateFromStore(globalParameters.candidateId)
+        //    chatEngine.fetchHistory(globalParameters.channelName , globalParameters.messageNumber ,globalParameters.startTimeToken, null, onFetchHistory);
+       
+           chatEngine.fetchHistory(globalParameters.channelName, globalParameters.messageNumber ,globalParameters.startTimeToken, null, function(data,response){
+                onFetchHistory(data, response, obj)
+             });
+        }
    }
 })
 

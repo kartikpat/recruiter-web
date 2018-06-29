@@ -166,10 +166,11 @@ function Chat() {
        return card
    }
 
-   function getMsgReceivedElement(data, flag) {
+   function getMsgReceivedElement(data, flag,obj) {
+       
        var card = $(".message.received.prototype").clone().removeClass('prototype hidden')
        if(flag == 1) {
-           card.find(".useImg").attr("src", (data["entry"]["img"] || "/static/images/noimage.png")).removeClass("invisible")
+           card.find(".useImg").attr("src", (obj["img"] || "/static/images/noimage.png")).removeClass("invisible")
        }
        var time;
        time = moment(data["entry"]["time"]).format("DD MMMM YYYY") + " ";
@@ -178,11 +179,10 @@ function Chat() {
        return card
    }
 
-   function populateMessages(dataArray,conversation) {
+   function populateMessages(dataArray,conversation,obj) {
         var str = ""
         var flag = 1;
-        console.log(dataArray);
-        
+
         dataArray.forEach(function(elem, index){
                if(index == 0 || (index > 0 && (moment(dataArray[index - 1]["entry"]["time"]).format("DD MM YYYY") != moment(elem["entry"]["time"]).format("DD MM YYYY"))) ) {
                    var item = getTimeElement(elem)
@@ -195,7 +195,7 @@ function Chat() {
                     str+=item[0].outerHTML;
                }
                else {
-                   var item = getMsgReceivedElement(elem, flag)
+                   var item = getMsgReceivedElement(elem, flag,obj)
                    flag = 0;
                    str+=item[0].outerHTML;
                }
