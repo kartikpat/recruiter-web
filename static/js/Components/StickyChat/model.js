@@ -323,7 +323,7 @@ function stickyChatModel(){
     }
 
     function onClickCandNameStopEvent(){   
-        $('.chat-candidate-boxes').on('click','.cand-name-wrapper',function(event){
+        $('.chat-candidate-boxes').on('click','.candidate-name',function(event){
             event.stopPropagation();
             return true
         }) 
