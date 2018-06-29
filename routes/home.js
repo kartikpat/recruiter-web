@@ -781,23 +781,26 @@ module.exports = function(settings){
 		})
 	}
 
+
 	app.post("/recruiter/:recruiterId/job/:jobId/share", async function(req, res){
+		console.log("i m here 1")	
 		const accessToken = req.cookies[config["cookie"]];
-		
 		const recruiterId = req.params.recruiterId,
 			  jobId = req.params.jobId,
 			  platform=req.body.platform
 
 			  
-		token = await getSocialToken(recruiterId,platform,accessToken);
+			  
+		token = await getSocialToken(recruiterId,platform,accessToken).catch(function(err){
+			console.log(err)
+		});
 		req.body.token=token[platform].accessToken;
-	
 		if(platform=="twitter"){
 			req.body.refreshToken=token[platform].refreshToken;
 			req.body.consumerKey=config['social']['twitter']['clientId'];
 			req.body.consumerSecret=config['social']['twitter']['secret'];
 		}
-
+		
 		var options = { method: 'POST',
 		  url: baseUrl+ '/recruiter/'+recruiterId+'/job/'+jobId+'/share',
 		  headers: {
@@ -807,12 +810,17 @@ module.exports = function(settings){
 			body:req.body,
 		  json: true
 		};
+
+		console.log("i m here")	
+	
+		
 		request(options, function (error, response, body) {
 			if (error){
 				console.log(error)
 				return res.json(response);
 			}
 			const jsonBody = body;
+			console.log(jsonBody)
 			if(jsonBody.status && jsonBody.status =='success'){
 				return res.json(jsonBody);
 			}

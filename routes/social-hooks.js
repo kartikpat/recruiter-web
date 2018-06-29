@@ -2,21 +2,40 @@ module.exports = function(settings){
   const	app=settings["app"];
   const querystring = require('querystring');
 	const passport = settings["passport"];
-
+  var request = settings["request"];
   config = settings["config"];
   
   app.get('/auth/linkedin',function(req,res){
+    console.log(req.query);
 
-    console.log(req.query['page']);
-    console.log("i am here"); 
-    var stateParam=config['social']['linkedin']['stateKey']+"?Page="+req.query["page"]+"&jobId="+req.query["jobId"]+"";
-    
+    var stateParam=config['social']['linkedin']['stateKey']+"?Page="+req.query["page"]+"&jobId="+req.query["jobId"]+"&id="+req.query["id"]+"";
     stateParam=Buffer.from(stateParam).toString('base64') 
     passport.authorize('linkedin-auths',{
       state: stateParam ,
 	    scope: ['r_emailaddress','r_basicprofile','w_share']
     })(req, res);
   });
+
+
+  function jobShareSocial(recruiterId,jobId,data){	
+   		request.post({
+				url:"http://localhost:8080/recruiter/"+recruiterId+"/job/"+jobId+"/share",
+        headers: {},
+        body:data,
+        json: true
+			},function(err,res,body){
+				if(err){
+					return (err);
+				}
+				const jsonBody = body;
+				if(jsonBody.status && jsonBody.status =='success'){
+					return (jsonBody.data);
+				}
+				else
+					return ('Not authorized by application')
+			})
+	}
+
 
   app.get('/auth/linkedin/callback', function(req, res, next){
     const state = req.query.state;     
@@ -26,9 +45,7 @@ module.exports = function(settings){
     var token=text.substring(0,text.indexOf("?"));
     text= text.substring(text.indexOf("?")+1);
     var param=querystring.parse(text);
-    //authorisation error
-    
-    
+    req.param=param;
     if(param['Page']=="jobs"){
       if(!(err)){
         config['social']['linkedin']['successRedirect']="/"+param['Page']+"?jobId="+param['jobId'];
@@ -37,11 +54,9 @@ module.exports = function(settings){
         res.redirect(config['social']['linkedin']['successRedirect']="/"+param['Page']+"?error="+err);
       }
     }
-
     if(err){
       res.send('<script>window.close()</script>');
     }
-
     if(token!= config['social']['linkedin']['stateKey'] ){
       return res.redirect(config['social']['linkedin']['failureRedirect']);
     }
@@ -49,13 +64,16 @@ module.exports = function(settings){
   }, passport.authorize('linkedin-auths',{
     failureRedirect: config['social']['linkedin']['failureRedirect'],
   }), function(req, res){
-    return res.redirect(config['social']['linkedin']['successRedirect'])
+      var data={};    
+      data.platform="linkedin";
+      jobShareSocial(req.param['id'],req.param['jobId'],data);
+      return res.redirect(config['social']['linkedin']['successRedirect'])
   })
 
   app.get('/auth/twitter',function(req, res, next){
     var stateParam=config['social']['linkedin']['stateKey'];
     stateParam=Buffer.from(stateParam).toString('base64') 
-    var cbURL=config['social']['twitter']['callbackURL']+"?state="+stateParam+""+"?Page="+req.query["page"]+"&jobId="+req.query["jobId"]+"";  
+    var cbURL=config['social']['twitter']['callbackURL']+"?state="+stateParam+""+"?Page="+req.query["page"]+"&jobId="+req.query["jobId"]+"&id="+req.query["id"]+"";  
     passport.authorize('twitter-auths',{ 
       callbackURL:cbURL
     })(req, res, next);
@@ -70,7 +88,6 @@ module.exports = function(settings){
     var tokenState = buff.toString('ascii');
     var page=param['state'].substring(param['state'].lastIndexOf("=")+1);
     var jobID=param['jobId'];
-    
     if(page=='jobs'){
       config['social']['twitter']['successRedirect']="/"+page+"?jobId="+jobID+"";
 

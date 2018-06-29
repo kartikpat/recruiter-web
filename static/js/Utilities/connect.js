@@ -1,6 +1,7 @@
 
 function connectSocial() {
-    
+
+
     var socialShareFail=pubsub.subscribe('socialSharefail',onSharefail);
     var socailShareSuccess=pubsub.subscribe('socialShareSuccess', onShareSuccess);
 
@@ -15,9 +16,11 @@ function connectSocial() {
     }
 
 
-    function linkedinConnect(param,queryParam,jobId){
-        if(profile.linkedin!=1){
-            window.open('/auth/linkedin?page='+queryParam+'&jobId='+jobId+'',param,'scrollbars=yes,menubar=no,width=500,height=500,resizable=yes,toolbar=no,location=no,status=no')
+    function linkedinConnect(param,queryParam,jobId,recruiterId){
+        
+        if(profile.linkedin==1){
+            window.open('/auth/linkedin?page='+queryParam+'&jobId='+jobId+'&id='+recruiterId+'',param,'scrollbars=yes,menubar=no,width=500,height=500,resizable=yes,toolbar=no,location=no,status=no')   
+            return
         }
         var data={};    
         data.platform="linkedin";
@@ -25,9 +28,9 @@ function connectSocial() {
         jobShareSocial(recruiterId,jobId,data);
     }
 
-    function twitterConnect(param,queryParam,jobId){
+    function twitterConnect(param,queryParam,jobId,recruiterId){
         if(profile.twitter!=1){
-            window.open('/auth/twitter?page='+queryParam+'&jobId='+jobId+'',param,' scrollbars=yes,menubar=no,width=500,height=500, resizable=yes,toolbar=no,location=no,status=no')
+            window.open('/auth/twitter?page='+queryParam+'&jobId='+jobId+'&id='+recruiterId+'',param,' scrollbars=yes,menubar=no,width=500,height=500, resizable=yes,toolbar=no,location=no,status=no')
         }
         var data={};    
         data.platform="twitter";
