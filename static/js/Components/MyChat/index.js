@@ -21,14 +21,14 @@ function getDeviceId(n) {
 
 jQuery(document).ready( function() {
   var deviceId= getDeviceId();
-    var chatEngine = ChatEngine(recruiterId, profile.email);
-    chatEngine.initialize();
+    var chatEngine = ChatEngine();
+    chatEngine.initialize(recruiterId, profile.email);
     chatEngine.addListeners(onNewMessage, onNewPresence, onNewStatus);
 
     var chat = Chat();
     var store = Store();
     chat.init()
-    fetchRecruiterChats(recruiterId)
+    fetchRecruiterChats(recruiterId);
 
     chat.onClickSingleChatItem(function(candidateId){
         chat.hideCandidateBlocks()
@@ -94,7 +94,7 @@ jQuery(document).ready( function() {
             globalParameters.channelName = obj.channel;
             chatEngine.fetchHistory(obj.channel , globalParameters.messageNumber , null, null, onFetchHistory);
             chat.setCandidateProfile(obj)
-            chat.setChat(obj.channel, candidateId)
+            chat.setChat(obj.channel, candidateId);
         }
     }
 
@@ -163,13 +163,29 @@ jQuery(document).ready( function() {
        var affectedChannelGroups = s.affectedChannelGroups; // The channel groups affected in the operation, of type array.
        var lastTimetoken = s.lastTimetoken; // The last timetoken used in the subscribe request, of type long.
        var currentTimetoken = s.currentTimetoken; // The current timetoken fetched in the subscribe response, which is going to be used in the next request, of type long.
-
        if(s.category == "PNNetworkDownCategory") {
            return chat.setRecruiterInactive(s)
        }
        if(s.category == "PNNetworkUpCategory") {
            return chat.setRecruiterActive(s)
        }
+       if(s.operation=="PNSubscribeOperation"){
+        return chatEngine.hereNow(s.subscribedChannels,handleState);
+       }
+   }
+
+   function handleState(response){
+    var channels = getArray(channelsArray);
+    console.log(response)
+    channels.forEach(function(channel, index) {
+        if(response.channels[channel].occupancy >= 2) {
+            chat.showStatusIcon(channel);
+        }
+        else {
+            chat.hideStatusIcon(channel)
+        }
+    });
+    debugger
    }
 
    chat.onInputSearchCandidate(function(str){

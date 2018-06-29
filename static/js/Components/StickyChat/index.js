@@ -14,8 +14,8 @@ function getDeviceId() {
 function chatModelIndex(){
     
     var deviceId= getDeviceId();
-    var chatEngine = ChatEngine(recruiterId, profile.email);
-    chatEngine.initialize();
+    var chatEngine = ChatEngine();
+    chatEngine.initialize(recruiterId, profile.email);
     chatEngine.addListeners(onNewMessage, onNewPresence, onNewStatus);
     var stickyChat=stickyChatModel();
     var store=chatStoreModel();

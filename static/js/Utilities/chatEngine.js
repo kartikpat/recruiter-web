@@ -1,5 +1,6 @@
 function ChatEngine(){
 	function initialize(recruiterId, email) {
+		debugger
 	    pubnub = new PubNub({
 		    publishKey:pubKey,// "pub-c-5069ae94-20a5-4328-8281-4e1c630cd6f2",
 	    	subscribeKey: subKey,//"sub-c-13938756-ada8-11e7-85f8-821de3cbacaa",
@@ -54,7 +55,7 @@ function ChatEngine(){
 	    }, onFetchHistory);
 	}
 
-	function hereNow(channels) {
+	function hereNow(channels, fn) {
 	    pubnub.hereNow({
 	        channels: channels,
 	        includeUUIDs: true,
@@ -62,14 +63,7 @@ function ChatEngine(){
 
 	    }, function(status, response) {
 	        if(status["statusCode"] == 200) {
-	            channels.forEach(function(channel, index) {
-	                if(response.channels[channel].occupancy >= 2) {
-	                    // showOnlineIcon(channel);
-	                }
-	                else {
-	                    // removeOnlineIcon(channel);
-	                }
-	            })
+	            fn(response);
 	        }
 	    });
 	}
@@ -92,7 +86,8 @@ function ChatEngine(){
 		fetchHistory: fetchHistory,
 		subscribe: subscribe,
 		publish: publish,
-		getUUID: getUUID
+		getUUID: getUUID,
+		hereNow: hereNow
 	}
 
 }
