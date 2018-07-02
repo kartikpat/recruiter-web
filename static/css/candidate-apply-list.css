@@ -5743,10 +5743,10 @@ span.sticker {
     min-height: 40px;
     margin-bottom: 10px;
     border-left: 3px solid #cfebeb;
-    line-height: 15px;
+    line-height: 20px;
     padding: 10px;
     resize: none;
-    overflow: scroll; }
+    padding-top: 0px; }
   .sidebar-section .action-buttons .editbutton {
     color: #155d9a;
     font-size: 13px;
