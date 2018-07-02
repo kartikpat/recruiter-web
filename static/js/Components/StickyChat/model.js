@@ -78,7 +78,6 @@ function stickyChatModel(){
     function setDeliveredState(channelName ){
         if(!channelName)
         return
-        // $('#'+id).find(settings.statePendingClass).removeClass('icon-clock-1').addClass('icon-tick');
         $('.chat-div-candidate[data-channel-name='+channelName+']').find('.msgContent span i').removeClass('icon-clock-1').addClass('icon-tick');
     }
     
@@ -86,9 +85,7 @@ function stickyChatModel(){
         if(!id)
         return
         $('#'+id).find('.error-container').removeClass('hidden');
-        // $('.chat-div-candidate[data-channel-name='+channelName+']').find('.error-container').removeClass('hidden');
     }
-
 
     function setRecruiterInactive(id){
         return
@@ -199,7 +196,7 @@ function stickyChatModel(){
                 fn(channelName,messageNumber,dataID);
                 elem.addClass('selected');
             }
-            
+
         })
     }
 
@@ -391,10 +388,6 @@ function stickyChatModel(){
                 settings.conversationListing.find(".conversationItem[data-id="+dataId+"]").removeClass("selected")
                 reposition_chat_windows();
             } 
-        })
-            $('body').on('keydown','.chat-candidate-boxes',function(e){
-            debugger
-            console.log("i m here");
         })
 
         settings.chatCandidateboxes.on('click','.chat-div-candidate .info-buttons .closeIcon', function(event) {
