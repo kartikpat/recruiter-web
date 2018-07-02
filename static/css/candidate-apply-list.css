@@ -5494,6 +5494,8 @@ span.sticker {
     display: none; }
   .view-resume-modal .mob.tags {
     display: none; }
+  .view-resume-modal .underline:hover {
+    text-decoration: underline; }
   .view-resume-modal .main-wrapper {
     width: 80%;
     padding-right: 20px;
@@ -5806,8 +5808,6 @@ span.sticker {
     line-height: 1.3;
     margin: 7px 0;
     cursor: pointer; }
-    .external-links ul li:hover {
-      text-decoration: underline; }
     .external-links ul li span.icon {
       width: 2em;
       margin-right: 10px; }
