@@ -585,6 +585,7 @@ input::-webkit-input-placeholder {
 						color:$inline-link-color;
 						font-weight:bold;
 						font-size:16px;
+						padding-right: 5px;
 					}
 
 					span {
@@ -2004,25 +2005,6 @@ input::-webkit-input-placeholder {
 	padding: 25px 0 0px 30px;
 	background-position: left 5px center
 }
-
-// .sidebar-section.comments {
-// 	textarea {
-// 		@include candidateCommentTextarea;
-// 	}
-// 	.action-buttons {
-// 		margin-bottom: 0;
-// 	}
-// }
-
-// .sidebar-section.contact-info {
-//     .wrap {
-//     	margin: 7px 0;
-//     	color: #2b2b2b;
-//     	line-height: 1.2;
-//     }
-// }
-
-
 
 @media all and (max-width:480px) {
 	.modal_overlay .modal_content .modal_sidebar ul.category_listing li span {
