@@ -14,56 +14,89 @@ module.exports = function(settings) {
         baseUrl = config["baseUrl"];
 
     app.get('/auth/linkedin', function(req, res) {
-        console.log(req.query);
+        var stateParam = config['social']['linkedin']['stateKey'];
+        var state = 'stateKey='+ stateParam;
+        if(req.query['page']){
+            state+= '&page='+req.query["page"] + '&jobId='+req.query['jobId']+ '&id='+req.query["id"]+ "&popup="+req.query["popup"];
+        }
+        const base64EncodedState = Buffer.from(state).toString('base64');
 
-        var stateParam = config['social']['linkedin']['stateKey'] + "?Page=" + req.query["page"] + "&jobId=" + req.query["jobId"] + "&id=" + req.query["id"] + "";
-        stateParam = Buffer.from(stateParam).toString('base64')
         passport.authorize('linkedin-auths', {
-            state: stateParam,
+            state: base64EncodedState,
             scope: ['r_emailaddress', 'r_basicprofile', 'w_share']
         })(req, res);
     });
 
     app.get('/auth/linkedin/callback', function(req, res, next) {
-        const state = req.query.state;
-        var err = req.query.error_description;
-        var buff = new Buffer(state, 'base64');
-        var text = buff.toString('ascii');
-        var token = text.substring(0, text.indexOf("?"));
-        text = text.substring(text.indexOf("?") + 1);
-        var param = querystring.parse(text);
-        req.param = param;
-        if (param['Page'] == "jobs") {
-            if (!(err)) {
-                config['social']['linkedin']['successRedirect'] = "/" + param['Page'] + "?jobId=" + param['jobId'];
-            } else {
-                res.redirect(config['social']['linkedin']['successRedirect'] = "/" + param['Page'] + "?error=" + err);
-            }
+        var state = req.query.state || null;
+        var param = {};
+        if(state){
+            state=Buffer.from(state, 'base64').toString('ascii');
+            var param = querystring.parse(state);
         }
-        if (err) {
-            res.send('<script>window.close()</script>');
-        }
-        if (token != config['social']['linkedin']['stateKey']) {
+        var stateKey = param['stateKey'];
+        var page = param['page'];
+        var jobId = param['jobId'];
+        var popup= param['popup'];
+        var recruiterId = param['id'];
+        var accessToken = req.cookies[config["cookie"]];
+
+        if (stateKey != config['social']['linkedin']['stateKey']) {
             return res.redirect(config['social']['linkedin']['failureRedirect']);
         }
-        return next();
-    }, passport.authorize('linkedin-auths', {
-        failureRedirect: config['social']['linkedin']['failureRedirect'],
-    }), function(req, res) {
-        var data = {};
-        data.platform = "linkedin";
-        jobShareSocial(req.param['id'], req.param['jobId'], data);
-        return res.redirect(config['social']['linkedin']['successRedirect'])
+        passport.authorize('linkedin-auths', async function(err, user, info){
+            console.log('...........err')
+            console.log(err)
+            console.log('...........user')
+            console.log(user)
+            console.log('...........info')
+            console.log(info);
+
+            console.log(req.query)
+            if(err && err.code!='user_cancelled_login' && err.code !=="user_cancelled_authorize"){
+                return res.send('Sorry, we could not auhenticate you at this moment. Our engineers our working on fixing this. Please try again after sometime');
+            };
+            if(popup == 'yes'){
+                if(req.query.error=='user_cancelled_login' || req.query.error=='user_cancelled_authorize')
+                    return res.send('<script>window.close()</script>');
+                return res.redirect(config['social']['linkedin']['successRedirect']);    
+            }
+
+            if(req.query.error=='user_cancelled_login' || req.query.error=='user_cancelled_authorize'){
+                if(page)
+                    return res.redirect(page);;
+                return res.redirect(config['social']['linkedin']['failureRedirect']);
+            }
+
+            if(jobId){
+                try{
+                    await getTokenAndPost(recruiterId, 'linkedin', accessToken, jobId, baseUrl );
+                }catch(err){
+                    if(err==400)
+                        return res.redirect(page+'?share=fail&code=400')
+                    if(err==409)
+                        return res.redirect(page+'?share=fail&code=409')
+                    return res.redirect(page+'?share=fail')
+                }
+                return res.redirect(page+'?share=success');
+            }
+            // if successful and initiated by whole page
+            if(page)
+                return res.redirect(page);
+            return res.redirect(config['social']['twitter']['successRedirect']);
+        })(req, res, next);
+
     })
 
     app.get('/auth/twitter', function(req, res, next) {
-        var stateParam = config['social']['linkedin']['stateKey'];
+        var stateParam = config['social']['twitter']['stateKey'];
+        var state = 'stateKey='+ stateParam;
         var cbURL = config['social']['twitter']['callbackURL'];
         if(req.query['page']){
-            var state = 'stateKey='+ stateParam+ '&page='+req.query["page"] + '&jobId='+req.query['jobId']+ '&id='+req.query["id"]+ "&popup="+req.query["popup"];
-            const base64EncodedState = Buffer.from(state).toString('base64');
-            cbURL+= "?state="+base64EncodedState;
+            state+= '&page='+req.query["page"] + '&jobId='+req.query['jobId']+ '&id='+req.query["id"]+ "&popup="+req.query["popup"];
         }
+        const base64EncodedState = Buffer.from(state).toString('base64');
+        cbURL+= "?state="+base64EncodedState;
         passport.authorize('twitter-auths', {
             callbackURL: cbURL
         })(req, res, next);
@@ -83,18 +116,6 @@ module.exports = function(settings) {
         var recruiterId = param['id'];
         var accessToken = req.cookies[config["cookie"]];
 
-        // if (page == 'jobs') {
-        //     config['social']['twitter']['successRedirect'] = "/" + page + "?jobId=" + jobID + "";
-
-        //     if (req.query.denied) {
-        //         config['social']['twitter']['successRedirect'] = "/" + page + "";
-        //         return res.redirect(config['social']['twitter']['successRedirect'])
-        //     }
-        // }
-
-        // if (req.query.denied) {
-        //     res.send('<script>window.close()</script>');
-        // }
         if (stateKey != config['social']['twitter']['stateKey']) {
             return res.redirect(config['social']['twitter']['failureRedirect']);
         }
