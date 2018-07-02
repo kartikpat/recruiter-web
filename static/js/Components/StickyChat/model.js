@@ -209,7 +209,7 @@ function stickyChatModel(){
                 fn(channelName,messageNumber,dataID);
                 elem.addClass('selected');
             }
-            // $('.chat-input[data-id='+dataID+']').addClass('focus');
+            $('.chat-input[data-id='+dataID+']').focus();
         })
     }
 
