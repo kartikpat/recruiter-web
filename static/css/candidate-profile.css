@@ -4488,13 +4488,12 @@ span.sticker {
     color: #757575;
     font-size: 14px;
     text-align: left;
-    min-height: 40px;
     margin-bottom: 10px;
     border-left: 3px solid #cfebeb;
     line-height: 20px;
     padding: 10px;
     resize: none;
-    padding-top: 0px; }
+    padding-top: 5px; }
   .sidebar-section .action-buttons .editbutton {
     color: #155d9a;
     font-size: 13px;
@@ -4530,7 +4529,6 @@ span.sticker {
   width: 100%;
   padding: 5px;
   resize: none;
-  min-height: 50px;
   font-size: 13px;
   margin-bottom: 15px;
   overflow: hidden;
@@ -4629,7 +4627,6 @@ span.sticker {
       width: 100%;
       padding: 5px;
       resize: none;
-      min-height: 50px;
       font-size: 13px;
       margin-bottom: 15px;
       overflow: hidden;
@@ -7265,13 +7262,12 @@ span.sticker {
     color: #757575;
     font-size: 14px;
     text-align: left;
-    min-height: 40px;
     margin-bottom: 10px;
     border-left: 3px solid #cfebeb;
     line-height: 20px;
     padding: 10px;
     resize: none;
-    padding-top: 0px; }
+    padding-top: 5px; }
   .sidebar-section .action-buttons .editbutton {
     color: #155d9a;
     font-size: 13px;
@@ -7307,7 +7303,6 @@ span.sticker {
   width: 100%;
   padding: 5px;
   resize: none;
-  min-height: 50px;
   font-size: 13px;
   margin-bottom: 15px;
   overflow: hidden;
@@ -7405,7 +7400,6 @@ span.sticker {
       width: 100%;
       padding: 5px;
       resize: none;
-      min-height: 50px;
       font-size: 13px;
       margin-bottom: 15px;
       overflow: hidden;
