@@ -22,6 +22,11 @@
     }
 }
 
+.focus{
+    border: 1px solid #149075!important;
+    outline: none;
+    cursor: pointer;
+}
 .chat-spinner{
     margin-left: 30%;
 }

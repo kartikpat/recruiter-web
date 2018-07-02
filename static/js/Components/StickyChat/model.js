@@ -62,7 +62,7 @@ function stickyChatModel(){
         if(width > 768 && width <= 1024 ){
             settings.chatDiv.removeClass("hidden")
         }
-
+        textAdjust();
         minimizeChatBox();
         minimizeSideBarChat();
         closeCollapsedSidebarChat();
@@ -166,6 +166,16 @@ function stickyChatModel(){
         scrollToBottom(channelName)
         $(".chat-input").val("");
     }
+
+
+    function textAdjust(){
+        $('.chat-input').on("change",function(){
+               debugger
+                var text = $(this).val();      
+                span.text(text);      
+                $(this).height(text ? span.height() : '1.1em');
+        })
+    }
     
     function textAreaAdjust(o) {
         if(o.scrollHeight == 35 || o.scrollHeight > 75) {
@@ -196,7 +206,7 @@ function stickyChatModel(){
                 fn(channelName,messageNumber,dataID);
                 elem.addClass('selected');
             }
-
+            // $('.chat-input[data-id='+dataID+']').addClass('focus');
         })
     }
 
@@ -261,6 +271,7 @@ function stickyChatModel(){
             }
         });
     }
+
     
     function populateMessages(response,obj,channelName,scroll){
         var dataArray=response.messages;
@@ -380,8 +391,6 @@ function stickyChatModel(){
                         settings.chatCollapsedContainer.addClass("hidden");
                     }
                 }
-
-                // $('.chat-candidate-boxes').find('.chat-div-candidate')[0].remove();
 
                 $('.chat-div-candidate[data-id='+dataId+']').remove();
                 settings.chatDiv.find(".candidate-card[data-id="+dataId+"]").removeClass("selected");
