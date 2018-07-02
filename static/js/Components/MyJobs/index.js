@@ -7,17 +7,15 @@ var globalParameters = {
 }
 
 var errorCode={
-	400:"",
-	409:"Duplicate",
-	403:"Retry"
+	400:"We could not authenticate ",
+	409:"can not post same job",
+	403:""
 }
 
 jQuery(document).ready( function() {
-
 	var successMsg = getQueryParameter("jobPostMessage");
 	var jobPosted=getQueryParameter("share");
-
-
+	
 	if(!isEmpty(jobPosted) && (jobPosted)){
 		if(jobPosted=="fail"){
 			var code=getQueryParameter("code");
@@ -28,10 +26,9 @@ jQuery(document).ready( function() {
 		}
 		else{
 			toastNotify(1,"SuccessFully Posted Job");
-			var newUrl = removeParam("jobId", window.location.href)
+			var newUrl = removeParam("share", window.location.href)
         	window.history.replaceState("object or string", "Title", newUrl);
 		}
-
 	}
 	
     if(!isEmpty(successMsg) && (successMsg)) {

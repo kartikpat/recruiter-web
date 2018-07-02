@@ -16,8 +16,7 @@ function connectSocial() {
     }
 
 
-    function linkedinConnect(param,queryParam,jobId,recruiterId){
-        
+    function linkedinConnect(param,queryParam,jobId,recruiterId){        
         if(profile.linkedin==1){
             window.open('/auth/linkedin?page='+queryParam+'&jobId='+jobId+'&id='+recruiterId+'',param,'scrollbars=yes,menubar=no,width=500,height=500,resizable=yes,toolbar=no,location=no,status=no')   
             return

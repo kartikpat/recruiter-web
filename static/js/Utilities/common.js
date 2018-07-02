@@ -149,6 +149,7 @@ function hideLoader() {
 }
 
 function removeParam(key, sourceURL) {
+	debugger
     var rtn = sourceURL.split("?")[0],
         param,
         params_arr = [],
@@ -161,7 +162,7 @@ function removeParam(key, sourceURL) {
                 params_arr.splice(i, 1);
             }
         }
-        rtn = rtn + "?" + params_arr.join("&");
+        // rtn = rtn + "?" +params_arr.join("&");
     }
     return rtn;
 }
