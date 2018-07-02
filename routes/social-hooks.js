@@ -1,5 +1,5 @@
 const shareJob = require('./shareJob.js');
-
+const getTokenAndPost = require('./getTokenAndPost.js');
 module.exports = function(settings) {
     const app = settings["app"];
     const querystring = require('querystring');
@@ -78,8 +78,10 @@ module.exports = function(settings) {
         }
         var stateKey = param['stateKey'];
         var page = param['page'];
-        var jobID = param['jobId'];
-        var popup= param['popup']
+        var jobId = param['jobId'];
+        var popup= param['popup'];
+        var recruiterId = param['id'];
+        var accessToken = req.cookies[config["cookie"]];
 
         // if (page == 'jobs') {
         //     config['social']['twitter']['successRedirect'] = "/" + page + "?jobId=" + jobID + "";
@@ -96,7 +98,7 @@ module.exports = function(settings) {
         if (stateKey != config['social']['twitter']['stateKey']) {
             return res.redirect(config['social']['twitter']['failureRedirect']);
         }
-        passport.authorize('twitter-auths', function(err, user, info){
+        passport.authorize('twitter-auths', async function(err, user, info){
             console.log('...........err')
             console.log(err)
             console.log('...........user')
@@ -104,14 +106,33 @@ module.exports = function(settings) {
             console.log('...........info')
             console.log(info);
 
-            if(req.query.denied && popup=='yes')
-                return res.send('<script>window.close()</script>');
-            if(!user){
-                return res.send('Sorry, we could not auhenticate you at this moment. Our engineers our working on fixing this. Please try again after sometime')
+            console.log(req.query)
+            if(err){
+                return res.send('Sorry, we could not auhenticate you at this moment. Our engineers our working on fixing this. Please try again after sometime');
+            };
+            if(popup == 'yes'){
+                if(req.query.denied)
+                    return res.send('<script>window.close()</script>');
+                return res.redirect(config['social']['twitter']['successRedirect']);    
             }
-            // if successful and initiated via popup
-            if(popup=='yes'){
-                return  res.redirect(config['social']['twitter']['successRedirect']);
+
+            if(req.query.denied){
+                if(page)
+                    return res.redirect(page);;
+                return res.redirect(config['social']['twitter']['failureRedirect']);
+            }
+
+            if(jobId){
+                try{
+                    await getTokenAndPost(recruiterId, 'twitter', accessToken, jobId, baseUrl );
+                }catch(err){
+                    if(err==400)
+                        return res.redirect(page+'?share=fail&code=400')
+                    if(err==409)
+                        return res.redirect(page+'?share=fail&code=409')
+                    return res.redirect(page+'?share=fail')
+                }
+                return res.redirect(page+'?share=success');
             }
             // if successful and initiated by whole page
             if(page)

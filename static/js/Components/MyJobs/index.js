@@ -90,12 +90,12 @@ jQuery(document).ready( function() {
 	})
 
 	jobList.onClickShareOnTwitter(function(jobId){
-			connect.twitterConnect("_self","jobs",jobId,recruiterId);
+			connect.twitterConnect("_self","/jobs",jobId,recruiterId);
 			return true;			
 	})
 	
 	jobList.onClickShareOnLinkedIn(function(jobId){
-			connect.linkedinConnect("_self","jobs",jobId,recruiterId);
+			connect.linkedinConnect("_self","/jobs",jobId,recruiterId);
 			return true;
 	})
 

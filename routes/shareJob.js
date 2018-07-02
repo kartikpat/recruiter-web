@@ -30,8 +30,8 @@ function shareJob(baseUrl, data, accessToken, recruiterId, jobId){
 				return reject(error);
 			}
 			const jsonBody = body;
-			console.log(jsonBody)
-			if(response.status ==200){
+			console.log(jsonBody);
+			if(response.statusCode ==200){
 				return resolve(response.statusCode);
 			}
 			console.log(body);

@@ -102,7 +102,7 @@
 		catch(err){
 			console.log('inside twitter Strategy');
 			console.log(err);
-			return done(null, false);
+			return done('application error', false);
 
 		}
 	}))

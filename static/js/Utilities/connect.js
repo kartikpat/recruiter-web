@@ -31,6 +31,7 @@ function connectSocial() {
     function twitterConnect(param,queryParam,jobId,recruiterId){
         if(profile.twitter!=1){
             window.open('/auth/twitter?page='+queryParam+'&jobId='+jobId+'&id='+recruiterId+'',param,' scrollbars=yes,menubar=no,width=500,height=500, resizable=yes,toolbar=no,location=no,status=no')
+            return
         }
         var data={};    
         data.platform="twitter";

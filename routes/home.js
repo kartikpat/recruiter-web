@@ -6,6 +6,8 @@ What all is visible to the eyes comes right through here.
 
 var assetsMapper = require("../asset-mapper.json");
 const shareJob = require('./shareJob.js');
+const getSocialToken = require('./getSocialToken')
+const getTokenAndPost = require('./getTokenAndPost.js');
 
 module.exports = function(settings){
 	var app = settings.app;
@@ -759,30 +761,6 @@ module.exports = function(settings){
 	});
 
 
-	function getSocialToken(recruiterId,platform,accessToken){			
-		return new Promise(function(fulfill, reject){
-			request.get({
-				url: baseUrl+ '/recruiter/'+recruiterId+'/social?platform='+platform+'',
-				headers: {
-				  'Authorization': 'Bearer '+ accessToken,
-				  'Content-Type': 'application/json'
-				  },
-				json: true
-			},function(err,res,body){
-				if(err){
-					return reject(err);
-				}
-				const jsonBody = body;
-				if(jsonBody.status && jsonBody.status =='success'){
-					return fulfill(jsonBody.data);
-				}
-				else
-					return reject('Not authorized by application')
-			})
-		})
-	}
-
-
 	app.post("/recruiter/:recruiterId/job/:jobId/share", async function(req, res){
 		const accessToken = req.cookies[config["cookie"]];
 		const recruiterId = req.params.recruiterId,
@@ -796,34 +774,7 @@ module.exports = function(settings){
 			});
 
 		try{
-			const socialAccessRows = await getSocialToken(recruiterId,platform,accessToken);
-			if(!socialAccessRows[platform])
-				throw new Error('No token');
-
-			const token = 	socialAccessRows[platform]['token'],
-			refreshToken = socialAccessRows[platform]['refreshToken'],
-			consumerKey = config['social']['twitter']['clientId'],
-			consumerSecret = config['social']['twitter']['secret'];
-			
-			switch(platform){
-				case 'twitter':
-					(token && refreshToken && consumerKey && consumerSecret) ? true : _throw('No token');
-					break;
-				case 'linkedin':
-					(token) ? true : _throw('No token');
-					break;
-				default:
-					break;
-			}
-
-			const data = {
-				platform,
-				token,
-				refreshToken,
-				consumerKey,
-				consumerSecret
-			}
-			await shareJob( baseUrl, data, accessToken, recruiterId, jobId);
+			await getTokenAndPost(recruiterId, platform, accessToken, jobId, baseUrl);
 			return res.json({
 				status: 'success',
 				message: 'job posted successfully'
@@ -843,15 +794,18 @@ module.exports = function(settings){
 					message: 'retry'
 				});
 			}
+			if(err==409){
+				return res.status(409).json({
+					status: 'fail',
+					message: 'job is already posted'
+				});	
+			}
 			return res.status(503).json({
 				status: 'fail',
 				message: 'service error'
 			});
 		};		
 	});
-	function _throw(m){
-		throw m;
-	}
 
 	app.post("/recruiter/login/verify", function(req, res){
 		const oldCookie=req.cookies[config['oldCookie']]
