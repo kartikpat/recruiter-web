@@ -69,7 +69,7 @@ function Candidate() {
         });
         
         initializeTooltip();
-        onClickEscapeModal(closeModal);
+        // onClickEscapeModal(closeModal);
 
     }
 
@@ -114,7 +114,6 @@ function Candidate() {
            
             fn()
         })
-
     }
 
     function onClickEscapeModal(fn){

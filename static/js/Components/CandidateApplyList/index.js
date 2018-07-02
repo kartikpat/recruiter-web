@@ -113,6 +113,7 @@ jQuery(document).ready( function() {
         aCandidate.closeModal();
     })
 
+
     page();
 
     filters.addFilterData('industry', industryTagsData);
@@ -965,6 +966,12 @@ jQuery(document).ready( function() {
      })
 
      aCandidate.onClickCloseModal(function(){
+        var parameters = filters.getAppliedFilters();
+        parameters.status = globalParameters.status;
+        setQueryParameters(parameters);
+     })
+
+     aCandidate.onClickEscapeModal(function(){
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
         setQueryParameters(parameters);
