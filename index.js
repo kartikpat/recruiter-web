@@ -100,6 +100,8 @@
 			return done(null, data)
 		}
 		catch(err){
+			console.log('inside twitter Strategy');
+			console.log(err);
 			return done(null, false);
 
 		}
@@ -148,6 +150,7 @@
 		keys: ['key-1'],
 		httpOnly: false
 	}));
+	app.use(bodyParser.json()); // support json encoded bodies
 	app.use(bodyParser.urlencoded({ extended: true }))
 	app.use(compression()); //compressing payload on every request
 

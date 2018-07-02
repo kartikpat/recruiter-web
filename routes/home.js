@@ -4,7 +4,8 @@ This module contains all the view rendering.
 What all is visible to the eyes comes right through here.
 **/
 
-var assetsMapper = require("../asset-mapper.json")
+var assetsMapper = require("../asset-mapper.json");
+const shareJob = require('./shareJob.js');
 
 module.exports = function(settings){
 	var app = settings.app;
@@ -783,53 +784,74 @@ module.exports = function(settings){
 
 
 	app.post("/recruiter/:recruiterId/job/:jobId/share", async function(req, res){
-		console.log("i m here 1")	
 		const accessToken = req.cookies[config["cookie"]];
 		const recruiterId = req.params.recruiterId,
 			  jobId = req.params.jobId,
-			  platform=req.body.platform
+			  platform=req.body.platform;
 
-			  
-			  
-		token = await getSocialToken(recruiterId,platform,accessToken).catch(function(err){
-			console.log(err)
-		});
-		req.body.token=token[platform].accessToken;
-		if(platform=="twitter"){
-			req.body.refreshToken=token[platform].refreshToken;
-			req.body.consumerKey=config['social']['twitter']['clientId'];
-			req.body.consumerSecret=config['social']['twitter']['secret'];
+		if(['twitter', 'linkedin'].indexOf(platform)<0)
+			return res.status(422).json({
+				status: 'fail',
+				message: 'missing parameters'
+			});
+
+		try{
+			const socialAccessRows = await getSocialToken(recruiterId,platform,accessToken);
+			if(!socialAccessRows[platform])
+				throw new Error('No token');
+
+			const token = 	socialAccessRows[platform]['token'],
+			refreshToken = socialAccessRows[platform]['refreshToken'],
+			consumerKey = config['social']['twitter']['clientId'],
+			consumerSecret = config['social']['twitter']['secret'];
+			
+			switch(platform){
+				case 'twitter':
+					(token && refreshToken && consumerKey && consumerSecret) ? true : _throw('No token');
+					break;
+				case 'linkedin':
+					(token) ? true : _throw('No token');
+					break;
+				default:
+					break;
+			}
+
+			const data = {
+				platform,
+				token,
+				refreshToken,
+				consumerKey,
+				consumerSecret
+			}
+			await shareJob( baseUrl, data, accessToken, recruiterId, jobId);
+			return res.json({
+				status: 'success',
+				message: 'job posted successfully'
+			});
 		}
-		
-		var options = { method: 'POST',
-		  url: baseUrl+ '/recruiter/'+recruiterId+'/job/'+jobId+'/share',
-		  headers: {
-			'Authorization': 'Bearer '+ accessToken,
-			'Content-Type': 'application/json'
-			},
-			body:req.body,
-		  json: true
-		};
-
-		console.log("i m here")	
-	
-		
-		request(options, function (error, response, body) {
-			if (error){
-				console.log(error)
-				return res.json(response);
+		catch(err){
+			console.log(err);
+			if(err==401){
+				return res.status(401).json({
+					status: 'fail',
+					message: 'user not authenticated'
+				});
 			}
-			const jsonBody = body;
-			console.log(jsonBody)
-			if(jsonBody.status && jsonBody.status =='success'){
-				return res.json(jsonBody);
+			if(err==400){
+				return res.status(400).json({
+					status: 'fail',
+					message: 'retry'
+				});
 			}
-			else {
-				return res.json(jsonBody);
-			}
-		});
+			return res.status(503).json({
+				status: 'fail',
+				message: 'service error'
+			});
+		};		
 	});
-
+	function _throw(m){
+		throw m;
+	}
 
 	app.post("/recruiter/login/verify", function(req, res){
 		const oldCookie=req.cookies[config['oldCookie']]
@@ -859,10 +881,6 @@ module.exports = function(settings){
 			return res.json(jsonBody);
 		});
 	});
-
-	var bodyParser = require('body-parser');
-	app.use(bodyParser.json()); // support json encoded bodies
-	app.use(bodyParser.urlencoded({ extended: true }));
 
 	app.post("/recruiter/:recruiterId/calendar", function(req, res){
 		const recruiterId = req.params.recruiterId,
