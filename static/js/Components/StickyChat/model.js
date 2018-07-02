@@ -366,6 +366,37 @@ function stickyChatModel(){
     }    
     
     function onClickCloseSidebarChat(){
+        
+        document.addEventListener('keyup', function(e){    
+            if (e.keyCode== 27) {
+                event.stopPropagation();
+                var dataId = $('.chat-candidate-boxes').find('.chat-div-candidate').attr('data-id');
+                
+                
+                hideElement = 1 + maxCandidateChats;
+                if($(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").hasClass("hidden")) {
+                    $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").removeClass("hidden");
+                    var collapsedDataId = $(".chat-candidate-boxes .chat-div-candidate:nth-child("+hideElement+")").attr("data-id");
+        
+                    $(".chat-collapsed-candidate-container .candidate-collapsed-block[data-id="+collapsedDataId+"]").remove();
+                    if($(".chat-collapsed-candidate-container .chat-collapsed-candidate-wrapper").children().length == 0) {
+                        settings.chatCollapsedContainer.addClass("hidden");
+                    }
+                }
+
+                // $('.chat-candidate-boxes').find('.chat-div-candidate')[0].remove();
+
+                $('.chat-div-candidate[data-id='+dataId+']').remove();
+                settings.chatDiv.find(".candidate-card[data-id="+dataId+"]").removeClass("selected");
+                settings.conversationListing.find(".conversationItem[data-id="+dataId+"]").removeClass("selected")
+                reposition_chat_windows();
+            } 
+        })
+            $('body').on('keydown','.chat-candidate-boxes',function(e){
+            debugger
+            console.log("i m here");
+        })
+
         settings.chatCandidateboxes.on('click','.chat-div-candidate .info-buttons .closeIcon', function(event) {
             event.stopPropagation();
             var dataId = $(this).attr("data-id");
