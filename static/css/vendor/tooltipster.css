@@ -335,6 +335,9 @@
 .icon-chat_bubble::before {
   content: '\e853'; }
 
+.icon-face_to_face_icon2::before {
+  content: '\e854'; }
+
 .tooltipster-fall,
 .tooltipster-grow.tooltipster-show {
   -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
