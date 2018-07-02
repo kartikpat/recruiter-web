@@ -169,11 +169,14 @@ function stickyChatModel(){
 
 
     function textAdjust(){
-        $('.chat-input').on("change",function(){
-               debugger
-                var text = $(this).val();      
-                span.text(text);      
-                $(this).height(text ? span.height() : '1.1em');
+        $('.chat-candidate-boxes').on('paste','textarea', function (){
+            // $(this).height(0).height(this.scrollHeight + 10);
+            var o=this
+            if(o.scrollHeight > 75) {
+                return
+            }
+            o.style.height = (o.scrollHeight+30)+"px";
+            $(o).closest(settings.footerContainer).find(settings.chatDivContnet).height(293 - (o.scrollHeight));
         })
     }
     
