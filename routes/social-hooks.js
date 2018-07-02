@@ -93,14 +93,27 @@ module.exports = function(settings) {
         // if (req.query.denied) {
         //     res.send('<script>window.close()</script>');
         // }
-        console.log(stateKey)
         if (stateKey != config['social']['twitter']['stateKey']) {
             return res.redirect(config['social']['twitter']['failureRedirect']);
         }
         passport.authorize('twitter-auths', function(err, user, info){
+            console.log('...........err')
+            console.log(err)
+            console.log('...........user')
+            console.log(user)
+            console.log('...........info')
+            console.log(info);
+
             if(req.query.denied && popup=='yes')
                 return res.send('<script>window.close()</script>');
+            if(!user){
+                return res.send('Sorry, we could not auhenticate you at this moment. Our engineers our working on fixing this. Please try again after sometime')
+            }
             // if successful and initiated via popup
+            if(popup=='yes'){
+                return  res.redirect(config['social']['twitter']['successRedirect']);
+            }
+            // if successful and initiated by whole page
             if(page)
                 return res.redirect(page);
             return res.redirect(config['social']['twitter']['successRedirect']);

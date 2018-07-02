@@ -312,11 +312,11 @@ function Profile(){
 
 	function connect(){
         settings.linkedinConnect.on('click',function(){
-            window.open('/auth/linkedin?page=/account-settings','',' scrollbars=yes,menubar=no,width=500,height=500, resizable=yes,toolbar=no,location=no,status=no')
+            window.open('/auth/linkedin?page=/account-settings&popup=yes','',' scrollbars=yes,menubar=no,width=500,height=500, resizable=yes,toolbar=no,location=no,status=no')
         })
 
         settings.twitterConnect.on('click',function(){
-            window.open('/auth/twitter?page=/account-settings','',' scrollbars=yes,menubar=no,width=500,height=500, resizable=yes,toolbar=no,location=no,status=no')
+            window.open('/auth/twitter?page=/account-settings&popup=yes','',' scrollbars=yes,menubar=no,width=500,height=500, resizable=yes,toolbar=no,location=no,status=no')
         })
     }
 
