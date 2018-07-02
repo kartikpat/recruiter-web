@@ -781,7 +781,6 @@ module.exports = function(settings){
 			});
 		}
 		catch(err){
-			console.log(err);
 			if(err==401){
 				return res.status(401).json({
 					status: 'fail',
@@ -806,6 +805,8 @@ module.exports = function(settings){
 			});
 		};		
 	});
+
+	
 
 	app.post("/recruiter/login/verify", function(req, res){
 		const oldCookie=req.cookies[config['oldCookie']]

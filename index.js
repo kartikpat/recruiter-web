@@ -102,6 +102,8 @@
 		catch(err){
 			console.log('inside twitter Strategy');
 			console.log(err);
+			if(err=='user_cancelled')
+				return done(err, false)
 			return done('application error', false);
 
 		}
