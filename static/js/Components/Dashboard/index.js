@@ -10,6 +10,30 @@ var settings = {}
 // var chat=chatModelIndex();
 
 
+var jobPosted=getQueryParameter("share");
+
+
+var errorCode={
+	400:"We could not authenticate ",
+	409:"can not post same job",
+	403:""
+}
+
+if(!isEmpty(jobPosted) && (jobPosted)){
+	if(jobPosted=="fail"){
+		var code=getQueryParameter("code");
+		toastNotify(3,errorCode[code]);
+		var newUrl=removeParam("share", window.location.href)
+		newUrl=removeParam("code",newUrl);
+		window.history.replaceState("object or string", "Title", newUrl);	
+	}
+	else{
+		toastNotify(1,"SuccessFully Posted Job");
+		var newUrl = removeParam("share", window.location.href)
+		window.history.replaceState("object or string", "Title", newUrl);
+	}
+}
+
 $('.continueButton').click(function(){
 	$('.dashboardModal').fadeOut();
 	var object = {value: "view", timestamp: new Date().getTime()}
@@ -248,7 +272,7 @@ function onClickShareOnTwitter(fn){
 			event_label: 'origin=Dashboard,type=Twitter,recId='+recruiterId+',JobId='+jobId+''
 		}
 		sendEvent(eventMap["socialIconsClick"]["event"], eventObj)
-		connect.twitterConnect("_self","/jobs",jobId,recruiterId);
+		connect.twitterConnect("_self","/",jobId,recruiterId);
 		return true;
 	});
 }
@@ -261,7 +285,7 @@ function onClickShareOnLinkedIn(fn){
 			event_label: 'origin=Dashboard,type=Linkedin,recId='+recruiterId+',JobId='+jobId+''
 		}
 		sendEvent(eventMap["socialIconsClick"]["event"], eventObj)
-		connect.linkedinConnect("_self","/jobs",jobId,recruiterId);
+		connect.linkedinConnect("_self","/",jobId,recruiterId);
 		return true;
 	});
 }

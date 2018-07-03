@@ -310,13 +310,15 @@ function Candidate() {
             item.element.find('.inviteTelephonic .loadingScroller').addClass('hidden');
         }
         if(aData["preferredLocation"].length) {
-            var locationTitle = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? aData["preferredLocation"].join(', '): "";
+            var locationTitle = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? aData["preferredLocation"].join(', '): null;
             var preferredLocationStr = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? "Multiple Locations" : aData["preferredLocation"].join(', ');
         }
         item.preferredLocation.text(preferredLocationStr);
-        if(aData["preferredLocation"].length >3){
-            item.preferredLocation.attr("title",locationTitle).addClass('tooltip');
-            initializeTooltip();
+        item.preferredLocation.attr("title",locationTitle).addClass('tooltip');
+        initializeTooltip();
+       
+        if(aData["preferredLocation"].length<=3){
+            item.preferredLocation.tooltipster('close');
         }
         item.preferredLocationDetail.text(aData["preferredLocation"].join(', '));
         item.contact.text(aData["phone"] || "N/A");
@@ -601,7 +603,7 @@ function Candidate() {
         item.workPermit.text("");
         item.coverLetter.text("");
         item.preferredLocation.text("");
-        item.preferredLocation.attr('title','');
+        item.preferredLocation.tooltipster('destroy');
         item.tabContent.tabs({active: 0});
         item.shortlistButton.text("Shortlist").removeClass("act-short");
         item.rejectButton.text("Reject").removeClass("act-rej");

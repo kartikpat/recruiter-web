@@ -39,6 +39,29 @@ jQuery(document).ready( function() {
         }
            
     });
+    
+    var errorCode={
+        400:"We could not authenticate ",
+        409:"can not post same job",
+        403:""
+    }
+    var jobPosted=getQueryParameter("share");
+
+	if(!isEmpty(jobPosted) && (jobPosted)){
+		if(jobPosted=="fail"){
+			var code=getQueryParameter("code");
+			toastNotify(3,errorCode[code]);
+			var newUrl=removeParam("share", window.location.href)
+			newUrl=removeParam("code",newUrl);
+			window.history.replaceState("object or string", "Title", newUrl);	
+		}
+		else{
+			toastNotify(1,"SuccessFully Posted Job");
+			var newUrl = removeParam("share", window.location.href)
+        	window.history.replaceState("object or string", "Title", newUrl);
+		}
+	}
+
 
     var obj = getQueryParameters()
     if(!isEmpty(obj)) {
@@ -119,12 +142,12 @@ jQuery(document).ready( function() {
 
 
     theJob.onClickShareOnTwitter(function(){
-        connect.twitterConnect("_self",'/job/'+globalParameters.jobId+'/applications',globalParameters.jobId,recruiterId);
+        connect.twitterConnect("_self",'/job/'+globalParameters.jobPublishedId+'/applications',globalParameters.jobId,recruiterId);
 		return true;    
     })
 
     theJob.onClickShareOnLinkedIn(function(){
-        connect.linkedinConnect("_self",'/job/'+globalParameters.jobId+'/applications',globalParameters.jobId,recruiterId);
+        connect.linkedinConnect("_self",'/job/'+globalParameters.jobPublishedId+'/applications',globalParameters.jobId,recruiterId);
 			return true;
     })
 
@@ -1100,6 +1123,7 @@ jQuery(document).ready( function() {
 
     function onSuccessfulFetchJobDetails(topic, data) {
         globalParameters.jobId = data["jobId"]
+        globalParameters.jobPublishedId=data["jobPublishedId"];
         candidates.setDefaultTab(globalParameters.status)
         var parameters = getQueryParameters()
         parameters.status = globalParameters.status;

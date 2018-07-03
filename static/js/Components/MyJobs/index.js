@@ -15,6 +15,7 @@ var errorCode={
 
 jQuery(document).ready( function() {
 	var successMsg = getQueryParameter("jobPostMessage");
+
 	var jobPosted=getQueryParameter("share");
 
 	if(!isEmpty(jobPosted) && (jobPosted)){
