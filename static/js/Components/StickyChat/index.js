@@ -271,8 +271,8 @@ function chatModelIndex(){
         if(window.innerWidth <= 768) {
             window.location.href = staticEndPoints['chat']+'?candidateId='+data.array[0]["userID"]+''
         }
-        stickyChat.enableChat(data.data);
-        data.array[0]["channel"] = data.data
+        stickyChat.enableChat(data.data.channel);
+        data.array[0]["channel"] = data.data.channel;
         stickyChat.populateChatView(data.array);   
     }
 
