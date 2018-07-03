@@ -629,7 +629,11 @@ function candidateList() {
     function activateStatsTab(event, ui) {
         $(ui.oldTab[0]).find(".bulk-selection-item").removeClass("active");
         $(ui.newTab[0]).find(".bulk-selection-item").addClass("active");
-        return $(ui.newTab[0]).attr("data-attribute");
+        return getActiveTab(ui);
+    }
+
+    function getActiveTab(ui){
+        return $(ui.newTab[0]).attr("data-attribute");   
     }
 
     function setDefaultTab(status) {
@@ -1152,7 +1156,7 @@ function candidateList() {
 		settings.bulkActionModal.addClass("hidden")
     }
 
-    function initializeJqueryTabs(defaultTab, fn) {
+    function initializeJqueryTabs(defaultTab, fn, fn1) {
         settings.jobTabs.tabs({
             active: defaultTab,
             create:function(){
@@ -1169,7 +1173,7 @@ function candidateList() {
             },
             beforeActivate: function(event, ui){
                 if(event.which){
-                    
+                    fn1(event, ui);
                     return false
                 }
                 return true
@@ -1426,6 +1430,7 @@ function candidateList() {
         appendCandidateTag: appendCandidateTag,
         showNewPost:showNewPost,
         hideNewPost:hideNewPost,
-        onClickJqueryTabs: onClickJqueryTabs
+        onClickJqueryTabs: onClickJqueryTabs,
+        getActiveTab: getActiveTab
     }
 }

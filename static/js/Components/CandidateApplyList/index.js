@@ -136,7 +136,6 @@ jQuery(document).ready( function() {
         aCandidate.closeModal();
         var parameters = getParametersByString(context.querystring);
         var tabIndex = 0;
-        debugger
         switch(parameters.status){
             case "0":
                 tabIndex=1;
@@ -425,13 +424,21 @@ jQuery(document).ready( function() {
         var parameters = filters.getAppliedFilters();
         globalParameters.status = status;
         parameters.status = globalParameters.status;
-        setQueryParameters(parameters);
+        //setQueryParameters(parameters);
         var queryString = testSetQueryParameters(parameters);
         // page("/?"+queryString);
         globalParameters.offset = 0;
         parameters.offset = globalParameters.offset;
         parameters.pageContent = globalParameters.pageContent;
         fetchJobApplications(jobId, parameters,recruiterId);
+    }, function(event, ui){
+        var status = candidates.getActiveTab(ui);
+        var parameters = filters.getAppliedFilters();
+        globalParameters.status = status;
+        parameters.status = globalParameters.status;
+        var queryString = testSetQueryParameters(parameters);
+        page('/?'+queryString);
+        return true
     });
 
     candidates.onClickNewPost(function(){
