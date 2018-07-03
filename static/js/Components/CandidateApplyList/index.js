@@ -133,6 +133,7 @@ jQuery(document).ready( function() {
             setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
 
     });
+    
     page('/', function(context, next){
         aCandidate.closeModal();
     })

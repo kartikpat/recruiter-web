@@ -111,7 +111,7 @@ function Candidate() {
                 e.stopPropagation()
                 e.stopImmediatePropagation();
             }
-           
+            $('.js_pref_loc').tooltipster('destroy');
             fn()
         })
 
@@ -316,7 +316,6 @@ function Candidate() {
         item.preferredLocation.text(preferredLocationStr);
         item.preferredLocation.attr("title",locationTitle).addClass('tooltip');
         initializeTooltip();
-       
         if(aData["preferredLocation"].length<=3){
             item.preferredLocation.tooltipster('close');
         }
@@ -603,7 +602,7 @@ function Candidate() {
         item.workPermit.text("");
         item.coverLetter.text("");
         item.preferredLocation.text("");
-        item.preferredLocation.tooltipster('destroy');
+        // item.preferredLocation.tooltipster('destroy');
         item.tabContent.tabs({active: 0});
         item.shortlistButton.text("Shortlist").removeClass("act-short");
         item.rejectButton.text("Reject").removeClass("act-rej");
@@ -913,10 +912,10 @@ function Candidate() {
 			side:['bottom'],
 			theme: 'tooltipster-borderless',
 			maxWidth: 500,
-			})
-		}
-
+            })
+        }
    	}
+
 
     return {
         init: init,
