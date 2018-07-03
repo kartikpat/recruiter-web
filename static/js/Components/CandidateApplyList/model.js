@@ -1152,7 +1152,7 @@ function candidateList() {
 		settings.bulkActionModal.addClass("hidden")
     }
 
-    function initializeJqueryTabs(defaultTab, fn) {
+    function initializeJqueryTabs(defaultTab, fn){
         settings.jobTabs.tabs({
             active: defaultTab,
             create:function(){
@@ -1169,7 +1169,7 @@ function candidateList() {
             },
             beforeActivate: function(event, ui){
                 if(event.which){
-                    
+                    fn(event,ui);  
                     return false
                 }
                 return true

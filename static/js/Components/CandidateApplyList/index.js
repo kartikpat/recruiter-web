@@ -39,41 +39,14 @@ jQuery(document).ready( function() {
            
     });
 
-    var obj = getQueryParameters()
-    if(!isEmpty(obj)) {
-        var filterFlag = 0;
-        if(obj.searchString){
-            obj.searchString=decodeURI(obj.searchString);
-        }
-        for(var key in obj) {
-            if(key == "status") {
-                globalParameters.status = obj[key]
-            }
-            else if (key == "orderBy") {
-                globalParameters.orderBy = obj[key]
-                filters.changeSelectValue(obj[key])
-            }
-            // else if (key == "pageNumber") {
-            //     globalParameters.pageNumber = obj[key]
-            // }
-            // else if (key == "pageContent") {
-            //     globalParameters.pageContent = obj[key]
-            // }
-            if(key && [ 'status', 'offset', 'pageContent'].indexOf(key) != -1) {
-                continue
-            }
-            filters.callClickOnFilters(filtersMapping[key], obj[key], minMaxMapping[key])
-            if(!(key == "orderBy" || key == "offset" || key == "pageContent" || key == "status" || key == "searchString")) {
-              filterFlag+= 1;
-            }
-        }
-        if(filterFlag > 0) {
-            filters.addFiltersToContainer()
-            filters.showAppliedFilters()
-        }
-    }
-
-
+    var obj = getQueryParameters();
+    if(obj['status'])
+        globalParameters.status = obj['status'];
+    if(obj['orderBy'])
+        globalParameters.orderBy = obj['orderBy'];
+    
+    filters.setFilters(obj)
+    
     submitPageVisit(recruiterId, screenName, jobId);
     var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitSuccess:"+screenName, onPageVisitUpdateSuccess)
     var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitFail:"+screenName, onPageVisitUpdateFail)
@@ -136,7 +109,6 @@ jQuery(document).ready( function() {
         aCandidate.closeModal();
         var parameters = getParametersByString(context.querystring);
         var tabIndex = 0;
-        debugger
         switch(parameters.status){
             case "0":
                 tabIndex=1;
@@ -419,7 +391,10 @@ jQuery(document).ready( function() {
     })
 
     candidates.initializeJqueryTabs(defaultTabObj[globalParameters.status], function(event, ui) {
+        // debugger
         var status = candidates.activateStatsTab(event, ui)
+        console.log(status)
+        debugger
         candidates.showShells(status);
         candidates.removeCandidate(status)
         var parameters = filters.getAppliedFilters();
@@ -427,6 +402,7 @@ jQuery(document).ready( function() {
         parameters.status = globalParameters.status;
         setQueryParameters(parameters);
         var queryString = testSetQueryParameters(parameters);
+        console.log(queryString)
         // page("/?"+queryString);
         globalParameters.offset = 0;
         parameters.offset = globalParameters.offset;
