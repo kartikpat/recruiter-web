@@ -151,8 +151,9 @@ function chatModelIndex(){
             stickyChat.setDeliveredState(channelName);
             return
         }
-        stickyChat.playSound();
+        
         if(!(msg["UUID"] == btoa(recruiterId+"--"+profile["email"]))){
+            stickyChat.playSound();
             if(stickyChat.isChatBoxOpen(channelName)){
                 stickyChat.appendRecievedMessage(channelName,msg);
                 stickyChat.scrollToBottom(m.channel);

@@ -124,12 +124,13 @@ jQuery(document).ready( function() {
           chat.setDeliveredState(msg.messageId);
           return
        }
-       chat.playSound();    
+           
        if( msg["UUID"] == btoa(recruiterId+"--"+profile["email"])){
            chat.appendSendMessage( msg.msg, msg.img, msg.t);
        }
        else{
-          chat.receiveMessage(msg,channelName);
+         chat.playSound();   
+         chat.receiveMessage(msg,channelName);
        }
    }
 
