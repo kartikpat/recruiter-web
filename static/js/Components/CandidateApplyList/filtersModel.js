@@ -938,6 +938,38 @@ function Filters(){
 		filtersTarget["orderBy"]["target"].val(value);
 	}
 
+	function setFilters(obj){
+		if(!isEmpty(obj)) {
+			var filterFlag = 0;
+			if(obj.searchString){
+				obj.searchString=decodeURI(obj.searchString);
+			}
+			for(var key in obj) {
+				if (key == "orderBy") {
+					changeSelectValue(obj[key])
+				}
+				// else if (key == "pageNumber") {
+				//     globalParameters.pageNumber = obj[key]
+				// }
+				// else if (key == "pageContent") {
+				//     globalParameters.pageContent = obj[key]
+				// }
+				if(key && [ 'status', 'offset', 'pageContent'].indexOf(key) != -1) {
+					continue
+				}
+				callClickOnFilters(filtersMapping[key], obj[key], minMaxMapping[key])
+				if(!(key == "orderBy" || key == "offset" || key == "pageContent" || key == "status" || key == "searchString")) {
+				  filterFlag+= 1;
+				}
+			}
+			if(filterFlag > 0) {
+				addFiltersToContainer()
+				showAppliedFilters()
+			}
+		}
+	
+	}
+
     return {
     	init: init,
     	addFilterData: addFilterData,
@@ -959,6 +991,7 @@ function Filters(){
 		callClickOnFilters: callClickOnFilters,
 		changeSelectValue: changeSelectValue,
 		hideResultsFound: hideResultsFound,
+		setFilters:setFilters
 	
     }
 }
