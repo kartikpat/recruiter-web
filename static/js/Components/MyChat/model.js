@@ -152,7 +152,7 @@ function Chat() {
    }
 
 
-   function getMsgSentElement(data,status) {
+   function getMsgSentElement(data,status,index) {
       // status ->1 for new message to show the clock icon
        var card = $(".message.sent.prototype").clone().removeClass('prototype hidden').attr('id', data['entry']['id']);
     //    card.find(".useImg").attr("src", (data["entry"]["img"] || "/static/images/noimage.png"))
@@ -162,6 +162,9 @@ function Chat() {
        card.find(".msgContent").html(data["entry"]["msg"]).attr("title", time)
        if(status==1){
           card.find(".msgContent").append("<span class='icon-chatContainer'><i class='icon-clock-1'></i></span>")
+       }
+       if(index==1){
+        card.find(".msgContent").append("<span class='icon-chatContainer'><i class='icon-tick'></i></span>") 
        }
        return card
    }
@@ -190,7 +193,9 @@ function Chat() {
                }
 
                if(elem["entry"]["UUID"] == settings.uuid ){
-                    var item = getMsgSentElement(elem)
+                    var index=1;
+                    var status=0;
+                    var item = getMsgSentElement(elem,status,index);
                     flag = 1;
                     str+=item[0].outerHTML;
                }
@@ -267,7 +272,8 @@ function Chat() {
        elem.entry.time = t ? t: Date.now();
        elem.entry.img = pic;
        elem.entry.id=id;
-       var item = getMsgSentElement(elem, status)
+       var index=0;
+       var item = getMsgSentElement(elem, status,index);
        settings.mssgContainer.append(item)
        initializeTooltip()
        scrollToBottom()

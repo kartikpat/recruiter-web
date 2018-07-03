@@ -133,8 +133,8 @@ function stickyChatModel(){
         return card
     }
 
-    function getMsgSentElement(data,status) {
-        console.log(data)
+    function getMsgSentElement(data,status,index) {
+        debugger
         var card =settings.messageSentPrototype.clone().removeClass('prototype hidden').attr('id', data['entry']['id'])
         var time;
         time = moment(data["entry"]["time"]).format("DD MMMM YYYY")+ " ";
@@ -142,6 +142,9 @@ function stickyChatModel(){
         card.find(settings.messageContent).html(data["entry"]["msg"]).attr("title", time);
         if(status==1){
             card.find('.msgContent').append("<span class='.icon-chatContainer'><i class='icon-clock-1'></i></span>")
+        }
+        if(index==1){
+            card.find('.msgContent').append("<span class='.icon-chatContainer'><i class='icon-tick'></i></span>")
         }
         return card
     }
@@ -160,7 +163,8 @@ function stickyChatModel(){
         elem.entry = {}
         elem.entry.msg = message;
         elem.entry.id=id;
-        var item = getMsgSentElement(elem,status);
+        var index=0;
+        var item = getMsgSentElement(elem,status,index);
         $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
         initializeTooltip()
         scrollToBottom(channelName)
@@ -286,8 +290,9 @@ function stickyChatModel(){
                 str+=item[0].outerHTML;
             }
             if(elem["entry"]["UUID"] == btoa(recruiterId+'--'+recruiterEmail) ) {
-
-                var item = getMsgSentElement(elem)
+                var status=0;
+                var index=1;
+                var item = getMsgSentElement(elem,status,index)
                 str+=item[0].outerHTML;
             }
             else {
