@@ -42,6 +42,7 @@ function Candidate() {
         settings.interviewInvite=$('.interviewinvite');
         settings.candidateResumeShell=$(".candidateResumeShell");
         settings.additionalInfo=$('.additional')
+        settings.prefLocation=$('.js_pref_loc');
         jQuery("#tabbed-content0").tabs({
             activate: function(event, ui) {
                 if(ui.newTab[0]["innerText"] == "COVER LETTER") {
@@ -111,7 +112,7 @@ function Candidate() {
                 e.stopPropagation()
                 e.stopImmediatePropagation();
             }
-            $('.js_pref_loc').tooltipster('destroy');
+            settings.prefLocation.tooltipster('destroy');
             fn()
         })
 
