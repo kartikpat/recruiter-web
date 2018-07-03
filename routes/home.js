@@ -996,7 +996,12 @@ module.exports = function(settings){
 		return
 	});
 
-	app.get("/job/:jobID/applications/:applicationID",isAuthenticated, function(req,res){
+	app.get("/job/:jobID/applications/:applicationID",function(req,res, next){
+		var page= req.query.page || null;
+		if(page=='main')
+			return res.redirect("/job/"+req.params.jobID+"/applications");
+		return next()
+	},isAuthenticated, function(req,res){
 		res.render("candidate-profile", {
 			title:"Profile - | iimjobs.com",
 			styles:  assetsMapper["candidate-profile"]["styles"][mode],

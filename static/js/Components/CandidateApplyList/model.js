@@ -1166,8 +1166,22 @@ function candidateList() {
                 settings.secondMassActionContainer.addClass("hidden")
                 settings.massCheckboxInput.prop("checked", false)
                 fn(event, ui);
+            },
+            beforeActivate: function(event, ui){
+                if(event.which){
+                    
+                    return false
+                }
+                return true
             }
         })
+    }
+    function setJqueryTab(index){
+        settings.jobTabs.tabs( "option", "active",index);
+    }
+
+    function onClickJqueryTabs(){
+        $('.ui-tabs-anchor')
     }
 
     function hideEmptyScreen() {
@@ -1356,14 +1370,13 @@ function candidateList() {
             $('html, body').animate({scrollTop:0}, '300');
           });
     }
-
     
-
     return {
 		init: init,
 		addToList: addToList,
 		setConfig : setConfig,
         initializeJqueryTabs: initializeJqueryTabs,
+        setJqueryTab: setJqueryTab,
         setJobStats: setJobStats,
         activateStatsTab: activateStatsTab,
         onClickCandidate: onClickCandidate,
@@ -1412,6 +1425,7 @@ function candidateList() {
         onClickNewPost:onClickNewPost,
         appendCandidateTag: appendCandidateTag,
         showNewPost:showNewPost,
-        hideNewPost:hideNewPost
+        hideNewPost:hideNewPost,
+        onClickJqueryTabs: onClickJqueryTabs
     }
 }

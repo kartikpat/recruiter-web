@@ -92,9 +92,6 @@ jQuery(document).ready( function() {
     page.base('/job/'+jobId+'/applications');
 
     page('/:applicationId', function(context, next){
-        // var parameters = filters.getAppliedFilters()
-        // parameters.status = globalParameters.status;
-        // setQueryParameters(parameters)
         var eventObj = {
             event_category: eventMap["viewCandidProfile"]["cat"],
             event_label: 'origin=CandidateApplyList,type=SavedShorlistedList,recId='+recruiterId+''
@@ -102,18 +99,66 @@ jQuery(document).ready( function() {
         sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
         var applicationId = context.params.applicationId;
         var hash = context.hash || "";
+
+        var parameters = filters.getAppliedFilters()
+        parameters.status = globalParameters.status;
+        parameters["page"]= "main";
+        var queryString=testSetQueryParameters(parameters);
+        context.canonicalPath+="?"+queryString;
+        context.path+=""+queryString;
+        context.querystring+=""+queryString;
+        context.state.path+="?"+queryString;
+        context.state.path+="?"+queryString;
         var candidateDetails = store.getCandidateFromStore(applicationId);
         aCandidate.showCandidateDetails(candidateDetails,hash, candidateDetails.status);
         // sending event on every view
         // if(parseInt(candidateDetails.status) == 0)
-            setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
+        setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
+        return true
 
     });
+    // candidates.onClickCandidate(function(candidateId, status, applicationId){
+    //      var eventObj = {
+    //         event_category: eventMap["viewCandidProfile"]["cat"],
+    //         event_label: 'origin=CandidateApplyList,type=SavedShorlistedList,recId='+recruiterId+''
+    //     }
+    //     sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
+    //     var candidateDetails = store.getCandidateFromStore(applicationId);
+    //     aCandidate.showCandidateDetails(candidateDetails,"", candidateDetails.status);
+    //     // sending event on every view
+    //     // if(parseInt(candidateDetails.status) == 0)
+    //         setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
+    //         debugger
+    //         return false
+    // });
+
     page('/', function(context, next){
         aCandidate.closeModal();
+        var parameters = getParametersByString(context.querystring);
+        var tabIndex = 0;
+        debugger
+        switch(parameters.status){
+            case "0":
+                tabIndex=1;
+                break;
+            case "4,5":
+                tabIndex=2;
+                break;
+            case "1":
+                tabIndex=3;
+                break;
+            case "2":
+                tabIndex=4;
+                break;
+            case "3":
+                tabIndex=5;
+                break;
+            default:
+                break;
+        }
+        candidates.setJqueryTab(tabIndex)
     })
-
-    page();
+    page({dispatch: false});
 
     filters.addFilterData('industry', industryTagsData);
     filters.addFilterData('functionalArea',functionalAreaTagsData)
@@ -381,6 +426,8 @@ jQuery(document).ready( function() {
         globalParameters.status = status;
         parameters.status = globalParameters.status;
         setQueryParameters(parameters);
+        var queryString = testSetQueryParameters(parameters);
+        // page("/?"+queryString);
         globalParameters.offset = 0;
         parameters.offset = globalParameters.offset;
         parameters.pageContent = globalParameters.pageContent;
@@ -1419,6 +1466,17 @@ function setQueryParameters(parameters) {
         i++
     }
     page('/?'+array.join("&")+'')
+}
+
+function testSetQueryParameters(parameters){
+    var array = []
+    var i = 0;
+    for(var key in parameters) {
+        array[i] = (key+'='+parameters[key])
+        i++
+    }
+    return array.join("&");
+    // page('/?'+array.join("&")+'')   
 }
 
 function getQueryParameters() {
