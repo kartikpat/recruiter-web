@@ -1,5 +1,5 @@
 var chatModule=chatModelIndex();
-
+var connect=connectSocial();
 
 jQuery(".header .menu-list-item.dashboard").addClass("active");
 var dataModel = {};
@@ -248,6 +248,7 @@ function onClickShareOnTwitter(fn){
 			event_label: 'origin=Dashboard,type=Twitter,recId='+recruiterId+',JobId='+jobId+''
 		}
 		sendEvent(eventMap["socialIconsClick"]["event"], eventObj)
+		connect.twitterConnect("_self","/jobs",jobId,recruiterId);
 		return true;
 	});
 }
@@ -260,6 +261,7 @@ function onClickShareOnLinkedIn(fn){
 			event_label: 'origin=Dashboard,type=Linkedin,recId='+recruiterId+',JobId='+jobId+''
 		}
 		sendEvent(eventMap["socialIconsClick"]["event"], eventObj)
+		connect.linkedinConnect("_self","/jobs",jobId,recruiterId);
 		return true;
 	});
 }
@@ -406,8 +408,8 @@ function onClickShareOnLinkedIn(fn){
 			if(aJob["url"]) {
 				var url = baseUrlJob + aJob["url"];
 				card.find('.action-panel .action-list-items .jobFacebook').attr("href", getFacebookShareLink(url))
-				card.find('.action-panel .action-list-items .jobTwitter').attr("href", getTwitterShareLink(url))
-				card.find('.action-panel .action-list-items .jobLinkedin').attr("href", getLinkedInShareUrl(url))
+				// card.find('.action-panel .action-list-items .jobTwitter').attr("href", getTwitterShareLink(url))
+				// card.find('.action-panel .action-list-items .jobLinkedin').attr("href", getLinkedInShareUrl(url))
 			}
 			if(aJob["cnfi"]) {
 				card.find(".action-panel .action-list-items .socialIcons").addClass("hidden")

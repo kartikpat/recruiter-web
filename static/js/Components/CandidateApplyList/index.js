@@ -20,6 +20,7 @@ jQuery(document).ready( function() {
     var theJob = Job();
     var store = Store();
     var filters = Filters();
+    var connect=connectSocial();
     //initializing the models
 
     candidates.setConfig("jobId", jobId)
@@ -114,6 +115,18 @@ jQuery(document).ready( function() {
     })
 
     page();
+
+
+
+    theJob.onClickShareOnTwitter(function(){
+        connect.twitterConnect("_self",'/job/'+globalParameters.jobId+'/applications',globalParameters.jobId,recruiterId);
+		return true;    
+    })
+
+    theJob.onClickShareOnLinkedIn(function(){
+        connect.linkedinConnect("_self",'/job/'+globalParameters.jobId+'/applications',globalParameters.jobId,recruiterId);
+			return true;
+    })
 
     filters.addFilterData('industry', industryTagsData);
     filters.addFilterData('functionalArea',functionalAreaTagsData)
@@ -1088,7 +1101,6 @@ jQuery(document).ready( function() {
     function onSuccessfulFetchJobDetails(topic, data) {
         globalParameters.jobId = data["jobId"]
         candidates.setDefaultTab(globalParameters.status)
-
         var parameters = getQueryParameters()
         parameters.status = globalParameters.status;
         parameters.orderBy = globalParameters.orderBy;

@@ -310,13 +310,15 @@ function Candidate() {
             item.element.find('.inviteTelephonic .loadingScroller').addClass('hidden');
         }
         if(aData["preferredLocation"].length) {
-            var locationTitle = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? aData["preferredLocation"].join(', '): null;
+            var locationTitle = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? aData["preferredLocation"].join(', '): "";
             var preferredLocationStr = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? "Multiple Locations" : aData["preferredLocation"].join(', ');
         }
         item.preferredLocation.text(preferredLocationStr);
+        if(aData["preferredLocation"].length >3){
+            item.preferredLocation.attr("title",locationTitle).addClass('tooltip');
+            initializeTooltip();
+        }
         item.preferredLocationDetail.text(aData["preferredLocation"].join(', '));
-        item.preferredLocation.attr("title",locationTitle).addClass('tooltip');
-         initializeTooltip();
         item.contact.text(aData["phone"] || "N/A");
         item.email.text(aData["email"]||"N/A");
 
@@ -599,6 +601,7 @@ function Candidate() {
         item.workPermit.text("");
         item.coverLetter.text("");
         item.preferredLocation.text("");
+        item.preferredLocation.attr('title','');
         item.tabContent.tabs({active: 0});
         item.shortlistButton.text("Shortlist").removeClass("act-short");
         item.rejectButton.text("Reject").removeClass("act-rej");

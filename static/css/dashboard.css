@@ -2484,6 +2484,11 @@ span.sticker {
         z-index: 5; }
         .page-content .feed-row .main-content .button-action-list .action-list-items li:hover {
           text-decoration: underline; }
+        .page-content .feed-row .main-content .button-action-list .action-list-items li span {
+          font-size: 13px;
+          color: #1a5e98; }
+        .page-content .feed-row .main-content .button-action-list .action-list-items li span:hover {
+          text-decoration: underline; }
     .page-content .feed-row .main-content .action-panel {
       float: right;
       margin-right: 10px;
