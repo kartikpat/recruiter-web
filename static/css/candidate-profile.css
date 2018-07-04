@@ -1403,10 +1403,11 @@ a {
           .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-info p.profile-email {
             font-size: 12px; }
     .mobile-menu-container .mobile-menu-content .mobile-profile-actions {
-      margin-top: 20px; }
+      margin-top: 0px; }
       .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul {
         list-style: none;
-        padding: 0; }
+        padding: 0;
+        margin-top: 0px; }
         .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a {
           color: #FFF;
           font-size: 14px; }
@@ -3522,10 +3523,11 @@ a {
           .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-info p.profile-email {
             font-size: 12px; }
     .mobile-menu-container .mobile-menu-content .mobile-profile-actions {
-      margin-top: 20px; }
+      margin-top: 0px; }
       .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul {
         list-style: none;
-        padding: 0; }
+        padding: 0;
+        margin-top: 0px; }
         .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a {
           color: #FFF;
           font-size: 14px; }
@@ -6309,10 +6311,11 @@ a {
           .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-info p.profile-email {
             font-size: 12px; }
     .mobile-menu-container .mobile-menu-content .mobile-profile-actions {
-      margin-top: 20px; }
+      margin-top: 0px; }
       .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul {
         list-style: none;
-        padding: 0; }
+        padding: 0;
+        margin-top: 0px; }
         .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a {
           color: #FFF;
           font-size: 14px; }
@@ -7370,7 +7373,8 @@ span.sticker {
       margin-right: 10px; }
   .external-links ul .table-row-separator {
     border-bottom: 1px solid #e8e8e8 !important;
-    margin-top: 20px; }
+    padding-top: 20px;
+    margin-top: 0px; }
   .external-links ul .invite:hover {
     text-decoration: none; }
   .external-links ul .invite-links {

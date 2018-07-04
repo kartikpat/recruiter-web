@@ -91,28 +91,7 @@ function candidateList() {
         closetooltipModal()
         backToTop()
 
-        settings.rowContainer.on('click', '.moreEducationLink', function(){
-            settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
-            location.href="#resumeEdu";
-            var eventObj = {
-                event_category: eventMap["viewCandidProfile"]["cat"],
-                event_label: 'origin=CandidateApplyList,type=MoreEducation,recId='+recruiterId+''
-            }
-            sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
-        })
 
-        settings.rowContainer.on('click', '.moreExperience', function(){
-            settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
-            location.href="#resumeOrg";
-            var eventObj = {
-                event_category: eventMap["viewCandidProfile"]["cat"],
-                event_label: 'origin=CandidateApplyList,type=MoreExperience,recId='+recruiterId+''
-            }
-
-            sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
-
-
-        })
 
         $(window).click(function(event) {
     		$(settings.candidateOtherActionsClass).addClass('inactive');
@@ -135,6 +114,33 @@ function candidateList() {
         
         $(".downloadExcelMass").attr('href', settings.url + "?token="+getCookie("recruiter-access-token")+"");
 	}
+
+
+    function onClickEducation(fn){
+        settings.rowContainer.on('click', '.moreEducationLink', function(){
+            var applicationId=$(this).closest('.candidate-item').attr("data-application-id");
+            settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
+            var eventObj = {
+                event_category: eventMap["viewCandidProfile"]["cat"],
+                event_label: 'origin=CandidateApplyList,type=MoreEducation,recId='+recruiterId+''
+            }
+            sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
+            fn(applicationId)
+        })
+    }
+
+    function onclickMoreOrganisation(fn){
+        settings.rowContainer.on('click', '.moreExperience', function(){
+            var applicationId=$(this).closest('.candidate-item').attr("data-application-id");
+            settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
+            var eventObj = {
+                event_category: eventMap["viewCandidProfile"]["cat"],
+                event_label: 'origin=CandidateApplyList,type=MoreExperience,recId='+recruiterId+''
+            }
+            sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
+            fn(applicationId)
+        })
+    }
 
     function onClickNewPost(fn){
         settings.newPost.click(function(){
@@ -1412,6 +1418,8 @@ function candidateList() {
         onClickNewPost:onClickNewPost,
         appendCandidateTag: appendCandidateTag,
         showNewPost:showNewPost,
-        hideNewPost:hideNewPost
+        hideNewPost:hideNewPost,
+        onClickEducation:onClickEducation,
+        onclickMoreOrganisation:onclickMoreOrganisation
     }
 }
