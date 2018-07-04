@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "UTF-8"
 .link-color {
   color: #155d9a; }
 
@@ -1224,6 +1224,8 @@ b {
             line-height: 32px; }
         .header .header_item.profile_actions .action-icon .chat-icon .icon-chat_icon::before {
           line-height: 29px; }
+        .header .header_item.profile_actions .action-icon .chat-icon .icon-chat_bubble::before {
+          line-height: 29px; }
       .header .header_item.profile_actions .profile {
         display: none; } }
 
@@ -1277,6 +1279,10 @@ b {
   text-align: right; }
 
 .content-container-mob {
+  border-bottom: 1px solid #2E2E2E; }
+
+
+.legacyRecruiterMob {
   border-bottom: 1px solid #2E2E2E; }
 
 .user_profile_info_mob {

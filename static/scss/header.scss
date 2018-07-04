@@ -559,6 +559,9 @@ b{
                         .icon-chat_icon::before{
                             line-height: 29px;
                         }
+                        .icon-chat_bubble::before{
+                            line-height: 29px;
+                        }
                     }
 
                 }
@@ -666,12 +669,15 @@ b{
     font-size: 11px;
     display: block;
     text-align: right;
+    
 }
 
 .content-container-mob{
     border-bottom: 1px solid #2E2E2E;
 }
 
+.legacyRecruiterMob{
+    border-bottom: 1px solid #2E2E2E;
 .user_profile_info_mob{
     padding-top: 10px;
     background-color: #353439;

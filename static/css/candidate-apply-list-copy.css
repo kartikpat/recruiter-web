@@ -4383,7 +4383,8 @@ input::-webkit-input-placeholder {
         z-index: 10;
         width: 200px;
         cursor: pointer;
-        transition: all 0.2s ease-in-out; }
+        transition: all 0.2s ease-in-out;
+        line-height: 20px; }
         .candidateTagContainer .tag-container .pill-button input[type=text]:focus {
           border-color: #4fa995; }
       .candidateTagContainer .tag-container .pill-button .pill-listing {

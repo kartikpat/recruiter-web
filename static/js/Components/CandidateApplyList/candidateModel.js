@@ -70,7 +70,7 @@ function Candidate() {
         });
         
         initializeTooltip();
-        onClickEscapeModal(closeModal);
+        // onClickEscapeModal(closeModal);
 
     }
 
@@ -115,7 +115,6 @@ function Candidate() {
             settings.prefLocation.tooltipster('destroy');
             fn()
         })
-
     }
 
     function onClickEscapeModal(fn){
@@ -877,7 +876,7 @@ function Candidate() {
                 settings.candidateDetailsModal.find(".candidateSaveModal").html("<span class='icon'><i class='icon-star'></i></span>Saved for Later");
             }
             else {
-                settings.candidateDetailsModal.find(".candidateSaveModal").html("<span class='icon'><i class='icon-star_later'></i></span>Save for Later");
+                settings.candidateDetailsModal.find(".candidateSaveModal").html("<span class='icon'><i class='icon-star_later'></i></span><span class='underline'>Save for Later</span>");
             }
             if(newStatus == settings.candidateDetailsModal.find(".candidateRejectModal").attr("data-action")) {
                 settings.candidateDetailsModal.find(".candidateRejectModal").text("Rejected").addClass("act-rej")

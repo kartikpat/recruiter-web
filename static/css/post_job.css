@@ -831,7 +831,8 @@ span.sticker {
             z-index: 10;
             width: 200px;
             cursor: pointer;
-            transition: all 0.2s ease-in-out; }
+            transition: all 0.2s ease-in-out;
+            line-height: 20px; }
             .job_posting .post_job .post_job_form .field-container .industry-tags .pill-button input[type=text]:focus, .job_posting .post_job .post_job_form .field-container .location-tags .pill-button input[type=text]:focus, .job_posting .post_job .post_job_form .field-container .skill-tags .pill-button input[type=text]:focus {
               border-color: #4fa995; }
           .job_posting .post_job .post_job_form .field-container .industry-tags .pill-button .pill-listing, .job_posting .post_job .post_job_form .field-container .location-tags .pill-button .pill-listing, .job_posting .post_job .post_job_form .field-container .skill-tags .pill-button .pill-listing {
