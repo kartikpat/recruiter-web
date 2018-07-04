@@ -42,8 +42,10 @@ function Candidate() {
         settings.interviewInvite=$('.interviewinvite');
         settings.candidateResumeShell=$(".candidateResumeShell");
         settings.additionalInfo=$('.additional')
-        jQuery("#tabbed-content0").tabs({
+        debugger
+        jQuery("#tabbed-content").tabs({
             activate: function(event, ui) {
+                debugger;
                 if(ui.newTab[0]["innerText"] == "COVER LETTER") {
                     var eventObj = {
             			event_category: eventMap["viewCoverLetter"]["cat"],
