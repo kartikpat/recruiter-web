@@ -209,13 +209,12 @@ jQuery(document).ready( function() {
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
         setQueryParameters(parameters);
-
         globalParameters.offset = 0;
         parameters.offset = globalParameters.offset;
         parameters.pageContent = globalParameters.pageContent;
-
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
+
     filters.onClickSearchButton(function(){
         var eventObj = {
            event_category: eventMap["searchFilter"]["cat"],
