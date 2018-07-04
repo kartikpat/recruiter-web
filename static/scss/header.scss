@@ -678,19 +678,20 @@ b{
 
 .legacyRecruiterMob{
     border-bottom: 1px solid #2E2E2E;
-.user_profile_info_mob{
-    padding-top: 10px;
-    background-color: #353439;
-    font-size: 14px;
-    color: #fff;
-    .profile-hits_mob{
-        padding-left: 20px;
-    }
-    .profile-login_mob{
-        display: block;
-        padding-left: 20px;
-        padding-top: 5px;
-        padding-bottom: 10px;
+    .user_profile_info_mob{
+        padding-top: 10px;
+        background-color: #353439;
+        font-size: 14px;
+        color: #fff;
+        .profile-hits_mob{
+            padding-left: 20px;
+        }
+        .profile-login_mob{
+            display: block;
+            padding-left: 20px;
+            padding-top: 5px;
+            padding-bottom: 10px;
+        }
     }
 }
 

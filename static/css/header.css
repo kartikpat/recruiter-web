@@ -1,4 +1,4 @@
-@charset "UTF-8"
+@charset "UTF-8";
 .link-color {
   color: #155d9a; }
 
@@ -1281,22 +1281,20 @@ b {
 .content-container-mob {
   border-bottom: 1px solid #2E2E2E; }
 
-
 .legacyRecruiterMob {
   border-bottom: 1px solid #2E2E2E; }
-
-.user_profile_info_mob {
-  padding-top: 10px;
-  background-color: #353439;
-  font-size: 14px;
-  color: #fff; }
-  .user_profile_info_mob .profile-hits_mob {
-    padding-left: 20px; }
-  .user_profile_info_mob .profile-login_mob {
-    display: block;
-    padding-left: 20px;
-    padding-top: 5px;
-    padding-bottom: 10px; }
+  .legacyRecruiterMob .user_profile_info_mob {
+    padding-top: 10px;
+    background-color: #353439;
+    font-size: 14px;
+    color: #fff; }
+    .legacyRecruiterMob .user_profile_info_mob .profile-hits_mob {
+      padding-left: 20px; }
+    .legacyRecruiterMob .user_profile_info_mob .profile-login_mob {
+      display: block;
+      padding-left: 20px;
+      padding-top: 5px;
+      padding-bottom: 10px; }
 
 .user_public_profile .icon-right_arrow:before {
   content: '\e812';
