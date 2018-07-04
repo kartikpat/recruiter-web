@@ -1,11 +1,12 @@
 function jobShareSocial(recruiterId,jobId,data){
-	postRequest("/recruiter/"+recruiterId+"/job/"+jobId+"/share",null,data,function(res, status, xhr){
-        console.log(res)
+    postRequest("/recruiter/"+recruiterId+"/job/"+jobId+"/share",null,data,function(res, status, xhr){
+        res.platform=data;
         if(res.status && res.status =='success'){
             return pubsub.publish("socialShareSuccess", res);
         }
-        if(res.status=="fail"){
-            return pubsub.publish("socialSharefail",res);     
-        }
-    })
+        
+    },function(res,status,error) {
+        res.data=data;
+        return pubsub.publish('socialSharefail',res);
+    });
 };

@@ -42,6 +42,7 @@ function Candidate() {
         settings.interviewInvite=$('.interviewinvite');
         settings.candidateResumeShell=$(".candidateResumeShell");
         settings.additionalInfo=$('.additional')
+        settings.prefLocation=$('.js_pref_loc');
         jQuery("#tabbed-content0").tabs({
             activate: function(event, ui) {
                 if(ui.newTab[0]["innerText"] == "COVER LETTER") {
@@ -111,7 +112,7 @@ function Candidate() {
                 e.stopPropagation()
                 e.stopImmediatePropagation();
             }
-           
+            settings.prefLocation.tooltipster('destroy');
             fn()
         })
 
@@ -314,9 +315,12 @@ function Candidate() {
             var preferredLocationStr = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? "Multiple Locations" : aData["preferredLocation"].join(', ');
         }
         item.preferredLocation.text(preferredLocationStr);
-        item.preferredLocationDetail.text(aData["preferredLocation"].join(', '));
         item.preferredLocation.attr("title",locationTitle).addClass('tooltip');
-         initializeTooltip();
+        initializeTooltip();
+        if(aData["preferredLocation"].length<=3){
+            item.preferredLocation.tooltipster('close');
+        }
+        item.preferredLocationDetail.text(aData["preferredLocation"].join(', '));
         item.contact.text(aData["phone"] || "N/A");
         item.email.text(aData["email"]||"N/A");
 
@@ -599,6 +603,7 @@ function Candidate() {
         item.workPermit.text("");
         item.coverLetter.text("");
         item.preferredLocation.text("");
+        // item.preferredLocation.tooltipster('destroy');
         item.tabContent.tabs({active: 0});
         item.shortlistButton.text("Shortlist").removeClass("act-short");
         item.rejectButton.text("Reject").removeClass("act-rej");
@@ -908,10 +913,10 @@ function Candidate() {
 			side:['bottom'],
 			theme: 'tooltipster-borderless',
 			maxWidth: 500,
-			})
-		}
-
+            })
+        }
    	}
+
 
     return {
         init: init,

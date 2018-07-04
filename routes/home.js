@@ -4,7 +4,10 @@ This module contains all the view rendering.
 What all is visible to the eyes comes right through here.
 **/
 
-var assetsMapper = require("../asset-mapper.json")
+var assetsMapper = require("../asset-mapper.json");
+const shareJob = require('./shareJob.js');
+const getSocialToken = require('./getSocialToken')
+const getTokenAndPost = require('./getTokenAndPost.js');
 
 module.exports = function(settings){
 	var app = settings.app;
@@ -758,77 +761,52 @@ module.exports = function(settings){
 	});
 
 
-	function getSocialToken(recruiterId,platform,accessToken){			
-		return new Promise(function(fulfill, reject){
-			request.get({
-				url: baseUrl+ '/recruiter/'+recruiterId+'/social?platform='+platform+'',
-				headers: {
-				  'Authorization': 'Bearer '+ accessToken,
-				  'Content-Type': 'application/json'
-				  },
-				json: true
-			},function(err,res,body){
-				if(err){
-					return reject(err);
-				}
-				const jsonBody = body;
-				if(jsonBody.status && jsonBody.status =='success'){
-					return fulfill(jsonBody.data);
-				}
-				else
-					return reject('Not authorized by application')
-			})
-		})
-	}
-
 	app.post("/recruiter/:recruiterId/job/:jobId/share", async function(req, res){
 		const accessToken = req.cookies[config["cookie"]];
-		// const twitterClient=config['social']['twitter']['clientId'];
-		// const secret=config['social']['twitter']['secret'];
-
-		// console.log(twitterClient)
-		// console.log(secret)
-		
 		const recruiterId = req.params.recruiterId,
 			  jobId = req.params.jobId,
-			  platform=req.body.platform
+			  platform=req.body.platform;
 
-			  
-		token = await getSocialToken(recruiterId,platform,accessToken);
-		req.body.token=token[platform].accessToken;
-	
-		if(platform=="twitter"){
-			req.body.refreshToken=token[platform].refreshToken;
-			req.body.consumerKey=config['social']['twitter']['clientId'];
-			req.body.consumerSecret=config['social']['twitter']['secret'];
+		if(['twitter', 'linkedin'].indexOf(platform)<0)
+			return res.status(422).json({
+				status: 'fail',
+				message: 'missing parameters'
+			});
+
+		try{
+			await getTokenAndPost(recruiterId, platform, accessToken, jobId, baseUrl);
+			return res.json({
+				status: 'success',
+				message: 'job posted successfully'
+			});
 		}
-		console.log(req.body)
-
-		var options = { method: 'POST',
-		  url: baseUrl+ '/recruiter/'+recruiterId+'/job/'+jobId+'/share',
-		  headers: {
-			'Authorization': 'Bearer '+ accessToken,
-			'Content-Type': 'application/json'
-			},
-			body:req.body,
-		  json: true
-		};
-		request(options, function (error, response, body) {
-			if (error){
-				console.log(error)
-				return res.json(response);
+		catch(err){
+			if(err==401){
+				return res.status(401).json({
+					status: 'fail',
+					message: 'user not authenticated'
+				});
 			}
-			const jsonBody = body;
-			console.log(jsonBody)
-			if(jsonBody.status && jsonBody.status =='success'){
-				return res.json(jsonBody);
+			if(err==400){
+				return res.status(400).json({
+					status: 'fail',
+					message: 'retry'
+				});
 			}
-			else {
-				return res.json(jsonBody);
+			if(err==409){
+				return res.status(409).json({
+					status: 'fail',
+					message: 'job is already posted'
+				});	
 			}
-		});
+			return res.status(503).json({
+				status: 'fail',
+				message: 'service error'
+			});
+		};		
 	});
 
+	
 
 	app.post("/recruiter/login/verify", function(req, res){
 		const oldCookie=req.cookies[config['oldCookie']]
@@ -858,10 +836,6 @@ module.exports = function(settings){
 			return res.json(jsonBody);
 		});
 	});
-
-	var bodyParser = require('body-parser');
-	app.use(bodyParser.json()); // support json encoded bodies
-	app.use(bodyParser.urlencoded({ extended: true }));
 
 	app.post("/recruiter/:recruiterId/calendar", function(req, res){
 		const recruiterId = req.params.recruiterId,
@@ -1133,7 +1107,7 @@ module.exports = function(settings){
 			staticEndPoints: config["staticEndPoints"],
 			oldCookie: config['oldCookie'],
 			cookie: config['cookie'],
- 		 baseDomainName: baseDomainName
+ 		 	baseDomainName: baseDomainName
 		});
 	})
 
@@ -1141,7 +1115,6 @@ module.exports = function(settings){
 		var ua = parser(req.headers['user-agent']);
 		var initialUrl = url.parse(req.url).pathname;
 		var oldCookieValue = req.cookies[config['oldCookie']];
-		console.log(oldCookieValue)
 		if((ua.browser.name=='IE' && (ua.browser.version=="8.0"|| ua.browser.version=="9.0"))){
 			res.render("transitionIe", {
 				title:"iimjobs.com",
