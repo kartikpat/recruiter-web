@@ -8,7 +8,8 @@ var globalParameters = {
     candidateListLength: null,
     actionPageNumber: 2,
     actionPageContent: 5,
-    newApplication: 0 
+    newApplication: 0 ,
+    path:""
 }
 var screenName = "candidate-apply-list";
 
@@ -38,7 +39,9 @@ jQuery(document).ready( function() {
         }
            
     });
-
+    /**
+    *
+    * doing it on the job success call
     var obj = getQueryParameters();
     if(obj['status'])
         globalParameters.status = obj['status'];
@@ -46,7 +49,7 @@ jQuery(document).ready( function() {
         globalParameters.orderBy = obj['orderBy'];
     
     filters.setFilters(obj)
-    
+    */    
     submitPageVisit(recruiterId, screenName, jobId);
     var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitSuccess:"+screenName, onPageVisitUpdateSuccess)
     var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitFail:"+screenName, onPageVisitUpdateFail)
@@ -106,8 +109,11 @@ jQuery(document).ready( function() {
     // });
 
     page('/', function(context, next){
-        debugger
         aCandidate.closeModal();
+        if(context.path==globalParameters.path){
+            return
+        }
+        globalParameters.path = context.path;
         var parameters = getParametersByString(context.querystring);
         if(parameters['status'])
             globalParameters.status = parameters['status'];
@@ -162,7 +168,6 @@ jQuery(document).ready( function() {
            event_label: 'origin=CandidateApplyList,recId='+recruiterId+''
         }
         sendEvent(eventMap["applyFilter"]["event"], eventObj)
-        debugger
         if(!filters.checkForError(name)) {
             return
         }
@@ -402,18 +407,21 @@ jQuery(document).ready( function() {
          candidates.onChangeCandidateCheckbox(function(candidateId){
     })
 
-    candidates.initializeJqueryTabs(defaultTabObj[globalParameters.status], function(event, ui) {
-        var status = candidates.activateStatsTab(event, ui);
-        return true;
-    }, function(event, ui){
-        var status = candidates.getActiveTab(ui);
-        var parameters = filters.getAppliedFilters();
-        globalParameters.status = status;
-        parameters.status = globalParameters.status;
-        var queryString = testSetQueryParameters(parameters);
-        page('/?'+queryString);
-        return true
-    });
+    function initializeTabs(){
+        candidates.initializeJqueryTabs(defaultTabObj[globalParameters.status], function(event, ui) {
+            var status = candidates.activateStatsTab(event, ui);
+            return true;
+        }, function(event, ui){
+            debugger
+            var status = candidates.getActiveTab(ui);
+            var parameters = filters.getAppliedFilters();
+            globalParameters.status = status;
+            parameters.status = globalParameters.status;
+            var queryString = testSetQueryParameters(parameters);
+            page('/?'+queryString);
+            return true
+        });
+    }
 
     candidates.onClickNewPost(function(){
         var status = globalParameters.status;
@@ -1045,6 +1053,7 @@ jQuery(document).ready( function() {
 
 
     function onJobsApplicationsFetchSuccess(topic, data) {
+        debugger
         tickerLock = false;
         hideLoader()
         globalParameters.candidateListLength = data["data"].length;
@@ -1115,16 +1124,26 @@ jQuery(document).ready( function() {
 
     function onSuccessfulFetchJobDetails(topic, data) {
         globalParameters.jobId = data["jobId"]
-        candidates.setDefaultTab(globalParameters.status)
 
-        var parameters = getQueryParameters()
-        parameters.status = globalParameters.status;
+        // getting parameters from the url
+        var parameters = getQueryParameters();
+        globalParameters.status = parameters.status || "0";
+        globalParameters.orderBy = parameters.orderBy || 1;
+
+        // getting global values
+        parameters.status =globalParameters.status;
         parameters.orderBy = globalParameters.orderBy;
 
+
+        filters.setFilters(parameters);
+
+        candidates.setDefaultTab(globalParameters.status);
+        globalParameters.path= testSetQueryParameters(parameters);
         globalParameters.offset = 0;
         parameters.offset = globalParameters.offset;
         parameters.pageContent = globalParameters.pageContent;
 
+        initializeTabs();
         fetchJobApplications(jobId,parameters,recruiterId);
         theJob.setJobDetails(data);
     }
