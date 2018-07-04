@@ -212,8 +212,7 @@ function candidateList() {
         })
     }
 
-    function onClickCoverLetterLink() {
-        debugger
+    function onClickCoverLetterLink() 
         settings.rowContainer.on('click', settings.coverLetterLinkClass, function(e) {
             var eventObj = {
                 event_category: eventMap["viewCandidProfile"]["cat"],
@@ -950,11 +949,10 @@ function candidateList() {
     function onChangeCandidateCheckbox(fn) {
         settings.rowContainer.on('click', settings.candidateCheckboxClass, function(event){
             event.stopPropagation();
-            // debugger
             if(jQuery(this).is(":checked")){
                 var candidateSelect = jQuery(".candidate-select")
                 var el = $(".candidateListing[data-status-attribute='"+settings.status+"']").find(".candidate-select input:checked")
-                // debugger
+   
                 // if(el.length > 100) {
                 //     $(this).prop("checked", false);
                 //     toastNotify(3, "You can perform action on only 100 candidates at once.")

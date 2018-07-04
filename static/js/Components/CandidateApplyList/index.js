@@ -86,7 +86,6 @@ jQuery(document).ready( function() {
         context.state.path+="?"+queryString;
         context.state.path+="?"+queryString;
         var candidateDetails = store.getCandidateFromStore(applicationId);
-        debugger;
         if(!candidateDetails){
             page.redirect('/?'+queryString);
             return;
@@ -114,7 +113,6 @@ jQuery(document).ready( function() {
     // });
 
     page('/', function(context, next){
-        debugger
         aCandidate.closeModal();
         if(context.querystring==globalParameters.path){
             return
