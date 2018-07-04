@@ -152,37 +152,40 @@ function Chat() {
    }
 
 
-   function getMsgSentElement(data,status) {
+   function getMsgSentElement(data,status,index) {
       // status ->1 for new message to show the clock icon
        var card = $(".message.sent.prototype").clone().removeClass('prototype hidden').attr('id', data['entry']['id']);
     //    card.find(".useImg").attr("src", (data["entry"]["img"] || "/static/images/noimage.png"))
        var time;
-       time = moment(data["entry"]["time"]).format("DD MMMM YYYY") + " , ";
+       time = moment(data["entry"]["time"]).format("DD MMMM YYYY") + " ";
        time += moment(data["entry"]["time"]).format("hh:mm a");
        card.find(".msgContent").html(data["entry"]["msg"]).attr("title", time)
        if(status==1){
           card.find(".msgContent").append("<span class='icon-chatContainer'><i class='icon-clock-1'></i></span>")
        }
+       if(index==1){
+        card.find(".msgContent").append("<span class='icon-chatContainer'><i class='icon-tick'></i></span>") 
+       }
        return card
    }
 
-   function getMsgReceivedElement(data, flag) {
+   function getMsgReceivedElement(data, flag,obj) {
+       
        var card = $(".message.received.prototype").clone().removeClass('prototype hidden')
        if(flag == 1) {
-           card.find(".useImg").attr("src", (data["entry"]["img"] || "/static/images/noimage.png")).removeClass("invisible")
+           card.find(".useImg").attr("src", (obj["img"] || "/static/images/noimage.png")).removeClass("invisible")
        }
        var time;
-       time = moment(data["entry"]["time"]).format("DD MMMM YYYY") + " , ";
+       time = moment(data["entry"]["time"]).format("DD MMMM YYYY") + " ";
        time += moment(data["entry"]["time"]).format("hh:mm a");
        card.find(".msgContent").html(data["entry"]["msg"]).attr("title", time);
        return card
    }
 
-   function populateMessages(dataArray,conversation) {
+   function populateMessages(dataArray,conversation,obj) {
         var str = ""
         var flag = 1;
-        console.log(dataArray);
-        
+
         dataArray.forEach(function(elem, index){
                if(index == 0 || (index > 0 && (moment(dataArray[index - 1]["entry"]["time"]).format("DD MM YYYY") != moment(elem["entry"]["time"]).format("DD MM YYYY"))) ) {
                    var item = getTimeElement(elem)
@@ -190,17 +193,20 @@ function Chat() {
                }
 
                if(elem["entry"]["UUID"] == settings.uuid ){
-                    var item = getMsgSentElement(elem)
+                    var index=1;
+                    var status=0;
+                    var item = getMsgSentElement(elem,status,index);
                     flag = 1;
                     str+=item[0].outerHTML;
                }
                else {
-                   var item = getMsgReceivedElement(elem, flag)
+                   var item = getMsgReceivedElement(elem, flag,obj)
                    flag = 0;
                    str+=item[0].outerHTML;
                }
            })
            settings.mssgContainer.prepend(str)
+           scrollToMiddle();
            if($(window).outerWidth() < 769 ) {
                settings.backButtonChat.removeClass("hidden")
                settings.candImage.removeClass("hidden")
@@ -266,7 +272,8 @@ function Chat() {
        elem.entry.time = t ? t: Date.now();
        elem.entry.img = pic;
        elem.entry.id=id;
-       var item = getMsgSentElement(elem, status)
+       var index=0;
+       var item = getMsgSentElement(elem, status,index);
        settings.mssgContainer.append(item)
        initializeTooltip()
        scrollToBottom()
@@ -299,6 +306,11 @@ function Chat() {
        elem.text(msgCount).removeClass("hidden")
    }
 
+   function playSound(){
+         $('#chatAudio')[0].play();
+    }
+
+
    function showStatusIcon(channelName) {
        $(".conversationItem[data-channel-name="+channelName+"]").find(".candStatus").removeClass("hidden")
    }
@@ -310,6 +322,10 @@ function Chat() {
    function scrollToBottom() {
 
        $(".current-chat").scrollTop(jQuery("#mssgContainer").outerHeight());
+   }
+
+   function scrollToMiddle(){
+        $(".current-chat").scrollTop((jQuery("#mssgContainer").outerHeight())/3);
    }
 
    function setUuid(uuid) {
@@ -330,6 +346,7 @@ function Chat() {
        settings.chatWindow.addClass("hidden");
        settings.userProfile.addClass("hidden");
    }
+   
    function setDeliveredState(id){
     if(!id)
       return
@@ -372,7 +389,8 @@ function Chat() {
        setDeliveredState: setDeliveredState,
        setFailedState: setFailedState,
        hideSpinner:hideSpinner,
-       showSpinner:showSpinner
+       showSpinner:showSpinner,
+       playSound:playSound
    }
 
    function initializeTooltip() {

@@ -54,7 +54,7 @@ function ChatEngine(){
 	    }, onFetchHistory);
 	}
 
-	function hereNow(channels) {
+	function hereNow(channels, fn) {
 	    pubnub.hereNow({
 	        channels: channels,
 	        includeUUIDs: true,
@@ -62,14 +62,7 @@ function ChatEngine(){
 
 	    }, function(status, response) {
 	        if(status["statusCode"] == 200) {
-	            channels.forEach(function(channel, index) {
-	                if(response.channels[channel].occupancy >= 2) {
-	                    // showOnlineIcon(channel);
-	                }
-	                else {
-	                    // removeOnlineIcon(channel);
-	                }
-	            })
+	            fn(response);
 	        }
 	    });
 	}
@@ -92,7 +85,8 @@ function ChatEngine(){
 		fetchHistory: fetchHistory,
 		subscribe: subscribe,
 		publish: publish,
-		getUUID: getUUID
+		getUUID: getUUID,
+		hereNow: hereNow
 	}
 
 }

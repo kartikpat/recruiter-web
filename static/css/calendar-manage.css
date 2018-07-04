@@ -1418,6 +1418,9 @@ span.sticker {
   .tag-container .pill-button .pill-listing ul {
     max-height: 300px; } }
 
+.chatAudio {
+  height: 0px; }
+
 .conversations {
   width: 20%;
   padding-left: 30px;
@@ -1481,7 +1484,8 @@ span.sticker {
             border: 2px solid #FFF;
             border-radius: 50%;
             margin-left: 25px;
-            top: -10px; }
+            top: -10px;
+            background: #6dd51e; }
         .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info {
           display: inline-block;
           vertical-align: middle;

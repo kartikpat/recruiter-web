@@ -12,9 +12,10 @@ function getDeviceId() {
 
 
 function chatModelIndex(){
+    
     var deviceId= getDeviceId();
-    var chatEngine = ChatEngine(recruiterId, profile.email);
-    chatEngine.initialize();
+    var chatEngine = ChatEngine();
+    chatEngine.initialize(recruiterId, profile.email);
     chatEngine.addListeners(onNewMessage, onNewPresence, onNewStatus);
     var stickyChat=stickyChatModel();
     var store=chatStoreModel();
@@ -74,11 +75,13 @@ function chatModelIndex(){
             event_category: eventMap["sendMsg"]["cat"],
             event_label: 'origin='+origin+',recId='+recruiterId+''
         }
+        var id= getDeviceId(10);
+      
         sendEvent(eventMap["sendMsg"]["event"], eventObj)
         if(message == "") {
             return ;
         }
-        stickyChat.appendSendMessage(channelName,message,dataID);                
+        stickyChat.appendSendMessage(channelName,message,dataID,1,id);                
         chatEngine.publish({
                 UUID:uuid || btoa(recruiterId+'--'+profile["email"]),
                 deviceId: deviceId,
@@ -94,9 +97,10 @@ function chatModelIndex(){
                 if(status.statusCode == 200) {
                 }
                 else if (status.category == "PNNetworkIssuesCategory") {
-                    var data = {}
-                    data.message = "Looks like you are not connected to the internet"
-                    toastNotify(3, data.message)
+                    // var data = {}
+                    // data.message = "Looks like you are not connected to the internet"
+                    // toastNotify(3, data.message)
+                    stickyChat.setFailedState(id);
                 }
             });
             submitChatMessage({
@@ -142,10 +146,14 @@ function chatModelIndex(){
         var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
         var pubTT = m.timetoken; // Publish timetoken
         var scrollToBottom=0;
+
         if(deviceId == msg['deviceId']){
+            stickyChat.setDeliveredState(channelName);
             return
         }
+        
         if(!(msg["UUID"] == btoa(recruiterId+"--"+profile["email"]))){
+            stickyChat.playSound();
             if(stickyChat.isChatBoxOpen(channelName)){
                 stickyChat.appendRecievedMessage(channelName,msg);
                 stickyChat.scrollToBottom(m.channel);
@@ -175,6 +183,30 @@ function chatModelIndex(){
         var affectedChannelGroups = s.affectedChannelGroups; // The channel groups affected in the operation, of type array.
         var lastTimetoken = s.lastTimetoken; // The last timetoken used in the subscribe request, of type long.
         var currentTimetoken = s.currentTimetoken; // The current timetoken fetched in the subscribe response, which is going to be used in the next request, of type long.
+
+        if(s.category == "PNNetworkDownCategory") {
+           return stickyChat.setRecruiterInactive(s)
+        }
+        if(s.category == "PNNetworkUpCategory") {
+            return stickyChat.setRecruiterActive(s)
+        }
+        if(s.operation=="PNSubscribeOperation"){
+            return chatEngine.hereNow(s.subscribedChannels,handleState);
+        }
+    }
+
+
+    function handleState(response){
+        var channels = getArray(channelsArray);
+        console.log(response);
+        channels.forEach(function(channel, index) {
+            if(response.channels[channel].occupancy >= 2) {
+                stickyChat.showStatusIcon(channel);
+            }
+            else {
+                stickyChat.hideStatusIcon(channel)
+            }
+        });
     }
 
     function onNewPresence(p) {
@@ -188,7 +220,14 @@ function chatModelIndex(){
         var service = p.service; // service
         var uuids = p.uuids; // UUIDs of users who are connected with the channel with their state
         var occupancy = p.occupancy; // No. of users connected with the channel
-        stickyChat.receivePresence(p)
+        if(p["action"] == "join" && p["occupancy"] >= 2 && p["uuid"] != (uuid || chatEngine.getUUID())) {
+           stickyChat.showStatusIcon(p.channel)
+       }
+       else if (p["action"] == "leave" && p["occupancy"] < 2 && p["uuid"] != (uuid || chatEngine.getUUID())) {
+           stickyChat.hideStatusIcon(p.channel)
+       }
+       
+
     }
 
     function createNewChannel(recruiterId,jobId,applicationId,obj){
@@ -233,8 +272,8 @@ function chatModelIndex(){
         if(window.innerWidth <= 768) {
             window.location.href = staticEndPoints['chat']+'?candidateId='+data.array[0]["userID"]+''
         }
-        stickyChat.enableChat(data.data);
-        data.array[0]["channel"] = data.data
+        stickyChat.enableChat(data.data.channel);
+        data.array[0]["channel"] = data.data.channel;
         stickyChat.populateChatView(data.array);   
     }
 
