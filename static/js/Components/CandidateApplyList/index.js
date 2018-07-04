@@ -162,36 +162,39 @@ jQuery(document).ready( function() {
            event_label: 'origin=CandidateApplyList,recId='+recruiterId+''
         }
         sendEvent(eventMap["applyFilter"]["event"], eventObj)
+        debugger
         if(!filters.checkForError(name)) {
             return
         }
         filters.setAppliedFilters(name);
-        filters.addFiltersToContainer()
-        filters.closeFilterModal()
-        candidates.showShells(globalParameters.status)
-        candidates.removeCandidate(globalParameters.status)
-        candidates.hideEmptyScreen()
+        filters.addFiltersToContainer();
+        filters.closeFilterModal();
+        // candidates.showShells(globalParameters.status)
+        // candidates.removeCandidate(globalParameters.status)
+        // candidates.hideEmptyScreen()
 
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
-        setQueryParameters(parameters)
 
-        globalParameters.offset = 0;
-        parameters.offset = globalParameters.offset;
-        parameters.pageContent = globalParameters.pageContent;
+        // setQueryParameters(parameters)
 
-        var filterFlag = 0;
-        for(var key in parameters) {
-          if(!(key == "orderBy" || key == "offset" || key == "pageContent" || key == "status")) {
-            filterFlag+= 1;
-          }
-        }
+        // globalParameters.offset = 0;
+        // parameters.offset = globalParameters.offset;
+        // parameters.pageContent = globalParameters.pageContent;
 
-        if(filterFlag > 0) {
-            filters.showAppliedFilters();
-        }
+        // var filterFlag = 0;
+        // for(var key in parameters) {
+        //   if(!(key == "orderBy" || key == "offset" || key == "pageContent" || key == "status")) {
+        //     filterFlag+= 1;
+        //   }
+        // }
 
-        return fetchJobApplications(jobId, parameters, recruiterId)
+        // if(filterFlag > 0) {
+        //     filters.showAppliedFilters();
+        // }
+        var queryString = testSetQueryParameters(parameters);
+        page('/?'+queryString)
+        // return fetchJobApplications(jobId, parameters, recruiterId)
     });
     filters.onClickRemoveFilter(function(value,category,type){
         var eventObj = {
@@ -219,7 +222,6 @@ jQuery(document).ready( function() {
            event_label: 'origin=CandidateApplyList,recId='+recruiterId+''
         }
         sendEvent(eventMap["searchFilter"]["event"], eventObj);
-        debugger
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
         var queryString = testSetQueryParameters(parameters);

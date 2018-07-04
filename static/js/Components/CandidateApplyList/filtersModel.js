@@ -555,6 +555,8 @@ function Filters(){
 		settings.topinstitute.lawinst = 0;
 		settings.clearAllFitersButton.attr("data-search","");
 		settings.resultFoundText.addClass("hidden");
+		
+		filtersTarget["orderBy"]["target"].removeClass("hidden");
 	}
 
 	function removeFilter(value,category,type) {
