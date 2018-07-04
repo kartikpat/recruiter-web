@@ -79,7 +79,7 @@ function buildSingleJs(staticMapperElement, i){
 			gulp.src(getAssetsArray(staticMapper[staticMapperElement]["scripts"]["debug"])),
 			uglify(),
 			concat(staticMapper[staticMapperElement]["scripts"]["prod"][0]),
-			gulp.dest('testingBuild')
+			.pipe(gulp.dest('.'))
 		], function(err){
 			if(err)
 				return reject(err);
@@ -123,7 +123,7 @@ function buildSingleCSS(staticMapperElement){
 		.on('error', notify.onError("Error: <%= error.message %>"))
 		.pipe(uglifycss())
 		.on('error', notify.onError("Error: <%= error.message %>"))
-		.pipe(gulp.dest('testingBuild'))
+		.pipe(gulp.dest('.'))
 	    .on('end', resolve)
 	})
 }
