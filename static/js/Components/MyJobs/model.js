@@ -73,15 +73,15 @@ function Jobs() {
 	function onClickShareOnTwitter(fn){
 		settings.rowContainer.on('click','.jobTwitter',function(e){
 			var jobId = $(this).attr("data-job-id")
-			if(fn(jobId)){
-				event.stopPropagation();
-				event.preventDefault();
-			}
 			var eventObj = {
 				event_category: eventMap["socialIconsClick"]["cat"],
 				event_label: 'origin=MyJobs,type=Twitter,recId='+recruiterId+',JobId='+jobId+''
 			}
-			sendEvent(eventMap["socialIconsClick"]["event"], eventObj)
+			sendEvent(eventMap["socialIconsClick"]["event"], eventObj);
+			if(fn(jobId)){
+				event.stopPropagation();
+				event.preventDefault();
+			}
 			return true;
 		});
 	}

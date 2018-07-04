@@ -22,6 +22,8 @@ jQuery(document).ready( function() {
     var store = Store();
     var filters = Filters();
     var recruiter=recruiterLimit();
+    var connect=connectSocial();
+    //initializing the models
     candidates.setConfig("jobId", jobId)
     filters.init();
     candidates.init(profile, baseUrl);
@@ -37,6 +39,29 @@ jQuery(document).ready( function() {
         }
            
     });
+    
+    var errorCode={
+        400:"We could not authenticate ",
+        409:"can not post same job",
+        403:""
+    }
+    var jobPosted=getQueryParameter("share");
+
+	if(!isEmpty(jobPosted) && (jobPosted)){
+		if(jobPosted=="fail"){
+			var code=getQueryParameter("code");
+			toastNotify(3,errorCode[code]);
+			var newUrl=removeParam("share", window.location.href)
+			newUrl=removeParam("code",newUrl);
+			window.history.replaceState("object or string", "Title", newUrl);	
+		}
+		else{
+			toastNotify(1,"SuccessFully Posted Job");
+			var newUrl = removeParam("share", window.location.href)
+        	window.history.replaceState("object or string", "Title", newUrl);
+		}
+	}
+
 
     var obj = getQueryParameters()
     if(!isEmpty(obj)) {
@@ -111,12 +136,23 @@ jQuery(document).ready( function() {
         // if(parseInt(candidateDetails.status) == 0)
         setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
     });
-
     page('/', function(context, next){
         aCandidate.closeModal();
     })
 
     page();
+
+
+
+    theJob.onClickShareOnTwitter(function(){
+        connect.twitterConnect("_self",'/job/'+globalParameters.jobPublishedId+'/applications',globalParameters.jobId,recruiterId);
+		return true;    
+    })
+
+    theJob.onClickShareOnLinkedIn(function(){
+        connect.linkedinConnect("_self",'/job/'+globalParameters.jobPublishedId+'/applications',globalParameters.jobId,recruiterId);
+			return true;
+    })
 
     filters.addFilterData('industry', industryTagsData);
     filters.addFilterData('functionalArea',functionalAreaTagsData)
@@ -1097,8 +1133,8 @@ jQuery(document).ready( function() {
 
     function onSuccessfulFetchJobDetails(topic, data) {
         globalParameters.jobId = data["jobId"]
+        globalParameters.jobPublishedId=data["jobPublishedId"];
         candidates.setDefaultTab(globalParameters.status)
-
         var parameters = getQueryParameters()
         parameters.status = globalParameters.status;
         parameters.orderBy = globalParameters.orderBy;

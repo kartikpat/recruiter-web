@@ -100,7 +100,11 @@
 			return done(null, data)
 		}
 		catch(err){
-			return done(null, false);
+			console.log('inside twitter Strategy');
+			console.log(err);
+			if(err=='user_cancelled')
+				return done(err, false)
+			return done('application error', false);
 
 		}
 	}))
@@ -148,6 +152,7 @@
 		keys: ['key-1'],
 		httpOnly: false
 	}));
+	app.use(bodyParser.json()); // support json encoded bodies
 	app.use(bodyParser.urlencoded({ extended: true }))
 	app.use(compression()); //compressing payload on every request
 

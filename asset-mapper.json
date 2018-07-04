@@ -1,3 +1,4 @@
+
 {
 	"job-details": {
 		"styles": {
@@ -502,9 +503,12 @@
 				"static/js/Utilities/pubsub.js",
 				"static/js/Utilities/request.js",
 				"static/js/Utilities/common.js",
+				"static/js/Utilities/connect.js",
 				"static/js/vendor/moment.min.js",
 				"static/js/Utilities/modal.js",
+				"static/js/Utilities/toastNotifier.js",
 				"static/js/Tracker/tracker.js",
+				"static/js/Services/jobShareSocial.js",
 				"static/js/Services/fetchDashboardStats.js",
 				"static/js/Services/fetchActiveJobStats.js",
 				"static/js/Services/fetchJobs.js",
@@ -530,7 +534,6 @@
 				"static/js/new-jobs-chart.js",
 				"static/js/dashboard.js",
 				"static/js/utilities.js",
-				"static/js/Utilities/toastNotifier.js",
 				"static/js/Utilities/chatEngine.js",
 				"static/js/Services/submitChatMessage.js",
 				"static/js/vendor/tooltipster.main.min.js",
@@ -707,7 +710,6 @@
 				"static/css/footer.css",
 				"static/css/header.css",
 				"static/css/modal.css",
-				"static/css/vendor/tooltipster.css",
 				"static/css/vendor/pdf_viewer.css",
 				"static/css/candidateMixin.css",
 				"static/css/animate.css",
@@ -715,7 +717,8 @@
 				"static/css/chat-sticky.css",
 				"static/css/utilities.css",
 				"static/css/animate.css",
-				"static/css/jquery-chatbox.css"
+				"static/css/jquery-chatbox.css",
+				"static/css/vendor/tooltipster.css"
 
 			],
 			"prod": [
@@ -730,6 +733,7 @@
 				"static/js/header.js",
 				"static/js/change-password.js",
 				"static/js/utilities.js",
+				"static/js/Utilities/connect.js",
 				"static/js/vendor/pdf.js",
 				"static/js/vendor/pdf.worker.js",
 				"static/js/tags/industry.js",
@@ -741,6 +745,7 @@
 				"static/js/tags/institute.js",
 				"static/js/vendor/moment.min.js",
 				"static/js/pdfJs.js",
+				"static/js/Services/jobShareSocial.js",
 				"static/js/Services/fetchRecruiterChats.js",
 				"static/js/candidate-apply-list.js",
 				"static/js/vendor/jquery-ui.min.js",
@@ -1146,7 +1151,7 @@
 				"static/js/Utilities/modal.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
-				"static/js/Utilities/hideHeader.js",
+				
 				"static/js/Tracker/tracker.js",
 				"static/js/eventMapping.js"
 

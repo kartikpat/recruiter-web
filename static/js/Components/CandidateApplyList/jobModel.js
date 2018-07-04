@@ -43,8 +43,8 @@ function Job(){
 		onClickJobMakePremium();
 		onClickJobEdit()
 		onClickShareOnFB();
-		onClickShareOnTwitter();
-		onClickShareOnLinkedIn();
+		// onClickShareOnTwitter();
+		// onClickShareOnLinkedIn();
 		$(window).click(function(event) {
     		settings.jobOtherActions.addClass('inactive');
     	});
@@ -67,12 +67,12 @@ function Job(){
 	function onClickShareOnTwitter(fn){
 		settings.jobPostTwitter.click(function(e){
 			e.stopPropagation()
-
 			var eventObj = {
 				event_category: eventMap["socialIconsClick"]["cat"],
 				event_label: 'origin=CandidateApplyList,type=Twitter,recId='+recruiterId+',JobId='+jobId+''
 			}
 			sendEvent(eventMap["socialIconsClick"]["event"], eventObj)
+			fn()
 			return true;
 		});
 	}
@@ -86,6 +86,7 @@ function Job(){
 				event_label: 'origin=CandidateApplyList,type=Linkedin,recId='+recruiterId+',JobId='+jobId+''
 			}
 			sendEvent(eventMap["socialIconsClick"]["event"], eventObj)
+			fn()
 			return true;
 		});
 	}
@@ -153,8 +154,8 @@ function Job(){
 				// debugger
 				var url = config["baseUrlJob"] + data["jobSocialShareUrl"];
 				settings.jobPostFacebook.attr("href", getFacebookShareLink(url)).removeClass("hidden")
-				settings.jobPostTwitter.attr("href", getTwitterShareLink(url)).removeClass("hidden")
-				settings.jobPostLinkedin.attr("href", getLinkedInShareUrl(url)).removeClass("hidden")
+				settings.jobPostTwitter.removeClass("hidden")
+				settings.jobPostLinkedin.removeClass("hidden")
 			}
         }
 
@@ -395,6 +396,8 @@ function Job(){
 		setDefaultCalendar: setDefaultCalendar,
 		openSelectDefaultCalendarModal: openSelectDefaultCalendarModal,
 		closeCalendarModal: closeCalendarModal,
-		setSelectedCalendarId: setSelectedCalendarId
+		setSelectedCalendarId: setSelectedCalendarId,
+		onClickShareOnTwitter:onClickShareOnTwitter,
+	    onClickShareOnLinkedIn:onClickShareOnLinkedIn
 	}
 }
