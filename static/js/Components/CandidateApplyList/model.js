@@ -94,7 +94,10 @@ function candidateList() {
 
         settings.rowContainer.on('click', '.moreEducationLink', function(){
             settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
-            $('.view-resume-modal').animate({scrollTop: 1000});
+            // $('.view-resume-modal').animate({scrollTop: 1000});
+            $('.view-resume-modal').animate({
+                scrollTop: $(".education").offset().top-$('.education').height()
+            }, 1000);
             var eventObj = {
                 event_category: eventMap["viewCandidProfile"]["cat"],
                 event_label: 'origin=CandidateApplyList,type=MoreEducation,recId='+recruiterId+''
@@ -104,7 +107,9 @@ function candidateList() {
 
         settings.rowContainer.on('click', '.moreExperience', function(){
             settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
-            $('.view-resume-modal').animate({scrollTop: 1000});
+            $('.view-resume-modal').animate({
+                scrollTop: $(".education").offset().top-$('.education').height()
+            }, 1000);
             var eventObj = {
                 event_category: eventMap["viewCandidProfile"]["cat"],
                 event_label: 'origin=CandidateApplyList,type=MoreExperience,recId='+recruiterId+''
@@ -225,6 +230,10 @@ function candidateList() {
 
     function onClickRecommendationLink() {
         settings.rowContainer.on('click', settings.recommendationLinkClass, function(e) {
+            settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
+            $('.view-resume-modal').animate({
+                scrollTop: $(document).height()
+            }, 1000);
             var eventObj = {
                 event_category: eventMap["viewCandidProfile"]["cat"],
                 event_label: 'origin=CandidateApplyList,type=recommendations,recId='+recruiterId+''
