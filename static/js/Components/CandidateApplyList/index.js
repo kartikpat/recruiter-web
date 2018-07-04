@@ -86,6 +86,11 @@ jQuery(document).ready( function() {
         context.state.path+="?"+queryString;
         context.state.path+="?"+queryString;
         var candidateDetails = store.getCandidateFromStore(applicationId);
+        debugger;
+        if(!candidateDetails){
+            page.redirect('/?'+queryString);
+            return;
+        }
         aCandidate.showCandidateDetails(candidateDetails,hash, candidateDetails.status);
         // sending event on every view
         // if(parseInt(candidateDetails.status) == 0)
@@ -109,11 +114,12 @@ jQuery(document).ready( function() {
     // });
 
     page('/', function(context, next){
+        debugger
         aCandidate.closeModal();
-        if(context.path==globalParameters.path){
+        if(context.querystring==globalParameters.path){
             return
         }
-        globalParameters.path = context.path;
+        globalParameters.path = context.querystring;
         var parameters = getParametersByString(context.querystring);
         if(parameters['status'])
             globalParameters.status = parameters['status'];
@@ -412,7 +418,6 @@ jQuery(document).ready( function() {
             var status = candidates.activateStatsTab(event, ui);
             return true;
         }, function(event, ui){
-            debugger
             var status = candidates.getActiveTab(ui);
             var parameters = filters.getAppliedFilters();
             globalParameters.status = status;
@@ -1053,7 +1058,6 @@ jQuery(document).ready( function() {
 
 
     function onJobsApplicationsFetchSuccess(topic, data) {
-        debugger
         tickerLock = false;
         hideLoader()
         globalParameters.candidateListLength = data["data"].length;

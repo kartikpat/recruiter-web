@@ -213,6 +213,7 @@ function candidateList() {
     }
 
     function onClickCoverLetterLink() {
+        debugger
         settings.rowContainer.on('click', settings.coverLetterLinkClass, function(e) {
             var eventObj = {
                 event_category: eventMap["viewCandidProfile"]["cat"],
@@ -527,7 +528,6 @@ function candidateList() {
     }
 
     function addToList(dataArray, status, offset, pageContent, filterFlag){
-        debugger
         settings.status = status;
 		var str = '';
         var element = $(".candidateListing[data-status-attribute='"+status+"']");
