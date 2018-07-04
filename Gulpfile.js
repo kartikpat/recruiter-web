@@ -79,7 +79,7 @@ function buildSingleJs(staticMapperElement, i){
 			gulp.src(getAssetsArray(staticMapper[staticMapperElement]["scripts"]["debug"])),
 			uglify(),
 			concat(staticMapper[staticMapperElement]["scripts"]["prod"][0]),
-			.pipe(gulp.dest('.'))
+			gulp.dest('.')
 		], function(err){
 			if(err)
 				return reject(err);
