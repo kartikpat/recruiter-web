@@ -939,6 +939,8 @@ function Filters(){
 	}
 
 	function setFilters(obj){
+		debugger
+		removeAllFilters();
 		if(!isEmpty(obj)) {
 			var filterFlag = 0;
 			if(obj.searchString){

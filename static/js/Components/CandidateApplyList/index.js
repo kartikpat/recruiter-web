@@ -106,8 +106,20 @@ jQuery(document).ready( function() {
     // });
 
     page('/', function(context, next){
+        debugger
         aCandidate.closeModal();
         var parameters = getParametersByString(context.querystring);
+        if(parameters['status'])
+            globalParameters.status = parameters['status'];
+        if(parameters.orderBy)
+            globalParameters.orderBy = parameters['orderBy'];
+        filters.setFilters(parameters);
+
+        globalParameters.offset = 0;
+        parameters.status = globalParameters.status;
+        parameters.offset = globalParameters.offset;
+        parameters.pageContent = globalParameters.pageContent;
+
         var tabIndex = 0;
         switch(parameters.status){
             case "0":
@@ -127,8 +139,13 @@ jQuery(document).ready( function() {
                 break;
             default:
                 break;
-        }
-        candidates.setJqueryTab(tabIndex)
+        };
+
+        candidates.setJqueryTab(tabIndex);
+        candidates.showShells(globalParameters.status);
+        candidates.removeCandidate(globalParameters.status);
+        candidates.hideEmptyScreen();
+        fetchJobApplications(jobId, parameters,recruiterId);
     })
     page({dispatch: false});
 
@@ -201,19 +218,13 @@ jQuery(document).ready( function() {
            event_category: eventMap["searchFilter"]["cat"],
            event_label: 'origin=CandidateApplyList,recId='+recruiterId+''
         }
-        sendEvent(eventMap["searchFilter"]["event"], eventObj)
-        candidates.showShells(globalParameters.status)
-        candidates.removeCandidate(globalParameters.status)
-        candidates.hideEmptyScreen()
+        sendEvent(eventMap["searchFilter"]["event"], eventObj);
+        debugger
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
-        setQueryParameters(parameters);
-
-        globalParameters.offset = 0;
-        parameters.offset = globalParameters.offset;
-        parameters.pageContent = globalParameters.pageContent;
-
-        fetchJobApplications(jobId, parameters, recruiterId);
+        var queryString = testSetQueryParameters(parameters);
+        page('/?'+queryString)
+        // fetchJobApplications(jobId, parameters, recruiterId);
     })
     filters.onSelectSortByOption(function(){
         candidates.showShells(globalParameters.status)
@@ -391,23 +402,8 @@ jQuery(document).ready( function() {
     })
 
     candidates.initializeJqueryTabs(defaultTabObj[globalParameters.status], function(event, ui) {
-        // debugger
-        var status = candidates.activateStatsTab(event, ui)
-        console.log(status)
-        debugger
-        candidates.showShells(status);
-        candidates.removeCandidate(status)
-        var parameters = filters.getAppliedFilters();
-        globalParameters.status = status;
-        parameters.status = globalParameters.status;
-        //setQueryParameters(parameters);
-        var queryString = testSetQueryParameters(parameters);
-        console.log(queryString)
-        // page("/?"+queryString);
-        globalParameters.offset = 0;
-        parameters.offset = globalParameters.offset;
-        parameters.pageContent = globalParameters.pageContent;
-        fetchJobApplications(jobId, parameters,recruiterId);
+        var status = candidates.activateStatsTab(event, ui);
+        return true;
     }, function(event, ui){
         var status = candidates.getActiveTab(ui);
         var parameters = filters.getAppliedFilters();
