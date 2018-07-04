@@ -2122,6 +2122,10 @@ span.sticker {
   .wrap-mobile .icon-tick_circle {
     color: #1f8f75 !important; }
 
+.noviewLimit {
+  text-align: center;
+  padding-bottom: 10px; }
+
 .invite-links {
   margin-left: 0 !important;
   list-style: none !important; }

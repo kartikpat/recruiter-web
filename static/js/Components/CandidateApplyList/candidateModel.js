@@ -569,11 +569,12 @@ function Candidate() {
         settings.candidateDownloadResume.click(function(event) {
             event.preventDefault()
             var status = $(this).attr("data-status");
-            var url = $(this).attr("data-href");
-            url += "?type=download"
-            window.open(url);
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
-            fn(applicationId, status)
+            if(fn(applicationId, status)){
+                var url = $(this).attr("data-href")
+                url += "?type=download"
+                window.open(url);
+            }
         })
     }
 

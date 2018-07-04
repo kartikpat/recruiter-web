@@ -10,11 +10,17 @@ var globalParameters = {
 var screenName = "candidate-profile";
 jQuery(document).ready( function() {
     // creating the instance of models
+    var recruiter=recruiterLimit();
     var aCandidate = Candidate();
+    aCandidate.init();
+    
+    if(recruiter.getViewsLimit()==0){    
+        aCandidate.noview();
+        return
+    }
     var store = Store();
     var chatModule=chatModelIndex();
     //initializing the models
-    aCandidate.init();
     page('/job/'+jobId+'/applications', function(context, next){
         window.location.href='/job/'+jobId+'/applications?'+context.querystring;
         return
@@ -209,10 +215,12 @@ jQuery(document).ready( function() {
             var newStatus = 4
             var obj = store.getCandidateFromStore(res.applicationId)
             obj["status"] = newStatus;
+            // recruiter.updateViewCount();
         }
 
         if(res.action == "download") {
             var newStatus = 5
+            // recruiter.updateDownloadCount()
             return aCandidate.changeStatus( newStatus)
         }
         if(res.action == "tag") {
@@ -395,7 +403,10 @@ jQuery(document).ready( function() {
     })
 
     aCandidate.onClickDownloadResume(function(applicationId, status){
-        // debugger
+        if(recruiter.getDownloadLimit()==0){
+            toastNotify(3,"Download Limit Exceeded")
+            return false;
+        }
         var eventObj = {
            event_category: eventMap["downloadResume"]["cat"],
            event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
@@ -405,6 +416,7 @@ jQuery(document).ready( function() {
          }
         sendEvent(eventMap["downloadResume"]["event"], eventObj)
         setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
+        return true
     });
 
     function onSuccessfullSetDefaultCalendar(topic, res) {

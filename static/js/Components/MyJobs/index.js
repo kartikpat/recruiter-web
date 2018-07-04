@@ -5,13 +5,11 @@ var globalParameters = {
     jobListLength: null,
 	initialLoad: 1,
 }
-
 var errorCode={
 	400:"We could not authenticate ",
 	409:"can not post same job",
 	403:""
 }
-
 
 jQuery(document).ready( function() {
 	var successMsg = getQueryParameter("jobPostMessage");

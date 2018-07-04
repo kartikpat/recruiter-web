@@ -7340,6 +7340,10 @@ span.sticker {
     border-bottom: 0;
     padding-bottom: 0; }
 
+.noviewLimit {
+  text-align: center;
+  padding-bottom: 10px; }
+
 #view-profile-info {
   padding: 20px 0; }
   #view-profile-info .contact-info {

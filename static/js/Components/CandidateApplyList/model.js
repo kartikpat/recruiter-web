@@ -2,7 +2,6 @@ function candidateList() {
 
     var settings = {};
     var config = {};
-    
 
     function init(profile, baseUrl){
         settings.rowContainer= $('.candidateListing'),
@@ -92,8 +91,7 @@ function candidateList() {
         onClickModal()
         closetooltipModal()
         backToTop()
-       
-        // onEnter()
+
         settings.rowContainer.on('click', '.moreEducationLink', function(){
             $('div').animate({scrollTop: 1000});
             var eventObj = {
@@ -489,7 +487,6 @@ function candidateList() {
     }
 
 
-
     function getJobsCategoryTabsElement() {
         var card = $("#jobs-category-tabs");
         return {
@@ -616,13 +613,14 @@ function candidateList() {
         })
     }
 
+
+    
     function onClickCandidate(fn) {
-        settings.rowContainer.on('click', ".candidate-item", function(e){
-            var candidateId = $(this).attr('data-candidate-id');
-            var status = $(this).attr("data-status")
-            var applicationId = $(this).attr("data-application-id")
-            return fn(candidateId, status, applicationId);
-            return false
+        settings.rowContainer.on('click', ".openCandidateLink", function(e){
+            if(fn()){
+                e.stopPropagation();
+                e.preventDefault();
+            }    
         })
     }
 
@@ -668,13 +666,13 @@ function candidateList() {
     function onClickDownloadResume(fn) {
         settings.rowContainer.on('click', settings.candidateDownloadResumeButton, function(event){
             event.preventDefault()
-            var url = $(this).attr("data-href");
-            url += "?type=download"
-            window.open(url);
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            var status = $(this).closest(settings.candidateRowClass).attr("data-status")
-            fn(applicationId, status)
-
+            var status = $(this).closest(settings.candidateRowClass).attr("data-status")   
+            if(fn(applicationId, status)){
+                var url = $(this).attr("data-href");
+                url += "?type=download"
+                window.open(url);
+            }    
         })
     }
 
@@ -880,8 +878,6 @@ function candidateList() {
     }
 
     function addComment(comment,applicationId){
-        console.log(comment);
-        console.log(applicationId);
         $(".candidateRow[data-application-id="+applicationId+"]").find(settings.candidateCommentTextareaClass).addClass("hidden");
         $(".candidateRow[data-application-id="+applicationId+"]").find(settings.candidateAddCommentButtonClass).addClass("hidden");
         $(".candidateRow[data-application-id="+applicationId+"]").find(settings.commentTextarea).val(comment);
