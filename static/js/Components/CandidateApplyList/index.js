@@ -171,22 +171,18 @@ jQuery(document).ready( function() {
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
         candidates.hideEmptyScreen()
-
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
         setQueryParameters(parameters)
-
         globalParameters.offset = 0;
         parameters.offset = globalParameters.offset;
         parameters.pageContent = globalParameters.pageContent;
-
         var filterFlag = 0;
         for(var key in parameters) {
           if(!(key == "orderBy" || key == "offset" || key == "pageContent" || key == "status")) {
             filterFlag+= 1;
           }
         }
-
         if(filterFlag > 0) {
             filters.showAppliedFilters();
         }
@@ -206,20 +202,18 @@ jQuery(document).ready( function() {
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
         setQueryParameters(parameters);
-
         globalParameters.offset = 0;
         parameters.offset = globalParameters.offset;
         parameters.pageContent = globalParameters.pageContent;
-
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
+
     filters.onClickSearchButton(function(){
         var eventObj = {
            event_category: eventMap["searchFilter"]["cat"],
            event_label: 'origin=CandidateApplyList,recId='+recruiterId+''
         }
         sendEvent(eventMap["searchFilter"]["event"], eventObj);
-        debugger
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
         var queryString = testSetQueryParameters(parameters);

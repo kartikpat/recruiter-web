@@ -307,7 +307,6 @@ function Filters(){
 
 	function onClickApplyFilterButton(fn){
 		settings.applyFilterButton.click(function(e){
-
 			var name = $(settings.activeFilterListingClass).attr('data-label');
 			fn(name);
 		})
@@ -788,8 +787,18 @@ function Filters(){
 
 	}
 
-	function showAppliedFilters() {
+	function showAppliedFilters(filterFlag,check) {
 		settings.activeFiltersContainer.removeClass("hidden");
+		if(filterFlag==1 && check==1){
+			settings.clearAllFitersButton.text("Clear Search");
+			settings.clearAllFitersButton.removeClass("hidden")
+			return
+		}
+		if(filterFlag==2){
+			settings.clearAllFitersButton.text("Clear All");
+			settings.clearAllFitersButton.removeClass("hidden")
+			return
+		}
 		if(settings.clearAllFitersButton.attr("data-search")=="all"){
 			settings.clearAllFitersButton.text("Clear all");
 			settings.clearAllFitersButton.removeClass("hidden")
@@ -922,9 +931,6 @@ function Filters(){
 				filtersTarget[name]['label'] = gender[value]
 		}
 		else if (type == "input") {
-			debugger
-			//
-			settings.clearAllFitersButton.removeClass("hidden");
 			filtersTarget[name]['selection'] = value
 			filtersTarget[name]['target'].val(value)
 			var orderBySelect = filtersTarget["orderBy"]["target"]
@@ -942,34 +948,31 @@ function Filters(){
 	}
 
 	function setFilters(obj){
-		debugger
 		removeAllFilters();
 		if(!isEmpty(obj)) {
 			var filterFlag = 0;
+			var check=0;
 			if(obj.searchString){
 				obj.searchString=decodeURI(obj.searchString);
+				filterFlag++;
+				check++;
 			}
 			for(var key in obj) {
 				if (key == "orderBy") {
 					changeSelectValue(obj[key])
 				}
-				// else if (key == "pageNumber") {
-				//     globalParameters.pageNumber = obj[key]
-				// }
-				// else if (key == "pageContent") {
-				//     globalParameters.pageContent = obj[key]
-				// }
 				if(key && [ 'status', 'offset', 'pageContent'].indexOf(key) != -1) {
 					continue
 				}
 				callClickOnFilters(filtersMapping[key], obj[key], minMaxMapping[key])
-				if(!(key == "orderBy" || key == "offset" || key == "pageContent" || key == "status" || key == "searchString")) {
-				  filterFlag+= 1;
+				if(!(key == "orderBy" || key == "offset" || key == "pageContent" || key == "status" || key=="searchString")) {
+				  filterFlag++;
 				}
+
 			}
 			if(filterFlag > 0) {
 				addFiltersToContainer()
-				showAppliedFilters()
+				showAppliedFilters(filterFlag,check)
 			}
 		}
 	
