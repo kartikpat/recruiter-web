@@ -177,16 +177,6 @@ jQuery(document).ready( function() {
         globalParameters.offset = 0;
         parameters.offset = globalParameters.offset;
         parameters.pageContent = globalParameters.pageContent;
-        var filterFlag = 0;
-        for(var key in parameters) {
-          if(!(key == "orderBy" || key == "offset" || key == "pageContent" || key == "status")) {
-            filterFlag+= 1;
-          }
-        }
-        if(filterFlag > 0) {
-            filters.showAppliedFilters();
-        }
-
         return fetchJobApplications(jobId, parameters, recruiterId)
     });
     filters.onClickRemoveFilter(function(value,category,type){

@@ -347,14 +347,14 @@ function Filters(){
 			}
 			else {
 				orderBySelect.addClass("hidden")
-				if(settings.clearAllFitersButton.attr("data-search")=="all"){
-					settings.clearAllFitersButton.text("Clear All");	
-				}
-				else{
-					settings.clearAllFitersButton.text("Clear Search");
-				}
-				settings.clearAllFitersButton.attr("data-search","all");
-				settings.clearAllFitersButton.removeClass("hidden");
+				// if(settings.clearAllFitersButton.attr("data-search")=="all"){
+				// 	settings.clearAllFitersButton.text("Clear All");	
+				// }
+				// else{
+				// 	settings.clearAllFitersButton.text("Clear Search");
+				// }
+				// settings.clearAllFitersButton.attr("data-search","all");
+				// settings.clearAllFitersButton.removeClass("hidden");
 			}
 			filtersTarget["searchString"]["selection"] = str;
 			fn();
@@ -368,14 +368,14 @@ function Filters(){
 				}
 				else {
 					orderBySelect.addClass("hidden")
-					if(settings.clearAllFitersButton.attr("data-search")=="all"){
-						settings.clearAllFitersButton.text("Clear All");	
-					}
-					else{
-						settings.clearAllFitersButton.text("Clear Search");
-					}
-					settings.clearAllFitersButton.attr("data-search","all");
-					settings.clearAllFitersButton.removeClass("hidden");
+					// if(settings.clearAllFitersButton.attr("data-search")=="all"){
+					// 	settings.clearAllFitersButton.text("Clear All");	
+					// }
+					// else{
+					// 	settings.clearAllFitersButton.text("Clear Search");
+					// }
+					// settings.clearAllFitersButton.attr("data-search","all");
+					// settings.clearAllFitersButton.removeClass("hidden");
 				}
 				filtersTarget["searchString"]["selection"] = str;
 				fn();
@@ -789,25 +789,21 @@ function Filters(){
 
 	function showAppliedFilters(filterFlag,check) {
 		settings.activeFiltersContainer.removeClass("hidden");
-		if(filterFlag==1 && check==1){
+		if(filterFlag==1){
+			if(check==0){
+				settings.clearAllFitersButton.text("Clear Filters");
+				settings.clearAllFitersButton.removeClass("hidden")
+				return
+			}
 			settings.clearAllFitersButton.text("Clear Search");
 			settings.clearAllFitersButton.removeClass("hidden")
 			return
 		}
-		if(filterFlag==2){
-			settings.clearAllFitersButton.text("Clear All");
-			settings.clearAllFitersButton.removeClass("hidden")
-			return
-		}
-		if(settings.clearAllFitersButton.attr("data-search")=="all"){
-			settings.clearAllFitersButton.text("Clear all");
-			settings.clearAllFitersButton.removeClass("hidden")
-			return
-		}
-		settings.clearAllFitersButton.text("Clear Filters");
-		settings.clearAllFitersButton.attr("data-search","all");
+		settings.clearAllFitersButton.text("Clear All");
 		settings.clearAllFitersButton.removeClass("hidden")
+		return
 	}
+
 
 	function checkForError(name) {
 		var type = filtersTarget[name]['type']
