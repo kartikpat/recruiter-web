@@ -61,7 +61,6 @@ function candidateList() {
         settings.candidateCommentTextareaClass= '.candidateCommentText',
         settings.commentTextarea=('.comment-text'),
         settings.candidateEditComment=('.candidateAddEdit'),
-        settings.candidateEditCommentButton=$('.candidateAddEdit'),
         settings.contactMenubutton=$('.contactMenubutton');
         settings.candidateAddTagButtonClass= '.candidateAddTag',
         settings.candidateTagInputClass = '.candidateTagInputContainer',
@@ -94,9 +93,7 @@ function candidateList() {
 
         settings.rowContainer.on('click', '.moreEducationLink', function(){
             settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
-            // $('.view-resume-modal').animate({
-            //     scrollTop: 100
-            // }, 1000);
+            location.href="#resumeEdu";
             var eventObj = {
                 event_category: eventMap["viewCandidProfile"]["cat"],
                 event_label: 'origin=CandidateApplyList,type=MoreEducation,recId='+recruiterId+''
@@ -106,9 +103,7 @@ function candidateList() {
 
         settings.rowContainer.on('click', '.moreExperience', function(){
             settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
-            // $('.view-resume-modal').animate({
-            //     scrollTop: 50
-            // }, 1000);
+            location.href="#resumeOrg";
             var eventObj = {
                 event_category: eventMap["viewCandidProfile"]["cat"],
                 event_label: 'origin=CandidateApplyList,type=MoreExperience,recId='+recruiterId+''
@@ -230,16 +225,14 @@ function candidateList() {
     function onClickRecommendationLink() {
         settings.rowContainer.on('click', settings.recommendationLinkClass, function(e) {
             settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
-            $('.view-resume-modal').animate({
-                scrollTop: $(document).height()
-            }, 2000);
+            // debugger
+            // location.href='#resumeRecom'
             var eventObj = {
                 event_category: eventMap["viewCandidProfile"]["cat"],
                 event_label: 'origin=CandidateApplyList,type=recommendations,recId='+recruiterId+''
             }
             sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
-            // settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
-
+        
         })
     }
 
@@ -766,6 +759,8 @@ function candidateList() {
         settings.rowContainer.on('click',settings.candidateEditComment,function(event){
             event.stopPropagation();
             event.preventDefault();
+            debugger
+            $(this).closest(settings.candidateRowClass).find(settings.candidateCommentTextareaClass).val($(this).closest(settings.candidateRowClass).find(settings.commentTextarea).val());
             $(this).closest(settings.candidateRowClass).find(settings.commentTextarea).addClass("hidden");
             $(this).closest(settings.candidateRowClass).find(settings.candidateCommentTextareaClass).removeClass("hidden");
             $(this).closest(settings.candidateRowClass).find(settings.candidateAddCommentButtonClass).removeClass("hidden");
