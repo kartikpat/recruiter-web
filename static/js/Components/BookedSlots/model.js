@@ -145,16 +145,16 @@ function BookedSlots() {
 			temp = moment(temp, 'hh:mm').format('hh:mm A');
 			var showTime = temp + " to " + temp1;
     		item.interviewTime.text(showTime)
+			if(aData['slot']['type']==1){
+				item.interviewType.find('.inviteF2f').removeClass('hidden');
+			}
+			if(aData['slot']['type']==2){
+				item.interviewType.find('.inviteTelephonic').removeClass('hidden');
+			}
 		}
 
 		//bookedSlotsInvite
 
-		if(aData['invite']==1){
-			item.interviewType.find('.inviteF2f').removeClass('hidden');
-		}
-		if(aData['invite']==2){
-			item.interviewType.find('.inviteTelephonic').removeClass('hidden');
-		}	
 		item.calendarName.text(aData["calendar"]["name"]);
 		item.calendarName.attr("href","/calendar/"+aData["calendar"]["id"]+"/edit");
 		item.candName.text(aData["name"])
