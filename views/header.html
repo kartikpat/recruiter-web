@@ -60,7 +60,9 @@
 			excel: '{{profile.excel}}',
 			recruiterType: '{{profile.type}}',
 			linkedin:'{{profile.linkedin}}',
-			twitter:'{{profile.twitter}}'
+			twitter:'{{profile.twitter}}',
+			hits:"{{profile.hits}}",
+			lastLogin:"{{profile.lastLogin}}"
 		}
 
 		var applicationId= '{{applicationId}}'
@@ -175,8 +177,23 @@
 							<div class="profile-header">
 								<p class="user-name user_name" id="">{{profile.name}}</p>
 								<p class="user-email user_email" id="">{{profile.email}}</p>
+								<a class="user-public-profile"href="{{profile.rurl}}"><p class="user_public_profile">View Public Profile <i class="icon-right_arrow"></i></p></a>
 							</div>
 						</a>
+						<div class="user_profile_info">
+							<span class="profile-hits">
+								<span class="profile-views">Viewed:</span>
+									{{profile.hits}}
+								<span>times</span>	
+							</span>
+							<span class="profile-login">	
+								<span class="lastLogin">Last Login:</span>
+								 	{{profile.lastLogin}}
+							</span>
+						</div>
+						<div class="">
+
+						</div>
 						<div class="profile-body">
 							<div class="content-container">
 									<div class="basicAccount">Basic Postings: <span class="right-side">Unlimited</span></div>
@@ -229,9 +246,20 @@
 				<div class="profile-info right">
 					<p class="profile-name user_name" id="">{{profile.name}}</p>
 					<p class="profile-email user_email">{{profile.email}}</p>
+					<a class="user-public-profile"href="{{profile.rurl}}"><p class="user_public_profile">View Public Profile<i class="icon-right_arrow"></i></p></a>
 				</div>
 			</div>
-
+			<div class="user_profile_info_mob">
+					<span class="profile-hits_mob">
+						<span class="profile-views">Viewed:</span>
+							<span>{{profile.hits}}</span>
+						<span>times</span>
+					</span>
+					<span class="profile-login_mob">	
+						<span class="lastLogin">Last Login:</span>
+						 <span>{{profile.lastLogin}}</span>
+					</span>
+			</div>
 			<div class="mobile-profile-actions mobile-menu-item menu-section {{hiddenActions}}">
 				<ul class="profile-item-listing">
 					<div class="content-container-mob">

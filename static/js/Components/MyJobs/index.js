@@ -5,20 +5,33 @@ var globalParameters = {
     jobListLength: null,
 	initialLoad: 1,
 }
+var errorCode={
+	400:"We could not authenticate ",
+	409:"can not post same job",
+	403:""
+}
 
 jQuery(document).ready( function() {
-
 	var successMsg = getQueryParameter("jobPostMessage");
-	var errorMessage=getQueryParameter("error");
-	
-	if(!isEmpty(errorMessage)){
-		toastNotify(3,decodeURIComponent(errorMessage));
-		var newUrl = removeParam("error", window.location.href)
-        window.history.replaceState("object or string", "Title", newUrl);
-	}
 
+	var jobPosted=getQueryParameter("share");
+
+	if(!isEmpty(jobPosted) && (jobPosted)){
+		if(jobPosted=="fail"){
+			var code=getQueryParameter("code");
+			toastNotify(3,errorCode[code]);
+			var newUrl=removeParam("share", window.location.href)
+			newUrl=removeParam("code",newUrl);
+			window.history.replaceState("object or string", "Title", newUrl);	
+		}
+		else{
+			toastNotify(1,"SuccessFully Posted Job");
+			var newUrl = removeParam("share", window.location.href)
+        	window.history.replaceState("object or string", "Title", newUrl);
+		}
+	}
 	
-    if(!isEmpty(successMsg)) {
+    if(!isEmpty(successMsg) && (successMsg)) {
         toastNotify(1, decodeURIComponent(successMsg))
         var newUrl = removeParam("jobPostMessage", window.location.href)
         window.history.replaceState("object or string", "Title", newUrl);
@@ -83,12 +96,12 @@ jQuery(document).ready( function() {
 	})
 
 	jobList.onClickShareOnTwitter(function(jobId){
-			connect.twitterConnect("_self","jobs",jobId);
+			connect.twitterConnect("_self","/jobs",jobId,recruiterId);
 			return true;			
 	})
 	
 	jobList.onClickShareOnLinkedIn(function(jobId){
-			connect.linkedinConnect("_self","jobs",jobId);
+			connect.linkedinConnect("_self","/jobs",jobId,recruiterId);
 			return true;
 	})
 

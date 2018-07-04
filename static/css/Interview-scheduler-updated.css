@@ -335,6 +335,9 @@
 .icon-chat_bubble::before {
   content: '\e853'; }
 
+.icon-face_to_face_icon2::before {
+  content: '\e854'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -941,6 +944,9 @@ span.sticker {
 
 .icon-chat_bubble::before {
   content: '\e853'; }
+
+.icon-face_to_face_icon2::before {
+  content: '\e854'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */

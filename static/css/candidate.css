@@ -363,6 +363,9 @@
 .icon-chat_bubble::before {
   content: '\e853'; }
 
+.icon-face_to_face_icon2::before {
+  content: '\e854'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -972,6 +975,9 @@ span.sticker {
 
 .icon-chat_bubble::before {
   content: '\e853'; }
+
+.icon-face_to_face_icon2::before {
+  content: '\e854'; }
 
 .left {
   float: left; }
@@ -1776,6 +1782,9 @@ a {
 .icon-chat_bubble::before {
   content: '\e853'; }
 
+.icon-face_to_face_icon2::before {
+  content: '\e854'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -2112,6 +2121,10 @@ span.sticker {
   padding: 5px 0; }
   .wrap-mobile .icon-tick_circle {
     color: #1f8f75 !important; }
+
+.noviewLimit {
+  text-align: center;
+  padding-bottom: 10px; }
 
 .invite-links {
   margin-left: 0 !important;

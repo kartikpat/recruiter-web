@@ -1,5 +1,6 @@
 var chatModule=chatModelIndex();
-
+var recruiter=recruiterLimit();
+var connect=connectSocial();
 
 jQuery(".header .menu-list-item.dashboard").addClass("active");
 var dataModel = {};
@@ -9,6 +10,30 @@ var settings = {}
 
 // var chat=chatModelIndex();
 
+
+var jobPosted=getQueryParameter("share");
+
+
+var errorCode={
+	400:"We could not authenticate ",
+	409:"can not post same job",
+	403:""
+}
+
+if(!isEmpty(jobPosted) && (jobPosted)){
+	if(jobPosted=="fail"){
+		var code=getQueryParameter("code");
+		toastNotify(3,errorCode[code]);
+		var newUrl=removeParam("share", window.location.href)
+		newUrl=removeParam("code",newUrl);
+		window.history.replaceState("object or string", "Title", newUrl);	
+	}
+	else{
+		toastNotify(1,"SuccessFully Posted Job");
+		var newUrl = removeParam("share", window.location.href)
+		window.history.replaceState("object or string", "Title", newUrl);
+	}
+}
 
 $('.continueButton').click(function(){
 	$('.dashboardModal').fadeOut();
@@ -26,7 +51,8 @@ if(object==null){
 var date=new Date();
 
 console.log(date)
-	
+
+    
 function Notifications(){
 	var settings ={};
 	settings.notificationContainer= $('#notificationContainer');
@@ -248,6 +274,7 @@ function onClickShareOnTwitter(fn){
 			event_label: 'origin=Dashboard,type=Twitter,recId='+recruiterId+',JobId='+jobId+''
 		}
 		sendEvent(eventMap["socialIconsClick"]["event"], eventObj)
+		connect.twitterConnect("_self","/",jobId,recruiterId);
 		return true;
 	});
 }
@@ -260,6 +287,7 @@ function onClickShareOnLinkedIn(fn){
 			event_label: 'origin=Dashboard,type=Linkedin,recId='+recruiterId+',JobId='+jobId+''
 		}
 		sendEvent(eventMap["socialIconsClick"]["event"], eventObj)
+		connect.linkedinConnect("_self","/",jobId,recruiterId);
 		return true;
 	});
 }
@@ -406,8 +434,8 @@ function onClickShareOnLinkedIn(fn){
 			if(aJob["url"]) {
 				var url = baseUrlJob + aJob["url"];
 				card.find('.action-panel .action-list-items .jobFacebook').attr("href", getFacebookShareLink(url))
-				card.find('.action-panel .action-list-items .jobTwitter').attr("href", getTwitterShareLink(url))
-				card.find('.action-panel .action-list-items .jobLinkedin').attr("href", getLinkedInShareUrl(url))
+				// card.find('.action-panel .action-list-items .jobTwitter').attr("href", getTwitterShareLink(url))
+				// card.find('.action-panel .action-list-items .jobLinkedin').attr("href", getLinkedInShareUrl(url))
 			}
 			if(aJob["cnfi"]) {
 				card.find(".action-panel .action-list-items .socialIcons").addClass("hidden")
@@ -639,6 +667,15 @@ function onClickShareOnLinkedIn(fn){
 		errorHandler(data)
 	}
 
+	function onFetchLimitSuccess(topic,res){
+        recruiter.saveToStore(res);
+    }    
+
+    function onFetchLimitFail(topic,error){
+        console.log('error');
+    }
+
+
 	var fetchInterviewsSubscription = pubsub.subscribe("fetchedInterviews", onFetchInterviews);
 	var fetchRecruiterCalendarSubscription=pubsub.subscribe('fetchedCalendars',onFetchCalendars);
 	var setCandidateActionSuccessSubscription = pubsub.subscribe("setCandidateActionSuccess", onSuccessfullCandidateAction)
@@ -646,9 +683,13 @@ function onClickShareOnLinkedIn(fn){
 	var refreshJobFailSubscription = pubsub.subscribe("jobRefreshFail", onFailedRefreshJob)
 	var unPublishJobSuccessSubscription = pubsub.subscribe("jobUnpublishSuccess", onSuccessfulUnpublishedJob);
 	var unPublishJobFailSubscription = pubsub.subscribe("jobUnpublishFail", onFailedUnpublishedJob);
+	var fetchLimitSubscriptionSuccess= pubsub.subscribe("fetchLimitSuccess",onFetchLimitSuccess);
+    var fetchLimitSubscriptionFail= pubsub.subscribe("fetchLimitFail",onFetchLimitFail);
+
 
 	function init(){
 		pubsub.publish("pageVisit", 1);
+		fetchLimit(recruiterId);
 		fetchDashboardStats(recruiterId);
 		fetchJobs({pageContent:5, pageNumber: 1, type: "published"}, recruiterId); //recent-jobs
 		var currentDate=moment().format("YYYY-MM-DD");

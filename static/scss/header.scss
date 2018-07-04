@@ -256,8 +256,31 @@ b{
                             font-size:$page-subtitle-font-size;
                         }
                     }
+                    a{
+                        margin-top: 5px;
+                        color:$color-white;
+                        font-size:$base-font-size;
+                        line-height:1.3;
+                        .user_public_profile{
+                            padding-top: 5px;
+                        }
+                        
+                    }
+                    .user-public-profile:hover{
+                        text-decoration: underline;
+                    }
+                    
                 }
-
+                .user_profile_info{
+                    background-color: #117962;
+                    color:$color-white;
+                    font-size:12px;
+                    padding: 5px 15px;
+                    .profile-hits{
+                        width: 45%;
+                        display: inline-block;
+                    }
+                }
                 .profile-body {
                     background:$color-white;
                     // padding:15px;
@@ -655,4 +678,25 @@ b{
 
 .legacyRecruiterMob{
     border-bottom: 1px solid #2E2E2E;
+.user_profile_info_mob{
+    padding-top: 10px;
+    background-color: #353439;
+    font-size: 14px;
+    color: #fff;
+    .profile-hits_mob{
+        padding-left: 20px;
+    }
+    .profile-login_mob{
+        display: block;
+        padding-left: 20px;
+        padding-top: 5px;
+        padding-bottom: 10px;
+    }
+}
+
+.user_public_profile{
+    .icon-right_arrow:before {
+        content: '\e812';
+        font-size: 12px;
+    }
 }

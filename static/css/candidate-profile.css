@@ -363,6 +363,9 @@
 .icon-chat_bubble::before {
   content: '\e853'; }
 
+.icon-face_to_face_icon2::before {
+  content: '\e854'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -972,6 +975,9 @@ span.sticker {
 
 .icon-chat_bubble::before {
   content: '\e853'; }
+
+.icon-face_to_face_icon2::before {
+  content: '\e854'; }
 
 .left {
   float: left; }
@@ -1775,6 +1781,9 @@ a {
 
 .icon-chat_bubble::before {
   content: '\e853'; }
+
+.icon-face_to_face_icon2::before {
+  content: '\e854'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -2469,6 +2478,9 @@ span.sticker {
 .icon-chat_bubble::before {
   content: '\e853'; }
 
+.icon-face_to_face_icon2::before {
+  content: '\e854'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -3078,6 +3090,9 @@ span.sticker {
 
 .icon-chat_bubble::before {
   content: '\e853'; }
+
+.icon-face_to_face_icon2::before {
+  content: '\e854'; }
 
 .left {
   float: left; }
@@ -3881,6 +3896,9 @@ a {
 
 .icon-chat_bubble::before {
   content: '\e853'; }
+
+.icon-face_to_face_icon2::before {
+  content: '\e854'; }
 
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
@@ -5243,6 +5261,9 @@ span.sticker {
 .icon-chat_bubble::before {
   content: '\e853'; }
 
+.icon-face_to_face_icon2::before {
+  content: '\e854'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -5852,6 +5873,9 @@ span.sticker {
 
 .icon-chat_bubble::before {
   content: '\e853'; }
+
+.icon-face_to_face_icon2::before {
+  content: '\e854'; }
 
 .left {
   float: left; }
@@ -6656,6 +6680,9 @@ a {
 .icon-chat_bubble::before {
   content: '\e853'; }
 
+.icon-face_to_face_icon2::before {
+  content: '\e854'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -7340,6 +7367,10 @@ span.sticker {
   .external-links ul:last-child {
     border-bottom: 0;
     padding-bottom: 0; }
+
+.noviewLimit {
+  text-align: center;
+  padding-bottom: 10px; }
 
 #view-profile-info {
   padding: 20px 0; }

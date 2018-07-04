@@ -8,8 +8,9 @@ var globalParameters = {
     candidateListLength: null,
     actionPageNumber: 2,
     actionPageContent: 5,
-    newApplication: 0 
+    newApplication: 0 ,
 }
+
 var screenName = "candidate-apply-list";
 
 jQuery(document).ready( function() {
@@ -20,14 +21,14 @@ jQuery(document).ready( function() {
     var theJob = Job();
     var store = Store();
     var filters = Filters();
+    var recruiter=recruiterLimit();
+    var connect=connectSocial();
     //initializing the models
-
     candidates.setConfig("jobId", jobId)
     filters.init();
     candidates.init(profile, baseUrl);
     theJob.init();
     aCandidate.init();
-
 
     $(window).scroll(function() {  
         if ($(window).scrollTop() > 500 && globalParameters.newApplication==1) {
@@ -38,6 +39,29 @@ jQuery(document).ready( function() {
         }
            
     });
+    
+    var errorCode={
+        400:"We could not authenticate ",
+        409:"can not post same job",
+        403:""
+    }
+    var jobPosted=getQueryParameter("share");
+
+	if(!isEmpty(jobPosted) && (jobPosted)){
+		if(jobPosted=="fail"){
+			var code=getQueryParameter("code");
+			toastNotify(3,errorCode[code]);
+			var newUrl=removeParam("share", window.location.href)
+			newUrl=removeParam("code",newUrl);
+			window.history.replaceState("object or string", "Title", newUrl);	
+		}
+		else{
+			toastNotify(1,"SuccessFully Posted Job");
+			var newUrl = removeParam("share", window.location.href)
+        	window.history.replaceState("object or string", "Title", newUrl);
+		}
+	}
+
 
     var obj = getQueryParameters()
     if(!isEmpty(obj)) {
@@ -72,11 +96,11 @@ jQuery(document).ready( function() {
             filters.showAppliedFilters()
         }
     }
-
-
     submitPageVisit(recruiterId, screenName, jobId);
     var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitSuccess:"+screenName, onPageVisitUpdateSuccess)
     var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitFail:"+screenName, onPageVisitUpdateFail)
+  
+
     function onPageVisitUpdateSuccess(topic, data){
         console.log('page visit done');
     }
@@ -95,6 +119,10 @@ jQuery(document).ready( function() {
         // var parameters = filters.getAppliedFilters()
         // parameters.status = globalParameters.status;
         // setQueryParameters(parameters)
+        if(recruiter.getViewsLimit()==0){
+            toastNotify(3, "Your daily view limit exceeded")
+            return
+        }
         var eventObj = {
             event_category: eventMap["viewCandidProfile"]["cat"],
             event_label: 'origin=CandidateApplyList,type=SavedShorlistedList,recId='+recruiterId+''
@@ -106,8 +134,7 @@ jQuery(document).ready( function() {
         aCandidate.showCandidateDetails(candidateDetails,hash, candidateDetails.status);
         // sending event on every view
         // if(parseInt(candidateDetails.status) == 0)
-            setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
-
+        setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
     });
     page('/', function(context, next){
         aCandidate.closeModal();
@@ -115,6 +142,18 @@ jQuery(document).ready( function() {
 
 
     page();
+
+
+
+    theJob.onClickShareOnTwitter(function(){
+        connect.twitterConnect("_self",'/job/'+globalParameters.jobPublishedId+'/applications',globalParameters.jobId,recruiterId);
+		return true;    
+    })
+
+    theJob.onClickShareOnLinkedIn(function(){
+        connect.linkedinConnect("_self",'/job/'+globalParameters.jobPublishedId+'/applications',globalParameters.jobId,recruiterId);
+			return true;
+    })
 
     filters.addFilterData('industry', industryTagsData);
     filters.addFilterData('functionalArea',functionalAreaTagsData)
@@ -237,12 +276,12 @@ jQuery(document).ready( function() {
     // })
 
     
-    // candidates.onClickCandidate(function(candidateId, status, applicationId){
-    //     var candidateDetails = store.getCandidateFromStore(candidateId);
-    //     aCandidate.showCandidateDetails(candidateDetails,"", status);
-    //     if(parseInt(status) == 0)
-    //         setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
-    // });
+    candidates.onClickCandidate(function(){
+         if(recruiter.getViewsLimit()==0){
+            toastNotify(3,"You have exceeded your daily view limit.");
+            return true
+         }
+    });
 
     candidates.onClickAddTag(function(applicationId) {
         var candidateDetails = store.getCandidateFromStore(applicationId);
@@ -404,25 +443,31 @@ jQuery(document).ready( function() {
     })
 
     candidates.onClickDownloadResume(function(applicationId, status){
+        if(recruiter.getDownloadLimit()==0){
+            toastNotify(3,"Download Limit Exceeded")
+            return false;
+        }
         var eventObj = {
            event_category: eventMap["downloadResume"]["cat"],
            event_label: 'origin=CandidateApplyList,type=Single,recId='+recruiterId+''
         }
         sendEvent(eventMap["downloadResume"]["event"], eventObj)
-        // sending event on every download
-        // if(parseInt(status) == 0)
-            setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
+        setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
+        return true;
     });
 
     aCandidate.onClickDownloadResume(function(applicationId, status){
+        if(recruiter.getDownloadLimit()==0){
+            toastNotify(3,"Download Limit Exceeded")
+            return false;
+        }
         var eventObj = {
            event_category: eventMap["downloadResume"]["cat"],
            event_label: 'origin=Profile,type=Single,recId='+recruiterId+''
         }
         sendEvent(eventMap["downloadResume"]["event"], eventObj)
-        // if(parseInt(status) == 0)
-        // sending event on every download
-            setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
+        setCandidateAction(recruiterId, jobId, "download" , applicationId, {});
+        return true;
     });
 
     candidates.onClickSaveCandidate(function(applicationId, newStatus, dataAction){
@@ -470,12 +515,12 @@ jQuery(document).ready( function() {
 
     function onSuccessfullCandidateAction(topic, res) {
         var arr = [];
-        // TODO
         arr.push(res.applicationId)
         if(res.action == "view") {
             var newStatus = 4
             var obj = store.getCandidateFromStore(res.applicationId)
             obj["status"] = (obj["status"]==1 || obj["status"]==2 || obj["status"]==3) ? obj["status"] : newStatus;
+            // recruiter.updateViewCount()
             return candidates.changeStatus(arr, obj["status"])
         }
 
@@ -483,6 +528,7 @@ jQuery(document).ready( function() {
             var newStatus = 5
             var obj = store.getCandidateFromStore(res.applicationId)
             obj["status"] = (obj["status"]==1 || obj["status"]==2 || obj["status"]==3) ? obj["status"] : newStatus;
+            // recruiter.updateDownloadCount();
             return candidates.changeStatus(arr, obj["status"])
         }
     
@@ -1094,8 +1140,8 @@ jQuery(document).ready( function() {
 
     function onSuccessfulFetchJobDetails(topic, data) {
         globalParameters.jobId = data["jobId"]
+        globalParameters.jobPublishedId=data["jobPublishedId"];
         candidates.setDefaultTab(globalParameters.status)
-
         var parameters = getQueryParameters()
         parameters.status = globalParameters.status;
         parameters.orderBy = globalParameters.orderBy;
