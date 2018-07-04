@@ -922,6 +922,9 @@ function Filters(){
 				filtersTarget[name]['label'] = gender[value]
 		}
 		else if (type == "input") {
+			debugger
+			//
+			settings.clearAllFitersButton.removeClass("hidden");
 			filtersTarget[name]['selection'] = value
 			filtersTarget[name]['target'].val(value)
 			var orderBySelect = filtersTarget["orderBy"]["target"]
