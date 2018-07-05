@@ -1381,7 +1381,6 @@ function candidateList() {
     }
 
     function changeTab(hash){
-        debugger
         if(hash=="view-cover-letter"){
             settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 2});
             return

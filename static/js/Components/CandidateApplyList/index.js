@@ -107,13 +107,15 @@ jQuery(document).ready( function() {
         var parameters = filters.getAppliedFilters()
         parameters.status = globalParameters.status;
         parameters["page"]= "main";
+
         var queryString=testSetQueryParameters(parameters);
-        // document.getElementById(hash).offsetTop
-        context.canonicalPath+="?"+queryString;
-        context.path+=""+queryString;
-        context.querystring+=""+queryString;
-        context.state.path+="?"+queryString;
-        context.state.path+="?"+queryString;
+        // if(!(hash.indexOf("?") >= 0)){
+            context.canonicalPath+="?"+queryString;
+            context.path+=""+queryString;
+            context.querystring+=""+queryString;
+            context.state.path+="?"+queryString;
+        // }    
+    
         var candidateDetails = store.getCandidateFromStore(applicationId);
         if(recruiter.getViewsLimit()==0){
             toastNotify(3, "Your daily view limit exceeded");
@@ -136,6 +138,9 @@ jQuery(document).ready( function() {
             candidates.changeTab(hash);
             var offValue=document.getElementById(hash).offsetTop+document.getElementById('resumeHead').getBoundingClientRect().height;
             document.getElementById('candidateResumeModal').scrollTop=offValue
+        }
+        if(hash=="view-cover-letter"){
+            setCandidateAction(recruiterId, jobId, 'coverLetterView' , applicationId, {});
         }    
         return true
     });
@@ -382,6 +387,9 @@ jQuery(document).ready( function() {
         chatModule.createNewChannel(recruiterId,jobId,applicationId,array);
     })
 
+    aCandidate.intialiseProfileTab(function(applicationId){
+        setCandidateAction(recruiterId,jobId, "coverLetterView" , applicationId, {});
+    })
 
     aCandidate.onClickChatCandidateModal(function(candidateId,applicationId){
         var eventObj = {

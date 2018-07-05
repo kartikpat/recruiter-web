@@ -43,6 +43,14 @@ function Candidate() {
         settings.candidateResumeShell=$(".candidateResumeShell");
         settings.additionalInfo=$('.additional')
         settings.prefLocation=$('.js_pref_loc');
+        settings.candidateModal=$('.candidateDetailsModal');
+        initializeTooltip();
+        // intialiseProfileTab();
+        // onClickEscapeModal(closeModal);
+
+    }
+
+    function intialiseProfileTab(fn){
         jQuery("#tabbed-content").tabs({
             activate: function(event, ui) {
                 if(ui.newTab[0]["innerText"] == "COVER LETTER") {
@@ -51,6 +59,8 @@ function Candidate() {
             			event_label: 'origin=Profile,recId='+recruiterId+''
             		}
             		sendEvent(eventMap["viewCoverLetter"]["event"], eventObj)
+                    var applicationId=settings.candidateModal.attr('data-application-id');
+                    fn(applicationId)
                 }
                 else if(ui.newTab[0]["innerText"] == "PROFILE") {
                     var eventObj = {
@@ -68,11 +78,10 @@ function Candidate() {
                 }
             }
         });
-        
-        initializeTooltip();
-        // onClickEscapeModal(closeModal);
-
     }
+
+
+
 
     function onClickSeeMoreRec(fn) {
         settings.seeMoreRec.click(function() {
@@ -943,7 +952,8 @@ function Candidate() {
         addRecommendations: addRecommendations,
         onClickDownloadResume: onClickDownloadResume,
         addComment: addComment,
-        initializeTooltip:initializeTooltip
+        initializeTooltip:initializeTooltip,
+        intialiseProfileTab:intialiseProfileTab
 
 	}
 
