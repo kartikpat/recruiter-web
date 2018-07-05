@@ -132,8 +132,10 @@ jQuery(document).ready( function() {
         if(hash.indexOf("?") >= 0){
             var hash=hash.substring(0, hash.indexOf('?'))
         }
-        candidates.changeTab(hash);
-        var offValue=document.getElementById(hash).offsetTop
+        if(hash){
+            candidates.changeTab(hash);
+        }    
+        var offValue=document.getElementById(hash).offsetTop+document.getElementById('resumeHead').offsetTop
         document.getElementById('candidateResumeModal').scrollTop=offValue
         return true
     });
@@ -154,7 +156,7 @@ jQuery(document).ready( function() {
     // });
 
     page('/', function(context, next){
-        debugger
+        
         aCandidate.closeModal();
         if(context.querystring==globalParameters.path){
             return

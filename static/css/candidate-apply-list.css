@@ -5775,7 +5775,7 @@ span.sticker {
     font-size: 16px;
     color: #333;
     margin-top: 0px;
-    padding-top: 7px; }
+    padding-top: 27px; }
   .sidebar-section .icon-tick_circle {
     color: #1f8f75; }
   .sidebar-section .cand-add-tag {
@@ -5857,7 +5857,7 @@ span.sticker {
   .external-links ul .table-row-separator {
     border-bottom: 1px solid #e8e8e8 !important;
     margin-top: 0px;
-    margin-bottom: 20px; }
+    margin-bottom: 0px; }
   .external-links ul .invite:hover {
     text-decoration: none; }
   .external-links ul .invite-links {

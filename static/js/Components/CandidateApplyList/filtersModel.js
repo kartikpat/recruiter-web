@@ -365,14 +365,14 @@ function Filters(){
 			}
 			else {
 				orderBySelect.addClass("hidden")
-				if(settings.clearAllFitersButton.attr("data-search")=="all"){
-					settings.clearAllFitersButton.text("Clear All");	
-				}
-				else{
-					settings.clearAllFitersButton.text("Clear Search");
-				}
-				settings.clearAllFitersButton.attr("data-search","all");
-				settings.clearAllFitersButton.removeClass("hidden");
+				// if(settings.clearAllFitersButton.attr("data-search")=="all"){
+				// 	settings.clearAllFitersButton.text("Clear All");	
+				// }
+				// else{
+				// 	settings.clearAllFitersButton.text("Clear Search");
+				// }
+				// settings.clearAllFitersButton.attr("data-search","all");
+				// settings.clearAllFitersButton.removeClass("hidden");
 			}
 			filtersTarget["searchString"]["selection"] = str;
 			fn();
@@ -386,14 +386,14 @@ function Filters(){
 				}
 				else {
 					orderBySelect.addClass("hidden")
-					if(settings.clearAllFitersButton.attr("data-search")=="all"){
-						settings.clearAllFitersButton.text("Clear All");	
-					}
-					else{
-						settings.clearAllFitersButton.text("Clear Search");
-					}
-					settings.clearAllFitersButton.attr("data-search","all");
-					settings.clearAllFitersButton.removeClass("hidden");
+					// if(settings.clearAllFitersButton.attr("data-search")=="all"){
+					// 	settings.clearAllFitersButton.text("Clear All");	
+					// }
+					// else{
+					// 	settings.clearAllFitersButton.text("Clear Search");
+					// }
+					// settings.clearAllFitersButton.attr("data-search","all");
+					// settings.clearAllFitersButton.removeClass("hidden");
 				}
 				filtersTarget["searchString"]["selection"] = str;
 				fn();

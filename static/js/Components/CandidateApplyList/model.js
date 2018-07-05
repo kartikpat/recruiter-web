@@ -769,7 +769,7 @@ function candidateList() {
         settings.rowContainer.on('click',settings.candidateEditComment,function(event){
             event.stopPropagation();
             event.preventDefault();
-            debugger
+            
             $(this).closest(settings.candidateRowClass).find(settings.candidateCommentTextareaClass).val($(this).closest(settings.candidateRowClass).find(settings.commentTextarea).val());
             $(this).closest(settings.candidateRowClass).find(settings.commentTextarea).addClass("hidden");
             $(this).closest(settings.candidateRowClass).find(settings.candidateCommentTextareaClass).removeClass("hidden");
