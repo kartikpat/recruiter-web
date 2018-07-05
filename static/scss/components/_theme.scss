@@ -154,7 +154,6 @@ a {
 	    			font-size:$base-font-size;
 					li {
 		    			padding:19px 25px;
-
 		    			span {
 	    					display:inline-block;
 		    				&.button {
@@ -162,7 +161,11 @@ a {
 		    					border-radius:4px;
 		    				}
 		    			}
-		    		}
+					}
+					.basicPost{
+						padding-top: 15px;
+						padding-bottom: 0px;
+					}
 	    		}
 	    	}
 	    }
