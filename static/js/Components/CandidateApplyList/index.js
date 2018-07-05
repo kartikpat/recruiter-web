@@ -328,7 +328,8 @@ jQuery(document).ready( function() {
     })
 
     candidates.onclickMoreOrganisation(function(applicationId){
-        page('/'+applicationId+'#resumeOrg')
+        page('/'+applicationId+'#resumeOrg');
+
     })
 
     candidates.onClickAddTag(function(applicationId) {

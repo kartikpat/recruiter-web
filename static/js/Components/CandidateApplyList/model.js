@@ -136,7 +136,8 @@ function candidateList() {
                 event_label: 'origin=CandidateApplyList,type=MoreExperience,recId='+recruiterId+''
             }
             sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
-            fn(applicationId)
+            fn(applicationId);
+            return false
         })
     }
 
