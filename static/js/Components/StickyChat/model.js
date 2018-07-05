@@ -134,7 +134,6 @@ function stickyChatModel(){
     }
 
     function getMsgSentElement(data,status,index) {
-        debugger
         var card =settings.messageSentPrototype.clone().removeClass('prototype hidden').attr('id', data['entry']['id'])
         var time;
         time = moment(data["entry"]["time"]).format("DD MMMM YYYY")+ " ";
