@@ -93,6 +93,7 @@ jQuery(document).ready( function() {
     page.base('/job/'+jobId+'/applications');
 
     page('/:applicationId', function(context, next){
+        
         // var parameters = filters.getAppliedFilters()
         // parameters.status = globalParameters.status;
         // setQueryParameters(parameters)
@@ -127,8 +128,16 @@ jQuery(document).ready( function() {
         // sending event on every view
         // if(parseInt(candidateDetails.status) == 0)
         setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
+
+        if(hash.indexOf("?") >= 0){
+            var hash=hash.substring(0, hash.indexOf('?'))
+        }
+        candidates.changeTab(hash);
+        var offValue=document.getElementById(hash).offsetTop
+        document.getElementById('candidateResumeModal').scrollTop=offValue
         return true
     });
+    
     // candidates.onClickCandidate(function(candidateId, status, applicationId){
     //      var eventObj = {
     //         event_category: eventMap["viewCandidProfile"]["cat"],
@@ -145,6 +154,7 @@ jQuery(document).ready( function() {
     // });
 
     page('/', function(context, next){
+        debugger
         aCandidate.closeModal();
         if(context.querystring==globalParameters.path){
             return
@@ -324,12 +334,20 @@ jQuery(document).ready( function() {
     });
 
     candidates.onClickEducation(function(applicationId){
-        page('/'+applicationId+'#tag')
+        page('/'+applicationId+'#resumeEdu')
     })
 
     candidates.onclickMoreOrganisation(function(applicationId){
         page('/'+applicationId+'#resumeOrg');
 
+    })
+
+    candidates.onClickRecommendationLink(function(applicationId){
+        page('/'+applicationId+'#resumeRecom');
+    })
+
+    candidates.onClickCoverLetterLink(function(applicationId){
+        page('/'+applicationId+'#view-cover-letter');
     })
 
     candidates.onClickAddTag(function(applicationId) {

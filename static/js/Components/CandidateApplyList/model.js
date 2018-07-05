@@ -51,7 +51,7 @@ function candidateList() {
         settings.bulkBackIcon = $(".bulkBackIcon"),
         settings.secondMassActionContainer = $("#secondMassActionContainer");
         settings.totalApplicationsCount = 0;
-        settings.recommendationLinkClass = $(".recommendationsLink");
+        settings.recommendationLinkClass = (".recommendationsLink");
         settings.baseUrl = baseUrl;
         settings.from = ''
         settings.to = ''
@@ -82,8 +82,6 @@ function candidateList() {
         onClickMassShortlist()
         onClickMassComment()
         onChangebulkCheckbox()
-        onClickCoverLetterLink()
-        onClickRecommendationLink()
         onClickActionListItems()
         contactMenu()
         onClickBulkBackIcon()
@@ -124,6 +122,7 @@ function candidateList() {
             }
             sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
             fn(applicationId)
+            return false
         })
     }
 
@@ -216,42 +215,44 @@ function candidateList() {
         })
     }
 
-    function onClickCoverLetterLink() {
-        settings.rowContainer.on('click', settings.coverLetterLinkClass, function(e) {
+    function onClickCoverLetterLink(fn) {
+        settings.rowContainer.on('click',settings.coverLetterLinkClass, function() {
+            console.log($(this))
+            var applicationId=$(this).closest('.candidate-item').attr("data-application-id");
             var eventObj = {
                 event_category: eventMap["viewCandidProfile"]["cat"],
                 event_label: 'origin=CandidateApplyList,type=CoverLetter,recId='+recruiterId+''
             }
             sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
             settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 2});
+            fn(applicationId)
+            return false
         })
     }
 
-    function onClickRecommendationLink() {
-        settings.rowContainer.on('click', settings.recommendationLinkClass, function(e) {
-            settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
-            // debugger
-            // location.href='#resumeRecom'
+    function onClickRecommendationLink(fn) {
+        settings.rowContainer.on('click',settings.recommendationLinkClass, function() {
+            var applicationId=$(this).closest('.candidate-item').attr("data-application-id");
             var eventObj = {
                 event_category: eventMap["viewCandidProfile"]["cat"],
                 event_label: 'origin=CandidateApplyList,type=recommendations,recId='+recruiterId+''
             }
             sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
-        
+            settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
+            fn(applicationId)
+            return false
         })
     }
 
     function onClickSendInterviewInviteF2F(fn) {
         settings.rowContainer.on('click', settings.sendInterviewInviteF2FClass, function(e){
             e.preventDefault()
-
             if(parseInt($(this).attr("data-clickable")) == 1) {
                 window.location = staticEndPoints.createCalendar
 
             }
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             var inviteId = parseInt($(this).attr("data-invite-id"));
-
             fn(applicationId, inviteId);
             return false
         })
@@ -1378,6 +1379,15 @@ function candidateList() {
             $('html, body').animate({scrollTop:0}, '300');
           });
     }
+
+    function changeTab(hash){
+        debugger
+        if(hash=="view-cover-letter"){
+            settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 2});
+            return
+        }
+        settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
+    }
     
     return {
 		init: init,
@@ -1437,6 +1447,9 @@ function candidateList() {
         onClickJqueryTabs: onClickJqueryTabs,
         getActiveTab: getActiveTab,
         onClickEducation:onClickEducation,
-        onclickMoreOrganisation:onclickMoreOrganisation
+        onclickMoreOrganisation:onclickMoreOrganisation,
+        onClickRecommendationLink:onClickRecommendationLink,
+        onClickCoverLetterLink:onClickCoverLetterLink,
+        changeTab:changeTab
     }
 }
