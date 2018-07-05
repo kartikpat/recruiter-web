@@ -6779,7 +6779,7 @@ input::-webkit-input-placeholder {
                 background-color: black; }
           .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .view-links {
             font-size: 0;
-            margin-top: 20px;
+            padding-top: 0px;
             width: 100%; }
             .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .view-links a {
               color: #155d9a; }
@@ -6787,7 +6787,8 @@ input::-webkit-input-placeholder {
               font-size: 12px;
               display: inline-block;
               text-align: left;
-              resize: none; }
+              resize: none;
+              padding-top: 20px; }
             .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .view-links .comments:after {
               content: "";
               background-color: #808080;
@@ -6800,6 +6801,7 @@ input::-webkit-input-placeholder {
             .candidates-listing .candidate-item .candidate-item-section.profile-actions .candidate-action-area .view-links .tags {
               font-size: 12px;
               display: inline-block;
+              padding-top: 20px;
               margin-left: 10px; }
       .candidates-listing .candidate-item .candidate-item-section .action-tooltip {
         position: absolute;
@@ -7572,7 +7574,8 @@ input::-webkit-input-placeholder {
           background-color: #FFF;
           margin: 15px 0;
           padding-left: 20px;
-          padding-top: 10px; }
+          padding-top: 10px;
+          padding-bottom: 0px; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .separator {
             display: none; }
           .page-content .candidate-apply-listing .candidates-area .candidates-area-body .candidates-listing .candidate-item .candidate-item-section {
