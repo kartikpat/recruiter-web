@@ -91,8 +91,6 @@ function candidateList() {
         closetooltipModal()
         backToTop()
 
-
-
         $(window).click(function(event) {
     		$(settings.candidateOtherActionsClass).addClass('inactive');
             $(settings.bulkActionsDropdown).addClass("hidden")

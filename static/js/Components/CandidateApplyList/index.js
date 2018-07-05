@@ -127,7 +127,6 @@ jQuery(document).ready( function() {
             event_category: eventMap["viewCandidProfile"]["cat"],
             event_label: 'origin=CandidateApplyList,type=SavedShorlistedList,recId='+recruiterId+''
         }
-        debugger
         sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
         var applicationId = context.params.applicationId;
         var hash = context.hash || "";
@@ -136,8 +135,8 @@ jQuery(document).ready( function() {
         // sending event on every view
         // if(parseInt(candidateDetails.status) == 0)
         setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
-        debugger
-        document.getElementById(hash).offsetTop
+        // debugger
+        // document.getElementById(hash).offsetTop
     });
     page('/', function(context, next){
         aCandidate.closeModal();

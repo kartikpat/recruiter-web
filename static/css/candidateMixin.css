@@ -2139,7 +2139,7 @@ span.sticker {
     color: #2b2b2b;
     border: 1px solid #d8d5d5;
     background-color: #fff;
-    margin: 0px; }
+    margin: 7px 0px; }
   .view-resume-modal .mobcandidateAddEditButton {
     color: #155d9a;
     font-size: 13px;
@@ -2351,7 +2351,7 @@ span.sticker {
         color: #2b2b2b;
         border: 1px solid #d8d5d5;
         background-color: #fff;
-        margin: 0px; }
+        margin: 7px 0px; }
       .resume-sidebar .action-buttons span.button.cand-add-tag-button {
         border-radius: 4px;
         padding: 6px 18px;
@@ -2363,8 +2363,12 @@ span.sticker {
         margin: 0px; }
 
 .sidebar-section {
-  border-bottom: 1px solid #e8e8e8;
-  padding-bottom: 20px; }
+  border-bottom: none;
+  padding-bottom: 0; }
+  .sidebar-section .table-row-separator {
+    border-bottom: 1px solid #e8e8e8 !important;
+    padding-top: 20px;
+    margin-top: 0px; }
   .sidebar-section .wrap {
     margin: 7px 0;
     color: #2b2b2b;
@@ -2465,7 +2469,7 @@ span.sticker {
       margin-right: 10px; }
   .external-links ul .table-row-separator {
     border-bottom: 1px solid #e8e8e8 !important;
-    margin-top: 20px;
+    margin-top: 0px;
     margin-bottom: 20px; }
   .external-links ul .invite:hover {
     text-decoration: none; }
