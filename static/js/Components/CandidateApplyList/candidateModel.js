@@ -42,6 +42,7 @@ function Candidate() {
         settings.interviewInvite=$('.interviewinvite');
         settings.candidateResumeShell=$(".candidateResumeShell");
         settings.additionalInfo=$('.additional')
+        settings.prefLocation=$('.js_pref_loc');
         jQuery("#tabbed-content").tabs({
             activate: function(event, ui) {
                 if(ui.newTab[0]["innerText"] == "COVER LETTER") {
@@ -69,7 +70,7 @@ function Candidate() {
         });
         
         initializeTooltip();
-        onClickEscapeModal(closeModal);
+        // onClickEscapeModal(closeModal);
 
     }
 
@@ -111,10 +112,9 @@ function Candidate() {
                 e.stopPropagation()
                 e.stopImmediatePropagation();
             }
-           
+            settings.prefLocation.tooltipster('destroy');
             fn()
         })
-
     }
 
     function onClickEscapeModal(fn){
@@ -314,9 +314,12 @@ function Candidate() {
             var preferredLocationStr = (aData["preferredLocation"] && aData["preferredLocation"].length >3) ? "Multiple Locations" : aData["preferredLocation"].join(', ');
         }
         item.preferredLocation.text(preferredLocationStr);
-        item.preferredLocationDetail.text(aData["preferredLocation"].join(', '));
         item.preferredLocation.attr("title",locationTitle).addClass('tooltip');
-         initializeTooltip();
+        initializeTooltip();
+        if(aData["preferredLocation"].length<=3){
+            item.preferredLocation.tooltipster('close');
+        }
+        item.preferredLocationDetail.text(aData["preferredLocation"].join(', '));
         item.contact.text(aData["phone"] || "N/A");
         item.email.text(aData["email"]||"N/A");
 
@@ -565,11 +568,12 @@ function Candidate() {
         settings.candidateDownloadResume.click(function(event) {
             event.preventDefault()
             var status = $(this).attr("data-status");
-            var url = $(this).attr("data-href");
-            url += "?type=download"
-            window.open(url);
             var applicationId = $(this).closest(settings.candidateDetailsModal).attr("data-application-id")
-            fn(applicationId, status)
+            if(fn(applicationId, status)){
+                var url = $(this).attr("data-href")
+                url += "?type=download"
+                window.open(url);
+            }
         })
     }
 
@@ -599,6 +603,7 @@ function Candidate() {
         item.workPermit.text("");
         item.coverLetter.text("");
         item.preferredLocation.text("");
+        // item.preferredLocation.tooltipster('destroy');
         item.tabContent.tabs({active: 0});
         item.shortlistButton.text("Shortlist").removeClass("act-short");
         item.rejectButton.text("Reject").removeClass("act-rej");
@@ -871,7 +876,7 @@ function Candidate() {
                 settings.candidateDetailsModal.find(".candidateSaveModal").html("<span class='icon'><i class='icon-star'></i></span>Saved for Later");
             }
             else {
-                settings.candidateDetailsModal.find(".candidateSaveModal").html("<span class='icon'><i class='icon-star_later'></i></span>Save for Later");
+                settings.candidateDetailsModal.find(".candidateSaveModal").html("<span class='icon'><i class='icon-star_later'></i></span><span class='underline'>Save for Later</span>");
             }
             if(newStatus == settings.candidateDetailsModal.find(".candidateRejectModal").attr("data-action")) {
                 settings.candidateDetailsModal.find(".candidateRejectModal").text("Rejected").addClass("act-rej")
@@ -908,10 +913,10 @@ function Candidate() {
 			side:['bottom'],
 			theme: 'tooltipster-borderless',
 			maxWidth: 500,
-			})
-		}
-
+            })
+        }
    	}
+
 
     return {
         init: init,

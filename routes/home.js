@@ -23,6 +23,7 @@ module.exports = function(settings){
 	var welcome = config["welcome"];
 	var verifyAccount = config["verify"];
 	var parser = require('ua-parser-js');
+	var moment = require('moment');
 	const url = require('url'); // built-in utility
 
 	if(env=="local")
@@ -63,9 +64,11 @@ module.exports = function(settings){
 				const jsonBody = JSON.parse(body)
 				if(jsonBody.status && jsonBody.status =='success'){
 					req.profile = jsonBody.data;			
+					req.profile.lastLogin=moment(req.profile.lastLogin).format('ll');	
 					if(!(req.profile.img_link)){
 						req.profile.img_link='/static/images/noimage.png';
 					}
+
 					req.profile.about = splitAbout(req.profile.about);
 					req.profile.showSearch = (req.profile.search ==2) ? null : 1
 					if(req.originalUrl == "/verify-email") {
@@ -106,6 +109,7 @@ module.exports = function(settings){
 		if(req.originalUrl == "/login") {
 			return next()
 		}
+
 		return res.redirect('/login?callbackUrl='+req.originalUrl);
 
 	}
@@ -781,7 +785,6 @@ module.exports = function(settings){
 			});
 		}
 		catch(err){
-			console.log(err);
 			if(err==401){
 				return res.status(401).json({
 					status: 'fail',
@@ -806,6 +809,8 @@ module.exports = function(settings){
 			});
 		};		
 	});
+
+	
 
 	app.post("/recruiter/login/verify", function(req, res){
 		const oldCookie=req.cookies[config['oldCookie']]

@@ -5,25 +5,31 @@ var globalParameters = {
     jobListLength: null,
 	initialLoad: 1,
 }
+var errorCode={
+	400:"We could not authenticate ",
+	409:"can not post same job",
+	403:""
+}
 
 jQuery(document).ready( function() {
-
 	var successMsg = getQueryParameter("jobPostMessage");
-	var errorMessage=getQueryParameter("error");
-	var jobPosted=getQueryParameter("jobId");
+
+	var jobPosted=getQueryParameter("share");
 
 	if(!isEmpty(jobPosted) && (jobPosted)){
-		toastNotify(1,"SuccessFully Posted Job");
-		var newUrl = removeParam("jobId", window.location.href)
-        window.history.replaceState("object or string", "Title", newUrl);
+		if(jobPosted=="fail"){
+			var code=getQueryParameter("code");
+			toastNotify(3,errorCode[code]);
+			var newUrl=removeParam("share", window.location.href)
+			newUrl=removeParam("code",newUrl);
+			window.history.replaceState("object or string", "Title", newUrl);	
+		}
+		else{
+			toastNotify(1,"SuccessFully Posted Job");
+			var newUrl = removeParam("share", window.location.href)
+        	window.history.replaceState("object or string", "Title", newUrl);
+		}
 	}
-	
-	if(!isEmpty(errorMessage) && (errorMessage) ){
-		toastNotify(3,decodeURIComponent(errorMessage));
-		var newUrl = removeParam("error", window.location.href)
-        window.history.replaceState("object or string", "Title", newUrl);
-	}
-
 	
     if(!isEmpty(successMsg) && (successMsg)) {
         toastNotify(1, decodeURIComponent(successMsg))

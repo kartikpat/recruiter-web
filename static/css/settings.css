@@ -363,6 +363,9 @@
 .icon-chat_bubble::before {
   content: '\e853'; }
 
+.icon-face_to_face_icon2::before {
+  content: '\e854'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -916,7 +919,7 @@ span.sticker {
           margin: 0;
           border-radius: 3px;
           width: 175px;
-          height: 40px;
+          height: 45px;
           text-align: center; }
           .page-content .settings-page .settings-body .settings-section .settings-section-content .section-form .formgroup .save-container.green {
             background-color: #1f8f75; }

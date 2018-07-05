@@ -265,6 +265,9 @@
                                 width: 100px;
                             }
                         }
+                        .interviewType{
+                            margin-top: 10px;
+                        }
                     }
                     .interview-type{
                         color:  #149075;
@@ -853,7 +856,7 @@
 
 
 .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
-    border: 1px solid #82c3b5!important;
-    background: #82c3b5!important;
-    color: #777620;
+    border: 1px solid #82c3b5 !important;
+    background: #149075!important;
+    color: #fff!important;
 }

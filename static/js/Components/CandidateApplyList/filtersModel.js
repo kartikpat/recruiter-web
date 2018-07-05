@@ -13,42 +13,48 @@ function Filters(){
 			type: 'checkbox',
 			selection: [],
 			label: [],
-			count: 0
+			count: 0,
+			text:""
 		},
 		functionalArea: {
 			target: $(".jsFuncArea"),
 			type: 'checkbox',
 			selection: [],
 			label: [],
-			count: 0
+			count: 0,
+			text:"Functional Area"
 		},
 		currentLocation:  {
 			target: $(".jsCurLoc") ,
 			type: 'checkbox',
 			selection: [],
 			label: [],
-			count: 0
+			count: 0,
+			text:"Current Location"
 		},
 		preferredLocation: {
 			target: $(".jsPrefLoc"),
 			type: 'checkbox',
 			selection: [],
 			label: [],
-			count: 0
+			count: 0,
+			text:"Preferred Location"
 		},
 		institute: {
 			target: $(".jsInstitute"),
 			type: 'checkbox',
 			selection: [],
 			label: [],
-			count: 0
+			count: 0,
+			text:""
 		},
 		language: {
 			target:  $(".jsLanguage"),
 			type: 'checkbox',
 			selection: [],
 			label: [],
-			count: 0
+			count: 0,
+			text:""
 		},
 		experience: {
 			type: 'dropdownHalf',
@@ -61,7 +67,8 @@ function Filters(){
 					target: $("#maxExp"),
 					selection: -1
 				}
-			}
+			},
+			text:""
 		},
 		batch: {
 			type: 'dropdownHalf',
@@ -74,7 +81,8 @@ function Filters(){
 					target: $("#maxBatch"),
 					selection: -1
 				}
-			}
+			},
+			text:""
 		},
 		salary: {
 			type: 'dropdownHalf',
@@ -100,55 +108,64 @@ function Filters(){
 					target: $("#maxAge"),
 					selection: -1
 				}
-			}
+			},
+			text:""
 		},
 		sex : {
 			target: $("#gender"),
 			type: 'dropdown',
 			selection: -1,
-			label: ""
+			label: "",
+			text:"Gender"
 		},
 		notice: {
 			target: $("#noticePeriod"),
 			type: 'dropdown',
 			selection: -1,
-			label: ""
+			label: "",
+			text:"Notice Period"
 		},
 		applicationDate : {
 			target: $("#applicationDate"),
 			type: 'dropdown',
 			selection: -1,
-			label: ""
+			label: "",
+			text:"Application Date"
 		},
 		lastActive: {
 			target: $("#lastSeen"),
 			type: 'dropdown',
 			selection: -1,
-			label: ""
+			label: "",
+			text:""
 		},
 		permit: {
 			target: $("#workPermit"),
 			type: 'dropdown',
 			selection: -1,
-			label: ""
+			label: "",
+			text:"Work Permit for USA"
 		},
 		handleTeam: {
 			target: $("#handleTeam"),
 			type: 'dropdown',
 			selection: -1,
-			label: ""
+			label: "",
+			text:"Handled Team?"
 		},
 		relocate: {
 			target: $("#relocate"),
 			type: 'dropdown',
 			selection: -1,
-			label: ""
+			label: "",
+			text:"Willing to Relocate?"
 		},
 		differentlyAbled: {
 			target: $("#differentlyAbled"),
 			type: 'dropdown',
 			selection: -1,
-			label: ""
+			label: "",
+			text:"Differently Abled?"
 		},
 		searchString: {
 			target: $("#searchInput"),
@@ -503,8 +520,6 @@ function Filters(){
 		aFilter.attr('data-value', value);
 		aFilter.attr('data-type', type);
 		aFilter.find('.icon-label').text(category + ": " + label)
-
-
 		return aFilter;
 	}
 
@@ -613,14 +628,14 @@ function Filters(){
 
 			if(filtersTarget[key]["type"] == "checkbox") {
 				filtersTarget[key]["selection"].forEach(function(value,index){
-					addFilterToContainer(value, filtersTarget[key]["label"][index], key, "checkbox");
+					addFilterToContainer(value, filtersTarget[key]["label"][index],filtersTarget[key]["text"], "checkbox");
 				})
 			}
 			else if(filtersTarget[key]["type"] == "dropdownHalf") {
 
 				for (var k in filtersTarget[key]["props"]) {
 					if(filtersTarget[key]["props"][k]["selection"] != -1) {
-						addFilterToContainer(filtersTarget[key]["props"][k]["selection"],filtersTarget[key]["props"][k]["selection"] , k +"-"+ key, "dropdownHalf");
+						addFilterToContainer(filtersTarget[key]["props"][k]["selection"],filtersTarget[key]["props"][k]["selection"] , k +". "+ key, "dropdownHalf");
 					}
 
 				}

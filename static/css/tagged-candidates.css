@@ -363,6 +363,9 @@
 .icon-chat_bubble::before {
   content: '\e853'; }
 
+.icon-face_to_face_icon2::before {
+  content: '\e854'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -972,6 +975,9 @@ span.sticker {
 
 .icon-chat_bubble::before {
   content: '\e853'; }
+
+.icon-face_to_face_icon2::before {
+  content: '\e854'; }
 
 .left {
   float: left; }
@@ -1397,10 +1403,11 @@ a {
           .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-info p.profile-email {
             font-size: 12px; }
     .mobile-menu-container .mobile-menu-content .mobile-profile-actions {
-      margin-top: 20px; }
+      margin-top: 0px; }
       .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul {
         list-style: none;
-        padding: 0; }
+        padding: 0;
+        margin-top: 0px; }
         .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a {
           color: #FFF;
           font-size: 14px; }
@@ -1776,6 +1783,9 @@ a {
 .icon-chat_bubble::before {
   content: '\e853'; }
 
+.icon-face_to_face_icon2::before {
+  content: '\e854'; }
+
 /** Mobile Menu **/
 /* [Recruiter_HomePage : ] */
 /* [/Recruiter_HomePage : ] */
@@ -2019,6 +2029,9 @@ span.sticker {
   .tag-container .pill-button .pill-listing ul {
     max-height: 300px; } }
 
+.chatAudio {
+  height: 0px; }
+
 .conversations {
   width: 20%;
   padding-left: 30px;
@@ -2082,7 +2095,8 @@ span.sticker {
             border: 2px solid #FFF;
             border-radius: 50%;
             margin-left: 25px;
-            top: -10px; }
+            top: -10px;
+            background: #6dd51e; }
         .conversations .conversation-listing-container .conversations-listing .conversation-item .user-item.user-info {
           display: inline-block;
           vertical-align: middle;
@@ -2375,7 +2389,7 @@ span.sticker {
               word-wrap: break-word;
               border: 1px solid #e8e8e8; }
               .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .candidate-item-section.profile-actions .skill-tag-listing .skill-tag a {
-                color: #2b2b2b; }
+                color: #6e6e6e; }
         .page-content .tagged-candidates .tagged-candidates-listing .candidate-item .tagged-on-label {
           margin-left: 9%;
           padding-top: 20px;

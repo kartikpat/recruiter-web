@@ -458,7 +458,7 @@ $button-border-color: #8f8a8a;
 				padding-top: 5px;
 				padding-left: 10px;
 				img{
-					width: 80px;
+					width: 85px;
 				    height: 80px;
 					object-fit: cover;
 					display: table-cell;
@@ -892,7 +892,15 @@ $button-border-color: #8f8a8a;
 				    z-index: 5;
 					li:hover{
 						text-decoration: underline;
-
+					}
+					li{
+						span{
+							font-size: 13px;
+							color: #1a5e98;
+						}
+						span:hover{
+							text-decoration: underline;
+						}
 					}
 				}
 			}

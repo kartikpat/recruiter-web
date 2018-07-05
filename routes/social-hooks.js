@@ -142,7 +142,6 @@ module.exports = function(settings) {
                     return res.redirect(page);;
                 return res.redirect(config['social']['twitter']['failureRedirect']);
             }
-
             if(jobId){
                 try{
                     await getTokenAndPost(recruiterId, 'twitter', accessToken, jobId, baseUrl );

@@ -2,7 +2,6 @@ function candidateList() {
 
     var settings = {};
     var config = {};
-    
 
     function init(profile, baseUrl){
         settings.rowContainer= $('.candidateListing'),
@@ -62,7 +61,6 @@ function candidateList() {
         settings.candidateCommentTextareaClass= '.candidateCommentText',
         settings.commentTextarea=('.comment-text'),
         settings.candidateEditComment=('.candidateAddEdit'),
-        settings.candidateEditCommentButton=$('.candidateAddEdit'),
         settings.contactMenubutton=$('.contactMenubutton');
         settings.candidateAddTagButtonClass= '.candidateAddTag',
         settings.candidateTagInputClass = '.candidateTagInputContainer',
@@ -92,28 +90,8 @@ function candidateList() {
         onClickModal()
         closetooltipModal()
         backToTop()
-       
-        // onEnter()
-        settings.rowContainer.on('click', '.moreEducationLink', function(){
-            $('div').animate({scrollTop: 1000});
-            var eventObj = {
-                event_category: eventMap["viewCandidProfile"]["cat"],
-                event_label: 'origin=CandidateApplyList,type=MoreEducation,recId='+recruiterId+''
-            }
-            sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
-        })
-
-        settings.rowContainer.on('click', '.moreExperience', function(){
-            $('div').animate({scrollTop: 500});
-            var eventObj = {
-                event_category: eventMap["viewCandidProfile"]["cat"],
-                event_label: 'origin=CandidateApplyList,type=MoreExperience,recId='+recruiterId+''
-            }
-
-            sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
 
 
-        })
 
         $(window).click(function(event) {
     		$(settings.candidateOtherActionsClass).addClass('inactive');
@@ -136,6 +114,33 @@ function candidateList() {
         
         $(".downloadExcelMass").attr('href', settings.url + "?token="+getCookie("recruiter-access-token")+"");
 	}
+
+
+    function onClickEducation(fn){
+        settings.rowContainer.on('click', '.moreEducationLink', function(){
+            var applicationId=$(this).closest('.candidate-item').attr("data-application-id");
+            settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
+            var eventObj = {
+                event_category: eventMap["viewCandidProfile"]["cat"],
+                event_label: 'origin=CandidateApplyList,type=MoreEducation,recId='+recruiterId+''
+            }
+            sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
+            fn(applicationId)
+        })
+    }
+
+    function onclickMoreOrganisation(fn){
+        settings.rowContainer.on('click', '.moreExperience', function(){
+            var applicationId=$(this).closest('.candidate-item').attr("data-application-id");
+            settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
+            var eventObj = {
+                event_category: eventMap["viewCandidProfile"]["cat"],
+                event_label: 'origin=CandidateApplyList,type=MoreExperience,recId='+recruiterId+''
+            }
+            sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
+            fn(applicationId)
+        })
+    }
 
     function onClickNewPost(fn){
         settings.newPost.click(function(){
@@ -212,7 +217,7 @@ function candidateList() {
         })
     }
 
-    function onClickCoverLetterLink() 
+    function onClickCoverLetterLink() {
         settings.rowContainer.on('click', settings.coverLetterLinkClass, function(e) {
             var eventObj = {
                 event_category: eventMap["viewCandidProfile"]["cat"],
@@ -225,13 +230,15 @@ function candidateList() {
 
     function onClickRecommendationLink() {
         settings.rowContainer.on('click', settings.recommendationLinkClass, function(e) {
+            settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
+            // debugger
+            // location.href='#resumeRecom'
             var eventObj = {
                 event_category: eventMap["viewCandidProfile"]["cat"],
                 event_label: 'origin=CandidateApplyList,type=recommendations,recId='+recruiterId+''
             }
             sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
-            // settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
-
+        
         })
     }
 
@@ -489,7 +496,6 @@ function candidateList() {
     }
 
 
-
     function getJobsCategoryTabsElement() {
         var card = $("#jobs-category-tabs");
         return {
@@ -616,13 +622,14 @@ function candidateList() {
         })
     }
 
+
+    
     function onClickCandidate(fn) {
-        settings.rowContainer.on('click', ".candidate-item", function(e){
-            var candidateId = $(this).attr('data-candidate-id');
-            var status = $(this).attr("data-status")
-            var applicationId = $(this).attr("data-application-id")
-            return fn(candidateId, status, applicationId);
-            return false
+        settings.rowContainer.on('click', ".openCandidateLink", function(e){
+            if(fn()){
+                e.stopPropagation();
+                e.preventDefault();
+            }    
         })
     }
 
@@ -672,13 +679,13 @@ function candidateList() {
     function onClickDownloadResume(fn) {
         settings.rowContainer.on('click', settings.candidateDownloadResumeButton, function(event){
             event.preventDefault()
-            var url = $(this).attr("data-href");
-            url += "?type=download"
-            window.open(url);
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
-            var status = $(this).closest(settings.candidateRowClass).attr("data-status")
-            fn(applicationId, status)
-
+            var status = $(this).closest(settings.candidateRowClass).attr("data-status")   
+            if(fn(applicationId, status)){
+                var url = $(this).attr("data-href");
+                url += "?type=download"
+                window.open(url);
+            }    
         })
     }
 
@@ -762,6 +769,8 @@ function candidateList() {
         settings.rowContainer.on('click',settings.candidateEditComment,function(event){
             event.stopPropagation();
             event.preventDefault();
+            debugger
+            $(this).closest(settings.candidateRowClass).find(settings.candidateCommentTextareaClass).val($(this).closest(settings.candidateRowClass).find(settings.commentTextarea).val());
             $(this).closest(settings.candidateRowClass).find(settings.commentTextarea).addClass("hidden");
             $(this).closest(settings.candidateRowClass).find(settings.candidateCommentTextareaClass).removeClass("hidden");
             $(this).closest(settings.candidateRowClass).find(settings.candidateAddCommentButtonClass).removeClass("hidden");
@@ -884,8 +893,6 @@ function candidateList() {
     }
 
     function addComment(comment,applicationId){
-        console.log(comment);
-        console.log(applicationId);
         $(".candidateRow[data-application-id="+applicationId+"]").find(settings.candidateCommentTextareaClass).addClass("hidden");
         $(".candidateRow[data-application-id="+applicationId+"]").find(settings.candidateAddCommentButtonClass).addClass("hidden");
         $(".candidateRow[data-application-id="+applicationId+"]").find(settings.commentTextarea).val(comment);
@@ -1255,7 +1262,6 @@ function candidateList() {
     }
 
     function changeInviteText(applicationId) {
-
         settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .interviewinvite").text("Interview Invite Sent")
         settings.rowContainer.find(".candidateRow[data-application-id="+applicationId+"] .inviteText").removeClass("underline").addClass("non-underline")
         $(".candidateRow[data-application-id="+applicationId+"] .interviewinvite").text("Interview Invite Sent")
@@ -1430,6 +1436,8 @@ function candidateList() {
         showNewPost:showNewPost,
         hideNewPost:hideNewPost,
         onClickJqueryTabs: onClickJqueryTabs,
-        getActiveTab: getActiveTab
+        getActiveTab: getActiveTab,
+        onClickEducation:onClickEducation,
+        onclickMoreOrganisation:onclickMoreOrganisation
     }
 }

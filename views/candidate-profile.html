@@ -304,7 +304,8 @@
         	            	</div>
 						</div>
 
-                    </div>
+					</div>
+					<div class="noviewLimit hidden">You have exceeded your daily view limit. Please reach out to us on <a href="">info@iimjobs.com</a> for further clarification.</div>
                 </div>
             </div>
             <div class="mobile-resume-sidebar">
@@ -346,7 +347,7 @@
 									<div class="invite invite-links"><span class="icon"></span>Send Interview Invite:</div>
 									<div class="invite-links face-invite">
 										<span class="icon">
-											<i class="icon-face_to_face_icon"></i>
+											<i class="icon-face_to_face_icon2"></i>
 										</span>
 										<span data-invite-id="1" class="inviteF2f invite tooltip tooltipstered" state="default">
 											<span class="context">Face to Face</span>
@@ -377,22 +378,34 @@
 				</div>
             	<div class="sidebar-section external-links">
             		<ul>
-                      	<li class="save candidateSaveModal"><span class="icon"><i class="icon-star_later"></i></span>Save for Later</li>
-            			<li class="chat candidateChatModal"><span class="icon"><i class="icon-chat_icon"></i></span>Chat with <span id="firstName" class="candidate-first-name js_name"></span></li>
-						<li class="download candidateDownloadResume"><span class="icon"><i class="icon-download_icon"></i></span>Download Resume</li>
+						  <li class="save candidateSaveModal"><span class="icon"><i class="icon-star_later"></i></span>
+							<span class="underline">
+								Save for Later
+							</span>	
+						</li>
+						<li class="chat candidateChatModal"><span class="icon"><i class="icon-chat_icon"></i></span>
+							<span class="underline">
+								Chat with <span id="firstName" class="candidate-first-name js_name"></span>
+							</span>	
+						</li>
+						<li class="download candidateDownloadResume"><span class="icon"><i class="icon-download_icon"></i></span>
+							<span class="underline">
+								Download Resume
+							</span>
+						</li>
             			<li class="table-row-separator"></li>
 						<li class="invite">
 							<!-- <span class="icon sendInvite"><i class="icon-interview"></i></span> -->
 							<span class="interviewinvite"><h3>Send Interview Invite</h3></span>
 							<li class="invite-links">
-									<span class="icon"><i class="icon-face_to_face_icon"></i></span>
+									<span class="icon"><i class="icon-face_to_face_icon2"></i></span>
 									<span data-invite-id="1" class="inviteF2f invite tooltip tooltipstered" state="default">
 										<span class="context underline inviteText">Face to Face</span>
 										<div class="loadingScroller icon-spinner-7 hidden" aria-hidden="true"></div>
 										 <span class="icon-container hidden"><i class="icon-tick"></i></span>
 									</span>
 							</li>
-							<li class="invite-links">
+							<li class="invite-links" id="inviteTele" >
 									<span class="icon"><i class="icon-telephone"></i></span>
 									<span data-invite-id="2" class="inviteTelephonic invite tooltip tooltipstered" state="default">
 										<span class="context underline inviteText">Telephonic</span>
@@ -401,8 +414,8 @@
 									</span>
 							</li>
 					</ul>
-
-            	</div>
+				</div>
+				
                 <div class="sidebar-section contact-info">
         			<h3>Contact Information</h3>
         			<div class="wrap">
@@ -410,10 +423,9 @@
         				<span class="contact"></span>
         				<span class="icon iconTelephoneVer hidden"><i class="icon-tick_circle tooltip" aria-hidden="true" title="Verified Phone Number"></i></span>
         			</div>
-
         			<div class="wrap">
         				<span class="icon"><i class="icon-mail"></i></span>
-        				<span class="email-address"></span>
+        				<div class="email-address"></div>
         				<span class="icon iconEmailVer hidden"><i class="icon-tick_circle tooltip" aria-hidden="true" title="Verified Email"></i></span>
         			</div>
             	</div>
@@ -486,8 +498,8 @@
 
     <div class="datum js_edu prototype hidden">
     	<p class="data name js_edu_name">Indian Institute of Management, Indore (IIMI)</p>
-    	<p class="detail tenure js_edu_tenure">2008-2012</p>
-    	<p class="detail degree js_edu_degree">B Tech / BE (Full Time)</p>
+		<p class="detail degree js_edu_degree">B Tech / BE (Full Time)</p>
+		<p class="detail tenure js_edu_tenure">2008-2012</p>
     	<div class="separator jsSeperator hidden"></div>
     </div>
 
