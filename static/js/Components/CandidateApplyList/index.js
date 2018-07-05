@@ -130,13 +130,13 @@ jQuery(document).ready( function() {
         setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
 
         if(hash.indexOf("?") >= 0){
-            var hash=hash.substring(0, hash.indexOf('?'))
+            hash=hash.substring(0, hash.indexOf('?'))
         }
         if(hash){
             candidates.changeTab(hash);
+            var offValue=document.getElementById(hash).offsetTop+document.getElementById('resumeHead').getBoundingClientRect().height;
+            document.getElementById('candidateResumeModal').scrollTop=offValue
         }    
-        var offValue=document.getElementById(hash).offsetTop+document.getElementById('resumeHead').offsetTop
-        document.getElementById('candidateResumeModal').scrollTop=offValue
         return true
     });
     
@@ -156,7 +156,6 @@ jQuery(document).ready( function() {
     // });
 
     page('/', function(context, next){
-        
         aCandidate.closeModal();
         if(context.querystring==globalParameters.path){
             return
@@ -259,6 +258,7 @@ jQuery(document).ready( function() {
         page('/?'+queryString)
         // return fetchJobApplications(jobId, parameters, recruiterId)
     });
+
     filters.onClickRemoveFilter(function(value,category,type){
         var eventObj = {
            event_category: eventMap["crossFilter"]["cat"],
@@ -290,6 +290,7 @@ jQuery(document).ready( function() {
         page('/?'+queryString)
         // fetchJobApplications(jobId, parameters, recruiterId);
     })
+
     filters.onSelectSortByOption(function(){
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
