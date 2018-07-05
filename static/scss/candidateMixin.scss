@@ -168,7 +168,7 @@
 .resume-sidebar {
 	width:20%;
 	.action-buttons {
-		margin-bottom:20px;
+		margin-bottom:30px;
 		&.cand-add-tag-action-btn {
 			margin: 15px 0;
 		}
@@ -226,7 +226,8 @@
 	h3 {
 		font-size:$view-resume-section-title-size;
 		color:$color-black;
-		margin-top:20px;
+		margin-top:0px;
+		padding-top: 7px;
 	}	
 	.icon-tick_circle {
 		color: $button-color-green;

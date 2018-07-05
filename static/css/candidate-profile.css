@@ -4430,7 +4430,7 @@ span.sticker {
 .resume-sidebar {
   width: 20%; }
   .resume-sidebar .action-buttons {
-    margin-bottom: 20px; }
+    margin-bottom: 30px; }
     .resume-sidebar .action-buttons.cand-add-tag-action-btn {
       margin: 15px 0; }
     .resume-sidebar .action-buttons span.button {
@@ -4508,7 +4508,8 @@ span.sticker {
   .sidebar-section h3 {
     font-size: 16px;
     color: #333;
-    margin-top: 20px; }
+    margin-top: 0px;
+    padding-top: 7px; }
   .sidebar-section .icon-tick_circle {
     color: #1f8f75; }
   .sidebar-section .cand-add-tag {
@@ -7222,7 +7223,7 @@ span.sticker {
 .resume-sidebar {
   width: 20%; }
   .resume-sidebar .action-buttons {
-    margin-bottom: 20px; }
+    margin-bottom: 30px; }
     .resume-sidebar .action-buttons.cand-add-tag-action-btn {
       margin: 15px 0; }
     .resume-sidebar .action-buttons span.button {
@@ -7300,7 +7301,8 @@ span.sticker {
   .sidebar-section h3 {
     font-size: 16px;
     color: #333;
-    margin-top: 20px; }
+    margin-top: 0px;
+    padding-top: 7px; }
   .sidebar-section .icon-tick_circle {
     color: #1f8f75; }
   .sidebar-section .cand-add-tag {
