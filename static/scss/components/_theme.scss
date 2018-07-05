@@ -144,17 +144,16 @@ a {
 	    }
 
 	    .mobile-profile-actions {
-	    	margin-top:20px;
+	    	margin-top:0px;
 	    	ul {
 	    		list-style:none;
 	    		padding:0;
-
+				margin-top: 0px;
 	    		a {
 	    			color:$color-white;
 	    			font-size:$base-font-size;
 					li {
 		    			padding:19px 25px;
-
 		    			span {
 	    					display:inline-block;
 		    				&.button {
@@ -162,7 +161,11 @@ a {
 		    					border-radius:4px;
 		    				}
 		    			}
-		    		}
+					}
+					.basicPost{
+						padding-top: 15px;
+						padding-bottom: 0px;
+					}
 	    		}
 	    	}
 	    }

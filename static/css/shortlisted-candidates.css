@@ -1403,10 +1403,11 @@ a {
           .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-info p.profile-email {
             font-size: 12px; }
     .mobile-menu-container .mobile-menu-content .mobile-profile-actions {
-      margin-top: 20px; }
+      margin-top: 0px; }
       .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul {
         list-style: none;
-        padding: 0; }
+        padding: 0;
+        margin-top: 0px; }
         .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a {
           color: #FFF;
           font-size: 14px; }
@@ -1417,6 +1418,9 @@ a {
               .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a li span.button {
                 margin: 10px 0 0 10px;
                 border-radius: 4px; }
+          .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a .basicPost {
+            padding-top: 15px;
+            padding-bottom: 0px; }
 
 .link-color {
   color: #155d9a; }

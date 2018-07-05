@@ -58,6 +58,21 @@ function fetchURL(){
        return obj;
 }
 
+function getParametersByString(queryString){
+	var obj = {};
+	if(!queryString) {
+		return obj
+	}
+    queryString= queryString.replace("?", "");
+    queryString= queryString.split("&");
+
+	for(var i=0; i < queryString.length; i++){
+        var temp=queryString[i].split("=");
+	    obj[temp[0]] = temp[1]
+   	}
+	return obj;
+}
+
 function getQueryParameter(queryString) {
 	var urlObj = fetchURL();
 	var testString = urlObj["search"];
