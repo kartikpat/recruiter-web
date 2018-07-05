@@ -1403,10 +1403,11 @@ a {
           .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-info p.profile-email {
             font-size: 12px; }
     .mobile-menu-container .mobile-menu-content .mobile-profile-actions {
-      margin-top: 20px; }
+      margin-top: 0px; }
       .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul {
         list-style: none;
-        padding: 0; }
+        padding: 0;
+        margin-top: 0px; }
         .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a {
           color: #FFF;
           font-size: 14px; }
@@ -1417,6 +1418,9 @@ a {
               .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a li span.button {
                 margin: 10px 0 0 10px;
                 border-radius: 4px; }
+          .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a .basicPost {
+            padding-top: 15px;
+            padding-bottom: 0px; }
 
 .link-color {
   color: #155d9a; }
@@ -3522,10 +3526,11 @@ a {
           .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-info p.profile-email {
             font-size: 12px; }
     .mobile-menu-container .mobile-menu-content .mobile-profile-actions {
-      margin-top: 20px; }
+      margin-top: 0px; }
       .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul {
         list-style: none;
-        padding: 0; }
+        padding: 0;
+        margin-top: 0px; }
         .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a {
           color: #FFF;
           font-size: 14px; }
@@ -3536,6 +3541,9 @@ a {
               .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a li span.button {
                 margin: 10px 0 0 10px;
                 border-radius: 4px; }
+          .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a .basicPost {
+            padding-top: 15px;
+            padding-bottom: 0px; }
 
 .link-color {
   color: #155d9a; }
@@ -4257,7 +4265,7 @@ span.sticker {
     color: #2b2b2b;
     border: 1px solid #d8d5d5;
     background-color: #fff;
-    margin: 0px; }
+    margin: 7px 0px; }
   .view-resume-modal .mobcandidateAddEditButton {
     color: #155d9a;
     font-size: 13px;
@@ -4428,7 +4436,7 @@ span.sticker {
 .resume-sidebar {
   width: 20%; }
   .resume-sidebar .action-buttons {
-    margin-bottom: 20px; }
+    margin-bottom: 30px; }
     .resume-sidebar .action-buttons.cand-add-tag-action-btn {
       margin: 15px 0; }
     .resume-sidebar .action-buttons span.button {
@@ -4469,7 +4477,7 @@ span.sticker {
         color: #2b2b2b;
         border: 1px solid #d8d5d5;
         background-color: #fff;
-        margin: 0px; }
+        margin: 7px 0px; }
       .resume-sidebar .action-buttons span.button.cand-add-tag-button {
         border-radius: 4px;
         padding: 6px 18px;
@@ -4481,8 +4489,12 @@ span.sticker {
         margin: 0px; }
 
 .sidebar-section {
-  border-bottom: 1px solid #e8e8e8;
-  padding-bottom: 20px; }
+  border-bottom: none;
+  padding-bottom: 0; }
+  .sidebar-section .table-row-separator {
+    border-bottom: 1px solid #e8e8e8 !important;
+    padding-top: 20px;
+    margin-top: 0px; }
   .sidebar-section .wrap {
     margin: 7px 0;
     color: #2b2b2b;
@@ -4502,7 +4514,8 @@ span.sticker {
   .sidebar-section h3 {
     font-size: 16px;
     color: #333;
-    margin-top: 20px; }
+    margin-top: 0px;
+    padding-top: 27px; }
   .sidebar-section .icon-tick_circle {
     color: #1f8f75; }
   .sidebar-section .cand-add-tag {
@@ -4583,8 +4596,8 @@ span.sticker {
       margin-right: 10px; }
   .external-links ul .table-row-separator {
     border-bottom: 1px solid #e8e8e8 !important;
-    margin-top: 20px;
-    margin-bottom: 20px; }
+    margin-top: 0px;
+    margin-bottom: 0px; }
   .external-links ul .invite:hover {
     text-decoration: none; }
   .external-links ul .invite-links {
@@ -6309,10 +6322,11 @@ a {
           .mobile-menu-container .mobile-menu-content .mobile-profile-section .profile-info p.profile-email {
             font-size: 12px; }
     .mobile-menu-container .mobile-menu-content .mobile-profile-actions {
-      margin-top: 20px; }
+      margin-top: 0px; }
       .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul {
         list-style: none;
-        padding: 0; }
+        padding: 0;
+        margin-top: 0px; }
         .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a {
           color: #FFF;
           font-size: 14px; }
@@ -6323,6 +6337,9 @@ a {
               .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a li span.button {
                 margin: 10px 0 0 10px;
                 border-radius: 4px; }
+          .mobile-menu-container .mobile-menu-content .mobile-profile-actions ul a .basicPost {
+            padding-top: 15px;
+            padding-bottom: 0px; }
 
 .link-color {
   color: #155d9a; }
@@ -7044,7 +7061,7 @@ span.sticker {
     color: #2b2b2b;
     border: 1px solid #d8d5d5;
     background-color: #fff;
-    margin: 0px; }
+    margin: 7px 0px; }
   .view-resume-modal .mobcandidateAddEditButton {
     color: #155d9a;
     font-size: 13px;
@@ -7215,7 +7232,7 @@ span.sticker {
 .resume-sidebar {
   width: 20%; }
   .resume-sidebar .action-buttons {
-    margin-bottom: 20px; }
+    margin-bottom: 30px; }
     .resume-sidebar .action-buttons.cand-add-tag-action-btn {
       margin: 15px 0; }
     .resume-sidebar .action-buttons span.button {
@@ -7256,7 +7273,7 @@ span.sticker {
         color: #2b2b2b;
         border: 1px solid #d8d5d5;
         background-color: #fff;
-        margin: 0px; }
+        margin: 7px 0px; }
       .resume-sidebar .action-buttons span.button.cand-add-tag-button {
         border-radius: 4px;
         padding: 6px 18px;
@@ -7268,8 +7285,12 @@ span.sticker {
         margin: 0px; }
 
 .sidebar-section {
-  border-bottom: 1px solid #e8e8e8;
-  padding-bottom: 20px; }
+  border-bottom: none;
+  padding-bottom: 0px; }
+  .sidebar-section .table-row-separator {
+    border-bottom: 1px solid #e8e8e8 !important;
+    padding-top: 20px;
+    margin-top: 0px; }
   .sidebar-section .wrap {
     margin: 7px 0;
     color: #2b2b2b;
@@ -7289,7 +7310,8 @@ span.sticker {
   .sidebar-section h3 {
     font-size: 16px;
     color: #333;
-    margin-top: 20px; }
+    margin-top: 0px;
+    padding-top: 7px; }
   .sidebar-section .icon-tick_circle {
     color: #1f8f75; }
   .sidebar-section .cand-add-tag {
@@ -7370,7 +7392,8 @@ span.sticker {
       margin-right: 10px; }
   .external-links ul .table-row-separator {
     border-bottom: 1px solid #e8e8e8 !important;
-    margin-top: 20px; }
+    padding-top: 20px;
+    margin-top: 0px; }
   .external-links ul .invite:hover {
     text-decoration: none; }
   .external-links ul .invite-links {

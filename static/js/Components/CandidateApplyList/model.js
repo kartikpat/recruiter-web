@@ -51,7 +51,7 @@ function candidateList() {
         settings.bulkBackIcon = $(".bulkBackIcon"),
         settings.secondMassActionContainer = $("#secondMassActionContainer");
         settings.totalApplicationsCount = 0;
-        settings.recommendationLinkClass = $(".recommendationsLink");
+        settings.recommendationLinkClass = (".recommendationsLink");
         settings.baseUrl = baseUrl;
         settings.from = ''
         settings.to = ''
@@ -61,7 +61,6 @@ function candidateList() {
         settings.candidateCommentTextareaClass= '.candidateCommentText',
         settings.commentTextarea=('.comment-text'),
         settings.candidateEditComment=('.candidateAddEdit'),
-        settings.candidateEditCommentButton=$('.candidateAddEdit'),
         settings.contactMenubutton=$('.contactMenubutton');
         settings.candidateAddTagButtonClass= '.candidateAddTag',
         settings.candidateTagInputClass = '.candidateTagInputContainer',
@@ -83,37 +82,12 @@ function candidateList() {
         onClickMassShortlist()
         onClickMassComment()
         onChangebulkCheckbox()
-        onClickCoverLetterLink()
-        onClickRecommendationLink()
         onClickActionListItems()
         contactMenu()
         onClickBulkBackIcon()
         onClickModal()
         closetooltipModal()
         backToTop()
-
-        settings.rowContainer.on('click', '.moreEducationLink', function(){
-            settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
-            $('.view-resume-modal').animate({scrollTop: 1000});
-            var eventObj = {
-                event_category: eventMap["viewCandidProfile"]["cat"],
-                event_label: 'origin=CandidateApplyList,type=MoreEducation,recId='+recruiterId+''
-            }
-            sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
-        })
-
-        settings.rowContainer.on('click', '.moreExperience', function(){
-            settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
-            $('.view-resume-modal').animate({scrollTop: 1000});
-            var eventObj = {
-                event_category: eventMap["viewCandidProfile"]["cat"],
-                event_label: 'origin=CandidateApplyList,type=MoreExperience,recId='+recruiterId+''
-            }
-
-            sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
-
-
-        })
 
         $(window).click(function(event) {
     		$(settings.candidateOtherActionsClass).addClass('inactive');
@@ -136,6 +110,35 @@ function candidateList() {
         
         $(".downloadExcelMass").attr('href', settings.url + "?token="+getCookie("recruiter-access-token")+"");
 	}
+
+
+    function onClickEducation(fn){
+        settings.rowContainer.on('click', '.moreEducationLink', function(){
+            var applicationId=$(this).closest('.candidate-item').attr("data-application-id");
+            settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
+            var eventObj = {
+                event_category: eventMap["viewCandidProfile"]["cat"],
+                event_label: 'origin=CandidateApplyList,type=MoreEducation,recId='+recruiterId+''
+            }
+            sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
+            fn(applicationId)
+            return false
+        })
+    }
+
+    function onclickMoreOrganisation(fn){
+        settings.rowContainer.on('click', '.moreExperience', function(){
+            var applicationId=$(this).closest('.candidate-item').attr("data-application-id");
+            settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
+            var eventObj = {
+                event_category: eventMap["viewCandidProfile"]["cat"],
+                event_label: 'origin=CandidateApplyList,type=MoreExperience,recId='+recruiterId+''
+            }
+            sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
+            fn(applicationId);
+            return false
+        })
+    }
 
     function onClickNewPost(fn){
         settings.newPost.click(function(){
@@ -212,40 +215,44 @@ function candidateList() {
         })
     }
 
-    function onClickCoverLetterLink() {
-        settings.rowContainer.on('click', settings.coverLetterLinkClass, function(e) {
+    function onClickCoverLetterLink(fn) {
+        settings.rowContainer.on('click',settings.coverLetterLinkClass, function() {
+            console.log($(this))
+            var applicationId=$(this).closest('.candidate-item').attr("data-application-id");
             var eventObj = {
                 event_category: eventMap["viewCandidProfile"]["cat"],
                 event_label: 'origin=CandidateApplyList,type=CoverLetter,recId='+recruiterId+''
             }
             sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
             settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 2});
+            fn(applicationId)
+            return false
         })
     }
 
-    function onClickRecommendationLink() {
-        settings.rowContainer.on('click', settings.recommendationLinkClass, function(e) {
+    function onClickRecommendationLink(fn) {
+        settings.rowContainer.on('click',settings.recommendationLinkClass, function() {
+            var applicationId=$(this).closest('.candidate-item').attr("data-application-id");
             var eventObj = {
                 event_category: eventMap["viewCandidProfile"]["cat"],
                 event_label: 'origin=CandidateApplyList,type=recommendations,recId='+recruiterId+''
             }
             sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
-            // settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
-
+            settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
+            fn(applicationId)
+            return false
         })
     }
 
     function onClickSendInterviewInviteF2F(fn) {
         settings.rowContainer.on('click', settings.sendInterviewInviteF2FClass, function(e){
             e.preventDefault()
-
             if(parseInt($(this).attr("data-clickable")) == 1) {
                 window.location = staticEndPoints.createCalendar
 
             }
             var applicationId = $(this).closest(settings.candidateRowClass).attr("data-application-id")
             var inviteId = parseInt($(this).attr("data-invite-id"));
-
             fn(applicationId, inviteId);
             return false
         })
@@ -629,7 +636,11 @@ function candidateList() {
     function activateStatsTab(event, ui) {
         $(ui.oldTab[0]).find(".bulk-selection-item").removeClass("active");
         $(ui.newTab[0]).find(".bulk-selection-item").addClass("active");
-        return $(ui.newTab[0]).attr("data-attribute");
+        return getActiveTab(ui);
+    }
+
+    function getActiveTab(ui){
+        return $(ui.newTab[0]).attr("data-attribute");   
     }
 
     function setDefaultTab(status) {
@@ -758,6 +769,8 @@ function candidateList() {
         settings.rowContainer.on('click',settings.candidateEditComment,function(event){
             event.stopPropagation();
             event.preventDefault();
+            
+            $(this).closest(settings.candidateRowClass).find(settings.candidateCommentTextareaClass).val($(this).closest(settings.candidateRowClass).find(settings.commentTextarea).val());
             $(this).closest(settings.candidateRowClass).find(settings.commentTextarea).addClass("hidden");
             $(this).closest(settings.candidateRowClass).find(settings.candidateCommentTextareaClass).removeClass("hidden");
             $(this).closest(settings.candidateRowClass).find(settings.candidateAddCommentButtonClass).removeClass("hidden");
@@ -943,11 +956,10 @@ function candidateList() {
     function onChangeCandidateCheckbox(fn) {
         settings.rowContainer.on('click', settings.candidateCheckboxClass, function(event){
             event.stopPropagation();
-            // debugger
             if(jQuery(this).is(":checked")){
                 var candidateSelect = jQuery(".candidate-select")
                 var el = $(".candidateListing[data-status-attribute='"+settings.status+"']").find(".candidate-select input:checked")
-                // debugger
+   
                 // if(el.length > 100) {
                 //     $(this).prop("checked", false);
                 //     toastNotify(3, "You can perform action on only 100 candidates at once.")
@@ -1150,7 +1162,7 @@ function candidateList() {
 		settings.bulkActionModal.addClass("hidden")
     }
 
-    function initializeJqueryTabs(defaultTab, fn) {
+    function initializeJqueryTabs(defaultTab, fn, fn1) {
         settings.jobTabs.tabs({
             active: defaultTab,
             create:function(){
@@ -1164,8 +1176,22 @@ function candidateList() {
                 settings.secondMassActionContainer.addClass("hidden")
                 settings.massCheckboxInput.prop("checked", false)
                 fn(event, ui);
+            },
+            beforeActivate: function(event, ui){
+                if(event.which){
+                    fn1(event, ui);
+                    return false
+                }
+                return true
             }
         })
+    }
+    function setJqueryTab(index){
+        settings.jobTabs.tabs( "option", "active",index);
+    }
+
+    function onClickJqueryTabs(){
+        $('.ui-tabs-anchor')
     }
 
     function hideEmptyScreen() {
@@ -1354,13 +1380,20 @@ function candidateList() {
           });
     }
 
+    function changeTab(hash){
+        if(hash=="view-cover-letter"){
+            settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 2});
+            return
+        }
+        settings.candidateDetailsModal.find("#tabbed-content").tabs({active: 1});
+    }
     
-
     return {
 		init: init,
 		addToList: addToList,
 		setConfig : setConfig,
         initializeJqueryTabs: initializeJqueryTabs,
+        setJqueryTab: setJqueryTab,
         setJobStats: setJobStats,
         activateStatsTab: activateStatsTab,
         onClickCandidate: onClickCandidate,
@@ -1409,6 +1442,13 @@ function candidateList() {
         onClickNewPost:onClickNewPost,
         appendCandidateTag: appendCandidateTag,
         showNewPost:showNewPost,
-        hideNewPost:hideNewPost
+        hideNewPost:hideNewPost,
+        onClickJqueryTabs: onClickJqueryTabs,
+        getActiveTab: getActiveTab,
+        onClickEducation:onClickEducation,
+        onclickMoreOrganisation:onclickMoreOrganisation,
+        onClickRecommendationLink:onClickRecommendationLink,
+        onClickCoverLetterLink:onClickCoverLetterLink,
+        changeTab:changeTab
     }
 }

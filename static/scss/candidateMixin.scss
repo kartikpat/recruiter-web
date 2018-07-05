@@ -168,7 +168,7 @@
 .resume-sidebar {
 	width:20%;
 	.action-buttons {
-		margin-bottom:20px;
+		margin-bottom:30px;
 		&.cand-add-tag-action-btn {
 			margin: 15px 0;
 		}
@@ -192,9 +192,14 @@
 
 
 .sidebar-section {
-	border-bottom:1px solid $border-color-base;
-	padding-bottom:20px;
+	border-bottom:none;
+	padding-bottom:0;
 	
+	.table-row-separator{
+		border-bottom: 1px solid #e8e8e8!important;
+		padding-top: 20px;
+		margin-top: 0px;
+	}
 	.wrap {
 		margin: 7px 0;
 		color: #2b2b2b;
@@ -221,7 +226,8 @@
 	h3 {
 		font-size:$view-resume-section-title-size;
 		color:$color-black;
-		margin-top:20px;
+		margin-top:0px;
+		padding-top: 27px;
 	}	
 	.icon-tick_circle {
 		color: $button-color-green;
@@ -291,8 +297,8 @@
 		}
 		.table-row-separator{
 			border-bottom: 1px solid #e8e8e8!important;
-			margin-top: 20px;
-			margin-bottom: 20px;
+			margin-top: 0px;
+			margin-bottom: 0px;
 		}
 		
 		.invite {

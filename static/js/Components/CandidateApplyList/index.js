@@ -9,6 +9,7 @@ var globalParameters = {
     actionPageNumber: 2,
     actionPageContent: 5,
     newApplication: 0 ,
+    path:""
 }
 
 var screenName = "candidate-apply-list";
@@ -39,6 +40,17 @@ jQuery(document).ready( function() {
         }
            
     });
+    /**
+    *
+    * doing it on the job success call
+    var obj = getQueryParameters();
+    if(obj['status'])
+        globalParameters.status = obj['status'];
+    if(obj['orderBy'])
+        globalParameters.orderBy = obj['orderBy'];
+    
+    filters.setFilters(obj)
+    */    
     
     var errorCode={
         400:"We could not authenticate ",
@@ -61,41 +73,6 @@ jQuery(document).ready( function() {
         	window.history.replaceState("object or string", "Title", newUrl);
 		}
 	}
-
-
-    var obj = getQueryParameters()
-    if(!isEmpty(obj)) {
-        var filterFlag = 0;
-        if(obj.searchString){
-            obj.searchString=decodeURI(obj.searchString);
-        }
-        for(var key in obj) {
-            if(key == "status") {
-                globalParameters.status = obj[key]
-            }
-            else if (key == "orderBy") {
-                globalParameters.orderBy = obj[key]
-                filters.changeSelectValue(obj[key])
-            }
-            // else if (key == "pageNumber") {
-            //     globalParameters.pageNumber = obj[key]
-            // }
-            // else if (key == "pageContent") {
-            //     globalParameters.pageContent = obj[key]
-            // }
-            if(key && [ 'status', 'offset', 'pageContent'].indexOf(key) != -1) {
-                continue
-            }
-            filters.callClickOnFilters(filtersMapping[key], obj[key], minMaxMapping[key])
-            if(!(key == "orderBy" || key == "offset" || key == "pageContent" || key == "status" || key == "searchString")) {
-              filterFlag+= 1;
-            }
-        }
-        if(filterFlag > 0) {
-            filters.addFiltersToContainer()
-            filters.showAppliedFilters()
-        }
-    }
     submitPageVisit(recruiterId, screenName, jobId);
     var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitSuccess:"+screenName, onPageVisitUpdateSuccess)
     var pageVisitSubscriptionSuccess = pubsub.subscribe("pageVisitFail:"+screenName, onPageVisitUpdateFail)
@@ -116,13 +93,10 @@ jQuery(document).ready( function() {
     page.base('/job/'+jobId+'/applications');
 
     page('/:applicationId', function(context, next){
+        
         // var parameters = filters.getAppliedFilters()
         // parameters.status = globalParameters.status;
         // setQueryParameters(parameters)
-        if(recruiter.getViewsLimit()==0){
-            toastNotify(3, "Your daily view limit exceeded")
-            return
-        }
         var eventObj = {
             event_category: eventMap["viewCandidProfile"]["cat"],
             event_label: 'origin=CandidateApplyList,type=SavedShorlistedList,recId='+recruiterId+''
@@ -130,19 +104,107 @@ jQuery(document).ready( function() {
         sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
         var applicationId = context.params.applicationId;
         var hash = context.hash || "";
+        var parameters = filters.getAppliedFilters()
+        parameters.status = globalParameters.status;
+        parameters["page"]= "main";
+
+        var queryString=testSetQueryParameters(parameters);
+        // if(!(hash.indexOf("?") >= 0)){
+            context.canonicalPath+="?"+queryString;
+            context.path+=""+queryString;
+            context.querystring+=""+queryString;
+            context.state.path+="?"+queryString;
+        // }    
+    
         var candidateDetails = store.getCandidateFromStore(applicationId);
+        if(recruiter.getViewsLimit()==0){
+            toastNotify(3, "Your daily view limit exceeded");
+            page.redirect('/?'+queryString);
+            return
+        }
+        if(!candidateDetails){
+            page.redirect('/?'+queryString);
+            return;
+        }
         aCandidate.showCandidateDetails(candidateDetails,hash, candidateDetails.status);
         // sending event on every view
         // if(parseInt(candidateDetails.status) == 0)
         setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
+
+        if(hash.indexOf("?") >= 0){
+            hash=hash.substring(0, hash.indexOf('?'))
+        }
+        if(hash){
+            candidates.changeTab(hash);
+            var offValue=document.getElementById(hash).offsetTop+document.getElementById('resumeHead').getBoundingClientRect().height;
+            document.getElementById('candidateResumeModal').scrollTop=offValue
+        }
+        if(hash=="view-cover-letter"){
+            setCandidateAction(recruiterId, jobId, 'coverLetterView' , applicationId, {});
+        }    
+        return true
     });
+    
+    // candidates.onClickCandidate(function(candidateId, status, applicationId){
+    //      var eventObj = {
+    //         event_category: eventMap["viewCandidProfile"]["cat"],
+    //         event_label: 'origin=CandidateApplyList,type=SavedShorlistedList,recId='+recruiterId+''
+    //     }
+    //     sendEvent(eventMap["viewCandidProfile"]["event"], eventObj)
+    //     var candidateDetails = store.getCandidateFromStore(applicationId);
+    //     aCandidate.showCandidateDetails(candidateDetails,"", candidateDetails.status);
+    //     // sending event on every view
+    //     // if(parseInt(candidateDetails.status) == 0)
+    //         setCandidateAction(recruiterId, jobId, "view" , applicationId, {});
+    //         debugger
+    //         return false
+    // });
+
     page('/', function(context, next){
         aCandidate.closeModal();
+        if(context.querystring==globalParameters.path){
+            return
+        }
+        globalParameters.path = context.querystring;
+        var parameters = getParametersByString(context.querystring);
+        if(parameters['status'])
+            globalParameters.status = parameters['status'];
+        if(parameters.orderBy)
+            globalParameters.orderBy = parameters['orderBy'];
+        filters.setFilters(parameters);
+        globalParameters.offset = 0;
+        parameters.status = globalParameters.status;
+        parameters.offset = globalParameters.offset;
+        parameters.pageContent = globalParameters.pageContent;
+
+        var tabIndex = 0;
+        switch(parameters.status){
+            case "0":
+                tabIndex=1;
+                break;
+            case "4,5":
+                tabIndex=2;
+                break;
+            case "1":
+                tabIndex=3;
+                break;
+            case "2":
+                tabIndex=4;
+                break;
+            case "3":
+                tabIndex=5;
+                break;
+            default:
+                break;
+        };
+
+        candidates.setJqueryTab(tabIndex);
+        candidates.showShells(globalParameters.status);
+        candidates.removeCandidate(globalParameters.status);
+        candidates.hideEmptyScreen();
+        fetchJobApplications(jobId, parameters,recruiterId);
     })
-
-
-    page();
-
+    page({dispatch: false});
 
 
     theJob.onClickShareOnTwitter(function(){
@@ -172,33 +234,36 @@ jQuery(document).ready( function() {
             return
         }
         filters.setAppliedFilters(name);
-        filters.addFiltersToContainer()
-        filters.closeFilterModal()
-        candidates.showShells(globalParameters.status)
-        candidates.removeCandidate(globalParameters.status)
-        candidates.hideEmptyScreen()
+        filters.addFiltersToContainer();
+        filters.closeFilterModal();
+        // candidates.showShells(globalParameters.status)
+        // candidates.removeCandidate(globalParameters.status)
+        // candidates.hideEmptyScreen()
 
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
-        setQueryParameters(parameters)
 
-        globalParameters.offset = 0;
-        parameters.offset = globalParameters.offset;
-        parameters.pageContent = globalParameters.pageContent;
+        // setQueryParameters(parameters)
 
-        var filterFlag = 0;
-        for(var key in parameters) {
-          if(!(key == "orderBy" || key == "offset" || key == "pageContent" || key == "status")) {
-            filterFlag+= 1;
-          }
-        }
+        // globalParameters.offset = 0;
+        // parameters.offset = globalParameters.offset;
+        // parameters.pageContent = globalParameters.pageContent;
 
-        if(filterFlag > 0) {
-            filters.showAppliedFilters();
-        }
+        // var filterFlag = 0;
+        // for(var key in parameters) {
+        //   if(!(key == "orderBy" || key == "offset" || key == "pageContent" || key == "status")) {
+        //     filterFlag+= 1;
+        //   }
+        // }
 
-        return fetchJobApplications(jobId, parameters, recruiterId)
+        // if(filterFlag > 0) {
+        //     filters.showAppliedFilters();
+        // }
+        var queryString = testSetQueryParameters(parameters);
+        page('/?'+queryString)
+        // return fetchJobApplications(jobId, parameters, recruiterId)
     });
+
     filters.onClickRemoveFilter(function(value,category,type){
         var eventObj = {
            event_category: eventMap["crossFilter"]["cat"],
@@ -212,32 +277,25 @@ jQuery(document).ready( function() {
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
         setQueryParameters(parameters);
-
         globalParameters.offset = 0;
         parameters.offset = globalParameters.offset;
         parameters.pageContent = globalParameters.pageContent;
-
         return fetchJobApplications(jobId, parameters, recruiterId);
     })
+
     filters.onClickSearchButton(function(){
         var eventObj = {
            event_category: eventMap["searchFilter"]["cat"],
            event_label: 'origin=CandidateApplyList,recId='+recruiterId+''
         }
-        sendEvent(eventMap["searchFilter"]["event"], eventObj)
-        candidates.showShells(globalParameters.status)
-        candidates.removeCandidate(globalParameters.status)
-        candidates.hideEmptyScreen()
+        sendEvent(eventMap["searchFilter"]["event"], eventObj);
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
-        setQueryParameters(parameters);
-
-        globalParameters.offset = 0;
-        parameters.offset = globalParameters.offset;
-        parameters.pageContent = globalParameters.pageContent;
-
-        fetchJobApplications(jobId, parameters, recruiterId);
+        var queryString = testSetQueryParameters(parameters);
+        page('/?'+queryString)
+        // fetchJobApplications(jobId, parameters, recruiterId);
     })
+
     filters.onSelectSortByOption(function(){
         candidates.showShells(globalParameters.status)
         candidates.removeCandidate(globalParameters.status)
@@ -283,6 +341,23 @@ jQuery(document).ready( function() {
          }
     });
 
+    candidates.onClickEducation(function(applicationId){
+        page('/'+applicationId+'#resumeEdu')
+    })
+
+    candidates.onclickMoreOrganisation(function(applicationId){
+        page('/'+applicationId+'#resumeOrg');
+
+    })
+
+    candidates.onClickRecommendationLink(function(applicationId){
+        page('/'+applicationId+'#resumeRecom');
+    })
+
+    candidates.onClickCoverLetterLink(function(applicationId){
+        page('/'+applicationId+'#view-cover-letter');
+    })
+
     candidates.onClickAddTag(function(applicationId) {
         var candidateDetails = store.getCandidateFromStore(applicationId);
         // page('/'+applicationId+'#tag')
@@ -312,6 +387,9 @@ jQuery(document).ready( function() {
         chatModule.createNewChannel(recruiterId,jobId,applicationId,array);
     })
 
+    aCandidate.intialiseProfileTab(function(applicationId){
+        setCandidateAction(recruiterId,jobId, "coverLetterView" , applicationId, {});
+    })
 
     aCandidate.onClickChatCandidateModal(function(candidateId,applicationId){
         var eventObj = {
@@ -413,19 +491,20 @@ jQuery(document).ready( function() {
          candidates.onChangeCandidateCheckbox(function(candidateId){
     })
 
-    candidates.initializeJqueryTabs(defaultTabObj[globalParameters.status], function(event, ui) {
-        var status = candidates.activateStatsTab(event, ui)
-        candidates.showShells(status);
-        candidates.removeCandidate(status)
-        var parameters = filters.getAppliedFilters();
-        globalParameters.status = status;
-        parameters.status = globalParameters.status;
-        setQueryParameters(parameters);
-        globalParameters.offset = 0;
-        parameters.offset = globalParameters.offset;
-        parameters.pageContent = globalParameters.pageContent;
-        fetchJobApplications(jobId, parameters,recruiterId);
-    });
+    function initializeTabs(){
+        candidates.initializeJqueryTabs(defaultTabObj[globalParameters.status], function(event, ui) {
+            var status = candidates.activateStatsTab(event, ui);
+            return true;
+        }, function(event, ui){
+            var status = candidates.getActiveTab(ui);
+            var parameters = filters.getAppliedFilters();
+            globalParameters.status = status;
+            parameters.status = globalParameters.status;
+            var queryString = testSetQueryParameters(parameters);
+            page('/?'+queryString);
+            return true
+        });
+    }
 
     candidates.onClickNewPost(function(){
         var status = globalParameters.status;
@@ -1140,16 +1219,24 @@ jQuery(document).ready( function() {
 
     function onSuccessfulFetchJobDetails(topic, data) {
         globalParameters.jobId = data["jobId"]
-        globalParameters.jobPublishedId=data["jobPublishedId"];
-        candidates.setDefaultTab(globalParameters.status)
-        var parameters = getQueryParameters()
-        parameters.status = globalParameters.status;
-        parameters.orderBy = globalParameters.orderBy;
+        // getting parameters from the url
+        var parameters = getQueryParameters();
+        globalParameters.status = parameters.status || "0";
+        globalParameters.orderBy = parameters.orderBy || 1;
 
+        // getting global values
+        parameters.status =globalParameters.status;
+        parameters.orderBy = globalParameters.orderBy;
+        globalParameters.jobPublishedId=data["jobPublishedId"];
+        filters.setFilters(parameters);
+
+        candidates.setDefaultTab(globalParameters.status);
+        globalParameters.path= testSetQueryParameters(parameters);
         globalParameters.offset = 0;
         parameters.offset = globalParameters.offset;
         parameters.pageContent = globalParameters.pageContent;
 
+        initializeTabs();
         fetchJobApplications(jobId,parameters,recruiterId);
         theJob.setJobDetails(data);
     }
@@ -1474,6 +1561,17 @@ function setQueryParameters(parameters) {
         i++
     }
     page('/?'+array.join("&")+'')
+}
+
+function testSetQueryParameters(parameters){
+    var array = []
+    var i = 0;
+    for(var key in parameters) {
+        array[i] = (key+'='+parameters[key])
+        i++
+    }
+    return array.join("&");
+    // page('/?'+array.join("&")+'')   
 }
 
 function getQueryParameters() {

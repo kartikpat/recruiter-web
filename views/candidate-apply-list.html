@@ -88,8 +88,8 @@
 							<!-- <img src="/static/images/multi-options.svg"> -->
 							<ul class="action-list-items">
 								<li><a href="#" class="hidden" id="jobRefreshButton">Refresh</a></li>
-								<li><a href="#" class="socialIcon hidden" id="jobPostLinkedin" target="_blank">Post On Linkedin</a></li>
-								<li><a href="#" class="socialIcon hidden" id="jobPostTwitter" target="_blank">Post On Twitter</a></li>
+								<li><a  class="socialIcon hidden" id="jobPostLinkedin" target="_blank">Post On Linkedin</a></li>
+								<li><a  class="socialIcon hidden" id="jobPostTwitter" target="_blank">Post On Twitter</a></li>
 								<li><a href="#" class="socialIcon hidden" id="jobPostFacebook" target="_blank">Post On Facebook</a></li>
 							</ul>
 						</span>
@@ -277,10 +277,10 @@
 			<img src="/static/images/close-icon.png">
 	</div>	
 		
-	<div class="view-resume-modal candidateDetailsModal candidateRow hidden">
+	<div class="view-resume-modal candidateDetailsModal candidateRow hidden" id="candidateResumeModal">
 		<div class="main-wrapper left">
 			<div class="main-container">
-				<div class="container resume-header">
+				<div class="container resume-header" id="resumeHead">
 					<div class="profile-image">
 						<img class="js_img" src="https://www.placehold.it/100x100/f5f5f5?text=+">
 					</div>
@@ -334,13 +334,13 @@
 							<li><a href="#view-cover-letter" class="hidden coverLetterTab">Cover Letter</a></li>
 						</ul>
 						<div id="view-profile-info">
-							<div class="content-block organization">
+							<div class="content-block organization" id="resumeOrg">
 								<h3 class="content-heading">Professional Details</h3>
 								<div class="content js_prof_list">
 
 								</div>
 							</div>
-							<div class="content-block education">
+							<div class="content-block education" id="resumeEdu">
 								<h3 class="content-heading">Educational Details</h3>
 								<div class="content js_edu_list">
 
@@ -516,7 +516,7 @@
 								</div>
 							</div>
 
-							<div class="content-block recommendations hidden">
+							<div class="content-block recommendations hidden" id="resumeRecom">
 								<h3 class="content-heading">Recommendations</h3>
 								<div class="content recommendationList">
 
@@ -658,15 +658,14 @@
 			<div class="sidebar-section external-links">
 				<ul>
 					<li class="save candidateSaveModal">
-						<!-- <span class="icon"><i class=""></i></span> -->
-						<!-- <span class="underline">Save for Later</span> -->
 					</li>
 					<li class="chat candidateChatModal"><span class="icon"><i class="icon-chat"></i></span><span class="underline">Chat with <span class="firstName candidate-first-name">Shreya</span></span></li>
 					<li class="download candidateDownloadResume"><span class="icon"><i class="icon-download_icon"></i></span><span class="underline">Download Resume</span></li>
 					<li class="table-row-separator"></li>
 					<li class="invite interview">
 						<!-- <span class="icon sendInvite"><i class="icon-interview"></i></span> -->
-						<span class="interviewinvite"><h3>Send Interview Invite</h3></span></li>
+						<span class="interviewinvite"><h3>Send Interview Invite</h3></span>
+					</li>
 					<li class="invite-links">
 						<span class="icon"><i class="icon-face_to_face_icon2"></i></span>
 						<span data-invite-id="1" class="inviteF2f invite tooltip" state="default">
@@ -688,6 +687,7 @@
 			</div>
 
 			<div class="sidebar-section contact-info">
+					<div class="table-row-separator"></div>
 				<h3>Contact Information</h3>
 				<div class="wrap">
 					<span class="icon"><i class="icon-telephone"></i></span>
@@ -703,6 +703,7 @@
 			</div>
 
 			<div class="sidebar-section comments candidateCommentContainer">
+					<div class="table-row-separator"></div>
 				<h3>Comment</h3>
 
 				<div class="comment-box">
@@ -718,6 +719,7 @@
 			</div>
 
 			<div class="sidebar-section tags candidateTagContainer">
+					<div class="table-row-separator"></div>
 				<h3>Tags</h3>
 				<div class="">
 					<div class="pill-listingg-container" >
