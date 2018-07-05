@@ -93,6 +93,7 @@ jQuery(document).ready( function() {
     page.base('/job/'+jobId+'/applications');
 
     page('/:applicationId', function(context, next){
+        debugger
         
         // var parameters = filters.getAppliedFilters()
         // parameters.status = globalParameters.status;
@@ -161,14 +162,15 @@ jQuery(document).ready( function() {
     // });
 
     page('/', function(context, next){
+        debugger
         aCandidate.closeModal();
         if(context.querystring==globalParameters.path){
             return
         }
+
         globalParameters.path = context.querystring;
         var parameters = getParametersByString(context.querystring);
-        if(parameters['status'])
-            globalParameters.status = parameters['status'];
+        globalParameters.status = parameters['status'];
         if(parameters.orderBy)
             globalParameters.orderBy = parameters['orderBy'];
         filters.setFilters(parameters);
@@ -195,6 +197,7 @@ jQuery(document).ready( function() {
                 tabIndex=5;
                 break;
             default:
+                tabIndex=0;
                 break;
         };
 
@@ -493,9 +496,11 @@ jQuery(document).ready( function() {
 
     function initializeTabs(){
         candidates.initializeJqueryTabs(defaultTabObj[globalParameters.status], function(event, ui) {
+            debugger
             var status = candidates.activateStatsTab(event, ui);
             return true;
         }, function(event, ui){
+            debugger
             var status = candidates.getActiveTab(ui);
             var parameters = filters.getAppliedFilters();
             globalParameters.status = status;

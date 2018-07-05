@@ -1187,6 +1187,7 @@ function candidateList() {
         })
     }
     function setJqueryTab(index){
+        debugger
         settings.jobTabs.tabs( "option", "active",index);
     }
 
