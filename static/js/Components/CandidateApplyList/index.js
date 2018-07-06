@@ -92,8 +92,7 @@ jQuery(document).ready( function() {
     // mountint routing
     page.base('/job/'+jobId+'/applications');
 
-    page('/:applicationId', function(context, next){
-        debugger     
+    page('/:applicationId', function(context, next){ 
         // var parameters = filters.getAppliedFilters()
         // parameters.status = globalParameters.status;
         // setQueryParameters(parameters)
@@ -161,7 +160,6 @@ jQuery(document).ready( function() {
     // });
 
     page('/', function(context, next){
-        debugger
         var tabIndex = 0;
         aCandidate.closeModal();
         if(context.querystring==globalParameters.path){
@@ -503,7 +501,6 @@ jQuery(document).ready( function() {
         },function(event, ui){
             var status = candidates.getActiveTab(ui);
             var parameters = filters.getAppliedFilters();
-            debugger
             globalParameters.status = status;
             parameters.status = globalParameters.status;
             var queryString = testSetQueryParameters(parameters);
