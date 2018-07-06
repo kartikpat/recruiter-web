@@ -164,7 +164,7 @@ function stickyChatModel(){
         elem.entry.id=id;
         var index=0;
         var item = getMsgSentElement(elem,status,index);
-        $(".chat-candidate-boxes .chat-div-candidate[data-id="+dataID+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
+        $(".chat-candidate-boxes .chat-div-candidate[data-channel-name="+channelName+"] .content-footer-container .chat-div-content ul").append(item[0].outerHTML)
         initializeTooltip()
         scrollToBottom(channelName)
         $(".chat-input").val("");
@@ -576,6 +576,19 @@ function stickyChatModel(){
         $('.chat-div-candidate[data-channel-name='+channelName+']').find('.newChannel').text("Unable to connect.Please try again");
         return
     }
+
+    function getInviteMessage(obj,link,interViewType){
+        var interview={
+            1:"Face-to-face ",
+            2:"Telephonic"
+        }
+        var message='Hello '+obj.name+', You have been shortlisted for a '+interview[interViewType]+' interview for position -'+obj.title+'Please click on the link below and pick a suitable slot for the interview:'
+        return message;
+    }
+
+    function getDataId(channelName){
+        return( $('.chat-div-candidate[data-channel-name='+channelName+']').attr('data-id'));
+    }
     
     return{
         init:init,
@@ -583,7 +596,6 @@ function stickyChatModel(){
         populateSideChatView:populateSideChatView,
         showStatusIcon: showStatusIcon,
         hideStatusIcon: hideStatusIcon,
-        // receivePresence:receivePresence,
         onClickSidebarChat:onClickSidebarChat,
         populateMessages:populateMessages,
         onClickStickyChat:onClickStickyChat,
@@ -603,7 +615,9 @@ function stickyChatModel(){
         setDeliveredState:setDeliveredState,
         setFailedState:setFailedState,
         setRecruiterInactive:setRecruiterInactive,
-        setRecruiterActive:setRecruiterActive
+        setRecruiterActive:setRecruiterActive,
+        getDataId:getDataId,
+        getInviteMessage:getInviteMessage
     }
 
 

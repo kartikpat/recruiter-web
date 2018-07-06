@@ -1150,9 +1150,7 @@ jQuery(document).ready( function() {
          return pubsub.publish("failedToFetchJobDetails:"+jobId, res);
      });
 
-
     function onJobsApplicationsFetchSuccess(topic, data) {
-        debugger
         tickerLock = false;
         hideLoader()
         globalParameters.candidateListLength = data["data"].length;
@@ -1435,6 +1433,11 @@ jQuery(document).ready( function() {
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .inviteText').addClass('color-changed');
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .loadingScroller').addClass('hidden');
             obj["isSent"] =1;
+            var candidate = store.getCandidateFromStore(applicationId);
+            var array = [];
+            array.push(candidate);
+            chatModule.inviteMessage(recruiterId,array,1);
+       
         }
         if(data.parameters.inviteId == 2){
             toastNotify(1, "Telephonic Invite Sent Successfully!")
@@ -1442,7 +1445,13 @@ jQuery(document).ready( function() {
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic .inviteText').addClass('color-changed');
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteTelephonic .loadingScroller').addClass('hidden');
             obj["isSent"] =2;
+            var candidate = store.getCandidateFromStore(applicationId);
+            var array = [];
+            array.push(candidate);
+            chatModule.inviteMessage(recruiterId,array,2);
         }
+
+        
     }
 
     function onSendInterViewInviteFail(topic, data){

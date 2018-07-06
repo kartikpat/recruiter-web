@@ -71,12 +71,15 @@ function chatModelIndex(){
     })
 
     stickyChat.onEnterSendMessage(function(dataID,channelName,message){
+        SendMessage(dataID,channelName,message);     
+    })
+
+    function SendMessage(dataID,channelName,message){
         var eventObj = {
             event_category: eventMap["sendMsg"]["cat"],
             event_label: 'origin='+origin+',recId='+recruiterId+''
         }
         var id= getDeviceId(10);
-      
         sendEvent(eventMap["sendMsg"]["event"], eventObj)
         if(message == "") {
             return ;
@@ -109,8 +112,8 @@ function chatModelIndex(){
                 senderOrganization: profile["organisation"],
                 timestamp: Date.now(),
                 text: message
-            })        
-    })
+            })
+    }
 
     function onFetchHistory(response,obj,channelName,scroll) {
         stickyChat.hideSpinner(channelName);
@@ -137,6 +140,7 @@ function chatModelIndex(){
             return tempArray;
     }
   
+
     function onNewMessage(m) {
         var actualChannel = m.actualChannel;
         var channelName = m.channel; // The channel for which the message belongs
@@ -281,9 +285,35 @@ function chatModelIndex(){
         stickyChat.disableToConnect(data.data);
     }
 
-    
+    function inviteMessage(recruiterId,obj,interViewType){
+        var userId=obj[0].userID;
+        var channelName=baseDomain+"--r"+recruiterId+'-j'+userId; 
+        if(window.innerWidth <= 768) {
+            window.location.href = staticEndPoints['chat']+'?candidateId='+obj[0].userID+''
+            return
+        }
+        var obj=store.getCandidateFromStoreViaChannel(channelName);
+        var scrollToBottom=0;
+        if(window.innerWidth>768){
+            stickyChat.openChatBox(channelName,obj);
+        }
+        chatEngine.fetchHistory(channelName,20, null, null, function(data,response){
+            onFetchHistory(response,obj,channelName,scrollToBottom)
+        });
+        var link="ddddd"
+        var message=stickyChat.getInviteMessage(obj,link,interViewType)
+        var dataID=stickyChat.getDataId(channelName);
+        SendMessage(dataID,channelName,message)
+        stickyChat.scrollEvent(channelName,obj,function(channelName,startTime){
+            scrollToBottom=1;
+            chatEngine.fetchHistory(channelName,20,startTime, null, function(data,response){
+                onFetchHistory(response,obj,channelName,scrollToBottom)
+            });
+        });
+    }
 
     return{
+        inviteMessage:inviteMessage,
         createNewChannel:createNewChannel,
         init:init
     }
