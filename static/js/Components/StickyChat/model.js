@@ -577,13 +577,12 @@ function stickyChatModel(){
         return
     }
 
-    function getInviteMessage(obj,link,interViewType){
+    function getInviteMessage(name,title,link,interViewType){
         var interview={
             1:"Face-to-face ",
             2:"Telephonic"
         }
-        debugger
-        var message='Hello '+obj.name+', You have been shortlisted for a '+interview[interViewType]+' interview for position -'+obj.title+'Please click on the link below and pick a suitable slot for the interview: <a href='+link+'>'+link+'</a>'
+        var message='Hello '+name+', You have been shortlisted for a '+interview[interViewType]+' interview for position -'+title+'Please click on the link below and pick a suitable slot for the interview: <a href='+link+'>'+link+'</a>'
         return message;
     }
 

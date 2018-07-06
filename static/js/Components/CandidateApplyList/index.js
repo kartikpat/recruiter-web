@@ -1221,6 +1221,7 @@ jQuery(document).ready( function() {
 
     function onSuccessfulFetchJobDetails(topic, data) {
         globalParameters.jobId = data["jobId"]
+        globalParameters.jobTitle=data["jobTitle"]
         // getting parameters from the url
         var parameters = getQueryParameters();
         globalParameters.status = parameters.status || "0";
@@ -1424,8 +1425,6 @@ jQuery(document).ready( function() {
     }
 
     function onSendInterViewInviteSuccess(topic, data){
-        debugger
-        console.log(data)
         var applicationId=data['parameters']['applicationId'];
         candidates.changeInviteText(data.parameters.applicationId)
         var obj = store.getCandidateFromStore(data.parameters.applicationId)
@@ -1438,7 +1437,7 @@ jQuery(document).ready( function() {
             var candidate = store.getCandidateFromStore(applicationId);
             var array = [];
             array.push(candidate);
-            chatModule.inviteMessage(recruiterId,array,1,data.data.url);
+            chatModule.inviteMessage(recruiterId,array,1,data.data.url,applicationId,globalParameters.jobTitle);
        
         }
         if(data.parameters.inviteId == 2){
@@ -1450,10 +1449,9 @@ jQuery(document).ready( function() {
             var candidate = store.getCandidateFromStore(applicationId);
             var array = [];
             array.push(candidate);
-            chatModule.inviteMessage(recruiterId,array,2,data.data.url);
+            chatModule.inviteMessage(recruiterId,array,2,data.data.url,applicationId,globalParameters.jobTitle);
         }
-
-        
+    
     }
 
     function onSendInterViewInviteFail(topic, data){
