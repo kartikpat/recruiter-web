@@ -1152,6 +1152,7 @@ jQuery(document).ready( function() {
 
 
     function onJobsApplicationsFetchSuccess(topic, data) {
+        debugger
         tickerLock = false;
         hideLoader()
         globalParameters.candidateListLength = data["data"].length;
@@ -1208,7 +1209,7 @@ jQuery(document).ready( function() {
             }
         });
         store.saveToStore(newApplication);        
-        candidates.addToList(newApplication,data.obj.status, globalParameters.offset, globalParameters.pageContent, filterFlag);
+        candidates.addToList(newApplication,globalParameters.status, globalParameters.offset, globalParameters.pageContent, filterFlag);
         globalParameters.offset = globalParameters.offset + globalParameters.pageContent;
         var calLength = theJob.getCalendarLength()
         if(!calLength){
