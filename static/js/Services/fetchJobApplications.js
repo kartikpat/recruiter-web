@@ -1,7 +1,4 @@
 function fetchJobApplications(jobId,parameters, recruiterId){
-	debugger
-	console.log(parameters)
-	
 	if(parameters && parameters.status=="all")
 		parameters.status=""
 	return getRequest(baseUrl+"/recruiter/"+recruiterId+"/jobs/"+jobId+"/applications", parameters, function(res){
