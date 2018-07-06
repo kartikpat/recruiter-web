@@ -4595,7 +4595,7 @@ span.sticker {
       width: 2em;
       margin-right: 10px; }
   .external-links ul .interview {
-    margin: 0px; }
+    margin-top: 27px; }
   .external-links ul .table-row-separator {
     border-bottom: 1px solid #e8e8e8 !important;
     margin-top: 0px;
@@ -7313,7 +7313,7 @@ span.sticker {
     font-size: 16px;
     color: #333;
     margin-top: 0px;
-    padding-top: 7px; }
+    padding-top: 27px; }
   .sidebar-section .icon-tick_circle {
     color: #1f8f75; }
   .sidebar-section .cand-add-tag {

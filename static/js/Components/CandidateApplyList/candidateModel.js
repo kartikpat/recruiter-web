@@ -206,6 +206,7 @@ function Candidate() {
             skillsList: modal.find(".js_skills_list"),
             candidateTagList: modal.find(settings.candidateTagListClass),
             inviteText:modal.find(".interviewinvite"),
+            inviteLink:modal.find(".inviteText"),
             lastActive: modal.find(".js_last_login"),
             eduList: modal.find(".js_edu_list"),
             profList: modal.find(".js_prof_list"),
@@ -627,6 +628,7 @@ function Candidate() {
         item.contact.text('');
         item.email.text('');
         item.inviteText.text("Send Interview Invite")
+        item.inviteLink.removeClass('non-underline');
         $(".coverLetterTab").addClass("hidden");
         item.addinfoModal.addClass('hidden');
         $('.additional').addClass('hidden');
