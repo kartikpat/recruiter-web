@@ -285,9 +285,18 @@ function chatModelIndex(){
         stickyChat.disableToConnect(data.data);
     }
 
-    function inviteMessage(recruiterId,obj,interViewType){
+    function inviteMessage(recruiterId,obj,interViewType,link){
         var userId=obj[0].userID;
         var channelName=baseDomain+"--r"+recruiterId+'-j'+userId; 
+        if(!store.getCandidateFromStoreViaChannel(channelName)){
+            return
+            if(window.innerWidth>768){
+                stickyChat.openChatBox(channelName,obj); 
+                stickyChat.disableChat(channelName);
+            }
+            submitChatProfile(recruiterId,jobId,applicationId,obj);
+            return    
+        }
         if(window.innerWidth <= 768) {
             window.location.href = staticEndPoints['chat']+'?candidateId='+obj[0].userID+''
             return
@@ -300,7 +309,6 @@ function chatModelIndex(){
         chatEngine.fetchHistory(channelName,20, null, null, function(data,response){
             onFetchHistory(response,obj,channelName,scrollToBottom)
         });
-        var link="ddddd"
         var message=stickyChat.getInviteMessage(obj,link,interViewType)
         var dataID=stickyChat.getDataId(channelName);
         SendMessage(dataID,channelName,message)

@@ -1424,6 +1424,8 @@ jQuery(document).ready( function() {
     }
 
     function onSendInterViewInviteSuccess(topic, data){
+        debugger
+        console.log(data)
         var applicationId=data['parameters']['applicationId'];
         candidates.changeInviteText(data.parameters.applicationId)
         var obj = store.getCandidateFromStore(data.parameters.applicationId)
@@ -1436,7 +1438,7 @@ jQuery(document).ready( function() {
             var candidate = store.getCandidateFromStore(applicationId);
             var array = [];
             array.push(candidate);
-            chatModule.inviteMessage(recruiterId,array,1);
+            chatModule.inviteMessage(recruiterId,array,1,data.data.url);
        
         }
         if(data.parameters.inviteId == 2){
@@ -1448,7 +1450,7 @@ jQuery(document).ready( function() {
             var candidate = store.getCandidateFromStore(applicationId);
             var array = [];
             array.push(candidate);
-            chatModule.inviteMessage(recruiterId,array,2);
+            chatModule.inviteMessage(recruiterId,array,2,data.data.url);
         }
 
         
