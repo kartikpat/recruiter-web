@@ -93,7 +93,7 @@ jQuery(document).ready( function() {
     page.base('/job/'+jobId+'/applications');
 
     page('/:applicationId', function(context, next){
-        
+        debugger     
         // var parameters = filters.getAppliedFilters()
         // parameters.status = globalParameters.status;
         // setQueryParameters(parameters)
@@ -161,14 +161,18 @@ jQuery(document).ready( function() {
     // });
 
     page('/', function(context, next){
+        debugger
+        var tabIndex = 0;
         aCandidate.closeModal();
         if(context.querystring==globalParameters.path){
             return
         }
+
         globalParameters.path = context.querystring;
         var parameters = getParametersByString(context.querystring);
-        if(parameters['status'])
-            globalParameters.status = parameters['status'];
+        if(!(parameters['status']))
+        tabIndex=1;
+        globalParameters.status = parameters['status'];
         if(parameters.orderBy)
             globalParameters.orderBy = parameters['orderBy'];
         filters.setFilters(parameters);
@@ -176,8 +180,6 @@ jQuery(document).ready( function() {
         parameters.status = globalParameters.status;
         parameters.offset = globalParameters.offset;
         parameters.pageContent = globalParameters.pageContent;
-
-        var tabIndex = 0;
         switch(parameters.status){
             case "0":
                 tabIndex=1;
@@ -194,8 +196,11 @@ jQuery(document).ready( function() {
             case "3":
                 tabIndex=5;
                 break;
-            default:
+            case"":
+                tabIndex=0;
                 break;
+            default:
+                break
         };
 
         candidates.setJqueryTab(tabIndex);
@@ -495,9 +500,10 @@ jQuery(document).ready( function() {
         candidates.initializeJqueryTabs(defaultTabObj[globalParameters.status], function(event, ui) {
             var status = candidates.activateStatsTab(event, ui);
             return true;
-        }, function(event, ui){
+        },function(event, ui){
             var status = candidates.getActiveTab(ui);
             var parameters = filters.getAppliedFilters();
+            debugger
             globalParameters.status = status;
             parameters.status = globalParameters.status;
             var queryString = testSetQueryParameters(parameters);
@@ -1229,13 +1235,11 @@ jQuery(document).ready( function() {
         parameters.orderBy = globalParameters.orderBy;
         globalParameters.jobPublishedId=data["jobPublishedId"];
         filters.setFilters(parameters);
-
         candidates.setDefaultTab(globalParameters.status);
         globalParameters.path= testSetQueryParameters(parameters);
         globalParameters.offset = 0;
         parameters.offset = globalParameters.offset;
         parameters.pageContent = globalParameters.pageContent;
-
         initializeTabs();
         fetchJobApplications(jobId,parameters,recruiterId);
         theJob.setJobDetails(data);
