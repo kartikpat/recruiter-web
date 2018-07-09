@@ -403,6 +403,7 @@ jQuery(document).ready( function() {
         var candidate = store.getCandidateFromStore(applicationId);
         var array = [];
         array.push(candidate);
+        debugger
         chatModule.createNewChannel(recruiterId,jobId,applicationId,array);
     })
 
@@ -1437,6 +1438,7 @@ jQuery(document).ready( function() {
             var candidate = store.getCandidateFromStore(applicationId);
             var array = [];
             array.push(candidate);
+            debugger
             chatModule.inviteMessage(recruiterId,jobId,array,1,data.data.url,applicationId,globalParameters.jobTitle);
        
         }

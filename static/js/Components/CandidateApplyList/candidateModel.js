@@ -310,12 +310,14 @@ function Candidate() {
         if(aData['isSent']==1){
             item.element.find('.interviewinvite').text("Interview Invite Sent")
             item.element.find('.inviteText').removeClass("underline").addClass("non-underline")
+            item.element.find('.inviteF2f .inviteText').addClass("color-changed")
             item.element.find('.inviteF2f .icon-container').removeClass('hidden');
             item.element.find('.inviteF2f .loadingScroller').addClass('hidden');
         }
         if(aData['isSent']==2){
             item.element.find('.interviewinvite').text("Interview Invite Sent")
             item.element.find('.inviteText').removeClass("underline").addClass("non-underline")
+            item.element.find('.inviteTelephonic .inviteText').addClass("color-changed")
             item.element.find('.inviteTelephonic .icon-container').removeClass('hidden');
             item.element.find('.inviteTelephonic .loadingScroller').addClass('hidden');
         }
@@ -629,6 +631,7 @@ function Candidate() {
         item.email.text('');
         item.inviteText.text("Send Interview Invite")
         item.inviteLink.removeClass('non-underline');
+        item.inviteLink.removeClass('color-changed')
         $(".coverLetterTab").addClass("hidden");
         item.addinfoModal.addClass('hidden');
         $('.additional').addClass('hidden');

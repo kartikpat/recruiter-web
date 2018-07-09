@@ -1,8 +1,5 @@
 var channelsArray = []
-var global={
-    channelName:"",
-    boxOpen:0
-}
+
 
 function getDeviceId() {
     var text = "";
@@ -235,17 +232,18 @@ function chatModelIndex(){
     }
 
     function createNewChannel(recruiterId,jobId,applicationId,obj,inviteObj){
-            var userId=obj[0].userID;
-            var channelName=baseDomain+"--r"+recruiterId+'-j'+userId;
-            if(channelName==global.channelName && !(inviteObj)){
-                return
-            }
+            var userID=obj[0].userID;
+            var channelName=baseDomain+"--r"+recruiterId+'-j'+userID;
+            // if(channelName==global.channelName && !(inviteObj)){
+            //     return
+            // }
             if(!store.getCandidateFromStoreViaChannel(channelName)){
+                debugger
                 if(window.innerWidth>768){
-                    if(!(global.channelName==channelName))
+                    if(!(stickyChat.isChatBoxOpen(channelName)))
                     stickyChat.openChatBox(channelName,obj); 
-                    global.channelName=channelName;
                     stickyChat.disableChat(channelName);
+                    debugger
                 }
                 submitChatProfile(recruiterId,jobId,applicationId,obj,inviteObj);
                 // store.updateToStore();
@@ -256,6 +254,7 @@ function chatModelIndex(){
                 return
             }
             var obj=store.getCandidateFromStoreViaChannel(channelName);
+            debugger
             var scrollToBottom=0;
             if(window.innerWidth>768){
                 stickyChat.openChatBox(channelName,obj);
@@ -301,8 +300,8 @@ function chatModelIndex(){
     }
 
     function inviteMessage(recruiterId,jobId,obj,interViewType,link,applicationId,jobTitle){
-        var userId=obj[0].userID;
-        var channelName=baseDomain+"--r"+recruiterId+'-j'+userId;
+        var userID=obj[0].userID;
+        var channelName=baseDomain+"--r"+recruiterId+'-j'+userID;
         if(!store.getCandidateFromStoreViaChannel(channelName)){
             var inviteObj={
                 type:interViewType,
@@ -322,6 +321,7 @@ function chatModelIndex(){
         var obj=store.getCandidateFromStoreViaChannel(channelName);
         var scrollToBottom=0;
         if(window.innerWidth>768){
+            if(!(stickyChat.isChatBoxOpen(channelName)))
             stickyChat.openChatBox(channelName,obj);
         }
         chatEngine.fetchHistory(channelName,20, null, null, function(data,response){

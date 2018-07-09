@@ -6,6 +6,7 @@ function chatStoreModel(){
     
     function saveToStore(dataArray){
         dataArray.forEach(function(anObj) {
+            anObj.userID=anObj.userId;
             chatStore[anObj["userId"]] = anObj;
             chatStore[anObj["channel"]]=anObj;
         })
@@ -16,7 +17,6 @@ function chatStoreModel(){
         chatStore[anObj["channel"]]=anObj;
         chatStore.push(chatStore[anObj["userID"]]);
         chatStore.push(chatStore[anObj["channel"]]);
-        console.log(chatStore)
     }
 
     function getCandidateFromStore(candidateId){
