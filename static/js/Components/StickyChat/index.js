@@ -1,4 +1,7 @@
 var channelsArray = []
+var global={
+    channelName:""
+}
 
 function getDeviceId() {
     var text = "";
@@ -237,8 +240,12 @@ function chatModelIndex(){
     function createNewChannel(recruiterId,jobId,applicationId,obj){
             var userId=obj[0].userID;
             var channelName=baseDomain+"--r"+recruiterId+'-j'+userId;
+            if(channelName==global.channelName){
+                return
+            }
             if(!store.getCandidateFromStoreViaChannel(channelName)){
                 if(window.innerWidth>768){
+                    global.channelName=channelName;
                     stickyChat.openChatBox(channelName,obj); 
                     stickyChat.disableChat(channelName);
                 }
