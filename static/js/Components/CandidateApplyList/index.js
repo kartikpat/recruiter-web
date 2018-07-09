@@ -1437,7 +1437,7 @@ jQuery(document).ready( function() {
             var candidate = store.getCandidateFromStore(applicationId);
             var array = [];
             array.push(candidate);
-            chatModule.inviteMessage(recruiterId,array,1,data.data.url,applicationId,globalParameters.jobTitle);
+            chatModule.inviteMessage(recruiterId,jobId,array,1,data.data.url,applicationId,globalParameters.jobTitle);
        
         }
         if(data.parameters.inviteId == 2){
@@ -1449,7 +1449,7 @@ jQuery(document).ready( function() {
             var candidate = store.getCandidateFromStore(applicationId);
             var array = [];
             array.push(candidate);
-            chatModule.inviteMessage(recruiterId,array,2,data.data.url,applicationId,globalParameters.jobTitle);
+            chatModule.inviteMessage(recruiterId,jobId,array,2,data.data.url,applicationId,globalParameters.jobTitle);
         }
     
     }

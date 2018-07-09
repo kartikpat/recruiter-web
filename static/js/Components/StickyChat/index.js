@@ -1,6 +1,7 @@
 var channelsArray = []
 var global={
-    channelName:""
+    channelName:"",
+    boxOpen:0
 }
 
 function getDeviceId() {
@@ -303,11 +304,12 @@ function chatModelIndex(){
         stickyChat.disableToConnect(data.data);
     }
 
-    function inviteMessage(recruiterId,obj,interViewType,link,applicationId,jobTitle){
+    function inviteMessage(recruiterId,jobId,obj,interViewType,link,applicationId,jobTitle){
         var userId=obj[0].userID;
         var channelName=baseDomain+"--r"+recruiterId+'-j'+userId; 
         if(!store.getCandidateFromStoreViaChannel(channelName)){
             if(window.innerWidth>768){
+                if(global.channelName!=channelName)
                 stickyChat.openChatBox(channelName,obj); 
                 stickyChat.disableChat(channelName);
             }
