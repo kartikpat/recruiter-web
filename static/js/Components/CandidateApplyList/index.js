@@ -9,7 +9,8 @@ var globalParameters = {
     actionPageNumber: 2,
     actionPageContent: 5,
     newApplication: 0 ,
-    path:""
+    path:"",
+    unreadTab:"1"
 }
 
 var screenName = "candidate-apply-list";
@@ -93,6 +94,7 @@ jQuery(document).ready( function() {
     page.base('/job/'+jobId+'/applications');
 
     page('/:applicationId', function(context, next){ 
+        debugger
         // var parameters = filters.getAppliedFilters()
         // parameters.status = globalParameters.status;
         // setQueryParameters(parameters)
@@ -157,13 +159,19 @@ jQuery(document).ready( function() {
     //         return false
     // });
 
+
     page('/', function(context, next){
         var tabIndex = 0;
         aCandidate.closeModal();
-        if(context.querystring==globalParameters.path){
+        
+        if(globalParameters.unreadTab==1){
             return
         }
 
+        if(context.querystring==globalParameters.path){
+            return
+        }
+        
         globalParameters.path = context.querystring;
         var parameters = getParametersByString(context.querystring);
         if(!(parameters['status']))
@@ -499,6 +507,7 @@ jQuery(document).ready( function() {
         },function(event, ui){
             var status = candidates.getActiveTab(ui);
             var parameters = filters.getAppliedFilters();
+            globalParameters.unreadTab=0;
             globalParameters.status = status;
             parameters.status = globalParameters.status;
             var queryString = testSetQueryParameters(parameters);
@@ -1095,13 +1104,14 @@ jQuery(document).ready( function() {
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
         setQueryParameters(parameters);
+        
      })
 
      aCandidate.onClickEscapeModal(function(){
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
         setQueryParameters(parameters);
-     })
+    })
 
      function getLocation(arr) {
          var array = []
