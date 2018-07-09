@@ -232,12 +232,7 @@ function chatModelIndex(){
     }
 
     function createNewChannel(recruiterId,jobId,applicationId,obj,inviteObj){
-            var userID=obj[0].userID;
             var channelName=baseDomain+"--r"+recruiterId+'-j'+obj[0].userID;
-            // if(channelName==global.channelName && !(inviteObj)){
-            //     return
-            // }
-            debugger
             if(!store.getCandidateFromStoreViaChannel(channelName)){
                 if(window.innerWidth>768){
                     if(!(stickyChat.isChatBoxOpen(channelName)))
