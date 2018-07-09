@@ -469,7 +469,7 @@ function stickyChatModel(){
         var elem = settings.conversationListing.find(".conversationItem[data-channel-name="+channelName+"]");
         var dataID = elem.attr("data-id")
         if(!dataID && elem.length==0){
-            dataID=obj[0].userID;
+            dataID=obj[0].userID || obj[0].userId;
             obj=obj[0];
             populateChatBox(channelName,dataID,obj);
             return
@@ -584,7 +584,7 @@ function stickyChatModel(){
             1:"Face-to-face ",
             2:"Telephonic"
         }
-        var message='Hello '+name+', You have been shortlisted for a '+interview[interViewType]+' interview for position -'+title+'Please click on the link below and pick a suitable slot for the interview: <a href='+link+'>'+link+'</a>'
+        var message='Hello '+name+', You have been shortlisted for a '+interview[interViewType]+' interview for position -'+title+'Please click on the link below and pick a suitable slot for the interview:<br><a href='+link+'>'+link+'</a>'
         return message;
     }
 

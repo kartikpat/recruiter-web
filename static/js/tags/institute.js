@@ -948,6 +948,6 @@ var instituteTagsData = [
    "text":"Jindal Global Law School"
   ,"val":190
   ,"isTop": "lawinst"
-}].sort(function(a, b){
+},].sort(function(a, b){
       return a["text"].localeCompare(b.text)
   });

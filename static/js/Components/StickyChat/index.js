@@ -16,7 +16,6 @@ function getDeviceId() {
 
 
 function chatModelIndex(){
-    
     var deviceId= getDeviceId();
     var chatEngine = ChatEngine();
     chatEngine.initialize(recruiterId, profile.email);
@@ -25,12 +24,10 @@ function chatModelIndex(){
     var store=chatStoreModel();
     stickyChat.init();   
 
-
     function init(){
         stickyChat.init(); 
     }    
     
-
     fetchRecruiterChats(recruiterId);
     
     stickyChat.onClickSidebarChat(function(channelName,messageNumber,dataID,startTime){
@@ -288,7 +285,6 @@ function chatModelIndex(){
         stickyChat.enableChat(data.data.channel);
         data.array[0]["channel"] = data.data.channel;
         store.updateStore(data.array[0]);
-        debugger
         stickyChat.populateChatView(data.array);
         if(data.inviteObj){
             var channelName=data.data.channel;
