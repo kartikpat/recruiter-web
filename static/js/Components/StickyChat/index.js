@@ -319,6 +319,24 @@ function chatModelIndex(){
         }
         var message=stickyChat.getInviteMessage(obj[0].name,jobTitle,link,interViewType)
         var dataID=stickyChat.getDataId(channelName);
+        if(window.innerWidth <= 768) {
+            window.location.href = staticEndPoints['chat']+'?candidateId='+obj[0].userID+''
+            return
+        }
+        var obj=store.getCandidateFromStoreViaChannel(channelName);
+        var scrollToBottom=0;
+        if(window.innerWidth>768){
+            stickyChat.openChatBox(channelName,obj);
+        }
+        chatEngine.fetchHistory(channelName,20, null, null, function(data,response){
+            onFetchHistory(response,obj,channelName,scrollToBottom)
+        });
+        stickyChat.scrollEvent(channelName,obj,function(channelName,startTime){
+            scrollToBottom=1;
+            chatEngine.fetchHistory(channelName,20,startTime, null, function(data,response){
+                onFetchHistory(response,obj,channelName,scrollToBottom)
+            });
+        });
         SendMessage(dataID,channelName,message);
     }
 
