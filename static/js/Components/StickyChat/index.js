@@ -206,7 +206,6 @@ function chatModelIndex(){
 
     function handleState(response){
         var channels = getArray(channelsArray);
-        console.log(response);
         channels.forEach(function(channel, index) {
             if(response.channels[channel].occupancy >= 2) {
                 stickyChat.showStatusIcon(channel);
@@ -241,16 +240,18 @@ function chatModelIndex(){
     function createNewChannel(recruiterId,jobId,applicationId,obj,inviteObj){
             var userId=obj[0].userID;
             var channelName=baseDomain+"--r"+recruiterId+'-j'+userId;
-            if(channelName==global.channelName){
+            if(channelName==global.channelName && !(inviteObj)){
                 return
             }
             if(!store.getCandidateFromStoreViaChannel(channelName)){
                 if(window.innerWidth>768){
-                    global.channelName=channelName;
+                    if(!(global.channelName==channelName))
                     stickyChat.openChatBox(channelName,obj); 
+                    global.channelName=channelName;
                     stickyChat.disableChat(channelName);
                 }
                 submitChatProfile(recruiterId,jobId,applicationId,obj,inviteObj);
+                // store.updateToStore();
                 return    
             }
             if(window.innerWidth <= 768) {
@@ -286,11 +287,10 @@ function chatModelIndex(){
         }
         stickyChat.enableChat(data.data.channel);
         data.array[0]["channel"] = data.data.channel;
-        stickyChat.populateChatView(data.array);
+        store.updateStore(data.array[0]);
         debugger
-        console.log(data)
+        stickyChat.populateChatView(data.array);
         if(data.inviteObj){
-            debugger
             var channelName=data.data.channel;
             var obj=data.inviteObj;
             var message=stickyChat.getInviteMessage(obj.name,obj.title,obj.Url,obj.type);
@@ -305,11 +305,9 @@ function chatModelIndex(){
     }
 
     function inviteMessage(recruiterId,jobId,obj,interViewType,link,applicationId,jobTitle){
-        debugger
         var userId=obj[0].userID;
         var channelName=baseDomain+"--r"+recruiterId+'-j'+userId; 
         if(!store.getCandidateFromStoreViaChannel(channelName)){
-            debugger
             var inviteObj={
                 type:interViewType,
                 Url:link,
