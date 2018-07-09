@@ -12,7 +12,6 @@ function chatStoreModel(){
     }
 
     function updateStore(anObj){
-        debugger
         chatStore[anObj["userID"]] = anObj;
         chatStore[anObj["channel"]]=anObj;
         chatStore.push(chatStore[anObj["userID"]]);

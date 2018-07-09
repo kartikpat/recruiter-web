@@ -306,7 +306,7 @@ function chatModelIndex(){
 
     function inviteMessage(recruiterId,jobId,obj,interViewType,link,applicationId,jobTitle){
         var userId=obj[0].userID;
-        var channelName=baseDomain+"--r"+recruiterId+'-j'+userId; 
+        var channelName=baseDomain+"--r"+recruiterId+'-j'+userId;
         if(!store.getCandidateFromStoreViaChannel(channelName)){
             var inviteObj={
                 type:interViewType,
@@ -317,7 +317,7 @@ function chatModelIndex(){
             createNewChannel(recruiterId,jobId,applicationId,obj,inviteObj);
             return
         }
-        var message=stickyChat.getInviteMessage(obj.name,obj.title,link,interViewType)
+        var message=stickyChat.getInviteMessage(obj[0].name,jobTitle,link,interViewType)
         var dataID=stickyChat.getDataId(channelName);
         SendMessage(dataID,channelName,message);
     }
