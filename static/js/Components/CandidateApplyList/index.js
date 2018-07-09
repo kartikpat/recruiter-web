@@ -94,7 +94,6 @@ jQuery(document).ready( function() {
     page.base('/job/'+jobId+'/applications');
 
     page('/:applicationId', function(context, next){ 
-        debugger
         // var parameters = filters.getAppliedFilters()
         // parameters.status = globalParameters.status;
         // setQueryParameters(parameters)
