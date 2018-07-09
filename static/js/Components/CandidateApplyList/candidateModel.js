@@ -631,6 +631,7 @@ function Candidate() {
         item.email.text('');
         item.inviteText.text("Send Interview Invite")
         item.inviteLink.removeClass('non-underline');
+        item.inviteLink.addClass('underline');
         item.inviteLink.removeClass('color-changed')
         $(".coverLetterTab").addClass("hidden");
         item.addinfoModal.addClass('hidden');
