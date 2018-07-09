@@ -238,12 +238,10 @@ function chatModelIndex(){
             //     return
             // }
             if(!store.getCandidateFromStoreViaChannel(channelName)){
-                debugger
                 if(window.innerWidth>768){
                     if(!(stickyChat.isChatBoxOpen(channelName)))
                     stickyChat.openChatBox(channelName,obj); 
                     stickyChat.disableChat(channelName);
-                    debugger
                 }
                 submitChatProfile(recruiterId,jobId,applicationId,obj,inviteObj);
                 // store.updateToStore();
@@ -254,9 +252,9 @@ function chatModelIndex(){
                 return
             }
             var obj=store.getCandidateFromStoreViaChannel(channelName);
-            debugger
             var scrollToBottom=0;
             if(window.innerWidth>768){
+                if(!(stickyChat.isChatBoxOpen(channelName)))
                 stickyChat.openChatBox(channelName,obj);
             }
             chatEngine.fetchHistory(channelName,20, null, null, function(data,response){

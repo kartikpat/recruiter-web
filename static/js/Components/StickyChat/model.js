@@ -466,7 +466,6 @@ function stickyChatModel(){
     }
 
     function openChatBox(channelName,obj){
-        debugger
         var elem = settings.conversationListing.find(".conversationItem[data-channel-name="+channelName+"]");
         var dataID = elem.attr("data-id")
         if(!dataID && elem.length==0){

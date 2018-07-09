@@ -531,7 +531,7 @@ function Candidate() {
         }
 
         if(aData["invite"]==1){
-            settings.interviewInvite.text("Resend Interview Invite");
+            settings.interviewInvite.text("Interview Invite Sent");
         }
 
         openModal(item)

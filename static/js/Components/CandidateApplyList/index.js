@@ -108,12 +108,10 @@ jQuery(document).ready( function() {
         parameters["page"]= "main";
 
         var queryString=testSetQueryParameters(parameters);
-        // if(!(hash.indexOf("?") >= 0)){
             context.canonicalPath+="?"+queryString;
             context.path+=""+queryString;
             context.querystring+=""+queryString;
             context.state.path+="?"+queryString;
-        // }    
     
         var candidateDetails = store.getCandidateFromStore(applicationId);
         if(recruiter.getViewsLimit()==0){
@@ -403,7 +401,6 @@ jQuery(document).ready( function() {
         var candidate = store.getCandidateFromStore(applicationId);
         var array = [];
         array.push(candidate);
-        debugger
         chatModule.createNewChannel(recruiterId,jobId,applicationId,array);
     })
 
@@ -1438,7 +1435,6 @@ jQuery(document).ready( function() {
             var candidate = store.getCandidateFromStore(applicationId);
             var array = [];
             array.push(candidate);
-            debugger
             chatModule.inviteMessage(recruiterId,jobId,array,1,data.data.url,applicationId,globalParameters.jobTitle);
        
         }
