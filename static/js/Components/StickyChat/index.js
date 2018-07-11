@@ -233,6 +233,7 @@ function chatModelIndex(){
 
     function createNewChannel(recruiterId,jobId,applicationId,obj,inviteObj){
             var channelName=baseDomain+"--r"+recruiterId+'-j'+obj[0].userID;
+            var obj=obj[0];
             if(!store.getCandidateFromStoreViaChannel(channelName)){
                 if(window.innerWidth>768){
                     if(!(stickyChat.isChatBoxOpen(channelName)))
@@ -240,13 +241,14 @@ function chatModelIndex(){
                     stickyChat.disableChat(channelName);
                 }
                 submitChatProfile(recruiterId,jobId,applicationId,obj,inviteObj);
-                // store.updateToStore();
+                console.log(obj)
                 return    
             }
             if(window.innerWidth <= 768) {
                 window.location.href = staticEndPoints['chat']+'?candidateId='+obj[0].userID+''
                 return
             }
+            debugger
             var obj=store.getCandidateFromStoreViaChannel(channelName);
             var scrollToBottom=0;
             if(window.innerWidth>768){
@@ -272,6 +274,7 @@ function chatModelIndex(){
 
 
     function onSuccessfulSubmitChat(topic,data){
+        debugger
         if(window.innerWidth <= 768) {
             window.location.href = staticEndPoints['chat']+'?candidateId='+data.array[0]["userID"]+''
         }

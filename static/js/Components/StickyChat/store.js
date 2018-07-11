@@ -13,11 +13,13 @@ function chatStoreModel(){
     }
 
     function updateStore(anObj){
-        anObj.userID=anObj.userId;
+        anObj.userId=anObj.userID;
         chatStore[anObj["userID"]] = anObj;
         chatStore[anObj["channel"]]=anObj;
         chatStore.push(chatStore[anObj["userID"]]);
         chatStore.push(chatStore[anObj["channel"]]);
+        debugger
+        console.log(chatStore)
     }
 
     function getCandidateFromStore(candidateId){

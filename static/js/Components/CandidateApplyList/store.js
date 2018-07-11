@@ -4,25 +4,28 @@ function Store (){
 	function saveToStore(dataArray){
         dataArray.forEach(function(anObj) {
             store[anObj["id"]] = anObj;
-        })
+		})
     }
 
-    function emptyStore(){
+	function emptyStore(){
 		store = {};
-    }
+	}
 
     function getCandidateFromStore(candidateId){
+		console.log(store);	
 		return store[candidateId]
-		}
+    }
 
-		function updateCandidate(props, candidateId){
+	function updateCandidate(props, candidateId){
 			if(store[candidateId] && props.comment){
 				store[candidateId]["comment"]= props.comment;
 			};
 			if(store[candidateId] && (props.status || props.status ==0)){
 				store[candidateId]['status'] = props.status;
 			}
-		}
+	}
+
+	
 
 	return {
 		saveToStore: saveToStore,
