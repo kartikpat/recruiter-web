@@ -12,7 +12,6 @@ function Store (){
 	}
 
     function getCandidateFromStore(candidateId){
-		console.log(store);	
 		return store[candidateId]
     }
 
@@ -24,9 +23,6 @@ function Store (){
 				store[candidateId]['status'] = props.status;
 			}
 	}
-
-	
-
 	return {
 		saveToStore: saveToStore,
 		emptyStore: emptyStore,

@@ -232,7 +232,6 @@ function chatModelIndex(){
     }
 
     function createNewChannel(recruiterId,jobId,applicationId,obj,inviteObj){
-            debugger
             var channelName=baseDomain+"--r"+recruiterId+'-j'+obj[0].userID;
             var dataObj=obj[0];
             if(!store.getCandidateFromStoreViaChannel(channelName)){
@@ -249,7 +248,6 @@ function chatModelIndex(){
                 window.location.href = staticEndPoints['chat']+'?candidateId='+obj[0].userID+''
                 return
             }
-            debugger
             var obj=store.getCandidateFromStoreViaChannel(channelName);
             var scrollToBottom=0;
             if(window.innerWidth>768){

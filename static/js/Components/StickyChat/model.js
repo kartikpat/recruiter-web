@@ -228,8 +228,6 @@ function stickyChatModel(){
             chatContainerBox.attr("data-channel-name",channelName);
             chatContainerBox.find(settings.infoImg).attr("src",(obj["img"] || "/static/images/noimage.png"))
             chatContainerBox.find(".info-container .primary-content").text(obj["name"] + " works as " + obj["designation"] + " at " + obj["organization"])
-            debugger
-            console.log(obj)
             if(obj["lastActive"]) {
                 chatContainerBox.find(settings.lastActive).text(moment(obj["lastActive"]).format("DD-MM-YYYY")).removeClass("hidden")
             }
@@ -467,7 +465,6 @@ function stickyChatModel(){
     }
 
     function openChatBox(channelName,obj){
-        debugger
         var elem = settings.conversationListing.find(".conversationItem[data-channel-name="+channelName+"]");
         var dataID = elem.attr("data-id")
         if(!dataID && elem.length==0){
