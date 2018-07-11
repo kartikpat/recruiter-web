@@ -232,12 +232,13 @@ function chatModelIndex(){
     }
 
     function createNewChannel(recruiterId,jobId,applicationId,obj,inviteObj){
+            debugger
             var channelName=baseDomain+"--r"+recruiterId+'-j'+obj[0].userID;
-            var obj=obj[0];
+            var dataObj=obj[0];
             if(!store.getCandidateFromStoreViaChannel(channelName)){
                 if(window.innerWidth>768){
                     if(!(stickyChat.isChatBoxOpen(channelName)))
-                    stickyChat.openChatBox(channelName,obj); 
+                    stickyChat.openChatBox(channelName,dataObj); 
                     stickyChat.disableChat(channelName);
                 }
                 submitChatProfile(recruiterId,jobId,applicationId,obj,inviteObj);
@@ -274,7 +275,6 @@ function chatModelIndex(){
 
 
     function onSuccessfulSubmitChat(topic,data){
-        debugger
         if(window.innerWidth <= 768) {
             window.location.href = staticEndPoints['chat']+'?candidateId='+data.array[0]["userID"]+''
         }
