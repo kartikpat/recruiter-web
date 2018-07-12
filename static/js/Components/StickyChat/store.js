@@ -1,14 +1,23 @@
 
 
-var chatStore={};
+var chatStore=[];
 
 function chatStoreModel(){
     
     function saveToStore(dataArray){
         dataArray.forEach(function(anObj) {
+            anObj.userID=anObj.userId;
             chatStore[anObj["userId"]] = anObj;
             chatStore[anObj["channel"]]=anObj;
         })
+    }
+
+    function updateStore(anObj){
+        anObj.userId=anObj.userID;
+        chatStore[anObj["userID"]] = anObj;
+        chatStore[anObj["channel"]]=anObj;
+        chatStore.push(chatStore[anObj["userID"]]);
+        chatStore.push(chatStore[anObj["channel"]]);
     }
 
     function getCandidateFromStore(candidateId){
@@ -27,7 +36,8 @@ function chatStoreModel(){
 		saveToStore: saveToStore,
 		getCandidateFromStore: getCandidateFromStore,
 		getCandidateFromStoreViaChannel:getCandidateFromStoreViaChannel,
-        getStore:getStore
+        getStore:getStore,
+        updateStore:updateStore
     }
 }    
 

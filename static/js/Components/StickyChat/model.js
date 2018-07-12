@@ -228,7 +228,6 @@ function stickyChatModel(){
             chatContainerBox.attr("data-channel-name",channelName);
             chatContainerBox.find(settings.infoImg).attr("src",(obj["img"] || "/static/images/noimage.png"))
             chatContainerBox.find(".info-container .primary-content").text(obj["name"] + " works as " + obj["designation"] + " at " + obj["organization"])
-            console.log(obj)
             if(obj["lastActive"]) {
                 chatContainerBox.find(settings.lastActive).text(moment(obj["lastActive"]).format("DD-MM-YYYY")).removeClass("hidden")
             }
@@ -468,10 +467,12 @@ function stickyChatModel(){
     function openChatBox(channelName,obj){
         var elem = settings.conversationListing.find(".conversationItem[data-channel-name="+channelName+"]");
         var dataID = elem.attr("data-id")
-        if(!dataID){
-            dataID=obj[0].userID;
-            obj=obj[0];
-        }   
+        if(!dataID && elem.length==0){
+            dataID=obj.userID;
+            obj=obj;
+            populateChatBox(channelName,dataID,obj);
+            return
+        }
         if(!(elem.hasClass('selected'))){
             populateChatBox(channelName,dataID,obj);
             elem.addClass('selected');
@@ -582,7 +583,7 @@ function stickyChatModel(){
             1:"Face-to-face ",
             2:"Telephonic"
         }
-        var message='Hello '+name+', You have been shortlisted for a '+interview[interViewType]+' interview for position -'+title+'Please click on the link below and pick a suitable slot for the interview: <a href='+link+'>'+link+'</a>'
+        var message='Hello '+name+', You have been shortlisted for a '+interview[interViewType]+' interview for position -'+title+'Please click on the link below and pick a suitable slot for the interview:<br><a href='+link+'>'+link+'</a>'
         return message;
     }
 

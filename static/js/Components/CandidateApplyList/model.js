@@ -396,6 +396,7 @@ function candidateList() {
 
         }
         item.element.attr("data-status", status)
+     
         if(aData["invite"]) {
             item.interviewinvite.text("Resend Interview Invite")
         }

@@ -9,18 +9,19 @@ var globalParameters = {
     actionPageNumber: 2,
     actionPageContent: 5,
     newApplication: 0 ,
-    path:""
+    path:"",
+    unreadTab:"1"
 }
 
 var screenName = "candidate-apply-list";
-
+var store = Store();
+    
 jQuery(document).ready( function() {
     // creating the instance of models
 	var candidates = candidateList();
     var aCandidate = Candidate();
     var chatModule=chatModelIndex();
     var theJob = Job();
-    var store = Store();
     var filters = Filters();
     var recruiter=recruiterLimit();
     var connect=connectSocial();
@@ -88,8 +89,8 @@ jQuery(document).ready( function() {
     //setting config variables
     theJob.setConfig("availableCredits", profile["availableCredits"]);
     theJob.setConfig("baseUrlJob", baseUrlJob);
-
     // mountint routing
+
     page.base('/job/'+jobId+'/applications');
 
     page('/:applicationId', function(context, next){ 
@@ -108,12 +109,10 @@ jQuery(document).ready( function() {
         parameters["page"]= "main";
 
         var queryString=testSetQueryParameters(parameters);
-        // if(!(hash.indexOf("?") >= 0)){
             context.canonicalPath+="?"+queryString;
             context.path+=""+queryString;
             context.querystring+=""+queryString;
             context.state.path+="?"+queryString;
-        // }    
     
         var candidateDetails = store.getCandidateFromStore(applicationId);
         if(recruiter.getViewsLimit()==0){
@@ -159,13 +158,19 @@ jQuery(document).ready( function() {
     //         return false
     // });
 
+
     page('/', function(context, next){
         var tabIndex = 0;
         aCandidate.closeModal();
-        if(context.querystring==globalParameters.path){
+        
+        if(globalParameters.unreadTab==1){
             return
         }
 
+        if(context.querystring==globalParameters.path){
+            return
+        }
+        
         globalParameters.path = context.querystring;
         var parameters = getParametersByString(context.querystring);
         if(!(parameters['status']))
@@ -501,6 +506,7 @@ jQuery(document).ready( function() {
         },function(event, ui){
             var status = candidates.getActiveTab(ui);
             var parameters = filters.getAppliedFilters();
+            globalParameters.unreadTab=0;
             globalParameters.status = status;
             parameters.status = globalParameters.status;
             var queryString = testSetQueryParameters(parameters);
@@ -1097,13 +1103,14 @@ jQuery(document).ready( function() {
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
         setQueryParameters(parameters);
+        
      })
 
      aCandidate.onClickEscapeModal(function(){
         var parameters = filters.getAppliedFilters();
         parameters.status = globalParameters.status;
         setQueryParameters(parameters);
-     })
+    })
 
      function getLocation(arr) {
          var array = []
@@ -1427,17 +1434,18 @@ jQuery(document).ready( function() {
     function onSendInterViewInviteSuccess(topic, data){
         var applicationId=data['parameters']['applicationId'];
         candidates.changeInviteText(data.parameters.applicationId)
+       
         var obj = store.getCandidateFromStore(data.parameters.applicationId)
         if(data.parameters.inviteId == 1){
             toastNotify(1, "Face to Face Invite Sent Successfully!")
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .icon-container').removeClass('hidden');
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .inviteText').addClass('color-changed');
             $(".candidateRow[data-application-id="+applicationId+"]").find('.inviteF2f .loadingScroller').addClass('hidden');
-            obj["isSent"] =1;
+            obj["isSent"]=1;
             var candidate = store.getCandidateFromStore(applicationId);
             var array = [];
             array.push(candidate);
-            chatModule.inviteMessage(recruiterId,array,1,data.data.url,applicationId,globalParameters.jobTitle);
+            chatModule.inviteMessage(recruiterId,jobId,array,1,data.data.url,applicationId,globalParameters.jobTitle);
        
         }
         if(data.parameters.inviteId == 2){
@@ -1449,7 +1457,7 @@ jQuery(document).ready( function() {
             var candidate = store.getCandidateFromStore(applicationId);
             var array = [];
             array.push(candidate);
-            chatModule.inviteMessage(recruiterId,array,2,data.data.url,applicationId,globalParameters.jobTitle);
+            chatModule.inviteMessage(recruiterId,jobId,array,2,data.data.url,applicationId,globalParameters.jobTitle);
         }
     
     }

@@ -1,5 +1,6 @@
 var channelsArray = []
 
+
 function getDeviceId() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -12,7 +13,6 @@ function getDeviceId() {
 
 
 function chatModelIndex(){
-    
     var deviceId= getDeviceId();
     var chatEngine = ChatEngine();
     chatEngine.initialize(recruiterId, profile.email);
@@ -21,12 +21,10 @@ function chatModelIndex(){
     var store=chatStoreModel();
     stickyChat.init();   
 
-
     function init(){
         stickyChat.init(); 
     }    
     
-
     fetchRecruiterChats(recruiterId);
     
     stickyChat.onClickSidebarChat(function(channelName,messageNumber,dataID,startTime){
@@ -202,7 +200,6 @@ function chatModelIndex(){
 
     function handleState(response){
         var channels = getArray(channelsArray);
-        console.log(response);
         channels.forEach(function(channel, index) {
             if(response.channels[channel].occupancy >= 2) {
                 stickyChat.showStatusIcon(channel);
@@ -234,15 +231,17 @@ function chatModelIndex(){
 
     }
 
-    function createNewChannel(recruiterId,jobId,applicationId,obj){
-            var userId=obj[0].userID;
-            var channelName=baseDomain+"--r"+recruiterId+'-j'+userId;
+    function createNewChannel(recruiterId,jobId,applicationId,obj,inviteObj){
+            var channelName=baseDomain+"--r"+recruiterId+'-j'+obj[0].userID;
+            var dataObj=obj[0];
             if(!store.getCandidateFromStoreViaChannel(channelName)){
                 if(window.innerWidth>768){
-                    stickyChat.openChatBox(channelName,obj); 
+                    if(!(stickyChat.isChatBoxOpen(channelName)))
+                    stickyChat.openChatBox(channelName,dataObj); 
                     stickyChat.disableChat(channelName);
                 }
-                submitChatProfile(recruiterId,jobId,applicationId,obj);
+                submitChatProfile(recruiterId,jobId,applicationId,obj,inviteObj);
+                console.log(obj)
                 return    
             }
             if(window.innerWidth <= 768) {
@@ -252,6 +251,7 @@ function chatModelIndex(){
             var obj=store.getCandidateFromStoreViaChannel(channelName);
             var scrollToBottom=0;
             if(window.innerWidth>768){
+                if(!(stickyChat.isChatBoxOpen(channelName)))
                 stickyChat.openChatBox(channelName,obj);
             }
             chatEngine.fetchHistory(channelName,20, null, null, function(data,response){
@@ -278,11 +278,9 @@ function chatModelIndex(){
         }
         stickyChat.enableChat(data.data.channel);
         data.array[0]["channel"] = data.data.channel;
+        store.updateStore(data.array[0]);
         stickyChat.populateChatView(data.array);
-        debugger
-        console.log(data)
         if(data.inviteObj){
-            debugger
             var channelName=data.data.channel;
             var obj=data.inviteObj;
             var message=stickyChat.getInviteMessage(obj.name,obj.title,obj.Url,obj.type);
@@ -296,23 +294,21 @@ function chatModelIndex(){
         stickyChat.disableToConnect(data.data);
     }
 
-    function inviteMessage(recruiterId,obj,interViewType,link,applicationId,jobTitle){
-        var userId=obj[0].userID;
-        var channelName=baseDomain+"--r"+recruiterId+'-j'+userId; 
+    function inviteMessage(recruiterId,jobId,obj,interViewType,link,applicationId,jobTitle){
+        var userID=obj[0].userID;
+        var channelName=baseDomain+"--r"+recruiterId+'-j'+obj[0].userID;
         if(!store.getCandidateFromStoreViaChannel(channelName)){
-            if(window.innerWidth>768){
-                stickyChat.openChatBox(channelName,obj); 
-                stickyChat.disableChat(channelName);
-            }
             var inviteObj={
                 type:interViewType,
                 Url:link,
                 name:obj[0].name,
                 title:jobTitle
             };
-            submitChatProfile(recruiterId,jobId,applicationId,obj,inviteObj);
-            return    
+            createNewChannel(recruiterId,jobId,applicationId,obj,inviteObj);
+            return
         }
+        var message=stickyChat.getInviteMessage(obj[0].name,jobTitle,link,interViewType)
+        var dataID=stickyChat.getDataId(channelName);
         if(window.innerWidth <= 768) {
             window.location.href = staticEndPoints['chat']+'?candidateId='+obj[0].userID+''
             return
@@ -320,20 +316,19 @@ function chatModelIndex(){
         var obj=store.getCandidateFromStoreViaChannel(channelName);
         var scrollToBottom=0;
         if(window.innerWidth>768){
+            if(!(stickyChat.isChatBoxOpen(channelName)))
             stickyChat.openChatBox(channelName,obj);
         }
         chatEngine.fetchHistory(channelName,20, null, null, function(data,response){
             onFetchHistory(response,obj,channelName,scrollToBottom)
         });
-        var message=stickyChat.getInviteMessage(obj.name,obj.title,link,interViewType)
-        var dataID=stickyChat.getDataId(channelName);
-        SendMessage(dataID,channelName,message)
         stickyChat.scrollEvent(channelName,obj,function(channelName,startTime){
             scrollToBottom=1;
             chatEngine.fetchHistory(channelName,20,startTime, null, function(data,response){
                 onFetchHistory(response,obj,channelName,scrollToBottom)
             });
         });
+        SendMessage(dataID,channelName,message);
     }
 
     return{

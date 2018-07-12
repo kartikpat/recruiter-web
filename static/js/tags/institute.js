@@ -948,6 +948,10 @@ var instituteTagsData = [
    "text":"Jindal Global Law School"
   ,"val":190
   ,"isTop": "lawinst"
+},{
+  "text":"Xavier Institute of Social Service, Ranchi (XISS)"
+ ,"val":191
+ ,"isTop": ""
 }].sort(function(a, b){
       return a["text"].localeCompare(b.text)
   });
