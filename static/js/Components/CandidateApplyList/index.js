@@ -160,6 +160,7 @@ jQuery(document).ready( function() {
 
 
     page('/', function(context, next){
+        debugger
         var tabIndex = 0;
         aCandidate.closeModal();
         
@@ -173,8 +174,11 @@ jQuery(document).ready( function() {
         
         globalParameters.path = context.querystring;
         var parameters = getParametersByString(context.querystring);
-        if(!(parameters['status']))
-        tabIndex=1;
+        if(!(parameters['status'])){
+            tabIndex=1;
+            parameters['status']=0;
+        }
+        
         globalParameters.status = parameters['status'];
         if(parameters.orderBy)
             globalParameters.orderBy = parameters['orderBy'];
