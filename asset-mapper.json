@@ -154,8 +154,10 @@
 				"static/css/colors.css",
 				"static/css/spacings.css",
 				"static/css/vendor/medium-editor.min.css",
+				"static/css/vendor/assessment.min.css",
 				"static/css/post_job.css",
 				"static/css/modal.css"
+
 			],
 			"prod": [
 				"static/build/css/index.min.css"
@@ -191,7 +193,9 @@
 				"static/js/Tracker/tracker.js",
 				"static/js/eventMapping.js",
 				"static/js/Tracker/tracker.js",
-				"static/js/eventMapping.js"
+				"static/js/eventMapping.js",
+				"static/js/vendor/assessment-withoutDependencies.min.js"
+
 			],
 			"prod" : [
 				"static/build/js/post-job.min.js"
@@ -1151,7 +1155,7 @@
 				"static/js/Utilities/modal.js",
 				"static/js/Components/Header/model.js",
 				"static/js/Components/Header/index.js",
-				
+
 				"static/js/Tracker/tracker.js",
 				"static/js/eventMapping.js"
 

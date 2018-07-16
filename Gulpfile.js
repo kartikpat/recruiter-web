@@ -5,7 +5,7 @@
 var gulp = require("gulp");
 var log = require('fancy-log');
 var sass = require("gulp-sass");
-var del = require("del");	
+var del = require("del");
 var notify = require("gulp-notify");
 var moment = require("moment");
 // var cached = require('gulp-cached');
@@ -52,7 +52,7 @@ gulp.task('build-css', async function(done){
 	}catch(err){
 		console.log(err);
 	};
-	
+
 });
 
 
@@ -75,7 +75,7 @@ gulp.task('build-js', async function(done){
 
 function buildSingleJs(staticMapperElement, i){
 	return new Promise(function(resolve, reject){
-		return pump([ 
+		return pump([
 			gulp.src(getAssetsArray(staticMapper[staticMapperElement]["scripts"]["debug"])),
 			uglify(),
 			concat(staticMapper[staticMapperElement]["scripts"]["prod"][0]),
@@ -130,7 +130,7 @@ function buildSingleCSS(staticMapperElement){
 
 
 gulp.task('watch', function(){
-	gulp.watch("static/css/**/*.scss", gulp.series('build-sass', 'build-css'))
+	gulp.watch("static/scss/**/*.scss", gulp.series('build-sass', 'build-css'))
 	gulp.watch("static/js/**/*.js", gulp.series('build-js'))
 })
 

@@ -83,11 +83,20 @@ function Job(){
 			settings.editor.subscribe('editableInput', function(event, editorElement){
 				 $(editorElement).find("span[style]").contents().unwrap();
 				 settings.description.val(settings.editor.getContent());
-
 			})
+
 			jQuery(".header .menu-list-item.my-jobs").addClass("active");
 			appendlocation();
 			appendindustry();
+
+			var assessmentSdkconfig = {
+		        "authorType": parseInt(profile.recruiterType),
+		        "author": parseInt(recruiterId),
+				"postJob": true,
+		        "wrapperName": "assessment-sdk-container"
+    		}
+
+			assessmentSdk(assessmentSdkconfig)
 	}
 
 	function onChangeJobPremium(fn) {
@@ -345,7 +354,7 @@ function setAvailableCredits(element, credits) {
 	// 	return element.html("Reach out to more candidates in less amount of time by making your job premium. <a target='_blank' style='color:#155d9a' href='/plans'>Learn More.</a>")
 	// }
 	if(credits == 0) {
-		return element.html("Reach out to more candidates in less amount of time by making your job premium. <a target='_blank' style='color:#155d9a' href='/plans'>Learn More.</a>")	
+		return element.html("Reach out to more candidates in less amount of time by making your job premium. <a target='_blank' style='color:#155d9a' href='/plans'>Learn More.</a>")
 	}
 	element.text("You have "+credits+" credits left.")
 }

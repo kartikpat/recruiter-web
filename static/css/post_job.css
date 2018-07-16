@@ -615,6 +615,13 @@ span.sticker {
 #courseType, #preferences {
   margin-bottom: 10px !important; }
 
+.my-plugin-wrapper {
+  padding: 0;
+  padding-bottom: 20px; }
+
+.my-plugin-added-quest-container {
+  width: 100%; }
+
 .course-selected {
   font-size: 20px !important;
   color: #4fa995;

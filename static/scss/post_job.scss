@@ -10,7 +10,14 @@
     margin-bottom: 10px !important;
 }
 
+.my-plugin-wrapper {
+    padding: 0;
+    padding-bottom: 20px;
+}
 
+.my-plugin-added-quest-container {
+    width: 100%; 
+}
 
 .course-selected {
     font-size: 20px !important;
@@ -166,7 +173,7 @@
 
                     input[type="checkbox"] {
                         @include check-input;
-                       
+
                     }
 
                     select.half {
@@ -267,8 +274,8 @@
             height: 30px;
             outline: none;
         }
-    } 
-    }   
+    }
+    }
         .button{
             @include button($button-color-green);
             &.cancel-form {
@@ -279,8 +286,8 @@
                 border:0;
                 padding:10px 32px;
             }
-        }    
-    
+        }
+
 }
 
 .guidelines-container {
@@ -386,12 +393,12 @@
                             &.half {
                                 width:48%;
                             }
-                            
+
                         }
                         select:focus{
                             outline: none;
                             border: 1px solid;
-                            border-color: $border-color-active;    
+                            border-color: $border-color-active;
                         }
                     }
 
